@@ -153,3 +153,13 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - 解码管线端到端全通（analysis/tools/cel_slots.py）：容器解包 → 头部 → 280 字符串 → 19,845B 代码 → 指令切分全部合法
 - ChatGPTReasoning.js 指令流抽样：前置 19×op0x00；循环模式 op0x04(push,4B)→op0x24(pop2push1,u16)→op0xc4(pop1,slot)→op0x65→op0x42(33B 记录,pop1push2) —— 疑似 const x = <expr>.prop 序列
 - 待做（B3 核心）：opcode→JS 语义映射（平行语料对齐：280 字符串/19,845B 码与 Android-only 无对应源，改用 66 个共有模块对齐归纳），产出 cel_decompile.py
+
+### 9.7 对齐法启动（2026-10-27 深夜续）
+
+- 平行语料：1273 对（字节码, iOS JS）已配对（derived/ 两端共有模块）
+- 最小对全量对齐完成：coreutils/dummy.js、foundation/foundation.js（prologue 结构一致）、cel/ICELRuntime.js（单语句 JS ↔ 25 条指令逐一对应）
+- **op 0x24 = CALL <u16 argc> 确认**（ICELRuntime: defineProperty 3 参数 ↔ ops=0300 ✓）
+- 初始语义表 25 条（cel_align.py SEMANTICS），对齐工具 `analysis/tools/cel_align.py <module> <rel>`
+- 优先模块 opcode 谱：chatgpt_reasoning 用 ~35 种（0x00×656 填充、0x41×206、0x4f×194、0x04×111、0x65×108、0x42×81、0xd2×80、0x0e×77、0xae×76、0x03×66、0x24 CALL×60…）；chatgpt_global_search 同谱
+- 共同 prologue 定性：op01(const)+a2+op01+00+ce+28+ae+op03 = "use strict" 模块初始化样板；op43(33B) = 函数单元边界记录
+- 下一步：cel_align 循环跑 1273 对归纳全表（优先 35 子集）→ cel_decompile.py 渲染器
