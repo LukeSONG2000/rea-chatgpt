@@ -111,3 +111,21 @@ analyzeHeadless <proj_dir> xplat122 -process libopenai_xplat_export.so -noanalys
 - 解包驱动调用方 5 个已反编译（xplat-unpack-callers2.txt）：FUN_0069ab60 确认 = 字节→{name→{ptr,len}} map→模块对象（内容惰性解析）；五个调用者均无内层魔数引用 → 静态追链收益递减
 - **B2 转向经验差分法**：66 个共有模块同时持有（Android 编译 blob, iOS 明文 JS）平行对。同一 JS 源编译出的 blob 结构跨模块一致——对齐多个模块的同构位置即可切出字段边界（magic/版本/名称/字符串表计数/代码段/hash 尾）。结合验证器已知的段落语义（字符串表 u8=2×len、代码 u8 长度表、尾部 hash@sha256）可锁定 layout
 - **B1 补充**：执行器非 switch；dispatch 指纹（ldrb+lsl#2+br）全库 181 处为 Rust match 惯用法（误报源），需更强签名（循环内 pc 递增回边 + 就近 offset 表）。备选：FUN_0073badc/bdb0/c668（0x73 区辅助三件套）定性
+
+### 9.3 B2 破译：内层文件头部格式实证（2026-10-27 晚）
+
+跨 4 个模块 21 个编译 blob 锚定实验（已知源文件名 → blob 内定位 → 回读前缀）：
+
+```
+34 c6 00 01          魔数
+01                   格式标记（常量）
+varint(LEB128) A     长度/偏移字段（语义待定：String=47, Reasoning=280, ClientSQLDebug=128…）
+varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
+[len 字节]            模块路径（如 "cel/src/stdlib/String"、"chatgpt_reasoning/src/ChatGPTReasoningComponent"）
+...                  字符串表（2×len u8 前缀，已验证）→ 代码段 → 尾部 hash@sha256
+```
+
+验证样本（B=2×len 全对上）：String(21→0x2a)、StandardLibrary(30→0x3c)、Math(19→0x26)、Collections(26→0x34)、CELParser(24→0x30)、CELAst(21→0x2a)、ICELRuntime(19→0x26, 路径实为 cel/src/ICELRuntime 无 stdlib)、CELValue(17→0x22)、ClientSQLDebug(29→0x3a, LEB=0x80 01)、ChatGPTReasoningComponent(47→0x5e)、ChatGPTReasoning(38→0x4c, LEB=0x98 02)、ChatGPTFaviconPresentation(48→0x60)
+**意外收获**：路径字段暴露了模块真实组织（ICELRuntime 在 cel/src/ 而非 stdlib/）。
+
+下一步：name 后接续解析（A 字段语义 = 到下一段的偏移/长度？）→ 字符串表结束边界 → 代码段切分（结合 247 表长度字段）→ B1 执行器语义 → 解码器。
