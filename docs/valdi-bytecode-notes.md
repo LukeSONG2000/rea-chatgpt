@@ -83,3 +83,17 @@ analyzeHeadless <proj_dir> xplat122 -process libopenai_xplat_export.so -noanalys
 - `analysis/xplat-container-parse.txt` / `xplat-unpack-driver.txt` — 容器解析链
 - `analysis/valdi-opcode-table.txt` — 247 条 opcode 元数据
 - `analysis/valdi-strings-chatgpt_{conversation,reasoning}-*.txt` — 两模块字符串表
+
+## 9. B1 进展（2026-10-27 下午）：表引用扫描完成
+
+`analysis/xplat-table-xrefs.txt`（TableXrefDecomp.java 扫描 0x1fe1fc-fd/fe/ff 四地址）：
+
+| 函数 | 大小 | 角色 |
+|---|---|---|
+| FUN_0072ad84 | 14,924B | 验证器+构造器（已知；无大 switch，含 0x4d/0x52/0x5b 特例 patch） |
+| FUN_0071b5d8 | 324B | **字节码重定位器**：按表 walk 指令，对 b0∈[0x17,0x1b] 的 opcode 改写 pc+1 处 u16（引用修补，指向 *(ctx+0x18)+0x60 的对象表）→ **元数据表 b0 字段 = 操作数类别** |
+| FUN_007047ec | 2,692B | 值序列化器（负数类型标签：-10=bignum zigzag `i<<1^i>>31`；引用表取长度写字节码函数） |
+| FUN_0073badc/bdb0/c668 | 724/296/244B | 0x73 区域辅助函数（待定性） |
+| FUN_007114a0 | 180B | 待定性 |
+
+**执行器定位策略（下一步）**：分发不走元数据表引用、无 switch —— 判定为**尾调用链式 handler**（每 opcode 一个小函数，0x6f0000-0x71xxxx 区间密度最高）。入口追法：FUN_007040ec（调用路径类型检查）→ FUN_0071873c/FUN_00718928/FUN_00718d60/FUN_00709238/FUN_006fb2b0 → 首个 handler → 沿尾调用链枚举。备选： FUN_0073c86c（验证器内调用）。
