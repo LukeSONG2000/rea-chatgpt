@@ -21,7 +21,7 @@ ChatGPT 四端官方包的逆向分析产物库——**为自己构建 agent 提
 packages/        原始安装包（git 忽略，Release 分发）
 recovered/       恢复产物（严格四平台：android/ios/macos/windows）
 shared/          跨平台共享层（valdimodules 解包 + PROVENANCE 来源索引）
-reference-domain-specific/  域隔离产物（finance/subscription，用户决策归档）
+derived/domain-specific/  域隔离产物（finance/subscription，用户决策归档）
 analysis/        工具、Ghidra 工程/脚本、中间证据、品牌预览
 docs/            报告与逆向笔记
 ```
@@ -30,8 +30,8 @@ docs/            报告与逆向笔记
 
 | 方向 | 入口路径 |
 |---|---|
-| ① 前端交互 | `shared/valdimodules/unpacked/ios/`（组件 JS）· `recovered/macos/asar-extracted/webview/assets/` · `recovered/android/jadx-src/sources/com/openai/design/` |
-| ② 消息流与渲染 | `shared/valdimodules/unpacked/ios/chatgpt_conversation/src/`（ConversationState/Message/Markdown）· `dil_*` 模块 · 桌面 `app-shared/app-initial` bundle · `docs/valdi-bytecode-notes.md`（reasoning 黑盒解码状态） |
+| ① 前端交互 | `derived/valdimodules/unpacked/ios/`（组件 JS）· `recovered/macos/asar-extracted/webview/assets/` · `recovered/android/jadx-src/sources/com/openai/design/` |
+| ② 消息流与渲染 | `derived/valdimodules/unpacked/ios/chatgpt_conversation/src/`（ConversationState/Message/Markdown）· `dil_*` 模块 · 桌面 `app-shared/app-initial` bundle · `docs/valdi-bytecode-notes.md`（reasoning 黑盒解码状态） |
 | ③ harness | `recovered/macos/asar-extracted/.vite/build/`（worker/skills/record-aeon）· `recovered/macos/cua-node-oai/@oai/`（CUA/Sky/BrowserDesktop）· Codex CLI（开源仓库 openai/codex 优先）· `analysis/xplat-loader-strings.txt`（native 模块签名） |
 | ④ 整体架构 | `docs/RECOVERY-REPORT.md` · `recovered/android/jadx-src/sources/com/openai/`（未混淆包树）· `recovered/android/apktool-src/res/raw/aboutlibraries.json`（478 依赖） |
 | ⑤ 跨平台 Valdi | Valdi 开源仓库（MIT，https://github.com/Snapchat/valdi ，本地克隆于 .tmp/valdi 不入库）· `analysis/tools/valdi_unpack.py` · `analysis/valdi-opcode-table.txt` · 两端共有 77/68 个模块 |
