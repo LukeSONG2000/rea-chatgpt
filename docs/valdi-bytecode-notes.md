@@ -104,3 +104,10 @@ analyzeHeadless <proj_dir> xplat122 -process libopenai_xplat_export.so -noanalys
 - FUN_00718d60 = **字节码函数调用帧构造器**：栈溢出检查、调用状态机（param_2+0x80 类型域、+0x84/0x88 pc、+0x90 prev-frame 链表）、参数绑定
 - FUN_007040ec = 调用路径类型检查（tag 0xfffffffd = bytecode function）
 - **执行器仍未现形**：排除 switch 型；结合尾调用假设，下一步 = 从 FUN_00718d60 构造的帧对象找到 resume/step 函数（找引用帧对象 +0x84/+0x88 偏移的函数），或在 0x6ef000-0x71b000 区间按"读 opcode byte → 跳 handler 表"的汇编模式扫描（adrp+ldrb+br x 序列）
+
+### 9.2 B2 进展与策略修订（2026-10-27 傍晚）
+
+- loadModule JNI（0x75e9fc）是 djinni 薄壳 → vtable+0x18 转发到实现对象（实现注册自 JS/Java 侧）
+- 解包驱动调用方 5 个已反编译（xplat-unpack-callers2.txt）：FUN_0069ab60 确认 = 字节→{name→{ptr,len}} map→模块对象（内容惰性解析）；五个调用者均无内层魔数引用 → 静态追链收益递减
+- **B2 转向经验差分法**：66 个共有模块同时持有（Android 编译 blob, iOS 明文 JS）平行对。同一 JS 源编译出的 blob 结构跨模块一致——对齐多个模块的同构位置即可切出字段边界（magic/版本/名称/字符串表计数/代码段/hash 尾）。结合验证器已知的段落语义（字符串表 u8=2×len、代码 u8 长度表、尾部 hash@sha256）可锁定 layout
+- **B1 补充**：执行器非 switch；dispatch 指纹（ldrb+lsl#2+br）全库 181 处为 Rust match 惯用法（误报源），需更强签名（循环内 pc 递增回边 + 就近 offset 表）。备选：FUN_0073badc/bdb0/c668（0x73 区辅助三件套）定性

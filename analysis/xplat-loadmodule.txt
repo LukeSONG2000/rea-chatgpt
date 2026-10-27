@@ -1,0 +1,45 @@
+
+===== DECOMPILE Java_com_snapchat_client_valdi_1core_ModuleFactory_00024CppProxy_native_1loadModule @ 0075e9fc =====
+
+undefined8 Java_com_snapchat_client_valdi_1core_ModuleFactory_00024CppProxy_native_1loadModule(void)
+
+{
+  undefined8 uVar1;
+  long extraout_x8;
+  undefined8 local_28;
+  undefined1 auStack_20 [16];
+  
+  FUN_0075ea7c();
+  (**(code **)(extraout_x8 + 0x18))(auStack_20);
+  FUN_0075bfe8(&local_28);
+  uVar1 = local_28;
+  local_28 = 0;
+  FUN_00335f24(&local_28);
+  FUN_00790de8(auStack_20);
+  return uVar1;
+}
+
+
+
+===== DECOMPILE Java_com_snapchat_client_valdi_1core_ModuleFactory_00024CppProxy_native_1getModulePath @ 0075e9ac =====
+
+undefined8
+Java_com_snapchat_client_valdi_1core_ModuleFactory_00024CppProxy_native_1getModulePath(void)
+
+{
+  undefined8 uVar1;
+  long extraout_x8;
+  undefined8 local_20;
+  undefined8 local_18;
+  
+  FUN_0075ea7c();
+  (**(code **)(extraout_x8 + 0x10))(&local_18);
+  FUN_0075c184(&local_20);
+  uVar1 = local_20;
+  local_20 = 0;
+  FUN_00335f24(&local_20);
+  FUN_00335534(local_18);
+  return uVar1;
+}
+
+
