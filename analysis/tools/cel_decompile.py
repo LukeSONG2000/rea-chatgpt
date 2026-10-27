@@ -59,8 +59,9 @@ def render(blob, meta):
         elif op == 0x28:
             pop()
         elif op == 0x29:
-            if stack: lines.append('  // stack@END: ' + ' | '.join(stack)); stack.clear()
-            lines.append('  // --- 模块段结束 ---')
+            if stack: lines.append('  // stack@INIT-END: ' + ' | '.join(stack)); stack.clear()
+            lines.append('  // ===== 初始化段结束；其后为函数单元 =====')
+            in_units = True
         elif op == 0x41:
             key = u16; v = pop()
             stack.append(f'objlit[{key}]({v})')
@@ -133,20 +134,29 @@ def render(blob, meta):
     return '\n'.join(lines)
 
 def main():
-    args = [a for a in sys.argv[1:] if a != '-o']
-    outdir = sys.argv[sys.argv.index('-o') + 1] if '-o' in sys.argv else None
+    argv = sys.argv[1:]
+    outdir = None; flt = '.js'
+    if '-o' in argv:
+        i = argv.index('-o')
+        outdir = argv[i+1]
+        argv = argv[:i] + argv[i+2:]
+    if len(argv) > 1: flt = argv[1]
+    argv0 = argv[0]
     if outdir: os.makedirs(outdir, exist_ok=True)
     meta = cel_slots.load_meta()
-    flt = args[1] if len(args) > 1 else '.js'
-    for fname, blob in cel_slots.unpack_module(args[0]):
+    n = 0
+    for fname, blob in cel_slots.unpack_module(argv0):
         if not fname.endswith(flt): continue
         text = render(blob, meta)
         if outdir:
             op = os.path.join(outdir, fname.replace('/', '_') + '.decompiled.js')
             open(op, 'w').write(text)
+            n += 1
             print(f'{fname} -> {op}')
         else:
             print(text)
+    if n == 0:
+        print(f'WARNING: filter {flt!r} matched no files', file=sys.stderr)
 
 if __name__ == '__main__':
     main()

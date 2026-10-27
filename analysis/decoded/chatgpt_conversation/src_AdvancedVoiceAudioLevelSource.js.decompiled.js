@@ -1,7 +1,9 @@
 // 模块: chatgpt_conversation/src/AdvancedVoiceAudioLevelSource | 字符串 15 | 代码 784B | 指令 200
   "use strict";
+  …(pad)
   ? = ?;
   // op 0x30 (语义待归纳)
+  …(pad)
   // op 0x20 (语义待归纳)
   // op 0x64 (语义待归纳)
   // discard(pool[145].key#101(exports, const[220], this/ctx.!(globalThis)))
@@ -18,57 +20,24 @@
   locop 0xcc([op 0x6b])
   EXPORTS.key#219 (seq 1) = undefined;  // exports
   // stack@END: 'AdvancedVoiceAudioLevelSource' | [op 0x30] | 'AdvancedVoiceAudioLevelSource' | 'publish' | [op 0x20] | [op 0x64] | [op 0x64] | coerce(v06)
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x0f (语义待归纳)
-  // op 0x10 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x0a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x2c (语义待归纳)
-  EXPORTS.key#16910 (seq 0) = [op 0x2c];  // [op 0x08]
-  // op 0x10 (语义待归纳)
-  // op 0x0d (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +6;
-  // op 0xc6 (语义待归纳)
-  // op 0x1b (语义待归纳)
-  // discard([op 0x1b]())
-  // op 0xc6 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  EXPORTS.key#223 (seq 0) = call21([op 0x11]; );  // [op 0xc6]
-  // stack@END: [op 0x10] | const[00ec0101] | [op 0x0d] | [op 0x2b]
-  // --- 模块段结束 ---
-  ? = ?;
-  // discard(const[0000000e].key#263.key#104(local-ref))
-  ? = 'exports';
-  DECLARE-FUNCTION …
-  // op 0x10 (语义待归纳)
-  // op 0xde (语义待归纳)
-  // op 0xdf (语义待归纳)
-  // stack@END: [op 0x10] | const[c0030003] | objlit[223]([op 0xde]).i([op 0xdf])
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x47 (语义待归纳)
-  // discard(num[0])
-  // op 0x94 (语义待归纳)
-  jmp +2;
-  // stack@END: !([op 0x94].key#226(local-ref))
-  // --- 模块段结束 ---
-  // op 0xb7 (语义待归纳)
-  locop 0xca(pool[153].key#227(globalThis, pool[153].key#228([op 0xb7], local-ref)))
-  // op 0xc7 (语义待归纳)
-  // stack@END: objlit[223]([op 0xc7]).key#229(local[0])
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x56 (语义待归纳)
-  DECLARE-FUNCTION …
-  // op 0x07 (语义待归纳)
-  // op 0xc2 (语义待归纳)
-  const[c0030001] = call23([op 0xc2]; 'forEach');
-  // stack-tail: num[17252878] | const[00010201] | [op 0x07] | 'require' | num[0]
+  // --- 模块段结束（其后为模块记录元数据，非字节码） ---
+  // meta+0000: ae03010d13e4264f000f1000080a2b2c
+  // meta+0010: 450e4207010000010003010023011000
+  // meta+0020: 0100ec01010d08ca2b68000011eb06c6
+  // meta+0030: 1b2400000ec638b00000001121000045
+  // meta+0040: df0000000000000029ae0308024e6201
+  // meta+0050: 0000000e420701000101010300014d02
+  // meta+0060: c0030001401000014008cac641df0000
+  // meta+0070: 00000000000000000000000000000000
+  // meta+0080: 00000000000000000000000000426800
+  // meta+0090: 00000000000000000000000000000000
+  // meta+00a0: 0000000000000000000000000000d224
+  // meta+00b0: 01000ec10028ae030b040d0048040e42
+  // meta+00c0: 0701000000000302004800100001c003
+  // meta+00d0: 0003de41df0000000000000000000000
+  // meta+00e0: 00000000000000000000000000000000
+  // meta+00f0: 00000000420900000000000000000000
+  // …(元数据共 597B，截断显示)
 
 // ---- 字符串表 ----
 // str[0] = 'require'

@@ -1,11 +1,14 @@
 // 模块: chatgpt_conversation/src/components/ChatGPTIOSConversationMessage | 字符串 473 | 代码 38297B | 指令 1147
+  …(pad)
   ? = const[0401a201];
   // op 0x9c (语义待归纳)
   // op 0x0a (语义待归纳)
+  …(pad)
   // op 0x1c (语义待归纳)
   // op 0xf6 (语义待归纳)
   // op 0x3c (语义待归纳)
   // op 0x5c (语义待归纳)
+  …(pad)
   // op 0x70 (语义待归纳)
   // op 0x70 (语义待归纳)
   // op 0x70 (语义待归纳)
@@ -140,8 +143,7 @@
   EXPORTS.reasoning (seq 2) = …;  // …
   EXPORTS.role (seq 3) = …;  // …
   EXPORTS.animate (seq 4) = pair(exports, pair(exports, pair(exports, pair(exports, v06))));  // exports
-  jcc 0xf0 +0;
-  locop 0xca(objlit[310](const[309]))
+  locop 0xca(objlit[310](f0(const[309])))
   locop 0xcb(const[313](push2))
   // op 0xbe (语义待归纳)
   locop 0xcc([op 0xbe](push2))
@@ -190,84 +192,57 @@
   local[39] = undefined.setAttributeStyle(const[316]);
   local[40] = undefined.setAttributeRef();
   local[41] = undefined.setAttributeRef();
-  jcc 0xf0 +0;
-  local[42] = const[342];
-  jcc 0xf0 +0;
-  local[43] = const[343];
-  jcc 0xf0 +0;
-  local[44] = const[344];
-  jcc 0xf0 +0;
-  local[45] = const[345];
-  jcc 0xf0 +0;
-  local[46] = const[346];
-  jcc 0xf0 +0;
-  local[47] = const[347];
-  jcc 0xf0 +0;
-  local[48] = const[348];
-  jcc 0xf0 +0;
-  local[49] = const[349];
-  jcc 0xf0 +0;
-  local[50] = const[350];
-  jcc 0xf0 +0;
-  local[51] = const[351];
-  jcc 0xf0 +0;
-  local[52] = const[352];
-  jcc 0xf0 +0;
-  local[53] = const[353];
-  jcc 0xf0 +0;
-  local[54] = const[354];
-  jcc 0xf0 +0;
-  local[55] = const[355];
-  jcc 0xf0 +0;
-  local[56] = const[356];
-  jcc 0xf0 +0;
-  local[57] = const[357];
-  jcc 0xf0 +0;
-  local[58] = const[358];
-  jcc 0xf0 +0;
-  local[59] = const[359];
-  jcc 0xf0 +0;
-  local[60] = const[360];
-  jcc 0xf0 +0;
-  local[61] = const[361];
-  jcc 0xf0 +0;
-  local[62] = const[362];
-  jcc 0xf0 +0;
-  local[63] = const[363];
-  jcc 0xf0 +0;
-  local[64] = const[364];
+  local[42] = f0(const[342]);
+  local[43] = f0(const[343]);
+  local[44] = f0(const[344]);
+  local[45] = f0(const[345]);
+  local[46] = f0(const[346]);
+  local[47] = f0(const[347]);
+  local[48] = f0(const[348]);
+  local[49] = f0(const[349]);
+  local[50] = f0(const[350]);
+  local[51] = f0(const[351]);
+  local[52] = f0(const[352]);
+  local[53] = f0(const[353]);
+  local[54] = f0(const[354]);
+  local[55] = f0(const[355]);
+  local[56] = f0(const[356]);
+  local[57] = f0(const[357]);
+  local[58] = f0(const[358]);
+  local[59] = f0(const[359]);
+  local[60] = f0(const[360]);
+  local[61] = f0(const[361]);
+  local[62] = f0(const[362]);
+  local[63] = f0(const[363]);
+  local[64] = f0(const[364]);
   // op 0xc3 (语义待归纳)
   // op 0x11 (语义待归纳)
-  jmp +16;
+  jcc-0xec → @3208   // 条件跳转 (目标=pc+1+i8)
   // discard([op 0x11])
   // op 0xc5 (语义待归纳)
   EXPORTS.clearTimeout (seq 5) = …;  // …
-  jcc 0xf0 +0;
-  // discard(!(pair(exports, [op 0xc5])))
+  // discard(!(f0(pair(exports, [op 0xc5]))))
   // op 0xc3 (语义待归纳)
   // op 0x11 (语义待归纳)
-  jmp +16;
+  jcc-0xec → @3233   // 条件跳转 (目标=pc+1+i8)
   // discard([op 0x11])
   // op 0xc5 (语义待归纳)
   EXPORTS.isReasoning (seq 6) = …;  // …
-  jcc 0xf0 +0;
-  // discard(pair(exports, [op 0xc5]))
+  // discard(f0(pair(exports, [op 0xc5])))
   // op 0xc3 (语义待归纳)
   // op 0x11 (语义待归纳)
-  jmp +16;
+  jcc-0xec → @3257   // 条件跳转 (目标=pc+1+i8)
   // discard([op 0x11])
   // op 0xc5 (语义待归纳)
   EXPORTS.reasoning (seq 7) = …;  // …
-  jcc 0xf0 +0;
-  // discard(pair(exports, [op 0xc5]))
+  // discard(f0(pair(exports, [op 0xc5])))
   // op 0xc3 (语义待归纳)
   // op 0x11 (语义待归纳)
-  jmp +16;
+  jcc-0xec → @3281   // 条件跳转 (目标=pc+1+i8)
   // discard([op 0x11])
   // op 0xc5 (语义待归纳)
   EXPORTS.role (seq 8) = …;  // …
-  jcc 0xf0 +0;
-  // discard(pair(exports, [op 0xc5]))
+  // discard(f0(pair(exports, [op 0xc5])))
   // op 0xbf (语义待归纳)
   local[69] = [op 0xbf];
   // op 0xbe (语义待归纳)
@@ -365,10 +340,24 @@
   // op 0x11 (语义待归纳)
   local[88] = this/ctx.call21([op 0x11]; this/ctx.const[389].const[391].objlit[394](objlit[393](undefined)).[op 0xbf].const[322]).call21([op 0x11]; this/ctx.objlit[399](objlit[398](undefined)).[op 0xbe].const[402].[op 0xbe].[op 0xbe].[op 0xbe].[op 0xbe]).call21([op 0x11]; this/ctx.objlit[408](objlit[398](undefined)).undefined.[op 0x9e].globalThis).call21([op 0x11]; this/ctx.const[414].const[391].objlit[415](objlit[393](undefined)).[op 0xbf].globalThis.const[322]).call21([op 0x11]; this/ctx.const[391].[op 0xc0].[op 0xbe].const[322]).call21([op 0x11]; this/ctx.const[322]).call21([op 0x11]; this/ctx.globalThis.[op 0xbf].const[322]).call21([op 0x11]; this/ctx.const[424].objlit[425](objlit[398](undefined)).objlit[426](objlit[398](undefined)).objlit[429](objlit[428](undefined)).[op 0xb7].const[431].objlit[415](objlit[393](undefined)).[op 0xbf].objlit[415](objlit[393](undefined))).call21([op 0x11]; this/ctx.const[391].[op 0xb7].globalThis).call21([op 0x11]; this/ctx.const[414].const[431].const[435].objlit[437](objlit[393](undefined)).const[322]).call21([op 0x11]; this/ctx.objlit[439](objlit[398](undefined)).undefined).call21([op 0x11]; this/ctx.const[424].objlit[425](objlit[398](undefined)).objlit[441](objlit[428](undefined)).const[431].objlit[394](objlit[393](undefined)).[op 0xbf].objlit[394](objlit[393](undefined)).objlit[437](objlit[393](undefined)).objlit[437](objlit[393](undefined)).objlit[394](objlit[393](undefined))).call21([op 0x11]; this/ctx.objlit[408](objlit[398](undefined)).call22(objlit[383](undefined); [op 0xbe], objlit[443](objlit[384](undefined)), objlit[444](objlit[386](undefined)), !([op 0xb7])).[op 0xb7]).call21([op 0x11]; this/ctx.const[424].const[431].objlit[437](objlit[393](undefined))).call21([op 0x11]; this/ctx.objlit[439](objlit[398](undefined)).undefined).call21([op 0x11]; this/ctx.const[391].objlit[394](objlit[393](undefined)).const[322]).call21([op 0x11]; this/ctx.const[424].const[431].[op 0xbe].[op 0xbe].objlit[394](objlit[393](undefined)).const[322]).call21([op 0x11]; this/ctx.const[424].objlit[441](objlit[428](undefined)).[op 0xbe].const[424].[op 0xbe]).call21([op 0x11]; this/ctx.objlit[425](objlit[398](undefined))).call21([op 0x11]; this/ctx.const[424].const[414].objlit[425](objlit[398](undefined)).objlit[455](objlit[428](undefined)).const[431].objlit[437](objlit[393](undefined)).objlit[394](objlit[393](undefined))).call21([op 0x11]; this/ctx.objlit[439](objlit[398](undefined)).undefined).call21([op 0x11]; this/ctx.const[424].objlit[458](objlit[398](undefined)).objlit[459](objlit[398](undefined)).objlit[455](objlit[428](undefined)).[op 0xb7].const[431].objlit[437](objlit[393](undefined)).objlit[415](objlit[393](undefined)).const[322]).call21([op 0x11]; this/ctx.objlit[461](objlit[398](undefined)).undefined);
   // stack@END: [op 0x5c] | const[00b20300] | const[00b40300] | const[00b60301] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x92] | const[2490379777] | const[2523934465] | const[2557489153] | const[2591043841] | const[2624598529] | const[2658153217] | const[2691707905] | const[2725262593] | const[2758817281] | const[2792371969] | const[2825926657] | const[2859481345] | const[2888841729] | const[2922396417] | const[2960145409] | const[2993700097] | const[3023060481] | const[3060809473] | const[3094364161] | const[3124756480] | const[3158327808] | const[3191882496] | const[3221242880] | const[3257942273] | const[3291497985] | const[3325052673] | const[3358607361] | const[3396356353] | const[3962591490] | const[034b70ca] | const[3428862465] | const[3962591492] | const[054e70cc] | const[3458223361] | const[3493872896] | const[3527430400] | const[3560985088] | const[3594539776] | const[3628094464] | const[3661649152] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | local-ref | undefined.setAttributeRef | const[312] | undefined.setAttributeRef | const[314] | undefined.setAttributeStyle | const[316] | undefined.setAttributeRef | const[321] | const[322] | const[323] | const[324] | const[325] | [op 0xbe] | const[326] | undefined.setAttributeRef | const[314] | undefined.setAttributeRef | const[327] | undefined.setAttributeRef | const[327] | undefined.setAttributeStyle | const[317] | undefined.setAttributeStyle | const[316] | undefined.setAttributeRef | const[314] | undefined.setAttributeRef | const[319] | undefined.setAttributeStyle | const[317] | undefined.setAttributeRef | const[314] | undefined.setAttributeStyle | const[317] | undefined.setAttributeRef | const[319] | const[332] | const[333] | undefined.setAttributeRef | const[319] | const[335] | const[333] | undefined.setAttributeRef | const[319] | const[337] | const[333] | undefined.setAttributeRef | const[319] | const[339] | const[333] | undefined.setAttributeStyle | const[317] | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local[0] | local[0] | local[0] | local[0] | [op 0x64] | [op 0xc5] | [op 0x64] | [op 0xc5]
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0xfa (语义待归纳)
-  // stack-tail: 'Normal' | [op 0xfa]
+  // --- 模块段结束（其后为模块记录元数据，非字节码） ---
+  // meta+0000: ae0301a90200fa0104e426003b04009a
+  // meta+0010: 120e817c7c7c6c26004a02260e003214
+  // meta+0020: 2b3b0032302d00081400082800082c00
+  // meta+0030: 082800081c00082400082000080c0008
+  // meta+0040: 0e0008462b000b92014500b80102c135
+  // meta+0050: 35004a022b352bc1004a022635262626
+  // meta+0060: 262bc1004a022b35212bc13535004a02
+  // meta+0070: 2b21352bc1352626352bc1352bc1212b
+  // meta+0080: 352bc135004a02004a02004a02213500
+  // meta+0090: 4a022b004a022bc13521212bc1353535
+  // meta+00a0: 004a02352bc1004a022b2bc135004a02
+  // meta+00b0: 004a0235004a022b004a02004a02004a
+  // meta+00c0: 02004a022bc1004a0200ba0102212bc1
+  // meta+00d0: 3535004a022bc1004a022b2bc135004a
+  // meta+00e0: 02352bc135352626004a02352bc13500
+  // meta+00f0: 4a022635262bc1004a022bc13535004a
+  // …(元数据共 30005B，截断显示)
 
 // ---- 字符串表 ----
 // str[0] = 'require'

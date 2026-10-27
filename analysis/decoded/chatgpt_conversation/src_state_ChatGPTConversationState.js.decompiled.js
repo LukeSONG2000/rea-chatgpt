@@ -1,4 +1,5 @@
 // 模块: chatgpt_conversation/src/state/ChatGPTConversationState | 字符串 70 | 代码 8147B | 指令 207
+  …(pad)
   locop 0xcb('d')
   locop 0xcc(local[0])
   locop 0xcd(local[0])
@@ -30,8 +31,7 @@
   EXPORTS.key#247 (seq 12) = …;  // …
   EXPORTS.key#248 (seq 13) = …;  // …
   EXPORTS.key#249 (seq 14) = pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, v06))))))))))))));  // exports
-  jcc 0xf0 +0;
-  locop 0xca(const[250])
+  locop 0xca(f0(const[250]))
   // op 0xbe (语义待归纳)
   EXPORTS.key#235 (seq 15) = [op 0xbe];  // exports
   // op 0xc7 (语义待归纳)
@@ -62,11 +62,12 @@
   EXPORTS.key#248 (seq 28) = [op 0xc3];  // exports
   // op 0xc3 (语义待归纳)
   EXPORTS.key#249 (seq 29) = [op 0xc3];  // exports
-  // stack@END: coerce(this/ctx) | 'g' | 'p' | [op 0x64] | local-ref
-  // --- 模块段结束 ---
+  // stack@INIT-END: coerce(this/ctx) | 'g' | 'p' | [op 0x64] | local-ref
+  // ===== 初始化段结束；其后为函数单元 =====
   ? = ?;
   // op 0xb7 (语义待归纳)
   // op 0x40 (语义待归纳)
+  …(pad)
   // op 0xc0 (语义待归纳)
   // op 0xc0 (语义待归纳)
   // op 0x33 (语义待归纳)
@@ -74,7 +75,9 @@
   // op 0x5c (语义待归纳)
   // op 0x07 (语义待归纳)
   // op 0xa8 (语义待归纳)
+  …(pad)
   // op 0x08 (语义待归纳)
+  …(pad)
   // op 0xff (语义待归纳)
   // stack-tail: 'MAX_CONVERSATION_TITLE_LENGTH' | const[2835359460] | const[040008de] | const[adb2b77b] | [op 0x40] | 'require' | 'module' | [op 0xa8] | const[0101004d] | [op 0x08] | v06 | const[4294964487] | [op 0xff]
 

@@ -1,4 +1,5 @@
 // 模块: chatgpt_reasoning/src/ChatGPTReasoning | 字符串 280 | 代码 19845B | 指令 924
+  …(pad)
   local[11] = ?(const[272]);
   local[12] = undefined.(const[268]);
   local[13] = const[275](push2);
@@ -12,30 +13,18 @@
   local[21] = undefined.(const[268]);
   // op 0xbe (语义待归纳)
   local[22] = [op 0xbe](push2);
-  jcc 0xf0 +0;
-  local[23] = const[283];
-  jcc 0xf0 +0;
-  local[24] = const[284];
-  jcc 0xf0 +0;
-  local[25] = const[285];
-  jcc 0xf0 +0;
-  local[26] = const[286];
-  jcc 0xf0 +0;
-  local[27] = const[287];
-  jcc 0xf0 +0;
-  local[28] = const[288];
-  jcc 0xf0 +0;
-  local[29] = const[289];
-  jcc 0xf0 +0;
-  local[30] = const[290];
-  jcc 0xf0 +0;
-  local[31] = const[291];
-  jcc 0xf0 +0;
-  local[32] = const[292];
-  jcc 0xf0 +0;
-  local[33] = const[293];
-  jcc 0xf0 +0;
-  local[34] = const[294];
+  local[23] = f0(const[283]);
+  local[24] = f0(const[284]);
+  local[25] = f0(const[285]);
+  local[26] = f0(const[286]);
+  local[27] = f0(const[287]);
+  local[28] = f0(const[288]);
+  local[29] = f0(const[289]);
+  local[30] = f0(const[290]);
+  local[31] = f0(const[291]);
+  local[32] = f0(const[292]);
+  local[33] = f0(const[293]);
+  local[34] = f0(const[294]);
   // op 0xbf (语义待归纳)
   local[35] = [op 0xbf];
   // op 0xb9 (语义待归纳)
@@ -83,7 +72,6 @@
   // op 0x11 (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
@@ -92,7 +80,6 @@
   // op 0x11 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
@@ -101,11 +88,9 @@
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
@@ -113,7 +98,6 @@
   // op 0xb7 (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0xb8 (语义待归纳)
   // op 0x11 (语义待归纳)
@@ -127,182 +111,26 @@
   // op 0x11 (语义待归纳)
   // op 0xbb (语义待归纳)
   // op 0xbb (语义待归纳)
-  local[46] = [op 0x11].call21(this/ctx.objlit[373](objlit[372](undefined)).[op 0xb7].[op 0xb7]; objlit[386](undefined).[op 0xbe].[op 0xbe].[op 0xb8]).call21([op 0x11]; this/ctx.const[367].const[369].globalThis.objlit[391](objlit[358](undefined)).[op 0xbe]).call21([op 0x11]; this/ctx.const[367].[op 0xbe].const[367].[op 0xbe]).call21([op 0x11]; this/ctx.objlit[402](objlit[401](undefined)).[op 0xbe].[op 0xbe]).call21([op 0x11]; this/ctx.objlit[405](objlit[372](undefined)).objlit[402](objlit[401](undefined)).[op 0xbb].objlit[391](objlit[358](undefined)).objlit[359](objlit[358](undefined)).[op 0xbb]);
-  // stack@END: undefined. | const[274] | undefined. | const[274] | undefined. | const[64] | undefined. | const[278] | const[279] | const[280] | undefined. | const[270] | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | [op 0x64] | [op 0xc5] | this/ctx.call21([op 0x11]; this/ctx.const[356].objlit[359](objlit[358](undefined)).objlit[359](objlit[358](undefined)).const[362]).call21([op 0x11]; this/ctx.const[356].objlit[365](objlit[358](undefined)).const[362]).call21([op 0x11]; this/ctx.const[367].const[369].objlit[359](objlit[358](undefined)).[op 0xbe].const[362]) | [op 0x11].call21(this/ctx.objlit[373](objlit[372](undefined)).[op 0xb7]; objlit[376](undefined).[op 0xbe].[op 0xbe].[op 0xb7]).call21([op 0x11]; this/ctx.const[367].[op 0xbe].const[367].[op 0xbe]).call21([op 0x11]; this/ctx.const[369].const[362]) | [op 0x11].call21(this/ctx.objlit[385](objlit[372](undefined)); objlit[386](undefined).[op 0xbe].[op 0xbe].globalThis).call21([op 0x11]; this/ctx.const[388].const[369].objlit[359](objlit[358](undefined)).[op 0xbe].const[362]).call21([op 0x11]; this/ctx.const[356].[op 0xb7].[op 0xb7].objlit[391](objlit[358](undefined)).globalThis) | [op 0x11].call21(this/ctx.objlit[394](objlit[372](undefined)); objlit[386](undefined).[op 0xbe].[op 0xbe].globalThis) | [op 0x11].call21(this/ctx.objlit[394](objlit[372](undefined)); objlit[386](undefined).[op 0xbe].[op 0xbe].globalThis).call21([op 0x11]; this/ctx.const[367].const[369].objlit[359](objlit[358](undefined)).[op 0xbe].const[362])
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x89 (语义待归纳)
-  // op 0xdc (语义待归纳)
-  // op 0x09 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x12 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // discard([op 0x1c])
-  // op 0x32 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x18 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x18 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1e (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x14 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x16 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // op 0x14 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1e (语义待归纳)
-  // op 0x2d (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // discard([op 0x2b])
-  // op 0x0a (语义待归纳)
-  // op 0xd7 (语义待归纳)
-  // op 0xa3 (语义待归纳)
-  // op 0x70 (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  // op 0x1e (语义待归纳)
-  // op 0x85 (语义待归纳)
-  jmp +81;
-  // op 0xb8 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  // op 0x1e (语义待归纳)
-  // op 0x85 (语义待归纳)
-  jmp +81;
-  // op 0xb8 (语义待归纳)
-  // op 0x3f (语义待归纳)
-  // op 0x3d (语义待归纳)
-  // op 0x0a (语义待归纳)
-  // op 0xc7 (语义待归纳)
-  // op 0x3f (语义待归纳)
-  // op 0x51 (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x7b (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x05 (语义待归纳)
-  // op 0xe4 (语义待归纳)
-  // op 0x2a (语义待归纳)
-  // op 0x0d (语义待归纳)
-  // op 0x64 (语义待归纳)
-  locop 0xcd(load[00])
-  // op 0x2b (语义待归纳)
-  // op 0xc7 (语义待归纳)
-  // op 0x34 (语义待归纳)
-  // op 0xc8 (语义待归纳)
-  // op 0xc9 (语义待归纳)
-  // op 0x55 (语义待归纳)
-  // discard([op 0x55])
-  // op 0x27 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0x67 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +8;
-  // op 0x1b (语义待归纳)
-  // discard([op 0x1b]())
-  // discard([op 0x67])
-  // op 0xb7 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  EXPORTS.key#417 (seq 0) = this/ctx.globalThis.!([op 0xb7]).objlit[412]([op 0x68]).key#413(objlit[364](objlit[414](undefined))).objlit[364](objlit[414](undefined));  // undefined
-  EXPORTS.key#418 (seq 1) = local[0];  // undefined
-  num[3422751947] = [op 0x64];
-  // op 0x92 (语义待归纳)
-  // op 0x3a (语义待归纳)
-  // op 0xfc (语义待归纳)
-  // stack-tail: [op 0x92] | const[02004a02] | [op 0x3a] | 't' | [op 0xfc]
+  local[46] = [op 0x11].call21(this/ctx.objlit[373](objlit[372](undefined)).[op 0xb7].[op 0xb7]; objlit[386](undefined).f0([op 0xbe]).[op 0xbe].[op 0xb8]).call21([op 0x11]; this/ctx.const[367].const[369].globalThis.objlit[391](objlit[358](undefined)).[op 0xbe]).call21([op 0x11]; this/ctx.const[367].[op 0xbe].const[367].[op 0xbe]).call21([op 0x11]; this/ctx.objlit[402](objlit[401](undefined)).[op 0xbe].[op 0xbe]).call21([op 0x11]; this/ctx.objlit[405](objlit[372](undefined)).objlit[402](objlit[401](undefined)).[op 0xbb].objlit[391](objlit[358](undefined)).objlit[359](objlit[358](undefined)).[op 0xbb]);
+  // stack@END: undefined. | const[274] | undefined. | const[274] | undefined. | const[64] | undefined. | const[278] | const[279] | const[280] | undefined. | const[270] | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | [op 0x64] | [op 0xc5] | this/ctx.call21([op 0x11]; this/ctx.const[356].objlit[359](objlit[358](undefined)).objlit[359](objlit[358](undefined)).const[362]).call21([op 0x11]; this/ctx.const[356].objlit[365](objlit[358](undefined)).const[362]).call21([op 0x11]; this/ctx.const[367].const[369].objlit[359](objlit[358](undefined)).[op 0xbe].const[362]) | [op 0x11].call21(this/ctx.objlit[373](objlit[372](undefined)).[op 0xb7]; objlit[376](undefined).f0([op 0xbe]).[op 0xbe].[op 0xb7]).call21([op 0x11]; this/ctx.const[367].[op 0xbe].const[367].[op 0xbe]).call21([op 0x11]; this/ctx.const[369].const[362]) | [op 0x11].call21(this/ctx.objlit[385](objlit[372](undefined)); objlit[386](undefined).f0([op 0xbe]).[op 0xbe].globalThis).call21([op 0x11]; this/ctx.const[388].const[369].objlit[359](objlit[358](undefined)).[op 0xbe].const[362]).call21([op 0x11]; this/ctx.const[356].[op 0xb7].[op 0xb7].objlit[391](objlit[358](undefined)).globalThis) | [op 0x11].call21(this/ctx.objlit[394](objlit[372](undefined)); objlit[386](undefined).f0([op 0xbe]).[op 0xbe].globalThis) | [op 0x11].call21(this/ctx.objlit[394](objlit[372](undefined)); objlit[386](undefined).f0([op 0xbe]).[op 0xbe].globalThis).call21([op 0x11]; this/ctx.const[367].const[369].objlit[359](objlit[358](undefined)).[op 0xbe].const[362])
+  // --- 模块段结束（其后为模块记录元数据，非字节码） ---
+  // meta+0000: ae0301a70200890104e4264f00dc0902
+  // meta+0010: 080821261c08212b1c1c26004a022612
+  // meta+0020: 08004a02004a021c2626004a02261208
+  // meta+0030: 08212b1c08212b1c1c26262b12083535
+  // meta+0040: 1c0835351c0835351c0835351c083535
+  // meta+0050: 1c0835351c0835351c0835351c083535
+  // meta+0060: 1c0835351c0835351c0835351c083535
+  // meta+0070: 1c0835351c0e00322400081800081800
+  // meta+0080: 081e00081400081600080e0008140008
+  // meta+0090: 0c00081e2d2b000b264508c135004a02
+  // meta+00a0: 004a02352bc135004a02352bc1353500
+  // meta+00b0: 4a0226352bc1004a0221df26212bc135
+  // meta+00c0: 2635262bc135352bc1004a02df26212b
+  // meta+00d0: c13535004a0226352bc1352121004a02
+  // meta+00e0: 212bc1004a02df26212bc1004a02df26
+  // meta+00f0: 212bc13535004a0226352bc1004a0221
+  // …(元数据共 15412B，截断显示)
 
 // ---- 字符串表 ----
 // str[0] = 'require'

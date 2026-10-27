@@ -1,9 +1,12 @@
 // 模块: chatgpt_reasoning/src/ChatGPTReasoningComponent | 字符串 66 | 代码 3754B | 指令 685
   "use strict";
+  …(pad)
   ? = ?;
   // op 0xb4 (语义待归纳)
+  …(pad)
   // op 0x08 (语义待归纳)
   locop 0xcc([op 0x08])
+  …(pad)
   // op 0x70 (语义待归纳)
   // op 0x70 (语义待归纳)
   // op 0x70 (语义待归纳)
@@ -11,6 +14,7 @@
   // op 0x70 (语义待归纳)
   // op 0x30 (语义待归纳)
   local[3] = [op 0x30];
+  …(pad)
   // op 0x40 (语义待归纳)
   // op 0xc8 (语义待归纳)
   // op 0x64 (语义待归纳)
@@ -25,42 +29,34 @@
   EXPORTS.key#232 (seq 1) = …;  // …
   EXPORTS.key#233 (seq 2) = …;  // …
   EXPORTS.key#229 (seq 3) = pair(exports, pair(exports, pair(exports, v06)));  // exports
-  jcc 0xf0 +0;
-  locop 0xca(objlit[235](const[234]))
+  locop 0xca(objlit[235](f0(const[234])))
   locop 0xcb(undefined.key#236())
   locop 0xcc(undefined.key#236())
-  jcc 0xf0 +0;
-  locop 0xcd(const[237])
-  jcc 0xf0 +0;
-  local[4] = const[238];
-  jcc 0xf0 +0;
-  local[5] = const[239];
-  jcc 0xf0 +0;
-  local[6] = const[240];
+  locop 0xcd(f0(const[237]))
+  local[4] = f0(const[238]);
+  local[5] = f0(const[239]);
+  local[6] = f0(const[240]);
   // op 0xc3 (语义待归纳)
   // op 0x11 (语义待归纳)
-  jmp +16;
+  jcc-0xec → @419   // 条件跳转 (目标=pc+1+i8)
   // discard([op 0x11])
   // op 0xc5 (语义待归纳)
   EXPORTS.key#231 (seq 4) = …;  // …
-  jcc 0xf0 +0;
-  // discard(!(pair(exports, [op 0xc5])))
+  // discard(!(f0(pair(exports, [op 0xc5]))))
   // op 0xc3 (语义待归纳)
   // op 0x11 (语义待归纳)
-  jmp +16;
+  jcc-0xec → @444   // 条件跳转 (目标=pc+1+i8)
   // discard([op 0x11])
   // op 0xc5 (语义待归纳)
   EXPORTS.key#232 (seq 5) = …;  // …
-  jcc 0xf0 +0;
-  // discard(pair(exports, [op 0xc5]))
+  // discard(f0(pair(exports, [op 0xc5])))
   // op 0xc3 (语义待归纳)
   // op 0x11 (语义待归纳)
-  jmp +16;
+  jcc-0xec → @468   // 条件跳转 (目标=pc+1+i8)
   // discard([op 0x11])
   // op 0xc5 (语义待归纳)
   EXPORTS.key#233 (seq 6) = …;  // …
-  jcc 0xf0 +0;
-  // discard(pair(exports, [op 0xc5]))
+  // discard(f0(pair(exports, [op 0xc5])))
   // op 0x64 (语义待归纳)
   // op 0x64 (语义待归纳)
   // op 0xc0 (语义待归纳)
@@ -76,184 +72,24 @@
   local[12] = [op 0x6b];
   EXPORTS.key#229 (seq 7) = undefined;  // exports
   // stack@END: 'e' | [op 0xb4] | const[0e430601] | 't' | 'key#176' | const[00b20300] | const[00b40300] | const[00b60301] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x70] | [op 0x40] | [op 0xc8] | 'a' | 'ChatGPTReasoningComponent' | const[030b70ca] | 'i' | load[00] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | local-ref | local-ref | local-ref | local-ref | local-ref | local[0] | local[0] | local[0] | [op 0x64] | [op 0xc5]
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x9c (语义待归纳)
-  // op 0x7c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1e (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1e (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x3b (语义待归纳)
-  EXPORTS.key#246 (seq 0) = …;  // …
-  // op 0x4c (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  EXPORTS.key#247 (seq 1) = …;  // …
-  // op 0x4c (语义待归纳)
-  // stack@END: 'onRender' | [op 0x3b] | const[00010001] | const[19333120] | globalThis | [op 0x4c] | [op 0x4c]
-  // --- 模块段结束 ---
-  ? = ?;
-  BIND "key#262" = num[234881024];
-  // op 0x4c (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  EXPORTS.key#249 (seq 1) = …;  // …
-  // op 0x4c (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  EXPORTS.key#250 (seq 2) = …;  // …
-  // op 0x4c (语义待归纳)
-  // stack@END: [op 0x4c] | [op 0x4c] | [op 0x4c]
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x39 (语义待归纳)
-  // discard([op 0x39])
-  BIND "key#262" = ?;
-  // op 0x4c (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  EXPORTS.key#251 (seq 1) = …;  // …
-  // op 0x4c (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  EXPORTS.key#250 (seq 2) = …;  // …
-  // op 0x4c (语义待归纳)
-  // stack@END: [op 0x4c] | [op 0x4c] | [op 0x4c]
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x39 (语义待归纳)
-  // discard([op 0x39])
-  // op 0x0d (语义待归纳)
-  // op 0x0d (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0xc9 (语义待归纳)
-  locop 0xca(objlit[253](objlit[252]([op 0xc9])))
-  locop 0xcb(objlit[254](undefined))
-  v06 = undefined;
-  jmp +5;
-  // op 0xee (语义待归纳)
-  // op 0xc9 (语义待归纳)
-  // op 0xc9 (语义待归纳)
-  locop 0xcc([op 0xee].this/ctx.objlit[255](undefined).[op 0xc9].key#245(objlit[256](undefined)).objlit[257](undefined).objlit[258](undefined).objlit[259](undefined).key#260(local[0]).[op 0xc9].key#243(objlit[137](undefined)).objlit[261](undefined))
-  // op 0x68 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // discard([op 0x68].key#262(objlit[263]([op 0x68]), [op 0x68], v06, v06))
-  // op 0x68 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // discard([op 0x68].key#264(const[265], objlit[267](objlit[266]([op 0x68]))))
-  // op 0x68 (语义待归纳)
-  // discard([op 0x68].key#268(local[0]))
-  // op 0x68 (语义待归纳)
-  // stack@END: ?.key#263 | 'ChatGPTReasoningComponent' | v06 | [op 0x0d] | num[67354125] | [op 0x0d] | const[0d08cd64] | num[91136] | [op 0x64] | this/ctx | v06 | [op 0x68].key#269()
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x6a (语义待归纳)
-  // op 0xd0 (语义待归纳)
-  // op 0x4e (语义待归纳)
-  EXPORTS.key#13580 (seq 53250) = num[1888464];  // [op 0x4e]
-  // op 0xc3 (语义待归纳)
-  // discard(num[3825738752])
-  // op 0xde (语义待归纳)
-  ? = ?;
-  // op 0xc6 (语义待归纳)
-  // op 0x4c (语义待归纳)
-  // discard(num[50886])
-  // op 0x68 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // discard([op 0x4c].key#263.key#262(objlit[272]([op 0x68]), [op 0x68], v06, v06))
-  // op 0x68 (语义待归纳)
-  // op 0xe1 (语义待归纳)
-  // discard([op 0x68].key#264(const[273], objlit[273](objlit[252]([op 0xe1]))))
-  // op 0x68 (语义待归纳)
-  // op 0xe1 (语义待归纳)
-  // discard([op 0x68].key#264(const[274], objlit[274](objlit[252]([op 0xe1]))))
-  // op 0x68 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // discard([op 0x68].key#264(const[253], [op 0x68]))
-  // op 0x68 (语义待归纳)
-  // stack@END: [op 0x68].key#269()
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0xc6 (语义待归纳)
-  // discard([op 0xc6])
-  local[0] = num[33660928].key#263;
-  jmp +71;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xde (语义待归纳)
-  [op 0x11] = objlit[247]([op 0xde]);
-  jmp +71;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jcc 0xf0 +0;
-  // op 0x2f (语义待归纳)
-  [op 0x11] = [op 0x2f];
-  // op 0x46 (语义待归纳)
-  // discard([op 0x46])
-  ? = ?.key#263;
-  jmp +71;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xde (语义待归纳)
-  [op 0x11] = objlit[249]([op 0xde]);
-  jmp +71;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xde (语义待归纳)
-  [op 0x11] = objlit[250]([op 0xde]);
-  jmp +71;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jcc 0xf0 +0;
-  // op 0x2f (语义待归纳)
-  [op 0x11] = [op 0x2f];
-  // op 0x46 (语义待归纳)
-  // discard(const[8])
-  ? = [op 0x46].key#263;
-  jmp +71;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xde (语义待归纳)
-  [op 0x11] = objlit[251]([op 0xde]);
-  jmp +71;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xde (语义待归纳)
-  [op 0x11] = objlit[250]([op 0xde]);
-  jmp +71;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jcc 0xf0 +0;
-  // op 0x2f (语义待归纳)
-  [op 0x11] = [op 0x2f];
-  // op 0x46 (语义待归纳)
-  // discard(const[8])
-  // op 0xc6 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x05 (语义待归纳)
-  // op 0xe4 (语义待归纳)
-  // op 0x0d (语义待归纳)
-  locop 0xca([op 0x0d])
-  locop 0xcb(load[03])
-  // op 0x64 (语义待归纳)
-  locop 0xcc(load[00])
-  // op 0x2b (语义待归纳)
-  // op 0xc6 (语义待归纳)
-  // op 0x34 (语义待归纳)
-  // op 0xc7 (语义待归纳)
-  // op 0xc8 (语义待归纳)
-  // op 0x55 (语义待归纳)
-  // discard([op 0x55])
-  // op 0x27 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0x67 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +8;
-  // op 0x1b (语义待归纳)
-  // discard([op 0x1b]())
-  // discard([op 0x67])
-  const[20ec010b] = [op 0x64];
-  // op 0x08 (语义待归纳)
-  // stack-tail: [op 0x46] | [op 0xc6] | [op 0x07] | const[00000400] | [op 0xe4] | const[000100e2] | const[0001009a] | const[00010010] | 'require' | [op 0x08]
+  // --- 模块段结束（其后为模块记录元数据，非字节码） ---
+  // meta+0000: ae03011a7ce426f4009c010c817c7c00
+  // meta+0010: 323200081800081e00081e2b3b450e43
+  // meta+0020: 0601000100010400002701b603000100
+  // meta+0030: d2d2b61545f60000000000000004f600
+  // meta+0040: 00004cd2d2b71545f700000001000000
+  // meta+0050: 04f70000004c29ae030b0203c1020000
+  // meta+0060: 000e430601000100010400003a01b603
+  // meta+0070: 000100d2d2b61545f800000000000000
+  // meta+0080: 04f80000004cd2d2b71545f900000001
+  // meta+0090: 00000004f90000004cd2d2b81545fa00
+  // meta+00a0: 00000200000004fa0000004c29ae030d
+  // meta+00b0: 0403003902030000000e430601000100
+  // meta+00c0: 010400003a01b603000100d2d2b61545
+  // meta+00d0: f80000000000000004f80000004cd2d2
+  // meta+00e0: b71545fb0000000100000004fb000000
+  // meta+00f0: 4cd2d2b81545fa0000000200000004fa
+  // …(元数据共 3178B，截断显示)
 
 // ---- 字符串表 ----
 // str[0] = 'require'

@@ -1,4 +1,5 @@
 // 模块: chatgpt_conversation/src/ChatGPTConversationScreen | 字符串 1268 | 代码 178981B | 指令 5319
+  …(pad)
   local[9] = ?(const[447]);
   local[10] = undefined.setPreparedResponseContent(const[447]);
   local[11] = const[452](push2);
@@ -190,102 +191,59 @@
   local[152] = const[531](push4);
   local[153] = undefined.appendResponseDelta();
   local[154] = undefined.appendResponseDelta();
-  jcc 0xf0 +0;
-  local[155] = const[532];
-  jcc 0xf0 +0;
-  local[156] = const[533];
-  jcc 0xf0 +0;
-  local[157] = const[534];
-  jcc 0xf0 +0;
-  local[158] = const[535];
-  jcc 0xf0 +0;
-  local[159] = const[536];
-  jcc 0xf0 +0;
-  local[160] = const[537];
-  jcc 0xf0 +0;
-  local[161] = const[538];
-  jcc 0xf0 +0;
-  local[162] = const[539];
-  jcc 0xf0 +0;
-  local[163] = const[540];
-  jcc 0xf0 +0;
-  local[164] = const[541];
-  jcc 0xf0 +0;
-  local[165] = const[542];
-  jcc 0xf0 +0;
-  local[166] = const[543];
-  jcc 0xf0 +0;
-  local[167] = const[544];
-  jcc 0xf0 +0;
-  local[168] = const[545];
-  jcc 0xf0 +0;
-  local[169] = const[546];
-  jcc 0xf0 +0;
-  local[170] = const[547];
-  jcc 0xf0 +0;
-  local[171] = const[548];
-  jcc 0xf0 +0;
-  local[172] = const[549];
-  jcc 0xf0 +0;
-  local[173] = const[550];
-  jcc 0xf0 +0;
-  local[174] = const[551];
-  jcc 0xf0 +0;
-  local[175] = const[552];
-  jcc 0xf0 +0;
-  local[176] = const[553];
-  jcc 0xf0 +0;
-  local[177] = const[554];
-  jcc 0xf0 +0;
-  local[178] = const[555];
-  jcc 0xf0 +0;
-  local[179] = const[556];
-  jcc 0xf0 +0;
-  local[180] = const[557];
-  jcc 0xf0 +0;
-  local[181] = const[558];
-  jcc 0xf0 +0;
-  local[182] = const[559];
-  jcc 0xf0 +0;
-  local[183] = const[560];
-  jcc 0xf0 +0;
-  local[184] = const[561];
-  jcc 0xf0 +0;
-  local[185] = const[562];
-  jcc 0xf0 +0;
-  local[186] = const[563];
-  jcc 0xf0 +0;
-  local[187] = const[564];
-  jcc 0xf0 +0;
-  local[188] = const[565];
-  jcc 0xf0 +0;
-  local[189] = const[566];
-  jcc 0xf0 +0;
-  local[190] = const[567];
-  jcc 0xf0 +0;
-  local[191] = const[568];
-  jcc 0xf0 +0;
-  local[192] = const[569];
-  jcc 0xf0 +0;
-  local[193] = const[570];
-  jcc 0xf0 +0;
-  local[194] = const[571];
-  jcc 0xf0 +0;
-  local[195] = const[572];
+  local[155] = f0(const[532]);
+  local[156] = f0(const[533]);
+  local[157] = f0(const[534]);
+  local[158] = f0(const[535]);
+  local[159] = f0(const[536]);
+  local[160] = f0(const[537]);
+  local[161] = f0(const[538]);
+  local[162] = f0(const[539]);
+  local[163] = f0(const[540]);
+  local[164] = f0(const[541]);
+  local[165] = f0(const[542]);
+  local[166] = f0(const[543]);
+  local[167] = f0(const[544]);
+  local[168] = f0(const[545]);
+  local[169] = f0(const[546]);
+  local[170] = f0(const[547]);
+  local[171] = f0(const[548]);
+  local[172] = f0(const[549]);
+  local[173] = f0(const[550]);
+  local[174] = f0(const[551]);
+  local[175] = f0(const[552]);
+  local[176] = f0(const[553]);
+  local[177] = f0(const[554]);
+  local[178] = f0(const[555]);
+  local[179] = f0(const[556]);
+  local[180] = f0(const[557]);
+  local[181] = f0(const[558]);
+  local[182] = f0(const[559]);
+  local[183] = f0(const[560]);
+  local[184] = f0(const[561]);
+  local[185] = f0(const[562]);
+  local[186] = f0(const[563]);
+  local[187] = f0(const[564]);
+  local[188] = f0(const[565]);
+  local[189] = f0(const[566]);
+  local[190] = f0(const[567]);
+  local[191] = f0(const[568]);
+  local[192] = f0(const[569]);
+  local[193] = f0(const[570]);
+  local[194] = f0(const[571]);
+  local[195] = f0(const[572]);
   // op 0xc3 (语义待归纳)
   // op 0x11 (语义待归纳)
-  jmp +5;
+  jcc-0xec → @8153   // 条件跳转 (目标=pc+1+i8)
   // discard([op 0x11])
   // op 0xc5 (语义待归纳)
-  jcc 0xf0 +0;
-  // discard(!([op 0xc5]))
+  // discard(!(f0([op 0xc5])))
   // op 0xc3 (语义待归纳)
   // op 0x11 (语义待归纳)
-  jmp +5;
+  jcc-0xec → @8167   // 条件跳转 (目标=pc+1+i8)
   // discard([op 0x11])
   // op 0xc5 (语义待归纳)
-  jcc 0xf0 +0;
-  // discard([op 0xc5])
+  // discard(f0([op 0xc5]))
   local[198] = const[573];
   // op 0xbc (语义待归纳)
   local[199] = [op 0xbc];
@@ -445,11 +403,9 @@
   // op 0x11 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0xbf (语义待归纳)
   // op 0xb8 (语义待归纳)
@@ -466,26 +422,21 @@
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0x11 (语义待归纳)
@@ -493,7 +444,6 @@
   // op 0x11 (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbf (语义待归纳)
@@ -506,17 +456,14 @@
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0xbf (语义待归纳)
   // op 0xb8 (语义待归纳)
@@ -534,14 +481,12 @@
   // op 0xb7 (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0xb8 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0xb8 (语义待归纳)
   // op 0x11 (语义待归纳)
@@ -552,14 +497,12 @@
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xb7 (语义待归纳)
   // op 0xbf (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xb7 (语义待归纳)
@@ -572,14 +515,11 @@
   // op 0xbe (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0xb8 (语义待归纳)
   // op 0xb7 (语义待归纳)
@@ -588,7 +528,6 @@
   // op 0x11 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xb7 (语义待归纳)
@@ -601,1075 +540,32 @@
   // op 0x11 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xb7 (语义待归纳)
   // op 0x11 (语义待归纳)
   // op 0xbe (语义待归纳)
-  jcc 0xf0 +0;
   // op 0xbe (语义待归纳)
   // op 0xb8 (语义待归纳)
   // op 0xb7 (语义待归纳)
-  local[222] = [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].[op 0xbe].[op 0xb8].!([op 0xb7]).const[454]);
-  // stack@END: undefined.appendResponseDelta | const[448] | undefined.appendResponseDelta | const[453] | const[454] | const[455] | [op 0xb7] | const[456] | undefined.appendResponseDelta | const[459] | [op 0xbe] | const[456] | undefined.appendResponseDelta | const[460] | undefined.appendResponseDelta | const[462] | [op 0xb7] | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[459] | [op 0xbe] | const[456] | undefined.appendResponseDelta | const[460] | undefined.appendResponseDelta | const[463] | undefined.appendResponseDelta | const[455] | undefined.appendResponseDelta | const[64] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[447] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[447] | undefined.appendResponseDelta | const[460] | undefined.setPreparedResponseContent | const[461] | undefined.appendResponseDelta | const[448] | const[474] | const[450] | undefined.appendResponseDelta | const[448] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[450] | const[478] | const[462] | [op 0xb7] | const[459] | undefined.appendResponseDelta | const[64] | undefined.appendResponseDelta | const[64] | undefined.appendResponseDelta | const[448] | const[481] | const[450] | const[482] | const[462] | [op 0xb7] | const[459] | undefined.appendResponseDelta | const[455] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[460] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[447] | undefined.appendResponseDelta | const[460] | undefined.appendResponseDelta | const[448] | const[485] | const[450] | const[486] | const[487] | const[486] | const[488] | undefined.appendResponseDelta | const[448] | const[485] | const[450] | const[486] | const[487] | const[486] | const[490] | const[491] | const[492] | undefined.appendResponseDelta | const[448] | const[493] | const[450] | const[494] | const[487] | const[495] | const[488] | undefined.appendResponseDelta | const[448] | const[493] | const[450] | const[494] | const[487] | const[495] | const[490] | const[491] | const[492] | undefined.setPreparedResponseContent | const[461] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[459] | [op 0xbe] | const[456] | undefined.appendResponseDelta | const[460] | undefined.appendResponseDelta | const[463] | undefined.appendResponseDelta | const[448] | undefined.appendResponseDelta | const[448] | const[498] | const[499] | undefined.appendResponseDelta | const[448] | const[501] | const[499] | undefined.setPreparedResponseContent | const[447] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.setPreparedResponseContent | const[461] | undefined.appendResponseDelta | const[448] | const[506] | const[487] | undefined.setPreparedResponseContent | const[458] | const[448] | const[508] | undefined.appendResponseDelta | const[448] | const[510] | const[450] | const[511] | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[463] | [op 0xb7] | const[64] | undefined.appendResponseDelta | const[448] | const[513] | const[450] | const[514] | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[463] | [op 0xb7] | const[64] | undefined.appendResponseDelta | const[448] | const[516] | const[450] | const[517] | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[463] | [op 0xb7] | const[64] | undefined.appendResponseDelta | const[448] | const[518] | const[450] | const[519] | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[463] | [op 0xb7] | const[64] | undefined.appendResponseDelta | const[521] | [op 0xb7] | const[522] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[463] | [op 0xb7] | const[455] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[455] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[460] | undefined.appendResponseDelta | const[463] | undefined.appendResponseDelta | const[64] | undefined.appendResponseDelta | const[455] | undefined.appendResponseDelta | const[487] | undefined.setPreparedResponseContent | const[447] | undefined.appendResponseDelta | const[448] | const[527] | const[450] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[64] | undefined.appendResponseDelta | const[448] | const[530] | const[450] | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local[0] | local[0] | this/ctx.const[579].const[573] | this/ctx.const[580].const[574] | this/ctx.const[581].objlit[583]([op 0xc3]).const[585].const[587] | this/ctx.const[588].objlit[589]([op 0xc3]).const[590].const[591] | this/ctx.const[592].objlit[593]([op 0xc3]).const[594].const[595] | this/ctx.const[596].objlit[597]([op 0xc3]).const[598].const[599] | this/ctx.const[600].objlit[601]([op 0xc3]).const[602].const[603] | this/ctx.const[604].objlit[605]([op 0xc3]).const[606].const[607] | this/ctx.const[608].const[609].objlit[611](objlit[610](undefined)) | this/ctx.const[613].const[614].objlit[615](objlit[610](undefined)) | this/ctx.const[616].const[617].objlit[618](objlit[610](undefined)) | this/ctx.const[619].const[620].objlit[622](objlit[621](undefined)).const[624] | this/ctx.const[625].const[626].objlit[627](objlit[621](undefined)).const[628] | this/ctx.const[629].const[630].objlit[631](objlit[621](undefined)).const[632] | [op 0x64] | [op 0xc5] | this/ctx.call21([op 0x11]; this/ctx.objlit[745](objlit[744](undefined)).const[747].const[457].const[457]).call21([op 0x11]; this/ctx.const[454].objlit[745](objlit[744](undefined)).objlit[751](objlit[744](undefined)).[op 0xb7].const[753].globalThis.[op 0xbe].objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[759](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].[op 0xb7].[op 0xb7].const[454].objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined))).call21([op 0x11]; this/ctx.const[454].const[753].objlit[765](objlit[755](undefined))).call21([op 0x11]; this/ctx.globalThis.[op 0xbf]).call21([op 0x11]; this/ctx.objlit[745](objlit[744](undefined)).const[747].[op 0xb7].[op 0xb7].globalThis.const[457]).call21([op 0x11]; this/ctx.objlit[745](objlit[744](undefined)).!([op 0xb7]).[op 0xb7].[op 0xb7].globalThis.const[457]).call21([op 0x11]; this/ctx.const[454].const[747].const[454].const[457]).call21([op 0x11]; this/ctx.const[454].const[747].objlit[774](objlit[755](undefined)).objlit[774](objlit[755](undefined)).objlit[774](objlit[755](undefined)).objlit[774](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[779](undefined).[op 0xbe].[op 0xbe].objlit[765](objlit[755](undefined)).const[454]) | [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].[op 0xbe].[op 0xbf].[op 0xb8].const[454]).call21([op 0x11]; this/ctx.const[747].objlit[790](objlit[755](undefined)).objlit[791](objlit[755](undefined)).[op 0xbf].const[457]).call21([op 0x11]; this/ctx.const[794].const[795].objlit[745](objlit[744](undefined)).[op 0xb7].[op 0xb7].globalThis.!(globalThis).const[457]).call21([op 0x11]; this/ctx.const[798].objlit[774](objlit[755](undefined)).const[457].objlit[774](objlit[755](undefined)).objlit[774](objlit[755](undefined)).objlit[774](objlit[755](undefined)).objlit[799](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[801].const[454].objlit[803](objlit[744](undefined)).objlit[805](objlit[804](undefined)).const[753].objlit[759](objlit[755](undefined)).[op 0xbf].objlit[759](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[747].[op 0xb7].[op 0xb7].objlit[809](objlit[755](undefined))) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[779](undefined).[op 0xbe].[op 0xbe]) | [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].[op 0xbe].globalThis) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].[op 0xbe].globalThis).call21([op 0x11]; this/ctx.const[454].const[753].objlit[790](objlit[755](undefined))).call21([op 0x11]; this/ctx.objlit[815](objlit[744](undefined)).objlit[816](objlit[744](undefined)).objlit[817](objlit[804](undefined)).[op 0xb7].const[747].objlit[809](objlit[755](undefined)).objlit[759](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[819](objlit[744](undefined)); objlit[779](undefined).[op 0xbe].[op 0xbe]) | [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].[op 0xbe].globalThis).call21([op 0x11]; this/ctx.objlit[745](objlit[744](undefined)).const[747].globalThis.objlit[790](objlit[755](undefined)).objlit[759](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[765](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[454].objlit[803](objlit[744](undefined)).objlit[817](objlit[804](undefined)).const[753].objlit[790](objlit[755](undefined)).[op 0xbf].objlit[759](objlit[755](undefined)).objlit[765](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)).[op 0xb7]; objlit[824](undefined).[op 0xbe].[op 0xbe]).call21([op 0x11]; this/ctx.const[454].const[753].const[826].objlit[790](objlit[755](undefined)).[op 0xbf].const[457]).call21([op 0x11]; this/ctx.const[454].objlit[803](objlit[744](undefined)).objlit[829](objlit[744](undefined)).objlit[805](objlit[804](undefined)).[op 0xb7].const[753].objlit[790](objlit[755](undefined)).[op 0xbf].[op 0xbf].objlit[765](objlit[755](undefined)).objlit[759](objlit[755](undefined)).objlit[765](objlit[755](undefined)).objlit[765](objlit[755](undefined))).call21([op 0x11]; this/ctx.const[747].[op 0xb7].[op 0xb7].objlit[809](objlit[755](undefined)).globalThis) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[824](undefined).[op 0xbe].[op 0xbe].[op 0xb7]) | [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].[op 0xbe].[op 0xb7]) | [op 0x11].call21(this/ctx.const[454].objlit[819](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].[op 0xbe].[op 0xbf].[op 0xb8].const[457]).call21([op 0x11]; this/ctx.const[836].const[454].objlit[745](objlit[744](undefined)).objlit[829](objlit[744](undefined)).objlit[837](objlit[804](undefined)).[op 0xb7].const[753].objlit[790](objlit[755](undefined)).[op 0xbf].objlit[790](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.[op 0xb7].[op 0xb7].globalThis).call21([op 0x11]; this/ctx.const[454].const[454].objlit[745](objlit[744](undefined)).objlit[829](objlit[744](undefined)).objlit[837](objlit[804](undefined)).[op 0xb7].const[753].objlit[790](objlit[755](undefined)).[op 0xbf].[op 0xbe].objlit[790](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.const[841].!(globalThis).objlit[785](objlit[744](undefined)).[op 0xb7].[op 0xb7]; objlit[786](undefined).[op 0xbe].[op 0xbe].[op 0xb8]) | [op 0x11].call21(this/ctx.const[841].!(globalThis).objlit[819](objlit[744](undefined)).[op 0xb7].[op 0xb7]; objlit[786](undefined).[op 0xbe].[op 0xbe].[op 0xb8]).call21([op 0x11]; this/ctx.const[454].objlit[745](objlit[744](undefined)).objlit[829](objlit[744](undefined)).objlit[837](objlit[804](undefined)).[op 0xb7].const[747].objlit[790](objlit[755](undefined)).[op 0xbf].objlit[790](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[753].objlit[790](objlit[755](undefined)).globalThis.const[457]).call21([op 0x11]; this/ctx.[op 0xb7].globalThis) | [op 0x11].call21(this/ctx.objlit[849](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].[op 0xbe].const[454].const[457]).call21([op 0x11]; this/ctx.const[454].objlit[851](objlit[744](undefined)).objlit[829](objlit[744](undefined)).objlit[805](objlit[804](undefined)).[op 0xb7].const[747].[op 0xbf].objlit[790](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[849](objlit[744](undefined)); objlit[779](undefined).[op 0xbe].[op 0xbe]).call21([op 0x11]; this/ctx.objlit[745](objlit[744](undefined)).[op 0xb7].[op 0xb7].const[747].objlit[759](objlit[755](undefined)).const[457].globalThis.objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[753].const[855].const[457]).call21([op 0x11]; this/ctx.const[454].const[753].objlit[790](objlit[755](undefined))).call21([op 0x11]; this/ctx.const[454].const[753].objlit[765](objlit[755](undefined))).call21([op 0x11]; this/ctx.const[454].const[859].objlit[860](objlit[804](undefined)).[op 0xbe].const[454].[op 0xbe]) | [op 0x11].call21(this/ctx.const[862]; objlit[779](undefined).[op 0xbe].const[454]) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].!([op 0xb7])) | [op 0x11].call21(this/ctx.const[841].!(globalThis).objlit[819](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].[op 0xbe].[op 0xb8].!([op 0xb7])).call21([op 0x11]; this/ctx.objlit[759](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[747].objlit[790](objlit[755](undefined)).objlit[759](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[753].const[855].objlit[765](objlit[755](undefined)).objlit[765](objlit[755](undefined)).objlit[790](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[849](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].!([op 0xb7])).call21([op 0x11]; this/ctx.!(globalThis).[op 0xb7].[op 0xb7].globalThis.!(globalThis).const[457]).call21([op 0x11]; this/ctx.const[747].objlit[765](objlit[755](undefined)).objlit[790](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[747].objlit[765](objlit[755](undefined)).objlit[790](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[753].globalThis.const[855].objlit[765](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[753].objlit[765](objlit[755](undefined))).call21([op 0x11]; this/ctx.const[454].const[753].objlit[765](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[747].objlit[765](objlit[755](undefined)).objlit[799](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[799](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[786](undefined).[op 0xbe].!([op 0xb7]).const[454])
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x9c (语义待归纳)
-  // discard('At'.[op 0x9c])
-  // op 0x12 (语义待归纳)
-  EXPORTS.key#14336 (seq 9766) = [op 0x12];  // ?
-  // op 0x35 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  locop 0xcb([op 0x35])
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  locop 0xcb([op 0x35])
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  locop 0xcb([op 0x35])
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  locop 0xcb([op 0x35])
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x27 (语义待归纳)
-  // op 0xb4 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1a (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x10 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // op 0x12 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x2c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x32 (语义待归纳)
-  // op 0x12 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1a (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x10 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x10 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x4c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x14 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x14 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1e (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x14 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x14 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x10 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x30 (语义待归纳)
-  // op 0x1e (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // op 0x2d (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x2e (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x5e (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x3c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x16 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x4e (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // op 0x2e (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x36 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x18 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x54 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // op 0x46 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // op 0x44 (语义待归纳)
-  // op 0x2c (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x30 (语义待归纳)
-  // op 0x46 (语义待归纳)
-  // discard([op 0x46])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // op 0x10 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x0a (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x0a (语义待归纳)
-  // op 0x2d (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x1a (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x18 (语义待归纳)
-  // op 0x2d (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x08 (语义待归纳)
-  // op 0x0a (语义待归纳)
-  // op 0x2d (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0xb2 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0xdf (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x35 (语义待归纳)
-  // op 0x2b (语义待归纳)
-  // discard([op 0x2b])
-  // discard([op 0x35])
-  BIND "mportant info.<chatgpt.message.editing-noticeEditin" = [op 0x4a];
-  // op 0x4c (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  EXPORTS.top (seq 1) = …;  // …
-  // op 0x4c (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  EXPORTS.LabelMedium (seq 2) = …;  // …
-  // op 0x4c (语义待归纳)
-  // op 0xb9 (语义待归纳)
-  EXPORTS.IconTertiary (seq 3) = …;  // …
-  // op 0x4c (语义待归纳)
-  // stack@END: [op 0x4c] | [op 0x4c] | [op 0x4c] | [op 0x4c]
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x39 (语义待归纳)
-  // discard([op 0x39])
-  BIND "mportant info.<chatgpt.message.editing-noticeEditin" = ?;
-  EXPORTS.getCapabilities (seq 1) = const[886];  // local-ref
-  EXPORTS.dictation (seq 2) = const[576];  // local-ref
-  EXPORTS.left (seq 3) = const[889];  // local-ref
-  EXPORTS.right (seq 4) = const[251];  // local-ref
-  EXPORTS.drawerBrandMarkLabel (seq 5) = const[892];  // local-ref
-  EXPORTS.T r a n s c r (seq 6) = const[893];  // local-ref
-  EXPORTS.historySectionHeader (seq 7) = const[895];  // local-ref
-  EXPORTS.messageScroll (seq 8) = const[896];  // local-ref
-  EXPORTS.VoiceConversationStage audioLevelSourceaudioReact (seq 9) = const[897];  // local-ref
-  EXPORTS.nEndonToggleMutemimeTypestartsWithimage/6formatChat (seq 10) = const[899];  // local-ref
-  EXPORTS.remove.Remove TextInp (seq 11) = const[901];  // local-ref
-  EXPORTS.historyItemRow (seq 12) = const[903];  // local-ref
-  EXPORTS..Choose from this deviceBrowse files.Attach a local docum (seq 13) = const[904];  // local-ref
-  EXPORTS.Choose a model and reasoning effort (seq 14) = const[906];  // local-ref
-  EXPORTS.plus (seq 15) = const[908];  // local-ref
-  EXPORTS.DialogPlacement (seq 16) = const[909];  // local-ref
-  EXPORTS.SelectionMenu (seq 17) = const[911];  // local-ref
-  EXPORTS.Closed (seq 18) = const[913];  // local-ref
-  EXPORTS.chatgpt.history.search-toggle (seq 19) = const[914];  // local-ref
-  EXPORTS.Close history (seq 20) = const[916];  // local-ref
-  EXPORTS.top (seq 21) = const[918];  // local-ref
-  EXPORTS.Search results (seq 22) = const[919];  // local-ref
-  EXPORTS.isPinned (seq 23) = const[921];  // local-ref
-  EXPORTS.historyList (seq 24) = const[633];  // local-ref
-  EXPORTS.No conversations found (seq 25) = const[923];  // local-ref
-  EXPORTS.Fetching your ChatGPT history. (seq 26) = const[925];  // local-ref
-  EXPORTS.Pill (seq 27) = const[927];  // local-ref
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x3c (语义待归纳)
-  // op 0x3c (语义待归纳)
-  // op 0x3c (语义待归纳)
-  // op 0x1c (语义待归纳)
-  // discard([op 0x1c])
-  jcc 0xf0 +0;
-  ? = ?.?.mportant info.<chatgpt.message.editing-noticeEditin.objlit[461](local-ref);
-  // op 0xc6 (语义待归纳)
-  // op 0xe4 (语义待归纳)
-  // discard([op 0xe4])
-  // op 0xc6 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x05 (语义待归纳)
-  // op 0xe4 (语义待归纳)
-  // op 0xbf (语义待归纳)
-  jmp +6;
-  // op 0xdd (语义待归纳)
-  locop 0xcc(load[03])
-  // op 0x64 (语义待归纳)
-  locop 0xcd(load[00])
-  // op 0x2b (语义待归纳)
-  // op 0xc7 (语义待归纳)
-  // op 0x34 (语义待归纳)
-  // op 0xc8 (语义待归纳)
-  // op 0xc9 (语义待归纳)
-  // op 0x55 (语义待归纳)
-  // discard([op 0x55])
-  // op 0x27 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0x67 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +8;
-  // op 0x1b (语义待归纳)
-  // discard([op 0x1b]())
-  // discard([op 0x67])
-  // op 0xb7 (语义待归纳)
-  // op 0xc2 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xc2 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0x61 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xc2 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xc2 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  EXPORTS.tRequestdilResult entityReferencesimagesreasoning<Ch (seq 0) = this/ctx.v06.!([op 0xb7]).v06.[op 0xc2].v06.v06.!([op 0xb7]).v06.push0.v06.v06.v06.v06.v06.!([op 0xb7]).!([op 0xb7]).[op 0xc2].!([op 0xb7]).objlit[579](objlit[945]([op 0x68])).objlit[622](objlit[621]([op 0x68])).push0.!([op 0xb7]).!([op 0xb7]).objlit[881]([op 0x61]).objlit[952](objlit[951]([op 0x68])).!([op 0xb7]).!(globalThis).!([op 0xb7]).[op 0xc2].!([op 0xb7]).!([op 0xb7]).[op 0xc2].objlit[615](objlit[610]([op 0x68]));  // undefined
-  // op 0xb7 (语义待归纳)
-  EXPORTS.tGPTConversationMessageRoleUserparentMessageId (seq 1) = [op 0xb7];  // undefined
-  // op 0xb7 (语义待归纳)
-  EXPORTS.Unable to load ChatGPT conversation content:  (seq 2) = [op 0xb7];  // undefined
-  // op 0xb7 (语义待归纳)
-  EXPORTS.registerDebugSettingsGroup (seq 3) = [op 0xb7];  // undefined
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  EXPORTS.Appearance (seq 4) = call21([op 0x11]; );  // undefined
-  EXPORTS.defaultValue (seq 5) = globalThis;  // undefined
-  EXPORTS.Changes the same appearance used by the in-app Settings screen. (seq 6) = globalThis;  // undefined
-  EXPORTS.theme (seq 7) = globalThis;  // undefined
-  EXPORTS.DebugSettingKind (seq 8) = globalThis;  // undefined
-  EXPORTS.Select (seq 9) = globalThis;  // undefined
-  // op 0xb7 (语义待归纳)
-  EXPORTS.kind (seq 10) = !([op 0xb7]);  // undefined
-  EXPORTS.Theme (seq 11) = push0;  // undefined
-  EXPORTS.Light (seq 12) = push0;  // undefined
-  // op 0x11 (语义待归纳)
-  EXPORTS.Dark (seq 13) = call21([op 0x11]; );  // undefined
-  EXPORTS.chatgpt.voice (seq 14) = globalThis;  // undefined
-  // op 0x11 (语义待归纳)
-  EXPORTS.Switches between live microphone/playback levels and the original authored animation (seq 15) = call21([op 0x11]; );  // undefined
-  // op 0x11 (语义待归纳)
-  EXPORTS..audio_reactive_wavefor (seq 16) = call21([op 0x11]; );  // undefined
-  EXPORTS.Toggle.Audio-reactive waveform$renameConversation ren (seq 17) = globalThis;  // undefined
-  // op 0xb7 (语义待归纳)
-  EXPORTS.me this chattoISOString*setConversationPinned.u (seq 18) = !([op 0xb7]);  // undefined
-  // op 0x11 (语义待归纳)
-  EXPORTS.date this pinned chatUnable to : Could not &. Please  (seq 19) = call21([op 0x11]; );  // undefined
-  EXPORTS.ry again.`File attachments are not supported by this host. (seq 20) = push0;  // undefined
-  EXPORTS.MAX_PICKED_FILES (seq 21) = local[0];  // undefined
-  EXPORTS.You can attach up to  (seq 22) = local[0];  // undefined
-  EXPORTS. files. (seq 23) = local[0];  // undefined
-  EXPORTS.acceptedTypes (seq 24) = local[0];  // undefined
-  EXPORTS.MAX_PICKED_FILE_BYTES (seq 25) = local[0];  // undefined
-  EXPORTS.maximumFileBytes (seq 26) = local[0];  // undefined
-  EXPORTS.maximumFiles (seq 27) = local[0];  // undefined
-  EXPORTS.MAX_PICKED_TOTAL_BYTES (seq 28) = local[0];  // undefined
-  EXPORTS.reduce (seq 29) = local[0];  // undefined
-  EXPORTS.maximumTotalBytes (seq 30) = local[0];  // undefined
-  EXPORTS.pickFiles (seq 31) = local[0];  // undefined
-  EXPORTS.onFiles (seq 32) = local[0];  // undefined
-  EXPORTS.onFailure (seq 33) = local[0];  // undefined
-  EXPORTS.mergePickedFiles (seq 34) = local[0];  // undefined
-  EXPORTS.Could not select conversation attachments:  (seq 35) = local[0];  // undefined
-  EXPORTS.registerBackButtonObserver (seq 36) = local[0];  // undefined
-  EXPORTS.Connecting (seq 37) = local[0];  // undefined
-  EXPORTS.start (seq 38) = local[0];  // undefined
-  EXPORTS.onAudioLevel (seq 39) = local[0];  // undefined
-  EXPORTS.onAssistantTranscriptComplete (seq 40) = local[0];  // undefined
-  EXPORTS.onAssistantTranscriptDelta (seq 41) = local[0];  // undefined
-  EXPORTS.onEnded (seq 42) = local[0];  // undefined
-  EXPORTS.onError (seq 43) = local[0];  // undefined
-  EXPORTS.onStatusChange (seq 44) = local[0];  // undefined
-  EXPORTS.onUserTranscript (seq 45) = local[0];  // undefined
-  EXPORTS.onUserTranscriptDelta (seq 46) = local[0];  // undefined
-  EXPORTS.Speaking (seq 47) = local[0];  // undefined
-  EXPORTS.activeVoiceAssistantMessageId (seq 48) = local[0];  // undefined
-  EXPORTS.publish (seq 49) = local[0];  // undefined
-  EXPORTS.Streaming (seq 50) = local[0];  // undefined
-  EXPORTS.deriveConversationTitle (seq 51) = local[0];  // undefined
-  EXPORTS.activeVoiceAssistantConversationId (seq 52) = local[0];  // undefined
-  EXPORTS.appendMessageContent (seq 53) = local[0];  // undefined
-  EXPORTS.completeMessage (seq 54) = local[0];  // undefined
-  EXPORTS.Realtime voice failed:  (seq 55) = local[0];  // undefined
-  EXPORTS.isAssistant (seq 56) = local[0];  // undefined
-  EXPORTS.Device (seq 57) = local[0];  // undefined
-  EXPORTS.copyToClipBoard (seq 58) = local[0];  // undefined
-  EXPORTS.setTimeout (seq 59) = local[0];  // undefined
-  EXPORTS.onMessageFeedback (seq 60) = local[0];  // undefined
-  EXPORTS.rating (seq 61) = local[0];  // undefined
-  EXPORTS.feedback (seq 62) = local[0];  // undefined
-  EXPORTS.streamConversationId (seq 63) = local[0];  // undefined
-  EXPORTS.streamMessageId (seq 64) = local[0];  // undefined
-  EXPORTS.preparedMarkdownBlocks (seq 65) = local[0];  // undefined
-  EXPORTS.delete this chat (seq 66) = local[0];  // undefined
-  EXPORTS.Please analyze the attached files. (seq 67) = local[0];  // undefined
-  EXPORTS.attachments (seq 68) = local[0];  // undefined
-  EXPORTS.findIndex (seq 69) = local[0];  // undefined
-  EXPORTS.slice (seq 70) = local[0];  // undefined
-  EXPORTS.Conversation not found (seq 71) = local[0];  // undefined
-  EXPORTS.effort (seq 72) = local[0];  // undefined
-  const[0d0c02cb] = [op 0x64];
-  // op 0xb7 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0xc6 (语义待归纳)
-  // op 0x8a (语义待归纳)
-  // op 0xad (语义待归纳)
-  // op 0xd5 (语义待归纳)
-  // op 0xf3 (语义待归纳)
-  // op 0x12 (语义待归纳)
-  // op 0x10 (语义待归纳)
-  // discard([op 0x10])
-  // op 0x10 (语义待归纳)
-  // discard([op 0x10])
-  // op 0x16 (语义待归纳)
-  // discard([op 0x16])
-  // op 0x14 (语义待归纳)
-  // discard([op 0x14])
-  // op 0x20 (语义待归纳)
-  // discard([op 0x20])
-  // op 0x0a (语义待归纳)
-  // discard([op 0x0a])
-  // op 0x10 (语义待归纳)
-  // discard([op 0x10])
-  // op 0x14 (语义待归纳)
-  // discard([op 0x14])
-  // op 0x1c (语义待归纳)
-  // discard([op 0x1c])
-  // op 0x18 (语义待归纳)
-  // discard([op 0x18])
-  // discard(?)
-  // discard(?)
-  // op 0x3a (语义待归纳)
-  // discard([op 0x3a])
-  // op 0x10 (语义待归纳)
-  // discard([op 0x10])
-  // discard(?)
-  // discard(?)
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // discard([op 0x4a])
-  // discard(load[00])
-  // op 0x2a (语义待归纳)
-  // discard([op 0x2a])
-  // op 0x0a (语义待归纳)
-  // discard([op 0x0a])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // discard(load[00])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x2e (语义待归纳)
-  // discard([op 0x2e])
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // op 0x1a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // discard([op 0x4a])
-  // op 0x0a (语义待归纳)
-  // discard([op 0x0a])
-  // op 0x0a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // discard([op 0x4a])
-  // discard(?)
-  // discard(?)
-  // op 0x4a (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x4b (语义待归纳)
-  // discard([op 0x4b])
-  // discard(?)
-  // discard(?)
-  // op 0x08 (语义待归纳)
-  // discard([op 0x08])
-  // discard(?)
-  // discard(?)
-  // op 0x0a (语义待归纳)
-  // op 0x80 (语义待归纳)
-  // discard([op 0x80])
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x05 (语义待归纳)
-  // op 0xba (语义待归纳)
-  // op 0x09 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  [op 0x07] = coerce(objlit[1036]([op 0x68]));
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc6 (语义待归纳)
-  v06 = [op 0xc6];
-  jmp +4;
-  jmp +35;
-  // op 0xc6 (语义待归纳)
-  locop 0xcc(objlit[1037]([op 0xc6]))
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xcf (语义待归纳)
-  [op 0x07] = [op 0xcf];
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc7 (语义待归纳)
-  v06 = [op 0xc7];
-  jmp +4;
-  jmp +35;
-  // op 0xc7 (语义待归纳)
-  locop 0xcd(objlit[1038]([op 0xc7]))
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // discard([op 0x68].Send(this/ctx.!([op 0xb7]).!([op 0xb7]).!([op 0xb7])))
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +7;
-  // discard([op 0x11])
-  // op 0x68 (语义待归纳)
-  jmp +87;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +48;
-  // discard([op 0x11])
-  // stack@END: [op 0xc2] | [op 0x07] | const[00000400] | [op 0x05] | const[952] | [op 0xba] | 'module' | 'require' | 'e' | [op 0x09] | globalThis | 'l' | v06 | [op 0x6c] | [op 0x6c] | undefined.MAX_PICKED_FILES(undefined, const[1040], objlit[1041]([op 0x68])) | pool[1043].onTextDelta(const[1045])
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0xac (语义待归纳)
-  // op 0x9c (语义待归纳)
-  // discard([op 0x9c])
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0xba (语义待归纳)
-  // op 0x09 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  [op 0x07] = coerce(objlit[1036]([op 0x68]));
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc6 (语义待归纳)
-  v06 = [op 0xc6];
-  jmp +4;
-  jmp +35;
-  // op 0xc6 (语义待归纳)
-  locop 0xcc(objlit[1037]([op 0xc6]))
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xcf (语义待归纳)
-  [op 0x07] = [op 0xcf];
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc7 (语义待归纳)
-  v06 = [op 0xc7];
-  jmp +4;
-  jmp +35;
-  // op 0xc7 (语义待归纳)
-  locop 0xcd(objlit[1038]([op 0xc7]))
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // discard([op 0x68].Send(this/ctx.!([op 0xb7]).!([op 0xb7]).!([op 0xb7])))
-  // op 0x68 (语义待归纳)
-  jmp +87;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +48;
-  // discard([op 0x11])
-  // stack@END: [op 0xac] | const[02003902] | push9766 | [op 0xc2] | [op 0x07] | const[00000400] | const[61538306] | const[952] | [op 0xba] | 'module' | 'require' | 'e' | [op 0x09] | globalThis | 'l' | v06 | [op 0x6c] | [op 0x6c] | undefined.You can attach up to (undefined, objlit[1041]([op 0x68])) | pool[1043].onTextDelta(const[1046])
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0xac (语义待归纳)
-  // op 0xaa (语义待归纳)
-  // discard(const[02000000])
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  // op 0x09 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  [op 0x07] = coerce(objlit[1036]([op 0x68]));
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc6 (语义待归纳)
-  v06 = [op 0xc6];
-  jmp +4;
-  jmp +35;
-  // op 0xc6 (语义待归纳)
-  locop 0xcc(objlit[1037]([op 0xc6]))
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xcf (语义待归纳)
-  [op 0x07] = [op 0xcf];
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc7 (语义待归纳)
-  v06 = [op 0xc7];
-  jmp +4;
-  jmp +35;
-  // op 0xc7 (语义待归纳)
-  locop 0xcd(objlit[1038]([op 0xc7]))
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // discard([op 0x68].Send(this/ctx.!([op 0xb7]).!([op 0xb7]).!([op 0xb7])))
-  // op 0x68 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  jmp +87;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +48;
-  // discard([op 0x11])
-  // stack@END: [op 0xac] | [op 0xaa] | [op 0xc2] | [op 0x07] | const[00000400] | v06 | num[67370496] | [op 0xb8] | 'require' | 'module' | 'require' | 'e' | [op 0x09] | globalThis | 'l' | v06 | [op 0x6c] | [op 0x6c] | undefined. files.(undefined, objlit[1041]([op 0x68]), this/ctx.objlit[988]([op 0x68]).objlit[989]([op 0x68])) | pool[1043].onTextDelta(const[1048])
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0xac (语义待归纳)
-  // op 0x50 (语义待归纳)
-  // op 0x5b (语义待归纳)
-  // discard([op 0x5b])
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  // op 0x09 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  [op 0x07] = coerce(objlit[1036]([op 0x68]));
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc6 (语义待归纳)
-  v06 = [op 0xc6];
-  jmp +4;
-  jmp +35;
-  // op 0xc6 (语义待归纳)
-  locop 0xcc(objlit[1037]([op 0xc6]))
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xcf (语义待归纳)
-  [op 0x07] = [op 0xcf];
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc7 (语义待归纳)
-  v06 = [op 0xc7];
-  jmp +4;
-  jmp +35;
-  // op 0xc7 (语义待归纳)
-  locop 0xcd(objlit[1038]([op 0xc7]))
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0xac (语义待归纳)
-  jmp +4;
-  jmp +37;
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // discard([op 0x68].Send(this/ctx.!([op 0xb7]).!([op 0xb7]).!([op 0xb7])))
-  // op 0x68 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  jmp +87;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +48;
-  // discard([op 0x11])
-  // stack@END: [op 0xac] | const[02003902] | [op 0x50] | [op 0xc2] | [op 0x07] | const[00000400] | v06 | num[67403776] | [op 0xb8] | 'require' | 'module' | 'require' | 'e' | [op 0x09] | globalThis | 'l' | v06 | [op 0x6c] | v06 | [op 0xac] | [op 0x6c] | undefined.acceptedTypes(undefined, objlit[1041]([op 0x68]), this/ctx.objlit[988]([op 0x68])) | pool[1043].onTextDelta(const[1049])
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0xac (语义待归纳)
-  // op 0x50 (语义待归纳)
-  // discard(num[0])
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  // op 0x09 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  locop 0xcc(objlit[936](objlit[962]([op 0x68])).setMessageReasoning(local[0]))
-  // op 0xaf (语义待归纳)
-  jmp +78;
-  // op 0x68 (语义待归纳)
-  // discard([op 0x68].voiceAudioLevelSource(objlit[1051](undefined)))
-  // stack@END: [op 0xac] | const[02006402] | [op 0x50] | [op 0xc2] | [op 0x07] | const[00010501] | v06 | 'bt' | [op 0xb8] | 'module' | 'require' | 'module' | 'require' | 'e' | 't' | [op 0x09] | globalThis | 'l' | const[0c640400] | [op 0x64] | [op 0x64] | [op 0xaf]
-  // --- 模块段结束 ---
-  // op 0x68 (语义待归纳)
-  v06 = objlit[1052]([op 0x68]);
-  jmp +89;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +48;
-  // discard([op 0x11])
-  // discard(pool[1043].onTextDelta(const[1053]))
-  // --- 模块段结束 ---
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xaf (语义待归纳)
-  jmp +9;
-  // op 0xc6 (语义待归纳)
-  // op 0xaf (语义待归纳)
-  jmp +4;
-  // op 0xc6 (语义待归纳)
-  jmp +75;
-  // op 0x68 (语义待归纳)
-  locop 0xcd(objlit[975]([op 0x68]).setMessageReasoning(local[0]))
-  // op 0x68 (语义待归纳)
-  // op 0x94 (语义待归纳)
-  // op 0x18 (语义待归纳)
-  EXPORTS.tGPTConversationMessageRoleUserparentMessageId (seq 0) = [op 0x18];  // [op 0xaf]
-  // op 0x68 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0xac (语义待归纳)
-  jmp +4;
-  jmp +37;
-  // op 0xcf (语义待归纳)
-  // op 0xaf (语义待归纳)
-  jmp +9;
-  // op 0xc7 (语义待归纳)
-  // op 0xaf (语义待归纳)
-  jmp +4;
-  // op 0xc7 (语义待归纳)
-  jmp +6;
-  // op 0x68 (语义待归纳)
-  // op 0x94 (语义待归纳)
-  // op 0x18 (语义待归纳)
-  EXPORTS.registerDebugSettingsGroup (seq 1) = [op 0x18];  // [op 0xaf]
-  local[4] = [op 0x07].[op 0xac];
-  // op 0x68 (语义待归纳)
-  // discard(objlit[979]([op 0x68]).$e(local-ref))
-  // op 0x68 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0x55 (语义待归纳)
-  // discard([op 0x55])
-  // discard([op 0x68].Send(this/ctx.undefined))
-  // op 0x68 (语义待归纳)
-  // stack@END: ?.[op 0xaf].push0.objlit[579](objlit[945]([op 0x68])).local-ref | [op 0x68].voiceAudioLevelSource(objlit[1051](undefined))
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x6c (语义待归纳)
-  // op 0x80 (语义待归纳)
-  // op 0x4a (语义待归纳)
-  // op 0x34 (语义待归纳)
-  // op 0x53 (语义待归纳)
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x1f (语义待归纳)
-  // op 0xde (语义待归纳)
-  const[0] = [op 0xde];
-  [op 0x07] = const[00010001];
-  // discard('module')
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x1b (语义待归纳)
-  // op 0xde (语义待归纳)
-  const[0] = [op 0xde];
-  num[19202049] = globalThis;
-  // discard('module')
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x1b (语义待归纳)
-  // op 0xde (语义待归纳)
-  const[0] = [op 0xde];
-  num[19202049] = globalThis;
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x10 (语义待归纳)
-  // op 0x09 (语义待归纳)
-  // op 0xb4 (语义待归纳)
-  // discard(const[0c680000].onFiles())
-  // op 0x68 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // stack@END: [op 0x80] | [op 0x4a] | [op 0x53] | num[235032320] | [op 0xc2] | [op 0xc2] | [op 0x07] | const[00010001] | [op 0xc2] | [op 0x07] | const[00010001] | 'module' | num[234881024] | [op 0xc2] | [op 0x07] | [op 0x10] | [op 0x09] | [op 0xb4] | v06 | [op 0x68].Send(this/ctx.local-ref.objlit[579](objlit[945]([op 0x68])))
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0x4d (语义待归纳)
-  // op 0x12 (语义待归纳)
-  // discard([op 0x12])
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0xba (语义待归纳)
-  // op 0x09 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  [op 0x07] = coerce(objlit[1036]([op 0x68]));
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc6 (语义待归纳)
-  v06 = [op 0xc6];
-  jmp +4;
-  jmp +35;
-  // op 0xc6 (语义待归纳)
-  locop 0xcc(objlit[1037]([op 0xc6]))
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xcf (语义待归纳)
-  [op 0x07] = [op 0xcf];
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc7 (语义待归纳)
-  v06 = [op 0xc7];
-  jmp +4;
-  jmp +35;
-  // op 0xc7 (语义待归纳)
-  locop 0xcd(objlit[1038]([op 0xc7]))
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0xac (语义待归纳)
-  jmp +4;
-  jmp +37;
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // discard([op 0x68].Send(this/ctx.!([op 0xb7]).!([op 0xb7]).!([op 0xb7])))
-  // op 0x68 (语义待归纳)
-  jmp +87;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +48;
-  // discard([op 0x11])
-  // stack@END: [op 0xc2] | [op 0x07] | const[00000400] | const[64356354] | const[952] | [op 0xba] | 'module' | 'require' | 'e' | [op 0x09] | globalThis | 'l' | v06 | [op 0x6c] | v06 | [op 0xac] | [op 0x6c] | undefined.maximumFiles(undefined, objlit[1041]([op 0x68])) | pool[1043].onTextDelta(const[1058])
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0xac (语义待归纳)
-  // op 0xaa (语义待归纳)
-  // discard(const[02000000])
-  // op 0xc2 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x05 (语义待归纳)
-  // op 0x09 (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  // op 0x09 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  [op 0x07] = coerce(objlit[1036]([op 0x68]));
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc6 (语义待归纳)
-  v06 = [op 0xc6];
-  jmp +4;
-  jmp +35;
-  // op 0xc6 (语义待归纳)
-  locop 0xcd(objlit[1037]([op 0xc6]))
-  // op 0x07 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  // op 0xcf (语义待归纳)
-  [op 0x07] = [op 0xcf];
-  // op 0x11 (语义待归纳)
-  jmp +5;
-  // discard([op 0x11])
-  // op 0xc7 (语义待归纳)
-  v06 = [op 0xc7];
-  jmp +4;
-  jmp +35;
-  // op 0xc7 (语义待归纳)
-  local[4] = objlit[1038]([op 0xc7]);
-  // op 0x68 (语义待归纳)
-  local[5] = objlit[680]([op 0x68]);
-  v06 = undefined;
-  // op 0x11 (语义待归纳)
-  // op 0x6d (语义待归纳)
-  // discard([op 0x6d])
-  // op 0x07 (语义待归纳)
-  // op 0xac (语义待归纳)
-  jmp +4;
-  jmp +37;
-  v06 = objlit[991](undefined);
-  // op 0x11 (语义待归纳)
-  jmp +127;
-  // discard([op 0x11])
-  // op 0x07 (语义待归纳)
-  // op 0xac (语义待归纳)
-  jmp +4;
-  jmp +37;
-  v06 = objlit[1055](undefined);
-  // op 0x11 (语义待归纳)
-  jmp +75;
-  // discard([op 0x11])
-  // op 0xd3 (语义待归纳)
-  // op 0xea (语义待归纳)
-  globalThis = [op 0xea];
-  jmp +2;
-  // stack@END: [op 0xac] | [op 0xaa] | [op 0xc2] | [op 0x07] | const[00020702] | [op 0x05] | [op 0x09] | [op 0xb8] | 'module' | 'module' | 'require' | 'module' | 'exports' | 'require' | 't' | 'o' | 'i' | [op 0x09] | globalThis | 'l' | [op 0x64] | [op 0x64] | v06 | v06
-  // --- 模块段结束 ---
-  // op 0x07 (语义待归纳)
-  // op 0xd0 (语义待归纳)
-  // op 0xaf (语义待归纳)
-  jmp +9;
-  // op 0xc8 (语义待归纳)
-  // op 0xaf (语义待归纳)
-  jmp +4;
-  // op 0xc8 (语义待归纳)
-  jmp +115;
-  // op 0x68 (语义待归纳)
-  jmp +39;
-  jmp +2;
-  local[6] = v06;
-  // op 0xaf (语义待归纳)
-  // op 0x6c (语义待归纳)
-  // op 0xd3 (语义待归纳)
-  // op 0x68 (语义待归纳)
-  jmp +87;
-  // op 0x68 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  jmp +48;
-  // discard([op 0x11])
-  // stack@END: [op 0xaf] | [op 0xaf] | [op 0xc8] | [op 0x68].handleWelcomeViewportLayout(objlit[1051](local-ref)) | objlit[1060](undefined) | [op 0x6c] | undefined.MAX_PICKED_TOTAL_BYTES(undefined, this/ctx.objlit[1055](undefined).[op 0xd3].undefined, objlit[1041]([op 0x68])) | pool[1043].onTextDelta(const[1064])
-  // --- 模块段结束 ---
-  ? = ?;
-  // op 0xd3 (语义待归纳)
-  // op 0xfd (语义待归纳)
-  // stack-tail: 'module' | [op 0xd3] | const[0200c001] | num[33661696] | [op 0xfd]
+  local[222] = [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).[op 0xbe].[op 0xb8].!([op 0xb7]).const[454]);
+  // stack@END: undefined.appendResponseDelta | const[448] | undefined.appendResponseDelta | const[453] | const[454] | const[455] | [op 0xb7] | const[456] | undefined.appendResponseDelta | const[459] | [op 0xbe] | const[456] | undefined.appendResponseDelta | const[460] | undefined.appendResponseDelta | const[462] | [op 0xb7] | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[459] | [op 0xbe] | const[456] | undefined.appendResponseDelta | const[460] | undefined.appendResponseDelta | const[463] | undefined.appendResponseDelta | const[455] | undefined.appendResponseDelta | const[64] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[447] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[447] | undefined.appendResponseDelta | const[460] | undefined.setPreparedResponseContent | const[461] | undefined.appendResponseDelta | const[448] | const[474] | const[450] | undefined.appendResponseDelta | const[448] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[450] | const[478] | const[462] | [op 0xb7] | const[459] | undefined.appendResponseDelta | const[64] | undefined.appendResponseDelta | const[64] | undefined.appendResponseDelta | const[448] | const[481] | const[450] | const[482] | const[462] | [op 0xb7] | const[459] | undefined.appendResponseDelta | const[455] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[460] | undefined.setPreparedResponseContent | const[461] | undefined.setPreparedResponseContent | const[447] | undefined.appendResponseDelta | const[460] | undefined.appendResponseDelta | const[448] | const[485] | const[450] | const[486] | const[487] | const[486] | const[488] | undefined.appendResponseDelta | const[448] | const[485] | const[450] | const[486] | const[487] | const[486] | const[490] | const[491] | const[492] | undefined.appendResponseDelta | const[448] | const[493] | const[450] | const[494] | const[487] | const[495] | const[488] | undefined.appendResponseDelta | const[448] | const[493] | const[450] | const[494] | const[487] | const[495] | const[490] | const[491] | const[492] | undefined.setPreparedResponseContent | const[461] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[459] | [op 0xbe] | const[456] | undefined.appendResponseDelta | const[460] | undefined.appendResponseDelta | const[463] | undefined.appendResponseDelta | const[448] | undefined.appendResponseDelta | const[448] | const[498] | const[499] | undefined.appendResponseDelta | const[448] | const[501] | const[499] | undefined.setPreparedResponseContent | const[447] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.setPreparedResponseContent | const[461] | undefined.appendResponseDelta | const[448] | const[506] | const[487] | undefined.setPreparedResponseContent | const[458] | const[448] | const[508] | undefined.appendResponseDelta | const[448] | const[510] | const[450] | const[511] | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[463] | [op 0xb7] | const[64] | undefined.appendResponseDelta | const[448] | const[513] | const[450] | const[514] | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[463] | [op 0xb7] | const[64] | undefined.appendResponseDelta | const[448] | const[516] | const[450] | const[517] | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[463] | [op 0xb7] | const[64] | undefined.appendResponseDelta | const[448] | const[518] | const[450] | const[519] | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[463] | [op 0xb7] | const[64] | undefined.appendResponseDelta | const[521] | [op 0xb7] | const[522] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[463] | [op 0xb7] | const[455] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[455] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[456] | undefined.appendResponseDelta | const[460] | undefined.appendResponseDelta | const[463] | undefined.appendResponseDelta | const[64] | undefined.appendResponseDelta | const[455] | undefined.appendResponseDelta | const[487] | undefined.setPreparedResponseContent | const[447] | undefined.appendResponseDelta | const[448] | const[527] | const[450] | undefined.appendResponseDelta | const[460] | [op 0xbe] | const[74] | undefined.appendResponseDelta | const[64] | undefined.appendResponseDelta | const[448] | const[530] | const[450] | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local[0] | local[0] | this/ctx.const[579].const[573] | this/ctx.const[580].const[574] | this/ctx.const[581].objlit[583]([op 0xc3]).const[585].const[587] | this/ctx.const[588].objlit[589]([op 0xc3]).const[590].const[591] | this/ctx.const[592].objlit[593]([op 0xc3]).const[594].const[595] | this/ctx.const[596].objlit[597]([op 0xc3]).const[598].const[599] | this/ctx.const[600].objlit[601]([op 0xc3]).const[602].const[603] | this/ctx.const[604].objlit[605]([op 0xc3]).const[606].const[607] | this/ctx.const[608].const[609].objlit[611](objlit[610](undefined)) | this/ctx.const[613].const[614].objlit[615](objlit[610](undefined)) | this/ctx.const[616].const[617].objlit[618](objlit[610](undefined)) | this/ctx.const[619].const[620].objlit[622](objlit[621](undefined)).const[624] | this/ctx.const[625].const[626].objlit[627](objlit[621](undefined)).const[628] | this/ctx.const[629].const[630].objlit[631](objlit[621](undefined)).const[632] | [op 0x64] | [op 0xc5] | this/ctx.call21([op 0x11]; this/ctx.objlit[745](objlit[744](undefined)).const[747].const[457].const[457]).call21([op 0x11]; this/ctx.const[454].objlit[745](objlit[744](undefined)).objlit[751](objlit[744](undefined)).[op 0xb7].const[753].globalThis.[op 0xbe].objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[759](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].[op 0xb7].[op 0xb7].const[454].objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined))).call21([op 0x11]; this/ctx.const[454].const[753].objlit[765](objlit[755](undefined))).call21([op 0x11]; this/ctx.globalThis.[op 0xbf]).call21([op 0x11]; this/ctx.objlit[745](objlit[744](undefined)).const[747].[op 0xb7].[op 0xb7].globalThis.const[457]).call21([op 0x11]; this/ctx.objlit[745](objlit[744](undefined)).!([op 0xb7]).[op 0xb7].[op 0xb7].globalThis.const[457]).call21([op 0x11]; this/ctx.const[454].const[747].const[454].const[457]).call21([op 0x11]; this/ctx.const[454].const[747].objlit[774](objlit[755](undefined)).objlit[774](objlit[755](undefined)).objlit[774](objlit[755](undefined)).objlit[774](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[779](undefined).f0([op 0xbe]).[op 0xbe].objlit[765](objlit[755](undefined)).const[454]) | [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).[op 0xbe].[op 0xbf].[op 0xb8].const[454]).call21([op 0x11]; this/ctx.const[747].objlit[790](objlit[755](undefined)).objlit[791](objlit[755](undefined)).[op 0xbf].const[457]).call21([op 0x11]; this/ctx.const[794].const[795].objlit[745](objlit[744](undefined)).[op 0xb7].[op 0xb7].globalThis.!(globalThis).const[457]).call21([op 0x11]; this/ctx.const[798].objlit[774](objlit[755](undefined)).const[457].objlit[774](objlit[755](undefined)).objlit[774](objlit[755](undefined)).objlit[774](objlit[755](undefined)).objlit[799](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[801].const[454].objlit[803](objlit[744](undefined)).objlit[805](objlit[804](undefined)).const[753].objlit[759](objlit[755](undefined)).[op 0xbf].objlit[759](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[747].[op 0xb7].[op 0xb7].objlit[809](objlit[755](undefined))) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[779](undefined).f0([op 0xbe]).[op 0xbe]) | [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).[op 0xbe].globalThis) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).[op 0xbe].globalThis).call21([op 0x11]; this/ctx.const[454].const[753].objlit[790](objlit[755](undefined))).call21([op 0x11]; this/ctx.objlit[815](objlit[744](undefined)).objlit[816](objlit[744](undefined)).objlit[817](objlit[804](undefined)).[op 0xb7].const[747].objlit[809](objlit[755](undefined)).objlit[759](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[819](objlit[744](undefined)); objlit[779](undefined).f0([op 0xbe]).[op 0xbe]) | [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).[op 0xbe].globalThis).call21([op 0x11]; this/ctx.objlit[745](objlit[744](undefined)).const[747].globalThis.objlit[790](objlit[755](undefined)).objlit[759](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[765](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[454].objlit[803](objlit[744](undefined)).objlit[817](objlit[804](undefined)).const[753].objlit[790](objlit[755](undefined)).[op 0xbf].objlit[759](objlit[755](undefined)).objlit[765](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)).[op 0xb7]; objlit[824](undefined).f0([op 0xbe]).[op 0xbe]).call21([op 0x11]; this/ctx.const[454].const[753].const[826].objlit[790](objlit[755](undefined)).[op 0xbf].const[457]).call21([op 0x11]; this/ctx.const[454].objlit[803](objlit[744](undefined)).objlit[829](objlit[744](undefined)).objlit[805](objlit[804](undefined)).[op 0xb7].const[753].objlit[790](objlit[755](undefined)).[op 0xbf].[op 0xbf].objlit[765](objlit[755](undefined)).objlit[759](objlit[755](undefined)).objlit[765](objlit[755](undefined)).objlit[765](objlit[755](undefined))).call21([op 0x11]; this/ctx.const[747].[op 0xb7].[op 0xb7].objlit[809](objlit[755](undefined)).globalThis) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[824](undefined).f0([op 0xbe]).[op 0xbe].[op 0xb7]) | [op 0x11].call21(this/ctx.objlit[785](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).[op 0xbe].[op 0xb7]) | [op 0x11].call21(this/ctx.const[454].objlit[819](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).[op 0xbe].[op 0xbf].[op 0xb8].const[457]).call21([op 0x11]; this/ctx.const[836].const[454].objlit[745](objlit[744](undefined)).objlit[829](objlit[744](undefined)).objlit[837](objlit[804](undefined)).[op 0xb7].const[753].objlit[790](objlit[755](undefined)).[op 0xbf].objlit[790](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.[op 0xb7].[op 0xb7].globalThis).call21([op 0x11]; this/ctx.const[454].const[454].objlit[745](objlit[744](undefined)).objlit[829](objlit[744](undefined)).objlit[837](objlit[804](undefined)).[op 0xb7].const[753].objlit[790](objlit[755](undefined)).[op 0xbf].[op 0xbe].objlit[790](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.const[841].!(globalThis).objlit[785](objlit[744](undefined)).[op 0xb7].[op 0xb7]; objlit[786](undefined).f0([op 0xbe]).[op 0xbe].[op 0xb8]) | [op 0x11].call21(this/ctx.const[841].!(globalThis).objlit[819](objlit[744](undefined)).[op 0xb7].[op 0xb7]; objlit[786](undefined).f0([op 0xbe]).[op 0xbe].[op 0xb8]).call21([op 0x11]; this/ctx.const[454].objlit[745](objlit[744](undefined)).objlit[829](objlit[744](undefined)).objlit[837](objlit[804](undefined)).[op 0xb7].const[747].objlit[790](objlit[755](undefined)).[op 0xbf].objlit[790](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[753].objlit[790](objlit[755](undefined)).globalThis.const[457]).call21([op 0x11]; this/ctx.[op 0xb7].globalThis) | [op 0x11].call21(this/ctx.objlit[849](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).[op 0xbe].const[454].const[457]).call21([op 0x11]; this/ctx.const[454].objlit[851](objlit[744](undefined)).objlit[829](objlit[744](undefined)).objlit[805](objlit[804](undefined)).[op 0xb7].const[747].[op 0xbf].objlit[790](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[849](objlit[744](undefined)); objlit[779](undefined).f0([op 0xbe]).[op 0xbe]).call21([op 0x11]; this/ctx.objlit[745](objlit[744](undefined)).[op 0xb7].[op 0xb7].const[747].objlit[759](objlit[755](undefined)).const[457].globalThis.objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[753].const[855].const[457]).call21([op 0x11]; this/ctx.const[454].const[753].objlit[790](objlit[755](undefined))).call21([op 0x11]; this/ctx.const[454].const[753].objlit[765](objlit[755](undefined))).call21([op 0x11]; this/ctx.const[454].const[859].objlit[860](objlit[804](undefined)).[op 0xbe].const[454].[op 0xbe]) | [op 0x11].call21(this/ctx.const[862]; objlit[779](undefined).f0([op 0xbe]).const[454]) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).!([op 0xb7])) | [op 0x11].call21(this/ctx.const[841].!(globalThis).objlit[819](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).[op 0xbe].[op 0xb8].!([op 0xb7])).call21([op 0x11]; this/ctx.objlit[759](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[747].objlit[790](objlit[755](undefined)).objlit[759](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[753].const[855].objlit[765](objlit[755](undefined)).objlit[765](objlit[755](undefined)).objlit[790](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[849](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).!([op 0xb7])).call21([op 0x11]; this/ctx.!(globalThis).[op 0xb7].[op 0xb7].globalThis.!(globalThis).const[457]).call21([op 0x11]; this/ctx.const[747].objlit[765](objlit[755](undefined)).objlit[790](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[747].objlit[765](objlit[755](undefined)).objlit[790](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[753].globalThis.const[855].objlit[765](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[753].objlit[765](objlit[755](undefined))).call21([op 0x11]; this/ctx.const[454].const[753].objlit[765](objlit[755](undefined)).const[457]).call21([op 0x11]; this/ctx.const[454].const[747].objlit[765](objlit[755](undefined)).objlit[799](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[756](objlit[755](undefined)).objlit[799](objlit[755](undefined)).const[457]) | [op 0x11].call21(this/ctx.objlit[777](objlit[744](undefined)); objlit[786](undefined).f0([op 0xbe]).!([op 0xb7]).const[454])
+  // --- 模块段结束（其后为模块记录元数据，非字节码） ---
+  // meta+0000: ae03018609009c0504e4264f00f4420e
+  // meta+0010: 000e1245003802262626213535083535
+  // meta+0020: 2135cb35350835cb35350835cb353521
+  // meta+0030: 35cb35350835cb35350835cb35352135
+  // meta+0040: 35004a02083535004a02083535004a02
+  // meta+0050: 213535004a0235083535004a02350835
+  // meta+0060: 35004a0235002908270032b40600081a
+  // meta+0070: 00081000080e00081200082200082200
+  // meta+0080: 080800080800082c0008320008240008
+  // meta+0090: 1200081a00081c000810000822000810
+  // meta+00a0: 00084c00081400081400081e00081400
+  // meta+00b0: 08140008100008300008240008420008
+  // meta+00c0: 0e00081e00081e00081e00081e00080a
+  // meta+00d0: 00080c00082400081c00082200081e00
+  // meta+00e0: 080c00082200080c00080c00080e0008
+  // meta+00f0: 0c2d2d00082e00082400085e00086c00
+  // …(元数据共 153838B，截断显示)
 
 // ---- 字符串表 ----
 // str[0] = 'require'

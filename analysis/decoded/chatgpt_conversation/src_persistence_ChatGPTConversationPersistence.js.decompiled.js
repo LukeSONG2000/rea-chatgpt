@@ -10,31 +10,34 @@
   // op 0xc7 (语义待归纳)
   // op 0x68 (语义待归纳)
   // op 0x8b (语义待归纳)
-  jmp +2;
+  jcc-0xeb → @173   // 条件跳转 (目标=pc+1+i8)
   // op 0x2e (语义待归纳)
-  jmp +3;
+  jcc-0xeb → @178   // 条件跳转 (目标=pc+1+i8)
   // op 0x2e (语义待归纳)
   // op 0xc7 (语义待归纳)
   // op 0x68 (语义待归纳)
   // op 0x8b (语义待归纳)
-  jmp +2;
+  jcc-0xeb → @293   // 条件跳转 (目标=pc+1+i8)
   // op 0x2e (语义待归纳)
   locop 0xca(pool[154].key#246([op 0x2e]))
   // op 0xdf (语义待归纳)
-  jcc 0xf0 +0;
-  jmp +16;
+  jcc-0xeb → @320   // 条件跳转 (目标=pc+1+i8)
   // op 0x11 (语义待归纳)
   // op 0x2f (语义待归纳)
   // op 0x2e (语义待归纳)
   [op 0x2f] = [op 0x2e];
   // op 0x52 (语义待归纳)
+  …(pad)
   // discard(num[1979873024])
+  …(pad)
   // op 0x68 (语义待归纳)
   [op 0xdf] = call25([op 0x52].key#263.key#249; [op 0x68], pool[154].key#250(local-ref));
+  …(pad)
   // discard('module')
-  BIND "key#262" = [op 0x2e];
+
+  // ---- FUNCTION-UNIT: 'key#262' (33B 头+内联体) ----
   // op 0xfb (语义待归纳)
-  // stack-tail: [op 0x52] | v06 | const[00000200] | [op 0x05] | num[66486] | [op 0x30] | 'c' | const[0008cb8a] | [op 0x64] | !([op 0x2e]) | [op 0xfb]
+  // stack-tail: [op 0x52] | v06 | const[00000200] | [op 0x05] | num[66486] | [op 0x30] | 'c' | const[0008cb8a] | [op 0x64] | !([op 0x2e]) | fn:'key#262' | [op 0xfb]
 
 // ---- 字符串表 ----
 // str[0] = 'require'
