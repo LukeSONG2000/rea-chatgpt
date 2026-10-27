@@ -97,3 +97,10 @@ analyzeHeadless <proj_dir> xplat122 -process libopenai_xplat_export.so -noanalys
 | FUN_007114a0 | 180B | 待定性 |
 
 **执行器定位策略（下一步）**：分发不走元数据表引用、无 switch —— 判定为**尾调用链式 handler**（每 opcode 一个小函数，0x6f0000-0x71xxxx 区间密度最高）。入口追法：FUN_007040ec（调用路径类型检查）→ FUN_0071873c/FUN_00718928/FUN_00718d60/FUN_00709238/FUN_006fb2b0 → 首个 handler → 沿尾调用链枚举。备选： FUN_0073c86c（验证器内调用）。
+
+### 9.1 调用链反编译（analysis/xplat-callchain.txt）
+
+- FUN_0073c86c = 验证器栈图记录器：pc→栈深/分支位置一致性（u16=0xffff 为分支目标标记，"inconsistent stack size/catch position"）
+- FUN_00718d60 = **字节码函数调用帧构造器**：栈溢出检查、调用状态机（param_2+0x80 类型域、+0x84/0x88 pc、+0x90 prev-frame 链表）、参数绑定
+- FUN_007040ec = 调用路径类型检查（tag 0xfffffffd = bytecode function）
+- **执行器仍未现形**：排除 switch 型；结合尾调用假设，下一步 = 从 FUN_00718d60 构造的帧对象找到 resume/step 函数（找引用帧对象 +0x84/+0x88 偏移的函数），或在 0x6ef000-0x71b000 区间按"读 opcode byte → 跳 handler 表"的汇编模式扫描（adrp+ldrb+br x 序列）
