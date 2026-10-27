@@ -1,0 +1,32 @@
+#!/bin/zsh
+set -x
+cd /Users/lukesong/Work/Workspace/rea/ChatGPT
+rm -f .git/objects/pack/tmp_pack_*
+git config http.postBuffer 524288000
+git gc -q 2>&1 | tail -2
+echo "=== GC DONE ==="
+gh repo create rea-chatgpt --private --source . --remote origin 2>&1
+git push -u origin main 2>&1 | tail -5
+echo "=== PERSONAL PUSH DONE ==="
+gh repo create ciqtek-aitea/rea-chatgpt --private 2>&1
+git remote add org https://github.com/ciqtek-aitea/rea-chatgpt.git 2>/dev/null
+git push -u org main 2>&1 | tail -5
+echo "=== ORG PUSH DONE ==="
+NOTES="ChatGPT 官方原始包版本基线（版本详情见 README）。仅供个人研究备份。"
+gh release create baseline-20261027 -t "原始包基线 2026-10-27" -n "$NOTES" \
+  packages/ChatGPT-4.0.21.dmg packages/ChatGPT-windows-x64-4.0.21.msix \
+  packages/ChatGPT-iOS-1.2026.279/ChatGPT.ipa \
+  packages/ChatGPT-Android-1.2026.244/base.apk \
+  packages/ChatGPT-Android-1.2026.244/split_config.arm64_v8a.apk \
+  packages/ChatGPT-Android-1.2026.244/split_config.zh.apk \
+  packages/ChatGPT-Android-1.2026.244/split_config.xxhdpi.apk 2>&1 | tail -3
+echo "=== PERSONAL RELEASE DONE ==="
+gh release create baseline-20261027 -R ciqtek-aitea/rea-chatgpt -t "原始包基线 2026-10-27" -n "$NOTES" \
+  packages/ChatGPT-4.0.21.dmg packages/ChatGPT-windows-x64-4.0.21.msix \
+  packages/ChatGPT-iOS-1.2026.279/ChatGPT.ipa \
+  packages/ChatGPT-Android-1.2026.244/base.apk \
+  packages/ChatGPT-Android-1.2026.244/split_config.arm64_v8a.apk \
+  packages/ChatGPT-Android-1.2026.244/split_config.zh.apk \
+  packages/ChatGPT-Android-1.2026.244/split_config.xxhdpi.apk 2>&1 | tail -3
+echo "=== ORG RELEASE DONE ==="
+echo "ALL-DONE"

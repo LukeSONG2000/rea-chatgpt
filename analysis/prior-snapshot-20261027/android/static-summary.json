@@ -1,0 +1,1127 @@
+{
+  "permissions": [
+    "android.permission.INTERNET",
+    "com.google.android.gms.permission.AD_ID",
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.FOREGROUND_SERVICE",
+    "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+    "android.permission.POST_PROMOTED_NOTIFICATIONS",
+    "android.permission.FOREGROUND_SERVICE_MICROPHONE",
+    "android.permission.ACCESS_COARSE_LOCATION",
+    "android.permission.CAMERA",
+    "android.permission.DETECT_SCREEN_CAPTURE",
+    "android.permission.VIBRATE",
+    "android.permission.READ_CONTACTS",
+    "android.permission.ACCESS_FINE_LOCATION",
+    "android.permission.RECORD_AUDIO",
+    "android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.ACCESS_WIFI_STATE",
+    "android.permission.CHANGE_NETWORK_STATE",
+    "android.permission.WAKE_LOCK",
+    "android.permission.NFC",
+    "android.permission.READ_BASIC_PHONE_STATE",
+    "com.google.android.c2dm.permission.RECEIVE",
+    "android.permission.READ_PHONE_STATE",
+    "android.permission.USE_BIOMETRIC",
+    "android.permission.USE_FINGERPRINT",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "com.android.vending.BILLING",
+    "com.openai.chatgpt.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+    "android.permission.BLUETOOTH",
+    "android.permission.MODIFY_AUDIO_SETTINGS",
+    "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"
+  ],
+  "component_counts": {
+    "service": 24,
+    "activity": 62,
+    "activity-alias": 3,
+    "receiver": 17,
+    "provider": 13
+  },
+  "explicit_exported_count": 26,
+  "components": [
+    {
+      "type": "service",
+      "enabled": "false",
+      "exported": "false",
+      "name": "androidx.appcompat.app.AppLocalesMetadataHolderService",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "allowEmbedded": "true",
+      "exported": "true",
+      "launchMode": "singleTop",
+      "name": "com.openai.chatgpt.MainActivity",
+      "theme": "@style/Theme.App.Starting",
+      "windowSoftInputMode": "adjustResize",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.MAIN\" />\n                <category ns0:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.SEND\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <data ns0:mimeType=\"image/*\" />\n                <data ns0:mimeType=\"text/*\" />\n                <data ns0:mimeType=\"application/*\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.SEND_MULTIPLE\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <data ns0:mimeType=\"image/*\" />\n                <data ns0:mimeType=\"text/*\" />\n                <data ns0:mimeType=\"application/*\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity-alias",
+      "exported": "true",
+      "label": "@string/ab",
+      "name": "com.openai.chatgpt.ImageEditActivity",
+      "targetActivity": "com.openai.chatgpt.MainActivity",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.EDIT\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <data ns0:mimeType=\"image/*\" ns0:scheme=\"content\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.EDIT\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <data ns0:mimeType=\"image/*\" ns0:scheme=\"file\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity-alias",
+      "exported": "true",
+      "label": "@string/ab",
+      "name": "com.openai.chatgpt.FilePreviewActivity",
+      "targetActivity": "com.openai.chatgpt.MainActivity",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <data ns0:mimeType=\"image/*\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"text/*\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"application/json\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"application/ld+json\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"application/xml\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"application/javascript\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"application/x-javascript\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"application/x-sh\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"application/x-httpd-php\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"application/x-yaml\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"application/yaml\" ns0:scheme=\"content\" />\n                <data ns0:mimeType=\"application/pdf\" ns0:scheme=\"content\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <data ns0:mimeType=\"image/*\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"text/*\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"application/json\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"application/ld+json\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"application/xml\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"application/javascript\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"application/x-javascript\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"application/x-sh\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"application/x-httpd-php\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"application/x-yaml\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"application/yaml\" ns0:scheme=\"file\" />\n                <data ns0:mimeType=\"application/pdf\" ns0:scheme=\"file\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity-alias",
+      "exported": "true",
+      "label": "@string/APKTOOL_RENAMED_0x7f141860",
+      "name": "com.openai.chatgpt.TextProcessorActivity",
+      "targetActivity": "com.openai.chatgpt.MainActivity",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.PROCESS_TEXT\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <data ns0:mimeType=\"text/*\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity",
+      "excludeFromRecents": "true",
+      "exported": "true",
+      "name": "com.openai.chatgpt.ChatGptDeeplinkActivity",
+      "noHistory": "true",
+      "taskAffinity": "",
+      "theme": "@android:style/Theme.NoDisplay",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"com.openai.chat\" />\n                <data ns0:host=\"auth\" />\n                <data ns0:pathPattern=\"/logout\" />\n                <data ns0:pathPattern=\"/ext_callback\" />\n                <data ns0:pathPattern=\"/email_verification\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:host=\"codex\" ns0:path=\"/open\" ns0:scheme=\"com.openai.chat\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:autoVerify=\"true\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"https\" />\n                <data ns0:scheme=\"http\" />\n                <data ns0:host=\"platform.openai.com\" />\n                <data ns0:pathPattern=\"/auth/logout\" />\n                <data ns0:pathPattern=\"/auth/ext_callback\" />\n                <data ns0:pathPattern=\"/auth/email_verification\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:autoVerify=\"true\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"https\" />\n                <data ns0:host=\"link.openai.com\" />\n                <data ns0:pathPrefix=\"/A\" />\n                <data ns0:pathPrefix=\"/B\" />\n                <data ns0:pathPrefix=\"/E\" />\n                <data ns0:pathPrefix=\"/F\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:autoVerify=\"true\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"https\" />\n                <data ns0:host=\"click.openai.com\" />\n                <data ns0:pathPrefix=\"/uni/\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:autoVerify=\"true\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"https\" />\n                <data ns0:host=\"u.email.openai.com\" />\n                <data ns0:pathPrefix=\"/uni/\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:autoVerify=\"true\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"https\" />\n                <data ns0:host=\"s.openai.com\" />\n                <data ns0:pathPrefix=\"/uni/\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:autoVerify=\"true\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"https\" />\n                <data ns0:host=\"r.openai.com\" />\n                <data ns0:pathPrefix=\"/uni/\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:autoVerify=\"true\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"https\" />\n                <data ns0:scheme=\"http\" />\n                <data ns0:host=\"chat.openai.com\" />\n                <data ns0:host=\"chatgpt.com\" />\n                <data ns0:host=\"chat.com\" />\n                <data ns0:host=\"www.chat.com\" />\n                <data ns0:host=\"www.chatgpt.com\" />\n                <data ns0:host=\"tt.chatgpt.com\" />\n                <data ns0:pathPrefix=\"/gg/v/\" />\n                <data ns0:pathPrefix=\"/m/\" />\n                <data ns0:path=\"/\" />\n                <data ns0:path=\"/voice\" />\n                <data ns0:path=\"/voice/\" />\n                <data ns0:path=\"/tooltip\" />\n                <data ns0:path=\"/tooltip/\" />\n                <data ns0:pathPattern=\"/.*/voice\" />\n                <data ns0:pathPattern=\"/.*/voice/\" />\n                <data ns0:path=\"/app\" />\n                <data ns0:pathPrefix=\"/app/\" />\n                <data ns0:path=\"/open-app\" />\n                <data ns0:pathPrefix=\"/share/\" />\n                <data ns0:pathPrefix=\"/share/e/\" />\n                <data ns0:pathPrefix=\"/c/\" />\n                <data ns0:pathPrefix=\"/uc/\" />\n                <data ns0:path=\"/c\" />\n                <data ns0:path=\"/codex\" />\n                <data ns0:path=\"/codex/pair\" />\n                <data ns0:pathPrefix=\"/codex/remote/thread/\" />\n                <data ns0:pathPrefix=\"/c2/\" />\n                <data ns0:pathPrefix=\"/subscription\" />\n                <data ns0:pathPrefix=\"/up/\" />\n                <data ns0:pathPrefix=\"/g/\" />\n                <data ns0:pathPrefix=\"/s/c_\" />\n                <data ns0:pathPrefix=\"/s/m_\" />\n                <data ns0:pathPrefix=\"/s/p_\" />\n                <data ns0:pathPrefix=\"/s/t_\" />\n                <data ns0:pathPrefix=\"/s/w_\" />\n                <data ns0:pathPrefix=\"/aip/\" />\n                <data ns0:path=\"/finances\" />\n                <data ns0:pathPrefix=\"/image-gen\" />\n                <data ns0:pathPrefix=\"/images\" />\n                <data ns0:path=\"/library\" />\n                <data ns0:path=\"/library/\" />\n                <data ns0:path=\"/stickers\" />\n                <data ns0:path=\"/stickers/\" />\n                <data ns0:pathPrefix=\"/apps\" />\n                <data ns0:path=\"/discovery-hub\" />\n                <data ns0:path=\"/discovery-hub/\" />\n                <data ns0:path=\"/shopping\" />\n                <data ns0:path=\"/shopping/\" />\n                <data ns0:path=\"/football\" />\n                <data ns0:path=\"/football/\" />\n                <data ns0:path=\"/scheduled\" />\n                <data ns0:path=\"/scheduled/\" />\n                <data ns0:path=\"/tasks\" />\n                <data ns0:path=\"/tasks/\" />\n                <data ns0:path=\"/task_onboarding\" />\n                <data ns0:path=\"/task_onboarding/\" />\n                <data ns0:pathPrefix=\"/conversation/oauth_redirect\" />\n                <data ns0:pathPrefix=\"/settings\" />\n                <data ns0:pathPrefix=\"/trusted-contact/nominee\" />\n                <data ns0:pathPrefix=\"/trusted-contact/alert\" />\n                <data ns0:pathPrefix=\"/trusted-contact/unlinked\" />\n                <data ns0:pathPrefix=\"/data-controls\" />\n                <data ns0:pathPrefix=\"/auth-challenge\" />\n                <data ns0:pathPrefix=\"/feature-interstitial\" />\n                <data ns0:pathPrefix=\"/announcements\" />\n                <data ns0:pathPrefix=\"/parentalcontrols\" />\n                <data ns0:pathPrefix=\"/u18-graduation/teen-unlink\" />\n                <data ns0:pathPrefix=\"/cfc-verification\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:autoVerify=\"true\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"https\" />\n                <data ns0:host=\"chat.openai.com\" />\n                <data ns0:host=\"chatgpt.com\" />\n                <data ns0:host=\"chat.com\" />\n                <data ns0:host=\"www.chat.com\" />\n                <data ns0:host=\"www.chatgpt.com\" />\n                <data ns0:host=\"tt.chatgpt.com\" />\n                <data ns0:pathPrefix=\"/s/task_\" />\n                <data ns0:pathPrefix=\"/s/shareauto_\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"chatgpt\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity",
+      "enabled": "@bool/assistant_enabled",
+      "excludeFromRecents": "true",
+      "exported": "true",
+      "name": "com.openai.feature.assistant.impl.AssistantProxyActivity",
+      "noHistory": "true",
+      "taskAffinity": "",
+      "theme": "@android:style/Theme.NoDisplay",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.ASSIST\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "service",
+      "enabled": "@bool/assistant_enabled",
+      "exported": "true",
+      "label": "@string/ab",
+      "name": "com.openai.feature.assistant.impl.AssistantVoiceInteractionService",
+      "permission": "android.permission.BIND_VOICE_INTERACTION",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.service.voice.VoiceInteractionService\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "service",
+      "enabled": "@bool/assistant_enabled",
+      "label": "@string/ab",
+      "name": "com.openai.feature.assistant.impl.AssistantVoiceInteractionSessionService",
+      "permission": "android.permission.BIND_VOICE_INTERACTION",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "exported": "false",
+      "name": "com.openai.apps.appbase.app.managedconfig.ManagedConfigurationsChangedReceiver",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.APPLICATION_RESTRICTIONS_CHANGED\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.firebaseinitprovider",
+      "directBootAware": "true",
+      "exported": "false",
+      "initOrder": "100",
+      "name": "com.openai.apps.appbase.app.startup.FirebaseInitProvider",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "exported": "false",
+      "name": "com.openai.feature.conversations.impl.coordinator.ConversationStreamingService",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "exported": "false",
+      "foregroundServiceType": "dataSync",
+      "name": "com.openai.feature.conversations.impl.notifications.WorkReasoningNotificationForegroundService",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "exported": "true",
+      "icon": "@drawable/design_logo_assistant",
+      "label": "@string/ab",
+      "name": "com.openai.feature.voice.impl.quicktile.QuickTileService",
+      "permission": "android.permission.BIND_QUICK_SETTINGS_TILE",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.service.quicksettings.action.QS_TILE\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "receiver",
+      "exported": "false",
+      "name": "com.openai.feature.calpico.impl.notification.CalpicoNotificationBroadcastReceiver",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "allowEmbedded": "true",
+      "excludeFromRecents": "true",
+      "exported": "false",
+      "name": "com.openai.feature.codexremote.impl.CodexRemoteBubbleActivity",
+      "resizeableActivity": "true",
+      "taskAffinity": "",
+      "theme": "@style/Theme.App",
+      "windowSoftInputMode": "adjustResize",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "exported": "false",
+      "foregroundServiceType": "dataSync",
+      "name": "com.openai.feature.codexremote.impl.data.CodexRemoteSessionForegroundService",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "exported": "false",
+      "foregroundServiceType": "microphone",
+      "name": "com.openai.feature.codexremote.impl.voice.CodexVoiceForegroundService",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "configChanges": "orientation|screenLayout|screenSize|smallestScreenSize",
+      "excludeFromRecents": "true",
+      "exported": "false",
+      "name": "com.openai.feature.conversations.screencontext.ConversationScreenShareSettingsGuideActivity",
+      "resizeableActivity": "true",
+      "supportsPictureInPicture": "true",
+      "taskAffinity": "",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "exported": "true",
+      "label": "@string/APKTOOL_RENAMED_0x7f1407b8",
+      "name": "com.openai.feature.conversations.screencontext.ConversationScreenAccessibilityService",
+      "permission": "android.permission.BIND_ACCESSIBILITY_SERVICE",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.accessibilityservice.AccessibilityService\" />\n            </intent-filter>\n            "
+      ]
+    },
+    {
+      "type": "activity",
+      "excludeFromRecents": "true",
+      "exported": "true",
+      "name": "com.openai.voice.assistant.AssistantActivity",
+      "noHistory": "true",
+      "theme": "@style/Theme.VoiceAssistant",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.stickers",
+      "enabled": "true",
+      "exported": "true",
+      "name": "com.openai.feature.imagedetail.impl.whatsapp.WhatsAppStickerContentProvider",
+      "readPermission": "com.whatsapp.sticker.READ",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "excludeFromRecents": "true",
+      "exported": "false",
+      "name": "com.openai.feature.sites.impl.SitesShareActivity",
+      "theme": "@style/Theme.App.SitesShare",
+      "windowSoftInputMode": "adjustResize",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "exported": "false",
+      "name": "com.openai.feature.shortcut.impl.PinnedShortcutReceiver",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.files",
+      "exported": "false",
+      "grantUriPermissions": "true",
+      "name": "com.openai.files.ChatFileProvider",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "excludeFromRecents": "true",
+      "exported": "true",
+      "launchMode": "singleTask",
+      "name": "com.openai.feature.onboarding.impl.otp.OtpDeepLinkActivity",
+      "theme": "@android:style/Theme.NoDisplay",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:autoVerify=\"true\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"https\" />\n                <data ns0:host=\"chatgpt.com\" />\n                <data ns0:pathPrefix=\"/verification-code\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity",
+      "excludeFromRecents": "true",
+      "exported": "true",
+      "launchMode": "singleTask",
+      "name": "com.openai.feature.onboarding.impl.next.deeplink.ContinueRegistrationActivity",
+      "theme": "@style/Theme.Onboarding.Trampoline",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:autoVerify=\"true\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"https\" />\n                <data ns0:host=\"chatgpt.com\" />\n                <data ns0:pathPrefix=\"/continue-registration\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "receiver",
+      "exported": "false",
+      "name": "com.openai.feature.notification.ConversationBubbleDeletedReceiver",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "exported": "false",
+      "name": "com.openai.feature.notification.impl.NotificationBroadcastReceiver",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "enabled": "false",
+      "exported": "false",
+      "name": "com.openai.feature.notification.impl.AppUpdateReceiver",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.MY_PACKAGE_REPLACED\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "service",
+      "exported": "false",
+      "name": "com.openai.feature.notification.impl.NotificationService",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"com.google.firebase.MESSAGING_EVENT\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "service",
+      "exported": "false",
+      "foregroundServiceType": "mediaProjection|microphone",
+      "name": "com.openai.voice.webrtc.VoiceModeForegroundService",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "exported": "true",
+      "name": "com.openai.feature.widget.WidgetReceiver",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.appwidget.action.APPWIDGET_UPDATE\" />\n            </intent-filter>\n            "
+      ]
+    },
+    {
+      "type": "receiver",
+      "exported": "true",
+      "name": "com.openai.feature.widget.WidgetInstallBroadcastReceiver",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.glyphs",
+      "exported": "false",
+      "grantUriPermissions": "true",
+      "name": "com.openai.draw.GlyphsFileProvider",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "configChanges": "keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize",
+      "exported": "false",
+      "launchMode": "singleTask",
+      "name": "com.openai.feature.auth.impl.web.WebAuthenticationActivity",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "true",
+      "name": "com.openai.feature.auth.impl.web.WebRedirectActivity",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:scheme=\"com.openai.chatgpt\" />\n                <data ns0:host=\"auth0.openai.com\" />\n                <data ns0:host=\"auth0-dev.openai.com\" />\n                <data ns0:host=\"auth.openai.com\" />\n                <data ns0:host=\"auth.api.openai.org\" />\n                <data ns0:pathPrefix=\"/android/com.openai.chatgpt/callback\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.withpersona.sdk2.inquiry.internal.InquiryActivity",
+      "screenOrientation": "portrait",
+      "theme": "@style/Persona.Inquiry.Theme",
+      "windowSoftInputMode": "adjustResize",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "enabled": "false",
+      "exported": "false",
+      "name": "androidx.camera.core.impl.MetadataHolderService",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "label": "@string/eea",
+      "name": "com.google.android.libraries.places.widget.AutocompleteActivity",
+      "theme": "@style/PlacesAutocompleteOverlay",
+      "windowSoftInputMode": "adjustResize",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.google.android.libraries.places.widget.BasicPlaceAutocompleteActivity",
+      "windowSoftInputMode": "adjustResize",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.google.android.libraries.places.widget.PlaceAutocompleteActivity",
+      "windowSoftInputMode": "adjustResize",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.google.android.libraries.places.widget.internal.placedetails.photoviewer.PlacesLightboxActivity",
+      "windowSoftInputMode": "adjustResize",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.paymentsheet.PaymentSheetActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.paymentsheet.PaymentOptionsActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.customersheet.CustomerSheetActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.paymentsheet.addresselement.AddressElementActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.paymentsheet.addresselement.AutocompleteActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.paymentsheet.paymentdatacollection.bacs.BacsMandateConfirmationActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.paymentsheet.paymentdatacollection.polling.PollingActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.paymentsheet.ui.SepaMandateActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.paymentsheet.ExternalPaymentMethodProxyActivity",
+      "theme": "@style/StripePayLauncherDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.paymentelement.confirmation.cpms.CustomPaymentMethodProxyActivity",
+      "theme": "@style/StripePayLauncherDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "name": "com.stripe.android.paymentsheet.paymentdatacollection.cvcrecollection.CvcRecollectionActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "name": "com.stripe.android.paymentelement.embedded.sheet.EmbeddedSheetActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "name": "com.stripe.android.common.nfcscan.NfcScanningActivity",
+      "theme": "@style/StripePaymentSheetTapToAddTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "name": "com.stripe.android.common.taptoadd.TapToAddActivity",
+      "theme": "@style/StripePaymentSheetTapToAddTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.attestation.AttestationActivity",
+      "theme": "@style/StripeTransparentTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "autoRemoveFromRecents": "true",
+      "exported": "false",
+      "label": "@string/APKTOOL_RENAMED_0x7f141669",
+      "name": "com.stripe.android.link.LinkActivity",
+      "theme": "@style/StripePaymentSheetDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "autoRemoveFromRecents": "true",
+      "configChanges": "keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize",
+      "launchMode": "singleTop",
+      "name": "com.stripe.android.link.LinkForegroundActivity",
+      "theme": "@style/StripeTransparentTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "autoRemoveFromRecents": "true",
+      "exported": "true",
+      "launchMode": "singleInstance",
+      "name": "com.stripe.android.link.LinkRedirectHandlerActivity",
+      "theme": "@style/StripeTransparentTheme",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:host=\"complete\" ns0:path=\"/com.openai.chatgpt\" ns0:scheme=\"link-popup\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.view.PaymentAuthWebViewActivity",
+      "theme": "@style/StripeDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.view.PaymentRelayActivity",
+      "theme": "@style/StripeTransparentTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "launchMode": "singleTask",
+      "name": "com.stripe.android.payments.StripeBrowserLauncherActivity",
+      "theme": "@style/StripeTransparentTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "true",
+      "launchMode": "singleTask",
+      "name": "com.stripe.android.payments.StripeBrowserProxyReturnActivity",
+      "theme": "@style/StripeTransparentTheme",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:host=\"payment_return_url\" ns0:path=\"/com.openai.chatgpt\" ns0:scheme=\"stripesdk\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.payments.core.authentication.threeds2.Stripe3ds2TransactionActivity",
+      "theme": "@style/Stripe3dsTransactionTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.googlepaylauncher.GooglePayLauncherActivity",
+      "theme": "@style/StripeGooglePayDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncherActivity",
+      "theme": "@style/StripeGooglePayDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.payments.paymentlauncher.PaymentLauncherConfirmationActivity",
+      "theme": "@style/StripePayLauncherDefaultTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.payments.bankaccount.ui.CollectBankAccountActivity",
+      "theme": "@style/StripeTransparentTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.challenge.passive.PassiveChallengeActivity",
+      "theme": "@style/StripeTransparentTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.challenge.passive.warmer.activity.PassiveChallengeWarmerActivity",
+      "theme": "@style/StripeTransparentTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.stripe.android.challenge.confirmation.IntentConfirmationChallengeActivity",
+      "theme": "@style/StripePaymentSheetBaseTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.persona.provider",
+      "exported": "false",
+      "grantUriPermissions": "true",
+      "name": "com.withpersona.sdk2.inquiry.DocumentFileProvider",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "configChanges": "orientation|screenSize",
+      "exported": "false",
+      "name": "com.stripe.android.stripe3ds2.views.ChallengeActivity",
+      "theme": "@style/Stripe3DS2Theme",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "enabled": "true",
+      "exported": "false",
+      "name": "androidx.credentials.playservices.CredentialProviderMetadataHolder",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "configChanges": "keyboardHidden|orientation|screenLayout|screenSize",
+      "enabled": "true",
+      "exported": "false",
+      "fitsSystemWindows": "true",
+      "name": "androidx.credentials.playservices.controllers.identityauth.HiddenActivity",
+      "theme": "@style/Theme.Hidden",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "configChanges": "keyboardHidden|orientation|screenLayout|screenSize",
+      "enabled": "true",
+      "exported": "false",
+      "fitsSystemWindows": "true",
+      "name": "androidx.credentials.playservices.controllers.identitycredentials.IdentityCredentialApiHiddenActivity",
+      "theme": "@style/Theme.Hidden",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.com.plaid.internal.webview.PlaidFileProvider",
+      "exported": "false",
+      "grantUriPermissions": "true",
+      "name": "com.plaid.internal.webview.PlaidFileProvider",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "configChanges": "locale|keyboardHidden|orientation|screenSize|smallestScreenSize|layoutDirection|fontScale",
+      "exported": "false",
+      "launchMode": "standard",
+      "name": "com.plaid.internal.link.LinkActivity",
+      "theme": "@style/Plaid.Link.Theme",
+      "windowSoftInputMode": "adjustPan",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "autoRemoveFromRecents": "true",
+      "exported": "true",
+      "launchMode": "singleTask",
+      "name": "com.plaid.internal.redirect.LinkRedirectActivity",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:host=\"redirect\" ns0:scheme=\"plaid\" />\n                <data ns0:host=\"resume\" ns0:scheme=\"plaid\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity",
+      "excludeFromRecents": "true",
+      "exported": "false",
+      "name": "com.google.android.gms.auth.api.signin.internal.SignInHubActivity",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "exported": "true",
+      "name": "com.google.android.gms.auth.api.signin.RevocationBoundService",
+      "permission": "com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION",
+      "visibleToInstantApps": "true",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "exported": "true",
+      "name": "com.google.firebase.iid.FirebaseInstanceIdReceiver",
+      "permission": "com.google.android.c2dm.permission.SEND",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"com.google.android.c2dm.intent.RECEIVE\" />\n            </intent-filter>\n            "
+      ]
+    },
+    {
+      "type": "service",
+      "directBootAware": "true",
+      "exported": "false",
+      "name": "com.google.firebase.messaging.FirebaseMessagingService",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\" ns0:priority=\"-500\">\n                <action ns0:name=\"com.google.firebase.MESSAGING_EVENT\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "service",
+      "directBootAware": "true",
+      "exported": "false",
+      "name": "com.google.firebase.components.ComponentDiscoveryService",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.androidx-startup",
+      "exported": "false",
+      "name": "androidx.startup.InitializationProvider",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.valdi.clipboard",
+      "exported": "false",
+      "grantUriPermissions": "true",
+      "name": "androidx.core.content.FileProvider",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "true",
+      "launchMode": "singleTask",
+      "name": "com.stripe.android.financialconnections.lite.FinancialConnectionsSheetLiteRedirectActivity",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.VIEW\" />\n                <category ns0:name=\"android.intent.category.DEFAULT\" />\n                <category ns0:name=\"android.intent.category.BROWSABLE\" />\n                <data ns0:host=\"financial-connections-lite\" ns0:pathPrefix=\"/com.openai.chatgpt/auth_redirect\" ns0:scheme=\"stripe\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity",
+      "name": "com.stripe.android.financialconnections.lite.FinancialConnectionsSheetLiteActivity",
+      "theme": "@style/StripeBottomSheetActivityTheme",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "directBootAware": "true",
+      "exported": "false",
+      "name": "com.google.mlkit.common.internal.MlKitComponentDiscoveryService",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.mlkitinitprovider",
+      "exported": "false",
+      "initOrder": "99",
+      "name": "com.google.mlkit.common.internal.MlKitInitProvider",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.resources.AndroidContextProvider",
+      "enabled": "true",
+      "exported": "false",
+      "name": "org.jetbrains.compose.resources.AndroidContextProvider",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "configChanges": "keyboard|keyboardHidden|orientation|screenLayout|screenSize",
+      "name": "com.revenuecat.purchases.amazon.purchasing.ProxyAmazonBillingActivity",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "configChanges": "orientation|screenSize",
+      "excludeFromRecents": "true",
+      "name": "com.revenuecat.purchases.SimulatedStoreErrorDialogActivity",
+      "theme": "@android:style/Theme.Material.Dialog.Alert",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.perfs-startup-listener",
+      "exported": "false",
+      "name": "papa.internal.PerfsAppStartListener",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "enabled": "true",
+      "excludeFromRecents": "true",
+      "exported": "false",
+      "name": "androidx.glance.appwidget.action.ActionTrampolineActivity",
+      "theme": "@android:style/Theme.NoDisplay",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "enabled": "true",
+      "exported": "false",
+      "launchMode": "singleInstance",
+      "name": "androidx.glance.appwidget.action.InvisibleActionTrampolineActivity",
+      "noHistory": "true",
+      "taskAffinity": "androidx.glance.appwidget.ListAdapterCallbackTrampoline",
+      "theme": "@style/Widget.Glance.AppWidget.CallbackTrampoline",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "enabled": "true",
+      "exported": "false",
+      "name": "androidx.glance.appwidget.action.ActionCallbackBroadcastReceiver",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "enabled": "true",
+      "exported": "false",
+      "name": "androidx.glance.appwidget.UnmanagedSessionReceiver",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "enabled": "true",
+      "exported": "false",
+      "name": "androidx.glance.appwidget.MyPackageReplacedReceiver",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.MY_PACKAGE_REPLACED\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "service",
+      "exported": "true",
+      "name": "androidx.glance.appwidget.GlanceRemoteViewsService",
+      "permission": "android.permission.BIND_REMOTEVIEWS",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "directBootAware": "false",
+      "enabled": "@bool/enable_system_job_service_default",
+      "exported": "true",
+      "name": "androidx.work.impl.background.systemjob.SystemJobService",
+      "permission": "android.permission.BIND_JOB_SERVICE",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "directBootAware": "false",
+      "enabled": "@bool/enable_system_foreground_service_default",
+      "exported": "false",
+      "name": "androidx.work.impl.foreground.SystemForegroundService",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "directBootAware": "false",
+      "enabled": "true",
+      "exported": "false",
+      "name": "androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "directBootAware": "false",
+      "enabled": "false",
+      "exported": "false",
+      "name": "androidx.work.impl.background.systemalarm.RescheduleReceiver",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.BOOT_COMPLETED\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "receiver",
+      "directBootAware": "false",
+      "enabled": "true",
+      "exported": "true",
+      "name": "androidx.work.impl.diagnostics.DiagnosticsReceiver",
+      "permission": "android.permission.DUMP",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"androidx.work.diagnostics.REQUEST_DIAGNOSTICS\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "activity",
+      "configChanges": "keyboard|keyboardHidden|orientation|screenLayout|screenSize",
+      "exported": "false",
+      "name": "com.android.billingclient.api.ProxyBillingActivity",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "configChanges": "keyboard|keyboardHidden|orientation|screenLayout|screenSize",
+      "exported": "false",
+      "name": "com.android.billingclient.api.ProxyBillingActivityV2",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.google.android.gms.common.api.GoogleApiActivity",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "directBootAware": "true",
+      "exported": "false",
+      "name": "androidx.room.MultiInstanceInvalidationService",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "directBootAware": "false",
+      "enabled": "true",
+      "exported": "true",
+      "name": "androidx.profileinstaller.ProfileInstallReceiver",
+      "permission": "android.permission.DUMP",
+      "intent_filters": [
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"androidx.profileinstaller.action.INSTALL_PROFILE\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"androidx.profileinstaller.action.SKIP_FILE\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"androidx.profileinstaller.action.SAVE_PROFILE\" />\n            </intent-filter>\n            ",
+        "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"androidx.profileinstaller.action.BENCHMARK_OPERATION\" />\n            </intent-filter>\n        "
+      ]
+    },
+    {
+      "type": "service",
+      "name": "androidx.core.widget.RemoteViewsCompatService",
+      "permission": "android.permission.BIND_REMOTEVIEWS",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.provider.datadog.rum",
+      "exported": "false",
+      "initOrder": "999",
+      "name": "com.datadog.android.rum.DdRumContentProvider",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "exported": "false",
+      "name": "com.google.android.datatransport.runtime.backends.TransportBackendDiscovery",
+      "intent_filters": []
+    },
+    {
+      "type": "service",
+      "exported": "false",
+      "name": "com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService",
+      "permission": "android.permission.BIND_JOB_SERVICE",
+      "intent_filters": []
+    },
+    {
+      "type": "receiver",
+      "exported": "false",
+      "name": "com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver",
+      "intent_filters": []
+    },
+    {
+      "type": "activity",
+      "exported": "false",
+      "name": "com.google.android.play.core.common.PlayCoreDialogWrapperActivity",
+      "stateNotNeeded": "true",
+      "theme": "@style/Theme.PlayCore.Transparent",
+      "intent_filters": []
+    },
+    {
+      "type": "provider",
+      "authorities": "com.openai.chatgpt.SentryNdkPreloadProvider",
+      "exported": "false",
+      "initOrder": "2000000000",
+      "name": "io.sentry.ndk.SentryNdkPreloadProvider",
+      "intent_filters": []
+    }
+  ],
+  "feature_directories": [
+    "artifactlibrary",
+    "assistant",
+    "auth",
+    "automation",
+    "calpico",
+    "codexremote",
+    "commerce",
+    "conversation",
+    "conversations",
+    "dictation",
+    "dilvaldi",
+    "gizmoshome",
+    "globalsearch",
+    "imagedetail",
+    "imageshome",
+    "messages",
+    "notification",
+    "onboarding",
+    "settings",
+    "shortcut",
+    "sites",
+    "subscriptions",
+    "voice",
+    "widget"
+  ],
+  "java_files": 59413,
+  "valdi_modules": [
+    "audio_player.valdimodule",
+    "bridge_observables.valdimodule",
+    "cel.valdimodule",
+    "chatgpt_conversation.valdimodule",
+    "chatgpt_explore_feed.valdimodule",
+    "chatgpt_finance.valdimodule",
+    "chatgpt_finance_accounts.valdimodule",
+    "chatgpt_finance_connections.valdimodule",
+    "chatgpt_finance_transactions.valdimodule",
+    "chatgpt_global_search.valdimodule",
+    "chatgpt_library.valdimodule",
+    "chatgpt_multiplayer.valdimodule",
+    "chatgpt_reasoning.valdimodule",
+    "chatgpt_services.valdimodule",
+    "chatgpt_subscription_pricing.valdimodule",
+    "client_sql.valdimodule",
+    "collaborative_editor.valdimodule",
+    "coreutils.valdimodule",
+    "custom_instructions_ui.valdimodule",
+    "dil_cel.valdimodule",
+    "dil_charts.valdimodule",
+    "dil_compiler.valdimodule",
+    "dil_core.valdimodule",
+    "dil_icon_assets.valdimodule",
+    "dil_math.valdimodule",
+    "dil_renderer.valdimodule",
+    "dil_sandbox.valdimodule",
+    "dil_text.valdimodule",
+    "dil_widgets.valdimodule",
+    "ecosystem_instrumentation.valdimodule",
+    "foundation.valdimodule",
+    "json_patch.valdimodule",
+    "latex.valdimodule",
+    "markdown.valdimodule",
+    "math_jax.valdimodule",
+    "math_renderer.valdimodule",
+    "memory_settings_ui.valdimodule",
+    "mobile_file_saver.valdimodule",
+    "native_menu.valdimodule",
+    "oai_authentication.valdimodule",
+    "oai_core.valdimodule",
+    "oai_data_sources.valdimodule",
+    "oai_device_integrity.valdimodule",
+    "oai_file_picker.valdimodule",
+    "oai_integration_fixtures.valdimodule",
+    "oai_location_service.valdimodule",
+    "oai_metrics_service.valdimodule",
+    "oai_platform_services.valdimodule",
+    "oai_ui.valdimodule",
+    "oai_voice_service.valdimodule",
+    "oai_web_launcher.valdimodule",
+    "olympic_analytics.valdimodule",
+    "olympic_connections.valdimodule",
+    "olympic_health_home.valdimodule",
+    "olympic_records.valdimodule",
+    "persistence.valdimodule",
+    "personalization_settings_ui.valdimodule",
+    "settings_text_editor.valdimodule",
+    "source_map.valdimodule",
+    "svg.valdimodule",
+    "valdi_core.valdimodule",
+    "valdi_http.valdimodule",
+    "valdi_navigation.valdimodule",
+    "valdi_platform_alert.valdimodule",
+    "valdi_platform_browser.valdimodule",
+    "valdi_root_safe_area.valdimodule",
+    "valdi_rxjs.valdimodule",
+    "valdi_test_utils.valdimodule",
+    "valdi_tsx.valdimodule",
+    "valdi_ui.valdimodule",
+    "valdi_ui_theme.valdimodule",
+    "valdi_webview.valdimodule",
+    "worker.valdimodule"
+  ]
+}

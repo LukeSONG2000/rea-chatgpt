@@ -34,6 +34,10 @@ docs/            报告与逆向笔记
 | ④ 整体架构 | `docs/RECOVERY-REPORT.md` · `recovered/android/jadx-src/sources/com/openai/`（未混淆包树）· `recovered/android/apktool-src/res/raw/aboutlibraries.json`（478 依赖） |
 | ⑤ 跨平台 Valdi | Valdi 开源仓库（MIT，https://github.com/Snapchat/valdi ，本地克隆于 .tmp/valdi 不入库）· `analysis/tools/valdi_unpack.py` · `analysis/valdi-opcode-table.txt` · 两端共有 77/68 个模块 |
 
+## 前期独立分析增量
+
+2026-10-27 上午的另一份独立分析已合并：报告与证据文件在 `analysis/prior-snapshot-20261027/`，遗漏项差异清单（后端端点、DPoP、屏幕上下文服务、DIL 签名链、Codex Remote 脚本、CarPlay/Live Activity 等 18 项）见 `docs/prior-analysis-delta.md`。
+
 ## 关键结论（详见 docs/）
 
 - 移动端 = 平台原生壳 + Valdi 跨平台层；桌面端 = Chromium 壳 + Electron（`openai-codex-electron`）+ Codex Agent 栈，**无任何加密**

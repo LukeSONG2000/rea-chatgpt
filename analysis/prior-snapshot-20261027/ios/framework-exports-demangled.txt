@@ -1,0 +1,1279 @@
+static ChatGPTNotificationsChatGPTHost.ChatGPTBackgroundNotificationPluginRegistration.make(dependencies: AuthInterface.FirstLaunchCredentialResetProviding & ChatGPTNotificationsInterface.NotificationServiceProviding) -> AppLifecycleInterface.BackgroundNotificationPlugin
+static ChatGPTNotificationsChatGPTHost.ChatGPTNotificationRegistrationPluginRegistration.make(dependencies: ChatGPTNotificationsInterface.NotificationServiceProviding) -> AppLifecycleInterface.RemoteNotificationRegistrationPlugin
+protocol descriptor for DeviceCore.NetworkStateObserver
+protocol descriptor for DeviceCore.ApplicationStateObserver
+protocol descriptor for DeviceCore.NetworkStateObserverProviding
+protocol descriptor for DeviceCore.ApplicationStateObserverProviding
+FactoryKit.Factory.callAsFunction() -> A
+FactoryKit.Factory.resolve() -> A
+nominal type descriptor for FactoryKit.Factory
+FactoryKit.Factory.init(_: FactoryKit.ManagedContainer, key: Swift.StaticString, _: () -> A) -> FactoryKit.Factory<A>
+protocol conformance descriptor for FactoryKit.Factory<A> : FactoryKit.FactoryModifying in FactoryKit
+(extension in FactoryKit):FactoryKit.FactoryModifying.singleton.getter : A
+(extension in OAIMetricKit):FactoryKit.Container.metricKitReporterResolver.getter : OAInject.Resolver<@Sendable () -> OAIMetricKit.MetricKitReporter>
+(extension in OAIMetricKit):FactoryKit.Container.metricKitReporter.getter : FactoryKit.Factory<OAIMetricKit.MetricKitReporter>
+(extension in OAILogging):FactoryKit.Container.appSessionID.getter : FactoryKit.Factory<OAILogging.AppSessionID>
+(extension in OAILogging):FactoryKit.Container.appSessionIDResolver.getter : OAInject.Resolver<@Sendable () -> OAILogging.AppSessionID>
+(extension in OAILogging):FactoryKit.Container.foregroundIntervalID.getter : FactoryKit.Factory<OAILogging.ForegroundIntervalID>
+(extension in OAILogging):FactoryKit.Container.foregroundIntervalIDResolver.getter : OAInject.Resolver<@Sendable () -> OAILogging.ForegroundIntervalID>
+(extension in OAIStatsig):FactoryKit.Container.statsigService.getter : FactoryKit.Factory<OAIStatsigServiceInterface.StatsigService>
+(extension in OAIStatsig):FactoryKit.Container.statsigServiceResolver.getter : OAInject.Resolver<@Sendable () -> OAIStatsigServiceInterface.StatsigService>
+(extension in OAIStatsig):FactoryKit.Container.statsigServiceConfiguration.getter : FactoryKit.Factory<OAIStatsigServiceInterface.StatsigServiceConfiguration>
+(extension in OAIStatsig):FactoryKit.Container.statsigServiceConfigurationResolver.getter : OAInject.Resolver<@Sendable () -> OAIStatsigServiceInterface.StatsigServiceConfiguration>
+(extension in CalpicoCore):FactoryKit.Container.calpicoProfileNameStore.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTCalpicoInterface.CalpicoProfileNameStore>>
+(extension in CalpicoCore):FactoryKit.Container.calpicoNotificationHistoryCache.getter : FactoryKit.Factory<ChatGPTCalpicoInterface.CalpicoNotificationHistoryCache>
+(extension in CalpicoCore):FactoryKit.Container.calpicoProfileNameStoreResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTCalpicoInterface.CalpicoProfileNameStore>
+(extension in CalpicoCore):FactoryKit.Container.calpicoNotificationHistoryCacheResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTCalpicoInterface.CalpicoNotificationHistoryCache>
+(extension in ChatGPTCore):FactoryKit.Container.appSession.getter : FactoryKit.Factory<ChatGPTCore.AppSession>
+(extension in ChatGPTCore):FactoryKit.Container.noAuthManager.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTCore.NoAuthManager>>
+(extension in ChatGPTCore):FactoryKit.Container.appSessionResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTCore.AppSession>
+(extension in ChatGPTCore):FactoryKit.Container.noAuthManagerResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTCore.NoAuthManager>
+(extension in OAIAppSetup):FactoryKit.Container.appLogging.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<OAIAppSetup.AppLogging>>
+(extension in OAIAppSetup):FactoryKit.Container.appLoggingResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> OAIAppSetup.AppLogging>
+(extension in OAIMarkdown):FactoryKit.Container.katexEngine.getter : FactoryKit.Factory<OAIMarkdown.KatexEngine>
+(extension in OAIMarkdown):FactoryKit.Container.katexEngineResolver.getter : OAInject.Resolver<@Sendable () -> OAIMarkdown.KatexEngine>
+(extension in ChatGPTLogin):FactoryKit.Container.nativeAuthUsernamelessPasskeyLoginCoordinatorFactory.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTLogin.NativeAuthUsernamelessPasskeyLoginCoordinatorFactory>>
+(extension in ChatGPTLogin):FactoryKit.Container.nativeAuthUsernamelessPasskeyLoginCoordinatorFactoryResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTLogin.NativeAuthUsernamelessPasskeyLoginCoordinatorFactory>
+(extension in ChatGPTMedia):FactoryKit.Container.filePreviewFactory.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTMediaInterface.FilePreviewFactory>>
+(extension in ChatGPTMedia):FactoryKit.Container.filePreviewFactoryResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTMediaInterface.FilePreviewFactory>
+(extension in ChatGPTMedia):FactoryKit.Container.imageSuggestionCameraAccessProvider.getter : FactoryKit.Factory<ChatGPTMedia.ImageSuggestionCameraAccessProvider>
+(extension in ChatGPTMedia):FactoryKit.Container.imageSuggestionCameraAccessProviderResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTMedia.ImageSuggestionCameraAccessProvider>
+(extension in ChatGPTOAuth):FactoryKit.Container.oAuthSessionFactory.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTOAuthInterface.OAuthSessionFactory>>
+(extension in ChatGPTOAuth):FactoryKit.Container.oAuthSessionFactoryResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTOAuthInterface.OAuthSessionFactory>
+(extension in ChatGPTPlaid):FactoryKit.Container.plaidFinanceKitSyncingResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTPlaid.PlaidFinanceKitSyncing>
+(extension in ChatGPTPlaid):FactoryKit.Container.plaidFinanceKitSyncing.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTPlaid.PlaidFinanceKitSyncing>>
+(extension in ChatGPTPlaid):FactoryKit.Container.plaidLinkFlowing.getter : FactoryKit.Factory<ChatGPTPlaid.PlaidLinkFlowing>
+(extension in ChatGPTPlaid):FactoryKit.Container.plaidLinkFlowingResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTPlaid.PlaidLinkFlowing>
+(extension in ChatGPTValdi):FactoryKit.Container.valdiDynamicDeliveryStartupServiceFactory.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTValdiInterface.ValdiDynamicDeliveryStartupServiceFactory>>
+(extension in ChatGPTValdi):FactoryKit.Container.valdiDynamicDeliveryStartupServiceFactoryResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTValdiInterface.ValdiDynamicDeliveryStartupServiceFactory>
+(extension in ChatGPTValdi):FactoryKit.Container.chatGPTValdiComponentRenderer.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTValdiInterface.ChatGPTValdiComponentRenderer>>
+(extension in ChatGPTValdi):FactoryKit.Container.chatGPTValdiComponentRendererResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTValdiInterface.ChatGPTValdiComponentRenderer>
+(extension in ChatGPTValdi):FactoryKit.Container.markdownDiffService.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTValdiInterface.MarkdownDiffService>>
+(extension in ChatGPTValdi):FactoryKit.Container.markdownDiffServiceResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTValdiInterface.MarkdownDiffService>
+(extension in ChatGPTVoice):FactoryKit.Container.phoneGestureVoiceRuntime.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceRuntime>>
+(extension in ChatGPTVoice):FactoryKit.Container.voiceAvatarTreatmentService.getter : FactoryKit.Factory<ChatGPTVoiceConversationUIInterface.VoiceAvatarTreatmentService>
+(extension in ChatGPTVoice):FactoryKit.Container.phoneGestureVoiceRuntimeResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceRuntime>
+(extension in ChatGPTVoice):FactoryKit.Container.voiceAvatarTreatmentServiceResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTVoiceConversationUIInterface.VoiceAvatarTreatmentService>
+(extension in DevicePhotos):FactoryKit.Container.photoLibraryService.getter : FactoryKit.Factory<DevicePhotos.PhotoLibraryService>
+(extension in DevicePhotos):FactoryKit.Container.photoLibraryServiceResolver.getter : OAInject.Resolver<@Sendable () -> DevicePhotos.PhotoLibraryService>
+(extension in OAIPurchases):FactoryKit.Container.purchaseManager.getter : FactoryKit.Factory<OAIPurchases.PurchaseManager>
+(extension in OAIPurchases):FactoryKit.Container.purchaseManagerResolver.getter : OAInject.Resolver<@Sendable () -> OAIPurchases.PurchaseManager>
+(extension in ChatGPTAvatar):FactoryKit.Container.avatarCaptionStateFactory.getter : FactoryKit.Factory<ChatGPTAvatarInterface.AvatarCaptionStateFactory>
+(extension in ChatGPTAvatar):FactoryKit.Container.avatarCaptionStateFactoryResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTAvatarInterface.AvatarCaptionStateFactory>
+(extension in ChatGPTSunset):FactoryKit.Container.sunsetStateObserver.getter : FactoryKit.Factory<ChatGPTSunset.SunsetStateObserver>
+(extension in ChatGPTSunset):FactoryKit.Container.sunsetStateObserverResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTSunset.SunsetStateObserver>
+(extension in Conversations):FactoryKit.Container.feedbackStateObserver.getter : FactoryKit.Factory<ConversationsInterface.FeedbackStateObserver>
+(extension in Conversations):FactoryKit.Container.feedbackStateObserverResolver.getter : OAInject.Resolver<@Sendable () -> ConversationsInterface.FeedbackStateObserver>
+(extension in Conversations):FactoryKit.Container.conversationForceLoginRecovery.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ConversationsInterface.ConversationForceLoginRecovery>>
+(extension in Conversations):FactoryKit.Container.messageEndVisibilityEventPublisher.getter : FactoryKit.Factory<ConversationsInterface.MessageEndVisibilityEventPublisher>
+(extension in Conversations):FactoryKit.Container.generateAutocompletionsLoggedOutAPI.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ConversationsInterface.GenerateAutocompletionsLoggedOutAPI>>
+(extension in Conversations):FactoryKit.Container.conversationForceLoginRecoveryBinding.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ConversationsInterface.ConversationForceLoginRecoveryBinding>>
+(extension in Conversations):FactoryKit.Container.conversationScrollToBottomCoordinator.getter : FactoryKit.Factory<ConversationsInterface.ConversationScrollToBottomCoordinator>
+(extension in Conversations):FactoryKit.Container.conversationForceLoginRecoveryResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ConversationsInterface.ConversationForceLoginRecovery>
+(extension in Conversations):FactoryKit.Container.messageEndVisibilityEventPublisherResolver.getter : OAInject.Resolver<@Sendable () -> ConversationsInterface.MessageEndVisibilityEventPublisher>
+(extension in Conversations):FactoryKit.Container.generateAutocompletionsLoggedOutAPIResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ConversationsInterface.GenerateAutocompletionsLoggedOutAPI>
+(extension in Conversations):FactoryKit.Container.conversationForceLoginRecoveryBindingResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ConversationsInterface.ConversationForceLoginRecoveryBinding>
+(extension in Conversations):FactoryKit.Container.conversationScrollToBottomCoordinatorResolver.getter : OAInject.Resolver<@Sendable () -> ConversationsInterface.ConversationScrollToBottomCoordinator>
+(extension in DeviceHaptics):FactoryKit.Container.hapticEngine.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<DeviceHaptics.HapticEngine>>
+(extension in DeviceHaptics):FactoryKit.Container.hapticCapabilities.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<DeviceHaptics.HapticCapabilities>>
+(extension in DeviceHaptics):FactoryKit.Container.hapticEngineResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> DeviceHaptics.HapticEngine>
+(extension in DeviceHaptics):FactoryKit.Container.hapticCapabilitiesResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> DeviceHaptics.HapticCapabilities>
+(extension in DeviceNetwork):FactoryKit.Container.networkStateObserver.getter : FactoryKit.Factory<DeviceCore.NetworkStateObserver>
+(extension in DeviceNetwork):FactoryKit.Container.networkStateObserverResolver.getter : OAInject.Resolver<@Sendable () -> DeviceCore.NetworkStateObserver>
+(extension in ChatGPTWebView):FactoryKit.Container.webViewPoolResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTWebView.WebViewPool>
+(extension in ChatGPTWebView):FactoryKit.Container.webViewPool.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTWebView.WebViewPool>>
+(extension in ChatGPTWebView):FactoryKit.Container.systemWebViewFactory.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTWebView.SystemWebViewFactory>>
+(extension in ChatGPTWebView):FactoryKit.Container.systemWebViewFactoryResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTWebView.SystemWebViewFactory>
+(extension in ChatGPTWhisper):FactoryKit.Container.dictationRecordingEnvironment.getter : FactoryKit.Factory<ChatGPTWhisper.DictationRecordingEnvironment>
+(extension in ChatGPTWhisper):FactoryKit.Container.dictationRecordingEnvironmentResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTWhisper.DictationRecordingEnvironment>
+(extension in DeviceLocation):FactoryKit.Container.userLocationCookieProvider.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<DeviceLocation.UserLocationCookieProvider>>
+(extension in DeviceLocation):FactoryKit.Container.userLocationCookieProviderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> DeviceLocation.UserLocationCookieProvider>
+(extension in DeviceLocation):FactoryKit.Container.reverseGeocoder.getter : FactoryKit.Factory<DeviceLocation.ReverseGeocoder>
+(extension in DeviceLocation):FactoryKit.Container.locationProvider.getter : FactoryKit.Factory<DeviceLocation.LocationProvider>
+(extension in DeviceLocation):FactoryKit.Container.cachedReverseGeocoder.getter : FactoryKit.Factory<DeviceLocation.CachedReverseGeocoder>
+(extension in DeviceLocation):FactoryKit.Container.reverseGeocoderResolver.getter : OAInject.Resolver<@Sendable () -> DeviceLocation.ReverseGeocoder>
+(extension in DeviceLocation):FactoryKit.Container.locationProviderResolver.getter : OAInject.Resolver<@Sendable () -> DeviceLocation.LocationProvider>
+(extension in DeviceLocation):FactoryKit.Container.cachedReverseGeocoderResolver.getter : OAInject.Resolver<@Sendable () -> DeviceLocation.CachedReverseGeocoder>
+(extension in ChatGPTProjects):FactoryKit.Container.projectLatencyTracking.getter : FactoryKit.Factory<ChatGPTProjects.ProjectLatencyTracking>
+(extension in ChatGPTProjects):FactoryKit.Container.projectLatencyTrackingResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTProjects.ProjectLatencyTracking>
+(extension in ChatGPTSettings):FactoryKit.Container.colorSchemePreference.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTSettingsInterface.ColorSchemePreference>>
+(extension in ChatGPTSettings):FactoryKit.Container.colorSchemePreferenceResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTSettingsInterface.ColorSchemePreference>
+(extension in AppEntryTracking):FactoryKit.Container.appEntryTracking.getter : FactoryKit.Factory<AppEntryTrackingInterface.AppEntryTracking>
+(extension in AppEntryTracking):FactoryKit.Container.appEntryTrackingResolver.getter : OAInject.Resolver<@Sendable () -> AppEntryTrackingInterface.AppEntryTracking>
+(extension in ChatGPTFailwhale):FactoryKit.Container.failwhaleStateObserver.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTFailwhale.FailwhaleStateObserver>>
+(extension in ChatGPTFailwhale):FactoryKit.Container.failwhaleStateObserverResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTFailwhale.FailwhaleStateObserver>
+(extension in PhoneNumberUtils):FactoryKit.Container.phoneNumberServiceResolver.getter : OAInject.Resolver<@Sendable () -> PhoneNumberUtils.PhoneNumberService>
+(extension in PhoneNumberUtils):FactoryKit.Container.phoneNumberService.getter : FactoryKit.Factory<PhoneNumberUtils.PhoneNumberService>
+(extension in ChatGPTBazaarCore):FactoryKit.Container.noAuthAdsPersonalizationSettingService.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTBazaarCore.NoAuthAdsPersonalizationSettingService>>
+(extension in ChatGPTBazaarCore):FactoryKit.Container.noAuthAdsPersonalizationSettingServiceResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTBazaarCore.NoAuthAdsPersonalizationSettingService>
+(extension in ChatGPTHealthCore):FactoryKit.Container.healthStoreRepository.getter : FactoryKit.Factory<ChatGPTHealthCore.HealthStoreRepository>
+(extension in ChatGPTHealthCore):FactoryKit.Container.healthStoreRepositoryResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTHealthCore.HealthStoreRepository>
+(extension in ChatGPTVoiceAudio):FactoryKit.Container.phoneGestureVoiceAudioRoutingResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTVoiceAudioInterface.PhoneGestureVoiceAudioRouting>
+(extension in ChatGPTVoiceAudio):FactoryKit.Container.phoneGestureVoiceAudioRouting.getter : FactoryKit.Factory<ChatGPTVoiceAudioInterface.PhoneGestureVoiceAudioRouting>
+(extension in ChatGPTVoiceAudio):FactoryKit.Container.assistantAudioCapturePostProcessorFactory.getter : FactoryKit.Factory<ChatGPTVoiceAudioInterface.AssistantAudioCapturePostProcessorFactory>
+(extension in ChatGPTVoiceAudio):FactoryKit.Container.assistantAudioCapturePostProcessorFactoryResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTVoiceAudioInterface.AssistantAudioCapturePostProcessorFactory>
+(extension in OAICrashReporting):FactoryKit.Container.crashSignalObserver.getter : FactoryKit.Factory<OAICrashReporting.CrashSignalObserver>
+(extension in OAICrashReporting):FactoryKit.Container.crashSignalObserverResolver.getter : OAInject.Resolver<@Sendable () -> OAICrashReporting.CrashSignalObserver>
+(extension in OAIStatsigService):FactoryKit.Container.statsigServiceURLSessionFactory.getter : FactoryKit.Factory<OAIStatsigServiceInterface.StatsigServiceURLSessionFactory>
+(extension in OAIStatsigService):FactoryKit.Container.statsigServiceURLSessionFactoryResolver.getter : OAInject.Resolver<@Sendable () -> OAIStatsigServiceInterface.StatsigServiceURLSessionFactory>
+(extension in ToolbeltProviders):FactoryKit.Container.currentDateProvider.getter : FactoryKit.Factory<FoundationToolbelt.CurrentDateProvider>
+(extension in ToolbeltProviders):FactoryKit.Container.currentDateProviderResolver.getter : OAInject.Resolver<@Sendable () -> FoundationToolbelt.CurrentDateProvider>
+(extension in AppGroupSharedData):FactoryKit.Container.deviceIDProvider.getter : FactoryKit.Factory<AppGroupSharedDataInterface.DeviceIDProvider>
+(extension in AppGroupSharedData):FactoryKit.Container.deviceIDProviderResolver.getter : OAInject.Resolver<@Sendable () -> AppGroupSharedDataInterface.DeviceIDProvider>
+(extension in AudioPlayerService):FactoryKit.Container.audioPlayerService.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<AudioPlayerServiceInterface.AudioPlayerService>>
+(extension in AudioPlayerService):FactoryKit.Container.audioPlayerServiceResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> AudioPlayerServiceInterface.AudioPlayerService>
+(extension in AudioPlayerService):FactoryKit.Container.audioSessionManager.getter : FactoryKit.Factory<AudioPlayerServiceInterface.AudioSessionManager>
+(extension in AudioPlayerService):FactoryKit.Container.audioSessionManagerResolver.getter : OAInject.Resolver<@Sendable () -> AudioPlayerServiceInterface.AudioSessionManager>
+(extension in AudioPlayerService):FactoryKit.Container.audioPlaybackSessionActivator.getter : FactoryKit.Factory<AudioPlayerServiceInterface.AudioPlaybackSessionActivator>
+(extension in AudioPlayerService):FactoryKit.Container.audioPlaybackSessionActivatorResolver.getter : OAInject.Resolver<@Sendable () -> AudioPlayerServiceInterface.AudioPlaybackSessionActivator>
+(extension in ChatGPTAccountRoot):FactoryKit.Container.userMetadataDependenciesFactory.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTAccountRoot.UserMetadataDependenciesFactory>>
+(extension in ChatGPTAccountRoot):FactoryKit.Container.userMetadataDependenciesFactoryResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTAccountRoot.UserMetadataDependenciesFactory>
+(extension in ChatGPTMessageInput):FactoryKit.Container.messageInputEventPublisher.getter : FactoryKit.Factory<ChatGPTMessageInput.MessageInputEventPublisher>
+(extension in ChatGPTMessageInput):FactoryKit.Container.messageInputEventPublisherResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTMessageInput.MessageInputEventPublisher>
+(extension in ChatGPTMessageInput):FactoryKit.Container.conversationDraftAnalytics.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTMessageInput.ConversationDraftAnalytics>>
+(extension in ChatGPTMessageInput):FactoryKit.Container.conversationDraftAnalyticsResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTMessageInput.ConversationDraftAnalytics>
+(extension in DeviceNotifications):FactoryKit.Container.notifications.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<DeviceNotifications.Notifications>>
+(extension in DeviceNotifications):FactoryKit.Container.notificationsResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> DeviceNotifications.Notifications>
+(extension in ChatGPTNotifications):FactoryKit.Container.notificationBadgeServiceResolverResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTNotifications.NotificationBadgeServiceResolver>
+(extension in ChatGPTNotifications):FactoryKit.Container.notificationBadgeServiceResolver.getter : FactoryKit.Factory<ChatGPTNotifications.NotificationBadgeServiceResolver>
+(extension in ChatGPTNotifications):FactoryKit.Container.localNotificationSettingsRepository.getter : FactoryKit.Factory<ChatGPTNotifications.LocalNotificationSettingsRepository>
+(extension in ChatGPTNotifications):FactoryKit.Container.localNotificationSettingsRepositoryResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTNotifications.LocalNotificationSettingsRepository>
+(extension in ValdiDynamicDelivery):FactoryKit.Container.valdiLastActiveRuntimeSelectionStore.getter : FactoryKit.Factory<ValdiDynamicDelivery.ValdiLastActiveRuntimeSelectionStore>
+(extension in ValdiDynamicDelivery):FactoryKit.Container.valdiLastActiveRuntimeSelectionStoreResolver.getter : OAInject.Resolver<@Sendable () -> ValdiDynamicDelivery.ValdiLastActiveRuntimeSelectionStore>
+(extension in ChatGPTMessageWidgets):FactoryKit.Container.faviconBackgroundColorProvider.getter : FactoryKit.Factory<ChatGPTCore.FaviconBackgroundColorProvider>
+(extension in ChatGPTMessageWidgets):FactoryKit.Container.faviconBackgroundColorProviderResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTCore.FaviconBackgroundColorProvider>
+(extension in BackgroundTaskToolbelt):FactoryKit.Container.continuedProcessingTaskManagerResolver.getter : OAInject.Resolver<@Sendable () -> BackgroundTaskToolbelt.ContinuedProcessingTaskManager>
+(extension in BackgroundTaskToolbelt):FactoryKit.Container.continuedProcessingTaskManager.getter : FactoryKit.Factory<BackgroundTaskToolbelt.ContinuedProcessingTaskManager>
+(extension in ChatGPTIntentsServices):FactoryKit.Container.chatGPTCarPlayWidgetNavigation.getter : FactoryKit.Factory<ChatGPTIntentsInterface.ChatGPTCarPlayWidgetNavigation>
+(extension in ChatGPTIntentsServices):FactoryKit.Container.chatGPTCarPlayWidgetNavigationResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTIntentsInterface.ChatGPTCarPlayWidgetNavigation>
+(extension in ChatGPTPresentationCore):FactoryKit.Container.elevatedPresentationService.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTPresentationCore.ElevatedPresentationService>>
+(extension in ChatGPTPresentationCore):FactoryKit.Container.elevatedPresentationServiceResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTPresentationCore.ElevatedPresentationService>
+(extension in ChatGPTCommerceAnalytics):FactoryKit.Container.productOfferAnalyticsClientResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTCommerceAnalyticsInterface.ProductOfferAnalyticsClient>
+(extension in ChatGPTCommerceAnalytics):FactoryKit.Container.productOfferAnalyticsClient.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTCommerceAnalyticsInterface.ProductOfferAnalyticsClient>>
+(extension in ChatGPTCommerceAnalytics):FactoryKit.Container.virtualTryOnAnalyticsClientResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTCommerceAnalyticsInterface.VirtualTryOnAnalyticsClient>
+(extension in ChatGPTCommerceAnalytics):FactoryKit.Container.virtualTryOnAnalyticsClient.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTCommerceAnalyticsInterface.VirtualTryOnAnalyticsClient>>
+(extension in ChatGPTSubscriptionsCore):FactoryKit.Container.countryCodeMapProvider.getter : FactoryKit.Factory<ChatGPTSubscriptionsCore.CountryCodeMapProvider>
+(extension in ChatGPTSubscriptionsCore):FactoryKit.Container.countryCodeMapProviderResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTSubscriptionsCore.CountryCodeMapProvider>
+(extension in ChatGPTSubscriptionsCore):FactoryKit.Container.storefrontAvailabilityProvider.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTSubscriptionsCore.StorefrontAvailabilityProvider>>
+(extension in ChatGPTSubscriptionsCore):FactoryKit.Container.storefrontAvailabilityProviderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTSubscriptionsCore.StorefrontAvailabilityProvider>
+(extension in ChatGPTUnsupportedCountry):FactoryKit.Container.unsupportedCountryObserverResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTUnsupportedCountry.UnsupportedCountryObserver>
+(extension in ChatGPTUnsupportedCountry):FactoryKit.Container.unsupportedCountryObserver.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTUnsupportedCountry.UnsupportedCountryObserver>>
+(extension in ChatGPTVoiceConversationUI):FactoryKit.Container.voiceTrialCoordinatorFactory.getter : FactoryKit.Factory<ChatGPTVoiceConversationUIInterface.VoiceTrialCoordinatorFactory>
+(extension in ChatGPTVoiceConversationUI):FactoryKit.Container.voiceTrialCoordinatorFactoryResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTVoiceConversationUIInterface.VoiceTrialCoordinatorFactory>
+(extension in ChatGPTVoiceConversationUI):FactoryKit.Container.voiceOnboardingCoordinatorFactory.getter : FactoryKit.Factory<ChatGPTVoiceConversationUIInterface.VoiceOnboardingCoordinatorFactory>
+(extension in ChatGPTVoiceConversationUI):FactoryKit.Container.voiceOnboardingCoordinatorFactoryResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTVoiceConversationUIInterface.VoiceOnboardingCoordinatorFactory>
+(extension in ChatGPTVoiceConversationUI):FactoryKit.Container.phoneGestureVoiceCoordinatorFactory.getter : FactoryKit.Factory<ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceCoordinatorFactory>
+(extension in ChatGPTVoiceConversationUI):FactoryKit.Container.phoneGestureVoiceCoordinatorFactoryResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceCoordinatorFactory>
+(extension in ChatGPTVoiceConversationUI):FactoryKit.Container.voiceConversationLaunchCoordinatorFactory.getter : FactoryKit.Factory<ChatGPTVoiceConversationUIInterface.VoiceConversationLaunchCoordinatorFactory>
+(extension in ChatGPTVoiceConversationUI):FactoryKit.Container.voiceConversationLaunchCoordinatorFactoryResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTVoiceConversationUIInterface.VoiceConversationLaunchCoordinatorFactory>
+(extension in ChatGPTVoiceConversationUI):FactoryKit.Container.voiceConversationPresentationStateFactory.getter : FactoryKit.Factory<ChatGPTVoiceConversationUIInterface.VoiceConversationPresentationStateFactory>
+(extension in ChatGPTVoiceConversationUI):FactoryKit.Container.voiceConversationPresentationStateFactoryResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTVoiceConversationUIInterface.VoiceConversationPresentationStateFactory>
+(extension in ChatGPTFirstPartyEligibility):FactoryKit.Container.firstPartyEligibilityServiceResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTFirstPartyEligibilityInterface.FirstPartyEligibilityService>
+(extension in ChatGPTFirstPartyEligibility):FactoryKit.Container.firstPartyEligibilityService.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTFirstPartyEligibilityInterface.FirstPartyEligibilityService>>
+(extension in ChatGPTSubscriptionsTrialCountdown):FactoryKit.Container.noPaymentTrialCountdownFactory.getter : FactoryKit.Factory<ChatGPTSubscriptionsInterface.NoPaymentTrialCountdownFactory>
+(extension in ChatGPTSubscriptionsTrialCountdown):FactoryKit.Container.noPaymentTrialCountdownFactoryResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTSubscriptionsInterface.NoPaymentTrialCountdownFactory>
+(extension in ChatGPTEntityDetailPrefetchResourcePolicy):FactoryKit.Container.messageEntityDetailPrefetchResourcePolicy.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTEntityDetailPrefetchResourcePolicyInterface.MessageEntityDetailPrefetchResourcePolicy>>
+(extension in ChatGPTEntityDetailPrefetchResourcePolicy):FactoryKit.Container.messageEntityDetailPrefetchResourcePolicyResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTEntityDetailPrefetchResourcePolicyInterface.MessageEntityDetailPrefetchResourcePolicy>
+(extension in Auth):FactoryKit.Container.rootAuthentication.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Auth.RootAuthentication>>
+(extension in Auth):FactoryKit.Container.accountAuthentication.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Auth.AccountAuthentication>>
+(extension in Auth):FactoryKit.Container.loginCredentialInstaller.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Auth.LoginCredentialInstaller>>
+(extension in Auth):FactoryKit.Container.interactiveAuthentication.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Auth.InteractiveAuthentication>>
+(extension in Auth):FactoryKit.Container.firstLaunchCredentialReset.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<AuthInterface.FirstLaunchCredentialReset>>
+(extension in Auth):FactoryKit.Container.firstLaunchSessionRecovery.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Auth.FirstLaunchSessionRecovery>>
+(extension in Auth):FactoryKit.Container.rootAuthenticationResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Auth.RootAuthentication>
+(extension in Auth):FactoryKit.Container.authenticationStateObserving.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<AuthInterface.AuthenticationStateObserving>>
+(extension in Auth):FactoryKit.Container.accountAuthenticationResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Auth.AccountAuthentication>
+(extension in Auth):FactoryKit.Container.authenticationSessionLifecycle.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Auth.AuthenticationSessionLifecycle>>
+(extension in Auth):FactoryKit.Container.loginCredentialInstallerResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Auth.LoginCredentialInstaller>
+(extension in Auth):FactoryKit.Container.mobileAttributionContextProvider.getter : FactoryKit.Factory<AuthInterface.MobileAttributionContextProvider>
+(extension in Auth):FactoryKit.Container.interactiveAuthenticationResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Auth.InteractiveAuthentication>
+(extension in Auth):FactoryKit.Container.firstLaunchCredentialResetResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> AuthInterface.FirstLaunchCredentialReset>
+(extension in Auth):FactoryKit.Container.firstLaunchSessionRecoveryResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Auth.FirstLaunchSessionRecovery>
+(extension in Auth):FactoryKit.Container.signInWithAppleAuthorizationClient.getter : FactoryKit.Factory<Auth.SignInWithAppleAuthorizationClient>
+(extension in Auth):FactoryKit.Container.authenticationStateObservingResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> AuthInterface.AuthenticationStateObserving>
+(extension in Auth):FactoryKit.Container.authenticationCredentialAdministration.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Auth.AuthenticationCredentialAdministration>>
+(extension in Auth):FactoryKit.Container.authenticationRegisteredUsersObserving.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<AuthInterface.AuthenticationRegisteredUsersObserving>>
+(extension in Auth):FactoryKit.Container.authenticationSessionLifecycleResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Auth.AuthenticationSessionLifecycle>
+(extension in Auth):FactoryKit.Container.mobileAttributionContextProviderResolver.getter : OAInject.Resolver<@Sendable () -> AuthInterface.MobileAttributionContextProvider>
+(extension in Auth):FactoryKit.Container.signInWithAppleAuthorizationClientResolver.getter : OAInject.Resolver<@Sendable () -> Auth.SignInWithAppleAuthorizationClient>
+(extension in Auth):FactoryKit.Container.authenticationCredentialAdministrationResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Auth.AuthenticationCredentialAdministration>
+(extension in Auth):FactoryKit.Container.authenticationRegisteredUsersObservingResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> AuthInterface.AuthenticationRegisteredUsersObserving>
+(extension in Users):FactoryKit.Container.userManager.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Users.UserManager>>
+(extension in Users):FactoryKit.Container.userProfileStore.getter : FactoryKit.Factory<Users.UserProfileStore>
+(extension in Users):FactoryKit.Container.userManagerResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Users.UserManager>
+(extension in Users):FactoryKit.Container.userProfileStoreResolver.getter : OAInject.Resolver<@Sendable () -> Users.UserProfileStore>
+(extension in Users):FactoryKit.Container.bootstrapCurrentUserStore.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Users.BootstrapCurrentUserStore>>
+(extension in Users):FactoryKit.Container.retiredUserProfileCleaning.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Users.RetiredUserProfileCleaning>>
+(extension in Users):FactoryKit.Container.authenticationSessionSelection.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Users.AuthenticationSessionSelection>>
+(extension in Users):FactoryKit.Container.bootstrapCurrentUserStoreResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Users.BootstrapCurrentUserStore>
+(extension in Users):FactoryKit.Container.retiredUserProfileCleaningResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Users.RetiredUserProfileCleaning>
+(extension in Users):FactoryKit.Container.authenticationSessionSelectionResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Users.AuthenticationSessionSelection>
+(extension in Scopes):FactoryKit.Container.dependencyStore.getter : OAInject.DependencyStore
+(extension in Scopes):FactoryKit.Container.userScopeRegistry.getter : FactoryKit.Factory<Scopes.UserScopeRegistry>
+(extension in Scopes):FactoryKit.Container.userScopeRegistryResolver.getter : OAInject.Resolver<@Sendable () -> Scopes.UserScopeRegistry>
+static FactoryKit.Container.shared.getter : FactoryKit.Container
+(extension in Account):FactoryKit.Container.legacyAccountDataMigrationObserver.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Account.LegacyAccountDataMigrationObserver>>
+(extension in Account):FactoryKit.Container.legacyAccountDataMigrationObserverResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Account.LegacyAccountDataMigrationObserver>
+(extension in Account):FactoryKit.Container.userAccountsReader.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Account.UserAccountsReader>>
+(extension in Account):FactoryKit.Container.userWorkspaceStateReader.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<AccountWorkspaceStateInterface.UserWorkspaceStateReader>>
+(extension in Account):FactoryKit.Container.activeUserWorkspaceManager.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Account.ActiveUserWorkspaceManager>>
+(extension in Account):FactoryKit.Container.userAccountsReaderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Account.UserAccountsReader>
+(extension in Account):FactoryKit.Container.userWorkspaceStateReaderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> AccountWorkspaceStateInterface.UserWorkspaceStateReader>
+(extension in Account):FactoryKit.Container.activeUserWorkspaceManagerResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Account.ActiveUserWorkspaceManager>
+(extension in ChatGPT):FactoryKit.Container.orbitConversationFactoryStoreResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPT.OrbitConversationFactoryStore>
+(extension in ChatGPT):FactoryKit.Container.orbitConversationFactoryStore.getter : FactoryKit.Factory<ChatGPT.OrbitConversationFactoryStore>
+(extension in ChatGPT):FactoryKit.Container.installingLoginSessionFactory.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Auth.InstallingLoginSessionFactory>>
+(extension in ChatGPT):FactoryKit.Container.installingLoginSessionFactoryResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> Auth.InstallingLoginSessionFactory>
+(extension in ChatGPT):FactoryKit.Container.financeDeepLinkEligibilityFactory.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPT.FinanceDeepLinkEligibilityFactory>>
+(extension in ChatGPT):FactoryKit.Container.financeDeepLinkEligibilityFactoryResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPT.FinanceDeepLinkEligibilityFactory>
+(extension in ChatGPT):FactoryKit.Container.loginStateObserver.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPT.LoginStateObserver>>
+(extension in ChatGPT):FactoryKit.Container.dotIntentAccountSource.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<TibroDotIntentsInterface.DotIntentAccountSource>>
+(extension in ChatGPT):FactoryKit.Container.activeWorkspaceWorkMode.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPT.ActiveWorkspaceWorkMode>>
+(extension in ChatGPT):FactoryKit.Container.valdiAudioAuthentication.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTValdiInterface.ValdiAudioAuthentication>>
+(extension in ChatGPT):FactoryKit.Container.loginStateObserverResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPT.LoginStateObserver>
+(extension in ChatGPT):FactoryKit.Container.sitesBrowserBuilderBinding.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPT.SitesBrowserBuilderBinding>>
+(extension in ChatGPT):FactoryKit.Container.orbitNotificationReplyHandler.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<ChatGPTNotificationsInterface.OrbitNotificationReplyHandler>>
+(extension in ChatGPT):FactoryKit.Container.dotIntentAccountSourceResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> TibroDotIntentsInterface.DotIntentAccountSource>
+(extension in ChatGPT):FactoryKit.Container.activeWorkspaceWorkModeResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPT.ActiveWorkspaceWorkMode>
+(extension in ChatGPT):FactoryKit.Container.valdiAudioAuthenticationResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTValdiInterface.ValdiAudioAuthentication>
+(extension in ChatGPT):FactoryKit.Container.sitesBrowserBuilderBindingResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPT.SitesBrowserBuilderBinding>
+(extension in ChatGPT):FactoryKit.Container.orbitNotificationReplyHandlerResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTNotificationsInterface.OrbitNotificationReplyHandler>
+(extension in DeviceUI):FactoryKit.Container.idleTimerService.getter : FactoryKit.Factory<DeviceUI.IdleTimerService>
+(extension in DeviceUI):FactoryKit.Container.applicationStateObserver.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<DeviceCore.ApplicationStateObserver>>
+(extension in DeviceUI):FactoryKit.Container.idleTimerServiceResolver.getter : OAInject.Resolver<@Sendable () -> DeviceUI.IdleTimerService>
+(extension in DeviceUI):FactoryKit.Container.applicationStateObserverResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> DeviceCore.ApplicationStateObserver>
+(extension in Flagpole):FactoryKit.Container.remoteConfigManager.getter : FactoryKit.Factory<Flagpole.RemoteConfigManager>
+(extension in Flagpole):FactoryKit.Container.statsigGateEvaluator.getter : FactoryKit.Factory<OAIStatsigServiceInterface.StatsigGateEvaluator>
+(extension in Flagpole):FactoryKit.Container.experimentManagerService.getter : FactoryKit.Factory<Flagpole.ExperimentManagerService>
+(extension in Flagpole):FactoryKit.Container.statsigFeatureFlagManager.getter : FactoryKit.Factory<Flagpole.StatsigFeatureFlagManager>
+(extension in Flagpole):FactoryKit.Container.statsigFeatureFlagService.getter : FactoryKit.Factory<Flagpole.StatsigFeatureFlagService>
+(extension in Flagpole):FactoryKit.Container.remoteConfigManagerResolver.getter : OAInject.Resolver<@Sendable () -> Flagpole.RemoteConfigManager>
+(extension in Flagpole):FactoryKit.Container.statsigGateEvaluatorResolver.getter : OAInject.Resolver<@Sendable () -> OAIStatsigServiceInterface.StatsigGateEvaluator>
+(extension in Flagpole):FactoryKit.Container.experimentManagerServiceResolver.getter : OAInject.Resolver<@Sendable () -> Flagpole.ExperimentManagerService>
+(extension in Flagpole):FactoryKit.Container.statsigFeatureFlagManagerResolver.getter : OAInject.Resolver<@Sendable () -> Flagpole.StatsigFeatureFlagManager>
+(extension in Flagpole):FactoryKit.Container.statsigFeatureFlagServiceResolver.getter : OAInject.Resolver<@Sendable () -> Flagpole.StatsigFeatureFlagService>
+(extension in APIClient):FactoryKit.Container.loggedOutAPI.getter : FactoryKit.Factory<APIClient.LoggedOutAPI>
+(extension in APIClient):FactoryKit.Container.urlSessionService.getter : FactoryKit.Factory<APIClientInterface.URLSessionService>
+(extension in APIClient):FactoryKit.Container.loggedOutAPIResolver.getter : OAInject.Resolver<@Sendable () -> APIClient.LoggedOutAPI>
+(extension in APIClient):FactoryKit.Container.authTokenEndpointClient.getter : FactoryKit.Factory<APIClientInterface.AuthTokenEndpointClient>
+(extension in APIClient):FactoryKit.Container.urlSessionServiceResolver.getter : OAInject.Resolver<@Sendable () -> APIClientInterface.URLSessionService>
+(extension in APIClient):FactoryKit.Container.authenticatedCookieManager.getter : FactoryKit.Factory<AuthenticatedCookieManagerInterface.AuthenticatedCookieManager>
+(extension in APIClient):FactoryKit.Container.apiRequestTracingConfiguring.getter : FactoryKit.Factory<APIClientInterface.APIRequestTracingConfiguring>
+(extension in APIClient):FactoryKit.Container.authTokenEndpointClientResolver.getter : OAInject.Resolver<@Sendable () -> APIClientInterface.AuthTokenEndpointClient>
+(extension in APIClient):FactoryKit.Container.authenticatedCookieManagerResolver.getter : OAInject.Resolver<@Sendable () -> AuthenticatedCookieManagerInterface.AuthenticatedCookieManager>
+(extension in APIClient):FactoryKit.Container.apiRequestTracingConfiguringResolver.getter : OAInject.Resolver<@Sendable () -> APIClientInterface.APIRequestTracingConfiguring>
+(extension in Analytics):FactoryKit.Container.analyticsClient.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<AnalyticsInterface.AnalyticsClient>>
+(extension in Analytics):FactoryKit.Container.analyticsClientResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> AnalyticsInterface.AnalyticsClient>
+(extension in OAIIntune):FactoryKit.Container.intuneManager.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<OAIIntune.IntuneManager>>
+(extension in OAIIntune):FactoryKit.Container.intuneManagerResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> OAIIntune.IntuneManager>
+(extension in OAIIntune):FactoryKit.Container.intuneDataTransferPolicy.getter : FactoryKit.Factory<OAIIntune.IntuneDataTransferPolicy>
+(extension in OAIIntune):FactoryKit.Container.intuneDataTransferPolicyResolver.getter : OAInject.Resolver<@Sendable () -> OAIIntune.IntuneDataTransferPolicy>
+protocol witness table for FactoryKit.Container : FactoryKit.ManagedContainer in FactoryKit
+type metadata accessor for FactoryKit.Container
+protocol descriptor for OAILogging.AppSessionID
+protocol descriptor for OAILogging.LoggerProtocol
+protocol descriptor for OAILogging.ForegroundIntervalID
+protocol descriptor for OAILogging.AppSessionIDProviding
+protocol descriptor for OAILogging.ForegroundIntervalIDProviding
+(extension in CalpicoCore):OAILogging.Log.calpico.unsafeMutableAddressor : OAILogging.Log
+(extension in DeviceNotifications):OAILogging.Log.notifications.unsafeMutableAddressor : OAILogging.Log
+(extension in ChatGPTIntentsInterface):OAILogging.Log.intents.unsafeMutableAddressor : OAILogging.Log
+OAILogging.Log.info(_: Swift.String, error: Swift.Error?, userIdentityOverride: OAILogging.Log.UserIdentity?, additionalUserAttributes: [Swift.String : Swift.Encodable & Swift.Sendable]?, attributeKeyPrefix: Swift.String?, attributes: [Swift.String : Swift.Encodable & Swift.Sendable]?, file: Swift.String, line: Swift.UInt, function: Swift.String) -> ()
+OAILogging.Log.init(name: Swift.StaticString, messagePrefix: Swift.String?, contextProvider: OAILogging.LogContextProviding?, isDisabled: Swift.Bool) -> OAILogging.Log
+OAILogging.Log.warn(_: Swift.String, error: Swift.Error?, userIdentityOverride: OAILogging.Log.UserIdentity?, additionalUserAttributes: [Swift.String : Swift.Encodable & Swift.Sendable]?, attributeKeyPrefix: Swift.String?, attributes: [Swift.String : Swift.Encodable & Swift.Sendable]?, file: Swift.String, line: Swift.UInt, function: Swift.String) -> ()
+OAILogging.Log.error(_: Swift.String, error: Swift.Error?, userIdentityOverride: OAILogging.Log.UserIdentity?, additionalUserAttributes: [Swift.String : Swift.Encodable & Swift.Sendable]?, attributeKeyPrefix: Swift.String?, attributes: [Swift.String : Swift.Encodable & Swift.Sendable]?, file: Swift.String, line: Swift.UInt, function: Swift.String) -> ()
+static OAILogging.Log.setUp(loggers: [OAILogging.LoggerProtocol.Type], tracers: [OAILogging.TraceEmitting.Type], with: [Swift.String : Swift.Encodable & Swift.Sendable]) -> ()
+type metadata for OAILogging.Log
+protocol witness table for OAILogging.OSLogger : OAILogging.LoggerProtocol in OAILogging
+type metadata accessor for OAILogging.OSLogger
+static CalpicoCore.DefaultCalpicoRuntimeService.pushQueueEnabled.getter : Swift.Bool
+type metadata accessor for CalpicoCore.DefaultCalpicoRuntimeService
+protocol witness table for CalpicoCore.DefaultCalpicoNotificationHistoryCache : ChatGPTCalpicoInterface.CalpicoNotificationHistoryCache in CalpicoCore
+type metadata accessor for CalpicoCore.DefaultCalpicoNotificationHistoryCache
+CalpicoCore.CalpicoNotification.CalpicoMessage.sharedContentNotificationBody.getter : Swift.String?
+CalpicoCore.CalpicoNotification.CalpicoMessage.imageAssetPointer.getter : Swift.String?
+type metadata accessor for CalpicoCore.CalpicoNotification.CalpicoMessage.Media
+CalpicoCore.CalpicoNotification.CalpicoMessage.init(roomId: Tagged.Tagged<CalpicoCore.CalpicoRoom, Swift.String>, avatarUrl: CodableToolbelt.ResilientURL?) -> CalpicoCore.CalpicoNotification.CalpicoMessage
+CalpicoCore.CalpicoNotification.CalpicoMessage.sender(displayName: Swift.String) -> CalpicoCore.CalpicoMember?
+type metadata accessor for CalpicoCore.CalpicoNotification.CalpicoMessage
+nominal type descriptor for CalpicoCore.CalpicoNotification.CalpicoMessage
+CalpicoCore.CalpicoNotification.message.getter : CalpicoCore.CalpicoNotification.CalpicoMessage?
+type metadata accessor for CalpicoCore.CalpicoNotification
+nominal type descriptor for CalpicoCore.CalpicoNotification
+nominal type descriptor for CalpicoCore.CalpicoNotificationRoom
+static CalpicoCore.CalpicoProfileImagePart.ProfileImage.profilePhotoURL(for: CalpicoCore.CalpicoMember) -> Foundation.URL?
+CalpicoCore.CalpicoNotificationBridge.__allocating_init(calpicoUserID: Tagged.Tagged<CalpicoCore.CalpicoMember.UserIDTag, Swift.String>, namespace: BuildInfo.BuildInfo.NotificationNamespace) -> CalpicoCore.CalpicoNotificationBridge
+type metadata accessor for CalpicoCore.CalpicoNotificationBridge
+nominal type descriptor for CalpicoCore.CalpicoNotificationBridge
+CalpicoCore.CalpicoNotificationRoomStore.__allocating_init(recipientID: Tagged.Tagged<CalpicoCore.CalpicoMember.UserIDTag, Swift.String>) -> CalpicoCore.CalpicoNotificationRoomStore
+type metadata accessor for CalpicoCore.CalpicoNotificationRoomStore
+static CalpicoCore.CalpicoNotificationAvatarImage.fittingCircle(_: Foundation.Data, aeonID: Tagged.Tagged<CalpicoCore.CalpicoAeonIDTag, Swift.String>?, senderID: Tagged.Tagged<CalpicoCore.CalpicoMember.UserIDTag, Swift.String>?) -> Foundation.Data
+static CalpicoCore.CalpicoCommunicationNotification.intent(sender: CalpicoCore.CalpicoMember, recipientID: Tagged.Tagged<CalpicoCore.CalpicoMember.UserIDTag, Swift.String>, roomID: Tagged.Tagged<CalpicoCore.CalpicoRoom, Swift.String>, group: CalpicoCore.CalpicoNotificationRoom?, groupName: Swift.String?, body: Swift.String, images: [Tagged.Tagged<CalpicoCore.CalpicoMember.UserIDTag, Swift.String> : __C.UIImage], namespace: BuildInfo.BuildInfo.NotificationNamespace) -> __C.INSendMessageIntent
+type metadata accessor for CalpicoCore.CalpicoRoomMessagesResponseListItem
+nominal type descriptor for CalpicoCore.CalpicoRoomMessagesResponseListItem
+nominal type descriptor for CalpicoCore.CalpicoRoom
+static CalpicoCore.CalpicoConfig.orbitWidgetUpsellMessage(for: AccountModels.UpsellPlan) -> Swift.String
+CalpicoCore.CalpicoMember.userID.getter : Tagged.Tagged<CalpicoCore.CalpicoMember.UserIDTag, Swift.String>?
+nominal type descriptor for CalpicoCore.CalpicoMember.UserIDTag
+type metadata accessor for CalpicoCore.CalpicoMember
+nominal type descriptor for CalpicoCore.CalpicoMember
+protocol descriptor for ChatGPTCore.AppSession
+ChatGPTCore.WidgetKind.appControl.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.codexTasks.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.codexUsage.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.homeScreen.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.lockControl.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.codexControl.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.voiceControl.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.codexLockScreen.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.voiceLockScreen.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.shortcutsHomeScreen.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.codexUsageLockScreen.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.codexRealtimeVoiceControl.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.codexRealtimeVoiceLockScreen.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.dot.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+ChatGPTCore.WidgetKind.carPlay.unsafeMutableAddressor : ChatGPTCore.WidgetKind
+protocol descriptor for ChatGPTCore.NoAuthManager
+protocol descriptor for ChatGPTCore.AppSessionProviding
+type metadata accessor for ChatGPTCore.NoAuthSignupHandoff
+ChatGPTCore.AppSessionUserIntent.NewThreadRequest.init(gizmoID: Tagged.Tagged<APICore.GizmoIDTag, Swift.String>?, temporaryChat: Swift.Bool, draftPrompt: Swift.String?, automaticallySendDraftPrompt: Swift.Bool, attachments: [ConversationsInterface.ConversationDraftAttachment]?, searchMode: ConversationsInterface.ConversationCoordinatorSearchModeOverride, startAction: ChatGPTCore.AppSessionUserIntent.StartAction?, systemHint: CodableToolbelt.ResilientCodableEnum<ConversationsCore.SystemHint.KnownHint>?, imageSuggestionID: Swift.String?, imageSuggestionReference: Swift.String?, alwaysAllowDirectIDs: Swift.Bool, presentImageAnnouncements: Swift.Bool, focusInput: Swift.Bool?, assistantMode: DeepLinks.NewConversationDeepLink.AssistantMode?, skill: ChatGPTCore.AppSessionUserIntent.SkillSelection?, modelSlug: Tagged.Tagged<APICore.ModelSlugTag, Swift.String>?, modelFirstLandingRef: Tagged.Tagged<APICore.ModelFirstLandingReferenceTag, Swift.String>?, serviceTier: Tagged.Tagged<APICore.ModelServiceTierTag, Swift.String>?) -> ChatGPTCore.AppSessionUserIntent.NewThreadRequest
+nominal type descriptor for ChatGPTCore.AppSessionUserIntent.NotificationContext
+type metadata accessor for ChatGPTCore.AppSessionUserIntent.Action
+type metadata accessor for ChatGPTCore.AppSessionUserIntent
+nominal type descriptor for ChatGPTCore.AppSessionUserIntent
+protocol descriptor for ChatGPTCore.NoAuthManagerProviding
+static ChatGPTCore.WidgetFeatureAvailability.isWorkModeAvailable.getter : Swift.Bool
+static ChatGPTCore.WidgetFeatureAvailability.isCodexRemoteAvailable.getter : Swift.Bool
+static ChatGPTCore.WidgetFeatureAvailability.isCodexRealtimeVoiceAvailable.getter : Swift.Bool
+protocol descriptor for ChatGPTCore.FaviconBackgroundColorProvider
+protocol descriptor for ChatGPTCore.FaviconBackgroundColorProviderProviding
+protocol descriptor for OAIAppSetup.AppLogging
+protocol descriptor for OAIAppSetup.AppLoggingProviding
+protocol descriptor for OAIMarkdown.KatexEngine
+protocol descriptor for OAIMarkdown.KatexEngineProviding
+static OAIMarkdown.MarkdownExportFormatter.plainText(from: Swift.String) -> Swift.String
+protocol witness table for OAIProtobuf.AnalyticsEvents_V1_ChatgptClientMarkerApplicationStartupAttributes : ClientMarkers.MarkerAttributePayload in ClientMarkers
+type metadata for OAIProtobuf.AnalyticsEvents_V1_ChatgptClientMarkerApplicationStartupAttributes
+protocol descriptor for ChatGPTLogin.NativeAuthUsernamelessPasskeyLoginCoordinatorFactory
+protocol descriptor for ChatGPTLogin.NativeAuthUsernamelessPasskeyLoginCoordinatorFactoryProviding
+protocol descriptor for ChatGPTMedia.ImageSuggestionCameraAccessProvider
+protocol descriptor for ChatGPTMedia.ImageSuggestionCameraAccessProviderProviding
+protocol descriptor for ChatGPTPlaid.PlaidLinkFlowing
+protocol descriptor for ChatGPTPlaid.PlaidFinanceKitSyncing
+protocol descriptor for ChatGPTPlaid.PlaidLinkFlowingProviding
+protocol descriptor for ChatGPTPlaid.PlaidFinanceKitSyncingProviding
+ChatGPTPlaid.FinanceKitPeriodicSyncCoordinator.syncIfNeeded() async -> ()
+async function pointer to ChatGPTPlaid.FinanceKitPeriodicSyncCoordinator.syncIfNeeded() async -> ()
+ChatGPTPlaid.FinanceKitPeriodicSyncCoordinator.__allocating_init(activeUserWorkspaceID: @Swift.MainActor @Sendable () -> CoreIdentifiers.UserWorkspaceID?, api: @Swift.MainActor @Sendable (CoreIdentifiers.UserWorkspaceID) -> APIClient.API, requestLedgerRefresh: @Swift.MainActor @Sendable (CoreIdentifiers.UserWorkspaceID, Tagged.Tagged<ChatGPTPlaid.PlaidFinanceKitLinkIDTag, Swift.String>) async throws -> ()) -> ChatGPTPlaid.FinanceKitPeriodicSyncCoordinator
+type metadata accessor for ChatGPTPlaid.FinanceKitPeriodicSyncCoordinator
+static ChatGPTPlaid.FinanceKitBackgroundDeliveryRuntime.prepareIfNeeded() -> Swift.Bool
+protocol descriptor for DevicePhotos.PhotoLibraryService
+protocol descriptor for DevicePhotos.PhotoLibraryServiceProviding
+Localization.CustomLocalizedStringKey.StringInterpolation.appendInterpolation<A, B where A == B.FormatInput, B: Foundation.FormatStyle, B.FormatOutput == Swift.String>(_: A, format: B) -> ()
+Localization.CustomLocalizedStringKey.StringInterpolation.appendInterpolation(Swift.String) -> ()
+Localization.CustomLocalizedStringKey.StringInterpolation.appendInterpolation<A where A: Swift.CVarArg>(A) -> ()
+Localization.CustomLocalizedStringKey.StringInterpolation.appendLiteral(Swift.String) -> ()
+Localization.CustomLocalizedStringKey.StringInterpolation.init(literalCapacity: Swift.Int, interpolationCount: Swift.Int) -> Localization.CustomLocalizedStringKey.StringInterpolation
+Localization.CustomLocalizedStringKey.init(stringLiteral: Swift.String) -> Localization.CustomLocalizedStringKey
+Localization.CustomLocalizedStringKey.init(stringInterpolation: Localization.CustomLocalizedStringKey.StringInterpolation) -> Localization.CustomLocalizedStringKey
+static Localization.Localized.Navigation.chat.getter : Swift.String
+static Localization.Localized.Navigation.close.getter : Swift.String
+static Localization.Localized.Other.chats.getter : Swift.String
+static Localization.Localized.Voice.mode.getter : Swift.String
+static Localization.Localized.Voice.title.getter : Swift.String
+static Localization.Localized.Button.getStarted.getter : Swift.String
+static Localization.Localized.Button.ask.getter : Swift.String
+static Localization.Localized.Button.camera.getter : Swift.String
+static Localization.Localized.Button.photos.getter : Swift.String
+static Localization.Localized.Button.signIn.getter : Swift.String
+static Localization.Localized.Button.upgrade.getter : Swift.String
+static Localization.Localized.Button.continue.getter : Swift.String
+static Localization.Localized.Button.dictation.getter : Swift.String
+static Localization.Localized.ChatGPT.messageInputPlaceholderText(conversationTargetName: Swift.String?, isTemporaryChat: Swift.Bool) -> Swift.String
+static Localization.Localized.ChatGPT.workMode.getter : Swift.String
+static Localization.Localized.Projects.title.getter : Swift.String
+static Localization.Localized.Reasoning.workedFor(Swift.String) -> Swift.String
+protocol descriptor for OAIMetricKit.MetricKitReporterProviding
+protocol descriptor for OAIMetricKit.MetricKitReporter
+protocol descriptor for OAIPurchases.PurchaseManager
+protocol descriptor for OAIPurchases.PurchaseManagerProviding
+type metadata accessor for AccountModels.AccountStatusResponseAccount
+nominal type descriptor for AccountModels.AccountStatusResponseAccount
+type metadata accessor for AccountModels.AccountStatusResponseAccountInfo
+nominal type descriptor for AccountModels.AccountStatusResponseAccountInfo
+protocol descriptor for AuthInterface.FirstLaunchCredentialReset
+protocol descriptor for AuthInterface.AuthenticationStateObserving
+protocol descriptor for AuthInterface.MobileAttributionContextProvider
+protocol descriptor for AuthInterface.FirstLaunchCredentialResetProviding
+(extension in AuthInterface):AuthInterface.FirstLaunchCredentialResetProviding.firstLaunchCredentialResetResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> AuthInterface.FirstLaunchCredentialReset>
+protocol descriptor for AuthInterface.AuthenticationStateObservingProviding
+protocol descriptor for AuthInterface.AuthenticationRegisteredUsersObserving
+protocol descriptor for AuthInterface.MobileAttributionContextProviderProviding
+protocol descriptor for AuthInterface.AuthenticationRegisteredUsersObservingProviding
+type metadata accessor for AuthInterface.Token
+protocol descriptor for ChatGPTSunset.SunsetStateObserver
+protocol descriptor for ChatGPTSunset.SunsetStateObserverProviding
+static ClientMarkers.Markers.eventOnceIfActive<A where A: ClientMarkers.MarkerAttributePayload>(_: ClientMarkers.MarkerIntervalID<A>?, marker: OAIProtobuf.AnalyticsEvents_V1_ChatgptClientMarkerType, attributes: (@Sendable (inout A) -> ())?) -> ()
+protocol descriptor for DeviceHaptics.HapticEngine
+protocol descriptor for DeviceHaptics.HapticCapabilities
+protocol descriptor for DeviceHaptics.HapticEngineProviding
+protocol descriptor for DeviceHaptics.HapticCapabilitiesProviding
+nominal type descriptor for SwiftToolbelt.EmptyValue
+type metadata for SwiftToolbelt.EmptyValue
+protocol conformance descriptor for SwiftToolbelt.EmptyValue : Swift.Encodable in SwiftToolbelt
+static SwiftToolbelt.ListBuilder.buildBlock(SwiftToolbelt.ListBuilder<A>.Component...) -> SwiftToolbelt.ListBuilder<A>.Component
+static SwiftToolbelt.ListBuilder.buildOptional(SwiftToolbelt.ListBuilder<A>.Component?) -> SwiftToolbelt.ListBuilder<A>.Component
+static SwiftToolbelt.ListBuilder.buildExpression(A) -> SwiftToolbelt.ListBuilder<A>.Component
+static SwiftToolbelt.ListBuilder.buildFinalResult(SwiftToolbelt.ListBuilder<A>.Component) -> [A]
+nominal type descriptor for SwiftToolbelt.ListBuilder.Component
+SwiftToolbelt.MemoryCache.countLimit.setter : Swift.Int
+SwiftToolbelt.MemoryCache.updateValue(_: B, forKey: A) -> ()
+SwiftToolbelt.MemoryCache.init(usesDiscardableContent: Swift.Bool) -> SwiftToolbelt.MemoryCache<A, B>
+SwiftToolbelt.MemoryCache.value(forKey: A) -> B?
+nominal type descriptor for SwiftToolbelt.MemoryCache
+(extension in OAILogging):SwiftToolbelt.OptionalProtocol.assumingNotNil(_: @autoclosure () -> Swift.String, to: OAILogging.Log, perform: (A.Wrapped) -> (), error: Swift.Error?, attributes: @autoclosure () -> [Swift.String : Swift.Encodable & Swift.Sendable]?, file: Swift.StaticString, line: Swift.UInt, column: Swift.UInt, function: Swift.String) -> A
+SwiftToolbelt.Promise.future.getter : SwiftToolbelt.Promise<A>.Future
+SwiftToolbelt.Promise.resolve(with: Swift.Result<A, Swift.Error>) -> Swift.Bool
+SwiftToolbelt.Promise.init() -> SwiftToolbelt.Promise<A>
+nominal type descriptor for SwiftToolbelt.Promise
+static ChatGPTStartup.ChatGPTLaunchRecordingPluginRegistration.make(dependencies: ChatGPTStartupInterface.StartupRecordingProviding) -> AppLifecycleInterface.ApplicationDidFinishLaunchingPlugin
+static ChatGPTStartup.ChatGPTSceneConfigurationRecordingPluginRegistration.make(dependencies: ChatGPTStartupInterface.StartupRecordingProviding) -> AppLifecycleInterface.ApplicationWillConfigureScenePlugin
+static ChatGPTStartup.ChatGPTStartupObservationPluginRegistration.make(dependencies: ChatGPTStartupInterface.StartupRecordingProviding) -> AppLifecycleInterface.ApplicationWillFinishLaunchingPlugin
+static ChatGPTStartup.StartupExperiments.configureDependencyResolution() -> ()
+ChatGPTStartup.applicationStartupIntervalID.unsafeMutableAddressor : ClientMarkers.MarkerIntervalID<OAIProtobuf.AnalyticsEvents_V1_ChatgptClientMarkerApplicationStartupAttributes>
+static ChatGPTStartup.Startup.record(_: ChatGPTStartup.StartupMarker, settledRootStateKind: Swift.String?) -> ()
+protocol descriptor for ChatGPTWebView.WebViewPoolProviding
+protocol descriptor for ChatGPTWebView.WebViewPool
+protocol descriptor for ChatGPTWebView.SystemWebViewFactoryProviding
+protocol descriptor for ChatGPTWebView.SystemWebViewFactory
+protocol descriptor for ChatGPTWhisper.DictationRecordingEnvironment
+protocol descriptor for ChatGPTWhisper.DictationRecordingEnvironmentProviding
+protocol descriptor for DeviceLocation.UserLocationCookieProvider
+protocol descriptor for DeviceLocation.UserLocationCookieProviderProviding
+protocol descriptor for DeviceLocation.LocationProviderProviding
+protocol descriptor for DeviceLocation.LocationProvider
+protocol descriptor for DeviceLocation.ReverseGeocoder
+protocol descriptor for DeviceLocation.CachedReverseGeocoder
+protocol descriptor for DeviceLocation.ReverseGeocoderProviding
+protocol descriptor for DeviceLocation.CachedReverseGeocoderProviding
+protocol descriptor for ChatGPTProjects.ProjectLatencyTracking
+protocol descriptor for ChatGPTProjects.ProjectLatencyTrackingProviding
+type metadata for ChatGPTSettings.ColorSchemeSetting
+protocol conformance descriptor for ChatGPTSettings.ColorSchemeSetting : Swift.Equatable in ChatGPTSettings
+CodableToolbelt.ResilientCodableEnum.knownValue.getter : A?
+property descriptor for CodableToolbelt.ResilientCodableEnum.knownValue : A?
+static (extension in CodableToolbelt):CodableToolbelt.ResilientCodableEnum< where A: Swift.Equatable>.__derived_enum_equals(CodableToolbelt.ResilientCodableEnum<A>, CodableToolbelt.ResilientCodableEnum<A>) -> Swift.Bool
+nominal type descriptor for CodableToolbelt.ResilientCodableEnum
+CodableToolbelt.ResilientURL.url.getter : Foundation.URL?
+type metadata accessor for CodableToolbelt.ResilientURL
+nominal type descriptor for CodableToolbelt.ResilientURL
+nominal type descriptor for CodableToolbelt.ResilientDefault.EmptyArray
+protocol conformance descriptor for CodableToolbelt.ResilientDefault.EmptyArray<A> : CodableToolbelt.DefaultDecodableValueProvider in CodableToolbelt
+CodableToolbelt.ResilientDefaultValueDecodable.wrappedValue.setter : A.Value
+CodableToolbelt.ResilientDefaultValueDecodable.init() -> CodableToolbelt.ResilientDefaultValueDecodable<A>
+nominal type descriptor for CodableToolbelt.ResilientDefaultValueDecodable
+nominal type descriptor for CoreIdentifiers.UserWorkspaceID
+type metadata for CoreIdentifiers.UserWorkspaceID
+static (extension in ChatGPTWebView):SwiftUIToolbelt.AnyViewBuilder.browserWebView(dependencies: AuthenticatedCookieManagerInterface.AuthenticatedCookieManagerProviding & OAIIntune.IntuneManagerProviding) -> SwiftUIToolbelt.AnyViewBuilder<ChatGPTWebViewInterface.BrowserWebViewTemplate>
+static (extension in ChatGPTDisclosures):SwiftUIToolbelt.AnyViewBuilder.d(dependencies: Swift.Sendable) -> SwiftUIToolbelt.AnyViewBuilder<ChatGPTDisclosuresInterface.DisclosureContentTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewBuilder.voiceImageGallery(dependencies: ChatGPTMediaInterface.ZoomableImageBuilderProviding) -> SwiftUIToolbelt.AnyViewBuilder<ChatGPTVoiceConversationUIInterface.VoiceImageGalleryTemplate>
+SwiftUIToolbelt.OAIProgressView.init<A where A == SwiftUI.EmptyView, B == SwiftUI.EmptyView, A1: Swift.BinaryFloatingPoint>(value: A1?, total: A1) -> SwiftUIToolbelt.OAIProgressView<SwiftUI.EmptyView, SwiftUI.EmptyView>
+SwiftUIToolbelt.OAIProgressView.init< where A == SwiftUI.EmptyView, B == SwiftUI.EmptyView>() -> SwiftUIToolbelt.OAIProgressView<SwiftUI.EmptyView, SwiftUI.EmptyView>
+nominal type descriptor for SwiftUIToolbelt.OAIProgressView
+protocol conformance descriptor for SwiftUIToolbelt.OAIProgressView<A, B> : SwiftUI.View in SwiftUIToolbelt
+(extension in SwiftUIToolbelt):SwiftUIToolbelt.ForEachWithIndex< where B == A.Element.ID, A.Element: Swift.Identifiable>.init(_: A, content: @Swift.MainActor @Sendable (A.Index, A.Element) -> C) -> SwiftUIToolbelt.ForEachWithIndex<A, B, C>
+nominal type descriptor for SwiftUIToolbelt.ForEachWithIndex
+protocol conformance descriptor for SwiftUIToolbelt.ForEachWithIndex<A, B, C> : SwiftUI.View in SwiftUIToolbelt
+static (extension in ChatGPTMedia):SwiftUIToolbelt.AnyViewOnlyBuilder.zoomableImage.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTMediaInterface.ZoomableImageTemplate>
+static (extension in ChatGPTMedia):SwiftUIToolbelt.AnyViewOnlyBuilder.imagePromptScreen.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTMediaInterface.ImagePromptScreenTemplate>
+static (extension in ChatGPTAvatar):SwiftUIToolbelt.AnyViewOnlyBuilder.avatarOverlay.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAvatarInterface.AvatarOverlayTemplate>
+static (extension in ChatGPTAvatar):SwiftUIToolbelt.AnyViewOnlyBuilder.avatarDockAnchor.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAvatarInterface.AvatarDockAnchorTemplate>
+static (extension in ChatGPTAvatar):SwiftUIToolbelt.AnyViewOnlyBuilder.avatarOrbPreview.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAvatarInterface.AvatarOrbPreviewTemplate>
+static (extension in ChatGPTAvatar):SwiftUIToolbelt.AnyViewOnlyBuilder.avatarFocusedElicitationPresentation.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAvatarInterface.AvatarFocusedElicitationPresentationTemplate>
+static (extension in ChatGPTMemory):SwiftUIToolbelt.AnyViewOnlyBuilder.m3MNuxDisclosuresSheet.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTMemoryInterface.M3MNuxDisclosuresSheetTemplate>
+static (extension in ChatGPTMemory):SwiftUIToolbelt.AnyViewOnlyBuilder.moonshineV2DisclosuresSheet(dependencies: ChatGPTDisclosuresInterface.DisclosureConversationHeaderContentBuilderProviding) -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTMemoryInterface.MoonshineV2DisclosuresSheetTemplate>
+static (extension in ChatGPTLoginUI):SwiftUIToolbelt.AnyViewOnlyBuilder.loginControlsView(dependencies: Swift.Sendable) -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTLoginUIInterface.LoginControlsViewTemplate>
+static (extension in ChatGPTConnectors):SwiftUIToolbelt.AnyViewOnlyBuilder.googleConnectorsDisclosuresSheet.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTConnectorsInterface.GoogleConnectorsDisclosuresSheetTemplate>
+static (extension in ChatGPTDisclosures):SwiftUIToolbelt.AnyViewOnlyBuilder.popoverTooltip.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTDisclosuresInterface.PopoverTooltipTemplate>
+static (extension in ChatGPTDisclosures):SwiftUIToolbelt.AnyViewOnlyBuilder.disclosureScreen.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTDisclosuresInterface.DisclosureScreenTemplate>
+static (extension in ChatGPTDisclosures):SwiftUIToolbelt.AnyViewOnlyBuilder.disclosureConversationHeaderContent.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTDisclosuresInterface.DisclosureConversationHeaderContentTemplate>
+static (extension in ChatGPTVoiceFeedback):SwiftUIToolbelt.AnyViewOnlyBuilder.voicePostCallFeedbackFooter.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceFeedbackInterface.VoicePostCallFeedbackFooterTemplate>
+static (extension in ChatGPTVoiceFeedback):SwiftUIToolbelt.AnyViewOnlyBuilder.internalFeedbackSheet.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceFeedbackInterface.InternalFeedbackSheetTemplate>
+static (extension in ChatGPTVoiceFeedback):SwiftUIToolbelt.AnyViewOnlyBuilder.voiceTrainingDisclosure(dependencies: ChatGPTDisclosuresInterface.DisclosureScreenBuilderProviding) -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceFeedbackInterface.VoiceTrainingDisclosureTemplate>
+static (extension in ChatGPTVoiceFeedback):SwiftUIToolbelt.AnyViewOnlyBuilder.backgroundVoiceSettingPrompt.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceFeedbackInterface.BackgroundVoiceSettingPromptTemplate>
+static (extension in ChatGPTAudioAttachments):SwiftUIToolbelt.AnyViewOnlyBuilder.audioAttachmentChips.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAudioAttachmentsInterface.AudioAttachmentChipsTemplate>
+static (extension in ChatGPTAudioAttachments):SwiftUIToolbelt.AnyViewOnlyBuilder.audioAttachmentPlayers.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAudioAttachmentsInterface.AudioAttachmentPlayersTemplate>
+static (extension in ChatGPTAudioAttachments):SwiftUIToolbelt.AnyViewOnlyBuilder.audioAttachmentRecordingControls.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingControlsTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewOnlyBuilder.voiceSelectionText.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceSelectionTextTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewOnlyBuilder.voiceDowngradeSheet.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceDowngradeSheetTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewOnlyBuilder.voiceTrialEducation.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceTrialEducationTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewOnlyBuilder.voiceModeUnavailable.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceModeUnavailableTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewOnlyBuilder.voiceStatusDisclosure.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceStatusDisclosureTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewOnlyBuilder.conversationAvatarDock.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.ConversationAvatarDockTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewOnlyBuilder.voiceAdvancedDisclosure(dependencies: ChatGPTDisclosuresInterface.DisclosureScreenBuilderProviding) -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceAdvancedDisclosureTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewOnlyBuilder.phoneGestureVoiceOverlay.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceOverlayTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewOnlyBuilder.messageInputVoiceMuteButton.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.MessageInputVoiceMuteButtonTemplate>
+static (extension in ChatGPTVoiceConversationUI):SwiftUIToolbelt.AnyViewOnlyBuilder.messageInputVoiceCloseButton.getter : SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.MessageInputVoiceCloseButtonTemplate>
+nominal type descriptor for SwiftUIToolbelt.ForEachWithIndexElement
+protocol conformance descriptor for SwiftUIToolbelt.CustomizableIconAndTitleLabelStyle : SwiftUI.LabelStyle in SwiftUIToolbelt
+nominal type descriptor for SwiftUIToolbelt.CustomizableIconAndTitleLabelStyle
+type metadata for SwiftUIToolbelt.CustomizableIconAndTitleLabelStyle
+protocol descriptor for ChatGPTFailwhale.FailwhaleStateObserver
+protocol descriptor for ChatGPTFailwhale.FailwhaleStateObserverProviding
+protocol descriptor for PhoneNumberUtils.PhoneNumberServiceProviding
+protocol descriptor for PhoneNumberUtils.PhoneNumberService
+protocol descriptor for ChatGPTBazaarCore.NoAuthAdsPersonalizationSettingService
+protocol descriptor for ChatGPTBazaarCore.NoAuthAdsPersonalizationSettingServiceProviding
+protocol descriptor for ChatGPTHealthCore.HealthStoreRepository
+protocol descriptor for ChatGPTHealthCore.HealthStoreRepositoryProviding
+nominal type descriptor for ConcurrencyExtras.UncheckedSendable
+type metadata accessor for ConversationsCore.GizmoResource
+nominal type descriptor for ConversationsCore.ConversationGizmoTarget
+protocol descriptor for OAICrashReporting.CrashSignalObserver
+protocol descriptor for OAICrashReporting.CrashSignalObserverProviding
+static SwiftUIStyleguide.OpenAICircularProgressStyle.indeterminateGradient(color: SwiftUI.Color) -> SwiftUI.AngularGradient
+protocol descriptor for APIClientInterface.URLSessionService
+protocol descriptor for APIClientInterface.AuthTokenEndpointClient
+protocol descriptor for APIClientInterface.URLSessionServiceProviding
+protocol descriptor for APIClientInterface.APIRequestTracingConfiguring
+protocol descriptor for APIClientInterface.AuthTokenEndpointClientProviding
+protocol descriptor for APIClientInterface.APIRequestTracingConfiguringProviding
+static (extension in ChatGPTFinance):APIClientInterface.APIQuery< where A == SwiftToolbelt.EmptyValue, B == SwiftToolbelt.EmptyValue>.syncFinanceAccountLink(_: Swift.String, backend: ChatGPTFinanceLedgerRoutingInterface.LedgerAPIBackend) -> APIClientInterface.APIQuery<SwiftToolbelt.EmptyValue, SwiftToolbelt.EmptyValue>
+nominal type descriptor for APIClientInterface.APIQuery
+protocol descriptor for AnalyticsInterface.AnalyticsClientProviding
+protocol descriptor for AnalyticsInterface.AnalyticsClient
+protocol descriptor for ChatGPTAccountRoot.UserMetadataDependenciesFactory
+protocol descriptor for ChatGPTAccountRoot.UserMetadataDependenciesFactoryProviding
+protocol descriptor for FoundationToolbelt.TaskAttachable
+(extension in FoundationToolbelt):FoundationToolbelt.TaskAttachable.runAttachedTask<A where A1: Swift.Sendable>(priority: Swift.TaskPriority?, operation: __owned @Swift.MainActor @Sendable (SwiftToolbelt.WeakBox<A>) async -> A1) -> Swift.Task<A1, Swift.Never>
+protocol descriptor for FoundationToolbelt.CurrentDateProvider
+protocol descriptor for FoundationToolbelt.CurrentDateProviderProviding
+protocol descriptor for ChatGPTMessageInput.MessageInputEventPublisher
+protocol descriptor for ChatGPTMessageInput.MessageInputEventPublisherProviding
+protocol descriptor for ChatGPTMessageInput.ConversationDraftAnalytics
+protocol descriptor for ChatGPTMessageInput.ConversationDraftAnalyticsProviding
+protocol descriptor for DeviceNotifications.Notifications
+protocol descriptor for DeviceNotifications.NotificationsProviding
+type metadata accessor for ChatGPTAuthChallenge.AuthChallengeTrigger
+ChatGPTNotifications.PushNotification.asCalpicoMessage() -> CalpicoCore.CalpicoRoomMessagesResponseListItem?
+ChatGPTNotifications.PushNotification.appRefreshConversationID.getter : Tagged.Tagged<APICore.RemoteConversationIdTag, Swift.String>?
+ChatGPTNotifications.PushNotification.conversationUnreadBadgeID.getter : Tagged.Tagged<APICore.RemoteConversationIdTag, Swift.String>?
+type metadata accessor for ChatGPTNotifications.PushNotification.Content
+ChatGPTNotifications.PushNotification.mediaURL.getter : Foundation.URL?
+type metadata accessor for ChatGPTNotifications.PushNotification
+nominal type descriptor for ChatGPTNotifications.PushNotification
+ChatGPTNotifications.PushNotification.init<A where A: ChatGPTNotifications.UNNotificationResponseProtocol>(A) throws -> ChatGPTNotifications.PushNotification
+ChatGPTNotifications.NotificationResponse.init(request: __C.UNNotificationRequest) -> ChatGPTNotifications.NotificationResponse
+protocol witness table for ChatGPTNotifications.NotificationResponse : ChatGPTNotifications.UNNotificationResponseProtocol in ChatGPTNotifications
+type metadata for ChatGPTNotifications.NotificationResponse
+ChatGPTNotifications.NotificationBadgeService.addConversationUnreadConversationID(_: Tagged.Tagged<APICore.RemoteConversationIdTag, Swift.String>, for: Tagged.Tagged<Account.Account.NormalizedUserIDTag, Swift.String>) async -> ()
+async function pointer to ChatGPTNotifications.NotificationBadgeService.addConversationUnreadConversationID(_: Tagged.Tagged<APICore.RemoteConversationIdTag, Swift.String>, for: Tagged.Tagged<Account.Account.NormalizedUserIDTag, Swift.String>) async -> ()
+ChatGPTNotifications.NotificationBadgeService.addCalpicoUnreadRoom(_: Tagged.Tagged<CalpicoCore.CalpicoRoom, Swift.String>, for: Tagged.Tagged<Account.Account.NormalizedUserIDTag, Swift.String>) async -> ()
+async function pointer to ChatGPTNotifications.NotificationBadgeService.addCalpicoUnreadRoom(_: Tagged.Tagged<CalpicoCore.CalpicoRoom, Swift.String>, for: Tagged.Tagged<Account.Account.NormalizedUserIDTag, Swift.String>) async -> ()
+ChatGPTNotifications.NotificationBadgeService.__allocating_init(namespace: BuildInfo.BuildInfo.NotificationNamespace) -> ChatGPTNotifications.NotificationBadgeService
+type metadata accessor for ChatGPTNotifications.NotificationBadgeService
+protocol descriptor for ChatGPTNotifications.NotificationBadgeServiceResolver
+protocol descriptor for ChatGPTNotifications.LocalNotificationSettingsRepository
+protocol descriptor for ChatGPTNotifications.NotificationBadgeServiceResolverProviding
+protocol descriptor for ChatGPTNotifications.LocalNotificationSettingsRepositoryProviding
+static TibroWidgetInterface.DotWidgetAvailability.setting(for: CoreIdentifiers.UserWorkspaceID) -> Settings.Setting<Settings.JSONSetting<TibroWidgetInterface.DotWidgetAvailability>?>
+nominal type descriptor for TibroWidgetInterface.DotWidgetAvailability
+type metadata for TibroWidgetInterface.DotWidgetAvailability
+TibroWidgetInterface.DotWidgetState.init(accountID: CoreIdentifiers.UserWorkspaceID?, snapshot: TibroWidgetInterface.DotWidgetSnapshot?, availability: TibroWidgetInterface.DotWidgetAvailability?) -> TibroWidgetInterface.DotWidgetState
+nominal type descriptor for TibroWidgetInterface.DotWidgetState
+type metadata for TibroWidgetInterface.DotWidgetState
+static TibroWidgetInterface.DotWidgetRequest.__derived_struct_equals(TibroWidgetInterface.DotWidgetRequest, TibroWidgetInterface.DotWidgetRequest) -> Swift.Bool
+TibroWidgetInterface.DotWidgetRequest.url.getter : Foundation.URL
+TibroWidgetInterface.DotWidgetRequest.init(url: Foundation.URL) -> TibroWidgetInterface.DotWidgetRequest?
+nominal type descriptor for TibroWidgetInterface.DotWidgetRequest
+type metadata for TibroWidgetInterface.DotWidgetRequest
+nominal type descriptor for TibroWidgetInterface.DotWidgetSnapshot
+type metadata for TibroWidgetInterface.DotWidgetSnapshot
+protocol descriptor for ValdiDynamicDelivery.ValdiLastActiveRuntimeSelectionStore
+protocol descriptor for ValdiDynamicDelivery.ValdiLastActiveRuntimeSelectionStoreProviding
+protocol descriptor for AppLifecycleInterface.ApplicationDidFinishLaunchingPlugin
+protocol descriptor for AppLifecycleInterface.ApplicationWillConfigureScenePlugin
+protocol descriptor for AppLifecycleInterface.ApplicationWillFinishLaunchingPlugin
+nominal type descriptor for AppLifecycleInterface.BackgroundNotificationPluginRegistry
+type metadata for AppLifecycleInterface.BackgroundNotificationPluginRegistry
+nominal type descriptor for AppLifecycleInterface.ApplicationDidFinishLaunchingPluginRegistry
+type metadata for AppLifecycleInterface.ApplicationDidFinishLaunchingPluginRegistry
+nominal type descriptor for AppLifecycleInterface.ApplicationWillConfigureScenePluginRegistry
+type metadata for AppLifecycleInterface.ApplicationWillConfigureScenePluginRegistry
+nominal type descriptor for AppLifecycleInterface.ApplicationWillFinishLaunchingPluginRegistry
+type metadata for AppLifecycleInterface.ApplicationWillFinishLaunchingPluginRegistry
+nominal type descriptor for AppLifecycleInterface.RemoteNotificationRegistrationPluginRegistry
+type metadata for AppLifecycleInterface.RemoteNotificationRegistrationPluginRegistry
+protocol descriptor for AppLifecycleInterface.BackgroundNotificationPluginRegistryProviding
+protocol descriptor for AppLifecycleInterface.ApplicationDidFinishLaunchingPluginRegistryProviding
+protocol descriptor for AppLifecycleInterface.ApplicationWillConfigureScenePluginRegistryProviding
+protocol descriptor for AppLifecycleInterface.ApplicationWillFinishLaunchingPluginRegistryProviding
+protocol descriptor for AppLifecycleInterface.RemoteNotificationRegistrationPluginRegistryProviding
+protocol descriptor for ChatGPTMediaInterface.FilePreviewFactory
+protocol witness table for ChatGPTMediaInterface.ZoomableImageTemplate : SwiftToolbelt.ViewTemplate in ChatGPTMediaInterface
+type metadata for ChatGPTMediaInterface.ZoomableImageTemplate
+protocol witness table for ChatGPTMediaInterface.ImagePromptScreenTemplate : SwiftToolbelt.ViewTemplate in ChatGPTMediaInterface
+type metadata for ChatGPTMediaInterface.ImagePromptScreenTemplate
+protocol descriptor for ChatGPTMediaInterface.FilePreviewFactoryProviding
+protocol descriptor for ChatGPTMediaInterface.ZoomableImageBuilderProviding
+(extension in ChatGPTMediaInterface):ChatGPTMediaInterface.ZoomableImageBuilderProviding.zoomableImageBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTMediaInterface.ZoomableImageTemplate>>
+protocol descriptor for ChatGPTMediaInterface.ImagePromptScreenBuilderProviding
+(extension in ChatGPTMediaInterface):ChatGPTMediaInterface.ImagePromptScreenBuilderProviding.imagePromptScreenBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTMediaInterface.ImagePromptScreenTemplate>>
+protocol descriptor for ChatGPTOAuthInterface.OAuthSessionFactory
+protocol descriptor for ChatGPTOAuthInterface.OAuthSessionFactoryProviding
+protocol descriptor for ChatGPTSitesInterface.SitesBrowserSessionFactory
+protocol descriptor for ChatGPTSitesInterface.SitesBrowserBuilderProviding
+(extension in ChatGPTSitesInterface):ChatGPTSitesInterface.SitesBrowserBuilderProviding.sitesBrowserBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewBuilder<ChatGPTSitesInterface.SitesBrowserTemplate>>
+protocol descriptor for ChatGPTSitesInterface.SitesBrowserSessionFactoryProviding
+protocol descriptor for ChatGPTValdiInterface.ChatGPTValdiComponentRenderer
+protocol descriptor for ChatGPTValdiInterface.ChatGPTValdiComponentRendererProviding
+protocol descriptor for ChatGPTValdiInterface.MarkdownDiffService
+protocol descriptor for ChatGPTValdiInterface.ValdiAudioAuthentication
+protocol descriptor for ChatGPTValdiInterface.MarkdownDiffServiceProviding
+protocol descriptor for ChatGPTValdiInterface.ValdiAudioAuthenticationProviding
+protocol descriptor for ChatGPTValdiInterface.ValdiDynamicDeliveryStartupServiceFactory
+protocol descriptor for ChatGPTValdiInterface.ValdiDynamicDeliveryStartupServiceFactoryProviding
+protocol descriptor for BackgroundTaskToolbelt.ContinuedProcessingTaskManagerProviding
+protocol descriptor for BackgroundTaskToolbelt.ContinuedProcessingTaskManager
+protocol witness table for ChatGPTAvatarInterface.AvatarOverlayTemplate : SwiftToolbelt.ViewTemplate in ChatGPTAvatarInterface
+type metadata for ChatGPTAvatarInterface.AvatarOverlayTemplate
+protocol witness table for ChatGPTAvatarInterface.AvatarDockAnchorTemplate : SwiftToolbelt.ViewTemplate in ChatGPTAvatarInterface
+type metadata for ChatGPTAvatarInterface.AvatarDockAnchorTemplate
+protocol witness table for ChatGPTAvatarInterface.AvatarOrbPreviewTemplate : SwiftToolbelt.ViewTemplate in ChatGPTAvatarInterface
+type metadata for ChatGPTAvatarInterface.AvatarOrbPreviewTemplate
+protocol descriptor for ChatGPTAvatarInterface.AvatarCaptionStateFactory
+protocol descriptor for ChatGPTAvatarInterface.AvatarOverlayBuilderProviding
+(extension in ChatGPTAvatarInterface):ChatGPTAvatarInterface.AvatarOverlayBuilderProviding.avatarOverlayBuilderResolver.getter : OAInject.Resolver<@Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAvatarInterface.AvatarOverlayTemplate>>
+protocol descriptor for ChatGPTAvatarInterface.AvatarDockAnchorBuilderProviding
+(extension in ChatGPTAvatarInterface):ChatGPTAvatarInterface.AvatarDockAnchorBuilderProviding.avatarDockAnchorBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAvatarInterface.AvatarDockAnchorTemplate>>
+protocol descriptor for ChatGPTAvatarInterface.AvatarOrbPreviewBuilderProviding
+(extension in ChatGPTAvatarInterface):ChatGPTAvatarInterface.AvatarOrbPreviewBuilderProviding.avatarOrbPreviewBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAvatarInterface.AvatarOrbPreviewTemplate>>
+protocol descriptor for ChatGPTAvatarInterface.AvatarCaptionStateFactoryProviding
+protocol witness table for ChatGPTAvatarInterface.AvatarFocusedElicitationPresentationTemplate : SwiftToolbelt.ViewTemplate in ChatGPTAvatarInterface
+type metadata for ChatGPTAvatarInterface.AvatarFocusedElicitationPresentationTemplate
+protocol descriptor for ChatGPTAvatarInterface.AvatarFocusedElicitationPresentationBuilderProviding
+(extension in ChatGPTAvatarInterface):ChatGPTAvatarInterface.AvatarFocusedElicitationPresentationBuilderProviding.avatarFocusedElicitationPresentationBuilderResolver.getter : OAInject.Resolver<@Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAvatarInterface.AvatarFocusedElicitationPresentationTemplate>>
+protocol descriptor for ChatGPTHealthInterface.HealthKitObserverWakeRegistration
+protocol descriptor for ChatGPTHealthInterface.HealthKitObserverWakeRegistrationProviding
+ChatGPTIntentsServices.IntentService.openProjectIntentIsEnabled.getter : Swift.Bool
+ChatGPTIntentsServices.IntentService.startNewWorkChat(startAction: ChatGPTCore.AppSessionUserIntent.StartAction?) -> ()
+ChatGPTIntentsServices.IntentService.refreshProjectIntentEntityData() async -> [ChatGPTIntentsInterface.ProjectIntentEntityData]
+async function pointer to ChatGPTIntentsServices.IntentService.refreshProjectIntentEntityData() async -> [ChatGPTIntentsInterface.ProjectIntentEntityData]
+ChatGPTIntentsServices.IntentService.shouldAskForNewChat() async -> Swift.Bool
+async function pointer to ChatGPTIntentsServices.IntentService.shouldAskForNewChat() async -> Swift.Bool
+ChatGPTIntentsServices.IntentService.openCodexRemoteNewChat(startAction: DeepLinks.CodexDeepLink.RemoteStartAction?) -> ()
+ChatGPTIntentsServices.IntentService.setUpNewChat() async throws -> ()
+async function pointer to ChatGPTIntentsServices.IntentService.setUpNewChat() async throws -> ()
+ChatGPTIntentsServices.IntentService.startNewChatInProject(projectID: Tagged.Tagged<APICore.GizmoIDTag, Swift.String>) -> ()
+ChatGPTIntentsServices.IntentService.openProject(projectID: Tagged.Tagged<APICore.GizmoIDTag, Swift.String>) -> ()
+ChatGPTIntentsServices.IntentService.startWorkVoice() -> ()
+ChatGPTIntentsServices.IntentService.gizmoRepository.getter : ConversationsInterface.GizmoRepository
+ChatGPTIntentsServices.IntentService.startImageShortcut(prompt: Swift.String?, attachments: [Foundation.URL]) -> ()
+ChatGPTIntentsServices.IntentService.openCodexRealtimeVoice() -> ()
+static ChatGPTIntentsServices.IntentService.isAvailableToProjectIntents(ConversationsCore.GizmoResource) -> Swift.Bool
+ChatGPTIntentsServices.IntentService.projectIsAvailableToIntents(projectID: Tagged.Tagged<APICore.GizmoIDTag, Swift.String>) async -> Swift.Bool
+async function pointer to ChatGPTIntentsServices.IntentService.projectIsAvailableToIntents(projectID: Tagged.Tagged<APICore.GizmoIDTag, Swift.String>) async -> Swift.Bool
+ChatGPTIntentsServices.IntentService.submit(prompt: Swift.String, retryCount: Swift.Int) async throws -> ChatGPTIntentsServices.SendableMessage
+async function pointer to ChatGPTIntentsServices.IntentService.submit(prompt: Swift.String, retryCount: Swift.Int) async throws -> ChatGPTIntentsServices.SendableMessage
+default argument 1 of ChatGPTIntentsServices.IntentService.submit(prompt: Swift.String, retryCount: Swift.Int) async throws -> ChatGPTIntentsServices.SendableMessage
+ChatGPTIntentsServices.IntentService.openCodex(createTask: Swift.Bool) -> ()
+type metadata accessor for ChatGPTIntentsServices.IntentService
+ChatGPTIntentsServices.DotShortcutIndexStore.shared.unsafeMutableAddressor : ChatGPTIntentsServices.DotShortcutIndexStore
+ChatGPTIntentsServices.DotShortcutIndexStore.replace(retryOnFailure: Swift.Bool, with: @Swift.MainActor @Sendable () async throws -> ()) -> ()
+ChatGPTIntentsServices.DotShortcutIndexStore.indexName.unsafeMutableAddressor : Swift.String
+nominal type descriptor for ChatGPTIntentsServices.DotShortcutIndexStore
+ChatGPTIntentsServices.makeActiveAccountIntentService(dependencies: ChatGPTIntentsInterface.ActiveAccountIntentServiceProviding) async throws -> ChatGPTIntentsServices.IntentService
+async function pointer to ChatGPTIntentsServices.makeActiveAccountIntentService(dependencies: ChatGPTIntentsInterface.ActiveAccountIntentServiceProviding) async throws -> ChatGPTIntentsServices.IntentService
+protocol witness table for ChatGPTMemoryInterface.M3MNuxDisclosuresSheetTemplate : SwiftToolbelt.ViewTemplate in ChatGPTMemoryInterface
+type metadata for ChatGPTMemoryInterface.M3MNuxDisclosuresSheetTemplate
+protocol witness table for ChatGPTMemoryInterface.MoonshineV2DisclosuresSheetTemplate : SwiftToolbelt.ViewTemplate in ChatGPTMemoryInterface
+type metadata for ChatGPTMemoryInterface.MoonshineV2DisclosuresSheetTemplate
+protocol descriptor for ChatGPTMemoryInterface.M3MNuxDisclosuresSheetBuilderProviding
+(extension in ChatGPTMemoryInterface):ChatGPTMemoryInterface.M3MNuxDisclosuresSheetBuilderProviding.m3MNuxDisclosuresSheetBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTMemoryInterface.M3MNuxDisclosuresSheetTemplate>>
+protocol descriptor for ChatGPTMemoryInterface.MoonshineV2DisclosuresSheetBuilderProviding
+(extension in ChatGPTMemoryInterface):ChatGPTMemoryInterface.MoonshineV2DisclosuresSheetBuilderProviding.moonshineV2DisclosuresSheetBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTMemoryInterface.MoonshineV2DisclosuresSheetTemplate>>
+protocol descriptor for ConversationsInterface.FeedbackStateObserver
+nominal type descriptor for ConversationsInterface.ConversationRepositoryID
+protocol descriptor for ConversationsInterface.ConversationForceLoginRecovery
+protocol descriptor for ConversationsInterface.FeedbackStateObserverProviding
+protocol descriptor for ConversationsInterface.MessageEndVisibilityEventPublisher
+protocol descriptor for ConversationsInterface.GenerateAutocompletionsLoggedOutAPI
+protocol descriptor for ConversationsInterface.ConversationForceLoginRecoveryBinding
+protocol descriptor for ConversationsInterface.ConversationScrollToBottomCoordinator
+protocol descriptor for ConversationsInterface.ConversationForceLoginRecoveryProviding
+protocol descriptor for ConversationsInterface.MessageEndVisibilityEventPublisherProviding
+protocol descriptor for ConversationsInterface.GenerateAutocompletionsLoggedOutAPIProviding
+protocol descriptor for ConversationsInterface.ConversationForceLoginRecoveryBindingProviding
+protocol descriptor for ConversationsInterface.ConversationScrollToBottomCoordinatorProviding
+protocol descriptor for ChatGPTCalpicoInterface.CalpicoProfileNameStore
+protocol descriptor for ChatGPTCalpicoInterface.CalpicoNotificationHistoryCache
+protocol descriptor for ChatGPTCalpicoInterface.CalpicoProfileNameStoreProviding
+type metadata for ChatGPTCalpicoInterface.CalpicoNotificationHistoryRequest
+protocol descriptor for ChatGPTCalpicoInterface.CalpicoNotificationHistoryCacheProviding
+protocol descriptor for ChatGPTIntentsInterface.ChatGPTCarPlayWidgetNavigation
+(extension in ChatGPTIntentsServices):ChatGPTIntentsInterface.ChatGPTCarPlayWidgetTabDestination.requestNavigation() -> ()
+protocol descriptor for ChatGPTIntentsInterface.ChatGPTCarPlayWidgetNavigationProviding
+protocol witness table for ChatGPTIntentsInterface.IntentEvent : AnalyticsInterface.AnalyticsEvent in ChatGPTIntentsInterface
+type metadata for ChatGPTIntentsInterface.IntentEvent
+type metadata for ChatGPTIntentsInterface.IntentsError
+type metadata for ChatGPTIntentsInterface.ProjectIntentEntityData
+ChatGPTIntentsInterface.ProjectIntentEntityData.init(ConversationsCore.GizmoResource) -> ChatGPTIntentsInterface.ProjectIntentEntityData
+protocol descriptor for ChatGPTIntentsInterface.ActiveAccountIntentServiceProviding
+protocol witness table for ChatGPTLoginUIInterface.LoginControlsViewTemplate : SwiftToolbelt.ViewTemplate in ChatGPTLoginUIInterface
+type metadata for ChatGPTLoginUIInterface.LoginControlsViewTemplate
+protocol descriptor for ChatGPTLoginUIInterface.LoginControlsViewBuilderProviding
+(extension in ChatGPTLoginUIInterface):ChatGPTLoginUIInterface.LoginControlsViewBuilderProviding.loginControlsViewBuilderResolver.getter : OAInject.Resolver<@Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTLoginUIInterface.LoginControlsViewTemplate>>
+protocol descriptor for ChatGPTPresentationCore.ElevatedPresentationService
+protocol descriptor for ChatGPTPresentationCore.ElevatedPresentationServiceProviding
+protocol descriptor for ChatGPTStartupInterface.StartupRecording
+protocol descriptor for ChatGPTStartupInterface.StartupRecordingProviding
+(extension in ChatGPTStartupInterface):ChatGPTStartupInterface.StartupRecordingProviding.startupRecordingResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTStartupInterface.StartupRecording>
+protocol descriptor for ChatGPTWebViewInterface.BrowserWebViewBuilderProviding
+(extension in ChatGPTWebViewInterface):ChatGPTWebViewInterface.BrowserWebViewBuilderProviding.browserWebViewBuilderResolver.getter : OAInject.Resolver<@Sendable () -> SwiftUIToolbelt.AnyViewBuilder<ChatGPTWebViewInterface.BrowserWebViewTemplate>>
+protocol witness table for ChatGPTWebViewInterface.BrowserWebViewTemplate : SwiftToolbelt.ViewTemplate in ChatGPTWebViewInterface
+type metadata for ChatGPTWebViewInterface.BrowserWebViewTemplate
+protocol descriptor for ChatGPTWebViewInterface.WebViewBuilderProviding
+(extension in ChatGPTWebViewInterface):ChatGPTWebViewInterface.WebViewBuilderProviding.webViewBuilderResolver.getter : OAInject.Resolver<@Sendable () -> SwiftUIToolbelt.AnyViewBuilder<ChatGPTWebViewInterface.WebViewTemplate>>
+protocol descriptor for ChatGPTWhisperInterface.RecorderProviding
+protocol descriptor for ChatGPTWhisperInterface.IndependentRecorderFactory
+protocol descriptor for ChatGPTWhisperInterface.IndependentRecorderFactoryProviding
+protocol descriptor for ChatGPTWhisperInterface.Recorder
+protocol conformance descriptor for CodexRemoteLiveActivity.CodexRemoteActivityAttributes : ActivityKit.ActivityAttributes in CodexRemoteLiveActivity
+CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ContentState.totalThreadCount.getter : Swift.Int
+CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ContentState.activeThreadCount.getter : Swift.Int
+CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ContentState.allThreadsCompleted.getter : Swift.Bool
+static CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ContentState.__derived_struct_equals(CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ContentState, CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ContentState) -> Swift.Bool
+CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ContentState.hash(into: inout Swift.Hasher) -> ()
+nominal type descriptor for CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ContentState
+type metadata for CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ContentState
+protocol conformance descriptor for CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ContentState : Swift.Encodable in CodexRemoteLiveActivity
+nominal type descriptor for CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ThreadSummary.ID
+type metadata for CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ThreadSummary.ID
+nominal type descriptor for CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ThreadSummary
+type metadata for CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ThreadSummary
+protocol conformance descriptor for CodexRemoteLiveActivity.CodexRemoteActivityAttributes.ThreadSummary : Swift.Identifiable in CodexRemoteLiveActivity
+CodexRemoteLiveActivity.CodexRemoteActivityAttributes.belongs(to: Tagged.Tagged<Account.Account.NormalizedUserIDTag, Swift.String>?) -> Swift.Bool
+type metadata accessor for CodexRemoteLiveActivity.CodexRemoteActivityAttributes
+nominal type descriptor for CodexRemoteLiveActivity.CodexRemoteActivityAttributes
+nominal type descriptor for CodexRemoteLiveActivity.CodexRemoteLiveActivityPetImage.Frame
+static CodexRemoteLiveActivity.CodexRemoteLiveActivityPetImage.frames(for: ChatGPTPetsInterface.WorkModePetAnimationState) -> [CodexRemoteLiveActivity.CodexRemoteLiveActivityPetImage.Frame]
+protocol descriptor for ChatGPTSettingsInterface.ColorSchemePreference
+protocol descriptor for ChatGPTSettingsInterface.ColorSchemePreferenceProviding
+protocol descriptor for ChatGPTSubscriptionsCore.CountryCodeMapProvider
+protocol descriptor for ChatGPTSubscriptionsCore.StorefrontAvailabilityProvider
+protocol descriptor for ChatGPTSubscriptionsCore.CountryCodeMapProviderProviding
+protocol descriptor for ChatGPTSubscriptionsCore.StorefrontAvailabilityProviderProviding
+protocol descriptor for TibroDotIntentsInterface.DotIntentService
+type metadata accessor for TibroDotIntentsInterface.DotIntentEntityData
+nominal type descriptor for TibroDotIntentsInterface.DotIntentEntityData
+protocol descriptor for TibroDotIntentsInterface.DotIntentAccountSource
+protocol descriptor for TibroDotIntentsInterface.DotIntentServiceProviding
+protocol descriptor for TibroDotIntentsInterface.DotIntentAccountSourceProviding
+protocol descriptor for AppEntryTrackingInterface.AppEntryTracking
+protocol descriptor for AppEntryTrackingInterface.AppEntryTrackingProviding
+protocol descriptor for ChatGPTUnsupportedCountry.UnsupportedCountryObserverProviding
+protocol descriptor for ChatGPTUnsupportedCountry.UnsupportedCountryObserver
+PlatformSupportStyleguide.OpenAIFont.OpenAI.subheadline.unsafeMutableAddressor : PlatformSupportStyleguide.OpenAIFont
+PlatformSupportStyleguide.OpenAIFont.OpenAI.body.unsafeMutableAddressor : PlatformSupportStyleguide.OpenAIFont
+PlatformSupportStyleguide.OpenAIFont.OpenAI.title.unsafeMutableAddressor : PlatformSupportStyleguide.OpenAIFont
+PlatformSupportStyleguide.OpenAIFont.OpenAI.title2.unsafeMutableAddressor : PlatformSupportStyleguide.OpenAIFont
+PlatformSupportStyleguide.OpenAIFont.OpenAI.caption.unsafeMutableAddressor : PlatformSupportStyleguide.OpenAIFont
+PlatformSupportStyleguide.OpenAIFont.OpenAI.caption2.unsafeMutableAddressor : PlatformSupportStyleguide.OpenAIFont
+PlatformSupportStyleguide.OpenAIFont.OpenAI.footnote.unsafeMutableAddressor : PlatformSupportStyleguide.OpenAIFont
+PlatformSupportStyleguide.OpenAIFont.OpenAI.headline.unsafeMutableAddressor : PlatformSupportStyleguide.OpenAIFont
+nominal type descriptor for PlatformSupportStyleguide.OpenAIFont.SizeDesign
+PlatformSupportStyleguide.OpenAIFont.swiftUIFont() -> SwiftUI.Font
+PlatformSupportStyleguide.OpenAIFont.uiFont(_: __C.UITraitCollection?, setting: PlatformSupportStyleguide.OpenAIFont.Setting) -> __C.UIFont
+PlatformSupportStyleguide.OpenAIFont.weight(SwiftUI.Font.Weight?) -> PlatformSupportStyleguide.OpenAIFont
+type metadata accessor for PlatformSupportStyleguide.OpenAIFont
+PlatformSupportStyleguide.KnownThemeColorSetting.staticAccent.getter : SwiftUI.Color
+PlatformSupportStyleguide.KnownThemeColorSetting.init(rawValue: Swift.String) -> PlatformSupportStyleguide.KnownThemeColorSetting?
+protocol witness table for ChatGPTConnectorsInterface.GoogleConnectorsDisclosuresSheetTemplate : SwiftToolbelt.ViewTemplate in ChatGPTConnectorsInterface
+type metadata for ChatGPTConnectorsInterface.GoogleConnectorsDisclosuresSheetTemplate
+protocol descriptor for ChatGPTConnectorsInterface.GoogleConnectorsDisclosuresSheetBuilderProviding
+(extension in ChatGPTConnectorsInterface):ChatGPTConnectorsInterface.GoogleConnectorsDisclosuresSheetBuilderProviding.googleConnectorsDisclosuresSheetBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTConnectorsInterface.GoogleConnectorsDisclosuresSheetTemplate>>
+protocol descriptor for ChatGPTVoiceAudioInterface.VoiceWelcomeAudioPlayerProviding
+protocol descriptor for ChatGPTVoiceAudioInterface.VoiceWelcomeAudioPlayer
+protocol descriptor for ChatGPTVoiceAudioInterface.PhoneGestureVoiceAudioRoutingProviding
+protocol descriptor for ChatGPTVoiceAudioInterface.PhoneGestureVoiceAudioRouting
+protocol descriptor for ChatGPTVoiceAudioInterface.AssistantAudioCapturePostProcessorFactory
+protocol descriptor for ChatGPTVoiceAudioInterface.AssistantAudioCapturePostProcessorFactoryProviding
+protocol descriptor for OAIStatsigServiceInterface.StatsigService
+protocol descriptor for OAIStatsigServiceInterface.StatsigServiceConfiguration
+protocol descriptor for OAIStatsigServiceInterface.StatsigServiceURLSessionFactory
+protocol descriptor for OAIStatsigServiceInterface.StatsigServiceConfigurationProviding
+protocol descriptor for OAIStatsigServiceInterface.StatsigServiceURLSessionFactoryProviding
+protocol descriptor for OAIStatsigServiceInterface.StatsigServiceProviding
+protocol descriptor for OAIStatsigServiceInterface.StatsigGateEvaluator
+protocol descriptor for OAIStatsigServiceInterface.StatsigGateEvaluatorProviding
+protocol descriptor for AppGroupSharedDataInterface.DeviceIDProvider
+protocol descriptor for AppGroupSharedDataInterface.DeviceIDProviderProviding
+protocol descriptor for AudioPlayerServiceInterface.AudioSessionManager
+protocol descriptor for AudioPlayerServiceInterface.AudioSessionManagerProviding
+protocol descriptor for AudioPlayerServiceInterface.AudioPlaybackSessionActivator
+protocol descriptor for AudioPlayerServiceInterface.AudioPlaybackSessionActivatorProviding
+protocol descriptor for AudioPlayerServiceInterface.AudioPlayerService
+protocol descriptor for AudioPlayerServiceInterface.AudioPlayerServiceProviding
+protocol witness table for ChatGPTDisclosuresInterface.PopoverTooltipTemplate : SwiftToolbelt.ViewTemplate in ChatGPTDisclosuresInterface
+type metadata for ChatGPTDisclosuresInterface.PopoverTooltipTemplate
+protocol witness table for ChatGPTDisclosuresInterface.DisclosureScreenTemplate : SwiftToolbelt.ViewTemplate in ChatGPTDisclosuresInterface
+type metadata for ChatGPTDisclosuresInterface.DisclosureScreenTemplate
+protocol witness table for ChatGPTDisclosuresInterface.DisclosureContentTemplate : SwiftToolbelt.ViewTemplate in ChatGPTDisclosuresInterface
+type metadata for ChatGPTDisclosuresInterface.DisclosureContentTemplate
+protocol descriptor for ChatGPTDisclosuresInterface.PopoverTooltipBuilderProviding
+(extension in ChatGPTDisclosuresInterface):ChatGPTDisclosuresInterface.PopoverTooltipBuilderProviding.popoverTooltipBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTDisclosuresInterface.PopoverTooltipTemplate>>
+protocol descriptor for ChatGPTDisclosuresInterface.DisclosureScreenBuilderProviding
+(extension in ChatGPTDisclosuresInterface):ChatGPTDisclosuresInterface.DisclosureScreenBuilderProviding.disclosureScreenBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTDisclosuresInterface.DisclosureScreenTemplate>>
+protocol descriptor for ChatGPTDisclosuresInterface.DisclosureContentBuilderProviding
+(extension in ChatGPTDisclosuresInterface):ChatGPTDisclosuresInterface.DisclosureContentBuilderProviding.disclosureContentBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewBuilder<ChatGPTDisclosuresInterface.DisclosureContentTemplate>>
+protocol witness table for ChatGPTDisclosuresInterface.DisclosureConversationHeaderContentTemplate : SwiftToolbelt.ViewTemplate in ChatGPTDisclosuresInterface
+type metadata for ChatGPTDisclosuresInterface.DisclosureConversationHeaderContentTemplate
+protocol descriptor for ChatGPTDisclosuresInterface.DisclosureConversationHeaderContentBuilderProviding
+(extension in ChatGPTDisclosuresInterface):ChatGPTDisclosuresInterface.DisclosureConversationHeaderContentBuilderProviding.disclosureConversationHeaderContentBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTDisclosuresInterface.DisclosureConversationHeaderContentTemplate>>
+type metadata accessor for ChatGPTConversationInterface.ConversationFocusMode
+nominal type descriptor for ChatGPTConversationInterface.ConversationFocusMode
+type metadata for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPresentationMode
+protocol conformance descriptor for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPresentationMode : Swift.Equatable in ChatGPTVoiceLiveActivityCore
+protocol conformance descriptor for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPresentationMode : Swift.RawRepresentable in ChatGPTVoiceLiveActivityCore
+nominal type descriptor for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPresentationStyle
+type metadata for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPresentationStyle
+protocol conformance descriptor for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPresentationStyle : Swift.Equatable in ChatGPTVoiceLiveActivityCore
+protocol conformance descriptor for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPresentationStyle : Swift.RawRepresentable in ChatGPTVoiceLiveActivityCore
+nominal type descriptor for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPhase
+type metadata for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPhase
+protocol conformance descriptor for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPhase : Swift.Equatable in ChatGPTVoiceLiveActivityCore
+protocol conformance descriptor for ChatGPTVoiceLiveActivityCore.KnownVoiceLiveActivityPhase : Swift.RawRepresentable in ChatGPTVoiceLiveActivityCore
+protocol conformance descriptor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes : ActivityKit.ActivityAttributes in ChatGPTVoiceLiveActivityCore
+ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes.ContentState.effectiveControls.getter : ChatGPTVoiceLiveActivityCore.VoiceLiveActivityControls
+ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes.ContentState.dismissesImmediatelyOnEndCommand.getter : Swift.Bool
+ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes.ContentState.optimisticallyApplyingControlCommand(_: ChatGPTVoiceLiveActivityCore.VoiceLiveActivityCommand, commandID: Foundation.UUID, updatedAt: Foundation.Date) -> ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes.ContentState?
+type metadata accessor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes.ContentState
+nominal type descriptor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes.ContentState
+protocol conformance descriptor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes.ContentState : Swift.Encodable in ChatGPTVoiceLiveActivityCore
+protocol conformance descriptor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes.ContentState : Swift.Hashable in ChatGPTVoiceLiveActivityCore
+protocol conformance descriptor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes.ContentState : Swift.Decodable in ChatGPTVoiceLiveActivityCore
+nominal type descriptor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes
+type metadata for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityAttributes
+type metadata for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityParticipant
+ChatGPTVoiceLiveActivityCore.VoiceLiveActivityCommandSender.__allocating_init(storageDirectoryURL: Foundation.URL) -> ChatGPTVoiceLiveActivityCore.VoiceLiveActivityCommandSender
+ChatGPTVoiceLiveActivityCore.VoiceLiveActivityCommandSender.send(ChatGPTVoiceLiveActivityCore.VoiceLiveActivityCommandEnvelope) throws -> ()
+type metadata accessor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityCommandSender
+nominal type descriptor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityHorizonPalette
+type metadata for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityHorizonPalette
+nominal type descriptor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityWidgetSnapshot
+type metadata for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityWidgetSnapshot
+type metadata accessor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityCommandEnvelope
+ChatGPTVoiceLiveActivityCore.VoiceLiveActivityCommand.init(rawValue: Swift.String) -> ChatGPTVoiceLiveActivityCore.VoiceLiveActivityCommand?
+nominal type descriptor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivityCommand
+nominal type descriptor for ChatGPTVoiceLiveActivityCore.VoiceLiveActivitySessionID
+protocol descriptor for ChatGPTNotificationsInterface.NotificationService
+protocol descriptor for ChatGPTNotificationsInterface.NotificationServiceHost
+protocol descriptor for ChatGPTNotificationsInterface.NotificationServiceProviding
+(extension in ChatGPTNotificationsInterface):ChatGPTNotificationsInterface.NotificationServiceProviding.notificationServiceResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTNotificationsInterface.NotificationService>
+protocol descriptor for ChatGPTNotificationsInterface.OrbitNotificationReplyHandler
+protocol descriptor for ChatGPTNotificationsInterface.NotificationServiceHostProviding
+protocol descriptor for ChatGPTNotificationsInterface.OrbitNotificationReplyHandlerProviding
+protocol descriptor for ChatGPTSubscriptionsInterface.NoPaymentTrialCountdownFactory
+protocol descriptor for ChatGPTSubscriptionsInterface.NoPaymentTrialCountdownFactoryProviding
+protocol witness table for ChatGPTVoiceFeedbackInterface.VoicePostCallFeedbackFooterTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceFeedbackInterface
+type metadata for ChatGPTVoiceFeedbackInterface.VoicePostCallFeedbackFooterTemplate
+protocol descriptor for ChatGPTVoiceFeedbackInterface.VoicePostCallFeedbackFooterBuilderProviding
+(extension in ChatGPTVoiceFeedbackInterface):ChatGPTVoiceFeedbackInterface.VoicePostCallFeedbackFooterBuilderProviding.voicePostCallFeedbackFooterBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceFeedbackInterface.VoicePostCallFeedbackFooterTemplate>>
+protocol witness table for ChatGPTVoiceFeedbackInterface.InternalFeedbackSheetTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceFeedbackInterface
+type metadata for ChatGPTVoiceFeedbackInterface.InternalFeedbackSheetTemplate
+protocol descriptor for ChatGPTVoiceFeedbackInterface.InternalFeedbackSheetBuilderProviding
+(extension in ChatGPTVoiceFeedbackInterface):ChatGPTVoiceFeedbackInterface.InternalFeedbackSheetBuilderProviding.internalFeedbackSheetBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceFeedbackInterface.InternalFeedbackSheetTemplate>>
+protocol witness table for ChatGPTVoiceFeedbackInterface.VoiceTrainingDisclosureTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceFeedbackInterface
+type metadata for ChatGPTVoiceFeedbackInterface.VoiceTrainingDisclosureTemplate
+protocol witness table for ChatGPTVoiceFeedbackInterface.BackgroundVoiceSettingPromptTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceFeedbackInterface
+type metadata for ChatGPTVoiceFeedbackInterface.BackgroundVoiceSettingPromptTemplate
+protocol descriptor for ChatGPTVoiceFeedbackInterface.VoiceTrainingDisclosureBuilderProviding
+(extension in ChatGPTVoiceFeedbackInterface):ChatGPTVoiceFeedbackInterface.VoiceTrainingDisclosureBuilderProviding.voiceTrainingDisclosureBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceFeedbackInterface.VoiceTrainingDisclosureTemplate>>
+protocol descriptor for ChatGPTVoiceFeedbackInterface.BackgroundVoiceSettingPromptBuilderProviding
+(extension in ChatGPTVoiceFeedbackInterface):ChatGPTVoiceFeedbackInterface.BackgroundVoiceSettingPromptBuilderProviding.backgroundVoiceSettingPromptBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceFeedbackInterface.BackgroundVoiceSettingPromptTemplate>>
+(extension in SwiftToolbelt):os.OSAllocatedUnfairLock.updateValue(A) -> A
+protocol descriptor for AccountWorkspaceStateInterface.UserWorkspaceStateReaderProviding
+protocol descriptor for AccountWorkspaceStateInterface.UserWorkspaceStateReader
+protocol witness table for ChatGPTAudioAttachmentsInterface.AudioAttachmentChipsTemplate : SwiftToolbelt.ViewTemplate in ChatGPTAudioAttachmentsInterface
+type metadata for ChatGPTAudioAttachmentsInterface.AudioAttachmentChipsTemplate
+protocol descriptor for ChatGPTAudioAttachmentsInterface.AudioAttachmentPlaybackFactory
+protocol witness table for ChatGPTAudioAttachmentsInterface.AudioAttachmentPlayersTemplate : SwiftToolbelt.ViewTemplate in ChatGPTAudioAttachmentsInterface
+type metadata for ChatGPTAudioAttachmentsInterface.AudioAttachmentPlayersTemplate
+protocol descriptor for ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingFactory
+protocol descriptor for ChatGPTAudioAttachmentsInterface.AudioAttachmentChipsBuilderProviding
+(extension in ChatGPTAudioAttachmentsInterface):ChatGPTAudioAttachmentsInterface.AudioAttachmentChipsBuilderProviding.audioAttachmentChipsBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAudioAttachmentsInterface.AudioAttachmentChipsTemplate>>
+protocol descriptor for ChatGPTAudioAttachmentsInterface.AudioAttachmentPlayersBuilderProviding
+(extension in ChatGPTAudioAttachmentsInterface):ChatGPTAudioAttachmentsInterface.AudioAttachmentPlayersBuilderProviding.audioAttachmentPlayersBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAudioAttachmentsInterface.AudioAttachmentPlayersTemplate>>
+protocol descriptor for ChatGPTAudioAttachmentsInterface.AudioAttachmentPlaybackFactoryProviding
+protocol witness table for ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingControlsTemplate : SwiftToolbelt.ViewTemplate in ChatGPTAudioAttachmentsInterface
+type metadata for ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingControlsTemplate
+protocol descriptor for ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingFactoryProviding
+protocol descriptor for ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingControlsBuilderProviding
+(extension in ChatGPTAudioAttachmentsInterface):ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingControlsBuilderProviding.audioAttachmentRecordingControlsBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingControlsTemplate>>
+protocol descriptor for ChatGPTPictureInPictureInterface.PictureInPictureServiceProviding
+protocol descriptor for ChatGPTPictureInPictureInterface.PictureInPictureSessionCoordinator
+protocol descriptor for ChatGPTPictureInPictureInterface.PictureInPictureSessionCoordinatorProviding
+protocol descriptor for ChatGPTPictureInPictureInterface.PictureInPictureService
+protocol conformance descriptor for ChatGPTWorkLiveActivityInterface.DeepResearchActivityAttributes : ActivityKit.ActivityAttributes in ChatGPTWorkLiveActivityInterface
+nominal type descriptor for ChatGPTWorkLiveActivityInterface.DeepResearchActivityAttributes.ContentState.KnownAction
+type metadata for ChatGPTWorkLiveActivityInterface.DeepResearchActivityAttributes.ContentState.KnownAction
+protocol conformance descriptor for ChatGPTWorkLiveActivityInterface.DeepResearchActivityAttributes.ContentState.KnownAction : Swift.RawRepresentable in ChatGPTWorkLiveActivityInterface
+nominal type descriptor for ChatGPTWorkLiveActivityInterface.DeepResearchActivityAttributes.ContentState
+type metadata for ChatGPTWorkLiveActivityInterface.DeepResearchActivityAttributes.ContentState
+ChatGPTWorkLiveActivityInterface.DeepResearchActivityAttributes.deepLink(for: ChatGPTWorkLiveActivityInterface.DeepResearchActivityAttributes.ContentState) -> Foundation.URL?
+type metadata accessor for ChatGPTWorkLiveActivityInterface.DeepResearchActivityAttributes
+nominal type descriptor for ChatGPTWorkLiveActivityInterface.DeepResearchActivityAttributes
+static ChatGPTWorkLiveActivityInterface.WorkLiveActivityTiming.__derived_enum_equals(ChatGPTWorkLiveActivityInterface.WorkLiveActivityTiming, ChatGPTWorkLiveActivityInterface.WorkLiveActivityTiming) -> Swift.Bool
+ChatGPTWorkLiveActivityInterface.WorkLiveActivityTiming.init(startDate: Swift.Double, timerStoppedAt: Swift.Double?, finished: Swift.Bool?, hasActions: Swift.Bool) -> ChatGPTWorkLiveActivityInterface.WorkLiveActivityTiming
+type metadata accessor for ChatGPTWorkLiveActivityInterface.WorkLiveActivityTiming
+nominal type descriptor for ChatGPTWorkLiveActivityInterface.WorkLiveActivityTiming
+protocol descriptor for ChatGPTCommerceAnalyticsInterface.ProductOfferAnalyticsClientProviding
+protocol descriptor for ChatGPTCommerceAnalyticsInterface.ProductOfferAnalyticsClient
+protocol descriptor for ChatGPTCommerceAnalyticsInterface.VirtualTryOnAnalyticsClientProviding
+protocol descriptor for ChatGPTCommerceAnalyticsInterface.VirtualTryOnAnalyticsClient
+protocol descriptor for AuthenticatedCookieManagerInterface.AuthenticatedCookieManager
+protocol descriptor for AuthenticatedCookieManagerInterface.AuthenticatedCookieManagerProviding
+type metadata for ChatGPTFinanceVerificationInterface.FinanceVerificationAppearance
+protocol descriptor for ChatGPTFinanceVerificationInterface.FinanceVerificationPresentation
+type metadata for ChatGPTFinanceVerificationInterface.FinanceVerificationColorVariables
+nominal type descriptor for ChatGPTFinanceVerificationInterface.FinanceVerificationResult
+type metadata accessor for ChatGPTFinanceVerificationInterface.FinanceVerificationRequest
+nominal type descriptor for ChatGPTFinanceVerificationInterface.FinanceVerificationRequest
+protocol descriptor for ChatGPTFinanceVerificationInterface.FinanceVerificationProviding
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceConversationLaunchCoordinatorFactory
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceConversationPresentationStateFactory
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceConversationLaunchCoordinatorFactoryProviding
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceConversationPresentationStateFactoryProviding
+protocol witness table for ChatGPTVoiceConversationUIInterface.ConversationAvatarDockTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.ConversationAvatarDockTemplate
+protocol descriptor for ChatGPTVoiceConversationUIInterface.ConversationAvatarDockBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.ConversationAvatarDockBuilderProviding.conversationAvatarDockBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.ConversationAvatarDockTemplate>>
+protocol descriptor for ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceRuntime
+protocol witness table for ChatGPTVoiceConversationUIInterface.VoiceImageGalleryTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.VoiceImageGalleryTemplate
+protocol witness table for ChatGPTVoiceConversationUIInterface.VoiceSelectionTextTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.VoiceSelectionTextTemplate
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceAvatarTreatmentService
+protocol witness table for ChatGPTVoiceConversationUIInterface.VoiceDowngradeSheetTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.VoiceDowngradeSheetTemplate
+protocol witness table for ChatGPTVoiceConversationUIInterface.VoiceTrialEducationTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.VoiceTrialEducationTemplate
+protocol witness table for ChatGPTVoiceConversationUIInterface.VoiceModeUnavailableTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.VoiceModeUnavailableTemplate
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceTrialCoordinatorFactory
+protocol witness table for ChatGPTVoiceConversationUIInterface.VoiceStatusDisclosureTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.VoiceStatusDisclosureTemplate
+protocol witness table for ChatGPTVoiceConversationUIInterface.VoiceAdvancedDisclosureTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.VoiceAdvancedDisclosureTemplate
+protocol witness table for ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceOverlayTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceOverlayTemplate
+protocol descriptor for ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceRuntimeProviding
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceImageGalleryBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.VoiceImageGalleryBuilderProviding.voiceImageGalleryBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewBuilder<ChatGPTVoiceConversationUIInterface.VoiceImageGalleryTemplate>>
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceOnboardingCoordinatorFactory
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceSelectionTextBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.VoiceSelectionTextBuilderProviding.voiceSelectionTextBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceSelectionTextTemplate>>
+protocol witness table for ChatGPTVoiceConversationUIInterface.MessageInputVoiceMuteButtonTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.MessageInputVoiceMuteButtonTemplate
+protocol descriptor for ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceCoordinatorFactory
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceDowngradeSheetBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.VoiceDowngradeSheetBuilderProviding.voiceDowngradeSheetBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceDowngradeSheetTemplate>>
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceTrialEducationBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.VoiceTrialEducationBuilderProviding.voiceTrialEducationBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceTrialEducationTemplate>>
+protocol witness table for ChatGPTVoiceConversationUIInterface.MessageInputVoiceCloseButtonTemplate : SwiftToolbelt.ViewTemplate in ChatGPTVoiceConversationUIInterface
+type metadata for ChatGPTVoiceConversationUIInterface.MessageInputVoiceCloseButtonTemplate
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceAvatarTreatmentServiceProviding
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceModeUnavailableBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.VoiceModeUnavailableBuilderProviding.voiceModeUnavailableBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceModeUnavailableTemplate>>
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceStatusDisclosureBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.VoiceStatusDisclosureBuilderProviding.voiceStatusDisclosureBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceStatusDisclosureTemplate>>
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceTrialCoordinatorFactoryProviding
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceAdvancedDisclosureBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.VoiceAdvancedDisclosureBuilderProviding.voiceAdvancedDisclosureBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.VoiceAdvancedDisclosureTemplate>>
+protocol descriptor for ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceOverlayBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceOverlayBuilderProviding.phoneGestureVoiceOverlayBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceOverlayTemplate>>
+protocol descriptor for ChatGPTVoiceConversationUIInterface.VoiceOnboardingCoordinatorFactoryProviding
+protocol descriptor for ChatGPTVoiceConversationUIInterface.MessageInputVoiceMuteButtonBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.MessageInputVoiceMuteButtonBuilderProviding.messageInputVoiceMuteButtonBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.MessageInputVoiceMuteButtonTemplate>>
+protocol descriptor for ChatGPTVoiceConversationUIInterface.MessageInputVoiceCloseButtonBuilderProviding
+(extension in ChatGPTVoiceConversationUIInterface):ChatGPTVoiceConversationUIInterface.MessageInputVoiceCloseButtonBuilderProviding.messageInputVoiceCloseButtonBuilderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> SwiftUIToolbelt.AnyViewOnlyBuilder<ChatGPTVoiceConversationUIInterface.MessageInputVoiceCloseButtonTemplate>>
+protocol descriptor for ChatGPTVoiceConversationUIInterface.PhoneGestureVoiceCoordinatorFactoryProviding
+protocol descriptor for ChatGPTFirstPartyEligibilityInterface.FirstPartyEligibilityServiceProviding
+protocol descriptor for ChatGPTFirstPartyEligibilityInterface.FirstPartyEligibilityService
+protocol descriptor for Auth.RootAuthentication
+protocol descriptor for Auth.AccountAuthentication
+protocol descriptor for Auth.LoginCredentialInstaller
+protocol descriptor for Auth.InteractiveAuthentication
+protocol descriptor for Auth.FirstLaunchSessionRecovery
+protocol descriptor for Auth.RootAuthenticationProviding
+protocol descriptor for Auth.InstallingLoginSessionFactory
+protocol descriptor for Auth.AccountAuthenticationProviding
+protocol descriptor for Auth.AuthenticationSessionLifecycle
+Auth.ChatGPTBackgroundSessionReader.init(application: BuildInfo.BuildInfo.Application, defaults: __C.NSUserDefaults) -> Auth.ChatGPTBackgroundSessionReader
+type metadata accessor for Auth.ChatGPTBackgroundSessionReader.BearerResult
+Auth.ChatGPTBackgroundSessionReader.isSelectedUser(Tagged.Tagged<CoreIdentifiers.UserIDTag, Swift.String>) -> Swift.Bool
+Auth.ChatGPTBackgroundSessionReader.oauthBearerResult(for: Tagged.Tagged<CoreIdentifiers.UserIDTag, Swift.String>) async -> Auth.ChatGPTBackgroundSessionReader.BearerResult
+async function pointer to Auth.ChatGPTBackgroundSessionReader.oauthBearerResult(for: Tagged.Tagged<CoreIdentifiers.UserIDTag, Swift.String>) async -> Auth.ChatGPTBackgroundSessionReader.BearerResult
+nominal type descriptor for Auth.ChatGPTBackgroundSessionReader
+protocol descriptor for Auth.LoginCredentialInstallerProviding
+protocol witness table for Auth.ChatGPTBackgroundAPIAuthentication : AuthInterface.APIAuthentication in Auth
+Auth.ChatGPTBackgroundAPIAuthentication.init(for: Tagged.Tagged<CoreIdentifiers.UserIDTag, Swift.String>, requiredWorkspaceID: Tagged.Tagged<CoreIdentifiers.WorkspaceIDTag, Swift.String>?, deviceID: Tagged.Tagged<AppGroupSharedDataInterface.DeviceIDTag, Swift.String>, isCurrentAccount: @Swift.MainActor @Sendable () -> Swift.Bool, readBearer: @Swift.MainActor @Sendable (Tagged.Tagged<CoreIdentifiers.UserIDTag, Swift.String>) async -> Auth.ChatGPTBackgroundSessionReader.BearerResult) -> Auth.ChatGPTBackgroundAPIAuthentication
+type metadata accessor for Auth.ChatGPTBackgroundAPIAuthentication
+protocol descriptor for Auth.InteractiveAuthenticationProviding
+protocol descriptor for Auth.SignInWithAppleAuthorizationClient
+protocol descriptor for Auth.FirstLaunchSessionRecoveryProviding
+protocol descriptor for Auth.AuthenticationCredentialAdministration
+protocol descriptor for Auth.InstallingLoginSessionFactoryProviding
+protocol descriptor for Auth.AuthenticationSessionLifecycleProviding
+protocol descriptor for Auth.SignInWithAppleAuthorizationClientProviding
+protocol descriptor for Auth.AuthenticationCredentialAdministrationProviding
+protocol descriptor for ChatGPTEntityDetailPrefetchResourcePolicyInterface.MessageEntityDetailPrefetchResourcePolicy
+protocol descriptor for ChatGPTEntityDetailPrefetchResourcePolicyInterface.MessageEntityDetailPrefetchResourcePolicyProviding
+protocol descriptor for Users.UserManager
+protocol descriptor for Users.UserProfileStore
+protocol descriptor for Users.UserManagerProviding
+protocol descriptor for Users.BootstrapCurrentUserStore
+protocol descriptor for Users.UserProfileStoreProviding
+protocol descriptor for Users.RetiredUserProfileCleaning
+protocol descriptor for Users.AuthenticationSessionSelection
+protocol descriptor for Users.BootstrapCurrentUserStoreProviding
+protocol descriptor for Users.RetiredUserProfileCleaningProviding
+protocol descriptor for Users.AuthenticationSessionSelectionProviding
+protocol descriptor for Scopes.LiveContainer
+(extension in ChatGPTNotificationsChatGPTHost):Scopes.LiveContainer< where A: Account.ActiveUserWorkspaceManagerProviding, A: AppEntryTrackingInterface.AppEntryTrackingProviding, A: Auth.AuthenticationSessionLifecycleProviding, A: ChatGPTCore.AppSessionProviding, A: ChatGPTNotificationsInterface.NotificationServiceHostProviding, A: ChatGPTNotificationsInterface.OrbitNotificationReplyHandlerProviding>._oaInjectChatGPTNotificationsChatGPTHostDependencyRootScopeDefaultChatGPTNotificationServiceHostProviderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTNotificationsInterface.NotificationServiceHost>
+(extension in ChatGPTNotificationsChatGPTHost):Scopes.LiveContainer< where A: Account.ActiveUserWorkspaceManagerProviding, A: AppEntryTrackingInterface.AppEntryTrackingProviding, A: Auth.AuthenticationSessionLifecycleProviding, A: ChatGPTCore.AppSessionProviding, A: ChatGPTNotificationsInterface.NotificationServiceHostProviding, A: ChatGPTNotificationsInterface.OrbitNotificationReplyHandlerProviding>._oaInjectChatGPTNotificationsChatGPTHostDependencyRootScopeDefaultChatGPTNotificationServiceHostProvider.getter : ChatGPTNotificationsInterface.NotificationServiceHost
+(extension in ChatGPTStartup):Scopes.LiveContainer< where A: AppEntryTrackingInterface.AppEntryTrackingProviding, A: ChatGPTStartupInterface.StartupRecordingProviding>._oaInjectChatGPTStartupDependencyRootScopeDefaultStartupRecordingProviderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTStartupInterface.StartupRecording>
+(extension in ChatGPTStartup):Scopes.LiveContainer< where A: AppEntryTrackingInterface.AppEntryTrackingProviding, A: ChatGPTStartupInterface.StartupRecordingProviding>._oaInjectChatGPTStartupDependencyRootScopeDefaultStartupRecordingProvider.getter : ChatGPTStartupInterface.StartupRecording
+(extension in ChatGPTWebView):Scopes.LiveContainer< where A: ChatGPTWebView.SystemWebViewFactoryProviding, A: ChatGPTWebView.WebViewPoolProviding, A: ChatGPTWebViewInterface.WebViewBuilderProviding>.webViewBuilder.getter : SwiftUIToolbelt.AnyViewBuilder<ChatGPTWebViewInterface.WebViewTemplate>
+(extension in ChatGPTWhisper):Scopes.LiveContainer< where A: AudioPlayerServiceInterface.AudioSessionManagerProviding, A: ChatGPTWhisper.DictationRecordingEnvironmentProviding, A: ChatGPTWhisperInterface.IndependentRecorderFactoryProviding>._oaInjectChatGPTWhisperDependencyRootScopeDefaultIndependentRecorderFactoryProviderResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTWhisperInterface.IndependentRecorderFactory>
+(extension in ChatGPTWhisper):Scopes.LiveContainer< where A: AudioPlayerServiceInterface.AudioSessionManagerProviding, A: ChatGPTWhisper.DictationRecordingEnvironmentProviding, A: ChatGPTWhisperInterface.IndependentRecorderFactoryProviding>._oaInjectChatGPTWhisperDependencyRootScopeDefaultIndependentRecorderFactoryProvider.getter : ChatGPTWhisperInterface.IndependentRecorderFactory
+(extension in ChatGPTWhisper):Scopes.LiveContainer< where A: AudioPlayerServiceInterface.AudioSessionManagerProviding, A: ChatGPTWhisper.DictationRecordingEnvironmentProviding, A: ChatGPTWhisperInterface.RecorderProviding>._oaInjectChatGPTWhisperDependencyRootScopeSimpleRecorderProviderResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTWhisperInterface.Recorder>
+(extension in ChatGPTWhisper):Scopes.LiveContainer< where A: AudioPlayerServiceInterface.AudioSessionManagerProviding, A: ChatGPTWhisper.DictationRecordingEnvironmentProviding, A: ChatGPTWhisperInterface.RecorderProviding>._oaInjectChatGPTWhisperDependencyRootScopeSimpleRecorderProvider.getter : ChatGPTWhisperInterface.Recorder
+(extension in TibroDotIntents):Scopes.LiveContainer< where A: TibroDotIntentsInterface.DotIntentAccountSourceProviding, A: TibroDotIntentsInterface.DotIntentServiceProviding>._oaInjectTibroDotIntentsDependencyRootScopeDefaultDotIntentServiceProviderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> TibroDotIntentsInterface.DotIntentService>
+(extension in TibroDotIntents):Scopes.LiveContainer< where A: TibroDotIntentsInterface.DotIntentAccountSourceProviding, A: TibroDotIntentsInterface.DotIntentServiceProviding>._oaInjectTibroDotIntentsDependencyRootScopeDefaultDotIntentServiceProvider.getter : TibroDotIntentsInterface.DotIntentService
+(extension in ChatGPTVoiceAudio):Scopes.LiveContainer< where A: APIClient.LoggedOutAPIProviding, A: AudioPlayerServiceInterface.AudioSessionManagerProviding, A: ChatGPTVoiceAudioInterface.VoiceWelcomeAudioPlayerProviding>._oaInjectChatGPTVoiceAudioDependencyRootScopeDefaultVoiceWelcomeAudioPlayerProviderResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTVoiceAudioInterface.VoiceWelcomeAudioPlayer>
+(extension in ChatGPTVoiceAudio):Scopes.LiveContainer< where A: APIClient.LoggedOutAPIProviding, A: AudioPlayerServiceInterface.AudioSessionManagerProviding, A: ChatGPTVoiceAudioInterface.VoiceWelcomeAudioPlayerProviding>._oaInjectChatGPTVoiceAudioDependencyRootScopeDefaultVoiceWelcomeAudioPlayerProvider.getter : ChatGPTVoiceAudioInterface.VoiceWelcomeAudioPlayer
+(extension in ChatGPTNotifications):Scopes.LiveContainer< where A: APIClient.LoggedOutAPIProviding, A: Account.ActiveUserWorkspaceManagerProviding, A: ChatGPTCore.AppSessionProviding, A: ChatGPTNotificationsInterface.NotificationServiceHostProviding, A: ChatGPTNotificationsInterface.NotificationServiceProviding, A: DeviceNotifications.NotificationsProviding, A: Flagpole.StatsigFeatureFlagManagerProviding, A: Users.UserManagerProviding>._oaInjectChatGPTNotificationsDependencyRootScopeDefaultNotificationServiceProviderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTNotificationsInterface.NotificationService>
+(extension in ChatGPTNotifications):Scopes.LiveContainer< where A: APIClient.LoggedOutAPIProviding, A: Account.ActiveUserWorkspaceManagerProviding, A: ChatGPTCore.AppSessionProviding, A: ChatGPTNotificationsInterface.NotificationServiceHostProviding, A: ChatGPTNotificationsInterface.NotificationServiceProviding, A: DeviceNotifications.NotificationsProviding, A: Flagpole.StatsigFeatureFlagManagerProviding, A: Users.UserManagerProviding>._oaInjectChatGPTNotificationsDependencyRootScopeDefaultNotificationServiceProvider.getter : ChatGPTNotificationsInterface.NotificationService
+(extension in ChatGPTAudioAttachments):Scopes.LiveContainer< where A: ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingFactoryProviding, A: ChatGPTWhisperInterface.IndependentRecorderFactoryProviding, A: DeviceUI.IdleTimerServiceProviding>._oaInjectChatGPTAudioAttachmentsDependencyRootScopeDefaultAudioAttachmentRecordingFactoryProviderResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingFactory>
+(extension in ChatGPTAudioAttachments):Scopes.LiveContainer< where A: ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingFactoryProviding, A: ChatGPTWhisperInterface.IndependentRecorderFactoryProviding, A: DeviceUI.IdleTimerServiceProviding>._oaInjectChatGPTAudioAttachmentsDependencyRootScopeDefaultAudioAttachmentRecordingFactoryProvider.getter : ChatGPTAudioAttachmentsInterface.AudioAttachmentRecordingFactory
+(extension in ChatGPTAudioAttachments):Scopes.LiveContainer< where A: AudioPlayerServiceInterface.AudioPlayerServiceProviding, A: ChatGPTAudioAttachmentsInterface.AudioAttachmentPlaybackFactoryProviding>._oaInjectChatGPTAudioAttachmentsDependencyRootScopeDefaultAudioAttachmentPlaybackFactoryProviderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTAudioAttachmentsInterface.AudioAttachmentPlaybackFactory>
+(extension in ChatGPTAudioAttachments):Scopes.LiveContainer< where A: AudioPlayerServiceInterface.AudioPlayerServiceProviding, A: ChatGPTAudioAttachmentsInterface.AudioAttachmentPlaybackFactoryProviding>._oaInjectChatGPTAudioAttachmentsDependencyRootScopeDefaultAudioAttachmentPlaybackFactoryProvider.getter : ChatGPTAudioAttachmentsInterface.AudioAttachmentPlaybackFactory
+(extension in ChatGPTPictureInPicture):Scopes.LiveContainer< where A: ChatGPTPictureInPictureInterface.PictureInPictureServiceProviding, A: ChatGPTPictureInPictureInterface.PictureInPictureSessionCoordinatorProviding, A: DeviceCore.ApplicationStateObserverProviding>._oaInjectChatGPTPictureInPictureDependencyRootScopeDefaultPictureInPictureSessionCoordinatorProviderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTPictureInPictureInterface.PictureInPictureSessionCoordinator>
+(extension in ChatGPTPictureInPicture):Scopes.LiveContainer< where A: ChatGPTPictureInPictureInterface.PictureInPictureServiceProviding, A: ChatGPTPictureInPictureInterface.PictureInPictureSessionCoordinatorProviding, A: DeviceCore.ApplicationStateObserverProviding>._oaInjectChatGPTPictureInPictureDependencyRootScopeDefaultPictureInPictureSessionCoordinatorProvider.getter : ChatGPTPictureInPictureInterface.PictureInPictureSessionCoordinator
+(extension in ChatGPTPictureInPicture):Scopes.LiveContainer< where A: AudioPlayerServiceInterface.AudioSessionManagerProviding, A: ChatGPTPictureInPictureInterface.PictureInPictureServiceProviding, A: Flagpole.StatsigFeatureFlagManagerProviding>._oaInjectChatGPTPictureInPictureDependencyRootScopeDefaultPictureInPictureServiceProviderResolver.getter : OAInject.Resolver<@Sendable () -> ChatGPTPictureInPictureInterface.PictureInPictureService>
+(extension in ChatGPTPictureInPicture):Scopes.LiveContainer< where A: AudioPlayerServiceInterface.AudioSessionManagerProviding, A: ChatGPTPictureInPictureInterface.PictureInPictureServiceProviding, A: Flagpole.StatsigFeatureFlagManagerProviding>._oaInjectChatGPTPictureInPictureDependencyRootScopeDefaultPictureInPictureServiceProvider.getter : ChatGPTPictureInPictureInterface.PictureInPictureService
+(extension in ChatGPT):Scopes.LiveContainer< where A: Account.ActiveUserWorkspaceManagerProviding, A: ChatGPTHealthCore.HealthStoreRepositoryProviding, A: ChatGPTHealthInterface.HealthKitObserverWakeRegistrationProviding, A: Users.UserManagerProviding, A: ValdiDynamicDelivery.ValdiLastActiveRuntimeSelectionStoreProviding>._oaInjectChatGPTDependencyRootScopeDefaultHealthKitObserverWakeRegistrationProviderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTHealthInterface.HealthKitObserverWakeRegistration>
+(extension in ChatGPT):Scopes.LiveContainer< where A: Account.ActiveUserWorkspaceManagerProviding, A: ChatGPTHealthCore.HealthStoreRepositoryProviding, A: ChatGPTHealthInterface.HealthKitObserverWakeRegistrationProviding, A: Users.UserManagerProviding, A: ValdiDynamicDelivery.ValdiLastActiveRuntimeSelectionStoreProviding>._oaInjectChatGPTDependencyRootScopeDefaultHealthKitObserverWakeRegistrationProvider.getter : ChatGPTHealthInterface.HealthKitObserverWakeRegistration
+(extension in ChatGPT):Scopes.LiveContainer< where A: Account.ActiveUserWorkspaceManagerProviding, A: ChatGPTSitesInterface.SitesBrowserSessionFactoryProviding, A: ChatGPTWebViewInterface.BrowserWebViewBuilderProviding, A: Flagpole.StatsigFeatureFlagManagerProviding, A: OAIIntune.IntuneManagerProviding, A: Users.UserManagerProviding, A: ValdiDynamicDelivery.ValdiLastActiveRuntimeSelectionStoreProviding>._oaInjectChatGPTDependencyRootScopeDefaultSitesBrowserSessionFactoryProviderResolver.getter : OAInject.Resolver<@Swift.MainActor @Sendable () -> ChatGPTSitesInterface.SitesBrowserSessionFactory>
+(extension in ChatGPT):Scopes.LiveContainer< where A: Account.ActiveUserWorkspaceManagerProviding, A: ChatGPTSitesInterface.SitesBrowserSessionFactoryProviding, A: ChatGPTWebViewInterface.BrowserWebViewBuilderProviding, A: Flagpole.StatsigFeatureFlagManagerProviding, A: OAIIntune.IntuneManagerProviding, A: Users.UserManagerProviding, A: ValdiDynamicDelivery.ValdiLastActiveRuntimeSelectionStoreProviding>._oaInjectChatGPTDependencyRootScopeDefaultSitesBrowserSessionFactoryProvider.getter : ChatGPTSitesInterface.SitesBrowserSessionFactory
+(extension in Account):Scopes.UserContainer.accountStatusResponseCacheStore.getter : FactoryKit.Factory<Scopes.MainActorFactoryWrapper<Account.AccountStatusResponseCacheStore>>
+protocol descriptor for Scopes.UserScopeRegistry
+Scopes.MainActorFactoryWrapper.value.getter : A
+Scopes.MainActorFactoryWrapper.init(factory: @Swift.MainActor @Sendable () -> A) -> Scopes.MainActorFactoryWrapper<A>
+nominal type descriptor for Scopes.MainActorFactoryWrapper
+protocol descriptor for Scopes.UserScopeRegistryProviding
+nominal type descriptor for Tagged.Tagged
+protocol conformance descriptor for < where B: Swift.Equatable> Tagged.Tagged<A, B> : Swift.Equatable in Tagged
+nominal type descriptor for APICore.GizmoIDTag
+nominal type descriptor for APICore.RemoteConversationIdTag
+type metadata accessor for APICore.APIError
+protocol conformance descriptor for APICore.APIError : Swift.Error in APICore
+protocol descriptor for Account.LegacyAccountDataMigrationObserver
+protocol descriptor for Account.LegacyAccountDataMigrationObserverProviding
+protocol descriptor for Account.AccountStatusResponseCacheStore
+protocol descriptor for Account.UserAccountsReader
+protocol descriptor for Account.ActiveUserWorkspaceManager
+protocol descriptor for Account.UserAccountsReaderProviding
+protocol descriptor for Account.ActiveUserWorkspaceManagerProviding
+nominal type descriptor for Account.Account.NormalizedUserIDTag
+static Account.Account.constructNormalizedUserID(for: Tagged.Tagged<APICore.AccountUserIDTag, Swift.String>, workspaceID: Tagged.Tagged<CoreIdentifiers.WorkspaceIDTag, Swift.String>?) -> Tagged.Tagged<Account.Account.NormalizedUserIDTag, Swift.String>
+ChatGPT.AppDelegate.rootViewModel.getter : ChatGPT.RootViewModel
+type metadata accessor for ChatGPT.AppDelegate
+nominal type descriptor for ChatGPT.AppDelegate
+protocol conformance descriptor for ChatGPT.RootViewModel : Observation.Observable in ChatGPT
+type metadata accessor for ChatGPT.RootViewModel
+protocol descriptor for ChatGPT.LoginStateObserver
+ChatGPT.CodexTasksWidgetHost.id.getter : Swift.String
+nominal type descriptor for ChatGPT.CodexTasksWidgetHost
+type metadata for ChatGPT.CodexTasksWidgetHost
+nominal type descriptor for ChatGPT.CodexTasksWidgetItem.ID
+type metadata for ChatGPT.CodexTasksWidgetItem.ID
+type metadata accessor for ChatGPT.CodexTasksWidgetItem
+nominal type descriptor for ChatGPT.CodexTasksWidgetItem
+protocol conformance descriptor for ChatGPT.CodexTasksWidgetItem : Swift.Identifiable in ChatGPT
+ChatGPT.CodexTasksWidgetState.listURL.getter : Foundation.URL?
+type metadata accessor for ChatGPT.CodexTasksWidgetState
+nominal type descriptor for ChatGPT.CodexTasksWidgetState
+protocol descriptor for ChatGPT.ActiveWorkspaceWorkMode
+static ChatGPT.CodexUsageWidgetSnapshot.Window.__derived_struct_equals(ChatGPT.CodexUsageWidgetSnapshot.Window, ChatGPT.CodexUsageWidgetSnapshot.Window) -> Swift.Bool
+type metadata accessor for ChatGPT.CodexUsageWidgetSnapshot.Window
+nominal type descriptor for ChatGPT.CodexUsageWidgetSnapshot.Window
+type metadata accessor for ChatGPT.CodexUsageWidgetSnapshot
+nominal type descriptor for ChatGPT.CodexUsageWidgetSnapshot
+ChatGPT.CodexTasksWidgetDataSource.hosts() async -> [ChatGPT.CodexTasksWidgetHost]
+async function pointer to ChatGPT.CodexTasksWidgetDataSource.hosts() async -> [ChatGPT.CodexTasksWidgetHost]
+ChatGPT.CodexTasksWidgetDataSource.refresh(hostIDs: [Swift.String]?) async -> ChatGPT.CodexTasksWidgetState
+async function pointer to ChatGPT.CodexTasksWidgetDataSource.refresh(hostIDs: [Swift.String]?) async -> ChatGPT.CodexTasksWidgetState
+type metadata accessor for ChatGPT.CodexTasksWidgetDataSource
+nominal type descriptor for ChatGPT.CodexTasksWidgetDataSource
+ChatGPT.CodexUsageWidgetDataSource.cachedState() -> ChatGPT.CodexUsageWidgetDataSource.State
+static ChatGPT.CodexUsageWidgetDataSource.State.__derived_enum_equals(ChatGPT.CodexUsageWidgetDataSource.State, ChatGPT.CodexUsageWidgetDataSource.State) -> Swift.Bool
+type metadata accessor for ChatGPT.CodexUsageWidgetDataSource.State
+nominal type descriptor for ChatGPT.CodexUsageWidgetDataSource.State
+ChatGPT.CodexUsageWidgetDataSource.refresh() async -> ChatGPT.CodexUsageWidgetDataSource.State
+async function pointer to ChatGPT.CodexUsageWidgetDataSource.refresh() async -> ChatGPT.CodexUsageWidgetDataSource.State
+nominal type descriptor for ChatGPT.CodexUsageWidgetDataSource
+protocol descriptor for ChatGPT.SitesBrowserBuilderBinding
+protocol descriptor for ChatGPT.LoginStateObserverProviding
+protocol descriptor for ChatGPT.OrbitConversationFactoryStore
+protocol descriptor for ChatGPT.ActiveWorkspaceWorkModeProviding
+ChatGPT.CodexTasksWidgetDataSourceFactory.makeDataSource() -> ChatGPT.CodexTasksWidgetDataSource
+ChatGPT.CodexTasksWidgetDataSourceFactory.init(dependencies: APIClientInterface.URLSessionServiceProviding & AppGroupSharedDataInterface.DeviceIDProviderProviding & Flagpole.StatsigFeatureFlagManagerProviding & Scopes.UserScopeRegistryProviding & Users.UserProfileStoreProviding & ValdiDynamicDelivery.ValdiLastActiveRuntimeSelectionStoreProviding, sessionReader: Auth.ChatGPTBackgroundSessionReader) -> ChatGPT.CodexTasksWidgetDataSourceFactory
+type metadata for ChatGPT.CodexTasksWidgetDataSourceFactory
+ChatGPT.CodexUsageWidgetDataSourceFactory.makeDataSource() -> ChatGPT.CodexUsageWidgetDataSource
+ChatGPT.CodexUsageWidgetDataSourceFactory.init(dependencies: APIClientInterface.APIRequestTracingConfiguringProviding & APIClientInterface.URLSessionServiceProviding & AppGroupSharedDataInterface.DeviceIDProviderProviding & OAILogging.AppSessionIDProviding & Scopes.UserScopeRegistryProviding, sessionReader: Auth.ChatGPTBackgroundSessionReader) -> ChatGPT.CodexUsageWidgetDataSourceFactory
+type metadata for ChatGPT.CodexUsageWidgetDataSourceFactory
+protocol descriptor for ChatGPT.FinanceDeepLinkEligibilityFactory
+protocol descriptor for ChatGPT.SitesBrowserBuilderBindingProviding
+protocol descriptor for ChatGPT.OrbitConversationFactoryStoreProviding
+protocol descriptor for ChatGPT.FinanceDeepLinkEligibilityFactoryProviding
+protocol conformance descriptor for ChatGPT.RootView : SwiftUI.View in ChatGPT
+type metadata accessor for ChatGPT.RootView
+nominal type descriptor for ChatGPT.RootView
+(extension in NSUIToolbelt):SwiftUI.EnvironmentValues.dynamicTypeSizeTraitCollection.getter : __C.UITraitCollection
+property descriptor for (extension in NSUIToolbelt):SwiftUI.EnvironmentValues.dynamicTypeSizeTraitCollection : __C.UITraitCollection
+(extension in SwiftUIToolbelt):SwiftUI.View.frame(size: CoreGraphics.CGFloat?, alignment: SwiftUI.Alignment) -> some
+(extension in SwiftUIStyleguide):SwiftUI.View.font(_: PlatformSupportStyleguide.OpenAIFont, weight: SwiftUI.Font.Weight?, design: SwiftUI.Font.Design) -> some
+(extension in SwiftUIStyleguide):SwiftUI.View.font(PlatformSupportStyleguide.OpenAIFont) -> some
+static (extension in SwiftUIToolbelt):SwiftUI.Color.tertiary.getter : SwiftUI.Color
+(extension in SwiftUIStyleguide):SwiftUI.Color.OAIDiff.deletionForeground.unsafeMutableAddressor : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.OneOff.appForeground.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.OneOff.mainSurfacePrimary.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.OneOff.widgetButtonBackground.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.ChatGPT.Interactive.Bg.Danger.Primary.default.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.ChatGPT.Bg.primary.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.ChatGPT.Icon.tertiary.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.ChatGPT.Text.Status.warning.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.ChatGPT.Text.accent.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.ChatGPT.Text.primary.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.ChatGPT.Text.tertiary.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Color.ChatGPT.Text.secondary.getter : SwiftUI.Color
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.chatBubble.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.microphone.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.stopSmFill.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.checkmarkMd.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.chatBubbleFill.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.microphoneFill.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.openaiLogoBoldLg.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.microphoneSlashFill.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.openaiLogoRegularLg.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.exclamationMarkCircle.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.chatBubbleQuestionmark.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.exclamationMarkCircleFill.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.code.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.cloud.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.codex.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.photo.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.voice.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.camera.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.folder.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.laptop.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.desktop.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.xmarkLg.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.infinity.getter : SwiftUI.Image
+static (extension in Assets):SwiftUI.Image.OpenAI.Symbols.terminal.getter : SwiftUI.Image
+protocol descriptor for DeviceUI.IdleTimerService
+protocol descriptor for DeviceUI.IdleTimerServiceProviding
+protocol descriptor for Flagpole.RemoteConfigManager
+protocol descriptor for Flagpole.ExperimentManagerService
+protocol descriptor for Flagpole.StatsigFeatureFlagManager
+protocol descriptor for Flagpole.StatsigFeatureFlagService
+protocol descriptor for Flagpole.RemoteConfigManagerProviding
+protocol descriptor for Flagpole.ExperimentManagerServiceProviding
+protocol descriptor for Flagpole.StatsigFeatureFlagManagerProviding
+protocol descriptor for Flagpole.StatsigFeatureFlagServiceProviding
+OAInject.DependencyStore.resolver<A where A: Swift.Sendable>(for: Any.Type, create: () -> A) -> A
+OAInject.DependencyResolutionConfiguration.mode.getter : OAInject.DependencyResolutionMode
+OAInject.DependencyResolutionConfiguration.process.unsafeMutableAddressor : OAInject.DependencyResolutionConfiguration
+static OAInject.Resolver.lazy<A where A == @Swift.MainActor @Sendable () -> A1>(@Swift.MainActor @Sendable () -> A1) -> OAInject.Resolver<@Swift.MainActor @Sendable () -> A1>
+static OAInject.Resolver.lazy<A where A == @Sendable () -> A1, A1: Swift.Sendable>(@Sendable () -> A1) -> OAInject.Resolver<@Sendable () -> A1>
+nominal type descriptor for OAInject.Resolver
+static (extension in ChatGPTSettings):Settings.SettingKey.preferredColorScheme.getter : Settings.SettingKey<ChatGPTSettings.ColorSchemeSetting>
+static (extension in TibroWidgetInterface):Settings.SettingKey.dotWidgetSnapshot.getter : Settings.SettingKey<Settings.JSONSetting<TibroWidgetInterface.DotWidgetSnapshot>?>
+static (extension in CodexRemoteLiveActivity):Settings.SettingKey.codexRemoteLiveActivityOwner.getter : Settings.SettingKey<Tagged.Tagged<Account.Account.NormalizedUserIDTag, Swift.String>?>
+static (extension in Account):Settings.SettingKey.activeUserWorkspaceID.getter : Settings.SettingKey<Settings.JSONSetting<CoreIdentifiers.UserWorkspaceID>?>
+nominal type descriptor for Settings.JSONSetting
+nominal type descriptor for Settings.ViewSetting
+Settings.ViewSetting.init(Settings.SettingKey<A>) -> Settings.ViewSetting<A>
+APIClient.WorkspaceAPIClient.init(requestMaker: APIClient.RequestMakerType, authentication: AuthInterface.APIAuthentication, accountID: Tagged.Tagged<CoreIdentifiers.WorkspaceIDTag, Swift.String>, residencyRegion: Swift.String?, requestTracing: APIClientInterface.APIRequestTracing, appSessionID: Swift.String) -> APIClient.WorkspaceAPIClient
+protocol witness table for APIClient.WorkspaceAPIClient : APIClient.API in APIClient
+type metadata accessor for APIClient.WorkspaceAPIClient
+protocol descriptor for APIClient.LoggedOutAPI
+APIClient.RequestMaker.__allocating_init(sessionProviding: APIClientInterface.URLSessionService, certificatePinning: OAICertificatePinning.CertificatePinning, configuration: APIClient.RequestMakerConfiguration) -> APIClient.RequestMaker
+protocol witness table for APIClient.RequestMaker : APIClient.RequestMakerType in APIClient
+type metadata accessor for APIClient.RequestMaker
+protocol descriptor for APIClient.LoggedOutAPIProviding
+static APIClient.RequestMakerConfiguration.disabled.getter : APIClient.RequestMakerConfiguration
+APIClient.BaseAPI.certificatePinning.unsafeMutableAddressor : OAICertificatePinning.CertificatePinning
+static APIClient.BaseAPI.setOwnerAwareLogoutRequired(@Sendable (APICore.APIError, AuthInterface.APIRequestOwner) async -> ()) -> ()
+APIClient.BaseAPI.send<A where A: Swift.Encodable>(_: __owned APIClientInterface.APIQuery<A, SwiftToolbelt.EmptyValue>, callSite: SwiftToolbelt.SourceLocation) async throws -> ()
+async function pointer to APIClient.BaseAPI.send<A where A: Swift.Encodable>(_: __owned APIClientInterface.APIQuery<A, SwiftToolbelt.EmptyValue>, callSite: SwiftToolbelt.SourceLocation) async throws -> ()
+type metadata accessor for APIClient.BaseAPI
+static Analytics.Analytics.track<A where A: AnalyticsInterface.AnalyticsEvent>(_: A, userIdentityOverride: AnalyticsInterface.AnalyticsUserIdentity?, additionalUserProperties: [Swift.String : Swift.Sendable]?, properties: [Swift.String : Swift.Sendable]?, file: Swift.String, line: Swift.UInt, function: Swift.String) -> ()
+BuildInfo.BuildInfo.ChatGPTApp.bundleIdentifier.unsafeMutableAddressor : Swift.String
+BuildInfo.BuildInfo.Application.bundleIdentifier.getter : Swift.String?
+BuildInfo.BuildInfo.application.unsafeMutableAddressor : BuildInfo.BuildInfo.Application
+BuildInfo.BuildInfo.displayName.unsafeMutableAddressor : Swift.String
+BuildInfo.BuildInfo.process.unsafeMutableAddressor : BuildInfo.BuildInfo.Process
+BuildInfo.BuildInfo.appGroup.unsafeMutableAddressor : Swift.String?
+type metadata for DeepLinks.CodexDeepLink.RemoteHost
+DeepLinks.CodexDeepLink.RemoteStartAction.init(rawValue: Swift.String) -> DeepLinks.CodexDeepLink.RemoteStartAction?
+DeepLinks.CodexDeepLink.url.getter : Foundation.URL?
+DeepLinks.ShareExtensionPromptDraft.directoryName.unsafeMutableAddressor : Swift.String
+static DeepLinks.ShareExtensionPromptDraft.createContentTypeAnalytics(sharedText: [Swift.String], urlCount: Swift.Int, attachments: [Foundation.URL]) -> [Swift.String]
+protocol conformance descriptor for DeepLinks.ShareExtensionPromptDraft.Action : CodableToolbelt.DefaultDecodableValueProvider in DeepLinks
+nominal type descriptor for DeepLinks.ShareExtensionPromptDraft.Action
+type metadata for DeepLinks.ShareExtensionPromptDraft.Action
+DeepLinks.ShareExtensionPromptDraft.filename.unsafeMutableAddressor : Swift.String
+type metadata for DeepLinks.ShareExtensionPromptDraft
+protocol conformance descriptor for DeepLinks.ShareExtensionPromptDraft : Swift.Encodable in DeepLinks
+static DeepLinks.DeepLinks.shareExtensionURL(forApplicationBundleIdentifier: Swift.String) -> Foundation.URL?
+static DeepLinks.DeepLinks.newConversationUrl(source: DeepLinks.DeepLinks.Source) -> Foundation.URL
+DeepLinks.DeepLinks.newVoiceConversation.unsafeMutableAddressor : Foundation.URL
+DeepLinks.DeepLinks.dotsEntry.unsafeMutableAddressor : Foundation.URL
+protocol descriptor for OAIIntune.IntuneManager
+protocol descriptor for OAIIntune.IntuneManagerProviding
+protocol descriptor for OAIIntune.IntuneDataTransferPolicy
+type metadata for OAIIntune.IntuneDataTransferPolicyError
+protocol conformance descriptor for OAIIntune.IntuneDataTransferPolicyError : Swift.Error in OAIIntune
+protocol descriptor for OAIIntune.IntuneDataTransferPolicyProviding
+OAIIntune.BuildConfiguredIntuneDataTransferPolicy.init() -> OAIIntune.BuildConfiguredIntuneDataTransferPolicy
+nominal type descriptor for OAIIntune.BuildConfiguredIntuneDataTransferPolicy
+type metadata for OAIIntune.BuildConfiguredIntuneDataTransferPolicy
+(extension in CalpicoCore):Swift.String.calpicoNotificationPlainText.getter : Swift.String
+static (extension in Localization):Swift.String.localized(_: Localization.CustomLocalizedStringKey, defaultValue: Localization.CustomLocalizedStringKey?, preferredLocales: [Foundation.Locale]?) -> Swift.String
+(extension in SwiftToolbelt):Swift.Sequence< where A.Element: Swift.Sendable>.parallelMap<A, B where A1: Swift.Sendable, B1: Swift.Error>(priority: Swift.TaskPriority?, maxConcurrentTasks: Swift.Int, _: @Sendable (A.Element) async throws(B1) -> A1) async throws(B1) -> [A1]
+async function pointer to (extension in SwiftToolbelt):Swift.Sequence< where A.Element: Swift.Sendable>.parallelMap<A, B where A1: Swift.Sendable, B1: Swift.Error>(priority: Swift.TaskPriority?, maxConcurrentTasks: Swift.Int, _: @Sendable (A.Element) async throws(B1) -> A1) async throws(B1) -> [A1]
+(extension in SwiftToolbelt):Swift.Sequence< where A.Element: Swift.Sendable>.parallelCompactMap<A, B where A1: Swift.Sendable, B1: Swift.Error>(priority: Swift.TaskPriority?, maxConcurrentTasks: Swift.Int, _: @Sendable (A.Element) async throws(B1) -> A1?) async throws(B1) -> [A1]
+async function pointer to (extension in SwiftToolbelt):Swift.Sequence< where A.Element: Swift.Sendable>.parallelCompactMap<A, B where A1: Swift.Sendable, B1: Swift.Error>(priority: Swift.TaskPriority?, maxConcurrentTasks: Swift.Int, _: @Sendable (A.Element) async throws(B1) -> A1?) async throws(B1) -> [A1]
+(extension in FoundationToolbelt):Swift.Sequence.partitioned(by: (A.Element) -> Swift.Bool) -> (matches: [A.Element], nonMatches: [A.Element])
+(extension in SwiftToolbelt):Swift.Task< where B == Swift.Never>.valueForwardingCancellations() async -> A
+async function pointer to (extension in SwiftToolbelt):Swift.Task< where B == Swift.Never>.valueForwardingCancellations() async -> A
+(extension in CalpicoCore):Swift.Collection< where A.Element == CalpicoCore.CalpicoMember>.displayingMembers(with: Tagged.Tagged<CalpicoCore.CalpicoMember.UserIDTag, Swift.String>?) -> Swift.AnyCollection<CalpicoCore.CalpicoMember>
+(extension in FoundationToolbelt):__C.NSFileManager.copyItemAsync(at: Foundation.URL, to: Foundation.URL) async throws -> ()
+async function pointer to (extension in FoundationToolbelt):__C.NSFileManager.copyItemAsync(at: Foundation.URL, to: Foundation.URL) async throws -> ()
+(extension in FoundationToolbelt):__C.NSFileManager.provisionDirectory(named: Swift.String, withGroupIdentifier: Swift.String?) throws -> Foundation.URL
+(extension in FoundationToolbelt):__C.NSFileManager.wipeAndProvisionDirectory(named: Swift.String, withGroupIdentifier: Swift.String?) throws -> Foundation.URL
+(extension in FoundationToolbelt):__C.NSItemProvider.loadURLRepresentation() async throws -> Foundation.URL
+async function pointer to (extension in FoundationToolbelt):__C.NSItemProvider.loadURLRepresentation() async throws -> Foundation.URL
+(extension in FoundationToolbelt):__C.NSItemProvider.loadFileRepresentation(for: UniformTypeIdentifiers.UTType) async throws -> Foundation.URL
+async function pointer to (extension in FoundationToolbelt):__C.NSItemProvider.loadFileRepresentation(for: UniformTypeIdentifiers.UTType) async throws -> Foundation.URL
+(extension in FoundationToolbelt):__C.NSItemProvider.loadTextRepresentation() async throws -> Swift.String
+async function pointer to (extension in FoundationToolbelt):__C.NSItemProvider.loadTextRepresentation() async throws -> Swift.String
+static (extension in FoundationToolbelt):__C.NSUserDefaults.appGroupUserDefaults.getter : __C.NSUserDefaults?
+(extension in UIKitToolbelt):__C.UIView.constrainEdges(to: __C.UIView, insets: __C.NSDirectionalEdgeInsets) -> (leading: __C.NSLayoutConstraint, trailing: __C.NSLayoutConstraint, top: __C.NSLayoutConstraint, bottom: __C.NSLayoutConstraint)
+(extension in UIKitToolbelt):__C.UIColor.init(hexString: Swift.String?) -> __C.UIColor?
+(extension in ChatGPTCore):Swift.Optional<A where A == CodableToolbelt.ResilientCodableEnum<ConversationsCore.KnownGizmoEmoji>>.uiImage.getter : __C.UIImage
+(extension in SwiftToolbelt):Swift.Error.isTaskOrURLCancellation.getter : Swift.Bool
+protocol conformance descriptor for A? : SwiftToolbelt.OptionalProtocol in SwiftToolbelt
