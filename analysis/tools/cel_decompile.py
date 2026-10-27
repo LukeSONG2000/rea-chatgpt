@@ -27,6 +27,8 @@ def render(blob, meta):
         u32 = int.from_bytes(ops[:4], 'little') if len(ops) == 4 else 0
         nm = lambda k: strs[k] if 0 <= k < len(strs) else f'key#{k}'
         if op == 0x00:
+            if not lines or lines[-1] != '  …(pad)':
+                lines.append('  …(pad)')
             continue
         elif op == 0x01:
             stack.append(f'const[{ops.hex()}]')
@@ -67,7 +69,8 @@ def render(blob, meta):
             stack.append(f'{obj}.{nm(key)}')
         elif op == 0x43:
             key = u16; v = pop()
-            lines.append(f'  BIND "{nm(key)}" = {v};')
+            lines.append(f'\n  // ---- FUNCTION-UNIT: {nm(key)!r} (33B 头+内联体) ----')
+            stack.append(f'fn:{nm(key)!r}')
         elif op == 0x45:
             key = u16; seq = int.from_bytes(ops[4:6], 'little') if len(ops) >= 6 else 0
             v = pop(); tgt = pop()
@@ -108,12 +111,14 @@ def render(blob, meta):
             b = pop(); a = pop()
             stack.append(f'pair({a}, {b})')
             stack.append('…'); stack.append('…')
-        elif op in (0xeb, 0xec, 0xed):
+        elif op in (0xeb, 0xec):
             off = ops[0] - 256 if ops and ops[0] > 127 else (ops[0] if ops else 0)
-            lines.append(f'  jmp {off:+d};')
-        elif op in (0xef, 0xf0, 0xf1, 0xf2):
+            lines.append(f'  jcc-0x{op:02x} → @{pc+2+off}   // 条件跳转 (目标=pc+1+i8)')
+        elif op == 0xed:
             off = ops[0] - 256 if ops and ops[0] > 127 else (ops[0] if ops else 0)
-            lines.append(f'  jcc 0x{op:02x} {off:+d};')
+            lines.append(f'  jmp → @{pc+2+off}')
+        elif op == 0xf0:
+            stack.append(f'f0({pop()})')
         else:
             for _ in range(i.get('pops', 0)):
                 if stack: pop()
@@ -132,7 +137,7 @@ def main():
     outdir = sys.argv[sys.argv.index('-o') + 1] if '-o' in sys.argv else None
     if outdir: os.makedirs(outdir, exist_ok=True)
     meta = cel_slots.load_meta()
-    flt = args[2] if len(args) > 2 else '.js'
+    flt = args[1] if len(args) > 1 else '.js'
     for fname, blob in cel_slots.unpack_module(args[0]):
         if not fname.endswith(flt): continue
         text = render(blob, meta)

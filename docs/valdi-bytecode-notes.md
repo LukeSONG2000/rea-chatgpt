@@ -201,3 +201,11 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - chatgpt_reasoning 3 文件 + chatgpt_conversation 16 文件全量重渲染（analysis/decoded/）
 - 新暴露待归纳 op（Debug 变体）：0x05/0x08/0x09/0x0d/0x10/0x11/0x35/0x50/0x59/0x64/0x68/0xb7/0xbc/0xbe/0xd3/0xe0；0xf0 系 jcc 操作数编码未定（现读 +0 需修正）
 - 观察模式：`local[N] = const[M]; jcc 0xf0` 重复序列 = 表驱动初始化展开
+
+### 9.13 v1.2（2026-10-27 深夜Ⅵ）
+
+- 0x43 = FUNCTION-UNIT 头（33B：name-key + 参数/IC 槽 + **内联体起始指令**）；函数体紧跟记录内联排布（url.js 四函数实证：fn2 尾 d2/42/5d、fn3 尾 d2/de/d3/f0/26、fn4 尾 d2/99/eb）
+- 0xEB/0xEC = 条件跳转（目标 = pc+1+i8）实证：fn4 `if(!e)return{}` ↔ eb(i8=+3) 跳过 push/pop 对
+- 0xF0 = 一元操作（非跳转，此前误标）
+- CLI 过滤参数修正（args[1]）；0x00 填充折叠
+- ChatGPTConversationState 栈重建样例：`exports? → GETPROP-IC → CALL argc=1 → store local[N]` 循环 + `local[N]=const[M]` 表驱动初始化
