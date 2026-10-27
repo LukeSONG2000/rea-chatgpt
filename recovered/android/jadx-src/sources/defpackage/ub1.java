@@ -1,0 +1,21 @@
+package defpackage;
+
+/* JADX INFO: loaded from: classes.dex */
+public final class ub1 extends eng {
+    public /* synthetic */ Object n;
+    public int o;
+    public final /* synthetic */ vb1 p;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public ub1(vb1 vb1Var, cng cngVar) {
+        super(cngVar);
+        this.p = vb1Var;
+    }
+
+    @Override // defpackage.ri5
+    public final Object invokeSuspend(Object obj) {
+        this.n = obj;
+        this.o |= Integer.MIN_VALUE;
+        return this.p.emit(null, this);
+    }
+}

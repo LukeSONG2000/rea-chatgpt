@@ -1,0 +1,14 @@
+package defpackage;
+
+import android.text.Html;
+import java.util.regex.Pattern;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes3.dex */
+public abstract class jq90 {
+    public static final Pattern a = Pattern.compile("(&#13;)?&#10;");
+
+    public static String a(CharSequence charSequence) {
+        return a.matcher(Html.escapeHtml(charSequence)).replaceAll("<br>");
+    }
+}

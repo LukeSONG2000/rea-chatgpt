@@ -1,0 +1,1 @@
+import{n as e,t}from"./tablet-smartphone-Ckey15RK-e32f8a540664.js";e();export{t as default};

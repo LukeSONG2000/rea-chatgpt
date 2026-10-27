@@ -1,0 +1,1 @@
+import{n as e,t}from"./square-minus-Dzw2PUGb-38f4f9f96be6.js";e();export{t as default};

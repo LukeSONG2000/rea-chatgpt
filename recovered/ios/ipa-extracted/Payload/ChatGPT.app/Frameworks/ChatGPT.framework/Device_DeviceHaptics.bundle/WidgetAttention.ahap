@@ -1,0 +1,29 @@
+{
+  "Version": 1.0,
+  "Metadata": {
+    "Project": "ChatGPT",
+    "Description": "A crisp double tap, stronger then lighter, for widget attention"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "Time": 0.0,
+        "EventType": "HapticTransient",
+        "EventParameters": [
+          { "ParameterID": "HapticIntensity", "ParameterValue": 0.48 },
+          { "ParameterID": "HapticSharpness", "ParameterValue": 0.75 }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "Time": 0.075,
+        "EventType": "HapticTransient",
+        "EventParameters": [
+          { "ParameterID": "HapticIntensity", "ParameterValue": 0.3 },
+          { "ParameterID": "HapticSharpness", "ParameterValue": 0.75 }
+        ]
+      }
+    }
+  ]
+}

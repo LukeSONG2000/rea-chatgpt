@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-tractor-812cf4d99534e551.js";e();export{t as default};

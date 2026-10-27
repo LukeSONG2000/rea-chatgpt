@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{XVt as t}from"./app-shared-2cae01273bae.js";var n,r;function i(){return(i=e((()=>{n=t(),r=(0,n.createContext)(`chat`)})))()}export{i as n,r as t};
+//# sourceMappingURL=conversation-presentation-context-90384c063c9f.js.map

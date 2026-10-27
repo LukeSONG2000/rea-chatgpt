@@ -1,0 +1,1 @@
+"use strict";function r(r){return e=>{const t={...e};for(const o in e){const s=r[o];s&&(t[o]=s(e[o]))}return t}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.transformProperties=void 0,exports.transformProperties=r;

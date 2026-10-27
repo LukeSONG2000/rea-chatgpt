@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.MmlFactory=void 0;const e=require("../Tree/NodeFactory"),t=require("./MML");class MmlFactory extends e.AbstractNodeFactory{get MML(){return this.node}}exports.MmlFactory=MmlFactory,MmlFactory.defaultNodes=t.MML;

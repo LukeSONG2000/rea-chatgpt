@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-dessert-723797a0ac0f16e7.js";e();export{t as default};

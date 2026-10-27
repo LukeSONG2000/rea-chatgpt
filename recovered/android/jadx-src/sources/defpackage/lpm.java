@@ -1,0 +1,26 @@
+package defpackage;
+
+import android.os.Looper;
+import androidx.media3.exoplayer.drm.DrmSession$DrmSessionException;
+import androidx.media3.exoplayer.drm.UnsupportedDrmException;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes3.dex */
+public final class lpm implements mpm {
+    @Override // defpackage.mpm
+    public final ooj a(jpm jpmVar, urp urpVar) {
+        if (urpVar.s == null) {
+            return null;
+        }
+        return new ooj(new DrmSession$DrmSessionException(6001, new UnsupportedDrmException()));
+    }
+
+    @Override // defpackage.mpm
+    public final int d(urp urpVar) {
+        return urpVar.s != null ? 1 : 0;
+    }
+
+    @Override // defpackage.mpm
+    public final void b(Looper looper, hr20 hr20Var) {
+    }
+}

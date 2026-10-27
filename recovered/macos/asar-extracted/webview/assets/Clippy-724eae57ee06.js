@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,r as t,t as n}from"./Clippy-5a0400fce37e.js";t();export{n as ClippyIcon,e as ClippyIconSm};

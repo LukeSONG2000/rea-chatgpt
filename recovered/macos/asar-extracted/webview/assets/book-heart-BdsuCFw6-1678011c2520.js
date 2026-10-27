@@ -1,0 +1,1 @@
+import{n as e,t}from"./book-heart-BdsuCFw6-8184bf401bc0.js";e();export{t as default};

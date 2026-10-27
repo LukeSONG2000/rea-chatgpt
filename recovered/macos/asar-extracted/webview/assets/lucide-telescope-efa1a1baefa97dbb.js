@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-telescope-7b1a319ce859455a.js";e();export{t as default};

@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-test-tube-e55168bf084664b3.js";e();export{t as default};

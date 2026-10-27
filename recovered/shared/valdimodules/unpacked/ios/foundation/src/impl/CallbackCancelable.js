@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});class CallbackCancelable{constructor(l){this.cancel=()=>{const l=this.callback;this.callback=void 0,l?.()},this.callback=l}}exports.default=CallbackCancelable;

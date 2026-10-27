@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.convertBridgeSubjectToObserver=void 0;const e=require("./convertBridgeObserverToObserver");function r(r){return(0,e.convertBridgeObserverToObserver)(r)}exports.convertBridgeSubjectToObserver=r;

@@ -1,0 +1,1 @@
+import{n as e,t}from"./hotel-CUPeWT4K-2dc21108121b.js";e();export{t as default};

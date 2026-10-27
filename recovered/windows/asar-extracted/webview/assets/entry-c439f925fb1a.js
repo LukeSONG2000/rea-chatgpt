@@ -1,0 +1,1 @@
+import{_6 as e,f6 as t}from"./app-primary-844e405f2b90.js";t();export{e as loadWorkspaceDiscoveryOpener};

@@ -1,0 +1,1 @@
+"use strict";function e(e){return{update(){},dispose(){}}}function o(e){return{update(){},dispose(){}}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.bindPopup=exports.observePopupTrigger=void 0,exports.observePopupTrigger=e,exports.bindPopup=o;

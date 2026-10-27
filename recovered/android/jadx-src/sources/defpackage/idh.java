@@ -1,0 +1,19 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes.dex */
+public final class idh implements keh {
+    public static final idh a = new idh();
+
+    public final boolean equals(Object obj) {
+        return this == obj || (obj instanceof idh);
+    }
+
+    public final int hashCode() {
+        return -386485650;
+    }
+
+    public final String toString() {
+        return idh.class.getName();
+    }
+}

@@ -1,0 +1,1 @@
+import{Yw as e,Zw as t}from"./app-initial-438d1df57f70.js";e();export{t as openReviewLink};

@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{$ot as t,Qot as n,Yat as r}from"./app-shared-955d52676f9c.js";async function i(e,t){t?.throwIfAborted();let i=n.workspaceFiles;if(i?.listDirectory==null)throw Error(`Workspace directory listing is not supported by this host`);return r(i.listDirectory(e),t)}function a(e,t=[]){return[`vscode`,`workspace-directory-entries`,...t,...e==null?[]:[JSON.stringify(e)]]}function o(){return(o=e((()=>{t()})))()}export{o as n,i as r,a as t};
+//# sourceMappingURL=workspace-directory-ce5052f03163.js.map

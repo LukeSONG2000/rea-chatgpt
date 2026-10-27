@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.renderStateWithDILInteractionCaptured=exports.isDILInteractionCaptured=void 0;const t=Symbol("DIL interaction captured");function e(e){return!0===e?.getProperty(t)}function r(e){return e.withProperty(t,!0)}exports.isDILInteractionCaptured=e,exports.renderStateWithDILInteractionCaptured=r;

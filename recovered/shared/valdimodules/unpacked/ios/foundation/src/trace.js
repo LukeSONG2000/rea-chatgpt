@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.trace=void 0;const e=require("valdi_core/src/ValdiRuntimeProvider").getValdiRuntime();let r;try{r=require("valdi_core/src/utils/Trace").trace}catch(o){e.isLoggingEnabled&&console.log(`Could not load Trace module: ${o.message}`)}function t(e,t){return r?r(e,t):t()}exports.trace=t;

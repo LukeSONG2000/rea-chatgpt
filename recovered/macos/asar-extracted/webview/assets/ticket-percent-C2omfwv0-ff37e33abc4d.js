@@ -1,0 +1,1 @@
+import{n as e,t}from"./ticket-percent-C2omfwv0-84439967d513.js";t();export{e as default};

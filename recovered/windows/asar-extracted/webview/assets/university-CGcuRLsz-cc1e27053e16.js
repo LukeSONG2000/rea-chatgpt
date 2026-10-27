@@ -1,0 +1,1 @@
+import{n as e,t}from"./university-CGcuRLsz-4e0674c92b26.js";e();export{t as default};

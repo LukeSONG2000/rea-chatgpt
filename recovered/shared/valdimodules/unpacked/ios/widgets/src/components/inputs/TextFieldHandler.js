@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.TextFieldHandler=void 0;const e=require("./TextInputHandler");class TextFieldHandler extends e.TextInputHandler{setValue(e){return this.elementRef.setAttribute("value",e)}}exports.TextFieldHandler=TextFieldHandler;

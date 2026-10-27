@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-app-window-mac-3bc6cd72cbeac6ea.js";e();export{t as default};

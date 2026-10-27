@@ -1,0 +1,1 @@
+"use strict";function e(e){return e.reduce((e,r)=>e+r,0)}function r(e){return e.reduce((e,r)=>Math.max(e,r),0)}Object.defineProperty(exports,"__esModule",{value:!0}),exports.max=exports.sum=void 0,exports.sum=e,exports.max=r;

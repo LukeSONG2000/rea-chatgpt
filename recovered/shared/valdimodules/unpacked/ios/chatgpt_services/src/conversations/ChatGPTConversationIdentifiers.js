@@ -1,0 +1,1 @@
+"use strict";function x(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,x=>{const e=Math.floor(16*Math.random());return("x"===x?e:3&e|8).toString(16)})}Object.defineProperty(exports,"__esModule",{value:!0}),exports.createChatGPTConversationMessageId=void 0,exports.createChatGPTConversationMessageId=x;

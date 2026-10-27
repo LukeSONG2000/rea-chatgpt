@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.switchScan=void 0;const e=require("./switchMap"),t=require("../util/lift");function r(r,i){return(0,t.operate)((t,s)=>{let c=i;return(0,e.switchMap)((e,t)=>r(c,e,t),(e,t)=>(c=t,t))(t).subscribe(s),()=>{c=null}})}exports.switchScan=r;

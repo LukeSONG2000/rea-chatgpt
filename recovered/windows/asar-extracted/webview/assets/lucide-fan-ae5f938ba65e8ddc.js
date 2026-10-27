@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-fan-46da5211a51b240a.js";e();export{t as default};

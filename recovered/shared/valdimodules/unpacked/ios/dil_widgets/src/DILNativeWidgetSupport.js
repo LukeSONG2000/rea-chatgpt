@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.supportsNativeDILWidgets=void 0;const e=require("valdi_core/src/CompilerIntrinsics"),i=require("valdi_core/src/Device");function r(){return i.Device.isWeb()||!i.Device.isAndroid()||(0,e.isVersionAtLeast)(284)}exports.supportsNativeDILWidgets=r;

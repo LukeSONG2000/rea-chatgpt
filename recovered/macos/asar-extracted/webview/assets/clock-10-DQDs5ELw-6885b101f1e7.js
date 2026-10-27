@@ -1,0 +1,1 @@
+import{n as e,t}from"./clock-10-DQDs5ELw-84cc432acfbe.js";t();export{e as default};

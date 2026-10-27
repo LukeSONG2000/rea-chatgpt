@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});const e=require("coreutils/src/url"),s=(0,e.paramsFromUrl)(location.search).echo;onmessage=e=>{"ping"===e.data&&s&&postMessage(s),close()};

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.toArray=void 0;const e=require("./reduce"),r=require("../util/lift"),t=(e,r)=>(e.push(r),e);function u(){return(0,r.operate)((r,u)=>{(0,e.reduce)(t,[])(r).subscribe(u)})}exports.toArray=u;

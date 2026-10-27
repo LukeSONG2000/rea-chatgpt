@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.renderStateWithDILPressableOptions=exports.getDILPressableRenderOptions=void 0;const e=Symbol("DIL pressable render options");function t(t){return t?.getProperty(e)}function r(t,r){return t.withProperty(e,r)}exports.getDILPressableRenderOptions=t,exports.renderStateWithDILPressableOptions=r;

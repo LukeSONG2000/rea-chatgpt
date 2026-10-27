@@ -1,0 +1,17 @@
+.class public interface abstract Lyqv;
+.super Ljava/lang/Object;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# virtual methods
+.method public abstract a(FF)Lbrv;
+.end method
+
+.method public abstract b(F)Lzqv;
+.end method
+
+.method public abstract getState()Lbrv;
+.end method
+
+.method public abstract reset()Lbrv;
+.end method

@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{RR as t,Sht as n}from"./app-shared-2cae01273bae.js";function r(){return n(globalThis.navigator)}function i(){return(i=e((()=>{t()})))()}export{i as n,r as t};
+//# sourceMappingURL=chrome-extension-browser-family-fc7ba8437fc4.js.map

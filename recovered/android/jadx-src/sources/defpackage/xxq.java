@@ -1,0 +1,410 @@
+package defpackage;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes7.dex */
+public final class xxq implements Parcelable {
+    public static final Parcelable.Creator<xxq> CREATOR = new owq((byte) 1);
+    public final String A;
+    public final String O0;
+    public final String P0;
+    public final String Q0;
+    public final String R0;
+    public final String S0;
+    public final String T0;
+    public final String U0;
+    public final String V0;
+    public final String W0;
+    public final Map X;
+    public final String X0;
+    public final Map Y;
+    public final String Y0;
+    public final String Z;
+    public final String Z0;
+    public final String a;
+    public final String a1;
+    public final String b;
+    public final String b1;
+    public final String c;
+    public final String c1;
+    public final String d;
+    public final String d1;
+    public final String e;
+    public final String e1;
+    public final String f;
+    public final String f1;
+    public final String g;
+    public final String g1;
+    public final String h;
+    public final String h1;
+    public final String i;
+    public final String i1;
+    public final String j;
+    public final String j1;
+    public final String k;
+    public final String k1;
+    public final wp00 l;
+    public final String l1;
+    public final wp00 m;
+    public final String m1;
+    public final wp00 n;
+    public final String n1;
+    public final String o;
+    public final String o1;
+    public final wp00 p;
+    public final String p1;
+    public final String q;
+    public final String q1;
+    public final String r;
+    public final String r1;
+    public final String s;
+    public final String s1;
+    public final wp00 t;
+    public final String t1;
+    public final String u;
+    public final String u1;
+    public final String v;
+    public final String v1;
+    public final LinkedHashMap w;
+    public final String w1;
+    public final wp00 x;
+    public final List x1;
+    public final wp00 y;
+    public final String z;
+
+    public xxq(String str, String str2, String str3, String str4, String str5, String str6, String str7, String str8, String str9, String str10, String str11, wp00 wp00Var, wp00 wp00Var2, wp00 wp00Var3, String str12, wp00 wp00Var4, String str13, String str14, String str15, wp00 wp00Var5, String str16, String str17, LinkedHashMap linkedHashMap, wp00 wp00Var6, wp00 wp00Var7, String str18, String str19, Map map, Map map2, String str20, String str21, String str22, String str23, String str24, String str25, String str26, String str27, String str28, String str29, String str30, String str31, String str32, String str33, String str34, String str35, String str36, String str37, String str38, String str39, String str40, String str41, String str42, String str43, String str44, String str45, String str46, String str47, String str48, String str49, String str50, String str51, String str52, String str53, String str54, String str55, List list) {
+        this.a = str;
+        this.b = str2;
+        this.c = str3;
+        this.d = str4;
+        this.e = str5;
+        this.f = str6;
+        this.g = str7;
+        this.h = str8;
+        this.i = str9;
+        this.j = str10;
+        this.k = str11;
+        this.l = wp00Var;
+        this.m = wp00Var2;
+        this.n = wp00Var3;
+        this.o = str12;
+        this.p = wp00Var4;
+        this.q = str13;
+        this.r = str14;
+        this.s = str15;
+        this.t = wp00Var5;
+        this.u = str16;
+        this.v = str17;
+        this.w = linkedHashMap;
+        this.x = wp00Var6;
+        this.y = wp00Var7;
+        this.z = str18;
+        this.A = str19;
+        this.X = map;
+        this.Y = map2;
+        this.Z = str20;
+        this.O0 = str21;
+        this.P0 = str22;
+        this.Q0 = str23;
+        this.R0 = str24;
+        this.S0 = str25;
+        this.T0 = str26;
+        this.U0 = str27;
+        this.V0 = str28;
+        this.W0 = str29;
+        this.X0 = str30;
+        this.Y0 = str31;
+        this.Z0 = str32;
+        this.a1 = str33;
+        this.b1 = str34;
+        this.c1 = str35;
+        this.d1 = str36;
+        this.e1 = str37;
+        this.f1 = str38;
+        this.g1 = str39;
+        this.h1 = str40;
+        this.i1 = str41;
+        this.j1 = str42;
+        this.k1 = str43;
+        this.l1 = str44;
+        this.m1 = str45;
+        this.n1 = str46;
+        this.o1 = str47;
+        this.p1 = str48;
+        this.q1 = str49;
+        this.r1 = str50;
+        this.s1 = str51;
+        this.t1 = str52;
+        this.u1 = str53;
+        this.v1 = str54;
+        this.w1 = str55;
+        this.x1 = list;
+    }
+
+    @Override // android.os.Parcelable
+    public final int describeContents() {
+        return 0;
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof xxq)) {
+            return false;
+        }
+        xxq xxqVar = (xxq) obj;
+        return b79.u(this.a, xxqVar.a) && b79.u(this.b, xxqVar.b) && b79.u(this.c, xxqVar.c) && b79.u(this.d, xxqVar.d) && b79.u(this.e, xxqVar.e) && b79.u(this.f, xxqVar.f) && b79.u(this.g, xxqVar.g) && b79.u(this.h, xxqVar.h) && b79.u(this.i, xxqVar.i) && b79.u(this.j, xxqVar.j) && b79.u(this.k, xxqVar.k) && b79.u(this.l, xxqVar.l) && b79.u(this.m, xxqVar.m) && b79.u(this.n, xxqVar.n) && b79.u(this.o, xxqVar.o) && b79.u(this.p, xxqVar.p) && b79.u(this.q, xxqVar.q) && b79.u(this.r, xxqVar.r) && b79.u(this.s, xxqVar.s) && b79.u(this.t, xxqVar.t) && b79.u(this.u, xxqVar.u) && b79.u(this.v, xxqVar.v) && this.w.equals(xxqVar.w) && b79.u(this.x, xxqVar.x) && b79.u(this.y, xxqVar.y) && b79.u(this.z, xxqVar.z) && b79.u(this.A, xxqVar.A) && this.X.equals(xxqVar.X) && this.Y.equals(xxqVar.Y) && b79.u(this.Z, xxqVar.Z) && b79.u(this.O0, xxqVar.O0) && b79.u(this.P0, xxqVar.P0) && b79.u(this.Q0, xxqVar.Q0) && b79.u(this.R0, xxqVar.R0) && b79.u(this.S0, xxqVar.S0) && b79.u(this.T0, xxqVar.T0) && b79.u(this.U0, xxqVar.U0) && b79.u(this.V0, xxqVar.V0) && b79.u(this.W0, xxqVar.W0) && b79.u(this.X0, xxqVar.X0) && b79.u(this.Y0, xxqVar.Y0) && b79.u(this.Z0, xxqVar.Z0) && b79.u(this.a1, xxqVar.a1) && b79.u(this.b1, xxqVar.b1) && b79.u(this.c1, xxqVar.c1) && b79.u(this.d1, xxqVar.d1) && b79.u(this.e1, xxqVar.e1) && b79.u(this.f1, xxqVar.f1) && b79.u(this.g1, xxqVar.g1) && b79.u(this.h1, xxqVar.h1) && b79.u(this.i1, xxqVar.i1) && b79.u(this.j1, xxqVar.j1) && b79.u(this.k1, xxqVar.k1) && b79.u(this.l1, xxqVar.l1) && b79.u(this.m1, xxqVar.m1) && b79.u(this.n1, xxqVar.n1) && b79.u(this.o1, xxqVar.o1) && b79.u(this.p1, xxqVar.p1) && b79.u(this.q1, xxqVar.q1) && b79.u(this.r1, xxqVar.r1) && b79.u(this.s1, xxqVar.s1) && b79.u(this.t1, xxqVar.t1) && b79.u(this.u1, xxqVar.u1) && b79.u(this.v1, xxqVar.v1) && b79.u(this.w1, xxqVar.w1) && b79.u(this.x1, xxqVar.x1);
+    }
+
+    public final int hashCode() {
+        int iE = cya0.e(cya0.e(cya0.e(this.a.hashCode() * 31, 31, this.b), 31, this.c), 31, this.d);
+        String str = this.e;
+        int iHashCode = (iE + (str == null ? 0 : str.hashCode())) * 31;
+        String str2 = this.f;
+        int iHashCode2 = (iHashCode + (str2 == null ? 0 : str2.hashCode())) * 31;
+        String str3 = this.g;
+        int iHashCode3 = (iHashCode2 + (str3 == null ? 0 : str3.hashCode())) * 31;
+        String str4 = this.h;
+        int iHashCode4 = (iHashCode3 + (str4 == null ? 0 : str4.hashCode())) * 31;
+        String str5 = this.i;
+        int iHashCode5 = (iHashCode4 + (str5 == null ? 0 : str5.hashCode())) * 31;
+        String str6 = this.j;
+        int iHashCode6 = (iHashCode5 + (str6 == null ? 0 : str6.hashCode())) * 31;
+        String str7 = this.k;
+        int iE2 = cya0.e(cya0.e(cya0.f(cya0.f(cya0.e(cya0.e(jk00.e(this.y.a, jk00.e(this.x.a, jk00.e(this.w, cya0.e(cya0.e(jk00.e(this.t.a, cya0.e(cya0.e(cya0.e(jk00.e(this.p.a, cya0.e(jk00.e(this.n.a, jk00.e(this.m.a, jk00.e(this.l.a, (iHashCode6 + (str7 == null ? 0 : str7.hashCode())) * 31, 31), 31), 31), 31, this.o), 31), 31, this.q), 31, this.r), 31, this.s), 31), 31, this.u), 31, this.v), 31), 31), 31), 31, this.z), 31, this.A), 31, this.X), 31, this.Y), 31, this.Z), 31, this.O0);
+        String str8 = this.P0;
+        int iHashCode7 = (iE2 + (str8 == null ? 0 : str8.hashCode())) * 31;
+        String str9 = this.Q0;
+        int iHashCode8 = (iHashCode7 + (str9 == null ? 0 : str9.hashCode())) * 31;
+        String str10 = this.R0;
+        int iHashCode9 = (iHashCode8 + (str10 == null ? 0 : str10.hashCode())) * 31;
+        String str11 = this.S0;
+        int iHashCode10 = (iHashCode9 + (str11 == null ? 0 : str11.hashCode())) * 31;
+        String str12 = this.T0;
+        int iHashCode11 = (iHashCode10 + (str12 == null ? 0 : str12.hashCode())) * 31;
+        String str13 = this.U0;
+        int iHashCode12 = (iHashCode11 + (str13 == null ? 0 : str13.hashCode())) * 31;
+        String str14 = this.V0;
+        int iHashCode13 = (iHashCode12 + (str14 == null ? 0 : str14.hashCode())) * 31;
+        String str15 = this.W0;
+        int iHashCode14 = (iHashCode13 + (str15 == null ? 0 : str15.hashCode())) * 31;
+        String str16 = this.X0;
+        int iHashCode15 = (iHashCode14 + (str16 == null ? 0 : str16.hashCode())) * 31;
+        String str17 = this.Y0;
+        int iHashCode16 = (iHashCode15 + (str17 == null ? 0 : str17.hashCode())) * 31;
+        String str18 = this.Z0;
+        int iHashCode17 = (iHashCode16 + (str18 == null ? 0 : str18.hashCode())) * 31;
+        String str19 = this.a1;
+        int iHashCode18 = (iHashCode17 + (str19 == null ? 0 : str19.hashCode())) * 31;
+        String str20 = this.b1;
+        int iHashCode19 = (iHashCode18 + (str20 == null ? 0 : str20.hashCode())) * 31;
+        String str21 = this.c1;
+        int iHashCode20 = (iHashCode19 + (str21 == null ? 0 : str21.hashCode())) * 31;
+        String str22 = this.d1;
+        int iHashCode21 = (iHashCode20 + (str22 == null ? 0 : str22.hashCode())) * 31;
+        String str23 = this.e1;
+        int iHashCode22 = (iHashCode21 + (str23 == null ? 0 : str23.hashCode())) * 31;
+        String str24 = this.f1;
+        int iHashCode23 = (iHashCode22 + (str24 == null ? 0 : str24.hashCode())) * 31;
+        String str25 = this.g1;
+        int iHashCode24 = (iHashCode23 + (str25 == null ? 0 : str25.hashCode())) * 31;
+        String str26 = this.h1;
+        int iHashCode25 = (iHashCode24 + (str26 == null ? 0 : str26.hashCode())) * 31;
+        String str27 = this.i1;
+        int iHashCode26 = (iHashCode25 + (str27 == null ? 0 : str27.hashCode())) * 31;
+        String str28 = this.j1;
+        int iHashCode27 = (iHashCode26 + (str28 == null ? 0 : str28.hashCode())) * 31;
+        String str29 = this.k1;
+        int iHashCode28 = (iHashCode27 + (str29 == null ? 0 : str29.hashCode())) * 31;
+        String str30 = this.l1;
+        int iHashCode29 = (iHashCode28 + (str30 == null ? 0 : str30.hashCode())) * 31;
+        String str31 = this.m1;
+        int iHashCode30 = (iHashCode29 + (str31 == null ? 0 : str31.hashCode())) * 31;
+        String str32 = this.n1;
+        int iHashCode31 = (iHashCode30 + (str32 == null ? 0 : str32.hashCode())) * 31;
+        String str33 = this.o1;
+        int iHashCode32 = (iHashCode31 + (str33 == null ? 0 : str33.hashCode())) * 31;
+        String str34 = this.p1;
+        int iHashCode33 = (iHashCode32 + (str34 == null ? 0 : str34.hashCode())) * 31;
+        String str35 = this.q1;
+        int iHashCode34 = (iHashCode33 + (str35 == null ? 0 : str35.hashCode())) * 31;
+        String str36 = this.r1;
+        int iHashCode35 = (iHashCode34 + (str36 == null ? 0 : str36.hashCode())) * 31;
+        String str37 = this.s1;
+        int iHashCode36 = (iHashCode35 + (str37 == null ? 0 : str37.hashCode())) * 31;
+        String str38 = this.t1;
+        int iHashCode37 = (iHashCode36 + (str38 == null ? 0 : str38.hashCode())) * 31;
+        String str39 = this.u1;
+        int iHashCode38 = (iHashCode37 + (str39 == null ? 0 : str39.hashCode())) * 31;
+        String str40 = this.v1;
+        int iHashCode39 = (iHashCode38 + (str40 == null ? 0 : str40.hashCode())) * 31;
+        String str41 = this.w1;
+        int iHashCode40 = (iHashCode39 + (str41 == null ? 0 : str41.hashCode())) * 31;
+        List list = this.x1;
+        return iHashCode40 + (list != null ? list.hashCode() : 0);
+    }
+
+    public final String toString() {
+        StringBuilder sbT = jc4.t("Strings(title=", this.a, ", prompt=", this.b, ", choose=");
+        jc4.A(sbT, this.c, ", instructionsDisclaimer=", this.d, ", selectPageNavBarTitle=");
+        jc4.A(sbT, this.e, ", capturePageNavBarTitle=", this.f, ", checkPageNavBarTitle=");
+        jc4.A(sbT, this.g, ", pendingPageNavBarTitle=", this.h, ", requestPageNavBarTitle=");
+        jc4.A(sbT, this.i, ", reviewUploadPageNavBarTitle=", this.j, ", autoClassificationPageNavBarTitle=");
+        sbT.append(this.k);
+        sbT.append(", captureScreenTitle=");
+        sbT.append(this.l);
+        sbT.append(", captureScreenDescription=");
+        sbT.append(this.m);
+        sbT.append(", scanInstructions=");
+        sbT.append(this.n);
+        sbT.append(", capturing=");
+        sbT.append(this.o);
+        sbT.append(", confirmCapture=");
+        sbT.append(this.p);
+        sbT.append(", captureDisclaimer=");
+        jc4.A(sbT, this.q, ", buttonSubmit=", this.r, ", buttonRetake=");
+        sbT.append(this.s);
+        sbT.append(", confirmCaptureTitle=");
+        sbT.append(this.t);
+        sbT.append(", processingTitle=");
+        jc4.A(sbT, this.u, ", processingDescription=", this.v, ", idClassToName=");
+        sbT.append(this.w);
+        sbT.append(", chooseCaptureMethodTitle=");
+        sbT.append(this.x);
+        sbT.append(", chooseCaptureMethodBody=");
+        sbT.append(this.y);
+        sbT.append(", chooseCaptureMethodCameraButton=");
+        sbT.append(this.z);
+        sbT.append(", chooseCaptureMethodUploadButton=");
+        sbT.append(this.A);
+        sbT.append(", reviewSelectedImageTitle=");
+        sbT.append(this.X);
+        sbT.append(", reviewSelectedImageBody=");
+        sbT.append(this.Y);
+        sbT.append(", reviewSelectedImageConfirmButton=");
+        sbT.append(this.Z);
+        sbT.append(", reviewSelectedImageChooseAnotherButton=");
+        jc4.A(sbT, this.O0, ", cameraPermissionsTitle=", this.P0, ", cameraPermissionsPrompt=");
+        jc4.A(sbT, this.Q0, ", cameraPermissionsAllowButtonText=", this.R0, ", cameraPermissionsCancelButtonText=");
+        jc4.A(sbT, this.S0, ", microphonePermissionsTitle=", this.T0, ", microphonePermissionsPrompt=");
+        jc4.A(sbT, this.U0, ", microphonePermissionsAllowButtonText=", this.V0, ", microphonePermissionsCancelButtonText=");
+        jc4.A(sbT, this.W0, ", hintHoldStill=", this.X0, ", hintLowLight=");
+        jc4.A(sbT, this.Y0, ", helpButtonText=", this.Z0, ", barcodeHelpModalTitle=");
+        jc4.A(sbT, this.a1, ", barcodeHelpModalPrompt=", this.b1, ", barcodeHelpModalHints=");
+        jc4.A(sbT, this.c1, ", barcodeHelpModalContinueButtonText=", this.d1, ", idFrontHelpModalTitle=");
+        jc4.A(sbT, this.e1, ", idFrontHelpModalPrompt=", this.f1, ", idFrontHelpModalHints=");
+        jc4.A(sbT, this.g1, ", idFrontHelpModalContinueButtonText=", this.h1, ", idBackHelpModalTitle=");
+        jc4.A(sbT, this.i1, ", idBackHelpModalPrompt=", this.j1, ", idBackHelpModalHints=");
+        jc4.A(sbT, this.k1, ", idBackHelpModalContinueButtonText=", this.l1, ", staticCaptureTipsTitle=");
+        jc4.A(sbT, this.m1, ", staticCaptureTipsSubtext=", this.n1, ", unableToClassifyDocumentTitle=");
+        jc4.A(sbT, this.o1, ", unableToClassifyDocumentContinueButtonText=", this.p1, ", idClassRejectedTitle=");
+        jc4.A(sbT, this.q1, ", idClassRejectedContinueButtonText=", this.r1, ", countryInputTitle=");
+        jc4.A(sbT, this.s1, ", idClassInputTitle=", this.t1, ", manualClassificationTitle=");
+        jc4.A(sbT, this.u1, ", manualClassificationContinueButtonText=", this.v1, ", autoClassificationCaptureTipText=");
+        sbT.append(this.w1);
+        sbT.append(", localizationOverrides=");
+        sbT.append(this.x1);
+        sbT.append(")");
+        return sbT.toString();
+    }
+
+    @Override // android.os.Parcelable
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(this.a);
+        parcel.writeString(this.b);
+        parcel.writeString(this.c);
+        parcel.writeString(this.d);
+        parcel.writeString(this.e);
+        parcel.writeString(this.f);
+        parcel.writeString(this.g);
+        parcel.writeString(this.h);
+        parcel.writeString(this.i);
+        parcel.writeString(this.j);
+        parcel.writeString(this.k);
+        this.l.writeToParcel(parcel, i);
+        this.m.writeToParcel(parcel, i);
+        this.n.writeToParcel(parcel, i);
+        parcel.writeString(this.o);
+        this.p.writeToParcel(parcel, i);
+        parcel.writeString(this.q);
+        parcel.writeString(this.r);
+        parcel.writeString(this.s);
+        this.t.writeToParcel(parcel, i);
+        parcel.writeString(this.u);
+        parcel.writeString(this.v);
+        LinkedHashMap linkedHashMap = this.w;
+        parcel.writeInt(linkedHashMap.size());
+        for (Map.Entry entry : linkedHashMap.entrySet()) {
+            parcel.writeString((String) entry.getKey());
+            parcel.writeString((String) entry.getValue());
+        }
+        this.x.writeToParcel(parcel, i);
+        this.y.writeToParcel(parcel, i);
+        parcel.writeString(this.z);
+        parcel.writeString(this.A);
+        Iterator itI = jq3.i(this.X, parcel);
+        while (itI.hasNext()) {
+            Map.Entry entry2 = (Map.Entry) itI.next();
+            parcel.writeString(((vrr) entry2.getKey()).name());
+            parcel.writeString((String) entry2.getValue());
+        }
+        Iterator itI2 = jq3.i(this.Y, parcel);
+        while (itI2.hasNext()) {
+            Map.Entry entry3 = (Map.Entry) itI2.next();
+            parcel.writeString(((vrr) entry3.getKey()).name());
+            parcel.writeString((String) entry3.getValue());
+        }
+        parcel.writeString(this.Z);
+        parcel.writeString(this.O0);
+        parcel.writeString(this.P0);
+        parcel.writeString(this.Q0);
+        parcel.writeString(this.R0);
+        parcel.writeString(this.S0);
+        parcel.writeString(this.T0);
+        parcel.writeString(this.U0);
+        parcel.writeString(this.V0);
+        parcel.writeString(this.W0);
+        parcel.writeString(this.X0);
+        parcel.writeString(this.Y0);
+        parcel.writeString(this.Z0);
+        parcel.writeString(this.a1);
+        parcel.writeString(this.b1);
+        parcel.writeString(this.c1);
+        parcel.writeString(this.d1);
+        parcel.writeString(this.e1);
+        parcel.writeString(this.f1);
+        parcel.writeString(this.g1);
+        parcel.writeString(this.h1);
+        parcel.writeString(this.i1);
+        parcel.writeString(this.j1);
+        parcel.writeString(this.k1);
+        parcel.writeString(this.l1);
+        parcel.writeString(this.m1);
+        parcel.writeString(this.n1);
+        parcel.writeString(this.o1);
+        parcel.writeString(this.p1);
+        parcel.writeString(this.q1);
+        parcel.writeString(this.r1);
+        parcel.writeString(this.s1);
+        parcel.writeString(this.t1);
+        parcel.writeString(this.u1);
+        parcel.writeString(this.v1);
+        parcel.writeString(this.w1);
+        List list = this.x1;
+        if (list == null) {
+            parcel.writeInt(0);
+            return;
+        }
+        Iterator itT = stn.t(parcel, 1, list);
+        while (itT.hasNext()) {
+            parcel.writeParcelable((Parcelable) itT.next(), i);
+        }
+    }
+}

@@ -1,0 +1,89 @@
+{
+  "l10nsvc": "sourcefile",
+  "finance_dashboard_back_accessibility_label": {
+    "defaultMessage": "பின்செல்",
+    "description": "Screen-reader label for the button that returns from the Finance dashboard to the previous screen."
+  },
+  "finance_dashboard_title": {
+    "defaultMessage": "நிதி",
+    "description": "Main heading identifying the user's Finance dashboard."
+  },
+  "finance_dashboard_subtitle": {
+    "defaultMessage": "உங்கள் நிதிநிலைச் சுருக்கம்",
+    "description": "Subtitle describing the summary presented on the Finance dashboard."
+  },
+  "finance_dashboard_show_values_accessibility_label": {
+    "defaultMessage": "நிதி மதிப்புகளைக் காட்டு",
+    "description": "Screen-reader label for the dashboard button that reveals hidden financial balances and values."
+  },
+  "finance_dashboard_hide_values_accessibility_label": {
+    "defaultMessage": "நிதி மதிப்புகளை மறைக்கவும்",
+    "description": "Screen-reader label for the dashboard button that hides sensitive financial balances and values."
+  },
+  "finance_dashboard_overview_title": {
+    "defaultMessage": "கண்ணோட்டம்",
+    "description": "Heading above the Finance dashboard's connected-account summary."
+  },
+  "finance_dashboard_refreshing_status": {
+    "defaultMessage": "உங்கள் முகப்புப் பலகை புதுப்பிக்கப்படுகிறது…",
+    "description": "Status shown while the Finance dashboard retrieves updated information from connected accounts."
+  },
+  "finance_dashboard_updated_status": {
+    "defaultMessage": "இணைக்கப்பட்ட உங்கள் கணக்குகளிலிருந்து புதுப்பிக்கப்பட்டது",
+    "description": "Status explaining that dashboard information reflects the user's connected financial accounts."
+  },
+  "finance_dashboard_refresh": {
+    "defaultMessage": "புதுப்பி",
+    "description": "Button that retrieves updated financial information for the dashboard."
+  },
+  "finance_dashboard_starter_section_title": {
+    "defaultMessage": "நிதியிலிருந்து மேலும் பலன் பெறுங்கள்",
+    "description": "Heading above suggested actions that help the user get more value from the Finance dashboard."
+  },
+  "finance_dashboard_starter_card_accessibility_label": {
+    "defaultMessage": "{title}. {description}",
+    "description": "Screen-reader label combining a suggested Finance action's backend-provided title and description.",
+    "example": "Connect an account. See your latest balances and transactions."
+  },
+  "finance_dashboard_widgets_section_title": {
+    "defaultMessage": "உங்கள் கட்டுப்பாட்டுப் பலகம்",
+    "description": "Heading above the collection of personalized financial dashboard cards."
+  },
+  "finance_dashboard_loading_more_status": {
+    "defaultMessage": "மேலும் ஏற்றப்படுகிறது…",
+    "description": "Status shown while the Finance dashboard retrieves another page of financial cards."
+  },
+  "finance_dashboard_loading_more_error": {
+    "defaultMessage": "மேலும் அட்டைகளை ஏற்ற முடியவில்லை.",
+    "description": "Error shown when another page of Finance dashboard cards cannot be retrieved."
+  },
+  "finance_dashboard_try_again": {
+    "defaultMessage": "மீண்டும் முயற்சிக்கவும்",
+    "description": "Button that retries loading the Finance dashboard or an additional page of dashboard cards."
+  },
+  "finance_dashboard_load_more": {
+    "defaultMessage": "மேலும் ஏற்று",
+    "description": "Button that retrieves another page of Finance dashboard cards."
+  },
+  "finance_dashboard_error_title": {
+    "defaultMessage": "நிதியில் சிக்கல் ஏற்பட்டது",
+    "description": "Heading shown when the Finance dashboard cannot be loaded."
+  },
+  "finance_dashboard_error_detail": {
+    "defaultMessage": "ஹோஸ்ட் API-ஆல் உங்கள் முகப்புப் பலகையை ஏற்ற முடியவில்லை.",
+    "description": "Explanation shown when the host application cannot retrieve the user's Finance dashboard."
+  },
+  "finance_dashboard_empty_title": {
+    "defaultMessage": "உங்கள் முகப்புப் பலகை தரவுக்குத் தயாராக உள்ளது",
+    "description": "Heading shown when the Finance dashboard does not yet have any financial cards."
+  },
+  "finance_dashboard_empty_detail": {
+    "defaultMessage": "ஒரு கணக்கை இணைக்குங்கள் அல்லது உங்கள் நிதித் தரவு ஒத்திசைக்கப்பட்டதும் புதுப்பியுங்கள்.",
+    "description": "Instructions shown when the Finance dashboard has no cards because financial data is not yet available."
+  },
+  "finance_dashboard_widget_action_label": {
+    "defaultMessage": "{widgetId}-இலிருந்து {actionType}",
+    "description": "Confirmation banner identifying a completed dashboard action and the financial card that initiated it.",
+    "example": "finance_connect_account from account-widget"
+  }
+}

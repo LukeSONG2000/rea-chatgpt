@@ -1,0 +1,29 @@
+{
+  "Version": 1.0,
+  "Metadata": {
+    "Project": "ChatGPT",
+    "Description": "Phone gesture acceptance"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "Time": 0.0,
+        "EventType": "HapticTransient",
+        "EventParameters": [
+          { "ParameterID": "HapticIntensity", "ParameterValue": 0.6617647058823529 },
+          { "ParameterID": "HapticSharpness", "ParameterValue": 0.28 }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "Time": 0.075,
+        "EventType": "HapticTransient",
+        "EventParameters": [
+          { "ParameterID": "HapticIntensity", "ParameterValue": 1.0 },
+          { "ParameterID": "HapticSharpness", "ParameterValue": 0.42 }
+        ]
+      }
+    }
+  ]
+}

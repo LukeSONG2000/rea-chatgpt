@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.bindCallback=void 0;const e=require("./bindCallbackInternals");function n(n,l,r){return(0,e.bindCallbackInternals)(!1,n,l,r)}exports.bindCallback=n;

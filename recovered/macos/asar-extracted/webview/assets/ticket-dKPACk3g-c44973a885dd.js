@@ -1,0 +1,1 @@
+import{n as e,t}from"./ticket-dKPACk3g-1715a4c9b474.js";e();export{t as default};

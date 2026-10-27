@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.fromSubscribable=void 0;const e=require("../Observable");function r(r){return new e.Observable(e=>r.subscribe(e))}exports.fromSubscribable=r;

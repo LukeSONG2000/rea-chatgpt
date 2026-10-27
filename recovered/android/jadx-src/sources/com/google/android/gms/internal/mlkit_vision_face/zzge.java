@@ -1,0 +1,62 @@
+package com.google.android.gms.internal.mlkit_vision_face;
+
+import defpackage.elo;
+import defpackage.igf0;
+import defpackage.jq3;
+import defpackage.r600;
+import defpackage.s600;
+import java.util.HashMap;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes3.dex */
+final class zzge implements r600 {
+    static final zzge zza = new zzge();
+    private static final elo zzb;
+    private static final elo zzc;
+    private static final elo zzd;
+    private static final elo zze;
+    private static final elo zzf;
+    private static final elo zzg;
+
+    static {
+        zzcu zzcuVarK = igf0.k(1);
+        HashMap map = new HashMap();
+        map.put(zzcuVarK.annotationType(), zzcuVarK);
+        zzb = new elo("landmarkMode", jq3.k(map));
+        zzcu zzcuVarK2 = igf0.k(2);
+        HashMap map2 = new HashMap();
+        map2.put(zzcuVarK2.annotationType(), zzcuVarK2);
+        zzc = new elo("classificationMode", jq3.k(map2));
+        zzcu zzcuVarK3 = igf0.k(3);
+        HashMap map3 = new HashMap();
+        map3.put(zzcuVarK3.annotationType(), zzcuVarK3);
+        zzd = new elo("performanceMode", jq3.k(map3));
+        zzcu zzcuVarK4 = igf0.k(4);
+        HashMap map4 = new HashMap();
+        map4.put(zzcuVarK4.annotationType(), zzcuVarK4);
+        zze = new elo("contourMode", jq3.k(map4));
+        zzcu zzcuVarK5 = igf0.k(5);
+        HashMap map5 = new HashMap();
+        map5.put(zzcuVarK5.annotationType(), zzcuVarK5);
+        zzf = new elo("isTrackingEnabled", jq3.k(map5));
+        zzcu zzcuVarK6 = igf0.k(6);
+        HashMap map6 = new HashMap();
+        map6.put(zzcuVarK6.annotationType(), zzcuVarK6);
+        zzg = new elo("minFaceSize", jq3.k(map6));
+    }
+
+    private zzge() {
+    }
+
+    @Override // defpackage.tjn
+    public final /* bridge */ /* synthetic */ void encode(Object obj, Object obj2) {
+        zzkd zzkdVar = (zzkd) obj;
+        s600 s600Var = (s600) obj2;
+        s600Var.add(zzb, zzkdVar.zzc());
+        s600Var.add(zzc, zzkdVar.zza());
+        s600Var.add(zzd, zzkdVar.zzd());
+        s600Var.add(zze, zzkdVar.zzb());
+        s600Var.add(zzf, zzkdVar.zze());
+        s600Var.add(zzg, zzkdVar.zzf());
+    }
+}

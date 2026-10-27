@@ -1,0 +1,45 @@
+package com.openai.valdi.chatgpt.subscription.pricing;
+
+import defpackage.d9e0;
+import defpackage.e9e0;
+import kotlin.Metadata;
+
+/* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
+/* JADX WARN: Unknown enum class pattern. Please report as an issue! */
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes6.dex */
+@Metadata(d1 = {"\u0000\f\n\u0002\u0018\u0002\n\u0002\u0010\u0010\n\u0002\b\u0007\b\u0087\u0001\u0018\u00002\b\u0012\u0004\u0012\u00020\u00000\u0001j\u0002\b\u0002j\u0002\b\u0003j\u0002\b\u0004j\u0002\b\u0005j\u0002\b\u0006j\u0002\b\u0007¨\u0006\b"}, d2 = {"Lcom/openai/valdi/chatgpt/subscription/pricing/SubscriptionPricingActionKind;", "", "Purchase", "RestorePurchases", "OpenExternalCheckout", "OpenLegal", "Retry", "Dismiss", "modules_chatgpt_subscription_pricing-chatgpt_subscription_pricing_api_kt_kt"}, k = 1, mv = {1, 8, 0}, xi = 48)
+@d9e0(propertyReplacements = "", schema = "'Purchase':0,'RestorePurchases':1,'OpenExternalCheckout':2,'OpenLegal':3,'Retry':4,'Dismiss':5", type = e9e0.a)
+public final class SubscriptionPricingActionKind {
+    public static final SubscriptionPricingActionKind Dismiss;
+    public static final SubscriptionPricingActionKind OpenExternalCheckout;
+    public static final SubscriptionPricingActionKind OpenLegal;
+    public static final SubscriptionPricingActionKind Purchase;
+    public static final SubscriptionPricingActionKind RestorePurchases;
+    public static final SubscriptionPricingActionKind Retry;
+    public static final /* synthetic */ SubscriptionPricingActionKind[] a;
+
+    static {
+        SubscriptionPricingActionKind subscriptionPricingActionKind = new SubscriptionPricingActionKind("Purchase", 0);
+        Purchase = subscriptionPricingActionKind;
+        SubscriptionPricingActionKind subscriptionPricingActionKind2 = new SubscriptionPricingActionKind("RestorePurchases", 1);
+        RestorePurchases = subscriptionPricingActionKind2;
+        SubscriptionPricingActionKind subscriptionPricingActionKind3 = new SubscriptionPricingActionKind("OpenExternalCheckout", 2);
+        OpenExternalCheckout = subscriptionPricingActionKind3;
+        SubscriptionPricingActionKind subscriptionPricingActionKind4 = new SubscriptionPricingActionKind("OpenLegal", 3);
+        OpenLegal = subscriptionPricingActionKind4;
+        SubscriptionPricingActionKind subscriptionPricingActionKind5 = new SubscriptionPricingActionKind("Retry", 4);
+        Retry = subscriptionPricingActionKind5;
+        SubscriptionPricingActionKind subscriptionPricingActionKind6 = new SubscriptionPricingActionKind("Dismiss", 5);
+        Dismiss = subscriptionPricingActionKind6;
+        a = new SubscriptionPricingActionKind[]{subscriptionPricingActionKind, subscriptionPricingActionKind2, subscriptionPricingActionKind3, subscriptionPricingActionKind4, subscriptionPricingActionKind5, subscriptionPricingActionKind6};
+    }
+
+    public static SubscriptionPricingActionKind valueOf(String str) {
+        return (SubscriptionPricingActionKind) Enum.valueOf(SubscriptionPricingActionKind.class, str);
+    }
+
+    public static SubscriptionPricingActionKind[] values() {
+        return (SubscriptionPricingActionKind[]) a.clone();
+    }
+}

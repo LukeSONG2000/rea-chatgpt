@@ -1,0 +1,1211 @@
+.class public final Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome$Companion$ADAPTER$1;
+.super Lcom/squareup/wire/ProtoAdapter;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/squareup/wire/ProtoAdapter<",
+        "Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;",
+        ">;"
+    }
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u00003\n\u0000\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0008\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0004*\u0001\u0000\u0008\n\u0018\u00002\u0008\u0012\u0004\u0012\u00020\u00020\u0001J\u0017\u0010\u0005\u001a\u00020\u00042\u0006\u0010\u0003\u001a\u00020\u0002H\u0016\u00a2\u0006\u0004\u0008\u0005\u0010\u0006J\u001f\u0010\n\u001a\u00020\t2\u0006\u0010\u0008\u001a\u00020\u00072\u0006\u0010\u0003\u001a\u00020\u0002H\u0016\u00a2\u0006\u0004\u0008\n\u0010\u000bJ\u001f\u0010\n\u001a\u00020\t2\u0006\u0010\u0008\u001a\u00020\u000c2\u0006\u0010\u0003\u001a\u00020\u0002H\u0016\u00a2\u0006\u0004\u0008\n\u0010\rJ\u0017\u0010\u0010\u001a\u00020\u00022\u0006\u0010\u000f\u001a\u00020\u000eH\u0016\u00a2\u0006\u0004\u0008\u0010\u0010\u0011\u00a8\u0006\u0012"
+    }
+    d2 = {
+        "protobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome$Companion$ADAPTER$1",
+        "Lcom/squareup/wire/ProtoAdapter;",
+        "Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;",
+        "value",
+        "",
+        "encodedSize",
+        "(Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;)I",
+        "Lfa40;",
+        "writer",
+        "Ltid0;",
+        "encode",
+        "(Lfa40;Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;)V",
+        "Lut50;",
+        "(Lut50;Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;)V",
+        "Lea40;",
+        "reader",
+        "decode",
+        "(Lea40;)Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;",
+        "OpenAI.platform.protobuf:generated"
+    }
+    k = 0x1
+    mv = {
+        0x2,
+        0x4,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+
+# direct methods
+.method public constructor <init>(Lflo;Lstt;Ls2b0;)V
+    .locals 7
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lflo;",
+            "Lstt;",
+            "Ls2b0;",
+            ")V"
+        }
+    .end annotation
+
+    .line 1
+    const/4 v5, 0x0
+
+    .line 2
+    const-string v6, "protobuf_analytics_events/v1/chatgpt_chart_widgets.proto"
+
+    .line 3
+    .line 4
+    const-string v3, "type.googleapis.com/protobuf_analytics_events.v1.ChatgptChartWidgetRenderOutcome"
+
+    .line 5
+    .line 6
+    move-object v0, p0
+
+    .line 7
+    move-object v1, p1
+
+    .line 8
+    move-object v2, p2
+
+    .line 9
+    move-object v4, p3
+
+    .line 10
+    invoke-direct/range {v0 .. v6}, Lcom/squareup/wire/ProtoAdapter;-><init>(Lflo;Lstt;Ljava/lang/String;Ls2b0;Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 11
+    .line 12
+    .line 13
+    return-void
+.end method
+
+
+# virtual methods
+.method public bridge synthetic decode(Lea40;)Ljava/lang/Object;
+    .locals 0
+
+    .line 227
+    invoke-virtual {p0, p1}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome$Companion$ADAPTER$1;->decode(Lea40;)Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public decode(Lea40;)Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;
+    .locals 22
+
+    .line 1
+    move-object/from16 v1, p1
+
+    .line 2
+    .line 3
+    invoke-virtual {v1}, Lea40;->b()J
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-wide v2
+
+    .line 7
+    const/4 v0, 0x0
+
+    .line 8
+    move-object v4, v0
+
+    .line 9
+    move-object v5, v4
+
+    .line 10
+    move-object v6, v5
+
+    .line 11
+    move-object v7, v6
+
+    .line 12
+    move-object v8, v7
+
+    .line 13
+    move-object v9, v8
+
+    .line 14
+    move-object v10, v9
+
+    .line 15
+    move-object v11, v10
+
+    .line 16
+    :goto_0
+    move-object v0, v1
+
+    .line 17
+    check-cast v0, Lda40;
+
+    .line 18
+    .line 19
+    iget-object v0, v0, Lda40;->a:Lkr6;
+
+    .line 20
+    .line 21
+    invoke-virtual {v0}, Lkr6;->g()I
+
+    .line 22
+    .line 23
+    .line 24
+    move-result v12
+
+    .line 25
+    const/4 v0, -0x1
+
+    .line 26
+    if-eq v12, v0, :cond_0
+
+    .line 27
+    .line 28
+    packed-switch v12, :pswitch_data_0
+
+    .line 29
+    .line 30
+    .line 31
+    invoke-virtual {v1, v12}, Lea40;->d(I)V
+
+    .line 32
+    .line 33
+    .line 34
+    goto :goto_0
+
+    .line 35
+    :pswitch_0
+    sget-object v0, Lcom/squareup/wire/ProtoAdapter;->STRING:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 36
+    .line 37
+    invoke-virtual {v0, v1}, Lcom/squareup/wire/ProtoAdapter;->decode(Lea40;)Ljava/lang/Object;
+
+    .line 38
+    .line 39
+    .line 40
+    move-result-object v0
+
+    .line 41
+    move-object v11, v0
+
+    .line 42
+    goto :goto_0
+
+    .line 43
+    :pswitch_1
+    :try_start_0
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetChartType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 44
+    .line 45
+    invoke-virtual {v0, v1}, Lcom/squareup/wire/ProtoAdapter;->decode(Lea40;)Ljava/lang/Object;
+
+    .line 46
+    .line 47
+    .line 48
+    move-result-object v0
+    :try_end_0
+    .catch Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 49
+    move-object v10, v0
+
+    .line 50
+    goto :goto_0
+
+    .line 51
+    :catch_0
+    move-exception v0
+
+    .line 52
+    iget v0, v0, Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException;->a:I
+
+    .line 53
+    .line 54
+    int-to-long v13, v0
+
+    .line 55
+    invoke-static {v13, v14}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 56
+    .line 57
+    .line 58
+    move-result-object v0
+
+    .line 59
+    invoke-virtual {v1, v12, v0}, Lea40;->a(ILjava/lang/Long;)V
+
+    .line 60
+    .line 61
+    .line 62
+    goto :goto_0
+
+    .line 63
+    :pswitch_2
+    :try_start_1
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetLanguage;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 64
+    .line 65
+    invoke-virtual {v0, v1}, Lcom/squareup/wire/ProtoAdapter;->decode(Lea40;)Ljava/lang/Object;
+
+    .line 66
+    .line 67
+    .line 68
+    move-result-object v0
+    :try_end_1
+    .catch Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
+
+    .line 69
+    move-object v9, v0
+
+    .line 70
+    goto :goto_0
+
+    .line 71
+    :catch_1
+    move-exception v0
+
+    .line 72
+    iget v0, v0, Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException;->a:I
+
+    .line 73
+    .line 74
+    int-to-long v13, v0
+
+    .line 75
+    invoke-static {v13, v14}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 76
+    .line 77
+    .line 78
+    move-result-object v0
+
+    .line 79
+    invoke-virtual {v1, v12, v0}, Lea40;->a(ILjava/lang/Long;)V
+
+    .line 80
+    .line 81
+    .line 82
+    goto :goto_0
+
+    .line 83
+    :pswitch_3
+    :try_start_2
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetFailureReason;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 84
+    .line 85
+    invoke-virtual {v0, v1}, Lcom/squareup/wire/ProtoAdapter;->decode(Lea40;)Ljava/lang/Object;
+
+    .line 86
+    .line 87
+    .line 88
+    move-result-object v0
+    :try_end_2
+    .catch Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException; {:try_start_2 .. :try_end_2} :catch_2
+
+    .line 89
+    move-object v8, v0
+
+    .line 90
+    goto :goto_0
+
+    .line 91
+    :catch_2
+    move-exception v0
+
+    .line 92
+    iget v0, v0, Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException;->a:I
+
+    .line 93
+    .line 94
+    int-to-long v13, v0
+
+    .line 95
+    invoke-static {v13, v14}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 96
+    .line 97
+    .line 98
+    move-result-object v0
+
+    .line 99
+    invoke-virtual {v1, v12, v0}, Lea40;->a(ILjava/lang/Long;)V
+
+    .line 100
+    .line 101
+    .line 102
+    goto :goto_0
+
+    .line 103
+    :pswitch_4
+    :try_start_3
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetOutcome;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 104
+    .line 105
+    invoke-virtual {v0, v1}, Lcom/squareup/wire/ProtoAdapter;->decode(Lea40;)Ljava/lang/Object;
+
+    .line 106
+    .line 107
+    .line 108
+    move-result-object v0
+    :try_end_3
+    .catch Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException; {:try_start_3 .. :try_end_3} :catch_3
+
+    .line 109
+    move-object v7, v0
+
+    .line 110
+    goto :goto_0
+
+    .line 111
+    :catch_3
+    move-exception v0
+
+    .line 112
+    iget v0, v0, Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException;->a:I
+
+    .line 113
+    .line 114
+    int-to-long v13, v0
+
+    .line 115
+    invoke-static {v13, v14}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 116
+    .line 117
+    .line 118
+    move-result-object v0
+
+    .line 119
+    invoke-virtual {v1, v12, v0}, Lea40;->a(ILjava/lang/Long;)V
+
+    .line 120
+    .line 121
+    .line 122
+    goto :goto_0
+
+    .line 123
+    :pswitch_5
+    :try_start_4
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderMode;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 124
+    .line 125
+    invoke-virtual {v0, v1}, Lcom/squareup/wire/ProtoAdapter;->decode(Lea40;)Ljava/lang/Object;
+
+    .line 126
+    .line 127
+    .line 128
+    move-result-object v0
+    :try_end_4
+    .catch Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException; {:try_start_4 .. :try_end_4} :catch_4
+
+    .line 129
+    move-object v6, v0
+
+    .line 130
+    goto :goto_0
+
+    .line 131
+    :catch_4
+    move-exception v0
+
+    .line 132
+    iget v0, v0, Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException;->a:I
+
+    .line 133
+    .line 134
+    int-to-long v13, v0
+
+    .line 135
+    invoke-static {v13, v14}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 136
+    .line 137
+    .line 138
+    move-result-object v0
+
+    .line 139
+    invoke-virtual {v1, v12, v0}, Lea40;->a(ILjava/lang/Long;)V
+
+    .line 140
+    .line 141
+    .line 142
+    goto :goto_0
+
+    .line 143
+    :pswitch_6
+    :try_start_5
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 144
+    .line 145
+    invoke-virtual {v0, v1}, Lcom/squareup/wire/ProtoAdapter;->decode(Lea40;)Ljava/lang/Object;
+
+    .line 146
+    .line 147
+    .line 148
+    move-result-object v0
+    :try_end_5
+    .catch Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException; {:try_start_5 .. :try_end_5} :catch_5
+
+    .line 149
+    move-object v5, v0
+
+    .line 150
+    goto/16 :goto_0
+
+    .line 151
+    .line 152
+    :catch_5
+    move-exception v0
+
+    .line 153
+    iget v0, v0, Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException;->a:I
+
+    .line 154
+    .line 155
+    int-to-long v13, v0
+
+    .line 156
+    invoke-static {v13, v14}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 157
+    .line 158
+    .line 159
+    move-result-object v0
+
+    .line 160
+    invoke-virtual {v1, v12, v0}, Lea40;->a(ILjava/lang/Long;)V
+
+    .line 161
+    .line 162
+    .line 163
+    goto/16 :goto_0
+
+    .line 164
+    .line 165
+    :pswitch_7
+    :try_start_6
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 166
+    .line 167
+    invoke-virtual {v0, v1}, Lcom/squareup/wire/ProtoAdapter;->decode(Lea40;)Ljava/lang/Object;
+
+    .line 168
+    .line 169
+    .line 170
+    move-result-object v0
+    :try_end_6
+    .catch Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException; {:try_start_6 .. :try_end_6} :catch_6
+
+    .line 171
+    move-object v4, v0
+
+    .line 172
+    goto/16 :goto_0
+
+    .line 173
+    .line 174
+    :catch_6
+    move-exception v0
+
+    .line 175
+    iget v0, v0, Lcom/squareup/wire/ProtoAdapter$EnumConstantNotFoundException;->a:I
+
+    .line 176
+    .line 177
+    int-to-long v13, v0
+
+    .line 178
+    invoke-static {v13, v14}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 179
+    .line 180
+    .line 181
+    move-result-object v0
+
+    .line 182
+    invoke-virtual {v1, v12, v0}, Lea40;->a(ILjava/lang/Long;)V
+
+    .line 183
+    .line 184
+    .line 185
+    goto/16 :goto_0
+
+    .line 186
+    .line 187
+    :cond_0
+    invoke-virtual {v1, v2, v3}, Lea40;->c(J)Lot6;
+
+    .line 188
+    .line 189
+    .line 190
+    move-result-object v21
+
+    .line 191
+    new-instance v12, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;
+
+    .line 192
+    .line 193
+    move-object v13, v4
+
+    .line 194
+    check-cast v13, Lprotobuf_analytics_events/v1/ChatgptChartWidgetType;
+
+    .line 195
+    .line 196
+    move-object v14, v5
+
+    .line 197
+    check-cast v14, Lprotobuf_analytics_events/v1/ChatgptChartType;
+
+    .line 198
+    .line 199
+    move-object v15, v6
+
+    .line 200
+    check-cast v15, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderMode;
+
+    .line 201
+    .line 202
+    move-object/from16 v16, v7
+
+    .line 203
+    .line 204
+    check-cast v16, Lprotobuf_analytics_events/v1/ChatgptChartWidgetOutcome;
+
+    .line 205
+    .line 206
+    move-object/from16 v17, v8
+
+    .line 207
+    .line 208
+    check-cast v17, Lprotobuf_analytics_events/v1/ChatgptChartWidgetFailureReason;
+
+    .line 209
+    .line 210
+    move-object/from16 v18, v9
+
+    .line 211
+    .line 212
+    check-cast v18, Lprotobuf_analytics_events/v1/ChatgptChartWidgetLanguage;
+
+    .line 213
+    .line 214
+    move-object/from16 v19, v10
+
+    .line 215
+    .line 216
+    check-cast v19, Lprotobuf_analytics_events/v1/ChatgptChartWidgetChartType;
+
+    .line 217
+    .line 218
+    move-object/from16 v20, v11
+
+    .line 219
+    .line 220
+    check-cast v20, Ljava/lang/String;
+
+    .line 221
+    .line 222
+    invoke-direct/range {v12 .. v21}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;-><init>(Lprotobuf_analytics_events/v1/ChatgptChartWidgetType;Lprotobuf_analytics_events/v1/ChatgptChartType;Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderMode;Lprotobuf_analytics_events/v1/ChatgptChartWidgetOutcome;Lprotobuf_analytics_events/v1/ChatgptChartWidgetFailureReason;Lprotobuf_analytics_events/v1/ChatgptChartWidgetLanguage;Lprotobuf_analytics_events/v1/ChatgptChartWidgetChartType;Ljava/lang/String;Lot6;)V
+
+    .line 223
+    .line 224
+    .line 225
+    return-object v12
+
+    .line 226
+    nop
+
+    .line 227
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_7
+        :pswitch_6
+        :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public bridge synthetic encode(Lfa40;Ljava/lang/Object;)V
+    .locals 0
+
+    .line 91
+    check-cast p2, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;
+
+    invoke-virtual {p0, p1, p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome$Companion$ADAPTER$1;->encode(Lfa40;Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;)V
+
+    return-void
+.end method
+
+.method public encode(Lfa40;Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;)V
+    .locals 2
+
+    .line 1
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 2
+    .line 3
+    const/4 v0, 0x1
+
+    .line 4
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getWidget_type()Lprotobuf_analytics_events/v1/ChatgptChartWidgetType;
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object v1
+
+    .line 8
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lfa40;ILjava/lang/Object;)V
+
+    .line 9
+    .line 10
+    .line 11
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 12
+    .line 13
+    const/4 v0, 0x2
+
+    .line 14
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getChart_type()Lprotobuf_analytics_events/v1/ChatgptChartType;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object v1
+
+    .line 18
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lfa40;ILjava/lang/Object;)V
+
+    .line 19
+    .line 20
+    .line 21
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderMode;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 22
+    .line 23
+    const/4 v0, 0x3
+
+    .line 24
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getRender_mode()Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderMode;
+
+    .line 25
+    .line 26
+    .line 27
+    move-result-object v1
+
+    .line 28
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lfa40;ILjava/lang/Object;)V
+
+    .line 29
+    .line 30
+    .line 31
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetOutcome;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 32
+    .line 33
+    const/4 v0, 0x4
+
+    .line 34
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getOutcome()Lprotobuf_analytics_events/v1/ChatgptChartWidgetOutcome;
+
+    .line 35
+    .line 36
+    .line 37
+    move-result-object v1
+
+    .line 38
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lfa40;ILjava/lang/Object;)V
+
+    .line 39
+    .line 40
+    .line 41
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetFailureReason;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 42
+    .line 43
+    const/4 v0, 0x5
+
+    .line 44
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getFailure_reason()Lprotobuf_analytics_events/v1/ChatgptChartWidgetFailureReason;
+
+    .line 45
+    .line 46
+    .line 47
+    move-result-object v1
+
+    .line 48
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lfa40;ILjava/lang/Object;)V
+
+    .line 49
+    .line 50
+    .line 51
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetLanguage;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 52
+    .line 53
+    const/4 v0, 0x6
+
+    .line 54
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getLanguage()Lprotobuf_analytics_events/v1/ChatgptChartWidgetLanguage;
+
+    .line 55
+    .line 56
+    .line 57
+    move-result-object v1
+
+    .line 58
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lfa40;ILjava/lang/Object;)V
+
+    .line 59
+    .line 60
+    .line 61
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetChartType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 62
+    .line 63
+    const/4 v0, 0x7
+
+    .line 64
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getChart_widget_chart_type()Lprotobuf_analytics_events/v1/ChatgptChartWidgetChartType;
+
+    .line 65
+    .line 66
+    .line 67
+    move-result-object v1
+
+    .line 68
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lfa40;ILjava/lang/Object;)V
+
+    .line 69
+    .line 70
+    .line 71
+    sget-object p0, Lcom/squareup/wire/ProtoAdapter;->STRING:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 72
+    .line 73
+    const/16 v0, 0x8
+
+    .line 74
+    .line 75
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getSkybridge_fallback_chart_type()Ljava/lang/String;
+
+    .line 76
+    .line 77
+    .line 78
+    move-result-object v1
+
+    .line 79
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lfa40;ILjava/lang/Object;)V
+
+    .line 80
+    .line 81
+    .line 82
+    invoke-virtual {p2}, Lcom/squareup/wire/a;->unknownFields()Lot6;
+
+    .line 83
+    .line 84
+    .line 85
+    move-result-object p0
+
+    .line 86
+    invoke-virtual {p1, p0}, Lfa40;->a(Lot6;)V
+
+    .line 87
+    .line 88
+    .line 89
+    return-void
+.end method
+
+.method public bridge synthetic encode(Lut50;Ljava/lang/Object;)V
+    .locals 0
+
+    .line 90
+    check-cast p2, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;
+
+    invoke-virtual {p0, p1, p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome$Companion$ADAPTER$1;->encode(Lut50;Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;)V
+
+    return-void
+.end method
+
+.method public encode(Lut50;Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;)V
+    .locals 2
+
+    .line 92
+    invoke-virtual {p2}, Lcom/squareup/wire/a;->unknownFields()Lot6;
+
+    move-result-object p0
+
+    invoke-virtual {p1, p0}, Lut50;->d(Lot6;)V
+
+    .line 93
+    sget-object p0, Lcom/squareup/wire/ProtoAdapter;->STRING:Lcom/squareup/wire/ProtoAdapter;
+
+    const/16 v0, 0x8
+
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getSkybridge_fallback_chart_type()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lut50;ILjava/lang/Object;)V
+
+    .line 94
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetChartType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    const/4 v0, 0x7
+
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getChart_widget_chart_type()Lprotobuf_analytics_events/v1/ChatgptChartWidgetChartType;
+
+    move-result-object v1
+
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lut50;ILjava/lang/Object;)V
+
+    .line 95
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetLanguage;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    const/4 v0, 0x6
+
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getLanguage()Lprotobuf_analytics_events/v1/ChatgptChartWidgetLanguage;
+
+    move-result-object v1
+
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lut50;ILjava/lang/Object;)V
+
+    .line 96
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetFailureReason;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    const/4 v0, 0x5
+
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getFailure_reason()Lprotobuf_analytics_events/v1/ChatgptChartWidgetFailureReason;
+
+    move-result-object v1
+
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lut50;ILjava/lang/Object;)V
+
+    .line 97
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetOutcome;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    const/4 v0, 0x4
+
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getOutcome()Lprotobuf_analytics_events/v1/ChatgptChartWidgetOutcome;
+
+    move-result-object v1
+
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lut50;ILjava/lang/Object;)V
+
+    .line 98
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderMode;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    const/4 v0, 0x3
+
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getRender_mode()Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderMode;
+
+    move-result-object v1
+
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lut50;ILjava/lang/Object;)V
+
+    .line 99
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    const/4 v0, 0x2
+
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getChart_type()Lprotobuf_analytics_events/v1/ChatgptChartType;
+
+    move-result-object v1
+
+    invoke-virtual {p0, p1, v0, v1}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lut50;ILjava/lang/Object;)V
+
+    .line 100
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    const/4 v0, 0x1
+
+    invoke-virtual {p2}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getWidget_type()Lprotobuf_analytics_events/v1/ChatgptChartWidgetType;
+
+    move-result-object p2
+
+    invoke-virtual {p0, p1, v0, p2}, Lcom/squareup/wire/ProtoAdapter;->encodeWithTag(Lut50;ILjava/lang/Object;)V
+
+    return-void
+.end method
+
+.method public bridge synthetic encodedSize(Ljava/lang/Object;)I
+    .locals 0
+
+    .line 107
+    check-cast p1, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;
+
+    invoke-virtual {p0, p1}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome$Companion$ADAPTER$1;->encodedSize(Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;)I
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public encodedSize(Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;)I
+    .locals 3
+
+    .line 1
+    invoke-virtual {p1}, Lcom/squareup/wire/a;->unknownFields()Lot6;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    invoke-virtual {p0}, Lot6;->e()I
+
+    .line 6
+    .line 7
+    .line 8
+    move-result p0
+
+    .line 9
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 10
+    .line 11
+    const/4 v1, 0x1
+
+    .line 12
+    invoke-virtual {p1}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getWidget_type()Lprotobuf_analytics_events/v1/ChatgptChartWidgetType;
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-object v2
+
+    .line 16
+    invoke-virtual {v0, v1, v2}, Lcom/squareup/wire/ProtoAdapter;->encodedSizeWithTag(ILjava/lang/Object;)I
+
+    .line 17
+    .line 18
+    .line 19
+    move-result v0
+
+    .line 20
+    add-int/2addr v0, p0
+
+    .line 21
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 22
+    .line 23
+    const/4 v1, 0x2
+
+    .line 24
+    invoke-virtual {p1}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getChart_type()Lprotobuf_analytics_events/v1/ChatgptChartType;
+
+    .line 25
+    .line 26
+    .line 27
+    move-result-object v2
+
+    .line 28
+    invoke-virtual {p0, v1, v2}, Lcom/squareup/wire/ProtoAdapter;->encodedSizeWithTag(ILjava/lang/Object;)I
+
+    .line 29
+    .line 30
+    .line 31
+    move-result p0
+
+    .line 32
+    add-int/2addr p0, v0
+
+    .line 33
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderMode;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 34
+    .line 35
+    const/4 v1, 0x3
+
+    .line 36
+    invoke-virtual {p1}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getRender_mode()Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderMode;
+
+    .line 37
+    .line 38
+    .line 39
+    move-result-object v2
+
+    .line 40
+    invoke-virtual {v0, v1, v2}, Lcom/squareup/wire/ProtoAdapter;->encodedSizeWithTag(ILjava/lang/Object;)I
+
+    .line 41
+    .line 42
+    .line 43
+    move-result v0
+
+    .line 44
+    add-int/2addr v0, p0
+
+    .line 45
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetOutcome;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 46
+    .line 47
+    const/4 v1, 0x4
+
+    .line 48
+    invoke-virtual {p1}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getOutcome()Lprotobuf_analytics_events/v1/ChatgptChartWidgetOutcome;
+
+    .line 49
+    .line 50
+    .line 51
+    move-result-object v2
+
+    .line 52
+    invoke-virtual {p0, v1, v2}, Lcom/squareup/wire/ProtoAdapter;->encodedSizeWithTag(ILjava/lang/Object;)I
+
+    .line 53
+    .line 54
+    .line 55
+    move-result p0
+
+    .line 56
+    add-int/2addr p0, v0
+
+    .line 57
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetFailureReason;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 58
+    .line 59
+    const/4 v1, 0x5
+
+    .line 60
+    invoke-virtual {p1}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getFailure_reason()Lprotobuf_analytics_events/v1/ChatgptChartWidgetFailureReason;
+
+    .line 61
+    .line 62
+    .line 63
+    move-result-object v2
+
+    .line 64
+    invoke-virtual {v0, v1, v2}, Lcom/squareup/wire/ProtoAdapter;->encodedSizeWithTag(ILjava/lang/Object;)I
+
+    .line 65
+    .line 66
+    .line 67
+    move-result v0
+
+    .line 68
+    add-int/2addr v0, p0
+
+    .line 69
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetLanguage;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 70
+    .line 71
+    const/4 v1, 0x6
+
+    .line 72
+    invoke-virtual {p1}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getLanguage()Lprotobuf_analytics_events/v1/ChatgptChartWidgetLanguage;
+
+    .line 73
+    .line 74
+    .line 75
+    move-result-object v2
+
+    .line 76
+    invoke-virtual {p0, v1, v2}, Lcom/squareup/wire/ProtoAdapter;->encodedSizeWithTag(ILjava/lang/Object;)I
+
+    .line 77
+    .line 78
+    .line 79
+    move-result p0
+
+    .line 80
+    add-int/2addr p0, v0
+
+    .line 81
+    sget-object v0, Lprotobuf_analytics_events/v1/ChatgptChartWidgetChartType;->ADAPTER:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 82
+    .line 83
+    const/4 v1, 0x7
+
+    .line 84
+    invoke-virtual {p1}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getChart_widget_chart_type()Lprotobuf_analytics_events/v1/ChatgptChartWidgetChartType;
+
+    .line 85
+    .line 86
+    .line 87
+    move-result-object v2
+
+    .line 88
+    invoke-virtual {v0, v1, v2}, Lcom/squareup/wire/ProtoAdapter;->encodedSizeWithTag(ILjava/lang/Object;)I
+
+    .line 89
+    .line 90
+    .line 91
+    move-result v0
+
+    .line 92
+    add-int/2addr v0, p0
+
+    .line 93
+    sget-object p0, Lcom/squareup/wire/ProtoAdapter;->STRING:Lcom/squareup/wire/ProtoAdapter;
+
+    .line 94
+    .line 95
+    const/16 v1, 0x8
+
+    .line 96
+    .line 97
+    invoke-virtual {p1}, Lprotobuf_analytics_events/v1/ChatgptChartWidgetRenderOutcome;->getSkybridge_fallback_chart_type()Ljava/lang/String;
+
+    .line 98
+    .line 99
+    .line 100
+    move-result-object p1
+
+    .line 101
+    invoke-virtual {p0, v1, p1}, Lcom/squareup/wire/ProtoAdapter;->encodedSizeWithTag(ILjava/lang/Object;)I
+
+    .line 102
+    .line 103
+    .line 104
+    move-result p0
+
+    .line 105
+    add-int/2addr p0, v0
+
+    .line 106
+    return p0
+.end method

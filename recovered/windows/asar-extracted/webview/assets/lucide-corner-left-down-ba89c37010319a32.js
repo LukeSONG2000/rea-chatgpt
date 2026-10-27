@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-corner-left-down-70994b8544383dff.js";e();export{t as default};

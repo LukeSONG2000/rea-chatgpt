@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{GFn as t,LFn as n,U2n as r,V2n as i,VFn as a,zFn as o}from"./app-initial-438d1df57f70.js";function s(e,t,i,s){r(e,n,{authReason:o.CHATGPT_CONNECTOR_AUTH_REASON_MISSING_LINK,connectorId:t,productExperience:i,stage:s,surface:a.CHATGPT_CONNECTOR_AUTH_SURFACE_CONVERSATION_CARD})}function c(){return(c=e((()=>{t(),i()})))()}export{s as n,c as t};
+//# sourceMappingURL=pasted-link-connect-analytics-1854cc8e884a.js.map

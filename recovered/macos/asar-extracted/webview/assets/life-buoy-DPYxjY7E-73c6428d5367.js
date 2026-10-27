@@ -1,0 +1,1 @@
+import{n as e,t}from"./life-buoy-DPYxjY7E-e887469f7702.js";t();export{e as default};

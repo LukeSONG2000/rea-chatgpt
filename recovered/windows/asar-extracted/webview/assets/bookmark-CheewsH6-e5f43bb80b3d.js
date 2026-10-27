@@ -1,0 +1,1 @@
+import{n as e,t}from"./bookmark-CheewsH6-2ae6fb2d43ab.js";e();export{t as default};

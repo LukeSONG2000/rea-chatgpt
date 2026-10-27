@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.distinctUntilKeyChanged=void 0;const t=require("./distinctUntilChanged");function e(e,i){return(0,t.distinctUntilChanged)((t,n)=>i?i(t[e],n[e]):t[e]===n[e])}exports.distinctUntilKeyChanged=e;

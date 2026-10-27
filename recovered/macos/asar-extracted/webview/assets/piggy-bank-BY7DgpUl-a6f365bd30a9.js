@@ -1,0 +1,1 @@
+import{n as e,t}from"./piggy-bank-BY7DgpUl-eb00c9e27f69.js";e();export{t as default};

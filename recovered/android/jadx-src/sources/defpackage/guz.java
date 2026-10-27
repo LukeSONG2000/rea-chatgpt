@@ -1,0 +1,16 @@
+package defpackage;
+
+import android.app.Notification;
+import android.net.Uri;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes3.dex */
+public abstract class guz {
+    public static Notification.MessagingStyle.Message a(CharSequence charSequence, long j, CharSequence charSequence2) {
+        return new Notification.MessagingStyle.Message(charSequence, j, charSequence2);
+    }
+
+    public static Notification.MessagingStyle.Message b(Notification.MessagingStyle.Message message, String str, Uri uri) {
+        return message.setData(str, uri);
+    }
+}

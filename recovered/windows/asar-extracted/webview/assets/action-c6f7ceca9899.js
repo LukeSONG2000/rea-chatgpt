@@ -1,0 +1,1 @@
+import"./app-shared-955d52676f9c.js";import{n as e,t}from"./action-b5cb347c669f.js";e();export{t as SearchImageFavorite};

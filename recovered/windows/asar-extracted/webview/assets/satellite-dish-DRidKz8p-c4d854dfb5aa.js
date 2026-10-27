@@ -1,0 +1,1 @@
+import{n as e,t}from"./satellite-dish-DRidKz8p-270990ab2983.js";e();export{t as default};

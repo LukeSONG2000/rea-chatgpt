@@ -1,0 +1,149 @@
+.class public final Lhbk;
+.super Ljava/lang/Object;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+# interfaces
+.implements Landroid/view/animation/Animation$AnimationListener;
+
+
+# instance fields
+.field public final synthetic a:Lpr90;
+
+.field public final synthetic b:Landroid/view/ViewGroup;
+
+.field public final synthetic c:Landroid/view/View;
+
+.field public final synthetic d:Libk;
+
+
+# direct methods
+.method public constructor <init>(Lpr90;Landroid/view/ViewGroup;Landroid/view/View;Libk;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lhbk;->a:Lpr90;
+
+    .line 5
+    .line 6
+    iput-object p2, p0, Lhbk;->b:Landroid/view/ViewGroup;
+
+    .line 7
+    .line 8
+    iput-object p3, p0, Lhbk;->c:Landroid/view/View;
+
+    .line 9
+    .line 10
+    iput-object p4, p0, Lhbk;->d:Libk;
+
+    .line 11
+    .line 12
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onAnimationEnd(Landroid/view/animation/Animation;)V
+    .locals 4
+
+    .line 1
+    new-instance p1, Lm2;
+
+    .line 2
+    .line 3
+    const/16 v0, 0xc
+
+    .line 4
+    .line 5
+    iget-object v1, p0, Lhbk;->b:Landroid/view/ViewGroup;
+
+    .line 6
+    .line 7
+    iget-object v2, p0, Lhbk;->c:Landroid/view/View;
+
+    .line 8
+    .line 9
+    iget-object v3, p0, Lhbk;->d:Libk;
+
+    .line 10
+    .line 11
+    invoke-direct {p1, v1, v2, v3, v0}, Lm2;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;B)V
+
+    .line 12
+    .line 13
+    .line 14
+    invoke-virtual {v1, p1}, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+
+    .line 15
+    .line 16
+    .line 17
+    const/4 p1, 0x2
+
+    .line 18
+    invoke-static {p1}, Landroidx/fragment/app/a;->J(I)Z
+
+    .line 19
+    .line 20
+    .line 21
+    move-result p1
+
+    .line 22
+    if-eqz p1, :cond_0
+
+    .line 23
+    .line 24
+    iget-object p0, p0, Lhbk;->a:Lpr90;
+
+    .line 25
+    .line 26
+    invoke-static {p0}, Ljava/util/Objects;->toString(Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 27
+    .line 28
+    .line 29
+    :cond_0
+    return-void
+.end method
+
+.method public final onAnimationRepeat(Landroid/view/animation/Animation;)V
+    .locals 0
+
+    .line 1
+    return-void
+.end method
+
+.method public final onAnimationStart(Landroid/view/animation/Animation;)V
+    .locals 0
+
+    .line 1
+    const/4 p1, 0x2
+
+    .line 2
+    invoke-static {p1}, Landroidx/fragment/app/a;->J(I)Z
+
+    .line 3
+    .line 4
+    .line 5
+    move-result p1
+
+    .line 6
+    if-eqz p1, :cond_0
+
+    .line 7
+    .line 8
+    iget-object p0, p0, Lhbk;->a:Lpr90;
+
+    .line 9
+    .line 10
+    invoke-static {p0}, Ljava/util/Objects;->toString(Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 11
+    .line 12
+    .line 13
+    :cond_0
+    return-void
+.end method

@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,t}from"./writing-style-setup-4139f85c9e16.js";e();export{t as EnterpriseWritingStyleSetup};

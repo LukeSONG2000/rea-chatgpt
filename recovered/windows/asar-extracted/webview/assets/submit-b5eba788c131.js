@@ -1,0 +1,1 @@
+import{a as e,i as t,n,r,t as i}from"./submit-a01f6e04b35f.js";t();export{i as clearMcpAppDraftAttachments,n as getMcpAppNewThreadDestination,r as getMcpAppSubmit,e as updateMcpAppDraftPrompt};

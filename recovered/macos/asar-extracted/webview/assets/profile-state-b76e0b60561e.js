@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{$ot as t,Bst as n,Qot as r,Vst as i,jCt as a,tCt as o}from"./app-shared-2cae01273bae.js";import{n as s,t as c}from"./profile-832b2c85a048.js";function l(){return c.initialize(r?.browserHost)}var u;function d(){return(d=e((()=>{o(),t(),i(),s(),u=a(n,c.getSnapshot,({set:e})=>c.subscribe(()=>e(c.getSnapshot())))})))()}export{d as n,l as r,u as t};
+//# sourceMappingURL=profile-state-b76e0b60561e.js.map

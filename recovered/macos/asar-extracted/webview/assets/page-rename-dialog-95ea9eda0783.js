@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,t}from"./page-rename-dialog-32974606b2f6.js";e();export{t as PageRenameDialog};

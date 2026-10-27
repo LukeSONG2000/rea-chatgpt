@@ -1,0 +1,32 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes6.dex */
+public final class duf0 implements euf0 {
+    public final qwf0 a;
+    public final n4f0 b;
+
+    public duf0(n4f0 n4f0Var, qwf0 qwf0Var) {
+        this.a = qwf0Var;
+        this.b = n4f0Var;
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof duf0)) {
+            return false;
+        }
+        duf0 duf0Var = (duf0) obj;
+        return this.a.equals(duf0Var.a) && this.b.equals(duf0Var.b);
+    }
+
+    public final int hashCode() {
+        return this.b.hashCode() + (this.a.hashCode() * 31);
+    }
+
+    public final String toString() {
+        return duf0.class.getName();
+    }
+}

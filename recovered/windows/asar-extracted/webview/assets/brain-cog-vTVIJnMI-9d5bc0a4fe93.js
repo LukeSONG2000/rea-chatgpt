@@ -1,0 +1,1 @@
+import{n as e,t}from"./brain-cog-vTVIJnMI-46db4a49f04c.js";t();export{e as default};

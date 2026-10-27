@@ -1,0 +1,349 @@
+.class public final synthetic Ljmc;
+.super Ljava/lang/Object;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function2;
+
+
+# instance fields
+.field public final synthetic a:B
+
+.field public final synthetic b:Z
+
+.field public final synthetic c:Z
+
+.field public final synthetic d:Z
+
+.field public final synthetic e:Z
+
+.field public final synthetic f:Ltiy;
+
+.field public final synthetic g:I
+
+.field public final synthetic h:Ljava/lang/Object;
+
+.field public final synthetic i:Ljava/lang/Object;
+
+.field public final synthetic j:Ljava/lang/Object;
+
+
+# direct methods
+.method public synthetic constructor <init>(Ljava/lang/String;Ljava/lang/Object;ZZZZLkotlin/jvm/functions/Function1;Ltiy;I)V
+    .locals 1
+
+    .line 26
+    const/4 v0, 0x0
+
+    iput-byte v0, p0, Ljmc;->a:B
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Ljmc;->h:Ljava/lang/Object;
+
+    iput-object p2, p0, Ljmc;->i:Ljava/lang/Object;
+
+    iput-boolean p3, p0, Ljmc;->b:Z
+
+    iput-boolean p4, p0, Ljmc;->c:Z
+
+    iput-boolean p5, p0, Ljmc;->d:Z
+
+    iput-boolean p6, p0, Ljmc;->e:Z
+
+    iput-object p7, p0, Ljmc;->j:Ljava/lang/Object;
+
+    iput-object p8, p0, Ljmc;->f:Ltiy;
+
+    iput p9, p0, Ljmc;->g:I
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Ljsv;ZZZZLkotlin/jvm/functions/Function0;Ltiy;Ltiy;I)V
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    iput-byte v0, p0, Ljmc;->a:B
+
+    .line 3
+    .line 4
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 5
+    .line 6
+    .line 7
+    iput-object p1, p0, Ljmc;->h:Ljava/lang/Object;
+
+    .line 8
+    .line 9
+    iput-boolean p2, p0, Ljmc;->b:Z
+
+    .line 10
+    .line 11
+    iput-boolean p3, p0, Ljmc;->c:Z
+
+    .line 12
+    .line 13
+    iput-boolean p4, p0, Ljmc;->d:Z
+
+    .line 14
+    .line 15
+    iput-boolean p5, p0, Ljmc;->e:Z
+
+    .line 16
+    .line 17
+    iput-object p6, p0, Ljmc;->i:Ljava/lang/Object;
+
+    .line 18
+    .line 19
+    iput-object p7, p0, Ljmc;->f:Ltiy;
+
+    .line 20
+    .line 21
+    iput-object p8, p0, Ljmc;->j:Ljava/lang/Object;
+
+    .line 22
+    .line 23
+    iput p9, p0, Ljmc;->g:I
+
+    .line 24
+    .line 25
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 26
+
+    .line 1
+    move-object/from16 v0, p0
+
+    .line 2
+    .line 3
+    iget-byte v1, v0, Ljmc;->a:B
+
+    .line 4
+    .line 5
+    sget-object v2, Ltid0;->a:Ltid0;
+
+    .line 6
+    .line 7
+    iget v3, v0, Ljmc;->g:I
+
+    .line 8
+    .line 9
+    iget-object v4, v0, Ljmc;->j:Ljava/lang/Object;
+
+    .line 10
+    .line 11
+    iget-object v5, v0, Ljmc;->h:Ljava/lang/Object;
+
+    .line 12
+    .line 13
+    packed-switch v1, :pswitch_data_0
+
+    .line 14
+    .line 15
+    .line 16
+    move-object v6, v5
+
+    .line 17
+    check-cast v6, Ljsv;
+
+    .line 18
+    .line 19
+    iget-object v1, v0, Ljmc;->i:Ljava/lang/Object;
+
+    .line 20
+    .line 21
+    move-object v11, v1
+
+    .line 22
+    check-cast v11, Lkotlin/jvm/functions/Function0;
+
+    .line 23
+    .line 24
+    move-object v13, v4
+
+    .line 25
+    check-cast v13, Ltiy;
+
+    .line 26
+    .line 27
+    move-object/from16 v14, p1
+
+    .line 28
+    .line 29
+    check-cast v14, Lf1q;
+
+    .line 30
+    .line 31
+    move-object/from16 v1, p2
+
+    .line 32
+    .line 33
+    check-cast v1, Ljava/lang/Integer;
+
+    .line 34
+    .line 35
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 36
+    .line 37
+    .line 38
+    or-int/lit8 v1, v3, 0x1
+
+    .line 39
+    .line 40
+    invoke-static {v1}, Lovw;->V(I)I
+
+    .line 41
+    .line 42
+    .line 43
+    move-result v15
+
+    .line 44
+    iget-boolean v7, v0, Ljmc;->b:Z
+
+    .line 45
+    .line 46
+    iget-boolean v8, v0, Ljmc;->c:Z
+
+    .line 47
+    .line 48
+    iget-boolean v9, v0, Ljmc;->d:Z
+
+    .line 49
+    .line 50
+    iget-boolean v10, v0, Ljmc;->e:Z
+
+    .line 51
+    .line 52
+    iget-object v12, v0, Ljmc;->f:Ltiy;
+
+    .line 53
+    .line 54
+    invoke-static/range {v6 .. v15}, Lzw7;->C(Ljsv;ZZZZLkotlin/jvm/functions/Function0;Ltiy;Ltiy;Lf1q;I)V
+
+    .line 55
+    .line 56
+    .line 57
+    return-object v2
+
+    .line 58
+    :pswitch_0
+    move-object/from16 v16, v5
+
+    .line 59
+    .line 60
+    check-cast v16, Ljava/lang/String;
+
+    .line 61
+    .line 62
+    move-object/from16 v22, v4
+
+    .line 63
+    .line 64
+    check-cast v22, Lkotlin/jvm/functions/Function1;
+
+    .line 65
+    .line 66
+    move-object/from16 v24, p1
+
+    .line 67
+    .line 68
+    check-cast v24, Lf1q;
+
+    .line 69
+    .line 70
+    move-object/from16 v1, p2
+
+    .line 71
+    .line 72
+    check-cast v1, Ljava/lang/Integer;
+
+    .line 73
+    .line 74
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 75
+    .line 76
+    .line 77
+    or-int/lit8 v1, v3, 0x1
+
+    .line 78
+    .line 79
+    invoke-static {v1}, Lovw;->V(I)I
+
+    .line 80
+    .line 81
+    .line 82
+    move-result v25
+
+    .line 83
+    iget-object v1, v0, Ljmc;->i:Ljava/lang/Object;
+
+    .line 84
+    .line 85
+    iget-boolean v3, v0, Ljmc;->b:Z
+
+    .line 86
+    .line 87
+    iget-boolean v4, v0, Ljmc;->c:Z
+
+    .line 88
+    .line 89
+    iget-boolean v5, v0, Ljmc;->d:Z
+
+    .line 90
+    .line 91
+    iget-boolean v6, v0, Ljmc;->e:Z
+
+    .line 92
+    .line 93
+    iget-object v0, v0, Ljmc;->f:Ltiy;
+
+    .line 94
+    .line 95
+    move-object/from16 v23, v0
+
+    .line 96
+    .line 97
+    move-object/from16 v17, v1
+
+    .line 98
+    .line 99
+    move/from16 v18, v3
+
+    .line 100
+    .line 101
+    move/from16 v19, v4
+
+    .line 102
+    .line 103
+    move/from16 v20, v5
+
+    .line 104
+    .line 105
+    move/from16 v21, v6
+
+    .line 106
+    .line 107
+    invoke-static/range {v16 .. v25}, Llmc;->b(Ljava/lang/String;Ljava/lang/Object;ZZZZLkotlin/jvm/functions/Function1;Ltiy;Lf1q;I)V
+
+    .line 108
+    .line 109
+    .line 110
+    return-object v2
+
+    .line 111
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method

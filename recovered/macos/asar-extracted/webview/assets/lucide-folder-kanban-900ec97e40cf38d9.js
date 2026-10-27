@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-folder-kanban-8d8b05c441b8dcaf.js";e();export{t as default};

@@ -1,0 +1,21 @@
+package defpackage;
+
+import com.snap.valdi.exceptions.ValdiException;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes6.dex */
+public final class t6e0 implements p6e0 {
+    @Override // defpackage.p6e0
+    public final Object a(Object obj) {
+        throw new ValdiException("Untpyed objects cannot be copied");
+    }
+
+    @Override // defpackage.p6e0
+    public final boolean b(Object obj, Object obj2) {
+        return obj == obj2;
+    }
+
+    @Override // defpackage.p6e0
+    public final void c(Object obj) {
+    }
+}

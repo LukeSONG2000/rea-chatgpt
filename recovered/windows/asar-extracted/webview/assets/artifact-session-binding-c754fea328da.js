@@ -1,0 +1,1 @@
+import"./app-shared-955d52676f9c.js";import"./app-initial-438d1df57f70.js";import"./api-483888b3fa0b.js";import{i as e,n as t,r as n,t as r}from"./artifact-session-binding-337d5bb81dd3.js";e();export{r as artifactKindByDocumentType,t as createPageArtifactSessionBinding,n as getPageArtifactSessionContext};

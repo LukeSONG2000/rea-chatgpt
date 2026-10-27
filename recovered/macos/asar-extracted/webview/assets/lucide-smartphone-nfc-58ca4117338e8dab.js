@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-smartphone-nfc-83b7cc489b51367e.js";e();export{t as default};

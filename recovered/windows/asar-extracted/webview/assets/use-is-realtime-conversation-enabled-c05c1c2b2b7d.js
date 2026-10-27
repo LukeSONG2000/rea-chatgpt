@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Bst as t,DCt as n,Vst as r,cCt as i,tCt as a}from"./app-shared-955d52676f9c.js";import{Cnr as o,xnr as s}from"./app-initial-438d1df57f70.js";function c(){return i(l)}var l;function u(){return(u=e((()=>{a(),r(),s(),l=n(t,({get:e})=>{let t=e(o,`2380644311`),n=e(o,`1697652030`);return t&&!n})})))()}export{c as n,u as t};
+//# sourceMappingURL=use-is-realtime-conversation-enabled-c05c1c2b2b7d.js.map

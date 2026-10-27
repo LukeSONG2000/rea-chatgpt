@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.NotFoundError=void 0;const r=require("./createErrorClass");exports.NotFoundError=(0,r.createErrorClass)(r=>function(e){r(this),this.name="NotFoundError",this.message=e});

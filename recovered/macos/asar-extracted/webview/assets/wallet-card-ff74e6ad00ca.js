@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{YNt as t,YVt as n}from"./app-shared-2cae01273bae.js";import{n as r,t as i}from"./status-a8e132196506.js";function a(e){let t=(0,o.c)(1),n;return t[0]===Symbol.for(`react.memo_cache_sentinel`)?(n=(0,s.jsx)(i,{status:`unavailable`}),t[0]=n):n=t[0],n}var o,s;function c(){return(c=e((()=>{o=n(),r(),s=t()})))()}c();export{a as MessagingWalletCard};
+//# sourceMappingURL=wallet-card-ff74e6ad00ca.js.map

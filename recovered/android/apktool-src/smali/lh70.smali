@@ -1,0 +1,129 @@
+.class public final Llh70;
+.super Lzyq;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+# interfaces
+.implements Ljme;
+
+
+# instance fields
+.field public final a:Ljava/util/ArrayList;
+
+
+# direct methods
+.method public constructor <init>(Ljava/util/List;)V
+    .locals 3
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    new-instance v0, Ljava/util/ArrayList;
+
+    .line 5
+    .line 6
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    .line 7
+    .line 8
+    .line 9
+    check-cast p1, Ljava/lang/Iterable;
+
+    .line 10
+    .line 11
+    invoke-interface {p1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object p1
+
+    .line 15
+    :goto_0
+    invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 16
+    .line 17
+    .line 18
+    move-result v1
+
+    .line 19
+    if-eqz v1, :cond_1
+
+    .line 20
+    .line 21
+    invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object v1
+
+    .line 25
+    check-cast v1, Lzyq;
+
+    .line 26
+    .line 27
+    instance-of v2, v1, Llh70;
+
+    .line 28
+    .line 29
+    if-eqz v2, :cond_0
+
+    .line 30
+    .line 31
+    check-cast v1, Ljme;
+
+    .line 32
+    .line 33
+    invoke-interface {v1}, Ljme;->a()Ljava/util/List;
+
+    .line 34
+    .line 35
+    .line 36
+    move-result-object v1
+
+    .line 37
+    check-cast v1, Ljava/lang/Iterable;
+
+    .line 38
+    .line 39
+    invoke-static {v0, v1}, Lkee;->o0(Ljava/util/Collection;Ljava/lang/Iterable;)V
+
+    .line 40
+    .line 41
+    .line 42
+    goto :goto_0
+
+    .line 43
+    :cond_0
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 44
+    .line 45
+    .line 46
+    goto :goto_0
+
+    .line 47
+    :cond_1
+    iput-object v0, p0, Llh70;->a:Ljava/util/ArrayList;
+
+    .line 48
+    .line 49
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()Ljava/util/List;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Llh70;->a:Ljava/util/ArrayList;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method

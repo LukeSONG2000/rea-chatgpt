@@ -1,0 +1,3 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Cnr as t,s0t as n,x0t as r,xnr as i}from"./app-initial-feb30b196d11.js";var a;function o(){return(o=e((()=>{a=[`### Shared Page skills`,`Treat Pages marked namespace='skill' the same as other skills, even without a Page mention.`,`Discover skills with Spaces find_pages(namespace='skill'); add query to search for a specific skill.`,`Before each use, call Spaces read_page for the full current content. Only edit a skill when the user asks.`].join(`
+`)})))()}function s(e){return e.get(r)&&e.get(t,`3525417893`)?{codex_apps_page_skill_instructions:{kind:`application`,value:a}}:{}}function c(){return(c=e((()=>{n(),i(),o()})))()}export{s as n,c as t};
+//# sourceMappingURL=context-81e5d9c53f18.js.map

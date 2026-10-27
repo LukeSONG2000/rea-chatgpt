@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Ldt as t,Rdt as n}from"./app-initial-438d1df57f70.js";var r,i;function a(){return(a=e((()=>{n(),r=t({method:`default-branch`,getParams:e=>({operationSource:e.operationSource,root:e.root}),getOptions:e=>({liveQuery:{method:`default-branch`,params:{operationSource:e.operationSource,root:e.root}},select:e=>e.branch,staleTime:1/0})}),i=r.fromTarget$})))()}export{a as n,i as t};
+//# sourceMappingURL=git-default-branch-query-82a2cc2d93b6.js.map

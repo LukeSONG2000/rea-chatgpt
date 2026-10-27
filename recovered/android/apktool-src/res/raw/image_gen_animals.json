@@ -1,0 +1,437 @@
+{
+  "prop_colors": {
+    "a": "#956449",
+    "b": "#DBA361",
+    "c": "#77BEDB",
+    "g": "#66AF76",
+    "o": "#EF9C67",
+    "p": "#C786CB",
+    "w": "#F8DFAC",
+    "y": "#F0C85B"
+  },
+  "animals": [
+    {
+      "id": "rabbit",
+      "palette": ["#BB88E0", "#DF86BF", "#E8A4BF", "#A991E8", "#F0B7CB"],
+      "shapes": [
+        {"type": "ellipse", "values": [45, 67, 25, 19]},
+        {"type": "ellipse", "values": [66, 43, 15, 14]},
+        {"type": "ellipse", "values": [59, 18, 5.5, 21]},
+        {"type": "ellipse", "values": [72, 16, 5, 22]},
+        {"type": "ellipse", "values": [21, 64, 8, 8]},
+        {"type": "ellipse", "values": [64, 82, 11, 4]},
+        {"type": "ellipse", "values": [39, 84, 12, 5]}
+      ],
+      "prop": {"pattern": [".gg.gg.", "ggggggg", ".ggggg.", "...g...", "...g..."], "offset_x": 24, "offset_y": 26},
+      "accent": "trail"
+    },
+    {
+      "id": "squirrel",
+      "palette": ["#CC7950", "#E8A76D", "#F1BC88", "#AE6849"],
+      "eye": [71, 41],
+      "shapes": [
+        {"type": "ellipse", "values": [50, 64, 20, 18]},
+        {"type": "ellipse", "values": [67, 43, 12, 12]},
+        {"type": "ellipse", "values": [21, 47, 13, 27]},
+        {"type": "ellipse", "values": [30, 28, 14, 11]},
+        {"type": "triangle", "values": [59, 35, 62, 22, 67, 36]},
+        {"type": "triangle", "values": [68, 35, 74, 23, 76, 39]},
+        {"type": "ellipse", "values": [57, 82, 11, 4]}
+      ],
+      "prop": {
+        "pattern": ["..aaa..", ".aaaaa.", "bbbbbbb", ".bbbbb.", ".bbbbb.", "..bbb..", "...b..."],
+        "offset_x": 29,
+        "offset_y": 14
+      }
+    },
+    {
+      "id": "hedgehog",
+      "palette": ["#AD765D", "#D6A079", "#EDBF94", "#9D6954"],
+      "eye": [78, 58],
+      "shapes": [
+        {"type": "ellipse", "values": [45, 62, 28, 19]},
+        {"type": "ellipse", "values": [72, 62, 14, 11]},
+        {"type": "triangle", "values": [21, 54, 26, 32, 34, 52]},
+        {"type": "triangle", "values": [32, 48, 39, 28, 46, 48]},
+        {"type": "triangle", "values": [45, 45, 52, 27, 58, 47]},
+        {"type": "triangle", "values": [55, 47, 65, 34, 69, 53]},
+        {"type": "ellipse", "values": [34, 80, 8, 3]},
+        {"type": "ellipse", "values": [59, 80, 8, 3]}
+      ],
+      "prop": {"pattern": ["...g...", "..ggg..", ".ggggg.", "gggggg.", ".gggg..", "..gg..."], "offset_x": 28, "offset_y": 22}
+    },
+    {
+      "id": "mouse",
+      "palette": ["#9D99AF", "#BEB2C9", "#E5C3CE", "#8D87A0"],
+      "eye": [74, 47],
+      "shapes": [
+        {"type": "ellipse", "values": [47, 61, 23, 15]},
+        {"type": "ellipse", "values": [69, 48, 14, 12]},
+        {"type": "ellipse", "values": [63, 33, 10, 10]},
+        {"type": "ellipse", "values": [76, 35, 9, 9]},
+        {"type": "triangle", "values": [26, 59, 7, 43, 22, 65]},
+        {"type": "ellipse", "values": [59, 77, 8, 3]}
+      ],
+      "prop": {"pattern": ["..bb..", ".bbbb.", ".bbbb.", "..bb.."], "offset_x": 31, "offset_y": 20}
+    },
+    {
+      "id": "deer",
+      "palette": ["#BE8359", "#DEA576", "#EDC28E", "#A66D50"],
+      "eye": [76, 33],
+      "shapes": [
+        {"type": "ellipse", "values": [44, 55, 26, 14]},
+        {"type": "ellipse", "values": [72, 35, 11, 9]},
+        {"type": "triangle", "values": [57, 49, 66, 29, 72, 43]},
+        {"type": "ellipse", "values": [26, 77, 3, 19]},
+        {"type": "ellipse", "values": [42, 78, 3, 19]},
+        {"type": "ellipse", "values": [58, 76, 3, 17]},
+        {"type": "triangle", "values": [68, 28, 66, 8, 70, 24]},
+        {"type": "triangle", "values": [69, 17, 60, 9, 70, 20]},
+        {"type": "triangle", "values": [75, 27, 82, 8, 77, 28]},
+        {"type": "triangle", "values": [78, 17, 87, 11, 77, 21]}
+      ],
+      "prop": {"pattern": ["g..g..g", ".g.g.g.", ".ggggg.", "..ggg.."], "offset_x": 23, "offset_y": 31}
+    },
+    {
+      "id": "fox",
+      "palette": ["#EF8550", "#F2A36A", "#F7D4B5", "#BD674D"],
+      "eye": [77, 43],
+      "shapes": [
+        {"type": "ellipse", "values": [45, 62, 24, 15]},
+        {"type": "ellipse", "values": [71, 44, 13, 12]},
+        {"type": "triangle", "values": [61, 37, 64, 17, 72, 34]},
+        {"type": "triangle", "values": [72, 34, 83, 19, 84, 43]},
+        {"type": "triangle", "values": [75, 45, 92, 51, 76, 55]},
+        {"type": "ellipse", "values": [16, 52, 14, 19]},
+        {"type": "ellipse", "values": [35, 79, 8, 3]},
+        {"type": "ellipse", "values": [59, 79, 8, 3]}
+      ],
+      "prop": {"pattern": ["..y..", ".yyy.", "yywyy", ".yyy.", "..y.."], "offset_x": 31, "offset_y": -15}
+    },
+    {
+      "id": "cat",
+      "palette": ["#EF9850", "#F4B566", "#DF7758", "#F3C078", "#CC7955"],
+      "shapes": [
+        {"type": "ellipse", "values": [44, 64, 25, 17]},
+        {"type": "ellipse", "values": [69, 43, 15, 14]},
+        {"type": "triangle", "values": [56, 37, 59, 17, 69, 33]},
+        {"type": "triangle", "values": [69, 33, 80, 18, 82, 39]},
+        {"type": "ellipse", "values": [17, 52, 5, 20]},
+        {"type": "ellipse", "values": [23, 36, 10, 5]},
+        {"type": "ellipse", "values": [64, 80, 8, 4]},
+        {"type": "ellipse", "values": [32, 81, 9, 4]}
+      ],
+      "prop": {
+        "pattern": ["..ppp..", ".ppppp.", "ppwwwpp", "pppwppp", ".ppppp.", "..ppp..", ".....p."],
+        "offset_x": 32,
+        "offset_y": 20
+      }
+    },
+    {
+      "id": "dog",
+      "palette": ["#A77156", "#CC9266", "#E7B67D", "#BD805D", "#F0CCA0"],
+      "shapes": [
+        {"type": "ellipse", "values": [43, 65, 26, 16]},
+        {"type": "ellipse", "values": [69, 45, 15, 15]},
+        {"type": "ellipse", "values": [57, 46, 6, 16]},
+        {"type": "ellipse", "values": [78, 45, 5, 13]},
+        {"type": "triangle", "values": [20, 61, 9, 37, 16, 72]},
+        {"type": "ellipse", "values": [81, 51, 10, 7]},
+        {"type": "ellipse", "values": [59, 82, 9, 4]},
+        {"type": "ellipse", "values": [33, 82, 9, 4]}
+      ],
+      "prop": {"pattern": ["..ooo..", ".oooyy.", "oooooyo", "oyooooo", ".yyooo.", "..ooo.."], "offset_x": 32, "offset_y": 22}
+    },
+    {
+      "id": "butterfly",
+      "palette": ["#8657E8", "#ED67A9", "#F3A148", "#AE71E7", "#F27B91"],
+      "shapes": [
+        {"type": "ellipse", "values": [29, 36, 21, 23]},
+        {"type": "ellipse", "values": [71, 36, 21, 23]},
+        {"type": "ellipse", "values": [34, 68, 15, 19]},
+        {"type": "ellipse", "values": [66, 68, 15, 19]},
+        {"type": "ellipse", "values": [50, 51, 4.2, 30]},
+        {"type": "triangle", "values": [49, 25, 42, 12, 47, 29]},
+        {"type": "triangle", "values": [51, 25, 58, 12, 53, 29]}
+      ],
+      "prop": {"pattern": ["..p.p..", ".ppppp.", "pppwypp", ".ppppp.", "..p.p.."], "offset_x": 29, "offset_y": 15}
+    },
+    {
+      "id": "bumblebee",
+      "palette": ["#F6C33F", "#34313F", "#F5A938", "#80CAE9", "#F4D267"],
+      "shapes": [
+        {"type": "ellipse", "values": [48, 57, 27, 17]},
+        {"type": "ellipse", "values": [77, 55, 11, 11]},
+        {"type": "ellipse", "values": [39, 34, 11, 17]},
+        {"type": "ellipse", "values": [58, 33, 11, 16]},
+        {"type": "triangle", "values": [23, 53, 10, 58, 23, 62]},
+        {"type": "triangle", "values": [79, 46, 83, 32, 85, 47]}
+      ],
+      "prop": {"pattern": ["y...y", "..y..", ".y.y.", "..y..", "y...y"], "offset_x": 30, "offset_y": 14},
+      "accent": "trail"
+    },
+    {
+      "id": "ladybug",
+      "palette": ["#ED615D", "#F17B68", "#35313F", "#F4A166"],
+      "eye": [78, 51],
+      "shapes": [
+        {"type": "ellipse", "values": [48, 54, 25, 22]},
+        {"type": "ellipse", "values": [74, 53, 10, 10]},
+        {"type": "triangle", "values": [74, 45, 77, 30, 78, 46]},
+        {"type": "triangle", "values": [80, 46, 87, 33, 84, 48]}
+      ],
+      "prop": {"pattern": ["...g...", "..ggg..", ".ggggg.", "gggggg.", ".gggg..", "..gg..."], "offset_x": 24, "offset_y": 22},
+      "spots": [[37, 42], [51, 40], [32, 56], [48, 57], [58, 64]]
+    },
+    {
+      "id": "dragonfly",
+      "palette": ["#4CA9D7", "#6FCAD9", "#A491E6", "#B4E2E4"],
+      "eye": [52, 20],
+      "shapes": [
+        {"type": "ellipse", "values": [50, 54, 4, 31]},
+        {"type": "ellipse", "values": [50, 22, 7, 7]},
+        {"type": "ellipse", "values": [29, 38, 18, 8]},
+        {"type": "ellipse", "values": [71, 38, 18, 8]},
+        {"type": "ellipse", "values": [32, 54, 16, 7]},
+        {"type": "ellipse", "values": [68, 54, 16, 7]}
+      ],
+      "prop": {"pattern": [".g..g.g", ".g..g.g", ".g.g..g", ".g.g.gg", "ggggggg"], "offset_x": 26, "offset_y": 25}
+    },
+    {
+      "id": "hummingbird",
+      "palette": ["#48AD92", "#5FC7B1", "#E79C76", "#85B5EF"],
+      "eye": [72, 43],
+      "shapes": [
+        {"type": "ellipse", "values": [49, 56, 22, 13]},
+        {"type": "ellipse", "values": [69, 45, 12, 10]},
+        {"type": "triangle", "values": [75, 42, 96, 36, 78, 47]},
+        {"type": "triangle", "values": [46, 48, 32, 12, 66, 47]},
+        {"type": "triangle", "values": [29, 56, 12, 40, 23, 65]}
+      ],
+      "prop": {"pattern": [".p.p.", "ppppp", ".pyp.", "ppppp", ".p.p.", "..g.."], "offset_x": 33, "offset_y": 0}
+    },
+    {
+      "id": "turtle",
+      "palette": ["#44A87A", "#6FC36E", "#8DC975", "#3DA98F", "#BAD36B"],
+      "shapes": [
+        {"type": "ellipse", "values": [47, 53, 27, 21]},
+        {"type": "ellipse", "values": [78, 51, 10, 9]},
+        {"type": "ellipse", "values": [64, 32, 9, 6]},
+        {"type": "ellipse", "values": [65, 73, 9, 6]},
+        {"type": "ellipse", "values": [31, 33, 9, 6]},
+        {"type": "ellipse", "values": [31, 74, 9, 6]},
+        {"type": "triangle", "values": [23, 48, 8, 53, 23, 59]}
+      ],
+      "prop": {"pattern": [".ccc.", "cc.cc", "c...c", "cc.cc", ".ccc."], "offset_x": 27, "offset_y": -16},
+      "accent": "aquatic"
+    },
+    {
+      "id": "frog",
+      "palette": ["#5BAE70", "#7DCC7C", "#A1D47A", "#468F6B"],
+      "eye": [62, 32],
+      "shapes": [
+        {"type": "ellipse", "values": [50, 61, 25, 17]},
+        {"type": "ellipse", "values": [50, 43, 18, 12]},
+        {"type": "ellipse", "values": [38, 33, 7, 7]},
+        {"type": "ellipse", "values": [62, 33, 7, 7]},
+        {"type": "ellipse", "values": [23, 74, 12, 5]},
+        {"type": "ellipse", "values": [77, 74, 12, 5]},
+        {"type": "ellipse", "values": [39, 81, 9, 4]},
+        {"type": "ellipse", "values": [61, 81, 9, 4]}
+      ],
+      "prop": {"pattern": ["..gggg..", ".gggggg.", "gggg.ggg", ".gg..gg.", "..gggg.."], "offset_x": 26, "offset_y": 27}
+    },
+    {
+      "id": "duck",
+      "palette": ["#F1CE65", "#F5DB8A", "#F09A56", "#F5E5B2"],
+      "eye": [74, 38],
+      "shapes": [
+        {"type": "ellipse", "values": [45, 61, 26, 17]},
+        {"type": "ellipse", "values": [71, 40, 14, 13]},
+        {"type": "ellipse", "values": [58, 49, 10, 12]},
+        {"type": "triangle", "values": [79, 39, 95, 43, 79, 48]},
+        {"type": "triangle", "values": [22, 58, 10, 45, 19, 67]},
+        {"type": "ellipse", "values": [45, 81, 10, 3]}
+      ],
+      "prop": {"pattern": ["..ccc..", ".c...c.", "c.....c", ".c...c.", "..ccc.."], "offset_x": 24, "offset_y": 28}
+    },
+    {
+      "id": "swan",
+      "palette": ["#D4CCD9", "#EEE8EF", "#F1A775", "#B8A8C9"],
+      "eye": [74, 19],
+      "shapes": [
+        {"type": "ellipse", "values": [45, 66, 28, 15]},
+        {"type": "ellipse", "values": [68, 36, 6, 23]},
+        {"type": "ellipse", "values": [71, 20, 9, 7]},
+        {"type": "triangle", "values": [76, 18, 88, 21, 76, 24]},
+        {"type": "triangle", "values": [28, 61, 18, 43, 42, 54]}
+      ],
+      "prop": {"pattern": ["..ccc..", ".c...c.", "c.....c", ".c...c.", "..ccc.."], "offset_x": 24, "offset_y": 28}
+    },
+    {
+      "id": "fish",
+      "palette": ["#F48E66", "#F0AE64", "#F5CA76", "#DF725E"],
+      "eye": [69, 50],
+      "shapes": [
+        {"type": "ellipse", "values": [53, 54, 27, 17]},
+        {"type": "triangle", "values": [27, 53, 6, 33, 11, 56]},
+        {"type": "triangle", "values": [27, 56, 10, 54, 6, 76]},
+        {"type": "triangle", "values": [43, 42, 52, 27, 62, 42]},
+        {"type": "triangle", "values": [48, 67, 60, 80, 67, 66]}
+      ],
+      "prop": {"pattern": ["..c....", ".c.c...", "..c..c.", "....c.c", ".....c."], "offset_x": 30, "offset_y": -8},
+      "accent": "aquatic"
+    },
+    {
+      "id": "seahorse",
+      "palette": ["#57B7C9", "#7DC6CC", "#6FAEE0", "#A0D4CF"],
+      "eye": [66, 28],
+      "shapes": [
+        {"type": "ellipse", "values": [54, 51, 12, 20]},
+        {"type": "ellipse", "values": [62, 30, 12, 10]},
+        {"type": "triangle", "values": [67, 27, 85, 31, 66, 35]},
+        {"type": "ellipse", "values": [48, 71, 7, 14]},
+        {"type": "ellipse", "values": [38, 81, 11, 6]},
+        {"type": "triangle", "values": [45, 41, 34, 34, 47, 52]},
+        {"type": "triangle", "values": [56, 21, 53, 10, 61, 24]}
+      ],
+      "prop": {"pattern": ["..g..g.", ".g..g..", "..g..g.", ".g..g..", "..gggg."], "offset_x": 24, "offset_y": 24},
+      "accent": "aquatic"
+    },
+    {
+      "id": "octopus",
+      "palette": ["#9A75DB", "#B283E6", "#DF84C3", "#8E7AD8"],
+      "eye": [58, 39],
+      "shapes": [
+        {"type": "ellipse", "values": [50, 42, 25, 23]},
+        {"type": "ellipse", "values": [22, 70, 4, 19]},
+        {"type": "ellipse", "values": [33, 75, 4, 19]},
+        {"type": "ellipse", "values": [45, 75, 4, 20]},
+        {"type": "ellipse", "values": [57, 75, 4, 20]},
+        {"type": "ellipse", "values": [69, 75, 4, 19]},
+        {"type": "ellipse", "values": [79, 70, 4, 17]}
+      ],
+      "prop": {"pattern": [".p..p.", "..pp..", ".pppp.", "..pp..", "p..p.p"], "offset_x": 25, "offset_y": 24},
+      "accent": "aquatic"
+    },
+    {
+      "id": "jellyfish",
+      "palette": ["#A382E6", "#C69BEA", "#76C4DC", "#E1A5DF"],
+      "shapes": [
+        {"type": "ellipse", "values": [50, 42, 28, 21, 48]},
+        {"type": "ellipse", "values": [50, 47, 27, 7]},
+        {"type": "ellipse", "values": [30, 67, 3, 21]},
+        {"type": "ellipse", "values": [43, 73, 3, 24]},
+        {"type": "ellipse", "values": [56, 72, 3, 23]},
+        {"type": "ellipse", "values": [69, 65, 3, 19]}
+      ],
+      "prop": {"pattern": ["..p..", ".p.p.", "p.w.p", ".p.p.", "..p.."], "offset_x": 24, "offset_y": 4},
+      "accent": "aquatic"
+    },
+    {
+      "id": "dolphin",
+      "palette": ["#61A6D8", "#7FBBDF", "#A2D4EA", "#558ABF"],
+      "eye": [76, 46],
+      "shapes": [
+        {"type": "ellipse", "values": [48, 53, 30, 14]},
+        {"type": "ellipse", "values": [73, 47, 11, 10]},
+        {"type": "triangle", "values": [79, 45, 96, 50, 79, 53]},
+        {"type": "triangle", "values": [20, 53, 7, 36, 8, 53]},
+        {"type": "triangle", "values": [20, 57, 8, 55, 7, 71]},
+        {"type": "triangle", "values": [46, 42, 53, 27, 62, 43]},
+        {"type": "triangle", "values": [51, 63, 61, 77, 67, 62]}
+      ],
+      "prop": {"pattern": ["c..c..c", ".c.c.c.", "..ccc..", "...c..."], "offset_x": 28, "offset_y": 22},
+      "accent": "aquatic"
+    },
+    {
+      "id": "whale",
+      "palette": ["#397EE0", "#57A8ED", "#53BFD2", "#79CAE8", "#658DE8"],
+      "shapes": [
+        {"type": "ellipse", "values": [54, 55, 32, 19]},
+        {"type": "triangle", "values": [22, 52, 4, 32, 8, 58]},
+        {"type": "triangle", "values": [22, 57, 8, 57, 5, 77]},
+        {"type": "triangle", "values": [48, 65, 58, 87, 70, 65]},
+        {"type": "triangle", "values": [42, 40, 52, 28, 57, 40]}
+      ],
+      "accent": "whale_spout"
+    },
+    {
+      "id": "penguin",
+      "palette": ["#42445D", "#5D6581", "#F2DCAA", "#F0A24B"],
+      "eye": [55, 26],
+      "shapes": [
+        {"type": "ellipse", "values": [50, 56, 22, 31]},
+        {"type": "ellipse", "values": [50, 27, 15, 14]},
+        {"type": "ellipse", "values": [26, 56, 6, 19]},
+        {"type": "ellipse", "values": [74, 56, 6, 19]},
+        {"type": "ellipse", "values": [39, 86, 9, 4]},
+        {"type": "ellipse", "values": [61, 86, 9, 4]},
+        {"type": "triangle", "values": [48, 32, 56, 35, 48, 38]}
+      ],
+      "prop": {
+        "pattern": ["c..c..c", ".c.c.c.", "..ccc..", "ccccccc", "..ccc..", ".c.c.c.", "c..c..c"],
+        "offset_x": 26,
+        "offset_y": -19
+      }
+    },
+    {
+      "id": "polar-bear",
+      "palette": ["#CFC8D7", "#E6E1EC", "#F0EDF3", "#B7AEC6"],
+      "eye": [75, 42],
+      "shapes": [
+        {"type": "ellipse", "values": [43, 59, 28, 18]},
+        {"type": "ellipse", "values": [71, 44, 16, 15]},
+        {"type": "ellipse", "values": [62, 30, 5, 5]},
+        {"type": "ellipse", "values": [78, 31, 5, 5]},
+        {"type": "ellipse", "values": [81, 49, 8, 6]},
+        {"type": "ellipse", "values": [30, 78, 9, 5]},
+        {"type": "ellipse", "values": [58, 78, 9, 5]}
+      ],
+      "prop": {"pattern": ["b.b..b.b", ".b....b.", "bbb..bbb", ".b....b."], "offset_x": 22, "offset_y": 29}
+    },
+    {
+      "id": "seal",
+      "palette": ["#8195AF", "#AAB6C9", "#C3CED9", "#717E9E"],
+      "eye": [77, 44],
+      "shapes": [
+        {"type": "ellipse", "values": [48, 57, 32, 16]},
+        {"type": "ellipse", "values": [73, 46, 14, 12]},
+        {"type": "triangle", "values": [18, 55, 6, 41, 11, 58]},
+        {"type": "triangle", "values": [18, 61, 10, 58, 6, 75]},
+        {"type": "triangle", "values": [44, 68, 53, 83, 61, 66]}
+      ],
+      "prop": {"pattern": ["c..c..c", ".c.c.c.", "..ccc..", "...c..."], "offset_x": 27, "offset_y": 19},
+      "accent": "aquatic"
+    },
+    {
+      "id": "owl",
+      "palette": ["#A88369", "#CFAB83", "#EBD4A5", "#866C60"],
+      "eye": [58, 32],
+      "shapes": [
+        {"type": "ellipse", "values": [50, 61, 23, 25]},
+        {"type": "ellipse", "values": [50, 34, 21, 18]},
+        {"type": "triangle", "values": [33, 24, 36, 11, 43, 22]},
+        {"type": "triangle", "values": [57, 22, 65, 11, 68, 26]},
+        {"type": "ellipse", "values": [27, 57, 7, 18]},
+        {"type": "ellipse", "values": [73, 57, 7, 18]},
+        {"type": "ellipse", "values": [42, 86, 7, 3]},
+        {"type": "ellipse", "values": [58, 86, 7, 3]}
+      ],
+      "prop": {"pattern": ["..yy..", ".yyy..", "yyy...", "yyy...", ".yyy..", "..yy.."], "offset_x": 29, "offset_y": -22}
+    },
+    {
+      "id": "dove",
+      "palette": ["#C4A9DC", "#DFC4E9", "#EEE3F3", "#B99ACA"],
+      "eye": [75, 41],
+      "shapes": [
+        {"type": "ellipse", "values": [52, 56, 21, 14]},
+        {"type": "ellipse", "values": [71, 43, 11, 10]},
+        {"type": "triangle", "values": [75, 41, 89, 44, 77, 47]},
+        {"type": "triangle", "values": [47, 47, 26, 15, 64, 47]},
+        {"type": "triangle", "values": [34, 59, 13, 46, 25, 69]}
+      ],
+      "prop": {"pattern": ["...p...", "..ppp..", ".pppp..", ".ppp...", "..pp...", "...p..."], "offset_x": 25, "offset_y": 17}
+    }
+  ]
+}

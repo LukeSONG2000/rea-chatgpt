@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.LiteComment=exports.LiteText=void 0;class LiteText{get kind(){return"#text"}constructor(e=""){this.value=e}}exports.LiteText=LiteText;class LiteComment extends LiteText{get kind(){return"#comment"}}exports.LiteComment=LiteComment;

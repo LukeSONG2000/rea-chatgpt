@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Wvn as t,ler as n,qvn as r,w7n as i}from"./app-initial-feb30b196d11.js";import{n as a,t as o}from"./workspace-discovery-274cb748f2fe.js";function s(e,t,i,a,s){e.queryClient.resetQueries({queryKey:[`workspace-discovery-v2`,t]}),r(e,o,{mode:`dismissible`,section:`discoverable`,origin:s,upgradeOrigin:a,beaconOrigin:i==null?void 0:{userId:t,accountId:e.get(n),attribution:i}})}function c(){return(c=e((()=>{i(),t(),a()})))()}export{s as n,c as t};
+//# sourceMappingURL=open-discovery-fe1f8cd3f1ed.js.map

@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Yst as t}from"./app-shared-2cae01273bae.js";function n(e){return e.ephemeral!==!0&&e.threadSource!==`ambient_suggestions`&&!0}function r(){return(r=e((()=>{t()})))()}export{n,r as t};
+//# sourceMappingURL=should-include-thread-in-discovery-1b8e82164ce2.js.map

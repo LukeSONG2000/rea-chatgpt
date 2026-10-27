@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{$ot as t,Qot as n}from"./app-shared-2cae01273bae.js";async function r(){let e=n.globalDictationSetup;if(e==null)return!1;let t=await e.getState();return!t.supported||t.microphone===`granted`&&t.inputMonitoring===`granted`&&t.accessibility?!1:(await e.open(),!0)}function i(){return(i=e((()=>{t()})))()}export{r as n,i as t};
+//# sourceMappingURL=open-dictation-setup-if-needed-a6b4ff7fd368.js.map

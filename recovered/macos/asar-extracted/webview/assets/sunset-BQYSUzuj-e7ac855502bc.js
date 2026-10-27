@@ -1,0 +1,1 @@
+import{n as e,t}from"./sunset-BQYSUzuj-6acdabbc8a8c.js";t();export{e as default};

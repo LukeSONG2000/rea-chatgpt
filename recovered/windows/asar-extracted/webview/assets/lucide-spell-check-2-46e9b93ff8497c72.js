@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-spell-check-2-2743ba749ddc7f9b.js";e();export{t as default};

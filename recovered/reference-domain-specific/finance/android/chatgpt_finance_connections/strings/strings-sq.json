@@ -1,0 +1,317 @@
+{
+  "l10nsvc" : "sourcefile",
+  "finance_account_linking_tab_accounts" : {
+    "defaultMessage" : "Llogaritë",
+    "description" : "Tab for connecting bank, investment, and other financial accounts in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_manual_accounts" : {
+    "defaultMessage" : "Llogaritë manuale",
+    "description" : "Tab for manually adding financial accounts, assets, and debts in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_credit_score" : {
+    "defaultMessage" : "Vlerësimi i kreditit",
+    "description" : "Tab for connecting credit-score information in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_real_estate" : {
+    "defaultMessage" : "Pasuri të paluajtshme",
+    "description" : "Tab for connecting real-estate information in the Finance account-linking sheet."
+  },
+  "finance_account_linking_title" : {
+    "defaultMessage" : "Lidh financat",
+    "description" : "Heading shown above the Finance account-linking institution picker."
+  },
+  "finance_account_linking_close_accessibility_label" : {
+    "defaultMessage" : "Mbyll lidhjen e financave",
+    "description" : "Screen-reader label for the button that dismisses Finance account linking."
+  },
+  "finance_account_linking_connection_types_accessibility_label" : {
+    "defaultMessage" : "Llojet e lidhjeve financiare",
+    "description" : "Screen-reader label for the tabs selecting a financial connection type."
+  },
+  "finance_account_linking_search_accessibility_label" : {
+    "defaultMessage" : "Kërko banka ose investime",
+    "description" : "Screen-reader label for the financial institution search input."
+  },
+  "finance_account_linking_search_placeholder" : {
+    "defaultMessage" : "Kërko",
+    "description" : "Placeholder for the financial institution search input."
+  },
+  "finance_account_linking_clear_search_accessibility_label" : {
+    "defaultMessage" : "Pastro kërkimin",
+    "description" : "Screen-reader label for the button that clears the institution search."
+  },
+  "finance_account_linking_loading_institutions_accessibility_label" : {
+    "defaultMessage" : "Po ngarkohen institucionet financiare",
+    "description" : "Screen-reader label announced while the first financial institution page loads."
+  },
+  "finance_account_linking_loading_more_institutions_accessibility_label" : {
+    "defaultMessage" : "Po ngarkohen institucione të tjera financiare",
+    "description" : "Screen-reader label announced while another financial institution page loads."
+  },
+  "finance_account_linking_institution_load_error_accessibility_label" : {
+    "defaultMessage" : "Nuk mund të ngarkohen institucionet financiare",
+    "description" : "Screen-reader label announced when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_error_title" : {
+    "defaultMessage" : "Institucionet nuk mund të ngarkohen",
+    "description" : "Title shown when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_error_detail" : {
+    "defaultMessage" : "Kontrollo lidhjen dhe provo sërish.",
+    "description" : "Supporting text shown when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_retry_accessibility_label" : {
+    "defaultMessage" : "Provo të ngarkosh sërish institucionet financiare",
+    "description" : "Screen-reader label for the action that retries a failed institution request."
+  },
+  "finance_account_linking_institution_load_retry" : {
+    "defaultMessage" : "Provo sërish",
+    "description" : "Action that retries a failed financial institution request."
+  },
+  "finance_account_linking_empty_institutions_accessibility_label" : {
+    "defaultMessage" : "Nuk ka institucione financiare të disponueshme",
+    "description" : "Screen-reader label announced when there are no financial institutions to show."
+  },
+  "finance_account_linking_no_search_results_accessibility_label" : {
+    "defaultMessage" : "Nuk ka rezultate për {query}",
+    "description" : "Screen-reader label announced when an institution search finds no matches.",
+    "example" : "No results for Community Bank"
+  },
+  "finance_account_linking_empty_institutions_title" : {
+    "defaultMessage" : "Nuk ka institucione të disponueshme",
+    "description" : "Title shown when the financial institution picker has no available institutions."
+  },
+  "finance_account_linking_no_search_results_title" : {
+    "defaultMessage" : "Nuk u gjetën rezultate",
+    "description" : "Title shown when an institution search finds no matches."
+  },
+  "finance_account_linking_empty_institutions_detail" : {
+    "defaultMessage" : "Provo sërish pas pak.",
+    "description" : "Supporting text shown when no financial institutions are available."
+  },
+  "finance_account_linking_no_search_results_detail" : {
+    "defaultMessage" : "Provo një kërkim tjetër për “{query}”.",
+    "description" : "Supporting text suggesting a new institution search after no results are found.",
+    "example" : "Try another search for “Community Bank”."
+  },
+  "finance_account_linking_coming_soon_accessibility_label" : {
+    "defaultMessage" : "Lidhjet {connectionType} vijnë së shpejti",
+    "description" : "Screen-reader label for an unavailable financial connection type.",
+    "example" : "Real estate connections coming soon"
+  },
+  "finance_account_linking_coming_soon_title" : {
+    "defaultMessage" : "{connectionType} vjen së shpejti",
+    "description" : "Title shown for an unavailable financial connection type.",
+    "example" : "Real estate coming soon"
+  },
+  "finance_account_linking_connecting_institution_accessibility_label" : {
+    "defaultMessage" : "Po lidhet {institutionName}",
+    "description" : "Screen-reader label announced while a specific financial institution is connecting.",
+    "example" : "Connecting Community Bank"
+  },
+  "finance_account_linking_credit_score_title" : {
+    "defaultMessage" : "Lidhni rezultatin tuaj të kreditit",
+    "description" : "Heading and action accessibility label for connecting a credit score."
+  },
+  "finance_account_linking_credit_score_description" : {
+    "defaultMessage" : "Verifiko identitetin tënd me Experian për të lidhur rezultatin tënd të kreditit.",
+    "description" : "Explanation that Experian verifies the user's identity before connecting their credit score."
+  },
+  "finance_account_linking_credit_score_verifying_accessibility_label" : {
+    "defaultMessage" : "Po verifikohet rezultati juaj i kreditit",
+    "description" : "Screen-reader label announced while credit score verification is running."
+  },
+  "finance_account_linking_credit_score_get_started" : {
+    "defaultMessage" : "Vazhdo te Experian",
+    "description" : "Action that starts Experian's identity-verification flow to connect the user's credit score."
+  },
+  "finance_account_linking_credit_score_experian_title" : {
+    "defaultMessage" : "Lidh rezultatin tënd të kreditit me Experian",
+    "description" : "Heading above the benefits of connecting an Experian credit score in ChatGPT Personal Finance. Experian is a brand name; do not translate it."
+  },
+  "finance_account_linking_credit_score_report_title" : {
+    "defaultMessage" : "Shiko raportin tënd të plotë",
+    "description" : "Benefit title explaining that connecting an Experian credit score includes access to the full report."
+  },
+  "finance_account_linking_credit_score_report_detail" : {
+    "defaultMessage" : "Merr rezultatin, faktorët kryesorë dhe raportin e plotë",
+    "description" : "Supporting copy for the full credit report benefit in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_monitoring_title" : {
+    "defaultMessage" : "Ji në dijeni",
+    "description" : "Benefit title for credit score updates and monitoring alerts in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_monitoring_detail" : {
+    "defaultMessage" : "Merr përditësime mujore dhe sinjalizime monitorimi",
+    "description" : "Supporting copy for credit score updates and monitoring alerts in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_goals_title" : {
+    "defaultMessage" : "Arrini synimet tuaja",
+    "description" : "Benefit title for personalized financial insights in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_goals_detail" : {
+    "defaultMessage" : "Informacione të personalizuara për ju, bazuar në rezultatin dhe financat tuaja",
+    "description" : "Supporting copy explaining that credit score and financial information inform personalized insights."
+  },
+  "finance_account_linking_credit_score_no_score_impact" : {
+    "defaultMessage" : "Kontrollimi i kreditit tuaj nuk do të ndikojë në pikët tuaja",
+    "description" : "Reassurance below the Experian connection action that checking a credit score does not affect it."
+  },
+  "finance_account_linking_credit_score_learn_more" : {
+    "defaultMessage" : "Mëso më shumë rreth kreditit në ChatGPT",
+    "description" : "Link below the Experian connection action to information about credit in ChatGPT."
+  },
+  "finance_manual_accounts_category_cash" : {
+    "defaultMessage" : "Para në dorë",
+    "description" : "Manual-account category for cash, checking, and savings accounts."
+  },
+  "finance_manual_accounts_prompt_cash" : {
+    "defaultMessage" : "Më ndihmo të gjurmoj manualisht një llogari parash. Bëj nga një pyetje të shkurtër për emrin, llojin rrjedhëse ose kursimi, gjendjen aktuale dhe monedhën, nëse nuk është e qartë. Institucioni është opsional. Pasi të përgjigjem, ruaje si kujtesë financiare për një llogari të veçantë.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Cash manual-account category. Ask one short question at a time for the account name, checking or savings subtype, and current balance; the institution is optional and currency is needed only if unclear. Save a separate account as a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_investments" : {
+    "defaultMessage" : "Investime",
+    "description" : "Manual-account category for investment accounts."
+  },
+  "finance_manual_accounts_prompt_investments" : {
+    "defaultMessage" : "Më ndihmo të regjistroj manualisht një llogari investimi. Bëj nga një pyetje të shkurtër për emrin, llojin, gjendjen totale dhe monedhën, nëse nuk është e qartë. Pasi të përgjigjem, ruaje si memorie financiare për një llogari investimi më vete, jo si zotërim individual apo aktiv i përgjithshëm.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Investments manual-account category. Ask one short question at a time for the account name, investment account subtype, and total balance; ask for currency only if unclear. After the user answers, save a separate investment account as a financial memory, not as an individual holding or generic asset. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_real_estate" : {
+    "defaultMessage" : "Pasuri të paluajtshme",
+    "description" : "Manual-account category for homes and other real-estate assets."
+  },
+  "finance_manual_accounts_prompt_real_estate" : {
+    "defaultMessage" : "Më ndihmo t’i regjistroj manualisht pronat. Bëj nga një pyetje të shkurtër për emrin, llojin, vlerën e përafërt dhe, nëse nuk është e qartë, monedhën. Pasi të përgjigjem, ruaje si memorie financiare.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Real estate manual-account category. Ask one short question at a time for the property name, property type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_vehicle" : {
+    "defaultMessage" : "Automjet",
+    "description" : "Manual-account category for cars and other vehicles."
+  },
+  "finance_manual_accounts_prompt_vehicle" : {
+    "defaultMessage" : "Më ndihmo të regjistroj manualisht një automjet. Më bëj nga një pyetje të shkurtër për emrin, llojin, vlerën e përafërt dhe monedhën, nëse nuk është e qartë. Pasi të përgjigjem, ruaje si kujtesë financiare.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Vehicle manual-account category. Ask one short question at a time for the vehicle name, vehicle type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_other_assets" : {
+    "defaultMessage" : "Aktive të tjera",
+    "description" : "Manual-account category for other assets such as collectibles and business interests."
+  },
+  "finance_manual_accounts_prompt_other_assets" : {
+    "defaultMessage" : "Më ndihmo të gjurmoj manualisht një aktiv. Më bëj nga një pyetje të shkurtër për emrin, llojin, vlerën e përafërt dhe, nëse nuk është e qartë, monedhën. Pasi të përgjigjem, ruaje në memorien financiare.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Other assets manual-account category. Ask one short question at a time for the asset name, asset type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_loans" : {
+    "defaultMessage" : "Kredi",
+    "description" : "Manual-account category for mortgages, student loans, and other loans."
+  },
+  "finance_manual_accounts_prompt_loans" : {
+    "defaultMessage" : "Më ndihmo ta regjistroj manualisht një hua. Më bëj nga një pyetje të shkurtër për emrin, llojin, shumën pozitive që detyrohem dhe monedhën, nëse nuk është e qartë. Huadhënësi është opsional. Pasi të përgjigjem, ruaje si memorie financiare.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Loans manual-account category. Ask one short question at a time for the loan name, loan type, and positive amount owed; the lender is optional and currency is needed only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_other_debt" : {
+    "defaultMessage" : "Borxhe të tjera",
+    "description" : "Manual-account category for credit cards and other non-loan debts."
+  },
+  "finance_manual_accounts_prompt_other_debt" : {
+    "defaultMessage" : "Më ndihmo të regjistroj manualisht një borxh. Më bëj nga një pyetje të shkurtër për emrin, nëse është kartë krediti, shumën pozitive që detyrohem dhe monedhën, nëse nuk është e qartë. Kreditori është opsional. Pasi të përgjigjem, ruaje si memorie financiare.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Other debt manual-account category. Ask one short question at a time for the debt name, credit-card or other debt subtype, and positive amount owed; the creditor is optional and currency is needed only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_tax_records" : {
+    "defaultMessage" : "Dokumente tatimore",
+    "description" : "Unavailable manual-account category for tax records."
+  },
+  "finance_manual_accounts_category_insurance" : {
+    "defaultMessage" : "Sigurime",
+    "description" : "Manual-account category for insurance policies that have a cash value."
+  },
+  "finance_manual_accounts_prompt_insurance" : {
+    "defaultMessage" : "Më ndihmo të gjurmoj manualisht një policë sigurimi. Fillimisht pyet nëse ka vlerë reale në para ose vlerë dorëzimi, jo vetëm përfitim në rast vdekjeje. Pastaj bëj nga një pyetje të shkurtër për emrin, vlerën dhe, nëse nuk është e qartë, monedhën. Vetëm pasi të përgjigjem, ruaje si kujtesë financiare.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Insurance manual-account category. First confirm the policy has actual cash or surrender value, not merely a death benefit, then ask one short question at a time for its name and cash value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_account_linking_credit_score_unavailable" : {
+    "defaultMessage" : "Verifikimi i kreditit nuk është i disponueshëm tani.",
+    "description" : "Message shown while shared Finance cannot safely start credit verification."
+  },
+  "finance_account_linking_credit_score_connected" : {
+    "defaultMessage" : "Rezultati i kreditit u lidh",
+    "description" : "Screen-reader status for the connected credit-bureau row in the Credit score tab of ChatGPT Personal Finance's Connect finances dialog. Also shown below the bureau name while a numeric score is not available. The connection does not need another identity verification."
+  },
+  "finance_account_linking_credit_provider_name" : {
+    "defaultMessage" : "Experian",
+    "description" : "Name of the connected credit bureau in the Credit score tab of ChatGPT Personal Finance's Connect finances dialog. Experian is a brand name; do not translate it. Short row title above the user's credit score."
+  },
+  "finance_account_linking_credit_score_summary" : {
+    "defaultMessage" : "Rezultati i kreditit: {score}",
+    "description" : "Compact subtitle below Experian in the connected Credit score tab of ChatGPT Personal Finance's Connect finances dialog. The score placeholder is the user's actual credit score, already formatted as a localized whole number. Keep this descriptive and neutral; do not add a rating or imply that the score has changed.",
+    "example" : "739 credit score"
+  },
+  "finance_account_linking_credit_status_loading" : {
+    "defaultMessage" : "Po ngarkohet statusi i kreditit",
+    "description" : "Screen-reader label announced while shared Finance loads the account's credit status."
+  },
+  "finance_account_linking_credit_identity_verified" : {
+    "defaultMessage" : "Identiteti yt u verifikua",
+    "description" : "Heading after the backend confirms Experian identity verification, while the first credit report is still being prepared. This does not mean the report or score is ready."
+  },
+  "finance_account_linking_credit_report_preparing" : {
+    "defaultMessage" : "Experian po përgatit raportin tënd të kreditit. Mund të largohesh dhe ta kontrollosh sërish më vonë.",
+    "description" : "Neutral progress message while the first Experian credit report is pending after identity verification. Also labels the activity indicator. Do not imply a failure, a percentage, or a completion time."
+  },
+  "finance_account_linking_credit_report_check_again" : {
+    "defaultMessage" : "Kontrollo përsëri",
+    "description" : "Action to check whether a pending first credit report is ready after automatic status checks stop. This checks the server and does not restart identity verification."
+  },
+  "finance_account_linking_credit_verification_failed" : {
+    "defaultMessage" : "Nuk mundëm ta verifikonim identitetin tënd. Kontakto Experian për ndihmë.",
+    "description" : "Experian contact guidance after an authoritative identity-verification failure."
+  },
+  "finance_account_linking_credit_verification_expired" : {
+    "defaultMessage" : "Sesioni i verifikimit ka skaduar. Provo sërish për të nisur një sesion të ri.",
+    "description" : "Message shown when the backend confirms that the verification session expired."
+  },
+  "finance_account_linking_credit_verification_error" : {
+    "defaultMessage" : "Nuk mundëm ta përfundonim verifikimin. Provo sërish.",
+    "description" : "Generic retry message when verification cannot be completed; does not imply identity rejection."
+  },
+  "finance_account_linking_credit_verification_incomplete" : {
+    "defaultMessage" : "Verifikimi yt është i papërfunduar. Vazhdo kur të jesh gati.",
+    "description" : "Message after cancellation or when the backend requires further verification."
+  },
+  "finance_account_linking_credit_verification_continue" : {
+    "defaultMessage" : "Vazhdo verifikimin",
+    "description" : "Action that resumes an unfinished identity verification."
+  },
+  "finance_account_linking_credit_verification_retry" : {
+    "defaultMessage" : "Provo sërish",
+    "description" : "Action that starts enrollment again after an expired session or an interruption; not shown for a confirmed identity-verification failure."
+  },
+  "finance_account_linking_credit_status_load_error" : {
+    "defaultMessage" : "Nuk mundëm ta ngarkonim statusin tuaj të kreditit.",
+    "description" : "Message shown when shared Finance cannot read the account's credit status."
+  },
+  "finance_account_linking_credit_status_retry" : {
+    "defaultMessage" : "Riprovo",
+    "description" : "Action that retries a failed credit status read without starting verification."
+  },
+  "finance_account_linking_credit_status_retry_accessibility_label" : {
+    "defaultMessage" : "Riprovo ngarkimin e statusit të kreditit",
+    "description" : "Screen-reader label for the action that retries a failed credit status read."
+  },
+  "finance_account_linking_confirmation_title" : {
+    "defaultMessage" : "U lidh me sukses",
+    "description" : "Heading and success-icon accessibility label shown after financial institutions connect."
+  },
+  "finance_account_linking_continue_accessibility_label" : {
+    "defaultMessage" : "Vazhdo lidhjen e llogarive financiare",
+    "description" : "Screen-reader label for the action that dismisses the account-linking confirmation."
+  },
+  "finance_account_linking_continue" : {
+    "defaultMessage" : "Vazhdo",
+    "description" : "Action that dismisses the financial account-linking confirmation."
+  },
+  "finance_account_linking_connecting_accounts" : {
+    "defaultMessage" : "Po lidhen llogaritë e tua",
+    "description" : "Progress message shown while linked financial accounts finish connecting."
+  }
+}

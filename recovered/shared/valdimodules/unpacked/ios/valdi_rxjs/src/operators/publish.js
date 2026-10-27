@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.publish=void 0;const e=require("../Subject"),t=require("./multicast"),r=require("./connect");function u(u){return u?e=>(0,r.connect)(u)(e):r=>(0,t.multicast)(new e.Subject)(r)}exports.publish=u;

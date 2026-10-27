@@ -1,0 +1,33 @@
+.class public final Lz82;
+.super Ltrn;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ltrn;"
+    }
+.end annotation
+
+.annotation runtime Lixy;
+.end annotation
+
+
+# virtual methods
+.method public final serializer()Lkotlinx/serialization/KSerializer;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Lkotlinx/serialization/KSerializer;"
+        }
+    .end annotation
+
+    .line 1
+    sget-object p0, La92;->Serializer:Lz82;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method

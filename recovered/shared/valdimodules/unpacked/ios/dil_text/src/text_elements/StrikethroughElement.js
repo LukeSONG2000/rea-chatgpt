@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.StrikethroughElement=void 0;const e=require("../rendering/DILTextProperties"),r=["value"];exports.StrikethroughElement={properties:r,dilV2Properties:[],createsParagraph:e=>!1,pushStyle(r,t,o){const i=(0,e.readTextDecorationFromValue)(!0,void 0);return void 0!==i?(t.pushTextDecoration(i),1):0}};

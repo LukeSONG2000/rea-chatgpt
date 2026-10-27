@@ -1,0 +1,139 @@
+package com.withpersona.sdk2.inquiry.steps.ui.components;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+import com.statsig.androidsdk.StatsigRuntimeMutableOptionsKt;
+import com.withpersona.sdk2.inquiry.network.dto.JsonLogicBoolean;
+import defpackage.b79;
+import defpackage.cot;
+import defpackage.cya0;
+import defpackage.jc4;
+import defpackage.jr80;
+import defpackage.lnt;
+import defpackage.mts;
+import defpackage.p26;
+import defpackage.pty;
+import defpackage.qba0;
+import defpackage.sbr;
+import defpackage.w4m;
+import defpackage.zad0;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes7.dex */
+@Metadata(d1 = {"\u0000\u001c\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\n\b\u0087\b\u0018\u00002\u00020\u00012\b\u0012\u0004\u0012\u00020\u00000\u00022\u00020\u00032\u00020\u0004R(\u0010\u000e\u001a\u00020\u00058\u0016@\u0016X\u0097\u000e¢\u0006\u0018\n\u0004\b\u0006\u0010\u0007\u0012\u0004\b\f\u0010\r\u001a\u0004\b\b\u0010\t\"\u0004\b\n\u0010\u000b¨\u0006\u000f"}, d2 = {"Lcom/withpersona/sdk2/inquiry/steps/ui/components/InputConfirmationCodeComponent;", "Lzad0;", "Ljr80;", "Lw4m;", "Lsbr;", "Lp26;", "g", "Lp26;", "c", "()Lp26;", "setTextController", "(Lp26;)V", "getTextController$annotations", "()V", "textController", "ui-step-renderer_release"}, k = 1, mv = {2, 2, 0}, xi = 48)
+public final /* data */ class InputConfirmationCodeComponent implements zad0, jr80, w4m, sbr {
+    public static final Parcelable.Creator<InputConfirmationCodeComponent> CREATOR = new mts((byte) 0);
+    public final String a;
+    public final String b;
+    public final JsonLogicBoolean c;
+    public final JsonLogicBoolean d;
+    public final long e;
+    public final ArrayList f = new ArrayList();
+
+    /* JADX INFO: renamed from: g, reason: from kotlin metadata */
+    public p26 textController;
+    public final lnt h;
+
+    public InputConfirmationCodeComponent(String str, String str2, JsonLogicBoolean jsonLogicBoolean, JsonLogicBoolean jsonLogicBoolean2, long j) {
+        this.a = str;
+        this.b = str2;
+        this.c = jsonLogicBoolean;
+        this.d = jsonLogicBoolean2;
+        this.e = j;
+        this.textController = new p26(str2);
+        lnt lntVar = new lnt((byte) 15, false);
+        lntVar.b = new qba0((byte) 16);
+        this.h = lntVar;
+    }
+
+    @Override // defpackage.jr80
+    public final zad0 a(String str) {
+        InputConfirmationCodeComponent inputConfirmationCodeComponent = new InputConfirmationCodeComponent(this.a, str, this.c, this.d, System.currentTimeMillis());
+        inputConfirmationCodeComponent.textController = this.textController;
+        return inputConfirmationCodeComponent;
+    }
+
+    @Override // defpackage.jr80
+    /* JADX INFO: renamed from: c, reason: from getter */
+    public final p26 getTextController() {
+        return this.textController;
+    }
+
+    @Override // defpackage.sbr
+    public final List d() {
+        return this.f;
+    }
+
+    @Override // android.os.Parcelable
+    public final int describeContents() {
+        return 0;
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof InputConfirmationCodeComponent)) {
+            return false;
+        }
+        InputConfirmationCodeComponent inputConfirmationCodeComponent = (InputConfirmationCodeComponent) obj;
+        return b79.u(this.a, inputConfirmationCodeComponent.a) && b79.u(this.b, inputConfirmationCodeComponent.b) && b79.u(this.c, inputConfirmationCodeComponent.c) && b79.u(this.d, inputConfirmationCodeComponent.d) && this.e == inputConfirmationCodeComponent.e;
+    }
+
+    @Override // defpackage.w4m
+    /* JADX INFO: renamed from: getDisabled, reason: from getter */
+    public final JsonLogicBoolean getD() {
+        return this.d;
+    }
+
+    @Override // defpackage.sbr
+    /* JADX INFO: renamed from: getHidden, reason: from getter */
+    public final JsonLogicBoolean getC() {
+        return this.c;
+    }
+
+    @Override // defpackage.zad0
+    /* JADX INFO: renamed from: getName, reason: from getter */
+    public final String getA() {
+        return this.a;
+    }
+
+    public final int hashCode() {
+        int iE = cya0.e(this.a.hashCode() * 31, 31, this.b);
+        JsonLogicBoolean jsonLogicBoolean = this.c;
+        int iHashCode = (iE + (jsonLogicBoolean == null ? 0 : jsonLogicBoolean.hashCode())) * 31;
+        JsonLogicBoolean jsonLogicBoolean2 = this.d;
+        return Long.hashCode(this.e) + ((iHashCode + (jsonLogicBoolean2 != null ? jsonLogicBoolean2.hashCode() : 0)) * 31);
+    }
+
+    public final String toString() {
+        StringBuilder sbT = jc4.t("InputConfirmationCodeComponent(name=", this.a, ", value=", this.b, ", hidden=");
+        sbT.append(this.c);
+        sbT.append(", disabled=");
+        sbT.append(this.d);
+        sbT.append(", lastValueUpdateTs=");
+        return pty.k(this.e, ")", sbT);
+    }
+
+    @Override // defpackage.zad0
+    /* JADX INFO: renamed from: u0, reason: from getter */
+    public final long getE() {
+        return this.e;
+    }
+
+    @Override // android.os.Parcelable
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(this.a);
+        parcel.writeString(this.b);
+        parcel.writeParcelable(this.c, i);
+        parcel.writeParcelable(this.d, i);
+        parcel.writeLong(this.e);
+    }
+
+    @cot(ignore = StatsigRuntimeMutableOptionsKt.DEFAULT_LOGGING_ENABLED)
+    public static /* synthetic */ void getTextController$annotations() {
+    }
+}

@@ -1,0 +1,1 @@
+"use strict";function e(e,t){return Object.prototype.hasOwnProperty.call(e,t)?e[t]:void 0}Object.defineProperty(exports,"__esModule",{value:!0}),exports.getOwnProperty=void 0,exports.getOwnProperty=e;

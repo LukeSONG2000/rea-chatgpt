@@ -1,0 +1,850 @@
+.class public final synthetic Lfv5;
+.super Ljava/lang/Object;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+# interfaces
+.implements Lk3q;
+
+
+# static fields
+.field public static final a:Lfv5;
+
+.field private static final descriptor:Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 4
+
+    .line 1
+    new-instance v0, Lfv5;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    sput-object v0, Lfv5;->a:Lfv5;
+
+    .line 7
+    .line 8
+    new-instance v1, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 9
+    .line 10
+    const-string v2, "q2OFKOYK3EDu0pdURdbt1RJ8-FUgRbk7TUVV7E3Ec70="
+
+    .line 11
+    .line 12
+    const/4 v3, 0x6
+
+    .line 13
+    invoke-direct {v1, v2, v0, v3}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;-><init>(Ljava/lang/String;Lk3q;I)V
+
+    .line 14
+    .line 15
+    .line 16
+    const-string v0, "beaconId"
+
+    .line 17
+    .line 18
+    const/4 v2, 0x0
+
+    .line 19
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->k(Ljava/lang/String;Z)V
+
+    .line 20
+    .line 21
+    .line 22
+    const-string v0, "eventType"
+
+    .line 23
+    .line 24
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->k(Ljava/lang/String;Z)V
+
+    .line 25
+    .line 26
+    .line 27
+    const-string v0, "eventCtaId"
+
+    .line 28
+    .line 29
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->k(Ljava/lang/String;Z)V
+
+    .line 30
+    .line 31
+    .line 32
+    const-string v0, "conversationId"
+
+    .line 33
+    .line 34
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->k(Ljava/lang/String;Z)V
+
+    .line 35
+    .line 36
+    .line 37
+    const-string v0, "messageId"
+
+    .line 38
+    .line 39
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->k(Ljava/lang/String;Z)V
+
+    .line 40
+    .line 41
+    .line 42
+    const-string v0, "benefitId"
+
+    .line 43
+    .line 44
+    const/4 v2, 0x1
+
+    .line 45
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->k(Ljava/lang/String;Z)V
+
+    .line 46
+    .line 47
+    .line 48
+    sput-object v1, Lfv5;->descriptor:Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 49
+    .line 50
+    return-void
+.end method
+
+
+# virtual methods
+.method public final childSerializers()[Lkotlinx/serialization/KSerializer;
+    .locals 3
+
+    .line 1
+    sget-object p0, Lhv5;->g:[Lt8u;
+
+    .line 2
+    .line 3
+    const/4 v0, 0x6
+
+    .line 4
+    new-array v0, v0, [Lkotlinx/serialization/KSerializer;
+
+    .line 5
+    .line 6
+    const/4 v1, 0x0
+
+    .line 7
+    sget-object v2, Lpw5;->a:Lpw5;
+
+    .line 8
+    .line 9
+    aput-object v2, v0, v1
+
+    .line 10
+    .line 11
+    const/4 v1, 0x1
+
+    .line 12
+    aget-object p0, p0, v1
+
+    .line 13
+    .line 14
+    invoke-interface {p0}, Lt8u;->getValue()Ljava/lang/Object;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object p0
+
+    .line 18
+    aput-object p0, v0, v1
+
+    .line 19
+    .line 20
+    sget-object p0, Las5;->a:Las5;
+
+    .line 21
+    .line 22
+    invoke-static {p0}, Lbit;->H(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 23
+    .line 24
+    .line 25
+    move-result-object p0
+
+    .line 26
+    const/4 v1, 0x2
+
+    .line 27
+    aput-object p0, v0, v1
+
+    .line 28
+    .line 29
+    sget-object p0, Lk7h;->a:Lk7h;
+
+    .line 30
+    .line 31
+    invoke-static {p0}, Lbit;->H(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 32
+    .line 33
+    .line 34
+    move-result-object p0
+
+    .line 35
+    const/4 v1, 0x3
+
+    .line 36
+    aput-object p0, v0, v1
+
+    .line 37
+    .line 38
+    sget-object p0, Lknx;->a:Lknx;
+
+    .line 39
+    .line 40
+    invoke-static {p0}, Lbit;->H(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 41
+    .line 42
+    .line 43
+    move-result-object p0
+
+    .line 44
+    const/4 v1, 0x4
+
+    .line 45
+    aput-object p0, v0, v1
+
+    .line 46
+    .line 47
+    sget-object p0, Ljca0;->a:Ljca0;
+
+    .line 48
+    .line 49
+    invoke-static {p0}, Lbit;->H(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 50
+    .line 51
+    .line 52
+    move-result-object p0
+
+    .line 53
+    const/4 v1, 0x5
+
+    .line 54
+    aput-object p0, v0, v1
+
+    .line 55
+    .line 56
+    return-object v0
+.end method
+
+.method public final deserialize(Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+    .locals 13
+
+    .line 1
+    sget-object p0, Lfv5;->descriptor:Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 2
+    .line 3
+    invoke-interface {p1, p0}, Lkotlinx/serialization/encoding/Decoder;->e(Lkotlinx/serialization/descriptors/SerialDescriptor;)Ldbf;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p1
+
+    .line 7
+    sget-object v0, Lhv5;->g:[Lt8u;
+
+    .line 8
+    .line 9
+    const/4 v1, 0x1
+
+    .line 10
+    const/4 v2, 0x0
+
+    .line 11
+    const/4 v3, 0x0
+
+    .line 12
+    move v4, v1
+
+    .line 13
+    move v6, v2
+
+    .line 14
+    move-object v7, v3
+
+    .line 15
+    move-object v8, v7
+
+    .line 16
+    move-object v9, v8
+
+    .line 17
+    move-object v10, v9
+
+    .line 18
+    move-object v11, v10
+
+    .line 19
+    move-object v12, v11
+
+    .line 20
+    :goto_0
+    if-eqz v4, :cond_4
+
+    .line 21
+    .line 22
+    invoke-interface {p1, p0}, Ldbf;->q(Lkotlinx/serialization/descriptors/SerialDescriptor;)I
+
+    .line 23
+    .line 24
+    .line 25
+    move-result v5
+
+    .line 26
+    packed-switch v5, :pswitch_data_0
+
+    .line 27
+    .line 28
+    .line 29
+    invoke-static {v5}, Luge;->e(I)V
+
+    .line 30
+    .line 31
+    .line 32
+    return-object v3
+
+    .line 33
+    :pswitch_0
+    const/4 v5, 0x5
+
+    .line 34
+    sget-object v12, Ljca0;->a:Ljca0;
+
+    .line 35
+    .line 36
+    invoke-interface {p1, p0, v5, v12}, Ldbf;->p(Lkotlinx/serialization/descriptors/SerialDescriptor;ILqmk;)Ljava/lang/Object;
+
+    .line 37
+    .line 38
+    .line 39
+    move-result-object v5
+
+    .line 40
+    move-object v12, v5
+
+    .line 41
+    check-cast v12, Ljava/lang/String;
+
+    .line 42
+    .line 43
+    or-int/lit8 v6, v6, 0x20
+
+    .line 44
+    .line 45
+    goto :goto_0
+
+    .line 46
+    :pswitch_1
+    sget-object v5, Lknx;->a:Lknx;
+
+    .line 47
+    .line 48
+    const/4 v11, 0x4
+
+    .line 49
+    invoke-interface {p1, p0, v11, v5}, Ldbf;->p(Lkotlinx/serialization/descriptors/SerialDescriptor;ILqmk;)Ljava/lang/Object;
+
+    .line 50
+    .line 51
+    .line 52
+    move-result-object v5
+
+    .line 53
+    check-cast v5, Lmnx;
+
+    .line 54
+    .line 55
+    if-eqz v5, :cond_0
+
+    .line 56
+    .line 57
+    iget-object v5, v5, Lmnx;->a:Ljava/lang/String;
+
+    .line 58
+    .line 59
+    move-object v11, v5
+
+    .line 60
+    goto :goto_1
+
+    .line 61
+    :cond_0
+    move-object v11, v3
+
+    .line 62
+    :goto_1
+    or-int/lit8 v6, v6, 0x10
+
+    .line 63
+    .line 64
+    goto :goto_0
+
+    .line 65
+    :pswitch_2
+    const/4 v5, 0x3
+
+    .line 66
+    sget-object v10, Lk7h;->a:Lk7h;
+
+    .line 67
+    .line 68
+    invoke-interface {p1, p0, v5, v10}, Ldbf;->p(Lkotlinx/serialization/descriptors/SerialDescriptor;ILqmk;)Ljava/lang/Object;
+
+    .line 69
+    .line 70
+    .line 71
+    move-result-object v5
+
+    .line 72
+    check-cast v5, Lm7h;
+
+    .line 73
+    .line 74
+    if-eqz v5, :cond_1
+
+    .line 75
+    .line 76
+    iget-object v5, v5, Lm7h;->a:Ljava/lang/String;
+
+    .line 77
+    .line 78
+    move-object v10, v5
+
+    .line 79
+    goto :goto_2
+
+    .line 80
+    :cond_1
+    move-object v10, v3
+
+    .line 81
+    :goto_2
+    or-int/lit8 v6, v6, 0x8
+
+    .line 82
+    .line 83
+    goto :goto_0
+
+    .line 84
+    :pswitch_3
+    sget-object v5, Las5;->a:Las5;
+
+    .line 85
+    .line 86
+    const/4 v9, 0x2
+
+    .line 87
+    invoke-interface {p1, p0, v9, v5}, Ldbf;->p(Lkotlinx/serialization/descriptors/SerialDescriptor;ILqmk;)Ljava/lang/Object;
+
+    .line 88
+    .line 89
+    .line 90
+    move-result-object v5
+
+    .line 91
+    check-cast v5, Lcs5;
+
+    .line 92
+    .line 93
+    if-eqz v5, :cond_2
+
+    .line 94
+    .line 95
+    iget-object v5, v5, Lcs5;->a:Ljava/lang/String;
+
+    .line 96
+    .line 97
+    move-object v9, v5
+
+    .line 98
+    goto :goto_3
+
+    .line 99
+    :cond_2
+    move-object v9, v3
+
+    .line 100
+    :goto_3
+    or-int/lit8 v6, v6, 0x4
+
+    .line 101
+    .line 102
+    goto :goto_0
+
+    .line 103
+    :pswitch_4
+    aget-object v5, v0, v1
+
+    .line 104
+    .line 105
+    invoke-interface {v5}, Lt8u;->getValue()Ljava/lang/Object;
+
+    .line 106
+    .line 107
+    .line 108
+    move-result-object v5
+
+    .line 109
+    check-cast v5, Lqmk;
+
+    .line 110
+    .line 111
+    invoke-interface {p1, p0, v1, v5}, Ldbf;->m(Lkotlinx/serialization/descriptors/SerialDescriptor;ILqmk;)Ljava/lang/Object;
+
+    .line 112
+    .line 113
+    .line 114
+    move-result-object v5
+
+    .line 115
+    move-object v8, v5
+
+    .line 116
+    check-cast v8, Lmv5;
+
+    .line 117
+    .line 118
+    or-int/lit8 v6, v6, 0x2
+
+    .line 119
+    .line 120
+    goto :goto_0
+
+    .line 121
+    :pswitch_5
+    sget-object v5, Lpw5;->a:Lpw5;
+
+    .line 122
+    .line 123
+    invoke-interface {p1, p0, v2, v5}, Ldbf;->m(Lkotlinx/serialization/descriptors/SerialDescriptor;ILqmk;)Ljava/lang/Object;
+
+    .line 124
+    .line 125
+    .line 126
+    move-result-object v5
+
+    .line 127
+    check-cast v5, Lrw5;
+
+    .line 128
+    .line 129
+    if-eqz v5, :cond_3
+
+    .line 130
+    .line 131
+    iget-object v5, v5, Lrw5;->a:Ljava/lang/String;
+
+    .line 132
+    .line 133
+    move-object v7, v5
+
+    .line 134
+    goto :goto_4
+
+    .line 135
+    :cond_3
+    move-object v7, v3
+
+    .line 136
+    :goto_4
+    or-int/lit8 v6, v6, 0x1
+
+    .line 137
+    .line 138
+    goto :goto_0
+
+    .line 139
+    :pswitch_6
+    move v4, v2
+
+    .line 140
+    goto :goto_0
+
+    .line 141
+    :cond_4
+    invoke-interface {p1, p0}, Ldbf;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 142
+    .line 143
+    .line 144
+    new-instance v5, Lhv5;
+
+    .line 145
+    .line 146
+    invoke-direct/range {v5 .. v12}, Lhv5;-><init>(ILjava/lang/String;Lmv5;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 147
+    .line 148
+    .line 149
+    return-object v5
+
+    .line 150
+    nop
+
+    .line 151
+    :pswitch_data_0
+    .packed-switch -0x1
+        :pswitch_6
+        :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+    .locals 0
+
+    .line 1
+    sget-object p0, Lfv5;->descriptor:Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final serialize(Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+    .locals 5
+
+    .line 1
+    check-cast p2, Lhv5;
+
+    .line 2
+    .line 3
+    sget-object p0, Lfv5;->descriptor:Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 4
+    .line 5
+    invoke-interface {p1, p0}, Lkotlinx/serialization/encoding/Encoder;->e(Lkotlinx/serialization/descriptors/SerialDescriptor;)Lebf;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object p1
+
+    .line 9
+    sget-object v0, Lhv5;->g:[Lt8u;
+
+    .line 10
+    .line 11
+    sget-object v1, Lpw5;->a:Lpw5;
+
+    .line 12
+    .line 13
+    iget-object v2, p2, Lhv5;->a:Ljava/lang/String;
+
+    .line 14
+    .line 15
+    iget-object v3, p2, Lhv5;->f:Ljava/lang/String;
+
+    .line 16
+    .line 17
+    new-instance v4, Lrw5;
+
+    .line 18
+    .line 19
+    invoke-direct {v4, v2}, Lrw5;-><init>(Ljava/lang/String;)V
+
+    .line 20
+    .line 21
+    .line 22
+    const/4 v2, 0x0
+
+    .line 23
+    invoke-interface {p1, p0, v2, v1, v4}, Lebf;->I(Lkotlinx/serialization/descriptors/SerialDescriptor;ILfi70;Ljava/lang/Object;)V
+
+    .line 24
+    .line 25
+    .line 26
+    const/4 v1, 0x1
+
+    .line 27
+    aget-object v0, v0, v1
+
+    .line 28
+    .line 29
+    invoke-interface {v0}, Lt8u;->getValue()Ljava/lang/Object;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v0
+
+    .line 33
+    check-cast v0, Lfi70;
+
+    .line 34
+    .line 35
+    iget-object v2, p2, Lhv5;->b:Lmv5;
+
+    .line 36
+    .line 37
+    invoke-interface {p1, p0, v1, v0, v2}, Lebf;->I(Lkotlinx/serialization/descriptors/SerialDescriptor;ILfi70;Ljava/lang/Object;)V
+
+    .line 38
+    .line 39
+    .line 40
+    sget-object v0, Las5;->a:Las5;
+
+    .line 41
+    .line 42
+    iget-object v1, p2, Lhv5;->c:Ljava/lang/String;
+
+    .line 43
+    .line 44
+    const/4 v2, 0x0
+
+    .line 45
+    if-eqz v1, :cond_0
+
+    .line 46
+    .line 47
+    new-instance v4, Lcs5;
+
+    .line 48
+    .line 49
+    invoke-direct {v4, v1}, Lcs5;-><init>(Ljava/lang/String;)V
+
+    .line 50
+    .line 51
+    .line 52
+    goto :goto_0
+
+    .line 53
+    :cond_0
+    move-object v4, v2
+
+    .line 54
+    :goto_0
+    const/4 v1, 0x2
+
+    .line 55
+    invoke-interface {p1, p0, v1, v0, v4}, Lebf;->u(Lkotlinx/serialization/descriptors/SerialDescriptor;ILfi70;Ljava/lang/Object;)V
+
+    .line 56
+    .line 57
+    .line 58
+    sget-object v0, Lk7h;->a:Lk7h;
+
+    .line 59
+    .line 60
+    iget-object v1, p2, Lhv5;->d:Ljava/lang/String;
+
+    .line 61
+    .line 62
+    if-eqz v1, :cond_1
+
+    .line 63
+    .line 64
+    new-instance v4, Lm7h;
+
+    .line 65
+    .line 66
+    invoke-direct {v4, v1}, Lm7h;-><init>(Ljava/lang/String;)V
+
+    .line 67
+    .line 68
+    .line 69
+    goto :goto_1
+
+    .line 70
+    :cond_1
+    move-object v4, v2
+
+    .line 71
+    :goto_1
+    const/4 v1, 0x3
+
+    .line 72
+    invoke-interface {p1, p0, v1, v0, v4}, Lebf;->u(Lkotlinx/serialization/descriptors/SerialDescriptor;ILfi70;Ljava/lang/Object;)V
+
+    .line 73
+    .line 74
+    .line 75
+    sget-object v0, Lknx;->a:Lknx;
+
+    .line 76
+    .line 77
+    iget-object p2, p2, Lhv5;->e:Ljava/lang/String;
+
+    .line 78
+    .line 79
+    if-eqz p2, :cond_2
+
+    .line 80
+    .line 81
+    new-instance v2, Lmnx;
+
+    .line 82
+    .line 83
+    invoke-direct {v2, p2}, Lmnx;-><init>(Ljava/lang/String;)V
+
+    .line 84
+    .line 85
+    .line 86
+    :cond_2
+    const/4 p2, 0x4
+
+    .line 87
+    invoke-interface {p1, p0, p2, v0, v2}, Lebf;->u(Lkotlinx/serialization/descriptors/SerialDescriptor;ILfi70;Ljava/lang/Object;)V
+
+    .line 88
+    .line 89
+    .line 90
+    invoke-interface {p1}, Lebf;->O()Z
+
+    .line 91
+    .line 92
+    .line 93
+    move-result p2
+
+    .line 94
+    if-eqz p2, :cond_3
+
+    .line 95
+    .line 96
+    goto :goto_2
+
+    .line 97
+    :cond_3
+    if-eqz v3, :cond_4
+
+    .line 98
+    .line 99
+    :goto_2
+    sget-object p2, Ljca0;->a:Ljca0;
+
+    .line 100
+    .line 101
+    const/4 v0, 0x5
+
+    .line 102
+    invoke-interface {p1, p0, v0, p2, v3}, Lebf;->u(Lkotlinx/serialization/descriptors/SerialDescriptor;ILfi70;Ljava/lang/Object;)V
+
+    .line 103
+    .line 104
+    .line 105
+    :cond_4
+    invoke-interface {p1}, Lebf;->k()V
+
+    .line 106
+    .line 107
+    .line 108
+    return-void
+.end method

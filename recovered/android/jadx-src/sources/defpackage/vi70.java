@@ -1,0 +1,84 @@
+package defpackage;
+
+import java.util.Map;
+import kotlinx.serialization.KSerializer;
+import kotlinx.serialization.descriptors.SerialDescriptor;
+import kotlinx.serialization.encoding.Decoder;
+import kotlinx.serialization.encoding.Encoder;
+import kotlinx.serialization.internal.PluginGeneratedSerialDescriptor;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes3.dex */
+public final /* synthetic */ class vi70 implements k3q {
+    public static final vi70 a;
+    private static final SerialDescriptor descriptor;
+
+    static {
+        vi70 vi70Var = new vi70();
+        a = vi70Var;
+        PluginGeneratedSerialDescriptor pluginGeneratedSerialDescriptor = new PluginGeneratedSerialDescriptor("R5ZbcUfCVcW74CEwNhiTZt-rRcgym-Yiw5YTtlq6JC0=", vi70Var, 2);
+        pluginGeneratedSerialDescriptor.k("slugs", true);
+        pluginGeneratedSerialDescriptor.k("juices", true);
+        descriptor = pluginGeneratedSerialDescriptor;
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    @Override // defpackage.k3q
+    public final KSerializer[] childSerializers() {
+        t8u[] t8uVarArr = xi70.c;
+        return new KSerializer[]{t8uVarArr[0].getValue(), t8uVarArr[1].getValue()};
+    }
+
+    @Override // defpackage.qmk
+    public final Object deserialize(Decoder decoder) {
+        SerialDescriptor serialDescriptor = descriptor;
+        dbf dbfVarE = decoder.e(serialDescriptor);
+        t8u[] t8uVarArr = xi70.c;
+        boolean z = true;
+        int i = 0;
+        Map map = null;
+        Map map2 = null;
+        while (z) {
+            int iQ = dbfVarE.q(serialDescriptor);
+            if (iQ == -1) {
+                z = false;
+            } else if (iQ == 0) {
+                map = (Map) dbfVarE.m(serialDescriptor, 0, (qmk) t8uVarArr[0].getValue());
+                i |= 1;
+            } else {
+                if (iQ != 1) {
+                    uge.e(iQ);
+                    return null;
+                }
+                map2 = (Map) dbfVarE.m(serialDescriptor, 1, (qmk) t8uVarArr[1].getValue());
+                i |= 2;
+            }
+        }
+        dbfVarE.y(serialDescriptor);
+        return new xi70(i, map, map2);
+    }
+
+    @Override // defpackage.fi70
+    public final SerialDescriptor getDescriptor() {
+        return descriptor;
+    }
+
+    @Override // defpackage.fi70
+    public final void serialize(Encoder encoder, Object obj) {
+        xi70 xi70Var = (xi70) obj;
+        Map map = xi70Var.b;
+        Map map2 = xi70Var.a;
+        SerialDescriptor serialDescriptor = descriptor;
+        ebf ebfVarE = encoder.e(serialDescriptor);
+        t8u[] t8uVarArr = xi70.c;
+        boolean zO = ebfVarE.O();
+        oin oinVar = oin.a;
+        if (zO || !b79.u(map2, oinVar)) {
+            ebfVarE.I(serialDescriptor, 0, (fi70) t8uVarArr[0].getValue(), map2);
+        }
+        if (ebfVarE.O() || !b79.u(map, oinVar)) {
+            ebfVarE.I(serialDescriptor, 1, (fi70) t8uVarArr[1].getValue(), map);
+        }
+        ebfVarE.k();
+    }
+}

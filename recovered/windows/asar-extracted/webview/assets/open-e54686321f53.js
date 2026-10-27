@@ -1,0 +1,1 @@
+import{AM as e,jM as t}from"./app-primary-844e405f2b90.js";t();export{e as createAndOpenPage};

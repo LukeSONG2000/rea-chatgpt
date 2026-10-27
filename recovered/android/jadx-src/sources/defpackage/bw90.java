@@ -1,0 +1,81 @@
+package defpackage;
+
+import android.graphics.Color;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes3.dex */
+public final class bw90 {
+    public final String a;
+    public final int b;
+    public final Integer c;
+    public final Integer d;
+    public final float e;
+    public final boolean f;
+    public final boolean g;
+    public final boolean h;
+    public final boolean i;
+    public final int j;
+
+    public bw90(String str, int i, Integer num, Integer num2, float f, boolean z, boolean z2, boolean z3, boolean z4, int i2) {
+        this.a = str;
+        this.b = i;
+        this.c = num;
+        this.d = num2;
+        this.e = f;
+        this.f = z;
+        this.g = z2;
+        this.h = z3;
+        this.i = z4;
+        this.j = i2;
+    }
+
+    public static int a(String str) {
+        boolean z;
+        try {
+            int i = Integer.parseInt(str.trim());
+            switch (i) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    z = true;
+                    break;
+                default:
+                    z = false;
+                    break;
+            }
+            if (z) {
+                return i;
+            }
+        } catch (NumberFormatException unused) {
+        }
+        or6.m("Ignoring unknown alignment: ", str, "SsaStyle");
+        return -1;
+    }
+
+    public static boolean b(String str) {
+        try {
+            int i = Integer.parseInt(str);
+            return i == 1 || i == -1;
+        } catch (NumberFormatException e) {
+            obi.L(e, "SsaStyle", "Failed to parse boolean value: '" + str + "'");
+            return false;
+        }
+    }
+
+    public static Integer c(String str) {
+        try {
+            long j = str.startsWith("&H") ? Long.parseLong(str.substring(2), 16) : Long.parseLong(str);
+            rpt.I(j <= 4294967295L);
+            return Integer.valueOf(Color.argb(kit.H(((j >> 24) & 255) ^ 255), kit.H(j & 255), kit.H((j >> 8) & 255), kit.H((j >> 16) & 255)));
+        } catch (IllegalArgumentException e) {
+            obi.L(e, "SsaStyle", "Failed to parse color expression: '" + str + "'");
+            return null;
+        }
+    }
+}

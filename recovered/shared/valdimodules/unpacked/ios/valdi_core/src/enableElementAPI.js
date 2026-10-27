@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.enableElementAPI=void 0;const e=require("./CompilerIntrinsics"),t=require("./ValdiRuntimeProvider");function r(r){if(!(0,e.isVersionAtLeast)(225))throw new Error("This host does not support the native Element API");(0,t.getValdiRuntime)().enableElementAPI(r)}exports.enableElementAPI=r;

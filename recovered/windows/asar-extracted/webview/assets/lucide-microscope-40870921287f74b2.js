@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-microscope-4bb7e91fd3652f1d.js";e();export{t as default};

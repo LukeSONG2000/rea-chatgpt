@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,t}from"./page-sharing-eed4cb7fd34a.js";e();export{t as PageSharingContent};

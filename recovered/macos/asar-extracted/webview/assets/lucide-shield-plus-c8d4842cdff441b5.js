@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-shield-plus-f6c42169fc448fba.js";e();export{t as default};

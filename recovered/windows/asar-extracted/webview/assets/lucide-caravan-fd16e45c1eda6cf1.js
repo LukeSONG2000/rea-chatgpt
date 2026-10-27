@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-caravan-7217e8d101babeb6.js";e();export{t as default};

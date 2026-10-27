@@ -1,0 +1,1 @@
+import{C as e,D as t,E as n,O as r,S as i,T as a,b as o,w as s,x as c}from"./state-dbd587b02c86.js";a();export{o as collectionTemplatesVisible$,c as dismissGettingStarted,i as dismissGettingStartedItem,e as gettingStartedItems$,s as gettingStartedLayoutKey$,n as onboardingPersonalizedPages$,t as provisionSpaceWelcomePage,r as spaceOnboardingActive$};

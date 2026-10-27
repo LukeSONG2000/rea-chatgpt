@@ -1,0 +1,96 @@
+# scanned_functions=24841 hits=2
+=== FUN_007717a8 @ 007717a8 ===
+
+void FUN_007717a8(undefined8 param_1,long param_2,long param_3)
+
+{
+  long lVar1;
+  ulong uVar2;
+  undefined8 uVar3;
+  undefined1 auVar4 [16];
+  undefined8 local_a8;
+  undefined1 auStack_a0 [24];
+  undefined1 auStack_88 [8];
+  undefined1 auStack_80 [8];
+  long local_78;
+  ulong uStack_70;
+  long local_68;
+  undefined8 local_60;
+  undefined8 uStack_58;
+  ulong local_50;
+  undefined8 uStack_48;
+  undefined1 auStack_38 [8];
+  uint *local_30;
+  long local_28;
+  
+  lVar1 = tpidr_el0;
+  local_28 = *(long *)(lVar1 + 0x28);
+  local_78 = param_2;
+  uStack_70 = param_2 + param_3;
+  local_68 = param_2;
+  FUN_00771964(auStack_38,&local_78);
+  uVar2 = FUN_0078c9d0(auStack_38);
+  if ((uVar2 & 1) == 0) {
+                    /* try { // try from 00771824 to 00771827 has its CatchHandler @ 00771940 */
+    FUN_0077196c();
+  }
+  else {
+    FUN_00348dd8(auStack_38);
+    if (*local_30 != 0x100c633) {
+      uVar3 = FUN_0078e260();
+      local_50 = (ulong)*local_30;
+      local_60 = 0x100c633;
+      uStack_58 = 0;
+      uStack_48 = 0;
+                    /* try { // try from 0077185c to 00771877 has its CatchHandler @ 0077193c */
+      auVar4 = FUN_0033f160("magic is incorrect, expected {} got {}");
+      FUN_007a2f70(auStack_a0,auVar4._0_8_,auVar4._8_8_,0x22,&local_60);
+      FUN_0078e158(auStack_88,uVar3,auStack_a0);
+                    /* try { // try from 00771888 to 00771893 has its CatchHandler @ 00771924 */
+      FUN_007854f0(auStack_80,auStack_88);
+      FUN_00335aa0(param_1,auStack_80);
+      FUN_00335654(auStack_80);
+      FUN_00335e4c(auStack_88);
+      FUN_00387370(auStack_a0);
+      goto LAB_007718e8;
+    }
+    if (local_68 + (ulong)local_30[1] <= (ulong)(param_2 + param_3)) {
+      local_a8 = 0;
+                    /* try { // try from 007718c0 to 007718cb has its CatchHandler @ 00771910 */
+      FUN_0078333c(&local_60,&local_a8);
+      FUN_00339744(param_1,&local_60);
+      FUN_005e71f8(&local_60);
+      FUN_005e71f8(&local_a8);
+      goto LAB_007718e8;
+    }
+                    /* try { // try from 0077181c to 0077181f has its CatchHandler @ 00771920 */
+    FUN_0077196c();
+  }
+  FUN_005f4d3c(param_1,&DAT_00822458);
+LAB_007718e8:
+  FUN_0033e914(auStack_38);
+  if (*(long *)(lVar1 + 0x28) != local_28) {
+                    /* WARNING: Subroutine does not return */
+    __stack_chk_fail();
+  }
+  return;
+}
+
+
+=== FUN_007719f4 @ 007719f4 ===
+
+long FUN_007719f4(long param_1,long param_2,long param_3)
+
+{
+  undefined4 local_28;
+  undefined4 uStack_24;
+  
+  uStack_24 = (undefined4)param_2;
+  local_28 = 0x100c633;
+  FUN_007830f0(param_3,param_2 + 8 + *(long *)(param_3 + 0x10));
+  FUN_00783180(param_3,&local_28,(long)register0x00000008 + -0x20);
+  FUN_00783180(param_3,param_1,param_1 + param_2);
+  return param_2 + 8;
+}
+
+

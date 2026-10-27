@@ -1,0 +1,1 @@
+import{n as e,t}from"./chevrons-left-right-FqTHJjiM-4f32573880c1.js";e();export{t as default};

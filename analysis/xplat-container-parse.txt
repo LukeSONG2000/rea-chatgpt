@@ -1,0 +1,40 @@
+
+# xrefs to 007717a8
+  from 00256bd8 in ?
+  from 0032dc04 in ?
+  from 0021ed3c in ?
+  from 0021ed3e in ?
+  from 0021ed60 in ?
+  from 007708f0 in FUN_007708b0 @ 007708b0
+
+===== DECOMPILE FUN_0078333c @ 0078333c =====
+
+void FUN_0078333c(undefined8 *param_1,undefined8 *param_2,undefined8 param_3,undefined8 param_4)
+
+{
+  *param_1 = *param_2;
+  *param_2 = 0;
+  param_1[1] = param_3;
+  param_1[2] = param_4;
+  return;
+}
+
+
+
+===== DECOMPILE FUN_00339744 @ 00339744 =====
+
+void FUN_00339744(long param_1,undefined8 *param_2)
+
+{
+  undefined8 uVar1;
+  
+  FUN_005fc250(param_1,1);
+  *(undefined8 *)(param_1 + 8) = *param_2;
+  uVar1 = param_2[1];
+  *param_2 = 0;
+  *(undefined8 *)(param_1 + 0x18) = param_2[2];
+  *(undefined8 *)(param_1 + 0x10) = uVar1;
+  return;
+}
+
+

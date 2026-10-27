@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.publishLast=void 0;const e=require("../AsyncSubject"),t=require("../observable/ConnectableObservable");function r(){return r=>{const s=new e.AsyncSubject;return new t.ConnectableObservable(r,()=>s)}}exports.publishLast=r;

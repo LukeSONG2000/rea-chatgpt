@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-tent-1d3f53b2c51580e8.js";e();export{t as default};

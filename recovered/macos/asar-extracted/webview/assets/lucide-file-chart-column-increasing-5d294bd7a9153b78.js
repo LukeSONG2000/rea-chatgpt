@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-file-chart-column-increasing-a9614210e7f81c78.js";e();export{t as default};

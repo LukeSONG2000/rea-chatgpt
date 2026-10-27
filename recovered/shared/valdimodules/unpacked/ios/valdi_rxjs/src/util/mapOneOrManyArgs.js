@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.mapOneOrManyArgs=void 0;const r=require("../operators/map"),{isArray:e}=Array;function t(r,t){return e(t)?r(...t):r(t)}function n(e){return(0,r.map)(r=>t(e,r))}exports.mapOneOrManyArgs=n;

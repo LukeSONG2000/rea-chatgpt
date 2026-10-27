@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Bst as t,Vst as n,kCt as r,tCt as i,xwt as a}from"./app-shared-2cae01273bae.js";var o,s,c;function l(){return(l=e((()=>{i(),n(),o=a(`OwnerFlowScope`,{parent:t,key:({identity:e,checkoutSessionId:t,navigationKey:n})=>JSON.stringify([e.userId,e.workspaceId,t,n])}),s=r(o,()=>({acknowledged:!1,reported:!1})),c=r(o,()=>({}))})))()}export{c as i,l as n,s as r,o as t};
+//# sourceMappingURL=scope-58162297b725.js.map

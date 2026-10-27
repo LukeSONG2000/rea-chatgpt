@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Izt as t,MIt as n}from"./app-shared-2cae01273bae.js";function r(e){let t=a.safeParse(e.stale_time_ms);return t.success?t.data:null}var i,a;function o(){return(o=e((()=>{n(),i=`1205470978`,a=t().int().nonnegative().max(2**31-1)})))()}export{r as n,o as r,i as t};
+//# sourceMappingURL=ambient-suggestions-stale-time-759d36fb01a2.js.map

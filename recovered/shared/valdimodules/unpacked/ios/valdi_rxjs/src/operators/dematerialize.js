@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.dematerialize=void 0;const e=require("../Notification"),r=require("../util/lift"),i=require("./OperatorSubscriber");function t(){return(0,r.operate)((r,t)=>{r.subscribe((0,i.createOperatorSubscriber)(t,r=>(0,e.observeNotification)(r,t)))})}exports.dematerialize=t;

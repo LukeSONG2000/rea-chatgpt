@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.registerSemanticColors=void 0;const e=require("valdi_core/src/ModuleLoaderGlobal");function o(){(0,e.getModuleLoader)(module).onModuleRegistered("DeviceBridge",()=>{Promise.resolve().then(()=>require("./InitSemanticColors")).then(e=>{e.initializeSemanticColors()})})}exports.registerSemanticColors=o;

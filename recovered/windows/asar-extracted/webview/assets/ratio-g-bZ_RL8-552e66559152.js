@@ -1,0 +1,1 @@
+import{n as e,t}from"./ratio-g-bZ_RL8-56d2b64a4ea2.js";e();export{t as default};

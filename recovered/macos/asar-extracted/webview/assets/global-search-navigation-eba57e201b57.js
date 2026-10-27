@@ -1,0 +1,1 @@
+import{n as e,t}from"./global-search-navigation-f483542add7c.js";t();export{e as openGlobalSearchSpacePage};

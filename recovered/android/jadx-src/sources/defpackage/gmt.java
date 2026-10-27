@@ -1,0 +1,49 @@
+package defpackage;
+
+import java.util.Collections;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes6.dex */
+public abstract class gmt {
+    public static final jzt a;
+
+    static {
+        z2b0 z2b0Var = z2b0.G1;
+        yin yinVar = yin.a;
+        n450 n450Var = new n450("\\u002f\\u002a\\u002a(?!\\u002f)[\\s\\S]*?(?:\\u002a\\u002f|$)", yinVar);
+        bzq bzqVar = new bzq("jsdoc");
+        nin ninVar = nin.a;
+        d360 d360Var = new d360(z2b0Var, Collections.singletonList(new pc10(n450Var, false, true, ninVar, bzqVar)));
+        z2b0 z2b0Var2 = z2b0.j1;
+        d360 d360Var2 = new d360(z2b0Var2, gee.O(new pc10(new n450("(^|[^\\u005c])\\u002f\\u002a[\\s\\S]*?(?:\\u002a\\u002f|$)", yinVar), true, true, ninVar, null), new pc10(new n450("(^|[^\\u005c:])\\u002f\\u002f.*", yinVar), true, true, ninVar, null)));
+        d360 d360Var3 = new d360(z2b0.p2, Collections.singletonList(new pc10(new n450("^#!.*", yinVar), false, true, Collections.singletonList(z2b0Var2), null)));
+        d360 d360Var4 = new d360(z2b0.M4, Collections.singletonList(new pc10(new n450("`(?:\\u005c[\\s\\S]|\\u0024\\u007b(?:[^{}]|\\u007b(?:[^{}]|\\u007b[^{}]*\\u007d)*\\u007d)+\\u007d|[^\\u005c`$]|\\u0024(?!\\u007b))*`", yinVar), false, true, ninVar, new azq("g100"))));
+        z2b0 z2b0Var3 = z2b0.A4;
+        q450 q450Var = q450.MULTILINE;
+        n450 n450Var2 = new n450("((?:^|[,{])[ \\t]*)([\"'])(?:\\u005c(?:\\r\\n|[\\s\\S])|(?!\\2)[^\\u005c\\r\\n])*\\2(?=\\s*:)", Collections.singleton(q450Var));
+        z2b0 z2b0Var4 = z2b0.K3;
+        d360 d360Var5 = new d360(z2b0Var3, Collections.singletonList(new pc10(n450Var2, true, true, Collections.singletonList(z2b0Var4), null)));
+        z2b0 z2b0Var5 = z2b0.x4;
+        d360 d360Var6 = new d360(z2b0Var5, Collections.singletonList(new pc10(new n450("([\"'])(?:\\u005c(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\u005c\\r\\n])*\\1", yinVar), false, true, ninVar, null)));
+        d360 d360Var7 = new d360(z2b0.V0, gee.O(new pc10(new n450("(\\b(?:class|extends|implements|instanceof|interface|new)\\s+)[\\w.\\u005c]+", yinVar), true, false, ninVar, new azq("g102")), new pc10(new n450("(^|[^$\\w\\u00a0-\\uFFFF])(?!\\s)[_$A-Z\\u00a0-\\uFFFF](?:(?!\\s)[$\\w\\u00a0-\\uFFFF])*(?=\\u002e(?:constructor|prototype))", yinVar), true, false, ninVar, null)));
+        d360 d360Var8 = new d360(z2b0.V3, Collections.singletonList(new pc10(new n450("((?:^|[^$\\w\\u00a0-\\uFFFF.\"'\\u005d)\\s]|\\b(?:return|yield))\\s*)\\u002f(?:(?:\\u005b(?:[^\\u005d\\u005c\\r\\n]|\\u005c.)*\\u005d|\\u005c.|[^/\\u005c\\u005b\\r\\n])+\\u002f[dgimyus]{0,7}|(?:\\u005b(?:[^\\u005b\\u005d\\u005c\\r\\n]|\\u005c.|\\u005b(?:[^\\u005b\\u005d\\u005c\\r\\n]|\\u005c.|\\u005b(?:[^\\u005b\\u005d\\u005c\\r\\n]|\\u005c.)*\\u005d)*\\u005d)*\\u005d|\\u005c.|[^/\\u005c\\u005b\\r\\n])+\\u002f[dgimyus]{0,7}v[dgimyus]{0,7})(?=(?:\\s|\\u002f\\u002a(?:[^*]|\\u002a(?!\\u002f))*\\u002a\\u002f)*(?:$|[\\r\\n,.;:})\\u005d]|\\u002f\\u002f))", yinVar), true, true, ninVar, new azq("g103"))));
+        z2b0 z2b0Var6 = z2b0.h2;
+        n450 n450Var3 = new n450("#?(?!\\s)[_$a-zA-Z\\u00a0-\\uFFFF](?:(?!\\s)[$\\w\\u00a0-\\uFFFF])*(?=\\s*[=:]\\s*(?:async\\s*)?(?:\\bfunction\\b|(?:\\u0028(?:[^()]|\\u0028[^()]*\\u0029)*\\u0029|(?!\\s)[_$a-zA-Z\\u00a0-\\uFFFF](?:(?!\\s)[$\\w\\u00a0-\\uFFFF])*)\\s*=>))", yinVar);
+        z2b0 z2b0Var7 = z2b0.e2;
+        d360 d360Var9 = new d360(z2b0Var6, Collections.singletonList(new pc10(n450Var3, false, false, Collections.singletonList(z2b0Var7), null)));
+        d360 d360Var10 = new d360(z2b0.B3, gee.O(new pc10(new n450("(function(?:\\s+(?!\\s)[_$a-zA-Z\\u00a0-\\uFFFF](?:(?!\\s)[$\\w\\u00a0-\\uFFFF])*)?\\s*\\u0028\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\u0028[^()]*\\u0029)+(?=\\s*\\u0029)", yinVar), true, false, ninVar, new bzq("javascript")), new pc10(new n450("(^|[^$\\w\\u00a0-\\uFFFF])(?!\\s)[_$a-z\\u00a0-\\uFFFF](?:(?!\\s)[$\\w\\u00a0-\\uFFFF])*(?=\\s*=>)", Collections.singleton(q450.IGNORE_CASE)), true, false, ninVar, new bzq("javascript")), new pc10(new n450("(\\u0028\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\u0028[^()]*\\u0029)+(?=\\s*\\u0029\\s*=>)", yinVar), true, false, ninVar, new bzq("javascript")), new pc10(new n450("((?:\\b|\\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\\w\\u00a0-\\uFFFF]))(?:(?!\\s)[_$a-zA-Z\\u00a0-\\uFFFF](?:(?!\\s)[$\\w\\u00a0-\\uFFFF])*\\s*)\\u0028\\s*|\\u005d\\s*\\u0028\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\u0028[^()]*\\u0029)+(?=\\s*\\u0029\\s*\\u007b)", yinVar), true, false, ninVar, new bzq("javascript"))));
+        d360 d360Var11 = new d360(z2b0.k1, Collections.singletonList(new pc10(new n450("\\b[A-Z](?:[A-Z_]|\\dx?)*\\b", yinVar), false, false, ninVar, null)));
+        z2b0 z2b0Var8 = z2b0.N2;
+        pc10 pc10Var = new pc10(new n450("(^|[^.]|\\u002e\\u002e\\u002e\\s*)\\b(?:as|assert(?=\\s*\\u007b)|export|from(?=\\s*(?:['\"]|$))|import)\\b", yinVar), true, false, Collections.singletonList(z2b0.h3), null);
+        n450 n450Var4 = new n450("((?:^|\\u007d)\\s*)catch\\b", yinVar);
+        z2b0 z2b0Var9 = z2b0.o1;
+        d360 d360Var12 = new d360(z2b0Var8, gee.O(pc10Var, new pc10(n450Var4, true, false, Collections.singletonList(z2b0Var9), null), new pc10(new n450("(^|[^.]|\\u002e\\u002e\\u002e\\s*)\\b(?:await|break|case|continue|default|do|else|finally(?=\\s*(?:\\u007b|$))|for|if|return|switch|throw|try|while|yield)\\b", yinVar), true, false, Collections.singletonList(z2b0Var9), null), new pc10(new n450("(^|[^.]|\\u002e\\u002e\\u002e\\s*)\\b(?:async(?=\\s*(?:function\\b|\\u0028|[$\\w\\u00a0-\\uFFFF]|$))|class|const|debugger|delete|enum|extends|function|(?:get|set)(?=\\s*(?:[#\\u005b$\\w\\u00a0-\\uFFFF]|$))|implements|in|instanceof|interface|let|new|null|of|package|private|protected|public|static|super|this|typeof|undefined|var|void|with)\\b", yinVar), true, false, ninVar, null)));
+        d360 d360Var13 = new d360(z2b0.z, Collections.singletonList(new pc10(new n450("\\b(?:false|true)\\b", yinVar), false, false, ninVar, null)));
+        d360 d360Var14 = new d360(z2b0Var7, Collections.singletonList(new pc10(new n450("#?(?!\\s)[_$a-zA-Z\\u00a0-\\uFFFF](?:(?!\\s)[$\\w\\u00a0-\\uFFFF])*(?=\\s*(?:\\u002e\\s*(?:apply|bind|call)\\s*)?\\u0028)", yinVar), false, false, ninVar, null)));
+        d360 d360Var15 = new d360(z2b0.t3, Collections.singletonList(new pc10(new n450("(^|[^\\w$])(?:NaN|Infinity|0[bB][01]+(?:_[01]+)*n?|0[oO][0-7]+(?:_[0-7]+)*n?|0[xX][\\dA-Fa-f]+(?:_[\\dA-Fa-f]+)*n?|\\d+(?:_\\d+)*n|(?:\\d+(?:_\\d+)*(?:\\u002e(?:\\d+(?:_\\d+)*)?)?|\\u002e\\d+(?:_\\d+)*)(?:[Ee][+-]?\\d+(?:_\\d+)*)?)(?![\\w$])", yinVar), true, false, ninVar, null)));
+        d360 d360Var16 = new d360(z2b0.b3, Collections.singletonList(new pc10(new n450("((?:^|[,{])[ \\t]*)(?!\\s)[_$a-zA-Z\\u00a0-\\uFFFF](?:(?!\\s)[$\\w\\u00a0-\\uFFFF])*(?=\\s*:)", Collections.singleton(q450Var)), true, false, Collections.singletonList(z2b0Var4), null)));
+        d360 d360Var17 = new d360(z2b0.w3, Collections.singletonList(new pc10(new n450("--|\\u002b\\u002b|\\u002a\\u002a=?|=>|&&=?|\\u007c\\u007c=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\\u002e{3}|\\u003f\\u003f=?|\\u003f\\u002e?|[~:]", yinVar), false, false, ninVar, null)));
+        z2b0 z2b0Var10 = z2b0.O3;
+        a = new jzt("g99", ukw.Z(new gw00("g99", gee.O(d360Var, d360Var2, d360Var3, d360Var4, d360Var5, d360Var6, d360Var7, d360Var8, d360Var9, d360Var10, d360Var11, d360Var12, d360Var13, d360Var14, d360Var15, d360Var16, d360Var17, new d360(z2b0Var10, Collections.singletonList(new pc10(new n450("[{}\\u005b\\u005d;(),.:]", yinVar), false, false, ninVar, null))))), new gw00("g103", gee.O(new d360(z2b0.Z3, Collections.singletonList(new pc10(new n450("^(\\u002f)[\\s\\S]+(?=\\u002f[a-z]*$)", yinVar), true, false, Collections.singletonList(z2b0.V2), new bzq("regex")))), new d360(z2b0.W3, Collections.singletonList(new pc10(new n450("^\\u002f|\\u002f$", yinVar), false, false, ninVar, null))), new d360(z2b0.X3, Collections.singletonList(new pc10(new n450("^[a-z]+$", yinVar), false, false, ninVar, null))))), new gw00("g102", Collections.singletonList(new d360(z2b0Var10, Collections.singletonList(new pc10(new n450("[.\\u005c]", yinVar), false, false, ninVar, null))))), new gw00("g100", gee.O(new d360(z2b0.L4, Collections.singletonList(new pc10(new n450("^`|`$", yinVar), false, false, Collections.singletonList(z2b0Var5), null))), new d360(z2b0.H2, Collections.singletonList(new pc10(new n450("((?:^|[^\\u005c])(?:\\u005c{2})*)\\u0024\\u007b(?:[^{}]|\\u007b(?:[^{}]|\\u007b[^{}]*\\u007d)*\\u007d)+\\u007d", yinVar), true, false, ninVar, new azq("g101")))), new d360(z2b0Var5, Collections.singletonList(new pc10(new n450("[\\s\\S]+", yinVar), false, false, ninVar, null))))), new gw00("g101", Collections.singletonList(new d360(z2b0.I2, Collections.singletonList(new pc10(new n450("^\\u0024\\u007b|\\u007d$", yinVar), false, false, Collections.singletonList(z2b0Var10), null)))))));
+    }
+}

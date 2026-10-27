@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.animationFrame=exports.animationFrameScheduler=void 0;const e=require("./AnimationFrameAction"),r=require("./AnimationFrameScheduler");exports.animationFrameScheduler=new r.AnimationFrameScheduler(e.AnimationFrameAction),exports.animationFrame=exports.animationFrameScheduler;

@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-instagram-70b9d2f09954bf79.js";e();export{t as default};

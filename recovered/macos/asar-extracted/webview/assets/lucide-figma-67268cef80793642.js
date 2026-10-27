@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-figma-7d69b32a60294282.js";e();export{t as default};

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.pipeFromArray=exports.pipe=void 0;const e=require("./identity");function r(...e){return t(e)}function t(r){return 0===r.length?e.identity:1===r.length?r[0]:function(e){return r.reduce((e,r)=>r(e),e)}}exports.pipe=r,exports.pipeFromArray=t;

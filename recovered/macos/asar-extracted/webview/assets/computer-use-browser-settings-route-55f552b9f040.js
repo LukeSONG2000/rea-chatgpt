@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{RR as t,Tht as n}from"./app-shared-2cae01273bae.js";function r(e){return`/settings/computer-use/${e}`}function i(e){return e===`google-chrome`?`chrome`:e!=null&&n(e)?e:null}var a,o;function s(){return(s=e((()=>{t(),a=`computer-use/:browserFamily`,o=`/settings/${a}`})))()}export{s as a,r as i,a as n,i as r,o as t};
+//# sourceMappingURL=computer-use-browser-settings-route-55f552b9f040.js.map

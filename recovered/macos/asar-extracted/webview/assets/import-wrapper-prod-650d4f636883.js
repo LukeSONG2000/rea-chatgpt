@@ -1,0 +1,1 @@
+import{gir as e,hir as t}from"./app-initial-feb30b196d11.js";e();export{t as Dexie,t as default};

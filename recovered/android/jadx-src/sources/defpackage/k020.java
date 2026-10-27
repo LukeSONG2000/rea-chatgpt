@@ -1,0 +1,470 @@
+package defpackage;
+
+import com.google.mlkit.vision.barcode.common.Barcode;
+import protobuf_analytics_events.v1.ChatgptMicrophonePermissionsState;
+import protobuf_analytics_events.v1.ChatgptNotificationPermissionsState;
+import protobuf_analytics_events.v1.ChatgptSurface;
+import protobuf_analytics_events.v1.ChatgptVoiceConnectionSetupAbortReason;
+import protobuf_analytics_events.v1.ChatgptVoiceConnectionSetupData;
+import protobuf_analytics_events.v1.ChatgptVoiceInstantConnectCacheMissReason;
+import protobuf_analytics_events.v1.ChatgptVoiceInstantConnectInvalidationReason;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes3.dex */
+public final class k020 {
+    public final z3t A;
+    public final z3t B;
+    public final z3t C;
+    public final z3t D;
+    public final z3t E;
+    public final z3t F;
+    public final z3t G;
+    public final z3t H;
+    public final z3t I;
+    public final z3t J;
+    public final z3t K;
+    public final z3t L;
+    public final z3t M;
+    public final z3t N;
+    public final z3t O;
+    public final z3t P;
+    public final z3t Q;
+    public final z3t R;
+    public final z3t S;
+    public final z3t T;
+    public final z3t U;
+    public final z3t V;
+    public final z3t W;
+    public final z3t X;
+    public final z3t Y;
+    public final z3t Z;
+    public final String a;
+    public final Boolean a0;
+    public final nmf0 b;
+    public final Long b0;
+    public final z3t c;
+    public final Boolean c0;
+    public final ChatgptSurface d;
+    public final z3t d0;
+    public final ChatgptMicrophonePermissionsState e;
+    public final z3t e0;
+    public final yje f;
+    public final z3t f0;
+    public final yje g;
+    public final ChatgptVoiceConnectionSetupAbortReason g0;
+    public final ChatgptNotificationPermissionsState h;
+    public final cnf0 h0;
+    public final yje i;
+    public final Boolean i0;
+    public final yje j;
+    public final Boolean j0;
+    public final yje k;
+    public final Boolean k0;
+    public final yje l;
+    public final ChatgptVoiceInstantConnectCacheMissReason l0;
+    public final yje m;
+    public final yje n;
+    public final z3t o;
+    public final z3t p;
+    public final z3t q;
+    public final z3t r;
+    public final z3t s;
+    public final z3t t;
+    public final z3t u;
+    public final z3t v;
+    public final z3t w;
+    public final String x;
+    public final z3t y;
+    public final z3t z;
+
+    public /* synthetic */ k020(nmf0 nmf0Var, z3t z3tVar, ChatgptSurface chatgptSurface, ChatgptMicrophonePermissionsState chatgptMicrophonePermissionsState, yje yjeVar, yje yjeVar2, ChatgptNotificationPermissionsState chatgptNotificationPermissionsState, yje yjeVar3, yje yjeVar4, yje yjeVar5, yje yjeVar6, yje yjeVar7, yje yjeVar8, z3t z3tVar2, ChatgptVoiceConnectionSetupAbortReason chatgptVoiceConnectionSetupAbortReason, int i, int i2) {
+        this(null, (i & 2) != 0 ? null : nmf0Var, (i & 4) != 0 ? null : z3tVar, (i & 8) != 0 ? null : chatgptSurface, (i & 16) != 0 ? null : chatgptMicrophonePermissionsState, (i & 32) != 0 ? null : yjeVar, (i & 64) != 0 ? null : yjeVar2, (i & 128) != 0 ? null : chatgptNotificationPermissionsState, (i & 256) != 0 ? null : yjeVar3, (i & Barcode.FORMAT_UPC_A) != 0 ? null : yjeVar4, (i & Barcode.FORMAT_UPC_E) != 0 ? null : yjeVar5, (i & Barcode.FORMAT_PDF417) != 0 ? null : yjeVar6, (i & Barcode.FORMAT_AZTEC) != 0 ? null : yjeVar7, (i & 8192) != 0 ? null : yjeVar8, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, (i2 & 33554432) != 0 ? null : z3tVar2, (i2 & 67108864) != 0 ? null : chatgptVoiceConnectionSetupAbortReason, null, null, null, null, null);
+    }
+
+    public static k020 b(k020 k020Var, String str, nmf0 nmf0Var, z3t z3tVar, ChatgptSurface chatgptSurface, ChatgptMicrophonePermissionsState chatgptMicrophonePermissionsState, yje yjeVar, yje yjeVar2, ChatgptNotificationPermissionsState chatgptNotificationPermissionsState, yje yjeVar3, yje yjeVar4, yje yjeVar5, yje yjeVar6, yje yjeVar7, yje yjeVar8, z3t z3tVar2, z3t z3tVar3, z3t z3tVar4, z3t z3tVar5, z3t z3tVar6, z3t z3tVar7, z3t z3tVar8, z3t z3tVar9, z3t z3tVar10, String str2, z3t z3tVar11, z3t z3tVar12, z3t z3tVar13, z3t z3tVar14, z3t z3tVar15, z3t z3tVar16, z3t z3tVar17, z3t z3tVar18, z3t z3tVar19, z3t z3tVar20, z3t z3tVar21, z3t z3tVar22, z3t z3tVar23, z3t z3tVar24, z3t z3tVar25, z3t z3tVar26, z3t z3tVar27, z3t z3tVar28, z3t z3tVar29, z3t z3tVar30, z3t z3tVar31, z3t z3tVar32, z3t z3tVar33, z3t z3tVar34, z3t z3tVar35, z3t z3tVar36, z3t z3tVar37, z3t z3tVar38, Boolean bool, Long l, Boolean bool2, z3t z3tVar39, z3t z3tVar40, z3t z3tVar41, ChatgptVoiceConnectionSetupAbortReason chatgptVoiceConnectionSetupAbortReason, cnf0 cnf0Var, Boolean bool3, Boolean bool4, Boolean bool5, ChatgptVoiceInstantConnectCacheMissReason chatgptVoiceInstantConnectCacheMissReason, int i, int i2) {
+        String str3 = (i & 1) != 0 ? k020Var.a : str;
+        nmf0 nmf0Var2 = (i & 2) != 0 ? k020Var.b : nmf0Var;
+        z3t z3tVar42 = (i & 4) != 0 ? k020Var.c : z3tVar;
+        ChatgptSurface chatgptSurface2 = (i & 8) != 0 ? k020Var.d : chatgptSurface;
+        ChatgptMicrophonePermissionsState chatgptMicrophonePermissionsState2 = (i & 16) != 0 ? k020Var.e : chatgptMicrophonePermissionsState;
+        yje yjeVar9 = (i & 32) != 0 ? k020Var.f : yjeVar;
+        yje yjeVar10 = (i & 64) != 0 ? k020Var.g : yjeVar2;
+        ChatgptNotificationPermissionsState chatgptNotificationPermissionsState2 = (i & 128) != 0 ? k020Var.h : chatgptNotificationPermissionsState;
+        yje yjeVar11 = (i & 256) != 0 ? k020Var.i : yjeVar3;
+        yje yjeVar12 = (i & Barcode.FORMAT_UPC_A) != 0 ? k020Var.j : yjeVar4;
+        yje yjeVar13 = (i & Barcode.FORMAT_UPC_E) != 0 ? k020Var.k : yjeVar5;
+        yje yjeVar14 = (i & Barcode.FORMAT_PDF417) != 0 ? k020Var.l : yjeVar6;
+        yje yjeVar15 = (i & Barcode.FORMAT_AZTEC) != 0 ? k020Var.m : yjeVar7;
+        String str4 = str3;
+        yje yjeVar16 = (i & 8192) != 0 ? k020Var.n : yjeVar8;
+        z3t z3tVar43 = (i & 16384) != 0 ? k020Var.o : z3tVar2;
+        z3t z3tVar44 = (i & 32768) != 0 ? k020Var.p : z3tVar3;
+        z3t z3tVar45 = (i & 65536) != 0 ? k020Var.q : z3tVar4;
+        z3t z3tVar46 = (i & 131072) != 0 ? k020Var.r : z3tVar5;
+        z3t z3tVar47 = (i & 262144) != 0 ? k020Var.s : z3tVar6;
+        z3t z3tVar48 = (i & 524288) != 0 ? k020Var.t : z3tVar7;
+        z3t z3tVar49 = (i & 1048576) != 0 ? k020Var.u : z3tVar8;
+        z3t z3tVar50 = (i & 2097152) != 0 ? k020Var.v : z3tVar9;
+        z3t z3tVar51 = (i & 4194304) != 0 ? k020Var.w : z3tVar10;
+        String str5 = (i & 8388608) != 0 ? k020Var.x : str2;
+        z3t z3tVar52 = (i & 16777216) != 0 ? k020Var.y : z3tVar11;
+        z3t z3tVar53 = (i & 33554432) != 0 ? k020Var.z : z3tVar12;
+        z3t z3tVar54 = (i & 67108864) != 0 ? k020Var.A : z3tVar13;
+        z3t z3tVar55 = (i & 134217728) != 0 ? k020Var.B : z3tVar14;
+        z3t z3tVar56 = (i & 268435456) != 0 ? k020Var.C : z3tVar15;
+        z3t z3tVar57 = (i & 536870912) != 0 ? k020Var.D : z3tVar16;
+        z3t z3tVar58 = (i & 1073741824) != 0 ? k020Var.E : z3tVar17;
+        z3t z3tVar59 = (i & Integer.MIN_VALUE) != 0 ? k020Var.F : z3tVar18;
+        z3t z3tVar60 = (i2 & 1) != 0 ? k020Var.G : z3tVar19;
+        z3t z3tVar61 = (i2 & 2) != 0 ? k020Var.H : z3tVar20;
+        z3t z3tVar62 = (i2 & 4) != 0 ? k020Var.I : z3tVar21;
+        z3t z3tVar63 = (i2 & 8) != 0 ? k020Var.J : z3tVar22;
+        z3t z3tVar64 = (i2 & 16) != 0 ? k020Var.K : z3tVar23;
+        z3t z3tVar65 = (i2 & 32) != 0 ? k020Var.L : z3tVar24;
+        z3t z3tVar66 = (i2 & 64) != 0 ? k020Var.M : z3tVar25;
+        z3t z3tVar67 = (i2 & 128) != 0 ? k020Var.N : z3tVar26;
+        z3t z3tVar68 = (i2 & 256) != 0 ? k020Var.O : z3tVar27;
+        z3t z3tVar69 = (i2 & Barcode.FORMAT_UPC_A) != 0 ? k020Var.P : z3tVar28;
+        z3t z3tVar70 = (i2 & Barcode.FORMAT_UPC_E) != 0 ? k020Var.Q : z3tVar29;
+        z3t z3tVar71 = (i2 & Barcode.FORMAT_PDF417) != 0 ? k020Var.R : z3tVar30;
+        z3t z3tVar72 = (i2 & Barcode.FORMAT_AZTEC) != 0 ? k020Var.S : z3tVar31;
+        z3t z3tVar73 = (i2 & 8192) != 0 ? k020Var.T : z3tVar32;
+        z3t z3tVar74 = (i2 & 16384) != 0 ? k020Var.U : z3tVar33;
+        z3t z3tVar75 = (i2 & 32768) != 0 ? k020Var.V : z3tVar34;
+        z3t z3tVar76 = (i2 & 65536) != 0 ? k020Var.W : z3tVar35;
+        z3t z3tVar77 = (i2 & 131072) != 0 ? k020Var.X : z3tVar36;
+        z3t z3tVar78 = (i2 & 262144) != 0 ? k020Var.Y : z3tVar37;
+        z3t z3tVar79 = (i2 & 524288) != 0 ? k020Var.Z : z3tVar38;
+        Boolean bool6 = (i2 & 1048576) != 0 ? k020Var.a0 : bool;
+        Long l2 = (i2 & 2097152) != 0 ? k020Var.b0 : l;
+        Boolean bool7 = (i2 & 4194304) != 0 ? k020Var.c0 : bool2;
+        z3t z3tVar80 = (i2 & 8388608) != 0 ? k020Var.d0 : z3tVar39;
+        z3t z3tVar81 = (i2 & 16777216) != 0 ? k020Var.e0 : z3tVar40;
+        z3t z3tVar82 = (i2 & 33554432) != 0 ? k020Var.f0 : z3tVar41;
+        ChatgptVoiceConnectionSetupAbortReason chatgptVoiceConnectionSetupAbortReason2 = (i2 & 67108864) != 0 ? k020Var.g0 : chatgptVoiceConnectionSetupAbortReason;
+        cnf0 cnf0Var2 = (i2 & 134217728) != 0 ? k020Var.h0 : cnf0Var;
+        Boolean bool8 = (i2 & 268435456) != 0 ? k020Var.i0 : bool3;
+        Boolean bool9 = (i2 & 536870912) != 0 ? k020Var.j0 : bool4;
+        Boolean bool10 = (i2 & 1073741824) != 0 ? k020Var.k0 : bool5;
+        ChatgptVoiceInstantConnectCacheMissReason chatgptVoiceInstantConnectCacheMissReason2 = (i2 & Integer.MIN_VALUE) != 0 ? k020Var.l0 : chatgptVoiceInstantConnectCacheMissReason;
+        k020Var.getClass();
+        return new k020(str4, nmf0Var2, z3tVar42, chatgptSurface2, chatgptMicrophonePermissionsState2, yjeVar9, yjeVar10, chatgptNotificationPermissionsState2, yjeVar11, yjeVar12, yjeVar13, yjeVar14, yjeVar15, yjeVar16, z3tVar43, z3tVar44, z3tVar45, z3tVar46, z3tVar47, z3tVar48, z3tVar49, z3tVar50, z3tVar51, str5, z3tVar52, z3tVar53, z3tVar54, z3tVar55, z3tVar56, z3tVar57, z3tVar58, z3tVar59, z3tVar60, z3tVar61, z3tVar62, z3tVar63, z3tVar64, z3tVar65, z3tVar66, z3tVar67, z3tVar68, z3tVar69, z3tVar70, z3tVar71, z3tVar72, z3tVar73, z3tVar74, z3tVar75, z3tVar76, z3tVar77, z3tVar78, z3tVar79, bool6, l2, bool7, z3tVar80, z3tVar81, z3tVar82, chatgptVoiceConnectionSetupAbortReason2, cnf0Var2, bool8, bool9, bool10, chatgptVoiceInstantConnectCacheMissReason2);
+    }
+
+    public final ChatgptVoiceConnectionSetupData a() {
+        Double dValueOf;
+        Double dValueOf2;
+        Long lC;
+        Long lC2;
+        Long lC3;
+        Long lC4;
+        Long lC5;
+        Long lC6;
+        Long lC7;
+        Long lC8;
+        z3t z3tVar = this.c;
+        Double dValueOf3 = z3tVar != null ? Double.valueOf(z3tVar.e()) : null;
+        yje yjeVar = this.f;
+        Double dValueOf4 = (yjeVar == null || (lC8 = c(yjeVar)) == null) ? null : Double.valueOf(lC8.longValue());
+        yje yjeVar2 = this.g;
+        Double dValueOf5 = (yjeVar2 == null || (lC7 = c(yjeVar2)) == null) ? null : Double.valueOf(lC7.longValue());
+        yje yjeVar3 = this.i;
+        Double dValueOf6 = (yjeVar3 == null || (lC6 = c(yjeVar3)) == null) ? null : Double.valueOf(lC6.longValue());
+        yje yjeVar4 = this.j;
+        Double dValueOf7 = (yjeVar4 == null || (lC5 = c(yjeVar4)) == null) ? null : Double.valueOf(lC5.longValue());
+        yje yjeVar5 = this.k;
+        Double dValueOf8 = (yjeVar5 == null || (lC4 = c(yjeVar5)) == null) ? null : Double.valueOf(lC4.longValue());
+        yje yjeVar6 = this.l;
+        Double dValueOf9 = (yjeVar6 == null || (lC3 = c(yjeVar6)) == null) ? null : Double.valueOf(lC3.longValue());
+        yje yjeVar7 = this.m;
+        Double dValueOf10 = (yjeVar7 == null || (lC2 = c(yjeVar7)) == null) ? null : Double.valueOf(lC2.longValue());
+        yje yjeVar8 = this.n;
+        Double dValueOf11 = (yjeVar8 == null || (lC = c(yjeVar8)) == null) ? null : Double.valueOf(lC.longValue());
+        Double dValueOf12 = this.o != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf13 = this.p != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf14 = this.q != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf15 = this.r != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf16 = this.s != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf17 = this.t != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf18 = this.u != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf19 = this.v != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf20 = this.w != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf21 = this.y != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf22 = this.z != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf23 = this.A != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf24 = this.B != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf25 = this.C != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf26 = this.D != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf27 = this.E != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf28 = this.F != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf29 = this.G != null ? Double.valueOf(r3.e()) : null;
+        z3t z3tVar2 = this.H;
+        Double dValueOf30 = z3tVar2 != null ? Double.valueOf(z3tVar2.e()) : null;
+        z3t z3tVar3 = this.I;
+        Double dValueOf31 = z3tVar3 != null ? Double.valueOf(z3tVar3.e()) : null;
+        z3t z3tVar4 = this.J;
+        Double dValueOf32 = z3tVar4 != null ? Double.valueOf(z3tVar4.e()) : null;
+        Double dValueOf33 = this.K != null ? Double.valueOf(r7.e()) : null;
+        Double dValueOf34 = this.L != null ? Double.valueOf(r7.e()) : null;
+        Double dValueOf35 = this.M != null ? Double.valueOf(r7.e()) : null;
+        Double dValueOf36 = this.N != null ? Double.valueOf(r7.e()) : null;
+        Double dValueOf37 = this.O != null ? Double.valueOf(r7.e()) : null;
+        Double dValueOf38 = this.P != null ? Double.valueOf(r7.e()) : null;
+        Double dValueOf39 = this.Q != null ? Double.valueOf(r7.e()) : null;
+        Double dValueOf40 = this.R != null ? Double.valueOf(r7.e()) : null;
+        if (z3tVar3 == null) {
+            z3tVar3 = z3tVar4;
+        }
+        if (z3tVar2 == null || z3tVar3 == null) {
+            dValueOf = null;
+        } else {
+            long jG = lrm.g(z3tVar3.c(z3tVar2));
+            if (jG < 0) {
+                jG = 0;
+            }
+            dValueOf = Double.valueOf(jG);
+        }
+        Double dValueOf41 = this.S != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf42 = this.T != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf43 = this.U != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf44 = this.V != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf45 = this.W != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf46 = this.Y != null ? Double.valueOf(r3.e()) : null;
+        Double dValueOf47 = this.Z != null ? Double.valueOf(r3.e()) : null;
+        Long l = this.b0;
+        Integer numValueOf = l != null ? Integer.valueOf((int) l.longValue()) : null;
+        z3t z3tVar5 = this.d0;
+        Double dValueOf48 = z3tVar5 != null ? Double.valueOf(z3tVar5.e()) : null;
+        if (z3tVar == null || z3tVar5 == null) {
+            dValueOf2 = null;
+        } else {
+            dValueOf2 = Double.valueOf(lrm.g(z3tVar5.c(z3tVar)) < 0 ? 0L : r2);
+        }
+        Double dValueOf49 = this.f0 != null ? Double.valueOf(r2.e()) : null;
+        cnf0 cnf0Var = this.h0;
+        String str = cnf0Var != null ? cnf0Var.a : null;
+        ChatgptVoiceInstantConnectCacheMissReason chatgptVoiceInstantConnectCacheMissReason = this.l0;
+        return new ChatgptVoiceConnectionSetupData(dValueOf3, dValueOf2, this.d, this.e, dValueOf4, dValueOf5, dValueOf14, dValueOf15, dValueOf16, dValueOf17, null, null, null, null, dValueOf24, dValueOf25, dValueOf26, dValueOf27, null, null, dValueOf18, dValueOf19, dValueOf20, this.x, null, null, dValueOf21, dValueOf22, dValueOf23, dValueOf30, dValueOf31, dValueOf32, dValueOf33, dValueOf34, dValueOf35, dValueOf36, dValueOf37, dValueOf38, dValueOf39, dValueOf40, dValueOf, null, null, dValueOf41, dValueOf42, null, null, dValueOf28, dValueOf29, dValueOf43, dValueOf44, dValueOf45, null, dValueOf48, null, dValueOf49, this.a, dValueOf8, dValueOf9, dValueOf10, dValueOf11, null, null, this.h, dValueOf6, dValueOf7, null, null, str, this.i0, null, null, null, dValueOf46, dValueOf47, this.k0, chatgptVoiceInstantConnectCacheMissReason != null ? ChatgptVoiceInstantConnectInvalidationReason.INSTANCE.fromValue(chatgptVoiceInstantConnectCacheMissReason.getValue()) : null, dValueOf12, dValueOf13, this.l0, null, null, null, null, this.g0, this.a0, numValueOf, this.c0, null, 51133440, 1615881728, 17760716, null);
+    }
+
+    public final Long c(yje yjeVar) {
+        nmf0 nmf0Var = this.b;
+        if (nmf0Var != null) {
+            return Long.valueOf(nmf0Var.a.d(lrm.p(rzb0.a(nmf0Var.b.a), yjeVar.k0())).e());
+        }
+        return null;
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof k020)) {
+            return false;
+        }
+        k020 k020Var = (k020) obj;
+        return b79.u(this.a, k020Var.a) && b79.u(this.b, k020Var.b) && b79.u(this.c, k020Var.c) && this.d == k020Var.d && this.e == k020Var.e && b79.u(this.f, k020Var.f) && b79.u(this.g, k020Var.g) && this.h == k020Var.h && b79.u(this.i, k020Var.i) && b79.u(this.j, k020Var.j) && b79.u(this.k, k020Var.k) && b79.u(this.l, k020Var.l) && b79.u(this.m, k020Var.m) && b79.u(this.n, k020Var.n) && b79.u(this.o, k020Var.o) && b79.u(this.p, k020Var.p) && b79.u(this.q, k020Var.q) && b79.u(this.r, k020Var.r) && b79.u(this.s, k020Var.s) && b79.u(this.t, k020Var.t) && b79.u(this.u, k020Var.u) && b79.u(this.v, k020Var.v) && b79.u(this.w, k020Var.w) && b79.u(this.x, k020Var.x) && b79.u(this.y, k020Var.y) && b79.u(this.z, k020Var.z) && b79.u(this.A, k020Var.A) && b79.u(this.B, k020Var.B) && b79.u(this.C, k020Var.C) && b79.u(this.D, k020Var.D) && b79.u(this.E, k020Var.E) && b79.u(this.F, k020Var.F) && b79.u(this.G, k020Var.G) && b79.u(this.H, k020Var.H) && b79.u(this.I, k020Var.I) && b79.u(this.J, k020Var.J) && b79.u(this.K, k020Var.K) && b79.u(this.L, k020Var.L) && b79.u(this.M, k020Var.M) && b79.u(this.N, k020Var.N) && b79.u(this.O, k020Var.O) && b79.u(this.P, k020Var.P) && b79.u(this.Q, k020Var.Q) && b79.u(this.R, k020Var.R) && b79.u(this.S, k020Var.S) && b79.u(this.T, k020Var.T) && b79.u(this.U, k020Var.U) && b79.u(this.V, k020Var.V) && b79.u(this.W, k020Var.W) && b79.u(this.X, k020Var.X) && b79.u(this.Y, k020Var.Y) && b79.u(this.Z, k020Var.Z) && b79.u(this.a0, k020Var.a0) && b79.u(this.b0, k020Var.b0) && b79.u(this.c0, k020Var.c0) && b79.u(this.d0, k020Var.d0) && b79.u(this.e0, k020Var.e0) && b79.u(this.f0, k020Var.f0) && this.g0 == k020Var.g0 && this.h0 == k020Var.h0 && b79.u(this.i0, k020Var.i0) && b79.u(this.j0, k020Var.j0) && b79.u(this.k0, k020Var.k0) && this.l0 == k020Var.l0;
+    }
+
+    public final int hashCode() {
+        String str = this.a;
+        int iHashCode = (str == null ? 0 : str.hashCode()) * 31;
+        nmf0 nmf0Var = this.b;
+        int iHashCode2 = (iHashCode + (nmf0Var == null ? 0 : nmf0Var.hashCode())) * 31;
+        z3t z3tVar = this.c;
+        int iHashCode3 = (iHashCode2 + (z3tVar == null ? 0 : z3tVar.hashCode())) * 31;
+        ChatgptSurface chatgptSurface = this.d;
+        int iHashCode4 = (iHashCode3 + (chatgptSurface == null ? 0 : chatgptSurface.hashCode())) * 31;
+        ChatgptMicrophonePermissionsState chatgptMicrophonePermissionsState = this.e;
+        int iHashCode5 = (iHashCode4 + (chatgptMicrophonePermissionsState == null ? 0 : chatgptMicrophonePermissionsState.hashCode())) * 31;
+        yje yjeVar = this.f;
+        int iHashCode6 = (iHashCode5 + (yjeVar == null ? 0 : yjeVar.hashCode())) * 31;
+        yje yjeVar2 = this.g;
+        int iHashCode7 = (iHashCode6 + (yjeVar2 == null ? 0 : yjeVar2.hashCode())) * 31;
+        ChatgptNotificationPermissionsState chatgptNotificationPermissionsState = this.h;
+        int iHashCode8 = (iHashCode7 + (chatgptNotificationPermissionsState == null ? 0 : chatgptNotificationPermissionsState.hashCode())) * 31;
+        yje yjeVar3 = this.i;
+        int iHashCode9 = (iHashCode8 + (yjeVar3 == null ? 0 : yjeVar3.hashCode())) * 31;
+        yje yjeVar4 = this.j;
+        int iHashCode10 = (iHashCode9 + (yjeVar4 == null ? 0 : yjeVar4.hashCode())) * 31;
+        yje yjeVar5 = this.k;
+        int iHashCode11 = (iHashCode10 + (yjeVar5 == null ? 0 : yjeVar5.hashCode())) * 31;
+        yje yjeVar6 = this.l;
+        int iHashCode12 = (iHashCode11 + (yjeVar6 == null ? 0 : yjeVar6.hashCode())) * 31;
+        yje yjeVar7 = this.m;
+        int iHashCode13 = (iHashCode12 + (yjeVar7 == null ? 0 : yjeVar7.hashCode())) * 31;
+        yje yjeVar8 = this.n;
+        int iHashCode14 = (iHashCode13 + (yjeVar8 == null ? 0 : yjeVar8.hashCode())) * 31;
+        z3t z3tVar2 = this.o;
+        int iHashCode15 = (iHashCode14 + (z3tVar2 == null ? 0 : z3tVar2.hashCode())) * 31;
+        z3t z3tVar3 = this.p;
+        int iHashCode16 = (iHashCode15 + (z3tVar3 == null ? 0 : z3tVar3.hashCode())) * 31;
+        z3t z3tVar4 = this.q;
+        int iHashCode17 = (iHashCode16 + (z3tVar4 == null ? 0 : z3tVar4.hashCode())) * 31;
+        z3t z3tVar5 = this.r;
+        int iHashCode18 = (iHashCode17 + (z3tVar5 == null ? 0 : z3tVar5.hashCode())) * 31;
+        z3t z3tVar6 = this.s;
+        int iHashCode19 = (iHashCode18 + (z3tVar6 == null ? 0 : z3tVar6.hashCode())) * 31;
+        z3t z3tVar7 = this.t;
+        int iHashCode20 = (iHashCode19 + (z3tVar7 == null ? 0 : z3tVar7.hashCode())) * 31;
+        z3t z3tVar8 = this.u;
+        int iHashCode21 = (iHashCode20 + (z3tVar8 == null ? 0 : z3tVar8.hashCode())) * 31;
+        z3t z3tVar9 = this.v;
+        int iHashCode22 = (iHashCode21 + (z3tVar9 == null ? 0 : z3tVar9.hashCode())) * 31;
+        z3t z3tVar10 = this.w;
+        int iHashCode23 = (iHashCode22 + (z3tVar10 == null ? 0 : z3tVar10.hashCode())) * 31;
+        String str2 = this.x;
+        int iHashCode24 = (iHashCode23 + (str2 == null ? 0 : str2.hashCode())) * 31;
+        z3t z3tVar11 = this.y;
+        int iHashCode25 = (iHashCode24 + (z3tVar11 == null ? 0 : z3tVar11.hashCode())) * 31;
+        z3t z3tVar12 = this.z;
+        int iHashCode26 = (iHashCode25 + (z3tVar12 == null ? 0 : z3tVar12.hashCode())) * 31;
+        z3t z3tVar13 = this.A;
+        int iHashCode27 = (iHashCode26 + (z3tVar13 == null ? 0 : z3tVar13.hashCode())) * 31;
+        z3t z3tVar14 = this.B;
+        int iHashCode28 = (iHashCode27 + (z3tVar14 == null ? 0 : z3tVar14.hashCode())) * 31;
+        z3t z3tVar15 = this.C;
+        int iHashCode29 = (iHashCode28 + (z3tVar15 == null ? 0 : z3tVar15.hashCode())) * 31;
+        z3t z3tVar16 = this.D;
+        int iHashCode30 = (iHashCode29 + (z3tVar16 == null ? 0 : z3tVar16.hashCode())) * 31;
+        z3t z3tVar17 = this.E;
+        int iHashCode31 = (iHashCode30 + (z3tVar17 == null ? 0 : z3tVar17.hashCode())) * 31;
+        z3t z3tVar18 = this.F;
+        int iHashCode32 = (iHashCode31 + (z3tVar18 == null ? 0 : z3tVar18.hashCode())) * 31;
+        z3t z3tVar19 = this.G;
+        int iHashCode33 = (iHashCode32 + (z3tVar19 == null ? 0 : z3tVar19.hashCode())) * 31;
+        z3t z3tVar20 = this.H;
+        int iHashCode34 = (iHashCode33 + (z3tVar20 == null ? 0 : z3tVar20.hashCode())) * 31;
+        z3t z3tVar21 = this.I;
+        int iHashCode35 = (iHashCode34 + (z3tVar21 == null ? 0 : z3tVar21.hashCode())) * 31;
+        z3t z3tVar22 = this.J;
+        int iHashCode36 = (iHashCode35 + (z3tVar22 == null ? 0 : z3tVar22.hashCode())) * 31;
+        z3t z3tVar23 = this.K;
+        int iHashCode37 = (iHashCode36 + (z3tVar23 == null ? 0 : z3tVar23.hashCode())) * 31;
+        z3t z3tVar24 = this.L;
+        int iHashCode38 = (iHashCode37 + (z3tVar24 == null ? 0 : z3tVar24.hashCode())) * 31;
+        z3t z3tVar25 = this.M;
+        int iHashCode39 = (iHashCode38 + (z3tVar25 == null ? 0 : z3tVar25.hashCode())) * 31;
+        z3t z3tVar26 = this.N;
+        int iHashCode40 = (iHashCode39 + (z3tVar26 == null ? 0 : z3tVar26.hashCode())) * 31;
+        z3t z3tVar27 = this.O;
+        int iHashCode41 = (iHashCode40 + (z3tVar27 == null ? 0 : z3tVar27.hashCode())) * 31;
+        z3t z3tVar28 = this.P;
+        int iHashCode42 = (iHashCode41 + (z3tVar28 == null ? 0 : z3tVar28.hashCode())) * 31;
+        z3t z3tVar29 = this.Q;
+        int iHashCode43 = (iHashCode42 + (z3tVar29 == null ? 0 : z3tVar29.hashCode())) * 31;
+        z3t z3tVar30 = this.R;
+        int iHashCode44 = (iHashCode43 + (z3tVar30 == null ? 0 : z3tVar30.hashCode())) * 31;
+        z3t z3tVar31 = this.S;
+        int iHashCode45 = (iHashCode44 + (z3tVar31 == null ? 0 : z3tVar31.hashCode())) * 31;
+        z3t z3tVar32 = this.T;
+        int iHashCode46 = (iHashCode45 + (z3tVar32 == null ? 0 : z3tVar32.hashCode())) * 31;
+        z3t z3tVar33 = this.U;
+        int iHashCode47 = (iHashCode46 + (z3tVar33 == null ? 0 : z3tVar33.hashCode())) * 31;
+        z3t z3tVar34 = this.V;
+        int iHashCode48 = (iHashCode47 + (z3tVar34 == null ? 0 : z3tVar34.hashCode())) * 31;
+        z3t z3tVar35 = this.W;
+        int iHashCode49 = (iHashCode48 + (z3tVar35 == null ? 0 : z3tVar35.hashCode())) * 31;
+        z3t z3tVar36 = this.X;
+        int iHashCode50 = (iHashCode49 + (z3tVar36 == null ? 0 : z3tVar36.hashCode())) * 31;
+        z3t z3tVar37 = this.Y;
+        int iHashCode51 = (iHashCode50 + (z3tVar37 == null ? 0 : z3tVar37.hashCode())) * 31;
+        z3t z3tVar38 = this.Z;
+        int iHashCode52 = (iHashCode51 + (z3tVar38 == null ? 0 : z3tVar38.hashCode())) * 31;
+        Boolean bool = this.a0;
+        int iHashCode53 = (iHashCode52 + (bool == null ? 0 : bool.hashCode())) * 31;
+        Long l = this.b0;
+        int iHashCode54 = (iHashCode53 + (l == null ? 0 : l.hashCode())) * 31;
+        Boolean bool2 = this.c0;
+        int iHashCode55 = (iHashCode54 + (bool2 == null ? 0 : bool2.hashCode())) * 31;
+        z3t z3tVar39 = this.d0;
+        int iHashCode56 = (iHashCode55 + (z3tVar39 == null ? 0 : z3tVar39.hashCode())) * 31;
+        z3t z3tVar40 = this.e0;
+        int iHashCode57 = (iHashCode56 + (z3tVar40 == null ? 0 : z3tVar40.hashCode())) * 31;
+        z3t z3tVar41 = this.f0;
+        int iHashCode58 = (iHashCode57 + (z3tVar41 == null ? 0 : z3tVar41.hashCode())) * 31;
+        ChatgptVoiceConnectionSetupAbortReason chatgptVoiceConnectionSetupAbortReason = this.g0;
+        int iHashCode59 = (iHashCode58 + (chatgptVoiceConnectionSetupAbortReason == null ? 0 : chatgptVoiceConnectionSetupAbortReason.hashCode())) * 31;
+        cnf0 cnf0Var = this.h0;
+        int iHashCode60 = (iHashCode59 + (cnf0Var == null ? 0 : cnf0Var.hashCode())) * 31;
+        Boolean bool3 = this.i0;
+        int iHashCode61 = (iHashCode60 + (bool3 == null ? 0 : bool3.hashCode())) * 31;
+        Boolean bool4 = this.j0;
+        int iHashCode62 = (iHashCode61 + (bool4 == null ? 0 : bool4.hashCode())) * 31;
+        Boolean bool5 = this.k0;
+        int iHashCode63 = (iHashCode62 + (bool5 == null ? 0 : bool5.hashCode())) * 31;
+        ChatgptVoiceInstantConnectCacheMissReason chatgptVoiceInstantConnectCacheMissReason = this.l0;
+        return iHashCode63 + (chatgptVoiceInstantConnectCacheMissReason != null ? chatgptVoiceInstantConnectCacheMissReason.hashCode() : 0);
+    }
+
+    public final String toString() {
+        return k020.class.getName();
+    }
+
+    public k020(String str, nmf0 nmf0Var, z3t z3tVar, ChatgptSurface chatgptSurface, ChatgptMicrophonePermissionsState chatgptMicrophonePermissionsState, yje yjeVar, yje yjeVar2, ChatgptNotificationPermissionsState chatgptNotificationPermissionsState, yje yjeVar3, yje yjeVar4, yje yjeVar5, yje yjeVar6, yje yjeVar7, yje yjeVar8, z3t z3tVar2, z3t z3tVar3, z3t z3tVar4, z3t z3tVar5, z3t z3tVar6, z3t z3tVar7, z3t z3tVar8, z3t z3tVar9, z3t z3tVar10, String str2, z3t z3tVar11, z3t z3tVar12, z3t z3tVar13, z3t z3tVar14, z3t z3tVar15, z3t z3tVar16, z3t z3tVar17, z3t z3tVar18, z3t z3tVar19, z3t z3tVar20, z3t z3tVar21, z3t z3tVar22, z3t z3tVar23, z3t z3tVar24, z3t z3tVar25, z3t z3tVar26, z3t z3tVar27, z3t z3tVar28, z3t z3tVar29, z3t z3tVar30, z3t z3tVar31, z3t z3tVar32, z3t z3tVar33, z3t z3tVar34, z3t z3tVar35, z3t z3tVar36, z3t z3tVar37, z3t z3tVar38, Boolean bool, Long l, Boolean bool2, z3t z3tVar39, z3t z3tVar40, z3t z3tVar41, ChatgptVoiceConnectionSetupAbortReason chatgptVoiceConnectionSetupAbortReason, cnf0 cnf0Var, Boolean bool3, Boolean bool4, Boolean bool5, ChatgptVoiceInstantConnectCacheMissReason chatgptVoiceInstantConnectCacheMissReason) {
+        this.a = str;
+        this.b = nmf0Var;
+        this.c = z3tVar;
+        this.d = chatgptSurface;
+        this.e = chatgptMicrophonePermissionsState;
+        this.f = yjeVar;
+        this.g = yjeVar2;
+        this.h = chatgptNotificationPermissionsState;
+        this.i = yjeVar3;
+        this.j = yjeVar4;
+        this.k = yjeVar5;
+        this.l = yjeVar6;
+        this.m = yjeVar7;
+        this.n = yjeVar8;
+        this.o = z3tVar2;
+        this.p = z3tVar3;
+        this.q = z3tVar4;
+        this.r = z3tVar5;
+        this.s = z3tVar6;
+        this.t = z3tVar7;
+        this.u = z3tVar8;
+        this.v = z3tVar9;
+        this.w = z3tVar10;
+        this.x = str2;
+        this.y = z3tVar11;
+        this.z = z3tVar12;
+        this.A = z3tVar13;
+        this.B = z3tVar14;
+        this.C = z3tVar15;
+        this.D = z3tVar16;
+        this.E = z3tVar17;
+        this.F = z3tVar18;
+        this.G = z3tVar19;
+        this.H = z3tVar20;
+        this.I = z3tVar21;
+        this.J = z3tVar22;
+        this.K = z3tVar23;
+        this.L = z3tVar24;
+        this.M = z3tVar25;
+        this.N = z3tVar26;
+        this.O = z3tVar27;
+        this.P = z3tVar28;
+        this.Q = z3tVar29;
+        this.R = z3tVar30;
+        this.S = z3tVar31;
+        this.T = z3tVar32;
+        this.U = z3tVar33;
+        this.V = z3tVar34;
+        this.W = z3tVar35;
+        this.X = z3tVar36;
+        this.Y = z3tVar37;
+        this.Z = z3tVar38;
+        this.a0 = bool;
+        this.b0 = l;
+        this.c0 = bool2;
+        this.d0 = z3tVar39;
+        this.e0 = z3tVar40;
+        this.f0 = z3tVar41;
+        this.g0 = chatgptVoiceConnectionSetupAbortReason;
+        this.h0 = cnf0Var;
+        this.i0 = bool3;
+        this.j0 = bool4;
+        this.k0 = bool5;
+        this.l0 = chatgptVoiceInstantConnectCacheMissReason;
+    }
+}

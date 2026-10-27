@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-crosshair-f90b30cc7a222598.js";e();export{t as default};

@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{r as e,t}from"./controller-5c8cfd418c8c.js";e();export{t as CanonicalProfileClaim};

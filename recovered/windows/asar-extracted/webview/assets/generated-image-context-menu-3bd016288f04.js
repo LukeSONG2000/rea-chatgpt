@@ -1,0 +1,1 @@
+import"./app-initial-438d1df57f70.js";import{n as e,t}from"./generated-image-context-menu-2f84c3b2ffa7.js";e();export{t as getGeneratedImageContextMenuItems};

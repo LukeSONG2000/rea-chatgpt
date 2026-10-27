@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Bst as t,DCt as n,Vst as r,tCt as i}from"./app-shared-2cae01273bae.js";import{cpn as a,lpn as o,opn as s,spn as c}from"./app-initial-feb30b196d11.js";var l;function u(){return(u=e((()=>{i(),o(),r(),l=n(t,({get:e})=>e(s)&&a(e(c).data)?.ageGroup!==`adult`)})))()}export{u as n,l as t};
+//# sourceMappingURL=age-settings-state-2bbb7e5e0dde.js.map

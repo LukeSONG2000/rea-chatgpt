@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,r as t}from"./suggestions-cd8bd7f92a49.js";t();export{e as WorkOnboardingSuggestions};

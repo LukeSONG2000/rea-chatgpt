@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-pilcrow-left-f1f526e085012abf.js";e();export{t as default};

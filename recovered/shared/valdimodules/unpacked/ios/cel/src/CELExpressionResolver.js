@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.CELExpressionResolver=void 0;class CELExpressionResolver{constructor(e){this.runtime=e,this.expressions=new Map}getOrCompile(e){const s=this.expressions.get(e);if(void 0!==s)return s;const r=this.runtime.compile(e);return this.expressions.set(e,r),r}}exports.CELExpressionResolver=CELExpressionResolver;

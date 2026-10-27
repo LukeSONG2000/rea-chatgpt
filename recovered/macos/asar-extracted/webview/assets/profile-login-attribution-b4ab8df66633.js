@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Czt as t,Izt as n,Lzt as r,MIt as i,Yzt as a}from"./app-shared-2cae01273bae.js";function o(e){try{e==null?window.sessionStorage.removeItem(s):window.sessionStorage.setItem(s,JSON.stringify({authSessionLoggingId:e,createdAt:Date.now()}))}catch{}}var s;function c(){return(c=e((()=>{i(),s=`profile-login-attribution`,r({authSessionLoggingId:a().min(1),createdAt:n(),state:t(`pending`).optional()})})))()}export{o as n,c as t};
+//# sourceMappingURL=profile-login-attribution-b4ab8df66633.js.map

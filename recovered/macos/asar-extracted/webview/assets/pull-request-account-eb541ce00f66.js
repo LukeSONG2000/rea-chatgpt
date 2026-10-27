@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{l_n as t,o_n as n}from"./app-initial-feb30b196d11.js";function r(e){return`provider`in e&&e.provider===`gitlab-connector`}function i(e){if(r(e))return JSON.stringify([e.provider,e.hostId,e.hostname,e.connectorId,e.accountLinkId]);let t=n(e);return JSON.stringify([t.hostId,t.hostname,t.login,...t.connection==null?[]:[t.connection.connectorId,t.connection.accountLinkId]])}function a(){return(a=e((()=>{t()})))()}export{a as n,r,i as t};
+//# sourceMappingURL=pull-request-account-eb541ce00f66.js.map

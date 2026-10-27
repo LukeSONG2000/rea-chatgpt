@@ -1,0 +1,317 @@
+{
+  "l10nsvc" : "sourcefile",
+  "finance_account_linking_tab_accounts" : {
+    "defaultMessage" : "ಖಾತೆಗಳು",
+    "description" : "Tab for connecting bank, investment, and other financial accounts in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_manual_accounts" : {
+    "defaultMessage" : "ಹಸ್ತಚಾಲಿತ ಖಾತೆಗಳು",
+    "description" : "Tab for manually adding financial accounts, assets, and debts in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_credit_score" : {
+    "defaultMessage" : "ಕ್ರೆಡಿಟ್ ಸ್ಕೋರ್",
+    "description" : "Tab for connecting credit-score information in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_real_estate" : {
+    "defaultMessage" : "ರಿಯಲ್ ಎಸ್ಟೇಟ್",
+    "description" : "Tab for connecting real-estate information in the Finance account-linking sheet."
+  },
+  "finance_account_linking_title" : {
+    "defaultMessage" : "ಹಣಕಾಸನ್ನು ಸಂಪರ್ಕಿಸಿ",
+    "description" : "Heading shown above the Finance account-linking institution picker."
+  },
+  "finance_account_linking_close_accessibility_label" : {
+    "defaultMessage" : "ಹಣಕಾಸು ಸಂಪರ್ಕವನ್ನು ಮುಚ್ಚಿ",
+    "description" : "Screen-reader label for the button that dismisses Finance account linking."
+  },
+  "finance_account_linking_connection_types_accessibility_label" : {
+    "defaultMessage" : "ಹಣಕಾಸು ಸಂಪರ್ಕದ ಪ್ರಕಾರಗಳು",
+    "description" : "Screen-reader label for the tabs selecting a financial connection type."
+  },
+  "finance_account_linking_search_accessibility_label" : {
+    "defaultMessage" : "ಬ್ಯಾಂಕ್‌ಗಳು ಅಥವಾ ಹೂಡಿಕೆಗಳನ್ನು ಹುಡುಕಿ",
+    "description" : "Screen-reader label for the financial institution search input."
+  },
+  "finance_account_linking_search_placeholder" : {
+    "defaultMessage" : "ಹುಡುಕಿ",
+    "description" : "Placeholder for the financial institution search input."
+  },
+  "finance_account_linking_clear_search_accessibility_label" : {
+    "defaultMessage" : "ಹುಡುಕಾಟ ತೆರವುಗೊಳಿಸಿ",
+    "description" : "Screen-reader label for the button that clears the institution search."
+  },
+  "finance_account_linking_loading_institutions_accessibility_label" : {
+    "defaultMessage" : "ಹಣಕಾಸು ಸಂಸ್ಥೆಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ",
+    "description" : "Screen-reader label announced while the first financial institution page loads."
+  },
+  "finance_account_linking_loading_more_institutions_accessibility_label" : {
+    "defaultMessage" : "ಇನ್ನಷ್ಟು ಹಣಕಾಸು ಸಂಸ್ಥೆಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ",
+    "description" : "Screen-reader label announced while another financial institution page loads."
+  },
+  "finance_account_linking_institution_load_error_accessibility_label" : {
+    "defaultMessage" : "ಹಣಕಾಸು ಸಂಸ್ಥೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ",
+    "description" : "Screen-reader label announced when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_error_title" : {
+    "defaultMessage" : "ಹಣಕಾಸು ಸಂಸ್ಥೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ",
+    "description" : "Title shown when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_error_detail" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "description" : "Supporting text shown when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_retry_accessibility_label" : {
+    "defaultMessage" : "ಹಣಕಾಸು ಸಂಸ್ಥೆಗಳನ್ನು ಮತ್ತೆ ಲೋಡ್ ಮಾಡಲು ಪ್ರಯತ್ನಿಸಿ",
+    "description" : "Screen-reader label for the action that retries a failed institution request."
+  },
+  "finance_account_linking_institution_load_retry" : {
+    "defaultMessage" : "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+    "description" : "Action that retries a failed financial institution request."
+  },
+  "finance_account_linking_empty_institutions_accessibility_label" : {
+    "defaultMessage" : "ಯಾವುದೇ ಹಣಕಾಸು ಸಂಸ್ಥೆಗಳು ಲಭ್ಯವಿಲ್ಲ",
+    "description" : "Screen-reader label announced when there are no financial institutions to show."
+  },
+  "finance_account_linking_no_search_results_accessibility_label" : {
+    "defaultMessage" : "{query} ಗೆ ಯಾವುದೇ ಫಲಿತಾಂಶಗಳಿಲ್ಲ",
+    "description" : "Screen-reader label announced when an institution search finds no matches.",
+    "example" : "No results for Community Bank"
+  },
+  "finance_account_linking_empty_institutions_title" : {
+    "defaultMessage" : "ಯಾವುದೇ ಸಂಸ್ಥೆಗಳು ಲಭ್ಯವಿಲ್ಲ",
+    "description" : "Title shown when the financial institution picker has no available institutions."
+  },
+  "finance_account_linking_no_search_results_title" : {
+    "defaultMessage" : "ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
+    "description" : "Title shown when an institution search finds no matches."
+  },
+  "finance_account_linking_empty_institutions_detail" : {
+    "defaultMessage" : "ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "description" : "Supporting text shown when no financial institutions are available."
+  },
+  "finance_account_linking_no_search_results_detail" : {
+    "defaultMessage" : "“{query}”ಗಾಗಿ ಮತ್ತೊಮ್ಮೆ ಹುಡುಕಿ.",
+    "description" : "Supporting text suggesting a new institution search after no results are found.",
+    "example" : "Try another search for “Community Bank”."
+  },
+  "finance_account_linking_coming_soon_accessibility_label" : {
+    "defaultMessage" : "{connectionType} ಸಂಪರ್ಕಗಳು ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿವೆ",
+    "description" : "Screen-reader label for an unavailable financial connection type.",
+    "example" : "Real estate connections coming soon"
+  },
+  "finance_account_linking_coming_soon_title" : {
+    "defaultMessage" : "{connectionType} ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ",
+    "description" : "Title shown for an unavailable financial connection type.",
+    "example" : "Real estate coming soon"
+  },
+  "finance_account_linking_connecting_institution_accessibility_label" : {
+    "defaultMessage" : "{institutionName} ಅನ್ನು ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ",
+    "description" : "Screen-reader label announced while a specific financial institution is connecting.",
+    "example" : "Connecting Community Bank"
+  },
+  "finance_account_linking_credit_score_title" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಕ್ರೆಡಿಟ್ ಸ್ಕೋರ್ ಸಂಪರ್ಕಿಸಿ",
+    "description" : "Heading and action accessibility label for connecting a credit score."
+  },
+  "finance_account_linking_credit_score_description" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಕ್ರೆಡಿಟ್ ಸ್ಕೋರ್ ಸಂಪರ್ಕಿಸಲು Experian ಮೂಲಕ ನಿಮ್ಮ ಗುರುತನ್ನು ಪರಿಶೀಲಿಸಿ.",
+    "description" : "Explanation that Experian verifies the user's identity before connecting their credit score."
+  },
+  "finance_account_linking_credit_score_verifying_accessibility_label" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಕ್ರೆಡಿಟ್ ಸ್ಕೋರ್ ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ",
+    "description" : "Screen-reader label announced while credit score verification is running."
+  },
+  "finance_account_linking_credit_score_get_started" : {
+    "defaultMessage" : "Experian ಗೆ ಮುಂದುವರಿಸಿ",
+    "description" : "Action that starts Experian's identity-verification flow to connect the user's credit score."
+  },
+  "finance_account_linking_credit_score_experian_title" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಕ್ರೆಡಿಟ್ ಸ್ಕೋರ್ ಅನ್ನು Experian ಜೊತೆಗೆ ಸಂಪರ್ಕಿಸಿ",
+    "description" : "Heading above the benefits of connecting an Experian credit score in ChatGPT Personal Finance. Experian is a brand name; do not translate it."
+  },
+  "finance_account_linking_credit_score_report_title" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಸಂಪೂರ್ಣ ವರದಿಯನ್ನು ನೋಡಿ",
+    "description" : "Benefit title explaining that connecting an Experian credit score includes access to the full report."
+  },
+  "finance_account_linking_credit_score_report_detail" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಸ್ಕೋರ್, ಪ್ರಮುಖ ಅಂಶಗಳು ಮತ್ತು ಸಂಪೂರ್ಣ ವರದಿ ಪಡೆಯಿರಿ",
+    "description" : "Supporting copy for the full credit report benefit in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_monitoring_title" : {
+    "defaultMessage" : "ಸದಾ ಮಾಹಿತಿ ಪಡೆಯಿರಿ",
+    "description" : "Benefit title for credit score updates and monitoring alerts in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_monitoring_detail" : {
+    "defaultMessage" : "ಮಾಸಿಕ ನವೀಕರಣಗಳು ಮತ್ತು ಮೇಲ್ವಿಚಾರಣಾ ಎಚ್ಚರಿಕೆಗಳನ್ನು ಪಡೆಯಿರಿ",
+    "description" : "Supporting copy for credit score updates and monitoring alerts in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_goals_title" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಗುರಿಗಳನ್ನು ಸಾಧಿಸಿ",
+    "description" : "Benefit title for personalized financial insights in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_goals_detail" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಸ್ಕೋರ್ ಮತ್ತು ಹಣಕಾಸಿನ ಆಧಾರದ ಮೇಲೆ ನಿಮಗಾಗಿ ವೈಯಕ್ತೀಕರಿಸಿದ ಒಳನೋಟಗಳು",
+    "description" : "Supporting copy explaining that credit score and financial information inform personalized insights."
+  },
+  "finance_account_linking_credit_score_no_score_impact" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಕ್ರೆಡಿಟ್ ಪರಿಶೀಲಿಸುವುದರಿಂದ ನಿಮ್ಮ ಸ್ಕೋರ್‌ಗೆ ಪರಿಣಾಮ ಬೀರುವುದಿಲ್ಲ",
+    "description" : "Reassurance below the Experian connection action that checking a credit score does not affect it."
+  },
+  "finance_account_linking_credit_score_learn_more" : {
+    "defaultMessage" : "ChatGPTನಲ್ಲಿ ಕ್ರೆಡಿಟ್ ಬಗ್ಗೆ ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ",
+    "description" : "Link below the Experian connection action to information about credit in ChatGPT."
+  },
+  "finance_manual_accounts_category_cash" : {
+    "defaultMessage" : "ನಗದು",
+    "description" : "Manual-account category for cash, checking, and savings accounts."
+  },
+  "finance_manual_accounts_prompt_cash" : {
+    "defaultMessage" : "ನಗದು ಖಾತೆಯನ್ನು ಕೈಯಾರೆ ಟ್ರ್ಯಾಕ್ ಮಾಡಲು ನನಗೆ ಸಹಾಯ ಮಾಡಿ. ಅದರ ಹೆಸರು, ಚಾಲ್ತಿ ಅಥವಾ ಉಳಿತಾಯ ಖಾತೆಯ ಪ್ರಕಾರ, ಪ್ರಸ್ತುತ ಬ್ಯಾಲೆನ್ಸ್ ಮತ್ತು ಕರೆನ್ಸಿ ಅಸ್ಪಷ್ಟವಾಗಿದ್ದರೆ ಅದರ ಬಗ್ಗೆ ಒಂದೊಂದೇ ಚಿಕ್ಕ ಪ್ರಶ್ನೆ ಕೇಳಿ. ಹಣಕಾಸು ಸಂಸ್ಥೆ ಐಚ್ಛಿಕ. ನಾನು ಉತ್ತರಿಸಿದ ನಂತರ, ಅದನ್ನು ಪ್ರತ್ಯೇಕ ಖಾತೆಯ ಹಣಕಾಸು ಮೆಮೊರಿಯಾಗಿ ಉಳಿಸಿ.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Cash manual-account category. Ask one short question at a time for the account name, checking or savings subtype, and current balance; the institution is optional and currency is needed only if unclear. Save a separate account as a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_investments" : {
+    "defaultMessage" : "ಹೂಡಿಕೆಗಳು",
+    "description" : "Manual-account category for investment accounts."
+  },
+  "finance_manual_accounts_prompt_investments" : {
+    "defaultMessage" : "ಹೂಡಿಕೆ ಖಾತೆಯನ್ನು ಕೈಯಾರೆ ಟ್ರ್ಯಾಕ್ ಮಾಡಲು ನನಗೆ ಸಹಾಯ ಮಾಡಿ. ಅದರ ಹೆಸರು, ಪ್ರಕಾರ, ಒಟ್ಟು ಬ್ಯಾಲೆನ್ಸ್ ಮತ್ತು ಕರೆನ್ಸಿ ಸ್ಪಷ್ಟವಿಲ್ಲದಿದ್ದರೆ ಅದರ ಬಗ್ಗೆ ಒಂದೊಂದೇ ಸಣ್ಣ ಪ್ರಶ್ನೆ ಕೇಳಿ. ನಾನು ಉತ್ತರಿಸಿದ ನಂತರ, ಅದನ್ನು ಪ್ರತ್ಯೇಕ ಹೂಡಿಕೆ ಖಾತೆಯ ಹಣಕಾಸು ಮೆಮೊರಿಯಾಗಿ ಉಳಿಸಿ, ಹೋಲ್ಡಿಂಗ್ ಅಥವಾ ಸಾಮಾನ್ಯ ಆಸ್ತಿಯಾಗಿ ಅಲ್ಲ.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Investments manual-account category. Ask one short question at a time for the account name, investment account subtype, and total balance; ask for currency only if unclear. After the user answers, save a separate investment account as a financial memory, not as an individual holding or generic asset. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_real_estate" : {
+    "defaultMessage" : "ರಿಯಲ್ ಎಸ್ಟೇಟ್",
+    "description" : "Manual-account category for homes and other real-estate assets."
+  },
+  "finance_manual_accounts_prompt_real_estate" : {
+    "defaultMessage" : "ರಿಯಲ್ ಎಸ್ಟೇಟ್ ಅನ್ನು ಹಸ್ತಚಾಲಿತವಾಗಿ ಟ್ರ್ಯಾಕ್ ಮಾಡಲು ನನಗೆ ಸಹಾಯ ಮಾಡಿ. ಆಸ್ತಿಯ ಹೆಸರು, ಪ್ರಕಾರ, ಅಂದಾಜು ಮೌಲ್ಯ ಮತ್ತು ಸ್ಪಷ್ಟವಿಲ್ಲದಿದ್ದರೆ ಕರೆನ್ಸಿಗಾಗಿ ಒಂದೊಂದು ಚಿಕ್ಕ ಪ್ರಶ್ನೆ ಕೇಳಿ. ನಾನು ಉತ್ತರಿಸಿದ ನಂತರ, ಅದನ್ನು ಹಣಕಾಸು ಮೆಮೊರಿಯಾಗಿ ಉಳಿಸಿ.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Real estate manual-account category. Ask one short question at a time for the property name, property type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_vehicle" : {
+    "defaultMessage" : "ವಾಹನ",
+    "description" : "Manual-account category for cars and other vehicles."
+  },
+  "finance_manual_accounts_prompt_vehicle" : {
+    "defaultMessage" : "ವಾಹನವನ್ನು ಹಸ್ತಚಾಲಿತವಾಗಿ ಟ್ರ್ಯಾಕ್ ಮಾಡಲು ನನಗೆ ಸಹಾಯ ಮಾಡಿ. ಅದರ ಹೆಸರು, ಪ್ರಕಾರ, ಅಂದಾಜು ಮೌಲ್ಯ ಮತ್ತು ಸ್ಪಷ್ಟವಾಗಿಲ್ಲದಿದ್ದರೆ ಕರೆನ್ಸಿಗಾಗಿ ಒಂದೊಂದೇ ಚಿಕ್ಕ ಪ್ರಶ್ನೆ ಕೇಳಿ. ನಾನು ಉತ್ತರಿಸಿದ ನಂತರ, ಅದನ್ನು ಹಣಕಾಸು ಮೆಮೊರಿಯಾಗಿ ಉಳಿಸಿ.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Vehicle manual-account category. Ask one short question at a time for the vehicle name, vehicle type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_other_assets" : {
+    "defaultMessage" : "ಇತರ ಸ್ವತ್ತುಗಳು",
+    "description" : "Manual-account category for other assets such as collectibles and business interests."
+  },
+  "finance_manual_accounts_prompt_other_assets" : {
+    "defaultMessage" : "ಆಸ್ತಿಯನ್ನು ಕೈಯಾರೆ ಟ್ರ್ಯಾಕ್ ಮಾಡಲು ನನಗೆ ಸಹಾಯ ಮಾಡಿ. ಅದರ ಹೆಸರು, ಪ್ರಕಾರ, ಅಂದಾಜು ಮೌಲ್ಯ ಮತ್ತು ಕರೆನ್ಸಿ ಅಸ್ಪಷ್ಟವಾಗಿದ್ದರೆ ಅದರ ಬಗ್ಗೆ ಒಂದೊಂದೇ ಚಿಕ್ಕ ಪ್ರಶ್ನೆ ಕೇಳಿ. ನಾನು ಉತ್ತರಿಸಿದ ನಂತರ, ಅದನ್ನು ಹಣಕಾಸು ಮೆಮೊರಿಯಾಗಿ ಉಳಿಸಿ.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Other assets manual-account category. Ask one short question at a time for the asset name, asset type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_loans" : {
+    "defaultMessage" : "ಸಾಲಗಳು",
+    "description" : "Manual-account category for mortgages, student loans, and other loans."
+  },
+  "finance_manual_accounts_prompt_loans" : {
+    "defaultMessage" : "ಸಾಲವನ್ನು ಕೈಯಾರೆ ಟ್ರ್ಯಾಕ್ ಮಾಡಲು ನನಗೆ ಸಹಾಯ ಮಾಡಿ. ಅದರ ಹೆಸರು, ಪ್ರಕಾರ, ಬಾಕಿಯಿರುವ ಧನಾತ್ಮಕ ಮೊತ್ತ ಮತ್ತು ಸ್ಪಷ್ಟವಿಲ್ಲದಿದ್ದರೆ ಕರೆನ್ಸಿಗಾಗಿ ಒಂದೊಂದೇ ಚಿಕ್ಕ ಪ್ರಶ್ನೆ ಕೇಳಿ. ಸಾಲದಾತ ಐಚ್ಛಿಕ. ನಾನು ಉತ್ತರಿಸಿದ ಬಳಿಕ, ಅದನ್ನು ಹಣಕಾಸಿನ ಮೆಮೊರಿಯಾಗಿ ಉಳಿಸಿ.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Loans manual-account category. Ask one short question at a time for the loan name, loan type, and positive amount owed; the lender is optional and currency is needed only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_other_debt" : {
+    "defaultMessage" : "ಇತರೆ ಸಾಲ",
+    "description" : "Manual-account category for credit cards and other non-loan debts."
+  },
+  "finance_manual_accounts_prompt_other_debt" : {
+    "defaultMessage" : "ಸಾಲವನ್ನು ಹಸ್ತಚಾಲಿತವಾಗಿ ಟ್ರ್ಯಾಕ್ ಮಾಡಲು ನನಗೆ ಸಹಾಯ ಮಾಡಿ. ಅದರ ಹೆಸರು, ಅದು ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್ ಆಗಿದೆಯೇ, ಬಾಕಿಯಿರುವ ಧನಾತ್ಮಕ ಮೊತ್ತ ಮತ್ತು ಕರೆನ್ಸಿ ಸ್ಪಷ್ಟವಾಗಿಲ್ಲದಿದ್ದರೆ ಅದರ ಬಗ್ಗೆ ಒಂದೊಂದೇ ಚಿಕ್ಕ ಪ್ರಶ್ನೆ ಕೇಳಿ. ಸಾಲದಾತರ ಮಾಹಿತಿ ಐಚ್ಛಿಕ. ನಾನು ಉತ್ತರಿಸಿದ ನಂತರ, ಅದನ್ನು ಹಣಕಾಸು ಮೆಮೊರಿಯಾಗಿ ಉಳಿಸಿ.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Other debt manual-account category. Ask one short question at a time for the debt name, credit-card or other debt subtype, and positive amount owed; the creditor is optional and currency is needed only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_tax_records" : {
+    "defaultMessage" : "ತೆರಿಗೆ ದಾಖಲೆಗಳು",
+    "description" : "Unavailable manual-account category for tax records."
+  },
+  "finance_manual_accounts_category_insurance" : {
+    "defaultMessage" : "ವಿಮೆ",
+    "description" : "Manual-account category for insurance policies that have a cash value."
+  },
+  "finance_manual_accounts_prompt_insurance" : {
+    "defaultMessage" : "ವಿಮಾ ಪಾಲಿಸಿಯನ್ನು ಹಸ್ತಚಾಲಿತವಾಗಿ ಟ್ರ್ಯಾಕ್ ಮಾಡಲು ನನಗೆ ಸಹಾಯ ಮಾಡಿ. ಮೊದಲು ಅದಕ್ಕೆ ಕೇವಲ ಮರಣ ಪ್ರಯೋಜನವಲ್ಲದೆ ವಾಸ್ತವಿಕ ನಗದು ಅಥವಾ ಸರೆಂಡರ್ ಮೌಲ್ಯವಿದೆಯೇ ಎಂದು ಕೇಳಿ. ನಂತರ ಅದರ ಹೆಸರು ಮತ್ತು ಮೌಲ್ಯದ ಬಗ್ಗೆ ಒಂದೊಂದೇ ಚಿಕ್ಕ ಪ್ರಶ್ನೆ ಕೇಳಿ; ಕರೆನ್ಸಿ ಸ್ಪಷ್ಟವಾಗಿಲ್ಲದಿದ್ದರೆ ಮಾತ್ರ ಅದನ್ನೂ ಕೇಳಿ. ನಾನು ಉತ್ತರಿಸಿದ ನಂತರವೇ ಅದನ್ನು ಹಣಕಾಸು ಮೆಮೊರಿಯಾಗಿ ಉಳಿಸಿ.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Insurance manual-account category. First confirm the policy has actual cash or surrender value, not merely a death benefit, then ask one short question at a time for its name and cash value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_account_linking_credit_score_unavailable" : {
+    "defaultMessage" : "ಕ್ರೆಡಿಟ್ ಪರಿಶೀಲನೆ ಸದ್ಯಕ್ಕೆ ಲಭ್ಯವಿಲ್ಲ.",
+    "description" : "Message shown while shared Finance cannot safely start credit verification."
+  },
+  "finance_account_linking_credit_score_connected" : {
+    "defaultMessage" : "ಕ್ರೆಡಿಟ್ ಸ್ಕೋರ್ ಸಂಪರ್ಕಿಸಲಾಗಿದೆ",
+    "description" : "Screen-reader status for the connected credit-bureau row in the Credit score tab of ChatGPT Personal Finance's Connect finances dialog. Also shown below the bureau name while a numeric score is not available. The connection does not need another identity verification."
+  },
+  "finance_account_linking_credit_provider_name" : {
+    "defaultMessage" : "Experian",
+    "description" : "Name of the connected credit bureau in the Credit score tab of ChatGPT Personal Finance's Connect finances dialog. Experian is a brand name; do not translate it. Short row title above the user's credit score."
+  },
+  "finance_account_linking_credit_score_summary" : {
+    "defaultMessage" : "{score} ಕ್ರೆಡಿಟ್ ಸ್ಕೋರ್",
+    "description" : "Compact subtitle below Experian in the connected Credit score tab of ChatGPT Personal Finance's Connect finances dialog. The score placeholder is the user's actual credit score, already formatted as a localized whole number. Keep this descriptive and neutral; do not add a rating or imply that the score has changed.",
+    "example" : "739 credit score"
+  },
+  "finance_account_linking_credit_status_loading" : {
+    "defaultMessage" : "ಕ್ರೆಡಿಟ್ ಸ್ಥಿತಿಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ",
+    "description" : "Screen-reader label announced while shared Finance loads the account's credit status."
+  },
+  "finance_account_linking_credit_identity_verified" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಗುರುತನ್ನು ದೃಢೀಕರಿಸಲಾಗಿದೆ",
+    "description" : "Heading after the backend confirms Experian identity verification, while the first credit report is still being prepared. This does not mean the report or score is ready."
+  },
+  "finance_account_linking_credit_report_preparing" : {
+    "defaultMessage" : "Experian ನಿಮ್ಮ ಕ್ರೆಡಿಟ್ ವರದಿಯನ್ನು ಸಿದ್ಧಪಡಿಸುತ್ತಿದೆ. ನೀವು ಇಲ್ಲಿಂದ ಹೊರಹೋಗಿ ನಂತರ ಮತ್ತೆ ಪರಿಶೀಲಿಸಬಹುದು.",
+    "description" : "Neutral progress message while the first Experian credit report is pending after identity verification. Also labels the activity indicator. Do not imply a failure, a percentage, or a completion time."
+  },
+  "finance_account_linking_credit_report_check_again" : {
+    "defaultMessage" : "ಮತ್ತೆ ಪರಿಶೀಲಿಸಿ",
+    "description" : "Action to check whether a pending first credit report is ready after automatic status checks stop. This checks the server and does not restart identity verification."
+  },
+  "finance_account_linking_credit_verification_failed" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಗುರುತನ್ನು ಪರಿಶೀಲಿಸಲು ನಮಗೆ ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಸಹಾಯಕ್ಕಾಗಿ Experian ಅನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+    "description" : "Experian contact guidance after an authoritative identity-verification failure."
+  },
+  "finance_account_linking_credit_verification_expired" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಪರಿಶೀಲನೆ ಸೆಷನ್ ಅವಧಿ ಮುಗಿದಿದೆ. ಹೊಸ ಸೆಷನ್ ಆರಂಭಿಸಲು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "description" : "Message shown when the backend confirms that the verification session expired."
+  },
+  "finance_account_linking_credit_verification_error" : {
+    "defaultMessage" : "ಪರಿಶೀಲನೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "description" : "Generic retry message when verification cannot be completed; does not imply identity rejection."
+  },
+  "finance_account_linking_credit_verification_incomplete" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಪರಿಶೀಲನೆ ಅಪೂರ್ಣವಾಗಿದೆ. ನೀವು ಸಿದ್ಧರಾದಾಗ ಮುಂದುವರಿಸಿ.",
+    "description" : "Message after cancellation or when the backend requires further verification."
+  },
+  "finance_account_linking_credit_verification_continue" : {
+    "defaultMessage" : "ಪರಿಶೀಲನೆಯನ್ನು ಮುಂದುವರಿಸಿ",
+    "description" : "Action that resumes an unfinished identity verification."
+  },
+  "finance_account_linking_credit_verification_retry" : {
+    "defaultMessage" : "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+    "description" : "Action that starts enrollment again after an expired session or an interruption; not shown for a confirmed identity-verification failure."
+  },
+  "finance_account_linking_credit_status_load_error" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಕ್ರೆಡಿಟ್ ಸ್ಥಿತಿಯನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    "description" : "Message shown when shared Finance cannot read the account's credit status."
+  },
+  "finance_account_linking_credit_status_retry" : {
+    "defaultMessage" : "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+    "description" : "Action that retries a failed credit status read without starting verification."
+  },
+  "finance_account_linking_credit_status_retry_accessibility_label" : {
+    "defaultMessage" : "ಕ್ರೆಡಿಟ್ ಸ್ಥಿತಿ ಲೋಡ್ ಮಾಡಲು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+    "description" : "Screen-reader label for the action that retries a failed credit status read."
+  },
+  "finance_account_linking_confirmation_title" : {
+    "defaultMessage" : "ಯಶಸ್ವಿಯಾಗಿ ಸಂಪರ್ಕಗೊಂಡಿದೆ",
+    "description" : "Heading and success-icon accessibility label shown after financial institutions connect."
+  },
+  "finance_account_linking_continue_accessibility_label" : {
+    "defaultMessage" : "ಹಣಕಾಸು ಖಾತೆಗಳನ್ನು ಸಂಪರ್ಕಿಸುವುದನ್ನು ಮುಂದುವರಿಸಿ",
+    "description" : "Screen-reader label for the action that dismisses the account-linking confirmation."
+  },
+  "finance_account_linking_continue" : {
+    "defaultMessage" : "ಮುಂದುವರಿಸಿ",
+    "description" : "Action that dismisses the financial account-linking confirmation."
+  },
+  "finance_account_linking_connecting_accounts" : {
+    "defaultMessage" : "ನಿಮ್ಮ ಖಾತೆಗಳನ್ನು ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ",
+    "description" : "Progress message shown while linked financial accounts finish connecting."
+  }
+}

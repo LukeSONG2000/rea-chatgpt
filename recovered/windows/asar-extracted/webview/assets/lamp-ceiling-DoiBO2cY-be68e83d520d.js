@@ -1,0 +1,1 @@
+import{n as e,t}from"./lamp-ceiling-DoiBO2cY-4d71d9f4006f.js";t();export{e as default};

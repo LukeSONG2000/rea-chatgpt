@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-notepad-text-b51b1821559b3b51.js";e();export{t as default};

@@ -1,0 +1,37 @@
+package com.withpersona.sdk2.inquiry.tracking;
+
+import com.google.mlkit.common.MlKitException;
+import com.withpersona.sdk2.inquiry.tracking.TrackingEventsLoggerImpl;
+import defpackage.cng;
+import defpackage.eng;
+import defpackage.nsj;
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes7.dex */
+@nsj(c = "com.withpersona.sdk2.inquiry.tracking.TrackingEventsLoggerImpl$Companion", f = "TrackingEventsLoggerImpl.kt", l = {MlKitException.NOT_ENOUGH_SPACE, 111}, m = "createTrackingEventsRequest")
+@Metadata(k = 3, mv = {2, 2, 0}, xi = 48)
+public final class TrackingEventsLoggerImpl$Companion$createTrackingEventsRequest$1 extends eng {
+    Object L$0;
+    Object L$1;
+    Object L$2;
+    Object L$3;
+    Object L$4;
+    Object L$5;
+    int label;
+    /* synthetic */ Object result;
+    final /* synthetic */ TrackingEventsLoggerImpl.Companion this$0;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public TrackingEventsLoggerImpl$Companion$createTrackingEventsRequest$1(TrackingEventsLoggerImpl.Companion companion, cng<? super TrackingEventsLoggerImpl$Companion$createTrackingEventsRequest$1> cngVar) {
+        super(cngVar);
+        this.this$0 = companion;
+    }
+
+    @Override // defpackage.ri5
+    public final Object invokeSuspend(Object obj) {
+        this.result = obj;
+        this.label |= Integer.MIN_VALUE;
+        return this.this$0.createTrackingEventsRequest(null, null, this);
+    }
+}

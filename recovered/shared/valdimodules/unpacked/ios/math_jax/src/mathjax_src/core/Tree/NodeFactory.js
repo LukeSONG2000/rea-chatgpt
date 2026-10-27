@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.AbstractNodeFactory=void 0;const t=require("./Factory");class AbstractNodeFactory extends t.AbstractFactory{create(t,e={},r=[]){return this.node[t](e,r)}}exports.AbstractNodeFactory=AbstractNodeFactory;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.AbstractFindMath=void 0;const t=require("../util/Options");class AbstractFindMath{constructor(s){const r=this.constructor;this.options=(0,t.userOptions)((0,t.defaultOptions)({},r.OPTIONS),s)}}exports.AbstractFindMath=AbstractFindMath,AbstractFindMath.OPTIONS={};

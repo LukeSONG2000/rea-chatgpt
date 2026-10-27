@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";function t(e,t){let n=!0,r=!1,i,a=()=>{if(!n||!r)return;let a=t();a!==i&&(i=a,e.setDevToolsInsetBackgroundColor(a))};return e.subscribeDevToolsFirstOpened(()=>{r=!0,a()}),{update:a,[Symbol.dispose](){n=!1,e.unsubscribeDevToolsFirstOpened(),i!=null&&e.setDevToolsInsetBackgroundColor(null)}}}function n(){return(n=e((()=>{})))()}export{n,t};
+//# sourceMappingURL=devtools-inset-color-ed6cdd923e2b.js.map

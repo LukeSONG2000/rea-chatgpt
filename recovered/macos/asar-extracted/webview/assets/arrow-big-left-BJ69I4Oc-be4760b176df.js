@@ -1,0 +1,1 @@
+import{n as e,t}from"./arrow-big-left-BJ69I4Oc-3e98ae8983d2.js";t();export{e as default};

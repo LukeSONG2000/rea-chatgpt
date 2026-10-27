@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-utensils-crossed-c1dffcae26f54193.js";e();export{t as default};

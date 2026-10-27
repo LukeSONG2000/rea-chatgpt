@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.publishBehavior=void 0;const e=require("../BehaviorSubject"),r=require("../observable/ConnectableObservable");function o(o){return t=>{const b=new e.BehaviorSubject(o);return new r.ConnectableObservable(t,()=>b)}}exports.publishBehavior=o;

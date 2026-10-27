@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.throttleTime=void 0;const e=require("../scheduler/async"),t=require("./throttle"),r=require("../observable/timer");function o(o,i=e.asyncScheduler,s=t.defaultThrottleConfig){const l=(0,r.timer)(o,i);return(0,t.throttle)(()=>l,s)}exports.throttleTime=o;

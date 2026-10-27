@@ -1,0 +1,1 @@
+import{C3 as e,w3 as t}from"./app-primary-7d7313419f84.js";e();export{t as moveTabToNewWindow};

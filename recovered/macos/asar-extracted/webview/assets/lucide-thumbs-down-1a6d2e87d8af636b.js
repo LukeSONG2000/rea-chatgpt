@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-thumbs-down-8d2feab50600a478.js";e();export{t as default};

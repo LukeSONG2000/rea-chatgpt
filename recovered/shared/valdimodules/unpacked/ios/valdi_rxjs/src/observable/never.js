@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.never=exports.NEVER=void 0;const e=require("../Observable"),r=require("../util/noop");function o(){return exports.NEVER}exports.NEVER=new e.Observable(r.noop),exports.never=o;

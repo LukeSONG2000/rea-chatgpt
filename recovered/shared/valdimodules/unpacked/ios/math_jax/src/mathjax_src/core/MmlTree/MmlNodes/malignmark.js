@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.MmlMalignmark=void 0;const e=require("../MmlNode");class MmlMalignmark extends e.AbstractMmlNode{get kind(){return"malignmark"}get arity(){return 0}get isSpacelike(){return!0}}exports.MmlMalignmark=MmlMalignmark,MmlMalignmark.defaults={...e.AbstractMmlNode.defaults,edge:"left"};

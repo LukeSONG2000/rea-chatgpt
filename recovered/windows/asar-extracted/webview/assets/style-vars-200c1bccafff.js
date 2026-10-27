@@ -1,0 +1,4 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";function t(e,t){let n=`:where(:root:not([data-codex-window-type="extension"]))`,r=`@layer theme {${[`light`,`dark`].map(e=>{let r=Object.entries(t[e]).map(([e,t])=>`${e}:${t};`).join(`
+`);return`${n}[data-theme="${e}"], ${n} [data-theme="${e}"] {${r}}`}).join(`
+`)}}`,i=e.head.querySelector(`style[data-codex-app-themes]`);return i??(i=e.createElement(`style`),i.dataset.codexAppThemes=``,e.head.append(i)),i.textContent!==r&&(i.textContent=r),r}function n(){return(n=e((()=>{})))()}function r(e,t){for(let[n,r]of Object.entries(t)){if(r==null){e.style.getPropertyValue(n).length>0&&e.style.removeProperty(n);continue}e.style.getPropertyValue(n)!==r&&e.style.setProperty(n,r)}}function i(){return(i=e((()=>{})))()}export{n as i,i as n,t as r,r as t};
+//# sourceMappingURL=style-vars-200c1bccafff.js.map

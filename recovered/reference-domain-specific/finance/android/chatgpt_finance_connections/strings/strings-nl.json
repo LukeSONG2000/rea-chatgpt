@@ -1,0 +1,317 @@
+{
+  "l10nsvc" : "sourcefile",
+  "finance_account_linking_tab_accounts" : {
+    "defaultMessage" : "Rekeningen",
+    "description" : "Tab for connecting bank, investment, and other financial accounts in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_manual_accounts" : {
+    "defaultMessage" : "Handmatige rekeningen",
+    "description" : "Tab for manually adding financial accounts, assets, and debts in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_credit_score" : {
+    "defaultMessage" : "Kredietscore",
+    "description" : "Tab for connecting credit-score information in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_real_estate" : {
+    "defaultMessage" : "Vastgoed",
+    "description" : "Tab for connecting real-estate information in the Finance account-linking sheet."
+  },
+  "finance_account_linking_title" : {
+    "defaultMessage" : "Financiën koppelen",
+    "description" : "Heading shown above the Finance account-linking institution picker."
+  },
+  "finance_account_linking_close_accessibility_label" : {
+    "defaultMessage" : "Financiën koppelen sluiten",
+    "description" : "Screen-reader label for the button that dismisses Finance account linking."
+  },
+  "finance_account_linking_connection_types_accessibility_label" : {
+    "defaultMessage" : "Typen financiële verbindingen",
+    "description" : "Screen-reader label for the tabs selecting a financial connection type."
+  },
+  "finance_account_linking_search_accessibility_label" : {
+    "defaultMessage" : "Banken of beleggingen zoeken",
+    "description" : "Screen-reader label for the financial institution search input."
+  },
+  "finance_account_linking_search_placeholder" : {
+    "defaultMessage" : "Zoeken",
+    "description" : "Placeholder for the financial institution search input."
+  },
+  "finance_account_linking_clear_search_accessibility_label" : {
+    "defaultMessage" : "Zoekopdracht wissen",
+    "description" : "Screen-reader label for the button that clears the institution search."
+  },
+  "finance_account_linking_loading_institutions_accessibility_label" : {
+    "defaultMessage" : "Financiële instellingen laden",
+    "description" : "Screen-reader label announced while the first financial institution page loads."
+  },
+  "finance_account_linking_loading_more_institutions_accessibility_label" : {
+    "defaultMessage" : "Meer financiële instellingen laden",
+    "description" : "Screen-reader label announced while another financial institution page loads."
+  },
+  "finance_account_linking_institution_load_error_accessibility_label" : {
+    "defaultMessage" : "Kan financiële instellingen niet laden",
+    "description" : "Screen-reader label announced when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_error_title" : {
+    "defaultMessage" : "Kan instellingen niet laden",
+    "description" : "Title shown when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_error_detail" : {
+    "defaultMessage" : "Controleer je verbinding en probeer het opnieuw.",
+    "description" : "Supporting text shown when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_retry_accessibility_label" : {
+    "defaultMessage" : "Probeer financiële instellingen opnieuw te laden",
+    "description" : "Screen-reader label for the action that retries a failed institution request."
+  },
+  "finance_account_linking_institution_load_retry" : {
+    "defaultMessage" : "Opnieuw proberen",
+    "description" : "Action that retries a failed financial institution request."
+  },
+  "finance_account_linking_empty_institutions_accessibility_label" : {
+    "defaultMessage" : "Geen financiële instellingen beschikbaar",
+    "description" : "Screen-reader label announced when there are no financial institutions to show."
+  },
+  "finance_account_linking_no_search_results_accessibility_label" : {
+    "defaultMessage" : "Geen resultaten voor {query}",
+    "description" : "Screen-reader label announced when an institution search finds no matches.",
+    "example" : "No results for Community Bank"
+  },
+  "finance_account_linking_empty_institutions_title" : {
+    "defaultMessage" : "Geen instellingen beschikbaar",
+    "description" : "Title shown when the financial institution picker has no available institutions."
+  },
+  "finance_account_linking_no_search_results_title" : {
+    "defaultMessage" : "Geen resultaten gevonden",
+    "description" : "Title shown when an institution search finds no matches."
+  },
+  "finance_account_linking_empty_institutions_detail" : {
+    "defaultMessage" : "Probeer het over een moment opnieuw.",
+    "description" : "Supporting text shown when no financial institutions are available."
+  },
+  "finance_account_linking_no_search_results_detail" : {
+    "defaultMessage" : "Probeer een andere zoekopdracht voor ‘{query}’.",
+    "description" : "Supporting text suggesting a new institution search after no results are found.",
+    "example" : "Try another search for “Community Bank”."
+  },
+  "finance_account_linking_coming_soon_accessibility_label" : {
+    "defaultMessage" : "{connectionType}-koppelingen binnenkort beschikbaar",
+    "description" : "Screen-reader label for an unavailable financial connection type.",
+    "example" : "Real estate connections coming soon"
+  },
+  "finance_account_linking_coming_soon_title" : {
+    "defaultMessage" : "{connectionType} binnenkort beschikbaar",
+    "description" : "Title shown for an unavailable financial connection type.",
+    "example" : "Real estate coming soon"
+  },
+  "finance_account_linking_connecting_institution_accessibility_label" : {
+    "defaultMessage" : "Verbinding maken met {institutionName}",
+    "description" : "Screen-reader label announced while a specific financial institution is connecting.",
+    "example" : "Connecting Community Bank"
+  },
+  "finance_account_linking_credit_score_title" : {
+    "defaultMessage" : "Verbind je kredietscore",
+    "description" : "Heading and action accessibility label for connecting a credit score."
+  },
+  "finance_account_linking_credit_score_description" : {
+    "defaultMessage" : "Verifieer je identiteit bij Experian om je kredietscore te koppelen.",
+    "description" : "Explanation that Experian verifies the user's identity before connecting their credit score."
+  },
+  "finance_account_linking_credit_score_verifying_accessibility_label" : {
+    "defaultMessage" : "Je kredietscore wordt gecontroleerd",
+    "description" : "Screen-reader label announced while credit score verification is running."
+  },
+  "finance_account_linking_credit_score_get_started" : {
+    "defaultMessage" : "Doorgaan naar Experian",
+    "description" : "Action that starts Experian's identity-verification flow to connect the user's credit score."
+  },
+  "finance_account_linking_credit_score_experian_title" : {
+    "defaultMessage" : "Koppel je kredietscore van Experian",
+    "description" : "Heading above the benefits of connecting an Experian credit score in ChatGPT Personal Finance. Experian is a brand name; do not translate it."
+  },
+  "finance_account_linking_credit_score_report_title" : {
+    "defaultMessage" : "Bekijk uw volledige rapport",
+    "description" : "Benefit title explaining that connecting an Experian credit score includes access to the full report."
+  },
+  "finance_account_linking_credit_score_report_detail" : {
+    "defaultMessage" : "Bekijk je score, de belangrijkste factoren en het volledige rapport",
+    "description" : "Supporting copy for the full credit report benefit in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_monitoring_title" : {
+    "defaultMessage" : "Blijf op de hoogte",
+    "description" : "Benefit title for credit score updates and monitoring alerts in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_monitoring_detail" : {
+    "defaultMessage" : "Ontvang maandelijkse updates en monitoringmeldingen",
+    "description" : "Supporting copy for credit score updates and monitoring alerts in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_goals_title" : {
+    "defaultMessage" : "Bereik je doelen",
+    "description" : "Benefit title for personalized financial insights in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_goals_detail" : {
+    "defaultMessage" : "Inzichten op maat op basis van je score en financiën",
+    "description" : "Supporting copy explaining that credit score and financial information inform personalized insights."
+  },
+  "finance_account_linking_credit_score_no_score_impact" : {
+    "defaultMessage" : "Je krediet controleren heeft geen invloed op je score",
+    "description" : "Reassurance below the Experian connection action that checking a credit score does not affect it."
+  },
+  "finance_account_linking_credit_score_learn_more" : {
+    "defaultMessage" : "Meer informatie over krediet in ChatGPT",
+    "description" : "Link below the Experian connection action to information about credit in ChatGPT."
+  },
+  "finance_manual_accounts_category_cash" : {
+    "defaultMessage" : "Contant geld",
+    "description" : "Manual-account category for cash, checking, and savings accounts."
+  },
+  "finance_manual_accounts_prompt_cash" : {
+    "defaultMessage" : "Help me handmatig een geldrekening bij te houden. Stel telkens één korte vraag over de naam, het type betaal- of spaarrekening, het huidige saldo en, indien onduidelijk, de valuta. Een financiële instelling is optioneel. Sla deze na mijn antwoord op als financiële herinnering voor een aparte rekening.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Cash manual-account category. Ask one short question at a time for the account name, checking or savings subtype, and current balance; the institution is optional and currency is needed only if unclear. Save a separate account as a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_investments" : {
+    "defaultMessage" : "Beleggingen",
+    "description" : "Manual-account category for investment accounts."
+  },
+  "finance_manual_accounts_prompt_investments" : {
+    "defaultMessage" : "Help me handmatig een beleggingsrekening bij te houden. Stel telkens één korte vraag over de naam, het type, het totale saldo en, indien onduidelijk, de valuta. Sla deze na mijn antwoord op als financiële herinnering voor een aparte beleggingsrekening, niet als positie of algemeen vermogensbestanddeel.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Investments manual-account category. Ask one short question at a time for the account name, investment account subtype, and total balance; ask for currency only if unclear. After the user answers, save a separate investment account as a financial memory, not as an individual holding or generic asset. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_real_estate" : {
+    "defaultMessage" : "Vastgoed",
+    "description" : "Manual-account category for homes and other real-estate assets."
+  },
+  "finance_manual_accounts_prompt_real_estate" : {
+    "defaultMessage" : "Help me vastgoed handmatig bij te houden. Stel één korte vraag tegelijk over de naam, het type en de geschatte waarde van het pand, en bij onduidelijkheid over de valuta. Sla het na mijn antwoord op als financiële herinnering.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Real estate manual-account category. Ask one short question at a time for the property name, property type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_vehicle" : {
+    "defaultMessage" : "Voertuig",
+    "description" : "Manual-account category for cars and other vehicles."
+  },
+  "finance_manual_accounts_prompt_vehicle" : {
+    "defaultMessage" : "Help me een voertuig handmatig bij te houden. Stel één korte vraag tegelijk over de naam, het type, de geschatte waarde en, als die onduidelijk is, de valuta. Sla het na mijn antwoord op als financiële herinnering.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Vehicle manual-account category. Ask one short question at a time for the vehicle name, vehicle type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_other_assets" : {
+    "defaultMessage" : "Overige bezittingen",
+    "description" : "Manual-account category for other assets such as collectibles and business interests."
+  },
+  "finance_manual_accounts_prompt_other_assets" : {
+    "defaultMessage" : "Help me handmatig een bezit bij te houden. Stel één korte vraag tegelijk over de naam, het type, de geschatte waarde en, indien onduidelijk, de valuta. Sla het na mijn antwoord op als financiële herinnering.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Other assets manual-account category. Ask one short question at a time for the asset name, asset type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_loans" : {
+    "defaultMessage" : "Leningen",
+    "description" : "Manual-account category for mortgages, student loans, and other loans."
+  },
+  "finance_manual_accounts_prompt_loans" : {
+    "defaultMessage" : "Help me een lening handmatig bij te houden. Stel steeds één korte vraag over de naam, het type, het positieve openstaande bedrag en, indien onduidelijk, de valuta. Een kredietverstrekker is optioneel. Sla het na mijn antwoord op als financiële herinnering.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Loans manual-account category. Ask one short question at a time for the loan name, loan type, and positive amount owed; the lender is optional and currency is needed only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_other_debt" : {
+    "defaultMessage" : "Overige schulden",
+    "description" : "Manual-account category for credit cards and other non-loan debts."
+  },
+  "finance_manual_accounts_prompt_other_debt" : {
+    "defaultMessage" : "Help me een schuld handmatig bij te houden. Stel één korte vraag tegelijk over de naam, of het een creditcard is, het positieve verschuldigde bedrag en, indien onduidelijk, de valuta. Een schuldeiser is optioneel. Sla het na mijn antwoord op als financiële herinnering.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Other debt manual-account category. Ask one short question at a time for the debt name, credit-card or other debt subtype, and positive amount owed; the creditor is optional and currency is needed only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_tax_records" : {
+    "defaultMessage" : "Belastingdocumenten",
+    "description" : "Unavailable manual-account category for tax records."
+  },
+  "finance_manual_accounts_category_insurance" : {
+    "defaultMessage" : "Verzekeringen",
+    "description" : "Manual-account category for insurance policies that have a cash value."
+  },
+  "finance_manual_accounts_prompt_insurance" : {
+    "defaultMessage" : "Help me handmatig een verzekeringspolis bij te houden. Vraag eerst of die een werkelijke contante waarde of afkoopwaarde heeft, en niet alleen een overlijdensuitkering. Stel daarna steeds één korte vraag over de naam, waarde en, indien onduidelijk, valuta. Sla die pas als financiële herinnering op nadat ik heb geantwoord.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Insurance manual-account category. First confirm the policy has actual cash or surrender value, not merely a death benefit, then ask one short question at a time for its name and cash value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_account_linking_credit_score_unavailable" : {
+    "defaultMessage" : "Kredietverificatie is momenteel niet beschikbaar.",
+    "description" : "Message shown while shared Finance cannot safely start credit verification."
+  },
+  "finance_account_linking_credit_score_connected" : {
+    "defaultMessage" : "Kredietscore gekoppeld",
+    "description" : "Screen-reader status for the connected credit-bureau row in the Credit score tab of ChatGPT Personal Finance's Connect finances dialog. Also shown below the bureau name while a numeric score is not available. The connection does not need another identity verification."
+  },
+  "finance_account_linking_credit_provider_name" : {
+    "defaultMessage" : "Experian",
+    "description" : "Name of the connected credit bureau in the Credit score tab of ChatGPT Personal Finance's Connect finances dialog. Experian is a brand name; do not translate it. Short row title above the user's credit score."
+  },
+  "finance_account_linking_credit_score_summary" : {
+    "defaultMessage" : "{score} kredietscore",
+    "description" : "Compact subtitle below Experian in the connected Credit score tab of ChatGPT Personal Finance's Connect finances dialog. The score placeholder is the user's actual credit score, already formatted as a localized whole number. Keep this descriptive and neutral; do not add a rating or imply that the score has changed.",
+    "example" : "739 credit score"
+  },
+  "finance_account_linking_credit_status_loading" : {
+    "defaultMessage" : "Kredietstatus laden",
+    "description" : "Screen-reader label announced while shared Finance loads the account's credit status."
+  },
+  "finance_account_linking_credit_identity_verified" : {
+    "defaultMessage" : "Je identiteit is geverifieerd",
+    "description" : "Heading after the backend confirms Experian identity verification, while the first credit report is still being prepared. This does not mean the report or score is ready."
+  },
+  "finance_account_linking_credit_report_preparing" : {
+    "defaultMessage" : "Experian stelt je kredietrapport op. Je kunt weggaan en later terugkomen.",
+    "description" : "Neutral progress message while the first Experian credit report is pending after identity verification. Also labels the activity indicator. Do not imply a failure, a percentage, or a completion time."
+  },
+  "finance_account_linking_credit_report_check_again" : {
+    "defaultMessage" : "Opnieuw controleren",
+    "description" : "Action to check whether a pending first credit report is ready after automatic status checks stop. This checks the server and does not restart identity verification."
+  },
+  "finance_account_linking_credit_verification_failed" : {
+    "defaultMessage" : "We konden uw identiteit niet verifiëren. Neem voor hulp contact op met Experian.",
+    "description" : "Experian contact guidance after an authoritative identity-verification failure."
+  },
+  "finance_account_linking_credit_verification_expired" : {
+    "defaultMessage" : "Je verificatiesessie is verlopen. Probeer het opnieuw om een nieuwe sessie te starten.",
+    "description" : "Message shown when the backend confirms that the verification session expired."
+  },
+  "finance_account_linking_credit_verification_error" : {
+    "defaultMessage" : "We konden de verificatie niet voltooien. Probeer het opnieuw.",
+    "description" : "Generic retry message when verification cannot be completed; does not imply identity rejection."
+  },
+  "finance_account_linking_credit_verification_incomplete" : {
+    "defaultMessage" : "Je verificatie is nog niet voltooid. Ga door wanneer je er klaar voor bent.",
+    "description" : "Message after cancellation or when the backend requires further verification."
+  },
+  "finance_account_linking_credit_verification_continue" : {
+    "defaultMessage" : "Doorgaan met verificatie",
+    "description" : "Action that resumes an unfinished identity verification."
+  },
+  "finance_account_linking_credit_verification_retry" : {
+    "defaultMessage" : "Opnieuw proberen",
+    "description" : "Action that starts enrollment again after an expired session or an interruption; not shown for a confirmed identity-verification failure."
+  },
+  "finance_account_linking_credit_status_load_error" : {
+    "defaultMessage" : "We konden je kredietstatus niet laden.",
+    "description" : "Message shown when shared Finance cannot read the account's credit status."
+  },
+  "finance_account_linking_credit_status_retry" : {
+    "defaultMessage" : "Opnieuw proberen",
+    "description" : "Action that retries a failed credit status read without starting verification."
+  },
+  "finance_account_linking_credit_status_retry_accessibility_label" : {
+    "defaultMessage" : "Opnieuw proberen kredietstatus te laden",
+    "description" : "Screen-reader label for the action that retries a failed credit status read."
+  },
+  "finance_account_linking_confirmation_title" : {
+    "defaultMessage" : "Verbinding geslaagd",
+    "description" : "Heading and success-icon accessibility label shown after financial institutions connect."
+  },
+  "finance_account_linking_continue_accessibility_label" : {
+    "defaultMessage" : "Doorgaan met koppelen van financiële rekeningen",
+    "description" : "Screen-reader label for the action that dismisses the account-linking confirmation."
+  },
+  "finance_account_linking_continue" : {
+    "defaultMessage" : "Doorgaan",
+    "description" : "Action that dismisses the financial account-linking confirmation."
+  },
+  "finance_account_linking_connecting_accounts" : {
+    "defaultMessage" : "Je rekeningen worden gekoppeld",
+    "description" : "Progress message shown while linked financial accounts finish connecting."
+  }
+}

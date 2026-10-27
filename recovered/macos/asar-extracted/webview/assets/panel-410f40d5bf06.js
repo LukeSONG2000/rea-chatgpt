@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{i as e,r as t}from"./panel-efa329ecf100.js";e();export{t as WorkSettingsPanel};

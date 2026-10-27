@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-tram-front-cea29492d0c12b08.js";e();export{t as default};

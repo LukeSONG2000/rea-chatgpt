@@ -1,0 +1,1 @@
+import{n as e,t}from"./badge-alert-DALh4i7M-25920b8a15b0.js";t();export{e as default};

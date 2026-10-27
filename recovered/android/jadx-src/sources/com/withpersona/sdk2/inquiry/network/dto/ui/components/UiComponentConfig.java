@@ -1,0 +1,38 @@
+package com.withpersona.sdk2.inquiry.network.dto.ui.components;
+
+import android.os.Parcelable;
+import com.withpersona.sdk2.inquiry.network.dto.ui.UiComponentAttributes;
+import defpackage.a030;
+import defpackage.cr3;
+import defpackage.eot;
+import java.util.Collections;
+import java.util.List;
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes7.dex */
+@Metadata(d1 = {"\u0000¤\u0001\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\bv\u0018\u0000 \n2\u00020\u0001:\u0001\nR\u0012\u0010\u0002\u001a\u00020\u0003X¦\u0004¢\u0006\u0006\u001a\u0004\b\u0004\u0010\u0005R\u0014\u0010\u0006\u001a\u0004\u0018\u00010\u0007X¦\u0004¢\u0006\u0006\u001a\u0004\b\b\u0010\t\u0082\u0001\"\u000b\f\r\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f !\"#$%&'()*+,¨\u0006-À\u0006\u0003"}, d2 = {"Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/UiComponentConfig;", "Landroid/os/Parcelable;", "name", "", "getName", "()Ljava/lang/String;", "attributes", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/UiComponentAttributes;", "getAttributes", "()Lcom/withpersona/sdk2/inquiry/network/dto/ui/UiComponentAttributes;", "Companion", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/Branding;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/Button;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/CombinedStepImagePreview;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/CreatePersonaSheet;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/ESignature;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/GovernmentIdNfcScan;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputAddress;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputCheckbox;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputCheckboxGroup;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputConfirmationCode;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputCurrency;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputDate;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputFileUpload;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputInternationalDb;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputMaskedText;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputMultiSelect;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputNumber;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputPhoneNumber;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputRadioGroup;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputSelect;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputText;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/InputTextArea;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/JpMyNumberNfcScan;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/LocalImage;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/Mdoc;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/PhoneNumberSna;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/PrivacyPolicy;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/QRCode;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/RemoteImage;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/Spacer;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/Text;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/Title;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/UiComponentContainerConfig;", "Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/UnknownComponentConfig;", "network-inquiry_release"}, k = 1, mv = {2, 2, 0}, xi = 48)
+public interface UiComponentConfig extends Parcelable {
+
+    /* JADX INFO: renamed from: Companion, reason: from kotlin metadata */
+    public static final Companion INSTANCE = Companion.$$INSTANCE;
+
+    /* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+    @Metadata(d1 = {"\u0000\u0014\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\b\u0086\u0003\u0018\u00002\u00020\u0001B\t\b\u0002¢\u0006\u0004\b\u0002\u0010\u0003J\r\u0010\u0005\u001a\u00020\u0004¢\u0006\u0004\b\u0005\u0010\u0006¨\u0006\u0007"}, d2 = {"Lcom/withpersona/sdk2/inquiry/network/dto/ui/components/UiComponentConfig$Companion;", "", "<init>", "()V", "Leot;", "createAdapter", "()Leot;", "network-inquiry_release"}, k = 1, mv = {2, 2, 0}, xi = 48)
+    public static final class Companion {
+        static final /* synthetic */ Companion $$INSTANCE = new Companion();
+
+        private Companion() {
+        }
+
+        public final eot createAdapter() {
+            List list = Collections.EMPTY_LIST;
+            a030 a030Var = new a030(UiComponentConfig.class, "type", list, list, null);
+            return a030Var.b(new cr3((Object) a030Var, (Object) UnknownComponentConfig.INSTANCE, (byte) 3)).c(Text.class, "text").c(Title.class, "title").c(PrivacyPolicy.class, PrivacyPolicy.type).c(LocalImage.class, LocalImage.type).c(RemoteImage.class, RemoteImage.type).c(CompleteButton.class, CompleteButton.type).c(SubmitButton.class, SubmitButton.type).c(ActionButton.class, ActionButton.type).c(LinkButton.class, LinkButton.type).c(CancelButton.class, CancelButton.type).c(CombinedStepButton.class, CombinedStepButton.type).c(Footer.class, Footer.type).c(Branding.class, Branding.type).c(InputText.class, InputText.type).c(InputTextArea.class, InputTextArea.type).c(InputDate.class, InputDate.type).c(InputSelect.class, InputSelect.type).c(InputMultiSelect.class, InputMultiSelect.type).c(Spacer.class, Spacer.type).c(InputMaskedText.class, InputMaskedText.type).c(HorizontalStack.class, HorizontalStack.type).c(InputAddress.class, InputAddress.type).c(InputInternationalDb.class, InputInternationalDb.type).c(InputPhoneNumber.class, InputPhoneNumber.type).c(InputConfirmationCode.class, InputConfirmationCode.type).c(ClickableStack.class, ClickableStack.TYPE).c(InputCheckbox.class, InputCheckbox.type).c(InputCheckboxGroup.class, InputCheckboxGroup.type).c(InputNumber.class, InputNumber.type).c(InputCurrency.class, InputCurrency.type).c(QRCode.class, QRCode.type).c(CombinedStepImagePreview.class, CombinedStepImagePreview.type).c(ESignature.class, ESignature.type).c(GovernmentIdNfcScan.class, GovernmentIdNfcScan.type).c(JpMyNumberNfcScan.class, JpMyNumberNfcScan.type).c(InputRadioGroup.class, InputRadioGroup.type).c(CreatePersonaSheet.class, CreatePersonaSheet.type).c(VerifyPersonaButton.class, VerifyPersonaButton.type).c(PhoneNumberSna.class, PhoneNumberSna.type).c(Mdoc.class, Mdoc.type).c(InputFileUpload.class, InputFileUpload.type);
+        }
+    }
+
+    UiComponentAttributes getAttributes();
+
+    String getName();
+}

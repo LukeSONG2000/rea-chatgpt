@@ -1,0 +1,198 @@
+package defpackage;
+
+import android.app.Application;
+import java.util.List;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes6.dex */
+public final class phj {
+    public final za40 A;
+    public final za40 B;
+    public final za40 C;
+    public final x3t D;
+    public final za40 E;
+    public final quq F;
+    public final oj3 G;
+    public final s5k H;
+    public final za40 I;
+    public final x3t J;
+    public final za40 K;
+    public final za40 L;
+    public final x3t M;
+    public final quq N;
+    public final x3t O;
+    public final e60 P;
+    public final i8k Q;
+    public final x3t R;
+    public final x3t S;
+    public final yo40 T;
+    public final x3t U;
+    public final x3t V;
+    public final ozj W;
+    public final x3t X;
+    public final c4k Y;
+    public final h74 Z;
+    public final pfv a;
+    public final c4k a0;
+    public final Application b;
+    public final quq b0;
+    public final pcv c;
+    public final ozj c0;
+    public final pj50 d;
+    public final za40 d0;
+    public final pi60 e;
+    public final za40 e0;
+    public final whv f;
+    public final x3t f0;
+    public final tj10 g;
+    public final za40 g0;
+    public final za40 h0;
+    public final x3t i;
+    public final x3t i0;
+    public final za40 j;
+    public final za40 j0;
+    public final x3t k;
+    public final za40 k0;
+    public final x3t l;
+    public final za40 l0;
+    public final x3t m;
+    public final x3t n;
+    public final x3t o;
+    public final x3t p;
+    public final za40 r;
+    public final d74 s;
+    public final za40 t;
+    public final za40 u;
+    public final e60 v;
+    public final h1k w;
+    public final za40 x;
+    public final za40 y;
+    public final za40 z;
+    public final phj h = this;
+    public final za40 q = sim.b(dl90.O);
+
+    public phj(aqn aqnVar, aqn aqnVar2, we80 we80Var, pfv pfvVar, tj10 tj10Var, pcv pcvVar, pcv pcvVar2, String str, Application application, pi60 pi60Var, Application application2, egv egvVar, whv whvVar, tbv tbvVar, pj50 pj50Var, Integer num) {
+        this.a = pfvVar;
+        this.b = application;
+        this.c = pcvVar;
+        this.d = pj50Var;
+        this.e = pi60Var;
+        this.f = whvVar;
+        this.g = tj10Var;
+        this.i = x3t.a(pi60Var);
+        byte b = 3;
+        this.j = sim.b(new rx4(this.i, x3t.a(tbvVar), b));
+        this.k = x3t.a(pfvVar);
+        this.l = x3t.a(application2);
+        this.m = x3t.a(pj50Var);
+        this.n = x3t.a(pcvVar);
+        this.o = x3t.a(pcvVar2);
+        this.p = x3t.a(application);
+        za40 za40VarB = sim.b(che0.u);
+        this.r = za40VarB;
+        byte b2 = 13;
+        this.s = new d74(this.p, this.n, za40VarB, b2);
+        za40 za40VarB2 = sim.b(lhh0.A);
+        this.t = za40VarB2;
+        za40 za40VarB3 = sim.b(new quq(za40VarB2, (byte) 14));
+        this.u = za40VarB3;
+        za40 za40Var = this.q;
+        e60 e60Var = new e60(za40VarB3, za40Var, b);
+        this.v = e60Var;
+        this.w = new h1k(this.p, this.n, this.m, za40Var, this.r, this.s, e60Var, za40VarB3, (byte) 1);
+        this.x = sim.b(new e60(za40VarB3, za40Var, (byte) 18));
+        this.y = sim.b(h7e0.L);
+        za40 za40VarB4 = sim.b(new e60(this.v, this.s, (byte) 21));
+        this.z = za40VarB4;
+        this.A = sim.b(new kcn((za40) this.l, (za40) this.m, (za40) this.n, (za40) this.o, (za40) this.w, this.x, this.q, this.y, za40VarB4, (byte) 1));
+        za40 za40VarB5 = sim.b(zfc0.Q);
+        this.B = za40VarB5;
+        this.C = sim.b(new cpa(this.v, this.s, this.z, this.q, this.u, za40VarB5, (byte) 5));
+        this.D = x3t.a(whvVar);
+        za40 za40VarB6 = sim.b(new oj3(this.k, b2));
+        this.E = za40VarB6;
+        x3t x3tVar = this.l;
+        quq quqVar = new quq(x3tVar, (byte) 26);
+        this.F = quqVar;
+        byte b3 = 1;
+        oj3 oj3Var = new oj3(x3tVar, b3);
+        this.G = oj3Var;
+        s5k s5kVar = new s5k(this.j, this.k, this.A, this.C, this.z, this.D, sim.b(new ozj(za40VarB6, this.A, (za40) quqVar, this.z, (za40) this.k, (e7o) oj3Var, (byte) 2)), (byte) 0);
+        this.H = s5kVar;
+        this.I = sim.b(s5kVar);
+        x3t x3tVarA = x3t.a(tj10Var);
+        this.J = x3tVarA;
+        this.K = sim.b(new zm8(new e6k(this.k, x3tVarA, num == null ? x3t.b : new x3t(num), this.u, (byte) 0), (byte) 20));
+        this.L = sim.b(new f60((za40) this.p, this.r, (za40) this.m, (za40) this.v, (byte) 2));
+        this.M = x3t.a(this);
+        this.N = new quq(this.H, (byte) 17);
+        x3t x3tVarA2 = x3t.a(str);
+        this.O = x3tVarA2;
+        nct nctVar = new nct(aqnVar2, x3tVarA2, (byte) 0);
+        nct nctVar2 = new nct(aqnVar2, x3tVarA2, (byte) 1);
+        nct nctVar3 = new nct(aqnVar2, x3tVarA2, (byte) 2);
+        e60 e60Var2 = new e60(this.n, this.o, b3);
+        this.P = e60Var2;
+        this.Q = new i8k(nctVar, nctVar2, nctVar3, this.z, e60Var2, (byte) 1);
+        this.R = pct.a(new bls(e60Var2));
+        this.S = x3t.a(new uhk(new sq8(this.w, this.P, sim.b(cna0.M))));
+        x3t x3tVar2 = this.p;
+        yo40 yo40Var = new yo40(x3tVar2, b);
+        this.T = yo40Var;
+        this.U = x3t.a(new bif(new qoa(x3tVar2, this.w, this.P, yo40Var)));
+        this.V = x3t.a(new fa80(new sq8(this.z, this.w, this.P)));
+        e60 e60Var3 = new e60(this.G, new zm8(aqnVar, (byte) 19), b2);
+        byte b4 = 12;
+        this.W = new ozj((za40) this.Q, (za40) this.R, (za40) this.S, (za40) this.U, (za40) this.V, (e7o) x3t.a(new roa(new qoa(this.p, this.w, new cpa(e60Var3, new f12(we80Var, this.u, this.q, b4), this.v, this.s, this.n, this.o, (byte) 0), this.P))), (byte) 1);
+        this.X = jia0.a(new kel(this.t, this.r));
+        this.Y = new c4k(aqnVar2, this.W, this.X, sim.b(new quq(this.p, (byte) 15)));
+        d74 d74Var = new d74((za40) this.v, (za40) this.s, this.B, (byte) 0);
+        h60 h60Var = new h60((byte) 22);
+        za40 za40Var2 = this.z;
+        quq quqVar2 = this.F;
+        za40 za40Var3 = this.q;
+        x3t x3tVar3 = this.n;
+        za40 za40Var4 = this.r;
+        this.Z = new h74(za40Var2, quqVar2, za40Var3, d74Var, x3tVar3, za40Var4, this.G, h60Var);
+        this.a0 = new c4k(za40Var2, (za40) x3tVar3, za40Var4, (e7o) h60Var, (byte) 7);
+        this.b0 = new quq(this.I, b4);
+        int i = qn70.c;
+        List listD = rbr.D(5);
+        List listD2 = rbr.D(0);
+        listD.add(this.N);
+        listD.add(this.Y);
+        listD.add(this.Z);
+        listD.add(this.a0);
+        listD.add(this.b0);
+        jhf jhfVar = new jhf(new qn70(listD, listD2), (byte) 0);
+        x3t x3tVar4 = this.p;
+        za40 za40Var5 = this.q;
+        this.c0 = new ozj(jhfVar, this.i, this.z, za40Var5, this.u, new oj3(new e60(x3tVar4, za40Var5, (byte) 8), (byte) 5));
+        za40 za40VarB7 = sim.b(vud0.L);
+        x3t x3tVar5 = this.p;
+        za40 za40Var6 = this.q;
+        byte b5 = 16;
+        this.d0 = sim.b(new s1k(x3tVar5, za40VarB7, this.v, new d74(x3tVar5, za40Var6, this.u, b5), this.s, this.B, new quq(this.O, b5), za40Var6, this.T, this.J));
+        this.e0 = sim.b(new cpa(this.E, this.F, this.I, this.k, this.z, this.q, (byte) 4));
+        this.f0 = x3t.a(egvVar);
+        this.g0 = sim.b(doh0.H);
+        this.h0 = sim.b(yfc0.Q);
+        x3t x3tVarA3 = x3t.a(new e40(new yye0(this.k, this.D)));
+        this.i0 = x3tVarA3;
+        this.j0 = sim.b(new wcv(this.M, this.c0, this.K, this.I, this.j, this.d0, this.k, this.J, this.e0, this.i, this.f0, this.g0, this.D, this.h0, x3tVarA3));
+        this.k0 = sim.b(yfc0.R);
+        this.l0 = sim.b(oyb.Y);
+    }
+
+    public final mq40 a() {
+        return (mq40) this.k0.get();
+    }
+
+    public final r5k b() {
+        return (r5k) this.I.get();
+    }
+
+    public final vcv c() {
+        return (vcv) this.j0.get();
+    }
+}

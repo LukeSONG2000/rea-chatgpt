@@ -1,0 +1,348 @@
+package protobuf_analytics_events.v1;
+
+import com.google.mlkit.vision.barcode.common.Barcode;
+import com.google.mlkit.vision.common.InputImage;
+import com.snap.valdi.views.ValdiScrollView;
+import com.squareup.wire.ProtoAdapter;
+import com.statsig.androidsdk.StatsigLoggerKt;
+import defpackage.a350;
+import defpackage.fsg0;
+import defpackage.irn;
+import defpackage.mrn;
+import defpackage.nrn;
+import defpackage.s2b0;
+import defpackage.uua;
+import kotlin.Metadata;
+import kotlin.jvm.internal.DefaultConstructorMarker;
+import org.chromium.net.ConnectionSubtype;
+import org.conscrypt.metrics.ConscryptStatsLog;
+
+/* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
+/* JADX WARN: Unknown enum class pattern. Please report as an issue! */
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes7.dex */
+@Metadata(d1 = {"\u0000\u0014\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\u0010\n\u0002\u0010\b\n\u0002\bI\b\u0087\u0081\u0002\u0018\u0000 \n2\u00020\u00012\b\u0012\u0004\u0012\u00020\u00000\u0002:\u0001\nB\u0011\b\u0002\u0012\u0006\u0010\u0004\u001a\u00020\u0003¢\u0006\u0004\b\u0005\u0010\u0006R\u001a\u0010\u0004\u001a\u00020\u00038\u0016X\u0096\u0004¢\u0006\f\n\u0004\b\u0004\u0010\u0007\u001a\u0004\b\b\u0010\tj\u0002\b\u000bj\u0002\b\fj\u0002\b\rj\u0002\b\u000ej\u0002\b\u000fj\u0002\b\u0010j\u0002\b\u0011j\u0002\b\u0012j\u0002\b\u0013j\u0002\b\u0014j\u0002\b\u0015j\u0002\b\u0016j\u0002\b\u0017j\u0002\b\u0018j\u0002\b\u0019j\u0002\b\u001aj\u0002\b\u001bj\u0002\b\u001cj\u0002\b\u001dj\u0002\b\u001ej\u0002\b\u001fj\u0002\b j\u0002\b!j\u0002\b\"j\u0002\b#j\u0002\b$j\u0002\b%j\u0002\b&j\u0002\b'j\u0002\b(j\u0002\b)j\u0002\b*j\u0002\b+j\u0002\b,j\u0002\b-j\u0002\b.j\u0002\b/j\u0002\b0j\u0002\b1j\u0002\b2j\u0002\b3j\u0002\b4j\u0002\b5j\u0002\b6j\u0002\b7j\u0002\b8j\u0002\b9j\u0002\b:j\u0002\b;j\u0002\b<j\u0002\b=j\u0002\b>j\u0002\b?j\u0002\b@j\u0002\bAj\u0002\bBj\u0002\bCj\u0002\bDj\u0002\bEj\u0002\bFj\u0002\bGj\u0002\bHj\u0002\bIj\u0002\bJj\u0002\bK¨\u0006L"}, d2 = {"Lprotobuf_analytics_events/v1/AccessFlowPageType;", "Lfsg0;", "", "", "value", "<init>", "(Ljava/lang/String;II)V", "I", "getValue", "()I", "Companion", "ACCESS_FLOW_PAGE_TYPE_UNSPECIFIED", "ACCESS_FLOW_PAGE_TYPE_ABOUT_YOU", "ACCESS_FLOW_PAGE_TYPE_ADD_EMAIL", "ACCESS_FLOW_PAGE_TYPE_APPLE_INTELLIGENCE_START", "ACCESS_FLOW_PAGE_TYPE_CONTACT_VERIFICATION", "ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER", "ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER_QUEUED", "ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_PASSWORD", "ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_START", "ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_SEND", "ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_VERIFICATION", "ACCESS_FLOW_PAGE_TYPE_ERROR", "ACCESS_FLOW_PAGE_TYPE_EXTERNAL_URL", "ACCESS_FLOW_PAGE_TYPE_IDENTITY_VERIFICATION", "ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_MODAL", "ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOG_BACK_IN_MODAL", "ACCESS_FLOW_PAGE_TYPE_LOGIN_OR_SIGNUP_START", "ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSWORD", "ACCESS_FLOW_PAGE_TYPE_LOGIN_START", "ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE", "ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE_SELECTION", "ACCESS_FLOW_PAGE_TYPE_MFA_ENROLL", "ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SEND", "ACCESS_FLOW_PAGE_TYPE_PUSH_AUTH_VERIFICATION", "ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_START", "ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_NEW_PASSWORD", "ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_SUCCESS", "ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CONSENT", "ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_ORG", "ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_CONSENT", "ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_ORG", "ACCESS_FLOW_PAGE_TYPE_TOKEN_RESPONSE", "ACCESS_FLOW_PAGE_TYPE_SOCIAL_TOKEN_EXCHANGE", "ACCESS_FLOW_PAGE_TYPE_SSO", "ACCESS_FLOW_PAGE_TYPE_TOKEN_EXCHANGE", "ACCESS_FLOW_PAGE_TYPE_WORKSPACE", "ACCESS_FLOW_PAGE_TYPE_END", "ACCESS_FLOW_PAGE_TYPE_MOBILE_LEGACY_FINISH_ONBOARDING", "ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_PAGE", "ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSKEY", "ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_CONFIRM", "ACCESS_FLOW_PAGE_TYPE_PASSKEY_ENROLLMENT_UPSELL", "ACCESS_FLOW_PAGE_TYPE_ADD_PHONE", "ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SELECT_CHANNEL", "ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_VERIFICATION", "ACCESS_FLOW_PAGE_TYPE_AUTH_CHALLENGE", "ACCESS_FLOW_PAGE_TYPE_MAGIC_LINK", "ACCESS_FLOW_PAGE_TYPE_CHOOSE_AN_ACCOUNT", "ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLLED", "ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL_COMPLETE", "ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS_GENERATE", "ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_SECURE_METHODS", "ACCESS_FLOW_PAGE_TYPE_LEGACY_LOGIN_WEB_PAGE", "ACCESS_FLOW_PAGE_TYPE_DEVICE_AUTH_CALLBACK", "ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST", "ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST_ADDED", "ACCESS_FLOW_PAGE_TYPE_WAITLIST", "ACCESS_FLOW_PAGE_TYPE_ACCOUNT_CREATION_TEMPORARILY_UNAVAILABLE", "ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_SUCCESS", "ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_REJECTED", "ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL", "ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS", "ACCESS_FLOW_PAGE_TYPE_PASSKEY_PRF_SYNC", "ACCESS_FLOW_PAGE_TYPE_MFA_EMAIL_MIGRATION", "ACCESS_FLOW_PAGE_TYPE_MFA_REVIEW", "OpenAI.platform.protobuf:generated"}, k = 1, mv = {2, 4, 0}, xi = 48)
+public final class AccessFlowPageType implements fsg0 {
+    private static final /* synthetic */ mrn $ENTRIES;
+    private static final /* synthetic */ AccessFlowPageType[] $VALUES;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ABOUT_YOU;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ACCOUNT_CREATION_TEMPORARILY_UNAVAILABLE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ADD_EMAIL;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ADD_PHONE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLLED;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL_COMPLETE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS_GENERATE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_SECURE_METHODS;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_APPLE_INTELLIGENCE_START;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_AUTH_CHALLENGE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_MODAL;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_PAGE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOG_BACK_IN_MODAL;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_CHOOSE_AN_ACCOUNT;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_CONTACT_VERIFICATION;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER_QUEUED;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_PASSWORD;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_START;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_DEVICE_AUTH_CALLBACK;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_SEND;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_VERIFICATION;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_CONFIRM;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_REJECTED;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_SUCCESS;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_END;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_ERROR;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_EXTERNAL_URL;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_IDENTITY_VERIFICATION;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST_ADDED;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_LEGACY_LOGIN_WEB_PAGE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_LOGIN_OR_SIGNUP_START;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSKEY;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSWORD;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_LOGIN_START;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_MAGIC_LINK;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE_SELECTION;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_MFA_EMAIL_MIGRATION;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_MFA_ENROLL;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_MFA_REVIEW;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_MOBILE_LEGACY_FINISH_ONBOARDING;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_PASSKEY_ENROLLMENT_UPSELL;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_PASSKEY_PRF_SYNC;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SELECT_CHANNEL;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SEND;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_VERIFICATION;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_PUSH_AUTH_VERIFICATION;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_NEW_PASSWORD;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_START;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_SUCCESS;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_CONSENT;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_ORG;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CONSENT;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_ORG;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_SOCIAL_TOKEN_EXCHANGE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_SSO;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_TOKEN_EXCHANGE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_TOKEN_RESPONSE;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_UNSPECIFIED;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_WAITLIST;
+    public static final AccessFlowPageType ACCESS_FLOW_PAGE_TYPE_WORKSPACE;
+    public static final ProtoAdapter<AccessFlowPageType> ADAPTER;
+
+    /* JADX INFO: renamed from: Companion, reason: from kotlin metadata */
+    public static final Companion INSTANCE;
+    private final int value;
+
+    private static final /* synthetic */ AccessFlowPageType[] $values() {
+        return new AccessFlowPageType[]{ACCESS_FLOW_PAGE_TYPE_UNSPECIFIED, ACCESS_FLOW_PAGE_TYPE_ABOUT_YOU, ACCESS_FLOW_PAGE_TYPE_ADD_EMAIL, ACCESS_FLOW_PAGE_TYPE_APPLE_INTELLIGENCE_START, ACCESS_FLOW_PAGE_TYPE_CONTACT_VERIFICATION, ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER, ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER_QUEUED, ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_PASSWORD, ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_START, ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_SEND, ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_VERIFICATION, ACCESS_FLOW_PAGE_TYPE_ERROR, ACCESS_FLOW_PAGE_TYPE_EXTERNAL_URL, ACCESS_FLOW_PAGE_TYPE_IDENTITY_VERIFICATION, ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_MODAL, ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOG_BACK_IN_MODAL, ACCESS_FLOW_PAGE_TYPE_LOGIN_OR_SIGNUP_START, ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSWORD, ACCESS_FLOW_PAGE_TYPE_LOGIN_START, ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE, ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE_SELECTION, ACCESS_FLOW_PAGE_TYPE_MFA_ENROLL, ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SEND, ACCESS_FLOW_PAGE_TYPE_PUSH_AUTH_VERIFICATION, ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_START, ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_NEW_PASSWORD, ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_SUCCESS, ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CONSENT, ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_ORG, ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_CONSENT, ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_ORG, ACCESS_FLOW_PAGE_TYPE_TOKEN_RESPONSE, ACCESS_FLOW_PAGE_TYPE_SOCIAL_TOKEN_EXCHANGE, ACCESS_FLOW_PAGE_TYPE_SSO, ACCESS_FLOW_PAGE_TYPE_TOKEN_EXCHANGE, ACCESS_FLOW_PAGE_TYPE_WORKSPACE, ACCESS_FLOW_PAGE_TYPE_END, ACCESS_FLOW_PAGE_TYPE_MOBILE_LEGACY_FINISH_ONBOARDING, ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_PAGE, ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSKEY, ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_CONFIRM, ACCESS_FLOW_PAGE_TYPE_PASSKEY_ENROLLMENT_UPSELL, ACCESS_FLOW_PAGE_TYPE_ADD_PHONE, ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SELECT_CHANNEL, ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_VERIFICATION, ACCESS_FLOW_PAGE_TYPE_AUTH_CHALLENGE, ACCESS_FLOW_PAGE_TYPE_MAGIC_LINK, ACCESS_FLOW_PAGE_TYPE_CHOOSE_AN_ACCOUNT, ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLLED, ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL_COMPLETE, ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS_GENERATE, ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_SECURE_METHODS, ACCESS_FLOW_PAGE_TYPE_LEGACY_LOGIN_WEB_PAGE, ACCESS_FLOW_PAGE_TYPE_DEVICE_AUTH_CALLBACK, ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST, ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST_ADDED, ACCESS_FLOW_PAGE_TYPE_WAITLIST, ACCESS_FLOW_PAGE_TYPE_ACCOUNT_CREATION_TEMPORARILY_UNAVAILABLE, ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_SUCCESS, ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_REJECTED, ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL, ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS, ACCESS_FLOW_PAGE_TYPE_PASSKEY_PRF_SYNC, ACCESS_FLOW_PAGE_TYPE_MFA_EMAIL_MIGRATION, ACCESS_FLOW_PAGE_TYPE_MFA_REVIEW};
+    }
+
+    static {
+        final AccessFlowPageType accessFlowPageType = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_UNSPECIFIED", 0, 0);
+        ACCESS_FLOW_PAGE_TYPE_UNSPECIFIED = accessFlowPageType;
+        ACCESS_FLOW_PAGE_TYPE_ABOUT_YOU = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ABOUT_YOU", 1, 1);
+        ACCESS_FLOW_PAGE_TYPE_ADD_EMAIL = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ADD_EMAIL", 2, 2);
+        ACCESS_FLOW_PAGE_TYPE_APPLE_INTELLIGENCE_START = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_APPLE_INTELLIGENCE_START", 3, 3);
+        ACCESS_FLOW_PAGE_TYPE_CONTACT_VERIFICATION = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_CONTACT_VERIFICATION", 4, 4);
+        ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER", 5, 5);
+        ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER_QUEUED = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER_QUEUED", 6, 6);
+        ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_PASSWORD = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_PASSWORD", 7, 7);
+        ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_START = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_START", 8, 8);
+        ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_SEND = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_SEND", 9, 9);
+        ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_VERIFICATION = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_VERIFICATION", 10, 10);
+        ACCESS_FLOW_PAGE_TYPE_ERROR = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ERROR", 11, 11);
+        ACCESS_FLOW_PAGE_TYPE_EXTERNAL_URL = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_EXTERNAL_URL", 12, 12);
+        ACCESS_FLOW_PAGE_TYPE_IDENTITY_VERIFICATION = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_IDENTITY_VERIFICATION", 13, 13);
+        ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_MODAL = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_MODAL", 14, 30);
+        ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOG_BACK_IN_MODAL = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOG_BACK_IN_MODAL", 15, 31);
+        ACCESS_FLOW_PAGE_TYPE_LOGIN_OR_SIGNUP_START = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_LOGIN_OR_SIGNUP_START", 16, 14);
+        ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSWORD = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSWORD", 17, 15);
+        ACCESS_FLOW_PAGE_TYPE_LOGIN_START = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_LOGIN_START", 18, 16);
+        ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE", 19, 17);
+        ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE_SELECTION = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE_SELECTION", 20, 33);
+        ACCESS_FLOW_PAGE_TYPE_MFA_ENROLL = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_MFA_ENROLL", 21, 18);
+        ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SEND = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SEND", 22, 19);
+        ACCESS_FLOW_PAGE_TYPE_PUSH_AUTH_VERIFICATION = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_PUSH_AUTH_VERIFICATION", 23, 20);
+        ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_START = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_START", 24, 21);
+        ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_NEW_PASSWORD = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_NEW_PASSWORD", 25, 22);
+        ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_SUCCESS = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_SUCCESS", 26, 23);
+        ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CONSENT = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CONSENT", 27, 24);
+        ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_ORG = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_ORG", 28, 25);
+        ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_CONSENT = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_CONSENT", 29, 37);
+        ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_ORG = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_ORG", 30, 38);
+        ACCESS_FLOW_PAGE_TYPE_TOKEN_RESPONSE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_TOKEN_RESPONSE", 31, 39);
+        ACCESS_FLOW_PAGE_TYPE_SOCIAL_TOKEN_EXCHANGE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_SOCIAL_TOKEN_EXCHANGE", 32, 40);
+        ACCESS_FLOW_PAGE_TYPE_SSO = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_SSO", 33, 26);
+        ACCESS_FLOW_PAGE_TYPE_TOKEN_EXCHANGE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_TOKEN_EXCHANGE", 34, 27);
+        ACCESS_FLOW_PAGE_TYPE_WORKSPACE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_WORKSPACE", 35, 28);
+        ACCESS_FLOW_PAGE_TYPE_END = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_END", 36, 29);
+        ACCESS_FLOW_PAGE_TYPE_MOBILE_LEGACY_FINISH_ONBOARDING = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_MOBILE_LEGACY_FINISH_ONBOARDING", 37, 32);
+        ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_PAGE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_PAGE", 38, 34);
+        ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSKEY = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSKEY", 39, 35);
+        ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_CONFIRM = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_CONFIRM", 40, 36);
+        ACCESS_FLOW_PAGE_TYPE_PASSKEY_ENROLLMENT_UPSELL = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_PASSKEY_ENROLLMENT_UPSELL", 41, 41);
+        ACCESS_FLOW_PAGE_TYPE_ADD_PHONE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ADD_PHONE", 42, 42);
+        ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SELECT_CHANNEL = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SELECT_CHANNEL", 43, 43);
+        ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_VERIFICATION = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_VERIFICATION", 44, 44);
+        ACCESS_FLOW_PAGE_TYPE_AUTH_CHALLENGE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_AUTH_CHALLENGE", 45, 45);
+        ACCESS_FLOW_PAGE_TYPE_MAGIC_LINK = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_MAGIC_LINK", 46, 46);
+        ACCESS_FLOW_PAGE_TYPE_CHOOSE_AN_ACCOUNT = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_CHOOSE_AN_ACCOUNT", 47, 47);
+        ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLLED = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLLED", 48, 48);
+        ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL_COMPLETE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL_COMPLETE", 49, 49);
+        ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS_GENERATE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS_GENERATE", 50, 50);
+        ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_SECURE_METHODS = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_SECURE_METHODS", 51, 51);
+        ACCESS_FLOW_PAGE_TYPE_LEGACY_LOGIN_WEB_PAGE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_LEGACY_LOGIN_WEB_PAGE", 52, 52);
+        ACCESS_FLOW_PAGE_TYPE_DEVICE_AUTH_CALLBACK = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_DEVICE_AUTH_CALLBACK", 53, 53);
+        ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST", 54, 54);
+        ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST_ADDED = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST_ADDED", 55, 55);
+        ACCESS_FLOW_PAGE_TYPE_WAITLIST = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_WAITLIST", 56, 56);
+        ACCESS_FLOW_PAGE_TYPE_ACCOUNT_CREATION_TEMPORARILY_UNAVAILABLE = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ACCOUNT_CREATION_TEMPORARILY_UNAVAILABLE", 57, 57);
+        ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_SUCCESS = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_SUCCESS", 58, 58);
+        ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_REJECTED = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_REJECTED", 59, 59);
+        ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL", 60, 60);
+        ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS", 61, 61);
+        ACCESS_FLOW_PAGE_TYPE_PASSKEY_PRF_SYNC = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_PASSKEY_PRF_SYNC", 62, 62);
+        ACCESS_FLOW_PAGE_TYPE_MFA_EMAIL_MIGRATION = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_MFA_EMAIL_MIGRATION", 63, 63);
+        ACCESS_FLOW_PAGE_TYPE_MFA_REVIEW = new AccessFlowPageType("ACCESS_FLOW_PAGE_TYPE_MFA_REVIEW", 64, 64);
+        AccessFlowPageType[] accessFlowPageTypeArr$values = $values();
+        $VALUES = accessFlowPageTypeArr$values;
+        $ENTRIES = new nrn(accessFlowPageTypeArr$values);
+        INSTANCE = new Companion(null);
+        final uua uuaVarA = a350.a(AccessFlowPageType.class);
+        final s2b0 s2b0Var = s2b0.PROTO_3;
+        ADAPTER = new irn(uuaVarA, s2b0Var, accessFlowPageType) { // from class: protobuf_analytics_events.v1.AccessFlowPageType$Companion$ADAPTER$1
+            @Override // defpackage.irn
+            public AccessFlowPageType fromValue(int value) {
+                return AccessFlowPageType.INSTANCE.fromValue(value);
+            }
+        };
+    }
+
+    private AccessFlowPageType(String str, int i, int i2) {
+        this.value = i2;
+    }
+
+    public static AccessFlowPageType valueOf(String str) {
+        return (AccessFlowPageType) Enum.valueOf(AccessFlowPageType.class, str);
+    }
+
+    public static AccessFlowPageType[] values() {
+        return (AccessFlowPageType[]) $VALUES.clone();
+    }
+
+    @Override // defpackage.fsg0
+    public int getValue() {
+        return this.value;
+    }
+
+    /* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+    @Metadata(d1 = {"\u0000&\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\u0018\u0002\n\u0000\b\u0086\u0003\u0018\u00002\u00020\u0001B\t\b\u0002¢\u0006\u0004\b\u0002\u0010\u0003J\u0016\u0010\b\u001a\u0004\u0018\u00010\u00062\u0006\u0010\t\u001a\u00020\nH\u0007b\u0002\b\u000bR\u001b\u0010\u0004\u001a\b\u0012\u0004\u0012\u00020\u00060\u00058\u0006X\u0087\u0004\u0092\u0002\u0002\b\u0007¢\u0006\u0002\n\u0000¨\u0006\f"}, d2 = {"Lprotobuf_analytics_events/v1/AccessFlowPageType$Companion;", "", "<init>", "()V", "ADAPTER", "Lcom/squareup/wire/ProtoAdapter;", "Lprotobuf_analytics_events/v1/AccessFlowPageType;", "Lkotlin/jvm/JvmField;", "fromValue", "value", "", "Lkotlin/jvm/JvmStatic;", "OpenAI.platform.protobuf:generated"}, k = 1, mv = {2, 4, 0}, xi = 48)
+    public static final class Companion {
+        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
+            this();
+        }
+
+        public final AccessFlowPageType fromValue(int value) {
+            switch (value) {
+                case 0:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_UNSPECIFIED;
+                case 1:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ABOUT_YOU;
+                case 2:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ADD_EMAIL;
+                case 3:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_APPLE_INTELLIGENCE_START;
+                case 4:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_CONTACT_VERIFICATION;
+                case 5:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER;
+                case 6:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_LATER_QUEUED;
+                case 7:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_PASSWORD;
+                case 8:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_CREATE_ACCOUNT_START;
+                case 9:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_SEND;
+                case 10:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_EMAIL_OTP_VERIFICATION;
+                case 11:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ERROR;
+                case 12:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_EXTERNAL_URL;
+                case 13:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_IDENTITY_VERIFICATION;
+                case 14:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_LOGIN_OR_SIGNUP_START;
+                case 15:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSWORD;
+                case 16:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_LOGIN_START;
+                case 17:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE;
+                case 18:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_MFA_ENROLL;
+                case 19:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SEND;
+                case 20:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_PUSH_AUTH_VERIFICATION;
+                case 21:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_START;
+                case 22:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_NEW_PASSWORD;
+                case 23:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_RESET_PASSWORD_SUCCESS;
+                case 24:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CONSENT;
+                case 25:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_ORG;
+                case 26:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_SSO;
+                case ConnectionSubtype.SUBTYPE_10_GIGABIT_ETHERNET /* 27 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_TOKEN_EXCHANGE;
+                case ConnectionSubtype.SUBTYPE_WIFI_B /* 28 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_WORKSPACE;
+                case ConnectionSubtype.SUBTYPE_WIFI_G /* 29 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_END;
+                case ConnectionSubtype.SUBTYPE_WIFI_N /* 30 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_MODAL;
+                case ConnectionSubtype.SUBTYPE_WIFI_AC /* 31 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOG_BACK_IN_MODAL;
+                case 32:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_MOBILE_LEGACY_FINISH_ONBOARDING;
+                case 33:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_MFA_CHALLENGE_SELECTION;
+                case 34:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_CHATGPT_WEB_LOGIN_PAGE;
+                case InputImage.IMAGE_FORMAT_YUV_420_888 /* 35 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_LOGIN_PASSKEY;
+                case 36:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_CONFIRM;
+                case 37:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_CONSENT;
+                case 38:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_SIGN_IN_WITH_CHATGPT_CODEX_ORG;
+                case 39:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_TOKEN_RESPONSE;
+                case ValdiScrollView.NATIVE_FADE_THRESHOLD /* 40 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_SOCIAL_TOKEN_EXCHANGE;
+                case 41:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_PASSKEY_ENROLLMENT_UPSELL;
+                case 42:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ADD_PHONE;
+                case 43:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_SELECT_CHANNEL;
+                case 44:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_PHONE_OTP_VERIFICATION;
+                case 45:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_AUTH_CHALLENGE;
+                case 46:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_MAGIC_LINK;
+                case ConscryptStatsLog.TLS_HANDSHAKE_REPORTED__CIPHER_SUITE__TLS_RSA_WITH_AES_128_CBC_SHA /* 47 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_CHOOSE_AN_ACCOUNT;
+                case 48:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLLED;
+                case 49:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL_COMPLETE;
+                case StatsigLoggerKt.MAX_EVENTS_BEFORE_FLUSH_ATTEMPT /* 50 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS_GENERATE;
+                case 51:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_SECURE_METHODS;
+                case 52:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_LEGACY_LOGIN_WEB_PAGE;
+                case ConscryptStatsLog.TLS_HANDSHAKE_REPORTED__CIPHER_SUITE__TLS_RSA_WITH_AES_256_CBC_SHA /* 53 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_DEVICE_AUTH_CALLBACK;
+                case 54:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST;
+                case 55:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_JOIN_WAITLIST_ADDED;
+                case 56:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_WAITLIST;
+                case 57:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ACCOUNT_CREATION_TEMPORARILY_UNAVAILABLE;
+                case 58:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_SUCCESS;
+                case 59:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_EMAIL_ROLLBACK_REJECTED;
+                case 60:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_ENROLL;
+                case 61:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_ADVANCED_ACCOUNT_SECURITY_RECOVERY_KEYS;
+                case 62:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_PASSKEY_PRF_SYNC;
+                case 63:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_MFA_EMAIL_MIGRATION;
+                case Barcode.FORMAT_EAN_8 /* 64 */:
+                    return AccessFlowPageType.ACCESS_FLOW_PAGE_TYPE_MFA_REVIEW;
+                default:
+                    return null;
+            }
+        }
+
+        private Companion() {
+        }
+    }
+}

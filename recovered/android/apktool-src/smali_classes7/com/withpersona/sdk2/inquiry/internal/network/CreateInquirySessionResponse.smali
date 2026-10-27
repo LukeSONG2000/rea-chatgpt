@@ -1,0 +1,62 @@
+.class public final Lcom/withpersona/sdk2/inquiry/internal/network/CreateInquirySessionResponse;
+.super Ljava/lang/Object;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/withpersona/sdk2/inquiry/internal/network/CreateInquirySessionResponse$Meta;
+    }
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000\u000c\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0008\u0002\u0008\u0001\u0018\u00002\u00020\u0001:\u0001\u0002\u00a8\u0006\u0003"
+    }
+    d2 = {
+        "Lcom/withpersona/sdk2/inquiry/internal/network/CreateInquirySessionResponse;",
+        "",
+        "Meta",
+        "inquiry-internal_release"
+    }
+    k = 0x1
+    mv = {
+        0x2,
+        0x2,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+.annotation runtime Lsot;
+    generateAdapter = true
+.end annotation
+
+
+# instance fields
+.field public final a:Lcom/withpersona/sdk2/inquiry/network/dto/InquirySessionData;
+
+.field public final b:Lcom/withpersona/sdk2/inquiry/internal/network/CreateInquirySessionResponse$Meta;
+
+
+# direct methods
+.method public constructor <init>(Lcom/withpersona/sdk2/inquiry/network/dto/InquirySessionData;Lcom/withpersona/sdk2/inquiry/internal/network/CreateInquirySessionResponse$Meta;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lcom/withpersona/sdk2/inquiry/internal/network/CreateInquirySessionResponse;->a:Lcom/withpersona/sdk2/inquiry/network/dto/InquirySessionData;
+
+    .line 5
+    .line 6
+    iput-object p2, p0, Lcom/withpersona/sdk2/inquiry/internal/network/CreateInquirySessionResponse;->b:Lcom/withpersona/sdk2/inquiry/internal/network/CreateInquirySessionResponse$Meta;
+
+    .line 7
+    .line 8
+    return-void
+.end method

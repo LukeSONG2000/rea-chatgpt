@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.WeakRef=void 0;class StrongWeakRef{constructor(e){this.value=e}deref(){return this.value}}const e=globalThis.WeakRef;exports.WeakRef=e??StrongWeakRef;

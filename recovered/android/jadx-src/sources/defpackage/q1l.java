@@ -1,0 +1,48 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes.dex */
+@di70
+public final class q1l implements r1l {
+    public static final p1l Companion = new p1l();
+    public final String a;
+    public final String b;
+
+    public /* synthetic */ q1l(int i, String str, String str2) {
+        if (3 != (i & 3)) {
+            out.x0(i, 3, o1l.a.getDescriptor());
+            throw null;
+        }
+        this.a = str;
+        this.b = str2;
+    }
+
+    @Override // defpackage.k160
+    public final String a() {
+        return "Waitlist";
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof q1l)) {
+            return false;
+        }
+        q1l q1lVar = (q1l) obj;
+        return b79.u(this.a, q1lVar.a) && b79.u(this.b, q1lVar.b);
+    }
+
+    public final int hashCode() {
+        return this.b.hashCode() + (this.a.hashCode() * 31);
+    }
+
+    public final String toString() {
+        return q1l.class.getName();
+    }
+
+    public q1l(String str, String str2) {
+        this.a = str;
+        this.b = str2;
+    }
+}

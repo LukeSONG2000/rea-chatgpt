@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.MmlMn=void 0;const e=require("../MmlNode");class MmlMn extends e.AbstractMmlTokenNode{constructor(){super(...arguments),this.texclass=e.TEXCLASS.ORD}get kind(){return"mn"}}exports.MmlMn=MmlMn,MmlMn.defaults={...e.AbstractMmlTokenNode.defaults};

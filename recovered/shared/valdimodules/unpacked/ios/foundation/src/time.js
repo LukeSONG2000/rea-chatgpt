@@ -1,0 +1,1 @@
+"use strict";var e;function t(t,r){switch(r){case e.HOURS:return t/1e3/60/60;case e.SECONDS:return t/1e3}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.convertTimestampMs=exports.TimeUnit=void 0,function(e){e[e.HOURS=0]="HOURS",e[e.SECONDS=1]="SECONDS"}(e||(exports.TimeUnit=e={})),exports.convertTimestampMs=t;

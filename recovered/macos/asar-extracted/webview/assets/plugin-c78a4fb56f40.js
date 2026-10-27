@@ -1,0 +1,1 @@
+import{GN as e,WN as t}from"./app-primary-7d7313419f84.js";e();export{t as getMcpExtensionContextMenuItems};

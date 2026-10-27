@@ -1,0 +1,280 @@
+.class public abstract Lkrj;
+.super Ljava/lang/Object;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# annotations
+.annotation runtime Ldi70;
+    with = Llrj;
+.end annotation
+
+
+# static fields
+.field public static final Companion:Lbrj;
+
+.field public static final a:Ljrj;
+
+.field public static final b:Ljrj;
+
+.field public static final c:Lfrj;
+
+.field public static final d:Lhrj;
+
+.field public static final e:Lhrj;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 3
+
+    .line 1
+    new-instance v0, Lbrj;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    sput-object v0, Lkrj;->Companion:Lbrj;
+
+    .line 7
+    .line 8
+    new-instance v0, Ljrj;
+
+    .line 9
+    .line 10
+    const-wide/16 v1, 0x1
+
+    .line 11
+    .line 12
+    invoke-direct {v0, v1, v2}, Ljrj;-><init>(J)V
+
+    .line 13
+    .line 14
+    .line 15
+    sput-object v0, Lkrj;->a:Ljrj;
+
+    .line 16
+    .line 17
+    const/16 v1, 0x3e8
+
+    .line 18
+    .line 19
+    invoke-virtual {v0, v1}, Ljrj;->b(I)Ljrj;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object v0
+
+    .line 23
+    invoke-virtual {v0, v1}, Ljrj;->b(I)Ljrj;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object v0
+
+    .line 27
+    invoke-virtual {v0, v1}, Ljrj;->b(I)Ljrj;
+
+    .line 28
+    .line 29
+    .line 30
+    move-result-object v0
+
+    .line 31
+    sput-object v0, Lkrj;->b:Ljrj;
+
+    .line 32
+    .line 33
+    const/16 v1, 0x3c
+
+    .line 34
+    .line 35
+    invoke-virtual {v0, v1}, Ljrj;->b(I)Ljrj;
+
+    .line 36
+    .line 37
+    .line 38
+    move-result-object v0
+
+    .line 39
+    invoke-virtual {v0, v1}, Ljrj;->b(I)Ljrj;
+
+    .line 40
+    .line 41
+    .line 42
+    new-instance v0, Lfrj;
+
+    .line 43
+    .line 44
+    const/4 v1, 0x1
+
+    .line 45
+    invoke-direct {v0, v1}, Lfrj;-><init>(I)V
+
+    .line 46
+    .line 47
+    .line 48
+    sput-object v0, Lkrj;->c:Lfrj;
+
+    .line 49
+    .line 50
+    new-instance v0, Lfrj;
+
+    .line 51
+    .line 52
+    const/4 v2, 0x7
+
+    .line 53
+    invoke-static {v1, v2}, Ljava/lang/Math;->multiplyExact(II)I
+
+    .line 54
+    .line 55
+    .line 56
+    move-result v2
+
+    .line 57
+    invoke-direct {v0, v2}, Lfrj;-><init>(I)V
+
+    .line 58
+    .line 59
+    .line 60
+    new-instance v0, Lhrj;
+
+    .line 61
+    .line 62
+    invoke-direct {v0, v1}, Lhrj;-><init>(I)V
+
+    .line 63
+    .line 64
+    .line 65
+    sput-object v0, Lkrj;->d:Lhrj;
+
+    .line 66
+    .line 67
+    new-instance v0, Lhrj;
+
+    .line 68
+    .line 69
+    const/4 v2, 0x3
+
+    .line 70
+    invoke-static {v1, v2}, Ljava/lang/Math;->multiplyExact(II)I
+
+    .line 71
+    .line 72
+    .line 73
+    move-result v2
+
+    .line 74
+    invoke-direct {v0, v2}, Lhrj;-><init>(I)V
+
+    .line 75
+    .line 76
+    .line 77
+    new-instance v0, Lhrj;
+
+    .line 78
+    .line 79
+    const/16 v2, 0xc
+
+    .line 80
+    .line 81
+    invoke-static {v1, v2}, Ljava/lang/Math;->multiplyExact(II)I
+
+    .line 82
+    .line 83
+    .line 84
+    move-result v1
+
+    .line 85
+    invoke-direct {v0, v1}, Lhrj;-><init>(I)V
+
+    .line 86
+    .line 87
+    .line 88
+    sput-object v0, Lkrj;->e:Lhrj;
+
+    .line 89
+    .line 90
+    new-instance v0, Lhrj;
+
+    .line 91
+    .line 92
+    const/16 v2, 0x64
+
+    .line 93
+    .line 94
+    invoke-static {v1, v2}, Ljava/lang/Math;->multiplyExact(II)I
+
+    .line 95
+    .line 96
+    .line 97
+    move-result v1
+
+    .line 98
+    invoke-direct {v0, v1}, Lhrj;-><init>(I)V
+
+    .line 99
+    .line 100
+    .line 101
+    return-void
+.end method
+
+.method public static a(ILjava/lang/String;)Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    if-ne p0, v0, :cond_0
+
+    .line 3
+    .line 4
+    return-object p1
+
+    .line 5
+    :cond_0
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 6
+    .line 7
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 8
+    .line 9
+    .line 10
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 11
+    .line 12
+    .line 13
+    const/16 p0, 0x2d
+
+    .line 14
+    .line 15
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 16
+    .line 17
+    .line 18
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 19
+    .line 20
+    .line 21
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object p0
+
+    .line 25
+    return-object p0
+.end method

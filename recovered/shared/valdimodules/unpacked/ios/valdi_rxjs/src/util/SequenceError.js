@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.SequenceError=void 0;const e=require("./createErrorClass");exports.SequenceError=(0,e.createErrorClass)(e=>function(r){e(this),this.name="SequenceError",this.message=r});

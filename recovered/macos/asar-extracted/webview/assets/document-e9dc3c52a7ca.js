@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,t}from"./document-371e5e766fab.js";e();export{t as getPdfjs};

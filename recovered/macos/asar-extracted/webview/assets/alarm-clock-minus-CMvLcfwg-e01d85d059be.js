@@ -1,0 +1,1 @@
+import{n as e,t}from"./alarm-clock-minus-CMvLcfwg-9c28ae4b09af.js";e();export{t as default};

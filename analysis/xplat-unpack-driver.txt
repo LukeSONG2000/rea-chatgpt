@@ -1,0 +1,150 @@
+
+===== DECOMPILE FUN_007708b0 @ 007708b0 =====
+
+void FUN_007708b0(undefined8 param_1,long *param_2)
+
+{
+  bool bVar1;
+  long lVar2;
+  ulong uVar3;
+  long lVar4;
+  undefined8 uVar5;
+  undefined8 uVar6;
+  undefined8 uVar7;
+  undefined1 auStack_120 [8];
+  long local_118;
+  long local_110;
+  long local_108;
+  undefined8 local_100;
+  undefined8 uStack_f8;
+  undefined8 local_f0;
+  undefined8 local_e8;
+  undefined1 auStack_e0 [24];
+  undefined1 auStack_c8 [8];
+  uint local_c0 [2];
+  undefined1 auStack_b8 [8];
+  undefined1 auStack_b0 [24];
+  undefined4 local_98 [2];
+  undefined1 auStack_90 [8];
+  undefined1 auStack_88 [8];
+  undefined1 auStack_80 [24];
+  long local_68;
+  
+  lVar2 = tpidr_el0;
+  local_68 = *(long *)(lVar2 + 0x28);
+  FUN_007717a8(auStack_88,*param_2,param_2[1] - *param_2);
+  uVar3 = FUN_0078c9d0(auStack_88);
+  if ((uVar3 & 1) == 0) {
+    FUN_00348dd8(auStack_88);
+                    /* try { // try from 00770b58 to 00770b63 has its CatchHandler @ 00770bd8 */
+    uVar5 = FUN_007708a0(auStack_b8,auStack_80);
+    FUN_0034a9ac(uVar5,auStack_b8);
+    FUN_00335654(auStack_b8);
+  }
+  else {
+    local_100 = 0;
+    uStack_f8 = 0;
+    local_f0 = 0;
+    FUN_00348dd8(auStack_88);
+                    /* try { // try from 00770910 to 0077092b has its CatchHandler @ 00770c04 */
+    lVar4 = FUN_00350170(auStack_80);
+    FUN_00348dd8(auStack_88);
+    local_110 = FUN_007833d0(auStack_80);
+    local_118 = lVar4;
+    local_108 = lVar4;
+    do {
+      if (local_108 == local_110) {
+        FUN_00623924(param_1,&local_100);
+        break;
+      }
+      FUN_00763fc4(auStack_b8);
+      local_e8 = 0;
+      local_98[0] = 0;
+                    /* try { // try from 00770960 to 00770973 has its CatchHandler @ 00770c38 */
+      lVar4 = FUN_00770c70(&local_100,auStack_b8,&local_e8,local_98);
+      FUN_00335e4c(auStack_b8);
+                    /* try { // try from 00770980 to 0077098b has its CatchHandler @ 00770c30 */
+      FUN_00770cb0(local_98,&local_118);
+      uVar3 = FUN_0078c9d0(local_98);
+      if ((uVar3 & 1) == 0) {
+        FUN_00348dd8(local_98);
+                    /* try { // try from 00770a84 to 00770a8f has its CatchHandler @ 00770c1c */
+        uVar5 = FUN_007708a0(auStack_b8,auStack_90);
+        FUN_0034a9ac(uVar5,auStack_b8);
+        FUN_00335654(auStack_b8);
+        bVar1 = true;
+      }
+      else {
+        FUN_00348dd8(local_98);
+                    /* try { // try from 007709a0 to 007709af has its CatchHandler @ 00770c20 */
+        FUN_00770d10(auStack_b8,&local_118,auStack_90);
+        uVar3 = FUN_0078c9d0(auStack_b8);
+        if ((uVar3 & 1) == 0) {
+          FUN_00348dd8(auStack_b8);
+                    /* try { // try from 00770ab0 to 00770abb has its CatchHandler @ 00770c0c */
+          uVar5 = FUN_007708a0(&local_e8,auStack_b0);
+          FUN_0034a9ac(uVar5,&local_e8);
+          FUN_00335654(&local_e8);
+          bVar1 = true;
+        }
+        else {
+                    /* try { // try from 007709bc to 007709c7 has its CatchHandler @ 00770c08 */
+          FUN_00770cb0(auStack_c8,&local_118);
+          uVar3 = FUN_0078c9d0(auStack_c8);
+          if ((uVar3 & 1) == 0) {
+            FUN_00348dd8(auStack_c8);
+                    /* try { // try from 00770adc to 00770ae7 has its CatchHandler @ 00770bf4 */
+            uVar5 = FUN_007708a0(&local_e8,local_c0);
+            FUN_0034a9ac(uVar5,&local_e8);
+            FUN_00335654(&local_e8);
+            bVar1 = true;
+          }
+          else {
+            FUN_00348dd8(auStack_c8);
+                    /* try { // try from 007709dc to 007709eb has its CatchHandler @ 00770bf0 */
+            FUN_00770d10(&local_e8,&local_118,local_c0);
+            uVar3 = FUN_0078c9d0(&local_e8);
+            bVar1 = (uVar3 & 1) == 0;
+            if (bVar1) {
+              FUN_00348dd8(&local_e8);
+                    /* try { // try from 00770b08 to 00770b13 has its CatchHandler @ 00770bd4 */
+              uVar5 = FUN_007708a0(auStack_120,auStack_e0);
+              FUN_0034a9ac(uVar5,auStack_120);
+              FUN_00335654(auStack_120);
+            }
+            else {
+              uVar5 = FUN_0078e260();
+              FUN_00348dd8(auStack_b8);
+                    /* try { // try from 00770a08 to 00770a23 has its CatchHandler @ 00770be0 */
+              uVar6 = FUN_00350170(auStack_b0);
+              FUN_00348dd8(auStack_b8);
+              uVar7 = FUN_00376924(auStack_b0);
+              thunk_FUN_0078e058(auStack_120,uVar5,uVar6,uVar7);
+              FUN_00348dd8(&local_e8);
+                    /* try { // try from 00770a40 to 00770a47 has its CatchHandler @ 00770bc4 */
+              uVar5 = FUN_00350170(auStack_e0);
+              *(undefined8 *)(lVar4 + 8) = uVar5;
+              FUN_00348dd8(auStack_c8);
+              *(ulong *)(lVar4 + 0x10) = (ulong)local_c0[0] & 0x7fffffff;
+              FUN_0078d230(lVar4,auStack_120);
+              FUN_00335e4c(auStack_120);
+            }
+            FUN_00338cd4(&local_e8);
+          }
+          FUN_0033e914(auStack_c8);
+        }
+        FUN_00338cd4(auStack_b8);
+      }
+      FUN_0033e914(local_98);
+    } while (!bVar1);
+    FUN_006835c8(&local_100);
+  }
+  FUN_00338cd4(auStack_88);
+  if (*(long *)(lVar2 + 0x28) != local_68) {
+                    /* WARNING: Subroutine does not return */
+    __stack_chk_fail();
+  }
+  return;
+}
+
+

@@ -1,0 +1,1 @@
+import{n as e,t}from"./text-select-BAKAwbhz-7e7104721459.js";e();export{t as default};

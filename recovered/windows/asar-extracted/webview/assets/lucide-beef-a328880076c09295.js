@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-beef-2b7c3d06136524eb.js";e();export{t as default};

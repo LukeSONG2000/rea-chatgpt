@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Bst as t,NCt as n,Vst as r,tCt as i}from"./app-shared-2cae01273bae.js";function a(e,t,n){e.set(s,e=>({...e,[t]:n}))}var o,s;function c(){return(c=e((()=>{i(),r(),o={disableBackdropBlur:!1,disableCssMotion:!1,disableScrollFadeMask:!1,disableScrollFadeMaskAnimation:!1,disableSquircles:!1,forceOpaqueRendererBackground:!1},s=n(t,o)})))()}export{c as n,a as r,s as t};
+//# sourceMappingURL=gpu-tearing-debug-settings-fed69830ff9d.js.map

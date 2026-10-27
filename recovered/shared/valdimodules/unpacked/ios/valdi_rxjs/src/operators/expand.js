@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.expand=void 0;const e=require("../util/lift"),r=require("./mergeInternals");function t(t,n=1/0,o){return n=(n||0)<1?1/0:n,(0,e.operate)((e,i)=>(0,r.mergeInternals)(e,i,t,n,void 0,!0,o))}exports.expand=t;

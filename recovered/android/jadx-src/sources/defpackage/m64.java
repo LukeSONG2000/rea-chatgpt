@@ -1,0 +1,7 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes6.dex */
+public final class m64 extends trn {
+    public static final m64 g = new m64(n64.d, l64.c);
+}

@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{$Ot as t,tkt as n}from"./app-shared-955d52676f9c.js";var r;function i(){return(i=e((()=>{n(),r=t({id:`appUndo.attachmentRemoved`,defaultMessage:`Attachment restored`,description:`Toast shown after undo restores a removed composer attachment`})})))()}export{i as n,r as t};
+//# sourceMappingURL=composer-attachment-undo-message-c5e71b2b941b.js.map

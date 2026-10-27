@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.resolveProviderValue=void 0;const e=require("./resolveProviderSource");function r(r){const o=(0,e.resolveProviderSource)();if(!o)throw new Error("No ProviderSource found in the tree. Please render a Provider component within this component tree");return o.getValue(r)}exports.resolveProviderValue=r;

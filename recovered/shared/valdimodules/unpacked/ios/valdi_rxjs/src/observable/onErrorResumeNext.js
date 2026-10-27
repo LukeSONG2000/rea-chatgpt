@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.onErrorResumeNext=void 0;const r=require("./empty"),e=require("../operators/onErrorResumeNext"),o=require("../util/argsOrArgArray");function t(...t){return(0,e.onErrorResumeNext)((0,o.argsOrArgArray)(t))(r.EMPTY)}exports.onErrorResumeNext=t;

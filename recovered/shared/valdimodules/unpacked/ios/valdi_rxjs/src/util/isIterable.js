@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.isIterable=void 0;const e=require("../symbol/iterator"),r=require("./isFunction");function t(t){return(0,r.isFunction)(t?.[e.iterator])}exports.isIterable=t;

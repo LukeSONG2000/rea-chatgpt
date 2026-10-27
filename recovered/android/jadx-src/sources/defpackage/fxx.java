@@ -1,0 +1,97 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes.dex */
+public final class fxx extends uwf {
+    public static final f2o A;
+    public static final m2o B;
+    public static final f2o C;
+    public static final g2o D;
+    public static final g2o E;
+    public static final c2o F;
+    public static final c2o G;
+    public static final f2o H;
+    public static final f2o I;
+    public static final f2o J;
+    public static final c2o K;
+    public static final c2o L;
+    public static final e2o M;
+    public static final c2o N;
+    public static final c2o O;
+    public static final c2o P;
+    public static final e2o Q;
+    public static final e2o R;
+    public static final c2o S;
+    public static final c2o T;
+    public static final n2o U;
+    public static final c2o V;
+    public static final fxx f;
+    public static final l2o g;
+    public static final f2o h;
+    public static final f2o i;
+    public static final l2o j;
+    public static final j2o k;
+    public static final f2o l;
+    public static final f2o m;
+    public static final c2o n;
+    public static final qvn o;
+    public static final c2o p;
+    public static final c2o q;
+    public static final e2o r;
+    public static final c2o s;
+    public static final c2o t;
+    public static final c2o u;
+    public static final c2o v;
+    public static final c2o w;
+    public static final c2o x;
+    public static final c2o y;
+    public static final f2o z;
+
+    static {
+        fxx fxxVar = new fxx();
+        f = fxxVar;
+        g = fxxVar.o("bio_trusted_access_link", "", "chatgpt_bio_trusted_access_link");
+        h = fxxVar.f("3750371886");
+        i = fxxVar.f("2773709870");
+        j = fxxVar.o("cyber_trusted_access_link", "", "chatgpt_bio_trusted_access_link");
+        k = fxxVar.k("chatgpt_cot_config", cp9.Companion.serializer(), new cp9());
+        l = fxxVar.f("393446348");
+        m = fxxVar.f("809922153");
+        n = fxxVar.c("save_image_inline", 110, false);
+        o = new qvn(1);
+        p = fxxVar.c("android_image_gen_animals_loading", 33, false);
+        q = fxxVar.c("android_image_gen_progress_enabled", 33, false);
+        r = fxxVar.e("android_image_gen_loading_game", o2s.b, 33, o2s.e);
+        s = fxxVar.c("android_image_gen_drift_dots_enabled", 33, false);
+        t = fxxVar.c("android_image_gen_drift_loading_text_enabled", 33, false);
+        u = fxxVar.c("android_image_gen_rotating_loading_text_enabled", 33, false);
+        v = fxxVar.c("android_image_gen_progress_density_enabled", 33, false);
+        w = fxxVar.c("android_image_gen_latency_estimate_enabled", 33, false);
+        x = fxxVar.c("android_image_gen_loading_to_image_crossfade_enabled", 33, false);
+        y = fxxVar.c("android_image_gen_loading_thumbnail_accent_enabled", 33, false);
+        z = fxxVar.f("298652888");
+        A = fxxVar.f("1498366282");
+        B = fxxVar.p("hidden_connector_ids", "chatgpt-ecosystem-approval-details-config", lo3.a);
+        C = fxxVar.f("3608297196");
+        D = fxxVar.g(1500, "android_timing_poll_interval_ms", "chatgpt_connectors_delayed_email_send_timing");
+        E = fxxVar.g(5, "android_timing_max_attempts", "chatgpt_connectors_delayed_email_send_timing");
+        F = fxxVar.c("android_html_enabled", 117, false);
+        G = fxxVar.c("is_android_html_images_enabled", 117, false);
+        H = fxxVar.f("1555962596");
+        I = fxxVar.f("1740758109");
+        fxxVar.f("1577067595");
+        J = fxxVar.f("1723709846");
+        K = fxxVar.c("enable_sharing_in_no_auth", 105, true);
+        L = fxxVar.c("require_remote_conversation_id", 6, true);
+        M = fxxVar.e("treatment", tjx.b, 111, tjx.e);
+        N = fxxVar.c("read_aloud_in_overflow_menu", 111, false);
+        O = fxxVar.c("is_enabled", 112, false);
+        P = fxxVar.c("work_mode_enabled", 112, false);
+        Q = fxxVar.e("message_feedback_mode", elx.b, 112, elx.d);
+        R = fxxVar.e("user_mochi_placement", wtx.c, 112, wtx.e);
+        S = fxxVar.c("double_tap_enabled", 112, true);
+        T = fxxVar.c("select_text_enabled", 112, false);
+        U = fxxVar.q(112, "user_mochis");
+        V = fxxVar.c("mesh_gradient_placeholder", 119, true);
+    }
+}

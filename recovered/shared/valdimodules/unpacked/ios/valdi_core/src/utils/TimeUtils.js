@@ -1,0 +1,1 @@
+"use strict";function o(o){return t(o/1e3)}function t(o){const t=Math.floor(o/3600),r=Math.floor(o%3600/60),e=Math.round(o%60);return[t,r>9?r:t?`0${r}`:r||"0",e>9?e:`0${e}`].filter(Boolean).join(":")}Object.defineProperty(exports,"__esModule",{value:!0}),exports.formatDurationSeconds=exports.formatDurationMs=void 0,exports.formatDurationMs=o,exports.formatDurationSeconds=t;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.isVersionAtLeast=void 0;const e=require("./ValdiRuntimeProvider"),i=(0,e.getValdiRuntime)(),t=Number.MAX_SAFE_INTEGER;function r(e){return e===t||i.apiVersion>=e}globalThis.__PLACEHOLDER__=t,exports.isVersionAtLeast=r;

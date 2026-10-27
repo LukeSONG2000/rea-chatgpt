@@ -1,0 +1,1 @@
+import"./app-shared-955d52676f9c.js";import{a as e,i as t,n,o as r,r as i,t as a}from"./local-conversation-sources-signals-8bb46dbe3716.js";e();export{a as conversationTurnsForSources$,n as externalResourceCacheByThread,i as hasPluginToolSourceItems$,t as hasToolSourceItems$,r as turnForSources$};

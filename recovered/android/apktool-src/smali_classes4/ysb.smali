@@ -1,0 +1,67 @@
+.class public final synthetic Lysb;
+.super Lq20;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# static fields
+.field public static final synthetic h:I
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 6
+
+    .line 1
+    new-instance v0, Lysb;
+
+    .line 2
+    .line 3
+    const-string v4, "formatLastSeenDate(Ljava/lang/String;J)Ljava/lang/String;"
+
+    .line 4
+    .line 5
+    const/4 v5, 0x1
+
+    .line 6
+    const/4 v1, 0x1
+
+    .line 7
+    const-class v2, Loyb;
+
+    .line 8
+    .line 9
+    const-string v3, "formatLastSeenDate"
+
+    .line 10
+    .line 11
+    invoke-direct/range {v0 .. v5}, Lq20;-><init>(ILjava/lang/Class;Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 12
+    .line 13
+    .line 14
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 0
+
+    .line 1
+    check-cast p1, Ljava/lang/String;
+
+    .line 2
+    .line 3
+    invoke-static {p1}, Loyb;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p0
+
+    .line 7
+    return-object p0
+.end method

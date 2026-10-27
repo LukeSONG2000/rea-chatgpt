@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-cuboid-c1db7a659f85efb3.js";e();export{t as default};

@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-id-card-c93011a78b778730.js";e();export{t as default};

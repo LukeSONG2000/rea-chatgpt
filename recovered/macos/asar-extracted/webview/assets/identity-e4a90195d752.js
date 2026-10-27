@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Eer as t,jer as n,yer as r}from"./app-initial-feb30b196d11.js";function i(e){if(!a(e))throw Error(`The active owner onboarding identity changed`)}function a(e){let t=r();return!n()&&t?.userId===e.userId&&t.accountId===e.workspaceId}function o(){return(o=e((()=>{t()})))()}export{o as n,a as r,i as t};
+//# sourceMappingURL=identity-e4a90195d752.js.map

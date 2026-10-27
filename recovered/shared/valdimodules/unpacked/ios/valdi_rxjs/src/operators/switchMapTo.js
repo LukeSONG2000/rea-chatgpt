@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.switchMapTo=void 0;const t=require("./switchMap"),e=require("../util/isFunction");function i(i,s){return(0,e.isFunction)(s)?(0,t.switchMap)(()=>i,s):(0,t.switchMap)(()=>i)}exports.switchMapTo=i;

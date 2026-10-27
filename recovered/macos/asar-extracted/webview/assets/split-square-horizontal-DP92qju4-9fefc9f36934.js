@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{n as t,t as n}from"./square-split-horizontal-DnBHrayW-81997f74f6e5.js";function r(){return(r=e((()=>{t()})))()}r();export{n as default};
+//# sourceMappingURL=split-square-horizontal-DP92qju4-9fefc9f36934.js.map

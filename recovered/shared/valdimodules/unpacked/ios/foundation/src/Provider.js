@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.providerToLazy=void 0;const e=require("foundation/src/Lazy"),r=require("foundation/src/isUndefined");function o(o){if(!(0,r.isUndefined)(o))return new e.Lazy(()=>o.get())}exports.providerToLazy=o;

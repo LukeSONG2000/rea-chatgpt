@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-ambulance-1190abf1bad10887.js";e();export{t as default};

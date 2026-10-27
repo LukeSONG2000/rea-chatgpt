@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,t}from"./writing-block-2dad4110efd8.js";e();export{t as LibraryWritingBlock};

@@ -1,0 +1,1 @@
+"use strict";function e(e,r){if(!r)return{...e};let t;for(const o in e){const i=e[o];r[o]!==i&&(t||(t={...r}),t[o]=i)}return t}Object.defineProperty(exports,"__esModule",{value:!0}),exports.mergePartial=void 0,exports.mergePartial=e;

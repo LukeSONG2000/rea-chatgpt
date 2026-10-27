@@ -1,0 +1,1 @@
+"use strict";function e(e){throw new Error("serializer<T>() requires the Valdi JSON serialization compiler transform")}Object.defineProperty(exports,"__esModule",{value:!0}),exports.serializer=void 0,exports.serializer=e;

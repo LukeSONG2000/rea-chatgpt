@@ -1,0 +1,1 @@
+"use strict";function e(e){return"function"==typeof e.getDILTransparentWidgetChildren}Object.defineProperty(exports,"__esModule",{value:!0}),exports.isDILTransparentWidgetRenderer=void 0,exports.isDILTransparentWidgetRenderer=e;

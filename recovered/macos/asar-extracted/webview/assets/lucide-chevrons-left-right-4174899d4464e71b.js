@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-chevrons-left-right-1067821c946714ee.js";e();export{t as default};

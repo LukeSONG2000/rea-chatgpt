@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.unreachable=exports.UnreachableCaseError=void 0;class UnreachableCaseError extends Error{constructor(r){super(`:${r}`)}}function r(r){throw new UnreachableCaseError(r)}exports.UnreachableCaseError=UnreachableCaseError,exports.unreachable=r;

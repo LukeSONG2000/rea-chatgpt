@@ -1,0 +1,1 @@
+import{n as e,t}from"./fish-symbol-l2sff6Dw-a43d78b46f8e.js";t();export{e as default};

@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{n as t}from"./modal-permission-dropdown-4c785d75a0e5.js";function n(){return(n=e((()=>{t()})))()}export{n as t};
+//# sourceMappingURL=permission-dropdown-466578dc3fe8.js.map

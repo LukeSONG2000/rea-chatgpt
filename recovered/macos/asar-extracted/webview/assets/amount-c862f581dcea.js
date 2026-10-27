@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{LQ as t,eQ as n}from"./app-primary-7d7313419f84.js";import{n as r,s as i}from"./amount-fd8b4b8c1ce0.js";function a(e,t){return e==null||e<=t}var o,s;function c(){return(c=e((()=>{n(),i(),o=({intl:e,amount:n,currency:r})=>{let i=t(r),a=n/10**i;return e.formatNumber(a,{currency:r,style:`currency`,minimumFractionDigits:i,maximumFractionDigits:i})},s=({intl:e,amount:n,currency:i})=>r({intl:e,amount:n/10**t(i),currency:i})})))()}export{a as i,s as n,c as r,o as t};
+//# sourceMappingURL=amount-c862f581dcea.js.map

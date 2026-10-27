@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-siren-4862f7f18c15f6b4.js";e();export{t as default};

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.timestamp=void 0;const e=require("../scheduler/dateTimestampProvider"),t=require("./map");function r(r=e.dateTimestampProvider){return(0,t.map)(e=>({value:e,timestamp:r.now()}))}exports.timestamp=r;

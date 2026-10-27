@@ -1,0 +1,1 @@
+import"./app-shared-955d52676f9c.js";import{Bo as e,Ho as t,Vo as n}from"./app-initial-438d1df57f70.js";n();export{e as canOpenChatGptFilePreview,t as openChatGptFile};

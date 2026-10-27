@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{arr as t,irr as n}from"./app-initial-438d1df57f70.js";async function r(e,t,r,i){let{apps:a}=await n(e,t).sendRequest(`app/installed`,{forceRefresh:!0,threadId:r},i==null?void 0:{threadAccess:i,coalesce:!1});return new Set(a.filter(({callable:e,enabled:t})=>e&&t).map(({id:e})=>e))}function i(){return(i=e((()=>{t()})))()}export{i as n,r as t};
+//# sourceMappingURL=thread-callable-apps-f53a9143f4c7.js.map

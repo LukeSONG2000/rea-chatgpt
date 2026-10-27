@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-pill-bottle-a645371cd5068e74.js";e();export{t as default};

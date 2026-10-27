@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.captureError=exports.errorContext=void 0;const r=require("../config");let e=null;function o(r){r()}function t(o){r.config.useDeprecatedSynchronousErrorHandling&&e&&(e.errorThrown=!0,e.error=o)}exports.errorContext=o,exports.captureError=t;

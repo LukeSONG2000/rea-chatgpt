@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Wvn as t,cL as n,fL as r,qvn as i,uer as a,w7n as o}from"./app-initial-438d1df57f70.js";import{n as s,t as c}from"./dialog-frame-6bf8df950b45.js";import{n as l,t as u}from"./session-458027dd99a5.js";function d(e,t){let n=e.get(a);l(e,t.accountId,n)&&e.get(r)&&i(e,c,{...t,authenticatedUserId:n,shareSessionId:crypto.randomUUID()})}function f(){return(f=e((()=>{o(),t(),n(),s(),u()})))()}export{d as n,f as t};
+//# sourceMappingURL=entry-fac9bc33578c.js.map

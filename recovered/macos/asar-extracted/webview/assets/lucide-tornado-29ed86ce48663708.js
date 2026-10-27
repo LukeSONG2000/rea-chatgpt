@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-tornado-b12b82c220ff2a37.js";e();export{t as default};

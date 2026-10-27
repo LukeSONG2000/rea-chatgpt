@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{XUt as e,YUt as t}from"./app-initial-feb30b196d11.js";e();export{t as LoadingPage};

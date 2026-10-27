@@ -1,0 +1,7 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes.dex */
+public abstract class a08 {
+    public static final th40 a = new th40("CalpicoRoomsCache", ukw.Z(new gw00(-1868243687, "CalpicoMessageChunks.sq:deleteAllMessageRecords"), new gw00(-1758468491, "CalpicoMessageChunks.sq:deleteMessagesForRoom"), new gw00(-1320739171, "CalpicoUsersCache.sq:deleteAllUsers"), new gw00(-1247835091, "CalpicoRoomPreviewsCache.sq:insertRoomPreview"), new gw00(-1178635774, "CalpicoMessageChunks.sq:getMessageMetadataForRoom"), new gw00(-917581113, "CalpicoMessageChunks.sq:deleteChunksForMessage"), new gw00(-915641273, "CalpicoMessageChunks.sq:insertMessageRecord"), new gw00(-597472329, "CalpicoMessageChunks.sq:insertMessageChunk"), new gw00(-515860950, "CalpicoRoomsCache.sq:selectAll"), new gw00(-484156241, "CalpicoRoomsCache.sq:insertRoom"), new gw00(-38511985, "CalpicoUsersCache.sq:insertUser"), new gw00(78654014, "CalpicoRoomPreviewsCache.sq:selectAll"), new gw00(520782485, "CalpicoMessageChunks.sq:deleteMessageRecord"), new gw00(556313676, "CalpicoMessageChunks.sq:getMessageMetadataForRoom"), new gw00(797791155, "CalpicoMessageChunks.sq:getAllMessageMetadata"), new gw00(841405211, "CalpicoRoomsCache.sq:deleteAll"), new gw00(1435920175, "CalpicoRoomPreviewsCache.sq:deleteAll"), new gw00(1684532462, "CalpicoUsersCache.sq:selectAllUsers")));
+}

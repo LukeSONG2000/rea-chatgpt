@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.HTMLMathList=void 0;const t=require("../../core/MathList");class HTMLMathList extends t.AbstractMathList{}exports.HTMLMathList=HTMLMathList;

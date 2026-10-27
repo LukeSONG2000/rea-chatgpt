@@ -1,0 +1,1 @@
+"use strict";function e(e){return"server"===e.handler&&"string"==typeof e.nativeWidgetResolutionId&&e.nativeWidgetResolutionId.length>0&&"string"==typeof e.componentName&&e.componentName.length>0}Object.defineProperty(exports,"__esModule",{value:!0}),exports.isDILSandboxBoundServerAction=void 0,exports.isDILSandboxBoundServerAction=e;

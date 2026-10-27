@@ -1,0 +1,1 @@
+import{n as e,t}from"./persona-582d28e7099e.js";t();export{e as startAgeVerification};

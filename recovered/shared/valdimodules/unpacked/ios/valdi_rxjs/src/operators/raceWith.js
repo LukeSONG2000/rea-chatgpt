@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.raceWith=void 0;const e=require("../observable/race"),t=require("../util/lift"),r=require("../util/identity");function i(...i){return i.length?(0,t.operate)((t,r)=>{(0,e.raceInit)([t,...i])(r)}):r.identity}exports.raceWith=i;

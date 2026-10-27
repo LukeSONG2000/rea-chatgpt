@@ -1,0 +1,1 @@
+import"./app-shared-955d52676f9c.js";import{n as e,r as t,t as n}from"./Appy-6f3eebf8de99.js";t();export{n as AppyIcon,e as AppyIconSm};

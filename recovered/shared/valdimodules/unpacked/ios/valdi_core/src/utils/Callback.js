@@ -1,0 +1,1 @@
+"use strict";function e(e){const t=function(...e){return t[exports.CALLBACK_KEY].apply(this,e)};return t[exports.CALLBACK_KEY]=e,t}Object.defineProperty(exports,"__esModule",{value:!0}),exports.createReusableCallback=exports.CALLBACK_KEY=exports.OWNER_KEY=void 0,exports.OWNER_KEY=Symbol(),exports.CALLBACK_KEY=Symbol(),exports.createReusableCallback=e;

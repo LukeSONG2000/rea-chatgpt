@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Kst as t,qst as n}from"./app-shared-955d52676f9c.js";function r(e){let{port1:t,port2:r}=new MessageChannel;return window.postMessage({type:`connect-app-host`,port:r},window.location.origin,[r]),n(t,e)}function i(){return(i=e((()=>{t()})))()}export{i as n,r as t};
+//# sourceMappingURL=connect-app-host-a8e782909ffe.js.map

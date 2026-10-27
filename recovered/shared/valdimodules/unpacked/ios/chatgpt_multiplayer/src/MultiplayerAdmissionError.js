@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.MultiplayerAdmissionError=void 0;class MultiplayerAdmissionError extends Error{constructor(r,s){super("The multiplayer admission request was rejected."),this.statusCode=r,this.reason=s,this.name="MultiplayerAdmissionError"}}exports.MultiplayerAdmissionError=MultiplayerAdmissionError;

@@ -1,0 +1,296 @@
+.class public final Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;
+.super Ljava/lang/Object;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# instance fields
+.field private final zza:Ljava/lang/String;
+
+.field private final zzb:Ljava/lang/String;
+
+.field private final zzc:Ljava/lang/String;
+
+.field private final zzd:Ljava/lang/String;
+
+.field private final zze:Lcom/google/android/gms/internal/mlkit_vision_face/zzbn;
+
+.field private final zzf:Ljava/lang/String;
+
+.field private final zzg:Ljava/lang/Boolean;
+
+.field private final zzh:Ljava/lang/Boolean;
+
+.field private final zzi:Ljava/lang/Boolean;
+
+.field private final zzj:Ljava/lang/Integer;
+
+.field private final zzk:Ljava/lang/Integer;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;Lcom/google/android/gms/internal/mlkit_vision_face/zzmu;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zzs(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Ljava/lang/String;
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object p2
+
+    .line 8
+    iput-object p2, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zza:Ljava/lang/String;
+
+    .line 9
+    .line 10
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zzt(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Ljava/lang/String;
+
+    .line 11
+    .line 12
+    .line 13
+    move-result-object p2
+
+    .line 14
+    iput-object p2, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzb:Ljava/lang/String;
+
+    .line 15
+    .line 16
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zzv(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Ljava/lang/String;
+
+    .line 17
+    .line 18
+    .line 19
+    move-result-object p2
+
+    .line 20
+    iput-object p2, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzc:Ljava/lang/String;
+
+    .line 21
+    .line 22
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zzw(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Ljava/lang/String;
+
+    .line 23
+    .line 24
+    .line 25
+    move-result-object p2
+
+    .line 26
+    iput-object p2, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzd:Ljava/lang/String;
+
+    .line 27
+    .line 28
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zza(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Lcom/google/android/gms/internal/mlkit_vision_face/zzbn;
+
+    .line 29
+    .line 30
+    .line 31
+    move-result-object p2
+
+    .line 32
+    iput-object p2, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zze:Lcom/google/android/gms/internal/mlkit_vision_face/zzbn;
+
+    .line 33
+    .line 34
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zzu(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Ljava/lang/String;
+
+    .line 35
+    .line 36
+    .line 37
+    move-result-object p2
+
+    .line 38
+    iput-object p2, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzf:Ljava/lang/String;
+
+    .line 39
+    .line 40
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zzn(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Ljava/lang/Boolean;
+
+    .line 41
+    .line 42
+    .line 43
+    move-result-object p2
+
+    .line 44
+    iput-object p2, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzg:Ljava/lang/Boolean;
+
+    .line 45
+    .line 46
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zzp(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Ljava/lang/Boolean;
+
+    .line 47
+    .line 48
+    .line 49
+    move-result-object p2
+
+    .line 50
+    iput-object p2, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzh:Ljava/lang/Boolean;
+
+    .line 51
+    .line 52
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zzo(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Ljava/lang/Boolean;
+
+    .line 53
+    .line 54
+    .line 55
+    move-result-object p2
+
+    .line 56
+    iput-object p2, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzi:Ljava/lang/Boolean;
+
+    .line 57
+    .line 58
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zzq(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Ljava/lang/Integer;
+
+    .line 59
+    .line 60
+    .line 61
+    move-result-object p2
+
+    .line 62
+    iput-object p2, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzj:Ljava/lang/Integer;
+
+    .line 63
+    .line 64
+    invoke-static {p1}, Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;->zzr(Lcom/google/android/gms/internal/mlkit_vision_face/zzmt;)Ljava/lang/Integer;
+
+    .line 65
+    .line 66
+    .line 67
+    move-result-object p1
+
+    .line 68
+    iput-object p1, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzk:Ljava/lang/Integer;
+
+    .line 69
+    .line 70
+    return-void
+.end method
+
+
+# virtual methods
+.method public final zza()Lcom/google/android/gms/internal/mlkit_vision_face/zzbn;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zze:Lcom/google/android/gms/internal/mlkit_vision_face/zzbn;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final zzb()Ljava/lang/Boolean;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzg:Ljava/lang/Boolean;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final zzc()Ljava/lang/Boolean;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzi:Ljava/lang/Boolean;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final zzd()Ljava/lang/Boolean;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzh:Ljava/lang/Boolean;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final zze()Ljava/lang/Integer;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzj:Ljava/lang/Integer;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final zzf()Ljava/lang/Integer;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzk:Ljava/lang/Integer;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final zzg()Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zza:Ljava/lang/String;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final zzh()Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzb:Ljava/lang/String;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final zzi()Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzf:Ljava/lang/String;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final zzj()Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzc:Ljava/lang/String;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final zzk()Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/google/android/gms/internal/mlkit_vision_face/zzmv;->zzd:Ljava/lang/String;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method

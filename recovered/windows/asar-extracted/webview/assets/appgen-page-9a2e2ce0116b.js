@@ -1,0 +1,1 @@
+import"./app-shared-955d52676f9c.js";import{r as e,t}from"./appgen-page-3fb7fce0af19.js";e();export{t as AppgenPage};

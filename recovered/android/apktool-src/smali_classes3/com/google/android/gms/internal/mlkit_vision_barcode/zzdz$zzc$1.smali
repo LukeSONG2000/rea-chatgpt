@@ -1,0 +1,47 @@
+.class Lcom/google/android/gms/internal/mlkit_vision_barcode/zzdz$zzc$1;
+.super Ljava/lang/Throwable;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/internal/mlkit_vision_barcode/zzdz$zzc;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/String;)V
+    .locals 0
+
+    .line 1
+    const-string p1, "Failure occurred while trying to finish a future."
+
+    .line 2
+    .line 3
+    invoke-direct {p0, p1}, Ljava/lang/Throwable;-><init>(Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method public final declared-synchronized fillInStackTrace()Ljava/lang/Throwable;
+    .locals 0
+
+    .line 1
+    monitor-enter p0
+
+    .line 2
+    monitor-exit p0
+
+    .line 3
+    return-object p0
+.end method

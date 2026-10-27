@@ -1,0 +1,1 @@
+import"./app-shared-955d52676f9c.js";import{n as e,t}from"./agreement-form-2206f39a63b9.js";e();export{t as MerchantAgreementForm};

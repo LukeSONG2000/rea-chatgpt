@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.supportsTextAnimationColor=void 0;const e=require("./CompilerIntrinsics"),i=require("./Device");function r(){return(i.Device.isIOS()||i.Device.isAndroid())&&!i.Device.isWeb()&&(0,e.isVersionAtLeast)(213)}exports.supportsTextAnimationColor=r;

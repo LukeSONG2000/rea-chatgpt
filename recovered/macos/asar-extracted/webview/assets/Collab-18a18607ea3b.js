@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,r as t,t as n}from"./Collab-d93dcff8a7ed.js";t();export{n as CollabIcon,e as CollabIconSm};

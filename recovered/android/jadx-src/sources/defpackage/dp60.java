@@ -1,0 +1,100 @@
+package defpackage;
+
+import com.withpersona.sdk2.inquiry.network.dto.NextStep;
+import com.withpersona.sdk2.inquiry.network.dto.ui.styling.StepStyles;
+import java.util.List;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes7.dex */
+public final class dp60 implements tp60 {
+    public final long A;
+    public final boolean B;
+    public final String C;
+    public final String D;
+    public final qv8 E;
+    public final NextStep.GovernmentId.AssetConfig.CapturePage F;
+    public final boolean G;
+    public final boolean H;
+    public final tq8 I;
+    public final jf8 J;
+    public final boolean K;
+    public final boolean L;
+    public final String M;
+    public final int N;
+    public final int O;
+    public final int P;
+    public final String a;
+    public final String b;
+    public final String c;
+    public final String d;
+    public final np60 e;
+    public final rrr f;
+    public final vrr g;
+    public final k4z h;
+    public final Function2 i;
+    public final Function0 j;
+    public final Function0 k;
+    public final boolean l;
+    public final List m;
+    public final hwq n;
+    public final int o;
+    public final StepStyles.GovernmentIdStepStyle p;
+    public final Function2 q;
+    public final Function1 r;
+    public final Function1 s;
+    public final int t;
+    public final Function0 u;
+    public final Function0 v;
+    public final voe0 w;
+    public final boolean x;
+    public final Function2 y;
+    public final boolean z;
+
+    public dp60(String str, String str2, String str3, String str4, String str5, int i, np60 np60Var, rrr rrrVar, vrr vrrVar, k4z k4zVar, Function2 function2, Function0 function0, Function0 function02, boolean z, List list, hwq hwqVar, int i2, StepStyles.GovernmentIdStepStyle governmentIdStepStyle, Function2 function22, Function1 function1, Function1 function12, int i3, Function0 function03, Function0 function04, voe0 voe0Var, boolean z2, Function2 function23, boolean z3, long j, boolean z4, String str6, String str7, qv8 qv8Var, NextStep.GovernmentId.AssetConfig.CapturePage capturePage, boolean z5, boolean z6, tq8 tq8Var, jf8 jf8Var, int i4, boolean z7, boolean z8, String str8, int i5) {
+        this.a = str;
+        this.b = str2;
+        this.c = str3;
+        this.d = str5;
+        this.N = i;
+        this.e = np60Var;
+        this.f = rrrVar;
+        this.g = vrrVar;
+        this.h = k4zVar;
+        this.i = function2;
+        this.j = function0;
+        this.k = function02;
+        this.l = z;
+        this.m = list;
+        this.n = hwqVar;
+        this.o = i2;
+        this.p = governmentIdStepStyle;
+        this.q = function22;
+        this.r = function1;
+        this.s = function12;
+        this.t = i3;
+        this.u = function03;
+        this.v = function04;
+        this.w = voe0Var;
+        this.x = z2;
+        this.y = function23;
+        this.z = z3;
+        this.A = j;
+        this.B = z4;
+        this.C = str6;
+        this.D = str7;
+        this.E = qv8Var;
+        this.F = capturePage;
+        this.G = z5;
+        this.H = z6;
+        this.I = tq8Var;
+        this.J = jf8Var;
+        this.O = i4;
+        this.K = z7;
+        this.L = z8;
+        this.M = str8;
+        this.P = i5;
+    }
+}

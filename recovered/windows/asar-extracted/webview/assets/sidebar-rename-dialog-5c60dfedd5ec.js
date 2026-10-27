@@ -1,0 +1,1 @@
+import"./app-shared-955d52676f9c.js";import{Xw as e,Zw as t}from"./app-primary-844e405f2b90.js";t();export{e as SidebarRenameDialog};

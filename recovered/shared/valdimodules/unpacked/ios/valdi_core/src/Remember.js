@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.remember=void 0;const e=require("./Renderer");function r(r,...t){return(0,e.getRenderer)().remember(r,t)}exports.remember=r;

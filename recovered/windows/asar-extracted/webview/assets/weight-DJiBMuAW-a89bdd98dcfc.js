@@ -1,0 +1,1 @@
+import{n as e,t}from"./weight-DJiBMuAW-a515744a2e20.js";t();export{e as default};

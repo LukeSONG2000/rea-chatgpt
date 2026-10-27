@@ -1,0 +1,1 @@
+"use strict";function e(e){if(0===e.length)return;let t="";for(const r of e)if(null!=r&&"boolean"!=typeof r){if("string"!=typeof r&&"number"!=typeof r)return;t+=String(r)}return t}Object.defineProperty(exports,"__esModule",{value:!0}),exports.primitiveChildrenToString=void 0,exports.primitiveChildrenToString=e;

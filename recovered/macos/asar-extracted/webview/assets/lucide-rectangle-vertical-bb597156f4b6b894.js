@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-rectangle-vertical-5b67f54b4af0666b.js";e();export{t as default};

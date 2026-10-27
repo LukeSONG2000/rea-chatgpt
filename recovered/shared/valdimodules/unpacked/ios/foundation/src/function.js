@@ -1,0 +1,1 @@
+"use strict";function t(){}function n(t){return!!t}function e(t){return t}function o(t){return null!=t}Object.defineProperty(exports,"__esModule",{value:!0}),exports.nonnull=exports.identity=exports.truthy=exports.noop=void 0,exports.noop=t,exports.truthy=n,exports.identity=e,exports.nonnull=o;

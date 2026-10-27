@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Bst as t,ECt as n,Gzt as r,Lzt as i,MIt as a,PRt as o,Vst as s,XVt as c,YVt as l,Yst as u,Yzt as d,tCt as f}from"./app-shared-2cae01273bae.js";function p(){return(p=e((()=>{u()})))()}function m(){return(m=e((()=>{l(),u(),c(),a(),p(),i({recentConversationIds:o(d()).optional(),routesByTab:r(d(),d()),sessionId:d()}),d().min(1)})))()}function h(){return(h=e((()=>{f(),m(),s(),n(t,e=>null)})))()}export{h as t};
+//# sourceMappingURL=handle-chrome-extension-sidepanel-thread-archive-routing-bed39e3267b3.js.map

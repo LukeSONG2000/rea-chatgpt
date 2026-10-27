@@ -1,0 +1,1 @@
+import{n as e,t}from"./data-c10f6c326a92.js";t();export{e as prepareOwnerWorkspacePage};

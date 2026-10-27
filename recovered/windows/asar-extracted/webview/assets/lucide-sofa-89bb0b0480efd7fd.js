@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-sofa-4b5aa6fdefbd06ad.js";e();export{t as default};

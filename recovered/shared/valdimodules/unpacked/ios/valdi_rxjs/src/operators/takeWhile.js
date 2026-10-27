@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.takeWhile=void 0;const e=require("../util/lift"),r=require("./OperatorSubscriber");function t(t,i=!1){return(0,e.operate)((e,o)=>{let s=0;e.subscribe((0,r.createOperatorSubscriber)(o,e=>{const r=t(e,s++);(r||i)&&o.next(e),!r&&o.complete()}))})}exports.takeWhile=t;

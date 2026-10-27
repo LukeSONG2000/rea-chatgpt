@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{n as t,t as n}from"./lucide-createLucideIcon-0d8cf01607d7b255.js";var r;function i(){return(i=e((()=>{t(),r=n(`FlagTriangleRight`,[[`path`,{d:`M7 22V2l10 5-10 5`,key:`17n18y`}]])})))()}export{i as n,r as t};
+//# sourceMappingURL=lucide-flag-triangle-right-47ed16c85597cc99.js.map

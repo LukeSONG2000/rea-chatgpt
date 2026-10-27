@@ -1,0 +1,330 @@
+.class public final Lkvv;
+.super Ljava/lang/Object;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# annotations
+.annotation runtime Ldi70;
+.end annotation
+
+
+# static fields
+.field public static final Companion:Ljvv;
+
+
+# instance fields
+.field public final a:D
+
+.field public final b:D
+
+.field public final c:Ljava/lang/Double;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .line 1
+    new-instance v0, Ljvv;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    sput-object v0, Lkvv;->Companion:Ljvv;
+
+    .line 7
+    .line 8
+    return-void
+.end method
+
+.method public constructor <init>(DDLjava/lang/Double;)V
+    .locals 0
+
+    .line 34
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 35
+    iput-wide p1, p0, Lkvv;->a:D
+
+    .line 36
+    iput-wide p3, p0, Lkvv;->b:D
+
+    .line 37
+    iput-object p5, p0, Lkvv;->c:Ljava/lang/Double;
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(IDDLjava/lang/Double;)V
+    .locals 3
+
+    .line 1
+    and-int/lit8 v0, p1, 0x3
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    const/4 v2, 0x3
+
+    .line 5
+    if-ne v2, v0, :cond_1
+
+    .line 6
+    .line 7
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 8
+    .line 9
+    .line 10
+    iput-wide p2, p0, Lkvv;->a:D
+
+    .line 11
+    .line 12
+    iput-wide p4, p0, Lkvv;->b:D
+
+    .line 13
+    .line 14
+    and-int/lit8 p1, p1, 0x4
+
+    .line 15
+    .line 16
+    if-nez p1, :cond_0
+
+    .line 17
+    .line 18
+    iput-object v1, p0, Lkvv;->c:Ljava/lang/Double;
+
+    .line 19
+    .line 20
+    return-void
+
+    .line 21
+    :cond_0
+    iput-object p6, p0, Lkvv;->c:Ljava/lang/Double;
+
+    .line 22
+    .line 23
+    return-void
+
+    .line 24
+    :cond_1
+    sget-object p0, Livv;->a:Livv;
+
+    .line 25
+    .line 26
+    invoke-virtual {p0}, Livv;->getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 27
+    .line 28
+    .line 29
+    move-result-object p0
+
+    .line 30
+    invoke-static {p1, v2, p0}, Lout;->x0(IILkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 31
+    .line 32
+    .line 33
+    throw v1
+.end method
+
+
+# virtual methods
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 7
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    if-ne p0, p1, :cond_0
+
+    .line 3
+    .line 4
+    return v0
+
+    .line 5
+    :cond_0
+    instance-of v1, p1, Lkvv;
+
+    .line 6
+    .line 7
+    const/4 v2, 0x0
+
+    .line 8
+    if-nez v1, :cond_1
+
+    .line 9
+    .line 10
+    return v2
+
+    .line 11
+    :cond_1
+    check-cast p1, Lkvv;
+
+    .line 12
+    .line 13
+    iget-wide v3, p0, Lkvv;->a:D
+
+    .line 14
+    .line 15
+    iget-wide v5, p1, Lkvv;->a:D
+
+    .line 16
+    .line 17
+    invoke-static {v3, v4, v5, v6}, Ljava/lang/Double;->compare(DD)I
+
+    .line 18
+    .line 19
+    .line 20
+    move-result v1
+
+    .line 21
+    if-eqz v1, :cond_2
+
+    .line 22
+    .line 23
+    return v2
+
+    .line 24
+    :cond_2
+    iget-wide v3, p0, Lkvv;->b:D
+
+    .line 25
+    .line 26
+    iget-wide v5, p1, Lkvv;->b:D
+
+    .line 27
+    .line 28
+    invoke-static {v3, v4, v5, v6}, Ljava/lang/Double;->compare(DD)I
+
+    .line 29
+    .line 30
+    .line 31
+    move-result v1
+
+    .line 32
+    if-eqz v1, :cond_3
+
+    .line 33
+    .line 34
+    return v2
+
+    .line 35
+    :cond_3
+    iget-object p0, p0, Lkvv;->c:Ljava/lang/Double;
+
+    .line 36
+    .line 37
+    iget-object p1, p1, Lkvv;->c:Ljava/lang/Double;
+
+    .line 38
+    .line 39
+    invoke-static {p0, p1}, Lb79;->u(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 40
+    .line 41
+    .line 42
+    move-result p0
+
+    .line 43
+    if-nez p0, :cond_4
+
+    .line 44
+    .line 45
+    return v2
+
+    .line 46
+    :cond_4
+    return v0
+.end method
+
+.method public final hashCode()I
+    .locals 4
+
+    .line 1
+    iget-wide v0, p0, Lkvv;->a:D
+
+    .line 2
+    .line 3
+    invoke-static {v0, v1}, Ljava/lang/Double;->hashCode(D)I
+
+    .line 4
+    .line 5
+    .line 6
+    move-result v0
+
+    .line 7
+    const/16 v1, 0x1f
+
+    .line 8
+    .line 9
+    mul-int/2addr v0, v1
+
+    .line 10
+    iget-wide v2, p0, Lkvv;->b:D
+
+    .line 11
+    .line 12
+    invoke-static {v0, v1, v2, v3}, Lqfb0;->n(IID)I
+
+    .line 13
+    .line 14
+    .line 15
+    move-result v0
+
+    .line 16
+    iget-object p0, p0, Lkvv;->c:Ljava/lang/Double;
+
+    .line 17
+    .line 18
+    if-nez p0, :cond_0
+
+    .line 19
+    .line 20
+    const/4 p0, 0x0
+
+    .line 21
+    goto :goto_0
+
+    .line 22
+    :cond_0
+    invoke-virtual {p0}, Ljava/lang/Object;->hashCode()I
+
+    .line 23
+    .line 24
+    .line 25
+    move-result p0
+
+    .line 26
+    :goto_0
+    add-int/2addr v0, p0
+
+    .line 27
+    return v0
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    const-class p0, Lkvv;
+
+    .line 2
+    .line 3
+    invoke-virtual {p0}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p0
+
+    .line 7
+    return-object p0
+.end method

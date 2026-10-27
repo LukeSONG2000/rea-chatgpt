@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{$rt as e,Qrt as t}from"./app-initial-feb30b196d11.js";t();export{e as openTextFileEditorSidePanelTab};

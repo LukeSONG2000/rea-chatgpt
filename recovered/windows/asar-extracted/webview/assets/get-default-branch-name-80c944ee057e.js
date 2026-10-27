@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";function t({branchPrefix:e,conversationTitle:t}){let r=e?.trim()??``,i=n(t);return i.length===0?r:`${r}${i}`}function n(e){return e?e.trim().toLowerCase().split(/\s+/).slice(0,r).map(e=>e.replace(/[^a-z0-9]/g,``)).filter(e=>e.length>0).join(`-`):``}var r;function i(){return(i=e((()=>{r=5})))()}export{i as n,t};
+//# sourceMappingURL=get-default-branch-name-80c944ee057e.js.map

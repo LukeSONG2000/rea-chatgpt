@@ -1,0 +1,7 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes6.dex */
+public final class x1b0 extends b2b0 {
+    public static final x1b0 a = new x1b0();
+}

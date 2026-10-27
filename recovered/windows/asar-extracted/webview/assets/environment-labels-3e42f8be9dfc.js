@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{iB as t,tB as n}from"./app-shared-955d52676f9c.js";function r(e,t){return t?.trim()||a(e)}function i(e){return r(e.configPath,e.type===`success`?e.environment.name:null)}function a(e){let n=t(e),r=n.split(`/`).filter(Boolean);return r[r.length-1]??n}function o(){return(o=e((()=>{n()})))()}export{o as n,i as t};
+//# sourceMappingURL=environment-labels-3e42f8be9dfc.js.map

@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{XVt as t,YNt as n,_B as r,gB as i,mB as a,pB as o}from"./app-shared-2cae01273bae.js";function s({children:e}){let t=(0,c.useMemo)(o,[]);return(0,c.useEffect)(()=>()=>{t?.disconnect()},[t]),(0,l.jsx)(i.Provider,{value:t,children:e})}var c,l;function u(){return(u=e((()=>{c=t(),r(),a(),l=n()})))()}export{u as n,s as t};
+//# sourceMappingURL=resize-observer-provider-a966818c2ee4.js.map

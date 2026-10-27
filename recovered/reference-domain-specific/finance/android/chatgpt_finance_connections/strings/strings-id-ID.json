@@ -1,0 +1,317 @@
+{
+  "l10nsvc" : "sourcefile",
+  "finance_account_linking_tab_accounts" : {
+    "defaultMessage" : "Rekening",
+    "description" : "Tab for connecting bank, investment, and other financial accounts in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_manual_accounts" : {
+    "defaultMessage" : "Akun manual",
+    "description" : "Tab for manually adding financial accounts, assets, and debts in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_credit_score" : {
+    "defaultMessage" : "Skor kredit",
+    "description" : "Tab for connecting credit-score information in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_real_estate" : {
+    "defaultMessage" : "Properti",
+    "description" : "Tab for connecting real-estate information in the Finance account-linking sheet."
+  },
+  "finance_account_linking_title" : {
+    "defaultMessage" : "Hubungkan keuangan",
+    "description" : "Heading shown above the Finance account-linking institution picker."
+  },
+  "finance_account_linking_close_accessibility_label" : {
+    "defaultMessage" : "Tutup Hubungkan Keuangan",
+    "description" : "Screen-reader label for the button that dismisses Finance account linking."
+  },
+  "finance_account_linking_connection_types_accessibility_label" : {
+    "defaultMessage" : "Jenis koneksi keuangan",
+    "description" : "Screen-reader label for the tabs selecting a financial connection type."
+  },
+  "finance_account_linking_search_accessibility_label" : {
+    "defaultMessage" : "Cari bank atau investasi",
+    "description" : "Screen-reader label for the financial institution search input."
+  },
+  "finance_account_linking_search_placeholder" : {
+    "defaultMessage" : "Cari",
+    "description" : "Placeholder for the financial institution search input."
+  },
+  "finance_account_linking_clear_search_accessibility_label" : {
+    "defaultMessage" : "Hapus pencarian",
+    "description" : "Screen-reader label for the button that clears the institution search."
+  },
+  "finance_account_linking_loading_institutions_accessibility_label" : {
+    "defaultMessage" : "Memuat lembaga keuangan",
+    "description" : "Screen-reader label announced while the first financial institution page loads."
+  },
+  "finance_account_linking_loading_more_institutions_accessibility_label" : {
+    "defaultMessage" : "Memuat lebih banyak lembaga keuangan",
+    "description" : "Screen-reader label announced while another financial institution page loads."
+  },
+  "finance_account_linking_institution_load_error_accessibility_label" : {
+    "defaultMessage" : "Tidak dapat memuat lembaga keuangan",
+    "description" : "Screen-reader label announced when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_error_title" : {
+    "defaultMessage" : "Tidak dapat memuat institusi",
+    "description" : "Title shown when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_error_detail" : {
+    "defaultMessage" : "Periksa koneksi Anda dan coba lagi.",
+    "description" : "Supporting text shown when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_retry_accessibility_label" : {
+    "defaultMessage" : "Coba muat kembali lembaga keuangan",
+    "description" : "Screen-reader label for the action that retries a failed institution request."
+  },
+  "finance_account_linking_institution_load_retry" : {
+    "defaultMessage" : "Coba lagi",
+    "description" : "Action that retries a failed financial institution request."
+  },
+  "finance_account_linking_empty_institutions_accessibility_label" : {
+    "defaultMessage" : "Tidak ada lembaga keuangan yang tersedia",
+    "description" : "Screen-reader label announced when there are no financial institutions to show."
+  },
+  "finance_account_linking_no_search_results_accessibility_label" : {
+    "defaultMessage" : "Tidak ada hasil untuk {query}",
+    "description" : "Screen-reader label announced when an institution search finds no matches.",
+    "example" : "No results for Community Bank"
+  },
+  "finance_account_linking_empty_institutions_title" : {
+    "defaultMessage" : "Tidak ada institusi yang tersedia",
+    "description" : "Title shown when the financial institution picker has no available institutions."
+  },
+  "finance_account_linking_no_search_results_title" : {
+    "defaultMessage" : "Tidak ada hasil",
+    "description" : "Title shown when an institution search finds no matches."
+  },
+  "finance_account_linking_empty_institutions_detail" : {
+    "defaultMessage" : "Coba lagi sebentar lagi.",
+    "description" : "Supporting text shown when no financial institutions are available."
+  },
+  "finance_account_linking_no_search_results_detail" : {
+    "defaultMessage" : "Coba cari lagi untuk “{query}”.",
+    "description" : "Supporting text suggesting a new institution search after no results are found.",
+    "example" : "Try another search for “Community Bank”."
+  },
+  "finance_account_linking_coming_soon_accessibility_label" : {
+    "defaultMessage" : "Koneksi {connectionType} akan segera hadir",
+    "description" : "Screen-reader label for an unavailable financial connection type.",
+    "example" : "Real estate connections coming soon"
+  },
+  "finance_account_linking_coming_soon_title" : {
+    "defaultMessage" : "{connectionType} segera hadir",
+    "description" : "Title shown for an unavailable financial connection type.",
+    "example" : "Real estate coming soon"
+  },
+  "finance_account_linking_connecting_institution_accessibility_label" : {
+    "defaultMessage" : "Menghubungkan {institutionName}",
+    "description" : "Screen-reader label announced while a specific financial institution is connecting.",
+    "example" : "Connecting Community Bank"
+  },
+  "finance_account_linking_credit_score_title" : {
+    "defaultMessage" : "Hubungkan skor kredit Anda",
+    "description" : "Heading and action accessibility label for connecting a credit score."
+  },
+  "finance_account_linking_credit_score_description" : {
+    "defaultMessage" : "Verifikasi identitas Anda dengan Experian untuk menghubungkan skor kredit Anda.",
+    "description" : "Explanation that Experian verifies the user's identity before connecting their credit score."
+  },
+  "finance_account_linking_credit_score_verifying_accessibility_label" : {
+    "defaultMessage" : "Memverifikasi skor kredit Anda",
+    "description" : "Screen-reader label announced while credit score verification is running."
+  },
+  "finance_account_linking_credit_score_get_started" : {
+    "defaultMessage" : "Lanjutkan ke Experian",
+    "description" : "Action that starts Experian's identity-verification flow to connect the user's credit score."
+  },
+  "finance_account_linking_credit_score_experian_title" : {
+    "defaultMessage" : "Hubungkan skor kredit Anda dengan Experian",
+    "description" : "Heading above the benefits of connecting an Experian credit score in ChatGPT Personal Finance. Experian is a brand name; do not translate it."
+  },
+  "finance_account_linking_credit_score_report_title" : {
+    "defaultMessage" : "Lihat laporan lengkap Anda",
+    "description" : "Benefit title explaining that connecting an Experian credit score includes access to the full report."
+  },
+  "finance_account_linking_credit_score_report_detail" : {
+    "defaultMessage" : "Dapatkan skor, faktor utama, dan laporan lengkap Anda",
+    "description" : "Supporting copy for the full credit report benefit in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_monitoring_title" : {
+    "defaultMessage" : "Selalu tahu",
+    "description" : "Benefit title for credit score updates and monitoring alerts in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_monitoring_detail" : {
+    "defaultMessage" : "Dapatkan pembaruan bulanan dan peringatan pemantauan",
+    "description" : "Supporting copy for credit score updates and monitoring alerts in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_goals_title" : {
+    "defaultMessage" : "Raih tujuan Anda",
+    "description" : "Benefit title for personalized financial insights in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_goals_detail" : {
+    "defaultMessage" : "Insight yang dipersonalisasi berdasarkan skor dan keuangan Anda",
+    "description" : "Supporting copy explaining that credit score and financial information inform personalized insights."
+  },
+  "finance_account_linking_credit_score_no_score_impact" : {
+    "defaultMessage" : "Memeriksa kredit Anda tidak akan memengaruhi skor Anda",
+    "description" : "Reassurance below the Experian connection action that checking a credit score does not affect it."
+  },
+  "finance_account_linking_credit_score_learn_more" : {
+    "defaultMessage" : "Pelajari selengkapnya tentang kredit di ChatGPT",
+    "description" : "Link below the Experian connection action to information about credit in ChatGPT."
+  },
+  "finance_manual_accounts_category_cash" : {
+    "defaultMessage" : "Tunai",
+    "description" : "Manual-account category for cash, checking, and savings accounts."
+  },
+  "finance_manual_accounts_prompt_cash" : {
+    "defaultMessage" : "Bantu saya melacak akun tunai secara manual. Ajukan satu pertanyaan singkat setiap kali tentang nama, jenis giro atau tabungan, saldo saat ini, dan mata uang jika belum jelas. Institusi bersifat opsional. Setelah saya menjawab, simpan sebagai memori keuangan untuk akun terpisah.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Cash manual-account category. Ask one short question at a time for the account name, checking or savings subtype, and current balance; the institution is optional and currency is needed only if unclear. Save a separate account as a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_investments" : {
+    "defaultMessage" : "Investasi",
+    "description" : "Manual-account category for investment accounts."
+  },
+  "finance_manual_accounts_prompt_investments" : {
+    "defaultMessage" : "Bantu saya mencatat akun investasi secara manual. Ajukan satu pertanyaan singkat setiap kali tentang nama, jenis, saldo total, dan mata uangnya jika belum jelas. Setelah saya menjawab, simpan sebagai memori keuangan untuk akun investasi terpisah, bukan kepemilikan atau aset umum.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Investments manual-account category. Ask one short question at a time for the account name, investment account subtype, and total balance; ask for currency only if unclear. After the user answers, save a separate investment account as a financial memory, not as an individual holding or generic asset. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_real_estate" : {
+    "defaultMessage" : "Properti",
+    "description" : "Manual-account category for homes and other real-estate assets."
+  },
+  "finance_manual_accounts_prompt_real_estate" : {
+    "defaultMessage" : "Bantu saya mencatat properti secara manual. Ajukan satu pertanyaan singkat setiap kali tentang nama properti, jenis, perkiraan nilai, dan mata uang jika belum jelas. Setelah saya menjawab, simpan sebagai memori keuangan.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Real estate manual-account category. Ask one short question at a time for the property name, property type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_vehicle" : {
+    "defaultMessage" : "Kendaraan",
+    "description" : "Manual-account category for cars and other vehicles."
+  },
+  "finance_manual_accounts_prompt_vehicle" : {
+    "defaultMessage" : "Bantu saya mencatat kendaraan secara manual. Ajukan satu pertanyaan singkat setiap kali tentang nama, jenis, perkiraan nilai, dan mata uangnya jika belum jelas. Setelah saya menjawab, simpan sebagai memori keuangan.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Vehicle manual-account category. Ask one short question at a time for the vehicle name, vehicle type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_other_assets" : {
+    "defaultMessage" : "Aset lainnya",
+    "description" : "Manual-account category for other assets such as collectibles and business interests."
+  },
+  "finance_manual_accounts_prompt_other_assets" : {
+    "defaultMessage" : "Bantu saya mencatat aset secara manual. Ajukan satu pertanyaan singkat setiap kali tentang nama, jenis, perkiraan nilai, dan mata uangnya jika belum jelas. Setelah saya menjawab, simpan sebagai memori keuangan.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Other assets manual-account category. Ask one short question at a time for the asset name, asset type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_loans" : {
+    "defaultMessage" : "Pinjaman",
+    "description" : "Manual-account category for mortgages, student loans, and other loans."
+  },
+  "finance_manual_accounts_prompt_loans" : {
+    "defaultMessage" : "Bantu saya mencatat pinjaman secara manual. Ajukan satu pertanyaan singkat per giliran tentang nama, jenis, jumlah terutang dalam angka positif, dan mata uang jika belum jelas. Pemberi pinjaman opsional. Setelah saya menjawab, simpan sebagai memori keuangan.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Loans manual-account category. Ask one short question at a time for the loan name, loan type, and positive amount owed; the lender is optional and currency is needed only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_other_debt" : {
+    "defaultMessage" : "Utang lainnya",
+    "description" : "Manual-account category for credit cards and other non-loan debts."
+  },
+  "finance_manual_accounts_prompt_other_debt" : {
+    "defaultMessage" : "Bantu saya mencatat utang secara manual. Ajukan satu pertanyaan singkat setiap kali tentang nama utang, apakah berupa kartu kredit, jumlah positif yang terutang, dan mata uang jika belum jelas. Kreditur bersifat opsional. Setelah saya menjawab, simpan sebagai memori keuangan.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Other debt manual-account category. Ask one short question at a time for the debt name, credit-card or other debt subtype, and positive amount owed; the creditor is optional and currency is needed only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_tax_records" : {
+    "defaultMessage" : "Catatan pajak",
+    "description" : "Unavailable manual-account category for tax records."
+  },
+  "finance_manual_accounts_category_insurance" : {
+    "defaultMessage" : "Asuransi",
+    "description" : "Manual-account category for insurance policies that have a cash value."
+  },
+  "finance_manual_accounts_prompt_insurance" : {
+    "defaultMessage" : "Bantu saya mencatat polis asuransi secara manual. Pertama, tanyakan apakah polis itu memiliki nilai tunai aktual atau nilai tebus, bukan sekadar santunan kematian. Lalu ajukan satu pertanyaan singkat setiap kali tentang nama, nilai, dan mata uangnya jika belum jelas. Hanya setelah saya menjawab, simpan sebagai memori keuangan.",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Insurance manual-account category. First confirm the policy has actual cash or surrender value, not merely a death benefit, then ask one short question at a time for its name and cash value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_account_linking_credit_score_unavailable" : {
+    "defaultMessage" : "Verifikasi kredit tidak tersedia saat ini.",
+    "description" : "Message shown while shared Finance cannot safely start credit verification."
+  },
+  "finance_account_linking_credit_score_connected" : {
+    "defaultMessage" : "Skor kredit terhubung",
+    "description" : "Screen-reader status for the connected credit-bureau row in the Credit score tab of ChatGPT Personal Finance's Connect finances dialog. Also shown below the bureau name while a numeric score is not available. The connection does not need another identity verification."
+  },
+  "finance_account_linking_credit_provider_name" : {
+    "defaultMessage" : "Experian",
+    "description" : "Name of the connected credit bureau in the Credit score tab of ChatGPT Personal Finance's Connect finances dialog. Experian is a brand name; do not translate it. Short row title above the user's credit score."
+  },
+  "finance_account_linking_credit_score_summary" : {
+    "defaultMessage" : "Skor kredit {score}",
+    "description" : "Compact subtitle below Experian in the connected Credit score tab of ChatGPT Personal Finance's Connect finances dialog. The score placeholder is the user's actual credit score, already formatted as a localized whole number. Keep this descriptive and neutral; do not add a rating or imply that the score has changed.",
+    "example" : "739 credit score"
+  },
+  "finance_account_linking_credit_status_loading" : {
+    "defaultMessage" : "Memuat status kredit",
+    "description" : "Screen-reader label announced while shared Finance loads the account's credit status."
+  },
+  "finance_account_linking_credit_identity_verified" : {
+    "defaultMessage" : "Identitas Anda telah diverifikasi",
+    "description" : "Heading after the backend confirms Experian identity verification, while the first credit report is still being prepared. This does not mean the report or score is ready."
+  },
+  "finance_account_linking_credit_report_preparing" : {
+    "defaultMessage" : "Experian sedang menyiapkan laporan kredit Anda. Anda dapat keluar dan memeriksanya lagi nanti.",
+    "description" : "Neutral progress message while the first Experian credit report is pending after identity verification. Also labels the activity indicator. Do not imply a failure, a percentage, or a completion time."
+  },
+  "finance_account_linking_credit_report_check_again" : {
+    "defaultMessage" : "Periksa lagi",
+    "description" : "Action to check whether a pending first credit report is ready after automatic status checks stop. This checks the server and does not restart identity verification."
+  },
+  "finance_account_linking_credit_verification_failed" : {
+    "defaultMessage" : "Kami tidak dapat memverifikasi identitas Anda. Hubungi Experian untuk mendapatkan bantuan.",
+    "description" : "Experian contact guidance after an authoritative identity-verification failure."
+  },
+  "finance_account_linking_credit_verification_expired" : {
+    "defaultMessage" : "Sesi verifikasi Anda telah berakhir. Coba lagi untuk memulai sesi baru.",
+    "description" : "Message shown when the backend confirms that the verification session expired."
+  },
+  "finance_account_linking_credit_verification_error" : {
+    "defaultMessage" : "Kami tidak dapat menyelesaikan verifikasi. Coba lagi.",
+    "description" : "Generic retry message when verification cannot be completed; does not imply identity rejection."
+  },
+  "finance_account_linking_credit_verification_incomplete" : {
+    "defaultMessage" : "Verifikasi Anda belum selesai. Lanjutkan saat Anda siap.",
+    "description" : "Message after cancellation or when the backend requires further verification."
+  },
+  "finance_account_linking_credit_verification_continue" : {
+    "defaultMessage" : "Lanjutkan verifikasi",
+    "description" : "Action that resumes an unfinished identity verification."
+  },
+  "finance_account_linking_credit_verification_retry" : {
+    "defaultMessage" : "Coba lagi",
+    "description" : "Action that starts enrollment again after an expired session or an interruption; not shown for a confirmed identity-verification failure."
+  },
+  "finance_account_linking_credit_status_load_error" : {
+    "defaultMessage" : "Kami tidak dapat memuat status kredit Anda.",
+    "description" : "Message shown when shared Finance cannot read the account's credit status."
+  },
+  "finance_account_linking_credit_status_retry" : {
+    "defaultMessage" : "Coba lagi",
+    "description" : "Action that retries a failed credit status read without starting verification."
+  },
+  "finance_account_linking_credit_status_retry_accessibility_label" : {
+    "defaultMessage" : "Coba lagi memuat status kredit",
+    "description" : "Screen-reader label for the action that retries a failed credit status read."
+  },
+  "finance_account_linking_confirmation_title" : {
+    "defaultMessage" : "Berhasil terhubung",
+    "description" : "Heading and success-icon accessibility label shown after financial institutions connect."
+  },
+  "finance_account_linking_continue_accessibility_label" : {
+    "defaultMessage" : "Lanjutkan menghubungkan akun keuangan",
+    "description" : "Screen-reader label for the action that dismisses the account-linking confirmation."
+  },
+  "finance_account_linking_continue" : {
+    "defaultMessage" : "Lanjutkan",
+    "description" : "Action that dismisses the financial account-linking confirmation."
+  },
+  "finance_account_linking_connecting_accounts" : {
+    "defaultMessage" : "Menghubungkan akun Anda",
+    "description" : "Progress message shown while linked financial accounts finish connecting."
+  }
+}

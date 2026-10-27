@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{HN as t,VN as n,YNt as r,YVt as i}from"./app-shared-955d52676f9c.js";function a(e){let t=(0,o.c)(3),{children:r,getItems:i,useGifPlaybackMenu:a}=e,c;return t[0]!==r||t[1]!==i?(c=(0,s.jsxs)(s.Fragment,{children:[null,(0,s.jsx)(s.Fragment,{children:(0,s.jsx)(n,{getItems:i,children:r})})]}),t[0]=r,t[1]=i,t[2]=c):c=t[2],c}var o,s;function c(){return(c=e((()=>{o=i(),t(),s=r()})))()}export{c as n,a as t};
+//# sourceMappingURL=generated-image-gallery-context-menu-ac74ca8f52d7.js.map

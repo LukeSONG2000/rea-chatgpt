@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{t}from"./src-bf5239514891.js";import{o as n}from"./chunk-X3CZISLH-906c66496671.js";import{n as r,r as i}from"./chunk-Y2CYZVJY-24cce454fd91.js";var a;function o(){return(o=e((()=>{i(),t(),a=r((e,t)=>{let r;return t===`sandbox`&&(r=n(`#i`+e)),n(t===`sandbox`?r.nodes()[0].contentDocument.body:`body`).select(`[id="${e}"]`)},`getDiagramElement`)})))()}export{o as n,a as t};
+//# sourceMappingURL=chunk-XXDRQBXY-b4828005e520.js.map

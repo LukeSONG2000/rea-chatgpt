@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.UnderlineElement=void 0;const e=require("../rendering/DILTextProperties"),r=["value","underline"];exports.UnderlineElement={properties:r,dilV2Properties:[],createsParagraph:e=>!1,pushStyle(r,t,n){const o=(0,e.readTextDecorationFromValue)(void 0,r.underline??!0);return o?(t.pushTextDecoration(o),1):0}};

@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Bit as t,Hit as n,Wlt as r,Yst as i,zit as a}from"./app-shared-955d52676f9c.js";function o(e,i,a){let o=(s.get(e.queryClient)??Promise.resolve()).then(async()=>{let o=await t(r.preferredViewers);await n(e,r.preferredViewers,{...o,[i]:a})}),c=o.catch(()=>{});return s.set(e.queryClient,c),c.then(()=>{s.get(e.queryClient)===c&&s.delete(e.queryClient)}),o}var s;function c(){return(c=e((()=>{i(),a(),s=new WeakMap})))()}export{o as n,c as t};
+//# sourceMappingURL=save-file-viewer-preference-b9fe27b2535e.js.map

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.jsx=void 0;const e=require("./JSXBootstrap");Object.defineProperty(exports,"jsx",{enumerable:!0,get:function(){return e.jsx}});

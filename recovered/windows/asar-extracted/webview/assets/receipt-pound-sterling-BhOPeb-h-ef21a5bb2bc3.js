@@ -1,0 +1,1 @@
+import{n as e,t}from"./receipt-pound-sterling-BhOPeb-h-6b25382596cf.js";e();export{t as default};

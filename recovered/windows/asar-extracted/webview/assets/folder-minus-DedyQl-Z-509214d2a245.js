@@ -1,0 +1,1 @@
+import{n as e,t}from"./folder-minus-DedyQl-Z-2668fd3bea8b.js";t();export{e as default};

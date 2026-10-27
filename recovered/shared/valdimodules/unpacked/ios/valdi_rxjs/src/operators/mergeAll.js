@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.mergeAll=void 0;const e=require("./mergeMap"),r=require("../util/identity");function t(t=1/0){return(0,e.mergeMap)(r.identity,t)}exports.mergeAll=t;

@@ -1,0 +1,75 @@
+package defpackage;
+
+import com.openai.valdi.oai.platform.OAIExperimentLayer;
+import com.openai.valdi.oai.platform.OAIExperimentLayerParameterKey;
+import com.openai.valdi.oai.platform.OAIExperimentService;
+import com.openai.valdi.oai.platform.OAIFeatureFlagKey;
+import com.snap.valdi.schema.a;
+import com.snap.valdi.utils.ValdiMarshaller;
+import com.snap.valdi.utils.b;
+import java.util.List;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes6.dex */
+public final class m400 implements OAIExperimentService {
+    public final Function1 a;
+    public final Function2 b;
+    public final Function2 c;
+    public final Function2 d;
+    public final Function2 e;
+    public final Function2 f;
+    public final Function1 g;
+
+    public m400(Function1 function1, Function2 function2, Function2 function22, Function2 function23, Function2 function24, Function2 function25, Function1 function12) {
+        this.a = function1;
+        this.b = function2;
+        this.c = function22;
+        this.d = function23;
+        this.e = function24;
+        this.f = function25;
+        this.g = function12;
+    }
+
+    @Override // com.openai.valdi.oai.platform.OAIExperimentService
+    public OAIExperimentLayer getLayer(String str) {
+        return (OAIExperimentLayer) this.g.invoke(str);
+    }
+
+    @Override // com.openai.valdi.oai.platform.OAIExperimentService
+    public boolean getLayerBoolean(OAIExperimentLayerParameterKey oAIExperimentLayerParameterKey, boolean z) {
+        return ((Boolean) this.b.invoke(oAIExperimentLayerParameterKey, Boolean.valueOf(z))).booleanValue();
+    }
+
+    @Override // com.openai.valdi.oai.platform.OAIExperimentService
+    public double getLayerDouble(OAIExperimentLayerParameterKey oAIExperimentLayerParameterKey, double d) {
+        return ((Number) this.d.invoke(oAIExperimentLayerParameterKey, Double.valueOf(d))).doubleValue();
+    }
+
+    @Override // com.openai.valdi.oai.platform.OAIExperimentService
+    public double getLayerInteger(OAIExperimentLayerParameterKey oAIExperimentLayerParameterKey, double d) {
+        return ((Number) this.c.invoke(oAIExperimentLayerParameterKey, Double.valueOf(d))).doubleValue();
+    }
+
+    @Override // com.openai.valdi.oai.platform.OAIExperimentService
+    public String getLayerString(OAIExperimentLayerParameterKey oAIExperimentLayerParameterKey, String str) {
+        return (String) this.e.invoke(oAIExperimentLayerParameterKey, str);
+    }
+
+    @Override // com.openai.valdi.oai.platform.OAIExperimentService
+    public List<String> getLayerStringList(OAIExperimentLayerParameterKey oAIExperimentLayerParameterKey, List<String> list) {
+        return (List) this.f.invoke(oAIExperimentLayerParameterKey, list);
+    }
+
+    @Override // com.openai.valdi.oai.platform.OAIExperimentService
+    public boolean isFeatureFlagEnabled(OAIFeatureFlagKey oAIFeatureFlagKey) {
+        return ((Boolean) this.a.invoke(oAIFeatureFlagKey)).booleanValue();
+    }
+
+    @Override // com.openai.valdi.oai.platform.OAIExperimentService, com.snap.valdi.utils.ValdiMarshallable
+    public final int pushToMarshaller(ValdiMarshaller valdiMarshaller) {
+        a aVar = b.a;
+        return com.snap.valdi.utils.a.a(OAIExperimentService.class, valdiMarshaller, this);
+    }
+}

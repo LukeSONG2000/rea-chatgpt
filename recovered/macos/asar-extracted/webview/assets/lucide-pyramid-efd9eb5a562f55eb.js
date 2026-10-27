@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-pyramid-6a8a96b673223931.js";e();export{t as default};

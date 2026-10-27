@@ -1,0 +1,1 @@
+import{n as e,t}from"./utensils-crossed-B-8Wkxb6-20ad3974a866.js";t();export{e as default};

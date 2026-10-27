@@ -1,0 +1,317 @@
+{
+  "l10nsvc" : "sourcefile",
+  "finance_account_linking_tab_accounts" : {
+    "defaultMessage" : "帳戶",
+    "description" : "Tab for connecting bank, investment, and other financial accounts in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_manual_accounts" : {
+    "defaultMessage" : "手動帳戶",
+    "description" : "Tab for manually adding financial accounts, assets, and debts in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_credit_score" : {
+    "defaultMessage" : "信用評分",
+    "description" : "Tab for connecting credit-score information in the Finance account-linking sheet."
+  },
+  "finance_account_linking_tab_real_estate" : {
+    "defaultMessage" : "房地產",
+    "description" : "Tab for connecting real-estate information in the Finance account-linking sheet."
+  },
+  "finance_account_linking_title" : {
+    "defaultMessage" : "建立財務連結",
+    "description" : "Heading shown above the Finance account-linking institution picker."
+  },
+  "finance_account_linking_close_accessibility_label" : {
+    "defaultMessage" : "關閉「連結財務帳戶」",
+    "description" : "Screen-reader label for the button that dismisses Finance account linking."
+  },
+  "finance_account_linking_connection_types_accessibility_label" : {
+    "defaultMessage" : "財務連線類型",
+    "description" : "Screen-reader label for the tabs selecting a financial connection type."
+  },
+  "finance_account_linking_search_accessibility_label" : {
+    "defaultMessage" : "搜尋銀行或投資機構",
+    "description" : "Screen-reader label for the financial institution search input."
+  },
+  "finance_account_linking_search_placeholder" : {
+    "defaultMessage" : "搜尋",
+    "description" : "Placeholder for the financial institution search input."
+  },
+  "finance_account_linking_clear_search_accessibility_label" : {
+    "defaultMessage" : "清除搜尋",
+    "description" : "Screen-reader label for the button that clears the institution search."
+  },
+  "finance_account_linking_loading_institutions_accessibility_label" : {
+    "defaultMessage" : "正在載入金融機構",
+    "description" : "Screen-reader label announced while the first financial institution page loads."
+  },
+  "finance_account_linking_loading_more_institutions_accessibility_label" : {
+    "defaultMessage" : "正在載入更多金融機構",
+    "description" : "Screen-reader label announced while another financial institution page loads."
+  },
+  "finance_account_linking_institution_load_error_accessibility_label" : {
+    "defaultMessage" : "無法載入金融機構",
+    "description" : "Screen-reader label announced when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_error_title" : {
+    "defaultMessage" : "無法載入金融機構",
+    "description" : "Title shown when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_error_detail" : {
+    "defaultMessage" : "請檢查網路連線，然後再試一次。",
+    "description" : "Supporting text shown when the financial institution request fails."
+  },
+  "finance_account_linking_institution_load_retry_accessibility_label" : {
+    "defaultMessage" : "再試一次載入金融機構",
+    "description" : "Screen-reader label for the action that retries a failed institution request."
+  },
+  "finance_account_linking_institution_load_retry" : {
+    "defaultMessage" : "再試一次",
+    "description" : "Action that retries a failed financial institution request."
+  },
+  "finance_account_linking_empty_institutions_accessibility_label" : {
+    "defaultMessage" : "沒有可用的金融機構",
+    "description" : "Screen-reader label announced when there are no financial institutions to show."
+  },
+  "finance_account_linking_no_search_results_accessibility_label" : {
+    "defaultMessage" : "找不到「{query}」的結果",
+    "description" : "Screen-reader label announced when an institution search finds no matches.",
+    "example" : "No results for Community Bank"
+  },
+  "finance_account_linking_empty_institutions_title" : {
+    "defaultMessage" : "沒有可用的金融機構",
+    "description" : "Title shown when the financial institution picker has no available institutions."
+  },
+  "finance_account_linking_no_search_results_title" : {
+    "defaultMessage" : "找不到結果",
+    "description" : "Title shown when an institution search finds no matches."
+  },
+  "finance_account_linking_empty_institutions_detail" : {
+    "defaultMessage" : "請稍後再試一次。",
+    "description" : "Supporting text shown when no financial institutions are available."
+  },
+  "finance_account_linking_no_search_results_detail" : {
+    "defaultMessage" : "試著改用其他關鍵字搜尋「{query}」。",
+    "description" : "Supporting text suggesting a new institution search after no results are found.",
+    "example" : "Try another search for “Community Bank”."
+  },
+  "finance_account_linking_coming_soon_accessibility_label" : {
+    "defaultMessage" : "即將支援 {connectionType} 連線",
+    "description" : "Screen-reader label for an unavailable financial connection type.",
+    "example" : "Real estate connections coming soon"
+  },
+  "finance_account_linking_coming_soon_title" : {
+    "defaultMessage" : "{connectionType} 即將推出",
+    "description" : "Title shown for an unavailable financial connection type.",
+    "example" : "Real estate coming soon"
+  },
+  "finance_account_linking_connecting_institution_accessibility_label" : {
+    "defaultMessage" : "正在連線至 {institutionName}",
+    "description" : "Screen-reader label announced while a specific financial institution is connecting.",
+    "example" : "Connecting Community Bank"
+  },
+  "finance_account_linking_credit_score_title" : {
+    "defaultMessage" : "與你的信用評分建立連結",
+    "description" : "Heading and action accessibility label for connecting a credit score."
+  },
+  "finance_account_linking_credit_score_description" : {
+    "defaultMessage" : "透過 Experian 驗證您的身分，以與您的信用評分建立連結。",
+    "description" : "Explanation that Experian verifies the user's identity before connecting their credit score."
+  },
+  "finance_account_linking_credit_score_verifying_accessibility_label" : {
+    "defaultMessage" : "正在驗證您的信用評分",
+    "description" : "Screen-reader label announced while credit score verification is running."
+  },
+  "finance_account_linking_credit_score_get_started" : {
+    "defaultMessage" : "繼續前往 Experian",
+    "description" : "Action that starts Experian's identity-verification flow to connect the user's credit score."
+  },
+  "finance_account_linking_credit_score_experian_title" : {
+    "defaultMessage" : "將您的信用評分與 Experian 連結",
+    "description" : "Heading above the benefits of connecting an Experian credit score in ChatGPT Personal Finance. Experian is a brand name; do not translate it."
+  },
+  "finance_account_linking_credit_score_report_title" : {
+    "defaultMessage" : "查看完整報告",
+    "description" : "Benefit title explaining that connecting an Experian credit score includes access to the full report."
+  },
+  "finance_account_linking_credit_score_report_detail" : {
+    "defaultMessage" : "取得您的信用評分、關鍵因素與完整報告",
+    "description" : "Supporting copy for the full credit report benefit in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_monitoring_title" : {
+    "defaultMessage" : "隨時掌握",
+    "description" : "Benefit title for credit score updates and monitoring alerts in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_monitoring_detail" : {
+    "defaultMessage" : "接收每月更新和監控提醒",
+    "description" : "Supporting copy for credit score updates and monitoring alerts in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_goals_title" : {
+    "defaultMessage" : "達成您的目標",
+    "description" : "Benefit title for personalized financial insights in the Experian connection screen."
+  },
+  "finance_account_linking_credit_score_goals_detail" : {
+    "defaultMessage" : "根據您的分數和財務狀況提供個人化洞察",
+    "description" : "Supporting copy explaining that credit score and financial information inform personalized insights."
+  },
+  "finance_account_linking_credit_score_no_score_impact" : {
+    "defaultMessage" : "查詢信用不會影響您的信用評分",
+    "description" : "Reassurance below the Experian connection action that checking a credit score does not affect it."
+  },
+  "finance_account_linking_credit_score_learn_more" : {
+    "defaultMessage" : "進一步了解 ChatGPT 中的信用",
+    "description" : "Link below the Experian connection action to information about credit in ChatGPT."
+  },
+  "finance_manual_accounts_category_cash" : {
+    "defaultMessage" : "現金",
+    "description" : "Manual-account category for cash, checking, and savings accounts."
+  },
+  "finance_manual_accounts_prompt_cash" : {
+    "defaultMessage" : "請幫我手動追蹤一個現金帳戶。每次只問一個簡短問題，依序確認名稱、支票或儲蓄帳戶類型、目前餘額，幣別不明時再詢問。金融機構可不填。等我回答後，再將它儲存為獨立帳戶的財務記憶。",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Cash manual-account category. Ask one short question at a time for the account name, checking or savings subtype, and current balance; the institution is optional and currency is needed only if unclear. Save a separate account as a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_investments" : {
+    "defaultMessage" : "投資",
+    "description" : "Manual-account category for investment accounts."
+  },
+  "finance_manual_accounts_prompt_investments" : {
+    "defaultMessage" : "協助我手動追蹤投資帳戶。一次問一個簡短問題，依序確認名稱、類型、總餘額，若幣別不明再詢問。回答後，將其儲存為獨立投資帳戶的財務記憶，而非持倉或一般資產。",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Investments manual-account category. Ask one short question at a time for the account name, investment account subtype, and total balance; ask for currency only if unclear. After the user answers, save a separate investment account as a financial memory, not as an individual holding or generic asset. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_real_estate" : {
+    "defaultMessage" : "房地產",
+    "description" : "Manual-account category for homes and other real-estate assets."
+  },
+  "finance_manual_accounts_prompt_real_estate" : {
+    "defaultMessage" : "請協助我手動追蹤房地產。每次只問一個簡短問題，確認房產名稱、類型、估值；若幣別不明，再詢問幣別。我回答後，將其儲存為財務記憶。",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Real estate manual-account category. Ask one short question at a time for the property name, property type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_vehicle" : {
+    "defaultMessage" : "車輛",
+    "description" : "Manual-account category for cars and other vehicles."
+  },
+  "finance_manual_accounts_prompt_vehicle" : {
+    "defaultMessage" : "請協助我手動追蹤一輛車。每次用一個簡短問題詢問車輛名稱、類型、估計價值，以及在幣別不明時詢問幣別。我回答後，將其儲存為財務記憶。",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Vehicle manual-account category. Ask one short question at a time for the vehicle name, vehicle type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_other_assets" : {
+    "defaultMessage" : "其他資產",
+    "description" : "Manual-account category for other assets such as collectibles and business interests."
+  },
+  "finance_manual_accounts_prompt_other_assets" : {
+    "defaultMessage" : "請幫我手動追蹤一項資產。請一次簡短詢問一個問題，依序確認名稱、類型、估值，並在幣別不明時詢問幣別。我回答後，將它儲存為財務記憶。",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Other assets manual-account category. Ask one short question at a time for the asset name, asset type, and estimated value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_loans" : {
+    "defaultMessage" : "貸款",
+    "description" : "Manual-account category for mortgages, student loans, and other loans."
+  },
+  "finance_manual_accounts_prompt_loans" : {
+    "defaultMessage" : "請協助我手動追蹤一筆貸款。每次只問一個簡短問題，依序詢問名稱、類型、大於零的欠款金額；若幣別不明，再詢問幣別。放款人可不填。等我回答後，再將它儲存為財務記憶。",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Loans manual-account category. Ask one short question at a time for the loan name, loan type, and positive amount owed; the lender is optional and currency is needed only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_other_debt" : {
+    "defaultMessage" : "其他債務",
+    "description" : "Manual-account category for credit cards and other non-loan debts."
+  },
+  "finance_manual_accounts_prompt_other_debt" : {
+    "defaultMessage" : "幫我手動追蹤一筆債務。請一次問一個簡短問題，依序詢問名稱、是否為信用卡、積欠的正數金額，以及幣別（若不清楚）。債權人可不填。我回答後，請將它儲存為財務記憶。",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Other debt manual-account category. Ask one short question at a time for the debt name, credit-card or other debt subtype, and positive amount owed; the creditor is optional and currency is needed only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_manual_accounts_category_tax_records" : {
+    "defaultMessage" : "稅務紀錄",
+    "description" : "Unavailable manual-account category for tax records."
+  },
+  "finance_manual_accounts_category_insurance" : {
+    "defaultMessage" : "保險",
+    "description" : "Manual-account category for insurance policies that have a cash value."
+  },
+  "finance_manual_accounts_prompt_insurance" : {
+    "defaultMessage" : "幫我手動追蹤一張保單。先問它是否有實際現金價值或解約價值，而不只是身故保險金。接著每次只問一個簡短問題，依序詢問保單名稱、價值，若幣別不明再詢問幣別。只有在我回答後，才將它儲存為財務記憶。",
+    "description" : "User message automatically sent to ChatGPT when a user selects the Insurance manual-account category. First confirm the policy has actual cash or surrender value, not merely a death benefit, then ask one short question at a time for its name and cash value; ask for currency only if unclear. Save a financial memory only after the user answers. Preserve the first-person request."
+  },
+  "finance_account_linking_credit_score_unavailable" : {
+    "defaultMessage" : "目前無法進行信用驗證。",
+    "description" : "Message shown while shared Finance cannot safely start credit verification."
+  },
+  "finance_account_linking_credit_score_connected" : {
+    "defaultMessage" : "信用評分已連結",
+    "description" : "Screen-reader status for the connected credit-bureau row in the Credit score tab of ChatGPT Personal Finance's Connect finances dialog. Also shown below the bureau name while a numeric score is not available. The connection does not need another identity verification."
+  },
+  "finance_account_linking_credit_provider_name" : {
+    "defaultMessage" : "Experian",
+    "description" : "Name of the connected credit bureau in the Credit score tab of ChatGPT Personal Finance's Connect finances dialog. Experian is a brand name; do not translate it. Short row title above the user's credit score."
+  },
+  "finance_account_linking_credit_score_summary" : {
+    "defaultMessage" : "信用評分 {score}",
+    "description" : "Compact subtitle below Experian in the connected Credit score tab of ChatGPT Personal Finance's Connect finances dialog. The score placeholder is the user's actual credit score, already formatted as a localized whole number. Keep this descriptive and neutral; do not add a rating or imply that the score has changed.",
+    "example" : "739 credit score"
+  },
+  "finance_account_linking_credit_status_loading" : {
+    "defaultMessage" : "正在載入信用狀態",
+    "description" : "Screen-reader label announced while shared Finance loads the account's credit status."
+  },
+  "finance_account_linking_credit_identity_verified" : {
+    "defaultMessage" : "您的身分已驗證",
+    "description" : "Heading after the backend confirms Experian identity verification, while the first credit report is still being prepared. This does not mean the report or score is ready."
+  },
+  "finance_account_linking_credit_report_preparing" : {
+    "defaultMessage" : "Experian 正在準備您的信用報告。您可以先離開，稍後再回來查看。",
+    "description" : "Neutral progress message while the first Experian credit report is pending after identity verification. Also labels the activity indicator. Do not imply a failure, a percentage, or a completion time."
+  },
+  "finance_account_linking_credit_report_check_again" : {
+    "defaultMessage" : "再次檢查",
+    "description" : "Action to check whether a pending first credit report is ready after automatic status checks stop. This checks the server and does not restart identity verification."
+  },
+  "finance_account_linking_credit_verification_failed" : {
+    "defaultMessage" : "我們無法驗證您的身分。請聯絡 Experian 尋求協助。",
+    "description" : "Experian contact guidance after an authoritative identity-verification failure."
+  },
+  "finance_account_linking_credit_verification_expired" : {
+    "defaultMessage" : "你的驗證工作階段已過期。請再試一次以開始新的工作階段。",
+    "description" : "Message shown when the backend confirms that the verification session expired."
+  },
+  "finance_account_linking_credit_verification_error" : {
+    "defaultMessage" : "無法完成驗證。請再試一次。",
+    "description" : "Generic retry message when verification cannot be completed; does not imply identity rejection."
+  },
+  "finance_account_linking_credit_verification_incomplete" : {
+    "defaultMessage" : "你的驗證尚未完成。準備好後再繼續。",
+    "description" : "Message after cancellation or when the backend requires further verification."
+  },
+  "finance_account_linking_credit_verification_continue" : {
+    "defaultMessage" : "繼續驗證",
+    "description" : "Action that resumes an unfinished identity verification."
+  },
+  "finance_account_linking_credit_verification_retry" : {
+    "defaultMessage" : "再試一次",
+    "description" : "Action that starts enrollment again after an expired session or an interruption; not shown for a confirmed identity-verification failure."
+  },
+  "finance_account_linking_credit_status_load_error" : {
+    "defaultMessage" : "無法載入您的信用狀態。",
+    "description" : "Message shown when shared Finance cannot read the account's credit status."
+  },
+  "finance_account_linking_credit_status_retry" : {
+    "defaultMessage" : "重試",
+    "description" : "Action that retries a failed credit status read without starting verification."
+  },
+  "finance_account_linking_credit_status_retry_accessibility_label" : {
+    "defaultMessage" : "重試載入點數狀態",
+    "description" : "Screen-reader label for the action that retries a failed credit status read."
+  },
+  "finance_account_linking_confirmation_title" : {
+    "defaultMessage" : "連線成功",
+    "description" : "Heading and success-icon accessibility label shown after financial institutions connect."
+  },
+  "finance_account_linking_continue_accessibility_label" : {
+    "defaultMessage" : "繼續連結金融帳戶",
+    "description" : "Screen-reader label for the action that dismisses the account-linking confirmation."
+  },
+  "finance_account_linking_continue" : {
+    "defaultMessage" : "繼續",
+    "description" : "Action that dismisses the financial account-linking confirmation."
+  },
+  "finance_account_linking_connecting_accounts" : {
+    "defaultMessage" : "正在連結您的帳戶",
+    "description" : "Progress message shown while linked financial accounts finish connecting."
+  }
+}

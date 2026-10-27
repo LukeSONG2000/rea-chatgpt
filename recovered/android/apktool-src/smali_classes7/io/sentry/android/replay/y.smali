@@ -1,0 +1,71 @@
+.class public abstract Lio/sentry/android/replay/y;
+.super Ljava/lang/Object;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# static fields
+.field public static final a:Lt8u;
+
+.field public static final b:Lt8u;
+
+.field public static final c:Lt8u;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    .line 1
+    sget-object v0, Lio/sentry/android/replay/a;->f:Lio/sentry/android/replay/a;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x3
+
+    .line 4
+    invoke-static {v1, v0}, Lgee;->L(ILkotlin/jvm/functions/Function0;)Lt8u;
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object v0
+
+    .line 8
+    sput-object v0, Lio/sentry/android/replay/y;->a:Lt8u;
+
+    .line 9
+    .line 10
+    sget-object v0, Lio/sentry/android/replay/a;->g:Lio/sentry/android/replay/a;
+
+    .line 11
+    .line 12
+    invoke-static {v1, v0}, Lgee;->L(ILkotlin/jvm/functions/Function0;)Lt8u;
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-object v0
+
+    .line 16
+    sput-object v0, Lio/sentry/android/replay/y;->b:Lt8u;
+
+    .line 17
+    .line 18
+    sget-object v0, Lio/sentry/android/replay/a;->e:Lio/sentry/android/replay/a;
+
+    .line 19
+    .line 20
+    invoke-static {v1, v0}, Lgee;->L(ILkotlin/jvm/functions/Function0;)Lt8u;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object v0
+
+    .line 24
+    sput-object v0, Lio/sentry/android/replay/y;->c:Lt8u;
+
+    .line 25
+    .line 26
+    return-void
+.end method

@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-asterisk-86d90189070035b8.js";e();export{t as default};

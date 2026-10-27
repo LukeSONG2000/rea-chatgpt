@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.initializeNativeAbortController=void 0;const e=require("./AbortSignalNative"),t=require("./AbortController");function r(){(0,t.setNativeAbortControllerFactory)(e.createAbortController)}exports.initializeNativeAbortController=r;

@@ -1,0 +1,15 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes.dex */
+public interface i0a0 {
+    default h0a0 a() {
+        return h0a0.a;
+    }
+
+    a4h b(k0a0 k0a0Var);
+
+    g0a0 c(k0a0 k0a0Var);
+
+    String getId();
+}

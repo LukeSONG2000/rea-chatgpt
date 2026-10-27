@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ComponentDefRenderer=void 0;const e=require("valdi_core/src/JSX").jsx,o=e.makeComponentPrototype(void 0,"1scoslvNn2-baxzZ");function n(n){const t=n.componentDef;e.beginComponent(t.componentClass,o,t.key,void 0),e.setViewModelProperties(t.viewModel),e.endComponent()}exports.ComponentDefRenderer=n;

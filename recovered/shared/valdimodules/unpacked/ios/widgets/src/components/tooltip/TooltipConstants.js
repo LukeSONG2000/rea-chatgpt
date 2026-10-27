@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.TooltipConstants=void 0;class TooltipConstants{}exports.TooltipConstants=TooltipConstants,TooltipConstants.tailToCornerDistance=10,TooltipConstants.tailImageSize=20,TooltipConstants.tailToContentMargin=-8,TooltipConstants.tailOverlap=TooltipConstants.tailToCornerDistance+TooltipConstants.tailImageSize;

@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Jft as t,Yst as n}from"./app-shared-2cae01273bae.js";function r(e){let n=t(e)?.toLowerCase()??``;return n.includes(`already has an active writer`)||n.includes(`already has a live local writer`)}function i(){return(i=e((()=>{n()})))()}export{r as n,i as t};
+//# sourceMappingURL=is-thread-writer-conflict-error-29df3b276db4.js.map

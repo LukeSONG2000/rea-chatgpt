@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{Gzt as t,MIt as n,Yzt as r}from"./app-shared-2cae01273bae.js";import{Tnr as i,xnr as a}from"./app-initial-feb30b196d11.js";async function o(e,t){return s.parse(e.get(i)?.getDynamicConfig(`1655736916`).value??{})}var s;function c(){return(c=e((()=>{n(),a(),s=t(r(),r().catch(``))})))()}export{c as n,o as t};
+//# sourceMappingURL=tpp-skills-config-adca32a145c4.js.map

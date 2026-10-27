@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.LiteList=void 0;class LiteList{constructor(e){this.nodes=[],this.nodes=[...e]}append(e){this.nodes.push(e)}[Symbol.iterator](){let e=0;return{next(){return e===this.nodes.length?{value:null,done:!0}:{value:this.nodes[e++],done:!1}}}}}exports.LiteList=LiteList;

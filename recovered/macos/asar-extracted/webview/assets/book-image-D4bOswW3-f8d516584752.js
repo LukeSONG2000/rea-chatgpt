@@ -1,0 +1,1 @@
+import{n as e,t}from"./book-image-D4bOswW3-4ddc2f49b403.js";t();export{e as default};

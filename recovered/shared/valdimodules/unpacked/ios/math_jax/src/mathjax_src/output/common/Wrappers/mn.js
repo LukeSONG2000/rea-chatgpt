@@ -1,0 +1,1 @@
+"use strict";function n(n){return class CommonMnMixin extends n{remapChars(n){if(n.length){const e=this.font.getRemappedChar("mn",n[0]);if(e){const t=this.unicodeChars(e,this.variant);1===t.length?n[0]=t[0]:n=t.concat(n.slice(1))}}return n}}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.CommonMnMixin=void 0,exports.CommonMnMixin=n;

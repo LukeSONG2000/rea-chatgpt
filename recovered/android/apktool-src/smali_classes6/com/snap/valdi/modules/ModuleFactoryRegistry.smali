@@ -1,0 +1,217 @@
+.class public final Lcom/snap/valdi/modules/ModuleFactoryRegistry;
+.super Ljava/lang/Object;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# annotations
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u00000\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0002\u0008\u0004\u0008\u00c7\u0002\u0018\u00002\u00020\u0001B\t\u0008\u0002\u00a2\u0006\u0004\u0008\u0002\u0010\u0003J\u0018\u0010\u0006\u001a\u00020\u00052\u0006\u0010\u0004\u001a\u00020\u0001H\u0083 \u00a2\u0006\u0004\u0008\u0006\u0010\u0007J\u001b\u0010\u000b\u001a\u00020\u00052\u000c\u0010\n\u001a\u0008\u0012\u0004\u0012\u00020\t0\u0008\u00a2\u0006\u0004\u0008\u000b\u0010\u000cJ\u0019\u0010\u000f\u001a\u00020\u00052\n\u0010\u000e\u001a\u0006\u0012\u0002\u0008\u00030\r\u00a2\u0006\u0004\u0008\u000f\u0010\u0010J\u0015\u0010\u0013\u001a\u00020\u00052\u0006\u0010\u0012\u001a\u00020\u0011\u00a2\u0006\u0004\u0008\u0013\u0010\u0014\u00a8\u0006\u0015"
+    }
+    d2 = {
+        "Lcom/snap/valdi/modules/ModuleFactoryRegistry;",
+        "",
+        "<init>",
+        "()V",
+        "obj",
+        "Ltid0;",
+        "nativeRegister",
+        "(Ljava/lang/Object;)V",
+        "Lkotlin/Function0;",
+        "Lcom/snapchat/client/valdi_core/ModuleFactory;",
+        "cb",
+        "registerModuleFactory",
+        "(Lkotlin/jvm/functions/Function0;)V",
+        "Ljava/lang/Class;",
+        "cls",
+        "registerModuleFactoryForClass",
+        "(Ljava/lang/Class;)V",
+        "Landroid/content/Context;",
+        "context",
+        "registerModuleFactoriesFromContext",
+        "(Landroid/content/Context;)V",
+        "valdi-valdi_java_kt"
+    }
+    k = 0x1
+    mv = {
+        0x1,
+        0x8,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+
+# static fields
+.field public static final INSTANCE:Lcom/snap/valdi/modules/ModuleFactoryRegistry;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .line 1
+    new-instance v0, Lcom/snap/valdi/modules/ModuleFactoryRegistry;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Lcom/snap/valdi/modules/ModuleFactoryRegistry;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    sput-object v0, Lcom/snap/valdi/modules/ModuleFactoryRegistry;->INSTANCE:Lcom/snap/valdi/modules/ModuleFactoryRegistry;
+
+    .line 7
+    .line 8
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method private static final native nativeRegister(Ljava/lang/Object;)V
+.end method
+
+
+# virtual methods
+.method public final registerModuleFactoriesFromContext(Landroid/content/Context;)V
+    .locals 3
+
+    .line 1
+    invoke-virtual {p1}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p1
+
+    .line 5
+    const-string v0, "valdi_native_modules"
+
+    .line 6
+    .line 7
+    invoke-virtual {p1, v0}, Landroid/content/res/AssetManager;->list(Ljava/lang/String;)[Ljava/lang/String;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object p1
+
+    .line 11
+    if-nez p1, :cond_0
+
+    .line 12
+    .line 13
+    goto :goto_1
+
+    .line 14
+    :cond_0
+    array-length v0, p1
+
+    .line 15
+    const/4 v1, 0x0
+
+    .line 16
+    :goto_0
+    if-ge v1, v0, :cond_1
+
+    .line 17
+    .line 18
+    aget-object v2, p1, v1
+
+    .line 19
+    .line 20
+    invoke-static {v2}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object v2
+
+    .line 24
+    invoke-virtual {p0, v2}, Lcom/snap/valdi/modules/ModuleFactoryRegistry;->registerModuleFactoryForClass(Ljava/lang/Class;)V
+
+    .line 25
+    .line 26
+    .line 27
+    add-int/lit8 v1, v1, 0x1
+
+    .line 28
+    .line 29
+    goto :goto_0
+
+    .line 30
+    :cond_1
+    :goto_1
+    return-void
+.end method
+
+.method public final registerModuleFactory(Lkotlin/jvm/functions/Function0;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlin/jvm/functions/Function0;",
+            ")V"
+        }
+    .end annotation
+
+    .line 1
+    new-instance p0, Lnky;
+
+    .line 2
+    .line 3
+    invoke-direct {p0, p1}, Lnky;-><init>(Lkotlin/jvm/functions/Function0;)V
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-static {p0}, Lcom/snap/valdi/modules/ModuleFactoryRegistry;->nativeRegister(Ljava/lang/Object;)V
+
+    .line 7
+    .line 8
+    .line 9
+    return-void
+.end method
+
+.method public final registerModuleFactoryForClass(Ljava/lang/Class;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/Class<",
+            "*>;)V"
+        }
+    .end annotation
+
+    .line 1
+    new-instance v0, Lrwq;
+
+    .line 2
+    .line 3
+    const/16 v1, 0x14
+
+    .line 4
+    .line 5
+    invoke-direct {v0, p1, v1}, Lrwq;-><init>(Ljava/lang/Object;B)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {p0, v0}, Lcom/snap/valdi/modules/ModuleFactoryRegistry;->registerModuleFactory(Lkotlin/jvm/functions/Function0;)V
+
+    .line 9
+    .line 10
+    .line 11
+    return-void
+.end method

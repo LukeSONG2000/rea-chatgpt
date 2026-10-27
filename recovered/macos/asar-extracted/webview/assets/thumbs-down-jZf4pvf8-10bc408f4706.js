@@ -1,0 +1,1 @@
+import{n as e,t}from"./thumbs-down-jZf4pvf8-9a719995511f.js";t();export{e as default};

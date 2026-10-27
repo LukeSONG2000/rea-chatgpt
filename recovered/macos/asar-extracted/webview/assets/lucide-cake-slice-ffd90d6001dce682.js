@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-cake-slice-e6ae7aab3a482a6d.js";e();export{t as default};

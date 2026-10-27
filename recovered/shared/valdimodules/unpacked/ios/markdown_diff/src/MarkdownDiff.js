@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getDiffHighlights=void 0;const e=require("../runtime_bundle/MarkdownDiff");function t(t,i,r){return(0,e.getDiffHighlights)(t,i,r)}exports.getDiffHighlights=t;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ItalicElement=void 0;const e=["value"];exports.ItalicElement={properties:e,dilV2Properties:[],createsParagraph:e=>!1,pushStyle:(e,t,o)=>(o.pushFontStyle(void 0,void 0,!0,void 0),t.pushFont(o.resolveFont()),1)};

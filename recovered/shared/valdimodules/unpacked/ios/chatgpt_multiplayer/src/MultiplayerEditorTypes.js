@@ -1,0 +1,1 @@
+"use strict";var E;Object.defineProperty(exports,"__esModule",{value:!0}),exports.MultiplayerEditorEventKind=void 0,function(E){E[E.EDITOR=0]="EDITOR",E[E.STATE=1]="STATE",E[E.PARTICIPANTS=2]="PARTICIPANTS",E[E.PRESENCE_ACTIVITY=3]="PRESENCE_ACTIVITY",E[E.FACEPILE=4]="FACEPILE"}(E||(exports.MultiplayerEditorEventKind=E={}));

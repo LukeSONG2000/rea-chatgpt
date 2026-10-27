@@ -1,0 +1,1 @@
+import{n as e,t}from"./hand-platter-BQExk5ya-e7e39e7ccbac.js";e();export{t as default};

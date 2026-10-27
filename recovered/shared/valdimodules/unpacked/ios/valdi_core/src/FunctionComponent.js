@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.FunctionComponent=void 0;const e=require("valdi_core/src/JSX").jsx,o=require("valdi_core/src/Component");class FunctionComponent extends o.Component{onRender(){this.viewModel.render()}}exports.FunctionComponent=FunctionComponent;

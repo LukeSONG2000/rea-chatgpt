@@ -1,0 +1,1 @@
+import"./app-shared-955d52676f9c.js";import{r as e,t}from"./controls-8b641af53187.js";e();export{t as BrowserAnnotationBatchControls};

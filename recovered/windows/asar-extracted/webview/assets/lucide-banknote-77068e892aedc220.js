@@ -1,0 +1,1 @@
+import{n as e,t}from"./lucide-banknote-3301116cab2ffc0b.js";e();export{t as default};

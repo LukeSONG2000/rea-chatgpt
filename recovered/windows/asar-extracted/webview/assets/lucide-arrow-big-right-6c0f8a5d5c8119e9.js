@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{n as t,t as n}from"./lucide-createLucideIcon-0d8cf01607d7b255.js";var r;function i(){return(i=e((()=>{t(),r=n(`ArrowBigRight`,[[`path`,{d:`M6 9h6V5l7 7-7 7v-4H6V9z`,key:`7fvt9c`}]])})))()}export{i as n,r as t};
+//# sourceMappingURL=lucide-arrow-big-right-6c0f8a5d5c8119e9.js.map

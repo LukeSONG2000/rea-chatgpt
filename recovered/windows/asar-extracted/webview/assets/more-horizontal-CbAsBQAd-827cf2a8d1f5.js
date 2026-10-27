@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{n as t,t as n}from"./ellipsis-Drlz3R2B-c2345c71423b.js";function r(){return(r=e((()=>{t()})))()}r();export{n as default};
+//# sourceMappingURL=more-horizontal-CbAsBQAd-827cf2a8d1f5.js.map

@@ -1,0 +1,15 @@
+.class public abstract Lltu;
+.super Lam5;
+.source "r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466"
+
+
+# annotations
+.annotation runtime Lcom/openai/viewmodel/LegacyViewModelName;
+    value = "com.openai.feature.artifactlibrary.impl.ArtifactImagePreviewViewModel"
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lam5;"
+    }
+.end annotation

@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,t}from"./app-primary-7d7313419f84.js";e();export{t as HomeComposerRoute};

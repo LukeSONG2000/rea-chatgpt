@@ -1,0 +1,1 @@
+import{n as e,t}from"./thumbs-up-ClvSbpC4-1603b3dd685f.js";e();export{t as default};

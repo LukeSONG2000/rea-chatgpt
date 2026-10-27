@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{XVt as t}from"./app-shared-955d52676f9c.js";var n,r;function i(){return(i=e((()=>{n=t(),r=(0,n.createContext)({allowNetworkRequests:!0})})))()}export{i as n,r as t};
+//# sourceMappingURL=imagegen-thumbnail-host-64e1831907e6.js.map

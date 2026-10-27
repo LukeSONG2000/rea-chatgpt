@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,r as t}from"./quick-chat-writing-block-adapter-bc64188b590c.js";t();export{e as QuickChatWritingBlockDirectiveRenderer};

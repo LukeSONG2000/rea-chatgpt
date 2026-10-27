@@ -1,0 +1,1 @@
+import{n as e,t}from"./smartphone-nfc-Dw6_1Yh8-5c401b6f18ff.js";e();export{t as default};

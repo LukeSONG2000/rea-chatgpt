@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getObjectId=exports.setObjectId=void 0;let e=0;function t(t){t&&(t.$objectId=++e)}function o(e){if(e)return e.$objectId}exports.setObjectId=t,exports.getObjectId=o;

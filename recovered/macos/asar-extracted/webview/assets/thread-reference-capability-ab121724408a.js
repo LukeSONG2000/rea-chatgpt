@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{EWn as t,G7n as n,TWn as r,U7n as i}from"./app-initial-feb30b196d11.js";function a(e){return i(r(e),!1)}var o;function s(){return(s=e((()=>{t(),n(),o=`thread_references_unavailable`})))()}export{a as n,s as r,o as t};
+//# sourceMappingURL=thread-reference-capability-ab121724408a.js.map

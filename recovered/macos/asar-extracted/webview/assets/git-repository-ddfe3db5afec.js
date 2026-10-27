@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-2d059c5e81f4.js";import{$ot as t,Qot as n}from"./app-shared-2cae01273bae.js";function r(){let e=n.gitRepository;if(e==null)throw Error(`Git branch operations are unavailable for this host.`);return e}function i(){return(i=e((()=>{t()})))()}export{i as n,r as t};
+//# sourceMappingURL=git-repository-ddfe3db5afec.js.map

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.isAsyncIterable=void 0;const e=require("./isFunction");function t(t){return Symbol.asyncIterator&&(0,e.isFunction)(t?.[Symbol.asyncIterator])}exports.isAsyncIterable=t;

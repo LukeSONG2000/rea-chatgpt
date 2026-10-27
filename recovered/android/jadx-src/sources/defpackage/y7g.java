@@ -1,0 +1,386 @@
+package defpackage;
+
+import com.google.mlkit.vision.barcode.common.Barcode;
+import java.util.List;
+import kotlinx.serialization.KSerializer;
+import kotlinx.serialization.descriptors.SerialDescriptor;
+import kotlinx.serialization.encoding.Decoder;
+import kotlinx.serialization.encoding.Encoder;
+import kotlinx.serialization.internal.PluginGeneratedSerialDescriptor;
+import org.chromium.net.ConnectionSubtype;
+
+/* JADX INFO: compiled from: r8-map-id-af1e89a7259e5e4327eb6e757465ad703bd4436f75e6e7e7572207de856cb466 */
+/* JADX INFO: loaded from: classes5.dex */
+public final /* synthetic */ class y7g implements k3q {
+    public static final y7g a;
+    private static final SerialDescriptor descriptor;
+
+    static {
+        y7g y7gVar = new y7g();
+        a = y7gVar;
+        PluginGeneratedSerialDescriptor pluginGeneratedSerialDescriptor = new PluginGeneratedSerialDescriptor("kQyARlzG4a46yLK-3w7Q8AJCs2nsUvi_67wjF9Sbcrw=", y7gVar, 31);
+        pluginGeneratedSerialDescriptor.k("id", false);
+        pluginGeneratedSerialDescriptor.k("provider", false);
+        pluginGeneratedSerialDescriptor.k("providerUrl", true);
+        pluginGeneratedSerialDescriptor.k("providerLogoUrl", true);
+        pluginGeneratedSerialDescriptor.k("providerLogoDarkUrl", true);
+        pluginGeneratedSerialDescriptor.k("providerLogoUrlShort", true);
+        pluginGeneratedSerialDescriptor.k("providerLogoDarkUrlShort", true);
+        pluginGeneratedSerialDescriptor.k("latitude", false);
+        pluginGeneratedSerialDescriptor.k("longitude", false);
+        pluginGeneratedSerialDescriptor.k("name", false);
+        pluginGeneratedSerialDescriptor.k("address", true);
+        pluginGeneratedSerialDescriptor.k("description", true);
+        pluginGeneratedSerialDescriptor.k("descriptionCite", true);
+        pluginGeneratedSerialDescriptor.k("imageUrl", true);
+        pluginGeneratedSerialDescriptor.k("imageUrls", true);
+        pluginGeneratedSerialDescriptor.k("reconciledThumbnails", true);
+        pluginGeneratedSerialDescriptor.k("rating", true);
+        pluginGeneratedSerialDescriptor.k("reviewCount", true);
+        pluginGeneratedSerialDescriptor.k("price", true);
+        pluginGeneratedSerialDescriptor.k("categories", true);
+        pluginGeneratedSerialDescriptor.k("websiteUrl", true);
+        pluginGeneratedSerialDescriptor.k("yelpMenuUrl", true);
+        pluginGeneratedSerialDescriptor.k("hours", true);
+        pluginGeneratedSerialDescriptor.k("isOpen", true);
+        pluginGeneratedSerialDescriptor.k("nextOpenHour", true);
+        pluginGeneratedSerialDescriptor.k("isClosedPermanently", true);
+        pluginGeneratedSerialDescriptor.k("phone", true);
+        pluginGeneratedSerialDescriptor.k("reservationProviders", true);
+        pluginGeneratedSerialDescriptor.k("serviceProviders", true);
+        pluginGeneratedSerialDescriptor.k("isModelPreferred", true);
+        pluginGeneratedSerialDescriptor.k("isAdditionalBusiness", true);
+        descriptor = pluginGeneratedSerialDescriptor;
+    }
+
+    @Override // defpackage.k3q
+    public final KSerializer[] childSerializers() {
+        t8u[] t8uVarArr = a8g.G;
+        jca0 jca0Var = jca0.a;
+        KSerializer kSerializerH = bit.H(jca0Var);
+        KSerializer kSerializerH2 = bit.H(jca0Var);
+        KSerializer kSerializerH3 = bit.H(jca0Var);
+        KSerializer kSerializerH4 = bit.H(jca0Var);
+        KSerializer kSerializerH5 = bit.H(jca0Var);
+        cjm cjmVar = cjm.a;
+        KSerializer kSerializerH6 = bit.H(jca0Var);
+        KSerializer kSerializerH7 = bit.H(jca0Var);
+        KSerializer kSerializerH8 = bit.H(jca0Var);
+        KSerializer kSerializerH9 = bit.H(jca0Var);
+        KSerializer kSerializerH10 = bit.H((KSerializer) t8uVarArr[14].getValue());
+        KSerializer kSerializerH11 = bit.H((KSerializer) t8uVarArr[15].getValue());
+        KSerializer kSerializerH12 = bit.H(cjmVar);
+        i5t i5tVar = i5t.a;
+        KSerializer kSerializerH13 = bit.H(i5tVar);
+        KSerializer kSerializerH14 = bit.H(i5tVar);
+        KSerializer kSerializerH15 = bit.H((KSerializer) t8uVarArr[19].getValue());
+        KSerializer kSerializerH16 = bit.H(jca0Var);
+        KSerializer kSerializerH17 = bit.H(jca0Var);
+        KSerializer kSerializerH18 = bit.H((KSerializer) t8uVarArr[22].getValue());
+        v76 v76Var = v76.a;
+        return new KSerializer[]{jca0Var, jca0Var, kSerializerH, kSerializerH2, kSerializerH3, kSerializerH4, kSerializerH5, cjmVar, cjmVar, jca0Var, kSerializerH6, kSerializerH7, kSerializerH8, kSerializerH9, kSerializerH10, kSerializerH11, kSerializerH12, kSerializerH13, kSerializerH14, kSerializerH15, kSerializerH16, kSerializerH17, kSerializerH18, bit.H(v76Var), bit.H(q7g.a), bit.H(v76Var), bit.H(jca0Var), bit.H((KSerializer) t8uVarArr[27].getValue()), bit.H((KSerializer) t8uVarArr[28].getValue()), v76Var, v76Var};
+    }
+
+    @Override // defpackage.qmk
+    public final Object deserialize(Decoder decoder) {
+        int i;
+        SerialDescriptor serialDescriptor = descriptor;
+        dbf dbfVarE = decoder.e(serialDescriptor);
+        t8u[] t8uVarArr = a8g.G;
+        int i2 = 0;
+        boolean zC = false;
+        boolean zC2 = false;
+        String strO = null;
+        String strO2 = null;
+        String str = null;
+        String str2 = null;
+        String str3 = null;
+        String str4 = null;
+        String str5 = null;
+        String strO3 = null;
+        String str6 = null;
+        String str7 = null;
+        String str8 = null;
+        String str9 = null;
+        List list = null;
+        List list2 = null;
+        Double d = null;
+        Integer num = null;
+        Integer num2 = null;
+        List list3 = null;
+        String str10 = null;
+        String str11 = null;
+        List list4 = null;
+        Boolean bool = null;
+        s7g s7gVar = null;
+        Boolean bool2 = null;
+        String str12 = null;
+        List list5 = null;
+        List list6 = null;
+        double dE = 0.0d;
+        double dE2 = 0.0d;
+        boolean z = true;
+        while (z) {
+            int iQ = dbfVarE.q(serialDescriptor);
+            switch (iQ) {
+                case -1:
+                    z = false;
+                    continue;
+                case 0:
+                    strO = dbfVarE.o(serialDescriptor, 0);
+                    i2 |= 1;
+                    continue;
+                case 1:
+                    strO2 = dbfVarE.o(serialDescriptor, 1);
+                    i2 |= 2;
+                    continue;
+                case 2:
+                    str = (String) dbfVarE.p(serialDescriptor, 2, jca0.a);
+                    i2 |= 4;
+                    continue;
+                case 3:
+                    str2 = (String) dbfVarE.p(serialDescriptor, 3, jca0.a);
+                    i2 |= 8;
+                    continue;
+                case 4:
+                    str3 = (String) dbfVarE.p(serialDescriptor, 4, jca0.a);
+                    i2 |= 16;
+                    continue;
+                case 5:
+                    str4 = (String) dbfVarE.p(serialDescriptor, 5, jca0.a);
+                    i2 |= 32;
+                    continue;
+                case 6:
+                    str5 = (String) dbfVarE.p(serialDescriptor, 6, jca0.a);
+                    i2 |= 64;
+                    continue;
+                case 7:
+                    i2 |= 128;
+                    dE = dbfVarE.E(serialDescriptor, 7);
+                    continue;
+                case 8:
+                    i2 |= 256;
+                    dE2 = dbfVarE.E(serialDescriptor, 8);
+                    continue;
+                case 9:
+                    strO3 = dbfVarE.o(serialDescriptor, 9);
+                    i2 |= Barcode.FORMAT_UPC_A;
+                    continue;
+                case 10:
+                    str6 = (String) dbfVarE.p(serialDescriptor, 10, jca0.a);
+                    i2 |= Barcode.FORMAT_UPC_E;
+                    continue;
+                case 11:
+                    str7 = (String) dbfVarE.p(serialDescriptor, 11, jca0.a);
+                    i2 |= Barcode.FORMAT_PDF417;
+                    continue;
+                case 12:
+                    str8 = (String) dbfVarE.p(serialDescriptor, 12, jca0.a);
+                    i2 |= Barcode.FORMAT_AZTEC;
+                    continue;
+                case 13:
+                    str9 = (String) dbfVarE.p(serialDescriptor, 13, jca0.a);
+                    i2 |= 8192;
+                    continue;
+                case 14:
+                    list = (List) dbfVarE.p(serialDescriptor, 14, (qmk) t8uVarArr[14].getValue());
+                    i2 |= 16384;
+                    continue;
+                case 15:
+                    list2 = (List) dbfVarE.p(serialDescriptor, 15, (qmk) t8uVarArr[15].getValue());
+                    i = 32768;
+                    break;
+                case 16:
+                    d = (Double) dbfVarE.p(serialDescriptor, 16, cjm.a);
+                    i = 65536;
+                    break;
+                case 17:
+                    num = (Integer) dbfVarE.p(serialDescriptor, 17, i5t.a);
+                    i = 131072;
+                    break;
+                case 18:
+                    num2 = (Integer) dbfVarE.p(serialDescriptor, 18, i5t.a);
+                    i = 262144;
+                    break;
+                case 19:
+                    list3 = (List) dbfVarE.p(serialDescriptor, 19, (qmk) t8uVarArr[19].getValue());
+                    i = 524288;
+                    break;
+                case 20:
+                    str10 = (String) dbfVarE.p(serialDescriptor, 20, jca0.a);
+                    i = 1048576;
+                    break;
+                case 21:
+                    str11 = (String) dbfVarE.p(serialDescriptor, 21, jca0.a);
+                    i = 2097152;
+                    break;
+                case 22:
+                    list4 = (List) dbfVarE.p(serialDescriptor, 22, (qmk) t8uVarArr[22].getValue());
+                    i = 4194304;
+                    break;
+                case 23:
+                    bool = (Boolean) dbfVarE.p(serialDescriptor, 23, v76.a);
+                    i = 8388608;
+                    break;
+                case 24:
+                    s7gVar = (s7g) dbfVarE.p(serialDescriptor, 24, q7g.a);
+                    i = 16777216;
+                    break;
+                case 25:
+                    bool2 = (Boolean) dbfVarE.p(serialDescriptor, 25, v76.a);
+                    i = 33554432;
+                    break;
+                case 26:
+                    str12 = (String) dbfVarE.p(serialDescriptor, 26, jca0.a);
+                    i = 67108864;
+                    break;
+                case ConnectionSubtype.SUBTYPE_10_GIGABIT_ETHERNET /* 27 */:
+                    list5 = (List) dbfVarE.p(serialDescriptor, 27, (qmk) t8uVarArr[27].getValue());
+                    i = 134217728;
+                    break;
+                case ConnectionSubtype.SUBTYPE_WIFI_B /* 28 */:
+                    list6 = (List) dbfVarE.p(serialDescriptor, 28, (qmk) t8uVarArr[28].getValue());
+                    i = 268435456;
+                    break;
+                case ConnectionSubtype.SUBTYPE_WIFI_G /* 29 */:
+                    zC = dbfVarE.C(serialDescriptor, 29);
+                    i = 536870912;
+                    break;
+                case ConnectionSubtype.SUBTYPE_WIFI_N /* 30 */:
+                    zC2 = dbfVarE.C(serialDescriptor, 30);
+                    i = 1073741824;
+                    break;
+                default:
+                    uge.e(iQ);
+                    return null;
+            }
+            i2 |= i;
+        }
+        dbfVarE.y(serialDescriptor);
+        return new a8g(i2, strO, strO2, str, str2, str3, str4, str5, dE, dE2, strO3, str6, str7, str8, str9, list, list2, d, num, num2, list3, str10, str11, list4, bool, s7gVar, bool2, str12, list5, list6, zC, zC2);
+    }
+
+    @Override // defpackage.fi70
+    public final SerialDescriptor getDescriptor() {
+        return descriptor;
+    }
+
+    @Override // defpackage.fi70
+    public final void serialize(Encoder encoder, Object obj) {
+        a8g a8gVar = (a8g) obj;
+        boolean z = a8gVar.E;
+        boolean z2 = a8gVar.D;
+        List list = a8gVar.C;
+        List list2 = a8gVar.B;
+        String str = a8gVar.A;
+        Boolean bool = a8gVar.z;
+        s7g s7gVar = a8gVar.y;
+        Boolean bool2 = a8gVar.x;
+        List list3 = a8gVar.w;
+        String str2 = a8gVar.v;
+        String str3 = a8gVar.u;
+        List list4 = a8gVar.t;
+        Integer num = a8gVar.s;
+        Integer num2 = a8gVar.r;
+        Double d = a8gVar.q;
+        List list5 = a8gVar.p;
+        List list6 = a8gVar.o;
+        String str4 = a8gVar.n;
+        SerialDescriptor serialDescriptor = descriptor;
+        ebf ebfVarE = encoder.e(serialDescriptor);
+        t8u[] t8uVarArr = a8g.G;
+        String str5 = a8gVar.a;
+        String str6 = a8gVar.m;
+        String str7 = a8gVar.l;
+        String str8 = a8gVar.k;
+        String str9 = a8gVar.g;
+        String str10 = a8gVar.f;
+        String str11 = a8gVar.e;
+        String str12 = a8gVar.d;
+        String str13 = a8gVar.c;
+        ebfVarE.H(serialDescriptor, 0, str5);
+        ebfVarE.H(serialDescriptor, 1, a8gVar.b);
+        if (ebfVarE.O() || str13 != null) {
+            ebfVarE.u(serialDescriptor, 2, jca0.a, str13);
+        }
+        if (ebfVarE.O() || str12 != null) {
+            ebfVarE.u(serialDescriptor, 3, jca0.a, str12);
+        }
+        if (ebfVarE.O() || str11 != null) {
+            ebfVarE.u(serialDescriptor, 4, jca0.a, str11);
+        }
+        if (ebfVarE.O() || str10 != null) {
+            ebfVarE.u(serialDescriptor, 5, jca0.a, str10);
+        }
+        if (ebfVarE.O() || str9 != null) {
+            ebfVarE.u(serialDescriptor, 6, jca0.a, str9);
+        }
+        ebfVarE.N(serialDescriptor, 7, a8gVar.h);
+        ebfVarE.N(serialDescriptor, 8, a8gVar.i);
+        ebfVarE.H(serialDescriptor, 9, a8gVar.j);
+        if (ebfVarE.O() || str8 != null) {
+            ebfVarE.u(serialDescriptor, 10, jca0.a, str8);
+        }
+        if (ebfVarE.O() || str7 != null) {
+            ebfVarE.u(serialDescriptor, 11, jca0.a, str7);
+        }
+        if (ebfVarE.O() || str6 != null) {
+            ebfVarE.u(serialDescriptor, 12, jca0.a, str6);
+        }
+        if (ebfVarE.O() || str4 != null) {
+            ebfVarE.u(serialDescriptor, 13, jca0.a, str4);
+        }
+        if (ebfVarE.O() || list6 != null) {
+            ebfVarE.u(serialDescriptor, 14, (fi70) t8uVarArr[14].getValue(), list6);
+        }
+        if (ebfVarE.O() || list5 != null) {
+            ebfVarE.u(serialDescriptor, 15, (fi70) t8uVarArr[15].getValue(), list5);
+        }
+        if (ebfVarE.O() || d != null) {
+            ebfVarE.u(serialDescriptor, 16, cjm.a, d);
+        }
+        if (ebfVarE.O() || num2 != null) {
+            ebfVarE.u(serialDescriptor, 17, i5t.a, num2);
+        }
+        if (ebfVarE.O() || num != null) {
+            ebfVarE.u(serialDescriptor, 18, i5t.a, num);
+        }
+        if (ebfVarE.O() || list4 != null) {
+            ebfVarE.u(serialDescriptor, 19, (fi70) t8uVarArr[19].getValue(), list4);
+        }
+        if (ebfVarE.O() || str3 != null) {
+            ebfVarE.u(serialDescriptor, 20, jca0.a, str3);
+        }
+        if (ebfVarE.O() || str2 != null) {
+            ebfVarE.u(serialDescriptor, 21, jca0.a, str2);
+        }
+        if (ebfVarE.O() || list3 != null) {
+            ebfVarE.u(serialDescriptor, 22, (fi70) t8uVarArr[22].getValue(), list3);
+        }
+        if (ebfVarE.O() || bool2 != null) {
+            ebfVarE.u(serialDescriptor, 23, v76.a, bool2);
+        }
+        if (ebfVarE.O() || s7gVar != null) {
+            ebfVarE.u(serialDescriptor, 24, q7g.a, s7gVar);
+        }
+        if (ebfVarE.O() || bool != null) {
+            ebfVarE.u(serialDescriptor, 25, v76.a, bool);
+        }
+        if (ebfVarE.O() || str != null) {
+            ebfVarE.u(serialDescriptor, 26, jca0.a, str);
+        }
+        if (ebfVarE.O() || list2 != null) {
+            ebfVarE.u(serialDescriptor, 27, (fi70) t8uVarArr[27].getValue(), list2);
+        }
+        if (ebfVarE.O() || list != null) {
+            ebfVarE.u(serialDescriptor, 28, (fi70) t8uVarArr[28].getValue(), list);
+        }
+        if (ebfVarE.O() || z2) {
+            ebfVarE.G(serialDescriptor, 29, z2);
+        }
+        if (ebfVarE.O() || z) {
+            ebfVarE.G(serialDescriptor, 30, z);
+        }
+        ebfVarE.k();
+    }
+}

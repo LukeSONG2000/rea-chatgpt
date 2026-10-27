@@ -1,0 +1,1 @@
+import"./app-shared-2cae01273bae.js";import{n as e,t}from"./sidebar-onboarding-checklist.electron-8af0a827667c.js";e();export{t as SidebarOnboardingChecklist};
