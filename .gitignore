@@ -1,5 +1,7 @@
 # 原始安装包（经 GitHub Release 分发，不入 git）
-packages/
+/packages/*
+!/packages/README.md
+!/packages/baseline-20261027.json
 
 # 临时与可重建
 .tmp/
