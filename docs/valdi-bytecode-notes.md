@@ -194,3 +194,10 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - **op 0x0e = POP/DISCARD**（defineProperty 后弃返回值实证）；**op 0x38 = LOAD_CONST-POOL <u32>**（独立常量池，索引>字符串数）
 - 每文件 const 池独立（0xdb/0xdc/0xe1 随文件变化）
 - 模块导出区模式：d4×N 推局部 → 0x06/0x15/0x45×N 构建 exports 绑定 → END
+
+### 9.12 v1.1 全量重渲染（2026-10-27 深夜Ⅴ）
+
+- cel_decompile.py 重写为 v1.1（基于验证管线 + 校准语义：RECORD33 按key池/BIND-CONST/EXPORTS/STORE-LOCAL/CALL argc/语句分组）
+- chatgpt_reasoning 3 文件 + chatgpt_conversation 16 文件全量重渲染（analysis/decoded/）
+- 新暴露待归纳 op（Debug 变体）：0x05/0x08/0x09/0x0d/0x10/0x11/0x35/0x50/0x59/0x64/0x68/0xb7/0xbc/0xbe/0xd3/0xe0；0xf0 系 jcc 操作数编码未定（现读 +0 需修正）
+- 观察模式：`local[N] = const[M]; jcc 0xf0` 重复序列 = 表驱动初始化展开
