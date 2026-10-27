@@ -65,7 +65,10 @@ def render(blob, meta):
         elif op == 0x29:
             lines.append(f'{pc:5d}  END')
         elif op in (0x41, 0x42, 0x43):
-            lines.append(f'{pc:5d}  RECORD33 op 0x{op:02x} [{ops[:8].hex()}…]')
+            kind = {0x41: 'SETPROP-IC?', 0x42: 'GETPROP-IC', 0x43: 'PROP/METHOD-IC?'}[op]
+            key = struct.unpack('<H', ops[:2])[0] if len(ops) >= 2 else -1
+            kname = strs[key][:STR_MAX] if 0 <= key < len(strs) and strs[key] else f'#{key}'
+            lines.append(f'{pc:5d}  {kind} key={key} ({kname!r})')
         elif op == 0x4f:
             lines.append(f'{pc:5d}  GETPROP [{ops.hex()}]  // (obj, key) → value')
         elif op == 0x65:
@@ -85,6 +88,17 @@ def render(blob, meta):
             lines.append(f'{pc:5d}  coerce')
         elif op == 0xf0:
             lines.append(f'{pc:5d}  unary-op 0xf0')
+        elif op in (0xeb, 0xec, 0xed):
+            off = ops[0] if ops and ops[0] < 128 else ops[0] - 256 if ops else 0
+            lines.append(f'{pc:5d}  jT/rel {off:+d}  → pc={pc+2+off}')
+        elif op in (0xef, 0xf0, 0xf1, 0xf2):
+            off = ops[0] if ops and ops[0] < 128 else ops[0] - 256 if ops else 0
+            lines.append(f'{pc:5d}  jCOND 0x{op:02x} rel {off:+d}')
+        elif op == 0x21:
+            argc = struct.unpack('<H', ops)[0] if len(ops) == 2 else -1
+            lines.append(f'{pc:5d}  CALL-VAR21 argc={argc}')
+        elif op == 0x35:
+            lines.append(f'{pc:5d}  op 0x35 [{ops.hex()}]')
         else:
             lines.append(f'{pc:5d}  op 0x{op:02x} [{ops.hex()}]')
     return '\n'.join(lines), c

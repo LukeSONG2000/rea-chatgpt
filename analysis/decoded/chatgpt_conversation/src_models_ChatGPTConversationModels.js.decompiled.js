@@ -45,7 +45,7 @@
    61  push str[2]  // 'exports'
    66  push str[3]  // 'e'
    71  op 0x91 []
-   75  RECORD33 op 0x42 [6500000000000000…]
+   75  GETPROP-IC key=101 ('#101')
   108  push <op 0xd4>
   109  push const2[223]
   114  push <op 0x0b>
@@ -69,7 +69,7 @@
   170  op 0xc1 [00]
   172  op 0xc6 []
   173  op 0x11 []
-  174  op 0xec [0f]
+  174  jT/rel +15  → pc=191
   176  op 0x0e []
   177  push <op 0xd4>
   178  push <op 0x0b>
@@ -81,7 +81,7 @@
   192  op 0xc1 [01]
   194  op 0xc7 []
   195  op 0x11 []
-  196  op 0xec [0f]
+  196  jT/rel +15  → pc=213
   198  op 0x0e []
   199  push <op 0xd4>
   200  push <op 0x0b>
@@ -93,7 +93,7 @@
   214  op 0xc1 [02]
   216  op 0xc8 []
   217  op 0x11 []
-  218  op 0xec [0f]
+  218  jT/rel +15  → pc=235
   220  op 0x0e []
   221  push <op 0xd4>
   222  push <op 0x0b>
@@ -105,7 +105,7 @@
   236  op 0xc1 [03]
   238  op 0xc9 []
   239  op 0x11 []
-  240  op 0xec [0f]
+  240  jT/rel +15  → pc=257
   242  op 0x0e []
   243  push <op 0xd4>
   244  push <op 0x0b>
@@ -142,7 +142,7 @@
   329  ASSIGN  // value ← (target, value)
   330  push str[2]  // 'exports'
   335  op 0x02 [0000000e]
-  340  RECORD33 op 0x43 [0601000100010400…]
+  340  PROP/METHOD-IC? key=262 ('#262')
   375  op 0x4c []
   376  op 0xd2 []
   377  op 0xd2 []
@@ -163,7 +163,7 @@
   416  push str[4]  // 't'
   421  op 0x39 [02030000]
   427  op 0x0e []
-  428  RECORD33 op 0x43 [0601000100010400…]
+  428  PROP/METHOD-IC? key=262 ('#262')
   463  op 0x4c []
   464  op 0xd2 []
   465  op 0xd2 []
@@ -176,7 +176,7 @@
   484  ASSIGN  // value ← (target, value)
   485  push str[2]  // 'exports'
   490  op 0x02 [0000000e]
-  495  RECORD33 op 0x43 [0601000100010400…]
+  495  PROP/METHOD-IC? key=262 ('#262')
   530  op 0x4c []
   531  op 0xd2 []
   532  op 0xd2 []

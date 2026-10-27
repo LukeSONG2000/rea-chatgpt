@@ -34,7 +34,7 @@
    63  op 0x20 []
    64  op 0x64 [0200]
    67  op 0x38 [91000000]
-   72  RECORD33 op 0x42 [6500000000000000…]
+   72  GETPROP-IC key=101 ('#101')
   105  push <op 0xd4>
   106  push const2[220]
   111  push <op 0x0b>
@@ -82,7 +82,7 @@
   227  op 0x2b []
   228  op 0x68 [0000]
   231  op 0x11 []
-  232  op 0xeb [06]
+  232  jT/rel +6  → pc=240
   234  op 0xc6 []
   235  op 0x1b []
   236  CALL argc=0   // (callee, this) 已在栈上
@@ -90,14 +90,14 @@
   240  op 0xc6 []
   241  op 0x38 [b0000000]
   246  op 0x11 []
-  247  op 0x21 [0000]
+  247  CALL-VAR21 argc=0
   250  op 0x45 [df00000000000000]
   259  END
   260  ASSIGN  // value ← (target, value)
   261  push str[2]  // 'exports'
   266  push const[0000000e]
-  271  RECORD33 op 0x42 [0701000101010300…]
-  328  RECORD33 op 0x42 [6800000000000000…]
+  271  GETPROP-IC key=263 ('#263')
+  328  GETPROP-IC key=104 ('#104')
   361  op 0xd2 []
   362  CALL argc=1   // (callee, this) 已在栈上
   365  op 0x0e []
@@ -111,8 +111,8 @@
   390  op 0x10 []
   392  push const[c0030003]
   397  op 0xde []
-  398  RECORD33 op 0x41 [df00000000000000…]
-  431  RECORD33 op 0x42 [0900000000000000…]
+  398  SETPROP-IC? key=223 ('#223')
+  431  GETPROP-IC key=9 ('i')
   464  op 0xdf []
   465  CALL argc=1   // (callee, this) 已在栈上
   468  END
@@ -121,27 +121,27 @@
   475  op 0x47 []
   476  op 0x02 [00000000]
   485  op 0x0e []
-  486  RECORD33 op 0x42 [0701000102010700…]
+  486  GETPROP-IC key=263 ('#263')
   519  op 0x94 []
-  523  RECORD33 op 0x42 [e200000000000000…]
+  523  GETPROP-IC key=226 ('#226')
   556  op 0xd2 []
   557  CALL argc=1   // (callee, this) 已在栈上
   560  UNARY ! / coerce-bool
-  561  op 0xeb [02]
+  561  jT/rel +2  → pc=565
   563  END
   564  op 0x38 [99000000]
-  569  RECORD33 op 0x42 [e300000000000000…]
+  569  GETPROP-IC key=227 ('#227')
   602  push global
   603  op 0x38 [99000000]
-  608  RECORD33 op 0x42 [e400000000000000…]
+  608  GETPROP-IC key=228 ('#228')
   641  op 0xb7 []
   642  op 0xd2 []
   643  CALL argc=2   // (callee, this) 已在栈上
   646  CALL argc=2   // (callee, this) 已在栈上
   649  op 0xca []
   650  op 0xc7 []
-  651  RECORD33 op 0x41 [df00000000000000…]
-  684  RECORD33 op 0x42 [e500000000000000…]
+  651  SETPROP-IC? key=223 ('#223')
+  684  GETPROP-IC key=229 ('#229')
   717  op 0xc1 [00]
   719  CALL argc=1   // (callee, this) 已在栈上
   722  END

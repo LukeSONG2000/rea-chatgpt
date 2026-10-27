@@ -1273,19 +1273,19 @@
    21  CALL argc=1   // (callee, this) 已在栈上
    24  store local[9]
    26  push undefined
-   29  RECORD33 op 0x42 [be01000000000000…]
+   29  GETPROP-IC key=446 ('setPreparedResponseContent')
    62  push const2[447]
    67  CALL argc=1   // (callee, this) 已在栈上
    70  store local[10]
    72  push undefined
-   75  RECORD33 op 0x42 [bd01000000000000…]
+   75  GETPROP-IC key=445 ('appendResponseDelta')
   108  push const2[448]
   113  push const2[452]
   118  push <op 0x26: 0200>
   121  CALL argc=1   // (callee, this) 已在栈上
   124  store local[11]
   126  push undefined
-  129  RECORD33 op 0x42 [bd01000000000000…]
+  129  GETPROP-IC key=445 ('appendResponseDelta')
   162  push const2[453]
   167  push const2[454]
   172  push const2[455]
@@ -1296,32 +1296,32 @@
   191  CALL argc=1   // (callee, this) 已在栈上
   194  store local[12]
   196  push undefined
-  199  RECORD33 op 0x42 [be01000000000000…]
+  199  GETPROP-IC key=446 ('setPreparedResponseContent')
   232  push const2[447]
   237  CALL argc=1   // (callee, this) 已在栈上
   240  store local[13]
   242  push undefined
-  245  RECORD33 op 0x42 [be01000000000000…]
+  245  GETPROP-IC key=446 ('setPreparedResponseContent')
   278  push const2[447]
   283  CALL argc=1   // (callee, this) 已在栈上
   286  store local[14]
   288  push undefined
-  291  RECORD33 op 0x42 [be01000000000000…]
+  291  GETPROP-IC key=446 ('setPreparedResponseContent')
   324  push const2[458]
   329  CALL argc=1   // (callee, this) 已在栈上
   332  store local[15]
   334  push undefined
-  337  RECORD33 op 0x42 [be01000000000000…]
+  337  GETPROP-IC key=446 ('setPreparedResponseContent')
   370  push const2[447]
   375  CALL argc=1   // (callee, this) 已在栈上
   378  store local[16]
   380  push undefined
-  383  RECORD33 op 0x42 [be01000000000000…]
+  383  GETPROP-IC key=446 ('setPreparedResponseContent')
   416  push const2[447]
   421  CALL argc=1   // (callee, this) 已在栈上
   424  store local[17]
   426  push undefined
-  429  RECORD33 op 0x42 [bd01000000000000…]
+  429  GETPROP-IC key=445 ('appendResponseDelta')
   462  push const2[459]
   467  op 0xbe [38]
   469  push const2[456]
@@ -1330,29 +1330,29 @@
   479  CALL argc=1   // (callee, this) 已在栈上
   482  store local[18]
   484  push undefined
-  487  RECORD33 op 0x42 [bd01000000000000…]
+  487  GETPROP-IC key=445 ('appendResponseDelta')
   520  push const2[460]
   525  op 0xbe [1c]
   527  push <op 0x26: 0200>
   530  CALL argc=1   // (callee, this) 已在栈上
   533  store local[19]
   535  push undefined
-  538  RECORD33 op 0x42 [be01000000000000…]
+  538  GETPROP-IC key=446 ('setPreparedResponseContent')
   571  push const2[461]
   576  CALL argc=1   // (callee, this) 已在栈上
   579  store local[20]
   581  push undefined
-  584  RECORD33 op 0x42 [be01000000000000…]
+  584  GETPROP-IC key=446 ('setPreparedResponseContent')
   617  push const2[461]
   622  CALL argc=1   // (callee, this) 已在栈上
   625  store local[21]
   627  push undefined
-  630  RECORD33 op 0x42 [be01000000000000…]
+  630  GETPROP-IC key=446 ('setPreparedResponseContent')
   663  push const2[447]
   668  CALL argc=1   // (callee, this) 已在栈上
   671  store local[22]
   673  push undefined
-  676  RECORD33 op 0x42 [bd01000000000000…]
+  676  GETPROP-IC key=445 ('appendResponseDelta')
   709  push const2[462]
   714  op 0xb7 []
   715  push const2[456]
@@ -1361,14 +1361,14 @@
   728  CALL argc=1   // (callee, this) 已在栈上
   731  store local[23]
   733  push undefined
-  736  RECORD33 op 0x42 [bd01000000000000…]
+  736  GETPROP-IC key=445 ('appendResponseDelta')
   769  push const2[456]
   774  push const2[457]
   779  push <op 0x26: 0200>
   782  CALL argc=1   // (callee, this) 已在栈上
   785  store local[24]
   787  push undefined
-  790  RECORD33 op 0x42 [bd01000000000000…]
+  790  GETPROP-IC key=445 ('appendResponseDelta')
   823  push const2[459]
   828  op 0xbe [26]
   830  push const2[456]
@@ -1377,58 +1377,58 @@
   840  CALL argc=1   // (callee, this) 已在栈上
   843  store local[25]
   845  push undefined
-  848  RECORD33 op 0x42 [bd01000000000000…]
+  848  GETPROP-IC key=445 ('appendResponseDelta')
   881  push const2[460]
   886  op 0xbe [14]
   888  push <op 0x26: 0200>
   891  CALL argc=1   // (callee, this) 已在栈上
   894  store local[26]
   896  push undefined
-  899  RECORD33 op 0x42 [bd01000000000000…]
+  899  GETPROP-IC key=445 ('appendResponseDelta')
   932  push const2[463]
   937  op 0xb7 []
   938  push <op 0x26: 0200>
   941  CALL argc=1   // (callee, this) 已在栈上
   944  store local[27]
   946  push undefined
-  949  RECORD33 op 0x42 [bd01000000000000…]
+  949  GETPROP-IC key=445 ('appendResponseDelta')
   982  CALL argc=0   // (callee, this) 已在栈上
   985  store local[28]
   987  push undefined
-  990  RECORD33 op 0x42 [bd01000000000000…]
+  990  GETPROP-IC key=445 ('appendResponseDelta')
  1023  push const2[455]
  1028  op 0xb7 []
  1029  push <op 0x26: 0200>
  1032  CALL argc=1   // (callee, this) 已在栈上
  1035  store local[29]
  1037  push undefined
- 1040  RECORD33 op 0x42 [bd01000000000000…]
+ 1040  GETPROP-IC key=445 ('appendResponseDelta')
  1073  push const2[64]
  1078  push const2[464]
  1083  push <op 0x26: 0200>
  1086  CALL argc=1   // (callee, this) 已在栈上
  1089  store local[30]
  1091  push undefined
- 1094  RECORD33 op 0x42 [be01000000000000…]
+ 1094  GETPROP-IC key=446 ('setPreparedResponseContent')
  1127  push const2[458]
  1132  CALL argc=1   // (callee, this) 已在栈上
  1135  store local[31]
  1137  push undefined
- 1140  RECORD33 op 0x42 [be01000000000000…]
+ 1140  GETPROP-IC key=446 ('setPreparedResponseContent')
  1173  push const2[447]
  1178  CALL argc=1   // (callee, this) 已在栈上
  1181  store local[32]
  1183  push undefined
- 1186  RECORD33 op 0x42 [be01000000000000…]
+ 1186  GETPROP-IC key=446 ('setPreparedResponseContent')
  1219  push const2[447]
  1224  CALL argc=1   // (callee, this) 已在栈上
  1227  store local[33]
  1229  push undefined
- 1232  RECORD33 op 0x42 [bd01000000000000…]
+ 1232  GETPROP-IC key=445 ('appendResponseDelta')
  1265  CALL argc=0   // (callee, this) 已在栈上
  1268  store local[34]
  1270  push undefined
- 1273  RECORD33 op 0x42 [be01000000000000…]
+ 1273  GETPROP-IC key=446 ('setPreparedResponseContent')
  1306  push const2[461]
  1311  push const2[64]
  1316  push const2[465]
@@ -1436,12 +1436,12 @@
  1324  CALL argc=2   // (callee, this) 已在栈上
  1327  store local[35]
  1329  push undefined
- 1332  RECORD33 op 0x42 [be01000000000000…]
+ 1332  GETPROP-IC key=446 ('setPreparedResponseContent')
  1365  push const2[447]
  1370  CALL argc=1   // (callee, this) 已在栈上
  1373  store local[36]
  1375  push undefined
- 1378  RECORD33 op 0x42 [be01000000000000…]
+ 1378  GETPROP-IC key=446 ('setPreparedResponseContent')
  1411  push const2[461]
  1416  push const2[64]
  1421  push const2[466]
@@ -1449,12 +1449,12 @@
  1429  CALL argc=2   // (callee, this) 已在栈上
  1432  store local[37]
  1434  push undefined
- 1437  RECORD33 op 0x42 [be01000000000000…]
+ 1437  GETPROP-IC key=446 ('setPreparedResponseContent')
  1470  push const2[461]
  1475  CALL argc=1   // (callee, this) 已在栈上
  1478  store local[38]
  1480  push undefined
- 1483  RECORD33 op 0x42 [be01000000000000…]
+ 1483  GETPROP-IC key=446 ('setPreparedResponseContent')
  1516  push const2[447]
  1521  push const2[448]
  1526  push const2[467]
@@ -1462,7 +1462,7 @@
  1534  CALL argc=2   // (callee, this) 已在栈上
  1537  store local[39]
  1539  push undefined
- 1542  RECORD33 op 0x42 [bd01000000000000…]
+ 1542  GETPROP-IC key=445 ('appendResponseDelta')
  1575  push const2[460]
  1580  op 0xbe [12]
  1582  push const2[74]
@@ -1471,12 +1471,12 @@
  1595  CALL argc=1   // (callee, this) 已在栈上
  1598  store local[40]
  1600  push undefined
- 1603  RECORD33 op 0x42 [be01000000000000…]
+ 1603  GETPROP-IC key=446 ('setPreparedResponseContent')
  1636  push const2[447]
  1641  CALL argc=1   // (callee, this) 已在栈上
  1644  store local[41]
  1646  push undefined
- 1649  RECORD33 op 0x42 [be01000000000000…]
+ 1649  GETPROP-IC key=446 ('setPreparedResponseContent')
  1682  push const2[461]
  1687  push const2[64]
  1692  push const2[469]
@@ -1484,7 +1484,7 @@
  1700  CALL argc=2   // (callee, this) 已在栈上
  1703  store local[42]
  1705  push undefined
- 1708  RECORD33 op 0x42 [be01000000000000…]
+ 1708  GETPROP-IC key=446 ('setPreparedResponseContent')
  1741  push const2[461]
  1746  push const2[64]
  1751  push const2[470]
@@ -1492,21 +1492,21 @@
  1759  CALL argc=2   // (callee, this) 已在栈上
  1762  store local[43]
  1764  push undefined
- 1767  RECORD33 op 0x42 [bd01000000000000…]
+ 1767  GETPROP-IC key=445 ('appendResponseDelta')
  1800  CALL argc=0   // (callee, this) 已在栈上
  1803  store local[44]
  1805  push undefined
- 1808  RECORD33 op 0x42 [be01000000000000…]
+ 1808  GETPROP-IC key=446 ('setPreparedResponseContent')
  1841  push const2[447]
  1846  CALL argc=1   // (callee, this) 已在栈上
  1849  store local[45]
  1851  push undefined
- 1854  RECORD33 op 0x42 [be01000000000000…]
+ 1854  GETPROP-IC key=446 ('setPreparedResponseContent')
  1887  push const2[461]
  1892  CALL argc=1   // (callee, this) 已在栈上
  1895  store local[46]
  1897  push undefined
- 1900  RECORD33 op 0x42 [be01000000000000…]
+ 1900  GETPROP-IC key=446 ('setPreparedResponseContent')
  1933  push const2[461]
  1938  push const2[64]
  1943  push const2[471]
@@ -1514,7 +1514,7 @@
  1951  CALL argc=2   // (callee, this) 已在栈上
  1954  store local[47]
  1956  push undefined
- 1959  RECORD33 op 0x42 [be01000000000000…]
+ 1959  GETPROP-IC key=446 ('setPreparedResponseContent')
  1992  push const2[447]
  1997  push const2[448]
  2002  push const2[472]
@@ -1522,14 +1522,14 @@
  2010  CALL argc=2   // (callee, this) 已在栈上
  2013  store local[48]
  2015  push undefined
- 2018  RECORD33 op 0x42 [bd01000000000000…]
+ 2018  GETPROP-IC key=445 ('appendResponseDelta')
  2051  push const2[460]
  2056  op 0xbe [11]
  2058  push <op 0x26: 0200>
  2061  CALL argc=1   // (callee, this) 已在栈上
  2064  store local[49]
  2066  push undefined
- 2069  RECORD33 op 0x42 [be01000000000000…]
+ 2069  GETPROP-IC key=446 ('setPreparedResponseContent')
  2102  push const2[461]
  2107  push const2[64]
  2112  push const2[473]
@@ -1537,7 +1537,7 @@
  2120  CALL argc=2   // (callee, this) 已在栈上
  2123  store local[50]
  2125  push undefined
- 2128  RECORD33 op 0x42 [bd01000000000000…]
+ 2128  GETPROP-IC key=445 ('appendResponseDelta')
  2161  push const2[448]
  2166  push const2[474]
  2171  push const2[450]
@@ -1546,22 +1546,22 @@
  2184  CALL argc=1   // (callee, this) 已在栈上
  2187  store local[51]
  2189  push undefined
- 2192  RECORD33 op 0x42 [bd01000000000000…]
+ 2192  GETPROP-IC key=445 ('appendResponseDelta')
  2225  push const2[448]
  2230  push const2[476]
  2235  push <op 0x26: 0200>
  2238  CALL argc=1   // (callee, this) 已在栈上
  2241  store local[52]
  2243  push undefined
- 2246  RECORD33 op 0x42 [bd01000000000000…]
+ 2246  GETPROP-IC key=445 ('appendResponseDelta')
  2279  CALL argc=0   // (callee, this) 已在栈上
  2282  store local[53]
  2284  push undefined
- 2287  RECORD33 op 0x42 [bd01000000000000…]
+ 2287  GETPROP-IC key=445 ('appendResponseDelta')
  2320  CALL argc=0   // (callee, this) 已在栈上
  2323  store local[54]
  2325  push undefined
- 2328  RECORD33 op 0x42 [bd01000000000000…]
+ 2328  GETPROP-IC key=445 ('appendResponseDelta')
  2361  push const2[460]
  2366  op 0xbe [0e]
  2368  push const2[74]
@@ -1570,27 +1570,27 @@
  2381  CALL argc=1   // (callee, this) 已在栈上
  2384  store local[55]
  2386  push undefined
- 2389  RECORD33 op 0x42 [be01000000000000…]
+ 2389  GETPROP-IC key=446 ('setPreparedResponseContent')
  2422  push const2[447]
  2427  CALL argc=1   // (callee, this) 已在栈上
  2430  store local[56]
  2432  push undefined
- 2435  RECORD33 op 0x42 [be01000000000000…]
+ 2435  GETPROP-IC key=446 ('setPreparedResponseContent')
  2468  push const2[447]
  2473  CALL argc=1   // (callee, this) 已在栈上
  2476  store local[57]
  2478  push undefined
- 2481  RECORD33 op 0x42 [be01000000000000…]
+ 2481  GETPROP-IC key=446 ('setPreparedResponseContent')
  2514  push const2[447]
  2519  CALL argc=1   // (callee, this) 已在栈上
  2522  store local[58]
  2524  push undefined
- 2527  RECORD33 op 0x42 [be01000000000000…]
+ 2527  GETPROP-IC key=446 ('setPreparedResponseContent')
  2560  push const2[447]
  2565  CALL argc=1   // (callee, this) 已在栈上
  2568  store local[59]
  2570  push undefined
- 2573  RECORD33 op 0x42 [bd01000000000000…]
+ 2573  GETPROP-IC key=445 ('appendResponseDelta')
  2606  push const2[450]
  2611  push const2[478]
  2616  push const2[462]
@@ -1601,30 +1601,30 @@
  2632  CALL argc=1   // (callee, this) 已在栈上
  2635  store local[60]
  2637  push undefined
- 2640  RECORD33 op 0x42 [bd01000000000000…]
+ 2640  GETPROP-IC key=445 ('appendResponseDelta')
  2673  CALL argc=0   // (callee, this) 已在栈上
  2676  store local[61]
  2678  push undefined
- 2681  RECORD33 op 0x42 [bd01000000000000…]
+ 2681  GETPROP-IC key=445 ('appendResponseDelta')
  2714  push const2[64]
  2719  push const2[479]
  2724  push <op 0x26: 0200>
  2727  CALL argc=1   // (callee, this) 已在栈上
  2730  store local[62]
  2732  push undefined
- 2735  RECORD33 op 0x42 [bd01000000000000…]
+ 2735  GETPROP-IC key=445 ('appendResponseDelta')
  2768  push const2[64]
  2773  push const2[480]
  2778  push <op 0x26: 0200>
  2781  CALL argc=1   // (callee, this) 已在栈上
  2784  store local[63]
  2786  push undefined
- 2789  RECORD33 op 0x42 [be01000000000000…]
+ 2789  GETPROP-IC key=446 ('setPreparedResponseContent')
  2822  push const2[447]
  2827  CALL argc=1   // (callee, this) 已在栈上
  2830  store local[64]
  2832  push undefined
- 2835  RECORD33 op 0x42 [bd01000000000000…]
+ 2835  GETPROP-IC key=445 ('appendResponseDelta')
  2868  push const2[448]
  2873  push const2[481]
  2878  push const2[450]
@@ -1637,18 +1637,18 @@
  2904  CALL argc=1   // (callee, this) 已在栈上
  2907  store local[65]
  2909  push undefined
- 2912  RECORD33 op 0x42 [bd01000000000000…]
+ 2912  GETPROP-IC key=445 ('appendResponseDelta')
  2945  CALL argc=0   // (callee, this) 已在栈上
  2948  store local[66]
  2950  push undefined
- 2953  RECORD33 op 0x42 [bd01000000000000…]
+ 2953  GETPROP-IC key=445 ('appendResponseDelta')
  2986  push const2[455]
  2991  op 0xb7 []
  2992  push <op 0x26: 0200>
  2995  CALL argc=1   // (callee, this) 已在栈上
  2998  store local[67]
  3000  push undefined
- 3003  RECORD33 op 0x42 [bd01000000000000…]
+ 3003  GETPROP-IC key=445 ('appendResponseDelta')
  3036  push const2[460]
  3041  op 0xbe [0e]
  3043  push const2[74]
@@ -1657,19 +1657,19 @@
  3056  CALL argc=1   // (callee, this) 已在栈上
  3059  store local[68]
  3061  push undefined
- 3064  RECORD33 op 0x42 [be01000000000000…]
+ 3064  GETPROP-IC key=446 ('setPreparedResponseContent')
  3097  push const2[447]
  3102  CALL argc=1   // (callee, this) 已在栈上
  3105  store local[69]
  3107  push undefined
- 3110  RECORD33 op 0x42 [bd01000000000000…]
+ 3110  GETPROP-IC key=445 ('appendResponseDelta')
  3143  push const2[460]
  3148  op 0xbe [14]
  3150  push <op 0x26: 0200>
  3153  CALL argc=1   // (callee, this) 已在栈上
  3156  store local[70]
  3158  push undefined
- 3161  RECORD33 op 0x42 [be01000000000000…]
+ 3161  GETPROP-IC key=446 ('setPreparedResponseContent')
  3194  push const2[461]
  3199  push const2[448]
  3204  push const2[483]
@@ -1677,11 +1677,11 @@
  3212  CALL argc=2   // (callee, this) 已在栈上
  3215  store local[71]
  3217  push undefined
- 3220  RECORD33 op 0x42 [bd01000000000000…]
+ 3220  GETPROP-IC key=445 ('appendResponseDelta')
  3253  CALL argc=0   // (callee, this) 已在栈上
  3256  store local[72]
  3258  push undefined
- 3261  RECORD33 op 0x42 [be01000000000000…]
+ 3261  GETPROP-IC key=446 ('setPreparedResponseContent')
  3294  push const2[447]
  3299  push const2[448]
  3304  push const2[484]
@@ -1689,38 +1689,38 @@
  3312  CALL argc=2   // (callee, this) 已在栈上
  3315  store local[73]
  3317  push undefined
- 3320  RECORD33 op 0x42 [be01000000000000…]
+ 3320  GETPROP-IC key=446 ('setPreparedResponseContent')
  3353  push const2[447]
  3358  CALL argc=1   // (callee, this) 已在栈上
  3361  store local[74]
  3363  push undefined
- 3366  RECORD33 op 0x42 [bd01000000000000…]
+ 3366  GETPROP-IC key=445 ('appendResponseDelta')
  3399  push const2[460]
  3404  op 0xbe [12]
  3406  push <op 0x26: 0200>
  3409  CALL argc=1   // (callee, this) 已在栈上
  3412  store local[75]
  3414  push undefined
- 3417  RECORD33 op 0x42 [be01000000000000…]
+ 3417  GETPROP-IC key=446 ('setPreparedResponseContent')
  3450  push const2[447]
  3455  CALL argc=1   // (callee, this) 已在栈上
  3458  store local[76]
  3460  push undefined
- 3463  RECORD33 op 0x42 [be01000000000000…]
+ 3463  GETPROP-IC key=446 ('setPreparedResponseContent')
  3496  push const2[461]
  3501  CALL argc=1   // (callee, this) 已在栈上
  3504  store local[77]
  3506  push undefined
- 3509  RECORD33 op 0x42 [be01000000000000…]
+ 3509  GETPROP-IC key=446 ('setPreparedResponseContent')
  3542  push const2[461]
  3547  CALL argc=1   // (callee, this) 已在栈上
  3550  store local[78]
  3552  push undefined
- 3555  RECORD33 op 0x42 [bd01000000000000…]
+ 3555  GETPROP-IC key=445 ('appendResponseDelta')
  3588  CALL argc=0   // (callee, this) 已在栈上
  3591  store local[79]
  3593  push undefined
- 3596  RECORD33 op 0x42 [bd01000000000000…]
+ 3596  GETPROP-IC key=445 ('appendResponseDelta')
  3629  push const2[448]
  3634  push const2[485]
  3639  push const2[450]
@@ -1733,7 +1733,7 @@
  3672  CALL argc=1   // (callee, this) 已在栈上
  3675  store local[80]
  3677  push undefined
- 3680  RECORD33 op 0x42 [bd01000000000000…]
+ 3680  GETPROP-IC key=445 ('appendResponseDelta')
  3713  push const2[448]
  3718  push const2[485]
  3723  push const2[450]
@@ -1748,7 +1748,7 @@
  3762  CALL argc=1   // (callee, this) 已在栈上
  3765  store local[81]
  3767  push undefined
- 3770  RECORD33 op 0x42 [bd01000000000000…]
+ 3770  GETPROP-IC key=445 ('appendResponseDelta')
  3803  push const2[448]
  3808  push const2[493]
  3813  push const2[450]
@@ -1761,7 +1761,7 @@
  3846  CALL argc=1   // (callee, this) 已在栈上
  3849  store local[82]
  3851  push undefined
- 3854  RECORD33 op 0x42 [bd01000000000000…]
+ 3854  GETPROP-IC key=445 ('appendResponseDelta')
  3887  push const2[448]
  3892  push const2[493]
  3897  push const2[450]
@@ -1776,12 +1776,12 @@
  3936  CALL argc=1   // (callee, this) 已在栈上
  3939  store local[83]
  3941  push undefined
- 3944  RECORD33 op 0x42 [be01000000000000…]
+ 3944  GETPROP-IC key=446 ('setPreparedResponseContent')
  3977  push const2[447]
  3982  CALL argc=1   // (callee, this) 已在栈上
  3985  store local[84]
  3987  push undefined
- 3990  RECORD33 op 0x42 [be01000000000000…]
+ 3990  GETPROP-IC key=446 ('setPreparedResponseContent')
  4023  push const2[461]
  4028  push const2[64]
  4033  push const2[496]
@@ -1789,21 +1789,21 @@
  4041  CALL argc=2   // (callee, this) 已在栈上
  4044  store local[85]
  4046  push undefined
- 4049  RECORD33 op 0x42 [bd01000000000000…]
+ 4049  GETPROP-IC key=445 ('appendResponseDelta')
  4082  push const2[456]
  4087  push const2[457]
  4092  push <op 0x26: 0200>
  4095  CALL argc=1   // (callee, this) 已在栈上
  4098  store local[86]
  4100  push undefined
- 4103  RECORD33 op 0x42 [bd01000000000000…]
+ 4103  GETPROP-IC key=445 ('appendResponseDelta')
  4136  push const2[456]
  4141  push const2[457]
  4146  push <op 0x26: 0200>
  4149  CALL argc=1   // (callee, this) 已在栈上
  4152  store local[87]
  4154  push undefined
- 4157  RECORD33 op 0x42 [bd01000000000000…]
+ 4157  GETPROP-IC key=445 ('appendResponseDelta')
  4190  push const2[459]
  4195  op 0xbe [22]
  4197  push const2[456]
@@ -1812,36 +1812,36 @@
  4207  CALL argc=1   // (callee, this) 已在栈上
  4210  store local[88]
  4212  push undefined
- 4215  RECORD33 op 0x42 [bd01000000000000…]
+ 4215  GETPROP-IC key=445 ('appendResponseDelta')
  4248  push const2[460]
  4253  op 0xbe [13]
  4255  push <op 0x26: 0200>
  4258  CALL argc=1   // (callee, this) 已在栈上
  4261  store local[89]
  4263  push undefined
- 4266  RECORD33 op 0x42 [bd01000000000000…]
+ 4266  GETPROP-IC key=445 ('appendResponseDelta')
  4299  push const2[463]
  4304  op 0xb7 []
  4305  push <op 0x26: 0200>
  4308  CALL argc=1   // (callee, this) 已在栈上
  4311  store local[90]
  4313  push undefined
- 4316  RECORD33 op 0x42 [bd01000000000000…]
+ 4316  GETPROP-IC key=445 ('appendResponseDelta')
  4349  CALL argc=0   // (callee, this) 已在栈上
  4352  store local[91]
  4354  push undefined
- 4357  RECORD33 op 0x42 [bd01000000000000…]
+ 4357  GETPROP-IC key=445 ('appendResponseDelta')
  4390  CALL argc=0   // (callee, this) 已在栈上
  4393  store local[92]
  4395  push undefined
- 4398  RECORD33 op 0x42 [bd01000000000000…]
+ 4398  GETPROP-IC key=445 ('appendResponseDelta')
  4431  push const2[448]
  4436  push const2[497]
  4441  push <op 0x26: 0200>
  4444  CALL argc=1   // (callee, this) 已在栈上
  4447  store local[93]
  4449  push undefined
- 4452  RECORD33 op 0x42 [bd01000000000000…]
+ 4452  GETPROP-IC key=445 ('appendResponseDelta')
  4485  push const2[448]
  4490  push const2[498]
  4495  push const2[499]
@@ -1850,7 +1850,7 @@
  4508  CALL argc=1   // (callee, this) 已在栈上
  4511  store local[94]
  4513  push undefined
- 4516  RECORD33 op 0x42 [bd01000000000000…]
+ 4516  GETPROP-IC key=445 ('appendResponseDelta')
  4549  push const2[448]
  4554  push const2[501]
  4559  push const2[499]
@@ -1859,7 +1859,7 @@
  4572  CALL argc=1   // (callee, this) 已在栈上
  4575  store local[95]
  4577  push undefined
- 4580  RECORD33 op 0x42 [be01000000000000…]
+ 4580  GETPROP-IC key=446 ('setPreparedResponseContent')
  4613  push const2[447]
  4618  push const2[448]
  4623  push const2[503]
@@ -1867,22 +1867,22 @@
  4631  CALL argc=2   // (callee, this) 已在栈上
  4634  store local[96]
  4636  push undefined
- 4639  RECORD33 op 0x42 [be01000000000000…]
+ 4639  GETPROP-IC key=446 ('setPreparedResponseContent')
  4672  push const2[447]
  4677  CALL argc=1   // (callee, this) 已在栈上
  4680  store local[97]
  4682  push undefined
- 4685  RECORD33 op 0x42 [be01000000000000…]
+ 4685  GETPROP-IC key=446 ('setPreparedResponseContent')
  4718  push const2[447]
  4723  CALL argc=1   // (callee, this) 已在栈上
  4726  store local[98]
  4728  push undefined
- 4731  RECORD33 op 0x42 [be01000000000000…]
+ 4731  GETPROP-IC key=446 ('setPreparedResponseContent')
  4764  push const2[447]
  4769  CALL argc=1   // (callee, this) 已在栈上
  4772  store local[99]
  4774  push undefined
- 4777  RECORD33 op 0x42 [bd01000000000000…]
+ 4777  GETPROP-IC key=445 ('appendResponseDelta')
  4810  push const2[460]
  4815  op 0xbe [12]
  4817  push const2[74]
@@ -1891,7 +1891,7 @@
  4830  CALL argc=1   // (callee, this) 已在栈上
  4833  store local[100]
  4835  push undefined
- 4838  RECORD33 op 0x42 [be01000000000000…]
+ 4838  GETPROP-IC key=446 ('setPreparedResponseContent')
  4871  push const2[461]
  4876  push const2[64]
  4881  push const2[505]
@@ -1899,12 +1899,12 @@
  4889  CALL argc=2   // (callee, this) 已在栈上
  4892  store local[101]
  4894  push undefined
- 4897  RECORD33 op 0x42 [be01000000000000…]
+ 4897  GETPROP-IC key=446 ('setPreparedResponseContent')
  4930  push const2[447]
  4935  CALL argc=1   // (callee, this) 已在栈上
  4938  store local[102]
  4940  push undefined
- 4943  RECORD33 op 0x42 [bd01000000000000…]
+ 4943  GETPROP-IC key=445 ('appendResponseDelta')
  4976  push const2[448]
  4981  push const2[506]
  4986  push const2[487]
@@ -1913,12 +1913,12 @@
  4999  CALL argc=1   // (callee, this) 已在栈上
  5002  store local[103]
  5004  push undefined
- 5007  RECORD33 op 0x42 [be01000000000000…]
+ 5007  GETPROP-IC key=446 ('setPreparedResponseContent')
  5040  push const2[461]
  5045  CALL argc=1   // (callee, this) 已在栈上
  5048  store local[104]
  5050  push undefined
- 5053  RECORD33 op 0x42 [be01000000000000…]
+ 5053  GETPROP-IC key=446 ('setPreparedResponseContent')
  5086  push const2[458]
  5091  push const2[448]
  5096  push const2[508]
@@ -1928,32 +1928,32 @@
  5114  CALL argc=2   // (callee, this) 已在栈上
  5117  store local[105]
  5119  push undefined
- 5122  RECORD33 op 0x42 [be01000000000000…]
+ 5122  GETPROP-IC key=446 ('setPreparedResponseContent')
  5155  push const2[447]
  5160  CALL argc=1   // (callee, this) 已在栈上
  5163  store local[106]
  5165  push undefined
- 5168  RECORD33 op 0x42 [be01000000000000…]
+ 5168  GETPROP-IC key=446 ('setPreparedResponseContent')
  5201  push const2[447]
  5206  CALL argc=1   // (callee, this) 已在栈上
  5209  store local[107]
  5211  push undefined
- 5214  RECORD33 op 0x42 [be01000000000000…]
+ 5214  GETPROP-IC key=446 ('setPreparedResponseContent')
  5247  push const2[461]
  5252  CALL argc=1   // (callee, this) 已在栈上
  5255  store local[108]
  5257  push undefined
- 5260  RECORD33 op 0x42 [be01000000000000…]
+ 5260  GETPROP-IC key=446 ('setPreparedResponseContent')
  5293  push const2[461]
  5298  CALL argc=1   // (callee, this) 已在栈上
  5301  store local[109]
  5303  push undefined
- 5306  RECORD33 op 0x42 [be01000000000000…]
+ 5306  GETPROP-IC key=446 ('setPreparedResponseContent')
  5339  push const2[447]
  5344  CALL argc=1   // (callee, this) 已在栈上
  5347  store local[110]
  5349  push undefined
- 5352  RECORD33 op 0x42 [bd01000000000000…]
+ 5352  GETPROP-IC key=445 ('appendResponseDelta')
  5385  push const2[448]
  5390  push const2[510]
  5395  push const2[450]
@@ -1964,14 +1964,14 @@
  5418  CALL argc=1   // (callee, this) 已在栈上
  5421  store local[111]
  5423  push undefined
- 5426  RECORD33 op 0x42 [bd01000000000000…]
+ 5426  GETPROP-IC key=445 ('appendResponseDelta')
  5459  push const2[456]
  5464  push const2[457]
  5469  push <op 0x26: 0200>
  5472  CALL argc=1   // (callee, this) 已在栈上
  5475  store local[112]
  5477  push undefined
- 5480  RECORD33 op 0x42 [bd01000000000000…]
+ 5480  GETPROP-IC key=445 ('appendResponseDelta')
  5513  push const2[460]
  5518  op 0xbe [14]
  5520  push const2[74]
@@ -1980,7 +1980,7 @@
  5533  CALL argc=1   // (callee, this) 已在栈上
  5536  store local[113]
  5538  push undefined
- 5541  RECORD33 op 0x42 [bd01000000000000…]
+ 5541  GETPROP-IC key=445 ('appendResponseDelta')
  5574  push const2[463]
  5579  op 0xb7 []
  5580  push const2[64]
@@ -1989,7 +1989,7 @@
  5593  CALL argc=1   // (callee, this) 已在栈上
  5596  store local[114]
  5598  push undefined
- 5601  RECORD33 op 0x42 [bd01000000000000…]
+ 5601  GETPROP-IC key=445 ('appendResponseDelta')
  5634  push const2[448]
  5639  push const2[513]
  5644  push const2[450]
@@ -2000,14 +2000,14 @@
  5667  CALL argc=1   // (callee, this) 已在栈上
  5670  store local[115]
  5672  push undefined
- 5675  RECORD33 op 0x42 [bd01000000000000…]
+ 5675  GETPROP-IC key=445 ('appendResponseDelta')
  5708  push const2[456]
  5713  push const2[457]
  5718  push <op 0x26: 0200>
  5721  CALL argc=1   // (callee, this) 已在栈上
  5724  store local[116]
  5726  push undefined
- 5729  RECORD33 op 0x42 [bd01000000000000…]
+ 5729  GETPROP-IC key=445 ('appendResponseDelta')
  5762  push const2[460]
  5767  op 0xbe [14]
  5769  push const2[74]
@@ -2016,7 +2016,7 @@
  5782  CALL argc=1   // (callee, this) 已在栈上
  5785  store local[117]
  5787  push undefined
- 5790  RECORD33 op 0x42 [bd01000000000000…]
+ 5790  GETPROP-IC key=445 ('appendResponseDelta')
  5823  push const2[463]
  5828  op 0xb7 []
  5829  push const2[64]
@@ -2025,7 +2025,7 @@
  5842  CALL argc=1   // (callee, this) 已在栈上
  5845  store local[118]
  5847  push undefined
- 5850  RECORD33 op 0x42 [bd01000000000000…]
+ 5850  GETPROP-IC key=445 ('appendResponseDelta')
  5883  push const2[448]
  5888  push const2[516]
  5893  push const2[450]
@@ -2036,14 +2036,14 @@
  5916  CALL argc=1   // (callee, this) 已在栈上
  5919  store local[119]
  5921  push undefined
- 5924  RECORD33 op 0x42 [bd01000000000000…]
+ 5924  GETPROP-IC key=445 ('appendResponseDelta')
  5957  push const2[456]
  5962  push const2[457]
  5967  push <op 0x26: 0200>
  5970  CALL argc=1   // (callee, this) 已在栈上
  5973  store local[120]
  5975  push undefined
- 5978  RECORD33 op 0x42 [bd01000000000000…]
+ 5978  GETPROP-IC key=445 ('appendResponseDelta')
  6011  push const2[460]
  6016  op 0xbe [14]
  6018  push const2[74]
@@ -2052,7 +2052,7 @@
  6031  CALL argc=1   // (callee, this) 已在栈上
  6034  store local[121]
  6036  push undefined
- 6039  RECORD33 op 0x42 [bd01000000000000…]
+ 6039  GETPROP-IC key=445 ('appendResponseDelta')
  6072  push const2[463]
  6077  op 0xb7 []
  6078  push const2[64]
@@ -2061,7 +2061,7 @@
  6091  CALL argc=1   // (callee, this) 已在栈上
  6094  store local[122]
  6096  push undefined
- 6099  RECORD33 op 0x42 [bd01000000000000…]
+ 6099  GETPROP-IC key=445 ('appendResponseDelta')
  6132  push const2[448]
  6137  push const2[518]
  6142  push const2[450]
@@ -2072,14 +2072,14 @@
  6165  CALL argc=1   // (callee, this) 已在栈上
  6168  store local[123]
  6170  push undefined
- 6173  RECORD33 op 0x42 [bd01000000000000…]
+ 6173  GETPROP-IC key=445 ('appendResponseDelta')
  6206  push const2[456]
  6211  push const2[457]
  6216  push <op 0x26: 0200>
  6219  CALL argc=1   // (callee, this) 已在栈上
  6222  store local[124]
  6224  push undefined
- 6227  RECORD33 op 0x42 [bd01000000000000…]
+ 6227  GETPROP-IC key=445 ('appendResponseDelta')
  6260  push const2[460]
  6265  op 0xbe [14]
  6267  push const2[74]
@@ -2088,7 +2088,7 @@
  6280  CALL argc=1   // (callee, this) 已在栈上
  6283  store local[125]
  6285  push undefined
- 6288  RECORD33 op 0x42 [bd01000000000000…]
+ 6288  GETPROP-IC key=445 ('appendResponseDelta')
  6321  push const2[463]
  6326  op 0xb7 []
  6327  push const2[64]
@@ -2097,22 +2097,22 @@
  6340  CALL argc=1   // (callee, this) 已在栈上
  6343  store local[126]
  6345  push undefined
- 6348  RECORD33 op 0x42 [be01000000000000…]
+ 6348  GETPROP-IC key=446 ('setPreparedResponseContent')
  6381  push const2[447]
  6386  CALL argc=1   // (callee, this) 已在栈上
  6389  store local[127]
  6391  push undefined
- 6394  RECORD33 op 0x42 [be01000000000000…]
+ 6394  GETPROP-IC key=446 ('setPreparedResponseContent')
  6427  push const2[461]
  6432  CALL argc=1   // (callee, this) 已在栈上
  6435  store local[128]
  6437  push undefined
- 6440  RECORD33 op 0x42 [be01000000000000…]
+ 6440  GETPROP-IC key=446 ('setPreparedResponseContent')
  6473  push const2[447]
  6478  CALL argc=1   // (callee, this) 已在栈上
  6481  store local[129]
  6483  push undefined
- 6486  RECORD33 op 0x42 [bd01000000000000…]
+ 6486  GETPROP-IC key=445 ('appendResponseDelta')
  6519  push const2[521]
  6524  op 0xb7 []
  6525  push const2[522]
@@ -2121,14 +2121,14 @@
  6534  CALL argc=1   // (callee, this) 已在栈上
  6537  store local[130]
  6539  push undefined
- 6542  RECORD33 op 0x42 [bd01000000000000…]
+ 6542  GETPROP-IC key=445 ('appendResponseDelta')
  6575  push const2[456]
  6580  push const2[457]
  6585  push <op 0x26: 0200>
  6588  CALL argc=1   // (callee, this) 已在栈上
  6591  store local[131]
  6593  push undefined
- 6596  RECORD33 op 0x42 [bd01000000000000…]
+ 6596  GETPROP-IC key=445 ('appendResponseDelta')
  6629  push const2[463]
  6634  op 0xb7 []
  6635  push const2[455]
@@ -2137,7 +2137,7 @@
  6644  CALL argc=1   // (callee, this) 已在栈上
  6647  store local[132]
  6649  push undefined
- 6652  RECORD33 op 0x42 [bd01000000000000…]
+ 6652  GETPROP-IC key=445 ('appendResponseDelta')
  6685  push const2[460]
  6690  op 0xbe [0f]
  6692  push const2[74]
@@ -2146,81 +2146,81 @@
  6705  CALL argc=1   // (callee, this) 已在栈上
  6708  store local[133]
  6710  push undefined
- 6713  RECORD33 op 0x42 [bd01000000000000…]
+ 6713  GETPROP-IC key=445 ('appendResponseDelta')
  6746  CALL argc=0   // (callee, this) 已在栈上
  6749  store local[134]
  6751  push undefined
- 6754  RECORD33 op 0x42 [be01000000000000…]
+ 6754  GETPROP-IC key=446 ('setPreparedResponseContent')
  6787  push const2[447]
  6792  CALL argc=1   // (callee, this) 已在栈上
  6795  store local[135]
  6797  push undefined
- 6800  RECORD33 op 0x42 [bd01000000000000…]
+ 6800  GETPROP-IC key=445 ('appendResponseDelta')
  6833  push const2[455]
  6838  op 0xb7 []
  6839  push <op 0x26: 0200>
  6842  CALL argc=1   // (callee, this) 已在栈上
  6845  store local[136]
  6847  push undefined
- 6850  RECORD33 op 0x42 [bd01000000000000…]
+ 6850  GETPROP-IC key=445 ('appendResponseDelta')
  6883  push const2[456]
  6888  push const2[457]
  6893  push <op 0x26: 0200>
  6896  CALL argc=1   // (callee, this) 已在栈上
  6899  store local[137]
  6901  push undefined
- 6904  RECORD33 op 0x42 [bd01000000000000…]
+ 6904  GETPROP-IC key=445 ('appendResponseDelta')
  6937  push const2[456]
  6942  push const2[457]
  6947  push <op 0x26: 0200>
  6950  CALL argc=1   // (callee, this) 已在栈上
  6953  store local[138]
  6955  push undefined
- 6958  RECORD33 op 0x42 [bd01000000000000…]
+ 6958  GETPROP-IC key=445 ('appendResponseDelta')
  6991  push const2[460]
  6996  op 0xbe [14]
  6998  push <op 0x26: 0200>
  7001  CALL argc=1   // (callee, this) 已在栈上
  7004  store local[139]
  7006  push undefined
- 7009  RECORD33 op 0x42 [bd01000000000000…]
+ 7009  GETPROP-IC key=445 ('appendResponseDelta')
  7042  push const2[463]
  7047  op 0xb7 []
  7048  push <op 0x26: 0200>
  7051  CALL argc=1   // (callee, this) 已在栈上
  7054  store local[140]
  7056  push undefined
- 7059  RECORD33 op 0x42 [bd01000000000000…]
+ 7059  GETPROP-IC key=445 ('appendResponseDelta')
  7092  CALL argc=0   // (callee, this) 已在栈上
  7095  store local[141]
  7097  push undefined
- 7100  RECORD33 op 0x42 [be01000000000000…]
+ 7100  GETPROP-IC key=446 ('setPreparedResponseContent')
  7133  push const2[447]
  7138  CALL argc=1   // (callee, this) 已在栈上
  7141  store local[142]
  7143  push undefined
- 7146  RECORD33 op 0x42 [bd01000000000000…]
+ 7146  GETPROP-IC key=445 ('appendResponseDelta')
  7179  push const2[64]
  7184  push const2[524]
  7189  push <op 0x26: 0200>
  7192  CALL argc=1   // (callee, this) 已在栈上
  7195  store local[143]
  7197  push undefined
- 7200  RECORD33 op 0x42 [bd01000000000000…]
+ 7200  GETPROP-IC key=445 ('appendResponseDelta')
  7233  push const2[455]
  7238  push global
  7239  push <op 0x26: 0200>
  7242  CALL argc=1   // (callee, this) 已在栈上
  7245  store local[144]
  7247  push undefined
- 7250  RECORD33 op 0x42 [bd01000000000000…]
+ 7250  GETPROP-IC key=445 ('appendResponseDelta')
  7283  push const2[487]
  7288  push const2[525]
  7293  push <op 0x26: 0200>
  7296  CALL argc=1   // (callee, this) 已在栈上
  7299  store local[145]
  7301  push undefined
- 7304  RECORD33 op 0x42 [be01000000000000…]
+ 7304  GETPROP-IC key=446 ('setPreparedResponseContent')
  7337  push const2[447]
  7342  push const2[448]
  7347  push const2[526]
@@ -2228,7 +2228,7 @@
  7355  CALL argc=2   // (callee, this) 已在栈上
  7358  store local[146]
  7360  push undefined
- 7363  RECORD33 op 0x42 [bd01000000000000…]
+ 7363  GETPROP-IC key=445 ('appendResponseDelta')
  7396  push const2[448]
  7401  push const2[527]
  7406  push const2[450]
@@ -2237,11 +2237,11 @@
  7419  CALL argc=1   // (callee, this) 已在栈上
  7422  store local[147]
  7424  push undefined
- 7427  RECORD33 op 0x42 [bd01000000000000…]
+ 7427  GETPROP-IC key=445 ('appendResponseDelta')
  7460  CALL argc=0   // (callee, this) 已在栈上
  7463  store local[148]
  7465  push undefined
- 7468  RECORD33 op 0x42 [bd01000000000000…]
+ 7468  GETPROP-IC key=445 ('appendResponseDelta')
  7501  push const2[460]
  7506  op 0xbe [13]
  7508  push const2[74]
@@ -2250,19 +2250,19 @@
  7521  CALL argc=1   // (callee, this) 已在栈上
  7524  store local[149]
  7526  push undefined
- 7529  RECORD33 op 0x42 [bd01000000000000…]
+ 7529  GETPROP-IC key=445 ('appendResponseDelta')
  7562  push const2[64]
  7567  push const2[528]
  7572  push <op 0x26: 0200>
  7575  CALL argc=1   // (callee, this) 已在栈上
  7578  store local[150]
  7580  push undefined
- 7583  RECORD33 op 0x42 [be01000000000000…]
+ 7583  GETPROP-IC key=446 ('setPreparedResponseContent')
  7616  push const2[447]
  7621  CALL argc=1   // (callee, this) 已在栈上
  7624  store local[151]
  7626  push undefined
- 7629  RECORD33 op 0x42 [bd01000000000000…]
+ 7629  GETPROP-IC key=445 ('appendResponseDelta')
  7662  push const2[448]
  7667  push const2[530]
  7672  push const2[450]
@@ -2271,11 +2271,11 @@
  7685  CALL argc=1   // (callee, this) 已在栈上
  7688  store local[152]
  7690  push undefined
- 7693  RECORD33 op 0x42 [bd01000000000000…]
+ 7693  GETPROP-IC key=445 ('appendResponseDelta')
  7726  CALL argc=0   // (callee, this) 已在栈上
  7729  store local[153]
  7731  push undefined
- 7734  RECORD33 op 0x42 [bd01000000000000…]
+ 7734  GETPROP-IC key=445 ('appendResponseDelta')
  7767  CALL argc=0   // (callee, this) 已在栈上
  7770  store local[154]
  7772  op 0xd2 []
@@ -2445,7 +2445,7 @@
  8141  op 0xc1 [00]
  8143  op 0xc3 [c4]
  8145  op 0x11 []
- 8146  op 0xec [05]
+ 8146  jT/rel +5  → pc=8153
  8148  op 0x0e []
  8149  push <op 0x0b>
  8150  op 0xc5 [c4]
@@ -2455,7 +2455,7 @@
  8155  op 0xc1 [01]
  8157  op 0xc3 [c5]
  8159  op 0x11 []
- 8160  op 0xec [05]
+ 8160  jT/rel +5  → pc=8167
  8162  op 0x0e []
  8163  push <op 0x0b>
  8164  op 0xc5 [c5]
@@ -2468,7 +2468,7 @@
  8178  push const2[574]
  8183  store local[200]
  8185  op 0x38 [91000000]
- 8190  RECORD33 op 0x42 [3f02000000000000…]
+ 8190  GETPROP-IC key=575 ('space-between')
  8223  push <op 0x0b>
  8224  op 0xb7 []
  8225  UNARY ! / coerce-bool
@@ -2497,7 +2497,7 @@
  8298  push const2[581]
  8303  GETPROP [46020000]  // (obj, key) → value
  8308  op 0xc3 [c5]
- 8310  RECORD33 op 0x41 [4702000000000000…]
+ 8310  SETPROP-IC? key=583 ('drawerBrandMarkLabel')
  8343  GETPROP [48020000]  // (obj, key) → value
  8348  push const2[585]
  8353  GETPROP [4a020000]  // (obj, key) → value
@@ -2507,7 +2507,7 @@
  8369  push const2[588]
  8374  GETPROP [46020000]  // (obj, key) → value
  8379  op 0xc3 [c5]
- 8381  RECORD33 op 0x41 [4d02000000000000…]
+ 8381  SETPROP-IC? key=589 ('historySectionHeader')
  8414  GETPROP [48020000]  // (obj, key) → value
  8419  push const2[590]
  8424  GETPROP [4a020000]  // (obj, key) → value
@@ -2517,7 +2517,7 @@
  8440  push const2[592]
  8445  GETPROP [46020000]  // (obj, key) → value
  8450  op 0xc3 [c5]
- 8452  RECORD33 op 0x41 [5102000000000000…]
+ 8452  SETPROP-IC? key=593 ('historyList')
  8485  GETPROP [48020000]  // (obj, key) → value
  8490  push const2[594]
  8495  GETPROP [4a020000]  // (obj, key) → value
@@ -2529,7 +2529,7 @@
  8516  push const2[596]
  8521  GETPROP [46020000]  // (obj, key) → value
  8526  op 0xc3 [c5]
- 8528  RECORD33 op 0x41 [5502000000000000…]
+ 8528  SETPROP-IC? key=597 ('historyItemRow')
  8561  GETPROP [48020000]  // (obj, key) → value
  8566  push const2[598]
  8571  GETPROP [4a020000]  // (obj, key) → value
@@ -2539,7 +2539,7 @@
  8587  push const2[600]
  8592  GETPROP [46020000]  // (obj, key) → value
  8597  op 0xc3 [c5]
- 8599  RECORD33 op 0x41 [5902000000000000…]
+ 8599  SETPROP-IC? key=601 ('Closed')
  8632  GETPROP [48020000]  // (obj, key) → value
  8637  push const2[602]
  8642  GETPROP [4a020000]  // (obj, key) → value
@@ -2549,7 +2549,7 @@
  8658  push const2[604]
  8663  GETPROP [46020000]  // (obj, key) → value
  8668  op 0xc3 [c5]
- 8670  RECORD33 op 0x41 [5d02000000000000…]
+ 8670  SETPROP-IC? key=605 ('plus')
  8703  GETPROP [48020000]  // (obj, key) → value
  8708  push const2[606]
  8713  GETPROP [4a020000]  // (obj, key) → value
@@ -2563,8 +2563,8 @@
  8744  push const2[609]
  8749  GETPROP [cd010000]  // (obj, key) → value
  8754  push undefined
- 8757  RECORD33 op 0x41 [6202000000000000…]
- 8790  RECORD33 op 0x41 [6302000000000000…]
+ 8757  SETPROP-IC? key=610 ('Check')
+ 8790  SETPROP-IC? key=611 ('Close')
  8823  GETPROP [64020000]  // (obj, key) → value
  8828  push <op 0x0b>
  8829  push const2[613]
@@ -2572,8 +2572,8 @@
  8839  push const2[614]
  8844  GETPROP [cd010000]  // (obj, key) → value
  8849  push undefined
- 8852  RECORD33 op 0x41 [6202000000000000…]
- 8885  RECORD33 op 0x41 [6702000000000000…]
+ 8852  SETPROP-IC? key=610 ('Check')
+ 8885  SETPROP-IC? key=615 ('lightbulb')
  8918  GETPROP [64020000]  // (obj, key) → value
  8923  push <op 0x0b>
  8924  push const2[616]
@@ -2581,8 +2581,8 @@
  8934  push const2[617]
  8939  GETPROP [cd010000]  // (obj, key) → value
  8944  push undefined
- 8947  RECORD33 op 0x41 [6202000000000000…]
- 8980  RECORD33 op 0x41 [6a02000000000000…]
+ 8947  SETPROP-IC? key=610 ('Check')
+ 8980  SETPROP-IC? key=618 ('Files')
  9013  GETPROP [64020000]  // (obj, key) → value
  9018  push <op 0x26: 0300>
  9021  store local[205]
@@ -2592,8 +2592,8 @@
  9034  push const2[620]
  9039  GETPROP [cd010000]  // (obj, key) → value
  9044  push undefined
- 9047  RECORD33 op 0x41 [6d02000000000000…]
- 9080  RECORD33 op 0x41 [6e02000000000000…]
+ 9047  SETPROP-IC? key=621 ('image')
+ 9080  SETPROP-IC? key=622 ('Image')
  9113  GETPROP [6f020000]  // (obj, key) → value
  9118  push const2[624]
  9123  GETPROP [40000000]  // (obj, key) → value
@@ -2603,8 +2603,8 @@
  9139  push const2[626]
  9144  GETPROP [cd010000]  // (obj, key) → value
  9149  push undefined
- 9152  RECORD33 op 0x41 [6d02000000000000…]
- 9185  RECORD33 op 0x41 [7302000000000000…]
+ 9152  SETPROP-IC? key=621 ('image')
+ 9185  SETPROP-IC? key=627 ('MicrophoneMuted')
  9218  GETPROP [6f020000]  // (obj, key) → value
  9223  push const2[628]
  9228  GETPROP [40000000]  // (obj, key) → value
@@ -2614,21 +2614,21 @@
  9244  push const2[630]
  9249  GETPROP [cd010000]  // (obj, key) → value
  9254  push undefined
- 9257  RECORD33 op 0x41 [6d02000000000000…]
- 9290  RECORD33 op 0x41 [7702000000000000…]
+ 9257  SETPROP-IC? key=621 ('image')
+ 9290  SETPROP-IC? key=631 ('pin-off')
  9323  GETPROP [6f020000]  // (obj, key) → value
  9328  push const2[632]
  9333  GETPROP [40000000]  // (obj, key) → value
  9338  push <op 0x26: 0300>
  9341  store local[206]
  9343  push undefined
- 9346  RECORD33 op 0x42 [7902000000000000…]
+ 9346  GETPROP-IC key=633 ('file-search')
  9379  op 0xc1 [02]
  9381  CALL argc=1   // (callee, this) 已在栈上
  9384  store local[207]
  9386  op 0x64 [d000]
  9389  push undefined
- 9392  RECORD33 op 0x41 [7a02000000000000…]
+ 9392  SETPROP-IC? key=634 ('search')
  9425  op 0x64 [d100]
  9428  op 0xc0 [03]
  9430  op 0x59 [ab01000001]
@@ -2859,12 +2859,12 @@
 10315  op 0x45 [ab01000001000000]
 10324  push <op 0x0b>
 10325  push undefined
-10328  RECORD33 op 0x41 [e702000000000000…]
+10328  SETPROP-IC? key=743 ('closeLocalMenus')
 10361  op 0x11 []
 10362  push <op 0x0b>
 10363  push undefined
-10366  RECORD33 op 0x41 [e802000000000000…]
-10399  RECORD33 op 0x41 [e902000000000000…]
+10366  SETPROP-IC? key=744 ('dismissTopOverlay')
+10399  SETPROP-IC? key=745 ('handleModelChange')
 10432  GETPROP [ea020000]  // (obj, key) → value
 10437  push const2[747]
 10442  GETPROP [ec020000]  // (obj, key) → value
@@ -2872,21 +2872,21 @@
 10452  GETPROP [cb010000]  // (obj, key) → value
 10457  push const2[457]
 10462  GETPROP [c8010000]  // (obj, key) → value
-10467  op 0x21 [0100]
+10467  CALL-VAR21 argc=1
 10470  GETPROP [ed020000]  // (obj, key) → value
 10475  push undefined
-10478  RECORD33 op 0x41 [e702000000000000…]
+10478  SETPROP-IC? key=743 ('closeLocalMenus')
 10511  op 0x11 []
 10512  push <op 0x0b>
 10513  push const2[454]
 10518  GETPROP [ee020000]  // (obj, key) → value
 10523  push undefined
-10526  RECORD33 op 0x41 [e802000000000000…]
-10559  RECORD33 op 0x41 [e902000000000000…]
+10526  SETPROP-IC? key=744 ('dismissTopOverlay')
+10559  SETPROP-IC? key=745 ('handleModelChange')
 10592  GETPROP [ea020000]  // (obj, key) → value
 10597  push undefined
-10600  RECORD33 op 0x41 [e802000000000000…]
-10633  RECORD33 op 0x41 [ef02000000000000…]
+10600  SETPROP-IC? key=744 ('dismissTopOverlay')
+10633  SETPROP-IC? key=751 ('cancelDictation')
 10666  GETPROP [f0020000]  // (obj, key) → value
 10671  op 0xb7 []
 10672  GETPROP [ce010000]  // (obj, key) → value
@@ -2897,23 +2897,23 @@
 10693  op 0xbe [4e]
 10695  GETPROP [cb010000]  // (obj, key) → value
 10700  push undefined
-10703  RECORD33 op 0x41 [f302000000000000…]
-10736  RECORD33 op 0x41 [f402000000000000…]
+10703  SETPROP-IC? key=755 ('noop')
+10736  SETPROP-IC? key=756 ('context')
 10769  GETPROP [f5020000]  // (obj, key) → value
 10774  push undefined
-10777  RECORD33 op 0x41 [f302000000000000…]
-10810  RECORD33 op 0x41 [f402000000000000…]
+10777  SETPROP-IC? key=755 ('noop')
+10810  SETPROP-IC? key=756 ('context')
 10843  GETPROP [f6020000]  // (obj, key) → value
 10848  push undefined
-10851  RECORD33 op 0x41 [f302000000000000…]
-10884  RECORD33 op 0x41 [f702000000000000…]
+10851  SETPROP-IC? key=755 ('noop')
+10884  SETPROP-IC? key=759 ('trim')
 10917  GETPROP [f8020000]  // (obj, key) → value
 10922  push const2[457]
 10927  GETPROP [c8010000]  // (obj, key) → value
-10932  op 0x21 [0100]
+10932  CALL-VAR21 argc=1
 10935  GETPROP [f9020000]  // (obj, key) → value
 10940  push undefined
-10943  RECORD33 op 0x41 [e702000000000000…]
+10943  SETPROP-IC? key=743 ('closeLocalMenus')
 10976  op 0x11 []
 10977  push <op 0x0b>
 10978  push const2[454]
@@ -2925,17 +2925,17 @@
 11000  push const2[454]
 11005  GETPROP [fb020000]  // (obj, key) → value
 11010  push undefined
-11013  RECORD33 op 0x41 [f302000000000000…]
-11046  RECORD33 op 0x41 [f402000000000000…]
+11013  SETPROP-IC? key=755 ('noop')
+11046  SETPROP-IC? key=756 ('context')
 11079  GETPROP [f5020000]  // (obj, key) → value
 11084  push undefined
-11087  RECORD33 op 0x41 [f302000000000000…]
-11120  RECORD33 op 0x41 [f402000000000000…]
+11087  SETPROP-IC? key=755 ('noop')
+11120  SETPROP-IC? key=756 ('context')
 11153  GETPROP [f6020000]  // (obj, key) → value
-11158  op 0x21 [0100]
+11158  CALL-VAR21 argc=1
 11161  GETPROP [fc020000]  // (obj, key) → value
 11166  push undefined
-11169  RECORD33 op 0x41 [e702000000000000…]
+11169  SETPROP-IC? key=743 ('closeLocalMenus')
 11202  op 0x11 []
 11203  push <op 0x0b>
 11204  push const2[454]
@@ -2943,28 +2943,28 @@
 11214  push const2[753]
 11219  GETPROP [ec020000]  // (obj, key) → value
 11224  push undefined
-11227  RECORD33 op 0x41 [f302000000000000…]
-11260  RECORD33 op 0x41 [fd02000000000000…]
+11227  SETPROP-IC? key=755 ('noop')
+11260  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 11293  GETPROP [fe020000]  // (obj, key) → value
-11298  op 0x21 [0100]
+11298  CALL-VAR21 argc=1
 11301  GETPROP [ff020000]  // (obj, key) → value
 11306  push undefined
-11309  RECORD33 op 0x41 [e702000000000000…]
+11309  SETPROP-IC? key=743 ('closeLocalMenus')
 11342  op 0x11 []
 11343  push <op 0x0b>
 11344  push global
 11345  GETPROP [f2020000]  // (obj, key) → value
 11350  op 0xbf [b400]
 11353  GETPROP [c8010000]  // (obj, key) → value
-11358  op 0x21 [0100]
+11358  CALL-VAR21 argc=1
 11361  GETPROP [00030000]  // (obj, key) → value
 11366  push undefined
-11369  RECORD33 op 0x41 [e702000000000000…]
+11369  SETPROP-IC? key=743 ('closeLocalMenus')
 11402  op 0x11 []
 11403  push <op 0x0b>
 11404  push undefined
-11407  RECORD33 op 0x41 [e802000000000000…]
-11440  RECORD33 op 0x41 [e902000000000000…]
+11407  SETPROP-IC? key=744 ('dismissTopOverlay')
+11440  SETPROP-IC? key=745 ('handleModelChange')
 11473  GETPROP [ea020000]  // (obj, key) → value
 11478  push const2[747]
 11483  GETPROP [ec020000]  // (obj, key) → value
@@ -2976,15 +2976,15 @@
 11501  GETPROP [01030000]  // (obj, key) → value
 11506  push const2[457]
 11511  GETPROP [c8010000]  // (obj, key) → value
-11516  op 0x21 [0100]
+11516  CALL-VAR21 argc=1
 11519  GETPROP [02030000]  // (obj, key) → value
 11524  push undefined
-11527  RECORD33 op 0x41 [e702000000000000…]
+11527  SETPROP-IC? key=743 ('closeLocalMenus')
 11560  op 0x11 []
 11561  push <op 0x0b>
 11562  push undefined
-11565  RECORD33 op 0x41 [e802000000000000…]
-11598  RECORD33 op 0x41 [e902000000000000…]
+11565  SETPROP-IC? key=744 ('dismissTopOverlay')
+11598  SETPROP-IC? key=745 ('handleModelChange')
 11631  GETPROP [ea020000]  // (obj, key) → value
 11636  op 0xb7 []
 11637  UNARY ! / coerce-bool
@@ -2997,10 +2997,10 @@
 11656  GETPROP [01030000]  // (obj, key) → value
 11661  push const2[457]
 11666  GETPROP [c8010000]  // (obj, key) → value
-11671  op 0x21 [0100]
+11671  CALL-VAR21 argc=1
 11674  GETPROP [04030000]  // (obj, key) → value
 11679  push undefined
-11682  RECORD33 op 0x41 [e702000000000000…]
+11682  SETPROP-IC? key=743 ('closeLocalMenus')
 11715  op 0x11 []
 11716  push <op 0x0b>
 11717  push const2[454]
@@ -3011,10 +3011,10 @@
 11742  GETPROP [fb020000]  // (obj, key) → value
 11747  push const2[457]
 11752  GETPROP [c8010000]  // (obj, key) → value
-11757  op 0x21 [0100]
+11757  CALL-VAR21 argc=1
 11760  GETPROP [05030000]  // (obj, key) → value
 11765  push undefined
-11768  RECORD33 op 0x41 [e702000000000000…]
+11768  SETPROP-IC? key=743 ('closeLocalMenus')
 11801  op 0x11 []
 11802  push <op 0x0b>
 11803  push const2[454]
@@ -3022,58 +3022,58 @@
 11813  push const2[747]
 11818  GETPROP [ec020000]  // (obj, key) → value
 11823  push undefined
-11826  RECORD33 op 0x41 [f302000000000000…]
-11859  RECORD33 op 0x41 [0603000000000000…]
+11826  SETPROP-IC? key=755 ('noop')
+11859  SETPROP-IC? key=774 ('\x10messages\x10remoteId$Imag')
 11892  GETPROP [07030000]  // (obj, key) → value
 11897  push undefined
-11900  RECORD33 op 0x41 [f302000000000000…]
-11933  RECORD33 op 0x41 [0603000000000000…]
+11900  SETPROP-IC? key=755 ('noop')
+11933  SETPROP-IC? key=774 ('\x10messages\x10remoteId$Imag')
 11966  GETPROP [f5020000]  // (obj, key) → value
 11971  push undefined
-11974  RECORD33 op 0x41 [f302000000000000…]
-12007  RECORD33 op 0x41 [0603000000000000…]
+11974  SETPROP-IC? key=755 ('noop')
+12007  SETPROP-IC? key=774 ('\x10messages\x10remoteId$Imag')
 12040  GETPROP [f6020000]  // (obj, key) → value
 12045  push undefined
-12048  RECORD33 op 0x41 [f302000000000000…]
-12081  RECORD33 op 0x41 [0603000000000000…]
+12048  SETPROP-IC? key=755 ('noop')
+12081  SETPROP-IC? key=774 ('\x10messages\x10remoteId$Imag')
 12114  GETPROP [f8020000]  // (obj, key) → value
 12119  push const2[457]
 12124  GETPROP [c8010000]  // (obj, key) → value
-12129  op 0x21 [0100]
+12129  CALL-VAR21 argc=1
 12132  GETPROP [08030000]  // (obj, key) → value
 12137  push undefined
-12140  RECORD33 op 0x41 [e702000000000000…]
+12140  SETPROP-IC? key=743 ('closeLocalMenus')
 12173  op 0x11 []
 12174  push <op 0x0b>
 12175  push undefined
-12178  RECORD33 op 0x41 [e802000000000000…]
-12211  RECORD33 op 0x41 [0903000000000000…]
+12178  SETPROP-IC? key=744 ('dismissTopOverlay')
+12211  SETPROP-IC? key=777 ('ntMessageId\x1cconversationId\x0centity\x12messageIdpEntity')
 12244  GETPROP [0a030000]  // (obj, key) → value
 12249  push undefined
-12252  RECORD33 op 0x41 [0b03000000000000…]
+12252  SETPROP-IC? key=779 (' first-party message identifier.$open_entity_det')
 12285  op 0xbe [1c]
 12287  unary-op 0xf0
 12288  GETPROP [0c030000]  // (obj, key) → value
 12293  op 0xbe [24]
 12295  GETPROP [0d030000]  // (obj, key) → value
 12300  push undefined
-12303  RECORD33 op 0x41 [f302000000000000…]
-12336  RECORD33 op 0x41 [fd02000000000000…]
+12303  SETPROP-IC? key=755 ('noop')
+12336  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 12369  GETPROP [0e030000]  // (obj, key) → value
 12374  push const2[454]
 12379  GETPROP [0f030000]  // (obj, key) → value
-12384  op 0x21 [0100]
+12384  CALL-VAR21 argc=1
 12387  GETPROP [10030000]  // (obj, key) → value
 12392  push undefined
-12395  RECORD33 op 0x41 [e702000000000000…]
+12395  SETPROP-IC? key=743 ('closeLocalMenus')
 12428  op 0x11 []
 12429  push <op 0x0b>
 12430  push undefined
-12433  RECORD33 op 0x41 [e802000000000000…]
-12466  RECORD33 op 0x41 [1103000000000000…]
+12433  SETPROP-IC? key=744 ('dismissTopOverlay')
+12466  SETPROP-IC? key=785 ('pose isVersionAtLeast\x0epresent$AttachmentMenuPage\x18capabili')
 12499  GETPROP [0a030000]  // (obj, key) → value
 12504  push undefined
-12507  RECORD33 op 0x41 [1203000000000000…]
+12507  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 12540  op 0xbe [0f]
 12542  unary-op 0xf0
 12543  GETPROP [0c030000]  // (obj, key) → value
@@ -3085,30 +3085,30 @@
 12564  GETPROP [14030000]  // (obj, key) → value
 12569  push const2[454]
 12574  GETPROP [0f030000]  // (obj, key) → value
-12579  op 0x21 [0100]
+12579  CALL-VAR21 argc=1
 12582  GETPROP [15030000]  // (obj, key) → value
 12587  push undefined
-12590  RECORD33 op 0x41 [e702000000000000…]
+12590  SETPROP-IC? key=743 ('closeLocalMenus')
 12623  op 0x11 []
 12624  push <op 0x0b>
 12625  push const2[747]
 12630  GETPROP [ec020000]  // (obj, key) → value
 12635  push undefined
-12638  RECORD33 op 0x41 [f302000000000000…]
-12671  RECORD33 op 0x41 [1603000000000000…]
+12638  SETPROP-IC? key=755 ('noop')
+12671  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 12704  GETPROP [fe020000]  // (obj, key) → value
 12709  push undefined
-12712  RECORD33 op 0x41 [f302000000000000…]
-12745  RECORD33 op 0x41 [1703000000000000…]
+12712  SETPROP-IC? key=755 ('noop')
+12745  SETPROP-IC? key=791 ('ctation\x10Advanced$activeVoiceSession\x0cfinish,dictation')
 12778  GETPROP [18030000]  // (obj, key) → value
 12783  op 0xbf [3002]
 12786  GETPROP [13030000]  // (obj, key) → value
 12791  push const2[457]
 12796  GETPROP [c8010000]  // (obj, key) → value
-12801  op 0x21 [0100]
+12801  CALL-VAR21 argc=1
 12804  GETPROP [19030000]  // (obj, key) → value
 12809  push undefined
-12812  RECORD33 op 0x41 [e702000000000000…]
+12812  SETPROP-IC? key=743 ('closeLocalMenus')
 12845  op 0x11 []
 12846  push <op 0x0b>
 12847  push const2[794]
@@ -3116,8 +3116,8 @@
 12857  push const2[795]
 12862  GETPROP [c2010000]  // (obj, key) → value
 12867  push undefined
-12870  RECORD33 op 0x41 [e802000000000000…]
-12903  RECORD33 op 0x41 [e902000000000000…]
+12870  SETPROP-IC? key=744 ('dismissTopOverlay')
+12903  SETPROP-IC? key=745 ('handleModelChange')
 12936  GETPROP [ea020000]  // (obj, key) → value
 12941  op 0xb7 []
 12942  GETPROP [fa020000]  // (obj, key) → value
@@ -3130,42 +3130,42 @@
 12961  GETPROP [1c030000]  // (obj, key) → value
 12966  push const2[457]
 12971  GETPROP [c8010000]  // (obj, key) → value
-12976  op 0x21 [0100]
+12976  CALL-VAR21 argc=1
 12979  GETPROP [1d030000]  // (obj, key) → value
 12984  push undefined
-12987  RECORD33 op 0x41 [e702000000000000…]
+12987  SETPROP-IC? key=743 ('closeLocalMenus')
 13020  op 0x11 []
 13021  push <op 0x0b>
 13022  push const2[798]
 13027  GETPROP [ec020000]  // (obj, key) → value
 13032  push undefined
-13035  RECORD33 op 0x41 [f302000000000000…]
-13068  RECORD33 op 0x41 [0603000000000000…]
+13035  SETPROP-IC? key=755 ('noop')
+13068  SETPROP-IC? key=774 ('\x10messages\x10remoteId$Imag')
 13101  GETPROP [fe020000]  // (obj, key) → value
 13106  push const2[457]
 13111  GETPROP [01030000]  // (obj, key) → value
 13116  push undefined
-13119  RECORD33 op 0x41 [f302000000000000…]
-13152  RECORD33 op 0x41 [0603000000000000…]
+13119  SETPROP-IC? key=755 ('noop')
+13152  SETPROP-IC? key=774 ('\x10messages\x10remoteId$Imag')
 13185  GETPROP [07030000]  // (obj, key) → value
 13190  push undefined
-13193  RECORD33 op 0x41 [f302000000000000…]
-13226  RECORD33 op 0x41 [0603000000000000…]
+13193  SETPROP-IC? key=755 ('noop')
+13226  SETPROP-IC? key=774 ('\x10messages\x10remoteId$Imag')
 13259  GETPROP [f5020000]  // (obj, key) → value
 13264  push undefined
-13267  RECORD33 op 0x41 [f302000000000000…]
-13300  RECORD33 op 0x41 [0603000000000000…]
+13267  SETPROP-IC? key=755 ('noop')
+13300  SETPROP-IC? key=774 ('\x10messages\x10remoteId$Imag')
 13333  GETPROP [f6020000]  // (obj, key) → value
 13338  push undefined
-13341  RECORD33 op 0x41 [f302000000000000…]
-13374  RECORD33 op 0x41 [1f03000000000000…]
+13341  SETPROP-IC? key=755 ('noop')
+13374  SETPROP-IC? key=799 ('persistenceTimer')
 13407  GETPROP [f8020000]  // (obj, key) → value
 13412  push const2[457]
 13417  GETPROP [c8010000]  // (obj, key) → value
-13422  op 0x21 [0100]
+13422  CALL-VAR21 argc=1
 13425  GETPROP [20030000]  // (obj, key) → value
 13430  push undefined
-13433  RECORD33 op 0x41 [e702000000000000…]
+13433  SETPROP-IC? key=743 ('closeLocalMenus')
 13466  op 0x11 []
 13467  push <op 0x0b>
 13468  push const2[801]
@@ -3173,31 +3173,31 @@
 13478  push const2[454]
 13483  GETPROP [22030000]  // (obj, key) → value
 13488  push undefined
-13491  RECORD33 op 0x41 [e802000000000000…]
-13524  RECORD33 op 0x41 [2303000000000000…]
+13491  SETPROP-IC? key=744 ('dismissTopOverlay')
+13524  SETPROP-IC? key=803 ('setViewModelProperty')
 13557  GETPROP [ea020000]  // (obj, key) → value
 13562  push undefined
-13565  RECORD33 op 0x41 [2403000000000000…]
-13598  RECORD33 op 0x41 [2503000000000000…]
+13565  SETPROP-IC? key=804 ('fill')
+13598  SETPROP-IC? key=805 ('setUnnamedSlot')
 13631  GETPROP [26030000]  // (obj, key) → value
 13636  push const2[753]
 13641  GETPROP [ec020000]  // (obj, key) → value
 13646  push undefined
-13649  RECORD33 op 0x41 [f302000000000000…]
-13682  RECORD33 op 0x41 [f702000000000000…]
+13649  SETPROP-IC? key=755 ('noop')
+13682  SETPROP-IC? key=759 ('trim')
 13715  GETPROP [fe020000]  // (obj, key) → value
 13720  op 0xbf [3002]
 13723  GETPROP [13030000]  // (obj, key) → value
 13728  push undefined
-13731  RECORD33 op 0x41 [f302000000000000…]
-13764  RECORD33 op 0x41 [f702000000000000…]
+13731  SETPROP-IC? key=755 ('noop')
+13764  SETPROP-IC? key=759 ('trim')
 13797  GETPROP [27030000]  // (obj, key) → value
 13802  push const2[457]
 13807  GETPROP [c8010000]  // (obj, key) → value
-13812  op 0x21 [0100]
+13812  CALL-VAR21 argc=1
 13815  GETPROP [28030000]  // (obj, key) → value
 13820  push undefined
-13823  RECORD33 op 0x41 [e702000000000000…]
+13823  SETPROP-IC? key=743 ('closeLocalMenus')
 13856  op 0x11 []
 13857  push <op 0x0b>
 13858  push const2[747]
@@ -3207,38 +3207,38 @@
 13874  op 0xb7 []
 13875  GETPROP [f2020000]  // (obj, key) → value
 13880  push undefined
-13883  RECORD33 op 0x41 [f302000000000000…]
-13916  RECORD33 op 0x41 [2903000000000000…]
+13883  SETPROP-IC? key=755 ('noop')
+13916  SETPROP-IC? key=809 ('style')
 13949  GETPROP [fe020000]  // (obj, key) → value
-13954  op 0x21 [0100]
+13954  CALL-VAR21 argc=1
 13957  GETPROP [2a030000]  // (obj, key) → value
 13962  push undefined
-13965  RECORD33 op 0x41 [e702000000000000…]
+13965  SETPROP-IC? key=743 ('closeLocalMenus')
 13998  op 0x11 []
 13999  push <op 0x0b>
 14000  push undefined
-14003  RECORD33 op 0x41 [e802000000000000…]
-14036  RECORD33 op 0x41 [0903000000000000…]
+14003  SETPROP-IC? key=744 ('dismissTopOverlay')
+14036  SETPROP-IC? key=777 ('ntMessageId\x1cconversationId\x0centity\x12messageIdpEntity')
 14069  GETPROP [0a030000]  // (obj, key) → value
 14074  push undefined
-14077  RECORD33 op 0x41 [0b03000000000000…]
+14077  SETPROP-IC? key=779 (' first-party message identifier.$open_entity_det')
 14110  op 0xbe [0e]
 14112  unary-op 0xf0
 14113  GETPROP [0c030000]  // (obj, key) → value
 14118  op 0xbe [14]
 14120  GETPROP [0d030000]  // (obj, key) → value
-14125  op 0x21 [0100]
+14125  CALL-VAR21 argc=1
 14128  GETPROP [2b030000]  // (obj, key) → value
 14133  push undefined
-14136  RECORD33 op 0x41 [e702000000000000…]
+14136  SETPROP-IC? key=743 ('closeLocalMenus')
 14169  op 0x11 []
 14170  push <op 0x0b>
 14171  push undefined
-14174  RECORD33 op 0x41 [e802000000000000…]
-14207  RECORD33 op 0x41 [1103000000000000…]
+14174  SETPROP-IC? key=744 ('dismissTopOverlay')
+14207  SETPROP-IC? key=785 ('pose isVersionAtLeast\x0epresent$AttachmentMenuPage\x18capabili')
 14240  GETPROP [0a030000]  // (obj, key) → value
 14245  push undefined
-14248  RECORD33 op 0x41 [1203000000000000…]
+14248  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 14281  op 0xbe [0d]
 14283  unary-op 0xf0
 14284  GETPROP [0c030000]  // (obj, key) → value
@@ -3246,18 +3246,18 @@
 14291  GETPROP [0d030000]  // (obj, key) → value
 14296  push global
 14297  GETPROP [14030000]  // (obj, key) → value
-14302  op 0x21 [0100]
+14302  CALL-VAR21 argc=1
 14305  GETPROP [2c030000]  // (obj, key) → value
 14310  push undefined
-14313  RECORD33 op 0x41 [e702000000000000…]
+14313  SETPROP-IC? key=743 ('closeLocalMenus')
 14346  op 0x11 []
 14347  push <op 0x0b>
 14348  push undefined
-14351  RECORD33 op 0x41 [e802000000000000…]
-14384  RECORD33 op 0x41 [0903000000000000…]
+14351  SETPROP-IC? key=744 ('dismissTopOverlay')
+14384  SETPROP-IC? key=777 ('ntMessageId\x1cconversationId\x0centity\x12messageIdpEntity')
 14417  GETPROP [0a030000]  // (obj, key) → value
 14422  push undefined
-14425  RECORD33 op 0x41 [1203000000000000…]
+14425  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 14458  op 0xbe [10]
 14460  unary-op 0xf0
 14461  GETPROP [0c030000]  // (obj, key) → value
@@ -3265,10 +3265,10 @@
 14468  GETPROP [0d030000]  // (obj, key) → value
 14473  push global
 14474  GETPROP [14030000]  // (obj, key) → value
-14479  op 0x21 [0100]
+14479  CALL-VAR21 argc=1
 14482  GETPROP [2d030000]  // (obj, key) → value
 14487  push undefined
-14490  RECORD33 op 0x41 [e702000000000000…]
+14490  SETPROP-IC? key=743 ('closeLocalMenus')
 14523  op 0x11 []
 14524  push <op 0x0b>
 14525  push const2[454]
@@ -3276,70 +3276,70 @@
 14535  push const2[753]
 14540  GETPROP [ec020000]  // (obj, key) → value
 14545  push undefined
-14548  RECORD33 op 0x41 [f302000000000000…]
-14581  RECORD33 op 0x41 [1603000000000000…]
+14548  SETPROP-IC? key=755 ('noop')
+14581  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 14614  GETPROP [fe020000]  // (obj, key) → value
-14619  op 0x21 [0100]
+14619  CALL-VAR21 argc=1
 14622  GETPROP [2e030000]  // (obj, key) → value
 14627  push undefined
-14630  RECORD33 op 0x41 [e702000000000000…]
+14630  SETPROP-IC? key=743 ('closeLocalMenus')
 14663  op 0x11 []
 14664  push <op 0x0b>
 14665  push undefined
-14668  RECORD33 op 0x41 [e802000000000000…]
-14701  RECORD33 op 0x41 [2f03000000000000…]
+14668  SETPROP-IC? key=744 ('dismissTopOverlay')
+14701  SETPROP-IC? key=815 ('hasContext')
 14734  GETPROP [ea020000]  // (obj, key) → value
 14739  push undefined
-14742  RECORD33 op 0x41 [e802000000000000…]
-14775  RECORD33 op 0x41 [3003000000000000…]
+14742  SETPROP-IC? key=744 ('dismissTopOverlay')
+14775  SETPROP-IC? key=816 ('setContext')
 14808  GETPROP [f0020000]  // (obj, key) → value
 14813  push undefined
-14816  RECORD33 op 0x41 [2403000000000000…]
-14849  RECORD33 op 0x41 [3103000000000000…]
+14816  SETPROP-IC? key=804 ('fill')
+14849  SETPROP-IC? key=817 ('onBack')
 14882  GETPROP [26030000]  // (obj, key) → value
 14887  op 0xb7 []
 14888  GETPROP [ce010000]  // (obj, key) → value
 14893  push const2[747]
 14898  GETPROP [ec020000]  // (obj, key) → value
 14903  push undefined
-14906  RECORD33 op 0x41 [f302000000000000…]
-14939  RECORD33 op 0x41 [2903000000000000…]
+14906  SETPROP-IC? key=755 ('noop')
+14939  SETPROP-IC? key=809 ('style')
 14972  GETPROP [fe020000]  // (obj, key) → value
 14977  push undefined
-14980  RECORD33 op 0x41 [f302000000000000…]
-15013  RECORD33 op 0x41 [f702000000000000…]
+14980  SETPROP-IC? key=755 ('noop')
+15013  SETPROP-IC? key=759 ('trim')
 15046  GETPROP [27030000]  // (obj, key) → value
 15051  push const2[457]
 15056  GETPROP [c8010000]  // (obj, key) → value
-15061  op 0x21 [0100]
+15061  CALL-VAR21 argc=1
 15064  GETPROP [32030000]  // (obj, key) → value
 15069  push undefined
-15072  RECORD33 op 0x41 [e702000000000000…]
+15072  SETPROP-IC? key=743 ('closeLocalMenus')
 15105  op 0x11 []
 15106  push <op 0x0b>
 15107  push undefined
-15110  RECORD33 op 0x41 [e802000000000000…]
-15143  RECORD33 op 0x41 [3303000000000000…]
+15110  SETPROP-IC? key=744 ('dismissTopOverlay')
+15143  SETPROP-IC? key=819 ('ChatGPTSettingsSurface')
 15176  GETPROP [0a030000]  // (obj, key) → value
 15181  push undefined
-15184  RECORD33 op 0x41 [0b03000000000000…]
+15184  SETPROP-IC? key=779 (' first-party message identifier.$open_entity_det')
 15217  op 0xbe [0e]
 15219  unary-op 0xf0
 15220  GETPROP [0c030000]  // (obj, key) → value
 15225  op 0xbe [14]
 15227  GETPROP [0d030000]  // (obj, key) → value
-15232  op 0x21 [0100]
+15232  CALL-VAR21 argc=1
 15235  GETPROP [34030000]  // (obj, key) → value
 15240  push undefined
-15243  RECORD33 op 0x41 [e702000000000000…]
+15243  SETPROP-IC? key=743 ('closeLocalMenus')
 15276  op 0x11 []
 15277  push <op 0x0b>
 15278  push undefined
-15281  RECORD33 op 0x41 [e802000000000000…]
-15314  RECORD33 op 0x41 [1103000000000000…]
+15281  SETPROP-IC? key=744 ('dismissTopOverlay')
+15314  SETPROP-IC? key=785 ('pose isVersionAtLeast\x0epresent$AttachmentMenuPage\x18capabili')
 15347  GETPROP [0a030000]  // (obj, key) → value
 15352  push undefined
-15355  RECORD33 op 0x41 [1203000000000000…]
+15355  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 15388  op 0xbe [0d]
 15390  unary-op 0xf0
 15391  GETPROP [0c030000]  // (obj, key) → value
@@ -3347,46 +3347,46 @@
 15398  GETPROP [0d030000]  // (obj, key) → value
 15403  push global
 15404  GETPROP [14030000]  // (obj, key) → value
-15409  op 0x21 [0100]
+15409  CALL-VAR21 argc=1
 15412  GETPROP [35030000]  // (obj, key) → value
 15417  push undefined
-15420  RECORD33 op 0x41 [e702000000000000…]
+15420  SETPROP-IC? key=743 ('closeLocalMenus')
 15453  op 0x11 []
 15454  push <op 0x0b>
 15455  push undefined
-15458  RECORD33 op 0x41 [e802000000000000…]
-15491  RECORD33 op 0x41 [e902000000000000…]
+15458  SETPROP-IC? key=744 ('dismissTopOverlay')
+15491  SETPROP-IC? key=745 ('handleModelChange')
 15524  GETPROP [ea020000]  // (obj, key) → value
 15529  push const2[747]
 15534  GETPROP [ec020000]  // (obj, key) → value
 15539  push global
 15540  GETPROP [f2020000]  // (obj, key) → value
 15545  push undefined
-15548  RECORD33 op 0x41 [f302000000000000…]
-15581  RECORD33 op 0x41 [1603000000000000…]
+15548  SETPROP-IC? key=755 ('noop')
+15581  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 15614  GETPROP [fe020000]  // (obj, key) → value
 15619  push undefined
-15622  RECORD33 op 0x41 [f302000000000000…]
-15655  RECORD33 op 0x41 [f702000000000000…]
+15622  SETPROP-IC? key=755 ('noop')
+15655  SETPROP-IC? key=759 ('trim')
 15688  GETPROP [07030000]  // (obj, key) → value
 15693  push undefined
-15696  RECORD33 op 0x41 [f302000000000000…]
-15729  RECORD33 op 0x41 [f402000000000000…]
+15696  SETPROP-IC? key=755 ('noop')
+15729  SETPROP-IC? key=756 ('context')
 15762  GETPROP [f5020000]  // (obj, key) → value
 15767  push undefined
-15770  RECORD33 op 0x41 [f302000000000000…]
-15803  RECORD33 op 0x41 [f402000000000000…]
+15770  SETPROP-IC? key=755 ('noop')
+15803  SETPROP-IC? key=756 ('context')
 15836  GETPROP [f6020000]  // (obj, key) → value
 15841  push undefined
-15844  RECORD33 op 0x41 [f302000000000000…]
-15877  RECORD33 op 0x41 [fd02000000000000…]
+15844  SETPROP-IC? key=755 ('noop')
+15877  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 15910  GETPROP [f8020000]  // (obj, key) → value
 15915  push const2[457]
 15920  GETPROP [c8010000]  // (obj, key) → value
-15925  op 0x21 [0100]
+15925  CALL-VAR21 argc=1
 15928  GETPROP [36030000]  // (obj, key) → value
 15933  push undefined
-15936  RECORD33 op 0x41 [e702000000000000…]
+15936  SETPROP-IC? key=743 ('closeLocalMenus')
 15969  op 0x11 []
 15970  push <op 0x0b>
 15971  push const2[454]
@@ -3394,54 +3394,54 @@
 15981  push const2[454]
 15986  GETPROP [22030000]  // (obj, key) → value
 15991  push undefined
-15994  RECORD33 op 0x41 [e802000000000000…]
-16027  RECORD33 op 0x41 [2303000000000000…]
+15994  SETPROP-IC? key=744 ('dismissTopOverlay')
+16027  SETPROP-IC? key=803 ('setViewModelProperty')
 16060  GETPROP [ea020000]  // (obj, key) → value
 16065  push undefined
-16068  RECORD33 op 0x41 [2403000000000000…]
-16101  RECORD33 op 0x41 [3103000000000000…]
+16068  SETPROP-IC? key=804 ('fill')
+16101  SETPROP-IC? key=817 ('onBack')
 16134  GETPROP [26030000]  // (obj, key) → value
 16139  push const2[753]
 16144  GETPROP [ec020000]  // (obj, key) → value
 16149  push undefined
-16152  RECORD33 op 0x41 [f302000000000000…]
-16185  RECORD33 op 0x41 [1603000000000000…]
+16152  SETPROP-IC? key=755 ('noop')
+16185  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 16218  GETPROP [fe020000]  // (obj, key) → value
 16223  op 0xbf [f802]
 16226  GETPROP [13030000]  // (obj, key) → value
 16231  push undefined
-16234  RECORD33 op 0x41 [f302000000000000…]
-16267  RECORD33 op 0x41 [f702000000000000…]
+16234  SETPROP-IC? key=755 ('noop')
+16267  SETPROP-IC? key=759 ('trim')
 16300  GETPROP [f5020000]  // (obj, key) → value
 16305  push undefined
-16308  RECORD33 op 0x41 [f302000000000000…]
-16341  RECORD33 op 0x41 [fd02000000000000…]
+16308  SETPROP-IC? key=755 ('noop')
+16341  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 16374  GETPROP [f6020000]  // (obj, key) → value
 16379  push const2[457]
 16384  GETPROP [c8010000]  // (obj, key) → value
-16389  op 0x21 [0100]
+16389  CALL-VAR21 argc=1
 16392  GETPROP [37030000]  // (obj, key) → value
 16397  push undefined
-16400  RECORD33 op 0x41 [e702000000000000…]
+16400  SETPROP-IC? key=743 ('closeLocalMenus')
 16433  op 0x11 []
 16434  push <op 0x0b>
 16435  push undefined
-16438  RECORD33 op 0x41 [e802000000000000…]
-16471  RECORD33 op 0x41 [1103000000000000…]
+16438  SETPROP-IC? key=744 ('dismissTopOverlay')
+16471  SETPROP-IC? key=785 ('pose isVersionAtLeast\x0epresent$AttachmentMenuPage\x18capabili')
 16504  GETPROP [0a030000]  // (obj, key) → value
 16509  op 0xb7 []
 16510  GETPROP [fa020000]  // (obj, key) → value
 16515  push undefined
-16518  RECORD33 op 0x41 [3803000000000000…]
+16518  SETPROP-IC? key=824 ('Text')
 16551  op 0xbe [0d]
 16553  unary-op 0xf0
 16554  GETPROP [0c030000]  // (obj, key) → value
 16559  op 0xbe [13]
 16561  GETPROP [0d030000]  // (obj, key) → value
-16566  op 0x21 [0100]
+16566  CALL-VAR21 argc=1
 16569  GETPROP [39030000]  // (obj, key) → value
 16574  push undefined
-16577  RECORD33 op 0x41 [e702000000000000…]
+16577  SETPROP-IC? key=743 ('closeLocalMenus')
 16610  op 0x11 []
 16611  push <op 0x0b>
 16612  push const2[454]
@@ -3451,65 +3451,65 @@
 16632  push const2[826]
 16637  GETPROP [3b030000]  // (obj, key) → value
 16642  push undefined
-16645  RECORD33 op 0x41 [f302000000000000…]
-16678  RECORD33 op 0x41 [1603000000000000…]
+16645  SETPROP-IC? key=755 ('noop')
+16678  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 16711  GETPROP [fe020000]  // (obj, key) → value
 16716  op 0xbf [f802]
 16719  GETPROP [13030000]  // (obj, key) → value
 16724  push const2[457]
 16729  GETPROP [c8010000]  // (obj, key) → value
-16734  op 0x21 [0100]
+16734  CALL-VAR21 argc=1
 16737  GETPROP [3c030000]  // (obj, key) → value
 16742  push undefined
-16745  RECORD33 op 0x41 [e702000000000000…]
+16745  SETPROP-IC? key=743 ('closeLocalMenus')
 16778  op 0x11 []
 16779  push <op 0x0b>
 16780  push const2[454]
 16785  GETPROP [ee020000]  // (obj, key) → value
 16790  push undefined
-16793  RECORD33 op 0x41 [e802000000000000…]
-16826  RECORD33 op 0x41 [2303000000000000…]
+16793  SETPROP-IC? key=744 ('dismissTopOverlay')
+16826  SETPROP-IC? key=803 ('setViewModelProperty')
 16859  GETPROP [ea020000]  // (obj, key) → value
 16864  push undefined
-16867  RECORD33 op 0x41 [e802000000000000…]
-16900  RECORD33 op 0x41 [3d03000000000000…]
+16867  SETPROP-IC? key=744 ('dismissTopOverlay')
+16900  SETPROP-IC? key=829 ('SegmentedControl')
 16933  GETPROP [f0020000]  // (obj, key) → value
 16938  push undefined
-16941  RECORD33 op 0x41 [2403000000000000…]
-16974  RECORD33 op 0x41 [2503000000000000…]
+16941  SETPROP-IC? key=804 ('fill')
+16974  SETPROP-IC? key=805 ('setUnnamedSlot')
 17007  GETPROP [26030000]  // (obj, key) → value
 17012  op 0xb7 []
 17013  GETPROP [ce010000]  // (obj, key) → value
 17018  push const2[753]
 17023  GETPROP [ec020000]  // (obj, key) → value
 17028  push undefined
-17031  RECORD33 op 0x41 [f302000000000000…]
-17064  RECORD33 op 0x41 [1603000000000000…]
+17031  SETPROP-IC? key=755 ('noop')
+17064  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 17097  GETPROP [fe020000]  // (obj, key) → value
 17102  op 0xbf [4001]
 17105  GETPROP [13030000]  // (obj, key) → value
 17110  op 0xbf [9000]
 17113  GETPROP [3e030000]  // (obj, key) → value
 17118  push undefined
-17121  RECORD33 op 0x41 [f302000000000000…]
-17154  RECORD33 op 0x41 [fd02000000000000…]
+17121  SETPROP-IC? key=755 ('noop')
+17154  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 17187  GETPROP [07030000]  // (obj, key) → value
 17192  push undefined
-17195  RECORD33 op 0x41 [f302000000000000…]
-17228  RECORD33 op 0x41 [f702000000000000…]
+17195  SETPROP-IC? key=755 ('noop')
+17228  SETPROP-IC? key=759 ('trim')
 17261  GETPROP [f5020000]  // (obj, key) → value
 17266  push undefined
-17269  RECORD33 op 0x41 [f302000000000000…]
-17302  RECORD33 op 0x41 [fd02000000000000…]
+17269  SETPROP-IC? key=755 ('noop')
+17302  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 17335  GETPROP [f6020000]  // (obj, key) → value
 17340  push undefined
-17343  RECORD33 op 0x41 [f302000000000000…]
-17376  RECORD33 op 0x41 [fd02000000000000…]
+17343  SETPROP-IC? key=755 ('noop')
+17376  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 17409  GETPROP [f8020000]  // (obj, key) → value
-17414  op 0x21 [0100]
+17414  CALL-VAR21 argc=1
 17417  GETPROP [3f030000]  // (obj, key) → value
 17422  push undefined
-17425  RECORD33 op 0x41 [e702000000000000…]
+17425  SETPROP-IC? key=743 ('closeLocalMenus')
 17458  op 0x11 []
 17459  push <op 0x0b>
 17460  push const2[747]
@@ -3519,23 +3519,23 @@
 17476  op 0xb7 []
 17477  GETPROP [f2020000]  // (obj, key) → value
 17482  push undefined
-17485  RECORD33 op 0x41 [f302000000000000…]
-17518  RECORD33 op 0x41 [2903000000000000…]
+17485  SETPROP-IC? key=755 ('noop')
+17518  SETPROP-IC? key=809 ('style')
 17551  GETPROP [fe020000]  // (obj, key) → value
 17556  push global
 17557  GETPROP [3e030000]  // (obj, key) → value
-17562  op 0x21 [0100]
+17562  CALL-VAR21 argc=1
 17565  GETPROP [40030000]  // (obj, key) → value
 17570  push undefined
-17573  RECORD33 op 0x41 [e702000000000000…]
+17573  SETPROP-IC? key=743 ('closeLocalMenus')
 17606  op 0x11 []
 17607  push <op 0x0b>
 17608  push undefined
-17611  RECORD33 op 0x41 [e802000000000000…]
-17644  RECORD33 op 0x41 [0903000000000000…]
+17611  SETPROP-IC? key=744 ('dismissTopOverlay')
+17644  SETPROP-IC? key=777 ('ntMessageId\x1cconversationId\x0centity\x12messageIdpEntity')
 17677  GETPROP [0a030000]  // (obj, key) → value
 17682  push undefined
-17685  RECORD33 op 0x41 [3803000000000000…]
+17685  SETPROP-IC? key=824 ('Text')
 17718  op 0xbe [0d]
 17720  unary-op 0xf0
 17721  GETPROP [0c030000]  // (obj, key) → value
@@ -3543,18 +3543,18 @@
 17728  GETPROP [0d030000]  // (obj, key) → value
 17733  op 0xb7 []
 17734  GETPROP [14030000]  // (obj, key) → value
-17739  op 0x21 [0100]
+17739  CALL-VAR21 argc=1
 17742  GETPROP [41030000]  // (obj, key) → value
 17747  push undefined
-17750  RECORD33 op 0x41 [e702000000000000…]
+17750  SETPROP-IC? key=743 ('closeLocalMenus')
 17783  op 0x11 []
 17784  push <op 0x0b>
 17785  push undefined
-17788  RECORD33 op 0x41 [e802000000000000…]
-17821  RECORD33 op 0x41 [1103000000000000…]
+17788  SETPROP-IC? key=744 ('dismissTopOverlay')
+17821  SETPROP-IC? key=785 ('pose isVersionAtLeast\x0epresent$AttachmentMenuPage\x18capabili')
 17854  GETPROP [0a030000]  // (obj, key) → value
 17859  push undefined
-17862  RECORD33 op 0x41 [1203000000000000…]
+17862  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 17895  op 0xbe [0b]
 17897  unary-op 0xf0
 17898  GETPROP [0c030000]  // (obj, key) → value
@@ -3562,20 +3562,20 @@
 17905  GETPROP [0d030000]  // (obj, key) → value
 17910  op 0xb7 []
 17911  GETPROP [14030000]  // (obj, key) → value
-17916  op 0x21 [0100]
+17916  CALL-VAR21 argc=1
 17919  GETPROP [42030000]  // (obj, key) → value
 17924  push undefined
-17927  RECORD33 op 0x41 [e702000000000000…]
+17927  SETPROP-IC? key=743 ('closeLocalMenus')
 17960  op 0x11 []
 17961  push <op 0x0b>
 17962  push const2[454]
 17967  GETPROP [22030000]  // (obj, key) → value
 17972  push undefined
-17975  RECORD33 op 0x41 [e802000000000000…]
-18008  RECORD33 op 0x41 [3303000000000000…]
+17975  SETPROP-IC? key=744 ('dismissTopOverlay')
+18008  SETPROP-IC? key=819 ('ChatGPTSettingsSurface')
 18041  GETPROP [0a030000]  // (obj, key) → value
 18046  push undefined
-18049  RECORD33 op 0x41 [1203000000000000…]
+18049  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 18082  op 0xbe [0c]
 18084  unary-op 0xf0
 18085  GETPROP [0c030000]  // (obj, key) → value
@@ -3587,10 +3587,10 @@
 18106  GETPROP [14030000]  // (obj, key) → value
 18111  push const2[457]
 18116  GETPROP [c8010000]  // (obj, key) → value
-18121  op 0x21 [0100]
+18121  CALL-VAR21 argc=1
 18124  GETPROP [43030000]  // (obj, key) → value
 18129  push undefined
-18132  RECORD33 op 0x41 [e702000000000000…]
+18132  SETPROP-IC? key=743 ('closeLocalMenus')
 18165  op 0x11 []
 18166  push <op 0x0b>
 18167  push const2[836]
@@ -3598,37 +3598,37 @@
 18177  push const2[454]
 18182  GETPROP [22030000]  // (obj, key) → value
 18187  push undefined
-18190  RECORD33 op 0x41 [e802000000000000…]
-18223  RECORD33 op 0x41 [e902000000000000…]
+18190  SETPROP-IC? key=744 ('dismissTopOverlay')
+18223  SETPROP-IC? key=745 ('handleModelChange')
 18256  GETPROP [ea020000]  // (obj, key) → value
 18261  push undefined
-18264  RECORD33 op 0x41 [e802000000000000…]
-18297  RECORD33 op 0x41 [3d03000000000000…]
+18264  SETPROP-IC? key=744 ('dismissTopOverlay')
+18297  SETPROP-IC? key=829 ('SegmentedControl')
 18330  GETPROP [f0020000]  // (obj, key) → value
 18335  push undefined
-18338  RECORD33 op 0x41 [2403000000000000…]
-18371  RECORD33 op 0x41 [4503000000000000…]
+18338  SETPROP-IC? key=804 ('fill')
+18371  SETPROP-IC? key=837 ('Start temporary chat')
 18404  GETPROP [26030000]  // (obj, key) → value
 18409  op 0xb7 []
 18410  GETPROP [ce010000]  // (obj, key) → value
 18415  push const2[753]
 18420  GETPROP [ec020000]  // (obj, key) → value
 18425  push undefined
-18428  RECORD33 op 0x41 [f302000000000000…]
-18461  RECORD33 op 0x41 [1603000000000000…]
+18428  SETPROP-IC? key=755 ('noop')
+18461  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 18494  GETPROP [fe020000]  // (obj, key) → value
 18499  op 0xbf [f802]
 18502  GETPROP [13030000]  // (obj, key) → value
 18507  push undefined
-18510  RECORD33 op 0x41 [f302000000000000…]
-18543  RECORD33 op 0x41 [1603000000000000…]
+18510  SETPROP-IC? key=755 ('noop')
+18543  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 18576  GETPROP [27030000]  // (obj, key) → value
 18581  push const2[457]
 18586  GETPROP [c8010000]  // (obj, key) → value
-18591  op 0x21 [0100]
+18591  CALL-VAR21 argc=1
 18594  GETPROP [46030000]  // (obj, key) → value
 18599  push undefined
-18602  RECORD33 op 0x41 [e702000000000000…]
+18602  SETPROP-IC? key=743 ('closeLocalMenus')
 18635  op 0x11 []
 18636  push <op 0x0b>
 18637  op 0xb7 []
@@ -3637,10 +3637,10 @@
 18644  GETPROP [f2020000]  // (obj, key) → value
 18649  push global
 18650  GETPROP [3e030000]  // (obj, key) → value
-18655  op 0x21 [0100]
+18655  CALL-VAR21 argc=1
 18658  GETPROP [47030000]  // (obj, key) → value
 18663  push undefined
-18666  RECORD33 op 0x41 [e702000000000000…]
+18666  SETPROP-IC? key=743 ('closeLocalMenus')
 18699  op 0x11 []
 18700  push <op 0x0b>
 18701  push const2[454]
@@ -3648,39 +3648,39 @@
 18711  push const2[454]
 18716  GETPROP [22030000]  // (obj, key) → value
 18721  push undefined
-18724  RECORD33 op 0x41 [e802000000000000…]
-18757  RECORD33 op 0x41 [e902000000000000…]
+18724  SETPROP-IC? key=744 ('dismissTopOverlay')
+18757  SETPROP-IC? key=745 ('handleModelChange')
 18790  GETPROP [ea020000]  // (obj, key) → value
 18795  push undefined
-18798  RECORD33 op 0x41 [e802000000000000…]
-18831  RECORD33 op 0x41 [3d03000000000000…]
+18798  SETPROP-IC? key=744 ('dismissTopOverlay')
+18831  SETPROP-IC? key=829 ('SegmentedControl')
 18864  GETPROP [f0020000]  // (obj, key) → value
 18869  push undefined
-18872  RECORD33 op 0x41 [2403000000000000…]
-18905  RECORD33 op 0x41 [4503000000000000…]
+18872  SETPROP-IC? key=804 ('fill')
+18905  SETPROP-IC? key=837 ('Start temporary chat')
 18938  GETPROP [26030000]  // (obj, key) → value
 18943  op 0xb7 []
 18944  GETPROP [ce010000]  // (obj, key) → value
 18949  push const2[753]
 18954  GETPROP [ec020000]  // (obj, key) → value
 18959  push undefined
-18962  RECORD33 op 0x41 [f302000000000000…]
-18995  RECORD33 op 0x41 [1603000000000000…]
+18962  SETPROP-IC? key=755 ('noop')
+18995  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 19028  GETPROP [fe020000]  // (obj, key) → value
 19033  op 0xbf [f802]
 19036  GETPROP [13030000]  // (obj, key) → value
 19041  op 0xbe [3a]
 19043  GETPROP [01030000]  // (obj, key) → value
 19048  push undefined
-19051  RECORD33 op 0x41 [f302000000000000…]
-19084  RECORD33 op 0x41 [1603000000000000…]
+19051  SETPROP-IC? key=755 ('noop')
+19084  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 19117  GETPROP [27030000]  // (obj, key) → value
 19122  push const2[457]
 19127  GETPROP [c8010000]  // (obj, key) → value
-19132  op 0x21 [0100]
+19132  CALL-VAR21 argc=1
 19135  GETPROP [48030000]  // (obj, key) → value
 19140  push undefined
-19143  RECORD33 op 0x41 [e702000000000000…]
+19143  SETPROP-IC? key=743 ('closeLocalMenus')
 19176  op 0x11 []
 19177  push <op 0x0b>
 19178  push const2[841]
@@ -3689,15 +3689,15 @@
 19189  UNARY ! / coerce-bool
 19190  GETPROP [4b030000]  // (obj, key) → value
 19195  push undefined
-19198  RECORD33 op 0x41 [e802000000000000…]
-19231  RECORD33 op 0x41 [1103000000000000…]
+19198  SETPROP-IC? key=744 ('dismissTopOverlay')
+19231  SETPROP-IC? key=785 ('pose isVersionAtLeast\x0epresent$AttachmentMenuPage\x18capabili')
 19264  GETPROP [0a030000]  // (obj, key) → value
 19269  op 0xb7 []
 19270  GETPROP [fa020000]  // (obj, key) → value
 19275  op 0xb7 []
 19276  GETPROP [f2020000]  // (obj, key) → value
 19281  push undefined
-19284  RECORD33 op 0x41 [1203000000000000…]
+19284  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 19317  op 0xbe [0f]
 19319  unary-op 0xf0
 19320  GETPROP [0c030000]  // (obj, key) → value
@@ -3705,10 +3705,10 @@
 19327  GETPROP [0d030000]  // (obj, key) → value
 19332  op 0xb8 []
 19333  GETPROP [14030000]  // (obj, key) → value
-19338  op 0x21 [0100]
+19338  CALL-VAR21 argc=1
 19341  GETPROP [4c030000]  // (obj, key) → value
 19346  push undefined
-19349  RECORD33 op 0x41 [e702000000000000…]
+19349  SETPROP-IC? key=743 ('closeLocalMenus')
 19382  op 0x11 []
 19383  push <op 0x0b>
 19384  push const2[841]
@@ -3717,15 +3717,15 @@
 19395  UNARY ! / coerce-bool
 19396  GETPROP [4b030000]  // (obj, key) → value
 19401  push undefined
-19404  RECORD33 op 0x41 [e802000000000000…]
-19437  RECORD33 op 0x41 [3303000000000000…]
+19404  SETPROP-IC? key=744 ('dismissTopOverlay')
+19437  SETPROP-IC? key=819 ('ChatGPTSettingsSurface')
 19470  GETPROP [0a030000]  // (obj, key) → value
 19475  op 0xb7 []
 19476  GETPROP [fa020000]  // (obj, key) → value
 19481  op 0xb7 []
 19482  GETPROP [f2020000]  // (obj, key) → value
 19487  push undefined
-19490  RECORD33 op 0x41 [1203000000000000…]
+19490  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 19523  op 0xbe [0d]
 19525  unary-op 0xf0
 19526  GETPROP [0c030000]  // (obj, key) → value
@@ -3733,46 +3733,46 @@
 19533  GETPROP [0d030000]  // (obj, key) → value
 19538  op 0xb8 []
 19539  GETPROP [14030000]  // (obj, key) → value
-19544  op 0x21 [0100]
+19544  CALL-VAR21 argc=1
 19547  GETPROP [4d030000]  // (obj, key) → value
 19552  push undefined
-19555  RECORD33 op 0x41 [e702000000000000…]
+19555  SETPROP-IC? key=743 ('closeLocalMenus')
 19588  op 0x11 []
 19589  push <op 0x0b>
 19590  push const2[454]
 19595  GETPROP [22030000]  // (obj, key) → value
 19600  push undefined
-19603  RECORD33 op 0x41 [e802000000000000…]
-19636  RECORD33 op 0x41 [e902000000000000…]
+19603  SETPROP-IC? key=744 ('dismissTopOverlay')
+19636  SETPROP-IC? key=745 ('handleModelChange')
 19669  GETPROP [ea020000]  // (obj, key) → value
 19674  push undefined
-19677  RECORD33 op 0x41 [e802000000000000…]
-19710  RECORD33 op 0x41 [3d03000000000000…]
+19677  SETPROP-IC? key=744 ('dismissTopOverlay')
+19710  SETPROP-IC? key=829 ('SegmentedControl')
 19743  GETPROP [f0020000]  // (obj, key) → value
 19748  push undefined
-19751  RECORD33 op 0x41 [2403000000000000…]
-19784  RECORD33 op 0x41 [4503000000000000…]
+19751  SETPROP-IC? key=804 ('fill')
+19784  SETPROP-IC? key=837 ('Start temporary chat')
 19817  GETPROP [26030000]  // (obj, key) → value
 19822  op 0xb7 []
 19823  GETPROP [ce010000]  // (obj, key) → value
 19828  push const2[747]
 19833  GETPROP [ec020000]  // (obj, key) → value
 19838  push undefined
-19841  RECORD33 op 0x41 [f302000000000000…]
-19874  RECORD33 op 0x41 [1603000000000000…]
+19841  SETPROP-IC? key=755 ('noop')
+19874  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 19907  GETPROP [fe020000]  // (obj, key) → value
 19912  op 0xbf [f802]
 19915  GETPROP [13030000]  // (obj, key) → value
 19920  push undefined
-19923  RECORD33 op 0x41 [f302000000000000…]
-19956  RECORD33 op 0x41 [1603000000000000…]
+19923  SETPROP-IC? key=755 ('noop')
+19956  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 19989  GETPROP [27030000]  // (obj, key) → value
 19994  push const2[457]
 19999  GETPROP [c8010000]  // (obj, key) → value
-20004  op 0x21 [0100]
+20004  CALL-VAR21 argc=1
 20007  GETPROP [4e030000]  // (obj, key) → value
 20012  push undefined
-20015  RECORD33 op 0x41 [e702000000000000…]
+20015  SETPROP-IC? key=743 ('closeLocalMenus')
 20048  op 0x11 []
 20049  push <op 0x0b>
 20050  push const2[454]
@@ -3780,35 +3780,35 @@
 20060  push const2[753]
 20065  GETPROP [ec020000]  // (obj, key) → value
 20070  push undefined
-20073  RECORD33 op 0x41 [f302000000000000…]
-20106  RECORD33 op 0x41 [1603000000000000…]
+20073  SETPROP-IC? key=755 ('noop')
+20106  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 20139  GETPROP [fe020000]  // (obj, key) → value
 20144  push global
 20145  GETPROP [3e030000]  // (obj, key) → value
 20150  push const2[457]
 20155  GETPROP [c8010000]  // (obj, key) → value
-20160  op 0x21 [0100]
+20160  CALL-VAR21 argc=1
 20163  GETPROP [4f030000]  // (obj, key) → value
 20168  push undefined
-20171  RECORD33 op 0x41 [e702000000000000…]
+20171  SETPROP-IC? key=743 ('closeLocalMenus')
 20204  op 0x11 []
 20205  push <op 0x0b>
 20206  op 0xb7 []
 20207  GETPROP [fa020000]  // (obj, key) → value
 20212  push global
 20213  GETPROP [3e030000]  // (obj, key) → value
-20218  op 0x21 [0100]
+20218  CALL-VAR21 argc=1
 20221  GETPROP [50030000]  // (obj, key) → value
 20226  push undefined
-20229  RECORD33 op 0x41 [e702000000000000…]
+20229  SETPROP-IC? key=743 ('closeLocalMenus')
 20262  op 0x11 []
 20263  push <op 0x0b>
 20264  push undefined
-20267  RECORD33 op 0x41 [e802000000000000…]
-20300  RECORD33 op 0x41 [5103000000000000…]
+20267  SETPROP-IC? key=744 ('dismissTopOverlay')
+20300  SETPROP-IC? key=849 ('ThemeBlueDefault')
 20333  GETPROP [0a030000]  // (obj, key) → value
 20338  push undefined
-20341  RECORD33 op 0x41 [1203000000000000…]
+20341  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 20374  op 0xbe [0b]
 20376  unary-op 0xf0
 20377  GETPROP [0c030000]  // (obj, key) → value
@@ -3818,25 +3818,25 @@
 20394  GETPROP [0f030000]  // (obj, key) → value
 20399  push const2[457]
 20404  GETPROP [c8010000]  // (obj, key) → value
-20409  op 0x21 [0100]
+20409  CALL-VAR21 argc=1
 20412  GETPROP [52030000]  // (obj, key) → value
 20417  push undefined
-20420  RECORD33 op 0x41 [e702000000000000…]
+20420  SETPROP-IC? key=743 ('closeLocalMenus')
 20453  op 0x11 []
 20454  push <op 0x0b>
 20455  push const2[454]
 20460  GETPROP [22030000]  // (obj, key) → value
 20465  push undefined
-20468  RECORD33 op 0x41 [e802000000000000…]
-20501  RECORD33 op 0x41 [5303000000000000…]
+20468  SETPROP-IC? key=744 ('dismissTopOverlay')
+20501  SETPROP-IC? key=851 ('OAIJustify')
 20534  GETPROP [ea020000]  // (obj, key) → value
 20539  push undefined
-20542  RECORD33 op 0x41 [e802000000000000…]
-20575  RECORD33 op 0x41 [3d03000000000000…]
+20542  SETPROP-IC? key=744 ('dismissTopOverlay')
+20575  SETPROP-IC? key=829 ('SegmentedControl')
 20608  GETPROP [f0020000]  // (obj, key) → value
 20613  push undefined
-20616  RECORD33 op 0x41 [2403000000000000…]
-20649  RECORD33 op 0x41 [2503000000000000…]
+20616  SETPROP-IC? key=804 ('fill')
+20649  SETPROP-IC? key=805 ('setUnnamedSlot')
 20682  GETPROP [26030000]  // (obj, key) → value
 20687  op 0xb7 []
 20688  GETPROP [ce010000]  // (obj, key) → value
@@ -3845,37 +3845,37 @@
 20703  op 0xbf [a401]
 20706  GETPROP [13030000]  // (obj, key) → value
 20711  push undefined
-20714  RECORD33 op 0x41 [f302000000000000…]
-20747  RECORD33 op 0x41 [1603000000000000…]
+20714  SETPROP-IC? key=755 ('noop')
+20747  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 20780  GETPROP [27030000]  // (obj, key) → value
 20785  push const2[457]
 20790  GETPROP [c8010000]  // (obj, key) → value
-20795  op 0x21 [0100]
+20795  CALL-VAR21 argc=1
 20798  GETPROP [54030000]  // (obj, key) → value
 20803  push undefined
-20806  RECORD33 op 0x41 [e702000000000000…]
+20806  SETPROP-IC? key=743 ('closeLocalMenus')
 20839  op 0x11 []
 20840  push <op 0x0b>
 20841  push undefined
-20844  RECORD33 op 0x41 [e802000000000000…]
-20877  RECORD33 op 0x41 [5103000000000000…]
+20844  SETPROP-IC? key=744 ('dismissTopOverlay')
+20877  SETPROP-IC? key=849 ('ThemeBlueDefault')
 20910  GETPROP [0a030000]  // (obj, key) → value
 20915  push undefined
-20918  RECORD33 op 0x41 [0b03000000000000…]
+20918  SETPROP-IC? key=779 (' first-party message identifier.$open_entity_det')
 20951  op 0xbe [0b]
 20953  unary-op 0xf0
 20954  GETPROP [0c030000]  // (obj, key) → value
 20959  op 0xbe [10]
 20961  GETPROP [0d030000]  // (obj, key) → value
-20966  op 0x21 [0100]
+20966  CALL-VAR21 argc=1
 20969  GETPROP [55030000]  // (obj, key) → value
 20974  push undefined
-20977  RECORD33 op 0x41 [e702000000000000…]
+20977  SETPROP-IC? key=743 ('closeLocalMenus')
 21010  op 0x11 []
 21011  push <op 0x0b>
 21012  push undefined
-21015  RECORD33 op 0x41 [e802000000000000…]
-21048  RECORD33 op 0x41 [e902000000000000…]
+21015  SETPROP-IC? key=744 ('dismissTopOverlay')
+21048  SETPROP-IC? key=745 ('handleModelChange')
 21081  GETPROP [ea020000]  // (obj, key) → value
 21086  op 0xb7 []
 21087  GETPROP [fa020000]  // (obj, key) → value
@@ -3884,35 +3884,35 @@
 21098  push const2[747]
 21103  GETPROP [ec020000]  // (obj, key) → value
 21108  push undefined
-21111  RECORD33 op 0x41 [f302000000000000…]
-21144  RECORD33 op 0x41 [f702000000000000…]
+21111  SETPROP-IC? key=755 ('noop')
+21144  SETPROP-IC? key=759 ('trim')
 21177  GETPROP [fe020000]  // (obj, key) → value
 21182  push const2[457]
 21187  GETPROP [cb010000]  // (obj, key) → value
 21192  push global
 21193  GETPROP [01030000]  // (obj, key) → value
 21198  push undefined
-21201  RECORD33 op 0x41 [f302000000000000…]
-21234  RECORD33 op 0x41 [f402000000000000…]
+21201  SETPROP-IC? key=755 ('noop')
+21234  SETPROP-IC? key=756 ('context')
 21267  GETPROP [07030000]  // (obj, key) → value
 21272  push undefined
-21275  RECORD33 op 0x41 [f302000000000000…]
-21308  RECORD33 op 0x41 [f402000000000000…]
+21275  SETPROP-IC? key=755 ('noop')
+21308  SETPROP-IC? key=756 ('context')
 21341  GETPROP [f5020000]  // (obj, key) → value
 21346  push undefined
-21349  RECORD33 op 0x41 [f302000000000000…]
-21382  RECORD33 op 0x41 [f402000000000000…]
+21349  SETPROP-IC? key=755 ('noop')
+21382  SETPROP-IC? key=756 ('context')
 21415  GETPROP [f6020000]  // (obj, key) → value
 21420  push undefined
-21423  RECORD33 op 0x41 [f302000000000000…]
-21456  RECORD33 op 0x41 [f402000000000000…]
+21423  SETPROP-IC? key=755 ('noop')
+21456  SETPROP-IC? key=756 ('context')
 21489  GETPROP [f8020000]  // (obj, key) → value
 21494  push const2[457]
 21499  GETPROP [c8010000]  // (obj, key) → value
-21504  op 0x21 [0100]
+21504  CALL-VAR21 argc=1
 21507  GETPROP [56030000]  // (obj, key) → value
 21512  push undefined
-21515  RECORD33 op 0x41 [e702000000000000…]
+21515  SETPROP-IC? key=743 ('closeLocalMenus')
 21548  op 0x11 []
 21549  push <op 0x0b>
 21550  push const2[454]
@@ -3923,10 +3923,10 @@
 21575  GETPROP [fb020000]  // (obj, key) → value
 21580  push const2[457]
 21585  GETPROP [c8010000]  // (obj, key) → value
-21590  op 0x21 [0100]
+21590  CALL-VAR21 argc=1
 21593  GETPROP [58030000]  // (obj, key) → value
 21598  push undefined
-21601  RECORD33 op 0x41 [e702000000000000…]
+21601  SETPROP-IC? key=743 ('closeLocalMenus')
 21634  op 0x11 []
 21635  push <op 0x0b>
 21636  push const2[454]
@@ -3934,13 +3934,13 @@
 21646  push const2[753]
 21651  GETPROP [ec020000]  // (obj, key) → value
 21656  push undefined
-21659  RECORD33 op 0x41 [f302000000000000…]
-21692  RECORD33 op 0x41 [1603000000000000…]
+21659  SETPROP-IC? key=755 ('noop')
+21692  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 21725  GETPROP [fe020000]  // (obj, key) → value
-21730  op 0x21 [0100]
+21730  CALL-VAR21 argc=1
 21733  GETPROP [59030000]  // (obj, key) → value
 21738  push undefined
-21741  RECORD33 op 0x41 [e702000000000000…]
+21741  SETPROP-IC? key=743 ('closeLocalMenus')
 21774  op 0x11 []
 21775  push <op 0x0b>
 21776  push const2[454]
@@ -3948,13 +3948,13 @@
 21786  push const2[753]
 21791  GETPROP [ec020000]  // (obj, key) → value
 21796  push undefined
-21799  RECORD33 op 0x41 [f302000000000000…]
-21832  RECORD33 op 0x41 [fd02000000000000…]
+21799  SETPROP-IC? key=755 ('noop')
+21832  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 21865  GETPROP [fe020000]  // (obj, key) → value
-21870  op 0x21 [0100]
+21870  CALL-VAR21 argc=1
 21873  GETPROP [5a030000]  // (obj, key) → value
 21878  push undefined
-21881  RECORD33 op 0x41 [e702000000000000…]
+21881  SETPROP-IC? key=743 ('closeLocalMenus')
 21914  op 0x11 []
 21915  push <op 0x0b>
 21916  push const2[454]
@@ -3962,8 +3962,8 @@
 21926  push const2[859]
 21931  GETPROP [ea020000]  // (obj, key) → value
 21936  push undefined
-21939  RECORD33 op 0x41 [2403000000000000…]
-21972  RECORD33 op 0x41 [5c03000000000000…]
+21939  SETPROP-IC? key=804 ('fill')
+21972  SETPROP-IC? key=860 ('\x00t\x00o\x00r\x00y\x00 \x00o\x00r\x00 \x00b\x00e\x00 \x00s\x00a\x00v\x00e\x00d\x00 \x00a\x00f\x00t\x00e\x00r\x00 \x00y\x00o\x00u\x00 \x00l\x00')
 22005  GETPROP [26030000]  // (obj, key) → value
 22010  op 0xbe [1e]
 22012  GETPROP [cb010000]  // (obj, key) → value
@@ -3971,43 +3971,43 @@
 22022  GETPROP [fb020000]  // (obj, key) → value
 22027  op 0xbe [1e]
 22029  GETPROP [c8010000]  // (obj, key) → value
-22034  op 0x21 [0100]
+22034  CALL-VAR21 argc=1
 22037  GETPROP [5d030000]  // (obj, key) → value
 22042  push undefined
-22045  RECORD33 op 0x41 [e702000000000000…]
+22045  SETPROP-IC? key=743 ('closeLocalMenus')
 22078  op 0x11 []
 22079  push <op 0x0b>
 22080  push const2[862]
 22085  GETPROP [0a030000]  // (obj, key) → value
 22090  push undefined
-22093  RECORD33 op 0x41 [0b03000000000000…]
+22093  SETPROP-IC? key=779 (' first-party message identifier.$open_entity_det')
 22126  op 0xbe [0c]
 22128  unary-op 0xf0
 22129  GETPROP [0c030000]  // (obj, key) → value
 22134  push const2[454]
 22139  GETPROP [0f030000]  // (obj, key) → value
-22144  op 0x21 [0100]
+22144  CALL-VAR21 argc=1
 22147  GETPROP [5f030000]  // (obj, key) → value
 22152  push undefined
-22155  RECORD33 op 0x41 [e702000000000000…]
+22155  SETPROP-IC? key=743 ('closeLocalMenus')
 22188  op 0x11 []
 22189  push <op 0x0b>
 22190  push undefined
-22193  RECORD33 op 0x41 [e802000000000000…]
-22226  RECORD33 op 0x41 [0903000000000000…]
+22193  SETPROP-IC? key=744 ('dismissTopOverlay')
+22226  SETPROP-IC? key=777 ('ntMessageId\x1cconversationId\x0centity\x12messageIdpEntity')
 22259  GETPROP [0a030000]  // (obj, key) → value
 22264  push undefined
-22267  RECORD33 op 0x41 [1203000000000000…]
+22267  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 22300  op 0xbe [12]
 22302  unary-op 0xf0
 22303  GETPROP [0c030000]  // (obj, key) → value
 22308  op 0xb7 []
 22309  UNARY ! / coerce-bool
 22310  GETPROP [60030000]  // (obj, key) → value
-22315  op 0x21 [0100]
+22315  CALL-VAR21 argc=1
 22318  GETPROP [61030000]  // (obj, key) → value
 22323  push undefined
-22326  RECORD33 op 0x41 [e702000000000000…]
+22326  SETPROP-IC? key=743 ('closeLocalMenus')
 22359  op 0x11 []
 22360  push <op 0x0b>
 22361  push const2[841]
@@ -4016,11 +4016,11 @@
 22372  UNARY ! / coerce-bool
 22373  GETPROP [4b030000]  // (obj, key) → value
 22378  push undefined
-22381  RECORD33 op 0x41 [e802000000000000…]
-22414  RECORD33 op 0x41 [3303000000000000…]
+22381  SETPROP-IC? key=744 ('dismissTopOverlay')
+22414  SETPROP-IC? key=819 ('ChatGPTSettingsSurface')
 22447  GETPROP [0a030000]  // (obj, key) → value
 22452  push undefined
-22455  RECORD33 op 0x41 [1203000000000000…]
+22455  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 22488  op 0xbe [0d]
 22490  unary-op 0xf0
 22491  GETPROP [0c030000]  // (obj, key) → value
@@ -4031,40 +4031,40 @@
 22509  op 0xb7 []
 22510  UNARY ! / coerce-bool
 22511  GETPROP [60030000]  // (obj, key) → value
-22516  op 0x21 [0100]
+22516  CALL-VAR21 argc=1
 22519  GETPROP [62030000]  // (obj, key) → value
 22524  push undefined
-22527  RECORD33 op 0x41 [e702000000000000…]
+22527  SETPROP-IC? key=743 ('closeLocalMenus')
 22560  op 0x11 []
 22561  push <op 0x0b>
 22562  push undefined
-22565  RECORD33 op 0x41 [f302000000000000…]
-22598  RECORD33 op 0x41 [f702000000000000…]
+22565  SETPROP-IC? key=755 ('noop')
+22598  SETPROP-IC? key=759 ('trim')
 22631  GETPROP [27030000]  // (obj, key) → value
 22636  push const2[457]
 22641  GETPROP [c8010000]  // (obj, key) → value
-22646  op 0x21 [0100]
+22646  CALL-VAR21 argc=1
 22649  GETPROP [63030000]  // (obj, key) → value
 22654  push undefined
-22657  RECORD33 op 0x41 [e702000000000000…]
+22657  SETPROP-IC? key=743 ('closeLocalMenus')
 22690  op 0x11 []
 22691  push <op 0x0b>
 22692  push const2[747]
 22697  GETPROP [ec020000]  // (obj, key) → value
 22702  push undefined
-22705  RECORD33 op 0x41 [f302000000000000…]
-22738  RECORD33 op 0x41 [1603000000000000…]
+22705  SETPROP-IC? key=755 ('noop')
+22738  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 22771  GETPROP [fe020000]  // (obj, key) → value
 22776  push undefined
-22779  RECORD33 op 0x41 [f302000000000000…]
-22812  RECORD33 op 0x41 [f702000000000000…]
+22779  SETPROP-IC? key=755 ('noop')
+22812  SETPROP-IC? key=759 ('trim')
 22845  GETPROP [27030000]  // (obj, key) → value
 22850  push const2[457]
 22855  GETPROP [c8010000]  // (obj, key) → value
-22860  op 0x21 [0100]
+22860  CALL-VAR21 argc=1
 22863  GETPROP [64030000]  // (obj, key) → value
 22868  push undefined
-22871  RECORD33 op 0x41 [e702000000000000…]
+22871  SETPROP-IC? key=743 ('closeLocalMenus')
 22904  op 0x11 []
 22905  push <op 0x0b>
 22906  push const2[454]
@@ -4074,41 +4074,41 @@
 22926  push const2[855]
 22931  GETPROP [fb020000]  // (obj, key) → value
 22936  push undefined
-22939  RECORD33 op 0x41 [f302000000000000…]
-22972  RECORD33 op 0x41 [fd02000000000000…]
+22939  SETPROP-IC? key=755 ('noop')
+22972  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 23005  GETPROP [f5020000]  // (obj, key) → value
 23010  push undefined
-23013  RECORD33 op 0x41 [f302000000000000…]
-23046  RECORD33 op 0x41 [fd02000000000000…]
+23013  SETPROP-IC? key=755 ('noop')
+23046  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 23079  GETPROP [f6020000]  // (obj, key) → value
 23084  push undefined
-23087  RECORD33 op 0x41 [f302000000000000…]
-23120  RECORD33 op 0x41 [1603000000000000…]
+23087  SETPROP-IC? key=755 ('noop')
+23120  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 23153  GETPROP [f8020000]  // (obj, key) → value
 23158  push const2[457]
 23163  GETPROP [c8010000]  // (obj, key) → value
-23168  op 0x21 [0100]
+23168  CALL-VAR21 argc=1
 23171  GETPROP [65030000]  // (obj, key) → value
 23176  push undefined
-23179  RECORD33 op 0x41 [e702000000000000…]
+23179  SETPROP-IC? key=743 ('closeLocalMenus')
 23212  op 0x11 []
 23213  push <op 0x0b>
 23214  push undefined
-23217  RECORD33 op 0x41 [e802000000000000…]
-23250  RECORD33 op 0x41 [5103000000000000…]
+23217  SETPROP-IC? key=744 ('dismissTopOverlay')
+23250  SETPROP-IC? key=849 ('ThemeBlueDefault')
 23283  GETPROP [0a030000]  // (obj, key) → value
 23288  push undefined
-23291  RECORD33 op 0x41 [1203000000000000…]
+23291  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 23324  op 0xbe [0c]
 23326  unary-op 0xf0
 23327  GETPROP [0c030000]  // (obj, key) → value
 23332  op 0xb7 []
 23333  UNARY ! / coerce-bool
 23334  GETPROP [60030000]  // (obj, key) → value
-23339  op 0x21 [0100]
+23339  CALL-VAR21 argc=1
 23342  GETPROP [66030000]  // (obj, key) → value
 23347  push undefined
-23350  RECORD33 op 0x41 [e702000000000000…]
+23350  SETPROP-IC? key=743 ('closeLocalMenus')
 23383  op 0x11 []
 23384  push <op 0x0b>
 23385  push global
@@ -4125,46 +4125,46 @@
 23412  GETPROP [1c030000]  // (obj, key) → value
 23417  push const2[457]
 23422  GETPROP [c8010000]  // (obj, key) → value
-23427  op 0x21 [0100]
+23427  CALL-VAR21 argc=1
 23430  GETPROP [68030000]  // (obj, key) → value
 23435  push undefined
-23438  RECORD33 op 0x41 [e702000000000000…]
+23438  SETPROP-IC? key=743 ('closeLocalMenus')
 23471  op 0x11 []
 23472  push <op 0x0b>
 23473  push const2[747]
 23478  GETPROP [ec020000]  // (obj, key) → value
 23483  push undefined
-23486  RECORD33 op 0x41 [f302000000000000…]
-23519  RECORD33 op 0x41 [fd02000000000000…]
+23486  SETPROP-IC? key=755 ('noop')
+23519  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 23552  GETPROP [fe020000]  // (obj, key) → value
 23557  push undefined
-23560  RECORD33 op 0x41 [f302000000000000…]
-23593  RECORD33 op 0x41 [1603000000000000…]
+23560  SETPROP-IC? key=755 ('noop')
+23593  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 23626  GETPROP [07030000]  // (obj, key) → value
 23631  push const2[457]
 23636  GETPROP [c8010000]  // (obj, key) → value
-23641  op 0x21 [0100]
+23641  CALL-VAR21 argc=1
 23644  GETPROP [69030000]  // (obj, key) → value
 23649  push undefined
-23652  RECORD33 op 0x41 [e702000000000000…]
+23652  SETPROP-IC? key=743 ('closeLocalMenus')
 23685  op 0x11 []
 23686  push <op 0x0b>
 23687  push const2[747]
 23692  GETPROP [ec020000]  // (obj, key) → value
 23697  push undefined
-23700  RECORD33 op 0x41 [f302000000000000…]
-23733  RECORD33 op 0x41 [fd02000000000000…]
+23700  SETPROP-IC? key=755 ('noop')
+23733  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 23766  GETPROP [fe020000]  // (obj, key) → value
 23771  push undefined
-23774  RECORD33 op 0x41 [f302000000000000…]
-23807  RECORD33 op 0x41 [1603000000000000…]
+23774  SETPROP-IC? key=755 ('noop')
+23807  SETPROP-IC? key=790 ('e$IMAGE_ACCEPT_TYPES\x12modelSlug VoiceSessionMode\x12D')
 23840  GETPROP [07030000]  // (obj, key) → value
 23845  push const2[457]
 23850  GETPROP [c8010000]  // (obj, key) → value
-23855  op 0x21 [0100]
+23855  CALL-VAR21 argc=1
 23858  GETPROP [6a030000]  // (obj, key) → value
 23863  push undefined
-23866  RECORD33 op 0x41 [e702000000000000…]
+23866  SETPROP-IC? key=743 ('closeLocalMenus')
 23899  op 0x11 []
 23900  push <op 0x0b>
 23901  push const2[454]
@@ -4176,15 +4176,15 @@
 23927  push const2[855]
 23932  GETPROP [fb020000]  // (obj, key) → value
 23937  push undefined
-23940  RECORD33 op 0x41 [f302000000000000…]
-23973  RECORD33 op 0x41 [fd02000000000000…]
+23940  SETPROP-IC? key=755 ('noop')
+23973  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 24006  GETPROP [f8020000]  // (obj, key) → value
 24011  push const2[457]
 24016  GETPROP [c8010000]  // (obj, key) → value
-24021  op 0x21 [0100]
+24021  CALL-VAR21 argc=1
 24024  GETPROP [6b030000]  // (obj, key) → value
 24029  push undefined
-24032  RECORD33 op 0x41 [e702000000000000…]
+24032  SETPROP-IC? key=743 ('closeLocalMenus')
 24065  op 0x11 []
 24066  push <op 0x0b>
 24067  push const2[454]
@@ -4192,13 +4192,13 @@
 24077  push const2[753]
 24082  GETPROP [ec020000]  // (obj, key) → value
 24087  push undefined
-24090  RECORD33 op 0x41 [f302000000000000…]
-24123  RECORD33 op 0x41 [fd02000000000000…]
+24090  SETPROP-IC? key=755 ('noop')
+24123  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 24156  GETPROP [fe020000]  // (obj, key) → value
-24161  op 0x21 [0100]
+24161  CALL-VAR21 argc=1
 24164  GETPROP [6c030000]  // (obj, key) → value
 24169  push undefined
-24172  RECORD33 op 0x41 [e702000000000000…]
+24172  SETPROP-IC? key=743 ('closeLocalMenus')
 24205  op 0x11 []
 24206  push <op 0x0b>
 24207  push const2[454]
@@ -4206,15 +4206,15 @@
 24217  push const2[753]
 24222  GETPROP [ec020000]  // (obj, key) → value
 24227  push undefined
-24230  RECORD33 op 0x41 [f302000000000000…]
-24263  RECORD33 op 0x41 [fd02000000000000…]
+24230  SETPROP-IC? key=755 ('noop')
+24263  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 24296  GETPROP [fe020000]  // (obj, key) → value
 24301  push const2[457]
 24306  GETPROP [c8010000]  // (obj, key) → value
-24311  op 0x21 [0100]
+24311  CALL-VAR21 argc=1
 24314  GETPROP [6d030000]  // (obj, key) → value
 24319  push undefined
-24322  RECORD33 op 0x41 [e702000000000000…]
+24322  SETPROP-IC? key=743 ('closeLocalMenus')
 24355  op 0x11 []
 24356  push <op 0x0b>
 24357  push const2[454]
@@ -4222,39 +4222,39 @@
 24367  push const2[747]
 24372  GETPROP [ec020000]  // (obj, key) → value
 24377  push undefined
-24380  RECORD33 op 0x41 [f302000000000000…]
-24413  RECORD33 op 0x41 [fd02000000000000…]
+24380  SETPROP-IC? key=755 ('noop')
+24413  SETPROP-IC? key=765 ('Global Search requires application-provided feature navigati')
 24446  GETPROP [fe020000]  // (obj, key) → value
 24451  push undefined
-24454  RECORD33 op 0x41 [f302000000000000…]
-24487  RECORD33 op 0x41 [1f03000000000000…]
+24454  SETPROP-IC? key=755 ('noop')
+24487  SETPROP-IC? key=799 ('persistenceTimer')
 24520  GETPROP [07030000]  // (obj, key) → value
 24525  push undefined
-24528  RECORD33 op 0x41 [f302000000000000…]
-24561  RECORD33 op 0x41 [f402000000000000…]
+24528  SETPROP-IC? key=755 ('noop')
+24561  SETPROP-IC? key=756 ('context')
 24594  GETPROP [f5020000]  // (obj, key) → value
 24599  push undefined
-24602  RECORD33 op 0x41 [f302000000000000…]
-24635  RECORD33 op 0x41 [f402000000000000…]
+24602  SETPROP-IC? key=755 ('noop')
+24635  SETPROP-IC? key=756 ('context')
 24668  GETPROP [f6020000]  // (obj, key) → value
 24673  push undefined
-24676  RECORD33 op 0x41 [f302000000000000…]
-24709  RECORD33 op 0x41 [1f03000000000000…]
+24676  SETPROP-IC? key=755 ('noop')
+24709  SETPROP-IC? key=799 ('persistenceTimer')
 24742  GETPROP [f8020000]  // (obj, key) → value
 24747  push const2[457]
 24752  GETPROP [c8010000]  // (obj, key) → value
-24757  op 0x21 [0100]
+24757  CALL-VAR21 argc=1
 24760  GETPROP [6e030000]  // (obj, key) → value
 24765  push undefined
-24768  RECORD33 op 0x41 [e702000000000000…]
+24768  SETPROP-IC? key=743 ('closeLocalMenus')
 24801  op 0x11 []
 24802  push <op 0x0b>
 24803  push undefined
-24806  RECORD33 op 0x41 [e802000000000000…]
-24839  RECORD33 op 0x41 [0903000000000000…]
+24806  SETPROP-IC? key=744 ('dismissTopOverlay')
+24839  SETPROP-IC? key=777 ('ntMessageId\x1cconversationId\x0centity\x12messageIdpEntity')
 24872  GETPROP [0a030000]  // (obj, key) → value
 24877  push undefined
-24880  RECORD33 op 0x41 [1203000000000000…]
+24880  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 24913  op 0xbe [0f]
 24915  unary-op 0xf0
 24916  GETPROP [0c030000]  // (obj, key) → value
@@ -4263,18 +4263,18 @@
 24923  GETPROP [60030000]  // (obj, key) → value
 24928  push const2[454]
 24933  GETPROP [0f030000]  // (obj, key) → value
-24938  op 0x21 [0100]
+24938  CALL-VAR21 argc=1
 24941  GETPROP [6f030000]  // (obj, key) → value
 24946  push undefined
-24949  RECORD33 op 0x41 [e702000000000000…]
+24949  SETPROP-IC? key=743 ('closeLocalMenus')
 24982  op 0x11 []
 24983  push <op 0x0b>
 24984  push undefined
-24987  RECORD33 op 0x41 [e802000000000000…]
-25020  RECORD33 op 0x41 [1103000000000000…]
+24987  SETPROP-IC? key=744 ('dismissTopOverlay')
+25020  SETPROP-IC? key=785 ('pose isVersionAtLeast\x0epresent$AttachmentMenuPage\x18capabili')
 25053  GETPROP [0a030000]  // (obj, key) → value
 25058  push undefined
-25061  RECORD33 op 0x41 [1203000000000000…]
+25061  SETPROP-IC? key=786 ('ies\x10onAction\x12onDismiss"isPartiallyHiding\x16transparent&pageB')
 25094  op 0xbe [0d]
 25096  unary-op 0xf0
 25097  GETPROP [0c030000]  // (obj, key) → value
@@ -4287,7 +4287,7 @@
 25117  GETPROP [60030000]  // (obj, key) → value
 25122  push const2[454]
 25127  GETPROP [0f030000]  // (obj, key) → value
-25132  op 0x21 [0100]
+25132  CALL-VAR21 argc=1
 25135  GETPROP [70030000]  // (obj, key) → value
 25140  store local[222]
 25142  END
@@ -4302,7 +4302,7 @@
 25172  op 0x08 []
 25173  op 0x35 []
 25174  op 0x35 []
-25175  op 0x21 [35cb]
+25175  CALL-VAR21 argc=52021
 25178  op 0x35 []
 25179  op 0x35 []
 25180  op 0x08 []
@@ -4315,7 +4315,7 @@
 25187  op 0xcb []
 25188  op 0x35 []
 25189  op 0x35 []
-25190  op 0x21 [35cb]
+25190  CALL-VAR21 argc=52021
 25193  op 0x35 []
 25194  op 0x35 []
 25195  op 0x08 []
@@ -4328,7 +4328,7 @@
 25202  op 0xcb []
 25203  op 0x35 []
 25204  op 0x35 []
-25205  op 0x21 [3535]
+25205  CALL-VAR21 argc=13621
 25209  op 0x4a []
 25210  op 0x02 [08353500]
 25215  op 0x4a []
@@ -4389,7 +4389,7 @@
 25323  op 0x10 []
 25325  op 0x08 []
 25326  op 0x30 [0008240008]
-25332  RECORD33 op 0x42 [00080e00081e0008…]
+25332  GETPROP-IC key=2048 ('#2048')
 25365  op 0x1e []
 25367  op 0x08 []
 25368  load <00>
@@ -4491,12 +4491,12 @@
 25579  op 0x4a []
 25580  op 0x02 [004a0221]
 25585  op 0x35 []
-25586  op 0x21 [2600]
+25586  CALL-VAR21 argc=38
 25589  op 0x4a []
 25590  op 0x02 [004a0200]
 25595  op 0x4a []
 25596  op 0x02 [352bc135]
-25601  op 0x21 [2135]
+25601  CALL-VAR21 argc=13601
 25605  op 0x4a []
 25606  op 0x02 [004a022b]
 25611  op 0xc1 [35]
@@ -4560,7 +4560,7 @@
 25746  op 0x35 []
 25747  op 0x2b []
 25748  op 0xc1 [35]
-25750  op 0x21 [2100]
+25750  CALL-VAR21 argc=33
 25753  op 0x4a []
 25754  op 0x02 [2bc1004a]
 25759  op 0x02 [df262bc1]
@@ -4615,7 +4615,7 @@
 25909  op 0x4a []
 25910  op 0x02 [004a022b]
 25915  op 0xc1 [35]
-25917  op 0x21 [2100]
+25917  CALL-VAR21 argc=33
 25920  op 0x4a []
 25921  op 0x02 [212bc100]
 25926  op 0x4a []
@@ -4638,7 +4638,7 @@
 25972  op 0x35 []
 25973  op 0x2b []
 25974  op 0xc1 [21]
-25976  op 0x21 [212b]
+25976  CALL-VAR21 argc=11041
 25979  op 0xc1 [35]
 25981  op 0x35 []
 25983  op 0x4a []
@@ -4649,11 +4649,11 @@
 26000  op 0x02 [352bc135]
 26005  push <op 0x26: 004a>
 26008  op 0x02 [2121df26]
-26013  op 0x21 [2bc1]
+26013  CALL-VAR21 argc=49451
 26016  op 0x35 []
 26017  push <op 0x26: 004a>
 26020  op 0x02 [2121df26]
-26025  op 0x21 [2bc1]
+26025  CALL-VAR21 argc=49451
 26028  op 0x35 []
 26030  op 0x4a []
 26031  op 0x02 [004a0200]
@@ -4666,7 +4666,7 @@
 26051  op 0x35 []
 26053  op 0x4a []
 26054  op 0x02 [21352bc1]
-26059  op 0x21 [212b]
+26059  CALL-VAR21 argc=11041
 26062  op 0xc1 [00]
 26064  op 0x4a []
 26065  op 0x02 [df263535]
@@ -4728,7 +4728,7 @@
 26209  op 0x4a []
 26210  op 0x02 [df262bc1]
 26215  push <op 0x26: 2121>
-26218  op 0x21 [2635]
+26218  CALL-VAR21 argc=13606
 26221  op 0x2b []
 26222  op 0xc1 [35]
 26225  op 0x4a []
@@ -4740,7 +4740,7 @@
 26241  op 0x2b []
 26242  op 0xc1 [35]
 26244  op 0x35 []
-26245  op 0x21 [3500]
+26245  CALL-VAR21 argc=53
 26248  op 0x4a []
 26249  op 0x02 [352bc135]
 26254  op 0x35 []
@@ -4764,7 +4764,7 @@
 26304  op 0x2b []
 26305  op 0x0e []
 26306  op 0x0e []
-26307  RECORD33 op 0x43 [0601000100010400…]
+26307  PROP/METHOD-IC? key=262 ('mportant info.<chatgpt.message.editing-notice\x1eEditin')
 26342  op 0x4c []
 26343  op 0xd2 []
 26344  op 0xd2 []
@@ -4792,7 +4792,7 @@
 26402  push str[5]  // 'o'
 26407  op 0x39 [02620400]
 26414  op 0x0e []
-26415  RECORD33 op 0x43 [0601000100010200…]
+26415  PROP/METHOD-IC? key=262 ('mportant info.<chatgpt.message.editing-notice\x1eEditin')
 26448  op 0xd2 []
 26449  push const2[886]
 26454  op 0x45 [7703000001000000]
@@ -4885,14 +4885,14 @@
 26874  op 0x02 [003c024e]
 26879  op 0x1c []
 26883  op 0x0e []
-26884  RECORD33 op 0x42 [0601000100010300…]
+26884  GETPROP-IC key=262 ('mportant info.<chatgpt.message.editing-notice\x1eEditin')
 26936  GETPROP [a0030000]  // (obj, key) → value
 26941  op 0xd2 []
-26942  RECORD33 op 0x41 [cd01000000000000…]
+26942  SETPROP-IC? key=461 ('hasAttachmentCapabilities')
 26975  GETPROP [cd010000]  // (obj, key) → value
 26980  op 0x38 [95000000]
 26985  op 0xd2 []
-26986  RECORD33 op 0x41 [6402000000000000…]
+26986  SETPROP-IC? key=612 ('fork-knife')
 27019  unary-op 0xf0
 27020  GETPROP [40000000]  // (obj, key) → value
 27025  pop
@@ -4912,7 +4912,7 @@
 27067  push const[000100b6]
 27072  push str[13]  // 'c'
 27077  op 0xbf [010d]
-27080  op 0xec [06]
+27080  jT/rel +6  → pc=27088
 27082  op 0xdd []
 27083  push const[01b606c0]
 27088  push const[0da606b8]
@@ -4948,7 +4948,7 @@
 27182  op 0x67 [0000]
 27185  op 0x68 [0d00]
 27188  op 0x11 []
-27189  op 0xeb [08]
+27189  jT/rel +8  → pc=27199
 27191  push undefined
 27194  op 0x1b []
 27195  CALL argc=0   // (callee, this) 已在栈上
@@ -4998,12 +4998,12 @@
 27313  UNARY ! / coerce-bool
 27314  GETPROP [b0030000]  // (obj, key) → value
 27319  op 0x68 [0100]
-27322  RECORD33 op 0x41 [b103000000000000…]
-27355  RECORD33 op 0x41 [4302000000000000…]
+27322  SETPROP-IC? key=945 ('T\x00h\x00i\x00s\x00 \x00w\x00i\x00l\x00l\x00')
+27355  SETPROP-IC? key=579 ('#0D0D0D')
 27388  GETPROP [b2030000]  // (obj, key) → value
 27393  op 0x68 [0e00]
-27396  RECORD33 op 0x41 [6d02000000000000…]
-27429  RECORD33 op 0x41 [6e02000000000000…]
+27396  SETPROP-IC? key=621 ('image')
+27429  SETPROP-IC? key=622 ('Image')
 27462  GETPROP [6f020000]  // (obj, key) → value
 27467  push <op 0x26: 0000>
 27470  GETPROP [b3030000]  // (obj, key) → value
@@ -5014,11 +5014,11 @@
 27483  UNARY ! / coerce-bool
 27484  GETPROP [b5030000]  // (obj, key) → value
 27489  op 0x61 [0600]
-27492  RECORD33 op 0x41 [7103000000000000…]
+27492  SETPROP-IC? key=881 ('Change model, currently ')
 27525  GETPROP [b6030000]  // (obj, key) → value
 27530  op 0x68 [0f00]
-27533  RECORD33 op 0x41 [b703000000000000…]
-27566  RECORD33 op 0x41 [b803000000000000…]
+27533  SETPROP-IC? key=951 ('ry.delete-cancel.\x14InlineEdit<chatgpt.history.rename-edi')
+27566  SETPROP-IC? key=952 ('or.\x0eRename \x12maxLength:MAX_CONVERSATION_TITLE_LENGTH\x10onCanc')
 27599  GETPROP [b9030000]  // (obj, key) → value
 27604  op 0xb7 []
 27605  UNARY ! / coerce-bool
@@ -5040,8 +5040,8 @@
 27645  op 0xc2 []
 27646  GETPROP [c0030000]  // (obj, key) → value
 27651  op 0x68 [0100]
-27654  RECORD33 op 0x41 [6202000000000000…]
-27687  RECORD33 op 0x41 [6702000000000000…]
+27654  SETPROP-IC? key=610 ('Check')
+27687  SETPROP-IC? key=615 ('lightbulb')
 27720  GETPROP [c1030000]  // (obj, key) → value
 27725  op 0x45 [c203000000000000]
 27734  push undefined
@@ -5055,9 +5055,9 @@
 27764  op 0x45 [c503000003000000]
 27773  push undefined
 27776  op 0x68 [1000]
-27779  RECORD33 op 0x41 [c603000000000000…]
+27779  SETPROP-IC? key=966 ('chatgpt.appearance')
 27812  op 0x11 []
-27813  op 0x21 [0000]
+27813  CALL-VAR21 argc=0
 27816  op 0x45 [c703000004000000]
 27825  push undefined
 27828  push global
@@ -5087,7 +5087,7 @@
 27934  push undefined
 27937  op 0x38 [b0000000]
 27942  op 0x11 []
-27943  op 0x21 [0000]
+27943  CALL-VAR21 argc=0
 27946  op 0x45 [d00300000d000000]
 27955  push undefined
 27958  push global
@@ -5095,12 +5095,12 @@
 27968  push undefined
 27971  op 0x38 [b0000000]
 27976  op 0x11 []
-27977  op 0x21 [0000]
+27977  CALL-VAR21 argc=0
 27980  op 0x45 [d20300000f000000]
 27989  push undefined
 27992  op 0x38 [b0000000]
 27997  op 0x11 []
-27998  op 0x21 [0000]
+27998  CALL-VAR21 argc=0
 28001  op 0x45 [d303000010000000]
 28010  push undefined
 28013  push global
@@ -5112,7 +5112,7 @@
 28037  push undefined
 28040  op 0x38 [b0000000]
 28045  op 0x11 []
-28046  op 0x21 [0000]
+28046  CALL-VAR21 argc=0
 28049  op 0x45 [d603000013000000]
 28058  push undefined
 28061  push <op 0x26: 0000>
@@ -5278,11 +5278,11 @@
 28805  ASSIGN  // value ← (target, value)
 28806  push str[187]  // 'Ao'
 28811  op 0xb7 []
-28812  op 0x21 [2621]
-28815  op 0x21 [2121]
+28812  CALL-VAR21 argc=8486
+28815  CALL-VAR21 argc=8481
 28818  push <op 0x26: 212b>
-28821  op 0x21 [2121]
-28824  op 0x21 [2126]
+28821  CALL-VAR21 argc=8481
+28824  CALL-VAR21 argc=9761
 28827  push <op 0x26: 2126>
 28831  op 0x4a []
 28832  op 0x02 [004a022b]
@@ -5404,37 +5404,37 @@
 29041  op 0x64 [0200]
 29044  op 0x07 []
 29045  op 0x68 [0000]
-29048  RECORD33 op 0x41 [0c04000000000000…]
+29048  SETPROP-IC? key=1036 ('AssistantResponseMode')
 29081  coerce
 29082  ASSIGN  // value ← (target, value)
 29083  op 0x11 []
-29084  op 0xec [05]
+29084  jT/rel +5  → pc=29091
 29086  op 0x0e []
 29087  push <op 0x06>
 29088  op 0xc6 []
 29089  ASSIGN  // value ← (target, value)
-29090  op 0xeb [04]
+29090  jT/rel +4  → pc=29096
 29092  push <op 0x06>
-29093  op 0xed [23]
+29093  jT/rel +35  → pc=29130
 29095  op 0xc6 []
-29096  RECORD33 op 0x41 [0d04000000000000…]
+29096  SETPROP-IC? key=1037 ('streamResponse')
 29129  op 0xcc []
 29130  op 0x07 []
 29131  op 0x68 [0000]
-29134  RECORD33 op 0x41 [0c04000000000000…]
+29134  SETPROP-IC? key=1036 ('AssistantResponseMode')
 29167  op 0xcf []
 29168  ASSIGN  // value ← (target, value)
 29169  op 0x11 []
-29170  op 0xec [05]
+29170  jT/rel +5  → pc=29177
 29172  op 0x0e []
 29173  push <op 0x06>
 29174  op 0xc7 []
 29175  ASSIGN  // value ← (target, value)
-29176  op 0xeb [04]
+29176  jT/rel +4  → pc=29182
 29178  push <op 0x06>
-29179  op 0xed [23]
+29179  jT/rel +35  → pc=29216
 29181  op 0xc7 []
-29182  RECORD33 op 0x41 [0e04000000000000…]
+29182  SETPROP-IC? key=1038 ('onComplete')
 29215  op 0xcd []
 29216  push <op 0x06>
 29217  push undefined
@@ -5445,7 +5445,7 @@
 29230  op 0xaf []
 29231  op 0x6c [04010000]
 29236  op 0x68 [0000]
-29239  RECORD33 op 0x42 [7d02000000000000…]
+29239  GETPROP-IC key=637 ('Send')
 29272  push <op 0x0b>
 29273  op 0xb7 []
 29274  UNARY ! / coerce-bool
@@ -5459,28 +5459,28 @@
 29294  CALL argc=1   // (callee, this) 已在栈上
 29297  op 0x0e []
 29298  push undefined
-29301  RECORD33 op 0x42 [d803000000000000…]
+29301  GETPROP-IC key=984 ('MAX_PICKED_FILES')
 29334  push undefined
 29337  op 0x68 [0000]
-29340  RECORD33 op 0x41 [c203000000000000…]
-29373  RECORD33 op 0x41 [af03000000000000…]
-29406  RECORD33 op 0x42 [0f04000000000000…]
+29340  SETPROP-IC? key=962 ('tRequest\x12dilResult entityReferences\x0cimages\x12reasoning<Ch')
+29373  SETPROP-IC? key=943 ('Delete ')
+29406  GETPROP-IC key=1039 ('onConversationState')
 29439  CALL argc=0   // (callee, this) 已在栈上
 29442  op 0x11 []
-29443  op 0xec [07]
+29443  jT/rel +7  → pc=29452
 29445  op 0x0e []
 29446  push const2[1040]
 29451  op 0x68 [0000]
-29454  RECORD33 op 0x41 [1104000000000000…]
+29454  SETPROP-IC? key=1041 ('onEntityReferences')
 29487  CALL argc=3   // (callee, this) 已在栈上
-29490  op 0xed [57]
+29490  jT/rel +87  → pc=29579
 29492  op 0x68 [0100]
-29495  RECORD33 op 0x41 [1204000000000000…]
+29495  SETPROP-IC? key=1042 ('onPreparedContent')
 29528  op 0x11 []
-29529  op 0xeb [30]
+29529  jT/rel +48  → pc=29579
 29531  op 0x0e []
 29532  op 0x38 [13040000]
-29537  RECORD33 op 0x42 [1404000000000000…]
+29537  GETPROP-IC key=1044 ('onTextDelta')
 29570  push const2[1045]
 29575  CALL argc=1   // (callee, this) 已在栈上
 29578  END
@@ -5506,37 +5506,37 @@
 29647  op 0x64 [0200]
 29650  op 0x07 []
 29651  op 0x68 [0000]
-29654  RECORD33 op 0x41 [0c04000000000000…]
+29654  SETPROP-IC? key=1036 ('AssistantResponseMode')
 29687  coerce
 29688  ASSIGN  // value ← (target, value)
 29689  op 0x11 []
-29690  op 0xec [05]
+29690  jT/rel +5  → pc=29697
 29692  op 0x0e []
 29693  push <op 0x06>
 29694  op 0xc6 []
 29695  ASSIGN  // value ← (target, value)
-29696  op 0xeb [04]
+29696  jT/rel +4  → pc=29702
 29698  push <op 0x06>
-29699  op 0xed [23]
+29699  jT/rel +35  → pc=29736
 29701  op 0xc6 []
-29702  RECORD33 op 0x41 [0d04000000000000…]
+29702  SETPROP-IC? key=1037 ('streamResponse')
 29735  op 0xcc []
 29736  op 0x07 []
 29737  op 0x68 [0000]
-29740  RECORD33 op 0x41 [0c04000000000000…]
+29740  SETPROP-IC? key=1036 ('AssistantResponseMode')
 29773  op 0xcf []
 29774  ASSIGN  // value ← (target, value)
 29775  op 0x11 []
-29776  op 0xec [05]
+29776  jT/rel +5  → pc=29783
 29778  op 0x0e []
 29779  push <op 0x06>
 29780  op 0xc7 []
 29781  ASSIGN  // value ← (target, value)
-29782  op 0xeb [04]
+29782  jT/rel +4  → pc=29788
 29784  push <op 0x06>
-29785  op 0xed [23]
+29785  jT/rel +35  → pc=29822
 29787  op 0xc7 []
-29788  RECORD33 op 0x41 [0e04000000000000…]
+29788  SETPROP-IC? key=1038 ('onComplete')
 29821  op 0xcd []
 29822  push <op 0x06>
 29823  push undefined
@@ -5547,7 +5547,7 @@
 29836  op 0xaf []
 29837  op 0x6c [92000000]
 29842  op 0x68 [0000]
-29845  RECORD33 op 0x42 [7d02000000000000…]
+29845  GETPROP-IC key=637 ('Send')
 29878  push <op 0x0b>
 29879  op 0xb7 []
 29880  UNARY ! / coerce-bool
@@ -5561,19 +5561,19 @@
 29900  CALL argc=1   // (callee, this) 已在栈上
 29903  op 0x0e []
 29904  push undefined
-29907  RECORD33 op 0x42 [d903000000000000…]
+29907  GETPROP-IC key=985 ('You can attach up to ')
 29940  push undefined
 29943  op 0x68 [0000]
-29946  RECORD33 op 0x41 [1104000000000000…]
+29946  SETPROP-IC? key=1041 ('onEntityReferences')
 29979  CALL argc=2   // (callee, this) 已在栈上
-29982  op 0xed [57]
+29982  jT/rel +87  → pc=30071
 29984  op 0x68 [0100]
-29987  RECORD33 op 0x41 [1204000000000000…]
+29987  SETPROP-IC? key=1042 ('onPreparedContent')
 30020  op 0x11 []
-30021  op 0xeb [30]
+30021  jT/rel +48  → pc=30071
 30023  op 0x0e []
 30024  op 0x38 [13040000]
-30029  RECORD33 op 0x42 [1404000000000000…]
+30029  GETPROP-IC key=1044 ('onTextDelta')
 30062  push const2[1046]
 30067  CALL argc=1   // (callee, this) 已在栈上
 30070  END
@@ -5601,37 +5601,37 @@
 30139  op 0x64 [0200]
 30142  op 0x07 []
 30143  op 0x68 [0000]
-30146  RECORD33 op 0x41 [0c04000000000000…]
+30146  SETPROP-IC? key=1036 ('AssistantResponseMode')
 30179  coerce
 30180  ASSIGN  // value ← (target, value)
 30181  op 0x11 []
-30182  op 0xec [05]
+30182  jT/rel +5  → pc=30189
 30184  op 0x0e []
 30185  push <op 0x06>
 30186  op 0xc6 []
 30187  ASSIGN  // value ← (target, value)
-30188  op 0xeb [04]
+30188  jT/rel +4  → pc=30194
 30190  push <op 0x06>
-30191  op 0xed [23]
+30191  jT/rel +35  → pc=30228
 30193  op 0xc6 []
-30194  RECORD33 op 0x41 [0d04000000000000…]
+30194  SETPROP-IC? key=1037 ('streamResponse')
 30227  op 0xcc []
 30228  op 0x07 []
 30229  op 0x68 [0000]
-30232  RECORD33 op 0x41 [0c04000000000000…]
+30232  SETPROP-IC? key=1036 ('AssistantResponseMode')
 30265  op 0xcf []
 30266  ASSIGN  // value ← (target, value)
 30267  op 0x11 []
-30268  op 0xec [05]
+30268  jT/rel +5  → pc=30275
 30270  op 0x0e []
 30271  push <op 0x06>
 30272  op 0xc7 []
 30273  ASSIGN  // value ← (target, value)
-30274  op 0xeb [04]
+30274  jT/rel +4  → pc=30280
 30276  push <op 0x06>
-30277  op 0xed [23]
+30277  jT/rel +35  → pc=30314
 30279  op 0xc7 []
-30280  RECORD33 op 0x41 [0e04000000000000…]
+30280  SETPROP-IC? key=1038 ('onComplete')
 30313  op 0xcd []
 30314  push <op 0x06>
 30315  push undefined
@@ -5642,7 +5642,7 @@
 30328  op 0xaf []
 30329  op 0x6c [e5000000]
 30334  op 0x68 [0000]
-30337  RECORD33 op 0x42 [7d02000000000000…]
+30337  GETPROP-IC key=637 ('Send')
 30370  push <op 0x0b>
 30371  op 0xb7 []
 30372  UNARY ! / coerce-bool
@@ -5656,26 +5656,26 @@
 30392  CALL argc=1   // (callee, this) 已在栈上
 30395  op 0x0e []
 30396  push undefined
-30399  RECORD33 op 0x42 [da03000000000000…]
+30399  GETPROP-IC key=986 (' files.')
 30432  push undefined
 30435  op 0x68 [0000]
-30438  RECORD33 op 0x41 [1104000000000000…]
+30438  SETPROP-IC? key=1041 ('onEntityReferences')
 30471  push <op 0x0b>
 30472  op 0x68 [0000]
-30475  RECORD33 op 0x41 [dc03000000000000…]
+30475  SETPROP-IC? key=988 ('MAX_PICKED_FILE_BYTES')
 30508  GETPROP [af020000]  // (obj, key) → value
 30513  op 0x68 [0000]
-30516  RECORD33 op 0x41 [dd03000000000000…]
+30516  SETPROP-IC? key=989 ('maximumFileBytes')
 30549  GETPROP [17040000]  // (obj, key) → value
 30554  CALL argc=3   // (callee, this) 已在栈上
-30557  op 0xed [57]
+30557  jT/rel +87  → pc=30646
 30559  op 0x68 [0100]
-30562  RECORD33 op 0x41 [1204000000000000…]
+30562  SETPROP-IC? key=1042 ('onPreparedContent')
 30595  op 0x11 []
-30596  op 0xeb [30]
+30596  jT/rel +48  → pc=30646
 30598  op 0x0e []
 30599  op 0x38 [13040000]
-30604  RECORD33 op 0x42 [1404000000000000…]
+30604  GETPROP-IC key=1044 ('onTextDelta')
 30637  push const2[1048]
 30642  CALL argc=1   // (callee, this) 已在栈上
 30645  END
@@ -5703,37 +5703,37 @@
 30718  op 0x64 [0200]
 30721  op 0x07 []
 30722  op 0x68 [0000]
-30725  RECORD33 op 0x41 [0c04000000000000…]
+30725  SETPROP-IC? key=1036 ('AssistantResponseMode')
 30758  coerce
 30759  ASSIGN  // value ← (target, value)
 30760  op 0x11 []
-30761  op 0xec [05]
+30761  jT/rel +5  → pc=30768
 30763  op 0x0e []
 30764  push <op 0x06>
 30765  op 0xc6 []
 30766  ASSIGN  // value ← (target, value)
-30767  op 0xeb [04]
+30767  jT/rel +4  → pc=30773
 30769  push <op 0x06>
-30770  op 0xed [23]
+30770  jT/rel +35  → pc=30807
 30772  op 0xc6 []
-30773  RECORD33 op 0x41 [0d04000000000000…]
+30773  SETPROP-IC? key=1037 ('streamResponse')
 30806  op 0xcc []
 30807  op 0x07 []
 30808  op 0x68 [0000]
-30811  RECORD33 op 0x41 [0c04000000000000…]
+30811  SETPROP-IC? key=1036 ('AssistantResponseMode')
 30844  op 0xcf []
 30845  ASSIGN  // value ← (target, value)
 30846  op 0x11 []
-30847  op 0xec [05]
+30847  jT/rel +5  → pc=30854
 30849  op 0x0e []
 30850  push <op 0x06>
 30851  op 0xc7 []
 30852  ASSIGN  // value ← (target, value)
-30853  op 0xeb [04]
+30853  jT/rel +4  → pc=30859
 30855  push <op 0x06>
-30856  op 0xed [23]
+30856  jT/rel +35  → pc=30893
 30858  op 0xc7 []
-30859  RECORD33 op 0x41 [0e04000000000000…]
+30859  SETPROP-IC? key=1038 ('onComplete')
 30892  op 0xcd []
 30893  push <op 0x06>
 30894  push undefined
@@ -5743,15 +5743,15 @@
 30904  op 0x07 []
 30905  push undefined
 30908  op 0xac []
-30909  op 0xeb [04]
+30909  jT/rel +4  → pc=30915
 30911  push <op 0x06>
-30912  op 0xed [25]
+30912  jT/rel +37  → pc=30951
 30914  push undefined
-30917  RECORD33 op 0x41 [db03000000000000…]
+30917  SETPROP-IC? key=987 ('acceptedTypes')
 30950  op 0xaf []
 30951  op 0x6c [bc000000]
 30956  op 0x68 [0000]
-30959  RECORD33 op 0x42 [7d02000000000000…]
+30959  GETPROP-IC key=637 ('Send')
 30992  push <op 0x0b>
 30993  op 0xb7 []
 30994  UNARY ! / coerce-bool
@@ -5765,23 +5765,23 @@
 31014  CALL argc=1   // (callee, this) 已在栈上
 31017  op 0x0e []
 31018  push undefined
-31021  RECORD33 op 0x42 [db03000000000000…]
+31021  GETPROP-IC key=987 ('acceptedTypes')
 31054  push undefined
 31057  op 0x68 [0000]
-31060  RECORD33 op 0x41 [1104000000000000…]
+31060  SETPROP-IC? key=1041 ('onEntityReferences')
 31093  push <op 0x0b>
 31094  op 0x68 [0000]
-31097  RECORD33 op 0x41 [dc03000000000000…]
+31097  SETPROP-IC? key=988 ('MAX_PICKED_FILE_BYTES')
 31130  GETPROP [af020000]  // (obj, key) → value
 31135  CALL argc=3   // (callee, this) 已在栈上
-31138  op 0xed [57]
+31138  jT/rel +87  → pc=31227
 31140  op 0x68 [0100]
-31143  RECORD33 op 0x41 [1204000000000000…]
+31143  SETPROP-IC? key=1042 ('onPreparedContent')
 31176  op 0x11 []
-31177  op 0xeb [30]
+31177  jT/rel +48  → pc=31227
 31179  op 0x0e []
 31180  op 0x38 [13040000]
-31185  RECORD33 op 0x42 [1404000000000000…]
+31185  GETPROP-IC key=1044 ('onTextDelta')
 31218  push const2[1049]
 31223  CALL argc=1   // (callee, this) 已在栈上
 31226  END
@@ -5812,63 +5812,63 @@
 31312  op 0x64 [0300]
 31315  op 0x64 [0200]
 31318  op 0x68 [0000]
-31321  RECORD33 op 0x41 [c203000000000000…]
-31354  RECORD33 op 0x41 [a803000000000000…]
-31387  RECORD33 op 0x42 [1a04000000000000…]
+31321  SETPROP-IC? key=962 ('tRequest\x12dilResult entityReferences\x0cimages\x12reasoning<Ch')
+31354  SETPROP-IC? key=936 ('Pin chat')
+31387  GETPROP-IC key=1050 ('setMessageReasoning')
 31420  op 0xc1 [00]
 31422  CALL argc=1   // (callee, this) 已在栈上
 31425  op 0xcc []
 31426  push <op 0x06>
 31427  push undefined
 31430  op 0xaf []
-31431  op 0xeb [4e]
+31431  jT/rel +78  → pc=31511
 31433  op 0x68 [0000]
-31436  RECORD33 op 0x42 [af02000000000000…]
+31436  GETPROP-IC key=687 ('voiceAudioLevelSource')
 31469  push undefined
-31472  RECORD33 op 0x41 [1b04000000000000…]
+31472  SETPROP-IC? key=1051 ('Live assistant response failed: ')
 31505  CALL argc=1   // (callee, this) 已在栈上
 31508  op 0x0e []
 31509  END
 31510  push <op 0x06>
 31511  op 0x68 [0000]
-31514  RECORD33 op 0x41 [1c04000000000000…]
+31514  SETPROP-IC? key=1052 ('finishMessageWithError')
 31547  ASSIGN  // value ← (target, value)
-31548  op 0xeb [59]
+31548  jT/rel +89  → pc=31639
 31550  op 0x68 [0100]
-31553  RECORD33 op 0x41 [1204000000000000…]
+31553  SETPROP-IC? key=1042 ('onPreparedContent')
 31586  op 0x11 []
-31587  op 0xeb [30]
+31587  jT/rel +48  → pc=31637
 31589  op 0x0e []
 31590  op 0x38 [13040000]
-31595  RECORD33 op 0x42 [1404000000000000…]
+31595  GETPROP-IC key=1044 ('onTextDelta')
 31628  push const2[1053]
 31633  CALL argc=1   // (callee, this) 已在栈上
 31636  op 0x0e []
 31637  END
 31638  op 0x07 []
 31639  op 0x68 [0000]
-31642  RECORD33 op 0x41 [ce03000000000000…]
-31675  RECORD33 op 0x42 [1a04000000000000…]
+31642  SETPROP-IC? key=974 ('Theme')
+31675  GETPROP-IC key=1050 ('setMessageReasoning')
 31708  op 0xc1 [01]
 31710  CALL argc=1   // (callee, this) 已在栈上
 31713  coerce
 31714  op 0xaf []
-31715  op 0xeb [09]
+31715  jT/rel +9  → pc=31726
 31717  push <op 0x06>
 31718  op 0xc6 []
 31719  op 0xaf []
-31720  op 0xeb [04]
+31720  jT/rel +4  → pc=31726
 31722  op 0xc6 []
-31723  op 0xed [4b]
+31723  jT/rel +75  → pc=31800
 31725  op 0x68 [0000]
-31728  RECORD33 op 0x41 [cf03000000000000…]
-31761  RECORD33 op 0x42 [1a04000000000000…]
+31728  SETPROP-IC? key=975 ('Light')
+31761  GETPROP-IC key=1050 ('setMessageReasoning')
 31794  op 0xc1 [02]
 31796  CALL argc=1   // (callee, this) 已在栈上
 31799  op 0xcd []
 31800  push <op 0x0b>
 31801  op 0x68 [0000]
-31804  RECORD33 op 0x42 [c303000000000000…]
+31804  GETPROP-IC key=963 ('tGPTConversationMessageRole\x08User\x1eparentMessageId')
 31837  op 0x94 []
 31838  op 0x18 []
 31839  op 0x45 [c303000000000000]
@@ -5876,8 +5876,8 @@
 31853  push <op 0x26: 0000>
 31856  GETPROP [1e040000]  // (obj, key) → value
 31861  op 0x68 [0200]
-31864  RECORD33 op 0x41 [b103000000000000…]
-31897  RECORD33 op 0x41 [4302000000000000…]
+31864  SETPROP-IC? key=945 ('T\x00h\x00i\x00s\x00 \x00w\x00i\x00l\x00l\x00')
+31897  SETPROP-IC? key=579 ('#0D0D0D')
 31930  GETPROP [b2030000]  // (obj, key) → value
 31935  op 0xd2 []
 31936  GETPROP [1f040000]  // (obj, key) → value
@@ -5885,53 +5885,53 @@
 31942  op 0x07 []
 31943  push undefined
 31946  op 0xac []
-31947  op 0xeb [04]
+31947  jT/rel +4  → pc=31953
 31949  push <op 0x06>
-31950  op 0xed [25]
+31950  jT/rel +37  → pc=31989
 31952  push undefined
-31955  RECORD33 op 0x41 [f301000000000000…]
+31955  SETPROP-IC? key=499 ('systemSemiboldFont')
 31988  op 0xcf []
 31989  op 0xaf []
-31990  op 0xeb [09]
+31990  jT/rel +9  → pc=32001
 31992  push <op 0x06>
 31993  op 0xc7 []
 31994  op 0xaf []
-31995  op 0xeb [04]
+31995  jT/rel +4  → pc=32001
 31997  op 0xc7 []
-31998  op 0xed [06]
+31998  jT/rel +6  → pc=32006
 32000  push const2[1056]
 32005  GETPROP [f3010000]  // (obj, key) → value
 32010  op 0x68 [0000]
-32013  RECORD33 op 0x42 [c503000000000000…]
+32013  GETPROP-IC key=965 ('registerDebugSettingsGroup')
 32046  op 0x94 []
 32047  op 0x18 []
 32048  op 0x45 [c503000001000000]
 32057  GETPROP [21040000]  // (obj, key) → value
 32062  store local[4]
 32064  op 0x68 [0000]
-32067  RECORD33 op 0x41 [d303000000000000…]
-32100  RECORD33 op 0x42 [6800000000000000…]
+32067  SETPROP-IC? key=979 ('.audio_reactive_wavefor')
+32100  GETPROP-IC key=104 ('$e')
 32133  op 0xd2 []
 32134  CALL argc=1   // (callee, this) 已在栈上
 32137  op 0x0e []
 32138  op 0x68 [0000]
-32141  RECORD33 op 0x42 [7d02000000000000…]
+32141  GETPROP-IC key=637 ('Send')
 32174  push <op 0x0b>
 32175  push undefined
 32178  push <op 0x26: 0100>
 32181  op 0xb7 []
 32182  op 0x68 [0000]
-32185  RECORD33 op 0x41 [c203000000000000…]
-32218  RECORD33 op 0x41 [a803000000000000…]
+32185  SETPROP-IC? key=962 ('tRequest\x12dilResult entityReferences\x0cimages\x12reasoning<Ch')
+32218  SETPROP-IC? key=936 ('Pin chat')
 32251  op 0x55 []
 32252  op 0x0e []
 32253  GETPROP [a8030000]  // (obj, key) → value
 32258  CALL argc=1   // (callee, this) 已在栈上
 32261  op 0x0e []
 32262  op 0x68 [0000]
-32265  RECORD33 op 0x42 [af02000000000000…]
+32265  GETPROP-IC key=687 ('voiceAudioLevelSource')
 32298  push undefined
-32301  RECORD33 op 0x41 [1b04000000000000…]
+32301  SETPROP-IC? key=1051 ('Live assistant response failed: ')
 32334  CALL argc=1   // (callee, this) 已在栈上
 32337  END
 32338  ASSIGN  // value ← (target, value)
@@ -6001,17 +6001,17 @@
 32612  op 0xb4 []
 32613  push <op 0x06>
 32614  push const[0c680000]
-32619  RECORD33 op 0x42 [e303000000000000…]
+32619  GETPROP-IC key=995 ('onFiles')
 32652  CALL argc=0   // (callee, this) 已在栈上
 32655  op 0x0e []
 32656  op 0x68 [0000]
-32659  RECORD33 op 0x42 [7d02000000000000…]
+32659  GETPROP-IC key=637 ('Send')
 32692  push <op 0x0b>
 32693  op 0xd2 []
 32694  GETPROP [a3030000]  // (obj, key) → value
 32699  op 0x68 [0100]
-32702  RECORD33 op 0x41 [b103000000000000…]
-32735  RECORD33 op 0x41 [4302000000000000…]
+32702  SETPROP-IC? key=945 ('T\x00h\x00i\x00s\x00 \x00w\x00i\x00l\x00l\x00')
+32735  SETPROP-IC? key=579 ('#0D0D0D')
 32768  GETPROP [b2030000]  // (obj, key) → value
 32773  CALL argc=1   // (callee, this) 已在栈上
 32776  END
@@ -6036,37 +6036,37 @@
 32839  op 0x64 [0200]
 32842  op 0x07 []
 32843  op 0x68 [0000]
-32846  RECORD33 op 0x41 [0c04000000000000…]
+32846  SETPROP-IC? key=1036 ('AssistantResponseMode')
 32879  coerce
 32880  ASSIGN  // value ← (target, value)
 32881  op 0x11 []
-32882  op 0xec [05]
+32882  jT/rel +5  → pc=32889
 32884  op 0x0e []
 32885  push <op 0x06>
 32886  op 0xc6 []
 32887  ASSIGN  // value ← (target, value)
-32888  op 0xeb [04]
+32888  jT/rel +4  → pc=32894
 32890  push <op 0x06>
-32891  op 0xed [23]
+32891  jT/rel +35  → pc=32928
 32893  op 0xc6 []
-32894  RECORD33 op 0x41 [0d04000000000000…]
+32894  SETPROP-IC? key=1037 ('streamResponse')
 32927  op 0xcc []
 32928  op 0x07 []
 32929  op 0x68 [0000]
-32932  RECORD33 op 0x41 [0c04000000000000…]
+32932  SETPROP-IC? key=1036 ('AssistantResponseMode')
 32965  op 0xcf []
 32966  ASSIGN  // value ← (target, value)
 32967  op 0x11 []
-32968  op 0xec [05]
+32968  jT/rel +5  → pc=32975
 32970  op 0x0e []
 32971  push <op 0x06>
 32972  op 0xc7 []
 32973  ASSIGN  // value ← (target, value)
-32974  op 0xeb [04]
+32974  jT/rel +4  → pc=32980
 32976  push <op 0x06>
-32977  op 0xed [23]
+32977  jT/rel +35  → pc=33014
 32979  op 0xc7 []
-32980  RECORD33 op 0x41 [0e04000000000000…]
+32980  SETPROP-IC? key=1038 ('onComplete')
 33013  op 0xcd []
 33014  push <op 0x06>
 33015  push undefined
@@ -6076,15 +6076,15 @@
 33025  op 0x07 []
 33026  push undefined
 33029  op 0xac []
-33030  op 0xeb [04]
+33030  jT/rel +4  → pc=33036
 33032  push <op 0x06>
-33033  op 0xed [25]
+33033  jT/rel +37  → pc=33072
 33035  push undefined
-33038  RECORD33 op 0x41 [de03000000000000…]
+33038  SETPROP-IC? key=990 ('maximumFiles')
 33071  op 0xaf []
 33072  op 0x6c [92000000]
 33077  op 0x68 [0000]
-33080  RECORD33 op 0x42 [7d02000000000000…]
+33080  GETPROP-IC key=637 ('Send')
 33113  push <op 0x0b>
 33114  op 0xb7 []
 33115  UNARY ! / coerce-bool
@@ -6098,19 +6098,19 @@
 33135  CALL argc=1   // (callee, this) 已在栈上
 33138  op 0x0e []
 33139  push undefined
-33142  RECORD33 op 0x42 [de03000000000000…]
+33142  GETPROP-IC key=990 ('maximumFiles')
 33175  push undefined
 33178  op 0x68 [0000]
-33181  RECORD33 op 0x41 [1104000000000000…]
+33181  SETPROP-IC? key=1041 ('onEntityReferences')
 33214  CALL argc=2   // (callee, this) 已在栈上
-33217  op 0xed [57]
+33217  jT/rel +87  → pc=33306
 33219  op 0x68 [0100]
-33222  RECORD33 op 0x41 [1204000000000000…]
+33222  SETPROP-IC? key=1042 ('onPreparedContent')
 33255  op 0x11 []
-33256  op 0xeb [30]
+33256  jT/rel +48  → pc=33306
 33258  op 0x0e []
 33259  op 0x38 [13040000]
-33264  RECORD33 op 0x42 [1404000000000000…]
+33264  GETPROP-IC key=1044 ('onTextDelta')
 33297  push const2[1058]
 33302  CALL argc=1   // (callee, this) 已在栈上
 33305  END
@@ -6145,40 +6145,40 @@
 33405  op 0x64 [0300]
 33408  op 0x07 []
 33409  op 0x68 [0000]
-33412  RECORD33 op 0x41 [0c04000000000000…]
+33412  SETPROP-IC? key=1036 ('AssistantResponseMode')
 33445  coerce
 33446  ASSIGN  // value ← (target, value)
 33447  op 0x11 []
-33448  op 0xec [05]
+33448  jT/rel +5  → pc=33455
 33450  op 0x0e []
 33451  push <op 0x06>
 33452  op 0xc6 []
 33453  ASSIGN  // value ← (target, value)
-33454  op 0xeb [04]
+33454  jT/rel +4  → pc=33460
 33456  push <op 0x06>
-33457  op 0xed [23]
+33457  jT/rel +35  → pc=33494
 33459  op 0xc6 []
-33460  RECORD33 op 0x41 [0d04000000000000…]
+33460  SETPROP-IC? key=1037 ('streamResponse')
 33493  op 0xcd []
 33494  op 0x07 []
 33495  op 0x68 [0000]
-33498  RECORD33 op 0x41 [0c04000000000000…]
+33498  SETPROP-IC? key=1036 ('AssistantResponseMode')
 33531  op 0xcf []
 33532  ASSIGN  // value ← (target, value)
 33533  op 0x11 []
-33534  op 0xec [05]
+33534  jT/rel +5  → pc=33541
 33536  op 0x0e []
 33537  push <op 0x06>
 33538  op 0xc7 []
 33539  ASSIGN  // value ← (target, value)
-33540  op 0xeb [04]
+33540  jT/rel +4  → pc=33546
 33542  push <op 0x06>
-33543  op 0xed [23]
+33543  jT/rel +35  → pc=33580
 33545  op 0xc7 []
-33546  RECORD33 op 0x41 [0e04000000000000…]
+33546  SETPROP-IC? key=1038 ('onComplete')
 33579  store local[4]
 33581  op 0x68 [0000]
-33584  RECORD33 op 0x41 [a802000000000000…]
+33584  SETPROP-IC? key=680 ('workDraft')
 33617  store local[5]
 33619  push <op 0x06>
 33620  push undefined
@@ -6190,58 +6190,58 @@
 33632  op 0x07 []
 33633  push undefined
 33636  op 0xac []
-33637  op 0xeb [04]
+33637  jT/rel +4  → pc=33643
 33639  push <op 0x06>
-33640  op 0xed [25]
+33640  jT/rel +37  → pc=33679
 33642  push undefined
-33645  RECORD33 op 0x41 [df03000000000000…]
+33645  SETPROP-IC? key=991 ('MAX_PICKED_TOTAL_BYTES')
 33678  ASSIGN  // value ← (target, value)
 33679  op 0x11 []
-33680  op 0xec [7f]
+33680  jT/rel +127  → pc=33809
 33682  op 0x0e []
 33683  push <op 0x06>
 33684  op 0x07 []
 33685  push undefined
 33688  op 0xac []
-33689  op 0xeb [04]
+33689  jT/rel +4  → pc=33695
 33691  push <op 0x06>
-33692  op 0xed [25]
+33692  jT/rel +37  → pc=33731
 33694  push undefined
-33697  RECORD33 op 0x41 [1f04000000000000…]
+33697  SETPROP-IC? key=1055 ('max')
 33730  ASSIGN  // value ← (target, value)
 33731  op 0x11 []
-33732  op 0xec [4b]
+33732  jT/rel +75  → pc=33809
 33734  op 0x0e []
 33735  push global
 33736  op 0xd3 []
-33737  RECORD33 op 0x41 [3600000000000000…]
-33770  RECORD33 op 0x42 [0f04000000000000…]
+33737  SETPROP-IC? key=54 ('J')
+33770  GETPROP-IC key=1039 ('onConversationState')
 33803  CALL argc=0   // (callee, this) 已在栈上
 33806  op 0xea []
 33807  ASSIGN  // value ← (target, value)
-33808  op 0xeb [02]
+33808  jT/rel +2  → pc=33812
 33810  END
 33811  op 0x07 []
 33812  op 0xd2 []
-33813  RECORD33 op 0x41 [2304000000000000…]
+33813  SETPROP-IC? key=1059 ('Unable to save ChatGPT conversation state: ')
 33846  op 0xd0 []
 33847  op 0xaf []
-33848  op 0xeb [09]
+33848  jT/rel +9  → pc=33859
 33850  push <op 0x06>
 33851  op 0xc8 []
 33852  op 0xaf []
-33853  op 0xeb [04]
+33853  jT/rel +4  → pc=33859
 33855  op 0xc8 []
-33856  op 0xed [73]
+33856  jT/rel +115  → pc=33973
 33858  op 0x68 [0000]
-33861  RECORD33 op 0x42 [cc02000000000000…]
+33861  GETPROP-IC key=716 ('handleWelcomeViewportLayout')
 33894  op 0xd2 []
-33895  RECORD33 op 0x41 [1b04000000000000…]
+33895  SETPROP-IC? key=1051 ('Live assistant response failed: ')
 33928  CALL argc=1   // (callee, this) 已在栈上
-33931  op 0xeb [27]
+33931  jT/rel +39  → pc=33972
 33933  push undefined
-33936  RECORD33 op 0x41 [2404000000000000…]
-33969  op 0xed [02]
+33936  SETPROP-IC? key=1060 ('test')
+33969  jT/rel +2  → pc=33973
 33971  push <op 0x06>
 33972  store local[6]
 33974  push <op 0x06>
@@ -6249,27 +6249,27 @@
 33978  op 0xaf []
 33979  op 0x6c [8c000000]
 33984  push undefined
-33987  RECORD33 op 0x42 [df03000000000000…]
+33987  GETPROP-IC key=991 ('MAX_PICKED_TOTAL_BYTES')
 34020  push undefined
 34023  push <op 0x0b>
 34024  push undefined
-34027  RECORD33 op 0x41 [1f04000000000000…]
+34027  SETPROP-IC? key=1055 ('max')
 34060  GETPROP [25040000]  // (obj, key) → value
 34065  op 0xd3 []
 34066  GETPROP [26040000]  // (obj, key) → value
 34071  push undefined
 34074  GETPROP [27040000]  // (obj, key) → value
 34079  op 0x68 [0000]
-34082  RECORD33 op 0x41 [1104000000000000…]
+34082  SETPROP-IC? key=1041 ('onEntityReferences')
 34115  CALL argc=3   // (callee, this) 已在栈上
-34118  op 0xed [57]
+34118  jT/rel +87  → pc=34207
 34120  op 0x68 [0100]
-34123  RECORD33 op 0x41 [1204000000000000…]
+34123  SETPROP-IC? key=1042 ('onPreparedContent')
 34156  op 0x11 []
-34157  op 0xeb [30]
+34157  jT/rel +48  → pc=34207
 34159  op 0x0e []
 34160  op 0x38 [13040000]
-34165  RECORD33 op 0x42 [1404000000000000…]
+34165  GETPROP-IC key=1044 ('onTextDelta')
 34198  push const2[1064]
 34203  CALL argc=1   // (callee, this) 已在栈上
 34206  END

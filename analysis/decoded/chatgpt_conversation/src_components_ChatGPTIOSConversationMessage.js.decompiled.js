@@ -668,7 +668,7 @@
   738  op 0x64 [0100]
   741  op 0x64 [0000]
   744  op 0x38 [91000000]
-  749  RECORD33 op 0x42 [6500000000000000…]
+  749  GETPROP-IC key=101 ('label')
   782  push <op 0xd4>
   783  push const2[304]
   788  push <op 0x0b>
@@ -695,66 +695,66 @@
   855  op 0xd2 []
   856  push const2[309]
   861  unary-op 0xf0
-  862  RECORD33 op 0x41 [3601000000000000…]
+  862  SETPROP-IC? key=310 ('beginRender')
   895  op 0xca []
   896  push undefined
-  899  RECORD33 op 0x42 [3701000000000000…]
+  899  GETPROP-IC key=311 ('setAttributeRef')
   932  push const2[312]
   937  push const2[313]
   942  push <op 0x26: 0200>
   945  CALL argc=1   // (callee, this) 已在栈上
   948  op 0xcb []
   949  push undefined
-  952  RECORD33 op 0x42 [3701000000000000…]
+  952  GETPROP-IC key=311 ('setAttributeRef')
   985  push const2[314]
   990  op 0xbe [12]
   992  push <op 0x26: 0200>
   995  CALL argc=1   // (callee, this) 已在栈上
   998  op 0xcc []
   999  push undefined
- 1002  RECORD33 op 0x42 [3b01000000000000…]
+ 1002  GETPROP-IC key=315 ('setAttributeStyle')
  1035  push const2[316]
  1040  CALL argc=1   // (callee, this) 已在栈上
  1043  op 0xcd []
  1044  push undefined
- 1047  RECORD33 op 0x42 [3701000000000000…]
+ 1047  GETPROP-IC key=311 ('setAttributeRef')
  1080  CALL argc=0   // (callee, this) 已在栈上
  1083  store local[4]
  1085  push undefined
- 1088  RECORD33 op 0x42 [3b01000000000000…]
+ 1088  GETPROP-IC key=315 ('setAttributeStyle')
  1121  push const2[316]
  1126  CALL argc=1   // (callee, this) 已在栈上
  1129  store local[5]
  1131  push undefined
- 1134  RECORD33 op 0x42 [3b01000000000000…]
+ 1134  GETPROP-IC key=315 ('setAttributeStyle')
  1167  push const2[316]
  1172  CALL argc=1   // (callee, this) 已在栈上
  1175  store local[6]
  1177  push undefined
- 1180  RECORD33 op 0x42 [3b01000000000000…]
+ 1180  GETPROP-IC key=315 ('setAttributeStyle')
  1213  push const2[317]
  1218  CALL argc=1   // (callee, this) 已在栈上
  1221  store local[7]
  1223  push undefined
- 1226  RECORD33 op 0x42 [3b01000000000000…]
+ 1226  GETPROP-IC key=315 ('setAttributeStyle')
  1259  push const2[316]
  1264  CALL argc=1   // (callee, this) 已在栈上
  1267  store local[8]
  1269  push undefined
- 1272  RECORD33 op 0x42 [3701000000000000…]
+ 1272  GETPROP-IC key=311 ('setAttributeRef')
  1305  CALL argc=0   // (callee, this) 已在栈上
  1308  store local[9]
  1310  push undefined
- 1313  RECORD33 op 0x42 [3b01000000000000…]
+ 1313  GETPROP-IC key=315 ('setAttributeStyle')
  1346  push const2[318]
  1351  CALL argc=1   // (callee, this) 已在栈上
  1354  store local[10]
  1356  push undefined
- 1359  RECORD33 op 0x42 [3701000000000000…]
+ 1359  GETPROP-IC key=311 ('setAttributeRef')
  1392  CALL argc=0   // (callee, this) 已在栈上
  1395  store local[11]
  1397  push undefined
- 1400  RECORD33 op 0x42 [3b01000000000000…]
+ 1400  GETPROP-IC key=315 ('setAttributeStyle')
  1433  push const2[316]
  1438  push const2[319]
  1443  push const2[320]
@@ -762,16 +762,16 @@
  1451  CALL argc=2   // (callee, this) 已在栈上
  1454  store local[12]
  1456  push undefined
- 1459  RECORD33 op 0x42 [3701000000000000…]
+ 1459  GETPROP-IC key=311 ('setAttributeRef')
  1492  CALL argc=0   // (callee, this) 已在栈上
  1495  store local[13]
  1497  push undefined
- 1500  RECORD33 op 0x42 [3b01000000000000…]
+ 1500  GETPROP-IC key=315 ('setAttributeStyle')
  1533  push const2[316]
  1538  CALL argc=1   // (callee, this) 已在栈上
  1541  store local[14]
  1543  push undefined
- 1546  RECORD33 op 0x42 [3701000000000000…]
+ 1546  GETPROP-IC key=311 ('setAttributeRef')
  1579  push const2[321]
  1584  push const2[322]
  1589  push const2[323]
@@ -784,43 +784,43 @@
  1619  CALL argc=1   // (callee, this) 已在栈上
  1622  store local[15]
  1624  push undefined
- 1627  RECORD33 op 0x42 [3b01000000000000…]
+ 1627  GETPROP-IC key=315 ('setAttributeStyle')
  1660  push const2[316]
  1665  CALL argc=1   // (callee, this) 已在栈上
  1668  store local[16]
  1670  push undefined
- 1673  RECORD33 op 0x42 [3701000000000000…]
+ 1673  GETPROP-IC key=311 ('setAttributeRef')
  1706  push const2[314]
  1711  op 0xbe [13]
  1713  push <op 0x26: 0200>
  1716  CALL argc=1   // (callee, this) 已在栈上
  1719  store local[17]
  1721  push undefined
- 1724  RECORD33 op 0x42 [3b01000000000000…]
+ 1724  GETPROP-IC key=315 ('setAttributeStyle')
  1757  push const2[316]
  1762  CALL argc=1   // (callee, this) 已在栈上
  1765  store local[18]
  1767  push undefined
- 1770  RECORD33 op 0x42 [3701000000000000…]
+ 1770  GETPROP-IC key=311 ('setAttributeRef')
  1803  push const2[327]
  1808  op 0xb7 []
  1809  push <op 0x26: 0200>
  1812  CALL argc=1   // (callee, this) 已在栈上
  1815  store local[19]
  1817  push undefined
- 1820  RECORD33 op 0x42 [3701000000000000…]
+ 1820  GETPROP-IC key=311 ('setAttributeRef')
  1853  push const2[327]
  1858  op 0xb7 []
  1859  push <op 0x26: 0200>
  1862  CALL argc=1   // (callee, this) 已在栈上
  1865  store local[20]
  1867  push undefined
- 1870  RECORD33 op 0x42 [3b01000000000000…]
+ 1870  GETPROP-IC key=315 ('setAttributeStyle')
  1903  push const2[316]
  1908  CALL argc=1   // (callee, this) 已在栈上
  1911  store local[21]
  1913  push undefined
- 1916  RECORD33 op 0x42 [3b01000000000000…]
+ 1916  GETPROP-IC key=315 ('setAttributeStyle')
  1949  push const2[317]
  1954  push const2[64]
  1959  push const2[328]
@@ -828,7 +828,7 @@
  1967  CALL argc=2   // (callee, this) 已在栈上
  1970  store local[22]
  1972  push undefined
- 1975  RECORD33 op 0x42 [3b01000000000000…]
+ 1975  GETPROP-IC key=315 ('setAttributeStyle')
  2008  push const2[316]
  2013  push const2[312]
  2018  push const2[313]
@@ -836,31 +836,31 @@
  2026  CALL argc=2   // (callee, this) 已在栈上
  2029  store local[23]
  2031  push undefined
- 2034  RECORD33 op 0x42 [3701000000000000…]
+ 2034  GETPROP-IC key=311 ('setAttributeRef')
  2067  push const2[314]
  2072  op 0xbe [0e]
  2074  push <op 0x26: 0200>
  2077  CALL argc=1   // (callee, this) 已在栈上
  2080  store local[24]
  2082  push undefined
- 2085  RECORD33 op 0x42 [3b01000000000000…]
+ 2085  GETPROP-IC key=315 ('setAttributeStyle')
  2118  push const2[317]
  2123  CALL argc=1   // (callee, this) 已在栈上
  2126  store local[25]
  2128  push undefined
- 2131  RECORD33 op 0x42 [3b01000000000000…]
+ 2131  GETPROP-IC key=315 ('setAttributeStyle')
  2164  push const2[316]
  2169  CALL argc=1   // (callee, this) 已在栈上
  2172  store local[26]
  2174  push undefined
- 2177  RECORD33 op 0x42 [3701000000000000…]
+ 2177  GETPROP-IC key=311 ('setAttributeRef')
  2210  push const2[319]
  2215  push const2[329]
  2220  push <op 0x26: 0200>
  2223  CALL argc=1   // (callee, this) 已在栈上
  2226  store local[27]
  2228  push undefined
- 2231  RECORD33 op 0x42 [3b01000000000000…]
+ 2231  GETPROP-IC key=315 ('setAttributeStyle')
  2264  push const2[317]
  2269  push const2[64]
  2274  push const2[330]
@@ -868,19 +868,19 @@
  2282  CALL argc=2   // (callee, this) 已在栈上
  2285  store local[28]
  2287  push undefined
- 2290  RECORD33 op 0x42 [3b01000000000000…]
+ 2290  GETPROP-IC key=315 ('setAttributeStyle')
  2323  push const2[316]
  2328  CALL argc=1   // (callee, this) 已在栈上
  2331  store local[29]
  2333  push undefined
- 2336  RECORD33 op 0x42 [3701000000000000…]
+ 2336  GETPROP-IC key=311 ('setAttributeRef')
  2369  push const2[314]
  2374  op 0xbe [11]
  2376  push <op 0x26: 0200>
  2379  CALL argc=1   // (callee, this) 已在栈上
  2382  store local[30]
  2384  push undefined
- 2387  RECORD33 op 0x42 [3b01000000000000…]
+ 2387  GETPROP-IC key=315 ('setAttributeStyle')
  2420  push const2[317]
  2425  push const2[64]
  2430  push const2[331]
@@ -888,17 +888,17 @@
  2438  CALL argc=2   // (callee, this) 已在栈上
  2441  store local[31]
  2443  push undefined
- 2446  RECORD33 op 0x42 [3b01000000000000…]
+ 2446  GETPROP-IC key=315 ('setAttributeStyle')
  2479  push const2[316]
  2484  CALL argc=1   // (callee, this) 已在栈上
  2487  store local[32]
  2489  push undefined
- 2492  RECORD33 op 0x42 [3b01000000000000…]
+ 2492  GETPROP-IC key=315 ('setAttributeStyle')
  2525  push const2[316]
  2530  CALL argc=1   // (callee, this) 已在栈上
  2533  store local[33]
  2535  push undefined
- 2538  RECORD33 op 0x42 [3701000000000000…]
+ 2538  GETPROP-IC key=311 ('setAttributeRef')
  2571  push const2[319]
  2576  push const2[332]
  2581  push const2[333]
@@ -907,7 +907,7 @@
  2594  CALL argc=1   // (callee, this) 已在栈上
  2597  store local[34]
  2599  push undefined
- 2602  RECORD33 op 0x42 [3701000000000000…]
+ 2602  GETPROP-IC key=311 ('setAttributeRef')
  2635  push const2[319]
  2640  push const2[335]
  2645  push const2[333]
@@ -916,7 +916,7 @@
  2658  CALL argc=1   // (callee, this) 已在栈上
  2661  store local[35]
  2663  push undefined
- 2666  RECORD33 op 0x42 [3701000000000000…]
+ 2666  GETPROP-IC key=311 ('setAttributeRef')
  2699  push const2[319]
  2704  push const2[337]
  2709  push const2[333]
@@ -925,7 +925,7 @@
  2722  CALL argc=1   // (callee, this) 已在栈上
  2725  store local[36]
  2727  push undefined
- 2730  RECORD33 op 0x42 [3701000000000000…]
+ 2730  GETPROP-IC key=311 ('setAttributeRef')
  2763  push const2[319]
  2768  push const2[339]
  2773  push const2[333]
@@ -934,7 +934,7 @@
  2786  CALL argc=1   // (callee, this) 已在栈上
  2789  store local[37]
  2791  push undefined
- 2794  RECORD33 op 0x42 [3b01000000000000…]
+ 2794  GETPROP-IC key=315 ('setAttributeStyle')
  2827  push const2[317]
  2832  push const2[64]
  2837  push const2[341]
@@ -942,16 +942,16 @@
  2845  CALL argc=2   // (callee, this) 已在栈上
  2848  store local[38]
  2850  push undefined
- 2853  RECORD33 op 0x42 [3b01000000000000…]
+ 2853  GETPROP-IC key=315 ('setAttributeStyle')
  2886  push const2[316]
  2891  CALL argc=1   // (callee, this) 已在栈上
  2894  store local[39]
  2896  push undefined
- 2899  RECORD33 op 0x42 [3701000000000000…]
+ 2899  GETPROP-IC key=311 ('setAttributeRef')
  2932  CALL argc=0   // (callee, this) 已在栈上
  2935  store local[40]
  2937  push undefined
- 2940  RECORD33 op 0x42 [3701000000000000…]
+ 2940  GETPROP-IC key=311 ('setAttributeRef')
  2973  CALL argc=0   // (callee, this) 已在栈上
  2976  store local[41]
  2978  op 0xd2 []
@@ -1049,7 +1049,7 @@
  3185  op 0xc1 [00]
  3187  op 0xc3 [41]
  3189  op 0x11 []
- 3190  op 0xec [10]
+ 3190  jT/rel +16  → pc=3208
  3192  op 0x0e []
  3193  push <op 0xd4>
  3194  push <op 0x0b>
@@ -1062,7 +1062,7 @@
  3210  op 0xc1 [01]
  3212  op 0xc3 [42]
  3214  op 0x11 []
- 3215  op 0xec [10]
+ 3215  jT/rel +16  → pc=3233
  3217  op 0x0e []
  3218  push <op 0xd4>
  3219  push <op 0x0b>
@@ -1074,7 +1074,7 @@
  3234  op 0xc1 [02]
  3236  op 0xc3 [43]
  3238  op 0x11 []
- 3239  op 0xec [10]
+ 3239  jT/rel +16  → pc=3257
  3241  op 0x0e []
  3242  push <op 0xd4>
  3243  push <op 0x0b>
@@ -1086,7 +1086,7 @@
  3258  op 0xc1 [03]
  3260  op 0xc3 [44]
  3262  op 0x11 []
- 3263  op 0xec [10]
+ 3263  jT/rel +16  → pc=3281
  3265  op 0x0e []
  3266  push <op 0xd4>
  3267  push <op 0x0b>
@@ -1110,15 +1110,15 @@
  3304  UNARY ! / coerce-bool
  3305  GETPROP [6d010000]  // (obj, key) → value
  3310  push undefined
- 3313  RECORD33 op 0x41 [6e01000000000000…]
- 3346  RECORD33 op 0x41 [6f01000000000000…]
+ 3313  SETPROP-IC? key=366 ('payload')
+ 3346  SETPROP-IC? key=367 ('errorMode')
  3379  GETPROP [70010000]  // (obj, key) → value
  3384  op 0xc0 [04]
  3386  GETPROP [71010000]  // (obj, key) → value
  3391  store local[73]
  3393  op 0x64 [4a00]
  3396  push undefined
- 3399  RECORD33 op 0x41 [7201000000000000…]
+ 3399  SETPROP-IC? key=370 ('handler')
  3432  op 0x64 [4b00]
  3435  op 0xc0 [06]
  3437  op 0x59 [2501000001]
@@ -1132,7 +1132,7 @@
  3460  store local[76]
  3462  op 0x64 [4d00]
  3465  push undefined
- 3468  RECORD33 op 0x41 [7201000000000000…]
+ 3468  SETPROP-IC? key=370 ('handler')
  3501  op 0x64 [4e00]
  3504  op 0xc0 [07]
  3506  op 0x59 [2601000001]
@@ -1170,21 +1170,21 @@
  3620  push undefined
  3623  op 0x45 [2601000009000000]
  3632  push undefined
- 3635  RECORD33 op 0x41 [7f01000000000000…]
+ 3635  SETPROP-IC? key=383 ('onOpenImage')
  3668  op 0xbe [11]
  3670  push undefined
- 3673  RECORD33 op 0x41 [8001000000000000…]
- 3706  RECORD33 op 0x41 [8101000000000000…]
+ 3673  SETPROP-IC? key=384 ('chatgpt.message.image.')
+ 3706  SETPROP-IC? key=385 ('.')
  3739  push undefined
- 3742  RECORD33 op 0x41 [8201000000000000…]
- 3775  RECORD33 op 0x41 [8301000000000000…]
+ 3742  SETPROP-IC? key=386 ('aspectRatio')
+ 3775  SETPROP-IC? key=387 ('Image')
  3808  op 0xb7 []
  3809  UNARY ! / coerce-bool
  3810  op 0x22 [0400]
  3813  store local[87]
  3815  push <op 0x0b>
  3816  push undefined
- 3819  RECORD33 op 0x41 [8401000000000000…]
+ 3819  SETPROP-IC? key=388 ('onOpenAttachment')
  3852  op 0x11 []
  3853  push <op 0x0b>
  3854  push const2[389]
@@ -1192,22 +1192,22 @@
  3864  push const2[391]
  3869  GETPROP [88010000]  // (obj, key) → value
  3874  push undefined
- 3877  RECORD33 op 0x41 [8901000000000000…]
- 3910  RECORD33 op 0x41 [8a01000000000000…]
+ 3877  SETPROP-IC? key=393 ('image')
+ 3910  SETPROP-IC? key=394 ('folder-open')
  3943  GETPROP [8b010000]  // (obj, key) → value
  3948  op 0xbf [d802]
  3951  GETPROP [8c010000]  // (obj, key) → value
  3956  push const2[322]
  3961  GETPROP [46010000]  // (obj, key) → value
- 3966  op 0x21 [0100]
+ 3966  CALL-VAR21 argc=1
  3969  GETPROP [8d010000]  // (obj, key) → value
  3974  push undefined
- 3977  RECORD33 op 0x41 [8401000000000000…]
+ 3977  SETPROP-IC? key=388 ('onOpenAttachment')
  4010  op 0x11 []
  4011  push <op 0x0b>
  4012  push undefined
- 4015  RECORD33 op 0x41 [8e01000000000000…]
- 4048  RECORD33 op 0x41 [8f01000000000000…]
+ 4015  SETPROP-IC? key=398 ('Secondary')
+ 4048  SETPROP-IC? key=399 ('formatChatGPTAttachmentSize')
  4081  GETPROP [90010000]  // (obj, key) → value
  4086  op 0xbe [14]
  4088  GETPROP [91010000]  // (obj, key) → value
@@ -1221,15 +1221,15 @@
  4119  GETPROP [95010000]  // (obj, key) → value
  4124  op 0xbe [09]
  4126  GETPROP [96010000]  // (obj, key) → value
- 4131  op 0x21 [0100]
+ 4131  CALL-VAR21 argc=1
  4134  GETPROP [97010000]  // (obj, key) → value
  4139  push undefined
- 4142  RECORD33 op 0x41 [8401000000000000…]
+ 4142  SETPROP-IC? key=388 ('onOpenAttachment')
  4175  op 0x11 []
  4176  push <op 0x0b>
  4177  push undefined
- 4180  RECORD33 op 0x41 [8e01000000000000…]
- 4213  RECORD33 op 0x41 [9801000000000000…]
+ 4180  SETPROP-IC? key=398 ('Secondary')
+ 4213  SETPROP-IC? key=408 ('Small')
  4246  GETPROP [99010000]  // (obj, key) → value
  4251  push undefined
  4254  GETPROP [9a010000]  // (obj, key) → value
@@ -1239,10 +1239,10 @@
  4264  GETPROP [9b010000]  // (obj, key) → value
  4269  push global
  4270  GETPROP [9c010000]  // (obj, key) → value
- 4275  op 0x21 [0100]
+ 4275  CALL-VAR21 argc=1
  4278  GETPROP [9d010000]  // (obj, key) → value
  4283  push undefined
- 4286  RECORD33 op 0x41 [8401000000000000…]
+ 4286  SETPROP-IC? key=388 ('onOpenAttachment')
  4319  op 0x11 []
  4320  push <op 0x0b>
  4321  push const2[414]
@@ -1250,8 +1250,8 @@
  4331  push const2[391]
  4336  GETPROP [88010000]  // (obj, key) → value
  4341  push undefined
- 4344  RECORD33 op 0x41 [8901000000000000…]
- 4377  RECORD33 op 0x41 [9f01000000000000…]
+ 4344  SETPROP-IC? key=393 ('image')
+ 4377  SETPROP-IC? key=415 ('canReadAloud')
  4410  GETPROP [8b010000]  // (obj, key) → value
  4415  op 0xbf [d802]
  4418  GETPROP [8c010000]  // (obj, key) → value
@@ -1259,10 +1259,10 @@
  4424  GETPROP [a0010000]  // (obj, key) → value
  4429  push const2[322]
  4434  GETPROP [46010000]  // (obj, key) → value
- 4439  op 0x21 [0100]
+ 4439  CALL-VAR21 argc=1
  4442  GETPROP [a1010000]  // (obj, key) → value
  4447  push undefined
- 4450  RECORD33 op 0x41 [8401000000000000…]
+ 4450  SETPROP-IC? key=388 ('onOpenAttachment')
  4483  op 0x11 []
  4484  push <op 0x0b>
  4485  push const2[391]
@@ -1273,18 +1273,18 @@
  4504  GETPROP [a3010000]  // (obj, key) → value
  4509  push const2[322]
  4514  GETPROP [46010000]  // (obj, key) → value
- 4519  op 0x21 [0100]
+ 4519  CALL-VAR21 argc=1
  4522  GETPROP [a4010000]  // (obj, key) → value
  4527  push undefined
- 4530  RECORD33 op 0x41 [8401000000000000…]
+ 4530  SETPROP-IC? key=388 ('onOpenAttachment')
  4563  op 0x11 []
  4564  push <op 0x0b>
  4565  push const2[322]
  4570  GETPROP [46010000]  // (obj, key) → value
- 4575  op 0x21 [0100]
+ 4575  CALL-VAR21 argc=1
  4578  GETPROP [a5010000]  // (obj, key) → value
  4583  push undefined
- 4586  RECORD33 op 0x41 [8401000000000000…]
+ 4586  SETPROP-IC? key=388 ('onOpenAttachment')
  4619  op 0x11 []
  4620  push <op 0x0b>
  4621  push global
@@ -1293,44 +1293,44 @@
  4630  GETPROP [8c010000]  // (obj, key) → value
  4635  push const2[322]
  4640  GETPROP [46010000]  // (obj, key) → value
- 4645  op 0x21 [0100]
+ 4645  CALL-VAR21 argc=1
  4648  GETPROP [a7010000]  // (obj, key) → value
  4653  push undefined
- 4656  RECORD33 op 0x41 [8401000000000000…]
+ 4656  SETPROP-IC? key=388 ('onOpenAttachment')
  4689  op 0x11 []
  4690  push <op 0x0b>
  4691  push const2[424]
  4696  GETPROP [86010000]  // (obj, key) → value
  4701  push undefined
- 4704  RECORD33 op 0x41 [8e01000000000000…]
- 4737  RECORD33 op 0x41 [a901000000000000…]
+ 4704  SETPROP-IC? key=398 ('Secondary')
+ 4737  SETPROP-IC? key=425 ('negativeIcon')
  4770  GETPROP [90010000]  // (obj, key) → value
  4775  push undefined
- 4778  RECORD33 op 0x41 [8e01000000000000…]
- 4811  RECORD33 op 0x41 [aa01000000000000…]
+ 4778  SETPROP-IC? key=398 ('Secondary')
+ 4811  SETPROP-IC? key=426 ('thumb-down')
  4844  GETPROP [ab010000]  // (obj, key) → value
  4849  push undefined
- 4852  RECORD33 op 0x41 [ac01000000000000…]
- 4885  RECORD33 op 0x41 [ad01000000000000…]
+ 4852  SETPROP-IC? key=428 ('positiveIcon')
+ 4885  SETPROP-IC? key=429 ('thumb-up')
  4918  GETPROP [91010000]  // (obj, key) → value
  4923  op 0xb7 []
  4924  GETPROP [ae010000]  // (obj, key) → value
  4929  push const2[431]
  4934  GETPROP [88010000]  // (obj, key) → value
  4939  push undefined
- 4942  RECORD33 op 0x41 [8901000000000000…]
- 4975  RECORD33 op 0x41 [9f01000000000000…]
+ 4942  SETPROP-IC? key=393 ('image')
+ 4975  SETPROP-IC? key=415 ('canReadAloud')
  5008  GETPROP [8b010000]  // (obj, key) → value
  5013  op 0xbf [6801]
  5016  GETPROP [8c010000]  // (obj, key) → value
  5021  push undefined
- 5024  RECORD33 op 0x41 [8901000000000000…]
- 5057  RECORD33 op 0x41 [9f01000000000000…]
+ 5024  SETPROP-IC? key=393 ('image')
+ 5057  SETPROP-IC? key=415 ('canReadAloud')
  5090  GETPROP [b0010000]  // (obj, key) → value
- 5095  op 0x21 [0100]
+ 5095  CALL-VAR21 argc=1
  5098  GETPROP [b1010000]  // (obj, key) → value
  5103  push undefined
- 5106  RECORD33 op 0x41 [8401000000000000…]
+ 5106  SETPROP-IC? key=388 ('onOpenAttachment')
  5139  op 0x11 []
  5140  push <op 0x0b>
  5141  push const2[391]
@@ -1339,10 +1339,10 @@
  5152  GETPROP [a6010000]  // (obj, key) → value
  5157  push global
  5158  GETPROP [a0010000]  // (obj, key) → value
- 5163  op 0x21 [0100]
+ 5163  CALL-VAR21 argc=1
  5166  GETPROP [b2010000]  // (obj, key) → value
  5171  push undefined
- 5174  RECORD33 op 0x41 [8401000000000000…]
+ 5174  SETPROP-IC? key=388 ('onOpenAttachment')
  5207  op 0x11 []
  5208  push <op 0x0b>
  5209  push const2[414]
@@ -1352,92 +1352,92 @@
  5229  push const2[435]
  5234  GETPROP [b4010000]  // (obj, key) → value
  5239  push undefined
- 5242  RECORD33 op 0x41 [8901000000000000…]
- 5275  RECORD33 op 0x41 [b501000000000000…]
+ 5242  SETPROP-IC? key=393 ('image')
+ 5275  SETPROP-IC? key=437 ('OAIControlSize')
  5308  GETPROP [8b010000]  // (obj, key) → value
  5313  push const2[322]
  5318  GETPROP [46010000]  // (obj, key) → value
- 5323  op 0x21 [0100]
+ 5323  CALL-VAR21 argc=1
  5326  GETPROP [b6010000]  // (obj, key) → value
  5331  push undefined
- 5334  RECORD33 op 0x41 [8401000000000000…]
+ 5334  SETPROP-IC? key=388 ('onOpenAttachment')
  5367  op 0x11 []
  5368  push <op 0x0b>
  5369  push undefined
- 5372  RECORD33 op 0x41 [8e01000000000000…]
- 5405  RECORD33 op 0x41 [b701000000000000…]
+ 5372  SETPROP-IC? key=398 ('Secondary')
+ 5405  SETPROP-IC? key=439 ('rotate-cw')
  5438  GETPROP [99010000]  // (obj, key) → value
  5443  push undefined
  5446  GETPROP [9a010000]  // (obj, key) → value
- 5451  op 0x21 [0100]
+ 5451  CALL-VAR21 argc=1
  5454  GETPROP [b8010000]  // (obj, key) → value
  5459  push undefined
- 5462  RECORD33 op 0x41 [8401000000000000…]
+ 5462  SETPROP-IC? key=388 ('onOpenAttachment')
  5495  op 0x11 []
  5496  push <op 0x0b>
  5497  push const2[424]
  5502  GETPROP [86010000]  // (obj, key) → value
  5507  push undefined
- 5510  RECORD33 op 0x41 [8e01000000000000…]
- 5543  RECORD33 op 0x41 [a901000000000000…]
+ 5510  SETPROP-IC? key=398 ('Secondary')
+ 5543  SETPROP-IC? key=425 ('negativeIcon')
  5576  GETPROP [90010000]  // (obj, key) → value
  5581  push undefined
- 5584  RECORD33 op 0x41 [ac01000000000000…]
- 5617  RECORD33 op 0x41 [b901000000000000…]
+ 5584  SETPROP-IC? key=428 ('positiveIcon')
+ 5617  SETPROP-IC? key=441 ('kind')
  5650  GETPROP [91010000]  // (obj, key) → value
  5655  push const2[431]
  5660  GETPROP [88010000]  // (obj, key) → value
  5665  push undefined
- 5668  RECORD33 op 0x41 [8901000000000000…]
- 5701  RECORD33 op 0x41 [8a01000000000000…]
+ 5668  SETPROP-IC? key=393 ('image')
+ 5701  SETPROP-IC? key=394 ('folder-open')
  5734  GETPROP [8b010000]  // (obj, key) → value
  5739  op 0xbf [0401]
  5742  GETPROP [8c010000]  // (obj, key) → value
  5747  push undefined
- 5750  RECORD33 op 0x41 [8901000000000000…]
- 5783  RECORD33 op 0x41 [8a01000000000000…]
+ 5750  SETPROP-IC? key=393 ('image')
+ 5783  SETPROP-IC? key=394 ('folder-open')
  5816  GETPROP [93010000]  // (obj, key) → value
  5821  push undefined
- 5824  RECORD33 op 0x41 [8901000000000000…]
- 5857  RECORD33 op 0x41 [b501000000000000…]
+ 5824  SETPROP-IC? key=393 ('image')
+ 5857  SETPROP-IC? key=437 ('OAIControlSize')
  5890  GETPROP [94010000]  // (obj, key) → value
  5895  push undefined
- 5898  RECORD33 op 0x41 [8901000000000000…]
- 5931  RECORD33 op 0x41 [b501000000000000…]
+ 5898  SETPROP-IC? key=393 ('image')
+ 5931  SETPROP-IC? key=437 ('OAIControlSize')
  5964  GETPROP [95010000]  // (obj, key) → value
  5969  push undefined
- 5972  RECORD33 op 0x41 [8901000000000000…]
- 6005  RECORD33 op 0x41 [8a01000000000000…]
+ 5972  SETPROP-IC? key=393 ('image')
+ 6005  SETPROP-IC? key=394 ('folder-open')
  6038  GETPROP [96010000]  // (obj, key) → value
- 6043  op 0x21 [0100]
+ 6043  CALL-VAR21 argc=1
  6046  GETPROP [ba010000]  // (obj, key) → value
  6051  push undefined
- 6054  RECORD33 op 0x41 [8401000000000000…]
+ 6054  SETPROP-IC? key=388 ('onOpenAttachment')
  6087  op 0x11 []
  6088  push <op 0x0b>
  6089  push undefined
- 6092  RECORD33 op 0x41 [8e01000000000000…]
- 6125  RECORD33 op 0x41 [9801000000000000…]
+ 6092  SETPROP-IC? key=398 ('Secondary')
+ 6125  SETPROP-IC? key=408 ('Small')
  6158  GETPROP [99010000]  // (obj, key) → value
  6163  push undefined
- 6166  RECORD33 op 0x41 [7f01000000000000…]
+ 6166  SETPROP-IC? key=383 ('onOpenImage')
  6199  op 0xbe [0d]
  6201  push undefined
- 6204  RECORD33 op 0x41 [8001000000000000…]
- 6237  RECORD33 op 0x41 [bb01000000000000…]
+ 6204  SETPROP-IC? key=384 ('chatgpt.message.image.')
+ 6237  SETPROP-IC? key=443 ('activeTexts')
  6270  push undefined
- 6273  RECORD33 op 0x41 [8201000000000000…]
- 6306  RECORD33 op 0x41 [bc01000000000000…]
+ 6273  SETPROP-IC? key=386 ('aspectRatio')
+ 6306  SETPROP-IC? key=444 ('filter')
  6339  op 0xb7 []
  6340  UNARY ! / coerce-bool
  6341  op 0x22 [0400]
  6344  GETPROP [9a010000]  // (obj, key) → value
  6349  op 0xb7 []
  6350  GETPROP [9c010000]  // (obj, key) → value
- 6355  op 0x21 [0100]
+ 6355  CALL-VAR21 argc=1
  6358  GETPROP [bd010000]  // (obj, key) → value
  6363  push undefined
- 6366  RECORD33 op 0x41 [8401000000000000…]
+ 6366  SETPROP-IC? key=388 ('onOpenAttachment')
  6399  op 0x11 []
  6400  push <op 0x0b>
  6401  push const2[424]
@@ -1445,39 +1445,39 @@
  6411  push const2[431]
  6416  GETPROP [88010000]  // (obj, key) → value
  6421  push undefined
- 6424  RECORD33 op 0x41 [8901000000000000…]
- 6457  RECORD33 op 0x41 [b501000000000000…]
+ 6424  SETPROP-IC? key=393 ('image')
+ 6457  SETPROP-IC? key=437 ('OAIControlSize')
  6490  GETPROP [8b010000]  // (obj, key) → value
- 6495  op 0x21 [0100]
+ 6495  CALL-VAR21 argc=1
  6498  GETPROP [be010000]  // (obj, key) → value
  6503  push undefined
- 6506  RECORD33 op 0x41 [8401000000000000…]
+ 6506  SETPROP-IC? key=388 ('onOpenAttachment')
  6539  op 0x11 []
  6540  push <op 0x0b>
  6541  push undefined
- 6544  RECORD33 op 0x41 [8e01000000000000…]
- 6577  RECORD33 op 0x41 [b701000000000000…]
+ 6544  SETPROP-IC? key=398 ('Secondary')
+ 6577  SETPROP-IC? key=439 ('rotate-cw')
  6610  GETPROP [99010000]  // (obj, key) → value
  6615  push undefined
  6618  GETPROP [9a010000]  // (obj, key) → value
- 6623  op 0x21 [0100]
+ 6623  CALL-VAR21 argc=1
  6626  GETPROP [bf010000]  // (obj, key) → value
  6631  push undefined
- 6634  RECORD33 op 0x41 [8401000000000000…]
+ 6634  SETPROP-IC? key=388 ('onOpenAttachment')
  6667  op 0x11 []
  6668  push <op 0x0b>
  6669  push const2[391]
  6674  GETPROP [88010000]  // (obj, key) → value
  6679  push undefined
- 6682  RECORD33 op 0x41 [8901000000000000…]
- 6715  RECORD33 op 0x41 [8a01000000000000…]
+ 6682  SETPROP-IC? key=393 ('image')
+ 6715  SETPROP-IC? key=394 ('folder-open')
  6748  GETPROP [8b010000]  // (obj, key) → value
  6753  push const2[322]
  6758  GETPROP [46010000]  // (obj, key) → value
- 6763  op 0x21 [0100]
+ 6763  CALL-VAR21 argc=1
  6766  GETPROP [c0010000]  // (obj, key) → value
  6771  push undefined
- 6774  RECORD33 op 0x41 [8401000000000000…]
+ 6774  SETPROP-IC? key=388 ('onOpenAttachment')
  6807  op 0x11 []
  6808  push <op 0x0b>
  6809  push const2[424]
@@ -1489,22 +1489,22 @@
  6836  op 0xbe [20]
  6838  GETPROP [c1010000]  // (obj, key) → value
  6843  push undefined
- 6846  RECORD33 op 0x41 [8901000000000000…]
- 6879  RECORD33 op 0x41 [8a01000000000000…]
+ 6846  SETPROP-IC? key=393 ('image')
+ 6879  SETPROP-IC? key=394 ('folder-open')
  6912  GETPROP [96010000]  // (obj, key) → value
  6917  push const2[322]
  6922  GETPROP [46010000]  // (obj, key) → value
- 6927  op 0x21 [0100]
+ 6927  CALL-VAR21 argc=1
  6930  GETPROP [c2010000]  // (obj, key) → value
  6935  push undefined
- 6938  RECORD33 op 0x41 [8401000000000000…]
+ 6938  SETPROP-IC? key=388 ('onOpenAttachment')
  6971  op 0x11 []
  6972  push <op 0x0b>
  6973  push const2[424]
  6978  GETPROP [86010000]  // (obj, key) → value
  6983  push undefined
- 6986  RECORD33 op 0x41 [ac01000000000000…]
- 7019  RECORD33 op 0x41 [b901000000000000…]
+ 6986  SETPROP-IC? key=428 ('positiveIcon')
+ 7019  SETPROP-IC? key=441 ('kind')
  7052  GETPROP [91010000]  // (obj, key) → value
  7057  op 0xbe [20]
  7059  GETPROP [41010000]  // (obj, key) → value
@@ -1512,20 +1512,20 @@
  7069  GETPROP [c3010000]  // (obj, key) → value
  7074  op 0xbe [20]
  7076  GETPROP [46010000]  // (obj, key) → value
- 7081  op 0x21 [0100]
+ 7081  CALL-VAR21 argc=1
  7084  GETPROP [c4010000]  // (obj, key) → value
  7089  push undefined
- 7092  RECORD33 op 0x41 [8401000000000000…]
+ 7092  SETPROP-IC? key=388 ('onOpenAttachment')
  7125  op 0x11 []
  7126  push <op 0x0b>
  7127  push undefined
- 7130  RECORD33 op 0x41 [8e01000000000000…]
- 7163  RECORD33 op 0x41 [a901000000000000…]
+ 7130  SETPROP-IC? key=398 ('Secondary')
+ 7163  SETPROP-IC? key=425 ('negativeIcon')
  7196  GETPROP [90010000]  // (obj, key) → value
- 7201  op 0x21 [0100]
+ 7201  CALL-VAR21 argc=1
  7204  GETPROP [c5010000]  // (obj, key) → value
  7209  push undefined
- 7212  RECORD33 op 0x41 [8401000000000000…]
+ 7212  SETPROP-IC? key=388 ('onOpenAttachment')
  7245  op 0x11 []
  7246  push <op 0x0b>
  7247  push const2[424]
@@ -1533,82 +1533,82 @@
  7257  push const2[414]
  7262  GETPROP [c6010000]  // (obj, key) → value
  7267  push undefined
- 7270  RECORD33 op 0x41 [8e01000000000000…]
- 7303  RECORD33 op 0x41 [a901000000000000…]
+ 7270  SETPROP-IC? key=398 ('Secondary')
+ 7303  SETPROP-IC? key=425 ('negativeIcon')
  7336  GETPROP [90010000]  // (obj, key) → value
  7341  push undefined
- 7344  RECORD33 op 0x41 [ac01000000000000…]
- 7377  RECORD33 op 0x41 [c701000000000000…]
+ 7344  SETPROP-IC? key=428 ('positiveIcon')
+ 7377  SETPROP-IC? key=455 ('icons')
  7410  GETPROP [91010000]  // (obj, key) → value
  7415  push const2[431]
  7420  GETPROP [88010000]  // (obj, key) → value
  7425  push undefined
- 7428  RECORD33 op 0x41 [8901000000000000…]
- 7461  RECORD33 op 0x41 [b501000000000000…]
+ 7428  SETPROP-IC? key=393 ('image')
+ 7461  SETPROP-IC? key=437 ('OAIControlSize')
  7494  GETPROP [8b010000]  // (obj, key) → value
  7499  push undefined
- 7502  RECORD33 op 0x41 [8901000000000000…]
- 7535  RECORD33 op 0x41 [8a01000000000000…]
+ 7502  SETPROP-IC? key=393 ('image')
+ 7535  SETPROP-IC? key=394 ('folder-open')
  7568  GETPROP [b0010000]  // (obj, key) → value
- 7573  op 0x21 [0100]
+ 7573  CALL-VAR21 argc=1
  7576  GETPROP [c8010000]  // (obj, key) → value
  7581  push undefined
- 7584  RECORD33 op 0x41 [8401000000000000…]
+ 7584  SETPROP-IC? key=388 ('onOpenAttachment')
  7617  op 0x11 []
  7618  push <op 0x0b>
  7619  push undefined
- 7622  RECORD33 op 0x41 [8e01000000000000…]
- 7655  RECORD33 op 0x41 [b701000000000000…]
+ 7622  SETPROP-IC? key=398 ('Secondary')
+ 7655  SETPROP-IC? key=439 ('rotate-cw')
  7688  GETPROP [99010000]  // (obj, key) → value
  7693  push undefined
  7696  GETPROP [9a010000]  // (obj, key) → value
- 7701  op 0x21 [0100]
+ 7701  CALL-VAR21 argc=1
  7704  GETPROP [c9010000]  // (obj, key) → value
  7709  push undefined
- 7712  RECORD33 op 0x41 [8401000000000000…]
+ 7712  SETPROP-IC? key=388 ('onOpenAttachment')
  7745  op 0x11 []
  7746  push <op 0x0b>
  7747  push const2[424]
  7752  GETPROP [86010000]  // (obj, key) → value
  7757  push undefined
- 7760  RECORD33 op 0x41 [8e01000000000000…]
- 7793  RECORD33 op 0x41 [ca01000000000000…]
+ 7760  SETPROP-IC? key=398 ('Secondary')
+ 7793  SETPROP-IC? key=458 ('images')
  7826  GETPROP [90010000]  // (obj, key) → value
  7831  push undefined
- 7834  RECORD33 op 0x41 [8e01000000000000…]
- 7867  RECORD33 op 0x41 [cb01000000000000…]
+ 7834  SETPROP-IC? key=398 ('Secondary')
+ 7867  SETPROP-IC? key=459 ('https://')
  7900  GETPROP [ab010000]  // (obj, key) → value
  7905  push undefined
- 7908  RECORD33 op 0x41 [ac01000000000000…]
- 7941  RECORD33 op 0x41 [c701000000000000…]
+ 7908  SETPROP-IC? key=428 ('positiveIcon')
+ 7941  SETPROP-IC? key=455 ('icons')
  7974  GETPROP [91010000]  // (obj, key) → value
  7979  op 0xb7 []
  7980  GETPROP [ae010000]  // (obj, key) → value
  7985  push const2[431]
  7990  GETPROP [88010000]  // (obj, key) → value
  7995  push undefined
- 7998  RECORD33 op 0x41 [8901000000000000…]
- 8031  RECORD33 op 0x41 [b501000000000000…]
+ 7998  SETPROP-IC? key=393 ('image')
+ 8031  SETPROP-IC? key=437 ('OAIControlSize')
  8064  GETPROP [8b010000]  // (obj, key) → value
  8069  push undefined
- 8072  RECORD33 op 0x41 [8901000000000000…]
- 8105  RECORD33 op 0x41 [9f01000000000000…]
+ 8072  SETPROP-IC? key=393 ('image')
+ 8105  SETPROP-IC? key=415 ('canReadAloud')
  8138  GETPROP [b0010000]  // (obj, key) → value
  8143  push const2[322]
  8148  GETPROP [46010000]  // (obj, key) → value
- 8153  op 0x21 [0100]
+ 8153  CALL-VAR21 argc=1
  8156  GETPROP [cc010000]  // (obj, key) → value
  8161  push undefined
- 8164  RECORD33 op 0x41 [8401000000000000…]
+ 8164  SETPROP-IC? key=388 ('onOpenAttachment')
  8197  op 0x11 []
  8198  push <op 0x0b>
  8199  push undefined
- 8202  RECORD33 op 0x41 [8e01000000000000…]
- 8235  RECORD33 op 0x41 [cd01000000000000…]
+ 8202  SETPROP-IC? key=398 ('Secondary')
+ 8235  SETPROP-IC? key=461 ('citations')
  8268  GETPROP [99010000]  // (obj, key) → value
  8273  push undefined
  8276  GETPROP [9a010000]  // (obj, key) → value
- 8281  op 0x21 [0100]
+ 8281  CALL-VAR21 argc=1
  8284  GETPROP [ce010000]  // (obj, key) → value
  8289  store local[88]
  8291  END

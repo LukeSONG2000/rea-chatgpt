@@ -163,3 +163,10 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - 优先模块 opcode 谱：chatgpt_reasoning 用 ~35 种（0x00×656 填充、0x41×206、0x4f×194、0x04×111、0x65×108、0x42×81、0xd2×80、0x0e×77、0xae×76、0x03×66、0x24 CALL×60…）；chatgpt_global_search 同谱
 - 共同 prologue 定性：op01(const)+a2+op01+00+ce+28+ae+op03 = "use strict" 模块初始化样板；op43(33B) = 函数单元边界记录
 - 下一步：cel_align 循环跑 1273 对归纳全表（优先 35 子集）→ cel_decompile.py 渲染器
+
+### 9.8 v1 渲染器（2026-10-27 深夜）
+
+- 0x41/0x42/0x43 33B 记录 = **带内联缓存的属性访问**（[u16 key 槽号][30B 零化 IC]）——槽号指向字符串表尾段（258-279 大量为空/保留槽，key 名运行时填充或独立键表）
+- 跳转类渲染：0xEB/0xEC/0xED i8 相对；0xEF-0xF2 条件跳转
+- v1 输出样例（ChatGPTReasoning 模块初始化）：`push undefined → GETPROP-IC key=267 → push const2[268] → CALL argc=1 → store local[14]` 循环模式清晰
+- 两模块 v1 产物：analysis/decoded/{chatgpt_reasoning,chatgpt_conversation}/（19 文件）

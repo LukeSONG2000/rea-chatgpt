@@ -302,7 +302,7 @@
    23  CALL argc=2   // (callee, this) 已在栈上
    26  op 0xcd []
    27  push undefined
-   30  RECORD33 op 0x42 [0401000000000000…]
+   30  GETPROP-IC key=260 ('#260')
    63  push const2[266]
    68  push const2[262]
    73  push const2[267]
@@ -310,33 +310,33 @@
    81  CALL argc=2   // (callee, this) 已在栈上
    84  store local[4]
    86  push undefined
-   89  RECORD33 op 0x42 [0401000000000000…]
+   89  GETPROP-IC key=260 ('#260')
   122  push const2[266]
   127  CALL argc=1   // (callee, this) 已在栈上
   130  store local[5]
   132  push undefined
-  135  RECORD33 op 0x42 [0401000000000000…]
+  135  GETPROP-IC key=260 ('#260')
   168  push const2[266]
   173  CALL argc=1   // (callee, this) 已在栈上
   176  store local[6]
   178  push undefined
-  181  RECORD33 op 0x42 [0301000000000000…]
+  181  GETPROP-IC key=259 ('#259')
   214  CALL argc=0   // (callee, this) 已在栈上
   217  store local[7]
   219  push undefined
-  222  RECORD33 op 0x42 [0401000000000000…]
+  222  GETPROP-IC key=260 ('#260')
   255  push const2[266]
   260  CALL argc=1   // (callee, this) 已在栈上
   263  store local[8]
   265  push undefined
-  268  RECORD33 op 0x42 [0301000000000000…]
+  268  GETPROP-IC key=259 ('#259')
   301  push const2[264]
   306  push const2[268]
   311  push <op 0x26: 0200>
   314  CALL argc=1   // (callee, this) 已在栈上
   317  store local[9]
   319  push undefined
-  322  RECORD33 op 0x42 [0401000000000000…]
+  322  GETPROP-IC key=260 ('#260')
   355  push const2[269]
   360  push const2[64]
   365  push const2[270]
@@ -398,7 +398,7 @@
   495  op 0xc1 [00]
   497  op 0xc3 [18]
   499  op 0x11 []
-  500  op 0xec [10]
+  500  jT/rel +16  → pc=518
   502  op 0x0e []
   503  push <op 0xd4>
   504  push <op 0x0b>
@@ -410,7 +410,7 @@
   519  op 0x0e []
   520  op 0x64 [1900]
   523  push undefined
-  526  RECORD33 op 0x41 [1c01000000000000…]
+  526  SETPROP-IC? key=284 ('#284')
   559  op 0x64 [1a00]
   562  op 0xc0 [01]
   564  op 0x59 [f400000001]
@@ -447,12 +447,12 @@
   673  op 0x45 [f400000003000000]
   682  push <op 0x0b>
   683  push undefined
-  686  RECORD33 op 0x41 [2801000000000000…]
+  686  SETPROP-IC? key=296 ('#296')
   719  op 0x11 []
   720  push <op 0x0b>
   721  push undefined
-  724  RECORD33 op 0x41 [2901000000000000…]
-  757  RECORD33 op 0x41 [2a01000000000000…]
+  724  SETPROP-IC? key=297 ('#297')
+  757  SETPROP-IC? key=298 ('#298')
   790  GETPROP [2b010000]  // (obj, key) → value
   795  op 0xb7 []
   796  UNARY ! / coerce-bool
@@ -471,10 +471,10 @@
   829  GETPROP [31010000]  // (obj, key) → value
   834  push const2[306]
   839  GETPROP [33010000]  // (obj, key) → value
-  844  op 0x21 [0100]
+  844  CALL-VAR21 argc=1
   847  GETPROP [34010000]  // (obj, key) → value
   852  push undefined
-  855  RECORD33 op 0x41 [2801000000000000…]
+  855  SETPROP-IC? key=296 ('#296')
   888  op 0x11 []
   889  push <op 0x0b>
   890  push const2[309]
@@ -484,19 +484,19 @@
   910  push const2[306]
   915  GETPROP [30010000]  // (obj, key) → value
   920  push undefined
-  923  RECORD33 op 0x41 [3901000000000000…]
-  956  RECORD33 op 0x41 [3a01000000000000…]
+  923  SETPROP-IC? key=313 ('#313')
+  956  SETPROP-IC? key=314 ('#314')
   989  GETPROP [3b010000]  // (obj, key) → value
   994  push undefined
-  997  RECORD33 op 0x41 [3901000000000000…]
- 1030  RECORD33 op 0x41 [3a01000000000000…]
+  997  SETPROP-IC? key=313 ('#313')
+ 1030  SETPROP-IC? key=314 ('#314')
  1063  GETPROP [3c010000]  // (obj, key) → value
  1068  push const2[306]
  1073  GETPROP [33010000]  // (obj, key) → value
- 1078  op 0x21 [0100]
+ 1078  CALL-VAR21 argc=1
  1081  GETPROP [3d010000]  // (obj, key) → value
  1086  push undefined
- 1089  RECORD33 op 0x41 [2801000000000000…]
+ 1089  SETPROP-IC? key=296 ('#296')
  1122  op 0x11 []
  1123  push <op 0x0b>
  1124  push const2[309]
@@ -505,10 +505,10 @@
  1137  GETPROP [3e010000]  // (obj, key) → value
  1142  push const2[306]
  1147  GETPROP [33010000]  // (obj, key) → value
- 1152  op 0x21 [0100]
+ 1152  CALL-VAR21 argc=1
  1155  GETPROP [3f010000]  // (obj, key) → value
  1160  push undefined
- 1163  RECORD33 op 0x41 [2801000000000000…]
+ 1163  SETPROP-IC? key=296 ('#296')
  1196  op 0x11 []
  1197  push <op 0x0b>
  1198  push global
@@ -519,33 +519,33 @@
  1219  GETPROP [44010000]  // (obj, key) → value
  1224  push global
  1225  GETPROP [33010000]  // (obj, key) → value
- 1230  op 0x21 [0100]
+ 1230  CALL-VAR21 argc=1
  1233  GETPROP [45010000]  // (obj, key) → value
  1238  push undefined
- 1241  RECORD33 op 0x41 [2801000000000000…]
+ 1241  SETPROP-IC? key=296 ('#296')
  1274  op 0x11 []
  1275  push <op 0x0b>
  1276  push undefined
- 1279  RECORD33 op 0x41 [2901000000000000…]
- 1312  RECORD33 op 0x41 [4601000000000000…]
+ 1279  SETPROP-IC? key=297 ('#297')
+ 1312  SETPROP-IC? key=326 ('#326')
  1345  GETPROP [47010000]  // (obj, key) → value
  1350  push undefined
- 1353  RECORD33 op 0x41 [4801000000000000…]
+ 1353  SETPROP-IC? key=328 ('#328')
  1386  op 0xbe [0f]
  1388  push undefined
- 1391  RECORD33 op 0x41 [4901000000000000…]
- 1424  RECORD33 op 0x41 [4a01000000000000…]
+ 1391  SETPROP-IC? key=329 ('#329')
+ 1424  SETPROP-IC? key=330 ('#330')
  1457  push undefined
- 1460  RECORD33 op 0x41 [4b01000000000000…]
- 1493  RECORD33 op 0x41 [4c01000000000000…]
+ 1460  SETPROP-IC? key=331 ('#331')
+ 1493  SETPROP-IC? key=332 ('#332')
  1526  op 0xb7 []
  1527  UNARY ! / coerce-bool
  1528  op 0x22 [0400]
  1531  GETPROP [4d010000]  // (obj, key) → value
- 1536  op 0x21 [0100]
+ 1536  CALL-VAR21 argc=1
  1539  GETPROP [4e010000]  // (obj, key) → value
  1544  push undefined
- 1547  RECORD33 op 0x41 [2801000000000000…]
+ 1547  SETPROP-IC? key=296 ('#296')
  1580  op 0x11 []
  1581  push <op 0x0b>
  1582  push const2[309]
@@ -553,8 +553,8 @@
  1592  push const2[335]
  1597  GETPROP [38010000]  // (obj, key) → value
  1602  push undefined
- 1605  RECORD33 op 0x41 [3901000000000000…]
- 1638  RECORD33 op 0x41 [5001000000000000…]
+ 1605  SETPROP-IC? key=313 ('#313')
+ 1638  SETPROP-IC? key=336 ('#336')
  1671  GETPROP [51010000]  // (obj, key) → value
  1676  op 0xbf [d802]
  1679  GETPROP [3e010000]  // (obj, key) → value
@@ -562,7 +562,7 @@
  1686  GETPROP [52010000]  // (obj, key) → value
  1691  push const2[306]
  1696  GETPROP [33010000]  // (obj, key) → value
- 1701  op 0x21 [0100]
+ 1701  CALL-VAR21 argc=1
  1704  GETPROP [53010000]  // (obj, key) → value
  1709  store local[35]
  1711  END
@@ -593,8 +593,8 @@
  1759  op 0x2b []
  1761  push <op 0x0b>
  1762  op 0x44 [4508c1004a02262621212126352bc1353535004a02004a02352bc1352b352bc1]
- 1795  op 0x21 [3535]
- 1798  op 0x21 [2bc1]
+ 1795  CALL-VAR21 argc=13621
+ 1798  CALL-VAR21 argc=49451
  1802  op 0x4a []
  1803  op 0x02 [00ba0102]
  1808  op 0x2b []
@@ -604,7 +604,7 @@
  1814  op 0x02 [2b26352b]
  1819  op 0x0e []
  1820  op 0x0e []
- 1821  RECORD33 op 0x43 [0601000100010200…]
+ 1821  PROP/METHOD-IC? key=262 ('#262')
  1854  push const2[323]
  1859  op 0x45 [5601000001000000]
  1868  op 0xd2 []
@@ -635,7 +635,7 @@
  1955  push const[d4030f0d]
  1960  op 0xd8 []
  1961  push str[13]  // 'h'
- 1966  op 0x21 [01b6]
+ 1966  CALL-VAR21 argc=46593
  1969  push str[13]  // 'h'
  1974  op 0x1c []
  1975  push const[ee031e01]
@@ -665,7 +665,7 @@
  2023  op 0x67 [0000]
  2026  op 0x68 [0b00]
  2029  op 0x11 []
- 2030  op 0xeb [08]
+ 2030  jT/rel +8  → pc=2040
  2032  push undefined
  2035  op 0x1b []
  2036  CALL argc=0   // (callee, this) 已在栈上
@@ -674,24 +674,24 @@
  2041  push undefined
  2044  op 0x38 [b0000000]
  2049  op 0x11 []
- 2050  op 0x21 [0000]
+ 2050  CALL-VAR21 argc=0
  2053  op 0x45 [5b01000000000000]
  2062  push undefined
  2065  op 0x68 [0c00]
- 2068  RECORD33 op 0x41 [5c01000000000000…]
+ 2068  SETPROP-IC? key=348 ('#348')
  2101  op 0x11 []
- 2102  op 0x21 [0000]
+ 2102  CALL-VAR21 argc=0
  2105  op 0x45 [5d01000001000000]
  2114  push undefined
  2117  op 0x68 [0c00]
- 2120  RECORD33 op 0x41 [5c01000000000000…]
+ 2120  SETPROP-IC? key=348 ('#348')
  2153  op 0x11 []
- 2154  op 0x21 [0000]
+ 2154  CALL-VAR21 argc=0
  2157  op 0x45 [3401000002000000]
  2166  push undefined
  2169  op 0x38 [af000000]
  2174  op 0x11 []
- 2175  op 0x21 [0000]
+ 2175  CALL-VAR21 argc=0
  2178  op 0x45 [5e01000003000000]
  2187  push undefined
  2190  push global
@@ -802,7 +802,7 @@
  2560  push const[0c100009]
  2565  push global
  2566  op 0xd2 []
- 2567  RECORD33 op 0x41 [7501000000000000…]
+ 2567  SETPROP-IC? key=373 ('#373')
  2600  op 0xea []
  2601  op 0xaf []
  2602  op 0x11 []
@@ -810,39 +810,39 @@
  2608  op 0x0e []
  2609  push <op 0x06>
  2610  op 0xd2 []
- 2611  RECORD33 op 0x41 [7601000000000000…]
+ 2611  SETPROP-IC? key=374 ('#374')
  2644  ASSIGN  // value ← (target, value)
  2645  op 0x11 []
- 2646  op 0xec [26]
+ 2646  jT/rel +38  → pc=2686
  2648  op 0x0e []
  2649  op 0x07 []
  2650  op 0xd2 []
- 2651  RECORD33 op 0x41 [7601000000000000…]
+ 2651  SETPROP-IC? key=374 ('#374')
  2684  ASSIGN  // value ← (target, value)
- 2685  op 0xeb [6e]
+ 2685  jT/rel +110  → pc=2797
  2687  op 0x68 [0000]
- 2690  RECORD33 op 0x41 [7701000000000000…]
- 2723  RECORD33 op 0x42 [7801000000000000…]
+ 2690  SETPROP-IC? key=375 ('#375')
+ 2723  GETPROP-IC key=376 ('#376')
  2756  op 0xd2 []
- 2757  RECORD33 op 0x41 [7501000000000000…]
+ 2757  SETPROP-IC? key=373 ('#373')
  2790  CALL argc=1   // (callee, this) 已在栈上
  2793  op 0xee [fe00]
  2796  op 0xd2 []
- 2797  RECORD33 op 0x41 [7601000000000000…]
- 2830  RECORD33 op 0x42 [7901000000000000…]
+ 2797  SETPROP-IC? key=374 ('#374')
+ 2830  GETPROP-IC key=377 ('#377')
  2863  op 0x68 [0100]
- 2866  RECORD33 op 0x41 [7a01000000000000…]
- 2899  RECORD33 op 0x41 [7b01000000000000…]
+ 2866  SETPROP-IC? key=378 ('#378')
+ 2899  SETPROP-IC? key=379 ('#379')
  2932  CALL argc=1   // (callee, this) 已在栈上
  2935  op 0x11 []
- 2936  op 0xeb [6f]
+ 2936  jT/rel +111  → pc=3049
  2938  op 0x0e []
  2939  op 0x68 [0200]
- 2942  RECORD33 op 0x42 [6d01000000000000…]
+ 2942  GETPROP-IC key=365 ('#365')
  2975  op 0xd2 []
  2976  op 0x68 [0100]
- 2979  RECORD33 op 0x41 [7a01000000000000…]
- 3012  RECORD33 op 0x41 [7b01000000000000…]
+ 2979  SETPROP-IC? key=378 ('#378')
+ 3012  SETPROP-IC? key=379 ('#379')
  3045  CALL argc=2   // (callee, this) 已在栈上
  3048  END
  3049  ASSIGN  // value ← (target, value)
@@ -867,14 +867,14 @@
  3113  op 0x07 []
  3114  op 0xd3 []
  3115  op 0xad []
- 3116  op 0xeb [04]
+ 3116  jT/rel +4  → pc=3122
  3118  op 0xd3 []
- 3119  op 0xed [28]
+ 3119  jT/rel +40  → pc=3161
  3121  op 0xdf []
  3122  op 0xd2 []
  3123  op 0x68 [0000]
- 3126  RECORD33 op 0x41 [5e01000000000000…]
- 3159  op 0xf1 []
+ 3126  SETPROP-IC? key=350 ('#350')
+ 3159  jCOND 0xf1 rel +0
  3160  op 0xca []
  3161  push <op 0x06>
  3162  push undefined
@@ -883,29 +883,29 @@
  3167  op 0x6c [53010000]
  3172  op 0x0e []
  3173  op 0x68 [0000]
- 3176  RECORD33 op 0x42 [7c01000000000000…]
+ 3176  GETPROP-IC key=380 ('#380')
  3209  op 0x68 [0200]
- 3212  RECORD33 op 0x41 [7d01000000000000…]
- 3245  op 0xef []
+ 3212  SETPROP-IC? key=381 ('#381')
+ 3245  jCOND 0xef rel +0
  3246  op 0xc1 [00]
  3248  CALL argc=2   // (callee, this) 已在栈上
  3251  op 0x0e []
  3252  op 0x68 [0000]
- 3255  RECORD33 op 0x42 [6d01000000000000…]
+ 3255  GETPROP-IC key=365 ('#365')
  3288  op 0xd2 []
  3289  push undefined
  3292  op 0x68 [0300]
- 3295  RECORD33 op 0x41 [7e01000000000000…]
- 3328  RECORD33 op 0x41 [7f01000000000000…]
+ 3295  SETPROP-IC? key=382 ('#382')
+ 3328  SETPROP-IC? key=383 ('#383')
  3361  ASSIGN  // value ← (target, value)
- 3362  op 0xeb [48]
+ 3362  jT/rel +72  → pc=3436
  3364  op 0x68 [0400]
- 3367  RECORD33 op 0x41 [7a01000000000000…]
- 3400  RECORD33 op 0x41 [8001000000000000…]
- 3433  op 0xed [46]
+ 3367  SETPROP-IC? key=378 ('#378')
+ 3400  SETPROP-IC? key=384 ('#384')
+ 3433  jT/rel +70  → pc=3505
  3435  op 0x68 [0400]
- 3438  RECORD33 op 0x41 [7a01000000000000…]
- 3471  RECORD33 op 0x41 [8101000000000000…]
+ 3438  SETPROP-IC? key=378 ('#378')
+ 3471  SETPROP-IC? key=385 ('#385')
  3504  CALL argc=2   // (callee, this) 已在栈上
  3507  END
  3508  ASSIGN  // value ← (target, value)
@@ -922,15 +922,15 @@
  3538  push global
  3539  push str[3]  // 'e'
  3544  push const[03680000]
- 3549  RECORD33 op 0x41 [5e01000000000000…]
- 3582  RECORD33 op 0x42 [4200000000000000…]
+ 3549  SETPROP-IC? key=350 ('#350')
+ 3582  GETPROP-IC key=66 ('onCreate')
  3615  op 0xdf []
- 3616  RECORD33 op 0x41 [8201000000000000…]
+ 3616  SETPROP-IC? key=386 ('#386')
  3649  op 0xe0 []
  3650  CALL argc=2   // (callee, this) 已在栈上
  3653  op 0x0e []
  3654  op 0x68 [0000]
- 3657  RECORD33 op 0x42 [8301000000000000…]
+ 3657  GETPROP-IC key=387 ('#387')
  3690  CALL argc=0   // (callee, this) 已在栈上
  3693  END
  3694  ASSIGN  // value ← (target, value)
@@ -950,7 +950,7 @@
  3746  push str[0]  // 'require'
  3751  op 0x09 []
  3752  op 0x38 [94000000]
- 3757  RECORD33 op 0x42 [8401000000000000…]
+ 3757  GETPROP-IC key=388 ('#388')
  3790  op 0xd3 []
  3791  CALL argc=1   // (callee, this) 已在栈上
  3794  UNARY ! / coerce-bool
@@ -973,25 +973,25 @@
  3823  op 0x0e []
  3824  op 0x07 []
  3825  op 0x68 [0100]
- 3828  RECORD33 op 0x41 [8501000000000000…]
+ 3828  SETPROP-IC? key=389 ('#389')
  3861  coerce
- 3862  RECORD33 op 0x41 [8601000000000000…]
+ 3862  SETPROP-IC? key=390 ('#390')
  3895  op 0xcf []
  3896  ASSIGN  // value ← (target, value)
  3897  op 0x11 []
- 3898  op 0xec [52]
+ 3898  jT/rel +82  → pc=3982
  3900  op 0x0e []
  3901  push <op 0x06>
  3902  op 0xc7 []
  3903  ASSIGN  // value ← (target, value)
  3904  op 0x11 []
- 3905  op 0xec [4b]
+ 3905  jT/rel +75  → pc=3982
  3907  op 0x0e []
  3908  op 0xc7 []
- 3909  RECORD33 op 0x42 [8701000000000000…]
+ 3909  GETPROP-IC key=391 ('#391')
  3942  op 0xc6 []
  3943  op 0xd2 []
- 3944  RECORD33 op 0x41 [8201000000000000…]
+ 3944  SETPROP-IC? key=386 ('#386')
  3977  op 0xd3 []
  3978  CALL argc=3   // (callee, this) 已在栈上
  3981  END
@@ -1020,20 +1020,20 @@
  4047  op 0x0e []
  4048  op 0x07 []
  4049  op 0xd2 []
- 4050  RECORD33 op 0x41 [8801000000000000…]
+ 4050  SETPROP-IC? key=392 ('#392')
  4083  coerce
  4084  ASSIGN  // value ← (target, value)
  4085  op 0x11 []
- 4086  op 0xec [05]
+ 4086  jT/rel +5  → pc=4093
  4088  op 0x0e []
  4089  push <op 0x06>
  4090  op 0xc6 []
  4091  ASSIGN  // value ← (target, value)
- 4092  op 0xeb [04]
+ 4092  jT/rel +4  → pc=4098
  4094  push <op 0x06>
- 4095  op 0xed [28]
+ 4095  jT/rel +40  → pc=4137
  4097  op 0xc6 []
- 4098  RECORD33 op 0x42 [8901000000000000…]
+ 4098  GETPROP-IC key=393 ('#393')
  4131  op 0xc1 [00]
  4133  CALL argc=1   // (callee, this) 已在栈上
  4136  op 0x11 []
@@ -1041,25 +1041,25 @@
  4142  op 0x0e []
  4143  op 0x07 []
  4144  op 0x68 [0000]
- 4147  RECORD33 op 0x41 [8501000000000000…]
+ 4147  SETPROP-IC? key=389 ('#389')
  4180  op 0xcf []
- 4181  RECORD33 op 0x41 [8a01000000000000…]
+ 4181  SETPROP-IC? key=394 ('#394')
  4214  op 0xd0 []
  4215  ASSIGN  // value ← (target, value)
  4216  op 0x11 []
- 4217  op 0xec [52]
+ 4217  jT/rel +82  → pc=4301
  4219  op 0x0e []
  4220  push <op 0x06>
  4221  op 0xc8 []
  4222  ASSIGN  // value ← (target, value)
  4223  op 0x11 []
- 4224  op 0xec [4b]
+ 4224  jT/rel +75  → pc=4301
  4226  op 0x0e []
  4227  op 0xc8 []
- 4228  RECORD33 op 0x42 [8701000000000000…]
+ 4228  GETPROP-IC key=391 ('#391')
  4261  op 0xc7 []
  4262  op 0xd2 []
- 4263  RECORD33 op 0x41 [8201000000000000…]
+ 4263  SETPROP-IC? key=386 ('#386')
  4296  op 0xd3 []
  4297  CALL argc=3   // (callee, this) 已在栈上
  4300  END
@@ -1077,10 +1077,10 @@
  4366  op 0xde []
  4367  ASSIGN  // value ← (target, value)
  4368  op 0x11 []
- 4369  op 0xeb [27]
+ 4369  jT/rel +39  → pc=4410
  4371  op 0x0e []
  4372  op 0xd2 []
- 4373  RECORD33 op 0x41 [3600000000000000…]
+ 4373  SETPROP-IC? key=54 ('T\x00h\x00i\x00n\x00k')
  4406  op 0xea []
  4407  push global
  4408  op 0xa8 []
@@ -1108,20 +1108,20 @@
  4474  op 0x0e []
  4475  op 0x07 []
  4476  op 0xd2 []
- 4477  RECORD33 op 0x41 [8b01000000000000…]
+ 4477  SETPROP-IC? key=395 ('#395')
  4510  coerce
  4511  ASSIGN  // value ← (target, value)
  4512  op 0x11 []
- 4513  op 0xec [05]
+ 4513  jT/rel +5  → pc=4520
  4515  op 0x0e []
  4516  push <op 0x06>
  4517  op 0xc6 []
  4518  ASSIGN  // value ← (target, value)
- 4519  op 0xeb [04]
+ 4519  jT/rel +4  → pc=4525
  4521  push <op 0x06>
- 4522  op 0xed [28]
+ 4522  jT/rel +40  → pc=4564
  4524  op 0xc6 []
- 4525  RECORD33 op 0x42 [8901000000000000…]
+ 4525  GETPROP-IC key=393 ('#393')
  4558  op 0xc1 [00]
  4560  CALL argc=1   // (callee, this) 已在栈上
  4563  op 0x11 []
@@ -1129,25 +1129,25 @@
  4569  op 0x0e []
  4570  op 0x07 []
  4571  op 0x68 [0000]
- 4574  RECORD33 op 0x41 [8501000000000000…]
+ 4574  SETPROP-IC? key=389 ('#389')
  4607  op 0xcf []
- 4608  RECORD33 op 0x41 [8c01000000000000…]
+ 4608  SETPROP-IC? key=396 ('#396')
  4641  op 0xd0 []
  4642  ASSIGN  // value ← (target, value)
  4643  op 0x11 []
- 4644  op 0xec [52]
+ 4644  jT/rel +82  → pc=4728
  4646  op 0x0e []
  4647  push <op 0x06>
  4648  op 0xc8 []
  4649  ASSIGN  // value ← (target, value)
  4650  op 0x11 []
- 4651  op 0xec [4b]
+ 4651  jT/rel +75  → pc=4728
  4653  op 0x0e []
  4654  op 0xc8 []
- 4655  RECORD33 op 0x42 [8701000000000000…]
+ 4655  GETPROP-IC key=391 ('#391')
  4688  op 0xc7 []
  4689  op 0xd2 []
- 4690  RECORD33 op 0x41 [8201000000000000…]
+ 4690  SETPROP-IC? key=386 ('#386')
  4723  op 0xd3 []
  4724  CALL argc=3   // (callee, this) 已在栈上
  4727  END
@@ -1165,10 +1165,10 @@
  4793  op 0xde []
  4794  ASSIGN  // value ← (target, value)
  4795  op 0x11 []
- 4796  op 0xeb [27]
+ 4796  jT/rel +39  → pc=4837
  4798  op 0x0e []
  4799  op 0xd2 []
- 4800  RECORD33 op 0x41 [8d01000000000000…]
+ 4800  SETPROP-IC? key=397 ('#397')
  4833  op 0xea []
  4834  push global
  4835  op 0xa8 []
@@ -1189,7 +1189,7 @@
  4886  op 0xc0 [00]
  4888  op 0xc0 [01]
  4890  op 0x33 []
- 4891  RECORD33 op 0x42 [8e01000000000000…]
+ 4891  GETPROP-IC key=398 ('#398')
  4924  op 0xd3 []
  4925  CALL argc=1   // (callee, this) 已在栈上
  4928  op 0x11 []
@@ -1197,25 +1197,25 @@
  4934  op 0x0e []
  4935  op 0x07 []
  4936  op 0x68 [0000]
- 4939  RECORD33 op 0x41 [8501000000000000…]
+ 4939  SETPROP-IC? key=389 ('#389')
  4972  coerce
- 4973  RECORD33 op 0x41 [8f01000000000000…]
+ 4973  SETPROP-IC? key=399 ('#399')
  5006  op 0xcf []
  5007  ASSIGN  // value ← (target, value)
  5008  op 0x11 []
- 5009  op 0xec [52]
+ 5009  jT/rel +82  → pc=5093
  5011  op 0x0e []
  5012  push <op 0x06>
  5013  op 0xc7 []
  5014  ASSIGN  // value ← (target, value)
  5015  op 0x11 []
- 5016  op 0xec [4b]
+ 5016  jT/rel +75  → pc=5093
  5018  op 0x0e []
  5019  op 0xc7 []
- 5020  RECORD33 op 0x42 [8701000000000000…]
+ 5020  GETPROP-IC key=391 ('#391')
  5053  op 0xc6 []
  5054  op 0xd2 []
- 5055  RECORD33 op 0x41 [8201000000000000…]
+ 5055  SETPROP-IC? key=386 ('#386')
  5088  op 0xd3 []
  5089  CALL argc=3   // (callee, this) 已在栈上
  5092  END

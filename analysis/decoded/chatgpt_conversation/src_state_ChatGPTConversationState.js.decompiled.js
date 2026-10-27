@@ -105,7 +105,7 @@
    68  store local[14]
    70  op 0x64 [0000]
    73  op 0x38 [91000000]
-   78  RECORD33 op 0x42 [6500000000000000…]
+   78  GETPROP-IC key=101 ('#101')
   111  push <op 0xd4>
   112  push const2[234]
   117  push <op 0x0b>
@@ -220,7 +220,7 @@
   514  op 0x02 [5301b603]
   520  push const[00d242fb]
   556  CALL argc=0   // (callee, this) 已在栈上
-  559  RECORD33 op 0x42 [fc00000000000000…]
+  559  GETPROP-IC key=252 ('#252')
   592  op 0xc0 [00]
   594  op 0xc0 [01]
   596  op 0x33 []

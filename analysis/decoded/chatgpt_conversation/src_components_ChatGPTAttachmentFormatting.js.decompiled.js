@@ -23,10 +23,10 @@
    15  push str[3]  // 't'
    20  op 0x14 []
    21  op 0x0e []
-   22  RECORD33 op 0x43 [0601000301030600…]
+   22  PROP/METHOD-IC? key=262 ('#262')
    56  op 0xca []
    57  op 0x38 [91000000]
-   62  RECORD33 op 0x42 [6500000000000000…]
+   62  GETPROP-IC key=101 ('#101')
    95  push <op 0xd4>
    96  push const2[220]
   101  push <op 0x0b>
@@ -46,7 +46,7 @@
   137  push str[6]  // ' B'
   142  load <e4>
   144  push <op 0x26: 860e>
-  147  RECORD33 op 0x43 [0601b6030100010a…]
+  147  PROP/METHOD-IC? key=262 ('#262')
   207  op 0x38 [95000000]
   212  op 0xd2 []
   213  unary-op 0xf0
@@ -58,13 +58,13 @@
   229  op 0xa6 []
   230  op 0x6c [8d000000]
   235  op 0xc2 []
-  236  RECORD33 op 0x42 [5c00000000000000…]
+  236  GETPROP-IC key=92 ('#92')
   269  op 0x38 [95000000]
   274  op 0x38 [99000000]
-  279  RECORD33 op 0x42 [df00000000000000…]
+  279  GETPROP-IC key=223 ('#223')
   312  op 0xb7 []
   313  op 0x38 [99000000]
-  318  RECORD33 op 0x42 [e000000000000000…]
+  318  GETPROP-IC key=224 ('#224')
   351  op 0xd2 []
   352  op 0xbf [0004]
   355  op 0x9e []
@@ -75,11 +75,11 @@
   368  CALL argc=2   // (callee, this) 已在栈上
   371  pop
   372  op 0xc2 []
-  373  RECORD33 op 0x42 [5c00000000000000…]
+  373  GETPROP-IC key=92 ('#92')
   406  op 0xd2 []
   407  push const[00001000]
   412  op 0x9e []
-  413  RECORD33 op 0x42 [e200000000000000…]
+  413  GETPROP-IC key=226 ('#226')
   446  op 0xb7 []
   447  CALL argc=1   // (callee, this) 已在栈上
   450  push const2[227]

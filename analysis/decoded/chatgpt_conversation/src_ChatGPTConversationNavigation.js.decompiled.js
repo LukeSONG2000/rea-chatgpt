@@ -14,7 +14,7 @@
    14  ASSIGN  // value ← (target, value)
    15  push str[3]  // '__esModule'
    20  load <0e>
-   22  RECORD33 op 0x43 [0601000300030600…]
+   22  PROP/METHOD-IC? key=262 ('#262')
    55  push undefined
    87  push <op 0xd4>
    88  push const2[219]

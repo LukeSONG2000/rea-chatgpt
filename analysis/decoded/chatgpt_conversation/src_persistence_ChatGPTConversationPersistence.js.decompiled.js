@@ -68,7 +68,7 @@
     0  push global
     1  push str[13]  // 'd'
     6  op 0x68 [0200]
-    9  RECORD33 op 0x42 [f400000000000000…]
+    9  GETPROP-IC key=244 ('#244')
    42  op 0xc6 []
    43  push <op 0x06>
    44  push <op 0x06>
@@ -87,26 +87,26 @@
    87  push const[0008cb8a]
    92  op 0x64 [0000]
    95  op 0xc7 []
-   96  RECORD33 op 0x41 [f300000000000000…]
-  129  RECORD33 op 0x42 [f500000000000000…]
+   96  SETPROP-IC? key=243 ('#243')
+  129  GETPROP-IC key=245 ('#245')
   162  op 0x68 [0000]
   165  CALL argc=1   // (callee, this) 已在栈上
   168  op 0x8b []
-  169  op 0xeb [02]
+  169  jT/rel +2  → pc=173
   171  op 0x2e []
   172  UNARY ! / coerce-bool
-  173  op 0xeb [03]
+  173  jT/rel +3  → pc=178
   175  push <op 0x06>
   176  op 0x2e []
   177  op 0x38 [9a000000]
-  182  RECORD33 op 0x42 [f600000000000000…]
+  182  GETPROP-IC key=246 ('#246')
   215  op 0xc7 []
-  216  RECORD33 op 0x41 [f300000000000000…]
-  249  RECORD33 op 0x42 [f700000000000000…]
+  216  SETPROP-IC? key=243 ('#243')
+  249  GETPROP-IC key=247 ('#247')
   282  op 0x68 [0000]
   285  CALL argc=1   // (callee, this) 已在栈上
   288  op 0x8b []
-  289  op 0xeb [02]
+  289  jT/rel +2  → pc=293
   291  op 0x2e []
   292  CALL argc=1   // (callee, this) 已在栈上
   295  op 0xca []
@@ -114,11 +114,11 @@
   297  push undefined
   300  unary-op 0xf0
   301  UNARY ! / coerce-bool
-  302  op 0xeb [10]
+  302  jT/rel +16  → pc=320
   304  op 0x38 [93000000]
   309  op 0x11 []
   310  push const2[248]
-  315  op 0x21 [0100]
+  315  CALL-VAR21 argc=1
   318  op 0x2f []
   319  push undefined
   322  op 0x2e []
@@ -127,16 +127,16 @@
   329  op 0x52 []
   330  op 0x02 [00770276]
   343  op 0x0e []
-  344  RECORD33 op 0x42 [0701000101010601…]
-  405  RECORD33 op 0x42 [f900000000000000…]
+  344  GETPROP-IC key=263 ('#263')
+  405  GETPROP-IC key=249 ('#249')
   438  op 0x68 [0000]
   441  op 0x38 [9a000000]
-  446  RECORD33 op 0x42 [fa00000000000000…]
+  446  GETPROP-IC key=250 ('#250')
   479  op 0xd2 []
   480  CALL argc=1   // (callee, this) 已在栈上
   483  op 0x25 [0200]
   486  ASSIGN  // value ← (target, value)
   487  push str[1]  // 'module'
   495  op 0x0e []
-  496  RECORD33 op 0x43 [0601c60300000007…]
+  496  PROP/METHOD-IC? key=262 ('#262')
   529  ??? 0xfb  // 未知指令，后续失效
