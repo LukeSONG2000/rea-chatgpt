@@ -145,3 +145,11 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
   2. 66 个共有模块 = （字节码, JS 源）平行对：以字符串表条目为锚，把指令序列与 JS 构造（函数声明/调用/属性访问/字面量）对齐，按簇归纳语义
   3. 歧义 opcode 再回到原生执行器定点确认（此时先做 QuickJS/cel 区域区分：quickjs 特征串与 cel 帧偏移的共现扫描）
 - QuickJS 区分是前置任务：quickjs 自带特征（bc 段魔术、JS_ReadObject 字符串、atom 表结构）
+
+### 9.6 B2 完成+B3 种子就绪（2026-10-27 深夜）
+
+- **A 字段语义确定 = 字符串条目数**（ChatGPTReasoning A=280 恰好 280 条；此前 144+0x00 是 read_valdi_data padding 顺序 bug 导致的漂移，已修）
+- 字符串编码定案：prefix u8 → len = prefix>>1（prefix&1 = 奇数长度标志），内容原始字节
+- 解码管线端到端全通（analysis/tools/cel_slots.py）：容器解包 → 头部 → 280 字符串 → 19,845B 代码 → 指令切分全部合法
+- ChatGPTReasoning.js 指令流抽样：前置 19×op0x00；循环模式 op0x04(push,4B)→op0x24(pop2push1,u16)→op0xc4(pop1,slot)→op0x65→op0x42(33B 记录,pop1push2) —— 疑似 const x = <expr>.prop 序列
+- 待做（B3 核心）：opcode→JS 语义映射（平行语料对齐：280 字符串/19,845B 码与 Android-only 无对应源，改用 66 个共有模块对齐归纳），产出 cel_decompile.py
