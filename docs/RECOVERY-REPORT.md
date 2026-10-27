@@ -55,7 +55,7 @@
 
 主程序、7 个 Framework、8 个 appex 扩展 **全部 cryptid=1**。加密窗口覆盖 `__objc_classname`/`__objc_methname` 段（实测提取为乱码，证实加密生效）。窗口外的二进制尾部（约 19MB）仍可读，已提取 137,909 + 33,695 + 1,157 条字符串到 `analysis/ios-symbols/*-readable-strings.txt`（功能文案、backend-api 等端点字符串）。
 
-## 5. 核心突破：Valdi 跨平台层（recovered/shared/valdimodules/）
+## 5. 核心突破：Valdi 跨平台层（shared/valdimodules/，2026-10-27 起从 recovered/ 移出）
 
 两端 App 都是「平台壳（原生）+ Valdi 跨平台模块（业务逻辑/UI）」架构。`.valdimodule` 在 iOS 的 `Frameworks/OpenAIXPlat.framework/`（85 个）和 Android 的 `assets/`（73 个）中成对出现，**71 个两端共有**——即同源代码：iOS 侧恢复出的 JS 即可同时作为 Android 端对应模块的源码基线。
 
@@ -109,10 +109,10 @@ rea/ChatGPT/
 │   │   ├── asar-extracted/        ★ 桌面版 Electron 应用完整 JS（21,885 文件）
 │   │   └── cua-node-oai/@oai/     ★ CUA/Sky/Browser-Desktop 明文 JS（100MB）
 │   ├── windows/asar-extracted/    ★ Windows 版 Electron 应用完整 JS（21,783 文件）
-│   └── shared/valdimodules/
-│       ├── unpacked/ios/          ★ 85 模块 2,107 个 JS（跨平台源码基线）
-│       ├── unpacked/android/      73 模块（字节码 + json 文案）
-│       └── unpacked/test*         解包验证样例
+shared/valdimodules/                （已移至顶层 shared/，见下）
+
+├── shared/valdimodules/           ★ 跨平台 Valdi 解包（iOS 77 / Android 68 模块）+ PROVENANCE.md 来源索引
+├── reference-domain-specific/     finance/subscription 域隔离产物（用户决策归档）
 ├── analysis/
 │   ├── valdi_unpack.py            valdimodule 解包器
 │   ├── asar_extract.py            ASAR 解析/提取器
@@ -126,7 +126,7 @@ rea/ChatGPT/
 
 ## 8. 残留与后续可做
 
-> **域隔离（2026-10-27）**：应用户判断，财务/身份（chatgpt_finance*、chatgpt_wallet*）与订阅（chatgpt_subscription_pricing）共 13 个模块已从主参考库移至 `recovered/reference-domain-specific/{finance,subscription}/`。主参考库现剩 iOS 77 / Android 68 个模块。多语言语料与语音链路（用户确认有需求）保留在主库；**健康域（3）与 Orbit 角色系统（4）经展开说明后确认保留作技术参考**（Orbit 素材保留不复用美术），笔记见 `analysis/domain-reference-notes.md`，Orbit 缩略图预览在 `analysis/brand-preview/`（448 张）。
+> **域隔离（2026-10-27）**：应用户判断，财务/身份（chatgpt_finance*、chatgpt_wallet*）与订阅（chatgpt_subscription_pricing）共 13 个模块已从主参考库移至 `reference-domain-specific/{finance,subscription}/`。主参考库现剩 iOS 77 / Android 68 个模块。多语言语料与语音链路（用户确认有需求）保留在主库；**健康域（3）与 Orbit 角色系统（4）经展开说明后确认保留作技术参考**（Orbit 素材保留不复用美术），笔记见 `analysis/domain-reference-notes.md`，Orbit 缩略图预览在 `analysis/brand-preview/`（448 张）。
 
 1. **jadx 覆盖率（最终）**：首次运行在 97% 处被系统中断（覆盖 93.6%）；`--no-res -j 4` 补跑完成后共 **59,413 个 Java 文件**，61,511 个顶层类仍缺 2,456 个（覆盖 96.0%），其中 `com/openai` 仅缺 4 个（R8 重命名的碎片段，如 `feature/artifactlibrary/impl/c`，其 smali 兜底在 `apktool-src/`）；jadx 报告 201 个反编译错误（`analysis/jadx-run2.log`）。缺口几乎全是第三方混淆内部类（defpackage 下的 mlkit/sentry/datadog 等），不影响基线完整性。
 2. **Android valdimodule 字节码（逆向进行中）**：已用 Ghidra 12.2 headless 完成 `libopenai_xplat_export.so` 全量分析（24,841 函数，工程保留可复用）。确认内层格式为 **OpenAI 自研 cel VM 字节码**（非 QuickJS）；已破解指令编码（每 opcode 固定长度，247 条元数据表已导出）、定位 VM 构造/验证器（`FUN_0072ad84`）与容器解析链（`FUN_007717a8`/`FUN_007708b0`，与开源 ValdiModuleBuilder 对应），并发现 Rust 原生模块接口签名表（client_sql/oai_metrics_service/math_renderer 等）。两个 Android 独有模块（`chatgpt_conversation`/`chatgpt_reasoning`）的完整字符串表（42,651 条）已先行恢复。详细记录：`analysis/valdi-bytecode-notes.md`。剩余：opcode 语义提取 + 内层文件节解析 + 反编译器实现。
