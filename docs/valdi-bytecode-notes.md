@@ -176,3 +176,10 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - cel_v2.py：表达式栈模拟渲染器。首语句渲染正确（strict 初始化 + ae 赋值），CALL 后栈深度失步（'?' 占位）——CALL 约定（pops=2+argc：callee/this/args 的推入顺序）需用 ICELRuntime 的 defineProperty 序列（已知答案）单步校准
 - 已确认约定：参数按序推入、被调函数最后推入；0x24 pops = 2+argc（验证器实证）
 - 下一步：① 用 ICELRuntime 单模块校准 v2 栈机（25 条指令，已知答案）；② 补 0x45/0x0e/0x0d/0x4f 等残余 op 语义；③ 渲染器输出语句化
+
+### 9.10 ICELRuntime 校准完成（2026-10-27 深夜Ⅲ）
+
+完整 121B 指令流单步对照已知 JS（Object.defineProperty(exports,'__esModule',{value:!0})）：
+- op 0x03 操作数布局定案：[u8 idx][u16 aux]（@15 idx=3='__esModule' ✓；@106 idx=4 同 ✓，aux 04e4 为位置/池引用）
+- 尾部序列定性：d4(push exports) → 04(const 0xdb) → 0b → b6 → 99(!true) → 4f(getprop defineProperty) → 24 CALL argc=3 → 29 END → ae(assign) → 03 → 26 → padding = **END 后 epilogue 模式**（模块记录元数据）
+- CALL 栈核算：4 推入（exports/const/0b/b6→99 净零）对 argc=3 → **CALL 消耗 = 被调 + argc（4 = fn + 3 参数），metadata 基数 2 的"this"语义存疑**——渲染器按"被调+参数"约定处理（ICELRuntime 无 this 传递，defineProperty(exports,…) 的 exports 是首参数 ✓）
