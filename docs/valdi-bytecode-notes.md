@@ -183,3 +183,14 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - op 0x03 操作数布局定案：[u8 idx][u16 aux]（@15 idx=3='__esModule' ✓；@106 idx=4 同 ✓，aux 04e4 为位置/池引用）
 - 尾部序列定性：d4(push exports) → 04(const 0xdb) → 0b → b6 → 99(!true) → 4f(getprop defineProperty) → 24 CALL argc=3 → 29 END → ae(assign) → 03 → 26 → padding = **END 后 epilogue 模式**（模块记录元数据）
 - CALL 栈核算：4 推入（exports/const/0b/b6→99 净零）对 argc=3 → **CALL 消耗 = 被调 + argc（4 = fn + 3 参数），metadata 基数 2 的"this"语义存疑**——渲染器按"被调+参数"约定处理（ICELRuntime 无 this 传递，defineProperty(exports,…) 的 exports 是首参数 ✓）
+
+### 9.11 url.js 对齐金矿（2026-10-27 深夜Ⅳ）——核心 url.js（4 函数/1512B 码/352 指令）对齐
+
+新实证（全部有 指令@偏移 ↔ JS 构造 双向对应）：
+- **op 0x03 布局修正**：[u8 flags][u8 idx][u16 aux] —— 之前"byte[1]=idx"错一字节；idx 验证：01→'require'、02→'exports'、03→'e'、04→'__esModule'、05→'t' ✓
+- **op 0x48 = DECLARE_FUNCTION**（pop3，紧跟函数名 push 与 33B 函数记录 0x43）
+- **op 0xc1 = LOAD_LOCAL <u16 slot>**；0xc4 = STORE_LOCAL <u8 slot>；0xca/0xcb/0xcc/0xcd = 局部变量操作族（pop1 各异）
+- **op 0x45 = 导出/属性绑定记录**（len9 pop2：[u32 绑定标识][u32 顺序号] 递增，连续出现 = exports 多绑定）；op 0x15 = pop2 push3 辅助
+- **op 0x0e = POP/DISCARD**（defineProperty 后弃返回值实证）；**op 0x38 = LOAD_CONST-POOL <u32>**（独立常量池，索引>字符串数）
+- 每文件 const 池独立（0xdb/0xdc/0xe1 随文件变化）
+- 模块导出区模式：d4×N 推局部 → 0x06/0x15/0x45×N 构建 exports 绑定 → END
