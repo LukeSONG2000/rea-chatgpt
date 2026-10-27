@@ -170,3 +170,9 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - 跳转类渲染：0xEB/0xEC/0xED i8 相对；0xEF-0xF2 条件跳转
 - v1 输出样例（ChatGPTReasoning 模块初始化）：`push undefined → GETPROP-IC key=267 → push const2[268] → CALL argc=1 → store local[14]` 循环模式清晰
 - 两模块 v1 产物：analysis/decoded/{chatgpt_reasoning,chatgpt_conversation}/（19 文件）
+
+### 9.9 v2 栈模拟原型（2026-10-27 深夜Ⅱ）
+
+- cel_v2.py：表达式栈模拟渲染器。首语句渲染正确（strict 初始化 + ae 赋值），CALL 后栈深度失步（'?' 占位）——CALL 约定（pops=2+argc：callee/this/args 的推入顺序）需用 ICELRuntime 的 defineProperty 序列（已知答案）单步校准
+- 已确认约定：参数按序推入、被调函数最后推入；0x24 pops = 2+argc（验证器实证）
+- 下一步：① 用 ICELRuntime 单模块校准 v2 栈机（25 条指令，已知答案）；② 补 0x45/0x0e/0x0d/0x4f 等残余 op 语义；③ 渲染器输出语句化
