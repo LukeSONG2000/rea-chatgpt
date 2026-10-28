@@ -1,0 +1,546 @@
+{
+ "conformances": 95638,
+ "protocol_resolved": 95638,
+ "distinct_protocols": 3670,
+ "unknown_slot": 0,
+ "unknown_target": 0,
+ "objc_type_refs": 64,
+ "tkinds": {
+  "0": 95046,
+  "1": 528,
+  "2": 64
+ },
+ "retroactive": 1888,
+ "synthesized": 1900,
+ "resilient_witnesses": 78537,
+ "generic_witness_table": 84087,
+ "top_conformed_protocols": [
+  [
+   "protocol descriptor for Swift.Equatable",
+   19091
+  ],
+  [
+   "protocol descriptor for Swift.Hashable",
+   15113
+  ],
+  [
+   "protocol descriptor for Swift.CustomDebugStringConvertible",
+   6229
+  ],
+  [
+   "protocol descriptor for Swift.Decodable",
+   5567
+  ],
+  [
+   "protocol descriptor for Swift.CustomStringConvertible",
+   5304
+  ],
+  [
+   "protocol descriptor for Swift.RawRepresentable",
+   5062
+  ],
+  [
+   "protocol descriptor for Swift.CodingKey",
+   5035
+  ],
+  [
+   "protocol descriptor for SwiftUI.View",
+   4944
+  ],
+  [
+   "protocol descriptor for Swift.Encodable",
+   4818
+  ],
+  [
+   "_ProtoNameProviding",
+   1955
+  ],
+  [
+   "protocol descriptor for Swift.CaseIterable",
+   1842
+  ],
+  [
+   "Message",
+   1076
+  ],
+  [
+   "_MessageImplementationBase",
+   1075
+  ],
+  [
+   "protocol descriptor for Swift.Identifiable",
+   934
+  ],
+  [
+   "Enum",
+   880
+  ],
+  [
+   "protocol descriptor for Observation.Observable",
+   828
+  ],
+  [
+   "protocol descriptor for Swift.Error",
+   763
+  ],
+  [
+   "protocol descriptor for SwiftUI.ViewModifier",
+   487
+  ],
+  [
+   "protocol descriptor for Swift.Sequence",
+   405
+  ],
+  [
+   "UserIDProviding",
+   370
+  ],
+  [
+   "CasePathReflectable",
+   364
+  ],
+  [
+   "CasePathIterable",
+   364
+  ],
+  [
+   "CasePathable",
+   364
+  ],
+  [
+   "UserWorkspaceIDProviding",
+   344
+  ],
+  [
+   "ActionHandling",
+   306
+  ],
+  [
+   "TaskAttachable",
+   305
+  ],
+  [
+   "protocol descriptor for Swift._HasCustomAnyHashableRepresentation",
+   246
+  ],
+  [
+   "protocol descriptor for Swift._SwiftNewtypeWrapper",
+   245
+  ],
+  [
+   "protocol descriptor for Swift._ObjectiveCBridgeable",
+   245
+  ],
+  [
+   "ViewTemplate",
+   237
+  ],
+  [
+   "protocol descriptor for SwiftUI.EnvironmentKey",
+   215
+  ],
+  [
+   "APIProviding",
+   187
+  ],
+  [
+   "MainActorPublishable",
+   185
+  ],
+  [
+   "protocol descriptor for Swift.Actor",
+   174
+  ],
+  [
+   "protocol descriptor for Foundation.LocalizedError",
+   162
+  ],
+  [
+   "protocol descriptor for SwiftUI.UIViewRepresentable",
+   149
+  ],
+  [
+   "PresentationViewCaseType",
+   145
+  ],
+  [
+   "ScopedStatsigClientProviding",
+   133
+  ],
+  [
+   "AccountIDProviding",
+   119
+  ],
+  [
+   "protocol descriptor for SwiftUI.Animatable",
+   107
+  ],
+  [
+   "StatsigFeatureFlagManagerProviding",
+   101
+  ],
+  [
+   "protocol descriptor for SwiftUI.ButtonStyle",
+   88
+  ],
+  [
+   "AnalyticsEvent",
+   84
+  ],
+  [
+   "protocol descriptor for Swift.ExpressibleByArrayLiteral",
+   73
+  ],
+  [
+   "AccountDataStorageProviding",
+   71
+  ],
+  [
+   "protocol descriptor for Swift.AsyncSequence",
+   69
+  ],
+  [
+   "PrefixableAnalyticsEvent",
+   68
+  ],
+  [
+   "protocol descriptor for Swift.AsyncIteratorProtocol",
+   68
+  ],
+  [
+   "MeasurableBodyView",
+   65
+  ],
+  [
+   "AccountDataSourceProviding",
+   64
+  ],
+  [
+   "UserManagerProviding",
+   61
+  ],
+  [
+   "protocol descriptor for SwiftUI.UIViewControllerRepresentable",
+   59
+  ],
+  [
+   "_NIOPreconcurrencySendable",
+   57
+  ],
+  [
+   "ExperimentLayerVariant",
+   56
+  ],
+  [
+   "protocol descriptor for Swift.SetAlgebra",
+   53
+  ],
+  [
+   "ActiveUserWorkspaceManagerProviding",
+   52
+  ],
+  [
+   "protocol descriptor for Swift.OptionSet",
+   52
+  ],
+  [
+   "protocol descriptor for Swift.Comparable",
+   51
+  ],
+  [
+   "ModalPresentation",
+   48
+  ],
+  [
+   "AccountSettingsServiceProviding",
+   47
+  ],
+  [
+   "protocol descriptor for SwiftUI.Layout",
+   44
+  ],
+  [
+   "protocol descriptor for SwiftUI.ToolbarContent",
+   43
+  ],
+  [
+   "protocol descriptor for OpenAIXPlat.ValdiMarshallable",
+   43
+  ],
+  [
+   "DefaultDecodableValueProvider",
+   42
+  ],
+  [
+   "PagedRequestResponse",
+   40
+  ],
+  [
+   "PaywallComponentBase",
+   38
+  ],
+  [
+   "protocol descriptor for OpenAIXPlat.ValdiMarshallableInterface",
+   37
+  ],
+  [
+   "UserWorkspaceStateReaderProviding",
+   36
+  ],
+  [
+   "protocol descriptor for Swift.ExpressibleByUnicodeScalarLiteral",
+   35
+  ],
+  [
+   "LogMessage",
+   35
+  ],
+  [
+   "Markup",
+   35
+  ],
+  [
+   "protocol descriptor for SwiftUI.PreferenceKey",
+   34
+  ],
+  [
+   "protocol descriptor for Swift.ExpressibleByStringLiteral",
+   34
+  ],
+  [
+   "protocol descriptor for Swift.ExpressibleByExtendedGraphemeClusterLiteral",
+   34
+  ],
+  [
+   "ChannelOption",
+   34
+  ],
+  [
+   "ApplicationStateObserverProviding",
+   33
+  ],
+  [
+   "protocol descriptor for Foundation.CustomNSError",
+   32
+  ],
+  [
+   "protocol descriptor for SwiftUI.Shape",
+   29
+  ],
+  [
+   "ConversationObserver",
+   28
+  ],
+  [
+   "CurrentDateProviderProviding",
+   26
+  ]
+ ],
+ "conformances_by_module": [
+  [
+   "Generated",
+   13582
+  ],
+  [
+   "OAIProtobuf",
+   11214
+  ],
+  [
+   "ConversationsCore",
+   5504
+  ],
+  [
+   "RevenueCat_CustomEntitlementComputation",
+   3525
+  ],
+  [
+   "ConversationsInterface",
+   2746
+  ],
+  [
+   "CodexRemoteCore",
+   2290
+  ],
+  [
+   "ChatGPT",
+   2189
+  ],
+  [
+   "__C",
+   1845
+  ],
+  [
+   "TibroCore",
+   1719
+  ],
+  [
+   "CalpicoCore",
+   1637
+  ],
+  [
+   "StripePaymentSheet",
+   1081
+  ],
+  [
+   "Conversations",
+   1024
+  ],
+  [
+   "ChatGPTFileLibrary",
+   989
+  ],
+  [
+   "ChatGPTConnectors",
+   912
+  ],
+  [
+   "ChatGPTSettings",
+   856
+  ],
+  [
+   "CodexRemoteThread",
+   806
+  ],
+  [
+   "ChatGPTHealthCore",
+   777
+  ],
+  [
+   "ChatGPTBazaar",
+   746
+  ],
+  [
+   "SwiftProtobuf",
+   732
+  ],
+  [
+   "ChatGPTSites",
+   662
+  ],
+  [
+   "ChatGPTEcosystem",
+   655
+  ],
+  [
+   "ChatGPTMedia",
+   651
+  ],
+  [
+   "ChatGPTPluginsFoundation",
+   646
+  ],
+  [
+   "ChatGPTMessageRow",
+   611
+  ],
+  [
+   "ChatGPTMessageInput",
+   576
+  ],
+  [
+   "CalpicoCoreUI",
+   561
+  ],
+  [
+   "ChatGPTLogin",
+   537
+  ],
+  [
+   "ChatGPTFamily",
+   503
+  ],
+  [
+   "ChatGPTHistory",
+   489
+  ],
+  [
+   "ChatGPTConversation",
+   489
+  ],
+  [
+   "ChatGPTHealth",
+   477
+  ],
+  [
+   "CodexAppServer",
+   464
+  ],
+  [
+   "ChatGPTSpaces",
+   462
+  ],
+  [
+   "AccountModels",
+   454
+  ],
+  [
+   "ChatGPTCommerce",
+   451
+  ],
+  [
+   "SwiftUIStyleguide",
+   447
+  ],
+  [
+   "Auth",
+   439
+  ],
+  [
+   "ChatGPTCodex",
+   438
+  ],
+  [
+   "ChatGPTPluginsDirectory",
+   438
+  ],
+  [
+   "ChatGPTDILCore",
+   433
+  ],
+  [
+   "ChatGPTMemory",
+   421
+  ],
+  [
+   "ChatGPTConversationRoot",
+   417
+  ],
+  [
+   "ChatGPTVoiceSession",
+   413
+  ],
+  [
+   "Sentry",
+   405
+  ],
+  [
+   "ChatGPTFinance",
+   383
+  ],
+  [
+   "ChatGPTConnectorsInterface",
+   380
+  ],
+  [
+   "BeaconModels",
+   372
+  ],
+  [
+   "Account",
+   360
+  ],
+  [
+   "BazaarModels",
+   354
+  ],
+  [
+   "NIOCore",
+   347
+  ]
+ ],
+ "conformances_by_kind": {
+  "struct": 38067,
+  "enum": 52133,
+  "class": 4846
+ }
+}
