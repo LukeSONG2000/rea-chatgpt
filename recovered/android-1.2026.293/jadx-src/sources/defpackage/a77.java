@@ -1,0 +1,17 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes3.dex */
+public final class a77 {
+    public int a;
+    public int b;
+    public int c;
+    public boolean d;
+    public boolean e;
+    public int f;
+    public j27 g;
+    public int h;
+    public int i;
+    public boolean j;
+    public boolean k;
+}

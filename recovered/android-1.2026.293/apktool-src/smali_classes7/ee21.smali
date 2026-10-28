@@ -1,0 +1,55 @@
+.class public final Lee21;
+.super Lne21;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# instance fields
+.field public final a:Z
+
+.field public final b:Ljava/lang/String;
+
+
+# direct methods
+.method public constructor <init>(ZLjava/lang/String;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-boolean p1, p0, Lee21;->a:Z
+
+    .line 5
+    .line 6
+    iput-object p2, p0, Lee21;->b:Ljava/lang/String;
+
+    .line 7
+    .line 8
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lee21;->b:Ljava/lang/String;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final b()Z
+    .locals 0
+
+    .line 1
+    iget-boolean p0, p0, Lee21;->a:Z
+
+    .line 2
+    .line 3
+    return p0
+.end method

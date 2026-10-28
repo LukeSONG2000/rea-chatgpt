@@ -1,0 +1,8 @@
+.class public abstract Lcom/plaid/link/R$layout;
+.super Ljava/lang/Object;
+
+
+# static fields
+.field public static activity_link:I = 0x7f0d001c
+
+.field public static plaid_error_screen_content:I = 0x7f0d031c

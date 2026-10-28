@@ -1,0 +1,43 @@
+package protobuf_analytics_events.v1;
+
+import defpackage.o2p0;
+import defpackage.qh;
+import defpackage.wi51;
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes8.dex */
+@Metadata(d1 = {"\u0000\u000e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\u0010\n\u0000\b\u0087\u0081\u0002\u0018\u00002\u00020\u00012\b\u0012\u0004\u0012\u00020\u00000\u0002¨\u0006\u0003"}, d2 = {"Lprotobuf_analytics_events/v1/AccessLogoutActionLocation;", "Lwi51;", "", "OpenAI.kmp.platform.protobuf.generated:generated-public"}, k = 1, mv = {2, 4, 0}, xi = 48)
+public enum AccessLogoutActionLocation implements wi51 {
+    ACCESS_LOGOUT_ACTION_LOCATION_UNSPECIFIED(0),
+    ACCESS_LOGOUT_ACTION_LOCATION_SSO_CATCH_ALL_MODAL(1),
+    ACCESS_LOGOUT_ACTION_LOCATION_INVALID_ACCOUNT_MODAL(2),
+    ACCESS_LOGOUT_ACTION_LOCATION_PROFILE_DROP_DOWN(3),
+    ACCESS_LOGOUT_ACTION_LOCATION_SETTINGS_MODAL_LOG_OUT_ALL(4),
+    ACCESS_LOGOUT_ACTION_LOCATION_SETTINGS_MODAL_LOG_OUT_THIS_DEVICE(16),
+    ACCESS_LOGOUT_ACTION_LOCATION_QUIET_HOURS_BLOCK_MODAL(5),
+    ACCESS_LOGOUT_ACTION_LOCATION_DISALLOWED_BUILD_MODAL(6),
+    ACCESS_LOGOUT_ACTION_LOCATION_ACCOUNT_ERROR_VIEW(7),
+    ACCESS_LOGOUT_ACTION_LOCATION_ACCOUNT_DELETION_REQUIRED_LOGIN_CONFIRMATION_DIALOG(8),
+    ACCESS_LOGOUT_ACTION_LOCATION_BACKEND_ENVIRONMENT_CHANGE_ALERT(9),
+    ACCESS_LOGOUT_ACTION_LOCATION_ONBOARDING_FLOW(10),
+    ACCESS_LOGOUT_ACTION_LOCATION_SETTINGS_SCREENS(11),
+    ACCESS_LOGOUT_ACTION_LOCATION_CONTINUE_CONVERSATION_SIGN_OUT_PROMPT(12),
+    ACCESS_LOGOUT_ACTION_LOCATION_NO_AUTH_TO_SIGNUP(13),
+    ACCESS_LOGOUT_ACTION_LOCATION_ACCOUNT_DELETION_SUCCESS_ALERT(14),
+    ACCESS_LOGOUT_ACTION_LOCATION_ACCOUNT_SWITCHER_MENU(15),
+    ACCESS_LOGOUT_ACTION_LOCATION_HEADER(17);
+
+    public final byte a;
+    public static final qh b = new qh(o2p0.a(AccessLogoutActionLocation.class), 2, ACCESS_LOGOUT_ACTION_LOCATION_UNSPECIFIED);
+
+    /* JADX WARN: Multi-variable type inference failed */
+    AccessLogoutActionLocation(int i) {
+        this.a = i;
+    }
+
+    @Override // defpackage.wi51
+    public final int getValue() {
+        return this.a;
+    }
+}

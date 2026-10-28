@@ -1,0 +1,315 @@
+.class public abstract Lubo;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# static fields
+.field public static final a:Ljava/util/List;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 8
+
+    .line 1
+    sget-object v6, Ltbo;->h:Lasy0;
+
+    .line 2
+    .line 3
+    sget-object v7, Ltbo;->i:Lasy0;
+
+    .line 4
+    .line 5
+    sget-object v0, Ltbo;->b:Lasy0;
+
+    .line 6
+    .line 7
+    sget-object v1, Ltbo;->c:Lasy0;
+
+    .line 8
+    .line 9
+    sget-object v2, Ltbo;->d:Lasy0;
+
+    .line 10
+    .line 11
+    sget-object v3, Ltbo;->e:Lasy0;
+
+    .line 12
+    .line 13
+    sget-object v4, Ltbo;->g:Lasy0;
+
+    .line 14
+    .line 15
+    sget-object v5, Ltbo;->f:Lasy0;
+
+    .line 16
+    .line 17
+    filled-new-array/range {v0 .. v7}, [Lasy0;
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-object v0
+
+    .line 21
+    invoke-static {v0}, Lzx6;->U([Ljava/lang/Object;)Ljava/util/List;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object v0
+
+    .line 25
+    sput-object v0, Lubo;->a:Ljava/util/List;
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public static final a(Loyy0;)Ljava/util/ArrayList;
+    .locals 14
+
+    .line 1
+    sget-object v0, Lubo;->a:Ljava/util/List;
+
+    .line 2
+    .line 3
+    check-cast v0, Ljava/lang/Iterable;
+
+    .line 4
+    .line 5
+    new-instance v1, Ljava/util/ArrayList;
+
+    .line 6
+    .line 7
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+
+    .line 8
+    .line 9
+    .line 10
+    invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    .line 11
+    .line 12
+    .line 13
+    move-result-object v0
+
+    .line 14
+    :goto_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 15
+    .line 16
+    .line 17
+    move-result v2
+
+    .line 18
+    if-eqz v2, :cond_3
+
+    .line 19
+    .line 20
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object v2
+
+    .line 24
+    move-object v4, v2
+
+    .line 25
+    check-cast v4, Lasy0;
+
+    .line 26
+    .line 27
+    iget-object v2, p0, Loyy0;->a:Loz2;
+
+    .line 28
+    .line 29
+    iget-object v3, v4, Lasy0;->a:Ljava/lang/String;
+
+    .line 30
+    .line 31
+    iget-object v5, v2, Loz2;->b:Ljava/lang/String;
+
+    .line 32
+    .line 33
+    invoke-virtual {v5}, Ljava/lang/String;->length()I
+
+    .line 34
+    .line 35
+    .line 36
+    move-result v5
+
+    .line 37
+    const/4 v9, 0x0
+
+    .line 38
+    invoke-virtual {v2, v9, v5, v3}, Loz2;->f(IILjava/lang/String;)Ljava/util/List;
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-object v3
+
+    .line 42
+    check-cast v3, Ljava/lang/Iterable;
+
+    .line 43
+    .line 44
+    new-instance v10, Ljava/util/ArrayList;
+
+    .line 45
+    .line 46
+    invoke-direct {v10}, Ljava/util/ArrayList;-><init>()V
+
+    .line 47
+    .line 48
+    .line 49
+    invoke-interface {v3}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    .line 50
+    .line 51
+    .line 52
+    move-result-object v11
+
+    .line 53
+    :cond_0
+    :goto_1
+    invoke-interface {v11}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 54
+    .line 55
+    .line 56
+    move-result v3
+
+    .line 57
+    if-eqz v3, :cond_2
+
+    .line 58
+    .line 59
+    invoke-interface {v11}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 60
+    .line 61
+    .line 62
+    move-result-object v3
+
+    .line 63
+    check-cast v3, Lmz2;
+
+    .line 64
+    .line 65
+    iget v5, v3, Lmz2;->b:I
+
+    .line 66
+    .line 67
+    iget-object v6, v2, Loz2;->b:Ljava/lang/String;
+
+    .line 68
+    .line 69
+    invoke-virtual {v6}, Ljava/lang/String;->length()I
+
+    .line 70
+    .line 71
+    .line 72
+    move-result v6
+
+    .line 73
+    invoke-static {v5, v9, v6}, Lw0a0;->o(III)I
+
+    .line 74
+    .line 75
+    .line 76
+    move-result v12
+
+    .line 77
+    iget v5, v3, Lmz2;->c:I
+
+    .line 78
+    .line 79
+    iget-object v6, v2, Loz2;->b:Ljava/lang/String;
+
+    .line 80
+    .line 81
+    invoke-virtual {v6}, Ljava/lang/String;->length()I
+
+    .line 82
+    .line 83
+    .line 84
+    move-result v6
+
+    .line 85
+    invoke-static {v5, v12, v6}, Lw0a0;->o(III)I
+
+    .line 86
+    .line 87
+    .line 88
+    move-result v13
+
+    .line 89
+    move-object v5, v3
+
+    .line 90
+    new-instance v3, Lzry0;
+
+    .line 91
+    .line 92
+    iget-object v5, v5, Lmz2;->a:Ljava/lang/Object;
+
+    .line 93
+    .line 94
+    invoke-static {v12, v13}, Lh8p0;->a(II)J
+
+    .line 95
+    .line 96
+    .line 97
+    move-result-wide v6
+
+    .line 98
+    const/4 v8, 0x0
+
+    .line 99
+    invoke-direct/range {v3 .. v8}, Lzry0;-><init>(Lasy0;Ljava/lang/Object;JI)V
+
+    .line 100
+    .line 101
+    .line 102
+    if-ge v12, v13, :cond_1
+
+    .line 103
+    .line 104
+    goto :goto_2
+
+    .line 105
+    :cond_1
+    const/4 v3, 0x0
+
+    .line 106
+    :goto_2
+    if-eqz v3, :cond_0
+
+    .line 107
+    .line 108
+    invoke-virtual {v10, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 109
+    .line 110
+    .line 111
+    goto :goto_1
+
+    .line 112
+    :cond_2
+    invoke-static {v1, v10}, Lf0n;->t0(Ljava/util/Collection;Ljava/lang/Iterable;)V
+
+    .line 113
+    .line 114
+    .line 115
+    goto :goto_0
+
+    .line 116
+    :cond_3
+    return-object v1
+.end method

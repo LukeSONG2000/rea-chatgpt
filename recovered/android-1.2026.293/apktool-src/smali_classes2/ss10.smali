@@ -1,0 +1,27 @@
+.class public interface abstract Lss10;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+# interfaces
+.implements Lqs10;
+
+
+# virtual methods
+.method public abstract F(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/Object;",
+            "Ljava/lang/Object;",
+            "Ljava/lang/Object;",
+            "Ljava/lang/Object;",
+            "Ljava/lang/Object;",
+            "Ljava/lang/Object;",
+            "Ljava/lang/Object;",
+            "Ljava/lang/Object;",
+            "Ljava/lang/Object;",
+            ")",
+            "Ljava/lang/Object;"
+        }
+    .end annotation
+.end method

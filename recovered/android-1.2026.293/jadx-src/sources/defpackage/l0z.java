@@ -1,0 +1,29 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes7.dex */
+public final class l0z extends s0z {
+    @Override // defpackage.s0z
+    public final boolean b(f0y f0yVar, f0y f0yVar2) {
+        f0y f0yVar3 = f0yVar2.a;
+        if (f0yVar3 != null && !(f0yVar3 instanceof m2x)) {
+            int i = 0;
+            for (f0y f0yVarA0 = f0yVar3.a0(); f0yVarA0 != null; f0yVarA0 = f0yVarA0.x()) {
+                if (f0yVarA0.d.c.equals(f0yVar2.d.c)) {
+                    i++;
+                }
+                if (i > 1) {
+                    break;
+                }
+            }
+            if (i == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public final String toString() {
+        return ":only-of-type";
+    }
+}

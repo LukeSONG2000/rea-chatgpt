@@ -1,0 +1,55 @@
+.class public abstract Lcvx0;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# static fields
+.field public static final a:Landroid/util/Size;
+
+.field public static final b:Lu9n;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 3
+
+    .line 1
+    new-instance v0, Landroid/util/Size;
+
+    .line 2
+    .line 3
+    const/16 v1, 0x140
+
+    .line 4
+    .line 5
+    const/16 v2, 0xf0
+
+    .line 6
+    .line 7
+    invoke-direct {v0, v1, v2}, Landroid/util/Size;-><init>(II)V
+
+    .line 8
+    .line 9
+    .line 10
+    sput-object v0, Lcvx0;->a:Landroid/util/Size;
+
+    .line 11
+    .line 12
+    new-instance v0, Lu9n;
+
+    .line 13
+    .line 14
+    const/4 v1, 0x0
+
+    .line 15
+    invoke-direct {v0, v1}, Lu9n;-><init>(Z)V
+
+    .line 16
+    .line 17
+    .line 18
+    sput-object v0, Lcvx0;->b:Lu9n;
+
+    .line 19
+    .line 20
+    return-void
+.end method

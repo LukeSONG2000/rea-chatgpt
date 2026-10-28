@@ -1,0 +1,16 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes7.dex */
+public final class mxz extends zr9 {
+    public Integer g;
+    public Integer h;
+    public int i;
+    public String j;
+    public String k;
+
+    @Override // defpackage.jef0
+    public final void a(hoo hooVar) {
+        hooVar.n(this);
+    }
+}

@@ -1,0 +1,19 @@
+package com.openai.valdi.chatgpt.multiplayer;
+
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes6.dex */
+@Metadata(d1 = {"\u0000\u000e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\b\u0000\u0018\u00002\u00060\u0001j\u0002`\u0002¨\u0006\u0003"}, d2 = {"Lcom/openai/valdi/chatgpt/multiplayer/AndroidMultiplayerAdmissionException;", "Ljava/lang/IllegalArgumentException;", "Lkotlin/IllegalArgumentException;", "modules_chatgpt_multiplayer-chatgpt_multiplayer_android_impl_kt"}, k = 1, mv = {1, 8, 0}, xi = 48)
+public final class AndroidMultiplayerAdmissionException extends IllegalArgumentException {
+    public final OAIMultiplayerConnectionFailureReason a;
+
+    public AndroidMultiplayerAdmissionException(String str) {
+        this(str, OAIMultiplayerConnectionFailureReason.INVALID_RESPONSE);
+    }
+
+    public AndroidMultiplayerAdmissionException(String str, OAIMultiplayerConnectionFailureReason oAIMultiplayerConnectionFailureReason) {
+        super(str);
+        this.a = oAIMultiplayerConnectionFailureReason;
+    }
+}

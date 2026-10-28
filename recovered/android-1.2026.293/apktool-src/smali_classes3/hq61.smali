@@ -1,0 +1,206 @@
+.class public Lhq61;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+# interfaces
+.implements Ljava/util/Iterator;
+
+
+# instance fields
+.field public final a:Ljava/util/Iterator;
+
+.field public final b:Ljava/util/Collection;
+
+.field public final synthetic c:Lcr61;
+
+
+# direct methods
+.method public constructor <init>(Lcr61;)V
+    .locals 1
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lhq61;->c:Lcr61;
+
+    .line 5
+    .line 6
+    iget-object p1, p1, Lcr61;->b:Ljava/util/Collection;
+
+    .line 7
+    .line 8
+    iput-object p1, p0, Lhq61;->b:Ljava/util/Collection;
+
+    .line 9
+    .line 10
+    instance-of v0, p1, Ljava/util/List;
+
+    .line 11
+    .line 12
+    if-eqz v0, :cond_0
+
+    .line 13
+    .line 14
+    check-cast p1, Ljava/util/List;
+
+    .line 15
+    .line 16
+    invoke-interface {p1}, Ljava/util/List;->listIterator()Ljava/util/ListIterator;
+
+    .line 17
+    .line 18
+    .line 19
+    move-result-object p1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    invoke-interface {p1}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object p1
+
+    .line 25
+    :goto_0
+    iput-object p1, p0, Lhq61;->a:Ljava/util/Iterator;
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public constructor <init>(Lcr61;Ljava/util/ListIterator;)V
+    .locals 0
+
+    .line 28
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lhq61;->c:Lcr61;
+
+    iget-object p1, p1, Lcr61;->b:Ljava/util/Collection;
+
+    iput-object p1, p0, Lhq61;->b:Ljava/util/Collection;
+
+    iput-object p2, p0, Lhq61;->a:Ljava/util/Iterator;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lhq61;->c:Lcr61;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Lcr61;->b()V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, v0, Lcr61;->b:Ljava/util/Collection;
+
+    .line 7
+    .line 8
+    iget-object p0, p0, Lhq61;->b:Ljava/util/Collection;
+
+    .line 9
+    .line 10
+    if-ne v0, p0, :cond_0
+
+    .line 11
+    .line 12
+    return-void
+
+    .line 13
+    :cond_0
+    invoke-static {}, Lml;->b()V
+
+    .line 14
+    .line 15
+    .line 16
+    return-void
+.end method
+
+.method public final hasNext()Z
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Lhq61;->a()V
+
+    .line 2
+    .line 3
+    .line 4
+    iget-object p0, p0, Lhq61;->a:Ljava/util/Iterator;
+
+    .line 5
+    .line 6
+    invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 7
+    .line 8
+    .line 9
+    move-result p0
+
+    .line 10
+    return p0
+.end method
+
+.method public final next()Ljava/lang/Object;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Lhq61;->a()V
+
+    .line 2
+    .line 3
+    .line 4
+    iget-object p0, p0, Lhq61;->a:Ljava/util/Iterator;
+
+    .line 5
+    .line 6
+    invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p0
+
+    .line 10
+    return-object p0
+.end method
+
+.method public final remove()V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lhq61;->a:Ljava/util/Iterator;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Ljava/util/Iterator;->remove()V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object p0, p0, Lhq61;->c:Lcr61;
+
+    .line 7
+    .line 8
+    invoke-virtual {p0}, Lcr61;->c()V
+
+    .line 9
+    .line 10
+    .line 11
+    return-void
+.end method

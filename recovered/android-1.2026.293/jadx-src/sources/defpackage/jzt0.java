@@ -1,0 +1,56 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes6.dex */
+public final class jzt0 {
+    public final String a;
+    public final String b;
+    public final boolean c;
+    public final fwc0 d;
+
+    public jzt0(String str, String str2, boolean z, fwc0 fwc0Var) {
+        this.a = str;
+        this.b = str2;
+        this.c = z;
+        this.d = fwc0Var;
+    }
+
+    public final fwc0 a() {
+        return this.d;
+    }
+
+    public final String b() {
+        return this.a;
+    }
+
+    public final String c() {
+        return this.b;
+    }
+
+    public final boolean d() {
+        return this.c;
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof jzt0)) {
+            return false;
+        }
+        jzt0 jzt0Var = (jzt0) obj;
+        return kdd.l(this.a, jzt0Var.a) && kdd.l(this.b, jzt0Var.b) && this.c == jzt0Var.c && kdd.l(this.d, jzt0Var.d);
+    }
+
+    public final int hashCode() {
+        int iHashCode = this.a.hashCode() * 31;
+        String str = this.b;
+        int iG = evx0.g((iHashCode + (str == null ? 0 : str.hashCode())) * 31, 31, this.c);
+        fwc0 fwc0Var = this.d;
+        return iG + (fwc0Var != null ? fwc0Var.hashCode() : 0);
+    }
+
+    public final String toString() {
+        return jzt0.class.getName();
+    }
+}

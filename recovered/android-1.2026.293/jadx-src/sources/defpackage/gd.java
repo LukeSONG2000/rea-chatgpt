@@ -1,0 +1,200 @@
+package defpackage;
+
+import com.snap.valdi.views.ValdiScrollView;
+import org.chromium.net.ConnectionSubtype;
+import protobuf_analytics_events.v1.AccessFlowEntryPoint;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes8.dex */
+public final class gd extends ety {
+    @Override // defpackage.ety
+    public final wi51 l(int i) {
+        gd gdVar = AccessFlowEntryPoint.b;
+        switch (i) {
+            case 0:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_UNSPECIFIED;
+            case 1:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_LOGIN_MODAL;
+            case 2:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_FULL_SCREEN;
+            case 3:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_BOTTOM_SHEET;
+            case 4:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_TEMPLATE;
+            case 5:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NEW_CHAT_MODAL;
+            case 6:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_SIDEBAR_BOTTOM_UNIT;
+            case 7:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_WELCOME_BACK_MODAL;
+            case 8:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_CHAT_STAGE_HEADER;
+            case 9:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_LOGIN_PAGE;
+            case 10:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_FILE_PICKER_RATE_LIMIT_TOOLTIP;
+            case 11:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_FILE_UPLOAD_RATE_LIMIT_TOAST;
+            case 12:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_CHAT_STAGE_SIGNUP_BANNER;
+            case 13:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_CHAT_STAGE_LOGIN_BANNER;
+            case 14:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_PLAN_UPSELL_MODAL;
+            case 15:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_PROMO_REDEMPTION_MODAL;
+            case 16:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_IMAGEGEN_NUX_MODAL;
+            case 17:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_SOFT_RATE_LIMIT_MODAL;
+            case 18:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_VOICE_PICKER_PAGE;
+            case 19:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_PUNCH_OUT_SIGN_IN_AS_MODAL;
+            case 20:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MODEL_SWITCHER_GPT4_UPSELL;
+            case 21:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MODEL_SWITCHER_GO_UPSELL;
+            case 22:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_REFERRAL_DISCOUNT_MODAL;
+            case 23:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_PLUS_MENU_OPTION;
+            case 24:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_LOGIN_PAGE;
+            case 25:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_LOGIN_PASSWORD_PAGE;
+            case 26:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_LOG_BACK_IN_MODAL;
+            case ConnectionSubtype.SUBTYPE_10_GIGABIT_ETHERNET /* 27 */:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_COMPOSER_PLUS_LOGGED_OUT_UPSELL;
+            case ConnectionSubtype.SUBTYPE_WIFI_B /* 28 */:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_CHAT_STAGE_SIDEBAR;
+            case ConnectionSubtype.SUBTYPE_WIFI_G /* 29 */:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_SIGNUP_PAGE;
+            case ConnectionSubtype.SUBTYPE_WIFI_N /* 30 */:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_LOGIN_OR_SIGNUP_PAGE;
+            case ConnectionSubtype.SUBTYPE_WIFI_AC /* 31 */:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_LOGIN_PASSWORD_PAGE;
+            case 32:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_ANONYMOUS_SIDE_BAR;
+            case 33:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_SSO_SELECTION_PAGE;
+            case 34:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_START_PAGE;
+            case 35:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_PROGRESS_BANNER_GPT_5;
+            case 36:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_IMAGE_GEN;
+            case 37:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_SEND;
+            case 38:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_GIZMO;
+            case 39:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_GIZMO_TAG;
+            case ValdiScrollView.NATIVE_FADE_THRESHOLD /* 40 */:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_DALLE;
+            case 41:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_ADAVANCED_DATA_ANALYSIS;
+            case 42:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_GPT_4O;
+            case 43:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_GPT_5_AUTO;
+            case 44:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_PLUS_MENU_OPTION_ADD_FILES;
+            case 45:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_PLUS_MENU_OPTION_PICTURE_V2;
+            case 46:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_PLUS_MENU_OPTION_GPT_5;
+            case 47:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_PLUS_MENU_OPTION_RESEARCH;
+            case 48:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_PLUS_MENU_OPTION_REASON;
+            case 49:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_UPGRADE_TO_GO_UPSELL;
+            case 50:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_GET_PLUS_UPSELL;
+            case 51:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_GET_PRO_UPSELL;
+            case 52:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_UPSELL;
+            case 53:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_UPSELL_ATTACH;
+            case 54:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_UPSELL_MODEL_SWITCHER;
+            case 55:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_CHAT_HEADER;
+            case 56:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_DISPATCH_TO_WEB;
+            case 57:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MFA_SETTING;
+            case 58:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RETRIGGER_SSO;
+            case 59:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_ATLAS_LOGIN_WINDOW;
+            case 60:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NOFACE_LOGIN_VIEW;
+            case 61:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NOFACE_LEGACY_LOGIN_VIEW;
+            case 62:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_AUTH_LOGIN_PAGE;
+            case 63:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_EXPIRED_SESSION_MODAL;
+            case 64:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_AUTH_EXPIRED_SESSION_MODAL;
+            case 65:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_ONE_TAP_PROMPT;
+            case 66:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_CONTINUE_REGISTRATION_DEEPLINK;
+            case 67:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_SIDEBAR_HOVER_CARD;
+            case 68:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_ONBOARDING_RESTART;
+            case 69:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_404_PAGE;
+            case 70:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_RATE_LIMIT_BANNER_GET_PROLITE_UPSELL;
+            case 71:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_SHARED_CODE_BLOCK_REMIX;
+            case 72:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_IMG_GEN_NO_AUTH_INLINE_UPSELL;
+            case 73:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_APP_STARTUP;
+            case 74:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_CHAT_COMPOSER_MUSTACHE;
+            case 75:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_CODEX_REMOTE_CONTROL_ENROLLMENT;
+            case 76:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_FILE_UPLOAD_NO_AUTH_INLINE_UPSELL;
+            case 77:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_LOGIN_MENU;
+            case 78:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_LANDING_SCREEN;
+            case 79:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_WELCOME_DISCLOSURE;
+            case 80:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_COLLECT_USER_DATA;
+            case 81:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_BEACON_UPSELL;
+            case 82:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_CREATE_SHARE_LINK;
+            case 83:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_READ_ALOUD;
+            case 84:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_VOICE_MANUAL_END_UPSELL;
+            case 85:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_VOICE_RATE_LIMIT_UPSELL;
+            case 86:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_MOBILE_ACCOUNT_SELECTOR;
+            case 87:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_VOICE_LANDING_PAGE;
+            case 88:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_VOICE_LIMIT_WARNING;
+            case 89:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_NO_AUTH_VOICE_SUGGESTION_PAGE;
+            case 90:
+                return AccessFlowEntryPoint.ACCESS_FLOW_ENTRY_POINT_ACCOUNT_DELETION;
+            default:
+                return null;
+        }
+    }
+}

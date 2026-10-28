@@ -1,0 +1,969 @@
+.class public final Ltrf;
+.super Lsj51;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# static fields
+.field public static final b:Ltrf;
+
+.field public static final c:Lt0y0;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    .line 1
+    new-instance v0, Ltrf;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Lsj51;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    sput-object v0, Ltrf;->b:Ltrf;
+
+    .line 7
+    .line 8
+    new-instance v0, Lxr8;
+
+    .line 9
+    .line 10
+    const/16 v1, 0x14
+
+    .line 11
+    .line 12
+    invoke-direct {v0, v1}, Lxr8;-><init>(B)V
+
+    .line 13
+    .line 14
+    .line 15
+    new-instance v1, Lt0y0;
+
+    .line 16
+    .line 17
+    invoke-direct {v1, v0}, Lt0y0;-><init>(Lkotlin/jvm/functions/Function0;)V
+
+    .line 18
+    .line 19
+    .line 20
+    sput-object v1, Ltrf;->c:Lt0y0;
+
+    .line 21
+    .line 22
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lvho;Lkotlinx/serialization/descriptors/SerialDescriptor;Lxcc0;I)V
+    .locals 2
+
+    .line 1
+    check-cast p3, Lsrf;
+
+    .line 2
+    .line 3
+    iget-object p0, p3, Lsrf;->e:Ljava/lang/String;
+
+    .line 4
+    .line 5
+    if-eqz p0, :cond_0
+
+    .line 6
+    .line 7
+    sget-object v0, Lc4x0;->a:Lc4x0;
+
+    .line 8
+    .line 9
+    invoke-interface {p1, p2, p4, v0, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 10
+    .line 11
+    .line 12
+    :cond_0
+    iget-object p0, p3, Lsrf;->w:Lprotobuf_analytics_events/v1/ChatgptDictationAudioEncoding;
+
+    .line 13
+    .line 14
+    if-eqz p0, :cond_1
+
+    .line 15
+    .line 16
+    add-int/lit8 v0, p4, 0x1
+
+    .line 17
+    .line 18
+    sget-object v1, Lypf;->a:Lypf;
+
+    .line 19
+    .line 20
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 21
+    .line 22
+    .line 23
+    :cond_1
+    iget-object p0, p3, Lsrf;->l:Ljava/lang/Boolean;
+
+    .line 24
+    .line 25
+    if-eqz p0, :cond_2
+
+    .line 26
+    .line 27
+    add-int/lit8 v0, p4, 0x2
+
+    .line 28
+    .line 29
+    sget-object v1, Lqx9;->a:Lqx9;
+
+    .line 30
+    .line 31
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 32
+    .line 33
+    .line 34
+    :cond_2
+    iget-object p0, p3, Lsrf;->o:Ljava/lang/Double;
+
+    .line 35
+    .line 36
+    if-eqz p0, :cond_3
+
+    .line 37
+    .line 38
+    add-int/lit8 v0, p4, 0x3
+
+    .line 39
+    .line 40
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 41
+    .line 42
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 43
+    .line 44
+    .line 45
+    :cond_3
+    iget-object p0, p3, Lsrf;->p:Ljava/lang/Double;
+
+    .line 46
+    .line 47
+    if-eqz p0, :cond_4
+
+    .line 48
+    .line 49
+    add-int/lit8 v0, p4, 0x4
+
+    .line 50
+    .line 51
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 52
+    .line 53
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 54
+    .line 55
+    .line 56
+    :cond_4
+    iget-object p0, p3, Lsrf;->z:Ljava/lang/Boolean;
+
+    .line 57
+    .line 58
+    if-eqz p0, :cond_5
+
+    .line 59
+    .line 60
+    add-int/lit8 v0, p4, 0x5
+
+    .line 61
+    .line 62
+    sget-object v1, Lqx9;->a:Lqx9;
+
+    .line 63
+    .line 64
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 65
+    .line 66
+    .line 67
+    :cond_5
+    iget-object p0, p3, Lsrf;->f1:Ljava/lang/Double;
+
+    .line 68
+    .line 69
+    if-eqz p0, :cond_6
+
+    .line 70
+    .line 71
+    add-int/lit8 v0, p4, 0x6
+
+    .line 72
+    .line 73
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 74
+    .line 75
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 76
+    .line 77
+    .line 78
+    :cond_6
+    iget-object p0, p3, Lsrf;->Y:Lprotobuf_analytics_events/v1/ChatgptDictationBluetoothRoutingOutcome;
+
+    .line 79
+    .line 80
+    if-eqz p0, :cond_7
+
+    .line 81
+    .line 82
+    add-int/lit8 v0, p4, 0x7
+
+    .line 83
+    .line 84
+    sget-object v1, Ldqf;->a:Ldqf;
+
+    .line 85
+    .line 86
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 87
+    .line 88
+    .line 89
+    :cond_7
+    iget-object p0, p3, Lsrf;->o1:Ljava/lang/String;
+
+    .line 90
+    .line 91
+    if-eqz p0, :cond_8
+
+    .line 92
+    .line 93
+    add-int/lit8 v0, p4, 0x8
+
+    .line 94
+    .line 95
+    sget-object v1, Lc4x0;->a:Lc4x0;
+
+    .line 96
+    .line 97
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 98
+    .line 99
+    .line 100
+    :cond_8
+    iget-object p0, p3, Lsrf;->i1:Ljava/lang/Double;
+
+    .line 101
+    .line 102
+    if-eqz p0, :cond_9
+
+    .line 103
+    .line 104
+    add-int/lit8 v0, p4, 0x9
+
+    .line 105
+    .line 106
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 107
+    .line 108
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 109
+    .line 110
+    .line 111
+    :cond_9
+    iget-object p0, p3, Lsrf;->t:Ljava/lang/String;
+
+    .line 112
+    .line 113
+    if-eqz p0, :cond_a
+
+    .line 114
+    .line 115
+    add-int/lit8 v0, p4, 0xa
+
+    .line 116
+    .line 117
+    sget-object v1, Lc4x0;->a:Lc4x0;
+
+    .line 118
+    .line 119
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 120
+    .line 121
+    .line 122
+    :cond_a
+    iget-object p0, p3, Lsrf;->d:Ljava/lang/String;
+
+    .line 123
+    .line 124
+    if-eqz p0, :cond_b
+
+    .line 125
+    .line 126
+    add-int/lit8 v0, p4, 0xb
+
+    .line 127
+    .line 128
+    sget-object v1, Lc4x0;->a:Lc4x0;
+
+    .line 129
+    .line 130
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 131
+    .line 132
+    .line 133
+    :cond_b
+    iget-object p0, p3, Lsrf;->v:Ljava/lang/String;
+
+    .line 134
+    .line 135
+    if-eqz p0, :cond_c
+
+    .line 136
+    .line 137
+    add-int/lit8 v0, p4, 0xc
+
+    .line 138
+    .line 139
+    sget-object v1, Lc4x0;->a:Lc4x0;
+
+    .line 140
+    .line 141
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 142
+    .line 143
+    .line 144
+    :cond_c
+    iget-object p0, p3, Lsrf;->h:Lprotobuf_analytics_events/v1/ChatgptDictationEndAction;
+
+    .line 145
+    .line 146
+    if-eqz p0, :cond_d
+
+    .line 147
+    .line 148
+    add-int/lit8 v0, p4, 0xd
+
+    .line 149
+    .line 150
+    sget-object v1, Loqf;->a:Loqf;
+
+    .line 151
+    .line 152
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 153
+    .line 154
+    .line 155
+    :cond_d
+    iget-object p0, p3, Lsrf;->i:Lprotobuf_analytics_events/v1/ChatgptDictationEndReason;
+
+    .line 156
+    .line 157
+    if-eqz p0, :cond_e
+
+    .line 158
+    .line 159
+    add-int/lit8 v0, p4, 0xe
+
+    .line 160
+    .line 161
+    sget-object v1, Lqqf;->a:Lqqf;
+
+    .line 162
+    .line 163
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 164
+    .line 165
+    .line 166
+    :cond_e
+    iget-object p0, p3, Lsrf;->j:Lsqf;
+
+    .line 167
+    .line 168
+    if-eqz p0, :cond_f
+
+    .line 169
+    .line 170
+    add-int/lit8 v0, p4, 0xf
+
+    .line 171
+    .line 172
+    sget-object v1, Lvqf;->b:Lvqf;
+
+    .line 173
+    .line 174
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 175
+    .line 176
+    .line 177
+    :cond_f
+    iget-object p0, p3, Lsrf;->X:Laqf;
+
+    .line 178
+    .line 179
+    if-eqz p0, :cond_10
+
+    .line 180
+    .line 181
+    add-int/lit8 v0, p4, 0x10
+
+    .line 182
+    .line 183
+    sget-object v1, Lbqf;->b:Lbqf;
+
+    .line 184
+    .line 185
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 186
+    .line 187
+    .line 188
+    :cond_10
+    iget-object p0, p3, Lsrf;->k1:Lprotobuf_analytics_events/v1/ChatgptDictationFinishTrigger;
+
+    .line 189
+    .line 190
+    if-eqz p0, :cond_11
+
+    .line 191
+    .line 192
+    add-int/lit8 v0, p4, 0x11
+
+    .line 193
+    .line 194
+    sget-object v1, Lxqf;->a:Lxqf;
+
+    .line 195
+    .line 196
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 197
+    .line 198
+    .line 199
+    :cond_11
+    iget-object p0, p3, Lsrf;->l1:Ljava/lang/Double;
+
+    .line 200
+    .line 201
+    if-eqz p0, :cond_12
+
+    .line 202
+    .line 203
+    add-int/lit8 v0, p4, 0x12
+
+    .line 204
+    .line 205
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 206
+    .line 207
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 208
+    .line 209
+    .line 210
+    :cond_12
+    iget-object p0, p3, Lsrf;->A:Laqf;
+
+    .line 211
+    .line 212
+    if-eqz p0, :cond_13
+
+    .line 213
+    .line 214
+    add-int/lit8 v0, p4, 0x13
+
+    .line 215
+    .line 216
+    sget-object v1, Lbqf;->b:Lbqf;
+
+    .line 217
+    .line 218
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 219
+    .line 220
+    .line 221
+    :cond_13
+    iget-object p0, p3, Lsrf;->f:Ljava/lang/Boolean;
+
+    .line 222
+    .line 223
+    if-eqz p0, :cond_14
+
+    .line 224
+    .line 225
+    add-int/lit8 v0, p4, 0x14
+
+    .line 226
+    .line 227
+    sget-object v1, Lqx9;->a:Lqx9;
+
+    .line 228
+    .line 229
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 230
+    .line 231
+    .line 232
+    :cond_14
+    iget-object p0, p3, Lsrf;->r1:Lzqf;
+
+    .line 233
+    .line 234
+    if-eqz p0, :cond_15
+
+    .line 235
+    .line 236
+    add-int/lit8 v0, p4, 0x15
+
+    .line 237
+    .line 238
+    sget-object v1, Larf;->b:Larf;
+
+    .line 239
+    .line 240
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 241
+    .line 242
+    .line 243
+    :cond_15
+    iget-object p0, p3, Lsrf;->q1:Ljava/lang/Boolean;
+
+    .line 244
+    .line 245
+    if-eqz p0, :cond_16
+
+    .line 246
+    .line 247
+    add-int/lit8 v0, p4, 0x16
+
+    .line 248
+    .line 249
+    sget-object v1, Lqx9;->a:Lqx9;
+
+    .line 250
+    .line 251
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 252
+    .line 253
+    .line 254
+    :cond_16
+    iget-object p0, p3, Lsrf;->n1:Lprotobuf_analytics_events/v1/ChatgptDictationProduct;
+
+    .line 255
+    .line 256
+    if-eqz p0, :cond_17
+
+    .line 257
+    .line 258
+    add-int/lit8 v0, p4, 0x17
+
+    .line 259
+    .line 260
+    sget-object v1, Lerf;->a:Lerf;
+
+    .line 261
+    .line 262
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 263
+    .line 264
+    .line 265
+    :cond_17
+    iget-object p0, p3, Lsrf;->n:Ljava/lang/Double;
+
+    .line 266
+    .line 267
+    if-eqz p0, :cond_18
+
+    .line 268
+    .line 269
+    add-int/lit8 v0, p4, 0x18
+
+    .line 270
+    .line 271
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 272
+    .line 273
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 274
+    .line 275
+    .line 276
+    :cond_18
+    iget-object p0, p3, Lsrf;->m:Ljava/lang/Double;
+
+    .line 277
+    .line 278
+    if-eqz p0, :cond_19
+
+    .line 279
+    .line 280
+    add-int/lit8 v0, p4, 0x19
+
+    .line 281
+    .line 282
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 283
+    .line 284
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 285
+    .line 286
+    .line 287
+    :cond_19
+    iget-object p0, p3, Lsrf;->h1:Ljava/lang/Double;
+
+    .line 288
+    .line 289
+    if-eqz p0, :cond_1a
+
+    .line 290
+    .line 291
+    add-int/lit8 v0, p4, 0x1a
+
+    .line 292
+    .line 293
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 294
+    .line 295
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 296
+    .line 297
+    .line 298
+    :cond_1a
+    iget-object p0, p3, Lsrf;->x:Lprotobuf_analytics_events/v1/ChatgptDictationRecordingSource;
+
+    .line 299
+    .line 300
+    if-eqz p0, :cond_1b
+
+    .line 301
+    .line 302
+    add-int/lit8 v0, p4, 0x1b
+
+    .line 303
+    .line 304
+    sget-object v1, Lnrf;->a:Lnrf;
+
+    .line 305
+    .line 306
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 307
+    .line 308
+    .line 309
+    :cond_1b
+    iget-object p0, p3, Lsrf;->Z:Ljava/lang/Double;
+
+    .line 310
+    .line 311
+    if-eqz p0, :cond_1c
+
+    .line 312
+    .line 313
+    add-int/lit8 v0, p4, 0x1c
+
+    .line 314
+    .line 315
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 316
+    .line 317
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 318
+    .line 319
+    .line 320
+    :cond_1c
+    iget-object p0, p3, Lsrf;->p1:Ljava/lang/String;
+
+    .line 321
+    .line 322
+    if-eqz p0, :cond_1d
+
+    .line 323
+    .line 324
+    add-int/lit8 v0, p4, 0x1d
+
+    .line 325
+    .line 326
+    sget-object v1, Lc4x0;->a:Lc4x0;
+
+    .line 327
+    .line 328
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 329
+    .line 330
+    .line 331
+    :cond_1d
+    iget-object p0, p3, Lsrf;->k:Ljava/lang/Boolean;
+
+    .line 332
+    .line 333
+    if-eqz p0, :cond_1e
+
+    .line 334
+    .line 335
+    add-int/lit8 v0, p4, 0x1e
+
+    .line 336
+    .line 337
+    sget-object v1, Lqx9;->a:Lqx9;
+
+    .line 338
+    .line 339
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 340
+    .line 341
+    .line 342
+    :cond_1e
+    iget-object p0, p3, Lsrf;->g:Lprotobuf_analytics_events/v1/ChatgptDictationStartGesture;
+
+    .line 343
+    .line 344
+    if-eqz p0, :cond_1f
+
+    .line 345
+    .line 346
+    add-int/lit8 v0, p4, 0x1f
+
+    .line 347
+    .line 348
+    sget-object v1, Lvrf;->a:Lvrf;
+
+    .line 349
+    .line 350
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 351
+    .line 352
+    .line 353
+    :cond_1f
+    iget-object p0, p3, Lsrf;->j1:Ljava/lang/Double;
+
+    .line 354
+    .line 355
+    if-eqz p0, :cond_20
+
+    .line 356
+    .line 357
+    add-int/lit8 v0, p4, 0x20
+
+    .line 358
+    .line 359
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 360
+    .line 361
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 362
+    .line 363
+    .line 364
+    :cond_20
+    iget-object p0, p3, Lsrf;->g1:Ljava/lang/Boolean;
+
+    .line 365
+    .line 366
+    if-eqz p0, :cond_21
+
+    .line 367
+    .line 368
+    add-int/lit8 v0, p4, 0x21
+
+    .line 369
+    .line 370
+    sget-object v1, Lqx9;->a:Lqx9;
+
+    .line 371
+    .line 372
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 373
+    .line 374
+    .line 375
+    :cond_21
+    iget-object p0, p3, Lsrf;->m1:Ljava/lang/Double;
+
+    .line 376
+    .line 377
+    if-eqz p0, :cond_22
+
+    .line 378
+    .line 379
+    add-int/lit8 v0, p4, 0x22
+
+    .line 380
+    .line 381
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 382
+    .line 383
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 384
+    .line 385
+    .line 386
+    :cond_22
+    iget-object p0, p3, Lsrf;->r:Ljava/lang/Double;
+
+    .line 387
+    .line 388
+    if-eqz p0, :cond_23
+
+    .line 389
+    .line 390
+    add-int/lit8 v0, p4, 0x23
+
+    .line 391
+    .line 392
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 393
+    .line 394
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 395
+    .line 396
+    .line 397
+    :cond_23
+    iget-object p0, p3, Lsrf;->s:Ljava/lang/Integer;
+
+    .line 398
+    .line 399
+    if-eqz p0, :cond_24
+
+    .line 400
+    .line 401
+    add-int/lit8 v0, p4, 0x24
+
+    .line 402
+    .line 403
+    sget-object v1, Loj51;->a:Loj51;
+
+    .line 404
+    .line 405
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 406
+    .line 407
+    .line 408
+    :cond_24
+    iget-object p0, p3, Lsrf;->q:Ljava/lang/Double;
+
+    .line 409
+    .line 410
+    if-eqz p0, :cond_25
+
+    .line 411
+    .line 412
+    add-int/lit8 v0, p4, 0x25
+
+    .line 413
+    .line 414
+    sget-object v1, Lhbx;->a:Lhbx;
+
+    .line 415
+    .line 416
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 417
+    .line 418
+    .line 419
+    :cond_25
+    iget-object p0, p3, Lsrf;->y:Ljava/lang/Boolean;
+
+    .line 420
+    .line 421
+    if-eqz p0, :cond_26
+
+    .line 422
+    .line 423
+    add-int/lit8 v0, p4, 0x26
+
+    .line 424
+    .line 425
+    sget-object v1, Lqx9;->a:Lqx9;
+
+    .line 426
+    .line 427
+    invoke-interface {p1, p2, v0, v1, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 428
+    .line 429
+    .line 430
+    :cond_26
+    iget-object p0, p3, Lsrf;->u:Lprotobuf_analytics_events/v1/ChatgptClientContextWebFrontend;
+
+    .line 431
+    .line 432
+    if-eqz p0, :cond_27
+
+    .line 433
+    .line 434
+    add-int/lit8 p4, p4, 0x27
+
+    .line 435
+    .line 436
+    sget-object p3, Lzhf;->a:Lzhf;
+
+    .line 437
+    .line 438
+    invoke-interface {p1, p2, p4, p3, p0}, Lvho;->y(Lkotlinx/serialization/descriptors/SerialDescriptor;ILo0t0;Ljava/lang/Object;)V
+
+    .line 439
+    .line 440
+    .line 441
+    :cond_27
+    return-void
+.end method
+
+.method public final getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+    .locals 0
+
+    .line 1
+    sget-object p0, Ltrf;->c:Lt0y0;
+
+    .line 2
+    .line 3
+    invoke-virtual {p0}, Lt0y0;->getValue()Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p0
+
+    .line 7
+    check-cast p0, Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 8
+    .line 9
+    return-object p0
+.end method

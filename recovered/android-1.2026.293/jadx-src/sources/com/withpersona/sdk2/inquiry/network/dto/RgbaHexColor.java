@@ -1,0 +1,14 @@
+package com.withpersona.sdk2.inquiry.network.dto;
+
+import defpackage.t070;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes7.dex */
+@Retention(RetentionPolicy.RUNTIME)
+@Metadata(d1 = {"\u0000\n\n\u0002\u0018\u0002\n\u0002\u0010\u001b\n\u0000\b\u0087\u0002\u0018\u00002\u00020\u0001B\u0000¨\u0006\u0002"}, d2 = {"Lcom/withpersona/sdk2/inquiry/network/dto/RgbaHexColor;", "", "network-inquiry_release"}, k = 1, mv = {2, 2, 0}, xi = 48)
+@t070
+public @interface RgbaHexColor {
+}

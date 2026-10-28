@@ -1,0 +1,13 @@
+package defpackage;
+
+import android.text.SpannableStringBuilder;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes7.dex */
+public final class tpy0 implements upy0 {
+    public final SpannableStringBuilder a;
+
+    public tpy0(SpannableStringBuilder spannableStringBuilder) {
+        this.a = spannableStringBuilder;
+    }
+}

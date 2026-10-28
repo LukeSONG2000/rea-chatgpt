@@ -1,0 +1,94 @@
+.class public interface abstract Lukz0;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# virtual methods
+.method public abstract a(Ljava/util/ArrayList;Ljava/lang/Object;Losx0;)V
+.end method
+
+.method public abstract b(Lrsx0;Ljava/lang/Object;Losx0;)Ljava/util/List;
+.end method
+
+.method public c(Ljava/util/List;Ljava/lang/Object;Losx0;)Z
+    .locals 0
+
+    .line 1
+    invoke-static {p1}, La0n;->Z0(Ljava/util/List;)Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    check-cast p0, Lycc0;
+
+    .line 6
+    .line 7
+    invoke-static {p0}, Li181;->i(Lycc0;)Lfkz0;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object p0
+
+    .line 11
+    if-eqz p0, :cond_0
+
+    .line 12
+    .line 13
+    const/4 p0, 0x1
+
+    .line 14
+    return p0
+
+    .line 15
+    :cond_0
+    const/4 p0, 0x0
+
+    .line 16
+    return p0
+.end method
+
+.method public abstract d(Lycc0;Losx0;)Z
+.end method
+
+.method public e(Lycc0;Ljava/util/List;Ljava/lang/Object;Losx0;)I
+    .locals 0
+
+    .line 1
+    const/4 p0, 0x0
+
+    .line 2
+    const/16 p3, 0xc
+
+    .line 3
+    .line 4
+    invoke-static {p2, p1, p0, p0, p3}, Lgg81;->j(Ljava/util/List;Lycc0;ZZI)Z
+
+    .line 5
+    .line 6
+    .line 7
+    move-result p0
+
+    .line 8
+    if-eqz p0, :cond_0
+
+    .line 9
+    .line 10
+    const/4 p0, 0x1
+
+    .line 11
+    return p0
+
+    .line 12
+    :cond_0
+    const/4 p0, 0x3
+
+    .line 13
+    return p0
+.end method
+
+.method public abstract g()Ljava/lang/Object;
+.end method

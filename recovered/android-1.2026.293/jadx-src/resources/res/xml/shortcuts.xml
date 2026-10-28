@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <capability android:name="actions.intent.CREATE_MESSAGE">
+        <intent>
+            <url-template android:value="https://chatgpt.com/?q={text}"/>
+            <parameter
+                android:name="message.text"
+                android:key="text"/>
+        </intent>
+    </capability>
+    <share-target android:targetClass="com.openai.chatgpt.MainActivity">
+        <data android:mimeType="text/plain"/>
+        <data android:mimeType="image/*"/>
+        <data android:mimeType="application/*"/>
+        <data android:mimeType="audio/*"/>
+        <data android:mimeType="video/*"/>
+        <category android:name="com.openai.chatgpt.category.DOT_SHARE"/>
+    </share-target>
+</shortcuts>

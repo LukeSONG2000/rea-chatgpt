@@ -1,0 +1,64 @@
+package defpackage;
+
+import kotlinx.serialization.descriptors.SerialDescriptor;
+import kotlinx.serialization.encoding.Encoder;
+import protobuf_analytics_events.v1.ChatgptNotificationPermissionCheckpointStage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes8.dex */
+public final class dng implements o0t0 {
+    public static final dng a = new dng();
+    public static final bzm0 b = c4x0.b;
+
+    @Override // defpackage.o0t0, defpackage.zwu
+    public final SerialDescriptor getDescriptor() {
+        return b;
+    }
+
+    @Override // defpackage.o0t0
+    public final void serialize(Encoder encoder, Object obj) {
+        String str;
+        switch ((ChatgptNotificationPermissionCheckpointStage) obj) {
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_UNSPECIFIED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_UNSPECIFIED";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_REQUEST_SUPPRESSED_BY_KILL_SWITCH:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_REQUEST_SUPPRESSED_BY_KILL_SWITCH";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NATIVE_AUTHORIZATION_REQUESTED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NATIVE_AUTHORIZATION_REQUESTED";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NATIVE_AUTHORIZATION_GRANTED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NATIVE_AUTHORIZATION_GRANTED";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NATIVE_AUTHORIZATION_DENIED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NATIVE_AUTHORIZATION_DENIED";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NATIVE_AUTHORIZATION_REQUEST_FAILED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NATIVE_AUTHORIZATION_REQUEST_FAILED";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_REMOTE_NOTIFICATION_REGISTRATION_SUCCEEDED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_REMOTE_NOTIFICATION_REGISTRATION_SUCCEEDED";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_REMOTE_NOTIFICATION_REGISTRATION_FAILED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_REMOTE_NOTIFICATION_REGISTRATION_FAILED";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_REMOTE_NOTIFICATION_REGISTRATION_NOT_REQUIRED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_REMOTE_NOTIFICATION_REGISTRATION_NOT_REQUIRED";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NOTIFICATION_SETTINGS_OPENED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NOTIFICATION_SETTINGS_OPENED";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NOTIFICATION_SETTINGS_RETURNED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NOTIFICATION_SETTINGS_RETURNED";
+                break;
+            case CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NOTIFICATION_SETTINGS_ATTRIBUTION_EXPIRED:
+                str = "CHATGPT_NOTIFICATION_PERMISSION_CHECKPOINT_STAGE_NOTIFICATION_SETTINGS_ATTRIBUTION_EXPIRED";
+                break;
+            default:
+                il.f();
+                return;
+        }
+        encoder.G(str);
+    }
+}

@@ -1,0 +1,725 @@
+.class public final Lfn10;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# instance fields
+.field public final a:Ljava/util/ArrayList;
+
+.field public final b:Ljava/util/HashMap;
+
+.field public final c:Ljava/util/HashMap;
+
+.field public d:Lbn10;
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 1
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    new-instance v0, Ljava/util/ArrayList;
+
+    .line 5
+    .line 6
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    .line 7
+    .line 8
+    .line 9
+    iput-object v0, p0, Lfn10;->a:Ljava/util/ArrayList;
+
+    .line 10
+    .line 11
+    new-instance v0, Ljava/util/HashMap;
+
+    .line 12
+    .line 13
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    .line 14
+    .line 15
+    .line 16
+    iput-object v0, p0, Lfn10;->b:Ljava/util/HashMap;
+
+    .line 17
+    .line 18
+    new-instance v0, Ljava/util/HashMap;
+
+    .line 19
+    .line 20
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    .line 21
+    .line 22
+    .line 23
+    iput-object v0, p0, Lfn10;->c:Ljava/util/HashMap;
+
+    .line 24
+    .line 25
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lpl10;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lfn10;->a:Ljava/util/ArrayList;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+
+    .line 4
+    .line 5
+    .line 6
+    move-result v0
+
+    .line 7
+    if-nez v0, :cond_0
+
+    .line 8
+    .line 9
+    iget-object v0, p0, Lfn10;->a:Ljava/util/ArrayList;
+
+    .line 10
+    .line 11
+    monitor-enter v0
+
+    .line 12
+    :try_start_0
+    iget-object p0, p0, Lfn10;->a:Ljava/util/ArrayList;
+
+    .line 13
+    .line 14
+    invoke-virtual {p0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 15
+    .line 16
+    .line 17
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 18
+    const/4 p0, 0x1
+
+    .line 19
+    iput-boolean p0, p1, Lpl10;->k:Z
+
+    .line 20
+    .line 21
+    return-void
+
+    .line 22
+    :catchall_0
+    move-exception p0
+
+    .line 23
+    :try_start_1
+    monitor-exit v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 24
+    throw p0
+
+    .line 25
+    :cond_0
+    const-string p0, "Fragment already added: "
+
+    .line 26
+    .line 27
+    invoke-static {p0, p1}, Lt72;->g(Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 28
+    .line 29
+    .line 30
+    return-void
+.end method
+
+.method public final b(Ljava/lang/String;)Lpl10;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lfn10;->b:Ljava/util/HashMap;
+
+    .line 2
+    .line 3
+    invoke-virtual {p0, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p0
+
+    .line 7
+    check-cast p0, Landroidx/fragment/app/b;
+
+    .line 8
+    .line 9
+    if-eqz p0, :cond_0
+
+    .line 10
+    .line 11
+    invoke-virtual {p0}, Landroidx/fragment/app/b;->k()Lpl10;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object p0
+
+    .line 15
+    return-object p0
+
+    .line 16
+    :cond_0
+    const/4 p0, 0x0
+
+    .line 17
+    return-object p0
+.end method
+
+.method public final c(Ljava/lang/String;)Lpl10;
+    .locals 1
+
+    .line 1
+    iget-object p0, p0, Lfn10;->b:Ljava/util/HashMap;
+
+    .line 2
+    .line 3
+    invoke-virtual {p0}, Ljava/util/HashMap;->values()Ljava/util/Collection;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p0
+
+    .line 7
+    invoke-interface {p0}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object p0
+
+    .line 11
+    :cond_0
+    invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v0
+
+    .line 15
+    if-eqz v0, :cond_1
+
+    .line 16
+    .line 17
+    invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-object v0
+
+    .line 21
+    check-cast v0, Landroidx/fragment/app/b;
+
+    .line 22
+    .line 23
+    if-eqz v0, :cond_0
+
+    .line 24
+    .line 25
+    invoke-virtual {v0}, Landroidx/fragment/app/b;->k()Lpl10;
+
+    .line 26
+    .line 27
+    .line 28
+    move-result-object v0
+
+    .line 29
+    invoke-virtual {v0, p1}, Lpl10;->m(Ljava/lang/String;)Lpl10;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v0
+
+    .line 33
+    if-eqz v0, :cond_0
+
+    .line 34
+    .line 35
+    return-object v0
+
+    .line 36
+    :cond_1
+    const/4 p0, 0x0
+
+    .line 37
+    return-object p0
+.end method
+
+.method public final d()Ljava/util/ArrayList;
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/util/ArrayList;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object p0, p0, Lfn10;->b:Ljava/util/HashMap;
+
+    .line 7
+    .line 8
+    invoke-virtual {p0}, Ljava/util/HashMap;->values()Ljava/util/Collection;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object p0
+
+    .line 12
+    invoke-interface {p0}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-object p0
+
+    .line 16
+    :cond_0
+    :goto_0
+    invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17
+    .line 18
+    .line 19
+    move-result v1
+
+    .line 20
+    if-eqz v1, :cond_1
+
+    .line 21
+    .line 22
+    invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 23
+    .line 24
+    .line 25
+    move-result-object v1
+
+    .line 26
+    check-cast v1, Landroidx/fragment/app/b;
+
+    .line 27
+    .line 28
+    if-eqz v1, :cond_0
+
+    .line 29
+    .line 30
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 31
+    .line 32
+    .line 33
+    goto :goto_0
+
+    .line 34
+    :cond_1
+    return-object v0
+.end method
+
+.method public final e()Ljava/util/ArrayList;
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/util/ArrayList;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object p0, p0, Lfn10;->b:Ljava/util/HashMap;
+
+    .line 7
+    .line 8
+    invoke-virtual {p0}, Ljava/util/HashMap;->values()Ljava/util/Collection;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object p0
+
+    .line 12
+    invoke-interface {p0}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-object p0
+
+    .line 16
+    :goto_0
+    invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17
+    .line 18
+    .line 19
+    move-result v1
+
+    .line 20
+    if-eqz v1, :cond_1
+
+    .line 21
+    .line 22
+    invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 23
+    .line 24
+    .line 25
+    move-result-object v1
+
+    .line 26
+    check-cast v1, Landroidx/fragment/app/b;
+
+    .line 27
+    .line 28
+    if-eqz v1, :cond_0
+
+    .line 29
+    .line 30
+    invoke-virtual {v1}, Landroidx/fragment/app/b;->k()Lpl10;
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-object v1
+
+    .line 34
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 35
+    .line 36
+    .line 37
+    goto :goto_0
+
+    .line 38
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 39
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 40
+    .line 41
+    .line 42
+    goto :goto_0
+
+    .line 43
+    :cond_1
+    return-object v0
+.end method
+
+.method public final f()Ljava/util/List;
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lfn10;->a:Ljava/util/ArrayList;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
+
+    .line 4
+    .line 5
+    .line 6
+    move-result v0
+
+    .line 7
+    if-eqz v0, :cond_0
+
+    .line 8
+    .line 9
+    sget-object p0, Ljava/util/Collections;->EMPTY_LIST:Ljava/util/List;
+
+    .line 10
+    .line 11
+    return-object p0
+
+    .line 12
+    :cond_0
+    iget-object v0, p0, Lfn10;->a:Ljava/util/ArrayList;
+
+    .line 13
+    .line 14
+    monitor-enter v0
+
+    .line 15
+    :try_start_0
+    new-instance v1, Ljava/util/ArrayList;
+
+    .line 16
+    .line 17
+    iget-object p0, p0, Lfn10;->a:Ljava/util/ArrayList;
+
+    .line 18
+    .line 19
+    invoke-direct {v1, p0}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+
+    .line 20
+    .line 21
+    .line 22
+    monitor-exit v0
+
+    .line 23
+    return-object v1
+
+    .line 24
+    :catchall_0
+    move-exception p0
+
+    .line 25
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 26
+    throw p0
+.end method
+
+.method public final g(Landroidx/fragment/app/b;)V
+    .locals 2
+
+    .line 1
+    invoke-virtual {p1}, Landroidx/fragment/app/b;->k()Lpl10;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    iget-object v1, v0, Lpl10;->e:Ljava/lang/String;
+
+    .line 6
+    .line 7
+    iget-object p0, p0, Lfn10;->b:Ljava/util/HashMap;
+
+    .line 8
+    .line 9
+    invoke-virtual {p0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-object v1
+
+    .line 13
+    if-eqz v1, :cond_0
+
+    .line 14
+    .line 15
+    return-void
+
+    .line 16
+    :cond_0
+    iget-object v1, v0, Lpl10;->e:Ljava/lang/String;
+
+    .line 17
+    .line 18
+    invoke-virtual {p0, v1, p1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 19
+    .line 20
+    .line 21
+    const/4 p0, 0x2
+
+    .line 22
+    invoke-static {p0}, Landroidx/fragment/app/a;->K(I)Z
+
+    .line 23
+    .line 24
+    .line 25
+    move-result p0
+
+    .line 26
+    if-eqz p0, :cond_1
+
+    .line 27
+    .line 28
+    invoke-virtual {v0}, Lpl10;->toString()Ljava/lang/String;
+
+    .line 29
+    .line 30
+    .line 31
+    :cond_1
+    return-void
+.end method
+
+.method public final h(Landroidx/fragment/app/b;)V
+    .locals 2
+
+    .line 1
+    invoke-virtual {p1}, Landroidx/fragment/app/b;->k()Lpl10;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    iget-boolean v1, v0, Lpl10;->Y:Z
+
+    .line 6
+    .line 7
+    if-eqz v1, :cond_0
+
+    .line 8
+    .line 9
+    iget-object v1, p0, Lfn10;->d:Lbn10;
+
+    .line 10
+    .line 11
+    invoke-virtual {v1, v0}, Lbn10;->d(Lpl10;)V
+
+    .line 12
+    .line 13
+    .line 14
+    :cond_0
+    iget-object v1, v0, Lpl10;->e:Ljava/lang/String;
+
+    .line 15
+    .line 16
+    iget-object p0, p0, Lfn10;->b:Ljava/util/HashMap;
+
+    .line 17
+    .line 18
+    invoke-virtual {p0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object v1
+
+    .line 22
+    if-eq v1, p1, :cond_1
+
+    .line 23
+    .line 24
+    goto :goto_0
+
+    .line 25
+    :cond_1
+    iget-object p1, v0, Lpl10;->e:Ljava/lang/String;
+
+    .line 26
+    .line 27
+    const/4 v1, 0x0
+
+    .line 28
+    invoke-virtual {p0, p1, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 29
+    .line 30
+    .line 31
+    move-result-object p0
+
+    .line 32
+    check-cast p0, Landroidx/fragment/app/b;
+
+    .line 33
+    .line 34
+    if-nez p0, :cond_2
+
+    .line 35
+    .line 36
+    goto :goto_0
+
+    .line 37
+    :cond_2
+    const/4 p0, 0x2
+
+    .line 38
+    invoke-static {p0}, Landroidx/fragment/app/a;->K(I)Z
+
+    .line 39
+    .line 40
+    .line 41
+    move-result p0
+
+    .line 42
+    if-eqz p0, :cond_3
+
+    .line 43
+    .line 44
+    invoke-virtual {v0}, Lpl10;->toString()Ljava/lang/String;
+
+    .line 45
+    .line 46
+    .line 47
+    :cond_3
+    :goto_0
+    return-void
+.end method
+
+.method public final i(Landroid/os/Bundle;Ljava/lang/String;)Landroid/os/Bundle;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lfn10;->c:Ljava/util/HashMap;
+
+    .line 2
+    .line 3
+    if-eqz p1, :cond_0
+
+    .line 4
+    .line 5
+    invoke-virtual {p0, p2, p1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object p0
+
+    .line 9
+    check-cast p0, Landroid/os/Bundle;
+
+    .line 10
+    .line 11
+    return-object p0
+
+    .line 12
+    :cond_0
+    invoke-virtual {p0, p2}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-object p0
+
+    .line 16
+    check-cast p0, Landroid/os/Bundle;
+
+    .line 17
+    .line 18
+    return-object p0
+.end method

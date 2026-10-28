@@ -1,0 +1,20 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes2.dex */
+public final class xo9 implements Runnable {
+    public final /* synthetic */ int a;
+    public final /* synthetic */ CharSequence b;
+    public final /* synthetic */ fp9 c;
+
+    public xo9(fp9 fp9Var, int i, CharSequence charSequence) {
+        this.c = fp9Var;
+        this.a = i;
+        this.b = charSequence;
+    }
+
+    @Override // java.lang.Runnable
+    public final void run() {
+        this.c.A0(this.a, this.b);
+    }
+}

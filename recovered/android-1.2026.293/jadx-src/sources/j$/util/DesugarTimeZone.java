@@ -1,0 +1,11 @@
+package j$.util;
+
+import java.util.TimeZone;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes9.dex */
+public class DesugarTimeZone {
+    public static TimeZone getTimeZone(String str) {
+        return TimeZone.getTimeZone(str);
+    }
+}

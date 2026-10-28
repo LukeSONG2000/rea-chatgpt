@@ -9,6 +9,7 @@ ChatGPT 四端官方包的逆向分析产物库——**为自己构建 agent 提
 | 端 | 包名 | 版本 | SHA-256（主文件） | 来源 |
 |---|---|---|---|---|
 | Android | com.openai.chatgpt | 1.2026.244 (2624421) | base.apk `3b029e54fdbfbfe41140c544bfc97f7f931bf9ba37a1df63c20d6382023ed68b` | OnePlus 6 adb 拉取（Play 安装），2026-10-19 |
+| 2 | Android | **1.2026.293 (2629319)** | base.apk `c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630` | 同设备 2026-10-28 Play 更新后拉取（与 iOS 293 对齐） |
 | iOS | com.openai.chat | 1.2026.279 (37999862476) | ChatGPT.ipa `845633895baf9f80511cfbfb5d292536c58dc08e67051b9ee73bd02457b879f8` | ipatool 2.7.0（App Store ID 6448311069），2026-10-19 |
 | iOS 砸壳版 | com.openai.chat | 1.2026.293 (40039297472) | dumpipa `4042deb6d2688eaa38708d90c9d2d027de233ed2c99f443ca984f6f53865ed6b`（FairPlay 已解密，cryptid 全 0） | 用户设备砸壳，2026-10-28 |
 | macOS | ChatGPT-4.0.21.dmg | 4.0.21 | 见 Release 资产 | 直发 DMG（无 FairPlay） |

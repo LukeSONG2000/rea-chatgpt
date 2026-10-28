@@ -1,0 +1,38 @@
+package defpackage;
+
+import kotlin.jvm.functions.Function1;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes5.dex */
+public final /* synthetic */ class ipo0 implements Function1 {
+    public final /* synthetic */ byte a;
+    public final /* synthetic */ xvu b;
+    public final /* synthetic */ a5e0 c;
+
+    public /* synthetic */ ipo0(xvu xvuVar, a5e0 a5e0Var, byte b) {
+        this.a = b;
+        this.b = xvuVar;
+        this.c = a5e0Var;
+    }
+
+    @Override // kotlin.jvm.functions.Function1
+    public final Object invoke(Object obj) {
+        byte b = this.a;
+        a011 a011Var = a011.a;
+        a5e0 a5e0Var = this.c;
+        xvu xvuVar = this.b;
+        switch (b) {
+            case 0:
+                e1n.v(xvuVar.F0((int) (4294967295L & ((ui70) obj).e())), a5e0Var);
+                break;
+            default:
+                float fF0 = xvuVar.F0((int) (4294967295L & ((nc60) obj).a));
+                dcx dcxVar = (dcx) a5e0Var.getValue();
+                if (!(dcxVar == null ? false : dcx.d(dcxVar.a, fF0))) {
+                    e1n.v(fF0, a5e0Var);
+                }
+                break;
+        }
+        return a011Var;
+    }
+}

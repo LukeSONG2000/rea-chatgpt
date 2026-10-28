@@ -1,0 +1,57 @@
+package defpackage;
+
+import java.util.List;
+import kotlin.jvm.functions.Function1;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes4.dex */
+public final class v1i implements Function1 {
+    public final /* synthetic */ byte a;
+    public final /* synthetic */ List b;
+
+    public v1i(List list) {
+        this.a = (byte) 2;
+        rbk rbkVar = rbk.c;
+        this.b = list;
+    }
+
+    @Override // kotlin.jvm.functions.Function1
+    public final Object invoke(Object obj) {
+        byte b = this.a;
+        List list = this.b;
+        switch (b) {
+            case 0:
+                return wp81.o((i6l0) list.get(((Number) obj).intValue()));
+            case 1:
+                return ((ttk) list.get(((Number) obj).intValue())).a;
+            case 2:
+                return rbk.c.get(list.get(((Number) obj).intValue()));
+            case 3:
+                list.get(((Number) obj).intValue());
+                return null;
+            case 4:
+                list.get(((Number) obj).intValue());
+                return null;
+            case 5:
+                list.get(((Number) obj).intValue());
+                return null;
+            case 6:
+                return avp.c;
+            case 7:
+                return ((hsn0) list.get(((Number) obj).intValue())).getClass();
+            default:
+                list.get(((Number) obj).intValue());
+                return null;
+        }
+    }
+
+    public /* synthetic */ v1i(byte b, List list, Function1 function1) {
+        this.a = b;
+        this.b = list;
+    }
+
+    public /* synthetic */ v1i(List list, byte b) {
+        this.a = b;
+        this.b = list;
+    }
+}

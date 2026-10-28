@@ -1,0 +1,18 @@
+package defpackage;
+
+import android.content.DialogInterface;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes2.dex */
+public final class ru00 implements DialogInterface.OnClickListener {
+    public final /* synthetic */ wu00 a;
+
+    public ru00(wu00 wu00Var) {
+        this.a = wu00Var;
+    }
+
+    @Override // android.content.DialogInterface.OnClickListener
+    public final void onClick(DialogInterface dialogInterface, int i) {
+        this.a.V1.u(true);
+    }
+}

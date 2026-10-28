@@ -1,0 +1,8 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes3.dex */
+public final class hz1 extends kx1 {
+    public static final hz1 d = new hz1("Checkout Payment Succeeded", (byte) 4);
+    public static final hz1 e = new hz1("Review Clicked", (byte) 4);
+}

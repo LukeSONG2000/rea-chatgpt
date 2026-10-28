@@ -1,0 +1,101 @@
+.class public final Le291;
+.super Lgi61;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# instance fields
+.field public final synthetic h:Lpdy0;
+
+
+# direct methods
+.method public constructor <init>(Lpdy0;)V
+    .locals 1
+
+    .line 1
+    iput-object p1, p0, Le291;->h:Lpdy0;
+
+    .line 2
+    .line 3
+    const-string p1, "com.google.android.gms.auth.blockstore.internal.IStoreBytesCallback"
+
+    .line 4
+    .line 5
+    const/4 v0, 0x4
+
+    .line 6
+    invoke-direct {p0, p1, v0}, Lgi61;-><init>(Ljava/lang/String;B)V
+
+    .line 7
+    .line 8
+    .line 9
+    return-void
+.end method
+
+
+# virtual methods
+.method public final o(Landroid/os/Parcel;I)Z
+    .locals 2
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    if-ne p2, v0, :cond_0
+
+    .line 3
+    .line 4
+    sget-object p2, Lcom/google/android/gms/common/api/Status;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    .line 5
+    .line 6
+    invoke-static {p1, p2}, Lfy61;->a(Landroid/os/Parcel;Landroid/os/Parcelable$Creator;)Landroid/os/Parcelable;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p2
+
+    .line 10
+    check-cast p2, Lcom/google/android/gms/common/api/Status;
+
+    .line 11
+    .line 12
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    .line 13
+    .line 14
+    .line 15
+    move-result v1
+
+    .line 16
+    invoke-static {p1}, Lgi61;->q(Landroid/os/Parcel;)V
+
+    .line 17
+    .line 18
+    .line 19
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object p1
+
+    .line 23
+    iget-object p0, p0, Le291;->h:Lpdy0;
+
+    .line 24
+    .line 25
+    invoke-static {p2, p1, p0}, Lrx81;->t(Lcom/google/android/gms/common/api/Status;Ljava/lang/Object;Lpdy0;)V
+
+    .line 26
+    .line 27
+    .line 28
+    return v0
+
+    .line 29
+    :cond_0
+    const/4 p0, 0x0
+
+    .line 30
+    return p0
+.end method

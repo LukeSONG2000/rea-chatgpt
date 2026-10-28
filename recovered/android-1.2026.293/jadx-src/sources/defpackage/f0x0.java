@@ -1,0 +1,23 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes5.dex */
+public final class f0x0 extends vwp {
+    public q0x0 n;
+    public /* synthetic */ Object o;
+    public final /* synthetic */ q0x0 p;
+    public int q;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public f0x0(q0x0 q0x0Var, vwp vwpVar) {
+        super(vwpVar);
+        this.p = q0x0Var;
+    }
+
+    @Override // defpackage.kw8
+    public final Object invokeSuspend(Object obj) {
+        this.o = obj;
+        this.q |= Integer.MIN_VALUE;
+        return q0x0.k(this.p, false, this);
+    }
+}

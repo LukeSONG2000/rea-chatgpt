@@ -1,0 +1,12 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes3.dex */
+public final /* synthetic */ class wr21 extends o0o0 {
+    public static final wr21 c = new wr21(co21.class, "connectivity", "getConnectivity()Lcom/datadog/android/rum/model/ViewEvent$Connectivity;", 0);
+
+    @Override // defpackage.o0o0, defpackage.g370
+    public final Object get(Object obj) {
+        return ((co21) obj).n;
+    }
+}

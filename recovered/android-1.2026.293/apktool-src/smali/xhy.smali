@@ -1,0 +1,319 @@
+.class public final Lxhy;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+# interfaces
+.implements Lt2o0;
+
+
+# instance fields
+.field public final synthetic a:B
+
+.field public final b:Lt2o0;
+
+.field public final c:Lt2o0;
+
+.field public final d:Lt2o0;
+
+.field public final e:Lt2o0;
+
+.field public final f:Lt2o0;
+
+.field public final g:Lt2o0;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lt2o0;Lt2o0;Lt2o0;Lt2o0;Lt2o0;Lt2o0;B)V
+    .locals 0
+
+    .line 1
+    iput-byte p7, p0, Lxhy;->a:B
+
+    .line 2
+    .line 3
+    iput-object p1, p0, Lxhy;->b:Lt2o0;
+
+    .line 4
+    .line 5
+    iput-object p2, p0, Lxhy;->c:Lt2o0;
+
+    .line 6
+    .line 7
+    iput-object p3, p0, Lxhy;->d:Lt2o0;
+
+    .line 8
+    .line 9
+    iput-object p4, p0, Lxhy;->e:Lt2o0;
+
+    .line 10
+    .line 11
+    iput-object p5, p0, Lxhy;->f:Lt2o0;
+
+    .line 12
+    .line 13
+    iput-object p6, p0, Lxhy;->g:Lt2o0;
+
+    .line 14
+    .line 15
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16
+    .line 17
+    .line 18
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke()Ljava/lang/Object;
+    .locals 13
+
+    .line 1
+    iget-byte v0, p0, Lxhy;->a:B
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Lxhy;->g:Lt2o0;
+
+    .line 4
+    .line 5
+    iget-object v2, p0, Lxhy;->f:Lt2o0;
+
+    .line 6
+    .line 7
+    iget-object v3, p0, Lxhy;->e:Lt2o0;
+
+    .line 8
+    .line 9
+    iget-object v4, p0, Lxhy;->d:Lt2o0;
+
+    .line 10
+    .line 11
+    iget-object v5, p0, Lxhy;->c:Lt2o0;
+
+    .line 12
+    .line 13
+    iget-object p0, p0, Lxhy;->b:Lt2o0;
+
+    .line 14
+    .line 15
+    packed-switch v0, :pswitch_data_0
+
+    .line 16
+    .line 17
+    .line 18
+    invoke-interface {p0}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object p0
+
+    .line 22
+    move-object v6, p0
+
+    .line 23
+    check-cast v6, Lknh0;
+
+    .line 24
+    .line 25
+    invoke-interface {v5}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 26
+    .line 27
+    .line 28
+    move-result-object p0
+
+    .line 29
+    move-object v7, p0
+
+    .line 30
+    check-cast v7, Lp3t0;
+
+    .line 31
+    .line 32
+    invoke-interface {v4}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 33
+    .line 34
+    .line 35
+    move-result-object p0
+
+    .line 36
+    move-object v8, p0
+
+    .line 37
+    check-cast v8, Lcgr0;
+
+    .line 38
+    .line 39
+    invoke-interface {v3}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 40
+    .line 41
+    .line 42
+    move-result-object p0
+
+    .line 43
+    move-object v9, p0
+
+    .line 44
+    check-cast v9, Lgzq0;
+
+    .line 45
+    .line 46
+    invoke-interface {v2}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 47
+    .line 48
+    .line 49
+    move-result-object p0
+
+    .line 50
+    move-object v10, p0
+
+    .line 51
+    check-cast v10, Lgzq0;
+
+    .line 52
+    .line 53
+    invoke-interface {v1}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 54
+    .line 55
+    .line 56
+    move-result-object p0
+
+    .line 57
+    move-object v11, p0
+
+    .line 58
+    check-cast v11, Lgzw;
+
+    .line 59
+    .line 60
+    invoke-static/range {v6 .. v11}, Lih61;->k(Lknh0;Lp3t0;Lcgr0;Lgzq0;Lgzq0;Lgzw;)Linh0;
+
+    .line 61
+    .line 62
+    .line 63
+    move-result-object p0
+
+    .line 64
+    return-object p0
+
+    .line 65
+    :pswitch_0
+    invoke-interface {p0}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 66
+    .line 67
+    .line 68
+    move-result-object p0
+
+    .line 69
+    move-object v6, p0
+
+    .line 70
+    check-cast v6, Lcd8;
+
+    .line 71
+    .line 72
+    invoke-interface {v5}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 73
+    .line 74
+    .line 75
+    move-result-object p0
+
+    .line 76
+    move-object v7, p0
+
+    .line 77
+    check-cast v7, Ljava/util/Locale;
+
+    .line 78
+    .line 79
+    invoke-interface {v4}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 80
+    .line 81
+    .line 82
+    move-result-object p0
+
+    .line 83
+    move-object v8, p0
+
+    .line 84
+    check-cast v8, Lx3x0;
+
+    .line 85
+    .line 86
+    invoke-interface {v3}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 87
+    .line 88
+    .line 89
+    move-result-object p0
+
+    .line 90
+    move-object v10, p0
+
+    .line 91
+    check-cast v10, Lfy1;
+
+    .line 92
+    .line 93
+    invoke-interface {v2}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 94
+    .line 95
+    .line 96
+    move-result-object p0
+
+    .line 97
+    move-object v11, p0
+
+    .line 98
+    check-cast v11, Lrfy0;
+
+    .line 99
+    .line 100
+    invoke-interface {v1}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 101
+    .line 102
+    .line 103
+    move-result-object p0
+
+    .line 104
+    move-object v12, p0
+
+    .line 105
+    check-cast v12, Lvu21;
+
+    .line 106
+    .line 107
+    sget-object v9, Lhfi;->a:Lhfi;
+
+    .line 108
+    .line 109
+    invoke-static/range {v6 .. v12}, Lcy81;->f(Lcd8;Ljava/util/Locale;Lx3x0;Ljfi;Lfy1;Lrfy0;Lvu21;)Lwhy;
+
+    .line 110
+    .line 111
+    .line 112
+    move-result-object p0
+
+    .line 113
+    return-object p0
+
+    .line 114
+    nop
+
+    .line 115
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method

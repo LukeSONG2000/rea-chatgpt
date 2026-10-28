@@ -1,0 +1,300 @@
+.class public final Lwme;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+# interfaces
+.implements Ljava/util/Iterator;
+.implements La370;
+
+
+# instance fields
+.field public a:I
+
+.field public b:Ljava/lang/String;
+
+.field public final synthetic c:Ldne;
+
+
+# direct methods
+.method public constructor <init>(Ldne;)V
+    .locals 2
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lwme;->c:Ldne;
+
+    .line 5
+    .line 6
+    :goto_0
+    iget p1, p0, Lwme;->a:I
+
+    .line 7
+    .line 8
+    iget-object v0, p0, Lwme;->c:Ldne;
+
+    .line 9
+    .line 10
+    iget v1, v0, Ldne;->e:I
+
+    .line 11
+    .line 12
+    if-ge p1, v1, :cond_1
+
+    .line 13
+    .line 14
+    iget-object v1, v0, Ldne;->d:[I
+
+    .line 15
+    .line 16
+    aget v1, v1, p1
+
+    .line 17
+    .line 18
+    if-ltz v1, :cond_0
+
+    .line 19
+    .line 20
+    iget-object v0, v0, Ldne;->a:[Ljava/lang/String;
+
+    .line 21
+    .line 22
+    aget-object v0, v0, v1
+
+    .line 23
+    .line 24
+    if-nez v0, :cond_1
+
+    .line 25
+    .line 26
+    :cond_0
+    add-int/lit8 p1, p1, 0x1
+
+    .line 27
+    .line 28
+    iput p1, p0, Lwme;->a:I
+
+    .line 29
+    .line 30
+    goto :goto_0
+
+    .line 31
+    :cond_1
+    return-void
+.end method
+
+
+# virtual methods
+.method public final hasNext()Z
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lwme;->a:I
+
+    .line 2
+    .line 3
+    iget-object p0, p0, Lwme;->c:Ldne;
+
+    .line 4
+    .line 5
+    iget p0, p0, Ldne;->e:I
+
+    .line 6
+    .line 7
+    if-ge v0, p0, :cond_0
+
+    .line 8
+    .line 9
+    const/4 p0, 0x1
+
+    .line 10
+    return p0
+
+    .line 11
+    :cond_0
+    const/4 p0, 0x0
+
+    .line 12
+    return p0
+.end method
+
+.method public final next()Ljava/lang/Object;
+    .locals 6
+
+    .line 1
+    invoke-virtual {p0}, Lwme;->hasNext()Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result v0
+
+    .line 5
+    if-eqz v0, :cond_2
+
+    .line 6
+    .line 7
+    iget-object v0, p0, Lwme;->c:Ldne;
+
+    .line 8
+    .line 9
+    iget-object v1, v0, Ldne;->d:[I
+
+    .line 10
+    .line 11
+    iget v2, p0, Lwme;->a:I
+
+    .line 12
+    .line 13
+    aget v1, v1, v2
+
+    .line 14
+    .line 15
+    iget-object v3, v0, Ldne;->a:[Ljava/lang/String;
+
+    .line 16
+    .line 17
+    aget-object v3, v3, v1
+
+    .line 18
+    .line 19
+    iput-object v3, p0, Lwme;->b:Ljava/lang/String;
+
+    .line 20
+    .line 21
+    new-instance v4, Lane;
+
+    .line 22
+    .line 23
+    iget-object v5, v0, Ldne;->b:[Ljava/lang/Object;
+
+    .line 24
+    .line 25
+    aget-object v1, v5, v1
+
+    .line 26
+    .line 27
+    invoke-direct {v4, v0, v3, v1}, Lane;-><init>(Ldne;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 28
+    .line 29
+    .line 30
+    add-int/lit8 v2, v2, 0x1
+
+    .line 31
+    .line 32
+    iput v2, p0, Lwme;->a:I
+
+    .line 33
+    .line 34
+    :goto_0
+    iget v1, p0, Lwme;->a:I
+
+    .line 35
+    .line 36
+    iget v2, v0, Ldne;->e:I
+
+    .line 37
+    .line 38
+    if-ge v1, v2, :cond_1
+
+    .line 39
+    .line 40
+    iget-object v2, v0, Ldne;->d:[I
+
+    .line 41
+    .line 42
+    aget v2, v2, v1
+
+    .line 43
+    .line 44
+    if-ltz v2, :cond_0
+
+    .line 45
+    .line 46
+    iget-object v3, v0, Ldne;->a:[Ljava/lang/String;
+
+    .line 47
+    .line 48
+    aget-object v2, v3, v2
+
+    .line 49
+    .line 50
+    if-nez v2, :cond_1
+
+    .line 51
+    .line 52
+    :cond_0
+    add-int/lit8 v1, v1, 0x1
+
+    .line 53
+    .line 54
+    iput v1, p0, Lwme;->a:I
+
+    .line 55
+    .line 56
+    goto :goto_0
+
+    .line 57
+    :cond_1
+    return-object v4
+
+    .line 58
+    :cond_2
+    invoke-static {}, Lhu1;->c()V
+
+    .line 59
+    .line 60
+    .line 61
+    const/4 p0, 0x0
+
+    .line 62
+    return-object p0
+.end method
+
+.method public final remove()V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lwme;->b:Ljava/lang/String;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    iget-object v1, p0, Lwme;->c:Ldne;
+
+    .line 6
+    .line 7
+    invoke-virtual {v1, v0}, Ldne;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 8
+    .line 9
+    .line 10
+    const/4 v0, 0x0
+
+    .line 11
+    iput-object v0, p0, Lwme;->b:Ljava/lang/String;
+
+    .line 12
+    .line 13
+    return-void
+
+    .line 14
+    :cond_0
+    const-string p0, "next() must be called before remove()"
+
+    .line 15
+    .line 16
+    invoke-static {p0}, Ljl;->d(Ljava/lang/String;)V
+
+    .line 17
+    .line 18
+    .line 19
+    return-void
+.end method

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/tint_screen" android:background="#80000000" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:importantForAccessibility="no" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/bottom_sheet" android:layout_width="match_parent" android:layout_height="wrap_content" android:elevation="1.0dp" app:behavior_hideable="true" app:behavior_peekHeight="0.0dp" app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" app:paddingTopSystemWindowInsets="false">
+        <androidx.core.widget.NestedScrollView android:id="@id/content_scroll_view" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+            <FrameLayout android:id="@id/content_container" android:paddingLeft="24.0dp" android:paddingTop="24.0dp" android:paddingRight="24.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="24.0dp" />
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

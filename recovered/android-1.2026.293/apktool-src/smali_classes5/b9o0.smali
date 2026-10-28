@@ -1,0 +1,711 @@
+.class public final Lb9o0;
+.super Lw770;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# instance fields
+.field public final synthetic a:Ld9o0;
+
+.field public final synthetic b:Landroid/app/Activity;
+
+.field public final synthetic c:Ljava/lang/String;
+
+.field public final synthetic d:Lj9o0;
+
+.field public final synthetic e:Llxw0;
+
+.field public final synthetic f:Lqum0;
+
+.field public final synthetic g:Lqxo0;
+
+
+# direct methods
+.method public constructor <init>(Ld9o0;Landroid/app/Activity;Ljava/lang/String;Lj9o0;Llxw0;Lqum0;Lqxo0;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, Lb9o0;->a:Ld9o0;
+
+    .line 2
+    .line 3
+    iput-object p2, p0, Lb9o0;->b:Landroid/app/Activity;
+
+    .line 4
+    .line 5
+    iput-object p3, p0, Lb9o0;->c:Ljava/lang/String;
+
+    .line 6
+    .line 7
+    iput-object p4, p0, Lb9o0;->d:Lj9o0;
+
+    .line 8
+    .line 9
+    iput-object p5, p0, Lb9o0;->e:Llxw0;
+
+    .line 10
+    .line 11
+    iput-object p6, p0, Lb9o0;->f:Lqum0;
+
+    .line 12
+    .line 13
+    iput-object p7, p0, Lb9o0;->g:Lqxo0;
+
+    .line 14
+    .line 15
+    const/4 p1, 0x1
+
+    .line 16
+    invoke-direct {p0, p1}, Lw770;-><init>(I)V
+
+    .line 17
+    .line 18
+    .line 19
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 9
+
+    .line 1
+    check-cast p1, Lpxw0;
+
+    .line 2
+    .line 3
+    sget-object v0, Lvea0;->f:Lvea0;
+
+    .line 4
+    .line 5
+    new-instance v1, Lzj1;
+
+    .line 6
+    .line 7
+    iget-object v2, p0, Lb9o0;->g:Lqxo0;
+
+    .line 8
+    .line 9
+    const/4 v3, 0x4
+
+    .line 10
+    invoke-direct {v1, v0, v2, v3}, Lzj1;-><init>(Ljava/lang/Object;Ljava/lang/Object;B)V
+
+    .line 11
+    .line 12
+    .line 13
+    invoke-virtual {v0}, Ljava/lang/Enum;->ordinal()I
+
+    .line 14
+    .line 15
+    .line 16
+    move-result v0
+
+    .line 17
+    const-string v2, "[Purchases] - INFO"
+
+    .line 18
+    .line 19
+    const/4 v4, 0x3
+
+    .line 20
+    const-string v5, "[Purchases] - DEBUG"
+
+    .line 21
+    .line 22
+    const/4 v6, 0x2
+
+    .line 23
+    const-string v7, "[Purchases] - WARN"
+
+    .line 24
+    .line 25
+    const/4 v8, 0x0
+
+    .line 26
+    packed-switch v0, :pswitch_data_0
+
+    .line 27
+    .line 28
+    .line 29
+    goto/16 :goto_1
+
+    .line 30
+    .line 31
+    :pswitch_0
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 32
+    .line 33
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 34
+    .line 35
+    .line 36
+    move-result-object v1
+
+    .line 37
+    check-cast v1, Ljava/lang/String;
+
+    .line 38
+    .line 39
+    invoke-interface {v0, v1, v8}, Ltea0;->b(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 40
+    .line 41
+    .line 42
+    goto/16 :goto_1
+
+    .line 43
+    .line 44
+    :pswitch_1
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 45
+    .line 46
+    sget v2, Lnq60;->s:I
+
+    .line 47
+    .line 48
+    invoke-static {v2, v3}, Lgvx0;->b(II)I
+
+    .line 49
+    .line 50
+    .line 51
+    move-result v2
+
+    .line 52
+    if-gtz v2, :cond_0
+
+    .line 53
+    .line 54
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 55
+    .line 56
+    .line 57
+    move-result-object v1
+
+    .line 58
+    check-cast v1, Ljava/lang/String;
+
+    .line 59
+    .line 60
+    invoke-interface {v0, v7, v1}, Ltea0;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 61
+    .line 62
+    .line 63
+    goto/16 :goto_1
+
+    .line 64
+    .line 65
+    :pswitch_2
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 66
+    .line 67
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 68
+    .line 69
+    .line 70
+    move-result-object v1
+
+    .line 71
+    check-cast v1, Ljava/lang/String;
+
+    .line 72
+    .line 73
+    invoke-interface {v0, v1, v8}, Ltea0;->b(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 74
+    .line 75
+    .line 76
+    goto/16 :goto_1
+
+    .line 77
+    .line 78
+    :pswitch_3
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 79
+    .line 80
+    sget v2, Lnq60;->s:I
+
+    .line 81
+    .line 82
+    invoke-static {v2, v3}, Lgvx0;->b(II)I
+
+    .line 83
+    .line 84
+    .line 85
+    move-result v2
+
+    .line 86
+    if-gtz v2, :cond_0
+
+    .line 87
+    .line 88
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 89
+    .line 90
+    .line 91
+    move-result-object v1
+
+    .line 92
+    check-cast v1, Ljava/lang/String;
+
+    .line 93
+    .line 94
+    invoke-interface {v0, v7, v1}, Ltea0;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 95
+    .line 96
+    .line 97
+    goto/16 :goto_1
+
+    .line 98
+    .line 99
+    :pswitch_4
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 100
+    .line 101
+    sget v2, Lnq60;->s:I
+
+    .line 102
+    .line 103
+    invoke-static {v2, v3}, Lgvx0;->b(II)I
+
+    .line 104
+    .line 105
+    .line 106
+    move-result v2
+
+    .line 107
+    if-gtz v2, :cond_0
+
+    .line 108
+    .line 109
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 110
+    .line 111
+    .line 112
+    move-result-object v1
+
+    .line 113
+    check-cast v1, Ljava/lang/String;
+
+    .line 114
+    .line 115
+    invoke-interface {v0, v7, v1}, Ltea0;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 116
+    .line 117
+    .line 118
+    goto/16 :goto_1
+
+    .line 119
+    .line 120
+    :pswitch_5
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 121
+    .line 122
+    sget v2, Lnq60;->s:I
+
+    .line 123
+    .line 124
+    invoke-static {v2, v6}, Lgvx0;->b(II)I
+
+    .line 125
+    .line 126
+    .line 127
+    move-result v2
+
+    .line 128
+    if-gtz v2, :cond_0
+
+    .line 129
+    .line 130
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 131
+    .line 132
+    .line 133
+    move-result-object v1
+
+    .line 134
+    check-cast v1, Ljava/lang/String;
+
+    .line 135
+    .line 136
+    :goto_0
+    invoke-interface {v0, v5, v1}, Ltea0;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 137
+    .line 138
+    .line 139
+    goto/16 :goto_1
+
+    .line 140
+    .line 141
+    :pswitch_6
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 142
+    .line 143
+    sget v2, Lnq60;->s:I
+
+    .line 144
+    .line 145
+    invoke-static {v2, v6}, Lgvx0;->b(II)I
+
+    .line 146
+    .line 147
+    .line 148
+    move-result v2
+
+    .line 149
+    if-gtz v2, :cond_0
+
+    .line 150
+    .line 151
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 152
+    .line 153
+    .line 154
+    move-result-object v1
+
+    .line 155
+    check-cast v1, Ljava/lang/String;
+
+    .line 156
+    .line 157
+    goto :goto_0
+
+    .line 158
+    :pswitch_7
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 159
+    .line 160
+    sget v3, Lnq60;->s:I
+
+    .line 161
+    .line 162
+    invoke-static {v3, v4}, Lgvx0;->b(II)I
+
+    .line 163
+    .line 164
+    .line 165
+    move-result v3
+
+    .line 166
+    if-gtz v3, :cond_0
+
+    .line 167
+    .line 168
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 169
+    .line 170
+    .line 171
+    move-result-object v1
+
+    .line 172
+    check-cast v1, Ljava/lang/String;
+
+    .line 173
+    .line 174
+    invoke-interface {v0, v2, v1}, Ltea0;->m(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 175
+    .line 176
+    .line 177
+    goto :goto_1
+
+    .line 178
+    :pswitch_8
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 179
+    .line 180
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 181
+    .line 182
+    .line 183
+    move-result-object v1
+
+    .line 184
+    check-cast v1, Ljava/lang/String;
+
+    .line 185
+    .line 186
+    invoke-interface {v0, v1, v8}, Ltea0;->b(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 187
+    .line 188
+    .line 189
+    goto :goto_1
+
+    .line 190
+    :pswitch_9
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 191
+    .line 192
+    sget v2, Lnq60;->s:I
+
+    .line 193
+    .line 194
+    invoke-static {v2, v6}, Lgvx0;->b(II)I
+
+    .line 195
+    .line 196
+    .line 197
+    move-result v2
+
+    .line 198
+    if-gtz v2, :cond_0
+
+    .line 199
+    .line 200
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 201
+    .line 202
+    .line 203
+    move-result-object v1
+
+    .line 204
+    check-cast v1, Ljava/lang/String;
+
+    .line 205
+    .line 206
+    goto :goto_0
+
+    .line 207
+    :pswitch_a
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 208
+    .line 209
+    sget v3, Lnq60;->s:I
+
+    .line 210
+    .line 211
+    invoke-static {v3, v4}, Lgvx0;->b(II)I
+
+    .line 212
+    .line 213
+    .line 214
+    move-result v3
+
+    .line 215
+    if-gtz v3, :cond_0
+
+    .line 216
+    .line 217
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 218
+    .line 219
+    .line 220
+    move-result-object v1
+
+    .line 221
+    check-cast v1, Ljava/lang/String;
+
+    .line 222
+    .line 223
+    invoke-interface {v0, v2, v1}, Ltea0;->m(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 224
+    .line 225
+    .line 226
+    goto :goto_1
+
+    .line 227
+    :pswitch_b
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 228
+    .line 229
+    sget v2, Lnq60;->s:I
+
+    .line 230
+    .line 231
+    invoke-static {v2, v3}, Lgvx0;->b(II)I
+
+    .line 232
+    .line 233
+    .line 234
+    move-result v2
+
+    .line 235
+    if-gtz v2, :cond_0
+
+    .line 236
+    .line 237
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 238
+    .line 239
+    .line 240
+    move-result-object v1
+
+    .line 241
+    check-cast v1, Ljava/lang/String;
+
+    .line 242
+    .line 243
+    invoke-interface {v0, v7, v1}, Ltea0;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 244
+    .line 245
+    .line 246
+    goto :goto_1
+
+    .line 247
+    :pswitch_c
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 248
+    .line 249
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 250
+    .line 251
+    .line 252
+    move-result-object v1
+
+    .line 253
+    check-cast v1, Ljava/lang/String;
+
+    .line 254
+    .line 255
+    invoke-interface {v0, v1, v8}, Ltea0;->b(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 256
+    .line 257
+    .line 258
+    goto :goto_1
+
+    .line 259
+    :pswitch_d
+    sget-object v0, Lhhx0;->g:Ltea0;
+
+    .line 260
+    .line 261
+    sget v2, Lnq60;->s:I
+
+    .line 262
+    .line 263
+    invoke-static {v2, v6}, Lgvx0;->b(II)I
+
+    .line 264
+    .line 265
+    .line 266
+    move-result v2
+
+    .line 267
+    if-gtz v2, :cond_0
+
+    .line 268
+    .line 269
+    invoke-virtual {v1}, Lzj1;->invoke()Ljava/lang/Object;
+
+    .line 270
+    .line 271
+    .line 272
+    move-result-object v1
+
+    .line 273
+    check-cast v1, Ljava/lang/String;
+
+    .line 274
+    .line 275
+    goto/16 :goto_0
+
+    .line 276
+    .line 277
+    :cond_0
+    :goto_1
+    iget-object v0, p0, Lb9o0;->a:Ld9o0;
+
+    .line 278
+    .line 279
+    iget-object v1, v0, Ld9o0;->c:Lrk9;
+
+    .line 280
+    .line 281
+    new-instance v5, Li3q0;
+
+    .line 282
+    .line 283
+    iget-object v0, p0, Lb9o0;->e:Llxw0;
+
+    .line 284
+    .line 285
+    invoke-direct {v5, p1, v0}, Li3q0;-><init>(Lpxw0;Lj3q0;)V
+
+    .line 286
+    .line 287
+    .line 288
+    iget-object v6, p0, Lb9o0;->f:Lqum0;
+
+    .line 289
+    .line 290
+    iget-object v2, p0, Lb9o0;->b:Landroid/app/Activity;
+
+    .line 291
+    .line 292
+    iget-object v3, p0, Lb9o0;->c:Ljava/lang/String;
+
+    .line 293
+    .line 294
+    iget-object v4, p0, Lb9o0;->d:Lj9o0;
+
+    .line 295
+    .line 296
+    invoke-virtual/range {v1 .. v6}, Lrk9;->n(Landroid/app/Activity;Ljava/lang/String;Lj9o0;Li3q0;Lqum0;)V
+
+    .line 297
+    .line 298
+    .line 299
+    sget-object p0, La011;->a:La011;
+
+    .line 300
+    .line 301
+    return-object p0
+
+    .line 302
+    nop
+
+    .line 303
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_d
+        :pswitch_c
+        :pswitch_b
+        :pswitch_a
+        :pswitch_9
+        :pswitch_8
+        :pswitch_7
+        :pswitch_6
+        :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method

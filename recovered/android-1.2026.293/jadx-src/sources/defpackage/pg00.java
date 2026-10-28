@@ -1,0 +1,36 @@
+package defpackage;
+
+import com.openai.valdi.chatgpt.finance.connections.FinanceBlankSlateDestination;
+import com.snap.valdi.utils.b;
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes6.dex */
+@js11(propertyReplacements = "", schema = "'destination':r<e>:'[0]','prompt':s?,'autoSend':b@?", typeReferences = {FinanceBlankSlateDestination.class})
+@Metadata(d1 = {"\u0000\u001c\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010\u000b\n\u0002\b\n\b\u0007\u0018\u00002\u00020\u0001B)\b\u0017\u0012\u0006\u0010\u0003\u001a\u00020\u0002\u0012\n\b\u0002\u0010\u0005\u001a\u0004\u0018\u00010\u0004\u0012\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u00010\u0006¢\u0006\u0004\b\b\u0010\tR\u0016\u0010\n\u001a\u00020\u00028\u0002@\u0002X\u0083\u000e¢\u0006\u0006\n\u0004\b\n\u0010\u000bR\u0018\u0010\f\u001a\u0004\u0018\u00010\u00048\u0002@\u0002X\u0083\u000e¢\u0006\u0006\n\u0004\b\f\u0010\rR\u0018\u0010\u000e\u001a\u0004\u0018\u00010\u00068\u0002@\u0002X\u0083\u000e¢\u0006\u0006\n\u0004\b\u000e\u0010\u000f¨\u0006\u0010"}, d2 = {"Lpg00;", "Lcom/snap/valdi/utils/b;", "Lcom/openai/valdi/chatgpt/finance/connections/FinanceBlankSlateDestination;", "destination", "", "prompt", "", "autoSend", "<init>", "(Lcom/openai/valdi/chatgpt/finance/connections/FinanceBlankSlateDestination;Ljava/lang/String;Ljava/lang/Boolean;)V", "_destination", "Lcom/openai/valdi/chatgpt/finance/connections/FinanceBlankSlateDestination;", "_prompt", "Ljava/lang/String;", "_autoSend", "Ljava/lang/Boolean;", "modules_chatgpt_finance_connections-chatgpt_finance_connections_api_kt_kt"}, k = 1, mv = {1, 8, 0}, xi = 48)
+public final class pg00 extends b {
+    private Boolean _autoSend;
+    private FinanceBlankSlateDestination _destination;
+    private String _prompt;
+
+    public pg00(FinanceBlankSlateDestination financeBlankSlateDestination, String str, Boolean bool) {
+        this._destination = financeBlankSlateDestination;
+        this._prompt = str;
+        this._autoSend = bool;
+    }
+
+    /* JADX INFO: renamed from: a, reason: from getter */
+    public final Boolean get_autoSend() {
+        return this._autoSend;
+    }
+
+    /* JADX INFO: renamed from: b, reason: from getter */
+    public final FinanceBlankSlateDestination get_destination() {
+        return this._destination;
+    }
+
+    /* JADX INFO: renamed from: c, reason: from getter */
+    public final String get_prompt() {
+        return this._prompt;
+    }
+}

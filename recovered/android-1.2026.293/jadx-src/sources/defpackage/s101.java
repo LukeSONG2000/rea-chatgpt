@@ -1,0 +1,17 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes2.dex */
+public final class s101 extends oej0 {
+    public final long j;
+    public final float k;
+    public final long l;
+    public final float m;
+
+    public s101(float f, float f2, long j, long j2) {
+        this.j = j;
+        this.k = f;
+        this.l = j2;
+        this.m = f2;
+    }
+}

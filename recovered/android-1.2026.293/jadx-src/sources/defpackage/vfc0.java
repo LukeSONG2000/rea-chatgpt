@@ -1,0 +1,12 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes6.dex */
+@m0t0(with = ufc0.class)
+public interface vfc0 {
+    public static final nfc0 Companion = nfc0.a;
+
+    String a();
+
+    String b();
+}

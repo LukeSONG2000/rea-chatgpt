@@ -1,0 +1,23 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes7.dex */
+public final class be21 extends ne21 {
+    public final boolean a;
+    public final String b;
+
+    public be21(boolean z, String str) {
+        this.a = z;
+        this.b = str;
+    }
+
+    @Override // defpackage.ne21
+    public final String a() {
+        return this.b;
+    }
+
+    @Override // defpackage.ne21
+    public final boolean b() {
+        return this.a;
+    }
+}

@@ -1,0 +1,14 @@
+package defpackage;
+
+import android.view.accessibility.AccessibilityManager;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes.dex */
+public final class bx90 implements AccessibilityManager.TouchExplorationStateChangeListener {
+    public final vbj0 a = oqq0.q(Boolean.FALSE);
+
+    @Override // android.view.accessibility.AccessibilityManager.TouchExplorationStateChangeListener
+    public final void onTouchExplorationStateChanged(boolean z) {
+        this.a.setValue(Boolean.valueOf(z));
+    }
+}

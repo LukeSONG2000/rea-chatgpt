@@ -1,0 +1,105 @@
+package defpackage;
+
+import java.util.Map;
+import kotlinx.serialization.KSerializer;
+import kotlinx.serialization.descriptors.SerialDescriptor;
+import kotlinx.serialization.encoding.Decoder;
+import kotlinx.serialization.encoding.Encoder;
+import kotlinx.serialization.internal.PluginGeneratedSerialDescriptor;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes4.dex */
+public final /* synthetic */ class t0l implements hz10 {
+    public static final t0l a;
+    private static final SerialDescriptor descriptor;
+
+    static {
+        t0l t0lVar = new t0l();
+        a = t0lVar;
+        PluginGeneratedSerialDescriptor pluginGeneratedSerialDescriptor = new PluginGeneratedSerialDescriptor("zaFctDBk9DqW7mFTUTK7fJODZxO_BDV0gwrRRb99mXw=", t0lVar, 5);
+        pluginGeneratedSerialDescriptor.l("conversationId", false);
+        pluginGeneratedSerialDescriptor.l("callId", false);
+        pluginGeneratedSerialDescriptor.l("fileChanges", true);
+        pluginGeneratedSerialDescriptor.l("reason", true);
+        pluginGeneratedSerialDescriptor.l("grantRoot", true);
+        descriptor = pluginGeneratedSerialDescriptor;
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    @Override // defpackage.hz10
+    public final KSerializer[] childSerializers() {
+        sl70[] sl70VarArr = v0l.f;
+        c4x0 c4x0Var = c4x0.a;
+        return new KSerializer[]{c4x0Var, c4x0Var, sl70VarArr[2].getValue(), mwq.I(c4x0Var), mwq.I(c4x0Var)};
+    }
+
+    @Override // defpackage.zwu
+    public final Object deserialize(Decoder decoder) {
+        SerialDescriptor serialDescriptor = descriptor;
+        uho uhoVarA = decoder.a(serialDescriptor);
+        sl70[] sl70VarArr = v0l.f;
+        boolean z = true;
+        int i = 0;
+        String strN = null;
+        String strN2 = null;
+        Map map = null;
+        String str = null;
+        String str2 = null;
+        while (z) {
+            int iP = uhoVarA.p(serialDescriptor);
+            if (iP == -1) {
+                z = false;
+            } else if (iP == 0) {
+                strN = uhoVarA.n(serialDescriptor, 0);
+                i |= 1;
+            } else if (iP == 1) {
+                strN2 = uhoVarA.n(serialDescriptor, 1);
+                i |= 2;
+            } else if (iP == 2) {
+                map = (Map) uhoVarA.l(serialDescriptor, 2, (zwu) sl70VarArr[2].getValue());
+                i |= 4;
+            } else if (iP == 3) {
+                str = (String) uhoVarA.o(serialDescriptor, 3, c4x0.a);
+                i |= 8;
+            } else {
+                if (iP != 4) {
+                    hu1.d(iP);
+                    return null;
+                }
+                str2 = (String) uhoVarA.o(serialDescriptor, 4, c4x0.a);
+                i |= 16;
+            }
+        }
+        uhoVarA.x(serialDescriptor);
+        return new v0l(i, strN, strN2, map, str, str2);
+    }
+
+    @Override // defpackage.o0t0, defpackage.zwu
+    public final SerialDescriptor getDescriptor() {
+        return descriptor;
+    }
+
+    @Override // defpackage.o0t0
+    public final void serialize(Encoder encoder, Object obj) {
+        v0l v0lVar = (v0l) obj;
+        SerialDescriptor serialDescriptor = descriptor;
+        vho vhoVarA = encoder.a(serialDescriptor);
+        sl70[] sl70VarArr = v0l.f;
+        String str = v0lVar.a;
+        String str2 = v0lVar.e;
+        String str3 = v0lVar.d;
+        Map map = v0lVar.c;
+        vhoVarA.x(serialDescriptor, 0, str);
+        vhoVarA.x(serialDescriptor, 1, v0lVar.b);
+        if (vhoVarA.E() || !kdd.l(map, tgy.a)) {
+            vhoVarA.y(serialDescriptor, 2, (o0t0) sl70VarArr[2].getValue(), map);
+        }
+        if (vhoVarA.E() || str3 != null) {
+            vhoVarA.l(serialDescriptor, 3, c4x0.a, str3);
+        }
+        if (vhoVarA.E() || str2 != null) {
+            vhoVarA.l(serialDescriptor, 4, c4x0.a, str2);
+        }
+        vhoVarA.d();
+    }
+}

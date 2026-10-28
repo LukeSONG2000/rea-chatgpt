@@ -1,0 +1,26 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes4.dex */
+public final class tcs0 implements ucs0 {
+    public final u8d0 a;
+
+    public tcs0(u8d0 u8d0Var) {
+        this.a = u8d0Var;
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof tcs0) && this.a == ((tcs0) obj).a;
+    }
+
+    public final int hashCode() {
+        return this.a.hashCode();
+    }
+
+    public final String toString() {
+        return tcs0.class.getName();
+    }
+}

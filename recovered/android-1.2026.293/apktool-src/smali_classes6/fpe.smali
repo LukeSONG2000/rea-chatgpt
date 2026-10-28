@@ -1,0 +1,360 @@
+.class public final Lfpe;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+# interfaces
+.implements Lkotlinx/serialization/KSerializer;
+
+
+# static fields
+.field public static final a:Lfpe;
+
+.field public static final b:Lbzm0;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    .line 1
+    new-instance v0, Lfpe;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    sput-object v0, Lfpe;->a:Lfpe;
+
+    .line 7
+    .line 8
+    const-string v0, "DoubleOrString"
+
+    .line 9
+    .line 10
+    sget-object v1, Lwym0;->b:Lwym0;
+
+    .line 11
+    .line 12
+    invoke-static {v0, v1}, Lj8p0;->a(Ljava/lang/String;Lxym0;)Lbzm0;
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-object v0
+
+    .line 16
+    sput-object v0, Lfpe;->b:Lbzm0;
+
+    .line 17
+    .line 18
+    return-void
+.end method
+
+
+# virtual methods
+.method public final deserialize(Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+    .locals 2
+
+    .line 1
+    instance-of p0, p1, Lky60;
+
+    .line 2
+    .line 3
+    if-eqz p0, :cond_3
+
+    .line 4
+    .line 5
+    check-cast p1, Lky60;
+
+    .line 6
+    .line 7
+    invoke-interface {p1}, Lky60;->h()Lkotlinx/serialization/json/b;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object p0
+
+    .line 11
+    instance-of p1, p0, Lkotlinx/serialization/json/d;
+
+    .line 12
+    .line 13
+    if-eqz p1, :cond_0
+
+    .line 14
+    .line 15
+    move-object v0, p0
+
+    .line 16
+    check-cast v0, Lkotlinx/serialization/json/d;
+
+    .line 17
+    .line 18
+    invoke-static {v0}, Lqy60;->h(Lkotlinx/serialization/json/d;)Ljava/lang/Double;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object v0
+
+    .line 22
+    if-eqz v0, :cond_0
+
+    .line 23
+    .line 24
+    new-instance p1, Lbpe;
+
+    .line 25
+    .line 26
+    invoke-static {p0}, Lqy60;->m(Lkotlinx/serialization/json/b;)Lkotlinx/serialization/json/d;
+
+    .line 27
+    .line 28
+    .line 29
+    move-result-object p0
+
+    .line 30
+    invoke-virtual {p0}, Lkotlinx/serialization/json/d;->a()Ljava/lang/String;
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-object p0
+
+    .line 34
+    invoke-static {p0}, Ljava/lang/Double;->parseDouble(Ljava/lang/String;)D
+
+    .line 35
+    .line 36
+    .line 37
+    move-result-wide v0
+
+    .line 38
+    invoke-direct {p1, v0, v1}, Lbpe;-><init>(D)V
+
+    .line 39
+    .line 40
+    .line 41
+    return-object p1
+
+    .line 42
+    :cond_0
+    if-eqz p1, :cond_1
+
+    .line 43
+    .line 44
+    move-object p1, p0
+
+    .line 45
+    check-cast p1, Lkotlinx/serialization/json/d;
+
+    .line 46
+    .line 47
+    invoke-static {p1}, Lqy60;->g(Lkotlinx/serialization/json/d;)Ljava/lang/String;
+
+    .line 48
+    .line 49
+    .line 50
+    move-result-object p1
+
+    .line 51
+    if-eqz p1, :cond_1
+
+    .line 52
+    .line 53
+    new-instance p1, Ldpe;
+
+    .line 54
+    .line 55
+    invoke-static {p0}, Lqy60;->m(Lkotlinx/serialization/json/b;)Lkotlinx/serialization/json/d;
+
+    .line 56
+    .line 57
+    .line 58
+    move-result-object p0
+
+    .line 59
+    invoke-virtual {p0}, Lkotlinx/serialization/json/d;->a()Ljava/lang/String;
+
+    .line 60
+    .line 61
+    .line 62
+    move-result-object p0
+
+    .line 63
+    invoke-direct {p1, p0}, Ldpe;-><init>(Ljava/lang/String;)V
+
+    .line 64
+    .line 65
+    .line 66
+    return-object p1
+
+    .line 67
+    :cond_1
+    instance-of p1, p0, Lkotlinx/serialization/json/JsonNull;
+
+    .line 68
+    .line 69
+    if-eqz p1, :cond_2
+
+    .line 70
+    .line 71
+    sget-object p0, Lcpe;->a:Lcpe;
+
+    .line 72
+    .line 73
+    return-object p0
+
+    .line 74
+    :cond_2
+    new-instance p1, Lkotlinx/serialization/SerializationException;
+
+    .line 75
+    .line 76
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 77
+    .line 78
+    const-string v1, "Expected double, string, or null. Got "
+
+    .line 79
+    .line 80
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 81
+    .line 82
+    .line 83
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 84
+    .line 85
+    .line 86
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 87
+    .line 88
+    .line 89
+    move-result-object p0
+
+    .line 90
+    invoke-direct {p1, p0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 91
+    .line 92
+    .line 93
+    throw p1
+
+    .line 94
+    :cond_3
+    const-string p0, "Decoder is not JsonDecoder."
+
+    .line 95
+    .line 96
+    invoke-static {p0}, Ljl;->d(Ljava/lang/String;)V
+
+    .line 97
+    .line 98
+    .line 99
+    const/4 p0, 0x0
+
+    .line 100
+    return-object p0
+.end method
+
+.method public final getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+    .locals 0
+
+    .line 1
+    sget-object p0, Lfpe;->b:Lbzm0;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public final serialize(Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+    .locals 2
+
+    .line 1
+    check-cast p2, Lepe;
+
+    .line 2
+    .line 3
+    instance-of p0, p2, Lbpe;
+
+    .line 4
+    .line 5
+    if-eqz p0, :cond_0
+
+    .line 6
+    .line 7
+    check-cast p2, Lbpe;
+
+    .line 8
+    .line 9
+    iget-wide v0, p2, Lbpe;->a:D
+
+    .line 10
+    .line 11
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/Encoder;->e(D)V
+
+    .line 12
+    .line 13
+    .line 14
+    return-void
+
+    .line 15
+    :cond_0
+    instance-of p0, p2, Ldpe;
+
+    .line 16
+    .line 17
+    if-eqz p0, :cond_1
+
+    .line 18
+    .line 19
+    check-cast p2, Ldpe;
+
+    .line 20
+    .line 21
+    iget-object p0, p2, Ldpe;->a:Ljava/lang/String;
+
+    .line 22
+    .line 23
+    invoke-interface {p1, p0}, Lkotlinx/serialization/encoding/Encoder;->G(Ljava/lang/String;)V
+
+    .line 24
+    .line 25
+    .line 26
+    return-void
+
+    .line 27
+    :cond_1
+    instance-of p0, p2, Lcpe;
+
+    .line 28
+    .line 29
+    if-eqz p0, :cond_2
+
+    .line 30
+    .line 31
+    invoke-interface {p1}, Lkotlinx/serialization/encoding/Encoder;->o()V
+
+    .line 32
+    .line 33
+    .line 34
+    return-void
+
+    .line 35
+    :cond_2
+    invoke-static {}, Lil;->f()V
+
+    .line 36
+    .line 37
+    .line 38
+    return-void
+.end method

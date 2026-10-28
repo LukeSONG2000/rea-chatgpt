@@ -1,0 +1,167 @@
+.class public final Lorg/jetbrains/compose/resources/AndroidContextProvider;
+.super Landroid/content/ContentProvider;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# static fields
+.field public static a:Landroid/content/Context;
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Landroid/content/ContentProvider;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+
+# virtual methods
+.method public final attachInfo(Landroid/content/Context;Landroid/content/pm/ProviderInfo;)V
+    .locals 2
+
+    .line 1
+    if-eqz p2, :cond_1
+
+    .line 2
+    .line 3
+    const-string v0, "org.jetbrains.compose.components.resources.resources.AndroidContextProvider"
+
+    .line 4
+    .line 5
+    iget-object v1, p2, Landroid/content/pm/ProviderInfo;->authority:Ljava/lang/String;
+
+    .line 6
+    .line 7
+    invoke-virtual {v0, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    .line 8
+    .line 9
+    .line 10
+    move-result v0
+
+    .line 11
+    if-nez v0, :cond_0
+
+    .line 12
+    .line 13
+    invoke-super {p0, p1, p2}, Landroid/content/ContentProvider;->attachInfo(Landroid/content/Context;Landroid/content/pm/ProviderInfo;)V
+
+    .line 14
+    .line 15
+    .line 16
+    return-void
+
+    .line 17
+    :cond_0
+    const-string p0, "Incorrect provider authority in manifest. Most likely due to a missing applicationId variable your application\'s build.gradle."
+
+    .line 18
+    .line 19
+    invoke-static {p0}, Ljl;->d(Ljava/lang/String;)V
+
+    .line 20
+    .line 21
+    .line 22
+    return-void
+
+    .line 23
+    :cond_1
+    const-string p0, "AndroidContextProvider ProviderInfo cannot be null."
+
+    .line 24
+    .line 25
+    invoke-static {p0}, Lsl;->h(Ljava/lang/String;)V
+
+    .line 26
+    .line 27
+    .line 28
+    return-void
+.end method
+
+.method public final delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
+    .locals 0
+
+    .line 1
+    const/4 p0, 0x0
+
+    .line 2
+    return p0
+.end method
+
+.method public final getType(Landroid/net/Uri;)Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    const/4 p0, 0x0
+
+    .line 2
+    return-object p0
+.end method
+
+.method public final insert(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    .locals 0
+
+    .line 1
+    const/4 p0, 0x0
+
+    .line 2
+    return-object p0
+.end method
+
+.method public final onCreate()Z
+    .locals 1
+
+    .line 1
+    invoke-static {p0}, Lio/sentry/android/core/performance/f;->e(Landroid/content/ContentProvider;)V
+
+    .line 2
+    .line 3
+    .line 4
+    invoke-virtual {p0}, Landroid/content/ContentProvider;->getContext()Landroid/content/Context;
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object v0
+
+    .line 8
+    sput-object v0, Lorg/jetbrains/compose/resources/AndroidContextProvider;->a:Landroid/content/Context;
+
+    .line 9
+    .line 10
+    invoke-static {p0}, Lio/sentry/android/core/performance/f;->f(Landroid/content/ContentProvider;)V
+
+    .line 11
+    .line 12
+    .line 13
+    const/4 p0, 0x1
+
+    .line 14
+    return p0
+.end method
+
+.method public final query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    .locals 0
+
+    .line 1
+    const/4 p0, 0x0
+
+    .line 2
+    return-object p0
+.end method
+
+.method public final update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    .locals 0
+
+    .line 1
+    const/4 p0, 0x0
+
+    .line 2
+    return p0
+.end method

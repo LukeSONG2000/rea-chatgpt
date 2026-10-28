@@ -1,0 +1,23 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes4.dex */
+public final class ein0 extends vwp {
+    public phn0 n;
+    public /* synthetic */ Object o;
+    public final /* synthetic */ mc8 p;
+    public int q;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public ein0(mc8 mc8Var, twp twpVar) {
+        super(twpVar);
+        this.p = mc8Var;
+    }
+
+    @Override // defpackage.kw8
+    public final Object invokeSuspend(Object obj) {
+        this.o = obj;
+        this.q |= Integer.MIN_VALUE;
+        return this.p.c(null, this);
+    }
+}

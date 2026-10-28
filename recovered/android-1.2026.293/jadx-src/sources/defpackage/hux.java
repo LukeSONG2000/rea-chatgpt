@@ -1,0 +1,19 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes4.dex */
+public final class hux implements nux {
+    public static final hux a = new hux();
+
+    public final boolean equals(Object obj) {
+        return this == obj || (obj instanceof hux);
+    }
+
+    public final int hashCode() {
+        return -874795999;
+    }
+
+    public final String toString() {
+        return hux.class.getName();
+    }
+}

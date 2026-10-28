@@ -1,0 +1,18 @@
+package androidx.credentials.exceptions;
+
+import defpackage.ll;
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes2.dex */
+@Metadata(d1 = {"\u0000\n\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\u0018\u00002\u00020\u0001¨\u0006\u0002"}, d2 = {"Landroidx/credentials/exceptions/CreateCredentialCustomException;", "Landroidx/credentials/exceptions/CreateCredentialException;", "credentials"}, k = 1, mv = {2, 1, 0}, xi = 48)
+public final class CreateCredentialCustomException extends CreateCredentialException {
+    public CreateCredentialCustomException(CharSequence charSequence, String str) {
+        super(charSequence);
+        if (str.length() > 0) {
+            return;
+        }
+        ll.f("type must not be empty");
+        throw null;
+    }
+}

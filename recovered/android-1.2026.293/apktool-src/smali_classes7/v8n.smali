@@ -1,0 +1,437 @@
+.class public final Lv8n;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field public final synthetic a:B
+
+.field public final synthetic b:J
+
+.field public final synthetic c:J
+
+.field public final synthetic d:J
+
+.field public final synthetic e:J
+
+.field public final synthetic f:Lvd70;
+
+.field public final synthetic g:Lvd70;
+
+
+# direct methods
+.method public constructor <init>(JJJJLu310;Lu310;)V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    iput-byte v0, p0, Lv8n;->a:B
+
+    .line 20
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-wide p1, p0, Lv8n;->b:J
+
+    iput-wide p3, p0, Lv8n;->c:J
+
+    iput-wide p5, p0, Lv8n;->d:J
+
+    iput-object p9, p0, Lv8n;->f:Lvd70;
+
+    iput-object p10, p0, Lv8n;->g:Lvd70;
+
+    iput-wide p7, p0, Lv8n;->e:J
+
+    return-void
+.end method
+
+.method public constructor <init>(JJLyb60;JLyb60;J)V
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    iput-byte v0, p0, Lv8n;->a:B
+
+    .line 3
+    .line 4
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 5
+    .line 6
+    .line 7
+    iput-wide p1, p0, Lv8n;->b:J
+
+    .line 8
+    .line 9
+    iput-wide p3, p0, Lv8n;->c:J
+
+    .line 10
+    .line 11
+    iput-object p5, p0, Lv8n;->f:Lvd70;
+
+    .line 12
+    .line 13
+    iput-wide p6, p0, Lv8n;->d:J
+
+    .line 14
+    .line 15
+    iput-object p8, p0, Lv8n;->g:Lvd70;
+
+    .line 16
+    .line 17
+    iput-wide p9, p0, Lv8n;->e:J
+
+    .line 18
+    .line 19
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .locals 30
+
+    .line 1
+    move-object/from16 v0, p0
+
+    .line 2
+    .line 3
+    iget-byte v1, v0, Lv8n;->a:B
+
+    .line 4
+    .line 5
+    iget-wide v4, v0, Lv8n;->e:J
+
+    .line 6
+    .line 7
+    iget-wide v6, v0, Lv8n;->d:J
+
+    .line 8
+    .line 9
+    iget-wide v8, v0, Lv8n;->c:J
+
+    .line 10
+    .line 11
+    iget-wide v10, v0, Lv8n;->b:J
+
+    .line 12
+    .line 13
+    iget-object v12, v0, Lv8n;->f:Lvd70;
+
+    .line 14
+    .line 15
+    iget-object v13, v0, Lv8n;->g:Lvd70;
+
+    .line 16
+    .line 17
+    packed-switch v1, :pswitch_data_0
+
+    .line 18
+    .line 19
+    .line 20
+    :goto_0
+    cmp-long v0, v10, v8
+
+    .line 21
+    .line 22
+    if-gez v0, :cond_0
+
+    .line 23
+    .line 24
+    move-object v0, v12
+
+    .line 25
+    check-cast v0, Lyb60;
+
+    .line 26
+    .line 27
+    add-long v14, v6, v10
+
+    .line 28
+    .line 29
+    move-object v1, v13
+
+    .line 30
+    check-cast v1, Lyb60;
+
+    .line 31
+    .line 32
+    const-wide/16 v16, 0x1
+
+    .line 33
+    .line 34
+    add-long v2, v4, v10
+
+    .line 35
+    .line 36
+    invoke-virtual {v1, v2, v3}, Lyb60;->d(J)I
+
+    .line 37
+    .line 38
+    .line 39
+    move-result v1
+
+    .line 40
+    invoke-virtual {v0, v1, v14, v15}, Lyb60;->j(IJ)V
+
+    .line 41
+    .line 42
+    .line 43
+    add-long v10, v10, v16
+
+    .line 44
+    .line 45
+    goto :goto_0
+
+    .line 46
+    :cond_0
+    return-void
+
+    .line 47
+    :pswitch_0
+    const-wide/16 v16, 0x1
+
+    .line 48
+    .line 49
+    add-long v1, v10, v8
+
+    .line 50
+    .line 51
+    move-wide/from16 v18, v6
+
+    .line 52
+    .line 53
+    :goto_1
+    const-wide/16 v6, 0x200
+
+    .line 54
+    .line 55
+    cmp-long v3, v18, v6
+
+    .line 56
+    .line 57
+    move-object/from16 v26, v12
+
+    .line 58
+    .line 59
+    check-cast v26, Lu310;
+
+    .line 60
+    .line 61
+    if-lez v3, :cond_1
+
+    .line 62
+    .line 63
+    const/4 v3, 0x2
+
+    .line 64
+    shr-long v20, v18, v3
+
+    .line 65
+    .line 66
+    sub-long v22, v1, v20
+
+    .line 67
+    .line 68
+    move-object/from16 v27, v13
+
+    .line 69
+    .line 70
+    check-cast v27, Lu310;
+
+    .line 71
+    .line 72
+    const/4 v3, 0x3
+
+    .line 73
+    shr-long v6, v18, v3
+
+    .line 74
+    .line 75
+    sub-long v24, v4, v6
+
+    .line 76
+    .line 77
+    invoke-static/range {v20 .. v27}, Lx8n;->A(JJJLu310;Lu310;)V
+
+    .line 78
+    .line 79
+    .line 80
+    move-wide/from16 v18, v20
+
+    .line 81
+    .line 82
+    goto :goto_1
+
+    .line 83
+    :cond_1
+    sub-long v22, v1, v18
+
+    .line 84
+    .line 85
+    iget-wide v1, v0, Lv8n;->e:J
+
+    .line 86
+    .line 87
+    move-object/from16 v27, v13
+
+    .line 88
+    .line 89
+    check-cast v27, Lu310;
+
+    .line 90
+    .line 91
+    const-wide/16 v20, 0x1
+
+    .line 92
+    .line 93
+    move-wide/from16 v24, v1
+
+    .line 94
+    .line 95
+    invoke-static/range {v18 .. v27}, Lx8n;->z(JJJJLu310;Lu310;)V
+
+    .line 96
+    .line 97
+    .line 98
+    sub-long v10, v10, v18
+
+    .line 99
+    .line 100
+    sub-long v8, v8, v18
+
+    .line 101
+    .line 102
+    const-wide/16 v1, 0x0
+
+    .line 103
+    .line 104
+    move-wide v3, v1
+
+    .line 105
+    move-wide/from16 v20, v8
+
+    .line 106
+    .line 107
+    :goto_2
+    cmp-long v5, v20, v1
+
+    .line 108
+    .line 109
+    if-lez v5, :cond_2
+
+    .line 110
+    .line 111
+    add-long v22, v3, v16
+
+    .line 112
+    .line 113
+    move-object/from16 v28, v12
+
+    .line 114
+    .line 115
+    check-cast v28, Lu310;
+
+    .line 116
+    .line 117
+    iget-wide v3, v0, Lv8n;->e:J
+
+    .line 118
+    .line 119
+    move-object/from16 v29, v13
+
+    .line 120
+    .line 121
+    check-cast v29, Lu310;
+
+    .line 122
+    .line 123
+    iget-wide v5, v0, Lv8n;->b:J
+
+    .line 124
+    .line 125
+    move-wide/from16 v26, v3
+
+    .line 126
+    .line 127
+    move-wide/from16 v24, v5
+
+    .line 128
+    .line 129
+    invoke-static/range {v18 .. v29}, Lx8n;->J(JJJJJLu310;Lu310;)J
+
+    .line 130
+    .line 131
+    .line 132
+    move-result-wide v3
+
+    .line 133
+    move-wide/from16 v8, v20
+
+    .line 134
+    .line 135
+    move-wide/from16 v5, v22
+
+    .line 136
+    .line 137
+    move-object/from16 v26, v12
+
+    .line 138
+    .line 139
+    check-cast v26, Lu310;
+
+    .line 140
+    .line 141
+    add-long v22, v10, v8
+
+    .line 142
+    .line 143
+    iget-wide v14, v0, Lv8n;->e:J
+
+    .line 144
+    .line 145
+    move-object/from16 v27, v13
+
+    .line 146
+    .line 147
+    check-cast v27, Lu310;
+
+    .line 148
+    .line 149
+    move-wide/from16 v20, v3
+
+    .line 150
+    .line 151
+    move-wide/from16 v24, v14
+
+    .line 152
+    .line 153
+    invoke-static/range {v18 .. v27}, Lx8n;->z(JJJJLu310;Lu310;)V
+
+    .line 154
+    .line 155
+    .line 156
+    sub-long v20, v8, v18
+
+    .line 157
+    .line 158
+    move-wide v3, v5
+
+    .line 159
+    goto :goto_2
+
+    .line 160
+    :cond_2
+    return-void
+
+    .line 161
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method

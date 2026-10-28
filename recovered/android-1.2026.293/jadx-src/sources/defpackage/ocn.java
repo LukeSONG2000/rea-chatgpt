@@ -1,0 +1,18 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes2.dex */
+public class ocn {
+    public static final /* synthetic */ long b = sc6.a.objectFieldOffset(ocn.class.getDeclaredField("_handled$volatile"));
+    private volatile /* synthetic */ int _handled$volatile;
+    public final Throwable a;
+
+    public ocn(Throwable th, boolean z) {
+        this.a = th;
+        this._handled$volatile = z ? 1 : 0;
+    }
+
+    public final String toString() {
+        return getClass().getSimpleName() + '[' + this.a + ']';
+    }
+}

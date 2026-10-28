@@ -1,0 +1,87 @@
+.class public final Lsjt0;
+.super Lpy60;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# static fields
+.field public static final g:Lsjt0;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 5
+
+    .line 1
+    new-instance v0, Lsjt0;
+
+    .line 2
+    .line 3
+    sget-object v1, Lhua;->h:Lhua;
+
+    .line 4
+    .line 5
+    new-instance v2, Li6j0;
+
+    .line 6
+    .line 7
+    const-string v3, "rectangle"
+
+    .line 8
+    .line 9
+    invoke-direct {v2, v3, v1}, Li6j0;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 10
+    .line 11
+    .line 12
+    sget-object v1, Lkq8;->f:Lkq8;
+
+    .line 13
+    .line 14
+    new-instance v3, Li6j0;
+
+    .line 15
+    .line 16
+    const-string v4, "pill"
+
+    .line 17
+    .line 18
+    invoke-direct {v3, v4, v1}, Li6j0;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 19
+    .line 20
+    .line 21
+    filled-new-array {v2, v3}, [Li6j0;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object v1
+
+    .line 25
+    invoke-static {v1}, Lwbb0;->d0([Li6j0;)Ljava/util/Map;
+
+    .line 26
+    .line 27
+    .line 28
+    move-result-object v1
+
+    .line 29
+    sget-object v2, Lzao0;->c:Lzao0;
+
+    .line 30
+    .line 31
+    const-string v3, "Shape"
+
+    .line 32
+    .line 33
+    invoke-direct {v0, v3, v1, v2}, Lpy60;-><init>(Ljava/lang/String;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)V
+
+    .line 34
+    .line 35
+    .line 36
+    sput-object v0, Lsjt0;->g:Lsjt0;
+
+    .line 37
+    .line 38
+    return-void
+.end method

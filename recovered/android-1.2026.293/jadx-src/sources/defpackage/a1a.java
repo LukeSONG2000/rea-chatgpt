@@ -1,0 +1,33 @@
+package defpackage;
+
+import android.view.View;
+import kotlin.jvm.functions.Function0;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes7.dex */
+public final /* synthetic */ class a1a implements View.OnClickListener {
+    public final /* synthetic */ byte a;
+    public final /* synthetic */ Object b;
+
+    public /* synthetic */ a1a(Object obj, byte b) {
+        this.a = b;
+        this.b = obj;
+    }
+
+    @Override // android.view.View.OnClickListener
+    public final void onClick(View view) {
+        byte b = this.a;
+        Object obj = this.b;
+        switch (b) {
+            case 0:
+                ((Function0) ((pu7) obj).e).invoke();
+                break;
+            case 1:
+                ((kzr0) obj).h.invoke();
+                break;
+            default:
+                ((Function0) obj).invoke();
+                break;
+        }
+    }
+}

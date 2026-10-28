@@ -1,0 +1,79 @@
+package defpackage;
+
+import kotlinx.serialization.descriptors.SerialDescriptor;
+import kotlinx.serialization.encoding.Encoder;
+import protobuf_analytics_events.v1.CodexRealtimeVoicePreparationUnavailableReason;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes2.dex */
+public final class q8j implements o0t0 {
+    public static final q8j a = new q8j();
+    public static final bzm0 b = c4x0.b;
+
+    @Override // defpackage.o0t0, defpackage.zwu
+    public final SerialDescriptor getDescriptor() {
+        return b;
+    }
+
+    @Override // defpackage.o0t0
+    public final void serialize(Encoder encoder, Object obj) {
+        String str;
+        switch ((CodexRealtimeVoicePreparationUnavailableReason) obj) {
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_UNSPECIFIED:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_UNSPECIFIED";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_INTERACTION_BLOCKED:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_INTERACTION_BLOCKED";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_CAPABILITY_NOT_READY:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_CAPABILITY_NOT_READY";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_CALL_PRESENT:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_CALL_PRESENT";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_FEEDBACK_PRESENT:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_FEEDBACK_PRESENT";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_VOICE_DISABLED:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_VOICE_DISABLED";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_INSTANT_CONNECT_DISABLED:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_INSTANT_CONNECT_DISABLED";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_WAITING_FOR_PREVIOUS_CALL:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_WAITING_FOR_PREVIOUS_CALL";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_PREPARATION_IN_PROGRESS:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_PREPARATION_IN_PROGRESS";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_PREPARATION_FAILED:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_PREPARATION_FAILED";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_PREPARATION_CANCELLED:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_PREPARATION_CANCELLED";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_DESTINATION_MISMATCH:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_DESTINATION_MISMATCH";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_PREPARATION_CLOSED:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_PREPARATION_CLOSED";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_RUNTIME_ACTIVE:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_RUNTIME_ACTIVE";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_RUNTIME_RESERVED:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_RUNTIME_RESERVED";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_PREPARATION_NOT_STARTED:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_PREPARATION_NOT_STARTED";
+                break;
+            case CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_NO_CANDIDATE_REASON_UNKNOWN:
+                str = "CODEX_REALTIME_VOICE_PREPARATION_UNAVAILABLE_REASON_NO_CANDIDATE_REASON_UNKNOWN";
+                break;
+            default:
+                il.f();
+                return;
+        }
+        encoder.G(str);
+    }
+}

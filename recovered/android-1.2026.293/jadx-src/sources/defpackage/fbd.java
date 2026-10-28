@@ -1,0 +1,7 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes.dex */
+public abstract class fbd {
+    public static final sao0 a = new sao0("CalpicoRoomsCache", wbb0.d0(new i6j0(-1868243687, "CalpicoMessageChunks.sq:deleteAllMessageRecords"), new i6j0(-1758468491, "CalpicoMessageChunks.sq:deleteMessagesForRoom"), new i6j0(-1320739171, "CalpicoUsersCache.sq:deleteAllUsers"), new i6j0(-1247835091, "CalpicoRoomPreviewsCache.sq:insertRoomPreview"), new i6j0(-1178635774, "CalpicoMessageChunks.sq:getMessageMetadataForRoom"), new i6j0(-917581113, "CalpicoMessageChunks.sq:deleteChunksForMessage"), new i6j0(-915641273, "CalpicoMessageChunks.sq:insertMessageRecord"), new i6j0(-597472329, "CalpicoMessageChunks.sq:insertMessageChunk"), new i6j0(-515860950, "CalpicoRoomsCache.sq:selectAll"), new i6j0(-484156241, "CalpicoRoomsCache.sq:insertRoom"), new i6j0(-38511985, "CalpicoUsersCache.sq:insertUser"), new i6j0(78654014, "CalpicoRoomPreviewsCache.sq:selectAll"), new i6j0(520782485, "CalpicoMessageChunks.sq:deleteMessageRecord"), new i6j0(556313676, "CalpicoMessageChunks.sq:getMessageMetadataForRoom"), new i6j0(797791155, "CalpicoMessageChunks.sq:getAllMessageMetadata"), new i6j0(841405211, "CalpicoRoomsCache.sq:deleteAll"), new i6j0(1435920175, "CalpicoRoomPreviewsCache.sq:deleteAll"), new i6j0(1684532462, "CalpicoUsersCache.sq:selectAllUsers")));
+}

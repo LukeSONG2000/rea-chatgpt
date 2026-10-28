@@ -1,0 +1,92 @@
+.class public final Lebh;
+.super Lety;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# virtual methods
+.method public final l(I)Lwi51;
+    .locals 0
+
+    .line 1
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;->b:Lebh;
+
+    .line 2
+    .line 3
+    if-eqz p1, :cond_4
+
+    .line 4
+    .line 5
+    const/4 p0, 0x1
+
+    .line 6
+    if-eq p1, p0, :cond_3
+
+    .line 7
+    .line 8
+    const/4 p0, 0x2
+
+    .line 9
+    if-eq p1, p0, :cond_2
+
+    .line 10
+    .line 11
+    const/4 p0, 0x3
+
+    .line 12
+    if-eq p1, p0, :cond_1
+
+    .line 13
+    .line 14
+    const/4 p0, 0x4
+
+    .line 15
+    if-eq p1, p0, :cond_0
+
+    .line 16
+    .line 17
+    const/4 p0, 0x0
+
+    .line 18
+    goto :goto_0
+
+    .line 19
+    :cond_0
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;->g:Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;
+
+    .line 20
+    .line 21
+    goto :goto_0
+
+    .line 22
+    :cond_1
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;->f:Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;
+
+    .line 23
+    .line 24
+    goto :goto_0
+
+    .line 25
+    :cond_2
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;->e:Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;
+
+    .line 26
+    .line 27
+    goto :goto_0
+
+    .line 28
+    :cond_3
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;->d:Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;
+
+    .line 29
+    .line 30
+    goto :goto_0
+
+    .line 31
+    :cond_4
+    sget-object p0, Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;->c:Lprotobuf_analytics_events/v1/ChatgptTasksTaskStatus;
+
+    .line 32
+    .line 33
+    :goto_0
+    return-object p0
+.end method

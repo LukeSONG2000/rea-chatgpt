@@ -1,0 +1,100 @@
+package defpackage;
+
+import com.withpersona.sdk2.inquiry.network.dto.NextStep$GovernmentId;
+import com.withpersona.sdk2.inquiry.network.dto.ui.styling.StepStyles$GovernmentIdStepStyle;
+import java.util.List;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes7.dex */
+public final class jzr0 implements a0s0 {
+    public final long A;
+    public final boolean B;
+    public final String C;
+    public final String D;
+    public final hhe E;
+    public final NextStep$GovernmentId.AssetConfig.CapturePage F;
+    public final boolean G;
+    public final boolean H;
+    public final xae I;
+    public final kxd J;
+    public final boolean K;
+    public final boolean L;
+    public final String M;
+    public final int N;
+    public final int O;
+    public final int P;
+    public final String a;
+    public final String b;
+    public final String c;
+    public final String d;
+    public final uzr0 e;
+    public final yi40 f;
+    public final cj40 g;
+    public final lie0 h;
+    public final Function2 i;
+    public final Function0 j;
+    public final Function0 k;
+    public final boolean l;
+    public final List m;
+    public final ou20 n;
+    public final int o;
+    public final StepStyles$GovernmentIdStepStyle p;
+    public final Function2 q;
+    public final Function1 r;
+    public final Function1 s;
+    public final int t;
+    public final Function0 u;
+    public final Function0 v;
+    public final sf21 w;
+    public final boolean x;
+    public final Function2 y;
+    public final boolean z;
+
+    public jzr0(String str, String str2, String str3, String str4, String str5, int i, uzr0 uzr0Var, yi40 yi40Var, cj40 cj40Var, lie0 lie0Var, Function2 function2, Function0 function0, Function0 function02, boolean z, List list, ou20 ou20Var, int i2, StepStyles$GovernmentIdStepStyle stepStyles$GovernmentIdStepStyle, Function2 function22, Function1 function1, Function1 function12, int i3, Function0 function03, Function0 function04, sf21 sf21Var, boolean z2, Function2 function23, boolean z3, long j, boolean z4, String str6, String str7, hhe hheVar, NextStep$GovernmentId.AssetConfig.CapturePage capturePage, boolean z5, boolean z6, xae xaeVar, kxd kxdVar, int i4, boolean z7, boolean z8, String str8, int i5) {
+        this.a = str;
+        this.b = str2;
+        this.c = str3;
+        this.d = str5;
+        this.N = i;
+        this.e = uzr0Var;
+        this.f = yi40Var;
+        this.g = cj40Var;
+        this.h = lie0Var;
+        this.i = function2;
+        this.j = function0;
+        this.k = function02;
+        this.l = z;
+        this.m = list;
+        this.n = ou20Var;
+        this.o = i2;
+        this.p = stepStyles$GovernmentIdStepStyle;
+        this.q = function22;
+        this.r = function1;
+        this.s = function12;
+        this.t = i3;
+        this.u = function03;
+        this.v = function04;
+        this.w = sf21Var;
+        this.x = z2;
+        this.y = function23;
+        this.z = z3;
+        this.A = j;
+        this.B = z4;
+        this.C = str6;
+        this.D = str7;
+        this.E = hheVar;
+        this.F = capturePage;
+        this.G = z5;
+        this.H = z6;
+        this.I = xaeVar;
+        this.J = kxdVar;
+        this.O = i4;
+        this.K = z7;
+        this.L = z8;
+        this.M = str8;
+        this.P = i5;
+    }
+}

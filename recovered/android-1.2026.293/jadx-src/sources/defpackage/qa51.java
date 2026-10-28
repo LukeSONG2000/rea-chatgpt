@@ -1,0 +1,148 @@
+package defpackage;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes.dex */
+public abstract class qa51 {
+    public static final t64 a;
+    public static final t64 b;
+    public static final t64 c;
+    public static final t64 d;
+    public static final oa51 e;
+    public static final t64 f;
+    public static final t64 g;
+    public static final u64 h;
+    public static final u64 i;
+    public static final u64 j;
+    public static final t64 k;
+    public static final t64 l;
+    public static final t64 m;
+
+    static {
+        new r64("VISUAL_STATE_CALLBACK", "VISUAL_STATE_CALLBACK");
+        new r64("OFF_SCREEN_PRERASTER", "OFF_SCREEN_PRERASTER");
+        new v64("SAFE_BROWSING_ENABLE", "SAFE_BROWSING_ENABLE");
+        new s64("DISABLED_ACTION_MODE_MENU_ITEMS", "DISABLED_ACTION_MODE_MENU_ITEMS");
+        new w64("START_SAFE_BROWSING", "START_SAFE_BROWSING");
+        new w64("SAFE_BROWSING_WHITELIST", "SAFE_BROWSING_WHITELIST");
+        new w64("SAFE_BROWSING_WHITELIST", "SAFE_BROWSING_ALLOWLIST");
+        new w64("SAFE_BROWSING_ALLOWLIST", "SAFE_BROWSING_WHITELIST");
+        new w64("SAFE_BROWSING_ALLOWLIST", "SAFE_BROWSING_ALLOWLIST");
+        new w64("SAFE_BROWSING_PRIVACY_POLICY_URL", "SAFE_BROWSING_PRIVACY_POLICY_URL");
+        new s64("SERVICE_WORKER_BASIC_USAGE", "SERVICE_WORKER_BASIC_USAGE");
+        new s64("SERVICE_WORKER_CACHE_MODE", "SERVICE_WORKER_CACHE_MODE");
+        new s64("SERVICE_WORKER_CONTENT_ACCESS", "SERVICE_WORKER_CONTENT_ACCESS");
+        new s64("SERVICE_WORKER_FILE_ACCESS", "SERVICE_WORKER_FILE_ACCESS");
+        new s64("SERVICE_WORKER_BLOCK_NETWORK_LOADS", "SERVICE_WORKER_BLOCK_NETWORK_LOADS");
+        new s64("SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST", "SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST");
+        new r64("RECEIVE_WEB_RESOURCE_ERROR", "RECEIVE_WEB_RESOURCE_ERROR");
+        new r64("RECEIVE_HTTP_ERROR", "RECEIVE_HTTP_ERROR");
+        new s64("SHOULD_OVERRIDE_WITH_REDIRECTS", "SHOULD_OVERRIDE_WITH_REDIRECTS");
+        new w64("SAFE_BROWSING_HIT", "SAFE_BROWSING_HIT");
+        new s64("WEB_RESOURCE_REQUEST_IS_REDIRECT", "WEB_RESOURCE_REQUEST_IS_REDIRECT");
+        new r64("WEB_RESOURCE_ERROR_GET_DESCRIPTION", "WEB_RESOURCE_ERROR_GET_DESCRIPTION");
+        new r64("WEB_RESOURCE_ERROR_GET_CODE", "WEB_RESOURCE_ERROR_GET_CODE");
+        new w64("SAFE_BROWSING_RESPONSE_BACK_TO_SAFETY", "SAFE_BROWSING_RESPONSE_BACK_TO_SAFETY");
+        new w64("SAFE_BROWSING_RESPONSE_PROCEED", "SAFE_BROWSING_RESPONSE_PROCEED");
+        new w64("SAFE_BROWSING_RESPONSE_SHOW_INTERSTITIAL", "SAFE_BROWSING_RESPONSE_SHOW_INTERSTITIAL");
+        new r64("WEB_MESSAGE_PORT_POST_MESSAGE", "WEB_MESSAGE_PORT_POST_MESSAGE");
+        new r64("WEB_MESSAGE_PORT_CLOSE", "WEB_MESSAGE_PORT_CLOSE");
+        a = new t64("WEB_MESSAGE_ARRAY_BUFFER", "WEB_MESSAGE_ARRAY_BUFFER");
+        new r64("WEB_MESSAGE_PORT_SET_MESSAGE_CALLBACK", "WEB_MESSAGE_PORT_SET_MESSAGE_CALLBACK");
+        new r64("CREATE_WEB_MESSAGE_CHANNEL", "CREATE_WEB_MESSAGE_CHANNEL");
+        new r64("POST_WEB_MESSAGE", "POST_WEB_MESSAGE");
+        new r64("WEB_MESSAGE_CALLBACK_ON_MESSAGE", "WEB_MESSAGE_CALLBACK_ON_MESSAGE");
+        new v64("GET_WEB_VIEW_CLIENT", "GET_WEB_VIEW_CLIENT");
+        new v64("GET_WEB_CHROME_CLIENT", "GET_WEB_CHROME_CLIENT");
+        new y64("GET_WEB_VIEW_RENDERER", "GET_WEB_VIEW_RENDERER");
+        new y64("WEB_VIEW_RENDERER_TERMINATE", "WEB_VIEW_RENDERER_TERMINATE");
+        new x64("TRACING_CONTROLLER_BASIC_USAGE", "TRACING_CONTROLLER_BASIC_USAGE");
+        new elw0();
+        new dlw0();
+        new dlw0();
+        new y64("WEB_VIEW_RENDERER_CLIENT_BASIC_USAGE", "WEB_VIEW_RENDERER_CLIENT_BASIC_USAGE");
+        new ma51();
+        new t64("PROXY_OVERRIDE", "PROXY_OVERRIDE:3");
+        b = new t64("MULTI_PROCESS", "MULTI_PROCESS_QUERY");
+        new y64("FORCE_DARK", "FORCE_DARK");
+        new t64("FORCE_DARK_STRATEGY", "FORCE_DARK_BEHAVIOR");
+        c = new t64("WEB_MESSAGE_LISTENER", "WEB_MESSAGE_LISTENER");
+        d = new t64("DOCUMENT_START_SCRIPT", "DOCUMENT_START_SCRIPT:1");
+        new t64("PROXY_OVERRIDE_REVERSE_BYPASS", "PROXY_OVERRIDE_REVERSE_BYPASS");
+        new t64("GET_VARIATIONS_HEADER", "GET_VARIATIONS_HEADER");
+        new t64("ENTERPRISE_AUTHENTICATION_APP_LINK_POLICY", "ENTERPRISE_AUTHENTICATION_APP_LINK_POLICY");
+        new t64("GET_COOKIE_INFO", "GET_COOKIE_INFO");
+        new t64("REQUESTED_WITH_HEADER_ALLOW_LIST", "REQUESTED_WITH_HEADER_ALLOW_LIST");
+        new t64("USER_AGENT_METADATA", "USER_AGENT_METADATA");
+        new na51("USER_AGENT_METADATA_FORM_FACTORS", "USER_AGENT_METADATA");
+        e = new oa51("MULTI_PROFILE", "MULTI_PROFILE");
+        new t64("ATTRIBUTION_REGISTRATION_BEHAVIOR", "ATTRIBUTION_BEHAVIOR");
+        new t64("WEBVIEW_MEDIA_INTEGRITY_API_STATUS", "WEBVIEW_INTEGRITY_API_STATUS");
+        f = new t64("MUTE_AUDIO", "MUTE_AUDIO");
+        new t64("WEB_AUTHENTICATION", "WEB_AUTHENTICATION");
+        new t64("SPECULATIVE_LOADING_STATUS", "SPECULATIVE_LOADING");
+        new t64("BACK_FORWARD_CACHE", "BACK_FORWARD_CACHE");
+        new t64("BACK_FORWARD_CACHE_SETTINGS", "BACK_FORWARD_CACHE_SETTINGS");
+        new t64("BACK_FORWARD_CACHE_SETTINGS_EXPERIMENTAL_V3", "BACK_FORWARD_CACHE_SETTINGS_V3");
+        new t64("BACK_FORWARD_CACHE_SETTINGS_EXPERIMENTAL_V4", "BACK_FORWARD_CACHE_SETTINGS_V4");
+        g = new t64("DELETE_BROWSING_DATA", "WEB_STORAGE_DELETE_BROWSING_DATA");
+        new pa51("PREFETCH_URL_V5", "PREFETCH_URL_V5");
+        h = new u64("ASYNC_WEBVIEW_STARTUP_V2");
+        i = new u64("ASYNC_WEBVIEW_STARTUP");
+        j = new u64("ASYNC_WEBVIEW_STARTUP_ASYNC_STARTUP_LOCATIONS");
+        new t64("DEFAULT_TRAFFICSTATS_TAGGING", "DEFAULT_TRAFFICSTATS_TAGGING");
+        new t64("PRERENDER_URL_V2", "PRERENDER_URL_V3");
+        new t64("SPECULATIVE_LOADING_CONFIG_V2", "SPECULATIVE_LOADING_CONFIG_V2");
+        new t64("PREFETCH_CACHE_V1", "PREFETCH_CACHE_V1");
+        new u64("PREFETCH_WITH_CALLBACK_RESULT_V1");
+        new t64("SET_MAX_PRERENDERS_V1", "SET_MAX_PRERENDERS_V1");
+        new t64("SAVE_STATE", "SAVE_STATE");
+        new t64("NAVIGATION_GET_WEB_RESOURCE_ERROR", "NAVIGATION_GET_WEB_RESOURCE_ERROR");
+        k = new t64("NAVIGATION_LISTENER", "PAGE_GET_URL");
+        l = new t64("PROVIDER_WEAKLY_REF_WEBVIEW", "PROVIDER_WEAKLY_REF_WEBVIEW");
+        new t64("PAYMENT_REQUEST", "PAYMENT_REQUEST");
+        new t64("WEBVIEW_BUILDER_EXPERIMENTAL_V1", "WEBVIEW_BUILDER_V1");
+        new t64("WEBVIEW_BUILDER_EXPERIMENTAL_V2", "WEBVIEW_BUILDER_V2");
+        new t64("COOKIE_INTERCEPT", "COOKIE_INTERCEPT");
+        new t64("WARM_UP_RENDERER_PROCESS", "WARM_UP_RENDERER_PROCESS");
+        new t64("CUSTOM_REQUEST_HEADERS", "CUSTOM_REQUEST_HEADERS");
+        new dlw0();
+        new dlw0();
+        new dlw0();
+        new t64("PRECONNECT", "PRECONNECT");
+        new t64("ENQUEUE_PRECONNECT", "ENQUEUE_PRECONNECT");
+        new t64("ADD_QUIC_HINTS", "ADD_QUIC_HINTS_V1");
+        new t64("HYPERLINK_CONTEXT_MENU_ITEMS", "HYPERLINK_CONTEXT_MENU_ITEMS");
+        m = new t64("JS_INJECTION_IN_FRAME_AND_WORLD", "JS_INJECTION_IN_FRAME_AND_WORLD");
+        new t64("WEBVIEW_NAVIGATE_EXPERIMENTAL_V1", "WEBVIEW_NAVIGATE_V1");
+        new t64("DOWNLOAD_FAVICONS_ENABLED", "DOWNLOAD_FAVICONS_ENABLED");
+        new t64("HTTP_CACHE_MANAGER", "HTTP_CACHE_MANAGER");
+    }
+
+    public static UnsupportedOperationException a() {
+        return new UnsupportedOperationException("This method is not supported by the current version of the framework and the current WebView APK");
+    }
+
+    public static boolean b(String str) {
+        Set<z64> setUnmodifiableSet = Collections.unmodifiableSet(z64.c);
+        HashSet<z64> hashSet = new HashSet();
+        for (z64 z64Var : setUnmodifiableSet) {
+            if (z64Var.a.equals(str)) {
+                hashSet.add(z64Var);
+            }
+        }
+        if (hashSet.isEmpty()) {
+            ml.f("Unknown feature ".concat(str));
+            return false;
+        }
+        for (z64 z64Var2 : hashSet) {
+            if (z64Var2.a() || z64Var2.b()) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

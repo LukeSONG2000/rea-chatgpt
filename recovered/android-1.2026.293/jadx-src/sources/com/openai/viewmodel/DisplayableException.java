@@ -1,0 +1,25 @@
+package com.openai.viewmodel;
+
+import defpackage.vzw;
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes5.dex */
+@Metadata(d1 = {"\u0000\u000e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\b\u0007\u0018\u00002\u00060\u0001j\u0002`\u0002¨\u0006\u0003"}, d2 = {"Lcom/openai/viewmodel/DisplayableException;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "public"}, k = 1, mv = {2, 4, 0}, xi = 48)
+public final class DisplayableException extends Exception {
+    public final vzw a;
+
+    public DisplayableException(vzw vzwVar, Throwable th) {
+        super(th);
+        this.a = vzwVar;
+    }
+
+    /* JADX INFO: renamed from: a, reason: from getter */
+    public final vzw getA() {
+        return this.a;
+    }
+
+    public /* synthetic */ DisplayableException(vzw vzwVar) {
+        this(vzwVar, null);
+    }
+}

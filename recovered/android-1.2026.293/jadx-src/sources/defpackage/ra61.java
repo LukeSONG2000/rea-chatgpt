@@ -1,0 +1,22 @@
+package defpackage;
+
+import java.util.ArrayList;
+import kotlin.jvm.functions.Function1;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes5.dex */
+public final class ra61 {
+    public final ArrayList a;
+    public final ec61 b;
+    public final String c;
+    public final va61 d;
+    public final Function1 e;
+
+    public ra61(ArrayList arrayList, ec61 ec61Var, String str, va61 va61Var, Function1 function1) {
+        this.a = arrayList;
+        this.b = ec61Var;
+        this.c = str;
+        this.d = va61Var;
+        this.e = function1;
+    }
+}

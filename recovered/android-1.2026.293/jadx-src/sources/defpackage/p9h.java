@@ -1,0 +1,67 @@
+package defpackage;
+
+import kotlinx.serialization.descriptors.SerialDescriptor;
+import kotlinx.serialization.encoding.Encoder;
+import protobuf_analytics_events.v1.ChatgptSuggestionsFileUploadActionSuggestionLifecycleStage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes8.dex */
+public final class p9h implements o0t0 {
+    public static final p9h a = new p9h();
+    public static final bzm0 b = c4x0.b;
+
+    @Override // defpackage.o0t0, defpackage.zwu
+    public final SerialDescriptor getDescriptor() {
+        return b;
+    }
+
+    @Override // defpackage.o0t0
+    public final void serialize(Encoder encoder, Object obj) {
+        String str;
+        switch ((ChatgptSuggestionsFileUploadActionSuggestionLifecycleStage) obj) {
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_UNSPECIFIED:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_UNSPECIFIED";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_VISIBLE:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_VISIBLE";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_CLICKED:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_CLICKED";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_REQUEST_EMPTY:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_REQUEST_EMPTY";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_REQUEST_FAILED:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_REQUEST_FAILED";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_REQUEST_TIMED_OUT:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_REQUEST_TIMED_OUT";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_SUPPRESSED_USER_INPUT:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_SUPPRESSED_USER_INPUT";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_REQUEST_SUCCEEDED:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_REQUEST_SUCCEEDED";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_MINOR_EDITED:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_MINOR_EDITED";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_MAJOR_EDITED:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_MAJOR_EDITED";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_ABANDONED:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_ABANDONED";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_SUBMITTED:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_SUBMITTED";
+                break;
+            case CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_COMPLETED:
+                str = "CHATGPT_SUGGESTIONS_FILE_UPLOAD_ACTION_SUGGESTION_LIFECYCLE_STAGE_COMPLETED";
+                break;
+            default:
+                il.f();
+                return;
+        }
+        encoder.G(str);
+    }
+}

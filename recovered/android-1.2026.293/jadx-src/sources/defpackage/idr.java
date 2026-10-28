@@ -1,0 +1,30 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes5.dex */
+public final class idr implements odr {
+    public final jqq a;
+
+    public idr(jqq jqqVar) {
+        this.a = jqqVar;
+    }
+
+    public final jqq e() {
+        return this.a;
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof idr) && this.a.equals(((idr) obj).a);
+    }
+
+    public final int hashCode() {
+        return this.a.hashCode();
+    }
+
+    public final String toString() {
+        return idr.class.getName();
+    }
+}

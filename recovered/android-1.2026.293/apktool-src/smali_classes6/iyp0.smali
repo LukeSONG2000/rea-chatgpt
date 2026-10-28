@@ -1,0 +1,98 @@
+.class public final Liyp0;
+.super Lvwp;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# instance fields
+.field public synthetic A:Ljava/lang/Object;
+
+.field public final synthetic X:Lbll;
+
+.field public Y:I
+
+.field public n:Ljava/lang/String;
+
+.field public o:Lzn30;
+
+.field public p:Ljava/lang/Long;
+
+.field public q:Le6e0;
+
+.field public r:Lh0q0;
+
+.field public s:Ljava/lang/String;
+
+.field public t:Lzn30;
+
+.field public u:Lco30;
+
+.field public v:I
+
+.field public w:I
+
+.field public x:I
+
+.field public y:I
+
+.field public z:I
+
+
+# direct methods
+.method public constructor <init>(Lbll;Lvwp;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, Liyp0;->X:Lbll;
+
+    .line 2
+    .line 3
+    invoke-direct {p0, p2}, Lvwp;-><init>(Ltwp;)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    iput-object p1, p0, Liyp0;->A:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    iget p1, p0, Liyp0;->Y:I
+
+    .line 4
+    .line 5
+    const/high16 v0, -0x80000000
+
+    .line 6
+    .line 7
+    or-int/2addr p1, v0
+
+    .line 8
+    iput p1, p0, Liyp0;->Y:I
+
+    .line 9
+    .line 10
+    iget-object p1, p0, Liyp0;->X:Lbll;
+
+    .line 11
+    .line 12
+    const/4 v0, 0x0
+
+    .line 13
+    invoke-virtual {p1, v0, v0, v0, p0}, Lbll;->l(Ljava/lang/String;Lzn30;Ljava/lang/Long;Lvwp;)Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object p0
+
+    .line 17
+    return-object p0
+.end method

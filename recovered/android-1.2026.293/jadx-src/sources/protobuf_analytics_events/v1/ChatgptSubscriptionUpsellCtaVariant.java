@@ -1,0 +1,42 @@
+package protobuf_analytics_events.v1;
+
+import defpackage.o2p0;
+import defpackage.q8h;
+import defpackage.wi51;
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes8.dex */
+@Metadata(d1 = {"\u0000\u000e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\u0010\n\u0000\b\u0086\u0081\u0002\u0018\u00002\u00020\u00012\b\u0012\u0004\u0012\u00020\u00000\u0002¨\u0006\u0003"}, d2 = {"Lprotobuf_analytics_events/v1/ChatgptSubscriptionUpsellCtaVariant;", "Lwi51;", "", "OpenAI.kmp.platform.protobuf.generated:generated-public"}, k = 1, mv = {2, 4, 0}, xi = 48)
+public enum ChatgptSubscriptionUpsellCtaVariant implements wi51 {
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_UNSPECIFIED(0),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_CONTROL(1),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_GET_PLUS(2),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_TRY_BUSINESS(3),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_UPGRADE_TO_BUSINESS(4),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_GET_BUSINESS(5),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_UNLOCK_BUSINESS(6),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_UPGRADE(7),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_REJOIN_PLUS(8),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_REJOIN_PLUS_DIRECT_CHECKOUT(9),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_TURN_ON_PLUS(10),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_TURN_ON_PLUS_DIRECT_CHECKOUT(11),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_UPGRADE_PLAN(12),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_COMPARE_PLANS(13),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_VIEW_PLANS(14),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_REJOIN_PLUS_DIRECT_CHECKOUT_CANCEL_TO_PRICING(15),
+    CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_REJOIN_PLUS_DIRECT_CHECKOUT_ONCE(16);
+
+    public final byte a;
+    public static final q8h b = new q8h(o2p0.a(ChatgptSubscriptionUpsellCtaVariant.class), 2, CHATGPT_SUBSCRIPTION_UPSELL_CTA_VARIANT_UNSPECIFIED);
+
+    /* JADX WARN: Multi-variable type inference failed */
+    ChatgptSubscriptionUpsellCtaVariant(int i) {
+        this.a = i;
+    }
+
+    @Override // defpackage.wi51
+    public final int getValue() {
+        return this.a;
+    }
+}

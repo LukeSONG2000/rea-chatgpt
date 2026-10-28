@@ -1,0 +1,21 @@
+package defpackage;
+
+/* JADX INFO: loaded from: classes4.dex */
+public final class s4c extends vwp {
+    public /* synthetic */ Object n;
+    public int o;
+    public final /* synthetic */ t4c p;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public s4c(t4c t4cVar, twp twpVar) {
+        super(twpVar);
+        this.p = t4cVar;
+    }
+
+    @Override // defpackage.kw8
+    public final Object invokeSuspend(Object obj) {
+        this.n = obj;
+        this.o |= Integer.MIN_VALUE;
+        return this.p.emit(null, this);
+    }
+}

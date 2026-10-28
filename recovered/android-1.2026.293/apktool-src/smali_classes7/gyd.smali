@@ -1,0 +1,80 @@
+.class public final Lgyd;
+.super Lvwp;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# instance fields
+.field public n:Landroid/hardware/camera2/CameraManager;
+
+.field public o:Ljava/lang/String;
+
+.field public p:Landroid/os/Handler;
+
+.field public q:Loxo0;
+
+.field public synthetic r:Ljava/lang/Object;
+
+.field public final synthetic s:Lcom/withpersona/sdk2/camera/camera2/a;
+
+.field public t:I
+
+
+# direct methods
+.method public constructor <init>(Lcom/withpersona/sdk2/camera/camera2/a;Lvwp;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, Lgyd;->s:Lcom/withpersona/sdk2/camera/camera2/a;
+
+    .line 2
+    .line 3
+    invoke-direct {p0, p2}, Lvwp;-><init>(Ltwp;)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    iput-object p1, p0, Lgyd;->r:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    iget p1, p0, Lgyd;->t:I
+
+    .line 4
+    .line 5
+    const/high16 v0, -0x80000000
+
+    .line 6
+    .line 7
+    or-int/2addr p1, v0
+
+    .line 8
+    iput p1, p0, Lgyd;->t:I
+
+    .line 9
+    .line 10
+    iget-object p1, p0, Lgyd;->s:Lcom/withpersona/sdk2/camera/camera2/a;
+
+    .line 11
+    .line 12
+    const/4 v0, 0x0
+
+    .line 13
+    invoke-virtual {p1, v0, v0, v0, p0}, Lcom/withpersona/sdk2/camera/camera2/a;->b(Landroid/hardware/camera2/CameraManager;Ljava/lang/String;Landroid/os/Handler;Lvwp;)Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object p0
+
+    .line 17
+    return-object p0
+.end method

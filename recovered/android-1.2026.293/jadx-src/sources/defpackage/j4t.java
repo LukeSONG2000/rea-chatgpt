@@ -1,0 +1,27 @@
+package defpackage;
+
+import android.os.Parcelable;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes7.dex */
+public abstract class j4t implements Parcelable {
+    public boolean a() {
+        return true;
+    }
+
+    public boolean c() {
+        return false;
+    }
+
+    public boolean e() {
+        return true;
+    }
+
+    public abstract nyj0 f();
+
+    public abstract vyj0 h();
+
+    public boolean i() {
+        return false;
+    }
+}

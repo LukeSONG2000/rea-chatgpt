@@ -1,0 +1,55 @@
+.class public final Lpb6;
+.super Lvzm;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# instance fields
+.field public final b:Lnb6;
+
+
+# direct methods
+.method public constructor <init>(Lkotlinx/serialization/KSerializer;)V
+    .locals 1
+
+    .line 1
+    invoke-direct {p0, p1}, Ltzm;-><init>(Lkotlinx/serialization/KSerializer;)V
+
+    .line 2
+    .line 3
+    .line 4
+    new-instance v0, Lnb6;
+
+    .line 5
+    .line 6
+    invoke-interface {p1}, Lo0t0;->getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p1
+
+    .line 10
+    invoke-direct {v0, p1}, Lyv90;-><init>(Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 11
+    .line 12
+    .line 13
+    iput-object v0, p0, Lpb6;->b:Lnb6;
+
+    .line 14
+    .line 15
+    return-void
+.end method
+
+
+# virtual methods
+.method public final getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lpb6;->b:Lnb6;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method

@@ -1,0 +1,420 @@
+.class public final Lvau;
+.super Ljava/lang/Object;
+.source "r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95"
+
+
+# instance fields
+.field public final a:Lrxt;
+
+.field public final b:Lmrj0;
+
+.field public final c:Lqjo0;
+
+.field public final d:Ldfs;
+
+.field public final e:Lbga0;
+
+.field public final f:Linx;
+
+
+# direct methods
+.method public constructor <init>(Lrxt;Lmrj0;Lqjo0;Ldfs;Lbga0;Linx;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lvau;->a:Lrxt;
+
+    .line 5
+    .line 6
+    iput-object p2, p0, Lvau;->b:Lmrj0;
+
+    .line 7
+    .line 8
+    iput-object p3, p0, Lvau;->c:Lqjo0;
+
+    .line 9
+    .line 10
+    iput-object p4, p0, Lvau;->d:Ldfs;
+
+    .line 11
+    .line 12
+    iput-object p5, p0, Lvau;->e:Lbga0;
+
+    .line 13
+    .line 14
+    iput-object p6, p0, Lvau;->f:Linx;
+
+    .line 15
+    .line 16
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lsu0;Ljava/util/Map;)V
+    .locals 7
+
+    .line 1
+    invoke-interface {p1}, Lfs1;->c()Ljava/lang/String;
+
+    .line 2
+    .line 3
+    .line 4
+    invoke-static {p2}, Ljava/util/Objects;->toString(Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 5
+    .line 6
+    .line 7
+    iget-object v0, p0, Lvau;->e:Lbga0;
+
+    .line 8
+    .line 9
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 10
+    .line 11
+    .line 12
+    iget-object v0, p0, Lvau;->d:Ldfs;
+
+    .line 13
+    .line 14
+    invoke-static {v0}, Lyyx;->e(Ldfs;)Lhwp;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object v0
+
+    .line 18
+    new-instance v1, Lwj8;
+
+    .line 19
+    .line 20
+    const/4 v6, 0x5
+
+    .line 21
+    const/4 v5, 0x0
+
+    .line 22
+    move-object v2, p0
+
+    .line 23
+    move-object v3, p1
+
+    .line 24
+    move-object v4, p2
+
+    .line 25
+    invoke-direct/range {v1 .. v6}, Lwj8;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ltwp;B)V
+
+    .line 26
+    .line 27
+    .line 28
+    const/4 p0, 0x3
+
+    .line 29
+    const/4 p1, 0x0
+
+    .line 30
+    invoke-static {v0, v5, p1, v1, p0}, Ldve;->U(Lsfs;Ldfs;ILkotlin/jvm/functions/Function2;I)Luhw0;
+
+    .line 31
+    .line 32
+    .line 33
+    return-void
+.end method
+
+.method public final b(I)V
+    .locals 4
+
+    .line 1
+    invoke-static {p1}, Lgvx0;->G(I)I
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p1
+
+    .line 5
+    if-eqz p1, :cond_2
+
+    .line 6
+    .line 7
+    const/4 v0, 0x1
+
+    .line 8
+    if-eq p1, v0, :cond_1
+
+    .line 9
+    .line 10
+    const/4 v0, 0x2
+
+    .line 11
+    if-ne p1, v0, :cond_0
+
+    .line 12
+    .line 13
+    const-string p1, "verified"
+
+    .line 14
+    .line 15
+    goto :goto_0
+
+    .line 16
+    :cond_0
+    invoke-static {}, Lil;->f()V
+
+    .line 17
+    .line 18
+    .line 19
+    return-void
+
+    .line 20
+    :cond_1
+    const-string p1, "requiresVerification"
+
+    .line 21
+    .line 22
+    goto :goto_0
+
+    .line 23
+    :cond_2
+    const-string p1, "requiresSignUp"
+
+    .line 24
+    .line 25
+    :goto_0
+    const-string v0, "sessionState"
+
+    .line 26
+    .line 27
+    invoke-static {v0, p1}, Ljava/util/Collections;->singletonMap(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+
+    .line 28
+    .line 29
+    .line 30
+    move-result-object p1
+
+    .line 31
+    sget-object v0, Lxxy;->e:Lxxy;
+
+    .line 32
+    .line 33
+    const/4 v1, 0x6
+
+    .line 34
+    iget-object v2, p0, Lvau;->c:Lqjo0;
+
+    .line 35
+    .line 36
+    const/4 v3, 0x0
+
+    .line 37
+    invoke-static {v2, v0, v3, v3, v1}, Lqjo0;->b(Lqjo0;Luxy;Lcom/stripe/android/core/exception/StripeException;Ljava/util/Map;I)V
+
+    .line 38
+    .line 39
+    .line 40
+    sget-object v0, Lvm90;->a:Lvm90;
+
+    .line 41
+    .line 42
+    invoke-virtual {p0, v0, p1}, Lvau;->a(Lsu0;Ljava/util/Map;)V
+
+    .line 43
+    .line 44
+    .line 45
+    return-void
+.end method
+
+.method public final c()V
+    .locals 3
+
+    .line 1
+    sget-object v0, Lhnx;->m:Lhnx;
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Lvau;->f:Linx;
+
+    .line 4
+    .line 5
+    check-cast v1, Lq4u;
+
+    .line 6
+    .line 7
+    invoke-virtual {v1, v0}, Lq4u;->c(Lhnx;)Ldnx;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object v0
+
+    .line 11
+    if-eqz v0, :cond_0
+
+    .line 12
+    .line 13
+    iget-wide v0, v0, Ldnx;->a:J
+
+    .line 14
+    .line 15
+    sget-object v2, Llnx;->d:Llnx;
+
+    .line 16
+    .line 17
+    invoke-static {v0, v1, v2}, Ldnx;->A(JLlnx;)D
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-wide v0
+
+    .line 21
+    double-to-float v0, v0
+
+    .line 22
+    invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+
+    .line 23
+    .line 24
+    .line 25
+    move-result-object v0
+
+    .line 26
+    const-string v1, "duration"
+
+    .line 27
+    .line 28
+    invoke-static {v1, v0}, Ljava/util/Collections;->singletonMap(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+
+    .line 29
+    .line 30
+    .line 31
+    move-result-object v0
+
+    .line 32
+    goto :goto_0
+
+    .line 33
+    :cond_0
+    const/4 v0, 0x0
+
+    .line 34
+    :goto_0
+    sget-object v1, Ltm90;->a:Ltm90;
+
+    .line 35
+    .line 36
+    invoke-virtual {p0, v1, v0}, Lvau;->a(Lsu0;Ljava/util/Map;)V
+
+    .line 37
+    .line 38
+    .line 39
+    return-void
+.end method
+
+.method public final d(Ljava/lang/Throwable;)V
+    .locals 3
+
+    .line 1
+    instance-of v0, p1, Lcom/stripe/android/core/exception/APIException;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    const-string v2, "error_message"
+
+    .line 5
+    .line 6
+    if-eqz v0, :cond_0
+
+    .line 7
+    .line 8
+    move-object v0, p1
+
+    .line 9
+    check-cast v0, Lcom/stripe/android/core/exception/APIException;
+
+    .line 10
+    .line 11
+    iget-object v0, v0, Lcom/stripe/android/core/exception/StripeException;->a:Ls8x0;
+
+    .line 12
+    .line 13
+    if-eqz v0, :cond_0
+
+    .line 14
+    .line 15
+    iget-object v0, v0, Ls8x0;->b:Ljava/lang/String;
+
+    .line 16
+    .line 17
+    if-eqz v0, :cond_0
+
+    .line 18
+    .line 19
+    invoke-static {v2, v0}, Ljava/util/Collections;->singletonMap(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object v1
+
+    .line 23
+    :cond_0
+    if-nez v1, :cond_1
+
+    .line 24
+    .line 25
+    invoke-static {p1}, Lo291;->f(Ljava/lang/Throwable;)Ljava/lang/String;
+
+    .line 26
+    .line 27
+    .line 28
+    move-result-object v0
+
+    .line 29
+    invoke-static {v2, v0}, Ljava/util/Collections;->singletonMap(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v1
+
+    .line 33
+    :cond_1
+    invoke-static {p1}, Lt;->q(Ljava/lang/Throwable;)Ljava/util/Map;
+
+    .line 34
+    .line 35
+    .line 36
+    move-result-object p1
+
+    .line 37
+    invoke-static {v1, p1}, Lwbb0;->i0(Ljava/util/Map;Ljava/util/Map;)Ljava/util/LinkedHashMap;
+
+    .line 38
+    .line 39
+    .line 40
+    move-result-object p1
+
+    .line 41
+    sget-object v0, Lum90;->a:Lum90;
+
+    .line 42
+    .line 43
+    invoke-virtual {p0, v0, p1}, Lvau;->a(Lsu0;Ljava/util/Map;)V
+
+    .line 44
+    .line 45
+    .line 46
+    return-void
+.end method

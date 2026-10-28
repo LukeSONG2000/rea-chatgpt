@@ -1,0 +1,68 @@
+package defpackage;
+
+import java.util.List;
+import java.util.ListIterator;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes2.dex */
+public final class m5e0 implements ListIterator, a370 {
+    public final List a;
+    public int b;
+
+    public m5e0(int i, List list) {
+        this.a = list;
+        this.b = i;
+    }
+
+    @Override // java.util.ListIterator
+    public final void add(Object obj) {
+        this.a.add(this.b, obj);
+        this.b++;
+    }
+
+    @Override // java.util.ListIterator, java.util.Iterator
+    public final boolean hasNext() {
+        return this.b < this.a.size();
+    }
+
+    @Override // java.util.ListIterator
+    public final boolean hasPrevious() {
+        return this.b > 0;
+    }
+
+    @Override // java.util.ListIterator, java.util.Iterator
+    public final Object next() {
+        int i = this.b;
+        this.b = i + 1;
+        return this.a.get(i);
+    }
+
+    @Override // java.util.ListIterator
+    public final int nextIndex() {
+        return this.b;
+    }
+
+    @Override // java.util.ListIterator
+    public final Object previous() {
+        int i = this.b - 1;
+        this.b = i;
+        return this.a.get(i);
+    }
+
+    @Override // java.util.ListIterator
+    public final int previousIndex() {
+        return this.b - 1;
+    }
+
+    @Override // java.util.ListIterator, java.util.Iterator
+    public final void remove() {
+        int i = this.b - 1;
+        this.b = i;
+        this.a.remove(i);
+    }
+
+    @Override // java.util.ListIterator
+    public final void set(Object obj) {
+        this.a.set(this.b, obj);
+    }
+}
