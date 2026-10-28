@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+    ExperianIDVerifySDK privacy manifest (Apple "App Privacy Configuration").
+
+    Placement contract
+    ==================
+    Source (SPM):  Sources/ExperianIDVerifySDK/PrivacyInfo.xcprivacy, declared as a
+                   target resource in Package.swift. SwiftPM does NOT auto-detect
+                   privacy manifests — the explicit `resources:` entry is required.
+    XCFramework:   one copy at the root of every iOS `.framework` slice. Enforced by
+                   Scripts/validate-vendor-xcframework.sh and
+                   Scripts/validate-internal-xcframework.sh.
+
+    Editing rules
+    =============
+    * Only the enumerated NSPrivacyCollectedDataType / ...Purpose / ...APIType /
+      ...APITypeReasons constants Apple publishes are legal values. App Store Connect
+      rejects unknown keys or values (ITMS-91056) and undeclared required-reason API
+      use (ITMS-91053).
+    * `NSPrivacyTracking` is false and `NSPrivacyTrackingDomains` is empty. Those two
+      MUST stay consistent: `false` with a non-empty domain list is an invalid
+      manifest. Flipping tracking on is a product/legal decision, not a code change.
+    * Fraud and verification collection is scoped to `...PurposeAppFunctionality`,
+      whose Apple definition covers "prevent fraud" and "implement security measures".
+      Native SDK timing, lifecycle breadcrumbs, and their opaque tracking identifier
+      are additionally declared under `...PurposeAnalytics`: the flow works identically
+      whether or not those records are delivered. Nothing here is collected for
+      advertising or personalization.
+
+    !! Collection happens in the WebView, not in Swift — do not "clean up" !!
+    =======================================================================
+    Most of what this manifest declares is collected by the Embedded Experience
+    web component the SDK loads into its WKWebView, NOT by code under Sources/.
+    NeuroID (behavioral analytics) and FraudNet/Experian Device Intelligence
+    (device fingerprinting) run as JavaScript INSIDE that component. Grepping the
+    native sources for them finds nothing, and the `FraudSignals/` protocol seam
+    (`BehavioralAnalyticsManaging`, `DeviceFingerprintProviding`) is currently
+    unwired — none of that makes these declarations removable.
+
+    Section 6 is native: Swift measures bootstrap timing and records a bounded
+    lifecycle breadcrumb stream through the SDK's own analytics pipeline.
+
+    Apple holds an SDK responsible for data collected through it, including data
+    collected by web content it presents. The SDK owns the WKWebView, chooses the
+    document, and is the reason the collectors run at all, so their attributes
+    belong in THIS manifest. Deleting them because "the SDK doesn't do that"
+    would under-declare collection that ships today — the failure mode Apple
+    actually rejects, and the one that misrepresents every host app's privacy
+    nutrition label.
+
+    The corollary: this manifest must be re-reviewed whenever the embedded
+    component's data collection changes, even though no Swift file changed.
+    EmbeddedExperienceKind / EmbeddedComponentSpec selects that component.
+-->
+<plist version="1.0">
+<dict>
+    <!--
+        Tracking, as defined by App Tracking Transparency, means joining this data
+        with third-party data for advertising, ad measurement, or data-broker
+        sharing. This SDK does none of that: identity and fraud signals are used
+        solely for identity verification and fraud detection/prevention, which
+        Apple's User Privacy and Data Use FAQ exempts from the ATT permission
+        requirement. Consequently every collected type below also carries
+        NSPrivacyCollectedDataTypeTracking = false.
+    -->
+    <key>NSPrivacyTracking</key>
+    <false/>
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+
+    <!--
+        Required-reason APIs: none.
+
+        The SDK does not touch UserDefaults, file timestamps, disk space, active
+        keyboards, ProcessInfo.systemUptime, or mach_absolute_time(). Elapsed-time
+        measurement for the bootstrap telemetry in section 6 uses ContinuousClock,
+        which is not one of Apple's five required-reason categories (the covered
+        clock APIs are systemUptime and mach_absolute_time). WebKit
+        (WKWebView / WKWebsiteDataStore) is not a required-reason category either.
+
+        The in-WebView collectors do not change this. Required-reason API rules
+        cover calls into the listed Objective-C/Swift platform APIs; JavaScript
+        running in a WKWebView reaches none of them — it sees only what WebKit
+        exposes to web content. So the collection declared below is real, while
+        this array is legitimately empty.
+
+        If a future change introduces one of the five covered API categories, add
+        the entry here — a third-party SDK may not rely on the host app's manifest
+        to declare its own required-reason API use.
+    -->
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array/>
+
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array>
+        <!--
+            ============================================================
+            1. Identity verification flow (the SDK's primary function)
+            ============================================================
+            Collected from the applicant through the Embedded Experience
+            <identity-verification> component the SDK presents, and transmitted to
+            Experian to perform the verification decision. All of it is linked to
+            the identity being verified by definition.
+
+            Provenance: this section is justified by the SDK's product function,
+            NOT by the NeuroID/FraudNet data-attributes summary that sourced
+            sections 2-5. That document scopes itself to the two fraud-signal
+            vendors and never mentions applicant PII. An auditor diffing this
+            manifest against that document alone will find no backing for the five
+            types below — that is expected, and is not grounds for deleting them.
+        -->
+
+        <!-- Legal name supplied to the verification component. -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeName</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+            </array>
+        </dict>
+
+        <!-- Residential/mailing address used to corroborate the identity. -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypePhysicalAddress</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+            </array>
+        </dict>
+
+        <!-- Email address used as a verification and contact signal. -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeEmailAddress</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+            </array>
+        </dict>
+
+        <!-- Phone number used as a verification and contact signal. -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypePhoneNumber</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+            </array>
+        </dict>
+
+        <!--
+            Government-issued identifiers (for example SSN or national ID) and
+            date of birth collected by the identity-verification component.
+
+            Not Sensitive Info: Apple defines that bucket narrowly as racial or
+            ethnic data, sexual orientation, pregnancy or childbirth information,
+            disability, religious or philosophical beliefs, trade union
+            membership, political opinion, genetic information, or biometric
+            data. Government identifiers and date of birth are none of those, so
+            they are declared under Other Data Types instead.
+
+            Declared once, at the bottom of this array, together with the
+            device/environment fingerprinting attributes from section 5: both
+            provenances resolve to the same Apple data type with the same
+            linkage, tracking flag, and purpose, and Apple's schema admits one
+            entry per data type. Two identical dicts would be a redundant
+            declaration, not a more precise one.
+        -->
+
+        <!--
+            No Photos or Videos entry, deliberately. The MVP performs no document
+            media capture and handles no photos: there is no camera capture, no
+            document/selfie capture, and no image upload in scope. Nothing native
+            supports it either — the SDK sets webView.uiDelegate = nil, installs
+            no open-panel or media-capture handler, and never requests camera
+            access.
+
+            Do not add NSPrivacyCollectedDataTypePhotosorVideos speculatively.
+            Declaring collection that does not happen misstates the App Privacy
+            nutrition label of every host app. If document capture or upload
+            enters scope later, the embedded component gains it without any Swift
+            change here, so that scope decision must come with a manifest update.
+        -->
+
+        <!--
+            ============================================================
+            2. Fraud-signal identifiers (collected in-WebView)
+            ============================================================
+            Covers the NeuroID "session linkage" attribute (an anonymous session
+            identifier generated by NeuroID or supplied by client-side code) and
+            the FraudNet "account linkage supplied by the client" attribute, plus
+            the SDK's own correlation/tracking identifiers carried on bridge
+            events. Used to associate events belonging to one verification
+            session; never joined with third-party advertising data.
+        -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeUserID</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+            </array>
+        </dict>
+
+        <!--
+            FraudNet "device and profile identifiers": device print / device ID
+            and device profile ID. Used to recognise a returning device for
+            fraud scoring only — not for advertising, attribution, or measurement.
+
+            Deliberately no advertising-identifier (IDFA) claim here. The source
+            document hedges this attribute ("where available"; "availability
+            depends on platform and configuration"), and on iOS the IDFA is only
+            reachable via ATTrackingManager with explicit user permission —
+            JavaScript in a WKWebView cannot read it, and this SDK never requests
+            ATT authorization (NSPrivacyTracking is false, above). Asserting IDFA
+            collection while NSPrivacyTracking = false would be exactly the
+            contradiction App Review flags, so the claim is struck unless FraudNet
+            confirms it applies to this iOS WKWebView integration.
+        -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeDeviceID</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+            </array>
+        </dict>
+
+        <!--
+            ============================================================
+            3. Behavioural interaction signals (NeuroID, in-WebView)
+            ============================================================
+            Keystroke timing and rhythm, taps, swipes, scrolling, and other
+            navigation or interaction events, observed by NeuroID's JavaScript
+            within the embedded component. The native SDK also records a bounded
+            lifecycle vocabulary (launch, component lifecycle, completion, and
+            teardown) for SDK-health analytics. Neither path captures characters
+            typed, so no User Content type is declared for it.
+        -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeProductInteraction</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+            </array>
+        </dict>
+
+        <!--
+            ============================================================
+            4. Network-derived location (NeuroID + FraudNet, in-WebView)
+            ============================================================
+            NeuroID "network context": hashed or de-identified IP address,
+            IP-derived geolocation where available and permitted, VPN indicators.
+            FraudNet "network and location": IP address or network block, ISP name,
+            IP-derived country/city, proxy or VPN indicators, carrier and network
+            characteristics.
+
+            This is coarse, IP-derived location only. The SDK requests no
+            CoreLocation authorisation and collects no GPS fix, so
+            NSPrivacyCollectedDataTypePreciseLocation is deliberately absent.
+        -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeCoarseLocation</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+            </array>
+        </dict>
+
+        <!--
+            ============================================================
+            5. Device, environment, and integrity signals (in-WebView)
+            ============================================================
+            Apple publishes no dedicated data type for device-fingerprinting
+            attributes, so the remaining NeuroID and FraudNet categories are
+            declared under Other Data Types:
+
+              NeuroID  - browser context (user-agent, browser type/version,
+                         private-browsing status, plugin information) and device
+                         context (operating system, device/browser environment,
+                         automation-framework indicators).
+              FraudNet - browser and HTTP metadata (user-agent, accepted language,
+                         character set, content types and encoding, navigator
+                         platform and CPU class, referrer, payload status);
+                         screen and display (width, height, available dimensions,
+                         resolution); operating system and platform (name, version,
+                         platform and device type); mobile and native-app signals
+                         (device name and ID, carrier name and country code,
+                         Android ID, hashed SIM serial, native-app risk
+                         indicators); time and locale (device timestamp, time-zone
+                         offset, DST status, language settings); device integrity
+                         and environment (emulator, virtual machine, jailbreak or
+                         root, spoofing, bot or automation, malformed payload, and
+                         missing or inconsistent identifier indicators); and
+                         familiarity and activity history (whether a device print,
+                         IP, ISP, time zone, browser, OS, carrier, or SIM is
+                         familiar for an account, plus event counts and device
+                         reuse velocity over defined time windows).
+
+            Availability of individual attributes varies by platform, OS
+            permissions, client configuration, and applicable consent
+            requirements; this entry declares the superset. The source document
+            lists web- and Android-specific attributes (Android ID, SIM serial,
+            plugin lists) that an iOS WKWebView will not surface — they are
+            covered by the same superset rather than pruned, since the component
+            decides what it collects and can change without an SDK release.
+
+            This single entry also carries the government-identifier and
+            date-of-birth declaration from section 1 (see the note there).
+        -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypeOtherDataTypes</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+            </array>
+        </dict>
+
+        <!--
+            ============================================================
+            6. Native SDK analytics
+            ============================================================
+            Unlike everything above, this one IS collected by Swift code in this
+            package: WebViewLoadTimingLogger measures bootstrap durations, while
+            FlowAnalyticsSession records the presentation's lifecycle breadcrumbs.
+            Both post to Experian's Embedded Experiences analytics ingest on the
+            same MFE lane the component itself loads from.
+
+            Declared as Analytics rather than App Functionality, honestly: the
+            flow works exactly the same whether or not these events are
+            delivered. They measure SDK health, handoff, completion, and where the
+            bootstrap spends its time.
+
+            Linked, because records carry the component's opaque trackingId plus a
+            random per-presentation sdk_flow_id. No token, bridge detail string,
+            verification sessionId, URL, status, or other experienceDetails field
+            crosses into native analytics.
+
+            Tracking is false and stays false. These events are first-party
+            performance measurements sent to Experian; they are never joined with
+            third-party data, used for advertising or ad measurement, or shared
+            with data brokers, which is what App Tracking Transparency means by
+            tracking.
+        -->
+        <dict>
+            <key>NSPrivacyCollectedDataType</key>
+            <string>NSPrivacyCollectedDataTypePerformanceData</string>
+            <key>NSPrivacyCollectedDataTypeLinked</key>
+            <true/>
+            <key>NSPrivacyCollectedDataTypeTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypePurposes</key>
+            <array>
+                <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>

@@ -39,3 +39,14 @@
 2. **Android 2,456 缺 Java 类**：判定完成（第三方混淆内部类，smali 100% 兜底；4 个 com.openai 碎片为 R8 合成 lambda）
 3. **QuickJS/cel 区域区分**：执行器定点确认的前置任务（不影响对齐法主路径）
 4. **iOS FairPlay 原生层**：排除（用户确认）；窗口外字符串/导出符号已尽取
+
+## 更新（2026-10-28）：iOS FairPlay 盲区已打开 🎉
+
+用户提供砸壳版 IPA（`packages/com.openai.chat_1.2026.293_us_iphone_dumpipa.com.ipa`，157MB，SHA-256 `4042deb6…ed6b`，版本 1.2026.293 = 较 279 新一版）：
+
+- **全部 17 个 Mach-O cryptid=0**（对照 279 版全 16 个 cryptid=1）——FairPlay 解密确认
+- 解密质量验证：符号名可读（4,200 定义符号）、__swift5_types/proto/fieldmd 元数据段齐全
+- 解包位置：`recovered/ios-1.2026.293/`（2,263 文件，与 279 版结构一致 + 版本更新项）
+- nm 对砸壳 symtab 挂死（砸壳工具副作用），改用 python 直读 symtab（symoff=187397512, nsyms=6827）
+- 大小差解释：版本更新（+Notifications bundle/CollegePlan 移除/avatar jpg→png/+libswiftCompatibilitySpan）+ 砸壳重打包（App Store DRM 包压缩差 + SC_Info 保留）
+- **影响**：RECOVERY-FINAL 原排除项"iOS FairPlay 原生层"现可恢复——Swift/ObjC 代码、8 个扩展实现、CarPlay/Live Activity、Codex Remote 原生逻辑全部开放（待下一阶段：Swift dump + Ghidra 分析）

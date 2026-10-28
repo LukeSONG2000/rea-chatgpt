@@ -1,0 +1,51 @@
+{
+  "Version": 1.0,
+  "Metadata": {
+    "Project": "ChatGPT",
+    "Description": "Voice connection"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "Time": 0.01,
+        "EventType": "HapticContinuous",
+        "EventDuration": 0.135,
+        "EventParameters": [
+          { "ParameterID": "HapticIntensity", "ParameterValue": 0.32 },
+          { "ParameterID": "HapticSharpness", "ParameterValue": 0.08 }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "Time": 0.065,
+        "EventType": "HapticTransient",
+        "EventParameters": [
+          { "ParameterID": "HapticIntensity", "ParameterValue": 0.48 },
+          { "ParameterID": "HapticSharpness", "ParameterValue": 0.14 }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "Time": 0.16,
+        "EventType": "HapticTransient",
+        "EventParameters": [
+          { "ParameterID": "HapticIntensity", "ParameterValue": 0.82 },
+          { "ParameterID": "HapticSharpness", "ParameterValue": 0.3 }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "Time": 0.165,
+        "EventType": "HapticContinuous",
+        "EventDuration": 0.2,
+        "EventParameters": [
+          { "ParameterID": "HapticIntensity", "ParameterValue": 0.22 },
+          { "ParameterID": "HapticSharpness", "ParameterValue": 0.06 }
+        ]
+      }
+    }
+  ]
+}
