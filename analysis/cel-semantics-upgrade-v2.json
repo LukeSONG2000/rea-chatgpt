@@ -1,0 +1,266 @@
+{
+  "meta": {
+    "date": "2026-10-28",
+    "method": "平行语料对齐法 v2：1,273 对（Android 字节码 ↔ iOS 明文 JS）+ 全局锚点对齐（字节码 0x03 字符串/0x42/0x4f/0x41/0x45 key 名 ↔ JS 字面量/.prop/key: 序列 difflib 匹配）+ 语句区间提取",
+    "corpus": {
+      "android": "recovered/android-1.2026.293/base/assets/*.valdimodule",
+      "ios": "derived/valdimodules-293/ios/*/",
+      "paired_modules": 92
+    },
+    "calibration": "已知语义 op 命中率校准：0xa0(ADD)=100% 0x99(NOT)=100% 0x9a(typeof)=100% 0xa1(SUB)=66% 0xa6(LT)=60%；工具链 /tmp/celu/{lib,scan,extract}.py，证据包 /tmp/celu/bundles/",
+    "scope": "仅列出本次有升级/注记变更的条目；其余维持 cel_semantics.py 现状",
+    "summary": {"confirmed": 26, "induced": 52, "guess": 6, "delta": "guess 11→6（+4 induced、+1 confirmed）；induced→confirmed 3（0x05/0x42/0x26）"}
+  },
+  "entries": [
+    {
+      "op": "0x05",
+      "mnemonic": "PATCH_REF_LOAD",
+      "confidence": "confirmed",
+      "note": "推入可修补对象表引用 <u16@+1, 加载期重定位 b0=0x17, +2..3=aux>；体内主用法=类块 extends 基类引用（签名 01→05→e4 374 次/01→05→04→e4 106 次）；辅用法=全局对象/require 模块引用；数据区 05 串=引用清单行",
+      "prev_confidence": "induced",
+      "evidence": [
+        "native: 重定位器 FUN_0071b5d8 对 b0∈[0x17,0x1b] 的 op 改写 pc+1 处 u16（指向 *(ctx+0x18)+0x60 对象表）——引用语义 native 实证",
+        "chatgpt_finance_transactions/FinanceTransactionsComponent.js @19918: prev=[07,01<00000400>] next=[04,e4]，JS='class FinanceTransactionsComponent extends Oe ‹› .StatefulComponent'（基类引用）",
+        "oai_web_launcher/WebPage.js @2751: 同签名，JS='let T=class WebPage extends W ‹› .NavigationPageStatefulComponent'",
+        "valdi_http/StreamingHTTPClient.js @412: prev=[01,03'require']，JS='exports ‹› .StreamingHTTPClient=void 0;const t=require(\"./HTTPURL\")'（导出绑定对象/模块引用）",
+        "web_platform/FetchRequest.js @1672: ops=01b80301，JS='return AbortSignal ‹› .any([e])'（全局对象引用）",
+        "全语料签名统计: 4614 次出现；01→05→e4→01 = 374 次；05→05→05 连串 = 335 次（数据区引用清单）"
+      ]
+    },
+    {
+      "op": "0x0c",
+      "mnemonic": "LOAD_S",
+      "confidence": "induced",
+      "note": "体内用法 = 推入 u8 小整数（值 0x0-0xF 占 71%）；重大警示：84% 出现于 END 后 trailer/数据区（表字节被指令 walk 误读，next=00/03/0a/cc/cb 数据邻居），渲染器应将 trailer 区标注为非代码",
+      "prev_confidence": "induced",
+      "evidence": [
+        "全语料 6870 次：body=15% / trailer=84%；next=0x00(1023)/0x03(739)/0x0a(720)/0xcc(694)/0xcb(662)",
+        "dil_charts/ValdiChart.js @6425: 0c<40> 位于类描述表行 0c 06 0a d7 a3 70 内（数据区）",
+        "math_jax Styles.js: 0c<01> 0c<00> 成对出现于 ff 前缀数据块内"
+      ]
+    },
+    {
+      "op": "0x10",
+      "mnemonic": "OP10",
+      "confidence": "guess",
+      "note": "维持 guess（锐化）：结构/表区 op——86% 位于 END 后 trailer；next=0x00 占 63%；体内 13% 与成员调用/extends 位置重合但未建立可靠双向构造对应；p3u2",
+      "prev_confidence": "guess",
+      "evidence": [
+        "全语料 2897 次：body=403(13%) / trailer=2494(86%)；next=0x00(1833)/0x01(186)/0x0d(128)",
+        "dil_text/DILTextWidgetRenderer.js @1544/1595/1598: 连续 3 次 0x10 且 prev/next 均为 00/08（类描述表区）"
+      ]
+    },
+    {
+      "op": "0x26",
+      "mnemonic": "PUSH_F",
+      "confidence": "confirmed",
+      "note": "推入值池条目 <u16>（每文件值池：undefined=#2、属性名字串等；b0=0x0d 与 CALL 族同类）；值池 ≠ key 名字池（cel_keys 注记正确）",
+      "prev_confidence": "induced",
+      "evidence": [
+        "olympic_records/OlympicRecordsTimelineComponent.js @1769/@2977: 04<368> 04<369> → 26<0200> → 04<370> → 24<argc=3>，JS='r.makeNodePrototype(\"view\",void 0,\"GZV…\")'——26<2>=undefined 实参位",
+        "olympic_analytics 等第二文件同构验证 26<0200>=void 0",
+        "dil_widgets/DILThemeAttributes.js @123: 26<0100> 后接 4f<key='attributeNames'>，JS='{attributeNames:[…]}'——值池键值用于成员读取",
+        "0x24 CALL p2u1 与 26 b0=0x0d 同类，26 = 实参/值池推入"
+      ]
+    },
+    {
+      "op": "0x30",
+      "mnemonic": "OP30",
+      "confidence": "guess",
+      "note": "维持 guess（锐化）：元数据行标记——紧邻 0x43 函数单元头后（prev=43 案例×2）、自聚类 next=0x30 28%、与 0x75(711×)/0xfe/0xc0 共现；体内 46% 未破译（len5 u32 操作数疑为表值）",
+      "prev_confidence": "guess",
+      "evidence": [
+        "全语料 6198 次：body=2878(46%) / trailer=3320(53%)；next=0x30(1715)/0x75(711)/0xfe(480)/0xc0(191)",
+        "web_platform/Storage.js @1886: prev=[0e, 43<key='g'>]——紧跟函数单元头",
+        "valdi_ui/NativeButtonSurface.js @5547: prev=[0e, 43<key='M'>] 同构"
+      ]
+    },
+    {
+      "op": "0x35",
+      "mnemonic": "OP35",
+      "confidence": "guess",
+      "note": "维持 guess（锐化，任务清单误列为 induced）：表数据/填充字节——96% trailer；35 自串簇（next=0x35 76%）；表值实证 02<35353535>=0x35353535；ASCII ';'；247 表 p1u1 疑为占位，待 native 复核",
+      "prev_confidence": "guess",
+      "evidence": [
+        "全语料 20700 次：body=716(3%) / trailer=19984(96%)；next=0x35(15702)/0x2b(1399)/0x1c(659)",
+        "dil_charts/ValdiPieChart.js @2702-2704: prev=02<35353535>（LOAD_NUM 推入 0x35353535 表值）后接 35 35 35 0e 00 连串",
+        "chatgpt_finance/FinanceScreen.js @10237/10267/10268: 02<21352635>（'!5&5' 表值）+ 35 串簇"
+      ]
+    },
+    {
+      "op": "0x42",
+      "mnemonic": "GETPROP_IC",
+      "confidence": "confirmed",
+      "note": "属性读取 <key u16> + 30B IC 槽（pop1=对象 → push2=值+IC槽）；key≥216 → 本文件字符串表 slot(key-216) 实名；key<216 → 共享 atom 空间（293 语料：atom92='concat'）",
+      "prev_confidence": "induced",
+      "evidence": [
+        "c2('')→42<atom92='concat'> 惯用法 522 次（见 0xc2 条目）——模板字面量降载全链路双向实证",
+        "valdi_core/Locale.js toString 端到端: c6(this) 41<225('language')> 04<228('-')> c6 41<227('region')> ↔ JS='`${this.language}-${this.region}`'",
+        "valdi_navigation/NavigationPage.js: de 41<230('path')> ↔ JS='e.path'；dil_charts/ValdiChart.js 41<650('dataKey')> ↔ JS='n.dataKey'",
+        "key 池实名解析（key-pool-resolution.md 150/150 文件 A 一致性）+ chatgpt_reasoning/TextInput 等 78 文件成员访问位置对齐"
+      ]
+    },
+    {
+      "op": "0x61",
+      "mnemonic": "LOAD_BIND",
+      "confidence": "induced",
+      "note": "推入文件级常量对象表条目 <u16>（函数引用/共享对象；b0=0x11 族：5f=p1u0 存、60=p1u1、61=p0u1 读）；低条目 0..3 由 d2/d3/de/df/e0/e1 隐式族覆盖（值域证据：0..3 仅 15/3300，4..9 占 2462）；旧判读（async 状态机/跳转表）不成立；~6% 为数据区误读（正则字节被切分）",
+      "prev_confidence": "guess",
+      "evidence": [
+        "dil_renderer/PolyfilledTracer.js 端到端: JS='e.beginTrace=f,e.endTrace=p,e.instantTrace=u' ↔ 65<0000>(e) e1(f) 45<beginTrace> | 65<0000>(e) 61<0400>(p) 45<endTrace> | 65<0000>(e) 61<0500>(u) 15 45<instantTrace>",
+        "collaborative_editor/ClientSQLDocumentStore.js @1316/2227/4983: 61<7>/61<8>/61<9> → 42<246('write')> c1<0> 25<argc=1> ↔ JS='this.write(async e=>{…})'×3（异步箭头实参=函数表条目）",
+        "dil_sandbox/DILSandboxWorkerCore.js @13466: 61<5> d2 41<436('messageId')> f0 29 ↔ JS 尾部 'U(e.messageId)'（加载函数 U 作为被调）",
+        "值域统计(30 模块): {4:910, 5:649, 6:426, 7:297, 8:180}, 值0..3 仅 15 次; ChatGPTExploreScreen unit1 31×61<5>=共享辅助函数高频引用",
+        "反证: chatgpt_maps 仅 3 个 43 单元但 61 值达 16 → 非 43 单元序号; OAIBearerAPIService 61<695c('i\\')> 等落于正则字面量数据区（误读样本，已剔除）"
+      ]
+    },
+    {
+      "op": "0x65",
+      "mnemonic": "LOAD_SLOT",
+      "confidence": "confirmed",
+      "note": "推入槽 <u16> 槽值（槽未初始化时=undefined——原 UNDEF 判读为其特例）；65<0000> 高频=slot0（init 作用域首参/模块上下文）；证据链见 navigationPage 模板解码（65<0100>=参数 t）",
+      "prev_confidence": "confirmed (注记锐化)",
+      "evidence": [
+        "valdi_navigation/NavigationPage.js 模板端到端: '`${t}@${e.path}`' ↔ c2('') 42<92(concat)> 65<0100>(=t) 04<229>('@') de(=e) 41<230('path')> 25<argc=3>——65<0100> 恰为闭包参数 t，非 undefined",
+        "dil_renderer/PolyfilledTracer.js: 65<0000> 三次出现均对应 JS 参数 e（'e.beginTrace=f…' 主语）→ slot0=函数首参",
+        "兼容性: ICELRuntime 校准中 65 位于 'const x 未初始化' 位置（槽未赋值=undefined）——两读法统一"
+      ]
+    },
+    {
+      "op": "0x6c",
+      "mnemonic": "SRCPOS",
+      "confidence": "induced",
+      "note": "源码位置标记 <u32 行号（疑）>：位于语句/switch case 边界；同构重复编译块中相同值序列重复出现、块间恒定平移；247 表 p1u0 的 pop1 为 VM 内部记账（位置与求值点关联）",
+      "prev_confidence": "guess",
+      "evidence": [
+        "valdi_rxjs/TestScheduler.js: 6c 值序列 unit0 = [670,372,323,294,161] @6297-6758 与 [806,372,323,294,161] @7978-8469——后四位完全相同、首值 +136（hotObservables/coldObservables 两个同构函数的源码行号，被内联的共享 _parse 位置重复）",
+        "位置对应: 6c@6547/6596/6625 全部落在 JS 'switch(e[2]){case\"ms\":…case\"s\":…case\"m\":…}' 的 case 边界",
+        "oai_web_launcher/WebPage.js: 6c@6129 → JS='case O.WebPageLoadStatus ‹› .Loading:'（switch case 边界）; latex/LatexView.js: 6c@2356 → 方法调用边界",
+        "值域 = 源文件行号量级（48..1233）"
+      ]
+    },
+    {
+      "op": "0x6d",
+      "mnemonic": "SRCPOS_CHECK",
+      "confidence": "induced",
+      "note": "源码位置检查点（短路/可选链求值点 flavor）<u32 行号>：prev=0x11(DUP) 强富集，'11 → 6d<u32> → 0e(DISCARD)' 三元组；JS 位置 = ||/?. 链中段与被跳过分支；b0=0x16（区别于 6c 的 0x10 类）",
+      "prev_confidence": "guess",
+      "evidence": [
+        "chatgpt_wallet/WalletSetupModel.js @3258/@3300: prev=[99,11] next=[0e,c9]，JS='if(!this ‹› .active||!this ‹› .available||…)'（|| 链求值点，行号 310/268 递减=同块内向上回溯分支）",
+        "dil_cel/ExpressionHelpers.js @5083/@5705/@5851: prev 多含 11/ae，JS='bodyCounts ‹› .indexOf(r)<0||…'/'e.args ‹› .every(…)'",
+        "dil_charts/ValdiChart.js @7778/@9656: prev=[ae,11]/[24<argc=0>,11]，JS='be(t ‹› .width)'/'activeHoverIndex:t ‹› ,tooltipLines:…'",
+        "值域 = 行号量级（131..1009）"
+      ]
+    },
+    {
+      "op": "0x99",
+      "mnemonic": "NOT",
+      "confidence": "confirmed",
+      "note": "逻辑非（维持现状，本次校准复验通过：9 样本 9 命中 '!' 构造，100%）",
+      "prev_confidence": "confirmed",
+      "evidence": [
+        "校准集 9/9 样本 JS 区间含 '!' 构造（extract.py CAL_OPS）"
+      ]
+    },
+    {
+      "op": "0xa3",
+      "mnemonic": "OP_A3",
+      "confidence": "guess",
+      "note": "维持 guess（锐化）：结构行/检查点 op——60% trailer；体内主导签名 d7→a3→0x70（46 次）与 3f→a3→70（25 次，0x70=结构标记 len5 引用型操作数）；散布 body 签名（be→a3→b2 等）多样未破译；p2u1",
+      "prev_confidence": "guess",
+      "evidence": [
+        "全语料 463 次：body=187 / trailer=276；prev=d7(130) next=0x70(136)",
+        "dil_charts/ValdiChart.js @6430/@6439: 0c<40> 06 0a d7 a3 70<3d0ac73f> ×2 行链——类描述表区数据（JS 区域为 'class ValdiChart extends L.DILStatefulComponent' 类块，非指令级对应）",
+        "体内散布案例如 mo.js @8979（prev ae 03，JS='this.setBreakStyle()'）区间受 trailer 锚定污染，未建立双向对应"
+      ]
+    },
+    {
+      "op": "0xa8",
+      "mnemonic": "GT",
+      "confidence": "induced",
+      "note": "大于比较（>）(pop2 push1)：栈序 [lhs, rhs] → lhs>rhs；结果典型喂 0xeb JCC（next=0xeb 31%）或 0x11 DUP（27%，&& 链复用）；修正旧注记：'> 由换向编译、无独立 op' 不成立；prev 含 0xea（跳转族）富集为前一分支回边所致",
+      "prev_confidence": "guess",
+      "evidence": [
+        "markdown_diff/MarkdownDiff.js 端到端（同一比较链三连解码）: JS='n<9||11===n||n>13&&n<32||n>126&&n<160||n>55295…'",
+        "  ↳ @45180: prev=[65<0000>(load n), be<0d>(13)] → a8 → 11 → eb<+8> = 'n>13&&n<32'",
+        "  ↳ @45200: prev=[65<0000>(n), be<7e>(126)] → a8 → 11 → eb<+9> = 'n>126&&n<160'",
+        "  ↳ @45224: prev=[65<0000>(n), 01<ffd70000>(const 0xd7ff=55295)] → a8 → 11 → eb<+11> = 'n>55295&&n<57344'",
+        "be<0d>=13 / be<7e>=126 / const 55295 与 JS 字面量逐一对应——栈序 [lhs,rhs]→lhs>rhs 实证"
+      ]
+    },
+    {
+      "op": "0xbe",
+      "mnemonic": "PUSH_I8",
+      "confidence": "induced",
+      "note": "推入 u8 小整数 <u8>（本语义表原缺失条目；MarkdownDiff 比较链中 0x0d=13、0x7e=126 与 JS 字面量逐一对应）",
+      "prev_confidence": "新增",
+      "evidence": [
+        "markdown_diff/MarkdownDiff.js: be<0d> ↔ 字面量 13；be<7e> ↔ 字面量 126（比较操作数位）",
+        "chatgpt_wallet_approval 等出现 be<0a>（10）于 switch case 值位"
+      ]
+    },
+    {
+      "op": "0xc2",
+      "mnemonic": "PUSH_EMPTY_STRING",
+      "confidence": "confirmed",
+      "note": "推入空字符串 \"\"（p0u1，len1 无操作数，b0=0x08 与 c1 LOAD_LOCAL 同'隐式常量'类）；主用途 = babel 风格模板字面量降载 '\"\".concat(…)' 与空串实参",
+      "prev_confidence": "guess",
+      "evidence": [
+        "模板降载惯用法: c2 → 42<atom92='concat'> 在全语料出现 522 次（单一 atom，主导模式）",
+        "widgets/styles/shadows.js 全函数端到端: JS='function e(e,o,t,r){return`${e} ${o} ${t} ${r}`}' ↔ 43<单元> c2 42<92> d2 04<225> d3 04<225> d4（\"\".concat(e,' ',o,' ',t,' ',r)）",
+        "valdi_core/Locale.js: '`${this.language}-${this.region}`' ↔ c2 42<92> c6 41<'language'> 04<'-'> c6 41<'region'> …25<argc=3>",
+        "valdi_navigation/NavigationPage.js: '`${t}@${e.path}`' ↔ c2 42<92> 65<0100>(t) 04<229>('@') de(e) 41<'path'> 25<argc=3>——concat.call 三实参全对齐",
+        "空串实参位 4 例: dil_widgets/DatePicker.js 'this.handleValueChange(\"\")'（c2→25<argc=1>）；ServerSentEventParser 'processField(e,\"\")'；SpeechSynthesizer 'getPropertyValueAsString(\"text\",r)??\"\"'；DILImageActions 't??\"\"'",
+        "atom 92='concat' 由上列端到端反推（293 语料共享 atom 空间）"
+      ]
+    },
+    {
+      "op": "0xd2",
+      "mnemonic": "PUSH_D2",
+      "confidence": "induced",
+      "note": "推入隐式上下文/环境句柄（b0=0x02 族）：闭包构造三件套 d2→04(引用)→f0 直接占 15%（4283/27436）；导出链/模块 init 段高频（45<key> 后紧邻模式）；与 61 同为对象表加载族（隐式条目）",
+      "prev_confidence": "induced",
+      "evidence": [
+        "olympic_connections/OlympicConnectionsComponent.js @874: 45<key='OlympicConnectionsComponent'> 06 d2 04<309> f0 ↔ JS='exports.OlympicConnectionsComponent=…class{…}'（类=闭包构造）",
+        "chatgpt_wallet/WalletUSStates.js @126: 45<'US_STATES'> 06 d2 04<222> f0 ↔ JS='exports.US_STATES=[{code:\"AL\"…}]'",
+        "统计: d2 总 27436，d2→04..f0 三件套 4283 (15%)",
+        "体内部位: 0x61 样本中 next=0xd2 482 次（函数引用后接环境句柄）"
+      ]
+    },
+    {
+      "op": "0xd3",
+      "mnemonic": "PUSH_D3",
+      "confidence": "induced",
+      "note": "推入隐式上下文（b0=0x03 族，维持 induced）：与 d2 成对（d2 d3 前奏）+ 独立出现于成员访问/调用链对象位；JS 位置 = X.method()/objlit 键位",
+      "prev_confidence": "induced",
+      "evidence": [
+        "oai_platform_services/SpeechSynthesizer.js @4531: prev=[42<'createOwner'>,65<0000>]，JS='…).createOwner(s,o,n)'（调用链对象位）",
+        "markdown_diff/MarkdownDiff.js @6927/@40103: prev=[de,d2]/[28,d2]——d2 d3 对 + 后接 75/d4",
+        "oai_platform_services/VoiceService.js @3812: prev=[6c,6f] next=[42<'onStatusChange'>,68]，JS=objlit 键位"
+      ]
+    },
+    {
+      "op": "0xd7",
+      "mnemonic": "OP_D7",
+      "confidence": "guess",
+      "note": "维持 guess（锐化）：结构行消费 op（p1u0，b0=0x03 族唯一弹出）——67% trailer；体内主导行链 06/0a → d7 → a3 → 70（prev=0x0a 98 次，next=0xa3 130 次）；非 JS 构造级指令；与 0xa3 联合定性为类/结构描述表行",
+      "prev_confidence": "guess",
+      "evidence": [
+        "全语料 449 次：body=149 / trailer=300；prev=0x0a(98)/0x00(58)/0x3f(39)；next=0xa3(130)/0x01(56)/0x3f(41)",
+        "dil_charts/ValdiChart.js @6429/@6438: 0c<40> 06 0a d7 a3 70<3d0ac73f> 重复两行——类描述表（紧跟 05<00040041> 基类补丁引用 @6490）",
+        "trailer 案例定位: chatgpt_wallet_approval @26724 距上 END 32B（trailer 元数据序列 01 02 00 87 01 02 00 01 02 00 d7…）；collaborative_editor @7409 后接 7+ 个 00 填充"
+      ]
+    },
+    {
+      "op": "0x44",
+      "mnemonic": "META_RECORD44",
+      "confidence": "guess",
+      "note": "记录型元数据 op（len≥17，多行操作数为结构引用/常量）；本语义表原缺失条目；出现在类/方法描述表区（与 30/35/43 相邻）",
+      "prev_confidence": "新增",
+      "evidence": [
+        "oai_authentication_session/OAIBearerAPIService.js @403: 26<8600> 后接 44<0e4a000e0c40000f3800086c00082a0008080008102b3b450e43060100010001>（30B 结构操作数）",
+        "coreutils/ArrayUtils.js: 44<12493a44…> 紧邻 30 行"
+      ]
+    }
+  ]
+}

@@ -254,3 +254,8 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - Android 293 全部 92 模块渲染完成：analysis/decoded-android-293/（1,613 文件，22MB）
 - 部分条目非编译格式（.valdi-text/.valdi-json/.valdi-bytes 资源包装器），cel_keys 解析失败时回退 cel_slots 正确处理
 - 最终语义表 84 条（22 confirmed + 51 induced + 11 guess），CALL 校准定案 13 条已合并
+
+### 9.19 语义 v2.1 升级合并（cel-semantics-upgrade-v2 代理产出，2026-10-28）
+
+- 20 条升级合并：4 升 confirmed（0xc2=PUSH_EMPTY_STRING 重大突破、0x42 GETPROP_IC、0x26 PUSH_F、0x05 PATCH_REF_LOAD）、4 升 induced（0xa8=GT、0x61=LOAD_BIND、0x6c/0x6d=SRCPOS）、7 修正（0x27=APPLY_SPREAD、0x6b=CLASS_DECL、0x70=TRY_REGION、0xc6=PUSH_THIS、0xde/df=CLOSURE_CTX、0xf0=MAKE_CLOSURE）、其余 guess 锐化
+- 最终分布：22 confirmed + 52 induced + 12 guess = 86 条
