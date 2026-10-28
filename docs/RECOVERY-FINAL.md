@@ -50,3 +50,7 @@
 - nm 对砸壳 symtab 挂死（砸壳工具副作用），改用 python 直读 symtab（symoff=187397512, nsyms=6827）
 - 大小差解释：版本更新（+Notifications bundle/CollegePlan 移除/avatar jpg→png/+libswiftCompatibilitySpan）+ 砸壳重打包（App Store DRM 包压缩差 + SC_Info 保留）
 - **影响**：RECOVERY-FINAL 原排除项"iOS FairPlay 原生层"现可恢复——Swift/ObjC 代码、8 个扩展实现、CarPlay/Live Activity、Codex Remote 原生逻辑全部开放（待下一阶段：Swift dump + Ghidra 分析）
+
+## 更新（2026-10-28 Ⅱ）：Web mweb 抓取闭环 ✅
+
+登录态会话 163 chunk（manifest 全集）+ 入口 31 = **全量落地** `derived/web/authenticated/`（196 文件）。阶段 3 闭验收。登录态桌面变体（cookie 同源、bundle 集不同）标注为后续可选。
