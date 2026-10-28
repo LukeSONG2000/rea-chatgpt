@@ -41,10 +41,10 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.installDILSandboxIntlGlobal (seq 0) = v06;  // PUSH_EXPORTS()
   locop 0xca(f0(const[239]))
-  // op 0xbe OP_be [?]
-  locop 0xcb(OP_be())
-  // op 0xbe OP_be [?]
-  locop 0xcc(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcb(PUSH_I8())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcc(PUSH_I8())
   // op 0x11 DUP [~]
   locop 0xcd(call21(const[245]; push6))
   // op 0x11 DUP [~]
@@ -561,7 +561,7 @@
   // op 0xe4 CLASS_DEF_POP [~]
   // op 0x1a OP_1a [?]
   // op 0x4b OP_4b [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xff OP_ff [?]
   // op 0xff OP_ff [?]
   // op 0x7f OP_7f [?]
@@ -733,7 +733,7 @@
   // op 0x07 PUSH_B [~]
   // op 0x5b OP_5b [?]
   // op 0x2a OP_2a [?]
-  // stack@INIT-END: OP_58() | fn:'$'.builtin#99(param[0]) | PUSH_STR2().builtin#99(param[0]) | fn:'$' | OP30() | str?flags=0x7 idx=13 | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | v06 | objlit[currency](param[1]) | undefined.startsWith(const[267]) | str?flags=0x58 idx=6 | OP_78() | PUSH_EXPORTS() | str?flags=0x2 idx=2 | num[67225091] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | OP10() | const[64010064] | EQ_STRICT() | OP_2f() | CLOSURE_CTX_B() | param[0] | call25(pool[145].freeze; undefined) | OP35() | num[206962706] | call21(?) | OP_5c() | OP_7c() | const[01010051] | OP_1c() | PUSH_C() | pair(OP_ff(), OP_7f()) | … | … | const[00300039] | PUSH_E() | OP_2c() | PUSH_B() | OP_2e() | load[00].$ | PUSH_STR2() | const[300] | const[269] | pool[145].freeze | desc-tpl | fn:'$' | OP30() | OP_c0() | DUP() | const[64030064] | undefined.builtin#93(const[269]) | LOCAL_OP2().builtin#92 | pool[145].is(undefined, OP_8f()) | OP_44() | OP_ff() | OP_7f() | const[30000a06] | OP_53() | desc-tpl | const[1c080000] | str?flags=0x0 idx=0 | const[00000015] | OP_19() | pair(TRIPLE_OP(), PUSH_C()) | … | … | const[00300039] | PUSH_E() | PUSH_E() | fn:'$' | undefined.builtin#93(const[269]) | OP_ea() | EQ_STRICT() | DECL_SLOT() | LT() | pool[148] | OP_9b() | const[0200e401] | num[120586759] | PUSH_E() | OP_39() | const[00170000] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | const[00310039] | load[00] | PUSH_E() | PUSH_B() | num[805439280] | PUSH_B() | num[672663344] | OP_5b() | OP_2a()
+  // stack@INIT-END: OP_58() | fn:'$'.builtin#99(param[0]) | PUSH_STR2().builtin#99(param[0]) | fn:'$' | OP30() | str?flags=0x7 idx=13 | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | v06 | objlit[currency](param[1]) | undefined.startsWith(const[267]) | str?flags=0x58 idx=6 | OP_78() | PUSH_EXPORTS() | str?flags=0x2 idx=2 | num[67225091] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | OP10() | const[64010064] | EQ_STRICT() | OP_2f() | CLOSURE_CTX_B() | param[0] | call25(pool[145].freeze; undefined) | OP35() | num[206962706] | call21(?) | OP_5c() | OP_7c() | const[01010051] | OP_1c() | PUSH_C() | pair(OP_ff(), OP_7f()) | … | … | const[00300039] | PUSH_E() | OP_2c() | PUSH_B() | OP_2e() | load[00].$ | PUSH_STR2() | const[300] | const[269] | pool[145].freeze | desc-tpl | fn:'$' | OP30() | OP_c0() | DUP() | const[64030064] | undefined.builtin#93(const[269]) | LOCAL_OP2().builtin#92 | pool[145].is(undefined, OP_8f()) | META_RECORD44() | OP_ff() | OP_7f() | const[30000a06] | OP_53() | desc-tpl | const[1c080000] | str?flags=0x0 idx=0 | const[00000015] | OP_19() | pair(TRIPLE_OP(), PUSH_C()) | … | … | const[00300039] | PUSH_E() | PUSH_E() | fn:'$' | undefined.builtin#93(const[269]) | OP_ea() | EQ_STRICT() | DECL_SLOT() | LT() | pool[148] | OP_9b() | const[0200e401] | num[120586759] | PUSH_E() | OP_39() | const[00170000] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | const[00310039] | load[00] | PUSH_E() | PUSH_B() | num[805439280] | PUSH_B() | num[672663344] | OP_5b() | OP_2a()
   // ===== 初始化段结束；其后为函数单元 =====
   …(pad)
   // op 0x08 PUSH_C [~]

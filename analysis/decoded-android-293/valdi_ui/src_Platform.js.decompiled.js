@@ -10,7 +10,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -199,7 +199,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.supportsNativeIOSAudioWaveform (seq 57) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_da() | v06 | call22(?) | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | OP_be() | const[245760] | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | str?flags=0x0 idx=12 | str?flags=0x0 idx=13 | str?flags=0x0 idx=14 | str?flags=0x0 idx=15 | str?flags=0x0 idx=16 | str?flags=0x0 idx=17 | str?flags=0x0 idx=18 | str?flags=0x0 idx=19 | str?flags=0x0 idx=20 | str?flags=0x0 idx=21 | str?flags=0x0 idx=22 | str?flags=0x0 idx=23 | str?flags=0x0 idx=24 | str?flags=0x0 idx=25 | str?flags=0x0 idx=26 | str?flags=0x0 idx=27 | str?flags=0x0 idx=28 | str?flags=0x0 idx=29 | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0]
+  // stack@INIT-END: OP_da() | v06 | call22(?) | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | PUSH_I8() | const[245760] | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | str?flags=0x0 idx=12 | str?flags=0x0 idx=13 | str?flags=0x0 idx=14 | str?flags=0x0 idx=15 | str?flags=0x0 idx=16 | str?flags=0x0 idx=17 | str?flags=0x0 idx=18 | str?flags=0x0 idx=19 | str?flags=0x0 idx=20 | str?flags=0x0 idx=21 | str?flags=0x0 idx=22 | str?flags=0x0 idx=23 | str?flags=0x0 idx=24 | str?flags=0x0 idx=25 | str?flags=0x0 idx=26 | str?flags=0x0 idx=27 | str?flags=0x0 idx=28 | str?flags=0x0 idx=29 | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x7b OP_7b [?]
@@ -258,8 +258,8 @@
   jcc-0xeb → @1861
   // discard(DUP())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   // trailer 0xae
   …(pad)
@@ -274,8 +274,8 @@
   jcc-0xeb → @2069
   // discard(DUP())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   // trailer 0xae
   …(pad)
@@ -355,8 +355,8 @@
   // op 0x1e OP_1e [?]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   // trailer 0xae
   …(pad)
@@ -379,7 +379,7 @@
 
   // ---- FUNCTION-UNIT: 'supportsNativeTextViewInsets' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x49 idx=1)
@@ -453,14 +453,14 @@
 
   // ---- FUNCTION-UNIT: 'supportsNativeTextViewInsets' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x69 idx=1)
 
   // ---- FUNCTION-UNIT: 'supportsNativeTextViewInsets' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x6d idx=1)
@@ -482,7 +482,7 @@
 
   // ---- FUNCTION-UNIT: 'supportsNativeTextViewInsets' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x75 idx=1)

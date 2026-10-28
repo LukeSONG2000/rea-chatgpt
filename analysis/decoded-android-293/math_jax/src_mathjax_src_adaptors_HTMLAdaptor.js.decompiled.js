@@ -74,8 +74,8 @@
   local[4] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.HTMLAdaptor (seq 1) = undefined;  // PUSH_EXPORTS()
-  // op 0xbe OP_be [?]
-  EXPORTS.DEFAULT_FONT_SIZE (seq 2) = OP_be();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.DEFAULT_FONT_SIZE (seq 2) = PUSH_I8();  // undefined
   // stack@INIT-END: OP_fe() | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x2 idx=5 | const[030370ba] | 'module' | str?flags=0x0 idx=0 | call31(?) | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | DECL_SLOT() | OP_d0()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
@@ -450,7 +450,7 @@
   // op 0x11 DUP [~]
   jcc-0xec → @4191
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @4264
   // op 0xc2 LOCAL_OP2 [?]
@@ -878,7 +878,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @9404
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xda OP_da [?]
   // discard(OP_da())
   // trailer 0xae

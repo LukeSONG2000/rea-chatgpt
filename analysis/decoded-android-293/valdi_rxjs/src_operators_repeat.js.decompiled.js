@@ -34,7 +34,7 @@
   // op 0x32 OP_32 [?]
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   locop 0xca(v06)
@@ -101,7 +101,7 @@
   // discard(OP_17())
   …(pad)
   // op 0x08 PUSH_C [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @726
   // discard(OP_b3())
@@ -134,7 +134,7 @@
   locop 0xcb(OP_f1())
   // discard(undefined.subscribe(undefined))
   // op 0x6b CLASS_DECL [~]
-  // stack@INIT-END: ?.builtin#262 | PUSH_C() | OP_be() | const[0cbc0302] | load[dc] | 'i' | str?flags=0xc idx=184 | META_OP6C() | DECL_SLOT() | DECL_SLOT() | OP_ac() | objlit[timer](PUSH_STR2()) | f0(PUSH_STR2()) | objlit[innerFrom](PUSH_STR2()) | PUSH_STR2() | objlit[createOperatorSubscriber](PUSH_STR2()) | LOAD_61() | CLASS_DECL()
+  // stack@INIT-END: ?.builtin#262 | PUSH_C() | PUSH_I8() | const[0cbc0302] | load[dc] | 'i' | str?flags=0xc idx=184 | META_OP6C() | DECL_SLOT() | DECL_SLOT() | OP_ac() | objlit[timer](PUSH_STR2()) | f0(PUSH_STR2()) | objlit[innerFrom](PUSH_STR2()) | PUSH_STR2() | objlit[createOperatorSubscriber](PUSH_STR2()) | LOAD_61() | CLASS_DECL()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x68 PUSH_STR2 [~]
   // op 0xef OP_ef [?]

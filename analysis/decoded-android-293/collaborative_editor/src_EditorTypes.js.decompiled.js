@@ -376,25 +376,25 @@
   // op 0xbd OP_bd [?]
   EXPORTS.INSERT_SLICE (seq 7) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.REMOVE_NODE (seq 8) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.REPLACE_AROUND (seq 9) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.PASTE (seq 10) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.INPUT (seq 11) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.SET_DOCUMENT_THEME (seq 12) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.UPSERT_LIVE_NOTE (seq 13) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.REMOVE_LIVE_NOTE (seq 14) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // stack@INIT-END: str?flags=0x21 idx=2 | fn:'doc' | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
@@ -428,22 +428,22 @@
   // op 0xbd OP_bd [?]
   EXPORTS.TOGGLE_LIST (seq 7) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.INSERT_DIVIDER (seq 8) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.TOGGLE_CHECKED (seq 9) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.INDENT (seq 10) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.OUTDENT (seq 11) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.TAB (seq 12) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.TEXT_TRANSACTION (seq 13) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // stack@INIT-END: fn:'doc' | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
@@ -521,7 +521,7 @@
   // op 0xbd OP_bd [?]
   EXPORTS.INVALID_PRESENCE (seq 7) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.UNSUPPORTED_MARKDOWN (seq 8) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // stack@INIT-END: fn:'doc' | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()

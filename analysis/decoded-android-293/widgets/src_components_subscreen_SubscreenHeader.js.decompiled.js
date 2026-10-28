@@ -28,10 +28,10 @@
   local[6] = f0(const[241]);
   local[7] = f0(const[242]);
   local[8] = f0(const[243]);
-  // op 0xbe OP_be [?]
-  local[9] = OP_be();
-  // op 0xbe OP_be [?]
-  local[10] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[9] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[10] = PUSH_I8();
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -45,13 +45,13 @@
   local[13] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.SubscreenHeader (seq 1) = undefined;  // PUSH_EXPORTS()
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbd OP_bd [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.verticalPadding (seq 2) = globalThis.[wk:0xf7].[wk:0xfb];  // globalThis.[wk:0xf6]
-  // stack@INIT-END: 'exports' | DECL_SLOT() | v06 | const[00030e03] | v06 | num[2953905113] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'r' | 'i' | 'n' | 's' | str?flags=0x2 idx=14 | const[030c70cc] | 'd' | load[aux0064] | PUSH_E() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | CLASS_DECL() | undefined | desc-tpl | desc-tpl | OP_be().[wk:0xf6] | OP_be().[wk:0xf7].[wk:0xf8] | desc-tpl | OP_be().[wk:0xf6] | OP_bd().[wk:0xf7].[wk:0xf9] | desc-tpl | OP_be().[wk:0xf6] | globalThis.[wk:0xf7].[wk:0xfa] | desc-tpl
+  // stack@INIT-END: 'exports' | DECL_SLOT() | v06 | const[00030e03] | v06 | num[2953905113] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'r' | 'i' | 'n' | 's' | str?flags=0x2 idx=14 | const[030c70cc] | 'd' | load[aux0064] | PUSH_E() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | CLASS_DECL() | undefined | desc-tpl | desc-tpl | PUSH_I8().[wk:0xf6] | PUSH_I8().[wk:0xf7].[wk:0xf8] | desc-tpl | PUSH_I8().[wk:0xf6] | OP_bd().[wk:0xf7].[wk:0xf9] | desc-tpl | PUSH_I8().[wk:0xf6] | globalThis.[wk:0xf7].[wk:0xfa] | desc-tpl
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc3 LOAD_M3 [~]

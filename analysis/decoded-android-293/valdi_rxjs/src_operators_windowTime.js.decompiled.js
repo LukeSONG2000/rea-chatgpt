@@ -33,7 +33,7 @@
   // stack@INIT-END: fn:'slice' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 'r' | 'u' | 't' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xe0 CLOSURE_CTX_C [~]
   // op 0x07 PUSH_B [~]
   …(pad)

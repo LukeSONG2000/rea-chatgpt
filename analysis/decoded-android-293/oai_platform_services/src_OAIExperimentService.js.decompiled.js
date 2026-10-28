@@ -80,9 +80,9 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @480
-  // stack@INIT-END: str?flags=0x1 idx=35 | push189 | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | OP_2d() | objlit[isVersionAtLeast](fn:'builtin#262') | f0(OP_be()) | call25(param[0].getLayer; param[1])
+  // stack@INIT-END: str?flags=0x1 idx=35 | push189 | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | OP_2d() | objlit[isVersionAtLeast](fn:'builtin#262') | f0(PUSH_I8()) | call25(param[0].getLayer; param[1])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x54 OP_54 [?]

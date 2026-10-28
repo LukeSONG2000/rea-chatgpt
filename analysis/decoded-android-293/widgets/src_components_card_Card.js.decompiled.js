@@ -27,8 +27,8 @@
   locop 0xcd(f0(const[234]))
   local[4] = f0(const[235]);
   // op 0xd4 PUSH_EXPORTS [✓]
-  // op 0xbe OP_be [?]
-  EXPORTS.CARD_RADIUS (seq 3) = OP_be();  // PUSH_EXPORTS()
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.CARD_RADIUS (seq 3) = PUSH_I8();  // PUSH_EXPORTS()
   // op 0xc3 LOAD_M3 [~]
   // op 0x11 DUP [~]
   jcc-0xec → @350

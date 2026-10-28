@@ -2,7 +2,7 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
@@ -15,7 +15,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xef OP_ef [?]
   EXPORTS.SvgTextNode (seq 1) = OP_ef();  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_44() | TRY_REGION() | TRY_REGION() | TRY_REGION() | const[00640000] | pool[145].builtin#101 | param[0] | param[0] | param[0]
+  // stack@INIT-END: META_RECORD44() | TRY_REGION() | TRY_REGION() | TRY_REGION() | const[00640000] | pool[145].builtin#101 | param[0] | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

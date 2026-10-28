@@ -2,7 +2,7 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x20 OP_20 [?]
   // op 0x64 DECL_SLOT [~]

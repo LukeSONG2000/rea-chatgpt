@@ -2,7 +2,7 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
@@ -35,7 +35,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.openStoredSynchronousEditor (seq 3) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_44() | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | LOCAL_OP2() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0]
+  // stack@INIT-END: META_RECORD44() | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | LOCAL_OP2() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // stack@INIT-END: 'n' | push134

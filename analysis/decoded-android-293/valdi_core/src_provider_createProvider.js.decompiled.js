@@ -166,7 +166,7 @@
   // trailer 0xae
   …(pad)
   // op 0x51 OP_51 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // trailer 0xae
   …(pad)

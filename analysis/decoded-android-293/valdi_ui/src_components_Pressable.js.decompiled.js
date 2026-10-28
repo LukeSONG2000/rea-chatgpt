@@ -786,9 +786,9 @@
   // op 0xa3 OP_A3 [?]
   jcc-0xeb → @9534
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
-  // discard(OP_be())
+  // discard(PUSH_I8())
   // op 0x16 OP_16 [?]
   // op 0x14 OP_14 [?]
   // op 0xd6 OP_d6 [?]
@@ -970,7 +970,7 @@
   // discard(PUSH_STR2().builtin#66(param[0], undefined))
   // trailer 0xae
   // op 0xd0 OP_d0 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
@@ -1035,7 +1035,7 @@
   // trailer 0xae
   // trailer 0xae
   …(pad)
-  // stack-tail: OP_93() | str?flags=0x78 idx=0 | fn:'./MaterialSurface' | v06 | DUP() | fn:'./MaterialSurface' | desc-tpl | DUP() | OP_44() | PUSH_THIS() | str?flags=0x8 idx=13 | v06 | objlit[disabled](param[0]) | objlit[disabledStyle](param[0]) | objlit[hovered](param[0]) | objlit[hoveredStyle](param[0]) | objlit[loading](param[0]) | objlit[loadingStyle](param[0]) | objlit[pressed](param[0]) | objlit[pressedOpacity](param[0]) | objlit[pressedStyle](param[0]) | objlit[selected](param[0]) | objlit[selectedStyle](param[0]) | objlit[style](param[0]) | objlit[theme](param[0]) | str?flags=0x95 idx=1 | const[0]
+  // stack-tail: OP_93() | str?flags=0x78 idx=0 | fn:'./MaterialSurface' | v06 | DUP() | fn:'./MaterialSurface' | desc-tpl | DUP() | META_RECORD44() | PUSH_THIS() | str?flags=0x8 idx=13 | v06 | objlit[disabled](param[0]) | objlit[disabledStyle](param[0]) | objlit[hovered](param[0]) | objlit[hoveredStyle](param[0]) | objlit[loading](param[0]) | objlit[loadingStyle](param[0]) | objlit[pressed](param[0]) | objlit[pressedOpacity](param[0]) | objlit[pressedStyle](param[0]) | objlit[selected](param[0]) | objlit[selectedStyle](param[0]) | objlit[style](param[0]) | objlit[theme](param[0]) | str?flags=0x95 idx=1 | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

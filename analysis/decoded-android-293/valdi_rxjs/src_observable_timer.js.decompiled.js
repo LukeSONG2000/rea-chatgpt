@@ -29,7 +29,7 @@
   // op 0x20 OP_20 [?]
   // op 0x1c OP_1c [?]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xff OP_ff [?]
   // op 0xff OP_ff [?]

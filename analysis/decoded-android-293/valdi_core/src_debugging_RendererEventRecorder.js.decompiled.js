@@ -344,7 +344,7 @@
   // op 0x1c OP_1c [?]
   // op 0x1c OP_1c [?]
   // op 0x12 OP_12 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -410,7 +410,7 @@
   jcc-0xeb → @3437
   // discard(DUP())
   // discard(undefined.splice(globalThis, undefined))
-  // stack@INIT-END: OP_44() | const[0130e003] | const[0230e203] | str?flags=0x3 idx=32 | PATCH_REF_LOAD() | const[0008c405] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | OP_bc() | OP_ee()
+  // stack@INIT-END: META_RECORD44() | const[0130e003] | const[0230e203] | str?flags=0x3 idx=32 | PATCH_REF_LOAD() | const[0008c405] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | OP_bc() | OP_ee()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x4d OP_4d [?]

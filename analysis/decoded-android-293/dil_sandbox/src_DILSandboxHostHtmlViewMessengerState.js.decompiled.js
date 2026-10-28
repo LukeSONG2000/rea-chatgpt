@@ -378,10 +378,10 @@
   // stack@INIT-END: objlit[worker](PUSH_THIS()).postSignal | desc-tpl | OP_ba().[wk:0x108] | objlit[contextId](PUSH_THIS()).[wk:0xed] | param[0].[wk:0xfe] | param[1].[wk:0x105](PUSH_EXPORTS().[wk:0x104])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // trailer 0xae
   …(pad)
-  // stack-tail: OP_44() | objlit[toDILSandboxError](const[0d680000]) | str?flags=0x75 idx=1 | num[0]
+  // stack-tail: META_RECORD44() | objlit[toDILSandboxError](const[0d680000]) | str?flags=0x75 idx=1 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

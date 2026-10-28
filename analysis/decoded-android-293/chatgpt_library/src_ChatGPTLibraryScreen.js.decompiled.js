@@ -11,7 +11,7 @@
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0xbc OP_bc [?]
   // op 0x05 PATCH_REF_LOAD [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x40 OP_40 [?]
   // op 0x40 OP_40 [?]
@@ -249,7 +249,7 @@
   local[46] = undefined.makeNodePrototype(const[379], v06, const[450]);
   local[47] = undefined.makeNodePrototype(const[391], v06, const[451]);
   local[48] = undefined.makeNodePrototype(const[391], v06, const[452]);
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   local[49] = const[454](push4, const[455]);
   local[50] = const[380](const[456], push2, const[457]);
   local[51] = undefined.makeComponentPrototype(v06, const[458]);
@@ -263,7 +263,7 @@
   local[59] = undefined.makeNodePrototype(const[379], v06, const[467]);
   local[60] = undefined.makeNodePrototype(const[391], v06, const[468]);
   local[61] = undefined.makeNodePrototype(const[391], v06, const[469]);
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   local[62] = const[470](push4, const[471]);
   local[63] = undefined.makeNodePrototype(const[379], v06, const[472]);
   local[64] = undefined.makeComponentPrototype(v06, const[473]);
@@ -281,15 +281,15 @@
   local[76] = undefined.makeNodePrototype(const[379], v06, const[489]);
   local[77] = const[380](const[490], push2, const[491]);
   local[78] = undefined.makeNodePrototype(const[379], v06, const[492]);
-  // op 0xbe OP_be [?]
-  local[79] = OP_be()(push2, const[493]);
+  // op 0xbe PUSH_I8 [~]
+  local[79] = PUSH_I8()(push2, const[493]);
   local[80] = undefined.makeNodePrototype(const[391], v06, const[494]);
   local[81] = undefined.makeNodePrototype(const[391], v06, const[495]);
   local[82] = undefined.makeComponentPrototype(v06, const[496]);
   local[83] = undefined.makeComponentPrototype(v06, const[497]);
   local[84] = const[380](const[498], push2, const[499]);
   local[85] = undefined.makeNodePrototype(const[379], v06, const[500]);
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   local[86] = const[501](push4, const[502]);
   local[87] = const[64](const[503], push2, const[504]);
   local[88] = undefined.makeNodePrototype(const[391], v06, const[505]);
@@ -310,7 +310,7 @@
   local[103] = const[537](push4, const[538]);
   local[104] = undefined.makeNodePrototype(const[379], v06, const[539]);
   local[105] = const[64](const[537], push2, const[540]);
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   local[106] = PUSH_WK1()(push12, const[547]);
@@ -428,103 +428,103 @@
   EXPORTS.ChatGPTLibraryScreen (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbc OP_bc [?]
   // op 0xba OP_ba [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xba OP_ba [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb9 OP_b9 [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xbb OP_bb [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbf OP_bf [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb9 OP_b9 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xc0 OP_c0 [?]
   // op 0x11 DUP [~]
@@ -534,10 +534,10 @@
   // op 0xb8 PUSH_WK2 [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
@@ -548,79 +548,79 @@
   // op 0xbd OP_bd [?]
   // op 0xbd OP_bd [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb9 OP_b9 [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xba OP_ba [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xba OP_ba [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbf OP_bf [?]
   // op 0xb9 OP_b9 [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb9 OP_b9 [?]
   // op 0x11 DUP [~]
   local[153] = call21(const[782].[wk:0x2bd]; objlit[One](objlit[OAISpacing](undefined)).[wk:0x30f]).[wk:0x310];
-  // stack@INIT-END: pair(?, OP_94()) | fn:'_' | const[0070b803] | const[0130ba03] | const[0270bc03] | const[0370be03] | const[0470c003] | const[0570c203] | const[0670c403] | const[0770c603] | const[0870c803] | const[0970ca03] | const[0a70cc03] | const[0b70ce03] | const[0c70d003] | const[0d70d203] | const[0e70d403] | const[0f70d603] | const[1070d803] | const[1170da03] | const[1270dc03] | const[1370de03] | const[1470e003] | const[1570e203] | const[1670e403] | const[1770e603] | const[1870e803] | const[1970ea03] | const[1a70ec03] | const[1b70ee03] | const[1c70f003] | const[1d70f203] | const[1e70f403] | const[1f70f603] | const[2070f803] | const[2170fa03] | const[2270fc03] | const[2370fe03] | const[24708004] | const[25708204] | const[26708404] | const[27708604] | const[28708804] | const[29708a04] | const[2a708c04] | const[2b708e04] | const[2c709004] | const[2d709204] | const[2e709404] | const[2f709604] | const[30709804] | const[31709a04] | const[32709c04] | const[33709e04] | const[3470a004] | const[3570a204] | const[3670a404] | const[3770a604] | const[3870a804] | const[3970aa04] | const[3a70ac04] | const[3b70ae04] | const[3c70b004] | const[3d70b204] | const[3e70b404] | const[3f70b604] | const[4070b804] | const[4170ba04] | const[4270bc04] | const[4370be04] | const[4470c004] | const[4570c204] | const[4670c404] | const[4770c604] | const[4870c804] | const[4970ca04] | const[4a70cc04] | const[4b70ce04] | const[4c70d004] | const[4d70d204] | const[4e70d404] | const[4f70d604] | const[5070d804] | const[5170da04] | const[5270dc04] | const[5370de04] | const[5470e004] | const[5570e204] | const[5670e404] | const[5770e604] | const[5870e804] | const[5970ea04] | const[5a70ec04] | const[5b70ee04] | const[5c70f004] | const[5d70f204] | const[5e70f404] | const[5f70f604] | const[6070f804] | const[6170fa04] | const[6270fc04] | const[6370fe04] | const[64708005] | const[65708205] | const[66708405] | const[67708605] | const[68708805] | const[69708a05] | const[6a708c05] | const[6b708e05] | const[6c709005] | const[6d709205] | const[6e709405] | const[6f709605] | const[70709805] | const[71709a05] | const[72709c05] | const[73709e05] | const[7470a005] | const[7570a205] | const[7670a405] | const[7770a605] | const[7870a805] | const[7970aa05] | const[7a70ac05] | const[7b70ae05] | const[7c70b005] | const[7d70b205] | const[7e30b405] | const[7f70b605] | const[800130b8] | PATCH_REF_LOAD() | coerce(PATCH_REF_LOAD()) | OP_d0() | PATCH_REF_LOAD() | param[0] | PATCH_REF_LOAD() | PUSH_EXPORTS() | OP_d6() | OP_d8() | OP_da() | OP_dc() | PATCH_REF_LOAD() | CLOSURE_CTX_A() | PATCH_REF_LOAD() | CLOSURE_CTX_C() | OP_e2() | CLASS_DEF_POP() | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | undefined.makeNodePrototype | const[379] | undefined.makeComponentPrototype | const[380] | const[387] | const[74] | undefined.makeComponentPrototype | const[380] | const[393] | const[394] | const[395] | const[74] | undefined.makeNodePrototype | const[383] | undefined.makeNodePrototype | const[383] | undefined.makeComponentPrototype | const[380] | undefined.makeNodePrototype | const[379] | undefined.makeNodePrototype | const[391] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[391] | undefined.makeComponentPrototype | const[391] | undefined.makeComponentPrototype | const[380] | const[427] | const[394] | const[428] | const[74] | undefined.makeComponentPrototype | const[380] | const[431] | const[394] | const[432] | const[74] | undefined.makeComponentPrototype | const[380] | undefined.makeNodePrototype | const[379] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[394] | undefined.makeComponentPrototype | const[64] | undefined.makeNodePrototype | const[383] | undefined.makeComponentPrototype | const[453] | OP_be() | const[74] | undefined.makeNodePrototype | const[379] | undefined.makeNodePrototype | const[379] | undefined.makeComponentPrototype | const[453] | OP_be() | const[74] | undefined.makeNodePrototype | const[379] | undefined.makeNodePrototype | const[391] | undefined.makeNodePrototype | const[379] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[394] | undefined.makeNodePrototype | const[379] | undefined.makeComponentPrototype | const[453] | undefined.makeNodePrototype | const[379] | undefined.makeComponentPrototype | const[453] | OP_be() | const[74] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[391] | undefined.makeNodePrototype | const[379] | undefined.makeComponentPrototype | const[380] | const[510] | const[391] | undefined.makeComponentPrototype | const[380] | const[513] | const[391] | undefined.makeComponentPrototype | const[380] | const[516] | const[391] | undefined.makeComponentPrototype | const[380] | const[519] | const[394] | undefined.makeComponentPrototype | const[380] | const[521] | const[522] | undefined.makeComponentPrototype | const[380] | const[525] | const[394] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[391] | undefined.makeComponentPrototype | const[391] | undefined.makeComponentPrototype | const[380] | const[536] | const[394] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[380] | const[541] | const[394] | const[542] | const[543] | OP_be() | const[544] | PUSH_WK1() | const[545] | const[542] | const[546] | undefined.makeComponentPrototype | const[391] | undefined.makeComponentPrototype | const[391] | param[0] | param[0] | param[0] | const[554] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | local[0] | local[0] | desc-tpl | const[575].[wk:0x187] | objlit[Suggested](objlit[ChatGPTLibrarySurface](undefined)).[wk:0x241] | desc-tpl | const[441].[wk:0x187] | objlit[Folders](objlit[ChatGPTLibrarySurface](undefined)).[wk:0x241] | desc-tpl | const[578].[wk:0x187] | objlit[Favorites](objlit[ChatGPTLibrarySurface](undefined)).[wk:0x241] | desc-tpl | const[579].[wk:0x187] | objlit[Images](objlit[ChatGPTLibrarySurface](undefined)).[wk:0x241] | desc-tpl | const[580].[wk:0x187] | objlit[All](objlit[ChatGPTLibrarySurface](undefined)).[wk:0x241] | desc-tpl | objlit[All](LOAD_M3()).[wk:0x245] | const[580].[wk:0x187] | desc-tpl | objlit[Images](LOAD_M3()).[wk:0x245] | const[579].[wk:0x187] | desc-tpl | objlit[Files](LOAD_M3()).[wk:0x245] | const[582].[wk:0x187] | const[583] | const[584] | const[585] | const[586] | const[587] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | objlit[BgPrimary](objlit[OAIColor](undefined)).[wk:0x288] | call21(const[649].[wk:0x28a]; const[651].[wk:0x28c]).[wk:0x28d] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | OP_be().[wk:0x291] | objlit[OneAndHalf](objlit[OAISpacing](undefined)).[wk:0x294] | call21(objlit[OneAndHalf](objlit[OAISpacing](undefined)).[wk:0x295]; const[651].[wk:0x28c]).[wk:0x296] | DUP() | desc-tpl | const[654].[wk:0x28f] | call21(PUSH_WK1().[wk:0x297]; PUSH_WK1().[wk:0x298]).[wk:0x299] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemSemiboldFont](undefined) | call21(f0(OP_be()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x29f] | DUP() | desc-tpl | PUSH_WK1().[wk:0x297] | call21(PUSH_WK1().[wk:0x298]; const[651].[wk:0x28c]).[wk:0x17f] | DUP() | desc-tpl | const[654].[wk:0x2a0] | const[649].[wk:0x28a] | OP_be().[wk:0x2a1] | OP_be().[wk:0x294] | call21(OP_be().[wk:0x295]; const[651].[wk:0x28c]).[wk:0x2a2] | DUP() | desc-tpl | globalThis.[wk:0x298] | OP_be().[wk:0x2a3] | OP_be().[wk:0x2a4] | call21(OP_be().[wk:0x2a5]; const[678].[wk:0x28c]).[wk:0x2a7] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | OP_be().[wk:0x2a8] | call21(OP_be().[wk:0x294]; OP_be().[wk:0x295]).[wk:0x2a9] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[649].[wk:0x28a] | OP_be().[wk:0x2aa] | call21(OP_bc().[wk:0x2a1]; OP_ba().[wk:0x2ab]).[wk:0x2ac] | DUP() | desc-tpl | call21(objlit[systemMediumFont](undefined); f0(OP_be()).[wk:0x29d]).[wk:0x2ae] | DUP() | desc-tpl | call21(objlit[systemSemiboldFont](undefined); f0(OP_be()).[wk:0x29d]).[wk:0x2af] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Pill](objlit[OAIRadius](undefined)).[wk:0x2b2] | globalThis.[wk:0x2b3] | PUSH_WK2().[wk:0x291] | globalThis.[wk:0x2b4] | call21(const[693].[wk:0x2b6]; globalThis.[wk:0x2b7]).[wk:0x2b8] | DUP() | desc-tpl | globalThis.[wk:0x298] | OP_be().[wk:0x2a3] | OP_be().[wk:0x2a4] | call21(OP_be().[wk:0x2a5]; const[678].[wk:0x28c]).[wk:0x2b9] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | OP_be().[wk:0x2a8] | call21(OP_be().[wk:0x294]; OP_be().[wk:0x295]).[wk:0x2ba] | DUP() | desc-tpl | call21(OP_be().[wk:0x2a3]; const[651].[wk:0x28c]).[wk:0x2bb] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | const[700].[wk:0x2bd] | OP_be().[wk:0x2a3] | call21(OP_be().[wk:0x2aa]; const[651].[wk:0x28c]).[wk:0x2be] | DUP() | desc-tpl | const[703].[wk:0x28f] | call21(const[656].[wk:0x28a]; OP_be().[wk:0x2a8]).[wk:0x2c0] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemSemiboldFont](undefined); f0(OP_be()).[wk:0x29d]).[wk:0x27a] | DUP() | desc-tpl | objlit[TextTertiary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemMediumFont](undefined); f0(OP_be()).[wk:0x29d]).[wk:0x2c2] | DUP() | desc-tpl | const[654].[wk:0x28f] | call21(const[656].[wk:0x28a]; OP_ba().[wk:0x2a8]).[wk:0x2c3] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[BgStatusWarning](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Xl](objlit[OAIRadius](undefined)).[wk:0x2b2] | const[656].[wk:0x28a] | objlit[One](objlit[OAISpacing](undefined)).[wk:0x2a8] | OP_be().[wk:0x2a3] | call21(objlit[OneAndHalf](objlit[OAISpacing](undefined)).[wk:0x2c7]; const[651].[wk:0x28c]).[wk:0x2c8] | DUP() | desc-tpl | const[649].[wk:0x28a] | PUSH_WK1().[wk:0x297] | call21(PUSH_WK1().[wk:0x298]; OP_b9().[wk:0x2a8]).[wk:0x2c9] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemSemiboldFont](undefined); f0(OP_be()).[wk:0x29d]).[wk:0x2ca] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | f0(OP_be()).[wk:0x29d] | call21(OP_be().[wk:0x2cd]; PUSH_WK2().[wk:0x29e]).[wk:0x2ce] | DUP() | desc-tpl | const[649].[wk:0x28a] | call21(OP_be().[wk:0x2a3]; const[651].[wk:0x28c]).[wk:0x2cf] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | const[700].[wk:0x2bd] | call21(OP_be().[wk:0x2a3]; const[651].[wk:0x28c]).[wk:0x2d0] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemSemiboldFont](undefined); f0(OP_be()).[wk:0x29d]).[wk:0x2d1] | DUP() | desc-tpl | globalThis.[wk:0x298] | OP_be().[wk:0x2a4] | call21(OP_be().[wk:0x2a5]; const[678].[wk:0x28c]).[wk:0x2d2] | DUP() | desc-tpl | const[656].[wk:0x28a] | OP_be().[wk:0x2a8] | call21(OP_be().[wk:0x294]; OP_be().[wk:0x295]).[wk:0x2d3] | DUP() | desc-tpl | objlit[BgSecondary](objlit[OAIColor](undefined)).[wk:0x288] | objlit[BorderDefault](objlit[OAIColor](undefined)).[wk:0x2d6] | objlit[Xl](objlit[OAIRadius](undefined)).[wk:0x2b2] | PUSH_WK1().[wk:0x2d7] | const[649].[wk:0x28a] | OP_bb().[wk:0x2a8] | call21(OP_be().[wk:0x2c7]; OP_bf().[wk:0x28c]).[wk:0x2d8] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[ThemeBlueBackground](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Lg](objlit[OAIRadius](undefined)).[wk:0x2b2] | OP_be().[wk:0x291] | const[654].[wk:0x2bd] | call21(OP_b9().[wk:0x2a3]; OP_be().[wk:0x28c]).[wk:0x2db] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemSemiboldFont](undefined) | call21(f0(OP_be()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2dc] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | call21(f0(OP_be()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2dd] | DUP() | desc-tpl | const[734].[wk:0x28f] | const[656].[wk:0x28a] | call21(const[735].[wk:0x2e0]; OP_be().[wk:0x2a8]).[wk:0x2e1] | DUP() | desc-tpl | call21(const[649].[wk:0x28a]; OP_be().[wk:0x2a8]).[wk:0x2e2] | DUP() | call21(desc-tpl; OP_c0().[wk:0x2e3]).[wk:0x2e4] | DUP() | desc-tpl | objlit[BgTertiary](objlit[OAIColor](undefined)).[wk:0x288] | objlit[BorderDefault](objlit[OAIColor](undefined)).[wk:0x2d6] | call21(objlit[Xl](objlit[OAIRadius](undefined)).[wk:0x2b2]; PUSH_WK1().[wk:0x2d7]).[wk:0x2e6] | DUP() | desc-tpl | const[649].[wk:0x28a] | PUSH_WK2().[wk:0x2a8] | call21(PUSH_WK2().[wk:0x294]; PUSH_WK2().[wk:0x295]).[wk:0x2e7] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemMediumFont](undefined) | call21(f0(OP_be()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2e8] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | call21(f0(OP_be()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2e9] | DUP() | desc-tpl | const[654].[wk:0x28f] | call21(objlit[BgSecondary](objlit[OAIColor](undefined)).[wk:0x288]; const[654].[wk:0x2bd]).[wk:0x2ea] | DUP() | desc-tpl | objlit[BgElevatedPrimary](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Pill](objlit[OAIRadius](undefined)).[wk:0x2b2] | OP_bc().[wk:0x294] | OP_bc().[wk:0x295] | OP_b9().[wk:0x2a1] | OP_b9().[wk:0x2ab] | const[693].[wk:0x2b6] | call21(OP_bd().[wk:0x2b7]; OP_bd().[wk:0x2ec]).[wk:0x2ed] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemSemiboldFont](undefined) | call21(f0(OP_be()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2ee] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[InteractiveBgPrimaryDefault](objlit[OAIColor](undefined)).[wk:0x288] | objlit[TextInverseStatic](objlit[OAIColor](undefined)).[wk:0x2d6] | objlit[Pill](objlit[OAIRadius](undefined)).[wk:0x2b2] | PUSH_WK2().[wk:0x2d7] | OP_be().[wk:0x291] | const[654].[wk:0x2bd] | const[693].[wk:0x2b6] | OP_be().[wk:0x2b7] | call21(OP_be().[wk:0x2ec]; OP_be().[wk:0x28c]).[wk:0x2f1] | DUP() | desc-tpl | objlit[TextInverseStatic](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemBoldFont](undefined) | call21(f0(OP_be()).[wk:0x29d]; const[654].[wk:0x2f3]).[wk:0x2f4] | DUP() | desc-tpl | objlit[BorderDefault](objlit[OAIColor](undefined)).[wk:0x2d6] | objlit[Xl](objlit[OAIRadius](undefined)).[wk:0x2b2] | PUSH_WK1().[wk:0x2d7] | call21(const[649].[wk:0x28a]; const[651].[wk:0x28c]).[wk:0x2f5] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | OP_be().[wk:0x2a8] | OP_be().[wk:0x2aa] | call21(OP_be().[wk:0x2c7]; const[651].[wk:0x28c]).[wk:0x2f6] | DUP() | call21(desc-tpl; objlit[ThemeBlueBackground](objlit[OAIColor](undefined)).[wk:0x288]).[wk:0x2f7] | DUP() | desc-tpl | objlit[BgTertiary](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Lg](objlit[OAIRadius](undefined)).[wk:0x2b2] | call21(OP_be().[wk:0x291]; OP_be().[wk:0x28c]).[wk:0x2f8] | DUP() | desc-tpl | const[649].[wk:0x28a] | PUSH_WK1().[wk:0x297] | call21(PUSH_WK1().[wk:0x298]; OP_b9().[wk:0x2a8]).[wk:0x2f9] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemMediumFont](undefined) | call21(f0(OP_be()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2fa] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | call21(f0(OP_be()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2fb] | DUP() | desc-tpl | call21(const[649].[wk:0x28a]; const[651].[wk:0x28c]).[wk:0x2fc] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | const[700].[wk:0x2bd] | call21(OP_be().[wk:0x2a3]; const[651].[wk:0x28c]).[wk:0x2fd] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemMediumFont](undefined); f0(OP_be()).[wk:0x29d]).[wk:0x2fe] | DUP() | desc-tpl | call21(objlit[BgTertiary](objlit[OAIColor](undefined)).[wk:0x288]; objlit[Xl](objlit[OAIRadius](undefined)).[wk:0x2b2]).[wk:0x2ff] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[649].[wk:0x28a] | OP_be().[wk:0x2a8] | OP_be().[wk:0x2a1] | call21(OP_be().[wk:0x2ab]; const[651].[wk:0x28c]).[wk:0x300] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[ThemeBlueBackground](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Xxl](objlit[OAIRadius](undefined)).[wk:0x2b2] | OP_be().[wk:0x291] | const[654].[wk:0x2bd] | call21(OP_ba().[wk:0x2a3]; OP_be().[wk:0x28c]).[wk:0x302] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[BgStatusError](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Xxl](objlit[OAIRadius](undefined)).[wk:0x2b2] | OP_be().[wk:0x291] | const[654].[wk:0x2bd] | call21(OP_ba().[wk:0x2a3]; OP_be().[wk:0x28c]).[wk:0x304] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemSemiboldFont](undefined) | call21(f0(OP_be()).[wk:0x29d]; const[654].[wk:0x2f3]).[wk:0x305] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | f0(OP_be()).[wk:0x29d] | OP_be().[wk:0x2cd] | OP_bf().[wk:0x306] | call21(OP_b9().[wk:0x29e]; const[654].[wk:0x2f3]).[wk:0x307] | DUP() | desc-tpl | const[654].[wk:0x28f] | OP_be().[wk:0x2a1] | call21(OP_be().[wk:0x2ab]; const[651].[wk:0x28c]).[wk:0x308] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[BgElevatedPrimary](objlit[OAIColor](undefined)).[wk:0x288] | globalThis.[wk:0x2b3] | const[656].[wk:0x28a] | OP_be().[wk:0x2a8] | const[654].[wk:0x2bd] | globalThis.[wk:0x2b4] | OP_be().[wk:0x294] | OP_be().[wk:0x295] | objlit[One](objlit[OAISpacing](undefined)).[wk:0x2ab] | const[693].[wk:0x2b6] | call21(globalThis.[wk:0x2b7]; OP_be().[wk:0x309]).[wk:0x30a] | DUP() | desc-tpl | const[649].[wk:0x28a] | call21(objlit[One](objlit[OAISpacing](undefined)).[wk:0x2a8]; objlit[One](objlit[OAISpacing](undefined)).[wk:0x2c7]).[wk:0x30b] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemSemiboldFont](undefined); f0(OP_be()).[wk:0x29d]).[wk:0x30c] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | f0(OP_be()).[wk:0x29d] | call21(OP_be().[wk:0x2cd]; OP_b9().[wk:0x29e]).[wk:0x30d] | DUP() | desc-tpl | const[656].[wk:0x28a] | objlit[One](objlit[OAISpacing](undefined)).[wk:0x2a8]
+  // stack@INIT-END: pair(?, OP_94()) | fn:'_' | const[0070b803] | const[0130ba03] | const[0270bc03] | const[0370be03] | const[0470c003] | const[0570c203] | const[0670c403] | const[0770c603] | const[0870c803] | const[0970ca03] | const[0a70cc03] | const[0b70ce03] | const[0c70d003] | const[0d70d203] | const[0e70d403] | const[0f70d603] | const[1070d803] | const[1170da03] | const[1270dc03] | const[1370de03] | const[1470e003] | const[1570e203] | const[1670e403] | const[1770e603] | const[1870e803] | const[1970ea03] | const[1a70ec03] | const[1b70ee03] | const[1c70f003] | const[1d70f203] | const[1e70f403] | const[1f70f603] | const[2070f803] | const[2170fa03] | const[2270fc03] | const[2370fe03] | const[24708004] | const[25708204] | const[26708404] | const[27708604] | const[28708804] | const[29708a04] | const[2a708c04] | const[2b708e04] | const[2c709004] | const[2d709204] | const[2e709404] | const[2f709604] | const[30709804] | const[31709a04] | const[32709c04] | const[33709e04] | const[3470a004] | const[3570a204] | const[3670a404] | const[3770a604] | const[3870a804] | const[3970aa04] | const[3a70ac04] | const[3b70ae04] | const[3c70b004] | const[3d70b204] | const[3e70b404] | const[3f70b604] | const[4070b804] | const[4170ba04] | const[4270bc04] | const[4370be04] | const[4470c004] | const[4570c204] | const[4670c404] | const[4770c604] | const[4870c804] | const[4970ca04] | const[4a70cc04] | const[4b70ce04] | const[4c70d004] | const[4d70d204] | const[4e70d404] | const[4f70d604] | const[5070d804] | const[5170da04] | const[5270dc04] | const[5370de04] | const[5470e004] | const[5570e204] | const[5670e404] | const[5770e604] | const[5870e804] | const[5970ea04] | const[5a70ec04] | const[5b70ee04] | const[5c70f004] | const[5d70f204] | const[5e70f404] | const[5f70f604] | const[6070f804] | const[6170fa04] | const[6270fc04] | const[6370fe04] | const[64708005] | const[65708205] | const[66708405] | const[67708605] | const[68708805] | const[69708a05] | const[6a708c05] | const[6b708e05] | const[6c709005] | const[6d709205] | const[6e709405] | const[6f709605] | const[70709805] | const[71709a05] | const[72709c05] | const[73709e05] | const[7470a005] | const[7570a205] | const[7670a405] | const[7770a605] | const[7870a805] | const[7970aa05] | const[7a70ac05] | const[7b70ae05] | const[7c70b005] | const[7d70b205] | const[7e30b405] | const[7f70b605] | const[800130b8] | PATCH_REF_LOAD() | coerce(PATCH_REF_LOAD()) | OP_d0() | PATCH_REF_LOAD() | param[0] | PATCH_REF_LOAD() | PUSH_EXPORTS() | OP_d6() | OP_d8() | OP_da() | OP_dc() | PATCH_REF_LOAD() | CLOSURE_CTX_A() | PATCH_REF_LOAD() | CLOSURE_CTX_C() | OP_e2() | CLASS_DEF_POP() | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | undefined.makeNodePrototype | const[379] | undefined.makeComponentPrototype | const[380] | const[387] | const[74] | undefined.makeComponentPrototype | const[380] | const[393] | const[394] | const[395] | const[74] | undefined.makeNodePrototype | const[383] | undefined.makeNodePrototype | const[383] | undefined.makeComponentPrototype | const[380] | undefined.makeNodePrototype | const[379] | undefined.makeNodePrototype | const[391] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[391] | undefined.makeComponentPrototype | const[391] | undefined.makeComponentPrototype | const[380] | const[427] | const[394] | const[428] | const[74] | undefined.makeComponentPrototype | const[380] | const[431] | const[394] | const[432] | const[74] | undefined.makeComponentPrototype | const[380] | undefined.makeNodePrototype | const[379] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[394] | undefined.makeComponentPrototype | const[64] | undefined.makeNodePrototype | const[383] | undefined.makeComponentPrototype | const[453] | PUSH_I8() | const[74] | undefined.makeNodePrototype | const[379] | undefined.makeNodePrototype | const[379] | undefined.makeComponentPrototype | const[453] | PUSH_I8() | const[74] | undefined.makeNodePrototype | const[379] | undefined.makeNodePrototype | const[391] | undefined.makeNodePrototype | const[379] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[394] | undefined.makeNodePrototype | const[379] | undefined.makeComponentPrototype | const[453] | undefined.makeNodePrototype | const[379] | undefined.makeComponentPrototype | const[453] | PUSH_I8() | const[74] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[391] | undefined.makeNodePrototype | const[379] | undefined.makeComponentPrototype | const[380] | const[510] | const[391] | undefined.makeComponentPrototype | const[380] | const[513] | const[391] | undefined.makeComponentPrototype | const[380] | const[516] | const[391] | undefined.makeComponentPrototype | const[380] | const[519] | const[394] | undefined.makeComponentPrototype | const[380] | const[521] | const[522] | undefined.makeComponentPrototype | const[380] | const[525] | const[394] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[391] | undefined.makeComponentPrototype | const[391] | undefined.makeComponentPrototype | const[380] | const[536] | const[394] | undefined.makeNodePrototype | const[391] | undefined.makeComponentPrototype | const[380] | const[541] | const[394] | const[542] | const[543] | PUSH_I8() | const[544] | PUSH_WK1() | const[545] | const[542] | const[546] | undefined.makeComponentPrototype | const[391] | undefined.makeComponentPrototype | const[391] | param[0] | param[0] | param[0] | const[554] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | local[0] | local[0] | desc-tpl | const[575].[wk:0x187] | objlit[Suggested](objlit[ChatGPTLibrarySurface](undefined)).[wk:0x241] | desc-tpl | const[441].[wk:0x187] | objlit[Folders](objlit[ChatGPTLibrarySurface](undefined)).[wk:0x241] | desc-tpl | const[578].[wk:0x187] | objlit[Favorites](objlit[ChatGPTLibrarySurface](undefined)).[wk:0x241] | desc-tpl | const[579].[wk:0x187] | objlit[Images](objlit[ChatGPTLibrarySurface](undefined)).[wk:0x241] | desc-tpl | const[580].[wk:0x187] | objlit[All](objlit[ChatGPTLibrarySurface](undefined)).[wk:0x241] | desc-tpl | objlit[All](LOAD_M3()).[wk:0x245] | const[580].[wk:0x187] | desc-tpl | objlit[Images](LOAD_M3()).[wk:0x245] | const[579].[wk:0x187] | desc-tpl | objlit[Files](LOAD_M3()).[wk:0x245] | const[582].[wk:0x187] | const[583] | const[584] | const[585] | const[586] | const[587] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | objlit[BgPrimary](objlit[OAIColor](undefined)).[wk:0x288] | call21(const[649].[wk:0x28a]; const[651].[wk:0x28c]).[wk:0x28d] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | PUSH_I8().[wk:0x291] | objlit[OneAndHalf](objlit[OAISpacing](undefined)).[wk:0x294] | call21(objlit[OneAndHalf](objlit[OAISpacing](undefined)).[wk:0x295]; const[651].[wk:0x28c]).[wk:0x296] | DUP() | desc-tpl | const[654].[wk:0x28f] | call21(PUSH_WK1().[wk:0x297]; PUSH_WK1().[wk:0x298]).[wk:0x299] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemSemiboldFont](undefined) | call21(f0(PUSH_I8()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x29f] | DUP() | desc-tpl | PUSH_WK1().[wk:0x297] | call21(PUSH_WK1().[wk:0x298]; const[651].[wk:0x28c]).[wk:0x17f] | DUP() | desc-tpl | const[654].[wk:0x2a0] | const[649].[wk:0x28a] | PUSH_I8().[wk:0x2a1] | PUSH_I8().[wk:0x294] | call21(PUSH_I8().[wk:0x295]; const[651].[wk:0x28c]).[wk:0x2a2] | DUP() | desc-tpl | globalThis.[wk:0x298] | PUSH_I8().[wk:0x2a3] | PUSH_I8().[wk:0x2a4] | call21(PUSH_I8().[wk:0x2a5]; const[678].[wk:0x28c]).[wk:0x2a7] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | PUSH_I8().[wk:0x2a8] | call21(PUSH_I8().[wk:0x294]; PUSH_I8().[wk:0x295]).[wk:0x2a9] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[649].[wk:0x28a] | PUSH_I8().[wk:0x2aa] | call21(OP_bc().[wk:0x2a1]; OP_ba().[wk:0x2ab]).[wk:0x2ac] | DUP() | desc-tpl | call21(objlit[systemMediumFont](undefined); f0(PUSH_I8()).[wk:0x29d]).[wk:0x2ae] | DUP() | desc-tpl | call21(objlit[systemSemiboldFont](undefined); f0(PUSH_I8()).[wk:0x29d]).[wk:0x2af] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Pill](objlit[OAIRadius](undefined)).[wk:0x2b2] | globalThis.[wk:0x2b3] | PUSH_WK2().[wk:0x291] | globalThis.[wk:0x2b4] | call21(const[693].[wk:0x2b6]; globalThis.[wk:0x2b7]).[wk:0x2b8] | DUP() | desc-tpl | globalThis.[wk:0x298] | PUSH_I8().[wk:0x2a3] | PUSH_I8().[wk:0x2a4] | call21(PUSH_I8().[wk:0x2a5]; const[678].[wk:0x28c]).[wk:0x2b9] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | PUSH_I8().[wk:0x2a8] | call21(PUSH_I8().[wk:0x294]; PUSH_I8().[wk:0x295]).[wk:0x2ba] | DUP() | desc-tpl | call21(PUSH_I8().[wk:0x2a3]; const[651].[wk:0x28c]).[wk:0x2bb] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | const[700].[wk:0x2bd] | PUSH_I8().[wk:0x2a3] | call21(PUSH_I8().[wk:0x2aa]; const[651].[wk:0x28c]).[wk:0x2be] | DUP() | desc-tpl | const[703].[wk:0x28f] | call21(const[656].[wk:0x28a]; PUSH_I8().[wk:0x2a8]).[wk:0x2c0] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemSemiboldFont](undefined); f0(PUSH_I8()).[wk:0x29d]).[wk:0x27a] | DUP() | desc-tpl | objlit[TextTertiary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemMediumFont](undefined); f0(PUSH_I8()).[wk:0x29d]).[wk:0x2c2] | DUP() | desc-tpl | const[654].[wk:0x28f] | call21(const[656].[wk:0x28a]; OP_ba().[wk:0x2a8]).[wk:0x2c3] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[BgStatusWarning](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Xl](objlit[OAIRadius](undefined)).[wk:0x2b2] | const[656].[wk:0x28a] | objlit[One](objlit[OAISpacing](undefined)).[wk:0x2a8] | PUSH_I8().[wk:0x2a3] | call21(objlit[OneAndHalf](objlit[OAISpacing](undefined)).[wk:0x2c7]; const[651].[wk:0x28c]).[wk:0x2c8] | DUP() | desc-tpl | const[649].[wk:0x28a] | PUSH_WK1().[wk:0x297] | call21(PUSH_WK1().[wk:0x298]; OP_b9().[wk:0x2a8]).[wk:0x2c9] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemSemiboldFont](undefined); f0(PUSH_I8()).[wk:0x29d]).[wk:0x2ca] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0x29d] | call21(PUSH_I8().[wk:0x2cd]; PUSH_WK2().[wk:0x29e]).[wk:0x2ce] | DUP() | desc-tpl | const[649].[wk:0x28a] | call21(PUSH_I8().[wk:0x2a3]; const[651].[wk:0x28c]).[wk:0x2cf] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | const[700].[wk:0x2bd] | call21(PUSH_I8().[wk:0x2a3]; const[651].[wk:0x28c]).[wk:0x2d0] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemSemiboldFont](undefined); f0(PUSH_I8()).[wk:0x29d]).[wk:0x2d1] | DUP() | desc-tpl | globalThis.[wk:0x298] | PUSH_I8().[wk:0x2a4] | call21(PUSH_I8().[wk:0x2a5]; const[678].[wk:0x28c]).[wk:0x2d2] | DUP() | desc-tpl | const[656].[wk:0x28a] | PUSH_I8().[wk:0x2a8] | call21(PUSH_I8().[wk:0x294]; PUSH_I8().[wk:0x295]).[wk:0x2d3] | DUP() | desc-tpl | objlit[BgSecondary](objlit[OAIColor](undefined)).[wk:0x288] | objlit[BorderDefault](objlit[OAIColor](undefined)).[wk:0x2d6] | objlit[Xl](objlit[OAIRadius](undefined)).[wk:0x2b2] | PUSH_WK1().[wk:0x2d7] | const[649].[wk:0x28a] | OP_bb().[wk:0x2a8] | call21(PUSH_I8().[wk:0x2c7]; OP_bf().[wk:0x28c]).[wk:0x2d8] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[ThemeBlueBackground](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Lg](objlit[OAIRadius](undefined)).[wk:0x2b2] | PUSH_I8().[wk:0x291] | const[654].[wk:0x2bd] | call21(OP_b9().[wk:0x2a3]; PUSH_I8().[wk:0x28c]).[wk:0x2db] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemSemiboldFont](undefined) | call21(f0(PUSH_I8()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2dc] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | call21(f0(PUSH_I8()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2dd] | DUP() | desc-tpl | const[734].[wk:0x28f] | const[656].[wk:0x28a] | call21(const[735].[wk:0x2e0]; PUSH_I8().[wk:0x2a8]).[wk:0x2e1] | DUP() | desc-tpl | call21(const[649].[wk:0x28a]; PUSH_I8().[wk:0x2a8]).[wk:0x2e2] | DUP() | call21(desc-tpl; OP_c0().[wk:0x2e3]).[wk:0x2e4] | DUP() | desc-tpl | objlit[BgTertiary](objlit[OAIColor](undefined)).[wk:0x288] | objlit[BorderDefault](objlit[OAIColor](undefined)).[wk:0x2d6] | call21(objlit[Xl](objlit[OAIRadius](undefined)).[wk:0x2b2]; PUSH_WK1().[wk:0x2d7]).[wk:0x2e6] | DUP() | desc-tpl | const[649].[wk:0x28a] | PUSH_WK2().[wk:0x2a8] | call21(PUSH_WK2().[wk:0x294]; PUSH_WK2().[wk:0x295]).[wk:0x2e7] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemMediumFont](undefined) | call21(f0(PUSH_I8()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2e8] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | call21(f0(PUSH_I8()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2e9] | DUP() | desc-tpl | const[654].[wk:0x28f] | call21(objlit[BgSecondary](objlit[OAIColor](undefined)).[wk:0x288]; const[654].[wk:0x2bd]).[wk:0x2ea] | DUP() | desc-tpl | objlit[BgElevatedPrimary](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Pill](objlit[OAIRadius](undefined)).[wk:0x2b2] | OP_bc().[wk:0x294] | OP_bc().[wk:0x295] | OP_b9().[wk:0x2a1] | OP_b9().[wk:0x2ab] | const[693].[wk:0x2b6] | call21(OP_bd().[wk:0x2b7]; OP_bd().[wk:0x2ec]).[wk:0x2ed] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemSemiboldFont](undefined) | call21(f0(PUSH_I8()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2ee] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[InteractiveBgPrimaryDefault](objlit[OAIColor](undefined)).[wk:0x288] | objlit[TextInverseStatic](objlit[OAIColor](undefined)).[wk:0x2d6] | objlit[Pill](objlit[OAIRadius](undefined)).[wk:0x2b2] | PUSH_WK2().[wk:0x2d7] | PUSH_I8().[wk:0x291] | const[654].[wk:0x2bd] | const[693].[wk:0x2b6] | PUSH_I8().[wk:0x2b7] | call21(PUSH_I8().[wk:0x2ec]; PUSH_I8().[wk:0x28c]).[wk:0x2f1] | DUP() | desc-tpl | objlit[TextInverseStatic](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemBoldFont](undefined) | call21(f0(PUSH_I8()).[wk:0x29d]; const[654].[wk:0x2f3]).[wk:0x2f4] | DUP() | desc-tpl | objlit[BorderDefault](objlit[OAIColor](undefined)).[wk:0x2d6] | objlit[Xl](objlit[OAIRadius](undefined)).[wk:0x2b2] | PUSH_WK1().[wk:0x2d7] | call21(const[649].[wk:0x28a]; const[651].[wk:0x28c]).[wk:0x2f5] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | PUSH_I8().[wk:0x2a8] | PUSH_I8().[wk:0x2aa] | call21(PUSH_I8().[wk:0x2c7]; const[651].[wk:0x28c]).[wk:0x2f6] | DUP() | call21(desc-tpl; objlit[ThemeBlueBackground](objlit[OAIColor](undefined)).[wk:0x288]).[wk:0x2f7] | DUP() | desc-tpl | objlit[BgTertiary](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Lg](objlit[OAIRadius](undefined)).[wk:0x2b2] | call21(PUSH_I8().[wk:0x291]; PUSH_I8().[wk:0x28c]).[wk:0x2f8] | DUP() | desc-tpl | const[649].[wk:0x28a] | PUSH_WK1().[wk:0x297] | call21(PUSH_WK1().[wk:0x298]; OP_b9().[wk:0x2a8]).[wk:0x2f9] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemMediumFont](undefined) | call21(f0(PUSH_I8()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2fa] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | call21(f0(PUSH_I8()).[wk:0x29d]; PUSH_WK1().[wk:0x29e]).[wk:0x2fb] | DUP() | desc-tpl | call21(const[649].[wk:0x28a]; const[651].[wk:0x28c]).[wk:0x2fc] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[656].[wk:0x28a] | const[700].[wk:0x2bd] | call21(PUSH_I8().[wk:0x2a3]; const[651].[wk:0x28c]).[wk:0x2fd] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemMediumFont](undefined); f0(PUSH_I8()).[wk:0x29d]).[wk:0x2fe] | DUP() | desc-tpl | call21(objlit[BgTertiary](objlit[OAIColor](undefined)).[wk:0x288]; objlit[Xl](objlit[OAIRadius](undefined)).[wk:0x2b2]).[wk:0x2ff] | DUP() | desc-tpl | const[654].[wk:0x28f] | const[649].[wk:0x28a] | PUSH_I8().[wk:0x2a8] | PUSH_I8().[wk:0x2a1] | call21(PUSH_I8().[wk:0x2ab]; const[651].[wk:0x28c]).[wk:0x300] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[ThemeBlueBackground](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Xxl](objlit[OAIRadius](undefined)).[wk:0x2b2] | PUSH_I8().[wk:0x291] | const[654].[wk:0x2bd] | call21(OP_ba().[wk:0x2a3]; PUSH_I8().[wk:0x28c]).[wk:0x302] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[BgStatusError](objlit[OAIColor](undefined)).[wk:0x288] | objlit[Xxl](objlit[OAIRadius](undefined)).[wk:0x2b2] | PUSH_I8().[wk:0x291] | const[654].[wk:0x2bd] | call21(OP_ba().[wk:0x2a3]; PUSH_I8().[wk:0x28c]).[wk:0x304] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemSemiboldFont](undefined) | call21(f0(PUSH_I8()).[wk:0x29d]; const[654].[wk:0x2f3]).[wk:0x305] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0x29d] | PUSH_I8().[wk:0x2cd] | OP_bf().[wk:0x306] | call21(OP_b9().[wk:0x29e]; const[654].[wk:0x2f3]).[wk:0x307] | DUP() | desc-tpl | const[654].[wk:0x28f] | PUSH_I8().[wk:0x2a1] | call21(PUSH_I8().[wk:0x2ab]; const[651].[wk:0x28c]).[wk:0x308] | DUP() | desc-tpl | const[654].[wk:0x28f] | objlit[BgElevatedPrimary](objlit[OAIColor](undefined)).[wk:0x288] | globalThis.[wk:0x2b3] | const[656].[wk:0x28a] | PUSH_I8().[wk:0x2a8] | const[654].[wk:0x2bd] | globalThis.[wk:0x2b4] | PUSH_I8().[wk:0x294] | PUSH_I8().[wk:0x295] | objlit[One](objlit[OAISpacing](undefined)).[wk:0x2ab] | const[693].[wk:0x2b6] | call21(globalThis.[wk:0x2b7]; PUSH_I8().[wk:0x309]).[wk:0x30a] | DUP() | desc-tpl | const[649].[wk:0x28a] | call21(objlit[One](objlit[OAISpacing](undefined)).[wk:0x2a8]; objlit[One](objlit[OAISpacing](undefined)).[wk:0x2c7]).[wk:0x30b] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x29b] | call21(objlit[systemSemiboldFont](undefined); f0(PUSH_I8()).[wk:0x29d]).[wk:0x30c] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x29b] | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0x29d] | call21(PUSH_I8().[wk:0x2cd]; OP_b9().[wk:0x29e]).[wk:0x30d] | DUP() | desc-tpl | const[656].[wk:0x28a] | objlit[One](objlit[OAISpacing](undefined)).[wk:0x2a8]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xcf OP_cf [?]
@@ -1778,7 +1778,7 @@
   // discard(PUSH_STR2().setAttributeStyle(const[881], objlit[content](PUSH_STR2())))
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // discard(PUSH_STR2().setAttributeNumber(const[774], ADD()))
   // op 0x61 LOAD_61 [?]
@@ -2697,8 +2697,8 @@
   // discard(PUSH_THIS())
   // op 0x71 OP_71 [?]
   // op 0x6f OP_6f [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x6d META_OP6D [?]
   // discard(META_OP6D())
@@ -2994,9 +2994,9 @@
   // discard(PUSH_STR2().setAttributeStyle(const[881], objlit[listThumbnail](PUSH_STR2())))
   // op 0xe1 CLOSURE_CTX_D [~]
   // op 0x61 LOAD_61 [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // discard(CLOSURE_CTX_D().renderItemPreview(LOAD_61(), OP_be(), OP_be(), const[938]))
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // discard(CLOSURE_CTX_D().renderItemPreview(LOAD_61(), PUSH_I8(), PUSH_I8(), const[938]))
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().endRender())
   // op 0x68 PUSH_STR2 [~]
@@ -3104,10 +3104,10 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(objlit[Directory](objlit[ChatGPTLibraryItemKind](PUSH_STR2()))(objlit[ThemeBlueText](objlit[OAIColor](PUSH_STR2())), objlit[IconSecondary](objlit[OAIColor](PUSH_STR2()))))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc0 OP_c0 [?]
   // op 0x9d OP_9d [?]
-  // discard(PUSH_STR2().setViewModelProperty(const[453], pool[153].min(OP_be(), pool[153].round(OP_9d()))))
+  // discard(PUSH_STR2().setViewModelProperty(const[453], pool[153].min(PUSH_I8(), pool[153].round(OP_9d()))))
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x61 LOAD_61 [?]
@@ -3242,10 +3242,10 @@
   // trailer 0xae
   …(pad)
   // discard(num[18])
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
-  // discard(OP_44()(PUSH_STR2(), v06))
+  // discard(META_RECORD44()(PUSH_STR2(), v06))
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().setAttributeStyle(const[881], objlit[providerBadge](PUSH_STR2())))
@@ -3796,7 +3796,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
@@ -3869,7 +3869,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().endRender())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_44() | PATCH_REF_LOAD() | str?flags=0xc idx=252 | load[b6] | str?flags=0x0 idx=13 | PATCH_REF_LOAD() | load[80] | PATCH_REF_LOAD() | OP_82() | PUSH_STR2().setAttributeString | const[64] | v06 | PUSH_STR2().endRender()
+  // stack@INIT-END: META_RECORD44() | PATCH_REF_LOAD() | str?flags=0xc idx=252 | load[b6] | str?flags=0x0 idx=13 | PATCH_REF_LOAD() | load[80] | PATCH_REF_LOAD() | OP_82() | PUSH_STR2().setAttributeString | const[64] | v06 | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -4032,7 +4032,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xbd OP_bd [?]
   …(pad)
@@ -4068,7 +4068,7 @@
   // discard(v06.dispose())
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.client (seq 3) = v06;  // PUSH_THIS()
-  // stack@INIT-END: OP_44() | const[00020000] | OP_bd()
+  // stack@INIT-END: META_RECORD44() | const[00020000] | OP_bd()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -5065,9 +5065,9 @@
   // discard(num[2])
 
   // ---- FUNCTION-UNIT: '_' ----
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   jcc-0xeb → @87262
-  // stack@INIT-END: OP_49() | num[38338594] | fn:'_' | objlit[state](param[0]) | objlit[Uploading](objlit[ChatGPTLibraryItemState](PUSH_STR2())) | objlit[state](param[0]) | objlit[Failed](objlit[ChatGPTLibraryItemState](PUSH_STR2())) | EQ_STRICT() | EQ_STRICT() | const[1055] | objlit[kind](param[0]) | objlit[Directory](objlit[ChatGPTLibraryItemKind](PUSH_STR2())) | v06 | objlit[mimeType](param[0]) | fn:'_' | OP30() | const[00640000] | objlit[kind](param[0]) | objlit[Directory](objlit[ChatGPTLibraryItemKind](PUSH_STR2())) | const[940] | objlit[kind](param[0]) | objlit[SavedEntity](objlit[ChatGPTLibraryItemKind](PUSH_STR2())) | const[1058] | v06 | objlit[provider](param[0]) | LOCAL_OP2() | ADD() | objlit[isShared](param[0]) | ADD() | param[1] | str?flags=0xb8 idx=6 | OP_44()
+  // stack@INIT-END: OP_49() | num[38338594] | fn:'_' | objlit[state](param[0]) | objlit[Uploading](objlit[ChatGPTLibraryItemState](PUSH_STR2())) | objlit[state](param[0]) | objlit[Failed](objlit[ChatGPTLibraryItemState](PUSH_STR2())) | EQ_STRICT() | EQ_STRICT() | const[1055] | objlit[kind](param[0]) | objlit[Directory](objlit[ChatGPTLibraryItemKind](PUSH_STR2())) | v06 | objlit[mimeType](param[0]) | fn:'_' | OP30() | const[00640000] | objlit[kind](param[0]) | objlit[Directory](objlit[ChatGPTLibraryItemKind](PUSH_STR2())) | const[940] | objlit[kind](param[0]) | objlit[SavedEntity](objlit[ChatGPTLibraryItemKind](PUSH_STR2())) | const[1058] | v06 | objlit[provider](param[0]) | LOCAL_OP2() | ADD() | objlit[isShared](param[0]) | ADD() | param[1] | str?flags=0xb8 idx=6 | META_RECORD44()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]

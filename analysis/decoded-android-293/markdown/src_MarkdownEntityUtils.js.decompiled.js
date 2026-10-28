@@ -129,7 +129,7 @@
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
   // op 0x09 PUSH_D [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x07 PUSH_B [~]
   // op 0x07 PUSH_B [~]
@@ -167,10 +167,10 @@
   jmp → @1326
   // op 0xb7 PUSH_WK1 [~]
   jcc-0xeb → @1338
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jmp → @1340
-  // op 0xbe OP_be [?]
-  locop 0xcb(undefined(OP_be(), OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcb(undefined(PUSH_I8(), PUSH_I8()))
   jcc-0xeb → @1451
   // op 0x6f OP_6f [?]
   // op 0x72 OP_72 [?]
@@ -178,7 +178,7 @@
   // op 0x6f OP_6f [?]
   // op 0x72 OP_72 [?]
   // op 0x2f OP_2f [?]
-  // stack@INIT-END: OP_75() | OP_fe() | const[00010078] | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | OP_44() | const[70000607] | load[aux0000] | const[61000170] | const[6f000173] | v06 | PUSH_B() | PUSH_B() | const[67000174] | v06 | PUSH_B() | PUSH_B() | const[6c000174] | v06 | PUSH_B() | load[aux0000] | const[71000175] | const[6f000174] | v06 | fn:'builtin#262'(const[238]) | fn:'builtin#262' | str?flags=0x64 idx=1 | const[240] | const[242] | pool[148].parseInt | param[0].slice | undefined | OP_2f()
+  // stack@INIT-END: OP_75() | OP_fe() | const[00010078] | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | META_RECORD44() | const[70000607] | load[aux0000] | const[61000170] | const[6f000173] | v06 | PUSH_B() | PUSH_B() | const[67000174] | v06 | PUSH_B() | PUSH_B() | const[6c000174] | v06 | PUSH_B() | load[aux0000] | const[71000175] | const[6f000174] | v06 | fn:'builtin#262'(const[238]) | fn:'builtin#262' | str?flags=0x64 idx=1 | const[240] | const[242] | pool[148].parseInt | param[0].slice | undefined | OP_2f()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc0 OP_c0 [?]

@@ -305,14 +305,14 @@
   jcc-0xeb → @2571
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc3 LOAD_M3 [~]
   locop 0xca(LOAD_M3().resolveScrollViewHandler())
   jcc-0xeb → @2702
-  // stack@INIT-END: globalThis | objlit[mode](undefined) | OP_44() | const[0230bc03] | const[0330be03] | const[04301000] | const[00c00305] | load[auxc203] | v06 | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | !(undefined)
+  // stack@INIT-END: globalThis | objlit[mode](undefined) | META_RECORD44() | const[0230bc03] | const[0330be03] | const[04301000] | const[00c00305] | load[auxc203] | v06 | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | !(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcb(undefined.single())
   jcc-0xeb → @2749
@@ -350,7 +350,7 @@
   DECLARE-FUNCTION …
   …(pad)
   // discard(const[02000000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -358,7 +358,7 @@
   // op 0xc3 LOAD_M3 [~]
   locop 0xca(LOAD_M3().resolveScrollViewHandler())
   jcc-0xeb → @3445
-  // stack@INIT-END: num[38731814] | push47360.scrollSubscription | OP_be() | const[03301000] | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(undefined)
+  // stack@INIT-END: num[38731814] | push47360.scrollSubscription | PUSH_I8() | const[03301000] | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
   locop 0xcb(LOAD_M3().computeIdealScrollY())

@@ -144,7 +144,7 @@
   …(pad)
   // op 0xb3 OP_b3 [?]
   // op 0x1c OP_1c [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -226,7 +226,7 @@
   …(pad)
   // op 0x8e OP_8e [?]
   // op 0x94 OP_94 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
   // op 0xc0 OP_c0 [?]
@@ -235,7 +235,7 @@
   // op 0x68 PUSH_STR2 [~]
   jmp → @4216
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_8e() | OP_94() | OP_44() | PUSH_STR2() | desc-tpl | OP_c0().[wk:0x10b] | objlit[visible](objlit[viewModel](CLOSURE_CTX_A()))(objlit[EaseOut](objlit[AnimationCurve](PUSH_STR2())), objlit[EaseIn](objlit[AnimationCurve](PUSH_STR2())).[wk:0x10e])
+  // stack@INIT-END: OP_8e() | OP_94() | META_RECORD44() | PUSH_STR2() | desc-tpl | OP_c0().[wk:0x10b] | objlit[visible](objlit[viewModel](CLOSURE_CTX_A()))(objlit[EaseOut](objlit[AnimationCurve](PUSH_STR2())), objlit[EaseIn](objlit[AnimationCurve](PUSH_STR2())).[wk:0x10e])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xb9 OP_b9 [?]
@@ -328,7 +328,7 @@
   // trailer 0xae
   // op 0x70 TRY_REGION [~]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x07 PUSH_B [~]
   // op 0x64 DECL_SLOT [~]
@@ -341,18 +341,18 @@
   // op 0xc7 PUSH_C7 [~]
   jcc-0xeb → @6642
   jcc-0xeb → @6625
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jmp → @6629
   // op 0x8f OP_8f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @6723
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   jmp → @6727
   // op 0x8f OP_8f [?]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // trailer 0xae
   // op 0x6c META_OP6C [?]
@@ -375,7 +375,7 @@
   locop 0xcd(str?flags=0x5e idx=1)
   locop 0xcc(desc-tpl)
   locop 0xcc(OP_8f().[wk:0x123])
-  locop 0xcc(OP_be())
+  locop 0xcc(PUSH_I8())
   locop 0xcc(param[0])
   locop 0xcc(desc-tpl)
   …(pad)
@@ -387,7 +387,7 @@
   …(pad)
   // op 0xc0 OP_c0 [?]
   …(pad)
-  // stack-tail: str?flags=0x44 idx=5 | objlit[isVersionAtLeast](OP_95().getMargins) | META_OP6C() | DUP() | DUP() | objlit[Device](PUSH_STR2()).isDarkMode() | str?flags=0x47 idx=17 | OP_44() | str?flags=0x1 idx=0 | const[00d2030e] | load[auxc403] | PUSH_B() | load[aux08cb] | DECL_SLOT() | objlit[Device](PUSH_STR2()).isIOS() | str?flags=0x61 idx=1 | v06 | OP_c0() | str?flags=0x0 idx=0
+  // stack-tail: str?flags=0x44 idx=5 | objlit[isVersionAtLeast](OP_95().getMargins) | META_OP6C() | DUP() | DUP() | objlit[Device](PUSH_STR2()).isDarkMode() | str?flags=0x47 idx=17 | META_RECORD44() | str?flags=0x1 idx=0 | const[00d2030e] | load[auxc403] | PUSH_B() | load[aux08cb] | DECL_SLOT() | objlit[Device](PUSH_STR2()).isIOS() | str?flags=0x61 idx=1 | v06 | OP_c0() | str?flags=0x0 idx=0
 
 // ---- 字符串表 ----
 // str[1] = 'require'

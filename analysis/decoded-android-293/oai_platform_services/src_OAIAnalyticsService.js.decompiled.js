@@ -24,7 +24,7 @@
   // op 0xaf EQ_STRICT [~]
   // op 0x6c META_OP6C [?]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x6f OP_6f [?]
   // op 0x68 PUSH_STR2 [~]

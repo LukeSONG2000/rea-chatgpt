@@ -26,7 +26,7 @@
   locop 0xca(f0(const[231]))
   locop 0xcb(f0(const[232]))
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xef OP_ef [?]
   // op 0x55 SPREAD_PREP [~]
   // discard(SPREAD_PREP())
@@ -159,8 +159,8 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe4 CLASS_DEF_POP [~]
-  // op 0x44 OP_44 [?]
-  // stack-tail: OP_44()
+  // op 0x44 META_RECORD44 [?]
+  // stack-tail: META_RECORD44()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

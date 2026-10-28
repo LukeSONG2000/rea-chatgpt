@@ -396,7 +396,7 @@
   // op 0x17 OP_17 [?]
   …(pad)
   // op 0xea OP_ea [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x81 OP_81 [?]
   // op 0xee OP_ee [?]
@@ -425,7 +425,7 @@
   // discard(META_OP6C())
   // op 0x87 OP_87 [?]
   // op 0xc9 PUSH_C9 [~]
-  // stack@INIT-END: OP_ea() | OP_44() | OP_87() | PUSH_C9().updateDemand()
+  // stack@INIT-END: OP_ea() | META_RECORD44() | OP_87() | PUSH_C9().updateDemand()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

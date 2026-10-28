@@ -142,7 +142,7 @@
   // op 0x18 TRIPLE_OP [?]
   // op 0x5b OP_5b [?]
   // op 0x78 OP_78 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x0a PUSH_E [~]
   …(pad)
@@ -158,27 +158,27 @@
   // trailer 0xae
   jcc-0xeb → @2243
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   "use strict";
   // op 0x9f OP_9f [?]
   locop 0xcb(OP_9f())
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   "use strict";
   // op 0xa9 OP_a9 [?]
   jcc-0xeb → @2312
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   "use strict";
   // op 0xa1 OP_a1 [?]
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   "use strict";
   // op 0x8f OP_8f [?]
   // op 0xa6 LT [~]
   jcc-0xeb → @2332
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   "use strict";
   // op 0xa0 ADD [~]
   // trailer 0xae
@@ -186,7 +186,7 @@
   // op 0x3a OP_3a [?]
   …(pad)
   // discard(OP_3a())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   // op 0x08 PUSH_C [~]
   // op 0x2b OP_2b [?]
@@ -290,7 +290,7 @@
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x9e OP_9e [?]
-  // stack@INIT-END: '\n' | const[16000740] | OP_2d() | PUSH_C() | load[00] | OP_33() | num[1962944033] | fn:'push' | undefined | OP_77() | const[ca030101] | const[0300028a] | const[02b60300] | const[00b80301] | OP30() | LOCAL_OP2() | TRIPLE_OP().isView | OP_be() | const[0130c003] | const[0370c803] | const[0430cc03] | const[05301000] | const[00ec010d] | load[auxc403] | PUSH_B() | load[auxc203] | v06 | load[auxc603] | PUSH_C() | const[ca030a01] | globalThis | str?flags=0x0 idx=13 | v06 | OP_2b() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | PUSH_B() | OP_ad() | OP_ad() | OP_2f() | DECL_SLOT() | OP_81() | OP_ad() | PUSH_STR2().call(undefined, PUSH_STR2()) | undefined.push | OP_ee() | OP_87() | OP_ad() | OP_ad() | OP_ad() | OP_2f() | v06 | undefined | const[270] | EQ_STRICT() | EQ_STRICT() | OP_2f() | LOAD_61() | pool[145].builtin#101 | LOAD_M3()(PUSH_STR2(), desc-tpl, call21(DUP(); undefined, undefined, globalThis, OP_9e()).[wk:0x40])
+  // stack@INIT-END: '\n' | const[16000740] | OP_2d() | PUSH_C() | load[00] | OP_33() | num[1962944033] | fn:'push' | undefined | OP_77() | const[ca030101] | const[0300028a] | const[02b60300] | const[00b80301] | OP30() | LOCAL_OP2() | TRIPLE_OP().isView | PUSH_I8() | const[0130c003] | const[0370c803] | const[0430cc03] | const[05301000] | const[00ec010d] | load[auxc403] | PUSH_B() | load[auxc203] | v06 | load[auxc603] | PUSH_C() | const[ca030a01] | globalThis | str?flags=0x0 idx=13 | v06 | OP_2b() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | PUSH_B() | OP_ad() | OP_ad() | OP_2f() | DECL_SLOT() | OP_81() | OP_ad() | PUSH_STR2().call(undefined, PUSH_STR2()) | undefined.push | OP_ee() | OP_87() | OP_ad() | OP_ad() | OP_ad() | OP_2f() | v06 | undefined | const[270] | EQ_STRICT() | EQ_STRICT() | OP_2f() | LOAD_61() | pool[145].builtin#101 | LOAD_M3()(PUSH_STR2(), desc-tpl, call21(DUP(); undefined, undefined, globalThis, OP_9e()).[wk:0x40])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x2b OP_2b [?]

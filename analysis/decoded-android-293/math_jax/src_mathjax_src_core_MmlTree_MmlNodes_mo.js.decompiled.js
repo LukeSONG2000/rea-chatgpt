@@ -192,11 +192,11 @@
   // op 0x07 PUSH_B [~]
   EXPORTS._texClass (seq 0) = PUSH_B();  // undefined
   // op 0xbb OP_bb [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   EXPORTS.lspace (seq 1) = OP_9e();  // undefined
   // op 0xbb OP_bb [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   EXPORTS.rspace (seq 2) = OP_9e();  // undefined
   // trailer 0xae
@@ -751,13 +751,13 @@
   // op 0x87 OP_87 [?]
   // op 0xc8 PUSH_C8 [~]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   EXPORTS.lspace (seq 1) = OP_9e();  // PUSH_C8()
   // op 0xc8 PUSH_C8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   EXPORTS.rspace (seq 2) = OP_9e();  // PUSH_C8()
   // stack@INIT-END: str?flags=0x49 idx=9 | OP_d6() | PATCH_REF_LOAD() | PATCH_REF_LOAD() | PATCH_REF_LOAD() | PATCH_REF_LOAD() | OP_4a() | call23(objlit[OPDEF](PUSH_STR2()); undefined, undefined, OP_4a()) | OP_87()
@@ -854,7 +854,7 @@
   // stack@INIT-END: objlit[attributes](PUSH_C9()).setInherited(const[254], globalThis)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -864,7 +864,7 @@
   // op 0xc9 PUSH_C9 [~]
   locop 0xca(objlit[primes](objlit[builtin#60](PUSH_C9())))
   jcc-0xeb → @10300
-  // stack@INIT-END: OP_44() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | PATCH_REF_LOAD() | PATCH_REF_LOAD() | const[00ba0302] | load[aux08cd] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(param[0].match(undefined))
+  // stack@INIT-END: META_RECORD44() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | PATCH_REF_LOAD() | PATCH_REF_LOAD() | const[00ba0302] | load[aux08cd] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(param[0].match(undefined))
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc9 PUSH_C9 [~]
   locop 0xcb(objlit[remapPrimes](objlit[builtin#60](PUSH_C9())))
@@ -875,7 +875,7 @@
   // stack@INIT-END: objlit[unicodeString](PUSH_STR2()) | objlit[unicodeChars](PUSH_STR2()) | PUSH_C9().setProperty(const[293], undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x4a OP_4a [?]
   // trailer 0xae
   …(pad)

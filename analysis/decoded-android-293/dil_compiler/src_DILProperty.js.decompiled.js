@@ -12,7 +12,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x11 DUP [~]
   // op 0x70 TRY_REGION [~]
@@ -124,7 +124,7 @@
   // stack@INIT-END: LT() | OP_94() | const[241685] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP_20() | PUSH_C8() | str?flags=0x0 idx=14 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | CLASS_DECL() | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
   // op 0x08 PUSH_C [~]

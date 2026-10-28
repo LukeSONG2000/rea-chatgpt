@@ -74,9 +74,9 @@
   local[5] = call21(DUP(); OP_bf());
   local[7] = pool[254];
   local[8] = local[0];
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb8 PUSH_WK2 [~]
-  local[11] = pool[153].random().builtin#55(OP_be()).substring(PUSH_WK2());
+  local[11] = pool[153].random().builtin#55(PUSH_I8()).substring(PUSH_WK2());
   local[13] = v06;
   // op 0xb7 PUSH_WK1 [~]
   local[14] = PUSH_WK1();
@@ -246,7 +246,7 @@
   // discard(call22(LOAD_61(); PUSH_THIS(), PUSH_C7(), param[0], param[1]))
   // op 0xc7 PUSH_C7 [~]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x61 LOAD_61 [?]
   // trailer 0xae

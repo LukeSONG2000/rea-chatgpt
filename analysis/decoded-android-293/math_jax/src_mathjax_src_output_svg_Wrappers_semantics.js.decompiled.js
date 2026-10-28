@@ -313,7 +313,7 @@
   // op 0x9f OP_9f [?]
   // op 0x5d OP_5d [?]
   // op 0x36 OP_36 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -383,7 +383,7 @@
   // discard(STR_CMP())
   // trailer 0xae
   …(pad)
-  // stack-tail: OP_9f() | str?flags=0x2 idx=0 | push23040 | OP_5d() | OP_36() | const[0000000e].em | OP_be() | const[02308404] | const[03301000] | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LOAD_M3().getBBox() | FN_PROLOGUE() | str?flags=0x35 idx=12 | call21(?) | CLOSURE_CTX_D() | const[0200a801] | PUSH_THIS() | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010010] | const[20ec0103] | DECL_SLOT() | str?flags=0x3d idx=0 | num[134217728]
+  // stack-tail: OP_9f() | str?flags=0x2 idx=0 | push23040 | OP_5d() | OP_36() | const[0000000e].em | PUSH_I8() | const[02308404] | const[03301000] | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LOAD_M3().getBBox() | FN_PROLOGUE() | str?flags=0x35 idx=12 | call21(?) | CLOSURE_CTX_D() | const[0200a801] | PUSH_THIS() | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010010] | const[20ec0103] | DECL_SLOT() | str?flags=0x3d idx=0 | num[134217728]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

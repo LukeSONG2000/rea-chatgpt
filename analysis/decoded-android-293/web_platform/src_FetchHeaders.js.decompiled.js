@@ -363,7 +363,7 @@
   // op 0x64 DECL_SLOT [~]
   // op 0x1c OP_1c [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x1e OP_1e [?]
   …(pad)

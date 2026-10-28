@@ -170,9 +170,9 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0xc3 LOAD_M3 [~]
   jcc-0xeb → @1579
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jmp → @1582
-  EXPORTS.delay (seq 5) = undefined;  // pool[153].max(OP_be(), undefined)
+  EXPORTS.delay (seq 5) = undefined;  // pool[153].max(PUSH_I8(), undefined)
   // op 0xc3 LOAD_M3 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]

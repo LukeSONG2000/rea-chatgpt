@@ -138,14 +138,14 @@
   local[54] = f0(const[354]);
   local[55] = f0(const[355]);
   local[56] = f0(const[356]);
-  // op 0xbe OP_be [?]
-  local[57] = OP_be();
-  // op 0xbe OP_be [?]
-  local[58] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[57] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[58] = PUSH_I8();
   // op 0xbf OP_bf [?]
   local[59] = OP_bf();
-  // op 0xbe OP_be [?]
-  local[60] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[60] = PUSH_I8();
   local[61] = push4;
   local[62] = const[361];
   local[63] = const[362];
@@ -180,7 +180,7 @@
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xb7 PUSH_WK1 [~]
   local[70] = call21(const[400].[wk:0x191]; !(globalThis).[wk:0x192]).[wk:0x193];
@@ -188,18 +188,18 @@
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xbb OP_bb [?]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
@@ -207,21 +207,21 @@
   // op 0xb8 PUSH_WK2 [~]
   // op 0xbb OP_bb [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb9 OP_b9 [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
@@ -243,11 +243,11 @@
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0x11 DUP [~]
@@ -256,25 +256,25 @@
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb9 OP_b9 [?]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xbc OP_bc [?]
   // op 0x11 DUP [~]
   local[71] = undefined.map(local[0]).[wk:0x1e9];
-  // stack@INIT-END: fn:'V' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 'n' | 'l' | 'd' | 's' | 'a' | 'y' | 'b' | 'h' | 'u' | 'S' | 'g' | 'c' | 'm' | 'v' | 'p' | 'w' | 'R' | 'A' | 'k' | 'f' | 'N' | 'x' | 'W' | 'C' | 'K' | 'P' | 'T' | 'F' | const[2188387585] | const[2221942273] | const[2255496961] | const[2289051649] | const[2322606337] | const[2356161025] | const[2389715713] | const[2423270401] | const[2456825089] | const[2490379777] | const[2523934465] | const[2557489153] | const[2591043841] | const[2624598529] | const[2658153217] | const[2691707905] | const[2721068289] | const[2754622977] | const[2792371969] | const[2825926657] | const[2859481345] | const[2893036033] | const[2922396417] | const[2960145409] | const[2989505793] | const[3023060481] | const[3056615169] | const[3090169857] | const[3127918849] | const[3158310912] | const[3962587138] | const[034470bc] | const[3189785089] | const[3228583425] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[297] | undefined.makeNodePrototype | const[297] | undefined.makeNodePrototype | const[297] | undefined.makeNodePrototype | const[297] | undefined.makeNodePrototype | const[297] | param[0] | param[0] | param[0] | param[0] | const[357] | const[358] | const[359] | const[360] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[378].[wk:0x17b] | call21(undefined.[wk:0x17c]; PUSH_WK1().[wk:0x17d]).[wk:0x17e] | DUP() | desc-tpl | call21(const[383].[wk:0x17b]; undefined.[wk:0x17c]).[wk:0x180] | DUP() | desc-tpl | PUSH_WK1().[wk:0x181] | const[386].[wk:0x183] | call21(const[388].[wk:0x185]; globalThis.[wk:0x186]).[wk:0x187] | DUP() | desc-tpl | call21(const[392].[wk:0x17b]; undefined.[wk:0x17c]).[wk:0x189] | DUP() | desc-tpl | const[394].[wk:0x18b] | OP_be().[wk:0x181] | PUSH_WK2().[wk:0x18c] | const[397].[wk:0x18e] | PUSH_WK1().[wk:0x18f] | desc-tpl | DUP() | desc-tpl | PUSH_WK1().[wk:0x194] | call21(PUSH_WK1().[wk:0x186]; globalThis.[wk:0x195]).[wk:0x196] | DUP() | desc-tpl | call21(OP_be().[wk:0x197]; globalThis.[wk:0x186]).[wk:0x198] | DUP() | desc-tpl | const[409].[wk:0x19a] | call21(const[397].[wk:0x19b]; OP_bb().[wk:0x19c]).[wk:0x19d] | DUP() | desc-tpl | const[414].[wk:0x17b] | undefined.[wk:0x17c] | call21(PUSH_WK1().[wk:0x194]; PUSH_WK1().[wk:0x186]).[wk:0x19f] | DUP() | desc-tpl | const[414].[wk:0x17b] | call21(const[416].[wk:0x17c]; OP_be().[wk:0x1a1]).[wk:0x1a2] | objlit[caption](undefined).[wk:0x17e] | DUP() | desc-tpl | const[409].[wk:0x19a] | const[397].[wk:0x19b] | OP_be().[wk:0x1a3] | OP_be().[wk:0x1a4] | OP_be().[wk:0x181] | call21(const[421].[wk:0x185]; globalThis.[wk:0x186]).[wk:0x1a6] | DUP() | desc-tpl | const[383].[wk:0x17b] | undefined.[wk:0x17c] | call21(PUSH_WK1().[wk:0x194]; PUSH_WK1().[wk:0x186]).[wk:0x1a7] | DUP() | desc-tpl | const[409].[wk:0x19a] | const[397].[wk:0x19b] | PUSH_WK2().[wk:0x197] | OP_bb().[wk:0x18c] | call21(const[424].[wk:0x185]; const[425].[wk:0x1aa]).[wk:0x1ab] | DUP() | desc-tpl | OP_be().[wk:0x181] | OP_be().[wk:0x1ac] | OP_be().[wk:0x1a3] | OP_be().[wk:0x1a4] | const[397].[wk:0x18e] | call21(const[397].[wk:0x19b]; OP_b9().[wk:0x18c]).[wk:0x1ad] | objlit[controlLabel](undefined).[wk:0x180] | objlit[controlLabel](undefined).extend | desc-tpl(const[431].[wk:0x17c]).[wk:0x1b0] | DUP() | desc-tpl | const[378].[wk:0x17b] | undefined.[wk:0x17c] | call21(OP_be().[wk:0x1a1]; OP_be().[wk:0x1b1]).[wk:0x1b2] | DUP() | desc-tpl | OP_be().[wk:0x197] | call21(const[435].[wk:0x185]; globalThis.[wk:0x186]).[wk:0x1b4] | DUP() | desc-tpl | const[378].[wk:0x17b] | call21(const[437].[wk:0x17c]; globalThis.[wk:0x17d]).[wk:0x1b6] | DUP() | desc-tpl | PUSH_WK1().[wk:0x194] | PUSH_WK1().[wk:0x186] | undefined.[wk:0x1b7] | OP_be().[wk:0x195] | call21(const[440].[wk:0x185]; const[441].[wk:0x1ba]).[wk:0x1bb] | DUP() | desc-tpl | !(globalThis).[wk:0x1bc] | const[386].[wk:0x183] | call21(const[386].[wk:0x181]; !(PUSH_WK1()).[wk:0x1bd]).[wk:0x1be] | DUP() | desc-tpl | call21(globalThis.[wk:0x186]; const[447].[wk:0x1c0]).[wk:0x1c1] | DUP() | desc-tpl | undefined.[wk:0x181] | call21(const[421].[wk:0x185]; globalThis.[wk:0x186]).[wk:0x1c2] | objlit[separator](undefined).[wk:0x187] | objlit[separator](undefined).extend | desc-tpl | const[394].[wk:0x18b](globalThis.[wk:0x1c3]).[wk:0x1c4] | DUP() | desc-tpl | const[394].[wk:0x18b] | globalThis.[wk:0x1c5] | undefined.[wk:0x181] | call21(undefined.[wk:0x183]; const[397].[wk:0x18e]).[wk:0x1c6] | objlit[tick](undefined).[wk:0x189] | objlit[tick](undefined).extend | desc-tpl(const[455].[wk:0x1c8]).[wk:0x1c9] | DUP() | desc-tpl | call21(globalThis.[wk:0x186]; !(PUSH_WK1()).[wk:0x1bd]).[wk:0x1ca] | DUP() | desc-tpl | call21(globalThis.[wk:0x186]; const[459].[wk:0x18b]).[wk:0x1cc] | DUP() | desc-tpl | const[394].[wk:0x18b] | globalThis.[wk:0x1c5] | PUSH_WK1().[wk:0x183] | const[386].[wk:0x181] | call21(const[461].[wk:0x185]; !(PUSH_WK1()).[wk:0x1ce]).[wk:0x1cf] | DUP() | desc-tpl | const[394].[wk:0x18b] | globalThis.[wk:0x1c5] | const[386].[wk:0x181] | call21(const[464].[wk:0x185]; !(PUSH_WK1()).[wk:0x1ce]).[wk:0x1d1] | objlit[bar](undefined).extend | desc-tpl | undefined.[wk:0x191] | PUSH_WK2().[wk:0x18f](const[466].[wk:0x185]).[wk:0x1d3] | DUP() | desc-tpl | const[468].[wk:0x17b] | undefined.[wk:0x17c] | OP_bc().[wk:0x1a1] | call21(OP_bc().[wk:0x1b1]; PUSH_WK1().[wk:0x17d]).[wk:0x1d5] | DUP() | desc-tpl | undefined.[wk:0x1b7] | PUSH_WK1().[wk:0x186] | globalThis.[wk:0x195] | call21(const[424].[wk:0x185]; const[470].[wk:0x1ba]).[wk:0x1d7] | DUP() | desc-tpl | const[409].[wk:0x19a] | const[397].[wk:0x19b] | OP_be().[wk:0x181] | globalThis.[wk:0x186] | call21(OP_be().[wk:0x1a3]; OP_be().[wk:0x1a4]).[wk:0x1d8] | DUP() | desc-tpl | const[386].[wk:0x181] | call21(const[397].[wk:0x18e]; OP_be().[wk:0x1b1]).[wk:0x1d9] | DUP() | desc-tpl | const[394].[wk:0x18b] | globalThis.[wk:0x1c3] | const[386].[wk:0x183] | call21(PUSH_WK2().[wk:0x181]; undefined.[wk:0x185]).[wk:0x1da] | DUP() | desc-tpl | call21(const[383].[wk:0x17b]; undefined.[wk:0x17c]).[wk:0x1db] | objlit[caption](undefined).extend | desc-tpl(PUSH_WK1().[wk:0x194]).[wk:0x1dc] | DUP() | desc-tpl | PUSH_WK1().[wk:0x194] | PUSH_WK1().[wk:0x186] | call21(globalThis.[wk:0x195]; const[386].[wk:0x183]).[wk:0x1dd] | DUP() | call21(desc-tpl; OP_be().[wk:0x197]).[wk:0x1de] | DUP() | desc-tpl | const[479].[wk:0x17b] | undefined.[wk:0x17c] | call21(globalThis.[wk:0x17d]; OP_be().[wk:0x19c]).[wk:0x1e0] | DUP() | desc-tpl | call21(const[409].[wk:0x19a]; OP_be().[wk:0x19c]).[wk:0x1e1] | DUP() | desc-tpl | PUSH_WK1().[wk:0x194] | call21(globalThis.[wk:0x1b7]; OP_be().[wk:0x1b1]).[wk:0x1e2] | DUP() | desc-tpl | const[392].[wk:0x17b] | call21(undefined.[wk:0x17c]; OP_b9().[wk:0x19c]).[wk:0x1e3] | DUP() | desc-tpl | call21(const[383].[wk:0x17b]; undefined.[wk:0x17c]).[wk:0x1e4] | DUP() | desc-tpl | PUSH_WK1().[wk:0x194] | const[397].[wk:0x18e] | call21(const[397].[wk:0x19b]; OP_be().[wk:0x197]).[wk:0x1e5] | DUP() | desc-tpl | const[383].[wk:0x17b] | undefined.[wk:0x17c] | call21(OP_bc().[wk:0x19c]; const[397].[wk:0x1c8]).[wk:0x1e6] | DUP() | desc-tpl | const[378].[wk:0x17b] | undefined.[wk:0x17c] | call21(globalThis.[wk:0x17d]; const[397].[wk:0x1c8]).[wk:0x1e7]
+  // stack@INIT-END: fn:'V' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 'n' | 'l' | 'd' | 's' | 'a' | 'y' | 'b' | 'h' | 'u' | 'S' | 'g' | 'c' | 'm' | 'v' | 'p' | 'w' | 'R' | 'A' | 'k' | 'f' | 'N' | 'x' | 'W' | 'C' | 'K' | 'P' | 'T' | 'F' | const[2188387585] | const[2221942273] | const[2255496961] | const[2289051649] | const[2322606337] | const[2356161025] | const[2389715713] | const[2423270401] | const[2456825089] | const[2490379777] | const[2523934465] | const[2557489153] | const[2591043841] | const[2624598529] | const[2658153217] | const[2691707905] | const[2721068289] | const[2754622977] | const[2792371969] | const[2825926657] | const[2859481345] | const[2893036033] | const[2922396417] | const[2960145409] | const[2989505793] | const[3023060481] | const[3056615169] | const[3090169857] | const[3127918849] | const[3158310912] | const[3962587138] | const[034470bc] | const[3189785089] | const[3228583425] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[297] | undefined.makeNodePrototype | const[297] | undefined.makeNodePrototype | const[297] | undefined.makeNodePrototype | const[297] | undefined.makeNodePrototype | const[297] | param[0] | param[0] | param[0] | param[0] | const[357] | const[358] | const[359] | const[360] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[378].[wk:0x17b] | call21(undefined.[wk:0x17c]; PUSH_WK1().[wk:0x17d]).[wk:0x17e] | DUP() | desc-tpl | call21(const[383].[wk:0x17b]; undefined.[wk:0x17c]).[wk:0x180] | DUP() | desc-tpl | PUSH_WK1().[wk:0x181] | const[386].[wk:0x183] | call21(const[388].[wk:0x185]; globalThis.[wk:0x186]).[wk:0x187] | DUP() | desc-tpl | call21(const[392].[wk:0x17b]; undefined.[wk:0x17c]).[wk:0x189] | DUP() | desc-tpl | const[394].[wk:0x18b] | PUSH_I8().[wk:0x181] | PUSH_WK2().[wk:0x18c] | const[397].[wk:0x18e] | PUSH_WK1().[wk:0x18f] | desc-tpl | DUP() | desc-tpl | PUSH_WK1().[wk:0x194] | call21(PUSH_WK1().[wk:0x186]; globalThis.[wk:0x195]).[wk:0x196] | DUP() | desc-tpl | call21(PUSH_I8().[wk:0x197]; globalThis.[wk:0x186]).[wk:0x198] | DUP() | desc-tpl | const[409].[wk:0x19a] | call21(const[397].[wk:0x19b]; OP_bb().[wk:0x19c]).[wk:0x19d] | DUP() | desc-tpl | const[414].[wk:0x17b] | undefined.[wk:0x17c] | call21(PUSH_WK1().[wk:0x194]; PUSH_WK1().[wk:0x186]).[wk:0x19f] | DUP() | desc-tpl | const[414].[wk:0x17b] | call21(const[416].[wk:0x17c]; PUSH_I8().[wk:0x1a1]).[wk:0x1a2] | objlit[caption](undefined).[wk:0x17e] | DUP() | desc-tpl | const[409].[wk:0x19a] | const[397].[wk:0x19b] | PUSH_I8().[wk:0x1a3] | PUSH_I8().[wk:0x1a4] | PUSH_I8().[wk:0x181] | call21(const[421].[wk:0x185]; globalThis.[wk:0x186]).[wk:0x1a6] | DUP() | desc-tpl | const[383].[wk:0x17b] | undefined.[wk:0x17c] | call21(PUSH_WK1().[wk:0x194]; PUSH_WK1().[wk:0x186]).[wk:0x1a7] | DUP() | desc-tpl | const[409].[wk:0x19a] | const[397].[wk:0x19b] | PUSH_WK2().[wk:0x197] | OP_bb().[wk:0x18c] | call21(const[424].[wk:0x185]; const[425].[wk:0x1aa]).[wk:0x1ab] | DUP() | desc-tpl | PUSH_I8().[wk:0x181] | PUSH_I8().[wk:0x1ac] | PUSH_I8().[wk:0x1a3] | PUSH_I8().[wk:0x1a4] | const[397].[wk:0x18e] | call21(const[397].[wk:0x19b]; OP_b9().[wk:0x18c]).[wk:0x1ad] | objlit[controlLabel](undefined).[wk:0x180] | objlit[controlLabel](undefined).extend | desc-tpl(const[431].[wk:0x17c]).[wk:0x1b0] | DUP() | desc-tpl | const[378].[wk:0x17b] | undefined.[wk:0x17c] | call21(PUSH_I8().[wk:0x1a1]; PUSH_I8().[wk:0x1b1]).[wk:0x1b2] | DUP() | desc-tpl | PUSH_I8().[wk:0x197] | call21(const[435].[wk:0x185]; globalThis.[wk:0x186]).[wk:0x1b4] | DUP() | desc-tpl | const[378].[wk:0x17b] | call21(const[437].[wk:0x17c]; globalThis.[wk:0x17d]).[wk:0x1b6] | DUP() | desc-tpl | PUSH_WK1().[wk:0x194] | PUSH_WK1().[wk:0x186] | undefined.[wk:0x1b7] | PUSH_I8().[wk:0x195] | call21(const[440].[wk:0x185]; const[441].[wk:0x1ba]).[wk:0x1bb] | DUP() | desc-tpl | !(globalThis).[wk:0x1bc] | const[386].[wk:0x183] | call21(const[386].[wk:0x181]; !(PUSH_WK1()).[wk:0x1bd]).[wk:0x1be] | DUP() | desc-tpl | call21(globalThis.[wk:0x186]; const[447].[wk:0x1c0]).[wk:0x1c1] | DUP() | desc-tpl | undefined.[wk:0x181] | call21(const[421].[wk:0x185]; globalThis.[wk:0x186]).[wk:0x1c2] | objlit[separator](undefined).[wk:0x187] | objlit[separator](undefined).extend | desc-tpl | const[394].[wk:0x18b](globalThis.[wk:0x1c3]).[wk:0x1c4] | DUP() | desc-tpl | const[394].[wk:0x18b] | globalThis.[wk:0x1c5] | undefined.[wk:0x181] | call21(undefined.[wk:0x183]; const[397].[wk:0x18e]).[wk:0x1c6] | objlit[tick](undefined).[wk:0x189] | objlit[tick](undefined).extend | desc-tpl(const[455].[wk:0x1c8]).[wk:0x1c9] | DUP() | desc-tpl | call21(globalThis.[wk:0x186]; !(PUSH_WK1()).[wk:0x1bd]).[wk:0x1ca] | DUP() | desc-tpl | call21(globalThis.[wk:0x186]; const[459].[wk:0x18b]).[wk:0x1cc] | DUP() | desc-tpl | const[394].[wk:0x18b] | globalThis.[wk:0x1c5] | PUSH_WK1().[wk:0x183] | const[386].[wk:0x181] | call21(const[461].[wk:0x185]; !(PUSH_WK1()).[wk:0x1ce]).[wk:0x1cf] | DUP() | desc-tpl | const[394].[wk:0x18b] | globalThis.[wk:0x1c5] | const[386].[wk:0x181] | call21(const[464].[wk:0x185]; !(PUSH_WK1()).[wk:0x1ce]).[wk:0x1d1] | objlit[bar](undefined).extend | desc-tpl | undefined.[wk:0x191] | PUSH_WK2().[wk:0x18f](const[466].[wk:0x185]).[wk:0x1d3] | DUP() | desc-tpl | const[468].[wk:0x17b] | undefined.[wk:0x17c] | OP_bc().[wk:0x1a1] | call21(OP_bc().[wk:0x1b1]; PUSH_WK1().[wk:0x17d]).[wk:0x1d5] | DUP() | desc-tpl | undefined.[wk:0x1b7] | PUSH_WK1().[wk:0x186] | globalThis.[wk:0x195] | call21(const[424].[wk:0x185]; const[470].[wk:0x1ba]).[wk:0x1d7] | DUP() | desc-tpl | const[409].[wk:0x19a] | const[397].[wk:0x19b] | PUSH_I8().[wk:0x181] | globalThis.[wk:0x186] | call21(PUSH_I8().[wk:0x1a3]; PUSH_I8().[wk:0x1a4]).[wk:0x1d8] | DUP() | desc-tpl | const[386].[wk:0x181] | call21(const[397].[wk:0x18e]; PUSH_I8().[wk:0x1b1]).[wk:0x1d9] | DUP() | desc-tpl | const[394].[wk:0x18b] | globalThis.[wk:0x1c3] | const[386].[wk:0x183] | call21(PUSH_WK2().[wk:0x181]; undefined.[wk:0x185]).[wk:0x1da] | DUP() | desc-tpl | call21(const[383].[wk:0x17b]; undefined.[wk:0x17c]).[wk:0x1db] | objlit[caption](undefined).extend | desc-tpl(PUSH_WK1().[wk:0x194]).[wk:0x1dc] | DUP() | desc-tpl | PUSH_WK1().[wk:0x194] | PUSH_WK1().[wk:0x186] | call21(globalThis.[wk:0x195]; const[386].[wk:0x183]).[wk:0x1dd] | DUP() | call21(desc-tpl; PUSH_I8().[wk:0x197]).[wk:0x1de] | DUP() | desc-tpl | const[479].[wk:0x17b] | undefined.[wk:0x17c] | call21(globalThis.[wk:0x17d]; PUSH_I8().[wk:0x19c]).[wk:0x1e0] | DUP() | desc-tpl | call21(const[409].[wk:0x19a]; PUSH_I8().[wk:0x19c]).[wk:0x1e1] | DUP() | desc-tpl | PUSH_WK1().[wk:0x194] | call21(globalThis.[wk:0x1b7]; PUSH_I8().[wk:0x1b1]).[wk:0x1e2] | DUP() | desc-tpl | const[392].[wk:0x17b] | call21(undefined.[wk:0x17c]; OP_b9().[wk:0x19c]).[wk:0x1e3] | DUP() | desc-tpl | call21(const[383].[wk:0x17b]; undefined.[wk:0x17c]).[wk:0x1e4] | DUP() | desc-tpl | PUSH_WK1().[wk:0x194] | const[397].[wk:0x18e] | call21(const[397].[wk:0x19b]; PUSH_I8().[wk:0x197]).[wk:0x1e5] | DUP() | desc-tpl | const[383].[wk:0x17b] | undefined.[wk:0x17c] | call21(OP_bc().[wk:0x19c]; const[397].[wk:0x1c8]).[wk:0x1e6] | DUP() | desc-tpl | const[378].[wk:0x17b] | undefined.[wk:0x17c] | call21(globalThis.[wk:0x17d]; const[397].[wk:0x1c8]).[wk:0x1e7]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -543,7 +543,7 @@
   // discard(LOAD_61().U)
   // op 0x68 PUSH_STR2 [~]
   jcc-0xeb → @9861
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jmp → @9928
   // op 0xc2 LOCAL_OP2 [?]
   // op 0xe0 CLOSURE_CTX_C [~]
@@ -628,12 +628,12 @@
   // op 0xc7 PUSH_C7 [~]
   // discard(PUSH_C7().renderTrace())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0x25 idx=12 | OP_c0() | num[167877120] | objlit[builtin#54](objlit[event](param[0])).startsWith(PUSH_STR2()) | objlit[builtin#54](objlit[event](param[0])).slice(OP_be()) | objlit[builtin#54](objlit[event](param[0])).[wk:0x129] | LOCAL_OP2().builtin#92 | OP_9f() | num[28770306] | OP10() | call25(call25(OP_77(); objlit[event](CLOSURE_CTX_B())).U; param[0], ADD()) | str?flags=0x2c idx=0 | str?flags=0x0 idx=0.U | load[auxbc03] | str?flags=0xd idx=190 | load[auxc003] | PATCH_REF_LOAD() | PUSH_STR2().setAttributeString | PUSH_STR2().setAttributeString | const[64] | LOCAL_OP2().builtin#92 | objlit[synchronous](undefined) | const[526] | PUSH_STR2().endRender()
+  // stack@INIT-END: str?flags=0x25 idx=12 | OP_c0() | num[167877120] | objlit[builtin#54](objlit[event](param[0])).startsWith(PUSH_STR2()) | objlit[builtin#54](objlit[event](param[0])).slice(PUSH_I8()) | objlit[builtin#54](objlit[event](param[0])).[wk:0x129] | LOCAL_OP2().builtin#92 | OP_9f() | num[28770306] | OP10() | call25(call25(OP_77(); objlit[event](CLOSURE_CTX_B())).U; param[0], ADD()) | str?flags=0x2c idx=0 | str?flags=0x0 idx=0.U | load[auxbc03] | str?flags=0xd idx=190 | load[auxc003] | PATCH_REF_LOAD() | PUSH_STR2().setAttributeString | PUSH_STR2().setAttributeString | const[64] | LOCAL_OP2().builtin#92 | objlit[synchronous](undefined) | const[526] | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // discard(OP_44())
+  // discard(META_RECORD44())
   locop 0xca(?.U)
   // op 0xd0 OP_d0 [?]
   // discard(str?flags=0xd idx=13)
@@ -876,7 +876,7 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x9d OP_9d [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   local[9] = pool[153].max(undefined, ADD());
   // op 0x68 PUSH_STR2 [~]
@@ -1048,7 +1048,7 @@
   // op 0xdd OP_dd [?]
   …(pad)
   // discard(const[02c60000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   locop 0xca(objlit[event](param[0]))
@@ -1110,7 +1110,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().endRender())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_dd().U | OP_be() | str?flags=0xd idx=184 | load[f0] | str?flags=0x7 idx=12 | num[84132364] | load[auxc003] | const[134522893] | load[f2] | str?flags=0x9 idx=12 | DECL_SLOT() | PUSH_STR2() | PUSH_STR2().setAttributeStyle | const[522] | PUSH_STR2().setAttributeNumber | const[387] | pool[153].max | PUSH_STR2().endRender()
+  // stack@INIT-END: OP_dd().U | PUSH_I8() | str?flags=0xd idx=184 | load[f0] | str?flags=0x7 idx=12 | num[84132364] | load[auxc003] | const[134522893] | load[f2] | str?flags=0x9 idx=12 | DECL_SLOT() | PUSH_STR2() | PUSH_STR2().setAttributeStyle | const[522] | PUSH_STR2().setAttributeNumber | const[387] | pool[153].max | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1208,7 +1208,7 @@
   // stack@INIT-END: OP_20() | load[auxf803] | call21(?) | str?flags=0x22 idx=13 | call23(?) | str?flags=0x24 idx=13 | call25(?) | const[3406302502] | DECL_SLOT() | PUSH_STR2().setAttributeString | const[64] | undefined | PUSH_WK1() | objlit[kind](undefined) | undefined | PUSH_C7().renderEventDetails(undefined) | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x84 OP_84 [?]
   …(pad)
@@ -1251,7 +1251,7 @@
   // op 0xc2 LOCAL_OP2 [?]
   // op 0xc6 PUSH_THIS [~]
   // op 0x9e OP_9e [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9d OP_9d [?]
   // op 0xb7 PUSH_WK1 [~]
   // discard(PUSH_THIS().renderField(const[567], LOCAL_OP2().builtin#92(OP_9d().toFixed(PUSH_WK1()), const[568])))

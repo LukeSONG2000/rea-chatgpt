@@ -107,11 +107,11 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.CollapsibleCard (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  local[30] = call21(const[310].[wk:0x138]; OP_be().[wk:0x139]);
+  // op 0xbe PUSH_I8 [~]
+  local[30] = call21(const[310].[wk:0x138]; PUSH_I8().[wk:0x139]);
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   local[31] = call21(objlit[SM](objlit[Spacing](undefined)).[wk:0x13e]; objlit[SM](objlit[Spacing](undefined)).[wk:0x13f]);
   // op 0x11 DUP [~]
   local[32] = call21(objlit[SUBHEADLINE_EMPHASIS](objlit[TextStyleFont](undefined)).[wk:0x142]; objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x146]);
@@ -122,7 +122,7 @@
   local[34] = call21(objlit[XS](objlit[Spacing](undefined)).[wk:0x13e]; objlit[XS](objlit[Spacing](undefined)).[wk:0x13f]);
   // op 0x11 DUP [~]
   local[35] = call21(desc-tpl; objlit[BODY](objlit[TextStyleFont](undefined)).[wk:0x142]);
-  // stack@INIT-END: APPLY_SPREAD() | const[00b20300] | const[00b40300] | const[00b60301] | OP30() | OP_ba() | 'module' | 'exports' | 'e' | 't' | 'o' | 'i' | 'n' | 'r' | 's' | 'd' | 'a' | 'l' | 'p' | 'h' | 'g' | 'c' | 'u' | 'C' | 'y' | 'm' | 'S' | 'w' | 'b' | str?flags=0x0 idx=0 | 'v' | str?flags=0x2 idx=36 | const[031c70ec] | 'M' | 'R' | 'CollapsibleCard' | 'N' | 'f' | OP_20() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[259] | undefined.makeComponentPrototype | const[275] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | local[0] | desc-tpl | DECL_SLOT() | CLASS_CONSTRUCT() | DUP() | desc-tpl | const[308].[wk:0x135] | const[310].[wk:0x137] | DUP() | desc-tpl | OP_be().[wk:0x13a] | OP_be().[wk:0x13b] | DUP() | desc-tpl | DUP() | desc-tpl | DUP() | desc-tpl | objlit[PRIMARY](objlit[Brand](objlit[SemanticColor](undefined))).[wk:0x148] | OP_ba().[wk:0x149] | objlit[XXS](objlit[Spacing](undefined)).[wk:0x13a] | objlit[XXS](objlit[Spacing](undefined)).[wk:0x13b] | DUP()
+  // stack@INIT-END: APPLY_SPREAD() | const[00b20300] | const[00b40300] | const[00b60301] | OP30() | OP_ba() | 'module' | 'exports' | 'e' | 't' | 'o' | 'i' | 'n' | 'r' | 's' | 'd' | 'a' | 'l' | 'p' | 'h' | 'g' | 'c' | 'u' | 'C' | 'y' | 'm' | 'S' | 'w' | 'b' | str?flags=0x0 idx=0 | 'v' | str?flags=0x2 idx=36 | const[031c70ec] | 'M' | 'R' | 'CollapsibleCard' | 'N' | 'f' | OP_20() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[259] | undefined.makeComponentPrototype | const[275] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | local[0] | desc-tpl | DECL_SLOT() | CLASS_CONSTRUCT() | DUP() | desc-tpl | const[308].[wk:0x135] | const[310].[wk:0x137] | DUP() | desc-tpl | PUSH_I8().[wk:0x13a] | PUSH_I8().[wk:0x13b] | DUP() | desc-tpl | DUP() | desc-tpl | DUP() | desc-tpl | objlit[PRIMARY](objlit[Brand](objlit[SemanticColor](undefined))).[wk:0x148] | OP_ba().[wk:0x149] | objlit[XXS](objlit[Spacing](undefined)).[wk:0x13a] | objlit[XXS](objlit[Spacing](undefined)).[wk:0x13b] | DUP()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // discard(v06)
@@ -355,7 +355,7 @@
   // op 0x2a OP_2a [?]
   // op 0xe4 CLASS_DEF_POP [~]
   // discard(CLASS_DEF_POP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   // op 0x09 PUSH_D [~]
   // op 0x0f OP_0f [?]
@@ -382,7 +382,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0x61 LOAD_61 [?]
   // op 0xf1 OP_f1 [?]
-  // stack@INIT-END: coerce(?.button) | 'l' | const[e003050c] | OP_be() | v06 | load[b6] | str?flags=0x0 idx=13 | PUSH_B() | load[ee] | str?flags=0x8 idx=12 | PUSH_D() | load[f4] | str?flags=0xa idx=12 | desc-tpl | load[c8] | str?flags=0xc idx=12 | OP_0f() | load[cc] | DUP() | objlit[when](PUSH_STR2()) | LOAD_61().getShouldShowButton() | OP_f1()
+  // stack@INIT-END: coerce(?.button) | 'l' | const[e003050c] | PUSH_I8() | v06 | load[b6] | str?flags=0x0 idx=13 | PUSH_B() | load[ee] | str?flags=0x8 idx=12 | PUSH_D() | load[f4] | str?flags=0xa idx=12 | desc-tpl | load[c8] | str?flags=0xc idx=12 | OP_0f() | load[cc] | DUP() | objlit[when](PUSH_STR2()) | LOAD_61().getShouldShowButton() | OP_f1()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x7d OP_7d [?]
@@ -558,7 +558,7 @@
   // op 0xa6 LT [~]
   …(pad)
   // discard(const[02cc0000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(globalThis)
   // op 0xc3 LOAD_M3 [~]
@@ -600,7 +600,7 @@
   // op 0x66 STR_OP [~]
   // discard(STR_OP())
   // op 0xee OP_ee [?]
-  // stack@INIT-END: LT() | const[02009801] | num[2566939349].button | OP_be() | 'N' | str?flags=0x2 idx=32 | str?flags=0x3 idx=32 | const[0008c404] | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[0] | STR_OP() | OP_ee()
+  // stack@INIT-END: LT() | const[02009801] | num[2566939349].button | PUSH_I8() | 'N' | str?flags=0x2 idx=32 | str?flags=0x3 idx=32 | const[0008c404] | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[0] | STR_OP() | OP_ee()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x3d OP_3d [?]
@@ -802,9 +802,9 @@
   // op 0x17 OP_17 [?]
   …(pad)
   // op 0x51 OP_51 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // stack@INIT-END: OP_51() | OP_44()()
+  // stack@INIT-END: OP_51() | META_RECORD44()()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xbc OP_bc [?]

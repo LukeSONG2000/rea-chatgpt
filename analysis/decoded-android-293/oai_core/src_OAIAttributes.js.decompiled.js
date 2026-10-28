@@ -234,7 +234,7 @@
   // discard(num[34050])
 
   // ---- FUNCTION-UNIT: 'accessibilityLabel' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // trailer 0xae
   jcc-0xeb → @2704
@@ -246,7 +246,7 @@
   EXPORTS.marginBottom (seq 2) = OP_5e();  // param[0]
   // op 0x5e OP_5e [?]
   EXPORTS.marginLeft (seq 3) = OP_5e();  // param[0]
-  // stack@INIT-END: fn:'accessibilityLabel' | OP_be() | const[00c00300] | const[00041601] | param[1]
+  // stack@INIT-END: fn:'accessibilityLabel' | PUSH_I8() | const[00c00300] | const[00041601] | param[1]
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.paddingTop (seq 4) = PUSH_EXPORTS();  // param[0]

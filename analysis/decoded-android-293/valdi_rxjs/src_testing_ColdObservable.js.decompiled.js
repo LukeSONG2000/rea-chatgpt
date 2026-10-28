@@ -2,7 +2,7 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0xba OP_ba [?]
@@ -34,7 +34,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.ColdObservable (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0xf1 OP_f1 [?]
-  // stack@INIT-END: OP_44() | OP30() | OP_ba() | 'module' | 'exports' | 'e' | str?flags=0x2 idx=8 | const[030670c0] | 's' | PUSH_B() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | objlit[applyMixins](undefined) | undefined | objlit[SubscriptionLoggable](undefined) | OP_f1()
+  // stack@INIT-END: META_RECORD44() | OP30() | OP_ba() | 'module' | 'exports' | 'e' | str?flags=0x2 idx=8 | const[030670c0] | 's' | PUSH_B() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | objlit[applyMixins](undefined) | undefined | objlit[SubscriptionLoggable](undefined) | OP_f1()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

@@ -8,7 +8,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   local[4] = local[0];
   // op 0x64 DECL_SLOT [~]
@@ -23,7 +23,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc9 PUSH_C9 [~]
   EXPORTS.distinctUntilChanged (seq 1) = PUSH_C9();  // PUSH_EXPORTS()
-  // stack@INIT-END: 'exports' | OP30() | str?flags=0x5 idx=3 | num[61868151] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP_be() | const[3439378752] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0]
+  // stack@INIT-END: 'exports' | OP30() | str?flags=0x5 idx=3 | num[61868151] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | PUSH_I8() | const[3439378752] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x18 TRIPLE_OP [?]

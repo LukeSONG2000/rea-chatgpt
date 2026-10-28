@@ -44,13 +44,13 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.TimePicker (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   local[15] = call21(desc-tpl; const[261].[wk:0x106]).[wk:0xf4];
-  // stack@INIT-END: OP_82() | const[0e430601] | str?flags=0x10 idx=3 | const[2954036616] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 's' | 'o' | str?flags=0x2 idx=16 | const[030b70ca] | 'n' | str?flags=0x0 idx=0 | str?flags=0x0 idx=14 | 'd' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[237] | const[238] | const[239] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | call21(OP_be().[wk:0xfe]; OP_be().[wk:0xff]).[wk:0x100] | DUP() | desc-tpl | const[257].[wk:0x102] | call21(const[257].[wk:0x103]; OP_be().[wk:0xfe]).[wk:0x104] | DUP()
+  // stack@INIT-END: OP_82() | const[0e430601] | str?flags=0x10 idx=3 | const[2954036616] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 's' | 'o' | str?flags=0x2 idx=16 | const[030b70ca] | 'n' | str?flags=0x0 idx=0 | str?flags=0x0 idx=14 | 'd' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[237] | const[238] | const[239] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | call21(PUSH_I8().[wk:0xfe]; PUSH_I8().[wk:0xff]).[wk:0x100] | DUP() | desc-tpl | const[257].[wk:0x102] | call21(const[257].[wk:0x103]; PUSH_I8().[wk:0xfe]).[wk:0x104] | DUP()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x86 OP_86 [?]
@@ -255,12 +255,12 @@
   // op 0x11 DUP [~]
   jcc-0xec → @4292
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa8 OP_A8 [?]
   // op 0x11 DUP [~]
   jcc-0xec → @4292
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9f OP_9f [?]
   // op 0xad OP_ad [?]
   jcc-0xeb → @4309

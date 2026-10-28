@@ -212,8 +212,8 @@
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @2253
   // discard(OP_b3())
-  // op 0xbe OP_be [?]
-  local[6] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[6] = PUSH_I8();
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @2299

@@ -108,7 +108,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x81 OP_81 [?]
   // op 0xee OP_ee [?]
   locop 0xca(OP_ee())
@@ -154,7 +154,7 @@
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: 'i' | push79 | v06 | OP_b4() | const[3b0e4306] | const[bc030203] | num[4278190597] | const[05b60300] | const[00b80300] | const[00ba0301] | OP30() | LOCAL_OP2() | 'module' | str?flags=0x4 idx=1 | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | desc-tpl | const[228].[wk:0x36] | const[229].[wk:0xe6] | PUSH_WK1().[wk:0xe7] | globalThis.[wk:0xe8] | desc-tpl | const[233].[wk:0x36].[wk:0xea] | desc-tpl | const[235].[wk:0x36] | const[229].[wk:0xe6] | PUSH_WK1().[wk:0xe7] | PUSH_WK1().[wk:0xe8] | desc-tpl | const[236].[wk:0x36].[wk:0xea] | desc-tpl | const[235].[wk:0x36] | OP_87() | undefined | fn:'builtin#262' | OP_be() | num[62402560] | str?flags=0x1 idx=48 | v06 | OP_81() | DECL_SLOT() | DUP() | globalThis | param[0].push | desc-tpl | LOCAL_OP2().[wk:0x36] | const[247].[wk:0xe6] | PUSH_WK1().[wk:0xe7] | DUP() | PUSH_WK1() | param[0].push | desc-tpl | const[249].[wk:0xe6] | PUSH_WK1().[wk:0xe7] | DUP() | META_OP6C() | param[0].push | OP_87()
+  // stack@INIT-END: 'i' | push79 | v06 | OP_b4() | const[3b0e4306] | const[bc030203] | num[4278190597] | const[05b60300] | const[00b80300] | const[00ba0301] | OP30() | LOCAL_OP2() | 'module' | str?flags=0x4 idx=1 | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | desc-tpl | const[228].[wk:0x36] | const[229].[wk:0xe6] | PUSH_WK1().[wk:0xe7] | globalThis.[wk:0xe8] | desc-tpl | const[233].[wk:0x36].[wk:0xea] | desc-tpl | const[235].[wk:0x36] | const[229].[wk:0xe6] | PUSH_WK1().[wk:0xe7] | PUSH_WK1().[wk:0xe8] | desc-tpl | const[236].[wk:0x36].[wk:0xea] | desc-tpl | const[235].[wk:0x36] | OP_87() | undefined | fn:'builtin#262' | PUSH_I8() | num[62402560] | str?flags=0x1 idx=48 | v06 | OP_81() | DECL_SLOT() | DUP() | globalThis | param[0].push | desc-tpl | LOCAL_OP2().[wk:0x36] | const[247].[wk:0xe6] | PUSH_WK1().[wk:0xe7] | DUP() | PUSH_WK1() | param[0].push | desc-tpl | const[249].[wk:0xe6] | PUSH_WK1().[wk:0xe7] | DUP() | META_OP6C() | param[0].push | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]

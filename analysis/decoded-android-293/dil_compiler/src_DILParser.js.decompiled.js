@@ -35,7 +35,7 @@
   // op 0x6a OP_6a [?]
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   locop 0xca(v06)
   // op 0x6f OP_6f [?]
   // op 0x11 DUP [~]
@@ -166,7 +166,7 @@
   // trailer 0xae
   jcc-0xeb → @1433
   // op 0x2f OP_2f [?]
-  // stack@INIT-END: fn:'builtin#262' | str?flags=0xb6 idx=3 | OP_be() | OP_6f() | DUP() | desc-tpl | const[235].[wk:0xec] | OP_e2() | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'r' | 'e' | str?flags=0x6 idx=6 | str?flags=0x7 idx=7 | str?flags=0x7 idx=8 | 'parseDILJson' | v06 | const[c4030701] | OP_c0() | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_ac() | objlit[getDILNodeValidationError](PUSH_STR2()) | param[0] | EQ_STRICT() | call23(CLOSURE_CTX_B(); undefined, PUSH_EXPORTS(), OP_d5()) | v06 | PUSH_B() | objlit[children](undefined) | objlit[getDILChildrenValidationError](PUSH_STR2()) | objlit[children](undefined) | CLOSURE_CTX_C() | undefined | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | v06 | undefined | FN_PROLOGUE() | fn:'builtin#262' | PUSH_WK1() | objlit[errorMode](param[1]) | OP_2f() | param[1].reportError(param[0])
+  // stack@INIT-END: fn:'builtin#262' | str?flags=0xb6 idx=3 | PUSH_I8() | OP_6f() | DUP() | desc-tpl | const[235].[wk:0xec] | OP_e2() | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'r' | 'e' | str?flags=0x6 idx=6 | str?flags=0x7 idx=7 | str?flags=0x7 idx=8 | 'parseDILJson' | v06 | const[c4030701] | OP_c0() | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_ac() | objlit[getDILNodeValidationError](PUSH_STR2()) | param[0] | EQ_STRICT() | call23(CLOSURE_CTX_B(); undefined, PUSH_EXPORTS(), OP_d5()) | v06 | PUSH_B() | objlit[children](undefined) | objlit[getDILChildrenValidationError](PUSH_STR2()) | objlit[children](undefined) | CLOSURE_CTX_C() | undefined | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | v06 | undefined | FN_PROLOGUE() | fn:'builtin#262' | PUSH_WK1() | objlit[errorMode](param[1]) | OP_2f() | param[1].reportError(param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

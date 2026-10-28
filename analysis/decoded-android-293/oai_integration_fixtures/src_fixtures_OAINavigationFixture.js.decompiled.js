@@ -499,7 +499,7 @@
   // stack@INIT-END: OP_9e() | const[0200eb01] | num[33660416] | OP_2d() | PUSH_D() | DECL_SLOT() | call21(DUP(); undefined).present | PUSH_STR2() | desc-tpl | globalThis.[wk:0x1a0] | objlit[kind](param[0]).[wk:0x1a1] | desc-tpl | desc-tpl | !(globalThis).[wk:0x1a2](objlit[isPartiallyHiding](param[0]).[wk:0x1a6], const[445].[wk:0x1a4], objlit[wrapsInNavigationStack](param[0]).[wk:0x1a5], objlit[wrapsInNavigationStack](param[0]).[wk:0x1be])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   jcc-0xec → @7592
   // op 0x2f OP_2f [?]
@@ -582,7 +582,7 @@
   locop 0xcb(objlit[ModalPushed](CLOSURE_CTX_B()))
   // op 0x68 PUSH_STR2 [~]
   // op 0xe0 CLOSURE_CTX_C [~]
-  // stack@INIT-END: OP_44() | const[60e40100] | const[00e20100] | const[009a0100] | const[00880429] | OP_2f() | load[aux8204] | OP_88() | const[62259200] | const[00640100] | DECL_SLOT() | objlit[kind](objlit[viewModel](PUSH_STR2())) | objlit[Pushed](CLOSURE_CTX_B()) | objlit[Pushed](CLOSURE_CTX_B()) | objlit[navigationController](PUSH_STR2()).push | CLOSURE_CTX_C() | desc-tpl | undefined.[wk:0x1a0] | undefined.[wk:0x1a1] | desc-tpl(desc-tpl, !(globalThis).[wk:0x1a2], const[464].builtin#92(undefined).[wk:0x1a4], !(globalThis).[wk:0x1a5])
+  // stack@INIT-END: META_RECORD44() | const[60e40100] | const[00e20100] | const[009a0100] | const[00880429] | OP_2f() | load[aux8204] | OP_88() | const[62259200] | const[00640100] | DECL_SLOT() | objlit[kind](objlit[viewModel](PUSH_STR2())) | objlit[Pushed](CLOSURE_CTX_B()) | objlit[Pushed](CLOSURE_CTX_B()) | objlit[navigationController](PUSH_STR2()).push | CLOSURE_CTX_C() | desc-tpl | undefined.[wk:0x1a0] | undefined.[wk:0x1a1] | desc-tpl(desc-tpl, !(globalThis).[wk:0x1a2], const[464].builtin#92(undefined).[wk:0x1a4], !(globalThis).[wk:0x1a5])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xf9 OP_f9 [?]
@@ -994,7 +994,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   jcc-0xeb → @14775
   …(pad)
@@ -1055,11 +1055,11 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().setViewModelProperty(const[430], objlit[Sm](objlit[OAIControlSize](PUSH_STR2()))))
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0xae idx=1 | OP_be() | num[33660928] | num[33660928] | num[33660928] | OP_86() | const[66584872] | OP_1b() | load[aux08ca] | PUSH_STR2().endComponent()
+  // stack@INIT-END: str?flags=0xae idx=1 | PUSH_I8() | num[33660928] | num[33660928] | num[33660928] | OP_86() | const[66584872] | OP_1b() | load[aux08ca] | PUSH_STR2().endComponent()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   jcc-0xeb → @16167
   …(pad)
@@ -1097,7 +1097,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().setViewModelProperty(const[430], objlit[Sm](objlit[OAIControlSize](PUSH_STR2()))))
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0xb9 idx=1 | OP_be() | num[33660928] | OP_1d() | load[aux08ca] | PUSH_STR2().endComponent()
+  // stack@INIT-END: str?flags=0xb9 idx=1 | PUSH_I8() | num[33660928] | OP_1d() | load[aux08ca] | PUSH_STR2().endComponent()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

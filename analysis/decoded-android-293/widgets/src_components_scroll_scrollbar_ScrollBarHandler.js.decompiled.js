@@ -231,7 +231,7 @@
   // trailer 0xae
   // op 0x35 OP35 [?]
   // op 0xd0 OP_d0 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x08 PUSH_C [~]
   locop 0xca(PUSH_C())
   // op 0xc6 PUSH_THIS [~]
@@ -242,7 +242,7 @@
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.cachedOffsetsY (seq 0) = v06;  // PUSH_THIS()
   // op 0xc6 PUSH_THIS [~]
-  // stack@INIT-END: OP_da() | str?flags=0x7 idx=2 | str?flags=0x8 idx=3 | str?flags=0x1 idx=0 | 't' | 's' | const[00ba0302] | load[aux08c4] | PUSH_B() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | OP_3a() | OP_2b() | OP_2b() | OP_36() | CLOSURE_CTX_C() | const[020e4207] | const[00020002] | num[38141952] | globalThis | str?flags=0x20 idx=0 | const[0000000e].builtin#263 | PUSH_THIS() | PUSH_B() | const[00010301] | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | const[000100e2] | const[00010010] | const[20ec0107] | DECL_SLOT() | OP_2b() | OP10() | const[00b80301] | load[aux08cd] | DECL_SLOT() | OP_87() | OP_44() | const[00e60100] | const[000c04cb] | PUSH_THIS() | objlit[handler](PUSH_THIS()).invalidateLayout()
+  // stack@INIT-END: OP_da() | str?flags=0x7 idx=2 | str?flags=0x8 idx=3 | str?flags=0x1 idx=0 | 't' | 's' | const[00ba0302] | load[aux08c4] | PUSH_B() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | OP_3a() | OP_2b() | OP_2b() | OP_36() | CLOSURE_CTX_C() | const[020e4207] | const[00020002] | num[38141952] | globalThis | str?flags=0x20 idx=0 | const[0000000e].builtin#263 | PUSH_THIS() | PUSH_B() | const[00010301] | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | const[000100e2] | const[00010010] | const[20ec0107] | DECL_SLOT() | OP_2b() | OP10() | const[00b80301] | load[aux08cd] | DECL_SLOT() | OP_87() | META_RECORD44() | const[00e60100] | const[000c04cb] | PUSH_THIS() | objlit[handler](PUSH_THIS()).invalidateLayout()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x5f OP_5f [?]

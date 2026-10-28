@@ -16,8 +16,8 @@
   // stack@INIT-END: fn:'builtin#262' | DECL_SLOT() | pool[145].builtin#101 | param[0] | PUSH_EXPORTS()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0xbe OP_be [?]
-  // discard(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_I8())
   // op 0x08 PUSH_C [~]
   // op 0xc0 OP_c0 [?]
   …(pad)

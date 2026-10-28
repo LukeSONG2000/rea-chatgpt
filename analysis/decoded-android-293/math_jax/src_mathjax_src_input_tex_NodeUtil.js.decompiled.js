@@ -67,7 +67,7 @@
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x95 OP_95 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   // trailer 0xae
   …(pad)
@@ -297,7 +297,7 @@
   // op 0x07 PUSH_B [~]
   // trailer 0xae
   // op 0xd5 OP_d5 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xff OP_ff [?]
   // op 0x0f OP_0f [?]
   // op 0x20 OP_20 [?]

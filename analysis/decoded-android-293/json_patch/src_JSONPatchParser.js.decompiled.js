@@ -10,7 +10,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x08 PUSH_C [~]
   // op 0x40 OP_40 [?]
@@ -68,7 +68,7 @@
   local[6] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.JSONPatchParser (seq 1) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: 'e' | OP_bc() | OP_dd() | const[16b00300] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | OP_be() | num[32256007] | str?flags=0x5 idx=112 | const[0220c003] | const[246336] | OP_40() | PUSH_THIS() | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | str?flags=0x0 idx=12 | str?flags=0x0 idx=13 | str?flags=0x0 idx=14 | str?flags=0x0 idx=15 | str?flags=0x0 idx=16 | str?flags=0x0 idx=17 | str?flags=0x0 idx=18 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | CLASS_CONSTRUCT()
+  // stack@INIT-END: 'e' | OP_bc() | OP_dd() | const[16b00300] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | PUSH_I8() | num[32256007] | str?flags=0x5 idx=112 | const[0220c003] | const[246336] | OP_40() | PUSH_THIS() | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | str?flags=0x0 idx=12 | str?flags=0x0 idx=13 | str?flags=0x0 idx=14 | str?flags=0x0 idx=15 | str?flags=0x0 idx=16 | str?flags=0x0 idx=17 | str?flags=0x0 idx=18 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // discard(const[5187300])

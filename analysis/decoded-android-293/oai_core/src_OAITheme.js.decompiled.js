@@ -536,11 +536,11 @@
   // stack@INIT-END: str?flags=0x3b idx=2 | str?flags=0x0 idx=0 | PUSH_THIS() | OP10() | const[60e40100] | const[00e20100] | OP_14() | DUP() | const[0c02cb0c] | SPREAD_PREP() | OP_3a() | OP_f2() | const[01b60300] | const[00100009] | PUSH_C8() | str?flags=0x0 idx=0 | objlit[themeMode](const[00680000]) | PUSH_STR2().applyResolvedTheme | desc-tpl | CLOSURE_CTX_C() | objlit[System](CLOSURE_CTX_B()) | OP_f1().[wk:0x1de](param[0].[wk:0x1df])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // discard(f0(objlit[mode](num[234881024].StatefulComponent)))
   // op 0xc6 PUSH_THIS [~]
-  // stack@INIT-END: str?flags=0x42 idx=8 | OP_be() | num[1188309] | PUSH_THIS().startOrStopDarkModeObserver()
+  // stack@INIT-END: str?flags=0x42 idx=8 | PUSH_I8() | num[1188309] | PUSH_THIS().startOrStopDarkModeObserver()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x6b CLASS_DECL [~]

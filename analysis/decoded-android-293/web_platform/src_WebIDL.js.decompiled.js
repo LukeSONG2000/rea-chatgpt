@@ -26,7 +26,7 @@
   // trailer 0xae
   // op 0x5c OP_5c [?]
   // op 0x75 OP_75 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x30 OP30 [?]
   // op 0x46 OP_46 [?]
   // op 0x2f OP_2f [?]

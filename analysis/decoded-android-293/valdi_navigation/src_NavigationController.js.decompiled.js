@@ -455,7 +455,7 @@
   // op 0x47 OP_47 [?]
   // discard(num[0])
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x68 PUSH_STR2 [~]
@@ -494,7 +494,7 @@
   …(pad)
   // discard(STR_CMP().componentPath(v06))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())

@@ -16,9 +16,9 @@
   EXPORTS.SubscreenHeaderButtonDismiss (seq 0) = v06;  // PUSH_EXPORTS()
   locop 0xca(f0(const[227]))
   locop 0xcb(objlit[jsx](undefined))
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  locop 0xcc(OP_be()(push4, const[232]))
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcc(PUSH_I8()(push4, const[232]))
   locop 0xcd(f0(const[233]))
   local[4] = f0(const[234]);
   local[5] = f0(const[235]);
@@ -34,7 +34,7 @@
   local[8] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.SubscreenHeaderButtonDismiss (seq 1) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: 'exports'() | v06 | const[00030903] | v06 | num[2953577136] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 's' | str?flags=0x2 idx=9 | const[030770c2] | 't' | PUSH_C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeComponentPrototype | const[230] | OP_be() | const[231] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: 'exports'() | v06 | const[00030903] | v06 | num[2953577136] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 's' | str?flags=0x2 idx=9 | const[030770c2] | 't' | PUSH_C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeComponentPrototype | const[230] | PUSH_I8() | const[231] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x85 OP_85 [?]

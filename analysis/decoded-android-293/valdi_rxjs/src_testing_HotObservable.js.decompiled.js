@@ -143,12 +143,12 @@
   // trailer 0xae
   // op 0x7a OP_7a [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0xf1 OP_f1 [?]
-  // stack@INIT-END: OP_7a() | str?flags=0x3 idx=0 | OP_be() | load[b8] | str?flags=0x0 idx=13 | objlit[observeNotification](const[0c680000]) | PUSH_STR2() | OP_f1()
+  // stack@INIT-END: OP_7a() | str?flags=0x3 idx=0 | PUSH_I8() | load[b8] | str?flags=0x0 idx=13 | objlit[observeNotification](const[0c680000]) | PUSH_STR2() | OP_f1()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

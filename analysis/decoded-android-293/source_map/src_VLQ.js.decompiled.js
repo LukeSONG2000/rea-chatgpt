@@ -29,7 +29,7 @@
   // trailer 0xae
   …(pad)
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x30 OP30 [?]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(push0)
@@ -53,10 +53,10 @@
   // op 0xa0 ADD [~]
   // op 0xa0 ADD [~]
   // op 0x2f OP_2f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   local[5] = OP_b0();
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0x11 DUP [~]
   // op 0x66 STR_OP [~]
@@ -111,7 +111,7 @@
   …(pad)
   // op 0xe0 CLOSURE_CTX_C [~]
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   locop 0xca(v06)
   // op 0x9a OP_9a [?]
   // op 0xac OP_ac [?]
@@ -165,7 +165,7 @@
   // op 0xda OP_da [?]
   // discard(OP_da())
   // op 0x64 DECL_SLOT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   locop 0xcb(OP_b0())
   // op 0xbb OP_bb [?]
@@ -175,7 +175,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @879
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb2 OP_b2 [?]
   // op 0x11 DUP [~]
   // op 0x66 STR_OP [~]
@@ -199,7 +199,7 @@
   // op 0x4c FN_PROLOGUE [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x4c FN_PROLOGUE [~]
-  // stack@INIT-END: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123…' | push134 | const[1174412612] | const[105057936] | const[ba030107] | const[050101a1] | num[243720] | const[00ba0301] | OP30() | OP_be() | const[0220ca03] | num[63709187] | str?flags=0x4 idx=32 | str?flags=0x5 idx=48 | v06 | v06 | OP30() | num[91136] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | v06 | undefined | OP_2f() | undefined | OP_ee() | DECL_SLOT() | undefined | OP_20() | OP_be() | const[25601] | OP_ac() | CLOSURE_CTX_A() | DECL_SLOT() | LT() | fn:'builtin#262' | LT() | FN_PROLOGUE() | FN_PROLOGUE()
+  // stack@INIT-END: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123…' | push134 | const[1174412612] | const[105057936] | const[ba030107] | const[050101a1] | num[243720] | const[00ba0301] | OP30() | PUSH_I8() | const[0220ca03] | num[63709187] | str?flags=0x4 idx=32 | str?flags=0x5 idx=48 | v06 | v06 | OP30() | num[91136] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | v06 | undefined | OP_2f() | undefined | OP_ee() | DECL_SLOT() | undefined | OP_20() | PUSH_I8() | const[25601] | OP_ac() | CLOSURE_CTX_A() | DECL_SLOT() | LT() | fn:'builtin#262' | LT() | FN_PROLOGUE() | FN_PROLOGUE()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

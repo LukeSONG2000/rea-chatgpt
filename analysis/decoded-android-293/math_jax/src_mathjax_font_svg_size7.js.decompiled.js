@@ -272,7 +272,7 @@
   // op 0x93 OP_93 [?]
   // op 0x18 TRIPLE_OP [?]
   // op 0x7e OP_7e [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x1a OP_1a [?]
   // op 0x2f OP_2f [?]
   // op 0xdd OP_dd [?]

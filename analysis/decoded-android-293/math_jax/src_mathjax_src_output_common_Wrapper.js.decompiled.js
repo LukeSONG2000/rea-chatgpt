@@ -38,11 +38,11 @@
   local[8] = f0(const[244]);
   local[9] = f0(const[245]);
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   local[10] = OP_9e();
   // op 0xbb OP_bb [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   local[11] = OP_9e();
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -50,31 +50,31 @@
   // op 0x54 OP_54 [?]
   // discard(OP_54())
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0xc0 OP_c0 [?]
   // op 0x54 OP_54 [?]
   // discard(OP_54())
   // op 0xb9 OP_b9 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0xc0 OP_c0 [?]
   // op 0x54 OP_54 [?]
   // discard(OP_54())
   // op 0xba OP_ba [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0xc0 OP_c0 [?]
   // op 0x54 OP_54 [?]
   // discard(OP_54())
   // op 0xbb OP_bb [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0xc0 OP_c0 [?]
   // op 0x54 OP_54 [?]
   // discard(OP_54())
   // op 0xbc OP_bc [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0xc0 OP_c0 [?]
   // op 0x54 OP_54 [?]
@@ -303,7 +303,7 @@
   // op 0x35 OP35 [?]
   // op 0x35 OP35 [?]
   // op 0x1c OP_1c [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xb8 PUSH_WK2 [~]
   jcc-0xeb → @1879
   // op 0x68 PUSH_STR2 [~]
@@ -323,7 +323,7 @@
   // discard(num[889325364])
   …(pad)
   // op 0xc6 PUSH_THIS [~]
-  // stack@INIT-END: OP_1e() | PUSH_C() | OP_1c() | OP_2d() | PUSH_C() | OP_44() | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0xa idx=13 | desc-tpl | load[auxd3eb] | load[d2] | param[0] | LT() | str?flags=0x9 idx=1 | PUSH_B() | num[822216496] | PUSH_B() | num[855770930] | PUSH_B().getLineBBox(objlit[styles](PUSH_THIS()))
+  // stack@INIT-END: OP_1e() | PUSH_C() | OP_1c() | OP_2d() | PUSH_C() | META_RECORD44() | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0xa idx=13 | desc-tpl | load[auxd3eb] | load[d2] | param[0] | LT() | str?flags=0x9 idx=1 | PUSH_B() | num[822216496] | PUSH_B() | num[855770930] | PUSH_B().getLineBBox(objlit[styles](PUSH_THIS()))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x47 OP_47 [?]
@@ -474,7 +474,7 @@
   // op 0x51 OP_51 [?]
   // op 0x59 IMPORT_MODULE [~]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x08 PUSH_C [~]
   // op 0x49 OP_49 [?]
   // discard(OP_49())
@@ -1311,7 +1311,7 @@
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
   // discard(const[02df3a02])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -1320,7 +1320,7 @@
   // op 0x64 DECL_SLOT [~]
   // op 0xc3 LOAD_M3 [~]
   jcc-0xeb → @13243
-  // stack@INIT-END: str?flags=0xaa idx=1 | OP_6e() | num[3573693696] | PUSH_WK2().getLineBBox | OP_be() | const[0420c003] | const[0520c203] | str?flags=0x6 idx=48 | str?flags=0x7 idx=48 | const[63451144] | const[63582217] | const[1060874] | const[00c40307] | load[aux08c4] | desc-tpl | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(objlit[styles](LOAD_M3()))
+  // stack@INIT-END: str?flags=0xaa idx=1 | OP_6e() | num[3573693696] | PUSH_WK2().getLineBBox | PUSH_I8() | const[0420c003] | const[0520c203] | str?flags=0x6 idx=48 | str?flags=0x7 idx=48 | const[63451144] | const[63582217] | const[1060874] | const[00c40307] | load[aux08c4] | desc-tpl | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(objlit[styles](LOAD_M3()))
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xba OP_ba [?]
   locop 0xca(f0(OP_ba()).fill(globalThis))
@@ -1601,7 +1601,7 @@
   // op 0xa0 ADD [~]
   …(pad)
   // discard(const[02010000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -1692,7 +1692,7 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0x9e OP_9e [?]
   EXPORTS.rscale (seq 1) = OP_9e();  // objlit[bbox](LOAD_M3())
-  // stack@INIT-END: OP_80()(num[922768130], num[3019945946], const[02005a04], OP_b4(), const[0200a002], num[33725440], OP_bc(), const[0449070a], OP_5e(), OP_2b()) | const[002b0000] | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(OP_ff(), OP_7f()) | … | … | const[00300039] | PUSH_E() | OP10() | const[00c00305] | ADD().getLineBBox | OP_be() | const[0430c003] | const[0520c203] | const[0620b803] | str?flags=0x7 idx=48 | const[0008c408] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | objlit[scale](objlit[bbox](undefined)) | objlit[node](LOAD_M3()).isKind(const[420]) | undefined.builtin#65(const[421]) | EQ_STRICT() | DECL_SLOT()
+  // stack@INIT-END: OP_80()(num[922768130], num[3019945946], const[02005a04], OP_b4(), const[0200a002], num[33725440], OP_bc(), const[0449070a], OP_5e(), OP_2b()) | const[002b0000] | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(OP_ff(), OP_7f()) | … | … | const[00300039] | PUSH_E() | OP10() | const[00c00305] | ADD().getLineBBox | PUSH_I8() | const[0430c003] | const[0520c203] | const[0620b803] | str?flags=0x7 idx=48 | const[0008c408] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | objlit[scale](objlit[bbox](undefined)) | objlit[node](LOAD_M3()).isKind(const[420]) | undefined.builtin#65(const[421]) | EQ_STRICT() | DECL_SLOT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1722,7 +1722,7 @@
   …(pad)
   // op 0x6d META_OP6D [?]
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x08 PUSH_C [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -1747,7 +1747,7 @@
   // op 0xea OP_ea [?]
   // trailer 0xae
   jcc-0xeb → @18491
-  // stack@INIT-END: META_OP6D().getLineBBox | OP_be() | const[0430c003] | const[0530c203] | const[0630c403] | const[0730c603] | const[08301000] | const[00ce030c] | const[08c40964] | PUSH_C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_WK1() | OP_ea()
+  // stack@INIT-END: META_OP6D().getLineBBox | PUSH_I8() | const[0430c003] | const[0530c203] | const[0630c403] | const[0730c603] | const[08301000] | const[00ce030c] | const[08c40964] | PUSH_C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_WK1() | OP_ea()
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcd(undefined.childIndex(undefined))
   // op 0x07 PUSH_B [~]
@@ -2457,7 +2457,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0xe0 idx=2)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -2527,7 +2527,7 @@
   …(pad)
   // op 0x0a PUSH_E [~]
   …(pad)
-  // stack-tail: OP_20() | OP_fe() | PUSH_E() | v06 | load[00] | PUSH_E() | PUSH_B() | v06 | OP_3c() | const[00170000] | PUSH_C() | v06 | OP_ff() | OP_2d() | load[00].getLineBBox | PUSH_EXPORTS() | const[447] | PUSH_EXPORTS().getLineBBox | str?flags=0x0 idx=1 | PUSH_C9() | const[00005e04] | OP_20() | PUSH_WK2() | 'require' | const[00be0304] | load[aux08cc] | DECL_SLOT() | DECL_SLOT() | call25(PUSH_STR2().px; param[0], param[1], objlit[em](objlit[metrics](PUSH_C8()))) | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=0 | str?flags=0x2 idx=4 | const[00c20306] | load[auxbe03] | const[96733197] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_B() | objlit[lookup](PUSH_STR2()) | param[0] | OP_20() | PUSH_WK2() | 'require' | str?flags=0x2 idx=0 | str?flags=0x2 idx=3 | str?flags=0x4 idx=4 | const[00bc0303] | load[aux08c4] | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | objlit[unicodeChars](PUSH_STR2()) | META_OP6C() | objlit[chars](undefined) | DECL_SLOT().getLineBBox | OP_93() | const[02b60300] | const[00100001] | OP_20() | PUSH_WK2() | 'require' | 'module' | const[0008cd64] | num[91136] | DECL_SLOT() | call25(objlit[factory](objlit[node](PUSH_C9())).create; param[0], param[1], PUSH_EXPORTS()).getLineBBox | OP_be() | const[03301000] | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined.create | const[378] | str?flags=0xe3 idx=2 | local[0] | num[2600482086].getLineBBox | DECL_SLOT() | globalThis | globalThis | OP_40() | const[0500006a] | OP_20() | PUSH_WK2() | 'require' | 'module' | const[0008cd64] | num[91136] | DECL_SLOT() | call25(objlit[jax](PUSH_C9()).html; param[0], param[1], PUSH_EXPORTS()) | str?flags=0xf1 idx=2 | PUSH_E()
+  // stack-tail: OP_20() | OP_fe() | PUSH_E() | v06 | load[00] | PUSH_E() | PUSH_B() | v06 | OP_3c() | const[00170000] | PUSH_C() | v06 | OP_ff() | OP_2d() | load[00].getLineBBox | PUSH_EXPORTS() | const[447] | PUSH_EXPORTS().getLineBBox | str?flags=0x0 idx=1 | PUSH_C9() | const[00005e04] | OP_20() | PUSH_WK2() | 'require' | const[00be0304] | load[aux08cc] | DECL_SLOT() | DECL_SLOT() | call25(PUSH_STR2().px; param[0], param[1], objlit[em](objlit[metrics](PUSH_C8()))) | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=0 | str?flags=0x2 idx=4 | const[00c20306] | load[auxbe03] | const[96733197] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_B() | objlit[lookup](PUSH_STR2()) | param[0] | OP_20() | PUSH_WK2() | 'require' | str?flags=0x2 idx=0 | str?flags=0x2 idx=3 | str?flags=0x4 idx=4 | const[00bc0303] | load[aux08c4] | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | objlit[unicodeChars](PUSH_STR2()) | META_OP6C() | objlit[chars](undefined) | DECL_SLOT().getLineBBox | OP_93() | const[02b60300] | const[00100001] | OP_20() | PUSH_WK2() | 'require' | 'module' | const[0008cd64] | num[91136] | DECL_SLOT() | call25(objlit[factory](objlit[node](PUSH_C9())).create; param[0], param[1], PUSH_EXPORTS()).getLineBBox | PUSH_I8() | const[03301000] | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined.create | const[378] | str?flags=0xe3 idx=2 | local[0] | num[2600482086].getLineBBox | DECL_SLOT() | globalThis | globalThis | OP_40() | const[0500006a] | OP_20() | PUSH_WK2() | 'require' | 'module' | const[0008cd64] | num[91136] | DECL_SLOT() | call25(objlit[jax](PUSH_C9()).html; param[0], param[1], PUSH_EXPORTS()) | str?flags=0xf1 idx=2 | PUSH_E()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

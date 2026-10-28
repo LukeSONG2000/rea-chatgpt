@@ -38,8 +38,8 @@
   local[10] = objlit[SURFACE](objlit[Background](objlit[SemanticColor](undefined)));
   local[11] = objlit[SECONDARY](objlit[Brand](objlit[SemanticColor](undefined)));
   local[12] = objlit[SURFACE](objlit[Background](objlit[SemanticColor](undefined)));
-  // op 0xbe OP_be [?]
-  local[13] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[13] = PUSH_I8();
   // op 0xc0 OP_c0 [?]
   local[14] = OP_c0();
   // op 0x64 DECL_SLOT [~]
@@ -56,9 +56,9 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.SelectorToggle (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   local[18] = call21(const[262].[wk:0x108]; const[265].[wk:0x10a]).[wk:0x10b];
-  // stack@INIT-END: STR_OP() | v06 | const[00031303] | v06 | const[2954233759] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'r' | 'i' | 'n' | 's' | 'd' | 'c' | 'a' | 'l' | str?flags=0x2 idx=19 | const[031070d4] | OP_12() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | undefined.[wk:0x103] | undefined.[wk:0x104] | OP_be().[wk:0x105] | const[262].[wk:0x107]
+  // stack@INIT-END: STR_OP() | v06 | const[00031303] | v06 | const[2954233759] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'r' | 'i' | 'n' | 's' | 'd' | 'c' | 'a' | 'l' | str?flags=0x2 idx=19 | const[031070d4] | OP_12() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | undefined.[wk:0x103] | undefined.[wk:0x104] | PUSH_I8().[wk:0x105] | const[262].[wk:0x107]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe8 OP_e8 [?]
@@ -185,10 +185,10 @@
   jmp → @2130
   local[7] = v06;
   jcc-0xeb → @2141
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jmp → @2143
-  // op 0xbe OP_be [?]
-  local[8] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[8] = PUSH_I8();
   jcc-0xeb → @2155
   jmp → @2158
   local[9] = undefined;
@@ -233,7 +233,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().endRender())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: const[0430d003] | const[0530d203] | const[0630a804] | const[0730aa04] | const[0830ac04] | const[09301000] | const[00c60308] | load[auxce03] | str?flags=0xb idx=13 | PUSH_E() | load[auxc803] | PUSH_D() | load[auxb803] | OP_12() | load[auxbc03] | str?flags=0xd idx=8 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | objlit[iconValidated](objlit[builtin#22](PUSH_STR2())) | undefined | undefined | undefined | OP_be() | undefined | undefined | PUSH_STR2().setAttributeString | const[283] | PUSH_STR2().setAttributeNumber | const[293] | PUSH_STR2().endRender()
+  // stack@INIT-END: const[0430d003] | const[0530d203] | const[0630a804] | const[0730aa04] | const[0830ac04] | const[09301000] | const[00c60308] | load[auxce03] | str?flags=0xb idx=13 | PUSH_E() | load[auxc803] | PUSH_D() | load[auxb803] | OP_12() | load[auxbc03] | str?flags=0xd idx=8 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | objlit[iconValidated](objlit[builtin#22](PUSH_STR2())) | undefined | undefined | undefined | PUSH_I8() | undefined | undefined | PUSH_STR2().setAttributeString | const[283] | PUSH_STR2().setAttributeNumber | const[293] | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x97 OP_97 [?]

@@ -40,9 +40,9 @@
   // op 0x2b OP_2b [?]
   …(pad)
   // op 0x09 PUSH_D [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // discard(OP_44())
+  // discard(META_RECORD44())
   …(pad)
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xc6 PUSH_THIS [~]

@@ -198,7 +198,7 @@
 
   // ---- FUNCTION-UNIT: 'system-medium' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x1d idx=1)

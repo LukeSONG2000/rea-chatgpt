@@ -1168,7 +1168,7 @@
   // stack@INIT-END: fn:'builtin#2050' | str?flags=0x19 idx=1 | param[1] | OP_f2()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0xea OP_ea [?]

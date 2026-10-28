@@ -336,7 +336,7 @@
   // discard(STR_OP())
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
   …(pad)
@@ -351,7 +351,7 @@
   …(pad)
   // op 0x0a PUSH_E [~]
   …(pad)
-  // stack-tail: OP_47().attributes | str?flags=0x25 idx=2 | const[0000000e].attributes | DECL_SLOT() | META_OP6C() | globalThis | param[0] | PUSH_C7().addLeftBorders(undefined) | OP_ee() | undefined | const[277] | OP_c0() | push2 | const[277] | OP_c0() | push2 | const[277] | OP_c0() | OP_ea() | globalThis | push2 | undefined | undefined | call25(LOAD_M3().textWidth; undefined.slice(undefined, undefined).builtin#91(const[285])) | LT() | LT() | OP_44() | PUSH_C() | v06 | OP_ff() | desc-tpl | const[20000c00] | PUSH_E() | PUSH_B() | num[3409696] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[20000c00] | PUSH_E() | const[00000002]
+  // stack-tail: OP_47().attributes | str?flags=0x25 idx=2 | const[0000000e].attributes | DECL_SLOT() | META_OP6C() | globalThis | param[0] | PUSH_C7().addLeftBorders(undefined) | OP_ee() | undefined | const[277] | OP_c0() | push2 | const[277] | OP_c0() | push2 | const[277] | OP_c0() | OP_ea() | globalThis | push2 | undefined | undefined | call25(LOAD_M3().textWidth; undefined.slice(undefined, undefined).builtin#91(const[285])) | LT() | LT() | META_RECORD44() | PUSH_C() | v06 | OP_ff() | desc-tpl | const[20000c00] | PUSH_E() | PUSH_B() | num[3409696] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[20000c00] | PUSH_E() | const[00000002]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

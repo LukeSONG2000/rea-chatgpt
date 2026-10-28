@@ -109,11 +109,11 @@
   …(pad)
   // op 0x07 PUSH_B [~]
   // op 0x10 OP10 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(objlit[minuteOfHour](param[0]).[wk:0xfc])
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0xd idx=7 | OP_ea() | 'e' | const[0008c405] | objlit[viewModel](LOAD_M3()) | OP_ee() | desc-tpl | objlit[hourOfDay](v06).[wk:0xfb] | objlit[minuteOfHour](v06).[wk:0xfc] | undefined.[wk:0xf8] | OP_44() | DECL_SLOT() | desc-tpl | objlit[hourOfDay](param[0]).[wk:0xfb] | PUSH_STR2() | desc-tpl | f0(undefined.[wk:0xfd])
+  // stack@INIT-END: str?flags=0xd idx=7 | OP_ea() | 'e' | const[0008c405] | objlit[viewModel](LOAD_M3()) | OP_ee() | desc-tpl | objlit[hourOfDay](v06).[wk:0xfb] | objlit[minuteOfHour](v06).[wk:0xfc] | undefined.[wk:0xf8] | META_RECORD44() | DECL_SLOT() | desc-tpl | objlit[hourOfDay](param[0]).[wk:0xfb] | PUSH_STR2() | desc-tpl | f0(undefined.[wk:0xfd])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]

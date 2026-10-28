@@ -385,7 +385,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0x4a OP_4a [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   jcc-0xeb → @5344
   // op 0xc6 PUSH_THIS [~]
@@ -419,7 +419,7 @@
   // discard(STR_CMP())
   // trailer 0xae
   …(pad)
-  // stack-tail: ?.flex-end | undefined | objlit[numberOfLines](OP_44()) | PUSH_THIS() | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010010] | const[20ec010a] | DECL_SLOT() | str?flags=0x4d idx=0 | const[0]
+  // stack-tail: ?.flex-end | undefined | objlit[numberOfLines](META_RECORD44()) | PUSH_THIS() | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010010] | const[20ec010a] | DECL_SLOT() | str?flags=0x4d idx=0 | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

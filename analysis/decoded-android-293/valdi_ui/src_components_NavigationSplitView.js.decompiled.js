@@ -56,7 +56,7 @@
   // op 0x2b OP_2b [?]
   // op 0x35 OP35 [?]
   // discard(call21(?))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
   // discard(const[1758070797].beginRenderWithStringKey(PUSH_STR2(), v06))
@@ -92,7 +92,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().endRender())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: '40%' | OP_d9() | OP35() | OP_2b() | OP35() | call21(?) | call21(?).builtin#263 | OP_be() | PUSH_STR2().endRender()
+  // stack@INIT-END: '40%' | OP_d9() | OP35() | OP_2b() | OP35() | call21(?) | call21(?).builtin#263 | PUSH_I8() | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xad OP_ad [?]

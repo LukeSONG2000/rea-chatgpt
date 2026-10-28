@@ -134,7 +134,7 @@
   …(pad)
   // discard(CLOSURE_CTX_C().builtin#262)
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x91 OP_91 [?]
   // op 0xda OP_da [?]
   // op 0x9d OP_9d [?]
@@ -152,7 +152,7 @@
   // discard(…)
   // op 0x9d OP_9d [?]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x91 OP_91 [?]
   // op 0xda OP_da [?]
   // op 0x9d OP_9d [?]

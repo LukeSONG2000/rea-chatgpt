@@ -88,7 +88,7 @@
   // op 0x40 OP_40 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
@@ -116,7 +116,7 @@
   // discard(OP_f2())
   // discard(undefined.builtin#127(local[0], local[0]))
   // discard(v06)
-  // stack@INIT-END: objlit[builtin#51](param[0]) | desc-tpl | OP_40() | PUSH_C() | const[67347970] | OP_be() | const[00c00301] | TRY_REGION() | OP30() | PUSH_WK2() | str?flags=0x0 idx=0 | const[03ba0300] | str?flags=0xb6 idx=3 | OP_d6() | DECL_SLOT() | OP_6f() | DECL_SLOT() | !(objlit[builtin#127](undefined)) | OP_2f() | undefined | objlit[cancel](undefined).bind(undefined)
+  // stack@INIT-END: objlit[builtin#51](param[0]) | desc-tpl | OP_40() | PUSH_C() | const[67347970] | PUSH_I8() | const[00c00301] | TRY_REGION() | OP30() | PUSH_WK2() | str?flags=0x0 idx=0 | const[03ba0300] | str?flags=0xb6 idx=3 | OP_d6() | DECL_SLOT() | OP_6f() | DECL_SLOT() | !(objlit[builtin#127](undefined)) | OP_2f() | undefined | objlit[cancel](undefined).bind(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcc(?)
   // op 0x6f OP_6f [?]
@@ -220,7 +220,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -284,7 +284,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // stack-tail: OP_20() | OP_be() | str?flags=0x2 idx=48 | const[62795779] | PATCH_REF_LOAD() | PATCH_REF_LOAD() | DECL_SLOT() | META_OP6C() | META_OP6C() | META_OP6C() | META_OP6C() | META_OP6C() | DECL_SLOT() | OP_87() | OP_ee() | str?flags=0x3b idx=17 | load[aux00c7] | OP_f8() | fn:'builtin#262' | const[03000000] | desc-tpl
+  // stack-tail: OP_20() | PUSH_I8() | str?flags=0x2 idx=48 | const[62795779] | PATCH_REF_LOAD() | PATCH_REF_LOAD() | DECL_SLOT() | META_OP6C() | META_OP6C() | META_OP6C() | META_OP6C() | META_OP6C() | DECL_SLOT() | OP_87() | OP_ee() | str?flags=0x3b idx=17 | load[aux00c7] | OP_f8() | fn:'builtin#262' | const[03000000] | desc-tpl
 
 // ---- 字符串表 ----
 // str[1] = 'require'

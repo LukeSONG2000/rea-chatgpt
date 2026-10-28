@@ -12,7 +12,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x40 OP_40 [?]
   local[3] = OP_40();
@@ -176,7 +176,7 @@
   // stack@INIT-END: str?flags=0xd idx=17 | LOAD_M3() | num[33668608] | v06.popFrame()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // discard(num[0])
   …(pad)
   // op 0xaf EQ_STRICT [~]

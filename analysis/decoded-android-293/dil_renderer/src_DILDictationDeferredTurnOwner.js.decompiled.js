@@ -256,7 +256,7 @@
   // op 0x50 OP_50 [?]
   // op 0x9d OP_9d [?]
   // op 0x4e OP_4e [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x55 SPREAD_PREP [~]
   …(pad)
   // op 0xc7 PUSH_C7 [~]

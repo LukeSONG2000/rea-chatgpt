@@ -104,9 +104,9 @@
   // stack@INIT-END: str?flags=0x8 idx=2.Cannot read property ".push | desc-tpl | param[0].[wk:0xfb](param[1].[wk:0xfc])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // stack@INIT-END: OP_44()()
+  // stack@INIT-END: META_RECORD44()()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -438,10 +438,10 @@
   …(pad)
 
   // ---- FUNCTION-UNIT: 'builtin#2050' ----
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xd4 PUSH_EXPORTS [✓]
-  // stack@INIT-END: fn:'Cannot write property "' | OP30() | OP_87() | CLOSURE_CTX_A() | f0(param[0]) | OP_87() | OP_2f() | fn:'builtin#2050' | OP_44() | param[0] | param[1] | desc-tpl | !(globalThis).[wk:0x3d](!(globalThis).[wk:0x3f], PUSH_EXPORTS().[wk:0x40], !(globalThis).[wk:0x3e])
+  // stack@INIT-END: fn:'Cannot write property "' | OP30() | OP_87() | CLOSURE_CTX_A() | f0(param[0]) | OP_87() | OP_2f() | fn:'builtin#2050' | META_RECORD44() | param[0] | param[1] | desc-tpl | !(globalThis).[wk:0x3d](!(globalThis).[wk:0x3f], PUSH_EXPORTS().[wk:0x40], !(globalThis).[wk:0x3e])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x35 OP35 [?]

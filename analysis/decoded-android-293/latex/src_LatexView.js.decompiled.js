@@ -62,8 +62,8 @@
   local[19] = f0(const[273]);
   local[20] = const[274];
   local[21] = const[275];
-  // op 0xbe OP_be [?]
-  local[22] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[22] = PUSH_I8();
   local[23] = const[276];
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -230,7 +230,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(pool[320].warn(PUSH_STR2()))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @2529
   // discard(DUP())
@@ -259,7 +259,7 @@
   // op 0xc9 PUSH_C9 [~]
   // discard(const[323].builtin#92(objlit[readLatexRenderErrorMessage](PUSH_STR2())(f0(PUSH_C9()))))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @2913
   // discard(DUP())
@@ -520,7 +520,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(LOAD_M3().reportNativeRecovery(PUSH_C7(), undefined, objlit[Failed](objlit[LatexRecoveryOutcome](PUSH_STR2()))))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
@@ -678,9 +678,9 @@
   jcc-0xeb → @9887
   // discard(DUP())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xc8 PUSH_C8 [~]
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
@@ -725,7 +725,7 @@
   // op 0xb7 PUSH_WK1 [~]
   // trailer 0xae
   …(pad)
-  // stack-tail: OP_ab() | OP10() | const[0008cd64] | num[91136] | DECL_SLOT() | objlit[cachedKey](PUSH_C9()) | undefined | EQ_STRICT() | desc-tpl | param[0] | objlit[latex](objlit[viewModel](PUSH_C9())) | desc-tpl | num[234881024].coreutils/src/unicode/TextCoding | PUSH_THIS().usesNativeLatexRenderer() | const[368] | const[369] | const[349] | call25(!(globalThis); objlit[block](objlit[viewModel](PUSH_THIS())), const[347], const[348], const[349], param[0], const[349], objlit[latex](objlit[viewModel](PUSH_THIS()))).coreutils/src/unicode/TextCoding | EQ_STRICT() | objlit[isVersionAtLeast](PUSH_STR2()) | OP_44() | PUSH_C8() | str?flags=0x9 idx=13 | objlit[cachedSvg](PUSH_THIS()) | PUSH_THIS() | str?flags=0x7f idx=7 | OP_5e() | fn:'yPJkfKmwbpVZ24Hr'(param[0]) | OP_A8() | str?flags=0x89 idx=1 | num[0]
+  // stack-tail: OP_ab() | OP10() | const[0008cd64] | num[91136] | DECL_SLOT() | objlit[cachedKey](PUSH_C9()) | undefined | EQ_STRICT() | desc-tpl | param[0] | objlit[latex](objlit[viewModel](PUSH_C9())) | desc-tpl | num[234881024].coreutils/src/unicode/TextCoding | PUSH_THIS().usesNativeLatexRenderer() | const[368] | const[369] | const[349] | call25(!(globalThis); objlit[block](objlit[viewModel](PUSH_THIS())), const[347], const[348], const[349], param[0], const[349], objlit[latex](objlit[viewModel](PUSH_THIS()))).coreutils/src/unicode/TextCoding | EQ_STRICT() | objlit[isVersionAtLeast](PUSH_STR2()) | META_RECORD44() | PUSH_C8() | str?flags=0x9 idx=13 | objlit[cachedSvg](PUSH_THIS()) | PUSH_THIS() | str?flags=0x7f idx=7 | OP_5e() | fn:'yPJkfKmwbpVZ24Hr'(param[0]) | OP_A8() | str?flags=0x89 idx=1 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

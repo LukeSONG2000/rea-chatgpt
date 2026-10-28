@@ -184,7 +184,7 @@
   // stack@INIT-END: ?.notation | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x30 OP30 [?]
   …(pad)
@@ -662,7 +662,7 @@
   // discard(undefined.initializeNotations())
   EXPORTS.TRBL (seq 7) = undefined.getBBoxExtenders();  // undefined
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xff OP_ff [?]
   // op 0x0f OP_0f [?]
   // op 0x20 OP_20 [?]

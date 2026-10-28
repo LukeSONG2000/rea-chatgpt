@@ -601,7 +601,7 @@
   // discard(str?flags=0x8a idx=1)
   …(pad)
   // discard(const[01030000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x13 OP_13 [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -654,7 +654,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x99 idx=1)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x08 PUSH_C [~]
   locop 0xcc(PUSH_C())
   // op 0x64 DECL_SLOT [~]
@@ -700,7 +700,7 @@
   // discard(OP_b3())
   jmp → @6043
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: ?.ValdiWASMAsyncModule:.ValdiWASMAsyncModule: | OP_be() | OP_1c() | LOAD_61() | OP30() | const[00010001] | str?flags=0x2 idx=0 | globalThis | str?flags=0x0 idx=1.ValdiWASMAsyncModule: | OP_be() | const[01601000] | const[00d40313] | OP_47() | num[1108221378] | PUSH_B() | const[00010001] | const[19464452] | OP_ba() | str?flags=0x0 idx=1 | 'l' | PUSH_D() | globalThis | str?flags=0x0 idx=3.ValdiWASMAsyncModule: | const[03020005] | const[b6030001] | PUSH_EXPORTS() | str?flags=0x0 idx=0 | OP_2f().ValdiWASMAsyncModule: | v06.call(PUSH_STR2())
+  // stack@INIT-END: ?.ValdiWASMAsyncModule:.ValdiWASMAsyncModule: | PUSH_I8() | OP_1c() | LOAD_61() | OP30() | const[00010001] | str?flags=0x2 idx=0 | globalThis | str?flags=0x0 idx=1.ValdiWASMAsyncModule: | PUSH_I8() | const[01601000] | const[00d40313] | OP_47() | num[1108221378] | PUSH_B() | const[00010001] | const[19464452] | OP_ba() | str?flags=0x0 idx=1 | 'l' | PUSH_D() | globalThis | str?flags=0x0 idx=3.ValdiWASMAsyncModule: | const[03020005] | const[b6030001] | PUSH_EXPORTS() | str?flags=0x0 idx=0 | OP_2f().ValdiWASMAsyncModule: | v06.call(PUSH_STR2())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

@@ -129,7 +129,7 @@
   // op 0x14 OP_14 [?]
   // op 0x19 OP_19 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @851
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -279,7 +279,7 @@
   local[15] = OP_50();
   local[16] = v06;
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -439,13 +439,13 @@
   jcc-0xeb → @5228
   // discard(OP_b3())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @5283
   jcc-0xeb → @5283
   jmp → @5284
   // op 0xb7 PUSH_WK1 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @5428
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
@@ -620,7 +620,7 @@
   // op 0x0a PUSH_E [~]
   // discard(PUSH_E())
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @7038
   // discard(DUP())
@@ -649,7 +649,7 @@
   // discard(OP_84())
   // op 0x87 OP_87 [?]
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_2d() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | OP_1c() | PUSH_C() | PUSH_C() | OP_da() | str?flags=0x3 idx=0 | OP_19() | const[00000000] | OP_dc() | str?flags=0x3 idx=1 | const[67404544] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | OP_14() | const[ce030c0d] | PUSH_THIS() | str?flags=0x8 idx=13 | !(objlit[builtin#49](param[1]).trim()) | OP_2f() | CLOSURE_CTX_B() | param[0] | desc-tpl | undefined.[wk:0x11f] | objlit[account](param[1]).[wk:0x120] | objlit[isVersionAtLeast](PUSH_STR2()) | OP_88() | push52255 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[3497000961] | const[3526361345] | const[3559916033] | const[3593470721] | const[3630171137] | const[3663725825] | const[3693086209] | const[3726640897] | const[3764389889] | const[3793750273] | const[3831499265] | const[3866102529] | const[3899657217] | const[3932163329] | const[3127905793] | str?flags=0x4 idx=15 | str?flags=0x4 idx=16 | str?flags=0x6 idx=26 | str?flags=0x6 idx=18 | const[3060797700] | str?flags=0xe idx=26 | const[3993180688] | const[4029682692] | const[4067432196] | const[4095744004] | const[3962575108] | OP_0f() | load[auxc603] | PUSH_C() | load[auxca03] | PUSH_E() | load[auxba03] | num[218353677] | load[auxc803] | PUSH_D() | load[auxc203] | v06 | load[auxbe03] | const[84131853] | load[auxc403] | PUSH_B() | DUP() | load[auxbc03] | pair(str?flags=0xd idx=184, load[auxe003]) | … | … | OP_e2() | str?flags=0x16 idx=1 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_ad() | OP_2f() | objlit[isVersionAtLeast](PUSH_STR2()) | META_OP6C() | objlit[userId](objlit[account](param[1])) | objlit[createNativeEditorDebugCapture](PUSH_STR2()) | objlit[documentId](param[1]) | objlit[experimentService](param[0]) | objlit[multiplayerConnectionServiceFor](PUSH_STR2()) | param[0] | v06 | v06 | undefined | OP_2f() | OP_6f() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | META_OP6C() | DECL_SLOT() | DECL_SLOT() | v06 | undefined | OP_2f() | objlit[openClientSQLDocumentStore](PUSH_STR2()) | v06 | OP_d5() | OP_8e() | v06 | META_OP6C() | objlit[documentId](param[1]).startsWith(const[285]) | DUP() | desc-tpl | OP_2f() | v06 | undefined | OP_2f() | objlit[openStoredSynchronousEditor](PUSH_STR2()) | desc-tpl | undefined.[wk:0x159] | undefined.[wk:0x15a] | CLASS_DECL() | OP_ee() | objlit[createSynchronousEditorWithDebug](PUSH_STR2()) | desc-tpl | objlit[WRITING_BLOCKS_V1](objlit[EditorSchema](PUSH_STR2())).[wk:0x125] | desc-tpl | objlit[UPDATE](objlit[EditorInitialStateKind](PUSH_STR2())).[wk:0x151] | desc-tpl | desc-tpl | objlit[V1](objlit[YjsUpdateEncoding](PUSH_STR2())).[wk:0x161] | DUP() | globalThis | call21(globalThis; push2).[wk:0x162].[wk:0x163].[wk:0x164].[wk:0x10a] | undefined.[wk:0x122] | v06 | v06 | v06 | objlit[presenceSnapshot](undefined) | OP_2f() | objlit[isVersionAtLeast](PUSH_STR2()) | META_OP6C() | OP_6f() | DECL_SLOT() | OP_2f() | LOAD_61() | undefined | PUSH_EXPORTS() | desc-tpl | undefined.[wk:0x11f] | undefined.[wk:0x165] | v06.[wk:0x174] | objlit[nativeDocumentUpdateCodec](PUSH_STR2()).[wk:0x176] | undefined.[wk:0x177] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | undefined | local[0] | v06.[wk:0x178] | !(PUSH_WK1()).[wk:0x179] | undefined.[wk:0x17a] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | OP_8e() | v06.[wk:0x17b] | OP_50().[wk:0x17d] | OP_50().[wk:0x17e] | OP_50().[wk:0x17f] | OP_50().[wk:0x181] | objlit[isVersionAtLeast](PUSH_STR2()) | desc-tpl | objlit[snapshot](undefined).[wk:0x168] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_bf()) | undefined.presenceSnapshot() | objlit[presenceSnapshot](undefined).[wk:0x169] | desc-tpl | LOAD_61() | undefined | undefined | OP_f2().[wk:0x186] | objlit[initialState](undefined).[wk:0x10a] | OP_50().[wk:0x10c] | OP_50().[wk:0x10d] | OP_50().[wk:0x10e] | OP_50().[wk:0x10f] | OP_50().[wk:0x110] | OP_50().[wk:0x111] | OP_50().[wk:0x112] | OP_4a() | num[38404104] | OP_4a() | num[471604322] | OP_fb() | num[37027868] | const[02350059] | num[37617687] | OP_2b() | PUSH_C() | OP_2b() | OP_2b() | call21(?) | OP_82() | const[02000c32] | load[08] | load[08] | OP_3f() | num[3489814784] | OP_7c() | OP_3f() | OP_39() | OP_3b() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(const[00000000], num[65536]) | … | OP_5a() | OP_87() | PUSH_STR2().clear()
+  // stack@INIT-END: OP_2d() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | OP_1c() | PUSH_C() | PUSH_C() | OP_da() | str?flags=0x3 idx=0 | OP_19() | const[00000000] | OP_dc() | str?flags=0x3 idx=1 | const[67404544] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | OP_14() | const[ce030c0d] | PUSH_THIS() | str?flags=0x8 idx=13 | !(objlit[builtin#49](param[1]).trim()) | OP_2f() | CLOSURE_CTX_B() | param[0] | desc-tpl | undefined.[wk:0x11f] | objlit[account](param[1]).[wk:0x120] | objlit[isVersionAtLeast](PUSH_STR2()) | OP_88() | push52255 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[3497000961] | const[3526361345] | const[3559916033] | const[3593470721] | const[3630171137] | const[3663725825] | const[3693086209] | const[3726640897] | const[3764389889] | const[3793750273] | const[3831499265] | const[3866102529] | const[3899657217] | const[3932163329] | const[3127905793] | str?flags=0x4 idx=15 | str?flags=0x4 idx=16 | str?flags=0x6 idx=26 | str?flags=0x6 idx=18 | const[3060797700] | str?flags=0xe idx=26 | const[3993180688] | const[4029682692] | const[4067432196] | const[4095744004] | const[3962575108] | OP_0f() | load[auxc603] | PUSH_C() | load[auxca03] | PUSH_E() | load[auxba03] | num[218353677] | load[auxc803] | PUSH_D() | load[auxc203] | v06 | load[auxbe03] | const[84131853] | load[auxc403] | PUSH_B() | DUP() | load[auxbc03] | pair(str?flags=0xd idx=184, load[auxe003]) | … | … | OP_e2() | str?flags=0x16 idx=1 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_ad() | OP_2f() | objlit[isVersionAtLeast](PUSH_STR2()) | META_OP6C() | objlit[userId](objlit[account](param[1])) | objlit[createNativeEditorDebugCapture](PUSH_STR2()) | objlit[documentId](param[1]) | objlit[experimentService](param[0]) | objlit[multiplayerConnectionServiceFor](PUSH_STR2()) | param[0] | v06 | v06 | undefined | OP_2f() | OP_6f() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | META_OP6C() | DECL_SLOT() | DECL_SLOT() | v06 | undefined | OP_2f() | objlit[openClientSQLDocumentStore](PUSH_STR2()) | v06 | OP_d5() | OP_8e() | v06 | META_OP6C() | objlit[documentId](param[1]).startsWith(const[285]) | DUP() | desc-tpl | OP_2f() | v06 | undefined | OP_2f() | objlit[openStoredSynchronousEditor](PUSH_STR2()) | desc-tpl | undefined.[wk:0x159] | undefined.[wk:0x15a] | CLASS_DECL() | OP_ee() | objlit[createSynchronousEditorWithDebug](PUSH_STR2()) | desc-tpl | objlit[WRITING_BLOCKS_V1](objlit[EditorSchema](PUSH_STR2())).[wk:0x125] | desc-tpl | objlit[UPDATE](objlit[EditorInitialStateKind](PUSH_STR2())).[wk:0x151] | desc-tpl | desc-tpl | objlit[V1](objlit[YjsUpdateEncoding](PUSH_STR2())).[wk:0x161] | DUP() | globalThis | call21(globalThis; push2).[wk:0x162].[wk:0x163].[wk:0x164].[wk:0x10a] | undefined.[wk:0x122] | v06 | v06 | v06 | objlit[presenceSnapshot](undefined) | OP_2f() | objlit[isVersionAtLeast](PUSH_STR2()) | META_OP6C() | OP_6f() | DECL_SLOT() | OP_2f() | LOAD_61() | undefined | PUSH_EXPORTS() | desc-tpl | undefined.[wk:0x11f] | undefined.[wk:0x165] | v06.[wk:0x174] | objlit[nativeDocumentUpdateCodec](PUSH_STR2()).[wk:0x176] | undefined.[wk:0x177] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | undefined | local[0] | v06.[wk:0x178] | !(PUSH_WK1()).[wk:0x179] | undefined.[wk:0x17a] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | OP_8e() | v06.[wk:0x17b] | OP_50().[wk:0x17d] | OP_50().[wk:0x17e] | OP_50().[wk:0x17f] | OP_50().[wk:0x181] | objlit[isVersionAtLeast](PUSH_STR2()) | desc-tpl | objlit[snapshot](undefined).[wk:0x168] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_bf()) | undefined.presenceSnapshot() | objlit[presenceSnapshot](undefined).[wk:0x169] | desc-tpl | LOAD_61() | undefined | undefined | OP_f2().[wk:0x186] | objlit[initialState](undefined).[wk:0x10a] | OP_50().[wk:0x10c] | OP_50().[wk:0x10d] | OP_50().[wk:0x10e] | OP_50().[wk:0x10f] | OP_50().[wk:0x110] | OP_50().[wk:0x111] | OP_50().[wk:0x112] | OP_4a() | num[38404104] | OP_4a() | num[471604322] | OP_fb() | num[37027868] | const[02350059] | num[37617687] | OP_2b() | PUSH_C() | OP_2b() | OP_2b() | call21(?) | OP_82() | const[02000c32] | load[08] | load[08] | OP_3f() | num[3489814784] | OP_7c() | OP_3f() | OP_39() | OP_3b() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(const[00000000], num[65536]) | … | OP_5a() | OP_87() | PUSH_STR2().clear()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x8b OP_8b [?]
@@ -963,7 +963,7 @@
 
   // ---- FUNCTION-UNIT: './MultiplayerDrafts' ----
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @11789
   jmp → @11790
   // op 0x50 OP_50 [?]
@@ -1008,7 +1008,7 @@
   …(pad)
   // op 0x19 OP_19 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @12451
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
@@ -1025,7 +1025,7 @@
   …(pad)
   // op 0x19 OP_19 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @12587
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
@@ -1058,7 +1058,7 @@
   // op 0x50 OP_50 [?]
   locop 0xca(OP_50())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @13099
   jmp → @13100
   // op 0x50 OP_50 [?]
@@ -1108,7 +1108,7 @@
   …(pad)
   // discard(num[1842229])
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @13862
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
@@ -1159,7 +1159,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x82 idx=2)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @14763
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
@@ -1170,7 +1170,7 @@
   …(pad)
   // discard(OP_39())
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @14898
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
@@ -1240,7 +1240,7 @@
   // op 0xc6 PUSH_THIS [~]
   // op 0xb7 PUSH_WK1 [~]
   EXPORTS.closed (seq 4) = !(PUSH_WK1());  // PUSH_THIS()
-  // stack@INIT-END: IMPORT_MODULE() | num[1108218401] | v06 | const[00010001] | num[19333121] | globalThis | OP_3c() | objlit[builtin#64](const[00000000]../MultiplayerDrafts)../MultiplayerDrafts | desc-tpl | OP_62() | const[02010604] | const[c80403b6] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x2 idx=1 | const[63573262] | PATCH_REF_LOAD() | str?flags=0xe4 idx=4 | DECL_SLOT() | call21(DUP(); CLOSURE_CTX_C()).requestJson | desc-tpl | desc-tpl | const[423].[wk:0x1a8] | OP_6f() | DECL_SLOT() | objlit[kind](undefined) | OP_72() | OP_2e() | pool[145].assign | OP_4b() | num[471938312] | OP_3f() | OP35()../MultiplayerDrafts../MultiplayerDrafts | desc-tpl | call25(call25(call25(call25(call25(OP_4a()../MultiplayerDrafts; )../MultiplayerDrafts; )../MultiplayerDrafts; )../MultiplayerDrafts; )../MultiplayerDrafts; )../MultiplayerDrafts | f0(OP_bf())../MultiplayerDrafts | fn:'./MultiplayerDrafts' | desc-tpl | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | objlit[persistence](param[0]) | v06.[wk:0x17b] | OP_50().[wk:0x1b5] | OP_50().[wk:0x1b6] | OP_50().[wk:0x1b7] | OP_50().[wk:0x1b8] | OP_50().[wk:0x1b9] | OP_50().[wk:0x1ba] | OP_50().[wk:0x1bb] | OP_50().[wk:0x1bc] | OP_53() | num[4144959] | load[08] | load[08] | OP_3f() | v06 | const[00010001] | str?flags=0x2 idx=0 | globalThis | str?flags=0x0 idx=1 | str?flags=0x2 idx=3 | OP_62() | num[33817088] | LOAD_61() | OP_19() | const[00000000] | !(f0(OP_be())) | OP_2f() | OP_62() | OP_19() | const[00000000] | !(f0(OP_be())) | OP_2f() | fn:'./MultiplayerDrafts' | coerce(TRY_REGION()) | str?flags=0xc idx=13 | desc-tpl | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | objlit[persistence](param[0]) | v06.[wk:0x17b] | OP_50().[wk:0x146] | PUSH_EXPORTS().[wk:0x18c] | OP_50().[wk:0x168] | OP_50().[wk:0x1c0] | OP_50().[wk:0x1c1] | OP_50().[wk:0x1c2] | OP_50().[wk:0x1b5] | OP_50().[wk:0x1b6] | OP_50().[wk:0x1b7] | OP_50().[wk:0x1b8] | OP_50().[wk:0x1b9] | OP_50().[wk:0x1ba] | OP_50().[wk:0x1c3] | OP_50().[wk:0x1c4] | OP_50().[wk:0x1c5] | OP_50().[wk:0x1c6] | OP_50().[wk:0x16c] | OP_50().[wk:0x1bb] | OP_50().[wk:0x1bc] | OP_50().[wk:0x1bd] | OP_50().[wk:0x169] | OP_53() | PUSH_C() | OP_3f() | OP_3f() | load[08] | OP_3f() | OP_3f()../MultiplayerDrafts | str?flags=0x0 idx=3 | load[64] | objlit[canEdit](CLOSURE_CTX_A()) | call23(param[1]; ) | desc-tpl | undefined.[wk:0x168] | desc-tpl | objlit[REJECTED](objlit[EditorResultStatus](PUSH_STR2())).[wk:0x89] | param[0].[wk:0x1c7] | objlit[revision](undefined).[wk:0x1c8] | desc-tpl | objlit[INVALID_OPERATION](objlit[EditorErrorCode](PUSH_STR2())).[wk:0x1cb] | local[0] | OP_4a()../MultiplayerDrafts | !(f0(OP_be())) | call23(call23(call23(OP_2f(); call25(call25(CLOSURE_CTX_B().applyDocumentMutation; param[0])../MultiplayerDrafts; )../MultiplayerDrafts, local[0]); call25(str?flags=0xfc idx=1../MultiplayerDrafts; CLOSURE_CTX_B())../MultiplayerDrafts, local[0]); call25(str?flags=0xfd idx=1../MultiplayerDrafts; CLOSURE_CTX_B())../MultiplayerDrafts, local[0]) | objlit[isVersionAtLeast](call25(call25(call25(call25(call25(str?flags=0xfe idx=1../MultiplayerDrafts; CLOSURE_CTX_B())../MultiplayerDrafts; param[0])../MultiplayerDrafts; )../MultiplayerDrafts; )../MultiplayerDrafts; param[0])../MultiplayerDrafts) | !(f0(OP_be())) | OP_2f() | call25(CLOSURE_CTX_B().prepareSynchronization; param[0], param[1])../MultiplayerDrafts | TRIPLE_OP() | load[aux08ca] | OP_2b()
+  // stack@INIT-END: IMPORT_MODULE() | num[1108218401] | v06 | const[00010001] | num[19333121] | globalThis | OP_3c() | objlit[builtin#64](const[00000000]../MultiplayerDrafts)../MultiplayerDrafts | desc-tpl | OP_62() | const[02010604] | const[c80403b6] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x2 idx=1 | const[63573262] | PATCH_REF_LOAD() | str?flags=0xe4 idx=4 | DECL_SLOT() | call21(DUP(); CLOSURE_CTX_C()).requestJson | desc-tpl | desc-tpl | const[423].[wk:0x1a8] | OP_6f() | DECL_SLOT() | objlit[kind](undefined) | OP_72() | OP_2e() | pool[145].assign | OP_4b() | num[471938312] | OP_3f() | OP35()../MultiplayerDrafts../MultiplayerDrafts | desc-tpl | call25(call25(call25(call25(call25(OP_4a()../MultiplayerDrafts; )../MultiplayerDrafts; )../MultiplayerDrafts; )../MultiplayerDrafts; )../MultiplayerDrafts; )../MultiplayerDrafts | f0(OP_bf())../MultiplayerDrafts | fn:'./MultiplayerDrafts' | desc-tpl | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | objlit[persistence](param[0]) | v06.[wk:0x17b] | OP_50().[wk:0x1b5] | OP_50().[wk:0x1b6] | OP_50().[wk:0x1b7] | OP_50().[wk:0x1b8] | OP_50().[wk:0x1b9] | OP_50().[wk:0x1ba] | OP_50().[wk:0x1bb] | OP_50().[wk:0x1bc] | OP_53() | num[4144959] | load[08] | load[08] | OP_3f() | v06 | const[00010001] | str?flags=0x2 idx=0 | globalThis | str?flags=0x0 idx=1 | str?flags=0x2 idx=3 | OP_62() | num[33817088] | LOAD_61() | OP_19() | const[00000000] | !(f0(PUSH_I8())) | OP_2f() | OP_62() | OP_19() | const[00000000] | !(f0(PUSH_I8())) | OP_2f() | fn:'./MultiplayerDrafts' | coerce(TRY_REGION()) | str?flags=0xc idx=13 | desc-tpl | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | objlit[persistence](param[0]) | v06.[wk:0x17b] | OP_50().[wk:0x146] | PUSH_EXPORTS().[wk:0x18c] | OP_50().[wk:0x168] | OP_50().[wk:0x1c0] | OP_50().[wk:0x1c1] | OP_50().[wk:0x1c2] | OP_50().[wk:0x1b5] | OP_50().[wk:0x1b6] | OP_50().[wk:0x1b7] | OP_50().[wk:0x1b8] | OP_50().[wk:0x1b9] | OP_50().[wk:0x1ba] | OP_50().[wk:0x1c3] | OP_50().[wk:0x1c4] | OP_50().[wk:0x1c5] | OP_50().[wk:0x1c6] | OP_50().[wk:0x16c] | OP_50().[wk:0x1bb] | OP_50().[wk:0x1bc] | OP_50().[wk:0x1bd] | OP_50().[wk:0x169] | OP_53() | PUSH_C() | OP_3f() | OP_3f() | load[08] | OP_3f() | OP_3f()../MultiplayerDrafts | str?flags=0x0 idx=3 | load[64] | objlit[canEdit](CLOSURE_CTX_A()) | call23(param[1]; ) | desc-tpl | undefined.[wk:0x168] | desc-tpl | objlit[REJECTED](objlit[EditorResultStatus](PUSH_STR2())).[wk:0x89] | param[0].[wk:0x1c7] | objlit[revision](undefined).[wk:0x1c8] | desc-tpl | objlit[INVALID_OPERATION](objlit[EditorErrorCode](PUSH_STR2())).[wk:0x1cb] | local[0] | OP_4a()../MultiplayerDrafts | !(f0(PUSH_I8())) | call23(call23(call23(OP_2f(); call25(call25(CLOSURE_CTX_B().applyDocumentMutation; param[0])../MultiplayerDrafts; )../MultiplayerDrafts, local[0]); call25(str?flags=0xfc idx=1../MultiplayerDrafts; CLOSURE_CTX_B())../MultiplayerDrafts, local[0]); call25(str?flags=0xfd idx=1../MultiplayerDrafts; CLOSURE_CTX_B())../MultiplayerDrafts, local[0]) | objlit[isVersionAtLeast](call25(call25(call25(call25(call25(str?flags=0xfe idx=1../MultiplayerDrafts; CLOSURE_CTX_B())../MultiplayerDrafts; param[0])../MultiplayerDrafts; )../MultiplayerDrafts; )../MultiplayerDrafts; param[0])../MultiplayerDrafts) | !(f0(PUSH_I8())) | OP_2f() | call25(CLOSURE_CTX_B().prepareSynchronization; param[0], param[1])../MultiplayerDrafts | TRIPLE_OP() | load[aux08ca] | OP_2b()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1249,7 +1249,7 @@
   // op 0xc7 PUSH_C7 [~]
   EXPORTS.controller (seq 0) = param[0];  // PUSH_C7()
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(objlit[synchronization](param[1]))

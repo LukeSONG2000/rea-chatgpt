@@ -175,22 +175,22 @@
   …(pad)
   // discard(str?flags=0x21 idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
-  // discard(DECL_SLOT().color.color.push(OP_be(), param[0]))
+  // op 0xbe PUSH_I8 [~]
+  // discard(DECL_SLOT().color.color.push(PUSH_I8(), param[0]))
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x24 idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
-  // discard(param[1].color.push(OP_be(), param[0]))
+  // op 0xbe PUSH_I8 [~]
+  // discard(param[1].color.push(PUSH_I8(), param[0]))
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x27 idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
-  // discard(?.color.push(OP_be(), param[0]))
+  // op 0xbe PUSH_I8 [~]
+  // discard(?.color.push(PUSH_I8(), param[0]))
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
   …(pad)
@@ -212,7 +212,7 @@
   …(pad)
   jcc-0xeb → @2096
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jmp → @2205
   // op 0xc6 PUSH_THIS [~]
   // op 0xbc OP_bc [?]
@@ -249,43 +249,43 @@
   …(pad)
   // discard(str?flags=0x3b idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
-  // discard(OP_fa().color.push(OP_be(), param[0]))
+  // op 0xbe PUSH_I8 [~]
+  // discard(OP_fa().color.push(PUSH_I8(), param[0]))
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x3e idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
-  // discard(num[17252878].color.push(OP_be(), param[0]))
+  // op 0xbe PUSH_I8 [~]
+  // discard(num[17252878].color.push(PUSH_I8(), param[0]))
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x41 idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
-  // discard(FN_PROLOGUE().color.push(OP_be(), param[0]))
+  // op 0xbe PUSH_I8 [~]
+  // discard(FN_PROLOGUE().color.push(PUSH_I8(), param[0]))
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x44 idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
-  // discard(objlit[components](PUSH_THIS()).push(OP_be(), param[0]).color.push(OP_be(), param[0]))
+  // op 0xbe PUSH_I8 [~]
+  // discard(objlit[components](PUSH_THIS()).push(PUSH_I8(), param[0]).color.push(PUSH_I8(), param[0]))
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x47 idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
-  // discard(const[00000000].isWeb().color.push(OP_be(), param[0]))
+  // op 0xbe PUSH_I8 [~]
+  // discard(const[00000000].isWeb().color.push(PUSH_I8(), param[0]))
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x4a idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
-  // discard(?.color.color.push(OP_be(), param[0]))
+  // op 0xbe PUSH_I8 [~]
+  // discard(?.color.color.push(PUSH_I8(), param[0]))
   // op 0xc6 PUSH_THIS [~]
   // op 0x92 OP_92 [?]
   EXPORTS.textLength (seq 0) = OP_92();  // ?
@@ -311,8 +311,8 @@
   // op 0x64 DECL_SLOT [~]
   locop 0xcc(param[1].[wk:0x106])
   // op 0xc9 PUSH_C9 [~]
-  // op 0xbe OP_be [?]
-  // discard(objlit[components](PUSH_C9()).push(OP_be(), undefined))
+  // op 0xbe PUSH_I8 [~]
+  // discard(objlit[components](PUSH_C9()).push(PUSH_I8(), undefined))
   // op 0xc9 PUSH_C9 [~]
   // op 0x92 OP_92 [?]
   EXPORTS.textLength (seq 0) = OP_92();  // param[0].[wk:0x105]

@@ -43,7 +43,7 @@
   // op 0xa1 OP_a1 [?]
   …(pad)
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   // op 0x0a PUSH_E [~]
   …(pad)
@@ -69,7 +69,7 @@
   jcc-0xeb → @413
   // discard(OP_84())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: OP_32() | OP_a1() | const[04ba0300] | const[00bc0300] | const[00c00302] | OP30() | OP_be() | const[17020941] | load[auxc403] | PUSH_B() | const[c8030901] | globalThis | str?flags=0x0 idx=13 | PUSH_E() | DECL_SLOT() | objlit[createDilComponentPlaceholder](PUSH_STR2()) | undefined | CLOSURE_CTX_C() | undefined | OP_f1() | OP_87()
+  // stack@INIT-END: OP_32() | OP_a1() | const[04ba0300] | const[00bc0300] | const[00c00302] | OP30() | PUSH_I8() | const[17020941] | load[auxc403] | PUSH_B() | const[c8030901] | globalThis | str?flags=0x0 idx=13 | PUSH_E() | DECL_SLOT() | objlit[createDilComponentPlaceholder](PUSH_STR2()) | undefined | CLOSURE_CTX_C() | undefined | OP_f1() | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -133,7 +133,7 @@
   // op 0x68 PUSH_STR2 [~]
   local[4] = PUSH_STR2();
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   local[3] = num[201524154];
   …(pad)
@@ -245,7 +245,7 @@
   …(pad)
   // trailer 0xae
   jcc-0xeb → @2350
-  // stack@INIT-END: fn:'componentName' | str?flags=0x3 idx=13 | num[84131853] | load[auxc603] | PUSH_C() | str?flags=0x10 idx=4 | num[104992332] | const[00030503] | PUSH_E() | PUSH_C() | const[f20208c4] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | str?flags=0x0 idx=12 | const[0cb80300] | str?flags=0xba idx=3 | LOCAL_OP2() | str?flags=0x0 idx=9 | str?flags=0xc idx=190 | str?flags=0xc6 idx=3 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | DUP() | const[247] | LOAD_61() | CLOSURE_CTX_C() | PUSH_STR2() | param[0] | param[1] | OP_ad() | OP_2f() | pool[145].builtin#101 | undefined | objlit[isDILRestrictedComponent](PUSH_STR2()) | const[256] | v06 | !(undefined) | !(undefined) | OP_44() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x0 idx=13 | str?flags=0xd idx=232 | load[auxb603] | load[bc] | 'c' | const[0db80302] | str?flags=0xec idx=3 | PUSH_C8() | 'exports' | DECL_SLOT() | objlit[__state](param[0]).[wk:0x101] | v06 | objlit[__state](undefined) | OP_ac() | objlit[__resolutionId](undefined) | LOAD_61().useMemo | call25(LOAD_61().jsx; undefined, undefined) | const[223f0e42] | v06 | const[00000400] | const[29885196] | const[66494] | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | 'c' | num[50574860] | load[bc] | str?flags=0x4 idx=12 | const[0de60305] | load[b8] | str?flags=0x6 idx=2 | PUSH_B() | load[c4] | str?flags=0x8 idx=2 | PUSH_D() | load[c8] | str?flags=0xa idx=2 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | PUSH_STR2() | desc-tpl | PUSH_STR2().[wk:0x105] | objlit[getDILDeferredTurnRuntime](PUSH_STR2()) | undefined.[wk:0x109] | OP_50().[wk:0x10a] | call23(PUSH_STR2(); LOAD_61(), LOAD_61(), undefined) | str?flags=0x23 idx=14 | PUSH_C() | OP_2b() | OP_2b() | CLASS_DEF_POP() | OP_2b() | OP_2b() | OP_3f().componentName | load[be] | str?flags=0x0 idx=13.dispatchAction | const[268] | PUSH_STR2() | !(PUSH_STR2()) | EQ_STRICT() | param[0] | objlit[bindDILClientAction](PUSH_STR2()) | OP_12() | const[00000000] | fn:'componentName' | str?flags=0x0 idx=13 | v06 | param[1]
+  // stack@INIT-END: fn:'componentName' | str?flags=0x3 idx=13 | num[84131853] | load[auxc603] | PUSH_C() | str?flags=0x10 idx=4 | num[104992332] | const[00030503] | PUSH_E() | PUSH_C() | const[f20208c4] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | str?flags=0x0 idx=12 | const[0cb80300] | str?flags=0xba idx=3 | LOCAL_OP2() | str?flags=0x0 idx=9 | str?flags=0xc idx=190 | str?flags=0xc6 idx=3 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | DUP() | const[247] | LOAD_61() | CLOSURE_CTX_C() | PUSH_STR2() | param[0] | param[1] | OP_ad() | OP_2f() | pool[145].builtin#101 | undefined | objlit[isDILRestrictedComponent](PUSH_STR2()) | const[256] | v06 | !(undefined) | !(undefined) | META_RECORD44() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x0 idx=13 | str?flags=0xd idx=232 | load[auxb603] | load[bc] | 'c' | const[0db80302] | str?flags=0xec idx=3 | PUSH_C8() | 'exports' | DECL_SLOT() | objlit[__state](param[0]).[wk:0x101] | v06 | objlit[__state](undefined) | OP_ac() | objlit[__resolutionId](undefined) | LOAD_61().useMemo | call25(LOAD_61().jsx; undefined, undefined) | const[223f0e42] | v06 | const[00000400] | const[29885196] | const[66494] | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | 'c' | num[50574860] | load[bc] | str?flags=0x4 idx=12 | const[0de60305] | load[b8] | str?flags=0x6 idx=2 | PUSH_B() | load[c4] | str?flags=0x8 idx=2 | PUSH_D() | load[c8] | str?flags=0xa idx=2 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | PUSH_STR2() | desc-tpl | PUSH_STR2().[wk:0x105] | objlit[getDILDeferredTurnRuntime](PUSH_STR2()) | undefined.[wk:0x109] | OP_50().[wk:0x10a] | call23(PUSH_STR2(); LOAD_61(), LOAD_61(), undefined) | str?flags=0x23 idx=14 | PUSH_C() | OP_2b() | OP_2b() | CLASS_DEF_POP() | OP_2b() | OP_2b() | OP_3f().componentName | load[be] | str?flags=0x0 idx=13.dispatchAction | const[268] | PUSH_STR2() | !(PUSH_STR2()) | EQ_STRICT() | param[0] | objlit[bindDILClientAction](PUSH_STR2()) | OP_12() | const[00000000] | fn:'componentName' | str?flags=0x0 idx=13 | v06 | param[1]
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xde CLOSURE_CTX_A [~]
   locop 0xca(f0(param[0]))

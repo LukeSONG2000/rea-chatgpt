@@ -186,7 +186,7 @@
   // op 0xfc OP_fc [?]
   // op 0x90 OP_90 [?]
   // discard(num[1])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().beginRenderWithStringKey(PUSH_STR2(), v06))
@@ -233,7 +233,7 @@
   // op 0xc6 PUSH_THIS [~]
   // discard(PUSH_STR2().setViewModelProperty(const[287], objlit[dotIndicatorsScrollViewHandler](PUSH_THIS())))
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0x1d idx=16 | OP_fc() | OP_90() | num[25296898].scrollX | OP_be() | const[168020493] | load[aux08ca] | PUSH_STR2().endComponent()
+  // stack@INIT-END: str?flags=0x1d idx=16 | OP_fc() | OP_90() | num[25296898].scrollX | PUSH_I8() | const[168020493] | load[aux08ca] | PUSH_STR2().endComponent()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x76 OP_76 [?]

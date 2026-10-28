@@ -54,12 +54,12 @@
   EXPORTS.SubscreenHeaderTitle (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0x11 DUP [~]
   local[17] = call21(const[271].[wk:0x110]; globalThis.[wk:0x118]).[wk:0x119];
-  // stack@INIT-END: OP_78() | str?flags=0xad idx=9 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 'n' | 's' | 'l' | 'd' | 'u' | str?flags=0x2 idx=18 | const[030f70d2] | 'a' | DUP() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[243] | const[244] | const[245] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | objlit[TITLE_4](objlit[TextStyleFont](undefined)).[wk:0x108] | objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x10c] | call21(const[269].[wk:0x10e]; const[271].[wk:0x110]).[wk:0x111] | DUP() | desc-tpl | OP_be().[wk:0x112] | call21(OP_be().[wk:0x113]; PUSH_WK2().[wk:0x114]).[wk:0x115] | DUP() | desc-tpl | objlit[CAPTION](objlit[TextStyleFont](undefined)).[wk:0x108] | objlit[SECONDARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x10c] | const[269].[wk:0x10e]
+  // stack@INIT-END: OP_78() | str?flags=0xad idx=9 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 'n' | 's' | 'l' | 'd' | 'u' | str?flags=0x2 idx=18 | const[030f70d2] | 'a' | DUP() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[243] | const[244] | const[245] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | objlit[TITLE_4](objlit[TextStyleFont](undefined)).[wk:0x108] | objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x10c] | call21(const[269].[wk:0x10e]; const[271].[wk:0x110]).[wk:0x111] | DUP() | desc-tpl | PUSH_I8().[wk:0x112] | call21(PUSH_I8().[wk:0x113]; PUSH_WK2().[wk:0x114]).[wk:0x115] | DUP() | desc-tpl | objlit[CAPTION](objlit[TextStyleFont](undefined)).[wk:0x108] | objlit[SECONDARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x10c] | const[269].[wk:0x10e]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xa6 LT [~]
@@ -185,7 +185,7 @@
   // stack@INIT-END: ?.TITLE_4 | load[auxc403] | PUSH_B() | load[auxbe03] | const[168020493] | load[auxc203] | v06 | load[aux08cb] | DECL_SLOT() | objlit[when](PUSH_STR2()) | objlit[subtitlePrefix](objlit[viewModel](PUSH_C7())) | objlit[when](PUSH_STR2()) | objlit[subtitleSuffix](objlit[viewModel](PUSH_C7())) | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x68 PUSH_STR2 [~]
   // discard(num[26636].beginRenderWithStringKey(PUSH_STR2(), v06))
   // op 0x68 PUSH_STR2 [~]
@@ -194,7 +194,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().setAttributeStyle(const[293], objlit[subtitleImage](PUSH_STR2())))
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_44() | const[040300d3] | const[01b60300] | const[00b80300] | load[c0] | 'd' | PUSH_STR2().endRender()
+  // stack@INIT-END: META_RECORD44() | const[040300d3] | const[01b60300] | const[00b80300] | load[c0] | 'd' | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xab OP_ab [?]

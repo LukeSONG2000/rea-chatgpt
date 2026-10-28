@@ -23,7 +23,7 @@
   …(pad)
   // trailer 0xae
   // op 0x05 PATCH_REF_LOAD [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xd6 OP_d6 [?]
   // op 0xde CLOSURE_CTX_A [~]
@@ -34,7 +34,7 @@
   // op 0x27 APPLY_SPREAD [~]
   // trailer 0xae
   …(pad)
-  // stack-tail: 'mapResult' | load[e4] | fn:'builtin#262' | const[01010103] | str?flags=0x4 idx=0 | v06 | const[00010000] | PATCH_REF_LOAD() | OP_be() | const[00b60300] | call23(num[50332604]; APPLY_SPREAD()) | str?flags=0x4 idx=0 | num[0]
+  // stack-tail: 'mapResult' | load[e4] | fn:'builtin#262' | const[01010103] | str?flags=0x4 idx=0 | v06 | const[00010000] | PATCH_REF_LOAD() | PUSH_I8() | const[00b60300] | call23(num[50332604]; APPLY_SPREAD()) | str?flags=0x4 idx=0 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

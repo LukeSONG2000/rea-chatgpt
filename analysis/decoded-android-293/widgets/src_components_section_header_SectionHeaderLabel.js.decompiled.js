@@ -43,11 +43,11 @@
   EXPORTS.SectionHeaderLabel (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   local[12] = call21(const[258].[wk:0x103]; globalThis.[wk:0x104]).[wk:0x105];
-  // stack@INIT-END: fn:'iconUrl' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'o' | 'i' | str?flags=0x2 idx=13 | const[030a70c8] | 'n' | 'd' | load[00] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | call21(objlit[SUBHEADLINE_EMPHASIS](objlit[TextStyleFont](undefined)).[wk:0xf9]; objlit[TERTIARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0xfd]).[wk:0xee] | DUP() | desc-tpl | objlit[TERTIARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0xfe] | call21(OP_be().[wk:0xff]; OP_be().[wk:0x100]).[wk:0x101] | DUP() | desc-tpl
+  // stack@INIT-END: fn:'iconUrl' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'o' | 'i' | str?flags=0x2 idx=13 | const[030a70c8] | 'n' | 'd' | load[00] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | call21(objlit[SUBHEADLINE_EMPHASIS](objlit[TextStyleFont](undefined)).[wk:0xf9]; objlit[TERTIARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0xfd]).[wk:0xee] | DUP() | desc-tpl | objlit[TERTIARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0xfe] | call21(PUSH_I8().[wk:0xff]; PUSH_I8().[wk:0x100]).[wk:0x101] | DUP() | desc-tpl
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   jcc-0xeb → @1004

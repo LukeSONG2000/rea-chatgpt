@@ -61,10 +61,10 @@
   local[22] = f0(const[275]);
   local[23] = f0(const[276]);
   local[24] = f0(const[277]);
-  // op 0xbe OP_be [?]
-  local[25] = OP_be();
-  // op 0xbe OP_be [?]
-  local[26] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[25] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[26] = PUSH_I8();
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -438,8 +438,8 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().setAttributeNumber(const[374], objlit[floatingGutter](objlit[Subscreen](PUSH_STR2()))))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // discard(PUSH_STR2().setAttributeNumber(const[375], OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_STR2().setAttributeNumber(const[375], PUSH_I8()))
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]

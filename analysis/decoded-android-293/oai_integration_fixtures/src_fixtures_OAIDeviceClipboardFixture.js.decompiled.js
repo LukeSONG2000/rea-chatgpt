@@ -67,13 +67,13 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.OAIDeviceClipboardFixture (seq 3) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbf OP_bf [?]
   local[25] = call21(const[298].[wk:0x12b]; OP_bf().[wk:0x122]).[wk:0x101];
-  // stack@INIT-END: OP_ac() | const[0e430601] | str?flags=0x1a idx=3 | str?flags=0xff idx=8 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'o' | 'r' | 's' | 'a' | 'n' | 'd' | 'c' | 'l' | 'u' | 'p' | 'y' | 'g' | 'b' | 'v' | str?flags=0x2 idx=26 | const[031670e0] | 'm' | str?flags=0x0 idx=0 | 'S' | num[425990340] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | undefined.makeNodePrototype | const[250] | undefined.makeNodePrototype | const[257] | const[252] | const[258] | undefined.makeComponentPrototype | const[252] | const[262] | const[263] | undefined.makeComponentPrototype | const[252] | const[266] | const[263] | undefined.makeNodePrototype | const[250] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[286].[wk:0x11f] | call21(OP_be().[wk:0x120]; const[289].[wk:0x122]).[wk:0x123] | DUP() | desc-tpl | const[257].[wk:0x124] | objlit[BgTertiary](objlit[OAIColor](undefined)).[wk:0x127] | OP_be().[wk:0x128] | OP_be().[wk:0x129]
+  // stack@INIT-END: OP_ac() | const[0e430601] | str?flags=0x1a idx=3 | str?flags=0xff idx=8 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'o' | 'r' | 's' | 'a' | 'n' | 'd' | 'c' | 'l' | 'u' | 'p' | 'y' | 'g' | 'b' | 'v' | str?flags=0x2 idx=26 | const[031670e0] | 'm' | str?flags=0x0 idx=0 | 'S' | num[425990340] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | undefined.makeNodePrototype | const[250] | undefined.makeNodePrototype | const[257] | const[252] | const[258] | undefined.makeComponentPrototype | const[252] | const[262] | const[263] | undefined.makeComponentPrototype | const[252] | const[266] | const[263] | undefined.makeNodePrototype | const[250] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[286].[wk:0x11f] | call21(PUSH_I8().[wk:0x120]; const[289].[wk:0x122]).[wk:0x123] | DUP() | desc-tpl | const[257].[wk:0x124] | objlit[BgTertiary](objlit[OAIColor](undefined)).[wk:0x127] | PUSH_I8().[wk:0x128] | PUSH_I8().[wk:0x129]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x98 OP_98 [?]
@@ -166,11 +166,11 @@
   // op 0x30 OP30 [?]
   // op 0x09 PUSH_D [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @2106
   // op 0x68 PUSH_STR2 [~]
   // discard(desc-tpl(const[316].[wk:0x89]))
-  // stack@INIT-END: OP_17() | LOCAL_OP2() | PUSH_B() | const[00000100] | const[47776261] | const[b8030100] | OP30() | str?flags=0x3 idx=12 | PUSH_D() | globalThis | str?flags=0x2 idx=12 | const[25612] | objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(OP_be())) | PUSH_STR2().setState
+  // stack@INIT-END: OP_17() | LOCAL_OP2() | PUSH_B() | const[00000100] | const[47776261] | const[b8030100] | OP30() | str?flags=0x3 idx=12 | PUSH_D() | globalThis | str?flags=0x2 idx=12 | const[25612] | objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(PUSH_I8())) | PUSH_STR2().setState
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x68 PUSH_STR2 [~]
   locop 0xca(objlit[imageRef](PUSH_STR2()).single())
@@ -236,7 +236,7 @@
   // op 0x18 TRIPLE_OP [?]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @3008
   jmp → @3013
   locop 0xca(const[327])
@@ -332,7 +332,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().endRender())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_19() | load[auxbe03] | const[251909133] | load[auxc003] | PATCH_REF_LOAD() | load[auxc203] | v06 | load[auxcc03] | desc-tpl | load[auxc403] | PUSH_B() | load[auxc603] | PUSH_C() | load[auxc803] | PUSH_D() | TRIPLE_OP() | const[08cb6400] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | const[326] | PUSH_STR2().setViewModelProperty | PUSH_STR2().endRender()
+  // stack@INIT-END: OP_19() | load[auxbe03] | const[251909133] | load[auxc003] | PATCH_REF_LOAD() | load[auxc203] | v06 | load[auxcc03] | desc-tpl | load[auxc403] | PUSH_B() | load[auxc603] | PUSH_C() | load[auxc803] | PUSH_D() | TRIPLE_OP() | const[08cb6400] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | const[326] | PUSH_STR2().setViewModelProperty | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x36 OP_36 [?]

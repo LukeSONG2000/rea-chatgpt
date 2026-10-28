@@ -45,14 +45,14 @@
   // op 0xbc OP_bc [?]
   // op 0xbc OP_bc [?]
   // op 0xba OP_ba [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb9 OP_b9 [?]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @2205
   jmp → @2307
   local[15] = call21(objlit[FADED_BLACK](objlit[Base](objlit[SemanticColor](undefined))); objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x111]).[wk:0x125];
-  // stack@INIT-END: OP_86() | const[0e430601] | str?flags=0x10 idx=3 | num[2954039695] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 'n' | 'd' | 'a' | 'l' | str?flags=0x0 idx=0 | str?flags=0x0 idx=14 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | desc-tpl | DUP() | desc-tpl | const[255].[wk:0x100] | const[257].[wk:0x102] | objlit[SM](objlit[Spacing](undefined)).[wk:0x105] | objlit[MD](objlit[Spacing](undefined)).[wk:0x107] | call21(objlit[MD](objlit[Spacing](undefined)).[wk:0x108]; objlit[SM](objlit[Spacing](undefined)).[wk:0x109]).[wk:0x10a] | DUP() | desc-tpl | call21(objlit[BODY_EMPHASIS](objlit[TextStyleFont](undefined)).[wk:0x10d]; objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x111]).[wk:0x112] | DUP() | desc-tpl | objlit[DEFAULT](objlit[Background](objlit[SemanticColor](undefined))).[wk:0x115] | OP_bc().[wk:0x116] | OP_bc().[wk:0x117] | OP_ba().[wk:0x118] | call21(OP_be().[wk:0x119]; OP_b9().[wk:0x11a]).[wk:0x11b] | DUP() | desc-tpl | objlit[XXS](objlit[Spacing](undefined)).[wk:0x107] | objlit[XXS](objlit[Spacing](undefined)).[wk:0x108] | objlit[DEFAULT](objlit[Background](objlit[SemanticColor](undefined))).[wk:0x115] | objlit[XS](objlit[Spacing](undefined)).[wk:0x11a] | call21(objlit[SM](objlit[Spacing](undefined)).[wk:0x11e]; objlit[XXS](objlit[Spacing](undefined)).[wk:0x118]).[wk:0x11f] | DUP() | desc-tpl | objlit[CAPTION_EMPHASIS](objlit[TextStyleFont](undefined)).[wk:0x10d] | objlit[Device](undefined).isDarkMode()
+  // stack@INIT-END: OP_86() | const[0e430601] | str?flags=0x10 idx=3 | num[2954039695] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 'n' | 'd' | 'a' | 'l' | str?flags=0x0 idx=0 | str?flags=0x0 idx=14 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | desc-tpl | DUP() | desc-tpl | const[255].[wk:0x100] | const[257].[wk:0x102] | objlit[SM](objlit[Spacing](undefined)).[wk:0x105] | objlit[MD](objlit[Spacing](undefined)).[wk:0x107] | call21(objlit[MD](objlit[Spacing](undefined)).[wk:0x108]; objlit[SM](objlit[Spacing](undefined)).[wk:0x109]).[wk:0x10a] | DUP() | desc-tpl | call21(objlit[BODY_EMPHASIS](objlit[TextStyleFont](undefined)).[wk:0x10d]; objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x111]).[wk:0x112] | DUP() | desc-tpl | objlit[DEFAULT](objlit[Background](objlit[SemanticColor](undefined))).[wk:0x115] | OP_bc().[wk:0x116] | OP_bc().[wk:0x117] | OP_ba().[wk:0x118] | call21(PUSH_I8().[wk:0x119]; OP_b9().[wk:0x11a]).[wk:0x11b] | DUP() | desc-tpl | objlit[XXS](objlit[Spacing](undefined)).[wk:0x107] | objlit[XXS](objlit[Spacing](undefined)).[wk:0x108] | objlit[DEFAULT](objlit[Background](objlit[SemanticColor](undefined))).[wk:0x115] | objlit[XS](objlit[Spacing](undefined)).[wk:0x11a] | call21(objlit[SM](objlit[Spacing](undefined)).[wk:0x11e]; objlit[XXS](objlit[Spacing](undefined)).[wk:0x118]).[wk:0x11f] | DUP() | desc-tpl | objlit[CAPTION_EMPHASIS](objlit[TextStyleFont](undefined)).[wk:0x10d] | objlit[Device](undefined).isDarkMode()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe5 OP_e5 [?]
@@ -92,7 +92,7 @@
   // discard(str?flags=0xd idx=0)
 
   // ---- FUNCTION-UNIT: 'MD' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x09 PUSH_D [~]
   …(pad)
@@ -118,7 +118,7 @@
   // op 0xf1 OP_f1 [?]
   // discard(OP_f1())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: 'Device' | OP_4a() | OP_4a() | num[721578752] | local[0] | CLASS_DECL() | OP_4a() | OP_4a() | call25(fn:'MD'; local[0]) | str?flags=0x9 idx=4 | call22(?).MD.[wk:0x127] | objlit[scrollBarHandler](param[0]).[wk:0x128] | local[0].[wk:0x12a] | fn:'MD' | OP_be() | const[251909133] | load[auxc003] | PATCH_REF_LOAD() | load[auxba03] | num[50576397] | load[auxc803] | PUSH_D() | objlit[when](PUSH_STR2()) | param[0] | PUSH_STR2().endRender()
+  // stack@INIT-END: 'Device' | OP_4a() | OP_4a() | num[721578752] | local[0] | CLASS_DECL() | OP_4a() | OP_4a() | call25(fn:'MD'; local[0]) | str?flags=0x9 idx=4 | call22(?).MD.[wk:0x127] | objlit[scrollBarHandler](param[0]).[wk:0x128] | local[0].[wk:0x12a] | fn:'MD' | PUSH_I8() | const[251909133] | load[auxc003] | PATCH_REF_LOAD() | load[auxba03] | num[50576397] | load[auxc803] | PUSH_D() | objlit[when](PUSH_STR2()) | param[0] | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x7d OP_7d [?]

@@ -42,12 +42,12 @@
   // discard(OP_bd())
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xea OP_ea [?]
   // trailer 0xae
   jcc-0xeb → @351
-  // stack@INIT-END: fn:'builtin#262' | OP_be() | const[17020929] | load[auxbc03] | str?flags=0xd idx=186 | objlit[hostnameFromUrl](load[auxb668]) | OP_ea()
+  // stack@INIT-END: fn:'builtin#262' | PUSH_I8() | const[17020929] | load[auxbc03] | str?flags=0xd idx=186 | objlit[hostnameFromUrl](load[auxb668]) | OP_ea()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0x11 DUP [~]

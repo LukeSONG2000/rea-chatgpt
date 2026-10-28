@@ -2,7 +2,7 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
@@ -32,7 +32,7 @@
   local[5] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.FocusableComponentRef (seq 1) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_44() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | OP_bc() | 'exports' | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | DECL_SLOT() | OP_d1()
+  // stack@INIT-END: META_RECORD44() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | OP_bc() | 'exports' | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | DECL_SLOT() | OP_d1()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

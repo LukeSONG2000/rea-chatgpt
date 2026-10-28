@@ -68,12 +68,12 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc9 PUSH_C9 [~]
   EXPORTS.formatCalculatorResult (seq 9) = PUSH_C9();  // PUSH_EXPORTS()
-  // op 0xbe OP_be [?]
-  local[4] = OP_be();
-  // op 0xbe OP_be [?]
-  local[5] = OP_be();
-  // op 0xbe OP_be [?]
-  local[6] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[4] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[5] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[6] = PUSH_I8();
   // op 0xc0 OP_c0 [?]
   // op 0xc0 OP_c0 [?]
   // op 0x33 OP_33 [?]
@@ -339,7 +339,7 @@
   // op 0x8f OP_8f [?]
   jcc-0xeb → @2313
   // op 0xc0 OP_c0 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc0 OP_c0 [?]
   // op 0xc0 OP_c0 [?]
   // op 0x33 OP_33 [?]
@@ -347,7 +347,7 @@
   // op 0xc0 OP_c0 [?]
   // op 0x33 OP_33 [?]
   // op 0xc2 LOCAL_OP2 [?]
-  locop 0xcb(undefined.toFixed(OP_be()).replace(OP_33(), const[288]).replace(OP_33(), LOCAL_OP2()))
+  locop 0xcb(undefined.toFixed(PUSH_I8()).replace(OP_33(), const[288]).replace(OP_33(), LOCAL_OP2()))
   // op 0xc2 LOCAL_OP2 [?]
   // trailer 0xae
   // op 0x11 DUP [~]
@@ -1546,12 +1546,12 @@
   // ---- FUNCTION-UNIT: '^' ----
   …(pad)
   locop 0xca(fn:'^'(globalThis))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   // op 0x11 DUP [~]
   jcc-0xeb → @10471
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
@@ -1567,27 +1567,27 @@
   // ---- FUNCTION-UNIT: '^' ----
   …(pad)
   locop 0xca(fn:'^'(globalThis))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   // op 0x11 DUP [~]
   jcc-0xeb → @10638
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   // op 0x11 DUP [~]
   jcc-0xec → @10668
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   // op 0x11 DUP [~]
   jcc-0xeb → @10658
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   // op 0x11 DUP [~]
   jcc-0xec → @10668
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
@@ -1601,17 +1601,17 @@
   // op 0x11 DUP [~]
   jcc-0xec → @10773
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   // op 0x11 DUP [~]
   jcc-0xeb → @10773
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
   …(pad)
-  // stack-tail: OP_20() | OP_fe() | fn:'^' | OP_16() | const[ea031a01] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | EQ_STRICT() | CLOSURE_CTX_A() | param[0] | LT() | EQ_STRICT() | EQ_STRICT() | CLOSURE_CTX_A() | param[0] | CLOSURE_CTX_B() | const[291] | str?flags=0xe1 idx=1 | OP_80() | OP_80() | fn:'^' | DECL_SLOT() | LT() | PUSH_EXPORTS() | f0(param[0].charAt(undefined)) | str?flags=0xec idx=1 | fn:'^' | CLOSURE_CTX_A() | const[291] | CLOSURE_CTX_A() | OP_be() | fn:'^' | CLOSURE_CTX_A() | str?flags=0x85 idx=2 | PUSH_THIS() | load[00]
+  // stack-tail: OP_20() | OP_fe() | fn:'^' | OP_16() | const[ea031a01] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | EQ_STRICT() | CLOSURE_CTX_A() | param[0] | LT() | EQ_STRICT() | EQ_STRICT() | CLOSURE_CTX_A() | param[0] | CLOSURE_CTX_B() | const[291] | str?flags=0xe1 idx=1 | OP_80() | OP_80() | fn:'^' | DECL_SLOT() | LT() | PUSH_EXPORTS() | f0(param[0].charAt(undefined)) | str?flags=0xec idx=1 | fn:'^' | CLOSURE_CTX_A() | const[291] | CLOSURE_CTX_A() | PUSH_I8() | fn:'^' | CLOSURE_CTX_A() | str?flags=0x85 idx=2 | PUSH_THIS() | load[00]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

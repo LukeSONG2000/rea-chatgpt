@@ -80,7 +80,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   locop 0xca(objlit[file](param[0]))
@@ -187,7 +187,7 @@
   // op 0x11 DUP [~]
   // op 0x69 OP_69 [?]
   // discard(OP_69())
-  // stack@INIT-END: 'c' | push17920 | fn:'builtin#262' | OP30() | OP_be() | const[17020929] | load[aux6401] | DECL_SLOT() | CLOSURE_CTX_A() | OP_46() | v06 | const[c2030203] | num[3590325508] | const[05b80300] | const[00c20300] | const[00c40302] | OP30() | PUSH_C8() | str?flags=0x2 idx=2 | str?flags=0x4 idx=1 | num[243213] | fn:'builtin#262' | DECL_SLOT() | LT() | EQ_STRICT() | fn:'builtin#262' | PUSH_WK2() | 'u' | v06 | undefined | CLOSURE_CTX_C() | param[0] | OP_8f() | const[0a0e4206] | const[00020002] | v06 | const[33656064] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=0 | const[03bc0300] | PUSH_D() | globalThis | objlit[serviceArguments](str?flags=0x0 idx=3) | OP_f1() | PUSH_STR2() | OP_2f()
+  // stack@INIT-END: 'c' | push17920 | fn:'builtin#262' | OP30() | PUSH_I8() | const[17020929] | load[aux6401] | DECL_SLOT() | CLOSURE_CTX_A() | OP_46() | v06 | const[c2030203] | num[3590325508] | const[05b80300] | const[00c20300] | const[00c40302] | OP30() | PUSH_C8() | str?flags=0x2 idx=2 | str?flags=0x4 idx=1 | num[243213] | fn:'builtin#262' | DECL_SLOT() | LT() | EQ_STRICT() | fn:'builtin#262' | PUSH_WK2() | 'u' | v06 | undefined | CLOSURE_CTX_C() | param[0] | OP_8f() | const[0a0e4206] | const[00020002] | v06 | const[33656064] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=0 | const[03bc0300] | PUSH_D() | globalThis | objlit[serviceArguments](str?flags=0x0 idx=3) | OP_f1() | PUSH_STR2() | OP_2f()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

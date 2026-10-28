@@ -34,8 +34,8 @@
   local[6] = f0(const[244]);
   local[7] = f0(const[245]);
   local[8] = f0(const[246]);
-  // op 0xbe OP_be [?]
-  local[9] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[9] = PUSH_I8();
   // op 0xc0 OP_c0 [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xba OP_ba [?]
@@ -167,8 +167,8 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.disposable (seq 1) = PUSH_STR2().setTimeoutDisposable(objlit[scroll](PUSH_STR2()), OP_be());  // PUSH_STR2()
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.disposable (seq 1) = PUSH_STR2().setTimeoutDisposable(objlit[scroll](PUSH_STR2()), PUSH_I8());  // PUSH_STR2()
   // stack@INIT-END: LOCAL_OP2() | OP10() | PUSH_D() | PUSH_C8()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae

@@ -57,8 +57,8 @@
   // op 0x11 DUP [~]
   local[17] = call21(DUP(); );
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  local[18] = call21(OP_be().[wk:0x10a]; const[267].[wk:0x10c]);
+  // op 0xbe PUSH_I8 [~]
+  local[18] = call21(PUSH_I8().[wk:0x10a]; const[267].[wk:0x10c]);
   // stack@INIT-END: fn:'Component' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 'l' | 's' | 'a' | 'd' | 'n' | str?flags=0x2 idx=19 | const[030f70d2] | 'c' | 'u' | 'SearchField' | str?flags=0x0 idx=0 | str?flags=0xc4 idx=19 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[241] | const[242] | const[88] | undefined.makeNodePrototype | const[248] | undefined.makeNodePrototype | const[248] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DUP() | desc-tpl
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
@@ -503,12 +503,12 @@
   // discard(META_OP6D())
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
   // op 0x68 PUSH_STR2 [~]
@@ -519,9 +519,9 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().builtin#66(param[0], undefined))
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // stack-tail: fn:'Component' | desc-tpl | DUP() | desc-tpl | const[342].[wk:0x157] | OP_be().[wk:0x122] | call21(const[342].[wk:0x158]; OP_be().[wk:0x10c]).[wk:0x10d] | DUP() | desc-tpl | const[342].[wk:0x157] | objlit[mutedSurface](objlit[colors](param[0])).[wk:0x15a] | objlit[pillRadius](objlit[shape](param[0])).[wk:0x15d] | OP_be().[wk:0x122] | call21(const[342].[wk:0x158]; OP_be().[wk:0x10c]).[wk:0x154] | DUP() | desc-tpl | call21(objlit[mutedText](objlit[colors](param[0])).[wk:0x140]; objlit[label](objlit[typography](param[0])).[wk:0x133]).[wk:0x155] | DUP() | desc-tpl | OP_44() | num[43] | num[0]
+  // stack-tail: fn:'Component' | desc-tpl | DUP() | desc-tpl | const[342].[wk:0x157] | PUSH_I8().[wk:0x122] | call21(const[342].[wk:0x158]; PUSH_I8().[wk:0x10c]).[wk:0x10d] | DUP() | desc-tpl | const[342].[wk:0x157] | objlit[mutedSurface](objlit[colors](param[0])).[wk:0x15a] | objlit[pillRadius](objlit[shape](param[0])).[wk:0x15d] | PUSH_I8().[wk:0x122] | call21(const[342].[wk:0x158]; PUSH_I8().[wk:0x10c]).[wk:0x154] | DUP() | desc-tpl | call21(objlit[mutedText](objlit[colors](param[0])).[wk:0x140]; objlit[label](objlit[typography](param[0])).[wk:0x133]).[wk:0x155] | DUP() | desc-tpl | META_RECORD44() | num[43] | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

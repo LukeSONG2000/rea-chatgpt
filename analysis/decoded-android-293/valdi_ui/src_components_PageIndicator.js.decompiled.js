@@ -53,7 +53,7 @@
   // op 0x11 DUP [~]
   local[15] = call21(DUP(); );
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xba OP_ba [?]
   // op 0x11 DUP [~]
@@ -61,7 +61,7 @@
   // op 0xbc OP_bc [?]
   // op 0xbc OP_bc [?]
   local[17] = call21(OP_bc().[wk:0x10b]; OP_bc().[wk:0x10c]).[wk:0x10d];
-  // stack@INIT-END: 'e' | OP_9c() | const[00031203] | OP_b2() | PATCH_REF_LOAD() | const[00b20300] | const[00b40300] | const[00b60301] | OP30() | OP_ba() | 'module' | 'exports' | 'e' | 't' | 'i' | 'o' | 'r' | str?flags=0x2 idx=18 | const[030a70c8] | 'n' | str?flags=0x0 idx=0 | str?flags=0x0 idx=13 | str?flags=0x0 idx=14 | 'd' | str?flags=0x0 idx=15 | 'u' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[239] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[254].[wk:0xff] | call21(const[256].[wk:0x101]; OP_be().[wk:0x102]).[wk:0x103] | DUP() | desc-tpl | const[256].[wk:0x104] | const[261].[wk:0x106] | call21(OP_ba().[wk:0x107]; const[256].[wk:0x108]).[wk:0x109] | DUP() | desc-tpl | OP_b9().[wk:0x10a]
+  // stack@INIT-END: 'e' | OP_9c() | const[00031203] | OP_b2() | PATCH_REF_LOAD() | const[00b20300] | const[00b40300] | const[00b60301] | OP30() | OP_ba() | 'module' | 'exports' | 'e' | 't' | 'i' | 'o' | 'r' | str?flags=0x2 idx=18 | const[030a70c8] | 'n' | str?flags=0x0 idx=0 | str?flags=0x0 idx=13 | str?flags=0x0 idx=14 | 'd' | str?flags=0x0 idx=15 | 'u' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[239] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[254].[wk:0xff] | call21(const[256].[wk:0x101]; PUSH_I8().[wk:0x102]).[wk:0x103] | DUP() | desc-tpl | const[256].[wk:0x104] | const[261].[wk:0x106] | call21(OP_ba().[wk:0x107]; const[256].[wk:0x108]).[wk:0x109] | DUP() | desc-tpl | OP_b9().[wk:0x10a]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xf7 OP_f7 [?]
@@ -314,8 +314,8 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().builtin#66(param[0], undefined))
   // trailer 0xae
-  // op 0x44 OP_44 [?]
-  // stack-tail: OP_dc() | OP_3f() | PUSH_THIS() | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | fn:'flexDirection' | str?flags=0x11 idx=13 | desc-tpl | objlit[Style](PUSH_STR2()).merge | objlit[dot](PUSH_STR2())(DUP(), call21(desc-tpl; objlit[mutedText](objlit[colors](param[0])).[wk:0x11b])).[wk:0x10d] | objlit[Style](PUSH_STR2()).merge | OP_44()
+  // op 0x44 META_RECORD44 [?]
+  // stack-tail: OP_dc() | OP_3f() | PUSH_THIS() | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | fn:'flexDirection' | str?flags=0x11 idx=13 | desc-tpl | objlit[Style](PUSH_STR2()).merge | objlit[dot](PUSH_STR2())(DUP(), call21(desc-tpl; objlit[mutedText](objlit[colors](param[0])).[wk:0x11b])).[wk:0x10d] | objlit[Style](PUSH_STR2()).merge | META_RECORD44()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

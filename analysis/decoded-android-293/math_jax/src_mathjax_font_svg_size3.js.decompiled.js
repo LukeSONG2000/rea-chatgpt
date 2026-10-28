@@ -199,7 +199,7 @@
   // op 0x2b OP_2b [?]
   // op 0x2b OP_2b [?]
   // op 0x2b OP_2b [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x1a OP_1a [?]
   // op 0xef OP_ef [?]
   // op 0x3f OP_3f [?]

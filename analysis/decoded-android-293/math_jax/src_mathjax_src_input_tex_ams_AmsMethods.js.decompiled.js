@@ -191,7 +191,7 @@
   // op 0xa0 ADD [~]
   // op 0xa0 ADD [~]
   // op 0x2f OP_2f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[6] = OP_f1();
   // op 0xa8 OP_A8 [?]
@@ -256,7 +256,7 @@
   // op 0x35 OP35 [?]
   …(pad)
   // discard(num[294])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -415,7 +415,7 @@
   // op 0x07 PUSH_B [~]
   …(pad)
   // discard(num[304])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x0a PUSH_E [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -429,7 +429,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0xdf CLOSURE_CTX_B [~]
   // discard(param[0](undefined, objlit[Macro](objlit[AmsMethods](CLOSURE_CTX_B())), const[340].builtin#92(undefined, const[341], undefined, const[279]), push1))
-  // stack@INIT-END: OP_1c() | PUSH_C() | load[00] | PUSH_C() | call22(?) | PUSH_E() | PUSH_C() | OP_1a() | PUSH_C() | fn:'Accent' | objlit[isInferred](param[0]) | globalThis | OP_ea() | PUSH_B() | PUSH_B() | param[0].isKind(const[271]) | CLOSURE_CTX_A() | f0(param[0]) | param[0] | PUSH_B() | objlit[isInferred](param[0]) | undefined | CLOSURE_CTX_A() | f0(undefined) | undefined | param[0] | LOCAL_OP2().Tilde | OP_c0() | const[00c20300] | const[00c60300] | const[00c80300] | const[00ca0301] | PUSH_B() | load[auxb603] | load[aux6401] | DECL_SLOT() | OP_b0().Tilde | OP_c0() | const[0030c403] | call21(const[0120c603]; const[0220c803], const[0320ca03], const[0430cc03], const[0530ce03], const[0620b404], const[0730b604], const[0830c203], v06, load[auxb403], num[243203], load[aux6408], DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), undefined.match(OP_33()), OP_2f(), pool[288], undefined, OP_A8(), OP_d5(), call25(objlit[AmsMethods](CLOSURE_CTX_B()).EqnArray; param[0], param[1], PUSH_EXPORTS(), OP_d5(), undefined, undefined, undefined), call25(objlit[ParseUtil](PUSH_STR2()).setArrayAlign; undefined, undefined, param[0]), str?flags=0x1a idx=24) | SPREAD_PREP() | num[1583025159] | OP30() | const[001b0000] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | OP_3a().Tilde | OP_c0() | const[0130b603] | load[aux6401] | DECL_SLOT() | undefined | desc-tpl | !(globalThis).[wk:0x12e] | const[303].[wk:0x130] | const[305].[wk:0x132] | OP35().Tilde | OP_be() | const[0030c003] | const[0130c403] | const[0230c603] | const[0330c803] | const[0430c203] | v06 | load[auxb403] | num[287747] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined.match(OP_33()) | OP_2f() | OP_d5() | const[316] | OP_d5() | OP_89() | num[1583025159] | OP30() | const[001b0000] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | OP_40() | PUSH_C() | PUSH_C() | num[319224327] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | OP_20() | OP_ba() | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'n' | 'a' | str?flags=0x2 idx=0 | str?flags=0x0 idx=13 | PUSH_C() | load[aux6408] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_5f() | objlit[splitAlignArray](PUSH_STR2()) | OP_5f() | undefined | desc-tpl | const[305].[wk:0x134] | !(globalThis).[wk:0x12e] | OP_5e().[wk:0x14a] | const[331].[wk:0x132] | OP_5e().[wk:0x14c] | const[333].[wk:0x130] | OP_5e().[wk:0x14e] | objlit[tagSide](objlit[options](param[0])).[wk:0x136] | OP_5e() | OP_c0() | str?flags=0x3c idx=27 | !(OP_da()) | const[02173526] | num[637686016] | PUSH_B() | num[20186994] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[72000c00] | PUSH_E() | PUSH_B() | num[20186988] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[6c000c00] | PUSH_E() | PUSH_B() | num[20186979] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[63000c00] | PUSH_E() | PUSH_B().Tilde | OP_be() | const[0230ca03] | PUSH_E() | load[auxb403] | num[156675] | DECL_SLOT() | DECL_SLOT() | param[0].GetStar() | const[125] | objlit[NewcommandUtil](PUSH_STR2()).addMacro | param[0].Push(objlit[itemFactory](param[0]).create(const[1]))
+  // stack@INIT-END: OP_1c() | PUSH_C() | load[00] | PUSH_C() | call22(?) | PUSH_E() | PUSH_C() | OP_1a() | PUSH_C() | fn:'Accent' | objlit[isInferred](param[0]) | globalThis | OP_ea() | PUSH_B() | PUSH_B() | param[0].isKind(const[271]) | CLOSURE_CTX_A() | f0(param[0]) | param[0] | PUSH_B() | objlit[isInferred](param[0]) | undefined | CLOSURE_CTX_A() | f0(undefined) | undefined | param[0] | LOCAL_OP2().Tilde | OP_c0() | const[00c20300] | const[00c60300] | const[00c80300] | const[00ca0301] | PUSH_B() | load[auxb603] | load[aux6401] | DECL_SLOT() | OP_b0().Tilde | OP_c0() | const[0030c403] | call21(const[0120c603]; const[0220c803], const[0320ca03], const[0430cc03], const[0530ce03], const[0620b404], const[0730b604], const[0830c203], v06, load[auxb403], num[243203], load[aux6408], DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), DECL_SLOT(), undefined.match(OP_33()), OP_2f(), pool[288], undefined, OP_A8(), OP_d5(), call25(objlit[AmsMethods](CLOSURE_CTX_B()).EqnArray; param[0], param[1], PUSH_EXPORTS(), OP_d5(), undefined, undefined, undefined), call25(objlit[ParseUtil](PUSH_STR2()).setArrayAlign; undefined, undefined, param[0]), str?flags=0x1a idx=24) | SPREAD_PREP() | num[1583025159] | OP30() | const[001b0000] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | OP_3a().Tilde | OP_c0() | const[0130b603] | load[aux6401] | DECL_SLOT() | undefined | desc-tpl | !(globalThis).[wk:0x12e] | const[303].[wk:0x130] | const[305].[wk:0x132] | OP35().Tilde | PUSH_I8() | const[0030c003] | const[0130c403] | const[0230c603] | const[0330c803] | const[0430c203] | v06 | load[auxb403] | num[287747] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined.match(OP_33()) | OP_2f() | OP_d5() | const[316] | OP_d5() | OP_89() | num[1583025159] | OP30() | const[001b0000] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | OP_40() | PUSH_C() | PUSH_C() | num[319224327] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | OP_20() | OP_ba() | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'n' | 'a' | str?flags=0x2 idx=0 | str?flags=0x0 idx=13 | PUSH_C() | load[aux6408] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_5f() | objlit[splitAlignArray](PUSH_STR2()) | OP_5f() | undefined | desc-tpl | const[305].[wk:0x134] | !(globalThis).[wk:0x12e] | OP_5e().[wk:0x14a] | const[331].[wk:0x132] | OP_5e().[wk:0x14c] | const[333].[wk:0x130] | OP_5e().[wk:0x14e] | objlit[tagSide](objlit[options](param[0])).[wk:0x136] | OP_5e() | OP_c0() | str?flags=0x3c idx=27 | !(OP_da()) | const[02173526] | num[637686016] | PUSH_B() | num[20186994] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[72000c00] | PUSH_E() | PUSH_B() | num[20186988] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[6c000c00] | PUSH_E() | PUSH_B() | num[20186979] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[63000c00] | PUSH_E() | PUSH_B().Tilde | PUSH_I8() | const[0230ca03] | PUSH_E() | load[auxb403] | num[156675] | DECL_SLOT() | DECL_SLOT() | param[0].GetStar() | const[125] | objlit[NewcommandUtil](PUSH_STR2()).addMacro | param[0].Push(objlit[itemFactory](param[0]).create(const[1]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   "use strict";
@@ -612,7 +612,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x77 idx=0)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   locop 0xca(param[0].GetNext())
   // trailer 0xae
@@ -637,7 +637,7 @@
   // op 0xa0 ADD [~]
   EXPORTS.builtin#72 (seq 1) = ADD();  // param[0]
   EXPORTS.i (seq 2) = globalThis;  // param[0]
-  // stack@INIT-END: ADD() | const[021c00de] | const[02210095] | const[0200d702] | OP_97() | num[38404339] | push7206.Tilde | OP_be() | 'Tilde' | const[366] | undefined | DECL_SLOT() | const[382]
+  // stack@INIT-END: ADD() | const[021c00de] | const[02210095] | const[0200d702] | OP_97() | num[38404339] | push7206.Tilde | PUSH_I8() | 'Tilde' | const[366] | undefined | DECL_SLOT() | const[382]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x49 OP_49 [?]
@@ -683,12 +683,12 @@
   // op 0xd5 OP_d5 [?]
   // op 0x5e OP_5e [?]
   // op 0xa0 ADD [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0xa0 ADD [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0xd5 OP_d5 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   local[6] = objlit[UnitUtil](PUSH_STR2()).em(OP_9e()).[wk:0x185];
   local[7] = param[0].GetBrackets(param[1]);
@@ -901,7 +901,7 @@
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x5e OP_5e [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   locop 0xcd(OP_f1())
   // op 0x4a OP_4a [?]

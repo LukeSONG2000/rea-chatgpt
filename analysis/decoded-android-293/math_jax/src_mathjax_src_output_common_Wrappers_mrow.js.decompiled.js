@@ -80,7 +80,7 @@
   // op 0x2d OP_2d [?]
   // op 0x2b OP_2b [?]
   // discard(OP_2b())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x08 PUSH_C [~]
   // op 0x30 OP30 [?]
@@ -196,7 +196,7 @@
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: OP_86() | num[105057911] | const[bc030102] | const[03030d77] | str?flags=0xbc idx=3 | LOCAL_OP2() | str?flags=0x2 idx=0 | const[030170ba] | str?flags=0x2 idx=13 | load[auxb803] | OP_12() | OP_2d().node | OP_be() | const[65282052] | const[65413125] | const[62271494] | PATCH_REF_LOAD() | v06 | PUSH_C() | OP30() | OP_ba() | str?flags=0x8 idx=10 | str?flags=0x8 idx=11 | str?flags=0x9 idx=7 | str?flags=0xa idx=13 | OP_87()
+  // stack@INIT-END: OP_86() | num[105057911] | const[bc030102] | const[03030d77] | str?flags=0xbc idx=3 | LOCAL_OP2() | str?flags=0x2 idx=0 | const[030170ba] | str?flags=0x2 idx=13 | load[auxb803] | OP_12() | OP_2d().node | PUSH_I8() | const[65282052] | const[65413125] | const[62271494] | PATCH_REF_LOAD() | v06 | PUSH_C() | OP30() | OP_ba() | str?flags=0x8 idx=10 | str?flags=0x8 idx=11 | str?flags=0x9 idx=7 | str?flags=0xa idx=13 | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -656,7 +656,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x6c idx=1)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -770,7 +770,7 @@
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: OP_4b() | !(num[3154272000]) | local[0] | push5921 | PUSH_C9() | OP_e8() | OP_4a() | PUSH_B() | OP10() | const[00e60100] | const[00b80302] | load[0c] | objlit[isStack](PUSH_THIS()) | PUSH_THIS().node | OP_be() | const[0330e403] | const[0430e603] | OP_87()
+  // stack@INIT-END: OP_4b() | !(num[3154272000]) | local[0] | push5921 | PUSH_C9() | OP_e8() | OP_4a() | PUSH_B() | OP10() | const[00e60100] | const[00b80302] | load[0c] | objlit[isStack](PUSH_THIS()) | PUSH_THIS().node | PUSH_I8() | const[0330e403] | const[0430e603] | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xa1 OP_a1 [?]

@@ -47,12 +47,12 @@
   jmp → @348
   // op 0xb9 OP_b9 [?]
   // op 0xb0 OP_b0 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb2 OP_b2 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
-  // stack-tail: CLASS_DEF_POP() | call25(fn:'builtin#262'; OP_33(), local[0]) | str?flags=0x3 idx=2 | PUSH_B() | PUSH_C() | OP_5d() | const[01001700] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | const[00780079] | const[219] | param[0] | undefined | call25(OP_b2().builtin#55; OP_be()) | str?flags=0x4 idx=2 | num[0]
+  // stack-tail: CLASS_DEF_POP() | call25(fn:'builtin#262'; OP_33(), local[0]) | str?flags=0x3 idx=2 | PUSH_B() | PUSH_C() | OP_5d() | const[01001700] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | const[00780079] | const[219] | param[0] | undefined | call25(OP_b2().builtin#55; PUSH_I8()) | str?flags=0x4 idx=2 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

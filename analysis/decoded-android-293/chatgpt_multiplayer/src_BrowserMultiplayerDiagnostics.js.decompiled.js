@@ -375,7 +375,7 @@
   // op 0xa0 ADD [~]
   // trailer 0xae
   // op 0x94 OP_94 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x13 OP_13 [?]
   …(pad)
   // op 0x90 OP_90 [?]
@@ -685,7 +685,7 @@
 
   // ---- FUNCTION-UNIT: '}' ----
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(param[0].slice())
   // op 0xc2 LOCAL_OP2 [?]
@@ -755,7 +755,7 @@
   // ---- FUNCTION-UNIT: '}' ----
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @4588
-  // stack@INIT-END: OP_ff() | PUSH_E() | load[03] | load[00].} | OP_bc() | OP_34() | const[01001300] | OP_20() | OP_be() | OP_ee() | pool[164].builtin#122 | call25(CLOSURE_CTX_A(); f0(undefined), local[0]) | str?flags=0x57 idx=7 | load[aux0088] | const[020e4206] | const[00010001] | str?flags=0x0 idx=0 | globalThis | fn:'}' | PUSH_E() | const[64000007] | pool[146].isArray(param[0]) | v06 | CLOSURE_CTX_C() | call23(param[0]; local[0], desc-tpl, !(PUSH_WK1()).[wk:0x112]) | OP_12() | push16910 | v06 | const[00010101] | str?flags=0x3 idx=0 | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x0 idx=0 | load[auxba03] | const[0c640000] | CLOSURE_CTX_A() | OP_ac() | EQ_STRICT() | call25(pool[154].parse; pool[154].stringify(param[0], local[0]))
+  // stack@INIT-END: OP_ff() | PUSH_E() | load[03] | load[00].} | OP_bc() | OP_34() | const[01001300] | OP_20() | PUSH_I8() | OP_ee() | pool[164].builtin#122 | call25(CLOSURE_CTX_A(); f0(undefined), local[0]) | str?flags=0x57 idx=7 | load[aux0088] | const[020e4206] | const[00010001] | str?flags=0x0 idx=0 | globalThis | fn:'}' | PUSH_E() | const[64000007] | pool[146].isArray(param[0]) | v06 | CLOSURE_CTX_C() | call23(param[0]; local[0], desc-tpl, !(PUSH_WK1()).[wk:0x112]) | OP_12() | push16910 | v06 | const[00010101] | str?flags=0x3 idx=0 | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x0 idx=0 | load[auxba03] | const[0c640000] | CLOSURE_CTX_A() | OP_ac() | EQ_STRICT() | call25(pool[154].parse; pool[154].stringify(param[0], local[0]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x52 OP_52 [?]
@@ -831,7 +831,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x79 idx=8.[wk:0xdc12b02])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   locop 0xca(v06)
   // op 0x6f OP_6f [?]
@@ -876,7 +876,7 @@
   // op 0xc9 PUSH_C9 [~]
   // discard(PUSH_C9().onEvent(undefined))
   // discard(OP_6f())
-  // stack@INIT-END: OP_2f().] | OP_be() | num[1060866] | const[0008cd64] | OP_6f() | DECL_SLOT() | DECL_SLOT() | desc-tpl | desc-tpl | objlit[documentId](PUSH_C9()).[wk:0x114] | objlit[connectionId](PUSH_C9()).[wk:0x115] | OP_2f()
+  // stack@INIT-END: OP_2f().] | PUSH_I8() | num[1060866] | const[0008cd64] | OP_6f() | DECL_SLOT() | DECL_SLOT() | desc-tpl | desc-tpl | objlit[documentId](PUSH_C9()).[wk:0x114] | objlit[connectionId](PUSH_C9()).[wk:0x115] | OP_2f()
   // ===== 初始化段结束；其后为函数单元 =====
   // discard(?)
   // op 0x6f OP_6f [?]
@@ -1004,7 +1004,7 @@
   // op 0x2b OP_2b [?]
   …(pad)
   // discard(local[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0xde CLOSURE_CTX_A [~]
@@ -1026,7 +1026,7 @@
   // op 0xaf EQ_STRICT [~]
   // discard(objlit[protocol](param[1]).[wk:0x12c](objlit[readyState](param[1]).[wk:0x12d].[wk:0x11a], EQ_STRICT().[wk:0x112]))
   // discard(OP_d5().[wk:0x12b])
-  // stack@INIT-END: OP_17() | OP_2b().] | OP_be() | num[62926848] | num[1060865] | const[00c40307] | const[08cc6f03] | const[00006401] | DECL_SLOT() | CLOSURE_CTX_A() | v06 | PUSH_EXPORTS() | v06 | CLOSURE_CTX_A() | PUSH_C8().record | param[0] | desc-tpl | desc-tpl | undefined.[wk:0x129] | undefined.[wk:0x12a]
+  // stack@INIT-END: OP_17() | OP_2b().] | PUSH_I8() | num[62926848] | num[1060865] | const[00c40307] | const[08cc6f03] | const[00006401] | DECL_SLOT() | CLOSURE_CTX_A() | v06 | PUSH_EXPORTS() | v06 | CLOSURE_CTX_A() | PUSH_C8().record | param[0] | desc-tpl | desc-tpl | undefined.[wk:0x129] | undefined.[wk:0x12a]
   // ===== 初始化段结束；其后为函数单元 =====
   // discard(?)
   // op 0x6f OP_6f [?]

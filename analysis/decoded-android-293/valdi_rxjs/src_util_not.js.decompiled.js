@@ -20,13 +20,13 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   // op 0x05 PATCH_REF_LOAD [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xde CLOSURE_CTX_A [~]
   // op 0xdf CLOSURE_CTX_B [~]
   // trailer 0xae
   …(pad)
-  // stack-tail: 'not' | load[e4] | fn:'builtin#262' | v06 | const[00020002] | PATCH_REF_LOAD() | OP_be() | const[00c00300] | const[00b60300] | str?flags=0xbc idx=3 | str?flags=0x4 idx=0 | num[0]
+  // stack-tail: 'not' | load[e4] | fn:'builtin#262' | v06 | const[00020002] | PATCH_REF_LOAD() | PUSH_I8() | const[00c00300] | const[00b60300] | str?flags=0xbc idx=3 | str?flags=0x4 idx=0 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

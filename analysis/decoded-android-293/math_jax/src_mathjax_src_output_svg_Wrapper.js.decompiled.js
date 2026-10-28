@@ -216,7 +216,7 @@
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.dom (seq 0) = undefined;  // LOAD_M3()
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x66 STR_OP [~]
   // op 0xd6 OP_d6 [?]
   …(pad)
@@ -437,7 +437,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
   // trailer 0xae
@@ -456,7 +456,7 @@
   // op 0xc7 PUSH_C7 [~]
   // discard(objlit[dom](PUSH_C7()).forEach(local[0]))
   // op 0x6b CLASS_DECL [~]
-  // stack@INIT-END: pair(OP_44(), load[auxde41]) | … | … | call25(const[00000000].setAttribute; param[0], const[307], PUSH_STR2()) | META_OP6C() | DECL_SLOT() | CLASS_DECL()
+  // stack@INIT-END: pair(META_RECORD44(), load[auxde41]) | … | … | call25(const[00000000].setAttribute; param[0], const[307], PUSH_STR2()) | META_OP6C() | DECL_SLOT() | CLASS_DECL()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x4d OP_4d [?]
@@ -530,7 +530,7 @@
   // op 0x61 LOAD_61 [?]
   …(pad)
   // discard(LOAD_61())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
@@ -585,7 +585,7 @@
   // op 0x68 PUSH_STR2 [~]
   jmp → @6720
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0x50 idx=4.coreMO | OP_be() | const[0330fe04] | const[0430ba03] | PATCH_REF_LOAD() | PUSH_WK2() | str?flags=0x4 idx=9 | str?flags=0xd idx=182 | load[aux6404] | PUSH_STR2() | CLOSURE_CTX_B().getOuterBBox() | OP_ee() | CLOSURE_CTX_B().getLineBBox(OP_69()) | OP_ee() | CLOSURE_CTX_B().svg | const[289] | desc-tpl | PUSH_STR2().[wk:0x124] | PUSH_WK1() | PUSH_STR2() | CLOSURE_CTX_B().fixed(OP_8f()) | globalThis.[wk:0x12a] | CLOSURE_CTX_B().fixed(OP_8f()).[wk:0x12b] | undefined | PUSH_STR2().insert(undefined, undefined) | PUSH_STR2().append(param[0], undefined)
+  // stack@INIT-END: str?flags=0x50 idx=4.coreMO | PUSH_I8() | const[0330fe04] | const[0430ba03] | PATCH_REF_LOAD() | PUSH_WK2() | str?flags=0x4 idx=9 | str?flags=0xd idx=182 | load[aux6404] | PUSH_STR2() | CLOSURE_CTX_B().getOuterBBox() | OP_ee() | CLOSURE_CTX_B().getLineBBox(OP_69()) | OP_ee() | CLOSURE_CTX_B().svg | const[289] | desc-tpl | PUSH_STR2().[wk:0x124] | PUSH_WK1() | PUSH_STR2() | CLOSURE_CTX_B().fixed(OP_8f()) | globalThis.[wk:0x12a] | CLOSURE_CTX_B().fixed(OP_8f()).[wk:0x12b] | undefined | PUSH_STR2().insert(undefined, undefined) | PUSH_STR2().append(param[0], undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xf6 OP_f6 [?]
@@ -1328,8 +1328,8 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0x60 OP_60 [?]
   // discard(OP_60())
-  // op 0xbe OP_be [?]
-  local[6] = param[0].builtin#55(OP_be()).toUpperCase();
+  // op 0xbe PUSH_I8 [~]
+  local[6] = param[0].builtin#55(PUSH_I8()).toUpperCase();
   // op 0x11 DUP [~]
   // op 0xf3 OP_f3 [?]
   jcc-0xec → @14244

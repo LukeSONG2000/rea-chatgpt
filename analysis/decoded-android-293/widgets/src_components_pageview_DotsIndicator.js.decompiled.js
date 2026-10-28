@@ -34,7 +34,7 @@
   // op 0xc0 OP_c0 [?]
   local[10] = OP_c0();
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   local[11] = call21(undefined.[wk:0xfd]; const[254].[wk:0xff]).[wk:0x100];
   // op 0x64 DECL_SLOT [~]
@@ -51,7 +51,7 @@
   local[14] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.DotsIndicator (seq 1) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_5a() | str?flags=0xf idx=3 | PATCH_REF_LOAD() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'r' | 'i' | 'n' | 's' | 'd' | str?flags=0x2 idx=15 | const[030d70ce] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[236] | param[0] | param[0] | param[0] | param[0] | desc-tpl | DUP() | desc-tpl | call21(OP_be().[wk:0xfa]; const[241].[wk:0xf0]).[wk:0xfb] | DUP() | desc-tpl | undefined.[wk:0xfc] | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: OP_5a() | str?flags=0xf idx=3 | PATCH_REF_LOAD() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'r' | 'i' | 'n' | 's' | 'd' | str?flags=0x2 idx=15 | const[030d70ce] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[236] | param[0] | param[0] | param[0] | param[0] | desc-tpl | DUP() | desc-tpl | call21(PUSH_I8().[wk:0xfa]; const[241].[wk:0xf0]).[wk:0xfb] | DUP() | desc-tpl | undefined.[wk:0xfc] | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xb0 OP_b0 [?]
@@ -146,7 +146,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().beginRenderWithStringKey(PUSH_STR2(), v06))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc8 PUSH_C8 [~]
   // op 0x9e OP_9e [?]
   // op 0xa0 ADD [~]

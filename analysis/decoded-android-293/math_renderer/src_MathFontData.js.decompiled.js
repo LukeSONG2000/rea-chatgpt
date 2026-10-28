@@ -24,8 +24,8 @@
   locop 0xcb(f0(const[233]))
   locop 0xcc(f0(const[234]))
   locop 0xcd(const[4d524631])
-  // op 0xbe OP_be [?]
-  local[4] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[4] = PUSH_I8();
   local[5] = v06;
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]

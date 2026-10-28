@@ -34,7 +34,7 @@
   // op 0x88 OP_88 [?]
   …(pad)
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x6c META_OP6C [?]
@@ -65,7 +65,7 @@
   jcc-0xeb → @383
   // discard(OP_84())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: OP_88() | const[ae0e4306] | OP_20() | OP_be() | PATCH_REF_LOAD() | OP_87()
+  // stack@INIT-END: OP_88() | const[ae0e4306] | OP_20() | PUSH_I8() | PATCH_REF_LOAD() | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xd5 OP_d5 [?]

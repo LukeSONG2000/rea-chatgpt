@@ -111,7 +111,7 @@
 
   // ---- FUNCTION-UNIT: 'create' ----
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x07 PUSH_B [~]
@@ -272,7 +272,7 @@
 
   // ---- FUNCTION-UNIT: 'create' ----
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x30 OP30 [?]
@@ -338,7 +338,7 @@
   …(pad)
   // op 0x08 PUSH_C [~]
   …(pad)
-  // stack-tail: fn:'create' | 'i' | EQ_STRICT() | PUSH_STR2() | OP_ea() | call25(undefined.map; objlit[parse](objlit[Locale](PUSH_STR2()))) | META_OP6C() | OP_49() | num[1728213504] | fn:'create' | OP30() | OP_be() | str?flags=0x4 idx=48 | const[0260b803] | OP_56() | pool[26607618] | OP_62() | const[05010407] | num[3288728488] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | const[2519728897] | const[3257926657] | str?flags=0x5 idx=9 | load[bc] | str?flags=0x0 idx=13 | const[0cc00301] | load[auxb603] | str?flags=0xbe idx=3 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | LOAD_61() | OP_2e() | OP_f3() | num[1593968386] | OP_34() | const[01001300] | PUSH_C() | v06 | OP_ff() | fn:'create' | OP30() | str?flags=0x8 idx=1 | PUSH_D() | const[00000000] | objlit[language](param[1]) | DECL_SLOT() | OP_20() | OP_be() | const[0220c003] | num[62402563] | PATCH_REF_LOAD() | v06 | PATCH_REF_LOAD() | OP_87() | call21(OP_58(); ) | PUSH_C()
+  // stack-tail: fn:'create' | 'i' | EQ_STRICT() | PUSH_STR2() | OP_ea() | call25(undefined.map; objlit[parse](objlit[Locale](PUSH_STR2()))) | META_OP6C() | OP_49() | num[1728213504] | fn:'create' | OP30() | PUSH_I8() | str?flags=0x4 idx=48 | const[0260b803] | OP_56() | pool[26607618] | OP_62() | const[05010407] | num[3288728488] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | const[2519728897] | const[3257926657] | str?flags=0x5 idx=9 | load[bc] | str?flags=0x0 idx=13 | const[0cc00301] | load[auxb603] | str?flags=0xbe idx=3 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | LOAD_61() | OP_2e() | OP_f3() | num[1593968386] | OP_34() | const[01001300] | PUSH_C() | v06 | OP_ff() | fn:'create' | OP30() | str?flags=0x8 idx=1 | PUSH_D() | const[00000000] | objlit[language](param[1]) | DECL_SLOT() | OP_20() | PUSH_I8() | const[0220c003] | num[62402563] | PATCH_REF_LOAD() | v06 | PATCH_REF_LOAD() | OP_87() | call21(OP_58(); ) | PUSH_C()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

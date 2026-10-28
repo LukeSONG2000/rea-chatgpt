@@ -126,7 +126,7 @@
   // op 0xff OP_ff [?]
   // op 0x0f OP_0f [?]
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x20 OP_20 [?]
   // op 0xb8 PUSH_WK2 [~]
@@ -203,17 +203,17 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().tags(undefined, undefined))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0xb5 OP_b5 [?]
   // discard(push2(push7))
@@ -235,7 +235,7 @@
   // op 0x4a OP_4a [?]
   // discard(OP_4a()(param[0]))
   // op 0xc6 PUSH_THIS [~]
-  // stack@INIT-END: str?flags=0x10 idx=6 | const[00010a00] | PUSH_E() | OP_20() | OP_be() | num[62926848] | num[63057922] | num[63451139] | OP_20() | PUSH_WK2() | 'u' | desc-tpl | load[auxba03] | num[201452557] | load[auxc403] | PUSH_B() | OP_87() | objlit[separateOptions](PUSH_STR2()) | param[0] | objlit[OPTIONS](PUSH_STR2()) | OP_f2() | OP_ee() | OP_34() | undefined | DUP() | objlit[userOptions](PUSH_STR2()) | objlit[options](undefined) | objlit[postFilters](undefined).addList | objlit[cleanSubSup](objlit[builtin#22](PUSH_STR2())) | OP_be() | push2 | objlit[setInherited](objlit[builtin#22](PUSH_STR2())) | OP_be() | push2 | objlit[checkScriptlevel](objlit[builtin#22](PUSH_STR2())) | OP_be() | push2 | objlit[moveLimits](objlit[builtin#22](PUSH_STR2())) | OP_be() | push2 | objlit[cleanStretchy](objlit[builtin#22](PUSH_STR2())) | OP_be() | push2 | objlit[cleanAttributes](objlit[builtin#22](PUSH_STR2())) | OP_be() | push2 | objlit[combineRelations](objlit[builtin#22](PUSH_STR2())) | OP_a9() | OP_4a() | PUSH_B() | const[00010201] | str?flags=0x0 idx=0 | globalThis | str?flags=0x0 idx=1 | const[00e60100] | const[000c04cb] | PUSH_THIS() | objlit[nodeFactory](objlit[_parseOptions](PUSH_THIS())).setMmlFactory(param[0])
+  // stack@INIT-END: str?flags=0x10 idx=6 | const[00010a00] | PUSH_E() | OP_20() | PUSH_I8() | num[62926848] | num[63057922] | num[63451139] | OP_20() | PUSH_WK2() | 'u' | desc-tpl | load[auxba03] | num[201452557] | load[auxc403] | PUSH_B() | OP_87() | objlit[separateOptions](PUSH_STR2()) | param[0] | objlit[OPTIONS](PUSH_STR2()) | OP_f2() | OP_ee() | OP_34() | undefined | DUP() | objlit[userOptions](PUSH_STR2()) | objlit[options](undefined) | objlit[postFilters](undefined).addList | objlit[cleanSubSup](objlit[builtin#22](PUSH_STR2())) | PUSH_I8() | push2 | objlit[setInherited](objlit[builtin#22](PUSH_STR2())) | PUSH_I8() | push2 | objlit[checkScriptlevel](objlit[builtin#22](PUSH_STR2())) | PUSH_I8() | push2 | objlit[moveLimits](objlit[builtin#22](PUSH_STR2())) | PUSH_I8() | push2 | objlit[cleanStretchy](objlit[builtin#22](PUSH_STR2())) | PUSH_I8() | push2 | objlit[cleanAttributes](objlit[builtin#22](PUSH_STR2())) | PUSH_I8() | push2 | objlit[combineRelations](objlit[builtin#22](PUSH_STR2())) | OP_a9() | OP_4a() | PUSH_B() | const[00010201] | str?flags=0x0 idx=0 | globalThis | str?flags=0x0 idx=1 | const[00e60100] | const[000c04cb] | PUSH_THIS() | objlit[nodeFactory](objlit[_parseOptions](PUSH_THIS())).setMmlFactory(param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x76 OP_76 [?]

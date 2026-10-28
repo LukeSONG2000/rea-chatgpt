@@ -28,7 +28,7 @@
   // op 0x20 OP_20 [?]
   // op 0x18 TRIPLE_OP [?]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x60 OP_60 [?]
   …(pad)

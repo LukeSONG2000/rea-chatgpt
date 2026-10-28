@@ -48,11 +48,11 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.AbstractMathItem (seq 5) = undefined;  // PUSH_EXPORTS()
   // op 0xd4 PUSH_EXPORTS [✓]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbf OP_bf [?]
   // op 0xbf OP_bf [?]
   // op 0xbf OP_bf [?]
@@ -60,7 +60,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.newState (seq 7) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: 't' | PUSH_THIS() | OP_d6() | num[241672] | const[00b20300] | const[00b40300] | const[40b60300] | PUSH_WK2() | str?flags=0x2 idx=4 | const[030270b8] | str?flags=0x1 idx=0 | DECL_SLOT() | pool[145].builtin#101 | DECL_SLOT() | OP_cf() | PUSH_EXPORTS() | desc-tpl | globalThis.[wk:0xee] | OP_be().[wk:0xef] | OP_be().[wk:0xf0] | OP_be().[wk:0xf1] | OP_be().[wk:0xf2] | OP_be().[wk:0xf3] | OP_bf().[wk:0xf4]
+  // stack@INIT-END: 't' | PUSH_THIS() | OP_d6() | num[241672] | const[00b20300] | const[00b40300] | const[40b60300] | PUSH_WK2() | str?flags=0x2 idx=4 | const[030270b8] | str?flags=0x1 idx=0 | DECL_SLOT() | pool[145].builtin#101 | DECL_SLOT() | OP_cf() | PUSH_EXPORTS() | desc-tpl | globalThis.[wk:0xee] | PUSH_I8().[wk:0xef] | PUSH_I8().[wk:0xf0] | PUSH_I8().[wk:0xf1] | PUSH_I8().[wk:0xf2] | PUSH_I8().[wk:0xf3] | OP_bf().[wk:0xf4]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xf3 OP_f3 [?]

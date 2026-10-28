@@ -42,7 +42,7 @@
   …(pad)
   // op 0x6e OP_6e [?]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
@@ -57,7 +57,7 @@
   // discard(load[aux6f10])
   // op 0x70 TRY_REGION [~]
   // discard(TRY_REGION())
-  // stack@INIT-END: 'u' | push21437 | OP_6e() | v06 | const[be030201] | num[973144580] | OP_40() | OP_be() | const[0070ba03] | num[50576397] | load[aux6400] | call23(pool[235]; local[0], param[1]) | str?flags=0xa idx=5 | PATCH_REF_LOAD() | const[00000000] | str?flags=0x2 idx=0 | globalThis | str?flags=0x0 idx=3 | v06
+  // stack@INIT-END: 'u' | push21437 | OP_6e() | v06 | const[be030201] | num[973144580] | OP_40() | PUSH_I8() | const[0070ba03] | num[50576397] | load[aux6400] | call23(pool[235]; local[0], param[1]) | str?flags=0xa idx=5 | PATCH_REF_LOAD() | const[00000000] | str?flags=0x2 idx=0 | globalThis | str?flags=0x0 idx=3 | v06
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x70 TRY_REGION [~]
   // op 0x2f OP_2f [?]

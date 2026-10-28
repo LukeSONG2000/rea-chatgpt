@@ -76,7 +76,7 @@
   // discard(str?flags=0x17 idx=1)
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0xb7 PUSH_WK1 [~]
@@ -100,7 +100,7 @@
   …(pad)
   // op 0x09 PUSH_D [~]
   …(pad)
-  // stack@INIT-END: str?flags=0x16 idx=19 | load[28] | load[0a] | load[0a] | objlit[builtin#16705](load[0a]) | fn:'builtin#262' | OP_be() | load[bc] | 'Application' | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_bf()) | DECL_SLOT() | objlit[observeState](PUSH_STR2()) | undefined | desc-tpl | str?flags=0x19 idx=12 | OP_2c() | OP_3f() | const[00010302] | const[5001ba03] | const[40b80300] | PUSH_D() | globalThis | str?flags=0x0 idx=3.builtin#128().builtin#127(local[0])
+  // stack@INIT-END: str?flags=0x16 idx=19 | load[28] | load[0a] | load[0a] | objlit[builtin#16705](load[0a]) | fn:'builtin#262' | PUSH_I8() | load[bc] | 'Application' | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_bf()) | DECL_SLOT() | objlit[observeState](PUSH_STR2()) | undefined | desc-tpl | str?flags=0x19 idx=12 | OP_2c() | OP_3f() | const[00010302] | const[5001ba03] | const[40b80300] | PUSH_D() | globalThis | str?flags=0x0 idx=3.builtin#128().builtin#127(local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x4a OP_4a [?]

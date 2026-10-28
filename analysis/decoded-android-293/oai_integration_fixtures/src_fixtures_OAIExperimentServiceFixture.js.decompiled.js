@@ -116,10 +116,10 @@
   local[40] = !(globalThis);
   // op 0xc0 OP_c0 [?]
   local[41] = OP_c0();
-  // op 0xbe OP_be [?]
-  local[42] = OP_be();
-  // op 0xbe OP_be [?]
-  local[43] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[42] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[43] = PUSH_I8();
   // op 0xc0 OP_c0 [?]
   local[44] = OP_c0();
   local[45] = const[337];
@@ -144,8 +144,8 @@
   local[59] = const[348];
   local[60] = const[349];
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  local[61] = call21(OP_be().[wk:0x161]; const[354].[wk:0x163]).[wk:0x164];
+  // op 0xbe PUSH_I8 [~]
+  local[61] = call21(PUSH_I8().[wk:0x161]; const[354].[wk:0x163]).[wk:0x164];
   // stack@INIT-END: LT() | num[17187598] | objlit[builtin#944](OP_12()) | const[0370be03] | const[0470c003] | const[0570c203] | const[0670c403] | const[0770c603] | const[0870c803] | const[0970ca03] | const[0a70cc03] | const[0b70ce03] | const[0c70d003] | const[0d70d203] | const[0e70d403] | const[0f70d603] | const[1070d803] | const[1170da03] | const[1270dc03] | const[1370de03] | const[1470e003] | const[1570e203] | const[1670e403] | const[1770e603] | const[1870e803] | const[1970ea03] | const[1a70ec03] | const[1b70ee03] | const[1c70f003] | const[1d70f203] | const[1e70f403] | const[1f70f603] | const[2070f803] | const[2170fa03] | const[2270fc03] | const[2330fe03] | const[24708004] | const[25308204] | const[26708404] | const[27708604] | const[28708804] | const[29708a04] | const[2a708c04] | const[2b708e04] | const[2c709004] | const[2d709204] | const[2e709404] | const[2f709604] | const[30709804] | const[31709a04] | num[32256062] | ADD() | const[2722117376] | const[2755672064] | const[2792371457] | const[2825927169] | const[2859481857] | const[2893036545] | const[3245358337] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | undefined.makeNodePrototype | const[283] | param[0] | param[0] | param[0] | param[0] | param[0] | const[339] | const[340] | const[341] | const[342] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[351].[wk:0x160]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
@@ -539,7 +539,7 @@
   jcc-0xeb → @11423
   // op 0xde CLOSURE_CTX_A [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]

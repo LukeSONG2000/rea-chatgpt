@@ -413,14 +413,14 @@
   // op 0x11 DUP [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x66 STR_OP [~]
   // discard(STR_OP())
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().builtin#66(param[0], undefined))
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   DECLARE-FUNCTION …
   DECLARE-FUNCTION …

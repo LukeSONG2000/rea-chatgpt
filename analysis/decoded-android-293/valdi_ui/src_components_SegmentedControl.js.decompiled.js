@@ -48,8 +48,8 @@
   local[14] = f0(const[265]);
   // op 0xc0 OP_c0 [?]
   local[15] = OP_c0().[wk:0x10e];
-  // op 0xbe OP_be [?]
-  local[16] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[16] = PUSH_I8();
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -72,17 +72,17 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.SegmentedControl (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  local[20] = call21(OP_be().[wk:0x124]; OP_be().[wk:0x125]).[wk:0x126];
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  local[20] = call21(PUSH_I8().[wk:0x124]; PUSH_I8().[wk:0x125]).[wk:0x126];
   // op 0x11 DUP [~]
   local[21] = call21(DUP(); );
-  // stack@INIT-END: OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'o' | 'd' | 'r' | 's' | 'l' | 'a' | 'n' | 'h' | 'c' | 'v' | str?flags=0x2 idx=22 | const[031270d8] | 'b' | 'M' | OP_16() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[244] | undefined.makeNodePrototype | const[251] | undefined.makeNodePrototype | const[256] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | desc-tpl | !(globalThis).[wk:0x10a] | objlit[EaseInOut](objlit[AnimationCurve](undefined)).[wk:0x10d] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[283].[wk:0x11c] | call21(OP_be().[wk:0x11d]; OP_be().[wk:0x11e]).[wk:0x11f] | DUP() | desc-tpl | const[288].[wk:0x121] | PUSH_WK1().[wk:0x122] | const[288].[wk:0x123] | OP_be().[wk:0x11d] | undefined.[wk:0x11e]
+  // stack@INIT-END: OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'o' | 'd' | 'r' | 's' | 'l' | 'a' | 'n' | 'h' | 'c' | 'v' | str?flags=0x2 idx=22 | const[031270d8] | 'b' | 'M' | OP_16() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[244] | undefined.makeNodePrototype | const[251] | undefined.makeNodePrototype | const[256] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | desc-tpl | !(globalThis).[wk:0x10a] | objlit[EaseInOut](objlit[AnimationCurve](undefined)).[wk:0x10d] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[283].[wk:0x11c] | call21(PUSH_I8().[wk:0x11d]; PUSH_I8().[wk:0x11e]).[wk:0x11f] | DUP() | desc-tpl | const[288].[wk:0x121] | PUSH_WK1().[wk:0x122] | const[288].[wk:0x123] | PUSH_I8().[wk:0x11d] | undefined.[wk:0x11e]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xb9 OP_b9 [?]
@@ -665,11 +665,11 @@
   // op 0x11 DUP [~]
   jcc-0xec → @12317
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   jcc-0xeb → @12322
   jmp → @12330
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xb8 PUSH_WK2 [~]
   // op 0x9e OP_9e [?]
@@ -985,7 +985,7 @@
   // stack@INIT-END: desc-tpl | objlit[height](undefined).[wk:0x16d] | objlit[width](undefined).[wk:0x16c] | objlit[x](undefined).[wk:0x16a] | param[0] | PUSH_C9().setStateAnimated(undefined, PUSH_STR2()) | PUSH_C9().setState(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x8a OP_8a [?]
   …(pad)
@@ -997,7 +997,7 @@
   jcc-0xeb → @18718
   // discard(DUP())
   // op 0xc6 PUSH_THIS [~]
-  // stack@INIT-END: OP_44() | OP_8a() | const[01100001] | PUSH_THIS().setState | desc-tpl | v06.[wk:0x16d] | v06.[wk:0x16c] | v06.[wk:0x16a](v06.[wk:0x16b])
+  // stack@INIT-END: META_RECORD44() | OP_8a() | const[01100001] | PUSH_THIS().setState | desc-tpl | v06.[wk:0x16d] | v06.[wk:0x16c] | v06.[wk:0x16a](v06.[wk:0x16b])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1039,7 +1039,7 @@
   // discard(PUSH_STR2().builtin#66(param[0], undefined))
   // trailer 0xae
   // op 0xd0 OP_d0 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   DECLARE-FUNCTION …
   …(pad)
   DECLARE-FUNCTION …

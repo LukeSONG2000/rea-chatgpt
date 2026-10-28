@@ -80,7 +80,7 @@
   EXPORTS.texclass (seq 0) = objlit[ORD](objlit[TEXCLASS](PUSH_STR2()));  // undefined
   // discard(undefined.setProperty(const[239], objlit[texClass](undefined)))
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // discard(num[1])
   …(pad)
   // op 0x4a OP_4a [?]

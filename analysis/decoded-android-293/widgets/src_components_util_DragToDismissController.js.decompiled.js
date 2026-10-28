@@ -67,15 +67,15 @@
   // op 0xf3 OP_f3 [?]
   jcc-0xeb → @366
   // discard(OP_f3())
-  // op 0xbe OP_be [?]
-  locop 0xca(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xca(PUSH_I8())
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   // op 0xf3 OP_f3 [?]
   jcc-0xeb → @408
   // discard(OP_f3())
-  // op 0xbe OP_be [?]
-  locop 0xcb(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcb(PUSH_I8())
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   // op 0xf3 OP_f3 [?]

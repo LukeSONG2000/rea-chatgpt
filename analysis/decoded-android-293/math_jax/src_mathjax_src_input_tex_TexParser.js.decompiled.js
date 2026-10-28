@@ -205,7 +205,7 @@
   // trailer 0xae
   // op 0x3c OP_3c [?]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
   …(pad)
@@ -482,7 +482,7 @@
   // op 0x92 OP_92 [?]
   // op 0x5b OP_5b [?]
   // op 0x7a OP_7a [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xf5 OP_f5 [?]
   // op 0xff OP_ff [?]
   // op 0xff OP_ff [?]
@@ -1082,7 +1082,7 @@
   // op 0x0a PUSH_E [~]
   …(pad)
   // discard(PUSH_E())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x0a PUSH_E [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
@@ -1097,7 +1097,7 @@
   // op 0xc3 LOAD_M3 [~]
   locop 0xca(objlit[builtin#53](LOAD_M3()).Prev(!(globalThis)))
   jcc-0xeb → @11605
-  // stack@INIT-END: OP_20() | OP_fe() | PUSH_E() | v06 | load[00].composeBraces | OP_be() | const[0230c003] | const[0330a805] | const[0430b603] | PUSH_E() | PATCH_REF_LOAD() | PATCH_REF_LOAD() | LOCAL_OP2() | str?flags=0x6 idx=13 | PUSH_B() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(undefined)
+  // stack@INIT-END: OP_20() | OP_fe() | PUSH_E() | v06 | load[00].composeBraces | PUSH_I8() | const[0230c003] | const[0330a805] | const[0430b603] | PUSH_E() | PATCH_REF_LOAD() | PATCH_REF_LOAD() | LOCAL_OP2() | str?flags=0x6 idx=13 | PUSH_B() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x68 PUSH_STR2 [~]
   locop 0xcb(objlit[LATEX](objlit[Attr](objlit[TexConstant](PUSH_STR2()))))
@@ -1251,7 +1251,7 @@
   // op 0xfe OP_fe [?]
   …(pad)
   // discard(const[282368])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -1262,7 +1262,7 @@
   // op 0xd5 OP_d5 [?]
   // op 0x4a OP_4a [?]
   jcc-0xeb → @14247
-  // stack@INIT-END: OP_4b() | num[3942662111] | num[1879107842] | num[4244790528] | PUSH_D() | OP_3f() | OP_fe() | load[aux0036].composeBraces | OP_be() | const[0030c003] | const[0130c203] | v06 | load[aux6401] | DECL_SLOT() | !(OP_4a())
+  // stack@INIT-END: OP_4b() | num[3942662111] | num[1879107842] | num[4244790528] | PUSH_D() | OP_3f() | OP_fe() | load[aux0036].composeBraces | PUSH_I8() | const[0030c003] | const[0130c203] | v06 | load[aux6401] | DECL_SLOT() | !(OP_4a())
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x68 PUSH_STR2 [~]
   locop 0xca(objlit[LATEX](objlit[Attr](objlit[TexConstant](PUSH_STR2()))))

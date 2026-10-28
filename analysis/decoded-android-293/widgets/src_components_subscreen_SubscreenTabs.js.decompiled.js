@@ -202,7 +202,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x20 idx=4.[wk:0x2])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x08 PUSH_C [~]
   // op 0x10 OP10 [?]
@@ -352,7 +352,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().setUnnamedSlot(local[0]))
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: ?.onCreate | OP_be() | const[0470c004] | const[0570c204] | const[0670c404] | const[0770c604] | const[0870c804] | const[0970ca04] | const[0a70cc04] | const[0b70ce04] | const[0c70d004] | const[0d70d204] | const[0e70d404] | const[0f70d604] | const[1070d804] | const[1170da04] | const[1230dc04] | const[1330de04] | const[1430e004] | const[1530e204] | const[1630e404] | const[1730e604] | const[1830e804] | const[1930ea04] | const[1a30ec04] | const[1b30ee04] | const[1c70f004] | const[1d70f204] | const[1e70f404] | const[1f70f604] | const[2070f804] | const[2170fa04] | const[2270fc04] | const[23701000] | const[40b80301] | load[auxbe03] | const[235131405] | load[auxc003] | PATCH_REF_LOAD() | load[auxbc03] | str?flags=0xd idx=206 | OP10() | load[auxc403] | PUSH_B() | load[auxcc03] | desc-tpl | load[auxc203] | OP_0f() | load[auxba03] | num[616826893] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | OP_8f() | PUSH_STR2().setViewModelProperty | const[285] | PUSH_STR2().endComponent()
+  // stack@INIT-END: ?.onCreate | PUSH_I8() | const[0470c004] | const[0570c204] | const[0670c404] | const[0770c604] | const[0870c804] | const[0970ca04] | const[0a70cc04] | const[0b70ce04] | const[0c70d004] | const[0d70d204] | const[0e70d404] | const[0f70d604] | const[1070d804] | const[1170da04] | const[1230dc04] | const[1330de04] | const[1430e004] | const[1530e204] | const[1630e404] | const[1730e604] | const[1830e804] | const[1930ea04] | const[1a30ec04] | const[1b30ee04] | const[1c70f004] | const[1d70f204] | const[1e70f404] | const[1f70f604] | const[2070f804] | const[2170fa04] | const[2270fc04] | const[23701000] | const[40b80301] | load[auxbe03] | const[235131405] | load[auxc003] | PATCH_REF_LOAD() | load[auxbc03] | str?flags=0xd idx=206 | OP10() | load[auxc403] | PUSH_B() | load[auxcc03] | desc-tpl | load[auxc203] | OP_0f() | load[auxba03] | num[616826893] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | OP_8f() | PUSH_STR2().setViewModelProperty | const[285] | PUSH_STR2().endComponent()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

@@ -86,7 +86,7 @@
 
   // ---- FUNCTION-UNIT: 'create' ----
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x30 OP30 [?]
   …(pad)
@@ -162,7 +162,7 @@
   // op 0x72 OP_72 [?]
   local[5] = pool[145].keys(undefined);
   // op 0xea OP_ea [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa8 OP_A8 [?]
   jcc-0xeb → @1196
   // op 0x72 OP_72 [?]
@@ -225,7 +225,7 @@
   jcc-0xeb → @1484
   // op 0x72 OP_72 [?]
   // discard(OP_87())
-  // stack@INIT-END: fn:'create' | OP30() | OP_be() | num[62271490] | desc-tpl | PATCH_REF_LOAD() | v06 | OP30() | globalThis | str?flags=0xf idx=8
+  // stack@INIT-END: fn:'create' | OP30() | PUSH_I8() | num[62271490] | desc-tpl | PATCH_REF_LOAD() | v06 | OP30() | globalThis | str?flags=0xf idx=8
   // ===== 初始化段结束；其后为函数单元 =====
   local[9] = ?;
   // op 0x6f OP_6f [?]
@@ -393,7 +393,7 @@
   // op 0xac OP_ac [?]
   jcc-0xeb → @2727
   jcc-0xeb → @2727
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   jcc-0xeb → @2727
   // op 0xbf OP_bf [?]

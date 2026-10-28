@@ -10,7 +10,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -36,7 +36,7 @@
   local[5] = IMPORT_BINDING();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.builtin#22 (seq 0) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: 't' | OP_9c() | const[00030603] | v06 | OP_92() | num[241673] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | OP30() | OP_be() | const[0470c003] | const[05306405] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0]
+  // stack@INIT-END: 't' | OP_9c() | const[00030603] | v06 | OP_92() | num[241673] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | OP30() | PUSH_I8() | const[0470c003] | const[05306405] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x68 PUSH_STR2 [~]
@@ -168,7 +168,7 @@
   …(pad)
   // op 0x71 OP_71 [?]
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x11 DUP [~]
   jcc-0xec → @2446
@@ -176,14 +176,14 @@
   // op 0x68 PUSH_STR2 [~]
   locop 0xca(objlit[ITALIC](PUSH_STR2()).[wk:0xfa])
   locop 0xcb(param[0].create(const[258], const[259], undefined, objlit[char](param[1])))
-  // stack@INIT-END: OP_71().slice | OP_be() | const[91149] | DECL_SLOT() | desc-tpl | param[0].Push(undefined)
+  // stack@INIT-END: OP_71().slice | PUSH_I8() | const[91149] | DECL_SLOT() | desc-tpl | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
   // op 0x95 OP_95 [?]
   …(pad)
   // discard(num[3405927936])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x11 DUP [~]
   // op 0x6d META_OP6D [?]
@@ -194,7 +194,7 @@
   // op 0x68 PUSH_STR2 [~]
   locop 0xca(objlit[NORMAL](PUSH_STR2()).[wk:0xfa])
   locop 0xcb(param[0].create(const[258], const[259], undefined, objlit[char](param[1])))
-  // stack@INIT-END: str?flags=0x1d idx=10 | OP_95().slice | OP_be() | const[91149] | DECL_SLOT() | desc-tpl | param[0].Push(undefined)
+  // stack@INIT-END: str?flags=0x1d idx=10 | OP_95().slice | PUSH_I8() | const[91149] | DECL_SLOT() | desc-tpl | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -202,7 +202,7 @@
   locop 0xcb(num[39190530])
   …(pad)
   // discard(OP_82())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x11 DUP [~]
   jcc-0xec → @3168
@@ -210,7 +210,7 @@
   // op 0x68 PUSH_STR2 [~]
   locop 0xca(objlit[ITALIC](PUSH_STR2()).[wk:0xfa])
   locop 0xcb(param[0].create(const[258], const[259], undefined, objlit[char](param[1])))
-  // stack@INIT-END: ?.slice | OP_be() | const[91149] | DECL_SLOT() | desc-tpl | param[0].Push(undefined)
+  // stack@INIT-END: ?.slice | PUSH_I8() | const[91149] | DECL_SLOT() | desc-tpl | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xd0 OP_d0 [?]
@@ -239,7 +239,7 @@
   …(pad)
   // op 0x55 SPREAD_PREP [~]
   locop 0xcb(num[33661440])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x11 DUP [~]
   jcc-0xec → @3839
@@ -252,7 +252,7 @@
   EXPORTS.mathvariant (seq 0) = …;  // …
   // discard(pair(undefined, objlit[font](objlit[env](objlit[builtin#53](param[0])))))
   locop 0xcb(param[0].create(const[258], const[259], undefined, objlit[char](param[1])))
-  // stack@INIT-END: SPREAD_PREP() | const[0000000e].slice | OP_be() | const[91149] | DECL_SLOT() | desc-tpl | param[0].Push(undefined)
+  // stack@INIT-END: SPREAD_PREP() | const[0000000e].slice | PUSH_I8() | const[91149] | DECL_SLOT() | desc-tpl | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xd0 OP_d0 [?]
@@ -280,7 +280,7 @@
   // op 0x55 SPREAD_PREP [~]
   …(pad)
   // discard(num[203])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   locop 0xca(objlit[itemFactory](param[0]).create(const[281]).setProperty(const[54], param[1]))
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -291,7 +291,7 @@
   // discard(SPREAD_PREP())
   // op 0x1b OP_1b [?]
   // op 0x27 APPLY_SPREAD [~]
-  // stack@INIT-END: SPREAD_PREP().slice | OP_be() | const[00306400] | param[0].Push(APPLY_SPREAD())
+  // stack@INIT-END: SPREAD_PREP().slice | PUSH_I8() | const[00306400] | param[0].Push(APPLY_SPREAD())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x76 OP_76 [?]

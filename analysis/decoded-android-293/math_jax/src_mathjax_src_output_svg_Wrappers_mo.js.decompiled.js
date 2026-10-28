@@ -288,7 +288,7 @@
   // op 0x96 OP_96 [?]
   …(pad)
   // discard(num[33671168])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -358,7 +358,7 @@
   // op 0x4a OP_4a [?]
   // op 0x8f OP_8f [?]
   // discard(LOAD_M3().addExtV(OP_4a(), OP_4a(), OP_8f(), undefined, globalThis, undefined, undefined))
-  // stack@INIT-END: OP_87() | str?flags=0x20 idx=9 | OP_96().duplicate | OP_be() | const[0130c003] | const[0230ce03] | const[0330d003] | LOAD_M3().addMidV(OP_4a(), OP_4a(), undefined)
+  // stack@INIT-END: OP_87() | str?flags=0x20 idx=9 | OP_96().duplicate | PUSH_I8() | const[0130c003] | const[0230ce03] | const[0330d003] | LOAD_M3().addMidV(OP_4a(), OP_4a(), undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
   // op 0xb7 PUSH_WK1 [~]
@@ -371,7 +371,7 @@
   // op 0xdd OP_dd [?]
   // op 0x3d OP_3d [?]
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -430,7 +430,7 @@
   // op 0x4a OP_4a [?]
   // op 0xa1 OP_a1 [?]
   // discard(LOAD_M3().addExtH(OP_4a(), OP_4a(), undefined, OP_a1(), undefined, undefined))
-  // stack@INIT-END: OP_3d().duplicate | OP_be() | const[0130c003] | const[0230ba03] | str?flags=0x3 idx=48 | str?flags=0x4 idx=48 | LOAD_M3().addMidH(OP_4a(), OP_4a(), undefined)
+  // stack@INIT-END: OP_3d().duplicate | PUSH_I8() | const[0130c003] | const[0230ba03] | str?flags=0x3 idx=48 | str?flags=0x4 idx=48 | LOAD_M3().addMidH(OP_4a(), OP_4a(), undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
   // op 0xb7 PUSH_WK1 [~]
@@ -524,7 +524,7 @@
   // op 0x51 OP_51 [?]
   …(pad)
   // discard(num[224])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   jcc-0xeb → @5021
   // op 0x11 DUP [~]
@@ -688,7 +688,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x4e idx=0)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   jcc-0xeb → @6660
   // op 0x11 DUP [~]
@@ -722,7 +722,7 @@
   …(pad)
   // op 0x3f OP_3f [?]
   // discard(OP_3f())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]

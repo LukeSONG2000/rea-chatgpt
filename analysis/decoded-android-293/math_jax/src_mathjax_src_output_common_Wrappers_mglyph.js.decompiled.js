@@ -175,9 +175,9 @@
   // stack@INIT-END: str?flags=0x8 idx=19 | OP_20() | OP_c0() | const[01201000] | const[0008cc64] | const[00640000] | objlit[charWrapper](PUSH_C8()) | param[0].updateFrom(objlit[charWrapper](PUSH_C8()).getBBox()) | OP_ee() | pair(param[0], OP_8f())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
-  // stack-tail: str?flags=0x10 idx=8 | OP_be() | num[50494720] | num[0]
+  // stack-tail: str?flags=0x10 idx=8 | PUSH_I8() | num[50494720] | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

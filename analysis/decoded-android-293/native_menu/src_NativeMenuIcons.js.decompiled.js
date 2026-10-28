@@ -86,7 +86,7 @@
   jmp → @836
   // op 0xb8 PUSH_WK2 [~]
   locop 0xcd(PUSH_WK2())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x9d OP_9d [?]
   local[4] = pool[153].ceil(OP_9d());
@@ -203,11 +203,11 @@
   // stack@INIT-END: OP_b0() | undefined.forEach(local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // trailer 0xae
   …(pad)
-  // stack-tail: call25(OP_44(); ) | str?flags=0x23 idx=0 | const[33554432]
+  // stack-tail: call25(META_RECORD44(); ) | str?flags=0x23 idx=0 | const[33554432]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

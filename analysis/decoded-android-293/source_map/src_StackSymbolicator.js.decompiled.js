@@ -9,7 +9,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x40 OP_40 [?]
@@ -42,7 +42,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.symbolicateStack (seq 5) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_d0() | const[0e430601] | str?flags=0x9 idx=3 | PUSH_B() | param[0] | const[0cb00300] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | OP_be() | const[245824] | PATCH_REF_LOAD() | OP_40() | PUSH_THIS() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0]
+  // stack@INIT-END: OP_d0() | const[0e430601] | str?flags=0x9 idx=3 | PUSH_B() | param[0] | const[0cb00300] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | PUSH_I8() | const[245824] | PATCH_REF_LOAD() | OP_40() | PUSH_THIS() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x34 OP_34 [?]
@@ -117,7 +117,7 @@
 
   // ---- FUNCTION-UNIT: 'Failed to symbolicate stack frame ' ----
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -215,7 +215,7 @@
   // op 0x87 OP_87 [?]
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   jcc-0xeb → @1790
   // op 0xaf EQ_STRICT [~]
@@ -386,7 +386,7 @@
   // op 0xf1 OP_f1 [?]
   // op 0x9d OP_9d [?]
   …(pad)
-  // stack-tail: 'o' | OP_34() | fn:'Failed to symbolicate stack frame ' | OP30() | OP_c0() | const[0430c203] | const[0520c403] | const[06206406] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_WK2() | OP_ea() | STR_OP() | desc-tpl | OP_20() | OP_be() | const[0330c003] | const[0430c203] | const[0520c403] | const[06206406] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | OP_20() | OP_c0() | PATCH_REF_LOAD() | str?flags=0x1 idx=186 | const[64010064] | DECL_SLOT() | OP_81() | META_OP6C() | OP_87() | OP_44() | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | '__esModule' | !(param[0]) | fn:'Failed to symbolicate stack frame ' | OP30() | OP_bc() | str?flags=0x6 idx=0 | str?flags=0x5 idx=1 | objlit[builtin#49](param[0]).endsWith(const[258]) | OP_6f() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[1] | objlit[builtin#49](param[0]) | desc-tpl | OP_2f() | OP_9a() | OP_20() | PUSH_WK2() | str?flags=0x3 idx=2 | str?flags=0x4 idx=3 | str?flags=0x5 idx=0 | str?flags=0x4 idx=1 | PUSH_B() | OP_f1() | OP_9d() | const[020d0000] | v06
+  // stack-tail: 'o' | OP_34() | fn:'Failed to symbolicate stack frame ' | OP30() | OP_c0() | const[0430c203] | const[0520c403] | const[06206406] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_WK2() | OP_ea() | STR_OP() | desc-tpl | OP_20() | PUSH_I8() | const[0330c003] | const[0430c203] | const[0520c403] | const[06206406] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | OP_20() | OP_c0() | PATCH_REF_LOAD() | str?flags=0x1 idx=186 | const[64010064] | DECL_SLOT() | OP_81() | META_OP6C() | OP_87() | META_RECORD44() | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | '__esModule' | !(param[0]) | fn:'Failed to symbolicate stack frame ' | OP30() | OP_bc() | str?flags=0x6 idx=0 | str?flags=0x5 idx=1 | objlit[builtin#49](param[0]).endsWith(const[258]) | OP_6f() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[1] | objlit[builtin#49](param[0]) | desc-tpl | OP_2f() | OP_9a() | OP_20() | PUSH_WK2() | str?flags=0x3 idx=2 | str?flags=0x4 idx=3 | str?flags=0x5 idx=0 | str?flags=0x4 idx=1 | PUSH_B() | OP_f1() | OP_9d() | const[020d0000] | v06
 
 // ---- 字符串表 ----
 // str[1] = 'require'

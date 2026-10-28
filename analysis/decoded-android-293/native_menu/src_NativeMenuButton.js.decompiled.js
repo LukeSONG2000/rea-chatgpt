@@ -47,11 +47,11 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.NativeMenuButton (seq 3) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   local[13] = call21(const[258].[wk:0x103]; const[253].[wk:0x104]).[wk:0xf4];
-  // stack@INIT-END: OP_5c() | v06 | const[00030e03] | PUSH_B() | str?flags=0xf4 idx=4 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 's' | 'o' | str?flags=0x0 idx=0 | str?flags=0x2 idx=14 | const[030b70ca] | 'r' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[236] | const[237] | const[238] | undefined.makeNodePrototype | const[242] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[253].[wk:0xfe] | const[253].[wk:0xff] | call21(OP_be().[wk:0x100]; OP_be().[wk:0x101]).[wk:0xee] | DUP() | desc-tpl
+  // stack@INIT-END: OP_5c() | v06 | const[00030e03] | PUSH_B() | str?flags=0xf4 idx=4 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 's' | 'o' | str?flags=0x0 idx=0 | str?flags=0x2 idx=14 | const[030b70ca] | 'r' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[236] | const[237] | const[238] | undefined.makeNodePrototype | const[242] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[253].[wk:0xfe] | const[253].[wk:0xff] | call21(PUSH_I8().[wk:0x100]; PUSH_I8().[wk:0x101]).[wk:0xee] | DUP() | desc-tpl
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x8d OP_8d [?]

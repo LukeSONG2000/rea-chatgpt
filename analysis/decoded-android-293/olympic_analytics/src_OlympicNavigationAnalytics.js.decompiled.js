@@ -37,7 +37,7 @@
   …(pad)
   locop 0xcb(PUSH_B())
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb8 PUSH_WK2 [~]
   // trailer 0xae
   …(pad)

@@ -151,7 +151,7 @@
   // discard(OP_1c())
   // op 0x10 OP10 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @1032
@@ -234,7 +234,7 @@
   // op 0xc8 PUSH_C8 [~]
   locop 0xcb(objlit[currentEditor](PUSH_C8()).snapshot())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @2150
   // discard(DUP())
@@ -261,7 +261,7 @@
   // op 0x11 DUP [~]
   EXPORTS.engine (seq 12) = call21(DUP(); local[0]);  // PUSH_C8()
   // op 0xc8 PUSH_C8 [~]
-  // stack@INIT-END: OP_3b() | const[cc030100] | const[070200df] | const[01b60300] | const[00bc0303] | load[auxc203] | v06 | objlit[UPDATE](objlit[EditorInitialStateKind](load[aux0b68])).[wk:0x113] | desc-tpl | desc-tpl | OP10() | const[40ec010d] | load[auxb803] | const[0dcc030b] | const[bc03030d] | OP_be() | const[734791693] | DECL_SLOT() | !(globalThis) | !(undefined) | !(objlit[documentId](param[0])) | OP_2f() | PUSH_C8() | const[290] | objlit[documentSource](param[1]) | EQ_STRICT() | objlit[isVersionAtLeast](PUSH_STR2()) | v06.record | PUSH_C8() | desc-tpl | !(PUSH_WK1()).[wk:0x12f] | !(PUSH_WK1()).[wk:0x130] | undefined.[wk:0x131] | undefined.[wk:0x11f] | !(globalThis).[wk:0x132] | v06.[wk:0x133] | desc-tpl | META_OP6C() | DECL_SLOT() | PUSH_C8() | objlit[isVersionAtLeast](PUSH_STR2()) | PUSH_C8().updateState | desc-tpl | PUSH_C8().setLocalParticipant()
+  // stack@INIT-END: OP_3b() | const[cc030100] | const[070200df] | const[01b60300] | const[00bc0303] | load[auxc203] | v06 | objlit[UPDATE](objlit[EditorInitialStateKind](load[aux0b68])).[wk:0x113] | desc-tpl | desc-tpl | OP10() | const[40ec010d] | load[auxb803] | const[0dcc030b] | const[bc03030d] | PUSH_I8() | const[734791693] | DECL_SLOT() | !(globalThis) | !(undefined) | !(objlit[documentId](param[0])) | OP_2f() | PUSH_C8() | const[290] | objlit[documentSource](param[1]) | EQ_STRICT() | objlit[isVersionAtLeast](PUSH_STR2()) | v06.record | PUSH_C8() | desc-tpl | !(PUSH_WK1()).[wk:0x12f] | !(PUSH_WK1()).[wk:0x130] | undefined.[wk:0x131] | undefined.[wk:0x11f] | !(globalThis).[wk:0x132] | v06.[wk:0x133] | desc-tpl | META_OP6C() | DECL_SLOT() | PUSH_C8() | objlit[isVersionAtLeast](PUSH_STR2()) | PUSH_C8().updateState | desc-tpl | PUSH_C8().setLocalParticipant()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x3f OP_3f [?]
@@ -497,7 +497,7 @@
   // op 0xc7 PUSH_C7 [~]
   // discard(objlit[controller](PUSH_C7()).getFacepileData())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0xc7 PUSH_C7 [~]
@@ -673,7 +673,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x90 idx=1)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -754,7 +754,7 @@
   // discard(push29696.openEditor)
   // op 0x11 DUP [~]
   // op 0x69 OP_69 [?]
-  // stack@INIT-END: OP_A3() | const[01100001] | OP_62() | OP10() | const[0008cc64] | const[290] | META_OP6C() | META_OP6C() | DECL_SLOT() | OP_2e().openEditor | OP_be() | const[0460c003] | const[05601000] | const[0008c406] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | !(PUSH_WK1()).[wk:0x131] | pool[186].all | OP_4b() | OP_50() | num[640076622] | OP_69()
+  // stack@INIT-END: OP_A3() | const[01100001] | OP_62() | OP10() | const[0008cc64] | const[290] | META_OP6C() | META_OP6C() | DECL_SLOT() | OP_2e().openEditor | PUSH_I8() | const[0460c003] | const[05601000] | const[0008c406] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | !(PUSH_WK1()).[wk:0x131] | pool[186].all | OP_4b() | OP_50() | num[640076622] | OP_69()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x3a OP_3a [?]
@@ -1101,7 +1101,7 @@
   // op 0xc3 LOAD_M3 [~]
   local[7] = objlit[currentEditor](LOAD_M3()).snapshot();
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @14414
   // discard(DUP())
@@ -1224,7 +1224,7 @@
   // op 0x2f OP_2f [?]
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // trailer 0xae
   …(pad)
@@ -1249,7 +1249,7 @@
   // op 0xee OP_ee [?]
   // op 0xde CLOSURE_CTX_A [~]
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: ?.openEditor | DECL_SLOT() | objlit[options](PUSH_C7()).createEditor | desc-tpl | objlit[WRITING_BLOCKS_V1](objlit[EditorSchema](PUSH_STR2())).[wk:0x192] | param[0].[wk:0x139] | objlit[debug](PUSH_C7()).[wk:0x12b] | OP_50().[wk:0x193] | OP_50().[wk:0x194] | OP_50().[wk:0x1a3] | v06 | objlit[engine](undefined) | OP_2f() | OP_44() | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | const[01de420c] | v06 | objlit[controller](CLOSURE_CTX_A()) | objlit[options](CLOSURE_CTX_A()).onStateChange(objlit[currentState](CLOSURE_CTX_A())) | OP_ee() | objlit[controller](CLOSURE_CTX_A()).handleEditorEvent | desc-tpl | objlit[SYNCHRONIZATION](objlit[EditorEventKind](PUSH_STR2())).[wk:0x113] | v06.[wk:0x15c] | v06.[wk:0x15d] | v06.[wk:0x133](param[0].[wk:0x13c])
+  // stack@INIT-END: ?.openEditor | DECL_SLOT() | objlit[options](PUSH_C7()).createEditor | desc-tpl | objlit[WRITING_BLOCKS_V1](objlit[EditorSchema](PUSH_STR2())).[wk:0x192] | param[0].[wk:0x139] | objlit[debug](PUSH_C7()).[wk:0x12b] | OP_50().[wk:0x193] | OP_50().[wk:0x194] | OP_50().[wk:0x1a3] | v06 | objlit[engine](undefined) | OP_2f() | META_RECORD44() | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | const[01de420c] | v06 | objlit[controller](CLOSURE_CTX_A()) | objlit[options](CLOSURE_CTX_A()).onStateChange(objlit[currentState](CLOSURE_CTX_A())) | OP_ee() | objlit[controller](CLOSURE_CTX_A()).handleEditorEvent | desc-tpl | objlit[SYNCHRONIZATION](objlit[EditorEventKind](PUSH_STR2())).[wk:0x113] | v06.[wk:0x15c] | v06.[wk:0x15d] | v06.[wk:0x133](param[0].[wk:0x13c])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1386,7 +1386,7 @@
   jmp → @18316
   locop 0xcb(v06.snapshot())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @18483
   // discard(DUP())
@@ -1466,7 +1466,7 @@
   // op 0x68 PUSH_STR2 [~]
   EXPORTS.currentEditor (seq 0) = objlit[UPDATE](objlit[EditorInitialStateKind](PUSH_STR2())).[wk:0x113](param[0].[wk:0x11a]);  // desc-tpl
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0xc8 PUSH_C8 [~]
@@ -1494,7 +1494,7 @@
   // op 0x6d META_OP6D [?]
   // discard(META_OP6D())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @19887
   // discard(DUP())

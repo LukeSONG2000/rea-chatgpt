@@ -2,8 +2,8 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0xbe OP_be [?]
-  // discard(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_I8())
 
   // ---- FUNCTION-UNIT: 'ignoreParentViewport' ----
   // op 0xb8 PUSH_WK2 [~]

@@ -2122,7 +2122,7 @@
   // discard(STR_OP())
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x0a PUSH_E [~]
   …(pad)
   // op 0x08 PUSH_C [~]
@@ -2382,7 +2382,7 @@
   // op 0xbc OP_bc [?]
   …(pad)
   // op 0xc2 LOCAL_OP2 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x20 OP_20 [?]
   // op 0xbc OP_bc [?]
   …(pad)
@@ -2808,7 +2808,7 @@
   // op 0xff OP_ff [?]
   // op 0xff OP_ff [?]
   // op 0x0a PUSH_E [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc3 LOAD_M3 [~]
@@ -2894,7 +2894,7 @@
   // discard(LOAD_M3().Clear())
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.hfill (seq 2) = push0;  // LOAD_M3()
-  // stack@INIT-END: OP_20() | OP_fe() | PUSH_E() | const[7b000806] | OP_ff() | OP_ff() | load[00] | PUSH_E() | num[234881024].../StackItem | OP_be() | str?flags=0x4 idx=48 | str?flags=0x5 idx=48 | undefined | LOAD_M3().create | const[311] | const[403] | objlit[childNodes](OP_4a()) | OP_ee()
+  // stack@INIT-END: OP_20() | OP_fe() | PUSH_E() | const[7b000806] | OP_ff() | OP_ff() | load[00] | PUSH_E() | num[234881024].../StackItem | PUSH_I8() | str?flags=0x4 idx=48 | str?flags=0x5 idx=48 | undefined | LOAD_M3().create | const[311] | const[403] | objlit[childNodes](OP_4a()) | OP_ee()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

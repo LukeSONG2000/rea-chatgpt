@@ -42,7 +42,7 @@
   // op 0x0a PUSH_E [~]
   // op 0x2c OP_2c [?]
   EXPORTS.builtin#4352 (seq 3653) = OP_2c();  // ?
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   jcc-0xec → @311
   // op 0x09 PUSH_D [~]
@@ -76,7 +76,7 @@
   // op 0xc6 PUSH_THIS [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.attributes (seq 4) = PUSH_EXPORTS();  // PUSH_THIS()
-  // stack@INIT-END: const[00040104] | const[89784322] | OP_be() | const[00c00300] | const[00c20300] | const[00c40300] | const[00100001] | num[243213] | PUSH_D() | OP_2b()
+  // stack@INIT-END: const[00040104] | const[89784322] | PUSH_I8() | const[00c00300] | const[00c20300] | const[00c40300] | const[00100001] | num[243213] | PUSH_D() | OP_2b()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x3f OP_3f [?]

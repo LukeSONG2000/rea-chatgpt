@@ -26,7 +26,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x10 OP10 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xb7 PUSH_WK1 [~]
   // trailer 0xae

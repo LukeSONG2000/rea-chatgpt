@@ -238,12 +238,12 @@
   …(pad)
   // discard(str?flags=0x39 idx=2)
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x11 DUP [~]
   // trailer 0xae
   // discard(str?flags=0x3e idx=2)
-  // stack@INIT-END: ?.builtin#263 | OP_be() | f0(f0(v06.builtin#263))
+  // stack@INIT-END: ?.builtin#263 | PUSH_I8() | f0(f0(v06.builtin#263))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

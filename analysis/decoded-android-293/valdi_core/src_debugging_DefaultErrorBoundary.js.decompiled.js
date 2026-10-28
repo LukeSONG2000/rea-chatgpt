@@ -108,7 +108,7 @@
   // stack@INIT-END: OP_87() | OP_32() | OP_3b() | OP_b0() | call25(str?flags=0x0 idx=3.builtin#128().builtin#127; local[0]) | str?flags=0x8 idx=0 | v06 | PUSH_THIS() | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010010] | const[20ec010b] | DECL_SLOT() | str?flags=0xc idx=2 | const[0000000e].builtin#263 | load[aux08cb] | DECL_SLOT() | META_OP6C() | PUSH_STR2().endComponent() | PUSH_STR2().renderUnnamedSlotWithStringKey(PUSH_C7())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x09 PUSH_D [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0xaa OP_aa [?]
@@ -122,7 +122,7 @@
   jcc-0xec → @1613
   // discard(DUP())
   // op 0xc6 PUSH_THIS [~]
-  // stack@INIT-END: OP_44() | const[00c40307] | load[auxc803] | PUSH_D() | load[aux08ca] | OP_aa() | PUSH_STR2().onUncaughtError(objlit[builtin#51](param[0]), objlit[sourceError](param[0])) | PUSH_THIS().setState | desc-tpl(param[0].[wk:0xf9])
+  // stack@INIT-END: META_RECORD44() | const[00c40307] | load[auxc803] | PUSH_D() | load[aux08ca] | OP_aa() | PUSH_STR2().onUncaughtError(objlit[builtin#51](param[0]), objlit[sourceError](param[0])) | PUSH_THIS().setState | desc-tpl(param[0].[wk:0xf9])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe0 CLOSURE_CTX_C [~]

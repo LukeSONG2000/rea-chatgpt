@@ -35,9 +35,9 @@
   jcc-0xeb → @265
   // op 0xbf OP_bf [?]
   // op 0x9e OP_9e [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]

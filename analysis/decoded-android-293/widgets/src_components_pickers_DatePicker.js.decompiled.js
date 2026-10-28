@@ -120,14 +120,14 @@
   // trailer 0xae
   locop 0xcb(str?flags=0x11 idx=17)
   // op 0x0a PUSH_E [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x11 DUP [~]
   // op 0xbf OP_bf [?]
   // op 0x9d OP_9d [?]
   locop 0xca(call21(DUP(); OP_9d()).[wk:0xfa])
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0xd idx=7 | OP_ea() | 'e' | 't' | 'o' | 'i' | const[0008c408] | DECL_SLOT() | DECL_SLOT() | objlit[viewModel](LOAD_M3()) | OP_ee() | desc-tpl | undefined.[wk:0x100] | undefined.[wk:0x101] | OP_9e().[wk:0x102] | undefined.[wk:0xf9] | num[117445122] | OP_44() | load[aux6400] | desc-tpl | PUSH_STR2() | f0(undefined)
+  // stack@INIT-END: str?flags=0xd idx=7 | OP_ea() | 'e' | 't' | 'o' | 'i' | const[0008c408] | DECL_SLOT() | DECL_SLOT() | objlit[viewModel](LOAD_M3()) | OP_ee() | desc-tpl | undefined.[wk:0x100] | undefined.[wk:0x101] | OP_9e().[wk:0x102] | undefined.[wk:0xf9] | num[117445122] | META_RECORD44() | load[aux6400] | desc-tpl | PUSH_STR2() | f0(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

@@ -140,7 +140,7 @@
   // op 0xc8 PUSH_C8 [~]
   locop 0xca(objlit[pos](PUSH_C8()))
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   locop 0xcb(PUSH_C8().ensureCapacity(ADD()))
   // discard(undefined.setUint32(undefined, param[0], !(globalThis)))
@@ -148,7 +148,7 @@
   // op 0xa0 ADD [~]
   // discard(undefined.setUint32(ADD(), param[1], !(globalThis)))
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   EXPORTS.pos (seq 0) = ADD();  // PUSH_C8()
   // stack@INIT-END: OP10() | const[0008cc64] | const[00640000]
@@ -159,19 +159,19 @@
   // op 0xc8 PUSH_C8 [~]
   locop 0xca(objlit[pos](PUSH_C8()))
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   locop 0xcb(PUSH_C8().ensureCapacity(ADD()))
   // discard(undefined.setUint32(undefined, param[0], !(globalThis)))
   // op 0xba OP_ba [?]
   // op 0xa0 ADD [~]
   // discard(undefined.setUint32(ADD(), param[1], !(globalThis)))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   // discard(undefined.setUint32(ADD(), PUSH_EXPORTS(), !(globalThis)))
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   EXPORTS.pos (seq 0) = ADD();  // PUSH_C8()
   // stack@INIT-END: str?flags=0x24 idx=7.[wk:0x26e0002] | CLASS_DEF_POP() | 'require' | const[0008cc64] | const[00640000]
@@ -183,23 +183,23 @@
   // op 0xc8 PUSH_C8 [~]
   locop 0xca(objlit[pos](PUSH_C8()))
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   locop 0xcb(PUSH_C8().ensureCapacity(ADD()))
   // discard(undefined.setUint32(undefined, param[0], !(globalThis)))
   // op 0xba OP_ba [?]
   // op 0xa0 ADD [~]
   // discard(undefined.setUint32(ADD(), param[1], !(globalThis)))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   // discard(undefined.setUint32(ADD(), PUSH_EXPORTS(), !(globalThis)))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // op 0xd5 OP_d5 [?]
   // discard(undefined.setUint32(ADD(), OP_d5(), !(globalThis)))
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   EXPORTS.pos (seq 0) = ADD();  // PUSH_C8()
   // stack@INIT-END: CLASS_DEF_POP() | str?flags=0x1 idx=0 | 'require' | const[0008cc64] | const[00640000]
@@ -212,27 +212,27 @@
   // op 0xc8 PUSH_C8 [~]
   locop 0xca(objlit[pos](PUSH_C8()))
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   locop 0xcb(PUSH_C8().ensureCapacity(ADD()))
   // discard(undefined.setUint32(undefined, param[0], !(globalThis)))
   // op 0xba OP_ba [?]
   // op 0xa0 ADD [~]
   // discard(undefined.setUint32(ADD(), param[1], !(globalThis)))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   // discard(undefined.setUint32(ADD(), PUSH_EXPORTS(), !(globalThis)))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // op 0xd5 OP_d5 [?]
   // discard(undefined.setUint32(ADD(), OP_d5(), !(globalThis)))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // op 0x5e OP_5e [?]
   // discard(undefined.setUint32(ADD(), OP_5e(), !(globalThis)))
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   EXPORTS.pos (seq 0) = ADD();  // PUSH_C8()
   // stack@INIT-END: CLASS_DEF_POP() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | const[0008cc64] | const[00640000]
@@ -242,11 +242,11 @@
   // discard(num[16925440])
   locop 0xca(objlit[pos](str?flags=0x31 idx=11.[wk:0x1c00002].builtin#263))
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // discard(PUSH_C7().ensureCapacity(ADD()).setFloat64(undefined, param[0], !(globalThis)))
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   EXPORTS.pos (seq 0) = ADD();  // PUSH_C7()
   // ===== 初始化段结束；其后为函数单元 =====

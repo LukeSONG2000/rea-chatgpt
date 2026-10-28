@@ -55,8 +55,8 @@
   local[8] = const[261];
   local[9] = const[262];
   local[10] = const[263];
-  // op 0xbe OP_be [?]
-  local[11] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[11] = PUSH_I8();
   local[12] = const[264];
   // op 0xc0 OP_c0 [?]
   // op 0xc0 OP_c0 [?]
@@ -254,7 +254,7 @@
   // op 0x1c OP_1c [?]
   …(pad)
   // discard(call21(OP_1c(); ))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x08 PUSH_C [~]
   local[5] = PUSH_C();
   // op 0x64 DECL_SLOT [~]
@@ -300,7 +300,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().forEach(local[0]))
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_12() | const[00000000] | PUSH_STR2() | desc-tpl | desc-tpl | const[288].[wk:0x121] | PUSH_STR2().[wk:0x122] | desc-tpl | OP_c0().[wk:0x123] | pool[149] | f0(PUSH_STR2()).[wk:0x124] | OP_1c() | call21(?) | OP30()./backend-api/files/download | PUSH_STR2() | desc-tpl | desc-tpl./backend-api/files/download | OP_be() | const[0370c003] | const[04601000] | const[40da0316] | const[c603080d] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LOCAL_OP2().builtin#92 | LOAD_M3().request | undefined | desc-tpl | OP_1c() | OP_3f() | OP_2b().[wk:0x7420e02] | const[00010001] | str?flags=0x2 idx=0 | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=0 | PUSH_STR2().clear()
+  // stack@INIT-END: OP_12() | const[00000000] | PUSH_STR2() | desc-tpl | desc-tpl | const[288].[wk:0x121] | PUSH_STR2().[wk:0x122] | desc-tpl | OP_c0().[wk:0x123] | pool[149] | f0(PUSH_STR2()).[wk:0x124] | OP_1c() | call21(?) | OP30()./backend-api/files/download | PUSH_STR2() | desc-tpl | desc-tpl./backend-api/files/download | PUSH_I8() | const[0370c003] | const[04601000] | const[40da0316] | const[c603080d] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LOCAL_OP2().builtin#92 | LOAD_M3().request | undefined | desc-tpl | OP_1c() | OP_3f() | OP_2b().[wk:0x7420e02] | const[00010001] | str?flags=0x2 idx=0 | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=0 | PUSH_STR2().clear()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xb5 OP_b5 [?]
@@ -501,7 +501,7 @@
   // discard(OP_71())
   // op 0x2e OP_2e [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x39 OP_39 [?]
   …(pad)
@@ -517,7 +517,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @5576
   // discard(DUP())
-  // stack@INIT-END: str?flags=0x42 idx=6 | OP_b5() | const[02c60e42] | PUSH_B() | const[00010001] | num[19202048] | globalThis | call25(call25(call25(str?flags=0x0 idx=1.cancel; )./backend-api/files/download; )./backend-api/files/download.resolveConversationImages; param[0], PUSH_STR2(), PUSH_STR2(), local[0]) | str?flags=0x46 idx=0 | PUSH_B() | const[00000000] | const[01000400] | OP_c0() | PUSH_C()./backend-api/files/download | call25(param[0]; desc-tpl, param[1].[wk:0x133])./backend-api/files/download | call25(param[0]; desc-tpl, !(PUSH_WK1()).[wk:0x134]) | str?flags=0x4e idx=3./backend-api/files/download | PUSH_D() | load[aux08cb] | DECL_SLOT() | LOCAL_OP2().builtin#92 | PUSH_C7().requestEmpty | undefined | desc-tpl | param[1] | call25(const[310]; const[311].[wk:0x121], undefined.[wk:0x122]) | OP35()./backend-api/files/download | PUSH_C() | load[aux08cb] | DECL_SLOT() | LOCAL_OP2().builtin#92 | PUSH_C7().requestEmpty | undefined | desc-tpl | call25(param[1].[wk:0x138]; const[313].[wk:0x121], undefined.[wk:0x122]) | OP_62() | const[67437571] | num[3188130235] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | const[40b60300] | load[auxba03] | num[17020941] | load[auxbc03] | str?flags=0xd idx=8 | OP_2e() | OP_62() | const[0301050a] | num[3355705828] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x3 idx=3 | load[c0] | 'exports' | load[aux1002] | const[be030003] | OP_ba() | 'c' | num[33798147] | load[bc] | str?flags=0x3 idx=12 | DECL_SLOT() | DECL_SLOT() | v06 | globalThis | OP_ea() | OP_2e() | OP_34() | num[304161072] | OP_62() | const[0801060a] | num[3356035988] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x3 idx=4 | str?flags=0x5 idx=2 | 'require' | str?flags=0x8 idx=4 | str?flags=0x9 idx=5 | str?flags=0xb idx=5 | str?flags=0xd idx=7 | OP10() | const[84131328] | num[201720762] | LOCAL_OP2() | str?flags=0x7 idx=2 | PUSH_C() | load[bc] | str?flags=0x9 idx=12 | DECL_SLOT() | v06 | META_OP6C() | DECL_SLOT() | v06 | META_OP6C() | DECL_SLOT() | CLASS_DECL() | v06 | undefined | OP_2e() | objlit[authenticatedImageRequestPath](PUSH_STR2()) | META_OP6C() | DECL_SLOT() | objlit[networkClient](LOAD_61()).requestBytes | desc-tpl | OP_6f() | DECL_SLOT() | !(objlit[contentType](objlit[builtin#64](undefined)).toLowerCase().startsWith(const[329])) | objlit[makeAssetFromBytes](PUSH_STR2()) | OP_72() | OP_6f() | DECL_SLOT() | OP_ef() | OP_2f() | OP_aa() | objlit[builtin#51](LOAD_M3()) | OP_72() | OP_2e() | OP_2e() | OP_44() | call21(?) | OP_39() | num[134863398] | call21(?)./backend-api/files/download | OP_ef() | OP_2f() | OP_aa() | objlit[builtin#51](param[0]) | pool[149] | pool[335].warn(const[338].builtin#92(undefined))
+  // stack@INIT-END: str?flags=0x42 idx=6 | OP_b5() | const[02c60e42] | PUSH_B() | const[00010001] | num[19202048] | globalThis | call25(call25(call25(str?flags=0x0 idx=1.cancel; )./backend-api/files/download; )./backend-api/files/download.resolveConversationImages; param[0], PUSH_STR2(), PUSH_STR2(), local[0]) | str?flags=0x46 idx=0 | PUSH_B() | const[00000000] | const[01000400] | OP_c0() | PUSH_C()./backend-api/files/download | call25(param[0]; desc-tpl, param[1].[wk:0x133])./backend-api/files/download | call25(param[0]; desc-tpl, !(PUSH_WK1()).[wk:0x134]) | str?flags=0x4e idx=3./backend-api/files/download | PUSH_D() | load[aux08cb] | DECL_SLOT() | LOCAL_OP2().builtin#92 | PUSH_C7().requestEmpty | undefined | desc-tpl | param[1] | call25(const[310]; const[311].[wk:0x121], undefined.[wk:0x122]) | OP35()./backend-api/files/download | PUSH_C() | load[aux08cb] | DECL_SLOT() | LOCAL_OP2().builtin#92 | PUSH_C7().requestEmpty | undefined | desc-tpl | call25(param[1].[wk:0x138]; const[313].[wk:0x121], undefined.[wk:0x122]) | OP_62() | const[67437571] | num[3188130235] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | const[40b60300] | load[auxba03] | num[17020941] | load[auxbc03] | str?flags=0xd idx=8 | OP_2e() | OP_62() | const[0301050a] | num[3355705828] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x3 idx=3 | load[c0] | 'exports' | load[aux1002] | const[be030003] | OP_ba() | 'c' | num[33798147] | load[bc] | str?flags=0x3 idx=12 | DECL_SLOT() | DECL_SLOT() | v06 | globalThis | OP_ea() | OP_2e() | OP_34() | num[304161072] | OP_62() | const[0801060a] | num[3356035988] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x3 idx=4 | str?flags=0x5 idx=2 | 'require' | str?flags=0x8 idx=4 | str?flags=0x9 idx=5 | str?flags=0xb idx=5 | str?flags=0xd idx=7 | OP10() | const[84131328] | num[201720762] | LOCAL_OP2() | str?flags=0x7 idx=2 | PUSH_C() | load[bc] | str?flags=0x9 idx=12 | DECL_SLOT() | v06 | META_OP6C() | DECL_SLOT() | v06 | META_OP6C() | DECL_SLOT() | CLASS_DECL() | v06 | undefined | OP_2e() | objlit[authenticatedImageRequestPath](PUSH_STR2()) | META_OP6C() | DECL_SLOT() | objlit[networkClient](LOAD_61()).requestBytes | desc-tpl | OP_6f() | DECL_SLOT() | !(objlit[contentType](objlit[builtin#64](undefined)).toLowerCase().startsWith(const[329])) | objlit[makeAssetFromBytes](PUSH_STR2()) | OP_72() | OP_6f() | DECL_SLOT() | OP_ef() | OP_2f() | OP_aa() | objlit[builtin#51](LOAD_M3()) | OP_72() | OP_2e() | OP_2e() | META_RECORD44() | call21(?) | OP_39() | num[134863398] | call21(?)./backend-api/files/download | OP_ef() | OP_2f() | OP_aa() | objlit[builtin#51](param[0]) | pool[149] | pool[335].warn(const[338].builtin#92(undefined))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -753,7 +753,7 @@
   // op 0x2b OP_2b [?]
   // discard(OP_2b())
   // op 0x09 PUSH_D [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x0a PUSH_E [~]
   …(pad)
@@ -807,7 +807,7 @@
   jmp → @9164
   // trailer 0xae
   jcc-0xeb → @9168
-  // stack@INIT-END: str?flags=0xbf idx=1 | fn:'/backend-api/pins' | fn:'/backend-api/pins' | OP30() | LOCAL_OP2() | 'exports' | 'e' | 't' | 'n' | str?flags=0x4 idx=12 | str?flags=0x4 idx=8 | str?flags=0x4 idx=9 | OP_1e() | OP_dc() | const[640b0064] | PUSH_E() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | CLOSURE_CTX_B() | undefined | const[346] | EQ_STRICT() | OP_2f() | CLOSURE_CTX_A() | objlit[mapping](undefined) | CLOSURE_CTX_B() | undefined | const[352] | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined.builtin#99(undefined) | OP_2f() | CLOSURE_CTX_A() | OP_4a() | undefined.push | desc-tpl | LOCAL_OP2().builtin#92(undefined, const[357]).[wk:0x166] | OP_ad() | globalThis | OP_ea() | OP_2f() | OP_ac() | undefined | OP_ee() | desc-tpl | call22(?) | OP_2b()./backend-api/pins | globalThis | str?flags=0x6 idx=3 | str?flags=0x0 idx=0 | const[00cc030b] | PUSH_D() | OP_be() | num[50584588] | param[0] | str?flags=0x4 idx=0 | PUSH_E() | load[aux6402] | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | objlit[builtin#64](param[0]) | const[366] | CLOSURE_CTX_B() | CLOSURE_CTX_A() | objlit[author](undefined) | OP_f1() | const[369] | v06 | PUSH_B() | objlit[metadata](undefined) | v06 | CLOSURE_CTX_A() | objlit[metadata](undefined) | !(globalThis) | objlit[is_thinking_preamble_message](v06)
+  // stack@INIT-END: str?flags=0xbf idx=1 | fn:'/backend-api/pins' | fn:'/backend-api/pins' | OP30() | LOCAL_OP2() | 'exports' | 'e' | 't' | 'n' | str?flags=0x4 idx=12 | str?flags=0x4 idx=8 | str?flags=0x4 idx=9 | OP_1e() | OP_dc() | const[640b0064] | PUSH_E() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | CLOSURE_CTX_B() | undefined | const[346] | EQ_STRICT() | OP_2f() | CLOSURE_CTX_A() | objlit[mapping](undefined) | CLOSURE_CTX_B() | undefined | const[352] | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined.builtin#99(undefined) | OP_2f() | CLOSURE_CTX_A() | OP_4a() | undefined.push | desc-tpl | LOCAL_OP2().builtin#92(undefined, const[357]).[wk:0x166] | OP_ad() | globalThis | OP_ea() | OP_2f() | OP_ac() | undefined | OP_ee() | desc-tpl | call22(?) | OP_2b()./backend-api/pins | globalThis | str?flags=0x6 idx=3 | str?flags=0x0 idx=0 | const[00cc030b] | PUSH_D() | PUSH_I8() | num[50584588] | param[0] | str?flags=0x4 idx=0 | PUSH_E() | load[aux6402] | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | objlit[builtin#64](param[0]) | const[366] | CLOSURE_CTX_B() | CLOSURE_CTX_A() | objlit[author](undefined) | OP_f1() | const[369] | v06 | PUSH_B() | objlit[metadata](undefined) | v06 | CLOSURE_CTX_A() | objlit[metadata](undefined) | !(globalThis) | objlit[is_thinking_preamble_message](v06)
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x61 LOAD_61 [?]
   // op 0xf2 OP_f2 [?]
@@ -1025,7 +1025,7 @@
   // op 0x9e OP_9e [?]
   …(pad)
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   …(pad)
   // op 0xb8 PUSH_WK2 [~]
@@ -1038,7 +1038,7 @@
   jcc-0xeb → @11325
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().push(param[0]))
-  // stack@INIT-END: !(pool[146].isArray(objlit[parts](undefined))) | OP_2f() | const[379] | undefined | EQ_STRICT() | objlit[decodeModelWrittenDILResult](PUSH_STR2()) | OP_9e() | str?flags=0x5 idx=182 | const[00ba0300] | const[00bc0301] | OP30() | OP_be() | const[0130d003] | PUSH_B() | load[auxe803] | PUSH_WK2() | 'exports' | const[00c80304] | num[134469645] | load[aux6402] | DECL_SLOT() | OP_ac()
+  // stack@INIT-END: !(pool[146].isArray(objlit[parts](undefined))) | OP_2f() | const[379] | undefined | EQ_STRICT() | objlit[decodeModelWrittenDILResult](PUSH_STR2()) | OP_9e() | str?flags=0x5 idx=182 | const[00ba0300] | const[00bc0301] | OP30() | PUSH_I8() | const[0130d003] | PUSH_B() | load[auxe803] | PUSH_WK2() | 'exports' | const[00c80304] | num[134469645] | load[aux6402] | DECL_SLOT() | OP_ac()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xc2 LOCAL_OP2 [?]
@@ -1192,9 +1192,9 @@
   // discard(desc-tpl)
   // trailer 0xae
   // op 0xb2 OP_b2 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // discard(OP_44())
+  // discard(META_RECORD44())
 
   // ---- FUNCTION-UNIT: '/backend-api/pins' ----
   // op 0xea OP_ea [?]

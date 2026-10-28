@@ -47,7 +47,7 @@
   // op 0xff OP_ff [?]
   // op 0x0f OP_0f [?]
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x20 OP_20 [?]
   jcc-0xec → @429
@@ -112,7 +112,7 @@
   // op 0x7e OP_7e [?]
   // op 0x85 OP_85 [?]
   …(pad)
-  // stack-tail: const[00030802] | PATCH_REF_LOAD() | OP_20() | OP_be() | const[0120c603] | OP_20() | const[0d0c02c4] | PATCH_REF_LOAD() | DECL_SLOT() | OP_2b() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_34() | str?flags=0x9 idx=17 | OP_85() | num[26476546] | num[2] | num[0]
+  // stack-tail: const[00030802] | PATCH_REF_LOAD() | OP_20() | PUSH_I8() | const[0120c603] | OP_20() | const[0d0c02c4] | PATCH_REF_LOAD() | DECL_SLOT() | OP_2b() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_34() | str?flags=0x9 idx=17 | OP_85() | num[26476546] | num[2] | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

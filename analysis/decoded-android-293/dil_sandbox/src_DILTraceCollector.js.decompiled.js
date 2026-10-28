@@ -34,7 +34,7 @@
   …(pad)
   // discard(str?flags=0x9 idx=1)
   // op 0x62 OP_62 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x78 OP_78 [?]
   …(pad)
@@ -49,7 +49,7 @@
   // trailer 0xae
   // op 0x4a OP_4a [?]
   …(pad)
-  // stack-tail: OP_77() | str?flags=0x1 idx=0 | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | OP_62() | OP_be() | OP_78() | load[auxbc03] | str?flags=0x1 idx=184 | load[aux6400] | CLOSURE_CTX_B() | OP_ef() | OP_4a() | num[0] | const[0]
+  // stack-tail: OP_77() | str?flags=0x1 idx=0 | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | OP_62() | PUSH_I8() | OP_78() | load[auxbc03] | str?flags=0x1 idx=184 | load[aux6400] | CLOSURE_CTX_B() | OP_ef() | OP_4a() | num[0] | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

@@ -382,7 +382,7 @@
   // stack@INIT-END: str?flags=0x38 idx=4.attachedStringIndexes.push | desc-tpl | param[0].[wk:0x115](param[1].[wk:0x122])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x10 OP10 [?]
   …(pad)
   // op 0xb8 PUSH_WK2 [~]
@@ -404,7 +404,7 @@
   // stack@INIT-END: OP_94().attachedStringIndexes.push | desc-tpl | param[0].[wk:0x115] | objlit[buffer](PUSH_THIS()).putUint32(param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
   locop 0xca(PUSH_C())
@@ -413,7 +413,7 @@
   // discard(PUSH_THIS().writeOperation(OP_ba()))
   // op 0xc6 PUSH_THIS [~]
   // op 0xd4 PUSH_EXPORTS [✓]
-  // stack@INIT-END: OP_44() | const[00ba0300] | const[00100001] | objlit[buffer](PUSH_THIS()).putUint32_3(param[0], param[1], PUSH_EXPORTS())
+  // stack@INIT-END: META_RECORD44() | const[00ba0300] | const[00100001] | objlit[buffer](PUSH_THIS()).putUint32_3(param[0], param[1], PUSH_EXPORTS())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x70 TRY_REGION [~]
@@ -538,9 +538,9 @@
   // op 0xc3 LOAD_M3 [~]
   // discard(objlit[writingCallbacks](LOAD_M3()).push(param[0]))
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc3 LOAD_M3 [~]
-  // discard(objlit[buffer](LOAD_M3()).putUint32_2(OP_be(), LOAD_M3().getFunctionId(param[0])))
+  // discard(objlit[buffer](LOAD_M3()).putUint32_2(PUSH_I8(), LOAD_M3().getFunctionId(param[0])))
   // stack@INIT-END: META_OP6C() | META_OP6C()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x6c META_OP6C [?]
@@ -575,9 +575,9 @@
   // op 0xaf EQ_STRICT [~]
   // op 0x6c META_OP6C [?]
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc3 LOAD_M3 [~]
-  // discard(objlit[buffer](LOAD_M3()).putUint32_2(OP_be(), LOAD_M3().attach(objlit[channelId](undefined))))
+  // discard(objlit[buffer](LOAD_M3()).putUint32_2(PUSH_I8(), LOAD_M3().attach(objlit[channelId](undefined))))
   // stack@INIT-END: CLOSURE_CTX_B() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | objlit[getDILHtmlViewMessengerHost](PUSH_STR2()) | META_OP6C()
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcc(pool[145].keys(param[0]))
@@ -602,9 +602,9 @@
   // stack@INIT-END: OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc3 LOAD_M3 [~]
-  // discard(objlit[buffer](LOAD_M3()).putUint32_2(OP_be(), LOAD_M3().attach(param[0])))
+  // discard(objlit[buffer](LOAD_M3()).putUint32_2(PUSH_I8(), LOAD_M3().attach(param[0])))
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
   // op 0xbb OP_bb [?]
@@ -648,8 +648,8 @@
   // op 0xac OP_ac [?]
   // op 0x6c META_OP6C [?]
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
-  // discard(objlit[buffer](PUSH_C8()).putUint32(OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  // discard(objlit[buffer](PUSH_C8()).putUint32(PUSH_I8()))
   // op 0xc8 PUSH_C8 [~]
   // discard(PUSH_C8().writeValue(objlit[children](param[0])))
   // stack@INIT-END: ADD() | const[024400c8] | OP_52() | num[2667628105] | const[02da004d] | num[67219712] | OP_A8().attachedStringIndexes | 'o' | DECL_SLOT() | DECL_SLOT() | undefined | META_OP6C()
@@ -662,8 +662,8 @@
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
-  // discard(objlit[buffer](PUSH_C8()).putUint32_2(OP_be(), objlit[typeId](undefined)))
+  // op 0xbe PUSH_I8 [~]
+  // discard(objlit[buffer](PUSH_C8()).putUint32_2(PUSH_I8(), objlit[typeId](undefined)))
   // op 0xc8 PUSH_C8 [~]
   // discard(PUSH_C8().writeValue(objlit[props](param[0])))
   // op 0xc8 PUSH_C8 [~]
@@ -969,13 +969,13 @@
   // discard(STR_OP())
   jmp → @11681
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @11900
   // op 0xc3 LOAD_M3 [~]
   // op 0xc3 LOAD_M3 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
@@ -999,7 +999,7 @@
   // op 0x2f OP_2f [?]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
@@ -1011,12 +1011,12 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @12486
   // op 0xc3 LOAD_M3 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @12601
   // op 0xc3 LOAD_M3 [~]
@@ -1092,7 +1092,7 @@
   …(pad)
   // op 0x79 OP_79 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // op 0xc7 PUSH_C7 [~]
   // op 0xa8 OP_A8 [?]
@@ -1103,7 +1103,7 @@
   // op 0xc7 PUSH_C7 [~]
   locop 0xca(objlit[view](PUSH_C7()).getFloat64(objlit[offset](PUSH_C7()), !(globalThis)))
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   EXPORTS.offset (seq 0) = ADD();  // OP_2f()
   // trailer 0xae
@@ -1181,7 +1181,7 @@
   // op 0xdf CLOSURE_CTX_B [~]
   // trailer 0xae
   …(pad)
-  // stack-tail: DUP() | DUP() | DUP() | DUP() | OP_ba() | DUP() | OP_bb() | DUP() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DUP() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DUP() | OP_be() | DUP() | META_OP6C() | DECL_SLOT() | OP_1c() | LOCAL_OP2() | OP_2b() | STR_OP() | PUSH_D() | OP_2b() | OP_6a() | PUSH_D() | call21(?) | const[2533371952] | const[0299cb00] | OP_3e() | OP_3e() | LOCAL_OP2() | OP_ad() | OP_2f() | OP_a9() | OP_A8() | OP_A8() | objlit[isDILRuntimeElement](PUSH_STR2()) | OP_87() | CLOSURE_CTX_A() | CLOSURE_CTX_B() | str?flags=0xb2 idx=2 | const[0]
+  // stack-tail: DUP() | DUP() | DUP() | DUP() | OP_ba() | DUP() | OP_bb() | DUP() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DUP() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DUP() | PUSH_I8() | DUP() | META_OP6C() | DECL_SLOT() | OP_1c() | LOCAL_OP2() | OP_2b() | STR_OP() | PUSH_D() | OP_2b() | OP_6a() | PUSH_D() | call21(?) | const[2533371952] | const[0299cb00] | OP_3e() | OP_3e() | LOCAL_OP2() | OP_ad() | OP_2f() | OP_a9() | OP_A8() | OP_A8() | objlit[isDILRuntimeElement](PUSH_STR2()) | OP_87() | CLOSURE_CTX_A() | CLOSURE_CTX_B() | str?flags=0xb2 idx=2 | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

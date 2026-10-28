@@ -171,7 +171,7 @@
   // op 0x12 OP_12 [?]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0xc7 PUSH_C7 [~]
@@ -308,7 +308,7 @@
   // discard(pair(PUSH_C7(), objlit[Style](PUSH_STR2()).merge(objlit[surface](PUSH_STR2()), undefined)))
   // op 0xc7 PUSH_C7 [~]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x30 OP30 [?]
   …(pad)
@@ -539,7 +539,7 @@
   // op 0x0a PUSH_E [~]
   // op 0x20 OP_20 [?]
   // op 0x20 OP_20 [?]
-  // stack@INIT-END: str?flags=0x2e idx=20 | const[0200a201].visible | v06 | undefined | objlit[cachedInputStyle](PUSH_C7()) | OP_44() | const[00ba0300] | const[00bc0300] | const[00be0301] | OP30() | str?flags=0x8 idx=1 | CLOSURE_CTX_A() | PUSH_EXPORTS() | desc-tpl | objlit[top](undefined) | param[1].includes(objlit[Top](CLOSURE_CTX_B())) | ADD().[wk:0x110] | objlit[right](undefined) | param[1].includes(objlit[Right](CLOSURE_CTX_B())) | ADD().[wk:0x112] | objlit[bottom](undefined) | param[1].includes(objlit[Bottom](CLOSURE_CTX_B())) | ADD().[wk:0x114] | objlit[left](undefined) | param[1].includes(objlit[Left](CLOSURE_CTX_B())) | str?flags=0x3c idx=19 | OP_98() | const[02009801] | OP10() | const[64020064] | const[00640000] | CLOSURE_CTX_A() | desc-tpl | CLOSURE_CTX_B() | objlit[top](undefined).[wk:0x110] | CLOSURE_CTX_B() | objlit[right](undefined).[wk:0x112] | CLOSURE_CTX_B() | objlit[bottom](undefined).[wk:0x114] | CLOSURE_CTX_B() | v06 | param[0] | OP_ac() | desc-tpl | param[0].[wk:0x110] | param[0].[wk:0x112] | param[0].[wk:0x114] | desc-tpl | objlit[top](undefined).[wk:0x110] | objlit[right](undefined).[wk:0x112] | objlit[bottom](undefined).[wk:0x114] | str?flags=0x46 idx=35 | fn:'flexShrink' | OP30() | DECL_SLOT() | OP_ac() | param[0] | push1 | OP_ee() | META_OP6C() | OP_A8() | param[0].trim().builtin#93(OP_33()).map(pool[148]) | OP_20()
+  // stack@INIT-END: str?flags=0x2e idx=20 | const[0200a201].visible | v06 | undefined | objlit[cachedInputStyle](PUSH_C7()) | META_RECORD44() | const[00ba0300] | const[00bc0300] | const[00be0301] | OP30() | str?flags=0x8 idx=1 | CLOSURE_CTX_A() | PUSH_EXPORTS() | desc-tpl | objlit[top](undefined) | param[1].includes(objlit[Top](CLOSURE_CTX_B())) | ADD().[wk:0x110] | objlit[right](undefined) | param[1].includes(objlit[Right](CLOSURE_CTX_B())) | ADD().[wk:0x112] | objlit[bottom](undefined) | param[1].includes(objlit[Bottom](CLOSURE_CTX_B())) | ADD().[wk:0x114] | objlit[left](undefined) | param[1].includes(objlit[Left](CLOSURE_CTX_B())) | str?flags=0x3c idx=19 | OP_98() | const[02009801] | OP10() | const[64020064] | const[00640000] | CLOSURE_CTX_A() | desc-tpl | CLOSURE_CTX_B() | objlit[top](undefined).[wk:0x110] | CLOSURE_CTX_B() | objlit[right](undefined).[wk:0x112] | CLOSURE_CTX_B() | objlit[bottom](undefined).[wk:0x114] | CLOSURE_CTX_B() | v06 | param[0] | OP_ac() | desc-tpl | param[0].[wk:0x110] | param[0].[wk:0x112] | param[0].[wk:0x114] | desc-tpl | objlit[top](undefined).[wk:0x110] | objlit[right](undefined).[wk:0x112] | objlit[bottom](undefined).[wk:0x114] | str?flags=0x46 idx=35 | fn:'flexShrink' | OP30() | DECL_SLOT() | OP_ac() | param[0] | push1 | OP_ee() | META_OP6C() | OP_A8() | param[0].trim().builtin#93(OP_33()).map(pool[148]) | OP_20()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x20 OP_20 [?]
   // op 0x2f OP_2f [?]

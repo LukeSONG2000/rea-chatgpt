@@ -12,7 +12,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -91,10 +91,10 @@
   local[9] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.ScrollViewHandler (seq 1) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: 'e' | CLOSURE_CTX_C() | str?flags=0xe idx=67 | OP_2e() | OP_bb() | const[241677] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | OP_be() | const[0460c003] | const[32256010] | PATCH_REF_LOAD() | const[07206409] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: 'e' | CLOSURE_CTX_C() | str?flags=0xe idx=67 | OP_2e() | OP_bb() | const[241677] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | PUSH_I8() | const[0460c003] | const[32256010] | PATCH_REF_LOAD() | const[07206409] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
   // discard(PUSH_C())
@@ -233,8 +233,8 @@
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
   // op 0x4b OP_4b [?]
-  // op 0xbe OP_be [?]
-  // discard(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_I8())
   // op 0x1c OP_1c [?]
   // op 0x3f OP_3f [?]
   …(pad)

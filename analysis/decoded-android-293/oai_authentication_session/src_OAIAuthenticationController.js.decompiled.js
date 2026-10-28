@@ -479,7 +479,7 @@
   …(pad)
   // discard(str?flags=0x35 idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @3809
   // op 0x64 DECL_SLOT [~]
   // op 0xc7 PUSH_C7 [~]
@@ -963,7 +963,7 @@
   // op 0x17 OP_17 [?]
   // op 0x1c OP_1c [?]
   // op 0xdf CLOSURE_CTX_B [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // trailer 0xae
   …(pad)
@@ -1036,7 +1036,7 @@
   // op 0xdf CLOSURE_CTX_B [~]
   EXPORTS.interactiveAuthenticationTask (seq 0) = …;  // …
   jmp → @9833
-  // stack@INIT-END: OP_56() | OP_62() | OP_82() | v06 | const[66486] | OP30() | OP_ba() | str?flags=0x5 idx=2 | const[00de0314] | const[e2031809] | CLOSURE_CTX_C() | str?flags=0x15 idx=1 | PUSH_C9().updateState | OP_6f() | DECL_SLOT() | objlit[disposed](PUSH_C9()) | OP_1c() | OP_44() | load[aux08ca] | str?flags=0xb4 idx=1 | v06 | OP30() | num[84279812] | str?flags=0x9c idx=2 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x3 idx=3 | str?flags=0x2 idx=3 | const[d203000c] | globalThis | str?flags=0x0 idx=3 | const[03640200] | DECL_SLOT() | OP_6f() | undefined | OP_2f() | CLOSURE_CTX_A() | objlit[operationGeneration](CLOSURE_CTX_B()) | pair(CLOSURE_CTX_B(), undefined) | undefined.cancel()
+  // stack@INIT-END: OP_56() | OP_62() | OP_82() | v06 | const[66486] | OP30() | OP_ba() | str?flags=0x5 idx=2 | const[00de0314] | const[e2031809] | CLOSURE_CTX_C() | str?flags=0x15 idx=1 | PUSH_C9().updateState | OP_6f() | DECL_SLOT() | objlit[disposed](PUSH_C9()) | OP_1c() | META_RECORD44() | load[aux08ca] | str?flags=0xb4 idx=1 | v06 | OP30() | num[84279812] | str?flags=0x9c idx=2 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x3 idx=3 | str?flags=0x2 idx=3 | const[d203000c] | globalThis | str?flags=0x0 idx=3 | const[03640200] | DECL_SLOT() | OP_6f() | undefined | OP_2f() | CLOSURE_CTX_A() | objlit[operationGeneration](CLOSURE_CTX_B()) | pair(CLOSURE_CTX_B(), undefined) | undefined.cancel()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1093,7 +1093,7 @@
   // op 0xc7 PUSH_C7 [~]
   EXPORTS.interactiveAuthenticationTask (seq 0) = v06;  // PUSH_C7()
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @10354
   // discard(DUP())
@@ -1312,7 +1312,7 @@
   // trailer 0xae
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x50 OP_50 [?]
   locop 0xca(OP_50())
@@ -1331,7 +1331,7 @@
   …(pad)
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xe0 CLOSURE_CTX_C [~]
-  // stack@INIT-END: OP_62() | num[134611463] | const[860709b6] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x4 idx=6 | 'exports' | TRIPLE_OP() | PUSH_D() | CLOSURE_CTX_C() | APPLY_SPREAD() | str?flags=0x1f idx=1 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[isValidOAIBearerToken](PUSH_STR2()) | !(f0(objlit[accessToken](param[0]))) | OP_6f() | LOAD_61() | OP_2f() | param[1] | LOAD_61() | OP_2e() | str?flags=0xe6 idx=1 | OP_7c() | const[020d491c] | OP_d5() | OP30().valdi_rxjs/src/operators/take | str?flags=0xf3 idx=1 | num[234881024].valdi_rxjs/src/operators/take | OP_be() | const[00301000] | const[40ce030c] | load[aux08cb] | DECL_SLOT() | desc-tpl | param[0].[wk:0x163] | param[1].[wk:0x166] | PUSH_EXPORTS().[wk:0x169] | call21(DUP(); objlit[client](PUSH_C7()), param[0], objlit[id](PUSH_EXPORTS()), undefined).[wk:0x183] | objlit[baseUrl](PUSH_C7()).[wk:0x148] | undefined.[wk:0x184] | str?flags=0xf6 idx=1 | OP_2b() | OP_75() | num[239020998].valdi_rxjs/src/operators/take(CLOSURE_CTX_B(), CLOSURE_CTX_C())
+  // stack@INIT-END: OP_62() | num[134611463] | const[860709b6] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x4 idx=6 | 'exports' | TRIPLE_OP() | PUSH_D() | CLOSURE_CTX_C() | APPLY_SPREAD() | str?flags=0x1f idx=1 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[isValidOAIBearerToken](PUSH_STR2()) | !(f0(objlit[accessToken](param[0]))) | OP_6f() | LOAD_61() | OP_2f() | param[1] | LOAD_61() | OP_2e() | str?flags=0xe6 idx=1 | OP_7c() | const[020d491c] | OP_d5() | OP30().valdi_rxjs/src/operators/take | str?flags=0xf3 idx=1 | num[234881024].valdi_rxjs/src/operators/take | PUSH_I8() | const[00301000] | const[40ce030c] | load[aux08cb] | DECL_SLOT() | desc-tpl | param[0].[wk:0x163] | param[1].[wk:0x166] | PUSH_EXPORTS().[wk:0x169] | call21(DUP(); objlit[client](PUSH_C7()), param[0], objlit[id](PUSH_EXPORTS()), undefined).[wk:0x183] | objlit[baseUrl](PUSH_C7()).[wk:0x148] | undefined.[wk:0x184] | str?flags=0xf6 idx=1 | OP_2b() | OP_75() | num[239020998].valdi_rxjs/src/operators/take(CLOSURE_CTX_B(), CLOSURE_CTX_C())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
@@ -2252,7 +2252,7 @@
   // op 0x50 OP_50 [?]
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0xd1 idx=3)

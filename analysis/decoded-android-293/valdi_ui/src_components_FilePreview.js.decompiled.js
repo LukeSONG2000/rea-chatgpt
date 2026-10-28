@@ -48,7 +48,7 @@
   // op 0x0a PUSH_E [~]
   // op 0x2b OP_2b [?]
   // op 0x3b OP_3b [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
   // op 0xbf OP_bf [?]
@@ -64,7 +64,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0xef OP_ef [?]
   EXPORTS.viewFactory (seq 0) = …;  // …
-  // stack@INIT-END: 'rd77e2yFkP7N0Bz1' | OP_83() | const[04003208] | PUSH_C() | OP_3b() | const[00000100] | str?flags=0x3 idx=0 | const[10000100] | OP_be() | const[100909581] | load[auxc003] | objlit[isVersionAtLeast](PATCH_REF_LOAD()) | pair(PUSH_THIS(), OP_ef())
+  // stack@INIT-END: 'rd77e2yFkP7N0Bz1' | OP_83() | const[04003208] | PUSH_C() | OP_3b() | const[00000100] | str?flags=0x3 idx=0 | const[10000100] | PUSH_I8() | const[100909581] | load[auxc003] | objlit[isVersionAtLeast](PATCH_REF_LOAD()) | pair(PUSH_THIS(), OP_ef())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x56 OP_56 [?]

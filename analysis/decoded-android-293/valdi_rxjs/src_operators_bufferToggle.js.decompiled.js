@@ -32,7 +32,7 @@
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   locop 0xca(str?flags=0x64 idx=0)
   // op 0x68 PUSH_STR2 [~]
@@ -43,7 +43,7 @@
   // discard(local[0](OP_f2()))
   // op 0x68 PUSH_STR2 [~]
   // op 0xf2 OP_f2 [?]
-  // stack@INIT-END: fn:'builtin#262'(num[50576397], load[auxbe03], const[17020941], call23(objlit[operate](load[aux6805]); local[0]), str?flags=0x9 idx=4).builtin#262 | 'bufferToggle' | num[17028108] | str?flags=0xbc idx=3 | OP_be() | const[246284] | objlit[innerFrom](PUSH_STR2()) | f0(LOAD_61()).subscribe | objlit[createOperatorSubscriber](PUSH_STR2()) | param[1] | param[0].subscribe | objlit[createOperatorSubscriber](PUSH_STR2()) | param[1] | local[0](OP_f2())
+  // stack@INIT-END: fn:'builtin#262'(num[50576397], load[auxbe03], const[17020941], call23(objlit[operate](load[aux6805]); local[0]), str?flags=0x9 idx=4).builtin#262 | 'bufferToggle' | num[17028108] | str?flags=0xbc idx=3 | PUSH_I8() | const[246284] | objlit[innerFrom](PUSH_STR2()) | f0(LOAD_61()).subscribe | objlit[createOperatorSubscriber](PUSH_STR2()) | param[1] | param[0].subscribe | objlit[createOperatorSubscriber](PUSH_STR2()) | param[1] | local[0](OP_f2())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

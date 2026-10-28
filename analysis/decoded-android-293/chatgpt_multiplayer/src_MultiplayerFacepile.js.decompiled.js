@@ -656,7 +656,7 @@
   // op 0x2e OP_2e [?]
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x8c OP_8c [?]
   // op 0x17 OP_17 [?]
@@ -677,7 +677,7 @@
   // op 0x07 PUSH_B [~]
   …(pad)
   // discard(PUSH_B())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x64 DECL_SLOT [~]
@@ -827,7 +827,7 @@
   EXPORTS.data (seq 0) = param[0].[wk:0x116];  // undefined.[wk:0x105]
   // op 0xc3 LOAD_M3 [~]
   // op 0xc3 LOAD_M3 [~]
-  // stack@INIT-END: str?flags=0xbf idx=2 | OP_62() | PUSH_E() | PUSH_C() | str?flags=0x2 idx=201 | PUSH_WK2() | str?flags=0x1 idx=0 | 'require' | const[3056599553] | str?flags=0x5 idx=3 | const[3257926661] | const[3291481349] | const[3325036037] | const[3224372997] | const[268632840] | const[00ba0302] | load[auxbc03] | str?flags=0xd idx=182 | load[aux08c4] | PUSH_D() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[closed](LOAD_M3()) | OP_2e() | v06 | OP_87() | pool[186].all | LOAD_M3().request(ADD()) | OP_8e() | OP_ee() | OP_2e() | META_OP6C() | EQ_STRICT() | OP_2f() | OP_6f() | OP_2f() | OP_2e() | OP_7b() | const[00002301] | str?flags=0xcf idx=2.valdi_core/src/JsonSerialization | OP_be() | const[0370be04] | const[0430c004] | const[0570c204] | const[0670c404] | const[0730f004] | str?flags=0xe idx=48 | const[0870f004] | const[62271502] | PATCH_REF_LOAD() | PATCH_REF_LOAD() | const[0a301000] | const[4008c40e] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_87() | undefined | undefined.builtin#104(undefined) | DECL_SLOT() | OP_81() | DECL_SLOT() | OP_87() | objlit[isLoading](objlit[data](LOAD_M3())) | OP_ea() | LOAD_M3() | desc-tpl | LOAD_M3().onChange(objlit[data](LOAD_M3()))
+  // stack@INIT-END: str?flags=0xbf idx=2 | OP_62() | PUSH_E() | PUSH_C() | str?flags=0x2 idx=201 | PUSH_WK2() | str?flags=0x1 idx=0 | 'require' | const[3056599553] | str?flags=0x5 idx=3 | const[3257926661] | const[3291481349] | const[3325036037] | const[3224372997] | const[268632840] | const[00ba0302] | load[auxbc03] | str?flags=0xd idx=182 | load[aux08c4] | PUSH_D() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[closed](LOAD_M3()) | OP_2e() | v06 | OP_87() | pool[186].all | LOAD_M3().request(ADD()) | OP_8e() | OP_ee() | OP_2e() | META_OP6C() | EQ_STRICT() | OP_2f() | OP_6f() | OP_2f() | OP_2e() | OP_7b() | const[00002301] | str?flags=0xcf idx=2.valdi_core/src/JsonSerialization | PUSH_I8() | const[0370be04] | const[0430c004] | const[0570c204] | const[0670c404] | const[0730f004] | str?flags=0xe idx=48 | const[0870f004] | const[62271502] | PATCH_REF_LOAD() | PATCH_REF_LOAD() | const[0a301000] | const[4008c40e] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_87() | undefined | undefined.builtin#104(undefined) | DECL_SLOT() | OP_81() | DECL_SLOT() | OP_87() | objlit[isLoading](objlit[data](LOAD_M3())) | OP_ea() | LOAD_M3() | desc-tpl | LOAD_M3().onChange(objlit[data](LOAD_M3()))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

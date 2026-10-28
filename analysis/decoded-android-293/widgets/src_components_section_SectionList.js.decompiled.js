@@ -111,18 +111,18 @@
   local[31] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.SectionList (seq 1) = undefined;  // PUSH_EXPORTS()
-  // op 0xbe OP_be [?]
-  local[32] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[32] = PUSH_I8();
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   local[33] = call21(f0(push2).[wk:0x147]; !(globalThis).[wk:0x148]).[wk:0x149];
-  // stack@INIT-END: OP_17() | call25(?) | const[40b20300] | const[00b40300] | const[00b60301] | OP30() | OP_ba() | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 's' | 'n' | 'd' | 'a' | 'l' | 'c' | 'h' | 'u' | 'y' | 'm' | 'b' | 'g' | 'v' | 'S' | 'p' | 'R' | 'w' | str?flags=0x2 idx=34 | const[031b70ea] | 'f' | str?flags=0x4 idx=34 | OP_20() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[255] | const[256] | const[257] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | objlit[Header](objlit[StickyHeaderElementId](undefined)).[wk:0x131] | call21(PUSH_WK1().[wk:0x132]; OP_be().[wk:0x133]).[wk:0x134] | DUP() | desc-tpl | objlit[Backdrop](objlit[StickyHeaderElementId](undefined)).[wk:0x131] | const[310].[wk:0x137] | globalThis.[wk:0x138] | globalThis.[wk:0x139] | globalThis.[wk:0x13a] | call21(globalThis.[wk:0x13b]; objlit[SUBSCREEN](objlit[Background](objlit[SemanticColor](undefined))).[wk:0x13f]).[wk:0x140] | DUP() | desc-tpl | const[310].[wk:0x137] | globalThis.[wk:0x139] | globalThis.[wk:0x13a] | OP_be().[wk:0x13b] | OP_be().[wk:0x141] | objlit[linearGradient](undefined) | objlit[HEADER_SHADOW](objlit[Elevation](objlit[SemanticColor](undefined))) | globalThis | push2 | objlit[CLEAR](objlit[Flat](objlit[SemanticColor](undefined))) | PUSH_WK1() | push2
+  // stack@INIT-END: OP_17() | call25(?) | const[40b20300] | const[00b40300] | const[00b60301] | OP30() | OP_ba() | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 's' | 'n' | 'd' | 'a' | 'l' | 'c' | 'h' | 'u' | 'y' | 'm' | 'b' | 'g' | 'v' | 'S' | 'p' | 'R' | 'w' | str?flags=0x2 idx=34 | const[031b70ea] | 'f' | str?flags=0x4 idx=34 | OP_20() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[255] | const[256] | const[257] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | objlit[Header](objlit[StickyHeaderElementId](undefined)).[wk:0x131] | call21(PUSH_WK1().[wk:0x132]; PUSH_I8().[wk:0x133]).[wk:0x134] | DUP() | desc-tpl | objlit[Backdrop](objlit[StickyHeaderElementId](undefined)).[wk:0x131] | const[310].[wk:0x137] | globalThis.[wk:0x138] | globalThis.[wk:0x139] | globalThis.[wk:0x13a] | call21(globalThis.[wk:0x13b]; objlit[SUBSCREEN](objlit[Background](objlit[SemanticColor](undefined))).[wk:0x13f]).[wk:0x140] | DUP() | desc-tpl | const[310].[wk:0x137] | globalThis.[wk:0x139] | globalThis.[wk:0x13a] | PUSH_I8().[wk:0x13b] | PUSH_I8().[wk:0x141] | objlit[linearGradient](undefined) | objlit[HEADER_SHADOW](objlit[Elevation](objlit[SemanticColor](undefined))) | globalThis | push2 | objlit[CLEAR](objlit[Flat](objlit[SemanticColor](undefined))) | PUSH_WK1() | push2
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x94 OP_94 [?]
@@ -446,7 +446,7 @@
   …(pad)
   // op 0xc8 PUSH_C8 [~]
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -476,13 +476,13 @@
   jcc-0xeb → @6732
   // discard(OP_84())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: OP_87() | num[42598402] | num[33658624] | OP_7c() | OP_c0() | CLASS_DEF_POP() | OP_90() | const[02007902] | PUSH_C8() | const[02009e01].voGPlqUfAi8c5p5q | OP_be() | const[0230c003] | OP_87()
+  // stack@INIT-END: OP_87() | num[42598402] | num[33658624] | OP_7c() | OP_c0() | CLASS_DEF_POP() | OP_90() | const[02007902] | PUSH_C8() | const[02009e01].voGPlqUfAi8c5p5q | PUSH_I8() | const[0230c003] | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   EXPORTS.builtin#3330 (seq 13568) = str?flags=0x3d idx=12;  // ?
   …(pad)
   // discard(call21(?; ))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -509,7 +509,7 @@
   // op 0xd5 OP_d5 [?]
   // op 0xc9 PUSH_C9 [~]
   // op 0xc9 PUSH_C9 [~]
-  // stack@INIT-END: ?.voGPlqUfAi8c5p5q | OP_be() | const[0030c003] | const[0130c203] | const[02301000] | const[00e00315] | load[aux08cd] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | call22(objlit[updateStickyHeader](PUSH_STR2()); undefined, undefined, undefined, param[0], param[1], PUSH_EXPORTS(), OP_d5(), objlit[cover](objlit[viewModel](PUSH_C9())), objlit[fade](objlit[viewModel](PUSH_C9())))
+  // stack@INIT-END: ?.voGPlqUfAi8c5p5q | PUSH_I8() | const[0030c003] | const[0130c203] | const[02301000] | const[00e00315] | load[aux08cd] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | call22(objlit[updateStickyHeader](PUSH_STR2()); undefined, undefined, undefined, param[0], param[1], PUSH_EXPORTS(), OP_d5(), objlit[cover](objlit[viewModel](PUSH_C9())), objlit[fade](objlit[viewModel](PUSH_C9())))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xb8 PUSH_WK2 [~]
@@ -1012,7 +1012,7 @@
   // trailer 0xae
   // op 0xb2 OP_b2 [?]
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -1026,7 +1026,7 @@
   // op 0xea OP_ea [?]
   // op 0xa7 OP_a7 [?]
   jcc-0xeb → @14186
-  // stack@INIT-END: OP_b2() | OP30() | const[0000000e].voGPlqUfAi8c5p5q | OP_be() | const[0430c003] | const[0530c203] | const[0670c403] | const[07701000] | const[4008c408] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_a7()
+  // stack@INIT-END: OP_b2() | OP30() | const[0000000e].voGPlqUfAi8c5p5q | PUSH_I8() | const[0430c003] | const[0530c203] | const[0670c403] | const[07701000] | const[4008c408] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_a7()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
   // op 0x11 DUP [~]
@@ -1091,7 +1091,7 @@
   …(pad)
   DECLARE-FUNCTION …
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x08 PUSH_C [~]
   local[3] = const[c203060d];
   // op 0x07 PUSH_B [~]
@@ -1137,7 +1137,7 @@
   // op 0x66 STR_OP [~]
   // discard(STR_OP())
   // op 0xee OP_ee [?]
-  // stack@INIT-END: num[59768880] | OP_44() | str?flags=0x5 idx=3 | PUSH_C() | PUSH_B() | load[auxb603] | load[auxbc03] | str?flags=0xd idx=100 | DECL_SLOT() | META_OP6C() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | OP_ee()
+  // stack@INIT-END: num[59768880] | META_RECORD44() | str?flags=0x5 idx=3 | PUSH_C() | PUSH_B() | load[auxb603] | load[auxbc03] | str?flags=0xd idx=100 | DECL_SLOT() | META_OP6C() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | OP_ee()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

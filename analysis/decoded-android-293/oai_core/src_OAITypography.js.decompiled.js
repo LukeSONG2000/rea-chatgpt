@@ -42,75 +42,75 @@
   locop 0xcb(f0(const[249]))
   locop 0xcc(f0(const[250]))
   locop 0xcd(f0(objlit[Body](objlit[OAITextSize](undefined))))
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[4] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc2 LOCAL_OP2 [?]
-  // op 0xbe OP_be [?]
-  local[5] = objlit[systemFont](undefined)(f0(OP_be()), const[261], objlit[Headline](objlit[SemanticFontTextStyle](undefined))).[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  local[5] = objlit[systemFont](undefined)(f0(PUSH_I8()), const[261], objlit[Headline](objlit[SemanticFontTextStyle](undefined))).[wk:0xff].[wk:0x104];
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc2 LOCAL_OP2 [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  local[6] = OP_be().[wk:0x100].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  local[6] = PUSH_I8().[wk:0x100].[wk:0x104];
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[7] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[8] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[9] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[10] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[11] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[12] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[13] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[14] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[15] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[16] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[17] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[18] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[19] = OP_f1().[wk:0xff].[wk:0x104];
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   local[20] = OP_f1().[wk:0xff].[wk:0x104];
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -118,8 +118,8 @@
   EXPORTS.Typography (seq 3) = undefined.[wk:0x11b];  // undefined.[wk:0x11a]
   local[21] = f0(objlit[BodyMedium](objlit[OAITextSize](undefined)));
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   local[22] = OP_f2();
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -129,42 +129,42 @@
   // discard(OP_56())
   // discard(LOAD_M3())
   // op 0xc2 LOCAL_OP2 [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   // op 0xc3 LOAD_M3 [~]
   // op 0x07 PUSH_B [~]
   // op 0x56 OP_56 [?]
   // discard(OP_56())
   // discard(LOAD_M3())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc2 LOCAL_OP2 [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   // op 0x57 IMPORT_BINDING [~]
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
-  EXPORTS.DesignTypography (seq 4) = OP_f2().[wk:0x113];  // OP_be()
+  EXPORTS.DesignTypography (seq 4) = OP_f2().[wk:0x113];  // PUSH_I8()
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.resolveOAITypography (seq 5) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: fn:'Headline' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 't' | 'n' | 'i' | 'o' | 'l' | 'S' | 'a' | 's' | 'F' | 'm' | 'T' | 'y' | 'c' | 'd' | 'h' | 'M' | 'g' | 'f' | str?flags=0x0 idx=0 | str?flags=0x0 idx=24 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | objlit[resolveOAITextStyle](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | LOCAL_OP2().builtin#92 | desc-tpl | objlit[systemSemiboldFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | LOCAL_OP2().builtin#92 | objlit[systemSemiboldFont](undefined)(f0(OP_be()), const[261], objlit[Headline](objlit[SemanticFontTextStyle](undefined)), const[264]).[wk:0xff] | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemMediumFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_MEDIUM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemMediumFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_MEDIUM_FONT_NAME](undefined) | desc-tpl | objlit[systemSemiboldFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_SEMIBOLD_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemSemiboldFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemSemiboldFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_SEMIBOLD_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(OP_be()).[wk:0xff] | OP_be().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | PUSH_EXPORTS() | desc-tpl | undefined.[wk:0x10f] | undefined.[wk:0x110] | undefined.[wk:0x111] | undefined.[wk:0x10e] | undefined.[wk:0x106] | undefined.[wk:0x112] | undefined.[wk:0x113] | undefined.[wk:0x115] | IMPORT_BINDING() | undefined.[wk:0x116] | undefined.[wk:0x117] | undefined.[wk:0x109] | undefined.[wk:0x118] | undefined.[wk:0x119] | objlit[resolveOAITextStyle](undefined) | LOAD_M3() | undefined | OP_be() | PUSH_EXPORTS() | desc-tpl | desc-tpl | LOCAL_OP2().builtin#92(objlit[font](undefined), const[261], objlit[Subheadline](objlit[SemanticFontTextStyle](undefined))).[wk:0xff].[wk:0x104] | OP_be() | OP_f2().[wk:0x11c] | objlit[systemMediumFont](undefined) | f0(OP_be()).[wk:0xff] | desc-tpl | LOCAL_OP2().builtin#92 | objlit[systemMediumFont](undefined)(f0(OP_be()), const[261], objlit[Subheadline](objlit[SemanticFontTextStyle](undefined))).[wk:0xff].[wk:0x104] | OP_be() | OP_f2().[wk:0x11d] | LOAD_M3() | undefined | OP_be() | OP_f2().[wk:0x109] | LOAD_M3() | undefined | OP_be() | OP_f2().[wk:0x118] | LOAD_M3() | undefined | OP_be() | IMPORT_BINDING() | LOAD_M3() | undefined
+  // stack@INIT-END: fn:'Headline' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 't' | 'n' | 'i' | 'o' | 'l' | 'S' | 'a' | 's' | 'F' | 'm' | 'T' | 'y' | 'c' | 'd' | 'h' | 'M' | 'g' | 'f' | str?flags=0x0 idx=0 | str?flags=0x0 idx=24 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | objlit[resolveOAITextStyle](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | LOCAL_OP2().builtin#92 | desc-tpl | objlit[systemSemiboldFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | LOCAL_OP2().builtin#92 | objlit[systemSemiboldFont](undefined)(f0(PUSH_I8()), const[261], objlit[Headline](objlit[SemanticFontTextStyle](undefined)), const[264]).[wk:0xff] | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemMediumFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_MEDIUM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemMediumFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_MEDIUM_FONT_NAME](undefined) | desc-tpl | objlit[systemSemiboldFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_SEMIBOLD_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemSemiboldFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | desc-tpl | objlit[systemSemiboldFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_SEMIBOLD_FONT_NAME](undefined) | desc-tpl | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0xff] | PUSH_I8().[wk:0x100] | desc-tpl | objlit[semanticFont](undefined) | objlit[SYSTEM_FONT_NAME](undefined) | PUSH_EXPORTS() | desc-tpl | undefined.[wk:0x10f] | undefined.[wk:0x110] | undefined.[wk:0x111] | undefined.[wk:0x10e] | undefined.[wk:0x106] | undefined.[wk:0x112] | undefined.[wk:0x113] | undefined.[wk:0x115] | IMPORT_BINDING() | undefined.[wk:0x116] | undefined.[wk:0x117] | undefined.[wk:0x109] | undefined.[wk:0x118] | undefined.[wk:0x119] | objlit[resolveOAITextStyle](undefined) | LOAD_M3() | undefined | PUSH_I8() | PUSH_EXPORTS() | desc-tpl | desc-tpl | LOCAL_OP2().builtin#92(objlit[font](undefined), const[261], objlit[Subheadline](objlit[SemanticFontTextStyle](undefined))).[wk:0xff].[wk:0x104] | PUSH_I8() | OP_f2().[wk:0x11c] | objlit[systemMediumFont](undefined) | f0(PUSH_I8()).[wk:0xff] | desc-tpl | LOCAL_OP2().builtin#92 | objlit[systemMediumFont](undefined)(f0(PUSH_I8()), const[261], objlit[Subheadline](objlit[SemanticFontTextStyle](undefined))).[wk:0xff].[wk:0x104] | PUSH_I8() | OP_f2().[wk:0x11d] | LOAD_M3() | undefined | PUSH_I8() | OP_f2().[wk:0x109] | LOAD_M3() | undefined | PUSH_I8() | OP_f2().[wk:0x118] | LOAD_M3() | undefined | PUSH_I8() | IMPORT_BINDING() | LOAD_M3() | undefined
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x4d OP_4d [?]

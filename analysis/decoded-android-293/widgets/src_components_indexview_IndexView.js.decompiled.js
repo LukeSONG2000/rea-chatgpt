@@ -28,8 +28,8 @@
   locop 0xca(f0(const[240]))
   locop 0xcb(objlit[jsx](undefined))
   locop 0xcc(undefined.makeNodePrototype(const[243], v06, const[244]))
-  // op 0xbe OP_be [?]
-  locop 0xcd(const[246](OP_be(), push2, const[247]))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcd(const[246](PUSH_I8(), push2, const[247]))
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   local[4] = const[252](const[251], push8, const[253]);
@@ -47,11 +47,11 @@
   // op 0x11 DUP [~]
   local[16] = call21(objlit[CAPTION](objlit[TextStyleFontNonDynamic](undefined)).[wk:0x10e]; const[251].[wk:0x10f]);
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  local[17] = call21(OP_be().[wk:0x110]; OP_be().[wk:0x111]);
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  local[17] = call21(PUSH_I8().[wk:0x110]; PUSH_I8().[wk:0x111]);
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   local[18] = desc-tpl(objlit[TERTIARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x12a]).[wk:0x12c];
   // op 0x64 DECL_SLOT [~]
@@ -68,7 +68,7 @@
   local[21] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.IndexView (seq 1) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: 'e' | param[0] | const[0e430601] | str?flags=0x16 idx=3 | const[2954431983] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'o' | 'n' | 'r' | 's' | 'l' | 'd' | 'c' | 'a' | 'u' | 'h' | 'g' | 'y' | str?flags=0x2 idx=22 | pair(const[031470dc], 'm') | … | … | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[245] | undefined.makeNodePrototype | const[243] | const[248] | PUSH_WK1() | const[249] | PUSH_WK1() | const[250] | const[251] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DUP() | desc-tpl | DUP() | desc-tpl | desc-tpl | DUP() | desc-tpl | OP_be().[wk:0x112] | call21(const[275].[wk:0x114]; const[277].[wk:0x110]).[wk:0x116] | DUP() | desc-tpl | objlit[XS](objlit[Spacing](undefined)).[wk:0x119] | objlit[XS](objlit[Spacing](undefined)).[wk:0x11a] | const[277].[wk:0x110] | const[283].[wk:0x11c] | const[285].[wk:0xfa] | const[251].[wk:0x11e] | call21(const[251].[wk:0xfc]; const[287].[wk:0x120]).[wk:0x121] | undefined.extend | desc-tpl(objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x126]).[wk:0x127] | undefined.extend | desc-tpl(objlit[TERTIARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x126]).[wk:0x129] | undefined.extend | desc-tpl(objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x12a]).[wk:0x12b] | undefined.extend | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: 'e' | param[0] | const[0e430601] | str?flags=0x16 idx=3 | const[2954431983] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'o' | 'n' | 'r' | 's' | 'l' | 'd' | 'c' | 'a' | 'u' | 'h' | 'g' | 'y' | str?flags=0x2 idx=22 | pair(const[031470dc], 'm') | … | … | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[245] | undefined.makeNodePrototype | const[243] | const[248] | PUSH_WK1() | const[249] | PUSH_WK1() | const[250] | const[251] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DUP() | desc-tpl | DUP() | desc-tpl | desc-tpl | DUP() | desc-tpl | PUSH_I8().[wk:0x112] | call21(const[275].[wk:0x114]; const[277].[wk:0x110]).[wk:0x116] | DUP() | desc-tpl | objlit[XS](objlit[Spacing](undefined)).[wk:0x119] | objlit[XS](objlit[Spacing](undefined)).[wk:0x11a] | const[277].[wk:0x110] | const[283].[wk:0x11c] | const[285].[wk:0xfa] | const[251].[wk:0x11e] | call21(const[251].[wk:0xfc]; const[287].[wk:0x120]).[wk:0x121] | undefined.extend | desc-tpl(objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x126]).[wk:0x127] | undefined.extend | desc-tpl(objlit[TERTIARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x126]).[wk:0x129] | undefined.extend | desc-tpl(objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x12a]).[wk:0x12b] | undefined.extend | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xd1 OP_d1 [?]

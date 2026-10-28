@@ -68,9 +68,9 @@
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @490
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @490
-  // stack@INIT-END: '__esModule' | push20736 | OP_7b() | const[02010052] | const[b6030001] | EQ_STRICT() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be())
+  // stack@INIT-END: '__esModule' | push20736 | OP_7b() | const[02010052] | const[b6030001] | EQ_STRICT() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x51 OP_51 [?]
@@ -78,7 +78,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @660
   // op 0x64 DECL_SLOT [~]
   locop 0xca(param[0])
@@ -90,7 +90,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @875
   // op 0x11 DUP [~]
   // trailer 0xae
@@ -103,14 +103,14 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @1137
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0x11 DUP [~]
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
-  locop 0xca(objlit[field](OP_44()))
+  // op 0x44 META_RECORD44 [?]
+  locop 0xca(objlit[field](META_RECORD44()))
   // op 0x11 DUP [~]
   locop 0xcb(objlit[builtin#64](DUP()))
   // discard(call25(param[0].updateCustomizations; param[1].map(local[0]), pool[146].builtin#122(PUSH_EXPORTS())))
@@ -122,7 +122,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @1442
   // op 0x11 DUP [~]
   // trailer 0xae
@@ -131,7 +131,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @1610
   // op 0x11 DUP [~]
   // trailer 0xae
@@ -153,7 +153,7 @@
   // op 0xba OP_ba [?]
   EXPORTS.PersonalityType (seq 4) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // stack@INIT-END: objlit[isVersionAtLeast](fn:'builtin#262') | f0(OP_be()) | DECL_SLOT() | call23(objlit[convertBridgeObservableToObservable](PUSH_STR2()); undefined.observeCustomizations()) | OP_2f() | str?flags=0xf idx=6 | fn:'builtin#262' | f0(OP_be()) | param[0].updateCustomization | desc-tpl | call25(objlit[field](param[1]).[wk:0xf4]; objlit[builtin#64](param[1]).[wk:0x40]) | fn:'builtin#262' | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | desc-tpl | PUSH_THIS().[wk:0xf4] | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
+  // stack@INIT-END: objlit[isVersionAtLeast](fn:'builtin#262') | f0(PUSH_I8()) | DECL_SLOT() | call23(objlit[convertBridgeObservableToObservable](PUSH_STR2()); undefined.observeCustomizations()) | OP_2f() | str?flags=0xf idx=6 | fn:'builtin#262' | f0(PUSH_I8()) | param[0].updateCustomization | desc-tpl | call25(objlit[field](param[1]).[wk:0xf4]; objlit[builtin#64](param[1]).[wk:0x40]) | fn:'builtin#262' | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | desc-tpl | PUSH_THIS().[wk:0xf4] | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

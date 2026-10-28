@@ -288,7 +288,7 @@
   // op 0xee OP_ee [?]
   // op 0x35 OP35 [?]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xe4 CLASS_DEF_POP [~]
   // op 0xe4 CLASS_DEF_POP [~]
   // op 0x09 PUSH_D [~]

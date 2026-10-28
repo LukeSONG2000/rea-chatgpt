@@ -35,7 +35,7 @@
   local[4] = call21(DUP(); const[235]);
   // op 0x11 DUP [~]
   local[5] = call21(push32; const[268].[wk:0x80000020]);
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbf OP_bf [?]
   // op 0xbf OP_bf [?]
   // op 0xbf OP_bf [?]
@@ -65,7 +65,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.reportLatexNativeRecovery (seq 3) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: fn:'-tex-variant' | PUSH_WK2() | 'require' | 'module' | str?flags=0x0 idx=0 | 'exports' | 't' | 'a' | str?flags=0x0 idx=4 | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | local[0] | DUP() | const[236] | const[237] | const[238] | const[239] | const[240] | const[241] | const[242] | const[243] | const[244] | const[245] | const[246] | const[247] | const[248] | const[249] | const[250] | const[251] | const[252] | const[253] | const[254] | const[255] | const[256] | const[257] | const[258] | const[259] | const[260] | const[261] | const[262] | const[263] | const[264] | const[265] | const[266] | const[267] | desc-tpl | globalThis.[wk:0x10d] | OP_be().[wk:0x10e] | const[271].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[272].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[273].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[274].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[275].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[276].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[277].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[278].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[279].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[280].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[281].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[282].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[283].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | const[ff9f0000].[wk:0x10e] | const[283].[wk:0x36] | desc-tpl | const[00ac0000].[wk:0x10d] | const[afd70000].[wk:0x10e] | const[284].[wk:0x36] | desc-tpl | const[00d40100].[wk:0x10d] | const[ffd70100].[wk:0x10e] | const[285].[wk:0x36] | desc-tpl | const[00f00100].[wk:0x10d] | const[fffa0100].[wk:0x10e] | const[286].[wk:0x36] | desc-tpl | const[00000200].[wk:0x10d] | const[af230300].[wk:0x10e] | const[283].[wk:0x36]
+  // stack@INIT-END: fn:'-tex-variant' | PUSH_WK2() | 'require' | 'module' | str?flags=0x0 idx=0 | 'exports' | 't' | 'a' | str?flags=0x0 idx=4 | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | local[0] | DUP() | const[236] | const[237] | const[238] | const[239] | const[240] | const[241] | const[242] | const[243] | const[244] | const[245] | const[246] | const[247] | const[248] | const[249] | const[250] | const[251] | const[252] | const[253] | const[254] | const[255] | const[256] | const[257] | const[258] | const[259] | const[260] | const[261] | const[262] | const[263] | const[264] | const[265] | const[266] | const[267] | desc-tpl | globalThis.[wk:0x10d] | PUSH_I8().[wk:0x10e] | const[271].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[272].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[273].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[274].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[275].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[276].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[277].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[278].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[279].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[280].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[281].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[282].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | OP_bf().[wk:0x10e] | const[283].[wk:0x36] | desc-tpl | OP_bf().[wk:0x10d] | const[ff9f0000].[wk:0x10e] | const[283].[wk:0x36] | desc-tpl | const[00ac0000].[wk:0x10d] | const[afd70000].[wk:0x10e] | const[284].[wk:0x36] | desc-tpl | const[00d40100].[wk:0x10d] | const[ffd70100].[wk:0x10e] | const[285].[wk:0x36] | desc-tpl | const[00f00100].[wk:0x10d] | const[fffa0100].[wk:0x10e] | const[286].[wk:0x36] | desc-tpl | const[00000200].[wk:0x10d] | const[af230300].[wk:0x10e] | const[283].[wk:0x36]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x18 TRIPLE_OP [?]
@@ -188,12 +188,12 @@
   // op 0xee OP_ee [?]
   // op 0x68 PUSH_STR2 [~]
   // op 0x6c META_OP6C [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xba OP_ba [?]
   // op 0xc0 OP_c0 [?]
   jmp → @1917
   // op 0xf2 OP_f2 [?]
-  // stack@INIT-END: str?flags=0xb idx=2 | fn:'-tex-variant' | globalThis | str?flags=0x0 idx=13 | PUSH_D() | const[c003050d] | LOCAL_OP2() | str?flags=0x6 idx=13 | const[25613] | CLOSURE_CTX_A() | objlit[countMetric](PUSH_STR2()) | const[294] | PUSH_WK1() | desc-tpl | const[295].[wk:0x6c] | const[296].[wk:0x129] | param[1].[wk:0x12a] | v06 | undefined | CLOSURE_CTX_C() | f0(param[0]) | const[299].[wk:0x8a] | v06 | objlit[variant](v06) | const[76] | PUSH_STR2().builtin#99(objlit[variant](undefined)) | objlit[variant](undefined) | const[301].[wk:0x12e] | v06 | undefined | const[76] | const[301].[wk:0x130] | v06 | undefined | const[76] | OP_ee() | META_OP6C() | const[307].builtin#92(objlit[codepoint](undefined).builtin#55(OP_be()).toUpperCase().padStart(OP_ba(), OP_c0())) | OP_f2()
+  // stack@INIT-END: str?flags=0xb idx=2 | fn:'-tex-variant' | globalThis | str?flags=0x0 idx=13 | PUSH_D() | const[c003050d] | LOCAL_OP2() | str?flags=0x6 idx=13 | const[25613] | CLOSURE_CTX_A() | objlit[countMetric](PUSH_STR2()) | const[294] | PUSH_WK1() | desc-tpl | const[295].[wk:0x6c] | const[296].[wk:0x129] | param[1].[wk:0x12a] | v06 | undefined | CLOSURE_CTX_C() | f0(param[0]) | const[299].[wk:0x8a] | v06 | objlit[variant](v06) | const[76] | PUSH_STR2().builtin#99(objlit[variant](undefined)) | objlit[variant](undefined) | const[301].[wk:0x12e] | v06 | undefined | const[76] | const[301].[wk:0x130] | v06 | undefined | const[76] | OP_ee() | META_OP6C() | const[307].builtin#92(objlit[codepoint](undefined).builtin#55(PUSH_I8()).toUpperCase().padStart(OP_ba(), OP_c0())) | OP_f2()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xda OP_da [?]
@@ -242,8 +242,8 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xb7 PUSH_WK1 [~]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
-  locop 0xcc(pool[148].parseInt(OP_4a(), OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcc(pool[148].parseInt(OP_4a(), PUSH_I8()))
   // op 0xa8 OP_A8 [?]
   // op 0x11 DUP [~]
   jcc-0xec → @2414
@@ -309,12 +309,12 @@
   // ---- FUNCTION-UNIT: '-tex-variant' ----
   …(pad)
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @3028
   // op 0x68 PUSH_STR2 [~]
   locop 0xca(f0(param[0]))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @3121
   // op 0xbc OP_bc [?]
   // trailer 0xae
@@ -347,7 +347,7 @@
   // op 0x1c OP_1c [?]
   // op 0x08 PUSH_C [~]
   …(pad)
-  // stack-tail: OP_3f() | str?flags=0x0 idx=95 | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | OP_74() | const[6800014a] | const[61000178] | const[20000166] | const[6f00016e] | const[74000120] | const[64000161] | const[74000161] | const[20000164] | const[6f000165] | const[73000120] | const[6e00016f] | const[74000120] | call25(OP_1c(); ) | const[0000000c] | const[72000165] | const[7000016c] | const[61000163] | const[6500016d] | const[6500016e] | const[74000120] | PUSH_E() | const[6700016c] | const[79000170] | const[68000120] | const[5500012b] | desc-tpl | const[1c0c0000] | const[100663296] | const[00000015] | objlit[builtin#17920](num[956313600]) | const[72000165] | const[71000175] | const[65000173] | const[74000165] | const[64000120] | const[76000161] | const[72000169] | const[6100016e] | const[74000120] | desc-tpl | num[4124] | const[00000020] | const[00000015] | fn:'-tex-variant' | objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(OP_be())) | objlit[readLatexRenderFailureReason](PUSH_STR2()) | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | OP_bc() | undefined | DUP() | DUP() | DUP() | OP_1c() | call22(?) | PUSH_C() | const[0]
+  // stack-tail: OP_3f() | str?flags=0x0 idx=95 | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | OP_74() | const[6800014a] | const[61000178] | const[20000166] | const[6f00016e] | const[74000120] | const[64000161] | const[74000161] | const[20000164] | const[6f000165] | const[73000120] | const[6e00016f] | const[74000120] | call25(OP_1c(); ) | const[0000000c] | const[72000165] | const[7000016c] | const[61000163] | const[6500016d] | const[6500016e] | const[74000120] | PUSH_E() | const[6700016c] | const[79000170] | const[68000120] | const[5500012b] | desc-tpl | const[1c0c0000] | const[100663296] | const[00000015] | objlit[builtin#17920](num[956313600]) | const[72000165] | const[71000175] | const[65000173] | const[74000165] | const[64000120] | const[76000161] | const[72000169] | const[6100016e] | const[74000120] | desc-tpl | num[4124] | const[00000020] | const[00000015] | fn:'-tex-variant' | objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(PUSH_I8())) | objlit[readLatexRenderFailureReason](PUSH_STR2()) | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | OP_bc() | undefined | DUP() | DUP() | DUP() | OP_1c() | call22(?) | PUSH_C() | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

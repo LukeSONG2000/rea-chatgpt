@@ -24,7 +24,7 @@
   // op 0x10 OP10 [?]
   // op 0x3a OP_3a [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -85,7 +85,7 @@
   jmp → @671
   // op 0xc2 LOCAL_OP2 [?]
   EXPORTS.breakStyle (seq 0) = LOCAL_OP2();  // const[236]
-  // stack@INIT-END: OP_3a() | const[ba030102] | const[0302063f] | str?flags=0xba idx=3 | OP_be() | OP10() | const[0008cb64] | PUSH_C7() | objlit[node](PUSH_C7()).getProperty(const[235])
+  // stack@INIT-END: OP_3a() | const[ba030102] | const[0302063f] | str?flags=0xba idx=3 | PUSH_I8() | OP10() | const[0008cb64] | PUSH_C7() | objlit[node](PUSH_C7()).getProperty(const[235])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // trailer 0xae
@@ -159,7 +159,7 @@
   // stack@INIT-END: const[00030602] | OP_20() | PUSH_WK2() | 'require' | 'module' | const[000100e2] | const[00010010] | const[20ec0101] | DECL_SLOT() | OP_2b() | DECL_SLOT() | DECL_SLOT() | OP_20() | PUSH_WK2() | 'require' | str?flags=0x2 idx=0 | const[0008cd64] | const[00640000] | DECL_SLOT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -187,7 +187,7 @@
   // trailer 0xae
   jmp → @1964
   …(pad)
-  // stack-tail: OP_44() | str?flags=0x1 idx=0 | 'require' | 'module' | const[00b80300] | load[b6] | 'breakCount' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_WK1() | undefined | str?flags=0x1c idx=9 | num[33675776] | num[0] | num[0]
+  // stack-tail: META_RECORD44() | str?flags=0x1 idx=0 | 'require' | 'module' | const[00b80300] | load[b6] | 'breakCount' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_WK1() | undefined | str?flags=0x1c idx=9 | num[33675776] | num[0] | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

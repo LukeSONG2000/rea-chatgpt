@@ -93,7 +93,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(objlit[view_state](param[1]))
   // op 0xde CLOSURE_CTX_A [~]
@@ -125,7 +125,7 @@
   // discard(DUP())
   // trailer 0xae
   …(pad)
-  // stack-tail: OP_ea() | const[02b20090] | fn:'builtin#262' | OP30() | OP_be() | const[91137] | DECL_SLOT() | CLOSURE_CTX_A() | f0(undefined) | CLOSURE_CTX_A() | f0(objlit[root](undefined)) | pool[154].stringify(objlit[root](undefined)) | desc-tpl | OP_ac() | objlit[fallbackMarkdown](param[0]) | PUSH_EXPORTS().[wk:0xfb] | v06 | OP_A3() | str?flags=0x1e idx=1 | num[0]
+  // stack-tail: OP_ea() | const[02b20090] | fn:'builtin#262' | OP30() | PUSH_I8() | const[91137] | DECL_SLOT() | CLOSURE_CTX_A() | f0(undefined) | CLOSURE_CTX_A() | f0(objlit[root](undefined)) | pool[154].stringify(objlit[root](undefined)) | desc-tpl | OP_ac() | objlit[fallbackMarkdown](param[0]) | PUSH_EXPORTS().[wk:0xfb] | v06 | OP_A3() | str?flags=0x1e idx=1 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

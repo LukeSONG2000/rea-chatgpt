@@ -38,8 +38,8 @@
   EXPORTS.NewcommandTables (seq 3) = …;  // …
   // discard(!(f0(pair(PUSH_EXPORTS(), CLASS_CONSTRUCT()))))
   // op 0xd4 PUSH_EXPORTS [✓]
-  // op 0xbe OP_be [?]
-  EXPORTS.NewcommandPriority (seq 4) = OP_be();  // PUSH_EXPORTS()
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.NewcommandPriority (seq 4) = PUSH_I8();  // PUSH_EXPORTS()
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0x57 IMPORT_BINDING [~]
   // op 0x57 IMPORT_BINDING [~]
@@ -477,7 +477,7 @@
   // discard(const[02000000])
   // op 0x98 OP_98 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xb7 PUSH_WK1 [~]
   locop 0xca(param[1].substring(PUSH_WK1()))
@@ -527,7 +527,7 @@
   // op 0x20 OP_20 [?]
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -567,7 +567,7 @@
   // op 0xd5 OP_d5 [?]
   // discard(undefined.builtin#104(param[1], call21(DUP(); param[1], PUSH_EXPORTS(), OP_d5())))
   // op 0x9b OP_9b [?]
-  // stack@INIT-END: OP_ab() | OP_40() | const[2617246472] | OP_20() | PUSH_WK2() | 'require' | 'module' | 'exports' | const[2585789441] | const[271581186] | const[00b40302] | str?flags=0xc0 idx=3 | OP_be() | const[113510413] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[NewcommandUtil](CLOSURE_CTX_A()).checkGlobal | param[0] | OP_9b()
+  // stack@INIT-END: OP_ab() | OP_40() | const[2617246472] | OP_20() | PUSH_WK2() | 'require' | 'module' | 'exports' | const[2585789441] | const[271581186] | const[00b40302] | str?flags=0xc0 idx=3 | PUSH_I8() | const[113510413] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[NewcommandUtil](CLOSURE_CTX_A()).checkGlobal | param[0] | OP_9b()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -592,7 +592,7 @@
   // op 0xc3 LOAD_M3 [~]
   …(pad)
   // discard(num[149760])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xe0 CLOSURE_CTX_C [~]
@@ -610,7 +610,7 @@
   // op 0xa0 ADD [~]
   // discard(PUSH_C7().undefineDelimiter(param[0], ADD()))
   // op 0x9b OP_9b [?]
-  // stack@INIT-END: str?flags=0x4e idx=8 | LOAD_M3().IllegalControlSequenceName | 'NewcommandUtil' | num[84131843] | const[b603000d] | OP_be() | const[1691027469] | objlit[NewcommandUtil](CLOSURE_CTX_B()).checkGlobal | param[0] | OP_9b()
+  // stack@INIT-END: str?flags=0x4e idx=8 | LOAD_M3().IllegalControlSequenceName | 'NewcommandUtil' | num[84131843] | const[b603000d] | PUSH_I8() | const[1691027469] | objlit[NewcommandUtil](CLOSURE_CTX_B()).checkGlobal | param[0] | OP_9b()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x73 OP_73 [?]

@@ -39,7 +39,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.BitField (seq 2) = undefined;  // PUSH_EXPORTS()
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   EXPORTS.MAXBIT (seq 3) = OP_A3();  // undefined
   // op 0xb7 PUSH_WK1 [~]

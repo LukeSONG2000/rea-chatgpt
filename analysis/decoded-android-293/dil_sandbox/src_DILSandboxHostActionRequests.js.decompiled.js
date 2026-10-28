@@ -114,7 +114,7 @@
   // trailer 0xae
   // op 0x1c OP_1c [?]
   // op 0xc6 PUSH_THIS [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0xc8 PUSH_C8 [~]
@@ -140,7 +140,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0xe0 CLOSURE_CTX_C [~]
   // op 0xe1 CLOSURE_CTX_D [~]
-  // stack@INIT-END: OP_d8() | str?flags=0x3 idx=1 | str?flags=0x5 idx=2 | const[00b60300] | load[aux08cd] | DECL_SLOT() | OP_1c() | OP_44() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | const[40b80301] | load[auxbc03] | CLOSURE_CTX_B() | desc-tpl | OP_33() | num[554578432].builtin#263 | PUSH_EXPORTS() | OP_e9().builtin#66 | PUSH_STR2() | desc-tpl | CLOSURE_CTX_C().[wk:0xf1] | CLOSURE_CTX_D().[wk:0xf2](param[0].[wk:0x80], param[1].[wk:0x81])
+  // stack@INIT-END: OP_d8() | str?flags=0x3 idx=1 | str?flags=0x5 idx=2 | const[00b60300] | load[aux08cd] | DECL_SLOT() | OP_1c() | META_RECORD44() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | const[40b80301] | load[auxbc03] | CLOSURE_CTX_B() | desc-tpl | OP_33() | num[554578432].builtin#263 | PUSH_EXPORTS() | OP_e9().builtin#66 | PUSH_STR2() | desc-tpl | CLOSURE_CTX_C().[wk:0xf1] | CLOSURE_CTX_D().[wk:0xf2](param[0].[wk:0x80], param[1].[wk:0x81])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x47 OP_47 [?]
@@ -246,8 +246,8 @@
   // op 0xad OP_ad [?]
   // op 0x35 OP35 [?]
   // op 0x35 OP35 [?]
-  // op 0x44 OP_44 [?]
-  EXPORTS.disposed (seq 0) = OP_44();  // OP_ad()
+  // op 0x44 META_RECORD44 [?]
+  EXPORTS.disposed (seq 0) = META_RECORD44();  // OP_ad()
   // op 0xc7 PUSH_C7 [~]
   // discard(PUSH_C7().invalidate())
   // op 0x64 DECL_SLOT [~]
@@ -287,8 +287,8 @@
   // op 0x2e OP_2e [?]
   // trailer 0xae
   // op 0x12 OP_12 [?]
-  // op 0x44 OP_44 [?]
-  // stack-tail: OP_2f() | OP_44()
+  // op 0x44 META_RECORD44 [?]
+  // stack-tail: OP_2f() | META_RECORD44()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

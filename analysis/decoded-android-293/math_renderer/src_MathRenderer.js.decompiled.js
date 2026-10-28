@@ -58,14 +58,14 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @575
   // op 0x11 DUP [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x2f OP_2f [?]
   // op 0x68 PUSH_STR2 [~]
   jcc-0xeb → @581
-  // stack@INIT-END: 'a' | push39613 | const[1125038154] | v06 | const[c0030100] | const[02000034] | const[b6030001] | fn:'builtin#262' | fn:'builtin#262' | num[17020941] | load[auxc203] | v06 | objlit[isVersionAtLeast](const[64000068]) | !(f0(OP_be())) | OP_2f() | PUSH_STR2()
+  // stack@INIT-END: 'a' | push39613 | const[1125038154] | v06 | const[c0030100] | const[02000034] | const[b6030001] | fn:'builtin#262' | fn:'builtin#262' | num[17020941] | load[auxc203] | v06 | objlit[isVersionAtLeast](const[64000068]) | !(f0(PUSH_I8())) | OP_2f() | PUSH_STR2()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
@@ -96,7 +96,7 @@
   // op 0xf1 OP_f1 [?]
   // op 0x2f OP_2f [?]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @856
   // op 0x11 DUP [~]
   // op 0x68 PUSH_STR2 [~]
@@ -129,7 +129,7 @@
   …(pad)
   // op 0xfe OP_fe [?]
   …(pad)
-  // stack-tail: str?flags=0x15 idx=10 | fn:'builtin#262' | globalThis | str?flags=0x0 idx=13 | str?flags=0xd idx=196 | const[ba03020d] | DECL_SLOT() | globalThis | OP_ea() | CLOSURE_CTX_A() | PUSH_WK1() | OP_2f() | objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(OP_be())) | OP_2f() | objlit[renderLatex](PUSH_STR2()) | param[0] | objlit[block](param[1]) | EQ_STRICT() | CLOSURE_CTX_A() | objlit[parseError](undefined) | PUSH_WK2() | OP_b9() | OP_2f() | desc-tpl | objlit[baseline](undefined).[wk:0xf7] | objlit[height](undefined).[wk:0xf8] | OP_33() | num[302135040].builtin#262.[wk:0xf4] | OP_fe() | const[02000000] | v06
+  // stack-tail: str?flags=0x15 idx=10 | fn:'builtin#262' | globalThis | str?flags=0x0 idx=13 | str?flags=0xd idx=196 | const[ba03020d] | DECL_SLOT() | globalThis | OP_ea() | CLOSURE_CTX_A() | PUSH_WK1() | OP_2f() | objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(PUSH_I8())) | OP_2f() | objlit[renderLatex](PUSH_STR2()) | param[0] | objlit[block](param[1]) | EQ_STRICT() | CLOSURE_CTX_A() | objlit[parseError](undefined) | PUSH_WK2() | OP_b9() | OP_2f() | desc-tpl | objlit[baseline](undefined).[wk:0xf7] | objlit[height](undefined).[wk:0xf8] | OP_33() | num[302135040].builtin#262.[wk:0xf4] | OP_fe() | const[02000000] | v06
 
 // ---- 字符串表 ----
 // str[1] = 'require'

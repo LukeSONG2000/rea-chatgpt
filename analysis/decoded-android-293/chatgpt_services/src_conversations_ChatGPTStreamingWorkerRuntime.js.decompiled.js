@@ -366,7 +366,7 @@
   // op 0x4a OP_4a [?]
   …(pad)
   // discard(num[1188129])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x0a PUSH_E [~]
   …(pad)
@@ -414,7 +414,7 @@
   // discard(DUP())
   // discard(objlit[processor](undefined).complete())
   // discard(DECL_SLOT())
-  // stack@INIT-END: OP_4a().onComplete | OP_be() | PATCH_REF_LOAD() | const[00bc0303] | load[auxc603] | PUSH_E() | const[08cd6400] | META_OP6C() | META_OP6C() | OP_6f()
+  // stack@INIT-END: OP_4a().onComplete | PUSH_I8() | PATCH_REF_LOAD() | const[00bc0303] | load[auxc603] | PUSH_E() | const[08cd6400] | META_OP6C() | META_OP6C() | OP_6f()
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcc(?)
   // op 0x6f OP_6f [?]

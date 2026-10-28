@@ -422,7 +422,7 @@
   // op 0xe3 OP_e3 [?]
   …(pad)
   // discard(const[02c60000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0x64 DECL_SLOT [~]
@@ -478,7 +478,7 @@
   // op 0x9a OP_9a [?]
   …(pad)
   // discard(num[67271168])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xd5 OP_d5 [?]
   jcc-0xeb → @6146
@@ -595,7 +595,7 @@
   DECLARE-FUNCTION …
   DECLARE-FUNCTION …
   …(pad)
-  // stack-tail: OP_e3().f | OP_be() | const[00c00301] | OP30() | str?flags=0x8 idx=13 | DECL_SLOT() | OP_5e() | OP_d5() | objlit[nativeGlassSurface](param[1]) | objlit[nativeSurface](param[1]) | OP_d5() | objlit[glassSurface](param[1]) | objlit[cachedTheme](PUSH_C7()) | objlit[cachedSurfaceBaseStyle](PUSH_C7()) | objlit[cachedSurfaceOverride](PUSH_C7()) | PUSH_C7() | v06 | PUSH_EXPORTS() | OP_9a() | const[0200b001].f | OP_be() | const[00301000] | const[00c60308] | load[aux08cb] | DECL_SLOT() | OP_d5() | objlit[glassLabel](param[1]) | objlit[cachedContentTheme](PUSH_C7()) | objlit[cachedContentBaseStyle](PUSH_C7()) | objlit[cachedContentOverride](PUSH_C7()) | PUSH_C7() | v06 | OP_4a() | OP_0f() | fn:'w' | OP30() | str?flags=0x8 idx=13 | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | DUP() | desc-tpl | const[331].[wk:0x14c] | objlit[accent](objlit[colors](param[0])).[wk:0x14f] | objlit[controlRadius](objlit[shape](param[0])).[wk:0x152] | objlit[controlHeight](objlit[metrics](param[0])).[wk:0x11d] | const[331].[wk:0x155] | undefined.extend | desc-tpl | DUP() | desc-tpl | call21(objlit[onDisabled](objlit[colors](param[0])).[wk:0x131]; objlit[label](objlit[typography](param[0])).[wk:0x12e]).[wk:0x120] | DUP() | call21(desc-tpl; objlit[disabled](objlit[colors](param[0])).[wk:0x14f]).[wk:0x12c] | DUP() | desc-tpl | call21(objlit[text](objlit[colors](param[0])).[wk:0x131]; objlit[label](objlit[typography](param[0])).[wk:0x12e]).[wk:0x146] | undefined.[wk:0x13e] | DUP() | desc-tpl | num[11051] | num[0]
+  // stack-tail: OP_e3().f | PUSH_I8() | const[00c00301] | OP30() | str?flags=0x8 idx=13 | DECL_SLOT() | OP_5e() | OP_d5() | objlit[nativeGlassSurface](param[1]) | objlit[nativeSurface](param[1]) | OP_d5() | objlit[glassSurface](param[1]) | objlit[cachedTheme](PUSH_C7()) | objlit[cachedSurfaceBaseStyle](PUSH_C7()) | objlit[cachedSurfaceOverride](PUSH_C7()) | PUSH_C7() | v06 | PUSH_EXPORTS() | OP_9a() | const[0200b001].f | PUSH_I8() | const[00301000] | const[00c60308] | load[aux08cb] | DECL_SLOT() | OP_d5() | objlit[glassLabel](param[1]) | objlit[cachedContentTheme](PUSH_C7()) | objlit[cachedContentBaseStyle](PUSH_C7()) | objlit[cachedContentOverride](PUSH_C7()) | PUSH_C7() | v06 | OP_4a() | OP_0f() | fn:'w' | OP30() | str?flags=0x8 idx=13 | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | DUP() | desc-tpl | const[331].[wk:0x14c] | objlit[accent](objlit[colors](param[0])).[wk:0x14f] | objlit[controlRadius](objlit[shape](param[0])).[wk:0x152] | objlit[controlHeight](objlit[metrics](param[0])).[wk:0x11d] | const[331].[wk:0x155] | undefined.extend | desc-tpl | DUP() | desc-tpl | call21(objlit[onDisabled](objlit[colors](param[0])).[wk:0x131]; objlit[label](objlit[typography](param[0])).[wk:0x12e]).[wk:0x120] | DUP() | call21(desc-tpl; objlit[disabled](objlit[colors](param[0])).[wk:0x14f]).[wk:0x12c] | DUP() | desc-tpl | call21(objlit[text](objlit[colors](param[0])).[wk:0x131]; objlit[label](objlit[typography](param[0])).[wk:0x12e]).[wk:0x146] | undefined.[wk:0x13e] | DUP() | desc-tpl | num[11051] | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

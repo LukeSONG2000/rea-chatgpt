@@ -65,7 +65,7 @@
   jcc-0xeb → @599
   // op 0x64 DECL_SLOT [~]
   // discard(param[0].setReceiver(local[0]))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   locop 0xca(PUSH_EXPORTS().[wk:0xee])
   // discard(param[0].post(undefined, v06))
@@ -92,7 +92,7 @@
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
   locop 0xca(param[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xaf EQ_STRICT [~]
   // op 0x11 DUP [~]
   // op 0x6d META_OP6D [?]
@@ -144,7 +144,7 @@
   // discard(OP_56())
   // discard(CLOSURE_CTX_C())
   // discard(f0(v06.[wk:0xff]))
-  // stack@INIT-END: OP_92() | const[3b0e4306] | const[ba030301] | str?flags=0x4 idx=0 | const[04b60300] | const[00b80300] | const[00ba0300] | EQ_STRICT() | v06 | param[1] | OP_2f() | v06 | param[1].[wk:0xe6] | str?flags=0x9 idx=12 | STR_CMP() | OP_d6() | str?flags=0x1 idx=0 | 'module' | 'DIL sandbox render app data must be serialized before tr…' | load[auxba03] | num[156673] | DECL_SLOT() | v06 | param[1] | DECL_SLOT() | desc-tpl | OP_be().[wk:0xe3] | desc-tpl | OP_50().[wk:0xf0] | desc-tpl | OP_bd().[wk:0xe3] | PUSH_EXPORTS().[wk:0xee] | param[0].post | desc-tpl | OP_50().[wk:0xf0] | str?flags=0x18 idx=28 | call22(?) | PUSH_C() | OP_dc() | OP_51() | objlit[builtin#3647](v06) | PATCH_REF_LOAD() | PATCH_REF_LOAD() | load[b6] | 'kind' | str?flags=0x3 idx=100 | META_OP6C() | META_OP6C() | META_OP6C() | OP_ba() | objlit[action](undefined) | OP_ee() | undefined.[wk:0xfc]
+  // stack@INIT-END: OP_92() | const[3b0e4306] | const[ba030301] | str?flags=0x4 idx=0 | const[04b60300] | const[00b80300] | const[00ba0300] | EQ_STRICT() | v06 | param[1] | OP_2f() | v06 | param[1].[wk:0xe6] | str?flags=0x9 idx=12 | STR_CMP() | OP_d6() | str?flags=0x1 idx=0 | 'module' | 'DIL sandbox render app data must be serialized before tr…' | load[auxba03] | num[156673] | DECL_SLOT() | v06 | param[1] | DECL_SLOT() | desc-tpl | PUSH_I8().[wk:0xe3] | desc-tpl | OP_50().[wk:0xf0] | desc-tpl | OP_bd().[wk:0xe3] | PUSH_EXPORTS().[wk:0xee] | param[0].post | desc-tpl | OP_50().[wk:0xf0] | str?flags=0x18 idx=28 | call22(?) | PUSH_C() | OP_dc() | OP_51() | objlit[builtin#3647](v06) | PATCH_REF_LOAD() | PATCH_REF_LOAD() | load[b6] | 'kind' | str?flags=0x3 idx=100 | META_OP6C() | META_OP6C() | META_OP6C() | OP_ba() | objlit[action](undefined) | OP_ee() | undefined.[wk:0xfc]
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xe0 CLOSURE_CTX_C [~]
   // op 0xba OP_ba [?]

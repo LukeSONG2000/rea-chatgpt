@@ -478,7 +478,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0xc2 LOCAL_OP2 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0xaf EQ_STRICT [~]
   // op 0x6c META_OP6C [?]

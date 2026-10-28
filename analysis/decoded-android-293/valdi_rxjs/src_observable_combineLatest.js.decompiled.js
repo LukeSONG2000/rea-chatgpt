@@ -45,7 +45,7 @@
   // op 0x08 PUSH_C [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x0a PUSH_E [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xd6 OP_d6 [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -117,7 +117,7 @@
   // op 0x61 LOAD_61 [?]
   // op 0xe1 CLOSURE_CTX_D [~]
   // op 0xf2 OP_f2 [?]
-  // stack@INIT-END: OP_40() | PUSH_C8() | 'r' | PUSH_C() | const[c80306c4] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | str?flags=0x6 idx=13 | PATCH_REF_LOAD() | load[auxba03] | num[243213] | load[auxca03] | PUSH_E() | const[bc03030d] | OP_be() | OP_d6() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[argsArgArrayOrObject](PUSH_STR2()) | f0(param[0]) | globalThis | OP_ea() | call23(objlit[builtin#122](PUSH_STR2()); push0, undefined) | DUP() | LOAD_61() | undefined | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=13 | PUSH_B() | load[auxcc03] | desc-tpl | const[bc03030d] | const[0ccc0302] | LOAD_61() | CLOSURE_CTX_D() | local[0] | OP_f2()
+  // stack@INIT-END: OP_40() | PUSH_C8() | 'r' | PUSH_C() | const[c80306c4] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | str?flags=0x6 idx=13 | PATCH_REF_LOAD() | load[auxba03] | num[243213] | load[auxca03] | PUSH_E() | const[bc03030d] | PUSH_I8() | OP_d6() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[argsArgArrayOrObject](PUSH_STR2()) | f0(param[0]) | globalThis | OP_ea() | call23(objlit[builtin#122](PUSH_STR2()); push0, undefined) | DUP() | LOAD_61() | undefined | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=13 | PUSH_B() | load[auxcc03] | desc-tpl | const[bc03030d] | const[0ccc0302] | LOAD_61() | CLOSURE_CTX_D() | local[0] | OP_f2()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc0 OP_c0 [?]

@@ -283,12 +283,12 @@
   // op 0xc2 LOCAL_OP2 [?]
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // discard(num[244])
   // op 0xd5 OP_d5 [?]
   // op 0xa0 ADD [~]
-  EXPORTS.w (seq 0) = ADD();  // OP_be().mrow
+  EXPORTS.w (seq 0) = ADD();  // PUSH_I8().mrow
   // op 0xa8 OP_A8 [?]
   // op 0x11 DUP [~]
   jcc-0xeb → @3384

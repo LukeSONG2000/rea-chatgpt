@@ -64,13 +64,13 @@
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   local[19] = call21(globalThis.[wk:0x10f]; const[278].[wk:0x111]).[wk:0x117];
-  // stack@INIT-END: OP_86() | const[0e430601] | str?flags=0x14 idx=3 | PATCH_REF_LOAD() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'o' | 'i' | 'n' | 'l' | 'd' | 's' | 'a' | 'y' | 'u' | str?flags=0x2 idx=20 | const[031170d6] | OP_13() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | call21(PUSH_WK1().[wk:0x108]; PUSH_WK1().[wk:0x109]).[wk:0x10a] | DUP() | desc-tpl | PUSH_WK1().[wk:0x108] | call21(PUSH_WK1().[wk:0x109]; OP_be().[wk:0x10b]).[wk:0x10c] | DUP() | desc-tpl | const[269].[wk:0x10e] | globalThis.[wk:0x10f] | call21(const[272].[wk:0x111]; OP_be().[wk:0x112]).[wk:0x113] | DUP() | desc-tpl | const[269].[wk:0x10e] | call21(globalThis.[wk:0x10f]; const[276].[wk:0x111]).[wk:0x115] | DUP() | desc-tpl | const[269].[wk:0x10e]
+  // stack@INIT-END: OP_86() | const[0e430601] | str?flags=0x14 idx=3 | PATCH_REF_LOAD() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'o' | 'i' | 'n' | 'l' | 'd' | 's' | 'a' | 'y' | 'u' | str?flags=0x2 idx=20 | const[031170d6] | OP_13() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | call21(PUSH_WK1().[wk:0x108]; PUSH_WK1().[wk:0x109]).[wk:0x10a] | DUP() | desc-tpl | PUSH_WK1().[wk:0x108] | call21(PUSH_WK1().[wk:0x109]; PUSH_I8().[wk:0x10b]).[wk:0x10c] | DUP() | desc-tpl | const[269].[wk:0x10e] | globalThis.[wk:0x10f] | call21(const[272].[wk:0x111]; PUSH_I8().[wk:0x112]).[wk:0x113] | DUP() | desc-tpl | const[269].[wk:0x10e] | call21(globalThis.[wk:0x10f]; const[276].[wk:0x111]).[wk:0x115] | DUP() | desc-tpl | const[269].[wk:0x10e]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xf7 OP_f7 [?]
@@ -159,7 +159,7 @@
   // stack@INIT-END: PUSH_STR2().setAttributeString | const[64] | PUSH_STR2().setAttributeString | const[295] | objlit[when](PUSH_STR2()) | objlit[nodeId](undefined) | objlit[when](PUSH_STR2()) | !(objlit[nodeId](undefined)) | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x9c OP_9c [?]
   // op 0x07 PUSH_B [~]
   …(pad)
@@ -178,7 +178,7 @@
   jcc-0xeb → @3329
   // op 0xc8 PUSH_C8 [~]
   // discard(PUSH_C8().renderIssue(const[303].builtin#92(param[0])))
-  // stack@INIT-END: OP_44() | OP_9c() | PUSH_B() | const[00010001] | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | const[01de4204] | call25(call25(const[00000000]; param[0]).Style; ).Style | str?flags=0xb idx=13 | const[0dd2030e] | load[auxc603] | PUSH_C() | load[aux08cc] | DECL_SLOT() | DECL_SLOT() | !(undefined)
+  // stack@INIT-END: META_RECORD44() | OP_9c() | PUSH_B() | const[00010001] | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | const[01de4204] | call25(call25(const[00000000]; param[0]).Style; ).Style | str?flags=0xb idx=13 | const[0dd2030e] | load[auxc603] | PUSH_C() | load[aux08cc] | DECL_SLOT() | DECL_SLOT() | !(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x68 PUSH_STR2 [~]
   locop 0xcb(f0(undefined.getVirtualNode()))

@@ -147,7 +147,7 @@
   // discard(str?flags=0x1d idx=2)
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -279,7 +279,7 @@
   // discard(fn:'builtin#262')
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
-  // stack@INIT-END: 'p' | const[2097161956] | DUP() | call21(CLOSURE_CTX_A(); f0(param[1])).test | f0(fn:'builtin#262').startsWith | f0(fn:'builtin#262').endsWith | f0(fn:'builtin#262').includes | fn:'builtin#262' | OP_f1() | CLOSURE_CTX_B() | f0(param[1]) | coerce(fn:'builtin#262') | str?flags=0xc idx=1 | load[aux01d4] | str?flags=0xf idx=1 | CLOSURE_CTX_A() | OP_ac() | undefined.lastIndexOf | undefined.lastIndexOf | CLOSURE_CTX_B() | fn:'builtin#262' | OP_be() | const[0130ce03] | load[01] | PUSH_EXPORTS() | str?flags=0xf idx=1 | DECL_SLOT() | CLOSURE_CTX_A() | CLOSURE_CTX_B() | param[1] | OP_ac() | undefined.substring | fn:'builtin#262' | OP30() | OP_c0() | const[0230ce03] | OP_0f() | const[64020064] | const[00640000] | CLOSURE_CTX_A() | CLOSURE_CTX_B() | OP_ac() | call25(undefined.builtin#93; undefined) | CLOSURE_CTX_C() | PUSH_EXPORTS() | LT() | fn:'builtin#262' | OP30() | OP_c0() | const[0230c203] | const[0320c403] | const[0420b603] | const[63844357] | OP_d0() | str?flags=0xd idx=1 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | CLOSURE_CTX_B() | globalThis | OP_ea() | CLOSURE_CTX_B() | META_OP6C() | DECL_SLOT() | LT() | OP_ee() | str?flags=0x2e idx=14 | OP_ac() | param[0] | OP_ac() | call23(pool[149]; param[0]) | call23(fn:'builtin#262'; param[0], param[1])
+  // stack@INIT-END: 'p' | const[2097161956] | DUP() | call21(CLOSURE_CTX_A(); f0(param[1])).test | f0(fn:'builtin#262').startsWith | f0(fn:'builtin#262').endsWith | f0(fn:'builtin#262').includes | fn:'builtin#262' | OP_f1() | CLOSURE_CTX_B() | f0(param[1]) | coerce(fn:'builtin#262') | str?flags=0xc idx=1 | load[aux01d4] | str?flags=0xf idx=1 | CLOSURE_CTX_A() | OP_ac() | undefined.lastIndexOf | undefined.lastIndexOf | CLOSURE_CTX_B() | fn:'builtin#262' | PUSH_I8() | const[0130ce03] | load[01] | PUSH_EXPORTS() | str?flags=0xf idx=1 | DECL_SLOT() | CLOSURE_CTX_A() | CLOSURE_CTX_B() | param[1] | OP_ac() | undefined.substring | fn:'builtin#262' | OP30() | OP_c0() | const[0230ce03] | OP_0f() | const[64020064] | const[00640000] | CLOSURE_CTX_A() | CLOSURE_CTX_B() | OP_ac() | call25(undefined.builtin#93; undefined) | CLOSURE_CTX_C() | PUSH_EXPORTS() | LT() | fn:'builtin#262' | OP30() | OP_c0() | const[0230c203] | const[0320c403] | const[0420b603] | const[63844357] | OP_d0() | str?flags=0xd idx=1 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | CLOSURE_CTX_B() | globalThis | OP_ea() | CLOSURE_CTX_B() | META_OP6C() | DECL_SLOT() | LT() | OP_ee() | str?flags=0x2e idx=14 | OP_ac() | param[0] | OP_ac() | call23(pool[149]; param[0]) | call23(fn:'builtin#262'; param[0], param[1])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

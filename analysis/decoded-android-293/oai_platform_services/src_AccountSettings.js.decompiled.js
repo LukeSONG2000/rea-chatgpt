@@ -7,7 +7,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -93,7 +93,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.updateAccountSetting (seq 21) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: 'e' | LOCAL_OP2() | const[0e430601] | str?flags=0xe idx=3 | load[81] | str?flags=0x11 idx=176 | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | OP_be() | const[245760] | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | str?flags=0x0 idx=12 | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | local[0]
+  // stack@INIT-END: 'e' | LOCAL_OP2() | const[0e430601] | str?flags=0xe idx=3 | load[81] | str?flags=0x11 idx=176 | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | PUSH_I8() | const[245760] | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | str?flags=0x0 idx=12 | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | local[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe9 OP_e9 [?]
@@ -103,9 +103,9 @@
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @629
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @629
-  // stack@INIT-END: 'g' | push32000 | OP_7b() | const[02010052] | const[b6030001] | EQ_STRICT() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be())
+  // stack@INIT-END: 'g' | push32000 | OP_7b() | const[02010052] | const[b6030001] | EQ_STRICT() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x51 OP_51 [?]
@@ -113,9 +113,9 @@
 
   // ---- FUNCTION-UNIT: 'm3m' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @746
-  // stack@INIT-END: fn:'m3m' | f0(OP_be())
+  // stack@INIT-END: fn:'m3m' | f0(PUSH_I8())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x51 OP_51 [?]
@@ -161,7 +161,7 @@
 
   // ---- FUNCTION-UNIT: 'm3m' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @1500
   // op 0x64 DECL_SLOT [~]
   locop 0xca(param[0])
@@ -173,7 +173,7 @@
 
   // ---- FUNCTION-UNIT: 'm3m' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @1686
   // op 0x68 PUSH_STR2 [~]
   // op 0xe0 CLOSURE_CTX_C [~]
@@ -183,11 +183,11 @@
   // op 0x78 OP_78 [?]
   locop 0xcc(OP_78())
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @1816
   // discard(DUP())
-  // stack@INIT-END: fn:'m3m' | f0(OP_bf()) | call23(objlit[convertBridgeObservableToObservable](PUSH_STR2()); param[0].observeRichResponses()) | OP_2f() | OP_76() | PUSH_THIS() | str?flags=0x2 idx=0 | const[00890102] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | objlit[isVersionAtLeast]('u') | objlit[isVersionAtLeast](fn:'m3m') | f0(OP_be()) | DECL_SLOT() | call23(objlit[convertBridgeObservableToObservable](PUSH_STR2()); undefined.observeSettings()) | OP_2f() | str?flags=0x24 idx=6 | fn:'m3m' | objlit[isVersionAtLeast](str?flags=0xd idx=1) | f0(OP_be()) | objlit[convertBridgeObservableToObservable](PUSH_STR2()) | call23(param[0].observeSetting; CLOSURE_CTX_C()(f0(param[1]))) | OP_2f() | str?flags=0x1 idx=0 | const[005101b6] | str?flags=0x0 idx=1 | objlit[isVersionAtLeast]('u') | param[0].refresh()
+  // stack@INIT-END: fn:'m3m' | f0(OP_bf()) | call23(objlit[convertBridgeObservableToObservable](PUSH_STR2()); param[0].observeRichResponses()) | OP_2f() | OP_76() | PUSH_THIS() | str?flags=0x2 idx=0 | const[00890102] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | objlit[isVersionAtLeast]('u') | objlit[isVersionAtLeast](fn:'m3m') | f0(PUSH_I8()) | DECL_SLOT() | call23(objlit[convertBridgeObservableToObservable](PUSH_STR2()); undefined.observeSettings()) | OP_2f() | str?flags=0x24 idx=6 | fn:'m3m' | objlit[isVersionAtLeast](str?flags=0xd idx=1) | f0(PUSH_I8()) | objlit[convertBridgeObservableToObservable](PUSH_STR2()) | call23(param[0].observeSetting; CLOSURE_CTX_C()(f0(param[1]))) | OP_2f() | str?flags=0x1 idx=0 | const[005101b6] | str?flags=0x0 idx=1 | objlit[isVersionAtLeast]('u') | param[0].refresh()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x50 OP_50 [?]
@@ -196,13 +196,13 @@
 
   // ---- FUNCTION-UNIT: 'm3m' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @1923
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xd4 PUSH_EXPORTS [✓]
-  // stack@INIT-END: fn:'m3m' | objlit[isVersionAtLeast](str?flags=0xd idx=1) | !(f0(OP_be())) | OP_2f() | param[0].setBoolean | CLOSURE_CTX_B()(f0(param[1]), PUSH_EXPORTS())
+  // stack@INIT-END: fn:'m3m' | objlit[isVersionAtLeast](str?flags=0xd idx=1) | !(f0(PUSH_I8())) | OP_2f() | param[0].setBoolean | CLOSURE_CTX_B()(f0(param[1]), PUSH_EXPORTS())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x39 OP_39 [?]

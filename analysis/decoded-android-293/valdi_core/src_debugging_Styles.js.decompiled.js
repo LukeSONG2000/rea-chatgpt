@@ -23,8 +23,8 @@
   EXPORTS.colors (seq 4) = const[249].[wk:0xfa];  // const[247].[wk:0xf8]
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -35,7 +35,7 @@
   // op 0x11 DUP [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.styles (seq 5) = call21(const[233].[wk:0x104]; objlit[medium](objlit[fonts](PUSH_EXPORTS())).[wk:0x105]).[wk:0x109];  // desc-tpl
-  // stack@INIT-END: 'exports' | DECL_SLOT() | v06 | const[00030103] | OP_86() | OP_b2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | pool[145].builtin#101 | param[0] | PUSH_EXPORTS() | desc-tpl | const[225].[wk:0xe2] | PUSH_EXPORTS() | desc-tpl | const[231].[wk:0xe8] | const[233].[wk:0xea] | const[235].[wk:0xec] | const[237].[wk:0xee] | const[239].[wk:0xf0] | const[241].[wk:0xf2] | const[243].[wk:0xf4] | const[245].[wk:0xf6] | PUSH_EXPORTS() | desc-tpl | DUP() | desc-tpl | const[252].[wk:0xfd] | call21(OP_be().[wk:0xfe]; OP_be().[wk:0xff]).[wk:0x100] | DUP() | call21(desc-tpl; const[257].[wk:0xfd]).[wk:0x102] | DUP() | desc-tpl | call21(const[259].[wk:0x104]; objlit[body](objlit[fonts](PUSH_EXPORTS())).[wk:0x105]).[wk:0x106] | DUP() | desc-tpl | call21(const[263].[wk:0x104]; objlit[medium](objlit[fonts](PUSH_EXPORTS())).[wk:0x105]).[wk:0xea] | DUP() | desc-tpl | call21(const[233].[wk:0x104]; objlit[body](objlit[fonts](PUSH_EXPORTS())).[wk:0x105]).[wk:0x108] | DUP()
+  // stack@INIT-END: 'exports' | DECL_SLOT() | v06 | const[00030103] | OP_86() | OP_b2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | pool[145].builtin#101 | param[0] | PUSH_EXPORTS() | desc-tpl | const[225].[wk:0xe2] | PUSH_EXPORTS() | desc-tpl | const[231].[wk:0xe8] | const[233].[wk:0xea] | const[235].[wk:0xec] | const[237].[wk:0xee] | const[239].[wk:0xf0] | const[241].[wk:0xf2] | const[243].[wk:0xf4] | const[245].[wk:0xf6] | PUSH_EXPORTS() | desc-tpl | DUP() | desc-tpl | const[252].[wk:0xfd] | call21(PUSH_I8().[wk:0xfe]; PUSH_I8().[wk:0xff]).[wk:0x100] | DUP() | call21(desc-tpl; const[257].[wk:0xfd]).[wk:0x102] | DUP() | desc-tpl | call21(const[259].[wk:0x104]; objlit[body](objlit[fonts](PUSH_EXPORTS())).[wk:0x105]).[wk:0x106] | DUP() | desc-tpl | call21(const[263].[wk:0x104]; objlit[medium](objlit[fonts](PUSH_EXPORTS())).[wk:0x105]).[wk:0xea] | DUP() | desc-tpl | call21(const[233].[wk:0x104]; objlit[body](objlit[fonts](PUSH_EXPORTS())).[wk:0x105]).[wk:0x108] | DUP()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x35 OP35 [?]

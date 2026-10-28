@@ -603,7 +603,7 @@
   // trailer 0xae
   jcc-0xeb → @6127
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   jmp → @6134
   locop 0xca(f0(param[0]))

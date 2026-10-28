@@ -70,7 +70,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @607
   // op 0xbc OP_bc [?]
   // trailer 0xae

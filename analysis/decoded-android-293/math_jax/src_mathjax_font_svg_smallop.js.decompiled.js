@@ -771,10 +771,10 @@
   jcc-0xeb → @3274
   // op 0x3f OP_3f [?]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xee OP_ee [?]
   …(pad)
-  // stack-tail: OP_e9() | OP_3f() | load[02] | param[1] | OP_3f() | OP_db() | OP_3f() | OP_e9() | OP_3f() | load[02] | param[1] | OP_3f() | OP_db() | OP_3f() | OP_33() | param[1] | OP_8f() | LOCAL_OP2() | OP_d5() | OP_3f() | OP_33() | param[1] | OP_8f() | OP_e9() | OP_3f() | OP_62() | OP_85() | OP_58() | OP_58() | OP_e5() | OP_e5() | OP_83() | OP_c0() | OP_ac() | OP_47() | CLASS_CONSTRUCT() | v06 | CLASS_CONSTRUCT() | OP_58() | OP_b4() | OP_76() | OP_d5() | OP_3f() | DECL_SLOT() | OP_3f() | OP_76() | OP_33() | param[1] | OP_33() | param[1] | OP_33() | param[1] | OP_33() | OP_e7() | OP_3f() | OP_49() | OP_39() | OP_a7() | OP_33() | OP_e9() | OP_3f() | OP_95() | OP_e9() | OP_3f() | OP_95() | OP_47() | CLOSURE_CTX_D() | OP_3f() | OP_e9() | OP_3f() | load[02] | param[1] | OP_3f() | OP_db() | OP_3f() | OP_e9() | OP_3f() | load[02] | param[1] | OP_3f() | OP_db() | OP_3f() | CLOSURE_CTX_B().[wk:0x39063fe9] | OP_b4() | OP_76() | OP_db() | OP_3f() | CLOSURE_CTX_B().[wk:0x39063fe9] | OP_b4() | OP_3d() | OP_72() | PUSH_STR2() | OP_73() | OP_e6() | OP_85() | OP_3f() | OP_40() | OP_be() | OP_ee()
+  // stack-tail: OP_e9() | OP_3f() | load[02] | param[1] | OP_3f() | OP_db() | OP_3f() | OP_e9() | OP_3f() | load[02] | param[1] | OP_3f() | OP_db() | OP_3f() | OP_33() | param[1] | OP_8f() | LOCAL_OP2() | OP_d5() | OP_3f() | OP_33() | param[1] | OP_8f() | OP_e9() | OP_3f() | OP_62() | OP_85() | OP_58() | OP_58() | OP_e5() | OP_e5() | OP_83() | OP_c0() | OP_ac() | OP_47() | CLASS_CONSTRUCT() | v06 | CLASS_CONSTRUCT() | OP_58() | OP_b4() | OP_76() | OP_d5() | OP_3f() | DECL_SLOT() | OP_3f() | OP_76() | OP_33() | param[1] | OP_33() | param[1] | OP_33() | param[1] | OP_33() | OP_e7() | OP_3f() | OP_49() | OP_39() | OP_a7() | OP_33() | OP_e9() | OP_3f() | OP_95() | OP_e9() | OP_3f() | OP_95() | OP_47() | CLOSURE_CTX_D() | OP_3f() | OP_e9() | OP_3f() | load[02] | param[1] | OP_3f() | OP_db() | OP_3f() | OP_e9() | OP_3f() | load[02] | param[1] | OP_3f() | OP_db() | OP_3f() | CLOSURE_CTX_B().[wk:0x39063fe9] | OP_b4() | OP_76() | OP_db() | OP_3f() | CLOSURE_CTX_B().[wk:0x39063fe9] | OP_b4() | OP_3d() | OP_72() | PUSH_STR2() | OP_73() | OP_e6() | OP_85() | OP_3f() | OP_40() | PUSH_I8() | OP_ee()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

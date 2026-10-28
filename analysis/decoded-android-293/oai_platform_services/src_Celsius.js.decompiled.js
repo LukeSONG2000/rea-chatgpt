@@ -58,7 +58,7 @@
   …(pad)
   // op 0x59 IMPORT_MODULE [~]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x08 PUSH_C [~]
   …(pad)
@@ -78,7 +78,7 @@
   // op 0xc6 PUSH_THIS [~]
   // op 0xb7 PUSH_WK1 [~]
   EXPORTS.disposed (seq 2) = !(PUSH_WK1());  // PUSH_THIS()
-  // stack@INIT-END: OP_3b() | PUSH_C() | OP_3b() | OP_bc() | 'require' | str?flags=0x1 idx=187 | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x3 idx=0 | str?flags=0x6 idx=9 | load[auxba03] | objlit[isVersionAtLeast](num[92173]) | META_OP6C() | DECL_SLOT() | EQ_STRICT() | objlit[accountContainerFor](PUSH_STR2()) | call25(f0(param[0]).builtin#128; PUSH_STR2(), local[0]) | IMPORT_MODULE() | str?flags=0x2 idx=0 | OP_be() | PUSH_C() | globalThis.builtin#263
+  // stack@INIT-END: OP_3b() | PUSH_C() | OP_3b() | OP_bc() | 'require' | str?flags=0x1 idx=187 | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x3 idx=0 | str?flags=0x6 idx=9 | load[auxba03] | objlit[isVersionAtLeast](num[92173]) | META_OP6C() | DECL_SLOT() | EQ_STRICT() | objlit[accountContainerFor](PUSH_STR2()) | call25(f0(param[0]).builtin#128; PUSH_STR2(), local[0]) | IMPORT_MODULE() | str?flags=0x2 idx=0 | PUSH_I8() | PUSH_C() | globalThis.builtin#263
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xde CLOSURE_CTX_A [~]

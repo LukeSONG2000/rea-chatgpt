@@ -287,7 +287,7 @@
   // trailer 0xae
   // op 0x54 OP_54 [?]
   // op 0xd5 OP_d5 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
   locop 0xcc(PUSH_C())
@@ -373,7 +373,7 @@
   // op 0xc7 PUSH_C7 [~]
   // op 0xc7 PUSH_C7 [~]
   EXPORTS.isLineAbove (seq 0) = PUSH_C7().isLineAccent(objlit[scriptChild](PUSH_C7()));  // PUSH_C7()
-  // stack@INIT-END: OP_54() | num[3741479424] | OP_44() | OP_a9() | PUSH_B() | PUSH_WK1() | META_OP6C() | objlit[node](PUSH_C7()).isKind(const[291])
+  // stack@INIT-END: OP_54() | num[3741479424] | META_RECORD44() | OP_a9() | PUSH_B() | PUSH_WK1() | META_OP6C() | objlit[node](PUSH_C7()).isKind(const[291])
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc7 PUSH_C7 [~]
   jcc-0xeb → @4146

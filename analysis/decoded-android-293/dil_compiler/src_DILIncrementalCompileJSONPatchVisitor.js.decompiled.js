@@ -368,7 +368,7 @@
   // trailer 0xae
   // op 0x4a OP_4a [?]
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xc7 PUSH_C7 [~]
   locop 0xca(PUSH_C7().currentContext())
@@ -389,14 +389,14 @@
   // op 0xc7 PUSH_C7 [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xd5 OP_d5 [?]
-  // stack@INIT-END: OP_4a().onTruncateRoot | OP_be() | const[00301000] | const[00c00305] | const[08cb6400] | META_OP6C() | EQ_STRICT() | PUSH_C7().applyPropertyValueOperation(undefined, param[0], param[1], PUSH_EXPORTS(), OP_d5()) | OP_ee() | PUSH_C7().applyChildSlotOperation(objlit[parentNodeRef](undefined), param[1], PUSH_EXPORTS(), OP_d5()) | PUSH_C7().applyNodePropertyOperation(objlit[nodeRef](undefined), param[0], param[1], PUSH_EXPORTS(), OP_d5())
+  // stack@INIT-END: OP_4a().onTruncateRoot | PUSH_I8() | const[00301000] | const[00c00305] | const[08cb6400] | META_OP6C() | EQ_STRICT() | PUSH_C7().applyPropertyValueOperation(undefined, param[0], param[1], PUSH_EXPORTS(), OP_d5()) | OP_ee() | PUSH_C7().applyChildSlotOperation(objlit[parentNodeRef](undefined), param[1], PUSH_EXPORTS(), OP_d5()) | PUSH_C7().applyNodePropertyOperation(objlit[nodeRef](undefined), param[0], param[1], PUSH_EXPORTS(), OP_d5())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
   // op 0xdf CLOSURE_CTX_B [~]
   …(pad)
   // discard(num[2])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   locop 0xcc(const[00100001])
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -426,7 +426,7 @@
   // op 0xc6 PUSH_THIS [~]
   jmp → @4715
   // op 0xc6 PUSH_THIS [~]
-  // stack@INIT-END: str?flags=0x47 idx=6 | CLOSURE_CTX_B().onTruncateRoot | OP_be() | str?flags=0xd idx=1 | META_OP6C() | META_OP6C() | META_OP6C() | objlit[options](PUSH_THIS()).updateRendererProps | objlit[node](objlit[ownerNodeRef](param[0]))(objlit[renderer](objlit[ownerNodeRef](param[0])), objlit[nodePath](objlit[ownerNodeRef](param[0])), param[1], push1, objlit[inlineTextFlow](objlit[ownerNodeRef](param[0]))) | OP_ee() | PUSH_THIS().recompileNode(objlit[ownerNodeRef](param[0])) | OP_ee() | PUSH_THIS().updateInitialStateScopeOrRecompile(objlit[ownerNodeRef](param[0])) | PUSH_THIS().recompileNode(objlit[ownerNodeRef](param[0]))
+  // stack@INIT-END: str?flags=0x47 idx=6 | CLOSURE_CTX_B().onTruncateRoot | PUSH_I8() | str?flags=0xd idx=1 | META_OP6C() | META_OP6C() | META_OP6C() | objlit[options](PUSH_THIS()).updateRendererProps | objlit[node](objlit[ownerNodeRef](param[0]))(objlit[renderer](objlit[ownerNodeRef](param[0])), objlit[nodePath](objlit[ownerNodeRef](param[0])), param[1], push1, objlit[inlineTextFlow](objlit[ownerNodeRef](param[0]))) | OP_ee() | PUSH_THIS().recompileNode(objlit[ownerNodeRef](param[0])) | OP_ee() | PUSH_THIS().updateInitialStateScopeOrRecompile(objlit[ownerNodeRef](param[0])) | PUSH_THIS().recompileNode(objlit[ownerNodeRef](param[0]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xb4 OP_b4 [?]
@@ -530,7 +530,7 @@
   // op 0x4e OP_4e [?]
   …(pad)
   // discard(num[281088])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   // op 0x30 OP30 [?]
   // op 0xc2 LOCAL_OP2 [?]
@@ -555,7 +555,7 @@
   // op 0xf1 OP_f1 [?]
   // discard(OP_f1())
   jcc-0xeb → @6247
-  // stack@INIT-END: OP_4e().onTruncateRoot | OP_be() | const[0030ba03] | const[62533638] | PUSH_B() | v06 | OP30() | LOCAL_OP2() | str?flags=0x7 idx=4 | 'require' | const[00d0030f] | OP_e8() | DUP() | str?flags=0xd idx=1 | v06 | DECL_SLOT() | DECL_SLOT() | v06 | param[1] | OP_2f() | CLOSURE_CTX_A() | PUSH_EXPORTS() | META_OP6C() | DECL_SLOT() | CLOSURE_CTX_C() | undefined | objlit[isErrorState](param[0])
+  // stack@INIT-END: OP_4e().onTruncateRoot | PUSH_I8() | const[0030ba03] | const[62533638] | PUSH_B() | v06 | OP30() | LOCAL_OP2() | str?flags=0x7 idx=4 | 'require' | const[00d0030f] | OP_e8() | DUP() | str?flags=0xd idx=1 | v06 | DECL_SLOT() | DECL_SLOT() | v06 | param[1] | OP_2f() | CLOSURE_CTX_A() | PUSH_EXPORTS() | META_OP6C() | DECL_SLOT() | CLOSURE_CTX_C() | undefined | objlit[isErrorState](param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcb(objlit[children](objlit[renderer](param[0])).slice())
   // op 0xb7 PUSH_WK1 [~]
@@ -672,7 +672,7 @@
   // op 0xa9 OP_a9 [?]
   …(pad)
   // discard(call21(?))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // discard(const[0230ce03])
   // op 0xd6 OP_d6 [?]
   …(pad)
@@ -790,7 +790,7 @@
   jmp → @9260
   // op 0x2f OP_2f [?]
   // op 0xc9 PUSH_C9 [~]
-  // stack@INIT-END: str?flags=0x5a idx=31 | OP_bc() | CLOSURE_CTX_B() | OP_75() | const[16259069] | OP_95() | OP_39() | OP_19() | const[c2030601] | OP_13() | const[c403070d] | DECL_SLOT() | DECL_SLOT() | const[318] | param[1] | v06 | PUSH_EXPORTS() | desc-tpl | objlit[Children](CLOSURE_CTX_A()).[wk:0x12d] | CLOSURE_CTX_B() | CLOSURE_CTX_C() | f0(objlit[node](param[0])) | param[1] | CLOSURE_CTX_D() | LOAD_61() | objlit[isChildNode](param[0]) | objlit[isDILInitialStateScopeValueProperty](PUSH_STR2()) | f0(param[1]) | STR_OP() | LOAD_61() | param[0] | desc-tpl | objlit[PropertyValue](CLOSURE_CTX_A()).[wk:0x12d] | undefined.[wk:0x40] | param[0].[wk:0x135] | param[1] | PUSH_STR2() | v06 | OP_a9() | const[0208c62b].onTruncateRoot | OP_be() | const[c0030501] | param[0] | str?flags=0x10 idx=1 | v06 | OP_d6() | str?flags=0x12 idx=1 | DECL_SLOT() | DECL_SLOT() | v06 | param[1] | OP_2f() | CLOSURE_CTX_A() | objlit[node](param[0]) | objlit[isErrorState](param[0]) | desc-tpl | objlit[PropertyValue](CLOSURE_CTX_B()).[wk:0x12d] | CLOSURE_CTX_C() | f0(undefined).[wk:0x40] | param[0].[wk:0x135] | v06.[wk:0x13c] | v06 | undefined | OP_2f() | desc-tpl | undefined.[wk:0x137] | undefined.[wk:0x13a] | objlit[nodePath](param[0]).child(param[1]).[wk:0x13b] | !(globalThis).[wk:0x140] | LOAD_61() | f0(param[0]).[wk:0x13d] | objlit[renderer](param[0]).[wk:0x14a] | param[1].[wk:0x14b] | LOAD_61() | desc-tpl | objlit[Node](CLOSURE_CTX_B()).[wk:0x12d] | str?flags=0x7d idx=31 | OP_1f() | const[e4031901] | OP_c0() | PATCH_REF_LOAD() | const[dc031501] | DECL_SLOT() | CLOSURE_CTX_A() | objlit[builtin#64](param[0]) | param[1] | CLOSURE_CTX_B() | CLOSURE_CTX_C() | desc-tpl | objlit[PropertyValue](CLOSURE_CTX_D()).[wk:0x12d] | undefined.[wk:0x40] | objlit[ownerNodeRef](param[0]).[wk:0x135] | param[1].[wk:0x13c] | objlit[mutation](param[0]) | objlit[UpdateRendererProps](LOAD_61()) | LOAD_61() | param[0] | OP_f1() | OP10() | const[00be0304] | load[auxbc03] | str?flags=0xd idx=210 | const[ba03020d] | OP_6f() | DECL_SLOT() | DECL_SLOT() | objlit[getDILInitialStateScopeWidgetRenderer](PUSH_STR2()) | objlit[readInitialStateValue](PUSH_STR2()) | CLOSURE_CTX_C() | OP_6f() | objlit[isDILDiagnosticError](PUSH_STR2()) | OP_2f() | PUSH_C9().recompileNode(param[0])
+  // stack@INIT-END: str?flags=0x5a idx=31 | OP_bc() | CLOSURE_CTX_B() | OP_75() | const[16259069] | OP_95() | OP_39() | OP_19() | const[c2030601] | OP_13() | const[c403070d] | DECL_SLOT() | DECL_SLOT() | const[318] | param[1] | v06 | PUSH_EXPORTS() | desc-tpl | objlit[Children](CLOSURE_CTX_A()).[wk:0x12d] | CLOSURE_CTX_B() | CLOSURE_CTX_C() | f0(objlit[node](param[0])) | param[1] | CLOSURE_CTX_D() | LOAD_61() | objlit[isChildNode](param[0]) | objlit[isDILInitialStateScopeValueProperty](PUSH_STR2()) | f0(param[1]) | STR_OP() | LOAD_61() | param[0] | desc-tpl | objlit[PropertyValue](CLOSURE_CTX_A()).[wk:0x12d] | undefined.[wk:0x40] | param[0].[wk:0x135] | param[1] | PUSH_STR2() | v06 | OP_a9() | const[0208c62b].onTruncateRoot | PUSH_I8() | const[c0030501] | param[0] | str?flags=0x10 idx=1 | v06 | OP_d6() | str?flags=0x12 idx=1 | DECL_SLOT() | DECL_SLOT() | v06 | param[1] | OP_2f() | CLOSURE_CTX_A() | objlit[node](param[0]) | objlit[isErrorState](param[0]) | desc-tpl | objlit[PropertyValue](CLOSURE_CTX_B()).[wk:0x12d] | CLOSURE_CTX_C() | f0(undefined).[wk:0x40] | param[0].[wk:0x135] | v06.[wk:0x13c] | v06 | undefined | OP_2f() | desc-tpl | undefined.[wk:0x137] | undefined.[wk:0x13a] | objlit[nodePath](param[0]).child(param[1]).[wk:0x13b] | !(globalThis).[wk:0x140] | LOAD_61() | f0(param[0]).[wk:0x13d] | objlit[renderer](param[0]).[wk:0x14a] | param[1].[wk:0x14b] | LOAD_61() | desc-tpl | objlit[Node](CLOSURE_CTX_B()).[wk:0x12d] | str?flags=0x7d idx=31 | OP_1f() | const[e4031901] | OP_c0() | PATCH_REF_LOAD() | const[dc031501] | DECL_SLOT() | CLOSURE_CTX_A() | objlit[builtin#64](param[0]) | param[1] | CLOSURE_CTX_B() | CLOSURE_CTX_C() | desc-tpl | objlit[PropertyValue](CLOSURE_CTX_D()).[wk:0x12d] | undefined.[wk:0x40] | objlit[ownerNodeRef](param[0]).[wk:0x135] | param[1].[wk:0x13c] | objlit[mutation](param[0]) | objlit[UpdateRendererProps](LOAD_61()) | LOAD_61() | param[0] | OP_f1() | OP10() | const[00be0304] | load[auxbc03] | str?flags=0xd idx=210 | const[ba03020d] | OP_6f() | DECL_SLOT() | DECL_SLOT() | objlit[getDILInitialStateScopeWidgetRenderer](PUSH_STR2()) | objlit[readInitialStateValue](PUSH_STR2()) | CLOSURE_CTX_C() | OP_6f() | objlit[isDILDiagnosticError](PUSH_STR2()) | OP_2f() | PUSH_C9().recompileNode(param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x3a OP_3a [?]
@@ -937,7 +937,7 @@
 
   // ---- FUNCTION-UNIT: 'onRemoveRoot' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xee OP_ee [?]
   // op 0xe2 OP_e2 [?]
@@ -978,7 +978,7 @@
   // op 0xf2 OP_f2 [?]
   // op 0x5e OP_5e [?]
   // op 0xf1 OP_f1 [?]
-  // stack@INIT-END: f0(str?flags=0xba idx=1) | const[02004a02] | num[234881024].onTruncateRoot | const[08cb6400] | desc-tpl | objlit[rootNode](PUSH_C7()).[wk:0x137] | objlit[rootRenderer](PUSH_C7()).[wk:0x13a] | objlit[DILNodePath](PUSH_STR2()).root().[wk:0x13b] | !(PUSH_WK1()).[wk:0x140] | !(PUSH_WK1()).[wk:0x13d] | v06.[wk:0x14a] | v06.[wk:0x14b] | CLOSURE_CTX_B() | desc-tpl | objlit[Node](CLOSURE_CTX_C()).[wk:0x12d] | str?flags=0xbe idx=1 | OP_4d() | OP_d0() | PUSH_C() | fn:'onRemoveRoot' | OP_be() | const[00c60308] | OP_1c() | EQ_STRICT() | EQ_STRICT() | EQ_STRICT() | call22(CLOSURE_CTX_B(); param[0], param[1], PUSH_EXPORTS(), OP_5e()) | CLOSURE_CTX_B() | param[0] | param[1] | PUSH_EXPORTS() | CLOSURE_CTX_C() | call22(CLOSURE_CTX_D(); param[0], param[1], OP_f2(), OP_f1()) | LOAD_61() | param[0] | param[1] | OP_f2() | CLOSURE_CTX_B() | param[0] | param[1] | PUSH_EXPORTS() | LOAD_61() | call22(CLOSURE_CTX_D(); param[0], param[1], OP_f2(), OP_f1())
+  // stack@INIT-END: f0(str?flags=0xba idx=1) | const[02004a02] | num[234881024].onTruncateRoot | const[08cb6400] | desc-tpl | objlit[rootNode](PUSH_C7()).[wk:0x137] | objlit[rootRenderer](PUSH_C7()).[wk:0x13a] | objlit[DILNodePath](PUSH_STR2()).root().[wk:0x13b] | !(PUSH_WK1()).[wk:0x140] | !(PUSH_WK1()).[wk:0x13d] | v06.[wk:0x14a] | v06.[wk:0x14b] | CLOSURE_CTX_B() | desc-tpl | objlit[Node](CLOSURE_CTX_C()).[wk:0x12d] | str?flags=0xbe idx=1 | OP_4d() | OP_d0() | PUSH_C() | fn:'onRemoveRoot' | PUSH_I8() | const[00c60308] | OP_1c() | EQ_STRICT() | EQ_STRICT() | EQ_STRICT() | call22(CLOSURE_CTX_B(); param[0], param[1], PUSH_EXPORTS(), OP_5e()) | CLOSURE_CTX_B() | param[0] | param[1] | PUSH_EXPORTS() | CLOSURE_CTX_C() | call22(CLOSURE_CTX_D(); param[0], param[1], OP_f2(), OP_f1()) | LOAD_61() | param[0] | param[1] | OP_f2() | CLOSURE_CTX_B() | param[0] | param[1] | PUSH_EXPORTS() | LOAD_61() | call22(CLOSURE_CTX_D(); param[0], param[1], OP_f2(), OP_f1())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1260,10 +1260,10 @@
   …(pad)
 
   // ---- FUNCTION-UNIT: 'builtin#2050' ----
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xd4 PUSH_EXPORTS [✓]
-  // stack@INIT-END: OP_46() | v06 | const[ea030202] | num[3120562696] | num[243204] | const[00b80300] | OP_1d() | OP_87() | CLOSURE_CTX_A() | f0(param[0]) | OP_87() | OP_2f() | str?flags=0xa6 idx=2 | push61051 | CLOSURE_CTX_B() | OP_37() | fn:'builtin#2050' | OP_44() | param[0] | param[1] | desc-tpl | !(globalThis).[wk:0x3d](!(globalThis).[wk:0x3f], PUSH_EXPORTS().[wk:0x40], !(globalThis).[wk:0x3e])
+  // stack@INIT-END: OP_46() | v06 | const[ea030202] | num[3120562696] | num[243204] | const[00b80300] | OP_1d() | OP_87() | CLOSURE_CTX_A() | f0(param[0]) | OP_87() | OP_2f() | str?flags=0xa6 idx=2 | push61051 | CLOSURE_CTX_B() | OP_37() | fn:'builtin#2050' | META_RECORD44() | param[0] | param[1] | desc-tpl | !(globalThis).[wk:0x3d](!(globalThis).[wk:0x3f], PUSH_EXPORTS().[wk:0x40], !(globalThis).[wk:0x3e])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

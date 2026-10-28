@@ -66,13 +66,13 @@
   local[18] = call21(DUP(); );
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   local[20] = call21(!(PUSH_WK1()).[wk:0x11b]; const[265].[wk:0x10d]).[wk:0xf4];
-  // stack@INIT-END: OP_f4() | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 's' | 'o' | 'd' | 'n' | 'r' | 'l' | str?flags=0x2 idx=21 | const[030e70d0] | 'a' | str?flags=0x0 idx=0 | str?flags=0x0 idx=17 | 'u' | str?flags=0x0 idx=18 | 'g' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[265].[wk:0x10a] | call21(const[267].[wk:0x10c]; const[265].[wk:0x10d]).[wk:0xf7] | DUP() | desc-tpl | const[270].[wk:0x10f] | OP_be().[wk:0x110] | const[270].[wk:0x111] | call21(const[274].[wk:0x113]; !(PUSH_WK1()).[wk:0x114]).[wk:0x115] | DUP() | desc-tpl | const[270].[wk:0x10f] | const[278].[wk:0x113] | call21(!(globalThis).[wk:0x117]; const[265].[wk:0x10d]).[wk:0x118] | DUP() | desc-tpl | const[265].[wk:0x10a] | !(globalThis).[wk:0x119] | !(globalThis).[wk:0x11a]
+  // stack@INIT-END: OP_f4() | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 's' | 'o' | 'd' | 'n' | 'r' | 'l' | str?flags=0x2 idx=21 | const[030e70d0] | 'a' | str?flags=0x0 idx=0 | str?flags=0x0 idx=17 | 'u' | str?flags=0x0 idx=18 | 'g' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[265].[wk:0x10a] | call21(const[267].[wk:0x10c]; const[265].[wk:0x10d]).[wk:0xf7] | DUP() | desc-tpl | const[270].[wk:0x10f] | PUSH_I8().[wk:0x110] | const[270].[wk:0x111] | call21(const[274].[wk:0x113]; !(PUSH_WK1()).[wk:0x114]).[wk:0x115] | DUP() | desc-tpl | const[270].[wk:0x10f] | const[278].[wk:0x113] | call21(!(globalThis).[wk:0x117]; const[265].[wk:0x10d]).[wk:0x118] | DUP() | desc-tpl | const[265].[wk:0x10a] | !(globalThis).[wk:0x119] | !(globalThis).[wk:0x11a]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x8b OP_8b [?]
@@ -280,7 +280,7 @@
   // stack@INIT-END: OP_9f() | const[022b0099] | num[2] | v06 | v06 | objlit[builtin#87](param[0]) | OP_ea() | objlit[renderer](PUSH_C7()).onRenderComplete(objlit[syncUpdatedOffset](PUSH_C7()))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x30 OP30 [?]
   // op 0x10 OP10 [?]
   …(pad)
@@ -407,7 +407,7 @@
   // trailer 0xae
   // op 0x8a OP_8a [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // discard(num[248])
   // op 0x11 DUP [~]
@@ -453,7 +453,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().endComponent())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0x2c idx=18 | OP_8a() | num[27656194] | num[33661440] | OP_be().syncOffset | v06 | DUP() | PUSH_B() | load[aux08ca] | !(PUSH_WK1()) | PUSH_STR2().setAttributeStyle | const[312] | PUSH_STR2().endRender()
+  // stack@INIT-END: str?flags=0x2c idx=18 | OP_8a() | num[27656194] | num[33661440] | PUSH_I8().syncOffset | v06 | DUP() | PUSH_B() | load[aux08ca] | !(PUSH_WK1()) | PUSH_STR2().setAttributeStyle | const[312] | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
@@ -524,9 +524,9 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().builtin#66(param[0], undefined))
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // stack-tail: fn:'activeIndex' | str?flags=0x14 idx=13 | desc-tpl | objlit[Style](PUSH_STR2()).merge | objlit[indicator](PUSH_STR2()) | DUP() | desc-tpl | objlit[surface](objlit[colors](param[0])).[wk:0x153] | objlit[pillRadius](objlit[shape](param[0])).[wk:0x133] | OP_9e().[wk:0x157](objlit[small](objlit[spacing](param[0])).[wk:0x158], call21(objlit[small](objlit[spacing](param[0])).[wk:0x159]; OP_9e().[wk:0x15a])).[wk:0x115] | objlit[Style](PUSH_STR2()).merge | OP_44() | num[0]
+  // stack-tail: fn:'activeIndex' | str?flags=0x14 idx=13 | desc-tpl | objlit[Style](PUSH_STR2()).merge | objlit[indicator](PUSH_STR2()) | DUP() | desc-tpl | objlit[surface](objlit[colors](param[0])).[wk:0x153] | objlit[pillRadius](objlit[shape](param[0])).[wk:0x133] | OP_9e().[wk:0x157](objlit[small](objlit[spacing](param[0])).[wk:0x158], call21(objlit[small](objlit[spacing](param[0])).[wk:0x159]; OP_9e().[wk:0x15a])).[wk:0x115] | objlit[Style](PUSH_STR2()).merge | META_RECORD44() | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

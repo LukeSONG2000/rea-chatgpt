@@ -32,7 +32,7 @@
   …(pad)
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xd6 OP_d6 [?]
   // op 0x64 DECL_SLOT [~]
@@ -58,7 +58,7 @@
   // discard(SPREAD_PREP())
   // op 0x68 PUSH_STR2 [~]
   // op 0xf1 OP_f1 [?]
-  // stack@INIT-END: OP_40() | 'module' | PATCH_REF_LOAD() | OP_c0() | const[40d00301] | TRY_REGION() | TRY_REGION() | OP_be() | const[50576397] | load[auxb803] | const[0db60300] | OP_d6() | DECL_SLOT() | DECL_SLOT() | objlit[popScheduler](PUSH_STR2()) | objlit[popNumber](PUSH_STR2()) | param[0] | objlit[argsOrArgArray](PUSH_STR2()) | OP_d6() | OP_51() | num[235162368].builtin#262 | load[c0] | str?flags=0x0 idx=3 | objlit[mergeAll](load[aux6800]) | f0(PUSH_STR2()) | objlit[builtin#122](PUSH_STR2()) | param[0] | f0(OP_f1()).subscribe(param[1])
+  // stack@INIT-END: OP_40() | 'module' | PATCH_REF_LOAD() | OP_c0() | const[40d00301] | TRY_REGION() | TRY_REGION() | PUSH_I8() | const[50576397] | load[auxb803] | const[0db60300] | OP_d6() | DECL_SLOT() | DECL_SLOT() | objlit[popScheduler](PUSH_STR2()) | objlit[popNumber](PUSH_STR2()) | param[0] | objlit[argsOrArgArray](PUSH_STR2()) | OP_d6() | OP_51() | num[235162368].builtin#262 | load[c0] | str?flags=0x0 idx=3 | objlit[mergeAll](load[aux6800]) | f0(PUSH_STR2()) | objlit[builtin#122](PUSH_STR2()) | param[0] | f0(OP_f1()).subscribe(param[1])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x7e OP_7e [?]

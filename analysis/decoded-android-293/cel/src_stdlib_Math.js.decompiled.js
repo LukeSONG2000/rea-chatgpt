@@ -227,13 +227,13 @@
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xea OP_ea [?]
   // trailer 0xae
   jcc-0xeb → @1818
   // op 0xb7 PUSH_WK1 [~]
   locop 0xca(globalThis)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @1878
   // op 0xb7 PUSH_WK1 [~]
@@ -252,12 +252,12 @@
   jcc-0xeb → @1968
   // op 0x64 DECL_SLOT [~]
   locop 0xcc(param[0].charCodeAt(undefined))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x11 DUP [~]
   jcc-0xec → @1953
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa8 OP_A8 [?]
   jcc-0xeb → @1958
   // op 0xb7 PUSH_WK1 [~]
@@ -268,7 +268,7 @@
   // trailer 0xae
   // op 0x6c META_OP6C [?]
   …(pad)
-  // stack-tail: META_OP6C() | !(pool[148].isFinite(param[0])) | OP_2f() | LT() | OP_ac() | CLOSURE_CTX_B() | !(f0(param[0])) | OP_2f() | call23(pool[148]; param[0]) | OP_ac() | OP_ac() | DECL_SLOT() | pool[148] | pool[148].isNaN(undefined) | OP_2f() | OP_2f() | OP_44() | const[0020ba03] | v06 | const[20b80307] | num[25648] | globalThis | OP_ea() | OP_be() | param[0].charCodeAt(globalThis) | PUSH_WK1() | OP_ea() | DECL_SLOT() | LT() | DECL_SLOT() | OP_A8() | str?flags=0x38 idx=10 | load[auxda30] | META_OP6C() | load[00]
+  // stack-tail: META_OP6C() | !(pool[148].isFinite(param[0])) | OP_2f() | LT() | OP_ac() | CLOSURE_CTX_B() | !(f0(param[0])) | OP_2f() | call23(pool[148]; param[0]) | OP_ac() | OP_ac() | DECL_SLOT() | pool[148] | pool[148].isNaN(undefined) | OP_2f() | OP_2f() | META_RECORD44() | const[0020ba03] | v06 | const[20b80307] | num[25648] | globalThis | OP_ea() | PUSH_I8() | param[0].charCodeAt(globalThis) | PUSH_WK1() | OP_ea() | DECL_SLOT() | LT() | DECL_SLOT() | OP_A8() | str?flags=0x38 idx=10 | load[auxda30] | META_OP6C() | load[00]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

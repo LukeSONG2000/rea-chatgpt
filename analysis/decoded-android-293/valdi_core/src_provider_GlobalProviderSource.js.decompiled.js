@@ -10,7 +10,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -62,7 +62,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.combineGlobalProviderSource (seq 11) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: 'exports' | DECL_SLOT() | v06 | const[00030903] | PUSH_C() | f0(PUSH_B()) | const[0cb00300] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | OP_be() | const[245824] | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0]
+  // stack@INIT-END: 'exports' | DECL_SLOT() | v06 | const[00030903] | PUSH_C() | f0(PUSH_B()) | const[0cb00300] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | PUSH_I8() | const[245824] | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x7b OP_7b [?]

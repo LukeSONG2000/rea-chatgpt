@@ -12,7 +12,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -71,10 +71,10 @@
   local[9] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.StatefulComponent (seq 4) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_13() | OP_95() | load[auxb003] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | OP_be() | const[0420c003] | const[32256010] | PATCH_REF_LOAD() | const[07206409] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | const[231] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: OP_13() | OP_95() | load[auxb003] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | PUSH_I8() | const[0420c003] | const[32256010] | PATCH_REF_LOAD() | const[07206409] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | const[231] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x2b OP_2b [?]
   // op 0x3b OP_3b [?]
   …(pad)
@@ -167,13 +167,13 @@
   // stack@INIT-END: ?(OP_50().[wk:0x103], CLOSURE_CTX_C())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @1684
   // discard(OP_b3())
-  // discard(OP_44())
+  // discard(META_RECORD44())
   jmp → @1688
   // discard(v06(param[0]))
   // op 0xdf CLOSURE_CTX_B [~]

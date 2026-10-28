@@ -265,7 +265,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @2931
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xaf EQ_STRICT [~]
@@ -277,7 +277,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @2988
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @2994
   // op 0x11 DUP [~]
@@ -286,7 +286,7 @@
   // op 0xee OP_ee [?]
   // op 0xb7 PUSH_WK1 [~]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x30 OP30 [?]
   …(pad)
@@ -324,7 +324,7 @@
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: OP_72() | fn:'coreMO' | OP30() | PUSH_E() | META_OP6C() | DECL_SLOT() | !(EQ_STRICT()) | OP_ee() | OP_44() | OP30() | globalThis | OP_87()
+  // stack@INIT-END: OP_72() | fn:'coreMO' | OP30() | PUSH_E() | META_OP6C() | DECL_SLOT() | !(EQ_STRICT()) | OP_ee() | META_RECORD44() | OP30() | globalThis | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -595,7 +595,7 @@
   // op 0xa7 OP_a7 [?]
   // discard(const[021230ee])
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xaf EQ_STRICT [~]
   // trailer 0xae
   …(pad)

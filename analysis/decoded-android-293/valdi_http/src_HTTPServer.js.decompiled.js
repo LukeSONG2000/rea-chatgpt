@@ -32,10 +32,10 @@
   locop 0xcb(f0(const[239]))
   locop 0xcc(f0(const[240]))
   locop 0xcd(f0(const[241]))
-  // op 0xbe OP_be [?]
-  local[4] = OP_be();
-  // op 0xbe OP_be [?]
-  local[5] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[4] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[5] = PUSH_I8();
   // op 0x11 DUP [~]
   local[6] = call21(DUP(); const[243]);
   // op 0x11 DUP [~]
@@ -150,8 +150,8 @@
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xc2 LOCAL_OP2 [?]
   // op 0xea OP_ea [?]
-  // op 0xbe OP_be [?]
-  // discard(CLOSURE_CTX_B()(f0(LOCAL_OP2().builtin#92(OP_ea().builtin#55(OP_be()), const[265]))))
+  // op 0xbe PUSH_I8 [~]
+  // discard(CLOSURE_CTX_B()(f0(LOCAL_OP2().builtin#92(OP_ea().builtin#55(PUSH_I8()), const[265]))))
   // op 0xc7 PUSH_C7 [~]
   // discard(objlit[connection](PUSH_C7()).send(undefined))
   // op 0xc7 PUSH_C7 [~]
@@ -289,7 +289,7 @@
 
   // ---- FUNCTION-UNIT: 'closeListeners' ----
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   locop 0xca(desc-tpl)
   // op 0x64 DECL_SLOT [~]
@@ -405,7 +405,7 @@
   EXPORTS.handler (seq 0) = param[0];  // PUSH_THIS()
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.connections (seq 1) = desc-tpl;  // PUSH_THIS()
-  // stack@INIT-END: fn:'closeListeners' | str?flags=0x5 idx=13 | OP_a7() | OP_4a() | PUSH_STR2() | OP_4a() | PUSH_STR2() | OP_4a() | PUSH_STR2() | OP_4a() | OP_ac() | CLOSURE_CTX_A() | fn:'closeListeners' | OP30() | OP_be() | str?flags=0x4 idx=48 | OP_87() | OP_5d() | LT() | desc-tpl | param[0].[wk:0x116] | desc-tpl | param[0].substring(globalThis, undefined).[wk:0x116] | str?flags=0x44 idx=8 | OP_2b() | fn:'closeListeners' | DUP() | DUP() | DUP() | DUP() | DUP() | CLASS_DEF_POP().isClosed
+  // stack@INIT-END: fn:'closeListeners' | str?flags=0x5 idx=13 | OP_a7() | OP_4a() | PUSH_STR2() | OP_4a() | PUSH_STR2() | OP_4a() | PUSH_STR2() | OP_4a() | OP_ac() | CLOSURE_CTX_A() | fn:'closeListeners' | OP30() | PUSH_I8() | str?flags=0x4 idx=48 | OP_87() | OP_5d() | LT() | desc-tpl | param[0].[wk:0x116] | desc-tpl | param[0].substring(globalThis, undefined).[wk:0x116] | str?flags=0x44 idx=8 | OP_2b() | fn:'closeListeners' | DUP() | DUP() | DUP() | DUP() | DUP() | CLASS_DEF_POP().isClosed
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -712,7 +712,7 @@
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x83 OP_83 [?]
   …(pad)
@@ -754,7 +754,7 @@
   // op 0x39 OP_39 [?]
   …(pad)
   // discard(OP_39())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // discard(const[0370ce03])
   // op 0xd4 PUSH_EXPORTS [✓]
   …(pad)
@@ -799,7 +799,7 @@
   jcc-0xeb → @8354
   // discard(DUP())
   // discard(objlit[connection](param[0]).send(undefined))
-  // stack@INIT-END: str?flags=0xd4 idx=1 | OP_44() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x2 idx=0 | str?flags=0x3 idx=0 | OP_83() | OP_6f() | PUSH_C8().sendResponse | param[0] | desc-tpl | OP_bf().[wk:0x140] | desc-tpl | OP_2f() | OP_2e() | OP_50().isClosed | OP_be() | const[0220c203] | num[62926853] | const[d6031201] | PUSH_EXPORTS() | str?flags=0x11 idx=1 | load[aux01c6] | str?flags=0xa idx=9 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | CLOSURE_CTX_B() | undefined | const[331].builtin#92 | objlit[connection](param[0]).send | v06 | objlit[stream](param[1])
+  // stack@INIT-END: str?flags=0xd4 idx=1 | META_RECORD44() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x2 idx=0 | str?flags=0x3 idx=0 | OP_83() | OP_6f() | PUSH_C8().sendResponse | param[0] | desc-tpl | OP_bf().[wk:0x140] | desc-tpl | OP_2f() | OP_2e() | OP_50().isClosed | PUSH_I8() | const[0220c203] | num[62926853] | const[d6031201] | PUSH_EXPORTS() | str?flags=0x11 idx=1 | load[aux01c6] | str?flags=0xa idx=9 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | CLOSURE_CTX_B() | undefined | const[331].builtin#92 | objlit[connection](param[0]).send | v06 | objlit[stream](param[1])
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]

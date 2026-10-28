@@ -96,12 +96,12 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xb2 OP_b2 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xe1 CLOSURE_CTX_D [~]
   …(pad)
   // trailer 0xae
   …(pad)
-  // stack-tail: OP_44() | str?flags=0x14 idx=1 | const[00000000]
+  // stack-tail: META_RECORD44() | str?flags=0x14 idx=1 | const[00000000]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

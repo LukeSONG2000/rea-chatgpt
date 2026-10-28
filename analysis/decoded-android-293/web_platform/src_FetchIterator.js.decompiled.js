@@ -164,9 +164,9 @@
   locop 0xcc(call21(DUP(); param[0], param[1]))
   // discard(pool[145].builtin#96(undefined, undefined))
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // stack-tail: str?flags=0xe idx=2 | const[234881024].builtin#263 | DECL_SLOT() | DECL_SLOT() | v06 | objlit[entries](v06) | desc-tpl | !(PUSH_WK1()).[wk:0x69] | objlit[kind](PUSH_C8()) | objlit[Keys](CLOSURE_CTX_A()) | OP_4a() | objlit[kind](PUSH_C8()) | objlit[Values](CLOSURE_CTX_A()) | OP_4a() | OP_3d() | num[39583937] | push2081 | OP_fd().builtin#263 | OP_bc() | str?flags=0x3 idx=3 | num[100977152] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x3 idx=3 | 'require' | 'Values' | const[156681] | DECL_SLOT() | v06 | META_OP6C() | DECL_SLOT() | pool[145].builtin#89 | undefined | desc-tpl | desc-tpl | objlit[builtin#106](objlit[builtin#59](PUSH_STR2())).[wk:0x40] | !(globalThis).[wk:0x3f] | OP_44()
+  // stack-tail: str?flags=0xe idx=2 | const[234881024].builtin#263 | DECL_SLOT() | DECL_SLOT() | v06 | objlit[entries](v06) | desc-tpl | !(PUSH_WK1()).[wk:0x69] | objlit[kind](PUSH_C8()) | objlit[Keys](CLOSURE_CTX_A()) | OP_4a() | objlit[kind](PUSH_C8()) | objlit[Values](CLOSURE_CTX_A()) | OP_4a() | OP_3d() | num[39583937] | push2081 | OP_fd().builtin#263 | OP_bc() | str?flags=0x3 idx=3 | num[100977152] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x3 idx=3 | 'require' | 'Values' | const[156681] | DECL_SLOT() | v06 | META_OP6C() | DECL_SLOT() | pool[145].builtin#89 | undefined | desc-tpl | desc-tpl | objlit[builtin#106](objlit[builtin#59](PUSH_STR2())).[wk:0x40] | !(globalThis).[wk:0x3f] | META_RECORD44()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

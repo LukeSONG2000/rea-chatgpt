@@ -98,14 +98,14 @@
   // stack@INIT-END: OP_58() | const[0000000e].builtin#263.schedule | desc-tpl | param[0].[wk:0x40](param[1].[wk:0xe8])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x11 DUP [~]
   // trailer 0xae
   // op 0x08 PUSH_C [~]
   // discard(PUSH_C())
   …(pad)
   // op 0xdf CLOSURE_CTX_B [~]
-  // stack@INIT-END: OP_44() | str?flags=0x1b idx=4 | v06.builtin#263(CLOSURE_CTX_B(), local[0])
+  // stack@INIT-END: META_RECORD44() | str?flags=0x1b idx=4 | v06.builtin#263(CLOSURE_CTX_B(), local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x1c OP_1c [?]

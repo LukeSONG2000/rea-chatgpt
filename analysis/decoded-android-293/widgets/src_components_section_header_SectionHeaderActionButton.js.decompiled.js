@@ -49,13 +49,13 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.SectionHeaderActionButton (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   local[16] = call21(objlit[SECONDARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x116]; const[279].[wk:0x107]).[wk:0x118];
-  // stack@INIT-END: OP_60() | v06 | const[00031103] | v06 | num[2954102777] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'i' | 'n' | 'r' | 's' | 'c' | 'l' | str?flags=0x2 idx=17 | OP10() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[256].[wk:0x101] | const[258].[wk:0x103] | globalThis.[wk:0x104] | OP_be().[wk:0x105] | call21(const[262].[wk:0x107]; const[264].[wk:0x109]).[wk:0x10a] | DUP() | desc-tpl | OP_be().[wk:0x10b] | OP_be().[wk:0x10c] | call21(!(globalThis).[wk:0x10d]; objlit[SECONDARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x111]).[wk:0x112] | DUP() | desc-tpl | objlit[SUBHEADLINE](objlit[TextStyleFont](undefined)).[wk:0x115]
+  // stack@INIT-END: OP_60() | v06 | const[00031103] | v06 | num[2954102777] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'i' | 'n' | 'r' | 's' | 'c' | 'l' | str?flags=0x2 idx=17 | OP10() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[256].[wk:0x101] | const[258].[wk:0x103] | globalThis.[wk:0x104] | PUSH_I8().[wk:0x105] | call21(const[262].[wk:0x107]; const[264].[wk:0x109]).[wk:0x10a] | DUP() | desc-tpl | PUSH_I8().[wk:0x10b] | PUSH_I8().[wk:0x10c] | call21(!(globalThis).[wk:0x10d]; objlit[SECONDARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x111]).[wk:0x112] | DUP() | desc-tpl | objlit[SUBHEADLINE](objlit[TextStyleFont](undefined)).[wk:0x115]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xb5 OP_b5 [?]

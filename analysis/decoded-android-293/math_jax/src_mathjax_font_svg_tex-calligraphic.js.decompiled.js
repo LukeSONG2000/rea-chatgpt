@@ -304,8 +304,8 @@
   // op 0xa3 OP_A3 [?]
   // op 0xe8 OP_e8 [?]
   // op 0x3f OP_3f [?]
-  // op 0xbe OP_be [?]
-  locop 0xca(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xca(PUSH_I8())
   // op 0x3f OP_3f [?]
   // op 0x35 OP35 [?]
   // op 0x5e OP_5e [?]
@@ -327,9 +327,9 @@
   // op 0x3f OP_3f [?]
   // op 0xdb OP_db [?]
   // op 0xf9 OP_f9 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
-  EXPORTS.builtin#62390 (seq 15110) = OP_a1();  // OP_be()
+  EXPORTS.builtin#62390 (seq 15110) = OP_a1();  // PUSH_I8()
   // op 0x8d OP_8d [?]
   // op 0x97 OP_97 [?]
   // op 0x92 OP_92 [?]
@@ -357,7 +357,7 @@
   // op 0x7c OP_7c [?]
   // op 0x3f OP_3f [?]
   // op 0x78 OP_78 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x3f OP_3f [?]
   // op 0xb4 OP_b4 [?]
   // op 0xc8 PUSH_C8 [~]
@@ -427,7 +427,7 @@
   // op 0xd7 POP_D7 [?]
   jcc-0xeb → @1994
   // op 0x60 OP_60 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xe5 OP_e5 [?]
   // op 0xd0 OP_d0 [?]
   // op 0x7e OP_7e [?]
@@ -451,7 +451,7 @@
   // op 0xc8 PUSH_C8 [~]
   // op 0x3f OP_3f [?]
   …(pad)
-  // stack-tail: OP_85() | OP_e8() | OP_3f() | OP35() | OP_62() | f0(OP_1c()) | OP_92() | OP35() | v06 | PUSH_STR2() | !(!(!(!(!(!(OP_7c())))))) | OP_78() | OP_be() | OP_3f() | OP_b4() | OP_88() | CLASS_DEF_POP() | OP_3f() | OP_c0() | local[0] | OP_e6() | OP_3f() | OP_e6() | OP_a5() | OP_97() | OP_82() | OP_3f() | POP_D7() | OP_60() | call22(?) | OP_86() | OP_3f() | DECL_SLOT() | OP_3f() | OP_b4() | PUSH_C8() | globalThis | OP_3f()
+  // stack-tail: OP_85() | OP_e8() | OP_3f() | OP35() | OP_62() | f0(OP_1c()) | OP_92() | OP35() | v06 | PUSH_STR2() | !(!(!(!(!(!(OP_7c())))))) | OP_78() | PUSH_I8() | OP_3f() | OP_b4() | OP_88() | CLASS_DEF_POP() | OP_3f() | OP_c0() | local[0] | OP_e6() | OP_3f() | OP_e6() | OP_a5() | OP_97() | OP_82() | OP_3f() | POP_D7() | OP_60() | call22(?) | OP_86() | OP_3f() | DECL_SLOT() | OP_3f() | OP_b4() | PUSH_C8() | globalThis | OP_3f()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

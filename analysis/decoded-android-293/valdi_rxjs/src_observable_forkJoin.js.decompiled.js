@@ -111,7 +111,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe4 CLASS_DEF_POP [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x09 PUSH_D [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
@@ -127,7 +127,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x4c FN_PROLOGUE [~]
-  // stack@INIT-END: OP_44() | str?flags=0x3 idx=9 | const[0dd80304] | PUSH_D() | FN_PROLOGUE()
+  // stack@INIT-END: META_RECORD44() | str?flags=0x3 idx=9 | const[0dd80304] | PUSH_D() | FN_PROLOGUE()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

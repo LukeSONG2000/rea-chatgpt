@@ -2,8 +2,8 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0xbe OP_be [?]
-  // discard(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_I8())
 
   // ---- FUNCTION-UNIT: '50%' ----
   // op 0xb8 PUSH_WK2 [~]
@@ -38,10 +38,10 @@
   local[8] = f0(const[246]);
   local[9] = f0(const[247]);
   local[10] = f0(const[248]);
-  // op 0xbe OP_be [?]
-  local[11] = OP_be();
-  // op 0xbe OP_be [?]
-  local[12] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[11] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[12] = PUSH_I8();
   // op 0xba OP_ba [?]
   local[13] = OP_ba();
   // op 0x64 DECL_SLOT [~]
@@ -198,7 +198,7 @@
   // op 0x12 OP_12 [?]
   …(pad)
   // discard(OP_12())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().beginRenderWithStringKey(PUSH_STR2(), v06))
@@ -269,7 +269,7 @@
   // op 0xc6 PUSH_THIS [~]
   // discard(PUSH_THIS().renderHandle())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: ?.borderRadius | OP_be() | const[84131853] | load[aux08ca] | PUSH_STR2().endRender()
+  // stack@INIT-END: ?.borderRadius | PUSH_I8() | const[84131853] | load[aux08ca] | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   locop 0xcc(str?flags=0x22 idx=35)

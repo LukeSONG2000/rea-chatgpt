@@ -186,7 +186,7 @@
   // trailer 0xae
   // op 0x75 OP_75 [?]
   // discard(num[4])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc9 PUSH_C9 [~]
   // op 0x4a OP_4a [?]
@@ -220,7 +220,7 @@
   locop 0xcc(push0.builtin#92(param[0]).builtin#91(const[275]))
   // op 0x68 PUSH_STR2 [~]
   // discard(objlit[builtin#22](PUSH_STR2()).setProperty(param[1], const[274], undefined))
-  // stack@INIT-END: OP_75().items | OP_be() | str?flags=0x2 idx=48 | META_OP6C() | DECL_SLOT() | DECL_SLOT() | undefined | undefined.builtin#93(OP_33())
+  // stack@INIT-END: OP_75().items | PUSH_I8() | str?flags=0x2 idx=48 | META_OP6C() | DECL_SLOT() | DECL_SLOT() | undefined | undefined.builtin#93(OP_33())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

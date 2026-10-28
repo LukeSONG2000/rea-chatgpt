@@ -5,7 +5,7 @@
   // op 0x64 DECL_SLOT [~]
   …(pad)
   // op 0x07 PUSH_B [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x09 PUSH_D [~]
   // op 0xb0 OP_b0 [?]
   // op 0x05 PATCH_REF_LOAD [~]

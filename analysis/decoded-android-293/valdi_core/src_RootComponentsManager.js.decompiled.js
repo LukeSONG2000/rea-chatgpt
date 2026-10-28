@@ -351,7 +351,7 @@
   // op 0x2b OP_2b [?]
   // op 0x2d OP_2d [?]
   // op 0x3f OP_3f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @3487
   // discard(load[auxde11])
   // op 0xde CLOSURE_CTX_A [~]
@@ -369,7 +369,7 @@
   // op 0xef OP_ef [?]
   // discard(OP_ef())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0x2a idx=12 | globalThis | const[0200bb01].attributeChanged | LOCAL_OP2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | const[00b80301] | load[auxbc03] | str?flags=0xd idx=8 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[registerLogMetadataProvider](PUSH_STR2()) | const[298] | desc-tpl | param[0].[wk:0x119] | undefined.[wk:0x117] | param[1].[wk:0x11a] | OP_5e().[wk:0x11b] | OP_5e().[wk:0x11c] | OP_5e().[wk:0x11d] | undefined.[wk:0x12e] | FN_PROLOGUE() | str?flags=0x30 idx=19 | OP_9c() | const[02212b21] | OP_2b() | OP_2d() | OP_3f() | const[00000000] | num[4325380] | OP_be() | num[17025027] | load[auxca03] | num[247309] | PUSH_STR2().onDestroy()
+  // stack@INIT-END: str?flags=0x2a idx=12 | globalThis | const[0200bb01].attributeChanged | LOCAL_OP2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | const[00b80301] | load[auxbc03] | str?flags=0xd idx=8 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[registerLogMetadataProvider](PUSH_STR2()) | const[298] | desc-tpl | param[0].[wk:0x119] | undefined.[wk:0x117] | param[1].[wk:0x11a] | OP_5e().[wk:0x11b] | OP_5e().[wk:0x11c] | OP_5e().[wk:0x11d] | undefined.[wk:0x12e] | FN_PROLOGUE() | str?flags=0x30 idx=19 | OP_9c() | const[02212b21] | OP_2b() | OP_2d() | OP_3f() | const[00000000] | num[4325380] | PUSH_I8() | num[17025027] | load[auxca03] | num[247309] | PUSH_STR2().onDestroy()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x17 OP_17 [?]
@@ -552,7 +552,7 @@
   // op 0xd5 OP_d5 [?]
   …(pad)
   // discard(OP_d5())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0xdf CLOSURE_CTX_B [~]
@@ -565,7 +565,7 @@
   // op 0xd5 OP_d5 [?]
   locop 0xcc(PUSH_C9().createHandle(param[0], param[1], undefined, undefined, PUSH_EXPORTS(), OP_d5()))
   // op 0xc9 PUSH_C9 [~]
-  // stack@INIT-END: str?flags=0x6a idx=3.attributeChanged | OP_be() | const[0030c003] | const[0130c403] | const[02301000] | const[40c20306] | load[auxb203] | const[0308cd64] | num[91136] | DECL_SLOT() | objlit[getModuleLoader](PUSH_STR2()) | PUSH_C9().renderRoot(undefined, !(globalThis))
+  // stack@INIT-END: str?flags=0x6a idx=3.attributeChanged | PUSH_I8() | const[0030c003] | const[0130c403] | const[02301000] | const[40c20306] | load[auxb203] | const[0308cd64] | num[91136] | DECL_SLOT() | objlit[getModuleLoader](PUSH_STR2()) | PUSH_C9().renderRoot(undefined, !(globalThis))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x6a OP_6a [?]
@@ -772,7 +772,7 @@
   // stack@INIT-END: OP_6f()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x2f OP_2f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x6c META_OP6C [?]
   // op 0x6f OP_6f [?]
@@ -782,7 +782,7 @@
   // discard(param[0].respond(local[0]))
   // op 0x6b CLASS_DECL [~]
   // discard(CLASS_DECL())
-  // stack@INIT-END: OP_2f() | OP_be() | META_OP6C() | OP_6f() | DECL_SLOT()
+  // stack@INIT-END: OP_2f() | PUSH_I8() | META_OP6C() | OP_6f() | DECL_SLOT()
   // ===== 初始化段结束；其后为函数单元 =====
   local[5] = ?;
   // op 0x6f OP_6f [?]

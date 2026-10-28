@@ -75,7 +75,7 @@
   // stack@INIT-END: PUSH_C() | PUSH_E() | OP_1e() | OP_2b() | PUSH_E() | OP10() | const[00ec0102] | load[aux08ca] | OP_2b()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x68 PUSH_STR2 [~]
   // op 0xc6 PUSH_THIS [~]
   // trailer 0xae
@@ -98,7 +98,7 @@
   // op 0xb7 PUSH_WK1 [~]
   // op 0xa0 ADD [~]
   EXPORTS.frameCount (seq 0) = ADD();  // PUSH_C7()
-  // stack@INIT-END: OP_44() | FN_PROLOGUE()
+  // stack@INIT-END: META_RECORD44() | FN_PROLOGUE()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

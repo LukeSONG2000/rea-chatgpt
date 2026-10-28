@@ -38,18 +38,18 @@
   // trailer 0xae
   // op 0x18 TRIPLE_OP [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @338
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
-  // stack@INIT-END: TRIPLE_OP().builtin#16502 | !(f0(OP_be())) | OP_2f()
+  // stack@INIT-END: TRIPLE_OP().builtin#16502 | !(f0(PUSH_I8())) | OP_2f()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x39 OP_39 [?]
   …(pad)
   // discard(OP_39())
   // op 0x62 OP_62 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xaa OP_aa [?]
   …(pad)
@@ -99,7 +99,7 @@
   …(pad)
   jcc-0xec → @745
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xde CLOSURE_CTX_A [~]
   // op 0xef OP_ef [?]
@@ -131,7 +131,7 @@
   locop 0xcb(OP_53())
   // op 0x08 PUSH_C [~]
   …(pad)
-  // stack-tail: OP_62() | OP_aa() | num[243206] | const[00be0300] | const[00c00300] | const[00d40301] | OP_d8() | 'module' | str?flags=0x3 idx=1 | const[0dba0302] | objlit[startWorkerService](PUSH_STR2()) | objlit[DocumentStorageWorker](PUSH_STR2()) | PUSH_EXPORTS() | v06 | OP_71() | OP_2e() | str?flags=0xd idx=17 | PUSH_C() | OP_62() | OP_c0() | const[02010403] | str?flags=0xb6 idx=3 | OP_be() | const[0030c003] | const[0130bc03] | str?flags=0x1 idx=184 | load[auxba03] | objlit[startWorkerService](PUSH_STR2()) | objlit[DocumentStorageWorker](PUSH_STR2()) | v06 | v06 | OP_71() | OP_2e() | str?flags=0x1c idx=14 | PUSH_C() | PUSH_C() | v06
+  // stack-tail: OP_62() | OP_aa() | num[243206] | const[00be0300] | const[00c00300] | const[00d40301] | OP_d8() | 'module' | str?flags=0x3 idx=1 | const[0dba0302] | objlit[startWorkerService](PUSH_STR2()) | objlit[DocumentStorageWorker](PUSH_STR2()) | PUSH_EXPORTS() | v06 | OP_71() | OP_2e() | str?flags=0xd idx=17 | PUSH_C() | OP_62() | OP_c0() | const[02010403] | str?flags=0xb6 idx=3 | PUSH_I8() | const[0030c003] | const[0130bc03] | str?flags=0x1 idx=184 | load[auxba03] | objlit[startWorkerService](PUSH_STR2()) | objlit[DocumentStorageWorker](PUSH_STR2()) | v06 | v06 | OP_71() | OP_2e() | str?flags=0x1c idx=14 | PUSH_C() | PUSH_C() | v06
 
 // ---- 字符串表 ----
 // str[1] = 'require'

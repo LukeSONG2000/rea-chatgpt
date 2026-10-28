@@ -177,7 +177,7 @@
   // op 0x75 OP_75 [?]
   // op 0x30 OP30 [?]
   // op 0x30 OP30 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x0a PUSH_E [~]
   // op 0x07 PUSH_B [~]
@@ -188,7 +188,7 @@
   // op 0x5c OP_5c [?]
   // op 0x5d OP_5d [?]
   // op 0x2e OP_2e [?]
-  // stack@INIT-END: OP_5d() | OP_94() | const[02010043] | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(OP_ff(), OP_7f()) | … | … | OP_84() | num[3866625] | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(OP_ff(), OP_7f()) | … | OP_5a() | LOAD_61() | PUSH_E() | v06 | call25(fn:'builtin#262'; param[0]) | str?flags=0xd idx=1 | OP_34() | OP_5e() | call23(?) | push10791 | OP_2e() | OP_5e() | OP_a4() | const[0201004b] | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(OP_ff(), OP_7f()) | … | … | PUSH_D() | OP_5a() | OP_7c() | PUSH_E() | v06 | load[00] | PUSH_E() | OP_2a() | OP_75() | OP30() | OP_44() | PUSH_E() | PUSH_B() | LOCAL_OP2() | const[5e687474] | OP_5c() | OP_2e()
+  // stack@INIT-END: OP_5d() | OP_94() | const[02010043] | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(OP_ff(), OP_7f()) | … | … | OP_84() | num[3866625] | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(OP_ff(), OP_7f()) | … | OP_5a() | LOAD_61() | PUSH_E() | v06 | call25(fn:'builtin#262'; param[0]) | str?flags=0xd idx=1 | OP_34() | OP_5e() | call23(?) | push10791 | OP_2e() | OP_5e() | OP_a4() | const[0201004b] | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(OP_ff(), OP_7f()) | … | … | PUSH_D() | OP_5a() | OP_7c() | PUSH_E() | v06 | load[00] | PUSH_E() | OP_2a() | OP_75() | OP30() | META_RECORD44() | PUSH_E() | PUSH_B() | LOCAL_OP2() | const[5e687474] | OP_5c() | OP_2e()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x2a OP_2a [?]
   // op 0x3f OP_3f [?]

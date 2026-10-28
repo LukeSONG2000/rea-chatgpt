@@ -302,7 +302,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().builtin#66(param[0], undefined))
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   DECLARE-FUNCTION …
   …(pad)
   DECLARE-FUNCTION …

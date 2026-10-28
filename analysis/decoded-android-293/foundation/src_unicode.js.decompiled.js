@@ -861,7 +861,7 @@
   // op 0x33 OP_33 [?]
   // op 0x35 OP35 [?]
   // op 0x5b OP_5b [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x66 STR_OP [~]
   // op 0x75 OP_75 [?]
   // op 0x32 OP_32 [?]

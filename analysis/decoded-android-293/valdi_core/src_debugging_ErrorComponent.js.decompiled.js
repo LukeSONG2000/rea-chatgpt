@@ -34,19 +34,19 @@
   EXPORTS.ErrorComponent (seq 0) = v06;  // PUSH_EXPORTS()
   locop 0xca(f0(const[241]))
   locop 0xcb(objlit[jsx](undefined))
-  // op 0xbe OP_be [?]
-  locop 0xcc(const[253](OP_be(), push12, const[254]))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcc(const[253](PUSH_I8(), push12, const[254]))
   locop 0xcd(undefined.makeNodePrototype(const[255], v06, const[256]))
-  // op 0xbe OP_be [?]
-  local[4] = const[260](OP_be(), push6, const[261]);
+  // op 0xbe PUSH_I8 [~]
+  local[4] = const[260](PUSH_I8(), push6, const[261]);
   local[5] = const[259](globalThis, push4, const[262]);
-  // op 0xbe OP_be [?]
-  local[6] = const[247](OP_be(), push2, const[264]);
+  // op 0xbe PUSH_I8 [~]
+  local[6] = const[247](PUSH_I8(), push2, const[264]);
   local[7] = undefined.makeComponentPrototype(v06, const[266]);
-  // op 0xbe OP_be [?]
-  local[8] = const[267](OP_be(), push2, const[268]);
-  // op 0xbe OP_be [?]
-  local[9] = const[260](OP_be(), push4, const[270]);
+  // op 0xbe PUSH_I8 [~]
+  local[8] = const[267](PUSH_I8(), push2, const[268]);
+  // op 0xbe PUSH_I8 [~]
+  local[9] = const[260](PUSH_I8(), push4, const[270]);
   local[10] = undefined.makeNodePrototype(const[244], v06, const[271]);
   local[11] = const[259](globalThis, push2, const[272]);
   local[12] = f0(const[273]);

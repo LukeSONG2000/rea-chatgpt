@@ -97,8 +97,8 @@
   jcc-0xeb → @790
   // op 0x68 PUSH_STR2 [~]
   // op 0xbf OP_bf [?]
-  // op 0xbe OP_be [?]
-  locop 0xca(pool[153].min(OP_bf(), pool[153].max(OP_be(), param[1])))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xca(pool[153].min(OP_bf(), pool[153].max(PUSH_I8(), param[1])))
   // op 0x11 DUP [~]
   // trailer 0xae
   …(pad)
@@ -392,7 +392,7 @@
   // op 0x08 PUSH_C [~]
   // op 0x35 OP35 [?]
   // op 0x2b OP_2b [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x77 idx=0)
@@ -464,8 +464,8 @@
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @5022
   // discard(OP_b3())
-  // op 0xbe OP_be [?]
-  local[4] = OP_bf()(pool[153].max, PUSH_WK1()(pool[148], f0(OP_be())));
+  // op 0xbe PUSH_I8 [~]
+  local[4] = OP_bf()(pool[153].max, PUSH_WK1()(pool[148], f0(PUSH_I8())));
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @5084
@@ -533,7 +533,7 @@
   // op 0x0a PUSH_E [~]
   // op 0x20 OP_20 [?]
   // op 0x20 OP_20 [?]
-  // stack@INIT-END: str?flags=0x1f idx=10 | call25(fn:'splice'; param[0].replace(OP_33(), const[265]), const[263]) | str?flags=0x2b idx=1 | num[20186914] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | call25(fn:'splice'; param[0].replace(OP_33(), const[267]), const[266]) | str?flags=0x2f idx=1 | num[20186919] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | OP_d6() | str?flags=0x2 idx=3 | num[84137472] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x2 idx=2 | str?flags=0xc idx=1 | desc-tpl | const[64010064] | param[0].query | OP_6f() | OP_2f() | desc-tpl | objlit[builtin#54](param[1]).[wk:0x36] | objlit[type](param[1]).[wk:0x11b] | objlit[sql](param[1]).[wk:0x11c] | undefined.[wk:0x11d] | OP_2e() | OP_79() | OP30() | PUSH_THIS() | OP_d8() | 'exports' | const[01cf0404] | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x10 idx=1 | DECL_SLOT() | DECL_SLOT() | objlit[debugInfo](param[0]) | OP_8e() | desc-tpl | const[290].builtin#92(objlit[builtin#54](param[0])).[wk:0x123] | objlit[builtin#54](param[0]).[wk:0x36] | LOCAL_OP2().builtin#92(objlit[builtin#54](param[0]), const[292]).[wk:0x125] | const[294].[wk:0x127] | PUSH_B().[wk:0x128] | PUSH_B().[wk:0x129] | pool[148] | f0(objlit[schemaVersion](param[0])).[wk:0x12c] | OP_da() | str?flags=0x2 idx=2 | str?flags=0x0 idx=153 | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x5 idx=13 | str?flags=0xd idx=216 | const[64010064] | META_OP6C() | undefined | LT() | OP_2e() | CLOSURE_CTX_C() | OP_75() | FN_PROLOGUE() | OP_2e() | OP_85() | OP_dc() | str?flags=0x2 idx=1 | const[007b03b6] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x10 idx=1 | param[0].query | !(undefined) | OP_2f() | CLOSURE_CTX_A() | param[0] | OP_2e() | OP_62() | CLOSURE_CTX_A() | 'require' | str?flags=0x1 idx=172 | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x12 idx=1 | PUSH_B() | PUSH_D() | param[0] | str?flags=0xe idx=1 | pool[150] | desc-tpl | const[86].[wk:0x6c] | PUSH_STR2().[wk:0xff] | const[294] | push1.[wk:0x136] | OP_2e() | str?flags=0x71 idx=9 | OP35() | OP_44() | OP_62() | CLOSURE_CTX_C() | 'i' | PATCH_REF_LOAD() | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'n' | 'a' | OP_13() | str?flags=0xb idx=1 | PUSH_B() | PUSH_D() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[149] | undefined.startsWith(const[290]) | undefined.slice(OP_bd()) | !(undefined) | OP_2f() | pool[149] | !(undefined) | OP_2f() | OP_20()
+  // stack@INIT-END: str?flags=0x1f idx=10 | call25(fn:'splice'; param[0].replace(OP_33(), const[265]), const[263]) | str?flags=0x2b idx=1 | num[20186914] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | call25(fn:'splice'; param[0].replace(OP_33(), const[267]), const[266]) | str?flags=0x2f idx=1 | num[20186919] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | OP_d6() | str?flags=0x2 idx=3 | num[84137472] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x2 idx=2 | str?flags=0xc idx=1 | desc-tpl | const[64010064] | param[0].query | OP_6f() | OP_2f() | desc-tpl | objlit[builtin#54](param[1]).[wk:0x36] | objlit[type](param[1]).[wk:0x11b] | objlit[sql](param[1]).[wk:0x11c] | undefined.[wk:0x11d] | OP_2e() | OP_79() | OP30() | PUSH_THIS() | OP_d8() | 'exports' | const[01cf0404] | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x10 idx=1 | DECL_SLOT() | DECL_SLOT() | objlit[debugInfo](param[0]) | OP_8e() | desc-tpl | const[290].builtin#92(objlit[builtin#54](param[0])).[wk:0x123] | objlit[builtin#54](param[0]).[wk:0x36] | LOCAL_OP2().builtin#92(objlit[builtin#54](param[0]), const[292]).[wk:0x125] | const[294].[wk:0x127] | PUSH_B().[wk:0x128] | PUSH_B().[wk:0x129] | pool[148] | f0(objlit[schemaVersion](param[0])).[wk:0x12c] | OP_da() | str?flags=0x2 idx=2 | str?flags=0x0 idx=153 | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x5 idx=13 | str?flags=0xd idx=216 | const[64010064] | META_OP6C() | undefined | LT() | OP_2e() | CLOSURE_CTX_C() | OP_75() | FN_PROLOGUE() | OP_2e() | OP_85() | OP_dc() | str?flags=0x2 idx=1 | const[007b03b6] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x10 idx=1 | param[0].query | !(undefined) | OP_2f() | CLOSURE_CTX_A() | param[0] | OP_2e() | OP_62() | CLOSURE_CTX_A() | 'require' | str?flags=0x1 idx=172 | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x12 idx=1 | PUSH_B() | PUSH_D() | param[0] | str?flags=0xe idx=1 | pool[150] | desc-tpl | const[86].[wk:0x6c] | PUSH_STR2().[wk:0xff] | const[294] | push1.[wk:0x136] | OP_2e() | str?flags=0x71 idx=9 | OP35() | META_RECORD44() | OP_62() | CLOSURE_CTX_C() | 'i' | PATCH_REF_LOAD() | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'n' | 'a' | OP_13() | str?flags=0xb idx=1 | PUSH_B() | PUSH_D() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[149] | undefined.startsWith(const[290]) | undefined.slice(OP_bd()) | !(undefined) | OP_2f() | pool[149] | !(undefined) | OP_2f() | OP_20()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x20 OP_20 [?]
   // op 0x2f OP_2f [?]

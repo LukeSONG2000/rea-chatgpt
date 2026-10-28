@@ -73,10 +73,10 @@
   // op 0xbd OP_bd [?]
   EXPORTS.Member (seq 7) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Index (seq 8) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Call (seq 9) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // stack@INIT-END: FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
@@ -91,7 +91,7 @@
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Negate (seq 1) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // stack@INIT-END: FN_PROLOGUE() | FN_PROLOGUE()
@@ -122,22 +122,22 @@
   // op 0xbd OP_bd [?]
   EXPORTS.GreaterThanOrEqual (seq 7) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.In (seq 8) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Add (seq 9) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Subtract (seq 10) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Multiply (seq 11) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Divide (seq 12) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Modulo (seq 13) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // stack@INIT-END: FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()

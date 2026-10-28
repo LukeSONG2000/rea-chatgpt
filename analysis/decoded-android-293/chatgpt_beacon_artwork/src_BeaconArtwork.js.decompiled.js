@@ -63,17 +63,17 @@
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   local[13] = call21(const[264].[wk:0x10a]; !(PUSH_WK1()).[wk:0x10b]);
-  // op 0xbe OP_be [?]
-  local[14] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[14] = PUSH_I8();
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   local[15] = call21(!(globalThis).[wk:0x112]; !(PUSH_WK1()).[wk:0x10b]);
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
-  local[16] = call21(OP_be().[wk:0x111]; !(PUSH_WK1()).[wk:0x10b]);
-  // stack@INIT-END: OP_e8() | const[0e430601] | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 't' | 'e' | 'i' | 'o' | 'a' | str?flags=0x0 idx=0 | str?flags=0x2 idx=17 | const[030b70ca] | 'n' | 'l' | OP10() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | desc-tpl | const[248].[wk:0xf9] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DUP() | desc-tpl | const[262].[wk:0x107] | const[264].[wk:0x109] | DUP() | desc-tpl | const[262].[wk:0x107] | const[268].[wk:0x10d] | globalThis.[wk:0x10e] | globalThis.[wk:0x10f] | globalThis.[wk:0x110] | OP_be().[wk:0x111] | DUP() | desc-tpl | const[262].[wk:0x107] | const[268].[wk:0x10d] | globalThis.[wk:0x10e] | globalThis.[wk:0x10f] | globalThis.[wk:0x110]
+  local[16] = call21(PUSH_I8().[wk:0x111]; !(PUSH_WK1()).[wk:0x10b]);
+  // stack@INIT-END: OP_e8() | const[0e430601] | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 't' | 'e' | 'i' | 'o' | 'a' | str?flags=0x0 idx=0 | str?flags=0x2 idx=17 | const[030b70ca] | 'n' | 'l' | OP10() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | desc-tpl | const[248].[wk:0xf9] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DUP() | desc-tpl | const[262].[wk:0x107] | const[264].[wk:0x109] | DUP() | desc-tpl | const[262].[wk:0x107] | const[268].[wk:0x10d] | globalThis.[wk:0x10e] | globalThis.[wk:0x10f] | globalThis.[wk:0x110] | PUSH_I8().[wk:0x111] | DUP() | desc-tpl | const[262].[wk:0x107] | const[268].[wk:0x10d] | globalThis.[wk:0x10e] | globalThis.[wk:0x10f] | globalThis.[wk:0x110]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x87 OP_87 [?]

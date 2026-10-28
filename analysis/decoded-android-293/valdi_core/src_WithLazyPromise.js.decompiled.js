@@ -128,13 +128,13 @@
   // stack@INIT-END: ?.builtin#263 | PUSH_STR2().endComponent()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x11 DUP [~]
   jcc-0xec → @1486
   // discard(DUP())
   // op 0xc6 PUSH_THIS [~]
-  // stack@INIT-END: OP_44() | PUSH_THIS().setState | desc-tpl(param[0].[wk:0xf1])
+  // stack@INIT-END: META_RECORD44() | PUSH_THIS().setState | desc-tpl(param[0].[wk:0xf1])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x4c FN_PROLOGUE [~]

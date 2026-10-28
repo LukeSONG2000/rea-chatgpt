@@ -90,7 +90,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   jcc-0xeb → @536
@@ -148,7 +148,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x20 OP_20 [?]
   // op 0xc2 LOCAL_OP2 [?]
@@ -341,7 +341,7 @@
   // op 0xb5 OP_b5 [?]
   // trailer 0xae
   // op 0x30 OP30 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x72 OP_72 [?]
   …(pad)
   locop 0xca(desc-tpl)

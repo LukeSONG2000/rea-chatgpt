@@ -55,7 +55,7 @@
   // op 0x2b OP_2b [?]
   // op 0x3b OP_3b [?]
   // discard(call21(?))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
@@ -80,7 +80,7 @@
   // discard(PUSH_STR2().endRender())
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().endRender())
-  // stack@INIT-END: OP_3b() | push11061 | local[0].setAttributeStyle | OP_be() | META_OP6C()
+  // stack@INIT-END: OP_3b() | push11061 | local[0].setAttributeStyle | PUSH_I8() | META_OP6C()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc6 PUSH_THIS [~]
   // stack@INIT-END: PUSH_THIS().renderLatex()
@@ -96,7 +96,7 @@
   …(pad)
   locop 0xca(v06)
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @1563
   // discard(DUP())
@@ -121,7 +121,7 @@
   // discard(PUSH_STR2().setViewModelProperty(const[267], undefined))
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @2188
   // op 0xc7 PUSH_C7 [~]
   // op 0x11 DUP [~]
@@ -130,7 +130,7 @@
   // discard(OP_b3())
   jmp → @2189
   jmp → @2189
-  // discard(f0(OP_be())(objlit[onRenderFailure](v06), v06))
+  // discard(f0(PUSH_I8())(objlit[onRenderFailure](v06), v06))
   // op 0x68 PUSH_STR2 [~]
   // stack@INIT-END: OP_9f() | const[02005102].setAttributeStyle | load[auxc003] | PATCH_REF_LOAD() | objlit[isVersionAtLeast](PUSH_STR2()) | PUSH_STR2().setViewModelProperty | const[273] | objlit[isVersionAtLeast](PUSH_STR2()) | PUSH_STR2().endComponent()
   // ===== 初始化段结束；其后为函数单元 =====

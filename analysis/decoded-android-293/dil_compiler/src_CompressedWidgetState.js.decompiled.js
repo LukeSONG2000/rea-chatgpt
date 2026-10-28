@@ -59,7 +59,7 @@
   locop 0xca(objlit[Base64](PUSH_STR2()).toByteArray(objlit[__compressed](param[0])))
   locop 0xcb(v06)
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @647
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
@@ -107,7 +107,7 @@
   // discard(DUP())
   // trailer 0xae
   …(pad)
-  // stack-tail: 's' | OP_3a() | const[c2030100] | const[0401002e] | fn:'builtin#262' | str?flags=0xc6 idx=3 | PUSH_WK2() | 'u' | num[50576397] | load[auxc003] | PATCH_REF_LOAD() | !(f0(load[auxded2])) | OP_6f() | DECL_SLOT() | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | objlit[gunzipUtf8WithLimit](PUSH_STR2()) | str?flags=0x20 idx=1 | const[0]
+  // stack-tail: 's' | OP_3a() | const[c2030100] | const[0401002e] | fn:'builtin#262' | str?flags=0xc6 idx=3 | PUSH_WK2() | 'u' | num[50576397] | load[auxc003] | PATCH_REF_LOAD() | !(f0(load[auxded2])) | OP_6f() | DECL_SLOT() | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | objlit[gunzipUtf8WithLimit](PUSH_STR2()) | str?flags=0x20 idx=1 | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

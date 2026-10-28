@@ -200,7 +200,7 @@
   // op 0x0a PUSH_E [~]
   local[3] = const[ba030201];
   // op 0x09 PUSH_D [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   locop 0xca(const[6400000b])
   // op 0x64 DECL_SLOT [~]
   // op 0xde CLOSURE_CTX_A [~]
@@ -528,7 +528,7 @@
   …(pad)
   // op 0x20 OP_20 [?]
   …(pad)
-  // stack-tail: fn:'create' | OP30() | LOCAL_OP2() | str?flags=0x8 idx=1 | PUSH_E() | PUSH_D() | const[bc030509] | OP_be() | v06 | DECL_SLOT() | CLOSURE_CTX_A() | OP_81() | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x3 idx=0 | str?flags=0x4 idx=4 | str?flags=0x4 idx=5 | str?flags=0x8 idx=6 | str?flags=0x2 idx=3 | PUSH_C() | const[bc030509] | OP_ba() | str?flags=0x2 idx=1 | PUSH_E() | const[c4030901] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_B() | OP_81() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | v06 | OP_20() | PUSH_WK2() | 'require' | OP_20()
+  // stack-tail: fn:'create' | OP30() | LOCAL_OP2() | str?flags=0x8 idx=1 | PUSH_E() | PUSH_D() | const[bc030509] | PUSH_I8() | v06 | DECL_SLOT() | CLOSURE_CTX_A() | OP_81() | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x3 idx=0 | str?flags=0x4 idx=4 | str?flags=0x4 idx=5 | str?flags=0x8 idx=6 | str?flags=0x2 idx=3 | PUSH_C() | const[bc030509] | OP_ba() | str?flags=0x2 idx=1 | PUSH_E() | const[c4030901] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_B() | OP_81() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | v06 | OP_20() | PUSH_WK2() | 'require' | OP_20()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

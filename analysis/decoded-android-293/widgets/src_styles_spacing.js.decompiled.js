@@ -36,16 +36,16 @@
   // op 0xba OP_ba [?]
   EXPORTS.XS (seq 1) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.SM (seq 2) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.MD (seq 3) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.LG (seq 4) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.XL (seq 5) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // stack@INIT-END: OP_77() | const[24576000] | globalThis | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()

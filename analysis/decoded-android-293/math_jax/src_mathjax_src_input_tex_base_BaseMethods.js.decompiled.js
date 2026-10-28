@@ -913,7 +913,7 @@
   // op 0xbd OP_bd [?]
   …(pad)
   // discard(const[02010000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.style (seq 0) = PUSH_EXPORTS();  // objlit[env](const[00d24135])
@@ -921,7 +921,7 @@
   EXPORTS.level (seq 1) = OP_5e();  // objlit[env](objlit[builtin#53](param[0]))
   // op 0xd5 OP_d5 [?]
   // op 0x5e OP_5e [?]
-  // stack@INIT-END: str?flags=0x83 idx=1 | OP_bd().href | OP_be() | param[0].Push | objlit[itemFactory](param[0]).create(const[264]).setProperty | const[434](desc-tpl(OP_d5().[wk:0x1b3], OP_5e().[wk:0x1b4]))
+  // stack@INIT-END: str?flags=0x83 idx=1 | OP_bd().href | PUSH_I8() | param[0].Push | objlit[itemFactory](param[0]).create(const[264]).setProperty | const[434](desc-tpl(OP_d5().[wk:0x1b3], OP_5e().[wk:0x1b4]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -937,14 +937,14 @@
   // op 0xe1 CLOSURE_CTX_D [~]
   …(pad)
   // discard(const[02da2101])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   locop 0xca(const[440](push0, desc-tpl, objlit[em](PUSH_STR2()), f0(PUSH_EXPORTS()).[wk:0x169]))
   locop 0xcb(const[441](undefined, push1, desc-tpl, globalThis.[wk:0x1b4]))
-  // stack@INIT-END: str?flags=0x8c idx=1 | CLOSURE_CTX_D().href | OP_be() | const[0130cc03] | desc-tpl | load[aux6401] | DECL_SLOT() | param[0].create | const[365] | param[0].create | const[365] | param[0].Push(undefined)
+  // stack@INIT-END: str?flags=0x8c idx=1 | CLOSURE_CTX_D().href | PUSH_I8() | const[0130cc03] | desc-tpl | load[aux6401] | DECL_SLOT() | param[0].create | const[365] | param[0].create | const[365] | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xf3 OP_f3 [?]
@@ -1154,7 +1154,7 @@
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
   // discard(num[135718])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   locop 0xca(objlit[itemFactory](param[0]).create(const[397]).setProperty(const[54], objlit[currentCS](param[0])))
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -1195,7 +1195,7 @@
   jcc-0xeb → @17323
   // discard(DUP())
   // discard(undefined.setProperty(const[473], globalThis))
-  // stack@INIT-END: OP_47() | num[31391757] | num[33663488] | PUSH_WK2() | const[02009101] | num[60358694].href | OP_be() | const[00306400] | OP_d5() | undefined.setProperty(const[472], OP_d5()) | OP_ee() | param[1].match(OP_33()) | undefined.setProperty(const[473], param[0].GetDimen(param[1])) | param[0].Push(undefined)
+  // stack@INIT-END: OP_47() | num[31391757] | num[33663488] | PUSH_WK2() | const[02009101] | num[60358694].href | PUSH_I8() | const[00306400] | OP_d5() | undefined.setProperty(const[472], OP_d5()) | OP_ee() | param[1].match(OP_33()) | undefined.setProperty(const[473], param[0].GetDimen(param[1])) | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1295,14 +1295,14 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0xdb idx=1)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(param[0].ParseArg(param[1]))
   locop 0xcb(param[0].ParseArg(param[1]))
   locop 0xcc(const[480](undefined, undefined, push2))
-  // stack@INIT-END: call25(call21(DUP(); ADD(), objlit[env](objlit[builtin#53](CLOSURE_CTX_B())), objlit[configuration](CLOSURE_CTX_B())).mml; ).href | OP_be() | const[02306402] | DECL_SLOT() | DECL_SLOT() | param[0].create | const[365] | param[0].Push(undefined)
+  // stack@INIT-END: call25(call21(DUP(); ADD(), objlit[env](objlit[builtin#53](CLOSURE_CTX_B())), objlit[configuration](CLOSURE_CTX_B())).mml; ).href | PUSH_I8() | const[02306402] | DECL_SLOT() | DECL_SLOT() | param[0].create | const[365] | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1344,7 +1344,7 @@
   …(pad)
   // op 0x7c OP_7c [?]
   // discard(OP_7c())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x12 OP_12 [?]
   locop 0xca(param[0].GetUpTo(param[1], const[495]))
   locop 0xcb(param[0].ParseArg(param[1]))
@@ -1378,9 +1378,9 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0xa0 ADD [~]
   // op 0x11 DUP [~]
@@ -1542,12 +1542,12 @@
   // op 0xd5 OP_d5 [?]
   // op 0x5e OP_5e [?]
   // op 0xa0 ADD [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0xa0 ADD [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0xd5 OP_d5 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   locop 0xca(objlit[UnitUtil](PUSH_STR2()).em(OP_9e()).[wk:0x204])
   locop 0xcb(param[0].GetBrackets(param[1]))
@@ -1895,7 +1895,7 @@
   // op 0xba OP_ba [?]
   …(pad)
   // discard(num[514])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -1909,7 +1909,7 @@
   locop 0xcd(OP_f1())
   local[4] = undefined(desc-tpl, undefined.[wk:0x169], const[448].[wk:0x217], undefined.[wk:0x215]);
   // discard(undefined.setProperty(const[536], undefined))
-  // stack@INIT-END: str?flags=0xe5 idx=2 | OP_ba().href | OP_be() | const[0230c003] | const[0330c403] | const[0430c203] | v06 | DUP() | const[64040064] | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_B() | undefined | param[0].create | const[365] | const[366] | param[0].Push(undefined)
+  // stack@INIT-END: str?flags=0xe5 idx=2 | OP_ba().href | PUSH_I8() | const[0230c003] | const[0330c403] | const[0430c203] | v06 | DUP() | const[64040064] | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_B() | undefined | param[0].create | const[365] | const[366] | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -2699,7 +2699,7 @@
   // op 0x70 TRY_REGION [~]
   …(pad)
   // discard(TRY_REGION())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   locop 0xca(param[0].GetDimen(param[1]).[wk:0x206])
@@ -2714,7 +2714,7 @@
   EXPORTS.mathbackground (seq 0) = …;  // …
   // discard(pair(undefined, const[595]))
   locop 0xcb(param[0].create(const[365], const[440], push0, undefined))
-  // stack@INIT-END: str?flags=0xe7 idx=3.href | OP_be() | const[01306401] | DECL_SLOT() | desc-tpl | param[0].GetDimen(param[1]).[wk:0x169] | param[0].GetDimen(param[1]).[wk:0x16b] | param[0].Push(undefined)
+  // stack@INIT-END: str?flags=0xe7 idx=3.href | PUSH_I8() | const[01306401] | DECL_SLOT() | desc-tpl | param[0].GetDimen(param[1]).[wk:0x169] | param[0].GetDimen(param[1]).[wk:0x16b] | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x08 PUSH_C [~]
@@ -2773,7 +2773,7 @@
   // op 0x0a PUSH_E [~]
   …(pad)
   // discard(PUSH_E())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x0f OP_0f [?]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -2792,7 +2792,7 @@
   locop 0xcc(undefined.[wk:0x257](!(globalThis).[wk:0x258], !(globalThis).[wk:0x175], !(globalThis).[wk:0x259], undefined))
   // op 0xd4 PUSH_EXPORTS [✓]
   locop 0xcd(const[300](undefined, push1, desc-tpl, PUSH_EXPORTS().[wk:0x178]))
-  // stack@INIT-END: OP_72() | num[37552151] | OP_e7() | num[67619586] | OP_5e() | OP_36() | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD().href | OP_be() | const[0030c003] | const[0130c203] | OP_0f() | load[aux6403] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[149] | param[0].create | const[371] | const[372] | desc-tpl | undefined.[wk:0x256] | param[0].create | const[365] | param[0].Push(undefined)
+  // stack@INIT-END: OP_72() | num[37552151] | OP_e7() | num[67619586] | OP_5e() | OP_36() | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD().href | PUSH_I8() | const[0030c003] | const[0130c203] | OP_0f() | load[aux6403] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[149] | param[0].create | const[371] | const[372] | desc-tpl | undefined.[wk:0x256] | param[0].create | const[365] | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -2902,7 +2902,7 @@
   …(pad)
   // op 0x72 OP_72 [?]
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -2924,7 +2924,7 @@
   // discard(STR_OP())
   // op 0x68 PUSH_STR2 [~]
   locop 0xcd(param[0].create(const[365](const[605], undefined, desc-tpl, const[606].[wk:0x25f]), push1, desc-tpl, objlit[ORD](objlit[TEXCLASS](PUSH_STR2())).[wk:0x178]))
-  // stack@INIT-END: OP_72().href | OP_be() | const[0220c003] | const[0330c203] | v06 | load[auxd003] | load[aux0dc6] | str?flags=0x8 idx=13 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[0].create | const[365] | const[366] | undefined | desc-tpl | undefined.[wk:0x169] | objlit[lookup](PUSH_STR2()) | undefined(desc-tpl, const[590].[wk:0xe3], const[591].[wk:0xdd], OP_f2().[wk:0x261]) | param[0].create | const[365] | const[300] | param[0].Push(undefined)
+  // stack@INIT-END: OP_72().href | PUSH_I8() | const[0220c003] | const[0330c203] | v06 | load[auxd003] | load[aux0dc6] | str?flags=0x8 idx=13 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[0].create | const[365] | const[366] | undefined | desc-tpl | undefined.[wk:0x169] | objlit[lookup](PUSH_STR2()) | undefined(desc-tpl, const[590].[wk:0xe3], const[591].[wk:0xdd], OP_f2().[wk:0x261]) | param[0].create | const[365] | const[300] | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -3380,7 +3380,7 @@
   // op 0xff OP_ff [?]
   // op 0x0f OP_0f [?]
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -3460,7 +3460,7 @@
   // discard(DUP())
   // op 0x68 PUSH_STR2 [~]
   // discard(objlit[builtin#22](PUSH_STR2()).setAttribute(undefined, const[646], undefined))
-  // stack@INIT-END: OP_40() | num[3087009031] | OP_20() | OP_be() | const[0120c203] | const[0220c603] | num[62398464] | const[62533641] | const[62926853] | const[63451142] | num[63582212] | num[63184904] | PUSH_B() | load[auxbc03] | str?flags=0xd idx=184 | load[auxc003] | objlit[UnitUtil](PUSH_STR2()).matchDimen(undefined) | undefined | !(undefined) | OP_2f() | param[0].Push | objlit[itemFactory](param[0]).create(const[548]).setProperties | desc-tpl | OP_aa() | undefined.addRowSpacing(undefined) | OP_ee() | param[0].create | param[0].Push(undefined)
+  // stack@INIT-END: OP_40() | num[3087009031] | OP_20() | PUSH_I8() | const[0120c203] | const[0220c603] | num[62398464] | const[62533641] | const[62926853] | const[63451142] | num[63582212] | num[63184904] | PUSH_B() | load[auxbc03] | str?flags=0xd idx=184 | load[auxc003] | objlit[UnitUtil](PUSH_STR2()).matchDimen(undefined) | undefined | !(undefined) | OP_2f() | param[0].Push | objlit[itemFactory](param[0]).create(const[548]).setProperties | desc-tpl | OP_aa() | undefined.addRowSpacing(undefined) | OP_ee() | param[0].create | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -3641,7 +3641,7 @@
   // op 0xff OP_ff [?]
   …(pad)
   // op 0x0a PUSH_E [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   …(pad)
@@ -3865,7 +3865,7 @@
   jcc-0xeb → @52087
   // discard(OP_84())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: str?flags=0xa4 idx=5 | PUSH_THIS() | DECL_SLOT() | PUSH_EXPORTS() | OP_78() | PUSH_B() | const[872897628] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[5c000c00] | PUSH_E() | const[0000000e].href | OP_be() | const[00c00300] | const[00c20300] | const[00c40300] | const[00c60300] | const[00c80301] | const[617] | undefined | desc-tpl | FN_PROLOGUE() | const[629] | OP_5e() | pair(objlit[arraydef](undefined), !(globalThis)) | objlit[arraydef](undefined) | OP_d0() | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=0 | str?flags=0x2 idx=4 | str?flags=0x13 idx=13 | v06 | load[aux6402] | DECL_SLOT() | DECL_SLOT() | OP_88().href | OP_c0() | const[0230c203] | const[0330c603] | const[0430c803] | const[0530ca03] | const[0630bc03] | const[63188999] | const[63189000] | PUSH_B() | load[auxbc03] | str?flags=0xd idx=100 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | !(OP_4a()) | OP_2f() | undefined | !(undefined.match(OP_33())) | PUSH_WK1() | DECL_SLOT() | DECL_SLOT() | OP_87() | param[0].Push(objlit[itemFactory](param[0]).create(const[441], undefined, param[1].getName()))
+  // stack@INIT-END: str?flags=0xa4 idx=5 | PUSH_THIS() | DECL_SLOT() | PUSH_EXPORTS() | OP_78() | PUSH_B() | const[872897628] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[5c000c00] | PUSH_E() | const[0000000e].href | PUSH_I8() | const[00c00300] | const[00c20300] | const[00c40300] | const[00c60300] | const[00c80301] | const[617] | undefined | desc-tpl | FN_PROLOGUE() | const[629] | OP_5e() | pair(objlit[arraydef](undefined), !(globalThis)) | objlit[arraydef](undefined) | OP_d0() | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=0 | str?flags=0x2 idx=4 | str?flags=0x13 idx=13 | v06 | load[aux6402] | DECL_SLOT() | DECL_SLOT() | OP_88().href | OP_c0() | const[0230c203] | const[0330c603] | const[0430c803] | const[0530ca03] | const[0630bc03] | const[63188999] | const[63189000] | PUSH_B() | load[auxbc03] | str?flags=0xd idx=100 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | !(OP_4a()) | OP_2f() | undefined | !(undefined.match(OP_33())) | PUSH_WK1() | DECL_SLOT() | DECL_SLOT() | OP_87() | param[0].Push(objlit[itemFactory](param[0]).create(const[441], undefined, param[1].getName()))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -3935,7 +3935,7 @@
   // trailer 0xae
   …(pad)
   // discard(const[02020000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   locop 0xca(OP30())
@@ -4034,7 +4034,7 @@
   // op 0xff OP_ff [?]
   …(pad)
   // op 0x0a PUSH_E [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0xdc OP_dc [?]
@@ -4063,7 +4063,7 @@
   …(pad)
   // discard(const[02010000])
   …(pad)
-  // stack@INIT-END: str?flags=0xc2 idx=5 | param[0] | const[0200c302] | OP_2a() | PUSH_C() | OP_2b() | OP_33() | OP_7d() | num[16128] | PUSH_C() | v06 | OP_ff() | desc-tpl | call25(PATCH_REF_LOAD(); ) | desc-tpl | const[1c100000] | const[00000003] | OP_72() | PUSH_E() | load[01] | v06 | OP_40() | OP_20() | PUSH_WK2() | 'require' | 'module' | 'exports' | str?flags=0x6 idx=13 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | call25(objlit[itemFactory](param[0]).create(const[697], PUSH_EXPORTS()).setProperty; const[54], param[1].getName()) | str?flags=0xd1 idx=5 | globalThis.href | OP_be() | const[00c00300] | const[00c40300] | const[00c60301] | 'module' | DUP() | const[64020064] | const[00640000] | const[698] | const[699] | OP_5f() | CLOSURE_CTX_B() | OP_5f() | undefined | desc-tpl | !(globalThis).[wk:0x1b3] | OP_5e().[wk:0x276] | const[623].[wk:0x270] | num[117590016] | OP_5d() | const[01002300] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | const[1644167168] | OP_ff() | load[00] | PUSH_E() | PUSH_B() | num[20186988] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[6c000c00] | PUSH_E() | PUSH_B() | num[20186994] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[72000c00] | PUSH_E() | PUSH_B() | num[20186979] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[63000c00] | PUSH_E() | const[0000000e].href | OP_be() | const[00c00300] | const[00c40300] | const[00c60301] | OP_dc() | str?flags=0x13 idx=13 | v06 | load[aux6401] | DECL_SLOT() | const[706] | call25(objlit[ParseUtil](PUSH_STR2()).setArrayAlign; undefined, undefined, param[0]) | OP_8c().href.notag()
+  // stack@INIT-END: str?flags=0xc2 idx=5 | param[0] | const[0200c302] | OP_2a() | PUSH_C() | OP_2b() | OP_33() | OP_7d() | num[16128] | PUSH_C() | v06 | OP_ff() | desc-tpl | call25(PATCH_REF_LOAD(); ) | desc-tpl | const[1c100000] | const[00000003] | OP_72() | PUSH_E() | load[01] | v06 | OP_40() | OP_20() | PUSH_WK2() | 'require' | 'module' | 'exports' | str?flags=0x6 idx=13 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | call25(objlit[itemFactory](param[0]).create(const[697], PUSH_EXPORTS()).setProperty; const[54], param[1].getName()) | str?flags=0xd1 idx=5 | globalThis.href | PUSH_I8() | const[00c00300] | const[00c40300] | const[00c60301] | 'module' | DUP() | const[64020064] | const[00640000] | const[698] | const[699] | OP_5f() | CLOSURE_CTX_B() | OP_5f() | undefined | desc-tpl | !(globalThis).[wk:0x1b3] | OP_5e().[wk:0x276] | const[623].[wk:0x270] | num[117590016] | OP_5d() | const[01002300] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | const[1644167168] | OP_ff() | load[00] | PUSH_E() | PUSH_B() | num[20186988] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[6c000c00] | PUSH_E() | PUSH_B() | num[20186994] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[72000c00] | PUSH_E() | PUSH_B() | num[20186979] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[63000c00] | PUSH_E() | const[0000000e].href | PUSH_I8() | const[00c00300] | const[00c40300] | const[00c60301] | OP_dc() | str?flags=0x13 idx=13 | v06 | load[aux6401] | DECL_SLOT() | const[706] | call25(objlit[ParseUtil](PUSH_STR2()).setArrayAlign; undefined, undefined, param[0]) | OP_8c().href.notag()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -4104,10 +4104,10 @@
   …(pad)
   // op 0x53 OP_53 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // discard(num[17068032])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x0a PUSH_E [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -4146,7 +4146,7 @@
   // op 0xc2 LOCAL_OP2 [?]
   jmp → @56163
   locop 0xcd(param[0](pool[146].isArray(undefined)(undefined.builtin#91(LOCAL_OP2()), undefined), desc-tpl, objlit[tags](param[0]).formatUrl(objlit[id](undefined), objlit[baseURL](objlit[options](param[0]))).[wk:0x107], const[726].[wk:0x1e]))
-  // stack@INIT-END: OP_53() | num[33659392] | OP_be().href | OP_be() | const[0120c003] | const[0220c403] | const[0330ca03] | PUSH_E() | load[auxc203] | v06 | load[aux6403] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[0].create | const[365] | const[574] | objlit[ParseUtil](PUSH_STR2()).internalMath | param[0].Push(undefined)
+  // stack@INIT-END: OP_53() | num[33659392] | PUSH_I8().href | PUSH_I8() | const[0120c003] | const[0220c403] | const[0330ca03] | PUSH_E() | load[auxc203] | v06 | load[aux6403] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[0].create | const[365] | const[574] | objlit[ParseUtil](PUSH_STR2()).internalMath | param[0].Push(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
@@ -4156,7 +4156,7 @@
   // op 0xd1 OP_d1 [?]
   …(pad)
   // discard(num[30086965])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0xba OP_ba [?]
@@ -4194,12 +4194,12 @@
   EXPORTS.builtin#72 (seq 0) = objlit[ParseUtil](PUSH_STR2()).addArgs(param[0], PUSH_EXPORTS(), objlit[builtin#72](param[0]).slice(objlit[i](param[0])));  // param[0]
   EXPORTS.i (seq 1) = globalThis;  // param[0]
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0xf1 idx=5 | OP_93() | const[0200ad01] | OP_d1() | const[0200b201].href | OP_be() | const[00c00303] | OP30() | OP_ba() | str?flags=0x6 idx=1(str?flags=0x6 idx=13) | DECL_SLOT() | OP_ad() | DECL_SLOT() | DECL_SLOT() | LT() | OP_d8() | objlit[ParseUtil](PUSH_STR2()).checkMaxMacros(param[0])
+  // stack@INIT-END: str?flags=0xf1 idx=5 | OP_93() | const[0200ad01] | OP_d1() | const[0200b201].href | PUSH_I8() | const[00c00303] | OP30() | OP_ba() | str?flags=0x6 idx=1(str?flags=0x6 idx=13) | DECL_SLOT() | OP_ad() | DECL_SLOT() | DECL_SLOT() | LT() | OP_d8() | objlit[ParseUtil](PUSH_STR2()).checkMaxMacros(param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x30 OP30 [?]
   // op 0x4e OP_4e [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -4208,7 +4208,7 @@
   locop 0xcb(param[0].ParseArg(param[1]))
   locop 0xcc(param[0].ParseArg(param[1]))
   locop 0xcd(param[0].ParseArg(param[1]))
-  // stack@INIT-END: OP_4e() | const[33722368] | num[234881024].href | OP_be() | const[0230c003] | const[03306403] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[0].Push | param[0].create | const[365] | const[343] | undefined(undefined(undefined, undefined, push4))
+  // stack@INIT-END: OP_4e() | const[33722368] | num[234881024].href | PUSH_I8() | const[0230c003] | const[03306403] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[0].Push | param[0].create | const[365] | const[343] | undefined(undefined(undefined, undefined, push4))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

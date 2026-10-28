@@ -208,7 +208,7 @@
   // trailer 0xae
   // op 0x70 TRY_REGION [~]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xd1 OP_d1 [?]
   …(pad)
   // stack@INIT-END: str?flags=0x18 idx=47 | OP_d1() | const[02006b04] | const[234881024].builtin#263()

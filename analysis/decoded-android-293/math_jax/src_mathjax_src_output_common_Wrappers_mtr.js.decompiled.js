@@ -29,7 +29,7 @@
   // op 0x08 PUSH_C [~]
   // op 0x8a OP_8a [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -202,7 +202,7 @@
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: 'CommonMlabeledtrMixin' | push134 | PUSH_C() | OP_8a() | const[720e4306] | const[b8030102] | const[0301084f] | str?flags=0xb8 idx=3 | OP_be() | OP_2d() | PUSH_C() | call25(OP10().builtin#263.builtin#263.map; local[0]) | OP_20() | OP_ba() | str?flags=0x2 idx=0 | str?flags=0x2 idx=2 | str?flags=0x3 idx=7 | str?flags=0x4 idx=4 | str?flags=0x2 idx=3 | str?flags=0x2 idx=6 | str?flags=0x6 idx=7 | str?flags=0x6 idx=8 | str?flags=0x6 idx=9 | str?flags=0x7 idx=10 | str?flags=0x8 idx=11 | str?flags=0x8 idx=12 | str?flags=0xa idx=13 | str?flags=0xa idx=14 | str?flags=0xc idx=7 | str?flags=0xd idx=16 | const[00b60300] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_87() | META_OP6C() | META_OP6C() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | OP_87() | undefined | undefined | OP_87()
+  // stack@INIT-END: 'CommonMlabeledtrMixin' | push134 | PUSH_C() | OP_8a() | const[720e4306] | const[b8030102] | const[0301084f] | str?flags=0xb8 idx=3 | PUSH_I8() | OP_2d() | PUSH_C() | call25(OP10().builtin#263.builtin#263.map; local[0]) | OP_20() | OP_ba() | str?flags=0x2 idx=0 | str?flags=0x2 idx=2 | str?flags=0x3 idx=7 | str?flags=0x4 idx=4 | str?flags=0x2 idx=3 | str?flags=0x2 idx=6 | str?flags=0x6 idx=7 | str?flags=0x6 idx=8 | str?flags=0x6 idx=9 | str?flags=0x7 idx=10 | str?flags=0x8 idx=11 | str?flags=0x8 idx=12 | str?flags=0xa idx=13 | str?flags=0xa idx=14 | str?flags=0xc idx=7 | str?flags=0xd idx=16 | const[00b60300] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_87() | META_OP6C() | META_OP6C() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | OP_87() | undefined | undefined | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x97 OP_97 [?]

@@ -443,7 +443,7 @@
   // op 0x51 OP_51 [?]
   …(pad)
   // discard(num[155648])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xde CLOSURE_CTX_A [~]
   locop 0xca(f0(param[0]))
@@ -514,7 +514,7 @@
   // op 0xde CLOSURE_CTX_A [~]
   locop 0xca(f0(param[0]))
   // op 0xc7 PUSH_C7 [~]
-  // stack@INIT-END: v06 | META_OP6C() | DECL_SLOT() | DECL_SLOT() | param[1] | undefined | PUSH_WK1() | objlit[builtin#137](undefined) | objlit[sourceMapLineOffset](v06) | OP_74() | num[33661440] | CLOSURE_CTX_C() | num[234881024].. | const[29425665] | v06 | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x3 idx=3 | const[00be0304] | const[08c40464] | num[91136] | DECL_SLOT() | OP_51().. | OP_be() | str?flags=0x3 idx=48 | const[00be0304] | const[08c40464] | num[91136] | DECL_SLOT() | OP_51().. | str?flags=0x4 idx=1 | DECL_SLOT().. | const[00be0304] | const[08cb6400] | OP_13() | OP_72() | OP_71() | str?flags=0x60 idx=7.. | const[1691027457] | CLOSURE_CTX_A() | PUSH_C7().doPreload(objlit[absolutePath](undefined), globalThis, param[1], desc-tpl)
+  // stack@INIT-END: v06 | META_OP6C() | DECL_SLOT() | DECL_SLOT() | param[1] | undefined | PUSH_WK1() | objlit[builtin#137](undefined) | objlit[sourceMapLineOffset](v06) | OP_74() | num[33661440] | CLOSURE_CTX_C() | num[234881024].. | const[29425665] | v06 | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | str?flags=0x3 idx=3 | const[00be0304] | const[08c40464] | num[91136] | DECL_SLOT() | OP_51().. | PUSH_I8() | str?flags=0x3 idx=48 | const[00be0304] | const[08c40464] | num[91136] | DECL_SLOT() | OP_51().. | str?flags=0x4 idx=1 | DECL_SLOT().. | const[00be0304] | const[08cb6400] | OP_13() | OP_72() | OP_71() | str?flags=0x60 idx=7.. | const[1691027457] | CLOSURE_CTX_A() | PUSH_C7().doPreload(objlit[absolutePath](undefined), globalThis, param[1], desc-tpl)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1102,7 +1102,7 @@
   // trailer 0xae
   // op 0x1c OP_1c [?]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xba OP_ba [?]
   …(pad)
@@ -1222,7 +1222,7 @@
   // op 0x8e OP_8e [?]
   …(pad)
   // op 0x82 OP_82 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x08 PUSH_C [~]
   local[8] = PUSH_C();
   // op 0x64 DECL_SLOT [~]
@@ -1260,7 +1260,7 @@
   // op 0x6c META_OP6C [?]
   // op 0x2b OP_2b [?]
   // op 0x12 OP_12 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x10 OP10 [?]
   // op 0x08 PUSH_C [~]
@@ -1385,7 +1385,7 @@
   // discard(num[0])
 
   // ---- FUNCTION-UNIT: 'push' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x09 PUSH_D [~]
   // op 0x68 PUSH_STR2 [~]
@@ -1395,7 +1395,7 @@
   // op 0x5e OP_5e [?]
   // trailer 0xae
   …(pad)
-  // stack-tail: OP_44() | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x7 idx=2 | str?flags=0xb idx=2 | const[0008c404] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | META_OP6C() | META_OP6C() | objlit[commonJsCompatible](LOAD_M3()) | call25(undefined.lazyExports; ) | desc-tpl | param[0].[wk:0x12e] | v06.[wk:0x11f] | v06.[wk:0xda] | v06.[wk:0x124] | globalThis.[wk:0x89] | desc-tpl.[wk:0x112] | OP_84() | OP_82() | const[04b70808] | call21(?) | call21(?) | OP_8e() | OP_82() | const[04bc008b] | const[0230490d] | str?flags=0x0 idx=0.. | OP_be() | const[0370c003] | const[0470c203] | const[0560ca03] | const[0660de04] | const[07701000] | const[40c40307] | const[c6030a09] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | call23(undefined; ) | desc-tpl | undefined.[wk:0xda] | undefined.[wk:0x12b] | globalThis.[wk:0x122] | objlit[commonJsCompatible](LOAD_M3()) | DUP() | undefined | META_OP6C() | OP_44() | OP10() | PUSH_C() | const[b803000d] | OP_bc() | str?flags=0x2 idx=13 | const[50576909] | load[auxc603] | const[08c20305] | PUSH_D() | META_OP6C() | CLOSURE_CTX_C() | OP_6f() | DECL_SLOT() | undefined | OP_6f() | OP_2f() | OP_71() | OP_3a() | OP_f4() | PATCH_REF_LOAD().. | PUSH_D().. | PUSH_B() | load[auxc203] | FN_PROLOGUE() | str?flags=0xae idx=2 | num[234881024].... | LOCAL_OP2() | 'require' | str?flags=0x0 idx=0 | str?flags=0x10 idx=0 | const[00640000] | CLOSURE_CTX_A() | param[0] | OP_4a() | CLOSURE_CTX_B() | CLOSURE_CTX_B() | call25(CLOSURE_CTX_C().doImport; undefined, undefined, !(!(param[1])), !(!(PUSH_EXPORTS()))) | str?flags=0xb2 idx=2 | fn:'push' | OP_be() | const[00c8030d] | PUSH_D() | str?flags=0xb9 idx=2 | const[0]
+  // stack-tail: META_RECORD44() | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x7 idx=2 | str?flags=0xb idx=2 | const[0008c404] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | META_OP6C() | META_OP6C() | objlit[commonJsCompatible](LOAD_M3()) | call25(undefined.lazyExports; ) | desc-tpl | param[0].[wk:0x12e] | v06.[wk:0x11f] | v06.[wk:0xda] | v06.[wk:0x124] | globalThis.[wk:0x89] | desc-tpl.[wk:0x112] | OP_84() | OP_82() | const[04b70808] | call21(?) | call21(?) | OP_8e() | OP_82() | const[04bc008b] | const[0230490d] | str?flags=0x0 idx=0.. | PUSH_I8() | const[0370c003] | const[0470c203] | const[0560ca03] | const[0660de04] | const[07701000] | const[40c40307] | const[c6030a09] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | undefined | call23(undefined; ) | desc-tpl | undefined.[wk:0xda] | undefined.[wk:0x12b] | globalThis.[wk:0x122] | objlit[commonJsCompatible](LOAD_M3()) | DUP() | undefined | META_OP6C() | META_RECORD44() | OP10() | PUSH_C() | const[b803000d] | OP_bc() | str?flags=0x2 idx=13 | const[50576909] | load[auxc603] | const[08c20305] | PUSH_D() | META_OP6C() | CLOSURE_CTX_C() | OP_6f() | DECL_SLOT() | undefined | OP_6f() | OP_2f() | OP_71() | OP_3a() | OP_f4() | PATCH_REF_LOAD().. | PUSH_D().. | PUSH_B() | load[auxc203] | FN_PROLOGUE() | str?flags=0xae idx=2 | num[234881024].... | LOCAL_OP2() | 'require' | str?flags=0x0 idx=0 | str?flags=0x10 idx=0 | const[00640000] | CLOSURE_CTX_A() | param[0] | OP_4a() | CLOSURE_CTX_B() | CLOSURE_CTX_B() | call25(CLOSURE_CTX_C().doImport; undefined, undefined, !(!(param[1])), !(!(PUSH_EXPORTS()))) | str?flags=0xb2 idx=2 | fn:'push' | PUSH_I8() | const[00c8030d] | PUSH_D() | str?flags=0xb9 idx=2 | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

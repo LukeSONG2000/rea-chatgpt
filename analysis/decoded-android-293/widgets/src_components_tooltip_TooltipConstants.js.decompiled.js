@@ -21,12 +21,12 @@
   locop 0xcc(CLASS_DECL())
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.TooltipConstants (seq 1) = undefined;  // PUSH_EXPORTS()
-  // op 0xbe OP_be [?]
-  EXPORTS.tailToCornerDistance (seq 2) = OP_be();  // undefined
-  // op 0xbe OP_be [?]
-  EXPORTS.tailImageSize (seq 3) = OP_be();  // undefined
-  // op 0xbe OP_be [?]
-  EXPORTS.tailToContentMargin (seq 4) = OP_be();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.tailToCornerDistance (seq 2) = PUSH_I8();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.tailImageSize (seq 3) = PUSH_I8();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.tailToContentMargin (seq 4) = PUSH_I8();  // undefined
   // op 0xa0 ADD [~]
   EXPORTS.tailOverlap (seq 5) = ADD();  // undefined
   // stack@INIT-END: fn:'builtin#262' | str?flags=0x1 idx=112 | const[00206402] | pool[145].builtin#101 | DECL_SLOT() | coerce(v06)

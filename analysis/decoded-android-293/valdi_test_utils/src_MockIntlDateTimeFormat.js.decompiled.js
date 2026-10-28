@@ -33,7 +33,7 @@
   // op 0x2b OP_2b [?]
   // op 0x2c OP_2c [?]
   EXPORTS.builtin#16910 (seq 256) = OP_2c();  // PUSH_C()
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   jcc-0xec → @229
   // op 0x68 PUSH_STR2 [~]
@@ -44,7 +44,7 @@
   // discard(OP_1b()())
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.format (seq 0) = param[0];  // PUSH_THIS()
-  // stack@INIT-END: OP_2c() | num[35323905] | OP_be() | const[00100001] | const[0d08ca2b]
+  // stack@INIT-END: OP_2c() | num[35323905] | PUSH_I8() | const[00100001] | const[0d08ca2b]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   locop 0xcc(const[0000000e].builtin#263)
@@ -81,7 +81,7 @@
   // op 0x2b OP_2b [?]
   // op 0x3a OP_3a [?]
   // op 0x07 PUSH_B [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   jcc-0xec → @641
   // op 0x68 PUSH_STR2 [~]
@@ -94,7 +94,7 @@
   EXPORTS.locale (seq 0) = param[0];  // PUSH_THIS()
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.options (seq 1) = param[1];  // PUSH_THIS()
-  // stack@INIT-END: CLASS_DEF_POP() | push2086 | load[0c] | OP_3a() | PUSH_B() | const[00020102] | num[52822017] | OP_be() | const[00c20300] | const[00100001] | const[0d08ca2b]
+  // stack@INIT-END: CLASS_DEF_POP() | push2086 | load[0c] | OP_3a() | PUSH_B() | const[00020102] | num[52822017] | PUSH_I8() | const[00c20300] | const[00100001] | const[0d08ca2b]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe5 OP_e5 [?]

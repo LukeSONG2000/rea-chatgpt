@@ -146,7 +146,7 @@
   // discard(PUSH_WK1())
 
   // ---- FUNCTION-UNIT: 'isArray' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x6f OP_6f [?]
   // op 0xde CLOSURE_CTX_A [~]
@@ -245,8 +245,8 @@
   jmp → @2500
   // op 0xc2 LOCAL_OP2 [?]
   local[4] = LOCAL_OP2();
-  // op 0xbe OP_be [?]
-  local[5] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[5] = PUSH_I8();
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0xea OP_ea [?]
@@ -469,7 +469,7 @@
   …(pad)
   // op 0x0a PUSH_E [~]
   …(pad)
-  // stack-tail: fn:'isArray' | OP30() | DECL_SLOT() | OP_87() | fn:'isArray' | param[0] | OP_ac() | call23(CLOSURE_CTX_A(); param[0], call21(DUP(); ), globalThis, param[1], PUSH_EXPORTS()) | str?flags=0x18 idx=3 | fn:'isArray' | DECL_SLOT() | LT() | fn:'isArray' | OP_be() | const[00c00303] | OP_6f() | OP_2f() | fn:'isArray' | OP_c0() | const[00c60301] | OP30() | OP_bc() | str?flags=0xc idx=2 | 'require' | 't' | 'e' | str?flags=0xf idx=6 | str?flags=0x11 idx=7 | str?flags=0x15 idx=6 | str?flags=0x17 idx=9 | str?flags=0x18 idx=10 | str?flags=0x1c idx=6 | str?flags=0x1e idx=12 | str?flags=0x25 idx=6 | str?flags=0x25 idx=14 | str?flags=0x25 idx=15 | str?flags=0x25 idx=16 | str?flags=0x25 idx=17 | str?flags=0x27 idx=18 | str?flags=0x28 idx=19 | 'c' | v06 | const[c4030701] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_a9() | v06 | param[0] | PUSH_B() | param[0] | !(globalThis) | param[0] | !(PUSH_WK1()) | param[0] | const[72] | undefined | call25(const[253].builtin#92; param[0], const[253]) | const[70] | undefined | OP_ac() | call25(param[0].builtin#55; ) | const[27] | META_OP6C() | objlit[componentPath](param[0]) | OP_aa() | OP_ac() | call25(const[258].builtin#92; param[0].toISOString(), const[246]) | META_OP6C() | DECL_SLOT() | DECL_SLOT() | param[1].builtin#99(param[0]) | call25(const[261].builtin#92; undefined, const[246]) | OP_5e() | CLOSURE_CTX_B() | f0(PUSH_EXPORTS()) | OP_5e() | CLOSURE_CTX_B() | f0(ADD()) | OP_87() | call25(const[267].builtin#92; undefined, undefined.builtin#91(ADD()), undefined, const[269]) | META_OP6C() | OP_87() | call25(const[274].builtin#92; undefined, undefined.builtin#91(ADD()), undefined, const[275]) | OP_87() | call25(const[277].builtin#92; undefined, undefined.builtin#91(ADD()), undefined, const[278]) | META_OP6C() | call25(const[280].builtin#92; LOCAL_OP2(), const[281], call22(CLOSURE_CTX_C(); param[0].toConsoleRepresentation(), param[1], PUSH_EXPORTS(), OP_d5(), OP_5e()), const[246]) | EQ_STRICT() | OP_ac() | call25(param[0].builtin#55; ) | OP_74() | num[218266624] | OP_b3() | const[0400bc01] | num[1291854228] | num[3741463552] | OP_62() | call25(fn:'isArray'().builtin#93(const[287]).map(local[0]).builtin#91; const[287]) | call25(str?flags=0x74 idx=1.isArray; param[0].charAt(globalThis).toLocaleUpperCase(), param[0].slice(PUSH_WK1())) | str?flags=0x75 idx=0 | PUSH_E()
+  // stack-tail: fn:'isArray' | OP30() | DECL_SLOT() | OP_87() | fn:'isArray' | param[0] | OP_ac() | call23(CLOSURE_CTX_A(); param[0], call21(DUP(); ), globalThis, param[1], PUSH_EXPORTS()) | str?flags=0x18 idx=3 | fn:'isArray' | DECL_SLOT() | LT() | fn:'isArray' | PUSH_I8() | const[00c00303] | OP_6f() | OP_2f() | fn:'isArray' | OP_c0() | const[00c60301] | OP30() | OP_bc() | str?flags=0xc idx=2 | 'require' | 't' | 'e' | str?flags=0xf idx=6 | str?flags=0x11 idx=7 | str?flags=0x15 idx=6 | str?flags=0x17 idx=9 | str?flags=0x18 idx=10 | str?flags=0x1c idx=6 | str?flags=0x1e idx=12 | str?flags=0x25 idx=6 | str?flags=0x25 idx=14 | str?flags=0x25 idx=15 | str?flags=0x25 idx=16 | str?flags=0x25 idx=17 | str?flags=0x27 idx=18 | str?flags=0x28 idx=19 | 'c' | v06 | const[c4030701] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_a9() | v06 | param[0] | PUSH_B() | param[0] | !(globalThis) | param[0] | !(PUSH_WK1()) | param[0] | const[72] | undefined | call25(const[253].builtin#92; param[0], const[253]) | const[70] | undefined | OP_ac() | call25(param[0].builtin#55; ) | const[27] | META_OP6C() | objlit[componentPath](param[0]) | OP_aa() | OP_ac() | call25(const[258].builtin#92; param[0].toISOString(), const[246]) | META_OP6C() | DECL_SLOT() | DECL_SLOT() | param[1].builtin#99(param[0]) | call25(const[261].builtin#92; undefined, const[246]) | OP_5e() | CLOSURE_CTX_B() | f0(PUSH_EXPORTS()) | OP_5e() | CLOSURE_CTX_B() | f0(ADD()) | OP_87() | call25(const[267].builtin#92; undefined, undefined.builtin#91(ADD()), undefined, const[269]) | META_OP6C() | OP_87() | call25(const[274].builtin#92; undefined, undefined.builtin#91(ADD()), undefined, const[275]) | OP_87() | call25(const[277].builtin#92; undefined, undefined.builtin#91(ADD()), undefined, const[278]) | META_OP6C() | call25(const[280].builtin#92; LOCAL_OP2(), const[281], call22(CLOSURE_CTX_C(); param[0].toConsoleRepresentation(), param[1], PUSH_EXPORTS(), OP_d5(), OP_5e()), const[246]) | EQ_STRICT() | OP_ac() | call25(param[0].builtin#55; ) | OP_74() | num[218266624] | OP_b3() | const[0400bc01] | num[1291854228] | num[3741463552] | OP_62() | call25(fn:'isArray'().builtin#93(const[287]).map(local[0]).builtin#91; const[287]) | call25(str?flags=0x74 idx=1.isArray; param[0].charAt(globalThis).toLocaleUpperCase(), param[0].slice(PUSH_WK1())) | str?flags=0x75 idx=0 | PUSH_E()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

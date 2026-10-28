@@ -11,7 +11,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -116,7 +116,7 @@
   local[13] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.DILRenderer (seq 13) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_d8() | const[0e430601] | DUP() | PUSH_C9() | str?flags=0x11 idx=176 | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP_be() | const[245824] | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | str?flags=0x2 idx=14 | const[030970c6] | 'exports' | str?flags=0x4 idx=14 | const[050c70c8] | 'd' | load[aux0064] | PUSH_E() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | local[0] | local[0] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT() | CLASS_DECL() | local[0] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: OP_d8() | const[0e430601] | DUP() | PUSH_C9() | str?flags=0x11 idx=176 | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | PUSH_I8() | const[245824] | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | str?flags=0x2 idx=14 | const[030970c6] | 'exports' | str?flags=0x4 idx=14 | const[050c70c8] | 'd' | load[aux0064] | PUSH_E() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | local[0] | local[0] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT() | CLASS_DECL() | local[0] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x7d OP_7d [?]

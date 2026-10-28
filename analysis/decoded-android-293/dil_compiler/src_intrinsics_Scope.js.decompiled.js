@@ -45,7 +45,7 @@
   // op 0x09 PUSH_D [~]
   // op 0x14 OP_14 [?]
   // op 0x4e OP_4e [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0xde CLOSURE_CTX_A [~]
@@ -54,7 +54,7 @@
   locop 0xca(OP_f1())
   // trailer 0xae
   jcc-0xeb → @437
-  // stack@INIT-END: OP_44() | 'require' | str?flags=0x3 idx=2 | const[00bc0305] | const[08cd6401] | DECL_SLOT() | CLOSURE_CTX_A() | objlit[props](PUSH_C9()) | v06 | undefined
+  // stack@INIT-END: META_RECORD44() | 'require' | str?flags=0x3 idx=2 | const[00bc0305] | const[08cd6401] | DECL_SLOT() | CLOSURE_CTX_A() | objlit[props](PUSH_C9()) | v06 | undefined
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcb(param[0].subscopeWithValues(undefined))
   // op 0x64 DECL_SLOT [~]

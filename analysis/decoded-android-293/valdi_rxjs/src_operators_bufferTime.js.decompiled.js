@@ -213,7 +213,7 @@
   // stack@INIT-END: OP_d0() | PUSH_C() | OP_2b() | OP_2b() | PUSH_C().builtin#262 | OP_c0() | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
@@ -236,7 +236,7 @@
   // op 0xdf CLOSURE_CTX_B [~]
   // discard(CLOSURE_CTX_B().complete())
   // op 0xdf CLOSURE_CTX_B [~]
-  // stack@INIT-END: OP_44() | OP_ea() | CLOSURE_CTX_B().unsubscribe()
+  // stack@INIT-END: META_RECORD44() | OP_ea() | CLOSURE_CTX_B().unsubscribe()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x7e OP_7e [?]

@@ -108,7 +108,7 @@
   // op 0x11 DUP [~]
   // trailer 0xae
   // op 0x81 OP_81 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
@@ -187,7 +187,7 @@
   // op 0x68 PUSH_STR2 [~]
   // trailer 0xae
   …(pad)
-  // stack-tail: OP_f6() | str?flags=0x1 idx=0 | 'require' | str?flags=0x9 idx=1 | const[84131853] | load[auxd003] | load[aux01c4] | str?flags=0x7 idx=13 | desc-tpl | str?flags=0xa idx=1 | load[01] | PUSH_THIS() | str?flags=0x8 idx=13 | str?flags=0xd idx=186 | load[auxb603] | load[auxb803] | OP_87() | CLOSURE_CTX_D() | f0(param[0]) | PUSH_STR2().map(local[0]) | LOAD_61() | f0(param[0]) | PUSH_STR2().map | LOAD_61() | param[0](OP_f1()) | LOAD_61() | f0(param[0]) | PUSH_STR2().map | LOAD_61() | param[0](OP_f1()) | OP_ee() | push0 | OP_ee() | !(undefined) | objlit[isArrayLike](PUSH_STR2()) | f0(param[0]) | objlit[mergeMap](PUSH_STR2()) | f0(local[0]) | call23(objlit[innerFrom](PUSH_STR2()); f0(param[0])) | !(undefined) | OP_2f() | OP_81() | const[0200b601] | num[1812102656] | OP_be().builtin#262 | str?flags=0xb idx=0 | v06 | const[00010001] | PATCH_REF_LOAD() | call23(PUSH_WK2(); str?flags=0x0 idx=1, str?flags=0x0 idx=2, call25(OP_4b(); CLOSURE_CTX_C(), param[0], CLOSURE_CTX_D()).builtin#262).builtin#262 | OP_40() | const[20250625] | PUSH_WK2() | str?flags=0x0 idx=1 | OP_d6() | CLOSURE_CTX_A().builtin#106 | fn:'builtin#262' | v06 | const[00010001] | const[02010301] | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=3 | const[03c10028] | str?flags=0x15 idx=0 | v06 | const[00010001] | const[17301507] | OP_bc() | str?flags=0x0 idx=1 | str?flags=0x0 idx=2 | str?flags=0xb8 idx=3 | fn:'builtin#262' | fn:'builtin#262' | fn:'builtin#262' | objlit[isFunction](PUSH_STR2()) | str?flags=0x20 idx=1 | num[0]
+  // stack-tail: OP_f6() | str?flags=0x1 idx=0 | 'require' | str?flags=0x9 idx=1 | const[84131853] | load[auxd003] | load[aux01c4] | str?flags=0x7 idx=13 | desc-tpl | str?flags=0xa idx=1 | load[01] | PUSH_THIS() | str?flags=0x8 idx=13 | str?flags=0xd idx=186 | load[auxb603] | load[auxb803] | OP_87() | CLOSURE_CTX_D() | f0(param[0]) | PUSH_STR2().map(local[0]) | LOAD_61() | f0(param[0]) | PUSH_STR2().map | LOAD_61() | param[0](OP_f1()) | LOAD_61() | f0(param[0]) | PUSH_STR2().map | LOAD_61() | param[0](OP_f1()) | OP_ee() | push0 | OP_ee() | !(undefined) | objlit[isArrayLike](PUSH_STR2()) | f0(param[0]) | objlit[mergeMap](PUSH_STR2()) | f0(local[0]) | call23(objlit[innerFrom](PUSH_STR2()); f0(param[0])) | !(undefined) | OP_2f() | OP_81() | const[0200b601] | num[1812102656] | PUSH_I8().builtin#262 | str?flags=0xb idx=0 | v06 | const[00010001] | PATCH_REF_LOAD() | call23(PUSH_WK2(); str?flags=0x0 idx=1, str?flags=0x0 idx=2, call25(OP_4b(); CLOSURE_CTX_C(), param[0], CLOSURE_CTX_D()).builtin#262).builtin#262 | OP_40() | const[20250625] | PUSH_WK2() | str?flags=0x0 idx=1 | OP_d6() | CLOSURE_CTX_A().builtin#106 | fn:'builtin#262' | v06 | const[00010001] | const[02010301] | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=3 | const[03c10028] | str?flags=0x15 idx=0 | v06 | const[00010001] | const[17301507] | OP_bc() | str?flags=0x0 idx=1 | str?flags=0x0 idx=2 | str?flags=0xb8 idx=3 | fn:'builtin#262' | fn:'builtin#262' | fn:'builtin#262' | objlit[isFunction](PUSH_STR2()) | str?flags=0x20 idx=1 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

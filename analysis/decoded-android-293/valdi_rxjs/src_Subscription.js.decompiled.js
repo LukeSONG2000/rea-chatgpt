@@ -103,7 +103,7 @@
   // stack@INIT-END: OP_0f() | OP_36() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | OP10() | const[00ec0104] | load[aux08ca] | OP_2b()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x09 PUSH_D [~]
   // op 0x30 OP30 [?]
   // op 0xe8 OP_e8 [?]
@@ -235,7 +235,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
-  // stack@INIT-END: str?flags=0xa idx=2 | const[234881024].builtin#263 | OP_be() | PUSH_D() | v06 | str?flags=0xe6 idx=3 | OP_e8() | str?flags=0x10 idx=7 | const[00b60300] | load[auxb803] | const[0dc00307] | LOAD_M3() | objlit[isFunction](PUSH_STR2()) | OP_87() | undefined | OP_2f()
+  // stack@INIT-END: str?flags=0xa idx=2 | const[234881024].builtin#263 | PUSH_I8() | PUSH_D() | v06 | str?flags=0xe6 idx=3 | OP_e8() | str?flags=0x10 idx=7 | const[00b60300] | load[auxb803] | const[0dc00307] | LOAD_M3() | objlit[isFunction](PUSH_STR2()) | OP_87() | undefined | OP_2f()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xfd OP_fd [?]

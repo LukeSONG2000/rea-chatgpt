@@ -2,7 +2,7 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
@@ -32,7 +32,7 @@
   // discard(OP_56())
   // discard(undefined)
   EXPORTS.defaults (seq 2) = const[230].[wk:0xe7];  // OP_cf()
-  // stack@INIT-END: OP_44() | TRY_REGION() | OP30() | PUSH_WK2() | 'require' | str?flags=0x0 idx=100 | pool[145].builtin#101 | param[0] | DECL_SLOT()
+  // stack@INIT-END: META_RECORD44() | TRY_REGION() | OP30() | PUSH_WK2() | 'require' | str?flags=0x0 idx=100 | pool[145].builtin#101 | param[0] | DECL_SLOT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

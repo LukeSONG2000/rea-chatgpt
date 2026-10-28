@@ -806,10 +806,10 @@
   // op 0xbd OP_bd [?]
   EXPORTS.Union (seq 7) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Reference (seq 8) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Null (seq 9) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // stack@INIT-END: OP_17() | OP30() | const[00010001] | num[21364737] | globalThis | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()

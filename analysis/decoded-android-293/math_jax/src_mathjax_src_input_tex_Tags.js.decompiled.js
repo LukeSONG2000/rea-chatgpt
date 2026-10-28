@@ -675,8 +675,8 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x54 OP_54 [?]
-  // op 0x44 OP_44 [?]
-  locop 0xca(OP_44())
+  // op 0x44 META_RECORD44 [?]
+  locop 0xca(META_RECORD44())
   // op 0xc6 PUSH_THIS [~]
   // op 0x11 DUP [~]
   // op 0x6c META_OP6C [?]

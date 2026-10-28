@@ -24,7 +24,7 @@
   …(pad)
 
   // ---- FUNCTION-UNIT: 'pointer' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
@@ -118,7 +118,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   jmp → @1195
   // op 0xc9 PUSH_C9 [~]
-  // stack@INIT-END: 'SvgMaction' | push53583 | fn:'pointer' | OP_be() | const[17020941] | load[auxb603] | load[auxbc03] | str?flags=0xd idx=186 | load[aux6401] | objlit[CommonMactionMixin](PUSH_STR2()) | DECL_SLOT() | OP_d0() | OP_36() | call21(?) | PUSH_B() | const[00030402] | OP_20() | PUSH_WK2() | 'require' | 'module' | const[0008cd64] | num[91136] | DECL_SLOT() | PUSH_EXPORTS() | PUSH_EXPORTS() | push1 | objlit[dom](PUSH_C9()).forEach(local[0])
+  // stack@INIT-END: 'SvgMaction' | push53583 | fn:'pointer' | PUSH_I8() | const[17020941] | load[auxb603] | load[auxbc03] | str?flags=0xd idx=186 | load[aux6401] | objlit[CommonMactionMixin](PUSH_STR2()) | DECL_SLOT() | OP_d0() | OP_36() | call21(?) | PUSH_B() | const[00030402] | OP_20() | PUSH_WK2() | 'require' | 'module' | const[0008cd64] | num[91136] | DECL_SLOT() | PUSH_EXPORTS() | PUSH_EXPORTS() | push1 | objlit[dom](PUSH_C9()).forEach(local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x51 OP_51 [?]
@@ -134,14 +134,14 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x10 idx=1)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc3 LOAD_M3 [~]
   jcc-0xeb → @1490
-  // stack@INIT-END: APPLY_SPREAD() | str?flags=0x0 idx=1 | str?flags=0x0 idx=3 | const[03d24223] | call25(call25(const[00000000]; CLOSURE_CTX_A(), CLOSURE_CTX_B()).cursor; param[0]).cursor | OP_be() | const[03301000] | const[4008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LOAD_M3().toEmbellishedSVG(param[0])
+  // stack@INIT-END: APPLY_SPREAD() | str?flags=0x0 idx=1 | str?flags=0x0 idx=3 | const[03d24223] | call25(call25(const[00000000]; CLOSURE_CTX_A(), CLOSURE_CTX_B()).cursor; param[0]).cursor | PUSH_I8() | const[03301000] | const[4008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LOAD_M3().toEmbellishedSVG(param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
   locop 0xca(LOAD_M3().standardSvgNodes(param[0]))
@@ -294,7 +294,7 @@
   // op 0xa9 OP_a9 [?]
   …(pad)
   // discard(num[1212])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x30 OP30 [?]
   // op 0xde CLOSURE_CTX_A [~]
@@ -343,7 +343,7 @@
   // discard(META_OP6C())
   // op 0x87 OP_87 [?]
   // op 0x6b CLASS_DECL [~]
-  // stack@INIT-END: OP_a9() | num[44957698].pointer | OP_be() | const[62402562] | v06 | str?flags=0x30 idx=186 | str?flags=0x70 idx=204 | PATCH_REF_LOAD() | v06 | OP30() | CLOSURE_CTX_A() | const[1685063687] | META_OP6C() | DECL_SLOT() | objlit[dom](param[0]) | OP_81() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | objlit[adaptor](param[0]).insert | OP_ee() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[factory](objlit[node](param[0])).create | param[0].html | undefined.append | undefined | OP_87() | CLASS_DECL()
+  // stack@INIT-END: OP_a9() | num[44957698].pointer | PUSH_I8() | const[62402562] | v06 | str?flags=0x30 idx=186 | str?flags=0x70 idx=204 | PATCH_REF_LOAD() | v06 | OP30() | CLOSURE_CTX_A() | const[1685063687] | META_OP6C() | DECL_SLOT() | objlit[dom](param[0]) | OP_81() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | objlit[adaptor](param[0]).insert | OP_ee() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[factory](objlit[node](param[0])).create | param[0].html | undefined.append | undefined | OP_87() | CLASS_DECL()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -444,7 +444,7 @@
   // op 0x68 PUSH_STR2 [~]
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xb7 PUSH_WK1 [~]
   // op 0x4a OP_4a [?]
@@ -460,7 +460,7 @@
   // discard(param[0].setEventHandler(const[356], local[0]))
   // op 0x6b CLASS_DECL [~]
   // op 0x6b CLASS_DECL [~]
-  // stack@INIT-END: OP_72() | num[17187342] | const[2949123] | OP_ba() | str?flags=0x0 idx=12 | const[0ca00502] | call25(load[68].append; PUSH_STR2(), PUSH_STR2()) | str?flags=0x7a idx=0 | const[0000000e].pointer | OP_be() | str?flags=0x2 idx=112 | META_OP6C() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | CLASS_DECL() | CLASS_DECL()
+  // stack@INIT-END: OP_72() | num[17187342] | const[2949123] | OP_ba() | str?flags=0x0 idx=12 | const[0ca00502] | call25(load[68].append; PUSH_STR2(), PUSH_STR2()) | str?flags=0x7a idx=0 | const[0000000e].pointer | PUSH_I8() | str?flags=0x2 idx=112 | META_OP6C() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | CLASS_DECL() | CLASS_DECL()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

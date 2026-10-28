@@ -104,9 +104,9 @@
   // stack@INIT-END: str?flags=0xa idx=2 | num[234881024].onClientDisconnected.submitRequest | desc-tpl | desc-tpl | objlit[senderClientId](objlit[builtin#51](PUSH_THIS())).[wk:0xed] | param[0](f0(objlit[requestId](objlit[builtin#51](PUSH_THIS()))).[wk:0xef].[wk:0xf0], local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // discard(OP_44())
+  // discard(META_RECORD44())
   …(pad)
   // op 0x2b OP_2b [?]
   // op 0x68 PUSH_STR2 [~]
@@ -199,10 +199,10 @@
   // stack@INIT-END: OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // discard(num[162816])
-  locop 0xca(objlit[listeners](OP_be().onClientDisconnected).indexOf(param[0]))
+  locop 0xca(objlit[listeners](PUSH_I8().onClientDisconnected).indexOf(param[0]))
   // op 0xa9 OP_a9 [?]
   // op 0x11 DUP [~]
   jcc-0xeb → @1874

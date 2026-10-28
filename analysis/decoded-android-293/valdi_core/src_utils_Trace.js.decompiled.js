@@ -256,7 +256,7 @@
   // stack@INIT-END: str?flags=0x3a idx=3 | fn:'TraceMethod' | undefined | param[0] | OP_f1()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   …(pad)
@@ -331,7 +331,7 @@
   // discard(DUP())
   // op 0xd4 PUSH_EXPORTS [✓]
   jcc-0xeb → @2606
-  // stack@INIT-END: OP_44() | fn:'TraceMethod' | OP30() | PUSH_WK2() | 'u' | DECL_SLOT() | !(undefined) | call23(PUSH_EXPORTS(); ) | undefined | param[0] | OP_72() | OP_4a() | fn:'TraceMethod' | OP30() | str?flags=0x13 idx=13 | DECL_SLOT() | !(undefined) | undefined | param[0] | pool[145].builtin#101 | FN_PROLOGUE() | str?flags=0x5f idx=6 | fn:'TraceMethod' | OP_14() | const[64020064] | const[00640000] | !(objlit[builtin#62](PUSH_EXPORTS()))
+  // stack@INIT-END: META_RECORD44() | fn:'TraceMethod' | OP30() | PUSH_WK2() | 'u' | DECL_SLOT() | !(undefined) | call23(PUSH_EXPORTS(); ) | undefined | param[0] | OP_72() | OP_4a() | fn:'TraceMethod' | OP30() | str?flags=0x13 idx=13 | DECL_SLOT() | !(undefined) | undefined | param[0] | pool[145].builtin#101 | FN_PROLOGUE() | str?flags=0x5f idx=6 | fn:'TraceMethod' | OP_14() | const[64020064] | const[00640000] | !(objlit[builtin#62](PUSH_EXPORTS()))
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xd4 PUSH_EXPORTS [✓]
   locop 0xca(objlit[builtin#64](PUSH_EXPORTS()))

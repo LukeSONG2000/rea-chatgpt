@@ -177,7 +177,7 @@
   // op 0x54 OP_54 [?]
   // discard(OP_54())
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x54 OP_54 [?]
   // discard(OP_54())
   EXPORTS.BaseConfiguration (seq 5) = META_OP6C()(objlit[POSTPROCESSORS](objlit[ConfigurationType](undefined)), LOAD_M3());  // META_OP6C()
@@ -185,7 +185,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x3d OP_3d [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x49 OP_49 [?]
   …(pad)
@@ -388,7 +388,7 @@
   // stack@INIT-END: OP_89() | num[33030332] | num[27459782] | PUSH_THIS() | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010010] | const[20ec0113] | fn:'‘' | str?flags=0x9 idx=13 | load[aux6400] | objlit[handlers](param[0]).builtin#65(objlit[CHARACTER](objlit[HandlerType](PUSH_STR2()))).builtin#104 | const[374] | const[373](push2, PUSH_B(), OP_ba())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x5c OP_5c [?]
   // op 0x5c OP_5c [?]
   // op 0x30 OP30 [?]

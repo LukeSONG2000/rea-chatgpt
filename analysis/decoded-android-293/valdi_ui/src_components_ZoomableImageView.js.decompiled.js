@@ -48,7 +48,7 @@
   // op 0x35 OP35 [?]
   // op 0x1d OP_1d [?]
   // discard(OP_1d())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xef OP_ef [?]
   // op 0x11 DUP [~]
@@ -80,7 +80,7 @@
   // op 0xc6 PUSH_THIS [~]
   // discard(PUSH_STR2()(OP_ee(), objlit[Style](PUSH_STR2()).cachingMerge(PUSH_STR2(), objlit[style](objlit[viewModel](PUSH_THIS())))))
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: ?.builtin#263 | OP_be() | PUSH_STR2().setAttributeStyle | const[257] | v06 | objlit[style](objlit[viewModel](PUSH_THIS())) | PUSH_STR2().endRender()
+  // stack@INIT-END: ?.builtin#263 | PUSH_I8() | PUSH_STR2().setAttributeStyle | const[257] | v06 | objlit[style](objlit[viewModel](PUSH_THIS())) | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x58 OP_58 [?]

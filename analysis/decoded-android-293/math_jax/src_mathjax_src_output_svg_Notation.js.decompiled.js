@@ -313,7 +313,7 @@
   // stack@INIT-END: str?flags=0x2f idx=5 | fn:'CommonDiagonalStrike' | call23(const[0d680100].CommonBorder2(local[0]); param[0], param[1], PUSH_EXPORTS()).CommonDiagonalStrike | num[21090819] | const[00000000].append | OP_4a() | objlit[adaptor](param[0]).append | OP_4a() | param[0].line(objlit[lineData](CLOSURE_CTX_A()), param[0](OP_f1()))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // discard(num[218])
 

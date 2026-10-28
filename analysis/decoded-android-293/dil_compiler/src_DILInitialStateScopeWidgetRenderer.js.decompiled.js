@@ -407,7 +407,7 @@
   // discard(call21(OP_1c(); ))
 
   // ---- FUNCTION-UNIT: 'inner' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0xc6 PUSH_THIS [~]
@@ -485,7 +485,7 @@
   local[4] = f0(objlit[initialState](undefined));
   // op 0x68 PUSH_STR2 [~]
   jcc-0xeb → @4541
-  // stack@INIT-END: str?flags=0x2f idx=5 | OP_b5().stateAliases | PUSH_WK2() | v06 | objlit[stateScope](PUSH_THIS()) | str?flags=0x46 idx=6 | OP_76() | const[03b80300] | const[00ba0300] | const[00100001] | globalThis | PUSH_THIS() | v06 | objlit[onInitialStateUpdate](PUSH_THIS()) | param[0] | str?flags=0x4c idx=7 | fn:'inner' | OP_be() | const[00c00300] | const[00c20301] | OP30() | OP10() | const[d4031101] | PUSH_C8() | str?flags=0xb idx=9 | DECL_SLOT() | DECL_SLOT() | !(PUSH_EXPORTS()) | CLOSURE_CTX_A() | CLOSURE_CTX_B() | param[1] | v06 | undefined | v06 | undefined | CLOSURE_CTX_C() | DUP() | param[0] | desc-tpl | fn:'inner' | OP30() | OP_ba() | str?flags=0x5 idx=4 | str?flags=0x3 idx=13 | PATCH_REF_LOAD() | load[auxc603] | PUSH_C() | load[aux6402] | DECL_SLOT() | DECL_SLOT() | objlit[parseWidgetInitialStateValue](PUSH_STR2()) | objlit[isCELMap](PUSH_STR2()) | f0(undefined) | objlit[parseWidgetInitialStateValue](PUSH_STR2()) | objlit[isCELMap](PUSH_STR2()) | f0(undefined) | META_OP6C() | META_OP6C() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | objlit[parseWidgetInitialStateValue](PUSH_STR2()) | objlit[isCELMap](PUSH_STR2()) | f0(undefined)
+  // stack@INIT-END: str?flags=0x2f idx=5 | OP_b5().stateAliases | PUSH_WK2() | v06 | objlit[stateScope](PUSH_THIS()) | str?flags=0x46 idx=6 | OP_76() | const[03b80300] | const[00ba0300] | const[00100001] | globalThis | PUSH_THIS() | v06 | objlit[onInitialStateUpdate](PUSH_THIS()) | param[0] | str?flags=0x4c idx=7 | fn:'inner' | PUSH_I8() | const[00c00300] | const[00c20301] | OP30() | OP10() | const[d4031101] | PUSH_C8() | str?flags=0xb idx=9 | DECL_SLOT() | DECL_SLOT() | !(PUSH_EXPORTS()) | CLOSURE_CTX_A() | CLOSURE_CTX_B() | param[1] | v06 | undefined | v06 | undefined | CLOSURE_CTX_C() | DUP() | param[0] | desc-tpl | fn:'inner' | OP30() | OP_ba() | str?flags=0x5 idx=4 | str?flags=0x3 idx=13 | PATCH_REF_LOAD() | load[auxc603] | PUSH_C() | load[aux6402] | DECL_SLOT() | DECL_SLOT() | objlit[parseWidgetInitialStateValue](PUSH_STR2()) | objlit[isCELMap](PUSH_STR2()) | f0(undefined) | objlit[parseWidgetInitialStateValue](PUSH_STR2()) | objlit[isCELMap](PUSH_STR2()) | f0(undefined) | META_OP6C() | META_OP6C() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | objlit[parseWidgetInitialStateValue](PUSH_STR2()) | objlit[isCELMap](PUSH_STR2()) | f0(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe9 OP_e9 [?]

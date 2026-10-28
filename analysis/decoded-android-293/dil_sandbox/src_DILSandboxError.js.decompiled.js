@@ -122,8 +122,8 @@
   // op 0x87 OP_87 [?]
   // op 0x4e OP_4e [?]
   // op 0x2b OP_2b [?]
-  // op 0x44 OP_44 [?]
-  // stack-tail: OP_13() | PUSH_E() | PUSH_THIS() | PUSH_B() | const[00030303] | const[32702466] | v06 | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[000100e2] | const[00010010] | const[20ec0103] | load[auxba03] | num[3389131789] | DECL_SLOT() | OP_2b() | LT() | const[02003f02] | fn:'builtin#262' | OP30() | PUSH_THIS() | str?flags=0x5 idx=0 | str?flags=0x0 idx=13 | const[0d6f0701] | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DUP() | OP_ac() | PUSH_STR2() | OP_4e() | OP_44()
+  // op 0x44 META_RECORD44 [?]
+  // stack-tail: OP_13() | PUSH_E() | PUSH_THIS() | PUSH_B() | const[00030303] | const[32702466] | v06 | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[000100e2] | const[00010010] | const[20ec0103] | load[auxba03] | num[3389131789] | DECL_SLOT() | OP_2b() | LT() | const[02003f02] | fn:'builtin#262' | OP30() | PUSH_THIS() | str?flags=0x5 idx=0 | str?flags=0x0 idx=13 | const[0d6f0701] | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DUP() | OP_ac() | PUSH_STR2() | OP_4e() | META_RECORD44()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

@@ -14,7 +14,7 @@
   locop 0xca(f0(const[224]))
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xbf OP_bf [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   // op 0x50 OP_50 [?]
@@ -22,7 +22,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc7 PUSH_C7 [~]
   EXPORTS.CommonMactionMixin (seq 3) = PUSH_C7();  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_60() | v06 | const[00030203] | v06 | num[2953118142] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | DECL_SLOT() | pool[145].builtin#101 | param[0] | PUSH_EXPORTS() | desc-tpl | const[225].[wk:0xe2] | const[227].[wk:0xe4] | OP_bf().[wk:0xe5] | OP_be().[wk:0xe6] | call21(DUP(); ).[wk:0xe7]
+  // stack@INIT-END: OP_60() | v06 | const[00030203] | v06 | num[2953118142] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | DECL_SLOT() | pool[145].builtin#101 | param[0] | PUSH_EXPORTS() | desc-tpl | const[225].[wk:0xe2] | const[227].[wk:0xe4] | OP_bf().[wk:0xe5] | PUSH_I8().[wk:0xe6] | call21(DUP(); ).[wk:0xe7]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x08 PUSH_C [~]

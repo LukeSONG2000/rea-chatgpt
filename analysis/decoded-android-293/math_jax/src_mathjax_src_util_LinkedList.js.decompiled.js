@@ -193,7 +193,7 @@
   EXPORTS.prev (seq 2) = …;  // …
   EXPORTS.builtin#106 (seq 3) = pair(undefined, PUSH_B());  // undefined
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x30 OP30 [?]
   // op 0x10 OP10 [?]
   …(pad)
@@ -240,7 +240,7 @@
   EXPORTS.prev (seq 2) = …;  // …
   EXPORTS.builtin#106 (seq 3) = pair(undefined, PUSH_B());  // undefined
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x30 OP30 [?]
   // op 0xe6 OP_e6 [?]
   …(pad)
@@ -319,7 +319,7 @@
   // op 0xee OP_ee [?]
   // op 0x2e OP_2e [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xb4 OP_b4 [?]
   // op 0x8a OP_8a [?]
   // op 0x64 DECL_SLOT [~]
@@ -338,7 +338,7 @@
   // op 0xee OP_ee [?]
   // op 0x2e OP_2e [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xd6 OP_d6 [?]
   // op 0xff OP_ff [?]
@@ -603,7 +603,7 @@
   …(pad)
   // op 0xd9 OP_d9 [?]
   …(pad)
-  // stack-tail: OP_40() | v06 | OP_d6() | str?flags=0x0 idx=1 | str?flags=0x2 idx=0 | str?flags=0x3 idx=1 | OP_87() | OP_3a() | OP30().builtin#263 | objlit[data](undefined) | SPREAD_PREP() | num[31129658].builtin#263 | objlit[data](undefined) | objlit[END](CLOSURE_CTX_A()) | OP_44() | OP_e6() | 'require' | OP10() | const[00b40302] | str?flags=0x8 idx=203 | EQ_STRICT() | OP_ee() | OP_2e() | OP_44() | OP_b4() | str?flags=0x2 idx=3 | OP_8a() | OP_20() | CLOSURE_CTX_A() | 'require' | OP_87() | objlit[builtin#106](undefined) | undefined | push2 | OP_52() | OP_dd() | num[48627714] | num[33744128] | OP_d9() | num[3586] | v06
+  // stack-tail: OP_40() | v06 | OP_d6() | str?flags=0x0 idx=1 | str?flags=0x2 idx=0 | str?flags=0x3 idx=1 | OP_87() | OP_3a() | OP30().builtin#263 | objlit[data](undefined) | SPREAD_PREP() | num[31129658].builtin#263 | objlit[data](undefined) | objlit[END](CLOSURE_CTX_A()) | META_RECORD44() | OP_e6() | 'require' | OP10() | const[00b40302] | str?flags=0x8 idx=203 | EQ_STRICT() | OP_ee() | OP_2e() | META_RECORD44() | OP_b4() | str?flags=0x2 idx=3 | OP_8a() | OP_20() | CLOSURE_CTX_A() | 'require' | OP_87() | objlit[builtin#106](undefined) | undefined | push2 | OP_52() | OP_dd() | num[48627714] | num[33744128] | OP_d9() | num[3586] | v06
 
 // ---- 字符串表 ----
 // str[1] = 'require'

@@ -546,7 +546,7 @@
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xec → @5300
   // discard(DUP())

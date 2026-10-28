@@ -196,8 +196,8 @@
   // op 0x14 OP_14 [?]
   // op 0x2b OP_2b [?]
   …(pad)
-  // op 0xbe OP_be [?]
-  EXPORTS.builtin#8 (seq 18688) = OP_be();  // desc-tpl
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.builtin#8 (seq 18688) = PUSH_I8();  // desc-tpl
   // op 0x49 OP_49 [?]
   // op 0x49 OP_49 [?]
   // op 0x49 OP_49 [?]
@@ -663,7 +663,7 @@
   // discard(OP_2b().[wk:0x2])
 
   // ---- FUNCTION-UNIT: 'U' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x09 PUSH_D [~]
   // op 0x92 OP_92 [?]
   …(pad)
@@ -740,7 +740,7 @@
   // op 0xc2 LOCAL_OP2 [?]
   jmp → @9790
   // op 0x2f OP_2f [?]
-  // stack@INIT-END: str?flags=0xa idx=5(call21(?), num[234881024].D, const[08cb6400], fn:'U', OP_1a(), OP_ea(), str?flags=0x1c idx=1, DECL_SLOT(), DECL_SLOT(), v06, PUSH_EXPORTS(), desc-tpl, CLOSURE_CTX_A().[wk:0x134], const[334], objlit[builtin#54](undefined), objlit[builtin#54](PUSH_EXPORTS()), objlit[builtin#54](undefined), desc-tpl, CLOSURE_CTX_B().[wk:0x134], desc-tpl, META_OP6C(), objlit[builtin#54](undefined), objlit[builtin#54](undefined), desc-tpl, CLOSURE_CTX_B().[wk:0x134], OP_ee(), desc-tpl, CLOSURE_CTX_A().[wk:0x134], OP_12(), fn:'U', str?flags=0x16 idx=1.[wk:0x134], CLOSURE_CTX_B(), param[0], objlit[items](param[1]), fn:'U', OP30(), OP_c0(), num[62398466], str?flags=0x3 idx=48, PUSH_D(), const[ee031e01], DECL_SLOT(), DECL_SLOT(), pool[146], DECL_SLOT(), META_OP6C(), DECL_SLOT(), OP_75(), desc-tpl, CLOSURE_CTX_A(), param[0], objlit[key](undefined), OP_f2().[wk:0x153], CLOSURE_CTX_A(), FN_PROLOGUE(), OP_ee(), desc-tpl, CLOSURE_CTX_B().[wk:0x134], str?flags=0x42 idx=14, f0(fn:'U'), str?flags=0x1f idx=1, PUSH_D(), const[b404410d], DECL_SLOT(), desc-tpl, CLOSURE_CTX_A().[wk:0x134], CLOSURE_CTX_B(), param[0], objlit[argument](undefined), OP_f2().[wk:0x154], str?flags=0x51 idx=6, fn:'U', OP30(), globalThis, const[63180098], PUSH_D(), const[64010064], desc-tpl, objlit[evaluate](undefined).[wk:0x134], CLOSURE_CTX_B(), param[0], objlit[left](undefined), OP_f2().[wk:0x156], CLOSURE_CTX_B(), param[0], objlit[right](undefined), OP_f2().[wk:0x157], fn:'U', OP30(), str?flags=0x9 idx=1, desc-tpl, CLOSURE_CTX_A().[wk:0x134], CLOSURE_CTX_B(), param[0], objlit[condition](undefined), OP_f2().[wk:0x158], CLOSURE_CTX_B(), param[0], objlit[whenTrue](undefined), OP_f2().[wk:0x159], CLOSURE_CTX_B(), param[0], objlit[whenFalse](undefined), str?flags=0x64 idx=7, OP_fa()) | str?flags=0x9 idx=1 | desc-tpl | CLOSURE_CTX_A().[wk:0x134] | CLOSURE_CTX_B() | param[0] | objlit[builtin#73](undefined) | OP_f2().[wk:0x49] | str?flags=0x6e idx=6 | fn:'U' | OP_fc() | call25(?) | str?flags=0x9 idx=1 | desc-tpl | CLOSURE_CTX_A().[wk:0x134] | CLOSURE_CTX_B() | param[0] | objlit[builtin#73](undefined) | OP_f2().[wk:0x49] | CLOSURE_CTX_B() | param[0] | objlit[builtin#87](undefined) | str?flags=0x77 idx=6 | fn:'U' | OP30() | OP_bc() | str?flags=0x3 idx=13 | OP_16() | const[82042801] | OP_ba() | pair(str?flags=0x2 idx=13, load[auxdc03]) | … | … | const[da031401] | DECL_SLOT() | DECL_SLOT() | objlit[kind](objlit[builtin#78](undefined)) | META_OP6C() | const[99] | META_OP6C() | EQ_STRICT() | OP_2f() | desc-tpl | CLOSURE_CTX_C().[wk:0x134] | CLOSURE_CTX_D() | param[0] | OP_4a() | desc-tpl | LOAD_61().[wk:0x134] | objlit[builtin#54](objlit[builtin#78](undefined)).[wk:0x36] | LOAD_61() | param[0] | objlit[args](undefined) | EQ_STRICT() | desc-tpl | LOAD_61().[wk:0x134] | CLOSURE_CTX_D() | param[0] | objlit[builtin#78](undefined) | OP_f2().[wk:0x4e] | LOAD_61() | param[0] | objlit[args](undefined) | objlit[getOwnProperty](PUSH_STR2()) | objlit[DEFAULT_RECEIVER_MACRO_SPECS](PUSH_STR2()) | EQ_STRICT() | str?flags=0x80 idx=1 | IMPORT_BINDING() | OP_4a() | num[2382366959] | const[022be4ee] | fn:'U' | PUSH_C8() | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | OP_17() | const[de031601] | OP_bc() | str?flags=0x3 idx=13 | OP_2b() | OP_86() | const[56885546] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | objlit[builtin#73](PUSH_EXPORTS()) | objlit[getOwnProperty](PUSH_STR2()) | objlit[receiverCallSpecs](param[0]) | v06 | undefined | OP_2f() | CLOSURE_CTX_D() | objlit[field](PUSH_EXPORTS()) | OP_ea() | LOAD_61() | param[0] | objlit[args](param[1]) | !(globalThis) | META_OP6C() | objlit[kind](v06) | META_OP6C() | META_OP6C() | OP_6f() | desc-tpl | OP_6f() | DUP() | OP_2f() | EQ_STRICT() | desc-tpl | LOAD_61().[wk:0x134] | undefined.[wk:0x164] | undefined.[wk:0x15c] | desc-tpl | LOAD_61().[wk:0x134] | undefined.[wk:0x164] | undefined.[wk:0x15c] | objlit[getOwnProperty](PUSH_STR2()) | OP_4e() | num[33675264] | PUSH_C() | OP_2b() | IMPORT_MODULE() | OP_d0() | PUSH_C() | PUSH_C() | OP_2b() | OP_2b() | fn:'U' | PUSH_C8() | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | str?flags=0x3 idx=13 | const[0dc40309] | const[8c042d01] | OP_8a() | const[62521644] | num[1124382733] | load[aux6403] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LT() | OP_2f() | CLOSURE_CTX_C() | param[0] | objlit[builtin#73](objlit[builtin#78](param[1])) | desc-tpl | objlit[builtin#54](undefined).[wk:0x36] | CLOSURE_CTX_C() | param[0] | OP_4a() | OP_b9() | OP_ea() | desc-tpl | CLOSURE_CTX_D().[wk:0x134] | undefined.[wk:0x164] | undefined.[wk:0x147] | CLOSURE_CTX_C() | param[0] | OP_4a() | desc-tpl | LOAD_61().[wk:0x134] | undefined.[wk:0x164] | undefined.[wk:0x16c] | objlit[getOwnProperty](PUSH_STR2()) | PUSH_STR2() | str?flags=0xb5 idx=1 | OP_da() | OP_d0() | call21(?) | call21(?) | OP_ee() | fn:'U' | OP_be() | num[63184897] | PUSH_D() | OP_92() | DECL_SLOT() | LT() | OP_75() | CLOSURE_CTX_A() | FN_PROLOGUE() | fn:'U' | META_OP6C() | META_OP6C() | DUP() | LOCAL_OP2().builtin#92 | param[0] | OP_2f() | META_OP6C() | META_OP6C() | DUP() | LOCAL_OP2().builtin#92 | param[0] | OP_2f() | META_OP6C() | META_OP6C() | DUP() | LOCAL_OP2().builtin#92 | param[0] | OP_2f()
+  // stack@INIT-END: str?flags=0xa idx=5(call21(?), num[234881024].D, const[08cb6400], fn:'U', OP_1a(), OP_ea(), str?flags=0x1c idx=1, DECL_SLOT(), DECL_SLOT(), v06, PUSH_EXPORTS(), desc-tpl, CLOSURE_CTX_A().[wk:0x134], const[334], objlit[builtin#54](undefined), objlit[builtin#54](PUSH_EXPORTS()), objlit[builtin#54](undefined), desc-tpl, CLOSURE_CTX_B().[wk:0x134], desc-tpl, META_OP6C(), objlit[builtin#54](undefined), objlit[builtin#54](undefined), desc-tpl, CLOSURE_CTX_B().[wk:0x134], OP_ee(), desc-tpl, CLOSURE_CTX_A().[wk:0x134], OP_12(), fn:'U', str?flags=0x16 idx=1.[wk:0x134], CLOSURE_CTX_B(), param[0], objlit[items](param[1]), fn:'U', OP30(), OP_c0(), num[62398466], str?flags=0x3 idx=48, PUSH_D(), const[ee031e01], DECL_SLOT(), DECL_SLOT(), pool[146], DECL_SLOT(), META_OP6C(), DECL_SLOT(), OP_75(), desc-tpl, CLOSURE_CTX_A(), param[0], objlit[key](undefined), OP_f2().[wk:0x153], CLOSURE_CTX_A(), FN_PROLOGUE(), OP_ee(), desc-tpl, CLOSURE_CTX_B().[wk:0x134], str?flags=0x42 idx=14, f0(fn:'U'), str?flags=0x1f idx=1, PUSH_D(), const[b404410d], DECL_SLOT(), desc-tpl, CLOSURE_CTX_A().[wk:0x134], CLOSURE_CTX_B(), param[0], objlit[argument](undefined), OP_f2().[wk:0x154], str?flags=0x51 idx=6, fn:'U', OP30(), globalThis, const[63180098], PUSH_D(), const[64010064], desc-tpl, objlit[evaluate](undefined).[wk:0x134], CLOSURE_CTX_B(), param[0], objlit[left](undefined), OP_f2().[wk:0x156], CLOSURE_CTX_B(), param[0], objlit[right](undefined), OP_f2().[wk:0x157], fn:'U', OP30(), str?flags=0x9 idx=1, desc-tpl, CLOSURE_CTX_A().[wk:0x134], CLOSURE_CTX_B(), param[0], objlit[condition](undefined), OP_f2().[wk:0x158], CLOSURE_CTX_B(), param[0], objlit[whenTrue](undefined), OP_f2().[wk:0x159], CLOSURE_CTX_B(), param[0], objlit[whenFalse](undefined), str?flags=0x64 idx=7, OP_fa()) | str?flags=0x9 idx=1 | desc-tpl | CLOSURE_CTX_A().[wk:0x134] | CLOSURE_CTX_B() | param[0] | objlit[builtin#73](undefined) | OP_f2().[wk:0x49] | str?flags=0x6e idx=6 | fn:'U' | OP_fc() | call25(?) | str?flags=0x9 idx=1 | desc-tpl | CLOSURE_CTX_A().[wk:0x134] | CLOSURE_CTX_B() | param[0] | objlit[builtin#73](undefined) | OP_f2().[wk:0x49] | CLOSURE_CTX_B() | param[0] | objlit[builtin#87](undefined) | str?flags=0x77 idx=6 | fn:'U' | OP30() | OP_bc() | str?flags=0x3 idx=13 | OP_16() | const[82042801] | OP_ba() | pair(str?flags=0x2 idx=13, load[auxdc03]) | … | … | const[da031401] | DECL_SLOT() | DECL_SLOT() | objlit[kind](objlit[builtin#78](undefined)) | META_OP6C() | const[99] | META_OP6C() | EQ_STRICT() | OP_2f() | desc-tpl | CLOSURE_CTX_C().[wk:0x134] | CLOSURE_CTX_D() | param[0] | OP_4a() | desc-tpl | LOAD_61().[wk:0x134] | objlit[builtin#54](objlit[builtin#78](undefined)).[wk:0x36] | LOAD_61() | param[0] | objlit[args](undefined) | EQ_STRICT() | desc-tpl | LOAD_61().[wk:0x134] | CLOSURE_CTX_D() | param[0] | objlit[builtin#78](undefined) | OP_f2().[wk:0x4e] | LOAD_61() | param[0] | objlit[args](undefined) | objlit[getOwnProperty](PUSH_STR2()) | objlit[DEFAULT_RECEIVER_MACRO_SPECS](PUSH_STR2()) | EQ_STRICT() | str?flags=0x80 idx=1 | IMPORT_BINDING() | OP_4a() | num[2382366959] | const[022be4ee] | fn:'U' | PUSH_C8() | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | OP_17() | const[de031601] | OP_bc() | str?flags=0x3 idx=13 | OP_2b() | OP_86() | const[56885546] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | objlit[builtin#73](PUSH_EXPORTS()) | objlit[getOwnProperty](PUSH_STR2()) | objlit[receiverCallSpecs](param[0]) | v06 | undefined | OP_2f() | CLOSURE_CTX_D() | objlit[field](PUSH_EXPORTS()) | OP_ea() | LOAD_61() | param[0] | objlit[args](param[1]) | !(globalThis) | META_OP6C() | objlit[kind](v06) | META_OP6C() | META_OP6C() | OP_6f() | desc-tpl | OP_6f() | DUP() | OP_2f() | EQ_STRICT() | desc-tpl | LOAD_61().[wk:0x134] | undefined.[wk:0x164] | undefined.[wk:0x15c] | desc-tpl | LOAD_61().[wk:0x134] | undefined.[wk:0x164] | undefined.[wk:0x15c] | objlit[getOwnProperty](PUSH_STR2()) | OP_4e() | num[33675264] | PUSH_C() | OP_2b() | IMPORT_MODULE() | OP_d0() | PUSH_C() | PUSH_C() | OP_2b() | OP_2b() | fn:'U' | PUSH_C8() | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | str?flags=0x3 idx=13 | const[0dc40309] | const[8c042d01] | OP_8a() | const[62521644] | num[1124382733] | load[aux6403] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LT() | OP_2f() | CLOSURE_CTX_C() | param[0] | objlit[builtin#73](objlit[builtin#78](param[1])) | desc-tpl | objlit[builtin#54](undefined).[wk:0x36] | CLOSURE_CTX_C() | param[0] | OP_4a() | OP_b9() | OP_ea() | desc-tpl | CLOSURE_CTX_D().[wk:0x134] | undefined.[wk:0x164] | undefined.[wk:0x147] | CLOSURE_CTX_C() | param[0] | OP_4a() | desc-tpl | LOAD_61().[wk:0x134] | undefined.[wk:0x164] | undefined.[wk:0x16c] | objlit[getOwnProperty](PUSH_STR2()) | PUSH_STR2() | str?flags=0xb5 idx=1 | OP_da() | OP_d0() | call21(?) | call21(?) | OP_ee() | fn:'U' | PUSH_I8() | num[63184897] | PUSH_D() | OP_92() | DECL_SLOT() | LT() | OP_75() | CLOSURE_CTX_A() | FN_PROLOGUE() | fn:'U' | META_OP6C() | META_OP6C() | DUP() | LOCAL_OP2().builtin#92 | param[0] | OP_2f() | META_OP6C() | META_OP6C() | DUP() | LOCAL_OP2().builtin#92 | param[0] | OP_2f() | META_OP6C() | META_OP6C() | DUP() | LOCAL_OP2().builtin#92 | param[0] | OP_2f()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -770,7 +770,7 @@
 
   // ---- FUNCTION-UNIT: 'U' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   locop 0xca(param[0])
@@ -808,7 +808,7 @@
 
   // ---- FUNCTION-UNIT: 'U' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x18 TRIPLE_OP [?]
   …(pad)
   locop 0xca(param[0])
@@ -853,7 +853,7 @@
   // discard(OP_5d())
 
   // ---- FUNCTION-UNIT: 'U' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x18 TRIPLE_OP [?]
   locop 0xca(const[640000d2])
   // op 0xde CLOSURE_CTX_A [~]
@@ -865,7 +865,7 @@
 
   // ---- FUNCTION-UNIT: 'U' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x18 TRIPLE_OP [?]
   locop 0xca(const[640000d2])
   // op 0xde CLOSURE_CTX_A [~]
@@ -879,7 +879,7 @@
   // discard(load[aux0000])
 
   // ---- FUNCTION-UNIT: 'U' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x32 OP_32 [?]
   …(pad)
   locop 0xca(param[0])
@@ -899,7 +899,7 @@
   // discard(load[aux0000])
 
   // ---- FUNCTION-UNIT: 'U' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x32 OP_32 [?]
   …(pad)
   locop 0xca(param[0])
@@ -920,7 +920,7 @@
 
   // ---- FUNCTION-UNIT: 'U' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x32 OP_32 [?]
   …(pad)
   locop 0xca(param[0])
@@ -940,7 +940,7 @@
   // discard(load[aux0000])
 
   // ---- FUNCTION-UNIT: 'U' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x33 OP_33 [?]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(param[0])
@@ -953,7 +953,7 @@
   // discard(load[aux0000])
 
   // ---- FUNCTION-UNIT: 'U' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x34 OP_34 [?]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(param[0])
@@ -995,7 +995,7 @@
   // discard(push2271)
 
   // ---- FUNCTION-UNIT: 'U' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x2f OP_2f [?]
   // op 0x94 OP_94 [?]
   …(pad)
@@ -1016,7 +1016,7 @@
   // discard(OP_e9())
 
   // ---- FUNCTION-UNIT: 'U' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x30 OP30 [?]
   // op 0x90 OP_90 [?]
   …(pad)
@@ -1035,7 +1035,7 @@
 
   // ---- FUNCTION-UNIT: 'U' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x18 TRIPLE_OP [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -1054,7 +1054,7 @@
 
   // ---- FUNCTION-UNIT: 'U' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x18 TRIPLE_OP [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -1078,7 +1078,7 @@
   // discard(OP_e9())
 
   // ---- FUNCTION-UNIT: 'U' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x18 TRIPLE_OP [?]
   locop 0xca(const[640000d2])
   // op 0xde CLOSURE_CTX_A [~]
@@ -1090,7 +1090,7 @@
 
   // ---- FUNCTION-UNIT: 'U' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x18 TRIPLE_OP [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -1157,7 +1157,7 @@
   // discard(str?flags=0xd4 idx=2)
 
   // ---- FUNCTION-UNIT: 'U' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x18 TRIPLE_OP [?]
   // op 0x92 OP_92 [?]
   …(pad)
@@ -1408,7 +1408,7 @@
   // discard(fn:'U'.assertNumber(param[0], PUSH_EXPORTS()))
   // op 0x68 PUSH_STR2 [~]
   // op 0xd4 PUSH_EXPORTS [✓]
-  // stack@INIT-END: OP_fb() | fn:'U' | OP_be() | const[0030c003] | const[0120c403] | num[23339010] | DECL_SLOT() | DECL_SLOT() | LT() | fn:'U' | OP_be() | const[0030c003] | const[0130c403] | num[62267394] | TRIPLE_OP() | const[64010064] | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[149] | const[68] | TRIPLE_OP() | call25(undefined.operation; call22(CLOSURE_CTX_A(); objlit[argument](undefined), param[1], PUSH_EXPORTS(), OP_d5())) | TRIPLE_OP() | call25(undefined.operation; call22(CLOSURE_CTX_A(); objlit[left](undefined), param[1], PUSH_EXPORTS(), OP_d5()), call22(CLOSURE_CTX_A(); objlit[right](undefined), param[1], PUSH_EXPORTS(), OP_d5())) | fn:'U' | OP_32() | str?flags=0x18 idx=1 | CLOSURE_CTX_A() | CLOSURE_CTX_A() | fn:'U' | OP_32() | str?flags=0x18 idx=1 | CLOSURE_CTX_A() | CLOSURE_CTX_A() | fn:'U' | OP_32() | str?flags=0x18 idx=1 | CLOSURE_CTX_A() | f0(call22(CLOSURE_CTX_B(); objlit[condition](undefined), param[1], PUSH_EXPORTS(), OP_d5())) | fn:'U' | OP_33() | const[e2031801] | DECL_SLOT() | call23(CLOSURE_CTX_A(); call22(CLOSURE_CTX_B(); objlit[builtin#73](undefined), param[1], PUSH_EXPORTS(), OP_d5()), objlit[field](undefined)) | fn:'U' | OP_be() | OP_34() | const[e2031801] | DECL_SLOT() | call23(CLOSURE_CTX_A(); call22(CLOSURE_CTX_B(); objlit[builtin#73](undefined), param[1], PUSH_EXPORTS(), OP_d5()), call22(CLOSURE_CTX_B(); objlit[builtin#87](undefined), param[1], PUSH_EXPORTS(), OP_d5())) | fn:'U' | TRIPLE_OP() | const[b803010d] | OP_6f() | OP_2f() | str?flags=0xa1 idx=2 | fn:'U' | OP_be() | const[0030c003] | OP_2f() | OP_94() | const[23331121] | DECL_SLOT() | CLOSURE_CTX_B() | CLOSURE_CTX_C() | fn:'U' | OP_be() | const[00309204] | OP_90() | const[6553903] | call23(CLOSURE_CTX_A(); call22(CLOSURE_CTX_B(); objlit[builtin#78](undefined), param[1], PUSH_EXPORTS(), OP_d5()), param[1], PUSH_EXPORTS(), call22(CLOSURE_CTX_C(); objlit[args](undefined), param[1], PUSH_EXPORTS(), OP_d5())) | fn:'U' | TRIPLE_OP() | const[90042f01] | DECL_SLOT() | DECL_SLOT() | fn:'U' | TRIPLE_OP() | const[90042f01] | TRIPLE_OP() | objlit[regex](undefined).test | call25(pool[149]; f0(call22(CLOSURE_CTX_A(); objlit[receiver](undefined), param[1], PUSH_EXPORTS(), OP_d5()))) | fn:'U' | TRIPLE_OP() | const[8e042e01] | DECL_SLOT() | DECL_SLOT() | undefined.collectionFunction | undefined | CLOSURE_CTX_B() | fn:'U' | TRIPLE_OP() | OP_8e() | const[23331118] | DECL_SLOT() | PUSH_STR2().map | undefined | CLOSURE_CTX_C() | objlit[filter](undefined) | param[1] | OP_f2() | OP_e2() | str?flags=0x18 idx=1 | desc-tpl | PUSH_EXPORTS().[wk:0x150] | PUSH_B().[wk:0x40] | str?flags=0xce idx=2 | PUSH_C() | call21(?).U | globalThis | str?flags=0x0 idx=3 | fn:'U' | TRIPLE_OP() | OP_92() | DECL_SLOT() | FN_PROLOGUE() | fn:'U' | PUSH_WK2() | OP_ad() | OP_2f() | fn:'U' | DECL_SLOT() | v06 | undefined | OP_2f() | OP_2f() | fn:'U' | PUSH_WK2() | 's' | num[25613] | CLOSURE_CTX_A() | !(f0(param[0])) | OP_2f() | objlit[getOwnProperty](PUSH_STR2()) | param[0] | v06 | undefined | OP_2f() | fn:'U' | OP30() | OP_c0() | PUSH_D() | str?flags=0x30 idx=184 | OP35() | const[ba03020d] | META_OP6C() | DECL_SLOT() | pool[148] | OP_a9() | DUP() | OP_2f() | META_OP6C() | DECL_SLOT() | pool[148] | OP_a9() | DUP() | OP_2f() | call25(param[0].charAt; undefined) | CLOSURE_CTX_B() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | pool[149] | objlit[getOwnProperty](PUSH_STR2()) | param[0] | v06 | PUSH_STR2().assertNumber(param[1], PUSH_EXPORTS())
+  // stack@INIT-END: OP_fb() | fn:'U' | PUSH_I8() | const[0030c003] | const[0120c403] | num[23339010] | DECL_SLOT() | DECL_SLOT() | LT() | fn:'U' | PUSH_I8() | const[0030c003] | const[0130c403] | num[62267394] | TRIPLE_OP() | const[64010064] | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[149] | const[68] | TRIPLE_OP() | call25(undefined.operation; call22(CLOSURE_CTX_A(); objlit[argument](undefined), param[1], PUSH_EXPORTS(), OP_d5())) | TRIPLE_OP() | call25(undefined.operation; call22(CLOSURE_CTX_A(); objlit[left](undefined), param[1], PUSH_EXPORTS(), OP_d5()), call22(CLOSURE_CTX_A(); objlit[right](undefined), param[1], PUSH_EXPORTS(), OP_d5())) | fn:'U' | OP_32() | str?flags=0x18 idx=1 | CLOSURE_CTX_A() | CLOSURE_CTX_A() | fn:'U' | OP_32() | str?flags=0x18 idx=1 | CLOSURE_CTX_A() | CLOSURE_CTX_A() | fn:'U' | OP_32() | str?flags=0x18 idx=1 | CLOSURE_CTX_A() | f0(call22(CLOSURE_CTX_B(); objlit[condition](undefined), param[1], PUSH_EXPORTS(), OP_d5())) | fn:'U' | OP_33() | const[e2031801] | DECL_SLOT() | call23(CLOSURE_CTX_A(); call22(CLOSURE_CTX_B(); objlit[builtin#73](undefined), param[1], PUSH_EXPORTS(), OP_d5()), objlit[field](undefined)) | fn:'U' | PUSH_I8() | OP_34() | const[e2031801] | DECL_SLOT() | call23(CLOSURE_CTX_A(); call22(CLOSURE_CTX_B(); objlit[builtin#73](undefined), param[1], PUSH_EXPORTS(), OP_d5()), call22(CLOSURE_CTX_B(); objlit[builtin#87](undefined), param[1], PUSH_EXPORTS(), OP_d5())) | fn:'U' | TRIPLE_OP() | const[b803010d] | OP_6f() | OP_2f() | str?flags=0xa1 idx=2 | fn:'U' | PUSH_I8() | const[0030c003] | OP_2f() | OP_94() | const[23331121] | DECL_SLOT() | CLOSURE_CTX_B() | CLOSURE_CTX_C() | fn:'U' | PUSH_I8() | const[00309204] | OP_90() | const[6553903] | call23(CLOSURE_CTX_A(); call22(CLOSURE_CTX_B(); objlit[builtin#78](undefined), param[1], PUSH_EXPORTS(), OP_d5()), param[1], PUSH_EXPORTS(), call22(CLOSURE_CTX_C(); objlit[args](undefined), param[1], PUSH_EXPORTS(), OP_d5())) | fn:'U' | TRIPLE_OP() | const[90042f01] | DECL_SLOT() | DECL_SLOT() | fn:'U' | TRIPLE_OP() | const[90042f01] | TRIPLE_OP() | objlit[regex](undefined).test | call25(pool[149]; f0(call22(CLOSURE_CTX_A(); objlit[receiver](undefined), param[1], PUSH_EXPORTS(), OP_d5()))) | fn:'U' | TRIPLE_OP() | const[8e042e01] | DECL_SLOT() | DECL_SLOT() | undefined.collectionFunction | undefined | CLOSURE_CTX_B() | fn:'U' | TRIPLE_OP() | OP_8e() | const[23331118] | DECL_SLOT() | PUSH_STR2().map | undefined | CLOSURE_CTX_C() | objlit[filter](undefined) | param[1] | OP_f2() | OP_e2() | str?flags=0x18 idx=1 | desc-tpl | PUSH_EXPORTS().[wk:0x150] | PUSH_B().[wk:0x40] | str?flags=0xce idx=2 | PUSH_C() | call21(?).U | globalThis | str?flags=0x0 idx=3 | fn:'U' | TRIPLE_OP() | OP_92() | DECL_SLOT() | FN_PROLOGUE() | fn:'U' | PUSH_WK2() | OP_ad() | OP_2f() | fn:'U' | DECL_SLOT() | v06 | undefined | OP_2f() | OP_2f() | fn:'U' | PUSH_WK2() | 's' | num[25613] | CLOSURE_CTX_A() | !(f0(param[0])) | OP_2f() | objlit[getOwnProperty](PUSH_STR2()) | param[0] | v06 | undefined | OP_2f() | fn:'U' | OP30() | OP_c0() | PUSH_D() | str?flags=0x30 idx=184 | OP35() | const[ba03020d] | META_OP6C() | DECL_SLOT() | pool[148] | OP_a9() | DUP() | OP_2f() | META_OP6C() | DECL_SLOT() | pool[148] | OP_a9() | DUP() | OP_2f() | call25(param[0].charAt; undefined) | CLOSURE_CTX_B() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | pool[149] | objlit[getOwnProperty](PUSH_STR2()) | param[0] | v06 | PUSH_STR2().assertNumber(param[1], PUSH_EXPORTS())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

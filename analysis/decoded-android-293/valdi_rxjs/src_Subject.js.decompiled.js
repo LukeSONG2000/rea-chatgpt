@@ -11,7 +11,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -67,7 +67,7 @@
   local[9] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.AnonymousSubject (seq 4) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: 'e' | globalThis | OP_82() | str?flags=0xd idx=176 | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | OP_be() | const[0420c003] | const[32256010] | PATCH_REF_LOAD() | const[07606409] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: 'e' | globalThis | OP_82() | str?flags=0xd idx=176 | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | PUSH_I8() | const[0420c003] | const[32256010] | PATCH_REF_LOAD() | const[07606409] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

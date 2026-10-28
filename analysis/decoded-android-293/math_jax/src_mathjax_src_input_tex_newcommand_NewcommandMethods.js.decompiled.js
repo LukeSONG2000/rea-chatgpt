@@ -71,7 +71,7 @@
   // trailer 0xae
   // op 0xe4 CLASS_DEF_POP [~]
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x07 PUSH_B [~]
   …(pad)
@@ -89,12 +89,12 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // discard(undefined(undefined, undefined, undefined, push5))
-  // stack@INIT-END: CLASS_DEF_POP() | const[0200ed01].HandlerType | OP_be() | const[0230f603] | const[0330f803] | const[0430c003] | PATCH_REF_LOAD() | load[auxc403] | PUSH_B() | load[aux6404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[NewcommandUtil](PUSH_STR2()).addEnvironment | param[0] | undefined | objlit[BeginEnv](PUSH_STR2()) | !(globalThis) | param[0].Push(objlit[itemFactory](param[0]).create(const[1]))
+  // stack@INIT-END: CLASS_DEF_POP() | const[0200ed01].HandlerType | PUSH_I8() | const[0230f603] | const[0330f803] | const[0430c003] | PATCH_REF_LOAD() | load[auxc403] | PUSH_B() | load[aux6404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[NewcommandUtil](PUSH_STR2()).addEnvironment | param[0] | undefined | objlit[BeginEnv](PUSH_STR2()) | !(globalThis) | param[0].Push(objlit[itemFactory](param[0]).create(const[1]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xb0 OP_b0 [?]
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -113,7 +113,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // discard(undefined(objlit[Macro](PUSH_STR2()), undefined, undefined, push2))
-  // stack@INIT-END: OP_b0() | num[32636930].HandlerType | OP_be() | const[0230c203] | v06 | load[auxc403] | PUSH_B() | load[aux6402] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | objlit[NewcommandUtil](PUSH_STR2()).addMacro | param[0](undefined, objlit[MacroWithTemplate](PUSH_STR2()), undefined, push1.builtin#92(undefined)) | objlit[NewcommandUtil](PUSH_STR2()).addMacro | param[0] | param[0].Push(objlit[itemFactory](param[0]).create(const[1]))
+  // stack@INIT-END: OP_b0() | num[32636930].HandlerType | PUSH_I8() | const[0230c203] | v06 | load[auxc403] | PUSH_B() | load[aux6402] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | objlit[NewcommandUtil](PUSH_STR2()).addMacro | param[0](undefined, objlit[MacroWithTemplate](PUSH_STR2()), undefined, push1.builtin#92(undefined)) | objlit[NewcommandUtil](PUSH_STR2()).addMacro | param[0] | param[0].Push(objlit[itemFactory](param[0]).create(const[1]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
@@ -203,7 +203,7 @@
   // trailer 0xae
   // op 0x4b OP_4b [?]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xf2 OP_f2 [?]
   …(pad)
   // op 0x2b OP_2b [?]
@@ -222,7 +222,7 @@
   // op 0x5f OP_5f [?]
   // op 0x64 DECL_SLOT [~]
   // op 0xd5 OP_d5 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   locop 0xca(OP_f1())
   // op 0x5e OP_5e [?]

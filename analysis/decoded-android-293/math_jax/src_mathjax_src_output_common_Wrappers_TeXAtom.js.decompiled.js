@@ -34,7 +34,7 @@
   // op 0xff OP_ff [?]
   // op 0x0f OP_0f [?]
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x08 PUSH_C [~]
   locop 0xcc(PUSH_C())
   // op 0x64 DECL_SLOT [~]
@@ -65,7 +65,7 @@
   // op 0xc8 PUSH_C8 [~]
   // op 0x4a OP_4a [?]
   EXPORTS.ic (seq 0) = …;  // …
-  // stack@INIT-END: CLASS_DEF_POP() | PUSH_B() | const[00020401] | OP_20() | OP_be() | const[01201000] | const[00e60100] | const[000c04cd] | DECL_SLOT() | DECL_SLOT() | PUSH_C8() | pair(param[0], objlit[ic](objlit[bbox](OP_4a())))
+  // stack@INIT-END: CLASS_DEF_POP() | PUSH_B() | const[00020401] | OP_20() | PUSH_I8() | const[01201000] | const[00e60100] | const[000c04cd] | DECL_SLOT() | DECL_SLOT() | PUSH_C8() | pair(param[0], objlit[ic](objlit[bbox](OP_4a())))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x95 OP_95 [?]

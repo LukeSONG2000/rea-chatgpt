@@ -44,7 +44,7 @@
   locop 0xcb(push0.[wk:0xeb])
   // op 0x6f OP_6f [?]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @600
   // op 0xe1 CLOSURE_CTX_D [~]
   // op 0xc7 PUSH_C7 [~]

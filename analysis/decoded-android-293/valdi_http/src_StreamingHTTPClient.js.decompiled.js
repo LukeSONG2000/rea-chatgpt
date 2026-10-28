@@ -10,7 +10,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   locop 0xcc(const[0720c100])
   locop 0xcd(local[0])
@@ -54,7 +54,7 @@
   local[9] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.StreamingHTTPClient (seq 1) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: 't' | PUSH_THIS() | OP_ff() | const[0db00300] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | OP_be() | num[32256010] | str?flags=0x5 idx=112 | const[0260c003] | const[32256010] | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: 't' | PUSH_THIS() | OP_ff() | const[0db00300] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | PUSH_I8() | num[32256010] | str?flags=0x5 idx=112 | const[0260c003] | const[32256010] | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x10 OP10 [?]

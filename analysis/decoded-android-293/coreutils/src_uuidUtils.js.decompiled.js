@@ -93,14 +93,14 @@
   // op 0x33 OP_33 [?]
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // op 0x07 PUSH_B [~]
   // op 0x3e OP_3e [?]
-  // stack@INIT-END: OP_3b() | LT() | const[0207022d] | OP_34() | const[01001300] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[2d000c00] | PUSH_E() | PUSH_B() | OP_7b() | OP_1c() | call25(ADD().slice; OP_be()) | str?flags=0xd idx=0 | PUSH_B() | OP_3e()
+  // stack@INIT-END: OP_3b() | LT() | const[0207022d] | OP_34() | const[01001300] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[2d000c00] | PUSH_E() | PUSH_B() | OP_7b() | OP_1c() | call25(ADD().slice; PUSH_I8()) | str?flags=0xd idx=0 | PUSH_B() | OP_3e()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x2e OP_2e [?]
   // op 0x7b OP_7b [?]

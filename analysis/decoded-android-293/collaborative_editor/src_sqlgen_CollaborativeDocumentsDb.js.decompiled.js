@@ -39,8 +39,8 @@
   locop 0xca(f0(const[244]).getValdiRuntime())
   locop 0xcb(f0(const[246]))
   locop 0xcc(f0(const[247]))
-  // op 0xbe OP_be [?]
-  locop 0xcd(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcd(PUSH_I8())
   local[4] = const[241];
   // op 0xb9 OP_b9 [?]
   local[5] = OP_b9();
@@ -228,7 +228,7 @@
   …(pad)
   // discard(str?flags=0x2c idx=2)
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x2e idx=0)
@@ -289,7 +289,7 @@
   jcc-0xeb → @2027
   // discard(DUP())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: ?.open | const[01000400] | OP_be().open | load[auxbc03] | OP_6f() | OP_1c() | OP30().open | CLOSURE_CTX_A() | CLOSURE_CTX_B() | PUSH_STR2().open | CLOSURE_CTX_A() | CLOSURE_CTX_B() | PUSH_STR2() | PUSH_STR2().push(param[0])
+  // stack@INIT-END: ?.open | const[01000400] | PUSH_I8().open | load[auxbc03] | OP_6f() | OP_1c() | OP30().open | CLOSURE_CTX_A() | CLOSURE_CTX_B() | PUSH_STR2().open | CLOSURE_CTX_A() | CLOSURE_CTX_B() | PUSH_STR2() | PUSH_STR2().push(param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x56 OP_56 [?]

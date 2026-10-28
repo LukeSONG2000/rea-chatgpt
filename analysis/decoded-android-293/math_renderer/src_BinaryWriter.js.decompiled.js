@@ -141,14 +141,14 @@
   …(pad)
   // discard(const[02010000])
   …(pad)
-  // op 0xbe OP_be [?]
-  // discard(ADD().builtin#263(OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  // discard(ADD().builtin#263(PUSH_I8()))
   // op 0xc6 PUSH_THIS [~]
   // op 0xc6 PUSH_THIS [~]
   // op 0xea OP_ea [?]
   // discard(objlit[view](PUSH_THIS()).setFloat64(OP_ea(), param[0], !(globalThis)))
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   EXPORTS.builtin#48 (seq 0) = ADD();  // ?
   // ===== 初始化段结束；其后为函数单元 =====
@@ -188,7 +188,7 @@
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   locop 0xcc(param[0].charCodeAt(undefined))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa8 OP_A8 [?]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
@@ -294,7 +294,7 @@
   locop 0xcb(OP_ee())
   // op 0x64 DECL_SLOT [~]
   locop 0xcc(undefined.codePointAt(globalThis))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   jcc-0xeb → @2912
   // op 0xee OP_ee [?]
@@ -306,45 +306,45 @@
   // op 0xa4 OP_a4 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xbf OP_bf [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xee OP_ee [?]
   // op 0xa7 OP_a7 [?]
   jcc-0xeb → @3066
   // op 0xbf OP_bf [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa4 OP_a4 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xbf OP_bf [?]
   // op 0xbc OP_bc [?]
   // op 0xa4 OP_a4 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xbf OP_bf [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xb2 OP_b2 [?]
   jmp → @3150
   // op 0xbf OP_bf [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa4 OP_a4 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xbf OP_bf [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa4 OP_a4 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xbf OP_bf [?]
   // op 0xbc OP_bc [?]
   // op 0xa4 OP_a4 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xbf OP_bf [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xb2 OP_b2 [?]
   // discard(undefined.push(OP_b2(), OP_b2(), OP_b2(), OP_b2()))

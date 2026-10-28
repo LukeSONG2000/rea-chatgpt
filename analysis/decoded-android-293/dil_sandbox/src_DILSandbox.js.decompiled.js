@@ -350,7 +350,7 @@
   // op 0x10 OP10 [?]
   …(pad)
   // discard(OP10())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   locop 0xca(OP30())
@@ -414,7 +414,7 @@
   // op 0xc7 PUSH_C7 [~]
   // op 0xbb OP_bb [?]
   // op 0xb7 PUSH_WK1 [~]
-  // stack@INIT-END: ?../DILSandboxError | OP_be() | const[00c00300] | const[00c20300] | const[00c40300] | const[00c60301] | 'module' | const[00cc030b] | objlit[contexts](PUSH_C9()).builtin#66 | undefined | desc-tpl | undefined.[wk:0x15c] | OP_5e().[wk:0x15d] | PUSH_C9().post | desc-tpl | PUSH_WK1().[wk:0x156] | v06 | objlit[onRegisteredHostAction](OP_5e()) | undefined.[wk:0x157] | objlit[builtin#108](param[0]).[wk:0x6c] | objlit[requiredComponents](param[0]).[wk:0x163] | EQ_STRICT().[wk:0x165] | objlit[id](undefined).[wk:0x158] | OP_b2() | const[02004702] | OP_2b() | OP_1c() | OP_2b() | PUSH_THIS() | OP_d0() | call21(?) | PUSH_C7().enqueueMessage | desc-tpl | OP_bb().[wk:0x156](param[0].[wk:0x157], objlit[messageTimeoutMs](objlit[owner](undefined)), objlit[owner](undefined), !(PUSH_WK1()), v06)
+  // stack@INIT-END: ?../DILSandboxError | PUSH_I8() | const[00c00300] | const[00c20300] | const[00c40300] | const[00c60301] | 'module' | const[00cc030b] | objlit[contexts](PUSH_C9()).builtin#66 | undefined | desc-tpl | undefined.[wk:0x15c] | OP_5e().[wk:0x15d] | PUSH_C9().post | desc-tpl | PUSH_WK1().[wk:0x156] | v06 | objlit[onRegisteredHostAction](OP_5e()) | undefined.[wk:0x157] | objlit[builtin#108](param[0]).[wk:0x6c] | objlit[requiredComponents](param[0]).[wk:0x163] | EQ_STRICT().[wk:0x165] | objlit[id](undefined).[wk:0x158] | OP_b2() | const[02004702] | OP_2b() | OP_1c() | OP_2b() | PUSH_THIS() | OP_d0() | call21(?) | PUSH_C7().enqueueMessage | desc-tpl | OP_bb().[wk:0x156](param[0].[wk:0x157], objlit[messageTimeoutMs](objlit[owner](undefined)), objlit[owner](undefined), !(PUSH_WK1()), v06)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   DECLARE-FUNCTION …
@@ -473,8 +473,8 @@
   …(pad)
   // discard(str?flags=0x48 idx=1)
   …(pad)
-  // op 0xbe OP_be [?]
-  // stack@INIT-END: str?flags=0x44 idx=9 | OP_bc()../DILSandboxError | desc-tpl | OP_be().[wk:0x156] | objlit[contextId](param[0]).[wk:0x157](param[0].[wk:0x16d])
+  // op 0xbe PUSH_I8 [~]
+  // stack@INIT-END: str?flags=0x44 idx=9 | OP_bc()../DILSandboxError | desc-tpl | PUSH_I8().[wk:0x156] | objlit[contextId](param[0]).[wk:0x157](param[0].[wk:0x16d])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x12 OP_12 [?]
@@ -523,9 +523,9 @@
   // op 0xde CLOSURE_CTX_A [~]
   // discard(desc-tpl(param[1].[wk:0x81], param[0].[wk:0x80]))
   // op 0xde CLOSURE_CTX_A [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xdf CLOSURE_CTX_B [~]
-  // stack@INIT-END: objlit[pendingTraceCollections](CLOSURE_CTX_A()).builtin#66 | undefined | CLOSURE_CTX_A().enqueueMessage | desc-tpl | OP_be().[wk:0x156] | globalThis.[wk:0x157](undefined.[wk:0x172], CLOSURE_CTX_B(), v06, !(globalThis), local[0])
+  // stack@INIT-END: objlit[pendingTraceCollections](CLOSURE_CTX_A()).builtin#66 | undefined | CLOSURE_CTX_A().enqueueMessage | desc-tpl | PUSH_I8().[wk:0x156] | globalThis.[wk:0x157](undefined.[wk:0x172], CLOSURE_CTX_B(), v06, !(globalThis), local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -548,7 +548,7 @@
   // op 0x4a OP_4a [?]
   …(pad)
   // discard(const[00000000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0xb8 PUSH_WK2 [~]
@@ -688,7 +688,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @7498
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xaf EQ_STRICT [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @7498
@@ -758,7 +758,7 @@
   jmp → @8174
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @8212
-  // stack@INIT-END: OP_4a() | num[162560]../DILSandboxError | OP_be() | const[00c00301] | OP30() | PUSH_WK2() | str?flags=0x3 idx=5 | str?flags=0x3 idx=3 | 'module' | str?flags=0x5 idx=5 | const[0008c406] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | META_OP6C() | OP_b9() | META_OP6C() | OP_b9() | globalThis | OP_bb() | META_OP6C() | OP_d5() | objlit[controlMessages](LOAD_M3()).unshift(undefined) | OP_ee() | DECL_SLOT() | v06 | undefined | PUSH_WK1() | str?flags=0x6e idx=38 | OP_bf() | OP_bc() | OP_53() | OP_f1() | OP35() | num[67224064] | str?flags=0x0 idx=0../DILSandboxError | OP_c0() | const[0030c203] | const[0130c403] | const[0230c603] | const[0320c803] | const[04301000] | const[00b80301] | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | OP_b9() | objlit[kind](param[0]) | pool[154].stringify(objlit[appData](param[0])) | OP_b9() | objlit[kind](param[0]).[wk:0x17c] | undefined.[wk:0x16b] | v06.slice().[wk:0x163] | param[0].[wk:0x33] | OP_d5().[wk:0x17d] | PUSH_EXPORTS().[wk:0x15d] | undefined.[wk:0x177] | undefined.[wk:0x178] | param[1].[wk:0x17e] | str?flags=0x82 idx=1 | PUSH_EXPORTS() | num[2181041410] | OP_53() | num[723591467] | OP_2b()../DILSandboxError | PUSH_WK2() | str?flags=0x5 idx=0 | const[4008c404] | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT()
+  // stack@INIT-END: OP_4a() | num[162560]../DILSandboxError | PUSH_I8() | const[00c00301] | OP30() | PUSH_WK2() | str?flags=0x3 idx=5 | str?flags=0x3 idx=3 | 'module' | str?flags=0x5 idx=5 | const[0008c406] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | META_OP6C() | OP_b9() | META_OP6C() | OP_b9() | globalThis | OP_bb() | META_OP6C() | OP_d5() | objlit[controlMessages](LOAD_M3()).unshift(undefined) | OP_ee() | DECL_SLOT() | v06 | undefined | PUSH_WK1() | str?flags=0x6e idx=38 | OP_bf() | OP_bc() | OP_53() | OP_f1() | OP35() | num[67224064] | str?flags=0x0 idx=0../DILSandboxError | OP_c0() | const[0030c203] | const[0130c403] | const[0230c603] | const[0320c803] | const[04301000] | const[00b80301] | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | OP_b9() | objlit[kind](param[0]) | pool[154].stringify(objlit[appData](param[0])) | OP_b9() | objlit[kind](param[0]).[wk:0x17c] | undefined.[wk:0x16b] | v06.slice().[wk:0x163] | param[0].[wk:0x33] | OP_d5().[wk:0x17d] | PUSH_EXPORTS().[wk:0x15d] | undefined.[wk:0x177] | undefined.[wk:0x178] | param[1].[wk:0x17e] | str?flags=0x82 idx=1 | PUSH_EXPORTS() | num[2181041410] | OP_53() | num[723591467] | OP_2b()../DILSandboxError | PUSH_WK2() | str?flags=0x5 idx=0 | const[4008c404] | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT()
   // ===== 初始化段结束；其后为函数单元 =====
   // discard(objlit[timeout](undefined).dispose())
   // op 0xc3 LOAD_M3 [~]
@@ -909,7 +909,7 @@
   // trailer 0xae
   …(pad)
   DECLARE-FUNCTION …
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // discard(num[253])
   …(pad)
@@ -972,7 +972,7 @@
   // op 0xb5 OP_b5 [?]
   …(pad)
   // discard(const[02010000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x40 OP_40 [?]
@@ -990,7 +990,7 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @11248
-  // stack@INIT-END: OP_b2() | OP_b5()../DILSandboxError | OP_be() | const[0430c003] | PUSH_B() | OP_40() | str?flags=0x11 idx=13 | load[0d] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT()
+  // stack@INIT-END: OP_b2() | OP_b5()../DILSandboxError | PUSH_I8() | const[0430c003] | PUSH_B() | OP_40() | str?flags=0x11 idx=13 | load[0d] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
   locop 0xca(objlit[controlMessages](LOAD_M3()).shift())
@@ -1066,24 +1066,24 @@
   // op 0x0f OP_0f [?]
   // op 0x10 OP10 [?]
   // op 0x64 DECL_SLOT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @12423
   // op 0xc3 LOAD_M3 [~]
   // discard(LOAD_M3().receivePolyfilledTraces(param[0], param[1]))
-  // stack@INIT-END: const[0000000e]../DILSandboxError | OP_bc() | str?flags=0x1 idx=0 | str?flags=0xc idx=3 | str?flags=0x11 idx=3 | str?flags=0x17 idx=3 | const[00e20316] | load[auxbe03] | OP10() | load[aux08c4] | v06 | DECL_SLOT() | OP_be() | objlit[kind](param[0])
+  // stack@INIT-END: const[0000000e]../DILSandboxError | OP_bc() | str?flags=0x1 idx=0 | str?flags=0xc idx=3 | str?flags=0x11 idx=3 | str?flags=0x17 idx=3 | const[00e20316] | load[auxbe03] | OP10() | load[aux08c4] | v06 | DECL_SLOT() | PUSH_I8() | objlit[kind](param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @12463
   // stack@INIT-END: EQ_STRICT()
   // ===== 初始化段结束；其后为函数单元 =====
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @12543
   // op 0xc3 LOAD_M3 [~]
   // discard(LOAD_M3().receiveComponentPreparation(param[0]))
-  // stack@INIT-END: OP_be() | objlit[kind](param[0])
+  // stack@INIT-END: PUSH_I8() | objlit[kind](param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xb8 PUSH_WK2 [~]
   // trailer 0xae
@@ -1222,7 +1222,7 @@
   // op 0x71 OP_71 [?]
   // stack@INIT-END: OP_2f() | OP_71()
   // ===== 初始化段结束；其后为函数单元 =====
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x6c META_OP6C [?]
   // op 0x68 PUSH_STR2 [~]
@@ -1231,7 +1231,7 @@
   // op 0x64 DECL_SLOT [~]
   // trailer 0xae
   jcc-0xeb → @14692
-  // stack@INIT-END: OP_be() | META_OP6C() | objlit[kind](objlit[command](param[0])) | META_OP6C() | DECL_SLOT() | v06 | undefined
+  // stack@INIT-END: PUSH_I8() | META_OP6C() | objlit[kind](objlit[command](param[0])) | META_OP6C() | DECL_SLOT() | v06 | undefined
   // ===== 初始化段结束；其后为函数单元 =====
   local[4] = objlit[interactionId](objlit[command](param[0]));
   // op 0xc3 LOAD_M3 [~]
@@ -1255,7 +1255,7 @@
   // op 0x71 OP_71 [?]
   // stack@INIT-END: OP_2f() | OP_71()
   // ===== 初始化段结束；其后为函数单元 =====
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x6c META_OP6C [?]
   // op 0x68 PUSH_STR2 [~]
@@ -1270,7 +1270,7 @@
   local[5] = objlit[interactionId](objlit[command](param[0]));
   // trailer 0xae
   jcc-0xeb → @15461
-  // stack@INIT-END: OP_be() | META_OP6C() | objlit[kind](objlit[command](param[0])) | objlit[kind](objlit[command](param[0])) | META_OP6C() | DECL_SLOT() | v06 | undefined
+  // stack@INIT-END: PUSH_I8() | META_OP6C() | objlit[kind](objlit[command](param[0])) | objlit[kind](objlit[command](param[0])) | META_OP6C() | DECL_SLOT() | v06 | undefined
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x11 DUP [~]
@@ -1429,7 +1429,7 @@
   // op 0xc6 PUSH_THIS [~]
   …(pad)
   // op 0x69 OP_69 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // discard(num[0])
   // op 0x10 OP10 [?]
   …(pad)
@@ -1713,7 +1713,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0xef OP_ef [?]
   locop 0xca(OP_ef())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
@@ -1737,7 +1737,7 @@
   // op 0xc3 LOAD_M3 [~]
   // discard(LOAD_M3().startWorker())
   // op 0xc3 LOAD_M3 [~]
-  // stack@INIT-END: FN_PROLOGUE()../DILSandboxError | OP_c0() | const[0130c203] | const[0230c403] | const[03301000] | const[00bc0303] | load[aux08c4] | const[1677722468] | num[91136] | DECL_SLOT() | OP_be() | objlit[kind](objlit[builtin#51](v06)) | PUSH_EXPORTS() | LOAD_M3().collectTimedOutWorkerTraces(undefined, param[0], undefined, undefined, undefined)
+  // stack@INIT-END: FN_PROLOGUE()../DILSandboxError | OP_c0() | const[0130c203] | const[0230c403] | const[03301000] | const[00bc0303] | load[aux08c4] | const[1677722468] | num[91136] | DECL_SLOT() | PUSH_I8() | objlit[kind](objlit[builtin#51](v06)) | PUSH_EXPORTS() | LOAD_M3().collectTimedOutWorkerTraces(undefined, param[0], undefined, undefined, undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -2045,7 +2045,7 @@
   DECLARE-FUNCTION …
   …(pad)
   // op 0x4c FN_PROLOGUE [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xbd OP_bd [?]
   …(pad)
@@ -2203,7 +2203,7 @@
   jcc-0xeb → @26975
   // discard(OP_b3())
   jmp → @27011
-  // stack@INIT-END: FN_PROLOGUE() | OP_44() | OP_bd() | OP_87() | desc-tpl | undefined.[wk:0x1b5] | undefined.[wk:0x1aa] | undefined.[wk:0x192] | EQ_STRICT() | const[0200a401] | num[3573698560] | num[33661440] | OP_fd() | OP_2b() | OP_2b() | v06.terminate()
+  // stack@INIT-END: FN_PROLOGUE() | META_RECORD44() | OP_bd() | OP_87() | desc-tpl | undefined.[wk:0x1b5] | undefined.[wk:0x1aa] | undefined.[wk:0x192] | EQ_STRICT() | const[0200a401] | num[3573698560] | num[33661440] | OP_fd() | OP_2b() | OP_2b() | v06.terminate()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -2272,7 +2272,7 @@
   // discard(LOAD_M3().reportOwnerError(OP_d5(), call21(DUP(); param[1], PUSH_EXPORTS(), push0)))
   // stack@INIT-END: OP_9d()../DILSandboxError | OP_c0() | const[00c20301] | OP30() | PUSH_THIS() | 'module' | 'exports' | 'e' | 't' | OP_16() | DUP() | load[auxb603] | load[aux08c4] | PUSH_B() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | v06
   // ===== 初始化段结束；其后为函数单元 =====
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x5e OP_5e [?]
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
@@ -2286,7 +2286,7 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0x94 OP_94 [?]
   // op 0x18 TRIPLE_OP [?]
-  EXPORTS.nextTraceCollectionId (seq 0) = TRIPLE_OP();  // OP_be()
+  EXPORTS.nextTraceCollectionId (seq 0) = TRIPLE_OP();  // PUSH_I8()
   locop 0xcc(?)
   // op 0x68 PUSH_STR2 [~]
   // op 0xf1 OP_f1 [?]
@@ -2306,7 +2306,7 @@
   // op 0x18 TRIPLE_OP [?]
   EXPORTS.nextMessageId (seq 1) = TRIPLE_OP();  // ?
   local[4] = ?;
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   local[5] = undefined.[wk:0x172].[wk:0x33];
   // op 0x6f OP_6f [?]
   // op 0x68 PUSH_STR2 [~]
@@ -2315,7 +2315,7 @@
   // discard(OP_f1())
   // discard(undefined.post(undefined, v06, v06))
   // discard(f0(objlit[kind](objlit[builtin#51](undefined))))
-  // stack@INIT-END: desc-tpl | undefined.[wk:0x17c] | desc-tpl | OP_be().[wk:0x156] | globalThis.[wk:0x157] | OP_6f() | PUSH_STR2() | objlit[dilSandboxHostSendRequestTraceTag](PUSH_STR2())
+  // stack@INIT-END: desc-tpl | undefined.[wk:0x17c] | desc-tpl | PUSH_I8().[wk:0x156] | globalThis.[wk:0x157] | OP_6f() | PUSH_STR2() | objlit[dilSandboxHostSendRequestTraceTag](PUSH_STR2())
   // ===== 初始化段结束；其后为函数单元 =====
   local[6] = ?;
   // op 0x6f OP_6f [?]
@@ -2561,7 +2561,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x85 idx=4())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xde CLOSURE_CTX_A [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x64 DECL_SLOT [~]
@@ -2587,7 +2587,7 @@
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @31625
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jmp → @31626
   // op 0xbd OP_bd [?]
   local[4] = OP_bd();
@@ -2605,7 +2605,7 @@
   // op 0x50 OP_50 [?]
   // op 0xde CLOSURE_CTX_A [~]
   EXPORTS.transport (seq 4) = call22(OP_50().[wk:0x119]; OP_50().[wk:0x1d4], objlit[messageChannelConstructor](CLOSURE_CTX_A()), undefined, local[0]);  // desc-tpl
-  // stack@INIT-END: ?../DILSandboxError | OP_be() | const[04301000] | const[ca03000c] | CLOSURE_CTX_A() | 'd' | num[50586114] | load[d8] | str?flags=0x4 idx=12 | v06 | objlit[messageChannelConstructor](CLOSURE_CTX_A()) | OP_be() | PUSH_STR2() | objlit[dilSandboxHostSendRequestTraceTag](PUSH_STR2()) | f0(undefined) | CLOSURE_CTX_A() | desc-tpl | CLOSURE_CTX_A() | objlit[createDILSandboxWorkerTransport](PUSH_STR2())
+  // stack@INIT-END: ?../DILSandboxError | PUSH_I8() | const[04301000] | const[ca03000c] | CLOSURE_CTX_A() | 'd' | num[50586114] | load[d8] | str?flags=0x4 idx=12 | v06 | objlit[messageChannelConstructor](CLOSURE_CTX_A()) | PUSH_I8() | PUSH_STR2() | objlit[dilSandboxHostSendRequestTraceTag](PUSH_STR2()) | f0(undefined) | CLOSURE_CTX_A() | desc-tpl | CLOSURE_CTX_A() | objlit[createDILSandboxWorkerTransport](PUSH_STR2())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -2672,7 +2672,7 @@
   …(pad)
   // op 0x35 OP35 [?]
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0x2b OP_2b [?]
@@ -2703,7 +2703,7 @@
   // op 0x50 OP_50 [?]
   // op 0x5e OP_5e [?]
   EXPORTS.owner (seq 5) = undefined.[wk:0x18e];  // OP_5e().[wk:0x16a]
-  // stack@INIT-END: OP35()../DILSandboxError | OP_be() | const[00c00301] | pair(OP30(), const[1e0de003]) | … | … | load[aux08cb] | OP_2b() | DECL_SLOT() | PUSH_C7() | desc-tpl | OP_50().[wk:0x1bb] | OP_50().[wk:0x1be]
+  // stack@INIT-END: OP35()../DILSandboxError | PUSH_I8() | const[00c00301] | pair(OP30(), const[1e0de003]) | … | … | load[aux08cb] | OP_2b() | DECL_SLOT() | PUSH_C7() | desc-tpl | OP_50().[wk:0x1bb] | OP_50().[wk:0x1be]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xdf CLOSURE_CTX_B [~]
@@ -2799,23 +2799,23 @@
   // trailer 0xae
   jcc-0xeb → @33584
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @33596
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @33673
   // op 0xde CLOSURE_CTX_A [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @33685
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @33697
-  // stack@INIT-END: DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | OP_be() | DUP() | DUP() | OP_be()
+  // stack@INIT-END: DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | PUSH_I8() | DUP() | DUP() | PUSH_I8()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xad OP_ad [?]

@@ -47,8 +47,8 @@
   local[13] = f0(const[259]);
   local[14] = f0(const[260]);
   local[15] = f0(const[261]);
-  // op 0xbe OP_be [?]
-  local[16] = desc-tpl(OP_be().[wk:0x109]);
+  // op 0xbe PUSH_I8 [~]
+  local[16] = desc-tpl(PUSH_I8().[wk:0x109]);
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -424,7 +424,7 @@
   locop 0xca(num[33654272])
   …(pad)
   // discard(const[04000000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x08 PUSH_C [~]
   local[5] = PUSH_C();
@@ -440,7 +440,7 @@
   locop 0xcb(OP_d5().shift())
   // trailer 0xae
   jcc-0xeb → @7934
-  // stack@INIT-END: OP_4a() | OP_dd() | OP_4a() | OP_4e() | OP_4a() | num[27656400].infoText | OP_be() | const[0030b603] | const[62926849] | const[63057922] | const[62926851] | v06 | const[30100001] | DECL_SLOT() | META_OP6C() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | undefined
+  // stack@INIT-END: OP_4a() | OP_dd() | OP_4a() | OP_4e() | OP_4a() | num[27656400].infoText | PUSH_I8() | const[0030b603] | const[62926849] | const[63057922] | const[62926851] | v06 | const[30100001] | DECL_SLOT() | META_OP6C() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | undefined
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcc(undefined)
   // op 0xea OP_ea [?]

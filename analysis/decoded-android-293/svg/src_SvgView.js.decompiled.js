@@ -35,8 +35,8 @@
   local[5] = f0(const[241]);
   local[6] = f0(const[242]);
   local[7] = f0(const[243]);
-  // op 0xbe OP_be [?]
-  local[8] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[8] = PUSH_I8();
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]

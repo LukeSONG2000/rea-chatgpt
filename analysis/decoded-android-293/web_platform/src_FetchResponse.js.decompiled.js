@@ -28,8 +28,8 @@
   locop 0xcb(f0(const[232]))
   locop 0xcc(f0(const[233]))
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbf OP_bf [?]
   // op 0xbf OP_bf [?]
   // op 0xbf OP_bf [?]

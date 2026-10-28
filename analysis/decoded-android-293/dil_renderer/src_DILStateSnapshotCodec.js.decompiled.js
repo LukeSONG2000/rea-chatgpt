@@ -35,8 +35,8 @@
   EXPORTS.removeDILStateSnapshotValue (seq 4) = pair(PUSH_EXPORTS(), pair(PUSH_EXPORTS(), pair(PUSH_EXPORTS(), pair(PUSH_EXPORTS(), v06))));  // PUSH_EXPORTS()
   // op 0xbf OP_bf [?]
   locop 0xca(OP_bf())
-  // op 0xbe OP_be [?]
-  locop 0xcb(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcb(PUSH_I8())
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xbf OP_bf [?]
   EXPORTS.DIL_ROOT_STATE_MAX_ENTRIES (seq 5) = OP_bf();  // PUSH_EXPORTS()
@@ -73,7 +73,7 @@
   // discard(push13)
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xde CLOSURE_CTX_A [~]
   // op 0x11 DUP [~]
@@ -171,11 +171,11 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
-  // discard(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_I8())
   …(pad)
   // op 0x30 OP30 [?]
   // op 0x09 PUSH_D [~]
@@ -301,7 +301,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   …(pad)
@@ -364,7 +364,7 @@
   …(pad)
   // op 0x0a PUSH_E [~]
   …(pad)
-  // stack-tail: OP_2f() | fn:'builtin#262' | OP_be() | const[0030c203] | v06 | const[c0030501] | DECL_SLOT() | CLOSURE_CTX_A() | FN_PROLOGUE() | fn:'builtin#262' | LOCAL_OP2() | str?flags=0x6 idx=1 | PATCH_REF_LOAD() | CLOSURE_CTX_A() | OP_20() | OP30() | str?flags=0x8 idx=1 | PUSH_D() | const[d3be08a8] | PUSH_B() | OP_ac() | OP_ac() | CLOSURE_CTX_A() | OP_ac() | call25(pool[148].isFinite; param[0]) | PUSH_EXPORTS().builtin#99(param[0]) | OP_6f() | META_OP6C() | OP_1c() | fn:'builtin#262' | OP_be() | const[00c00301] | OP30() | v06 | str?flags=0x48 idx=2 | pool[146].isArray(param[0]) | OP_2f() | OP_3a() | PUSH_E()
+  // stack-tail: OP_2f() | fn:'builtin#262' | PUSH_I8() | const[0030c203] | v06 | const[c0030501] | DECL_SLOT() | CLOSURE_CTX_A() | FN_PROLOGUE() | fn:'builtin#262' | LOCAL_OP2() | str?flags=0x6 idx=1 | PATCH_REF_LOAD() | CLOSURE_CTX_A() | OP_20() | OP30() | str?flags=0x8 idx=1 | PUSH_D() | const[d3be08a8] | PUSH_B() | OP_ac() | OP_ac() | CLOSURE_CTX_A() | OP_ac() | call25(pool[148].isFinite; param[0]) | PUSH_EXPORTS().builtin#99(param[0]) | OP_6f() | META_OP6C() | OP_1c() | fn:'builtin#262' | PUSH_I8() | const[00c00301] | OP30() | v06 | str?flags=0x48 idx=2 | pool[146].isArray(param[0]) | OP_2f() | OP_3a() | PUSH_E()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

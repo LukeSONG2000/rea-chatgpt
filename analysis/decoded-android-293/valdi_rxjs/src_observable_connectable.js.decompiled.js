@@ -32,7 +32,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x8 idx=0)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(param[0])
   // op 0x11 DUP [~]
@@ -107,7 +107,7 @@
   …(pad)
   // discard(str?flags=0x11 idx=0)
   …(pad)
-  // stack-tail: objlit[builtin#262]('../Subject') | OP_be() | const[0120d003] | num[64118784] | num[64253955] | num[64385028] | num[64512005] | num[62533638] | num[50576397] | load[auxb803] | const[0d640100] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[1] | call25(str?flags=0xc idx=8.builtin#262; param[0]).builtin#262 | PUSH_EXPORTS() | objlit[defer](PUSH_STR2()) | str?flags=0x11 idx=4 | const[020e4206] | const[00000000] | const[01000200] | globalThis | str?flags=0x0 idx=2.builtin#262 | const[00000002]
+  // stack-tail: objlit[builtin#262]('../Subject') | PUSH_I8() | const[0120d003] | num[64118784] | num[64253955] | num[64385028] | num[64512005] | num[62533638] | num[50576397] | load[auxb803] | const[0d640100] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | param[1] | call25(str?flags=0xc idx=8.builtin#262; param[0]).builtin#262 | PUSH_EXPORTS() | objlit[defer](PUSH_STR2()) | str?flags=0x11 idx=4 | const[020e4206] | const[00000000] | const[01000200] | globalThis | str?flags=0x0 idx=2.builtin#262 | const[00000002]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

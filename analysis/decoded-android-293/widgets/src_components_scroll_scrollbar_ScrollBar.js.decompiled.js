@@ -71,16 +71,16 @@
   local[20] = OP_bc();
   // op 0xb7 PUSH_WK1 [~]
   local[21] = PUSH_WK1();
-  // op 0xbe OP_be [?]
-  local[22] = OP_be();
-  // op 0xbe OP_be [?]
-  local[23] = OP_be();
-  // op 0xbe OP_be [?]
-  local[24] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[22] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[23] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[24] = PUSH_I8();
   // op 0xbf OP_bf [?]
   local[25] = OP_bf();
-  // op 0xbe OP_be [?]
-  local[26] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[26] = PUSH_I8();
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -109,20 +109,20 @@
   // op 0xbc OP_bc [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbb OP_bb [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbb OP_bb [?]
-  local[33] = OP_be().[wk:0x125](OP_bb().[wk:0x14a]).[wk:0x14b];
-  // stack@INIT-END: OP_f8() | num[17187598] | pair(str?flags=0x22 idx=3, OP_85()) | … | … | call25(?) | const[00b20300] | const[00b40300] | const[00b60301] | OP30() | OP_ba() | 'module' | 'exports' | 'e' | 't' | 'o' | 'i' | 'r' | 'n' | 's' | 'a' | 'd' | 'l' | 'c' | 'h' | 'u' | 'b' | 'g' | 'm' | 'S' | 'y' | 'v' | 'R' | 'p' | 'T' | 'w' | str?flags=0x2 idx=34 | const[031c70ec] | 'C' | OP_20() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[255] | undefined.makeNodePrototype | const[264] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DUP() | desc-tpl | const[283].[wk:0x11c] | globalThis.[wk:0x11d] | globalThis.[wk:0x11e] | undefined.extend | desc-tpl | DUP() | desc-tpl | desc-tpl | undefined.extend | desc-tpl | v06.[wk:0x11f](OP_bc().[wk:0x125]).[wk:0x126] | undefined.extend | desc-tpl | objlit[OBJECT](objlit[Background](objlit[SemanticColor](undefined))).[wk:0x12a] | PUSH_WK1().[wk:0x11f] | PUSH_WK1().[wk:0x120] | !(globalThis).[wk:0x124](OP_be().[wk:0x12b]).[wk:0x12c] | undefined.extend | desc-tpl | objlit[TERTIARY](objlit[Button](objlit[SemanticColor](undefined))).[wk:0x12a] | undefined.[wk:0x12f](v06.[wk:0x11e]).[wk:0x130] | undefined.extend | desc-tpl | const[283].[wk:0x11c] | undefined.[wk:0x12f] | v06.[wk:0x11e] | const[305].[wk:0x132] | const[307].[wk:0x134](const[307].[wk:0x135]).[wk:0x136] | undefined.extend | desc-tpl | objlit[MAIN](objlit[Background](objlit[SemanticColor](undefined))).[wk:0x12a] | const[312].[wk:0x139] | undefined.[wk:0x12f] | OP_be().[wk:0x11d] | OP_be().[wk:0x120] | const[314].[wk:0x13b] | const[307].[wk:0x13c] | v06.[wk:0x11f] | objlit[systemFont](undefined) | f0(OP_be()).[wk:0x13e](objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x141]).[wk:0x142] | undefined.extend | desc-tpl | const[312].[wk:0x139] | objlit[TERTIARY](objlit[Button](objlit[SemanticColor](undefined))).[wk:0x12a] | const[323].[wk:0x13b] | const[307].[wk:0x13c] | OP_be().[wk:0x12f] | objlit[systemFont](undefined) | f0(OP_be()).[wk:0x13e](objlit[ON_TERTIARY_BUTTON](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x141]).[wk:0x145] | undefined.extend | desc-tpl | objlit[TERTIARY](objlit[Button](objlit[SemanticColor](undefined))).[wk:0x12a] | const[326].[wk:0x123] | OP_bb().[wk:0x11d] | undefined.[wk:0x12f] | OP_be().[wk:0x125] | OP_be().[wk:0x13b] | const[327].[wk:0x135](v06.[wk:0x11f]).[wk:0x148] | undefined.extend | desc-tpl | objlit[PLAYER](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x12a] | PUSH_WK2().[wk:0x12f]
+  local[33] = PUSH_I8().[wk:0x125](OP_bb().[wk:0x14a]).[wk:0x14b];
+  // stack@INIT-END: OP_f8() | num[17187598] | pair(str?flags=0x22 idx=3, OP_85()) | … | … | call25(?) | const[00b20300] | const[00b40300] | const[00b60301] | OP30() | OP_ba() | 'module' | 'exports' | 'e' | 't' | 'o' | 'i' | 'r' | 'n' | 's' | 'a' | 'd' | 'l' | 'c' | 'h' | 'u' | 'b' | 'g' | 'm' | 'S' | 'y' | 'v' | 'R' | 'p' | 'T' | 'w' | str?flags=0x2 idx=34 | const[031c70ec] | 'C' | OP_20() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[255] | undefined.makeNodePrototype | const[264] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | DUP() | desc-tpl | const[283].[wk:0x11c] | globalThis.[wk:0x11d] | globalThis.[wk:0x11e] | undefined.extend | desc-tpl | DUP() | desc-tpl | desc-tpl | undefined.extend | desc-tpl | v06.[wk:0x11f](OP_bc().[wk:0x125]).[wk:0x126] | undefined.extend | desc-tpl | objlit[OBJECT](objlit[Background](objlit[SemanticColor](undefined))).[wk:0x12a] | PUSH_WK1().[wk:0x11f] | PUSH_WK1().[wk:0x120] | !(globalThis).[wk:0x124](PUSH_I8().[wk:0x12b]).[wk:0x12c] | undefined.extend | desc-tpl | objlit[TERTIARY](objlit[Button](objlit[SemanticColor](undefined))).[wk:0x12a] | undefined.[wk:0x12f](v06.[wk:0x11e]).[wk:0x130] | undefined.extend | desc-tpl | const[283].[wk:0x11c] | undefined.[wk:0x12f] | v06.[wk:0x11e] | const[305].[wk:0x132] | const[307].[wk:0x134](const[307].[wk:0x135]).[wk:0x136] | undefined.extend | desc-tpl | objlit[MAIN](objlit[Background](objlit[SemanticColor](undefined))).[wk:0x12a] | const[312].[wk:0x139] | undefined.[wk:0x12f] | PUSH_I8().[wk:0x11d] | PUSH_I8().[wk:0x120] | const[314].[wk:0x13b] | const[307].[wk:0x13c] | v06.[wk:0x11f] | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0x13e](objlit[PRIMARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x141]).[wk:0x142] | undefined.extend | desc-tpl | const[312].[wk:0x139] | objlit[TERTIARY](objlit[Button](objlit[SemanticColor](undefined))).[wk:0x12a] | const[323].[wk:0x13b] | const[307].[wk:0x13c] | PUSH_I8().[wk:0x12f] | objlit[systemFont](undefined) | f0(PUSH_I8()).[wk:0x13e](objlit[ON_TERTIARY_BUTTON](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x141]).[wk:0x145] | undefined.extend | desc-tpl | objlit[TERTIARY](objlit[Button](objlit[SemanticColor](undefined))).[wk:0x12a] | const[326].[wk:0x123] | OP_bb().[wk:0x11d] | undefined.[wk:0x12f] | PUSH_I8().[wk:0x125] | PUSH_I8().[wk:0x13b] | const[327].[wk:0x135](v06.[wk:0x11f]).[wk:0x148] | undefined.extend | desc-tpl | objlit[PLAYER](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x12a] | PUSH_WK2().[wk:0x12f]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xee OP_ee [?]
@@ -526,7 +526,7 @@
   // op 0x7b OP_7b [?]
   …(pad)
   // discard(OP_7b())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -534,7 +534,7 @@
   // op 0xc3 LOAD_M3 [~]
   locop 0xca(objlit[scrollViewHandler](objlit[viewModel](LOAD_M3())))
   jcc-0xeb → @7567
-  // stack@INIT-END: str?flags=0x30 idx=57 | OP_bb() | const[0200c801] | OP_8c() | OP_ad() | const[0200a501] | OP_a4() | const[0200cc01].HvyChFmY5hg_h-PS | OP_be() | const[03301000] | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(undefined)
+  // stack@INIT-END: str?flags=0x30 idx=57 | OP_bb() | const[0200c801] | OP_8c() | OP_ad() | const[0200a501] | OP_a4() | const[0200cc01].HvyChFmY5hg_h-PS | PUSH_I8() | const[03301000] | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
@@ -571,14 +571,14 @@
   EXPORTS.builtin#9730 (seq 9730) = str?flags=0x41 idx=16;  // ?
   …(pad)
   // discard(const[0226fde4])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc3 LOAD_M3 [~]
   locop 0xca(objlit[scrollViewHandler](objlit[viewModel](LOAD_M3())))
   jcc-0xeb → @8079
-  // stack@INIT-END: ?.HvyChFmY5hg_h-PS | OP_be() | const[0330c003] | const[04301000] | const[00e20316] | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | !(undefined)
+  // stack@INIT-END: ?.HvyChFmY5hg_h-PS | PUSH_I8() | const[0330c003] | const[04301000] | const[00e20316] | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | !(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
@@ -610,9 +610,9 @@
   // op 0xa1 OP_a1 [?]
   // op 0x9d OP_9d [?]
   locop 0xcd(OP_9d())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   local[4] = OP_a1();
   // op 0xc3 LOAD_M3 [~]
@@ -624,7 +624,7 @@
   EXPORTS.builtin#9730 (seq 9730) = str?flags=0x4b idx=21;  // ?
   …(pad)
   // discard(num[33660672])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -632,7 +632,7 @@
   // op 0xc3 LOAD_M3 [~]
   locop 0xca(objlit[scrollViewHandler](objlit[viewModel](LOAD_M3())))
   jcc-0xeb → @8713
-  // stack@INIT-END: const[02260041].HvyChFmY5hg_h-PS | OP_be() | const[03301000] | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(undefined)
+  // stack@INIT-END: const[02260041].HvyChFmY5hg_h-PS | PUSH_I8() | const[03301000] | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
   locop 0xcb(objlit[scrollBarHandler](objlit[viewModel](LOAD_M3())))

@@ -578,10 +578,10 @@
   // op 0xea OP_ea [?]
   // trailer 0xae
   jcc-0xeb → @3622
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   jmp → @3628
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xeb → @3673
@@ -679,7 +679,7 @@
   // op 0x30 OP30 [?]
   // op 0x7b OP_7b [?]
   // op 0x7a OP_7a [?]
-  // stack@INIT-END: OP_3f() | str?flags=0x0 idx=136 | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | const[5b001c0c] | pair(OP_ff(), OP_7f()) | … | … | OP_1c() | OP_1c() | pair(OP_ff(), OP_7f()) | … | … | const[00300039] | PUSH_E() | load[02] | v06 | pool[148] | OP_39() | OP30() | OP_8c() | const[0001003f] | PUSH_C() | v06 | OP_ff() | desc-tpl | OP_1c() | pair(PUSH_C(), num[16777216]) | … | … | const[00300039] | PUSH_E() | v06 | fn:'decodeURIComponent' | param[0].builtin#93(const[257]) | EQ_STRICT() | !(OP_33().test(undefined)) | OP_A8() | undefined | CLOSURE_CTX_A() | !(f0(undefined)) | OP_ea() | undefined | PUSH_WK2() | OP_ea() | LT() | OP_be() | str?flags=0x27 idx=14.builtin#2 | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(OP_ff(), OP_7f()) | … | OP_5a() | PUSH_E() | OP_33() | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | const[00000004] | ADD() | const[03b60300] | const[00b80301] | OP30() | DECL_SLOT() | DECL_SLOT() | str?flags=0x32 idx=4 | OP_36() | OP_5c() | OP30() | OP_75() | STR_OP() | OP30() | OP_7a()
+  // stack@INIT-END: OP_3f() | str?flags=0x0 idx=136 | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | const[5b001c0c] | pair(OP_ff(), OP_7f()) | … | … | OP_1c() | OP_1c() | pair(OP_ff(), OP_7f()) | … | … | const[00300039] | PUSH_E() | load[02] | v06 | pool[148] | OP_39() | OP30() | OP_8c() | const[0001003f] | PUSH_C() | v06 | OP_ff() | desc-tpl | OP_1c() | pair(PUSH_C(), num[16777216]) | … | … | const[00300039] | PUSH_E() | v06 | fn:'decodeURIComponent' | param[0].builtin#93(const[257]) | EQ_STRICT() | !(OP_33().test(undefined)) | OP_A8() | undefined | CLOSURE_CTX_A() | !(f0(undefined)) | OP_ea() | undefined | PUSH_WK2() | OP_ea() | LT() | PUSH_I8() | str?flags=0x27 idx=14.builtin#2 | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(OP_ff(), OP_7f()) | … | OP_5a() | PUSH_E() | OP_33() | PUSH_C() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | const[00000004] | ADD() | const[03b60300] | const[00b80301] | OP30() | DECL_SLOT() | DECL_SLOT() | str?flags=0x32 idx=4 | OP_36() | OP_5c() | OP30() | OP_75() | STR_OP() | OP30() | OP_7a()
   // ===== 初始化段结束；其后为函数单元 =====
   …(pad)
   // op 0x08 PUSH_C [~]

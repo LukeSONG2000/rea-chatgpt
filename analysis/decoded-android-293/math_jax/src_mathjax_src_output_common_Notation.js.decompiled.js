@@ -362,7 +362,7 @@
   // op 0x6c META_OP6C [?]
   …(pad)
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0xa0 ADD [~]
@@ -393,7 +393,7 @@
   // ---- FUNCTION-UNIT: 'verticalstrike uparrow downarrow' ----
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
-  // stack@INIT-END: 'strike' | OP_40() | load[aux2431] | load[aux1431] | !(!(OP_3f())) | PUSH_C9().verticalstrike uparrow downarrow | param[0] | objlit[arrowHead](CLOSURE_CTX_A()) | f0(param[0]) | globalThis | call23(objlit[padding](param[0]); globalThis, push4).verticalstrike uparrow downarrow | param[0] | objlit[padding](param[0]) | globalThis | objlit[arrowHead](CLOSURE_CTX_A()) | call23(f0(param[0]); globalThis, push4).verticalstrike uparrow downarrow | param[0] | globalThis | objlit[arrowHead](CLOSURE_CTX_A()) | f0(param[0]) | call23(globalThis; objlit[padding](param[0]), push4).verticalstrike uparrow downarrow | param[0] | globalThis | objlit[padding](param[0]) | globalThis | call23(objlit[arrowHead](CLOSURE_CTX_A()); f0(param[0]), push4).verticalstrike uparrow downarrow | param[0] | objlit[arrowHead](CLOSURE_CTX_A()) | f0(param[0]) | globalThis | objlit[arrowHead](CLOSURE_CTX_A()) | call23(f0(param[0]); globalThis, push4).verticalstrike uparrow downarrow | param[0] | globalThis | objlit[arrowHead](CLOSURE_CTX_A()) | f0(param[0]) | globalThis | call23(objlit[arrowHead](CLOSURE_CTX_A()); f0(param[0]), push4) | fn:'verticalstrike uparrow downarrow' | v06 | const[00010101] | str?flags=0x2 idx=2 | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x0 idx=2 | param[0] | desc-tpl | CLOSURE_CTX_B().[wk:0x123] | OP_50().[wk:0x124] | OP_50().[wk:0x125] | str?flags=0x3f idx=10 | load[aux0006] | PUSH_C() | load[08] | OP_3f() | OP_5c() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x0 idx=13 | globalThis | globalThis | globalThis | fn:'verticalstrike uparrow downarrow' | v06 | const[00030203] | const[25297410] | PATCH_REF_LOAD() | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x0 idx=2 | str?flags=0x64 idx=1 | param[0] | desc-tpl | CLOSURE_CTX_B().[wk:0x123] | OP_50().[wk:0x124] | OP_50().[wk:0x125] | OP_4a() | num[134610957] | load[08] | OP_3f() | META_OP6C() | const[00b80301] | OP30() | OP_be() | load[auxc003] | OP_4e().verticalstrike uparrow downarrow | fn:'verticalstrike uparrow downarrow' | v06 | const[00010101] | const[41091074] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x0 idx=3 | const[0000d242]
+  // stack@INIT-END: 'strike' | OP_40() | load[aux2431] | load[aux1431] | !(!(OP_3f())) | PUSH_C9().verticalstrike uparrow downarrow | param[0] | objlit[arrowHead](CLOSURE_CTX_A()) | f0(param[0]) | globalThis | call23(objlit[padding](param[0]); globalThis, push4).verticalstrike uparrow downarrow | param[0] | objlit[padding](param[0]) | globalThis | objlit[arrowHead](CLOSURE_CTX_A()) | call23(f0(param[0]); globalThis, push4).verticalstrike uparrow downarrow | param[0] | globalThis | objlit[arrowHead](CLOSURE_CTX_A()) | f0(param[0]) | call23(globalThis; objlit[padding](param[0]), push4).verticalstrike uparrow downarrow | param[0] | globalThis | objlit[padding](param[0]) | globalThis | call23(objlit[arrowHead](CLOSURE_CTX_A()); f0(param[0]), push4).verticalstrike uparrow downarrow | param[0] | objlit[arrowHead](CLOSURE_CTX_A()) | f0(param[0]) | globalThis | objlit[arrowHead](CLOSURE_CTX_A()) | call23(f0(param[0]); globalThis, push4).verticalstrike uparrow downarrow | param[0] | globalThis | objlit[arrowHead](CLOSURE_CTX_A()) | f0(param[0]) | globalThis | call23(objlit[arrowHead](CLOSURE_CTX_A()); f0(param[0]), push4) | fn:'verticalstrike uparrow downarrow' | v06 | const[00010101] | str?flags=0x2 idx=2 | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x0 idx=2 | param[0] | desc-tpl | CLOSURE_CTX_B().[wk:0x123] | OP_50().[wk:0x124] | OP_50().[wk:0x125] | str?flags=0x3f idx=10 | load[aux0006] | PUSH_C() | load[08] | OP_3f() | OP_5c() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x0 idx=13 | globalThis | globalThis | globalThis | fn:'verticalstrike uparrow downarrow' | v06 | const[00030203] | const[25297410] | PATCH_REF_LOAD() | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x0 idx=2 | str?flags=0x64 idx=1 | param[0] | desc-tpl | CLOSURE_CTX_B().[wk:0x123] | OP_50().[wk:0x124] | OP_50().[wk:0x125] | OP_4a() | num[134610957] | load[08] | OP_3f() | META_OP6C() | const[00b80301] | OP30() | PUSH_I8() | load[auxc003] | OP_4e().verticalstrike uparrow downarrow | fn:'verticalstrike uparrow downarrow' | v06 | const[00010101] | const[41091074] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x0 idx=3 | const[0000d242]
   // ===== 初始化段结束；其后为函数单元 =====
   …(pad)
   // op 0xa0 ADD [~]
@@ -444,7 +444,7 @@
   // op 0x80 OP_80 [?]
   …(pad)
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x11 DUP [~]
   // op 0xf3 OP_f3 [?]
@@ -455,7 +455,7 @@
   locop 0xca(load[auxb603])
   // op 0x84 OP_84 [?]
   // discard(OP_84())
-  locop 0xcb(OP_be())
+  locop 0xcb(PUSH_I8())
   // op 0x87 OP_87 [?]
   jmp → @5210
   // discard(OP_87())
@@ -474,7 +474,7 @@
   // op 0x70 TRY_REGION [~]
   …(pad)
   // discard(TRY_REGION())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -525,7 +525,7 @@
   local[6] = objlit[dx](objlit[arrowhead](param[0]));
   // op 0x84 OP_84 [?]
   // discard(OP_84())
-  local[7] = OP_be();
+  local[7] = PUSH_I8();
   // op 0x87 OP_87 [?]
   jmp → @5840
   // discard(OP_87())
@@ -598,7 +598,7 @@
   // op 0xd0 OP_d0 [?]
   // op 0x2b OP_2b [?]
   // discard(OP_2b())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -641,7 +641,7 @@
   local[6] = param[0].arrow(undefined, PUSH_STR2(), PUSH_STR2(), undefined, undefined);
   // op 0xe1 CLOSURE_CTX_D [~]
   // op 0xf1 OP_f1 [?]
-  // stack@INIT-END: OP_4a() | ADD() | desc-tpl | OP_50().[wk:0x123] | OP_4a().[wk:0x124] | undefined.[wk:0x127] | OP_d0().verticalstrike uparrow downarrow | OP_be() | const[0230dc04] | const[0330de04] | PUSH_STR2() | ADD() | const[307] | push2 | undefined | const[308] | push2 | CLOSURE_CTX_D() | param[0] | OP_f1()
+  // stack@INIT-END: OP_4a() | ADD() | desc-tpl | OP_50().[wk:0x123] | OP_4a().[wk:0x124] | undefined.[wk:0x127] | OP_d0().verticalstrike uparrow downarrow | PUSH_I8() | const[0230dc04] | const[0330de04] | PUSH_STR2() | ADD() | const[307] | push2 | undefined | const[308] | push2 | CLOSURE_CTX_D() | param[0] | OP_f1()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

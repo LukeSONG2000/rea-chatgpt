@@ -49,53 +49,53 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
-  EXPORTS.TITLE_1 (seq 0) = f0(OP_be());  // fn:'builtin#262'
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.TITLE_1 (seq 0) = f0(PUSH_I8());  // fn:'builtin#262'
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.TITLE_2 (seq 1) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.TITLE_2 (seq 1) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.TITLE_3 (seq 2) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.TITLE_3 (seq 2) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.TITLE_4 (seq 3) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.TITLE_4 (seq 3) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.HEADLINE (seq 4) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.HEADLINE (seq 4) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.BODY (seq 5) = f0(OP_be());  // objlit[systemFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.BODY (seq 5) = f0(PUSH_I8());  // objlit[systemFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.BODY_EMPHASIS (seq 6) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.BODY_EMPHASIS (seq 6) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.BODY_BOLD (seq 7) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.BODY_BOLD (seq 7) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.SUBHEADLINE (seq 8) = f0(OP_be());  // objlit[systemFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.SUBHEADLINE (seq 8) = f0(PUSH_I8());  // objlit[systemFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.SUBHEADLINE_EMPHASIS (seq 9) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.SUBHEADLINE_EMPHASIS (seq 9) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.CAPTION (seq 10) = f0(OP_be());  // objlit[systemFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.CAPTION (seq 10) = f0(PUSH_I8());  // objlit[systemFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.CAPTION_EMPHASIS (seq 11) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.CAPTION_EMPHASIS (seq 11) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.CAPTION_BOLD (seq 12) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.CAPTION_BOLD (seq 12) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.FOOTNOTE (seq 13) = f0(OP_be());  // objlit[systemFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.FOOTNOTE (seq 13) = f0(PUSH_I8());  // objlit[systemFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.FOOTNOTE_EMPHASIS (seq 14) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.FOOTNOTE_EMPHASIS (seq 14) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.FOOTNOTE_BOLD (seq 15) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.FOOTNOTE_BOLD (seq 15) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // stack@INIT-END: param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
@@ -112,44 +112,44 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
-  EXPORTS.TITLE_1 (seq 0) = f0(OP_be());  // fn:'builtin#262'
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.TITLE_1 (seq 0) = f0(PUSH_I8());  // fn:'builtin#262'
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.TITLE_2 (seq 1) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.TITLE_2 (seq 1) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.TITLE_3 (seq 2) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.TITLE_3 (seq 2) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.TITLE_4 (seq 3) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.TITLE_4 (seq 3) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.HEADLINE (seq 4) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.HEADLINE (seq 4) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.BODY (seq 5) = f0(OP_be());  // objlit[systemFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.BODY (seq 5) = f0(PUSH_I8());  // objlit[systemFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.BODY_EMPHASIS (seq 6) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.BODY_EMPHASIS (seq 6) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.SUBHEADLINE (seq 7) = f0(OP_be());  // objlit[systemFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.SUBHEADLINE (seq 7) = f0(PUSH_I8());  // objlit[systemFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.SUBHEADLINE_EMPHASIS (seq 8) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.SUBHEADLINE_EMPHASIS (seq 8) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.CAPTION (seq 9) = f0(OP_be());  // objlit[systemFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.CAPTION (seq 9) = f0(PUSH_I8());  // objlit[systemFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.CAPTION_EMPHASIS (seq 10) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.CAPTION_EMPHASIS (seq 10) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.FOOTNOTE (seq 11) = f0(OP_be());  // objlit[systemFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.FOOTNOTE (seq 11) = f0(PUSH_I8());  // objlit[systemFont](PUSH_STR2())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  EXPORTS.FOOTNOTE_EMPHASIS (seq 12) = f0(OP_be());  // objlit[systemBoldFont](PUSH_STR2())
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.FOOTNOTE_EMPHASIS (seq 12) = f0(PUSH_I8());  // objlit[systemBoldFont](PUSH_STR2())
   // stack@INIT-END: param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae

@@ -10,7 +10,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xc2 LOCAL_OP2 [?]
   local[9] = const[c407c102];
@@ -58,7 +58,7 @@
   local[13] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.MultiplayerAdmissionClient (seq 3) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: f0('e') | const[0e430601] | str?flags=0xe idx=3 | CLASS_DEF_POP() | num[241681] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | OP_be() | const[0460c003] | LOCAL_OP2() | 't' | str?flags=0x0 idx=8 | 'o' | str?flags=0x4 idx=14 | const[050c70c8] | 'a' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | desc-tpl | const[235] | push1.[wk:0x16] | const[235] | push1.[wk:0xec].[wk:0xed] | desc-tpl | const[238] | const[239] | push2.[wk:0x16] | const[238] | const[239] | push2.[wk:0xec] | const[240] | const[241] | push2.[wk:0xf2] | const[243] | const[244] | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: f0('e') | const[0e430601] | str?flags=0xe idx=3 | CLASS_DEF_POP() | num[241681] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP30() | PUSH_I8() | const[0460c003] | LOCAL_OP2() | 't' | str?flags=0x0 idx=8 | 'o' | str?flags=0x4 idx=14 | const[050c70c8] | 'a' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | desc-tpl | const[235] | push1.[wk:0x16] | const[235] | push1.[wk:0xec].[wk:0xed] | desc-tpl | const[238] | const[239] | push2.[wk:0x16] | const[238] | const[239] | push2.[wk:0xec] | const[240] | const[241] | push2.[wk:0xf2] | const[243] | const[244] | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

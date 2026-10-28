@@ -27,10 +27,10 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.ServerSentEventParser (seq 0) = v06;  // PUSH_EXPORTS()
   locop 0xca(f0(const[227]))
-  // op 0xbe OP_be [?]
-  locop 0xcb(OP_be())
-  // op 0xbe OP_be [?]
-  locop 0xcc(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcb(PUSH_I8())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcc(PUSH_I8())
   locop 0xcd(const[228])
   local[4] = const[51];
   local[5] = const[ffffff7f];

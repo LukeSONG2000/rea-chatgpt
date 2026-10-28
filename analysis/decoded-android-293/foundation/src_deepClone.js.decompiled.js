@@ -19,7 +19,7 @@
   // stack@INIT-END: META_OP6C() | str?flags=0x3 idx=3 | str?flags=0x5f idx=6 | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_40() | DECL_SLOT() | pool[145].builtin#101
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xff OP_ff [?]
   // op 0x0f OP_0f [?]
   // op 0x20 OP_20 [?]

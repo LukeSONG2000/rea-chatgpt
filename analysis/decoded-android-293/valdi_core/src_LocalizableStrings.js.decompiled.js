@@ -122,7 +122,7 @@
   …(pad)
   // op 0xc6 PUSH_THIS [~]
   // op 0x07 PUSH_B [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x5e OP_5e [?]
   // op 0xd5 OP_d5 [?]
   // op 0x4a OP_4a [?]
@@ -188,7 +188,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // trailer 0xae
   …(pad)
-  // stack-tail: fn:'builtin#262' | OP30() | PUSH_WK2() | str?flags=0x2 idx=2 | 'u' | DECL_SLOT() | DECL_SLOT() | fn:'builtin#262' | PUSH_THIS() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x3 idx=13 | PUSH_B() | const[ba03020d] | OP_be() | const[25613] | call23(CLOSURE_CTX_B(); call21(DUP(); OP_d5(), OP_5e(), local[0], objlit[getCurrentLocales](PUSH_STR2())), param[1], PUSH_EXPORTS()).builtin#262 | str?flags=0x0 idx=13 | load[64] | const[00640000] | OP_ac() | pool[154].parse | fn:'builtin#262' | call23(fn:'builtin#262'; param[0], param[1], PUSH_EXPORTS()) | str?flags=0x25 idx=1 | load[00]
+  // stack-tail: fn:'builtin#262' | OP30() | PUSH_WK2() | str?flags=0x2 idx=2 | 'u' | DECL_SLOT() | DECL_SLOT() | fn:'builtin#262' | PUSH_THIS() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x3 idx=13 | PUSH_B() | const[ba03020d] | PUSH_I8() | const[25613] | call23(CLOSURE_CTX_B(); call21(DUP(); OP_d5(), OP_5e(), local[0], objlit[getCurrentLocales](PUSH_STR2())), param[1], PUSH_EXPORTS()).builtin#262 | str?flags=0x0 idx=13 | load[64] | const[00640000] | OP_ac() | pool[154].parse | fn:'builtin#262' | call23(fn:'builtin#262'; param[0], param[1], PUSH_EXPORTS()) | str?flags=0x25 idx=1 | load[00]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

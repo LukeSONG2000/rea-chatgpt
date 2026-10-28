@@ -83,19 +83,19 @@
   // op 0xc5 CLASS_CONSTRUCT [~]
   // discard(!(f0(CLASS_CONSTRUCT())))
   local[26] = const[301];
-  // op 0xbe OP_be [?]
-  local[28] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[28] = PUSH_I8();
   // op 0x11 DUP [~]
   local[29] = call21(const[289].[wk:0x120]; const[304].[wk:0x131]);
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  local[30] = call21(OP_be().[wk:0x134]; OP_be().[wk:0x135]);
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  local[30] = call21(PUSH_I8().[wk:0x134]; PUSH_I8().[wk:0x135]);
   // op 0x11 DUP [~]
   local[31] = call21(const[310].[wk:0x11e]; const[289].[wk:0x120]);
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  local[32] = call21(const[306].[wk:0x133]; OP_be().[wk:0x134]);
+  // op 0xbe PUSH_I8 [~]
+  local[32] = call21(const[306].[wk:0x133]; PUSH_I8().[wk:0x134]);
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   local[33] = call21(const[312].[wk:0x139]; PUSH_WK1().[wk:0x122]);
@@ -104,8 +104,8 @@
   // op 0x11 DUP [~]
   local[35] = call21(const[316].[wk:0x13d]; const[318].[wk:0x133]);
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  local[36] = call21(const[319].[wk:0x114]; OP_be().[wk:0x140]);
+  // op 0xbe PUSH_I8 [~]
+  local[36] = call21(const[319].[wk:0x114]; PUSH_I8().[wk:0x140]);
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -204,7 +204,7 @@
 
   // ---- FUNCTION-UNIT: 'makeNodePrototype' ----
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x1a OP_1a [?]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -218,7 +218,7 @@
   jcc-0xeb → @2496
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xea OP_ea [?]
   // op 0xa1 OP_a1 [?]
   // op 0x11 DUP [~]
@@ -749,9 +749,9 @@
   // discard(PUSH_STR2().beginRenderWithStringKey(PUSH_STR2(), v06))
   // op 0x68 PUSH_STR2 [~]
   jcc-0xeb → @10158
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jmp → @10159
-  // discard(undefined(OP_be(), globalThis))
+  // discard(undefined(PUSH_I8(), globalThis))
   // op 0x68 PUSH_STR2 [~]
   jcc-0xeb → @10212
   jmp → @10213
@@ -851,7 +851,7 @@
   // trailer 0xae
   // op 0xbc OP_bc [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x08 PUSH_C [~]
   locop 0xcc(PUSH_C())
   // op 0x6f OP_6f [?]
@@ -863,7 +863,7 @@
   // op 0xc8 PUSH_C8 [~]
   // discard(PUSH_C8().appendPendingIssue(undefined))
   // discard(param[1])
-  // stack@INIT-END: str?flags=0xb7 idx=1 | OP_bc() | const[0000000e].layout | OP_be() | str?flags=0x0 idx=3 | const[00ec031b] | const[b603000d] | OP_6f() | DECL_SLOT() | CLOSURE_CTX_A() | param[0]
+  // stack@INIT-END: str?flags=0xb7 idx=1 | OP_bc() | const[0000000e].layout | PUSH_I8() | str?flags=0x0 idx=3 | const[00ec031b] | const[b603000d] | OP_6f() | DECL_SLOT() | CLOSURE_CTX_A() | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcb(?)
   // op 0x6f OP_6f [?]

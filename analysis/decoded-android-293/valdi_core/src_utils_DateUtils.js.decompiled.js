@@ -159,15 +159,15 @@
   // op 0x11 DUP [~]
   locop 0xcb(param[0].getHours())
   // op 0xc2 LOCAL_OP2 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9f OP_9f [?]
   // op 0x11 DUP [~]
   jcc-0xec → @1793
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xc0 OP_c0 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   jcc-0xeb → @1900
   jmp → @1905
@@ -217,7 +217,7 @@
   // op 0xba OP_ba [?]
   EXPORTS.FullDateAndTime (seq 4) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // stack@INIT-END: 'April' | OP35() | OP35() | OP35() | OP35() | OP35() | load[aux006b] | const[17187598] | OP_ba() | str?flags=0x3 idx=2 | num[84205058] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x0 idx=13 | str?flags=0x64 idx=1 | objlit[localeIdentifier](v06) | OP_4a().replace(OP_33(), const[268]) | objlit[Device](PUSH_STR2()).isAndroid() | CLOSURE_CTX_B() | call25(f0(const[271]).formatDate; param[0].getTime(), param[1], objlit[timeZone](v06), undefined) | desc-tpl | const[240].[wk:0xf1] | const[232].[wk:0xf2] | const[274] | param[1] | v06 | OP_ab() | const[02004a02] | OP_7e() | OP_2b() | OP_fd() | PUSH_C() | PUSH_B() | num[20186975] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | fn:'October' | OP30() | PUSH_WK2() | str?flags=0x5 idx=3 | str?flags=0x4 idx=13 | PATCH_REF_LOAD() | load[aux6402] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | OP_ac() | call25(call21(DUP(); v06, undefined).format; param[0]) | LOCAL_OP2().builtin#92 | OP_be() | const[279] | EQ_STRICT() | call25(LOCAL_OP2().builtin#92; OP_4a(), const[286], undefined) | META_OP6C() | DECL_SLOT() | LOCAL_OP2().builtin#92 | LOCAL_OP2().builtin#92 | const[240] | objlit[month](undefined) | undefined.slice(globalThis, OP_b9())(undefined, const[282], param[0].getDate()) | v06 | call25(objlit[year](undefined); LOCAL_OP2(), const[286].builtin#92(param[0].getFullYear()), const[286], undefined) | OP_93() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
+  // stack@INIT-END: 'April' | OP35() | OP35() | OP35() | OP35() | OP35() | load[aux006b] | const[17187598] | OP_ba() | str?flags=0x3 idx=2 | num[84205058] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x0 idx=13 | str?flags=0x64 idx=1 | objlit[localeIdentifier](v06) | OP_4a().replace(OP_33(), const[268]) | objlit[Device](PUSH_STR2()).isAndroid() | CLOSURE_CTX_B() | call25(f0(const[271]).formatDate; param[0].getTime(), param[1], objlit[timeZone](v06), undefined) | desc-tpl | const[240].[wk:0xf1] | const[232].[wk:0xf2] | const[274] | param[1] | v06 | OP_ab() | const[02004a02] | OP_7e() | OP_2b() | OP_fd() | PUSH_C() | PUSH_B() | num[20186975] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | fn:'October' | OP30() | PUSH_WK2() | str?flags=0x5 idx=3 | str?flags=0x4 idx=13 | PATCH_REF_LOAD() | load[aux6402] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | OP_ac() | call25(call21(DUP(); v06, undefined).format; param[0]) | LOCAL_OP2().builtin#92 | PUSH_I8() | const[279] | EQ_STRICT() | call25(LOCAL_OP2().builtin#92; OP_4a(), const[286], undefined) | META_OP6C() | DECL_SLOT() | LOCAL_OP2().builtin#92 | LOCAL_OP2().builtin#92 | const[240] | objlit[month](undefined) | undefined.slice(globalThis, OP_b9())(undefined, const[282], param[0].getDate()) | v06 | call25(objlit[year](undefined); LOCAL_OP2(), const[286].builtin#92(param[0].getFullYear()), const[286], undefined) | OP_93() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x39 OP_39 [?]

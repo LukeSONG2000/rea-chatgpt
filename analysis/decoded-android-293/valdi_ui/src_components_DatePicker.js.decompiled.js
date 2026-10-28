@@ -44,13 +44,13 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.DatePicker (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   local[15] = call21(desc-tpl; const[264].[wk:0x109]).[wk:0xf6];
-  // stack@INIT-END: 'exports' | OP_6e() | str?flags=0x10 idx=3 | str?flags=0x9a idx=5 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 's' | 'r' | 'd' | 'o' | str?flags=0x2 idx=16 | const[030c70cc] | 'l' | str?flags=0x0 idx=0 | 'c' | num[258215620] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[237] | const[238] | const[239] | const[240] | const[241] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | call21(OP_be().[wk:0x101]; OP_be().[wk:0x102]).[wk:0x103] | DUP() | desc-tpl | const[260].[wk:0x105] | call21(const[260].[wk:0x106]; OP_be().[wk:0x101]).[wk:0x107] | DUP()
+  // stack@INIT-END: 'exports' | OP_6e() | str?flags=0x10 idx=3 | str?flags=0x9a idx=5 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 's' | 'r' | 'd' | 'o' | str?flags=0x2 idx=16 | const[030c70cc] | 'l' | str?flags=0x0 idx=0 | 'c' | num[258215620] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[237] | const[238] | const[239] | const[240] | const[241] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | call21(PUSH_I8().[wk:0x101]; PUSH_I8().[wk:0x102]).[wk:0x103] | DUP() | desc-tpl | const[260].[wk:0x105] | call21(const[260].[wk:0x106]; PUSH_I8().[wk:0x101]).[wk:0x107] | DUP()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x2b OP_2b [?]
@@ -222,8 +222,8 @@
   // discard(PUSH_STR2().setAttributeStyle(const[294], objlit[label](PUSH_STR2())))
   // op 0x68 PUSH_STR2 [~]
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
-  // discard(PUSH_STR2().setAttributeString(const[64], objlit[builtin#64](objlit[viewModel](PUSH_C7())).toISOString().slice(globalThis, OP_be())))
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_STR2().setAttributeString(const[64], objlit[builtin#64](objlit[viewModel](PUSH_C7())).toISOString().slice(globalThis, PUSH_I8())))
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().endRender())
   // op 0x68 PUSH_STR2 [~]

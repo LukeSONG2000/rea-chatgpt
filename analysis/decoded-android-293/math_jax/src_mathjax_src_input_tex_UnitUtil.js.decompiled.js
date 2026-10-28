@@ -32,8 +32,8 @@
   locop 0xcc(CLASS_DECL())
   // op 0xc0 OP_c0 [?]
   locop 0xcd(OP_c0())
-  // op 0xbe OP_be [?]
-  local[4] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[4] = PUSH_I8();
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
@@ -46,7 +46,7 @@
   // op 0xc0 OP_c0 [?]
   // op 0x9e OP_9e [?]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0x57 IMPORT_BINDING [~]
   // op 0x57 IMPORT_BINDING [~]
@@ -194,7 +194,7 @@
   // op 0xc7 PUSH_C7 [~]
   // op 0xc6 PUSH_THIS [~]
   // op 0x9d OP_9d [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc8 PUSH_C8 [~]
   // trailer 0xae
   …(pad)
@@ -358,7 +358,7 @@
   …(pad)
   // op 0x0a PUSH_E [~]
   …(pad)
-  // stack-tail: OP_87() | EQ_STRICT() | PUSH_THIS() | PUSH_C7() | PUSH_C8() | objlit[UnitUtil](CLOSURE_CTX_A()).em | objlit[UNIT_CASES](objlit[UnitUtil](CLOSURE_CTX_A())).builtin#65(PUSH_C7())(OP_9d()).slice(globalThis, OP_be()) | const[226] | PUSH_C8() | OP_db() | OP_f3() | !(!(OP_3f())) | OP_20() | OP_ba() | 'require' | str?flags=0x2 idx=0 | str?flags=0x2 idx=3 | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | param[0].match | param[1] | undefined | CLOSURE_CTX_B() | OP_4a().replace(OP_33(), const[257]) | OP_4a() | OP_ea() | PUSH_B() | PUSH_B() | globalThis | OP_f3() | const[0207022c] | OP_1c() | const[0] | const[00000001] | const[2e000a1c] | OP_ff() | OP_7f() | OP_ad() | str?flags=0x2d idx=3 | local[0] | OP_5c() | PUSH_B() | OP_36() | PUSH_C() | v06 | OP_ff() | desc-tpl | const[5c00060c] | PUSH_E() | PUSH_B() | const[906437664] | const[00140000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[2000060c] | PUSH_E() | num[0]
+  // stack-tail: OP_87() | EQ_STRICT() | PUSH_THIS() | PUSH_C7() | PUSH_C8() | objlit[UnitUtil](CLOSURE_CTX_A()).em | objlit[UNIT_CASES](objlit[UnitUtil](CLOSURE_CTX_A())).builtin#65(PUSH_C7())(OP_9d()).slice(globalThis, PUSH_I8()) | const[226] | PUSH_C8() | OP_db() | OP_f3() | !(!(OP_3f())) | OP_20() | OP_ba() | 'require' | str?flags=0x2 idx=0 | str?flags=0x2 idx=3 | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | param[0].match | param[1] | undefined | CLOSURE_CTX_B() | OP_4a().replace(OP_33(), const[257]) | OP_4a() | OP_ea() | PUSH_B() | PUSH_B() | globalThis | OP_f3() | const[0207022c] | OP_1c() | const[0] | const[00000001] | const[2e000a1c] | OP_ff() | OP_7f() | OP_ad() | str?flags=0x2d idx=3 | local[0] | OP_5c() | PUSH_B() | OP_36() | PUSH_C() | v06 | OP_ff() | desc-tpl | const[5c00060c] | PUSH_E() | PUSH_B() | const[906437664] | const[00140000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[2000060c] | PUSH_E() | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

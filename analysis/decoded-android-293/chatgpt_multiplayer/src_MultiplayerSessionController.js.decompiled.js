@@ -187,7 +187,7 @@
   EXPORTS.clock (seq 1) = param[1];  // PUSH_THIS()
   // op 0xc6 PUSH_THIS [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @1157
   // op 0x68 PUSH_STR2 [~]
   jmp → @1226
@@ -254,7 +254,7 @@
   // op 0x68 PUSH_STR2 [~]
   EXPORTS.facepile (seq 20) = call21(DUP(); objlit[requestFacepile](param[0]), local[0], objlit[MULTIPLAYER_FACEPILE_FLAGS](PUSH_STR2()));  // PUSH_THIS()
   // op 0xc6 PUSH_THIS [~]
-  // stack@INIT-END: 'suspended' | OP_98() | OP_16() | PUSH_C() | PUSH_E() | PUSH_C() | PUSH_E() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | OP_2d() | PUSH_C() | push11053 | OP_78() | OP_3f() | num[2686976] | call25(pool[155].now; ).requestCheckpointAsync.handleEditorEvent | const[0dc80309] | load[auxca03] | PUSH_E() | load[auxc003] | PATCH_REF_LOAD() | PUSH_THIS() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | objlit[isVersionAtLeast](PUSH_STR2()) | objlit[facepile](PUSH_THIS()).setDocumentId(objlit[documentId](param[0]))
+  // stack@INIT-END: 'suspended' | OP_98() | OP_16() | PUSH_C() | PUSH_E() | PUSH_C() | PUSH_E() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | PUSH_C() | OP_2d() | PUSH_C() | push11053 | OP_78() | OP_3f() | num[2686976] | call25(pool[155].now; ).requestCheckpointAsync.handleEditorEvent | const[0dc80309] | load[auxca03] | PUSH_E() | load[auxc003] | PATCH_REF_LOAD() | PUSH_THIS() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | objlit[isVersionAtLeast](PUSH_STR2()) | objlit[facepile](PUSH_THIS()).setDocumentId(objlit[documentId](param[0]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xd5 OP_d5 [?]
@@ -541,7 +541,7 @@
   // op 0x13 OP_13 [?]
   // op 0xc2 LOCAL_OP2 [?]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x11 DUP [~]
@@ -924,7 +924,7 @@
   // op 0x09 PUSH_D [~]
   // op 0x20 OP_20 [?]
   // op 0xbc OP_bc [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0xdf CLOSURE_CTX_B [~]
@@ -1059,7 +1059,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @12355
   // discard(DUP())
-  // stack@INIT-END: OP_e7() | num[27000834] | OP_20() | OP_bc() | str?flags=0x0 idx=13 | const[c0030209] | OP_be() | const[0db60300] | load[da] | str?flags=0x1 idx=0 | num[50579468] | load[c6] | str?flags=0x4 idx=12 | PATCH_REF_LOAD() | EQ_STRICT() | OP_6f() | PUSH_STR2() | CLOSURE_CTX_B().failPreparation | desc-tpl | OP_2f() | PUSH_STR2() | EQ_STRICT() | CLOSURE_CTX_B().failPreparation(objlit[failure](undefined)) | OP_ee() | v06 | META_OP6C() | CLOSURE_CTX_B().failPreparation | desc-tpl | objlit[CONNECTION](objlit[MultiplayerFailureKind](PUSH_STR2())).[wk:0x144] | const[367].[wk:0x33](objlit[HOST_REJECTED](objlit[OAIMultiplayerConnectionFailureReason](PUSH_STR2())).[wk:0x154]) | OP_ee() | objlit[isVersionAtLeast](PUSH_STR2()) | OP_2e() | str?flags=0x7d idx=43 | META_OP6D() | pool[361].warn(const[369])
+  // stack@INIT-END: OP_e7() | num[27000834] | OP_20() | OP_bc() | str?flags=0x0 idx=13 | const[c0030209] | PUSH_I8() | const[0db60300] | load[da] | str?flags=0x1 idx=0 | num[50579468] | load[c6] | str?flags=0x4 idx=12 | PATCH_REF_LOAD() | EQ_STRICT() | OP_6f() | PUSH_STR2() | CLOSURE_CTX_B().failPreparation | desc-tpl | OP_2f() | PUSH_STR2() | EQ_STRICT() | CLOSURE_CTX_B().failPreparation(objlit[failure](undefined)) | OP_ee() | v06 | META_OP6C() | CLOSURE_CTX_B().failPreparation | desc-tpl | objlit[CONNECTION](objlit[MultiplayerFailureKind](PUSH_STR2())).[wk:0x144] | const[367].[wk:0x33](objlit[HOST_REJECTED](objlit[OAIMultiplayerConnectionFailureReason](PUSH_STR2())).[wk:0x154]) | OP_ee() | objlit[isVersionAtLeast](PUSH_STR2()) | OP_2e() | str?flags=0x7d idx=43 | META_OP6D() | pool[361].warn(const[369])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1246,7 +1246,7 @@
   locop 0xcb(PUSH_C())
   // op 0x64 DECL_SLOT [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @14797
   // discard(DUP())
@@ -1628,7 +1628,7 @@
   // op 0x9d OP_9d [?]
   EXPORTS.retryBackoffMs (seq 0) = pool[153].min(PUSH_STR2(), OP_9d());  // PUSH_C8()
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xec → @20335
   // discard(DUP())
@@ -1645,10 +1645,10 @@
   …(pad)
   // op 0x9a OP_9a [?]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xde CLOSURE_CTX_A [~]
-  // stack@INIT-END: OP_9a() | num[28639234] | OP_44() | CLOSURE_CTX_A().startConnection()
+  // stack@INIT-END: OP_9a() | num[28639234] | META_RECORD44() | CLOSURE_CTX_A().startConnection()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xf3 OP_f3 [?]
@@ -1713,7 +1713,7 @@
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xb2 OP_b2 [?]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
   // trailer 0xae
@@ -1723,7 +1723,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @21313
   // discard(DUP())
-  // stack@INIT-END: OP_44() | pool[361].warn(const[411], param[0])
+  // stack@INIT-END: META_RECORD44() | pool[361].warn(const[411], param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1906,7 +1906,7 @@
 
   // ---- FUNCTION-UNIT: 'requestCheckpointAsync' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   jcc-0xeb → @23850
   // op 0x68 PUSH_STR2 [~]
@@ -1918,7 +1918,7 @@
 
   // ---- FUNCTION-UNIT: 'requestCheckpointAsync' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @24089
   // op 0xdf CLOSURE_CTX_B [~]
   // trailer 0xae
@@ -1992,7 +1992,7 @@
   // trailer 0xae
   jcc-0xeb → @25992
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: param[0] | fn:'requestCheckpointAsync' | META_OP6C() | objlit[isVersionAtLeast](fn:'requestCheckpointAsync') | f0(OP_be()) | desc-tpl | param[0].[wk:0x182] | CLOSURE_CTX_B() | OP_52() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | objlit[EDITOR](objlit[MultiplayerDocumentFailureReason](PUSH_STR2()))
+  // stack@INIT-END: param[0] | fn:'requestCheckpointAsync' | META_OP6C() | objlit[isVersionAtLeast](fn:'requestCheckpointAsync') | f0(PUSH_I8()) | desc-tpl | param[0].[wk:0x182] | CLOSURE_CTX_B() | OP_52() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | objlit[EDITOR](objlit[MultiplayerDocumentFailureReason](PUSH_STR2()))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x08 PUSH_C [~]

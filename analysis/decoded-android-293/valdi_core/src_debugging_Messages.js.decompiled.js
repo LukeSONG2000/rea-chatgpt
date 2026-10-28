@@ -67,7 +67,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(push8481)
@@ -81,7 +81,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(push8481)
@@ -95,7 +95,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(push8481)
@@ -109,7 +109,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(push8481)
@@ -123,7 +123,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(push8481)
@@ -137,21 +137,21 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(push8481)
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(push8481)
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // discard(push8481)
@@ -221,7 +221,7 @@
   …(pad)
   // op 0x12 OP_12 [?]
   …(pad)
-  // stack-tail: str?flags=0xc idx=56 | const[0c000c0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[18] | OP_3c() | const[b6030001] | pool[154].stringify | desc-tpl | PUSH_WK2().[wk:0xe0] | call25(param[0].[wk:0xf4]; desc-tpl.[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_be().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_b9().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_be().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_ba().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_be().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_bb().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_be().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_bc().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_be().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_bd().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_be().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_be().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_be().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_bf().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | str?flags=0x61 idx=5 | fn:'builtin#262' | desc-tpl | OP_bf().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | str?flags=0x67 idx=5 | f0(fn:'builtin#262') | 'module' | num[91136] | DECL_SLOT() | OP_ac() | STR_OP() | OP_ee() | desc-tpl | undefined.[wk:0x33] | pool[154].stringify | desc-tpl | OP_b5().[wk:0xe0] | OP_a7() | const[02082b2b] | PUSH_C() | META_OP6C() | META_OP6C() | DECL_SLOT() | META_OP6C() | META_OP6C() | META_OP6C() | desc-tpl | param[0].[wk:0xfa] | objlit[requestId](undefined).[wk:0xf4] | objlit[body](undefined).[wk:0xf5] | OP_2f() | OP_12() | const[0]
+  // stack-tail: str?flags=0xc idx=56 | const[0c000c0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[0c] | load[18] | OP_3c() | const[b6030001] | pool[154].stringify | desc-tpl | PUSH_WK2().[wk:0xe0] | call25(param[0].[wk:0xf4]; desc-tpl.[wk:0xf5]) | fn:'builtin#262' | desc-tpl | PUSH_I8().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_b9().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | PUSH_I8().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_ba().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | PUSH_I8().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_bb().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | PUSH_I8().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_bc().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | PUSH_I8().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_bd().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | PUSH_I8().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | PUSH_I8().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | PUSH_I8().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | fn:'builtin#262' | desc-tpl | OP_bf().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | str?flags=0x61 idx=5 | fn:'builtin#262' | desc-tpl | OP_bf().[wk:0xe0] | call25(param[0].[wk:0xf4]; param[1].[wk:0xf5]) | str?flags=0x67 idx=5 | f0(fn:'builtin#262') | 'module' | num[91136] | DECL_SLOT() | OP_ac() | STR_OP() | OP_ee() | desc-tpl | undefined.[wk:0x33] | pool[154].stringify | desc-tpl | OP_b5().[wk:0xe0] | OP_a7() | const[02082b2b] | PUSH_C() | META_OP6C() | META_OP6C() | DECL_SLOT() | META_OP6C() | META_OP6C() | META_OP6C() | desc-tpl | param[0].[wk:0xfa] | objlit[requestId](undefined).[wk:0xf4] | objlit[body](undefined).[wk:0xf5] | OP_2f() | OP_12() | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

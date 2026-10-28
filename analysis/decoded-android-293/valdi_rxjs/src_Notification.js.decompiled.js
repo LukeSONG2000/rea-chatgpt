@@ -119,7 +119,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x13 idx=1)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x11 DUP [~]
   // op 0xf3 OP_f3 [?]
@@ -276,7 +276,7 @@
   // discard(OP_b3())
   // discard(v06(undefined))
   jmp → @2091
-  // stack@INIT-END: str?flags=0x10 idx=2 | const[234881024].builtin#263.builtin#263 | OP_be() | const[0130c203] | PUSH_C9() | const[241] | undefined | const[243] | OP_A3() | const[04b60300] | const[00b80300] | const[00ba0300] | const[00100001] | OP_bc() | OP10() | const[00b80301] | load[auxba03] | num[243213] | LOAD_M3() | const[241] | undefined | objlit[builtin#67](PUSH_STR2()) | f0(undefined) | const[243] | undefined | objlit[throwError](PUSH_STR2()) | f0(local[0]) | const[239] | undefined | objlit[EMPTY](PUSH_STR2()) | !(undefined) | OP_2f() | str?flags=0x1d idx=11 | OP_3c() | num[17252878] | fn:'builtin#262' | param[0] | OP_ad() | OP_2f() | const[241] | v06(undefined) | const[243] | v06()
+  // stack@INIT-END: str?flags=0x10 idx=2 | const[234881024].builtin#263.builtin#263 | PUSH_I8() | const[0130c203] | PUSH_C9() | const[241] | undefined | const[243] | OP_A3() | const[04b60300] | const[00b80300] | const[00ba0300] | const[00100001] | OP_bc() | OP10() | const[00b80301] | load[auxba03] | num[243213] | LOAD_M3() | const[241] | undefined | objlit[builtin#67](PUSH_STR2()) | f0(undefined) | const[243] | undefined | objlit[throwError](PUSH_STR2()) | f0(local[0]) | const[239] | undefined | objlit[EMPTY](PUSH_STR2()) | !(undefined) | OP_2f() | str?flags=0x1d idx=11 | OP_3c() | num[17252878] | fn:'builtin#262' | param[0] | OP_ad() | OP_2f() | const[241] | v06(undefined) | const[243] | v06()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x76 OP_76 [?]

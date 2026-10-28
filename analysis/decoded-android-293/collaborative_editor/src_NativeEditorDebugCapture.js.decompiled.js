@@ -68,13 +68,13 @@
   // op 0x60 OP_60 [?]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x07 PUSH_B [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x09 PUSH_D [~]
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
   // op 0xdf CLOSURE_CTX_B [~]
   jcc-0xeb → @545
-  // stack@INIT-END: OP_88() | const[7c0e4306] | fn:'readEvents' | OP_60() | PATCH_REF_LOAD() | v06 | load[auxc403] | PUSH_B() | const[b603000d] | OP_be() | const[33798669] | load[auxbc03] | str?flags=0xd idx=192 | PUSH_D() | PUSH_WK2() | '__esModule' | CLOSURE_CTX_B() | !(f0(param[1]))
+  // stack@INIT-END: OP_88() | const[7c0e4306] | fn:'readEvents' | OP_60() | PATCH_REF_LOAD() | v06 | load[auxc403] | PUSH_B() | const[b603000d] | PUSH_I8() | const[33798669] | load[auxbc03] | str?flags=0xd idx=192 | PUSH_D() | PUSH_WK2() | '__esModule' | CLOSURE_CTX_B() | !(f0(param[1]))
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x68 PUSH_STR2 [~]
   // op 0xef OP_ef [?]

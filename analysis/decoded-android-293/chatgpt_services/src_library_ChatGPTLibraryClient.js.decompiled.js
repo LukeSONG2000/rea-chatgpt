@@ -127,8 +127,8 @@
   local[8] = const[333];
   local[9] = const[334];
   local[10] = const[335].[wk:0x150];
-  // op 0xbe OP_be [?]
-  local[11] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[11] = PUSH_I8();
   // op 0xbf OP_bf [?]
   local[12] = OP_bf();
   // op 0xbf OP_bf [?]
@@ -137,20 +137,20 @@
   local[14] = OP_bf();
   // op 0xbf OP_bf [?]
   local[15] = OP_bf();
-  // op 0xbe OP_be [?]
-  local[16] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[16] = PUSH_I8();
   // op 0xbc OP_bc [?]
   local[17] = OP_bc();
   // op 0xbf OP_bf [?]
   local[18] = OP_bf();
-  // op 0xbe OP_be [?]
-  local[19] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[19] = PUSH_I8();
   // op 0xba OP_ba [?]
   local[20] = OP_ba();
-  // op 0xbe OP_be [?]
-  local[21] = OP_be();
-  // op 0xbe OP_be [?]
-  local[22] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[21] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[22] = PUSH_I8();
   // op 0xc0 OP_c0 [?]
   // op 0xc0 OP_c0 [?]
   // op 0x33 OP_33 [?]
@@ -286,7 +286,7 @@
   // op 0x30 OP30 [?]
   // op 0x30 OP30 [?]
   // op 0x30 OP30 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x0a PUSH_E [~]
   // op 0x07 PUSH_B [~]
@@ -566,7 +566,7 @@
   // op 0x66 STR_OP [~]
   // op 0x54 OP_54 [?]
   // discard(num[5])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x82 OP_82 [?]
   // op 0x07 PUSH_B [~]
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -820,7 +820,7 @@
   // op 0x71 OP_71 [?]
   // op 0x2e OP_2e [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // discard(str?flags=0x69 idx=0)
   // op 0xc8 PUSH_C8 [~]
@@ -896,7 +896,7 @@
   // op 0x71 OP_71 [?]
   // op 0x2e OP_2e [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
   locop 0xca(PUSH_C())
@@ -911,7 +911,7 @@
   // op 0xc6 PUSH_THIS [~]
   // discard(objlit[activeRequests](PUSH_THIS()).clear())
   // op 0xc6 PUSH_THIS [~]
-  // stack@INIT-END: OP_54().j | OP_be() | const[0330c003] | const[0460c203] | const[1049349] | const[40900433] | OP_82() | const[63177004] | PUSH_B() | OP_2d() | const[86042e01] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LOAD_61() | !(f0(objlit[surface](param[0]))) | call23(LOAD_61(); call21(DUP(); const[393])) | LOAD_61() | LOAD_61() | LOAD_61() | LOAD_61() | OP_6f() | LOAD_61() | OP_2f() | v06 | EQ_STRICT() | OP_A8() | v06 | undefined | LOAD_61() | EQ_STRICT() | v06 | undefined | LOAD_61() | EQ_STRICT() | v06 | undefined | LOAD_61() | EQ_STRICT() | LOAD_61() | objlit[surface](param[0]) | OP_f1() | LOAD_61() | EQ_STRICT() | LOAD_61() | f0(objlit[surface](param[0])) | v06 | undefined | LOAD_61() | OP_A8() | load[aux00b9] | const[123866656] | const[00010301] | PUSH_B() | desc-tpl | num[3187934402] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x2 idx=2 | const[101711872] | const[88040100] | globalThis | str?flags=0x0 idx=3 | str?flags=0xc idx=184 | load[auxba03] | const[0dc00304] | OP_8c() | const[23330820] | DECL_SLOT() | v06 | PUSH_STR2() | LOAD_61() | f0(objlit[surface](CLOSURE_CTX_D())) | OP_6f() | DECL_SLOT() | LOAD_61() | undefined | desc-tpl | objlit[accountId](objlit[options](CLOSURE_CTX_B())).[wk:0x182] | v06 | objlit[cursor](undefined) | OP_72() | OP_75() | num[3492159942].j | str?flags=0x4 idx=12.j | OP_1d() | OP_d8() | const[82182487] | DECL_SLOT() | DECL_SLOT() | LOAD_61() | LOAD_61() | v06 | EQ_STRICT() | v06 | OP_32() | PUSH_B() | const[00010201] | PUSH_B() | PUSH_C() | const[cc0303b6] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x2 idx=1 | num[247809] | load[ba] | str?flags=0x0 idx=13 | const[0d900401] | CLOSURE_CTX_C() | const[76283906] | str?flags=0x0 idx=240 | DECL_SLOT() | objlit[networkClient](CLOSURE_CTX_A()).requestJson | desc-tpl | desc-tpl | const[411].[wk:0x19c] | PUSH_STR2().[wk:0x19d] | desc-tpl | PUSH_STR2().[wk:0x36] | v06 | OP_6f() | DECL_SLOT() | LOAD_61() | desc-tpl | LOAD_61() | const[418].[wk:0x140] | v06 | EQ_STRICT() | OP_72() | OP_2e() | OP_71() | OP_2e() | OP_44() | const[00010100] | num[243201] | const[00d228ae].j | str?flags=0x1d idx=1 | call31(?) | const[d8045701] | PUSH_C8() | str?flags=0x9 idx=13 | v06 | load[aux08cc] | DECL_SLOT() | DECL_SLOT() | objlit[kind](param[0]) | objlit[SavedEntity](CLOSURE_CTX_A()) | call23(CLOSURE_CTX_C(); call21(DUP(); const[420])) | CLOSURE_CTX_D() | v06 | undefined | call23(CLOSURE_CTX_C(); call21(DUP(); const[422])) | objlit[kind](param[0]) | objlit[Directory](CLOSURE_CTX_A()) | LOCAL_OP2().builtin#92 | PUSH_STR2()(const[423], pool[424], f0(undefined)) | LOCAL_OP2().builtin#92 | call25(PUSH_C8().runTask; v06, local[0]) | str?flags=0x78 idx=16 | LOAD_M3() | num[2147634176] | OP_62() | OP_b3() | num[243714] | const[00bc0301] | OP30() | const[0db60300] | OP_8c() | const[6553601] | objlit[networkClient](CLOSURE_CTX_A()).requestEmpty | desc-tpl | const[427].[wk:0x19c] | PUSH_STR2().[wk:0x19d] | objlit[kind](CLOSURE_CTX_C()) | OP_6f() | LOAD_61() | v06 | OP_71() | OP_2e() | OP_44() | str?flags=0x0 idx=1 | const[10000100] | objlit[activeRequestsByOwner](PUSH_THIS()).clear()
+  // stack@INIT-END: OP_54().j | PUSH_I8() | const[0330c003] | const[0460c203] | const[1049349] | const[40900433] | OP_82() | const[63177004] | PUSH_B() | OP_2d() | const[86042e01] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LOAD_61() | !(f0(objlit[surface](param[0]))) | call23(LOAD_61(); call21(DUP(); const[393])) | LOAD_61() | LOAD_61() | LOAD_61() | LOAD_61() | OP_6f() | LOAD_61() | OP_2f() | v06 | EQ_STRICT() | OP_A8() | v06 | undefined | LOAD_61() | EQ_STRICT() | v06 | undefined | LOAD_61() | EQ_STRICT() | v06 | undefined | LOAD_61() | EQ_STRICT() | LOAD_61() | objlit[surface](param[0]) | OP_f1() | LOAD_61() | EQ_STRICT() | LOAD_61() | f0(objlit[surface](param[0])) | v06 | undefined | LOAD_61() | OP_A8() | load[aux00b9] | const[123866656] | const[00010301] | PUSH_B() | desc-tpl | num[3187934402] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x2 idx=2 | const[101711872] | const[88040100] | globalThis | str?flags=0x0 idx=3 | str?flags=0xc idx=184 | load[auxba03] | const[0dc00304] | OP_8c() | const[23330820] | DECL_SLOT() | v06 | PUSH_STR2() | LOAD_61() | f0(objlit[surface](CLOSURE_CTX_D())) | OP_6f() | DECL_SLOT() | LOAD_61() | undefined | desc-tpl | objlit[accountId](objlit[options](CLOSURE_CTX_B())).[wk:0x182] | v06 | objlit[cursor](undefined) | OP_72() | OP_75() | num[3492159942].j | str?flags=0x4 idx=12.j | OP_1d() | OP_d8() | const[82182487] | DECL_SLOT() | DECL_SLOT() | LOAD_61() | LOAD_61() | v06 | EQ_STRICT() | v06 | OP_32() | PUSH_B() | const[00010201] | PUSH_B() | PUSH_C() | const[cc0303b6] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x2 idx=1 | num[247809] | load[ba] | str?flags=0x0 idx=13 | const[0d900401] | CLOSURE_CTX_C() | const[76283906] | str?flags=0x0 idx=240 | DECL_SLOT() | objlit[networkClient](CLOSURE_CTX_A()).requestJson | desc-tpl | desc-tpl | const[411].[wk:0x19c] | PUSH_STR2().[wk:0x19d] | desc-tpl | PUSH_STR2().[wk:0x36] | v06 | OP_6f() | DECL_SLOT() | LOAD_61() | desc-tpl | LOAD_61() | const[418].[wk:0x140] | v06 | EQ_STRICT() | OP_72() | OP_2e() | OP_71() | OP_2e() | META_RECORD44() | const[00010100] | num[243201] | const[00d228ae].j | str?flags=0x1d idx=1 | call31(?) | const[d8045701] | PUSH_C8() | str?flags=0x9 idx=13 | v06 | load[aux08cc] | DECL_SLOT() | DECL_SLOT() | objlit[kind](param[0]) | objlit[SavedEntity](CLOSURE_CTX_A()) | call23(CLOSURE_CTX_C(); call21(DUP(); const[420])) | CLOSURE_CTX_D() | v06 | undefined | call23(CLOSURE_CTX_C(); call21(DUP(); const[422])) | objlit[kind](param[0]) | objlit[Directory](CLOSURE_CTX_A()) | LOCAL_OP2().builtin#92 | PUSH_STR2()(const[423], pool[424], f0(undefined)) | LOCAL_OP2().builtin#92 | call25(PUSH_C8().runTask; v06, local[0]) | str?flags=0x78 idx=16 | LOAD_M3() | num[2147634176] | OP_62() | OP_b3() | num[243714] | const[00bc0301] | OP30() | const[0db60300] | OP_8c() | const[6553601] | objlit[networkClient](CLOSURE_CTX_A()).requestEmpty | desc-tpl | const[427].[wk:0x19c] | PUSH_STR2().[wk:0x19d] | objlit[kind](CLOSURE_CTX_C()) | OP_6f() | LOAD_61() | v06 | OP_71() | OP_2e() | META_RECORD44() | str?flags=0x0 idx=1 | const[10000100] | objlit[activeRequestsByOwner](PUSH_THIS()).clear()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -919,7 +919,7 @@
   …(pad)
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0x07 PUSH_B [~]
@@ -1055,7 +1055,7 @@
   // op 0x35 OP35 [?]
   // op 0x2b OP_2b [?]
   // op 0xd0 OP_d0 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0xc8 PUSH_C8 [~]
@@ -1083,7 +1083,7 @@
   // op 0xe9 OP_e9 [?]
   …(pad)
   // discard(num[18])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x09 PUSH_D [~]
   // op 0xe6 OP_e6 [?]
   // op 0x64 DECL_SLOT [~]
@@ -1136,7 +1136,7 @@
   // op 0x3f OP_3f [?]
   // op 0x9e OP_9e [?]
   // op 0x69 OP_69 [?]
-  // stack@INIT-END: str?flags=0x8f idx=1 | call25(OP_7e().j; ) | str?flags=0x90 idx=1 | const[0000000e].j | OP_be() | const[00b60303] | str?flags=0x30 idx=182 | str?flags=0x30 idx=192 | OP30() | const[63177005] | OP_32() | const[63701294] | OP_1c() | const[c203060d] | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | META_OP6C() | DECL_SLOT() | objlit[networkClient](PUSH_C9()).requestJson | desc-tpl | desc-tpl | const[433].[wk:0x19c] | PUSH_STR2().[wk:0x19d] | globalThis | call25(OP_ea().[wk:0x1a0]; CLOSURE_CTX_C().[wk:0x1a1]) | CLOSURE_CTX_D() | META_OP6C() | DECL_SLOT() | desc-tpl | pool[149] | objlit[networkClient](PUSH_C9()).requestJson | desc-tpl | desc-tpl | const[433].[wk:0x19c] | PUSH_STR2().[wk:0x19d] | call25(undefined.[wk:0x18b].[wk:0x1a0]; CLOSURE_CTX_C().[wk:0x1a1]) | desc-tpl | PUSH_STR2().[wk:0x1b3] | v06 | param[1] | v06 | OP_d5() | param[0] | objlit[Suggested](LOAD_61()) | param[0] | objlit[Uploads](LOAD_61()) | param[0] | objlit[Images](LOAD_61()) | desc-tpl | const[343] | push1.[wk:0x18e] | v06 | objlit[networkClient](PUSH_C9()).requestJson | OP_1c() | call21(?) | OP_2b() | OP35() | OP35() | OP_44() | str?flags=0x1 idx=0 | str?flags=0x4 idx=1 | const[00ca030a] | load[auxb603] | load[aux08cc] | DECL_SLOT() | OP_e9() | push22272.j | OP_be() | const[0260c003] | const[0330c203] | const[0430c403] | const[05701000] | const[40f80323] | OP_e6() | const[3288858974] | v06 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[disposed](LOAD_M3()) | call23(CLOSURE_CTX_B(); call21(DUP(); )) | param[1] | desc-tpl | OP_50().[wk:0x1af] | pool[186].race | undefined | OP_f3() | OP_7c() | PUSH_C() | OP_9e() | const[020e4207] | const[00020002] | num[33947649] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | OP_69()
+  // stack@INIT-END: str?flags=0x8f idx=1 | call25(OP_7e().j; ) | str?flags=0x90 idx=1 | const[0000000e].j | PUSH_I8() | const[00b60303] | str?flags=0x30 idx=182 | str?flags=0x30 idx=192 | OP30() | const[63177005] | OP_32() | const[63701294] | OP_1c() | const[c203060d] | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | META_OP6C() | DECL_SLOT() | objlit[networkClient](PUSH_C9()).requestJson | desc-tpl | desc-tpl | const[433].[wk:0x19c] | PUSH_STR2().[wk:0x19d] | globalThis | call25(OP_ea().[wk:0x1a0]; CLOSURE_CTX_C().[wk:0x1a1]) | CLOSURE_CTX_D() | META_OP6C() | DECL_SLOT() | desc-tpl | pool[149] | objlit[networkClient](PUSH_C9()).requestJson | desc-tpl | desc-tpl | const[433].[wk:0x19c] | PUSH_STR2().[wk:0x19d] | call25(undefined.[wk:0x18b].[wk:0x1a0]; CLOSURE_CTX_C().[wk:0x1a1]) | desc-tpl | PUSH_STR2().[wk:0x1b3] | v06 | param[1] | v06 | OP_d5() | param[0] | objlit[Suggested](LOAD_61()) | param[0] | objlit[Uploads](LOAD_61()) | param[0] | objlit[Images](LOAD_61()) | desc-tpl | const[343] | push1.[wk:0x18e] | v06 | objlit[networkClient](PUSH_C9()).requestJson | OP_1c() | call21(?) | OP_2b() | OP35() | OP35() | META_RECORD44() | str?flags=0x1 idx=0 | str?flags=0x4 idx=1 | const[00ca030a] | load[auxb603] | load[aux08cc] | DECL_SLOT() | OP_e9() | push22272.j | PUSH_I8() | const[0260c003] | const[0330c203] | const[0430c403] | const[05701000] | const[40f80323] | OP_e6() | const[3288858974] | v06 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[disposed](LOAD_M3()) | call23(CLOSURE_CTX_B(); call21(DUP(); )) | param[1] | desc-tpl | OP_50().[wk:0x1af] | pool[186].race | undefined | OP_f3() | OP_7c() | PUSH_C() | OP_9e() | const[020e4207] | const[00020002] | num[33947649] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | OP_69()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x1c OP_1c [?]
@@ -1248,7 +1248,7 @@
   // discard(const[01030000])
 
   // ---- FUNCTION-UNIT: '$' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x11 DUP [~]
   // op 0xc2 LOCAL_OP2 [?]
@@ -1342,7 +1342,7 @@
   // trailer 0xae
   jcc-0xeb → @11564
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_77() | const[00010200] | call25(?) | fn:'$' | OP_be() | const[100909581] | call21(DUP(); param[0]).requestJson | desc-tpl | desc-tpl | const[411].[wk:0x19c] | LOCAL_OP2().builtin#92(PUSH_STR2(), const[447]).[wk:0x19d] | desc-tpl | param[1].[wk:0x1c0] | LOCAL_OP2().[wk:0x1c1] | OP_1c() | PATCH_REF_LOAD() | v06 | const[00010101] | 'module' | num[16778166] | PUSH_WK2() | str?flags=0x1 idx=0 | OP_39() | OP_3b() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(const[00000000], num[65536]) | … | OP_5a() | LOAD_61() | PUSH_E() | v06 | fn:'$' | v06 | load[auxd211] | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | objlit[Uploads](CLOSURE_CTX_A())
+  // stack@INIT-END: OP_77() | const[00010200] | call25(?) | fn:'$' | PUSH_I8() | const[100909581] | call21(DUP(); param[0]).requestJson | desc-tpl | desc-tpl | const[411].[wk:0x19c] | LOCAL_OP2().builtin#92(PUSH_STR2(), const[447]).[wk:0x19d] | desc-tpl | param[1].[wk:0x1c0] | LOCAL_OP2().[wk:0x1c1] | OP_1c() | PATCH_REF_LOAD() | v06 | const[00010101] | 'module' | num[16778166] | PUSH_WK2() | str?flags=0x1 idx=0 | OP_39() | OP_3b() | v06 | OP_ff() | desc-tpl | PATCH_REF_LOAD() | pair(const[00000000], num[65536]) | … | OP_5a() | LOAD_61() | PUSH_E() | v06 | fn:'$' | v06 | load[auxd211] | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | objlit[Uploads](CLOSURE_CTX_A())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x08 PUSH_C [~]
@@ -1545,7 +1545,7 @@
   // op 0xf1 OP_f1 [?]
   locop 0xca(OP_f1())
   // op 0xdf CLOSURE_CTX_B [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   locop 0xcb(OP_f2())
   // trailer 0xae
@@ -1560,7 +1560,7 @@
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @13437
   // discard(OP_b3())
-  // stack@INIT-END: str?flags=0xcd idx=2 | OP_37() | fn:'$' | OP30() | OP_3a() | const[64010064] | CLOSURE_CTX_A() | param[0] | CLOSURE_CTX_B() | objlit[kind](undefined) | OP_be() | v06 | const[463] | undefined | CLOSURE_CTX_C() | call23(CLOSURE_CTX_D(); undefined, param[1])
+  // stack@INIT-END: str?flags=0xcd idx=2 | OP_37() | fn:'$' | OP30() | OP_3a() | const[64010064] | CLOSURE_CTX_A() | param[0] | CLOSURE_CTX_B() | objlit[kind](undefined) | PUSH_I8() | v06 | const[463] | undefined | CLOSURE_CTX_C() | call23(CLOSURE_CTX_D(); undefined, param[1])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1573,7 +1573,7 @@
   // op 0xf1 OP_f1 [?]
   locop 0xca(OP_f1())
   // op 0xdf CLOSURE_CTX_B [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   // op 0x11 DUP [~]
   // trailer 0xae
@@ -1583,7 +1583,7 @@
   // trailer 0xae
   jcc-0xeb → @13594
   // op 0xe1 CLOSURE_CTX_D [~]
-  // stack@INIT-END: fn:'$' | OP_3a() | const[640000de] | param[0] | CLOSURE_CTX_B() | objlit[kind](undefined) | OP_be() | DUP() | const[463] | DUP() | const[418] | call23(CLOSURE_CTX_D(); undefined, param[1])
+  // stack@INIT-END: fn:'$' | OP_3a() | const[640000de] | param[0] | CLOSURE_CTX_B() | objlit[kind](undefined) | PUSH_I8() | DUP() | const[463] | DUP() | const[418] | call23(CLOSURE_CTX_D(); undefined, param[1])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x30 OP30 [?]
@@ -1593,20 +1593,20 @@
   // ---- FUNCTION-UNIT: '$' ----
   // op 0x30 OP30 [?]
   // op 0xac OP_ac [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xde CLOSURE_CTX_A [~]
   // op 0xf1 OP_f1 [?]
   locop 0xca(OP_f1())
   // op 0xdf CLOSURE_CTX_B [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   locop 0xcb(OP_f2())
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @13770
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @13770
-  // stack@INIT-END: OP_ac() | OP_44() | CLOSURE_CTX_A() | param[0] | CLOSURE_CTX_B() | objlit[kind](undefined) | OP_be() | EQ_STRICT() | EQ_STRICT()
+  // stack@INIT-END: OP_ac() | META_RECORD44() | CLOSURE_CTX_A() | param[0] | CLOSURE_CTX_B() | objlit[kind](undefined) | PUSH_I8() | EQ_STRICT() | EQ_STRICT()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xe0 CLOSURE_CTX_C [~]
   locop 0xcc(f0(undefined))
@@ -1640,7 +1640,7 @@
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0xde CLOSURE_CTX_A [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   locop 0xca(OP_f2())
   // trailer 0xae
@@ -1915,7 +1915,7 @@
   // op 0xb7 PUSH_WK1 [~]
   // op 0x61 LOAD_61 [?]
   // op 0x61 LOAD_61 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   // trailer 0xae
   jcc-0xeb → @16478
@@ -2297,9 +2297,9 @@
   // op 0x1c OP_1c [?]
   // op 0x08 PUSH_C [~]
   // op 0x3a OP_3a [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // discard(OP_44())
+  // discard(META_RECORD44())
 
   // ---- FUNCTION-UNIT: '$' ----
   // op 0x30 OP30 [?]
@@ -2389,7 +2389,7 @@
   // op 0x56 OP_56 [?]
   // discard(OP_56())
   // discard(desc-tpl)
-  // stack@INIT-END: CLOSURE_CTX_C() | objlit[availability](undefined) | objlit[Unavailable](CLOSURE_CTX_D()) | LOAD_61() | undefined | undefined | const[463] | undefined | LOAD_61() | LOAD_61() | CLOSURE_CTX_A() | objlit[file](undefined) | OP_f1() | OP_f1() | LOAD_61() | CLOSURE_CTX_A() | objlit[saved_entity](undefined) | OP_f1() | undefined | OP_4a() | const[b6044601] | LOCAL_OP2() | const[23331148] | DECL_SLOT() | CLOSURE_CTX_A() | objlit[availability](param[0]) | OP_be() | const[473] | undefined | objlit[Available](CLOSURE_CTX_B()) | const[474] | undefined | objlit[Unavailable](CLOSURE_CTX_B()) | v06 | undefined | OP_2f() | desc-tpl | undefined.[wk:0x1d5] | CLOSURE_CTX_C() | objlit[created_at](param[0]) | OP_f1().[wk:0x1de] | CLOSURE_CTX_D() | objlit[favorite_id](param[0]) | OP_f1().[wk:0x142] | LOAD_61() | objlit[retryable](param[0]) | OP_f2() | str?flags=0x1e idx=1.[wk:0x182] | objlit[availability](param[1]).[wk:0x1d5] | param[1].[wk:0x1e3] | const[484].builtin#92(objlit[id](param[1])).[wk:0x142] | !(PUSH_WK1()).[wk:0x1e5] | const[463] | param[0] | objlit[File](CLOSURE_CTX_A()) | objlit[SavedEntity](CLOSURE_CTX_A()).[wk:0x140] | !(PUSH_WK1()).[wk:0x1e6] | objlit[Ready](CLOSURE_CTX_B()).[wk:0x1e7] | objlit[retryable](param[1]) | const[488] | const[370].[wk:0x1e9] | const[463] | param[0] | const[490] | str?flags=0xff idx=2 | PUSH_C() | OP_50() | fn:'$' | const[00000000].[wk:0x1d5] | str?flags=0x8e idx=3 | fn:'$' | OP30() | OP_c0() | const[0330c203] | const[0430c403] | const[0530c603] | const[0630c803] | const[0730ca03] | const[0830cc03] | LT() | const[78119230] | OP_1d() | const[d2045401] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | objlit[id](param[0]) | CLOSURE_CTX_A() | objlit[library_file_id](param[0]) | v06 | undefined | OP_2f() | CLOSURE_CTX_B() | objlit[file_id](param[0]) | CLOSURE_CTX_C() | objlit[file_name](param[0]) | CLOSURE_CTX_C() | objlit[builtin#54](param[0]) | CLOSURE_CTX_C() | objlit[title](param[0]) | v06 | undefined | OP_2f() | CLOSURE_CTX_D() | CLOSURE_CTX_A() | objlit[directory_id](param[0]) | CLOSURE_CTX_A() | objlit[parent_directory_id](param[0]) | LOAD_61() | objlit[mime_type](param[0]) | OP_bf() | LOAD_61() | objlit[updated_at](param[0]) | LOAD_61() | objlit[file_processed_time](param[0]) | LOAD_61() | objlit[file_upload_time](param[0]) | CLOSURE_CTX_A() | objlit[origination_thread_id](param[0]) | LOAD_61() | LOAD_61() | LOAD_61() | LOAD_61() | LOAD_61() | objlit[subtitle](param[0]) | PUSH_STR2() | LOAD_61() | objlit[description](param[0]) | PUSH_STR2() | desc-tpl | param[1].[wk:0x182] | v06 | undefined | desc-tpl | v06 | undefined | v06 | undefined | undefined.[wk:0x208] | undefined.[wk:0x142] | v06 | undefined | undefined.[wk:0x36] | v06 | undefined | undefined.[wk:0x20b] | v06 | undefined.[wk:0x1cf] | undefined.[wk:0x208] | undefined.[wk:0x142] | objlit[isShared](undefined).[wk:0x1e5] | objlit[File](LOAD_61()).[wk:0x140] | undefined.[wk:0x1a5] | v06 | undefined | v06 | undefined | v06 | undefined | v06 | undefined | v06 | undefined | v06 | undefined | !(PUSH_WK1()).[wk:0x1e6] | undefined.[wk:0x20b] | fn:'$' | OP30() | OP_c0() | const[0330c203] | const[0430c403] | const[0530c603] | const[0630c803] | const[0730ca03] | const[0830cc03] | OP_46() | const[b0044301] | PUSH_EXPORTS() | LT() | OP_1e() | const[640a0064] | PUSH_D() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | objlit[id](param[0]) | CLOSURE_CTX_B() | objlit[builtin#54](param[0]) | CLOSURE_CTX_B() | objlit[title](param[0]) | v06 | undefined | OP_2f() | CLOSURE_CTX_C() | objlit[parent_directory_id](param[0]) | CLOSURE_CTX_D() | objlit[display_path](param[0]) | PUSH_STR2() | LOAD_61() | objlit[cloud_doc_url](param[0]) | LOAD_61() | objlit[is_root](param[0]) | LOAD_61() | LOAD_61() | LOAD_61() | LOAD_61() | desc-tpl | param[1].[wk:0x182] | desc-tpl | v06 | undefined | v06 | undefined | undefined.[wk:0x142] | v06 | undefined | undefined.[wk:0x36] | v06 | undefined | v06 | undefined | undefined.[wk:0x20b] | v06 | undefined.[wk:0x1a2] | undefined.[wk:0x142] | objlit[isShared](undefined).[wk:0x1e5] | objlit[Directory](LOAD_61()).[wk:0x140] | v06 | undefined | v06 | undefined | fn:'$' | OP30() | LOCAL_OP2() | 'module' | 'exports' | 'e' | 'r' | 'i' | 't' | 'a' | 'o' | 'n' | OP_1d() | const[f2031e01] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | objlit[saved_target](param[0]) | CLOSURE_CTX_A() | objlit[sidebar_params](undefined) | CLOSURE_CTX_B() | objlit[identity](undefined) | v06 | undefined | v06 | desc-tpl | CLOSURE_CTX_C() | objlit[key](undefined) | PUSH_STR2() | OP_f2().[wk:0x228] | CLOSURE_CTX_C() | objlit[namespace](undefined) | PUSH_STR2() | LOAD_61() | desc-tpl | CLOSURE_CTX_C() | objlit[category](undefined) | PUSH_STR2() | OP_f2().[wk:0x1f8] | v06 | undefined | LOAD_61() | objlit[multi_message_mode](undefined) | OP_f1().[wk:0x231] | LOAD_61() | objlit[builtin#54](undefined) | CLOSURE_CTX_A() | objlit[display_data](param[0]) | LOAD_61() | objlit[builtin#54](undefined) | LOAD_61() | objlit[image_url](undefined) | desc-tpl | desc-tpl | v06 | undefined | undefined.[wk:0x36].[wk:0x239] | desc-tpl | v06 | undefined | v06 | undefined | v06 | desc-tpl | v06 | EQ_STRICT().[wk:0x1e6] | v06 | undefined | const[484].builtin#92(objlit[id](param[1])) | desc-tpl | PUSH_EXPORTS().[wk:0x182] | objlit[availability](param[1]).[wk:0x1d5] | param[1].[wk:0x1e3] | objlit[category](undefined).[wk:0x1f8] | objlit[category](undefined).[wk:0x23e] | undefined.[wk:0x142] | !(PUSH_WK1()).[wk:0x1e5] | objlit[SavedEntity](LOAD_61()).[wk:0x140] | !(PUSH_WK1()).[wk:0x1e6] | undefined.[wk:0x23f] | objlit[Ready](LOAD_61()).[wk:0x1e7] | objlit[category](undefined).[wk:0x1e9] | v06 | fn:'$' | OP30() | OP_c0() | const[0430c203] | const[0530e004] | OP_13() | load[aux6405] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | v06 | undefined | CLOSURE_CTX_B() | objlit[provider](param[0]) | PUSH_STR2() | OP_f2() | CLOSURE_CTX_B() | objlit[provider_id](param[0]) | PUSH_STR2() | CLOSURE_CTX_B() | objlit[provider_name](param[0]) | PUSH_STR2() | CLOSURE_CTX_B() | objlit[provider_display_name](param[0]) | PUSH_STR2() | EQ_STRICT() | desc-tpl | v06 | undefined | v06 | undefined | v06
+  // stack@INIT-END: CLOSURE_CTX_C() | objlit[availability](undefined) | objlit[Unavailable](CLOSURE_CTX_D()) | LOAD_61() | undefined | undefined | const[463] | undefined | LOAD_61() | LOAD_61() | CLOSURE_CTX_A() | objlit[file](undefined) | OP_f1() | OP_f1() | LOAD_61() | CLOSURE_CTX_A() | objlit[saved_entity](undefined) | OP_f1() | undefined | OP_4a() | const[b6044601] | LOCAL_OP2() | const[23331148] | DECL_SLOT() | CLOSURE_CTX_A() | objlit[availability](param[0]) | PUSH_I8() | const[473] | undefined | objlit[Available](CLOSURE_CTX_B()) | const[474] | undefined | objlit[Unavailable](CLOSURE_CTX_B()) | v06 | undefined | OP_2f() | desc-tpl | undefined.[wk:0x1d5] | CLOSURE_CTX_C() | objlit[created_at](param[0]) | OP_f1().[wk:0x1de] | CLOSURE_CTX_D() | objlit[favorite_id](param[0]) | OP_f1().[wk:0x142] | LOAD_61() | objlit[retryable](param[0]) | OP_f2() | str?flags=0x1e idx=1.[wk:0x182] | objlit[availability](param[1]).[wk:0x1d5] | param[1].[wk:0x1e3] | const[484].builtin#92(objlit[id](param[1])).[wk:0x142] | !(PUSH_WK1()).[wk:0x1e5] | const[463] | param[0] | objlit[File](CLOSURE_CTX_A()) | objlit[SavedEntity](CLOSURE_CTX_A()).[wk:0x140] | !(PUSH_WK1()).[wk:0x1e6] | objlit[Ready](CLOSURE_CTX_B()).[wk:0x1e7] | objlit[retryable](param[1]) | const[488] | const[370].[wk:0x1e9] | const[463] | param[0] | const[490] | str?flags=0xff idx=2 | PUSH_C() | OP_50() | fn:'$' | const[00000000].[wk:0x1d5] | str?flags=0x8e idx=3 | fn:'$' | OP30() | OP_c0() | const[0330c203] | const[0430c403] | const[0530c603] | const[0630c803] | const[0730ca03] | const[0830cc03] | LT() | const[78119230] | OP_1d() | const[d2045401] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | objlit[id](param[0]) | CLOSURE_CTX_A() | objlit[library_file_id](param[0]) | v06 | undefined | OP_2f() | CLOSURE_CTX_B() | objlit[file_id](param[0]) | CLOSURE_CTX_C() | objlit[file_name](param[0]) | CLOSURE_CTX_C() | objlit[builtin#54](param[0]) | CLOSURE_CTX_C() | objlit[title](param[0]) | v06 | undefined | OP_2f() | CLOSURE_CTX_D() | CLOSURE_CTX_A() | objlit[directory_id](param[0]) | CLOSURE_CTX_A() | objlit[parent_directory_id](param[0]) | LOAD_61() | objlit[mime_type](param[0]) | OP_bf() | LOAD_61() | objlit[updated_at](param[0]) | LOAD_61() | objlit[file_processed_time](param[0]) | LOAD_61() | objlit[file_upload_time](param[0]) | CLOSURE_CTX_A() | objlit[origination_thread_id](param[0]) | LOAD_61() | LOAD_61() | LOAD_61() | LOAD_61() | LOAD_61() | objlit[subtitle](param[0]) | PUSH_STR2() | LOAD_61() | objlit[description](param[0]) | PUSH_STR2() | desc-tpl | param[1].[wk:0x182] | v06 | undefined | desc-tpl | v06 | undefined | v06 | undefined | undefined.[wk:0x208] | undefined.[wk:0x142] | v06 | undefined | undefined.[wk:0x36] | v06 | undefined | undefined.[wk:0x20b] | v06 | undefined.[wk:0x1cf] | undefined.[wk:0x208] | undefined.[wk:0x142] | objlit[isShared](undefined).[wk:0x1e5] | objlit[File](LOAD_61()).[wk:0x140] | undefined.[wk:0x1a5] | v06 | undefined | v06 | undefined | v06 | undefined | v06 | undefined | v06 | undefined | v06 | undefined | !(PUSH_WK1()).[wk:0x1e6] | undefined.[wk:0x20b] | fn:'$' | OP30() | OP_c0() | const[0330c203] | const[0430c403] | const[0530c603] | const[0630c803] | const[0730ca03] | const[0830cc03] | OP_46() | const[b0044301] | PUSH_EXPORTS() | LT() | OP_1e() | const[640a0064] | PUSH_D() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | objlit[id](param[0]) | CLOSURE_CTX_B() | objlit[builtin#54](param[0]) | CLOSURE_CTX_B() | objlit[title](param[0]) | v06 | undefined | OP_2f() | CLOSURE_CTX_C() | objlit[parent_directory_id](param[0]) | CLOSURE_CTX_D() | objlit[display_path](param[0]) | PUSH_STR2() | LOAD_61() | objlit[cloud_doc_url](param[0]) | LOAD_61() | objlit[is_root](param[0]) | LOAD_61() | LOAD_61() | LOAD_61() | LOAD_61() | desc-tpl | param[1].[wk:0x182] | desc-tpl | v06 | undefined | v06 | undefined | undefined.[wk:0x142] | v06 | undefined | undefined.[wk:0x36] | v06 | undefined | v06 | undefined | undefined.[wk:0x20b] | v06 | undefined.[wk:0x1a2] | undefined.[wk:0x142] | objlit[isShared](undefined).[wk:0x1e5] | objlit[Directory](LOAD_61()).[wk:0x140] | v06 | undefined | v06 | undefined | fn:'$' | OP30() | LOCAL_OP2() | 'module' | 'exports' | 'e' | 'r' | 'i' | 't' | 'a' | 'o' | 'n' | OP_1d() | const[f2031e01] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | objlit[saved_target](param[0]) | CLOSURE_CTX_A() | objlit[sidebar_params](undefined) | CLOSURE_CTX_B() | objlit[identity](undefined) | v06 | undefined | v06 | desc-tpl | CLOSURE_CTX_C() | objlit[key](undefined) | PUSH_STR2() | OP_f2().[wk:0x228] | CLOSURE_CTX_C() | objlit[namespace](undefined) | PUSH_STR2() | LOAD_61() | desc-tpl | CLOSURE_CTX_C() | objlit[category](undefined) | PUSH_STR2() | OP_f2().[wk:0x1f8] | v06 | undefined | LOAD_61() | objlit[multi_message_mode](undefined) | OP_f1().[wk:0x231] | LOAD_61() | objlit[builtin#54](undefined) | CLOSURE_CTX_A() | objlit[display_data](param[0]) | LOAD_61() | objlit[builtin#54](undefined) | LOAD_61() | objlit[image_url](undefined) | desc-tpl | desc-tpl | v06 | undefined | undefined.[wk:0x36].[wk:0x239] | desc-tpl | v06 | undefined | v06 | undefined | v06 | desc-tpl | v06 | EQ_STRICT().[wk:0x1e6] | v06 | undefined | const[484].builtin#92(objlit[id](param[1])) | desc-tpl | PUSH_EXPORTS().[wk:0x182] | objlit[availability](param[1]).[wk:0x1d5] | param[1].[wk:0x1e3] | objlit[category](undefined).[wk:0x1f8] | objlit[category](undefined).[wk:0x23e] | undefined.[wk:0x142] | !(PUSH_WK1()).[wk:0x1e5] | objlit[SavedEntity](LOAD_61()).[wk:0x140] | !(PUSH_WK1()).[wk:0x1e6] | undefined.[wk:0x23f] | objlit[Ready](LOAD_61()).[wk:0x1e7] | objlit[category](undefined).[wk:0x1e9] | v06 | fn:'$' | OP30() | OP_c0() | const[0430c203] | const[0530e004] | OP_13() | load[aux6405] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | v06 | undefined | CLOSURE_CTX_B() | objlit[provider](param[0]) | PUSH_STR2() | OP_f2() | CLOSURE_CTX_B() | objlit[provider_id](param[0]) | PUSH_STR2() | CLOSURE_CTX_B() | objlit[provider_name](param[0]) | PUSH_STR2() | CLOSURE_CTX_B() | objlit[provider_display_name](param[0]) | PUSH_STR2() | EQ_STRICT() | desc-tpl | v06 | undefined | v06 | undefined | v06
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -2634,7 +2634,7 @@
   // op 0xa0 ADD [~]
   // op 0x2f OP_2f [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x30 OP30 [?]
   …(pad)
@@ -2664,7 +2664,7 @@
   locop 0xca(OP_f2())
   // trailer 0xae
   jcc-0xeb → @21913
-  // stack@INIT-END: CLOSURE_CTX_A() | param[0] | v06 | undefined | OP_2f() | OP_44() | const[00bc0301] | OP30() | CLOSURE_CTX_A() | param[0] | param[1] | v06 | undefined | IMPORT_BINDING() | CLOSURE_CTX_A() | param[0] | PUSH_STR2() | v06 | undefined
+  // stack@INIT-END: CLOSURE_CTX_A() | param[0] | v06 | undefined | OP_2f() | META_RECORD44() | const[00bc0301] | OP30() | CLOSURE_CTX_A() | param[0] | param[1] | v06 | undefined | IMPORT_BINDING() | CLOSURE_CTX_A() | param[0] | PUSH_STR2() | v06 | undefined
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xe0 CLOSURE_CTX_C [~]
   locop 0xcb(f0(undefined))
@@ -2717,7 +2717,7 @@
   // op 0xa0 ADD [~]
   // op 0x2f OP_2f [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x47 OP_47 [?]
   // op 0xf1 OP_f1 [?]
   locop 0xca(OP_f1())
@@ -2804,7 +2804,7 @@
   // ---- FUNCTION-UNIT: '$' ----
   …(pad)
   // op 0xde CLOSURE_CTX_A [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
   locop 0xca(OP_f2())
   // op 0xaf EQ_STRICT [~]
@@ -2813,7 +2813,7 @@
   jcc-0xeb → @22700
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
-  // stack@INIT-END: OP_A8() | fn:'$' | CLOSURE_CTX_A() | fn:'$' | CLOSURE_CTX_A() | param[0] | OP_be() | EQ_STRICT() | !(PUSH_STR2().test(undefined)) | OP_2f()
+  // stack@INIT-END: OP_A8() | fn:'$' | CLOSURE_CTX_A() | fn:'$' | CLOSURE_CTX_A() | param[0] | PUSH_I8() | EQ_STRICT() | !(PUSH_STR2().test(undefined)) | OP_2f()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x3a OP_3a [?]
@@ -2880,7 +2880,7 @@
   jmp → @23114
   locop 0xcb(OP_81())
   // op 0xe0 CLOSURE_CTX_C [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   // trailer 0xae
   // op 0x11 DUP [~]
@@ -2955,7 +2955,7 @@
   …(pad)
   // discard(str?flags=0xf3 idx=5)
   // op 0xde CLOSURE_CTX_A [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   // op 0xaf EQ_STRICT [~]
   // op 0x11 DUP [~]
@@ -3002,7 +3002,7 @@
   locop 0xcc(OP_ee())
   // op 0x64 DECL_SLOT [~]
   // op 0xde CLOSURE_CTX_A [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   locop 0xcd(OP_f1())
   // trailer 0xae
@@ -3143,7 +3143,7 @@
   jmp → @24981
   // op 0x64 DECL_SLOT [~]
   // op 0xde CLOSURE_CTX_A [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   locop 0xcb(OP_f1())
   // trailer 0xae

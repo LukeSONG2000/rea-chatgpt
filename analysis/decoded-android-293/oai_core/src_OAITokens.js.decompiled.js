@@ -97,106 +97,106 @@
   // trailer 0xae
   jcc-0xeb → @566
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @657
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @748
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @839
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @930
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @1021
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @1112
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @1203
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @1294
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @1385
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @1476
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @1567
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @1658
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @1749
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   // discard(objlit[BodyLarge](CLOSURE_CTX_A()))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0x08 PUSH_C [~]
@@ -236,17 +236,17 @@
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @2028
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   jcc-0xeb → @2069
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
   // discard(objlit[Md](CLOSURE_CTX_A()))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0xbd OP_bd [?]
   …(pad)
@@ -372,7 +372,7 @@
   EXPORTS.BorderSubtle (seq 117) = const[306];  // param[0]
   EXPORTS.BorderStrong (seq 118) = const[304];  // param[0]
   EXPORTS.Transparent (seq 119) = const[480];  // param[0]
-  // stack@INIT-END: fn:'oai-bg-canvas-subtle' | DUP() | objlit[LabelSmall](CLOSURE_CTX_A()) | desc-tpl | objlit[systemFont](PUSH_STR2()) | DUP() | objlit[LabelMedium](CLOSURE_CTX_A()) | desc-tpl | objlit[systemSemiboldFont](PUSH_STR2()) | DUP() | objlit[LabelLarge](CLOSURE_CTX_A()) | desc-tpl | objlit[systemSemiboldFont](PUSH_STR2()) | DUP() | objlit[BodySmall](CLOSURE_CTX_A()) | desc-tpl | objlit[systemFont](PUSH_STR2()) | DUP() | objlit[BodyMedium](CLOSURE_CTX_A()) | desc-tpl | objlit[systemFont](PUSH_STR2()) | DUP() | objlit[TitleSmall](CLOSURE_CTX_A()) | desc-tpl | objlit[systemMediumFont](PUSH_STR2()) | DUP() | objlit[TitleMedium](CLOSURE_CTX_A()) | desc-tpl | objlit[systemSemiboldFont](PUSH_STR2()) | DUP() | objlit[TitleLarge](CLOSURE_CTX_A()) | desc-tpl | objlit[systemSemiboldFont](PUSH_STR2()) | DUP() | objlit[HeadlineSmall](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | objlit[HeadlineMedium](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | objlit[HeadlineLarge](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | objlit[DisplaySmall](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | objlit[DisplayMedium](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | objlit[DisplayLarge](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | desc-tpl | objlit[systemFont](PUSH_STR2()) | f0(OP_be()).[wk:0xef] | str?flags=0xb idx=76 | local[0] | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push48393 | PUSH_C() | DUP() | DUP() | DUP() | str?flags=0x6a idx=7 | local[0] | fn:'oai-bg-canvas-subtle'
+  // stack@INIT-END: fn:'oai-bg-canvas-subtle' | DUP() | objlit[LabelSmall](CLOSURE_CTX_A()) | desc-tpl | objlit[systemFont](PUSH_STR2()) | DUP() | objlit[LabelMedium](CLOSURE_CTX_A()) | desc-tpl | objlit[systemSemiboldFont](PUSH_STR2()) | DUP() | objlit[LabelLarge](CLOSURE_CTX_A()) | desc-tpl | objlit[systemSemiboldFont](PUSH_STR2()) | DUP() | objlit[BodySmall](CLOSURE_CTX_A()) | desc-tpl | objlit[systemFont](PUSH_STR2()) | DUP() | objlit[BodyMedium](CLOSURE_CTX_A()) | desc-tpl | objlit[systemFont](PUSH_STR2()) | DUP() | objlit[TitleSmall](CLOSURE_CTX_A()) | desc-tpl | objlit[systemMediumFont](PUSH_STR2()) | DUP() | objlit[TitleMedium](CLOSURE_CTX_A()) | desc-tpl | objlit[systemSemiboldFont](PUSH_STR2()) | DUP() | objlit[TitleLarge](CLOSURE_CTX_A()) | desc-tpl | objlit[systemSemiboldFont](PUSH_STR2()) | DUP() | objlit[HeadlineSmall](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | objlit[HeadlineMedium](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | objlit[HeadlineLarge](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | objlit[DisplaySmall](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | objlit[DisplayMedium](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | objlit[DisplayLarge](CLOSURE_CTX_A()) | desc-tpl | objlit[systemBoldFont](PUSH_STR2()) | DUP() | desc-tpl | objlit[systemFont](PUSH_STR2()) | f0(PUSH_I8()).[wk:0xef] | str?flags=0xb idx=76 | local[0] | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push49417 | PUSH_C() | CLOSURE_CTX_B() | push48393 | PUSH_C() | DUP() | DUP() | DUP() | str?flags=0x6a idx=7 | local[0] | fn:'oai-bg-canvas-subtle'
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe4 CLASS_DEF_POP [~]
@@ -408,58 +408,58 @@
   // op 0xbc OP_bc [?]
   EXPORTS.ThreeQuarters (seq 4) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.One (seq 5) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.OnePointTwentyFive (seq 6) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.OneAndHalf (seq 7) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.OnePointFive (seq 8) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.OnePointSeventyFive (seq 9) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Two (seq 10) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.TwoPointFive (seq 11) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Three (seq 12) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Four (seq 13) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.FourPointFive (seq 14) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Five (seq 15) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.FivePointFive (seq 16) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Six (seq 17) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Seven (seq 18) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Eight (seq 19) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Nine (seq 20) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Ten (seq 21) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Twelve (seq 22) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // stack@INIT-END: OP_78() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
@@ -480,16 +480,16 @@
   // op 0xbc OP_bc [?]
   EXPORTS.Sm (seq 2) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Md (seq 3) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Lg (seq 4) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Xl (seq 5) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.Xxl (seq 6) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // op 0xbf OP_bf [?]

@@ -35,8 +35,8 @@
   local[5] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.VirtualTimeScheduler (seq 2) = undefined;  // PUSH_EXPORTS()
-  // op 0xbe OP_be [?]
-  EXPORTS.frameTimeFactor (seq 3) = OP_be();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.frameTimeFactor (seq 3) = PUSH_I8();  // undefined
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -113,7 +113,7 @@
   // op 0xb5 OP_b5 [?]
   EXPORTS.builtin#87 (seq 2) = OP_b5();  // undefined
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // trailer 0xae
   …(pad)

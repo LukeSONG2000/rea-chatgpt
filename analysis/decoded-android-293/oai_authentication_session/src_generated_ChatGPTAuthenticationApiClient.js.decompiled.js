@@ -192,7 +192,7 @@
   // op 0xa0 ADD [~]
   EXPORTS.builtin#51 (seq 1) = ADD();  // undefined
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xa0 ADD [~]
   // op 0xa0 ADD [~]
@@ -393,7 +393,7 @@
   …(pad)
   // op 0x08 PUSH_C [~]
   // op 0xc2 LOCAL_OP2 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x09 PUSH_D [~]
   // op 0xbc OP_bc [?]
   …(pad)
@@ -430,7 +430,7 @@
   // op 0x69 OP_69 [?]
   // discard(OP_69())
   // discard(OP_6f())
-  // stack@INIT-END: 'statusCode' | desc-tpl | OP_3b() | const[00020302] | PATCH_REF_LOAD() | OP_bc() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[000100e2] | const[00010010] | const[20ec0101] | DECL_SLOT() | OP_2b() | OP_34() | PUSH_C7() | undefined | PUSH_THIS() | PUSH_B() | const[00020302] | const[89849857] | OP_bc() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[000100e2] | const[00010010] | const[20ec0104] | DECL_SLOT() | OP_4d() | PUSH_THIS() | PUSH_B() | const[00020302] | const[89260033] | OP_bc() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[000100e2] | const[00010010] | const[20ec0107] | PUSH_B() | fn:'expected boolean' | PUSH_C8() | 'require' | str?flags=0x2 idx=2 | str?flags=0xa idx=1 | PUSH_D() | const[64010064] | !(pool[148].isFinite(param[0])) | fn:'expected boolean' | str?flags=0x8 idx=9 | CLOSURE_CTX_A() | OP_ad() | !(OP_92().isArray(param[0])) | OP_2f() | OP_3b() | const[00020002] | PATCH_REF_LOAD() | OP_87() | !(fn:'expected boolean'.includes(param[0])) | const[0060c603] | const[0160ba03] | PUSH_C() | PUSH_D() | globalThis | str?flags=0x2 idx=9 | PATCH_REF_LOAD() | DECL_SLOT() | desc-tpl | OP_37() | const[00020402] | v06 | PUSH_D() | str?flags=0xa7 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x3 idx=2 | str?flags=0x7 idx=2 | 'r' | PUSH_C() | LOCAL_OP2() | str?flags=0x3 idx=3 | const[08c00302] | str?flags=0xb8 idx=3 | OP_be() | const[03c40300] | PUSH_D() | OP_bc() | str?flags=0x0 idx=3 | OP_6f() | undefined | OP_2f()
+  // stack@INIT-END: 'statusCode' | desc-tpl | OP_3b() | const[00020302] | PATCH_REF_LOAD() | OP_bc() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[000100e2] | const[00010010] | const[20ec0101] | DECL_SLOT() | OP_2b() | OP_34() | PUSH_C7() | undefined | PUSH_THIS() | PUSH_B() | const[00020302] | const[89849857] | OP_bc() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[000100e2] | const[00010010] | const[20ec0104] | DECL_SLOT() | OP_4d() | PUSH_THIS() | PUSH_B() | const[00020302] | const[89260033] | OP_bc() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[000100e2] | const[00010010] | const[20ec0107] | PUSH_B() | fn:'expected boolean' | PUSH_C8() | 'require' | str?flags=0x2 idx=2 | str?flags=0xa idx=1 | PUSH_D() | const[64010064] | !(pool[148].isFinite(param[0])) | fn:'expected boolean' | str?flags=0x8 idx=9 | CLOSURE_CTX_A() | OP_ad() | !(OP_92().isArray(param[0])) | OP_2f() | OP_3b() | const[00020002] | PATCH_REF_LOAD() | OP_87() | !(fn:'expected boolean'.includes(param[0])) | const[0060c603] | const[0160ba03] | PUSH_C() | PUSH_D() | globalThis | str?flags=0x2 idx=9 | PATCH_REF_LOAD() | DECL_SLOT() | desc-tpl | OP_37() | const[00020402] | v06 | PUSH_D() | str?flags=0xa7 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x3 idx=2 | str?flags=0x7 idx=2 | 'r' | PUSH_C() | LOCAL_OP2() | str?flags=0x3 idx=3 | const[08c00302] | str?flags=0xb8 idx=3 | PUSH_I8() | const[03c40300] | PUSH_D() | OP_bc() | str?flags=0x0 idx=3 | OP_6f() | undefined | OP_2f()
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcd(?)
   // op 0x6f OP_6f [?]
@@ -460,7 +460,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x5d idx=2)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xba OP_ba [?]
   // op 0x08 PUSH_C [~]
@@ -471,7 +471,7 @@
   // op 0x11 DUP [~]
   jcc-0xec → @3002
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x11 DUP [~]
   jcc-0xec → @3002
@@ -536,7 +536,7 @@
   // op 0xc9 PUSH_C9 [~]
   // discard(f0(PUSH_C9()))
   // discard(LOAD_61())
-  // stack@INIT-END: ?.expected null | OP_be() | OP_ba() | 't' | num[50574850] | PUSH_C() | OP_c0() | const[247298] | PUSH_C() | PUSH_C8() | str?flags=0x0 idx=3 | load[aux6f22] | num[6553600] | OP_A8() | OP_2f() | OP_a9() | OP_2f() | v06 | globalThis | OP_ea() | OP_6f() | OP_2f() | CLOSURE_CTX_D() | undefined
+  // stack@INIT-END: ?.expected null | PUSH_I8() | OP_ba() | 't' | num[50574850] | PUSH_C() | OP_c0() | const[247298] | PUSH_C() | PUSH_C8() | str?flags=0x0 idx=3 | load[aux6f22] | num[6553600] | OP_A8() | OP_2f() | OP_a9() | OP_2f() | v06 | globalThis | OP_ea() | OP_6f() | OP_2f() | CLOSURE_CTX_D() | undefined
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcc(?)
   // op 0x6f OP_6f [?]
@@ -790,7 +790,7 @@
   …(pad)
   // discard(num[28])
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x0a PUSH_E [~]
   // op 0xbc OP_bc [?]
   // op 0x11 DUP [~]
@@ -837,7 +837,7 @@
   // discard(OP_1b()())
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.transport (seq 0) = param[0];  // PUSH_THIS()
-  // stack@INIT-END: fn:'expected boolean' | OP30() | OP_bc() | str?flags=0x3 idx=3 | str?flags=0x3 idx=4 | str?flags=0x5 idx=5 | str?flags=0x8 idx=9 | DECL_SLOT() | DECL_SLOT() | OP_81() | DECL_SLOT() | DECL_SLOT() | META_OP6D() | pool[146].isArray(undefined) | OP_87() | globalThis | OP_ea() | str?flags=0x87 idx=1 | call21(?) | objlit[expected boolean](OP_47()) | 'require' | const[0120c603] | num[63057920] | str?flags=0x10 idx=1 | PUSH_E() | OP_0f() | const[64010064] | DECL_SLOT() | CLOSURE_CTX_C() | param[0] | desc-tpl | v06 | objlit[account_id](undefined) | desc-tpl | desc-tpl | CLOSURE_CTX_A() | objlit[account_id](undefined) | v06 | objlit[account_user_id](undefined) | desc-tpl | desc-tpl | LOAD_61() | objlit[account_user_id](undefined) | CLOSURE_CTX_D() | param[1] | OP_f1() | v06 | objlit[is_deactivated](undefined) | desc-tpl | desc-tpl | LOAD_61() | objlit[is_deactivated](undefined) | v06 | objlit[builtin#54](undefined) | desc-tpl | desc-tpl | LOAD_61() | objlit[builtin#54](undefined) | CLOSURE_CTX_D() | param[1] | OP_f1() | v06 | objlit[plan_type](undefined) | OP_1c() | OP_33() | num[1006690076] | num[889249564] | num[1006690076] | num[855695132] | num[104992284] | const[00020002] | str?flags=0x1 idx=0 | OP_bc() | str?flags=0x0 idx=1 | objlit[expected boolean](call23(str?flags=0x0 idx=1; str?flags=0x0 idx=0, param[1]).expected boolean.expected boolean.expected boolean) | OP_17() | const[bc030901] | PUSH_C8() | str?flags=0xf idx=1 | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | desc-tpl | v06 | objlit[account](undefined) | desc-tpl | desc-tpl | CLOSURE_CTX_B() | objlit[account](undefined) | v06 | objlit[can_access_with_session](undefined) | OP_1c() | OP_33() | objlit[expected boolean](num[855695132]) | PUSH_THIS() | 'require' | str?flags=0x2 idx=0 | str?flags=0x18 idx=1 | load[01] | OP_be() | PUSH_E() | const[c0030b01] | OP_bc() | DUP() | const[64010064] | DECL_SLOT() | CLOSURE_CTX_C() | param[0] | desc-tpl | CLOSURE_CTX_D() | objlit[accounts](undefined) | LOAD_61() | param[1] | OP_f1() | OP_f2().[wk:0x12e] | v06 | objlit[account_ordering](undefined) | desc-tpl | OP_1c() | PUSH_C() | OP_37() | num[104992284] | const[00020002] | str?flags=0x1 idx=0 | OP_bc() | str?flags=0x0 idx=1 | call23(str?flags=0x0 idx=1; str?flags=0x0 idx=0, param[1]).expected boolean.expected null
+  // stack@INIT-END: fn:'expected boolean' | OP30() | OP_bc() | str?flags=0x3 idx=3 | str?flags=0x3 idx=4 | str?flags=0x5 idx=5 | str?flags=0x8 idx=9 | DECL_SLOT() | DECL_SLOT() | OP_81() | DECL_SLOT() | DECL_SLOT() | META_OP6D() | pool[146].isArray(undefined) | OP_87() | globalThis | OP_ea() | str?flags=0x87 idx=1 | call21(?) | objlit[expected boolean](OP_47()) | 'require' | const[0120c603] | num[63057920] | str?flags=0x10 idx=1 | PUSH_E() | OP_0f() | const[64010064] | DECL_SLOT() | CLOSURE_CTX_C() | param[0] | desc-tpl | v06 | objlit[account_id](undefined) | desc-tpl | desc-tpl | CLOSURE_CTX_A() | objlit[account_id](undefined) | v06 | objlit[account_user_id](undefined) | desc-tpl | desc-tpl | LOAD_61() | objlit[account_user_id](undefined) | CLOSURE_CTX_D() | param[1] | OP_f1() | v06 | objlit[is_deactivated](undefined) | desc-tpl | desc-tpl | LOAD_61() | objlit[is_deactivated](undefined) | v06 | objlit[builtin#54](undefined) | desc-tpl | desc-tpl | LOAD_61() | objlit[builtin#54](undefined) | CLOSURE_CTX_D() | param[1] | OP_f1() | v06 | objlit[plan_type](undefined) | OP_1c() | OP_33() | num[1006690076] | num[889249564] | num[1006690076] | num[855695132] | num[104992284] | const[00020002] | str?flags=0x1 idx=0 | OP_bc() | str?flags=0x0 idx=1 | objlit[expected boolean](call23(str?flags=0x0 idx=1; str?flags=0x0 idx=0, param[1]).expected boolean.expected boolean.expected boolean) | OP_17() | const[bc030901] | PUSH_C8() | str?flags=0xf idx=1 | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | desc-tpl | v06 | objlit[account](undefined) | desc-tpl | desc-tpl | CLOSURE_CTX_B() | objlit[account](undefined) | v06 | objlit[can_access_with_session](undefined) | OP_1c() | OP_33() | objlit[expected boolean](num[855695132]) | PUSH_THIS() | 'require' | str?flags=0x2 idx=0 | str?flags=0x18 idx=1 | load[01] | PUSH_I8() | PUSH_E() | const[c0030b01] | OP_bc() | DUP() | const[64010064] | DECL_SLOT() | CLOSURE_CTX_C() | param[0] | desc-tpl | CLOSURE_CTX_D() | objlit[accounts](undefined) | LOAD_61() | param[1] | OP_f1() | OP_f2().[wk:0x12e] | v06 | objlit[account_ordering](undefined) | desc-tpl | OP_1c() | PUSH_C() | OP_37() | num[104992284] | const[00020002] | str?flags=0x1 idx=0 | OP_bc() | str?flags=0x0 idx=1 | call23(str?flags=0x0 idx=1; str?flags=0x0 idx=0, param[1]).expected boolean.expected null
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x3a OP_3a [?]

@@ -803,7 +803,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0xc5 idx=1)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   // op 0x8c OP_8c [?]
   // op 0x6c META_OP6C [?]
@@ -958,7 +958,7 @@
   // op 0xc7 PUSH_C7 [~]
   // op 0x75 OP_75 [?]
   // op 0x4c FN_PROLOGUE [~]
-  // stack@INIT-END: ?.isDevBuild.isDevBuild | OP_be() | './MainThreadCallback' | str?flags=0x2 idx=32 | const[00301000] | const[00d0030d] | load[auxc403] | PUSH_B() | load[aux08c4] | OP_8c() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[removeProperty](PUSH_STR2()) | param[1] | objlit[removeProperty](PUSH_STR2()) | param[1] | objlit[removeProperty](PUSH_STR2()) | param[1] | OP_ba() | objlit[currentPlatform](LOAD_M3()) | PUSH_WK2() | objlit[currentPlatform](LOAD_M3()) | undefined | OP_b9() | META_OP6C() | undefined | undefined | undefined | OP10() | const[00d4030f] | load[auxc803] | PUSH_D() | OP10() | const[0008cb64] | PUSH_WK2() | OP_b9() | objlit[currentPlatform](PUSH_C7()) | param[1] | PUSH_WK1() | objlit[currentPlatform](PUSH_C7()) | FN_PROLOGUE()
+  // stack@INIT-END: ?.isDevBuild.isDevBuild | PUSH_I8() | './MainThreadCallback' | str?flags=0x2 idx=32 | const[00301000] | const[00d0030d] | load[auxc403] | PUSH_B() | load[aux08c4] | OP_8c() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[removeProperty](PUSH_STR2()) | param[1] | objlit[removeProperty](PUSH_STR2()) | param[1] | objlit[removeProperty](PUSH_STR2()) | param[1] | OP_ba() | objlit[currentPlatform](LOAD_M3()) | PUSH_WK2() | objlit[currentPlatform](LOAD_M3()) | undefined | OP_b9() | META_OP6C() | undefined | undefined | undefined | OP10() | const[00d4030f] | load[auxc803] | PUSH_D() | OP10() | const[0008cb64] | PUSH_WK2() | OP_b9() | objlit[currentPlatform](PUSH_C7()) | param[1] | PUSH_WK1() | objlit[currentPlatform](PUSH_C7()) | FN_PROLOGUE()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

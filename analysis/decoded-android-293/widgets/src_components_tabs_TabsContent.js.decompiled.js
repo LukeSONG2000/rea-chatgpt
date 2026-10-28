@@ -89,19 +89,19 @@
   local[19] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.TabsContent (seq 3) = undefined;  // PUSH_EXPORTS()
-  // op 0xbe OP_be [?]
-  local[20] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[20] = PUSH_I8();
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
   local[21] = call21(f0(push2).[wk:0x12f]; !(PUSH_WK1()).[wk:0x130]).[wk:0x131];
-  // stack@INIT-END: OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 's' | 'o' | 'n' | 'a' | 'l' | 'd' | 'c' | 'h' | str?flags=0x0 idx=0 | str?flags=0x2 idx=22 | const[031270d8] | 'b' | pair('v', 'TabsContent') | … | … | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[244] | undefined.makeNodePrototype | const[251] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | !(globalThis).[wk:0x11f] | !(globalThis).[wk:0x120] | call21(!(PUSH_WK1()).[wk:0x121]; PUSH_WK1().[wk:0x122]).[wk:0xf8] | DUP() | call21(desc-tpl; const[291].[wk:0x124]).[wk:0x125] | DUP() | call21(desc-tpl; const[291].[wk:0x124]).[wk:0x126] | DUP() | desc-tpl | OP_be().[wk:0x127] | undefined.[wk:0x128] | objlit[linearGradient](undefined) | objlit[HEADER_SHADOW](objlit[Elevation](objlit[SemanticColor](undefined))) | globalThis | push2 | objlit[CLEAR](objlit[Flat](objlit[SemanticColor](undefined))) | PUSH_WK1() | push2
+  // stack@INIT-END: OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 's' | 'o' | 'n' | 'a' | 'l' | 'd' | 'c' | 'h' | str?flags=0x0 idx=0 | str?flags=0x2 idx=22 | const[031270d8] | 'b' | pair('v', 'TabsContent') | … | … | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[244] | undefined.makeNodePrototype | const[251] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | !(globalThis).[wk:0x11f] | !(globalThis).[wk:0x120] | call21(!(PUSH_WK1()).[wk:0x121]; PUSH_WK1().[wk:0x122]).[wk:0xf8] | DUP() | call21(desc-tpl; const[291].[wk:0x124]).[wk:0x125] | DUP() | call21(desc-tpl; const[291].[wk:0x124]).[wk:0x126] | DUP() | desc-tpl | PUSH_I8().[wk:0x127] | undefined.[wk:0x128] | objlit[linearGradient](undefined) | objlit[HEADER_SHADOW](objlit[Elevation](objlit[SemanticColor](undefined))) | globalThis | push2 | objlit[CLEAR](objlit[Flat](objlit[SemanticColor](undefined))) | PUSH_WK1() | push2
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xbf OP_bf [?]
@@ -295,7 +295,7 @@
   // discard(objlit[stickyContainer](PUSH_STR2()).setAttribute(const[333], pool[153].min(undefined, objlit[y](CLOSURE_CTX_B()))))
   // op 0x68 PUSH_STR2 [~]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // op 0xee OP_ee [?]
   // op 0x68 PUSH_STR2 [~]
@@ -390,9 +390,9 @@
   // discard(OP_b3())
   // op 0xdf CLOSURE_CTX_B [~]
   locop 0xca(objlit[LazyWithUnload](CLOSURE_CTX_B()))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9d OP_9d [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   locop 0xcb(OP_9e())
   locop 0xcc(pool[153].floor(undefined))
@@ -826,8 +826,8 @@
   // op 0xb7 PUSH_WK1 [~]
   // discard(PUSH_STR2().setAttribute(const[304], !(PUSH_WK1())))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // discard(PUSH_STR2().setAttributeNumber(const[381], OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_STR2().setAttributeNumber(const[381], PUSH_I8()))
   // op 0x68 PUSH_STR2 [~]
   // op 0xc6 PUSH_THIS [~]
   // discard(PUSH_STR2().renderNamedSlotWithStringKey(const[383], PUSH_THIS()))
@@ -956,8 +956,8 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
+  // op 0x44 META_RECORD44 [?]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0xb3 idx=1)
@@ -1007,7 +1007,7 @@
   // discard(v06.unsubscribe())
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.subscriptionOnNav (seq 3) = v06;  // PUSH_THIS()
-  // stack@INIT-END: call25(call25(call25(call25(?; OP_44()).../scroll/ScrollViewHandler; param[0]).../scroll/ScrollViewHandler; param[0]).../scroll/ScrollViewHandler; param[0]) | str?flags=0xb4 idx=1
+  // stack@INIT-END: call25(call25(call25(call25(?; META_RECORD44()).../scroll/ScrollViewHandler; param[0]).../scroll/ScrollViewHandler; param[0]).../scroll/ScrollViewHandler; param[0]) | str?flags=0xb4 idx=1
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -1069,7 +1069,7 @@
   …(pad)
   // op 0x8e OP_8e [?]
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -1107,7 +1107,7 @@
   // op 0xc3 LOAD_M3 [~]
   jmp → @14348
   // op 0xc3 LOAD_M3 [~]
-  // stack@INIT-END: ?.../scroll/ScrollViewHandler | str?flags=0xb idx=13 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | v06 | undefined | v06 | undefined | OP_8e() | const[025d004f].../scroll/ScrollViewHandler | OP_be() | const[0330c003] | const[04701000] | const[40d2030e] | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | !(PUSH_WK1()) | v06 | v06 | v06 | undefined | LOAD_M3().setState(param[0]) | objlit[renderer](LOAD_M3()).batchUpdates(local[0])
+  // stack@INIT-END: ?.../scroll/ScrollViewHandler | str?flags=0xb idx=13 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | v06 | undefined | v06 | undefined | OP_8e() | const[025d004f].../scroll/ScrollViewHandler | PUSH_I8() | const[0330c003] | const[04701000] | const[40d2030e] | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | !(PUSH_WK1()) | v06 | v06 | v06 | undefined | LOAD_M3().setState(param[0]) | objlit[renderer](LOAD_M3()).batchUpdates(local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

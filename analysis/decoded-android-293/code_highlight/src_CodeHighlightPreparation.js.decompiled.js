@@ -39,7 +39,7 @@
   // stack@INIT-END: fn:'key' | PUSH_WK2() | 'require' | 'module' | 'exports' | str?flags=0x2 idx=7 | const[030570be] | 'e' | str?flags=0x0 idx=0 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x85 OP_85 [?]
   …(pad)
   jcc-0xec → @377
@@ -195,7 +195,7 @@
   // op 0xc0 OP_c0 [?]
   // op 0x33 OP_33 [?]
   // op 0xc2 LOCAL_OP2 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jmp → @2211
   locop 0xca(const[252])
   // op 0x68 PUSH_STR2 [~]
@@ -204,7 +204,7 @@
   // discard(DUP())
   // discard(pool[254].warn(const[256].builtin#92(undefined, const[257])))
   // op 0xc7 PUSH_C7 [~]
-  // stack@INIT-END: OP_1c() | OP_7f() | call25(call25(num[235785003].language; CLOSURE_CTX_B(), param[0]).language; CLOSURE_CTX_B(), param[0]) | str?flags=0x21 idx=0 | num[234881024].language | str?flags=0x0 idx=13 | META_OP6C() | DECL_SLOT() | OP_aa() | objlit[builtin#54](param[1]).replace(OP_33(), LOCAL_OP2()).slice(globalThis, OP_be()) | PUSH_C7().finish(param[0], objlit[requests](param[0]).map(local[0]))
+  // stack@INIT-END: OP_1c() | OP_7f() | call25(call25(num[235785003].language; CLOSURE_CTX_B(), param[0]).language; CLOSURE_CTX_B(), param[0]) | str?flags=0x21 idx=0 | num[234881024].language | str?flags=0x0 idx=13 | META_OP6C() | DECL_SLOT() | OP_aa() | objlit[builtin#54](param[1]).replace(OP_33(), LOCAL_OP2()).slice(globalThis, PUSH_I8()) | PUSH_C7().finish(param[0], objlit[requests](param[0]).map(local[0]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

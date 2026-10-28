@@ -176,7 +176,7 @@
   // op 0xde CLOSURE_CTX_A [~]
   // op 0x10 OP10 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -190,7 +190,7 @@
   // op 0xaf EQ_STRICT [~]
   locop 0xca(EQ_STRICT())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xec → @1980
   // discard(DUP())
@@ -203,7 +203,7 @@
   jcc-0xeb → @2037
   locop 0xcd(objlit[accountSettingsService](param[0]))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // trailer 0xae
   jcc-0xeb → @2246
@@ -235,7 +235,7 @@
   // op 0x68 PUSH_STR2 [~]
   local[5] = PUSH_STR2().[wk:0x12c];
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   local[6] = objlit[accountCustomizationsService](param[0]);
@@ -574,7 +574,7 @@
   jcc-0xeb → @6714
   EXPORTS.role_user_message (seq 4) = objlit[builtin#64](param[1]);  // param[0]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xec → @6862
   // discard(DUP())
@@ -1114,7 +1114,7 @@
   // op 0xf1 OP_f1 [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @14390
   // op 0x9a OP_9a [?]
   // op 0xac OP_ac [?]
@@ -1144,7 +1144,7 @@
   EXPORTS.builtin#2 (seq 3584) = OP_17();  // num[1241516110]
   …(pad)
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x20 OP_20 [?]
   // op 0xba OP_ba [?]
   …(pad)
@@ -1188,7 +1188,7 @@
   // op 0x64 DECL_SLOT [~]
   locop 0xca(objlit[memory_in_search](param[0]).[wk:0x181])
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x07 PUSH_B [~]
@@ -1320,7 +1320,7 @@
   …(pad)
   // op 0x78 OP_78 [?]
   …(pad)
-  // stack-tail: str?flags=0x9e idx=2 | OP_37() | const[00010001] | const[17235971] | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=0 | str?flags=0xb8 idx=3 | load[b6] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | str?flags=0x5 idx=5 | str?flags=0x6 idx=6 | str?flags=0x7 idx=5 | const[00c20306] | load[aux08c4] | PUSH_C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | objlit[builtin#107](objlit[builtin#64](objlit[snapshot](LOAD_M3()))) | OP_2e() | desc-tpl | call21(DUP(); objlit[platformServices](LOAD_M3())).requestJson | desc-tpl | desc-tpl | const[365].[wk:0x144] | const[366].[wk:0x146] | desc-tpl | param[0].[wk:0x16f] | EQ_STRICT() | OP_87() | undefined.[wk:0x6b] | OP_2e() | DECL_SLOT() | desc-tpl | undefined.builtin#66 | param[0] | OP_1c() | OP_72() | OP_12() | OP_49() | fn:'schema' | str?flags=0x1a idx=1 | PUSH_B() | load[aux6400] | CLOSURE_CTX_A() | param[0] | desc-tpl | undefined.[wk:0x136] | desc-tpl | desc-tpl | objlit[CustomInstructions](objlit[OAICustomizationField](PUSH_STR2())).[wk:0x13b] | CLOSURE_CTX_C() | undefined | OP_f1().[wk:0x40] | desc-tpl | objlit[AboutYou](objlit[OAICustomizationField](PUSH_STR2())).[wk:0x13b] | CLOSURE_CTX_C() | undefined | OP_f1().[wk:0x40] | desc-tpl | objlit[Name](objlit[OAICustomizationField](PUSH_STR2())).[wk:0x13b] | CLOSURE_CTX_C() | undefined | OP_f1().[wk:0x40] | desc-tpl | objlit[Occupation](objlit[OAICustomizationField](PUSH_STR2())).[wk:0x13b] | CLOSURE_CTX_C() | undefined | OP_f1().[wk:0x40] | push4.[wk:0x109] | push0.[wk:0x130] | push0.[wk:0x131] | !(PUSH_WK1()).[wk:0x132] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | OP_4a() | num[1241516110] | const[e4030103] | const[040300d5] | OP_20() | const[e8031d01] | OP_ba() | str?flags=0x2 idx=13 | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | CLOSURE_CTX_B() | !(globalThis) | OP_8e() | fn:'schema' | DECL_SLOT() | desc-tpl | objlit[sunshine](param[0]).[wk:0x178] | objlit[moonshine](param[0]).[wk:0x179] | objlit[m3m](param[0]).[wk:0x17b] | objlit[m3m_opted_out](param[0]).[wk:0x17d] | objlit[golden_hour](param[0]).[wk:0x17f] | objlit[isVersionAtLeast](PUSH_STR2()) | META_OP6C() | objlit[instant_answers_enabled](param[0]).[wk:0x183] | objlit[task_suggestions_enabled](param[0]).[wk:0x185] | objlit[isVersionAtLeast](PUSH_STR2()) | objlit[image_gen_enabled](param[0]).[wk:0x189] | !(globalThis) | str?flags=0x81 idx=3 | PUSH_C() | PUSH_THIS() | PUSH_THIS() | PUSH_THIS() | PUSH_THIS() | PUSH_THIS() | PUSH_THIS() | PUSH_C() | OP_ee() | PUSH_THIS() | PUSH_THIS() | PUSH_THIS() | fn:'schema' | OP30() | param[0] | str?flags=0xe idx=13 | str?flags=0xd idx=212 | DECL_SLOT() | OP_81() | DECL_SLOT() | undefined | META_OP6C() | OP_87() | str?flags=0x9a idx=3 | load[aux0035] | num[889212449] | OP_1d() | const[640000de] | param[0] | EQ_STRICT() | OP_2f() | call23(CLOSURE_CTX_D(); undefined) | fn:'schema' | OP_ee() | const[e8031d01] | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | EQ_STRICT() | OP_2f() | call23(CLOSURE_CTX_B(); undefined) | pool[146].isArray(param[0]) | OP_2f() | OP_78()
+  // stack-tail: str?flags=0x9e idx=2 | OP_37() | const[00010001] | const[17235971] | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=0 | str?flags=0xb8 idx=3 | load[b6] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | str?flags=0x5 idx=5 | str?flags=0x6 idx=6 | str?flags=0x7 idx=5 | const[00c20306] | load[aux08c4] | PUSH_C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | objlit[builtin#107](objlit[builtin#64](objlit[snapshot](LOAD_M3()))) | OP_2e() | desc-tpl | call21(DUP(); objlit[platformServices](LOAD_M3())).requestJson | desc-tpl | desc-tpl | const[365].[wk:0x144] | const[366].[wk:0x146] | desc-tpl | param[0].[wk:0x16f] | EQ_STRICT() | OP_87() | undefined.[wk:0x6b] | OP_2e() | DECL_SLOT() | desc-tpl | undefined.builtin#66 | param[0] | OP_1c() | OP_72() | OP_12() | OP_49() | fn:'schema' | str?flags=0x1a idx=1 | PUSH_B() | load[aux6400] | CLOSURE_CTX_A() | param[0] | desc-tpl | undefined.[wk:0x136] | desc-tpl | desc-tpl | objlit[CustomInstructions](objlit[OAICustomizationField](PUSH_STR2())).[wk:0x13b] | CLOSURE_CTX_C() | undefined | OP_f1().[wk:0x40] | desc-tpl | objlit[AboutYou](objlit[OAICustomizationField](PUSH_STR2())).[wk:0x13b] | CLOSURE_CTX_C() | undefined | OP_f1().[wk:0x40] | desc-tpl | objlit[Name](objlit[OAICustomizationField](PUSH_STR2())).[wk:0x13b] | CLOSURE_CTX_C() | undefined | OP_f1().[wk:0x40] | desc-tpl | objlit[Occupation](objlit[OAICustomizationField](PUSH_STR2())).[wk:0x13b] | CLOSURE_CTX_C() | undefined | OP_f1().[wk:0x40] | push4.[wk:0x109] | push0.[wk:0x130] | push0.[wk:0x131] | !(PUSH_WK1()).[wk:0x132] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | OP_4a() | num[1241516110] | const[e4030103] | const[040300d5] | OP_20() | const[e8031d01] | OP_ba() | str?flags=0x2 idx=13 | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | CLOSURE_CTX_B() | !(globalThis) | OP_8e() | fn:'schema' | DECL_SLOT() | desc-tpl | objlit[sunshine](param[0]).[wk:0x178] | objlit[moonshine](param[0]).[wk:0x179] | objlit[m3m](param[0]).[wk:0x17b] | objlit[m3m_opted_out](param[0]).[wk:0x17d] | objlit[golden_hour](param[0]).[wk:0x17f] | objlit[isVersionAtLeast](PUSH_STR2()) | META_OP6C() | objlit[instant_answers_enabled](param[0]).[wk:0x183] | objlit[task_suggestions_enabled](param[0]).[wk:0x185] | objlit[isVersionAtLeast](PUSH_STR2()) | objlit[image_gen_enabled](param[0]).[wk:0x189] | !(globalThis) | str?flags=0x81 idx=3 | PUSH_C() | PUSH_THIS() | PUSH_THIS() | PUSH_THIS() | PUSH_THIS() | PUSH_THIS() | PUSH_THIS() | PUSH_C() | OP_ee() | PUSH_THIS() | PUSH_THIS() | PUSH_THIS() | fn:'schema' | OP30() | param[0] | str?flags=0xe idx=13 | str?flags=0xd idx=212 | DECL_SLOT() | OP_81() | DECL_SLOT() | undefined | META_OP6C() | OP_87() | str?flags=0x9a idx=3 | load[aux0035] | num[889212449] | OP_1d() | const[640000de] | param[0] | EQ_STRICT() | OP_2f() | call23(CLOSURE_CTX_D(); undefined) | fn:'schema' | OP_ee() | const[e8031d01] | DECL_SLOT() | CLOSURE_CTX_A() | param[0] | EQ_STRICT() | OP_2f() | call23(CLOSURE_CTX_B(); undefined) | pool[146].isArray(param[0]) | OP_2f() | OP_78()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

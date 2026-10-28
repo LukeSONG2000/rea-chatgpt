@@ -123,7 +123,7 @@
   // op 0xbf OP_bf [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x9d OP_9d [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xc0 OP_c0 [?]
   // op 0xa0 ADD [~]
@@ -173,17 +173,17 @@
 
   // ---- FUNCTION-UNIT: 'u' ----
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
-  // op 0xbe OP_be [?]
-  locop 0xca(param[0].builtin#55(OP_be()))
-  // op 0xbe OP_be [?]
-  locop 0xcb(param[1].builtin#55(OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xca(param[0].builtin#55(PUSH_I8()))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcb(param[1].builtin#55(PUSH_I8()))
   // op 0xd4 PUSH_EXPORTS [✓]
-  // op 0xbe OP_be [?]
-  locop 0xcc(PUSH_EXPORTS().builtin#55(OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcc(PUSH_EXPORTS().builtin#55(PUSH_I8()))
   // op 0xea OP_ea [?]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xa6 LT [~]
@@ -225,7 +225,7 @@
 
   // ---- FUNCTION-UNIT: 'u' ----
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -389,7 +389,7 @@
   …(pad)
   // trailer 0xae
   …(pad)
-  // stack-tail: OP_20() | OP_be() | const[0120c003] | OP_20() | OP_be() | const[0120c003] | const[0220c203] | const[0330c603] | const[04308c04] | const[05308e04] | str?flags=0x5e idx=1 | load[aux0000]
+  // stack-tail: OP_20() | PUSH_I8() | const[0120c003] | OP_20() | PUSH_I8() | const[0120c003] | const[0220c203] | const[0330c603] | const[04308c04] | const[05308e04] | str?flags=0x5e idx=1 | load[aux0000]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

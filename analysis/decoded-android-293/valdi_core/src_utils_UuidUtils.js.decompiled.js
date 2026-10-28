@@ -33,7 +33,7 @@
   locop 0xca(LOCAL_OP2())
   // op 0x64 DECL_SLOT [~]
   locop 0xcb(globalThis)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   jcc-0xeb → @346
   // op 0xba OP_ba [?]
@@ -46,12 +46,12 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @302
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xaf EQ_STRICT [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @302
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xaf EQ_STRICT [~]
   // op 0x11 DUP [~]
   jcc-0xec → @319
@@ -72,8 +72,8 @@
   jmp → @260
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
-  locop 0xca(param[0].builtin#55(OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xca(param[0].builtin#55(PUSH_I8()))
   // op 0xea OP_ea [?]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xa6 LT [~]
@@ -98,14 +98,14 @@
   // op 0x20 OP_20 [?]
   locop 0xca(OP_20())
   // op 0x64 DECL_SLOT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   locop 0xca(push1)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   locop 0xcb(push1)
   locop 0xcc(globalThis)
   // op 0x64 DECL_SLOT [~]
   locop 0xcd(globalThis)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
@@ -113,7 +113,7 @@
   // op 0xa0 ADD [~]
   local[4] = param[0].slice(undefined, ADD());
   // op 0x75 OP_75 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x4c FN_PROLOGUE [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xa0 ADD [~]
@@ -134,7 +134,7 @@
   // op 0xee OP_ee [?]
   // op 0x64 DECL_SLOT [~]
   local[5] = globalThis;
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
@@ -142,7 +142,7 @@
   // op 0xa0 ADD [~]
   local[6] = param[0].slice(undefined, ADD());
   // op 0x75 OP_75 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x4c FN_PROLOGUE [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xa0 ADD [~]
@@ -166,7 +166,7 @@
   // op 0x57 IMPORT_BINDING [~]
   // op 0x57 IMPORT_BINDING [~]
   …(pad)
-  // stack-tail: OP_46() | globalThis | 'module' | const[006403b6] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x2 idx=1 | str?flags=0x2 idx=3 | str?flags=0x3 idx=4 | str?flags=0x4 idx=3 | str?flags=0x5 idx=6 | num[91136] | DECL_SLOT() | OP_be() | OP_be() | DECL_SLOT() | META_OP6C() | FN_PROLOGUE() | const[227] | OP_ee() | DECL_SLOT() | META_OP6C() | FN_PROLOGUE() | const[227] | OP_ee() | desc-tpl | IMPORT_BINDING() | v06
+  // stack-tail: OP_46() | globalThis | 'module' | const[006403b6] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x2 idx=1 | str?flags=0x2 idx=3 | str?flags=0x3 idx=4 | str?flags=0x4 idx=3 | str?flags=0x5 idx=6 | num[91136] | DECL_SLOT() | PUSH_I8() | PUSH_I8() | DECL_SLOT() | META_OP6C() | FN_PROLOGUE() | const[227] | OP_ee() | DECL_SLOT() | META_OP6C() | FN_PROLOGUE() | const[227] | OP_ee() | desc-tpl | IMPORT_BINDING() | v06
 
 // ---- 字符串表 ----
 // str[1] = 'require'

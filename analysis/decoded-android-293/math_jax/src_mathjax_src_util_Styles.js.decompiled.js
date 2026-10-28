@@ -170,7 +170,7 @@
   // op 0x35 OP35 [?]
   // op 0x35 OP35 [?]
   // op 0x35 OP35 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xc6 PUSH_THIS [~]
   // op 0x08 PUSH_C [~]
   // op 0xc6 PUSH_THIS [~]
@@ -210,7 +210,7 @@
   // op 0x5c OP_5c [?]
   // op 0x7c OP_7c [?]
   // op 0x5d OP_5d [?]
-  // stack@INIT-END: OP_46() | OP_8c() | OP_2d() | PUSH_C() | OP_44() | PUSH_THIS() | OP_1c() | OP_da() | push7206 | call31(?) | globalThis | 'module' | num[3053650362] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | const[00640000] | APPLY_SPREAD() | OP_2a() | call22(?) | OP_5c() | OP_5d()
+  // stack@INIT-END: OP_46() | OP_8c() | OP_2d() | PUSH_C() | META_RECORD44() | PUSH_THIS() | OP_1c() | OP_da() | push7206 | call31(?) | globalThis | 'module' | num[3053650362] | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | const[00640000] | APPLY_SPREAD() | OP_2a() | call22(?) | OP_5c() | OP_5d()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x07 PUSH_B [~]
   // op 0xde CLOSURE_CTX_A [~]
@@ -1087,7 +1087,7 @@
   // op 0xda OP_da [?]
   // discard(OP_da())
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xff OP_ff [?]
   …(pad)
   // op 0x0a PUSH_E [~]
@@ -1119,7 +1119,7 @@
   // op 0x0a PUSH_E [~]
   …(pad)
   // discard(PUSH_E())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
   locop 0xca(PATCH_REF_LOAD())
@@ -1230,7 +1230,7 @@
   jcc-0xeb → @9980
   // op 0xc8 PUSH_C8 [~]
   // discard(objlit[combine](undefined).call(PUSH_C8(), param[0]))
-  // stack@INIT-END: DECL_SLOT() | DECL_SLOT() | !(param[0].match(objlit[sanitize](undefined))) | OP_ff() | desc-tpl | OP_2a() | OP_3f() | num[11264] | PUSH_C() | v06 | OP_ff() | desc-tpl | APPLY_SPREAD() | OP_13() | const[0c000a07] | FN_PROLOGUE() | const[01001f00] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | OP_ff() | load[00].(?:(?:ultra|extra|semi)-)?(?:condensed|expanded) | OP_be() | str?flags=0x4 idx=48 | const[00d0030d] | OP_87() | OP_5a() | OP10() | const[00d0030d] | load[auxc003] | PATCH_REF_LOAD() | OP_d6() | PUSH_C8().setStyle | objlit[subPart](v06)
+  // stack@INIT-END: DECL_SLOT() | DECL_SLOT() | !(param[0].match(objlit[sanitize](undefined))) | OP_ff() | desc-tpl | OP_2a() | OP_3f() | num[11264] | PUSH_C() | v06 | OP_ff() | desc-tpl | APPLY_SPREAD() | OP_13() | const[0c000a07] | FN_PROLOGUE() | const[01001f00] | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | OP_ff() | load[00].(?:(?:ultra|extra|semi)-)?(?:condensed|expanded) | PUSH_I8() | str?flags=0x4 idx=48 | const[00d0030d] | OP_87() | OP_5a() | OP10() | const[00d0030d] | load[auxc003] | PATCH_REF_LOAD() | OP_d6() | PUSH_C8().setStyle | objlit[subPart](v06)
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc8 PUSH_C8 [~]
   // discard(PUSH_C8().combineParent(param[0]))

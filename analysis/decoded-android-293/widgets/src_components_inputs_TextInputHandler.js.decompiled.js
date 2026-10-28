@@ -5,7 +5,7 @@
   // op 0x68 PUSH_STR2 [~]
   …(pad)
   // op 0x0a PUSH_E [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   // op 0xb0 OP_b0 [?]
   Object.defineProperty(exports, dd000000, {value:!0});

@@ -250,7 +250,7 @@
   // discard(META_OP6D())
   // op 0xc3 LOAD_M3 [~]
   // op 0xea OP_ea [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   jcc-0xeb → @2810
   // op 0xc3 LOAD_M3 [~]
@@ -270,7 +270,7 @@
   // discard(META_OP6D())
   // op 0xc3 LOAD_M3 [~]
   // op 0xea OP_ea [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   jcc-0xeb → @3212
   // op 0xc3 LOAD_M3 [~]

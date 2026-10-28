@@ -7,7 +7,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x40 OP_40 [?]
@@ -48,7 +48,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.isDILEnhancedStreamingEnabled (seq 9) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: 'exports'.builtin#17166 | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP_be() | const[245760] | PATCH_REF_LOAD() | OP_40() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | pool[151] | pool[151]
+  // stack@INIT-END: 'exports'.builtin#17166 | TRY_REGION() | TRY_REGION() | TRY_REGION() | PUSH_I8() | const[245760] | PATCH_REF_LOAD() | OP_40() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | pool[151] | pool[151]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x7b OP_7b [?]

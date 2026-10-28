@@ -62,7 +62,7 @@
   // stack@INIT-END: OP_9e() | num[17187598] | OP_A3() | num[241678] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP_40() | LOCAL_OP2() | 'i' | str?flags=0x0 idx=5 | str?flags=0x2 idx=11 | const[030970c6] | 'n' | str?flags=0xc4 idx=7 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   EXPORTS.Scheduled (seq 0) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // op 0xb7 PUSH_WK1 [~]
@@ -74,7 +74,7 @@
   // op 0xb9 OP_b9 [?]
   EXPORTS.Finished (seq 3) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // stack@INIT-END: 'accessToken' | OP_44() | const[21823488] | globalThis | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
+  // stack@INIT-END: 'accessToken' | META_RECORD44() | const[21823488] | globalThis | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x39 OP_39 [?]
@@ -241,7 +241,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x64 DECL_SLOT [~]
@@ -269,11 +269,11 @@
   …(pad)
   // op 0x7a OP_7a [?]
   // discard(OP_7a())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x69 OP_69 [?]
   // discard(OP_69())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0x19 idx=8 | pool[37552130] | const[234881024].body | OP_be() | const[0360c003] | const[0460f803] | const[05301000] | const[40c20306] | load[auxc403] | PUSH_B() | const[08c40664] | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_B() | v06 | undefined | OP_2f() | IMPORT_BINDING().body | OP_be() | str?flags=0x9 idx=188 | pool[186].builtin#128(PUSH_STR2()).builtin#127(local[0], local[0])
+  // stack@INIT-END: str?flags=0x19 idx=8 | pool[37552130] | const[234881024].body | PUSH_I8() | const[0360c003] | const[0460f803] | const[05301000] | const[40c20306] | load[auxc403] | PUSH_B() | const[08c40664] | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_B() | v06 | undefined | OP_2f() | IMPORT_BINDING().body | PUSH_I8() | str?flags=0x9 idx=188 | pool[186].builtin#128(PUSH_STR2()).builtin#127(local[0], local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x53 OP_53 [?]
@@ -407,7 +407,7 @@
   // trailer 0xae
   …(pad)
   // op 0x4a OP_4a [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x30 OP30 [?]
   // op 0x10 OP10 [?]
   // op 0x09 PUSH_D [~]
@@ -460,7 +460,7 @@
   // op 0x4a OP_4a [?]
   locop 0xcc(OP_4a())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x9a OP_9a [?]
   // op 0xac OP_ac [?]
@@ -621,7 +621,7 @@
   local[3] = const[8257539];
   …(pad)
   // op 0x08 PUSH_C [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xeb → @5802
@@ -632,7 +632,7 @@
   // discard(OP_69())
   // op 0xe0 CLOSURE_CTX_C [~]
   // op 0xb8 PUSH_WK2 [~]
-  // stack@INIT-END: OP_39() | num[139067415] | call22(?) | PUSH_B() | const[00000000] | PUSH_C() | OP_be() | const[00c00302] | CLOSURE_CTX_C().onFailure | desc-tpl(PUSH_WK2().[wk:0x114])
+  // stack@INIT-END: OP_39() | num[139067415] | call22(?) | PUSH_B() | const[00000000] | PUSH_C() | PUSH_I8() | const[00c00302] | CLOSURE_CTX_C().onFailure | desc-tpl(PUSH_WK2().[wk:0x114])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x74 OP_74 [?]
@@ -643,7 +643,7 @@
   // op 0xc8 PUSH_C8 [~]
   locop 0xca(PUSH_C8().makeRequestHeaders(const[290]))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @6010
   // discard(DUP())

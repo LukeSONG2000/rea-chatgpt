@@ -35,12 +35,12 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @370
   // op 0x07 PUSH_B [~]
   // op 0x56 OP_56 [?]
   // discard(OP_56())
-  // discard(f0(OP_be()))
+  // discard(f0(PUSH_I8()))
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @364
@@ -52,9 +52,9 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @485
-  // stack@INIT-END: fn:'builtin#262' | str?flags=0x9 idx=6 | fn:'builtin#262' | f0(OP_be())
+  // stack@INIT-END: fn:'builtin#262' | str?flags=0x9 idx=6 | fn:'builtin#262' | f0(PUSH_I8())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x4c FN_PROLOGUE [~]

@@ -60,7 +60,7 @@
   // stack@INIT-END: OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=0 | str?flags=0x0 idx=1 | str?flags=0x0 idx=2 | str?flags=0x0 idx=3 | str?flags=0x0 idx=4 | str?flags=0x0 idx=5 | str?flags=0x0 idx=6 | pool[145].builtin#101
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xea OP_ea [?]
   // op 0xea OP_ea [?]
   // op 0xaf EQ_STRICT [~]
@@ -341,7 +341,7 @@
   jcc-0xec → @1688
   // discard(DUP())
   // op 0xd4 PUSH_EXPORTS [✓]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   // trailer 0xae
   …(pad)
@@ -349,7 +349,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
   // op 0x10 OP10 [?]

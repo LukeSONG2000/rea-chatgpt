@@ -103,8 +103,8 @@
   jcc-0xeb → @860
   // discard(DUP())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   // trailer 0xae
   …(pad)

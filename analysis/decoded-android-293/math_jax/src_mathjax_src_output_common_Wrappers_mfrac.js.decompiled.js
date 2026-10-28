@@ -499,7 +499,7 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0xc0 OP_c0 [?]
   local[6] = pool[149](f0(undefined), OP_c0());
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc3 LOAD_M3 [~]
   // op 0x9d OP_9d [?]
   // op 0x11 DUP [~]
@@ -551,7 +551,7 @@
   jcc-0xeb → @6706
   // op 0x4a OP_4a [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
   locop 0xcb(PUSH_C())
@@ -572,8 +572,8 @@
   // op 0x9d OP_9d [?]
   // op 0xa1 OP_a1 [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
-  // stack-tail: OP_33() | num[33655808] | OP_85() | PUSH_WK2() | !(!(OP_3f())) | PUSH_C9() | OP_3f().rule_thickness | const[02010400] | OP_b4() | const[03b60300] | const[00b80301] | DECL_SLOT() | undefined.builtin#65(const[277]) | undefined.builtin#65 | const[290] | OP_44() | DECL_SLOT() | undefined.builtin#65(const[277]) | objlit[w](PUSH_C7().getBBox()) | PUSH_C7().length2em(undefined.builtin#65(const[285])) | OP_44()
+  // op 0x44 META_RECORD44 [?]
+  // stack-tail: OP_33() | num[33655808] | OP_85() | PUSH_WK2() | !(!(OP_3f())) | PUSH_C9() | OP_3f().rule_thickness | const[02010400] | OP_b4() | const[03b60300] | const[00b80301] | DECL_SLOT() | undefined.builtin#65(const[277]) | undefined.builtin#65 | const[290] | META_RECORD44() | DECL_SLOT() | undefined.builtin#65(const[277]) | objlit[w](PUSH_C7().getBBox()) | PUSH_C7().length2em(undefined.builtin#65(const[285])) | META_RECORD44()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

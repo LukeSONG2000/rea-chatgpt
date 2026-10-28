@@ -134,11 +134,11 @@
   // op 0xc2 LOCAL_OP2 [?]
   EXPORTS.defaultCssFamilyPrefix (seq 12) = LOCAL_OP2();  // undefined
   EXPORTS.VariantSmp (seq 13) = const[f6d70100].[wk:0x80000004].[wk:0x128];  // push2
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xbf OP_bf [?]
   // op 0xbf OP_bf [?]
@@ -146,8 +146,8 @@
   // op 0xbf OP_bf [?]
   // op 0xbf OP_bf [?]
   // op 0xba OP_ba [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.SmpRanges (seq 14) = push5;  // push3
   // op 0xbf OP_bf [?]
   // op 0xbf OP_bf [?]
@@ -174,17 +174,17 @@
   // op 0xbf OP_bf [?]
   // op 0xbf OP_bf [?]
   EXPORTS.SmpRemap (seq 15) = OP_bf().[wk:0x8001d551];  // OP_bf().[wk:0x8001d549]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  EXPORTS.SmpRemapGreekU (seq 16) = OP_be().[wk:0x800003f4];  // OP_be().[wk:0x80002207]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  EXPORTS.SmpRemapGreekL (seq 17) = OP_be().[wk:0x80002202];  // OP_be().[wk:0x800003f5]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.SmpRemapGreekU (seq 16) = PUSH_I8().[wk:0x800003f4];  // PUSH_I8().[wk:0x80002207]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.SmpRemapGreekL (seq 17) = PUSH_I8().[wk:0x80002202];  // PUSH_I8().[wk:0x800003f5]
   EXPORTS.defaultAccentMap (seq 18) = const[324].[wk:0x80002192];  // const[323].[wk:0x8000030c]
   EXPORTS.defaultMoMap (seq 19) = const[326].[wk:0x8000002d];  // desc-tpl
   EXPORTS.defaultMnMap (seq 20) = const[326].[wk:0x8000002d];  // desc-tpl
@@ -229,7 +229,7 @@
   EXPORTS.dynamicFiles (seq 26) = desc-tpl;  // undefined
   // op 0x11 DUP [~]
   EXPORTS.dynamicExtensions (seq 27) = call21(DUP(); );  // undefined
-  // stack@INIT-END: fn:'loadDynamicFiles' | PUSH_WK2() | 'require' | 'module' | 'exports' | 't' | 's' | str?flags=0x0 idx=0 | str?flags=0x0 idx=7 | str?flags=0x2 idx=11 | const[030970c6] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLASS_CONSTRUCT() | undefined | desc-tpl | undefined | const[283] | push1 | const[284] | const[283] | push2 | const[285] | const[283] | push2 | const[286] | const[285] | const[284] | push3 | const[287] | const[284] | push2 | const[288] | const[283] | push2 | const[289] | const[284] | const[288] | push3 | const[290] | const[285] | push2 | const[291] | const[286] | const[290] | push3 | const[292] | const[283] | push2 | const[293] | const[284] | const[292] | push3 | const[294] | const[285] | const[292] | push3 | const[295] | const[286] | const[293] | push3 | const[296] | const[283] | push2 | const[297] | const[283] | push2 | const[298] | const[283] | push2 | const[299] | const[285] | push2 | const[300] | const[286] | push2 | const[301] | const[283] | push2 | const[302] | const[284] | push2 | const[303] | const[285] | push2 | const[304] | const[283] | undefined | desc-tpl | const[76] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x11b] | const[76] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x11c] | const[76] | !(globalThis) | !(PUSH_WK1()) | push3.[wk:0x11d] | const[76] | !(globalThis) | !(globalThis) | push3.[wk:0x11e] | const[76] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x11f] | const[76] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x120] | const[76] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x121] | const[306] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x122] | const[306] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x123] | const[292] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x124] | const[292] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x125] | const[292] | !(globalThis) | !(PUSH_WK1()) | push3.[wk:0x126] | const[292] | !(globalThis) | !(globalThis) | push3.[wk:0x127] | const[296] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x128] | const[76] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x129] | const[76] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x12a] | const[306] | !(globalThis) | !(PUSH_WK1()) | push3.[wk:0x12b] | const[306] | !(globalThis) | !(globalThis) | push3.[wk:0x12c] | const[76] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x12d] | const[76] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x12e] | const[76] | !(globalThis) | !(PUSH_WK1()) | push3.[wk:0x12f] | const[76] | !(PUSH_WK1()) | undefined | desc-tpl | const[00d40100] | const[1ad40100] | const[a8d60100] | const[c2d60100] | const[ced70100] | desc-tpl | const[cad70100].[wk:0x800003dc] | const[cbd70100].[wk:0x800003dd] | push6.[wk:0x11c] | const[34d40100] | const[4ed40100] | const[e2d60100] | const[fcd60100] | push4.[wk:0x11d] | const[68d40100] | const[82d40100] | const[1cd70100] | const[36d70100] | push4.[wk:0x11e] | const[9cd40100] | const[b6d40100] | push2.[wk:0x122] | const[d0d40100] | const[ead40100] | push2.[wk:0x123] | const[04d50100] | const[1ed50100] | push2.[wk:0x120] | const[38d50100] | const[52d50100] | push2 | const[d8d70100].[wk:0x80000004].[wk:0x11f] | const[6cd50100] | const[86d50100] | push2.[wk:0x121] | const[a0d50100] | const[bad50100] | push2 | const[e2d70100].[wk:0x80000004].[wk:0x124] | const[d4d50100] | const[eed50100] | const[56d70100] | const[70d70100] | const[ecd70100] | push5.[wk:0x125] | const[08d60100] | const[22d60100] | push2.[wk:0x126] | const[3cd60100] | const[56d60100] | const[90d70100] | const[aad70100] | push4.[wk:0x127] | const[70d60100] | const[8ad60100] | undefined | globalThis | OP_be() | OP_be() | push3 | PUSH_WK1() | OP_be() | OP_be() | push3 | PUSH_WK2() | OP_bf() | OP_bf() | push3 | OP_b9() | OP_bf() | OP_bf() | push3 | OP_ba() | OP_be() | OP_be() | undefined | desc-tpl | OP_bf().[wk:0x8001d455] | OP_bf().[wk:0x8001d49d] | OP_bf().[wk:0x8001d4a0] | OP_bf().[wk:0x8001d4a1] | OP_bf().[wk:0x8001d4a3] | OP_bf().[wk:0x8001d4a4] | OP_bf().[wk:0x8001d4a7] | OP_bf().[wk:0x8001d4a8] | OP_bf().[wk:0x8001d4ad] | OP_bf().[wk:0x8001d4ba] | OP_bf().[wk:0x8001d4bc] | OP_bf().[wk:0x8001d4c4] | OP_bf().[wk:0x8001d506] | OP_bf().[wk:0x8001d50b] | OP_bf().[wk:0x8001d50c] | OP_bf().[wk:0x8001d515] | OP_bf().[wk:0x8001d51d] | OP_bf().[wk:0x8001d53a] | OP_bf().[wk:0x8001d53f] | OP_bf().[wk:0x8001d545] | OP_bf().[wk:0x8001d547] | OP_bf().[wk:0x8001d548] | undefined | desc-tpl | undefined | desc-tpl | OP_be().[wk:0x800003d1] | OP_be().[wk:0x800003d5] | OP_be().[wk:0x800003d6] | OP_be().[wk:0x800003f0] | OP_be().[wk:0x800003f1] | undefined | desc-tpl | const[314].[wk:0x8000005e] | const[315].[wk:0x8000007e] | const[316].[wk:0x80000300] | const[317].[wk:0x80000301] | const[314].[wk:0x80000302] | const[315].[wk:0x80000303] | const[318].[wk:0x80000304] | const[319].[wk:0x80000306] | const[320].[wk:0x80000307] | const[321].[wk:0x80000308] | const[322].[wk:0x8000030a] | undefined | undefined | undefined | desc-tpl | OP_c0().[wk:0x149] | PUSH_WK1().[wk:0x14a] | OP_c0().[wk:0x14b] | OP_c0().[wk:0x14c] | OP_c0().[wk:0x14d] | OP_c0().[wk:0x14e] | OP_c0().[wk:0x14f] | OP_c0().[wk:0x150] | OP_c0().[wk:0x151] | OP_c0().[wk:0x152] | OP_c0().[wk:0x153] | OP_c0().[wk:0x154] | OP_c0().[wk:0x155] | OP_c0().[wk:0x156] | OP_c0().[wk:0x157] | PUSH_WK1().[wk:0x158] | OP_c0().[wk:0x159] | OP_c0().[wk:0x15a] | OP_c0().[wk:0x15b] | OP_c0().[wk:0x15c] | OP_c0().[wk:0x15d] | OP_c0().[wk:0x15e] | OP_c0().[wk:0x15f] | OP_c0().[wk:0x160] | OP_c0().[wk:0x161] | OP_c0().[wk:0x162] | OP_bf().[wk:0x163] | OP_c0().[wk:0x164] | OP_c0().[wk:0x165] | OP_c0().[wk:0x166] | OP_c0().[wk:0x167]
+  // stack@INIT-END: fn:'loadDynamicFiles' | PUSH_WK2() | 'require' | 'module' | 'exports' | 't' | 's' | str?flags=0x0 idx=0 | str?flags=0x0 idx=7 | str?flags=0x2 idx=11 | const[030970c6] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLASS_CONSTRUCT() | undefined | desc-tpl | undefined | const[283] | push1 | const[284] | const[283] | push2 | const[285] | const[283] | push2 | const[286] | const[285] | const[284] | push3 | const[287] | const[284] | push2 | const[288] | const[283] | push2 | const[289] | const[284] | const[288] | push3 | const[290] | const[285] | push2 | const[291] | const[286] | const[290] | push3 | const[292] | const[283] | push2 | const[293] | const[284] | const[292] | push3 | const[294] | const[285] | const[292] | push3 | const[295] | const[286] | const[293] | push3 | const[296] | const[283] | push2 | const[297] | const[283] | push2 | const[298] | const[283] | push2 | const[299] | const[285] | push2 | const[300] | const[286] | push2 | const[301] | const[283] | push2 | const[302] | const[284] | push2 | const[303] | const[285] | push2 | const[304] | const[283] | undefined | desc-tpl | const[76] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x11b] | const[76] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x11c] | const[76] | !(globalThis) | !(PUSH_WK1()) | push3.[wk:0x11d] | const[76] | !(globalThis) | !(globalThis) | push3.[wk:0x11e] | const[76] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x11f] | const[76] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x120] | const[76] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x121] | const[306] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x122] | const[306] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x123] | const[292] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x124] | const[292] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x125] | const[292] | !(globalThis) | !(PUSH_WK1()) | push3.[wk:0x126] | const[292] | !(globalThis) | !(globalThis) | push3.[wk:0x127] | const[296] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x128] | const[76] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x129] | const[76] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x12a] | const[306] | !(globalThis) | !(PUSH_WK1()) | push3.[wk:0x12b] | const[306] | !(globalThis) | !(globalThis) | push3.[wk:0x12c] | const[76] | !(PUSH_WK1()) | !(PUSH_WK1()) | push3.[wk:0x12d] | const[76] | !(PUSH_WK1()) | !(globalThis) | push3.[wk:0x12e] | const[76] | !(globalThis) | !(PUSH_WK1()) | push3.[wk:0x12f] | const[76] | !(PUSH_WK1()) | undefined | desc-tpl | const[00d40100] | const[1ad40100] | const[a8d60100] | const[c2d60100] | const[ced70100] | desc-tpl | const[cad70100].[wk:0x800003dc] | const[cbd70100].[wk:0x800003dd] | push6.[wk:0x11c] | const[34d40100] | const[4ed40100] | const[e2d60100] | const[fcd60100] | push4.[wk:0x11d] | const[68d40100] | const[82d40100] | const[1cd70100] | const[36d70100] | push4.[wk:0x11e] | const[9cd40100] | const[b6d40100] | push2.[wk:0x122] | const[d0d40100] | const[ead40100] | push2.[wk:0x123] | const[04d50100] | const[1ed50100] | push2.[wk:0x120] | const[38d50100] | const[52d50100] | push2 | const[d8d70100].[wk:0x80000004].[wk:0x11f] | const[6cd50100] | const[86d50100] | push2.[wk:0x121] | const[a0d50100] | const[bad50100] | push2 | const[e2d70100].[wk:0x80000004].[wk:0x124] | const[d4d50100] | const[eed50100] | const[56d70100] | const[70d70100] | const[ecd70100] | push5.[wk:0x125] | const[08d60100] | const[22d60100] | push2.[wk:0x126] | const[3cd60100] | const[56d60100] | const[90d70100] | const[aad70100] | push4.[wk:0x127] | const[70d60100] | const[8ad60100] | undefined | globalThis | PUSH_I8() | PUSH_I8() | push3 | PUSH_WK1() | PUSH_I8() | PUSH_I8() | push3 | PUSH_WK2() | OP_bf() | OP_bf() | push3 | OP_b9() | OP_bf() | OP_bf() | push3 | OP_ba() | PUSH_I8() | PUSH_I8() | undefined | desc-tpl | OP_bf().[wk:0x8001d455] | OP_bf().[wk:0x8001d49d] | OP_bf().[wk:0x8001d4a0] | OP_bf().[wk:0x8001d4a1] | OP_bf().[wk:0x8001d4a3] | OP_bf().[wk:0x8001d4a4] | OP_bf().[wk:0x8001d4a7] | OP_bf().[wk:0x8001d4a8] | OP_bf().[wk:0x8001d4ad] | OP_bf().[wk:0x8001d4ba] | OP_bf().[wk:0x8001d4bc] | OP_bf().[wk:0x8001d4c4] | OP_bf().[wk:0x8001d506] | OP_bf().[wk:0x8001d50b] | OP_bf().[wk:0x8001d50c] | OP_bf().[wk:0x8001d515] | OP_bf().[wk:0x8001d51d] | OP_bf().[wk:0x8001d53a] | OP_bf().[wk:0x8001d53f] | OP_bf().[wk:0x8001d545] | OP_bf().[wk:0x8001d547] | OP_bf().[wk:0x8001d548] | undefined | desc-tpl | undefined | desc-tpl | PUSH_I8().[wk:0x800003d1] | PUSH_I8().[wk:0x800003d5] | PUSH_I8().[wk:0x800003d6] | PUSH_I8().[wk:0x800003f0] | PUSH_I8().[wk:0x800003f1] | undefined | desc-tpl | const[314].[wk:0x8000005e] | const[315].[wk:0x8000007e] | const[316].[wk:0x80000300] | const[317].[wk:0x80000301] | const[314].[wk:0x80000302] | const[315].[wk:0x80000303] | const[318].[wk:0x80000304] | const[319].[wk:0x80000306] | const[320].[wk:0x80000307] | const[321].[wk:0x80000308] | const[322].[wk:0x8000030a] | undefined | undefined | undefined | desc-tpl | OP_c0().[wk:0x149] | PUSH_WK1().[wk:0x14a] | OP_c0().[wk:0x14b] | OP_c0().[wk:0x14c] | OP_c0().[wk:0x14d] | OP_c0().[wk:0x14e] | OP_c0().[wk:0x14f] | OP_c0().[wk:0x150] | OP_c0().[wk:0x151] | OP_c0().[wk:0x152] | OP_c0().[wk:0x153] | OP_c0().[wk:0x154] | OP_c0().[wk:0x155] | OP_c0().[wk:0x156] | OP_c0().[wk:0x157] | PUSH_WK1().[wk:0x158] | OP_c0().[wk:0x159] | OP_c0().[wk:0x15a] | OP_c0().[wk:0x15b] | OP_c0().[wk:0x15c] | OP_c0().[wk:0x15d] | OP_c0().[wk:0x15e] | OP_c0().[wk:0x15f] | OP_c0().[wk:0x160] | OP_c0().[wk:0x161] | OP_c0().[wk:0x162] | OP_bf().[wk:0x163] | OP_c0().[wk:0x164] | OP_c0().[wk:0x165] | OP_c0().[wk:0x166] | OP_c0().[wk:0x167]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe4 CLASS_DEF_POP [~]
@@ -320,7 +320,7 @@
   // op 0x5d OP_5d [?]
   // op 0x5d OP_5d [?]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x35 OP35 [?]
   // op 0x35 OP35 [?]
   // op 0x35 OP35 [?]
@@ -334,7 +334,7 @@
   // op 0x35 OP35 [?]
   // op 0x35 OP35 [?]
   // op 0x35 OP35 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xf9 OP_f9 [?]
   // discard(OP_f9())
 
@@ -364,7 +364,7 @@
   // op 0x4a OP_4a [?]
   locop 0xca(OP_4a())
   jcc-0xeb → @3534
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x2f OP_2f [?]
   // op 0xb9 OP_b9 [?]
   // op 0xea OP_ea [?]
@@ -440,7 +440,7 @@
   // stack@INIT-END: OP_87() | OP_75() | desc-tpl | CLOSURE_CTX_B().[wk:0x176] | PUSH_THIS().[wk:0x177] | PUSH_C7().[wk:0x178] | push0.[wk:0x179] | FN_PROLOGUE()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0x4a OP_4a [?]
@@ -928,7 +928,7 @@
   …(pad)
   // op 0x7a OP_7a [?]
   // discard(num[1])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x07 PUSH_B [~]
   // op 0x08 PUSH_C [~]
   // op 0x20 OP_20 [?]
@@ -953,7 +953,7 @@
   // op 0x66 STR_OP [~]
   // discard(STR_OP())
   jcc-0xeb → @11379
-  // stack@INIT-END: str?flags=0x7e idx=15 | OP_7a().loadDynamicFilesSync | OP_be() | const[0230c003] | const[0330c403] | str?flags=0xc idx=48 | OP_20() | OP_bc() | str?flags=0x8 idx=9 | str?flags=0xb idx=8 | 't' | str?flags=0xc idx=12 | const[0008c40d] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(undefined)
+  // stack@INIT-END: str?flags=0x7e idx=15 | OP_7a().loadDynamicFilesSync | PUSH_I8() | const[0230c003] | const[0330c403] | str?flags=0xc idx=48 | OP_20() | OP_bc() | str?flags=0x8 idx=9 | str?flags=0xb idx=8 | 't' | str?flags=0xc idx=12 | const[0008c40d] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcc(objlit[SmpRemap](undefined))
   // op 0x07 PUSH_B [~]
@@ -1607,7 +1607,7 @@
   // op 0x3f OP_3f [?]
   // op 0x51 OP_51 [?]
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x33 OP_33 [?]
   // op 0x33 OP_33 [?]
   // op 0x33 OP_33 [?]

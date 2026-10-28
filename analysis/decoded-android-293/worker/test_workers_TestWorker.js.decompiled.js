@@ -27,7 +27,7 @@
   // op 0x4a OP_4a [?]
   // trailer 0xae
   // op 0x6c META_OP6C [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x4a OP_4a [?]
   // trailer 0xae
@@ -56,7 +56,7 @@
   jmp → @679
   // discard(f0(const[241]))
   // op 0xef OP_ef [?]
-  // stack@INIT-END: 'console' | OP_34().builtin#262 | const[233] | META_OP6C() | OP_be() | META_OP6C() | META_OP6C() | pool[237] | const[238] | OP_bf() | f0(push2) | const[239] | OP_4a() | pool[237] | const[240] | OP_bf() | f0(push2) | pool[237] | OP_ef()
+  // stack@INIT-END: 'console' | OP_34().builtin#262 | const[233] | META_OP6C() | PUSH_I8() | META_OP6C() | META_OP6C() | pool[237] | const[238] | OP_bf() | f0(push2) | const[239] | OP_4a() | pool[237] | const[240] | OP_bf() | f0(push2) | pool[237] | OP_ef()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

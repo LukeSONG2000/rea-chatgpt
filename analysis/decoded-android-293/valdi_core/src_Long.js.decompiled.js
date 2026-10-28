@@ -53,7 +53,7 @@
   EXPORTS.fromValue (seq 9) = LOAD_M3();  // PUSH_THIS()
   local[10] = const[00000100];
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   local[11] = OP_A3();
   // op 0xc3 LOAD_M3 [~]
@@ -383,7 +383,7 @@
   // op 0x4c FN_PROLOGUE [~]
   // discard(FN_PROLOGUE())
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb2 OP_b2 [?]
   // op 0xda OP_da [?]
   // op 0xa7 OP_a7 [?]
@@ -476,7 +476,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#6' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -514,14 +514,14 @@
   // op 0x11 DUP [~]
   jcc-0xec → @3647
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xdc OP_dc [?]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xa6 LT [~]
   // op 0x11 DUP [~]
   jcc-0xec → @3658
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xa6 LT [~]
   jcc-0xeb → @3672
@@ -539,7 +539,7 @@
   // op 0xe0 CLOSURE_CTX_C [~]
   // op 0xe1 CLOSURE_CTX_D [~]
   // op 0xd4 PUSH_EXPORTS [✓]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   locop 0xcb(f0(OP_f1()))
   // op 0xde CLOSURE_CTX_A [~]
@@ -549,11 +549,11 @@
   // op 0xea OP_ea [?]
   // op 0xa6 LT [~]
   // op 0x6c META_OP6C [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xea OP_ea [?]
   // op 0xc9 PUSH_C9 [~]
   // op 0xa1 OP_a1 [?]
-  local[4] = pool[153].min(OP_be(), OP_a1());
+  local[4] = pool[153].min(PUSH_I8(), OP_a1());
   // op 0xc9 PUSH_C9 [~]
   // op 0xc9 PUSH_C9 [~]
   // op 0xc3 LOAD_M3 [~]
@@ -562,7 +562,7 @@
   // op 0xf1 OP_f1 [?]
   local[5] = OP_f1();
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   jcc-0xeb → @4033
   // op 0xe0 CLOSURE_CTX_C [~]
@@ -583,7 +583,7 @@
   // op 0xe0 CLOSURE_CTX_C [~]
   // op 0xc3 LOAD_M3 [~]
   locop 0xcc(CLOSURE_CTX_C()(f0(LOAD_M3())))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x97 OP_97 [?]
   // op 0xee OP_ee [?]
   // op 0xc8 PUSH_C8 [~]
@@ -650,7 +650,7 @@
   // discard(str?flags=0x69 idx=1)
 
   // ---- FUNCTION-UNIT: 'builtin#6' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -661,14 +661,14 @@
   // op 0x11 DUP [~]
   jcc-0xec → @4809
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xda OP_da [?]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xa6 LT [~]
   // op 0x11 DUP [~]
   jcc-0xec → @4820
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   jcc-0xeb → @4834
   // op 0x2f OP_2f [?]
@@ -779,7 +779,7 @@
   // op 0xc8 PUSH_C8 [~]
   // op 0xde CLOSURE_CTX_A [~]
   jcc-0xeb → @6011
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc8 PUSH_C8 [~]
   // op 0xc8 PUSH_C8 [~]
   // op 0xad OP_ad [?]
@@ -788,8 +788,8 @@
   jmp → @6193
   // op 0xc8 PUSH_C8 [~]
   locop 0xca(objlit[low](PUSH_C8()))
-  // op 0xbe OP_be [?]
-  locop 0xcb(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcb(PUSH_I8())
   // op 0xc7 PUSH_C7 [~]
   // op 0xa8 OP_A8 [?]
   jcc-0xeb → @6214
@@ -805,7 +805,7 @@
   // op 0xad OP_ad [?]
   jcc-0xeb → @6257
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa0 ADD [~]
   // op 0xc7 PUSH_C7 [~]
   // op 0xb7 PUSH_WK1 [~]
@@ -878,14 +878,14 @@
   jcc-0xec → @6929
   // discard(DUP())
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xad OP_ad [?]
   // op 0x11 DUP [~]
   jcc-0xec → @6929
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xad OP_ad [?]
@@ -1018,25 +1018,25 @@
   // op 0xda OP_da [?]
   // discard(OP_da())
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   locop 0xca(OP_a5())
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
   locop 0xcb(OP_b0())
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   locop 0xcc(OP_a5())
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
   locop 0xcd(OP_b0())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   local[4] = OP_a5();
   // op 0xb0 OP_b0 [?]
   local[5] = OP_b0();
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   local[6] = OP_a5();
   local[7] = globalThis;
@@ -1050,7 +1050,7 @@
   // op 0xa0 ADD [~]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xa0 ADD [~]
   local[9] = ADD();
@@ -1061,7 +1061,7 @@
   // op 0xa0 ADD [~]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xa0 ADD [~]
   local[8] = ADD();
@@ -1072,7 +1072,7 @@
   // op 0xa0 ADD [~]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
@@ -1085,7 +1085,7 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
@@ -1094,7 +1094,7 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
@@ -1168,25 +1168,25 @@
   // op 0x9d OP_9d [?]
   // op 0xc3 LOAD_M3 [~]
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   locop 0xca(OP_a5())
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
   locop 0xcb(OP_b0())
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   locop 0xcc(OP_a5())
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
   locop 0xcd(OP_b0())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   local[4] = OP_a5();
   // op 0xb0 OP_b0 [?]
   local[5] = OP_b0();
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   local[6] = OP_a5();
   // op 0xb0 OP_b0 [?]
@@ -1202,7 +1202,7 @@
   // op 0x9d OP_9d [?]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xa0 ADD [~]
   local[10] = ADD();
@@ -1213,7 +1213,7 @@
   // op 0x9d OP_9d [?]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xa0 ADD [~]
   local[9] = ADD();
@@ -1227,7 +1227,7 @@
   // op 0x9d OP_9d [?]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xa0 ADD [~]
   local[9] = ADD();
@@ -1238,7 +1238,7 @@
   // op 0x9d OP_9d [?]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xa0 ADD [~]
   local[8] = ADD();
@@ -1252,7 +1252,7 @@
   // op 0x9d OP_9d [?]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xa0 ADD [~]
   local[8] = ADD();
@@ -1266,7 +1266,7 @@
   // op 0x9d OP_9d [?]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xa0 ADD [~]
   // op 0xc5 CLASS_CONSTRUCT [~]
@@ -1291,7 +1291,7 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
@@ -1300,7 +1300,7 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xc5 CLASS_CONSTRUCT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xc3 LOAD_M3 [~]
   // op 0xb0 OP_b0 [?]
@@ -1416,7 +1416,7 @@
   // op 0xc6 PUSH_THIS [~]
   // op 0x9e OP_9e [?]
   // op 0xd1 OP_d1 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   jcc-0xeb → @12503
   // op 0xb7 PUSH_WK1 [~]
@@ -1424,7 +1424,7 @@
   // op 0x61 LOAD_61 [?]
   // op 0xb8 PUSH_WK2 [~]
   // op 0xc9 PUSH_C9 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xf1 OP_f1 [?]
   local[4] = OP_f1();
@@ -1555,13 +1555,13 @@
   // discard(DUP())
   // op 0xda OP_da [?]
   // discard(OP_da())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xda OP_da [?]
   // op 0xac OP_ac [?]
   jcc-0xeb → @14024
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x6c META_OP6C [?]
   // op 0xdf CLOSURE_CTX_B [~]
@@ -1570,7 +1570,7 @@
   // op 0xc6 PUSH_THIS [~]
   // op 0xa3 OP_A3 [?]
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xa5 OP_a5 [?]
   // op 0xb2 OP_b2 [?]
@@ -1578,7 +1578,7 @@
   // op 0xf2 OP_f2 [?]
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xa3 OP_A3 [?]
   // op 0xc6 PUSH_THIS [~]
@@ -1593,20 +1593,20 @@
   // discard(DUP())
   // op 0xda OP_da [?]
   // discard(OP_da())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xda OP_da [?]
   // op 0xac OP_ac [?]
   jcc-0xeb → @14359
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x6c META_OP6C [?]
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xc6 PUSH_THIS [~]
   // op 0xa5 OP_a5 [?]
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
@@ -1616,7 +1616,7 @@
   // op 0xf2 OP_f2 [?]
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xa4 OP_a4 [?]
   // op 0xc6 PUSH_THIS [~]
@@ -1636,20 +1636,20 @@
   // discard(DUP())
   // op 0xda OP_da [?]
   // discard(OP_da())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xda OP_da [?]
   // op 0xac OP_ac [?]
   jcc-0xeb → @14735
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x6c META_OP6C [?]
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xc6 PUSH_THIS [~]
   // op 0xa5 OP_a5 [?]
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
@@ -1658,13 +1658,13 @@
   // op 0xc6 PUSH_THIS [~]
   // op 0xf2 OP_f2 [?]
   // op 0xdf CLOSURE_CTX_B [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @14936
   // op 0xc6 PUSH_THIS [~]
   jmp → @14975
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xa5 OP_a5 [?]
   // op 0xc6 PUSH_THIS [~]
@@ -1679,13 +1679,13 @@
   // discard(DUP())
   // op 0xda OP_da [?]
   // discard(OP_da())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xda OP_da [?]
   // op 0xac OP_ac [?]
   jcc-0xeb → @15117
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @15228
   // op 0xdf CLOSURE_CTX_B [~]
@@ -1693,10 +1693,10 @@
   // op 0xc7 PUSH_C7 [~]
   // op 0xc7 PUSH_C7 [~]
   // op 0xf2 OP_f2 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x6c META_OP6C [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   locop 0xca(OP_a1())
   // op 0xdf CLOSURE_CTX_B [~]
@@ -1714,8 +1714,8 @@
   // op 0xb2 OP_b2 [?]
   // op 0xc7 PUSH_C7 [~]
   // op 0xf2 OP_f2 [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xda OP_da [?]
   // op 0xa1 OP_a1 [?]
@@ -1745,13 +1745,13 @@
   // discard(DUP())
   // op 0xda OP_da [?]
   // discard(OP_da())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xda OP_da [?]
   // op 0xac OP_ac [?]
   jcc-0xeb → @15730
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @15841
   // op 0xdf CLOSURE_CTX_B [~]
@@ -1759,10 +1759,10 @@
   // op 0xc7 PUSH_C7 [~]
   // op 0xc7 PUSH_C7 [~]
   // op 0xf2 OP_f2 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x6c META_OP6C [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   locop 0xca(OP_a1())
   // op 0xdf CLOSURE_CTX_B [~]
@@ -1780,8 +1780,8 @@
   // op 0xb2 OP_b2 [?]
   // op 0xc7 PUSH_C7 [~]
   // op 0xf2 OP_f2 [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xda OP_da [?]
   // op 0xa1 OP_a1 [?]
@@ -1846,33 +1846,33 @@
   // op 0xc7 PUSH_C7 [~]
   // op 0xb0 OP_b0 [?]
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xbf OP_bf [?]
   // op 0xb0 OP_b0 [?]
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xbf OP_bf [?]
   // op 0xb0 OP_b0 [?]
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xbf OP_bf [?]
   // op 0xc6 PUSH_THIS [~]
   // op 0xb0 OP_b0 [?]
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xbf OP_bf [?]
   // op 0xb0 OP_b0 [?]
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xbf OP_bf [?]
   // op 0xb0 OP_b0 [?]
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // trailer 0xae
   …(pad)
@@ -1885,15 +1885,15 @@
   // op 0xc8 PUSH_C8 [~]
   locop 0xcb(objlit[low](PUSH_C8()))
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xbf OP_bf [?]
   // op 0xb0 OP_b0 [?]
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xbf OP_bf [?]
   // op 0xb0 OP_b0 [?]
@@ -1901,15 +1901,15 @@
   // op 0xc6 PUSH_THIS [~]
   // op 0xb0 OP_b0 [?]
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xbf OP_bf [?]
   // op 0xb0 OP_b0 [?]
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa5 OP_a5 [?]
   // op 0xbf OP_bf [?]
   // op 0xb0 OP_b0 [?]
@@ -1923,7 +1923,7 @@
   // op 0x53 OP_53 [?]
   …(pad)
   // op 0xba OP_ba [?]
-  // stack@INIT-END: PUSH_THIS().lessThan(objlit[MIN_SAFE_INTEGER](pool[148])) | OP_2f() | call25(PUSH_THIS().toNumber; ) | num[50576384] | const[c2030601] | OP_d0() | OP_cf() | CLOSURE_CTX_B() | param[0] | OP_d0() | OP_cf() | CLOSURE_CTX_B() | param[0] | fn:'builtin#6' | load[aux01e2] | const[e4031701] | CLOSURE_CTX_C() | str?flags=0x15 idx=1 | PATCH_REF_LOAD() | const[ce030c01] | pool[332] | f0(param[0]) | param[1] | param[1] | LT() | OP_a9() | OP_a7() | OP_a9() | LT() | LOAD_61() | OP_8f() | LOAD_61() | OP_b2() | fn:'builtin#6' | OP_be() | const[00c20300] | num[247808] | str?flags=0x0 idx=202 | const[248832] | PATCH_REF_LOAD() | OP_d6() | str?flags=0x10 idx=1 | PUSH_C() | PUSH_B() | const[b6d2eaae] | pool[147] | OP_2f() | const[334] | const[335] | const[336] | const[337] | param[0] | OP_ac() | OP_d8() | OP_db() | LT() | pool[195] | OP_2f() | OP_A8() | pool[147] | OP_2f() | globalThis | PUSH_THIS() | CLOSURE_CTX_B() | param[0].substring(PUSH_WK1()) | param[1] | call25(OP_f2().neg; ) | CLOSURE_CTX_C() | CLOSURE_CTX_D() | PUSH_EXPORTS() | META_OP6C() | pool[344] | param[0].substring(PUSH_C9(), ADD()) | LT() | CLOSURE_CTX_C() | CLOSURE_CTX_D() | PUSH_EXPORTS() | PUSH_C8().mul(LOAD_M3()).builtin#104 | OP_d0().builtin#104 | OP_97() | OP_ee() | str?flags=0x2e idx=25 | OP_53() | num[40108140] | fn:'builtin#6' | OP_ac() | CLOSURE_CTX_A() | param[0] | OP_ac() | CLOSURE_CTX_B() | param[0] | CLOSURE_CTX_C() | objlit[low](param[0]) | objlit[high](param[0]) | OP_ac() | param[1] | str?flags=0x3f idx=1 | v06 | fn:'builtin#6' | OP_be() | str?flags=0x0 idx=194 | const[247296] | PATCH_REF_LOAD() | str?flags=0x0 idx=7 | const[00e40317] | PUSH_B() | LT() | pool[195] | OP_2f() | LOAD_M3().isZero() | META_OP6C() | META_OP6C() | CLOSURE_CTX_B() | CLOSURE_CTX_B() | CLOSURE_CTX_C() | param[0] | OP_f1() | CLASS_CONSTRUCT().isZero() | LT() | fn:'builtin#6' | PUSH_C8().isNegative() | PUSH_C8().eq(CLOSURE_CTX_A()) | fn:'builtin#6' | 'require' | PUSH_D() | CLOSURE_CTX_B() | PUSH_C8().eq(param[0]) | PUSH_THIS() | !(PUSH_C7()) | !(PUSH_THIS()) | PUSH_C7() | META_OP6C() | objlit[high](param[0]) | objlit[high](PUSH_C8()) | OP_A8() | PUSH_C8().sub(param[0]).isNegative() | !(fn:'builtin#6') | fn:'builtin#6' | OP_c0() | str?flags=0x0 idx=196 | const[247296] | PATCH_REF_LOAD() | str?flags=0x0 idx=7 | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | str?flags=0x0 idx=10 | const[00b80301] | const[c8030901] | LOCAL_OP2() | str?flags=0x6 idx=1 | desc-tpl | CLOSURE_CTX_A() | CLOSURE_CTX_B() | CLOSURE_CTX_B() | str?flags=0x0 idx=198 | const[248320] | PATCH_REF_LOAD() | coerce(v06) | str?flags=0x0 idx=7 | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | OP_17() | const[d4030f01] | OP_c0() | PATCH_REF_LOAD() | const[08c40cc3] | load[42] | load[01]() | CLOSURE_CTX_B() | CLOSURE_CTX_C() | param[0].isZero() | LOAD_M3().eq(CLOSURE_CTX_D()) | param[0].isOdd() | param[0].eq(CLOSURE_CTX_D()) | LOAD_M3().isOdd() | META_OP6C() | param[0].isNegative() | param[0].isNegative() | call25(LOAD_M3().mul(param[0].neg()).neg; ) | META_OP6C() | param[0].lt(LOAD_61()) | call23(LOAD_61(); OP_9d(), objlit[unsigned](LOAD_M3())) | call23(LOAD_61(); OP_b2(), OP_b2(), objlit[unsigned](LOAD_M3())) | OP_54() | num[33731072] | OP_96() | fn:'builtin#6' | LOCAL_OP2() | str?flags=0x0 idx=3 | str?flags=0x0 idx=4 | str?flags=0x0 idx=5 | str?flags=0x0 idx=6 | OP10() | OP_12() | PUSH_B() | const[c0030501] | CLOSURE_CTX_A() | CLOSURE_CTX_B() | param[0].isZero() | pool[147] | OP_2f() | LOAD_M3().isZero() | objlit[unsigned](LOAD_M3()) | META_OP6C() | param[0].gt(LOAD_M3()) | param[0].gt(LOAD_M3().shru(PUSH_WK1())) | OP_ee() | META_OP6C() | param[0].eq(LOAD_61()) | param[0].eq(LOAD_61()) | coerce(LOAD_M3().shr(PUSH_WK1()).div(param[0]).shl(PUSH_WK1())).eq(CLOSURE_CTX_D()) | param[0].isNegative() | param[0].eq(LOAD_61()) | objlit[unsigned](LOAD_M3()) | META_OP6C() | param[0].isNegative() | param[0].isNegative() | call25(LOAD_M3().div(param[0].neg()).neg; ) | META_OP6C() | OP_a7() | PUSH_WK1() | LOAD_61() | PUSH_WK2() | LOAD_61() | LOAD_M3().gt(PUSH_C7()) | LOAD_61() | coerce(OP_a1()) | OP_ee() | OP_ee() | str?flags=0xb6 idx=1 | OP_53() | num[33731072] | OP_96() | fn:'builtin#6' | CLOSURE_CTX_B() | fn:'builtin#6' | CLOSURE_CTX_B() | fn:'builtin#6' | CLOSURE_CTX_B() | fn:'builtin#6' | OP_ac() | META_OP6C() | CLOSURE_CTX_B() | OP_A3() | OP_b2() | CLOSURE_CTX_B() | globalThis | fn:'builtin#6' | OP_ac() | META_OP6C() | CLOSURE_CTX_B() | OP_b2() | OP_a4() | CLOSURE_CTX_B() | OP_a4() | OP_a9() | globalThis | fn:'builtin#6' | OP_ac() | META_OP6C() | CLOSURE_CTX_B() | OP_b2() | OP_a5() | CLOSURE_CTX_B() | OP_be() | param[0] | objlit[high](PUSH_THIS()) | OP_a5() | fn:'builtin#6' | v06 | OP_ac() | OP_be() | param[0] | CLOSURE_CTX_B() | objlit[high](PUSH_C7()) | objlit[low](PUSH_C7()) | META_OP6C() | CLOSURE_CTX_B() | OP_b2() | OP_b2() | CLOSURE_CTX_B() | OP_b2() | OP_b2() | str?flags=0xdc idx=1 | globalThis | fn:'builtin#6' | v06 | OP_ac() | OP_be() | param[0] | CLOSURE_CTX_B() | objlit[high](PUSH_C7()) | objlit[low](PUSH_C7()) | META_OP6C() | CLOSURE_CTX_B() | OP_b2() | OP_b2() | CLOSURE_CTX_B() | OP_b2() | OP_b2() | str?flags=0xe1 idx=1 | globalThis | fn:'builtin#6' | CLOSURE_CTX_A() | objlit[low](PUSH_THIS()) | fn:'builtin#6' | CLOSURE_CTX_A() | OP_b0() | OP_b0() | OP_b0() | OP_a5() | OP_b0() | OP_b0() | OP_b0() | OP_46() | str?flags=0x0 idx=9 | OP_7e() | PUSH_WK2() | str?flags=0x0 idx=1 | OP_a5() | OP_b0() | OP_b0() | OP_b0() | OP_a5() | OP_b0() | OP_b0() | OP_53() | str?flags=0xb8 idx=3 | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1
+  // stack@INIT-END: PUSH_THIS().lessThan(objlit[MIN_SAFE_INTEGER](pool[148])) | OP_2f() | call25(PUSH_THIS().toNumber; ) | num[50576384] | const[c2030601] | OP_d0() | OP_cf() | CLOSURE_CTX_B() | param[0] | OP_d0() | OP_cf() | CLOSURE_CTX_B() | param[0] | fn:'builtin#6' | load[aux01e2] | const[e4031701] | CLOSURE_CTX_C() | str?flags=0x15 idx=1 | PATCH_REF_LOAD() | const[ce030c01] | pool[332] | f0(param[0]) | param[1] | param[1] | LT() | OP_a9() | OP_a7() | OP_a9() | LT() | LOAD_61() | OP_8f() | LOAD_61() | OP_b2() | fn:'builtin#6' | PUSH_I8() | const[00c20300] | num[247808] | str?flags=0x0 idx=202 | const[248832] | PATCH_REF_LOAD() | OP_d6() | str?flags=0x10 idx=1 | PUSH_C() | PUSH_B() | const[b6d2eaae] | pool[147] | OP_2f() | const[334] | const[335] | const[336] | const[337] | param[0] | OP_ac() | OP_d8() | OP_db() | LT() | pool[195] | OP_2f() | OP_A8() | pool[147] | OP_2f() | globalThis | PUSH_THIS() | CLOSURE_CTX_B() | param[0].substring(PUSH_WK1()) | param[1] | call25(OP_f2().neg; ) | CLOSURE_CTX_C() | CLOSURE_CTX_D() | PUSH_EXPORTS() | META_OP6C() | pool[344] | param[0].substring(PUSH_C9(), ADD()) | LT() | CLOSURE_CTX_C() | CLOSURE_CTX_D() | PUSH_EXPORTS() | PUSH_C8().mul(LOAD_M3()).builtin#104 | OP_d0().builtin#104 | OP_97() | OP_ee() | str?flags=0x2e idx=25 | OP_53() | num[40108140] | fn:'builtin#6' | OP_ac() | CLOSURE_CTX_A() | param[0] | OP_ac() | CLOSURE_CTX_B() | param[0] | CLOSURE_CTX_C() | objlit[low](param[0]) | objlit[high](param[0]) | OP_ac() | param[1] | str?flags=0x3f idx=1 | v06 | fn:'builtin#6' | PUSH_I8() | str?flags=0x0 idx=194 | const[247296] | PATCH_REF_LOAD() | str?flags=0x0 idx=7 | const[00e40317] | PUSH_B() | LT() | pool[195] | OP_2f() | LOAD_M3().isZero() | META_OP6C() | META_OP6C() | CLOSURE_CTX_B() | CLOSURE_CTX_B() | CLOSURE_CTX_C() | param[0] | OP_f1() | CLASS_CONSTRUCT().isZero() | LT() | fn:'builtin#6' | PUSH_C8().isNegative() | PUSH_C8().eq(CLOSURE_CTX_A()) | fn:'builtin#6' | 'require' | PUSH_D() | CLOSURE_CTX_B() | PUSH_C8().eq(param[0]) | PUSH_THIS() | !(PUSH_C7()) | !(PUSH_THIS()) | PUSH_C7() | META_OP6C() | objlit[high](param[0]) | objlit[high](PUSH_C8()) | OP_A8() | PUSH_C8().sub(param[0]).isNegative() | !(fn:'builtin#6') | fn:'builtin#6' | OP_c0() | str?flags=0x0 idx=196 | const[247296] | PATCH_REF_LOAD() | str?flags=0x0 idx=7 | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | str?flags=0x0 idx=10 | const[00b80301] | const[c8030901] | LOCAL_OP2() | str?flags=0x6 idx=1 | desc-tpl | CLOSURE_CTX_A() | CLOSURE_CTX_B() | CLOSURE_CTX_B() | str?flags=0x0 idx=198 | const[248320] | PATCH_REF_LOAD() | coerce(v06) | str?flags=0x0 idx=7 | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | OP_17() | const[d4030f01] | OP_c0() | PATCH_REF_LOAD() | const[08c40cc3] | load[42] | load[01]() | CLOSURE_CTX_B() | CLOSURE_CTX_C() | param[0].isZero() | LOAD_M3().eq(CLOSURE_CTX_D()) | param[0].isOdd() | param[0].eq(CLOSURE_CTX_D()) | LOAD_M3().isOdd() | META_OP6C() | param[0].isNegative() | param[0].isNegative() | call25(LOAD_M3().mul(param[0].neg()).neg; ) | META_OP6C() | param[0].lt(LOAD_61()) | call23(LOAD_61(); OP_9d(), objlit[unsigned](LOAD_M3())) | call23(LOAD_61(); OP_b2(), OP_b2(), objlit[unsigned](LOAD_M3())) | OP_54() | num[33731072] | OP_96() | fn:'builtin#6' | LOCAL_OP2() | str?flags=0x0 idx=3 | str?flags=0x0 idx=4 | str?flags=0x0 idx=5 | str?flags=0x0 idx=6 | OP10() | OP_12() | PUSH_B() | const[c0030501] | CLOSURE_CTX_A() | CLOSURE_CTX_B() | param[0].isZero() | pool[147] | OP_2f() | LOAD_M3().isZero() | objlit[unsigned](LOAD_M3()) | META_OP6C() | param[0].gt(LOAD_M3()) | param[0].gt(LOAD_M3().shru(PUSH_WK1())) | OP_ee() | META_OP6C() | param[0].eq(LOAD_61()) | param[0].eq(LOAD_61()) | coerce(LOAD_M3().shr(PUSH_WK1()).div(param[0]).shl(PUSH_WK1())).eq(CLOSURE_CTX_D()) | param[0].isNegative() | param[0].eq(LOAD_61()) | objlit[unsigned](LOAD_M3()) | META_OP6C() | param[0].isNegative() | param[0].isNegative() | call25(LOAD_M3().div(param[0].neg()).neg; ) | META_OP6C() | OP_a7() | PUSH_WK1() | LOAD_61() | PUSH_WK2() | LOAD_61() | LOAD_M3().gt(PUSH_C7()) | LOAD_61() | coerce(OP_a1()) | OP_ee() | OP_ee() | str?flags=0xb6 idx=1 | OP_53() | num[33731072] | OP_96() | fn:'builtin#6' | CLOSURE_CTX_B() | fn:'builtin#6' | CLOSURE_CTX_B() | fn:'builtin#6' | CLOSURE_CTX_B() | fn:'builtin#6' | OP_ac() | META_OP6C() | CLOSURE_CTX_B() | OP_A3() | OP_b2() | CLOSURE_CTX_B() | globalThis | fn:'builtin#6' | OP_ac() | META_OP6C() | CLOSURE_CTX_B() | OP_b2() | OP_a4() | CLOSURE_CTX_B() | OP_a4() | OP_a9() | globalThis | fn:'builtin#6' | OP_ac() | META_OP6C() | CLOSURE_CTX_B() | OP_b2() | OP_a5() | CLOSURE_CTX_B() | PUSH_I8() | param[0] | objlit[high](PUSH_THIS()) | OP_a5() | fn:'builtin#6' | v06 | OP_ac() | PUSH_I8() | param[0] | CLOSURE_CTX_B() | objlit[high](PUSH_C7()) | objlit[low](PUSH_C7()) | META_OP6C() | CLOSURE_CTX_B() | OP_b2() | OP_b2() | CLOSURE_CTX_B() | OP_b2() | OP_b2() | str?flags=0xdc idx=1 | globalThis | fn:'builtin#6' | v06 | OP_ac() | PUSH_I8() | param[0] | CLOSURE_CTX_B() | objlit[high](PUSH_C7()) | objlit[low](PUSH_C7()) | META_OP6C() | CLOSURE_CTX_B() | OP_b2() | OP_b2() | CLOSURE_CTX_B() | OP_b2() | OP_b2() | str?flags=0xe1 idx=1 | globalThis | fn:'builtin#6' | CLOSURE_CTX_A() | objlit[low](PUSH_THIS()) | fn:'builtin#6' | CLOSURE_CTX_A() | OP_b0() | OP_b0() | OP_b0() | OP_a5() | OP_b0() | OP_b0() | OP_b0() | OP_46() | str?flags=0x0 idx=9 | OP_7e() | PUSH_WK2() | str?flags=0x0 idx=1 | OP_a5() | OP_b0() | OP_b0() | OP_b0() | OP_a5() | OP_b0() | OP_b0() | OP_53() | str?flags=0xb8 idx=3 | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xde CLOSURE_CTX_A [~]
   // op 0xde CLOSURE_CTX_A [~]
@@ -1933,34 +1933,34 @@
 
   // ---- FUNCTION-UNIT: 'builtin#6' ----
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xb8 PUSH_WK2 [~]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xb9 OP_b9 [?]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xba OP_ba [?]
   // op 0x4a OP_4a [?]
   // op 0xbb OP_bb [?]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xbc OP_bc [?]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xbd OP_bd [?]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
   // trailer 0xae
@@ -1971,28 +1971,28 @@
   // op 0xa3 OP_A3 [?]
   // op 0xbb OP_bb [?]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xbc OP_bc [?]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xbd OP_bd [?]
   // op 0x4a OP_4a [?]
   // op 0xb2 OP_b2 [?]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xb8 PUSH_WK2 [~]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa3 OP_A3 [?]
   // op 0xb2 OP_b2 [?]
   // op 0xb9 OP_b9 [?]

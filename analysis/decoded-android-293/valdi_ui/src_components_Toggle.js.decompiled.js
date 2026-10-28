@@ -30,8 +30,8 @@
   locop 0xca(f0(const[240]))
   locop 0xcb(objlit[jsx](undefined))
   locop 0xcc(undefined.makeNodePrototype(const[243], v06, const[244]))
-  // op 0xbe OP_be [?]
-  locop 0xcd(const[245](OP_be(), push2, const[246]))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcd(const[245](PUSH_I8(), push2, const[246]))
   local[4] = const[247](const[248], push2, const[249]);
   local[5] = undefined.makeNodePrototype(const[243], v06, const[250]);
   local[6] = f0(const[251]);
@@ -42,14 +42,14 @@
   local[11] = f0(const[256]);
   // op 0xc0 OP_c0 [?]
   local[12] = OP_c0().[wk:0x105];
-  // op 0xbe OP_be [?]
-  local[13] = OP_be();
-  // op 0xbe OP_be [?]
-  local[14] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[13] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[14] = PUSH_I8();
   // op 0xb9 OP_b9 [?]
   local[15] = OP_b9();
-  // op 0xbe OP_be [?]
-  local[16] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[16] = PUSH_I8();
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -64,14 +64,14 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.Toggle (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb9 OP_b9 [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   local[21] = call21(const[278].[wk:0x112]; undefined.[wk:0x114]).[wk:0x117];
-  // stack@INIT-END: OP_9e() | const[0e430601] | str?flags=0x16 idx=3 | PATCH_REF_LOAD() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 's' | 'n' | 'c' | 'l' | 'd' | 'a' | 'b' | 'u' | str?flags=0x2 idx=22 | const[031270d8] | 'h' | str?flags=0x0 idx=0 | 'y' | const[358880452] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[20] | undefined.makeNodePrototype | const[243] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | desc-tpl | !(globalThis).[wk:0x101] | objlit[EaseInOut](objlit[AnimationCurve](undefined)).[wk:0x104] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[266].[wk:0x10b] | call21(const[266].[wk:0x10c]; OP_be().[wk:0x10d]).[wk:0x10e] | DUP() | desc-tpl | OP_be().[wk:0x10f] | undefined.[wk:0x110] | const[273].[wk:0x112] | call21(OP_b9().[wk:0x113]; undefined.[wk:0x114]).[wk:0x115] | DUP() | desc-tpl | OP_be().[wk:0x10f] | undefined.[wk:0x110]
+  // stack@INIT-END: OP_9e() | const[0e430601] | str?flags=0x16 idx=3 | PATCH_REF_LOAD() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'r' | 'o' | 's' | 'n' | 'c' | 'l' | 'd' | 'a' | 'b' | 'u' | str?flags=0x2 idx=22 | const[031270d8] | 'h' | str?flags=0x0 idx=0 | 'y' | const[358880452] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[20] | undefined.makeNodePrototype | const[243] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | desc-tpl | !(globalThis).[wk:0x101] | objlit[EaseInOut](objlit[AnimationCurve](undefined)).[wk:0x104] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[266].[wk:0x10b] | call21(const[266].[wk:0x10c]; PUSH_I8().[wk:0x10d]).[wk:0x10e] | DUP() | desc-tpl | PUSH_I8().[wk:0x10f] | undefined.[wk:0x110] | const[273].[wk:0x112] | call21(OP_b9().[wk:0x113]; undefined.[wk:0x114]).[wk:0x115] | DUP() | desc-tpl | PUSH_I8().[wk:0x10f] | undefined.[wk:0x110]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc7 PUSH_C7 [~]

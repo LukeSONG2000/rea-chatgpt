@@ -42,7 +42,7 @@
   // op 0xff OP_ff [?]
   // op 0x0f OP_0f [?]
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x09 PUSH_D [~]
   // op 0xba OP_ba [?]
   …(pad)
@@ -63,7 +63,7 @@
   locop 0xca(CLOSURE_CTX_A().now())
   // op 0x68 PUSH_STR2 [~]
   // op 0xf1 OP_f1 [?]
-  // stack@INIT-END: OP_20()(OP_be(), v06, PUSH_D(), OP_ba(), str?flags=0x2 idx=13, load[auxb803], const[0d640000], call23(objlit[operate](PUSH_STR2()); local[0]), str?flags=0x9 idx=4).builtin#262 | PUSH_C() | OP_ba() | '../util/lift' | param[0].subscribe | objlit[createOperatorSubscriber](PUSH_STR2()) | param[1](OP_f1())
+  // stack@INIT-END: OP_20()(PUSH_I8(), v06, PUSH_D(), OP_ba(), str?flags=0x2 idx=13, load[auxb803], const[0d640000], call23(objlit[operate](PUSH_STR2()); local[0]), str?flags=0x9 idx=4).builtin#262 | PUSH_C() | OP_ba() | '../util/lift' | param[0].subscribe | objlit[createOperatorSubscriber](PUSH_STR2()) | param[1](OP_f1())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

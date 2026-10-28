@@ -29,7 +29,7 @@
   // op 0x2b OP_2b [?]
   // op 0x2c OP_2c [?]
   EXPORTS.builtin#16910 (seq 512) = OP_2c();  // OP30()
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   jcc-0xec → @246
   // op 0x68 PUSH_STR2 [~]
@@ -50,7 +50,7 @@
   // op 0xc6 PUSH_THIS [~]
   // op 0xb7 PUSH_WK1 [~]
   EXPORTS.closed (seq 4) = !(PUSH_WK1());  // PUSH_THIS()
-  // stack@INIT-END: OP_0f() | str?flags=0x1 idx=0 | OP_be() | const[00c00300] | const[00100001] | const[0d08ca2b]
+  // stack@INIT-END: OP_0f() | str?flags=0x1 idx=0 | PUSH_I8() | const[00c00300] | const[00100001] | const[0d08ca2b]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x40 OP_40 [?]

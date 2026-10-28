@@ -229,7 +229,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x4e OP_4e [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // trailer 0xae
   …(pad)
@@ -249,7 +249,7 @@
   // op 0xc0 OP_c0 [?]
   …(pad)
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x5e OP_5e [?]
   // op 0xa0 ADD [~]
   locop 0xca(ADD())
@@ -285,7 +285,7 @@
   // discard(objlit[clamp](PUSH_STR2())(OP_9e(), OP_a1()))
   // op 0xd4 PUSH_EXPORTS [✓]
   // discard(PUSH_EXPORTS().setAttribute(const[272], globalThis))
-  // stack@INIT-END: OP_4e() | num[1644191019] | fn:'push' | OP_c0() | const[00c20300] | const[00c40300] | const[00c60300] | const[00c80300] | const[00f60301] | OP30() | OP_be() | const[62533633] | num[25613] | META_OP6C() | DECL_SLOT() | objlit[clamp](PUSH_STR2()) | OP_9e() | globalThis | param[1].setAttribute | const[272] | PUSH_WK1()
+  // stack@INIT-END: OP_4e() | num[1644191019] | fn:'push' | OP_c0() | const[00c20300] | const[00c40300] | const[00c60300] | const[00c80300] | const[00f60301] | OP30() | PUSH_I8() | const[62533633] | num[25613] | META_OP6C() | DECL_SLOT() | objlit[clamp](PUSH_STR2()) | OP_9e() | globalThis | param[1].setAttribute | const[272] | PUSH_WK1()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x64 DECL_SLOT [~]
   // op 0x5e OP_5e [?]

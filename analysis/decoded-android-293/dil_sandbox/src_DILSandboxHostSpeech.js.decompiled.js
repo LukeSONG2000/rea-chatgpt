@@ -131,7 +131,7 @@
   jcc-0xec → @1502
   // discard(DUP())
   // op 0xc3 LOAD_M3 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   jcc-0xeb → @1614
   // op 0xc3 LOAD_M3 [~]

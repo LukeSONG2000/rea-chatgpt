@@ -38,7 +38,7 @@
   // op 0x0a PUSH_E [~]
   // discard(PUSH_E())
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9d OP_9d [?]
   locop 0xca(load[00].builtin#262(OP_9d()))
   // trailer 0xae
@@ -46,9 +46,9 @@
   jmp → @388
   // op 0xb9 OP_b9 [?]
   // op 0xb0 OP_b0 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb2 OP_b2 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x56 OP_56 [?]
   …(pad)

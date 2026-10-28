@@ -36,7 +36,7 @@
   // stack@INIT-END: OP_94() | const[0e430601] | str?flags=0xa idx=3 | num[2953642443] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 'r' | 't' | 'i' | str?flags=0x0 idx=0 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xe0 CLOSURE_CTX_C [~]
   …(pad)
   // op 0x07 PUSH_B [~]

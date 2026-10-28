@@ -28,10 +28,10 @@
   local[6] = f0(const[244]);
   local[7] = f0(const[245]);
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  local[8] = call21(objlit[systemFont](undefined); f0(OP_be()).[wk:0xfc]).[wk:0xfd];
+  // op 0xbe PUSH_I8 [~]
+  local[8] = call21(objlit[systemFont](undefined); f0(PUSH_I8()).[wk:0xfc]).[wk:0xfd];
   // op 0xc3 LOAD_M3 [~]
   // op 0x11 DUP [~]
   jcc-0xec → @603
@@ -54,7 +54,7 @@
   local[12] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.SectionStatusBar (seq 3) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: 'exports' | OP_7e() | load[aux0307] | PATCH_REF_LOAD() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'o' | 'i' | str?flags=0x0 idx=0 | str?flags=0x2 idx=13 | const[030b70ca] | 'n' | load[00] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[237] | const[238] | const[239] | param[0] | param[0] | param[0] | param[0] | desc-tpl | DUP() | desc-tpl | call21(const[247].[wk:0xf8]; OP_be().[wk:0xf9]).[wk:0xfa] | DUP() | desc-tpl | local[0] | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: 'exports' | OP_7e() | load[aux0307] | PATCH_REF_LOAD() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'o' | 'i' | str?flags=0x0 idx=0 | str?flags=0x2 idx=13 | const[030b70ca] | 'n' | load[00] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[237] | const[238] | const[239] | param[0] | param[0] | param[0] | param[0] | desc-tpl | DUP() | desc-tpl | call21(const[247].[wk:0xf8]; PUSH_I8().[wk:0xf9]).[wk:0xfa] | DUP() | desc-tpl | local[0] | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   locop 0xca(push134)

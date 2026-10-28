@@ -2,8 +2,8 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0xbe OP_be [?]
-  // discard(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_I8())
 
   // ---- FUNCTION-UNIT: 'reportActivity' ----
   // op 0xb8 PUSH_WK2 [~]
@@ -148,7 +148,7 @@
   // stack@INIT-END: fn:'reportActivity' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'n' | str?flags=0x0 idx=0 | str?flags=0x0 idx=9 | 's' | 'c' | 'a' | 'u' | 'd' | 'h' | 'l' | str?flags=0x0 idx=10 | str?flags=0x0 idx=18 | str?flags=0x0 idx=19 | str?flags=0x0 idx=20 | str?flags=0x0 idx=21 | str?flags=0x0 idx=22 | str?flags=0x2 idx=26 | const[031870e4] | 'p' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | local[0] | local[0] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x08 PUSH_C [~]
   // op 0x34 OP_34 [?]
   …(pad)
@@ -339,7 +339,7 @@
   // op 0x08 PUSH_C [~]
   // op 0x5e OP_5e [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0xaf EQ_STRICT [~]
   // op 0x6c META_OP6C [?]
@@ -607,7 +607,7 @@
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.updateCodec (seq 19) = objlit[codec](param[0]);  // PUSH_THIS()
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.documentPersistence (seq 20) = objlit[persistence](objlit[engine](param[0]));  // PUSH_THIS()
@@ -710,12 +710,12 @@
   // stack@INIT-END: OP10() | const[40d2030e] | load[auxc603] | PUSH_C() | const[c8030901] | LOCAL_OP2() | DUP() | OP_14() | const[08c40464] | const[00640000] | EQ_STRICT()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @6422
   // op 0xc3 LOAD_M3 [~]
   // op 0xdf CLOSURE_CTX_B [~]
   // discard(LOAD_M3().fail(const[413], v06, objlit[EDITOR](CLOSURE_CTX_B()), v06))
-  // stack@INIT-END: objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(OP_be()))
+  // stack@INIT-END: objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(PUSH_I8()))
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc3 LOAD_M3 [~]
   // op 0x92 OP_92 [?]
@@ -823,7 +823,7 @@
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0xc9 PUSH_C9 [~]
   // op 0x6c META_OP6C [?]
@@ -864,9 +864,9 @@
   // stack@INIT-END: v06 | objlit[connection](PUSH_C9())
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @8469
-  // stack@INIT-END: objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(OP_be()))
+  // stack@INIT-END: objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(PUSH_I8()))
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc9 PUSH_C9 [~]
   locop 0xca(objlit[generation](PUSH_C9()))
@@ -970,7 +970,7 @@
   // op 0x35 OP35 [?]
   locop 0xcb(OP35())
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0xf9 idx=1)
@@ -1396,7 +1396,7 @@
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xaf EQ_STRICT [~]
@@ -1440,7 +1440,7 @@
   // op 0x8e OP_8e [?]
   locop 0xca(OP_8e())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
@@ -1609,14 +1609,14 @@
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @17914
   // op 0xc7 PUSH_C7 [~]
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @17914
   // op 0xc7 PUSH_C7 [~]
   // discard(PUSH_C7().receivePersistentSync(param[0], param[1]))
-  // stack@INIT-END: OP_d1().requestCheckpointAsync | str?flags=0x7 idx=13 | v06 | DUP() | const[08cbd241] | META_OP6C() | objlit[type](param[0]) | META_OP6C() | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | EQ_STRICT()
+  // stack@INIT-END: OP_d1().requestCheckpointAsync | str?flags=0x7 idx=13 | v06 | DUP() | const[08cbd241] | META_OP6C() | objlit[type](param[0]) | META_OP6C() | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | EQ_STRICT()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc7 PUSH_C7 [~]
   // op 0xaf EQ_STRICT [~]
@@ -1895,7 +1895,7 @@
   // op 0x61 LOAD_61 [?]
   EXPORTS.currentState (seq 1) = objlit[SYNCHRONIZING](LOAD_61());  // PUSH_C9()
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0xc9 PUSH_C9 [~]
   // op 0xaf EQ_STRICT [~]
@@ -2186,11 +2186,11 @@
   …(pad)
   // op 0x5c OP_5c [?]
   // op 0xb1 OP_b1 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xc7 PUSH_C7 [~]
   jcc-0xeb → @24644
-  // stack@INIT-END: OP_b2() | OP_fb() | num[30277670] | num[17252878] | v06 | PATCH_REF_LOAD() | 'schedule' | str?flags=0xc0 idx=3 | PUSH_WK2() | 'exports' | const[0dde4212] | call25(const[00000000]; CLOSURE_CTX_B(), PUSH_STR2(), CLOSURE_CTX_D(), PUSH_STR2()) | str?flags=0xd4 idx=3 | OP_62() | OP_f9() | PUSH_C() | PUSH_B() | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | const[00be0304] | load[auxc403] | OP_13() | const[08cc6401] | DECL_SLOT() | v06 | EQ_STRICT() | OP_2e() | objlit[builtin#137](objlit[result](undefined)) | META_OP6C() | OP_2f() | EQ_STRICT() | OP_2e() | objlit[engine](PUSH_C8()).prepareSynchronization | desc-tpl | CLOSURE_CTX_C() | objlit[state_vector](param[0]) | OP_d5() | OP_2e() | OP_b1() | num[26804226] | OP_44() | str?flags=0x1 idx=0 | const[0008cb64] | !(PUSH_C7().isCurrent(param[0]))
+  // stack@INIT-END: OP_b2() | OP_fb() | num[30277670] | num[17252878] | v06 | PATCH_REF_LOAD() | 'schedule' | str?flags=0xc0 idx=3 | PUSH_WK2() | 'exports' | const[0dde4212] | call25(const[00000000]; CLOSURE_CTX_B(), PUSH_STR2(), CLOSURE_CTX_D(), PUSH_STR2()) | str?flags=0xd4 idx=3 | OP_62() | OP_f9() | PUSH_C() | PUSH_B() | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | const[00be0304] | load[auxc403] | OP_13() | const[08cc6401] | DECL_SLOT() | v06 | EQ_STRICT() | OP_2e() | objlit[builtin#137](objlit[result](undefined)) | META_OP6C() | OP_2f() | EQ_STRICT() | OP_2e() | objlit[engine](PUSH_C8()).prepareSynchronization | desc-tpl | CLOSURE_CTX_C() | objlit[state_vector](param[0]) | OP_d5() | OP_2e() | OP_b1() | num[26804226] | META_RECORD44() | str?flags=0x1 idx=0 | const[0008cb64] | !(PUSH_C7().isCurrent(param[0]))
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc7 PUSH_C7 [~]
   // op 0x92 OP_92 [?]
@@ -2522,7 +2522,7 @@
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.outboundUpdates (seq 0) = push0;  // PUSH_THIS()
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @28429
   // discard(DUP())
@@ -2627,7 +2627,7 @@
   // op 0xaf EQ_STRICT [~]
   // op 0x6c META_OP6C [?]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
@@ -2741,7 +2741,7 @@
   // discard(num[2])
   // op 0xc8 PUSH_C8 [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
@@ -2769,7 +2769,7 @@
   // discard(push4816)
   // op 0x62 OP_62 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x09 PUSH_D [~]
   // op 0xba OP_ba [?]
   …(pad)
@@ -2867,8 +2867,8 @@
   // op 0xb7 PUSH_WK1 [~]
   // op 0x1c OP_1c [?]
   // op 0x12 OP_12 [?]
-  // op 0x44 OP_44 [?]
-  // discard(OP_44())
+  // op 0x44 META_RECORD44 [?]
+  // discard(META_RECORD44())
   …(pad)
   locop 0xca(param[0].builtin#127(local[0], local[0]))
   // op 0xc7 PUSH_C7 [~]
@@ -2881,7 +2881,7 @@
   // op 0x78 OP_78 [?]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: str?flags=0xc1 idx=4 | OP_8a() | num[892062466] | OP_62() | str?flags=0x6 idx=3 | OP_be() | PUSH_D() | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x3 idx=1 | str?flags=0x5 idx=2 | str?flags=0x5 idx=3 | str?flags=0x9 idx=4 | const[00b80301] | OP_0f() | load[auxc603] | PUSH_C() | const[08c40564] | OP_6f() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | OP_2e() | objlit[getDocumentPersistenceError](PUSH_STR2()) | v06 | OP_2f() | EQ_STRICT().requestCheckpointAsync | call21(?) | OP10() | const[01ba0300] | OP_78().builtin#9(PUSH_STR2())
+  // stack@INIT-END: str?flags=0xc1 idx=4 | OP_8a() | num[892062466] | OP_62() | str?flags=0x6 idx=3 | PUSH_I8() | PUSH_D() | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | str?flags=0x3 idx=1 | str?flags=0x5 idx=2 | str?flags=0x5 idx=3 | str?flags=0x9 idx=4 | const[00b80301] | OP_0f() | load[auxc603] | PUSH_C() | const[08c40564] | OP_6f() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | OP_2e() | objlit[getDocumentPersistenceError](PUSH_STR2()) | v06 | OP_2f() | EQ_STRICT().requestCheckpointAsync | call21(?) | OP10() | const[01ba0300] | OP_78().builtin#9(PUSH_STR2())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -2902,7 +2902,7 @@
   …(pad)
   // discard(const[02000000])
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
@@ -2931,7 +2931,7 @@
   // trailer 0xae
   // op 0xb2 OP_b2 [?]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xde CLOSURE_CTX_A [~]
   // op 0x68 PUSH_STR2 [~]
   jcc-0xeb → @33396
@@ -2987,7 +2987,7 @@
   // op 0x61 LOAD_61 [?]
   jmp → @33759
   // op 0x61 LOAD_61 [?]
-  // stack@INIT-END: OP_44() | OP_2f() | OP_17() | OP_14() | const[d603100d] | PUSH_EXPORTS() | str?flags=0xf idx=13 | PUSH_C() | const[08cb6400] | PUSH_C7().fail | CLOSURE_CTX_C() | f0(param[0]) | desc-tpl | undefined | PUSH_STR2() | PUSH_STR2().[wk:0x1a1] | undefined | const[526] | const[527].[wk:0x8a](undefined, objlit[PROTOCOL](LOAD_61()), objlit[EDITOR](LOAD_61()), v06)
+  // stack@INIT-END: META_RECORD44() | OP_2f() | OP_17() | OP_14() | const[d603100d] | PUSH_EXPORTS() | str?flags=0xf idx=13 | PUSH_C() | const[08cb6400] | PUSH_C7().fail | CLOSURE_CTX_C() | f0(param[0]) | desc-tpl | undefined | PUSH_STR2() | PUSH_STR2().[wk:0x1a1] | undefined | const[526] | const[527].[wk:0x8a](undefined, objlit[PROTOCOL](LOAD_61()), objlit[EDITOR](LOAD_61()), v06)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -3005,7 +3005,7 @@
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
   // op 0x13 OP_13 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x68 PUSH_STR2 [~]
   // trailer 0xae
@@ -3392,7 +3392,7 @@
   // op 0xc7 PUSH_C7 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_58() | DUP() | PUSH_C() | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x3 idx=0 | str?flags=0x3 idx=1 | str?flags=0x7 idx=2 | str?flags=0x9 idx=3 | str?flags=0xb idx=0 | OP_13() | const[b603000d] | OP_be() | const[96733197] | DUP() | DUP() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | OP_ac() | OP_2e() | objlit[type](param[0]) | META_OP6C() | OP_2e() | OP_6f() | LOAD_M3().codec().snapshotContainsUpdate | OP_6f() | DECL_SLOT() | OP_2f() | undefined | v06 | DUP() | META_OP6C() | !(LOAD_M3().acceptsRemoteEditorUpdates()) | OP_2f() | LOAD_M3().applyRemotePresence | desc-tpl | desc-tpl | desc-tpl | pool[149] | f0(objlit[client_id](param[0])).[wk:0x40].[wk:0x21a] | v06 | DUP() | META_OP6C() | DECL_SLOT() | FN_PROLOGUE() | OP10() | PUSH_D() | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x3 idx=5 | str?flags=0x1 idx=0 | 'module' | 'exports' | 'e' | const[00c40307] | load[auxc603] | PUSH_C() | OP_12() | const[08c40564] | const[222208] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | EQ_STRICT() | OP_2e() | EQ_STRICT() | LOAD_M3().fail | const[544] | OP_2e() | PUSH_EXPORTS() | LOAD_M3().send | desc-tpl | OP_2e() | LOAD_61() | objlit[update](param[0]) | desc-tpl | LOAD_61() | objlit[state_vector](param[0]) | EQ_STRICT() | OP_2e() | objlit[access](param[0]) | objlit[VIEW](objlit[MultiplayerDocumentAccess](PUSH_STR2())) | LOAD_M3().hasUnacknowledgedUpdates() | OP_2e() | PUSH_EXPORTS() | META_OP6C() | objlit[access](param[0]) | META_OP6C() | META_OP6C() | v06 | objlit[onAuthoritativeSnapshot](LOAD_M3()) | LOAD_M3().fail | const[547] | OP_2e() | LOAD_M3().onAuthoritativeSnapshot | EQ_STRICT() | OP_2e() | objlit[engine](LOAD_M3()).prepareSynchronization | OP_1c() | OP_86() | OP_62() | const[02010403] | local[0] | str?flags=0xb6 idx=3 | PUSH_WK2() | str?flags=0x1 idx=0 | const[00da0312] | PUSH_B() | load[aux08cb] | DECL_SLOT() | objlit[engine](PUSH_C7()).applyRemoteUpdate | objlit[builtin#137](undefined) | META_OP6C() | OP_2f() | OP_62() | const[02010402] | OP_bf() | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | const[00be0304] | load[auxc403] | PUSH_B() | load[aux08cb] | DECL_SLOT() | objlit[builtin#137](undefined) | META_OP6C() | OP_49().requestCheckpointAsync | PATCH_REF_LOAD() | pool[148] | LT() | OP_2f() | PUSH_C7().send | desc-tpl | objlit[AWARENESS](objlit[MultiplayerMessageType](PUSH_STR2())).[wk:0x164] | undefined.[wk:0x1e9](objlit[Base64](PUSH_STR2()).fromByteArray(objlit[bytes](objlit[yjs](param[0]))).[wk:0x1b1])
+  // stack@INIT-END: OP_58() | DUP() | PUSH_C() | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x3 idx=0 | str?flags=0x3 idx=1 | str?flags=0x7 idx=2 | str?flags=0x9 idx=3 | str?flags=0xb idx=0 | OP_13() | const[b603000d] | PUSH_I8() | const[96733197] | DUP() | DUP() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | OP_ac() | OP_2e() | objlit[type](param[0]) | META_OP6C() | OP_2e() | OP_6f() | LOAD_M3().codec().snapshotContainsUpdate | OP_6f() | DECL_SLOT() | OP_2f() | undefined | v06 | DUP() | META_OP6C() | !(LOAD_M3().acceptsRemoteEditorUpdates()) | OP_2f() | LOAD_M3().applyRemotePresence | desc-tpl | desc-tpl | desc-tpl | pool[149] | f0(objlit[client_id](param[0])).[wk:0x40].[wk:0x21a] | v06 | DUP() | META_OP6C() | DECL_SLOT() | FN_PROLOGUE() | OP10() | PUSH_D() | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x3 idx=5 | str?flags=0x1 idx=0 | 'module' | 'exports' | 'e' | const[00c40307] | load[auxc603] | PUSH_C() | OP_12() | const[08c40564] | const[222208] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | EQ_STRICT() | OP_2e() | EQ_STRICT() | LOAD_M3().fail | const[544] | OP_2e() | PUSH_EXPORTS() | LOAD_M3().send | desc-tpl | OP_2e() | LOAD_61() | objlit[update](param[0]) | desc-tpl | LOAD_61() | objlit[state_vector](param[0]) | EQ_STRICT() | OP_2e() | objlit[access](param[0]) | objlit[VIEW](objlit[MultiplayerDocumentAccess](PUSH_STR2())) | LOAD_M3().hasUnacknowledgedUpdates() | OP_2e() | PUSH_EXPORTS() | META_OP6C() | objlit[access](param[0]) | META_OP6C() | META_OP6C() | v06 | objlit[onAuthoritativeSnapshot](LOAD_M3()) | LOAD_M3().fail | const[547] | OP_2e() | LOAD_M3().onAuthoritativeSnapshot | EQ_STRICT() | OP_2e() | objlit[engine](LOAD_M3()).prepareSynchronization | OP_1c() | OP_86() | OP_62() | const[02010403] | local[0] | str?flags=0xb6 idx=3 | PUSH_WK2() | str?flags=0x1 idx=0 | const[00da0312] | PUSH_B() | load[aux08cb] | DECL_SLOT() | objlit[engine](PUSH_C7()).applyRemoteUpdate | objlit[builtin#137](undefined) | META_OP6C() | OP_2f() | OP_62() | const[02010402] | OP_bf() | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | const[00be0304] | load[auxc403] | PUSH_B() | load[aux08cb] | DECL_SLOT() | objlit[builtin#137](undefined) | META_OP6C() | OP_49().requestCheckpointAsync | PATCH_REF_LOAD() | pool[148] | LT() | OP_2f() | PUSH_C7().send | desc-tpl | objlit[AWARENESS](objlit[MultiplayerMessageType](PUSH_STR2())).[wk:0x164] | undefined.[wk:0x1e9](objlit[Base64](PUSH_STR2()).fromByteArray(objlit[bytes](objlit[yjs](param[0]))).[wk:0x1b1])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -3446,7 +3446,7 @@
   // op 0xde CLOSURE_CTX_A [~]
   locop 0xca(f0(param[0]))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
@@ -3475,7 +3475,7 @@
   // op 0xda OP_da [?]
   …(pad)
   // discard(OP_da())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0x10 OP10 [?]
@@ -3618,7 +3618,7 @@
   // op 0x85 OP_85 [?]
   …(pad)
   // discard(const[02010000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x08 PUSH_C [~]
   locop 0xcc(PUSH_C())
   // op 0x64 DECL_SLOT [~]
@@ -3628,7 +3628,7 @@
   // op 0xde CLOSURE_CTX_A [~]
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @42131
-  // stack@INIT-END: OP_85().requestCheckpointAsync | OP_be() | const[01301000] | const[00d80311] | const[c403070d] | DECL_SLOT() | DECL_SLOT() | objlit[closed](PUSH_C8()) | EQ_STRICT()
+  // stack@INIT-END: OP_85().requestCheckpointAsync | PUSH_I8() | const[01301000] | const[00d80311] | const[c403070d] | DECL_SLOT() | DECL_SLOT() | objlit[closed](PUSH_C8()) | EQ_STRICT()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc8 PUSH_C8 [~]
   // op 0xaf EQ_STRICT [~]

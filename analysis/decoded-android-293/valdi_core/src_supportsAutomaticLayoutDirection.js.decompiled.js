@@ -24,10 +24,10 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   …(pad)
-  // stack-tail: './CompilerIntrinsics' | push79 | call23(fn:'builtin#262'; OP_be()) | str?flags=0x9 idx=1 | num[0]
+  // stack-tail: './CompilerIntrinsics' | push79 | call23(fn:'builtin#262'; PUSH_I8()) | str?flags=0x9 idx=1 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

@@ -36,13 +36,13 @@
   jcc-0xec → @373
   // discard(DUP())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @412
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // trailer 0xae
   …(pad)
-  // stack-tail: fn:'builtin#262' | objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(OP_be())) | str?flags=0x9 idx=1 | num[0]
+  // stack-tail: fn:'builtin#262' | objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(PUSH_I8())) | str?flags=0x9 idx=1 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

@@ -65,10 +65,10 @@
   // op 0x6b CLASS_DECL [~]
   // op 0x6b CLASS_DECL [~]
   local[8] = CLASS_DECL();
-  // op 0xbe OP_be [?]
-  EXPORTS.SECURITY_ERR (seq 6) = OP_be();  // undefined
-  // op 0xbe OP_be [?]
-  EXPORTS.QUOTA_EXCEEDED_ERR (seq 7) = OP_be();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.SECURITY_ERR (seq 6) = PUSH_I8();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.QUOTA_EXCEEDED_ERR (seq 7) = PUSH_I8();  // undefined
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -270,10 +270,10 @@
   // op 0x1b OP_1b [?]
   // discard(OP_1b()())
   // discard(STR_CMP())
-  // op 0xbe OP_be [?]
-  EXPORTS.SECURITY_ERR (seq 0) = OP_be();  // undefined
-  // op 0xbe OP_be [?]
-  EXPORTS.QUOTA_EXCEEDED_ERR (seq 1) = OP_be();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.SECURITY_ERR (seq 0) = PUSH_I8();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.QUOTA_EXCEEDED_ERR (seq 1) = PUSH_I8();  // undefined
   // trailer 0xae
   jcc-0xeb → @1454
   jmp → @1455
@@ -286,11 +286,11 @@
   // discard(OP_3e())
   // trailer 0xae
   jcc-0xeb → @1625
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // trailer 0xae
   jcc-0xeb → @1637
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x30 OP30 [?]
   // op 0x30 OP30 [?]
@@ -407,7 +407,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x4c idx=0)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -415,7 +415,7 @@
   // op 0x07 PUSH_B [~]
   // trailer 0xae
   jcc-0xeb → @2739
-  // stack@INIT-END: call25(str?flags=0x44 idx=2.dispatchTrustedEvent.some; local[0]) | str?flags=0x4b idx=1.dispatchTrustedEvent.dispatchTrustedEvent | OP_be() | const[0130c003] | const[0230ba03] | PATCH_REF_LOAD() | const[4008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_B() | param[1]
+  // stack@INIT-END: call25(str?flags=0x44 idx=2.dispatchTrustedEvent.some; local[0]) | str?flags=0x4b idx=1.dispatchTrustedEvent.dispatchTrustedEvent | PUSH_I8() | const[0130c003] | const[0230ba03] | PATCH_REF_LOAD() | const[4008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_B() | param[1]
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0x9a OP_9a [?]
@@ -500,7 +500,7 @@
   // op 0x68 PUSH_STR2 [~]
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0x9a OP_9a [?]
   // op 0xac OP_ac [?]
@@ -532,7 +532,7 @@
   jmp → @3909
   // discard(v06())
   // op 0xc8 PUSH_C8 [~]
-  // stack@INIT-END: OP_6a() | OP35() | OP_77() | str?flags=0xb8 idx=3 | OP_bc() | str?flags=0x0 idx=13 | push1 | objlit[callback](param[0]) | call25(objlit[capture](param[0]).dispatchTrustedEvent; CLOSURE_CTX_B(), CLOSURE_CTX_C(), PUSH_STR2()) | str?flags=0x5b idx=0 | const[0000000e].dispatchTrustedEvent | OP_be() | const[01301000] | const[0008cc64] | const[00640000] | OP_ac() | PUSH_C8().onListenersChanged()
+  // stack@INIT-END: OP_6a() | OP35() | OP_77() | str?flags=0xb8 idx=3 | OP_bc() | str?flags=0x0 idx=13 | push1 | objlit[callback](param[0]) | call25(objlit[capture](param[0]).dispatchTrustedEvent; CLOSURE_CTX_B(), CLOSURE_CTX_C(), PUSH_STR2()) | str?flags=0x5b idx=0 | const[0000000e].dispatchTrustedEvent | PUSH_I8() | const[01301000] | const[0008cc64] | const[00640000] | OP_ac() | PUSH_C8().onListenersChanged()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x83 OP_83 [?]

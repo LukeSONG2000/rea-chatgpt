@@ -47,7 +47,7 @@
   // op 0x87 OP_87 [?]
   // op 0x64 DECL_SLOT [~]
   locop 0xcb(globalThis)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x6c META_OP6C [?]
   // op 0x68 PUSH_STR2 [~]

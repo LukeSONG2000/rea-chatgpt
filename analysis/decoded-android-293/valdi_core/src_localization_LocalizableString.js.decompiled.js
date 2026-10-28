@@ -159,7 +159,7 @@
   // op 0xee OP_ee [?]
   locop 0xcc(OP_ee())
   // op 0x64 DECL_SLOT [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   locop 0xcd(OP_f1())
   // op 0x11 DUP [~]

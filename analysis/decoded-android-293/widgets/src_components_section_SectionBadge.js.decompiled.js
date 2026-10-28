@@ -90,7 +90,7 @@
   // discard(STR_OP())
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb5 OP_b5 [?]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
@@ -110,7 +110,7 @@
   // op 0xb7 PUSH_WK1 [~]
   EXPORTS.Red (seq 1) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // stack@INIT-END: OP_20() | OP_ba() | 'require' | str?flags=0x8 idx=13 | PUSH_D() | PUSH_B() | load[aux6401] | DECL_SLOT() | param[0] | desc-tpl | DUP() | desc-tpl | const[261].[wk:0x106] | undefined.[wk:0x107] | const[264].[wk:0x109] | const[266].[wk:0x10b] | const[268].[wk:0x10d] | const[270].[wk:0x10f] | call21(OP_be().[wk:0x110]; OP_b5().[wk:0x111]).[wk:0x112] | DUP() | desc-tpl | coerce(str?flags=0xb idx=26) | FN_PROLOGUE() | FN_PROLOGUE()
+  // stack@INIT-END: OP_20() | OP_ba() | 'require' | str?flags=0x8 idx=13 | PUSH_D() | PUSH_B() | load[aux6401] | DECL_SLOT() | param[0] | desc-tpl | DUP() | desc-tpl | const[261].[wk:0x106] | undefined.[wk:0x107] | const[264].[wk:0x109] | const[266].[wk:0x10b] | const[268].[wk:0x10d] | const[270].[wk:0x10f] | call21(PUSH_I8().[wk:0x110]; OP_b5().[wk:0x111]).[wk:0x112] | DUP() | desc-tpl | coerce(str?flags=0xb idx=26) | FN_PROLOGUE() | FN_PROLOGUE()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc2 LOCAL_OP2 [?]
@@ -139,8 +139,8 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().beginComponentWithStringKey(objlit[AnimationSquishy](PUSH_STR2()), PUSH_STR2(), v06, v06))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // discard(PUSH_STR2().setViewModelProperty(const[286], OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[286], PUSH_I8()))
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().setViewModelProperty(const[287], objlit[background](undefined)))
   // op 0x68 PUSH_STR2 [~]

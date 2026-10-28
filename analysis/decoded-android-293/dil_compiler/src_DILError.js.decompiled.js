@@ -12,7 +12,7 @@
   // op 0x60 OP_60 [?]
   …(pad)
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x40 OP_40 [?]
   local[6] = const[96536004];
@@ -44,7 +44,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.isDILDiagnosticError (seq 3) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_80() | const[0e430601] | const[0ab00300] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | OP_40() | OP_be() | OP_40() | DECL_SLOT() | DECL_SLOT() | OP_cf() | CLASS_DECL()
+  // stack@INIT-END: OP_80() | const[0e430601] | const[0ab00300] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | OP_40() | PUSH_I8() | OP_40() | DECL_SLOT() | DECL_SLOT() | OP_cf() | CLASS_DECL()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

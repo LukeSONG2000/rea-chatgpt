@@ -52,8 +52,8 @@
   local[18] = f0(objlit[SURFACE](objlit[Background](objlit[SemanticColor](undefined))));
   local[19] = objlit[OVERLAY](objlit[Background](objlit[SemanticColor](undefined)));
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
@@ -61,13 +61,13 @@
   // op 0x11 DUP [~]
   // op 0xba OP_ba [?]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   local[20] = call21(const[279].[wk:0x118]; undefined.[wk:0x119]).[wk:0x123];
   // op 0x07 PUSH_B [~]
   // op 0x56 OP_56 [?]
   // discard(OP_56())
-  // discard(OP_be().[wk:0x10f])
+  // discard(PUSH_I8().[wk:0x10f])
   // op 0xba OP_ba [?]
   local[21] = v06.[wk:0x11d](OP_ba().[wk:0x125]).[wk:0x122];
   // op 0x64 DECL_SLOT [~]
@@ -83,7 +83,7 @@
   local[24] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.CoreToggle (seq 1) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: CLASS_DEF_POP() | const[0e430601] | str?flags=0x19 idx=3 | str?flags=0xc3 idx=15 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'i' | 'r' | 'n' | 'd' | 's' | 'a' | 'u' | 'l' | 'c' | 'h' | 'b' | 'S' | 'y' | 'g' | 'v' | TRIPLE_OP() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | objlit[alwaysLight](undefined) | desc-tpl | DUP() | desc-tpl | OP_be().[wk:0x10e] | call21(OP_be().[wk:0x10f]; const[272].[wk:0x111]).[wk:0x112] | DUP() | desc-tpl | const[275].[wk:0x114] | call21(const[277].[wk:0x10f]; const[277].[wk:0x10e]).[wk:0x116] | DUP() | desc-tpl | const[277].[wk:0x10f] | const[277].[wk:0x10e] | call21(const[279].[wk:0x118]; undefined.[wk:0x119]).[wk:0x11a] | DUP() | desc-tpl | const[275].[wk:0x114] | const[277].[wk:0x10f] | const[277].[wk:0x10e] | call21(const[279].[wk:0x118]; undefined.[wk:0x119]).[wk:0x11b] | DUP() | desc-tpl | call21(const[277].[wk:0x10f]; const[277].[wk:0x10e]).[wk:0x11c] | DUP() | desc-tpl | const[275].[wk:0x114] | OP_ba().[wk:0x11d] | globalThis.[wk:0x11e] | call21(globalThis.[wk:0x11f]; const[288].[wk:0x121]).[wk:0x122] | DUP() | desc-tpl | OP_be().[wk:0x10e] | objlit[track](undefined).extend | desc-tpl(undefined.[wk:0x119]).[wk:0x11a] | objlit[thumbOuter](undefined).extend | desc-tpl | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: CLASS_DEF_POP() | const[0e430601] | str?flags=0x19 idx=3 | str?flags=0xc3 idx=15 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'i' | 'r' | 'n' | 'd' | 's' | 'a' | 'u' | 'l' | 'c' | 'h' | 'b' | 'S' | 'y' | 'g' | 'v' | TRIPLE_OP() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | objlit[alwaysLight](undefined) | desc-tpl | DUP() | desc-tpl | PUSH_I8().[wk:0x10e] | call21(PUSH_I8().[wk:0x10f]; const[272].[wk:0x111]).[wk:0x112] | DUP() | desc-tpl | const[275].[wk:0x114] | call21(const[277].[wk:0x10f]; const[277].[wk:0x10e]).[wk:0x116] | DUP() | desc-tpl | const[277].[wk:0x10f] | const[277].[wk:0x10e] | call21(const[279].[wk:0x118]; undefined.[wk:0x119]).[wk:0x11a] | DUP() | desc-tpl | const[275].[wk:0x114] | const[277].[wk:0x10f] | const[277].[wk:0x10e] | call21(const[279].[wk:0x118]; undefined.[wk:0x119]).[wk:0x11b] | DUP() | desc-tpl | call21(const[277].[wk:0x10f]; const[277].[wk:0x10e]).[wk:0x11c] | DUP() | desc-tpl | const[275].[wk:0x114] | OP_ba().[wk:0x11d] | globalThis.[wk:0x11e] | call21(globalThis.[wk:0x11f]; const[288].[wk:0x121]).[wk:0x122] | DUP() | desc-tpl | PUSH_I8().[wk:0x10e] | objlit[track](undefined).extend | desc-tpl(undefined.[wk:0x119]).[wk:0x11a] | objlit[thumbOuter](undefined).extend | desc-tpl | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x85 OP_85 [?]
@@ -278,8 +278,8 @@
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @4097
   // discard(OP_b3())
-  // op 0xbe OP_be [?]
-  // discard(PUSH_STR2().setAttributeNumber(const[326], OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_STR2().setAttributeNumber(const[326], PUSH_I8()))
   // op 0x68 PUSH_STR2 [~]
   // op 0xc3 LOAD_M3 [~]
   // discard(PUSH_STR2().setAttributeFunction(const[328], objlit[onTap](objlit[viewModel](LOAD_M3()))))

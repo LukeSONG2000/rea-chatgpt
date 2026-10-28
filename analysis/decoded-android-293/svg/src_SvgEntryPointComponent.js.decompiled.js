@@ -22,8 +22,8 @@
   local[4] = f0(const[237]);
   local[5] = f0(const[238]);
   local[6] = f0(const[239]);
-  // op 0xbe OP_be [?]
-  local[7] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[7] = PUSH_I8();
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]

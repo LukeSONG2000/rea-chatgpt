@@ -31,7 +31,7 @@
   // op 0x2d OP_2d [?]
   // op 0x2b OP_2b [?]
   // op 0x3b OP_3b [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   jcc-0xec → @230
   // op 0x68 PUSH_STR2 [~]
@@ -42,7 +42,7 @@
   // discard(OP_1b()())
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.properties (seq 0) = param[0];  // PUSH_THIS()
-  // stack@INIT-END: OP_3b() | const[00010101] | num[35323905] | OP_be() | const[00100001] | const[0d08ca2b]
+  // stack@INIT-END: OP_3b() | const[00010101] | num[35323905] | PUSH_I8() | const[00100001] | const[0d08ca2b]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

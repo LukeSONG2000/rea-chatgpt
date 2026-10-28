@@ -187,7 +187,7 @@
 
   // ---- FUNCTION-UNIT: '[' ----
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x09 PUSH_D [~]
   …(pad)
   locop 0xca(param[1])
@@ -215,7 +215,7 @@
   // discard(DUP())
   // trailer 0xae
   jcc-0xeb → @1335
-  // stack@INIT-END: pair(OP_1f(), const[5c000b01]) | … | … | OP_60() | OP_7e() | pair(const[26000957], const[23000931]) | … | … | pair(OP_ff(), OP_7f()) | OP10() | pair(OP_ff(), OP_7f()) | … | … | objlit[builtin#23040](str?flags=0x0 idx=48) | OP_ba() | str?flags=0x0 idx=1 | objlit[decodeMarkdownEntities](PUSH_STR2()) | fn:'[' | DECL_SLOT() | DECL_SLOT() | LT() | OP_33().test(OP_4a()) | const[239] | OP_4a() | undefined | str?flags=0x12 idx=10 | pool[657474562] | OP_2b() | load[aux0712] | OP_5c() | OP_20() | fn:'[' | OP30() | OP_be() | const[0120b803] | PUSH_D() | const[33798704] | const[64030064] | const[240] | META_OP6C() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | const[239] | const[241] | const[240] | undefined
+  // stack@INIT-END: pair(OP_1f(), const[5c000b01]) | … | … | OP_60() | OP_7e() | pair(const[26000957], const[23000931]) | … | … | pair(OP_ff(), OP_7f()) | OP10() | pair(OP_ff(), OP_7f()) | … | … | objlit[builtin#23040](str?flags=0x0 idx=48) | OP_ba() | str?flags=0x0 idx=1 | objlit[decodeMarkdownEntities](PUSH_STR2()) | fn:'[' | DECL_SLOT() | DECL_SLOT() | LT() | OP_33().test(OP_4a()) | const[239] | OP_4a() | undefined | str?flags=0x12 idx=10 | pool[657474562] | OP_2b() | load[aux0712] | OP_5c() | OP_20() | fn:'[' | OP30() | PUSH_I8() | const[0120b803] | PUSH_D() | const[33798704] | const[64030064] | const[240] | META_OP6C() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | const[239] | const[241] | const[240] | undefined
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   jcc-0xeb → @1408
@@ -546,7 +546,7 @@
   // trailer 0xae
   // op 0x50 OP_50 [?]
   // op 0x62 OP_62 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x5c OP_5c [?]
   // op 0x5c OP_5c [?]
   // op 0x7c OP_7c [?]

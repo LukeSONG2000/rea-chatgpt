@@ -42,14 +42,14 @@
   local[9] = f0(const[252]);
   local[10] = f0(const[253]);
   local[11] = f0(const[254]);
-  // op 0xbe OP_be [?]
-  local[12] = OP_be();
-  // op 0xbe OP_be [?]
-  local[13] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[12] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[13] = PUSH_I8();
   // op 0xba OP_ba [?]
   local[14] = OP_ba();
-  // op 0xbe OP_be [?]
-  local[15] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[15] = PUSH_I8();
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -69,10 +69,10 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.FormTextView (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   local[19] = call21(objlit[CAPTION](objlit[TextStyleFont](undefined)).[wk:0x110]; const[273].[wk:0x112]).[wk:0x113];
-  // stack@INIT-END: 'e' | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'o' | 'r' | 'n' | 'd' | 's' | 'a' | 'l' | 'u' | 'c' | str?flags=0x2 idx=20 | const[031170d6] | OP_13() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | call21(desc-tpl; OP_be().[wk:0x108]).[wk:0x109] | DUP() | desc-tpl | objlit[TERTIARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x10d]
+  // stack@INIT-END: 'e' | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'i' | 'o' | 'r' | 'n' | 'd' | 's' | 'a' | 'l' | 'u' | 'c' | str?flags=0x2 idx=20 | const[031170d6] | OP_13() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | call21(desc-tpl; PUSH_I8().[wk:0x108]).[wk:0x109] | DUP() | desc-tpl | objlit[TERTIARY](objlit[Text](objlit[SemanticColor](undefined))).[wk:0x10d]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xbb OP_bb [?]

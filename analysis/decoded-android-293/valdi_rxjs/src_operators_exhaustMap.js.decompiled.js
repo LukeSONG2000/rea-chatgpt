@@ -30,7 +30,7 @@
   // op 0x68 PUSH_STR2 [~]
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x61 LOAD_61 [?]
   // trailer 0xae
@@ -58,7 +58,7 @@
   locop 0xcc(!(PUSH_WK1()))
   // op 0x68 PUSH_STR2 [~]
   // op 0xf2 OP_f2 [?]
-  // stack@INIT-END: OP_40()(str?flags=0x2 idx=0, PATCH_REF_LOAD(), str?flags=0x0 idx=1, str?flags=0x0 idx=1, '../util/lift', load[auxbe03], const[50576385], load[auxba03], num[82563853], objlit[operate](PUSH_STR2()), str?flags=0x9 idx=5).builtin#262 | OP_be() | num[3913470464] | call25(LOAD_61(); f0(local[0])) | str?flags=0xa idx=0 | v06 | const[00020002] | const[41156868] | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=2 | const[0ccc0302] | num[201524150] | objlit[innerFrom](PUSH_STR2()) | CLOSURE_CTX_C() | param[0] | f0(OP_f1()).pipe | call25(objlit[map](PUSH_STR2()); f0(local[0])) | str?flags=0xa idx=0 | v06 | const[00020002] | PATCH_REF_LOAD() | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=2 | str?flags=0xbc idx=3 | call23(CLOSURE_CTX_A(); CLOSURE_CTX_B(), param[0], CLOSURE_CTX_C(), param[1]).builtin#262 | 'module' | str?flags=0x3 idx=12 | load[cc] | str?flags=0x0 idx=3 | DECL_SLOT() | DECL_SLOT() | param[0].subscribe | objlit[createOperatorSubscriber](PUSH_STR2()) | param[1] | local[0](OP_f2())
+  // stack@INIT-END: OP_40()(str?flags=0x2 idx=0, PATCH_REF_LOAD(), str?flags=0x0 idx=1, str?flags=0x0 idx=1, '../util/lift', load[auxbe03], const[50576385], load[auxba03], num[82563853], objlit[operate](PUSH_STR2()), str?flags=0x9 idx=5).builtin#262 | PUSH_I8() | num[3913470464] | call25(LOAD_61(); f0(local[0])) | str?flags=0xa idx=0 | v06 | const[00020002] | const[41156868] | OP_ba() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=2 | const[0ccc0302] | num[201524150] | objlit[innerFrom](PUSH_STR2()) | CLOSURE_CTX_C() | param[0] | f0(OP_f1()).pipe | call25(objlit[map](PUSH_STR2()); f0(local[0])) | str?flags=0xa idx=0 | v06 | const[00020002] | PATCH_REF_LOAD() | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=2 | str?flags=0xbc idx=3 | call23(CLOSURE_CTX_A(); CLOSURE_CTX_B(), param[0], CLOSURE_CTX_C(), param[1]).builtin#262 | 'module' | str?flags=0x3 idx=12 | load[cc] | str?flags=0x0 idx=3 | DECL_SLOT() | DECL_SLOT() | param[0].subscribe | objlit[createOperatorSubscriber](PUSH_STR2()) | param[1] | local[0](OP_f2())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

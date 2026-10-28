@@ -4,7 +4,7 @@
   ? = ?;
   // op 0xac OP_ac [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xb0 OP_b0 [?]
   // op 0x14 OP_14 [?]
   local[7] = OP_14();
@@ -85,7 +85,7 @@
   // op 0x16 OP_16 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xc6 PUSH_THIS [~]
   // op 0x1b OP_1b [?]
   // discard(OP_1b()())
@@ -93,7 +93,7 @@
   EXPORTS.tokens (seq 0) = param[0];  // PUSH_THIS()
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.cursor (seq 1) = globalThis;  // PUSH_THIS()
-  // stack@INIT-END: OP_16() | OP_44().cursor
+  // stack@INIT-END: OP_16() | META_RECORD44().cursor
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x08 PUSH_C [~]

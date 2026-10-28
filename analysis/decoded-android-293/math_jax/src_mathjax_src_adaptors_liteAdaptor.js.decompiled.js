@@ -113,7 +113,7 @@
   // stack@INIT-END: 't' | OP_b4() | const[17187598] | str?flags=0x10 idx=3 | pool[2954036884] | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 't' | 'e' | 'n' | 'r' | str?flags=0x2 idx=15 | const[030970c6] | 'i' | 'u' | str?flags=0x4 idx=15 | const[050d70ca] | 'LiteBase' | str?flags=0x0 idx=0 | OP_37() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | objlit[NodeMixin](undefined) | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x08 PUSH_C [~]
   // op 0x2d OP_2d [?]
   // op 0x2d OP_2d [?]
@@ -1242,7 +1242,7 @@
   // op 0xff OP_ff [?]
   …(pad)
   // op 0x0a PUSH_E [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -1267,7 +1267,7 @@
   // op 0xb7 PUSH_WK1 [~]
   // discard(undefined.splice(undefined, PUSH_WK1()))
   EXPORTS.builtin#30 (seq 0) = …;  // …
-  // stack@INIT-END: OP_80() | const[0200b001] | OP_34() | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[20000c00] | PUSH_E() | const[0000000e].replace | OP_be() | const[02306402] | DECL_SLOT() | DECL_SLOT() | pair(objlit[attributes](param[0]), undefined.builtin#91(const[334]))
+  // stack@INIT-END: OP_80() | const[0200b001] | OP_34() | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[20000c00] | PUSH_E() | const[0000000e].replace | PUSH_I8() | const[02306402] | DECL_SLOT() | DECL_SLOT() | pair(objlit[attributes](param[0]), undefined.builtin#91(const[334]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

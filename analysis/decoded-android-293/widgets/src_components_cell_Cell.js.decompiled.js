@@ -182,8 +182,8 @@
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @2086
   // discard(OP_b3())
-  // op 0xbe OP_be [?]
-  locop 0xcb(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcb(PUSH_I8())
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @2133
@@ -198,8 +198,8 @@
   // op 0xb3 OP_b3 [?]
   jcc-0xeb → @2224
   // discard(OP_b3())
-  // op 0xbe OP_be [?]
-  local[4] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[4] = PUSH_I8();
   local[5] = objlit[identityTitle](undefined);
   local[6] = objlit[builtin#123](undefined);
   // op 0x11 DUP [~]

@@ -55,12 +55,12 @@
   // op 0x6b CLASS_DECL [~]
   // op 0xd0 OP_d0 [?]
   jcc-0xeb → @538
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jmp → @539
   // op 0x07 PUSH_B [~]
   // op 0x56 OP_56 [?]
   // discard(OP_56())
-  // discard(OP_be().[wk:0xea])
+  // discard(PUSH_I8().[wk:0xea])
   jcc-0xeb → @603
   // op 0xb7 PUSH_WK1 [~]
   // op 0xc0 OP_c0 [?]
@@ -327,9 +327,9 @@
   // stack@INIT-END: ?.canMeasureNodes.postMessage | desc-tpl(param[0].[wk:0x120])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // stack@INIT-END: OP_44().terminate()
+  // stack@INIT-END: META_RECORD44().terminate()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x46 OP_46 [?]

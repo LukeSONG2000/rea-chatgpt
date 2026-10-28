@@ -6,7 +6,7 @@
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
   // op 0x3c OP_3c [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x2c OP_2c [?]
   // op 0xb0 OP_b0 [?]
   …(pad)
@@ -329,7 +329,7 @@
   // discard(PUSH_E())
   …(pad)
   // op 0x3b OP_3b [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   locop 0xca(OP_f1())
   // op 0xde CLOSURE_CTX_A [~]
@@ -386,7 +386,7 @@
 
   // ---- FUNCTION-UNIT: 'getDaemonClientManager' ----
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
@@ -487,7 +487,7 @@
   // op 0xd6 OP_d6 [?]
   // op 0xde CLOSURE_CTX_A [~]
   // op 0xdf CLOSURE_CTX_B [~]
-  // stack@INIT-END: OP_20() | OP_be() | num[62533635] | str?flags=0x4 idx=48 | PATCH_REF_LOAD() | PATCH_REF_LOAD() | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_81() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_87() | undefined.push | OP_17() | OP_37() | APPLY_SPREAD() | PUSH_B() | const[00010000] | const[19660802] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=2 | OP_d6() | CLOSURE_CTX_A().callAction(CLOSURE_CTX_B(), param[0])
+  // stack@INIT-END: OP_20() | PUSH_I8() | num[62533635] | str?flags=0x4 idx=48 | PATCH_REF_LOAD() | PATCH_REF_LOAD() | PATCH_REF_LOAD() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_81() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_87() | undefined.push | OP_17() | OP_37() | APPLY_SPREAD() | PUSH_B() | const[00010000] | const[19660802] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=2 | OP_d6() | CLOSURE_CTX_A().callAction(CLOSURE_CTX_B(), param[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -535,7 +535,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe4 CLASS_DEF_POP [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // trailer 0xae
   …(pad)
@@ -699,7 +699,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x11 DUP [~]
   // op 0xb3 OP_b3 [?]
@@ -776,7 +776,7 @@
   // op 0x4d OP_4d [?]
   …(pad)
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   locop 0xca(globalThis)
@@ -800,7 +800,7 @@
   // discard(STR_OP())
   jmp → @6485
   // op 0x6b CLASS_DECL [~]
-  // stack@INIT-END: OP_4d()../ComponentPath | OP_be() | const[0170c003] | num[63070210] | str?flags=0x3 idx=48 | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLASS_DECL() | LT() | DECL_SLOT() | param[1] | objlit[componentId](LOAD_M3()) | undefined | CLASS_DECL() | CLASS_DECL()
+  // stack@INIT-END: OP_4d()../ComponentPath | PUSH_I8() | const[0170c003] | num[63070210] | str?flags=0x3 idx=48 | const[0008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLASS_DECL() | LT() | DECL_SLOT() | param[1] | objlit[componentId](LOAD_M3()) | undefined | CLASS_DECL() | CLASS_DECL()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x07 PUSH_B [~]

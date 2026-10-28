@@ -84,7 +84,7 @@
   // op 0xd0 OP_d0 [?]
   // op 0x1c OP_1c [?]
   // discard(OP_1c())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   local[5] = load[08];
   // op 0x64 DECL_SLOT [~]

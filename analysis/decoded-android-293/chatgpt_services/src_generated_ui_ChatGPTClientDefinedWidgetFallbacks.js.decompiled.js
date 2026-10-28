@@ -507,7 +507,7 @@
 
   // ---- FUNCTION-UNIT: 'keys' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x08 PUSH_C [~]
   // op 0x30 OP30 [?]
@@ -756,7 +756,7 @@
   jcc-0xeb → @6917
   // discard(OP_84())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: CLOSURE_CTX_B() | objlit[series](param[0]) | desc-tpl | undefined.[wk:0x10e] | OP_bf().[wk:0xfe] | globalThis | OP_ea() | desc-tpl | undefined.[wk:0x124] | undefined.[wk:0x12f] | push1 | undefined.[wk:0x125] | !(globalThis).[wk:0xfa] | const[294].[wk:0x127] | desc-tpl | CLOSURE_CTX_C() | param[0] | desc-tpl | undefined.[wk:0x12a] | str?flags=0x51 idx=26 | PUSH_C7() | const[02004006] | fn:'keys' | OP_dc() | str?flags=0x13 idx=1 | !(pool[146].isArray(param[0])) | DECL_SLOT() | OP_81() | DECL_SLOT() | CLOSURE_CTX_A() | globalThis | OP_17() | OP_3f() | OP_7c() | OP_bd() | fn:'keys' | OP_be() | const[0030c003] | const[0130c203] | const[0230c603] | num[62267399] | str?flags=0x4 idx=48 | str?flags=0x5 idx=48 | const[0330b603] | PATCH_REF_LOAD() | v06 | PUSH_C() | OP30() | const[dc031301] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | DECL_SLOT() | LT() | DECL_SLOT() | CLOSURE_CTX_C() | objlit[axes](param[0]) | OP_87() | str?flags=0x7c idx=21 | OP_34() | num[1593891381] | fn:'keys' | OP30() | globalThis | OP_13() | const[64030064] | num[91136] | DECL_SLOT() | CLOSURE_CTX_A() | objlit[axes](param[0]) | CLOSURE_CTX_B() | pool[146].isArray(objlit[yAxisDomain](param[0])) | OP_87()
+  // stack@INIT-END: CLOSURE_CTX_B() | objlit[series](param[0]) | desc-tpl | undefined.[wk:0x10e] | OP_bf().[wk:0xfe] | globalThis | OP_ea() | desc-tpl | undefined.[wk:0x124] | undefined.[wk:0x12f] | push1 | undefined.[wk:0x125] | !(globalThis).[wk:0xfa] | const[294].[wk:0x127] | desc-tpl | CLOSURE_CTX_C() | param[0] | desc-tpl | undefined.[wk:0x12a] | str?flags=0x51 idx=26 | PUSH_C7() | const[02004006] | fn:'keys' | OP_dc() | str?flags=0x13 idx=1 | !(pool[146].isArray(param[0])) | DECL_SLOT() | OP_81() | DECL_SLOT() | CLOSURE_CTX_A() | globalThis | OP_17() | OP_3f() | OP_7c() | OP_bd() | fn:'keys' | PUSH_I8() | const[0030c003] | const[0130c203] | const[0230c603] | num[62267399] | str?flags=0x4 idx=48 | str?flags=0x5 idx=48 | const[0330b603] | PATCH_REF_LOAD() | v06 | PUSH_C() | OP30() | const[dc031301] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | DECL_SLOT() | LT() | DECL_SLOT() | CLOSURE_CTX_C() | objlit[axes](param[0]) | OP_87() | str?flags=0x7c idx=21 | OP_34() | num[1593891381] | fn:'keys' | OP30() | globalThis | OP_13() | const[64030064] | num[91136] | DECL_SLOT() | CLOSURE_CTX_A() | objlit[axes](param[0]) | CLOSURE_CTX_B() | pool[146].isArray(objlit[yAxisDomain](param[0])) | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe4 CLASS_DEF_POP [~]
@@ -779,13 +779,13 @@
   // op 0xbc OP_bc [?]
   // op 0xbc OP_bc [?]
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
   // op 0xbf OP_bf [?]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x08 PUSH_C [~]
   // op 0x08 PUSH_C [~]
@@ -833,7 +833,7 @@
   // discard(DUP())
   // trailer 0xae
   …(pad)
-  // stack-tail: fn:'keys' | const[00000bbe] | PUSH_C().[wk:0x144] | PUSH_WK2().[wk:0x145] | PUSH_WK2().[wk:0x146] | desc-tpl | OP_bc().[wk:0x144] | OP_ba().[wk:0x145] | OP_ba().[wk:0x146] | desc-tpl | OP_bb().[wk:0x144] | OP_bb().[wk:0x145] | OP_bb().[wk:0x146] | desc-tpl | OP_ba().[wk:0x144] | OP_bc().[wk:0x145] | OP_bc().[wk:0x146] | desc-tpl | PUSH_WK2().[wk:0x144] | OP_be().[wk:0x145] | OP_be().[wk:0x146] | desc-tpl | globalThis.[wk:0x144] | OP_be().[wk:0x145] | OP_be().[wk:0x146] | push7.[wk:0x10e] | OP_bf().[wk:0xfe] | desc-tpl | const[327].[wk:0x131] | const[328].[wk:0x133] | const[324].[wk:0x124] | const[329].[wk:0x12f] | const[288].[wk:0x10c] | desc-tpl | const[330].[wk:0x131] | const[328].[wk:0x133] | const[326].[wk:0x124] | const[331].[wk:0x12f] | const[288].[wk:0x10c] | push2.[wk:0x125] | !(PUSH_WK1()).[wk:0xf8] | !(globalThis).[wk:0xf9] | !(globalThis).[wk:0xfa] | !(globalThis).[wk:0xfb] | !(globalThis).[wk:0xfd] | const[294].[wk:0x127] | desc-tpl | !(globalThis).[wk:0x14c] | const[325].[wk:0x124] | const[70].[wk:0x10c].[wk:0x122] | desc-tpl | !(globalThis).[wk:0x14c] | globalThis | OP_be() | push2.[wk:0x13c].[wk:0x128].[wk:0x12a] | str?flags=0xa7 idx=1 | PUSH_C() | PUSH_C() | PUSH_C() | push8481 | PUSH_C() | push8481 | PUSH_C() | call21(?) | PUSH_C() | call21(?) | PUSH_C() | call21(?) | PUSH_C() | call21(?) | PUSH_C() | call21(?) | OP_2b() | OP_2b() | str?flags=0xed idx=1 | num[0]
+  // stack-tail: fn:'keys' | const[00000bbe] | PUSH_C().[wk:0x144] | PUSH_WK2().[wk:0x145] | PUSH_WK2().[wk:0x146] | desc-tpl | OP_bc().[wk:0x144] | OP_ba().[wk:0x145] | OP_ba().[wk:0x146] | desc-tpl | OP_bb().[wk:0x144] | OP_bb().[wk:0x145] | OP_bb().[wk:0x146] | desc-tpl | OP_ba().[wk:0x144] | OP_bc().[wk:0x145] | OP_bc().[wk:0x146] | desc-tpl | PUSH_WK2().[wk:0x144] | PUSH_I8().[wk:0x145] | PUSH_I8().[wk:0x146] | desc-tpl | globalThis.[wk:0x144] | PUSH_I8().[wk:0x145] | PUSH_I8().[wk:0x146] | push7.[wk:0x10e] | OP_bf().[wk:0xfe] | desc-tpl | const[327].[wk:0x131] | const[328].[wk:0x133] | const[324].[wk:0x124] | const[329].[wk:0x12f] | const[288].[wk:0x10c] | desc-tpl | const[330].[wk:0x131] | const[328].[wk:0x133] | const[326].[wk:0x124] | const[331].[wk:0x12f] | const[288].[wk:0x10c] | push2.[wk:0x125] | !(PUSH_WK1()).[wk:0xf8] | !(globalThis).[wk:0xf9] | !(globalThis).[wk:0xfa] | !(globalThis).[wk:0xfb] | !(globalThis).[wk:0xfd] | const[294].[wk:0x127] | desc-tpl | !(globalThis).[wk:0x14c] | const[325].[wk:0x124] | const[70].[wk:0x10c].[wk:0x122] | desc-tpl | !(globalThis).[wk:0x14c] | globalThis | PUSH_I8() | push2.[wk:0x13c].[wk:0x128].[wk:0x12a] | str?flags=0xa7 idx=1 | PUSH_C() | PUSH_C() | PUSH_C() | push8481 | PUSH_C() | push8481 | PUSH_C() | call21(?) | PUSH_C() | call21(?) | PUSH_C() | call21(?) | PUSH_C() | call21(?) | PUSH_C() | call21(?) | OP_2b() | OP_2b() | str?flags=0xed idx=1 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

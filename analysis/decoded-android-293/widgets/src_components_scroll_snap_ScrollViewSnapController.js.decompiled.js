@@ -477,7 +477,7 @@
   // stack@INIT-END: OP_8b() | const[0200a401] | num[575] | num[234881024].y | PUSH_B() | OP_f6()(objlit[DoSnapNow](CLOSURE_CTX_A()), local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xde CLOSURE_CTX_A [~]
   // op 0xdf CLOSURE_CTX_B [~]
@@ -489,7 +489,7 @@
   // discard(DUP())
   // op 0xde CLOSURE_CTX_A [~]
   // op 0xe1 CLOSURE_CTX_D [~]
-  // stack@INIT-END: OP_44() | str?flags=0x2 idx=3 | CLOSURE_CTX_A().doSnapNowToIndex(undefined, CLOSURE_CTX_D())
+  // stack@INIT-END: META_RECORD44() | str?flags=0x2 idx=3 | CLOSURE_CTX_A().doSnapNowToIndex(undefined, CLOSURE_CTX_D())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xfd OP_fd [?]
@@ -499,7 +499,7 @@
   // stack@INIT-END: str?flags=0x56 idx=3.y.scheduleWhenFramesAvailable(objlit[DoSnapNow](CLOSURE_CTX_A()), local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
@@ -534,7 +534,7 @@
   // op 0xe1 CLOSURE_CTX_D [~]
   // op 0xde CLOSURE_CTX_A [~]
   // discard(CLOSURE_CTX_A().triggerSnapEvent(objlit[AnchorSnap](CLOSURE_CTX_D()), objlit[callListenersAnchorSnap](CLOSURE_CTX_A())))
-  // stack@INIT-END: OP_44() | str?flags=0x3 idx=3 | const[b6030003] | PUSH_WK2() | 'exports' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | objlit[scrollX](objlit[handler](CLOSURE_CTX_A())) | META_OP6C() | objlit[scrollY](objlit[handler](CLOSURE_CTX_A())) | META_OP6C() | objlit[scrollAnimated](objlit[handler](CLOSURE_CTX_A())) | undefined
+  // stack@INIT-END: META_RECORD44() | str?flags=0x3 idx=3 | const[b6030003] | PUSH_WK2() | 'exports' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | objlit[scrollX](objlit[handler](CLOSURE_CTX_A())) | META_OP6C() | objlit[scrollY](objlit[handler](CLOSURE_CTX_A())) | META_OP6C() | objlit[scrollAnimated](objlit[handler](CLOSURE_CTX_A())) | undefined
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xde CLOSURE_CTX_A [~]
   // trailer 0xae
@@ -1000,7 +1000,7 @@
   // op 0xcf OP_cf [?]
   …(pad)
   // discard(const[020d3f01])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x07 PUSH_B [~]
   …(pad)
@@ -1054,7 +1054,7 @@
   // op 0xc3 LOAD_M3 [~]
   // op 0xb7 PUSH_WK1 [~]
   EXPORTS.needsSort (seq 1) = !(PUSH_WK1());  // LOAD_M3()
-  // stack@INIT-END: META_OP6C() | DECL_SLOT() | desc-tpl | undefined | objlit[x](undefined) | objlit[clamp](PUSH_STR2()) | objlit[x](undefined) | globalThis | OP_f2().[wk:0x106] | DECL_SLOT() | desc-tpl | objlit[scrollX](objlit[handler](LOAD_M3())).[wk:0x106] | undefined | objlit[y](undefined) | objlit[clamp](PUSH_STR2()) | OP_12() | DECL_SLOT() | desc-tpl | ADD().[wk:0x106] | DECL_SLOT() | desc-tpl | OP_a1().[wk:0x106] | FN_PROLOGUE().y | OP_8f().[wk:0x106] | pair(PUSH_WK1(), ADD()) | str?flags=0xc7 idx=1 | PUSH_C().[wk:0x24f0002] | OP_cf().y | OP_be() | const[62922756] | OP10() | const[00c80309] | const[08c408c3] | META_OP6C() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | OP_87()
+  // stack@INIT-END: META_OP6C() | DECL_SLOT() | desc-tpl | undefined | objlit[x](undefined) | objlit[clamp](PUSH_STR2()) | objlit[x](undefined) | globalThis | OP_f2().[wk:0x106] | DECL_SLOT() | desc-tpl | objlit[scrollX](objlit[handler](LOAD_M3())).[wk:0x106] | undefined | objlit[y](undefined) | objlit[clamp](PUSH_STR2()) | OP_12() | DECL_SLOT() | desc-tpl | ADD().[wk:0x106] | DECL_SLOT() | desc-tpl | OP_a1().[wk:0x106] | FN_PROLOGUE().y | OP_8f().[wk:0x106] | pair(PUSH_WK1(), ADD()) | str?flags=0xc7 idx=1 | PUSH_C().[wk:0x24f0002] | OP_cf().y | PUSH_I8() | const[62922756] | OP10() | const[00c80309] | const[08c408c3] | META_OP6C() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x64 DECL_SLOT [~]
   // op 0xc3 LOAD_M3 [~]
@@ -1142,7 +1142,7 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
   // op 0x11 DUP [~]
@@ -1172,7 +1172,7 @@
   // op 0xa0 ADD [~]
   // op 0xd5 OP_d5 [?]
   // op 0xa0 ADD [~]
-  // stack@INIT-END: OP_44() | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | DUP() | globalThis | desc-tpl | DUP() | PUSH_WK1() | desc-tpl | DUP() | PUSH_WK2() | desc-tpl | ADD().[wk:0x106]
+  // stack@INIT-END: META_RECORD44() | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | DUP() | globalThis | desc-tpl | DUP() | PUSH_WK1() | desc-tpl | DUP() | PUSH_WK2() | desc-tpl | ADD().[wk:0x106]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

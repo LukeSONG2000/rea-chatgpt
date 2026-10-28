@@ -55,10 +55,10 @@
   EXPORTS.OAINetworkAccountSettingsFixture (seq 1) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  local[20] = call21(OP_be().[wk:0x10e]; const[266].[wk:0x10b]).[wk:0x89];
-  // stack@INIT-END: 'e' | fn:'onRender' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'i' | 's' | 'n' | 'o' | 'a' | str?flags=0x2 idx=21 | const[030d70ce] | 'u' | str?flags=0x0 idx=0 | str?flags=0x0 idx=16 | str?flags=0x0 idx=17 | str?flags=0x0 idx=18 | str?flags=0x0 idx=19 | 'd' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeComponentPrototype | const[245] | const[246] | const[247] | undefined.makeNodePrototype | const[242] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | call21(const[264].[wk:0x109]; const[266].[wk:0x10b]).[wk:0x10c] | DUP() | desc-tpl | OP_be().[wk:0x10d]
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  local[20] = call21(PUSH_I8().[wk:0x10e]; const[266].[wk:0x10b]).[wk:0x89];
+  // stack@INIT-END: 'e' | fn:'onRender' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'i' | 's' | 'n' | 'o' | 'a' | str?flags=0x2 idx=21 | const[030d70ce] | 'u' | str?flags=0x0 idx=0 | str?flags=0x0 idx=16 | str?flags=0x0 idx=17 | str?flags=0x0 idx=18 | str?flags=0x0 idx=19 | 'd' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeComponentPrototype | const[245] | const[246] | const[247] | undefined.makeNodePrototype | const[242] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | call21(const[264].[wk:0x109]; const[266].[wk:0x10b]).[wk:0x10c] | DUP() | desc-tpl | PUSH_I8().[wk:0x10d]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xc9 PUSH_C9 [~]

@@ -65,9 +65,9 @@
   // stack@INIT-END: call23(?; call25(param[0].forEach; local[0]).builtin#263) | str?flags=0xc idx=0 | const[0000000e].builtin#263.schedule | desc-tpl | param[0].[wk:0xe8](param[1].[wk:0x40])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // stack@INIT-END: OP_44().stop()
+  // stack@INIT-END: META_RECORD44().stop()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x46 OP_46 [?]

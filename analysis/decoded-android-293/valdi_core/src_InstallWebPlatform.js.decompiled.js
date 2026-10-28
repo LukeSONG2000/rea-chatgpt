@@ -33,7 +33,7 @@
   // stack@INIT-END: fn:'valdi_core/src/InstallWebStorage' | PUSH_WK2() | 'require' | 'module' | 'exports' | 'e' | 'r' | 'a' | 't' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
@@ -86,7 +86,7 @@
   // op 0x50 OP_50 [?]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: 'l' | OP_44() | globalThis | str?flags=0x0 idx=13 | num[117687309] | load[auxb803] | const[0dc00305] | load[auxc203] | v06 | load[auxb203] | const[03bc0303] | load[auxbe03] | const[25613] | desc-tpl | objlit[URL](PUSH_STR2()).[wk:0xef] | objlit[URLSearchParams](PUSH_STR2()).[wk:0xf0] | objlit[ByteLengthQueuingStrategy](PUSH_STR2()).[wk:0xf1] | objlit[CountQueuingStrategy](PUSH_STR2()).[wk:0xf2] | objlit[ReadableByteStreamController](PUSH_STR2()).[wk:0xf3] | objlit[ReadableStream](PUSH_STR2()).[wk:0xf4] | objlit[ReadableStreamBYOBReader](PUSH_STR2()).[wk:0xf5] | objlit[ReadableStreamBYOBRequest](PUSH_STR2()).[wk:0xf6] | objlit[ReadableStreamDefaultController](PUSH_STR2()).[wk:0xf7] | objlit[ReadableStreamDefaultReader](PUSH_STR2()).[wk:0xf8] | objlit[TransformStream](PUSH_STR2()).[wk:0xf9] | objlit[TransformStreamDefaultController](PUSH_STR2()).[wk:0xfa] | objlit[WritableStream](PUSH_STR2()).[wk:0xfb] | OP_87() | objlit[installBlob](PUSH_STR2()) | objlit[createBlobURL](param[0]).bind(param[0]) | objlit[isVersionAtLeast](PUSH_STR2()) | objlit[getModuleLoader](PUSH_STR2()) | objlit[isVersionAtLeast](PUSH_STR2()) | objlit[installFetch](PUSH_STR2()) | desc-tpl | objlit[createTransport](PUSH_STR2()).[wk:0x109] | OP_50().[wk:0x10a] | objlit[digest](PUSH_STR2()).[wk:0x10b] | f0(objlit[addAbortStep](PUSH_STR2()).[wk:0x10c])
+  // stack@INIT-END: 'l' | META_RECORD44() | globalThis | str?flags=0x0 idx=13 | num[117687309] | load[auxb803] | const[0dc00305] | load[auxc203] | v06 | load[auxb203] | const[03bc0303] | load[auxbe03] | const[25613] | desc-tpl | objlit[URL](PUSH_STR2()).[wk:0xef] | objlit[URLSearchParams](PUSH_STR2()).[wk:0xf0] | objlit[ByteLengthQueuingStrategy](PUSH_STR2()).[wk:0xf1] | objlit[CountQueuingStrategy](PUSH_STR2()).[wk:0xf2] | objlit[ReadableByteStreamController](PUSH_STR2()).[wk:0xf3] | objlit[ReadableStream](PUSH_STR2()).[wk:0xf4] | objlit[ReadableStreamBYOBReader](PUSH_STR2()).[wk:0xf5] | objlit[ReadableStreamBYOBRequest](PUSH_STR2()).[wk:0xf6] | objlit[ReadableStreamDefaultController](PUSH_STR2()).[wk:0xf7] | objlit[ReadableStreamDefaultReader](PUSH_STR2()).[wk:0xf8] | objlit[TransformStream](PUSH_STR2()).[wk:0xf9] | objlit[TransformStreamDefaultController](PUSH_STR2()).[wk:0xfa] | objlit[WritableStream](PUSH_STR2()).[wk:0xfb] | OP_87() | objlit[installBlob](PUSH_STR2()) | objlit[createBlobURL](param[0]).bind(param[0]) | objlit[isVersionAtLeast](PUSH_STR2()) | objlit[getModuleLoader](PUSH_STR2()) | objlit[isVersionAtLeast](PUSH_STR2()) | objlit[installFetch](PUSH_STR2()) | desc-tpl | objlit[createTransport](PUSH_STR2()).[wk:0x109] | OP_50().[wk:0x10a] | objlit[digest](PUSH_STR2()).[wk:0x10b] | f0(objlit[addAbortStep](PUSH_STR2()).[wk:0x10c])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xd0 OP_d0 [?]

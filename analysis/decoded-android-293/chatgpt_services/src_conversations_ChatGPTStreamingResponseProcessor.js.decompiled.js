@@ -11,8 +11,8 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.ChatGPTStreamingResponseProcessor (seq 0) = v06;  // PUSH_EXPORTS()
   locop 0xca(f0(const[223]))
-  // op 0xbe OP_be [?]
-  locop 0xcb(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcb(PUSH_I8())
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]

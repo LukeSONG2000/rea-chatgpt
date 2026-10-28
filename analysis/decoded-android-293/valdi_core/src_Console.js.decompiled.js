@@ -85,9 +85,9 @@
   jmp → @615
   locop 0xcb(OP_81())
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf2 OP_f2 [?]
-  // discard(OP_be()(OP_f2()))
+  // discard(PUSH_I8()(OP_f2()))
   // op 0x84 OP_84 [?]
   jcc-0xeb → @530
   // discard(OP_84())

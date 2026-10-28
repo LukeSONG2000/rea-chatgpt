@@ -374,7 +374,7 @@
   // op 0xbf OP_bf [?]
   // op 0xa1 OP_a1 [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // trailer 0xae
   …(pad)
@@ -418,7 +418,7 @@
   // op 0xa0 ADD [~]
   // op 0xdf CLOSURE_CTX_B [~]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0xb4 OP_b4 [?]
@@ -434,7 +434,7 @@
   // op 0xb7 PUSH_WK1 [~]
   // op 0xa6 LT [~]
   jcc-0xeb → @4115
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xba OP_ba [?]
   // op 0xa0 ADD [~]
   // op 0x9d OP_9d [?]
@@ -533,7 +533,7 @@
   // op 0x87 OP_87 [?]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.state (seq 2) = undefined;  // LOAD_M3()
-  // stack@INIT-END: 'potential'(DUP(), OP_6e(), PUSH_C(), OP_14(), PUSH_C(), PUSH_C(), PUSH_C()) | PUSH_C() | PUSH_C() | load[2d] | OP_2d() | PUSH_C() | PUSH_E() | PUSH_C() | PUSH_E() | OP_16() | PUSH_C() | PUSH_C() | PUSH_C().nobreak | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010010] | const[20ec0105] | DECL_SLOT() | PUSH_THIS() | PUSH_B() | const[00000400] | PATCH_REF_LOAD() | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[000100b4] | str?flags=0x2 idx=3 | num[134343693] | DECL_SLOT() | undefined | desc-tpl | OP_50().[wk:0x106] | OP_50().[wk:0x107] | OP_50().[wk:0x108] | undefined | desc-tpl | OP_50().[wk:0x10c] | OP_50().[wk:0x10d] | str?flags=0x12 idx=30 | OP_3f() | OP_3f() | load[08] | load[0c] | OP_3f() | LOCAL_OP2() | PUSH_B() | const[00010001] | const[00000201] | globalThis | LOCAL_OP2() | PUSH_B() | const[00010001] | const[01002301] | globalThis | str?flags=0x0 idx=1 | LOCAL_OP2() | PUSH_B() | const[00010001] | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | PUSH_D() | LOCAL_OP2() | PUSH_B() | const[00010001] | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | PUSH_D() | LOCAL_OP2() | PUSH_B() | const[00010001] | const[00000201] | globalThis | LOCAL_OP2() | PUSH_B() | const[00010001] | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | PUSH_D() | LOCAL_OP2() | PUSH_B() | OP10() | PUSH_D() | LOCAL_OP2() | PUSH_B() | const[00010001] | PUSH_D() | const[01ac0201] | globalThis | str?flags=0x0 idx=1 | PUSH_D() | fn:'builtin#60188' | const[00bc0301] | OP30() | OP_bc() | const[3123708417] | '../../core/Tree/Visitor' | PUSH_D() | OP_b4() | str?flags=0x0 idx=2 | DECL_SLOT() | DECL_SLOT() | undefined | undefined | undefined | objlit[OP](objlit[TEXCLASS](PUSH_STR2())) | META_OP6C() | const[263] | objlit[attributes](undefined).builtin#65(const[293]) | META_OP6C() | objlit[node](param[1]) | PUSH_STR2().getFirstToken(undefined) | !(!(OP_ea())) | OP_44() | const[b6030001] | call25(param[0].isKind; const[299]) | LOCAL_OP2() | PUSH_B() | const[00020102] | PATCH_REF_LOAD() | str?flags=0xb6 idx=3 | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | PUSH_D() | OP_b4() | str?flags=0x0 idx=2 | EQ_STRICT() | OP_44() | OP30() | OP_b4() | str?flags=0x0 idx=2 | DECL_SLOT() | !(objlit[canBreak](undefined)) | LT() | OP_4a() | LOCAL_OP2() | PUSH_B() | const[00010001] | num[17170432] | globalThis | LOCAL_OP2() | PUSH_B() | const[00010001] | num[17105152] | OP_47() | OP_7a() | LOCAL_OP2() | PUSH_B() | const[00010001] | num[17170432] | globalThis | LOCAL_OP2() | PUSH_B() | const[00010001] | num[17170432] | globalThis | str?flags=0x36 idx=0 | str?flags=0x0 idx=0.nobreak | OP_ba() | const[3122659842] | OP_87()
+  // stack@INIT-END: 'potential'(DUP(), OP_6e(), PUSH_C(), OP_14(), PUSH_C(), PUSH_C(), PUSH_C()) | PUSH_C() | PUSH_C() | load[2d] | OP_2d() | PUSH_C() | PUSH_E() | PUSH_C() | PUSH_E() | OP_16() | PUSH_C() | PUSH_C() | PUSH_C().nobreak | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010010] | const[20ec0105] | DECL_SLOT() | PUSH_THIS() | PUSH_B() | const[00000400] | PATCH_REF_LOAD() | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[000100b4] | str?flags=0x2 idx=3 | num[134343693] | DECL_SLOT() | undefined | desc-tpl | OP_50().[wk:0x106] | OP_50().[wk:0x107] | OP_50().[wk:0x108] | undefined | desc-tpl | OP_50().[wk:0x10c] | OP_50().[wk:0x10d] | str?flags=0x12 idx=30 | OP_3f() | OP_3f() | load[08] | load[0c] | OP_3f() | LOCAL_OP2() | PUSH_B() | const[00010001] | const[00000201] | globalThis | LOCAL_OP2() | PUSH_B() | const[00010001] | const[01002301] | globalThis | str?flags=0x0 idx=1 | LOCAL_OP2() | PUSH_B() | const[00010001] | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | PUSH_D() | LOCAL_OP2() | PUSH_B() | const[00010001] | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | PUSH_D() | LOCAL_OP2() | PUSH_B() | const[00010001] | const[00000201] | globalThis | LOCAL_OP2() | PUSH_B() | const[00010001] | str?flags=0x1 idx=0 | globalThis | str?flags=0x0 idx=1 | PUSH_D() | LOCAL_OP2() | PUSH_B() | OP10() | PUSH_D() | LOCAL_OP2() | PUSH_B() | const[00010001] | PUSH_D() | const[01ac0201] | globalThis | str?flags=0x0 idx=1 | PUSH_D() | fn:'builtin#60188' | const[00bc0301] | OP30() | OP_bc() | const[3123708417] | '../../core/Tree/Visitor' | PUSH_D() | OP_b4() | str?flags=0x0 idx=2 | DECL_SLOT() | DECL_SLOT() | undefined | undefined | undefined | objlit[OP](objlit[TEXCLASS](PUSH_STR2())) | META_OP6C() | const[263] | objlit[attributes](undefined).builtin#65(const[293]) | META_OP6C() | objlit[node](param[1]) | PUSH_STR2().getFirstToken(undefined) | !(!(OP_ea())) | META_RECORD44() | const[b6030001] | call25(param[0].isKind; const[299]) | LOCAL_OP2() | PUSH_B() | const[00020102] | PATCH_REF_LOAD() | str?flags=0xb6 idx=3 | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | PUSH_D() | OP_b4() | str?flags=0x0 idx=2 | EQ_STRICT() | META_RECORD44() | OP30() | OP_b4() | str?flags=0x0 idx=2 | DECL_SLOT() | !(objlit[canBreak](undefined)) | LT() | OP_4a() | LOCAL_OP2() | PUSH_B() | const[00010001] | num[17170432] | globalThis | LOCAL_OP2() | PUSH_B() | const[00010001] | num[17105152] | OP_47() | OP_7a() | LOCAL_OP2() | PUSH_B() | const[00010001] | num[17170432] | globalThis | LOCAL_OP2() | PUSH_B() | const[00010001] | num[17170432] | globalThis | str?flags=0x36 idx=0 | str?flags=0x0 idx=0.nobreak | OP_ba() | const[3122659842] | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

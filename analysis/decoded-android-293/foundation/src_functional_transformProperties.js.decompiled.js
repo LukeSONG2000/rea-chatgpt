@@ -20,7 +20,7 @@
   …(pad)
   // op 0x3f OP_3f [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x07 PUSH_B [~]
   // op 0x56 OP_56 [?]
@@ -46,7 +46,7 @@
   // op 0x83 OP_83 [?]
   jcc-0xeb → @231
   // discard(OP_83())
-  // discard(OP_be())
+  // discard(PUSH_I8())
   // trailer 0xae
   …(pad)
   // stack-tail: CLASS_DEF_POP() | fn:'builtin#262' | const[03010601] | OP_3f() | str?flags=0x4 idx=8 | call21(?) | call21(?) | num[0]

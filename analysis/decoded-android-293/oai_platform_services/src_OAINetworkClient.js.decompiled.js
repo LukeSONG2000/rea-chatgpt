@@ -98,7 +98,7 @@
   // stack@INIT-END: OP_1f() | OP_d5() | str?flags=0x1f idx=176 | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP_40() | LOCAL_OP2() | 'e' | 'n' | 's' | str?flags=0x0 idx=6 | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | str?flags=0x0 idx=12 | str?flags=0x0 idx=13 | str?flags=0x0 idx=14 | str?flags=0x0 idx=15 | str?flags=0x0 idx=16 | str?flags=0x0 idx=17 | str?flags=0x0 idx=18 | str?flags=0x0 idx=19 | str?flags=0x0 idx=20 | str?flags=0x0 idx=21 | str?flags=0x2 idx=28 | const[031770e2] | 'i' | str?flags=0x4 idx=28 | const[051a70e4] | 'q' | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | local[0] | local[0] | const[250] | const[251] | const[252] | const[253] | const[254] | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
   // op 0x10 OP10 [?]
@@ -128,10 +128,10 @@
   // op 0xbd OP_bd [?]
   EXPORTS.ServiceError (seq 7) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.SerializationError (seq 8) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   EXPORTS.UnknownError (seq 9) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // stack@INIT-END: OP_3b() | const[00010001] | const[29425664] | const[b6030001] | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE() | FN_PROLOGUE()
@@ -166,7 +166,7 @@
   // op 0x75 OP_75 [?]
   // op 0x30 OP30 [?]
   // op 0x30 OP30 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x0a PUSH_E [~]
   // discard(PUSH_E())
@@ -586,7 +586,7 @@
   // op 0x11 DUP [~]
   jcc-0xec → @4880
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa6 LT [~]
   // op 0x11 DUP [~]
   jcc-0xec → @4880
@@ -637,7 +637,7 @@
   // op 0xc6 PUSH_THIS [~]
   // op 0x09 PUSH_D [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -925,7 +925,7 @@
   DECLARE-FUNCTION …
   // op 0x3a OP_3a [?]
   // op 0x4e OP_4e [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0x10 OP10 [?]
@@ -984,9 +984,9 @@
   …(pad)
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // trailer 0xae
   // op 0x11 DUP [~]
@@ -1086,7 +1086,7 @@
   …(pad)
   // op 0x54 OP_54 [?]
   …(pad)
-  // stack-tail: ?.requestText | PUSH_E() | call25(const[00000000]; objlit[request](param[0]), local[0]) | OP_44() | OP_be() | const[00b60300] | str?flags=0x6 idx=210 | globalThis | OP_ea() | call23(CLOSURE_CTX_A(); objlit[SerializationError](CLOSURE_CTX_B())) | OP_6f() | DECL_SLOT() | desc-tpl | OP_75() | num[38535211] | PUSH_C() | PUSH_THIS() | CLASS_DEF_POP() | call25(call25(call25(PUSH_C().requestText; param[0], CLOSURE_CTX_A()).requestText; param[0], CLOSURE_CTX_A()).requestText; param[0], CLOSURE_CTX_A()).requestText | LOCAL_OP2() | 'module' | const[00d60310] | const[ca030a01] | PUSH_C8() | TRIPLE_OP() | PUSH_D() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | v06 | undefined | CLOSURE_CTX_B() | call23(CLOSURE_CTX_C(); f0(objlit[InvalidRequest](CLOSURE_CTX_D()))) | v06 | EQ_STRICT() | objlit[isVersionAtLeast](PUSH_STR2()) | OP_54() | num[0] | const[0]
+  // stack-tail: ?.requestText | PUSH_E() | call25(const[00000000]; objlit[request](param[0]), local[0]) | META_RECORD44() | PUSH_I8() | const[00b60300] | str?flags=0x6 idx=210 | globalThis | OP_ea() | call23(CLOSURE_CTX_A(); objlit[SerializationError](CLOSURE_CTX_B())) | OP_6f() | DECL_SLOT() | desc-tpl | OP_75() | num[38535211] | PUSH_C() | PUSH_THIS() | CLASS_DEF_POP() | call25(call25(call25(PUSH_C().requestText; param[0], CLOSURE_CTX_A()).requestText; param[0], CLOSURE_CTX_A()).requestText; param[0], CLOSURE_CTX_A()).requestText | LOCAL_OP2() | 'module' | const[00d60310] | const[ca030a01] | PUSH_C8() | TRIPLE_OP() | PUSH_D() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | v06 | undefined | CLOSURE_CTX_B() | call23(CLOSURE_CTX_C(); f0(objlit[InvalidRequest](CLOSURE_CTX_D()))) | v06 | EQ_STRICT() | objlit[isVersionAtLeast](PUSH_STR2()) | OP_54() | num[0] | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

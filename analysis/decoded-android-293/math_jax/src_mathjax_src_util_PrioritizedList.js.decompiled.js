@@ -72,7 +72,7 @@
   // op 0xea OP_ea [?]
   // op 0xa8 OP_A8 [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xc2 LOCAL_OP2 [?]
   // op 0xff OP_ff [?]
   // op 0x0f OP_0f [?]

@@ -38,14 +38,14 @@
   locop 0xcb(f0(const[242]))
   locop 0xcc(const[243])
   locop 0xcd(const[244])
-  // op 0xbe OP_be [?]
-  local[4] = OP_be();
-  // op 0xbe OP_be [?]
-  local[5] = OP_be();
-  // op 0xbe OP_be [?]
-  local[6] = OP_be();
-  // op 0xbe OP_be [?]
-  local[7] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[4] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[5] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[6] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[7] = PUSH_I8();
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -391,7 +391,7 @@
   locop 0xcc(OP_4a().toLowerCase())
   // trailer 0xae
   jcc-0xeb → @3354
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9d OP_9d [?]
   // trailer 0xae
   jcc-0xeb → @3373
@@ -443,9 +443,9 @@
   // op 0x7f OP_7f [?]
   …(pad)
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9d OP_9d [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   // trailer 0xae
   …(pad)

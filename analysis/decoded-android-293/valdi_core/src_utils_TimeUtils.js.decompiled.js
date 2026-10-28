@@ -40,13 +40,13 @@
   locop 0xca(pool[153].floor(OP_9e()))
   // op 0xbf OP_bf [?]
   // op 0x9f OP_9f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   locop 0xcb(pool[153].floor(OP_9e()))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9f OP_9f [?]
   locop 0xcc(pool[153].round(OP_9f()))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa8 OP_A8 [?]
   jcc-0xeb → @422
   jmp → @479
@@ -57,7 +57,7 @@
   jcc-0xec → @479
   // discard(DUP())
   // op 0xc0 OP_c0 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa8 OP_A8 [?]
   jcc-0xeb → @492
   jmp → @533

@@ -176,7 +176,7 @@
   …(pad)
   // op 0x30 OP30 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xde CLOSURE_CTX_A [~]
   // op 0x68 PUSH_STR2 [~]
@@ -189,7 +189,7 @@
   // op 0x61 LOAD_61 [?]
   jmp → @1300
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_fe() | str?flags=0x1 idx=0 | const[2184184065] | const[2217738753] | const[3392144129] | str?flags=0xe idx=1 | str?flags=0xd idx=192 | load[auxba03] | num[100909581] | load[auxc803] | load[aux0164] | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | OP_46() | num[2365589255] | const[03ba0300] | const[00c00300] | const[00c80301] | OP30() | str?flags=0x0 idx=13 | str?flags=0xb8 idx=3 | OP_be() | num[50578947] | str?flags=0xbc idx=3 | DECL_SLOT() | LOAD_61() | objlit[worker](LOAD_61()).postMessage(undefined) | objlit[processWorkerServiceExecutorTask](PUSH_STR2()) | f0(undefined)
+  // stack@INIT-END: OP_fe() | str?flags=0x1 idx=0 | const[2184184065] | const[2217738753] | const[3392144129] | str?flags=0xe idx=1 | str?flags=0xd idx=192 | load[auxba03] | num[100909581] | load[auxc803] | load[aux0164] | str?flags=0x0 idx=100 | DECL_SLOT() | DECL_SLOT() | OP_46() | num[2365589255] | const[03ba0300] | const[00c00300] | const[00c80301] | OP30() | str?flags=0x0 idx=13 | str?flags=0xb8 idx=3 | PUSH_I8() | num[50578947] | str?flags=0xbc idx=3 | DECL_SLOT() | LOAD_61() | objlit[worker](LOAD_61()).postMessage(undefined) | objlit[processWorkerServiceExecutorTask](PUSH_STR2()) | f0(undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -212,7 +212,7 @@
   …(pad)
   // op 0x59 IMPORT_MODULE [~]
   // discard(IMPORT_MODULE())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x68 PUSH_STR2 [~]
   locop 0xca(objlit[$managedServiceWorkers](PUSH_STR2()))
@@ -242,7 +242,7 @@
   // op 0x6c META_OP6C [?]
   // discard(META_OP6C())
   // discard(PUSH_EXPORTS())
-  // stack@INIT-END: ?.worker | OP_be() | 'worker' | const[62926850] | PATCH_REF_LOAD() | META_OP6C() | DECL_SLOT() | OP_80() | DECL_SLOT() | objlit[file](undefined) | objlit[className](undefined)
+  // stack@INIT-END: ?.worker | PUSH_I8() | 'worker' | const[62926850] | PATCH_REF_LOAD() | META_OP6C() | DECL_SLOT() | OP_80() | DECL_SLOT() | objlit[file](undefined) | objlit[className](undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x71 OP_71 [?]
@@ -448,7 +448,7 @@
   // discard(str?flags=0x63 idx=2)
 
   // ---- FUNCTION-UNIT: '$managedServiceWorkers' ----
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xf7 OP_f7 [?]
   …(pad)
@@ -464,7 +464,7 @@
   EXPORTS.builtin#53 (seq 0) = objlit[builtin#53](param[1]);  // undefined
   // op 0xde CLOSURE_CTX_A [~]
   // discard(f0(undefined))
-  // stack@INIT-END: OP_79()(PUSH_THIS(), str?flags=0x2 idx=1, num[3053665281], str?flags=0x0 idx=1, str?flags=0x0 idx=1, str?flags=0x0 idx=0, str?flags=0x4 idx=13, CLASS_DEF_POP(), call21(?), v06, const[bc030102], str?flags=0x4 idx=1, OP_40(), PUSH_THIS(), 'require', str?flags=0x0 idx=3, load[b8], 'n', OP_d6(), DECL_SLOT(), DECL_SLOT(), OP_4b().$managedServiceWorkers, 'n', load[auxbc03], str?flags=0x64 idx=1, !(undefined), OP_2f(), !(undefined), str?flags=0x61 idx=5, PUSH_C(), PUSH_C().worker, fn:'$managedServiceWorkers', OP_be(), const[40c00300], OP_f7(), param[1].[wk:0xf8], PUSH_EXPORTS().[wk:0xf9], OP_d5().[wk:0x11b], str?flags=0x6a idx=9, call21(?), v06).$managedServiceWorkers | OP_bc() | str?flags=0x4 idx=2 | str?flags=0x6 idx=3 | str?flags=0x5 idx=3 | const[1709953795] | DECL_SLOT() | CLOSURE_CTX_A()
+  // stack@INIT-END: OP_79()(PUSH_THIS(), str?flags=0x2 idx=1, num[3053665281], str?flags=0x0 idx=1, str?flags=0x0 idx=1, str?flags=0x0 idx=0, str?flags=0x4 idx=13, CLASS_DEF_POP(), call21(?), v06, const[bc030102], str?flags=0x4 idx=1, OP_40(), PUSH_THIS(), 'require', str?flags=0x0 idx=3, load[b8], 'n', OP_d6(), DECL_SLOT(), DECL_SLOT(), OP_4b().$managedServiceWorkers, 'n', load[auxbc03], str?flags=0x64 idx=1, !(undefined), OP_2f(), !(undefined), str?flags=0x61 idx=5, PUSH_C(), PUSH_C().worker, fn:'$managedServiceWorkers', PUSH_I8(), const[40c00300], OP_f7(), param[1].[wk:0xf8], PUSH_EXPORTS().[wk:0xf9], OP_d5().[wk:0x11b], str?flags=0x6a idx=9, call21(?), v06).$managedServiceWorkers | OP_bc() | str?flags=0x4 idx=2 | str?flags=0x6 idx=3 | str?flags=0x5 idx=3 | const[1709953795] | DECL_SLOT() | CLOSURE_CTX_A()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]

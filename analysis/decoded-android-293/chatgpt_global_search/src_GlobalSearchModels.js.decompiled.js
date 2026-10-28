@@ -75,7 +75,7 @@
   // op 0x76 OP_76 [?]
   // op 0x12 OP_12 [?]
   // op 0x35 OP35 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   EXPORTS.Top (seq 0) = …;  // …
   // op 0x4c FN_PROLOGUE [~]
   // op 0xb7 PUSH_WK1 [~]

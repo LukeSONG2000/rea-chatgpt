@@ -967,12 +967,12 @@
   // op 0xb2 OP_b2 [?]
   // op 0x07 PUSH_B [~]
   // op 0x33 OP_33 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x3a OP_3a [?]
   …(pad)
   // discard(OP_3a())
-  locop 0xca(OP_be().g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table]…)
+  locop 0xca(PUSH_I8().g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table]…)
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]

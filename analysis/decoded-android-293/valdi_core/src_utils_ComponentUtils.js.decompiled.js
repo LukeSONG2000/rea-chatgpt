@@ -105,7 +105,7 @@
   …(pad)
   // op 0x81 OP_81 [?]
   // op 0xd0 OP_d0 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xb8 PUSH_WK2 [~]
   // op 0xff OP_ff [?]

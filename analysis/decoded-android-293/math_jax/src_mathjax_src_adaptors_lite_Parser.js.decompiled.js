@@ -105,7 +105,7 @@
   // op 0x2d OP_2d [?]
   // op 0x2b OP_2b [?]
   // op 0x3b OP_3b [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xff OP_ff [?]
   // op 0x0f OP_0f [?]
@@ -238,7 +238,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x20 idx=7.[wk:0x27d0002])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -329,7 +329,7 @@
   // op 0x0a PUSH_E [~]
   // op 0x20 OP_20 [?]
   // op 0x20 OP_20 [?]
-  // stack@INIT-END: 'http://www.w3.org/1998/Math/MathML' | OP_ef() | OP_2d() | PUSH_C() | PUSH_E() | PUSH_C() | PUSH_E() | PUSH_C() | load[00] | PUSH_C() | load[00] | OP_3a() | OP_16() | OP_3b() | push9766 | push9766 | push9766 | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=0 | str?flags=0x2 idx=4 | str?flags=0x2 idx=5 | str?flags=0x4 idx=6 | str?flags=0x4 idx=7 | const[00b40302] | str?flags=0x8 idx=196 | num[91136] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | const[306] | const[308] | undefined.charAt(PUSH_WK1()) | LOAD_M3().addComment(PUSH_EXPORTS(), undefined, undefined) | OP_ee() | const[309] | undefined.charAt(PUSH_WK1()) | LOAD_M3().closeTag(PUSH_EXPORTS(), undefined, undefined) | OP_ee() | str?flags=0x10 idx=16 | OP_2a() | OP_3f() | const[01002700] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[3c00013f] | PUSH_C() | v06 | OP_ff() | const[3f00013e] | OP_d8() | call25(param[0].append; param[1], param[0].text(PUSH_EXPORTS())).addAttributes | call25(OP_37(); param[1], call21(DUP(); PUSH_EXPORTS())).addAttributes | DECL_SLOT() | param[0].parent(param[1]) | EQ_STRICT() | POP_D7() | call25(param[0].parent; param[1]).addAttributes | OP_be() | const[0030c003] | const[0130c203] | const[0230c403] | const[0330c603] | const[04301000] | const[00b40302] | str?flags=0x8 idx=196 | const[222208] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_4a() | OP_20()
+  // stack@INIT-END: 'http://www.w3.org/1998/Math/MathML' | OP_ef() | OP_2d() | PUSH_C() | PUSH_E() | PUSH_C() | PUSH_E() | PUSH_C() | load[00] | PUSH_C() | load[00] | OP_3a() | OP_16() | OP_3b() | push9766 | push9766 | push9766 | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=0 | str?flags=0x2 idx=4 | str?flags=0x2 idx=5 | str?flags=0x4 idx=6 | str?flags=0x4 idx=7 | const[00b40302] | str?flags=0x8 idx=196 | num[91136] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | const[306] | const[308] | undefined.charAt(PUSH_WK1()) | LOAD_M3().addComment(PUSH_EXPORTS(), undefined, undefined) | OP_ee() | const[309] | undefined.charAt(PUSH_WK1()) | LOAD_M3().closeTag(PUSH_EXPORTS(), undefined, undefined) | OP_ee() | str?flags=0x10 idx=16 | OP_2a() | OP_3f() | const[01002700] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[3c00013f] | PUSH_C() | v06 | OP_ff() | const[3f00013e] | OP_d8() | call25(param[0].append; param[1], param[0].text(PUSH_EXPORTS())).addAttributes | call25(OP_37(); param[1], call21(DUP(); PUSH_EXPORTS())).addAttributes | DECL_SLOT() | param[0].parent(param[1]) | EQ_STRICT() | POP_D7() | call25(param[0].parent; param[1]).addAttributes | PUSH_I8() | const[0030c003] | const[0130c203] | const[0230c403] | const[0330c603] | const[04301000] | const[00b40302] | str?flags=0x8 idx=196 | const[222208] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_4a() | OP_20()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x20 OP_20 [?]
   // op 0x2f OP_2f [?]
@@ -458,7 +458,7 @@
   // op 0x86 OP_86 [?]
   …(pad)
   // discard(const[02e41200])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -483,7 +483,7 @@
   // discard(STR_OP())
   // op 0xee OP_ee [?]
   // op 0xc2 LOCAL_OP2 [?]
-  // stack@INIT-END: OP_86().addAttributes | OP_be() | const[0030c003] | const[0130c203] | const[02206402] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | META_OP6C() | OP_ee() | param[0].append(param[1], param[0].text(undefined.builtin#91(LOCAL_OP2())))
+  // stack@INIT-END: OP_86().addAttributes | PUSH_I8() | const[0030c003] | const[0130c203] | const[02206402] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | META_OP6C() | OP_ee() | param[0].append(param[1], param[0].text(undefined.builtin#91(LOCAL_OP2())))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -719,7 +719,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x61 idx=2)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -844,7 +844,7 @@
   …(pad)
   // discard(PUSH_E())
   …(pad)
-  // stack@INIT-END: OP_4d() | num[38993963] | OP30() | num[1409298451] | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=0 | str?flags=0x2 idx=4 | str?flags=0x2 idx=5 | str?flags=0x2 idx=6 | const[4008c407] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | const[335].builtin#92(undefined) | undefined | ADD() | OP_4a() | PUSH_EXPORTS() | const[336] | OP_92() | num[121769474] | const[00010001] | PATCH_REF_LOAD() | globalThis | str?flags=0x0 idx=1 | PUSH_B() | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=0 | const[4008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | const[00010001] | str?flags=0x1 idx=0 | PUSH_WK2() | str?flags=0x0 idx=1 | call25(OP_40(); param[0]).addAttributes | const[340] | undefined | const[341] | undefined.addAttributes | OP_be() | const[0130c003] | OP_87() | undefined.push | desc-tpl | OP_47().addAttributes | pool[149] | OP_d6() | OP_73() | OP_34() | const[01001300] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[26000c00] | PUSH_E() | PUSH_B() | num[20186914] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[22000c00] | PUSH_E() | PUSH_B() | num[20186940] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[3c000c00] | PUSH_E() | PUSH_B() | num[20186942] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | call25(const[3e000c00].addAttributes(OP_33(), const[343]).replace(OP_33(), const[345]).replace; OP_33(), const[346]) | str?flags=0x75 idx=1 | num[20186918] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[26000c00] | PUSH_E() | PUSH_B() | num[20186940] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[3c000c00] | PUSH_E() | PUSH_B() | num[20186942] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[3e000c00].addAttributes
+  // stack@INIT-END: OP_4d() | num[38993963] | OP30() | num[1409298451] | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=0 | str?flags=0x2 idx=4 | str?flags=0x2 idx=5 | str?flags=0x2 idx=6 | const[4008c407] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | const[335].builtin#92(undefined) | undefined | ADD() | OP_4a() | PUSH_EXPORTS() | const[336] | OP_92() | num[121769474] | const[00010001] | PATCH_REF_LOAD() | globalThis | str?flags=0x0 idx=1 | PUSH_B() | OP_20() | PUSH_WK2() | 'require' | 'module' | str?flags=0x2 idx=0 | const[4008c404] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | const[00010001] | str?flags=0x1 idx=0 | PUSH_WK2() | str?flags=0x0 idx=1 | call25(OP_40(); param[0]).addAttributes | const[340] | undefined | const[341] | undefined.addAttributes | PUSH_I8() | const[0130c003] | OP_87() | undefined.push | desc-tpl | OP_47().addAttributes | pool[149] | OP_d6() | OP_73() | OP_34() | const[01001300] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[26000c00] | PUSH_E() | PUSH_B() | num[20186914] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[22000c00] | PUSH_E() | PUSH_B() | num[20186940] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[3c000c00] | PUSH_E() | PUSH_B() | num[20186942] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | call25(const[3e000c00].addAttributes(OP_33(), const[343]).replace(OP_33(), const[345]).replace; OP_33(), const[346]) | str?flags=0x75 idx=1 | num[20186918] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[26000c00] | PUSH_E() | PUSH_B() | num[20186940] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[3c000c00] | PUSH_E() | PUSH_B() | num[20186942] | const[00130000] | PUSH_C() | v06 | OP_ff() | desc-tpl | const[3e000c00].addAttributes
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

@@ -47,7 +47,7 @@
   // op 0x87 OP_87 [?]
   // trailer 0xae
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // discard(num[0])
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----

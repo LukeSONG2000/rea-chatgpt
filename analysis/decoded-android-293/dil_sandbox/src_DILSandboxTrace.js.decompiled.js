@@ -84,26 +84,26 @@
   // trailer 0xae
   jcc-0xeb → @519
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @531
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @543
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @555
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @567
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @579
-  // stack@INIT-END: DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | OP_be()
+  // stack@INIT-END: DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | PUSH_I8()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x1c OP_1c [?]
@@ -195,26 +195,26 @@
   // trailer 0xae
   jcc-0xeb → @1088
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @1100
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @1112
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @1124
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @1136
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   jcc-0xeb → @1148
-  // stack@INIT-END: OP_1c() | fn:'builtin#262' | v06 | OP_1c() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | OP_be()
+  // stack@INIT-END: OP_1c() | fn:'builtin#262' | v06 | OP_1c() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | PUSH_I8()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x1c OP_1c [?]

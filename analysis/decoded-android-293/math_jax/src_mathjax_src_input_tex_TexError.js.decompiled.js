@@ -32,7 +32,7 @@
   // op 0x3b OP_3b [?]
   // op 0x07 PUSH_B [~]
   // op 0x09 PUSH_D [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0xc6 PUSH_THIS [~]
@@ -58,7 +58,7 @@
   jcc-0xeb → @524
   // op 0x75 OP_75 [?]
   // op 0x4a OP_4a [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xa1 OP_a1 [?]
@@ -96,7 +96,7 @@
   // op 0xea OP_ea [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xa1 OP_a1 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xf1 OP_f1 [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xa1 OP_a1 [?]
@@ -137,9 +137,9 @@
   // trailer 0xae
   // op 0x4a OP_4a [?]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x5c OP_5c [?]
-  // stack@INIT-END: 'parseInt' | OP_3b() | PUSH_B() | const[00020402] | PUSH_D() | const[06f30406] | OP_be() | const[00c00300] | const[00c20301] | OP30() | PUSH_THIS() | str?flags=0x2 idx=2 | str?flags=0x3 idx=3 | str?flags=0x0 idx=13 | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | OP_a9() | OP_ee() | OP_ee() | OP_4a() | OP_5c()
+  // stack@INIT-END: 'parseInt' | OP_3b() | PUSH_B() | const[00020402] | PUSH_D() | const[06f30406] | PUSH_I8() | const[00c00300] | const[00c20301] | OP30() | PUSH_THIS() | str?flags=0x2 idx=2 | str?flags=0x3 idx=3 | str?flags=0x0 idx=13 | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | OP_a9() | OP_ee() | OP_ee() | OP_4a() | OP_5c()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x5c OP_5c [?]
   // op 0x2e OP_2e [?]

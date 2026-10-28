@@ -91,7 +91,7 @@
   // stack@INIT-END: OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'i' | str?flags=0x2 idx=19 | const[030970c6] | 's' | 'c' | str?flags=0x0 idx=0 | str?flags=0x4 idx=19 | const[050e70cc] | 'Subscriber' | str?flags=0x6 idx=19 | const[071170ce] | 'SafeSubscriber' | str?flags=0x0 idx=13 | str?flags=0x0 idx=20 | str?flags=0x0 idx=21 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT() | DECL_SLOT() | CLASS_CONSTRUCT() | PUSH_EXPORTS() | desc-tpl | !(globalThis).[wk:0xfe] | objlit[noop](undefined).[wk:0x6a]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x3b OP_3b [?]
   // op 0x1e OP_1e [?]
   // op 0x4e OP_4e [?]

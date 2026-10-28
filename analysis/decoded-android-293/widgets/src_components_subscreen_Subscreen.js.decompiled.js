@@ -68,8 +68,8 @@
   local[25] = f0(const[293]);
   local[26] = f0(const[294]);
   local[27] = f0(const[295]);
-  // op 0xbe OP_be [?]
-  local[28] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[28] = PUSH_I8();
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xc0 OP_c0 [?]
@@ -93,22 +93,22 @@
   local[31] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.Subscreen (seq 1) = undefined;  // PUSH_EXPORTS()
-  // op 0xbe OP_be [?]
-  EXPORTS.GUTTER_SIZE (seq 2) = OP_be();  // undefined
-  // op 0xbe OP_be [?]
-  EXPORTS.fadeDistance (seq 3) = OP_be();  // undefined
-  // op 0xbe OP_be [?]
-  EXPORTS.floatingGutter (seq 4) = OP_be();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.GUTTER_SIZE (seq 2) = PUSH_I8();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.fadeDistance (seq 3) = PUSH_I8();  // undefined
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.floatingGutter (seq 4) = PUSH_I8();  // undefined
   // op 0x11 DUP [~]
   local[32] = call21(globalThis.[wk:0x13a]; globalThis.[wk:0x13b]);
   // op 0x11 DUP [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xb7 PUSH_WK1 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  local[33] = call21(desc-tpl; OP_be().[wk:0x142]).[wk:0x144];
-  // stack@INIT-END: OP_9e() | num[17187598] | str?flags=0x22 idx=3 | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'o' | 'i' | 's' | 'n' | 'l' | 'd' | 'a' | 'c' | 'u' | 'h' | 'b' | 'g' | 'S' | 'm' | 'y' | 'p' | 'w' | 'A' | 'v' | 'R' | 'C' | 'B' | str?flags=0x2 idx=34 | OP_20() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[255] | undefined.makeNodePrototype | const[259] | undefined.makeComponentPrototype | const[264] | const[265] | const[266] | undefined.makeNodePrototype | const[259] | undefined.makeNodePrototype | const[255] | undefined.makeNodePrototype | const[259] | undefined.makeNodePrototype | const[277] | const[264] | const[265] | undefined.makeNodePrototype | const[255] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | CLASS_DECL() | DUP() | desc-tpl | const[282].[wk:0x119] | globalThis.[wk:0x138] | globalThis.[wk:0x139] | desc-tpl | undefined.extend | desc-tpl(const[317].[wk:0x13e]).[wk:0x13f] | DUP() | desc-tpl | PUSH_WK1().[wk:0x140] | call21(PUSH_WK1().[wk:0x141]; OP_be().[wk:0x142]).[wk:0x143] | DUP()
+  // op 0xbe PUSH_I8 [~]
+  local[33] = call21(desc-tpl; PUSH_I8().[wk:0x142]).[wk:0x144];
+  // stack@INIT-END: OP_9e() | num[17187598] | str?flags=0x22 idx=3 | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'r' | 'o' | 'i' | 's' | 'n' | 'l' | 'd' | 'a' | 'c' | 'u' | 'h' | 'b' | 'g' | 'S' | 'm' | 'y' | 'p' | 'w' | 'A' | 'v' | 'R' | 'C' | 'B' | str?flags=0x2 idx=34 | OP_20() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeNodePrototype | const[255] | undefined.makeNodePrototype | const[259] | undefined.makeComponentPrototype | const[264] | const[265] | const[266] | undefined.makeNodePrototype | const[259] | undefined.makeNodePrototype | const[255] | undefined.makeNodePrototype | const[259] | undefined.makeNodePrototype | const[277] | const[264] | const[265] | undefined.makeNodePrototype | const[255] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | DECL_SLOT() | CLASS_CONSTRUCT() | CLASS_DECL() | DUP() | desc-tpl | const[282].[wk:0x119] | globalThis.[wk:0x138] | globalThis.[wk:0x139] | desc-tpl | undefined.extend | desc-tpl(const[317].[wk:0x13e]).[wk:0x13f] | DUP() | desc-tpl | PUSH_WK1().[wk:0x140] | call21(PUSH_WK1().[wk:0x141]; PUSH_I8().[wk:0x142]).[wk:0x143] | DUP()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x85 OP_85 [?]
@@ -600,11 +600,11 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().setAttributeNumber(const[312], objlit[floatingGutter](PUSH_STR2())))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // discard(PUSH_STR2().setAttributeNumber(const[313], OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_STR2().setAttributeNumber(const[313], PUSH_I8()))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
-  // discard(PUSH_STR2().setAttributeNumber(const[314], OP_be()))
+  // op 0xbe PUSH_I8 [~]
+  // discard(PUSH_STR2().setAttributeNumber(const[314], PUSH_I8()))
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
@@ -674,12 +674,12 @@
   // op 0x9a OP_9a [?]
   …(pad)
   // discard(num[0])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xa8 OP_A8 [?]
   jcc-0xeb → @10932
-  // stack@INIT-END: FN_PROLOGUE() | OP_9a() | const[0200a001].makeComponentPrototype | OP_be() | const[0120c003] | const[02301000] | const[0008cd64] | num[91136] | DECL_SLOT() | OP_A8()
+  // stack@INIT-END: FN_PROLOGUE() | OP_9a() | const[0200a001].makeComponentPrototype | PUSH_I8() | const[0120c003] | const[02301000] | const[0008cd64] | num[91136] | DECL_SLOT() | OP_A8()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc9 PUSH_C9 [~]
   // op 0x11 DUP [~]
@@ -753,7 +753,7 @@
   // stack@INIT-END: OP_51().makeComponentPrototype().makeComponentPrototype.headerStyling()
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9e OP_9e [?]
   locop 0xca(OP_9e())
   jcc-0xeb → @11671

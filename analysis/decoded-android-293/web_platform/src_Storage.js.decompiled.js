@@ -427,7 +427,7 @@
   …(pad)
   // discard(str?flags=0x54 idx=0)
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x9a OP_9a [?]
@@ -658,10 +658,10 @@
   // discard(!(PUSH_WK1()).[wk:0x116](!(globalThis).[wk:0x117], !(PUSH_WK1()).[wk:0x118]))
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.state (seq 0) = …;  // …
-  // stack@INIT-END: pool[258].builtin#99(param[0], param[1]) | call25(pool[258].builtin#102; param[0], param[1]) | CLOSURE_CTX_C() | PUSH_B() | undefined | desc-tpl | undefined.[wk:0x40] | !(globalThis).[wk:0x3e] | !(globalThis).[wk:0x3f] | str?flags=0x51 idx=11 | OP35() | call25(OP_2b().f; CLOSURE_CTX_B()).f | globalThis | str?flags=0x0 idx=3 | const[0cbc0302] | OP_be() | DECL_SLOT() | OP_ac() | call25(pool[258].builtin#101; param[0], param[1], PUSH_EXPORTS()) | OP_ab() | CLOSURE_CTX_C() | CLOSURE_CTX_D() | str?flags=0x5c idx=8 | call25(OP_36().f; CLOSURE_CTX_B(), PUSH_STR2(), PUSH_STR2()).g | const[00010201] | desc-tpl | const[b6030001] | !(OP_aa()) | OP_2f() | OP_76() | OP_e5() | const[243727] | const[00ba0300] | const[00be0301] | const[0230cc03] | const[03308a04] | const[04308c04] | const[05308e04] | const[06309004] | OP_20() | OP_bc() | str?flags=0x3 idx=1 | PUSH_E() | const[c8030b01] | globalThis | str?flags=0x0 idx=13 | load[aux0d0c] | DECL_SLOT() | OP_2b() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | OP_ad() | OP_ad() | OP_ad() | OP_2f() | CLOSURE_CTX_B() | CLOSURE_CTX_B() | CLOSURE_CTX_B() | CLOSURE_CTX_C() | v06 | undefined | LOCAL_OP2() | objlit[usvString](PUSH_STR2()) | OP_34() | LOAD_M3() | undefined | desc-tpl | undefined | desc-tpl | undefined.[wk:0xeb] | undefined.[wk:0xf2] | OP_f5() | num[724620546] | OP_2b() | OP_85() | OP_2b().f | LOCAL_OP2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[2348810496] | const[2385510401] | const[2419065089] | const[2452619777] | const[271581953] | const[00bc0303] | const[c6030a01] | PUSH_C8() | str?flags=0xb idx=1 | const[1677722468] | num[91136] | DECL_SLOT() | CLOSURE_CTX_A() | desc-tpl | CLOSURE_CTX_B() | f0(OP_d5()).[wk:0xeb] | CLOSURE_CTX_B() | f0(OP_5e()).[wk:0xf2] | CLOSURE_CTX_B() | f0(OP_5e()).[wk:0xf3] | v06 | OP_5e() | LOCAL_OP2() | CLOSURE_CTX_A() | f0(OP_5e()).[wk:0xf4] | CLOSURE_CTX_C() | globalThis | pool[145].assign | LOAD_M3() | desc-tpl | undefined.[wk:0x113] | undefined.[wk:0x10c] | undefined.[wk:0x10d] | PUSH_B().[wk:0x56] | !(PUSH_WK1()).[wk:0x114] | !(PUSH_WK1()).[wk:0x115] | pair(LOAD_M3(), undefined)
+  // stack@INIT-END: pool[258].builtin#99(param[0], param[1]) | call25(pool[258].builtin#102; param[0], param[1]) | CLOSURE_CTX_C() | PUSH_B() | undefined | desc-tpl | undefined.[wk:0x40] | !(globalThis).[wk:0x3e] | !(globalThis).[wk:0x3f] | str?flags=0x51 idx=11 | OP35() | call25(OP_2b().f; CLOSURE_CTX_B()).f | globalThis | str?flags=0x0 idx=3 | const[0cbc0302] | PUSH_I8() | DECL_SLOT() | OP_ac() | call25(pool[258].builtin#101; param[0], param[1], PUSH_EXPORTS()) | OP_ab() | CLOSURE_CTX_C() | CLOSURE_CTX_D() | str?flags=0x5c idx=8 | call25(OP_36().f; CLOSURE_CTX_B(), PUSH_STR2(), PUSH_STR2()).g | const[00010201] | desc-tpl | const[b6030001] | !(OP_aa()) | OP_2f() | OP_76() | OP_e5() | const[243727] | const[00ba0300] | const[00be0301] | const[0230cc03] | const[03308a04] | const[04308c04] | const[05308e04] | const[06309004] | OP_20() | OP_bc() | str?flags=0x3 idx=1 | PUSH_E() | const[c8030b01] | globalThis | str?flags=0x0 idx=13 | load[aux0d0c] | DECL_SLOT() | OP_2b() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | OP_ad() | OP_ad() | OP_ad() | OP_2f() | CLOSURE_CTX_B() | CLOSURE_CTX_B() | CLOSURE_CTX_B() | CLOSURE_CTX_C() | v06 | undefined | LOCAL_OP2() | objlit[usvString](PUSH_STR2()) | OP_34() | LOAD_M3() | undefined | desc-tpl | undefined | desc-tpl | undefined.[wk:0xeb] | undefined.[wk:0xf2] | OP_f5() | num[724620546] | OP_2b() | OP_85() | OP_2b().f | LOCAL_OP2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | const[2348810496] | const[2385510401] | const[2419065089] | const[2452619777] | const[271581953] | const[00bc0303] | const[c6030a01] | PUSH_C8() | str?flags=0xb idx=1 | const[1677722468] | num[91136] | DECL_SLOT() | CLOSURE_CTX_A() | desc-tpl | CLOSURE_CTX_B() | f0(OP_d5()).[wk:0xeb] | CLOSURE_CTX_B() | f0(OP_5e()).[wk:0xf2] | CLOSURE_CTX_B() | f0(OP_5e()).[wk:0xf3] | v06 | OP_5e() | LOCAL_OP2() | CLOSURE_CTX_A() | f0(OP_5e()).[wk:0xf4] | CLOSURE_CTX_C() | globalThis | pool[145].assign | LOAD_M3() | desc-tpl | undefined.[wk:0x113] | undefined.[wk:0x10c] | undefined.[wk:0x10d] | PUSH_B().[wk:0x56] | !(PUSH_WK1()).[wk:0x114] | !(PUSH_WK1()).[wk:0x115] | pair(LOAD_M3(), undefined)
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x09 PUSH_D [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -670,7 +670,7 @@
   // op 0x64 DECL_SLOT [~]
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @6100
-  // stack@INIT-END: OP_44() | v06 | str?flags=0x4 idx=178 | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | str?flags=0xe idx=9 | PUSH_D() | const[c0030709] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT()
+  // stack@INIT-END: META_RECORD44() | v06 | str?flags=0x4 idx=178 | globalThis | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | str?flags=0xe idx=9 | PUSH_D() | const[c0030709] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x11 DUP [~]
@@ -716,7 +716,7 @@
   // stack@INIT-END: fn:'builtin#51984' | v06 | str?flags=0x0 idx=50 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x2 idx=13 | PUSH_C() | PUSH_WK2() | str?flags=0x0 idx=13 | DUP() | const[288] | desc-tpl | param[0].[wk:0xeb] | param[1].[wk:0xf2] | f0(call21(PUSH_EXPORTS().[wk:0xf3]; LOCAL_OP2().[wk:0xf4], PUSH_STR2().[wk:0xf5]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xb7 PUSH_WK1 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
@@ -728,7 +728,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @6869
   // discard(DUP())
-  // stack@INIT-END: OP_44() | !(PUSH_WK1()) | param[0].preventDefault()
+  // stack@INIT-END: META_RECORD44() | !(PUSH_WK1()) | param[0].preventDefault()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

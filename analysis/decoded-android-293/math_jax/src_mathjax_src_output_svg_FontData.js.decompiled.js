@@ -138,7 +138,7 @@
 
   // ---- FUNCTION-UNIT: 'builtin#262' ----
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x81 OP_81 [?]

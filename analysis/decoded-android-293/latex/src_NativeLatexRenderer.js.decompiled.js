@@ -39,7 +39,7 @@
   locop 0xca(objlit[renderMathExpression](PUSH_STR2()))
   // op 0x6f OP_6f [?]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @366
   // op 0xe0 CLOSURE_CTX_C [~]
   // op 0xc6 PUSH_THIS [~]
@@ -83,7 +83,7 @@
   // op 0x11 DUP [~]
   // trailer 0xae
   jcc-0xeb → @689
-  // stack@INIT-END: const[56885251] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x3 idx=0 | str?flags=0x0 idx=13 | num[67354125] | const[6f2d0000] | OP_6f() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | CLOSURE_CTX_C() | OP_2f() | fn:'builtin#262' | objlit[readLatexRenderErrorMessage](PUSH_STR2()) | objlit[createLatexRenderError](PUSH_STR2()) | CLOSURE_CTX_B() | objlit[readMathRenderFailureReason](fn:'builtin#262') | DUP() | DUP() | PUSH_WK2() | DUP() | OP_b9() | DUP() | globalThis
+  // stack@INIT-END: const[56885251] | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x3 idx=0 | str?flags=0x0 idx=13 | num[67354125] | const[6f2d0000] | OP_6f() | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | CLOSURE_CTX_C() | OP_2f() | fn:'builtin#262' | objlit[readLatexRenderErrorMessage](PUSH_STR2()) | objlit[createLatexRenderError](PUSH_STR2()) | CLOSURE_CTX_B() | objlit[readMathRenderFailureReason](fn:'builtin#262') | DUP() | DUP() | PUSH_WK2() | DUP() | OP_b9() | DUP() | globalThis
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x1c OP_1c [?]

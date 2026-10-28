@@ -11,7 +11,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x60 OP_60 [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x08 PUSH_C [~]
   // op 0x30 OP30 [?]
@@ -66,7 +66,7 @@
   local[7] = CLASS_DECL();
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.EditorDebugCapture (seq 5) = undefined;  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_87() | num[241678] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_60() | OP_be() | const[33800192] | PUSH_C() | OP30() | OP_c0() | const[0320c203] | PATCH_REF_LOAD() | OP_40() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | DECL_SLOT() | CLASS_CONSTRUCT()
+  // stack@INIT-END: OP_87() | num[241678] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | OP_60() | PUSH_I8() | const[33800192] | PUSH_C() | OP30() | OP_c0() | const[0320c203] | PATCH_REF_LOAD() | OP_40() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | DECL_SLOT() | CLASS_CONSTRUCT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -126,12 +126,12 @@
   // op 0x1b OP_1b [?]
   // discard(OP_1b()())
   // op 0xc6 PUSH_THIS [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x68 PUSH_STR2 [~]
   // op 0x92 OP_92 [?]
   // op 0x11 DUP [~]
   // op 0x69 OP_69 [?]
-  EXPORTS.sessionId (seq 0) = const[241].builtin#92(pool[155].now().builtin#55(OP_be()), const[243], OP_69());  // PUSH_THIS()
+  EXPORTS.sessionId (seq 0) = const[241].builtin#92(pool[155].now().builtin#55(PUSH_I8()), const[243], OP_69());  // PUSH_THIS()
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.startedAt (seq 1) = pool[155].now();  // PUSH_THIS()
   // op 0xc6 PUSH_THIS [~]
@@ -196,7 +196,7 @@
   // op 0x74 OP_74 [?]
   …(pad)
   // discard(num[33038790])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc6 PUSH_THIS [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
@@ -248,7 +248,7 @@
   // op 0xc3 LOAD_M3 [~]
   // discard(LOAD_M3().notify())
   // discard(CLOSURE_CTX_B()(LOAD_M3().slice(OP_bf())).[wk:0xfb])
-  // stack@INIT-END: OP_74().elapsedMs | OP_be() | num[75640833] | num[75771906] | num[1060867] | const[00c20308] | const[c4030901] | PUSH_THIS() | str?flags=0xa idx=1 | const[210287] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_ac() | OP_ef() | pool[154].stringify | desc-tpl | ADD().[wk:0x104] | call21(DUP(); undefined).toISOString().[wk:0x106] | OP_a1().[wk:0x107] | param[0].[wk:0x108]
+  // stack@INIT-END: OP_74().elapsedMs | PUSH_I8() | num[75640833] | num[75771906] | num[1060867] | const[00c20308] | const[c4030901] | PUSH_THIS() | str?flags=0xa idx=1 | const[210287] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_ac() | OP_ef() | pool[154].stringify | desc-tpl | ADD().[wk:0x104] | call21(DUP(); undefined).toISOString().[wk:0x106] | OP_a1().[wk:0x107] | param[0].[wk:0x108]
   // ===== 初始化段结束；其后为函数单元 =====
   // discard(?)
   // op 0x6f OP_6f [?]
@@ -480,7 +480,7 @@
   jcc-0xeb → @5701
   // op 0xba OP_ba [?]
   jmp → @5725
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   jcc-0xeb → @5712
   // op 0xb7 PUSH_WK1 [~]

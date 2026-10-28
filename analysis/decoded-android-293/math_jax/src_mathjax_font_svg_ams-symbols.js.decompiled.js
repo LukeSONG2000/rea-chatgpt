@@ -370,7 +370,7 @@
   // op 0x81 OP_81 [?]
   // op 0xe1 CLOSURE_CTX_D [~]
   // op 0x3f OP_3f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xaa OP_aa [?]
   // op 0x3f OP_3f [?]
   // op 0x60 OP_60 [?]

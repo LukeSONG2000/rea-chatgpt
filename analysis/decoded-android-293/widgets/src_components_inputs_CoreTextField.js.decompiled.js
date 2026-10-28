@@ -48,9 +48,9 @@
   local[6] = undefined.makeNodePrototype(const[256], v06, const[257]);
   local[7] = undefined.makeNodePrototype(const[253], v06, const[258]);
   local[8] = undefined.makeNodePrototype(const[256], v06, const[259]);
-  // op 0xbe OP_be [?]
-  // op 0xbe OP_be [?]
-  local[9] = const[262](OP_be(), push4, const[263]);
+  // op 0xbe PUSH_I8 [~]
+  // op 0xbe PUSH_I8 [~]
+  local[9] = const[262](PUSH_I8(), push4, const[263]);
   local[10] = undefined.makeNodePrototype(const[256], v06, const[264]);
   local[11] = f0(const[265]);
   local[12] = f0(const[266]);
@@ -61,8 +61,8 @@
   local[17] = f0(const[271]);
   local[18] = f0(const[272]);
   local[19] = f0(const[273]);
-  // op 0xbe OP_be [?]
-  local[20] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[20] = PUSH_I8();
   // op 0xc3 LOAD_M3 [~]
   // op 0x11 DUP [~]
   jcc-0xec → @966
@@ -92,12 +92,12 @@
   // op 0x11 DUP [~]
   // op 0xbd OP_bd [?]
   // op 0xbc OP_bc [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  local[25] = call21(desc-tpl; OP_be().[wk:0x12b]).[wk:0x12c];
-  // stack@INIT-END: OP_9a() | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'i' | 'r' | 'n' | 's' | 'd' | 'a' | 'l' | 'c' | 'h' | 'u' | 'p' | 'y' | 'g' | 'C' | str?flags=0x0 idx=0 | OP_19() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeComponentPrototype | const[251] | undefined.makeNodePrototype | const[260] | const[261] | OP_be() | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | undefined.[wk:0x11b] | OP_bd().[wk:0x11c] | OP_bc().[wk:0x11d] | objlit[MD](objlit[Spacing](undefined)).[wk:0x120] | objlit[MD](objlit[Spacing](undefined)).[wk:0x121] | OP_be().[wk:0x122] | call21(const[291].[wk:0x124]; const[293].[wk:0x126]).[wk:0x127] | DUP() | desc-tpl | const[291].[wk:0x124] | call21(const[296].[wk:0x129]; const[293].[wk:0x126]).[wk:0x12a] | DUP()
+  // op 0xbe PUSH_I8 [~]
+  local[25] = call21(desc-tpl; PUSH_I8().[wk:0x12b]).[wk:0x12c];
+  // stack@INIT-END: OP_9a() | OP_b0() | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | 'module' | 'exports' | 'e' | 't' | 'o' | 'i' | 'r' | 'n' | 's' | 'd' | 'a' | 'l' | 'c' | 'h' | 'u' | 'p' | 'y' | 'g' | 'C' | str?flags=0x0 idx=0 | OP_19() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | undefined.makeComponentPrototype | const[251] | undefined.makeNodePrototype | const[260] | const[261] | PUSH_I8() | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | local[0] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | undefined.[wk:0x11b] | OP_bd().[wk:0x11c] | OP_bc().[wk:0x11d] | objlit[MD](objlit[Spacing](undefined)).[wk:0x120] | objlit[MD](objlit[Spacing](undefined)).[wk:0x121] | PUSH_I8().[wk:0x122] | call21(const[291].[wk:0x124]; const[293].[wk:0x126]).[wk:0x127] | DUP() | desc-tpl | const[291].[wk:0x124] | call21(const[296].[wk:0x129]; const[293].[wk:0x126]).[wk:0x12a] | DUP()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe7 OP_e7 [?]

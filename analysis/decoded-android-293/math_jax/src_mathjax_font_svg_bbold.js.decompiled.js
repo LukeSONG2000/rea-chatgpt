@@ -667,8 +667,8 @@
   // op 0x3f OP_3f [?]
   // op 0x3f OP_3f [?]
   EXPORTS.builtin#60342 (seq 46137) = OP_3f();  // call22(?)
-  // op 0xbe OP_be [?]
-  locop 0xca(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xca(PUSH_I8())
   // op 0x3f OP_3f [?]
   // op 0x3f OP_3f [?]
   // op 0xa7 OP_a7 [?]
@@ -924,7 +924,7 @@
   jcc-0xeb → @4730
   // op 0xe4 CLASS_DEF_POP [~]
   // op 0x3f OP_3f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x8a OP_8a [?]
   // op 0x3f OP_3f [?]
   // op 0x81 OP_81 [?]
@@ -994,7 +994,7 @@
   // op 0x3f OP_3f [?]
   // op 0x51 OP_51 [?]
   // op 0xb8 PUSH_WK2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x1d OP_1d [?]
   // op 0x5a OP_5a [?]
   // op 0x3f OP_3f [?]
@@ -1084,7 +1084,7 @@
   // op 0x9e OP_9e [?]
   // op 0x3f OP_3f [?]
   …(pad)
-  // stack-tail: OP_b2()(OP_e9(), OP_fb(), OP_3f(), OP_dd(), META_OP6C().builtin#58720, OP_b9(), OP_3f(), OP_ea(), OP_fb(), OP_3f(), call22(?), OP_8f(), OP_e5(), OP_3f(), OP_56(), OP_d5(), OP_87(), OP_96(), OP_98(), OP_6e(), OP_a1(), OP_d5(), OP_3f(), OP_87(), OP_96(), OP_98(), OP_e9(), OP_3f(), OP_95(), param[1], OP_62(), v06, OP35(), OP_5e(), OP_3f(), push53297, OP_3f(), OP_87(), OP_1c(), param[0], OP_3f(), OP_3f(), OP_a7(), PUSH_THIS(), v06, OP_72(), OP_a9(), OP_f3(), OP_fd(), OP_e6(), OP_3f(), OP_3f(), OP_83(), OP_c0(), v06, OP_5c(), OP_dc(), OP_a9(), OP_86(), OP_3f(), OP_dc(), OP_3f(), OP_fd(), OP_dd()) | OP_95() | OP_86() | OP_3f() | push57393 | OP_86() | OP_85() | param[1] | OP_81() | OP_86() | CLASS_DEF_POP() | OP_3f() | OP_be() | OP_8a() | OP_81() | OP_86() | CLASS_DEF_POP() | OP_3f() | POP_D7() | LOAD_M3() | v06 | OP_b4() | OP_76() | OP_81() | OP_81() | CLASS_DEF_POP() | OP_3f() | DECL_SLOT() | OP_81() | OP_95() | OP_3f() | OP_f3() | CLOSURE_CTX_D() | OP_87() | OP_1c() | OP_87() | OP_96() | v06 | OP_f1() | OP_87() | OP_96() | v06 | CLOSURE_CTX_C() | OP_3f() | OP_87() | OP_96() | !(!(!(!(!(OP_9a()))))) | CLOSURE_CTX_D() | OP_3f() | OP_87() | OP_96() | v06 | CLOSURE_CTX_C() | OP_87() | OP_96() | v06 | OP_9e() | OP_3f()
+  // stack-tail: OP_b2()(OP_e9(), OP_fb(), OP_3f(), OP_dd(), META_OP6C().builtin#58720, OP_b9(), OP_3f(), OP_ea(), OP_fb(), OP_3f(), call22(?), OP_8f(), OP_e5(), OP_3f(), OP_56(), OP_d5(), OP_87(), OP_96(), OP_98(), OP_6e(), OP_a1(), OP_d5(), OP_3f(), OP_87(), OP_96(), OP_98(), OP_e9(), OP_3f(), OP_95(), param[1], OP_62(), v06, OP35(), OP_5e(), OP_3f(), push53297, OP_3f(), OP_87(), OP_1c(), param[0], OP_3f(), OP_3f(), OP_a7(), PUSH_THIS(), v06, OP_72(), OP_a9(), OP_f3(), OP_fd(), OP_e6(), OP_3f(), OP_3f(), OP_83(), OP_c0(), v06, OP_5c(), OP_dc(), OP_a9(), OP_86(), OP_3f(), OP_dc(), OP_3f(), OP_fd(), OP_dd()) | OP_95() | OP_86() | OP_3f() | push57393 | OP_86() | OP_85() | param[1] | OP_81() | OP_86() | CLASS_DEF_POP() | OP_3f() | PUSH_I8() | OP_8a() | OP_81() | OP_86() | CLASS_DEF_POP() | OP_3f() | POP_D7() | LOAD_M3() | v06 | OP_b4() | OP_76() | OP_81() | OP_81() | CLASS_DEF_POP() | OP_3f() | DECL_SLOT() | OP_81() | OP_95() | OP_3f() | OP_f3() | CLOSURE_CTX_D() | OP_87() | OP_1c() | OP_87() | OP_96() | v06 | OP_f1() | OP_87() | OP_96() | v06 | CLOSURE_CTX_C() | OP_3f() | OP_87() | OP_96() | !(!(!(!(!(OP_9a()))))) | CLOSURE_CTX_D() | OP_3f() | OP_87() | OP_96() | v06 | CLOSURE_CTX_C() | OP_87() | OP_96() | v06 | OP_9e() | OP_3f()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

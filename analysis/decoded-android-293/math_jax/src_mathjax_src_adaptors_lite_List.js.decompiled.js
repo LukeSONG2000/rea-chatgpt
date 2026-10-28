@@ -26,7 +26,7 @@
   …(pad)
   // op 0x2c OP_2c [?]
   EXPORTS.builtin#16910 (seq 256) = OP_2c();  // OP_0f()
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   jcc-0xec → @265
   // op 0x68 PUSH_STR2 [~]
@@ -41,7 +41,7 @@
   // op 0x55 SPREAD_PREP [~]
   // discard(SPREAD_PREP())
   EXPORTS.nodes (seq 1) = PUSH_THIS();  // const[0d08ca2b]
-  // stack@INIT-END: const[36569089] | OP_be() | const[00100001]
+  // stack@INIT-END: const[36569089] | PUSH_I8() | const[00100001]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

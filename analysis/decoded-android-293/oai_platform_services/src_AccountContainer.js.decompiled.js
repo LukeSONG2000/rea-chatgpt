@@ -215,7 +215,7 @@
 
   // ---- FUNCTION-UNIT: 'Account-scoped services require the account_scope.v1 hos…' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @1914
   // op 0x64 DECL_SLOT [~]
   locop 0xca(objlit[accountScope](param[0]))
@@ -232,7 +232,7 @@
 
   // ---- FUNCTION-UNIT: 'Account-scoped services require the account_scope.v1 hos…' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   jcc-0xeb → @2043
   // discard(DUP())
@@ -279,7 +279,7 @@
   jcc-0xeb → @2619
   // discard(OP_84())
   // op 0x87 OP_87 [?]
-  // stack@INIT-END: objlit[isVersionAtLeast](fn:'Account-scoped services require the account_scope.v1 hos…') | f0(OP_be()) | DECL_SLOT() | fn:'Account-scoped services require the account_scope.v1 hos…' | str?flags=0xf idx=9 | DECL_SLOT() | OP_87()
+  // stack@INIT-END: objlit[isVersionAtLeast](fn:'Account-scoped services require the account_scope.v1 hos…') | f0(PUSH_I8()) | DECL_SLOT() | fn:'Account-scoped services require the account_scope.v1 hos…' | str?flags=0xf idx=9 | DECL_SLOT() | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x5c OP_5c [?]

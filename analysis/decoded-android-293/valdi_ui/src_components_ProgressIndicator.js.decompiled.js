@@ -67,7 +67,7 @@
   // op 0xef OP_ef [?]
   // op 0x6c META_OP6C [?]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
@@ -103,7 +103,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0xc2 LOCAL_OP2 [?]
   // op 0xc8 PUSH_C8 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9d OP_9d [?]
   // discard(PUSH_STR2().setAttributeString(const[265], LOCAL_OP2().builtin#92(objlit[accessibilityLabel](objlit[viewModel](PUSH_C8())), const[278], pool[153].round(OP_9d()), const[280])))
   // op 0x68 PUSH_STR2 [~]
@@ -118,7 +118,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().setAttributeStyle(const[274], objlit[fill](PUSH_STR2())))
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9d OP_9d [?]
   // op 0xa0 ADD [~]
   // discard(PUSH_STR2().setAttributeString(const[254], ADD()))
@@ -128,7 +128,7 @@
   // stack@INIT-END: PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xe0 CLOSURE_CTX_C [~]
   …(pad)
@@ -164,7 +164,7 @@
   // discard(STR_CMP())
   // trailer 0xae
   …(pad)
-  // stack-tail: str?flags=0xa idx=43 | OP_be() | num[33653248] | OP_58() | OP_9c() | const[0200ef01] | PUSH_THIS() | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010010] | const[20ec010b] | DECL_SLOT() | str?flags=0x17 idx=0 | num[0]
+  // stack-tail: str?flags=0xa idx=43 | PUSH_I8() | num[33653248] | OP_58() | OP_9c() | const[0200ef01] | PUSH_THIS() | PUSH_B() | const[00000400] | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010010] | const[20ec010b] | DECL_SLOT() | str?flags=0x17 idx=0 | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

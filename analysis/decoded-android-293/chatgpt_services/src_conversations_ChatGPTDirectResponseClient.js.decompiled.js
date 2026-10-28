@@ -361,7 +361,7 @@
   // op 0x2b OP_2b [?]
   // op 0x2b OP_2b [?]
   // discard(OP_2b())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xba OP_ba [?]
   …(pad)
   // op 0x50 OP_50 [?]
@@ -386,7 +386,7 @@
   // op 0x69 OP_69 [?]
   // discard(OP_69())
   // discard(v06)
-  // stack@INIT-END: str?flags=0x22 idx=2 | const[0000000e].createChatGPTDeviceIntegrityProvider | 'module' | const[40c60308] | load[auxb603] | load[aux08cd] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_14() | OP_2b().createChatGPTDeviceIntegrityProvider | OP_be() | const[09c60300] | load[bc] | str?flags=0x0 idx=9 | const[b8030003] | OP_ba() | 'exports' | desc-tpl | OP_50().[wk:0x134] | OP_6f() | objlit[service](CLOSURE_CTX_D()).prepare | desc-tpl | objlit[accessToken](LOAD_61()).[wk:0x136] | objlit[id](objlit[activeAccount](LOAD_61())).[wk:0x139] | objlit[baseUrl](LOAD_61()).[wk:0x13a]
+  // stack@INIT-END: str?flags=0x22 idx=2 | const[0000000e].createChatGPTDeviceIntegrityProvider | 'module' | const[40c60308] | load[auxb603] | load[aux08cd] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | OP_14() | OP_2b().createChatGPTDeviceIntegrityProvider | PUSH_I8() | const[09c60300] | load[bc] | str?flags=0x0 idx=9 | const[b8030003] | OP_ba() | 'exports' | desc-tpl | OP_50().[wk:0x134] | OP_6f() | objlit[service](CLOSURE_CTX_D()).prepare | desc-tpl | objlit[accessToken](LOAD_61()).[wk:0x136] | objlit[id](objlit[activeAccount](LOAD_61())).[wk:0x139] | objlit[baseUrl](LOAD_61()).[wk:0x13a]
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcb(?)
   // op 0x6f OP_6f [?]
@@ -564,7 +564,7 @@
   // op 0x08 PUSH_C [~]
   …(pad)
   // discard(PUSH_C())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   locop 0xcc(const[c603080d])
   // op 0x27 APPLY_SPREAD [~]
   // op 0xc8 PUSH_C8 [~]
@@ -686,7 +686,7 @@
   // discard(OP_69())
   // op 0x61 LOAD_61 [?]
   // op 0x61 LOAD_61 [?]
-  // stack@INIT-END: OP_62() | OP_8f() | const[0200e101] | num[33664000].createChatGPTDeviceIntegrityProvider | OP_be() | const[0260c003] | const[0360c203] | const[0460ca03] | const[0560ce03] | const[0660d003] | const[0760d403] | const[0870d603] | const[0970d803] | APPLY_SPREAD() | const[76022064] | call31(?) | const[d2030e0d] | PUSH_C8() | str?flags=0x9 idx=13 | desc-tpl | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | globalThis | OP_ea() | OP_2f() | OP_4b() | num[3266397] | coerce(PUSH_D()).createChatGPTDeviceIntegrityProvider.createChatGPTDeviceIntegrityProvider | str?flags=0x5 idx=9 | LOAD_61().onError | LOAD_61()(f0(param[0]))
+  // stack@INIT-END: OP_62() | OP_8f() | const[0200e101] | num[33664000].createChatGPTDeviceIntegrityProvider | PUSH_I8() | const[0260c003] | const[0360c203] | const[0460ca03] | const[0560ce03] | const[0660d003] | const[0760d403] | const[0870d603] | const[0970d803] | APPLY_SPREAD() | const[76022064] | call31(?) | const[d2030e0d] | PUSH_C8() | str?flags=0x9 idx=13 | desc-tpl | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | globalThis | OP_ea() | OP_2f() | OP_4b() | num[3266397] | coerce(PUSH_D()).createChatGPTDeviceIntegrityProvider.createChatGPTDeviceIntegrityProvider | str?flags=0x5 idx=9 | LOAD_61().onError | LOAD_61()(f0(param[0]))
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xbc OP_bc [?]
@@ -924,10 +924,10 @@
   …(pad)
   // op 0x4a OP_4a [?]
   // op 0x12 OP_12 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x36 OP_36 [?]
   // op 0x69 OP_69 [?]
-  // stack@INIT-END: OP_a1() | const[0030c803] | const[0130da03] | const[0220dc03] | const[0330de03] | const[0430e603] | const[0530e803] | const[0630ea03] | const[0770ec03] | const[0870ee03] | const[0920b603] | PUSH_B() | OP_60() | PUSH_B() | desc-tpl | TRY_REGION() | OP30() | OP_bc() | str?flags=0x8 idx=14 | str?flags=0x2 idx=9 | v06 | PUSH_D() | OP_c0() | str?flags=0x9 idx=212 | load[auxc603] | num[84134412] | str?flags=0x3 idx=12 | const[03d00307] | OP_d8() | str?flags=0xa idx=13 | PUSH_D() | load[auxf803] | const[17502208] | globalThis | str?flags=0x0 idx=3 | const[0dc20304] | OP_86() | const[76021765] | OP_f2() | str?flags=0x7 idx=0 | load[auxd203] | PUSH_C() | load[64] | PUSH_D() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(PUSH_STR2()) | OP_2e() | !(PUSH_STR2()) | OP_2e() | META_OP6C() | objlit[fileUploadService](LOAD_61()).upload | PUSH_STR2() | desc-tpl | !(PUSH_STR2()) | OP_2e() | objlit[integrityProvider](LOAD_61()).prepare | objlit[session](LOAD_61()) | desc-tpl | !(PUSH_STR2()) | OP_2e() | LOAD_61() | LOAD_61() | call22(LOAD_61(); LOAD_61(), objlit[content](PUSH_STR2()), undefined, undefined, undefined) | desc-tpl | desc-tpl | objlit[baseUrl](objlit[session](LOAD_61())).[wk:0x13a] | undefined.[wk:0x16d] | undefined.[wk:0x16e] | EQ_STRICT() | DECL_SLOT() | DECL_SLOT() | undefined | CLASS_DECL() | CLASS_DECL() | OP_ee() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | undefined | OP_2f() | desc-tpl | PUSH_STR2().[wk:0x162] | OP_50().[wk:0x171] | OP_50().[wk:0x172] | OP_50().[wk:0x161] | OP_50().[wk:0x173] | v06 | objlit[onEntityReferences](LOAD_61()) | v06 | objlit[onReasoning](LOAD_61()) | v06 | desc-tpl | CLASS_DECL() | PUSH_STR2() | OP_1c() | OP_2b() | OP_2b() | OP_44() | OP_36() | const[00010001] | num[17170433] | globalThis | str?flags=0x0 idx=1 | OP_69()
+  // stack@INIT-END: OP_a1() | const[0030c803] | const[0130da03] | const[0220dc03] | const[0330de03] | const[0430e603] | const[0530e803] | const[0630ea03] | const[0770ec03] | const[0870ee03] | const[0920b603] | PUSH_B() | OP_60() | PUSH_B() | desc-tpl | TRY_REGION() | OP30() | OP_bc() | str?flags=0x8 idx=14 | str?flags=0x2 idx=9 | v06 | PUSH_D() | OP_c0() | str?flags=0x9 idx=212 | load[auxc603] | num[84134412] | str?flags=0x3 idx=12 | const[03d00307] | OP_d8() | str?flags=0xa idx=13 | PUSH_D() | load[auxf803] | const[17502208] | globalThis | str?flags=0x0 idx=3 | const[0dc20304] | OP_86() | const[76021765] | OP_f2() | str?flags=0x7 idx=0 | load[auxd203] | PUSH_C() | load[64] | PUSH_D() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | !(PUSH_STR2()) | OP_2e() | !(PUSH_STR2()) | OP_2e() | META_OP6C() | objlit[fileUploadService](LOAD_61()).upload | PUSH_STR2() | desc-tpl | !(PUSH_STR2()) | OP_2e() | objlit[integrityProvider](LOAD_61()).prepare | objlit[session](LOAD_61()) | desc-tpl | !(PUSH_STR2()) | OP_2e() | LOAD_61() | LOAD_61() | call22(LOAD_61(); LOAD_61(), objlit[content](PUSH_STR2()), undefined, undefined, undefined) | desc-tpl | desc-tpl | objlit[baseUrl](objlit[session](LOAD_61())).[wk:0x13a] | undefined.[wk:0x16d] | undefined.[wk:0x16e] | EQ_STRICT() | DECL_SLOT() | DECL_SLOT() | undefined | CLASS_DECL() | CLASS_DECL() | OP_ee() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | undefined | OP_2f() | desc-tpl | PUSH_STR2().[wk:0x162] | OP_50().[wk:0x171] | OP_50().[wk:0x172] | OP_50().[wk:0x161] | OP_50().[wk:0x173] | v06 | objlit[onEntityReferences](LOAD_61()) | v06 | objlit[onReasoning](LOAD_61()) | v06 | desc-tpl | CLASS_DECL() | PUSH_STR2() | OP_1c() | OP_2b() | OP_2b() | META_RECORD44() | OP_36() | const[00010001] | num[17170433] | globalThis | str?flags=0x0 idx=1 | OP_69()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -935,12 +935,12 @@
   …(pad)
   // discard(?.createChatGPTDeviceIntegrityProvider)
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x08 PUSH_C [~]
   // op 0x11 DUP [~]
   // op 0x69 OP_69 [?]
-  // stack@INIT-END: ?.createChatGPTDeviceIntegrityProvider | const[00010201] | v06 | const[b6030001] | OP_be() | PUSH_C() | OP_69()
+  // stack@INIT-END: ?.createChatGPTDeviceIntegrityProvider | const[00010201] | v06 | const[b6030001] | PUSH_I8() | PUSH_C() | OP_69()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)
@@ -973,7 +973,7 @@
   // op 0xbb OP_bb [?]
   // op 0x08 PUSH_C [~]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x07 PUSH_B [~]
   …(pad)
@@ -1085,7 +1085,7 @@
   // op 0xef OP_ef [?]
   // discard(OP_ef())
   // discard(PUSH_STR2())
-  // stack@INIT-END: ?.createChatGPTDeviceIntegrityProvider | load[ca] | str?flags=0x5 idx=8 | desc-tpl | load[auxcc03] | v06 | load[ea] | str?flags=0x7 idx=13 | PUSH_B() | OP_d8() | str?flags=0x9 idx=12 | PUSH_E() | load[f8] | str?flags=0xb idx=0 | PUSH_C() | load[aux680e].connect | objlit[path](param[0]) | desc-tpl | OP_50().[wk:0x179] | OP_1c() | OP_7d() | const[0301050c] | OP_bb() | PUSH_C() | const[16778172] | OP_be() | str?flags=0x0 idx=48 | PATCH_REF_LOAD() | PUSH_B() | str?flags=0xce idx=3 | PUSH_EXPORTS() | 'c' | num[50578952] | load[ca] | str?flags=0x4 idx=8 | PATCH_REF_LOAD() | load[ea] | str?flags=0x7 idx=12 | PUSH_C() | OP_d8() | str?flags=0xa idx=12 | desc-tpl | META_OP6C() | OP_6f() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | OP_A8() | OP_2f()
+  // stack@INIT-END: ?.createChatGPTDeviceIntegrityProvider | load[ca] | str?flags=0x5 idx=8 | desc-tpl | load[auxcc03] | v06 | load[ea] | str?flags=0x7 idx=13 | PUSH_B() | OP_d8() | str?flags=0x9 idx=12 | PUSH_E() | load[f8] | str?flags=0xb idx=0 | PUSH_C() | load[aux680e].connect | objlit[path](param[0]) | desc-tpl | OP_50().[wk:0x179] | OP_1c() | OP_7d() | const[0301050c] | OP_bb() | PUSH_C() | const[16778172] | PUSH_I8() | str?flags=0x0 idx=48 | PATCH_REF_LOAD() | PUSH_B() | str?flags=0xce idx=3 | PUSH_EXPORTS() | 'c' | num[50578952] | load[ca] | str?flags=0x4 idx=8 | PATCH_REF_LOAD() | load[ea] | str?flags=0x7 idx=12 | PUSH_C() | OP_d8() | str?flags=0xa idx=12 | desc-tpl | META_OP6C() | OP_6f() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | OP_A8() | OP_2f()
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xcc(?)
   // op 0x6f OP_6f [?]
@@ -1319,7 +1319,7 @@
   // op 0xb2 OP_b2 [?]
   // op 0x49 OP_49 [?]
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
@@ -1353,7 +1353,7 @@
   // trailer 0xae
   …(pad)
   // op 0x49 OP_49 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xea OP_ea [?]
   // trailer 0xae
   jcc-0xeb → @11866
@@ -1375,7 +1375,7 @@
 
   // ---- FUNCTION-UNIT: 'createChatGPTDirectResponseClient' ----
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x08 PUSH_C [~]
   …(pad)
@@ -1462,7 +1462,7 @@
   // ---- FUNCTION-UNIT: 'createChatGPTDirectResponseClient' ----
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x10 OP10 [?]
   // op 0x11 DUP [~]
   // op 0x08 PUSH_C [~]
@@ -1594,7 +1594,7 @@
 
   // ---- FUNCTION-UNIT: 'createChatGPTDirectResponseClient' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   …(pad)
@@ -1795,7 +1795,7 @@
   // discard(OP_1b()())
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.service (seq 0) = param[0];  // PUSH_THIS()
-  // stack@INIT-END: str?flags=0xcb idx=1 | OP_62() | num[50594308] | v06 | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x4 idx=2 | const[00ea0320] | OP_f6() | str?flags=0x26 idx=1 | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | CLOSURE_CTX_A() | param[0] | OP_2e() | objlit[conversationApiClient](PUSH_C9()).getModels | desc-tpl | param[1] | OP_6f() | CLOSURE_CTX_C() | PUSH_C8() | OP_2f() | OP_44() | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | OP_0f() | load[auxf003] | call23(?) | str?flags=0x2 idx=13 | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | OP_2e() | v06 | objlit[conversationId](param[0]) | OP_2e() | objlit[networkClient](PUSH_C8()).requestJson | desc-tpl | desc-tpl | const[409].[wk:0x17b] | LOCAL_OP2().builtin#92 | param[1] | EQ_STRICT() | LOAD_61() | objlit[kind](undefined) | objlit[statusCode](undefined) | OP_49() | OP_44() | num[243201] | const[00c60308] | OP_ea() | OP_2f() | desc-tpl | objlit[turnstile](param[0]) | objlit[proofofwork](param[0]) | objlit[so](param[0]) | push3.some(local[0]).[wk:0x12b] | OP_79() | v06 | const[00010001] | str?flags=0x0 idx=0 | globalThis | fn:'createChatGPTDirectResponseClient' | OP30() | OP_be() | OP_87() | fn:'createChatGPTDirectResponseClient' | TRY_REGION() | OP30() | OP_be() | OP10() | DUP() | load[auxc603] | PUSH_C() | load[auxc403] | PUSH_B() | load[aux6404] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | EQ_STRICT() | PUSH_STR2().test(undefined) | OP_2f() | CLOSURE_CTX_A() | objlit[assistantResponseModelSlug](PUSH_STR2()) | EQ_STRICT() | objlit[model](param[0]) | objlit[Sol](objlit[AssistantResponseModel](PUSH_STR2())) | OP_53().[wk:0x5e003a02] | OP_94() | const[023a008d] | const[020e4206] | const[00010001] | num[17301506] | PUSH_WK2() | fn:'createChatGPTDirectResponseClient' | OP30() | OP_7a() | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | OP_ff() | globalThis | OP_ea() | OP_2f() | fn:'createChatGPTDirectResponseClient' | OP_be() | const[00c00301] | OP30() | desc-tpl | const[106].[wk:0x1c3] | v06 | objlit[conversationId](param[0]) | desc-tpl | const[453].[wk:0x18f].[wk:0x1c6] | !(PUSH_WK1()).[wk:0x1c7] | desc-tpl | desc-tpl | const[456].[wk:0x15d].[wk:0x1c9] | globalThis | OP_ea() | desc-tpl | const[458].[wk:0x1cb] | param[1] | push1.[wk:0x1cc] | desc-tpl.[wk:0x1cc].[wk:0x157] | OP_ef().[wk:0x138] | globalThis | OP_ea() | desc-tpl | desc-tpl | OP_5e().map(local[0]).[wk:0x15a].[wk:0x1cf] | push1.[wk:0x154] | PUSH_EXPORTS().[wk:0x1b6] | OP_d5().[wk:0x1d0] | OP_1c() | OP_d5() | OP_3f() | OP_2b() | call21(?) | PUSH_C() | push7206 | OP_2b() | OP_40() | const[03000071] | num[65536] | OP_40() | const[040000ac] | num[16777220] | desc-tpl | const[477].builtin#92(PUSH_C7()).[wk:0x1de] | const[479].[wk:0x1cb] | objlit[height](v06).[wk:0x1e0] | objlit[size](PUSH_THIS()).[wk:0x1e2] | META_OP6D() | OP_40() | const[020000d0] | const[03000001] | desc-tpl | PUSH_C7().[wk:0x138] | objlit[mimeType](PUSH_THIS()).[wk:0x1e4] | objlit[builtin#54](PUSH_THIS()).[wk:0x36] | fn:'createChatGPTDirectResponseClient' | OP_ba() | str?flags=0x2 idx=13 | const[d3aeeb2f] | OP_bf() | param[1] | fn:'createChatGPTDirectResponseClient' | str?flags=0x2 idx=13 | OP_aa() | CLOSURE_CTX_B() | objlit[ServiceError](objlit[OAINetworkResultKind](PUSH_STR2())) | objlit[statusCode](param[0]) | OP_aa() | CLOSURE_CTX_B() | objlit[NetworkError](objlit[OAINetworkResultKind](PUSH_STR2())) | v06 | fn:'createChatGPTDirectResponseClient'.includes(const[396]).createChatGPTDeviceIntegrityProvider
+  // stack@INIT-END: str?flags=0xcb idx=1 | OP_62() | num[50594308] | v06 | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | str?flags=0x4 idx=2 | const[00ea0320] | OP_f6() | str?flags=0x26 idx=1 | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | CLOSURE_CTX_A() | param[0] | OP_2e() | objlit[conversationApiClient](PUSH_C9()).getModels | desc-tpl | param[1] | OP_6f() | CLOSURE_CTX_C() | PUSH_C8() | OP_2f() | META_RECORD44() | PUSH_WK2() | str?flags=0x0 idx=1 | str?flags=0x1 idx=0 | 'require' | OP_0f() | load[auxf003] | call23(?) | str?flags=0x2 idx=13 | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | OP_2e() | v06 | objlit[conversationId](param[0]) | OP_2e() | objlit[networkClient](PUSH_C8()).requestJson | desc-tpl | desc-tpl | const[409].[wk:0x17b] | LOCAL_OP2().builtin#92 | param[1] | EQ_STRICT() | LOAD_61() | objlit[kind](undefined) | objlit[statusCode](undefined) | OP_49() | META_RECORD44() | num[243201] | const[00c60308] | OP_ea() | OP_2f() | desc-tpl | objlit[turnstile](param[0]) | objlit[proofofwork](param[0]) | objlit[so](param[0]) | push3.some(local[0]).[wk:0x12b] | OP_79() | v06 | const[00010001] | str?flags=0x0 idx=0 | globalThis | fn:'createChatGPTDirectResponseClient' | OP30() | PUSH_I8() | OP_87() | fn:'createChatGPTDirectResponseClient' | TRY_REGION() | OP30() | PUSH_I8() | OP10() | DUP() | load[auxc603] | PUSH_C() | load[auxc403] | PUSH_B() | load[aux6404] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | EQ_STRICT() | PUSH_STR2().test(undefined) | OP_2f() | CLOSURE_CTX_A() | objlit[assistantResponseModelSlug](PUSH_STR2()) | EQ_STRICT() | objlit[model](param[0]) | objlit[Sol](objlit[AssistantResponseModel](PUSH_STR2())) | OP_53().[wk:0x5e003a02] | OP_94() | const[023a008d] | const[020e4206] | const[00010001] | num[17301506] | PUSH_WK2() | fn:'createChatGPTDirectResponseClient' | OP30() | OP_7a() | PUSH_C() | v06 | pair(OP_ff(), desc-tpl) | … | … | OP_ff() | globalThis | OP_ea() | OP_2f() | fn:'createChatGPTDirectResponseClient' | PUSH_I8() | const[00c00301] | OP30() | desc-tpl | const[106].[wk:0x1c3] | v06 | objlit[conversationId](param[0]) | desc-tpl | const[453].[wk:0x18f].[wk:0x1c6] | !(PUSH_WK1()).[wk:0x1c7] | desc-tpl | desc-tpl | const[456].[wk:0x15d].[wk:0x1c9] | globalThis | OP_ea() | desc-tpl | const[458].[wk:0x1cb] | param[1] | push1.[wk:0x1cc] | desc-tpl.[wk:0x1cc].[wk:0x157] | OP_ef().[wk:0x138] | globalThis | OP_ea() | desc-tpl | desc-tpl | OP_5e().map(local[0]).[wk:0x15a].[wk:0x1cf] | push1.[wk:0x154] | PUSH_EXPORTS().[wk:0x1b6] | OP_d5().[wk:0x1d0] | OP_1c() | OP_d5() | OP_3f() | OP_2b() | call21(?) | PUSH_C() | push7206 | OP_2b() | OP_40() | const[03000071] | num[65536] | OP_40() | const[040000ac] | num[16777220] | desc-tpl | const[477].builtin#92(PUSH_C7()).[wk:0x1de] | const[479].[wk:0x1cb] | objlit[height](v06).[wk:0x1e0] | objlit[size](PUSH_THIS()).[wk:0x1e2] | META_OP6D() | OP_40() | const[020000d0] | const[03000001] | desc-tpl | PUSH_C7().[wk:0x138] | objlit[mimeType](PUSH_THIS()).[wk:0x1e4] | objlit[builtin#54](PUSH_THIS()).[wk:0x36] | fn:'createChatGPTDirectResponseClient' | OP_ba() | str?flags=0x2 idx=13 | const[d3aeeb2f] | OP_bf() | param[1] | fn:'createChatGPTDirectResponseClient' | str?flags=0x2 idx=13 | OP_aa() | CLOSURE_CTX_B() | objlit[ServiceError](objlit[OAINetworkResultKind](PUSH_STR2())) | objlit[statusCode](param[0]) | OP_aa() | CLOSURE_CTX_B() | objlit[NetworkError](objlit[OAINetworkResultKind](PUSH_STR2())) | v06 | fn:'createChatGPTDirectResponseClient'.includes(const[396]).createChatGPTDeviceIntegrityProvider
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x3a OP_3a [?]
@@ -1813,7 +1813,7 @@
   // op 0x50 OP_50 [?]
   // trailer 0xae
   …(pad)
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // trailer 0xae
   …(pad)
   // discard(str?flags=0xf7 idx=2)
@@ -1853,7 +1853,7 @@
   // op 0x2f OP_2f [?]
   // op 0xfc OP_fc [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @18448
   // op 0x64 DECL_SLOT [~]
   // op 0x68 PUSH_STR2 [~]
@@ -1870,7 +1870,7 @@
   // trailer 0xae
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0xc6 PUSH_THIS [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x68 PUSH_STR2 [~]
   // op 0x11 DUP [~]
   // trailer 0xae
@@ -1947,7 +1947,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0x75 OP_75 [?]
   // op 0x4c FN_PROLOGUE [~]
-  // stack@INIT-END: ?.createChatGPTDeviceIntegrityProvider | objlit[service](PUSH_THIS()).send | desc-tpl | CLOSURE_CTX_A() | f0(objlit[method](param[0])).[wk:0x17b] | objlit[path](param[0]).[wk:0x16f] | v06 | objlit[bodyJson](param[0]) | DUP() | DUP() | DUP() | DUP() | OP_2f() | str?flags=0xfd idx=2 | OP_2f() | const[68000041] | OP_fc() | f0(OP_be()) | DECL_SLOT() | objlit[getDeviceIntegrityService](PUSH_STR2()) | EQ_STRICT() | DUP() | param[0] | desc-tpl | DUP() | str?flags=0x91 idx=3 | CLOSURE_CTX_B() | OP_dc() | str?flags=0x13 idx=13 | PUSH_C() | load[aux6401] | DECL_SLOT() | EQ_STRICT() | OP_2f() | OP_9a() | num[1124089602].createChatGPTDirectResponseClient | globalThis | str?flags=0x0 idx=3 | load[dc] | 'c' | const[0dc60302] | load[b8] | str?flags=0x0 idx=13 | DECL_SLOT() | OP_ac() | param[0].toLowerCase() | OP_33().test(undefined) | FN_PROLOGUE()
+  // stack@INIT-END: ?.createChatGPTDeviceIntegrityProvider | objlit[service](PUSH_THIS()).send | desc-tpl | CLOSURE_CTX_A() | f0(objlit[method](param[0])).[wk:0x17b] | objlit[path](param[0]).[wk:0x16f] | v06 | objlit[bodyJson](param[0]) | DUP() | DUP() | DUP() | DUP() | OP_2f() | str?flags=0xfd idx=2 | OP_2f() | const[68000041] | OP_fc() | f0(PUSH_I8()) | DECL_SLOT() | objlit[getDeviceIntegrityService](PUSH_STR2()) | EQ_STRICT() | DUP() | param[0] | desc-tpl | DUP() | str?flags=0x91 idx=3 | CLOSURE_CTX_B() | OP_dc() | str?flags=0x13 idx=13 | PUSH_C() | load[aux6401] | DECL_SLOT() | EQ_STRICT() | OP_2f() | OP_9a() | num[1124089602].createChatGPTDirectResponseClient | globalThis | str?flags=0x0 idx=3 | load[dc] | 'c' | const[0dc60302] | load[b8] | str?flags=0x0 idx=13 | DECL_SLOT() | OP_ac() | param[0].toLowerCase() | OP_33().test(undefined) | FN_PROLOGUE()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

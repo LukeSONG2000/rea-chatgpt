@@ -71,13 +71,13 @@
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x60 OP_60 [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // trailer 0xae
   …(pad)
   // discard(str?flags=0xf idx=1.builtin#263())
   // op 0xde CLOSURE_CTX_A [~]
-  // stack@INIT-END: call23(?; ?, OP_44()) | CLOSURE_CTX_A().onTimeout()
+  // stack@INIT-END: call23(?; ?, META_RECORD44()) | CLOSURE_CTX_A().onTimeout()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x4b OP_4b [?]

@@ -61,8 +61,8 @@
   local[16] = f0(const[268]);
   local[17] = f0(const[269]);
   local[18] = objlit[Device](undefined).getDisplayHeight();
-  // op 0xbe OP_be [?]
-  local[19] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[19] = PUSH_I8();
   // op 0xb8 PUSH_WK2 [~]
   local[20] = PUSH_WK2();
   // op 0xc0 OP_c0 [?]
@@ -109,8 +109,8 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.PullToRefresh (seq 3) = undefined;  // PUSH_EXPORTS()
   // op 0x11 DUP [~]
-  // op 0xbe OP_be [?]
-  local[28] = call21(globalThis.[wk:0x122]; OP_be().[wk:0x123]);
+  // op 0xbe PUSH_I8 [~]
+  local[28] = call21(globalThis.[wk:0x122]; PUSH_I8().[wk:0x123]);
   // op 0x11 DUP [~]
   // op 0xc0 OP_c0 [?]
   // op 0xc0 OP_c0 [?]
@@ -260,13 +260,13 @@
   // op 0x10 OP10 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x68 PUSH_STR2 [~]
   // discard(objlit[refContainer](load[aux6800]).setAttribute(const[337], PUSH_STR2()))
   // op 0x68 PUSH_STR2 [~]
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: LOCAL_OP2() | OP10() | PUSH_C() | OP_be() | str?flags=0xd idx=192 | objlit[refFadeTop](PUSH_STR2()).setAttribute(const[337], PUSH_STR2())
+  // stack@INIT-END: LOCAL_OP2() | OP10() | PUSH_C() | PUSH_I8() | str?flags=0xd idx=192 | objlit[refFadeTop](PUSH_STR2()).setAttribute(const[337], PUSH_STR2())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xa1 OP_a1 [?]
@@ -425,7 +425,7 @@
   // stack@INIT-END: OP_52() | META_OP6C() | PUSH_STR2().endRender() | PUSH_STR2().renderUnnamedSlotWithStringKey(PUSH_THIS())
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x75 OP_75 [?]
   …(pad)
@@ -462,7 +462,7 @@
   // stack@INIT-END: str?flags=0x33 idx=15 | OP_75().valdi_core/src/Style | OP_c0() | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0xe6 OP_e6 [?]
   // op 0x1d OP_1d [?]
   // op 0x11 DUP [~]
@@ -486,7 +486,7 @@
   // op 0x68 PUSH_STR2 [~]
   // discard(PUSH_STR2().endComponent())
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_44() | OP_e6() | OP_1d() | DUP() | load[auxc403] | PUSH_B() | load[aux08ca] | objlit[stage](objlit[state](PUSH_THIS())) | PUSH_STR2().endRender()
+  // stack@INIT-END: META_RECORD44() | OP_e6() | OP_1d() | DUP() | load[auxc403] | PUSH_B() | load[aux08ca] | objlit[stage](objlit[state](PUSH_THIS())) | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xea OP_ea [?]

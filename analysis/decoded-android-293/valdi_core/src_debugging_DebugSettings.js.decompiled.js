@@ -115,7 +115,7 @@
   // stack@INIT-END: OP_17()().Unknown debug settings group:  | META_OP6C() | DECL_SLOT()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
@@ -130,7 +130,7 @@
   locop 0xca(OP_4a())
   // trailer 0xae
   jcc-0xeb → @1049
-  // stack@INIT-END: OP_44() | TRY_REGION() | TRY_REGION() | TRY_REGION() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | undefined
+  // stack@INIT-END: META_RECORD44() | TRY_REGION() | TRY_REGION() | TRY_REGION() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | undefined
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x11 DUP [~]
   locop 0xcb(call21(DUP(); ))

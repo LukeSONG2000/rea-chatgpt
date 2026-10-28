@@ -37,10 +37,10 @@
   locop 0xcc(OP_bf())
   // op 0xbf OP_bf [?]
   locop 0xcd(OP_bf())
-  // op 0xbe OP_be [?]
-  local[4] = OP_be();
-  // op 0xbe OP_be [?]
-  local[5] = OP_be();
+  // op 0xbe PUSH_I8 [~]
+  local[4] = PUSH_I8();
+  // op 0xbe PUSH_I8 [~]
+  local[5] = PUSH_I8();
   // op 0xbf OP_bf [?]
   local[6] = OP_bf();
   // op 0xd4 PUSH_EXPORTS [✓]
@@ -75,7 +75,7 @@
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   locop 0xca(pool[153].min(PUSH_STR2(), pool[153].max(globalThis, OP_a1())))
   // op 0xbf OP_bf [?]

@@ -382,7 +382,7 @@
   // op 0x81 OP_81 [?]
   // op 0x95 OP_95 [?]
   // op 0x3f OP_3f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xe6 OP_e6 [?]
   // op 0x3f OP_3f [?]
   …(pad)

@@ -214,8 +214,8 @@
   // op 0x3f OP_3f [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x3f OP_3f [?]
-  // op 0xbe OP_be [?]
-  locop 0xca(OP_be())
+  // op 0xbe PUSH_I8 [~]
+  locop 0xca(PUSH_I8())
   // op 0x3f OP_3f [?]
   // op 0x83 OP_83 [?]
   // op 0xc0 OP_c0 [?]
@@ -439,7 +439,7 @@
   // op 0x3f OP_3f [?]
   // op 0x60 OP_60 [?]
   // op 0x3f OP_3f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x8a OP_8a [?]
   // op 0x3f OP_3f [?]
   // op 0x39 OP_39 [?]

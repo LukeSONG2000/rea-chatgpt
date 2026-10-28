@@ -23,8 +23,8 @@
   EXPORTS.ATTACHMENT_ACCEPT_TYPES (seq 5) = …;  // …
   EXPORTS.mergePickedFiles (seq 6) = pair(PUSH_EXPORTS(), pair(PUSH_EXPORTS(), pair(PUSH_EXPORTS(), pair(PUSH_EXPORTS(), pair(PUSH_EXPORTS(), pair(PUSH_EXPORTS(), v06))))));  // PUSH_EXPORTS()
   // op 0xd4 PUSH_EXPORTS [✓]
-  // op 0xbe OP_be [?]
-  EXPORTS.MAX_PICKED_FILES (seq 7) = OP_be();  // PUSH_EXPORTS()
+  // op 0xbe PUSH_I8 [~]
+  EXPORTS.MAX_PICKED_FILES (seq 7) = PUSH_I8();  // PUSH_EXPORTS()
   // op 0xd4 PUSH_EXPORTS [✓]
   EXPORTS.MAX_PICKED_FILE_BYTES (seq 8) = const[00004001];  // PUSH_EXPORTS()
   // op 0xd4 PUSH_EXPORTS [✓]

@@ -386,8 +386,8 @@
 
   // ---- FUNCTION-UNIT: 'builtin#12290' ----
   // op 0x1c OP_1c [?]
-  // op 0x44 OP_44 [?]
-  // stack-tail: ?.builtin#263 | call25(const[0008cac6].roundRectTo; param[0], param[1], PUSH_EXPORTS(), OP_d5(), globalThis, globalThis).builtin#263 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1.builtin#263 | str?flags=0x0 idx=1.builtin#263 | fn:'builtin#262' | OP_e2() | 'exports' | str?flags=0x3 idx=1 | const[222209] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LT() | CLOSURE_CTX_A() | META_OP6C() | DUP() | PUSH_WK1() | CLOSURE_CTX_B() | param[0] | undefined | !(OP_f2()) | DUP() | PUSH_WK2() | CLOSURE_CTX_B() | param[0] | undefined | !(OP_f2()) | DUP() | OP_b9() | CLOSURE_CTX_B() | param[0] | undefined | !(OP_f2()) | DUP() | OP_ba() | CLOSURE_CTX_B() | param[0] | undefined | !(OP_f2()) | DUP() | OP_bb() | CLOSURE_CTX_B() | param[0] | undefined | !(OP_f2()) | DUP() | OP_bc() | CLOSURE_CTX_B() | param[0] | undefined | OP_44()
+  // op 0x44 META_RECORD44 [?]
+  // stack-tail: ?.builtin#263 | call25(const[0008cac6].roundRectTo; param[0], param[1], PUSH_EXPORTS(), OP_d5(), globalThis, globalThis).builtin#263 | str?flags=0x0 idx=1 | str?flags=0x0 idx=1.builtin#263 | str?flags=0x0 idx=1.builtin#263 | fn:'builtin#262' | OP_e2() | 'exports' | str?flags=0x3 idx=1 | const[222209] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | LT() | CLOSURE_CTX_A() | META_OP6C() | DUP() | PUSH_WK1() | CLOSURE_CTX_B() | param[0] | undefined | !(OP_f2()) | DUP() | PUSH_WK2() | CLOSURE_CTX_B() | param[0] | undefined | !(OP_f2()) | DUP() | OP_b9() | CLOSURE_CTX_B() | param[0] | undefined | !(OP_f2()) | DUP() | OP_ba() | CLOSURE_CTX_B() | param[0] | undefined | !(OP_f2()) | DUP() | OP_bb() | CLOSURE_CTX_B() | param[0] | undefined | !(OP_f2()) | DUP() | OP_bc() | CLOSURE_CTX_B() | param[0] | undefined | META_RECORD44()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

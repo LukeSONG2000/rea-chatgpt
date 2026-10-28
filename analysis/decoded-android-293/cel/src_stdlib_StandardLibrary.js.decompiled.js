@@ -11,7 +11,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
@@ -49,7 +49,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.sizeValue (seq 3) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: STR_OP() | v06 | const[00030a03] | v06 | load[auxb003] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | OP_be() | const[245760] | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | str?flags=0x0 idx=8 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | PUSH_EXPORTS() | desc-tpl | LOAD_M3().[wk:0xeb] | PUSH_C9().[wk:0xec] | LOAD_M3().[wk:0xed]
+  // stack@INIT-END: STR_OP() | v06 | const[00030a03] | v06 | load[auxb003] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | TRY_REGION() | PUSH_I8() | const[245760] | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | str?flags=0x0 idx=8 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | param[0] | PUSH_EXPORTS() | desc-tpl | LOAD_M3().[wk:0xeb] | PUSH_C9().[wk:0xec] | LOAD_M3().[wk:0xed]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x18 TRIPLE_OP [?]

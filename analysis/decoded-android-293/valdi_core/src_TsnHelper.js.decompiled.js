@@ -195,7 +195,7 @@
   // op 0x2f OP_2f [?]
   // trailer 0xae
   // op 0x77 OP_77 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x81 OP_81 [?]
   …(pad)
@@ -212,7 +212,7 @@
   // op 0x77 OP_77 [?]
   // op 0x08 PUSH_C [~]
   …(pad)
-  // stack-tail: str?flags=0x12 idx=13 | LOCAL_OP2() | const[235405336].builtin#263 | const[02010401] | const[880403b8] | str?flags=0x0 idx=1 | str?flags=0x2 idx=0 | str?flags=0x4 idx=0 | str?flags=0x0 idx=3 | const[00006400] | EQ_STRICT() | OP_ee() | pool[186].builtin#128 | OP_2f() | objlit[builtin#105](v06) | pool[186].builtin#128 | objlit[builtin#105](v06) | pool[186].builtin#128 | desc-tpl | fn:'builtin#262' | str?flags=0x34 idx=3 | OP_3f() | const[5111809] | globalThis | OP_ab() | call25(OP_4a().call; param[0]) | OP_77() | OP_be() | OP_81() | num[243201] | const[00ba0302] | OP_ab() | call25(OP_4a().call; param[0]) | OP_ab() | call23(CLOSURE_CTX_A(); OP_4a().call(param[0])) | OP_77() | PUSH_C()
+  // stack-tail: str?flags=0x12 idx=13 | LOCAL_OP2() | const[235405336].builtin#263 | const[02010401] | const[880403b8] | str?flags=0x0 idx=1 | str?flags=0x2 idx=0 | str?flags=0x4 idx=0 | str?flags=0x0 idx=3 | const[00006400] | EQ_STRICT() | OP_ee() | pool[186].builtin#128 | OP_2f() | objlit[builtin#105](v06) | pool[186].builtin#128 | objlit[builtin#105](v06) | pool[186].builtin#128 | desc-tpl | fn:'builtin#262' | str?flags=0x34 idx=3 | OP_3f() | const[5111809] | globalThis | OP_ab() | call25(OP_4a().call; param[0]) | OP_77() | PUSH_I8() | OP_81() | num[243201] | const[00ba0302] | OP_ab() | call25(OP_4a().call; param[0]) | OP_ab() | call23(CLOSURE_CTX_A(); OP_4a().call(param[0])) | OP_77() | PUSH_C()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

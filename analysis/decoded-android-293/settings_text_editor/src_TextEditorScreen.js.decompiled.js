@@ -574,7 +574,7 @@
   // stack@INIT-END: OP_5c() | local[0] | num[33677312] | CLOSURE_CTX_C().makeComponentPrototype | load[auxd003] | DECL_SLOT() | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x30 OP30 [?]
   // op 0x64 DECL_SLOT [~]
@@ -598,7 +598,7 @@
   // discard(PUSH_STR2().setAttributeStyle(const[362], objlit[suggestions](objlit[appearance](PUSH_C7()))))
   // discard(undefined.map(local[0]))
   // op 0x68 PUSH_STR2 [~]
-  // stack@INIT-END: OP_44() | num[17020418] | OP30() | const[62390570] | const[0dd2030e] | load[aux08cb] | DECL_SLOT() | CLOSURE_CTX_A() | PUSH_STR2().endRender()
+  // stack@INIT-END: META_RECORD44() | num[17020418] | OP30() | const[62390570] | const[0dd2030e] | load[aux08cb] | DECL_SLOT() | CLOSURE_CTX_A() | PUSH_STR2().endRender()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x75 OP_75 [?]
@@ -792,7 +792,7 @@
   // op 0x82 OP_82 [?]
   …(pad)
   // op 0x52 OP_52 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // discard(num[0])
 
   // ---- FUNCTION-UNIT: 'jsx' ----

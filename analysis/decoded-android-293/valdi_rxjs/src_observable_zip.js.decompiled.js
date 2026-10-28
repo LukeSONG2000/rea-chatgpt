@@ -28,7 +28,7 @@
   // trailer 0xae
   // op 0x32 OP_32 [?]
   // discard(OP_32())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xd6 OP_d6 [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -84,7 +84,7 @@
   …(pad)
   // op 0xba OP_ba [?]
   …(pad)
-  // stack@INIT-END: objlit[builtin#262](?) | OP_be() | const[84131853] | load[auxba03] | num[243213] | load[auxbc03] | OP_d6() | DECL_SLOT() | DECL_SLOT() | OP_4e() | num[237120256].builtin#262 | PUSH_EXPORTS() | str?flags=0x0 idx=13 | const[0db80300] | load[be] | 'zip' | DECL_SLOT() | DECL_SLOT() | CLASS_DECL() | META_OP6C() | META_OP6C() | objlit[innerFrom](PUSH_STR2()) | f0(OP_4a()).subscribe | objlit[createOperatorSubscriber](PUSH_STR2()) | param[0] | CLASS_DECL() | OP_54() | num[2315264430] | OP_7d() | const[00000400].builtin#262 | PUSH_E() | OP_ba() | str?flags=0x0 idx=9 | const[09071169] | const[00116900]
+  // stack@INIT-END: objlit[builtin#262](?) | PUSH_I8() | const[84131853] | load[auxba03] | num[243213] | load[auxbc03] | OP_d6() | DECL_SLOT() | DECL_SLOT() | OP_4e() | num[237120256].builtin#262 | PUSH_EXPORTS() | str?flags=0x0 idx=13 | const[0db80300] | load[be] | 'zip' | DECL_SLOT() | DECL_SLOT() | CLASS_DECL() | META_OP6C() | META_OP6C() | objlit[innerFrom](PUSH_STR2()) | f0(OP_4a()).subscribe | objlit[createOperatorSubscriber](PUSH_STR2()) | param[0] | CLASS_DECL() | OP_54() | num[2315264430] | OP_7d() | const[00000400].builtin#262 | PUSH_E() | OP_ba() | str?flags=0x0 idx=9 | const[09071169] | const[00116900]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   …(pad)

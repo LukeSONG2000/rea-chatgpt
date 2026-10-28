@@ -39,7 +39,7 @@
   // op 0x61 LOAD_61 [?]
   // op 0x05 PATCH_REF_LOAD [~]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @361
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0x68 PUSH_STR2 [~]
@@ -60,12 +60,12 @@
   // discard(call25(?).builtin#262.createNativeEditor)
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @631
   jmp → @632
   // trailer 0xae
   …(pad)
-  // stack-tail: OP_1e() | OP_7c() | const[00010303] | LOAD_61() | str?flags=0x0 idx=1 | str?flags=0x0 idx=13 | PATCH_REF_LOAD() | objlit[isVersionAtLeast](load[aux6800]) | f0(OP_be()) | CLOSURE_CTX_B() | param[0] | OP_2e() | fn:'builtin#262' | call23(objlit[openSynchronousEditor](num[157709]); param[0], local[0]) | str?flags=0xe idx=4 | CLOSURE_CTX_B().[wk:0xed] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(OP_be()) | call25(objlit[onSynchronizationChange](param[0]); v06.[wk:0xee], v06) | str?flags=0xf idx=6 | call21(?) | num[0] | const[0]
+  // stack-tail: OP_1e() | OP_7c() | const[00010303] | LOAD_61() | str?flags=0x0 idx=1 | str?flags=0x0 idx=13 | PATCH_REF_LOAD() | objlit[isVersionAtLeast](load[aux6800]) | f0(PUSH_I8()) | CLOSURE_CTX_B() | param[0] | OP_2e() | fn:'builtin#262' | call23(objlit[openSynchronousEditor](num[157709]); param[0], local[0]) | str?flags=0xe idx=4 | CLOSURE_CTX_B().[wk:0xed] | objlit[isVersionAtLeast](PUSH_STR2()) | f0(PUSH_I8()) | call25(objlit[onSynchronizationChange](param[0]); v06.[wk:0xee], v06) | str?flags=0xf idx=6 | call21(?) | num[0] | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

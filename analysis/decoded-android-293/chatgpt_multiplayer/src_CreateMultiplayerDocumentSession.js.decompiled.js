@@ -118,7 +118,7 @@
   // op 0x14 OP_14 [?]
   // op 0xdc OP_dc [?]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0xdf CLOSURE_CTX_B [~]
@@ -175,9 +175,9 @@
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @1442
-  // stack@INIT-END: fn:'./MultiplayerSessionTypes' | TRY_REGION() | LOCAL_OP2() | str?flags=0x6 idx=13 | OP_0f() | load[aux6401] | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(OP_be()))
+  // stack@INIT-END: fn:'./MultiplayerSessionTypes' | TRY_REGION() | LOCAL_OP2() | str?flags=0x6 idx=13 | OP_0f() | load[aux6401] | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | !(f0(PUSH_I8()))
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xca(objlit[apiService](param[0]))
   // trailer 0xae
@@ -597,7 +597,7 @@
   // op 0x68 PUSH_STR2 [~]
   // op 0xdf CLOSURE_CTX_B [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   jcc-0xeb → @6800
   // op 0xdf CLOSURE_CTX_B [~]
   jmp → @6801
@@ -631,7 +631,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x93 idx=1)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x05 PATCH_REF_LOAD [~]
   // op 0x64 DECL_SLOT [~]
@@ -737,7 +737,7 @@
   // op 0x87 OP_87 [?]
   // op 0xc8 PUSH_C8 [~]
   // discard(objlit[connections](PUSH_C8()).clear())
-  // stack@INIT-END: call25(?../OAIMultiplayerConnectionService.builtin#9; param[0])../OAIMultiplayerConnectionService | OP_be() | str?flags=0x5 idx=112 | const[0130c803] | const[0370ce03] | const[04701000] | const[40c60308] | load[auxbe03] | const[184798221] | load[auxc003] | PATCH_REF_LOAD() | load[auxc203] | v06 | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | META_OP6C() | META_OP6C() | DECL_SLOT() | undefined.connect | param[0] | param[1] | desc-tpl | call25(v06.[wk:0x15c]; PUSH_EXPORTS().[wk:0x113], OP_50().[wk:0x15d], OP_50().[wk:0x15e]) | OP_ac() | OP_2f() | OP_ac() | call25(undefined.connect; param[0], param[1]) | objlit[withGlobalNativeRefs](PUSH_STR2()) | call25(f0(local[0]).connect; param[0], param[1]) | str?flags=0x96 idx=1 | OP_3a() | OP_49() | num[121769655] | const[00010001] | str?flags=0x1 idx=0 | globalThis | call23(str?flags=0x0 idx=1; objlit[openNativeMultiplayerSocket](call25('l'.fetch; param[0])../OAIMultiplayerConnectionService), param[0], PUSH_EXPORTS())../OAIMultiplayerConnectionService | PATCH_REF_LOAD() | call23(str?flags=0x68 idx=3.builtin#1; call21(DUP(); objlit[apiService](LOAD_61()), LOAD_61(), local[0])) | str?flags=0xa5 idx=1 | TRY_REGION() | const[00000000] | num[5308419] | PUSH_C8() | OP_87()
+  // stack@INIT-END: call25(?../OAIMultiplayerConnectionService.builtin#9; param[0])../OAIMultiplayerConnectionService | PUSH_I8() | str?flags=0x5 idx=112 | const[0130c803] | const[0370ce03] | const[04701000] | const[40c60308] | load[auxbe03] | const[184798221] | load[auxc003] | PATCH_REF_LOAD() | load[auxc203] | v06 | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | DECL_SLOT() | objlit[isVersionAtLeast](PUSH_STR2()) | META_OP6C() | META_OP6C() | DECL_SLOT() | undefined.connect | param[0] | param[1] | desc-tpl | call25(v06.[wk:0x15c]; PUSH_EXPORTS().[wk:0x113], OP_50().[wk:0x15d], OP_50().[wk:0x15e]) | OP_ac() | OP_2f() | OP_ac() | call25(undefined.connect; param[0], param[1]) | objlit[withGlobalNativeRefs](PUSH_STR2()) | call25(f0(local[0]).connect; param[0], param[1]) | str?flags=0x96 idx=1 | OP_3a() | OP_49() | num[121769655] | const[00010001] | str?flags=0x1 idx=0 | globalThis | call23(str?flags=0x0 idx=1; objlit[openNativeMultiplayerSocket](call25('l'.fetch; param[0])../OAIMultiplayerConnectionService), param[0], PUSH_EXPORTS())../OAIMultiplayerConnectionService | PATCH_REF_LOAD() | call23(str?flags=0x68 idx=3.builtin#1; call21(DUP(); objlit[apiService](LOAD_61()), LOAD_61(), local[0])) | str?flags=0xa5 idx=1 | TRY_REGION() | const[00000000] | num[5308419] | PUSH_C8() | OP_87()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   locop 0xcb(str?flags=0xa8 idx=1)

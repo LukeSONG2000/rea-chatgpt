@@ -203,10 +203,10 @@
   // op 0x64 DECL_SLOT [~]
   // op 0xc8 PUSH_C8 [~]
   locop 0xcb(PUSH_C8().peekCharCode())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @1583
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xaf EQ_STRICT [~]
   jcc-0xec → @1638
   // op 0xc8 PUSH_C8 [~]
@@ -266,17 +266,17 @@
   // op 0x11 DUP [~]
   // op 0x6d META_OP6D [?]
   // discard(META_OP6D())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xec → @2690
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xeb → @2690
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc7 PUSH_C7 [~]
   // op 0xc7 PUSH_C7 [~]
   // op 0xb7 PUSH_WK1 [~]
@@ -354,7 +354,7 @@
   …(pad)
   // op 0xc6 PUSH_THIS [~]
   EXPORTS.position (seq 0) = OP_49().builtin#263(PUSH_THIS().findLineEnd());  // OP_49().builtin#263
-  // stack@INIT-END: str?flags=0x11 idx=2 | META_OP6C() | EQ_STRICT() | DECL_SLOT() | !(PUSH_C8().isAtEnd()) | LT() | DECL_SLOT() | EQ_STRICT() | OP_ee() | str?flags=0x22 idx=9 | !(PUSH_C7().isAtEnd()) | param[0] | OP_be() | OP_be() | OP_be().builtin#263 | OP_92().builtin#263 | OP_A8()
+  // stack@INIT-END: str?flags=0x11 idx=2 | META_OP6C() | EQ_STRICT() | DECL_SLOT() | !(PUSH_C8().isAtEnd()) | LT() | DECL_SLOT() | EQ_STRICT() | OP_ee() | str?flags=0x22 idx=9 | !(PUSH_C7().isAtEnd()) | param[0] | PUSH_I8() | PUSH_I8() | PUSH_I8().builtin#263 | OP_92().builtin#263 | OP_A8()
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0x54 OP_54 [?]
@@ -373,12 +373,12 @@
   // trailer 0xae
   …(pad)
   // discard(const[02000000])
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xec → @4332
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // trailer 0xae
   …(pad)
@@ -408,7 +408,7 @@
   // op 0xc7 PUSH_C7 [~]
   // op 0xa8 OP_A8 [?]
   jcc-0xeb → @4895
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc7 PUSH_C7 [~]
   // op 0xb7 PUSH_WK1 [~]
   // op 0xa1 OP_a1 [?]
@@ -432,7 +432,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @5131
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc7 PUSH_C7 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
@@ -447,7 +447,7 @@
   // op 0x11 DUP [~]
   jcc-0xeb → @5262
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xc7 PUSH_C7 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
@@ -492,7 +492,7 @@
   …(pad)
   // op 0x86 OP_86 [?]
   …(pad)
-  // stack-tail: PUSH_C7().isAtLineEnd() | !(str?flags=0x53 idx=6).builtin#263 | OP_be() | OP_a9() | OP_a7() | LT() | pair(PUSH_C7(), OP_ea()) | OP_ee() | OP_A8() | OP_be() | objlit[text](PUSH_C7()).charCodeAt(OP_a1()) | OP_b1() | const[02df006e] | num[33673472] | OP10() | const[00b60300] | load[aux08cc] | DECL_SLOT() | DECL_SLOT() | LT() | PUSH_STR2().isWhitespace(objlit[text](PUSH_C8()).charCodeAt(undefined)) | OP_ee() | META_OP6C() | PUSH_STR2().isWhitespace(objlit[text](PUSH_C8()).charCodeAt(OP_a1())) | OP_ee() | call25(objlit[text](PUSH_C8()).slice; undefined, undefined) | OP_86() | const[02008b01] | num[0] | num[0]
+  // stack-tail: PUSH_C7().isAtLineEnd() | !(str?flags=0x53 idx=6).builtin#263 | PUSH_I8() | OP_a9() | OP_a7() | LT() | pair(PUSH_C7(), OP_ea()) | OP_ee() | OP_A8() | PUSH_I8() | objlit[text](PUSH_C7()).charCodeAt(OP_a1()) | OP_b1() | const[02df006e] | num[33673472] | OP10() | const[00b60300] | load[aux08cc] | DECL_SLOT() | DECL_SLOT() | LT() | PUSH_STR2().isWhitespace(objlit[text](PUSH_C8()).charCodeAt(undefined)) | OP_ee() | META_OP6C() | PUSH_STR2().isWhitespace(objlit[text](PUSH_C8()).charCodeAt(OP_a1())) | OP_ee() | call25(objlit[text](PUSH_C8()).slice; undefined, undefined) | OP_86() | const[02008b01] | num[0] | num[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

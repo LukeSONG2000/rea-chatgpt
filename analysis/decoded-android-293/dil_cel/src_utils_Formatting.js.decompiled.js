@@ -10,7 +10,7 @@
   // op 0x70 TRY_REGION [~]
   // op 0x70 TRY_REGION [~]
   // op 0x30 OP30 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xc0 OP_c0 [?]
   …(pad)
@@ -110,7 +110,7 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xc3 LOAD_M3 [~]
   EXPORTS.toNumber (seq 17) = LOAD_M3();  // PUSH_EXPORTS()
-  // stack@INIT-END: OP_94() | const[241697] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | OP30() | OP_be() | OP_c0() | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | str?flags=0x0 idx=12 | str?flags=0x0 idx=13 | str?flags=0x0 idx=14 | str?flags=0x0 idx=15 | str?flags=0x0 idx=16 | str?flags=0x0 idx=17 | str?flags=0x0 idx=18 | str?flags=0x0 idx=19 | str?flags=0x0 idx=20 | str?flags=0x0 idx=21 | str?flags=0x0 idx=22 | str?flags=0x0 idx=23 | str?flags=0x0 idx=24 | str?flags=0x0 idx=25 | str?flags=0x0 idx=26 | str?flags=0x0 idx=27 | str?flags=0x0 idx=28 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | desc-tpl | OP_b9().[wk:0x105] | OP_ba().[wk:0x106] | globalThis.[wk:0x107] | globalThis.[wk:0x108] | globalThis.[wk:0x109] | OP_b9().[wk:0x10a] | globalThis.[wk:0x10b] | globalThis.[wk:0x10c] | globalThis.[wk:0x10d] | OP_b9().[wk:0x10e] | OP_b9().[wk:0x10f] | OP_b9().[wk:0x110] | globalThis.[wk:0x111] | globalThis.[wk:0x112] | OP_b9().[wk:0x113] | globalThis.[wk:0x114] | globalThis.[wk:0x115] | globalThis.[wk:0x116] | globalThis.[wk:0x117] | globalThis.[wk:0x118] | globalThis.[wk:0x119]
+  // stack@INIT-END: OP_94() | const[241697] | const[00b20300] | const[00b40300] | const[00b60301] | TRY_REGION() | TRY_REGION() | OP30() | PUSH_I8() | OP_c0() | PATCH_REF_LOAD() | PUSH_B() | PUSH_THIS() | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | str?flags=0x0 idx=10 | str?flags=0x0 idx=11 | str?flags=0x0 idx=12 | str?flags=0x0 idx=13 | str?flags=0x0 idx=14 | str?flags=0x0 idx=15 | str?flags=0x0 idx=16 | str?flags=0x0 idx=17 | str?flags=0x0 idx=18 | str?flags=0x0 idx=19 | str?flags=0x0 idx=20 | str?flags=0x0 idx=21 | str?flags=0x0 idx=22 | str?flags=0x0 idx=23 | str?flags=0x0 idx=24 | str?flags=0x0 idx=25 | str?flags=0x0 idx=26 | str?flags=0x0 idx=27 | str?flags=0x0 idx=28 | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0] | desc-tpl | OP_b9().[wk:0x105] | OP_ba().[wk:0x106] | globalThis.[wk:0x107] | globalThis.[wk:0x108] | globalThis.[wk:0x109] | OP_b9().[wk:0x10a] | globalThis.[wk:0x10b] | globalThis.[wk:0x10c] | globalThis.[wk:0x10d] | OP_b9().[wk:0x10e] | OP_b9().[wk:0x10f] | OP_b9().[wk:0x110] | globalThis.[wk:0x111] | globalThis.[wk:0x112] | OP_b9().[wk:0x113] | globalThis.[wk:0x114] | globalThis.[wk:0x115] | globalThis.[wk:0x116] | globalThis.[wk:0x117] | globalThis.[wk:0x118] | globalThis.[wk:0x119]
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
   // op 0xe6 OP_e6 [?]
@@ -139,8 +139,8 @@
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0xf1 OP_f1 [?]
   // discard(OP_f1())
-  // op 0xbe OP_be [?]
-  locop 0xcc(pool[153].pow(OP_be(), undefined))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcc(pool[153].pow(PUSH_I8(), undefined))
   jcc-0xeb → @1172
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @1172
@@ -302,7 +302,7 @@
 
   // ---- FUNCTION-UNIT: 'CLF' ----
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x30 OP30 [?]
   local[3] = OP30();
@@ -333,9 +333,9 @@
   // trailer 0xae
   jcc-0xeb → @3090
   // op 0xc0 OP_c0 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x8f OP_8f [?]
-  locop 0xcd(pool[153].pow(OP_be(), OP_8f()))
+  locop 0xcd(pool[153].pow(PUSH_I8(), OP_8f()))
   // op 0xe0 CLOSURE_CTX_C [~]
   // op 0x5e OP_5e [?]
   jcc-0xeb → @3157
@@ -478,7 +478,7 @@
   // ---- FUNCTION-UNIT: 'CLF' ----
   // op 0xad OP_ad [?]
   jcc-0xeb → @4188
-  // stack@INIT-END: 'localeStringToNumber' | const[1728063204] | const[555819362] | call21(?) | call21(?) | call21(?) | call21(?) | call21(?) | call21(?) | OP_e6() | fn:'CLF' | OP_c0() | const[0030c203] | const[0130c403] | const[0230ce03] | CLASS_DEF_POP() | str?flags=0x17 idx=1 | const[0d640200] | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | OP_ac() | globalThis | CLOSURE_CTX_B() | param[0] | OP_d5() | !(pool[148].isFinite(undefined)) | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | pool[148].isFinite(undefined) | EQ_STRICT() | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | str?flags=0x20 idx=12 | OP_95() | fn:'CLF' | OP_c0() | const[00c20301] | OP30() | 'a' | CLOSURE_CTX_A() | param[0] | OP_d5() | pool[146].isArray(PUSH_EXPORTS()) | OP_ac() | PUSH_EXPORTS().slice | undefined | CLOSURE_CTX_A() | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | str?flags=0x29 idx=9 | fn:'CLF' | OP30() | 'a' | CLOSURE_CTX_A() | pool[148].isFinite(undefined) | pool[149] | objlit[emitWarning](PUSH_STR2()) | param[0] | fn:'CLF' | OP30() | str?flags=0x1d idx=1 | const[0d640000] | CLOSURE_CTX_A() | CLOSURE_CTX_B() | pool[148].isFinite(undefined) | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | fn:'CLF' | OP_c0() | const[00c20301] | OP_d0() | str?flags=0xd idx=1 | const[0dce030c] | const[d4030f01] | param[0] | str?flags=0xe idx=1 | PUSH_E() | const[64010064] | CLOSURE_CTX_A() | !(pool[148].isFinite(undefined)) | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | CLOSURE_CTX_C() | pool[148].isFinite(undefined) | CLOSURE_CTX_D() | param[0] | LOAD_61() | f0(OP_9d()) | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | str?flags=0x40 idx=12 | OP_95() | fn:'CLF' | OP_c0() | const[0030d003] | load[aux01d4] | str?flags=0xf idx=1 | const[0d640000] | CLOSURE_CTX_A() | pool[148].isFinite(undefined) | CLOSURE_CTX_B() | param[0] | undefined | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | fn:'CLF' | OP_be() | const[00c00301] | const[0230c603] | const[0330c803] | TRIPLE_OP() | OP_1b() | const[ee031c01] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | !(pool[148].isFinite(undefined)) | CLOSURE_CTX_B() | param[0] | OP_d5() | LT() | OP_2f() | globalThis | undefined | CLOSURE_CTX_C() | f0(OP_5e()) | LT() | CLOSURE_CTX_D() | LOAD_61() | undefined | undefined.includes(const[221]) | LOAD_61() | LOAD_61() | OP35().builtin#58370 | const[03b60300] | const[00b80305] | OP30() | OP_ac() | OP_ac() | param[0] | META_OP6C() | DECL_SLOT() | DECL_SLOT() | globalThis | OP_ac() | CLOSURE_CTX_B() | OP_a9() | CLOSURE_CTX_A() | param[0] | OP_a9() | CLOSURE_CTX_A() | param[0] | OP_a9() | CLOSURE_CTX_A() | param[0] | OP_b0() | fn:'CLF' | OP30() | PUSH_WK2() | str?flags=0x3 idx=2 | str?flags=0x5 idx=2 | DUP() | OP_14() | const[e2031601] | pair(PUSH_WK2(), 'a') | … | … | const[64010064] | CLOSURE_CTX_A() | CLOSURE_CTX_B() | META_OP6C() | OP_6f() | DECL_SLOT() | CLOSURE_CTX_C() | objlit[formatNumberWithCurrency](PUSH_STR2()) | param[1] | OP_A8() | OP_6f() | LOAD_61() | OP_2f() | OP_ad()
+  // stack@INIT-END: 'localeStringToNumber' | const[1728063204] | const[555819362] | call21(?) | call21(?) | call21(?) | call21(?) | call21(?) | call21(?) | OP_e6() | fn:'CLF' | OP_c0() | const[0030c203] | const[0130c403] | const[0230ce03] | CLASS_DEF_POP() | str?flags=0x17 idx=1 | const[0d640200] | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | OP_ac() | globalThis | CLOSURE_CTX_B() | param[0] | OP_d5() | !(pool[148].isFinite(undefined)) | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | pool[148].isFinite(undefined) | EQ_STRICT() | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | str?flags=0x20 idx=12 | OP_95() | fn:'CLF' | OP_c0() | const[00c20301] | OP30() | 'a' | CLOSURE_CTX_A() | param[0] | OP_d5() | pool[146].isArray(PUSH_EXPORTS()) | OP_ac() | PUSH_EXPORTS().slice | undefined | CLOSURE_CTX_A() | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | str?flags=0x29 idx=9 | fn:'CLF' | OP30() | 'a' | CLOSURE_CTX_A() | pool[148].isFinite(undefined) | pool[149] | objlit[emitWarning](PUSH_STR2()) | param[0] | fn:'CLF' | OP30() | str?flags=0x1d idx=1 | const[0d640000] | CLOSURE_CTX_A() | CLOSURE_CTX_B() | pool[148].isFinite(undefined) | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | fn:'CLF' | OP_c0() | const[00c20301] | OP_d0() | str?flags=0xd idx=1 | const[0dce030c] | const[d4030f01] | param[0] | str?flags=0xe idx=1 | PUSH_E() | const[64010064] | CLOSURE_CTX_A() | !(pool[148].isFinite(undefined)) | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | CLOSURE_CTX_C() | pool[148].isFinite(undefined) | CLOSURE_CTX_D() | param[0] | LOAD_61() | f0(OP_9d()) | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | str?flags=0x40 idx=12 | OP_95() | fn:'CLF' | OP_c0() | const[0030d003] | load[aux01d4] | str?flags=0xf idx=1 | const[0d640000] | CLOSURE_CTX_A() | pool[148].isFinite(undefined) | CLOSURE_CTX_B() | param[0] | undefined | objlit[emitWarning](PUSH_STR2()) | param[0] | DUP() | fn:'CLF' | PUSH_I8() | const[00c00301] | const[0230c603] | const[0330c803] | TRIPLE_OP() | OP_1b() | const[ee031c01] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | !(pool[148].isFinite(undefined)) | CLOSURE_CTX_B() | param[0] | OP_d5() | LT() | OP_2f() | globalThis | undefined | CLOSURE_CTX_C() | f0(OP_5e()) | LT() | CLOSURE_CTX_D() | LOAD_61() | undefined | undefined.includes(const[221]) | LOAD_61() | LOAD_61() | OP35().builtin#58370 | const[03b60300] | const[00b80305] | OP30() | OP_ac() | OP_ac() | param[0] | META_OP6C() | DECL_SLOT() | DECL_SLOT() | globalThis | OP_ac() | CLOSURE_CTX_B() | OP_a9() | CLOSURE_CTX_A() | param[0] | OP_a9() | CLOSURE_CTX_A() | param[0] | OP_a9() | CLOSURE_CTX_A() | param[0] | OP_b0() | fn:'CLF' | OP30() | PUSH_WK2() | str?flags=0x3 idx=2 | str?flags=0x5 idx=2 | DUP() | OP_14() | const[e2031601] | pair(PUSH_WK2(), 'a') | … | … | const[64010064] | CLOSURE_CTX_A() | CLOSURE_CTX_B() | META_OP6C() | OP_6f() | DECL_SLOT() | CLOSURE_CTX_C() | objlit[formatNumberWithCurrency](PUSH_STR2()) | param[1] | OP_A8() | OP_6f() | LOAD_61() | OP_2f() | OP_ad()
   // ===== 初始化段结束；其后为函数单元 =====
   locop 0xca(param[0].toUpperCase())
   // op 0xc0 OP_c0 [?]
@@ -606,12 +606,12 @@
   // ---- FUNCTION-UNIT: 'CLF' ----
   …(pad)
   locop 0xca(fn:'CLF'(globalThis))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   // op 0x11 DUP [~]
   jcc-0xeb → @5128
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   // op 0x11 DUP [~]
   jcc-0xec → @5172
@@ -758,8 +758,8 @@
   // op 0xdb OP_db [?]
   locop 0xcb(OP_db())
   // op 0x64 DECL_SLOT [~]
-  // op 0xbe OP_be [?]
-  locop 0xcc(pool[153].pow(OP_be(), param[1]))
+  // op 0xbe PUSH_I8 [~]
+  locop 0xcc(pool[153].pow(PUSH_I8(), param[1]))
   jcc-0xeb → @6529
   // op 0x11 DUP [~]
   // op 0x2f OP_2f [?]
@@ -951,7 +951,7 @@
 
   // ---- FUNCTION-UNIT: 'CLF' ----
   // op 0x20 OP_20 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x64 DECL_SLOT [~]
   // op 0x64 DECL_SLOT [~]
@@ -974,10 +974,10 @@
   // op 0x64 DECL_SLOT [~]
   local[4] = undefined.charAt(undefined);
   local[5] = undefined.charCodeAt(globalThis);
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   jcc-0xeb → @7710
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   jcc-0xeb → @7710
   // op 0xa0 ADD [~]
@@ -1020,7 +1020,7 @@
   …(pad)
   // op 0x12 OP_12 [?]
   …(pad)
-  // stack-tail: OP_5d()(DECL_SLOT())(str?flags=0x0 idx=3, PUSH_C(), v06, OP_1c(), PUSH_C(), pair(OP_ff(), OP_7f()), …, OP_1c(), pair(OP_ff(), OP_7f()), …, …, const[00300039], PUSH_E(), const[2e001c08], pair(OP_ff(), OP_7f()), …, …, OP_1c(), PUSH_C(), pair(OP_ff(), OP_7f()), …, …, const[00300039], OP_5c(), DECL_SLOT(), OP_39())(const[02020045], PUSH_C(), v06, OP_ff(), desc-tpl, desc-tpl, pair(const[012e0008], load[00]), …, …, pair(const[00300039], OP_ff()), OP_1c(), OP_ff(), OP_7f(), const[30000a06], load[00], PUSH_E(), PUSH_B(), OP_5c(), OP_2b()) | num[2686977] | PUSH_C() | v06 | OP_ff() | desc-tpl | OP_20() | OP_be() | num[62267395] | str?flags=0x4 idx=48 | str?flags=0x5 idx=48 | DECL_SLOT() | DECL_SLOT() | pool[149] | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | OP_12()
+  // stack-tail: OP_5d()(DECL_SLOT())(str?flags=0x0 idx=3, PUSH_C(), v06, OP_1c(), PUSH_C(), pair(OP_ff(), OP_7f()), …, OP_1c(), pair(OP_ff(), OP_7f()), …, …, const[00300039], PUSH_E(), const[2e001c08], pair(OP_ff(), OP_7f()), …, …, OP_1c(), PUSH_C(), pair(OP_ff(), OP_7f()), …, …, const[00300039], OP_5c(), DECL_SLOT(), OP_39())(const[02020045], PUSH_C(), v06, OP_ff(), desc-tpl, desc-tpl, pair(const[012e0008], load[00]), …, …, pair(const[00300039], OP_ff()), OP_1c(), OP_ff(), OP_7f(), const[30000a06], load[00], PUSH_E(), PUSH_B(), OP_5c(), OP_2b()) | num[2686977] | PUSH_C() | v06 | OP_ff() | desc-tpl | OP_20() | PUSH_I8() | num[62267395] | str?flags=0x4 idx=48 | str?flags=0x5 idx=48 | DECL_SLOT() | DECL_SLOT() | pool[149] | DECL_SLOT() | META_OP6C() | DECL_SLOT() | DECL_SLOT() | OP_12()
 
 // ---- 字符串表 ----
 // str[1] = 'require'

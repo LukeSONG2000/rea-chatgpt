@@ -284,7 +284,7 @@
   // stack@INIT-END: OP10() | const[00cc030d] | str?flags=0xc idx=1 | const[33798669] | const[c003050d] | LOCAL_OP2() | str?flags=0x6 idx=13 | load[aux08c4] | const[390202563] | META_OP6C() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | CLOSURE_CTX_A() | OP_ee() | const[256] | undefined | const[256] | LOAD_M3().peek(PUSH_WK1()) | OP_ee() | const[256] | undefined | const[125] | LOAD_M3().peek(PUSH_WK1()) | OP_ee() | !(EQ_STRICT()) | OP_ee() | CLOSURE_CTX_B() | f0(undefined) | OP_ee() | CLOSURE_CTX_C() | f0(undefined) | OP_ee() | const[297] | const[298] | undefined | OP_ee() | OP_ee() | v06 | META_OP6C() | !(PUSH_STR2().builtin#99(undefined)) | OP_ee() | objlit[tokens](LOAD_M3()).push | OP_aa() | const[02007c02] | OP_7f().GreaterThan.push | desc-tpl | param[0].[wk:0x12f] | param[1].[wk:0x40](objlit[cursor](PUSH_THIS()).[wk:0x130])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xc6 PUSH_THIS [~]
   // op 0xea OP_ea [?]
@@ -485,7 +485,7 @@
   // op 0xb2 OP_b2 [?]
   …(pad)
   // op 0xbc OP_bc [?]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x08 PUSH_C [~]
   locop 0xcd(PUSH_C())
   // op 0x64 DECL_SLOT [~]
@@ -512,7 +512,7 @@
   // op 0xc9 PUSH_C9 [~]
   // op 0xde CLOSURE_CTX_A [~]
   // discard(undefined.[wk:0x40](undefined.[wk:0x130]))
-  // stack@INIT-END: OP_b2() | OP_bc() | const[02008001] | OP_44() | const[0030be03] | const[0120b603] | str?flags=0x2 idx=48 | const[00ba0302] | const[b603000d] | DECL_SLOT() | META_OP6C() | DECL_SLOT() | undefined | objlit[tokens](PUSH_C9()).push | desc-tpl | objlit[builtin#149](CLOSURE_CTX_A()).[wk:0x12f]
+  // stack@INIT-END: OP_b2() | OP_bc() | const[02008001] | META_RECORD44() | const[0030be03] | const[0120b603] | str?flags=0x2 idx=48 | const[00ba0302] | const[b603000d] | DECL_SLOT() | META_OP6C() | DECL_SLOT() | undefined | objlit[tokens](PUSH_C9()).push | desc-tpl | objlit[builtin#149](CLOSURE_CTX_A()).[wk:0x12f]
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @7153
@@ -618,7 +618,7 @@
   // trailer 0xae
   jcc-0xeb → @8354
   // op 0xc7 PUSH_C7 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x11 DUP [~]
   // trailer 0xae
   jcc-0xec → @8381
@@ -658,7 +658,7 @@
   // op 0x11 DUP [~]
   // op 0xd4 PUSH_EXPORTS [✓]
   // op 0x2f OP_2f [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x9d OP_9d [?]
   // op 0xa0 ADD [~]
   // op 0x11 DUP [~]
@@ -691,7 +691,7 @@
   // ---- FUNCTION-UNIT: '>' ----
   …(pad)
   locop 0xca(const[00000000](globalThis))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xec → @9062
@@ -705,7 +705,7 @@
   // ---- FUNCTION-UNIT: '>' ----
   …(pad)
   locop 0xca(param[0].charCodeAt(globalThis))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xec → @9172
@@ -729,32 +729,32 @@
   // ---- FUNCTION-UNIT: '>' ----
   …(pad)
   locop 0xca(fn:'>'(globalThis))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xec → @9381
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xec → @9381
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xec → @9381
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xec → @9381
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // op 0x11 DUP [~]
   jcc-0xec → @9381
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // trailer 0xae
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
@@ -763,12 +763,12 @@
 
   // ---- FUNCTION-UNIT: '>' ----
   // discard(fn:'>')
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   // op 0x11 DUP [~]
   jcc-0xeb → @9440
   // discard(DUP())
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   // trailer 0xae
   …(pad)
@@ -782,35 +782,35 @@
   // ---- FUNCTION-UNIT: '>' ----
   …(pad)
   locop 0xca(fn:'>'(globalThis))
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   jcc-0xeb → @9582
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   jcc-0xeb → @9582
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   jcc-0xeb → @9605
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   jcc-0xeb → @9605
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa9 OP_a9 [?]
   jcc-0xeb → @9628
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   jcc-0xeb → @9628
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa1 OP_a1 [?]
   // op 0xb5 OP_b5 [?]
   // trailer 0xae
   // op 0xc6 PUSH_THIS [~]
   …(pad)
-  // stack-tail: OP_71() | num[40894662] | OP_2b() | OP_fd() | str?flags=0x0 idx=0.GreaterThan | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | const[228] | DUP() | const[320] | DUP() | DUP() | DUP() | const[298] | OP_2f() | str?flags=0x9a idx=1 | OP_f3() | OP30() | OP30() | OP30() | PUSH_C() | const[0000000e].GreaterThan | LOCAL_OP2() | str?flags=0x2 idx=1 | str?flags=0x3 idx=2 | str?flags=0x6 idx=1 | const[00d20310] | const[b603000d] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | CLOSURE_CTX_A() | LT() | OP_58() | fn:'>' | OP_be() | CLOSURE_CTX_A() | fn:'>' | OP_be() | CLOSURE_CTX_A() | OP_be() | OP_be() | OP_be() | OP_be() | OP_be() | fn:'>' | OP_a9() | OP_a7() | OP_a9() | OP_a7() | OP_a9() | OP_a7() | str?flags=0xe5 idx=1 | PUSH_THIS() | const[0]
+  // stack-tail: OP_71() | num[40894662] | OP_2b() | OP_fd() | str?flags=0x0 idx=0.GreaterThan | DUP() | DUP() | DUP() | DUP() | DUP() | DUP() | const[228] | DUP() | const[320] | DUP() | DUP() | DUP() | const[298] | OP_2f() | str?flags=0x9a idx=1 | OP_f3() | OP30() | OP30() | OP30() | PUSH_C() | const[0000000e].GreaterThan | LOCAL_OP2() | str?flags=0x2 idx=1 | str?flags=0x3 idx=2 | str?flags=0x6 idx=1 | const[00d20310] | const[b603000d] | DECL_SLOT() | DECL_SLOT() | META_OP6C() | DECL_SLOT() | CLOSURE_CTX_A() | LT() | OP_58() | fn:'>' | PUSH_I8() | CLOSURE_CTX_A() | fn:'>' | PUSH_I8() | CLOSURE_CTX_A() | PUSH_I8() | PUSH_I8() | PUSH_I8() | PUSH_I8() | PUSH_I8() | fn:'>' | OP_a9() | OP_a7() | OP_a9() | OP_a7() | OP_a9() | OP_a7() | str?flags=0xe5 idx=1 | PUSH_THIS() | const[0]
 
 // ---- 字符串表 ----
 // str[1] = 'require'

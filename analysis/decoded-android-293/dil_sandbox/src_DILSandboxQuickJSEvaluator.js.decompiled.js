@@ -77,7 +77,7 @@
   // op 0x0a PUSH_E [~]
   …(pad)
   // op 0x08 PUSH_C [~]
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0x08 PUSH_C [~]
   // op 0x12 OP_12 [?]
@@ -184,7 +184,7 @@
   // stack@INIT-END: OP_46() | OP10() | const[0008cb64] | objlit[bindings](PUSH_C7()).trace(const[289], local[0])
   // ===== 初始化段结束；其后为函数单元 =====
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   …(pad)
   // op 0xb8 PUSH_WK2 [~]
   …(pad)
@@ -239,7 +239,7 @@
   // op 0x50 OP_50 [?]
   // op 0x50 OP_50 [?]
   // trailer 0xae
-  // op 0x44 OP_44 [?]
+  // op 0x44 META_RECORD44 [?]
   // op 0x77 OP_77 [?]
   …(pad)
   // op 0x70 TRY_REGION [~]
@@ -372,7 +372,7 @@
   // trailer 0xae
   …(pad)
   // discard(str?flags=0x50 idx=0)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x64 DECL_SLOT [~]
   // op 0x11 DUP [~]
   // op 0xf3 OP_f3 [?]

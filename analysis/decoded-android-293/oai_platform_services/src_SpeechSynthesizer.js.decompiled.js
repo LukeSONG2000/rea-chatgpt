@@ -499,7 +499,7 @@
   // op 0x30 OP30 [?]
   // op 0x09 PUSH_D [~]
   // op 0x68 PUSH_STR2 [~]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0x6c META_OP6C [?]
   // op 0x64 DECL_SLOT [~]
   // op 0x11 DUP [~]
@@ -627,7 +627,7 @@
   …(pad)
   // op 0x07 PUSH_B [~]
   …(pad)
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0xde CLOSURE_CTX_A [~]
   // op 0xdf CLOSURE_CTX_B [~]
@@ -650,7 +650,7 @@
   // discard(OP_6f())
   // op 0x70 TRY_REGION [~]
   // discard(TRY_REGION())
-  // stack@INIT-END: OP_40() | LOCAL_OP2() | str?flags=0x2 idx=1 | str?flags=0x2 idx=2 | str?flags=0x3 idx=1 | str?flags=0x11 idx=1 | num[25613] | objlit[protectNativeRefsForContextId](PUSH_STR2()) | OP_6f() | DECL_SLOT() | OP_12() | PUSH_C() | OP_3f() | push3617.Play | call25(CLOSURE_CTX_D(); desc-tpl, OP_50().[wk:0x127]) | str?flags=0x83 idx=1 | OP_3f() | const[00010302] | PUSH_B() | const[b6030001] | OP_be() | num[66512] | CLOSURE_CTX_A() | v06
+  // stack@INIT-END: OP_40() | LOCAL_OP2() | str?flags=0x2 idx=1 | str?flags=0x2 idx=2 | str?flags=0x3 idx=1 | str?flags=0x11 idx=1 | num[25613] | objlit[protectNativeRefsForContextId](PUSH_STR2()) | OP_6f() | DECL_SLOT() | OP_12() | PUSH_C() | OP_3f() | push3617.Play | call25(CLOSURE_CTX_D(); desc-tpl, OP_50().[wk:0x127]) | str?flags=0x83 idx=1 | OP_3f() | const[00010302] | PUSH_B() | const[b6030001] | PUSH_I8() | num[66512] | CLOSURE_CTX_A() | v06
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x70 TRY_REGION [~]
   // op 0x2f OP_2f [?]
@@ -771,7 +771,7 @@
   // op 0xaf EQ_STRICT [~]
   jcc-0xeb → @7669
   // op 0xea OP_ea [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   // op 0xa7 OP_a7 [?]
   jcc-0xeb → @7669
   // op 0x68 PUSH_STR2 [~]

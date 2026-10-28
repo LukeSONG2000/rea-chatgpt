@@ -25,7 +25,7 @@
   // op 0x20 OP_20 [?]
   // op 0x2e OP_2e [?]
   // op 0x40 OP_40 [?]
-  // op 0xbe OP_be [?]
+  // op 0xbe PUSH_I8 [~]
   …(pad)
   // op 0x70 TRY_REGION [~]
   …(pad)
@@ -47,7 +47,7 @@
   // trailer 0xae
   // op 0x33 OP_33 [?]
   …(pad)
-  // stack@INIT-END: OP_40() | str?flags=0x3 idx=1 | const[67214849] | OP_be() | const[00cc0300] | const[00ce0300] | const[00d00301] | TRY_REGION() | globalThis | str?flags=0x0 idx=13 | const[0dbc0303] | load[aux6400] | objlit[isFunction](PUSH_STR2()) | PUSH_EXPORTS() | desc-tpl | param[0].[wk:0x6a] | param[1].[wk:0xea] | PUSH_EXPORTS().[wk:0xeb] | undefined | OP_33() | num[388047137]
+  // stack@INIT-END: OP_40() | str?flags=0x3 idx=1 | const[67214849] | PUSH_I8() | const[00cc0300] | const[00ce0300] | const[00d00301] | TRY_REGION() | globalThis | str?flags=0x0 idx=13 | const[0dbc0303] | load[aux6400] | objlit[isFunction](PUSH_STR2()) | PUSH_EXPORTS() | desc-tpl | param[0].[wk:0x6a] | param[1].[wk:0xea] | PUSH_EXPORTS().[wk:0xeb] | undefined | OP_33() | num[388047137]
   // ===== 初始化段结束；其后为函数单元 =====
   // op 0x18 TRIPLE_OP [?]
   // discard(TRIPLE_OP())
