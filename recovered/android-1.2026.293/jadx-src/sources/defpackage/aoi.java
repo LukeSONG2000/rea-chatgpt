@@ -1,0 +1,22 @@
+package defpackage;
+
+import androidx.compose.ui.input.pointer.PointerInputEventHandler;
+import kotlin.jvm.functions.Function1;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes4.dex */
+public final class aoi implements PointerInputEventHandler {
+    public final /* synthetic */ wni a;
+    public final /* synthetic */ Function1 b;
+
+    public aoi(wni wniVar, Function1 function1) {
+        this.a = wniVar;
+        this.b = function1;
+    }
+
+    @Override // androidx.compose.ui.input.pointer.PointerInputEventHandler
+    public final Object invoke(fem0 fem0Var, twp twpVar) {
+        Object objE = p9y0.e(fem0Var, null, null, null, new ua(this.a, this.b, (byte) 9), twpVar, 7);
+        return objE == yfs.a ? objE : a011.a;
+    }
+}

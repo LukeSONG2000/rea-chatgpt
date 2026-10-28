@@ -1,0 +1,48 @@
+package defpackage;
+
+import protobuf_analytics_events.v1.MobilePreexistingDeviceIdStatus;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes6.dex */
+public final class lv9 {
+    public final MobilePreexistingDeviceIdStatus a;
+    public final String b;
+
+    public lv9(MobilePreexistingDeviceIdStatus mobilePreexistingDeviceIdStatus, String str) {
+        this.a = mobilePreexistingDeviceIdStatus;
+        this.b = str;
+    }
+
+    public final String a() {
+        return this.b;
+    }
+
+    public final MobilePreexistingDeviceIdStatus b() {
+        return this.a;
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof lv9)) {
+            return false;
+        }
+        lv9 lv9Var = (lv9) obj;
+        return this.a == lv9Var.a && kdd.l(this.b, lv9Var.b);
+    }
+
+    public final int hashCode() {
+        int iHashCode = this.a.hashCode() * 31;
+        String str = this.b;
+        return iHashCode + (str == null ? 0 : str.hashCode());
+    }
+
+    public final String toString() {
+        return lv9.class.getName();
+    }
+
+    public /* synthetic */ lv9(MobilePreexistingDeviceIdStatus mobilePreexistingDeviceIdStatus) {
+        this(mobilePreexistingDeviceIdStatus, null);
+    }
+}

@@ -1,0 +1,37 @@
+package defpackage;
+
+import io.sentry.internal.debugmeta.c;
+import java.util.List;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes5.dex */
+public final class vyc0 implements o1d0 {
+    public final List a;
+    public final c b;
+
+    public vyc0(List list, c cVar) {
+        this.a = list;
+        this.b = cVar;
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof vyc0)) {
+            return false;
+        }
+        vyc0 vyc0Var = (vyc0) obj;
+        return kdd.l(this.a, vyc0Var.a) && kdd.l(this.b, vyc0Var.b);
+    }
+
+    public final int hashCode() {
+        int iHashCode = this.a.hashCode() * 31;
+        c cVar = this.b;
+        return iHashCode + (cVar == null ? 0 : cVar.hashCode());
+    }
+
+    public final String toString() {
+        return vyc0.class.getName();
+    }
+}

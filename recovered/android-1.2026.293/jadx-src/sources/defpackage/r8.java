@@ -1,0 +1,64 @@
+package defpackage;
+
+import kotlin.jvm.functions.Function1;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes2.dex */
+public final class r8 implements Function1 {
+    public final /* synthetic */ byte a;
+
+    public /* synthetic */ r8(byte b) {
+        this.a = b;
+    }
+
+    @Override // kotlin.jvm.functions.Function1
+    public final Object invoke(Object obj) {
+        switch (this.a) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                eny enyVarF = xmy.f(dve.m0(300, 0, null, 6), 2);
+                s5z s5zVar = s5z.b;
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            default:
+                break;
+        }
+        return null;
+    }
+}

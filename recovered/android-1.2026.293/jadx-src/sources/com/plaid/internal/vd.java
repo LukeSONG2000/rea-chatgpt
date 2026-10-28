@@ -1,0 +1,88 @@
+package com.plaid.internal;
+
+import defpackage.a011;
+import defpackage.dnq0;
+import defpackage.eor0;
+import defpackage.h7q0;
+import defpackage.j4p0;
+import defpackage.k7q0;
+import defpackage.knq0;
+import defpackage.kxx0;
+import defpackage.np11;
+import defpackage.rgq0;
+import defpackage.s7q0;
+import defpackage.sfs;
+import defpackage.t7q0;
+import defpackage.twp;
+import defpackage.u7q0;
+import defpackage.vpq0;
+import defpackage.ytb0;
+import java.io.IOException;
+import java.util.concurrent.CancellationException;
+import kotlin.jvm.functions.Function2;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes5.dex */
+public final class vd extends kxx0 implements Function2 {
+    public final /* synthetic */ q8 a;
+    public final /* synthetic */ wd b;
+    public final /* synthetic */ ae c;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public vd(q8 q8Var, wd wdVar, ae aeVar, twp twpVar) {
+        super(2, twpVar);
+        this.a = q8Var;
+        this.b = wdVar;
+        this.c = aeVar;
+    }
+
+    @Override // defpackage.kw8
+    public final twp create(Object obj, twp twpVar) {
+        return new vd(this.a, this.b, this.c, twpVar);
+    }
+
+    @Override // kotlin.jvm.functions.Function2
+    public final Object invoke(Object obj, Object obj2) {
+        return ((vd) create((sfs) obj, (twp) obj2)).invokeSuspend(a011.a);
+    }
+
+    @Override // defpackage.kw8
+    public final Object invokeSuspend(Object obj) {
+        vpq0.o(obj);
+        try {
+            String str = this.a.getBaseUrl() + "/link/workflow/event";
+            String strC = this.b.c.c(ae.Companion.serializer(), this.c);
+            s7q0 s7q0Var = u7q0.a;
+            j4p0 j4p0Var = ytb0.e;
+            t7q0 t7q0VarC = eor0.c(strC, rgq0.w("application/json"));
+            h7q0 h7q0Var = new h7q0();
+            h7q0Var.f(str);
+            h7q0Var.c("POST", t7q0VarC);
+            dnq0 dnq0VarH = this.b.a.b(new k7q0(h7q0Var)).h();
+            try {
+                if (dnq0VarH.q) {
+                    k7 k7Var = new k7(a011.a);
+                    dnq0VarH.close();
+                    return k7Var;
+                }
+                knq0 knq0Var = dnq0VarH.g;
+                i7 i7Var = new i7(dnq0VarH.d, knq0Var != null ? knq0Var.i() : null);
+                dnq0VarH.close();
+                return i7Var;
+            } catch (Throwable th) {
+                try {
+                    throw th;
+                } catch (Throwable th2) {
+                    np11.F(dnq0VarH, th);
+                    throw th2;
+                }
+            }
+        } catch (IOException e) {
+            return new j7(e);
+        } catch (CancellationException e2) {
+            throw e2;
+        } catch (RuntimeException e3) {
+            return new l7(e3);
+        }
+    }
+}

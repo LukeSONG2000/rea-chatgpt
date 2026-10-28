@@ -1,0 +1,33 @@
+{
+  "extends": "../../../../../modules/_configs/base.tsconfig.json",
+  "compilerOptions": {
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "paths": {
+      "persistence/*": ["./*"],
+      "jasmine/*": ["../jasmine/*"],
+      "coreutils/*": ["../coreutils/*"],
+      "source_map/*": ["../source_map/*"],
+      "valdi_tsx/*": ["../valdi_tsx/*"],
+      "web_platform/*": ["../web_platform/*"],
+      "valdi_core/*": ["../valdi_core/*"],
+      "file_system/*": ["../file_system/*"],
+      "valdi_cli/*": ["../valdi_cli/*"],
+      "valdi_standalone/*": ["../valdi_standalone/*"],
+      "FileSystem": ["../file_system/src/FileSystemNative"],
+      "PersistentStoreNative": ["./src/PersistentStoreModule"],
+      "NumberFormatting": ["../valdi_core/src/NumberFormatting"],
+      "Valdi": ["../valdi_core/src/Valdi"],
+      "tslib": ["../valdi_core/src/tslib.d.ts"],
+      "jasmine": ["../jasmine/src/jasmine.d.ts"]
+    },
+    "lib": ["ES2019"],
+    "types": [
+      "../../../../../modules/types/Long",
+      "../../../../../modules/types/Portable",
+      "../../../../../modules/types/globals"
+    ],
+    "rootDirs": [".."]
+  }
+}

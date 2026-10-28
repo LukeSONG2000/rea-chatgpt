@@ -1,0 +1,28 @@
+{
+  "extends": "../../../../../modules/_configs/base.tsconfig.json",
+  "compilerOptions": {
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "jsx": "preserve",
+    "paths": {
+      "valdi_core/*": ["./*"],
+      "jasmine/*": ["../jasmine/*"],
+      "coreutils/*": ["../coreutils/*"],
+      "source_map/*": ["../source_map/*"],
+      "valdi_tsx/*": ["../valdi_tsx/*"],
+      "web_platform/*": ["../web_platform/*"],
+      "NumberFormatting": ["./src/NumberFormatting"],
+      "Valdi": ["./src/Valdi"],
+      "tslib": ["./src/tslib.d.ts"],
+      "jasmine": ["../jasmine/src/jasmine.d.ts"]
+    },
+    "lib": ["ES2019"],
+    "types": [
+      "../../../../../modules/types/Long",
+      "../../../../../modules/types/Portable",
+      "../../../../../modules/types/globals"
+    ],
+    "rootDirs": [".."]
+  }
+}

@@ -1,0 +1,15 @@
+package defpackage;
+
+import java.lang.annotation.Annotation;
+import kotlin.jvm.functions.Function0;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes2.dex */
+public final class prq0 extends w770 implements Function0 {
+    public static final prq0 a = new prq0(0);
+
+    @Override // kotlin.jvm.functions.Function0
+    public final Object invoke() {
+        return cw30.s("com.segment.analytics.kotlin.core.retry.RetryBehavior", qrq0.values(), new String[]{"retry", "drop"}, new Annotation[][]{null, null});
+    }
+}

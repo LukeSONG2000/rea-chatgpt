@@ -1,0 +1,26 @@
+package defpackage;
+
+import kotlin.jvm.functions.Function1;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes4.dex */
+public final class x1i0 extends vwp {
+    public String n;
+    public Function1 o;
+    public /* synthetic */ Object p;
+    public final /* synthetic */ z1i0 q;
+    public int r;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public x1i0(z1i0 z1i0Var, vwp vwpVar) {
+        super(vwpVar);
+        this.q = z1i0Var;
+    }
+
+    @Override // defpackage.kw8
+    public final Object invokeSuspend(Object obj) {
+        this.p = obj;
+        this.r |= Integer.MIN_VALUE;
+        return this.q.B(null, null, this);
+    }
+}

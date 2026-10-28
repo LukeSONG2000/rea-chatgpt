@@ -1,0 +1,69 @@
+package defpackage;
+
+import java.util.List;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
+import kotlin.jvm.functions.Function3;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes4.dex */
+public final /* synthetic */ class g8 implements Function2 {
+    public final /* synthetic */ byte a = 1;
+    public final /* synthetic */ iet0 b;
+    public final /* synthetic */ nqd0 c;
+    public final /* synthetic */ int d;
+    public final /* synthetic */ byte e;
+    public final /* synthetic */ Object f;
+    public final /* synthetic */ Object g;
+    public final /* synthetic */ qs10 h;
+    public final /* synthetic */ Object i;
+
+    /* JADX WARN: Multi-variable type inference failed */
+    public /* synthetic */ g8(iet0 iet0Var, fin finVar, Function0 function0, nqd0 nqd0Var, Function3 function3, Function3 function32, int i, int i2) {
+        this.b = iet0Var;
+        this.f = finVar;
+        this.g = function0;
+        this.c = nqd0Var;
+        this.h = function3;
+        this.i = function32;
+        this.d = i;
+        this.e = i2;
+    }
+
+    @Override // kotlin.jvm.functions.Function2
+    public final Object invoke(Object obj, Object obj2) {
+        byte b = this.a;
+        a011 a011Var = a011.a;
+        int i = this.d;
+        Object obj3 = this.i;
+        qs10 qs10Var = this.h;
+        Object obj4 = this.g;
+        Object obj5 = this.f;
+        switch (b) {
+            case 0:
+                ((Integer) obj2).getClass();
+                int iS = hmb0.S(i | 1);
+                ec81.b(this.b, (List) obj5, (hgt0) obj4, (Function1) qs10Var, this.c, (p240) obj3, (bun) obj, iS, this.e);
+                break;
+            default:
+                ((Integer) obj2).getClass();
+                int iS2 = hmb0.S(i | 1);
+                this.b.c((fin) obj5, (Function0) obj4, this.c, (Function3) qs10Var, (Function3) obj3, (bun) obj, iS2, this.e);
+                break;
+        }
+        return a011Var;
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    public /* synthetic */ g8(iet0 iet0Var, List list, hgt0 hgt0Var, Function1 function1, nqd0 nqd0Var, p240 p240Var, int i, int i2) {
+        this.b = iet0Var;
+        this.f = list;
+        this.g = hgt0Var;
+        this.h = function1;
+        this.c = nqd0Var;
+        this.i = p240Var;
+        this.d = i;
+        this.e = i2;
+    }
+}

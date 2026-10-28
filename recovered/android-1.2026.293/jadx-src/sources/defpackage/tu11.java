@@ -1,0 +1,45 @@
+package defpackage;
+
+import kotlin.jvm.functions.Function1;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes7.dex */
+public final /* synthetic */ class tu11 extends xs10 implements Function1 {
+    public final /* synthetic */ byte b;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ tu11(int i, Object obj, Class cls, String str, String str2, int i2, byte b) {
+        super(i, obj, cls, str, str2, i2);
+        this.b = b;
+    }
+
+    @Override // kotlin.jvm.functions.Function1
+    public final Object invoke(Object obj) {
+        byte b = this.b;
+        a011 a011Var = a011.a;
+        switch (b) {
+            case 0:
+                vu11 vu11Var = (vu11) this.receiver;
+                vu11Var.getClass();
+                x2b0.b(new x(vu11Var, (String) obj, (byte) 4));
+                return a011Var;
+            case 1:
+                ((kl1) this.receiver).c((byte[]) obj);
+                return a011Var;
+            default:
+                oq0 oq0Var = (oq0) obj;
+                gz41 gz41Var = (gz41) this.receiver;
+                if (oq0Var instanceof mq0) {
+                    gz41Var.w();
+                    return a011Var;
+                }
+                gz41Var.getClass();
+                if (oq0Var.equals(nq0.c)) {
+                    zhe0.a(gz41Var.i1, zq90.d.a());
+                    return a011Var;
+                }
+                il.f();
+                return null;
+        }
+    }
+}

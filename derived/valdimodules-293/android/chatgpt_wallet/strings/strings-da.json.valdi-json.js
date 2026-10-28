@@ -1,0 +1,2 @@
+// Resource SHA256: 5a4dcc795c8814e9f694d51e603535dd4be0961cbd823f954f5265fa809a4f28
+exports.default = JSON.parse(require('valdi_core/src/Valdi').getModuleFileEntryAsString("chatgpt_wallet", "strings/strings-da.json"));

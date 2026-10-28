@@ -1,0 +1,46 @@
+package defpackage;
+
+import kotlin.jvm.functions.Function2;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes4.dex */
+public final /* synthetic */ class u980 implements Function2 {
+    public final /* synthetic */ byte a;
+    public final /* synthetic */ int b;
+    public final /* synthetic */ Object c;
+
+    public /* synthetic */ u980(int i, wr70 wr70Var, int i2) {
+        this.a = (byte) 0;
+        this.b = i;
+        this.c = wr70Var;
+    }
+
+    @Override // kotlin.jvm.functions.Function2
+    public final Object invoke(Object obj, Object obj2) {
+        byte b = this.a;
+        a011 a011Var = a011.a;
+        int i = this.b;
+        Object obj3 = this.c;
+        switch (b) {
+            case 0:
+                ((Integer) obj2).getClass();
+                ga80.i(i, (wr70) obj3, (bun) obj, hmb0.S(1));
+                break;
+            case 1:
+                ((Integer) obj2).intValue();
+                vwf0.m((String) obj3, (bun) obj, hmb0.S(i | 1));
+                break;
+            default:
+                ((Integer) obj2).intValue();
+                d181.g((zz8) obj3, (bun) obj, hmb0.S(i | 1));
+                break;
+        }
+        return a011Var;
+    }
+
+    public /* synthetic */ u980(Object obj, int i, byte b) {
+        this.a = b;
+        this.c = obj;
+        this.b = i;
+    }
+}

@@ -1,0 +1,31 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes4.dex */
+public final class vwj extends vwp {
+    public nvj n;
+    public hyj o;
+    public ewj p;
+    public mwj q;
+    public isl r;
+    public String s;
+    public yjj t;
+    public String u;
+    public String v;
+    public /* synthetic */ Object w;
+    public final /* synthetic */ mxj x;
+    public int y;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public vwj(mxj mxjVar, vwp vwpVar) {
+        super(vwpVar);
+        this.x = mxjVar;
+    }
+
+    @Override // defpackage.kw8
+    public final Object invokeSuspend(Object obj) {
+        this.w = obj;
+        this.y |= Integer.MIN_VALUE;
+        return this.x.n(null, null, this);
+    }
+}

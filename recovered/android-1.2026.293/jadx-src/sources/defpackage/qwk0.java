@@ -1,0 +1,104 @@
+package defpackage;
+
+import java.util.Collections;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes6.dex */
+public abstract class qwk0 {
+    public static final h870 a;
+
+    static {
+        j1y0 j1y0Var = j1y0.W3;
+        ghy ghyVar = ghy.a;
+        j4p0 j4p0Var = new j4p0("<\\u003f(?:[^\"'/#]|\\u002f(?![*/])|(\"|')(?:\\u005c[\\s\\S]|(?!\\1)[^\\u005c])*\\1|(?:\\u002f\\u002f|#(?!\\u005b))(?:[^?\\n\\r]|\\u003f(?!>))*(?=$|\\u003f>|[\\r\\n])|#\\u005b|\\u002f\\u002a(?:[^*]|\\u002a(?!\\u002f))*(?:\\u002a\\u002f|$))*?(?:\\u003f>|$)", ghyVar);
+        kx20 kx20Var = new kx20("g193");
+        sgy sgyVar = sgy.a;
+        i6j0 i6j0Var = new i6j0("g192", Collections.singletonList(new c4r0(j1y0Var, Collections.singletonList(new mqj0(j4p0Var, false, false, sgyVar, kx20Var)))));
+        j1y0 j1y0Var2 = j1y0.R1;
+        m4p0 m4p0Var = m4p0.IGNORE_CASE;
+        c4r0 c4r0Var = new c4r0(j1y0Var2, Collections.singletonList(new mqj0(new j4p0("\\u003f>$|^<\\u003f(?:php(?=\\s)|=)?", Collections.singleton(m4p0Var)), false, false, Collections.singletonList(j1y0.P2), null)));
+        j1y0 j1y0Var3 = j1y0.X1;
+        j4p0 j4p0Var2 = new j4p0("\\u002f\\u002a\\u002a(?!\\u002f)[\\s\\S]*?\\u002a\\u002f", ghyVar);
+        j1y0 j1y0Var4 = j1y0.A1;
+        c4r0 c4r0Var2 = new c4r0(j1y0Var3, Collections.singletonList(new mqj0(j4p0Var2, false, true, Collections.singletonList(j1y0Var4), new lx20("phpdoc"))));
+        c4r0 c4r0Var3 = new c4r0(j1y0Var4, Collections.singletonList(new mqj0(new j4p0("\\u002f\\u002a[\\s\\S]*?\\u002a\\u002f|\\u002f\\u002f.*|#(?!\\u005b).*", ghyVar), false, false, sgyVar, null)));
+        j1y0 j1y0Var5 = j1y0.O4;
+        j4p0 j4p0Var3 = new j4p0("<<<'([^']+)'[\\r\\n](?:.*[\\r\\n])*?\\1;", ghyVar);
+        j1y0 j1y0Var6 = j1y0.I3;
+        mqj0 mqj0Var = new mqj0(j4p0Var3, false, true, Collections.singletonList(j1y0Var6), new kx20("g194"));
+        j4p0 j4p0Var4 = new j4p0("<<<(?:\"([^\"]+)\"[\\r\\n](?:.*[\\r\\n])*?\\1;|([a-z_]\\w*)[\\r\\n](?:.*[\\r\\n])*?\\2;)", Collections.singleton(m4p0Var));
+        j1y0 j1y0Var7 = j1y0.I2;
+        mqj0 mqj0Var2 = new mqj0(j4p0Var4, false, true, Collections.singletonList(j1y0Var7), new kx20("g196"));
+        j4p0 j4p0Var5 = new j4p0("`(?:\\u005c[\\s\\S]|[^\\u005c`])*`", ghyVar);
+        j1y0 j1y0Var8 = j1y0.t;
+        mqj0 mqj0Var3 = new mqj0(j4p0Var5, false, true, Collections.singletonList(j1y0Var8), null);
+        j4p0 j4p0Var6 = new j4p0("'(?:\\u005c[\\s\\S]|[^\\u005c'])*'", ghyVar);
+        j1y0 j1y0Var9 = j1y0.F4;
+        mqj0 mqj0Var4 = new mqj0(j4p0Var6, false, true, Collections.singletonList(j1y0Var9), null);
+        j4p0 j4p0Var7 = new j4p0("\"(?:\\u005c[\\s\\S]|[^\\u005c\"])*\"", ghyVar);
+        j1y0 j1y0Var10 = j1y0.b2;
+        c4r0 c4r0Var4 = new c4r0(j1y0Var5, zx6.U(mqj0Var, mqj0Var2, mqj0Var3, mqj0Var4, new mqj0(j4p0Var7, false, true, Collections.singletonList(j1y0Var10), new kx20("g198"))));
+        c4r0 c4r0Var5 = new c4r0(j1y0.o, Collections.singletonList(new mqj0(new j4p0("#\\u005b(?:[^\"'\\u002f#]|\\u002f(?![*/])|\\u002f\\u002f.*$|#(?!\\u005b).*$|\\u002f\\u002a(?:[^*]|\\u002a(?!\\u002f))*\\u002a\\u002f|\"(?:\\u005c[\\s\\S]|[^\\u005c\"])*\"|'(?:\\u005c[\\s\\S]|[^\\u005c'])*')+\\u005d(?=\\s*[a-z$#])", ic6.o1(new m4p0[]{m4p0Var, m4p0.MULTILINE})), false, true, sgyVar, new kx20("g199"))));
+        c4r0 c4r0Var6 = new c4r0(j1y0.t5, Collections.singletonList(new mqj0(new j4p0("\\u0024+(?:\\w+\\b|(?=\\u007b))", ghyVar), false, false, sgyVar, null)));
+        c4r0 c4r0Var7 = new c4r0(j1y0.R3, Collections.singletonList(new mqj0(new j4p0("(namespace\\s+|use\\s+(?:function\\s+)?)(?:\\u005c?\\b[a-z_]\\w*)+\\b(?!\\u005c)", Collections.singleton(m4p0Var)), true, false, sgyVar, new kx20("g202"))));
+        j1y0 j1y0Var11 = j1y0.n1;
+        j4p0 j4p0Var8 = new j4p0("(\\b(?:class|enum|interface|trait)\\s+)\\b[a-z_]\\w*(?!\\u005c)\\b", Collections.singleton(m4p0Var));
+        j1y0 j1y0Var12 = j1y0.m1;
+        c4r0 c4r0Var8 = new c4r0(j1y0Var11, Collections.singletonList(new mqj0(j4p0Var8, true, false, Collections.singletonList(j1y0Var12), null)));
+        j1y0 j1y0Var13 = j1y0.w2;
+        j4p0 j4p0Var9 = new j4p0("(\\bfunction\\s+)[a-z_]\\w*(?=\\s*\\u0028)", Collections.singleton(m4p0Var));
+        j1y0 j1y0Var14 = j1y0.v2;
+        c4r0 c4r0Var9 = new c4r0(j1y0Var13, Collections.singletonList(new mqj0(j4p0Var9, true, false, Collections.singletonList(j1y0Var14), null)));
+        j1y0 j1y0Var15 = j1y0.e3;
+        mqj0 mqj0Var5 = new mqj0(new j4p0("(\\u0028\\s*)\\b(?:array|bool|boolean|float|int|integer|object|string)\\b(?=\\s*\\u0029)", Collections.singleton(m4p0Var)), true, true, Collections.singletonList(j1y0.h5), null);
+        j4p0 j4p0Var10 = new j4p0("([(,?]\\s*)\\b(?:array(?!\\s*\\u0028)|bool|callable|(?:false|null)(?=\\s*\\u007c)|float|int|iterable|mixed|object|self|static|string)\\b(?=\\s*\\u0024)", Collections.singleton(m4p0Var));
+        j1y0 j1y0Var16 = j1y0.l5;
+        mqj0 mqj0Var6 = new mqj0(j4p0Var10, true, true, Collections.singletonList(j1y0Var16), null);
+        j4p0 j4p0Var11 = new j4p0("(\\u0029\\s*:\\s*(?:\\u003f\\s*)?)\\b(?:array(?!\\s*\\u0028)|bool|callable|(?:false|null)(?=\\s*\\u007c)|float|int|iterable|mixed|never|object|self|static|string|void)\\b", Collections.singleton(m4p0Var));
+        j1y0 j1y0Var17 = j1y0.r4;
+        mqj0 mqj0Var7 = new mqj0(j4p0Var11, true, true, Collections.singletonList(j1y0Var17), null);
+        j4p0 j4p0Var12 = new j4p0("\\b(?:array(?!\\s*\\u0028)|bool|float|int|iterable|mixed|object|string|void)\\b", Collections.singleton(m4p0Var));
+        j1y0 j1y0Var18 = j1y0.i5;
+        mqj0 mqj0Var8 = new mqj0(j4p0Var12, false, true, Collections.singletonList(j1y0Var18), null);
+        mqj0 mqj0Var9 = new mqj0(new j4p0("(\\u007c\\s*)(?:false|null)\\b|\\b(?:false|null)(?=\\s*\\u007c)", Collections.singleton(m4p0Var)), true, true, Collections.singletonList(j1y0Var18), null);
+        j4p0 j4p0Var13 = new j4p0("\\b(?:parent|self|static)(?=\\s*::)", Collections.singleton(m4p0Var));
+        j1y0 j1y0Var19 = j1y0.M4;
+        c4r0 c4r0Var10 = new c4r0(j1y0Var15, zx6.U(mqj0Var5, mqj0Var6, mqj0Var7, mqj0Var8, mqj0Var9, new mqj0(j4p0Var13, false, true, Collections.singletonList(j1y0Var19), null), new mqj0(new j4p0("(\\byield\\s+)from\\b", Collections.singleton(m4p0Var)), true, false, sgyVar, null), new mqj0(new j4p0("\\bclass\\b", Collections.singleton(m4p0Var)), false, false, sgyVar, null), new mqj0(new j4p0("((?:^|[^\\s>:]|(?:^|[^-])>|(?:^|[^:]):)\\s*)\\b(?:abstract|and|array|as|break|callable|case|catch|clone|const|continue|declare|default|die|do|echo|else|elseif|empty|enddeclare|endfor|endforeach|endif|endswitch|endwhile|enum|eval|exit|extends|final|finally|fn|for|foreach|function|global|goto|if|implements|include|include_once|instanceof|insteadof|interface|isset|list|match|namespace|never|new|or|parent|print|private|protected|public|readonly|require|require_once|return|self|static|switch|throw|trait|try|unset|use|var|while|xor|yield|__halt_compiler)\\b", Collections.singleton(m4p0Var)), true, false, sgyVar, null)));
+        c4r0 c4r0Var11 = new c4r0(j1y0.e, Collections.singletonList(new mqj0(new j4p0("([(,]\\s*)\\b[a-z_]\\w*(?=\\s*:(?!:))", Collections.singleton(m4p0Var)), true, false, sgyVar, null)));
+        mqj0 mqj0Var10 = new mqj0(new j4p0("(\\b(?:extends|implements|instanceof|new(?!\\s+self|\\s+static))\\s+|\\bcatch\\s*\\u0028)\\b[a-z_]\\w*(?!\\u005c)\\b", Collections.singleton(m4p0Var)), true, true, sgyVar, null);
+        mqj0 mqj0Var11 = new mqj0(new j4p0("(\\u007c\\s*)\\b[a-z_]\\w*(?!\\u005c)\\b", Collections.singleton(m4p0Var)), true, true, sgyVar, null);
+        mqj0 mqj0Var12 = new mqj0(new j4p0("\\b[a-z_]\\w*(?!\\u005c)\\b(?=\\s*\\u007c)", Collections.singleton(m4p0Var)), false, true, sgyVar, null);
+        j4p0 j4p0Var14 = new j4p0("(\\u007c\\s*)(?:\\u005c?\\b[a-z_]\\w*)+\\b", Collections.singleton(m4p0Var));
+        j1y0 j1y0Var20 = j1y0.o1;
+        c4r0 c4r0Var12 = new c4r0(j1y0Var12, zx6.U(mqj0Var10, mqj0Var11, mqj0Var12, new mqj0(j4p0Var14, true, true, Collections.singletonList(j1y0Var20), new kx20("g203")), new mqj0(new j4p0("(?:\\u005c?\\b[a-z_]\\w*)+\\b(?=\\s*\\u007c)", Collections.singleton(m4p0Var)), false, true, Collections.singletonList(j1y0Var20), new kx20("g204")), new mqj0(new j4p0("(\\b(?:extends|implements|instanceof|new(?!\\s+self\\b|\\s+static\\b))\\s+|\\bcatch\\s*\\u0028)(?:\\u005c?\\b[a-z_]\\w*)+\\b(?!\\u005c)", Collections.singleton(m4p0Var)), true, true, Collections.singletonList(j1y0Var20), new kx20("g205")), new mqj0(new j4p0("\\b[a-z_]\\w*(?=\\s*\\u0024)", Collections.singleton(m4p0Var)), false, true, Collections.singletonList(j1y0Var18), null), new mqj0(new j4p0("(?:\\u005c?\\b[a-z_]\\w*)+(?=\\s*\\u0024)", Collections.singleton(m4p0Var)), false, true, zx6.U(j1y0Var20, j1y0Var18), new kx20("g206")), new mqj0(new j4p0("\\b[a-z_]\\w*(?=\\s*::)", Collections.singleton(m4p0Var)), false, true, Collections.singletonList(j1y0Var19), null), new mqj0(new j4p0("(?:\\u005c?\\b[a-z_]\\w*)+(?=\\s*::)", Collections.singleton(m4p0Var)), false, true, zx6.U(j1y0Var20, j1y0Var19), new kx20("g207")), new mqj0(new j4p0("([(,?]\\s*)[a-z_]\\w*(?=\\s*\\u0024)", Collections.singleton(m4p0Var)), true, true, Collections.singletonList(j1y0Var16), null), new mqj0(new j4p0("([(,?]\\s*)(?:\\u005c?\\b[a-z_]\\w*)+(?=\\s*\\u0024)", Collections.singleton(m4p0Var)), true, true, zx6.U(j1y0Var20, j1y0Var16), new kx20("g208")), new mqj0(new j4p0("(\\u0029\\s*:\\s*(?:\\u003f\\s*)?)\\b[a-z_]\\w*(?!\\u005c)\\b", Collections.singleton(m4p0Var)), true, true, Collections.singletonList(j1y0Var17), null), new mqj0(new j4p0("(\\u0029\\s*:\\s*(?:\\u003f\\s*)?)(?:\\u005c?\\b[a-z_]\\w*)+\\b(?!\\u005c)", Collections.singleton(m4p0Var)), true, true, zx6.U(j1y0Var20, j1y0Var17), new kx20("g209"))));
+        j1y0 j1y0Var21 = j1y0.B1;
+        j4p0 j4p0Var15 = new j4p0("\\b(?:false|true)\\b", Collections.singleton(m4p0Var));
+        j1y0 j1y0Var22 = j1y0.z;
+        c4r0 c4r0Var13 = new c4r0(j1y0Var21, zx6.U(new mqj0(j4p0Var15, false, false, Collections.singletonList(j1y0Var22), null), new mqj0(new j4p0("(::\\s*)\\b[a-z_]\\w*\\b(?!\\s*\\u0028)", Collections.singleton(m4p0Var)), true, true, sgyVar, null), new mqj0(new j4p0("(\\b(?:case|const)\\s+)\\b[a-z_]\\w*(?=\\s*[;=])", Collections.singleton(m4p0Var)), true, true, sgyVar, null), new mqj0(new j4p0("\\b(?:null)\\b", Collections.singleton(m4p0Var)), false, false, sgyVar, null), new mqj0(new j4p0("\\b[A-Z_][A-Z0-9_]*\\b(?!\\s*\\u0028)", ghyVar), false, false, sgyVar, null)));
+        c4r0 c4r0Var14 = new c4r0(j1y0Var14, Collections.singletonList(new mqj0(new j4p0("(^|[^\\u005c\\w])\\u005c?[a-z_](?:[\\w\\u005c]*\\w)?(?=\\s*\\u0028)", Collections.singleton(m4p0Var)), true, false, sgyVar, new kx20("g210"))));
+        c4r0 c4r0Var15 = new c4r0(j1y0.b4, Collections.singletonList(new mqj0(new j4p0("(->\\s*)\\w+", ghyVar), true, false, sgyVar, null)));
+        j1y0 j1y0Var23 = j1y0.K3;
+        c4r0 c4r0Var16 = new c4r0(j1y0Var23, Collections.singletonList(new mqj0(new j4p0("\\b0b[01]+(?:_[01]+)*\\b|\\b0o[0-7]+(?:_[0-7]+)*\\b|\\b0x[\\da-f]+(?:_[\\da-f]+)*\\b|(?:\\b\\d+(?:_\\d+)*\\u002e?(?:\\d+(?:_\\d+)*)?|\\B\\u002e\\d+)(?:e[+-]?\\d+)?", Collections.singleton(m4p0Var)), false, false, sgyVar, null)));
+        j1y0 j1y0Var24 = j1y0.N3;
+        c4r0 c4r0Var17 = new c4r0(j1y0Var24, Collections.singletonList(new mqj0(new j4p0("<?=>|\\u003f\\u003f=?|\\u002e{3}|\\u003f?->|[!=]=?=?|::|\\u002a\\u002a=?|--|\\u002b\\u002b|&&|\\u007c\\u007c|<<|>>|[?~]|[/^|%*&<>.+-]=?", ghyVar), false, false, sgyVar, null)));
+        j1y0 j1y0Var25 = j1y0.f4;
+        i6j0 i6j0Var2 = new i6j0("g193", zx6.U(c4r0Var, c4r0Var2, c4r0Var3, c4r0Var4, c4r0Var5, c4r0Var6, c4r0Var7, c4r0Var8, c4r0Var9, c4r0Var10, c4r0Var11, c4r0Var12, c4r0Var13, c4r0Var14, c4r0Var15, c4r0Var16, c4r0Var17, new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("[{}\\u005b\\u005d(),:;]", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var3 = new i6j0("g210", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("\\u005c", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var4 = new i6j0("g209", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("\\u005c", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var5 = new i6j0("g208", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("\\u005c", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var6 = new i6j0("g207", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("\\u005c", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var7 = new i6j0("g206", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("\\u005c", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var8 = new i6j0("g205", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("\\u005c", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var9 = new i6j0("g204", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("\\u005c", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var10 = new i6j0("g203", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("\\u005c", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var11 = new i6j0("g202", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("\\u005c", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var12 = new i6j0("g199", zx6.U(new c4r0(j1y0.r, Collections.singletonList(new mqj0(new j4p0("^(#\\u005b)[\\s\\S]+(?=\\u005d$)", ghyVar), true, false, sgyVar, new kx20("g200")))), new c4r0(j1y0Var2, Collections.singletonList(new mqj0(new j4p0("^#\\u005b|\\u005d$", ghyVar), false, false, Collections.singletonList(j1y0Var25), null)))));
+        i6j0 i6j0Var13 = new i6j0("g200", zx6.U(new c4r0(j1y0Var4, Collections.singletonList(new mqj0(new j4p0("\\u002f\\u002a[\\s\\S]*?\\u002a\\u002f|\\u002f\\u002f.*|#(?!\\u005b).*", ghyVar), false, false, sgyVar, null))), new c4r0(j1y0Var5, zx6.U(new mqj0(new j4p0("<<<'([^']+)'[\\r\\n](?:.*[\\r\\n])*?\\1;", ghyVar), false, true, Collections.singletonList(j1y0Var6), new kx20("g194")), new mqj0(new j4p0("<<<(?:\"([^\"]+)\"[\\r\\n](?:.*[\\r\\n])*?\\1;|([a-z_]\\w*)[\\r\\n](?:.*[\\r\\n])*?\\2;)", Collections.singleton(m4p0Var)), false, true, Collections.singletonList(j1y0Var7), new kx20("g196")), new mqj0(new j4p0("`(?:\\u005c[\\s\\S]|[^\\u005c`])*`", ghyVar), false, true, Collections.singletonList(j1y0Var8), null), new mqj0(new j4p0("'(?:\\u005c[\\s\\S]|[^\\u005c'])*'", ghyVar), false, true, Collections.singletonList(j1y0Var9), null), new mqj0(new j4p0("\"(?:\\u005c[\\s\\S]|[^\\u005c\"])*\"", ghyVar), false, true, Collections.singletonList(j1y0Var10), new kx20("g198")))), new c4r0(j1y0.q, zx6.U(new mqj0(new j4p0("([^:]|^)\\b[a-z_]\\w*(?!\\u005c)\\b", Collections.singleton(m4p0Var)), true, true, Collections.singletonList(j1y0Var12), null), new mqj0(new j4p0("([^:]|^)(?:\\u005c?\\b[a-z_]\\w*)+", Collections.singleton(m4p0Var)), true, true, zx6.U(j1y0Var12, j1y0Var20), new kx20("g201")))), new c4r0(j1y0Var21, zx6.U(new mqj0(new j4p0("\\b(?:false|true)\\b", Collections.singleton(m4p0Var)), false, false, Collections.singletonList(j1y0Var22), null), new mqj0(new j4p0("(::\\s*)\\b[a-z_]\\w*\\b(?!\\s*\\u0028)", Collections.singleton(m4p0Var)), true, true, sgyVar, null), new mqj0(new j4p0("(\\b(?:case|const)\\s+)\\b[a-z_]\\w*(?=\\s*[;=])", Collections.singleton(m4p0Var)), true, true, sgyVar, null), new mqj0(new j4p0("\\b(?:null)\\b", Collections.singleton(m4p0Var)), false, false, sgyVar, null), new mqj0(new j4p0("\\b[A-Z_][A-Z0-9_]*\\b(?!\\s*\\u0028)", ghyVar), false, false, sgyVar, null))), new c4r0(j1y0Var23, Collections.singletonList(new mqj0(new j4p0("\\b0b[01]+(?:_[01]+)*\\b|\\b0o[0-7]+(?:_[0-7]+)*\\b|\\b0x[\\da-f]+(?:_[\\da-f]+)*\\b|(?:\\b\\d+(?:_\\d+)*\\u002e?(?:\\d+(?:_\\d+)*)?|\\B\\u002e\\d+)(?:e[+-]?\\d+)?", Collections.singleton(m4p0Var)), false, false, sgyVar, null))), new c4r0(j1y0Var24, Collections.singletonList(new mqj0(new j4p0("<?=>|\\u003f\\u003f=?|\\u002e{3}|\\u003f?->|[!=]=?=?|::|\\u002a\\u002a=?|--|\\u002b\\u002b|&&|\\u007c\\u007c|<<|>>|[?~]|[/^|%*&<>.+-]=?", ghyVar), false, false, sgyVar, null))), new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("[{}\\u005b\\u005d(),:;]", ghyVar), false, false, sgyVar, null)))));
+        i6j0 i6j0Var14 = new i6j0("g201", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("\\u005c", ghyVar), false, false, sgyVar, null)))));
+        j1y0 j1y0Var26 = j1y0.Y2;
+        i6j0 i6j0Var15 = new i6j0("g198", Collections.singletonList(new c4r0(j1y0Var26, Collections.singletonList(new mqj0(new j4p0("\\u007b\\u0024(?:\\u007b(?:\\u007b[^{}]+\\u007d|[^{}]+)\\u007d|[^{}])+\\u007d|(^|[^\\u005c{])\\u0024+(?:\\w+(?:\\u005b[^\\r\\n\\u005b\\u005d]+\\u005d|->\\w+)?)", ghyVar), true, false, sgyVar, new lx20("php"))))));
+        j4p0 j4p0Var16 = new j4p0("^<<<(?:\"[^\"]+\"|[a-z_]\\w*)|[a-z_]\\w*;$", Collections.singleton(m4p0Var));
+        j1y0 j1y0Var27 = j1y0.T4;
+        a = new h870("g192", wbb0.d0(i6j0Var, i6j0Var2, i6j0Var3, i6j0Var4, i6j0Var5, i6j0Var6, i6j0Var7, i6j0Var8, i6j0Var9, i6j0Var10, i6j0Var11, i6j0Var12, i6j0Var13, i6j0Var14, i6j0Var15, new i6j0("g196", zx6.U(new c4r0(j1y0Var2, Collections.singletonList(new mqj0(j4p0Var16, false, false, Collections.singletonList(j1y0Var27), new kx20("g197")))), new c4r0(j1y0Var26, Collections.singletonList(new mqj0(new j4p0("\\u007b\\u0024(?:\\u007b(?:\\u007b[^{}]+\\u007d|[^{}]+)\\u007d|[^{}])+\\u007d|(^|[^\\u005c{])\\u0024+(?:\\w+(?:\\u005b[^\\r\\n\\u005b\\u005d]+\\u005d|->\\w+)?)", ghyVar), true, false, sgyVar, new lx20("php")))))), new i6j0("g197", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("^<<<\"?|[\";]$", ghyVar), false, false, sgyVar, null))))), new i6j0("g194", Collections.singletonList(new c4r0(j1y0Var2, Collections.singletonList(new mqj0(new j4p0("^<<<'[^']+'|[a-z_]\\w*;$", Collections.singleton(m4p0Var)), false, false, Collections.singletonList(j1y0Var27), new kx20("g195")))))), new i6j0("g195", Collections.singletonList(new c4r0(j1y0Var25, Collections.singletonList(new mqj0(new j4p0("^<<<'?|[';]$", ghyVar), false, false, sgyVar, null)))))));
+    }
+}

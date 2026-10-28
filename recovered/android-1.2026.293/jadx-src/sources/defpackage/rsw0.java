@@ -1,0 +1,13 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-140ac036dec80b08383f008c3503c21373697c9ca3a5c5655e03fdcd4fde0e95 */
+/* JADX INFO: loaded from: classes6.dex */
+public final class rsw0 {
+    public final j9z a;
+    public final ega0 b = mwq.M(6, "ShareDestinationOrderProvider");
+    public final t0y0 c = new t0y0(new vet0(this, 7));
+
+    public rsw0(j9z j9zVar) {
+        this.a = j9zVar;
+    }
+}
