@@ -209,3 +209,10 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - 0xF0 = 一元操作（非跳转，此前误标）
 - CLI 过滤参数修正（args[1]）；0x00 填充折叠
 - ChatGPTConversationState 栈重建样例：`exports? → GETPROP-IC → CALL argc=1 → store local[N]` 循环 + `local[N]=const[M]` 表驱动初始化
+
+### 9.14 语义表 v2 + 渲染器接入（2026-10-28）
+
+- analysis/tools/cel_semantics.py：81 条语义条目（confirmed/induced/guess 三级置信度），TextInput.js 对齐实证：0x11=DUP、0x27=COMPARE(pop3)、0xec/0xeb=JCC(pop1 消耗条件)、0x68 族=字符串/属性引用推入
+- cel_decompile.py v2：未知 op 按 SEMANTICS 渲染助记符+置信度标注；栈模拟表达式重建上线（OP_C(OP_A8(), const[…]) 形态）
+- CLI 修复记录：filter 参数错位曾导致 -o 重跑静默写零文件（磁盘滞留初版产物）
+- 已知 op 渲染：CALL/GETPROP-IC/ASSIGN/STORE-LOCAL/LOAD 系全部语句化

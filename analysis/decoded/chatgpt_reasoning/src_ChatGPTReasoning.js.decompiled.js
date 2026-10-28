@@ -11,8 +11,8 @@
   local[19] = undefined.(const[268]);
   local[20] = const[281](const[282], push4);
   local[21] = undefined.(const[268]);
-  // op 0xbe (语义待归纳)
-  local[22] = [op 0xbe](push2);
+  // op 0xbe OP_be [?]
+  local[22] = OP_be(undefined., const[270])(push2);
   local[23] = f0(const[283]);
   local[24] = f0(const[284]);
   local[25] = f0(const[285]);
@@ -25,112 +25,286 @@
   local[32] = f0(const[292]);
   local[33] = f0(const[293]);
   local[34] = f0(const[294]);
-  // op 0xbf (语义待归纳)
-  local[35] = [op 0xbf];
-  // op 0xb9 (语义待归纳)
-  local[36] = [op 0xb9];
-  // op 0xc0 (语义待归纳)
-  // op 0xc0 (语义待归纳)
-  // op 0x8f (语义待归纳)
-  // op 0xc0 (语义待归纳)
-  local[37] = this/ctx.this/ctx.this/ctx.globalThis.[op 0xc0].this/ctx.globalThis.[op 0x8f].!(globalThis).objlit[302](objlit[301](undefined)).[op 0xc0];
-  // op 0xc0 (语义待归纳)
-  local[38] = this/ctx.this/ctx.objlit[306](objlit[305](undefined)).objlit[306](objlit[305](undefined)).!(globalThis).!(globalThis).objlit[308](objlit[301](undefined)).[op 0xc0];
-  // op 0xc0 (语义待归纳)
-  // op 0x8f (语义待归纳)
-  // op 0xc0 (语义待归纳)
-  // op 0x8f (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbf (语义待归纳)
-  local[39] = this/ctx.this/ctx.this/ctx.globalThis.[op 0x8f].this/ctx.globalThis.[op 0x8f].!(globalThis).[op 0xbe].[op 0xbf];
+  // op 0xbf OP_bf [?]
+  local[35] = OP_bf(local-ref, local-ref);
+  // op 0xb9 OP_b9 [?]
+  local[36] = OP_b9(local-ref, local-ref);
+  // op 0xc0 OP_c0 [?]
+  // op 0xc0 OP_c0 [?]
+  // op 0x8f OP_8f [?]
+  // op 0xc0 OP_c0 [?]
+  local[37] = local-ref.OP_c0(local-ref, local-ref.local-ref.local-ref.OP_8f(local-ref, local-ref).!(globalThis).objlit[302](objlit[301](undefined)));
+  // op 0xc0 OP_c0 [?]
+  local[38] = const[279].OP_c0(const[280], this/ctx.this/ctx.objlit[306](objlit[305](undefined)).objlit[306](objlit[305](undefined)).!(globalThis).!(globalThis).objlit[308](objlit[301](undefined)));
+  // op 0xc0 OP_c0 [?]
+  // op 0x8f OP_8f [?]
+  // op 0xc0 OP_c0 [?]
+  // op 0x8f OP_8f [?]
+  // op 0xbe OP_be [?]
+  // op 0xbf OP_bf [?]
+  local[39] = ?.OP_bf(?.OP_be(undefined..const[274].undefined..OP_8f(const[274], undefined.).!(globalThis)));
   local[40] = this/ctx.this/ctx.const[311].const[313].this/ctx.const[315].const[316].this/ctx.const[318].const[319].this/ctx.const[271].const[313].this/ctx.const[321].const[322].this/ctx.const[323].const[324].this/ctx.const[326].const[240].this/ctx.const[328].const[329].this/ctx.const[331].const[332].this/ctx.const[318].const[319].this/ctx.const[318].const[334].this/ctx.const[336].const[337].this/ctx.const[339].const[340].this/ctx.const[271].const[341];
-  // op 0x64 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0xc0 (语义待归纳)
-  // op 0x59 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0xc0 OP_c0 [?]
+  // op 0x59 OP59 [?]
+  // op 0x57 OP57 [?]
+  // op 0x57 OP57 [?]
+  // op 0x57 OP57 [?]
+  // op 0x57 OP57 [?]
+  // op 0x57 OP57 [?]
+  // op 0x57 OP57 [?]
+  // op 0x57 OP57 [?]
+  // op 0x57 OP57 [?]
+  // op 0x57 OP57 [?]
+  // op 0x57 OP57 [?]
+  // op 0x57 OP57 [?]
   local[42] = v06;
-  // discard([op 0x57])
-  // op 0xc5 (语义待归纳)
-  // op 0x6b (语义待归纳)
-  local[43] = [op 0x6b];
+  // discard(OP57())
+  // op 0xc5 LOCAL_OP5 [?]
+  // op 0x6b STR_OP_B [~]
+  local[43] = STR_OP_B(LOCAL_OP5());
   EXPORTS. (seq 1) = undefined;  // exports
-  // op 0x11 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0x11 (语义待归纳)
-  // op 0xbb (语义待归纳)
-  // op 0xbb (语义待归纳)
-  local[46] = [op 0x11].call21(this/ctx.objlit[373](objlit[372](undefined)).[op 0xb7].[op 0xb7]; objlit[386](undefined).f0([op 0xbe]).[op 0xbe].[op 0xb8]).call21([op 0x11]; this/ctx.const[367].const[369].globalThis.objlit[391](objlit[358](undefined)).[op 0xbe]).call21([op 0x11]; this/ctx.const[367].[op 0xbe].const[367].[op 0xbe]).call21([op 0x11]; this/ctx.objlit[402](objlit[401](undefined)).[op 0xbe].[op 0xbe]).call21([op 0x11]; this/ctx.objlit[405](objlit[372](undefined)).objlit[402](objlit[401](undefined)).[op 0xbb].objlit[391](objlit[358](undefined)).objlit[359](objlit[358](undefined)).[op 0xbb]);
-  // stack@END: undefined. | const[274] | undefined. | const[274] | undefined. | const[64] | undefined. | const[278] | const[279] | const[280] | undefined. | const[270] | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | [op 0x64] | [op 0xc5] | this/ctx.call21([op 0x11]; this/ctx.const[356].objlit[359](objlit[358](undefined)).objlit[359](objlit[358](undefined)).const[362]).call21([op 0x11]; this/ctx.const[356].objlit[365](objlit[358](undefined)).const[362]).call21([op 0x11]; this/ctx.const[367].const[369].objlit[359](objlit[358](undefined)).[op 0xbe].const[362]) | [op 0x11].call21(this/ctx.objlit[373](objlit[372](undefined)).[op 0xb7]; objlit[376](undefined).f0([op 0xbe]).[op 0xbe].[op 0xb7]).call21([op 0x11]; this/ctx.const[367].[op 0xbe].const[367].[op 0xbe]).call21([op 0x11]; this/ctx.const[369].const[362]) | [op 0x11].call21(this/ctx.objlit[385](objlit[372](undefined)); objlit[386](undefined).f0([op 0xbe]).[op 0xbe].globalThis).call21([op 0x11]; this/ctx.const[388].const[369].objlit[359](objlit[358](undefined)).[op 0xbe].const[362]).call21([op 0x11]; this/ctx.const[356].[op 0xb7].[op 0xb7].objlit[391](objlit[358](undefined)).globalThis) | [op 0x11].call21(this/ctx.objlit[394](objlit[372](undefined)); objlit[386](undefined).f0([op 0xbe]).[op 0xbe].globalThis) | [op 0x11].call21(this/ctx.objlit[394](objlit[372](undefined)); objlit[386](undefined).f0([op 0xbe]).[op 0xbe].globalThis).call21([op 0x11]; this/ctx.const[367].const[369].objlit[359](objlit[358](undefined)).[op 0xbe].const[362])
-  // --- 模块段结束（其后为模块记录元数据，非字节码） ---
-  // meta+0000: ae0301a70200890104e4264f00dc0902
-  // meta+0010: 080821261c08212b1c1c26004a022612
-  // meta+0020: 08004a02004a021c2626004a02261208
-  // meta+0030: 08212b1c08212b1c1c26262b12083535
-  // meta+0040: 1c0835351c0835351c0835351c083535
-  // meta+0050: 1c0835351c0835351c0835351c083535
-  // meta+0060: 1c0835351c0835351c0835351c083535
-  // meta+0070: 1c0835351c0e00322400081800081800
-  // meta+0080: 081e00081400081600080e0008140008
-  // meta+0090: 0c00081e2d2b000b264508c135004a02
-  // meta+00a0: 004a02352bc135004a02352bc1353500
-  // meta+00b0: 4a0226352bc1004a0221df26212bc135
-  // meta+00c0: 2635262bc135352bc1004a02df26212b
-  // meta+00d0: c13535004a0226352bc1352121004a02
-  // meta+00e0: 212bc1004a02df26212bc1004a02df26
-  // meta+00f0: 212bc13535004a0226352bc1004a0221
-  // …(元数据共 15412B，截断显示)
+  // op 0x11 DUP [~]
+  // op 0x11 DUP [~]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbb OP_bb [?]
+  // op 0xbb OP_bb [?]
+  local[46] = ?.call21(?; ?.OP_bb(?.OP_bb(DUP(?.call21(?; ?.OP_be(?.OP_be(DUP(?.call21(?; ?.OP_be(?.OP_be(DUP(?.call21(?; ?.OP_be(DUP(?.call21(?; ?.PUSH_WK2(?.OP_be(?.f0(OP_be(?.PUSH_WK1(?.PUSH_WK1(DUP(?.call21(?; ?.OP_be(DUP(?.call21(?; ?.OP_be(DUP(?.call21(?; ?.OP_be(DUP(?.call21(?; ?.PUSH_WK1(?.PUSH_WK1(DUP(?.call21(?; ?.OP_be(DUP(?.call21(?; ?.OP_be(DUP(?.call21(DUP(?.call21(?; ?.OP_be(?.OP_be(DUP(?.call21(?; ?.PUSH_WK1(?.OP_be(?.f0(OP_be(?.PUSH_WK1(DUP(?.call21(?; ?.OP_be(DUP(?.call21(DUP(?.call21(DUP(this/ctx); this/ctx.const[356].objlit[359](objlit[358](undefined)).objlit[359](objlit[358](undefined)).const[362])); this/ctx.const[356].objlit[365](objlit[358](undefined)).const[362])), this/ctx.const[367].const[369].objlit[359](objlit[358](undefined))).const[362])), this/ctx.objlit[373](objlit[372](undefined))), objlit[376](undefined))))))), this/ctx.const[367]).const[367]))); this/ctx.const[369].const[362])).f0(OP_be(this/ctx.objlit[385](objlit[372](undefined)), objlit[386](undefined)))).globalThis)), this/ctx.const[388].const[369].objlit[359](objlit[358](undefined))).const[362])), this/ctx.const[356])).objlit[391](objlit[358](undefined)).globalThis)).f0(OP_be(this/ctx.objlit[394](objlit[372](undefined)), objlit[386](undefined)))).globalThis)).f0(OP_be(this/ctx.objlit[394](objlit[372](undefined)), objlit[386](undefined)))).globalThis)), this/ctx.const[367].const[369].objlit[359](objlit[358](undefined))).const[362])), this/ctx.objlit[373](objlit[372](undefined)))), objlit[386](undefined))))))), this/ctx.const[367].const[369].globalThis.objlit[391](objlit[358](undefined))))), this/ctx.const[367]).const[367]))), this/ctx.objlit[402](objlit[401](undefined)))))), this/ctx.objlit[405](objlit[372](undefined)).objlit[402](objlit[401](undefined))).objlit[391](objlit[358](undefined)).objlit[359](objlit[358](undefined))));
+  // ===== 初始化段结束；其后为函数单元 =====
+  ? = ?;
+  // op 0x89 OP_89 [?]
+  // op 0xdc OP_dc [?]
+  // op 0x09 PUSH_D [~]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x1c OP_1c [?]
+  // op 0x4a OP_4a [?]
+  // op 0x4a OP_4a [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x1c OP_1c [?]
+  // op 0x12 OP_12 [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // discard(OP_1c())
+  …(pad)
+  // op 0x32 OP_32 [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x18 TRIPLE_OP [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x18 TRIPLE_OP [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x1e OP_1e [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x14 OP_14 [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x16 OP_16 [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // discard(PUSH_C(OP_16()))
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x14 OP_14 [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x08 PUSH_C [~]
+  // op 0x1e OP_1e [?]
+  // op 0x2d OP_2d [?]
+  // op 0x2b OP_2b [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x2b OP_2b [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x35 OP35 [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x2b OP_2b [?]
+  // op 0x2b OP_2b [?]
+  // op 0x35 OP35 [?]
+  // op 0x2b OP_2b [?]
+  // op 0x4a OP_4a [?]
+  // op 0x35 OP35 [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x35 OP35 [?]
+  // op 0x4a OP_4a [?]
+  // op 0x4a OP_4a [?]
+  // op 0x4a OP_4a [?]
+  // op 0x35 OP35 [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x2b OP_2b [?]
+  // op 0x4a OP_4a [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x2b OP_2b [?]
+  // discard(OP_2b(OP_4a(), num[553798144]))
+  // op 0x0a PUSH_E [~]
+  // op 0xd7 OP_d7 [?]
+  // op 0xa3 OP_A3 [?]
+  // op 0x70 STR_OP_E [~]
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0x1e OP_1e [?]
+  // op 0x85 OP_85 [?]
+  jcc-0xeb → @4829   // 条件跳转 (目标=pc+1+i8)
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0xbe OP_be [?]
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0x1e OP_1e [?]
+  // op 0x85 OP_85 [?]
+  jcc-0xeb → @4838   // 条件跳转 (目标=pc+1+i8)
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0x3f OP_3f [?]
+  // op 0x3d OP_3d [?]
+  // op 0x0a PUSH_E [~]
+  // op 0xc7 PUSH_C7 [~]
+  // op 0x3f OP_3f [?]
+  // op 0x51 OP_51 [?]
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0xbe OP_be [?]
+  // op 0x7b OP_7b [?]
+  // op 0x07 PUSH_B [~]
+  // op 0x05 REF_LOAD [?]
+  // op 0xe4 PUSH_E4 [?]
+  // op 0x2a OP_2a [?]
+  // op 0x0d LOAD_M [~]
+  // op 0x64 DECL_SLOT [~]
+  locop 0xcd(load[00])
+  // op 0x2b OP_2b [?]
+  // op 0xc7 PUSH_C7 [~]
+  // op 0x34 OP_34 [?]
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xc9 PUSH_C9 [~]
+  // op 0x55 OP55 [?]
+  // discard(OP55())
+  // op 0x27 COMPARE [~]
+  // op 0x11 DUP [~]
+  // op 0x67 STR_CMP [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @4876   // 条件跳转 (目标=pc+1+i8)
+  // op 0x1b OP_1b [?]
+  // discard(OP_1b()())
+  // discard(?)
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0x68 PUSH_STR2 [~]
+  EXPORTS.key#417 (seq 0) = ?.objlit[412](PUSH_STR2(?.!(PUSH_WK1(undefined, this/ctx.globalThis)))).key#413(objlit[364](objlit[414](undefined))).objlit[364](objlit[414](undefined));  // ?
+  EXPORTS.key#418 (seq 1) = local[0];  // undefined
+  ? = ?;
+  // op 0x92 OP_92 [?]
+  …(pad)
+  // op 0x3a OP_3a [?]
+  …(pad)
+  // op 0xfc OP_fc [?]
+  // stack-tail: OP_fc(OP_3a(OP_92(), const[02004a02]), 't')
 
 // ---- 字符串表 ----
 // str[0] = 'require'

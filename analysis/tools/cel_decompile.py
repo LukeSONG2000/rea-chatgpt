@@ -5,6 +5,11 @@
 import struct, subprocess, sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 import cel_slots
+try:
+    import cel_semantics
+    SEM = cel_semantics.SEMANTICS
+except ImportError:
+    SEM = {}
 
 STR_MAX = 56
 
@@ -121,10 +126,17 @@ def render(blob, meta):
         elif op == 0xf0:
             stack.append(f'f0({pop()})')
         else:
+            e = SEM.get(op)
+            mn = e[0] if e else f'OP_{op:02x}'
+            conf = e[2] if e else 'unknown'
             for _ in range(i.get('pops', 0)):
                 if stack: pop()
-            stack.append(f'[op 0x{op:02x}]')
-            lines.append(f'  // op 0x{op:02x} (语义待归纳)')
+            args = ', '.join(stack[-2:]) if len(stack) >= 2 else (stack[0] if stack else '')
+            for _ in range(min(2, len(stack))):
+                if stack: pop()
+            stack.append(f'{mn}({args})' if args else f'{mn}()')
+            mark = {'confirmed': '✓', 'induced': '~', 'guess': '?', 'unknown': '?'}.get(conf, '~')
+            lines.append(f'  // op 0x{op:02x} {mn} [{mark}]')
     if stack:
         lines.append('  // stack-tail: ' + ' | '.join(stack))
     lines.append('')

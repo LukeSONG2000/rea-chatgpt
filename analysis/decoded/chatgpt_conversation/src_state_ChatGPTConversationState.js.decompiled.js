@@ -14,7 +14,7 @@
   local[12] = local[0];
   local[13] = local[0];
   local[14] = local[0];
-  // op 0x64 (语义待归纳)
+  // op 0x64 DECL_SLOT [~]
   // discard(pool[145].key#101(exports, const[234], this/ctx.!(globalThis)))
   EXPORTS.key#235 (seq 0) = …;  // …
   EXPORTS.key#236 (seq 1) = …;  // …
@@ -32,54 +32,53 @@
   EXPORTS.key#248 (seq 13) = …;  // …
   EXPORTS.key#249 (seq 14) = pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, pair(exports, v06))))))))))))));  // exports
   locop 0xca(f0(const[250]))
-  // op 0xbe (语义待归纳)
-  EXPORTS.key#235 (seq 15) = [op 0xbe];  // exports
-  // op 0xc7 (语义待归纳)
-  EXPORTS.key#236 (seq 16) = [op 0xc7];  // exports
-  // op 0xc8 (语义待归纳)
-  EXPORTS.key#237 (seq 17) = [op 0xc8];  // exports
-  // op 0xc9 (语义待归纳)
-  EXPORTS.key#238 (seq 18) = [op 0xc9];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#239 (seq 19) = [op 0xc3];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#240 (seq 20) = [op 0xc3];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#241 (seq 21) = [op 0xc3];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#242 (seq 22) = [op 0xc3];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#243 (seq 23) = [op 0xc3];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#244 (seq 24) = [op 0xc3];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#245 (seq 25) = [op 0xc3];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#246 (seq 26) = [op 0xc3];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#247 (seq 27) = [op 0xc3];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#248 (seq 28) = [op 0xc3];  // exports
-  // op 0xc3 (语义待归纳)
-  EXPORTS.key#249 (seq 29) = [op 0xc3];  // exports
-  // stack@INIT-END: coerce(this/ctx) | 'g' | 'p' | [op 0x64] | local-ref
+  // op 0xbe OP_be [?]
+  EXPORTS.key#235 (seq 15) = OP_be(local-ref, exports);  // DECL_SLOT('g', 'p')
+  // op 0xc7 PUSH_C7 [~]
+  EXPORTS.key#236 (seq 16) = PUSH_C7(coerce(this/ctx), exports);  // ?
+  // op 0xc8 PUSH_C8 [~]
+  EXPORTS.key#237 (seq 17) = PUSH_C8(exports);  // ?
+  // op 0xc9 PUSH_C9 [~]
+  EXPORTS.key#238 (seq 18) = PUSH_C9(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#239 (seq 19) = LOAD_M3(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#240 (seq 20) = LOAD_M3(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#241 (seq 21) = LOAD_M3(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#242 (seq 22) = LOAD_M3(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#243 (seq 23) = LOAD_M3(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#244 (seq 24) = LOAD_M3(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#245 (seq 25) = LOAD_M3(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#246 (seq 26) = LOAD_M3(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#247 (seq 27) = LOAD_M3(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#248 (seq 28) = LOAD_M3(exports);  // ?
+  // op 0xc3 LOAD_M3 [~]
+  EXPORTS.key#249 (seq 29) = LOAD_M3(exports);  // ?
   // ===== 初始化段结束；其后为函数单元 =====
   ? = ?;
-  // op 0xb7 (语义待归纳)
-  // op 0x40 (语义待归纳)
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0x40 OP_40 [?]
   …(pad)
-  // op 0xc0 (语义待归纳)
-  // op 0xc0 (语义待归纳)
-  // op 0x33 (语义待归纳)
-  num[62259539] = call25(const[00d242fb]().key#252; [op 0x33], const[253]);
-  // op 0x5c (语义待归纳)
-  // op 0x07 (语义待归纳)
-  // op 0xa8 (语义待归纳)
+  // op 0xc0 OP_c0 [?]
+  // op 0xc0 OP_c0 [?]
+  // op 0x33 OP_33 [?]
+  ? = call25(?; OP_33(), const[253]);
+  // op 0x5c OP_5c [?]
+  // op 0x07 PUSH_B [~]
+  // op 0xa8 OP_A8 [?]
   …(pad)
-  // op 0x08 (语义待归纳)
+  // op 0x08 PUSH_C [~]
   …(pad)
-  // op 0xff (语义待归纳)
-  // stack-tail: 'MAX_CONVERSATION_TITLE_LENGTH' | const[2835359460] | const[040008de] | const[adb2b77b] | [op 0x40] | 'require' | 'module' | [op 0xa8] | const[0101004d] | [op 0x08] | v06 | const[4294964487] | [op 0xff]
+  // op 0xff OP_ff [?]
+  // stack-tail: PUSH_C(OP_A8(), const[0101004d]) | OP_ff(v06, const[4294964487])
 
 // ---- 字符串表 ----
 // str[0] = 'require'
