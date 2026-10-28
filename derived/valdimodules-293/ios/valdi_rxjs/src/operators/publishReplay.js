@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.publishReplay=void 0;const e=require("../ReplaySubject"),t=require("./multicast"),i=require("../util/isFunction");function u(u,s,r,n){r&&!(0,i.isFunction)(r)&&(n=r);const o=(0,i.isFunction)(r)?r:void 0;return i=>(0,t.multicast)(new e.ReplaySubject(u,s,n),o)(i)}exports.publishReplay=u;

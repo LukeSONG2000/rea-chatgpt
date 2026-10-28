@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.from=void 0;const e=require("../scheduled/scheduled"),r=require("./innerFrom");function o(o,s){return s?(0,e.scheduled)(o,s):(0,r.innerFrom)(o)}exports.from=o;

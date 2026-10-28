@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.EmptyError=void 0;const e=require("./createErrorClass");exports.EmptyError=(0,e.createErrorClass)(e=>function(){e(this),this.name="EmptyError",this.message="no elements in sequence"});

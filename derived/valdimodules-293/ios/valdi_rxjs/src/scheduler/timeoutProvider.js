@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.timeoutProvider=void 0,exports.timeoutProvider={setTimeout(e,t,...o){const{delegate:r}=exports.timeoutProvider;return r?.setTimeout?r.setTimeout(e,t,...o):setTimeout(e,t,...o)},clearTimeout(e){const{delegate:t}=exports.timeoutProvider;return(t?.clearTimeout||clearTimeout)(e)},delegate:void 0};

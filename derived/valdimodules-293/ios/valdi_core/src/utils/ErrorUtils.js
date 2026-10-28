@@ -1,0 +1,1 @@
+"use strict";function r(r){return r instanceof Error?r:r.message?new Error(r.message):"string"==typeof r?new Error(r):"object"==typeof r?new Error(JSON.stringify(r)):new Error(r)}Object.defineProperty(exports,"__esModule",{value:!0}),exports.toError=void 0,exports.toError=r;

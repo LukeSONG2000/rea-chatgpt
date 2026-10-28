@@ -1,0 +1,150 @@
+{
+ "module": "client_sql.valdimodule",
+ "file": "src/ClientSQL.js",
+ "moduleName": "client_sql/src/ClientSQL",
+ "format": {
+  "keyBase": 216,
+  "entryCountDeclared": 9,
+  "entryCountParsed": 8,
+  "footerIndex": 8,
+  "entryPrefix": "LEB128((charCount<<1)|utf16Flag); flag0=UTF-8, flag1=UTF-16LE",
+  "footerEntry": "prefix 0x0e + 7 bytes 00 06 00 a0 01 00 01 (counted as last entry)"
+ },
+ "keyStats": {
+  "totalRefs": 9,
+  "distinctKeys": 7,
+  "resolvedInTable": 6,
+  "commonBelow216": [
+   64,
+   101,
+   145
+  ],
+  "beyondTable": []
+ },
+ "table": [
+  {
+   "slot": 0,
+   "key": 216,
+   "name": "require",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 7,
+   "refs": 0
+  },
+  {
+   "slot": 1,
+   "key": 217,
+   "name": "module",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 6,
+   "refs": 0
+  },
+  {
+   "slot": 2,
+   "key": 218,
+   "name": "exports",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 7,
+   "refs": 0
+  },
+  {
+   "slot": 3,
+   "key": 219,
+   "name": "e",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 4,
+   "key": 220,
+   "name": "__esModule",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 10,
+   "refs": 1
+  },
+  {
+   "slot": 5,
+   "key": 221,
+   "name": "clientSQLNative",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 15,
+   "refs": 2
+  },
+  {
+   "slot": 6,
+   "key": 222,
+   "name": "./ClientSQLNative",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 17,
+   "refs": 1
+  },
+  {
+   "slot": 7,
+   "key": 223,
+   "name": "openDatabase",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 12,
+   "refs": 2
+  }
+ ],
+ "keyUsage": {
+  "145": [
+   {
+    "pc": 58,
+    "op": "0x38"
+   }
+  ],
+  "101": [
+   {
+    "pc": 63,
+    "op": "0x42"
+   }
+  ],
+  "220": [
+   {
+    "pc": 97,
+    "op": "0x04"
+   }
+  ],
+  "64": [
+   {
+    "pc": 105,
+    "op": "0x4f"
+   }
+  ],
+  "221": [
+   {
+    "pc": 116,
+    "op": "0x45"
+   },
+   {
+    "pc": 176,
+    "op": "0x45"
+   }
+  ],
+  "222": [
+   {
+    "pc": 126,
+    "op": "0x04"
+   }
+  ],
+  "223": [
+   {
+    "pc": 138,
+    "op": "0x41"
+   },
+   {
+    "pc": 171,
+    "op": "0x4f"
+   }
+  ]
+ }
+}

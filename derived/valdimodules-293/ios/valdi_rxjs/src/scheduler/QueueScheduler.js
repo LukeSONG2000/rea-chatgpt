@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.QueueScheduler=void 0;const e=require("./AsyncScheduler");class QueueScheduler extends e.AsyncScheduler{}exports.QueueScheduler=QueueScheduler;

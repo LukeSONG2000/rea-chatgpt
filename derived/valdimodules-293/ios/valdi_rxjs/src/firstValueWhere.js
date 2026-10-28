@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.firstValueWhere=void 0;const e=require("./operators/filter"),r=require("./firstValueFrom"),t=require("./operators/timeout");function i(i,o,u){return void 0!==u?(0,r.firstValueFrom)(i.pipe((0,e.filter)(o),(0,t.timeout)(u))):(0,r.firstValueFrom)(i.pipe((0,e.filter)(o)))}exports.firstValueWhere=i;

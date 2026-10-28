@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.reportTextSelectionCopy=void 0;const e=require("valdi_core/src/CompilerIntrinsics");function t(t,o){(0,e.isVersionAtLeast)(348)&&void 0!==o?t?.rendererEvent({type:"text_selection_copy_completed",payload:{selectedTextLength:o}}):t?.textSelectionCopyCompleted()}exports.reportTextSelectionCopy=t;

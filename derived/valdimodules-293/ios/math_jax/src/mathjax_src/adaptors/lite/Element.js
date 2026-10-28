@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.LiteElement=void 0;class LiteElement{constructor(t,e={},s=[]){this.kind=t,this.attributes={...e},this.children=[...s];for(const i of this.children)i.parent=this;this.styles=null}}exports.LiteElement=LiteElement;

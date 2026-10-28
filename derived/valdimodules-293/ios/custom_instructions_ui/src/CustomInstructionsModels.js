@@ -1,0 +1,1 @@
+"use strict";var t;Object.defineProperty(exports,"__esModule",{value:!0}),exports.CustomInstructionsSaveBehavior=void 0,function(t){t[t.ExplicitSave=0]="ExplicitSave",t[t.Automatic=1]="Automatic"}(t||(exports.CustomInstructionsSaveBehavior=t={}));

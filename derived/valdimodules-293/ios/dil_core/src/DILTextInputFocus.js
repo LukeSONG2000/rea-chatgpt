@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.DIL_TEXT_INPUT_SOFT_FOCUS_BORDER_STYLE=void 0;const e=require("valdi_core/src/Style");exports.DIL_TEXT_INPUT_SOFT_FOCUS_BORDER_STYLE=new e.Style({position:"absolute",left:0,top:0,right:0,bottom:0,borderWidth:1,borderColor:"alpha-20",touchEnabled:!1,accessibilityNavigation:"ignored"});

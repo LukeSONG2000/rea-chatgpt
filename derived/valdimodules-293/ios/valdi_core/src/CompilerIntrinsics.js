@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.isVersionAtLeast=void 0;const e=Number.MAX_SAFE_INTEGER;function s(s){return s===e||runtime.apiVersion>=s}globalThis.__PLACEHOLDER__=e,exports.isVersionAtLeast=s;

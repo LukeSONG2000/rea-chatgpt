@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.delay=void 0;const e=require("../scheduler/async"),r=require("./delayWhen"),t=require("../observable/timer");function s(s,n=e.asyncScheduler){const o=(0,t.timer)(s,n);return(0,r.delayWhen)(()=>o)}exports.delay=s;

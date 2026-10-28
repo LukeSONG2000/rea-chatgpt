@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.supportsAbsoluteAnimationTranslations=void 0;const s=require("./CompilerIntrinsics");function t(){return(0,s.isVersionAtLeast)(254)}exports.supportsAbsoluteAnimationTranslations=t;

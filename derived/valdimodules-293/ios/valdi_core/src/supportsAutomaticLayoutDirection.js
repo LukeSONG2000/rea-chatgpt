@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.supportsAutomaticLayoutDirection=void 0;const t=require("./CompilerIntrinsics");function e(){return(0,t.isVersionAtLeast)(40)}exports.supportsAutomaticLayoutDirection=e;

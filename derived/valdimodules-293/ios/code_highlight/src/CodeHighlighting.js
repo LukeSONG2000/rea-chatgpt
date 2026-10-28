@@ -1,0 +1,1 @@
+"use strict";function e(e,o,t){let n=0,r=e.length;for(;n<r;){const t=n+r>>>1;e[t].to<=o?n=t+1:r=t}const s=[];for(let i=n;i<e.length;i++){const n=e[i];if(n.from>=t)break;s.push({from:Math.max(n.from,o)-o,to:Math.min(n.to,t)-o,kind:n.kind})}return s}Object.defineProperty(exports,"__esModule",{value:!0}),exports.sliceCodeTokens=void 0,exports.sliceCodeTokens=e;

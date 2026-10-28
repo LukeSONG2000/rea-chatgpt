@@ -1,0 +1,1 @@
+"use strict";function r(r){const t=r(r=>{Error.call(r),r.stack=(new Error).stack});return t.prototype=Object.create(Error.prototype),t.prototype.constructor=t,t}Object.defineProperty(exports,"__esModule",{value:!0}),exports.createErrorClass=void 0,exports.createErrorClass=r;

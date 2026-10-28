@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.DILWidgetTextRendererFactory=void 0;const e=require("./DILTextWidgetRenderer");class DILWidgetTextRendererFactory{constructor(e){this.element=e,this.properties=e.properties}create(t,r){return new e.DILTextWidgetRenderer(this.element,t,r)}}exports.DILWidgetTextRendererFactory=DILWidgetTextRendererFactory;

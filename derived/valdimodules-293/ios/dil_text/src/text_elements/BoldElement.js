@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.BoldElement=void 0;const e=["value","weight"];exports.BoldElement={properties:e,dilV2Properties:["weight"],createsParagraph:e=>!1,pushStyle:(e,t,o)=>(o.pushFontStyle(void 0,e.weight??"bold",void 0,void 0),t.pushFont(o.resolveFont()),1)};

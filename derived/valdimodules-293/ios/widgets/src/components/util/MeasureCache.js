@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.MeasureCache=void 0;const e=require("valdi_rxjs/src/Subject");class MeasureCache{constructor(s){this.roundToPoints=s,this.subject=new e.Subject,this.observable$=this.subject}populate(e){this.subject.next(e)}}exports.MeasureCache=MeasureCache;

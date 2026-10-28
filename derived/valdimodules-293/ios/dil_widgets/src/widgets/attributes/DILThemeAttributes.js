@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.DIL_THEME_ATTRIBUTES=void 0,exports.DIL_THEME_ATTRIBUTES={attributeNames:["theme"],apply:(e,t)=>void 0!==e.theme&&(t.colorPaletteName=e.theme,!0)};

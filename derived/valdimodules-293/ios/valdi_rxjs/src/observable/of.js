@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.of=void 0;const e=require("../util/args"),r=require("./from");function o(...o){const t=(0,e.popScheduler)(o);return(0,r.from)(o,t)}exports.of=o;

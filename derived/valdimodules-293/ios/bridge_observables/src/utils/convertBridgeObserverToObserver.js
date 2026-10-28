@@ -1,0 +1,1 @@
+"use strict";function e(e){return{next:o=>{e.onEvent(1,void 0,o,void 0)},error:o=>{e.onEvent(2,void 0,void 0,o)},complete:()=>{e.onEvent(3,void 0,void 0,void 0)}}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.convertBridgeObserverToObserver=void 0,exports.convertBridgeObserverToObserver=e;

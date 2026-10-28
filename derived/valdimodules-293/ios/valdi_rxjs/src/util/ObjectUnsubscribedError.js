@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ObjectUnsubscribedError=void 0;const r=require("./createErrorClass");exports.ObjectUnsubscribedError=(0,r.createErrorClass)(r=>function(){r(this),this.name="ObjectUnsubscribedError",this.message="object unsubscribed"});

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.isInteropObservable=void 0;const e=require("../symbol/observable"),r=require("./isFunction");function s(s){return(0,r.isFunction)(s[e.observable])}exports.isInteropObservable=s;

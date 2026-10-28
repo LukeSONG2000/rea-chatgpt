@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ComponentPrototype=void 0;let t=0;class ComponentPrototype{constructor(t,o){this.id=t,this.attributes=o}static newId(){return"__component"+ ++t}static instanceWithNewId(t){return new ComponentPrototype(ComponentPrototype.newId(),t)}}exports.ComponentPrototype=ComponentPrototype;

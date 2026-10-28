@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.Action=void 0;const e=require("../Subscription");class Action extends e.Subscription{constructor(e,t){super()}schedule(e,t=0){return this}}exports.Action=Action;

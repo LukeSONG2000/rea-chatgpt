@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.take=void 0;const e=require("../observable/empty"),r=require("../util/lift"),t=require("./OperatorSubscriber");function o(o){return o<=0?()=>e.EMPTY:(0,r.operate)((e,r)=>{let i=0;e.subscribe((0,t.createOperatorSubscriber)(r,e=>{++i<=o&&(r.next(e),o<=i&&r.complete())}))})}exports.take=o;

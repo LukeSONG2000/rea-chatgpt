@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.resolveDILTextColor=void 0;const o=require("dil_core/src/colors/DILColor");function e(e,r){const t=e?(0,o.resolveDILTextColor)(e):void 0;return void 0!==t?t:(0,o.resolveDILTextColor)(r)??r}exports.resolveDILTextColor=e;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.scheduleReadableStreamLike=void 0;const e=require("./scheduleAsyncIterable"),r=require("../util/isReadableStreamLike");function t(t,a){return(0,e.scheduleAsyncIterable)((0,r.readableStreamLikeToAsyncGenerator)(t),a)}exports.scheduleReadableStreamLike=t;

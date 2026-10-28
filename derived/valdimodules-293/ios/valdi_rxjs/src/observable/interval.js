@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.interval=void 0;const e=require("../scheduler/async"),r=require("./timer");function t(t=0,i=e.asyncScheduler){return t<0&&(t=0),(0,r.timer)(t,t,i)}exports.interval=t;

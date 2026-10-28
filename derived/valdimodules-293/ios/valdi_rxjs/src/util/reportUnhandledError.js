@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.reportUnhandledError=void 0;const r=require("../config"),e=require("../scheduler/timeoutProvider");function o(o){e.timeoutProvider.setTimeout(()=>{const{onUnhandledError:e}=r.config;if(!e)throw o;e(o)})}exports.reportUnhandledError=o;

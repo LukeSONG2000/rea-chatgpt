@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.AbstractWrapperFactory=void 0;const r=require("./Factory");class AbstractWrapperFactory extends r.AbstractFactory{wrap(r,...t){return this.create(r.kind,r,...t)}}exports.AbstractWrapperFactory=AbstractWrapperFactory;

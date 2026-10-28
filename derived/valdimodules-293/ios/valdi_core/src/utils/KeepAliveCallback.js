@@ -1,0 +1,1 @@
+"use strict";function e(){return setInterval(()=>{},1e5)}function t(e){clearInterval(e)}function r(r){let n=e();return function(...e){return t(n),r.apply(this,e)}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.makeKeepAliveCallback=exports.endKeepAlive=exports.beginKeepAlive=void 0,exports.beginKeepAlive=e,exports.endKeepAlive=t,exports.makeKeepAliveCallback=r;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.subscribeOn=void 0;const e=require("../util/lift");function r(r,s=0){return(0,e.operate)((e,t)=>{t.add(r.schedule(()=>e.subscribe(t),s))})}exports.subscribeOn=r;

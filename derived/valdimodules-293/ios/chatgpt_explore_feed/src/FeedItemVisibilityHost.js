@@ -1,0 +1,1 @@
+"use strict";var e;Object.defineProperty(exports,"__esModule",{value:!0}),exports.FeedItemVisibilityPresentation=void 0,function(e){e[e.Visible=0]="Visible",e[e.Covered=1]="Covered",e[e.Background=2]="Background",e[e.Exited=3]="Exited"}(e||(exports.FeedItemVisibilityPresentation=e={}));

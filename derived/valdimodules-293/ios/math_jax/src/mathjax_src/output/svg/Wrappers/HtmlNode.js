@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.SvgHtmlNode=void 0;const e=require("./semantics"),t=require("../../../core/MmlTree/MmlNodes/HtmlNode");exports.SvgHtmlNode=function(){var o;return(o=class SvgHtmlNode extends e.SvgXmlNode{}).kind=t.HtmlNode.prototype.kind,o}();

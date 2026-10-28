@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.workerService=exports.WorkerServiceEntryPoint=void 0;class WorkerServiceEntryPoint{}exports.WorkerServiceEntryPoint=WorkerServiceEntryPoint;const e=(e,r)=>t=>{const o=class extends t{};return o.file=r.path,o.executorIdentifier=e,Object.defineProperty(o,"name",{value:t.name}),o};exports.workerService=e;

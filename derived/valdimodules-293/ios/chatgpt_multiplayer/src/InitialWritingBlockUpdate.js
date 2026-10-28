@@ -1,0 +1,1 @@
+"use strict";function t(){return new Uint8Array([1,2,0,0,7,1,21,119,114,105,116,105,110,103,45,98,108,111,99,107,45,99,111,110,116,101,110,116,3,9,112,97,114,97,103,114,97,112,104,7,0,0,0,6,0])}Object.defineProperty(exports,"__esModule",{value:!0}),exports.initialWritingBlockUpdate=void 0,exports.initialWritingBlockUpdate=t;

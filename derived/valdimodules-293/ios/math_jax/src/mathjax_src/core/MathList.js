@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.AbstractMathList=void 0;const t=require("../util/LinkedList");class AbstractMathList extends t.LinkedList{isBefore(t,s){return t.start.i<s.start.i||t.start.i===s.start.i&&t.start.n<s.start.n}}exports.AbstractMathList=AbstractMathList;

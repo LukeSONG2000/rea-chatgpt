@@ -1,0 +1,1 @@
+"use strict";var t;Object.defineProperty(exports,"__esModule",{value:!0}),exports.FinanceAccountsResultKind=void 0,function(t){t[t.AccountsSummary=0]="AccountsSummary",t[t.AccountsEmpty=1]="AccountsEmpty"}(t||(exports.FinanceAccountsResultKind=t={}));

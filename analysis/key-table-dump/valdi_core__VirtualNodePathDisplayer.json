@@ -1,0 +1,2166 @@
+{
+ "module": "valdi_core.valdimodule",
+ "file": "src/debugging/VirtualNodePathDisplayer.js",
+ "moduleName": "valdi_core/src/debugging/VirtualNodePathDisplayer",
+ "format": {
+  "keyBase": 216,
+  "entryCountDeclared": 102,
+  "entryCountParsed": 101,
+  "footerIndex": 101,
+  "entryPrefix": "LEB128((charCount<<1)|utf16Flag); flag0=UTF-8, flag1=UTF-16LE",
+  "footerEntry": "prefix 0x0e + 7 bytes 00 06 00 a0 01 00 01 (counted as last entry)"
+ },
+ "keyStats": {
+  "totalRefs": 259,
+  "distinctKeys": 92,
+  "resolvedInTable": 238,
+  "commonBelow216": [
+   64,
+   92,
+   101,
+   145,
+   148
+  ],
+  "beyondTable": [
+   9956,
+   12289,
+   12290,
+   12291,
+   49165,
+   62727
+  ]
+ },
+ "table": [
+  {
+   "slot": 0,
+   "key": 216,
+   "name": "require",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 7,
+   "refs": 0
+  },
+  {
+   "slot": 1,
+   "key": 217,
+   "name": "module",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 6,
+   "refs": 0
+  },
+  {
+   "slot": 2,
+   "key": 218,
+   "name": "exports",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 7,
+   "refs": 0
+  },
+  {
+   "slot": 3,
+   "key": 219,
+   "name": "e",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 4,
+   "key": 220,
+   "name": "t",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 5,
+   "key": 221,
+   "name": "o",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 6,
+   "key": 222,
+   "name": "r",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 7,
+   "key": 223,
+   "name": "d",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 8,
+   "key": 224,
+   "name": "n",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 9,
+   "key": 225,
+   "name": "i",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 10,
+   "key": 226,
+   "name": "l",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 11,
+   "key": 227,
+   "name": "s",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 12,
+   "key": 228,
+   "name": "a",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 13,
+   "key": 229,
+   "name": "u",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 14,
+   "key": 230,
+   "name": "p",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 15,
+   "key": 231,
+   "name": "c",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 16,
+   "key": 232,
+   "name": "b",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 17,
+   "key": 233,
+   "name": "h",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 18,
+   "key": 234,
+   "name": "y",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 0
+  },
+  {
+   "slot": 19,
+   "key": 235,
+   "name": "VirtualNodePathDisplayer",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 24,
+   "refs": 2
+  },
+  {
+   "slot": 20,
+   "key": 236,
+   "name": "__esModule",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 10,
+   "refs": 1
+  },
+  {
+   "slot": 21,
+   "key": 237,
+   "name": "valdi_core/src/JSX",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 18,
+   "refs": 1
+  },
+  {
+   "slot": 22,
+   "key": 238,
+   "name": "jsx",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 3,
+   "refs": 1
+  },
+  {
+   "slot": 23,
+   "key": 239,
+   "name": "makeNodePrototype",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 17,
+   "refs": 10
+  },
+  {
+   "slot": 24,
+   "key": 240,
+   "name": "layout",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 6,
+   "refs": 2
+  },
+  {
+   "slot": 25,
+   "key": 241,
+   "name": "label",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 6
+  },
+  {
+   "slot": 26,
+   "key": 242,
+   "name": "color",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 13
+  },
+  {
+   "slot": 27,
+   "key": 243,
+   "name": "black",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 1
+  },
+  {
+   "slot": 28,
+   "key": 244,
+   "name": "view",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 4,
+   "refs": 1
+  },
+  {
+   "slot": 29,
+   "key": 245,
+   "name": "scroll",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 6,
+   "refs": 1
+  },
+  {
+   "slot": 30,
+   "key": 246,
+   "name": "horizontal",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 10,
+   "refs": 1
+  },
+  {
+   "slot": 31,
+   "key": 247,
+   "name": "../Component",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 12,
+   "refs": 1
+  },
+  {
+   "slot": 32,
+   "key": 248,
+   "name": "../IRenderedVirtualNodeData",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 27,
+   "refs": 1
+  },
+  {
+   "slot": 33,
+   "key": 249,
+   "name": "../utils/AttributedTextBuilder",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 30,
+   "refs": 1
+  },
+  {
+   "slot": 34,
+   "key": 250,
+   "name": "./Styles",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 8,
+   "refs": 1
+  },
+  {
+   "slot": 35,
+   "key": 251,
+   "name": "styles",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 6,
+   "refs": 7
+  },
+  {
+   "slot": 36,
+   "key": 252,
+   "name": "infoText",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 8,
+   "refs": 1
+  },
+  {
+   "slot": 37,
+   "key": 253,
+   "name": "extend",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 6,
+   "refs": 1
+  },
+  {
+   "slot": 38,
+   "key": 254,
+   "name": "marginBottom",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 12,
+   "refs": 1
+  },
+  {
+   "slot": 39,
+   "key": 255,
+   "name": "Component",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 9,
+   "refs": 1
+  },
+  {
+   "slot": 40,
+   "key": 256,
+   "name": "onRender",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 8,
+   "refs": 0
+  },
+  {
+   "slot": 41,
+   "key": 257,
+   "name": "renderNodePaths",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 15,
+   "refs": 1
+  },
+  {
+   "slot": 42,
+   "key": 258,
+   "name": "renderChildrenCount",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 19,
+   "refs": 2
+  },
+  {
+   "slot": 43,
+   "key": 259,
+   "name": "appendComment",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 13,
+   "refs": 2
+  },
+  {
+   "slot": 44,
+   "key": 260,
+   "name": "appendAttributes",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 16,
+   "refs": 2
+  },
+  {
+   "slot": 45,
+   "key": 261,
+   "name": "renderNode",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 10,
+   "refs": 3
+  },
+  {
+   "slot": 46,
+   "key": 262,
+   "name": "renderNodeChildren",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 18,
+   "refs": 1
+  },
+  {
+   "slot": 47,
+   "key": 263,
+   "name": "viewModel",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 9,
+   "refs": 16
+  },
+  {
+   "slot": 48,
+   "key": 264,
+   "name": "focusedNode",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 11,
+   "refs": 9
+  },
+  {
+   "slot": 49,
+   "key": 265,
+   "name": "component",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 9,
+   "refs": 2
+  },
+  {
+   "slot": 50,
+   "key": 266,
+   "name": "Path from root to Component '",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 29,
+   "refs": 1
+  },
+  {
+   "slot": 51,
+   "key": 267,
+   "name": "tag",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 3,
+   "refs": 5
+  },
+  {
+   "slot": 52,
+   "key": 268,
+   "name": "':",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 2,
+   "refs": 1
+  },
+  {
+   "slot": 53,
+   "key": 269,
+   "name": "Path from root to Element '",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 27,
+   "refs": 1
+  },
+  {
+   "slot": 54,
+   "key": 270,
+   "name": "' with id ",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 10,
+   "refs": 1
+  },
+  {
+   "slot": 55,
+   "key": 271,
+   "name": "element",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 7,
+   "refs": 7
+  },
+  {
+   "slot": 56,
+   "key": 272,
+   "name": "id",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 2,
+   "refs": 1
+  },
+  {
+   "slot": 57,
+   "key": 273,
+   "name": ":",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 1
+  },
+  {
+   "slot": 58,
+   "key": 274,
+   "name": "Path from root",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 14,
+   "refs": 1
+  },
+  {
+   "slot": 59,
+   "key": 275,
+   "name": "beginRender",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 11,
+   "refs": 10
+  },
+  {
+   "slot": 60,
+   "key": 276,
+   "name": "setAttributeStyle",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 17,
+   "refs": 7
+  },
+  {
+   "slot": 61,
+   "key": 277,
+   "name": "style",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 7
+  },
+  {
+   "slot": 62,
+   "key": 278,
+   "name": "setAttributeString",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 18,
+   "refs": 3
+  },
+  {
+   "slot": 63,
+   "key": 279,
+   "name": "endRender",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 9,
+   "refs": 10
+  },
+  {
+   "slot": 64,
+   "key": 280,
+   "name": "console",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 7,
+   "refs": 1
+  },
+  {
+   "slot": 65,
+   "key": 281,
+   "name": "getPathToNode",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 13,
+   "refs": 1
+  },
+  {
+   "slot": 66,
+   "key": 282,
+   "name": "node",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 4,
+   "refs": 2
+  },
+  {
+   "slot": 67,
+   "key": 283,
+   "name": "child",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 1
+  },
+  {
+   "slot": 68,
+   "key": 284,
+   "name": "children",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 8,
+   "refs": 3
+  },
+  {
+   "slot": 69,
+   "key": 285,
+   "name": " ",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 3
+  },
+  {
+   "slot": 70,
+   "key": 286,
+   "name": "bodyText",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 8,
+   "refs": 4
+  },
+  {
+   "slot": 71,
+   "key": 287,
+   "name": "colors",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 6,
+   "refs": 12
+  },
+  {
+   "slot": 72,
+   "key": 288,
+   "name": "comment",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 7,
+   "refs": 1
+  },
+  {
+   "slot": 73,
+   "key": 289,
+   "name": "{ /* ",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 1
+  },
+  {
+   "slot": 74,
+   "key": 290,
+   "name": " */ }",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 1
+  },
+  {
+   "slot": 75,
+   "key": 291,
+   "name": "append",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 6,
+   "refs": 16
+  },
+  {
+   "slot": 76,
+   "key": 292,
+   "name": "attributeName",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 13,
+   "refs": 1
+  },
+  {
+   "slot": 77,
+   "key": 293,
+   "name": "=",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 1
+  },
+  {
+   "slot": 78,
+   "key": 294,
+   "name": "expression",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 10,
+   "refs": 1
+  },
+  {
+   "slot": 79,
+   "key": 295,
+   "name": "replace",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 7,
+   "refs": 1
+  },
+  {
+   "slot": 80,
+   "key": 296,
+   "name": "isNaN",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 1
+  },
+  {
+   "slot": 81,
+   "key": 297,
+   "name": "parseInt",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 8,
+   "refs": 1
+  },
+  {
+   "slot": 82,
+   "key": 298,
+   "name": "'",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 2
+  },
+  {
+   "slot": 83,
+   "key": 299,
+   "name": "attributeValue",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 14,
+   "refs": 1
+  },
+  {
+   "slot": 84,
+   "key": 300,
+   "name": "  ",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 2,
+   "refs": 1
+  },
+  {
+   "slot": 85,
+   "key": 301,
+   "name": "tagComponent",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 12,
+   "refs": 1
+  },
+  {
+   "slot": 86,
+   "key": 302,
+   "name": "tagElement",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 10,
+   "refs": 1
+  },
+  {
+   "slot": 87,
+   "key": 303,
+   "name": "↓↓↓",
+   "encoding": "utf-16le",
+   "rawPrefixHex": "",
+   "byteLen": 6,
+   "refs": 1
+  },
+  {
+   "slot": 88,
+   "key": 304,
+   "name": "AttributedTextBuilder",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 21,
+   "refs": 3
+  },
+  {
+   "slot": 89,
+   "key": 305,
+   "name": "<",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 2
+  },
+  {
+   "slot": 90,
+   "key": 306,
+   "name": "tagBracket",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 10,
+   "refs": 6
+  },
+  {
+   "slot": 91,
+   "key": 307,
+   "name": "attributes",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 10,
+   "refs": 4
+  },
+  {
+   "slot": 92,
+   "key": 308,
+   "name": ">",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 1,
+   "refs": 2
+  },
+  {
+   "slot": 93,
+   "key": 309,
+   "name": "build",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 3
+  },
+  {
+   "slot": 94,
+   "key": 310,
+   "name": "</",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 2,
+   "refs": 1
+  },
+  {
+   "slot": 95,
+   "key": 311,
+   "name": "setAttribute",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 12,
+   "refs": 4
+  },
+  {
+   "slot": 96,
+   "key": 312,
+   "name": "/>",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 2,
+   "refs": 1
+  },
+  {
+   "slot": 97,
+   "key": 313,
+   "name": "bodyStrongText",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 14,
+   "refs": 1
+  },
+  {
+   "slot": 98,
+   "key": 314,
+   "name": "shift",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 1
+  },
+  {
+   "slot": 99,
+   "key": 315,
+   "name": "before",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 6,
+   "refs": 1
+  },
+  {
+   "slot": 100,
+   "key": 316,
+   "name": "after",
+   "encoding": "utf-8",
+   "rawPrefixHex": "",
+   "byteLen": 5,
+   "refs": 1
+  }
+ ],
+ "keyUsage": {
+  "145": [
+   {
+    "pc": 197,
+    "op": "0x38"
+   }
+  ],
+  "101": [
+   {
+    "pc": 202,
+    "op": "0x42"
+   }
+  ],
+  "236": [
+   {
+    "pc": 236,
+    "op": "0x04"
+   }
+  ],
+  "64": [
+   {
+    "pc": 244,
+    "op": "0x4f"
+   },
+   {
+    "pc": 1963,
+    "op": "0x04"
+   },
+   {
+    "pc": 3412,
+    "op": "0x04"
+   },
+   {
+    "pc": 6075,
+    "op": "0x04"
+   },
+   {
+    "pc": 6368,
+    "op": "0x04"
+   },
+   {
+    "pc": 7277,
+    "op": "0x04"
+   },
+   {
+    "pc": 7525,
+    "op": "0x04"
+   }
+  ],
+  "235": [
+   {
+    "pc": 255,
+    "op": "0x45"
+   },
+   {
+    "pc": 1057,
+    "op": "0x45"
+   }
+  ],
+  "237": [
+   {
+    "pc": 265,
+    "op": "0x04"
+   }
+  ],
+  "238": [
+   {
+    "pc": 271,
+    "op": "0x41"
+   }
+  ],
+  "239": [
+   {
+    "pc": 308,
+    "op": "0x42"
+   },
+   {
+    "pc": 353,
+    "op": "0x42"
+   },
+   {
+    "pc": 411,
+    "op": "0x42"
+   },
+   {
+    "pc": 456,
+    "op": "0x42"
+   },
+   {
+    "pc": 512,
+    "op": "0x42"
+   },
+   {
+    "pc": 558,
+    "op": "0x42"
+   },
+   {
+    "pc": 604,
+    "op": "0x42"
+   },
+   {
+    "pc": 650,
+    "op": "0x42"
+   },
+   {
+    "pc": 696,
+    "op": "0x42"
+   },
+   {
+    "pc": 742,
+    "op": "0x42"
+   }
+  ],
+  "240": [
+   {
+    "pc": 341,
+    "op": "0x04"
+   },
+   {
+    "pc": 545,
+    "op": "0x04"
+   }
+  ],
+  "241": [
+   {
+    "pc": 386,
+    "op": "0x04"
+   },
+   {
+    "pc": 591,
+    "op": "0x04"
+   },
+   {
+    "pc": 637,
+    "op": "0x04"
+   },
+   {
+    "pc": 683,
+    "op": "0x04"
+   },
+   {
+    "pc": 729,
+    "op": "0x04"
+   },
+   {
+    "pc": 775,
+    "op": "0x04"
+   }
+  ],
+  "242": [
+   {
+    "pc": 391,
+    "op": "0x04"
+   },
+   {
+    "pc": 3298,
+    "op": "0x04"
+   },
+   {
+    "pc": 3727,
+    "op": "0x4f"
+   },
+   {
+    "pc": 3845,
+    "op": "0x4f"
+   },
+   {
+    "pc": 4125,
+    "op": "0x4f"
+   },
+   {
+    "pc": 4467,
+    "op": "0x4f"
+   },
+   {
+    "pc": 4544,
+    "op": "0x4f"
+   },
+   {
+    "pc": 4998,
+    "op": "0x4f"
+   },
+   {
+    "pc": 5413,
+    "op": "0x4f"
+   },
+   {
+    "pc": 5646,
+    "op": "0x4f"
+   },
+   {
+    "pc": 5835,
+    "op": "0x4f"
+   },
+   {
+    "pc": 6614,
+    "op": "0x4f"
+   },
+   {
+    "pc": 7029,
+    "op": "0x4f"
+   }
+  ],
+  "243": [
+   {
+    "pc": 396,
+    "op": "0x04"
+   }
+  ],
+  "244": [
+   {
+    "pc": 444,
+    "op": "0x04"
+   }
+  ],
+  "245": [
+   {
+    "pc": 489,
+    "op": "0x04"
+   }
+  ],
+  "246": [
+   {
+    "pc": 494,
+    "op": "0x04"
+   }
+  ],
+  "247": [
+   {
+    "pc": 786,
+    "op": "0x04"
+   }
+  ],
+  "248": [
+   {
+    "pc": 795,
+    "op": "0x04"
+   }
+  ],
+  "249": [
+   {
+    "pc": 804,
+    "op": "0x04"
+   }
+  ],
+  "250": [
+   {
+    "pc": 813,
+    "op": "0x04"
+   }
+  ],
+  "251": [
+   {
+    "pc": 824,
+    "op": "0x41"
+   },
+   {
+    "pc": 2103,
+    "op": "0x41"
+   },
+   {
+    "pc": 3192,
+    "op": "0x41"
+   },
+   {
+    "pc": 5969,
+    "op": "0x41"
+   },
+   {
+    "pc": 6262,
+    "op": "0x41"
+   },
+   {
+    "pc": 7171,
+    "op": "0x41"
+   },
+   {
+    "pc": 7419,
+    "op": "0x41"
+   }
+  ],
+  "252": [
+   {
+    "pc": 857,
+    "op": "0x41"
+   }
+  ],
+  "253": [
+   {
+    "pc": 890,
+    "op": "0x42"
+   }
+  ],
+  "254": [
+   {
+    "pc": 926,
+    "op": "0x4f"
+   }
+  ],
+  "255": [
+   {
+    "pc": 942,
+    "op": "0x41"
+   }
+  ],
+  "9956": [
+   {
+    "pc": 1073,
+    "op": "0x04"
+   }
+  ],
+  "49165": [
+   {
+    "pc": 1156,
+    "op": "0x04"
+   }
+  ],
+  "263": [
+   {
+    "pc": 1170,
+    "op": "0x41"
+   },
+   {
+    "pc": 1242,
+    "op": "0x41"
+   },
+   {
+    "pc": 1385,
+    "op": "0x41"
+   },
+   {
+    "pc": 1534,
+    "op": "0x41"
+   },
+   {
+    "pc": 1639,
+    "op": "0x41"
+   },
+   {
+    "pc": 2523,
+    "op": "0x41"
+   },
+   {
+    "pc": 2633,
+    "op": "0x41"
+   },
+   {
+    "pc": 2700,
+    "op": "0x41"
+   },
+   {
+    "pc": 2807,
+    "op": "0x41"
+   },
+   {
+    "pc": 2899,
+    "op": "0x42"
+   },
+   {
+    "pc": 3069,
+    "op": "0x42"
+   },
+   {
+    "pc": 3528,
+    "op": "0x42"
+   },
+   {
+    "pc": 4206,
+    "op": "0x42"
+   },
+   {
+    "pc": 4553,
+    "op": "0x41"
+   },
+   {
+    "pc": 4717,
+    "op": "0x41"
+   },
+   {
+    "pc": 7678,
+    "op": "0x42"
+   }
+  ],
+  "264": [
+   {
+    "pc": 1203,
+    "op": "0x41"
+   },
+   {
+    "pc": 1275,
+    "op": "0x41"
+   },
+   {
+    "pc": 1418,
+    "op": "0x41"
+   },
+   {
+    "pc": 1567,
+    "op": "0x41"
+   },
+   {
+    "pc": 1672,
+    "op": "0x41"
+   },
+   {
+    "pc": 2556,
+    "op": "0x41"
+   },
+   {
+    "pc": 2733,
+    "op": "0x41"
+   },
+   {
+    "pc": 4586,
+    "op": "0x41"
+   },
+   {
+    "pc": 4750,
+    "op": "0x41"
+   }
+  ],
+  "265": [
+   {
+    "pc": 1308,
+    "op": "0x41"
+   },
+   {
+    "pc": 4362,
+    "op": "0x41"
+   }
+  ],
+  "266": [
+   {
+    "pc": 1346,
+    "op": "0x04"
+   }
+  ],
+  "92": [
+   {
+    "pc": 1351,
+    "op": "0x42"
+   },
+   {
+    "pc": 1500,
+    "op": "0x42"
+   },
+   {
+    "pc": 2999,
+    "op": "0x42"
+   },
+   {
+    "pc": 3418,
+    "op": "0x42"
+   },
+   {
+    "pc": 3969,
+    "op": "0x42"
+   }
+  ],
+  "267": [
+   {
+    "pc": 1451,
+    "op": "0x41"
+   },
+   {
+    "pc": 1600,
+    "op": "0x41"
+   },
+   {
+    "pc": 5040,
+    "op": "0x41"
+   },
+   {
+    "pc": 5688,
+    "op": "0x41"
+   },
+   {
+    "pc": 6656,
+    "op": "0x41"
+   }
+  ],
+  "268": [
+   {
+    "pc": 1484,
+    "op": "0x04"
+   }
+  ],
+  "269": [
+   {
+    "pc": 1495,
+    "op": "0x04"
+   }
+  ],
+  "270": [
+   {
+    "pc": 1633,
+    "op": "0x04"
+   }
+  ],
+  "271": [
+   {
+    "pc": 1705,
+    "op": "0x41"
+   },
+   {
+    "pc": 5082,
+    "op": "0x41"
+   },
+   {
+    "pc": 5123,
+    "op": "0x41"
+   },
+   {
+    "pc": 5232,
+    "op": "0x41"
+   },
+   {
+    "pc": 6698,
+    "op": "0x41"
+   },
+   {
+    "pc": 6739,
+    "op": "0x41"
+   },
+   {
+    "pc": 6848,
+    "op": "0x41"
+   }
+  ],
+  "272": [
+   {
+    "pc": 1738,
+    "op": "0x41"
+   }
+  ],
+  "273": [
+   {
+    "pc": 1771,
+    "op": "0x04"
+   }
+  ],
+  "274": [
+   {
+    "pc": 1781,
+    "op": "0x04"
+   }
+  ],
+  "275": [
+   {
+    "pc": 1794,
+    "op": "0x42"
+   },
+   {
+    "pc": 1838,
+    "op": "0x42"
+   },
+   {
+    "pc": 2018,
+    "op": "0x42"
+   },
+   {
+    "pc": 2176,
+    "op": "0x42"
+   },
+   {
+    "pc": 2220,
+    "op": "0x42"
+   },
+   {
+    "pc": 3107,
+    "op": "0x42"
+   },
+   {
+    "pc": 5884,
+    "op": "0x42"
+   },
+   {
+    "pc": 6177,
+    "op": "0x42"
+   },
+   {
+    "pc": 7086,
+    "op": "0x42"
+   },
+   {
+    "pc": 7334,
+    "op": "0x42"
+   }
+  ],
+  "276": [
+   {
+    "pc": 1882,
+    "op": "0x42"
+   },
+   {
+    "pc": 2062,
+    "op": "0x42"
+   },
+   {
+    "pc": 3151,
+    "op": "0x42"
+   },
+   {
+    "pc": 5928,
+    "op": "0x42"
+   },
+   {
+    "pc": 6221,
+    "op": "0x42"
+   },
+   {
+    "pc": 7130,
+    "op": "0x42"
+   },
+   {
+    "pc": 7378,
+    "op": "0x42"
+   }
+  ],
+  "277": [
+   {
+    "pc": 1915,
+    "op": "0x04"
+   },
+   {
+    "pc": 2095,
+    "op": "0x04"
+   },
+   {
+    "pc": 3184,
+    "op": "0x04"
+   },
+   {
+    "pc": 5961,
+    "op": "0x04"
+   },
+   {
+    "pc": 6254,
+    "op": "0x04"
+   },
+   {
+    "pc": 7163,
+    "op": "0x04"
+   },
+   {
+    "pc": 7411,
+    "op": "0x04"
+   }
+  ],
+  "278": [
+   {
+    "pc": 1930,
+    "op": "0x42"
+   },
+   {
+    "pc": 3265,
+    "op": "0x42"
+   },
+   {
+    "pc": 3379,
+    "op": "0x42"
+   }
+  ],
+  "279": [
+   {
+    "pc": 1978,
+    "op": "0x42"
+   },
+   {
+    "pc": 2302,
+    "op": "0x42"
+   },
+   {
+    "pc": 2342,
+    "op": "0x42"
+   },
+   {
+    "pc": 2382,
+    "op": "0x42"
+   },
+   {
+    "pc": 2422,
+    "op": "0x42"
+   },
+   {
+    "pc": 3473,
+    "op": "0x42"
+   },
+   {
+    "pc": 6090,
+    "op": "0x42"
+   },
+   {
+    "pc": 6383,
+    "op": "0x42"
+   },
+   {
+    "pc": 7292,
+    "op": "0x42"
+   },
+   {
+    "pc": 7540,
+    "op": "0x42"
+   }
+  ],
+  "280": [
+   {
+    "pc": 2136,
+    "op": "0x41"
+   }
+  ],
+  "257": [
+   {
+    "pc": 2262,
+    "op": "0x42"
+   }
+  ],
+  "281": [
+   {
+    "pc": 2599,
+    "op": "0x41"
+   }
+  ],
+  "282": [
+   {
+    "pc": 2666,
+    "op": "0x41"
+   },
+   {
+    "pc": 2840,
+    "op": "0x41"
+   }
+  ],
+  "261": [
+   {
+    "pc": 2773,
+    "op": "0x42"
+   },
+   {
+    "pc": 7915,
+    "op": "0x42"
+   },
+   {
+    "pc": 8023,
+    "op": "0x42"
+   }
+  ],
+  "283": [
+   {
+    "pc": 2950,
+    "op": "0x04"
+   }
+  ],
+  "284": [
+   {
+    "pc": 2957,
+    "op": "0x04"
+   },
+   {
+    "pc": 4676,
+    "op": "0x41"
+   },
+   {
+    "pc": 7747,
+    "op": "0x41"
+   }
+  ],
+  "259": [
+   {
+    "pc": 2964,
+    "op": "0x42"
+   },
+   {
+    "pc": 4630,
+    "op": "0x42"
+   }
+  ],
+  "285": [
+   {
+    "pc": 3033,
+    "op": "0x04"
+   },
+   {
+    "pc": 3041,
+    "op": "0x04"
+   },
+   {
+    "pc": 3611,
+    "op": "0x04"
+   }
+  ],
+  "286": [
+   {
+    "pc": 3225,
+    "op": "0x41"
+   },
+   {
+    "pc": 6002,
+    "op": "0x41"
+   },
+   {
+    "pc": 6295,
+    "op": "0x41"
+   },
+   {
+    "pc": 7452,
+    "op": "0x41"
+   }
+  ],
+  "287": [
+   {
+    "pc": 3306,
+    "op": "0x41"
+   },
+   {
+    "pc": 3661,
+    "op": "0x41"
+   },
+   {
+    "pc": 3779,
+    "op": "0x41"
+   },
+   {
+    "pc": 4059,
+    "op": "0x41"
+   },
+   {
+    "pc": 4401,
+    "op": "0x41"
+   },
+   {
+    "pc": 4478,
+    "op": "0x41"
+   },
+   {
+    "pc": 4932,
+    "op": "0x41"
+   },
+   {
+    "pc": 5347,
+    "op": "0x41"
+   },
+   {
+    "pc": 5580,
+    "op": "0x41"
+   },
+   {
+    "pc": 5769,
+    "op": "0x41"
+   },
+   {
+    "pc": 6548,
+    "op": "0x41"
+   },
+   {
+    "pc": 6963,
+    "op": "0x41"
+   }
+  ],
+  "288": [
+   {
+    "pc": 3339,
+    "op": "0x41"
+   }
+  ],
+  "289": [
+   {
+    "pc": 3452,
+    "op": "0x04"
+   }
+  ],
+  "290": [
+   {
+    "pc": 3458,
+    "op": "0x04"
+   }
+  ],
+  "291": [
+   {
+    "pc": 3578,
+    "op": "0x42"
+   },
+   {
+    "pc": 3621,
+    "op": "0x42"
+   },
+   {
+    "pc": 3737,
+    "op": "0x42"
+   },
+   {
+    "pc": 4019,
+    "op": "0x42"
+   },
+   {
+    "pc": 4851,
+    "op": "0x42"
+   },
+   {
+    "pc": 4890,
+    "op": "0x42"
+   },
+   {
+    "pc": 5006,
+    "op": "0x42"
+   },
+   {
+    "pc": 5305,
+    "op": "0x42"
+   },
+   {
+    "pc": 5499,
+    "op": "0x42"
+   },
+   {
+    "pc": 5538,
+    "op": "0x42"
+   },
+   {
+    "pc": 5654,
+    "op": "0x42"
+   },
+   {
+    "pc": 5727,
+    "op": "0x42"
+   },
+   {
+    "pc": 6467,
+    "op": "0x42"
+   },
+   {
+    "pc": 6506,
+    "op": "0x42"
+   },
+   {
+    "pc": 6622,
+    "op": "0x42"
+   },
+   {
+    "pc": 6921,
+    "op": "0x42"
+   }
+  ],
+  "292": [
+   {
+    "pc": 3694,
+    "op": "0x41"
+   }
+  ],
+  "293": [
+   {
+    "pc": 3770,
+    "op": "0x04"
+   }
+  ],
+  "294": [
+   {
+    "pc": 3812,
+    "op": "0x41"
+   }
+  ],
+  "295": [
+   {
+    "pc": 3863,
+    "op": "0x42"
+   }
+  ],
+  "148": [
+   {
+    "pc": 3910,
+    "op": "0x38"
+   }
+  ],
+  "296": [
+   {
+    "pc": 3915,
+    "op": "0x42"
+   }
+  ],
+  "297": [
+   {
+    "pc": 3948,
+    "op": "0x38"
+   }
+  ],
+  "298": [
+   {
+    "pc": 3964,
+    "op": "0x04"
+   },
+   {
+    "pc": 4005,
+    "op": "0x04"
+   }
+  ],
+  "299": [
+   {
+    "pc": 4092,
+    "op": "0x41"
+   }
+  ],
+  "62727": [
+   {
+    "pc": 4187,
+    "op": "0x04"
+   }
+  ],
+  "300": [
+   {
+    "pc": 4340,
+    "op": "0x04"
+   }
+  ],
+  "301": [
+   {
+    "pc": 4434,
+    "op": "0x41"
+   }
+  ],
+  "302": [
+   {
+    "pc": 4511,
+    "op": "0x41"
+   }
+  ],
+  "303": [
+   {
+    "pc": 4666,
+    "op": "0x04"
+   }
+  ],
+  "304": [
+   {
+    "pc": 4814,
+    "op": "0x41"
+   },
+   {
+    "pc": 5462,
+    "op": "0x41"
+   },
+   {
+    "pc": 6430,
+    "op": "0x41"
+   }
+  ],
+  "305": [
+   {
+    "pc": 4923,
+    "op": "0x04"
+   },
+   {
+    "pc": 6539,
+    "op": "0x04"
+   }
+  ],
+  "306": [
+   {
+    "pc": 4965,
+    "op": "0x41"
+   },
+   {
+    "pc": 5380,
+    "op": "0x41"
+   },
+   {
+    "pc": 5613,
+    "op": "0x41"
+   },
+   {
+    "pc": 5802,
+    "op": "0x41"
+   },
+   {
+    "pc": 6581,
+    "op": "0x41"
+   },
+   {
+    "pc": 6996,
+    "op": "0x41"
+   }
+  ],
+  "307": [
+   {
+    "pc": 5156,
+    "op": "0x41"
+   },
+   {
+    "pc": 5265,
+    "op": "0x41"
+   },
+   {
+    "pc": 6772,
+    "op": "0x41"
+   },
+   {
+    "pc": 6881,
+    "op": "0x41"
+   }
+  ],
+  "260": [
+   {
+    "pc": 5195,
+    "op": "0x42"
+   },
+   {
+    "pc": 6811,
+    "op": "0x42"
+   }
+  ],
+  "308": [
+   {
+    "pc": 5338,
+    "op": "0x04"
+   },
+   {
+    "pc": 5760,
+    "op": "0x04"
+   }
+  ],
+  "309": [
+   {
+    "pc": 5421,
+    "op": "0x42"
+   },
+   {
+    "pc": 5843,
+    "op": "0x42"
+   },
+   {
+    "pc": 7037,
+    "op": "0x42"
+   }
+  ],
+  "310": [
+   {
+    "pc": 5571,
+    "op": "0x04"
+   }
+  ],
+  "311": [
+   {
+    "pc": 6042,
+    "op": "0x42"
+   },
+   {
+    "pc": 6335,
+    "op": "0x42"
+   },
+   {
+    "pc": 7244,
+    "op": "0x42"
+   },
+   {
+    "pc": 7492,
+    "op": "0x42"
+   }
+  ],
+  "262": [
+   {
+    "pc": 6129,
+    "op": "0x42"
+   }
+  ],
+  "312": [
+   {
+    "pc": 6954,
+    "op": "0x04"
+   }
+  ],
+  "313": [
+   {
+    "pc": 7204,
+    "op": "0x41"
+   }
+  ],
+  "12289": [
+   {
+    "pc": 7718,
+    "op": "0x04"
+   }
+  ],
+  "12290": [
+   {
+    "pc": 7723,
+    "op": "0x04"
+   }
+  ],
+  "12291": [
+   {
+    "pc": 7728,
+    "op": "0x04"
+   }
+  ],
+  "314": [
+   {
+    "pc": 7805,
+    "op": "0x42"
+   }
+  ],
+  "258": [
+   {
+    "pc": 7867,
+    "op": "0x42"
+   },
+   {
+    "pc": 7963,
+    "op": "0x42"
+   }
+  ],
+  "315": [
+   {
+    "pc": 7900,
+    "op": "0x04"
+   }
+  ],
+  "316": [
+   {
+    "pc": 7996,
+    "op": "0x04"
+   }
+  ]
+ }
+}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.CommonWrapperFactory=void 0;const r=require("../../core/Tree/WrapperFactory");class CommonWrapperFactory extends r.AbstractWrapperFactory{constructor(){super(...arguments),this.jax=null}get Wrappers(){return this.node}}exports.CommonWrapperFactory=CommonWrapperFactory,CommonWrapperFactory.defaultNodes={};

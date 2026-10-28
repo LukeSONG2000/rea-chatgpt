@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.concat=void 0;const e=require("../util/lift"),r=require("./concatAll"),t=require("../util/args"),o=require("../observable/from");function c(...c){const u=(0,t.popScheduler)(c);return(0,e.operate)((e,t)=>{(0,r.concatAll)()((0,o.from)([e,...c],u)).subscribe(t)})}exports.concat=c;

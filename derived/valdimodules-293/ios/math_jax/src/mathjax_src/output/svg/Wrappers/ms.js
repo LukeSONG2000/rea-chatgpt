@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.SvgMs=void 0;const e=require("../Wrapper"),r=require("../../common/Wrappers/ms"),s=require("../../../core/MmlTree/MmlNodes/ms");exports.SvgMs=function(){var o;const t=(0,r.CommonMsMixin)(e.SvgWrapper);return(o=class SvgMs extends t{}).kind=s.MmlMs.prototype.kind,o}();

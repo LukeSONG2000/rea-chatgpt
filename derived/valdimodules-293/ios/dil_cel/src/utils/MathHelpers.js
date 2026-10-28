@@ -1,0 +1,1 @@
+"use strict";function t(t){return(a,s,e)=>t(Number(e))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.MATH_HELPERS=void 0,exports.MATH_HELPERS={acos:t(Math.acos),asin:t(Math.asin),atan:t(Math.atan),cos:t(Math.cos),pi:Math.PI,sin:t(Math.sin),sqrt:t(Math.sqrt),tan:t(Math.tan)};

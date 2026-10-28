@@ -1,0 +1,1 @@
+"use strict";var e;Object.defineProperty(exports,"__esModule",{value:!0}),exports.ElementChildrenSortOrder=void 0,function(e){e[e.TreeOrder=0]="TreeOrder",e[e.XAscending=1]="XAscending",e[e.XDescending=2]="XDescending",e[e.YAscending=3]="YAscending",e[e.YDescending=4]="YDescending"}(e||(exports.ElementChildrenSortOrder=e={}));

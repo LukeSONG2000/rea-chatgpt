@@ -1,0 +1,1 @@
+"use strict";function e(e){return"function"==typeof e.getDILInlineTextAction}Object.defineProperty(exports,"__esModule",{value:!0}),exports.isDILInlineTextActionRenderer=void 0,exports.isDILInlineTextActionRenderer=e;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.supportsListAccessibility=void 0;const s=require("./CompilerIntrinsics");function e(){return(0,s.isVersionAtLeast)(300)}exports.supportsListAccessibility=e;

@@ -1,0 +1,1 @@
+export const __rspack_esm_id=694538;export const __rspack_esm_ids=[694538];export const __webpack_modules__={xLTI:(function(e,s,_){function o(){return{spacePage:null,spacePageSnapshot:null}}_.d(s,{a:()=>o})})};import{__webpack_require__ as e}from"./633146.61f0491ce0.js";import*as s from"./694538.f2084143b6.js";e.C(s);var _=e(e.s="xLTI").a;export{_ as clientLoader};

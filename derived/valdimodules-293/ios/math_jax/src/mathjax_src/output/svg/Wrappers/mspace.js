@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.SvgMspace=void 0;const e=require("../Wrapper"),r=require("../../common/Wrappers/mspace"),s=require("../../../core/MmlTree/MmlNodes/mspace");exports.SvgMspace=function(){var p;const o=(0,r.CommonMspaceMixin)(e.SvgWrapper);return(p=class SvgMspace extends o{}).kind=s.MmlMspace.prototype.kind,p}();

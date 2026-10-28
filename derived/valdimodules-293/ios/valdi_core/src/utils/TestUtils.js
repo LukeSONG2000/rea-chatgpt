@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.registerValdiTestSuiteDoneCallback=void 0;const e=[];function t(t){e.push(t)}globalThis.__onValdiTestSuiteDone=()=>e.forEach(e=>e()),exports.registerValdiTestSuiteDoneCallback=t;

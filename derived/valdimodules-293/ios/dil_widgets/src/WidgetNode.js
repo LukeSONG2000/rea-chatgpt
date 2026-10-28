@@ -1,0 +1,1 @@
+"use strict";function e(e,t,o,r){const n={type:e};for(const i of t.properties){if(!0===r?.includes(i.name))continue;const e=i.getValue(o);void 0!==e&&(n[i.name]=e)}return n}Object.defineProperty(exports,"__esModule",{value:!0}),exports.createWidgetNode=void 0,exports.createWidgetNode=e;

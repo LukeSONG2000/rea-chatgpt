@@ -1,0 +1,1 @@
+"use strict";var e;Object.defineProperty(exports,"__esModule",{value:!0}),exports.FilePickerSource=void 0,function(e){e[e.Files=0]="Files",e[e.Photos=1]="Photos",e[e.Camera=2]="Camera"}(e||(exports.FilePickerSource=e={}));

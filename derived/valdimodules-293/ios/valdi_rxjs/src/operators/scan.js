@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.scan=void 0;const e=require("../util/lift"),t=require("./scanInternals");function r(r,n){return(0,e.operate)((0,t.scanInternals)(r,n,arguments.length>=2,!0))}exports.scan=r;

@@ -1,0 +1,1 @@
+"use strict";function r(r){return null!==r&&"object"==typeof r&&"function"==typeof r.then}function e(r){return null!==r&&"object"==typeof r}function o(r){return r instanceof Error?r:new Error(String(r))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.toError=exports.isRecord=exports.isPromiseLike=void 0,exports.isPromiseLike=r,exports.isRecord=e,exports.toError=o;

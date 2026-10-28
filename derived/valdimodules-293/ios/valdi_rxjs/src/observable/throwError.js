@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.throwError=void 0;const r=require("../Observable"),e=require("../util/isFunction");function o(o,t){const s=(0,e.isFunction)(o)?o:()=>o,i=r=>r.error(s());return new r.Observable(t?r=>t.schedule(i,0,r):i)}exports.throwError=o;

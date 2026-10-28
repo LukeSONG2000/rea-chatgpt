@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.max=void 0;const e=require("./reduce"),r=require("../util/isFunction");function t(t){return(0,e.reduce)((0,r.isFunction)(t)?(e,r)=>t(e,r)>0?e:r:(e,r)=>e>r?e:r)}exports.max=t;

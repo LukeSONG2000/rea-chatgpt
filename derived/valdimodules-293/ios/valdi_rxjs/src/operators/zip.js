@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.zip=void 0;const e=require("../observable/zip"),r=require("../util/lift");function i(...i){return(0,r.operate)((r,t)=>{(0,e.zip)(r,...i).subscribe(t)})}exports.zip=i;

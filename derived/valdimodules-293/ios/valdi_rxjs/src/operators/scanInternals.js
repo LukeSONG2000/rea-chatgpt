@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.scanInternals=void 0;const e=require("./OperatorSubscriber");function r(r,t,s,n,c){return(o,u)=>{let a=s,i=t,b=0;o.subscribe((0,e.createOperatorSubscriber)(u,e=>{const t=b++;i=a?r(i,e,t):(a=!0,e),n&&u.next(i)},c&&(()=>{a&&u.next(i),u.complete()})))}}exports.scanInternals=r;

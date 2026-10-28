@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.isScheduler=void 0;const e=require("./isFunction");function r(r){return r&&(0,e.isFunction)(r.schedule)}exports.isScheduler=r;

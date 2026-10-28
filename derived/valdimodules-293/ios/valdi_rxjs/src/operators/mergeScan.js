@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.mergeScan=void 0;const e=require("../util/lift"),r=require("./mergeInternals");function t(t,n,o=1/0){return(0,e.operate)((e,u)=>{let i=n;return(0,r.mergeInternals)(e,u,(e,r)=>t(i,e,r),o,e=>{i=e},!1,void 0,()=>i=null)})}exports.mergeScan=t;

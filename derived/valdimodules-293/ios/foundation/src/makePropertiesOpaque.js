@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.makePropertiesOpaque=void 0;const e=require("valdi_core/src/ValdiRuntimeProvider"),r=(0,e.getValdiRuntime)();function t(e){const t={};for(const o in e)t[o]=r.makeOpaque(e[o]);return t}exports.makePropertiesOpaque=t;

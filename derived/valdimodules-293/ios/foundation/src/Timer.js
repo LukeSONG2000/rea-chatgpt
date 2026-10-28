@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.Timer=void 0;class Timer{constructor(){this.startMs=this.nowMs()}reset(){this.startMs=this.nowMs()}elapsedMs(){return this.nowMs()-this.startMs}nowMs(){return(new Date).getTime()}}exports.Timer=Timer;

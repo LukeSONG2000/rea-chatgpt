@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.auditTime=void 0;const e=require("../scheduler/async"),r=require("./audit"),t=require("../observable/timer");function i(i,u=e.asyncScheduler){return(0,r.audit)(()=>(0,t.timer)(i,u))}exports.auditTime=i;

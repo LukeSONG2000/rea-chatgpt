@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.supports3DTransforms=void 0;const e=require("./CompilerIntrinsics"),r=require("./Device");function s(){return r.Device.isWeb()||(0,e.isVersionAtLeast)(161)}exports.supports3DTransforms=s;

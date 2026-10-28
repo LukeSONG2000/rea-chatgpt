@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.resolveNavigationTheme=void 0;const e=require("valdi_ui/src/Platform"),o={navigationBarBackground:2,navigationScrollEdge:!0},r={navigationBarBackground:void 0,navigationScrollEdge:!1};function i(i){return i&&(0,e.supportsNativeScrollEdges)()?o:r}exports.resolveNavigationTheme=i;

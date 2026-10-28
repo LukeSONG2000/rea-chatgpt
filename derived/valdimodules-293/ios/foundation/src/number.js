@@ -1,0 +1,1 @@
+"use strict";function e(e,t,r){return r<t&&(r=t),Math.max(Math.min(e,r),t)}function t(e,t,r){return e*(1-r)+t*r}Object.defineProperty(exports,"__esModule",{value:!0}),exports.lerp=exports.clamp=void 0,exports.clamp=e,exports.lerp=t;
