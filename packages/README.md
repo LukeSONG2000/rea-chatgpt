@@ -8,6 +8,7 @@
 |---|---|---|---|
 | Android | 1.2026.244 / 2624421 | `ChatGPT-Android-1.2026.244/` | 2026-10-19 从 OnePlus 6 已安装应用经 ADB 提取；设备记录的安装来源为 Google Play |
 | iOS | 1.2026.279 / 37999862476 | `ChatGPT-iOS-1.2026.279/ChatGPT.ipa` | 2026-10-19 用 ipatool 2.7.0 和本人 Apple 账户从 App Store 下载导出 |
+| iOS 砸壳版 | 1.2026.293 / 40039297472 | `com.openai.chat_1.2026.293_us_iphone_dumpipa.com.ipa` | 2026-10-28 来自 **dumpipa.com**（付费砸壳服务，可绕过 FairPlay——本包已验证全二进制 cryptid=0）；来源为美区 iPhone 转储，比 279 新一版 |
 | macOS | 4.0.21 | `ChatGPT-4.0.21.dmg` | 仓库已有记录为直发 DMG；本次未找到原始下载 URL 和完整历史命令 |
 | Windows x64 | 文件名标注 4.0.21 | `ChatGPT-windows-x64-4.0.21.msix` | 仓库已有记录为 MSIX；本次未找到原始下载 URL 和完整历史命令 |
 
