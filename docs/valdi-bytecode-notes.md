@@ -216,3 +216,11 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - cel_decompile.py v2：未知 op 按 SEMANTICS 渲染助记符+置信度标注；栈模拟表达式重建上线（OP_C(OP_A8(), const[…]) 形态）
 - CLI 修复记录：filter 参数错位曾导致 -o 重跑静默写零文件（磁盘滞留初版产物）
 - 已知 op 渲染：CALL/GETPROP-IC/ASSIGN/STORE-LOCAL/LOAD 系全部语句化
+
+## 十、Web 版（chatgpt.com）恢复工作流（2026-10-28）
+
+- 登录态已建立（用户完成 MFA）；登录后应用 bundle 家族 = /cdn/assets/（webstorm/rolldown 构建，与桌面 asar 同族不同版本）
+- 完整清单已提取：HTML(676KB) 32 入口 + **manifest-c560cae0.js 163 chunk 全集**（React Router SSR manifest）
+- 直连 curl 被 CF 挑战拦截；IAB 会话抓取 64 个后被服务端限速（4 文件批超时）
+- 剩余 99 个待抓：方案 = 用户 Edge DevTools 控制台执行 analysis/web/edge-console-snippet.js → 下载 chatgpt-web-chunks.json → 放入工作区后合并
+- 工具：cel_slots/cel_decompile 同样适用于 web JS（minified rolldown 产物，无字节码层）
