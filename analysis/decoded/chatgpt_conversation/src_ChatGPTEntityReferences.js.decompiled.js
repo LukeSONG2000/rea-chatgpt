@@ -9,75 +9,305 @@
   // op 0x30 (语义待归纳)
   // op 0xba (语义待归纳)
   …(pad)
-  locop 0xcb('r')
+  locop 0xcb(str?flags=0x0 idx=6 aux=40c1)
   locop 0xcc(local[0])
   locop 0xcd(local[0])
   local[4] = local[0];
   local[5] = local[0];
   local[6] = local[0];
   // op 0x64 (语义待归纳)
-  // discard(pool[145].key#101(exports, const[226], this/ctx.!(globalThis)))
-  EXPORTS.key#227 (seq 0) = …;  // …
-  EXPORTS.key#228 (seq 1) = …;  // …
-  EXPORTS.key#229 (seq 2) = pair(exports, pair(exports, v06));  // exports
+  // 记录 0x42 [pool:101] [6500000000000000…]
+  Object.defineProperty(exports, const[e2000000], {value:!0});
+  // op 0xd4 (语义待归纳)
+  // op 0xd4 (语义待归纳)
+  // op 0xd4 (语义待归纳)
+  // EXPORT pool:227 seq=0
+  // EXPORT pool:228 seq=1
+  // EXPORT pool:229 seq=2
   locop 0xca(const[230])
+  // op 0xd4 (语义待归纳)
   // op 0xc7 (语义待归纳)
-  EXPORTS.key#227 (seq 3) = [op 0xc7];  // exports
+  // EXPORT pool:227 seq=3
+  // op 0xd4 (语义待归纳)
   // op 0xc8 (语义待归纳)
-  EXPORTS.key#228 (seq 4) = [op 0xc8];  // exports
+  // EXPORT pool:228 seq=4
+  // op 0xd4 (语义待归纳)
   // op 0xc3 (语义待归纳)
-  EXPORTS.key#229 (seq 5) = [op 0xc3];  // exports
-  // stack@END: 'e' | [op 0x64] | v06 | const[00030703] | v06 | [op 0x9a] | const[0ab00300] | const[00b20300] | const[00b40300] | const[00b60301] | [op 0x30] | [op 0xba] | 'exports' | 'e' | 't' | 'n' | [op 0x64]
-  // --- 模块段结束（其后为模块记录元数据，非字节码） ---
-  // meta+0000: ae0301087ce426bd000654ae0e430601
-  // meta+0010: b8030200020401000802b603000100b8
-  // meta+0020: 03000100bc030301ded2d3b699230300
-  // meta+0030: ae03090103000000000e430601ba0302
-  // meta+0040: 00020401000802b603000100b8030001
-  // meta+0050: 00bc030301ded2d3b799230300ae030d
-  // meta+0060: 0103000000000e430601bc0303050308
-  // meta+0070: 0203d60408b603000140b803000100ba
-  // meta+0080: 03000100bc03010030be03010120ce03
-  // meta+0090: 010220c003040330b803050430c00305
-  // meta+00a0: 01c203060164020064010064000006d3
-  // meta+00b0: ae11ec0e0eb6d3eaae11ec060eb6d2ea
-  // meta+00c0: aeeb03d228d342e80000000000000000
-  // meta+00d0: 00000000000000000000000000000000
-  // meta+00e0: 00000000000000c10024010042e90000
-  // meta+00f0: 00000000000000000000000000000000
-  // …(元数据共 2000B，截断显示)
+  // EXPORT pool:229 seq=5
+  // stack@INIT-END: 'exports' | [op 0x64] | v06 | const[00030703] | v06 | [op 0x9a] | const[0ab00300] | const[00b20300] | const[00b40300] | const[00b60301] | [op 0x30] | [op 0xba] | str?flags=0x0 idx=2 aux=00bc | str?flags=0x0 idx=3 aux=40be | str?flags=0x0 idx=4 aux=00c0 | str?flags=0x0 idx=5 aux=40c2 | [op 0x64] | pool[145] | [op 0xd4] | [op 0xd4] | pair([op 0xd4], v06) | pair(…, …) | … | … | [op 0xd4] | [op 0xc7] | [op 0xd4] | [op 0xc8] | [op 0xd4] | [op 0xc3]
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae []
+  // trailer 0x03 [01087ce4]
+  // trailer 0x26 [bd00]
+  // trailer 0x06 []
+  // trailer 0x54 []
+  // trailer 0xae []
+  // trailer 0x0e []
+  // 单元记录 0x43 [0601b80302000204…]
+  // trailer 0x03 [00ae0309]
+  // trailer 0x01 [03000000]
+  // trailer 0x0e []
+  // 单元记录 0x43 [0601ba0302000204…]
+  // trailer 0x03 [00ae030d]
+  // trailer 0x01 [03000000]
+  // trailer 0x0e []
+  // 单元记录 0x43 [0601bc0303050308…]
+  // trailer 0x30 [be03010120]
+  // trailer 0xce []
+  // trailer 0x03 [010220c0]
+  // trailer 0x03 [040330b8]
+  // trailer 0x03 [050430c0]
+  // trailer 0x03 [0501c203]
+  // trailer 0x06 []
+  // trailer 0x01 [64020064]
+  // trailer 0x01 [00640000]
+  // trailer 0x06 []
+  // trailer 0xd3 []
+  // trailer 0xae []
+  // trailer 0x11 []
+  // trailer 0xec [0e]
+  // trailer 0x0e []
+  // trailer 0xb6 []
+  // trailer 0xd3 []
+  // trailer 0xea []
+  // trailer 0xae []
+  // trailer 0x11 []
+  // trailer 0xec [06]
+  // trailer 0x0e []
+  // trailer 0xb6 []
+  // trailer 0xd2 []
+  // trailer 0xea []
+  // trailer 0xae []
+  // trailer 0xeb [03]
+  // trailer 0xd2 []
+  // trailer 0x28 []
+  // trailer 0xd3 []
+  // 单元记录 0x42 [e800000000000000…]
+  // trailer 0xc1 [00]
+  // trailer 0x24 [0100]
+  // 单元记录 0x42 [e900000000000000…]
+  // trailer 0xc1 [01]
+  // trailer 0x24 [0100]
+  // 单元记录 0x42 [ea00000000000000…]
+  // trailer 0xc1 [02]
+  // trailer 0x24 [0100]
+  // trailer 0xca []
+  // trailer 0xb6 []
+  // trailer 0x65 [0000]
+  // trailer 0xea []
+  // trailer 0xae []
+  // trailer 0xeb [03]
+  // trailer 0xd2 []
+  // trailer 0x28 []
+  // trailer 0xb6 []
+  // trailer 0xcb []
+  // trailer 0xc2 []
+  // trailer 0xcc []
+  // trailer 0x64 [0300]
+  // trailer 0x65 [0000]
+  // trailer 0x81 []
+  // trailer 0xee [6e01]
+  // trailer 0xcd []
+  // trailer 0x64 [0400]
+  // trailer 0x65 [0300]
+  // 单元记录 0x41 [eb00000000000000…]
+  // trailer 0xc4 [04]
+  // trailer 0x65 [0400]
+  // 单元记录 0x41 [ec00000000000000…]
+  // trailer 0x65 [0100]
+  // trailer 0xa6 []
+  // trailer 0x11 []
+  // trailer 0x6d [17010000]
+  // trailer 0x0e []
+  // trailer 0x65 [0200]
+  // trailer 0xd2 []
+  // 单元记录 0x42 [ed00000000000000…]
+  // trailer 0x65 [0100]
+  // trailer 0x65 [0400]
+  // 单元记录 0x41 [ec00000000000000…]
+  // trailer 0x24 [0200]
+  // trailer 0xa0 []
+  // trailer 0x11 []
+  // trailer 0x66 [0200]
+  // trailer 0x0e []
+  // trailer 0x65 [0200]
+  // trailer 0xd4 []
+  // trailer 0xeb [66]
+  // trailer 0x04 [ee000000]
+  // trailer 0xdf []
+  // trailer 0x65 [0400]
+  // 单元记录 0x41 [3600000000000000…]
+  // trailer 0xf0 []
+  // trailer 0xa0 []
+  // trailer 0x04 [ef000000]
+  // trailer 0xa0 []
+  // trailer 0x38 [95000000]
+  // trailer 0x65 [0300]
+  // 单元记录 0x41 [5700000000000000…]
+  // trailer 0xf0 []
+  // trailer 0xa0 []
+  // trailer 0x04 [f0000000]
+  // trailer 0xa0 []
+  // trailer 0xed [25]
+  // trailer 0x65 [0400]
+  // 单元记录 0x41 [3600000000000000…]
+  // trailer 0xa0 []
+  // trailer 0x11 []
+  // trailer 0x66 [0200]
+  // trailer 0x0e []
+  // trailer 0x65 [0400]
+  // 单元记录 0x41 [f100000000000000…]
+  // trailer 0x11 []
+  // trailer 0x66 [0100]
+  // trailer 0x0e []
+  // trailer 0x84 [00]
+  // trailer 0x6c [91feffff]
+  // trailer 0x0e []
+  // trailer 0x87 []
+  // trailer 0x65 [0200]
+  // trailer 0xd2 []
+  // 单元记录 0x42 [ed00000000000000…]
+  // trailer 0x65 [0100]
+  // trailer 0x24 [0100]
+  // trailer 0xa0 []
+  // trailer 0x11 []
+  // trailer 0x66 [0200]
+  // trailer 0x0e []
+  // trailer 0x65 [0200]
+  // trailer 0x28 []
+  // trailer 0xae []
+  // trailer 0x03 [11103076]
+  // trailer 0xaf []
+  // trailer 0x52 []
+  // trailer 0x02 [351749c1]
+  // trailer 0x99 []
+  // trailer 0x02 [02d0300e]
+  // 单元记录 0x42 [0601000200020200…]
+  // trailer 0x28 []
+  // trailer 0xae []
+  // trailer 0x03 [13030821]
+  // trailer 0x21 [0000]
+  // trailer 0x0e []
+  // trailer 0x40 [0601000101]
+  // trailer 0x01 [0302002c]
+  // trailer 0x02 [00000100]
+  // trailer 0xb8 []
+  // trailer 0x03 [000000c0]
+  // trailer 0x03 [0000b603]
+  // trailer 0x03 [d2731141]
+  // trailer 0xeb [00]
+  // trailer 0xca []
+  // trailer 0x0e []
+  // trailer 0xde []
+  // trailer 0xdf []
+  // trailer 0xc6 []
+  // trailer 0x23 [0200]
+  // trailer 0xae []
+  // trailer 0x03 [16000000]
+  // trailer 0x0e []
+  // 单元记录 0x42 [0601000200020200…]
+  // 单元记录 0x41 [ec00000000000000…]
+  // trailer 0xd3 []
+  // 单元记录 0x41 [eb00000000000000…]
+  // 单元记录 0x41 [ec00000000000000…]
+  // trailer 0xa1 []
+  // trailer 0x28 []
+  // trailer 0xae []
+  // trailer 0x03 [16000000]
+  // trailer 0x0e []
+  // 单元记录 0x43 [0601be0302020203…]
+  // trailer 0x30 [6401006400]
+  // trailer 0x06 []
+  // trailer 0xd3 []
+  // trailer 0xae []
+  // trailer 0x11 []
+  // trailer 0xec [2d]
+  // trailer 0x0e []
+  // trailer 0xd2 []
+  // 单元记录 0x42 [f200000000000000…]
+  // trailer 0x04 [e6000000]
+  // trailer 0x24 [0100]
+  // trailer 0x99 []
+  // trailer 0xeb [02]
+  // trailer 0x29 []
+  // trailer 0xd2 []
+  // 单元记录 0x42 [ed00000000000000…]
+  // trailer 0x04 [e6000000]
+  // trailer 0xea []
+  // trailer 0x24 [0100]
+  // trailer 0xca []
+  // trailer 0xc0 [00]
+  // trailer 0xc0 [01]
+  // trailer 0x33 []
+  // 单元记录 0x42 [f300000000000000…]
+  // trailer 0x65 [0000]
+  // trailer 0x24 [0100]
+  // trailer 0x99 []
+  // trailer 0xeb [02]
+  // trailer 0x29 []
+  // trailer 0x38 [94000000]
+  // trailer 0x65 [0000]
+  // trailer 0xf0 []
+  // trailer 0xcb []
+  // trailer 0x38 [94000000]
+  // 单元记录 0x42 [f400000000000000…]
+  // trailer 0x65 [0100]
+  // trailer 0x24 [0100]
+  // trailer 0xeb [07]
+  // trailer 0xd3 []
+  // trailer 0x65 [0100]
+  // trailer 0x4a []
+  // trailer 0x28 []
+  // trailer 0x06 []
+  // trailer 0x28 []
+  // trailer 0xae []
+  // trailer 0x03 [21072100]
+  // trailer 0x35 []
+  // trailer 0x02 [dff33507]
+  // trailer 0x20 []
+  // trailer 0x5e [283f]
+  // trailer 0x3a [307c5b31]
+  // trailer 0x2d []
+  // trailer 0x39 [5d5c642a]
+  // trailer 0x29 []
+  // trailer 0x24 [078c]
+  // trailer 0x01 [0001003f]
+  // trailer 0x08 []
+  // trailer 0x06 []
+  // trailer 0x04 [07f5ffff]
+  // trailer 0xff []
 
-// ---- 字符串表 ----
-// str[0] = 'require'
-// str[1] = 'module'
-// str[2] = 'exports'
-// str[3] = 'e'
-// str[4] = 't'
-// str[5] = 'n'
-// str[6] = 'r'
-// str[7] = 'i'
-// str[8] = 's'
-// str[9] = 'o'
-// str[10] = '__esModule'
-// str[11] = 'markdownWithEntityLinks'
-// str[12] = 'markdownWithEntityLabels'
-// str[13] = 'entityReferenceForLink'
-// str[14] = 'chatgpt-entity:'
-// str[15] = 'c'
-// str[16] = 'map'
-// str[17] = 'filter'
-// str[18] = 'sort'
-// str[19] = 'reference'
-// str[20] = 'startIndex'
-// str[21] = 'slice'
-// str[22] = '['
-// str[23] = '](chatgpt-entity:'
-// str[24] = ')'
-// str[25] = 'endIndex'
-// str[26] = 'startsWith'
-// str[27] = 'test'
-// str[28] = 'isSafeInteger'
-// str[29] = 'trim'
-// str[30] = 'replace'
-// str[31] = '\\$1'
-// str[32] = '\x00\x06\x00�\x01\x00\x01'
+// ---- 字符串表（1-based） ----
+// str[1] = 'require'
+// str[2] = 'module'
+// str[3] = 'exports'
+// str[4] = 'e'
+// str[5] = 't'
+// str[6] = 'n'
+// str[7] = 'r'
+// str[8] = 'i'
+// str[9] = 's'
+// str[10] = 'o'
+// str[11] = '__esModule'
+// str[12] = 'markdownWithEntityLinks'
+// str[13] = 'markdownWithEntityLabels'
+// str[14] = 'entityReferenceForLink'
+// str[15] = 'chatgpt-entity:'
+// str[16] = 'c'
+// str[17] = 'map'
+// str[18] = 'filter'
+// str[19] = 'sort'
+// str[20] = 'reference'
+// str[21] = 'startIndex'
+// str[22] = 'slice'
+// str[23] = '['
+// str[24] = '](chatgpt-entity:'
+// str[25] = ')'
+// str[26] = 'endIndex'
+// str[27] = 'startsWith'
+// str[28] = 'test'
+// str[29] = 'isSafeInteger'
+// str[30] = 'trim'
+// str[31] = 'replace'
+// str[32] = '\\$1'
+// str[33] = '\x00\x06\x00�\x01\x00\x01'

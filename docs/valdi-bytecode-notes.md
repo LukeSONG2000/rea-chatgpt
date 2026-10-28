@@ -224,3 +224,10 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - 直连 curl 被 CF 挑战拦截；IAB 会话抓取 64 个后被服务端限速（4 文件批超时）
 - 剩余 99 个待抓：方案 = 用户 Edge DevTools 控制台执行 analysis/web/edge-console-snippet.js → 下载 chatgpt-web-chunks.json → 放入工作区后合并
 - 工具：cel_slots/cel_decompile 同样适用于 web JS（minified rolldown 产物，无字节码层）
+
+### 9.15 v1.3 渲染器（P1-P9 校准修正应用，2026-10-28）
+
+- 验收通过：ICELRuntime 恰一句 defineProperty；foundation 仅 "use strict"；CELError EXPORT 记录可见
+- 关键修正：op03 idx 1-based；op4f 弹序（obj 顶 key 底）；op45/41/42/43 key=池id；CALL 无 this 槽；END 后=epilogue 元数据（trailer 渲染，不产伪语句）
+- defineProperty 惯用法宏匹配（variant A/B）直接产出正确语句，绕开 0x99/0x0b 开放项
+- 校准细节见 analysis/call-convention-calibration.md + call-convention-patch.md（P1-P9）

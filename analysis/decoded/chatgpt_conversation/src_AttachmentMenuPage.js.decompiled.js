@@ -2,6 +2,7 @@
   "use strict";
   …(pad)
   ? = ?;
+  // op 0xd4 (语义待归纳)
   …(pad)
   // op 0x07 (语义待归纳)
   // op 0x83 (语义待归纳)
@@ -39,25 +40,39 @@
   // op 0x64 (语义待归纳)
   // op 0x64 (语义待归纳)
   // op 0x64 (语义待归纳)
-  // discard(pool[145].flexDirection(exports, const[251], this/ctx.!(globalThis)))
-  EXPORTS.key#252 (seq 0) = …;  // …
-  EXPORTS.key#248 (seq 1) = pair(exports, v06);  // exports
+  // 记录 0x42 [pool:101] [6500000000000000…]
+  Object.defineProperty(exports, const[fb000000], {value:!0});
+  // op 0xd4 (语义待归纳)
+  // op 0xd4 (语义待归纳)
+  // EXPORT pool:252 seq=0
+  // EXPORT pool:248 seq=1
   locop 0xca(f0(const[253]))
-  locop 0xcb(objlit[255](f0(const[254])))
-  locop 0xcc(undefined.key#256())
+  // 记录 0x41 [pool:255] [ff00000000000000…]
+  locop 0xcb(f0(const[254]))
+  // 记录 0x42 [pool:256] [0001000000000000…]
+  locop 0xcc(undefined())
+  // 记录 0x42 [pool:257] [0101000000000000…]
   locop 0xcd(const[261](const[262], push4))
+  // 记录 0x42 [pool:257] [0101000000000000…]
   local[4] = const[64](const[264], push2);
+  // 记录 0x42 [pool:256] [0001000000000000…]
   local[5] = const[266](push2);
+  // 记录 0x42 [pool:256] [0001000000000000…]
   local[6] = const[266](push2);
+  // 记录 0x42 [pool:256] [0001000000000000…]
   // op 0xbe (语义待归纳)
   // op 0xbe (语义待归纳)
   local[7] = [op 0xbe](push4);
+  // 记录 0x42 [pool:256] [0001000000000000…]
   // op 0xbe (语义待归纳)
   local[8] = [op 0xbe](push2);
+  // 记录 0x42 [pool:256] [0001000000000000…]
   // op 0xb7 (语义待归纳)
   local[9] = [op 0xb7](push2);
-  local[10] = undefined.key#256();
-  local[11] = undefined.key#256();
+  // 记录 0x42 [pool:256] [0001000000000000…]
+  local[10] = undefined();
+  // 记录 0x42 [pool:256] [0001000000000000…]
+  local[11] = undefined();
   local[12] = f0(const[270]);
   local[13] = f0(const[271]);
   local[14] = f0(const[272]);
@@ -74,16 +89,21 @@
   local[25] = f0(const[283]);
   // op 0xc3 (语义待归纳)
   // op 0x11 (语义待归纳)
-  jcc-0xec → @1099   // 条件跳转 (目标=pc+1+i8)
+  jcc-0xec → @1099
   // discard([op 0x11])
+  // op 0xd4 (语义待归纳)
   // op 0xc5 (语义待归纳)
-  EXPORTS.key#252 (seq 2) = …;  // …
-  // discard(!(f0(pair(exports, [op 0xc5]))))
+  // EXPORT pool:252 seq=2
+  // discard(!(f0(…)))
   // op 0xc3 (语义待归纳)
+  // 记录 0x41 [pool:284] [1c01000000000000…]
   // op 0xc3 (语义待归纳)
+  // 记录 0x41 [pool:291] [2301000000000000…]
   // op 0xc3 (语义待归纳)
+  // 记录 0x41 [pool:295] [2701000000000000…]
   local[27] = push3;
   // op 0x64 (语义待归纳)
+  // 记录 0x41 [pool:299] [2b01000000000000…]
   // op 0x64 (语义待归纳)
   // op 0xc0 (语义待归纳)
   // op 0x59 (语义待归纳)
@@ -96,200 +116,221 @@
   // op 0xc5 (语义待归纳)
   // op 0x6b (语义待归纳)
   local[28] = [op 0x6b];
-  EXPORTS.key#248 (seq 3) = undefined;  // exports
-  // op 0xd3 (语义待归纳)
+  // op 0xd4 (语义待归纳)
+  // EXPORT pool:248 seq=3
+  // op 0xd4 (语义待归纳)
+  // 记录 0x42 [pool:304] [3001000000000000…]
+  // 记录 0x41 [pool:305] [3101000000000000…]
   // op 0x11 (语义待归纳)
   // op 0x66 (语义待归纳)
-  EXPORTS.key#248 (seq 4) = [op 0x66];  // objlit[305](undefined)
+  // EXPORT pool:248 seq=4
+  // 记录 0x41 [pool:306] [3201000000000000…]
   // op 0x11 (语义待归纳)
+  // 记录 0x41 [pool:307] [3301000000000000…]
+  // 记录 0x41 [pool:308] [3401000000000000…]
+  // 记录 0x41 [pool:307] [3301000000000000…]
+  // 记录 0x41 [pool:310] [3601000000000000…]
+  // 记录 0x41 [pool:312] [3801000000000000…]
+  // 记录 0x41 [pool:313] [3901000000000000…]
   // op 0xb7 (语义待归纳)
+  // 记录 0x41 [pool:318] [3e01000000000000…]
+  // 记录 0x41 [pool:319] [3f01000000000000…]
+  // 记录 0x41 [pool:306] [3201000000000000…]
   // op 0x11 (语义待归纳)
+  // 记录 0x41 [pool:307] [3301000000000000…]
+  // 记录 0x41 [pool:322] [4201000000000000…]
+  // 记录 0x41 [pool:324] [4401000000000000…]
   // op 0xbe (语义待归纳)
   // op 0xbe (语义待归纳)
-  local[32] = [op 0x11].call21(this/ctx.objlit[322](objlit[307](undefined)); objlit[324](undefined).f0([op 0xbe]).[op 0xbe].objlit[327](objlit[318](undefined)));
-  // stack@END: ?(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'o', exports, const[0e430601], [op 0x0f]) | const[00b20300] | const[00b40300] | const[00b60301] | [op 0x30] | [op 0xba] | 'exports' | 'e' | 'o' | 't' | 'i' | 'n' | 'r' | 'a' | 's' | 'd' | 'l' | 'c' | 'p' | 'm' | 'u' | 'g' | 'P' | 'y' | 'A' | 'h' | 'v' | 'C' | 'w' | 'b' | 'require' | 'M' | 'O' | 'x' | const[031e70f2] | 'I' | 'S' | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | local-ref | local-ref | undefined.key#257 | const[258] | const[259] | const[260] | undefined.key#257 | const[263] | undefined.key#256 | const[265] | undefined.key#256 | const[265] | undefined.key#256 | const[267] | [op 0xbe] | const[265] | undefined.key#256 | const[268] | undefined.key#256 | const[269] | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local-ref | local[0] | this/ctx.objlit[284]([op 0xc3]).const[286].const[288].const[284] | this/ctx.objlit[291]([op 0xc3]).const[292].const[293].const[294] | this/ctx.objlit[295]([op 0xc3]).const[296].const[297].const[298] | [op 0x64] | [op 0xc5] | exports | undefined.key#304 | this/ctx.call21([op 0x11]; this/ctx.objlit[308](objlit[307](undefined)).objlit[310](objlit[307](undefined)).objlit[313](objlit[312](undefined)).[op 0xb7].const[316].objlit[319](objlit[318](undefined)).const[266])
-  // --- 模块段结束（其后为模块记录元数据，非字节码） ---
-  // meta+0000: ae030148005b04e4268600b3050c8108
-  // meta+0010: cb35353508cb35353508cb3535351dff
-  // meta+0020: 00081200082e2d2b000b1efd003c0408
-  // meta+0030: c1004a02004a02004a022135004a0235
-  // meta+0040: 2bc1004a02df26004a022b0e0e430601
-  // meta+0050: 000100010400003a01b603000100d2d2
-  // meta+0060: b615451c01000000000000041c010000
-  // meta+0070: 4cd2d2b7154523010000010000000423
-  // meta+0080: 0100004cd2d2b8154527010000020000
-  // meta+0090: 0004270100004c29ae030b0403003902
-  // meta+00a0: 030000000e4207010000010002000049
-  // meta+00b0: 011000010008cac64149010000000000
-  // meta+00c0: 00000000000000000000000000000000
-  // meta+00d0: 000000000000000000424a0100000000
-  // meta+00e0: 00000000000000000000000000000000
-  // meta+00f0: 0000000000000000000024000029ae03
-  // …(元数据共 5176B，截断显示)
+  // 记录 0x41 [pool:318] [3e01000000000000…]
+  // 记录 0x41 [pool:327] [4701000000000000…]
+  local[32] = call21([op 0xbe].[wk:0x146]; undefined.[wk:0x148]).[wk:0x122];
+  // stack@INIT-END: 'e'([op 0xd4], const[0e430601], [op 0x0f]) | const[00b20300] | const[00b40300] | const[00b60301] | [op 0x30] | [op 0xba] | 'module' | 'exports' | 'e' | 'o' | 't' | 'i' | 'n' | 'r' | 'a' | 's' | 'd' | 'l' | 'c' | 'p' | 'm' | 'u' | 'g' | 'P' | 'y' | 'A' | 'h' | 'v' | 'C' | 'w' | str?flags=0x0 idx=0 aux=40ec | 'b' | 'I' | str?flags=0x2 idx=33 aux=30ec | const[031e70f2] | str?flags=0x0 idx=27 aux=40f4 | 'O' | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | [op 0x64] | pool[145] | [op 0xd4] | pair([op 0xd4], v06) | … | … | param[0] | param[0] | undefined | const[258] | const[259] | const[260] | undefined | const[263] | undefined | const[265] | undefined | const[265] | undefined | const[267] | [op 0xbe] | const[265] | undefined | const[268] | undefined | const[269] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | local[0] | pair([op 0xd4], [op 0xc5]) | … | arg2-tpl | [op 0xc3].[wk:0x11d] | const[286].[wk:0x11f] | const[288].[wk:0x121] | const[284].[wk:0x122] | arg2-tpl | [op 0xc3].[wk:0x11d] | const[292].[wk:0x11f] | const[293].[wk:0x121] | const[294].[wk:0x122] | arg2-tpl | [op 0xc3].[wk:0x11d] | const[296].[wk:0x11f] | const[297].[wk:0x121] | const[298].[wk:0x122] | [op 0x64] | [op 0xc5] | [op 0xd4] | undefined | [op 0xd4] | undefined | undefined | [op 0x66] | arg2-tpl | [op 0x11] | arg2-tpl | undefined.[wk:0x135] | undefined.[wk:0x137] | undefined.[wk:0x13a] | [op 0xb7].[wk:0x13b] | const[316].[wk:0x13d] | call21(undefined.[wk:0x140]; const[266].[wk:0x109]).[wk:0x141] | [op 0x11] | arg2-tpl | undefined.[wk:0x143] | undefined | f0([op 0xbe]).[wk:0x145]
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae []
+  // trailer 0x03 [0148005b]
+  // trailer 0x04 [e4268600]
+  // trailer 0xb3 []
+  // trailer 0x05 [0c8108cb]
+  // trailer 0x35 []
+  // trailer 0x35 []
+  // trailer 0x35 []
+  // trailer 0x08 []
+  // trailer 0xcb []
+  // trailer 0x35 []
+  // trailer 0x35 []
+  // trailer 0x35 []
+  // trailer 0x08 []
+  // trailer 0xcb []
+  // trailer 0x35 []
+  // trailer 0x35 []
+  // trailer 0x35 []
+  // trailer 0x1d []
+  // trailer 0xff []
 
-// ---- 字符串表 ----
-// str[0] = 'require'
-// str[1] = 'module'
-// str[2] = 'exports'
-// str[3] = 'e'
-// str[4] = 'o'
-// str[5] = 't'
-// str[6] = 'i'
-// str[7] = 'n'
-// str[8] = 'r'
-// str[9] = 'a'
-// str[10] = 's'
-// str[11] = 'd'
-// str[12] = 'l'
-// str[13] = 'c'
-// str[14] = 'p'
-// str[15] = 'm'
-// str[16] = 'u'
-// str[17] = 'g'
-// str[18] = 'P'
-// str[19] = 'y'
-// str[20] = 'A'
-// str[21] = 'h'
-// str[22] = 'v'
-// str[23] = 'C'
-// str[24] = 'w'
-// str[25] = 'b'
-// str[26] = 'M'
-// str[27] = 'I'
-// str[28] = 'O'
-// str[29] = 'S'
-// str[30] = 'T'
-// str[31] = '_'
-// str[32] = 'AttachmentMenuPage'
-// str[33] = 'x'
-// str[34] = 'V'
-// str[35] = '__esModule'
-// str[36] = 'AttachmentMenuAction'
-// str[37] = 'tslib'
-// str[38] = 'valdi_core/src/JSX'
-// str[39] = 'jsx'
-// str[40] = 'makeComponentPrototype'
-// str[41] = 'makeNodePrototype'
-// str[42] = 'view'
-// str[43] = 'accessibilityId'
-// str[44] = 'chatgpt.attachment-dialog'
-// str[45] = 'accessibilityLabel'
-// str[46] = 'Add to the conversation'
-// str[47] = 'label'
-// str[48] = 'ADD TO THE CONVERSATION'
-// str[49] = 'width'
-// str[50] = '100%'
-// str[51] = 'height'
-// str[52] = 'size'
-// str[53] = 'flex'
-// str[54] = 'dil_icon_assets/src/IconAssets'
-// str[55] = 'oai_core/src/OAIAttributes'
-// str[56] = 'oai_core/src/OAITheme'
-// str[57] = 'oai_core/src/OAITokens'
-// str[58] = 'oai_ui/src/components/Box'
-// str[59] = 'oai_ui/src/components/Column'
-// str[60] = 'oai_ui/src/components/Icon'
-// str[61] = 'oai_ui/src/components/Pressable'
-// str[62] = 'oai_ui/src/components/Row'
-// str[63] = 'oai_ui/src/components/Text'
-// str[64] = 'valdi_core/src/Style'
-// str[65] = 'valdi_core/src/SystemFont'
-// str[66] = 'valdi_navigation/src/NavigationPage'
-// str[67] = 'valdi_navigation/src/NavigationPageComponent'
-// str[68] = 'Photos'
-// str[69] = 'action'
-// str[70] = 'Choose from this device'
-// str[71] = 'detail'
-// str[72] = 'image'
-// str[73] = 'icon'
-// str[74] = 'title'
-// str[75] = 'BrowseFiles'
-// str[76] = 'Attach a local document'
-// str[77] = 'folder-open'
-// str[78] = 'Browse files'
-// str[79] = 'TakePhoto'
-// str[80] = 'Open the camera'
-// str[81] = 'camera'
-// str[82] = 'Take a photo'
-// str[83] = 'NavigationPageComponent'
-// str[84] = 'onDestroy'
-// str[85] = 'onRender'
-// str[86] = 'renderMenuItem'
-// str[87] = 'selectAction'
-// str[88] = '__decorate'
-// str[89] = 'NavigationPage'
-// str[90] = 'Style'
-// str[91] = 'OAIColor'
-// str[92] = 'BgElevatedPrimary'
-// str[93] = 'backgroundColor'
-// str[94] = 'BorderDefault'
-// str[95] = 'borderColor'
-// str[96] = 'OAIRadius'
-// str[97] = 'Xl'
-// str[98] = 'borderRadius'
-// str[99] = 'borderWidth'
-// str[100] = 'column'
-// str[101] = 'flexDirection'
-// str[102] = 'OAISpacing'
-// str[103] = 'Two'
-// str[104] = 'padding'
-// str[105] = 'root'
-// str[106] = 'TextTertiary'
-// str[107] = 'color'
-// str[108] = 'systemSemiboldFont'
-// str[109] = 'font'
-// str[110] = 'lineHeight'
-// str[111] = 'Half'
-// str[112] = 'marginBottom'
-// str[113] = 'viewModel'
-// str[114] = 'onDismiss'
-// str[115] = 'beginComponent'
-// str[116] = 'OAITheme'
-// str[117] = 'setViewModelProperty'
-// str[118] = 'mode'
-// str[119] = 'themeMode'
-// str[120] = 'setUnnamedSlot'
-// str[121] = 'endComponent'
-// str[122] = 'beginRender'
-// str[123] = 'setAttributeStyle'
-// str[124] = 'style'
-// str[125] = 'endRender'
-// str[126] = 'forEach'
-// str[127] = 'capabilities'
-// str[128] = 'Pressable'
-// str[129] = 'onPress'
-// str[130] = 'One'
-// str[131] = 'bottom'
-// str[132] = 'top'
-// str[133] = 'Row'
-// str[134] = 'align'
-// str[135] = 'OAIAlign'
-// str[136] = 'Center'
-// str[137] = 'gap'
-// str[138] = 'OneAndHalf'
-// str[139] = 'Box'
-// str[140] = 'background'
-// str[141] = 'BgTertiary'
-// str[142] = 'justify'
-// str[143] = 'OAIJustify'
-// str[144] = 'radius'
-// str[145] = 'Lg'
-// str[146] = 'Column'
-// str[147] = 'Quarter'
-// str[148] = 'Icon'
-// str[149] = 'IconPrimary'
-// str[150] = 'src'
-// str[151] = 'getIconAsset'
-// str[152] = 'Text'
-// str[153] = 'OAITextSize'
-// str[154] = 'LabelLarge'
-// str[155] = 'BodySmall'
-// str[156] = 'tone'
-// str[157] = 'TextTone'
-// str[158] = 'Secondary'
-// str[159] = 'onAction'
-// str[160] = 'navigationController'
-// str[161] = 'dismiss'
-// str[162] = 'photos'
-// str[163] = 'files'
-// str[164] = '\x00\x06\x00�\x01\x00\x01'
+// ---- 字符串表（1-based） ----
+// str[1] = 'require'
+// str[2] = 'module'
+// str[3] = 'exports'
+// str[4] = 'e'
+// str[5] = 'o'
+// str[6] = 't'
+// str[7] = 'i'
+// str[8] = 'n'
+// str[9] = 'r'
+// str[10] = 'a'
+// str[11] = 's'
+// str[12] = 'd'
+// str[13] = 'l'
+// str[14] = 'c'
+// str[15] = 'p'
+// str[16] = 'm'
+// str[17] = 'u'
+// str[18] = 'g'
+// str[19] = 'P'
+// str[20] = 'y'
+// str[21] = 'A'
+// str[22] = 'h'
+// str[23] = 'v'
+// str[24] = 'C'
+// str[25] = 'w'
+// str[26] = 'b'
+// str[27] = 'M'
+// str[28] = 'I'
+// str[29] = 'O'
+// str[30] = 'S'
+// str[31] = 'T'
+// str[32] = '_'
+// str[33] = 'AttachmentMenuPage'
+// str[34] = 'x'
+// str[35] = 'V'
+// str[36] = '__esModule'
+// str[37] = 'AttachmentMenuAction'
+// str[38] = 'tslib'
+// str[39] = 'valdi_core/src/JSX'
+// str[40] = 'jsx'
+// str[41] = 'makeComponentPrototype'
+// str[42] = 'makeNodePrototype'
+// str[43] = 'view'
+// str[44] = 'accessibilityId'
+// str[45] = 'chatgpt.attachment-dialog'
+// str[46] = 'accessibilityLabel'
+// str[47] = 'Add to the conversation'
+// str[48] = 'label'
+// str[49] = 'ADD TO THE CONVERSATION'
+// str[50] = 'width'
+// str[51] = '100%'
+// str[52] = 'height'
+// str[53] = 'size'
+// str[54] = 'flex'
+// str[55] = 'dil_icon_assets/src/IconAssets'
+// str[56] = 'oai_core/src/OAIAttributes'
+// str[57] = 'oai_core/src/OAITheme'
+// str[58] = 'oai_core/src/OAITokens'
+// str[59] = 'oai_ui/src/components/Box'
+// str[60] = 'oai_ui/src/components/Column'
+// str[61] = 'oai_ui/src/components/Icon'
+// str[62] = 'oai_ui/src/components/Pressable'
+// str[63] = 'oai_ui/src/components/Row'
+// str[64] = 'oai_ui/src/components/Text'
+// str[65] = 'valdi_core/src/Style'
+// str[66] = 'valdi_core/src/SystemFont'
+// str[67] = 'valdi_navigation/src/NavigationPage'
+// str[68] = 'valdi_navigation/src/NavigationPageComponent'
+// str[69] = 'Photos'
+// str[70] = 'action'
+// str[71] = 'Choose from this device'
+// str[72] = 'detail'
+// str[73] = 'image'
+// str[74] = 'icon'
+// str[75] = 'title'
+// str[76] = 'BrowseFiles'
+// str[77] = 'Attach a local document'
+// str[78] = 'folder-open'
+// str[79] = 'Browse files'
+// str[80] = 'TakePhoto'
+// str[81] = 'Open the camera'
+// str[82] = 'camera'
+// str[83] = 'Take a photo'
+// str[84] = 'NavigationPageComponent'
+// str[85] = 'onDestroy'
+// str[86] = 'onRender'
+// str[87] = 'renderMenuItem'
+// str[88] = 'selectAction'
+// str[89] = '__decorate'
+// str[90] = 'NavigationPage'
+// str[91] = 'Style'
+// str[92] = 'OAIColor'
+// str[93] = 'BgElevatedPrimary'
+// str[94] = 'backgroundColor'
+// str[95] = 'BorderDefault'
+// str[96] = 'borderColor'
+// str[97] = 'OAIRadius'
+// str[98] = 'Xl'
+// str[99] = 'borderRadius'
+// str[100] = 'borderWidth'
+// str[101] = 'column'
+// str[102] = 'flexDirection'
+// str[103] = 'OAISpacing'
+// str[104] = 'Two'
+// str[105] = 'padding'
+// str[106] = 'root'
+// str[107] = 'TextTertiary'
+// str[108] = 'color'
+// str[109] = 'systemSemiboldFont'
+// str[110] = 'font'
+// str[111] = 'lineHeight'
+// str[112] = 'Half'
+// str[113] = 'marginBottom'
+// str[114] = 'viewModel'
+// str[115] = 'onDismiss'
+// str[116] = 'beginComponent'
+// str[117] = 'OAITheme'
+// str[118] = 'setViewModelProperty'
+// str[119] = 'mode'
+// str[120] = 'themeMode'
+// str[121] = 'setUnnamedSlot'
+// str[122] = 'endComponent'
+// str[123] = 'beginRender'
+// str[124] = 'setAttributeStyle'
+// str[125] = 'style'
+// str[126] = 'endRender'
+// str[127] = 'forEach'
+// str[128] = 'capabilities'
+// str[129] = 'Pressable'
+// str[130] = 'onPress'
+// str[131] = 'One'
+// str[132] = 'bottom'
+// str[133] = 'top'
+// str[134] = 'Row'
+// str[135] = 'align'
+// str[136] = 'OAIAlign'
+// str[137] = 'Center'
+// str[138] = 'gap'
+// str[139] = 'OneAndHalf'
+// str[140] = 'Box'
+// str[141] = 'background'
+// str[142] = 'BgTertiary'
+// str[143] = 'justify'
+// str[144] = 'OAIJustify'
+// str[145] = 'radius'
+// str[146] = 'Lg'
+// str[147] = 'Column'
+// str[148] = 'Quarter'
+// str[149] = 'Icon'
+// str[150] = 'IconPrimary'
+// str[151] = 'src'
+// str[152] = 'getIconAsset'
+// str[153] = 'Text'
+// str[154] = 'OAITextSize'
+// str[155] = 'LabelLarge'
+// str[156] = 'BodySmall'
+// str[157] = 'tone'
+// str[158] = 'TextTone'
+// str[159] = 'Secondary'
+// str[160] = 'onAction'
+// str[161] = 'navigationController'
+// str[162] = 'dismiss'
+// str[163] = 'photos'
+// str[164] = 'files'
+// str[165] = '\x00\x06\x00�\x01\x00\x01'

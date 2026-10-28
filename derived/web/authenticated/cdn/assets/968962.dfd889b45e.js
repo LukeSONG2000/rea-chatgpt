@@ -1,0 +1,1 @@
+export const __rspack_esm_id=968962;export const __rspack_esm_ids=[968962];export const __webpack_modules__={b9i1:(function(e,_,o){function r(e){let{serverLoader:_}=e;return _()}o.d(_,{a:()=>r})})};import{__webpack_require__ as e}from"./633146.61f0491ce0.js";import*as _ from"./968962.dfd889b45e.js";e.C(_);var o=e(e.s="b9i1").a;export{o as clientLoader};

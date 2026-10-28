@@ -2,16 +2,18 @@
   "use strict";
   …(pad)
   ? = ?;
-
-  // ---- FUNCTION-UNIT: 'key#262' (33B 头+内联体) ----
+  // 记录 0x43 [pool:262] [0601000300030600…]
   …(pad)
-  // stack@END: '__esModule' | fn:'key#262' | undefined(exports, const[219], this/ctx.!(globalThis))
-  // --- 模块段结束（其后为模块记录元数据，非字节码） ---
-  // meta+0000: ae03010404e426130000000000000000
+  Object.defineProperty(exports, const[db000000], {value:!0});
+  // stack@INIT-END: 'exports' | load[0e] | undefined
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae []
+  // trailer 0x03 [010404e4]
+  // trailer 0x26 [1300]
 
-// ---- 字符串表 ----
-// str[0] = 'require'
-// str[1] = 'module'
-// str[2] = 'exports'
-// str[3] = '__esModule'
-// str[4] = '\x00\x06\x00�\x01\x00\x01'
+// ---- 字符串表（1-based） ----
+// str[1] = 'require'
+// str[2] = 'module'
+// str[3] = 'exports'
+// str[4] = '__esModule'
+// str[5] = '\x00\x06\x00�\x01\x00\x01'

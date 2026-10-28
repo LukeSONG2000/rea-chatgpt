@@ -1,21 +1,36 @@
 #!/usr/bin/env python3
-"""cel_decompile.py — Valdi cel 字节码 → 语句级语义渲染器（v1.1，基于验证过的 cel_slots 管线）。
+"""cel_decompile.py — Valdi cel 字节码 → 语句级渲染器（v1.3，含 CALL 校准修正 P1-P9）。
 用法: cel_decompile.py <模块.valdimodule> [文件名过滤] [-o 输出目录]
 """
 import struct, subprocess, sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 import cel_slots
-try:
-    import cel_semantics
-    SEM = cel_semantics.SEMANTICS
-except ImportError:
-    SEM = {}
 
 STR_MAX = 56
 
 def s(b):
     t = b.decode('utf-8', 'replace')
     return t if len(t) <= STR_MAX else t[:STR_MAX] + '…'
+
+def match_define_property(ins, k):
+    """defineProperty 惯用法宏（variant A/B，绕开 0x99/0x0b 开放项）"""
+    try:
+        if [i['op'] for i in ins[k:k+7]] == [0xd4,0x04,0x0b,0xb6,0x99,0x4f,0x24] \
+           and ins[k+6]['operands'][:2] == b'\x03\x00' \
+           and ins[k+5]['operands'][:4] == b'\x40\x00\x00\x00':
+            key = f'const[{ins[k+1]["operands"][:4].hex()}]'
+            stmt = f'Object.defineProperty(exports, {key}, {{value:!0}})'
+            return (k+8 if ins[k+7]['op'] == 0x0e else k+7), stmt
+        if [i['op'] for i in ins[k:k+11]] == [0xd4,0x04,0x0b,0xb6,0x99,0x4f,0xc1,0x50,0x4f,0x24,0x0e] \
+           and ins[k+5]['operands'][:4] == b'\x3f\x00\x00\x00':
+            key = f'const[{ins[k+1]["operands"][:4].hex()}]'
+            slot = ins[k+6]['operands'][0] if ins[k+6]['operands'] else 0
+            stmt = (f'Object.defineProperty(exports, {key}, '
+                    f'{{enumerable:!0,get:/*local[{slot}] getter*/…}})')
+            return k+11, stmt
+    except IndexError:
+        pass
+    return None
 
 def render(blob, meta):
     c = cel_slots.parse_compiled(blob)
@@ -25,65 +40,97 @@ def render(blob, meta):
     stack = []
     def pop():
         return stack.pop() if stack else '?'
-    for i in ins:
+    in_units = False
+    k = 0
+    while k < len(ins):
+        i = ins[k]
         pc, op = i['pc'], i['op']
         ops = i.get('operands', b'')
         u16 = int.from_bytes(ops[:2], 'little') if len(ops) >= 2 else 0
         u32 = int.from_bytes(ops[:4], 'little') if len(ops) == 4 else 0
-        nm = lambda k: strs[k] if 0 <= k < len(strs) else f'key#{k}'
+        pool = lambda kk: f'pool:{kk}'
+
+        # P4: END 后 = 单元区/epilogue 元数据，不走语句栈
+        if in_units:
+            if op in (0x41, 0x42, 0x43):
+                lines.append(f'  // 单元记录 0x{op:02x} [{ops[:8].hex()}…]')
+            elif op == 0x00:
+                pass
+            else:
+                lines.append(f'  // trailer 0x{op:02x} [{ops.hex()[:24]}]')
+            k += 1
+            continue
+
+        # P2: defineProperty 宏匹配
+        mp = match_define_property(ins, k)
+        if mp:
+            endk, stmt = mp
+            lines.append(f'  {stmt};')
+            k = endk
+            continue
+
         if op == 0x00:
             if not lines or lines[-1] != '  …(pad)':
                 lines.append('  …(pad)')
+            k += 1
             continue
         elif op == 0x01:
             stack.append(f'const[{ops.hex()}]')
         elif op == 0x02:
             stack.append(f'num[{u32}]')
         elif op == 0x03:
-            k = ops[1] if len(ops) > 1 else -1
-            stack.append(repr(s(nm(k).encode())))
+            # P5: idx 1-based
+            flags = ops[0] if ops else 0
+            idx = ops[1] if len(ops) > 1 else -1
+            if flags == 0x01 and 1 <= idx <= len(strs):
+                stack.append(repr(s(strs[idx-1].encode())))
+            else:
+                stack.append(f'str?flags={flags:#x} idx={idx} aux={ops[2:4].hex() if len(ops)>2 else ""}')
         elif op == 0x04:
             stack.append(f'const[{u32}]')
-        elif op in (0x06, 0x0b, 0xd2, 0xd4):
-            tag = {0x06:'v06', 0x0b:'this/ctx', 0xd2:'local-ref', 0xd4:'exports'}[op]
-            stack.append(tag)
+        elif op == 0x06:
+            stack.append('v06')
+        elif op == 0x0b:
+            stack.append('arg2-tpl')   # {value:!0} 描述符内建模板（Q2）
         elif op == 0x0c:
             stack.append(f'load[{ops.hex()}]')
+        elif op == 0x0d:
+            stack.append(f'load[aux{ops.hex()}]')
         elif op == 0x24:
+            # P1: 无 this 槽；pop fn + argc args（args 逆序）
             argc = u16
+            if argc > len(stack):
+                argc = max(0, len(stack) - 1)
             args = [pop() for _ in range(argc)][::-1]
             fn = pop()
             stack.append(f'{fn}({", ".join(args)})')
         elif op in (0x21, 0x22, 0x23, 0x25, 0x31):
-            argc = u16
-            args = [pop() for _ in range(argc)][::-1]
-            fn = pop()
-            stack.append(f'call{op:02x}({fn}; {", ".join(args)})')
+            # P9.3: u16 不总为 argc
+            argc = u16 if u16 <= 32 else -1
+            if argc >= 0:
+                args = [pop() for _ in range(argc)][::-1]
+                fn = pop()
+                stack.append(f'call{op:02x}({fn}; {", ".join(args)})')
+            else:
+                stack.append(f'call{op:02x}(?)')
         elif op == 0x26:
             stack.append(f'push{u16}')
         elif op == 0x28:
-            pop()
+            if stack: pop()
         elif op == 0x29:
             if stack: lines.append('  // stack@INIT-END: ' + ' | '.join(stack)); stack.clear()
             lines.append('  // ===== 初始化段结束；其后为函数单元 =====')
             in_units = True
-        elif op == 0x41:
-            key = u16; v = pop()
-            stack.append(f'objlit[{key}]({v})')
-        elif op == 0x42:
-            key = u16; obj = pop()
-            stack.append(f'{obj}.{nm(key)}')
-        elif op == 0x43:
-            key = u16; v = pop()
-            lines.append(f'\n  // ---- FUNCTION-UNIT: {nm(key)!r} (33B 头+内联体) ----')
-            stack.append(f'fn:{nm(key)!r}')
+        elif op in (0x41, 0x42, 0x43):
+            # P9.2: key 为池 id
+            lines.append(f'  // 记录 0x{op:02x} [{pool(u16)}] [{ops[:8].hex()}…]')
         elif op == 0x45:
-            key = u16; seq = int.from_bytes(ops[4:6], 'little') if len(ops) >= 6 else 0
-            v = pop(); tgt = pop()
-            lines.append(f'  EXPORTS.{nm(key)} (seq {seq}) = {v};  // {tgt}')
+            # P9.1: key 是池 id 非串索引
+            lines.append(f'  // EXPORT {pool(u16)} seq={int.from_bytes(ops[4:6], "little") if len(ops) >= 6 else "?"}')
         elif op == 0x4f:
-            key = pop(); obj = pop()
-            stack.append(f'{obj}.{key}')
+            # P3: obj 在栈顶，key 在下（或 aux-key 模式）
+            obj = pop()
+            stack.append(f'{obj}.[wk:{u32:#x}]')
         elif op == 0x65:
             stack.append('undefined')
         elif op == 0x99:
@@ -92,8 +139,11 @@ def render(blob, meta):
             b = pop(); a = pop()
             lines.append('  "use strict";')
         elif op == 0xae:
-            v = pop(); tgt = pop()
-            lines.append(f'  {tgt} = {v};')
+            if in_units:
+                lines.append(f'  // trailer 0xae')
+            else:
+                v = pop(); tgt = pop()
+                lines.append(f'  {tgt} = {v};')
         elif op == 0xb6:
             stack.append('globalThis')
         elif op == 0xc1:
@@ -105,6 +155,9 @@ def render(blob, meta):
             stack.append(f'coerce({pop()})')
         elif op == 0x0e:
             lines.append(f'  // discard({pop()})')
+        elif op in (0xd2, 0xd3):
+            # P9.4: 函数参数槽
+            stack.append(f'param[{op - 0xd2}]')
         elif op in (0xca, 0xcb, 0xcc, 0xcd):
             lines.append(f'  locop 0x{op:02x}({pop()})')
         elif op == 0x48:
@@ -119,30 +172,24 @@ def render(blob, meta):
             stack.append('…'); stack.append('…')
         elif op in (0xeb, 0xec):
             off = ops[0] - 256 if ops and ops[0] > 127 else (ops[0] if ops else 0)
-            lines.append(f'  jcc-0x{op:02x} → @{pc+2+off}   // 条件跳转 (目标=pc+1+i8)')
+            lines.append(f'  jcc-0x{op:02x} → @{pc+2+off}')
         elif op == 0xed:
             off = ops[0] - 256 if ops and ops[0] > 127 else (ops[0] if ops else 0)
             lines.append(f'  jmp → @{pc+2+off}')
         elif op == 0xf0:
             stack.append(f'f0({pop()})')
         else:
-            e = SEM.get(op)
-            mn = e[0] if e else f'OP_{op:02x}'
-            conf = e[2] if e else 'unknown'
             for _ in range(i.get('pops', 0)):
                 if stack: pop()
-            args = ', '.join(stack[-2:]) if len(stack) >= 2 else (stack[0] if stack else '')
-            for _ in range(min(2, len(stack))):
-                if stack: pop()
-            stack.append(f'{mn}({args})' if args else f'{mn}()')
-            mark = {'confirmed': '✓', 'induced': '~', 'guess': '?', 'unknown': '?'}.get(conf, '~')
-            lines.append(f'  // op 0x{op:02x} {mn} [{mark}]')
+            stack.append(f'[op 0x{op:02x}]')
+            lines.append(f'  // op 0x{op:02x} (语义待归纳)')
+        k += 1
     if stack:
         lines.append('  // stack-tail: ' + ' | '.join(stack))
     lines.append('')
-    lines.append('// ---- 字符串表 ----')
-    for k, st in enumerate(strs):
-        lines.append(f'// str[{k}] = {st[:STR_MAX]!r}')
+    lines.append('// ---- 字符串表（1-based） ----')
+    for kk, st in enumerate(strs):
+        lines.append(f'// str[{kk+1}] = {st[:STR_MAX]!r}')
     return '\n'.join(lines)
 
 def main():
