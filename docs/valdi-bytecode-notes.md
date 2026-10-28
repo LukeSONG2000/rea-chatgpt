@@ -247,3 +247,10 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - cel_keys 修正：字符串表 A = 条目总数含 footer；前缀编码 = LEB128((字符数<<1)|utf16)；元数据表补 0xf7-0xff（ChatGPTReasoning 3,261 指令 0 未知）
 - v3 产物：reasoning/conversation 重渲染（EXPORTS 实名/调用链重建/FUNCTION-UNIT 分段）
 - 剩余：~15 低频 op 语义、大文件 body 区漂移（ConversationScreen seq=9766 异常值）、全局 atom 表静态化
+
+### 9.18 渲染器 v3.1 完成（2026-10-28）
+
+- 字符串表解析切换 cel_keys（LEB128+utf16+footer），cel_slots 兜底
+- Android 293 全部 92 模块渲染完成：analysis/decoded-android-293/（1,613 文件，22MB）
+- 部分条目非编译格式（.valdi-text/.valdi-json/.valdi-bytes 资源包装器），cel_keys 解析失败时回退 cel_slots 正确处理
+- 最终语义表 84 条（22 confirmed + 51 induced + 11 guess），CALL 校准定案 13 条已合并

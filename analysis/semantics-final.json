@@ -1,0 +1,422 @@
+{
+ "0x00": {
+  "mnemonic": "PAD",
+  "note": "零填充/对齐",
+  "confidence": "confirmed"
+ },
+ "0x01": {
+  "mnemonic": "LOAD",
+  "note": "加载常量池 <aux4>",
+  "confidence": "confirmed"
+ },
+ "0x02": {
+  "mnemonic": "LOAD_NUM",
+  "note": "加载 <u32>",
+  "confidence": "induced"
+ },
+ "0x03": {
+  "mnemonic": "LOAD_STR",
+  "note": "加载字符串 <flags><idx u8><aux16>",
+  "confidence": "confirmed"
+ },
+ "0x04": {
+  "mnemonic": "LOAD_CONST",
+  "note": "加载常量 <u32>（每文件独立常量池）",
+  "confidence": "confirmed"
+ },
+ "0x05": {
+  "mnemonic": "PATCH_REF_LOAD",
+  "note": "可修补 u16 引用加载（b0=0x17）；类定义块中=基类(extends)引用，后接 e4/01/04/4c",
+  "confidence": "induced"
+ },
+ "0x06": {
+  "mnemonic": "PUSH_A",
+  "note": "推入 well-known A",
+  "confidence": "induced"
+ },
+ "0x07": {
+  "mnemonic": "PUSH_B",
+  "note": "推入 well-known B",
+  "confidence": "induced"
+ },
+ "0x08": {
+  "mnemonic": "PUSH_C",
+  "note": "推入 well-known C (true/false/null 族)",
+  "confidence": "induced"
+ },
+ "0x09": {
+  "mnemonic": "PUSH_D",
+  "note": "推入 well-known D",
+  "confidence": "induced"
+ },
+ "0x0a": {
+  "mnemonic": "PUSH_E",
+  "note": "推入 well-known E",
+  "confidence": "induced"
+ },
+ "0x0b": {
+  "mnemonic": "PUSH_DESC",
+  "note": "推入 {value:!0} 描述符内建模板（defineProperty arg2 实证）",
+  "confidence": "confirmed"
+ },
+ "0x0c": {
+  "mnemonic": "LOAD_S",
+  "note": "加载 <u8>",
+  "confidence": "induced"
+ },
+ "0x0d": {
+  "mnemonic": "LOAD_M",
+  "note": "加载 <aux3>",
+  "confidence": "induced"
+ },
+ "0x0e": {
+  "mnemonic": "DISCARD",
+  "note": "弹出丢弃（语句无赋值时）",
+  "confidence": "confirmed"
+ },
+ "0x10": {
+  "mnemonic": "OP10",
+  "note": "维持 guess：疑似节边界/表区结构 op（p3u2；next=0x00 占 525/828；prev=0x29/ae/03/26 富集）；与全部 JS 运算符相关<0.1，排除字符串/算术/比较",
+  "confidence": "guess"
+ },
+ "0x11": {
+  "mnemonic": "DUP",
+  "note": "复制栈顶（比较/三元前）",
+  "confidence": "induced"
+ },
+ "0x15": {
+  "mnemonic": "EXPORT_CHAIN_PREP",
+  "note": "导出链准备（p2→p3）：把 [exports,值] 变换为供两个 0x45 EXPORT 消费的栈排布，实现 exports.A=exports.B=void 0",
+  "confidence": "induced"
+ },
+ "0x18": {
+  "mnemonic": "TRIPLE_OP",
+  "note": "三元组操作 (pop3 push3)",
+  "confidence": "guess"
+ },
+ "0x21": {
+  "mnemonic": "CALL_V21",
+  "note": "调用变体 argc=1（super(r) 实证）；u16 异常值需防御",
+  "confidence": "induced"
+ },
+ "0x24": {
+  "mnemonic": "CALL",
+  "note": "调用 <u16 argc>，pops=2+argc（被调+参数；args 按序推入、被调最后）",
+  "confidence": "confirmed"
+ },
+ "0x26": {
+  "mnemonic": "PUSH_F",
+  "note": "推入 <u16>",
+  "confidence": "induced"
+ },
+ "0x27": {
+  "mnemonic": "APPLY_SPREAD",
+  "note": "展开调用完成/apply（p3u1，操作数 [01 00] 占 71%）：与 55+0e 组成 super(...arguments)/f(...args) 序列；原 COMPARE 判读不成立（与 ===/== 相关≈0）",
+  "confidence": "induced"
+ },
+ "0x28": {
+  "mnemonic": "POP",
+  "note": "弹出",
+  "confidence": "confirmed"
+ },
+ "0x29": {
+  "mnemonic": "END",
+  "note": "段结束（init 段后为函数单元区）",
+  "confidence": "confirmed"
+ },
+ "0x30": {
+  "mnemonic": "OP30",
+  "note": "维持 guess：数据表/属性表区域标记（与 class/this/!0 全负相关 -0.08..-0.14；与 31/33/34/35/36 自聚类；UI 组件模块高密度）；247 表 p0u0",
+  "confidence": "guess"
+ },
+ "0x35": {
+  "mnemonic": "OP35",
+  "note": "维持 guess：数据表区域标记（10k 次但与全部 JS 构造负相关 -0.04..-0.10，自聚类 *35 prev/next 4318 次）；247 表 p1u1 若为表数据则该表项疑为占位——待 native 复核；排除常规语句语义",
+  "confidence": "guess"
+ },
+ "0x38": {
+  "mnemonic": "LOAD_POOL",
+  "note": "加载独立常量池 <u32>",
+  "confidence": "confirmed"
+ },
+ "0x41": {
+  "mnemonic": "OBJLIT_IC",
+  "note": "对象字面量记录 <key u16> + IC 槽",
+  "confidence": "induced"
+ },
+ "0x42": {
+  "mnemonic": "METHOD_IC",
+  "note": "方法提取 IC <key u16> (pop1 push2=被调+this)",
+  "confidence": "induced"
+ },
+ "0x43": {
+  "mnemonic": "FUNC_UNIT",
+  "note": "函数单元头 <name key u16> + 内联体（体随记录内联排布）",
+  "confidence": "confirmed"
+ },
+ "0x45": {
+  "mnemonic": "EXPORT",
+  "note": "导出绑定 <key u16><seq u16> (pop2 push0)",
+  "confidence": "confirmed"
+ },
+ "0x48": {
+  "mnemonic": "DECL_FUNC",
+  "note": "函数声明 (pop3：name/scope/fn)",
+  "confidence": "induced"
+ },
+ "0x4c": {
+  "mnemonic": "FN_PROLOGUE",
+  "note": "函数体/类定义块前奏结构指令（p3u0）：0x43 函数单元+填充之后或类块内；后接 d2 d2 b7 15（枚举/赋值体序）或 0d 47 0d cb 0c cc（类块）",
+  "confidence": "induced"
+ },
+ "0x4f": {
+  "mnemonic": "GETPROP_WK",
+  "note": "well-known 属性读取 <u32 atom> (pop1=receiver push1)；aux=0x40 恒定对应 defineProperty",
+  "confidence": "confirmed"
+ },
+ "0x55": {
+  "mnemonic": "SPREAD_PREP",
+  "note": "展开调用准备（p3u2）：与 27 构成 super(...arguments)/f(...args) 序列 c7 34 c8 26 b6 c9 55 0e 27",
+  "confidence": "induced"
+ },
+ "0x57": {
+  "mnemonic": "IMPORT_BINDING",
+  "note": "ESM 导入链绑定取值（p2u1）：模块头 require 链 64 c0 59 c1<slot> 57 c1<slot> 57...；操作数=递增导入表槽号",
+  "confidence": "induced"
+ },
+ "0x59": {
+  "mnemonic": "IMPORT_MODULE",
+  "note": "ESM 导入链模块解析（p2u2）：require 链首指令，与 0x57 成对",
+  "confidence": "induced"
+ },
+ "0x61": {
+  "mnemonic": "LOAD_61",
+  "note": "维持 guess：p0u1，u16 操作数解码未定；常邻 0xef 跳转（61 ef c4）；=>/await/async 弱相关 0.08-0.15，疑 async 状态机/跳转表相关",
+  "confidence": "guess"
+ },
+ "0x64": {
+  "mnemonic": "DECL_SLOT",
+  "note": "槽位声明 <u16>（无栈效应，连续排布）",
+  "confidence": "induced"
+ },
+ "0x65": {
+  "mnemonic": "UNDEF_SEL",
+  "note": "推入 undefined/well-known <u16 选择器>",
+  "confidence": "induced"
+ },
+ "0x66": {
+  "mnemonic": "STR_OP",
+  "note": "字符串引用族 (pop1 push0)",
+  "confidence": "induced"
+ },
+ "0x67": {
+  "mnemonic": "STR_CMP",
+  "note": "字符串比较消耗 (pop1 push0)",
+  "confidence": "induced"
+ },
+ "0x68": {
+  "mnemonic": "PUSH_STR2",
+  "note": "推入 2B 字符串引用 <len3, b0=0x10>",
+  "confidence": "induced"
+ },
+ "0x6b": {
+  "mnemonic": "CLASS_DECL",
+  "note": "类声明/注册（p0u0，无栈效应），u16=类元数据引用；与 c5 构成类声明对 c5<u8> 6b<u16> c4；原 STR_OP_B 字符串判读不成立",
+  "confidence": "induced"
+ },
+ "0x6c": {
+  "mnemonic": "META_OP6C",
+  "note": "原 induced 字符串判读不成立，降回 guess：p1u0，操作数为 u32（99000000=153/68050000=1384）或 ASCII 混合，非字符串表索引；无 JS 构造相关；节边界高发",
+  "confidence": "guess"
+ },
+ "0x6d": {
+  "mnemonic": "META_OP6D",
+  "note": "原 induced 字符串判读不成立，降回 guess：p1u0 u32 元数据（同 6c 族）；corr 全弱",
+  "confidence": "guess"
+ },
+ "0x70": {
+  "mnemonic": "TRY_REGION",
+  "note": "try/finally 结构标记（p0u0，len5，结构引用型操作数如 b8030101）；原 STR_OP_E 字符串判读不成立",
+  "confidence": "induced"
+ },
+ "0x99": {
+  "mnemonic": "NOT_GUARD",
+  "note": "双义：jcc 前=逻辑非；提取链=receiver guard（净 1→1）",
+  "confidence": "induced"
+ },
+ "0xa0": {
+  "mnemonic": "ADD",
+  "note": "加法/字符串连接（p2u1 len1）",
+  "confidence": "induced"
+ },
+ "0xa3": {
+  "mnemonic": "OP_A3",
+  "note": "维持 guess：全语料仅 62 次/16 模块（最稀有目标）；corr < =0.356 样本不足；窗口分属导出链与 parseConditional 两类语境",
+  "confidence": "guess"
+ },
+ "0xa6": {
+  "mnemonic": "LT",
+  "note": "小于比较（p2u1 len1），典型喂 0xeb",
+  "confidence": "induced"
+ },
+ "0xa8": {
+  "mnemonic": "OP_A8",
+  "note": "维持 guess：corr 全弱（typeof=0.199 />=0.182）；prev 0xb6(PUSH_GLOBAL) 105/260 暗示全局对象比较相关，但 instanceof 已归属 0xaa(0.696)",
+  "confidence": "guess"
+ },
+ "0xae": {
+  "mnemonic": "ASSIGN",
+  "note": "赋值 (pop2 push1)",
+  "confidence": "confirmed"
+ },
+ "0xaf": {
+  "mnemonic": "EQ_STRICT",
+  "note": "严格等值比较（===族；void 0!==x 惯用法与 ??/?. 脱糖核心），结果多喂 eb/ec",
+  "confidence": "induced"
+ },
+ "0xb6": {
+  "mnemonic": "PUSH_GLOBAL",
+  "note": "推入 globalThis",
+  "confidence": "confirmed"
+ },
+ "0xb7": {
+  "mnemonic": "PUSH_WK1",
+  "note": "推入 well-known",
+  "confidence": "induced"
+ },
+ "0xb8": {
+  "mnemonic": "PUSH_WK2",
+  "note": "推入 well-known",
+  "confidence": "induced"
+ },
+ "0xc1": {
+  "mnemonic": "LOAD_LOCAL",
+  "note": "读局部槽 <u16>",
+  "confidence": "confirmed"
+ },
+ "0xc2": {
+  "mnemonic": "LOCAL_OP2",
+  "note": "维持 guess：b0=0x08（与 c1 LOAD_LOCAL 同槽号类）p0u1，支持槽相关推入；# 0.103/switch 0.091 全弱；next 0x07 占 209/770",
+  "confidence": "guess"
+ },
+ "0xc3": {
+  "mnemonic": "LOAD_M3",
+  "note": "加载 <aux2>",
+  "confidence": "induced"
+ },
+ "0xc4": {
+  "mnemonic": "STORE_LOCAL",
+  "note": "写局部槽 <u8>",
+  "confidence": "confirmed"
+ },
+ "0xc5": {
+  "mnemonic": "CLASS_CONSTRUCT",
+  "note": "类对象构造步骤（p1u1，u8=元数据/槽引用，语料值 04..0a）；与 6b 成对",
+  "confidence": "induced"
+ },
+ "0xc6": {
+  "mnemonic": "PUSH_THIS",
+  "note": "推入 this（类上下文）；原 PUSH_C6 注记泛化",
+  "confidence": "induced"
+ },
+ "0xc7": {
+  "mnemonic": "PUSH_C7",
+  "note": "推入 well-known",
+  "confidence": "induced"
+ },
+ "0xc8": {
+  "mnemonic": "PUSH_C8",
+  "note": "推入 well-known",
+  "confidence": "induced"
+ },
+ "0xc9": {
+  "mnemonic": "PUSH_C9",
+  "note": "推入 well-known",
+  "confidence": "induced"
+ },
+ "0xca": {
+  "mnemonic": "LOC_DISCA",
+  "note": "局部槽弹出",
+  "confidence": "induced"
+ },
+ "0xcb": {
+  "mnemonic": "LOC_DISCB",
+  "note": "局部槽弹出",
+  "confidence": "induced"
+ },
+ "0xcc": {
+  "mnemonic": "LOC_DISCC",
+  "note": "局部槽弹出",
+  "confidence": "induced"
+ },
+ "0xcd": {
+  "mnemonic": "LOC_DISCD",
+  "note": "局部槽弹出",
+  "confidence": "induced"
+ },
+ "0xd2": {
+  "mnemonic": "PARAM_0",
+  "note": "函数参数槽 0 加载（hasOwnProperty.call(e,t) 实证）",
+  "confidence": "induced"
+ },
+ "0xd3": {
+  "mnemonic": "PARAM_1",
+  "note": "函数参数槽 1 加载",
+  "confidence": "induced"
+ },
+ "0xd4": {
+  "mnemonic": "PUSH_EXPORTS",
+  "note": "推入 exports",
+  "confidence": "confirmed"
+ },
+ "0xd7": {
+  "mnemonic": "POP_D7",
+  "note": "维持 guess：p1u0（b0=0x03 族唯一弹出）；全语料仅 45 次/14 模块；窗口 0c 06 0a d7 a3 70 链疑结构标记链",
+  "confidence": "guess"
+ },
+ "0xde": {
+  "mnemonic": "CLOSURE_CTX_A",
+  "note": "闭包上下文推入 A（b0=0x03）；后接 42 GETPROP-IC → 24 CALL 构造调用",
+  "confidence": "induced"
+ },
+ "0xdf": {
+  "mnemonic": "CLOSURE_CTX_B",
+  "note": "闭包上下文推入 B；典型 ae 11 eb 0e df d2 f0（赋值后建闭包）",
+  "confidence": "induced"
+ },
+ "0xe0": {
+  "mnemonic": "CLOSURE_CTX_C",
+  "note": "闭包上下文推入 C（b0=0x04），直接服务 d2 04 funcref f0 闭包构造",
+  "confidence": "induced"
+ },
+ "0xe1": {
+  "mnemonic": "CLOSURE_CTX_D",
+  "note": "闭包上下文推入 D（b0=0x04）",
+  "confidence": "induced"
+ },
+ "0xe4": {
+  "mnemonic": "CLASS_DEF_POP",
+  "note": "类定义块消费步骤（p1u0）：类块中紧跟 05<基类引用>/04<常量> 之后弹出/登记类信息（位置证据，机制未定）",
+  "confidence": "induced"
+ },
+ "0xeb": {
+  "mnemonic": "JCC_EB",
+  "note": "条件跳转 <i8>（目标=pc+1+i8；pop1=消耗条件）",
+  "confidence": "confirmed"
+ },
+ "0xec": {
+  "mnemonic": "JCC_EC",
+  "note": "条件跳转变体 <i8>",
+  "confidence": "confirmed"
+ },
+ "0xed": {
+  "mnemonic": "JMP_ED",
+  "note": "无条件跳转 <i8>",
+  "confidence": "confirmed"
+ },
+ "0xf0": {
+  "mnemonic": "MAKE_CLOSURE",
+  "note": "闭包构造：d2<env> 04<单元引用> f0 → 闭包对象；随后 ca/cb/cc 存入隐式槽 0/1/2（原 UNARY_F0 泛化注记更正）",
+  "confidence": "induced"
+ }
+}

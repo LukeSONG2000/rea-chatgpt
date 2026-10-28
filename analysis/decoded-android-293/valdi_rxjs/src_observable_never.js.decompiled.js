@@ -1,0 +1,52 @@
+// 模块: valdi_rxjs/src/observable/never | 字符串 13 | 代码 350B | 指令 89
+  "use strict";
+  …(pad)
+  ? = ?;
+  // op 0x1c OP_1c [?]
+  // discard(OP_1c())
+
+  // ---- FUNCTION-UNIT: 'builtin#262' ----
+  // op 0xb8 PUSH_WK2 [~]
+  …(pad)
+  locop 0xcc(str?flags=0x0 idx=0)
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  Object.defineProperty(exports, de000000, {value:!0});
+  // op 0xd4 PUSH_EXPORTS [✓]
+  // op 0xd4 PUSH_EXPORTS [✓]
+  EXPORTS.NEVER (seq 0) = …;  // …
+  EXPORTS.never (seq 1) = pair(PUSH_EXPORTS(), v06);  // PUSH_EXPORTS()
+  locop 0xca(f0(const[225]))
+  locop 0xcb(f0(const[226]))
+  // op 0xd4 PUSH_EXPORTS [✓]
+  // op 0x11 DUP [~]
+  EXPORTS.NEVER (seq 2) = call21(DUP(); objlit[noop](undefined));  // PUSH_EXPORTS()
+  // op 0xd4 PUSH_EXPORTS [✓]
+  // op 0xc8 PUSH_C8 [~]
+  EXPORTS.never (seq 3) = PUSH_C8();  // PUSH_EXPORTS()
+  // stack@INIT-END: fn:'builtin#262' | PUSH_WK2() | 'require' | DECL_SLOT() | DECL_SLOT() | pool[145].builtin#101 | param[0] | param[0]
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  // op 0x10 OP10 [?]
+  // op 0x61 LOAD_61 [?]
+
+  // ---- FUNCTION-UNIT: 'builtin#262' ----
+  …(pad)
+  // trailer 0xae
+  …(pad)
+  // stack-tail: OP10() | load[00] | str?flags=0x9 idx=1 | const[0]
+
+// ---- 字符串表 ----
+// str[1] = 'require'
+// str[2] = 'module'
+// str[3] = 'exports'
+// str[4] = 'e'
+// str[5] = 'r'
+// str[6] = 'o'
+// str[7] = '__esModule'
+// str[8] = 'NEVER'
+// str[9] = 'never'
+// str[10] = '../Observable'
+// str[11] = '../util/noop'
+// str[12] = 'Observable'
+// str[13] = 'noop'

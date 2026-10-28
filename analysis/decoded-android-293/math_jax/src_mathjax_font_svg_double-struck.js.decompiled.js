@@ -1,0 +1,24 @@
+// 模块: math_jax/src/mathjax_font/svg/double-struck | 字符串 5 | 代码 144B | 指令 65
+  "use strict";
+  …(pad)
+  ? = ?;
+
+  // ---- FUNCTION-UNIT: 'builtin#262' ----
+  …(pad)
+  Object.defineProperty(exports, db000000, {value:!0});
+  // op 0xd4 PUSH_EXPORTS [✓]
+  EXPORTS.doubleStruck (seq 0) = v06;  // PUSH_EXPORTS()
+  // op 0xd4 PUSH_EXPORTS [✓]
+  EXPORTS.doubleStruck (seq 1) = desc-tpl;  // PUSH_EXPORTS()
+  // stack@INIT-END: 'exports' | fn:'builtin#262' | undefined
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // stack-tail: '__esModule' | push646
+
+// ---- 字符串表 ----
+// str[1] = 'require'
+// str[2] = 'module'
+// str[3] = 'exports'
+// str[4] = '__esModule'
+// str[5] = 'doubleStruck'

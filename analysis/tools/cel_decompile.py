@@ -48,10 +48,16 @@ def render(blob, meta, keyspace=None):
         return f'builtin#{k}'
     SEM = cel_semantics.SEMANTICS if cel_semantics else {}
     # v3.1: 字符串表/代码起点改用 cel_keys 正确解析（LEB128 前缀 + utf16 + footer 规则）
-    entries, _fi, table_end = cel_keys.parse_string_table(blob)
-    A, name_b, _tp = cel_keys.parse_header(blob)
-    strs = [t for _slot, t, _raw, _u in entries]
-    code = blob[table_end:]
+    try:
+        entries, _fi, table_end = cel_keys.parse_string_table(blob)
+        A, name_b, _tp = cel_keys.parse_header(blob)
+        strs = [t for _slot, t, _raw, _u in entries]
+        code = blob[table_end:]
+    except Exception:
+        c_old = cel_slots.parse_compiled(blob)
+        strs = [x.decode('utf-8', 'replace') for x in c_old['strings']]
+        code = c_old['code']
+        name_b = c_old.get('name', b'?')
     hpos = code.find(b'\x04\x00\x00\x00hash@')
     if hpos > 0:
         code = code[:hpos]
