@@ -2,16 +2,17 @@
   "use strict";
   …(pad)
   ? = ?;
-  // 记录 0x43 [pool:262] [0601000300030600…]
-  …(pad)
-  Object.defineProperty(exports, const[db000000], {value:!0});
-  // stack@INIT-END: 'exports' | load[0e] | undefined
-  // ===== 初始化段结束；其后为函数单元 =====
-  // trailer 0xae []
-  // trailer 0x03 [010404e4]
-  // trailer 0x26 [1300]
 
-// ---- 字符串表（1-based） ----
+  // ---- FUNCTION-UNIT: 'builtin#262' ----
+  …(pad)
+  Object.defineProperty(exports, db000000, {value:!0});
+  // stack@INIT-END: 'exports' | fn:'builtin#262' | undefined
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // stack-tail: '__esModule' | push19
+
+// ---- 字符串表 ----
 // str[1] = 'require'
 // str[2] = 'module'
 // str[3] = 'exports'

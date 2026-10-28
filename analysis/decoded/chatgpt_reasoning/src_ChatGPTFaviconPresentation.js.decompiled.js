@@ -2,858 +2,485 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0xde (语义待归纳)
+  // op 0xde CLOSURE_CTX_A [~]
   …(pad)
-  // op 0x10 (语义待归纳)
-  // op 0xdd (语义待归纳)
+  // op 0x10 OP10 [?]
+  // op 0xdd OP_dd [?]
   …(pad)
-  // op 0x70 (语义待归纳)
-  // op 0x70 (语义待归纳)
-  // op 0x70 (语义待归纳)
-  // op 0x20 (语义待归纳)
-  // op 0xba (语义待归纳)
-  // op 0x0a (语义待归纳)
-  local[4] = [op 0x0a];
+  // op 0x70 TRY_REGION [~]
+  // op 0x70 TRY_REGION [~]
+  // op 0x70 TRY_REGION [~]
+  // op 0x20 OP_20 [?]
+  // op 0xba OP_ba [?]
+  // op 0x0a PUSH_E [~]
+  local[4] = PUSH_E();
   local[5] = local[0];
   local[6] = local[0];
   local[7] = local[0];
   local[8] = local[0];
   local[9] = local[0];
-  // op 0x64 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // 记录 0x42 [pool:101] [6500000000000000…]
-  Object.defineProperty(exports, const[e3000000], {value:!0});
-  // op 0xd4 (语义待归纳)
-  // EXPORT pool:220 seq=0
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  Object.defineProperty(exports, e3000000, {value:!0});
+  // op 0xd4 PUSH_EXPORTS [✓]
+  EXPORTS.ChatGPTFaviconPresentation (seq 0) = v06;  // PUSH_EXPORTS()
   locop 0xca(f0(const[228]))
-  // op 0x64 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0xc0 (语义待归纳)
-  // op 0x59 (语义待归纳)
-  // op 0x1b (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x1b (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x1b (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x1b (语义待归纳)
-  // op 0x57 (语义待归纳)
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0xc0 OP_c0 [?]
+  // op 0x59 IMPORT_MODULE [~]
+  // op 0x1b OP_1b [?]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x1b OP_1b [?]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x1b OP_1b [?]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x1b OP_1b [?]
+  // op 0x57 IMPORT_BINDING [~]
   locop 0xcc(v06)
-  // discard([op 0x57])
-  // op 0xcf (语义待归纳)
-  // op 0x6b (语义待归纳)
-  // op 0x6b (语义待归纳)
-  locop 0xcd([op 0x6b])
-  // op 0xd4 (语义待归纳)
-  // EXPORT pool:220 seq=1
-  // stack@INIT-END: 't' | [op 0xdd] | const[0db00300] | const[00b20300] | [op 0x20] | [op 0xba] | str?flags=0x0 idx=0 aux=40bc | str?flags=0x0 idx=5 aux=40be | str?flags=0x0 idx=6 aux=40c0 | str?flags=0x0 idx=7 aux=40c2 | str?flags=0x0 idx=8 aux=40c4 | str?flags=0x0 idx=9 aux=40c1 | [op 0x64] | [op 0x64] | pool[145] | [op 0xcf] | [op 0x6b] | [op 0xd4] | undefined
+  // discard(IMPORT_BINDING())
+  // op 0xcf OP_cf [?]
+  // op 0x6b CLASS_DECL [~]
+  // op 0x6b CLASS_DECL [~]
+  locop 0xcd(CLASS_DECL())
+  // op 0xd4 PUSH_EXPORTS [✓]
+  EXPORTS.ChatGPTFaviconPresentation (seq 1) = undefined;  // PUSH_EXPORTS()
+  // stack@INIT-END: 't' | OP_dd() | const[0db00300] | const[00b20300] | OP_20() | OP_ba() | str?flags=0x0 idx=0 | str?flags=0x0 idx=5 | str?flags=0x0 idx=6 | str?flags=0x0 idx=7 | str?flags=0x0 idx=8 | str?flags=0x0 idx=9 | DECL_SLOT() | OP_cf() | CLASS_DECL()
   // ===== 初始化段结束；其后为函数单元 =====
-  // trailer 0xae []
-  // trailer 0x03 [01259ae4]
-  // trailer 0x26 [4f2c]
-  // trailer 0x0f []
-  // trailer 0x08 []
-  // trailer 0x01 [0e000916]
-  // trailer 0x08 []
-  // trailer 0x12 []
-  // trailer 0x08 []
-  // trailer 0x08 []
-  // trailer 0x2d []
-  // trailer 0x08 []
-  // trailer 0x08 []
-  // trailer 0x2d []
-  // trailer 0x2b []
-  // trailer 0x01 [0800091a]
-  // trailer 0x2b []
-  // trailer 0x0b []
-  // trailer 0x4a []
-  // trailer 0x45 [0e42070100010101]
-  // trailer 0x02 [01009401]
-  // trailer 0x02 [b6030001]
-  // trailer 0x10 []
-  // trailer 0x01 [00ec0102]
-  // trailer 0x0d [08ca]
-  // trailer 0x2b []
-  // trailer 0x68 [0000]
-  // trailer 0x11 []
-  // trailer 0xeb [06]
-  // trailer 0xc6 []
-  // trailer 0x1b []
-  // trailer 0x24 [0000]
-  // trailer 0x0e []
-  // trailer 0xc6 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // trailer 0x45 [ee00000000000000]
-  // trailer 0xc6 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ef00000000000000…]
-  // trailer 0x45 [ef00000001000000]
-  // trailer 0xc6 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f000000000000000…]
-  // trailer 0x45 [f000000002000000]
-  // trailer 0x29 []
-  // trailer 0xae []
-  // trailer 0x03 [0a054e00]
-  // trailer 0x84 [01]
-  // trailer 0x02 [03000000]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000101010403…]
-  // trailer 0x01 [0d640000]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // trailer 0xca []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [8900000000000000…]
-  // trailer 0x68 [0000]
-  // 单元记录 0x41 [f100000000000000…]
-  // 单元记录 0x41 [f200000000000000…]
-  // trailer 0xae []
-  // trailer 0xeb [74]
-  // trailer 0x06 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f300000000000000…]
-  // trailer 0xae []
-  // trailer 0xeb [4e]
-  // trailer 0x06 []
-  // trailer 0x65 [0000]
-  // trailer 0xaf []
-  // trailer 0xeb [47]
-  // trailer 0xdf []
-  // trailer 0x65 [0000]
-  // trailer 0xf0 []
-  // trailer 0xeb [40]
-  // trailer 0x68 [0200]
-  // trailer 0x11 []
-  // trailer 0x0b []
-  // trailer 0x65 [0000]
-  // trailer 0x4f [ee000000]
-  // trailer 0xb6 []
-  // trailer 0x4f [ef000000]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f400000000000000…]
-  // trailer 0xea []
-  // trailer 0x4f [f0000000]
-  // trailer 0x21 [0100]
-  // trailer 0x28 []
-  // trailer 0x29 []
-  // trailer 0xae []
-  // trailer 0x03 [0d0a12b2]
-  // trailer 0xa3 []
-  // trailer 0x01 [022b21cb]
-  // trailer 0x17 []
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000103010602…]
-  // trailer 0x03 [000db803]
-  // trailer 0x01 [0d08cc64]
-  // trailer 0x01 [00640000]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [8900000000000000…]
-  // trailer 0x68 [0000]
-  // 单元记录 0x41 [f100000000000000…]
-  // 单元记录 0x41 [f200000000000000…]
-  // trailer 0xaf []
-  // trailer 0x11 []
-  // trailer 0xec [26]
-  // trailer 0x0e []
-  // trailer 0x06 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f300000000000000…]
-  // trailer 0xaf []
-  // trailer 0xeb [02]
-  // trailer 0x29 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // trailer 0xca []
-  // trailer 0x06 []
-  // trailer 0x65 [0000]
-  // trailer 0xae []
-  // trailer 0x11 []
-  // trailer 0x6d [9a000000]
-  // trailer 0x0e []
-  // trailer 0x65 [0000]
-  // 单元记录 0x41 [f500000000000000…]
-  // trailer 0x68 [0000]
-  // 单元记录 0x41 [f600000000000000…]
-  // 单元记录 0x41 [f700000000000000…]
-  // trailer 0xaf []
-  // trailer 0x11 []
-  // trailer 0xec [29]
-  // trailer 0x0e []
-  // trailer 0xb6 []
-  // trailer 0x65 [0000]
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0xeb [03]
-  // trailer 0xc8 []
-  // trailer 0x28 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f400000000000000…]
-  // 单元记录 0x42 [f900000000000000…]
-  // trailer 0xc8 []
-  // 单元记录 0x41 [f000000000000000…]
-  // trailer 0x24 [0100]
-  // 单元记录 0x42 [fa00000000000000…]
-  // trailer 0xc1 [00]
-  // trailer 0x24 [0100]
-  // trailer 0xcb []
-  // trailer 0x65 [0000]
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xb6 []
-  // trailer 0xa8 []
-  // trailer 0xeb [2f]
-  // trailer 0x65 [0100]
-  // trailer 0xeb [2a]
-  // trailer 0x68 [0100]
-  // 单元记录 0x42 [e500000000000000…]
-  // trailer 0xd2 []
-  // trailer 0x24 [0100]
-  // trailer 0x28 []
-  // trailer 0x68 [0100]
-  // trailer 0x11 []
-  // trailer 0x0b []
-  // trailer 0xc8 []
-  // 单元记录 0x42 [ed00000000000000…]
-  // trailer 0x65 [0000]
-  // trailer 0x24 [0100]
-  // trailer 0x4f [ee000000]
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ef00000000000000…]
-  // trailer 0x4f [ef000000]
-  // trailer 0xc8 []
-  // 单元记录 0x41 [f000000000000000…]
-  // trailer 0x4f [f0000000]
-  // trailer 0x21 [0100]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [15142b00]
-  // trailer 0x93 []
-  // trailer 0x01 [02b200a5]
-  // trailer 0x01 [02008f01]
-  // trailer 0x02 [005c02e4]
-  // trailer 0xc6 []
-  // trailer 0xc6 []
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000100010201…]
-  // trailer 0x68 [0000]
-  // 单元记录 0x41 [fb00000000000000…]
-  // 单元记录 0x41 [fc00000000000000…]
-  // trailer 0xaf []
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [19000000]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000103010802…]
-  // trailer 0x03 [000db803]
-  // trailer 0x01 [0d08cc64]
-  // trailer 0x01 [00389900]
-  // 单元记录 0x42 [fd00000000000000…]
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ef00000000000000…]
-  // trailer 0xb7 []
-  // trailer 0xa0 []
-  // trailer 0x38 [99000000]
-  // 单元记录 0x42 [fe00000000000000…]
-  // trailer 0xb6 []
-  // trailer 0xc8 []
-  // 单元记录 0x42 [e800000000000000…]
-  // trailer 0x24 [0000]
-  // trailer 0xb7 []
-  // trailer 0xa1 []
-  // trailer 0x24 [0200]
-  // trailer 0x24 [0200]
-  // trailer 0xcb []
-  // trailer 0x65 [0100]
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ef00000000000000…]
-  // trailer 0xaf []
-  // trailer 0x11 []
-  // trailer 0x6d [9e000000]
-  // trailer 0x0e []
-  // trailer 0x07 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // trailer 0xce []
-  // trailer 0xae []
-  // trailer 0x11 []
-  // trailer 0xec [05]
-  // trailer 0x0e []
-  // trailer 0x06 []
-  // trailer 0xc6 []
-  // trailer 0xae []
-  // trailer 0xeb [04]
-  // trailer 0x06 []
-  // trailer 0xed [23]
-  // trailer 0xc6 []
-  // 单元记录 0x41 [f500000000000000…]
-  // trailer 0x68 [0000]
-  // 单元记录 0x41 [f600000000000000…]
-  // 单元记录 0x41 [f700000000000000…]
-  // trailer 0xae []
-  // trailer 0x6c [87000000]
-  // trailer 0x68 [0100]
-  // trailer 0x11 []
-  // trailer 0x0b []
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // trailer 0x4f [ee000000]
-  // trailer 0x65 [0100]
-  // trailer 0x4f [ef000000]
-  // trailer 0xc8 []
-  // 单元记录 0x41 [f000000000000000…]
-  // trailer 0x4f [f0000000]
-  // trailer 0x21 [0100]
-  // 单元记录 0x42 [e600000000000000…]
-  // trailer 0xd2 []
-  // trailer 0x25 [0100]
-  // trailer 0x29 []
-  // trailer 0xae []
-  // trailer 0x03 [200d1d00]
-  // trailer 0x9f []
-  // trailer 0x01 [0200d001]
-  // trailer 0x02 [c62bc6cb]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000003000400…]
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xca []
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xcb []
-  // trailer 0x65 [0100]
-  // trailer 0xb7 []
-  // trailer 0xa7 []
-  // trailer 0xeb [05]
-  // trailer 0x65 [0000]
-  // trailer 0x28 []
-  // trailer 0xb7 []
-  // trailer 0x65 [0000]
-  // trailer 0xae []
-  // trailer 0xeb [05]
-  // trailer 0x65 [0100]
-  // trailer 0x28 []
-  // trailer 0x38 [99000000]
-  // 单元记录 0x42 [fd00000000000000…]
-  // trailer 0x65 [0000]
-  // trailer 0x65 [0100]
-  // trailer 0x24 [0200]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [29052b00]
-  // trailer 0x8a []
-  // trailer 0x01 [02000000]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000001000300…]
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xb7 []
-  // trailer 0xc6 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0xeb [04]
-  // trailer 0xb6 []
-  // trailer 0xed [23]
-  // trailer 0xc6 []
-  // 单元记录 0x41 [ef00000000000000…]
-  // trailer 0x4a []
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [2d010d00]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000002000300…]
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xb7 []
-  // trailer 0xc7 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0xeb [04]
-  // trailer 0xb6 []
-  // trailer 0xed [23]
-  // trailer 0xc7 []
-  // 单元记录 0x41 [ef00000000000000…]
-  // trailer 0x4a []
-  // trailer 0xca []
-  // trailer 0x06 []
-  // trailer 0x65 [0000]
-  // trailer 0xae []
-  // trailer 0xeb [05]
-  // trailer 0x26 [0000]
-  // trailer 0x28 []
-  // trailer 0x65 [0000]
-  // trailer 0x26 [0100]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [30051c00]
-  // trailer 0xb2 []
-  // trailer 0x01 [02000000]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000101010400…]
-  // trailer 0xb6 []
-  // trailer 0xc6 []
-  // 单元记录 0x41 [f000000000000000…]
-  // trailer 0x25 [0200]
-  // trailer 0xae []
-  // trailer 0x03 [34010d00]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000101010302…]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f500000000000000…]
-  // trailer 0x68 [0000]
-  // 单元记录 0x41 [fb00000000000000…]
-  // 单元记录 0x41 [fc00000000000000…]
-  // trailer 0xae []
-  // trailer 0xeb [24]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0x28 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // 单元记录 0x42 [ff00000000000000…]
-  // trailer 0xdf []
-  // trailer 0x24 [0100]
-  // trailer 0xca []
-  // trailer 0x06 []
-  // trailer 0x65 [0000]
-  // trailer 0xae []
-  // trailer 0xeb [05]
-  // trailer 0x26 [0000]
-  // trailer 0x28 []
-  // trailer 0x65 [0000]
-  // trailer 0x26 [0100]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [37081200]
-  // trailer 0x8d []
-  // trailer 0x01 [02004802]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000103010804…]
-  // trailer 0x03 [0701bc03]
-  // trailer 0x05 [01ba0304]
-  // trailer 0x01 [c2030801]
-  // trailer 0x08 []
-  // trailer 0xcc []
-  // trailer 0x64 [0100]
-  // trailer 0x64 [0000]
-  // trailer 0xb6 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0x6c [ed000000]
-  // trailer 0x38 [91000000]
-  // 单元记录 0x42 [0001000000000000…]
-  // trailer 0x38 [91000000]
-  // 单元记录 0x42 [0001000000000000…]
-  // trailer 0x0b []
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // trailer 0x24 [0200]
-  // trailer 0x0b []
-  // trailer 0xde []
-  // trailer 0x26 [0000]
-  // trailer 0xb6 []
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0x55 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0x55 []
-  // trailer 0x0e []
-  // trailer 0xf0 []
-  // trailer 0x4f [f8000000]
-  // trailer 0x25 [0200]
-  // trailer 0xdf []
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // trailer 0xd2 []
-  // trailer 0xf1 []
-  // trailer 0xeb [03]
-  // trailer 0xd2 []
-  // trailer 0x28 []
-  // trailer 0xe0 []
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // trailer 0xf0 []
-  // trailer 0xca []
-  // trailer 0xb7 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0x6c [98000000]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xb7 []
-  // trailer 0xa8 []
-  // trailer 0xeb [6e]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // 单元记录 0x42 [0101000000000000…]
-  // trailer 0xc1 [00]
-  // trailer 0x24 [0100]
-  // trailer 0xeb [24]
-  // trailer 0xc8 []
-  // 单元记录 0x41 [ee00000000000000…]
-  // trailer 0x28 []
-  // trailer 0xe1 []
-  // trailer 0x26 [0000]
-  // trailer 0xb6 []
-  // trailer 0x65 [0000]
-  // trailer 0x55 []
-  // trailer 0xe0 []
-  // trailer 0xd2 []
-  // trailer 0xf0 []
-  // trailer 0x55 []
-  // trailer 0x0e []
-  // trailer 0xf0 []
-  // trailer 0xcb []
-  // trailer 0x38 [91000000]
-  // 单元记录 0x42 [0001000000000000…]
-  // trailer 0x38 [91000000]
-  // 单元记录 0x42 [0001000000000000…]
-  // trailer 0x0b []
-  // trailer 0xd2 []
-  // trailer 0x24 [0200]
-  // trailer 0x0b []
-  // trailer 0x65 [0100]
-  // 单元记录 0x42 [0201000000000000…]
-  // trailer 0xc1 [01]
-  // trailer 0x24 [0100]
-  // trailer 0x4f [f8000000]
-  // trailer 0x65 [0100]
-  // 单元记录 0x42 [0201000000000000…]
-  // trailer 0xc1 [02]
-  // trailer 0x24 [0100]
-  // trailer 0x4f [ea000000]
-  // trailer 0x25 [0200]
-  // trailer 0xae []
-  // trailer 0x03 [3c152b00]
-  // trailer 0x9d []
-  // trailer 0x01 [02007302]
-  // trailer 0x12 []
-  // trailer 0xd0 []
-  // trailer 0xbc []
-  // trailer 0xbe [01]
-  // trailer 0x02 [53005202]
-  // trailer 0xe9 []
-  // trailer 0xe9 []
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000100010301…]
-  // trailer 0xc1 [00]
-  // trailer 0x25 [0100]
-  // trailer 0xae []
-  // trailer 0x03 [42000e42]
-  // trailer 0x07 []
-  // trailer 0x01 [00010001]
-  // trailer 0x02 [01002501]
-  // trailer 0xba []
-  // trailer 0x03 [000100b6]
-  // trailer 0x03 [0003d241]
-  // trailer 0x03 [01000000]
-  // trailer 0xde []
-  // trailer 0xae []
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [42000000]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000100010100…]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [45000000]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0701000100010100…]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [46000000]
-  // trailer 0x0e []
-  // 单元记录 0x43 [0601ba0301010104…]
-  // trailer 0xea []
-  // trailer 0xb7 []
-  // trailer 0xa7 []
-  // trailer 0xeb [27]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xee [bd00]
-  // trailer 0xb7 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0xeb [26]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xed [70]
-  // trailer 0x38 [99000000]
-  // 单元记录 0x42 [fd00000000000000…]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0x24 [0200]
-  // trailer 0xca []
-  // trailer 0x38 [92000000]
-  // 单元记录 0x42 [7a00000000000000…]
-  // trailer 0x0b []
-  // trailer 0x65 [0000]
-  // trailer 0x4f [30000000]
-  // trailer 0xc1 [00]
-  // trailer 0x25 [0200]
-  // trailer 0xae []
-  // trailer 0x03 [4b091200]
-  // trailer 0x89 [02]
-  // trailer 0x02 [c6000808]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0601000200020401…]
-  // trailer 0xb7 []
-  // trailer 0xde []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0xeb [04]
-  // trailer 0xb6 []
-  // trailer 0xed [02]
-  // trailer 0xd3 []
-  // trailer 0x4a []
-  // trailer 0x4f [03010000]
-  // trailer 0xde []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xb7 []
-  // trailer 0xde []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0xeb [04]
-  // trailer 0xb6 []
-  // trailer 0xed [02]
-  // trailer 0xd3 []
-  // trailer 0x4a []
-  // trailer 0x4f [e9000000]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [4f070800]
-  // trailer 0x53 []
-  // trailer 0x02 [00530200]
-  // trailer 0x0e []
-  // 单元记录 0x43 [0601bc0302020204…]
-  // trailer 0x30 [6401006400]
-  // trailer 0xb7 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0x11 []
-  // trailer 0x6c [0c010000]
-  // trailer 0x0e []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xb7 []
-  // trailer 0xa8 []
-  // trailer 0x11 []
-  // trailer 0x6c [e0000000]
-  // trailer 0x0e []
-  // trailer 0xd3 []
-  // 单元记录 0x41 [f800000000000000…]
-  // 单元记录 0x42 [f900000000000000…]
-  // trailer 0xb6 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0x24 [0200]
-  // 单元记录 0x42 [0101000000000000…]
-  // trailer 0xc1 [00]
-  // trailer 0x24 [0100]
-  // trailer 0x11 []
-  // trailer 0xeb [49]
-  // trailer 0x0e []
-  // trailer 0xd3 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xd3 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0xca []
-  // trailer 0xb7 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0x11 []
-  // trailer 0x6c [0c010000]
-  // trailer 0x0e []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xb7 []
-  // trailer 0xa8 []
-  // trailer 0x11 []
-  // trailer 0x6c [e0000000]
-  // trailer 0x0e []
-  // trailer 0xd3 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // 单元记录 0x42 [f900000000000000…]
-  // trailer 0xb6 []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0x24 [0200]
-  // 单元记录 0x42 [0101000000000000…]
-  // trailer 0xc1 [01]
-  // trailer 0x24 [0100]
-  // trailer 0x11 []
-  // trailer 0xeb [49]
-  // trailer 0x0e []
-  // trailer 0xd3 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xd3 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xae []
-  // trailer 0xcb []
-  // trailer 0x65 [0000]
-  // trailer 0x11 []
-  // trailer 0xec [05]
-  // trailer 0x0e []
-  // trailer 0x65 [0100]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [55052100]
-  // trailer 0xe8 []
-  // trailer 0x04 [020e4206]
-  // trailer 0x01 [00020002]
-  // trailer 0x03 [01002702]
-  // trailer 0xba []
-  // trailer 0x03 [000100bc]
-  // trailer 0x03 [000100b6]
-  // trailer 0x03 [0003d2de]
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xd3 []
-  // trailer 0x4a []
-  // trailer 0xae []
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [56000000]
-  // trailer 0x0e []
-  // 单元记录 0x42 [0601000200020301…]
-  // trailer 0xd3 []
-  // trailer 0x4a []
-  // trailer 0xae []
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [56000000]
-  // trailer 0x0e []
-  // 单元记录 0x43 [0601be0301000103…]
-  // trailer 0x04 [05010000]
-  // trailer 0x24 [0100]
-  // trailer 0x99 []
-  // trailer 0x11 []
-  // trailer 0xec [2c]
-  // trailer 0x0e []
-  // trailer 0xd2 []
-  // 单元记录 0x42 [0601000000000000…]
-  // trailer 0x04 [07010000]
-  // trailer 0x24 [0100]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [5a010300]
-  // trailer 0x0e []
-  // 单元记录 0x43 [0601c00301000105…]
-  // trailer 0x38 [b0000000]
-  // trailer 0x11 []
-  // trailer 0xd2 []
-  // trailer 0x21 [0100]
-  // trailer 0x25 [0100]
-  // trailer 0xae []
-  // trailer 0x03 [5e010300]
-  // trailer 0x0e []
-  // 单元记录 0x43 [0601c20301010103…]
-  // trailer 0xca []
-  // trailer 0xd2 []
-  // 单元记录 0x42 [0801000000000000…]
-  // trailer 0xc1 [00]
-  // trailer 0x25 [0100]
-  // trailer 0xae []
-  // trailer 0x03 [62031235]
-  // trailer 0xaf []
-  // trailer 0x0e []
-  // 单元记录 0x42 [0601000101010501…]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [e900000000000000…]
-  // trailer 0x04 [09010000]
-  // trailer 0xd2 []
-  // 单元记录 0x41 [0301000000000000…]
-  // trailer 0x24 [0300]
-  // trailer 0xca []
-  // trailer 0x68 [0000]
-  // 单元记录 0x42 [6300000000000000…]
-  // trailer 0x65 [0000]
-  // trailer 0x24 [0100]
-  // trailer 0x99 []
-  // trailer 0x11 []
-  // trailer 0xeb [2f]
-  // trailer 0x0e []
-  // trailer 0x68 [0000]
-  // 单元记录 0x42 [6800000000000000…]
-  // trailer 0x65 [0000]
-  // trailer 0x24 [0100]
-  // trailer 0x0e []
-  // trailer 0xb6 []
-  // trailer 0x99 []
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [64041200]
-  // trailer 0x6f [02000000]
-  // trailer 0x0e []
-  // 单元记录 0x43 [0601c40301000102…]
-  // trailer 0x68 [0000]
-  // 单元记录 0x41 [f600000000000000…]
-  // 单元记录 0x41 [f700000000000000…]
-  // trailer 0xae []
-  // trailer 0x11 []
-  // trailer 0xeb [50]
-  // trailer 0x0e []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [f800000000000000…]
-  // trailer 0xea []
-  // trailer 0xb6 []
-  // trailer 0xa8 []
-  // trailer 0x11 []
-  // trailer 0xeb [27]
-  // trailer 0x0e []
-  // trailer 0xd2 []
-  // 单元记录 0x41 [ea00000000000000…]
-  // trailer 0xea []
-  // trailer 0xb6 []
-  // trailer 0xa8 []
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [6a010300]
-  // trailer 0x02 [00000000]
+  // trailer 0xae
+  …(pad)
+  // op 0x0f OP_0f [?]
+  // op 0x08 PUSH_C [~]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x12 OP_12 [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x08 PUSH_C [~]
+  // op 0x2d OP_2d [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x08 PUSH_C [~]
+  // op 0x2d OP_2d [?]
+  // op 0x2b OP_2b [?]
+  …(pad)
+  // op 0x2b OP_2b [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  EXPORTS.builtin#16910 (seq 256) = OP_4a();  // const[0800091a]
+  …(pad)
+  // op 0x10 OP10 [?]
+  …(pad)
+  // op 0x2b OP_2b [?]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @405
+  // op 0xc6 PUSH_THIS [~]
+  // op 0x1b OP_1b [?]
+  // discard(OP_1b()())
+  // op 0xc6 PUSH_THIS [~]
+  EXPORTS.activeItem (seq 0) = objlit[activeItem](param[0]);  // PUSH_THIS()
+  // op 0xc6 PUSH_THIS [~]
+  EXPORTS.activeTextIndex (seq 1) = objlit[activeTextIndex](param[0]);  // PUSH_THIS()
+  // op 0xc6 PUSH_THIS [~]
+  EXPORTS.historyItemCount (seq 2) = objlit[historyItemCount](param[0]);  // PUSH_THIS()
+  // stack@INIT-END: OP_0f() | PUSH_C() | OP_12() | OP_2d() | OP_2d() | OP10() | const[00ec0102] | load[aux08ca] | OP_2b()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  // op 0x84 OP_84 [?]
+  // discard(num[3])
+  locop 0xca(objlit[activeItem](param[0]))
+  // op 0x68 PUSH_STR2 [~]
+  // trailer 0xae
+  jcc-0xeb → @847
+  // trailer 0xae
+  jcc-0xeb → @847
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @847
+  // op 0xdf CLOSURE_CTX_B [~]
+  jcc-0xeb → @847
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  // op 0xea OP_ea [?]
+  // stack@INIT-END: OP_84().https:// | const[0d640000] | objlit[builtin#137](param[0]) | objlit[InProgress](objlit[AssistantReasoningStatus](PUSH_STR2())) | v06 | objlit[summaryTitle](param[0]) | EQ_STRICT() | CLOSURE_CTX_B() | f0(undefined) | DUP() | desc-tpl | undefined.[wk:0xee]
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0xa3 OP_A3 [?]
+  // op 0x17 OP_17 [?]
+  …(pad)
+  // discard(OP_17())
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @1059
+  // discard(DUP())
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @1062
+  // stack@INIT-END: ?.https:// | str?flags=0x0 idx=13 | const[0d08cc64] | const[00640000] | EQ_STRICT()
+  // ===== 初始化段结束；其后为函数单元 =====
+  locop 0xca(objlit[activeItem](param[0]))
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  // op 0x6d META_OP6D [?]
+  // discard(META_OP6D())
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @1258
+  // discard(DUP())
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  jcc-0xeb → @1262
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xc8 PUSH_C8 [~]
+  locop 0xcb(objlit[items](param[0]).slice(objlit[historyItemCount](PUSH_C8())).some(local[0]))
+  // op 0xea OP_ea [?]
+  // op 0xa8 OP_A8 [?]
+  jcc-0xeb → @1492
+  jcc-0xeb → @1492
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xc8 PUSH_C8 [~]
+  // trailer 0xae
+  // op 0x93 OP_93 [?]
+  // op 0xc6 PUSH_THIS [~]
+  // op 0xc6 PUSH_THIS [~]
+  // discard(PUSH_THIS())
+  …(pad)
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xaf EQ_STRICT [~]
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x19 idx=0)
+  …(pad)
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa0 ADD [~]
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa1 OP_a1 [?]
+  locop 0xcb(const[00389900].min(ADD(), pool[153].max(globalThis, OP_a1())))
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  // op 0x6d META_OP6D [?]
+  // discard(META_OP6D())
+  // op 0x07 PUSH_B [~]
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  jcc-0xec → @2081
+  // discard(DUP())
+  // op 0xc6 PUSH_THIS [~]
+  // trailer 0xae
+  jcc-0xeb → @2086
+  jmp → @2120
+  // op 0xc6 PUSH_THIS [~]
+  // op 0x68 PUSH_STR2 [~]
+  // trailer 0xae
+  // op 0x6c META_OP6C [?]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xc8 PUSH_C8 [~]
+  // stack@INIT-END: v06 | globalThis | OP_ea() | OP_A8() | undefined | DUP() | desc-tpl | PUSH_C8().mergeActiveItem(undefined).[wk:0xee] | OP_93() | const[02b200a5] | const[02008f01] | num[3825359872].https:// | str?flags=0x0 idx=13 | const[0d08cc64] | PUSH_B() | v06 | PUSH_THIS() | v06 | objlit[kind](PUSH_THIS()) | META_OP6C() | DUP() | desc-tpl | objlit[activeItem](PUSH_C8()).[wk:0xee] | call25(call21(undefined.[wk:0xef]; objlit[historyItemCount](PUSH_C8()).[wk:0xf0]).synchronize; param[0])
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  // op 0x9f OP_9f [?]
+  …(pad)
+  // discard(num[3418762182])
+  …(pad)
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xea OP_ea [?]
+  locop 0xca(OP_ea())
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xea OP_ea [?]
+  locop 0xcb(OP_ea())
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa7 OP_a7 [?]
+  jcc-0xeb → @2533
+  // op 0xb7 PUSH_WK1 [~]
+  // trailer 0xae
+  jcc-0xeb → @2544
+  // trailer 0xae
+  // op 0x8a OP_8a [?]
+  …(pad)
+  // discard(const[02000000])
+  …(pad)
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xc6 PUSH_THIS [~]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  jcc-0xeb → @2767
+  jmp → @2801
+  // op 0xc6 PUSH_THIS [~]
+  // op 0x4a OP_4a [?]
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x2d idx=1)
+  …(pad)
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xc7 PUSH_C7 [~]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  jcc-0xeb → @2982
+  jmp → @3016
+  // op 0xc7 PUSH_C7 [~]
+  // op 0x4a OP_4a [?]
+  locop 0xca(OP_4a())
+  // trailer 0xae
+  jcc-0xeb → @3029
+  // trailer 0xae
+  // op 0xb2 OP_b2 [?]
+  …(pad)
+  // discard(const[02000000])
+  …(pad)
+  // op 0xc6 PUSH_THIS [~]
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x34 idx=1)
+  …(pad)
+  // op 0x68 PUSH_STR2 [~]
+  // trailer 0xae
+  jcc-0xeb → @3330
+  // op 0xdf CLOSURE_CTX_B [~]
+  locop 0xca(objlit[toolIcons](param[0]).find(CLOSURE_CTX_B()))
+  // trailer 0xae
+  jcc-0xeb → @3413
+  // trailer 0xae
+  // op 0x8d OP_8d [?]
+  …(pad)
+  // discard(const[02004802])
+  // op 0x05 PATCH_REF_LOAD [~]
+  // op 0x08 PUSH_C [~]
+  locop 0xcc(PUSH_C())
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  // op 0x6c META_OP6C [?]
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xde CLOSURE_CTX_A [~]
+  // op 0xc8 PUSH_C8 [~]
+  // op 0x55 SPREAD_PREP [~]
+  // op 0x55 SPREAD_PREP [~]
+  // discard(SPREAD_PREP())
+  // op 0xdf CLOSURE_CTX_B [~]
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xf1 OP_f1 [?]
+  jcc-0xeb → @3809
+  // op 0xe0 CLOSURE_CTX_C [~]
+  // op 0xc8 PUSH_C8 [~]
+  locop 0xca(f0(objlit[activeItem](PUSH_C8())))
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  // op 0x6c META_OP6C [?]
+  // op 0xea OP_ea [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa8 OP_A8 [?]
+  jcc-0xeb → @4036
+  jcc-0xeb → @4036
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xe1 CLOSURE_CTX_D [~]
+  // op 0x55 SPREAD_PREP [~]
+  // op 0xe0 CLOSURE_CTX_C [~]
+  // op 0x55 SPREAD_PREP [~]
+  // discard(SPREAD_PREP())
+  locop 0xcb(f0(CLOSURE_CTX_D()))
+  // trailer 0xae
+  // op 0x9d OP_9d [?]
+  // op 0x12 OP_12 [?]
+  // op 0xd0 OP_d0 [?]
+  // op 0xbc OP_bc [?]
+  …(pad)
+  // op 0xbe OP_be [?]
+  // op 0xe9 OP_e9 [?]
+  // op 0xe9 OP_e9 [?]
+  // discard(OP_e9())
+  …(pad)
+  // trailer 0xae
+  // op 0x07 PUSH_B [~]
+  // op 0xba OP_ba [?]
+  …(pad)
+  // op 0xde CLOSURE_CTX_A [~]
+  // trailer 0xae
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x42 idx=0)
+  …(pad)
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x45 idx=0)
+  …(pad)
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x46 idx=0)
 
-// ---- 字符串表（1-based） ----
+  // ---- FUNCTION-UNIT: 'startsWith' ----
+  …(pad)
+  // op 0xea OP_ea [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa7 OP_a7 [?]
+  jcc-0xeb → @4623
+  // op 0xea OP_ea [?]
+  // op 0xee OP_ee [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  jcc-0xeb → @4699
+  // op 0xea OP_ea [?]
+  jmp → @4810
+  // op 0xea OP_ea [?]
+  // op 0xea OP_ea [?]
+  locop 0xca(pool[153].min(OP_ea(), OP_ea()))
+  // trailer 0xae
+  // op 0x89 OP_89 [?]
+  // discard(num[134742214])
+  …(pad)
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xde CLOSURE_CTX_A [~]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  jcc-0xeb → @4981
+  jmp → @4982
+  // op 0x4a OP_4a [?]
+  // op 0xde CLOSURE_CTX_A [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xde CLOSURE_CTX_A [~]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  jcc-0xeb → @5064
+  jmp → @5065
+  // op 0x4a OP_4a [?]
+  // trailer 0xae
+  // op 0x53 OP_53 [?]
+  …(pad)
+  // discard(num[152320])
+
+  // ---- FUNCTION-UNIT: 'startsWith' ----
+  // op 0x30 OP30 [?]
+  …(pad)
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  // op 0x6c META_OP6C [?]
+  // discard(META_OP6C())
+  // op 0xea OP_ea [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa8 OP_A8 [?]
+  // op 0x11 DUP [~]
+  // op 0x6c META_OP6C [?]
+  // discard(META_OP6C())
+  // op 0xea OP_ea [?]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @5439
+  // discard(DUP())
+  // op 0xea OP_ea [?]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  locop 0xca(OP_ea())
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  // op 0x6c META_OP6C [?]
+  // discard(META_OP6C())
+  // op 0xea OP_ea [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa8 OP_A8 [?]
+  // op 0x11 DUP [~]
+  // op 0x6c META_OP6C [?]
+  // discard(META_OP6C())
+  // op 0xea OP_ea [?]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @5747
+  // discard(DUP())
+  // op 0xea OP_ea [?]
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  locop 0xcb(OP_ea())
+  // op 0x11 DUP [~]
+  jcc-0xec → @5758
+  // discard(DUP())
+  // trailer 0xae
+  // op 0xe8 OP_e8 [?]
+  // op 0xba OP_ba [?]
+  // op 0x4a OP_4a [?]
+  // trailer 0xae
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x56 idx=0)
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // trailer 0xae
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x56 idx=0)
+
+  // ---- FUNCTION-UNIT: 'startsWith' ----
+  …(pad)
+  // op 0x11 DUP [~]
+  jcc-0xec → @6036
+  // discard(DUP())
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x5a idx=1)
+
+  // ---- FUNCTION-UNIT: 'startsWith' ----
+  …(pad)
+  // op 0x11 DUP [~]
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x5e idx=1)
+
+  // ---- FUNCTION-UNIT: 'startsWith' ----
+  …(pad)
+  locop 0xca(fn:'startsWith')
+  // trailer 0xae
+  // op 0xaf EQ_STRICT [~]
+  // discard(EQ_STRICT())
+  …(pad)
+  locop 0xca(str?flags=0x1 idx=0.startsWith(objlit[text](param[0]), const[265], objlit[icon](param[0])))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @6442
+  // discard(DUP())
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().builtin#104(undefined))
+  // trailer 0xae
+  // op 0x6f OP_6f [?]
+  …(pad)
+  // discard(OP_6f())
+
+  // ---- FUNCTION-UNIT: 'startsWith' ----
+  …(pad)
+  // op 0x68 PUSH_STR2 [~]
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  jcc-0xeb → @6669
+  // discard(DUP())
+  // op 0xea OP_ea [?]
+  // op 0xa8 OP_A8 [?]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @6669
+  // discard(DUP())
+  // op 0xea OP_ea [?]
+  // op 0xa8 OP_A8 [?]
+  // trailer 0xae
+  …(pad)
+  // stack-tail: OP_9f() | const[0200d001].https:// | OP_a7() | PUSH_WK1() | undefined | str?flags=0x29 idx=5 | objlit[texts](OP_8a().https://) | PUSH_WK1() | objlit[toolIcons](OP_ea().https://) | PUSH_WK1() | OP_ea() | v06 | undefined | call25(OP_b2().https://; globalThis, objlit[historyItemCount](PUSH_THIS())).https:// | objlit[kind](param[0]) | objlit[Preamble](objlit[AssistantReasoningItemKind](PUSH_STR2())) | v06 | undefined | undefined | OP_8d().https:// | str?flags=0x7 idx=1 | PATCH_REF_LOAD() | const[c2030801] | DECL_SLOT() | DECL_SLOT() | globalThis | META_OP6C() | call25(pool[145].assign; pool[145].assign(desc-tpl, objlit[activeItem](PUSH_C8())), f0(desc-tpl).[wk:0xf8]) | CLOSURE_CTX_B() | objlit[activeItem](PUSH_C8()) | OP_f1() | CLOSURE_CTX_C() | PUSH_WK1() | META_OP6C() | OP_A8() | objlit[toolIcons](param[0]).every(local[0]) | pool[145].assign | pool[145].assign(desc-tpl, param[0]) | OP_d0() | OP_bc() | call25(OP_be().https://; local[0]) | str?flags=0x42 idx=0 | PUSH_B() | const[00010001] | num[19202049] | OP_ba() | OP_a7() | OP_ea() | OP_ee() | PUSH_WK1() | OP_ea() | OP_89().startsWith | PUSH_WK1() | OP_ea() | OP_4a().[wk:0x103] | objlit[texts](CLOSURE_CTX_A()) | PUSH_WK1() | fn:'startsWith' | OP30() | PUSH_WK1() | OP_ea() | PUSH_WK1() | OP_ea() | OP_e8() | const[104992258] | const[00020002] | fn:'startsWith' | str?flags=0x6a idx=1 | num[0]
+
+// ---- 字符串表 ----
 // str[1] = 'require'
 // str[2] = 'module'
 // str[3] = 'exports'

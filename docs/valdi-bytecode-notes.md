@@ -240,3 +240,10 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - **super(...arguments) 序列解码**：c7 34 c8 26 b6 c9 55 0e 27
 - cel_semantics.py 最终 84 条（22 confirmed + 51 induced + 11 guess），渲染器接入生效
 - 工具链存档：/tmp/celalign/（scan5/scan6/corr/corr2/atom_solver1-3/bracket）
+
+### 9.17 v3 完成（2026-10-28）
+
+- cel_keys.py（key 池代理产出）并入渲染器：key≥216 → 字符串表 slot(key-216) 实名渲染（EXPORTS.clientSQLNative/ChatGPTConversationScreen 实证）；越界 key = 全局 atom 空间回退 builtin#N
+- cel_keys 修正：字符串表 A = 条目总数含 footer；前缀编码 = LEB128((字符数<<1)|utf16)；元数据表补 0xf7-0xff（ChatGPTReasoning 3,261 指令 0 未知）
+- v3 产物：reasoning/conversation 重渲染（EXPORTS 实名/调用链重建/FUNCTION-UNIT 分段）
+- 剩余：~15 低频 op 语义、大文件 body 区漂移（ConversationScreen seq=9766 异常值）、全局 atom 表静态化

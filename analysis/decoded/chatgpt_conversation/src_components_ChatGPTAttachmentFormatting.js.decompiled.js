@@ -2,68 +2,38 @@
   "use strict";
   …(pad)
   ? = ?;
-  // op 0x14 (语义待归纳)
-  // discard([op 0x14])
-  // 记录 0x43 [pool:262] [0601000301030600…]
-  …(pad)
-  locop 0xca(?)
-  // 记录 0x42 [pool:101] [6500000000000000…]
-  Object.defineProperty(exports, const[dc000000], {value:!0});
-  // op 0xd4 (语义待归纳)
-  // EXPORT pool:221 seq=0
-  // op 0xd4 (语义待归纳)
-  // op 0xc6 (语义待归纳)
-  // EXPORT pool:221 seq=1
-  // stack@INIT-END: pool[145] | [op 0xd4] | v06 | [op 0xd4] | [op 0xc6]
-  // ===== 初始化段结束；其后为函数单元 =====
-  // trailer 0xae []
-  // trailer 0x03 [01060003]
-  // trailer 0x0c [e4]
-  // trailer 0x26 [860e]
-  // 单元记录 0x43 [0601b6030100010a…]
-  // trailer 0x38 [95000000]
-  // trailer 0xd2 []
-  // trailer 0xf0 []
-  // trailer 0x04 [de000000]
-  // trailer 0x24 [0200]
-  // trailer 0x28 []
-  // trailer 0xd2 []
-  // trailer 0x01 [00001000]
-  // trailer 0xa6 []
-  // trailer 0x6c [8d000000]
-  // trailer 0xc2 []
-  // 单元记录 0x42 [5c00000000000000…]
-  // trailer 0x38 [95000000]
-  // trailer 0x38 [99000000]
-  // 单元记录 0x42 [df00000000000000…]
-  // trailer 0xb7 []
-  // trailer 0x38 [99000000]
-  // 单元记录 0x42 [e000000000000000…]
-  // trailer 0xd2 []
-  // trailer 0xbf [0004]
-  // trailer 0x9e []
-  // trailer 0x24 [0100]
-  // trailer 0x24 [0200]
-  // trailer 0xf0 []
-  // trailer 0x04 [e1000000]
-  // trailer 0x24 [0200]
-  // trailer 0x28 []
-  // trailer 0xc2 []
-  // 单元记录 0x42 [5c00000000000000…]
-  // trailer 0xd2 []
-  // trailer 0x01 [00001000]
-  // trailer 0x9e []
-  // 单元记录 0x42 [e200000000000000…]
-  // trailer 0xb7 []
-  // trailer 0x24 [0100]
-  // trailer 0x04 [e3000000]
-  // trailer 0x24 [0200]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [03010300]
-  // trailer 0x02 [00000000]
+  // op 0x14 OP_14 [?]
+  // discard(OP_14())
 
-// ---- 字符串表（1-based） ----
+  // ---- FUNCTION-UNIT: 'builtin#262' ----
+  …(pad)
+  locop 0xca(fn:'builtin#262')
+  Object.defineProperty(exports, dc000000, {value:!0});
+  // op 0xd4 PUSH_EXPORTS [✓]
+  EXPORTS.formatChatGPTAttachmentSize (seq 0) = v06;  // PUSH_EXPORTS()
+  // op 0xd4 PUSH_EXPORTS [✓]
+  // op 0xc6 PUSH_THIS [~]
+  EXPORTS.formatChatGPTAttachmentSize (seq 1) = PUSH_THIS();  // PUSH_EXPORTS()
+  // stack@INIT-END: pool[145].builtin#101
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+
+  // ---- FUNCTION-UNIT: 'builtin#262' ----
+  …(pad)
+  // op 0xa6 LT [~]
+  // op 0x6c META_OP6C [?]
+  // op 0xc2 LOCAL_OP2 [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xbf OP_bf [?]
+  // op 0x9e OP_9e [?]
+  // op 0xc2 LOCAL_OP2 [?]
+  // op 0x9e OP_9e [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // trailer 0xae
+  …(pad)
+  // stack-tail: 'formatChatGPTAttachmentSize' | load[e4] | fn:'builtin#262' | META_OP6C() | LOCAL_OP2().builtin#92 | str?flags=0x3 idx=1 | num[0]
+
+// ---- 字符串表 ----
 // str[1] = 'require'
 // str[2] = 'module'
 // str[3] = 'exports'

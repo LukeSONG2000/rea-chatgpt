@@ -1,29 +1,18 @@
-// 模块: chatgpt_reasoning/src/ChatGPTReasoning | 字符串 280 | 代码 19845B | 指令 924
+// 模块: chatgpt_reasoning/src/ChatGPTReasoning | 字符串 280 | 代码 19845B | 指令 3097
   …(pad)
   local[11] = ?(const[272]);
-  // 记录 0x42 [pool:267] [0b01000000000000…]
-  local[12] = undefined(const[268]);
-  // 记录 0x42 [pool:269] [0d01000000000000…]
+  local[12] = undefined.makeNodePrototype(const[268]);
   local[13] = const[275](push2);
-  // 记录 0x42 [pool:269] [0d01000000000000…]
-  local[14] = undefined();
-  // 记录 0x42 [pool:267] [0b01000000000000…]
-  local[15] = undefined(const[268]);
-  // 记录 0x42 [pool:269] [0d01000000000000…]
+  local[14] = undefined.makeComponentPrototype();
+  local[15] = undefined.makeNodePrototype(const[268]);
   local[16] = const[276](push2);
-  // 记录 0x42 [pool:269] [0d01000000000000…]
   local[17] = const[277](push2);
-  // 记录 0x42 [pool:267] [0b01000000000000…]
-  local[18] = undefined(const[268]);
-  // 记录 0x42 [pool:267] [0b01000000000000…]
-  local[19] = undefined(const[268]);
-  // 记录 0x42 [pool:267] [0b01000000000000…]
+  local[18] = undefined.makeNodePrototype(const[268]);
+  local[19] = undefined.makeNodePrototype(const[268]);
   local[20] = const[281](const[282], push4);
-  // 记录 0x42 [pool:267] [0b01000000000000…]
-  local[21] = undefined(const[268]);
-  // 记录 0x42 [pool:269] [0d01000000000000…]
-  // op 0xbe (语义待归纳)
-  local[22] = [op 0xbe](push2);
+  local[21] = undefined.makeNodePrototype(const[268]);
+  // op 0xbe OP_be [?]
+  local[22] = OP_be()(push2);
   local[23] = f0(const[283]);
   local[24] = f0(const[284]);
   local[25] = f0(const[285]);
@@ -36,425 +25,1355 @@
   local[32] = f0(const[292]);
   local[33] = f0(const[293]);
   local[34] = f0(const[294]);
-  // op 0xbf (语义待归纳)
-  local[35] = [op 0xbf];
-  // op 0xb9 (语义待归纳)
-  local[36] = [op 0xb9];
-  // op 0xc0 (语义待归纳)
-  // op 0xc0 (语义待归纳)
-  // op 0x8f (语义待归纳)
-  // 记录 0x41 [pool:301] [2d01000000000000…]
-  // 记录 0x41 [pool:302] [2e01000000000000…]
-  // op 0xc0 (语义待归纳)
-  local[37] = [op 0xc0].[wk:0x130];
-  // 记录 0x41 [pool:305] [3101000000000000…]
-  // 记录 0x41 [pool:306] [3201000000000000…]
-  // 记录 0x41 [pool:305] [3101000000000000…]
-  // 记录 0x41 [pool:306] [3201000000000000…]
-  // 记录 0x41 [pool:301] [2d01000000000000…]
-  // 记录 0x41 [pool:308] [3401000000000000…]
-  // op 0xc0 (语义待归纳)
-  local[38] = [op 0xc0].[wk:0x130];
-  // op 0xc0 (语义待归纳)
-  // op 0x8f (语义待归纳)
-  // op 0xc0 (语义待归纳)
-  // op 0x8f (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbf (语义待归纳)
-  local[39] = [op 0xbf].[wk:0x136];
+  // op 0xbf OP_bf [?]
+  local[35] = OP_bf();
+  // op 0xb9 OP_b9 [?]
+  local[36] = OP_b9();
+  // op 0xc0 OP_c0 [?]
+  // op 0xc0 OP_c0 [?]
+  // op 0x8f OP_8f [?]
+  // op 0xc0 OP_c0 [?]
+  local[37] = OP_c0().[wk:0x130];
+  // op 0xc0 OP_c0 [?]
+  local[38] = OP_c0().[wk:0x130];
+  // op 0xc0 OP_c0 [?]
+  // op 0x8f OP_8f [?]
+  // op 0xc0 OP_c0 [?]
+  // op 0x8f OP_8f [?]
+  // op 0xbe OP_be [?]
+  // op 0xbf OP_bf [?]
+  local[39] = OP_bf().[wk:0x136];
   local[40] = const[341].[wk:0x36].[wk:0x156];
-  // op 0x64 (语义待归纳)
-  // 记录 0x41 [pool:343] [5701000000000000…]
-  // op 0x64 (语义待归纳)
-  // op 0xc0 (语义待归纳)
-  // op 0x59 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
-  // op 0x57 (语义待归纳)
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0xc0 OP_c0 [?]
+  // op 0x59 IMPORT_MODULE [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
+  // op 0x57 IMPORT_BINDING [~]
   local[42] = v06;
-  // discard([op 0x57])
-  // op 0xc5 (语义待归纳)
-  // op 0x6b (语义待归纳)
-  local[43] = [op 0x6b];
-  // op 0xd4 (语义待归纳)
-  // EXPORT pool:260 seq=1
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:358] [6601000000000000…]
-  // 记录 0x41 [pool:359] [6701000000000000…]
-  // 记录 0x41 [pool:358] [6601000000000000…]
-  // 记录 0x41 [pool:359] [6701000000000000…]
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:358] [6601000000000000…]
-  // 记录 0x41 [pool:365] [6d01000000000000…]
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:358] [6601000000000000…]
-  // 记录 0x41 [pool:359] [6701000000000000…]
-  // op 0xbe (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:372] [7401000000000000…]
-  // 记录 0x41 [pool:373] [7501000000000000…]
-  // op 0xb7 (语义待归纳)
-  // 记录 0x41 [pool:376] [7801000000000000…]
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:372] [7401000000000000…]
-  // 记录 0x41 [pool:385] [8101000000000000…]
-  // 记录 0x41 [pool:386] [8201000000000000…]
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:358] [6601000000000000…]
-  // 记录 0x41 [pool:359] [6701000000000000…]
-  // op 0xbe (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // 记录 0x41 [pool:358] [6601000000000000…]
-  // 记录 0x41 [pool:391] [8701000000000000…]
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:372] [7401000000000000…]
-  // 记录 0x41 [pool:394] [8a01000000000000…]
-  // 记录 0x41 [pool:386] [8201000000000000…]
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:372] [7401000000000000…]
-  // 记录 0x41 [pool:394] [8a01000000000000…]
-  // 记录 0x41 [pool:386] [8201000000000000…]
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:358] [6601000000000000…]
-  // 记录 0x41 [pool:359] [6701000000000000…]
-  // op 0xbe (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:372] [7401000000000000…]
-  // 记录 0x41 [pool:373] [7501000000000000…]
-  // op 0xb7 (语义待归纳)
-  // op 0xb7 (语义待归纳)
-  // 记录 0x41 [pool:386] [8201000000000000…]
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xb8 (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:358] [6601000000000000…]
-  // 记录 0x41 [pool:391] [8701000000000000…]
-  // op 0xbe (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:401] [9101000000000000…]
-  // 记录 0x41 [pool:402] [9201000000000000…]
-  // op 0xbe (语义待归纳)
-  // op 0xbe (语义待归纳)
-  // 记录 0x41 [pool:355] [6301000000000000…]
-  // op 0x11 (语义待归纳)
-  // 记录 0x41 [pool:372] [7401000000000000…]
-  // 记录 0x41 [pool:405] [9501000000000000…]
-  // 记录 0x41 [pool:401] [9101000000000000…]
-  // 记录 0x41 [pool:402] [9201000000000000…]
-  // op 0xbb (语义待归纳)
-  // 记录 0x41 [pool:358] [6601000000000000…]
-  // 记录 0x41 [pool:391] [8701000000000000…]
-  // 记录 0x41 [pool:358] [6601000000000000…]
-  // 记录 0x41 [pool:359] [6701000000000000…]
-  // op 0xbb (语义待归纳)
-  local[46] = call21(undefined.[wk:0x198]; [op 0xbb].[wk:0x16b]).[wk:0x199];
-  // stack@INIT-END: undefined | const[274] | undefined | const[274] | undefined | const[64] | undefined | const[278] | const[279] | const[280] | undefined | const[270] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | arg2-tpl | arg2-tpl | arg2-tpl | globalThis.[wk:0x127] | [op 0xc0].[wk:0x128].[wk:0x129] | arg2-tpl | globalThis.[wk:0x127] | [op 0x8f].[wk:0x128].[wk:0x12a].[wk:0x12b] | !(globalThis).[wk:0x12c] | undefined.[wk:0x12f] | arg2-tpl | arg2-tpl | undefined.[wk:0x129] | undefined.[wk:0x12a].[wk:0x12b] | !(globalThis).[wk:0x12c] | !(globalThis).[wk:0x133] | undefined.[wk:0x12f] | arg2-tpl | arg2-tpl | arg2-tpl | globalThis.[wk:0x127] | [op 0x8f].[wk:0x128].[wk:0x129] | arg2-tpl | globalThis.[wk:0x127] | [op 0x8f].[wk:0x128].[wk:0x12a].[wk:0x12b] | !(globalThis).[wk:0x12c] | [op 0xbe].[wk:0x135] | arg2-tpl | arg2-tpl | const[311].[wk:0x138] | const[313].[wk:0x36].[wk:0x13a] | arg2-tpl | const[315].[wk:0x138] | const[316].[wk:0x36].[wk:0x13d] | arg2-tpl | const[318].[wk:0x138] | const[319].[wk:0x36].[wk:0x13f] | arg2-tpl | const[271].[wk:0x138] | const[313].[wk:0x36].[wk:0x140] | arg2-tpl | const[321].[wk:0x138] | const[322].[wk:0x36].[wk:0x142] | arg2-tpl | const[323].[wk:0x138] | const[324].[wk:0x36].[wk:0x145] | arg2-tpl | const[326].[wk:0x138] | const[240].[wk:0x36].[wk:0x147] | arg2-tpl | const[328].[wk:0x138] | const[329].[wk:0x36].[wk:0x14a] | arg2-tpl | const[331].[wk:0x138] | const[332].[wk:0x36].[wk:0x14c] | arg2-tpl | const[318].[wk:0x138] | const[319].[wk:0x36].[wk:0x14d] | arg2-tpl | const[318].[wk:0x138] | const[334].[wk:0x36].[wk:0x14f] | arg2-tpl | const[336].[wk:0x138] | const[337].[wk:0x36].[wk:0x152] | arg2-tpl | const[339].[wk:0x138] | const[340].[wk:0x36].[wk:0x154] | arg2-tpl | const[271].[wk:0x138] | [op 0x64] | [op 0xc5] | [op 0xd4] | undefined | arg2-tpl | [op 0x11] | arg2-tpl | const[356].[wk:0x165] | undefined.[wk:0x168] | call21(undefined.[wk:0x169]; const[362].[wk:0x16b]).[wk:0x16c] | [op 0x11] | arg2-tpl | const[356].[wk:0x165] | call21(undefined.[wk:0x168]; const[362].[wk:0x16b]).[wk:0x16e] | [op 0x11] | arg2-tpl | const[367].[wk:0x170] | const[369].[wk:0x165] | undefined.[wk:0x168] | call21([op 0xbe].[wk:0x172]; const[362].[wk:0x16b]).[wk:0x173] | [op 0x11] | arg2-tpl | undefined.[wk:0x176] | [op 0xb7].[wk:0x177] | undefined | f0([op 0xbe]).[wk:0x179] | call21([op 0xbe].[wk:0x17a]; [op 0xb7].[wk:0x17b]).[wk:0x17c] | [op 0x11] | arg2-tpl | const[367].[wk:0x170] | [op 0xbe].[wk:0x17d] | call21(const[367].[wk:0x17e]; [op 0xbe].[wk:0x16b]).[wk:0x17f] | [op 0x11] | arg2-tpl | call21(const[369].[wk:0x165]; const[362].[wk:0x16b]).[wk:0x180] | [op 0x11] | arg2-tpl | undefined.[wk:0x176] | undefined | f0([op 0xbe]).[wk:0x179] | call21([op 0xbe].[wk:0x17a]; globalThis.[wk:0x17b]).[wk:0x183] | [op 0x11] | arg2-tpl | const[388].[wk:0x170] | const[369].[wk:0x165] | undefined.[wk:0x168] | call21([op 0xbe].[wk:0x172]; const[362].[wk:0x16b]).[wk:0x185] | [op 0x11] | arg2-tpl | const[356].[wk:0x165] | [op 0xb7].[wk:0x186] | [op 0xb7].[wk:0x177] | call21(undefined.[wk:0x168]; globalThis.[wk:0x188]).[wk:0x189] | [op 0x11] | arg2-tpl | undefined.[wk:0x176] | undefined | f0([op 0xbe]).[wk:0x179] | call21([op 0xbe].[wk:0x17a]; globalThis.[wk:0x17b]).[wk:0x18b] | [op 0x11] | arg2-tpl | undefined.[wk:0x176] | undefined | f0([op 0xbe]).[wk:0x179] | call21([op 0xbe].[wk:0x17a]; globalThis.[wk:0x17b]).[wk:0x18c] | [op 0x11] | arg2-tpl | const[367].[wk:0x170] | const[369].[wk:0x165] | undefined.[wk:0x168] | call21([op 0xbe].[wk:0x172]; const[362].[wk:0x16b]).[wk:0x18d] | [op 0x11] | arg2-tpl | undefined.[wk:0x176] | [op 0xb7].[wk:0x186] | [op 0xb7].[wk:0x177] | undefined | f0([op 0xbe]).[wk:0x179] | call21([op 0xbe].[wk:0x17a]; [op 0xb8].[wk:0x17b]).[wk:0x18e] | [op 0x11] | arg2-tpl | const[367].[wk:0x170] | const[369].[wk:0x165] | globalThis.[wk:0x177] | call21(undefined.[wk:0x168]; [op 0xbe].[wk:0x172]).[wk:0x18f] | [op 0x11] | arg2-tpl | const[367].[wk:0x170] | [op 0xbe].[wk:0x17d] | call21(const[367].[wk:0x17e]; [op 0xbe].[wk:0x16b]).[wk:0x190] | [op 0x11] | arg2-tpl | undefined.[wk:0x193] | call21([op 0xbe].[wk:0x17d]; [op 0xbe].[wk:0x16b]).[wk:0x194] | [op 0x11] | arg2-tpl | undefined.[wk:0x196] | undefined.[wk:0x193] | [op 0xbb].[wk:0x17d] | undefined.[wk:0x197]
+  // discard(IMPORT_BINDING())
+  // op 0xc5 CLASS_CONSTRUCT [~]
+  // op 0x6b CLASS_DECL [~]
+  local[43] = CLASS_DECL();
+  // op 0xd4 PUSH_EXPORTS [✓]
+  EXPORTS.ChatGPTReasoning (seq 1) = undefined;  // PUSH_EXPORTS()
+  // op 0x11 DUP [~]
+  // op 0x11 DUP [~]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbe OP_be [?]
+  // op 0xbe OP_be [?]
+  // op 0x11 DUP [~]
+  // op 0xbb OP_bb [?]
+  // op 0xbb OP_bb [?]
+  local[46] = call21(objlit[One](objlit[OAISpacing](undefined)).[wk:0x198]; OP_bb().[wk:0x16b]).[wk:0x199];
+  // stack@INIT-END: undefined.makeComponentPrototype | const[274] | undefined.makeComponentPrototype | const[274] | undefined.makeComponentPrototype | const[64] | undefined.makeNodePrototype | const[278] | const[279] | const[280] | undefined.makeComponentPrototype | const[270] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | param[0] | desc-tpl | desc-tpl | desc-tpl | globalThis.[wk:0x127] | OP_c0().[wk:0x128].[wk:0x129] | desc-tpl | globalThis.[wk:0x127] | OP_8f().[wk:0x128].[wk:0x12a].[wk:0x12b] | !(globalThis).[wk:0x12c] | objlit[EaseOut](objlit[AnimationCurve](undefined)).[wk:0x12f] | desc-tpl | desc-tpl | objlit[FADE](objlit[AnimationAppearance](undefined)).[wk:0x129] | objlit[FADE](objlit[AnimationAppearance](undefined)).[wk:0x12a].[wk:0x12b] | !(globalThis).[wk:0x12c] | !(globalThis).[wk:0x133] | objlit[EaseInOut](objlit[AnimationCurve](undefined)).[wk:0x12f] | desc-tpl | desc-tpl | desc-tpl | globalThis.[wk:0x127] | OP_8f().[wk:0x128].[wk:0x129] | desc-tpl | globalThis.[wk:0x127] | OP_8f().[wk:0x128].[wk:0x12a].[wk:0x12b] | !(globalThis).[wk:0x12c] | OP_be().[wk:0x135] | desc-tpl | desc-tpl | const[311].[wk:0x138] | const[313].[wk:0x36].[wk:0x13a] | desc-tpl | const[315].[wk:0x138] | const[316].[wk:0x36].[wk:0x13d] | desc-tpl | const[318].[wk:0x138] | const[319].[wk:0x36].[wk:0x13f] | desc-tpl | const[271].[wk:0x138] | const[313].[wk:0x36].[wk:0x140] | desc-tpl | const[321].[wk:0x138] | const[322].[wk:0x36].[wk:0x142] | desc-tpl | const[323].[wk:0x138] | const[324].[wk:0x36].[wk:0x145] | desc-tpl | const[326].[wk:0x138] | const[240].[wk:0x36].[wk:0x147] | desc-tpl | const[328].[wk:0x138] | const[329].[wk:0x36].[wk:0x14a] | desc-tpl | const[331].[wk:0x138] | const[332].[wk:0x36].[wk:0x14c] | desc-tpl | const[318].[wk:0x138] | const[319].[wk:0x36].[wk:0x14d] | desc-tpl | const[318].[wk:0x138] | const[334].[wk:0x36].[wk:0x14f] | desc-tpl | const[336].[wk:0x138] | const[337].[wk:0x36].[wk:0x152] | desc-tpl | const[339].[wk:0x138] | const[340].[wk:0x36].[wk:0x154] | desc-tpl | const[271].[wk:0x138] | DECL_SLOT() | CLASS_CONSTRUCT() | desc-tpl | DUP() | desc-tpl | const[356].[wk:0x165] | objlit[One](objlit[OAISpacing](undefined)).[wk:0x168] | call21(objlit[One](objlit[OAISpacing](undefined)).[wk:0x169]; const[362].[wk:0x16b]).[wk:0x16c] | DUP() | desc-tpl | const[356].[wk:0x165] | call21(objlit[OneAndHalf](objlit[OAISpacing](undefined)).[wk:0x168]; const[362].[wk:0x16b]).[wk:0x16e] | DUP() | desc-tpl | const[367].[wk:0x170] | const[369].[wk:0x165] | objlit[One](objlit[OAISpacing](undefined)).[wk:0x168] | call21(OP_be().[wk:0x172]; const[362].[wk:0x16b]).[wk:0x173] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x176] | PUSH_WK1().[wk:0x177] | objlit[systemMediumFont](undefined) | f0(OP_be()).[wk:0x179] | call21(OP_be().[wk:0x17a]; PUSH_WK1().[wk:0x17b]).[wk:0x17c] | DUP() | desc-tpl | const[367].[wk:0x170] | OP_be().[wk:0x17d] | call21(const[367].[wk:0x17e]; OP_be().[wk:0x16b]).[wk:0x17f] | DUP() | desc-tpl | call21(const[369].[wk:0x165]; const[362].[wk:0x16b]).[wk:0x180] | DUP() | desc-tpl | objlit[TextPrimary](objlit[OAIColor](undefined)).[wk:0x176] | objlit[systemFont](undefined) | f0(OP_be()).[wk:0x179] | call21(OP_be().[wk:0x17a]; globalThis.[wk:0x17b]).[wk:0x183] | DUP() | desc-tpl | const[388].[wk:0x170] | const[369].[wk:0x165] | objlit[One](objlit[OAISpacing](undefined)).[wk:0x168] | call21(OP_be().[wk:0x172]; const[362].[wk:0x16b]).[wk:0x185] | DUP() | desc-tpl | const[356].[wk:0x165] | PUSH_WK1().[wk:0x186] | PUSH_WK1().[wk:0x177] | call21(objlit[Half](objlit[OAISpacing](undefined)).[wk:0x168]; globalThis.[wk:0x188]).[wk:0x189] | DUP() | desc-tpl | objlit[TextTertiary](objlit[OAIColor](undefined)).[wk:0x176] | objlit[systemFont](undefined) | f0(OP_be()).[wk:0x179] | call21(OP_be().[wk:0x17a]; globalThis.[wk:0x17b]).[wk:0x18b] | DUP() | desc-tpl | objlit[TextTertiary](objlit[OAIColor](undefined)).[wk:0x176] | objlit[systemFont](undefined) | f0(OP_be()).[wk:0x179] | call21(OP_be().[wk:0x17a]; globalThis.[wk:0x17b]).[wk:0x18c] | DUP() | desc-tpl | const[367].[wk:0x170] | const[369].[wk:0x165] | objlit[One](objlit[OAISpacing](undefined)).[wk:0x168] | call21(OP_be().[wk:0x172]; const[362].[wk:0x16b]).[wk:0x18d] | DUP() | desc-tpl | objlit[TextSecondary](objlit[OAIColor](undefined)).[wk:0x176] | PUSH_WK1().[wk:0x186] | PUSH_WK1().[wk:0x177] | objlit[systemFont](undefined) | f0(OP_be()).[wk:0x179] | call21(OP_be().[wk:0x17a]; PUSH_WK2().[wk:0x17b]).[wk:0x18e] | DUP() | desc-tpl | const[367].[wk:0x170] | const[369].[wk:0x165] | globalThis.[wk:0x177] | call21(objlit[Half](objlit[OAISpacing](undefined)).[wk:0x168]; OP_be().[wk:0x172]).[wk:0x18f] | DUP() | desc-tpl | const[367].[wk:0x170] | OP_be().[wk:0x17d] | call21(const[367].[wk:0x17e]; OP_be().[wk:0x16b]).[wk:0x190] | DUP() | desc-tpl | objlit[Pill](objlit[OAIRadius](undefined)).[wk:0x193] | call21(OP_be().[wk:0x17d]; OP_be().[wk:0x16b]).[wk:0x194] | DUP() | desc-tpl | objlit[IconTertiary](objlit[OAIColor](undefined)).[wk:0x196] | objlit[Pill](objlit[OAIRadius](undefined)).[wk:0x193] | OP_bb().[wk:0x17d] | objlit[Half](objlit[OAISpacing](undefined)).[wk:0x197]
   // ===== 初始化段结束；其后为函数单元 =====
-  // trailer 0xae []
-  // trailer 0x03 [01a70200]
-  // trailer 0x89 [01]
-  // trailer 0x04 [e4264f00]
-  // trailer 0xdc []
-  // trailer 0x09 []
-  // trailer 0x02 [08082126]
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x21 [2b1c]
-  // trailer 0x1c []
-  // trailer 0x26 [004a]
-  // trailer 0x02 [26120800]
-  // trailer 0x4a []
-  // trailer 0x02 [004a021c]
-  // trailer 0x26 [2600]
-  // trailer 0x4a []
-  // trailer 0x02 [26120808]
-  // trailer 0x21 [2b1c]
-  // trailer 0x08 []
-  // trailer 0x21 [2b1c]
-  // trailer 0x1c []
-  // trailer 0x26 [262b]
-  // trailer 0x12 []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x08 []
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x1c []
-  // trailer 0x0e []
-  // trailer 0x32 [2400]
-  // trailer 0x08 []
-  // trailer 0x18 []
-  // trailer 0x08 []
-  // trailer 0x18 []
-  // trailer 0x08 []
-  // trailer 0x1e []
-  // trailer 0x08 []
-  // trailer 0x14 []
-  // trailer 0x08 []
-  // trailer 0x16 []
-  // trailer 0x08 []
-  // trailer 0x0e []
-  // trailer 0x08 []
-  // trailer 0x14 []
-  // trailer 0x08 []
-  // trailer 0x0c [00]
-  // trailer 0x08 []
-  // trailer 0x1e []
-  // trailer 0x2d []
-  // trailer 0x2b []
-  // trailer 0x0b []
-  // trailer 0x26 [4508]
-  // trailer 0xc1 [35]
-  // trailer 0x4a []
-  // trailer 0x02 [004a0235]
-  // trailer 0x2b []
-  // trailer 0xc1 [35]
-  // trailer 0x4a []
-  // trailer 0x02 [352bc135]
-  // trailer 0x35 []
-  // trailer 0x4a []
-  // trailer 0x02 [26352bc1]
-  // trailer 0x4a []
-  // trailer 0x02 [21df2621]
-  // trailer 0x2b []
-  // trailer 0xc1 [35]
-  // trailer 0x26 [3526]
-  // trailer 0x2b []
-  // trailer 0xc1 [35]
-  // trailer 0x35 []
-  // trailer 0x2b []
-  // trailer 0xc1 [00]
-  // trailer 0x4a []
-  // trailer 0x02 [df26212b]
-  // trailer 0xc1 [35]
-  // trailer 0x35 []
-  // trailer 0x4a []
-  // trailer 0x02 [26352bc1]
-  // trailer 0x35 []
-  // trailer 0x21 [2100]
-  // trailer 0x4a []
-  // trailer 0x02 [212bc100]
-  // trailer 0x4a []
-  // trailer 0x02 [df26212b]
-  // trailer 0xc1 [00]
-  // trailer 0x4a []
-  // trailer 0x02 [df26212b]
-  // trailer 0xc1 [35]
-  // trailer 0x35 []
-  // trailer 0x4a []
-  // trailer 0x02 [26352bc1]
-  // trailer 0x4a []
-  // trailer 0x02 [2121df26]
-  // trailer 0x21 [2bc1]
-  // trailer 0x35 []
-  // trailer 0x35 []
-  // trailer 0x21 [004a]
-  // trailer 0x02 [262bc135]
-  // trailer 0x26 [3526]
-  // trailer 0x2b []
-  // trailer 0xc1 [00]
-  // trailer 0x4a []
-  // trailer 0x02 [26262bc1]
-  // trailer 0x4a []
-  // trailer 0x02 [004a0221]
-  // trailer 0x4a []
-  // trailer 0x02 [004a0221]
-  // trailer 0x2b []
-  // trailer 0x0e []
-  // trailer 0x06 []
-  // trailer 0x0a []
-  // trailer 0xd7 []
-  // trailer 0xa3 []
-  // trailer 0x70 [3d0ac73f]
-  // trailer 0x06 []
-  // trailer 0xb8 []
-  // trailer 0x1e []
-  // trailer 0x85 []
-  // trailer 0xeb [51]
-  // trailer 0xb8 []
-  // trailer 0xbe [3f]
-  // trailer 0x06 []
-  // trailer 0xb8 []
-  // trailer 0x1e []
-  // trailer 0x85 []
-  // trailer 0xeb [51]
-  // trailer 0xb8 []
-  // trailer 0xce []
-  // trailer 0x3f [060ad7a370]
-  // trailer 0x3d []
-  // trailer 0x0a []
-  // trailer 0xc7 []
-  // trailer 0x3f [06b81e85eb]
-  // trailer 0x51 []
-  // trailer 0xb8 []
-  // trailer 0xbe [3f]
-  // trailer 0x06 []
-  // trailer 0x7b [14ae47e17ab43f0ec6]
-  // trailer 0x07 []
-  // trailer 0x01 [00000400]
-  // trailer 0x05 [0301b502]
-  // trailer 0x04 [10000160]
-  // trailer 0xe4 []
-  // trailer 0x01 [000100e2]
-  // trailer 0x01 [0001009a]
-  // trailer 0x01 [00010084]
-  // trailer 0x04 [270dec01]
-  // trailer 0x2a []
-  // trailer 0x0d [fa03]
-  // trailer 0x22 [0d0c]
-  // trailer 0x02 [cb0c03cc]
-  // trailer 0x64 [0000]
-  // trailer 0x0c [00]
-  // trailer 0xcd []
-  // trailer 0x2b []
-  // trailer 0xc7 []
-  // trailer 0x34 []
-  // trailer 0xc8 []
-  // trailer 0x26 [0000]
-  // trailer 0xb6 []
-  // trailer 0xc9 []
-  // trailer 0x55 []
-  // trailer 0x0e []
-  // trailer 0x27 [0100]
-  // trailer 0x11 []
-  // trailer 0x67 [0000]
-  // trailer 0x68 [0100]
-  // trailer 0x11 []
-  // trailer 0xeb [08]
-  // trailer 0x65 [0000]
-  // trailer 0x1b []
-  // trailer 0x24 [0000]
-  // trailer 0x0e []
-  // trailer 0x0e []
-  // trailer 0x65 [0000]
-  // trailer 0x0b []
-  // trailer 0xb6 []
-  // trailer 0x4f [9a010000]
-  // trailer 0xb7 []
-  // trailer 0x99 []
-  // trailer 0x4f [9b010000]
-  // trailer 0x68 [0200]
-  // 单元记录 0x41 [9c01000000000000…]
-  // 单元记录 0x42 [9d01000000000000…]
-  // trailer 0x65 [0000]
-  // 单元记录 0x41 [9e01000000000000…]
-  // 单元记录 0x41 [6c01000000000000…]
-  // trailer 0x24 [0100]
-  // trailer 0x4f [9f010000]
-  // trailer 0x65 [0000]
-  // 单元记录 0x41 [9e01000000000000…]
-  // 单元记录 0x41 [6c01000000000000…]
-  // trailer 0x4f [a0010000]
-  // trailer 0x45 [a101000000000000]
-  // trailer 0x65 [0000]
-  // trailer 0xc1 [00]
-  // trailer 0x45 [a201000001000000]
-  // trailer 0x65 [0000]
-  // trailer 0x28 []
-  // trailer 0xae []
-  // trailer 0x03 [680f44b7]
-  // trailer 0x21 [2600]
-  // trailer 0x92 []
-  // trailer 0x01 [02004a02]
-  // trailer 0x0c [0e]
-  // trailer 0x3a [0ec20701]
-  // trailer 0x03 [00040200]
-  // trailer 0xfc []
+  // trailer 0xae
+  // op 0x89 OP_89 [?]
+  // op 0xdc OP_dc [?]
+  // op 0x09 PUSH_D [~]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x1c OP_1c [?]
+  // op 0x4a OP_4a [?]
+  // op 0x4a OP_4a [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x1c OP_1c [?]
+  // op 0x12 OP_12 [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x1c OP_1c [?]
+  // discard(OP_1c())
+  …(pad)
+  // op 0x32 OP_32 [?]
+  // op 0x08 PUSH_C [~]
+  // op 0x18 TRIPLE_OP [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x18 TRIPLE_OP [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x1e OP_1e [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x14 OP_14 [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x16 OP_16 [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // discard(PUSH_C())
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x14 OP_14 [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x08 PUSH_C [~]
+  // op 0x1e OP_1e [?]
+  // op 0x2d OP_2d [?]
+  // op 0x2b OP_2b [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x2b OP_2b [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x35 OP35 [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x2b OP_2b [?]
+  // op 0x2b OP_2b [?]
+  // op 0x35 OP35 [?]
+  // op 0x2b OP_2b [?]
+  // op 0x4a OP_4a [?]
+  // op 0x35 OP35 [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x35 OP35 [?]
+  // op 0x4a OP_4a [?]
+  // op 0x4a OP_4a [?]
+  // op 0x4a OP_4a [?]
+  // op 0x35 OP35 [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x35 OP35 [?]
+  // op 0x35 OP35 [?]
+  // op 0x2b OP_2b [?]
+  // op 0x4a OP_4a [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  …(pad)
+  // op 0x4a OP_4a [?]
+  // op 0x2b OP_2b [?]
+  // discard(OP_2b())
+  // op 0x0a PUSH_E [~]
+  // op 0xd7 POP_D7 [?]
+  // op 0xa3 OP_A3 [?]
+  // op 0x70 TRY_REGION [~]
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0x1e OP_1e [?]
+  // op 0x85 OP_85 [?]
+  jcc-0xeb → @4829
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0xbe OP_be [?]
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0x1e OP_1e [?]
+  // op 0x85 OP_85 [?]
+  jcc-0xeb → @4838
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0x3f OP_3f [?]
+  // op 0x3d OP_3d [?]
+  // op 0x0a PUSH_E [~]
+  // op 0xc7 PUSH_C7 [~]
+  // op 0x3f OP_3f [?]
+  // op 0x51 OP_51 [?]
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0xbe OP_be [?]
+  // op 0x7b OP_7b [?]
+  // op 0x07 PUSH_B [~]
+  // op 0x05 PATCH_REF_LOAD [~]
+  // op 0xe4 CLASS_DEF_POP [~]
+  // op 0x2a OP_2a [?]
+  // op 0x64 DECL_SLOT [~]
+  locop 0xcd(load[00])
+  // op 0x2b OP_2b [?]
+  // op 0xc7 PUSH_C7 [~]
+  // op 0x34 OP_34 [?]
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xc9 PUSH_C9 [~]
+  // op 0x55 SPREAD_PREP [~]
+  // discard(SPREAD_PREP())
+  // op 0x27 APPLY_SPREAD [~]
+  // op 0x11 DUP [~]
+  // op 0x67 STR_CMP [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @4876
+  // op 0x1b OP_1b [?]
+  // discard(OP_1b()())
+  // discard(STR_CMP())
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0x68 PUSH_STR2 [~]
+  EXPORTS.state (seq 0) = objlit[reasoning](objlit[viewModel](undefined)).[wk:0x1a0];  // objlit[ChatGPTFaviconPresentation](PUSH_STR2()).start(objlit[reasoning](objlit[viewModel](undefined))).[wk:0x19f]
+  EXPORTS.toggleExpanded (seq 1) = local[0];  // undefined
+  // trailer 0xae
+  // op 0x92 OP_92 [?]
+  …(pad)
+  // op 0x3a OP_3a [?]
+  …(pad)
+  // op 0xfc OP_fc [?]
+  …(pad)
+  // op 0xb8 PUSH_WK2 [~]
+  …(pad)
+  // op 0x09 PUSH_D [~]
+  // op 0x84 OP_84 [?]
+  …(pad)
+  locop 0xcc(!(objlit[expanded](objlit[state](num[26624]))))
+  // op 0x07 PUSH_B [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xcf OP_cf [?]
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  jcc-0xec → @5396
+  // discard(DUP())
+  // op 0xc7 PUSH_C7 [~]
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  jcc-0xec → @5396
+  // discard(DUP())
+  // op 0xc7 PUSH_C7 [~]
+  // op 0xc6 PUSH_THIS [~]
+  // discard(PUSH_C7().call(PUSH_THIS(), undefined))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // stack@INIT-END: OP_2d() | OP_2b() | desc-tpl | OP_4a() | num[889342464] | OP_4a() | num[556195617] | OP_2b() | local[0] | push9781 | OP_2b() | OP35() | OP_4a() | OP_4a() | OP_4a() | OP_4a() | OP_4a() | num[652157217] | OP35() | call21(?) | num[901851942] | push9781 | OP_4a() | num[553798144] | OP_A3() | OP_85() | PUSH_WK2() | OP_3d() | PUSH_E() | OP_51() | PUSH_WK2() | OP_be() | OP_7b() | PUSH_B() | const[00000400] | PATCH_REF_LOAD() | CLASS_DEF_POP() | const[000100e2] | const[0001009a] | const[00010084] | OP_2a() | load[auxfa03] | call22(?) | num[3422751947] | DECL_SLOT() | undefined | desc-tpl | globalThis.[wk:0x19a] | !(PUSH_WK1()).[wk:0x19b] | str?flags=0x68 idx=15 | OP_92() | const[02004a02] | OP_3a() | str?flags=0x0 idx=4 | OP_fc() | str?flags=0xb6 idx=3 | PUSH_WK2() | OP_84() | load[64] | PUSH_B() | v06 | PUSH_STR2().setStateAnimated | desc-tpl(undefined.[wk:0x19b], PUSH_STR2())
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  // op 0x47 OP_47 [?]
+  // op 0x2b OP_2b [?]
+  …(pad)
+  // discard(num[234881024].z(local[0]))
+  // op 0xc6 PUSH_THIS [~]
+  // stack@INIT-END: OP_47() | num[3154279936] | call21(OP_2b(); ) | PUSH_THIS().scheduleActiveText()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  // op 0x4d OP_4d [?]
+  …(pad)
+  // op 0x10 OP10 [?]
+  …(pad)
+  // trailer 0xae
+  …(pad)
+  // discard(str?flags=0x78 idx=0)
+  // op 0xbe OP_be [?]
+  …(pad)
+  // op 0x30 OP30 [?]
+  local[3] = OP30();
+  // op 0x2c OP_2c [?]
+  // op 0x08 PUSH_C [~]
+  local[11] = PUSH_C();
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // trailer 0xae
+  jcc-0xeb → @5761
+  // stack@INIT-END: OP10() | call25(const[de426201]; ).z | OP_be() | str?flags=0x0 idx=192 | const[0630c603] | const[0730c803] | const[0830ca03] | const[0930cc03] | const[0a301000] | OP_2c() | const[8004250d] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | v06 | param[0]
+  // ===== 初始化段结束；其后为函数单元 =====
+  // op 0xc3 LOAD_M3 [~]
+  local[4] = objlit[faviconPresentation](objlit[state](LOAD_M3()));
+  // op 0xc3 LOAD_M3 [~]
+  local[5] = objlit[reasoning](objlit[viewModel](LOAD_M3()));
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @5912
+  jmp → @5954
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @5966
+  // op 0xc6 PUSH_THIS [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @5966
+  // op 0xc6 PUSH_THIS [~]
+  jmp → @6041
+  // op 0x68 PUSH_STR2 [~]
+  local[6] = objlit[ChatGPTFaviconPresentation](PUSH_STR2()).start(undefined);
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6054
+  jmp → @6090
+  // op 0xcf OP_cf [?]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @6102
+  // op 0xc7 PUSH_C7 [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @6102
+  // op 0xc7 PUSH_C7 [~]
+  jmp → @6169
+  local[7] = objlit[activeItem](objlit[reasoning](param[0]));
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6182
+  jmp → @6218
+  // op 0xd0 OP_d0 [?]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @6230
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @6230
+  // op 0xc8 PUSH_C8 [~]
+  jmp → @6266
+  local[8] = objlit[activeItem](undefined);
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6278
+  jmp → @6314
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6324
+  jmp → @6360
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  // op 0x6d META_OP6D [?]
+  // discard(META_OP6D())
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6378
+  jmp → @6414
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6424
+  jmp → @6460
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  // op 0x6d META_OP6D [?]
+  // discard(META_OP6D())
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6478
+  jmp → @6515
+  // op 0xea OP_ea [?]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6525
+  jmp → @6562
+  // op 0xea OP_ea [?]
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @6662
+  // discard(DUP())
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6577
+  jmp → @6614
+  // op 0xea OP_ea [?]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6624
+  jmp → @6661
+  // op 0xea OP_ea [?]
+  // op 0xaf EQ_STRICT [~]
+  local[9] = EQ_STRICT();
+  // op 0x11 DUP [~]
+  jcc-0xeb → @6709
+  // discard(DUP())
+  // op 0xc3 LOAD_M3 [~]
+  // discard(LOAD_M3().cancelActiveTextTimer())
+  jcc-0xeb → @6720
+  // op 0xee OP_ee [?]
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @6731
+  jmp → @6767
+  // op 0xd1 OP_d1 [?]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @6779
+  // op 0xc9 PUSH_C9 [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @6779
+  // op 0xc9 PUSH_C9 [~]
+  jmp → @6847
+  // op 0xc3 LOAD_M3 [~]
+  local[10] = undefined.[wk:0x1a0];
+  // op 0xdf CLOSURE_CTX_B [~]
+  // op 0xf2 OP_f2 [?]
+  jcc-0xeb → @6960
+  // op 0xc3 LOAD_M3 [~]
+  // op 0x68 PUSH_STR2 [~]
+  jmp → @7001
+  // op 0xc3 LOAD_M3 [~]
+  // discard(LOAD_M3().setState(undefined))
+  // op 0x11 DUP [~]
+  jcc-0xeb → @7047
+  // discard(DUP())
+  // op 0xc3 LOAD_M3 [~]
+  // stack@INIT-END: PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_THIS() | PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_C7() | PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_C8() | OP_ac() | v06 | objlit[id](undefined) | OP_ac() | OP_ac() | v06 | objlit[kind](undefined) | OP_ac() | OP_ac() | v06 | OP_ea() | OP_ac() | OP_ac() | v06 | OP_ea() | OP_ac() | desc-tpl | undefined | globalThis | OP_ee() | PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_C9() | objlit[activeTextIndex](objlit[state](LOAD_M3())).[wk:0x19a] | undefined.[wk:0x19f] | CLOSURE_CTX_B() | objlit[reasoning](param[0]) | undefined | OP_f2() | LOAD_M3().setStateAnimated(undefined, PUSH_STR2()) | LOAD_M3().scheduleActiveText()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0x87 OP_87 [?]
+  // op 0x07 PUSH_B [~]
+  …(pad)
+  // op 0xb1 OP_b1 [?]
+  …(pad)
+  // discard(const[02000000])
+  local[3] = OP_b1().z;
+  // op 0x17 OP_17 [?]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x11 DUP [~]
+  // op 0xf3 OP_f3 [?]
+  jcc-0xec → @7226
+  // op 0x73 OP_73 [?]
+  // op 0x11 DUP [~]
+  locop 0xcc(objlit[accessibilityId](DUP()))
+  // discard(DECL_SLOT())
+  jmp → @7264
+  // discard(DECL_SLOT())
+  // op 0xc3 LOAD_M3 [~]
+  jmp → @7187
+  // op 0xc3 LOAD_M3 [~]
+  locop 0xcd(objlit[presentedReasoning](objlit[state](LOAD_M3())))
+  // op 0xc3 LOAD_M3 [~]
+  local[4] = objlit[faviconPresentation](objlit[state](LOAD_M3()));
+  // op 0x68 PUSH_STR2 [~]
+  // trailer 0xae
+  local[5] = objlit[Complete](objlit[AssistantReasoningStatus](PUSH_STR2()));
+  // op 0xea OP_ea [?]
+  // op 0xa8 OP_A8 [?]
+  local[6] = OP_A8();
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @7563
+  jmp → @7638
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @7650
+  // op 0xc6 PUSH_THIS [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @7650
+  // op 0xc6 PUSH_THIS [~]
+  jmp → @7686
+  local[7] = objlit[items](undefined);
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @7699
+  jmp → @7735
+  // op 0xcf OP_cf [?]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @7747
+  // op 0xc7 PUSH_C7 [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @7747
+  // op 0xc7 PUSH_C7 [~]
+  jmp → @7783
+  local[8] = objlit[activeItem](undefined);
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeString(const[428], undefined))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @7993
+  // discard(DUP())
+  // op 0xc3 LOAD_M3 [~]
+  // discard(PUSH_STR2().setAttribute(const[436], objlit[expanded](objlit[state](LOAD_M3()))))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[reasoning](PUSH_STR2())))
+  // op 0x11 DUP [~]
+  jcc-0xeb → @8129
+  // discard(DUP())
+  // op 0xc3 LOAD_M3 [~]
+  // discard(LOAD_M3().renderSummary(undefined, undefined))
+  // op 0x11 DUP [~]
+  jcc-0xec → @8206
+  // discard(DUP())
+  // op 0xc3 LOAD_M3 [~]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @8213
+  // discard(DUP())
+  // op 0xef OP_ef [?]
+  // discard(OP_ef())
+  // op 0x68 PUSH_STR2 [~]
+  // stack@INIT-END: OP_87() | PUSH_B() | const[0430c603] | const[0570c803] | const[0630ca03] | const[0770cc03] | const[08701000] | OP_17() | load[auxb803] | const[0d08c409] | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | objlit[viewModel](LOAD_M3()) | objlit[builtin#137](undefined) | PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_THIS() | PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_C7() | PUSH_STR2().endRender()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0xdb OP_db [?]
+  // op 0xda OP_da [?]
+  // discard(OP_da())
+  // op 0x07 PUSH_B [~]
+  // op 0x05 PATCH_REF_LOAD [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PATCH_REF_LOAD().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeString(const[428], LOCAL_OP2().builtin#92(PUSH_STR2(), const[440])))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[timeline](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().forEach(local[0]))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @8631
+  // discard(DUP())
+  // op 0x68 PUSH_STR2 [~]
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  jcc-0xec → @8631
+  // discard(DUP())
+  // op 0xdf CLOSURE_CTX_B [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(CLOSURE_CTX_B().renderActiveItem(PUSH_STR2()))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @8685
+  // discard(DUP())
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @8685
+  // discard(DUP())
+  // op 0xdf CLOSURE_CTX_B [~]
+  // discard(CLOSURE_CTX_B().renderPlaceholder())
+  // op 0x68 PUSH_STR2 [~]
+  // stack@INIT-END: OP_db() | const[30670850].z | const[63572994] | PUSH_B() | load[auxc603] | v06 | PUSH_STR2().endRender()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0x86 OP_86 [?]
+  …(pad)
+  // op 0x75 OP_75 [?]
+  …(pad)
+  // op 0x07 PUSH_B [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @8817
+  jmp → @8853
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @8897
+  // discard(DUP())
+  // op 0xdf CLOSURE_CTX_B [~]
+  // stack@INIT-END: OP_75() | num[121769670] | const[00020002] | const[41746434] | globalThis | str?flags=0x0 idx=1 | str?flags=0x0 idx=1 | str?flags=0x0 idx=12 | objlit[id](param[0]) | OP_ac() | CLOSURE_CTX_B().renderHistoryItem(param[0], param[1])
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0x7c OP_7c [?]
+  …(pad)
+  // discard(OP_7c())
+  locop 0xca(str?flags=0x8c idx=1.z)
+  …(pad)
+  // op 0x1b OP_1b [?]
+  // op 0x18 TRIPLE_OP [?]
+  // op 0x05 PATCH_REF_LOAD [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xc3 LOAD_M3 [~]
+  locop 0xcb(objlit[accessibilityId](objlit[viewModel](LOAD_M3())))
+  // op 0xc3 LOAD_M3 [~]
+  locop 0xcc(objlit[expanded](objlit[state](LOAD_M3())))
+  // op 0x07 PUSH_B [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @9204
+  // op 0xc6 PUSH_THIS [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @9204
+  // op 0xc6 PUSH_THIS [~]
+  jmp → @9209
+  locop 0xcd(const[443])
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  jcc-0xeb → @9305
+  jmp → @9310
+  // discard(param[1](const[445], const[446]))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // discard(PUSH_STR2().setAttributeString(const[428], LOCAL_OP2().builtin#92(undefined, const[447])))
+  // op 0x68 PUSH_STR2 [~]
+  jcc-0xeb → @9517
+  // op 0xc2 LOCAL_OP2 [?]
+  jcc-0xeb → @9502
+  jmp → @9507
+  jmp → @9520
+  // discard(undefined(const[448](undefined, const[449], const[450], const[451]), undefined))
+  // op 0x68 PUSH_STR2 [~]
+  jcc-0xeb → @9605
+  // op 0xc3 LOAD_M3 [~]
+  jmp → @9606
+  // discard(param[1](objlit[toggleExpanded](LOAD_M3()), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[summary](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginComponent(objlit[Icon](PUSH_STR2()), PUSH_STR2(), v06, v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[374], objlit[IconTertiary](objlit[OAIColor](PUSH_STR2()))))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(const[457](objlit[getIconAsset](PUSH_STR2()), f0(const[313])))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endComponent())
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[summaryLabel](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeString(const[64], undefined))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endRender())
+  // op 0x11 DUP [~]
+  // op 0x6c META_OP6C [?]
+  // discard(META_OP6C())
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // discard(PUSH_STR2().setAttributeString(const[428], LOCAL_OP2().builtin#92(undefined, const[460])))
+  // op 0x68 PUSH_STR2 [~]
+  jcc-0xeb → @10456
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0x9e OP_9e [?]
+  jmp → @10457
+  // discard(undefined(OP_9e(), globalThis))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[disclosureChevron](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginComponent(objlit[Icon](PUSH_STR2()), PUSH_STR2(), v06, v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[374], objlit[IconTertiary](objlit[OAIColor](PUSH_STR2()))))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(const[457](objlit[getIconAsset](PUSH_STR2()), f0(const[464])))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endComponent())
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endRender())
+  // op 0x68 PUSH_STR2 [~]
+  // stack@INIT-END: 'module' | 'exports' | const[00b60300] | load[auxbc03] | OP_1b() | TRIPLE_OP() | load[auxc003] | PATCH_REF_LOAD() | load[auxc403] | PUSH_B() | load[aux08c4] | const[1677722468] | num[91136] | EQ_STRICT() | EQ_STRICT() | PUSH_THIS() | PUSH_STR2().setAttributeString | const[444] | PUSH_STR2().setAttributeString | const[274] | param[1] | LOCAL_OP2().builtin#92 | PUSH_STR2().setAttributeFunction | const[453] | PUSH_STR2().setViewModelProperty | PUSH_STR2().setAttributeNumber | const[462] | PUSH_STR2().setViewModelProperty | PUSH_STR2().endRender()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0xbf OP_bf [?]
+  …(pad)
+  // op 0x68 PUSH_STR2 [~]
+  …(pad)
+  // op 0x7f OP_7f [?]
+  …(pad)
+  // trailer 0xae
+  …(pad)
+  // discard(num[163584].[wk:0x2])
+  // op 0x10 OP10 [?]
+  …(pad)
+  // op 0x08 PUSH_C [~]
+  // op 0x2e OP_2e [?]
+  // op 0x0a PUSH_E [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x68 PUSH_STR2 [~]
+  // trailer 0xae
+  locop 0xca(objlit[Preamble](objlit[AssistantReasoningItemKind](PUSH_STR2())))
+  // op 0xc2 LOCAL_OP2 [?]
+  // op 0xc8 PUSH_C8 [~]
+  locop 0xcb(objlit[accessibilityId](objlit[viewModel](PUSH_C8()))(const[467], pool[149], f0(param[1])))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeString(const[428], undefined))
+  // op 0x68 PUSH_STR2 [~]
+  jcc-0xeb → @11474
+  // op 0x68 PUSH_STR2 [~]
+  jmp → @11510
+  // op 0x68 PUSH_STR2 [~]
+  // discard(undefined(objlit[preamble](PUSH_STR2()), objlit[historyItem](PUSH_STR2())))
+  // op 0x11 DUP [~]
+  // op 0x6d META_OP6D [?]
+  // discard(META_OP6D())
+  // op 0xc8 PUSH_C8 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_C8().renderToolIcons(objlit[ChatGPTFaviconPresentation](PUSH_STR2()).historyToolIcons(param[0]), objlit[kind](param[0]), undefined, v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[itemText](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  jcc-0xeb → @11926
+  // op 0x68 PUSH_STR2 [~]
+  jmp → @11962
+  // op 0x68 PUSH_STR2 [~]
+  // discard(undefined(objlit[preambleLabel](PUSH_STR2()), objlit[historyLabel](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeString(const[64], objlit[text](param[0])))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endRender())
+  // op 0xc8 PUSH_C8 [~]
+  // op 0x11 DUP [~]
+  // op 0x6c META_OP6C [?]
+  // discard(META_OP6C())
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  // op 0x6c META_OP6C [?]
+  // discard(META_OP6C())
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // discard(PUSH_STR2().setAttributeString(const[428], LOCAL_OP2().builtin#92(undefined, const[470])))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[detailLabel](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeString(const[64], objlit[detail](param[0])))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endRender())
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endRender())
+  // op 0x68 PUSH_STR2 [~]
+  // stack@INIT-END: str?flags=0x92 idx=1 | OP_bf() | PUSH_STR2() | param[0] | const[0200a701] | num[33669888] | OP10() | const[00e40317] | load[auxb603] | load[auxc603] | PUSH_C() | OP_2e() | load[auxfa03] | call22(?) | str?flags=0x9 idx=13 | PUSH_E() | load[auxcc03] | desc-tpl | load[aux08cc] | DECL_SLOT() | DECL_SLOT() | objlit[kind](param[0]) | LOCAL_OP2().builtin#92 | PUSH_STR2().setAttributeStyle | const[438] | PUSH_STR2().setAttributeStyle | const[438] | PUSH_STR2().endRender()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0xde CLOSURE_CTX_A [~]
+  …(pad)
+  // op 0xa9 OP_a9 [?]
+  …(pad)
+  // op 0xab OP_ab [?]
+  // discard(num[0])
+  // op 0xc0 OP_c0 [?]
+  …(pad)
+  // op 0x8e OP_8e [?]
+  // op 0x1a OP_1a [?]
+  // op 0x1c OP_1c [?]
+  // discard(load[auxd203])
+  // op 0x05 PATCH_REF_LOAD [~]
+  // op 0x68 PUSH_STR2 [~]
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  jcc-0xec → @12899
+  // discard(DUP())
+  // op 0xea OP_ea [?]
+  // trailer 0xae
+  jcc-0xeb → @12941
+  // op 0xc3 LOAD_M3 [~]
+  // discard(LOAD_M3().renderPlaceholder())
+  // stack@INIT-END: str?flags=0xa1 idx=1 | CLOSURE_CTX_A() | OP_a9() | OP_ab() | const[0200c601].z | OP_c0() | const[0330c203] | const[04301000] | OP_1c() | load[aux08c4] | PATCH_REF_LOAD() | str?flags=0x0 idx=100 | objlit[kind](param[0]) | globalThis | OP_ea()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // op 0xc3 LOAD_M3 [~]
+  locop 0xcc(objlit[faviconPresentation](objlit[state](LOAD_M3())))
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @13021
+  jmp → @13060
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @13073
+  // op 0xc6 PUSH_THIS [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @13073
+  // op 0xc6 PUSH_THIS [~]
+  // op 0xee OP_ee [?]
+  // op 0xc3 LOAD_M3 [~]
+  // op 0xea OP_ea [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa1 OP_a1 [?]
+  // op 0x4a OP_4a [?]
+  locop 0xcd(OP_4a())
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @13266
+  jmp → @13305
+  // op 0xcf OP_cf [?]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @13317
+  // op 0xc7 PUSH_C7 [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @13317
+  // op 0xc7 PUSH_C7 [~]
+  jmp → @13351
+  local[4] = objlit[toolIcons](param[0]);
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // op 0xc3 LOAD_M3 [~]
+  // discard(PUSH_STR2().setAttributeString(const[428], LOCAL_OP2().builtin#92(objlit[accessibilityId](objlit[viewModel](LOAD_M3())), const[474])))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[activeItem](PUSH_STR2())))
+  // op 0xea OP_ea [?]
+  // op 0xa8 OP_A8 [?]
+  // op 0x6c META_OP6C [?]
+  // op 0xc3 LOAD_M3 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // op 0xc3 LOAD_M3 [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @13871
+  jmp → @13907
+  // op 0xee OP_ee [?]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginComponent(objlit[ActivityIndicator](PUSH_STR2()), PUSH_STR2(), v06, v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[374], objlit[IconTertiary](objlit[OAIColor](PUSH_STR2()))))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[270], objlit[Small](objlit[ActivityIndicatorSize](PUSH_STR2()))))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endComponent())
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // op 0xc3 LOAD_M3 [~]
+  // discard(objlit[ShimmerText](PUSH_STR2())(PUSH_STR2(), LOCAL_OP2().builtin#92, objlit[id](param[0])(const[480], pool[149], f0(objlit[activeTextIndex](objlit[state](LOAD_M3())))), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[438], objlit[activeLabel](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[64], undefined))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endComponent())
+  // op 0x68 PUSH_STR2 [~]
+  // stack@INIT-END: PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_THIS() | OP_ee() | PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_C7() | META_OP6C() | LOAD_M3().renderToolIcons | undefined | objlit[Activity](objlit[AssistantReasoningItemKind](PUSH_STR2()))(LOCAL_OP2().builtin#92(objlit[accessibilityId](objlit[viewModel](LOAD_M3())), const[474]), OP_ac(), v06, objlit[activeTextIndex](undefined)) | OP_ee() | PUSH_STR2().beginComponent | PUSH_STR2().endRender()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0xbb OP_bb [?]
+  …(pad)
+  // op 0xba OP_ba [?]
+  …(pad)
+  // op 0x81 OP_81 [?]
+  …(pad)
+  // discard(const[02004f02])
+  // op 0xd6 OP_d6 [?]
+  // op 0x19 OP_19 [?]
+  // op 0x1c OP_1c [?]
+  // op 0x11 DUP [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // op 0xc6 PUSH_THIS [~]
+  // discard(PUSH_STR2().setAttributeString(const[428], LOCAL_OP2().builtin#92(objlit[accessibilityId](objlit[viewModel](PUSH_THIS())), const[481])))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[activeItem](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginComponent(objlit[ActivityIndicator](PUSH_STR2()), PUSH_STR2(), v06, v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[374], objlit[IconTertiary](objlit[OAIColor](PUSH_STR2()))))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[270], objlit[Small](objlit[ActivityIndicatorSize](PUSH_STR2()))))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endComponent())
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginComponent(objlit[ShimmerText](PUSH_STR2()), PUSH_STR2(), v06, v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[438], objlit[activeLabel](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endComponent())
+  // op 0x68 PUSH_STR2 [~]
+  // stack@INIT-END: str?flags=0xab idx=1 | OP_bb() | OP_1c() | DUP() | load[aux08ca] | PUSH_STR2().endRender()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0xc6 PUSH_THIS [~]
+  …(pad)
+  locop 0xca(num[33678336])
+  …(pad)
+  // discard(const[02004f02])
+  // op 0xc0 OP_c0 [?]
+  // op 0x13 OP_13 [?]
+  // op 0x2e OP_2e [?]
+  // op 0x14 OP_14 [?]
+  // op 0x1e OP_1e [?]
+  // op 0x12 OP_12 [?]
+  // op 0x64 DECL_SLOT [~]
+  // op 0xb9 OP_b9 [?]
+  locop 0xca(param[0].slice(globalThis, OP_b9()))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[toolIcons](PUSH_STR2())))
+  // op 0xea OP_ea [?]
+  // op 0xa8 OP_A8 [?]
+  jcc-0xeb → @15986
+  // op 0xee OP_ee [?]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[bullet](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().endRender())
+  // op 0x68 PUSH_STR2 [~]
+  // stack@INIT-END: str?flags=0xb6 idx=1 | PUSH_THIS() | const[0200a201].z | OP_c0() | pair(OP_12(), load[auxe003]) | … | … | load[aux08cb] | DECL_SLOT() | OP_A8() | undefined.forEach(local[0]) | OP_ee() | PUSH_STR2().endRender()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  locop 0xcb(str?flags=0xbd idx=1)
+  …(pad)
+  // op 0xa9 OP_a9 [?]
+  // op 0x0a PUSH_E [~]
+  // op 0x09 PUSH_D [~]
+  …(pad)
+  // op 0x97 OP_97 [?]
+  …(pad)
+  // op 0xc0 OP_c0 [?]
+  …(pad)
+  // op 0xb1 OP_b1 [?]
+  …(pad)
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // discard(PUSH_STR2()(LOCAL_OP2().builtin#92, param[0](const[480], pool[149], f0(param[1]))))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[toolIcon](PUSH_STR2())))
+  // op 0x6c META_OP6C [?]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginRender(PUSH_STR2(), v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // op 0x61 LOAD_61 [?]
+  // op 0x07 PUSH_B [~]
+  // op 0x61 LOAD_61 [?]
+  // op 0xad OP_ad [?]
+  jcc-0xeb → @16631
+  // op 0x61 LOAD_61 [?]
+  jmp → @16632
+  // discard(LOAD_61()(const[485], pool[149](OP_ad(), LOAD_61(), f0(param[1]))))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(const[457](objlit[makeAssetFromUrl](PUSH_STR2()), f0(param[0])))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setAttributeStyle(const[438], objlit[remoteToolIcon](PUSH_STR2())))
+  // op 0x68 PUSH_STR2 [~]
+  jmp → @16888
+  // op 0x61 LOAD_61 [?]
+  // op 0x61 LOAD_61 [?]
+  // discard(LOAD_61().renderBuiltInToolIcon(param[0], LOAD_61()))
+  // op 0x68 PUSH_STR2 [~]
+  // stack@INIT-END: OP_a9() | const[0a00ad01] | num[121769670] | const[00020002] | PUSH_E() | OP_97() | num[16778168] | OP_c0() | const[00b60300] | load[dc] | 'l' | num[50585100] | load[bc] | str?flags=0x2 idx=3 | str?flags=0x3 idx=242 | load[10] | OP_b1() | const[00000000] | META_OP6C() | PUSH_STR2().setAttributeString | const[428] | LOCAL_OP2().builtin#92 | PUSH_STR2().setAttribute | PUSH_STR2().endRender() | PUSH_STR2().endRender()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // trailer 0xae
+  …(pad)
+  // op 0x7c OP_7c [?]
+  …(pad)
+  // discard(OP_7c())
+  // op 0x1b OP_1b [?]
+  // op 0x16 OP_16 [?]
+  // op 0x19 OP_19 [?]
+  // op 0x18 TRIPLE_OP [?]
+  …(pad)
+  // op 0xde CLOSURE_CTX_A [~]
+  // op 0xf1 OP_f1 [?]
+  locop 0xca(OP_f1())
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().beginComponent(objlit[Icon](PUSH_STR2()), PUSH_STR2(), v06, v06))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[374], objlit[IconTertiary](objlit[OAIColor](PUSH_STR2()))))
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(const[457](objlit[getIconAsset](PUSH_STR2()), f0(objlit[builtin#54](undefined))))
+  // op 0x68 PUSH_STR2 [~]
+  // discard(PUSH_STR2().setViewModelProperty(const[74], objlit[fallback](undefined)))
+  // op 0x68 PUSH_STR2 [~]
+  // stack@INIT-END: TRIPLE_OP() | load[aux6400] | CLOSURE_CTX_A() | param[0] | PUSH_STR2().setViewModelProperty | PUSH_STR2().endComponent()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  // op 0x1c OP_1c [?]
+  …(pad)
+  // op 0xc3 LOAD_M3 [~]
+  // op 0xc6 PUSH_THIS [~]
+  …(pad)
+  // discard(PUSH_THIS())
+  // op 0xbe OP_be [?]
+  // op 0x17 OP_17 [?]
+  // op 0x07 PUSH_B [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0xc3 LOAD_M3 [~]
+  locop 0xcd(objlit[presentedReasoning](objlit[state](LOAD_M3())))
+  // op 0xc3 LOAD_M3 [~]
+  local[4] = objlit[faviconPresentation](objlit[state](LOAD_M3()));
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @17699
+  jmp → @17735
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @17747
+  // op 0xc6 PUSH_THIS [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @17747
+  // op 0xc6 PUSH_THIS [~]
+  jmp → @17783
+  local[5] = objlit[activeItem](undefined);
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @17797
+  jmp → @17836
+  // op 0xcf OP_cf [?]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @17848
+  // op 0xc7 PUSH_C7 [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @17848
+  // op 0xc7 PUSH_C7 [~]
+  jmp → @17895
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @17858
+  jmp → @17895
+  // op 0xea OP_ea [?]
+  // op 0xd0 OP_d0 [?]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @17907
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @17907
+  // op 0xc8 PUSH_C8 [~]
+  jmp → @17908
+  local[6] = globalThis;
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @18102
+  // discard(DUP())
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  jcc-0xec → @18102
+  // discard(DUP())
+  // op 0xb8 PUSH_WK2 [~]
+  // op 0xa6 LT [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @18102
+  // discard(DUP())
+  // op 0xc3 LOAD_M3 [~]
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @18102
+  // discard(DUP())
+  // op 0xc3 LOAD_M3 [~]
+  // op 0xbf OP_bf [?]
+  // op 0xf1 OP_f1 [?]
+  EXPORTS.activeTextTimer (seq 0) = …;  // …
+  // stack@INIT-END: OP_1c() | LOAD_M3() | num[33670912].z | OP_be() | const[0470c003] | OP_17() | load[aux08c4] | PUSH_B() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | DECL_SLOT() | PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_THIS() | PUSH_B() | PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_C7() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_C8() | v06 | LOAD_M3() | pool[490] | pair(local[0], OP_f1())
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0xe9 OP_e9 [?]
+  // op 0x14 OP_14 [?]
+  // op 0x53 OP_53 [?]
+  // discard(OP_53())
+  local[3] = ?.z;
+  // op 0xbe OP_be [?]
+  …(pad)
+  // op 0x05 PATCH_REF_LOAD [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0xde CLOSURE_CTX_A [~]
+  EXPORTS.activeTextTimer (seq 0) = v06;  // CLOSURE_CTX_A()
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xde CLOSURE_CTX_A [~]
+  // trailer 0xae
+  // op 0x11 DUP [~]
+  jcc-0xec → @18279
+  // discard(DUP())
+  // op 0xc6 PUSH_THIS [~]
+  // trailer 0xae
+  jcc-0xeb → @18284
+  jmp → @18318
+  // op 0xc6 PUSH_THIS [~]
+  // op 0xcf OP_cf [?]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @18330
+  // op 0xc7 PUSH_C7 [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @18330
+  // op 0xc7 PUSH_C7 [~]
+  jmp → @18430
+  // op 0xde CLOSURE_CTX_A [~]
+  locop 0xcd(objlit[activeItem](objlit[reasoning](objlit[viewModel](CLOSURE_CTX_A()))))
+  // op 0xde CLOSURE_CTX_A [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @18555
+  // discard(DUP())
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @18482
+  jmp → @18518
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @18558
+  // stack@INIT-END: const[0430c603] | const[05301007] | const[c003050d] | OP_be() | const[100909581] | load[aux8204] | load[64] | PATCH_REF_LOAD() | DECL_SLOT() | PUSH_B() | PUSH_B() | v06 | PUSH_THIS() | EQ_STRICT() | EQ_STRICT() | PUSH_C7() | OP_ac() | v06 | EQ_STRICT()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // op 0x07 PUSH_B [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @18568
+  jmp → @18674
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xde CLOSURE_CTX_A [~]
+  local[4] = PUSH_STR2().advance(objlit[reasoning](objlit[viewModel](CLOSURE_CTX_A())));
+  // op 0x07 PUSH_B [~]
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @18687
+  jmp → @18723
+  // op 0xd0 OP_d0 [?]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @18735
+  // op 0xc8 PUSH_C8 [~]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @18735
+  // op 0xc8 PUSH_C8 [~]
+  jmp → @18850
+  // op 0xde CLOSURE_CTX_A [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa0 ADD [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa1 OP_a1 [?]
+  local[5] = pool[153].min(ADD(), OP_a1());
+  // op 0xde CLOSURE_CTX_A [~]
+  // op 0x68 PUSH_STR2 [~]
+  // discard(undefined.[wk:0x19a](undefined.[wk:0x19f], PUSH_STR2()))
+  // op 0xde CLOSURE_CTX_A [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa1 OP_a1 [?]
+  // op 0xa6 LT [~]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @19024
+  // discard(DUP())
+  // op 0xde CLOSURE_CTX_A [~]
+  // stack@INIT-END: OP_ac() | v06 | PUSH_B() | OP_ac() | EQ_STRICT() | EQ_STRICT() | PUSH_C8() | CLOSURE_CTX_A().setStateAnimated | desc-tpl | CLOSURE_CTX_A().scheduleActiveText()
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  // op 0x3a OP_3a [?]
+  …(pad)
+  // op 0x7f OP_7f [?]
+  // op 0x79 OP_79 [?]
+  // discard(OP_79())
+  …(pad)
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @19169
+  // discard(DUP())
+  // op 0xc6 PUSH_THIS [~]
+  // discard(f0(objlit[activeTextTimer](PUSH_THIS())))
+  // op 0xc6 PUSH_THIS [~]
+  EXPORTS.activeTextTimer (seq 0) = …;  // …
+  // stack@INIT-END: pool[493] | pair(PUSH_THIS(), v06)
+  // ===== 初始化段结束；其后为函数单元 =====
+  // trailer 0xae
+  …(pad)
+  // op 0x5d OP_5d [?]
+  …(pad)
+  // discard(OP_5d())
 
-// ---- 字符串表（1-based） ----
+  // ---- FUNCTION-UNIT: 'E' ----
+  // op 0x30 OP30 [?]
+  // op 0x64 DECL_SLOT [~]
+  // op 0x64 DECL_SLOT [~]
+  // op 0xd4 PUSH_EXPORTS [✓]
+  // op 0x11 DUP [~]
+  // op 0x6d META_OP6D [?]
+  // discard(META_OP6D())
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  jcc-0xec → @19381
+  // discard(DUP())
+  // op 0xea OP_ea [?]
+  // op 0xea OP_ea [?]
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @19386
+  // op 0xea OP_ea [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa1 OP_a1 [?]
+  // op 0x4a OP_4a [?]
+  locop 0xca(OP_4a())
+  // op 0xea OP_ea [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0xa1 OP_a1 [?]
+  // op 0x4a OP_4a [?]
+  locop 0xcb(OP_4a())
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @19542
+  jmp → @19578
+  // op 0x07 PUSH_B [~]
+  // op 0xac OP_ac [?]
+  jcc-0xeb → @19588
+  jmp → @19624
+  // op 0xaf EQ_STRICT [~]
+  // trailer 0xae
+  …(pad)
+  // op 0x9d OP_9d [?]
+  // discard(num[0])
+
+  // ---- FUNCTION-UNIT: 'E' ----
+  // op 0xe4 CLASS_DEF_POP [~]
+  …(pad)
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x4a OP_4a [?]
+  locop 0xca(OP_4a())
+  // op 0xaf EQ_STRICT [~]
+  jcc-0xeb → @19702
+  // op 0x68 PUSH_STR2 [~]
+  // trailer 0xae
+  jcc-0xeb → @19797
+  // trailer 0xae
+  // op 0x35 OP35 [?]
+  …(pad)
+  // stack-tail: fn:'E' | OP30() | DECL_SLOT() | DECL_SLOT() | EQ_STRICT() | OP_ac() | v06 | objlit[id](undefined) | OP_9d() | CLASS_DEF_POP() | str?flags=0x17 idx=13 | EQ_STRICT() | param[1] | objlit[Thought](objlit[AssistantReasoningItemKind](PUSH_STR2())) | desc-tpl | const[271].[wk:0x138] | desc-tpl | const[311].[wk:0x138] | str?flags=0xe7 idx=1 | call21(?) | OP35() | num[0]
+
+// ---- 字符串表 ----
 // str[1] = 'require'
 // str[2] = 'module'
 // str[3] = 'exports'

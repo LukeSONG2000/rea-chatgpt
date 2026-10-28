@@ -1,53 +1,156 @@
-// 模块: chatgpt_conversation/src/persistence/ChatGPTConversationPersistence | 字符串 64 | 代码 2035B | 指令 114
-  // op 0x68 (语义待归纳)
-  // 记录 0x42 [pool:244] [f400000000000000…]
-  // op 0xc6 (语义待归纳)
-  str?flags=0x0 idx=13 aux=08ca = call25([op 0x68]; [op 0xc6], v06, v06, local[0]);
-  // op 0x27 (语义待归纳)
-  // op 0x52 (语义待归纳)
-  // op 0x05 (语义待归纳)
-  // op 0x30 (语义待归纳)
-  // op 0x64 (语义待归纳)
-  // op 0xc7 (语义待归纳)
-  // 记录 0x41 [pool:243] [f300000000000000…]
-  // 记录 0x42 [pool:245] [f500000000000000…]
-  // op 0x68 (语义待归纳)
-  // op 0x8b (语义待归纳)
+// 模块: chatgpt_conversation/src/persistence/ChatGPTConversationPersistence | 字符串 64 | 代码 2035B | 指令 471
+  // op 0x68 PUSH_STR2 [~]
+  // op 0xc6 PUSH_THIS [~]
+  str?flags=0x0 idx=13 = call25(PUSH_STR2().__awaiter; PUSH_THIS(), v06, v06, local[0]);
+  // op 0x27 APPLY_SPREAD [~]
+  // op 0x52 OP_52 [?]
+  // op 0x05 PATCH_REF_LOAD [~]
+  // op 0x30 OP30 [?]
+  // op 0x64 DECL_SLOT [~]
+  // op 0xc7 PUSH_C7 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x8b OP_8b [?]
   jcc-0xeb → @173
-  // op 0x2e (语义待归纳)
+  // op 0x2e OP_2e [?]
   jcc-0xeb → @178
-  // op 0x2e (语义待归纳)
-  // 记录 0x42 [pool:246] [f600000000000000…]
-  // op 0xc7 (语义待归纳)
-  // 记录 0x41 [pool:243] [f300000000000000…]
-  // 记录 0x42 [pool:247] [f700000000000000…]
-  // op 0x68 (语义待归纳)
-  // op 0x8b (语义待归纳)
+  // op 0x2e OP_2e [?]
+  // op 0xc7 PUSH_C7 [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x8b OP_8b [?]
   jcc-0xeb → @293
-  // op 0x2e (语义待归纳)
-  locop 0xca(pool[154]([op 0x2e]))
-  // op 0xdf (语义待归纳)
+  // op 0x2e OP_2e [?]
+  locop 0xca(pool[154].parse(OP_2e()))
+  // op 0xdf CLOSURE_CTX_B [~]
   jcc-0xeb → @320
-  // op 0x11 (语义待归纳)
-  // op 0x2f (语义待归纳)
-  // op 0x2e (语义待归纳)
-  [op 0x2f] = [op 0x2e];
-  // op 0x52 (语义待归纳)
+  // op 0x11 DUP [~]
+  // op 0x2f OP_2f [?]
+  // op 0x2e OP_2e [?]
+  OP_2f() = OP_2e();
+  // op 0x52 OP_52 [?]
   …(pad)
   // discard(num[1979873024])
-  // 记录 0x42 [pool:263] [0701000101010601…]
   …(pad)
-  // 记录 0x42 [pool:249] [f900000000000000…]
-  // op 0x68 (语义待归纳)
-  // 记录 0x42 [pool:250] [fa00000000000000…]
-  [op 0xdf] = call25([op 0x52]; [op 0x68], pool[154](param[0]));
+  // op 0x68 PUSH_STR2 [~]
+  CLOSURE_CTX_B() = call25(OP_52().some.storeString; PUSH_STR2(), pool[154].stringify(param[0]));
   …(pad)
-  // discard(str?flags=0x15 idx=1 aux=0d00)
-  // 记录 0x43 [pool:262] [0601c60300000007…]
-  // op 0xfb (语义待归纳)
-  // stack-tail: [op 0x52] | v06 | const[00000200] | [op 0x05] | num[66486] | [op 0x30] | str?flags=0x0 idx=12 aux=cc03 | const[0008cb8a] | [op 0x64] | !([op 0x2e]) | [op 0x2e] | [op 0xfb]
+  // discard(str?flags=0x15 idx=1)
 
-// ---- 字符串表（1-based） ----
+  // ---- FUNCTION-UNIT: 'map' ----
+  // op 0xfb OP_fb [?]
+  …(pad)
+  // op 0x11 DUP [~]
+  // op 0x68 PUSH_STR2 [~]
+  !(OP_2e()) = DUP();
+  …(pad)
+  // discard(push38)
+
+  // ---- FUNCTION-UNIT: 'map' ----
+  …(pad)
+  jcc-0xeb → @696
+  // op 0x11 DUP [~]
+  // op 0x2f OP_2f [?]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x11 DUP [~]
+  // op 0xc2 LOCAL_OP2 [?]
+  // op 0x68 PUSH_STR2 [~]
+  // op 0x68 PUSH_STR2 [~]
+  DUP() = LOCAL_OP2().builtin#92(PUSH_STR2(), const[256], param[0]);
+  …(pad)
+  // discard(num[33])
+
+  // ---- FUNCTION-UNIT: 'map' ----
+  …(pad)
+  // op 0xc0 OP_c0 [?]
+  …(pad)
+  // op 0x30 OP30 [?]
+  …(pad)
+  locop 0xca(param[0].filter(local[0]).map(local[0]))
+  jcc-0xeb → @1079
+  jmp → @1080
+  // op 0xd4 PUSH_EXPORTS [✓]
+  // op 0xd5 OP_d5 [?]
+  // op 0xb7 PUSH_WK1 [~]
+  // op 0x5e OP_5e [?]
+  OP_d5().[wk:0x10b] = PUSH_WK1().[wk:0x10c];
+  DECLARE-FUNCTION …
+  // op 0x0a PUSH_E [~]
+  // op 0x34 OP_34 [?]
+  // op 0x2b OP_2b [?]
+  // discard(OP_2b())
+  …(pad)
+  // op 0xaf EQ_STRICT [~]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @1233
+  // discard(DUP())
+  v06 = objlit[remoteId](param[0]);
+  DUP() = str?flags=0x21 idx=12;
+  …(pad)
+  // discard(str?flags=0x2b idx=0)
+  …(pad)
+  OP_2f().map = call25(pool[145].assign(desc-tpl, param[0]); desc-tpl, objlit[messages](param[0]).map(local[0]).[wk:0x111]);
+  // discard(num[889602816])
+  // op 0x11 DUP [~]
+  // op 0xf3 OP_f3 [?]
+  jcc-0xec → @1556
+  // op 0x73 OP_73 [?]
+  // op 0x11 DUP [~]
+  locop 0xca(objlit[attachments](DUP()))
+  // op 0x11 DUP [~]
+  locop 0xcb(objlit[preparedMarkdownBlocks](DUP()))
+  // discard(str?flags=0x2b idx=7.map)
+  jmp → @1560
+  // discard(!(f0(param[0])))
+  jmp → @1482
+  // op 0x68 PUSH_STR2 [~]
+  param[0] = call25(const[274]; const[275], push2);
+  // op 0x53 OP_53 [?]
+  …(pad)
+  // discard(num[0])
+  …(pad)
+  // op 0xde CLOSURE_CTX_A [~]
+  OP_53().map = CLOSURE_CTX_A();
+  const[50576397] = objlit[isValidOAIAccountIdentifier](load[aux6800]);
+  …(pad)
+  // discard(str?flags=0x32 idx=0)
+
+  // ---- FUNCTION-UNIT: 'map' ----
+  // op 0x9a OP_9a [?]
+  // op 0xad OP_ad [?]
+  // op 0x11 DUP [~]
+  jcc-0xec → @1743
+  // discard(DUP())
+  // op 0x07 PUSH_B [~]
+  PUSH_B() = param[0];
+  jcc-0xeb → @1748
+  // op 0xb7 PUSH_WK1 [~]
+  locop 0xca(param[0])
+  // op 0xb7 PUSH_WK1 [~]
+  PUSH_WK1() = objlit[version](undefined);
+  // op 0x11 DUP [~]
+  // op 0x6c META_OP6C [?]
+  // discard(META_OP6C())
+  // op 0x11 DUP [~]
+  // op 0x6c META_OP6C [?]
+  // discard(META_OP6C())
+  // op 0x9a OP_9a [?]
+  // op 0xac OP_ac [?]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @2016
+  // discard(DUP())
+  // op 0x9a OP_9a [?]
+  // op 0xac OP_ac [?]
+  // op 0x11 DUP [~]
+  jcc-0xeb → @2016
+  // discard(DUP())
+  // op 0x9a OP_9a [?]
+  // op 0xac OP_ac [?]
+  OP30() = str?flags=0x0 idx=12;
+  …(pad)
+  // stack-tail: OP_52() | v06 | const[00000200] | PATCH_REF_LOAD() | num[66486] | str?flags=0x3b idx=3 | load[aux0000] | v06
+
+// ---- 字符串表 ----
 // str[1] = 'require'
 // str[2] = 'module'
 // str[3] = 'exports'
