@@ -231,3 +231,12 @@ varint(LEB128) B     B = 2×len —— 与字符串表同款 2×len 约定！
 - 关键修正：op03 idx 1-based；op4f 弹序（obj 顶 key 底）；op45/41/42/43 key=池id；CALL 无 this 槽；END 后=epilogue 元数据（trailer 渲染，不产伪语句）
 - defineProperty 惯用法宏匹配（variant A/B）直接产出正确语句，绕开 0x99/0x0b 开放项
 - 校准细节见 analysis/call-convention-calibration.md + call-convention-patch.md（P1-P9）
+
+### 9.16 语义表 v2 大扩展（2026-10-28）
+
+- 语义归纳代理（1,303 文件相关矩阵 + difflib 字符串对齐 + atom 表解析）产出 patch 31 条：14 升级、9 修正、10 维持 guess（负相关证据记录）
+- **算术/关系 ISA 确认**：a0=+ a1=- 9d=× 9e=÷ a6=< a7=≤ 9a=typeof aa=instanceof ac/ad===/!=（> 和 !== 由换向编译，无独立 op）
+- **atom 空间机制破译**：0x41/0x42/0x43/0x45/0x4f/0x50 的 u16 = 模块级全局字符串 atom（各文件字符串表按链接序拼接，base+局部idx）——0x42 key=267"空槽"之谜解开（指向全局空间其他模块的区段）；33 模块 atom→名称映射已解
+- **super(...arguments) 序列解码**：c7 34 c8 26 b6 c9 55 0e 27
+- cel_semantics.py 最终 84 条（22 confirmed + 51 induced + 11 guess），渲染器接入生效
+- 工具链存档：/tmp/celalign/（scan5/scan6/corr/corr2/atom_solver1-3/bracket）
