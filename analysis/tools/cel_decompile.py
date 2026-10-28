@@ -47,10 +47,16 @@ def render(blob, meta, keyspace=None):
             return t if len(t) <= STR_MAX else t[:STR_MAX] + '…'
         return f'builtin#{k}'
     SEM = cel_semantics.SEMANTICS if cel_semantics else {}
-    c = cel_slots.parse_compiled(blob)
-    ins = cel_slots.walk_code(c['code'], meta)
-    strs = [x.decode('utf-8', 'replace') for x in c['strings']]
-    lines = [f'// 模块: {c["name"].decode("utf-8","replace")} | 字符串 {len(strs)} | 代码 {len(c["code"])}B | 指令 {len(ins)}']
+    # v3.1: 字符串表/代码起点改用 cel_keys 正确解析（LEB128 前缀 + utf16 + footer 规则）
+    entries, _fi, table_end = cel_keys.parse_string_table(blob)
+    A, name_b, _tp = cel_keys.parse_header(blob)
+    strs = [t for _slot, t, _raw, _u in entries]
+    code = blob[table_end:]
+    hpos = code.find(b'\x04\x00\x00\x00hash@')
+    if hpos > 0:
+        code = code[:hpos]
+    ins = cel_slots.walk_code(code, meta)
+    lines = [f'// 模块: {name_b.decode("utf-8","replace")} | 字符串 {len(strs)} | 代码 {len(code)}B | 指令 {len(ins)}']
     stack = []
     def pop():
         return stack.pop() if stack else '?'
