@@ -54,3 +54,25 @@
 ## 更新（2026-10-28 Ⅱ）：Web mweb 抓取闭环 ✅
 
 登录态会话 163 chunk（manifest 全集）+ 入口 31 = **全量落地** `derived/web/authenticated/`（196 文件）。阶段 3 闭验收。登录态桌面变体（cookie 同源、bundle 集不同）标注为后续可选。
+
+## iOS 293 原生层 Ghidra 分析状态
+
+| 项 | 状态 |
+|---|---|
+| 解密确认 | ✅ cryptid=0 全 17 个 Mach-O |
+| Swift5 元数据清单 | ✅ 41,356 类型 / 4,082 协议 / 44,698 字段 / 95,638 一致性 |
+| ObjC 清单 | ✅ 4,790 类 / 32,129 方法名 / 10,032 selrefs |
+| 符号表 | ✅ 6,827 符号（4,200 定义 / 2,627 外部） |
+| 8 appex 速览 | ✅ 全覆盖 |
+| **函数级伪代码** | ⏳ 待 Ghidra 重跑（首次因 OOM 失败，192MB 需 >16GB 堆；当前机器 16GB 不够） |
+
+重跑方法（需 >32GB RAM 的机器）：
+```bash
+analyzeHeadless <project_dir> ios293fw \
+  -import <ChatGPT.framework/ChatGPT> \
+  -max-cpu 8 -analysisTimeoutPerFile 14400
+```
+已有符号表和 Swift5 清单可作为导航索引（analysis/ios293-native/）。
+
+Ghidra 工具链位置：`analysis/tools/ghidra-12.1.4/`（12.1.4PUBLIC，含 analyzeHeadless）
+Android 293 对应的 .so 分析工程：`analysis/ghidra-projects/`（24,841 函数已完成）
