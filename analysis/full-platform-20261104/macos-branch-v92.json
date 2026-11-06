@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "official_observations": [
+    "See versions opens a read-only version dialog",
+    "GET /conversations/{conversation_id}/versions?message_id=... returns arrays of message sequences",
+    "Dialog appends current branch and supports Return to current version",
+    "Historical continuation uses a distinct Branch in new chat operation"
+  ],
+  "independent_implementation": "Project historical sibling paths from committed synthetic graph; reject unknown scope, cycles and excessive paths. Does not claim official server ordering or pagination.",
+  "verified": [
+    "Original UI displays historical original message then current edited version",
+    "Return closes dialog and preserves main draft",
+    "Persisted conversation graph equals pre-dialog v91 snapshot",
+    "No generation request during viewing",
+    "Projection and edit-branch regressions passed"
+  ],
+  "runtime": [
+    "macos-branch-v92-observe.json",
+    "macos-branch-v92-versions.json",
+    "macos-branch-v92-local-versions.json"
+  ],
+  "limits": [
+    "Regenerate absent from inspected More actions menu; no forced or fabricated button",
+    "Branch in new chat endpoint not yet implemented",
+    "Not active conversation branch switching; no physical or visual acceptance"
+  ],
+  "next_action": "Trace and implement explicit branch-in-new-chat operation; separately resolve regenerate capability gating",
+  "sources": [
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/versions-dialog-29ea65379d5f.js",
+      "sha256": "fd8f29e6404ff2eb59b289b6dcfec150fc125411f7c2763563603346ffd199de",
+      "byte_offset": 1812,
+      "needle": "/conversations/{conversation_id}/versions"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/chatgpt-conversation-turn-content-2b28a90ef308.js",
+      "sha256": "65b6cd1bb2f34911428b208ef82280994e4e313c697724944db393e56d24272e",
+      "byte_offset": 310427,
+      "needle": "defaultMessage:`See versions`"
+    }
+  ]
+}

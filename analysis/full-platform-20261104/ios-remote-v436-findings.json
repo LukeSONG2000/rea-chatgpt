@@ -1,0 +1,47 @@
+{
+  "version": "v436",
+  "status": "partial",
+  "platform": "iOS",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "integration_change": "none; preserve explicit fixture configuration until predicate semantics are bound",
+  "observations": [
+    {
+      "function": "0x195177c",
+      "branch": "0x1951d0c / 0x1951e50..54",
+      "tag_writer": "0x15da68",
+      "tag": 7,
+      "meaning": "Content.responseSeparator"
+    },
+    {
+      "predicate": "0x246a100",
+      "helpers": [
+        "0x264c968",
+        "0x2654af4"
+      ],
+      "limitation": "payload discriminator; not the userMessage kind predicate from v435"
+    }
+  ],
+  "unknowns": [
+    "complete business meaning of producer boolean inputs",
+    "payload case mapping for0x246a100",
+    "full history/response sequence merge"
+  ],
+  "validation": {
+    "source_title_route": "removed; home segmented control retained",
+    "new_runtime": "not_run",
+    "device_install": "not_performed",
+    "visual_acceptance": "not_accepted",
+    "existing_processes_observed": [
+      87483,
+      97181,
+      97197
+    ]
+  },
+  "files": {
+    "analysis/full-platform-20261104/ios-remote-v436-content-sequence.json": "22c1526ccc5013864433a73b8fe669f3c6ebb2accf82d0d4a4544b746828c998",
+    "analysis/full-platform-20261104/ios-remote-v436-separator-predicate.json": "9cc4d63dcd970a961833f50424295eb485d446b0a082b0c838b6327ecfd074fa",
+    "analysis/full-platform-20261104/ios-remote-v436-sequence-helpers.json": "10d69023e238d45ececa3010d48e9d94ae4e2ce6d63ce7045510513b06d58b53"
+  }
+}

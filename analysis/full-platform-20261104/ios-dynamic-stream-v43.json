@@ -1,0 +1,62 @@
+{
+  "status": "partial",
+  "platform": "ios",
+  "reference_baseline": "1.2026.293",
+  "origin": "independent UIKit host, original Markdown parser projection and synthetic authenticated loopback fixture; not official service",
+  "verification": {
+    "result": "analysis/full-platform-20261104/ios-dynamic-stream-v1.xcresult",
+    "summary": "analysis/full-platform-20261104/ios-dynamic-stream-v1.summary.json",
+    "test": "testDynamicConversationStreamingIsolationAndRecovery",
+    "passed": 1,
+    "failed": 0,
+    "runtime": "dedicated iPhone 17 Pro simulator / iOS 27.0",
+    "covers": [
+      "Create two distinct dynamic UUID conversations through native UI",
+      "Start slow stream, create another conversation and complete its reply while first is active",
+      "Switch back without rendering other conversation response",
+      "Cancel locally, observe frozen partial for 3 seconds",
+      "Terminate and relaunch app, restore cancelled partial and completed reply in correct conversations"
+    ],
+    "persisted_verification": "analysis/full-platform-20261104/ios-dynamic-persisted-v1.json",
+    "visual_review": "Exported completed-history screenshot inspected; no official visual parity claim"
+  },
+  "inputs": [
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "98ae77438d68354de120ff06ee6290720ee3489fb5848a6f75d130c2b0db5648"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "ec4b2b7bdf7ebe9969e92d7c737473446ad943fee63df59bf03255e26c7eb9c7"
+    },
+    {
+      "path": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "9c1917f7549feb3f5e9051d5a85aec9e38baaf0da3e46fd1eb5e07b3334996a2"
+    },
+    {
+      "path": "implementation/ios/Sources/LocalHarness.swift",
+      "sha256": "12abae5f8fbbb3397c934070ce13db41e32c7283a8e47161c65e4a21c3de8741"
+    },
+    {
+      "path": "implementation/harness/fixture_worker.py",
+      "sha256": "f59ad3d3fb785eaa02f8de9e510e5701b313eced866fddcc56a01c5d73d2a37b"
+    },
+    {
+      "path": "implementation/harness/scope_contract.py",
+      "sha256": "80cb56dc9dbe16e4fd929e5defdcd00ecbcc120d4d6c06a2730518325794d2f9"
+    },
+    {
+      "path": "implementation/harness/loopback_server.py",
+      "sha256": "0ff2a3943bfff444fa1c4064285908ec83e3223869646b55f41464d4095d06d8"
+    }
+  ],
+  "cleanup": "Owned fixture server stopped and its matching temporary/simulator pairing files removed; no vendor credentials used",
+  "limitations": [
+    "Local cancellation UI/history verified, cancellation HTTP receipt not inspected; no server-side cancellation guarantee inferred",
+    "No new live Zhipu request; synthetic fixture only",
+    "3-second no-update observation does not prove arbitrary delayed-event rejection",
+    "Physical iPhone, official layout fidelity, reconnect replay, history context and full interactions remain unaccepted",
+    "Deletion/rename and service catalog sync not implemented"
+  ],
+  "next_action": "Implement scoped local deletion with request cancellation, history/draft cleanup, crash reconciliation and native confirmation/cold-restart tests"
+}

@@ -1,0 +1,78 @@
+{
+  "status": "partial",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "picker_call": "0x1084c7c",
+  "binding_call": "0x1084ba8",
+  "keypath_factory": "0x11a4e74",
+  "keypath_pattern": "0x7da05c8",
+  "root_typeref": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8d18fea",
+    "length": 5,
+    "mangled_hex": "0171048700",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 1,
+        "target": "0x958945c",
+        "resolved_context": "0x958945c",
+        "label": "ChatGPTSettings.SettingsViewModel"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "value_typeref": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8d1933c",
+    "length": 5,
+    "mangled_hex": "015bff8600",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 1,
+        "target": "0x9589298",
+        "resolved_context": "0x9589298",
+        "label": "ChatGPTSettings.ColorSchemeSetting"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "getter": "0x10850f4",
+  "setter_thunk": "0x1085154",
+  "setter": "0x1085178",
+  "mutating_closure": "0x1148234",
+  "states": [
+    "system",
+    "dark",
+    "light"
+  ],
+  "independent_adaptation": [
+    "Device-local rea.preview.appearance preference; default system",
+    "Apply UIWindow.overrideUserInterfaceStyle including future windows",
+    "Provisional root group placement and menu styling; Chinese/English labels are host translations"
+  ],
+  "unknown": [
+    "Official root order and visibility gates",
+    "Official storage/account scope and persistence timing",
+    "Exact picker labels and ordering",
+    "Theme color picker remains separate and unimplemented"
+  ],
+  "parser_correction": "Pattern typeref target values with low bit set point one byte after the valid kind-1 symbolic record; corrected addresses resolve to SettingsViewModel and ColorSchemeSetting. Earlier direct reads at 0x8d18feb/0x8d1933d do not establish types."
+}

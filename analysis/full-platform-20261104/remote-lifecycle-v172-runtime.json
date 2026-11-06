@@ -1,0 +1,2974 @@
+{
+  "status": "failed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v172-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "hidden service read capability rejects raw owner call while listing paired hosts",
+    "actual packaged renderer state receives guarded Remote history through IPC",
+    "actual cross-process host-service provider supplies original manager with shared RPC leases, hydration and item subscription",
+    "packaged primary renderer IPC reaches two owner processes; same request identity isolated; A cancel preserves B completion",
+    "pairing URL and token absent from list; hidden fixture role denied Remote capability",
+    "fresh Electron process reconnects same owner histories with same bound profile",
+    "offline A explicit error while B list remains usable"
+  ],
+  "limits": [
+    "Main-process IPC acceptance from original renderer context, not a visible official Remote control workflow",
+    "Fixture model; no live Zhipu calls in this test"
+  ],
+  "browserErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    " ERROR  [Statsig] A networking error occurred during POST request to https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793840084541&sid=8275dafb-325e-4ee5-8cab-743a187fd0c2&se=1. Error: Offline HTTP unsupported: POST /v1/initialize Error: Offline HTTP unsupported: POST /v1/initialize\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    " ERROR  [Statsig] A networking error occurred during POST request to https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793840094694&sid=47516e20-7271-41c3-8bc7-6665665a74de&se=1. Error: Offline HTTP unsupported: POST /v1/initialize Error: Offline HTTP unsupported: POST /v1/initialize\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    " ERROR  [Statsig] A networking error occurred during POST request to https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793840105829&sid=257443f6-7a4c-4289-a370-94d8f6e6645e&se=1. Error: Offline HTTP unsupported: POST /v1/initialize Error: Offline HTTP unsupported: POST /v1/initialize\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)"
+  ],
+  "provider": {
+    "status": "passed",
+    "body": "Local fixture reply",
+    "autoStreamTexts": [
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply"
+    ],
+    "reloads": 12,
+    "devices": {
+      "remoteControlState": {
+        "available": true,
+        "clientAuthorized": true,
+        "accessRequired": false
+      },
+      "localRemoteControlEnabled": false,
+      "ssh": [],
+      "wsl": [],
+      "remoteControl": [
+        {
+          "source": "remote-control",
+          "hostId": "host-a",
+          "displayName": "Local test · host-a",
+          "envId": "rea-local:host-a",
+          "hostName": "host-a",
+          "environmentKind": "independent-local-test",
+          "online": true,
+          "autoConnect": false,
+          "appServerVersion": null,
+          "lastSeenAt": null
+        },
+        {
+          "source": "remote-control",
+          "hostId": "host-b",
+          "displayName": "Local test · host-b",
+          "envId": "rea-local:host-b",
+          "hostName": "host-b",
+          "environmentKind": "independent-local-test",
+          "online": true,
+          "autoConnect": false,
+          "appServerVersion": null,
+          "lastSeenAt": null
+        }
+      ]
+    },
+    "sharedLeases": true,
+    "reopen": true,
+    "unpairedDenied": true
+  },
+  "hostHealth": [
+    {
+      "host": "host-a",
+      "mode": "fixture",
+      "epoch": "07fc6cea-2a52-437b-b257-309e0a085edb",
+      "closed": false,
+      "online": false,
+      "error": "remote_transport"
+    },
+    {
+      "host": "host-b",
+      "mode": "fixture",
+      "epoch": "3c51dc7c-35df-48d0-a53c-9a6d0e774c16",
+      "closed": false,
+      "online": true,
+      "methods": [
+        "capabilities",
+        "fs/readDirectory",
+        "thread/start",
+        "thread/list",
+        "thread/info",
+        "events/read",
+        "turn/start",
+        "turn/interrupt"
+      ]
+    }
+  ],
+  "hostCalls": [
+    "services",
+    "catalog.subscribe",
+    "getDefaultHost",
+    {
+      "operation": "managers.subscribe",
+      "hostId": "local"
+    },
+    {
+      "operation": "settings.readAll",
+      "detailMode": "STEPS_COMMANDS"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "remoteControl/status/changed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "remoteControl/status/read"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "turn/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "registerWindowActivity",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-authentication-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/completed",
+        "mcpServer/oauthLogin/completed",
+        "mcpServer/startupStatus/updated",
+        "account/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/started"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "turn/completed",
+        "error"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "initial-title-requested",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "realtime-thread-created",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "turn/started",
+        "turn/completed",
+        "turn/moderationMetadata",
+        "item/started",
+        "item/completed"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "open-file-change",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-elicitation-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "stream-role-changed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-first-output",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-list-invalidated",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "conversation-removed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "history-accepted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/realtime/item/completed",
+        "skills/changed",
+        "mcpServer/oauthLogin/completed",
+        "thread/started",
+        "thread/attachment/updated",
+        "thread/archived",
+        "thread/unarchived",
+        "mcpServer/startupStatus/updated",
+        "error",
+        "model/verification"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-unarchived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/agentMessage/delta",
+        "item/plan/delta",
+        "item/reasoning/summaryTextDelta",
+        "item/reasoning/textDelta",
+        "item/commandExecution/outputDelta",
+        "item/fileChange/outputDelta"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/started",
+        "turn/started",
+        "turn/completed"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    "registerReplayAdmission",
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "queued-message-execution",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    "appInfo.get",
+    "appInfo.getSystemInfo",
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "auth-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    "manager.getAccount",
+    "manager.getAuthMethod",
+    "accountInfo.readAccountInfo",
+    {
+      "operation": "httpFetch.fetch",
+      "id": "2fa9b722-7f8e-4669-81c6-028dedd7b043",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-authentication-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/completed",
+        "mcpServer/oauthLogin/completed",
+        "mcpServer/startupStatus/updated",
+        "account/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8f6716fa-4be9-4b3c-b6ab-a4335a94b335",
+      "method": "GET",
+      "url": "/wham/accounts/check"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "8f6716fa-4be9-4b3c-b6ab-a4335a94b335"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "f5e22d47-0f2c-49fa-a7c1-c98cb79ed830",
+      "method": "GET",
+      "url": "/accounts/check/v4-2023-04-27"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "f5e22d47-0f2c-49fa-a7c1-c98cb79ed830"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "1e48c5c2-f947-4488-a005-fd1bce7a8740",
+      "method": "GET",
+      "url": "/settings/user"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "1e48c5c2-f947-4488-a005-fd1bce7a8740"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "4f6c8965-f8b3-414d-a691-c09ddd35a16e",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "5079fe9f-00b7-4f54-ab58-075a7e982f71",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "b7b9b769-337d-48d0-91ad-2d8d1259b80e",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a96dc132-acf9-4edf-8e15-a0a2dfb6cc5f",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "2b9e4aed-6251-4a35-a043-fb678e5af694",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "81825280-f23c-4eaa-a6d4-b65abb9ed9f7",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793840103321&sid=257443f6-7a4c-4289-a370-94d8f6e6645e&se=1"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8cd64e17-2f73-4372-b774-de4d0611ebe0",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793840103827&sid=257443f6-7a4c-4289-a370-94d8f6e6645e&se=1"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "638adeee-ed5b-456e-9ef7-8cb3cc66e218",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793840105829&sid=257443f6-7a4c-4289-a370-94d8f6e6645e&se=1"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "experimentalFeature/list",
+      "params": {
+        "cursor": null,
+        "limit": 100
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "added-remote-control-env-ids"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "host",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "thread-project-assignments"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "configRequirements/read"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "configRequirements/read"
+    },
+    {
+      "operation": "remoteConnections.setRemoteControlEnabled",
+      "value": {
+        "enabled": true,
+        "oneToOnePairingInAppEnabled": false
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": true,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "catalog.setSourceEnabled",
+      "source": {
+        "kind": "app-server"
+      },
+      "enabled": true
+    },
+    {
+      "operation": "catalog.subscribeStatus"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "local-projects"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "selected-project"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "selected-remote-host-id"
+    },
+    {
+      "operation": "managers.subscribe",
+      "hostId": "durable"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "00e545d4-5292-4155-a830-7b417eb102b7",
+      "method": "GET",
+      "url": "/wham/tasks/list?limit=20&task_filter=current"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "host",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "pinned-thread-ids"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "b9c3aa1f-b3f0-436b-b1d3-aee5e9f77d02",
+      "method": "GET",
+      "url": "/wham/usage"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "projectless-thread-ids"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "remote-projects"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "project-order"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "cbe0488f-a47b-4bb0-a86d-8ee0deb4ad9f",
+      "method": "GET",
+      "url": "/wham/onboarding/context"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "336fecca-46a8-4e2a-a9af-8b4a4e87206e",
+      "method": "GET",
+      "url": "/automations?filter=scheduled&limit=25"
+    },
+    {
+      "operation": "managers.subscribe",
+      "hostId": "host-a"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-a"
+    },
+    {
+      "operation": "remoteConnections.snapshot",
+      "hostId": "host-a",
+      "state": "disconnected",
+      "autoConnect": false,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "managers.subscribe",
+      "hostId": "host-b"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-b"
+    },
+    {
+      "operation": "remoteConnections.snapshot",
+      "hostId": "host-b",
+      "state": "disconnected",
+      "autoConnect": false,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "remoteControl/disable",
+      "params": null
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/name/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "catalog.requestSync",
+      "hosts": [
+        "local"
+      ]
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "cbe0488f-a47b-4bb0-a86d-8ee0deb4ad9f"
+    },
+    {
+      "operation": "catalog.setSourceEnabled",
+      "source": {
+        "kind": "chatgpt",
+        "accountId": "offline-fixture-account"
+      },
+      "enabled": true
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-a"
+    },
+    {
+      "operation": "remoteConnections.snapshot",
+      "hostId": "host-a",
+      "state": "disconnected",
+      "autoConnect": false,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-b"
+    },
+    {
+      "operation": "remoteConnections.snapshot",
+      "hostId": "host-b",
+      "state": "disconnected",
+      "autoConnect": false,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "applicationState.write",
+      "key": "selected-remote-host-id",
+      "valueType": "string"
+    },
+    {
+      "operation": "catalog.readStatus",
+      "status": {
+        "hosts": [
+          {
+            "hostId": "local",
+            "isComplete": true,
+            "revision": 1
+          },
+          {
+            "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+            "isComplete": true,
+            "revision": 1
+          }
+        ]
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "selected-remote-host-id"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/name/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a0621c10-a007-4058-aaac-574feeaa0142",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "account/gatewayOAuth/read"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "bd8a1cb1-701b-4307-8455-9715a99e95b7",
+      "method": "GET",
+      "url": "/models?iim=false&include_icons=false&is_gizmo=false"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8dd8beab-a682-4eac-97f6-973228c8e9d3",
+      "method": "GET",
+      "url": "/accounts/optimized/check"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "model/list",
+      "params": {
+        "includeHidden": true,
+        "cursor": null,
+        "limit": 100
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "sidebar-project-thread-orders"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "pinned-project-ids"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "connection-group-order"
+    },
+    {
+      "operation": "projectlessThreads.readWorkspaceRoot"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "839e8d89-fd69-41db-ba96-93db74ff2a65",
+      "method": "GET",
+      "url": "/referrals/invite/eligibility?program_id=codex_referral_consumer&entrypoint=persistent"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "345831f7-1e22-4132-a17d-a89921cb5882",
+      "method": "GET",
+      "url": "/me"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "19a140f8-3e73-43a9-a886-6f4469a0a955",
+      "method": "GET",
+      "url": "/profiles/me"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "143c2637-939f-4baf-b0b2-b382aeaa102f",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "74fa8274-01a9-4076-848f-d95fdc790947",
+      "method": "GET",
+      "url": "/aip/first-party/eligibility"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "345831f7-1e22-4132-a17d-a89921cb5882"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "19a140f8-3e73-43a9-a886-6f4469a0a955"
+    },
+    {
+      "operation": "catalog.readPage",
+      "query": {
+        "hostId": "local",
+        "limit": 10,
+        "sortKey": "updated_at"
+      }
+    },
+    {
+      "operation": "catalog.readPage",
+      "query": {
+        "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+        "limit": 10,
+        "sortKey": "updated_at"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "5e4a94fc-428f-4968-b719-16caf3ce2555",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "02174b3f-b80c-4b05-9eb5-98da9abfbb89",
+      "method": "GET",
+      "url": "/amphora/notifications?limit=20"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": true,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "permissionProfile/list",
+      "params": {
+        "cursor": null,
+        "limit": 100,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "collaborationMode/list",
+      "params": {}
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "plugin/installed",
+      "params": {}
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "971fe099-9853-4d24-be51-e10d3869cec1",
+      "method": "GET",
+      "url": "/gift-credits/senders/eligibility"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "externalAgentConfig/import/readHistories"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "5f0c32d6-967c-4547-b85a-0471d1be1d58",
+      "method": "GET",
+      "url": "/subscriptions/auto_top_up/settings?include_payment_method=false"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "thread",
+      "key": {
+        "hostId": "local",
+        "threadId": null
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "7ec4ebd6-443f-49de-a9d3-ade2584d1f43",
+      "method": "GET",
+      "url": "/beacons/home?product=codex&web_frontend=codex_webview&codex_window_type=electron&home_sms_backup_supported=false&pepper_home_banner_supported=false&space_tooltip_ready=false"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "3fbc7078-a45b-418f-a7d6-5a066a4b3a64",
+      "method": "GET",
+      "url": "/beacons/home?product=codex&web_frontend=codex_webview&codex_window_type=electron&home_sms_backup_supported=false&pepper_home_banner_supported=false&space_tooltip_ready=false"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "account/gatewayOAuth/read"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "b5c4c66f-fe95-4690-9921-ae7c41e75826",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8895f3b0-e522-47df-8854-92ec485f2e99",
+      "method": "GET",
+      "url": "/referrals/invite/eligibility?program_id=codex_referral_consumer&entrypoint=persistent"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "codex-mobile-has-connected-device"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "e457230e-7285-40e4-8eaa-68587aacd32b",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "f65db752-f5c8-4073-940d-91abd895b980",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "02469b01-c2b9-4b6a-9f3a-a7a96bd0f846",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "da1816fe-0acc-4b01-990c-e72a8c3fe2ff",
+      "method": "GET",
+      "url": "/trusted_contact/enabled"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "f3aa49f0-7271-4ce6-8ce6-05eb5330c5f5",
+      "method": "GET",
+      "url": "/subscriptions/auto_top_up/settings?include_payment_method=false"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "5b4c7d99-35c5-45a2-8f41-43f20c0f513f",
+      "method": "GET",
+      "url": "/wham/analytics/daily-code-review-metrics?start_date=2026-10-07&end_date=2026-11-05&group_by=day&workspace_user=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "cb002302-5b5d-4afe-beba-3c721291e847",
+      "method": "GET",
+      "url": "/wham/environments"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "843e5c27-d437-4f02-88b8-10c9a464acbc",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8cebd4fd-992e-466c-acec-dfec5d294427",
+      "method": "GET",
+      "url": "/trusted_contact/enabled"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "d4e20173-e235-487f-ae15-894c96547ecb",
+      "method": "GET",
+      "url": "/wham/environments"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "codex-mobile-has-connected-device"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "host-id-remote-control-allowed"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "94d6bf3b-3ca6-45f1-97ab-2227ef2af40b",
+      "method": "GET",
+      "url": "/wham/remote/control/clients?limit=100"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "18b029b6-041a-4eb5-ba69-d9d9867a7d79",
+      "method": "GET",
+      "url": "/wham/remote/control/mfa_requirement"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a8e6f406-8b9e-4bfe-9947-51e43b773bc2",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "6076830f-b0e6-4c85-b91b-49227edddff8",
+      "method": "GET",
+      "url": "/trusted_contact/enabled"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "41a5e200-851a-425d-bf67-769ae31c4e1d",
+      "method": "GET",
+      "url": "/wham/environments"
+    },
+    {
+      "operation": "remoteConnections.setAutoConnect",
+      "hostId": "host-b",
+      "autoConnect": true
+    },
+    {
+      "operation": "remoteConnections.result",
+      "hostId": "host-b",
+      "state": "connected",
+      "autoConnect": true,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "catalog.requestSync",
+      "hosts": [
+        "host-b"
+      ]
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "ed346178-5709-4205-89a6-25a82dbb5a18",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "74f9f1e1-11a7-4edd-b6da-6376fd0c7f5b",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "remote-connection-auto-connect-by-host-id"
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-a"
+    },
+    {
+      "operation": "remoteConnections.snapshot",
+      "hostId": "host-a",
+      "state": "disconnected",
+      "autoConnect": false,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-b"
+    },
+    {
+      "operation": "remoteConnections.snapshot",
+      "hostId": "host-b",
+      "state": "connected",
+      "autoConnect": true,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "0682b95a-c8dc-4df6-bd1d-44d3dcad8b76",
+      "method": "GET",
+      "url": "/subscriptions/auto_top_up/settings?include_payment_method=true"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "collaborationMode/list",
+      "params": {}
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "c1430298-762c-4cee-b2e0-36c2ebdc2356",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "plugin/installed",
+      "params": {}
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "ef43c252-9e18-4b39-9189-4384e4f08e51",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "437912b7-7af6-42a9-812f-f8ccb5dff3d3",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "ff3c6320-70bf-4c4f-b7b7-412b65f2708d",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    }
+  ],
+  "localGate": {
+    "status": "enabled",
+    "scope": "independent single UI gate; owner authorization unchanged"
+  },
+  "modeChanged": true,
+  "profileMenu": "Skip to content\nCodex\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\nNo chats\nO\nOffline fixture\nGet Plus\nSubagents in Codex\nDelegate work to subagents that work in parallel. Note: may increase token usage.\nTry now\nChoose project\n\n\n\n\nCustom\nO\nOffline fixture\nFree\nShow Pet\n⌥Space\nUpgrade for higher limits\nSettings\n⌘,\nHelp\nLog out",
+  "settingsText": "Skip to content\nBack to app\nSearch settings\nPersonal\nGeneral\nNotifications\nProfile\nAppearance\nAccount\nArchived chats\nParental controls\nConfiguration\nPersonalization\nMini & Pets\nKeyboard shortcuts\nUsage & billing\nData controls\nIntegrations\nPlugins\nComputer use\nBrowser\nCloud computer\nCoding\nHooks\nConnections\nCode Review\nGit\nEnvironments\nWorktrees\nGeneral\nPermissions\nDefault permissions\nBy default, ChatGPT can read and edit files in its workspace. It can ask for additional access when needed\nFull access\nWhen ChatGPT runs with full access, it can edit any file on your computer and run commands with network, without your approval. This significantly increases the risk of data loss, leaks, or unexpected behavior. Learn more about elevated risks.\nGeneral\nDefault file open destination\nWhere files and folders open by default\nNo targets found\nLanguage\nLanguage for the app UI\nAuto detect\nShow in menu bar\nKeep ChatGPT in the macOS menu bar when the main window is closed\nConfirm before closing a window\nWarn when a tab-close shortcut would close the window\nClose shortcut only\nFull view by default\nStart new chats with Chat and content in a single tab strip\nBottom panel\nShow the bottom panel control in the app header\nDefault terminal location\nChoose where the terminal shortcut and environment actions open terminal tabs\nBottom\nRight\nPrevent sleep while running\nKeep your computer awake while ChatGPT is running a task\nAutomatically archive inactive chats\nArchive local chats after a period of inactivity\nNever\nImport work from other AI apps\nBring over your setup, projects, and recent chats\nChecking\nOpen source licenses\nThird-party notices for bundled dependencies\nView\nComposer\nPlain text composer\nKeep code, Markdown, and links as literal text while writing messages\nShow context window usage\nSend shortcut\nChoose when Enter sends a prompt or inserts a new line\nEnter\nFollow-up behavior\nQueue follow-ups while ChatGPT runs or steer the current run. Press ⌘⏎ to do the opposite for one message\nQueue\nSteer\nNotifications\nTurn completion notifications\nSet when ChatGPT alerts you that it's finished\nOnly when unfocused\nEnable permission notifications\nShow alerts when notification permissions are required\nEnable question notifications\nShow alerts when input is needed to continue\nEnable dot notifications\nShow alerts when your dot sends you a message",
+  "addDeviceClicked": true,
+  "deviceChoices": [
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "role": "checkbox",
+      "aria": "true",
+      "label": "Select Local test · host-b",
+      "outer": "<button type=\"button\" role=\"checkbox\" aria-checked=\"true\" data-state=\"checked\" value=\"on\" class=\"group peer shrink-0 outline-none transition-[background-color,border-color,box-shadow] icon-2xs rounded-xs data-[state=checked]:bg-primary-soft data-[state=indeterminate]:bg-primary-soft border border-strong shadow-sm data-[state=checked]:text-default data-[state=indeterminate]:text-default focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0 aria-invalid:ring-2 aria-invalid:ring-text-danger/20 aria-invalid:border-text-danger disabled:cursor-not-allowed hover:bg-surface-tertiary\" aria-label=\"Select Local test · host-b\"><span data-state=\"checked\" class=\"flex h-full w-full items-center justify-center text-current\" style=\"pointer-events: none;\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 17 17\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"icon-xxs flex-shrink-0\"><path d=\"M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z\" fill=\"currentColor\"></path></svg></span></b"
+    },
+    {
+      "tag": "INPUT",
+      "type": "checkbox",
+      "role": null,
+      "checked": true,
+      "aria": null,
+      "label": null,
+      "outer": "<input aria-hidden=\"true\" tabindex=\"-1\" type=\"checkbox\" value=\"on\" checked=\"\" style=\"position: absolute; pointer-events: none; opacity: 0; margin: 0px; transform: translateX(-100%); width: 14px; height: 14px;\">"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "role": "checkbox",
+      "aria": "true",
+      "label": "Select Local test · host-a",
+      "outer": "<button type=\"button\" role=\"checkbox\" aria-checked=\"true\" data-state=\"checked\" value=\"on\" class=\"group peer shrink-0 outline-none transition-[background-color,border-color,box-shadow] icon-2xs rounded-xs data-[state=checked]:bg-primary-soft data-[state=indeterminate]:bg-primary-soft border border-strong shadow-sm data-[state=checked]:text-default data-[state=indeterminate]:text-default focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0 aria-invalid:ring-2 aria-invalid:ring-text-danger/20 aria-invalid:border-text-danger disabled:cursor-not-allowed hover:bg-surface-tertiary\" aria-label=\"Select Local test · host-a\"><span data-state=\"checked\" class=\"flex h-full w-full items-center justify-center text-current\" style=\"pointer-events: none;\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 17 17\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"icon-xxs flex-shrink-0\"><path d=\"M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z\" fill=\"currentColor\"></path></svg></span></b"
+    },
+    {
+      "tag": "INPUT",
+      "type": "checkbox",
+      "role": null,
+      "checked": true,
+      "aria": null,
+      "label": null,
+      "outer": "<input aria-hidden=\"true\" tabindex=\"-1\" type=\"checkbox\" value=\"on\" checked=\"\" style=\"position: absolute; pointer-events: none; opacity: 0; margin: 0px; transform: translateX(-100%); width: 14px; height: 14px;\">"
+    }
+  ],
+  "deviceDiscovery": true,
+  "deviceAdded": true,
+  "rendererText": "Skip to content\nBack to app\nSearch settings\nPersonal\nGeneral\nNotifications\nProfile\nAppearance\nAccount\nArchived chats\nParental controls\nConfiguration\nPersonalization\nMini & Pets\nKeyboard shortcuts\nUsage & billing\nData controls\nIntegrations\nPlugins\nComputer use\nBrowser\nCloud computer\nCoding\nHooks\nConnections\nCode Review\nGit\nEnvironments\nWorktrees\nConnections\nControl this Mac\nControl other devices\nSSH\nDevices you can control from this Mac\nAdd\nLocal test · host-b\nDisconnected",
+  "connectionsPage": true,
+  "controls": [
+    {
+      "text": "  ",
+      "aria": "Filter settings by host"
+    },
+    {
+      "text": "  General",
+      "aria": "General"
+    },
+    {
+      "text": "Notifications",
+      "aria": "Notifications"
+    },
+    {
+      "text": "  Profile",
+      "aria": "Profile"
+    },
+    {
+      "text": "                Appearance",
+      "aria": "Appearance"
+    },
+    {
+      "text": "  Account",
+      "aria": "Account"
+    },
+    {
+      "text": "  Archived chats",
+      "aria": "Archived chats"
+    },
+    {
+      "text": "  Parental controls",
+      "aria": "Parental controls"
+    },
+    {
+      "text": "    Configuration",
+      "aria": "Configuration"
+    },
+    {
+      "text": "    Personalization",
+      "aria": "Personalization"
+    },
+    {
+      "text": "    Mini & Pets",
+      "aria": "Mini & Pets"
+    },
+    {
+      "text": "Keyboard shortcuts",
+      "aria": "Keyboard shortcuts"
+    },
+    {
+      "text": "    Usage & billing",
+      "aria": "Usage & billing"
+    },
+    {
+      "text": "Data controls",
+      "aria": "Data controls"
+    },
+    {
+      "text": "Plugins",
+      "aria": "Plugins"
+    },
+    {
+      "text": "Computer use",
+      "aria": "Computer use"
+    },
+    {
+      "text": "Browser",
+      "aria": "Browser"
+    },
+    {
+      "text": "      Cloud computer",
+      "aria": "Cloud computer"
+    },
+    {
+      "text": "Hooks",
+      "aria": "Hooks"
+    },
+    {
+      "text": "Connections",
+      "aria": "Connections"
+    },
+    {
+      "text": "    Code Review",
+      "aria": "Code Review"
+    },
+    {
+      "text": "Git",
+      "aria": "Git"
+    },
+    {
+      "text": "  Environments",
+      "aria": "Environments"
+    },
+    {
+      "text": "  Worktrees",
+      "aria": "Worktrees"
+    },
+    {
+      "text": "",
+      "aria": "Back"
+    },
+    {
+      "text": "",
+      "aria": "Forward"
+    },
+    {
+      "text": "Control this Mac",
+      "aria": null
+    },
+    {
+      "text": "Control other devices",
+      "aria": null
+    },
+    {
+      "text": "SSH",
+      "aria": null
+    },
+    {
+      "text": " ",
+      "aria": "Refresh"
+    },
+    {
+      "text": "Add",
+      "aria": null
+    },
+    {
+      "text": "  ",
+      "aria": "Local test · host-b actions"
+    }
+  ],
+  "persistedSelection": [
+    "rea-local:host-b"
+  ],
+  "selectionRestoredAfterProcessRestart": true,
+  "selectedHost": "host-b",
+  "restoredText": "Skip to content\nBack to app\nSearch settings\nPersonal\nGeneral\nNotifications\nProfile\nAppearance\nAccount\nArchived chats\nParental controls\nConfiguration\nPersonalization\nMini & Pets\nKeyboard shortcuts\nUsage & billing\nData controls\nIntegrations\nPlugins\nComputer use\nBrowser\nCloud computer\nCoding\nHooks\nConnections\nCode Review\nGit\nEnvironments\nWorktrees\nConnections\nControl this Mac\nControl other devices\nSSH\nDevices you can control from this Mac\nAdd\nLocal test · host-b\nDisconnected",
+  "hostCallsAfterRestart": [
+    "services",
+    "catalog.subscribe",
+    "getDefaultHost",
+    {
+      "operation": "managers.subscribe",
+      "hostId": "local"
+    },
+    {
+      "operation": "settings.readAll",
+      "detailMode": "STEPS_COMMANDS"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "remoteControl/status/changed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "remoteControl/status/read"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "turn/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "registerWindowActivity",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-authentication-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/completed",
+        "mcpServer/oauthLogin/completed",
+        "mcpServer/startupStatus/updated",
+        "account/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/started"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "turn/completed",
+        "error"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "initial-title-requested",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "realtime-thread-created",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "turn/started",
+        "turn/completed",
+        "turn/moderationMetadata",
+        "item/started",
+        "item/completed"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "open-file-change",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-elicitation-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "stream-role-changed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-first-output",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-list-invalidated",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "conversation-removed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "history-accepted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/realtime/item/completed",
+        "skills/changed",
+        "mcpServer/oauthLogin/completed",
+        "thread/started",
+        "thread/attachment/updated",
+        "thread/archived",
+        "thread/unarchived",
+        "mcpServer/startupStatus/updated",
+        "error",
+        "model/verification"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-unarchived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/agentMessage/delta",
+        "item/plan/delta",
+        "item/reasoning/summaryTextDelta",
+        "item/reasoning/textDelta",
+        "item/commandExecution/outputDelta",
+        "item/fileChange/outputDelta"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/started",
+        "turn/started",
+        "turn/completed"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    "registerReplayAdmission",
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "queued-message-execution",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    "appInfo.get",
+    "appInfo.getSystemInfo",
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "auth-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    "manager.getAccount",
+    "manager.getAuthMethod",
+    "accountInfo.readAccountInfo",
+    {
+      "operation": "httpFetch.fetch",
+      "id": "2fa9b722-7f8e-4669-81c6-028dedd7b043",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-authentication-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/completed",
+        "mcpServer/oauthLogin/completed",
+        "mcpServer/startupStatus/updated",
+        "account/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8f6716fa-4be9-4b3c-b6ab-a4335a94b335",
+      "method": "GET",
+      "url": "/wham/accounts/check"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "8f6716fa-4be9-4b3c-b6ab-a4335a94b335"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "f5e22d47-0f2c-49fa-a7c1-c98cb79ed830",
+      "method": "GET",
+      "url": "/accounts/check/v4-2023-04-27"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "f5e22d47-0f2c-49fa-a7c1-c98cb79ed830"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "1e48c5c2-f947-4488-a005-fd1bce7a8740",
+      "method": "GET",
+      "url": "/settings/user"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "1e48c5c2-f947-4488-a005-fd1bce7a8740"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "4f6c8965-f8b3-414d-a691-c09ddd35a16e",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "5079fe9f-00b7-4f54-ab58-075a7e982f71",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "b7b9b769-337d-48d0-91ad-2d8d1259b80e",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a96dc132-acf9-4edf-8e15-a0a2dfb6cc5f",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "2b9e4aed-6251-4a35-a043-fb678e5af694",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "81825280-f23c-4eaa-a6d4-b65abb9ed9f7",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793840103321&sid=257443f6-7a4c-4289-a370-94d8f6e6645e&se=1"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8cd64e17-2f73-4372-b774-de4d0611ebe0",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793840103827&sid=257443f6-7a4c-4289-a370-94d8f6e6645e&se=1"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "638adeee-ed5b-456e-9ef7-8cb3cc66e218",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793840105829&sid=257443f6-7a4c-4289-a370-94d8f6e6645e&se=1"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "experimentalFeature/list",
+      "params": {
+        "cursor": null,
+        "limit": 100
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "added-remote-control-env-ids"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "host",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "thread-project-assignments"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "configRequirements/read"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "configRequirements/read"
+    },
+    {
+      "operation": "remoteConnections.setRemoteControlEnabled",
+      "value": {
+        "enabled": true,
+        "oneToOnePairingInAppEnabled": false
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": true,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "catalog.setSourceEnabled",
+      "source": {
+        "kind": "app-server"
+      },
+      "enabled": true
+    },
+    {
+      "operation": "catalog.subscribeStatus"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "local-projects"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "selected-project"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "selected-remote-host-id"
+    },
+    {
+      "operation": "managers.subscribe",
+      "hostId": "durable"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "00e545d4-5292-4155-a830-7b417eb102b7",
+      "method": "GET",
+      "url": "/wham/tasks/list?limit=20&task_filter=current"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "host",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "pinned-thread-ids"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "b9c3aa1f-b3f0-436b-b1d3-aee5e9f77d02",
+      "method": "GET",
+      "url": "/wham/usage"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "projectless-thread-ids"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "remote-projects"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "project-order"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "cbe0488f-a47b-4bb0-a86d-8ee0deb4ad9f",
+      "method": "GET",
+      "url": "/wham/onboarding/context"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "336fecca-46a8-4e2a-a9af-8b4a4e87206e",
+      "method": "GET",
+      "url": "/automations?filter=scheduled&limit=25"
+    },
+    {
+      "operation": "managers.subscribe",
+      "hostId": "host-a"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-a"
+    },
+    {
+      "operation": "remoteConnections.snapshot",
+      "hostId": "host-a",
+      "state": "disconnected",
+      "autoConnect": false,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "managers.subscribe",
+      "hostId": "host-b"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-b"
+    },
+    {
+      "operation": "remoteConnections.snapshot",
+      "hostId": "host-b",
+      "state": "disconnected",
+      "autoConnect": false,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "remoteControl/disable",
+      "params": null
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/name/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "catalog.requestSync",
+      "hosts": [
+        "local"
+      ]
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "cbe0488f-a47b-4bb0-a86d-8ee0deb4ad9f"
+    },
+    {
+      "operation": "catalog.setSourceEnabled",
+      "source": {
+        "kind": "chatgpt",
+        "accountId": "offline-fixture-account"
+      },
+      "enabled": true
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-a"
+    },
+    {
+      "operation": "remoteConnections.snapshot",
+      "hostId": "host-a",
+      "state": "disconnected",
+      "autoConnect": false,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-b"
+    },
+    {
+      "operation": "remoteConnections.snapshot",
+      "hostId": "host-b",
+      "state": "disconnected",
+      "autoConnect": false,
+      "error": null,
+      "progress": null,
+      "sshAuthenticationRetryAt": null
+    },
+    {
+      "operation": "applicationState.write",
+      "key": "selected-remote-host-id",
+      "valueType": "string"
+    },
+    {
+      "operation": "catalog.readStatus",
+      "status": {
+        "hosts": [
+          {
+            "hostId": "local",
+            "isComplete": true,
+            "revision": 1
+          },
+          {
+            "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+            "isComplete": true,
+            "revision": 1
+          }
+        ]
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "selected-remote-host-id"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/name/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a0621c10-a007-4058-aaac-574feeaa0142",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "account/gatewayOAuth/read"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "bd8a1cb1-701b-4307-8455-9715a99e95b7",
+      "method": "GET",
+      "url": "/models?iim=false&include_icons=false&is_gizmo=false"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8dd8beab-a682-4eac-97f6-973228c8e9d3",
+      "method": "GET",
+      "url": "/accounts/optimized/check"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "model/list",
+      "params": {
+        "includeHidden": true,
+        "cursor": null,
+        "limit": 100
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "sidebar-project-thread-orders"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "pinned-project-ids"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "connection-group-order"
+    },
+    {
+      "operation": "projectlessThreads.readWorkspaceRoot"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "839e8d89-fd69-41db-ba96-93db74ff2a65",
+      "method": "GET",
+      "url": "/referrals/invite/eligibility?program_id=codex_referral_consumer&entrypoint=persistent"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "345831f7-1e22-4132-a17d-a89921cb5882",
+      "method": "GET",
+      "url": "/me"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "19a140f8-3e73-43a9-a886-6f4469a0a955",
+      "method": "GET",
+      "url": "/profiles/me"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "143c2637-939f-4baf-b0b2-b382aeaa102f",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "74fa8274-01a9-4076-848f-d95fdc790947",
+      "method": "GET",
+      "url": "/aip/first-party/eligibility"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "345831f7-1e22-4132-a17d-a89921cb5882"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "19a140f8-3e73-43a9-a886-6f4469a0a955"
+    },
+    {
+      "operation": "catalog.readPage",
+      "query": {
+        "hostId": "local",
+        "limit": 10,
+        "sortKey": "updated_at"
+      }
+    },
+    {
+      "operation": "catalog.readPage",
+      "query": {
+        "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+        "limit": 10,
+        "sortKey": "updated_at"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "5e4a94fc-428f-4968-b719-16caf3ce2555",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "02174b3f-b80c-4b05-9eb5-98da9abfbb89",
+      "method": "GET",
+      "url": "/amphora/notifications?limit=20"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": true,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "permissionProfile/list",
+      "params": {
+        "cursor": null,
+        "limit": 100,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "collaborationMode/list",
+      "params": {}
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "plugin/installed",
+      "params": {}
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "971fe099-9853-4d24-be51-e10d3869cec1",
+      "method": "GET",
+      "url": "/gift-credits/senders/eligibility"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "externalAgentConfig/import/readHistories"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "5f0c32d6-967c-4547-b85a-0471d1be1d58",
+      "method": "GET",
+      "url": "/subscriptions/auto_top_up/settings?include_payment_method=false"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "thread",
+      "key": {
+        "hostId": "local",
+        "threadId": null
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "7ec4ebd6-443f-49de-a9d3-ade2584d1f43",
+      "method": "GET",
+      "url": "/beacons/home?product=codex&web_frontend=codex_webview&codex_window_type=electron&home_sms_backup_supported=false&pepper_home_banner_supported=false&space_tooltip_ready=false"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "3fbc7078-a45b-418f-a7d6-5a066a4b3a64",
+      "method": "GET",
+      "url": "/beacons/home?product=codex&web_frontend=codex_webview&codex_window_type=electron&home_sms_backup_supported=false&pepper_home_banner_supported=false&space_tooltip_ready=false"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "account/gatewayOAuth/read"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "b5c4c66f-fe95-4690-9921-ae7c41e75826",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8895f3b0-e522-47df-8854-92ec485f2e99",
+      "method": "GET",
+      "url": "/referrals/invite/eligibility?program_id=codex_referral_consumer&entrypoint=persistent"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "codex-mobile-has-connected-device"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "e457230e-7285-40e4-8eaa-68587aacd32b",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "f65db752-f5c8-4073-940d-91abd895b980",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "02469b01-c2b9-4b6a-9f3a-a7a96bd0f846",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "da1816fe-0acc-4b01-990c-e72a8c3fe2ff",
+      "method": "GET",
+      "url": "/trusted_contact/enabled"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "f3aa49f0-7271-4ce6-8ce6-05eb5330c5f5",
+      "method": "GET",
+      "url": "/subscriptions/auto_top_up/settings?include_payment_method=false"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "5b4c7d99-35c5-45a2-8f41-43f20c0f513f",
+      "method": "GET",
+      "url": "/wham/analytics/daily-code-review-metrics?start_date=2026-10-07&end_date=2026-11-05&group_by=day&workspace_user=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "cb002302-5b5d-4afe-beba-3c721291e847",
+      "method": "GET",
+      "url": "/wham/environments"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "843e5c27-d437-4f02-88b8-10c9a464acbc",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8cebd4fd-992e-466c-acec-dfec5d294427",
+      "method": "GET",
+      "url": "/trusted_contact/enabled"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "d4e20173-e235-487f-ae15-894c96547ecb",
+      "method": "GET",
+      "url": "/wham/environments"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "codex-mobile-has-connected-device"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "host-id-remote-control-allowed"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "94d6bf3b-3ca6-45f1-97ab-2227ef2af40b",
+      "method": "GET",
+      "url": "/wham/remote/control/clients?limit=100"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "18b029b6-041a-4eb5-ba69-d9d9867a7d79",
+      "method": "GET",
+      "url": "/wham/remote/control/mfa_requirement"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a8e6f406-8b9e-4bfe-9947-51e43b773bc2",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "6076830f-b0e6-4c85-b91b-49227edddff8",
+      "method": "GET",
+      "url": "/trusted_contact/enabled"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "41a5e200-851a-425d-bf67-769ae31c4e1d",
+      "method": "GET",
+      "url": "/wham/environments"
+    }
+  ],
+  "connectionControls": [
+    {
+      "role": "switch",
+      "label": "Connect Local test · host-b",
+      "checked": "false",
+      "disabled": false
+    }
+  ],
+  "error": "TimeoutError: locator.waitFor: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Connected', { exact: true }) to be visible\u001b[22m\n"
+}

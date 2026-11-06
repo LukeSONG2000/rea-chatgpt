@@ -1,0 +1,49 @@
+{
+  "version": "v435",
+  "status": "partial",
+  "platform": "iOS",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static + independent-input-projection + controlled-model-replay",
+  "restored_rule": {
+    "source": "0x19526bc..0x1952714",
+    "hasMessageGroupSpacingAbove": "previous != nil && (isUserMessage(current) || isUserMessage(previous))",
+    "predicate": "0x1915a94",
+    "kind_field_offset": "0x11",
+    "kind_tag": 5
+  },
+  "integration": [
+    "Current synthetic request explicitly classified userMessage.",
+    "Fragment projection derives group boundaries without text/ID-name/task-status inference.",
+    "SwiftUI modifier now receives the projected group flag, allowing actual 24pt scaled group boundaries.",
+    "Invalid or non-item user-message classifications fail explicitly."
+  ],
+  "validation": {
+    "foundation": "passed",
+    "host_typecheck": "passed with 3 existing UIKit deprecation warnings",
+    "ui_runtime": "not_run",
+    "visual_acceptance": "not_accepted",
+    "device_install": "not_performed"
+  },
+  "unknowns": [
+    "Inline predicate0x1946af8 branches on rendered item payload/metadata; do not infer from tool label.",
+    "Realtime replacement user messages are outside supported host projection.",
+    "Response separator insertion/order remains fixture-controlled.",
+    "Android grouping/runtime implementation remains unverified."
+  ],
+  "next_action": "Trace content array insertion before0x18d3f18; run existing current-turn and sequence UI tests after Xcode install authorization clears.",
+  "files": {
+    "analysis/full-platform-20261104/ios-remote-v435-kind-enums.json": "5d80851e51501c5870ac57404590efc3bdb897c902e25547b472f9dd39cf3be9",
+    "analysis/full-platform-20261104/ios-remote-v435-kind-offset-proof.json": "637f381a65f4a6fcb7873649c6b163d245814e6844861ed9ddbb6f823401d400",
+    "analysis/full-platform-20261104/ios-remote-v435-inline-predicate.json": "993dfbfbbc08fc6fea786080da0bd7516ca04c60ccc67ea1bcd949ef9cbaf476",
+    "analysis/full-platform-20261104/ios-remote-v435-rendered-kind.json": "f614ef640b42cdfb1c5a777d99884adfc563bd54991f5af526434f74594a4794",
+    "analysis/full-platform-20261104/ios-remote-v435-typecheck.log": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078",
+    "analysis/full-platform-20261104/ios-remote-v435-group-predicate.json": "988fadbce76dbf277ee7a151c83efc1db59b524b30b183b9eab18deb36a092ef",
+    "analysis/full-platform-20261104/ios-remote-v435-predicate-types.json": "6277d3723d1c6db35c353ac02aeebe9f0d681e11188efed87a6c6a12eb354666",
+    "analysis/full-platform-20261104/ios-remote-v435-text-tests.log": "996d4fb28ac555c61a88d7444632ea92c9488c320a7f2b072edfe8fbac9ac56e",
+    "analysis/full-platform-20261104/ios-remote-v435-adjacency-branches.json": "5301028c134d803e7848ed1a075c03ec82126c8663398901b5a877bfa876711a",
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "0cf78444b0e110a4efc1bd0d196cd4c511de330fd39262380bd5587aba75ab8f",
+    "implementation/ios/Sources/NativeConversationHost.swift": "5394a8cec04aa1619a204c659476ad287171b5d03742aabfefa8fcbbad80781c",
+    "implementation/ios/TextTests/main.swift": "9dd28d93e96d9c0eb3233f49162f0d2f5627cee52b6c23897edfe157e203b34a"
+  }
+}

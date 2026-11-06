@@ -1,0 +1,24 @@
+{
+  "type": "official-artifact-static-observation",
+  "product": "Codex 26.1021.31345 ChatGPT mode",
+  "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "evidence": [
+    {
+      "needle": "hur=K({finish_details:K({type:U(`interrupted`),reason:U(`server_error`)})})",
+      "byteOffset": 4230653,
+      "excerpt": "eturn(UP=t((()=>{mur=n(cr(),1),Z(),mw(),q(),HN(),GN(),RN(),FN(),YN(),Xsr(),Ylr(),ay(),Y(),Z_(),TP(),hur=K({finish_details:K({type:U(`interrupted`),reason:U(`server_error`)})}),gur=H(V,(e,{get:t})=>{let n=IN(t,e);return n==null?null:t(tP,n)}),_ur=H(V,(e,{get:t})=>e.map(e=>t(rP,e)),{isEqual:QC}),vur=H(V,({conversationId:e,promptMessageId:t},{get:n})=>n(lP,IN(n,e))[t]?.omittedErrorChildCount??0),yur=H(V,(e,{get:t})=>{let n=DP(t,e);return n==null?nul"
+    },
+    {
+      "needle": "function fur(e){",
+      "byteOffset": 4230062,
+      "excerpt": "`active-async-turn`:case`active-tpp-turn`:case`streaming`:return!0;case`error`:case`idle`:return!1}}function fur(e){return e.author.role===`assistant`&&!sw(e)&&hur.safeParse(e.metadata).success}function pur(e){let t=fw(e?.metadata);return e?.status===`in_progress`||t?.clientOnlyMessage!=null||t?.isOptimistic===!0||e!=null&&(qN(e)||zsr(e))}function DP(e,t){let n=IN(e,t);return n!=null&&e(uP,n)?n:null}var mur,hur,gur,_ur,vur,yur,bur,OP,kP,xur,Sur,A"
+    },
+    {
+      "needle": "chatgptConversations.responseError.serverInterruption",
+      "byteOffset": 4232778,
+      "excerpt": "essageId?!UN(t(aP,n))&&!t(Qlr,n)?r:null:s?.id==null||!fur(s)?null:{message:t(iy).formatMessage({id:`chatgptConversations.responseError.serverInterruption`,defaultMessage:`Something went wrong. Please try again`,description:`Error shown when the server interrupted an assistant response and the user can retry it`}),canRetry:!0,metadata:{errorCode:`interruption_server_error`,messageId:s.id}}}),jur=H(V,(e,{get:t})=>t(Aur,e)?.message??null),IP=H(V,(e,"
+    }
+  ],
+  "interpretation": "Assistant metadata finish_details interrupted/server_error selects renderer interruption message. Independent model adapter maps its failed terminal to this consumer schema; not a recovered provider implementation."
+}

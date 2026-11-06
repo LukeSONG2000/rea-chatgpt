@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.RendererError=void 0;class RendererError extends Error{constructor(r,e,o){super(r),this.sourceError=e,this.lastRenderedNode=o}}exports.RendererError=RendererError;

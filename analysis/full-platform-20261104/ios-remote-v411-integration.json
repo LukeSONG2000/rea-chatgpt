@@ -1,0 +1,144 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_turn_classification": "progress: request-scoped action integration and offline validation",
+  "restored_mechanism": {
+    "type": "SwiftUIStyleguide.CapsuleButtonStyle",
+    "descriptor": "0x971f9c4",
+    "conformance": "0x8384cd8",
+    "witness": "0x6f44908",
+    "body": "0x6f4438c",
+    "caller": "approval row0x1a1fd28",
+    "observations": [
+      "body applies semibold0x6f4440c; label font remains callout from v410",
+      "fullWidth caller true; body maxWidth infinity; centered alignment; horizontal padding20 at0x6f445e8",
+      "caller heightPreset compact1; no explicit minimumHeight; compact vertical padding10. Caller values16 and24 belong to regularVerticalPadding and regularMinimumLabelHeight, not horizontal padding/radius",
+      "caller incoming row index0 selects OneOff/MainSurfacePrimary foreground, later rows OneOff/AppForeground and bordered=true; background input OneOff/AppForeground",
+      "bordered branch uses foreground opacity0.15 with stroke width1 and continuous capsule",
+      "filled branch uses background opacity0.8 while pressed,1 otherwise; no whole-label fade or scale observed in this body"
+    ]
+  },
+  "integration": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "change": "Added RecoveredRemoteApprovalButtonStyle and applied to indexed request action buttons. Dynamic official UIColor resources retained. Separate Deny control is unchanged pending its own source trace.",
+    "scope": "compact/fullWidth/no-minimumHeight caller branch only",
+    "independent_remaining": [
+      "synthetic action selection/titles",
+      "parent vertical stack arrangement",
+      "deny and feedback layouts",
+      "form/policy-specific branches",
+      "UIKit resource lookup bridge"
+    ]
+  },
+  "validation": {
+    "host_typecheck": "passed with three existing deprecation warnings",
+    "ui_test_source": "new testRemoteApprovalButtonLayout syntax parse passed; asserts full-width alignment, non-overlap, DynamicType growth, callback and return; NOT executed",
+    "runtime": "session42359 original runner97181 / xcodebuild97197 remains pending first-launch authorization; no duplicate build",
+    "preview": "existing PID87483 retained; no physical install or external display verification",
+    "visual": "unaccepted: screenshots, pressed appearance, dark theme, contrast, DynamicType and actual hit-region behavior require runtime"
+  },
+  "next_minimum_actions": [
+    "Trace approval action-list and request-kind selection to replace synthetic choices and prove parent layout.",
+    "Recover separate deny/feedback rendering, then user-input question progression and scoped state reset.",
+    "After original pending build resumes, run cumulative navigation/message/button tests and leave the preview for acceptance."
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-action-alternate-color.asm",
+      "sha256": "4a46427311bec95c4349f3c269f1230f9dfd8acea97701d5ef625de8dbf891a3",
+      "bytes": 743
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-action-colors.asm",
+      "sha256": "90e18a1db8063306cc2c264df62fab06037b3a2bb155f676f3624adad9bba19d",
+      "bytes": 743
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-action-style-types.json",
+      "sha256": "d84664f3cde61bfeec4b51ab6b50c80ddab7753ba313a4d825ed5726d4474bbd",
+      "bytes": 3233
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-border-stroke-helper.asm",
+      "sha256": "0aca639baf46c1474eb6267ca006f3cef63f9b8e5060244c48da7ff9f9dfd78a",
+      "bytes": 744
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-capsule-body-type.json",
+      "sha256": "d1f0b00f0e909218cb09d7ff62f93648dc9ba879d1c5a0b6328567338a0fa2ef",
+      "bytes": 3628
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-capsule-body.asm",
+      "sha256": "308b5855500606c98e728bdcce3d3de6c88d31175898ce0b4b800545da8461da",
+      "bytes": 17837
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-capsule-calls.json",
+      "sha256": "20767ad34911c98b4502162132d4189443969e1f3ded12d7bd5d70d173dec160",
+      "bytes": 17565
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-capsule-style-metadata.json",
+      "sha256": "1459462e8db221cb26638c8b44eec3fad871978638b5270acc4c862e831926b6",
+      "bytes": 2181
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-capsule-style-witness.json",
+      "sha256": "06781e72e0897e24146f1ea8b98d06f7a9166ca672874df34439eb27f9d05f7d",
+      "bytes": 2181
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-color-primary.asm",
+      "sha256": "7b54127852ed6223260bc9e37eeccaaadc78910686ac84dd7beb125638c61508",
+      "bytes": 2661
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-color-secondary.asm",
+      "sha256": "73a90691af3eb2c5e6c50aff62b2f4392982ab9f93c460ccbd7d822e0716f7cb",
+      "bytes": 2660
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-row-argument-helper.asm",
+      "sha256": "969ecccb97990183087d6320cfc14b9e6212c165fbff9a9f5dfb146d94436e0a",
+      "bytes": 466
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-row-thunk-arguments.asm",
+      "sha256": "019f36d23964a69549fb4428a3eb0056c6385304e752ae69c9e299a2d1e97577",
+      "bytes": 586
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-style-accessor.asm",
+      "sha256": "7f22818781d0e74103f3858e286a352d5041a35f372a4ae0001e656c68ed8836",
+      "bytes": 1281
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-style-alignment-helper.asm",
+      "sha256": "33181cca9648ec490f9b2ad861057bfab6b461f20261b9f5573649cd86ec8d79",
+      "bytes": 522
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-style-body-witness.asm",
+      "sha256": "a75c1c4c7791cde3676a4909c1c9c59726061854b5fd7b452a03115b99199a33",
+      "bytes": 6716
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-style-metadata-helper.asm",
+      "sha256": "bfbcc413387b7f9c43b3a246571750a1267129ec4ae47b290779d123d83790ca",
+      "bytes": 512
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v411-style-parameters.json",
+      "sha256": "410b3f832886aa62908cd6a98ce9995839104c2ee8d359a64668ff9229307902",
+      "bytes": 1140
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "21f7ff39aefca4c5e51fb094050410f0586c50a08cf665e7b05c6646e17238b7",
+    "implementation/ios/Sources/RemoteApprovalInteraction.swift": "03039b33166bde920555c0cb6fc9b6af1b51d0e71c7653b7372cfde29b83dfc5",
+    "implementation/ios/UITests/HostInteractionTests.swift": "da940eeed5009321a3621464c1589d425d25f7d209ea3c40453694fe32334390"
+  }
+}

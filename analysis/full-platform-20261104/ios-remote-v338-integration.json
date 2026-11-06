@@ -1,0 +1,34 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "static artifact plus independent native integration",
+  "component": "DiffSummaryLabel",
+  "body": "0x6eed398 -> 0x6eece34",
+  "observations": [
+    "HStack center spacing4 at0x6eece54..58; monospaced(true)0x6eeceb4",
+    "Insertion text first + prefix0x6eecf5c; deletion - helper0x6fdd9f8",
+    "Insertion sRGB38/138/31 and deletion215/58/73 (components divided255)",
+    "Format tag1 compactName with fractional precision0...1; noncompact grouping never; Locale.autoupdatingCurrent",
+    "Accessibility label always full no-grouping integer, separate from compact visible text",
+    "Task consumer0x3a4fa4 checks optional payload tag; present branch constructs DiffSummaryLabel with format1 at0x3a4fcc..d8",
+    "Task consumer font0x74e2788 -> footnote; trailing VStack spacing3 established v331"
+  ],
+  "independent_adaptations": [
+    "Optional synthetic summary projection; no backend or repository diff execution",
+    "SwiftUI locale environment used to follow system and explicit app locale"
+  ],
+  "unknowns": [
+    "Task font style helper0x74e2ba0 and CGFloat environment modifier0.75 not fully resolved; not applied as guessed opacity",
+    "Actual server aggregate producer and detail navigation not recovered",
+    "Large-number formatting runtime and dark-mode visual acceptance outstanding"
+  ],
+  "validation": {
+    "simulator": "1 test passed,0 failures; populated/zero/missing summary assertions; screenshot inspected",
+    "phone": "not installed",
+    "preview_pid": 70111,
+    "external_display": "not reverified",
+    "limits": "Compact large counts, alternate locales, dark appearance and whole-page fidelity not accepted"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "status": "partial",
+  "deliveries": {
+    "macos": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v133-macos/REA ChatGPT Offline.app",
+      "kind": "self-contained local arm64 app with stock Electron runtime",
+      "version": "0.1.0 build 133",
+      "signature": "ad-hoc deep strict verification passed before and after execution"
+    },
+    "windows": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v133-windows/app",
+      "kind": "runtime payload only; no Windows executable/runtime included"
+    }
+  },
+  "officialRenderer": "Codex 26.1021.31345 with ChatGPT mode, respective verified platform resources",
+  "validation": [
+    "15,878 payload files per platform all match recorded SHA-256 after relocation",
+    "No profile or pairing paths included",
+    "macOS bundle mounts when repository reads denied; control repository read fails",
+    "Compiled network-policy launcher mounts after relocation",
+    "State saved outside application in dedicated Application Support profile",
+    "Post-run codesign deep strict verification passes"
+  ],
+  "runtimeCaveat": "app.isPackaged reports false for copied Electron binary; explicit distribution manifest controls bundled startup and state location, and reports expose both flags",
+  "reports": [
+    "native-bundle-v133-denied-repo.json",
+    "native-bundle-v133-relocated.json",
+    "native-bundle-v133-control.log"
+  ],
+  "firstFailure": "Initial source-entry-only argument guard rejected packaged invocation; fixed using explicit distribution metadata",
+  "cleanedIntermediateBuilds": [
+    {
+      "directory": "/tmp/rea-native-v133-macos",
+      "manifestSHA256": "369a399c0e4d05c7d176264933923c421c22ec94fe8e07b5082a29af48157dc9"
+    },
+    {
+      "directory": "/tmp/rea-native-v133-macos-r2",
+      "manifestSHA256": "912b9e8d76924ccb13075640bc5232a7a394dc40a4d89c1cfe41150ad8817eee"
+    },
+    {
+      "directory": "/tmp/rea-native-v133-windows",
+      "manifestSHA256": "048e236e7f1016ad2eefab330562bb959e5ac762e5042253fa5b005072dfafce"
+    }
+  ],
+  "limits": [
+    "Windows runtime packaging and OS execution pending",
+    "Payload uses only current JS/CSS allowlist; fonts/media and unsupported services remain incomplete",
+    "This batch tests packaged startup; full packaged interaction gates remain pending",
+    "Local ad-hoc build, no notarization/release/public distribution",
+    "Zhipu and branch adapter still not ported to standalone entry"
+  ],
+  "sources": {
+    "implementation/desktop/native/main.cjs": "ec24cf22abcdd2978d87ccde18811ddf407a00c28456723f535b8cc95dc5178d",
+    "implementation/desktop/native/build-payload.py": "1d238744b3b5a0a490c12b18029175e6b518b750804ebb89b35f40ced499faff",
+    "implementation/desktop/native/README.md": "566ce8e32f3de63204f2c22d7da9bc182ab24ccf70b52d9bd1b18f1e06472d72"
+  }
+}

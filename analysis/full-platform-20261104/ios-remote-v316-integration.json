@@ -1,0 +1,36 @@
+{
+  "status": "partial",
+  "officialBaseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "implementation": "independent native fixture integration using v313/v314 identity and state observations; not recovered official layout",
+  "source": "implementation/ios/Sources/NativeConversationHost.swift",
+  "tests": {
+    "initial": "ios-remote-v316.xcresult: empty-state regression passed; task regression failed on accessibility identifier lookup",
+    "retry": "ios-remote-v316-r2.xcresult: task regression passed after lookup by visible history text",
+    "verified": [
+      "task to thread and return",
+      "activity and previous message expansion",
+      "host-qualified duplicate thread ID isolation",
+      "pending request reports unavailable without executing",
+      "close returns to sidebar"
+    ],
+    "notVerified": [
+      "official visual fidelity",
+      "filter interaction",
+      "scroll anchor preservation",
+      "live event isolation",
+      "physical device",
+      "Android"
+    ]
+  },
+  "visualInspection": [
+    "ios-remote-v316-r2-screenshots/427DF4B4-A5E7-4C2F-8AD4-11CB59991BB5.png",
+    "ios-remote-v316-r2-screenshots/C421D434-1D65-4381-B2A1-A2746C804522.png"
+  ],
+  "previewPID": 59928,
+  "physicalDevice": "not updated this batch",
+  "nextEvidence": "Trace RenderedItem.kind consumer and tool activity component body to replace provisional DisclosureGroup presentation"
+}

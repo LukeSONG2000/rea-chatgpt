@@ -1,0 +1,49 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "pattern": "adjacent ADRP/ADD (no shifted ADD), B/BL; incomplete references",
+  "hits": [
+    {
+      "pc": "0x387470",
+      "target": "0x45f720",
+      "name": "TaskRowV2 metadata wrapper",
+      "pattern": "BL",
+      "function_start": "0x3873e0",
+      "next_function_start": "0x38764c"
+    },
+    {
+      "pc": "0x3952e0",
+      "target": "0x45f720",
+      "name": "TaskRowV2 metadata wrapper",
+      "pattern": "BL",
+      "function_start": "0x395168",
+      "next_function_start": "0x39555c"
+    },
+    {
+      "pc": "0x39e738",
+      "target": "0x45f720",
+      "name": "TaskRowV2 metadata wrapper",
+      "pattern": "BL",
+      "function_start": "0x39e26c",
+      "next_function_start": "0x39e830"
+    },
+    {
+      "pc": "0x3a33e8",
+      "target": "0x45f720",
+      "name": "TaskRowV2 metadata wrapper",
+      "pattern": "BL",
+      "function_start": "0x3a3398",
+      "next_function_start": "0x3a3644"
+    },
+    {
+      "pc": "0x43a2a8",
+      "target": "0x43a2e0",
+      "name": "TaskRowV2 generic helper",
+      "pattern": "BL",
+      "function_start": "0x43a270",
+      "next_function_start": "0x43a2e0"
+    }
+  ]
+}

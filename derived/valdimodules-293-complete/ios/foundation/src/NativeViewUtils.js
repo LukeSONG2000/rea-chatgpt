@@ -1,0 +1,1 @@
+"use strict";function e(e){let t;const i=async()=>{if(!t)return;const i=e(),r=await(i.single()?.getNativeView()??Promise.resolve(void 0));r&&t(r)};return e=>{if(t=e,t)return i}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.makeFactoryForEventWithNativeView=void 0,exports.makeFactoryForEventWithNativeView=e;

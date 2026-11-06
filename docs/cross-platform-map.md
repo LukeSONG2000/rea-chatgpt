@@ -1,5 +1,7 @@
 # 原子级跨平台对应图（Cross-Platform Correspondence Map）
 
+> 2026-11-03 接管校正：本文保留历史研究过程，不是当前完成度证明。以 [当前状态](CURRENT-STATUS.md) 和 [问题清单](ISSUES.md) 为准。L3 仅表示上游版本定位，未证明下游补丁或二进制等价；旧分析输出需重新验证。
+
 生成：2026-10-27。数据源：`analysis/mobile-pairing.json`（移动端逐文件）、`analysis/desktop-pairing-norm.json`（桌面端按角色归一化）。
 
 ## 一、移动端（Android cel 字节码 ↔ iOS 明文 JS）——原子级文件对应
@@ -26,7 +28,7 @@ Windows/macOS 桌面端不使用 Valdi（Electron + Chromium 直接执行 JS）�
 
 | 功能 | Android（Valdi 字节码→解码） | iOS（Valdi 明文 JS） | 桌面（Electron webview JS） |
 |---|---|---|---|
-| 会话/消息流 | chatgpt_conversation（`analysis/decoded/chatgpt_conversation/` 16 文件） | chatgpt_conversation（明文 JS） | webview/assets app-shared + app-initial bundle |
+| 会话/消息流 | chatgpt_conversation（`analysis/decoded/chatgpt_conversation/` 16 文件） | 未找到该历史 iOS 模块；不能建立此对应 | webview/assets app-shared + app-initial bundle |
 | 推理展示 | chatgpt_reasoning（`analysis/decoded/chatgpt_reasoning/` 3 文件） | —（iOS 原生 Swift ⛔） | webview 渲染层 |
 | 全局搜索 | chatgpt_global_search（字节码→解码） | chatgpt_global_search（明文 JS） | webview 搜索路由 chunk |
 | Codex Remote | feature.codexremote（Kotlin L2）+ Core.bundle 12 脚本（L1） | 同左（明文） | .vite/build worktree/enrollment 逻辑（L2 美化提取）+ codex-rs（**L3** 开源） |

@@ -1,0 +1,493 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "types": {
+    "submit": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e38c1e",
+      "length": 21,
+      "mangled_hex": "53533670726f6d70745f02ffe4c701346d6f646574",
+      "references": [
+        {
+          "offset": 10,
+          "kind": 2,
+          "target": "0xaab7128",
+          "resolved_context": "0x95d1964",
+          "label": "CodexRemoteCore.CodexRemotePromptSubmissionMode"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "acceptPrediction": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8d860d0",
+      "length": 2,
+      "mangled_hex": "5353",
+      "references": [],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "setPlanModeEnabled": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8bfd810",
+      "length": 2,
+      "mangled_hex": "5362",
+      "references": [],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "attachmentMenuItemSelected": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e38c34",
+      "length": 22,
+      "mangled_hex": "02d3ebc7015f0285e3c701536737636f6d6d616e6474",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaab7808",
+          "resolved_context": "0x95d0a8c",
+          "label": "<unresolved-context@0x95d0a10>.ComposerAttachmentMenuItem"
+        },
+        {
+          "offset": 6,
+          "kind": 2,
+          "target": "0xaab6fc0",
+          "resolved_context": "0x95d0dcc",
+          "label": "CodexRemoteCore.CodexRemoteComposerCommand"
+        }
+      ],
+      "unresolved_contexts": [
+        {
+          "address": "0x95d0a10",
+          "flags": "0x41",
+          "kind": 1,
+          "reason": "Unsupported context kind; name and parent chain not interpreted"
+        }
+      ],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "composerAutocompleteItemSelected": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e38c4c",
+      "length": 5,
+      "mangled_hex": "02d3e5c701",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaab7220",
+          "resolved_context": "0x95d0db0",
+          "label": "CodexRemoteCore.CodexRemoteComposerAutocompleteItem.Kind"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "addAttachment": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e10c86",
+      "length": 29,
+      "mangled_hex": "026961ca015f53623138706c6179735375636365737348617074696374",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaab6df0",
+          "resolved_context": "0x95d0c70",
+          "label": "CodexRemoteCore.CodexRemoteAttachment"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "addPhotoPickerResults": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e38c52",
+      "length": 51,
+      "mangled_hex": "536179025264c901475f790292e1c7015367596253634d59636353673230646964507265706172654174746163686d656e7474",
+      "references": [
+        {
+          "offset": 3,
+          "kind": 2,
+          "target": "0xaacf0a8",
+          "resolved_context": null,
+          "label": "_$s8PhotosUI14PHPickerResultVMn"
+        },
+        {
+          "offset": 11,
+          "kind": 2,
+          "target": "0xaab6df0",
+          "resolved_context": "0x95d0c70",
+          "label": "CodexRemoteCore.CodexRemoteAttachment"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "attachmentTapped": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8f2ed50",
+      "length": 14,
+      "mangled_hex": "023725b9017901191f6a00535347",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaac1288",
+          "resolved_context": "0x975e214",
+          "label": "Tagged.Tagged"
+        },
+        {
+          "offset": 6,
+          "kind": 1,
+          "target": "0x95d0c70",
+          "resolved_context": "0x95d0c70",
+          "label": "CodexRemoteCore.CodexRemoteAttachment"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "removeAttachment": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8f2ed50",
+      "length": 14,
+      "mangled_hex": "023725b9017901191f6a00535347",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaac1288",
+          "resolved_context": "0x975e214",
+          "label": "Tagged.Tagged"
+        },
+        {
+          "offset": 6,
+          "kind": 1,
+          "target": "0x95d0c70",
+          "resolved_context": "0x95d0c70",
+          "label": "CodexRemoteCore.CodexRemoteAttachment"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "selectedTextAttachmentAction": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e38c86",
+      "length": 5,
+      "mangled_hex": "01314f7700",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 1,
+          "target": "0x95adbb8",
+          "resolved_context": "0x95adbb8",
+          "label": "CodexRemoteThread.CodexRemoteSelectedTextAttachmentAction"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "pasteImageData": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8f9a030",
+      "length": 5,
+      "mangled_hex": "026fecb201",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaac8ca0",
+          "resolved_context": null,
+          "label": "_$s10Foundation4DataVMn"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "pasteFileURL": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x90195c0",
+      "length": 5,
+      "mangled_hex": "0237f5aa01",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaac8af8",
+          "resolved_context": null,
+          "label": "_$s10Foundation3URLVMn"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "attachmentPasteFailed": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8bcae60",
+      "length": 7,
+      "mangled_hex": "022fdcf0015f70",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaad8a90",
+          "resolved_context": null,
+          "label": "_$ss5ErrorMp"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "setLoadingAttachments": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8bfd810",
+      "length": 2,
+      "mangled_hex": "5362",
+      "references": [],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "removeUnsupportedGoalContext": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e38c8c",
+      "length": 23,
+      "mangled_hex": "02fbd3c70179535347313070726f6d7074546578745f74",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaab6088",
+          "resolved_context": "0x975ecd8",
+          "label": "SwiftToolbelt.Redacted"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "stopWhisper": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e38ca4",
+      "length": 13,
+      "mangled_hex": "5362386175746f53656e645f74",
+      "references": [],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "textDidApply": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8d860d0",
+      "length": 2,
+      "mangled_hex": "5353",
+      "references": [],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "selectionDidChange": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e133c0",
+      "length": 7,
+      "mangled_hex": "01133979005367",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 1,
+          "target": "0x95a6cd4",
+          "resolved_context": "0x95a6cd4",
+          "label": "__C._NSRange"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "runCommand": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e38cb2",
+      "length": 17,
+      "mangled_hex": "020de3c7015f026fe4c701346d6f646574",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaab6fc0",
+          "resolved_context": "0x95d0dcc",
+          "label": "CodexRemoteCore.CodexRemoteComposerCommand"
+        },
+        {
+          "offset": 6,
+          "kind": 2,
+          "target": "0xaab7128",
+          "resolved_context": "0x95d1964",
+          "label": "CodexRemoteCore.CodexRemotePromptSubmissionMode"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "removeReviewFindingComment": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e13998",
+      "length": 5,
+      "mangled_hex": "029f34ca01",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaab6e38",
+          "resolved_context": "0x95d14ac",
+          "label": "CodexRemoteCore.CodexRemoteDiffComment.ID"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    }
+  },
+  "bottom_bar_fields": {
+    "descriptor": "0x95ae740",
+    "field_count": 22,
+    "vector_words": 4
+  },
+  "normal_layout_content_thunk": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1c26b48: a9410a81     \tldp\tx1, x2, [x20, #0x10]\n 1c26b4c: f9401280     \tldr\tx0, [x20, #0x20]\n 1c26b50: 17f56da9     \tb\t0x19821f4 <__text+0x195a1f4>\n 1c26b54: f0fff3e0     \tadrp\tx0, 0x1aa5000 <__text+0x1a7d000>\n 1c26b58: 91215000     \tadd\tx0, x0, #0x854\n 1c26b5c: b0ffeae1     \tadrp\tx1, 0x1983000 <__text+0x195b000>\n"
+}

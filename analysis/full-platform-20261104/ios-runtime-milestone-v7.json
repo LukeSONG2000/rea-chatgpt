@@ -1,0 +1,42 @@
+{
+  "status": "partial",
+  "runtime": {
+    "version": "27.0",
+    "build": "24A434"
+  },
+  "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+  "bundle": "local.rea.chatgpt.ioshost",
+  "launch": "local.rea.chatgpt.ioshost: 12584",
+  "verified": [
+    "Independent UIKit host installed and visible in simulator screenshot",
+    "Original parser output projected as native heading, spans, code and table"
+  ],
+  "fixed": {
+    "failure": "First launch terminated with SIGTRAP",
+    "frame": "___UIApplicationEvaluateRuntimeIssueForNoSceneLifecycleAdoption_block_invoke",
+    "change": "Adopt UIWindowSceneDelegate and generated scene manifest"
+  },
+  "supersedes_launch_acceptance": "ios-simulator-launch-v1.json was process creation only; subsequent crash disproved runtime success",
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/AppDelegate.swift",
+      "sha256": "e8fd3ca03ff3245eda0bef6821f7b532f12016dc59b44384bc8635c2b86f5c5e"
+    },
+    {
+      "path": "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj",
+      "sha256": "952d53e08e5aa85bf898d16b1d2a107ff5625b7b465bc0d42612e62e0aea3cd8"
+    },
+    {
+      "path": "output/ios-host-scene-v2.png",
+      "sha256": "e754730b1ba6fd272086d10f7e49557c4520257a2a17306ae8896e34d8b87916"
+    }
+  ],
+  "unaccepted": [
+    "keyboard and composing",
+    "selection and gestures",
+    "actual draft process restoration",
+    "official visual fidelity",
+    "iPhone hardware",
+    "Zhipu integration"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "consumer_chain": [
+    "HistoryFragment content dispatch ->render unit0x1a35da0",
+    "toolActivityGroup branch at0x1a35e60",
+    "binding construction0x1a35e6c ->0x1a392d8",
+    "generic metadata0x1a35e84 ->0x1d9e6ac ->type record0x7e11e20",
+    "summary field construction0x1a35e9c ->0x1a393bc",
+    "expanded content leading VStack at0x1a35ea8 onward"
+  ],
+  "type_proof": {
+    "record": "0x7e11e20",
+    "root": "ExpandableAssistantSummaryItem",
+    "label": "conditional history/latest-item/thinking components",
+    "content": "VStack<ForEach<ActivityRow,...>>",
+    "limits": "symbolic generic references, some nested contexts unresolved; not proof all branches exercised"
+  },
+  "style_reuse": {
+    "owner": "ExpandableAssistantSummaryItem0x95ae16c",
+    "evidence": [
+      "v319 configuration",
+      "v320 footnote-relative13 and fadesWhenExpanded=false",
+      "v341 full-row button/hit shape and nil expansion animation",
+      "v342 glyph and0.2 rotation; gate interpretation corrected v396"
+    ],
+    "scope": "only proven tool activity summary groups and existing file-change consumer; prior-history disclosure remains independent"
+  },
+  "integration": [
+    "Rename file-only adapter to RecoveredRemoteSummaryDisclosureStyle",
+    "Pass distinct accessibility IDs per button",
+    "Apply to two existing synthetic tool groups, preserving separate bindings",
+    "Keep expanded scroll view own remote-command-output identifier; update2 tests previously relying on incidental inherited identifier"
+  ],
+  "validation": {
+    "host_typecheck": "passed all Sources/*.swift",
+    "ui_test_parse": "passed",
+    "ui_regression": "not executed; existing session42359 pending first-launch system authorization",
+    "phone": "not updated",
+    "retention": "no stale targets"
+  },
+  "limits": [
+    "Synthetic group content and labels remain adapters",
+    "Full ExpandableAssistantSummaryItem outer layout/automatic state conditions not fully recovered",
+    "Visual and whole-row tap acceptance pending for the newly connected consumers",
+    "Output test selector correction requires actual AX runtime confirmation",
+    "Existing preview not restarted"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "4706185914cae614e3fdd20086103605e40742fe4b7c87480a0c8d295bac36cb",
+    "implementation/ios/UITests/HostInteractionTests.swift": "72a47b7440fdb6b481c1b50a6ccc2b6860ee66c8906698ac5f3c7aa09ef8f1cb"
+  }
+}

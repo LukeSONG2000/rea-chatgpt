@@ -1,0 +1,44 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-native-implementation-and-synthetic-runtime-tests",
+  "changes": [
+    "One collection row per user message or assistant reply, nested stable-ID content blocks",
+    "Diffable identifiers are strings; content values compare full payloads",
+    "Search resolves row or nested block to containing message row"
+  ],
+  "tests": {
+    "build": "ios-message-row-build-v65.log",
+    "state": "ios-message-row-state-v65.log",
+    "state_groups": 11,
+    "ui_summary": "ios-message-row-v65-ui-v1.summary.json",
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "cases": [
+      "testLocalSearchRoutingAndUnsupportedFilters",
+      "testSelectionSurvivesAppend",
+      "testStreamingMarkdownProjection",
+      "testTailFollowAndUserScrollIsolation"
+    ],
+    "additional_assertion": "Heading, code and table share the exact same assistant collection cell",
+    "visual_review": "Inspected streamed Markdown attachment; code/table/completed status visible, no official parity comparison"
+  },
+  "sources": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "d69d234b619796184fb1ecd2712f3186f7c7fb0b9d62dcf8f877e6cf91cf2063",
+    "implementation/ios/Sources/DraftStore.swift": "d625d052bdd875a4468cbd2a72e837e8f46cbed3a49c882a7039c60fe6787f22",
+    "implementation/ios/UITests/HostInteractionTests.swift": "b9c23d60ac67193146039f5a9728e22ba8fc568b860b4719db28d845a1fa8e9c",
+    "implementation/ios/Tests/main.swift": "dea156bc30d4516f3158338709a1728bdf1dff9977628ac04af1801b1d48865e"
+  },
+  "cleanup": {
+    "fixture_pairing_removed": true,
+    "owned_server_sigterm": true
+  },
+  "limits": [
+    "Official MessageRow schema and OAIMarkdown not recovered or linked",
+    "Nested block IDs remain parser index based; semantic block identity under arbitrary edits not proved",
+    "Full-message measurement and eager block stack performance not accepted for very long messages",
+    "No physical iPhone or official visual acceptance",
+    "Other five platform surfaces and Remote remain under the full active plan"
+  ]
+}

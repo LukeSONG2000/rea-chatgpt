@@ -1,0 +1,201 @@
+{
+  "0x3964e0": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  3964e0: b9408a60     \tldr\tw0, [x19, #0x88]\n  3964e4: 95c53836     \tbl\t0x74e45bc <__text+0x74bc5bc>\n  3964e8: f941ee68     \tldr\tx8, [x19, #0x3d8]\n  3964ec: f9004668     \tstr\tx8, [x19, #0x88]\n  3964f0: f941ea68     \tldr\tx8, [x19, #0x3d0]\n  3964f4: f9016a68     \tstr\tx8, [x19, #0x2d0]\n  3964f8: 910b4260     \tadd\tx0, x19, #0x2d0\n  3964fc: 9401dda3     \tbl\t0x40db88 <__text+0x3e5b88>\n  396500: f941f268     \tldr\tx8, [x19, #0x3e0]\n  396504: f900f668     \tstr\tx8, [x19, #0x1e8]\n  396508: 9107a260     \tadd\tx0, x19, #0x1e8\n  39650c: 9401dd9f     \tbl\t0x40db88 <__text+0x3e5b88>\n  396510: f941f668     \tldr\tx8, [x19, #0x3e8]\n  396514: f9016668     \tstr\tx8, [x19, #0x2c8]\n  396518: 910b2260     \tadd\tx0, x19, #0x2c8\n  39651c: 9401dd9b     \tbl\t0x40db88 <__text+0x3e5b88>\n  396520: f941fa68     \tldr\tx8, [x19, #0x3f0]\n  396524: f9016268     \tstr\tx8, [x19, #0x2c0]\n  396528: 910b0260     \tadd\tx0, x19, #0x2c0\n  39652c: 9401dd97     \tbl\t0x40db88 <__text+0x3e5b88>\n  396530: 14000005     \tb\t0x396544 <__text+0x36e544>\n  396534: 97f6f734     \tbl\t0x154204 <__text+0x12c204>\n  396538: f940e679     \tldr\tx25, [x19, #0x1c8]\n  39653c: 95e2d2c1     \tbl\t0x7c4b040 <_writev+0x7c4b040>\n  396540: f9004660     \tstr\tx0, [x19, #0x88]\n  396544: 12001ee8     \tand\tw8, w23, #0xff\n  396548: b9007268     \tstr\tw8, [x19, #0x70]\n  39654c: 910f4268     \tadd\tx8, x19, #0x3d0\n  396550: 9402ee79     \tbl\t0x451f34 <__text+0x429f34>\n  396554: f941ea74     \tldr\tx20, [x19, #0x3d0]\n  396558: 97fe5112     \tbl\t0x32a9a0 <__text+0x3029a0>\n  39655c: f9004260     \tstr\tx0, [x19, #0x80]\n  396560: 95e2f8a1     \tbl\t0x7c547e4 <_writev+0x7c547e4>\n  396564: b00003b4     \tadrp\tx20, 0x40b000 <__text+0x3e3000>\n  396568: 91273294     \tadd\tx20, x20, #0x9cc\n  39656c: aa1b03e0     \tmov\tx0, x27\n  396570: f9405a75     \tldr\tx21, [x19, #0xb0]\n  396574: 9402ee14     \tbl\t0x451dc4 <__text+0x429dc4>\n  396578: 900504e0     \tadrp\tx0, 0xa432000 <_writev+0xa432000>\n  39657c: 91230000     \tadd\tx0, x0, #0x8c0\n  396580: 9402ee67     \tbl\t0x451f1c <__text+0x429f1c>\n  396584: f9003e60     \tstr\tx0, [x19, #0x78]\n  396588: 9402e8ce     \tbl\t0x4508c0 <__text+0x4288c0>\n  39658c: aa1b03e0     \tmov\tx0, x27\n  396590: f9406a75     \tldr\tx21, [x19, #0xd0]\n  396594: 9402ee0c     \tbl\t0x451dc4 <__text+0x429dc4>\n  396598: 900504e0     \tadrp\tx0, 0xa432000 <_writev+0xa432000>\n  39659c: 9123a000     \tadd\tx0, x0, #0x8e8\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x3964e0",
+        "end_exclusive": "0x3965a0",
+        "sha256": "32b57b2c9568834a43fbd357a1cfc8fb4d5e4c309824f8c37b4b31589901e81c"
+      },
+      "linker_function_starts_in_window": [],
+      "next_linker_function_start": "0x396d88",
+      "direct_calls": [
+        {
+          "site": "0x3964e4",
+          "target": "0x74e45bc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3964fc",
+          "target": "0x40db88",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39650c",
+          "target": "0x40db88",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39651c",
+          "target": "0x40db88",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39652c",
+          "target": "0x40db88",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x396534",
+          "target": "0x154204",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39653c",
+          "target": "0x7c4b040",
+          "imported_symbol": "_$s7SwiftUI5ColorV4blueACvgZ",
+          "chained_binding": {
+            "slot": "0xaad4cf0",
+            "symbol": "_$s7SwiftUI5ColorV4blueACvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10354,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x396550",
+          "target": "0x451f34",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x396558",
+          "target": "0x32a9a0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x396560",
+          "target": "0x7c547e4",
+          "imported_symbol": "_swift_release_x20"
+        },
+        {
+          "site": "0x396574",
+          "target": "0x451dc4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x396580",
+          "target": "0x451f1c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x396588",
+          "target": "0x4508c0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x396594",
+          "target": "0x451dc4",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  },
+  "0x39e26c": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  39e26c: aa1e03e3     \tmov\tx3, x30\n  39e270: 97f6ec0a     \tbl\t0x159298 <__text+0x131298>\n  39e274: aa0303fe     \tmov\tx30, x3\n  39e278: a9057bfd     \tstp\tx29, x30, [sp, #0x50]\n  39e27c: 94030e32     \tbl\t0x461b44 <__text+0x439b44>\n  39e280: 910003f3     \tmov\tx19, sp\n  39e284: b9005662     \tstr\tw2, [x19, #0x54]\n  39e288: 97f6eb99     \tbl\t0x1590ec <__text+0x1310ec>\n  39e28c: aa0803f4     \tmov\tx20, x8\n  39e290: 9402df32     \tbl\t0x455f58 <__text+0x42df58>\n  39e294: f9002660     \tstr\tx0, [x19, #0x48]\n  39e298: f85f8008     \tldur\tx8, [x0, #-0x8]\n  39e29c: f9004268     \tstr\tx8, [x19, #0x80]\n  39e2a0: 97f6d3f0     \tbl\t0x153260 <__text+0x12b260>\n  39e2a4: b0053970     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n  39e2a8: f9406e10     \tldr\tx16, [x16, #0xd8]\n  39e2ac: d63f0200     \tblr\tx16\n  39e2b0: 97f6a889     \tbl\t0x1484d4 <__text+0x1204d4>\n  39e2b4: f9002268     \tstr\tx8, [x19, #0x40]\n  39e2b8: 9100011f     \tmov\tsp, x8\n  39e2bc: 9402b5d4     \tbl\t0x44ba0c <__text+0x423a0c>\n  39e2c0: 97f6b406     \tbl\t0x14b2d8 <__text+0x1232d8>\n  39e2c4: b0053970     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n  39e2c8: f9406e10     \tldr\tx16, [x16, #0xd8]\n  39e2cc: d63f0200     \tblr\tx16\n  39e2d0: 97f6a740     \tbl\t0x147fd0 <__text+0x11ffd0>\n  39e2d4: f9003e69     \tstr\tx9, [x19, #0x78]\n  39e2d8: 97f6d7d0     \tbl\t0x154218 <__text+0x12c218>\n  39e2dc: b0053970     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n  39e2e0: f9406e10     \tldr\tx16, [x16, #0xd8]\n  39e2e4: d63f0200     \tblr\tx16\n  39e2e8: 9402c7b6     \tbl\t0x4501c0 <__text+0x4281c0>\n  39e2ec: 94011039     \tbl\t0x3e23d0 <__text+0x3ba3d0>\n  39e2f0: 9402cf38     \tbl\t0x451fd0 <__text+0x429fd0>\n  39e2f4: 7100041f     \tcmp\tw0, #0x1\n  39e2f8: 54000581     \tb.ne\t0x39e3a8 <__text+0x3763a8>\n  39e2fc: aa1403f5     \tmov\tx21, x20\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x39e26c",
+        "end_exclusive": "0x39e300",
+        "sha256": "596c62244c9ac510cca714cdbe452752c50fcc57572a8602b1cad1b9bd06b846"
+      },
+      "linker_function_starts_in_window": [
+        "0x39e26c"
+      ],
+      "next_linker_function_start": "0x39e830",
+      "direct_calls": [
+        {
+          "site": "0x39e270",
+          "target": "0x159298",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e27c",
+          "target": "0x461b44",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e288",
+          "target": "0x1590ec",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e290",
+          "target": "0x455f58",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2a0",
+          "target": "0x153260",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2b0",
+          "target": "0x1484d4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2bc",
+          "target": "0x44ba0c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2c0",
+          "target": "0x14b2d8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2d0",
+          "target": "0x147fd0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2d8",
+          "target": "0x154218",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2e8",
+          "target": "0x4501c0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2ec",
+          "target": "0x3e23d0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2f0",
+          "target": "0x451fd0",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  }
+}

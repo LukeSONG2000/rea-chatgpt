@@ -1,0 +1,71 @@
+{
+  "version": "iOS 1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "instruction_assertions": 7,
+  "imports": {
+    "0xaacd148": {
+      "symbol": "_$s7Combine9PublisherPAASQ6OutputRpzrlE16removeDuplicatesAA10PublishersO06RemoveE0Vy_xGyF",
+      "library_ordinal": 38,
+      "weak": false,
+      "import_ordinal": 6417,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "0xaacd160": {
+      "symbol": "_$s7Combine9PublisherPAAs5NeverO7FailureRtzrlE4sink12receiveValueAA14AnyCancellableCy6OutputQzc_tF",
+      "library_ordinal": 38,
+      "weak": false,
+      "import_ordinal": 6420,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "0xaacce20": {
+      "symbol": "_$s7Combine18PassthroughSubjectC4sendyyxF",
+      "library_ordinal": 38,
+      "weak": false,
+      "import_ordinal": 6318,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    }
+  },
+  "chain": [
+    {
+      "address": "0x4dbbb2c",
+      "operation": "read _inputFocusSubject"
+    },
+    {
+      "address": "0x4dbbb84",
+      "operation": "map KeyPath; candidate getter 0x5fc428 -> 0x60398c4 computes single-payload tag != 1"
+    },
+    {
+      "address": "0x4dbbbd0",
+      "operation": "removeDuplicates"
+    },
+    {
+      "address": "0x4dbbc54",
+      "operation": "sink callback 0x4f48fc0 -> 0x4e433cc -> 0x4ccadbc"
+    },
+    {
+      "address": "0x4ccae34",
+      "operation": "read messageInputInteractionSubject via storage 0xb627348"
+    },
+    {
+      "address": "0x4ccae38",
+      "operation": "pack received bool plus zero into event; enum case meaning unproven"
+    },
+    {
+      "address": "0x4ccae40",
+      "operation": "subject send via helper 0x4643dc"
+    }
+  ],
+  "limits": [
+    "Keypath getter candidate resolved from relative field at 0x81331a8; complete keypath ABI parser not implemented",
+    "This branch emits interaction notifications; no direct UITextView focus action established",
+    "Event enum name and payload layout beyond observed bytes remain unbound"
+  ],
+  "next": "Trace raw focus-request subscription in native UITextView coordinator separately from this deduplicated interaction branch."
+}

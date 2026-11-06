@@ -1,0 +1,53 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "type": "static path recovery",
+  "instruction_assertions": 8,
+  "imports": {
+    "0xaacce70": {
+      "symbol": "_$s7Combine19CurrentValueSubjectC5valuexvg",
+      "library_ordinal": 38,
+      "weak": false,
+      "import_ordinal": 6328,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "0xaacce78": {
+      "symbol": "_$s7Combine19CurrentValueSubjectC5valuexvs",
+      "library_ordinal": 38,
+      "weak": false,
+      "import_ordinal": 6329,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    }
+  },
+  "clear_path": {
+    "start": "0x4cfd3c8",
+    "end": "0x4cfd3e0",
+    "steps": [
+      "get _inputFocusSubject",
+      "resolve payload metadata via type record 0x7cd3e40",
+      "store single-payload empty tag 1 with emptyCases=1 via VWT+0x38",
+      "CurrentValueSubject.value setter",
+      "set preservesKeyboardInset=false"
+    ],
+    "unknown": "Enclosing UI operation and entry conditions not identified"
+  },
+  "other_producers": [
+    {
+      "site": "0x4d128f4",
+      "value": "keyboardVisible when preceding condition holds, otherwise false",
+      "unknown": "upstream operation and guard semantics"
+    },
+    {
+      "site": "0x4e4c654",
+      "value": false,
+      "unknown": "callback owner and guard"
+    }
+  ],
+  "integration_requirement": "Keep request clearing and inset release ordered in the same recovered transition; do not scatter these into unrelated view focus callbacks. Not yet connected to a named user event."
+}

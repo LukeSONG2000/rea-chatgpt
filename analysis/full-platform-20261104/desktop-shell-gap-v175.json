@@ -1,0 +1,43 @@
+{
+  "status": "partial",
+  "question": "Why rebuilt UI lacks official screenshot left rail/top outer frame",
+  "observations": [
+    "User screenshot shows outer vertical navigation, top toolbar, inset rounded page; inner sidebar remains a separate region",
+    "Current renderer.mjs directly initializeApp and manually loads only shared/initial/primary CSS",
+    "Original App Shell HAt reads feature-navigation PS; PS resolves to tM, requiring gate 3085093835 and excluding unsupported-auth",
+    "Original app-runtime CSS hides fallback drag region when actual app-shell titlebar exists; current manual CSS list omits it",
+    "Native window style hiddenInset/vibrancy only supplies OS window integration, not complete application shell"
+  ],
+  "evidence": [
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-primary-7d7313419f84.js",
+      "sha256": "745529956e303674c268a6871e6f5aad49eca7ef5af899952bf0379d829821b6",
+      "utf8ByteOffset": 576849,
+      "excerpt": "function HAt(e){let t=(0,JAt.c)(203),{children:n,footer:r,leftPanelSlot:i,titleBar:a,hasCustomTitleBar:s}=e,c=Jd(q),l=s??a!=null,u=E(),d=(0,RP.useRef)(null),[f,p]=(0,RP.useState)(null),[m,h]=(0,RP.useState)(null),[g,_]=(0,RP.useState)(null),v=(0,RP.useRef)(0),y=(0,RP.useRef)(0),[b,x]=(0,RP.useState)(null),[S,C]=(0,RP.useState)(null),[w,T]=(0,RP.useState)(null),[D,O]=(0,RP.useState)(!1),[k,A]=(0,RP.useState)(i);i!=null&&i!==k&&A(i);let j=(i??(D?k:void 0))?.children,M=i?.fixedWidth$??ZAt,N=X(M),P=i?.appearance??`default`,F=X(Zg)&&(i?.collapsible??!0),I=i?.keepVisibleWhenCollapsed??!1,L=i?.resizeIndicator,R=i?.minimumWidth??240,z=j!=null,B=k!=null,V=X(PS),H=X(oRe),U=V&&i!=null,W=Ca(uS),[ee,G]=(0,RP.useState)(!1),te=z&&F&&!I,ne=o(),re=HAe(),K;t[0]===l?K=t[1]:(K=!l&&_M(),t[0]=l,t[1]=K);let ie=K,ae=re.left>0||re.right>0||ie,[oe,se]=(0,RP.useState)(null),ce=ir(0),le=ir(0),ue=Ka(ce,GAt),de;t[2]===ce?de=t[3]:(de=e=>{ce.set(yf(e).height)},t[2]=ce,t[3]=de);let fe=mf(de),pe=X(Fg),me=X(as),he=Z(ejt,M),ge;t[4]!==F||t[5]!==I||t[6]!==i||t[7]!==H?(ge=0,I&&(ge=H??0),t[4]=F,t[5]=I,t[6]=i,t[7]=H,t[8]=ge"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "utf8ByteOffset": 4046016,
+      "excerpt": "tM=W(V,({get:e})=>{if(!e(e_,`3085093835`))return!1;let t=e(Zv);return t.status!==`denied`||t.reason!==`unsupported-auth`}),b6n=W(V,({get:e})=>!1),x6n=W(V,({get:e})=>!1)})))()}function S6n(e){return e*k6n}function C6n(e,t,n){return n+Math.max(0,Math.min(1,t))*(e-n)}function w6n({c"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-runtime-197e14f5061d.css",
+      "sha256": "9cfc43f766abfcf247c7778a20dde60190a31e87d43ec14ae48a1d60f59f0b0e",
+      "utf8ByteOffset": 747,
+      "excerpt": "._fallbackDragRegion_57y6d_2:has(~[data-app-shell-titlebar],~* [data-app-shell-titlebar]){display:none}}\n"
+    }
+  ],
+  "inference": "Incomplete shell-state/bootstrap parity is a concrete likely cause; missing CSS may also explain duplicate/fallback toolbar presentation. Exact runtime branch still needs DOM/SDK inspection.",
+  "limits": [
+    "Screenshot version not independently identified",
+    "Do not infer all screenshot controls are present in frozen 26.1021.31345 baseline",
+    "No claim enabling one gate alone reproduces full shell or authorizes online services",
+    "No changes to user screenshot/chat content or official app"
+  ],
+  "next": [
+    "Inspect feature gate and auth eligibility in rebuilt runtime and data-app-shell DOM attributes",
+    "Restore supported original App Shell branch, titlebar slots and loader CSS in isolated host",
+    "Verify left rail, inset surface, toolbar, traffic lights, drag regions, sidebar collapse and resize against reference before resuming deeper Remote work"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "partial",
+  "source_sha256": "dfaa41126bcc186917e7b675913b73d02cc8f7de733070eb952a7126d90a19dd",
+  "changes": [
+    "listSectionSeparator hidden all",
+    "scrollContentBackground hidden",
+    "background officialVisualColor OneOff/MainSurfacePrimary"
+  ],
+  "source_evidence": "v383-container.asm and v386-container-findings.json",
+  "resource_evidence": "v387-background-assets.json",
+  "validation": {
+    "status": "pending-system-authorization",
+    "session": 42359,
+    "result_path": "ios-remote-v385.xcresult",
+    "scope_note": "Runner has not reached build, eventual result includes v385 AND v387 source; verify tested source hash before accepting."
+  },
+  "limits": [
+    "No build or light/dark runtime acceptance",
+    "No physical installation",
+    "Row separators unchanged; policy not recovered",
+    "Existing preview not intentionally stopped"
+  ]
+}

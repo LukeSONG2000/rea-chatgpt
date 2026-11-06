@@ -1,0 +1,58 @@
+{
+  "version": "26.1021.31345",
+  "authority": "controlled-target-fragment-replay",
+  "runner_sha256": "06c00ae68e70c722b0baf3268d982cf6df3c84baa2b9c39a9dbe40ce3c07e3c1",
+  "sources": {
+    "webview/assets/app-shared-2cae01273bae.js": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+    "webview/assets/rolldown-runtime-2d059c5e81f4.js": "e0a79ad36c6ca1ffbc796c80aa5661803a9d1bc684e29d1587f48b4ba9a82714"
+  },
+  "implementation": {
+    "initializer": "app-shared.Kst → o_t",
+    "rpcTarget": "app-shared.Wst → i_t",
+    "portTransport": "app-shared.qst → a_t → ygt"
+  },
+  "results": [
+    {
+      "name": "original RPC resolves appHost.services property and call",
+      "status": "passed"
+    },
+    {
+      "name": "separate ports retain separate service owner",
+      "status": "passed"
+    },
+    {
+      "name": "remote exception propagates as error",
+      "status": "passed"
+    },
+    {
+      "name": "service capability can invoke renderer callback",
+      "status": "passed"
+    },
+    {
+      "name": "host readiness call returns synthetic fixture without online service",
+      "status": "passed"
+    },
+    {
+      "name": "RpcTarget instance properties are not exposed as remote capabilities",
+      "status": "passed"
+    },
+    {
+      "name": "unimplemented remote method rejects without breaking valid subsequent calls",
+      "status": "passed"
+    },
+    {
+      "name": "RPC context has no network, Electron, filesystem or process globals",
+      "status": "passed"
+    }
+  ],
+  "passed": 8,
+  "failed": 0,
+  "limitations": [
+    "Only shipped RPC library initialized, not app-runtime or full desktop App",
+    "MessageChannel and service objects are in-memory synthetic fixtures",
+    "Node MessagePort JSON data is materialized into the receiver VM realm; binary/blob transfer is untested",
+    "No Electron main process, real host services, user account or renderer page",
+    "Does not prove UI completeness or exact service schema",
+    "Run with --experimental-vm-modules under message-replay.sb"
+  ]
+}

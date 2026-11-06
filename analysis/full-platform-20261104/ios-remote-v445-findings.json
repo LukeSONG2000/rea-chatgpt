@@ -1,0 +1,170 @@
+{
+  "schema": "rea-ios-component-findings-v1",
+  "batch": "v445",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "kind": "blocking_source_research",
+  "previous_goal_turn": "progress: source-bound font/default metrics and mode-selector evidence changed the next action; this batch closes persistent row construction and corrects inset interpretation",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": [
+    {
+      "evidence_type": "shipped_artifact_static_observation",
+      "conclusion": "The actual ordinary composer constructs both expanded and compact content inside CodexRemotePersistentComposerFieldRow, using compactHeight 48.",
+      "locations": [
+        "0x1985380 isCompact store",
+        "0x1985388 isFocused store",
+        "0x198538c..0x1985390 compactHeight 48",
+        "0x19853d4 -> 0x19876f4 expanded content",
+        "0x19853e8 -> 0x1987900 compact content",
+        "type record 0x7e12d48"
+      ],
+      "limit": "Expanded branch also contains Whisper controls but is not exclusively a voice-only branch."
+    },
+    {
+      "evidence_type": "static_inference",
+      "conclusion": "Expanded content retains structural identity under frame/opacity/hit-testing/accessibility modifiers; compact content is an optional overlay.",
+      "locations": [
+        "0x1992ab0..0x1992d24",
+        "0x1ced4d4..0x1ced548"
+      ],
+      "recovered_rules": {
+        "expanded_frame_height": "isCompact ? compactHeight : nil",
+        "expanded_opacity": "isCompact ? 0 : 1",
+        "expanded_hit_testing": "!isCompact || isFocused",
+        "expanded_accessibility_hidden": "isCompact",
+        "overlay": "compactContent only when isCompact"
+      },
+      "limit": "This is static structure, not proof of UIKit object lifetime or IME behavior on a running device."
+    },
+    {
+      "evidence_type": "shipped_artifact_static_observation",
+      "conclusion": "Compact field focus callback explicitly writes true to the focus Binding.",
+      "locations": [
+        "0x1987fb8 callback construction",
+        "0x1c28adc..0x1c28b00",
+        "0x197cfbc..0x197cfe8 Binding setter at self+0x20"
+      ]
+    },
+    {
+      "evidence_type": "static_inference",
+      "conclusion": "Expanded insets replace top/bottom as well as leading/trailing; the helper result is copied to preserved vector registers before return.",
+      "locations": [
+        "0x19882e4",
+        "0x1988350 -> 0x198a548",
+        "0x1988354 -> 0x26a2ac",
+        "0x198a610 -> 0x269840"
+      ],
+      "rules": {
+        "compact": "style top, leading 2, style bottom, style trailing",
+        "expanded_without_whisper_predicate": "top 17, leading 16, bottom 13, style trailing + (showsFullscreenComposerButton ? 32 : 0)",
+        "expanded_with_whisper_predicate": "style top, leading 16, style bottom, style trailing + (showsFullscreenComposerButton ? 32 : 0)"
+      },
+      "limit": "Whisper predicate interpretation and caller style overrides remain partial. Fullscreen flag getter is 0x1980b7c, metadata+0xd8 field46."
+    },
+    {
+      "evidence_type": "static_inference",
+      "conclusion": "Primary control selects stop, follow-up menu, reconnecting control or ordinary send path; submit prevention and compact-running stop gates are separate.",
+      "locations": [
+        "0x198a620",
+        "0x198a8e8",
+        "0x198a980",
+        "0x197ff34",
+        "0x198f5f0",
+        "0x198f72c",
+        "0x198faec"
+      ],
+      "named_fields": {
+        "metadata+0x90": "preventsPromptSubmission",
+        "metadata+0x94": "allowsSupplementaryWhisperButton",
+        "metadata+0x98": "realtimeVoiceAction",
+        "metadata+0x9c": "allowsCompactRunningTurnStopButton",
+        "metadata+0x44": "isRunningTurn",
+        "metadata+0x3c": "isReconnecting"
+      },
+      "stop_callback": "0x1c2489c emits local action tag25 then branches to 0x1c28668; enum metadata maps tag25 to stopRunningTurn",
+      "limit": "Some boolean helper setup, menu options, full accessibility labels, disabled styling and submission-mode selection still require tracing before a complete UI integration."
+    },
+    {
+      "evidence_type": "shipped_artifact_static_observation",
+      "conclusion": "Maximum height helper selects offset0x58 or0x60 in MessageInputStyle.input, corresponding to maxHeight or maxHeightVerticalCompact.",
+      "locations": [
+        "0x1989b0c..0x1989d34",
+        "0x1989bd0 verticalSizeClass field69",
+        "0x1989c6c offset0x58",
+        "0x1989ce8 offset0x60",
+        "0x1989d0c load"
+      ],
+      "limit": "Selection involves optional UserInterfaceSizeClass comparison; exact compact/unspecified truth table is not yet fully proven."
+    }
+  ],
+  "corrections": [
+    {
+      "supersedes": "v444 findings observation about preserving top/bottom",
+      "correction": "Preservation is only guaranteed for compact mode; expanded mode replaces the values via 0x198a548 and 0x26a2ac."
+    },
+    {
+      "supersedes": "v444 investigation shorthand describing 0x19876f4 as only a voice branch",
+      "correction": "0x1984fa0 always builds that content into the persistent row; visibility is controlled by the row modifiers."
+    }
+  ],
+  "downstream_change": "Build a stable expanded native editor and compact overlay with a 48pt compact row; do not recreate the editor on mode switches or conflate its 44pt minimum with the row height. Preserve explicit primary-control states.",
+  "next_minimum_evidence": [
+    {
+      "decision": "ordinary send button effective label/disabled/action mapping",
+      "locations": [
+        "0x198faec",
+        "0x1c25cb8",
+        "0x1c25cd0",
+        "0x1987524",
+        "MessageInputPrimaryButtonPart"
+      ]
+    },
+    {
+      "decision": "normal empty-thread parent composition before mounting",
+      "locations": [
+        "0x1981448",
+        "0x1989b0c",
+        "0x1984fa0"
+      ]
+    }
+  ],
+  "validation": {
+    "json_parse": "passed",
+    "literal_compact_height_decode": "passed",
+    "inset_register_transfer": "passed",
+    "stop_callback_tag": "passed",
+    "host_changed": false,
+    "ui_runtime": "not_run",
+    "device_install": "not_run",
+    "existing_process_check": "preview87483 runner97181 installer97197 confirmed live this turn; installer elapsed7h02m34s",
+    "runtime_blocker": "existing Xcode first-launch authorization wait; no duplicate process and no bypass"
+  },
+  "limits": [
+    "No new UI integration or device update this batch.",
+    "No claim of visual parity, complete compositor restoration, or Android equivalence.",
+    "Client-local actions remain separate from independent cloud contracts."
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v445-composer-containment.json",
+      "sha256": "a6bf23cb0688cc037d20f424a5952d5f0d6f03a8ebf2e28d527b13aa114ee0c1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v445-control-helpers.json",
+      "sha256": "4732273fa119bb745339c33aefc123d498119ff3c631d3269931f4facba7a168"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v445-primary-button.json",
+      "sha256": "3ce980d86a413354bf7a3cf3483cc7ffb81aa0366d8f7c62e332bf6bd391b47e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v445-primary-state.json",
+      "sha256": "b00f54e84a05696c211b06244bdcd749e5306f08877f313c68bf12e5ca0d80d1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v445-row-types.json",
+      "sha256": "07ff30968807e717e364ae6cf6caabd28377534409a17ee5a9d19b413b077cdf"
+    }
+  ]
+}

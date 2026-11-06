@@ -1,0 +1,156 @@
+{
+  "status": "partial",
+  "batch": "v463",
+  "time": "2026-11-06T11:36:44.959727+08:00",
+  "platform": "iOS",
+  "official_baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "runtime": "iOS27.0 simulator",
+  "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+  "authorization": "user confirmed administrator approval; build and UI tests executed",
+  "changes": [
+    "Remove inherited container accessibility IDs that masked component IDs",
+    "Expose compact overlay to accessibility while retaining persistent editor",
+    "Contain pending-input accessibility groups",
+    "Expose summary expansion state",
+    "Correct stale placeholder/absent-command test expectations",
+    "Start history drag on visible transcript outside the bottom input bar"
+  ],
+  "independent_adaptations": [
+    "SwiftUI accessibility grouping and identifiers belong to the independent host",
+    "Synthetic request and failure adapters remain independent frontend contracts"
+  ],
+  "validation": {
+    "runs": [
+      {
+        "batch": 455,
+        "passed": 1,
+        "failed": 6,
+        "summary": "analysis/full-platform-20261104/ios-remote-v455.summary.json"
+      },
+      {
+        "batch": 456,
+        "passed": 0,
+        "failed": 2,
+        "summary": "analysis/full-platform-20261104/ios-remote-v456.summary.json"
+      },
+      {
+        "batch": 457,
+        "passed": 2,
+        "failed": 1,
+        "summary": "analysis/full-platform-20261104/ios-remote-v457.summary.json"
+      },
+      {
+        "batch": 458,
+        "passed": 1,
+        "failed": 3,
+        "summary": "analysis/full-platform-20261104/ios-remote-v458.summary.json"
+      },
+      {
+        "batch": 459,
+        "passed": 1,
+        "failed": 3,
+        "summary": "analysis/full-platform-20261104/ios-remote-v459.summary.json"
+      },
+      {
+        "batch": 460,
+        "passed": 0,
+        "failed": 1,
+        "summary": "analysis/full-platform-20261104/ios-remote-v460.summary.json"
+      },
+      {
+        "batch": 461,
+        "passed": 5,
+        "failed": 1,
+        "summary": "analysis/full-platform-20261104/ios-remote-v461.summary.json"
+      },
+      {
+        "batch": 462,
+        "passed": 1,
+        "failed": 1,
+        "summary": "analysis/full-platform-20261104/ios-remote-v462.summary.json"
+      },
+      {
+        "batch": 463,
+        "passed": 1,
+        "failed": 0,
+        "summary": "analysis/full-platform-20261104/ios-remote-v463.summary.json"
+      }
+    ],
+    "distinct_passing_cases": {
+      "testNoDebugTitleNavigation": 461,
+      "testRemoteComposerReconnecting": 461,
+      "testRemoteFragmentSequenceUpdates": 461,
+      "testRemoteOrdinaryEditorDraftAndReturn": 461,
+      "testRemoteUserInputNavigationDrafts": 461,
+      "testRemoteTaskScopeAndReturn": 462,
+      "testRemoteUserInputStaysOutsideHistoryScroll": 463
+    },
+    "open_failures": [
+      {
+        "test": "testRemoteRunningStopAndReturn",
+        "last_run": 460,
+        "boundary": "menu item click does not reach submit adapter; temporary counter remains1 after primary action then queue selection",
+        "attempt": "AnyLayout identity adaptation did not fix; reverted along with temporary counter"
+      },
+      {
+        "test": "testRemoteCurrentTurnGeometry",
+        "last_run": 459,
+        "boundary": "selectable response accessibility frame overlaps separator accessibility frame by8pt; video does not show glyph overlap",
+        "geometry": "separator maxY525.67, response minY517.67 and minX0; actual drawing inset differs",
+        "status": "visual/drawn-bound measurement still required; assertion retained"
+      }
+    ],
+    "intermittent_input_observation": "v456 empty typed value; v457/v459/v461 subsequently passed; failure diagnostic retained, IME/device acceptance pending",
+    "physical_device_updated": false,
+    "android_verified": false,
+    "visual_parity": "not accepted",
+    "git_diff_check": "passed",
+    "retention": "targets=[]"
+  },
+  "preview": {
+    "bundle": "local.rea.chatgpt.ioshost",
+    "installed_binary_sha256": "3a24d4cbb5f9cca16416f6f8ebef6b9ff8168a38c0e9bf4e10d3cf0b7e3ee57f",
+    "matches_current_build": true,
+    "live_processes": [
+      "79090 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/F85D0069-A399-4821-B701-94E6ACC9E441/REAChatGPTHost.app/REAChatGPTHost --offline-fixture --codex-home-fixture=tasks"
+    ],
+    "arguments": [
+      "--offline-fixture",
+      "--codex-home-fixture=tasks"
+    ],
+    "window": "Device Hub REA ChatGPT Offline visible and retained; Window menu offered Move to Built-in Retina Display, consistent with external display placement",
+    "cua": "visible preview verified; manual pointer interaction in device content not accepted; XCUITest supplied interaction evidence"
+  },
+  "source_evidence": [
+    "ios-remote-v444-field-configuration.json",
+    "ios-remote-v445-composer-containment.json",
+    "ios-remote-v446-integration.json",
+    "ios-remote-v454-integration.json"
+  ],
+  "limitations": [
+    "Full Remote attachment/permissions/configuration/voice toolbar incomplete",
+    "Official mode selector19872a8 and menu lifecycle not closed",
+    "Complete settings, message renderer and Android native consumers still partial",
+    "Physical iPhone and official visual equivalence not accepted"
+  ],
+  "next": [
+    "Resolve Remote menu item action dispatch with original owner/mode evidence",
+    "Measure selectable text drawn bounds separately from AX hit bounds",
+    "Continue source-backed toolbar integration and device acceptance"
+  ],
+  "files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "275e11a37de0ed3214492762fb673babff132075eb1dd93c229f1aa825621116"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "17708aa0c6d3a1df4c1137097ec1de173c5ce97cafd84f5abf38c3e1e05d31ec"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "a86b25b8d5f1b8175546d8309e114cc95751cfdc8d88545bd8a4590db92537de"
+    }
+  ]
+}

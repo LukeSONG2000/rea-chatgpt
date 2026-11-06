@@ -1,0 +1,20 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs');
+const {createManager}=require('./remote-manager.cjs'),{createThreadReader}=require('./remote-thread-reader.cjs');
+const out=process.argv[2];if(!out||fs.existsSync(out))throw Error('New report required');
+const host='a',epoch='epoch',thread='t',events=[];let metadataCalls=0,race=true,unknown=false,churn=false,foreign=false,delay=null;
+const add=(kind,extra={})=>events.push({host,thread,request:'r',sequence:events.length+1,kind,...extra});
+add('submitted',{prompt:'REA synthetic snapshot'});add('accepted');add('delta',{text:'old'});
+const client={list:()=>[{host,epoch}],async call(h,method,p){if(method==='events/read'){const slice=events.filter(e=>e.sequence>p.cursor);return {host,epoch,result:{events:slice,cursor:slice.at(-1)?.sequence??p.cursor}}}metadataCalls++;if(race){race=false;add('delta',{text:' new'})}if(churn)add('delta',{text:' churn'});if(delay)await delay;return {host,epoch:foreign?'foreign':epoch,result:{thread,schema:'rea.remote.thread.v1',createdAtMs:unknown?null:1000,updatedAtMs:2000,eventCursor:events.length}}}};
+(async()=>{
+ const manager=createManager(client,host),reader=createThreadReader(client,manager),seen=[];
+ await manager.subscribe({type:'notification',key:{hostId:host},methods:'item/agentMessage/delta',listener:n=>seen.push(n.params.delta)});
+ const first=await reader.sendRequest('thread/read',{threadId:thread,includeTurns:true});assert.equal(metadataCalls,2);assert.equal(first.thread.turns[0].items[1].text,'old new');assert.equal(first.thread.createdAt,1);assert.equal(first.independent.eventCursor,4);assert.deepEqual(seen,[' new']);
+ const metadata=await reader.sendRequest('thread/read',{threadId:thread});assert.equal(metadata.thread.turns.length,0);assert.equal(first.thread.preview,'REA synthetic snapshot');assert.equal(metadata.thread.preview,first.thread.preview);assert.equal(metadata.thread.source.custom,'rea-independent-owner');
+ unknown=true;await assert.rejects(reader.sendRequest('thread/read',{threadId:thread}),{code:'thread_metadata_unavailable'});unknown=false;
+ foreign=true;await assert.rejects(reader.sendRequest('thread/read',{threadId:thread}),{code:'connection_invalidated'});foreign=false;
+ churn=true;await assert.rejects(reader.sendRequest('thread/read',{threadId:thread}),{code:'snapshot_busy'});churn=false;
+ await assert.rejects(reader.sendRequest('turn/start',{}),{code:'unsupported'});
+ let release;delay=new Promise(r=>release=r);const pending=reader.sendRequest('thread/read',{threadId:thread});for(let i=0;i<10;i++)await Promise.resolve();manager.dispose();release();await assert.rejects(pending,{code:'manager_disposed'});
+ fs.writeFileSync(out,JSON.stringify({status:'passed',checks:['metadata/event cursor race retries to matching snapshot without duplicate initial delta','preview derived from actual first user message for full and metadata reads','milliseconds converted to seconds','includeTurns defaults false','unknown metadata and replaced epoch reject','continuous updates exhaust bounded retry explicitly','disposal rejects delayed metadata','unsupported RPC rejected'],limits:['Independent partial thread/read adapter, no full renderer or original merge']},null,2),{flag:'wx'});console.log('Thread reader tests passed');
+})().catch(e=>{console.error(e);process.exitCode=1});

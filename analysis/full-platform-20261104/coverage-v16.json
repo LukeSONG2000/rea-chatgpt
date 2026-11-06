@@ -1,0 +1,2002 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-04",
+  "status": "partial",
+  "authority": "implementation-planning index; never a recovery percentage",
+  "baseline": "analysis/full-platform-20261104/baseline.json",
+  "inventory_scope": "28 acceptance units derived from user scope and existing bounded evidence; NOT exhaustive shipped route/menu census",
+  "surfaces": [
+    "macos",
+    "windows",
+    "ios",
+    "android",
+    "official-web",
+    "desktop-web"
+  ],
+  "status_definitions": {
+    "partial": "Specific static or replay evidence exists; full feature/platform acceptance not closed",
+    "unknown": "Required unit has no sufficiently specific indexed implementation evidence",
+    "unsupported": "Required baseline/input absent for this surface",
+    "not-applicable": "Explicit platform-inapplicable unit only; not silently dropped scope"
+  },
+  "requirements": [
+    "macOS and iOS primary acceptance; iOS simulator and iPhone separate gates",
+    "Windows and Android cross-platform builds/interaction validation",
+    "Official Web and desktop-renderer Web independent baselines and products",
+    "Frontend interaction before harness/message flow before Remote; cross-platform analysis continuous",
+    "Original code reuse, evidence-based reconstruction and independent fixture distinct",
+    "All online UI entrances retained, self-owned backend supported, no official service calls",
+    "Zhipu tests through server-side harness; no secrets in frontend/reports",
+    "No Soul reads or writes; no original full target launch; no commit/push/release"
+  ],
+  "features": [
+    {
+      "id": "F01",
+      "area": "frontend",
+      "name": "页面入口、导航、标题、模式切换",
+      "acceptance_requirement": "实际入口→路由→页面身份；返回/前进/切换状态一致",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "partial",
+          "evidence_type": "controlled-replay-and-static",
+          "implementation_origin": "official-renderer-plus-independent-host",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/native-sidebar-state-replay.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Document exact route/owner for each platform; verify navigation and screen state",
+          "blocker": "UI shell shown; complete route/mode inventory incomplete"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Document exact route/owner for each platform; verify navigation and screen state",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Document exact route/owner for each platform; verify navigation and screen state",
+          "blocker": "Native root/title/navigation actual method chain not closed"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "independent-native-runtime",
+          "implementation_origin": "independent-compose-host",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json",
+            "analysis/full-platform-20261104/android-native-milestone-v1.json",
+            "analysis/full-platform-20261104/android-native-milestone-v2.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Native content/harness integration plus keyboard and selection acceptance",
+          "blocker": "Bounded synthetic native host only; original UI, model and full platform interactions unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Document exact route/owner for each platform; verify navigation and screen state",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "partial",
+          "evidence_type": "controlled-replay",
+          "implementation_origin": "official-desktop-renderer-plus-browser-fixture",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/root-mount-v25-synthetic-account.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Document exact route/owner for each platform; verify navigation and screen state",
+          "blocker": "Edge replay only; browser-native host adapter and standalone build incomplete; not official-web equivalence"
+        }
+      }
+    },
+    {
+      "id": "F02",
+      "area": "frontend",
+      "name": "会话列表、项目、稳定身份",
+      "acceptance_requirement": "会话选择、列表增量、删除/归档/错误、切换不串内容",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind list query/store/selection and stable IDs; test A→B→A",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind list query/store/selection and stable IDs; test A→B→A",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind list query/store/selection and stable IDs; test A→B→A",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "android": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind list query/store/selection and stable IDs; test A→B→A",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind list query/store/selection and stable IDs; test A→B→A",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind list query/store/selection and stable IDs; test A→B→A",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F03",
+      "area": "frontend",
+      "name": "全局搜索",
+      "acceptance_requirement": "查询、过滤、取消、迟到结果、分页、打开结果",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close repository→screen→native openResult; test stale query and paging",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close repository→screen→native openResult; test stale query and paging",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close repository→screen→native openResult; test stale query and paging",
+          "blocker": "S01–S05: repository/screen; native openResult and pagination completion unresolved"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close repository→screen→native openResult; test stale query and paging",
+          "blocker": "S01–S05: repository/screen; native openResult and pagination completion unresolved"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close repository→screen→native openResult; test stale query and paging",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close repository→screen→native openResult; test stale query and paging",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F04",
+      "area": "frontend",
+      "name": "资料库、目录、文件卡片",
+      "acceptance_requirement": "首屏/分页、文件夹、网格/列表、权限错误与打开",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close platform openItem/openConversation routing and account isolation",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close platform openItem/openConversation routing and account isolation",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close platform openItem/openConversation routing and account isolation",
+          "blocker": "L01–L06: screen/client; native openItem, capability and full file opening unresolved"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close platform openItem/openConversation routing and account isolation",
+          "blocker": "L01–L06: screen/client; native openItem, capability and full file opening unresolved"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close platform openItem/openConversation routing and account isolation",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close platform openItem/openConversation routing and account isolation",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F05",
+      "area": "frontend",
+      "name": "设置、账户、页脚",
+      "acceptance_requirement": "设置入口及状态、账户页脚加载/错误/恢复",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "partial",
+          "evidence_type": "controlled-replay-and-static",
+          "implementation_origin": "official-renderer-plus-independent-host",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/native-draft-document-reload.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Resolve profile queries and native route owner; no endless loading",
+          "blocker": "Profile footer still loading after document reload; query/host gap not closed"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Resolve profile queries and native route owner; no endless loading",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Resolve profile queries and native route owner; no endless loading",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "android": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Resolve profile queries and native route owner; no endless loading",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Resolve profile queries and native route owner; no endless loading",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Resolve profile queries and native route owner; no endless loading",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F06",
+      "area": "frontend",
+      "name": "输入框、草稿、编辑",
+      "acceptance_requirement": "输入、编辑、提交状态、composing、附件草稿",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "partial",
+          "evidence_type": "controlled-replay-and-static",
+          "implementation_origin": "official-renderer-plus-independent-host",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/native-draft-document-reload.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Bind native composer owner and identity-scoped draft state",
+          "blocker": "Synthetic draft field tested; native IME/edit/send acceptance incomplete"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind native composer owner and identity-scoped draft state",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "independent-system-keyboard-runtime",
+          "implementation_origin": "independent-native-host",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/ios-evidence.json",
+            "analysis/full-platform-20261104/ios-ui-milestone-v8.json",
+            "analysis/full-platform-20261104/ios-selection-milestone-v14.json",
+            "analysis/full-platform-20261104/ios-ime-milestone-v16.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Active-composition switch/late callbacks, other IMEs and physical iPhone",
+          "blocker": "Bounded system Pinyin candidate/send/restart accepted; active-composition switching, other IMEs, physical device and official fidelity unaccepted"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "independent-native-system-interaction-runtime",
+          "implementation_origin": "independent-compose-host",
+          "evidence_refs": [
+            "analysis/full-platform-20261104/android-native-milestone-v1.json",
+            "analysis/full-platform-20261104/android-native-milestone-v2.json",
+            "analysis/full-platform-20261104/android-input-milestone-v9.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Composition, cross-block selection, accessibility and durable anchors",
+          "blocker": "Short text native Copy/Paste, English keyboard and resize follow passed; composition/selection continuity, physical device and official fidelity unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind native composer owner and identity-scoped draft state",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "partial",
+          "evidence_type": "controlled-replay",
+          "implementation_origin": "official-desktop-renderer-plus-browser-fixture",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/root-mount-v25-synthetic-account.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Bind native composer owner and identity-scoped draft state",
+          "blocker": "Edge replay only; browser-native host adapter and standalone build incomplete; not official-web equivalence"
+        }
+      }
+    },
+    {
+      "id": "F07",
+      "area": "frontend",
+      "name": "发送、取消与失败状态",
+      "acceptance_requirement": "乐观→接受→增量→完成/取消/错误、重复点击",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "partial",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/full-platform-20261104/macos-stream-milestone-v2.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Drive official/rebuilt UI using deterministic harness events, not stub success",
+          "blocker": "Synthetic stream only; model UI and durable history not accepted"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Drive official/rebuilt UI using deterministic harness events, not stub success",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "controlled-ui-and-vendor-test",
+          "implementation_origin": "independent-native-host-and-harness",
+          "evidence_refs": [
+            "analysis/full-platform-20261104/ios-ui-milestone-v8.json",
+            "analysis/full-platform-20261104/ios-model-milestone-v10.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Streaming Markdown projection and durable identity/history",
+          "blocker": "Device, durable history, full protocol and live vendor cancellation remain unaccepted"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "independent-native-runtime-and-storage-regression",
+          "implementation_origin": "independent-Compose-host-and-loopback-harness",
+          "evidence_refs": [
+            "analysis/full-platform-20261104/android-native-milestone-v1.json",
+            "analysis/full-platform-20261104/android-native-milestone-v2.json",
+            "analysis/full-platform-20261104/android-harness-milestone-v5.json",
+            "analysis/full-platform-20261104/android-transport-milestone-v6.json",
+            "analysis/full-platform-20261104/android-history-milestone-v7.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Lifecycle scheduling, scroll anchors and corruption UI acceptance; real model separately",
+          "blocker": "Bounded atomic history/restart passed; activity reattachment, performance, attachments, physical-device and official behavior unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Drive official/rebuilt UI using deterministic harness events, not stub success",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Drive official/rebuilt UI using deterministic harness events, not stub success",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F08",
+      "area": "frontend",
+      "name": "消息正文、Markdown、混合内容",
+      "acceptance_requirement": "长文本、段落、列表、引用、流式修订",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "partial",
+          "evidence_type": "controlled-replay-and-static",
+          "implementation_origin": "official-renderer-plus-independent-host",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/root-mount-v25-synthetic-account.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Close content projection→actual renderer and verify mixed-content updates",
+          "blocker": "Original code/text/table fixture displayed; full content taxonomy not exercised"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close content projection→actual renderer and verify mixed-content updates",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close content projection→actual renderer and verify mixed-content updates",
+          "blocker": "M01–M06: streaming preparation/Markdown capability; main-chat consumer binding incomplete"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "independent-native-fixture-runtime",
+          "implementation_origin": "pinned-public-openai-library-plus-independent-host",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json",
+            "analysis/full-platform-20261104/android-markdown-milestone-v3.json",
+            "analysis/full-platform-20261104/android-markdown-replay-v4.json",
+            "analysis/full-platform-20261104/android-harness-milestone-v5.json",
+            "analysis/full-platform-20261104/android-scroll-milestone-v8.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Selection, IME, persistent anchors and performance",
+          "blocker": "Bounded live follow/drag/switch and Markdown pass; process anchors, native input, selection and official fidelity unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close content projection→actual renderer and verify mixed-content updates",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "partial",
+          "evidence_type": "controlled-replay",
+          "implementation_origin": "official-desktop-renderer-plus-browser-fixture",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/root-mount-v25-synthetic-account.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Close content projection→actual renderer and verify mixed-content updates",
+          "blocker": "Edge replay only; browser-native host adapter and standalone build incomplete; not official-web equivalence"
+        }
+      }
+    },
+    {
+      "id": "F09",
+      "area": "frontend",
+      "name": "代码、宽表格、数学块",
+      "acceptance_requirement": "代码复制/换行、表格选区/横滚、块级更新",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "partial",
+          "evidence_type": "controlled-replay-and-static",
+          "implementation_origin": "official-renderer-plus-independent-host",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/root-mount-v25-synthetic-account.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Verify actual renderer behavior and width/selection per platform",
+          "blocker": "Code/table displayed, copy/wrap/selection/width interactions untested"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Verify actual renderer behavior and width/selection per platform",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Verify actual renderer behavior and width/selection per platform",
+          "blocker": "M04–M06: block renderer capability; device table/code/selection untested"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "artifact-static-and-public-source-runtime",
+          "implementation_origin": "pinned-public-openai-library-plus-independent-host",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json",
+            "analysis/full-platform-20261104/android-markdown-milestone-v3.json",
+            "analysis/full-platform-20261104/android-markdown-replay-v4.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Authenticated harness integration, identity-safe stream cancellation, native content interactions",
+          "blocker": "Bounded manually stepped rendering only; real transport, full content, exact official behavior and platform gestures unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Verify actual renderer behavior and width/selection per platform",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "partial",
+          "evidence_type": "controlled-replay",
+          "implementation_origin": "official-desktop-renderer-plus-browser-fixture",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/root-mount-v25-synthetic-account.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Verify actual renderer behavior and width/selection per platform",
+          "blocker": "Edge replay only; browser-native host adapter and standalone build incomplete; not official-web equivalence"
+        }
+      }
+    },
+    {
+      "id": "F10",
+      "area": "frontend",
+      "name": "reasoning 与 DIL",
+      "acceptance_requirement": "reasoning 展开/折叠、DIL 路由与文本切换",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Prove current-version consumer and state mapping; exclude 244/279 assumptions",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Prove current-version consumer and state mapping; exclude 244/279 assumptions",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Prove current-version consumer and state mapping; exclude 244/279 assumptions",
+          "blocker": "Native DIL/Markdown/reasoning paths partial; current consumer/route behavior not validated"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Prove current-version consumer and state mapping; exclude 244/279 assumptions",
+          "blocker": "Native DIL/Markdown/reasoning paths partial; current consumer/route behavior not validated"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Prove current-version consumer and state mapping; exclude 244/279 assumptions",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Prove current-version consumer and state mapping; exclude 244/279 assumptions",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F11",
+      "area": "frontend",
+      "name": "附件与混合输入",
+      "acceptance_requirement": "文件选择、元数据、上传替身、错误、取消、移除",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind picker/platform permissions and local attachment states",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind picker/platform permissions and local attachment states",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind picker/platform permissions and local attachment states",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "android": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind picker/platform permissions and local attachment states",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind picker/platform permissions and local attachment states",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind picker/platform permissions and local attachment states",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F12",
+      "area": "frontend",
+      "name": "选区、复制、辅助功能",
+      "acceptance_requirement": "文本/代码/表格复制、选区保持、读屏语义",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Validate native selection owner and clipboard using synthetic data",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Validate native selection owner and clipboard using synthetic data",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "independent-native-system-interaction-runtime",
+          "implementation_origin": "independent-native-host",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json",
+            "analysis/full-platform-20261104/ios-ui-milestone-v8.json",
+            "analysis/full-platform-20261104/ios-selection-milestone-v14.json",
+            "analysis/full-platform-20261104/ios-stream-selection-milestone-v15.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Composition, long-output and cross-block selection, physical iPhone",
+          "blocker": "Short native selection and append-only continuity accepted; revisions/styles, offscreen/cross-block selection and physical device remain open"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "independent-native-system-interaction-runtime",
+          "implementation_origin": "independent-compose-host",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json",
+            "analysis/full-platform-20261104/android-native-milestone-v1.json",
+            "analysis/full-platform-20261104/android-input-milestone-v9.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Composition, cross-block selection, accessibility and durable anchors",
+          "blocker": "Short text native Copy/Paste, English keyboard and resize follow passed; composition/selection continuity, physical device and official fidelity unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Validate native selection owner and clipboard using synthetic data",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Validate native selection owner and clipboard using synthetic data",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F13",
+      "area": "frontend",
+      "name": "链接、上下文菜单、分享入口",
+      "acceptance_requirement": "点击/长按/菜单、外部打开拒绝、在线入口降级",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Trace link handler and expose truthful unsupported service state",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Trace link handler and expose truthful unsupported service state",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Trace link handler and expose truthful unsupported service state",
+          "blocker": "M06 optional onOpenLink and context routes; platform consumer missing"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json",
+            "analysis/full-platform-20261104/android-markdown-replay-v4.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Authenticated harness integration, identity-safe stream cancellation, native content interactions",
+          "blocker": "Bounded manually stepped rendering only; real transport, full content, exact official behavior and platform gestures unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Trace link handler and expose truthful unsupported service state",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Trace link handler and expose truthful unsupported service state",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F14",
+      "area": "platform",
+      "name": "键盘、IME、手势、焦点",
+      "acceptance_requirement": "composing、键盘开合、拖动、焦点/生命周期",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "partial",
+          "evidence_type": "controlled-replay-and-static",
+          "implementation_origin": "official-renderer-plus-independent-host",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/native-message-bridge-replay.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Native device verification; focus query is not window activation",
+          "blocker": "Focus query adapter exists; native focus transitions/lock/suspend/IME untested"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Native device verification; focus query is not window activation",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "independent-system-keyboard-runtime",
+          "implementation_origin": "independent-native-host",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json",
+            "analysis/full-platform-20261104/ios-ui-milestone-v8.json",
+            "analysis/full-platform-20261104/ios-ime-milestone-v16.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Active-composition switch/late callbacks, other IMEs and physical iPhone",
+          "blocker": "Bounded system Pinyin candidate/send/restart accepted; active-composition switching, other IMEs, physical device and official fidelity unaccepted"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "independent-native-system-interaction-runtime",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json",
+            "analysis/full-platform-20261104/android-input-milestone-v9.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Composition, cross-block selection, accessibility and durable anchors",
+          "blocker": "Short text native Copy/Paste, English keyboard and resize follow passed; composition/selection continuity, physical device and official fidelity unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Native device verification; focus query is not window activation",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Native device verification; focus query is not window activation",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F15",
+      "area": "platform",
+      "name": "滚动、锚点、切换恢复",
+      "acceptance_requirement": "自动跟随/用户拖动、历史prepend、宽内容、锚点恢复",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind list/scroll owner; retain stable anchors across updates",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind list/scroll owner; retain stable anchors across updates",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "independent-native-runtime",
+          "implementation_origin": "independent-UIKit",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json",
+            "analysis/full-platform-20261104/ios-scroll-milestone-v13.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Identity-based durable anchors, exact reading-position recovery, physical-device and performance tests",
+          "blocker": "Only bounded simulator follow/non-tail mode validated; exact anchors and official behavior unproved"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "independent-native-system-interaction-runtime",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json",
+            "analysis/full-platform-20261104/android-scroll-milestone-v8.json",
+            "analysis/full-platform-20261104/android-input-milestone-v9.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Composition, cross-block selection, accessibility and durable anchors",
+          "blocker": "Short text native Copy/Paste, English keyboard and resize follow passed; composition/selection continuity, physical device and official fidelity unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind list/scroll owner; retain stable anchors across updates",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind list/scroll owner; retain stable anchors across updates",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F16",
+      "area": "platform",
+      "name": "页面与进程重启恢复",
+      "acceptance_requirement": "草稿/锚点/账户作用域、页面重建、应用重启",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "partial",
+          "evidence_type": "controlled-replay-and-static",
+          "implementation_origin": "official-renderer-plus-independent-host",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/native-draft-document-reload.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Verify storage source, fresh renderer and separate process lifetimes",
+          "blocker": "Fresh document restores draft via host memory; disk and separate-process recovery unaccepted"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Verify storage source, fresh renderer and separate process lifetimes",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "independent-system-keyboard-runtime",
+          "implementation_origin": "independent-native-host",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json",
+            "analysis/full-platform-20261104/ios-ui-milestone-v8.json",
+            "analysis/full-platform-20261104/ios-ime-milestone-v16.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Active-composition switch/late callbacks, other IMEs and physical iPhone",
+          "blocker": "Bounded system Pinyin candidate/send/restart accepted; active-composition switching, other IMEs, physical device and official fidelity unaccepted"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "independent-native-runtime-and-storage-regression",
+          "implementation_origin": "independent-compose-host",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json",
+            "analysis/full-platform-20261104/android-native-milestone-v1.json",
+            "analysis/full-platform-20261104/android-native-milestone-v2.json",
+            "analysis/full-platform-20261104/android-history-milestone-v7.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Lifecycle scheduling, scroll anchors and corruption UI acceptance; real model separately",
+          "blocker": "Bounded atomic history/restart passed; activity reattachment, performance, attachments, physical-device and official behavior unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Verify storage source, fresh renderer and separate process lifetimes",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Verify storage source, fresh renderer and separate process lifetimes",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F17",
+      "area": "platform",
+      "name": "主题、字体、图标、缩放",
+      "acceptance_requirement": "明暗主题、动态字号、平台缩放、资源一致性",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind resource hashes and native metrics; no cross-platform pixel assumption",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind resource hashes and native metrics; no cross-platform pixel assumption",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind resource hashes and native metrics; no cross-platform pixel assumption",
+          "blocker": "R05/R06 theme and style static; per-platform metrics/appearance untested"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/takeover-20261103/frontend-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind resource hashes and native metrics; no cross-platform pixel assumption",
+          "blocker": "R05/R06 theme and style static; per-platform metrics/appearance untested"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind resource hashes and native metrics; no cross-platform pixel assumption",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Bind resource hashes and native metrics; no cross-platform pixel assumption",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F18",
+      "area": "platform",
+      "name": "桌面窗口与系统入口",
+      "acceptance_requirement": "标题栏/交通灯、最小化、快捷键、菜单、生命周期",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "partial",
+          "evidence_type": "controlled-replay-and-static",
+          "implementation_origin": "official-renderer-plus-independent-host",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/native-window-lifecycle.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Native runtime and device acceptance independent of renderer screenshots",
+          "blocker": "Programmatic resize/minimize/restore passed in stock Electron; controls/menus/native runtime parity incomplete"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Native runtime and device acceptance independent of renderer screenshots",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "not-applicable",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Native runtime and device acceptance independent of renderer screenshots",
+          "blocker": "Desktop titlebar and window controls not a mobile acceptance requirement; mobile lifecycle remains F14/F16"
+        },
+        "android": {
+          "status": "not-applicable",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Native runtime and device acceptance independent of renderer screenshots",
+          "blocker": "Desktop titlebar and window controls not a mobile acceptance requirement; mobile lifecycle remains F14/F16"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Native runtime and device acceptance independent of renderer screenshots",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Native runtime and device acceptance independent of renderer screenshots",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F19",
+      "area": "frontend",
+      "name": "登录、升级、分享与线上入口",
+      "acceptance_requirement": "完整入口/状态；未接服务明确错误/不可用",
+      "priority": 0,
+      "surfaces": {
+        "macos": {
+          "status": "partial",
+          "evidence_type": "controlled-replay-and-static",
+          "implementation_origin": "official-renderer-plus-independent-host",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/ui-chain.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Retain UI+adapter boundary; do not fake accounts, billing or cloud capability",
+          "blocker": "Sign-in/upgrade affordances observed; online service behavior intentionally not restored"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Retain UI+adapter boundary; do not fake accounts, billing or cloud capability",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Retain UI+adapter boundary; do not fake accounts, billing or cloud capability",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "android": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Retain UI+adapter boundary; do not fake accounts, billing or cloud capability",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Retain UI+adapter boundary; do not fake accounts, billing or cloud capability",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "partial",
+          "evidence_type": "controlled-replay",
+          "implementation_origin": "official-desktop-renderer-plus-browser-fixture",
+          "evidence_refs": [
+            "analysis/desktop-official-20261104/root-mount-v25-synthetic-account.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Retain UI+adapter boundary; do not fake accounts, billing or cloud capability",
+          "blocker": "Edge replay only; browser-native host adapter and standalone build incomplete; not official-web equivalence"
+        }
+      }
+    },
+    {
+      "id": "F20",
+      "area": "frontend-later",
+      "name": "文件预览、内置浏览器",
+      "acceptance_requirement": "逐文件类型、导航、权限、缩放、返回恢复",
+      "priority": 3,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "First prove distinct actual feature and version; do not equate any WebView to browser",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "First prove distinct actual feature and version; do not equate any WebView to browser",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "First prove distinct actual feature and version; do not equate any WebView to browser",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "android": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "First prove distinct actual feature and version; do not equate any WebView to browser",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "First prove distinct actual feature and version; do not equate any WebView to browser",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "First prove distinct actual feature and version; do not equate any WebView to browser",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "F21",
+      "area": "frontend-later",
+      "name": "语音与其他已确认入口",
+      "acceptance_requirement": "录音/播放/权限/中断/错误状态",
+      "priority": 3,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Inventory actual current-version features and platform service owners",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Inventory actual current-version features and platform service owners",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Inventory actual current-version features and platform service owners",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "android": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Inventory actual current-version features and platform service owners",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Inventory actual current-version features and platform service owners",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Inventory actual current-version features and platform service owners",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "M01",
+      "area": "message",
+      "name": "身份与状态投影",
+      "acceptance_requirement": "request/turn/message/conversation、修订、订阅代次",
+      "priority": 1,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close Android l0/k0 observer edge and iOS native consumer; test late events",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close Android l0/k0 observer edge and iOS native consumer; test late events",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "evidence-available-not-app-accepted",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close Android l0/k0 observer edge and iOS native consumer; test late events",
+          "blocker": "Android projection known but l0/k0→UI observer gap; iOS worker→native consumer gap"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "independent-native-runtime-and-storage-regression",
+          "implementation_origin": "independent-Compose-host-and-loopback-harness",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json",
+            "analysis/full-platform-20261104/android-harness-milestone-v5.json",
+            "analysis/full-platform-20261104/android-history-milestone-v7.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Lifecycle scheduling, scroll anchors and corruption UI acceptance; real model separately",
+          "blocker": "Bounded atomic history/restart passed; activity reattachment, performance, attachments, physical-device and official behavior unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close Android l0/k0 observer edge and iOS native consumer; test late events",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close Android l0/k0 observer edge and iOS native consumer; test late events",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "H01",
+      "area": "harness",
+      "name": "独立本地后端与存储",
+      "acceptance_requirement": "确定性事件流、历史、附件、失败/取消、重连",
+      "priority": 1,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "independent-design",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/reference-replay.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Implement shared contract and separate official-wire adapters; no production API edits",
+          "blocker": "Reference models/specs are not running harness or device validation"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Implement shared contract and separate official-wire adapters; no production API edits",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "independent-design",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/reference-replay.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Implement shared contract and separate official-wire adapters; no production API edits",
+          "blocker": "Reference models/specs are not running harness or device validation"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "independent-native-runtime-and-storage-regression",
+          "implementation_origin": "independent-Compose-host-and-loopback-harness",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/reference-replay.json",
+            "analysis/full-platform-20261104/android-harness-milestone-v5.json",
+            "analysis/full-platform-20261104/android-transport-milestone-v6.json",
+            "analysis/full-platform-20261104/android-history-milestone-v7.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Lifecycle scheduling, scroll anchors and corruption UI acceptance; real model separately",
+          "blocker": "Bounded atomic history/restart passed; activity reattachment, performance, attachments, physical-device and official behavior unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Implement shared contract and separate official-wire adapters; no production API edits",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "independent-design",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/reference-replay.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Implement shared contract and separate official-wire adapters; no production API edits",
+          "blocker": "Reference models/specs are not running harness or device validation"
+        }
+      }
+    },
+    {
+      "id": "H02",
+      "area": "harness",
+      "name": "Zhipu 模型与自有后端",
+      "acceptance_requirement": "真实流式、鉴权、超时、取消、错误",
+      "priority": 1,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Read selected CC Switch config in harness only; synthetic prompts; prove configured API works",
+          "blocker": "Configured provider is not verified model streaming/cancel behavior; no credential copied into evidence"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Read selected CC Switch config in harness only; synthetic prompts; prove configured API works",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "partial",
+          "evidence_type": "controlled-ui-and-vendor-test",
+          "implementation_origin": "independent-native-host-and-harness",
+          "evidence_refs": [
+            "analysis/full-platform-20261104/ios-model-milestone-v10.json"
+          ],
+          "behavior_acceptance": "partial",
+          "next_action": "Streaming Markdown projection and durable identity/history",
+          "blocker": "Device, durable history, full protocol and live vendor cancellation remain unaccepted"
+        },
+        "android": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Read selected CC Switch config in harness only; synthetic prompts; prove configured API works",
+          "blocker": "Configured provider is not verified model streaming/cancel behavior; no credential copied into evidence"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Read selected CC Switch config in harness only; synthetic prompts; prove configured API works",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Read selected CC Switch config in harness only; synthetic prompts; prove configured API works",
+          "blocker": "Configured provider is not verified model streaming/cancel behavior; no credential copied into evidence"
+        }
+      }
+    },
+    {
+      "id": "R01",
+      "area": "remote",
+      "name": "设备、绑定、连接与路由",
+      "acceptance_requirement": "发现/绑定、host/connection/thread/request、断线恢复",
+      "priority": 2,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close discovery→pool and iOS Remote entry; keep ordinary chat protocol separate",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close discovery→pool and iOS Remote entry; keep ordinary chat protocol separate",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close discovery→pool and iOS Remote entry; keep ordinary chat protocol separate",
+          "blocker": "RC-I: native Remote entry and UI/RPC/cleanup chain untraced; Android findings not transferable"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "not-implemented",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/remote-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close discovery→pool and iOS Remote entry; keep ordinary chat protocol separate",
+          "blocker": "293 session pool/RPC entry observations; discovery/relay/UI/owner closure and real host runtime unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close discovery→pool and iOS Remote entry; keep ordinary chat protocol separate",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Close discovery→pool and iOS Remote entry; keep ordinary chat protocol separate",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "R02",
+      "area": "remote",
+      "name": "目录、任务、线程、审批、Goal",
+      "acceptance_requirement": "加载/失败、发送、取消、审批绑定、owner能力",
+      "priority": 2,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Recover UI consumers then independent local executor with explicit capability/error states",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Recover UI consumers then independent local executor with explicit capability/error states",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Recover UI consumers then independent local executor with explicit capability/error states",
+          "blocker": "RC-I: native Remote entry and UI/RPC/cleanup chain untraced; Android findings not transferable"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "not-implemented",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/remote-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Recover UI consumers then independent local executor with explicit capability/error states",
+          "blocker": "293 session pool/RPC entry observations; discovery/relay/UI/owner closure and real host runtime unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Recover UI consumers then independent local executor with explicit capability/error states",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Recover UI consumers then independent local executor with explicit capability/error states",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "R03",
+      "area": "remote",
+      "name": "双主机本地真实执行",
+      "acceptance_requirement": "主机隔离、请求回执、单机故障、权限边界",
+      "priority": 2,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Two isolated controlled hosts and paired frontend; execute only dedicated test-directory tasks",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Two isolated controlled hosts and paired frontend; execute only dedicated test-directory tasks",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/feature-chains.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Two isolated controlled hosts and paired frontend; execute only dedicated test-directory tasks",
+          "blocker": "RC-I: native Remote entry and UI/RPC/cleanup chain untraced; Android findings not transferable"
+        },
+        "android": {
+          "status": "partial",
+          "evidence_type": "artifact-static",
+          "implementation_origin": "not-implemented",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/remote-evidence.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Two isolated controlled hosts and paired frontend; execute only dedicated test-directory tasks",
+          "blocker": "293 session pool/RPC entry observations; discovery/relay/UI/owner closure and real host runtime unaccepted"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Two isolated controlled hosts and paired frontend; execute only dedicated test-directory tasks",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Two isolated controlled hosts and paired frontend; execute only dedicated test-directory tasks",
+          "blocker": "Feature required by accepted scope, but no sufficiently specific per-surface evidence indexed in this bounded first pass"
+        }
+      }
+    },
+    {
+      "id": "P01",
+      "area": "cross-platform",
+      "name": "性能、视觉与技术路线",
+      "acceptance_requirement": "分段耗时/帧、原生差异、三种共享路线",
+      "priority": 3,
+      "surfaces": {
+        "macos": {
+          "status": "unknown",
+          "evidence_type": "independent-design",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/frontend-validation.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Freeze device/baseline/test vectors; shared contracts first, no assumed shared UI",
+          "blocker": "Reference models/specs are not running harness or device validation"
+        },
+        "windows": {
+          "status": "unknown",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Freeze device/baseline/test vectors; shared contracts first, no assumed shared UI",
+          "blocker": "Only package identity pinned; no Windows function-specific source correspondence or native build/runtime acceptance"
+        },
+        "ios": {
+          "status": "unknown",
+          "evidence_type": "independent-design",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/frontend-validation.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Freeze device/baseline/test vectors; shared contracts first, no assumed shared UI",
+          "blocker": "Reference models/specs are not running harness or device validation"
+        },
+        "android": {
+          "status": "unknown",
+          "evidence_type": "independent-design",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/frontend-validation.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Freeze device/baseline/test vectors; shared contracts first, no assumed shared UI",
+          "blocker": "Reference models/specs are not running harness or device validation"
+        },
+        "official-web": {
+          "status": "unsupported",
+          "evidence_type": "unknown",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [],
+          "behavior_acceptance": "not-run",
+          "next_action": "Freeze device/baseline/test vectors; shared contracts first, no assumed shared UI",
+          "blocker": "No independently versioned website artifact/route baseline; desktop assets cannot fill this cell"
+        },
+        "desktop-web": {
+          "status": "unknown",
+          "evidence_type": "independent-design",
+          "implementation_origin": "not-implemented-or-not-audited",
+          "evidence_refs": [
+            "analysis/reference-architecture-20261103/frontend-validation.json"
+          ],
+          "behavior_acceptance": "not-run",
+          "next_action": "Freeze device/baseline/test vectors; shared contracts first, no assumed shared UI",
+          "blocker": "Reference models/specs are not running harness or device validation"
+        }
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "G01",
+      "gap": "Complete shipped route/menu/action inventory not yet enumerated for any surface",
+      "next": "Bind route tables/menu handlers/action families to asset hashes; expand acceptance units without rewriting history"
+    },
+    {
+      "id": "G02",
+      "gap": "Official website baseline missing",
+      "next": "Independent public artifact/source discovery; no real account/chats"
+    },
+    {
+      "id": "G03",
+      "gap": "Desktop-web browser platform adapter missing",
+      "next": "Replace Electron impersonation with explicit browser capabilities, retaining desktop-origin renderer identity"
+    },
+    {
+      "id": "G04",
+      "gap": "Windows extracted member correspondence and native runtime unverified",
+      "next": "Compare selected root/renderer/preload members with freshly hashed embedded ASAR, then build/run on Windows"
+    },
+    {
+      "id": "G05",
+      "gap": "iOS main-chat native owner/bridge closure and device acceptance missing",
+      "next": "Build native host and close message/composer/scroll/selection owner with source evidence"
+    },
+    {
+      "id": "G06",
+      "gap": "Android model→UI observer and composer owner missing",
+      "next": "Trace l0/k0 writers to UI collectors and a63/hmw/jid0 consumers; confirm complex branches in smali"
+    },
+    {
+      "id": "G07",
+      "gap": "macOS/iOS fixture and Zhipu UI connections exist; durable shared server history, live cancellation, Android/Web integrations incomplete",
+      "next": "Complete scoped integrations and provider error/cancellation gates; no full backend acceptance"
+    },
+    {
+      "id": "G08",
+      "gap": "Remote real local executor and iOS chain unaccepted",
+      "next": "Separate local host adapter, pairing/approval scope and dual-host replay; retain unknown official bindings"
+    }
+  ],
+  "previous_snapshot": "analysis/full-platform-20261104/coverage-v15.json",
+  "update": "iOS actual Chinese candidate, composition-send guard and committed/uncommitted restart acceptance"
+}

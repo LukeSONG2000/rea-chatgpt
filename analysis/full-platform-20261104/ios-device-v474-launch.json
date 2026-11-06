@@ -1,0 +1,59 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "process",
+      "launch",
+      "--device",
+      "5998651F-A691-5FB2-A351-40FBCBA8081B",
+      "--json-output",
+      "analysis/full-platform-20261104/ios-device-v474-launch.json",
+      "local.rea.chatgpt.ioshost",
+      "--offline-fixture",
+      "--codex-home-fixture=tasks"
+    ],
+    "commandType" : "devicectl.device.process.launch",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.32"
+  },
+  "result" : {
+    "deviceIdentifier" : "5998651F-A691-5FB2-A351-40FBCBA8081B",
+    "launchOptions" : {
+      "activatedWhenStarted" : true,
+      "arguments" : [
+        "--offline-fixture",
+        "--codex-home-fixture=tasks"
+      ],
+      "environmentVariables" : {
+        "TERM" : "dumb"
+      },
+      "platformSpecificOptions" : {
+
+      },
+      "startStopped" : false,
+      "terminateExistingInstances" : false,
+      "user" : {
+        "active" : true
+      }
+    },
+    "process" : {
+      "auditToken" : [
+        4294967295,
+        501,
+        501,
+        501,
+        501,
+        16565,
+        0,
+        46939
+      ],
+      "executable" : "file:///private/var/containers/Bundle/Application/D4008219-3F0B-45AF-BD1A-FE29F3879851/REAChatGPTHost.app/REAChatGPTHost",
+      "processIdentifier" : 16565
+    }
+  }
+}

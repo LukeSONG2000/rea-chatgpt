@@ -1,0 +1,42 @@
+{
+  "provenance": "independent-synthetic-fixture-not-official-user-data",
+  "description": "Offline inputs for the original paginated history converter. No account or real conversation data.",
+  "response": {
+    "conversation_id": "offline-fixture-conversation-001",
+    "title": "离线组件验证",
+    "current_node": "offline-assistant-001",
+    "is_archived": false,
+    "is_read_only": true,
+    "default_model_slug": "offline-fixture-model",
+    "disabled_tool_ids": [],
+    "messages": [
+      {
+        "id": "offline-user-001",
+        "author": {"role": "user", "name": null, "metadata": {}},
+        "create_time": 0,
+        "update_time": null,
+        "content": {"content_type": "text", "parts": ["展示本地消息组件、代码和表格。"]},
+        "status": "finished_successfully",
+        "end_turn": null,
+        "weight": 1,
+        "metadata": {},
+        "recipient": "all",
+        "channel": null
+      },
+      {
+        "id": "offline-assistant-001",
+        "author": {"role": "assistant", "name": null, "metadata": {}},
+        "create_time": 1,
+        "update_time": null,
+        "content": {"content_type": "text", "parts": ["这是合成本地数据，不是在线生成。\n\n```js\nconst mode = 'offline';\n```\n\n| 内容 | 来源 |\n| --- | --- |\n| 消息 | 本地夹具 |\n"]},
+        "status": "finished_successfully",
+        "end_turn": true,
+        "weight": 1,
+        "metadata": {},
+        "recipient": "all",
+        "channel": "final"
+      }
+    ],
+    "page_info": {"has_previous_page": false, "start_cursor": null}
+  }
+}

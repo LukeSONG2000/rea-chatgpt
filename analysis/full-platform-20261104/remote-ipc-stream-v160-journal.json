@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "accepted-only batch advances cursor without invented notification",
+    "same cursor retry replays exactly",
+    "public mutation does not alter journal",
+    "current cursor returns empty",
+    "unavailable history and evicted journal require snapshot",
+    "future cursor and disposed manager reject"
+  ],
+  "limits": [
+    "Independent journal; consumers must check fromCursor before applying"
+  ]
+}

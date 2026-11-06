@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v134-macos/REA ChatGPT Offline.app",
+  "steps": [
+    {
+      "operation": "create-send-cancel-draft-rename",
+      "status": "passed",
+      "projectId": "g-p-rea-local-de1e7b3f-fe2b-4bc1-b935-2388b616fac7",
+      "conversationId": "offline-local-ac30a986-b6dd-402a-bd48-1887b991e61c",
+      "deniedPrimaryWrite": true
+    },
+    {
+      "operation": "packaged-cold-recovery",
+      "status": "passed",
+      "pid": 25788
+    }
+  ],
+  "pageErrors": [],
+  "limits": [
+    "CDP attaches to bundled launcher; no injected main loader or service mounting",
+    "macOS fixture only, no Zhipu/Windows/full gesture acceptance"
+  ],
+  "runtime": {
+    "pid": 25731,
+    "launcher": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v134-macos/REA ChatGPT Offline.app/Contents/MacOS/REAOfflineLauncher",
+    "distribution": {
+      "artifactPlatform": "macos",
+      "mode": "local-research-only",
+      "runtime": "stock Electron 45.1.0",
+      "officialProduct": {
+        "name": "openai-codex-electron",
+        "productName": "Codex",
+        "version": "26.1021.31345",
+        "main": ".vite/build/early-bootstrap.js"
+      }
+    }
+  },
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/native-bundle-v134-interaction-r2.png",
+  "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nPinned\nREA synthetic project\nProjects\nREA synthetic bundle renamed\nREA synthetic packaged project complete\nREA synthetic unpinned project\nRecents\nREA synthetic packaged project complete\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\nYou said:\nREA synthetic packaged project complete\nChatGPT said:\n\n本地回放：消息增量已接入。\n\nJavaScript\nconst source = \"fixture\";\nYou said:\nREA synthetic packaged project cancel\nChatGPT can make mistakes. Check important info.\nLatest response\n\nREA synthetic packaged unsent draft"
+}

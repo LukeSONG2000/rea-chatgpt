@@ -1,0 +1,14 @@
+{
+  "evidence_type": "artifact-static",
+  "items": [
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "utf8_offset": 6160399,
+      "excerpt": "&(e.set($Y,a,o),o!=null&&d(o))),r}finally{e.set(S7i,t,e=>e-1),m?.undo(),wB(t),e.queryClient.invalidateQueries({queryKey:[WB]}),e.queryClient.invalidateQueries({predicate:UB}),e.queryClient.invalidateQueries({queryKey:[iz]}),e.queryClient.invalidateQueries({queryKey:VB()})}}async function K7i({scope:e,conversationId:t,previousTitle:n,title:r,expectedIdentity:i,assertRequestCurrent:a}){let o=r.trim();if(o.length===0||o===n?.trim())return;e.get(Hb),e.get($);let s=async n=>{a?.(),await sv.safePost(`/conversation/id/{conversation_id}/rename`,{expectedIdentity:i,parameters:{path:{conversation_id:t}},requestBody:{title:n}}),a?.(),Q2r({scope:e,conversationId:t,title:n}),s9i(e,t,e=>({...e,title:n})),N9i(e.queryClient),e.query.snapshot(XB,t).setData(e=>e==null?e:{...e,title:n}),YY(e,t,`refresh`)};if(n==null){await s(o);return}await Nk(e,{label:_K.renameUndone,transitionQueueKey:`chatgpt-thread-title:${t}`},{perform:()=>s(o),redo:()=>s(o),undo:()=>s(n)})}function q7i({scope:e,conversationId:t}){let n=X9i.get(t);if(n!=null)return n;let r=e.get(q_);e.set(QY,t,!0);let i=e.queryClient.getQueriesData({queryKey:[WB]}),a=e.queryClient.getQueriesData("
+    }
+  ],
+  "limits": [
+    "Runtime confirms DELETE request independently; static search alone does not prove invocation"
+  ]
+}

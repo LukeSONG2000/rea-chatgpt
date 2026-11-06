@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "android",
+  "baseline": "1.2026.293; independent host, not official transport",
+  "evidence_type": "independent-native-fixture-runtime",
+  "runtime": "dedicated Android 35 emulator through adb reverse to authenticated Mac loopback harness",
+  "verified": [
+    "Native send reaches fixture and displays Local fixture reply / completed",
+    "B slow reply remains separate from completed A reply during B/A/B switching",
+    "Stop freezes partial text for 2.5 seconds; local cancelled state retained",
+    "Reply and cancelled screenshots reviewed"
+  ],
+  "implemented_not_exhaustively_tested": [
+    "scope/account/conversation/request and sequence/subscription/revision checks",
+    "NDJSON byte/line limits, request/read/deadline bounds, no redirects/proxy",
+    "Exact scoped cancel POST; acknowledgement not presented as confirmed server termination"
+  ],
+  "security_boundary": [
+    "Transport token lives only in app-private pairing file mode 0600; no provider credential copied",
+    "Client only accepts explicit http://127.0.0.1:<port> pairing; adb reverse only for dedicated emulator",
+    "INTERNET permission now present; earlier permission-absence observations apply only to older APKs",
+    "Cleartext permitted for loopback domain only; network security config is not a blanket HTTPS firewall"
+  ],
+  "limitations": [
+    "No real Zhipu acceptance on Android",
+    "Only latest turn per synthetic conversation kept in memory; no generated-history/rotation/process recovery",
+    "No explicit server-cancel acknowledgement or provider cancellation acceptance",
+    "Malformed-stream, unauthorized pairing and timeout paths need Android negative tests",
+    "No official fidelity, real device or performance acceptance"
+  ],
+  "failure_review": {
+    "v1": "Switch-back content check failed before asynchronous render settled",
+    "v2": "Reply wait failed; insufficient UI diagnostics",
+    "v3": "Screenshot complete but AX hierarchy stale at partial text/delta, confirming test observation mismatch",
+    "v4": "Passed after UIAutomation cache refresh before native polling"
+  },
+  "source_and_evidence_sha256": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/LocalHarness.kt": "f890c3ba622c5fa551bfab46bc840fd190cf4471ba061473c7675695ef47fd8c",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "5677ad52b7fb3b442db9c2124b5aea8e7609deb833284cf922ad569298eb5739",
+    "implementation/android/app/src/main/res/xml/network_security_config.xml": "d1237c366fa334b95c4bca4a3943a29ba58606c1afa460cadd9a75e88a5c16bc",
+    "implementation/android/app/src/main/AndroidManifest.xml": "9d9eec1408cde123efadba00ac6a9f009de18aa1f138b067df2d15df655f3d4b",
+    "implementation/android/test-harness.py": "e67d99d3eccd6e999d7d343c33945ca3b7245d5415fbbc568083812e167b8a59",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "8029593f284fa37ecec403ecfb8a69e194613e877c2823fb11852ba1ce8c1ec8",
+    "analysis/full-platform-20261104/android-harness-build-v5.log": "103d0a21f5b1ff8645412be673035c7db2021365b4aaf2dab77f419e232fe763",
+    "analysis/full-platform-20261104/android-harness-runtime-v4.json": "9c9684827f49d6e132713e44dc2923297fb29aed1edb95c355309411dfe64d1d",
+    "analysis/full-platform-20261104/android-harness-runtime-v4/harness-cancel.png": "0d677017eb9e998d459de923acd7e5776d885b7a57c68875843e881d06a137ac",
+    "analysis/full-platform-20261104/android-harness-runtime-v4/harness-cancel.xml": "0290f3c993f2006a52766573b0a65754335dc3b37f0596e4351d46a08f0904b6",
+    "analysis/full-platform-20261104/android-harness-runtime-v4/instrumentation.log": "dd707861906725ac74b173a9195fed2e1765f7424a4fc5342dfdb3eb049e35ca",
+    "analysis/full-platform-20261104/android-harness-runtime-v4/harness-reply.png": "15b9fbf6aaf8ca35beb8369f86feff503d798a69f3eed165969d90164b39751b",
+    "analysis/full-platform-20261104/android-harness-runtime-v4/harness-reply.xml": "a1a86a9fb4fdb46bd910a386b7d9db8f23e0f057f81df5a5260f92a9b5d7ae95"
+  },
+  "next_action": "Negative transport tests and lifecycle-safe durable message model; separately opt in to synthetic Zhipu acceptance"
+}

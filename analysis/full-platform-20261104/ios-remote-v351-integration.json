@@ -1,0 +1,39 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static",
+  "integration_decision": "Replace generic command activity label only after resolving running versus normal summary inputs; no new speculative running timer.",
+  "findings": [
+    {
+      "offset": "0x1a3a908",
+      "conclusion": "Command summary selects distinct label content via w25. True constructs RunningCommandExecutionSummaryText (record0x7e11fd8), false constructs styled Text (record0x7e11fa0). Meaning of all upstream status bits is unresolved."
+    },
+    {
+      "offset": "0x1a3a9c4",
+      "conclusion": "Normal summary formatter0x1a3ccec has optional duration branches, localization keys codex_remote_command_execution_ran_command_duration_summary and codex_remote_command_execution_ran_duration_summary. Do not assign these labels to all states."
+    },
+    {
+      "offset": "0x1a3a9f4;0x1a3aa24",
+      "conclusion": "Normal label uses body factory0x74e2728 and tertiary color factory0x74ee448 (string0x8a51c40). Applies to this branch, not every tool activity."
+    },
+    {
+      "offset": "0x95ae084",
+      "conclusion": "RunningCommandExecutionSummaryText fields displayCommand,startedAt,_currentDateProvider; body witness0x1a40394."
+    }
+  ],
+  "next_action": "Inspect running body0x1a40394 and its date-provider boundary, then integrate explicit scoped command presentation and deterministic time fixtures. Preserve generic command output body as unaccepted until separately traced.",
+  "validation": {
+    "static_type_and_resource_resolution": true,
+    "ui_changed": false,
+    "build_run": false,
+    "phone_updated": false,
+    "limitations": [
+      "No official runtime execution",
+      "Running/normal branch status and duration source unresolved",
+      "No new visual acceptance",
+      "Android consumer unverified"
+    ]
+  }
+}

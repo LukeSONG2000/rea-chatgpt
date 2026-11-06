@@ -1,0 +1,42 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "generic_consumer": {
+    "record": "0x7e11ed0",
+    "label": "CodexRemoteToolActivityLabel<Symbol,ToolActivitySummaryRow>",
+    "search_use": "0x1a3a178 helper0x1d7fc04 loads this type record"
+  },
+  "layout": {
+    "body_witness": "0x1a5329c -> 0x1a52b4c",
+    "alignment": "center getter0x1a52cbc",
+    "spacing": {
+      "helper": "0x1d9f404",
+      "value": 8,
+      "nil_flag": 0,
+      "consumer": "HStack initializer0x1a52cf8"
+    },
+    "font": "body factory0x74e2728 called0x1a52cfc",
+    "foreground": "0x1a52d38 calls0x74ee448 (ChatGPT/text/tertiary), foregroundStyle at0x1a52d88",
+    "line_limit": "0x1a52db0/4 pass1 and nonnil flag0; helper0x1d9582c preserves x0/x1; lineLimit0x1a52dc0",
+    "truncation": "call exists at0x1a52e2c, enum value unresolved"
+  },
+  "integration": "Search fixture label center/8/body/official tertiary asset/one line; command retains prior color. Official color loaded from resource bundle, no handpicked RGB.",
+  "limits": [
+    "No proof of full label composition or shimmer timing",
+    "No official runtime visual equivalence",
+    "Dark asset lookup supported but dark screenshot not yet checked",
+    "No Android sharing proof"
+  ],
+  "validation": {
+    "passed": 1,
+    "failed": 0,
+    "test": "testRemoteTaskScopeAndReturn",
+    "screenshot_inspected": "ios-remote-v326-screenshots/00E58505-C1E0-43CD-9D44-EB7AAB1E3986.png",
+    "observation": "Official tertiary palette loads and search label is visibly muted; group toggle and scope regression passes. Full visual parity not accepted.",
+    "preview_pid": 64725,
+    "phone_updated": false,
+    "external_display_reverified": false
+  }
+}

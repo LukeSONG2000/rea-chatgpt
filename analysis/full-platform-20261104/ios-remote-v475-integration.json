@@ -1,0 +1,81 @@
+{
+  "schema": "rea-ios-component-integration-v1",
+  "batch": "v471-v475",
+  "status": "partial",
+  "time": "2026-11-06T12:49:23.543216+08:00",
+  "previous_goal_turn": "progress: fixed full-page follow-up Menu and ran four UI regressions",
+  "official_baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "changes": [
+    {
+      "type": "test_measurement_correction",
+      "description": "Compare independent SwiftUI layout bounds instead of expanded selectable Text AX hit bounds. Preserve strict nonoverlap, window bounds and 12pt inline spacing assertions."
+    },
+    {
+      "type": "independent_native_host_adaptation",
+      "description": "Remove unused remote-activity-detail ancestor identifier that overrides output scroll-view and append-control identifiers."
+    },
+    {
+      "type": "test_interaction_correction",
+      "description": "Scroll a disclosure above a pending-input overlay before tapping; retain cross-host copy lifecycle assertions."
+    },
+    {
+      "type": "independent_native_host_adaptation",
+      "description": "Keep composer foreground outside GlassEffectContainer. v469 fixed menu dispatch but screenshots in v471-v472 exposed washed-out foreground. v474 image confirms visible placeholder with menu regression passing."
+    }
+  ],
+  "layout_evidence": [
+    "remote-current-request: (16.0, 443.1666666666667, 337.3333333333333, 56.66666666666663)\nremote-activity-toggle: (16.0, 531.6666666666666, 370.0, 27.66666666666663)\nremote-activity-review-toggle: (16.0, 571.3333333333333, 370.0, 27.666666666666742)\nremote-file-change-toggle: (16.0, 611.0, 370.0, 27.66666666666663)\nremote-separator-layout: (151.33333333333331, 649.0, 99.33333333333331, 29.66666666666663)\nremote-response-layout: (16.0, 689.6666666666666, 343.0, 85.33333333333337)\nremote-response-separator-label: (151.33333333333331, 649.0, 99.33333333333331, 29.66666666666663)\nremote-response-content: (0.0, 673.6666666666666, 375.0, 117.33333587646484)",
+    "remote-current-request: (16.0, 344.0, 293.66666666666663, 42.333333333333314)\nremote-activity-toggle: (16.0, 410.3333333333333, 370.0, 20.33333333333337)\nremote-activity-review-toggle: (16.0, 442.6666666666667, 370.0, 20.333333333333258)\nremote-file-change-toggle: (16.0, 475.0, 370.0, 20.333333333333314)\nremote-separator-layout: (163.33333333333331, 503.3333333333333, 75.66666666666666, 22.333333333333314)\nremote-response-layout: (16.0, 533.6666666666666, 323.66666666666663, 42.33333333333337)\nremote-response-separator-label: (163.33333333333331, 503.3333333333333, 75.66666666666666, 22.333333333333314)\nremote-response-content: (0.0, 517.6666666666666, 355.6666564941406, 74.33333587646484)"
+  ],
+  "official_sources": [
+    "v432 responseSeparator 0x1a3bdb0",
+    "v437 ordinary fragment spacing",
+    "v444-v446 persistent composer and Glass default/container partial chain"
+  ],
+  "tests": {
+    "v474": {
+      "passedTests": 4,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "result": "Passed"
+    },
+    "v475": {
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "result": "Passed"
+    }
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "2d9346a9d64dbd4a78eb7a69fbb2a39b6ac25742222fe8f8a90eab30e99596ed",
+    "implementation/ios/UITests/HostInteractionTests.swift": "1027473f81f0890eca2b6d0824d838a48c1fc1b2ee06062600208c8da44a1460",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "17708aa0c6d3a1df4c1137097ec1de173c5ce97cafd84f5abf38c3e1e05d31ec"
+  },
+  "preview": {
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "built_binary_sha256": "08935d2d37f837890c265fef3b738a95006bed7253448ed0dba37085d7e18220",
+    "installed_binary_sha256": "08935d2d37f837890c265fef3b738a95006bed7253448ed0dba37085d7e18220",
+    "external_display_observed": true,
+    "left_running": true
+  },
+  "physical_device": {
+    "device": "5998651F-A691-5FB2-A351-40FBCBA8081B",
+    "bundle": "local.rea.chatgpt.ioshost",
+    "build_log": "ios-device-v474-build.log",
+    "install_receipt": "ios-device-v474-install.json",
+    "launch_receipt": "ios-device-v474-launch.json",
+    "signed_binary_sha256": "a32dff27458af3f0d5b264bc294b21512ab33dc841c456c338bf4d1407a33f88",
+    "visual_and_touch_acceptance": "pending user device verification"
+  },
+  "cross_platform_boundary": "SwiftUI Text selection AX expansion, GlassEffectContainer and safe-area overlay hit testing are iOS host evidence. Android requires native artifact and runtime evidence; no shared implementation inferred.",
+  "remaining": [
+    "Full official composer mode/style ownership",
+    "Full message renderer and payload mapping beyond synthetic preview",
+    "Device Glass, keyboard, selection and gesture acceptance",
+    "Settings complete hierarchy and Android independent restoration"
+  ]
+}

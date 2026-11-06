@@ -1,0 +1,71 @@
+{
+  "status": "partial",
+  "replay": "root-native-v30.json",
+  "verified": [
+    "Visible standalone Electron window captured including native frame",
+    "Native traffic lights and renderer toolbar visible without overlap in reviewed screenshot",
+    "Original conversation, code block, table and composer visible",
+    "Draft fill/read/clear passed; send not invoked"
+  ],
+  "native_window": {
+    "id": 1,
+    "mediaSourceId": "window:4214:0",
+    "bounds": {
+      "x": 1040,
+      "y": 256,
+      "width": 1280,
+      "height": 800
+    },
+    "contentBounds": {
+      "x": 1040,
+      "y": 256,
+      "width": 1280,
+      "height": 800
+    },
+    "visible": true,
+    "title": "\u79bb\u7ebf\u7ec4\u4ef6\u9a8c\u8bc1",
+    "versions": {
+      "node": "24.22.1",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.9",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "150",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.11",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2026e",
+      "undici": "7.30.1",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.6.75.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "45.1.0",
+      "chrome": "156.0.8078.49"
+    },
+    "capture": "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/native-window-v30.png",
+    "captureStatus": "captured"
+  },
+  "page_errors": [],
+  "limitations": [
+    "Stock Electron 45.1.0, not archived customized runtime",
+    "No side-by-side same-version official window comparison",
+    "Native controls and gestures not tested in this capture",
+    "Renderer-side synthetic RPC handoff; true preload/main separation still missing",
+    "Unsupported services remain; overall run classified mount-blocked, not fully passed"
+  ]
+}

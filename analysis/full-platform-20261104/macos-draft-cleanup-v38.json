@@ -1,0 +1,55 @@
+{
+  "status": "partial",
+  "platform": "macos",
+  "implementation_origin": "Independent scoped draft cleanup in host, original composer/sidebar and persistence bridge",
+  "verified": [
+    "Actual UI creates A/B drafts; delete B removes only its stored draft",
+    "Injected late B update through normal renderer bridge does not restore deleted draft; A unchanged",
+    "Separate process retains absent B draft and visibly restores A draft",
+    "Unit tests cover empty history, restart reconciliation, foreign scope rejection and fixture/model atom-file isolation"
+  ],
+  "runtime": {
+    "delete": {
+      "status": "passed",
+      "after": {
+        "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+          "prompt": "REA synthetic keep draft A",
+          "usedDictation": false,
+          "localRecordingIds": null
+        }
+      },
+      "afterLate": {
+        "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+          "prompt": "REA synthetic keep draft A",
+          "usedDictation": false,
+          "localRecordingIds": null
+        }
+      }
+    },
+    "cold": {
+      "status": "passed",
+      "draft": "REA synthetic keep draft A",
+      "hostPID": 49436
+    },
+    "pageErrors": []
+  },
+  "limits": [
+    "History and atom files are separate atomic replacements, not a multi-file transaction; startup reconciles a crash gap",
+    "Live model-mode UI, temporary unsaved conversation drafts, multiwindow and multiwriter acceptance pending",
+    "Existing legacy shared atom files are preserved; Zhipu now starts its separate atom namespace without automatic migration",
+    "Final currentHistories assignment was moved before atom save to guard subsequent late updates after cleanup failure; native fault-injection path not yet accepted"
+  ],
+  "next_action": "Broaden lifecycle replay to retry/idempotency and archive, then advance remaining native/mobile/Web gaps; no six-surface completion claim",
+  "evidence_sha256": {
+    "analysis/tools/desktop-draft-lifecycle.cjs": "354aef8609c63ece1063d1b1d496d58c07a4cbe52b96537e4fc12c0c86d62459",
+    "analysis/tools/desktop-native-host.cjs": "fc6a3db6e9830c66fcf17281ac14c0f838362a1bbba335843f56acf6949bac43",
+    "analysis/tools/desktop-offline-store.cjs": "5c8269fe75e5fad9e1bfa1a3034b2ea9d87bb939fb73dba19405a5641d815f59",
+    "analysis/tools/probe_desktop_root_mount.cjs": "28f478e9ad8ebd9422c40878e4de98095e964c8aaf495945f4e5fd8d6acd9076",
+    "analysis/tools/test_desktop_draft_lifecycle.cjs": "080b281208616b79f45ce00fcee8af61236971c6766c4a09eccd6b4e244e6744",
+    "analysis/full-platform-20261104/macos-delete-drafts-v1.json": "f668db9a3e84c1dbf41a7e9bd9feb307ee1603d369e3fb1d01ebc43b95d281d6",
+    "analysis/full-platform-20261104/macos-draft-cleanup-restore-v1.json": "e5840d275f977678eba9c06de863783914a822f4fe1d4c41bd4e1e23c4ac174a",
+    "analysis/full-platform-20261104/macos-draft-cleanup-unit-v2.log": "7cd85d73d25aff11c2db10db6fa28041a9ae048e4c162b23ea277ecf3abc0e15",
+    "analysis/full-platform-20261104/macos-draft-cleanup-atoms-v1.log": "2ab8b144c73fe5940d809759eb0f5fb1d9aadc1ad54bb2df284e5852b6bb8a61",
+    "analysis/full-platform-20261104/macos-draft-cleanup-delete-v1.log": "12f8a22a7ec4d5fc5af12ed4175d29d4e601cc25418989202ead7e775699de2f"
+  }
+}

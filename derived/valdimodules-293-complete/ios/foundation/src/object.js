@@ -1,0 +1,1 @@
+"use strict";function e(e){return Object.keys(e).reduce((t,r)=>(t[r]=String(e[r]),t),{})}function t(e){const t=new Map;return Object.keys(e).forEach(r=>{t.set(r,String(e[r]))}),t}Object.defineProperty(exports,"__esModule",{value:!0}),exports.stringifyKeysMap=exports.stringifyKeys=void 0,exports.stringifyKeys=e,exports.stringifyKeysMap=t;

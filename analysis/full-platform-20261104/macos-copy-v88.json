@@ -1,0 +1,28 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-host-runtime",
+  "observations": {
+    "assistant_copy": "Click completes; native clipboard sentinel unchanged; no text service call",
+    "table_copy": "Pointer blocked by td inside data-horizontal-scroll; handler not reached",
+    "table_browser_write_calls": 0,
+    "clipboard_restore": "completed for all three runs",
+    "screen_locked": true
+  },
+  "runtime": [
+    "macos-copy-v88-message.json",
+    "macos-copy-v88-table.json",
+    "macos-copy-v88-table-diagnostic.json"
+  ],
+  "limits": [
+    "Do not infer permission/focus failure from a click that never reached its handler",
+    "Assistant rich-copy error not yet captured",
+    "No forced click or direct clipboard substitution used",
+    "Native rich clipboard format parity remains unaccepted"
+  ],
+  "next_action": "Inspect table hover toolbar geometry and hit testing; separately capture assistant navigator.clipboard.write error",
+  "source": {
+    "file": "analysis/tools/probe_desktop_root_mount.cjs",
+    "sha256": "685fb640c58d02360047be71213e8aef6692f71ddeb4bfebd26f225cf41b13c3"
+  }
+}

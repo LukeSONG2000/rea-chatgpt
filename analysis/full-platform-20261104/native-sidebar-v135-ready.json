@@ -1,0 +1,1513 @@
+{
+  "status": "observed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v134-macos/REA ChatGPT Offline.app",
+  "profile": "v135-sidebar-ready",
+  "spinners": [
+    {
+      "html": "<div class=\"flex w-full justify-center py-3\"><div class=\"inline-flex h-fit w-fit items-center justify-center leading-none contain-layout contain-paint contain-style motion-safe:animate-spin\" style=\"\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"icon-xs text-secondary\"><path opacity=\"0.3\" d=\"M18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18C15.3137 18 18 15.3137 18 12ZM20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z\" fill=\"currentColor\"></path><path d=\"M12 4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12H6C6 15.3137 8.68629 18 12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6V4Z\" fill=\"currentColor\"></path></svg></div></div>",
+      "ancestors": [
+        "flex gap-1 py-1 after:block after:h-px after:content-[''] last:after:hidden",
+        "flex flex-col"
+      ]
+    }
+  ],
+  "fibers": [
+    [
+      {
+        "name": "div",
+        "props": {
+          "className": "inline-flex h-fit w-fit items-center justify-center leading-none contain-layout contain-paint contain-style motion-safe:animate-spin"
+        }
+      },
+      {
+        "name": "wLt",
+        "props": {
+          "className": "icon-xs text-secondary"
+        }
+      },
+      {
+        "name": "div",
+        "props": {
+          "className": "flex w-full justify-center py-3"
+        }
+      },
+      {
+        "name": "special",
+        "props": {
+          "type": "div",
+          "key": null
+        }
+      },
+      {
+        "name": "Jzn",
+        "props": {
+          "hasNextPage": true,
+          "isFetchingNextPage": true
+        }
+      },
+      {
+        "name": "div",
+        "props": {
+          "role": "listitem",
+          "className": "flex gap-1 py-1 after:block after:h-px after:content-[''] last:after:hidden"
+        }
+      },
+      {
+        "name": "special",
+        "props": {
+          "type": "div",
+          "key": null
+        }
+      },
+      {
+        "name": "$zn",
+        "props": {
+          "className": "after:block after:h-px after:content-[''] last:after:hidden",
+          "alignment": "edge",
+          "variant": "default",
+          "hasLoadingRows": true,
+          "role": "listitem"
+        }
+      },
+      {
+        "name": "div",
+        "props": {
+          "className": "flex flex-col",
+          "role": "list",
+          "tabIndex": -1
+        }
+      },
+      {
+        "name": "dK",
+        "props": {
+          "expanded": false,
+          "forcedVisibleItemKey": null,
+          "emptyStateClassName": "px-[var(--padding-row-cell-x,var(--padding-row-x))] py-2 text-base text-codex-description opacity-50",
+          "boundedLivePaging": true,
+          "hasMoreItems": true,
+          "isLoadingMore": true,
+          "maxItems": 10,
+          "navigationListId": "chats",
+          "paginationControlsAlignment": "edge",
+          "paginationMode": "infiniteScroll",
+          "showLessButton": false
+        }
+      },
+      {
+        "name": "C_r",
+        "source": {
+          "activeConversationId": "offline-fixture-conversation-001",
+          "activeServerConversationId": "offline-fixture-conversation-001",
+          "boundedLivePaging": true,
+          "canFetchNextConversationPage": false,
+          "hasProjectOverflow": false,
+          "isConversationError": false,
+          "isConversationLoading": false,
+          "isUnreadConversationError": false,
+          "isFetchingNextConversationPage": false,
+          "isProjectError": false,
+          "isProjectListError": false,
+          "isProjectListLoading": false,
+          "isProjectListRequestInProgress": false,
+          "isProjectLoading": false,
+          "projectCrudStatus": "allowed",
+          "showAllProjects": false
+        },
+        "props": {
+          "mode": "project",
+          "projectSortMode": "updated_at",
+          "showConversationTypeHoverLabel": true,
+          "allowCodexThreadProjectDrag": true,
+          "customSectionDragEnabled": false,
+          "showThreadDetails": false,
+          "forcedVisibleItemKey": null,
+          "hasMoreItems": true,
+          "isLoadingMore": true,
+          "maxItems": 10,
+          "paginationMode": "infiniteScroll",
+          "expanded": false,
+          "boundedLivePaging": true,
+          "threadContainerId": "chats"
+        }
+      },
+      {
+        "name": "div",
+        "props": {
+          "data-appearance": "plain",
+          "className": "group/nav-list flex flex-col gap-px browser:not-empty:pb-px browser:[--nav-item-height:calc(var(--height-token-row)-1px)] pt-1"
+        }
+      },
+      {
+        "name": "MM",
+        "props": {
+          "appearance": "plain",
+          "className": "pt-1"
+        }
+      },
+      {
+        "name": "div",
+        "props": {
+          "className": "overflow-hidden"
+        }
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "special",
+        "props": {
+          "className": "overflow-hidden"
+        }
+      },
+      {
+        "name": "CBe",
+        "props": {
+          "isPresent": true,
+          "pop": false
+        }
+      },
+      {
+        "name": "xBe",
+        "props": {
+          "pop": false,
+          "isPresent": true,
+          "anchorX": "left",
+          "anchorY": "top"
+        }
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "DBe",
+        "props": {
+          "isPresent": true,
+          "presenceAffectsLayout": true,
+          "mode": "sync",
+          "anchorX": "left",
+          "anchorY": "top"
+        }
+      },
+      {
+        "name": "fB",
+        "props": {
+          "initial": false
+        }
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "$Be",
+        "props": {}
+      },
+      {
+        "name": "div",
+        "props": {
+          "inert": false,
+          "aria-hidden": false
+        }
+      },
+      {
+        "name": "div",
+        "props": {
+          "className": "group/nav-section flex flex-col"
+        }
+      },
+      {
+        "name": "NM",
+        "props": {
+          "collapsed": false,
+          "titleActionsOnHover": true,
+          "titleTrailing": null
+        }
+      },
+      {
+        "name": "section",
+        "props": {
+          "className": "relative px-row-x group/nav-section",
+          "data-app-action-sidebar-section": "",
+          "data-app-action-sidebar-section-collapsed": "false",
+          "data-app-action-sidebar-section-heading": "Recents"
+        }
+      },
+      {
+        "name": "pZ",
+        "props": {
+          "collapsed": false,
+          "collapsedStatusState": null,
+          "heading": "Recents",
+          "label": "Recents",
+          "sectionKey": "chats",
+          "titleActionsOnHover": true
+        }
+      },
+      {
+        "name": "div",
+        "props": {
+          "data-sidebar-project-container-id": "chats",
+          "className": "-mb-4 pb-4 browser:-mb-5 browser:pb-5"
+        }
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "JK",
+        "props": {
+          "className": "-mb-4 pb-4 browser:-mb-5 browser:pb-5",
+          "containerId": "chats"
+        }
+      },
+      {
+        "name": "div",
+        "props": {
+          "className": "-mb-4 pb-4 browser:-mb-5 browser:pb-5 pointer-events-auto"
+        }
+      },
+      {
+        "name": "Q2n",
+        "props": {
+          "className": "-mb-4 pb-4 browser:-mb-5 browser:pb-5",
+          "destination": "history"
+        }
+      },
+      {
+        "name": "special",
+        "props": {
+          "key": null,
+          "ref": null
+        }
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "Uj",
+        "props": {}
+      },
+      {
+        "name": "div",
+        "props": {
+          "className": "contents"
+        }
+      },
+      {
+        "name": "special",
+        "props": {
+          "value": null
+        }
+      },
+      {
+        "name": "VHn",
+        "props": {}
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "fBn",
+        "props": {}
+      },
+      {
+        "name": "A_r",
+        "props": {
+          "conversationSections": false,
+          "unreadsOnly": false,
+          "catalogSourcesReady": false,
+          "codexFeaturesAllowed": true,
+          "sidebarMode": "chatgpt",
+          "workCloudSidebarContentVisible": true,
+          "workLocalSidebarContentVisible": true
+        }
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "div",
+        "props": {
+          "className": "contents"
+        }
+      },
+      {
+        "name": "div",
+        "props": {
+          "data-app-action-sidebar-scroll": "",
+          "className": "relative isolate mb-[var(--sidebar-footer-height)] flex min-h-0 flex-1 flex-col gap-4 overflow-x-hidden overflow-y-auto scroll-pb-[var(--padding-row-x)] pt-(--sidebar-scroll-content-top-padding) pb-row-x [--radius-token-row:10px] [contain:layout_paint] browser:gap-5 _headerFadeMask_9b1qi_1 vertical-scroll-fade-mask"
+        }
+      },
+      {
+        "name": "special",
+        "props": {
+          "value": null
+        }
+      },
+      {
+        "name": "special",
+        "props": {
+          "value": false
+        }
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "",
+        "props": {
+          "id": "_r_a_"
+        }
+      },
+      {
+        "name": "special",
+        "props": {
+          "value": null
+        }
+      },
+      {
+        "name": "special",
+        "props": {
+          "value": null
+        }
+      },
+      {
+        "name": "special",
+        "props": {}
+      },
+      {
+        "name": "special",
+        "props": {
+          "value": null
+        }
+      },
+      {
+        "name": "_Hn",
+        "props": {}
+      },
+      {
+        "name": "iyr",
+        "props": {
+          "activeThreadKey": null,
+          "activeThreadIsPinned": false,
+          "floatStatusIconsEnd": true,
+          "hasStickySectionHeaders": false,
+          "hidePinnedThreadTimestamps": true,
+          "loading": false,
+          "showPinnedProjectHoverCards": true,
+          "showPinnedProjectGroups": true,
+          "showPinnedSection": false
+        }
+      },
+      {
+        "name": "special",
+        "props": {
+          "0": null
+        }
+      },
+      {
+        "name": "special",
+        "props": {
+          "value": null
+        }
+      }
+    ]
+  ],
+  "calls": [
+    "services",
+    "catalog.subscribe",
+    "getDefaultHost",
+    {
+      "operation": "managers.subscribe",
+      "hostId": "local"
+    },
+    {
+      "operation": "settings.readAll",
+      "detailMode": "STEPS_PROSE"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "remoteControl/status/changed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "remoteControl/status/read"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "turn/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "registerWindowActivity",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-authentication-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/completed",
+        "mcpServer/oauthLogin/completed",
+        "mcpServer/startupStatus/updated",
+        "account/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/started"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "turn/completed",
+        "error"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "initial-title-requested",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "realtime-thread-created",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "turn/started",
+        "turn/completed",
+        "turn/moderationMetadata",
+        "item/started",
+        "item/completed"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "open-file-change",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-elicitation-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "stream-role-changed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-first-output",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-list-invalidated",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "conversation-removed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "history-accepted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/realtime/item/completed",
+        "skills/changed",
+        "mcpServer/oauthLogin/completed",
+        "thread/started",
+        "thread/attachment/updated",
+        "thread/archived",
+        "thread/unarchived",
+        "mcpServer/startupStatus/updated",
+        "error",
+        "model/verification"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-unarchived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/agentMessage/delta",
+        "item/plan/delta",
+        "item/reasoning/summaryTextDelta",
+        "item/reasoning/textDelta",
+        "item/commandExecution/outputDelta",
+        "item/fileChange/outputDelta"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/started",
+        "turn/started",
+        "turn/completed"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    "registerReplayAdmission",
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "queued-message-execution",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    "appInfo.get",
+    "appInfo.getSystemInfo",
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "auth-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    "manager.getAccount",
+    "manager.getAuthMethod",
+    "accountInfo.readAccountInfo",
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8054ba0a-3b99-411f-83df-7aaa59853c03",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-authentication-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/completed",
+        "mcpServer/oauthLogin/completed",
+        "mcpServer/startupStatus/updated",
+        "account/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "973ff7cd-0377-4824-b35f-7522cd92ecad",
+      "method": "GET",
+      "url": "/wham/accounts/check"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "973ff7cd-0377-4824-b35f-7522cd92ecad"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a273d71e-c762-436b-a8f9-4387d645087b",
+      "method": "GET",
+      "url": "/accounts/check/v4-2023-04-27"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "a273d71e-c762-436b-a8f9-4387d645087b"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "0c8f4eba-0201-4791-9582-fabbdb8cea1d",
+      "method": "GET",
+      "url": "/settings/user"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "0c8f4eba-0201-4791-9582-fabbdb8cea1d"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "fbfc8d8e-d46f-4e48-abef-4821139aade7",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "2896d60c-c222-42a4-9cdc-ea23986ea0db",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "d811c14f-0d46-4452-a0b2-5c78c5f1813c",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a2e6fb0e-678f-4063-99eb-fca8dd640802",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "1d6b4415-af8a-4b0a-994b-98285359f69f",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "b89c1dc7-13f2-4663-afce-9a0c56f99348",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793829451845&sid=fc683cb3-f798-49a9-90be-d9786ec09d72&se=1"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "5525e5ca-17a3-4a1c-ae13-a5df8fd3fbaa",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793829452348&sid=fc683cb3-f798-49a9-90be-d9786ec09d72&se=1"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a8b3ed5f-1952-43e3-ad2f-682048161285",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793829454351&sid=fc683cb3-f798-49a9-90be-d9786ec09d72&se=1"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "experimentalFeature/list",
+      "params": {
+        "cursor": null,
+        "limit": 100
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "added-remote-control-env-ids"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "host",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "thread-project-assignments"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "configRequirements/read"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "configRequirements/read"
+    },
+    {
+      "operation": "remoteConnections.setRemoteControlEnabled",
+      "value": {
+        "enabled": false,
+        "oneToOnePairingInAppEnabled": false
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": true,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "catalog.setSourceEnabled",
+      "source": {
+        "kind": "app-server"
+      },
+      "enabled": true
+    },
+    {
+      "operation": "catalog.subscribeStatus"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "local-projects"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "selected-project"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "selected-remote-host-id"
+    },
+    {
+      "operation": "managers.subscribe",
+      "hostId": "durable"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "70cc02bb-ad71-4d56-82fd-b2f8853f049d",
+      "method": "GET",
+      "url": "/wham/tasks/list?limit=20&task_filter=current"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "host",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "pinned-thread-ids"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "be2f2ef3-b4e6-4026-adc3-c2cefd08a07a",
+      "method": "GET",
+      "url": "/wham/usage"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "projectless-thread-ids"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "remote-projects"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "project-order"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "9d8ee42f-fb27-427b-98c6-532d5a779849",
+      "method": "GET",
+      "url": "/wham/onboarding/context"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "012dfd2c-6e29-450b-8dd7-fe160603c13e",
+      "method": "GET",
+      "url": "/automations?filter=scheduled&limit=25"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/name/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "catalog.requestSync",
+      "hosts": [
+        "local"
+      ]
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "9d8ee42f-fb27-427b-98c6-532d5a779849"
+    },
+    {
+      "operation": "catalog.setSourceEnabled",
+      "source": {
+        "kind": "chatgpt",
+        "accountId": "offline-fixture-account"
+      },
+      "enabled": true
+    },
+    {
+      "operation": "catalog.readStatus",
+      "status": {
+        "hosts": [
+          {
+            "hostId": "local",
+            "isComplete": true,
+            "revision": 1
+          },
+          {
+            "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+            "isComplete": true,
+            "revision": 1
+          }
+        ]
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/name/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a6a75e27-f3f6-4ebf-8dbf-1c21fb6cca03",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "account/gatewayOAuth/read"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "47aae800-82f1-4e0d-b66a-f734adb33f07",
+      "method": "GET",
+      "url": "/models?iim=false&include_icons=false&is_gizmo=false"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "sidebar-project-thread-orders"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "pinned-project-ids"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "93eb0019-f05f-4eae-bb06-f2c31dcf812a",
+      "method": "GET",
+      "url": "/pins?item_type=gizmo"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "f1c2f25d-dab6-4240-b558-134a8713e9fc",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "catalog.readPage",
+      "query": {
+        "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+        "filter": {
+          "includeAll": true,
+          "cwdValues": [],
+          "cwdPrefixes": [],
+          "includeThreadIds": [],
+          "excludeThreadIds": []
+        },
+        "limit": 20,
+        "sortKey": "updated_at"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "43f40da1-8b03-4751-b264-13a05c9f0a04",
+      "method": "GET",
+      "url": "/pins?item_type=conversation"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8dc93f1b-5aea-4749-8807-031a1a6900f9",
+      "method": "GET",
+      "url": "/pins?item_type=project"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "e47b3845-987a-481e-a5e3-e2a8614b360f",
+      "method": "GET",
+      "url": "/conversations?exclude_conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "b92cfd40-4aa6-44ee-90df-426f7a64cda6",
+      "method": "GET",
+      "url": "/conversations?conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "727afad6-81ba-474a-8169-c4fc06cef89a",
+      "method": "GET",
+      "url": "/gizmos/snorlax/sidebar?conversations_per_gizmo=0&limit=20&owned_only=false"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "connection-group-order"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "c20096b5-9963-41db-85af-0724eec399fd",
+      "method": "GET",
+      "url": "/referrals/invite/eligibility?program_id=codex_referral_consumer&entrypoint=persistent"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "9fc3ce59-f227-469d-a7a5-214e1ecab186",
+      "method": "GET",
+      "url": "/me"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a299661f-84ca-4645-a96a-8e35d34c3f12",
+      "method": "GET",
+      "url": "/profiles/me"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "e23a91b0-53df-48a0-8ef6-0281b7a84a05",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "9566f9ee-c66c-4050-9163-fceed629b774",
+      "method": "GET",
+      "url": "/aip/first-party/eligibility"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "a877c977-1833-44b2-ba4f-d984102e6460",
+      "method": "GET",
+      "url": "/accounts/optimized/check"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "06a97c17-0d23-48fe-b89e-4f586f4ea07c",
+      "method": "GET",
+      "url": "/conversation/offline-fixture-conversation-001"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "8dc93f1b-5aea-4749-8807-031a1a6900f9"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "727afad6-81ba-474a-8169-c4fc06cef89a"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "9fc3ce59-f227-469d-a7a5-214e1ecab186"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "a299661f-84ca-4645-a96a-8e35d34c3f12"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "06a97c17-0d23-48fe-b89e-4f586f4ea07c"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "e54c5931-45ab-4e97-bcf6-29916120793c",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "36773048-12cc-4364-ae35-0eefcd313d07",
+      "method": "GET",
+      "url": "/amphora/notifications?limit=20"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "model/list",
+      "params": {
+        "includeHidden": true,
+        "cursor": null,
+        "limit": 100
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "thread",
+      "key": {
+        "hostId": "local",
+        "threadId": "chatgpt:offline-fixture-conversation-001"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "33df6161-8126-4eb2-a904-1b573031874f",
+      "method": "GET",
+      "url": "/settings/is_adult"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "601c788e-5dba-426f-afd4-640e29bdf75a",
+      "method": "POST",
+      "url": "/conversation/init"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "078903f8-b033-4b95-bcdb-8636eef53f4e",
+      "method": "GET",
+      "url": "/system_hints?exclude_logo=true&mode=plugins"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "2da1af52-2f5c-4a19-b107-400b82459838",
+      "method": "GET",
+      "url": "/system_hints?exclude_logo=true&mode=basic"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "6f42e124-0ef3-4438-8827-9868e8a8a59b",
+      "method": "GET",
+      "url": "/system_hints?exclude_logo=false&mode=custom_agents"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "plugin/installed",
+      "params": {}
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "601c788e-5dba-426f-afd4-640e29bdf75a"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "account/gatewayOAuth/read"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "7c06e1c8-41f5-48e1-abd4-9765387f7862",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "0ef2954e-55c6-441b-afb8-1c6cd0dd009f",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "7d52cec6-5b14-40bf-a0fd-925fbc19aa03",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "b2f58bea-6a1c-4dec-89e9-81fe9a6ef663",
+      "method": "GET",
+      "url": "/subscriptions/auto_top_up/settings?include_payment_method=true"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "collaborationMode/list",
+      "params": {}
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "83eca8a7-6b89-412e-86e8-bde81fb8e62b",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "cf5761fc-02d6-4169-8c74-13c798a31dfe",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "plugin/installed",
+      "params": {}
+    }
+  ],
+  "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nPinned\nREA synthetic project\nProjects\nREA synthetic unpinned project\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\n离线组件验证\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n"
+}

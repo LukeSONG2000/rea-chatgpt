@@ -1,0 +1,160 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "progress: v447 expanded both-mode navigation regression and resolved local submission-mode/whitespace/effectful-guard evidence",
+  "integrated": [
+    "Ordinary send control in compact row and focused separate controls row for synthetic non-running tasks",
+    "Actual original arrow-up-lg-button asset retained as a layered symbol instead of a separately drawn arrow/circle",
+    "Pure submission gate and Unicode Character.isWhitespace check; preventsPromptSubmission remains separate visibility/dispatch gate",
+    "Typed intent scoped by host/thread, page session, immutable draft snapshot and monotonic revision",
+    "Disconnected adapter returns an explicit failure without transcript insertion, execution or draft clearing",
+    "Draft store ignores identical editor echoes; text A-to-B-to-A still changes revision",
+    "Existing UI test extended with empty disable, attempted submission, alert and retained multiline draft before navigation"
+  ],
+  "official_observations": [
+    {
+      "offset": "0x606b538 /0x8233c88 /0x74f4500 /0x8a53d40",
+      "conclusion": "send enum0 selects OpenAI/Symbols/arrow-up-lg-button"
+    },
+    {
+      "offset": "0x606bb3c /0x75d29d4",
+      "conclusion": "send accessibility label uses the existing Send translation key"
+    },
+    {
+      "offset": "0x6069d78",
+      "conclusion": "Shared primary label selects palette symbol rendering"
+    },
+    {
+      "offset": "0x606bf5c /0x80c4c60 /0x606b678..69c",
+      "conclusion": "Default style font30 and ordinary glyph16/15 multiplier, selected preview32; effective caller override remains unknown"
+    },
+    {
+      "offset": "0x606a31c /0x606a570",
+      "conclusion": "Minimum interaction area is separate from symbol glyph size; selected default44"
+    },
+    {
+      "offset": "0x1987ae8 /0x1987cac /0x19880c8",
+      "conclusion": "Compact content includes primary controls after compact field; spacing literal2"
+    },
+    {
+      "offset": "0x1985c94 /0x198616c /0x1c27f6c /0x198f378",
+      "conclusion": "Expanded controls content captures a separate primary selector closure; full parent sizing/visibility not yet recovered"
+    }
+  ],
+  "independent_adaptations": [
+    "SwiftUI body-relative scaling substitutes for private dynamic metric; dynamic equivalence not established",
+    "Selected default color and metrics, native plain button style; private pressed/disabled appearance not recovered",
+    "Reduced controls row contains trailing normal send only; zero-spacing native containment and existing outer horizontal padding remain fixture adapters",
+    "Current field expansion uses focus in ordinary fixture; original full selection remains incomplete",
+    "Scope/session/revision validation and keeping drafts on failure are independent frontend contracts, not official backend behavior",
+    "Running-turn follow-ups, special context, slash commands and non-normal modes explicitly unsupported by this adapter",
+    "No real remote service connected; task activity supplies selected fixture input only"
+  ],
+  "validation": {
+    "typecheck": "passed with 3 existing UIKit deprecation warnings",
+    "foundation_replay": "passed",
+    "ui_test_parse": "passed",
+    "xcode_project_plist": "passed",
+    "new_source_in_app_target": true,
+    "ui_tests": "not_run",
+    "simulator_install": "not_run",
+    "device_install": "not_run",
+    "final_source_recheck": "typecheck and Foundation replay passed after access-control tightening",
+    "log_files": [
+      "analysis/full-platform-20261104/ios-remote-v448-typecheck.log",
+      "analysis/full-platform-20261104/ios-remote-v448-text-tests.log"
+    ]
+  },
+  "runtime_limit": "Existing first-launch installer and test runner retained; component authorization blocker remains. Old preview not replaced.",
+  "next_action": "Run queued list/message/title/composer tests after runtime recovery; continue ordinary primary style and full controls containment, then running-turn stop/follow-up controls with exact owner/action boundaries.",
+  "source": [
+    {
+      "path": "implementation/ios/Sources/RemoteComposerInteraction.swift",
+      "sha256": "3d998d9c093b5c24e1aecec7c38fafea5d6e531103fa230e4019eec79a6794d6"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "f1b9019f313009a956fef21f8dd45988cfbf494dd4c38eef550859c4140dc713"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "ca0c13c7f17b23a54ea6c350068089a8639e4d1e09c9b15f380147fc2593516c"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "8a543118cad48fc4f3ffcf371e2ace3ab3deab360037a35eb1fb8271634fadad"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "93dcfc9a4c8135cfd29e236f13720a318d4e482f9c19dff0597a59403f8a8cc8"
+    },
+    {
+      "path": "implementation/ios/test-official-text.sh",
+      "sha256": "a6e39f00d7491130b36337897e3fc96f6d69cd190ad1caa8f533594bdb5ca261"
+    },
+    {
+      "path": "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj",
+      "sha256": "e1b317389768e73c203167f3d6321f5811f6f6bf7bdc93a60abcde0aff730ce7"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-assets.json",
+      "sha256": "7f91637b47bfbae264f47dd056b91684a5f873e0cbe5d9698b8d129ed5539321"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-expanded-primary-placements.json",
+      "sha256": "becb192780f838cc68794369d54f2540a33df84bac5246282cf06baa3a441fef"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-primary-defaults.json",
+      "sha256": "b4d92cacc028fcd27b79660806b3333308993d040058ba9fd346d0a051a9516a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-primary-font-color.json",
+      "sha256": "0687d16d51e1592740d41c0ab2d2a51017a199281585b37fc975c44024c5a693"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-primary-icon-helpers.json",
+      "sha256": "6d1d9a2c03e151b6d538a13cf2d8cada75a502c7b54fa25081a3ccbc0c620bab"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-primary-icon-mapping.json",
+      "sha256": "bbda3957c4e51d494b946bd7d8bb798cfb6ba719c601acf2d5f72e47a776fd9c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-primary-label.json",
+      "sha256": "2ab6a1975890cc50a2a8854ce39e7c72a62d055d5ef7afbc3b5655122dbff94f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-primary-metrics.json",
+      "sha256": "ba347d5a43f19843a896a221f84ec1c4c42635364cc55c36da148e8c08758410"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-primary-placements.json",
+      "sha256": "fec67f835ff4c5ddab06bebd7e27d975acd08bc381508264ca7024afd0f2cee3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-primary-send-label.json",
+      "sha256": "e77f0f5541e092f1bbfb9f00528c3957ac14e7a81c42ebf3a953f109f9e96a26"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-primary-style-path.json",
+      "sha256": "42d573fe77cdbc3e60545e36fac9e46eee9f4333f61f155b17f138f2e077488e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-toolbar-owner.json",
+      "sha256": "f1587661c5b66130f3058917e436ab52fadd46f476498c471a1be97eb1e135d7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v448-toolbar-parent.json",
+      "sha256": "8f8a64937835163d7d51301c21c15e0ea547f02d710ae3ecc6fee951ed625a2a"
+    }
+  ],
+  "limits": [
+    "Device input-method composition, symbol palette appearance, dynamic text scaling, focus after alerts and complete toolbar geometry remain unaccepted.",
+    "Diagnostic service failure text currently uses Chinese/English host fallback; the Send label uses official system-selected translations."
+  ]
+}

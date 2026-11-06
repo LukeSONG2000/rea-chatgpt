@@ -1,0 +1,157 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v432",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Recover response separator label layout and connect it to an explicit synthetic Remote response.",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a3bdb0;0x7e11dd0;0x7e12420;0x1a42e50",
+      "conclusion": "Center ZStack with HStack(two separators,spacing10) and optional localized label."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x74e27a4;0xaad3900;0x1d724f0;0x7e29298;0xf514cc;0x4640f8;0x74ecde0",
+      "conclusion": "Caption category,secondary foreground,lineLimit1,fixedSize horizontal true vertical false,padding horizontal10 vertical4,continuous Capsule with ChatGPT/bg/secondary."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Add native response separator and explicit completed-task synthetic response.",
+      "Move final-fragment edge to response body in that fixture.",
+      "Extract and integrate original response separator translations.",
+      "Extend default/XXXL current-turn UI geometry coverage to label and response."
+    ],
+    "independent_adaptations": [
+      "Fixture-specific insertion,ordering and plain synthetic response.",
+      "Native semantic caption maps the proven category without claiming full OpenAIFont conversion."
+    ],
+    "unknowns": [
+      "Official response separator insertion producer.",
+      "Full private font conversion and effective ancestor environment.",
+      "Complete message rendering and activity grouping.",
+      "Device visual/interaction acceptance and Android correspondence."
+    ]
+  },
+  "validation": {
+    "typecheck": {
+      "exit_code": 0,
+      "existing_warnings": 3,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v432-typecheck.log",
+        "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+      }
+    },
+    "foundation": {
+      "exit_code": 0,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v432-text.log",
+        "sha256": "2d367c3b4cb1df57d34b90b2310b5bfe60ce2b5c43906d4d41d93ba534b1058c"
+      },
+      "scope": "Independent native adapter tests; five localized response checks plus cumulative existing tests."
+    },
+    "ui_parse": {
+      "exit_code": 0
+    },
+    "ui_execution": "not_run",
+    "visual": "not_accepted",
+    "simulator_updated": false,
+    "phone_updated": false,
+    "runtime_blocker": "Existing Xcode installer authorization gate; original preview retained.",
+    "live_pids": [
+      87483,
+      97181,
+      97197
+    ]
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v432-font-application.json",
+      "sha256": "178443b168db8f6388fa6a61fdad6b68a33a2d95893d741b9cb10648e3240c5c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v432-font-conversion.json",
+      "sha256": "d1c5afda40dec54fd03eb12c79b16b79805ef6776b66c9941182e6a4553b0e4b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v432-font-resolver.json",
+      "sha256": "7e1de9c0765b87ae4708d98d8bc8b979fd23b3ecddd5732112a2d1c469eac562"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v432-keypath-bytes.json",
+      "sha256": "a8d377769448b8230d793395cc0506da854ee1fa05daeb0ec73aa54514f58a07"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v432-label-keypath.json",
+      "sha256": "abb63f2a5d1a4b87337d943cb5ee144733a6009598f1af8339361cfda6559a1f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v432-line-limit.json",
+      "sha256": "7d42f1c11eed90c3f619ea30943b4e919d0c58730027986b2fea3e8a186b17f5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v432-localization.json",
+      "sha256": "6a5e6f1c1538b214d06fd10c401bd99fe4393a16338242ede34a625b4e8b4619"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v432-response-font-background.json",
+      "sha256": "e1c151a9b9b91d7b2f601cca3a6d705caf828f01892e38876ead5a141a331604"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v432-response-font-identity.json",
+      "sha256": "b007c472cb84b2cdb2673d88fa29647fd8e828ba32711af298c2a07ce8e83f3e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v432-response-helpers.json",
+      "sha256": "177eaa78b8180951d3fb83d0f6b1b6945303e20037055481a4705cb13cfb6544"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v431-separator-consumers.json",
+      "sha256": "8ed9f23627eb2f85d6fce17af3a93ec77e53bfc048f79d407add6fd234791f79"
+    }
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "024129780a7f9de68ac6ba794e5c845580b48446a0ef7234e8dec13b216223e9"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "52b9dd82e87fe55bf64c5ffe08ee17358c6e91383daaf7d86ab31d18ba7f4ffa"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "32ec6237281f53d53344f249059a53ffed6be3074e7b94ebc4689224575d8d0d"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "3819f637b610fff5456a3a52b873be7c4749f5617e420409118a072c0f324fef"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "95bd68ae691489665fc8fbfb3bcb9f0c6061227b7400ebabc74ae3f563cfd605"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "61dea45079749d5593d503d3cd64734a8f781c13c44bc3006f204a8f421c7562"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "5d40986fbc50470aadc45babda08f1abf7888c4ec420b7c825c952d9b1b9409a"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "b50ed716243c2d028bb2fcd6f30ce0caed0c4f82a65ecc7c29c9f78276d27784"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "9317d9d54b13b86073f67b5a45477180882f464e879ca426da8a6106d7b64072"
+    }
+  ]
+}

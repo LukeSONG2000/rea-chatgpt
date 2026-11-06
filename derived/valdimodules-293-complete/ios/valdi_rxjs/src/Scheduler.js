@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.Scheduler=void 0;const e=require("./scheduler/dateTimestampProvider");class Scheduler{constructor(e,r=Scheduler.now){this.schedulerActionCtor=e,this.now=r}schedule(e,r=0,t){return new this.schedulerActionCtor(this,e).schedule(t,r)}}exports.Scheduler=Scheduler,Scheduler.now=e.dateTimestampProvider.now;

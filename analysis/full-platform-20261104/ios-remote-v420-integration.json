@@ -1,0 +1,365 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_turn_classification": "verified wait: existing runner97181, first-launch97197 and preview87483 were polled live; title/priority restatement did not add implementation",
+  "question": "Restore the Remote user-input card container and contextual default material from official artifact evidence, instead of guessing a generic card.",
+  "official_observations": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a5360c..0x1a53760;0xf53364;0x45abd0;0x4640f8;0x1c02d0",
+      "conclusion": "Input root is leading VStack spacing18; card uses all-edge padding16; after card: horizontal16/top4/bottom8."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x19b67e0;0x158a9c;0x19b6bd8;0x1bdd34",
+      "conclusion": "Card order is padding, leading maxWidth infinity, shape/background, clipping, optional Glass, border/default stroke0.5, shadow modifier, colorScheme identity. Shape is continuous RoundedRectangle from MessageInputStyle.innerCornerRadius."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "keypaths0x7e29c30/0x7e29c70/0x7e29cb0;0x2e5fcc->0x60612ac;conformance0x82392c8;descriptor0x96cc8ec",
+      "conclusion": "Card environment projections originate from __Key_messageInputStyle. Metadata field offsets f4/d8/f8 correspond to innerBackgroundColor/glass/innerCornerRadius, not independent fixed card appearance keys."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "defaultValue witness0x6081e50->0x6081df4;initializer0x6082794->0x60810f8;0x60814f4..0x6081574",
+      "conclusion": "Default innerCornerRadius=22. Glass availability true gives regular kind0, nil tint and interactive=true plus clear background. False gives nil Glass and OneOff/UserMessageBackground, resolved by0x74f16f4 literal0x8a52ae0."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x756da40/0x756dbb0;0x77107f8..0x771084c",
+      "conclusion": "Optional Glass has passthrough branch. Non-nil converter applies regular/clear/identity, tint and interactive before glassEffect. Availability checks iOS26 and a cached disable condition; private disable-input semantics not recovered."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x6ef441c->0x6f38690;0x6f387d8/0x6f38800;0x2324588;0x7ce20a8",
+      "conclusion": "Shadow preset stores black opacity0.05 and scalar tuple16,0,4. Its environment-dependent modifier application and complete field-to-effect mapping remain unproven; not applied as a guessed shadow."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Input form uses recovered root spacing and inner/outer padding with leading full-width frame.",
+      "Dedicated card modifier restores contextual continuous shape, background/clip, optional regular interactive Glass, original border and colorScheme identity.",
+      "Independent environment adapter selects the recovered artifact default; parent can override it without changing question/model/service components.",
+      "Explicit --remote-card-without-glass fixture covers the original fallback background path.",
+      "UI test covers both configurations, question navigation with unsubmitted draft, field/button visibility/non-overlap, return to task list, and screenshots for manual review."
+    ],
+    "independent_adaptations": [
+      "Native SwiftUI reimplementation, not complete official recovered source.",
+      "Fixture chooses default MessageInputStyle values; official Remote parent overrides are not established.",
+      "Host flag replaces private disable-input plumbing only for deterministic preview, and is not an official preference.",
+      "Current input card remains inside synthetic history; original composer-adjacent owner attachment remains unresolved."
+    ]
+  },
+  "validation": {
+    "typecheck": "Passed final host source, 3 existing UIKit warnings; session2896 exit0.",
+    "ui_source": "Full HostInteractionTests.swift parse passed; new test not executed.",
+    "assets": "assetutil verified reused fallback and border assets with light/dark variants; digest bound in ios-remote-v420-assets.json.",
+    "foundation": "No state-model change; prior passing v418 tests retained, not rerun for layout-only change.",
+    "runtime": "runner97181 and first-launch97197 remain live; existing administrator-authorization blocker unresolved. Old preview87483 live. No new build, simulator install or phone acceptance.",
+    "retention": "Dry run found no stale targets; no app removed."
+  },
+  "analysis_limits": [
+    "Initial attempts treated conformance0x82392c8 as raw type and metadata0xa882a40 as a chained witness pointer; readers rejected those interpretations. Correct resolution used EnvironmentKey resilient witness requirements and metadata descriptor __Key_messageInputStyle.",
+    "0x838eda8 was incorrectly probed as conformance/type, rejected by parsers; import resolution established swift_getKeyPath at0x7c54568. No shadow semantics were inferred from those failed parses.",
+    "These static results do not establish live effective parent style, visual geometry, keyboard behavior or Android parity."
+  ],
+  "next_minimum_action": "Trace the original Remote thread/composer owner providing this request view and MessageInputStyle override, including shadow application. After existing Xcode authorization clears, execute task->input component->return tests explicitly; pending original runner selects only testRemoteTaskScopeAndReturn.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-assets.json",
+      "sha256": "2650417906d6b8cbf277246541ac24944b0a02cbc9e50eb102ecc191ffbd4899"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-card-frame.asm",
+      "sha256": "265e3696157fe2f398f9645c2cd39b0e41b81a377bc1b6229a5806075782a7b1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-card-padding.asm",
+      "sha256": "2945716884c04c587a6326fa0a6c9f4163d0a0703a57492cb9955eaa525fd9be"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-environment-accessors.asm",
+      "sha256": "e6ff48e338c152462b866b44e20d2521a034b75d1a1a32136821ff068bded0e9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-environment-init-helper.asm",
+      "sha256": "f95ee730cab6055f4488cc7a570f2883711166eac575120b2038547ec471de6e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-environment-key-metadata.asm",
+      "sha256": "a177aa03bad3236bbac0e39346f6aabc5cf46a8610bc7b304a75aa0a9f1b0b1f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-environment-key-witness.asm",
+      "sha256": "6fe5ff9562fac348a38c3460db77eba59ce48470837020db9cde956b180da9de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-environment-types.json",
+      "sha256": "05ee939f7adb2598cf16108241a7c8596917c08a33186f29f9e6aee7d187f2ca"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-fallback-background.asm",
+      "sha256": "8fb9872219ccd1ea7ef2a85b87a75e283bfa69095b2d205cb43df65d17f720f2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-frame-arguments.asm",
+      "sha256": "76b3d25def08a3bdd0e117b5a6f60da0b564e51a28844d4a1a944f4091384cbe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-frame-arguments.json",
+      "sha256": "0da443796657ac3eb822637c9af4e7b2d040b4a176900bc70c13374318b48de2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-application-calls.json",
+      "sha256": "584658927f40d1a833a95247cd973bc25c9ae0d0e38ec4c1283d3bf5e8d185ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-application.asm",
+      "sha256": "f0448aeb9edad0f08b1eb84d4d65d1c6c8e5c42ee26964987831918957e659ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-converter.asm",
+      "sha256": "04ff03d0e240b22544b81cfc4e84a4611ca960e0687cb41ebb06be04a13266f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-default-condition-full.asm",
+      "sha256": "6b84d4cf918706704309023b6c175bcb010d72ca5481ecab08d06863da13f5a8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-default-condition-full.json",
+      "sha256": "df277aefb4c5bdf2eb5555b8da38a9390216dda0094556eb5dd7cbafaf04a488"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-default-condition.asm",
+      "sha256": "29918c96aa78c64533a4c3bdf6dab9d86a94660a7a2c994fd59920f3aabafb00"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-getter-calls.json",
+      "sha256": "8528d7f58c521fdb8f4138187d6c83140fcf788fc643bb592e2ead3e0095a40d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-getter-tail.asm",
+      "sha256": "fb9d87db10094d751a6eee87e7894aa85ec4ed9c52fe9a20da845ff52cfe4df8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-getter.asm",
+      "sha256": "867890fda2749769b96dca3687085c05870ff485569c14e49f491808039fc1cd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-metadata.asm",
+      "sha256": "247a5c1f246ba9f2f6ae9a9d36a65609b1085aa0098ed69d06ff24af2af9afab"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-metadata.json",
+      "sha256": "8601d88aa689fbebe2fa82f1c5ff7bec635274fc65939a1941c7c6c0746b4401"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-patterns.json",
+      "sha256": "a4154f8f3390ea9b9ecfcf2499cfbdb5fd2fa5a3f39cdcf20b392a57a829f9b6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-preference.asm",
+      "sha256": "76eff024c518d6fa01be8c6cbb3b5faa4da073a5d46eb55acc4e09524ee2eff6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-render-calls.json",
+      "sha256": "263a23411157dabdd2e7bb3ad4ff2f933fbf26931100f461a1f3543c691a3edd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-switch-init.asm",
+      "sha256": "417ae7db3447c5b341295e5f35d50343a31b48a23a4869d583c0ae438d54ea28"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-types.json",
+      "sha256": "f6c7599368d881854b816f474e4d518fd868a0e6e009dfe90b64958abd54295e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-glass-witness.asm",
+      "sha256": "b40e732b2b3963cc64e6eb6e829e913ef0b0fb33a5609750eb458728216ea713"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-inner-background-getter-calls.json",
+      "sha256": "9d4820ad09e15ec689b83178d4ea1d1e271731b7731d723037df808860f3b5e7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-inner-background-getter.asm",
+      "sha256": "96a4f31fb67ab5fa095bbb4994d17c8f70aca259d2b287d2a634190a8e6061a1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-key-getter.asm",
+      "sha256": "4d347ab04706e6238e15d950d55ee15799145511412611ba12227c9fb2e62bd7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-key-getter.json",
+      "sha256": "ad3853641149605e10ed1ed7a0a46d9f07ba6aafdb54c2436bc0266440952b08"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-layout-accessor.asm",
+      "sha256": "789e4614ec64ca729976e77bcac85fdfddac0a449d2ae05d22a6340e372ee625"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-layout-getter-helper.asm",
+      "sha256": "7ed843c92a5272e6f1a4c2e4351ba0f68f7f5572d563394b8457c63afc225814"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-layout-key-default.asm",
+      "sha256": "a137d8877cdfbe61ff2b41ef1bac66723ac7724fdd4c48ea6d56d4307ef1f2fe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-outer-top-padding.asm",
+      "sha256": "6b29a7229a267cd80ce552cb41d27246415aca838b77711d1193e92bc69bf7c2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-platform-availability.asm",
+      "sha256": "99e5e9efb99306b249e02af16cca86b127e7782034d8ce18c8d2e2eac70482fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-rawtype-8e15102.json",
+      "sha256": "b2bedc5ec8f97fa55d75863e543cacca88002d08be7803a083caf79fef92cb9d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-rawtype-8e38dae.json",
+      "sha256": "b2bab108512820d52993cd6327f5b02e763ff12eb16f3b997e81c16f18ea1449"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-rawtype-8e394d0.json",
+      "sha256": "9e7d43d634eaeedaab5003611accf18d442e1ba9e58165896cc5559c10b08dc1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-apply.asm",
+      "sha256": "2a47f95ec363943f8f09b8e8393d7283c85c86ecfb542f4e3494a0622ad1613a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-apply.json",
+      "sha256": "7f01186cbc9cd6a8cd3ad60140e27698cc0563afdeff96a38faf948f0f79af25"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-calls.json",
+      "sha256": "65e749435c371565a40f21917e53c8ad2c2139db9c09ed04100a21a4b6655d53"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-color-init.asm",
+      "sha256": "71b7fdb6860d4cfaae2b2727954d85b16d329c8a5f2e3e9d91b70f8890246d4f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-color-tail.asm",
+      "sha256": "c5ebc1ddb876c8a1ce4786fb3e18c871a47a2f9b6f9e8f644c27408d14ed5de3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-color-tail.json",
+      "sha256": "0b74766065203d3aae37bd5e52f5f7eda22b76471d2b57908adf87358bb6bf70"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-constant-init.asm",
+      "sha256": "c075da01131e789fae515924c3ed20dbae7f81e60e1ed7ed439a117579ffc450"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-init.asm",
+      "sha256": "94aa3af496ca54ac7654ec5e715eb1068b53bd26c207833a53820afbbc44ffed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-metadata.asm",
+      "sha256": "49c7bccfc78bac27d5dc79cbc962fcc72b4cf53dcfd44d053e600cfc89af1002"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-opacity-helper.asm",
+      "sha256": "45cd4c1b66e958d67db0e76d75bb67c2e28b36339ba53f76be143d0c9b65c083"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-types.json",
+      "sha256": "97480229c75bb1c48669e422bac51aa42c4d8cd8ba38de8e980398351863eb15"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow.asm",
+      "sha256": "b42b8483c136912f35892225fef8b36c8704fc5ef29aba11f76eb1affdad475b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shape-corner-style.asm",
+      "sha256": "dc1c54e3476bdc57f604c7172991b868420cc7b616f185c3dd8d5045d877accc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shape-from-layout.asm",
+      "sha256": "8772b09645c493f379682aebd6e2a0343eb7e2917f6736d759d665b3bcd10c56"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shape-getter-calls.json",
+      "sha256": "30ad31aeac603b766681a8ac1d8d4985be9fd90b2a132cb594fa5f1c08788811"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shape-getter.asm",
+      "sha256": "af35bc9f674f3038e8dbfbf1742769e201d6b6e54c07717f0a51d8d5f9e3a984"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shape-initializer-helper.asm",
+      "sha256": "2726327c501f6ecc74aa2990125f0e8315abf5d9c813282b3ca80521d4301e2f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shape-keypath-thunks.asm",
+      "sha256": "f2e5b58dd4018482d2ed3b937a25eb90427c46cf5751763c9ca42e8bca54a0ba"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-style-default-body.asm",
+      "sha256": "1fcbf1e58ed21781640a5fbfcae150d52da4352fa77f05f1c1dc03cc478817af"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-style-default-init.asm",
+      "sha256": "dd691a577535012515b779fa148bf722236f9de9557679c2e47e0bc39205a34d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-style-default-init.json",
+      "sha256": "2feeda8df6935e89c4031684d1d3a2d971c21d3f9f758c02f1c0ec897e6e4602"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-style-default.asm",
+      "sha256": "93c07c17e98098e58d2a68a3e994c583d4607e4cb70667a6c38f382820642d31"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-style-key-witnesses.json",
+      "sha256": "7eca1a2d6820fdfa91e75d44a338799c8041dc1a0cfb89330dadcf24842efd45"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-style-value-init.asm",
+      "sha256": "fbc8acade0dc58e2b2b158533419615bbef26327eaaf89b78ef55f3f8ab68f7d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-type-7e1eb38.json",
+      "sha256": "40ac8690361b829fa1113d0b764f286007a727ec75ecb269657dcbf2fed8ff48"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-type-7e1eb40.json",
+      "sha256": "c2374866f71649b4217e5712ac1a0e41b20041458ecf75787f9c3c91f01e5599"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-type-7e1eb48.json",
+      "sha256": "1ebdb53c16e3a589f03d474c36b400f67544cd6f6fd805f9f628318056ef7430"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-type-7e1eb70.json",
+      "sha256": "8475fd57dc77034cc42695a27c092e12d96d839fa99c4de213262df380ad7ad6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-witness-84b957c.json",
+      "sha256": "2d555e43c7c91cf0f054c7114741cdd4b0a82ec5a633e1387e561bd1570ca6c6"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "2daad4ba2bf12e448a7529e1bc08fc825609794703a94eeb22621b71978c4602"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "b7368d1569b36923248175967750f964bb2256e9790a839072dd5a8f8f91164d"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteUserInputInteraction.swift",
+      "sha256": "3f74bb9efb12cb1202ebca86afb20e92d971a1eab59d1584d5172d561e58a4b5"
+    }
+  ]
+}

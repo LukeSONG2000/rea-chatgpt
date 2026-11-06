@@ -1,0 +1,43 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-host-adapter-runtime",
+  "defect": "Renderer batches assigned conversation draft and new-conversation home draft. Host identity guard rejected entire batch, causing cold draft loss despite in-process retention.",
+  "fix": [
+    "Accept synthetic-account new-conversation draft identity",
+    "Validate optional local-chatgpt UUID home identity",
+    "Exclude home draft from history-membership deletion while retaining deletion for missing real conversations"
+  ],
+  "validation": {
+    "draft_merge_cleanup_and_disk_regressions": "passed",
+    "native_menu_new_send": "passed",
+    "in_process_draft_isolation": "passed",
+    "cold_new_history_and_draft": "passed",
+    "cold_old_draft": "passed"
+  },
+  "host_pids": [
+    86439,
+    86567
+  ],
+  "accepted": [
+    "macos-menu-v83-write-v2.json",
+    "macos-menu-v83-read-v2.json"
+  ],
+  "retained_failures": [
+    "macos-menu-v83-read.json"
+  ],
+  "diagnostic": "macos-menu-v83-diagnostic.json",
+  "sources": {
+    "analysis/tools/desktop-offline-store.cjs": "2cb643836ec98c0834f3f235b1dbfbb1a459f3506c9d22b749c118778de53846",
+    "analysis/tools/desktop-draft-lifecycle.cjs": "953b97f16519c5caff6715099904096f541a5990808570a10705f9c23f6e2ff9",
+    "analysis/tools/test_desktop_draft_lifecycle.cjs": "0f653bd3113d5d97143fc3a1a0e9c11ca43775c66b74ec8fc05db67377ab1991",
+    "analysis/tools/probe_desktop_root_mount.cjs": "e28ef62243d3a3381c239bd1a79bcd52155ecd569f79e6395963b1b21b6b5bdd"
+  },
+  "limits": [
+    "MenuItem invoked programmatically; native keyboard/menu clicks unaccepted",
+    "Home draft persistence format accepted, but unsent home draft visual cold restore separately unaccepted",
+    "No crash consistency, simultaneous processes or actual accounts",
+    "Official native complete fidelity and six-platform goal remain incomplete"
+  ],
+  "next_action": "Validate unsent home draft cold restoration and plain menu accelerator behavior when desktop unlocked; progress remaining frontend controls"
+}

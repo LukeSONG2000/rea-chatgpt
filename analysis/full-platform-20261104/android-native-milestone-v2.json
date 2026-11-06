@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "android",
+  "official_baseline": "1.2026.293",
+  "baseline_ref": "analysis/full-platform-20261104/baseline.json",
+  "implementation_origin": "independent Compose native host, not original UI",
+  "runtime": {
+    "avd": "REA_ChatGPT_Offline",
+    "serial": "emulator-5554",
+    "api": "35",
+    "fingerprint": "google/sdk_gphone64_arm64/emu64a:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+    "hardware_profile": "Pixel 7",
+    "headless": true,
+    "physical_device": false,
+    "system_image_metadata_sha256": {
+      "package.xml": "9bbfa7f3f8b7386ae31ee3130748aeb32a37c3404d2be5fb8ac7f0f731ea9642",
+      "source.properties": "bd5cb4bc86ef478b0f37a034aa2b460165b391e8cb6504cb13b8ca1c462c4848"
+    }
+  },
+  "accepted": [
+    "App and instrumentation APK built; offline rebuild passed",
+    "A/B draft values written and checked through native UIAutomator",
+    "Unavailable Send alert preserves draft",
+    "Force-stop verified no remaining process; separate instrumentation PIDs 3354 and 3646",
+    "Persisted selected B and A/B drafts restored in new process",
+    "Exported after-restart screenshot inspected; native page and B draft visible",
+    "APK lacks INTERNET permission"
+  ],
+  "not_accepted": [
+    "Original ChatGPT visual/layout parity",
+    "Real keyboard composition or selection/copy",
+    "Android original Markdown/code/table projection",
+    "Harness pairing, model stream, generated history or Remote",
+    "Physical Android device behavior, frame performance"
+  ],
+  "evidence_sha256": {
+    "implementation/android/build.py": "06ec3096ade15aab96073ca26b1fb1e0e377790a80decb044e8eb2f81d5591fe",
+    "implementation/android/README.md": "9e6efa971e2c5515d6249d5f4c9e74469ffe13a09cc13a8ef2ada7e5db223163",
+    "implementation/android/.gitignore": "6409fa61e338c8dedada902c171cdd004b146e5b3bf602700f104bd30acc0a12",
+    "implementation/android/build.gradle.kts": "212469ef9e91a5b6105c801a1eb72c52f29612895e60c00670eac235e1fc6321",
+    "implementation/android/settings.gradle.kts": "367ec1d3bf09eac8517f02be10457f679fa4cfa6a67299a8750120c5a0201228",
+    "implementation/android/test-native.py": "ed37d8b182657ad550b3b0bf4a7c5aed8f9035765b0d4e779f96b9d79c839782",
+    "implementation/android/gradle.properties": "198cfb414a6067fc813ba6dd9d8d927a5d9bd005567dc4bba8784a8deec518b9",
+    "implementation/android/app/build.gradle.kts": "37520647743fad39b682f07a06f28616ad5e4d79c437c1665693826eb1266e4f",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "a9cd1a85d7a283f956734376f47d868068c06abed65a01bcef798aabb3e44517",
+    "implementation/android/app/src/main/AndroidManifest.xml": "8e0ccbb7efe43c55e7ff1ad233611ad00ecbbe28cd87ec71e64d3f70bfde39fa",
+    "implementation/android/app/src/main/res/values/styles.xml": "f17fd5165caf1b3e88e2a8497a52f2b5adc5691fd2da1d66ced90bc66374660a",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "2cc0bfab53bffa2538063bf85f9e2ff5ef746cb3e1b4b30c39f7514421679628",
+    "analysis/full-platform-20261104/android-runtime-v1/before-restart.xml": "cdf0cd717e5e773fdeefb7e8a364f6a5a8ff091b224c1884dd78f297721f0265",
+    "analysis/full-platform-20261104/android-runtime-v1/before-restart.png": "0bd8ed4781b410725f92d5a4d431900aa482c48881911c2fe5c9a70f4d7e8576",
+    "analysis/full-platform-20261104/android-runtime-v1/prepareDrafts.log": "75c079eefdee868ef9989922374802810e7abee6019d9082e53986435fc40d5f",
+    "analysis/full-platform-20261104/android-runtime-v1/verifyAfterProcessRestart.log": "e8dc1af6dc28e8c1d5ad461f173f2c8c57773149c005fad5aab3fdfd0f8b05f8",
+    "analysis/full-platform-20261104/android-runtime-v1/after-restart.xml": "d1c752879371537e3a322c3b2525f0b2580e5fbd5462a402fd9f0b5a54c5ca70",
+    "analysis/full-platform-20261104/android-runtime-v1/after-restart.png": "92cff3a91149739ad773c5695c77a7e7f27bfc894cedff8b01602c25f8107704",
+    "analysis/full-platform-20261104/android-runtime-v1.json": "e1fc67853bffebb6f3a76fe23558db9fda294dc4bdf040a32e2d0881c6edf799",
+    "analysis/full-platform-20261104/android-test-build-v2.log": "b4a00f6fb75df55c6a045e00c8e5ab70ddbf6f1222a75223a87025f3f728cc58"
+  },
+  "next_action": "Connect Android-specific content projection and scoped fixture harness; keep official evidence separate from independent implementation"
+}

@@ -1,0 +1,70 @@
+{
+  "status": "partial",
+  "platform": "android",
+  "reference_baseline": "1.2026.293",
+  "origin": "independent Compose host and authenticated synthetic fixture harness; not official protocol implementation",
+  "changes": [
+    "Added two-phase native dynamic streaming/cold restart acceptance runner with private pairing cleanup",
+    "Removed internal UUID from composer label; Message is now the normal input prompt",
+    "Tests observe exact persisted selected identity after native actions and verify rendered title/content, never inject application state",
+    "Narrowed older history runner to its intended storage regression method after catalog tests expanded test class"
+  ],
+  "verification": {
+    "build": "analysis/full-platform-20261104/android-dynamic-build-v3.log",
+    "runtime": "analysis/full-platform-20261104/android-dynamic-runtime-v2.json",
+    "tests_passed": 2,
+    "pids": [
+      9531,
+      9648
+    ],
+    "covers": [
+      "two native-created UUID conversations",
+      "background slow stream while second reply completes",
+      "switch without wrong-scope rendering",
+      "local cancellation and 2.5-second stable persisted partial",
+      "verified force-stop and distinct-process restoration of cancelled/completed conversations"
+    ],
+    "disk_check": "analysis/full-platform-20261104/android-dynamic-runtime-v2/persisted-check.json",
+    "visual_review": "Final dynamic-stream-after screenshot inspected; input no longer exposes UUID; official visual fidelity unaccepted"
+  },
+  "inputs": [
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt",
+      "sha256": "d8eff9cca1a74c19d03b6e9b85b92af4f6af781022b70a37dc1b877c76e92c68"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/LocalHarness.kt",
+      "sha256": "c3cc195587de634e5a7d81ae191db9bae37a9633cdeee2b17ed41bda22c42c6c"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/ConversationCatalog.kt",
+      "sha256": "0b0a9038904b7a279b17e1296be41934e6bc0eca0b7d678ff155db8b86e67ad3"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/MessageStore.kt",
+      "sha256": "439c4246d4f78ccdfd38c6851e9b6f1db47b8abbc13d1caa9ee7c5ff3c9de1be"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt",
+      "sha256": "4785d1c50c2af78949b327daf255870b310d6cfb59abe3cab023c2c3c8c502cd"
+    },
+    {
+      "path": "implementation/android/test-dynamic-stream.py",
+      "sha256": "0906c23780cf6a6445d1f746229928071cbfc38d9b524aafff03810a8a4b2472"
+    },
+    {
+      "path": "implementation/harness/fixture_worker.py",
+      "sha256": "f59ad3d3fb785eaa02f8de9e510e5701b313eced866fddcc56a01c5d73d2a37b"
+    }
+  ],
+  "previous_run": "android-dynamic-runtime-v1.json passed before composer-label cleanup; retained as historical evidence",
+  "cleanup": "Both owned fixture services stopped; matching temporary pairing files removed; runner removed emulator pairing and its port reverse",
+  "limits": [
+    "No live Zhipu/provider or official services called",
+    "Cancellation acknowledgment not inspected; local cancelled state does not prove server acceptance",
+    "Bounded late-update observation does not prove arbitrary delayed-event behavior",
+    "Deletion/rename/sync, accessibility, official appearance and physical-device acceptance pending",
+    "Earlier catalog tests changed to use selected-identity observation but were not rerun separately; dynamic acceptance exercises that helper"
+  ],
+  "next_action": "Implement Android scoped deletion and cold-recovery cleanup with native confirmation; then continue frontend interaction/fidelity gaps across primary hosts"
+}

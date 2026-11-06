@@ -1,0 +1,26 @@
+{
+  "status": "failed",
+  "source_basis": "ios-remote-v377-integration.json",
+  "evidence_type": "independent-native-host-runtime-test",
+  "test": "testRemoteLongTitleLayout",
+  "scenarios": [
+    "Default system text size: compare short/long title row heights",
+    "XXXL system text size: require measurable height growth vs default, then compare short/long",
+    "Long title retains full accessibility label and pending state",
+    "Open host-scoped detail and return in both sizes"
+  ],
+  "limitations": [
+    "This is host behavior validation, not original-app execution.",
+    "Not all accessibility size categories or locales covered.",
+    "Short/long equal height alone does not prove no visual overlap; inspect screenshots."
+  ],
+  "production_layout_changed": false,
+  "outcome": "Default-size long-title assertions and detail return completed. XXXL scenario blocked before Remote entry by sidebar layout hang. Test manually interrupted after main-thread sampling.",
+  "runtime_evidence": {
+    "sample": "ios-remote-v378-large-font-hang.sample.txt",
+    "stack": "NativeSidebarContainer.transition(toOpen:) line71 layoutIfNeeded -> UIKit navigation/content inset layout",
+    "limit": "Observed hot stack, not yet proven root cause. Do not generalize to official app."
+  },
+  "preview_pid": 85844,
+  "screenshot_inspected": "ios-remote-v378-screenshots/C2E6CC4E-A37A-4521-B574-8E5857F41E39.png: default title truncates without overlapping pending pill"
+}

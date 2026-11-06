@@ -1,0 +1,48 @@
+{
+  "status": "partial",
+  "fixed": "Original CSS cascade layer order restored before all dependency stylesheets",
+  "officialObservation": {
+    "file": "recovered/macos/asar-extracted/webview/index.html",
+    "line": 12,
+    "declaration": "@layer theme, base, components, utilities;"
+  },
+  "runtimeEvidence": {
+    "before": "desktop-shell-v175-inline-trace.json",
+    "after": "desktop-shell-v175-layer-fix.json",
+    "mainTopBefore": 0,
+    "mainTopAfter": 44,
+    "marginTopAfter": "44px",
+    "sidebarCollapseRestore": "passed",
+    "nativeResize": "1000x720, no horizontal overflow",
+    "pageErrors": []
+  },
+  "correction": "thread-edge-scroll remains unchanged after fix; it was not the cause of missing inset. CSS declaration ordering was the demonstrated cause.",
+  "limitations": [
+    "Source host only; retained packaged candidates do not yet contain this change.",
+    "App shell remains explicit --local-app-shell experiment; feature availability is not official account authorization.",
+    "Native window controls are outside renderer screenshot.",
+    "Screenshot reference version unverified; this is not complete visual parity."
+  ],
+  "files": [
+    {
+      "path": "recovered/macos/asar-extracted/webview/index.html",
+      "sha256": "85e5c5b4ce1cd7e0fc42ccbac7fe6d9c6ac7b2eb4b8a7f77beb39d280fdca9f5"
+    },
+    {
+      "path": "implementation/desktop/native/main.cjs",
+      "sha256": "73176e5155d1c25f7d7746d3017c2023432f52225b2873bc3d4e8159f98e0d64"
+    },
+    {
+      "path": "implementation/desktop/native/renderer.mjs",
+      "sha256": "bed1a1377f10c8c994b54e8f55e76fad0d2dd3d324c240f279fef0451ccef1ae"
+    },
+    {
+      "path": "implementation/desktop/native/local-app-shell.mjs",
+      "sha256": "45eecec0b3c5f82996b44342cc423cc2f39b6df7bf66a75a2bfbd133b7c10d8a"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-app-shell.cjs",
+      "sha256": "1f693341566fdfc6c693caf453716965c481fded3aef7d2ef293c41fc7fcd9cc"
+    }
+  ]
+}

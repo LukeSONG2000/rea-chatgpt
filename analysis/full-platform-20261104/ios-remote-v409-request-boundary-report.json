@@ -1,0 +1,133 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-evidence",
+  "version": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "decision": "Replace the generic pending-request alert only after request-kind selection, owner callbacks and reply state are resolved. Automatic-review summaries are distinct from user decisions.",
+  "confirmed": [
+    {
+      "symbol": "CodexRemoteThreadApprovalCard",
+      "descriptor": "0x95ac5c8",
+      "body_witness": "0x1a2b110",
+      "body": "0x1a2ab4c",
+      "observation": "Body associated type contains CodexRemoteThreadApprovalBannerView wrapped in IDView keyed by ApprovalRequestKey. Body writes three closure function/context pairs; active request-kind branch and service effects are not established."
+    },
+    {
+      "symbol": "CodexRemoteThreadApprovalBannerView",
+      "descriptor": "0x95ae77c",
+      "body": "0x1a1d1d4",
+      "observation": "Stored inputs include approvalRequest, viewportHeight, approve(ApprovalDecision), deny, submitFeedback and local feedbackText. Associated body type includes conditional OpenAIForm, action collection, ScrollView and adaptive layout. Type references alone do not prove the visible branch."
+    },
+    {
+      "symbol": "CodexRemoteToolUserInputRequestView",
+      "descriptor": "0x95ae7f4",
+      "body": "0x1a53564",
+      "observation": "Separate request, dismiss and submit inputs; local answers, customAnswersByQuestionID, customAnswer, currentQuestionIndex and custom focus. Body type contains indexed options, SecureField/TextField, submit/focus/onChange modifiers and composer-adjacent card style. Exact branch and transition logic remain unproven."
+    },
+    {
+      "symbol": "ApprovalRequestKey",
+      "descriptor": "0x95d4610",
+      "fields": [
+        "requestID",
+        "threadID",
+        "turnID",
+        "itemID",
+        "callID"
+      ],
+      "limit": "No host field in this struct; enclosing session/connection ownership requires a separate trace."
+    }
+  ],
+  "closure_targets_from_card": [
+    {
+      "write_site": "0x1a2ad24",
+      "function": "0x1c3425c"
+    },
+    {
+      "write_site": "0x1a2ad38",
+      "function": "0x1c349c0"
+    },
+    {
+      "write_site": "0x1a2ad48",
+      "function": "0x1c349d4"
+    }
+  ],
+  "integration": {
+    "ui_changed": false,
+    "current_gap": "RemoteThreadFixturePage pending section still shows a generic View request alert. It does not yet implement the recovered pending interaction components.",
+    "title_check": "NativeConversationHost currently uses modeControl only when rows are empty and nil titleView otherwise; independent debug-title route remains removed. Existing testNoDebugTitleNavigation covers switching, send and sidebar return; not rerun this batch."
+  },
+  "next_minimum_actions": [
+    "Resolve the three card callback thunks and their request-captured owner writes, then request-kind to action/form selection.",
+    "Resolve user-input answer selection, next/back/submit and request-key change handling before integrating a scoped fixture adapter.",
+    "Run title/task/message-return tests when the existing Xcode authorization wait completes."
+  ],
+  "validation": {
+    "static_records": "parsed; evidence files indexed below",
+    "ui_runtime": "not run; original session42359 and xcodebuild97197 remain live awaiting first-launch authorization",
+    "preview": "existing simulator process87483 retained",
+    "physical_device": "not installed this batch",
+    "cross_platform": "Android behavior not proven by these iOS observations"
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-approval-banner-witness.asm",
+      "sha256": "031e1fdd55e83f36030c3e563139c77c6cac47d12098ddb792dbd80494030d94",
+      "bytes": 2631
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-approval-banner.asm",
+      "sha256": "a5eae841d002a96e4cf3f1fd0da011b1d37d37ee30365bdd86b86707aa95b70b",
+      "bytes": 14622
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-approval-card-witness.asm",
+      "sha256": "8cad15eb726a3748050bdce6a8cb04632621a55718d3f604326f8e72ebd20c78",
+      "bytes": 2404
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-approval-card.asm",
+      "sha256": "cddd032d8b4dfadb571f87bba6c480d3ca25853eefe3ce0801584d7bce714218",
+      "bytes": 18461
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-body-calls.json",
+      "sha256": "81b672d3a38e5a98fd4b46385576359bb9096bc493214733a5939c71198e2f34",
+      "bytes": 42396
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-body-types.json",
+      "sha256": "f41e1a2e16c78e3a61d6b3a4f48c478a922bfd1070555413f92ee2ea8cda8fe7",
+      "bytes": 27142
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-input-body.asm",
+      "sha256": "1730699ab1ff5aa72a253b0de5fe09fd392a717c90fd0f1b4b4e18ecdca5b06f",
+      "bytes": 15037
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-input-witness.asm",
+      "sha256": "e200aef82256ca4b80861826ea9554f680aabe81d718f11659fa8cfea2dc2961",
+      "bytes": 2760
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-request-candidates.json",
+      "sha256": "3cf4446c55924399da6084e94687d1330ae049c2f6d1055dae8926ef0c1c03f1",
+      "bytes": 6484
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-request-identity.json",
+      "sha256": "f01a55766ab7563f7aee7f58f4d60a6fc051408ba8eab43b6f03969226e3325f",
+      "bytes": 6661
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-request-metadata.json",
+      "sha256": "11ce8f55bc907be03109bf50f659c0a30661b701e6772529477927966ddcb0c6",
+      "bytes": 7474
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v409-request-witnesses.json",
+      "sha256": "756e4930c67e933f91d731b7e7d42b5934734e258051a2cf65d5e450dd9a3a29",
+      "bytes": 11523
+    }
+  ]
+}

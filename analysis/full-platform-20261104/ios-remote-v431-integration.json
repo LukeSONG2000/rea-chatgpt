@@ -1,0 +1,116 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v431",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "What is the actual Remote transcript separator primitive and are history/response consumers equivalent?",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x95add04;0x7e1a538;0x1a31994;0x1a318fc;0x7e1d680;0x7e1d688",
+      "conclusion": "Rectangle filled with semantic SeparatorShapeStyle opacity Float0.6; frame width nil,height1,center. No scaled or physical-pixel height observed."
+    },
+    {
+      "evidence_type": "static_enum_abi_inference",
+      "source": "0x1a32e84;0x1a329e4;0x1a3c830;0x1a3bdb0",
+      "conclusion": "Previous-history and response separators follow distinct wrapper paths; response branch consumes localized Response and optional Text/Capsule composition."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Reusable native separator primitive connected after expanded synthetic history.",
+      "Add history/current ordering assertion and screenshots to existing current-turn UI test."
+    ],
+    "independent_adaptations": [
+      "Fixture-selected visibility and placement.",
+      "Decorative accessibility exclusion."
+    ],
+    "unknowns": [
+      "Full previous-separator wrapper and response-label/capsule dimensions.",
+      "Official producer visibility/ordering and group spacing.",
+      "Runtime visual/device acceptance and Android separator consumer."
+    ]
+  },
+  "validation": {
+    "typecheck": {
+      "exit_code": 0,
+      "existing_warnings": 3,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v431-typecheck.log",
+        "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+      }
+    },
+    "foundation": "not_repeated_no_state_model_change",
+    "ui_parse": {
+      "exit_code": 0
+    },
+    "ui_execution": "not_run",
+    "visual": "not_accepted",
+    "phone_updated": false,
+    "simulator_updated": false,
+    "runtime_blocker": "Original Xcode installer authorization gate remains; original processes observed live.",
+    "live_pids": [
+      87483,
+      97181,
+      97197
+    ],
+    "new_builds": false
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v431-previous-separator.json",
+      "sha256": "d74ebe923b1e88997d1ff21f3b9200f7c2569ecb26a35245e48d96141984db88"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v431-separator-body.json",
+      "sha256": "aeffbfb1f3c784f47c01464db6f32d99bcf55d970eca6da3f9b4e4de8f77628f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v431-separator-consumers.json",
+      "sha256": "8ed9f23627eb2f85d6fce17af3a93ec77e53bfc048f79d407add6fd234791f79"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v431-separator-frame.json",
+      "sha256": "b0af11a4d7cdc867887e7549aeac188386683e242134eba6ea7a8a53c19cafb5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v431-separator-metadata.json",
+      "sha256": "42cc3eb97751ca4d21e248e7abe34479bb9152211f27290c5f10c21cea31edd5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v431-separator-style.json",
+      "sha256": "63be435587ad624c817d4db893ae68a016496b7cf9292c3a6ad68108c7607c7c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v431-separator-witness.json",
+      "sha256": "312cf4138661d27c28e527b1127c06ab24cd819fe78ba1669fff349c3e2e83de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v321-dispatch-findings.json",
+      "sha256": "105417fbf3a452f27a118ceb1f7ca510f7f3015e6d7ef728df0fb4de62ace67f"
+    }
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "5fcf6db6f66f6d3522321751eb72ef739720105970967c0c76053bda18e4a832"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "57606d481c03b44458dc6999d6dfd071a8c3628cc752a59e8a259261a4dc44e4"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "8bde471d1387025e1ea4fe8c55c7d941ab3ed4b2178acbd8581f7a47b775c509"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "a909c0830ee6f85254930b51cfb153465756a03e6bbc68a4277d9a4cfa92c30a"
+    }
+  ]
+}

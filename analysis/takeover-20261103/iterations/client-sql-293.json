@@ -1,0 +1,1080 @@
+{
+  "entries": [
+    {
+      "bytes": 8675,
+      "candidate_blocks": [
+        {
+          "candidate_successors": [
+            1388
+          ],
+          "end": 1388,
+          "stack_state": "unknown: instruction semantics not verified",
+          "start": 1366
+        },
+        {
+          "candidate_successors": [],
+          "end": 1389,
+          "stack_state": "unknown: instruction semantics not verified",
+          "start": 1388
+        }
+      ],
+      "instructions": [
+        {
+          "candidate_pops": 0,
+          "candidate_pushes": 1,
+          "length": 5,
+          "offset": 1366,
+          "opcode": 1,
+          "operands_hex": "00010401",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 2,
+          "candidate_pushes": 1,
+          "length": 1,
+          "offset": 1371,
+          "opcode": 162,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 0,
+          "candidate_pushes": 1,
+          "length": 5,
+          "offset": 1372,
+          "opcode": 1,
+          "operands_hex": "000000c1",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 0,
+          "candidate_pushes": 0,
+          "length": 1,
+          "offset": 1377,
+          "opcode": 0,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 1,
+          "candidate_pushes": 1,
+          "length": 1,
+          "offset": 1378,
+          "opcode": 206,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 1,
+          "candidate_pushes": 0,
+          "length": 1,
+          "offset": 1379,
+          "opcode": 40,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 2,
+          "candidate_pushes": 1,
+          "length": 1,
+          "offset": 1380,
+          "opcode": 174,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 0,
+          "candidate_pushes": 1,
+          "length": 5,
+          "offset": 1381,
+          "opcode": 3,
+          "operands_hex": "01040000",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 1,
+          "candidate_pushes": 0,
+          "candidate_target": 1390,
+          "length": 2,
+          "offset": 1386,
+          "opcode": 236,
+          "operands_hex": "02",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 1,
+          "candidate_pushes": 0,
+          "length": 1,
+          "offset": 1388,
+          "opcode": 14,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        }
+      ],
+      "issues": [
+        {
+          "offset": 1389,
+          "reason": "function_record_boundary_unresolved"
+        },
+        {
+          "offset": 1386,
+          "reason": "branch_target_not_decoded_boundary",
+          "target": 1390
+        }
+      ],
+      "member": "src/ClientSQLDebug.js",
+      "opaque_region": {
+        "length": 7286,
+        "offset": 1389,
+        "sha256": "15357a57f696c311dbe5ac4b5a941feabbfd5df3fbee880a14c1e38837772f9d"
+      },
+      "reason": "candidate instructions; function bodies and semantics unresolved",
+      "sha256": "0d86629edbe47094d74a029bb270cfd54fb4fe9cf4ec2a46077f984421eb0633",
+      "status": "partial",
+      "structure": {
+        "body_offset": 1366,
+        "name": "client_sql/src/ClientSQLDebug",
+        "string_region_end": 1366,
+        "strings": [
+          {
+            "end": 44,
+            "offset": 36,
+            "slot": 0,
+            "value": "require"
+          },
+          {
+            "end": 51,
+            "offset": 44,
+            "slot": 1,
+            "value": "module"
+          },
+          {
+            "end": 59,
+            "offset": 51,
+            "slot": 2,
+            "value": "exports"
+          },
+          {
+            "end": 61,
+            "offset": 59,
+            "slot": 3,
+            "value": "e"
+          },
+          {
+            "end": 63,
+            "offset": 61,
+            "slot": 4,
+            "value": "t"
+          },
+          {
+            "end": 65,
+            "offset": 63,
+            "slot": 5,
+            "value": "n"
+          },
+          {
+            "end": 67,
+            "offset": 65,
+            "slot": 6,
+            "value": "a"
+          },
+          {
+            "end": 69,
+            "offset": 67,
+            "slot": 7,
+            "value": "r"
+          },
+          {
+            "end": 71,
+            "offset": 69,
+            "slot": 8,
+            "value": "i"
+          },
+          {
+            "end": 73,
+            "offset": 71,
+            "slot": 9,
+            "value": "s"
+          },
+          {
+            "end": 75,
+            "offset": 73,
+            "slot": 10,
+            "value": "o"
+          },
+          {
+            "end": 77,
+            "offset": 75,
+            "slot": 11,
+            "value": "u"
+          },
+          {
+            "end": 79,
+            "offset": 77,
+            "slot": 12,
+            "value": "l"
+          },
+          {
+            "end": 81,
+            "offset": 79,
+            "slot": 13,
+            "value": "c"
+          },
+          {
+            "end": 83,
+            "offset": 81,
+            "slot": 14,
+            "value": "m"
+          },
+          {
+            "end": 85,
+            "offset": 83,
+            "slot": 15,
+            "value": "d"
+          },
+          {
+            "end": 87,
+            "offset": 85,
+            "slot": 16,
+            "value": "b"
+          },
+          {
+            "end": 89,
+            "offset": 87,
+            "slot": 17,
+            "value": "g"
+          },
+          {
+            "end": 91,
+            "offset": 89,
+            "slot": 18,
+            "value": "f"
+          },
+          {
+            "end": 93,
+            "offset": 91,
+            "slot": 19,
+            "value": "p"
+          },
+          {
+            "end": 95,
+            "offset": 93,
+            "slot": 20,
+            "value": "h"
+          },
+          {
+            "end": 97,
+            "offset": 95,
+            "slot": 21,
+            "value": "w"
+          },
+          {
+            "end": 99,
+            "offset": 97,
+            "slot": 22,
+            "value": "y"
+          },
+          {
+            "end": 101,
+            "offset": 99,
+            "slot": 23,
+            "value": "C"
+          },
+          {
+            "end": 103,
+            "offset": 101,
+            "slot": 24,
+            "value": "E"
+          },
+          {
+            "end": 105,
+            "offset": 103,
+            "slot": 25,
+            "value": "S"
+          },
+          {
+            "end": 107,
+            "offset": 105,
+            "slot": 26,
+            "value": "D"
+          },
+          {
+            "end": 109,
+            "offset": 107,
+            "slot": 27,
+            "value": "L"
+          },
+          {
+            "end": 111,
+            "offset": 109,
+            "slot": 28,
+            "value": "v"
+          },
+          {
+            "end": 122,
+            "offset": 111,
+            "slot": 29,
+            "value": "__esModule"
+          },
+          {
+            "end": 153,
+            "offset": 122,
+            "slot": 30,
+            "value": "registerClientSQLDebugDatabase"
+          },
+          {
+            "end": 186,
+            "offset": 153,
+            "slot": 31,
+            "value": "unregisterClientSQLDebugDatabase"
+          },
+          {
+            "end": 214,
+            "offset": 186,
+            "slot": 32,
+            "value": "notifyClientSQLDebugChanged"
+          },
+          {
+            "end": 242,
+            "offset": 214,
+            "slot": 33,
+            "value": "valdi_core/src/JSXBootstrap"
+          },
+          {
+            "end": 257,
+            "offset": 242,
+            "slot": 34,
+            "value": "ValdiClientSQL"
+          },
+          {
+            "end": 284,
+            "offset": 257,
+            "slot": 35,
+            "value": "ValdiDebuggerDataProviders"
+          },
+          {
+            "end": 291,
+            "offset": 284,
+            "slot": 36,
+            "value": "create"
+          },
+          {
+            "end": 299,
+            "offset": 291,
+            "slot": 37,
+            "value": "forEach"
+          },
+          {
+            "end": 307,
+            "offset": 299,
+            "slot": 38,
+            "value": "changed"
+          },
+          {
+            "end": 316,
+            "offset": 307,
+            "slot": 39,
+            "value": "revision"
+          },
+          {
+            "end": 320,
+            "offset": 316,
+            "slot": 40,
+            "value": "min"
+          },
+          {
+            "end": 324,
+            "offset": 320,
+            "slot": 41,
+            "value": "max"
+          },
+          {
+            "end": 335,
+            "offset": 324,
+            "slot": 42,
+            "value": "setTimeout"
+          },
+          {
+            "end": 340,
+            "offset": 335,
+            "slot": 43,
+            "value": "push"
+          },
+          {
+            "end": 353,
+            "offset": 340,
+            "slot": 44,
+            "value": "clearTimeout"
+          },
+          {
+            "end": 361,
+            "offset": 353,
+            "slot": 45,
+            "value": "indexOf"
+          },
+          {
+            "end": 368,
+            "offset": 361,
+            "slot": 46,
+            "value": "splice"
+          },
+          {
+            "end": 370,
+            "offset": 368,
+            "slot": 47,
+            "value": "\""
+          },
+          {
+            "end": 378,
+            "offset": 370,
+            "slot": 48,
+            "value": "replace"
+          },
+          {
+            "end": 381,
+            "offset": 378,
+            "slot": 49,
+            "value": "\"\""
+          },
+          {
+            "end": 383,
+            "offset": 381,
+            "slot": 50,
+            "value": "'"
+          },
+          {
+            "end": 386,
+            "offset": 383,
+            "slot": 51,
+            "value": "''"
+          },
+          {
+            "end": 393,
+            "offset": 386,
+            "slot": 52,
+            "value": "filter"
+          },
+          {
+            "end": 398,
+            "offset": 393,
+            "slot": 53,
+            "value": "sort"
+          },
+          {
+            "end": 409,
+            "offset": 398,
+            "slot": 54,
+            "value": " ORDER BY "
+          },
+          {
+            "end": 413,
+            "offset": 409,
+            "slot": 55,
+            "value": "map"
+          },
+          {
+            "end": 416,
+            "offset": 413,
+            "slot": 56,
+            "value": ", "
+          },
+          {
+            "end": 422,
+            "offset": 416,
+            "slot": 57,
+            "value": "table"
+          },
+          {
+            "end": 443,
+            "offset": 422,
+            "slot": 58,
+            "value": " ORDER BY rowid DESC"
+          },
+          {
+            "end": 446,
+            "offset": 443,
+            "slot": 59,
+            "value": "pk"
+          },
+          {
+            "end": 452,
+            "offset": 446,
+            "slot": 60,
+            "value": " DESC"
+          },
+          {
+            "end": 457,
+            "offset": 452,
+            "slot": 61,
+            "value": "keys"
+          },
+          {
+            "end": 463,
+            "offset": 457,
+            "slot": 62,
+            "value": "query"
+          },
+          {
+            "end": 482,
+            "offset": 463,
+            "slot": 63,
+            "value": "PRAGMA table_info("
+          },
+          {
+            "end": 484,
+            "offset": 482,
+            "slot": 64,
+            "value": ")"
+          },
+          {
+            "end": 515,
+            "offset": 484,
+            "slot": 65,
+            "value": "SELECT COUNT(*) AS count FROM "
+          },
+          {
+            "end": 521,
+            "offset": 515,
+            "slot": 66,
+            "value": "count"
+          },
+          {
+            "end": 526,
+            "offset": 521,
+            "slot": 67,
+            "value": "type"
+          },
+          {
+            "end": 530,
+            "offset": 526,
+            "slot": 68,
+            "value": "sql"
+          },
+          {
+            "end": 539,
+            "offset": 530,
+            "slot": 69,
+            "value": "rowCount"
+          },
+          {
+            "end": 547,
+            "offset": 539,
+            "slot": 70,
+            "value": "columns"
+          },
+          {
+            "end": 567,
+            "offset": 547,
+            "slot": 71,
+            "value": "PRAGMA user_version"
+          },
+          {
+            "end": 691,
+            "offset": 567,
+            "slot": 72,
+            "value": "SELECT name, type, sql FROM sqlite_schema WHERE type IN ('table', 'view') AND name NOT LIKE 'sqlite_%' ORDER BY type, name"
+          },
+          {
+            "end": 701,
+            "offset": 691,
+            "slot": 73,
+            "value": "debugInfo"
+          },
+          {
+            "end": 709,
+            "offset": 701,
+            "slot": 74,
+            "value": "target:"
+          },
+          {
+            "end": 712,
+            "offset": 709,
+            "slot": 75,
+            "value": "id"
+          },
+          {
+            "end": 732,
+            "offset": 712,
+            "slot": 76,
+            "value": " (target ClientSQL)"
+          },
+          {
+            "end": 737,
+            "offset": 732,
+            "slot": 77,
+            "value": "path"
+          },
+          {
+            "end": 753,
+            "offset": 737,
+            "slot": 78,
+            "value": "debugger-target"
+          },
+          {
+            "end": 758,
+            "offset": 753,
+            "slot": 79,
+            "value": "root"
+          },
+          {
+            "end": 763,
+            "offset": 758,
+            "slot": 80,
+            "value": "size"
+          },
+          {
+            "end": 774,
+            "offset": 763,
+            "slot": 81,
+            "value": "modifiedAt"
+          },
+          {
+            "end": 787,
+            "offset": 774,
+            "slot": 82,
+            "value": "user_version"
+          },
+          {
+            "end": 801,
+            "offset": 787,
+            "slot": 83,
+            "value": "schemaVersion"
+          },
+          {
+            "end": 813,
+            "offset": 801,
+            "slot": 84,
+            "value": "userVersion"
+          },
+          {
+            "end": 817,
+            "offset": 813,
+            "slot": 85,
+            "value": "all"
+          },
+          {
+            "end": 824,
+            "offset": 817,
+            "slot": 86,
+            "value": "tables"
+          },
+          {
+            "end": 828,
+            "offset": 824,
+            "slot": 87,
+            "value": "now"
+          },
+          {
+            "end": 837,
+            "offset": 828,
+            "slot": 88,
+            "value": "cachedAt"
+          },
+          {
+            "end": 845,
+            "offset": 837,
+            "slot": 89,
+            "value": "summary"
+          },
+          {
+            "end": 970,
+            "offset": 845,
+            "slot": 90,
+            "value": "SELECT name, type, sql FROM sqlite_schema WHERE type IN ('table', 'view') AND name NOT LIKE 'sqlite_%' AND name = ? LIMIT 1"
+          },
+          {
+            "end": 996,
+            "offset": 970,
+            "slot": 91,
+            "value": "Unknown ClientSQL table '"
+          },
+          {
+            "end": 999,
+            "offset": 996,
+            "slot": 92,
+            "value": "'."
+          },
+          {
+            "end": 1007,
+            "offset": 999,
+            "slot": 93,
+            "value": "refresh"
+          },
+          {
+            "end": 1013,
+            "offset": 1007,
+            "slot": 94,
+            "value": "roots"
+          },
+          {
+            "end": 1023,
+            "offset": 1013,
+            "slot": 95,
+            "value": "databases"
+          },
+          {
+            "end": 1034,
+            "offset": 1023,
+            "slot": 96,
+            "value": "databaseId"
+          },
+          {
+            "end": 1045,
+            "offset": 1034,
+            "slot": 97,
+            "value": "startsWith"
+          },
+          {
+            "end": 1051,
+            "offset": 1045,
+            "slot": 98,
+            "value": "slice"
+          },
+          {
+            "end": 1080,
+            "offset": 1051,
+            "slot": 99,
+            "value": "Unknown ClientSQL database '"
+          },
+          {
+            "end": 1104,
+            "offset": 1080,
+            "slot": 100,
+            "value": "Missing required table."
+          },
+          {
+            "end": 1110,
+            "offset": 1104,
+            "slot": 101,
+            "value": "limit"
+          },
+          {
+            "end": 1117,
+            "offset": 1110,
+            "slot": 102,
+            "value": "offset"
+          },
+          {
+            "end": 1132,
+            "offset": 1117,
+            "slot": 103,
+            "value": "SELECT * FROM "
+          },
+          {
+            "end": 1140,
+            "offset": 1132,
+            "slot": 104,
+            "value": " LIMIT "
+          },
+          {
+            "end": 1149,
+            "offset": 1140,
+            "slot": 105,
+            "value": " OFFSET "
+          },
+          {
+            "end": 1162,
+            "offset": 1149,
+            "slot": 106,
+            "value": "databaseName"
+          },
+          {
+            "end": 1170,
+            "offset": 1162,
+            "slot": 107,
+            "value": "orderBy"
+          },
+          {
+            "end": 1175,
+            "offset": 1170,
+            "slot": 108,
+            "value": "rows"
+          },
+          {
+            "end": 1179,
+            "offset": 1175,
+            "slot": 109,
+            "value": "jsx"
+          },
+          {
+            "end": 1203,
+            "offset": 1179,
+            "slot": 110,
+            "value": "addCustomMessageHandler"
+          },
+          {
+            "end": 1219,
+            "offset": 1203,
+            "slot": 111,
+            "value": "messageReceived"
+          },
+          {
+            "end": 1226,
+            "offset": 1219,
+            "slot": 112,
+            "value": "action"
+          },
+          {
+            "end": 1231,
+            "offset": 1226,
+            "slot": 113,
+            "value": "wait"
+          },
+          {
+            "end": 1241,
+            "offset": 1231,
+            "slot": 114,
+            "value": "timeoutMs"
+          },
+          {
+            "end": 1252,
+            "offset": 1241,
+            "slot": 115,
+            "value": "client-sql"
+          },
+          {
+            "end": 1262,
+            "offset": 1252,
+            "slot": 116,
+            "value": "ClientSQL"
+          },
+          {
+            "end": 1267,
+            "offset": 1262,
+            "slot": 117,
+            "value": "kind"
+          },
+          {
+            "end": 1277,
+            "offset": 1267,
+            "slot": 118,
+            "value": "available"
+          },
+          {
+            "end": 1302,
+            "offset": 1277,
+            "slot": 119,
+            "value": " open ClientSQL database"
+          },
+          {
+            "end": 1304,
+            "offset": 1302,
+            "slot": 120,
+            "value": "."
+          },
+          {
+            "end": 1347,
+            "offset": 1304,
+            "slot": 121,
+            "value": "No ClientSQL databases are currently open."
+          },
+          {
+            "end": 1357,
+            "offset": 1347,
+            "slot": 122,
+            "value": "providers"
+          }
+        ]
+      },
+      "validation": {
+        "behavior": "not_run",
+        "semantic_equivalence": "not_established",
+        "strings": "count/footer/encoding/bounds checked"
+      }
+    },
+    {
+      "bytes": 329,
+      "candidate_blocks": [
+        {
+          "candidate_successors": [],
+          "end": 145,
+          "stack_state": "unknown: instruction semantics not verified",
+          "start": 123
+        }
+      ],
+      "instructions": [
+        {
+          "candidate_pops": 0,
+          "candidate_pushes": 1,
+          "length": 5,
+          "offset": 123,
+          "opcode": 1,
+          "operands_hex": "00010401",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 2,
+          "candidate_pushes": 1,
+          "length": 1,
+          "offset": 128,
+          "opcode": 162,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 0,
+          "candidate_pushes": 1,
+          "length": 5,
+          "offset": 129,
+          "opcode": 1,
+          "operands_hex": "000000c1",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 0,
+          "candidate_pushes": 0,
+          "length": 1,
+          "offset": 134,
+          "opcode": 0,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 1,
+          "candidate_pushes": 1,
+          "length": 1,
+          "offset": 135,
+          "opcode": 206,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 1,
+          "candidate_pushes": 0,
+          "length": 1,
+          "offset": 136,
+          "opcode": 40,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 2,
+          "candidate_pushes": 1,
+          "length": 1,
+          "offset": 137,
+          "opcode": 174,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 0,
+          "candidate_pushes": 1,
+          "length": 5,
+          "offset": 138,
+          "opcode": 3,
+          "operands_hex": "01030000",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 3,
+          "candidate_pushes": 3,
+          "length": 1,
+          "offset": 143,
+          "opcode": 24,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        },
+        {
+          "candidate_pops": 1,
+          "candidate_pushes": 0,
+          "length": 1,
+          "offset": 144,
+          "opcode": 14,
+          "operands_hex": "",
+          "semantic_status": "unverified"
+        }
+      ],
+      "issues": [
+        {
+          "offset": 145,
+          "reason": "function_record_boundary_unresolved"
+        }
+      ],
+      "member": "src/ClientSQL.js",
+      "opaque_region": {
+        "length": 184,
+        "offset": 145,
+        "sha256": "96ee1439fdd3b51326d13bc834e6571d47b084ca8c6cd849f4eae488118a5d8e"
+      },
+      "reason": "candidate instructions; function bodies and semantics unresolved",
+      "sha256": "acad40923dc07ab2eab85fc1d474b522ef90a37b22383bd5c4e9188317b9b81a",
+      "status": "partial",
+      "structure": {
+        "body_offset": 123,
+        "name": "client_sql/src/ClientSQL",
+        "string_region_end": 123,
+        "strings": [
+          {
+            "end": 39,
+            "offset": 31,
+            "slot": 0,
+            "value": "require"
+          },
+          {
+            "end": 46,
+            "offset": 39,
+            "slot": 1,
+            "value": "module"
+          },
+          {
+            "end": 54,
+            "offset": 46,
+            "slot": 2,
+            "value": "exports"
+          },
+          {
+            "end": 56,
+            "offset": 54,
+            "slot": 3,
+            "value": "e"
+          },
+          {
+            "end": 67,
+            "offset": 56,
+            "slot": 4,
+            "value": "__esModule"
+          },
+          {
+            "end": 83,
+            "offset": 67,
+            "slot": 5,
+            "value": "clientSQLNative"
+          },
+          {
+            "end": 101,
+            "offset": 83,
+            "slot": 6,
+            "value": "./ClientSQLNative"
+          },
+          {
+            "end": 114,
+            "offset": 101,
+            "slot": 7,
+            "value": "openDatabase"
+          }
+        ]
+      },
+      "validation": {
+        "behavior": "not_run",
+        "semantic_equivalence": "not_established",
+        "strings": "count/footer/encoding/bounds checked"
+      }
+    }
+  ],
+  "input_name": "client_sql.valdimodule",
+  "input_sha256": "061ace8e76bce9c8fe485b337d7175b211a63ee180a7499d0da6612fd9010e5a",
+  "profile": {
+    "authority": "byte-matched candidate lengths; semantics not certified",
+    "id": "android-293",
+    "native_path": "recovered/android-1.2026.293/split_config.arm64_v8a/lib/arm64-v8a/libopenai_xplat_export.so",
+    "native_sha256": "8c2090bb13ad68ca6a4953939f640bc83127652842723c09b98a5fb6d6d7f7fd",
+    "table_offset": 842465,
+    "table_sha256": "fc392ec275b99b037003a9f4002f6bdf23358d97cb1a3bded4958306f183a172"
+  },
+  "profile_requested": "android-293",
+  "schema_version": 1,
+  "status": "partial",
+  "target_executed": false,
+  "tool_sha256": "8bf13c774ec4ee53ce1a5d2e894b70112e41e68504bd7c273c0e50f9fc9af51f",
+  "tool_version": "1.0.0"
+}

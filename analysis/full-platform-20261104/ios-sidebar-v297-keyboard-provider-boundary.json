@@ -1,0 +1,37 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-instructions",
+  "observations": {
+    "facade_constructor": "0x62e4b68",
+    "dynamic_binding_calls": [
+      "NSClassFromString",
+      "NSSelectorFromString",
+      "class_getClassMethod",
+      "method_getImplementation"
+    ],
+    "binding_store": "0x62e4d38..0x62e4d44",
+    "temporary_suppression": {
+      "function": "0x62daaec",
+      "double_argument": 0,
+      "dispatch": "owner+0x30 function pointer with owner+0x10 and owner+0x28 context"
+    },
+    "cleanup": {
+      "closure": "0x62f1d74",
+      "double_argument": 1,
+      "dispatch": "captured same function/context mapped from owner offsets"
+    },
+    "string_finalizer": "_$sSSySSxcSTRzSJ7ElementRtzlufC"
+  },
+  "inference": "Paired zero/one callbacks plus encoded names suggest system keyboard alpha suppression/restoration rather than merely editor focus changes. Names remain candidates until full transformation binding is checked.",
+  "candidate_names_file": "ios-sidebar-v297-dynamic-name-candidates.json",
+  "integration_decision": "Do not copy dynamic keyboard bindings into the default secondary-development frontend. Separate snapshot view/coordinates from keyboard-source and visibility provider; document unavailable provider explicitly. This does not remove fidelity requirements.",
+  "next_minimal_action": "Verify decoded-name transformation and assess whether the independent host can obtain the same keyboard surface using supported APIs; if not, keep exact keyboard-snapshot parity blocked at this named platform boundary.",
+  "limits": [
+    "No runtime invocation of dynamic methods",
+    "No claim of public API equivalence for keyboard source or suppression",
+    "No installed app modifications"
+  ]
+}

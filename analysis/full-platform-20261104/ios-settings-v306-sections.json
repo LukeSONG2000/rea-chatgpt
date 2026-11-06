@@ -1,0 +1,245 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "SettingsHomeSection",
+      "descriptor": "0x9589380",
+      "type_section_entry": "0x9d37ba8",
+      "accessor": "0x111fe10",
+      "fields": [
+        {
+          "name": "title",
+          "record": "0x9a0b014",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "footer",
+          "record": "0x9a0b020",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "content",
+          "record": "0x9a0b02c",
+          "type_reference": "0x8d09970"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d876dc",
+          "flags": "0x30000",
+          "section_entry": "0x9cddf28"
+        }
+      ]
+    },
+    {
+      "name": "SettingsSignOutSection",
+      "descriptor": "0x958a050",
+      "type_section_entry": "0x9d37d0c",
+      "accessor": "0x112f848",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x9a0cb8c",
+          "type_reference": "0x8d18fea"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d8aa30",
+          "flags": "0x30000",
+          "section_entry": "0x9cde018"
+        }
+      ]
+    },
+    {
+      "name": "SettingsGetHelpSection",
+      "descriptor": "0x958a06c",
+      "type_section_entry": "0x9d37d10",
+      "accessor": "0x112f86c",
+      "fields": [
+        {
+          "name": "showPrivacyCenter",
+          "record": "0x9a0cba8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "presentPrivacyCenter",
+          "record": "0x9a0cbb4",
+          "type_reference": "0x8d0ab00"
+        },
+        {
+          "name": "_bugReportPresenter",
+          "record": "0x9a0cbc0",
+          "type_reference": "0x93bc170"
+        },
+        {
+          "name": "_openURL",
+          "record": "0x9a0cbcc",
+          "type_reference": "0x8d1a160"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d8a9e0",
+          "flags": "0x30000",
+          "section_entry": "0x9cde014"
+        }
+      ]
+    },
+    {
+      "name": "SettingsGeneralSection",
+      "descriptor": "0x958a088",
+      "type_section_entry": "0x9d37d14",
+      "accessor": "0x112f878",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x9a0cbe8",
+          "type_reference": "0x8d18fea"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d8a990",
+          "flags": "0x30000",
+          "section_entry": "0x9cde010"
+        }
+      ]
+    },
+    {
+      "name": "SettingsAppearanceSection",
+      "descriptor": "0x958a0a4",
+      "type_section_entry": "0x9d37d18",
+      "accessor": "0x112fbc8",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x9a0cc04",
+          "type_reference": "0x8d170a0"
+        },
+        {
+          "name": "highlightedSettingType",
+          "record": "0x9a0cc10",
+          "type_reference": "0x8d1a746"
+        },
+        {
+          "name": "usesConsumerIdentitySettingsStyling",
+          "record": "0x9a0cc1c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_colorScheme",
+          "record": "0x9a0cc28",
+          "type_reference": "0x9002fa0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d8a940",
+          "flags": "0x30000",
+          "section_entry": "0x9cde00c"
+        }
+      ]
+    },
+    {
+      "name": "SettingsAccountSection",
+      "descriptor": "0x958a170",
+      "type_section_entry": "0x9d37d30",
+      "accessor": "0x1130d28",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x9a0cce4",
+          "type_reference": "0x8d18fea"
+        },
+        {
+          "name": "showChangeEmailConfirmation",
+          "record": "0x9a0ccf0",
+          "type_reference": "0x8d0ab00"
+        },
+        {
+          "name": "subscriptionButtons",
+          "record": "0x9a0ccfc",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "_colorScheme",
+          "record": "0x9a0cd08",
+          "type_reference": "0x9002fa0"
+        },
+        {
+          "name": "_showsAccountSwitcherSheet",
+          "record": "0x9a0cd14",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "sectionTitle",
+          "record": "0x9a0cd20",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "includesAccountSwitcher",
+          "record": "0x9a0cd2c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "includesUsageLimitsDashboard",
+          "record": "0x9a0cd38",
+          "type_reference": "0x8bfd810"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d8a718",
+          "flags": "0x30000",
+          "section_entry": "0x9cddfe8"
+        }
+      ]
+    },
+    {
+      "name": "SettingsConsumerIdentityHomeSections",
+      "descriptor": "0x958a1e4",
+      "type_section_entry": "0x9d37d3c",
+      "accessor": "0x11313f8",
+      "fields": [
+        {
+          "name": "_showsAccountSwitcherSheet",
+          "record": "0x9a0cdc8",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "openCustomize",
+          "record": "0x9a0cdd4",
+          "type_reference": "0x8c59ca0"
+        },
+        {
+          "name": "viewModel",
+          "record": "0x9a0cde0",
+          "type_reference": "0x8d18fea"
+        },
+        {
+          "name": "rootAccountButtons",
+          "record": "0x9a0cdec",
+          "type_reference": "0x8d09970"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d8a628",
+          "flags": "0x30000",
+          "section_entry": "0x9cddfdc"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

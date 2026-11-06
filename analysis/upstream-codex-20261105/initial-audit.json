@@ -1,0 +1,18 @@
+{
+  "status": "partial",
+  "repository": "https://github.com/openai/codex",
+  "verifiedPublicEntries": [
+    "https://github.com/openai/codex/tree/main/codex-rs",
+    "https://raw.githubusercontent.com/openai/codex/main/codex-rs/app-server/README.md"
+  ],
+  "findings": [
+    "Public tree lists app-server, app-server-client, app-server-transport and app-server-protocol; consult these before reconstructing equivalent backend contracts",
+    "app-server README documents thread lifecycle/history and approval behavior; these are public main observations, not frozen-artifact compatibility proof"
+  ],
+  "unverified": [
+    "Pinned commit acquisition not completed: recursive GitHub API tree response truncated with IncompleteRead",
+    "Desktop renderer/source coverage not exhaustively verified",
+    "Do not claim current UI settings sidebar has a public-source equivalent yet"
+  ],
+  "next": "Fetch a small commit reference and only relevant directories/files; avoid full repository clone or recursive inventory while disk is constrained"
+}

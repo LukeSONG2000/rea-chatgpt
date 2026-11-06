@@ -1,0 +1,83 @@
+{
+  "version": "26.1021.31345",
+  "engine": "156.0.4314.58",
+  "runner_sha256": "b30da8b15006ffa4261df6b07856b106cdbd474e97a3685731e3efe1ce212595",
+  "sources": {
+    "webview/assets/app-initial-feb30b196d11.js": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+    "webview/assets/rolldown-runtime-2d059c5e81f4.js": "e0a79ad36c6ca1ffbc796c80aa5661803a9d1bc684e29d1587f48b4ba9a82714",
+    "webview/assets/app-shared-2cae01273bae.js": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36"
+  },
+  "results": [
+    {
+      "entry": "arr",
+      "status": "initialized",
+      "pageErrors": []
+    },
+    {
+      "entry": "l0n",
+      "status": "initialized",
+      "pageErrors": []
+    },
+    {
+      "entry": "wXt",
+      "status": "initialized",
+      "pageErrors": []
+    }
+  ],
+  "requests": [
+    {
+      "entry": "arr",
+      "url": "https://offline.invalid/probe"
+    },
+    {
+      "entry": "arr",
+      "url": "https://offline.invalid/app-initial-feb30b196d11.js"
+    },
+    {
+      "entry": "arr",
+      "url": "https://offline.invalid/rolldown-runtime-2d059c5e81f4.js"
+    },
+    {
+      "entry": "arr",
+      "url": "https://offline.invalid/app-shared-2cae01273bae.js"
+    },
+    {
+      "entry": "l0n",
+      "url": "https://offline.invalid/probe"
+    },
+    {
+      "entry": "l0n",
+      "url": "https://offline.invalid/app-initial-feb30b196d11.js"
+    },
+    {
+      "entry": "l0n",
+      "url": "https://offline.invalid/rolldown-runtime-2d059c5e81f4.js"
+    },
+    {
+      "entry": "l0n",
+      "url": "https://offline.invalid/app-shared-2cae01273bae.js"
+    },
+    {
+      "entry": "wXt",
+      "url": "https://offline.invalid/probe"
+    },
+    {
+      "entry": "wXt",
+      "url": "https://offline.invalid/app-initial-feb30b196d11.js"
+    },
+    {
+      "entry": "wXt",
+      "url": "https://offline.invalid/rolldown-runtime-2d059c5e81f4.js"
+    },
+    {
+      "entry": "wXt",
+      "url": "https://offline.invalid/app-shared-2cae01273bae.js"
+    }
+  ],
+  "limits": [
+    "Microsoft Edge renderer, not archived Electron runtime; visual parity unproven",
+    "No full app entry, host bridge or target user data",
+    "OS network denied plus offline context and exact local module allowlist",
+    "Initializer success is not page or UI acceptance"
+  ]
+}

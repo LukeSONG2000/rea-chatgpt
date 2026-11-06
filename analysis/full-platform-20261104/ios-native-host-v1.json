@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "classification": "independent-native-host-build",
+  "target_baseline": {
+    "platform": "ios",
+    "version": "1.2026.293",
+    "root_artifact": {
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "bytes": 192662944,
+      "format": "Mach-O 64-bit"
+    }
+  },
+  "implemented": [
+    "UIKit native conversation/controller boundary without WebView",
+    "Synthetic message projection with stable IDs",
+    "Account/conversation scoped in-memory drafts and stale-generation guard",
+    "Native keyboard layout guide and selectable text",
+    "Explicit unavailable model/send entries without fake success"
+  ],
+  "original_code_reused_in_app": false,
+  "evidence": [
+    {
+      "id": "I03",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "ChatGPTMessages.MessagesViewController",
+      "byte_offset": 157392868,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Swift type descriptor owns listed field descriptors; field names are not method behavior",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "current_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "digest_matches_record": true
+    },
+    {
+      "id": "I04",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "ChatGPTMessages.MessagesViewModel",
+      "byte_offset": 157393512,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Swift type descriptor owns listed field descriptors; field names are not method behavior",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "current_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "digest_matches_record": true
+    },
+    {
+      "id": "I09",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "ChatGPTMessageInput.MessageInputViewModel",
+      "byte_offset": 157743496,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Swift type descriptor owns listed field descriptors; field names are not method behavior",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "current_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "digest_matches_record": true
+    },
+    {
+      "id": "J02",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/valdi_core/src/Application.js",
+      "sha256": "8e8498e475b9631b633e4460be01195f9e3a9b775b9c1c800fefcf2e19bddf91",
+      "symbol": "observeKeyboardHeight",
+      "byte_offset": 320,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Keyboard/background hooks delegate to ApplicationBridge, with unsupported fallbacks",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "current_sha256": "8e8498e475b9631b633e4460be01195f9e3a9b775b9c1c800fefcf2e19bddf91",
+      "digest_matches_record": true
+    },
+    {
+      "id": "J03",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/widgets/src/components/util/WithKeyboardPadding.js",
+      "sha256": "fd152c3e069056680ba2ecb3dad22e364a5cfdcf946c1eb05bd3ede133a82cca",
+      "symbol": "onDestroy(){",
+      "byte_offset": 762,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Keyboard observer controls padding and is cancelled on destruction",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "current_sha256": "fd152c3e069056680ba2ecb3dad22e364a5cfdcf946c1eb05bd3ede133a82cca",
+      "digest_matches_record": true
+    },
+    {
+      "id": "J04",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/widgets/src/components/scroll/ScrollViewHandler.js",
+      "sha256": "b77e83550d97a77a29c3e1f2e13fce0a7338395f42129af6dd2cd41e7f726c02",
+      "symbol": "bindMainThreadOnScroll",
+      "byte_offset": 2369,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Scroll handler separates callback thread choice and native element offset attributes",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "current_sha256": "b77e83550d97a77a29c3e1f2e13fce0a7338395f42129af6dd2cd41e7f726c02",
+      "digest_matches_record": true
+    },
+    {
+      "id": "J05",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/widgets/src/components/inputs/TextInputHandler.js",
+      "sha256": "0ca0c9219b984eae45dade95f9a512c70782b7072d4c6a051cba7903741d76f5",
+      "symbol": "focusNextCreated",
+      "byte_offset": 220,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Focus may be deferred until native element creation",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "current_sha256": "0ca0c9219b984eae45dade95f9a512c70782b7072d4c6a051cba7903741d76f5",
+      "digest_matches_record": true
+    },
+    {
+      "id": "J06",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/oai_ui/src/components/TextInput.js",
+      "sha256": "dad1782ffb9a50bde6ce2c83319680df3a271699ab4b8b7d357de29b31fb9d32",
+      "symbol": "makeNodePrototype(\"textfield\"",
+      "byte_offset": 400,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Form input renders textfield with controlled/uncontrolled text and callback properties; not established main composer",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "current_sha256": "dad1782ffb9a50bde6ce2c83319680df3a271699ab4b8b7d357de29b31fb9d32",
+      "digest_matches_record": true
+    },
+    {
+      "id": "J07",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/oai_core/src/OAITheme.js",
+      "sha256": "1f3e9fb626003421742cc38a51b31df669a4ce8593a604e9c6e578ceef1f35f1",
+      "symbol": "configureColorPalette",
+      "byte_offset": 828,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Color palettes and system dark-mode observer configure runtime; native font rendering not established",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "current_sha256": "1f3e9fb626003421742cc38a51b31df669a4ce8593a604e9c6e578ceef1f35f1",
+      "digest_matches_record": true
+    }
+  ],
+  "build": {
+    "status": "passed",
+    "command": "implementation/ios/build.sh",
+    "log": "analysis/full-platform-20261104/ios-build-v1.log",
+    "xcode": "27.0 (27A266a)",
+    "sdk": "iphonesimulator27.0",
+    "destination": "generic/platform=iOS Simulator",
+    "app_path": "implementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app",
+    "bundle_id": "local.rea.chatgpt.ioshost",
+    "executable_sha256": "6f3a6e3c9308fba6568b400066daa8d196d73d4decffca4c926e409a237b75ef",
+    "binary": "implementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app/REAChatGPTHost: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64:Mach-O 64-bit executable arm64]\nimplementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app/REAChatGPTHost (for architecture x86_64):\tMach-O 64-bit executable x86_64\nimplementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app/REAChatGPTHost (for architecture arm64):\tMach-O 64-bit executable arm64",
+    "warning": "AppIntents metadata extraction skipped: no AppIntents.framework dependency"
+  },
+  "state_tests": {
+    "status": "passed",
+    "command": "implementation/ios/test-state.sh",
+    "log": "analysis/full-platform-20261104/ios-state-tests-v1.log",
+    "coverage": [
+      "account isolation",
+      "conversation isolation",
+      "A-B-A restore",
+      "stale generation rejection including same-scope reentry",
+      "clearing"
+    ],
+    "limits": [
+      "Foundation model test, no UIKit execution",
+      "Independent host policy, not recovered official algorithm"
+    ]
+  },
+  "runtime": {
+    "status": "not-executed",
+    "simulator_runtimes": [],
+    "reason": "No installed simulator runtimes/devices; generic simulator compilation only",
+    "physical_device": "not-accessed",
+    "visual_parity": "not-accepted"
+  },
+  "unknowns": [
+    "Original MessagesViewController/Coordinator/MessageInput construction and callback call chains",
+    "Actual native DILValdiViewModel component path and runtime registration",
+    "Official theme/fonts/icons/layout and gestures",
+    "IME composition acceptance, keyboard transitions, native selection, focus and scroll on device",
+    "Disk persistence and process restart",
+    "Markdown/table/attachment rendering, all other pages and actions",
+    "Paired harness, Zhipu, Remote integration"
+  ],
+  "next_minimum_actions": [
+    "Provide installed simulator runtime, launch dedicated host and run pending interaction cases",
+    "Trace I09 draft task/mount methods and I03 message observation edge",
+    "Build actual DIL/Valdi bridge only after native construction path is established"
+  ],
+  "source_sha256": {
+    "implementation/ios/test-state.sh": "f5e13ccc53561ea185f020b0256a1e960b27aaadee3d14b70d85b935320581b2",
+    "implementation/ios/README.md": "9f7060d7ae4343fb38fb5663f6f26cf59a77fae0a439bd45cef7f68cda4daebb",
+    "implementation/ios/build.sh": "d15b5f38c6f3c9c47e724ae98cf655edfbf0707edde11ae7b5cc0de6741a5868",
+    "implementation/ios/.gitignore": "624fb7e57a889f4b53e4f2e1812d06be8384a7093f91b0b177c93f6daf542f29",
+    "implementation/ios/Tests/main.swift": "2ce4afdc1a9fc0e7bcd24df0f14ea2fe41077dc568acd0f289542235e783c994",
+    "implementation/ios/Sources/NativeConversationHost.swift": "2c38d5e6ad99824fe4d816b82efaf4321f08d5f89bccf7bc923df5aef82385e8",
+    "implementation/ios/Sources/AppDelegate.swift": "96868a36802c51b07e1ed835d8f24409eb26be218c685e787b0286e0c1380269",
+    "implementation/ios/Sources/DraftStore.swift": "f107d8b982e6e840e0afe4b7664b4ae07f913a161113245f2b823a3c215bee98",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "0326d93919bf333352a8c30ac0bc811c1b120691d5780707b0a03b0ad77132e7"
+  }
+}

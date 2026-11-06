@@ -1,0 +1,43 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "component": "RepeatingShineOverlay",
+  "observations": [
+    {
+      "offset": "0x6f39fe4",
+      "conclusion": "View body witness branches to 0x6f38cbc."
+    },
+    {
+      "offset": "0x6f3a594",
+      "conclusion": "Opacity sample initializer passes start 0, end pi (0x7ce20e8), step 0.2 (0x7cd9658) to 0x6f3a5d4."
+    },
+    {
+      "offset": "0x6f3a694..0x6f3a6e0",
+      "conclusion": "Loop calls imported sin then pow with exponent 10 and stores resulting Double in array. Exact terminal sample inclusion not reconstructed."
+    },
+    {
+      "offset": "0xaacff68",
+      "conclusion": "Chained binding resolves SwiftUI.ScenePhase.active; referenced by overlay state selector."
+    }
+  ],
+  "unknowns": [
+    "Exact gradient sample endpoint/count",
+    "Moving mask geometry, amplitude, angle and phase computation",
+    "Timeline duration versus text updateInterval",
+    "Finish-date and interruption lifecycle",
+    "Reduce Motion getter identity and complete behavior",
+    "Android corresponding component"
+  ],
+  "downstream_change": "Reconstruct sampled gradient and timeline lifecycle together; do not substitute opacity pulse or assume one-second sweep from updateInterval.",
+  "ui_changed": false,
+  "runtime_validation": "not performed; prior preview not stopped",
+  "raw_evidence": [
+    "ios-remote-v328-gradient-probe.asm",
+    "ios-remote-v328-gradient-calls.json",
+    "ios-remote-v328-overlay-witness.json",
+    "ios-remote-v328-overlay-body.json"
+  ]
+}

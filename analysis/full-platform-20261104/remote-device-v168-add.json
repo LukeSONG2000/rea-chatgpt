@@ -1,0 +1,119 @@
+{
+  "status": "failed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v168-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "hidden service read capability rejects raw owner call while listing paired hosts",
+    "actual packaged renderer state receives guarded Remote history through IPC",
+    "actual cross-process host-service provider supplies original manager with shared RPC leases, hydration and item subscription",
+    "packaged primary renderer IPC reaches two owner processes; same request identity isolated; A cancel preserves B completion",
+    "pairing URL and token absent from list; hidden fixture role denied Remote capability",
+    "fresh Electron process reconnects same owner histories with same bound profile",
+    "offline A explicit error while B list remains usable"
+  ],
+  "limits": [
+    "Main-process IPC acceptance from original renderer context, not a visible official Remote control workflow",
+    "Fixture model; no live Zhipu calls in this test"
+  ],
+  "browserErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    " ERROR  [Statsig] A networking error occurred during POST request to https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793838376887&sid=1b20364c-49d1-42d0-8338-9a55cb3251d3&se=1. Error: Offline HTTP unsupported: POST /v1/initialize Error: Offline HTTP unsupported: POST /v1/initialize\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    " ERROR  [Statsig] A networking error occurred during POST request to https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793838387102&sid=8aebd8e7-cac0-4c17-9bf2-e26f74ac3504&se=1. Error: Offline HTTP unsupported: POST /v1/initialize Error: Offline HTTP unsupported: POST /v1/initialize\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "provider": {
+    "status": "passed",
+    "body": "Local fixture reply",
+    "autoStreamTexts": [
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply"
+    ],
+    "reloads": 12,
+    "devices": {
+      "remoteControlState": {
+        "available": true,
+        "clientAuthorized": true,
+        "accessRequired": false
+      },
+      "localRemoteControlEnabled": false,
+      "ssh": [],
+      "wsl": [],
+      "remoteControl": [
+        {
+          "source": "remote-control",
+          "hostId": "host-a",
+          "displayName": "Local test · host-a",
+          "envId": "rea-local:host-a",
+          "hostName": "host-a",
+          "environmentKind": "independent-local-test",
+          "online": true,
+          "appServerVersion": null,
+          "lastSeenAt": null
+        },
+        {
+          "source": "remote-control",
+          "hostId": "host-b",
+          "displayName": "Local test · host-b",
+          "envId": "rea-local:host-b",
+          "hostName": "host-b",
+          "environmentKind": "independent-local-test",
+          "online": true,
+          "appServerVersion": null,
+          "lastSeenAt": null
+        }
+      ]
+    },
+    "sharedLeases": true,
+    "reopen": true,
+    "unpairedDenied": true
+  },
+  "hostHealth": [
+    {
+      "host": "host-a",
+      "mode": "fixture",
+      "epoch": "3683d423-dc9a-431e-a3c9-7dbcae8a4d98",
+      "closed": false,
+      "online": false,
+      "error": "remote_transport"
+    },
+    {
+      "host": "host-b",
+      "mode": "fixture",
+      "epoch": "c9147ff7-ac34-4236-a21c-e137398127d0",
+      "closed": false,
+      "online": true,
+      "methods": [
+        "capabilities",
+        "fs/readDirectory",
+        "thread/start",
+        "thread/list",
+        "thread/info",
+        "events/read",
+        "turn/start",
+        "turn/interrupt"
+      ]
+    }
+  ],
+  "localGate": {
+    "before": false,
+    "after": true,
+    "scope": "single local UI gate; no authorization claim"
+  },
+  "modeChanged": true,
+  "profileMenu": "Skip to content\nCodex\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\nNo chats\nO\nOffline fixture\nGet Plus\nSubagents in Codex\nDelegate work to subagents that work in parallel. Note: may increase token usage.\nTry now\nChoose project\n\n\n\n\nCustom\nO\nOffline fixture\nFree\nShow Pet\n⌥Space\nUpgrade for higher limits\nSettings\n⌘,\nHelp\nLog out",
+  "settingsText": "Skip to content\nBack to app\nSearch settings\nPersonal\nGeneral\nNotifications\nProfile\nAppearance\nAccount\nArchived chats\nParental controls\nConfiguration\nPersonalization\nMini & Pets\nKeyboard shortcuts\nUsage & billing\nData controls\nIntegrations\nPlugins\nComputer use\nBrowser\nCloud computer\nCoding\nHooks\nConnections\nCode Review\nGit\nEnvironments\nWorktrees\nGeneral\nPermissions\nDefault permissions\nBy default, ChatGPT can read and edit files in its workspace. It can ask for additional access when needed\nFull access\nWhen ChatGPT runs with full access, it can edit any file on your computer and run commands with network, without your approval. This significantly increases the risk of data loss, leaks, or unexpected behavior. Learn more about elevated risks.\nGeneral\nDefault file open destination\nWhere files and folders open by default\nNo targets found\nLanguage\nLanguage for the app UI\nAuto detect\nShow in menu bar\nKeep ChatGPT in the macOS menu bar when the main window is closed\nConfirm before closing a window\nWarn when a tab-close shortcut would close the window\nClose shortcut only\nFull view by default\nStart new chats with Chat and content in a single tab strip\nBottom panel\nShow the bottom panel control in the app header\nDefault terminal location\nChoose where the terminal shortcut and environment actions open terminal tabs\nBottom\nRight\nPrevent sleep while running\nKeep your computer awake while ChatGPT is running a task\nAutomatically archive inactive chats\nArchive local chats after a period of inactivity\nNever\nImport work from other AI apps\nBring over your setup, projects, and recent chats\nChecking\nOpen source licenses\nThird-party notices for bundled dependencies\nView\nComposer\nPlain text composer\nKeep code, Markdown, and links as literal text while writing messages\nShow context window usage\nSend shortcut\nChoose when Enter sends a prompt or inserts a new line\nEnter\nFollow-up behavior\nQueue follow-ups while ChatGPT runs or steer the current run. Press ⌘⏎ to do the opposite for one message\nQueue\nSteer\nNotifications\nTurn completion notifications\nSet when ChatGPT alerts you that it's finished\nOnly when unfocused\nEnable permission notifications\nShow alerts when notification permissions are required\nEnable question notifications\nShow alerts when input is needed to continue\nEnable dot notifications\nShow alerts when your dot sends you a message",
+  "addDeviceClicked": true,
+  "error": "TimeoutError: locator.waitFor: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog') to be hidden\u001b[22m\n\u001b[2m    29 × locator resolved to visible <div role=\"dialog\" tabindex=\"-1\" id=\"radix-_r_tr_\" data-state=\"open\" aria-modal=\"true\" aria-labelledby=\"radix-_r_ts_\" data-dialog-height-ready=\"true\" class=\"codex-dialog z-50 outline-none left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 fixed text-default ring-[0.5px] ring-border shadow-lg bg-surface-elevated-secondary/90 backdrop-blur-xl rounded-3xl max-w-[92vw] overflow-hidden w-130 _heightAnimated_t6hyq_2\">…</div>\u001b[22m\n",
+  "rendererText": "Skip to content\nBack to app\nSearch settings\nPersonal\nGeneral\nNotifications\nProfile\nAppearance\nAccount\nArchived chats\nParental controls\nConfiguration\nPersonalization\nMini & Pets\nKeyboard shortcuts\nUsage & billing\nData controls\nIntegrations\nPlugins\nComputer use\nBrowser\nCloud computer\nCoding\nHooks\nConnections\nCode Review\nGit\nEnvironments\nWorktrees\nConnections\nControl this Mac\nControl other devices\nSSH\nDevices you can control from this Mac\nAdd\nLocal test · host-a\nOffline\nAdd device\nLocal test · host-b\nOnline\nDon’t see your device here?\nAdd\nClose dialog"
+}

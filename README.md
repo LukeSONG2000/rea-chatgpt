@@ -1,55 +1,51 @@
 # rea-chatgpt
 
-ChatGPT 四端官方包的逆向分析产物库——**为自己构建 agent 提供架构与实现参考**（前端交互 / 消息流与渲染 / harness / 整体架构 / 跨平台 Valdi）。
+当前方向（2026-11-06）为[桌面/Web 与移动端两条前端恢复主线](docs/full-platform/FRONTEND-PLAN.md)，核心能力由服务端提供。移动优先恢复 iOS 官方组件、页面及交互，再按独立证据推进 Android。当前恢复工作已按用户要求暂停，正在归档和同步已有成果。完整官方视觉与交互仍为 partial。
 
-> 所有产物均为反编译/衍生的研究参考，非原始源码；OpenAI 资产仅供个人学习，勿直接复用或再分发。
+- [本次进展、用户反馈逐项状态及交付边界](docs/full-platform/PROGRESS-20261106.md)
+- [移动端当前计划](docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md)
+- [Remote 任务与消息组件的最新证据和运行记录](docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md)
 
-## 版本基线（原始包不入 git，经 Release 分发）
+桌面归档实际版本为 **26.1021.31345**，旧文件名 4.0.21 与包内版本不一致。较新设置布局的适配单独绑定来源；第三方 iOS 参考工程保留为历史实验。
 
-| 端 | 包名 | 版本 | SHA-256（主文件） | 来源 |
-|---|---|---|---|---|
-| Android | com.openai.chatgpt | 1.2026.244 (2624421) | base.apk `3b029e54fdbfbfe41140c544bfc97f7f931bf9ba37a1df63c20d6382023ed68b` | OnePlus 6 adb 拉取（Play 安装），2026-10-19 |
-| 2 | Android | **1.2026.293 (2629319)** | base.apk `c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630` | 同设备 2026-10-28 Play 更新后拉取（与 iOS 293 对齐） |
-| iOS | com.openai.chat | 1.2026.279 (37999862476) | ChatGPT.ipa `845633895baf9f80511cfbfb5d292536c58dc08e67051b9ee73bd02457b879f8` | ipatool 2.7.0（App Store ID 6448311069），2026-10-19 |
-| iOS 砸壳版 | com.openai.chat | 1.2026.293 (40039297472) | dumpipa `4042deb6d2688eaa38708d90c9d2d027de233ed2c99f443ca984f6f53865ed6b`（FairPlay 已解密，cryptid 全 0） | 用户设备砸壳，2026-10-28 |
-| macOS | ChatGPT-4.0.21.dmg | 4.0.21 | 见 Release 资产 | 直发 DMG（无 FairPlay） |
-| Windows | ChatGPT-windows-x64-4.0.21.msix | 4.0.21 | 见 Release 资产 | MSIX |
+ChatGPT 制品的提取、静态分析与验证资料库，为 Xigua／Remote 前后端及移动跨平台开发提供独立参考架构。始终只研究 ChatGPT 及相关官方制品，不读取、对照或修改 Soul 实现。产物不是原始源码，文件数量也不代表语义恢复程度。
 
-原始包位于 `packages/`（本地）与本仓库 **Release `baseline-20261027`**（单文件 ≤2GiB 满足 GitHub 限制）。
+## 当前接管状态（2026-11-03）
 
-## 目录结构
+目标仓库：`LukeSONG2000/rea-chatgpt`。主研究基线为 Android / iOS **1.2026.293**；244/279 仅保留为历史材料。原包不入 Git；旧版原包当前本地缺失，不以新版替代。
 
-```
-packages/        原始安装包（git 忽略，Release 分发）
-recovered/       恢复产物（严格四平台：android/ios/macos/windows）
-shared/          跨平台共享层（valdimodules 解包 + PROVENANCE 来源索引）
-derived/domain-specific/  域隔离产物（finance/subscription，用户决策归档）
-analysis/        工具、Ghidra 工程/脚本、中间证据、品牌预览
-docs/            报告与逆向笔记
-```
+- [参考架构总入口：四块交付、跨平台边界、合同与回放](docs/reference-architecture/README.md)（最新批次）
+- [当前状态与验收口径](docs/CURRENT-STATUS.md)
+- [问题清单、证据与关闭条件](docs/ISSUES.md)
+- [可再生证据清单](analysis/takeover-20261103/baseline.json)
+- [前端功能链](docs/FRONTEND-293.md)
+- [消息渲染后续追踪与隔离回放](docs/MESSAGE-RENDERING-293.md)（前一批次；主会话链仍 partial）
 
-## 五方向参考索引
+## 目录与使用顺序
 
-| 方向 | 入口路径 |
+| 目录 | 用途及限制 |
 |---|---|
-| ① 前端交互 | `derived/valdimodules/unpacked/ios/`（组件 JS）· `recovered/macos/asar-extracted/webview/assets/` · `recovered/android/jadx-src/sources/com/openai/design/` |
-| ② 消息流与渲染 | `derived/valdimodules/unpacked/ios/chatgpt_conversation/src/`（ConversationState/Message/Markdown）· `dil_*` 模块 · 桌面 `app-shared/app-initial` bundle · `docs/valdi-bytecode-notes.md`（reasoning 黑盒解码状态） |
-| ③ harness | `recovered/macos/asar-extracted/.vite/build/`（worker/skills/record-aeon）· `recovered/macos/cua-node-oai/@oai/`（CUA/Sky/BrowserDesktop）· Codex CLI（开源仓库 openai/codex 优先）· `analysis/xplat-loader-strings.txt`（native 模块签名） |
-| ④ 整体架构 | `docs/RECOVERY-REPORT.md` · `recovered/android/jadx-src/sources/com/openai/`（未混淆包树）· `recovered/android/apktool-src/res/raw/aboutlibraries.json`（478 依赖） |
-| ⑤ 跨平台 Valdi | Valdi 开源仓库（MIT，https://github.com/Snapchat/valdi ，本地克隆于 .tmp/valdi 不入库）· `analysis/tools/valdi_unpack.py` · `analysis/valdi-opcode-table.txt` · 两端共有 77/68 个模块 |
+| `packages/` | 当前可用安装包及历史获取记录；本次摘要检查不等于来源或签名信任验证 |
+| `recovered/` | 分平台、分版本提取物；Android 293 JADX 已结束但有 240 个错误 |
+| `derived/valdimodules-293/ios/` | 293 的 92 个模块目录，包含可读 JavaScript；优先作为前端静态证据 |
+| `derived/valdimodules-293/android/` | 同名 92 个目录；字节码和 iOS JS 必须逐文件确认对应关系 |
+| `derived/valdimodules/unpacked/` | 244/279 历史样本；不是当前版本源码 |
+| `analysis/decoded*/` | **历史未验证伪代码**，含未知语义和旧工具错误，禁止以 .js 后缀推断可执行性 |
+| `analysis/tools/` | 解包、解析及验证工具；受支持入口和使用边界见当前状态文档 |
+| `analysis/ios293-native/` | Swift/ObjC 清单；不代表原生函数级恢复 |
+| `derived/domain-specific/` | 财务/订阅等历史域隔离材料 |
+| `docs/` | 研究记录；旧报告的日期、版本和限制必须一起阅读 |
 
-## 前期独立分析增量
+## 结论边界
 
-2026-10-27 上午的另一份独立分析已合并：报告与证据文件在 `analysis/prior-snapshot-20261027/`，遗漏项差异清单（后端端点、DPoP、屏幕上下文服务、DIL 签名链、Codex Remote 脚本、CarPlay/Live Activity 等 18 项）见 `docs/prior-analysis-delta.md`。
+移动端存在原生与 Valdi 层；桌面保留了可读 Electron/Chromium JS。不能推广为“没有任何加密”或“其余全部恢复”。iOS 279 的 FairPlay 限制不适用于后续 293 转储，但 cryptid=0 也不单独证明完整函数恢复质量。
 
-## 关键结论（详见 docs/）
+同名模块、可读文件、smali 存在、上游 tag 匹配分别是不同层次的证据。源码语义、调用链、跨端行为一致性需要单独验证。旧完成度矩阵已标为历史记录，以本轮证据清单和明确的验证项为准。
 
-- 移动端 = 平台原生壳 + Valdi 跨平台层；桌面端 = Chromium 壳 + Electron（`openai-codex-electron`）+ Codex Agent 栈，**无任何加密**
-- iOS 原生层全量 FairPlay（cryptid=1），静态不可恢复；其余全部恢复
-- Android valdimodule 内层为 OpenAI 自研 cel VM 字节码（编码已破解，247 条 opcode 表已导出；解码器待实现）
+## 重建清单
 
-## 工具
+```sh
+python3 -B analysis/tools/build_baseline.py --output analysis/takeover-20261103/baseline.json
+```
 
-- `analysis/tools/valdi_unpack.py` — .valdimodule 解包（zstd + 容器格式，见 docs/valdi-bytecode-notes.md）
-- `analysis/tools/asar_extract.py` — ASAR 列表/提取
-- Ghidra 12.2 headless 脚本：`analysis/ghidra-scripts/`（FindMagicXref / FindStringsXref / FindExactString / DecompAddrs）
+该命令只读输入并写指定清单，不执行目标代码、不联网。应在其他写入停止后运行；清单含每个主基线模块状态、内容树摘要和工具/报告摘要。来源记录仅标为历史声明，缺失原包如实保留。

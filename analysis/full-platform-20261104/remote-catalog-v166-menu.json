@@ -1,0 +1,1397 @@
+{
+  "status": "passed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v166-final-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "hidden service read capability rejects raw owner call while listing paired hosts",
+    "actual packaged renderer state receives guarded Remote history through IPC",
+    "actual cross-process host-service provider supplies original manager with shared RPC leases, hydration and item subscription",
+    "packaged primary renderer IPC reaches two owner processes; same request identity isolated; A cancel preserves B completion",
+    "pairing URL and token absent from list; hidden fixture role denied Remote capability",
+    "fresh Electron process reconnects same owner histories with same bound profile",
+    "offline A explicit error while B list remains usable"
+  ],
+  "limits": [
+    "Main-process IPC acceptance from original renderer context, not a visible official Remote control workflow",
+    "Fixture model; no live Zhipu calls in this test"
+  ],
+  "browserErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    " ERROR  [Statsig] A networking error occurred during POST request to https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793837622751&sid=bca65dc1-c7aa-45ce-92d6-35d9ef8a065a&se=1. Error: Offline HTTP unsupported: POST /v1/initialize Error: Offline HTTP unsupported: POST /v1/initialize\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    " ERROR  [Statsig] A networking error occurred during POST request to https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793837632945&sid=add8d0c0-7d12-423c-bc72-36e29d56b0ae&se=1. Error: Offline HTTP unsupported: POST /v1/initialize Error: Offline HTTP unsupported: POST /v1/initialize\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)"
+  ],
+  "provider": {
+    "status": "passed",
+    "body": "Local fixture reply",
+    "autoStreamTexts": [
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply"
+    ],
+    "reloads": 12,
+    "devices": {
+      "ssh": [],
+      "wsl": [],
+      "remoteControl": [
+        {
+          "source": "remote-control",
+          "hostId": "host-a",
+          "displayName": "Local test · host-a",
+          "envId": "rea-local:host-a",
+          "hostName": "host-a",
+          "environmentKind": "independent-local-test",
+          "online": true,
+          "appServerVersion": null,
+          "lastSeenAt": null
+        },
+        {
+          "source": "remote-control",
+          "hostId": "host-b",
+          "displayName": "Local test · host-b",
+          "envId": "rea-local:host-b",
+          "hostName": "host-b",
+          "environmentKind": "independent-local-test",
+          "online": true,
+          "appServerVersion": null,
+          "lastSeenAt": null
+        }
+      ]
+    },
+    "sharedLeases": true,
+    "reopen": true,
+    "unpairedDenied": true
+  },
+  "hostHealth": [
+    {
+      "host": "host-a",
+      "mode": "fixture",
+      "epoch": "6abf6e68-6ae3-467d-876b-cfae9697343f",
+      "closed": false,
+      "online": false,
+      "error": "remote_transport"
+    },
+    {
+      "host": "host-b",
+      "mode": "fixture",
+      "epoch": "2965da2e-b4ac-4983-90b5-68371cc58d98",
+      "closed": false,
+      "online": true,
+      "methods": [
+        "capabilities",
+        "fs/readDirectory",
+        "thread/start",
+        "thread/list",
+        "thread/info",
+        "events/read",
+        "turn/start",
+        "turn/interrupt"
+      ]
+    }
+  ],
+  "hostCalls": [
+    "services",
+    "catalog.subscribe",
+    "getDefaultHost",
+    {
+      "operation": "managers.subscribe",
+      "hostId": "local"
+    },
+    {
+      "operation": "settings.readAll",
+      "detailMode": "STEPS_PROSE"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "remoteControl/status/changed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "remoteControl/status/read"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "turn/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "registerWindowActivity",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-authentication-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/completed",
+        "mcpServer/oauthLogin/completed",
+        "mcpServer/startupStatus/updated",
+        "account/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/started"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "turn/completed",
+        "error"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "initial-title-requested",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "realtime-thread-created",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "turn/started",
+        "turn/completed",
+        "turn/moderationMetadata",
+        "item/started",
+        "item/completed"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "open-file-change",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-elicitation-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-deleted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "stream-role-changed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-first-output",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-list-invalidated",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "conversation-removed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "history-accepted",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/realtime/item/completed",
+        "skills/changed",
+        "mcpServer/oauthLogin/completed",
+        "thread/started",
+        "thread/attachment/updated",
+        "thread/archived",
+        "thread/unarchived",
+        "mcpServer/startupStatus/updated",
+        "error",
+        "model/verification"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-unarchived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/agentMessage/delta",
+        "item/plan/delta",
+        "item/reasoning/summaryTextDelta",
+        "item/reasoning/textDelta",
+        "item/commandExecution/outputDelta",
+        "item/fileChange/outputDelta"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/started",
+        "turn/started",
+        "turn/completed"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    "registerReplayAdmission",
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "queued-message-execution",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    "appInfo.get",
+    "appInfo.getSystemInfo",
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "auth-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    "manager.getAccount",
+    "manager.getAuthMethod",
+    "accountInfo.readAccountInfo",
+    {
+      "operation": "httpFetch.fetch",
+      "id": "ec49be4b-8118-48a0-ab7c-6a673d5e6ebf",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "mcp-authentication-status",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "item/completed",
+        "mcpServer/oauthLogin/completed",
+        "mcpServer/startupStatus/updated",
+        "account/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "c160a99b-1cfc-4427-b0a9-f621d7138e4f",
+      "method": "GET",
+      "url": "/wham/accounts/check"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "c160a99b-1cfc-4427-b0a9-f621d7138e4f"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "e4eb1e06-e881-4148-a0fa-aed142c5baa8",
+      "method": "GET",
+      "url": "/accounts/check/v4-2023-04-27"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "e4eb1e06-e881-4148-a0fa-aed142c5baa8"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "d4d2449b-5f7b-403c-b1ea-b9ba262275cc",
+      "method": "GET",
+      "url": "/settings/user"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "d4d2449b-5f7b-403c-b1ea-b9ba262275cc"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "c22d0deb-3950-4e6f-82ba-61d3e253e37a",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "c52af868-52a5-4fd0-82a0-c0732b810e7c",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "93ee3ccc-d7b6-40d3-b5c4-7264251516f5",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "2affe149-9d64-4e1c-8755-4c6d13d9857a",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "cf3d4f35-1506-4dad-a242-31522e8808cc",
+      "method": "POST",
+      "url": "/wham/statsig/bootstrap"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "d0dc77b4-688e-4e64-a43c-c10850ae3b82",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793837630436&sid=add8d0c0-7d12-423c-bc72-36e29d56b0ae&se=1"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "0277aff9-4686-4c24-9bb8-a49c998ec3a5",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793837630943&sid=add8d0c0-7d12-423c-bc72-36e29d56b0ae&se=1"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "df968cf1-d28e-4e84-9fe2-1632211edd4a",
+      "method": "POST",
+      "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793837632945&sid=add8d0c0-7d12-423c-bc72-36e29d56b0ae&se=1"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "experimentalFeature/list",
+      "params": {
+        "cursor": null,
+        "limit": 100
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "added-remote-control-env-ids"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "host",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "thread-project-assignments"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "configRequirements/read"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "configRequirements/read"
+    },
+    {
+      "operation": "remoteConnections.setRemoteControlEnabled",
+      "value": {
+        "enabled": false,
+        "oneToOnePairingInAppEnabled": false
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": true,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "catalog.setSourceEnabled",
+      "source": {
+        "kind": "app-server"
+      },
+      "enabled": true
+    },
+    {
+      "operation": "catalog.subscribeStatus"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "local-projects"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "selected-project"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "selected-remote-host-id"
+    },
+    {
+      "operation": "managers.subscribe",
+      "hostId": "durable"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "1da895c1-47b1-4ac9-8991-79244629d09c",
+      "method": "GET",
+      "url": "/wham/tasks/list?limit=20&task_filter=current"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "host",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "pinned-thread-ids"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "08aea143-0625-4161-96c6-9f14f401c6b1",
+      "method": "GET",
+      "url": "/wham/usage"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "projectless-thread-ids"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "remote-projects"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "project-order"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "19609cc6-c63a-421c-8b1b-e3c5f02f8f95",
+      "method": "GET",
+      "url": "/wham/onboarding/context"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "managers.subscribe",
+      "hostId": "host-a"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-a"
+    },
+    {
+      "operation": "managers.subscribe",
+      "hostId": "host-b"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "remoteConnections.getState",
+      "hostId": "host-b"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "d182a882-baee-45b9-ba3d-4a81f56aa559",
+      "method": "GET",
+      "url": "/automations?filter=scheduled&limit=25"
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "item/started",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "turn-completed",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "approval-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": "serverRequest/resolved",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "user-input-request",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/name/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "catalog.requestSync",
+      "hosts": [
+        "host-a"
+      ]
+    },
+    {
+      "operation": "catalog.requestSync",
+      "hosts": [
+        "host-b"
+      ]
+    },
+    {
+      "operation": "catalog.requestSync",
+      "hosts": [
+        "local"
+      ]
+    },
+    {
+      "operation": "catalog.requestSync",
+      "hosts": [
+        "host-a"
+      ]
+    },
+    {
+      "operation": "catalog.requestSync",
+      "hosts": [
+        "host-b"
+      ]
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "19609cc6-c63a-421c-8b1b-e3c5f02f8f95"
+    },
+    {
+      "operation": "catalog.setSourceEnabled",
+      "source": {
+        "kind": "chatgpt",
+        "accountId": "offline-fixture-account"
+      },
+      "enabled": true
+    },
+    {
+      "operation": "catalog.readStatus",
+      "status": {
+        "hosts": [
+          {
+            "hostId": "local",
+            "isComplete": true,
+            "revision": 1
+          },
+          {
+            "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+            "isComplete": true,
+            "revision": 1
+          }
+        ]
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "event",
+      "event": "thread-archived",
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "notification",
+      "methods": [
+        "thread/name/updated"
+      ],
+      "key": {
+        "hostId": "local"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "785405ac-cc9e-405f-8fe2-79a61e915bb0",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "account/gatewayOAuth/read"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "e0731e3d-5750-4924-928c-996d376ff322",
+      "method": "GET",
+      "url": "/models?iim=false&include_icons=false&is_gizmo=false"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "sidebar-project-thread-orders"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "pinned-project-ids"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "c91e0f5a-5ce6-44b4-a905-1f885b07cc37",
+      "method": "GET",
+      "url": "/pins?item_type=gizmo"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "e7f346e4-d503-4e82-81d1-9f9f27c4db67",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "catalog.readPage",
+      "query": {
+        "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+        "filter": {
+          "includeAll": true,
+          "cwdValues": [],
+          "cwdPrefixes": [],
+          "includeThreadIds": [],
+          "excludeThreadIds": []
+        },
+        "limit": 20,
+        "sortKey": "updated_at"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "dca363a3-caa6-47d9-8673-6e9c8f7256e7",
+      "method": "GET",
+      "url": "/pins?item_type=conversation"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "32edbc0b-3cf8-4e43-a6db-53923f552c08",
+      "method": "GET",
+      "url": "/pins?item_type=project"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "d8899e58-904c-42bb-b22f-0b4b21aab316",
+      "method": "GET",
+      "url": "/conversations?exclude_conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "fd4ea7a9-1983-4099-8b13-dd7511d2d483",
+      "method": "GET",
+      "url": "/conversations?conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "3956695b-ce8a-49cf-8cf1-6a1d2293c8a0",
+      "method": "GET",
+      "url": "/gizmos/snorlax/sidebar?conversations_per_gizmo=0&limit=20&owned_only=false"
+    },
+    {
+      "operation": "applicationState.read",
+      "key": "connection-group-order"
+    },
+    {
+      "operation": "projectlessThreads.readWorkspaceRoot"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "cc73bc2f-1475-4763-9b62-d2140264df9a",
+      "method": "GET",
+      "url": "/referrals/invite/eligibility?program_id=codex_referral_consumer&entrypoint=persistent"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "d8e80bc7-9d12-47cd-bbfb-619373787ff3",
+      "method": "GET",
+      "url": "/me"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "6fcb0e1b-727b-48ab-bb09-98cea4659706",
+      "method": "GET",
+      "url": "/profiles/me"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "c8d39770-ae4d-4be3-bd66-37a1b983726a",
+      "method": "GET",
+      "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "0e299f45-1bfa-4de4-98ca-928697462d5e",
+      "method": "GET",
+      "url": "/aip/first-party/eligibility"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "d49a5fba-f0aa-4b7b-8897-64c1a16a74d8",
+      "method": "GET",
+      "url": "/accounts/optimized/check"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "290454c0-43a2-4992-b78c-c6335ad2f042",
+      "method": "GET",
+      "url": "/conversation/offline-fixture-conversation-001"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "32edbc0b-3cf8-4e43-a6db-53923f552c08"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "3956695b-ce8a-49cf-8cf1-6a1d2293c8a0"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "d8e80bc7-9d12-47cd-bbfb-619373787ff3"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "6fcb0e1b-727b-48ab-bb09-98cea4659706"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "290454c0-43a2-4992-b78c-c6335ad2f042"
+    },
+    {
+      "operation": "catalog.readPage",
+      "query": {
+        "hostId": "local",
+        "limit": 10,
+        "sortKey": "updated_at"
+      }
+    },
+    {
+      "operation": "catalog.readPage",
+      "query": {
+        "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+        "limit": 10,
+        "sortKey": "updated_at"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "6f1546fe-482d-4b81-86aa-5dd045561412",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "2c396c8b-f5f7-4d77-a300-8dfba9dc933e",
+      "method": "GET",
+      "url": "/amphora/notifications?limit=20"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "model/list",
+      "params": {
+        "includeHidden": true,
+        "cursor": null,
+        "limit": 100
+      }
+    },
+    {
+      "operation": "manager.subscribe",
+      "type": "thread",
+      "key": {
+        "hostId": "local",
+        "threadId": "chatgpt:offline-fixture-conversation-001"
+      }
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "536ea2bf-a6b5-414b-ad26-8aa697c61e99",
+      "method": "GET",
+      "url": "/settings/is_adult"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "2f2a9273-5bb2-4298-b4f6-cf1e5a200a65",
+      "method": "POST",
+      "url": "/conversation/init"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "2816a0dc-b8df-4c7e-8f39-3b218bd5ba52",
+      "method": "GET",
+      "url": "/system_hints?exclude_logo=true&mode=plugins"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8be7b3b3-69ea-4b10-9bd0-37ad19339ddc",
+      "method": "GET",
+      "url": "/system_hints?exclude_logo=true&mode=basic"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "8df4d36c-22d3-498c-b72d-fd623cb8e77f",
+      "method": "GET",
+      "url": "/system_hints?exclude_logo=false&mode=custom_agents"
+    },
+    {
+      "operation": "windowActivity.update",
+      "value": {
+        "canAcquireThreadStream": true,
+        "routePath": "/renderer",
+        "visibilityState": "visible"
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "plugin/installed",
+      "params": {}
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "2f2a9273-5bb2-4298-b4f6-cf1e5a200a65"
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "config/read",
+      "params": {
+        "includeLayers": false,
+        "cwd": null
+      }
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "account/gatewayOAuth/read"
+    }
+  ],
+  "profileMenu": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nPinned\nREA synthetic project\nProjects\nREA synthetic unpinned project\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\n离线组件验证\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n\n\nO\nOffline fixture\nFree\nShow Pet\n⌥Space\nUpgrade for higher limits\nSettings\n⌘,\nHelp\nLog out",
+  "settingsText": "Skip to content\nBack to app\nSearch settings\nPersonal\nGeneral\nNotifications\nProfile\nAppearance\nAccount\nArchived chats\nParental controls\nConfiguration\nPersonalization\nMini & Pets\nKeyboard shortcuts\nUsage & billing\nData controls\nIntegrations\nPlugins\nComputer use\nBrowser\nCloud computer\nCoding\nHooks\nCode Review\nGit\nEnvironments\nWorktrees\nGeneral\nPermissions\nDefault permissions\nBy default, ChatGPT can read and edit files in its workspace. It can ask for additional access when needed\nFull access\nWhen ChatGPT runs with full access, it can edit any file on your computer and run commands with network, without your approval. This significantly increases the risk of data loss, leaks, or unexpected behavior. Learn more about elevated risks.\nGeneral\nDefault file open destination\nWhere files and folders open by default\nNo targets found\nLanguage\nLanguage for the app UI\nAuto detect\nShow in menu bar\nKeep ChatGPT in the macOS menu bar when the main window is closed\nConfirm before closing a window\nWarn when a tab-close shortcut would close the window\nClose shortcut only\nFull view by default\nStart new chats with Chat and content in a single tab strip\nBottom panel\nShow the bottom panel control in the app header\nDefault terminal location\nChoose where the terminal shortcut and environment actions open terminal tabs\nBottom\nRight\nPrevent sleep while running\nKeep your computer awake while ChatGPT is running a task\nAutomatically archive inactive chats\nArchive local chats after a period of inactivity\nNever\nImport work from other AI apps\nBring over your setup, projects, and recent chats\nChecking\nOpen source licenses\nThird-party notices for bundled dependencies\nView\nComposer\nPlain text composer\nKeep code, Markdown, and links as literal text while writing messages\nShow context window usage\nSend shortcut\nChoose when Enter sends a prompt or inserts a new line\nEnter\nFollow-up behavior\nQueue follow-ups while ChatGPT runs or steer the current run. Press ⌘⏎ to do the opposite for one message\nQueue\nSteer\nNotifications\nTurn completion notifications\nSet when ChatGPT alerts you that it's finished\nOnly when unfocused\nEnable permission notifications\nShow alerts when notification permissions are required\nEnable question notifications\nShow alerts when input is needed to continue\nEnable dot notifications\nShow alerts when your dot sends you a message",
+  "rendererText": "Skip to content\nBack to app\nSearch settings\nPersonal\nGeneral\nNotifications\nProfile\nAppearance\nAccount\nArchived chats\nParental controls\nConfiguration\nPersonalization\nMini & Pets\nKeyboard shortcuts\nUsage & billing\nData controls\nIntegrations\nPlugins\nComputer use\nBrowser\nCloud computer\nCoding\nHooks\nCode Review\nGit\nEnvironments\nWorktrees\nGeneral\nPermissions\nDefault permissions\nBy default, ChatGPT can read and edit files in its workspace. It can ask for additional access when needed\nFull access\nWhen ChatGPT runs with full access, it can edit any file on your computer and run commands with network, without your approval. This significantly increases the risk of data loss, leaks, or unexpected behavior. Learn more about elevated risks.\nGeneral\nDefault file open destination\nWhere files and folders open by default\nNo targets found\nLanguage\nLanguage for the app UI\nAuto detect\nShow in menu bar\nKeep ChatGPT in the macOS menu bar when the main window is closed\nConfirm before closing a window\nWarn when a tab-close shortcut would close the window\nClose shortcut only\nFull view by default\nStart new chats with Chat and content in a single tab strip\nBottom panel\nShow the bottom panel control in the app header\nDefault terminal location\nChoose where the terminal shortcut and environment actions open terminal tabs\nBottom\nRight\nPrevent sleep while running\nKeep your computer awake while ChatGPT is running a task\nAutomatically archive inactive chats\nArchive local chats after a period of inactivity\nNever\nImport work from other AI apps\nBring over your setup, projects, and recent chats\nChecking\nOpen source licenses\nThird-party notices for bundled dependencies\nView\nComposer\nPlain text composer\nKeep code, Markdown, and links as literal text while writing messages\nShow context window usage\nSend shortcut\nChoose when Enter sends a prompt or inserts a new line\nEnter\nFollow-up behavior\nQueue follow-ups while ChatGPT runs or steer the current run. Press ⌘⏎ to do the opposite for one message\nQueue\nSteer\nNotifications\nTurn completion notifications\nSet when ChatGPT alerts you that it's finished\nOnly when unfocused\nEnable permission notifications\nShow alerts when notification permissions are required\nEnable question notifications\nShow alerts when input is needed to continue\nEnable dot notifications\nShow alerts when your dot sends you a message",
+  "controls": [
+    {
+      "text": "  General",
+      "aria": "General"
+    },
+    {
+      "text": "Notifications",
+      "aria": "Notifications"
+    },
+    {
+      "text": "  Profile",
+      "aria": "Profile"
+    },
+    {
+      "text": "                Appearance",
+      "aria": "Appearance"
+    },
+    {
+      "text": "  Account",
+      "aria": "Account"
+    },
+    {
+      "text": "  Archived chats",
+      "aria": "Archived chats"
+    },
+    {
+      "text": "  Parental controls",
+      "aria": "Parental controls"
+    },
+    {
+      "text": "    Configuration",
+      "aria": "Configuration"
+    },
+    {
+      "text": "    Personalization",
+      "aria": "Personalization"
+    },
+    {
+      "text": "    Mini & Pets",
+      "aria": "Mini & Pets"
+    },
+    {
+      "text": "Keyboard shortcuts",
+      "aria": "Keyboard shortcuts"
+    },
+    {
+      "text": "    Usage & billing",
+      "aria": "Usage & billing"
+    },
+    {
+      "text": "Data controls",
+      "aria": "Data controls"
+    },
+    {
+      "text": "Plugins",
+      "aria": "Plugins"
+    },
+    {
+      "text": "Computer use",
+      "aria": "Computer use"
+    },
+    {
+      "text": "Browser",
+      "aria": "Browser"
+    },
+    {
+      "text": "      Cloud computer",
+      "aria": "Cloud computer"
+    },
+    {
+      "text": "Hooks",
+      "aria": "Hooks"
+    },
+    {
+      "text": "    Code Review",
+      "aria": "Code Review"
+    },
+    {
+      "text": "Git",
+      "aria": "Git"
+    },
+    {
+      "text": "  Environments",
+      "aria": "Environments"
+    },
+    {
+      "text": "  Worktrees",
+      "aria": "Worktrees"
+    },
+    {
+      "text": "",
+      "aria": "Back"
+    },
+    {
+      "text": "",
+      "aria": "Forward"
+    },
+    {
+      "text": "No targets found",
+      "aria": null
+    },
+    {
+      "text": "Auto detect",
+      "aria": null
+    },
+    {
+      "text": "Close shortcut only",
+      "aria": null
+    },
+    {
+      "text": "Bottom",
+      "aria": "Bottom"
+    },
+    {
+      "text": "Right",
+      "aria": "Right"
+    },
+    {
+      "text": "Never",
+      "aria": null
+    },
+    {
+      "text": "Checking",
+      "aria": null
+    },
+    {
+      "text": "View",
+      "aria": null
+    },
+    {
+      "text": "Enter",
+      "aria": null
+    },
+    {
+      "text": "Queue",
+      "aria": "Queue"
+    },
+    {
+      "text": "Steer",
+      "aria": "Steer"
+    },
+    {
+      "text": "Only when unfocused",
+      "aria": null
+    }
+  ],
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/remote-catalog-v166-menu.png"
+}

@@ -1,0 +1,140 @@
+{
+  "descriptor": "0x95d462c",
+  "metadata": "0xa576470",
+  "fields": [
+    {
+      "name": "id",
+      "offset": "0x0",
+      "typeref": "0x8f32d3c"
+    },
+    {
+      "name": "requestID",
+      "offset": "0x50",
+      "typeref": "0x8f31450"
+    },
+    {
+      "name": "jsonRPCRequestID",
+      "offset": "0x60",
+      "typeref": "0x8f34614"
+    },
+    {
+      "name": "kind",
+      "offset": "0x79",
+      "typeref": "0x8f32d16"
+    },
+    {
+      "name": "threadID",
+      "offset": "0x80",
+      "typeref": "0x8bc9970"
+    },
+    {
+      "name": "turnID",
+      "offset": "0x90",
+      "typeref": "0x8bc9970"
+    },
+    {
+      "name": "itemID",
+      "offset": "0xa0",
+      "typeref": "0x8bc9970"
+    },
+    {
+      "name": "callID",
+      "offset": "0xb0",
+      "typeref": "0x8f31460"
+    },
+    {
+      "name": "reason",
+      "offset": "0xc0",
+      "typeref": "0x8bc9970"
+    },
+    {
+      "name": "command",
+      "offset": "0xd0",
+      "typeref": "0x8bc9970"
+    },
+    {
+      "name": "proposedExecpolicyAmendment",
+      "offset": "0xe0",
+      "typeref": "0x93e1980"
+    },
+    {
+      "name": "additionalPermissions",
+      "offset": "0xe8",
+      "typeref": "0x8f314de"
+    },
+    {
+      "name": "requestedPermissions",
+      "offset": "0x118",
+      "typeref": "0x8f314e6"
+    },
+    {
+      "name": "availableCommandExecutionDecisions",
+      "offset": "0x148",
+      "typeref": "0x8f3461c"
+    },
+    {
+      "name": "networkApprovalContext",
+      "offset": "0x150",
+      "typeref": "0x8f314ee"
+    },
+    {
+      "name": "proposedNetworkPolicyAmendments",
+      "offset": "0x178",
+      "typeref": "0x8f34628"
+    },
+    {
+      "name": "mcpServerElicitationPersistenceOptions",
+      "offset": "0x180",
+      "typeref": "0x8f34634"
+    },
+    {
+      "name": "_openAIForm",
+      "offset": "0x188",
+      "typeref": "0x8f3463a"
+    },
+    {
+      "name": "mcpServerElicitationPayload",
+      "offset": "0x1a0",
+      "typeref": "0x8e8a746"
+    },
+    {
+      "name": "title",
+      "offset": "0x220",
+      "typeref": "0x8bc9970"
+    },
+    {
+      "name": "subtitle",
+      "offset": "0x230",
+      "typeref": "0x8bc9970"
+    },
+    {
+      "name": "detailReason",
+      "offset": "0x240",
+      "typeref": "0x8bc9970"
+    }
+  ],
+  "selected_type": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8f3461c",
+    "length": 11,
+    "mangled_hex": "5361790298e7b801475367",
+    "references": [
+      {
+        "offset": 3,
+        "kind": 2,
+        "target": "0xaac2db8",
+        "resolved_context": "0x95f2018",
+        "label": "Generated.Components.Schemas.CommandExecutionApprovalDecision"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  }
+}

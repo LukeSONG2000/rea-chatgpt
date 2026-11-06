@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "macos",
+  "implementation_origin": "official packaged Codex renderer with independent synthetic host/history storage",
+  "verified": [
+    "Fixture send writes history; separate Electron process loads identical generated message ID and renders body/code",
+    "Bounded scope/graph validation, cycle rejection, corrupt preservation and surfaced save failure tests pass",
+    "Cancelled and interrupted snapshots and cross-process transport ID collision avoidance tested in isolated service",
+    "Model event adapter regression passed with delivered-delta cancellation; no live model request in this batch"
+  ],
+  "processes": {
+    "write": 41812,
+    "read": 42083,
+    "message": "offline-generated-ff346ff2-e2a7-4ce6-93bb-8b8f9e7d5ab1"
+  },
+  "limitations": [
+    "Aggregate renderer mount remains mount-blocked: failed resource loads and explicitly unsupported telemetry; pageErrors empty",
+    "Hidden OS window capture failed; renderer screenshot inspected, no OS-window/display acceptance",
+    "Only two synthetic conversations; sidebar still No chats; full navigation/list missing",
+    "Zhipu persistence wiring exists but live-model cold recovery not verified",
+    "Model receives current prompt only, no history context continuity",
+    "Atomic rename without fsync, multi-writer lock, journal or power-loss proof",
+    "Each snapshot rewrites history; frame/IO performance unmeasured",
+    "No Windows/Android/Web equivalence or full app restoration"
+  ],
+  "evidence_sha256": {
+    "analysis/tools/desktop-history-store.cjs": "f46c37808c8f48da51c06f6a2de4500313f0c89f96e7623adc5bf25a8886da41",
+    "analysis/tools/desktop-fixture-services.mjs": "bdee4a59865102234b1ada4a7974f59e0890049b060af702b539aa24f2d0b163",
+    "analysis/tools/probe_desktop_root_mount.cjs": "155a0119d066aecbb7323d392401aef63a746e924dbc987952ad00160c143b07",
+    "analysis/tools/test_desktop_history_store.mjs": "69d0fdcfe066d43d9b131dd325d23469630924ba477342fe5eb59e2c2835bbc9",
+    "analysis/tools/test_desktop_model_projection.mjs": "a677469d5a440ee9518fd15b92e7f80402ea201b07f56675890f6f37f09f647e",
+    "implementation/desktop/run.cjs": "76bacba6db2bd530f00f60c19d53140b360c529c3a6cc5a027021c867cfa3a4e",
+    "analysis/full-platform-20261104/macos-history-write-v1.json": "401bc9f8ccd6cb78fa6b70a7acb69f575eda2786e31da00d1f681d2b3386a09a",
+    "analysis/full-platform-20261104/macos-history-read-v1.json": "5de7b1e450f682515503ee6b2c7c75caaed019f3cd0bca17562440894f15722c",
+    "analysis/full-platform-20261104/macos-history-read-v2.json": "6b38f304d9d38211d308ea804696a67e78ec4463e97fbe1ba6dd1debeaafb730",
+    "analysis/full-platform-20261104/macos-history-store-v1.log": "84376ef202558c4385a78c3ecdfa1ae146b0a8929a1afd0b4115b10e4b9e8955",
+    "analysis/full-platform-20261104/macos-history-stream-v1.log": "97f88ef6d6c5f3522b1b9a0dc37acc757317ab23943c1f6811a83213a0740fa5",
+    "analysis/full-platform-20261104/macos-history-model-projection-v1.log": "5674c5001b5cd8e31ccbb617f31a35d78b15f272614c22ce3eb9973ce97e6149",
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/official-root-probe-run-1793798914978-42078-synthetic-account.png": "c3ef00ce7b3d0a534f9cc33697214c53d0ecadb52103381a2e4c99dfafd09e89"
+  }
+}

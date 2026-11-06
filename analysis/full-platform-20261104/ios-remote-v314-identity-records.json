@@ -1,0 +1,141 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "types": [
+    {
+      "descriptor": "0x95d1798",
+      "name": "ID",
+      "fields": [
+        {
+          "name": "hostIdentity",
+          "record": "0x9a60fd4",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8bca178",
+            "length": 5,
+            "mangled_hex": "0237cdee01",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab6eb0",
+                "resolved_context": "0x95d1538",
+                "label": "CodexRemoteCore.CodexRemoteHostIdentity"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "threadRepositoryID",
+          "record": "0x9a60fe0",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8bcb380",
+            "length": 5,
+            "mangled_hex": "02d7bcee01",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab7058",
+                "resolved_context": "0x95d192c",
+                "label": "CodexRemoteCore.CodexRemoteThreadRepositoryID"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "descriptor": "0x95d1538",
+      "name": "CodexRemoteHostIdentity",
+      "fields": [
+        {
+          "name": "slingshot",
+          "record": "0x9a60a98",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e04b28",
+            "length": 14,
+            "mangled_hex": "025fc7cb0179020926cb01535347",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaac1288",
+                "resolved_context": "0x975e214",
+                "label": "Tagged.Tagged"
+              },
+              {
+                "offset": 6,
+                "kind": 2,
+                "target": "0xaab7138",
+                "resolved_context": "0x95d1624",
+                "label": "CodexRemoteCore.CodexRemoteSlingshotEnvironment"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "ssh",
+          "record": "0x9a60aa4",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e04cee",
+            "length": 5,
+            "mangled_hex": "02a121cb01",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab6e90",
+                "resolved_context": "0x95d151c",
+                "label": "CodexRemoteCore.CodexRemoteSSHSettings"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "cloud",
+          "record": "0x9a60ab0",
+          "type": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observed_callback": {
+    "entry": "0x43910c",
+    "capture_load": "0x439128",
+    "parameter_copy_bytes": 80,
+    "getter": "content field offset0x80 taskSectionIsCollapsed, call0x439144",
+    "next_state": "0x439154 bic w1,1,w8 (Boolean inverse)",
+    "setter": "content field offset0x90 setTaskSectionCollapsed, call0x43915c",
+    "same_parameter": "both calls use sp after copy0x439138"
+  },
+  "wrapper": {
+    "entry": "0x39c378",
+    "animation_default": "0x39c390",
+    "closure": "0x43910c at0x39c3bc",
+    "limitation": "Extra animation policy gate remains unresolved"
+  },
+  "integration_decision": "Header action must request toggle from owner using captured section scope and latest state; do not derive writeback from stale rendered isCollapsed",
+  "remaining": [
+    "Prove wrapper capture installation in header constructor",
+    "Resolve copied section parameter type/identity contract; do not claim it is only an ID",
+    "Header geometry and new-thread visibility gates",
+    "Actual frontend runtime and cross-platform verification"
+  ],
+  "validation": "Session42359 still pending system authorization; no new build"
+}

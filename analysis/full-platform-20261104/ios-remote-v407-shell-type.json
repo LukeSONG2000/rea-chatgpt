@@ -1,0 +1,45 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": "0x7e11ee8",
+  "mangled_address": "0x8e20728",
+  "length": 32,
+  "mangled_hex": "02d74ccb017953617902be6ac9014702500bca01794142535347018dda780047",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 2,
+      "target": "0xaad5400",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI7ForEachVMn"
+    },
+    {
+      "offset": 9,
+      "kind": 2,
+      "target": "0xaab71f0",
+      "resolved_context": "0x95d0d50",
+      "label": "CodexRemoteCore.CodexRemoteAutomaticApprovalReview"
+    },
+    {
+      "offset": 15,
+      "kind": 2,
+      "target": "0xaac1288",
+      "resolved_context": "0x975e214",
+      "label": "Tagged.Tagged"
+    },
+    {
+      "offset": 26,
+      "kind": 1,
+      "target": "0x95ae1d0",
+      "resolved_context": "0x95ae1d0",
+      "label": "CodexRemoteThread.CodexRemoteAutomaticApprovalReviewView"
+    }
+  ],
+  "unresolved_contexts": [],
+  "limits": [
+    "Symbolic context references only, not a reconstructed generic type tree",
+    "Type presence does not prove runtime branch selection or component creation"
+  ]
+}

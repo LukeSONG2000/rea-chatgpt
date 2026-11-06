@@ -1,0 +1,83 @@
+{
+  "status": "partial",
+  "platform": "ios",
+  "reference_baseline": "1.2026.293",
+  "origin": "independent UIKit host and independent synthetic harness contract; not recovered official catalog implementation",
+  "changes": [
+    "Account-bound versioned catalog with canonical UUID identity, bounded 128 entries and atomic file replacement before memory commit",
+    "Native new-conversation button selects an empty conversation; selected scope and draft survive process restart",
+    "History validation and UI send mapping preserve dynamic conversation identity instead of aliasing fixture B",
+    "Shared harness conversation validator accepts only canonical offline-local UUID or two existing fixture identities"
+  ],
+  "verification": {
+    "state_tests": "analysis/full-platform-20261104/ios-catalog-state-v1.log",
+    "harness_tests": {
+      "log": "analysis/full-platform-20261104/ios-catalog-harness-v4.log",
+      "passed": 10,
+      "scope": "loopback fixture transport and mocked model provider; no new live Zhipu request"
+    },
+    "native_ui": {
+      "result": "analysis/full-platform-20261104/ios-catalog-ui-v1.xcresult",
+      "summary": "analysis/full-platform-20261104/ios-catalog-ui-v1.summary.json",
+      "passed": 2,
+      "failed": 0,
+      "runtime": "dedicated iPhone 17 Pro simulator, iOS 27.0",
+      "covers": [
+        "native create and empty draft",
+        "switch away/back preserves new draft",
+        "actual process terminate/relaunch restores new UUID selection, draft and catalog row",
+        "existing A/B keyboard and cold-restore regression"
+      ]
+    },
+    "visual": "Exported native-created-conversation-cold-restored screenshot inspected; not official-fidelity acceptance"
+  },
+  "inputs": [
+    {
+      "path": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "9c1917f7549feb3f5e9051d5a85aec9e38baaf0da3e46fd1eb5e07b3334996a2"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "ec4b2b7bdf7ebe9969e92d7c737473446ad943fee63df59bf03255e26c7eb9c7"
+    },
+    {
+      "path": "implementation/ios/Tests/main.swift",
+      "sha256": "57c4a48e236691d211c70fc72c19067e52288162ceb6040b4ef32ad4839146b4"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "4555c2af961442b567dccc553fd7a2ad3adf1e7cfb146a0690aa7e51c4b7f2d3"
+    },
+    {
+      "path": "implementation/harness/scope_contract.py",
+      "sha256": "80cb56dc9dbe16e4fd929e5defdcd00ecbcc120d4d6c06a2730518325794d2f9"
+    },
+    {
+      "path": "implementation/harness/loopback_server.py",
+      "sha256": "0ff2a3943bfff444fa1c4064285908ec83e3223869646b55f41464d4095d06d8"
+    },
+    {
+      "path": "implementation/harness/model_worker.py",
+      "sha256": "ee30aec808ff30433110e284ea39606a270c8f55a6ee6a99d78e663affd89a8d"
+    },
+    {
+      "path": "implementation/harness/test_loopback_server.py",
+      "sha256": "da51dd1fc9acedc0fd358828e08c18588360e03ce4998a2b795feb6cbdb1b631"
+    },
+    {
+      "path": "implementation/harness/test_model_worker.py",
+      "sha256": "58e3b72a4199661ad90a4e61bf7b5636e00ad8471186a81c5648f2989b7094b7"
+    }
+  ],
+  "historical_attempts": [
+    "ios-catalog-harness-v1.log failed because system Python 3.9 lacks tomllib; v2/v3 used project Python 3.12 and passed 9 tests; v4 adds mocked dynamic model identity test"
+  ],
+  "limitations": [
+    "Native dynamic-conversation send/stream/cancel end-to-end still unaccepted; transport and model contract tests are separate",
+    "Delete, rename, service catalog sync and large-list UI unimplemented/unaccepted",
+    "Directory/history/draft are separate atomic files, no cross-file transaction or power-loss guarantee",
+    "Official list owner, layout and full interactions remain unproven; physical iPhone unaccepted",
+    "Existing history-context/provider reliability gaps unchanged"
+  ],
+  "next_action": "Verify native new-conversation send/switch/cancel with authenticated fixture harness, then add scoped deletion and cold-recovery cleanup"
+}

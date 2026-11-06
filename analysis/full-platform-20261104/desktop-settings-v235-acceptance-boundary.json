@@ -1,0 +1,35 @@
+{
+  "status": "partial-not-deployed",
+  "passed": {
+    "v229": [
+      "settings page reload",
+      "same isolated profile process restart",
+      "selected conversation unchanged",
+      "home clears settings view and survives reload"
+    ],
+    "v230": [
+      "search focus retained",
+      "ArrowDown/Enter opens Git settings with branch-prefix field"
+    ],
+    "v235": [
+      "same repeated sidebar navigation and search regression",
+      "Codex instructions nested editor opens"
+    ]
+  },
+  "notPassed": {
+    "unsavedChanges": "Editor is disabled because agentInstructions.read service is absent; no user edit, discard or keep-editing path accepted"
+  },
+  "evidence": {
+    "readContract": "personalization-queries-ff8f8213c2de.js d()/p query: host.agentInstructions.read({hostId}) -> path, contents, hasOverride; enabled only if service exists",
+    "editorGuard": "personalization-settings-67aa2b0231da.js Ei: C=i!=null; disabled=!C||isSaving; original unsaved hook registers personalization.${kind}",
+    "fixtureBoundary": "analysis/tools/desktop-fixture-services.mjs Host.services has no agentInstructions"
+  },
+  "next": "Add isolated synthetic agentInstructions fixture matching original bridge contract; never read/write real user AGENTS.md. Validate actual editing, keep-editing and discard before enabling layout adaptation in user preview.",
+  "notes": [
+    "v231/v232 were inspection traces, not unsaved validation",
+    "v233 failed selector; v234 corrected to actual overlay button",
+    "v235 overall test status passed excludes skipped unsaved case; test reporter now marks that case partial"
+  ],
+  "preview": "PID83672 remains original non-experimental preview",
+  "retention": "no stale packages"
+}

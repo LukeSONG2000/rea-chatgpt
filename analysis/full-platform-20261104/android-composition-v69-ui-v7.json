@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "serial": "emulator-5554",
+  "run_id": "9f205fd407c14a70a2a55a39f32705ad",
+  "origin": "independent native Compose host",
+  "steps": [
+    {
+      "apk": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "a476d364730ff2d866928b16019500ea957584868b1facd617e6b8ab00bb0519"
+    },
+    {
+      "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "5b1b2f94f2ab9acf9a0e46e563b957c808ef1c8b1a8410ac4ee065d660a32d72"
+    },
+    {
+      "test": "NativeHostTest#prepareUncommittedComposition",
+      "status": "passed"
+    },
+    {
+      "test": "NativeHostTest#verifyCompositionRestartAndRetiredConnection",
+      "status": "passed"
+    },
+    {
+      "cold_restart": {
+        "before": "13577",
+        "after": "13691"
+      }
+    },
+    {
+      "test": "NativeHostTest#verifyCommittedCompositionRestart",
+      "status": "passed"
+    },
+    {
+      "cold_restart": {
+        "before": "13691",
+        "after": "13765"
+      }
+    }
+  ],
+  "original_ime_settings": {
+    "default": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+    "enabled": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME;1594443099:com.google.android.tts/com.google.android.apps.speech.tts.googletts.settings.asr.voiceime.VoiceInputMethodService"
+  },
+  "input_mode": "controlled InputConnection replay with quiet test IME; not real keyboard acceptance",
+  "ime_restored": true
+}

@@ -1,0 +1,46 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static; native integration",
+  "findings": [
+    {
+      "offset": "0x1a40394",
+      "conclusion": "RunningCommandExecutionSummaryText body witness branches0x1a3fd84."
+    },
+    {
+      "offset": "0x1a3ff1c;0x1a3ff6c",
+      "conclusion": "Running summary uses body font and tertiary resource, matching normal command consumer. Integrated tertiary into existing command label."
+    },
+    {
+      "offset": "0x1a40124..0x1a40130",
+      "conclusion": "PeriodicTimelineSchedule(from:by:) receives interval1.0; schedule and Date/Text timeline types established by relative type records."
+    },
+    {
+      "offset": "0x7e1e490",
+      "conclusion": "Running composition includes ContentTransition; bound numericText API observed in code-window imports. Trigger and complete rendering policy remain unresolved."
+    }
+  ],
+  "integration": [
+    "Command activity label now uses official tertiary color instead of generic primary.",
+    "No speculative timer or execution capability introduced."
+  ],
+  "unknowns": [
+    "Running command status gate",
+    "Duration formatter and localized forms",
+    "Date-provider semantics and transition trigger",
+    "Expanded command body layout",
+    "Android counterpart"
+  ],
+  "validation": {
+    "status": "passed-scoped-simulator-test",
+    "test": "testRemoteTaskScopeAndReturn",
+    "result": "ios-remote-v352.xcresult",
+    "screenshot": "ios-remote-v352-screenshots/206729A4-87F7-42A8-9792-0014BE226834.png",
+    "visual_inspection": "Command label now tertiary; expanded text remains visible without observed overlap. Overall page remains independent fixture.",
+    "preview_pid": 77208,
+    "phone_updated": false,
+    "external_display_reverified": false
+  }
+}

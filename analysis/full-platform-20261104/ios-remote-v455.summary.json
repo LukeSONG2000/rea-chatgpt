@@ -1,0 +1,86 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+        "deviceName": "REA ChatGPT Offline",
+        "modelName": "iPhone 17 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 6,
+      "passedTests": 1,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "REAChatGPTHost \u00b7 Built with macOS 27.3",
+  "expectedFailures": 0,
+  "failedTests": 6,
+  "finishTime": 1793927290.787,
+  "passedTests": 1,
+  "result": "Failed",
+  "runtimeWarnings": [],
+  "skippedTests": 0,
+  "startTime": 1793927085.355,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "XCTAssertTrue failed - Empty running input keeps stop before reconnect branch",
+      "targetName": "REAHostUITests",
+      "testIdentifier": 2,
+      "testIdentifierString": "HostInteractionTests/testRemoteComposerReconnecting()",
+      "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteComposerReconnecting",
+      "testName": "testRemoteComposerReconnecting()"
+    },
+    {
+      "failureText": "XCTAssertTrue failed",
+      "targetName": "REAHostUITests",
+      "testIdentifier": 3,
+      "testIdentifierString": "HostInteractionTests/testRemoteCurrentTurnGeometry()",
+      "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteCurrentTurnGeometry",
+      "testName": "testRemoteCurrentTurnGeometry()"
+    },
+    {
+      "failureText": "XCTAssertTrue failed",
+      "targetName": "REAHostUITests",
+      "testIdentifier": 4,
+      "testIdentifierString": "HostInteractionTests/testRemoteFragmentSequenceUpdates()",
+      "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteFragmentSequenceUpdates",
+      "testName": "testRemoteFragmentSequenceUpdates()"
+    },
+    {
+      "failureText": "XCTAssertTrue failed",
+      "targetName": "REAHostUITests",
+      "testIdentifier": 5,
+      "testIdentifierString": "HostInteractionTests/testRemoteOrdinaryEditorDraftAndReturn()",
+      "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteOrdinaryEditorDraftAndReturn",
+      "testName": "testRemoteOrdinaryEditorDraftAndReturn()"
+    },
+    {
+      "failureText": "XCTAssertTrue failed",
+      "targetName": "REAHostUITests",
+      "testIdentifier": 6,
+      "testIdentifierString": "HostInteractionTests/testRemoteRunningStopAndReturn()",
+      "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteRunningStopAndReturn",
+      "testName": "testRemoteRunningStopAndReturn()"
+    },
+    {
+      "failureText": "Failed to get matching snapshot: No matches found for Elements matching predicate '\"remote-activity-toggle\" IN identifiers' from input {(\n    Button, identifier: 'BackButton', label: 'Codex',\n    Button, identifier: 'remote-history-toggle', label: '\u663e\u793a\u6216\u9690\u85cf\u524d 1 \u6761\u6d88\u606f', value: \u5df2\u6298\u53e0,\n    Button, identifier: 'remote-current-turn', label: '\u6b63\u5728\u8fd0\u884c inspect-ui\uff0c\u5df2\u6301\u7eed 1m 8s',\n    Button, identifier: 'remote-current-turn', label: '\u6b63\u5728\u641c\u7d22\u7f51\u9875',\n    Button, identifier: 'remote-current-turn', label: '\u6587\u4ef6\u53d8\u66f4 \u00b7 preview.txt, +1, -1',\n    Button, identifier: 'remote-approval-approveOnce', label: '\u6279\u51c6',\n    Button, identifier: 'remote-approval-approveForSession', label: '\u59cb\u7ec8\u6279\u51c6',\n    Button, identifier: 'remote-approval-deny', label: '\u62d2\u7edd'\n)}\nPossibly caused by runtime issues:\nAutomation type mismatch: computed Button from legacy attributes vs DisclosureTriangle from modern attribute. Input attributes and values: {\n    \"XC_kAXXCAttributeAutomationType\" = 13;\n    \"XC_kAXXCAttributeElementBaseType\" = NSObject;\n    \"XC_kAXXCAttributeElementType\" = \"SwiftUI.AccessibilityNode\";\n    \"XC_kAXXCAttributeTraits\" = 8589934593;\n}\nSee test report attachments for more detail.",
+      "targetName": "REAHostUITests",
+      "testIdentifier": 7,
+      "testIdentifierString": "HostInteractionTests/testRemoteTaskScopeAndReturn()",
+      "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testRemoteTaskScopeAndReturn",
+      "testName": "testRemoteTaskScopeAndReturn()"
+    }
+  ],
+  "title": "Test - REAChatGPTHost",
+  "topInsights": [],
+  "totalTestCount": 7
+}

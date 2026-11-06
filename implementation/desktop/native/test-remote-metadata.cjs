@@ -1,0 +1,10 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs');
+const {project}=require('./remote-client.cjs');const out=process.argv[2];if(!out||fs.existsSync(out))throw Error('New report required');
+const params={thread:'synthetic-thread'},base={thread:params.thread,schema:'rea.remote.thread.v1',createdAtMs:100,updatedAtMs:200,eventCursor:0};
+const convert=r=>project({},'thread/info',params,r);
+assert.deepEqual(convert({...base,secret:'never forwarded'}),base);
+assert.deepEqual(convert({...base,createdAtMs:null,updatedAtMs:null}),{...base,createdAtMs:null,updatedAtMs:null});
+assert.equal(convert({...base,createdAtMs:null}).createdAtMs,null);
+for(const patch of [{eventCursor:-1},{eventCursor:undefined},{thread:'foreign'},{schema:'official'},{createdAtMs:-1},{createdAtMs:NaN},{updatedAtMs:99},{updatedAtMs:null},{updatedAtMs:1e30},{createdAtMs:'100'},{createdAtMs:undefined}])assert.throws(()=>convert({...base,...patch}),{code:'remote_protocol'});
+fs.writeFileSync(out,JSON.stringify({status:'passed',authority:'independent metadata transport validation',checks:['foreign thread/schema rejected','invalid and reversed timestamps rejected','legacy null timestamps preserved','unknown fields omitted'],limits:['No official schema compatibility or renderer execution']},null,2),{flag:'wx'});console.log('Metadata validation passed');

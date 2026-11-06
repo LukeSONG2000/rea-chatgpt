@@ -1,0 +1,59 @@
+{
+  "status": "partial",
+  "platform": "ios",
+  "reference_baseline": "1.2026.293",
+  "origin": "independent UIKit catalog/rename; not recovered official menu/title policy",
+  "changes": [
+    "Native trailing swipe Rename, title alert with clear button, cancel/save validation",
+    "Trimmed nonempty UTF-8 title at most 512 bytes; UUID and scoped content unchanged",
+    "Default title numbering avoids titles already present; old/custom duplicates not rewritten",
+    "Failed persistence retains old title; list navigation prompt exposes save failure"
+  ],
+  "verification": {
+    "state_log": "analysis/full-platform-20261104/ios-rename-state-v1.log",
+    "state_covers": [
+      "UUID/title cold restore",
+      "UTF-8 length/blank rejection",
+      "failed rename preserves old name",
+      "default title collision avoidance"
+    ],
+    "ui_result": "analysis/full-platform-20261104/ios-rename-ui-v2.xcresult",
+    "ui_summary": "analysis/full-platform-20261104/ios-rename-ui-v2.summary.json",
+    "ui_passed": 1,
+    "covers": [
+      "native rename cancellation",
+      "blank title Save disabled",
+      "clear and type native title",
+      "same UUID and draft before/after actual process termination and relaunch"
+    ],
+    "delete_regression": "testDeleteSelectedConversationFallback passed in ios-rename-ui-v1.xcresult before adding title-field clear button; rename in that run failed test-helper menu lookup",
+    "disk_check": "analysis/full-platform-20261104/ios-rename-persisted-v1.json",
+    "visual": "Exported renamed list screenshot reviewed, no official parity claim"
+  },
+  "inputs": [
+    {
+      "path": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "5be7bb00987d3653287d7d2f4313545f47f4b240d58328a4622d602bbbdbce39"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "b28107cd919932b2c9ec5ceade495f12b39e04393da6a82f25a97a20ff27bd39"
+    },
+    {
+      "path": "implementation/ios/Tests/main.swift",
+      "sha256": "e6a1386cd3c7e8d9f6e32f05fdd0c5ef32879b30393f5012874594b144f7d5da"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "f7cc19aefd6e1f7c2bd36b0a7f384b6079dcb1aca8d514deea1f2d67eb35a299"
+    }
+  ],
+  "limits": [
+    "Real UI disk-failure injection, CJK composing, VoiceOver and long-list iOS acceptance pending",
+    "Native rename runtime used ASCII title; Chinese coverage here is state tests only",
+    "Official MessagesViewController to actual component construction chain remains unresolved",
+    "No physical device or full visual fidelity acceptance",
+    "Separate store files; no cross-file transaction guarantee"
+  ],
+  "next_action": "Use existing REA evidence to target iOS MessagesViewController/native component construction boundary; explicitly verify artifact constraints before selecting original component reuse or evidence-based reconstruction"
+}

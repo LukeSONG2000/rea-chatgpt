@@ -1,0 +1,28 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "chain": [
+    "CodexTaskListContainer body 0x24034e0",
+    "bool mapping helper 0x2403b58",
+    "modifier constructor 0x757d144",
+    "metadata 0xaa596b0 descriptor 0x9757ca0",
+    "conformance 0x84bd710 body witness 0x757d4e8",
+    "body 0x757d2ec",
+    "system scrollEdgeEffectStyle at 0x757d448"
+  ],
+  "observations": {
+    "true": "tag 1 -> soft getter 0x757d3e0",
+    "false": "tag 2 -> nil optional via 0x757d3c8..0x757d408; not hard",
+    "other_tag": "hard getter 0x757d3ec",
+    "edges": "container passes Edge.Set.vertical at 0x240396c",
+    "availability": "0x1bdeac loads platform 2/version 26.0.0; runtime helper target not independently named",
+    "additional_gate": "0x757d314 -> 0x77106b4; flag bit0 true bypasses system effect"
+  },
+  "unresolved": [
+    "Current list container initialization and usesSoftScrollEdges assignment",
+    "Name and configured value of extra compatibility gate",
+    "Runtime visual effect in reconstructed containment"
+  ],
+  "integration": "No speculative soft override added. Existing v383 preview untouched."
+}

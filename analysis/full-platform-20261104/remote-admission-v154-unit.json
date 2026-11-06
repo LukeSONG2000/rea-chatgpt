@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "checks": [
+    "new live cursor rejects old snapshot",
+    "latest read wins even with reversed completion order",
+    "repeated/forged/foreign-reader tickets rejected",
+    "mutating public result does not alter admitted snapshot",
+    "different thread reads do not supersede each other",
+    "disposed manager rejects snapshot"
+  ],
+  "limits": [
+    "Consumer must apply synchronously after consumeSnapshot",
+    "No receiving-renderer IPC admission or original state wiring yet"
+  ]
+}

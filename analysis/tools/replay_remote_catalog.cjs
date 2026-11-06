@@ -1,0 +1,21 @@
+'use strict';
+// Execute exact inert artifact fragments only. No app bootstrap, network, or native bridge.
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),vm=require('node:vm'),assert=require('node:assert/strict');
+const parser=require('/Users/lukesong/.nvm/versions/node/v24.14.1/lib/node_modules/rea-agents/node_modules/@babel/parser');
+const root=path.resolve(__dirname,'../..'),out=process.argv[2];if(!out||fs.existsSync(out))throw Error('New report required');
+const relative='recovered/macos/asar-extracted/webview/assets/app-shared-2cae01273bae.js';
+const source=fs.readFileSync(path.join(root,relative),'utf8'),ast=parser.parse(source,{sourceType:'module'}),wanted=new Set(['Jet','EY','bet','yet','mtt','btt','xtt','ptt']),functions={},assignments={};
+function walk(node){if(!node||typeof node!=='object')return;if(node.type==='FunctionDeclaration'&&wanted.has(node.id?.name))functions[node.id.name]=node;if(node.type==='AssignmentExpression'&&['AY','Qet','PY','xet'].includes(node.left?.name))assignments[node.left.name]=node.right;for(const [key,v] of Object.entries(node)){if(['loc','start','end','extra'].includes(key))continue;if(Array.isArray(v))v.forEach(walk);else if(v&&typeof v==='object')walk(v)}}walk(ast);
+assert.equal(Object.keys(functions).length,wanted.size);assert.equal(Object.keys(assignments).length,4);
+const fragments=Object.values(functions).map(n=>source.slice(n.start,n.end));
+const bindings=Object.entries(assignments).map(([name,n])=>`const ${name}=${source.slice(n.start,n.end)};`);
+const context=vm.createContext({});vm.runInContext(bindings.join('\n')+'\n'+fragments.join('\n'),context,{timeout:1000});
+const versionCases=['0.140.9','0.141.0-alpha.1','0.141.0','0.150.0','0.0.0','independent-owner',null,undefined];
+const versions=versionCases.map(value=>{context.value=value;const result=vm.runInContext('Jet(value)',context,{timeout:100});return {input:value===undefined?'[undefined]':value,accepted:result}});
+assert.deepEqual(versions.map(r=>r.accepted),[false,false,true,true,true,true,true,true]);
+const input={source:'remote-control',hostId:'synthetic-host-a',displayName:'Independent owner A',envId:'synthetic-env-a',hostName:'Synthetic workstation',environmentKind:'local-test',online:true,busy:false,os:'darwin',arch:'arm64',appServerVersion:null,lastSeenAt:null};context.input=input;
+const normalized=JSON.parse(JSON.stringify(vm.runInContext('xtt(input)',context,{timeout:100})));
+assert.equal(normalized.id,input.hostId);assert.equal(normalized.kind,'remote-control');assert.equal(normalized.env_id,input.envId);assert.equal(normalized.app_server_version,null);assert.deepEqual(normalized.codex_cli_command,[]);assert.deepEqual(normalized.terminal_command,[]);
+const locations=Object.entries(functions).map(([symbol,n])=>({symbol,utf16Offset:n.start,byteOffset:Buffer.byteLength(source.slice(0,n.start)),lengthBytes:Buffer.byteLength(source.slice(n.start,n.end))}));
+const report={status:'passed',authority:'controlled exact official artifact fragments; synthetic inputs; no full app execution',artifact:{path:relative,sha256:crypto.createHash('sha256').update(source).digest('hex')},locations,bindings:Object.fromEntries(Object.entries(assignments).map(([k,n])=>[k,source.slice(n.start,n.end)])),versionCases:versions,syntheticInput:input,normalized,conclusions:['Remote-control records are selected by source and projected into execution-host field names','Version predicate alone accepts malformed/null/undefined values because comparator returns zero on parse failure','0.0.0 is an explicit accepted sentinel; neither this sentinel nor parse-failure acceptance proves app-server compatibility'],limits:['These fragments do not prove null versions reach the real UI through all upstream validators','No settings page or full manager lifecycle executed','Synthetic identifiers are not official cloud enrollment or device discovery']};
+fs.writeFileSync(out,JSON.stringify(report,null,2),{flag:'wx'});console.log(JSON.stringify({status:report.status,out}));

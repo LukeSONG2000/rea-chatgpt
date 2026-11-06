@@ -1,0 +1,128 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": "0x80249b8",
+  "mangled_address": "0x9053ec4",
+  "length": 106,
+  "mangled_hex": "014fd15c007902ad13a80179023f1ba801790115d15c0053675f01c9d05c007902eb0ba80179022dd4a7017902a705a80179414779021603a6017901d0be5c0053674701acbe5c00475f02f1caa7017902dbdda70147516f5f0162d05c00475f5362516f5f4774474747",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 1,
+      "target": "0x9621014",
+      "resolved_context": "0x9621014",
+      "label": "ChatGPTMessageRow.MessageAssistantContentStack"
+    },
+    {
+      "offset": 6,
+      "kind": 2,
+      "target": "0xaad5278",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI6VStackVMn"
+    },
+    {
+      "offset": 12,
+      "kind": 2,
+      "target": "0xaad5a10",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI9TupleViewVMn"
+    },
+    {
+      "offset": 18,
+      "kind": 1,
+      "target": "0x9620fec",
+      "resolved_context": "0x9620fec",
+      "label": "<unresolved-context@0x9620fe4>.ImageGenerationReferencePhotoAttributionPart"
+    },
+    {
+      "offset": 26,
+      "kind": 1,
+      "target": "0x9620fa8",
+      "resolved_context": "0x9620fa8",
+      "label": "ChatGPTMessageRow.MessageRowImageParagenConditionalPart"
+    },
+    {
+      "offset": 32,
+      "kind": 2,
+      "target": "0xaad4ad0",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI4ViewPAAE8onChange2of7initial_Qrqd___Sbyqd___qd__tctSQRd__lFQOMQ"
+    },
+    {
+      "offset": 38,
+      "kind": 2,
+      "target": "0xaad1318",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI15ModifiedContentVMn"
+    },
+    {
+      "offset": 44,
+      "kind": 2,
+      "target": "0xaad4498",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI4ViewPAAE19highPriorityGesture_9includingQrqd___AA0F4MaskVtAA0F0Rd__lFQOMQ"
+    },
+    {
+      "offset": 53,
+      "kind": 2,
+      "target": "0xaab4210",
+      "resolved_context": "0x96fe1f4",
+      "label": "OAIMarkdown.MarkdownBlockStack"
+    },
+    {
+      "offset": 59,
+      "kind": 1,
+      "target": "0x961fdd0",
+      "resolved_context": "0x961fdd0",
+      "label": "ChatGPTMessageRow.MessageRowCodeBlockInlinePreview"
+    },
+    {
+      "offset": 67,
+      "kind": 1,
+      "target": "0x961fdb4",
+      "resolved_context": "0x961fdb4",
+      "label": "ChatGPTMessageRow.FreeThinkingPreviewRenderCompletionModifier"
+    },
+    {
+      "offset": 74,
+      "kind": 2,
+      "target": "0xaad0a00",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI13_EndedGestureVMn"
+    },
+    {
+      "offset": 80,
+      "kind": 2,
+      "target": "0xaad1cf0",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI17SpatialTapGestureVMn"
+    },
+    {
+      "offset": 89,
+      "kind": 1,
+      "target": "0x9620f80",
+      "resolved_context": "0x9620f80",
+      "label": "<unresolved-context@0x9620f78>.MessageLoadingIndicatorModifier"
+    }
+  ],
+  "unresolved_contexts": [
+    {
+      "address": "0x9620fe4",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x9620f78",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    }
+  ],
+  "limits": [
+    "Symbolic context references only, not a reconstructed generic type tree",
+    "Type presence does not prove runtime branch selection or component creation"
+  ]
+}

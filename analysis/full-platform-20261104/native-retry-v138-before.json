@@ -1,0 +1,99 @@
+{
+  "status": "failed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v137-macos-r3/REA ChatGPT Offline.app",
+  "checks": [
+    "Primary renderer model IPC rejected",
+    "Packaged renderer received loopback harness stream and durable completion",
+    "Stop persisted partial terminal with no late changes",
+    "Synthetic failure retained safe category, partial body and terminal without raw vendor detail"
+  ],
+  "limits": [
+    "Real loopback transport with deterministic model fixture; no live Zhipu acceptance",
+    "Project services disabled in model mode pending owner integration"
+  ],
+  "failureBeforeAnyDelta": false,
+  "failureBody": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\n独立 harness 夹具 · 非模型生成 · A\n独立 harness 夹具 · 非模型生成 · B\nO\nOffline fixture\nUpgrade\nShare\n独立 harness 夹具 · 非模型生成\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nToday 6:13 AM\nYou said:\nREA synthetic desktop packaged harness\nChatGPT said:\n\nLocal fixture reply\n\nYou said:\nREA synthetic slow cancellation test\nChatGPT said:\n\nSlow partial\n\nYou said:\nREA synthetic model failure test\nChatGPT said:\n\nPartial before synthetic failure\n\nSomething went wrong. Please try again\nRetry\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n",
+  "retryCalls": [
+    {
+      "operation": "manager.sendRequest",
+      "method": "plugin/installed",
+      "params": {}
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "0726a85a-b7c7-4944-8de1-da52b8bd3b3e",
+      "method": "POST",
+      "url": "/sentinel/chat-requirements/prepare"
+    },
+    {
+      "operation": "fixture.synthetic-prepare",
+      "path": "/sentinel/chat-requirements/prepare"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "0726a85a-b7c7-4944-8de1-da52b8bd3b3e"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "ba0c5569-23d7-4ad6-b72e-0b545594208b",
+      "method": "POST",
+      "url": "/f/conversation"
+    },
+    {
+      "operation": "fixture.send-body-shape",
+      "type": "string",
+      "keys": [
+        "url",
+        "method",
+        "body",
+        "headers",
+        "expectedIdentity"
+      ]
+    },
+    {
+      "operation": "fixture.send-project-scope",
+      "conversationId": "offline-fixture-conversation-001",
+      "gizmoId": null,
+      "keys": [
+        "regeneration_source",
+        "variant_purpose",
+        "enable_message_followups",
+        "conversation_id",
+        "action",
+        "model",
+        "parent_message_id",
+        "timezone",
+        "timezone_offset_min",
+        "is_do_not_remember",
+        "local_function_signatures",
+        "messages",
+        "supported_encodings",
+        "genui_state_snapshots",
+        "client_prepare_state"
+      ]
+    },
+    {
+      "operation": "fixture.send-identities",
+      "streamId": "ba0c5569-23d7-4ad6-b72e-0b545594208b",
+      "conversationId": "offline-fixture-conversation-001",
+      "parentId": "65f3c5e7-849b-403e-9e80-26165fc2d9af",
+      "messageIds": []
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "75f9848c-c161-404b-8ae6-d858ed151ef2",
+      "method": "GET",
+      "url": "/celsius/ws/user"
+    }
+  ],
+  "retryGraph": {
+    "before": "offline-generated-1e31df6d-50f2-48f3-a77e-5edd492063d6",
+    "after": "offline-generated-1e31df6d-50f2-48f3-a77e-5edd492063d6",
+    "parent": "65f3c5e7-849b-403e-9e80-26165fc2d9af",
+    "children": [
+      "offline-generated-1e31df6d-50f2-48f3-a77e-5edd492063d6"
+    ]
+  },
+  "error": "AssertionError [ERR_ASSERTION]: Retry must create a new assistant attempt",
+  "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\n独立 harness 夹具 · 非模型生成 · A\n独立 harness 夹具 · 非模型生成 · B\nO\nOffline fixture\nUpgrade\nShare\n独立 harness 夹具 · 非模型生成\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nToday 6:13 AM\nYou said:\nREA synthetic desktop packaged harness\nChatGPT said:\n\nLocal fixture reply\n\nYou said:\nREA synthetic slow cancellation test\nChatGPT said:\n\nSlow partial\n\nYou said:\nREA synthetic model failure test\nChatGPT said:\n\nPartial before synthetic failure\n\nUnknown synthetic parent/message\nRetry\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n"
+}

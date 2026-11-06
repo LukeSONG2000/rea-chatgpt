@@ -1,0 +1,47 @@
+{
+  "status": "partial",
+  "authority": "native IPC transport feeding original manager in packaged macOS renderer; synthetic owner model",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/remote-manager.cjs",
+      "sha256": "78bc9c8230bd8cc9cc18610c79645ca0b5503850427ae6cd885d94937a29e94d"
+    },
+    {
+      "path": "implementation/desktop/native/main.cjs",
+      "sha256": "a3adef79a96aaec2225736c38387e7f32a11968e55bfc0c126fc4a7deef01854"
+    },
+    {
+      "path": "analysis/tools/probe_original_remote_ipc_stream.js",
+      "sha256": "1436d7855dd114dd69d9a4b214c87e28cdb981c9668b75c15bf3a49ac49c0108"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-ipc-stream.cjs",
+      "sha256": "6dd7591a37739a2b283498061ce51303bf96c079131671f945ac520384f29d51"
+    }
+  ],
+  "stream": {
+    "notificationCount": 8,
+    "liveItemTexts": [
+      "",
+      "Local ",
+      "Local fixture reply",
+      "Local fixture reply"
+    ],
+    "turnCount": 2,
+    "status": "completed"
+  },
+  "reports": [
+    "remote-ipc-stream-v160-journal.json",
+    "remote-ipc-stream-v160-manager.json",
+    "remote-ipc-stream-v160-runtime.json",
+    "remote-ipc-stream-v160-hashes.json"
+  ],
+  "macSignature": "deep strict verification passed",
+  "limits": [
+    "Original manager still instantiated by runtime probe, not host catalog service",
+    "No visible Remote UI acceptance or RPC lease round trip",
+    "Windows assembled not OS-executed",
+    "No live model request; timer path only",
+    "Read state adapters remain in memory"
+  ]
+}

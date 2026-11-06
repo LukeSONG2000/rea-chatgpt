@@ -1,0 +1,37 @@
+{
+  "authority": "independent-host-adapter-regression",
+  "source": "NativeConversationList.viewDidLayoutSubviews",
+  "samples": [
+    {
+      "measured": 100,
+      "assigned": 100,
+      "old_reassigns_after_assignment": false,
+      "new_reassigns_after_assignment": false
+    },
+    {
+      "measured": 100.25,
+      "assigned": 101,
+      "old_reassigns_after_assignment": true,
+      "new_reassigns_after_assignment": false
+    },
+    {
+      "measured": 100.333333,
+      "assigned": 101,
+      "old_reassigns_after_assignment": true,
+      "new_reassigns_after_assignment": false
+    },
+    {
+      "measured": 100.5,
+      "assigned": 101,
+      "old_reassigns_after_assignment": false,
+      "new_reassigns_after_assignment": false
+    },
+    {
+      "measured": 100.75,
+      "assigned": 101,
+      "old_reassigns_after_assignment": false,
+      "new_reassigns_after_assignment": false
+    }
+  ],
+  "limit": "Arithmetic replay; actual hang fix requires UI test."
+}

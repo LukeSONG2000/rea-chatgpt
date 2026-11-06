@@ -1,0 +1,435 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "MessageInputContainer",
+      "descriptor": "0x966f1a0",
+      "type_section_entry": "0x9d495c4",
+      "accessor": "0x4da1a54",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x9b2acb4",
+          "type_reference": "0x8fca85e"
+        },
+        {
+          "name": "__inactiveHeight",
+          "record": "0x9b2acc0",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "__containerLayoutIdentifier",
+          "record": "0x9b2accc",
+          "type_reference": "0x9454690"
+        },
+        {
+          "name": "__isInputFocused",
+          "record": "0x9b2acd8",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__inputOverlayTrailingButtonsWidth",
+          "record": "0x9b2ace4",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "__lastIdleTrailingButtonsWidth",
+          "record": "0x9b2acf0",
+          "type_reference": "0x8bda7e0"
+        },
+        {
+          "name": "__composerKeystrokeTracker",
+          "record": "0x9b2acfc",
+          "type_reference": "0x922fe06"
+        },
+        {
+          "name": "__interactionHandlers",
+          "record": "0x9b2ad08",
+          "type_reference": "0x922fe22"
+        },
+        {
+          "name": "__keyboardCommandCoordinator",
+          "record": "0x9b2ad14",
+          "type_reference": "0x922fe3e"
+        },
+        {
+          "name": "_colorScheme",
+          "record": "0x9b2ad20",
+          "type_reference": "0x9002fa0"
+        },
+        {
+          "name": "_traitCollection",
+          "record": "0x9b2ad2c",
+          "type_reference": "0x90b54e0"
+        },
+        {
+          "name": "_displayScale",
+          "record": "0x9b2ad38",
+          "type_reference": "0x8d1b570"
+        },
+        {
+          "name": "_svgLoader",
+          "record": "0x9b2ad44",
+          "type_reference": "0x92708c0"
+        },
+        {
+          "name": "_layoutDirection",
+          "record": "0x9b2ad50",
+          "type_reference": "0x9120260"
+        },
+        {
+          "name": "_inputViewStyle",
+          "record": "0x9b2ad5c",
+          "type_reference": "0x8d0bfd4"
+        },
+        {
+          "name": "_isVerticallyCompact",
+          "record": "0x9b2ad68",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "_reducesMotion",
+          "record": "0x9b2ad74",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "_tracksCaretPosition",
+          "record": "0x9b2ad80",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "composerHost",
+          "record": "0x9b2ad8c",
+          "type_reference": "0x922fe50"
+        },
+        {
+          "name": "fileUploadViewModel",
+          "record": "0x9b2ad98",
+          "type_reference": "0x8fc9180"
+        },
+        {
+          "name": "voiceViewModel",
+          "record": "0x9b2ada4",
+          "type_reference": "0x922fe58"
+        },
+        {
+          "name": "onHeightChange",
+          "record": "0x9b2adb0",
+          "type_reference": "0x900a354"
+        },
+        {
+          "name": "aboveInputBarContent",
+          "record": "0x9b2adbc",
+          "type_reference": "0x8bcacc0"
+        },
+        {
+          "name": "hideModeIndicators",
+          "record": "0x9b2adc8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "usesEditMessageOverlay",
+          "record": "0x9b2add4",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hapticEngine",
+          "record": "0x9b2ade0",
+          "type_reference": "0x9046528"
+        },
+        {
+          "name": "needsImmediateFirstResponder",
+          "record": "0x9b2adec",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "dismissKeyboardAfterSubmission",
+          "record": "0x9b2adf8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "overridePlaceholderText",
+          "record": "0x9b2ae04",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "attachmentsButtonAction",
+          "record": "0x9b2ae10",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "leadingButtonsOverride",
+          "record": "0x9b2ae1c",
+          "type_reference": "0x8bcacc0"
+        },
+        {
+          "name": "sendButtonIconOverride",
+          "record": "0x9b2ae28",
+          "type_reference": "0x922fe64"
+        },
+        {
+          "name": "supplementalAddSheetItems",
+          "record": "0x9b2ae34",
+          "type_reference": "0x922c8a4"
+        },
+        {
+          "name": "allowsAttachments",
+          "record": "0x9b2ae40",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isAvatarEnabled",
+          "record": "0x9b2ae4c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isInlineVoiceModeConfigured",
+          "record": "0x9b2ae58",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "allowsTopAccessory",
+          "record": "0x9b2ae64",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hidesVoiceButton",
+          "record": "0x9b2ae70",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "cancelsStaleDelayedFocusRequests",
+          "record": "0x9b2ae7c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "presentedContentCoordinator",
+          "record": "0x9b2ae88",
+          "type_reference": "0x8fc2270"
+        },
+        {
+          "name": "askUserInputPresentation",
+          "record": "0x9b2ae94",
+          "type_reference": "0x922c5b0"
+        },
+        {
+          "name": "structuredInputPresentation",
+          "record": "0x9b2aea0",
+          "type_reference": "0x922c5b8"
+        },
+        {
+          "name": "browserAuthPresentation",
+          "record": "0x9b2aeac",
+          "type_reference": "0x903867c"
+        },
+        {
+          "name": "conversationNudgePresentation",
+          "record": "0x9b2aeb8",
+          "type_reference": "0x8fdccf6"
+        },
+        {
+          "name": "providedCommerceConfiguration",
+          "record": "0x9b2aec4",
+          "type_reference": "0x922c5ce"
+        },
+        {
+          "name": "customTopComposerComponent",
+          "record": "0x9b2aed0",
+          "type_reference": "0x8bcacc0"
+        },
+        {
+          "name": "emptyInputBackspaceHandler",
+          "record": "0x9b2aedc",
+          "type_reference": "0x8fcfd44"
+        },
+        {
+          "name": "footerDisclaimerMarkdown",
+          "record": "0x9b2aee8",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "allowsTextInputFocus",
+          "record": "0x9b2aef4",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "supplementalFloatingBanner",
+          "record": "0x9b2af00",
+          "type_reference": "0x8c1e592"
+        },
+        {
+          "name": "attachmentsTrayFooter",
+          "record": "0x9b2af0c",
+          "type_reference": "0x8bcacc0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x811d610",
+          "flags": "0x20000",
+          "section_entry": "0x9d05a38"
+        },
+        {
+          "descriptor": "0x811d62c",
+          "flags": "0x30000",
+          "section_entry": "0x9d05a3c"
+        }
+      ]
+    },
+    {
+      "name": "MessageInputContainerContentView",
+      "descriptor": "0x9671990",
+      "type_section_entry": "0x9d498d0",
+      "accessor": "0x4e3c37c",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x9b2fdb0",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "messageInput",
+          "record": "0x9b2fdbc",
+          "type_reference": "0x8d0ad40"
+        },
+        {
+          "name": "aboveInputBarContent",
+          "record": "0x9b2fdc8",
+          "type_reference": "0x8bcacc0"
+        },
+        {
+          "name": "inputTopBanner",
+          "record": "0x9b2fdd4",
+          "type_reference": "0x922c7bc"
+        },
+        {
+          "name": "supplementalFloatingBanner",
+          "record": "0x9b2fde0",
+          "type_reference": "0x8c1e592"
+        },
+        {
+          "name": "isSummaryHandoffInProgress",
+          "record": "0x9b2fdec",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isWhisperActive",
+          "record": "0x9b2fdf8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isKeyboardVisible",
+          "record": "0x9b2fe04",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isInputFocused",
+          "record": "0x9b2fe10",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "autocompleteViewModel",
+          "record": "0x9b2fe1c",
+          "type_reference": "0x8c747f0"
+        },
+        {
+          "name": "useLegacySystemHintChipRow",
+          "record": "0x9b2fe28",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "composerTakeoverPresentation",
+          "record": "0x9b2fe34",
+          "type_reference": "0x9231d48"
+        },
+        {
+          "name": "conversationNudgePresentation",
+          "record": "0x9b2fe40",
+          "type_reference": "0x8fdccf6"
+        },
+        {
+          "name": "footerDisclaimerMarkdown",
+          "record": "0x9b2fe4c",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "sketchSuggestions",
+          "record": "0x9b2fe58",
+          "type_reference": "0x8ffe32c"
+        },
+        {
+          "name": "sketchSuggestionActionHandler",
+          "record": "0x9b2fe64",
+          "type_reference": "0x9231d50"
+        },
+        {
+          "name": "onAutocompletePickerPresentationActiveChange",
+          "record": "0x9b2fe70",
+          "type_reference": "0x8ec13ac"
+        },
+        {
+          "name": "onHeightChange",
+          "record": "0x9b2fe7c",
+          "type_reference": "0x900a354"
+        },
+        {
+          "name": "_inputViewStyle",
+          "record": "0x9b2fe88",
+          "type_reference": "0x8d0bfd4"
+        },
+        {
+          "name": "_conversationNavigationBarType",
+          "record": "0x9b2fe94",
+          "type_reference": "0x8c21670"
+        },
+        {
+          "name": "_deviceSafeAreaInsets",
+          "record": "0x9b2fea0",
+          "type_reference": "0x92c4428"
+        },
+        {
+          "name": "_navigationBarButtonMinSize",
+          "record": "0x9b2feac",
+          "type_reference": "0x8d1b570"
+        },
+        {
+          "name": "_isHorizontallyRegular",
+          "record": "0x9b2feb8",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "__infoBannerHeight",
+          "record": "0x9b2fec4",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "__messageInputMinY",
+          "record": "0x9b2fed0",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "nativeNavigationBarToAutocompletePickerSpacing",
+          "record": "0x9b2fedc",
+          "type_reference": "0x8c865b0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x8122038",
+          "flags": "0x30000",
+          "section_entry": "0x9d05b38"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

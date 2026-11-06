@@ -1,0 +1,70 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0xf87cc",
+    "end_exclusive": "0xf8848",
+    "sha256": "90fda90f559b8d66e325a9b1a834387bd5dd44112957ab11c7773f3212a05730"
+  },
+  "linker_function_starts_in_window": [
+    "0xf87cc"
+  ],
+  "next_linker_function_start": "0xf8848",
+  "direct_calls": [
+    {
+      "site": "0xf87f8",
+      "target": "0x7c54328",
+      "imported_symbol": "_swift_bridgeObjectRetain"
+    },
+    {
+      "site": "0xf8800",
+      "target": "0x7c4d890",
+      "imported_symbol": "_$sSS8IteratorV4nextSJSgyF",
+      "chained_binding": {
+        "slot": "0xaad6878",
+        "symbol": "_$sSS8IteratorV4nextSJSgyF",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11202,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0xf8810",
+      "target": "0x7c4d308",
+      "imported_symbol": "_$sSJ12isWhitespaceSbvg",
+      "chained_binding": {
+        "slot": "0xaad64e8",
+        "symbol": "_$sSJ12isWhitespaceSbvg",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11089,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0xf881c",
+      "target": "0x7c54310",
+      "imported_symbol": "_swift_bridgeObjectRelease"
+    },
+    {
+      "site": "0xf8830",
+      "target": "0x7c54310",
+      "imported_symbol": "_swift_bridgeObjectRelease"
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

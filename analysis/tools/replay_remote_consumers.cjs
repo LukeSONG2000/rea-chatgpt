@@ -1,0 +1,27 @@
+'use strict';
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const parser=require('/Users/lukesong/.nvm/versions/node/v24.14.1/lib/node_modules/rea-agents/node_modules/@babel/parser');
+const root=path.resolve(__dirname,'../..'),out=process.argv[2];if(!out||fs.existsSync(out))throw Error('New report required');
+const file='recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js',source=fs.readFileSync(path.join(root,file),'utf8'),ast=parser.parse(source,{sourceType:'module'}),functions={};let delta;
+function walk(n){if(!n||typeof n!=='object')return;if(n.type==='FunctionDeclaration'&&['xti','Sti','Wqt','oqn'].includes(n.id?.name))functions[n.id.name]=n;if(n.type==='SwitchCase'&&n.test?.type==='TemplateLiteral'&&n.test.quasis?.[0]?.value?.cooked==='item/agentMessage/delta')delta??=n;for(const [k,v]of Object.entries(n)){if(['loc','extra','start','end'].includes(k))continue;if(Array.isArray(v))v.forEach(walk);else if(v&&typeof v==='object')walk(v)}}walk(ast);assert.ok(delta);assert.equal(Object.keys(functions).length,4);
+const recorded=[],context=vm.createContext({cs:x=>x});
+vm.runInContext('function receive(e){switch(e.method){'+source.slice(delta.start,delta.end)+'}}',context,{timeout:100});
+const {createProjection}=require('../../implementation/desktop/native/remote-event-projection.cjs'),projection=createProjection('host-a','thread-a');let notifications=[];
+for(const [index,e]of [{kind:'submitted',prompt:'REA synthetic consumer'},{kind:'accepted'},{kind:'delta',text:'streamed content'},{kind:'completed'}].entries())notifications.push(...projection.apply({host:'host-a',thread:'thread-a',request:'r',sequence:index+1,...e}));
+const notification=notifications.find(n=>n.method==='item/agentMessage/delta');context.receive.call({getTextDeltaQueue:()=>({enqueue:x=>recorded.push(x)})},notification);
+assert.equal(recorded.length,1);assert.equal(recorded[0].conversationId,'thread-a');assert.equal(recorded[0].turnId,notification.params.turnId);assert.equal(recorded[0].itemId,notification.params.itemId);assert.equal(recorded[0].delta,'streamed content');assert.equal(recorded[0].target.type,'agentMessage');
+const values=new Map(),errors=[];let listener,resolveInitial,disposes=0;
+const lease={onRpcBroken(){},[Symbol.dispose](){disposes++}},subscription=Promise.resolve(lease);subscription.onRpcBroken=()=>{};subscription[Symbol.dispose]=()=>{disposes++};
+const scope={get:(key,host)=>values.get(key+host),set:(key,host,value)=>values.set(key+host,value)};
+const manager={subscribe(spec){listener=spec.listener;assert.equal(spec.methods,'remoteControl/status/changed');assert.equal(spec.key.hostId,'host-a');return subscription},sendRequest(method){assert.equal(method,'remoteControl/status/read');return new Promise(r=>resolveInitial=r)}};
+const status=vm.createContext({AbortController,Symbol,RS:()=>false,wV:'status',Oti:'flag',va:p=>p,Lo:{error:(...args)=>errors.push(args)}});
+vm.runInContext(['xti','Sti'].map(n=>source.slice(functions[n].start,functions[n].end)).join('\n'),status,{timeout:100});
+(async()=>{
+ const stop=status.xti(scope,'host-a',manager,()=>true);
+ listener({params:{status:'disabled'}});resolveInitial({status:'connected'});await Promise.resolve();await Promise.resolve();
+ assert.equal(values.get('statushost-a').status,'disabled');
+ listener({params:{status:'connecting'}});assert.equal(values.get('statushost-a').status,'connecting');
+ stop();listener({params:{status:'connected'}});await Promise.resolve();assert.equal(values.get('statushost-a').status,'connecting');assert.ok(disposes>=1);assert.equal(errors.length,0);
+ const evidence=[...Object.entries(functions).map(([symbol,n])=>({symbol,node:n})),{symbol:'item/agentMessage/delta consumer',node:delta}].map(({symbol,node:n})=>({symbol,path:file,sha256:crypto.createHash('sha256').update(source).digest('hex'),byteOffset:Buffer.byteLength(source.slice(0,n.start)),source:source.slice(n.start,n.end)}));
+ fs.writeFileSync(out,JSON.stringify({status:'passed',authority:'exact official consumer fragments plus independent projection; not complete manager/UI equivalence',evidence,checks:['projected text delta accepted by original queue consumer with exact thread/turn/item identities','status notification wins over late initial status/read response','disposed status subscription ignores late notifications'],correctedHelperRoles:{Dh:'oqn: adaptive title callback, not connection-state initializer',ph:'Wqt: durable-host cached summaries; excluded for non-durable hosts',Zp:'xti: remoteControl status read plus changed notification'},stubs:['cs conversation conversion is identity stub','text delta queue records delivery only; no parser/render commit','RS false selects non-durable branch; scope/RPC handles synthetic','No approval Goal or thread lifecycle rendering executed']},null,2),{flag:'wx'});console.log('Original consumer replays passed');
+})().catch(e=>{console.error(e);process.exitCode=1});

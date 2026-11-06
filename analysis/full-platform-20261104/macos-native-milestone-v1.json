@@ -1,0 +1,96 @@
+{
+  "status": "partial",
+  "restart_check": "passed",
+  "evidence": [
+    "macos-restart-write-v1.json",
+    "macos-restart-read-v1.json"
+  ],
+  "write": {
+    "mode": "write",
+    "expected": "Process restart offline draft",
+    "actual": "Process restart offline draft",
+    "host": {
+      "pid": 2347,
+      "atoms": {
+        "local-document-identity": {
+          "accountId": "offline-fixture-account",
+          "userId": "offline-fixture-user",
+          "accountUserId": "offline-fixture-account-user",
+          "requestUserId": "offline-fixture-user"
+        },
+        "plugin-oauth-install-reconciliation-by-state-v1": {},
+        "flat-project-sidebar-preferences-v1": {
+          "chatSortMode": "updated_at",
+          "initialized": true,
+          "mode": "project",
+          "projectSortMode": "updated_at"
+        },
+        "unified-floating-composer-dock-position-v1": "bottom-center",
+        "chatgpt-conversation-prompt-drafts-v2": {
+          "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+            "prompt": "Process restart offline draft",
+            "usedDictation": false,
+            "localRecordingIds": null
+          }
+        }
+      },
+      "storage": {
+        "mode": "isolated-disk",
+        "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/.local-state/restart-v1/offline-atoms.json",
+        "format": "rea-offline-atoms-v1"
+      }
+    },
+    "status": "passed"
+  },
+  "read": {
+    "mode": "read",
+    "expected": "Process restart offline draft",
+    "actual": "Process restart offline draft",
+    "host": {
+      "pid": 5451,
+      "atoms": {
+        "local-document-identity": {
+          "accountId": "offline-fixture-account",
+          "userId": "offline-fixture-user",
+          "accountUserId": "offline-fixture-account-user",
+          "requestUserId": "offline-fixture-user"
+        },
+        "plugin-oauth-install-reconciliation-by-state-v1": {},
+        "flat-project-sidebar-preferences-v1": {
+          "chatSortMode": "updated_at",
+          "initialized": true,
+          "mode": "project",
+          "projectSortMode": "updated_at"
+        },
+        "unified-floating-composer-dock-position-v1": "bottom-center",
+        "chatgpt-conversation-prompt-drafts-v2": {
+          "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+            "prompt": "Process restart offline draft",
+            "usedDictation": false,
+            "localRecordingIds": null
+          }
+        }
+      },
+      "storage": {
+        "mode": "isolated-disk",
+        "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/.local-state/restart-v1/offline-atoms.json",
+        "format": "rea-offline-atoms-v1"
+      }
+    },
+    "status": "passed"
+  },
+  "profile_footer": [
+    "OOffline fixture"
+  ],
+  "page_errors": [],
+  "limitations": [
+    "Independent fixture disk store, not recovered official storage implementation",
+    "Normal sequential restart only; crash/concurrent writers not tested",
+    "Full desktop UI and native interaction parity not accepted"
+  ],
+  "sources": {
+    "implementation/desktop/run.cjs": "9b442eff47ff56637504945cb5f6e230616e6c9a4904ade6b2e3f1376098ab2f",
+    "analysis/tools/desktop-offline-store.cjs": "dce819df3e4aec1edf4d92ac3fbd6e78014fc71e65b54d0cf0dcd33e3e421b08",
+    "analysis/tools/desktop-native-host.cjs": "6c014a68f34515dd7888d5506287715faa58d5f9dd4c594f7332282a4907a4b4"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "status": "partial",
+  "artifact": "Codex 26.1021.31345 ChatGPT mode",
+  "surface": "macOS independent Electron host",
+  "evidenceType": "controlled original-renderer fragment replay with independent synthetic services",
+  "profile": "v126-native-chat-r4; fresh native profile, no browser history seed",
+  "accepted": [
+    "Native original create and project composer send",
+    "Complete then Stop preserves project identity and earlier reply",
+    "Matching stream cancellation, no late overwrite, unrelated histories unchanged",
+    "Project membership selection persists full route",
+    "Different process restores native-created project and complete/cancelled history",
+    "No terminal message mutation or replay duplication",
+    "Restored project route, both prompts, completed code and idle composer"
+  ],
+  "writePID": 18791,
+  "readPID": 18890,
+  "identity": {
+    "projectId": "g-p-rea-local-53b4754b-ef17-473d-be86-f5994aea0fb1",
+    "conversationId": "offline-local-5d7c4908-416d-41dc-b8d8-fb04abbdfc89"
+  },
+  "fix": "Renderer keeps transient client-new-thread owner and local-chatgpt session after path adopts committed conversation ID. Validate stored project membership and recognized transient identity instead of requiring owner ID equality. Uncommitted and foreign project paths still rejected.",
+  "cancelObservation": [
+    {
+      "operation": "fixture.stream-cancel",
+      "source": "stop_conversation",
+      "streamId": "54ee5f4b-1d93-4fa4-8348-d229afa67fa8",
+      "conversationId": "offline-local-5d7c4908-416d-41dc-b8d8-fb04abbdfc89"
+    },
+    {
+      "operation": "fixture.stop",
+      "conversationId": "offline-local-5d7c4908-416d-41dc-b8d8-fb04abbdfc89",
+      "stopped": [
+        "54ee5f4b-1d93-4fa4-8348-d229afa67fa8"
+      ]
+    }
+  ],
+  "regressions": [
+    "test_desktop_project_owner.cjs passed",
+    "test_desktop_project_messages.mjs passed including parallel project cancellation isolation and no late disk overwrite",
+    "test_desktop_route_store.cjs passed"
+  ],
+  "reports": [
+    "desktop-native-v126-write.json",
+    "desktop-native-v126-write-r2.json",
+    "desktop-native-v126-write-r3.json",
+    "desktop-native-v126-write-r4.json",
+    "desktop-native-v126-read.json"
+  ],
+  "failedAttempts": [
+    "Initial check incorrectly required httpFetch.cancel; Stop can use /stop_conversation",
+    "r2/r3 exposed rejected committed route due to transient renderer owner",
+    "r2/r3 stream-cancel source label was provisional and incorrectly hardcoded; r4 separates stop_conversation, httpFetch.cancel and reader-cancel"
+  ],
+  "screenshots": [
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/official-root-probe-run-1793826671744-18776-synthetic-account.png",
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/official-root-probe-run-1793826703933-18887-synthetic-account.png"
+  ],
+  "pageErrors": {
+    "write": [],
+    "read": []
+  },
+  "limits": [
+    "Deterministic fixture only; no Zhipu provider cancellation or official service behavior proof",
+    "Optional services remain unsupported; overall probe mount-blocked label retained",
+    "System window capture failed; renderer screenshots available",
+    "Project settings edit, transient draft restart, pending branch coexistence and platform interactions not accepted here",
+    "Browser bridge still needs equivalent transient-owner path fix and own acceptance",
+    "Windows, mobile, official Web and Remote not covered by this batch"
+  ],
+  "sources": {
+    "analysis/tools/desktop-native-project-chat-check.cjs": "e09ef26fd7f2ff7b927005267a66b5b345b93e950b4b8bc8e3159f14b323cf5b",
+    "analysis/tools/desktop-project-owner.cjs": "c0c91aedecb0c4e048185679a0c34d4d8495a57e94ef88d7285283fbce2f95ab",
+    "analysis/tools/desktop-native-host.cjs": "66c0502bb0eecec543fcdb1bd29163ecf5026988152370cff6c56c780436cafc",
+    "analysis/tools/desktop-fixture-services.mjs": "12d9f6532f6b920bbc20b888ac1a48b73c4fdc61ea5cc7ef1dcbfc6b9e160f04",
+    "analysis/tools/probe_desktop_root_mount.cjs": "c0ed2df6b2e96cf36473feecc19e66b991cb5e362f8b94a0cb3e6cc66f23b1f4",
+    "implementation/desktop/run.cjs": "e81f8235f1e2ff4c9203bbfe0469da34513f9da7f4c136d419b09c753e6a11ae",
+    "analysis/tools/test_desktop_project_owner.cjs": "e416cf20283c59c9b8cf22091a8e57a07ba762a0184f790cc167bb9149d83f06",
+    "analysis/tools/test_desktop_project_messages.mjs": "d7846c978c338452fe00cffcca6245deb19a60d555149a956c8675a2fc440201"
+  }
+}

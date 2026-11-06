@@ -1,0 +1,1 @@
+"use strict";var e;Object.defineProperty(exports,"__esModule",{value:!0}),exports.JSONPatchOperationType=void 0,function(e){e[e.Append=0]="Append",e[e.Insert=1]="Insert",e[e.Remove=2]="Remove",e[e.Replace=3]="Replace",e[e.Truncate=4]="Truncate"}(e||(exports.JSONPatchOperationType=e={}));

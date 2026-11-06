@@ -1,0 +1,40 @@
+{
+  "status": "partial",
+  "delivery": "Standalone independent Electron source entry; repository resources still required",
+  "artifact": "Codex 26.1021.31345 macOS/Windows renderer resources",
+  "executionPlatform": "macOS",
+  "accepted": [
+    "Main/preload/hidden fixture window/MessagePort/original renderer boot without Playwright orchestration",
+    "Original composer synthetic Send writes complete durable history",
+    "Different native process restores exact history",
+    "Primary window cannot invoke hidden fixture storage capability",
+    "Profile platform/version/ASAR digest binding rejects cross-artifact reuse",
+    "Windows resources mount using same independent entry on macOS"
+  ],
+  "reports": [
+    "native-standalone-v132-r2.json",
+    "native-standalone-v132-final.json",
+    "native-windows-fragment-v132.json",
+    "native-standalone-v132-interaction.json"
+  ],
+  "firstFailure": "Electron wrapper prepends --no-sandbox, so fixed argv slice included entry filename. Entry now locates its own script argument. Startup errors exit explicitly.",
+  "ipcBoundary": "Only the isolated fixture window main frame at offline.invalid receives storage/clipboard capability; primary receives module bootstrap only",
+  "resourceBoundary": "Selected original JS/CSS loaded only after manifest SHA-256 check; external renderer requests blocked, macOS OS network-denial wrapper retained",
+  "limitations": [
+    "Windows native launcher, distributable and OS verification missing",
+    "Zhipu and pending branch capture adapters not ported to new launcher",
+    "Fonts/media outside current allowlist and some host service messages unsupported",
+    "Smoke mounting does not prove full page/visual parity",
+    "Early smoke screenshot still has a loading spinner; no full loading-state acceptance"
+  ],
+  "nextAction": "Produce a self-contained native application payload and platform-specific launch/package boundary, retaining original verified resource identity",
+  "sources": {
+    "implementation/desktop/native/main.cjs": "3382548a17cfda249632f2bb113babc92bcba985b60778cff83662b96a3e5de3",
+    "implementation/desktop/native/renderer.mjs": "96163a31d2bd9a4b4899989eeab86c29bfa5bcc4137422e43d6a08b93ce6bf66",
+    "implementation/desktop/native/fixture.mjs": "3bef3944111964de72c0c0cc58299ef25fa021b5ec894efdd76aa28144eeb25d",
+    "implementation/desktop/native/run.cjs": "227b59538a7b15572c75a3d8ee061c757bcb6aa3762a05724ff2d486c0a9a072",
+    "implementation/desktop/native/test-interaction.cjs": "e6170db33fbc41ff75f9e9902b2c1de06ca10aa99911cd1247fa5390fa2247a4",
+    "analysis/tools/desktop-native-host.cjs": "9099133911fd342cf3aec95edd4909629950b7054852db8f837d1f5ec174ef1b",
+    "analysis/tools/desktop-artifact.cjs": "8a94ae85713087925327d8eb2d14290e89ae6de9b32eb4490f0a60bb06e110cc"
+  }
+}

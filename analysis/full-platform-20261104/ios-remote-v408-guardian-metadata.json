@@ -1,0 +1,65 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "GuardianApprovalReview",
+      "descriptor": "0x95f37f0",
+      "type_section_entry": "0x9d3f9a0",
+      "accessor": "0x2dfada8",
+      "fields": [
+        {
+          "name": "rationale",
+          "record": "0x9a8a728",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "riskLevel",
+          "record": "0x9a8a734",
+          "type_reference": "0x8fa370e"
+        },
+        {
+          "name": "status",
+          "record": "0x9a8a740",
+          "type_reference": "0x8fa371e"
+        },
+        {
+          "name": "userAuthorization",
+          "record": "0x9a8a74c",
+          "type_reference": "0x8fa372c"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7f1a1f8",
+          "flags": "0x30000",
+          "section_entry": "0x9cee098"
+        },
+        {
+          "descriptor": "0x7f1a220",
+          "flags": "0x30000",
+          "section_entry": "0x9cee09c"
+        },
+        {
+          "descriptor": "0x7f1a248",
+          "flags": "0x30000",
+          "section_entry": "0x9cee0a0"
+        },
+        {
+          "descriptor": "0x7f1a288",
+          "flags": "0x30000",
+          "section_entry": "0x9cee0a4"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "MarkdownTextBlock",
+      "descriptor": "0x96fe004",
+      "type_section_entry": "0x9d5416c",
+      "accessor": "0x698e1fc",
+      "fields": [
+        {
+          "name": "_isMeasuringLayout",
+          "record": "0x9bdae38",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "_openURL",
+          "record": "0x9bdae44",
+          "type_reference": "0x8d1a160"
+        },
+        {
+          "name": "sizeAffectingProperties",
+          "record": "0x9bdae50",
+          "type_reference": "0x93e67fe"
+        },
+        {
+          "name": "renderingConfiguration",
+          "record": "0x9bdae5c",
+          "type_reference": "0x904c730"
+        },
+        {
+          "name": "fadeAnimatorConfiguration",
+          "record": "0x9bdae68",
+          "type_reference": "0x907ac60"
+        },
+        {
+          "name": "fadeAnimationState",
+          "record": "0x9bdae74",
+          "type_reference": "0x904de96"
+        },
+        {
+          "name": "uniqueIdentifier",
+          "record": "0x9bdae80",
+          "type_reference": "0x90b72b0"
+        },
+        {
+          "name": "streaming",
+          "record": "0x9bdae8c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hapticFeedback",
+          "record": "0x9bdae98",
+          "type_reference": "0x93e62d4"
+        },
+        {
+          "name": "selectionHandlers",
+          "record": "0x9bdaea4",
+          "type_reference": "0x906646e"
+        },
+        {
+          "name": "linkHandlers",
+          "record": "0x9bdaeb0",
+          "type_reference": "0x8e39170"
+        },
+        {
+          "name": "textTapHandler",
+          "record": "0x9bdaebc",
+          "type_reference": "0x900a34c"
+        },
+        {
+          "name": "menus",
+          "record": "0x9bdaec8",
+          "type_reference": "0x93e5c28"
+        },
+        {
+          "name": "insertionRanges",
+          "record": "0x9bdaed4",
+          "type_reference": "0x93e680c"
+        },
+        {
+          "name": "selectAllTrigger",
+          "record": "0x9bdaee0",
+          "type_reference": "0x90b72b0"
+        },
+        {
+          "name": "activeHighlightIDs",
+          "record": "0x9bdaeec",
+          "type_reference": "0x904b890"
+        },
+        {
+          "name": "activeHighlightRendering",
+          "record": "0x9bdaef8",
+          "type_reference": "0x93e681a"
+        },
+        {
+          "name": "highlightFramesUpdatedHandler",
+          "record": "0x9bdaf04",
+          "type_reference": "0x93e6820"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x82e9384",
+          "flags": "0x30000",
+          "section_entry": "0x9d1b35c"
+        },
+        {
+          "descriptor": "0x82e940c",
+          "flags": "0x30000",
+          "section_entry": "0x9d1b360"
+        }
+      ]
+    }
+  ],
+  "missing": [
+    "MarkdownStaticTextView",
+    "MarkdownTextRenderingConfiguration"
+  ],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

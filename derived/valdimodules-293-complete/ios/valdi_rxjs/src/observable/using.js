@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.using=void 0;const e=require("../Observable"),r=require("./innerFrom"),s=require("./empty");function n(n,u){return new e.Observable(e=>{const i=n(),t=u(i);return(t?(0,r.innerFrom)(t):s.EMPTY).subscribe(e),()=>{i&&i.unsubscribe()}})}exports.using=n;

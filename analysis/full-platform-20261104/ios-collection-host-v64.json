@@ -1,0 +1,59 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "implementation": "independent-native-reconstruction",
+  "changes": [
+    "UICollectionView diffable list with UIHostingConfiguration",
+    "SwiftUI UIViewRepresentable wraps independent native content blocks",
+    "Stable message identity separated from content value to permit SwiftUI streaming updates"
+  ],
+  "official_evidence": [
+    "docs/full-platform/IOS-MESSAGE-HOSTING.md",
+    "docs/full-platform/IOS-NATIVE-MARKDOWN.md"
+  ],
+  "validation": {
+    "build": "passed",
+    "state_test_groups": 10,
+    "ui_runs": [
+      {
+        "summary": "analysis/full-platform-20261104/ios-collection-v64-ui-v1.summary.json",
+        "passed": 1,
+        "failed": 3,
+        "skipped": 0
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-collection-v64-ui-v2.summary.json",
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-collection-v64-ui-v3.summary.json",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      }
+    ],
+    "device": "dedicated iOS 27 simulator 71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "visual_review": "Synthetic streamed Markdown and tail screenshot inspected; no official visual comparison",
+    "failures_and_fixes": [
+      "v1: identity-only HostMessage equality prevented hosted SwiftUI content updates; fixed by separate stored content value",
+      "v2: offscreen recycled AX element frame query failed; test now checks existence and active send state, then verifies same status ID on return"
+    ]
+  },
+  "cleanup": {
+    "temporary_fixture_pairing_removed": true,
+    "owned_fixture_server_sigterm": true
+  },
+  "limits": [
+    "OAIMarkdown and official MessageRow not linked or restored",
+    "Existing packaged JS parser remains an independently projected content source",
+    "Flow layout, sizing, geometry and menus remain independent choices",
+    "No physical iPhone or official visual acceptance",
+    "No new Zhipu, Windows, Android, Web or Remote acceptance"
+  ],
+  "sources": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "20116283856f120e77218fad59aafcc5693b7bac723b2e5287b63d6117974e8f",
+    "implementation/ios/UITests/HostInteractionTests.swift": "743bfaea24097be594ebd64cc53afa0f5590baeee07fc5efee4491d101d8a784"
+  }
+}

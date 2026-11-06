@@ -1,0 +1,73 @@
+{
+  "status": "failed",
+  "replay": "root-native-v36.json",
+  "evidence": {
+    "first_bridge_messages": [
+      {
+        "direction": "to-view",
+        "message": {
+          "type": "codex-app-server-initialized",
+          "hostId": "local",
+          "transport": "stdio",
+          "appServerVersion": "0.164.0-alpha.11.1",
+          "installedCodexVersion": "0.164.0-alpha.11.1"
+        }
+      },
+      {
+        "direction": "from-view",
+        "message": {
+          "level": "info",
+          "message": "[statsig-refresh-diagnostics] React root render requested",
+          "tags": {
+            "safe": {
+              "windowType": "electron"
+            },
+            "sensitive": {}
+          },
+          "type": "log-message"
+        },
+        "status": "rejected"
+      },
+      {
+        "direction": "from-view",
+        "message": {
+          "type": "persisted-atom-sync-request"
+        },
+        "status": "handled"
+      },
+      {
+        "direction": "to-view",
+        "message": {
+          "type": "persisted-atom-sync",
+          "state": {},
+          "canWritePrimaryWindowTabPersistence": false
+        }
+      }
+    ],
+    "observations": [
+      {
+        "elapsed": 3089.699999999255,
+        "htmlLength": 9886,
+        "bodyText": ""
+      },
+      {
+        "elapsed": 4591,
+        "htmlLength": 9886,
+        "bodyText": ""
+      },
+      {
+        "elapsed": 8593.10000000149,
+        "htmlLength": 9886,
+        "bodyText": ""
+      },
+      {
+        "elapsed": 20594.800000000745,
+        "htmlLength": 9886,
+        "bodyText": ""
+      }
+    ],
+    "page_errors": []
+  },
+  "inference": "Init notification preceded renderer sync request and ready; gate remained loading despite conversation capability true",
+  "change_under_test": "Emit fixture initialization notification after renderer ready; explicit independent lifecycle policy, not recovered official service startup"
+}

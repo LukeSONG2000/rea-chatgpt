@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "pattern": "adjacent ADRP/ADD (no shifted ADD), B/BL; incomplete references",
+  "hits": [
+    {
+      "pc": "0x1a2891c",
+      "target": "0x88ba4b0",
+      "name": "codex_remote_thread_reconnecting_to_task_footer",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a28908",
+      "next_function_start": "0x1a28968"
+    },
+    {
+      "pc": "0x1a28980",
+      "target": "0x88ba500",
+      "name": "codex_remote_thread_reconnecting_footer",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a28968",
+      "next_function_start": "0x1a289ec"
+    }
+  ]
+}

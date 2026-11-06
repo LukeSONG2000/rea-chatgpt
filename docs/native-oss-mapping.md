@@ -1,5 +1,7 @@
 # ChatGPT Android 原生库 → 开源对应物映射
 
+> 2026-11-03 接管校正：本文保留历史研究过程，不是当前完成度证明。以 [当前状态](CURRENT-STATUS.md) 和 [问题清单](ISSUES.md) 为准。L3 仅表示上游版本定位，未证明下游补丁或二进制等价；旧分析输出需重新验证。
+
 来源：`recovered/android/native-libs/lib/arm64-v8a/`，共 11 个 .so。
 方法：`strings` 提取版本串 / JNI 符号 / crate 路径，配合 GitHub、Maven 与上游仓库核实。
 结论日期：2026-10-27。
@@ -29,4 +31,4 @@
 
 | 库 | 大小 | 状态 |
 |---|---|---|
-| libopenai_xplat_export.so | 7.4MB | OpenAI 私有代码。内部可见 Valdi（OpenAI 自研跨平台 UI 框架）与 cel（公共表达式语言 CEL 的运行时封装）符号；无公开仓库。已建立 Ghidra 伪代码工程，逆向分析走该工程，不在本映射范围内 |
+| libopenai_xplat_export.so | 7.4MB | OpenAI 私有代码。内部可见 Valdi 相关集成（不能将上游框架与此私有库等同）与 cel（公共表达式语言 CEL 的运行时封装）符号；无公开仓库。已建立 Ghidra 伪代码工程，逆向分析走该工程，不在本映射范围内 |

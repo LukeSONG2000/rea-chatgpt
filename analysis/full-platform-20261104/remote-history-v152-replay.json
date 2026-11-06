@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "authority": "independent history projection through exact original turn converter fragments",
+  "checks": [
+    "four terminal/active states preserve user and assistant text and stable identities",
+    "unknown turn times remain null",
+    "returned history mutation cannot alter projector",
+    "partial oldest-page marker prevents inferring opening user input",
+    "contextCompaction skipped when locating opening user message"
+  ],
+  "evidence": [
+    {
+      "symbol": "Ven",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2892836,
+      "source": "function Ven(e,{workspaceRoots:t=[],fallbackCwd:n=null,model:r=``,reasoningEffort:i=null,itemsPaginationByTurnId:a}={}){let o=e.thread.cwd||n||`/`,s=Js(t);return Hen({threadId:e.thread.id,turns:e.thread.turns,model:r,reasoningEffort:i,cwd:o,permissions:s,itemsPaginationByTurnId:a})}"
+    },
+    {
+      "symbol": "Hen",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2893119,
+      "source": "function Hen({threadId:e,turns:t,model:n,reasoningEffort:r,cwd:i,permissions:a,completedItemIdsByTurnId:o,itemsPaginationByTurnId:s}){return t.map(t=>{let c=s?.[t.id],l=t.items.find(e=>e.type!==`contextCompaction`),u=c?.oldestUserInput??(c?.hasLoadedOldest!==!1&&l?.type===`userMessage`?l.content:[]);return{params:{threadId:e,input:u,clientUserMessageId:c?.oldestUserInput==null&&c?.hasLoadedOldest!==!1&&l?.type===`userMessage`?l.clientId:c?.openingUserMessageClientId,toolOutput:c?.hasLoadedOldest!==!1&&l?.type===`functionCallOutput`?{name:l.name,namespace:l.namespace,output:l.output}:void 0,approvalPolicy:a.approvalPolicy,approvalsReviewer:a.approvalsReviewer,..._o(a),...a.activePermissionProfile==null?{}:{runtimeWorkspaceRoots:Hve(a)},model:n,cwd:i||null,effort:r,summary:`none`,personality:null,outputSchema:null,collaborationMode:null,attachments:IT(u)},permissionParamsSource:`inferred`,turnId:t.id,rootTurnId:t.rootTurnId,turnStartedAtMs:Gen(t.startedAt),durationMs:t.durationMs,finalAssistantStartedAtMs:Gen(t.completedAt),status:t.status,error:t.error,requiresMisalignmentReviewTarget:t.error?.misalignment?.reviewTarget!=null||void 0,diff:null,items:Uen(t.items),completedItemIds:o?.[t.id],itemsPagination:c}})}"
+    },
+    {
+      "symbol": "Uen",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2894347,
+      "source": "function Uen(e){return e.map(Wen)}"
+    },
+    {
+      "symbol": "Wen",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2894381,
+      "source": "function Wen(e){return e.type===`imageGeneration`?Ien(e):e.type===`collabAgentToolCall`?{...e,receiverThreads:e.receiverThreadIds.map(e=>({threadId:e,thread:null}))}:e}"
+    },
+    {
+      "symbol": "Gen",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2894549,
+      "source": "function Gen(e){return e==null||!Number.isFinite(e)?null:e*1e3}"
+    }
+  ],
+  "limits": [
+    "Permissions and attachment helpers stubbed; no actual permissions or attachment inference proven",
+    "Text-only synthetic events; no original full renderer or manager execution",
+    "No official client send ID fabricated",
+    "Turn timestamps unavailable in historical owner events",
+    "Snapshot/live merge and pagination RPC still unintegrated"
+  ]
+}

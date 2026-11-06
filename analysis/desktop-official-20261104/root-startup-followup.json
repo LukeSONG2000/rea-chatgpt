@@ -1,0 +1,23 @@
+{
+  "status": "mount-blocked",
+  "runs": [
+    "root-mount-v4.json",
+    "root-mount-v5.json",
+    "root-mount-v6.json"
+  ],
+  "evidence_type": "controlled-offline-original-renderer-replay",
+  "findings": [
+    "appInfo.get and getSystemInfo invoked over original RPC; app-info and os-info success",
+    "v5 auth context settled unauthenticated (requiresAuth true); no real identity provided",
+    "v6 config analytics/read-response became success with explicit synthetic local config",
+    "Subsequent DU effect calls missing remoteConnections.setRemoteControlEnabled; router catches TypeError",
+    "remote-hosted-pip-active-thread-changed also rejected; no native window implementation"
+  ],
+  "limits": [
+    "v6 top-level mount-observed-unverified label is insufficient: pageErrors and caught router errors make this blocked",
+    "Auth remount after router error can return loading; not proof of successful stable startup",
+    "Screenshot visually blank; no main UI acceptance",
+    "Runner status now accounts for console and page errors; this new classification has not yet been replayed"
+  ],
+  "next_action": "Implement source-bound remoteConnections gate-state sink and native PiP notification boundary, then rerun full root"
+}

@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-native-host-implementation",
+  "platform": "iOS 27 Simulator",
+  "changes": [
+    "Added dedicated live Dynamic Type test runner that restores original simulator setting",
+    "Added mixed markdown reply runtime font-change regression",
+    "Candidate fix invalidates row size cache and forces reconfiguration on content-size-category change",
+    "Candidate fix binds offscreen measurement and text/code/rich font construction to view traits"
+  ],
+  "validation": {
+    "status": "failed",
+    "latest_result": "ios-type-v108-r5.xcresult",
+    "latest_log": "ios-type-v108-r5.log",
+    "setting_report": "ios-type-v108-r5.font.json",
+    "failure": "Code block height did not satisfy > baseline+5 within 45 seconds; baseline 52 points. No font-layout acceptance claimed.",
+    "build": "succeeded as part of UI test",
+    "runtime_observations": [
+      "simctl setting changed from large to accessibility-extra-large, then restored to large",
+      "r3/r4 live screenshots show increased glyph sizes and clipped status text",
+      "First attempt failed code lookup because exact text ignored trailing newline; later attempts use stable identifier"
+    ],
+    "screenshots": [
+      "ios-type-v108-live.png",
+      "ios-type-v108-r4-live.png"
+    ],
+    "attempts": [
+      "ios-type-v108-before.xcresult",
+      "ios-type-v108-r2.xcresult",
+      "ios-type-v108-r3.xcresult",
+      "ios-type-v108-r4.xcresult",
+      "ios-type-v108-r5.xcresult"
+    ]
+  },
+  "limits": [
+    "Candidate implementation changes remain unaccepted for live typography",
+    "No proof that paragraph reading anchors survive font change",
+    "No physical iPhone or official visual parity",
+    "Current code-height test does not yet independently measure text intrinsic height, hosted block height and collection row geometry"
+  ],
+  "next_action": "Instrument intrinsic UITextView height, NativeMessageBlock fitting height, UIHostingConfiguration size and collection row frame before/after live font change; fix remaining stale sizing rather than weakening assertion",
+  "sources": [
+    {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "28e8cd9a294169ef57a4ff041a517d5bdae645c57cab297852053ecbb9920708"
+    },
+    {
+      "file": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "7c30e8d2af208d23aa671b461c7fae2aaf052afa92e8e278e3c3cfe0447013d9"
+    },
+    {
+      "file": "implementation/ios/test-dynamic-type.py",
+      "sha256": "4e10e81cd43c50a779ec3121dacbe06f8bf0585c34168344d5c5a6f89bd34929"
+    }
+  ]
+}

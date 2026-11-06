@@ -1,0 +1,39 @@
+{
+  "status": "partial",
+  "authority": "actual original manager/threadStore in packaged v155 renderer using synthetic local owner via native IPC",
+  "sources": [
+    {
+      "path": "analysis/tools/probe_original_remote_hydration.js",
+      "sha256": "9a33ee385f457ba9ed4303087f0d9af2ef93cb06ef50ffc15227ab0202c28847"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-hydration.cjs",
+      "sha256": "3420c60f469baa0526cf0e61f722d5b5cb9fb65da3c5f5423401a7de9871c922"
+    }
+  ],
+  "reports": [
+    "remote-hydration-v158-runtime.json",
+    "remote-hydration-v158-r2.json",
+    "remote-hydration-v158-r3.json",
+    "remote-hydration-v158-r4.json"
+  ],
+  "passed": [
+    "actual original threadStore canonical history loaded from owner",
+    "user prompt, assistant text and completed turn observed",
+    "original thread turnEntityKeys subscription and item subscription yield loaded content",
+    "explicit subscription cleanup and manager disposal",
+    "existing two-owner IPC and restart regression"
+  ],
+  "corrections": [
+    "added savedReadState.has with unknown value semantics",
+    "fixed probe argument: getLoadedConversationHistoryTurns expects history object, not thread ID"
+  ],
+  "limits": [
+    "completed text-only fixture history",
+    "not streamed onNotification reducer or RPC subscription lease round trip",
+    "in-memory read/storage adapters; only owner history durable",
+    "partial thread/read response omits broader metadata",
+    "original Remote UI/catalog not connected",
+    "no new runtime package or live model call"
+  ]
+}

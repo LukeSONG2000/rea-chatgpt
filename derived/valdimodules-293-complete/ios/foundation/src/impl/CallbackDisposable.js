@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});const e=require("./CallbackCancelable");class CallbackDisposable{constructor(l){this.cancelable=new e.default(l)}dispose(){this.cancelable.cancel()}}exports.default=CallbackDisposable;

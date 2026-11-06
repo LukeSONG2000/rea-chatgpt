@@ -1,0 +1,96 @@
+{
+  "status": "partial",
+  "replay": "root-native-v34.json",
+  "source_contract": "native-port-transfer-contract.json",
+  "tool_sha256": {
+    "analysis/tools/desktop-native-host.cjs": "36c65b66e11bc6cf0373c0dc18e8d82251918fa6301f640d27d03315a0e9e243",
+    "analysis/tools/desktop-native-preload.cjs": "3652980a6c23786d952b874924389ac67164ea844a116fb2758d9ef8a3cf5a6a",
+    "analysis/tools/desktop-fixture-services.mjs": "2ed9a313fc7c9f151837b3d3c6a30b66191657be921bf4f4655158973ce28204",
+    "analysis/tools/probe_desktop_root_mount.cjs": "2b8a45f5541b5893cf9d17fa9c98b3e8517f744029cf91f18fff26cdec4ec309"
+  },
+  "verified": {
+    "port_transfer": [
+      {
+        "status": "transferred",
+        "sourceWebContentsId": 1,
+        "targetWebContentsId": 2,
+        "portCount": 1
+      }
+    ],
+    "service_endpoint_connected": true,
+    "draft": {
+      "status": "passed",
+      "draft": "Offline draft test 123",
+      "sendDisabled": false,
+      "cleared": true
+    },
+    "window_lifecycle": {
+      "status": "passed",
+      "checks": [
+        {
+          "operation": "resize",
+          "requested": {
+            "width": 960,
+            "height": 640
+          },
+          "viewport": {
+            "width": 960,
+            "height": 640
+          },
+          "draft": "Window lifecycle offline draft",
+          "composer": {
+            "x": 389,
+            "y": 588,
+            "width": 514,
+            "height": 36
+          },
+          "passed": true
+        },
+        {
+          "operation": "resize",
+          "requested": {
+            "width": 1440,
+            "height": 900
+          },
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "draft": "Window lifecycle offline draft",
+          "composer": {
+            "x": 555,
+            "y": 848,
+            "width": 662,
+            "height": 36
+          },
+          "passed": true
+        },
+        {
+          "operation": "minimize-restore",
+          "minimized": true,
+          "restored": {
+            "minimized": false,
+            "visible": true
+          },
+          "draft": "Window lifecycle offline draft",
+          "passed": true
+        }
+      ],
+      "limits": [
+        "Programmatic native window API; traffic-light clicks and drag gestures not tested",
+        "No app termination, persistence or system resume tested"
+      ]
+    },
+    "page_errors": [],
+    "render_errors": [],
+    "native_screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/native-window-v34.png"
+  },
+  "limits": [
+    "Independent minimal preload adapter, not complete original preload",
+    "Main forwards port to isolated fixture renderer; official main service implementation not restored",
+    "Non-RPC electronBridge messages still use renderer-local synthetic handler",
+    "Unsupported background services retain mount-blocked overall status",
+    "No online services or send operation tested"
+  ],
+  "next": "Trace and restore electronBridge message-from-view/message-for-view dispatch through preload and main with explicit offline handlers"
+}

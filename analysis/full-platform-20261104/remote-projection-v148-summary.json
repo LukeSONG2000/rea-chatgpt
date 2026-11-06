@@ -1,0 +1,32 @@
+{
+  "status": "partial",
+  "authority": "independent projection plus controlled official consumer fragments",
+  "validation": [
+    "remote-projection-v148-unit-r2.json",
+    "remote-projection-v148-live-owner.json",
+    "remote-consumers-v148-replay.json"
+  ],
+  "ownerRegressionTests": 4,
+  "findings": [
+    "Dh is adaptive title callback, not connection initializer",
+    "ph is durable cache only",
+    "Zp reads/subscribes remoteControl status and guards late initial response",
+    "Owner now retains submitted synthetic prompt; older missing-prompt records unsupported",
+    "Projected delta passes exact original consumer into recording queue"
+  ],
+  "sourceSHA256": {
+    "implementation/remote/owner.py": "c0793efe79ae12d9d4399a8fc60b31c74a1a9d59d5abb8c67c48fc630b8af44c",
+    "implementation/desktop/native/remote-client.cjs": "4de757957f443aee0ca032d397958b33b8c3f70f3fdfa7154fe8a718dd5c5121",
+    "implementation/desktop/native/remote-event-projection.cjs": "3328e8b2a8f574ba3607b9c50bfaf1d3f6f031900b06620e057c12d26443e4a7",
+    "implementation/desktop/native/test-remote-event-projection.cjs": "c45f2032194b55b42078b281b2fedcada6de8b0f60267720ee9524ea8c9f9d94",
+    "analysis/tools/replay_remote_consumers.cjs": "d0701a2d8ab0d245babed0d77cd1dad5d86d4a70bc7a7756d762f0d849ef3c56"
+  },
+  "limits": [
+    "No full manager or official Remote UI wired",
+    "No new desktop package; latest assembled remains v146",
+    "No iPhone or Windows runtime acceptance",
+    "No live Zhipu call in v148",
+    "Turn/user-item construction is independent proposal; only delta consumer field handling executed",
+    "Approval Goal tool execution replay admission diff context remain incomplete"
+  ]
+}

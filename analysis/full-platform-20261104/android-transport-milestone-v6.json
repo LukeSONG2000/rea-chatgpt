@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "android",
+  "baseline": "1.2026.293 reference; independent host and independent rea-message-v1 contract",
+  "evidence_type": "independent-native-controlled-transport-runtime",
+  "runtime": "REA_ChatGPT_Offline Android 35 emulator",
+  "verified": [
+    "HTTP 401 rejected",
+    "HTTP 302 rejected without redirect",
+    "Wrong request identity rejected",
+    "Sequence gap rejected",
+    "Repeated accepted event rejected",
+    "Delta before accepted rejected",
+    "EOF without terminal fails",
+    "Terminal prevents trailing poison delta emission",
+    "String sequence rejected without numeric coercion",
+    "Malformed UTF-8 rejected without replacement rendering",
+    "Positive fixture send/completion, B/A/B isolation and local Stop freeze rerun passed"
+  ],
+  "regression": {
+    "before": "v1 reproduced string sequence coercion: accepted/completed instead of failed",
+    "after": "v2 passes all ten cases; strict integer checks and UTF-8 decoder applied"
+  },
+  "limitations": [
+    "No Android real Zhipu test",
+    "Generated turns remain memory-only; rotation/process recovery not accepted",
+    "Timeout and byte/line budget exhaustion not runtime tested",
+    "Account/conversation mismatches, fractional numeric fields and all pairing validation variants not independently covered",
+    "No server-cancel acknowledgement, physical-device or official visual fidelity acceptance",
+    "Android JSONObject remains permissive JSON syntax parser; this is not exhaustive schema validation"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/LocalHarness.kt": "c3cc195587de634e5a7d81ae191db9bae37a9633cdeee2b17ed41bda22c42c6c",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/HarnessTransportTest.kt": "4526b973ea2d5d707bef4b79faba4b2f3c4b08435b03c4e586cf6358eb1eab38",
+    "implementation/android/test-transport.py": "aeafb43686a3c1d262912c1d87eee2881ff3de180fb1d4cf7c5e9e2c460862d9",
+    "analysis/full-platform-20261104/android-transport-build-v2.log": "c2c80d9d4a927996a9642324fe1003180884345dcf497bdbb73c9efc9194fd4a",
+    "analysis/full-platform-20261104/android-transport-runtime-v1.json": "730160a05272f2925b262056ab48385e76c7d74d6d5335e76c8fcc63f3aa9fd3",
+    "analysis/full-platform-20261104/android-transport-runtime-v1/instrumentation.log": "91378b7162cdf11061c5ed2dbcdfaa426d3c970885117a331659962837010e1c",
+    "analysis/full-platform-20261104/android-transport-runtime-v2.json": "9b65c13fa810877bbf04d826639e2a3ab1296802128cc1ee2d7564609766cd31",
+    "analysis/full-platform-20261104/android-transport-runtime-v2/instrumentation.log": "3aa94490daf3766bd1f79237dd767642b58e719ac64e62d0e8be5eec3724a0f3",
+    "analysis/full-platform-20261104/android-harness-runtime-v5.json": "d9a2921d0aa822d0c55c10772446e79b5d88aad2dd4d826ea1673acd64260237",
+    "analysis/full-platform-20261104/android-harness-runtime-v5/instrumentation.log": "db7c4316965d89f6a213521a11031e6dd5fc6b2f05ffddf6480069f59e82bc91"
+  },
+  "next_action": "Persist scoped generated turns and test process restart, interrupted generation and account isolation"
+}

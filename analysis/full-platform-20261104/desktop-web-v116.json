@@ -1,0 +1,34 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "implementation": "Independent storage adapter, exact synthetic project keys and boolean values only",
+  "validation": {
+    "project": [
+      "UI expands empty synthetic project",
+      "exact boolean atom persisted",
+      "new document restores expansion",
+      "fresh browser context/process and recreated service restore expansion"
+    ],
+    "server_tests": "passed; true/false, invalid value/key and restart retention",
+    "store_regression": "passed",
+    "page_errors": []
+  },
+  "evidence": [
+    "desktop-web-v116-recovery.json",
+    "desktop-web-v116-recovery-r2.json"
+  ],
+  "failed_attempt": "First probe incorrectly selected HTML button elements instead of the original ARIA button rows; selector corrected and complete flow rerun",
+  "limitations": [
+    "One project expanded-state UI path accepted; no collapsed-state UI cold recovery yet",
+    "Only synthetic account/profile; no multi-account proof",
+    "Other unsupported atoms remain",
+    "Cold screenshot may precede route initialization; no route restoration acceptance from this test",
+    "Node orchestrator survives HTTP service recreation",
+    "Project detail/create/member-chat flows remain incomplete"
+  ],
+  "files": {
+    "analysis/tools/desktop-offline-store.cjs": "a5810e9ce26955f65364daa598090fb5dc002357d21975ec96a2e5e4c5f33c11",
+    "implementation/desktop-web/server.cjs": "f49941835668daece4365d9b0d69e5ae145f6feee3cb45850a75eaa52beb6562",
+    "implementation/desktop-web/probe.cjs": "470e1601fe4b3b12b50d2a4d86e136d3d8878643370b06f0f9a7bb8862529d5b"
+  }
+}

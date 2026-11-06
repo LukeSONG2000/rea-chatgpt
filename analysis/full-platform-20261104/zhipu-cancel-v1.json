@@ -1,0 +1,281 @@
+{
+  "schema": "rea-provider-probe-v1",
+  "provider": "Zhipu GLM",
+  "model": "glm-5.3-flash",
+  "host": "open.bigmodel.cn",
+  "mode": "cancel",
+  "status": "client_cancelled",
+  "events": [
+    {
+      "type": "response.created",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "response.in_progress",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "response.output_item.added",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "response.content_part.added",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1658
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1689
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1689
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1689
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1689
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1689
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1813
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1813
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1813
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1813
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1813
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1883
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1885
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1885
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1885
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1885
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 1885
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2153
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2153
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2154
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2213
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2213
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2304
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2305
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2305
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2305
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2321
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2321
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2473
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2473
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2476
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2476
+    },
+    {
+      "type": "unknown",
+      "elapsed_ms": 2476
+    },
+    {
+      "type": "response.content_part.done",
+      "elapsed_ms": 2476
+    },
+    {
+      "type": "response.output_item.done",
+      "elapsed_ms": 2476
+    },
+    {
+      "type": "response.output_item.added",
+      "elapsed_ms": 2476
+    },
+    {
+      "type": "response.content_part.added",
+      "elapsed_ms": 2476
+    },
+    {
+      "type": "response.output_text.delta",
+      "elapsed_ms": 2476
+    }
+  ],
+  "synthetic_only": true,
+  "official_service": false,
+  "limitations": [
+    "not a UI integration test",
+    "client close does not prove server cancellation"
+  ],
+  "http_status": 200,
+  "content_type": "text/event-stream",
+  "elapsed_ms": 2476,
+  "output_characters": 1,
+  "output_sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+}

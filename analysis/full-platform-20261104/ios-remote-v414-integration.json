@@ -1,0 +1,177 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Restore message approval feedback input, deny/send selection and scoped callbacks inside the Remote task-thread path.",
+  "official_observations": [
+    {
+      "source": "banner builder0x1a1d31c, call0x1a1dbc4",
+      "conclusion": "Ordinary branch builds feedback row0x1a1efc4 after actions. Full MCP/form visibility is outside this slice."
+    },
+    {
+      "source": "0x1a1fa98 ->0x1d84bb8 ->0x7c3f79c;0x1543e74 ->0x7c4f9b4",
+      "conclusion": "Read LazyState text and trim Foundation whitespacesAndNewlines."
+    },
+    {
+      "source": "button callback0x1cf342c / label0x1a1f6e4",
+      "conclusion": "Trimmed-empty button invokes deny closure; nonempty invokes feedback submission. Labels are Deny0x75d2434 and Send0x75d29d4."
+    },
+    {
+      "source": "keyboard callback0x1cf3418 -> submit0x1a1f680",
+      "conclusion": "Empty keyboard submission is a no-op. Nonempty submission clears LazyState via0x1d8f220 /0x7c4bb38 before forwarding trimmed text via callback at banner+0x278."
+    },
+    {
+      "source": "TextField0x1a1f324 / constructor0x1daa0a4;0x1a1f3e8..0x1a1f3fc",
+      "conclusion": "Vertical-axis plain TextField uses callout and lineLimit1...3; onSubmit text binding at0x1a1f48c. Placeholder key0x88bc0f0 and default0x88bc120."
+    },
+    {
+      "source": "icon0x74f9ac0 / literal0x8a565b0; color0x74ed744 / literal0x8a51510; card0x1a2ad70",
+      "conclusion": "Original pencil asset, secondary icon color, icon size20 scaled relative to callout. Feedback button font factory0x74e2788 binds footnote0xaad3910 and medium weight."
+    }
+  ],
+  "integration": {
+    "files": [
+      "implementation/ios/Sources/RemoteApprovalInteraction.swift",
+      "implementation/ios/Sources/NativeConversationHost.swift",
+      "implementation/ios/Sources/OfficialText.swift",
+      "implementation/ios/TextTests/main.swift",
+      "implementation/ios/UITests/HostInteractionTests.swift",
+      "implementation/ios/Resources/OfficialTranslations.json",
+      "implementation/ios/Tools/prepare-official-text.py"
+    ],
+    "changes": [
+      "Replace standalone deny with multiline feedback field and conditional deny/send action.",
+      "Keep keyboard-empty no-op and clear-before-callback ordering.",
+      "Import two consumer-bound original translations across existing65 locale tables.",
+      "Keep feedback, approval and deny as distinct request-scoped events; service unavailable cannot masquerade as successful feedback."
+    ],
+    "independent_adaptations": [
+      "Typed request identity, redacted wrapper, disconnected adapter and synthetic task input are independent frontend scaffolding.",
+      "Enclosing stack spacing/material geometry and full form branch remain unaccepted."
+    ]
+  },
+  "validation": {
+    "foundation": "Passed all existing checks plus6 blank drafts,8 nonempty button/keyboard cases,4 locale/fallback cases and scope/redaction checks. Initial expected U+200B preservation was wrong: direct Darwin Foundation probe trims it; regression corrected, internal U+200B preserved.",
+    "host_typecheck": "Passed with3 existing UIKit deprecation warnings.",
+    "ui_test_syntax": "Passed; testRemoteApprovalFeedbackAndScope added but not executed.",
+    "ui_runtime": "Pending original session42359 / Xcode first-launch administrator authorization. Current source is not installed or visually accepted.",
+    "preview": "PID87483 verified live; left unchanged. No phone installation.",
+    "retention": "Dry run no stale targets."
+  },
+  "chat_work_navigation": "Verified source title=nil and titleView=rows.isEmpty ? modeControl : nil. Existing testNoDebugTitleNavigation remains runtime-unaccepted on cumulative source.",
+  "limitations": [
+    "No service execution or live feedback submission.",
+    "MCP forms, network approval and user-input question progression remain partial.",
+    "Actual keyboard submission, focus, layout, return/reentry and physical-device behavior are not accepted.",
+    "Android corresponding component and lifecycle must be independently proven."
+  ],
+  "next_minimum_action": "Verify user-input question progression; after installation authorization clears, accept task list -> message interaction -> return/reentry, including Chat/Work no-debug-title regression.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-action-label.asm",
+      "sha256": "cd5002a508a27f385901370210db1569b236c340a65f77d237970f2ef5bb0b86"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-button-font.asm",
+      "sha256": "0f93cd82870af0f9835eacf3354fbede6462b7fb211c0f1c929277c01fee9caf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-callback-arg.asm",
+      "sha256": "de5c73ca93bc580594015c68ed8a57f64fb8961022db7be34b5d4b3eed529fdb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-calls.json",
+      "sha256": "371594308ebd4329206afc89974ec1fcc7984c05b4dbc4537432be798531707c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-clear-action.asm",
+      "sha256": "ba0c6d3db29f215b3f952c2d897c2328bb060c0eafeabd3025741362847b86e6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-color-factory.asm",
+      "sha256": "ade369a32d8404019a3cb52d39ace87f7f8df30d044531b743cb4d78246f4c8e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-container-thunks.asm",
+      "sha256": "242d11e7ce7d4317f76ff7796fff0a2262d89fbc85c1937552da85d6b9b7869e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-field-builder.asm",
+      "sha256": "d4da0659b34711e79cbbaf12dbe2f372a9020d985276f3e523f56436640155b3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-field-label.asm",
+      "sha256": "ea2f6cec5040ab19b28aef25682a397c8bf3f0c187cd38e245d8231990338f20"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-getter-result.asm",
+      "sha256": "6865bd43e1457e13179ebf5a443668498cc6f24caf13700ebce8466ba8af7915"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-getters.asm",
+      "sha256": "d1f9946e88a78c9489b2f8fdda7dfa0635dea10cbf791fc197552ce40348aa82"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-icon-factory.asm",
+      "sha256": "b78f7049a7850f444be58da820c07bea1fb4ccc2b389660c2ce765eec51aedfd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-reset-arg.asm",
+      "sha256": "b9afffaa0a441fd0146370c44ec0f009e0fb8c3041eabfe539dd00fe1c557a69"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-stack-spacing.asm",
+      "sha256": "4a7d5bef8c7c0f87826d911c58e520174753efd06adf016b88f6340f64f993d6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-state-getter.asm",
+      "sha256": "76d6cd570ca8731347d5c85296e0bf8f5b3da926c5d3c9a6088e29f34c826166"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-state-reset.asm",
+      "sha256": "9e87742a91d25c5bb530dd912352cec9d673bd45b600f243772bca064b93426f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-submit-helper.asm",
+      "sha256": "24a8e07bfb231fd5caf771836719296e63e3a63d9fd301f21ec3200bb4f813a2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-textfield-constructor.asm",
+      "sha256": "11c49dd7c6527230fb90bd0f1757b534c0fe8ab432dfe5f1d3413c097762439b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-thunks.asm",
+      "sha256": "bf8a4b65f6e9838eadc788d765a9553aa4400582a2851ffeec55f339c52af953"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-feedback-value.asm",
+      "sha256": "79028f8ffdce57429446411530b052c616fac7873d4d4cd3a40ab6d2143db16e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-nonempty-helper.asm",
+      "sha256": "8e0e99082d55efb87802a2a980d0e81fbc0f616cf04ecd596de6e1d3e5cba862"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-selected-text.json",
+      "sha256": "757a70994a510d194a16a3d800484524a0e51dbfd33e713102d318a3b89d14a0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-trim-character-set.asm",
+      "sha256": "3207624d587d0dd012f4b07041c5ce898c17c8c09158a1a4cb219c7f9b9bb424"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v414-trim-helper.asm",
+      "sha256": "1cd9ad29b640147b832236cf81e1cf7d0e3b4ef896db850824006912912d43e9"
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteApprovalInteraction.swift": "65f8e16442f5f2ee01cb457bd11e7461c683d88ea36eea67eb1ec112a8c6a364",
+    "implementation/ios/Sources/NativeConversationHost.swift": "7a97122a8b164c7b9e58bdb7a4786b43efa1d1826b6e274a1784e8173c397345",
+    "implementation/ios/Sources/OfficialText.swift": "aa9c70385947110ccf5bdec05c5ec5c85224e480d595d1452f255b95d038781a",
+    "implementation/ios/TextTests/main.swift": "85b7e54c7ca605dc95efc0c6be2ff48d982e797f4c70ca5a9d605ad34dcd1200",
+    "implementation/ios/UITests/HostInteractionTests.swift": "1c9a7802be6c2bc52b2b90c92e0a0615b0ad2c9c26563567f107775c5e2ea67a",
+    "implementation/ios/Resources/OfficialTranslations.json": "48f5060cd82298f787fe93ad9a6a546368c4683e311dc5d79c5a13f1e6f34165",
+    "implementation/ios/Tools/prepare-official-text.py": "db01c9119a1c9fd6ec18a448229bf5a504b9797af986d74933a11842decd397f"
+  }
+}

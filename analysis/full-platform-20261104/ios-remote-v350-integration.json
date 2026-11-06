@@ -1,0 +1,48 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static; independent fixture state integration",
+  "findings": [
+    {
+      "offset": "0x3a39f0",
+      "conclusion": "CodexTaskRowV2 body witness branches0x3a3398; body calls host display getter0x3a38f8 at0x3a3478."
+    },
+    {
+      "offset": "0x955fd50+0x14",
+      "conclusion": "11 fields, metadata offset vector starts2 words. Slots0x1c/0x20/0x24 map to isPriorityModeActive/remoteHostCount/isFilteredToHost."
+    },
+    {
+      "offset": "0x3a3928..0x3a394c",
+      "conclusion": "Host getter returns nil unless isPriorityModeActive==true AND remoteHostCount>=2 AND !isFilteredToHost. 0x2c60c0 compares byte to1;0x206148 zeros optional return pair."
+    }
+  ],
+  "integration": [
+    "Priority fixture explicitly true; unique fixture host count supplied locally (not claimed official service count source).",
+    "Filtering to single host removes host name/icon; optional project/environment stays independently rendered.",
+    "All filter restores host name/icon."
+  ],
+  "unknowns": [
+    "Actual parent priority-mode assignment",
+    "Official catalog count source and host name resolver/empty handling",
+    "Project/environment producer business conditions",
+    "Android counterpart"
+  ],
+  "validation": {
+    "status": "passed-scoped-simulator-test",
+    "test": "testRemoteTaskScopeAndReturn",
+    "result_bundle": "analysis/full-platform-20261104/ios-remote-v350.xcresult",
+    "covered": [
+      "all to single-host filter hides host label while preserving project label",
+      "return to all restores host labels",
+      "existing scoped task/message interaction regression"
+    ],
+    "limitations": [
+      "priority=false and hostCount=1 gates statically established only",
+      "official host-name resolution and project conditions remain partial",
+      "phone unchanged; external display placement not reverified"
+    ],
+    "preview_pid_at_handoff": 76520
+  }
+}

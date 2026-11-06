@@ -1,0 +1,52 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": "0x7e1dee0",
+  "mangled_address": "0x8e47012",
+  "length": 33,
+  "mangled_hex": "0295b3c80179022731c701025ad2c60179028431c7017902ced2c6014747475367",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 2,
+      "target": "0xaad23a8",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI19_ConditionalContentVMn"
+    },
+    {
+      "offset": 6,
+      "kind": 2,
+      "target": "0xaaba140",
+      "resolved_context": "0x962f834",
+      "label": "ChatGPTMessageRowUI.PagePreviewWidget"
+    },
+    {
+      "offset": 11,
+      "kind": 2,
+      "target": "0xaab4278",
+      "resolved_context": "0x96fe6f4",
+      "label": "OAIMarkdown.MarkdownMermaidDiagram"
+    },
+    {
+      "offset": 17,
+      "kind": 2,
+      "target": "0xaaba1a8",
+      "resolved_context": "0x96dafb0",
+      "label": "ChatGPTPresentation.ChatGPTSheetPresentationModifier"
+    },
+    {
+      "offset": 23,
+      "kind": 2,
+      "target": "0xaab42f8",
+      "resolved_context": "0x96fe764",
+      "label": "OAIMarkdown.MarkdownMermaidDiagramDetail"
+    }
+  ],
+  "unresolved_contexts": [],
+  "limits": [
+    "Symbolic context references only, not a reconstructed generic type tree",
+    "Type presence does not prove runtime branch selection or component creation"
+  ]
+}

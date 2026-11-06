@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getDILAssetURLRegexes=exports.supportsPerElementAssetURLFiltering=void 0;const e=require("valdi_core/src/CompilerIntrinsics");function s(){return(0,e.isVersionAtLeast)(142)}function t(e){return s()?e?.allowedUrlRegexes:void 0}exports.supportsPerElementAssetURLFiltering=s,exports.getDILAssetURLRegexes=t;

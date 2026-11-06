@@ -1,0 +1,46 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "descriptor": "0x95acb58",
+  "field_count": 67,
+  "field_offset_vector_words": 2,
+  "fields": [
+    {
+      "index": 41,
+      "name": "_renderedItemVerticalSpacing",
+      "metadata_offset": "0xb4",
+      "type_reference": "0x8c61e40",
+      "base_value": 8.0,
+      "source": "0x1a50928..0x1a5094c"
+    },
+    {
+      "index": 42,
+      "name": "_messageGroupVerticalSpacing",
+      "metadata_offset": "0xb8",
+      "type_reference": "0x8c61e40",
+      "base_value": 24.0,
+      "source": "0x1a50950..0x1a50968"
+    },
+    {
+      "index": 43,
+      "name": "_previousMessagesToggleSpacing",
+      "metadata_offset": "0xbc",
+      "type_reference": "0x8c61e40",
+      "base_value": 8.0,
+      "source": "0x1a5096c..0x1a50980"
+    },
+    {
+      "index": 44,
+      "name": "_toolActivityIconSize",
+      "metadata_offset": "0xc0",
+      "type_reference": "0x8c61e40",
+      "base_value": 20.0,
+      "source": "0x1a50984..0x1a509c0"
+    }
+  ],
+  "correction": "History label loads metadata+0xbc: previousMessagesToggleSpacing, NOT renderedItemVerticalSpacing(+0xb4). It is ScaledMetric<CGFloat>, not a custom environment key.",
+  "limits": [
+    "Base metrics are not fixed rendered pixels.",
+    "Do not apply group24/item8 as constant gaps to the full fixture catalogue.",
+    "Fragment top/bottom margins branch on flags and a predicate at0x1a3373c; full presentation projection not yet integrated."
+  ]
+}

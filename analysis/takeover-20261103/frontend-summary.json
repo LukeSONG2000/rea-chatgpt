@@ -1,0 +1,25 @@
+{
+  "byte_identical_paths": 4672,
+  "extraction_counts": {
+    "partial": 92,
+    "verified": 92
+  },
+  "file_count": 13994,
+  "ios_syntax_counts": {
+    "verified": 5747
+  },
+  "ios_syntax_failures": [],
+  "metadata": {
+    "node_version": "v24.14.1",
+    "prior_exposure": "Retrospective split. Historical reports/tools already used this corpus; prior exposure cannot be excluded. Holdout is a future change-control partition, not independent semantic validation.",
+    "schema_version": 1,
+    "scope": "static_only",
+    "split_policy": "SHA256(rea-chatgpt/module-split/v1:<module>) integer modulo 5: 0 holdout, otherwise calibration; identical module names stay together across platforms",
+    "tool_sha256": "92398186bd462554549cdfaf798ad358b58acdbec75870e907575879b09030a4",
+    "tool_version": "1.0.0",
+    "validation": "Archive payload hash verification and Node vm.Script compilation only; no evaluation or behavior testing",
+    "version_label_source": "existing recovered directory names; not independent build equivalence"
+  },
+  "module_count": 184,
+  "paired_paths": 6950
+}

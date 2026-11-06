@@ -1,0 +1,60 @@
+{
+  "authority": "actual rebuilt-host trace plus independent fixture settings",
+  "traces": [
+    {
+      "report": "remote-history-v174-runtime.json",
+      "requests": {
+        "remoteControl/status/read": 1,
+        "config/read": 20,
+        "experimentalFeature/list": 4,
+        "configRequirements/read": 4,
+        "permissionProfile/list": 5,
+        "thread/list": 1,
+        "collaborationMode/list": 4,
+        "thread/read": 1,
+        "hooks/list": 4,
+        "account/read": 1,
+        "getAuthStatus": 1,
+        "model/list": 4
+      },
+      "rendererText": "Skip to content\nCodex\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\nLocal test · 882cfca8\nO\nOffline fixture\nLocal test · 882cfca8\nCouldn't load messages\nRetry\nLatest response\n\n\n\n\nAsk for approval\nFailed to resume chat\nthis.requestClient.supportsPaginatedThreadHistory is not a function\nRetry",
+      "threadsWithAdmittedHistory": 0
+    },
+    {
+      "report": "remote-history-v174-r2-runtime.json",
+      "requests": {
+        "remoteControl/status/read": 1,
+        "config/read": 5,
+        "experimentalFeature/list": 1,
+        "configRequirements/read": 1,
+        "permissionProfile/list": 5,
+        "thread/list": 1,
+        "collaborationMode/list": 1,
+        "thread/read": 1,
+        "hooks/list": 4,
+        "account/read": 1,
+        "getAuthStatus": 1,
+        "model/list": 1
+      },
+      "rendererText": "Skip to content\nCodex\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\nLocal test · 1c6d3119\nO\nOffline fixture\nLocal test · 1c6d3119\nCouldn't load messages\nRetry\nLatest response\n\n\n\n\nAsk for approval\nFailed to resume chat\nthis.requestClient.supportsPaginatedThreadHistory is not a function\nRetry",
+      "threadsWithAdmittedHistory": 0
+    }
+  ],
+  "implementation": {
+    "fixtureOnly": true,
+    "model": "rea-fixture",
+    "provider": "rea-local-owner",
+    "requiresOpenaiAuth": false,
+    "account": null,
+    "sandbox_mode": "read-only",
+    "approval_policy": "untrusted",
+    "paginatedThreadHistory": false,
+    "zhipuMode": "unsupported settings until separately verified"
+  },
+  "capabilityConsumer": {
+    "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+    "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+    "utf8ByteOffset": 3419430,
+    "excerpt": "),`threadItemAnchors`)}supportsPaginatedThreadHistory(){return this.runtimeSettings.supportsPaginatedThreadHistory?.()??this.requestClient.supportsPaginatedThreadHistory()}async getCompleteConversationTurns(e){return ern(this,e)}waitForConversationRevision(e,t,n,r){return this.streamState.waitForConversationRevision(e,t,n,r)}applyRollbackResponseToConversation(e){Ynn(this,e,t=>{this.acceptConversationHistory(e.conversationId,{replacesExistingHistory:!0,truncatedBefo"
+  }
+}

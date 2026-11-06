@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.SvgWrapperFactory=void 0;const r=require("../common/WrapperFactory"),e=require("./Wrappers");class SvgWrapperFactory extends r.CommonWrapperFactory{}exports.SvgWrapperFactory=SvgWrapperFactory,SvgWrapperFactory.defaultNodes=e.SvgWrappers;

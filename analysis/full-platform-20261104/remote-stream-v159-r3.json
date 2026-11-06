@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v155-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "actual packaged renderer state receives guarded Remote history through IPC",
+    "actual original threadStore hydrates paired owner history through native IPC",
+    "packaged primary renderer IPC reaches two owner processes; same request identity isolated; A cancel preserves B completion",
+    "pairing URL and token absent from list; hidden fixture role denied Remote capability",
+    "fresh Electron process reconnects same owner histories with same bound profile",
+    "offline A explicit error while B list remains usable"
+  ],
+  "limits": [
+    "Main-process IPC acceptance from original renderer context, not a visible official Remote control workflow",
+    "Fixture model; no live Zhipu calls in this test"
+  ],
+  "originalManager": {
+    "status": "constructed",
+    "host": "host-b",
+    "threadCount": 1,
+    "stream": {
+      "notificationCount": 8,
+      "turnCount": 2,
+      "status": "completed"
+    },
+    "hydrated": {
+      "threadSubscription": true,
+      "itemSubscription": true,
+      "turnCount": 1,
+      "status": "completed",
+      "user": "REA synthetic desktop Remote IPC",
+      "assistant": "Local fixture reply"
+    },
+    "transportListeners": 1,
+    "readListeners": 1,
+    "afterDispose": {
+      "transportListeners": 0,
+      "readListeners": 0
+    },
+    "calls": [
+      [
+        "request",
+        "thread/read"
+      ],
+      [
+        "request",
+        "thread/read"
+      ]
+    ]
+  },
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/remote-stream-v159-r3.png"
+}

@@ -1,0 +1,1 @@
+"use strict";let e;function t(t,n){const l=e;e=t;try{n()}finally{e=l}}function n(){return e}Object.defineProperty(exports,"__esModule",{value:!0}),exports.getDILInlineTextStyle=exports.withDILInlineTextStyle=void 0,exports.withDILInlineTextStyle=t,exports.getDILInlineTextStyle=n;

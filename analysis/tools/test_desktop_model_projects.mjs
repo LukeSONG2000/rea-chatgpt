@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {createFixtureHost} from './desktop-fixture-services.mjs';
+globalThis.location={origin:'https://offline.invalid'};
+const historyFixture=JSON.parse(fs.readFileSync(new URL('../desktop-official-20261104/history-fixture-replay.json',import.meta.url))).converted_fixture;
+let durable;const starts=[],cancelled=[];
+globalThis.__reaSaveHistories=async snapshot=>{durable=structuredClone(snapshot)};
+globalThis.__reaModelStart=async request=>starts.push(request);globalThis.__reaModelCancel=async id=>cancelled.push(id);
+const fixture=createFixtureHost({Wst:class{}},{scenario:'synthetic-account',historyFixture,syntheticProjects:true,modelMode:true}),api=fixture.host.services.httpFetch;
+const bodies=[1,2].map(n=>({gizmo_id:'g-p-rea-synthetic-00'+n,action:'next',parent_message_id:'model-project-root-'+n,messages:[{id:'model-project-user-'+n,author:{role:'user'},content:{content_type:'text',parts:['REA synthetic project model '+n]}}]}));
+const post=(id,body)=>api.fetch(id,{method:'POST',url:'/f/conversation',body:JSON.stringify(body)});
+const responses=[];for(let i=0;i<2;i++)responses.push((await post('project-request-'+i,bodies[i])).response);
+assert.equal(starts.length,2);assert.notEqual(starts[0].scope.conversation,starts[1].scope.conversation);
+for(let i=0;i<2;i++){const scope=starts[i].scope;globalThis.__reaModelReceive(scope.request,{scope,subscription:1,revision:0,sequence:1,kind:'accepted'});globalThis.__reaModelReceive(scope.request,{scope,subscription:1,revision:0,sequence:2,kind:'delta',text:'Project '+i})}
+const reader=responses[0].body.getReader();await reader.read();await reader.cancel();
+const scope=starts[1].scope;globalThis.__reaModelReceive(scope.request,{scope,subscription:1,revision:0,sequence:3,kind:'completed'});assert.match(await responses[1].text(),/message_stream_complete/);
+assert.ok(cancelled.includes(starts[0].scope.request));
+const first=durable.find(h=>h.conversation_id===starts[0].scope.conversation),second=durable.find(h=>h.conversation_id===starts[1].scope.conversation);
+assert.equal(first.gizmo_id,bodies[0].gizmo_id);assert.equal(second.gizmo_id,bodies[1].gizmo_id);assert.equal(first.mapping[first.current_node].message.status,'finished_partial_completion');assert.equal(second.mapping[second.current_node].message.status,'finished_successfully');
+const snapshot=structuredClone(durable);
+await assert.rejects(()=>post('wrong-project',{...bodies[0],conversation_id:first.conversation_id,gizmo_id:bodies[1].gizmo_id}),/scope mismatch/);
+assert.deepEqual(durable,snapshot);assert.equal(starts.length,2);
+const old=starts[0].scope;globalThis.__reaModelReceive(old.request,{scope:old,subscription:1,revision:0,sequence:3,kind:'delta',text:'late'});await new Promise(r=>setTimeout(r,10));assert.deepEqual(durable,snapshot);
+console.log('passed: model-mode parallel projects preserve membership; cancelling one leaves other completed; cross-project request rejected before model start; late event ignored');

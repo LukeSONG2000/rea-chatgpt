@@ -1,0 +1,65 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "animation": {
+    "factory": "Animation.default0x39c390",
+    "speed_helper": "0x460b70 sets1.5 and tails0x7c4ba00",
+    "speed_binding": {
+      "symbol": "_$s7SwiftUI9AnimationV5speedyACSdF",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 10679,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "callback": "0x43910c reads current owner state and toggles same section ID",
+    "withAnimation_helper": "0x461008 tails0x7c474e8",
+    "withAnimation_binding": {
+      "symbol": "_$s7SwiftUI13withAnimationyxAA0D0VSg_xyKXEtKlF",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 8242,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    }
+  },
+  "gate_correction": {
+    "helper": "0x7710c7c returns0x84d40ec",
+    "value": 0,
+    "section": "__TEXT,__const",
+    "segment_protection": {
+      "maxprot": 5,
+      "initprot": 5,
+      "meaning": "read/execute, no write"
+    },
+    "comparison": "helper0x26c444 compares byte==1; only equal clears animation0x39c3ac..b0",
+    "conclusion": "Frozen artifact constant0 retains animation. This helper does not read the native accessibility environment. Earlier Reduce Motion interpretation is not supported.",
+    "also_used": "CodexDisclosureChevron0x6ee7da4 reads same helper; its prior reduce-motion label is superseded"
+  },
+  "integration": [
+    "Section toggle uses withAnimation(default.speed(1.5)) around owner state mutation",
+    "System accessibilityReduceMotion suppresses host animation as independent adaptation, not recovered gate",
+    "Existing chevron native accessibility adaptation retained and relabeled"
+  ],
+  "validation": {
+    "typecheck": "passed all host sources, existing UIKit deprecation warnings only",
+    "runtime": "not executed; same UI session42359 waiting first-launch authorization",
+    "device": "not updated",
+    "retention": "no stale targets"
+  },
+  "limits": [
+    "Default animation uses host SwiftUI version; original frame trajectory not measured",
+    "Project/list eligibility and search projection still incomplete",
+    "Native accessibility adaptation exceeds observed constant gate; no official reduce-motion equivalence claim",
+    "Android implementation unverified"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "aa04e0bc104b4aa64dbc67d54e937f4c05dd6e0d1e1d461b48370964c3666f97",
+    "implementation/ios/UITests/HostInteractionTests.swift": "09973dafc48b30369186da9c019d46696a0df8a86c3572e4fc46729fa97c2127"
+  }
+}

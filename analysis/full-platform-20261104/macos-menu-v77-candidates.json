@@ -1,0 +1,2930 @@
+{
+  "status": "partial",
+  "artifact": {
+    "product": "Codex",
+    "version": "26.1021.31345",
+    "file": "recovered/macos/asar-extracted/.vite/build/main-0FVbxCQU.js",
+    "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c"
+  },
+  "parser": {
+    "name": "@babel/parser",
+    "version": "8.0.4"
+  },
+  "builder": {
+    "symbol": "Yvt",
+    "utf16_start": 4664996,
+    "utf16_end": 4684905,
+    "byte_start": 4685016,
+    "byte_end": 4704929,
+    "line": 1633,
+    "column": 3249
+  },
+  "candidates": [
+    {
+      "candidate": 1,
+      "utf16_start": 4666001,
+      "utf16_end": 4666182,
+      "byte_start": 4686021,
+      "byte_end": 4686202,
+      "line": 1633,
+      "column": 4254,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": null,
+        "default_message": null
+      },
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "i?j(e)[t??0]:void 0"
+      },
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "i?void 0:!1"
+      },
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 2,
+      "utf16_start": 4666641,
+      "utf16_end": 4666723,
+      "byte_start": 4686661,
+      "byte_end": 4686743,
+      "line": 1633,
+      "column": 4894,
+      "commands": [],
+      "label": {
+        "status": "expression-unresolved",
+        "expression": "r"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "e"
+      },
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "n"
+      },
+      "click": {
+        "utf16_start": 4666721,
+        "utf16_end": 4666722,
+        "byte_start": 4686741,
+        "byte_end": 4686742,
+        "line": 1633,
+        "column": 4974,
+        "source": "t",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 3,
+      "utf16_start": 4666728,
+      "utf16_end": 4666924,
+      "byte_start": 4686748,
+      "byte_end": 4686944,
+      "line": 1633,
+      "column": 4981,
+      "commands": [
+        "settings"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4666752,
+        "utf16_end": 4666923,
+        "byte_start": 4686772,
+        "byte_end": 4686943,
+        "line": 1633,
+        "column": 5005,
+        "source": "async(e,t,n)=>{let r=await p();if(r){if(n?.triggeredByAccelerator===!0){x.sendMessageToWindow(r,{type:`run-command`,id:`settings`,keyboardEvent:c9(e,n)});return}v(r,Jvt)}}",
+        "literal_message_types": [
+          "run-command"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 4,
+      "utf16_start": 4666927,
+      "utf16_end": 4667206,
+      "byte_start": 4686947,
+      "byte_end": 4687226,
+      "line": 1633,
+      "column": 5180,
+      "commands": [
+        "newTask"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4666950,
+        "utf16_end": 4667205,
+        "byte_start": 4686970,
+        "byte_end": 4687225,
+        "line": 1633,
+        "column": 5203,
+        "source": "async(e,t,n)=>{let r=await M();if(r){if(x.isHotkeyWindowThread(r)){await y?.();return}r.webContents.focus(),x.sendMessageToWindow(r,n?.triggeredByAccelerator===!0?{type:`run-command`,id:`newTask`,keyboardEvent:c9(e,n)}:{type:`run-command`,id:`newTask`})}}",
+        "literal_message_types": [
+          "run-command"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 5,
+      "utf16_start": 4667209,
+      "utf16_end": 4667283,
+      "byte_start": 4687229,
+      "byte_end": 4687303,
+      "line": 1633,
+      "column": 5462,
+      "commands": [
+        "newTask"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4667275,
+        "utf16_end": 4667282,
+        "byte_start": 4687295,
+        "byte_end": 4687302,
+        "line": 1633,
+        "column": 5528,
+        "source": "B.click",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 6,
+      "utf16_start": 4667347,
+      "utf16_end": 4667564,
+      "byte_start": 4687367,
+      "byte_end": 4687584,
+      "line": 1633,
+      "column": 5600,
+      "commands": [
+        "temporaryChat"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "H!=null&&x.getAppShellShortcutState?.(H.webContents.id)?.temporaryChatEnabled===!0"
+      },
+      "click": {
+        "utf16_start": 4667467,
+        "utf16_end": 4667563,
+        "byte_start": 4687487,
+        "byte_end": 4687583,
+        "line": 1633,
+        "column": 5720,
+        "source": "()=>{H==null||H.isDestroyed()||x.sendMessageToWindow(H,{type:`run-command`,id:`temporaryChat`})}",
+        "literal_message_types": [
+          "run-command"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 7,
+      "utf16_start": 4667568,
+      "utf16_end": 4667743,
+      "byte_start": 4687588,
+      "byte_end": 4687763,
+      "line": 1633,
+      "column": 5821,
+      "commands": [
+        "newProjectlessTask"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4667643,
+        "utf16_end": 4667742,
+        "byte_start": 4687663,
+        "byte_end": 4687762,
+        "line": 1633,
+        "column": 5896,
+        "source": "async()=>{let e=await p();e&&x.sendMessageToWindow(e,{type:`run-command`,id:`newProjectlessTask`})}",
+        "literal_message_types": [
+          "run-command"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 8,
+      "utf16_start": 4667747,
+      "utf16_end": 4667796,
+      "byte_start": 4687767,
+      "byte_end": 4687816,
+      "line": 1633,
+      "column": 6000,
+      "commands": [
+        "newWindow"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4667772,
+        "utf16_end": 4667795,
+        "byte_start": 4687792,
+        "byte_end": 4687815,
+        "line": 1633,
+        "column": 6025,
+        "source": "async()=>{await m(qvt)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 9,
+      "utf16_start": 4668759,
+      "utf16_end": 4669112,
+      "byte_start": 4688779,
+      "byte_end": 4689134,
+      "line": 1633,
+      "column": 7012,
+      "commands": [
+        "newProject"
+      ],
+      "label": {
+        "status": "localized-default",
+        "message_id": "codex.commandMenuTitle.newProject",
+        "default_message": "New Project…"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "se!=null&&x.getAppShellShortcutState?.(se.webContents.id)?.newProjectEnabled===!0"
+      },
+      "click": {
+        "utf16_start": 4668976,
+        "utf16_end": 4669111,
+        "byte_start": 4688998,
+        "byte_end": 4689133,
+        "line": 1633,
+        "column": 7229,
+        "source": "async()=>{let e=await M();e&&x.isHotkeyWindowThread(e)&&(e=await p()),e&&x.sendMessageToWindow(e,{type:`run-command`,id:`newProject`})}",
+        "literal_message_types": [
+          "run-command"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 10,
+      "utf16_start": 4669115,
+      "utf16_end": 4669240,
+      "byte_start": 4689137,
+      "byte_end": 4689262,
+      "line": 1633,
+      "column": 7368,
+      "commands": [
+        "openFolder"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4669141,
+        "utf16_end": 4669239,
+        "byte_start": 4689163,
+        "byte_end": 4689261,
+        "line": 1633,
+        "column": 7394,
+        "source": "async()=>{let e=await M();if(!e)return;let t=b(e);t&&await t.createOrSelectProject(e.webContents)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 11,
+      "utf16_start": 4669244,
+      "utf16_end": 4669354,
+      "byte_start": 4689266,
+      "byte_end": 4689376,
+      "line": 1633,
+      "column": 7497,
+      "commands": [
+        "logOut"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4669266,
+        "utf16_end": 4669353,
+        "byte_start": 4689288,
+        "byte_end": 4689375,
+        "line": 1633,
+        "column": 7519,
+        "source": "async()=>{let e=await M();e&&x.sendMessageToWindow(e,{type:`run-command`,id:`logOut`})}",
+        "literal_message_types": [
+          "run-command"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 12,
+      "utf16_start": 4670466,
+      "utf16_end": 4670564,
+      "byte_start": 4690488,
+      "byte_end": 4690586,
+      "line": 1633,
+      "column": 8719,
+      "commands": [
+        "openCommandMenu"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4670540,
+        "utf16_end": 4670563,
+        "byte_start": 4690562,
+        "byte_end": 4690585,
+        "line": 1633,
+        "column": 8793,
+        "source": "async()=>{await ue(``)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 13,
+      "utf16_start": 4670568,
+      "utf16_end": 4670662,
+      "byte_start": 4690590,
+      "byte_end": 4690684,
+      "line": 1633,
+      "column": 8821,
+      "commands": [
+        "openCommandMenu"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4670640,
+        "utf16_end": 4670661,
+        "byte_start": 4690662,
+        "byte_end": 4690683,
+        "line": 1633,
+        "column": 8893,
+        "source": "async()=>{await ue()}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 14,
+      "utf16_start": 4670666,
+      "utf16_end": 4670737,
+      "byte_start": 4690688,
+      "byte_end": 4690759,
+      "line": 1633,
+      "column": 8919,
+      "commands": [
+        "searchFiles"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4670734,
+        "utf16_end": 4670736,
+        "byte_start": 4690756,
+        "byte_end": 4690758,
+        "line": 1633,
+        "column": 8987,
+        "source": "de",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 15,
+      "utf16_start": 4670741,
+      "utf16_end": 4670812,
+      "byte_start": 4690763,
+      "byte_end": 4690834,
+      "line": 1633,
+      "column": 8994,
+      "commands": [
+        "searchChats"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4670809,
+        "utf16_end": 4670811,
+        "byte_start": 4690831,
+        "byte_end": 4690833,
+        "line": 1633,
+        "column": 9062,
+        "source": "fe",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 16,
+      "utf16_start": 4670829,
+      "utf16_end": 4670908,
+      "byte_start": 4690851,
+      "byte_end": 4690930,
+      "line": 1633,
+      "column": 9082,
+      "commands": [
+        null
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4670885,
+        "utf16_end": 4670907,
+        "byte_start": 4690907,
+        "byte_end": 4690929,
+        "line": 1633,
+        "column": 9138,
+        "source": "async()=>{await pe(e)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 17,
+      "utf16_start": 4670914,
+      "utf16_end": 4670994,
+      "byte_start": 4690936,
+      "byte_end": 4691016,
+      "line": 1633,
+      "column": 9167,
+      "commands": [
+        "copyConversationPath"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4670991,
+        "utf16_end": 4670993,
+        "byte_start": 4691013,
+        "byte_end": 4691015,
+        "line": 1633,
+        "column": 9244,
+        "source": "he",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 18,
+      "utf16_start": 4670998,
+      "utf16_end": 4671073,
+      "byte_start": 4691020,
+      "byte_end": 4691095,
+      "line": 1633,
+      "column": 9251,
+      "commands": [
+        "toggleThreadPin"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4671070,
+        "utf16_end": 4671072,
+        "byte_start": 4691092,
+        "byte_end": 4691094,
+        "line": 1633,
+        "column": 9323,
+        "source": "ge",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 19,
+      "utf16_start": 4671077,
+      "utf16_end": 4671149,
+      "byte_start": 4691099,
+      "byte_end": 4691171,
+      "line": 1633,
+      "column": 9330,
+      "commands": [
+        "renameThread"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4671146,
+        "utf16_end": 4671148,
+        "byte_start": 4691168,
+        "byte_end": 4691170,
+        "line": 1633,
+        "column": 9399,
+        "source": "_e",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 20,
+      "utf16_start": 4671153,
+      "utf16_end": 4671225,
+      "byte_start": 4691175,
+      "byte_end": 4691247,
+      "line": 1633,
+      "column": 9406,
+      "commands": [
+        "archiveThread"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4671223,
+        "utf16_end": 4671224,
+        "byte_start": 4691245,
+        "byte_end": 4691246,
+        "line": 1633,
+        "column": 9476,
+        "source": "K",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 21,
+      "utf16_start": 4671228,
+      "utf16_end": 4671308,
+      "byte_start": 4691250,
+      "byte_end": 4691330,
+      "line": 1633,
+      "column": 9481,
+      "commands": [
+        "copyWorkingDirectory"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4671305,
+        "utf16_end": 4671307,
+        "byte_start": 4691327,
+        "byte_end": 4691329,
+        "line": 1633,
+        "column": 9558,
+        "source": "ve",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 22,
+      "utf16_start": 4671312,
+      "utf16_end": 4671384,
+      "byte_start": 4691334,
+      "byte_end": 4691406,
+      "line": 1633,
+      "column": 9565,
+      "commands": [
+        "copyDeeplink"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4671381,
+        "utf16_end": 4671383,
+        "byte_start": 4691403,
+        "byte_end": 4691405,
+        "line": 1633,
+        "column": 9634,
+        "source": "ye",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 23,
+      "utf16_start": 4671388,
+      "utf16_end": 4671575,
+      "byte_start": 4691410,
+      "byte_end": 4691597,
+      "line": 1633,
+      "column": 9641,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": null,
+        "default_message": null
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4671484,
+        "utf16_end": 4671574,
+        "byte_start": 4691506,
+        "byte_end": 4691596,
+        "line": 1633,
+        "column": 9737,
+        "source": "(e,n)=>{Bvt({buildFlavor:t,parent:n instanceof O.BrowserWindow&&!n.isDestroyed()?n:null})}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 24,
+      "utf16_start": 4671579,
+      "utf16_end": 4671687,
+      "byte_start": 4691601,
+      "byte_end": 4691709,
+      "line": 1633,
+      "column": 9832,
+      "commands": [
+        "toggleSidebar"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4671608,
+        "utf16_end": 4671686,
+        "byte_start": 4691630,
+        "byte_end": 4691708,
+        "line": 1633,
+        "column": 9861,
+        "source": "async()=>{let e=await M();e&&x.sendMessageToWindow(e,{type:`toggle-sidebar`})}",
+        "literal_message_types": [
+          "toggle-sidebar"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 25,
+      "utf16_start": 4671818,
+      "utf16_end": 4671977,
+      "byte_start": 4691840,
+      "byte_end": 4691999,
+      "line": 1633,
+      "column": 10071,
+      "commands": [
+        "toggleBottomPanel"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "Ne?.bottomPanelToggleEnabled===!0"
+      },
+      "click": {
+        "utf16_start": 4671893,
+        "utf16_end": 4671976,
+        "byte_start": 4691915,
+        "byte_end": 4691998,
+        "line": 1633,
+        "column": 10146,
+        "source": "async()=>{let e=await M();e&&x.sendMessageToWindow(e,{type:`toggle-bottom-panel`})}",
+        "literal_message_types": [
+          "toggle-bottom-panel"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 26,
+      "utf16_start": 4671981,
+      "utf16_end": 4672048,
+      "byte_start": 4692003,
+      "byte_end": 4692070,
+      "line": 1633,
+      "column": 10234,
+      "commands": [
+        "togglePinnedSummary"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4672016,
+        "utf16_end": 4672047,
+        "byte_start": 4692038,
+        "byte_end": 4692069,
+        "line": 1633,
+        "column": 10269,
+        "source": "()=>{pe(`togglePinnedSummary`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 27,
+      "utf16_start": 4672051,
+      "utf16_end": 4672194,
+      "byte_start": 4692073,
+      "byte_end": 4692216,
+      "line": 1633,
+      "column": 10304,
+      "commands": [
+        "toggleTerminal"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "Ne?.terminalEnabled===!0"
+      },
+      "click": {
+        "utf16_start": 4672114,
+        "utf16_end": 4672193,
+        "byte_start": 4692136,
+        "byte_end": 4692215,
+        "line": 1633,
+        "column": 10367,
+        "source": "async()=>{let e=await M();e&&x.sendMessageToWindow(e,{type:`toggle-terminal`})}",
+        "literal_message_types": [
+          "toggle-terminal"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 28,
+      "utf16_start": 4672198,
+      "utf16_end": 4672265,
+      "byte_start": 4692220,
+      "byte_end": 4692287,
+      "line": 1633,
+      "column": 10451,
+      "commands": [
+        "toggleFileTreePanel"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4672233,
+        "utf16_end": 4672264,
+        "byte_start": 4692255,
+        "byte_end": 4692286,
+        "line": 1633,
+        "column": 10486,
+        "source": "()=>{pe(`toggleFileTreePanel`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 29,
+      "utf16_start": 4672269,
+      "utf16_end": 4672500,
+      "byte_start": 4692291,
+      "byte_end": 4692522,
+      "line": 1633,
+      "column": 10522,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "codex.command.stepWorkspaceLayout",
+        "default_message": "Cycle workspace layout"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "j(`stepWorkspaceLayout`)[0]"
+      },
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4672468,
+        "utf16_end": 4672499,
+        "byte_start": 4692490,
+        "byte_end": 4692521,
+        "line": 1633,
+        "column": 10721,
+        "source": "()=>{pe(`stepWorkspaceLayout`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 30,
+      "utf16_start": 4672504,
+      "utf16_end": 4672644,
+      "byte_start": 4692526,
+      "byte_end": 4692666,
+      "line": 1633,
+      "column": 10757,
+      "commands": [
+        "newTab"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4672526,
+        "utf16_end": 4672643,
+        "byte_start": 4692548,
+        "byte_end": 4692665,
+        "line": 1633,
+        "column": 10779,
+        "source": "async()=>{let e=await M();e&&x.sendMessageToWindow(e,{type:`open-browser-tab`,source:`manual`,initiator:`app_menu`})}",
+        "literal_message_types": [
+          "open-browser-tab"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 31,
+      "utf16_start": 4673043,
+      "utf16_end": 4673146,
+      "byte_start": 4693065,
+      "byte_end": 4693168,
+      "line": 1633,
+      "column": 11296,
+      "commands": [
+        "focusBrowserAddressBar"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "void 0"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4673100,
+        "utf16_end": 4673145,
+        "byte_start": 4693122,
+        "byte_end": 4693167,
+        "line": 1633,
+        "column": 11353,
+        "source": "async()=>{await pe(`focusBrowserAddressBar`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 32,
+      "utf16_start": 4673757,
+      "utf16_end": 4673861,
+      "byte_start": 4693779,
+      "byte_end": 4693883,
+      "line": 1633,
+      "column": 12010,
+      "commands": [
+        "reloadBrowserPage"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "L(`reloadBrowserPage`)[0]"
+      },
+      "visible": null,
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "Ke"
+      },
+      "click": {
+        "utf16_start": 4673839,
+        "utf16_end": 4673860,
+        "byte_start": 4693861,
+        "byte_end": 4693882,
+        "line": 1633,
+        "column": 12092,
+        "source": "async()=>{await qe()}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 33,
+      "utf16_start": 4673874,
+      "utf16_end": 4673984,
+      "byte_start": 4693896,
+      "byte_end": 4694006,
+      "line": 1633,
+      "column": 12127,
+      "commands": [],
+      "label": {
+        "status": "expression-unresolved",
+        "expression": "Je.label??`Reload Browser Page`"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "Ke"
+      },
+      "click": {
+        "utf16_start": 4673926,
+        "utf16_end": 4673934,
+        "byte_start": 4693948,
+        "byte_end": 4693956,
+        "line": 1633,
+        "column": 12179,
+        "source": "()=>qe()",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 34,
+      "utf16_start": 4673990,
+      "utf16_end": 4674145,
+      "byte_start": 4694012,
+      "byte_end": 4694167,
+      "line": 1633,
+      "column": 12243,
+      "commands": [
+        "hardReloadBrowserPage"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "L(`hardReloadBrowserPage`)[0]"
+      },
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "Ke"
+      },
+      "click": {
+        "utf16_start": 4674121,
+        "utf16_end": 4674144,
+        "byte_start": 4694143,
+        "byte_end": 4694166,
+        "line": 1633,
+        "column": 12374,
+        "source": "async()=>{await qe(!0)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 35,
+      "utf16_start": 4674158,
+      "utf16_end": 4674280,
+      "byte_start": 4694180,
+      "byte_end": 4694302,
+      "line": 1633,
+      "column": 12411,
+      "commands": [],
+      "label": {
+        "status": "expression-unresolved",
+        "expression": "Xe.label??`Force Reload Browser Page`"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "Ke"
+      },
+      "click": {
+        "utf16_start": 4674214,
+        "utf16_end": 4674224,
+        "byte_start": 4694236,
+        "byte_end": 4694246,
+        "line": 1633,
+        "column": 12467,
+        "source": "()=>qe(!0)",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 36,
+      "utf16_start": 4674286,
+      "utf16_end": 4674469,
+      "byte_start": 4694308,
+      "byte_end": 4694491,
+      "line": 1633,
+      "column": 12539,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.view.reloadWindow",
+        "default_message": "Reload Window"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "literal",
+        "value": "Command+Control+R"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4674428,
+        "utf16_end": 4674468,
+        "byte_start": 4694450,
+        "byte_end": 4694490,
+        "line": 1633,
+        "column": 12681,
+        "source": "async()=>{let e=await M();e&&e.reload()}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 37,
+      "utf16_start": 4674473,
+      "utf16_end": 4674660,
+      "byte_start": 4694495,
+      "byte_end": 4694682,
+      "line": 1633,
+      "column": 12726,
+      "commands": [
+        "toggleSidePanel"
+      ],
+      "label": {
+        "status": "localized-default",
+        "message_id": "codex.command.toggleWorkspaceTabs",
+        "default_message": "Switch between Chat and tabs"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4674621,
+        "utf16_end": 4674659,
+        "byte_start": 4694643,
+        "byte_end": 4694681,
+        "line": 1633,
+        "column": 12874,
+        "source": "async()=>{await pe(`toggleSidePanel`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 38,
+      "utf16_start": 4674919,
+      "utf16_end": 4674967,
+      "byte_start": 4694941,
+      "byte_end": 4694989,
+      "line": 1633,
+      "column": 13172,
+      "commands": [
+        "findInThread"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "T[0]"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4674964,
+        "utf16_end": 4674966,
+        "byte_start": 4694986,
+        "byte_end": 4694988,
+        "line": 1633,
+        "column": 13217,
+        "source": "tt",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 39,
+      "utf16_start": 4674971,
+      "utf16_end": 4675213,
+      "byte_start": 4694993,
+      "byte_end": 4695235,
+      "line": 1633,
+      "column": 13224,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Find Next"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "r?`Command+G`:`Ctrl+G`"
+      },
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4675072,
+        "utf16_end": 4675212,
+        "byte_start": 4695094,
+        "byte_end": 4695234,
+        "line": 1633,
+        "column": 13325,
+        "source": "async()=>{if(await kX(`next`)||Be({type:`find-next`}))return;let e=await M();e!=null&&x.sendMessageToWindow(e,{type:`find-next-in-thread`})}",
+        "literal_message_types": [
+          "find-next",
+          "find-next-in-thread"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 40,
+      "utf16_start": 4675217,
+      "utf16_end": 4675483,
+      "byte_start": 4695239,
+      "byte_end": 4695505,
+      "line": 1633,
+      "column": 13470,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Find Previous"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "r?`Command+Shift+G`:`Shift+F3`"
+      },
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4675330,
+        "utf16_end": 4675482,
+        "byte_start": 4695352,
+        "byte_end": 4695504,
+        "line": 1633,
+        "column": 13583,
+        "source": "async()=>{if(await kX(`previous`)||Be({type:`find-previous`}))return;let e=await M();e!=null&&x.sendMessageToWindow(e,{type:`find-previous-in-thread`})}",
+        "literal_message_types": [
+          "find-previous",
+          "find-previous-in-thread"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 41,
+      "utf16_start": 4675487,
+      "utf16_end": 4675568,
+      "byte_start": 4695509,
+      "byte_end": 4695590,
+      "line": 1633,
+      "column": 13740,
+      "commands": [
+        "previousThread"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4675517,
+        "utf16_end": 4675567,
+        "byte_start": 4695539,
+        "byte_end": 4695589,
+        "line": 1633,
+        "column": 13770,
+        "source": "async(e,t,n)=>{await pe(`previousThread`,c9(e,n))}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 42,
+      "utf16_start": 4675572,
+      "utf16_end": 4675654,
+      "byte_start": 4695594,
+      "byte_end": 4695676,
+      "line": 1633,
+      "column": 13825,
+      "commands": [
+        "previousThread"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4675645,
+        "utf16_end": 4675653,
+        "byte_start": 4695667,
+        "byte_end": 4695675,
+        "line": 1633,
+        "column": 13898,
+        "source": "at.click",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 43,
+      "utf16_start": 4675658,
+      "utf16_end": 4675731,
+      "byte_start": 4695680,
+      "byte_end": 4695753,
+      "line": 1633,
+      "column": 13911,
+      "commands": [
+        "nextThread"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4675684,
+        "utf16_end": 4675730,
+        "byte_start": 4695706,
+        "byte_end": 4695752,
+        "line": 1633,
+        "column": 13937,
+        "source": "async(e,t,n)=>{await pe(`nextThread`,c9(e,n))}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 44,
+      "utf16_start": 4675735,
+      "utf16_end": 4675813,
+      "byte_start": 4695757,
+      "byte_end": 4695835,
+      "line": 1633,
+      "column": 13988,
+      "commands": [
+        "nextThread"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4675804,
+        "utf16_end": 4675812,
+        "byte_start": 4695826,
+        "byte_end": 4695834,
+        "line": 1633,
+        "column": 14057,
+        "source": "st.click",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 45,
+      "utf16_start": 4675817,
+      "utf16_end": 4675868,
+      "byte_start": 4695839,
+      "byte_end": 4695890,
+      "line": 1633,
+      "column": 14070,
+      "commands": [
+        "previousTab"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4675844,
+        "utf16_end": 4675867,
+        "byte_start": 4695866,
+        "byte_end": 4695889,
+        "line": 1633,
+        "column": 14097,
+        "source": "()=>{pe(`previousTab`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 46,
+      "utf16_start": 4675872,
+      "utf16_end": 4675915,
+      "byte_start": 4695894,
+      "byte_end": 4695937,
+      "line": 1633,
+      "column": 14125,
+      "commands": [
+        "nextTab"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4675895,
+        "utf16_end": 4675914,
+        "byte_start": 4695917,
+        "byte_end": 4695936,
+        "line": 1633,
+        "column": 14148,
+        "source": "()=>{pe(`nextTab`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 47,
+      "utf16_start": 4675919,
+      "utf16_end": 4676150,
+      "byte_start": 4695941,
+      "byte_end": 4696172,
+      "line": 1633,
+      "column": 14172,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "codex.command.toggleDebugModal",
+        "default_message": "Toggle Debug Panel"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "j(`toggleDebugModal`)[0]"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4676067,
+        "utf16_end": 4676149,
+        "byte_start": 4696089,
+        "byte_end": 4696171,
+        "line": 1633,
+        "column": 14320,
+        "source": "async()=>{let e=await M();e&&x.sendMessageToWindow(e,{type:`toggle-debug-modal`})}",
+        "literal_message_types": [
+          "toggle-debug-modal"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 48,
+      "utf16_start": 4676154,
+      "utf16_end": 4676427,
+      "byte_start": 4696176,
+      "byte_end": 4696449,
+      "line": 1633,
+      "column": 14407,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Open Deeplink from Clipboard"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4676198,
+        "utf16_end": 4676426,
+        "byte_start": 4696220,
+        "byte_end": 4696448,
+        "line": 1633,
+        "column": 14451,
+        "source": "()=>{g(O.clipboard.readText().trim())||O.dialog.showMessageBox({type:`info`,title:`Invalid Deeplink`,message:`Clipboard does not contain a valid codex:// deeplink.`,detail:`Copy a codex:// URL to the clipboard and try again.`})}",
+        "literal_message_types": [
+          "info"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 49,
+      "utf16_start": 4676431,
+      "utf16_end": 4676520,
+      "byte_start": 4696453,
+      "byte_end": 4696542,
+      "line": 1633,
+      "column": 14684,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Copy User ID"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4676459,
+        "utf16_end": 4676519,
+        "byte_start": 4696481,
+        "byte_end": 4696541,
+        "line": 1633,
+        "column": 14712,
+        "source": "async()=>{let e=await h();e!=null&&O.clipboard.writeText(e)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 50,
+      "utf16_start": 4676524,
+      "utf16_end": 4676740,
+      "byte_start": 4696546,
+      "byte_end": 4696762,
+      "line": 1633,
+      "column": 14777,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "debug.sidebarRamUsageIndicator.toggle",
+        "default_message": "Show/Hide RAM Usage"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4676643,
+        "utf16_end": 4676739,
+        "byte_start": 4696665,
+        "byte_end": 4696761,
+        "line": 1633,
+        "column": 14896,
+        "source": "async()=>{let e=await M();e!=null&&x.sendMessageToWindow(e,{type:`toggle-ram-usage-indicator`})}",
+        "literal_message_types": [
+          "toggle-ram-usage-indicator"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 51,
+      "utf16_start": 4676744,
+      "utf16_end": 4676897,
+      "byte_start": 4696766,
+      "byte_end": 4696919,
+      "line": 1633,
+      "column": 14997,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Toggle Query Devtools"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "literal",
+        "value": "CmdOrCtrl+Alt+Y"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4676811,
+        "utf16_end": 4676896,
+        "byte_start": 4696833,
+        "byte_end": 4696918,
+        "line": 1633,
+        "column": 15064,
+        "source": "async()=>{let e=await M();e&&x.sendMessageToWindow(e,{type:`toggle-query-devtools`})}",
+        "literal_message_types": [
+          "toggle-query-devtools"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 52,
+      "utf16_start": 4676901,
+      "utf16_end": 4677016,
+      "byte_start": 4696923,
+      "byte_end": 4697038,
+      "line": 1633,
+      "column": 15154,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Toggle React Scan"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4676934,
+        "utf16_end": 4677015,
+        "byte_start": 4696956,
+        "byte_end": 4697037,
+        "line": 1633,
+        "column": 15187,
+        "source": "async()=>{let e=await M();e&&x.sendMessageToWindow(e,{type:`toggle-react-scan`})}",
+        "literal_message_types": [
+          "toggle-react-scan"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 53,
+      "utf16_start": 4677378,
+      "utf16_end": 4677484,
+      "byte_start": 4697400,
+      "byte_end": 4697506,
+      "line": 1633,
+      "column": 15631,
+      "commands": [
+        "navigateBack"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4677406,
+        "utf16_end": 4677483,
+        "byte_start": 4697428,
+        "byte_end": 4697505,
+        "line": 1633,
+        "column": 15659,
+        "source": "async()=>{let e=await M();e&&x.sendMessageToWindow(e,{type:`navigate-back`})}",
+        "literal_message_types": [
+          "navigate-back"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 54,
+      "utf16_start": 4677488,
+      "utf16_end": 4677645,
+      "byte_start": 4697510,
+      "byte_end": 4697667,
+      "line": 1633,
+      "column": 15741,
+      "commands": [
+        "navigateForward"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": {
+        "status": "expression-unresolved",
+        "expression": "r?j(`navigateForward`)[0]:void 0"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4677564,
+        "utf16_end": 4677644,
+        "byte_start": 4697586,
+        "byte_end": 4697666,
+        "line": 1633,
+        "column": 15817,
+        "source": "async()=>{let e=await M();e&&x.sendMessageToWindow(e,{type:`navigate-forward`})}",
+        "literal_message_types": [
+          "navigate-forward"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 55,
+      "utf16_start": 4677649,
+      "utf16_end": 4678198,
+      "byte_start": 4697671,
+      "byte_end": 4698222,
+      "line": 1633,
+      "column": 15902,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.app.checkForUpdates",
+        "default_message": "Check for Updates…"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "!0"
+      },
+      "click": {
+        "utf16_start": 4677777,
+        "utf16_end": 4678197,
+        "byte_start": 4697801,
+        "byte_end": 4698221,
+        "line": 1633,
+        "column": 16030,
+        "source": "()=>{s9().info(`Check for updates requested via menu.`),f.checkForUpdates().then(()=>{if(f.hasUpdater())return;let e=f.getUnavailableReason()??`unknown`;s9().warning(`Desktop updater unavailable; init likely skipped.`,{safe:{reason:e},sensitive:{}}),O.dialog.showMessageBox({type:`info`,title:`Updates Unavailable`,message:`Automatic updates are unavailable right now.`,detail:`Updater initialization skipped: ${e}`})})}",
+        "literal_message_types": [
+          "info"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 56,
+      "utf16_start": 4678202,
+      "utf16_end": 4678343,
+      "byte_start": 4698226,
+      "byte_end": 4698367,
+      "line": 1633,
+      "column": 16455,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.app.quit",
+        "default_message": "Quit {appName}"
+      },
+      "role": {
+        "status": "literal",
+        "value": "quit"
+      },
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 57,
+      "utf16_start": 4678407,
+      "utf16_end": 4678517,
+      "byte_start": 4698431,
+      "byte_end": 4698541,
+      "line": 1633,
+      "column": 16660,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.app.services",
+        "default_message": "Services"
+      },
+      "role": {
+        "status": "literal",
+        "value": "services"
+      },
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 58,
+      "utf16_start": 4678537,
+      "utf16_end": 4678678,
+      "byte_start": 4698561,
+      "byte_end": 4698702,
+      "line": 1633,
+      "column": 16790,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.app.hide",
+        "default_message": "Hide {appName}"
+      },
+      "role": {
+        "status": "literal",
+        "value": "hide"
+      },
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 59,
+      "utf16_start": 4678679,
+      "utf16_end": 4678796,
+      "byte_start": 4698703,
+      "byte_end": 4698820,
+      "line": 1633,
+      "column": 16932,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.app.hideOthers",
+        "default_message": "Hide Others"
+      },
+      "role": {
+        "status": "literal",
+        "value": "hideOthers"
+      },
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 60,
+      "utf16_start": 4678797,
+      "utf16_end": 4678904,
+      "byte_start": 4698821,
+      "byte_end": 4698928,
+      "line": 1633,
+      "column": 17050,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.app.showAll",
+        "default_message": "Show All"
+      },
+      "role": {
+        "status": "literal",
+        "value": "unhide"
+      },
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 61,
+      "utf16_start": 4678931,
+      "utf16_end": 4679033,
+      "byte_start": 4698955,
+      "byte_end": 4699057,
+      "line": 1633,
+      "column": 17184,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "windowsMenuBar.file",
+        "default_message": "File"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 62,
+      "utf16_start": 4679037,
+      "utf16_end": 4679064,
+      "byte_start": 4699061,
+      "byte_end": 4699088,
+      "line": 1633,
+      "column": 17290,
+      "commands": [],
+      "label": null,
+      "role": {
+        "status": "literal",
+        "value": "appMenu"
+      },
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 63,
+      "utf16_start": 4679068,
+      "utf16_end": 4679170,
+      "byte_start": 4699092,
+      "byte_end": 4699194,
+      "line": 1633,
+      "column": 17321,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "windowsMenuBar.view",
+        "default_message": "View"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 64,
+      "utf16_start": 4679180,
+      "utf16_end": 4679273,
+      "byte_start": 4699204,
+      "byte_end": 4699297,
+      "line": 1633,
+      "column": 17433,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Browser Back"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4679225,
+        "utf16_end": 4679251,
+        "byte_start": 4699249,
+        "byte_end": 4699275,
+        "line": 1633,
+        "column": 17478,
+        "source": "()=>{Be({type:`go-back`})}",
+        "literal_message_types": [
+          "go-back"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 65,
+      "utf16_start": 4679280,
+      "utf16_end": 4679382,
+      "byte_start": 4699304,
+      "byte_end": 4699406,
+      "line": 1633,
+      "column": 17533,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Browser Forward"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4679328,
+        "utf16_end": 4679357,
+        "byte_start": 4699352,
+        "byte_end": 4699381,
+        "line": 1633,
+        "column": 17581,
+        "source": "()=>{Be({type:`go-forward`})}",
+        "literal_message_types": [
+          "go-forward"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 66,
+      "utf16_start": 4679422,
+      "utf16_end": 4679527,
+      "byte_start": 4699446,
+      "byte_end": 4699551,
+      "line": 1633,
+      "column": 17675,
+      "commands": [],
+      "label": {
+        "status": "expression-unresolved",
+        "expression": "je.label??`Toggle Sidebar`"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4679503,
+        "utf16_end": 4679526,
+        "byte_start": 4699527,
+        "byte_end": 4699550,
+        "line": 1633,
+        "column": 17756,
+        "source": "()=>pe(`toggleSidebar`)",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 67,
+      "utf16_start": 4679549,
+      "utf16_end": 4679725,
+      "byte_start": 4699573,
+      "byte_end": 4699749,
+      "line": 1633,
+      "column": 17802,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "codex.command.showWorkspaceTabView",
+        "default_message": "Full view"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4679694,
+        "utf16_end": 4679724,
+        "byte_start": 4699718,
+        "byte_end": 4699748,
+        "line": 1633,
+        "column": 17947,
+        "source": "()=>pe(`showWorkspaceTabView`)",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 68,
+      "utf16_start": 4679770,
+      "utf16_end": 4679979,
+      "byte_start": 4699794,
+      "byte_end": 4700003,
+      "line": 1633,
+      "column": 18023,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "settings.nav.browser-use",
+        "default_message": "Browser"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 69,
+      "utf16_start": 4679890,
+      "utf16_end": 4679970,
+      "byte_start": 4699914,
+      "byte_end": 4699994,
+      "line": 1633,
+      "column": 18143,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Copy Browser URL"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4679917,
+        "utf16_end": 4679944,
+        "byte_start": 4699941,
+        "byte_end": 4699968,
+        "line": 1633,
+        "column": 18170,
+        "source": "()=>{Be({type:`copy-url`})}",
+        "literal_message_types": [
+          "copy-url"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 70,
+      "utf16_start": 4680108,
+      "utf16_end": 4680178,
+      "byte_start": 4700132,
+      "byte_end": 4700202,
+      "line": 1633,
+      "column": 18361,
+      "commands": [],
+      "label": {
+        "status": "expression-unresolved",
+        "expression": "lt.label"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4680154,
+        "utf16_end": 4680162,
+        "byte_start": 4700178,
+        "byte_end": 4700186,
+        "line": 1633,
+        "column": 18407,
+        "source": "lt.click",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 71,
+      "utf16_start": 4680188,
+      "utf16_end": 4680254,
+      "byte_start": 4700212,
+      "byte_end": 4700278,
+      "line": 1633,
+      "column": 18441,
+      "commands": [],
+      "label": {
+        "status": "expression-unresolved",
+        "expression": "ut.label"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4680230,
+        "utf16_end": 4680238,
+        "byte_start": 4700254,
+        "byte_end": 4700262,
+        "line": 1633,
+        "column": 18483,
+        "source": "ut.click",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 72,
+      "utf16_start": 4680289,
+      "utf16_end": 4680312,
+      "byte_start": 4700313,
+      "byte_end": 4700336,
+      "line": 1633,
+      "column": 18542,
+      "commands": [],
+      "label": null,
+      "role": {
+        "status": "literal",
+        "value": "toggleDevTools"
+      },
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 73,
+      "utf16_start": 4680408,
+      "utf16_end": 4680516,
+      "byte_start": 4700432,
+      "byte_end": 4700540,
+      "line": 1633,
+      "column": 18661,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Zoom In"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "literal",
+        "value": "Ctrl+="
+      },
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4680493,
+        "utf16_end": 4680515,
+        "byte_start": 4700517,
+        "byte_end": 4700539,
+        "line": 1633,
+        "column": 18746,
+        "source": "async()=>{await vt(1)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 74,
+      "utf16_start": 4680522,
+      "utf16_end": 4680676,
+      "byte_start": 4700546,
+      "byte_end": 4700700,
+      "line": 1633,
+      "column": 18775,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "browserSidebar.zoomBanner.zoomIn",
+        "default_message": "Zoom In"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "literal",
+        "value": "CmdOrCtrl+Plus"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4680653,
+        "utf16_end": 4680675,
+        "byte_start": 4700677,
+        "byte_end": 4700699,
+        "line": 1633,
+        "column": 18906,
+        "source": "async()=>{await vt(1)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 75,
+      "utf16_start": 4680683,
+      "utf16_end": 4680837,
+      "byte_start": 4700707,
+      "byte_end": 4700861,
+      "line": 1633,
+      "column": 18936,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "browserSidebar.zoomBanner.zoomOut",
+        "default_message": "Zoom Out"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "literal",
+        "value": "CmdOrCtrl+-"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4680813,
+        "utf16_end": 4680836,
+        "byte_start": 4700837,
+        "byte_end": 4700860,
+        "line": 1633,
+        "column": 19066,
+        "source": "async()=>{await vt(-1)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 76,
+      "utf16_start": 4680838,
+      "utf16_end": 4680992,
+      "byte_start": 4700862,
+      "byte_end": 4701016,
+      "line": 1633,
+      "column": 19091,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.view.actualSize",
+        "default_message": "Actual Size"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "literal",
+        "value": "CmdOrCtrl+0"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4680970,
+        "utf16_end": 4680991,
+        "byte_start": 4700994,
+        "byte_end": 4701015,
+        "line": 1633,
+        "column": 19223,
+        "source": "async()=>{await yt()}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 77,
+      "utf16_start": 4680998,
+      "utf16_end": 4681095,
+      "byte_start": 4701022,
+      "byte_end": 4701119,
+      "line": 1633,
+      "column": 19251,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Zoom In"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4681042,
+        "utf16_end": 4681078,
+        "byte_start": 4701066,
+        "byte_end": 4701102,
+        "line": 1633,
+        "column": 19295,
+        "source": "()=>{Be({type:`step-zoom`,delta:1})}",
+        "literal_message_types": [
+          "step-zoom"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 78,
+      "utf16_start": 4681102,
+      "utf16_end": 4681201,
+      "byte_start": 4701126,
+      "byte_end": 4701225,
+      "line": 1633,
+      "column": 19355,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Zoom Out"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4681146,
+        "utf16_end": 4681183,
+        "byte_start": 4701170,
+        "byte_end": 4701207,
+        "line": 1633,
+        "column": 19399,
+        "source": "()=>{Be({type:`step-zoom`,delta:-1})}",
+        "literal_message_types": [
+          "step-zoom"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 79,
+      "utf16_start": 4681208,
+      "utf16_end": 4681300,
+      "byte_start": 4701232,
+      "byte_end": 4701324,
+      "line": 1633,
+      "column": 19461,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Actual Size"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4681250,
+        "utf16_end": 4681279,
+        "byte_start": 4701274,
+        "byte_end": 4701303,
+        "line": 1633,
+        "column": 19503,
+        "source": "()=>{Be({type:`reset-zoom`})}",
+        "literal_message_types": [
+          "reset-zoom"
+        ]
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 80,
+      "utf16_start": 4681377,
+      "utf16_end": 4681490,
+      "byte_start": 4701401,
+      "byte_end": 4701514,
+      "line": 1633,
+      "column": 19630,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "plugins.detail.information.developer",
+        "default_message": "Developer"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 81,
+      "utf16_start": 4681521,
+      "utf16_end": 4681631,
+      "byte_start": 4701545,
+      "byte_end": 4701655,
+      "line": 1633,
+      "column": 19774,
+      "commands": [],
+      "label": {
+        "status": "literal",
+        "value": "Toggle Full Screen"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "literal",
+        "value": "Command+Control+F"
+      },
+      "visible": {
+        "status": "expression-unresolved",
+        "expression": "!1"
+      },
+      "enabled": null,
+      "click": {
+        "utf16_start": 4681628,
+        "utf16_end": 4681630,
+        "byte_start": 4701652,
+        "byte_end": 4701654,
+        "line": 1633,
+        "column": 19881,
+        "source": "bt",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 82,
+      "utf16_start": 4681660,
+      "utf16_end": 4681800,
+      "byte_start": 4701684,
+      "byte_end": 4701824,
+      "line": 1633,
+      "column": 19913,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.view.toggleFullScreen",
+        "default_message": "Toggle Full Screen"
+      },
+      "role": null,
+      "accelerator": {
+        "status": "literal",
+        "value": "F11"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4681797,
+        "utf16_end": 4681799,
+        "byte_start": 4701821,
+        "byte_end": 4701823,
+        "line": 1633,
+        "column": 20050,
+        "source": "bt",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 83,
+      "utf16_start": 4681821,
+      "utf16_end": 4681895,
+      "byte_start": 4701845,
+      "byte_end": 4701919,
+      "line": 1633,
+      "column": 20074,
+      "commands": [],
+      "label": {
+        "status": "expression-unresolved",
+        "expression": "xe.label"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4681886,
+        "utf16_end": 4681894,
+        "byte_start": 4701910,
+        "byte_end": 4701918,
+        "line": 1633,
+        "column": 20139,
+        "source": "xe.click",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 84,
+      "utf16_start": 4682060,
+      "utf16_end": 4683620,
+      "byte_start": 4702084,
+      "byte_end": 4703644,
+      "line": 1633,
+      "column": 20313,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "windowsMenuBar.help",
+        "default_message": "Help"
+      },
+      "role": {
+        "status": "literal",
+        "value": "help"
+      },
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 85,
+      "utf16_start": 4682172,
+      "utf16_end": 4682347,
+      "byte_start": 4702196,
+      "byte_end": 4702371,
+      "line": 1633,
+      "column": 20425,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "loadingPage.documentationLink",
+        "default_message": "Documentation"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4682277,
+        "utf16_end": 4682346,
+        "byte_start": 4702301,
+        "byte_end": 4702370,
+        "line": 1633,
+        "column": 20530,
+        "source": "()=>{O.shell.openExternal(`https://developers.openai.com/codex/app`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 86,
+      "utf16_start": 4682348,
+      "utf16_end": 4682430,
+      "byte_start": 4702372,
+      "byte_end": 4702454,
+      "line": 1633,
+      "column": 20601,
+      "commands": [
+        "showKeyboardShortcuts"
+      ],
+      "label": null,
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4682385,
+        "utf16_end": 4682429,
+        "byte_start": 4702409,
+        "byte_end": 4702453,
+        "line": 1633,
+        "column": 20638,
+        "source": "async()=>{await pe(`showKeyboardShortcuts`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 87,
+      "utf16_start": 4682431,
+      "utf16_end": 4682600,
+      "byte_start": 4702455,
+      "byte_end": 4702624,
+      "line": 1633,
+      "column": 20684,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "sidebarHelp.whatsNew",
+        "default_message": "What's New"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4682524,
+        "utf16_end": 4682599,
+        "byte_start": 4702548,
+        "byte_end": 4702623,
+        "line": 1633,
+        "column": 20777,
+        "source": "()=>{O.shell.openExternal(`https://developers.openai.com/codex/changelog`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 88,
+      "utf16_start": 4682620,
+      "utf16_end": 4682821,
+      "byte_start": 4702644,
+      "byte_end": 4702845,
+      "line": 1633,
+      "column": 20873,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.help.troubleshooting",
+        "default_message": "Troubleshooting"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4682735,
+        "utf16_end": 4682820,
+        "byte_start": 4702759,
+        "byte_end": 4702844,
+        "line": 1633,
+        "column": 20988,
+        "source": "()=>{O.shell.openExternal(`https://developers.openai.com/codex/app/troubleshooting`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 89,
+      "utf16_start": 4682822,
+      "utf16_end": 4682988,
+      "byte_start": 4702846,
+      "byte_end": 4703012,
+      "line": 1633,
+      "column": 21075,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.help.systemStatus",
+        "default_message": "System Status"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4682932,
+        "utf16_end": 4682987,
+        "byte_start": 4702956,
+        "byte_end": 4703011,
+        "line": 1633,
+        "column": 21185,
+        "source": "()=>{O.shell.openExternal(`https://status.openai.com`)}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 90,
+      "utf16_start": 4682989,
+      "utf16_end": 4683097,
+      "byte_start": 4703013,
+      "byte_end": 4703121,
+      "line": 1633,
+      "column": 21242,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "artifactFeedback.button.label",
+        "default_message": "Send Feedback"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4683094,
+        "utf16_end": 4683096,
+        "byte_start": 4703118,
+        "byte_end": 4703120,
+        "line": 1633,
+        "column": 21347,
+        "source": "me",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 91,
+      "utf16_start": 4683117,
+      "utf16_end": 4683253,
+      "byte_start": 4703141,
+      "byte_end": 4703277,
+      "line": 1633,
+      "column": 21370,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.help.taskManager",
+        "default_message": "Task Manager"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": null,
+      "click": {
+        "utf16_start": 4683225,
+        "utf16_end": 4683252,
+        "byte_start": 4703249,
+        "byte_end": 4703276,
+        "line": 1633,
+        "column": 21478,
+        "source": "()=>O.app.showTaskManager()",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 92,
+      "utf16_start": 4683304,
+      "utf16_end": 4683535,
+      "byte_start": 4703328,
+      "byte_end": 4703559,
+      "line": 1633,
+      "column": 21557,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.trace.restartStartup",
+        "default_message": "Restart and Record Startup Performance"
+      },
+      "role": null,
+      "accelerator": null,
+      "visible": null,
+      "enabled": {
+        "status": "expression-unresolved",
+        "expression": "!_.b()&&fJ()===`idle`"
+      },
+      "click": {
+        "utf16_start": 4683500,
+        "utf16_end": 4683534,
+        "byte_start": 4703524,
+        "byte_end": 4703558,
+        "line": 1633,
+        "column": 21753,
+        "source": "()=>{!_.b()&&fJ()===`idle`&&_.x()}",
+        "literal_message_types": []
+      },
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    },
+    {
+      "candidate": 93,
+      "utf16_start": 4683836,
+      "utf16_end": 4684010,
+      "byte_start": 4703860,
+      "byte_end": 4704034,
+      "line": 1633,
+      "column": 22089,
+      "commands": [],
+      "label": {
+        "status": "localized-default",
+        "message_id": "electron.appMenu.edit.pasteAndMatchStyle",
+        "default_message": "Paste and Match Style"
+      },
+      "role": {
+        "status": "literal",
+        "value": "pasteAndMatchStyle"
+      },
+      "accelerator": {
+        "status": "literal",
+        "value": "Command+Shift+V"
+      },
+      "visible": null,
+      "enabled": null,
+      "click": null,
+      "provenance": "official-packaged-static-candidate",
+      "runtime": "unaccepted"
+    }
+  ],
+  "limits": [
+    "Objects inside the builder are candidates, not a complete evaluated menu tree",
+    "Conditional feature flags and runtime platform branches are preserved in source, not evaluated",
+    "N/j/L helper commands and accelerator expressions remain unresolved",
+    "Referenced edit/window-menu builder and runtime command registry are outside this bounded extraction",
+    "No packaged code executed; no keyboard or display acceptance"
+  ]
+}

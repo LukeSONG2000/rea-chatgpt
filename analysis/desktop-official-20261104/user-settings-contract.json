@@ -1,0 +1,18 @@
+{
+  "status": "partial",
+  "source": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "utf8_offset": 2360498,
+  "excerpt": "function mIt(e,{bypassServerCache:t=!1,signal:n}={}){let r=e.get(Hb),i={accountId:r,userId:e.get($)},a=e.get(Av),o=e.get(fIt,i),s=e.get(FIt,i),c=e.query.snapshot(Qb),l=e.get(Zb),{Request:u}=await Q(async()=>{let{Request:e}=await import(`./chatgpt-request-bfddc2c96278.js`);return{Request:e}},[],import.meta.url),d=e.get(dFt)?{settings:{precise_location_allowed:!0}}:await(async(e=n)=>u.safeGet(`/settings/user`,{additionalHeaders:{...r==null?{}:{\"ChatGPT-Account-ID\":r,[Mi]:r},...t?{\"Oai-Ep-Cache-Bypass\":`true`}:{}},signal:e}))().catch(async e=>{throw e}),f=LIt.parse(d);if(!n?.aborted&&e.get(Hb)===r&&e.get($)===i.userId&&f.settings?.precise_location_allowed!==!0&&AFt()&&Wb(),!n?.aborted&&r!=null&&a!=null&&e.get(q_)===r&&e.get(Av)===a&&e.get(FIt,i)===s&&f.settings?.sidebar_customization!=null&&nIt(e,{accountId:r,userId:a},f.settings.sidebar_customization),typeof f.announcements?.[`oai/apps/hasCompletedTppOnboarding`]==`string`||f.announcements?.[`oai/apps/hasSeenOnboarding`],!n?.aborted&&i.userId!=null&&e.get(Hb)===r&&e.get($)===i.userId&&i.userId,n?.aborted||e.set(dIt,i,e=>e+1),!n?.aborted&&r!=null&&e.get(Hb)===r&&e.get($)===i.userId&&e.get(Av)===a&&f.flags?.bazaar?.consent_required===!0&&f.flags.bazaar_personalization_unavailable!==!0&&e.get(mx,{name:`chatgpt.ads`}).isCapable)try{Kb(e,tFt,{action:VPt.CHATGPT_ADS_CONSENT_MODAL_ACTION_TYPE_CONSENT_REQUIRED_FLAG_RECEIVED,consentRequired:!0,selectionPreselected:!1})}catch{}return{accessoryId:f.settings?.accessory_id,imageGenHoldoutActive:f.flags?.image_gen_holdout_active===!0,imageGenEnabled:f.settings?.image_gen_enabled===!0,bazaa",
+  "fixture": {
+    "settings": {
+      "lockdown_mode_enabled": false,
+      "training_allowed": false
+    }
+  },
+  "verified": "v23 original parser accepts response and settings query succeeds; original error toast disappears",
+  "limits": [
+    "Synthetic user setting, no real account settings modified",
+    "Other settings and model/initialization contracts incomplete"
+  ]
+}

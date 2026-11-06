@@ -1,0 +1,51 @@
+{
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "feedback": [
+    "IOS-VIS-001",
+    "IOS-VIS-002",
+    "IOS-VIS-003"
+  ],
+  "host_observation": {
+    "cornerRadius": "54 provisional third-party metric on content navigation root, actual visible clipping unaccepted",
+    "shadow": "no shadow layer/configuration",
+    "transition": "immediate isMenuOpen and layoutIfNeeded, no animator"
+  },
+  "official_observation": {
+    "corner_calls": [
+      "0x6285f4",
+      "0x628640",
+      "0x628680"
+    ],
+    "shadow_radius": {
+      "site": "0x6288b8",
+      "value": 14
+    },
+    "shadow_opacity": {
+      "site": "0x62889c",
+      "constant_address": "0x7d19410",
+      "value": 0.15000000596046448,
+      "conditional": true
+    },
+    "shadow_offset": {
+      "site": "0x6288d8",
+      "x": "-2 * direction result from 0x629f74",
+      "y": 0
+    },
+    "shadow_path_site": "0x62892c"
+  },
+  "limits": [
+    "Exact receiver layer and activation condition require binding",
+    "Radius computation v8 originates earlier calls, not a recovered fixed 54",
+    "No user device changes, no original target execution",
+    "Animator creation/timing and gesture interruption still pending"
+  ],
+  "next_minimum_evidence": [
+    "Bind 0x6f486c layer receiver",
+    "Resolve branch 0x628788..0x62882c",
+    "Trace radius computation 0x217680 and animator construction"
+  ]
+}

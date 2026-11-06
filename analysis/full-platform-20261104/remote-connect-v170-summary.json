@@ -1,0 +1,60 @@
+{
+  "status": "partial",
+  "authority": "independent selected-host persistence plus actual original Connect failure UI",
+  "sources": [
+    {
+      "path": "implementation/desktop-web/application-state.cjs",
+      "sha256": "ce90bc9f5191c053f9aa04096ce5dfdbc81509dfc9a02b59f65a96b636fd816e"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-selection-store.cjs",
+      "sha256": "fc8fd1c5147ec716830968aee7f3925281b8762fd864f40440974439db70f8ca"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-selected-host.cjs",
+      "sha256": "c1b1f699482ab4592a98291ddc4f2e7ec94df2f0772ef674e917e8255cd3a589"
+    }
+  ],
+  "selectedHost": "host-b",
+  "selectionRestoredAfterProcessRestart": true,
+  "unsupportedConnectErrorVisible": true,
+  "verified": [
+    "selected-remote-host-id restricted to paired and already added host IDs",
+    "Removal clears matching selected host; legacy missing field reads null",
+    "Actual original UI writes selection and new process restores host-b",
+    "Original Connect switch is enabled and clickable; actual failure toast observed",
+    "Existing and extended store tests, Mac signature and Mac/Windows hashes pass"
+  ],
+  "reports": [
+    "remote-connect-v170-selection-unit.json",
+    "remote-connect-v170-existing-unit.log",
+    "remote-connect-v170-runtime.json",
+    "remote-connect-v170-contract.json",
+    "remote-connect-v170-hashes.json",
+    "remote-connect-v170-cache-archive.json"
+  ],
+  "builds": {
+    "macos": "implementation/desktop/dist/v170-macos/REA ChatGPT Offline.app",
+    "windows": "implementation/desktop/dist/v170-windows/REA ChatGPT Offline/REA ChatGPT Offline.exe"
+  },
+  "nextBoundary": {
+    "method": "remoteConnections.setAutoConnect",
+    "input": [
+      "hostId",
+      "autoConnect"
+    ],
+    "consumedResult": [
+      "remoteConnections",
+      "state",
+      "error"
+    ],
+    "required": "per-host attach/detach lifecycle backed by real local owner and original manager; never merely rewrite state"
+  },
+  "limits": [
+    "setAutoConnect remains absent; device stays Disconnected",
+    "host-id-remote-control-allowed remains unsupported and is not granted automatically",
+    "No successful remote session or task UI acceptance",
+    "Windows OS not executed; no model call",
+    "v168 independent source/evidence archived with verified hashes before deleting superseded package copies; v169 rollback retained"
+  ]
+}

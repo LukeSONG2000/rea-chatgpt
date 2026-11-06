@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {attachPendingBranchCapture} from './desktop-pending-branch-adapter.mjs';
+let listener,removed=false;const document={addEventListener:(type,f)=>{listener=f},removeEventListener:()=>{removed=true}},events=[];
+const service={async branch(input){return {clientThreadId:'local-chatgpt:test',conversation:{source:input.conversationId}}}},original=service.branch;
+const adapter=attachPendingBranchCapture(service,{document,capture:async x=>events.push(['capture',x]),savePrompt:async(...args)=>events.push(['prompt',...args])});
+listener({target:{closest:()=>({innerText:'ignored before branch'})}});assert.equal(events.length,0);
+await service.branch({conversationId:'source',messageId:'message'});listener({target:{closest:()=>({innerText:' draft\n'})}});await Promise.resolve();
+assert.equal(events[0][1].sourceId,'source');assert.deepEqual(events[1],['prompt','local-chatgpt:test',1,' draft\n']);
+adapter.dispose();assert.equal(service.branch,original);assert.equal(removed,true);listener({target:{closest:()=>({innerText:'late'})}});assert.equal(events.length,2);
+console.log('passed: source identity capture, no pre-branch input, exact draft text, sequence identity, disposal');

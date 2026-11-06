@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "authority": "independent metadata transport validation",
+  "checks": [
+    "foreign thread/schema rejected",
+    "invalid and reversed timestamps rejected",
+    "legacy null timestamps preserved",
+    "unknown fields omitted"
+  ],
+  "limits": [
+    "No official schema compatibility or renderer execution"
+  ]
+}

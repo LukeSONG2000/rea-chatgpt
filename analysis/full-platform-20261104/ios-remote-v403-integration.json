@@ -1,0 +1,71 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official artifact static and selected resource reuse; independent native adapter and synthetic fixtures",
+  "observations": [
+    {
+      "offset": "0x95f20c0 / accessor0x2ded33c / metadata0xa5f62d0",
+      "conclusion": "CommandExecutionThreadItem status at0xa8, durationMs at0x38 with Optional nil byte0x40; metadata offsets verified."
+    },
+    {
+      "offset": "0x7f215e0 -> rawValue witness0x2e81c1c ->0x2c8e538 ->0x2c8e4bc",
+      "conclusion": "KnownCommandExecutionStatus rawValue uses jump bytes [7,0,1,2] at0x7ef1bc8. Tag0 returns preloaded inProgress;1 helper0x2e8a3f4 completed;2 helper0x2e8ceb4 failed;3 inline declined. Case order corroborated by getter, not metadata alone."
+    },
+    {
+      "offset": "0x1a3cd08..0x1a3cd50",
+      "conclusion": "Ordinary summary compares status payload with constant03/zero bytes at0x7cd95d0 plus wrapper tag0; equality retains incoming summary."
+    },
+    {
+      "offset": "0x1a3cd54..0x1a3cd84",
+      "conclusion": "Absent duration retains summary; Int64 durationMs divided by1000.0 at0x7cd9630; less than1second or formatter nil retains summary."
+    },
+    {
+      "offset": "0x1d7bc68 ->0x1a3173c; factory0x1a42158",
+      "conclusion": "Uses the same duration formatter factory as running summary, whose settings were traced in v353."
+    },
+    {
+      "offset": "0x1a3cd94..0x1a3ce88",
+      "conclusion": "Optional display command selects ran_command_duration or ran_duration original key at0x88b2430/0x88b2470; does not assert success."
+    },
+    {
+      "offset": "0x1a3a894..0x1a3a8b4",
+      "conclusion": "Running predicate also has upstream x7 suppression; payload low byte0 and wrapper tag!=1 when unsuppressed. Action-specific branch still intervenes; full selector is not integrated."
+    }
+  ],
+  "integration": [
+    "Added ordinary fixed-duration component with original body font and tertiary color. No TimelineView for ordinary summary.",
+    "Mutually exclusive running/ordinary presentation enum is an independent frontend boundary; raw statuses and upstream summary retained.",
+    "Completed/failed synthetic tasks supply explicit command item presentations, not a conversion from task activity.",
+    "Declined fixture flag tests upstream-summary preservation even with65000ms duration.",
+    "Reused2 original templates across64 compressed tables;10 keys across65 locale tables total, including main-app locale coverage."
+  ],
+  "validation": {
+    "host_typecheck": "passed; existing3 UIKit warnings",
+    "foundation": "passed boundary/status/optional command and256 original templates",
+    "ui_test_syntax": "passed; new testRemoteOrdinaryCommandSummary not run and not selected by pending test",
+    "project": "plist lint and new source reference/build-phase binding passed",
+    "runtime": "pending original session42359; processes97181/97184/97197 verified live, Xcode first-launch authorization unresolved",
+    "preview": "existingPID87483 left open; not updated",
+    "phone_updated": false,
+    "retention": "no stale targets"
+  },
+  "limits": [
+    "Full upstream suppression flag/action classification not recovered; do not claim all status projection is official.",
+    "Caller fallback summaries and task content are synthetic. No official application or service run.",
+    "No visual, accessibility, device language or timer transition acceptance from typecheck/Foundation tests.",
+    "Android consumer and duration formatting remain independently unverified; share proposed contract/test vectors only after separate proof."
+  ],
+  "next_minimal_action": "Resolve owner of x7 suppression input at caller0x1a3a25c and action-specific command branch before replacing explicit fixture running/ordinary selection; run pending interaction suites once simulator authorization completes.",
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "629878b067f48cbb1a3475a6d532ff38414551be57dbe473d72e046651684b95",
+    "implementation/ios/Sources/RemoteCommandSummary.swift": "6b78286349d5a7da325096eb3b85de9453f658460f1a4a8c7fc2dd563f8392db",
+    "implementation/ios/Sources/OfficialText.swift": "bbf9c81698d33935d1b55a46e689756b77ceff1d143e116d53b51f1e68328e0b",
+    "implementation/ios/Resources/OfficialTranslations.json": "f9eb07c25c549e85bdc9be6da14d7fdd754a00b55f7098111d9cba6d45235916",
+    "implementation/ios/Tools/prepare-official-text.py": "63d31c62893c1cc8e4f6d647c257c07d7a6c1e6c8478c03c3b2def7841dbe55e",
+    "implementation/ios/TextTests/main.swift": "aaee3d81943e5fee03a7a738fd5af8a3303f6ab28ef0bc7c834391efa5a24c0d",
+    "implementation/ios/UITests/HostInteractionTests.swift": "d02e6504059e7b850dfc3fec39422b2aefa7f32f49f4344c3d553580146ce0d0",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "3ceb367872ac4cf97b5ed9b9058777aa16f89665aaf7e06a8aa0763456b7f360"
+  }
+}

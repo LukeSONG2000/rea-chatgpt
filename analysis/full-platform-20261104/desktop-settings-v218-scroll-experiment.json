@@ -1,0 +1,10 @@
+{
+  "status": "experimental-not-deployed",
+  "userConstraint": "Source-first restoration; no direct custom replacement as recovered behavior",
+  "observedCause": "HIr retained-page Fragment key changes from route:/settings/general-settings to route:/settings/worktrees, remounting settings sidebar",
+  "baselineTrace": "desktop-settings-v217-scroll-chain.json",
+  "experiment": "Digest-bound app-primary key override retained node and offset; behavior probe only",
+  "experimentResult": "desktop-settings-v218-scroll-fix.json",
+  "rollback": "Removed response transform from main.cjs and build dependency list; original input artifact never modified; user preview never received this experiment",
+  "remaining": "Find and restore original settings workspace/destination integration; preserve source-bound experimental evidence"
+}

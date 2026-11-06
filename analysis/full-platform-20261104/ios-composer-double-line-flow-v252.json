@@ -1,0 +1,56 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static data flow",
+  "status": "partial",
+  "source_predicate": {
+    "start": "0x4c4fa78",
+    "end_exclusive": "0x4c4fb4c",
+    "called_at": "0x4c4e5bc",
+    "result_saved_at": "0x4c4e5c0",
+    "frame_slot": "x19+0xc4"
+  },
+  "constructor_argument": {
+    "call": "0x4c4edb0",
+    "initializer": "0x4c50afc",
+    "register": "w4",
+    "load_and_mask": [
+      "0x4c4ed80",
+      "0x4c4ed84"
+    ],
+    "spill": "x29-0x1ec",
+    "spill_site": "0x4c50b30",
+    "field_offset_lookup": "0x4c50ed0",
+    "write_helper": "0x154a71c"
+  },
+  "field_metadata": {
+    "descriptor": "0x9673bd0",
+    "type": "MessageInputView",
+    "field_index": 6,
+    "field_name": "isDoubleLineLayoutEnabled",
+    "field_vector_word_offset": 24,
+    "offset_entry_relative_to_metadata": "0xd8",
+    "metadata_accessor": "0x4ee1f8c"
+  },
+  "content_transfer": {
+    "function": "0x4cb8004",
+    "read_offset_pair": "0x4cb8104",
+    "load_byte": "0x4cb8114",
+    "spill": "x29-0x18c",
+    "spill_site": "0x4cb811c",
+    "reload_site": "0x4cb85b8",
+    "write_site": "0x4cb85bc",
+    "target": "MessageInputViewContent+0x2a"
+  },
+  "validation": {
+    "descriptor_accessor_and_vector_assertions": "passed",
+    "six_instruction_assertions": "passed"
+  },
+  "remaining": [
+    "Identify semantic names of calls within 0x4c4fa78",
+    "Confirm state owner at predicate input",
+    "Confirm live main-chat branch and native rendering",
+    "No preview changes or visual acceptance"
+  ]
+}

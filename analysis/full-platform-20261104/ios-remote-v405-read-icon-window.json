@@ -1,0 +1,61 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x74f51e8",
+    "end_exclusive": "0x74f523c",
+    "sha256": "3a561d97d10ce055f756f803bdfc8a61bbd56bcccefffa50abc90f4bf19e9f11"
+  },
+  "linker_function_starts_in_window": [
+    "0x74f51e8",
+    "0x74f5234"
+  ],
+  "next_linker_function_start": "0x74f5280",
+  "direct_calls": [
+    {
+      "site": "0x74f51f4",
+      "target": "0xe4cfe0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f51f8",
+      "target": "0x14b2d8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f5208",
+      "target": "0x7502b98",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f5210",
+      "target": "0x7502c1c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f521c",
+      "target": "0x7503350",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f5220",
+      "target": "0x7502bec",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f5224",
+      "target": "0x7503584",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

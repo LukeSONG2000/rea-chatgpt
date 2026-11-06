@@ -1,0 +1,45 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "static inference",
+  "owner": {
+    "class": "_TtC14ChatGPTWhisper24ComposerWhisperViewModel",
+    "address": "0xadd4d08",
+    "fields": {
+      "_stateStorage": "0xb1c5118",
+      "_usesWaveformRevealUI": "0xb1c50e0",
+      "composerVariant": "0xb07d9e0",
+      "streamingVariant": "0xb1c51e8"
+    }
+  },
+  "getter_chain": [
+    "0x179d9dc forwards self x24",
+    "0x16e521c passes offset storage 0xb1c50e0",
+    "0x16f1784 reads byte at owner plus stored offset"
+  ],
+  "uses_expandable_controls": {
+    "range": [
+      "0x16e52fc",
+      "0x16e5320"
+    ],
+    "rule": "usesWaveformRevealUI OR (unsigned composerVariant > 1 AND composerVariant != 6)",
+    "symbolic_enum_mapping": "unknown"
+  },
+  "content_call_chain": [
+    "0x4cb9838 -> 0x4cbc0e8 at 0x4cb99e0",
+    "0x4cbc0e8 -> 0x4cba130 at 0x4cbc418"
+  ],
+  "validation": {
+    "owner_field_assertions": "passed",
+    "conditional_compare_flags_all_256_byte_values": "passed in independent replay",
+    "tests": 6
+  },
+  "unknowns": [
+    "Main-chat concrete owner injection not fully traced",
+    "isDoubleLineLayoutEnabled upstream assignment",
+    "Raw variant and source-state tag semantic mapping",
+    "Runtime and visual equivalence"
+  ]
+}

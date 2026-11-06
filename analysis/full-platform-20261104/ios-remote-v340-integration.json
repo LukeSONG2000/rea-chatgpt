@@ -1,0 +1,53 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "evidence": {
+    "consumer": "CodexRemoteFileChangeSummaryRowPart",
+    "body": "0x19c4858",
+    "content": "0x19c4b68",
+    "alignment": "lastTextBaseline at 0x19c4b78",
+    "spacing": "6 at 0x19c4b7c",
+    "optional_counts": "0x19c4d48..0x19c4d5c",
+    "format_tag": "0 at 0x19c4d5c",
+    "font": "caption factory 0x74e27b8 at 0x19c4d60",
+    "fixed_size": "0x101 at 0x19c4d9c",
+    "component_type": "DiffSummaryLabel in records 0x7e1db00/08/10/28"
+  },
+  "integration": [
+    "Message summary reuses diff label with caption and noncompact format",
+    "Inner summary lastTextBaseline spacing 6",
+    "Explicit synthetic 1/1 counts for shown one-line diff"
+  ],
+  "limitations": [
+    "Title formatter and optional count projection remain partial",
+    "Font modifier after caption not fully resolved",
+    "No official runtime executed",
+    "Android consumers not yet independently traced"
+  ],
+  "next": {
+    "type": "OAIMarkdown.MarkdownCodeBlock",
+    "descriptor": "0x96fd7e4",
+    "body_witness": "0x6901614",
+    "fields_of_interest": [
+      "__disableCopyButton",
+      "includeHeader",
+      "selectionHandlers",
+      "menus",
+      "codeBlockActions",
+      "headerTitle",
+      "preview"
+    ]
+  },
+  "validation": {
+    "v340": "failed immediate collapse assertion",
+    "v340b": "failed collapse after bounded wait; not timing-only",
+    "v340c": "passed 1/0 with explicit chevron taps",
+    "visual": "settled screenshot inspected: counts and full explanatory text visible",
+    "remaining_issue": "center hit on expanded disclosure did not collapse; official hit geometry not restored",
+    "phone": "not updated",
+    "retention": "no stale targets"
+  }
+}

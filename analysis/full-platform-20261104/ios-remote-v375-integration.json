@@ -1,0 +1,46 @@
+{
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "shipped-artifact-static-instructions",
+  "component": "CodexRemoteTaskRowTrailingStateIndicatorsPart",
+  "observations": [
+    {
+      "offset": "0x45d818",
+      "conclusion": "Metadata helper dispatches to component accessor 0x43caa0."
+    },
+    {
+      "offset": "0x3a45bc",
+      "conclusion": "Double 30 passed to ScaledMetric.init(wrappedValue:) at 0x3a45e8; destination uses metadata field offset +0x20 (_statusIndicatorWidth)."
+    },
+    {
+      "offset": "0x3a45f0",
+      "conclusion": "Double 24 passed to ScaledMetric.init(wrappedValue:) at 0x3a4604; destination uses metadata field offset +0x24 (_statusIndicatorHeight)."
+    },
+    {
+      "offset": "0x3a563c",
+      "conclusion": "No-pending activity branch reads width before framing; pending branch bypasses it."
+    },
+    {
+      "offset": "0x3a56b4",
+      "conclusion": "Merged pending/activity result reads height before framing."
+    }
+  ],
+  "implementation": "NativeConversationHost.swift: restore separately scaled width30/height24; pending pill retains natural width. Failed glyph20 remains independent adapter.",
+  "limitations": [
+    "Original application not executed.",
+    "Additional activity visibility gate remains unresolved.",
+    "Outer list layout and failed glyph size remain partial.",
+    "Whole-page visual and physical-device parity not established."
+  ],
+  "validation": {
+    "simulator": "testRemoteTaskScopeAndReturn passed 1/0",
+    "screenshot": "ios-remote-v375-screenshots/E4D2871A-8B64-4B4B-8184-629417B20EDA.png inspected; no title/status overlap observed",
+    "preview_pid": 84667,
+    "physical_device": "not updated",
+    "external_display": "not reverified",
+    "retention": "dry run no stale targets"
+  }
+}

@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {createFixtureHost} from './desktop-fixture-services.mjs';
+import {createHistoryStore} from './desktop-history-store.cjs';
+globalThis.location={origin:'https://offline.invalid'};
+const fixture=JSON.parse(fs.readFileSync(new URL('../desktop-official-20261104/history-fixture-replay.json',import.meta.url))).converted_fixture;
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'rea-delete-'));
+try{
+ const store=createHistoryStore(dir);globalThis.__reaSaveHistories=h=>store.save(h);
+ const make=restoredHistories=>createFixtureHost({Wst:class{}},{scenario:'synthetic-account',historyFixture:fixture,restoredHistories}).host.services;
+ const services=make(),http=services.httpFetch,a='offline-fixture-conversation-001',b='offline-fixture-conversation-002';
+ const send=id=>http.fetch(id,{method:'POST',url:'/f/conversation',body:JSON.stringify({conversation_id:id,parent_message_id:'offline-assistant-'+id.slice(-3),messages:[{id:'user-'+id}]})});
+ const sa=await send(a),sb=await send(b);
+ await http.fetch('delete',{method:'DELETE',url:'/conversation/id/'+a});
+ await services.localThreadCatalog.notifyThread({hostId:'chatgpt:offline-fixture-account:offline-fixture-user',threadId:a},'remove');
+ await assert.rejects(services.localThreadCatalog.notifyThread({hostId:'chatgpt:offline-fixture-account:offline-fixture-user',threadId:a},'refresh'),/Unknown catalog/);
+ await assert.rejects(services.localThreadCatalog.notifyThread({hostId:'chatgpt:offline-fixture-account:offline-fixture-user',threadId:'foreign'},'remove'),/Unknown catalog/);
+ assert.equal(await sa.response.text(),'');assert.ok((await sb.response.text()).includes('message_stream_complete'));
+ await assert.rejects(http.fetch('read',{method:'GET',url:'/conversation/'+a}),/unsupported/);
+ const reloaded=make(store.load());assert.equal(store.load().length,1);
+ await reloaded.localThreadCatalog.setSourceEnabled({kind:'chatgpt',accountId:'offline-fixture-account'},true);
+ assert.equal(reloaded.localThreadCatalog.readThreadCount('chatgpt:offline-fixture-account:offline-fixture-user'),1);
+ await reloaded.httpFetch.fetch('delete-last',{method:'DELETE',url:'/conversation/id/'+b});assert.deepEqual(store.load(),[]);
+ await assert.rejects(make(store.load()).httpFetch.fetch('read',{method:'GET',url:'/conversation/'+b}),/unsupported/);
+ const failing=make();globalThis.__reaSaveHistories=()=>{throw Error('disk failure')};
+ await assert.rejects(failing.httpFetch.fetch('fail',{method:'DELETE',url:'/conversation/id/'+a}),/disk failure/);
+ await failing.localThreadCatalog.setSourceEnabled({kind:'chatgpt',accountId:'offline-fixture-account'},true);assert.equal(failing.localThreadCatalog.readThreadCount('chatgpt:offline-fixture-account:offline-fixture-user'),2);
+ console.log('PASS: delete cancels only target stream, preserves parallel conversation, no fallback resurrection, cold empty-store restoration, write failure retained catalog');
+}finally{delete globalThis.__reaSaveHistories;fs.rmSync(dir,{recursive:true,force:true})}

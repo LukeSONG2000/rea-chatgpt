@@ -1,0 +1,4440 @@
+{
+  "metadata": {
+    "node_version": "v24.14.1",
+    "prior_exposure": "Retrospective split. Historical reports/tools already used this corpus; prior exposure cannot be excluded. Holdout is a future change-control partition, not independent semantic validation.",
+    "schema_version": 1,
+    "scope": "static_only",
+    "split_policy": "SHA256(rea-chatgpt/module-split/v1:<module>) integer modulo 5: 0 holdout, otherwise calibration; identical module names stay together across platforms",
+    "tool_sha256": "92398186bd462554549cdfaf798ad358b58acdbec75870e907575879b09030a4",
+    "tool_version": "1.0.0",
+    "validation": "Archive payload hash verification and Node vm.Script compilation only; no evaluation or behavior testing",
+    "version_label_source": "existing recovered directory names; not independent build equivalence"
+  },
+  "modules": [
+    {
+      "container": "recovered/android-1.2026.293/base/assets/address_autocomplete.valdimodule",
+      "container_sha256": "adf2de183c11ae4bde7f6e4a8b371c8bd64db6fb99f94a1b618245e63470b77b",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "address_autocomplete",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/audio_player.valdimodule",
+      "container_sha256": "c8cf139dbcb02f4a869a8067c25e3c508caaeb0f10f3372e9084c64a9d7a4136",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "audio_player",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/bridge_observables.valdimodule",
+      "container_sha256": "5b64da12a8f6cb5fa3062348d3337f338644db2713ea504eec338eeb05500c5f",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 12
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "bridge_observables",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 14
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/cel.valdimodule",
+      "container_sha256": "e878514d9601329415ed2f191f3cb4dcda4ca21c139b4b46ce04d26e952555b9",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 16
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "cel",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 17
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_application.valdimodule",
+      "container_sha256": "ccb193cae85586af4d566202c6a2dd3b41fe9de50f38ac37c0c8d10e1a27e58b",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_application",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_beacon_artwork.valdimodule",
+      "container_sha256": "dcdf79b574af53c808f07b3355c8f7b4bd992c8c61c7a0de0577b28def36a272",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_beacon_artwork",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_explore_feed.valdimodule",
+      "container_sha256": "5b442a689b2bbae2aa34cf54cffc9d5538d8162ff681435b79dfac7a838ce348",
+      "counts": {
+        "non_js_asset": 67,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 32
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_explore_feed",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 291
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_family.valdimodule",
+      "container_sha256": "4fd095f823c8a2da5e07c57a137dba7f791cbde901f539a7f7a4985eec29f914",
+      "counts": {
+        "non_js_asset": 74,
+        "plaintext_js_candidate": 200,
+        "valdi_bytecode": 15
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_family",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 289
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_finance.valdimodule",
+      "container_sha256": "a1d15eb3dd316db4da337de6da3b3c993936f22f7c251b405aef3f10e196a509",
+      "counts": {
+        "non_js_asset": 65,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 19
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_finance",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 276
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_finance_accounts.valdimodule",
+      "container_sha256": "8a69f1fae0cd284b9b216a65e754904dede77f41964f6793c93d152285c0728d",
+      "counts": {
+        "non_js_asset": 67,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 9
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_finance_accounts",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 268
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_finance_connections.valdimodule",
+      "container_sha256": "5680b5e860611a4ccc5df77bee498f9285c7910d07e69382540bbabe75d667cc",
+      "counts": {
+        "non_js_asset": 67,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 23
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_finance_connections",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 282
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_finance_transactions.valdimodule",
+      "container_sha256": "9c42b446d732c1ceff927ae1d38dadceb05202b47534ec6d0560cad31d53e740",
+      "counts": {
+        "non_js_asset": 65,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 4
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_finance_transactions",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 261
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_global_search.valdimodule",
+      "container_sha256": "d580e3d80c602dafa131e0de60ee6e78be0ea25227f9464427259bb1028c9ed5",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 4
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_global_search",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 5
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_library.valdimodule",
+      "container_sha256": "b615b671f52192f9c7d5c9f9eca4adc70507289147ceb871696edcd35f9be562",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 4
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_library",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 5
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_maps.valdimodule",
+      "container_sha256": "727fb38eb7875ed47fa89331615e0b3b5d37376db99c57337c03fed2bf26ed62",
+      "counts": {
+        "non_js_asset": 65,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 12
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_maps",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 269
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_multiplayer.valdimodule",
+      "container_sha256": "fa4e991d4379505be06b65d5e714dc5bebe907c4cea8c19e34afb74215f233ac",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 31
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_multiplayer",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 32
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_services.valdimodule",
+      "container_sha256": "eb75e2f0ddac932bb74619cda10eeb4144ba9af76059ca4d759bbec484ba825c",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 19
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_services",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 20
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_subscription_pricing.valdimodule",
+      "container_sha256": "78944006bd13329f68c5146057ff476f369e76bcd9e889ad7ac8b9c033ad5e50",
+      "counts": {
+        "non_js_asset": 67,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 67
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_subscription_pricing",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 326
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_subscription_pricing_artwork.valdimodule",
+      "container_sha256": "6260dcd538cf8eb14a8c0539a098463e01d9fc071e538d83b25d9fb4b656d460",
+      "counts": {
+        "non_js_asset": 3,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_subscription_pricing_artwork",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 4
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_wallet.valdimodule",
+      "container_sha256": "3c82f483ba45f9b9ee9405701afe896d259fc9fd9c4c7137dd91c71192415164",
+      "counts": {
+        "non_js_asset": 67,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 32
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_wallet",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 291
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_wallet_approval.valdimodule",
+      "container_sha256": "72de6d070c6bca0f063401fdd1cbda3c208b892bc8ea82f3b753e7957884b132",
+      "counts": {
+        "non_js_asset": 67,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 11
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_wallet_approval",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 270
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/chatgpt_wallet_core.valdimodule",
+      "container_sha256": "5b9977b05dd8eafff54c6a898e65a36621fde4d4e51526c8b552c03ecf72d878",
+      "counts": {
+        "non_js_asset": 65,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 25
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "chatgpt_wallet_core",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 282
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/client_sql.valdimodule",
+      "container_sha256": "061ace8e76bce9c8fe485b337d7175b211a63ee180a7499d0da6612fd9010e5a",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "client_sql",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 4
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/code_highlight.valdimodule",
+      "container_sha256": "8a07fcdc57f5c084951a5d78cff26f74391d95f7b8ff423de2986ab42834bd42",
+      "counts": {
+        "non_js_asset": 2,
+        "plaintext_js_candidate": 3,
+        "valdi_bytecode": 4
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "code_highlight",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 9
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/codewalk_protocol.valdimodule",
+      "container_sha256": "5c07fa8d1c53d0d7329af682902e28d5a10f2870c80b7a8804fccb73b1b12966",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "codewalk_protocol",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/collaborative_editor.valdimodule",
+      "container_sha256": "bb1cfa67735a5e6ed0edcfc38ed449d03f0175044ed29c8970af6ff991e3a0a9",
+      "counts": {
+        "non_js_asset": 3,
+        "plaintext_js_candidate": 6,
+        "valdi_bytecode": 30
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "collaborative_editor",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 39
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/coreutils.valdimodule",
+      "container_sha256": "0dc5fb3265aa232168a1d1673f87647ac8f4ee167743d8e0824b3ec7bcab3459",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 13
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "coreutils",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 15
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/custom_instructions_ui.valdimodule",
+      "container_sha256": "83c10b5a3e6a69dd9dc06eaef0eb44d18b0411c8ccf5b35ed9e37729aaedb5a7",
+      "counts": {
+        "non_js_asset": 65,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 8
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "custom_instructions_ui",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 265
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_cel.valdimodule",
+      "container_sha256": "bf2ebcd0b747c998b41a8e8c549bb520095cdebb49461e2770133ad8d87e3c9e",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 15
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_cel",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 16
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_charts.valdimodule",
+      "container_sha256": "06fc9e93acf8b0c8ee71bc28473e7252ac230e029a3e85665cfa9b9499dbed6b",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 5
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_charts",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 6
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_code_highlight.valdimodule",
+      "container_sha256": "c8a86e58116d8255fbe33a9ef9565139568a5adfaf091fd4cd4c6202411c561d",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_code_highlight",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_compiler.valdimodule",
+      "container_sha256": "92da5e341a8c65b36a6a8ffd17ef20ad777c240dd1fe8aad6d757852dbec972d",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 36
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_compiler",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 37
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_core.valdimodule",
+      "container_sha256": "abf7dd0788105d20f66b80783fbe4593164094561857d3c730c2c4da3eb47fe8",
+      "counts": {
+        "non_js_asset": 65,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 43
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_core",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 300
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_generated_components.valdimodule",
+      "container_sha256": "ec69db247ecd866f4a379106e7dd7e04628a73896729f95981e910e730e7e166",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 311
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_generated_components",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 312
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_icon_assets.valdimodule",
+      "container_sha256": "be91cd0f2d78a875b99231427204e4fd2ac1cee1c77475d584da825748567087",
+      "counts": {
+        "non_js_asset": 3,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_icon_assets",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 5
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_math.valdimodule",
+      "container_sha256": "bac4deacbcedec93e3d60c372e4f64dc2bbef500a1c28f683da70f7024f7ded3",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_math",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_renderer.valdimodule",
+      "container_sha256": "d85ccde1efb1c63b1916711b3b7b76bc146acf4300f958bbb15b8eb43752bfe8",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 37
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_renderer",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 38
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_sandbox.valdimodule",
+      "container_sha256": "0042802cdd68cd6e5dcce31af6351e3343e0ca448ff2c292482d7ddcc09b9676",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 37
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_sandbox",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 38
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_text.valdimodule",
+      "container_sha256": "9981b47925bc82134c0c3c525a7fcfbc71de13b86ab1dde81ffdd0c554f780ae",
+      "counts": {
+        "non_js_asset": 65,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 40
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_text",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 297
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/dil_widgets.valdimodule",
+      "container_sha256": "ab2ab6410d0c67753141a1c602a39c0664a0b67b119c4ea605756cfd962fa6c8",
+      "counts": {
+        "non_js_asset": 65,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 235
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "dil_widgets",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 492
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/ecosystem_instrumentation.valdimodule",
+      "container_sha256": "bd91e2f06fa56957671fa3357de69a98cf0f6851e8fdc84f15b9b485cf5adc49",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "ecosystem_instrumentation",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/foundation.valdimodule",
+      "container_sha256": "d6a8b11e2f8ed50aa2dc917266b13ee43c0ae6d3f30372b9b294293910d3078e",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 43
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "foundation",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 45
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/json_patch.valdimodule",
+      "container_sha256": "068c6521e3401ee07def378571a593106c2df002a519f0778276d6f0828238fd",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 4
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "json_patch",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 5
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/latex.valdimodule",
+      "container_sha256": "e38733b23fd988c08ce8b8f74df97b3ebc16f9fecd731211f6caf1888f846542",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 9
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "latex",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 10
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/markdown.valdimodule",
+      "container_sha256": "4c797e5486f702a2898ec0d6e8bf133897c61ebef7bad6d6f49f01e8d4135302",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 8
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "markdown",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 9
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/markdown_diff.valdimodule",
+      "container_sha256": "8e504e9d972e2745a8de084fc55a65c96daa7f97e04bbfe8bc1b0b8d9c6567f7",
+      "counts": {
+        "non_js_asset": 2,
+        "plaintext_js_candidate": 3,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "markdown_diff",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 7
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/math_jax.valdimodule",
+      "container_sha256": "298b4ef430707fe8046f0ca4c2ddffe23577c6cd590706e424e0a09455fc50c6",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 233
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "math_jax",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 234
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/math_renderer.valdimodule",
+      "container_sha256": "6050bdeb58fdabbb97c95229adb56d6ea6512d2d9e4189e9f5f22f3eb45aa501",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 3
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "math_renderer",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 4
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/memory_settings_ui.valdimodule",
+      "container_sha256": "20152eb97d039b26a248f3613bd6418f3d6da5221b79c5040e57d1458f4ecd96",
+      "counts": {
+        "non_js_asset": 66,
+        "plaintext_js_candidate": 195,
+        "valdi_bytecode": 8
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "memory_settings_ui",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 269
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/mobile_file_saver.valdimodule",
+      "container_sha256": "84ebb06b2d6178474f05140618d5f9301be887ad54cbef63450da5b27f2728c5",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "mobile_file_saver",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/native_menu.valdimodule",
+      "container_sha256": "5258016dc21c98377f1e51ddd9ba8ed5133c729f887475bf85ff15d25bcb658b",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 8
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "native_menu",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 9
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_authentication.valdimodule",
+      "container_sha256": "798434899f80805b78d876e3703d096b58c36881ec8097931071a56e5377b454",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_authentication",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_authentication_session.valdimodule",
+      "container_sha256": "d4d28207796ed87e0da246ced3e3b3ac8800086e90f5be6dd1ce041302a0482b",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 6
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_authentication_session",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 7
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_celsius.valdimodule",
+      "container_sha256": "454297763673c1ebc224334bd66a08a4f2e5185233aa421c6652fdbfadffdba1",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_celsius",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_core.valdimodule",
+      "container_sha256": "45951faa95aa80d0f0bb9bfd2f2045417c316dfbfc5119f224ef865f37495215",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 6
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_core",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 7
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_data_sources.valdimodule",
+      "container_sha256": "e9fbb2ba8cdf968052fd2184105976171ec8bd393070d8d1e2ff71700a8f26f7",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_data_sources",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_device_integrity.valdimodule",
+      "container_sha256": "8cdd4ed90162dd74c88aa2988d4ce765d13fcf6925c14d461ea4e7a76c341c8b",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_device_integrity",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_file_picker.valdimodule",
+      "container_sha256": "1dee3ba90eaed20913549d88168a0f5d1326d04cd63e5bd598f2c3fff4a2db33",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 6
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_file_picker",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 7
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_integration_fixtures.valdimodule",
+      "container_sha256": "fffd09d0905a0c281053ad58983c651f569944904c7bdce36de39ced9bca89a8",
+      "counts": {
+        "non_js_asset": 3,
+        "valdi_bytecode": 9
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_integration_fixtures",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 12
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_location_service.valdimodule",
+      "container_sha256": "36561344f2f0f1833d70aa9025d71227afd8c9f08c30bb988568d3d48aa9bff9",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_location_service",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_metrics_service.valdimodule",
+      "container_sha256": "117a73bdd1c8b6e1b608957b227c8a2e196e42b53a6c339f6ba81ed6ee771542",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_metrics_service",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_platform_services.valdimodule",
+      "container_sha256": "1e9cff8c57fe52952608167be3ea31fbd554e62289ba2f7a96cb8f0457c8c178",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 24
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_platform_services",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 25
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_reasoning_api.valdimodule",
+      "container_sha256": "47189f1d963b0829da18de31ce68d9666cfc816c6c0b99fb476b796bcd261c73",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_reasoning_api",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_ui.valdimodule",
+      "container_sha256": "d5d1823342d5475f7be14aca230bbdec502de3b2f2629063411199e6b872b1af",
+      "counts": {
+        "non_js_asset": 67,
+        "plaintext_js_candidate": 192,
+        "valdi_bytecode": 58
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_ui",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 317
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_voice_service.valdimodule",
+      "container_sha256": "c3f812aeb9b7d12ec614f53d37524d3165295cf714c2117a6c4bc78f66cd1ff6",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_voice_service",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/oai_web_launcher.valdimodule",
+      "container_sha256": "1cfd6817bf1aff73c0ed3c38783b56327914dca75774b60d54ce95ab5bc5146f",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 3
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "oai_web_launcher",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 4
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/olympic_analytics.valdimodule",
+      "container_sha256": "9c13b10976cdc06ac3d04d77d36c5a13c71bbea0e1787c0cf50aca038d7b6298",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "olympic_analytics",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/olympic_connections.valdimodule",
+      "container_sha256": "e51e4974082c34993ccbb4daeb58574f6600f6313357e08d30f6eed4dbabc342",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "olympic_connections",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 4
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/olympic_health_home.valdimodule",
+      "container_sha256": "54d96892c640cec5ad8ef284e6dd25dad6bbd4fc3529e34179bdfd5a456c86bf",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "olympic_health_home",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/olympic_records.valdimodule",
+      "container_sha256": "d411c4bac7a1ca4f0e2d5187400ba27b289c8bb2cc39b26e363b2fbdf69c96f0",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "olympic_records",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/persistence.valdimodule",
+      "container_sha256": "22e64052230659f163e3fbf7ec7eb23b11b1dec958ca0a7eb7419957cb09d82c",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "persistence",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/personalization_settings_ui.valdimodule",
+      "container_sha256": "2befdef31be00caca0871c774e88855dee1fa412bcbd0d6f7e1638f3d823d244",
+      "counts": {
+        "non_js_asset": 66,
+        "plaintext_js_candidate": 195,
+        "valdi_bytecode": 10
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "personalization_settings_ui",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 271
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/settings_text_editor.valdimodule",
+      "container_sha256": "155d9a9e94fd2b6361581d46c912d9970e9c8a30e30fb6d53088e80fe25264e5",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "settings_text_editor",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/source_map.valdimodule",
+      "container_sha256": "795e1426b4fa529d8f788d767d63f4c4c8c6d99fb273fe1af96a8d76868898c6",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 3
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "source_map",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 5
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/svg.valdimodule",
+      "container_sha256": "23cc34dd87f599b1b11d20245dd9b14ae31635fcb0f028467d27404529f9ea5b",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 3
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "svg",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 4
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_core.valdimodule",
+      "container_sha256": "a405af9a029c227d34b55503733a99218203b572623fa7cb5a8f80200897557d",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 157
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_core",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 159
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_http.valdimodule",
+      "container_sha256": "8bbd746fd5263bff74c8f29b50b2ee6817d7ebe9576d10dc2498bd1befb131e0",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 6
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_http",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 8
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_module_updates.valdimodule",
+      "container_sha256": "96be4647d5491863211f4ca20aba007b0b8481db7c61228886f7bb35012d03b9",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_module_updates",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_navigation.valdimodule",
+      "container_sha256": "561e910aa1d4aa92ed12fe497cfc54b79ceba42ab0e1b7ec105ea3c56d3a2101",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 11
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_navigation",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 12
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_platform_alert.valdimodule",
+      "container_sha256": "460bd701b3734152e08d34305d7290b9acab7ee6c7ffcd538c444b52d99f51be",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_platform_alert",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_platform_browser.valdimodule",
+      "container_sha256": "b3fbb1f8192211956e532bed8bf872d9a107c01a0947b0543e40d2bb41fbbf4b",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_platform_browser",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_root_safe_area.valdimodule",
+      "container_sha256": "d73c132f441e0c65db2b4e06a80cdf3a1976c9d1ca89b3ccf2548f798c63c9c3",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_root_safe_area",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_runtime_bindings.valdimodule",
+      "container_sha256": "c02fb9a5186798966ad5a2c7fa49b5b4be9730868d0e16612a06ad2f450240d0",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 14
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_runtime_bindings",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 16
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_rxjs.valdimodule",
+      "container_sha256": "41934b4ff27bfa7e2ecffc5fe149a5245310b353cfd55d460f531b7139d54317",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 235
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_rxjs",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 237
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_test_utils.valdimodule",
+      "container_sha256": "e73bc2f867d81ddc19010e13c04eb6efbeed4316da3a30bd73c6d002800189bc",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 3
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_test_utils",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 4
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_tsx.valdimodule",
+      "container_sha256": "70c6cb18c4cb0948519a050669a19125a02fb5c2839e61db2a1c95452a84bbe1",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_tsx",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_ui.valdimodule",
+      "container_sha256": "4fd3713edc15afc2a8930089eb4450c2527fe0f1e17762292bb8c92b9674b40b",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 41
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_ui",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 42
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_ui_theme.valdimodule",
+      "container_sha256": "0f23d202b85053aa5e4eba555034a568e8192a17c204a176c2d704f1ea589dae",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_ui_theme",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/valdi_webview.valdimodule",
+      "container_sha256": "d51c486d87197f6e26aa08e9437de76bf3001e51e9ded3728131e3b58daf0aaf",
+      "counts": {
+        "non_js_asset": 1,
+        "valdi_bytecode": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "valdi_webview",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/web_platform.valdimodule",
+      "container_sha256": "71433b5322ed9e3f63b0161570e4406e0041bdddd8e825b69c9513c679c79715",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 13
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "web_platform",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 15
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/widgets.valdimodule",
+      "container_sha256": "74fd9db6be29e0228749d16918c8a9a54c9d55d877b9bb3773d5e6604c1d2db4",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 138
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "widgets",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 140
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/android-1.2026.293/base/assets/worker.valdimodule",
+      "container_sha256": "05bfc4919c17c960dd0fada92d010ff32c549104734823b9fa8782e9ec317717",
+      "counts": {
+        "non_js_asset": 2,
+        "valdi_bytecode": 11
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "verified",
+      "missing_member_sha256": {},
+      "missing_members": [],
+      "module": "worker",
+      "platform": "android",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 13
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/address_autocomplete.valdimodule",
+      "container_sha256": "ecc0146b428ac4efa3653097709da5bb17c78b1174ccd94214161b8e0fa91509",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "3b5ba27f10d3abb22dc8af43e490f0f58d82cfb0f35b17b991d8ab25b826a505"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "address_autocomplete",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/audio_player.valdimodule",
+      "container_sha256": "60ca53b868c843e1c659c7ecbcf5779441c7208396a970b37b10abd843adb674",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "aa75a0042ff5a902a8fe95ed10213096a00ff7b6b8b3fc07759458b3087f498e"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "audio_player",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/bridge_observables.valdimodule",
+      "container_sha256": "a9927089b75049e6bac60b5537c35f1b3fb989545f02aa8415acf31a8ef8854f",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 12
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "eece7c1ff684e7401e0f9a764775c83691718448515a0aa3f526f6a91315873b"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "bridge_observables",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 12
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/cel.valdimodule",
+      "container_sha256": "b0fdbd1d44c340929c687c98c5c9cce0fd138e60a0adf78fe20b993732dab283",
+      "counts": {
+        "plaintext_js_candidate": 16
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "c0ccac2979a037339a803be184c8adfb251e198584bae3d59af46d458e76358f"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "cel",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 16
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_application.valdimodule",
+      "container_sha256": "27a1c58c92ae360a80bce829f9f6ed5066ba488885db5e3026ef144e778fd513",
+      "counts": {
+        "plaintext_js_candidate": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "e84b634849b2d9dbea3e4124977ea726c8093d72cda1472032633d3c1051b7cc"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_application",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_beacon_artwork.valdimodule",
+      "container_sha256": "d27f5e47b257885b604e65c3c629536c10ff5c59f5c91b0209166e26bface226",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "a5fcceb73ea340e67ce7f8ed51cdb44a6929829a5bc4ad964520b9aaceeae4ea"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_beacon_artwork",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_explore_feed.valdimodule",
+      "container_sha256": "551da7a3cccd196bd13f4b49bb33211b1695ea9e6937428f3f8ea122704ba830",
+      "counts": {
+        "non_js_asset": 66,
+        "plaintext_js_candidate": 224
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "e26e146b4a2d2c5f30f04b83e7544e0f5015b9fdbb653248fae3adb8b35cdbf3"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_explore_feed",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 66,
+        "verified": 224
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_family.valdimodule",
+      "container_sha256": "20e166e6c58db882896bec1378712595b7658da4f7cfb0a703e7ebc76785dab9",
+      "counts": {
+        "non_js_asset": 73,
+        "plaintext_js_candidate": 215
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "039ce8daa5a2ea6ac41eb426fb6397bbcda70a57f39a4d73050c9ff946a59400"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_family",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 73,
+        "verified": 215
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_finance.valdimodule",
+      "container_sha256": "7b876b4ec84ea465bde5f47471758dc808eb4e2bce4e5b2f52280f364c3c9460",
+      "counts": {
+        "non_js_asset": 64,
+        "plaintext_js_candidate": 211
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "0e2e03c64477f5af9eb33f0e562d59ec086d58b7b1e9121df321732eb9fa0711"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_finance",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 64,
+        "verified": 211
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_finance_accounts.valdimodule",
+      "container_sha256": "a43081e9777ed84b6c75f6afbb3b7732e66df2fe69b614a774b62e0eb969ef31",
+      "counts": {
+        "non_js_asset": 66,
+        "plaintext_js_candidate": 201
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "0623211a348989a5df65fff2427912f0a934479b61e8fbeadec5af983d0e8929"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_finance_accounts",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 66,
+        "verified": 201
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_finance_connections.valdimodule",
+      "container_sha256": "ac9269b2b3af16f889d8bcc19ca6459da5fae14d8ffb029dfdd1ebdfc4385b31",
+      "counts": {
+        "non_js_asset": 66,
+        "plaintext_js_candidate": 215
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "3692878bb75192f023544a2ae77f9227ff646f05836260b2195f27fab1c807f9"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_finance_connections",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 66,
+        "verified": 215
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_finance_transactions.valdimodule",
+      "container_sha256": "3cca1cc35b0526863b80355d16ea5edc99d25875a08d04dd6f3ff1103fea6a1e",
+      "counts": {
+        "non_js_asset": 64,
+        "plaintext_js_candidate": 196
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "be38b72e1cb352ca780055fdbb1d35fb08727ad2e5592ad1c881d6ff68471854"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_finance_transactions",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 64,
+        "verified": 196
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_global_search.valdimodule",
+      "container_sha256": "91bada8c300b881b1ea8c9ca0ca701d382594c573e75860e12cd20f7bf801e35",
+      "counts": {
+        "plaintext_js_candidate": 4
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "5470af9f8f0a77c6cfbc97bdc915d377ced14b4eeca46473a71307a2d12fe860"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_global_search",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 4
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_library.valdimodule",
+      "container_sha256": "5e61cfe06bc36599b07b7991ab64bdf068075f09b1c556b2fb082e2661c7883b",
+      "counts": {
+        "plaintext_js_candidate": 4
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "299d9dee1b1b4333c2db8a65f6a7ea085ca150fecc73cfced9e0535247c7eea7"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_library",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 4
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_maps.valdimodule",
+      "container_sha256": "148b2815961d7724c726a9b4f607ff206d1e2fd03ea3fba67da3185e6547a19d",
+      "counts": {
+        "non_js_asset": 64,
+        "plaintext_js_candidate": 204
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "9050ea851edd0baec8aa009c66d78582c5dfe08251eb9193894874777a23cccc"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_maps",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 64,
+        "verified": 204
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_multiplayer.valdimodule",
+      "container_sha256": "a3be2e9c7e42eb84f45f9a22e999f347f7ec6fbc4608bc9b4122e6589dd5b43a",
+      "counts": {
+        "plaintext_js_candidate": 31
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "fd0a7d05aef92f093c506b2aabdd838146018bfd4bc54b45085706a7271dc548"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_multiplayer",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 31
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_services.valdimodule",
+      "container_sha256": "4af23fd69ec97186092b7f5a0cc5402c59977741756b45bb6edd92e79a728b1a",
+      "counts": {
+        "plaintext_js_candidate": 19
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "89f7f98872027ec64b5c597c864669cf35dbfe57b7a0e4be144f2a4e7b808631"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_services",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 19
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_subscription_pricing.valdimodule",
+      "container_sha256": "52e90fc1912980ec8a41c1f2bab91b338e7000b2700ed2edd87be7ec465a631b",
+      "counts": {
+        "non_js_asset": 66,
+        "plaintext_js_candidate": 258
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "b9a174dc6c0f131354a6e0ff6983f884843fd911b50b4c14a941a0100568bff6"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_subscription_pricing",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 66,
+        "verified": 258
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_subscription_pricing_artwork.valdimodule",
+      "container_sha256": "a0d28e9c758ccfd535dfe43e521fcfea6fe13e93c46695c16f923a94daa53cff",
+      "counts": {
+        "non_js_asset": 2,
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "1fb24749925d8d88cb6f7971b96de610c917667cc34c51cc7f613dff46ce9c40"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_subscription_pricing_artwork",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2,
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_wallet.valdimodule",
+      "container_sha256": "2375fc2191777ae5211c9dad0b3b325de3954496973319d34b0f44610c62b580",
+      "counts": {
+        "non_js_asset": 66,
+        "plaintext_js_candidate": 224
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "5d481630ec8487805a7f2bf0b47bf5cf95ba5c73a652b1854c463884d4d3b298"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_wallet",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 66,
+        "verified": 224
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_wallet_approval.valdimodule",
+      "container_sha256": "1bf5c0c6516670328fea2ca13dc2d0afc8d1807ab9cda72404b0f692603bd1f5",
+      "counts": {
+        "non_js_asset": 66,
+        "plaintext_js_candidate": 203
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "a6c09a55bccd8d44242929ea08278d61279128d0f1c1e94a3a611e23c81243ae"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_wallet_approval",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 66,
+        "verified": 203
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_wallet_core.valdimodule",
+      "container_sha256": "bbfeb7a15cd192a793bfa6d57365b239213d84c59a832d478cd1615c9d1dee81",
+      "counts": {
+        "non_js_asset": 64,
+        "plaintext_js_candidate": 217
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "2c79abc96e405290cbdd1cf312c00baea80208bdaaccd33c30869e6494b51386"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "chatgpt_wallet_core",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 64,
+        "verified": 217
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/client_sql.valdimodule",
+      "container_sha256": "236af5099572406c51343e128253bf22b08d0aced9132e30c7529a39579ee665",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "bca25699062d0254dec2e00f539d2ae7b787956d12853eaa4894fb478e4dfe63"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "client_sql",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/code_highlight.valdimodule",
+      "container_sha256": "070908a2217de7d7f52ff6773d6ee6fa208641027a763c9a38abb286c454a92e",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 7
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "a3518c7a873315513ba5d9f6b481271364db660af21e7f300e9e10e3d615e626"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "code_highlight",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 7
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/codewalk_protocol.valdimodule",
+      "container_sha256": "71d79efba754441704b481b5f74c90499051e93615cbffcb76557f0d978daab8",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "76c24f12e8412e12c1747206c2a30b712258bba916ed7ebbd9adf510457adab3"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "codewalk_protocol",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/collaborative_editor.valdimodule",
+      "container_sha256": "4bd60459fa739bfc0b3c44086a687aa0d40be4bbb40d3dcbf5250832f4d71c0b",
+      "counts": {
+        "non_js_asset": 2,
+        "plaintext_js_candidate": 36
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "fd1b145f410d5b86714522aeb20771be42ee85d33fb6c3ab8129d85833a05994"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "collaborative_editor",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2,
+        "verified": 36
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/coreutils.valdimodule",
+      "container_sha256": "8d1666176e2352a67ee7ee08d66041b9bbb201acd672fbe21098d6f373c7e6f4",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 13
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "d19d5531c259f43be15713519bfa17953a74de28eefaa74883f2c7b5e4b11b4b"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "coreutils",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 13
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/custom_instructions_ui.valdimodule",
+      "container_sha256": "dd167dfb74344895648b9092c8c67712bf055ab11905237c56e69c5f3ec0b7e4",
+      "counts": {
+        "non_js_asset": 64,
+        "plaintext_js_candidate": 200
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "805f13ed3172e3fad37deedc0889f43e8b5344dea518fdd55fd21376cc313391"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "custom_instructions_ui",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 64,
+        "verified": 200
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_cel.valdimodule",
+      "container_sha256": "c33ed6606143d27a96ed8709df07762cf02a632f6241ad04a9a52c5684cf0924",
+      "counts": {
+        "plaintext_js_candidate": 15
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "1c4585c0cade88a4f46d2dc1da97aeb5d22cc8ff60bf9921803038d818802a86"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_cel",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 15
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_charts.valdimodule",
+      "container_sha256": "4a7b901bcb60b6e14d02e511a85b59b791125effb26e3483d2ca358e276584ea",
+      "counts": {
+        "plaintext_js_candidate": 5
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "0d06da9355ddd226b4b0c3e50f9605e3022bdea0110dd4c1f5586fb2463b58ef"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_charts",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 5
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_code_highlight.valdimodule",
+      "container_sha256": "c5ae8755c802293221202b3c72977cca0901abf0d0757a0076bbf3611f81913f",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "02a47b28ea4dc96afcd4ee5c13802c74c30d95e990eb16197dc543961a161109"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_code_highlight",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_compiler.valdimodule",
+      "container_sha256": "05e8224872e92db45e751eb8e267d80192d311486aa67b0f07a70dfd9adf9c0c",
+      "counts": {
+        "plaintext_js_candidate": 36
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "314c98eabdd6fce98b34f5f3cbf3a2bc0d255a882f472946d4fa94384d80e8ae"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_compiler",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 36
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_core.valdimodule",
+      "container_sha256": "55d9aa2f58ea2c072315b67b3dbef990274fa9d378dfd1ab6498a3de82979a40",
+      "counts": {
+        "non_js_asset": 64,
+        "plaintext_js_candidate": 235
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "25e27dac29563e83407699368a8723d0c788052bdcfce518fd3214666dc04ea9"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_core",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 64,
+        "verified": 235
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_generated_components.valdimodule",
+      "container_sha256": "953a1f613f88ae9d94ceb030d2ec799229c9e8d9f7a469880dad0fba7083f9c6",
+      "counts": {
+        "plaintext_js_candidate": 311
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "2c45bb297180a4158cd57367c96991fb33a46ff3b2a86fe5ec3ff731eb7c4605"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_generated_components",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 311
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_icon_assets.valdimodule",
+      "container_sha256": "97c8dc1bc3f40c68c02831347390bf048dfdac3e2e568ba36c2863e76ba7ee3c",
+      "counts": {
+        "non_js_asset": 2,
+        "plaintext_js_candidate": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "3a8e07aec9d8b10cacdf0b0c07490d13d2e79903bc6b6c25be082729d60e03b8"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_icon_assets",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2,
+        "verified": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_math.valdimodule",
+      "container_sha256": "b4102ebf5d27261672b98d5de5ced907108066ea164b45e8146f178287413db8",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "82e0e1ddbdf194b7817764a09ea7ee00a1418a425475147291802a566d038835"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_math",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_renderer.valdimodule",
+      "container_sha256": "99bbe96a018d3dee74d84f48c0919ec89fa5161f115914a347bca23d2f785d7f",
+      "counts": {
+        "plaintext_js_candidate": 37
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "6978821a15dca3741b2297b8b34b4424148bf04d60dd54b75d41f3533d8761a7"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_renderer",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 37
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_sandbox.valdimodule",
+      "container_sha256": "a9609ed519212ce2f13023e8e7aeecdcd7c626687b6937085e4bcf47a21b5421",
+      "counts": {
+        "plaintext_js_candidate": 37
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "8357799e2c7c2e37b321b5c03693adce157b89cae5c047bd8b5ad8c56cf3060e"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_sandbox",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 37
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_text.valdimodule",
+      "container_sha256": "8148ac85f0be05cf9192458f9b532c6c700822b285cc93ef540a5fbad2d58698",
+      "counts": {
+        "non_js_asset": 64,
+        "plaintext_js_candidate": 232
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "0455093393de1826f1879e0dbe5d4c1595a127b450dba23c8e14838acdade767"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_text",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 64,
+        "verified": 232
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/dil_widgets.valdimodule",
+      "container_sha256": "a63c2eff84ff9d17d1f67422eeafd49de01770a84bd7f3c916b40bdba132f8c4",
+      "counts": {
+        "non_js_asset": 64,
+        "plaintext_js_candidate": 427
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "cf3497b58f31bf396fa0f9dfcec3d6836312cc96678212102d19404726bdd1d1"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "dil_widgets",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 64,
+        "verified": 427
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/ecosystem_instrumentation.valdimodule",
+      "container_sha256": "e0f5ef6c693e21170c77c2b5b27f70f9192a6a845b4071f227b0e42a1d8cccbd",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "ec11b0107f6466cd41b28bb689faa89b195172daf503cfde52e8282fa0a57c49"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "ecosystem_instrumentation",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/foundation.valdimodule",
+      "container_sha256": "6618664fcaccb29faac308754eda14780f712b36e082265db114b13306cf4985",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 43
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "8191e3e7cc42735c1aa8a428d108b8fbe44df83f8e7742f4b29583021807ca80"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "foundation",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 43
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/json_patch.valdimodule",
+      "container_sha256": "66f65b203d40e88af501305c734c283a17486ac468d7e623056f5b02f7cbefa0",
+      "counts": {
+        "plaintext_js_candidate": 4
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "b6c400b308c2305b323d84be722e9551004ac7c3474f387c711b3a627e5e1a51"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "json_patch",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 4
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/latex.valdimodule",
+      "container_sha256": "e2f46e1e577fa0f65a2db9f9cebac91f565d3df0c1f4794295f6457fae2cc6eb",
+      "counts": {
+        "plaintext_js_candidate": 9
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "e89128d3788c3e5e5103671ddcf091ee5c49f3795d1ec0d8cb480e7fd3bb12a0"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "latex",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 9
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/markdown.valdimodule",
+      "container_sha256": "07ed2c01f801f9dd7e83996e2ce6344f7ced87cdae0227cce6f669e52457d3b6",
+      "counts": {
+        "plaintext_js_candidate": 8
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "db7bca1e17d7d22b2567097ed04f439be4d9df4eb9faa105761e45d9a2c8077e"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "markdown",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 8
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/markdown_diff.valdimodule",
+      "container_sha256": "eb362094aa7b20c5912dc4df5b2a203456a43adf6008f1c649b26c1d4aadbb63",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 5
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "c396c84c1c5c0f9b936665b191e6e763ab379c362cc8232749003fca12e4ef5a"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "markdown_diff",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 5
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/math_jax.valdimodule",
+      "container_sha256": "3d52339dceb200b694c5357537658f55f4fae4d24c280eea1810b98be9046560",
+      "counts": {
+        "plaintext_js_candidate": 233
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "f9391e03b18af3f5c310c0772a2541f4db16d0381762ce0fa23ece2971e6bdea"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "math_jax",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 233
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/math_renderer.valdimodule",
+      "container_sha256": "198d7f17459a40107d16287e43af2cf851ae1b71379554f911921379a4bd8e37",
+      "counts": {
+        "plaintext_js_candidate": 3
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "915963c27794abe96684fb4cbcec208e564101be7b475172356f9a3bdbd63646"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "math_renderer",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/memory_settings_ui.valdimodule",
+      "container_sha256": "08c438fbadd1cf1aa7a3325976aec61c6a49bb00e77946c1a0ff6ccbcdf409a9",
+      "counts": {
+        "non_js_asset": 65,
+        "plaintext_js_candidate": 203
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "fda96c584a608d209d4298894058b48e9a6af57ab1de6dc2956531f94f3c0616"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "memory_settings_ui",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 65,
+        "verified": 203
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/mobile_file_saver.valdimodule",
+      "container_sha256": "3f48168a30e9590fd35665410bd360f2875f96696cfbe7313179175d70018837",
+      "counts": {
+        "plaintext_js_candidate": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "46cdc8f8f7f6a0a601758cde218a449e360466f187ac4c0f8a9ac9df5708e005"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "mobile_file_saver",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/native_menu.valdimodule",
+      "container_sha256": "f008b705357546184b6f53e0c2218c6b3adde25fdd692c6698f8204bc7285562",
+      "counts": {
+        "plaintext_js_candidate": 8
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "efa6fa4f73e2891ca9c4cc8b9b8c60398276be846d374818c1c0b7a7efac94ef"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "native_menu",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 8
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_authentication.valdimodule",
+      "container_sha256": "e21c32fae22a45299774f35c588092c4d003a692bc761d52de0f74459c0ea365",
+      "counts": {
+        "plaintext_js_candidate": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "5219b54833d646b04dddcb546450eeeb28fc044fd21ac5e23f5533b72d1ce883"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_authentication",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_authentication_session.valdimodule",
+      "container_sha256": "bfdd82541d3e1f59d354812ae8d2a1b913f15f1dfd10907383e33ba3c4a98b7f",
+      "counts": {
+        "plaintext_js_candidate": 6
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "c1d4bf9e274820f1438b380673e7e4490041423670ce621d84092e0302733dbc"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_authentication_session",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 6
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_celsius.valdimodule",
+      "container_sha256": "be9e2f4fbabe9b4b193060c6f329e89d79cf8eef90c3f7846cd1f488fdf6d37a",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "7166e9444d468a53630a84f8263b060e72275cee1c3e661f232cb701d177468d"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_celsius",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_core.valdimodule",
+      "container_sha256": "3ed3683ae4a3954c4eef7f0aab23f5d08ae9261b2c7065822f0dfc95cfc01baf",
+      "counts": {
+        "plaintext_js_candidate": 6
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "92380daff9745f9f46e5e4ea1a517ae0b76fe89d5c5f1ff32a9b95106b26d988"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_core",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 6
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_data_sources.valdimodule",
+      "container_sha256": "d9a4cc0ec44b3953a47d31d37d2f93b7266382b55a6abf9968aa6582e528a12b",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "04bd68f5601e0b38a24c0e04b856cc9882f529e62f6b54b950667fc3e5122417"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_data_sources",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_device_integrity.valdimodule",
+      "container_sha256": "a42390402f1c5c7b39a49abb8db43f0c792a835fb87b5eb735cddef51aaa94e4",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "b0e55f0ec882645bb79fa7cf2a4e69bc27f6bfdc4104d5149d0d9120c73d9002"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_device_integrity",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_file_picker.valdimodule",
+      "container_sha256": "8203531cba05078c14eff0842e4b2907117db576644d714f44c4ebf36bd640e2",
+      "counts": {
+        "plaintext_js_candidate": 6
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "ce5d664d1de1a89428787f50c2ecb31edce786fb716f5efa36ccd84723ef9e74"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_file_picker",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 6
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_integration_fixtures.valdimodule",
+      "container_sha256": "d3eec0aadad9995a4bd308d6ebe07bae5fd30fb9397279825a80aec147eec95c",
+      "counts": {
+        "non_js_asset": 2,
+        "plaintext_js_candidate": 9
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "227ce5f5b5430d7338103f82549d96b7e21da788dfdd6d78b17d60e6d988e191"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_integration_fixtures",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 2,
+        "verified": 9
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_location_service.valdimodule",
+      "container_sha256": "f3e396d1e5edeb4dc485346562e603a80922bcedb9ea720303ea6e89dc8cc8b2",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "f4a655613f6cfd7a18ae5dd1d8fdb5cafc0511905e0faa682bc32fff0b9f5bde"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_location_service",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_metrics_service.valdimodule",
+      "container_sha256": "f4a8305fc6b166cb20bc603441d731c0eb524f56ad5ffd947f01b0989b702cdc",
+      "counts": {
+        "plaintext_js_candidate": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "9df68d55f63374a8c518cc5cbb7dd3fe51867419e423e850ec4ea68240956fc3"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_metrics_service",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_platform_services.valdimodule",
+      "container_sha256": "d940d4899533ba652c4b5f667541d0fbf435816b0cf1e8d9addf2ae448835652",
+      "counts": {
+        "plaintext_js_candidate": 24
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "00deb1b6e05a9616b5eaa94df36fec46f167e39032134401688e37591f2a6928"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_platform_services",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 24
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_reasoning_api.valdimodule",
+      "container_sha256": "7b91b5d1fca97017361827dcbb96e601a7ac5c5693dfb0b475f8ed124c9d04f8",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "6bc377b2a5cb96ebaa8af08f1401cd55aec8b3b042b1f8ba1a67f3147e9e59ea"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_reasoning_api",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_ui.valdimodule",
+      "container_sha256": "7c6f6609d89c47d2ba192f0a3f64749781c619aec7e10c77d82dc6e65135216a",
+      "counts": {
+        "non_js_asset": 66,
+        "plaintext_js_candidate": 250
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "3cfc7e725cc966a7db2931ab9069c5f61f77779a39c0115c731b903864573936"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_ui",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 66,
+        "verified": 250
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_voice_service.valdimodule",
+      "container_sha256": "55392a898c0c7fa1b1b39e8a30773dcf7142e5cdf279b71a002f4e4481a04dc5",
+      "counts": {
+        "plaintext_js_candidate": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "b866747b1a1b4999421fc430f2673321bb42ff8bafb9f531339b02bee8b59813"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_voice_service",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/oai_web_launcher.valdimodule",
+      "container_sha256": "81a7653d48a7320901aa2b986bf53ab979d4e09fc782b96cf0ea673e2de20376",
+      "counts": {
+        "plaintext_js_candidate": 3
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "b5669bdcc66e31cef24516ee1cc37c5ac96c861fa7c6d47d2e43b7a16cc36306"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "oai_web_launcher",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/olympic_analytics.valdimodule",
+      "container_sha256": "f750c201a62095d111c96dbed6901e92abc32a85bdf31bd73c82e6b39c602698",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "d3be549934ec9baa35aad918b3ba6ad34e53c8c3cc0f26f7242e1495ca716fbb"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "olympic_analytics",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/olympic_connections.valdimodule",
+      "container_sha256": "a9f6bdde49086f7a1c0f2520d0604204e7f61c6115f92ceab51ab18cd5ff4103",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "495ef5938d4f46911bb5cc73979b0a9836411ad147e80ca81af6a552be58ccf0"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "olympic_connections",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/olympic_health_home.valdimodule",
+      "container_sha256": "75c3b949c4f0365acfb3b0fc51348079677525fddadcaa7a1523a29b0f4925c7",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "de5b9626784fd116d66ff05adc0d88b76d99ce379a8df4e038439b47b214da3e"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "olympic_health_home",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/olympic_records.valdimodule",
+      "container_sha256": "303c0894dfa9ab942f2fd99f5ea013601d24318e4dac0bc6ff974152394d8b7a",
+      "counts": {
+        "plaintext_js_candidate": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "a7479e9f5ed412134be3da932962880b375c3fd06be76bb95069ea3c7f5167ff"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "olympic_records",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/persistence.valdimodule",
+      "container_sha256": "06647392eecc081c79e1427447174c2264f4dc4ff39c2337b9961c69f902cbc8",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "737b2856ec4cf7b98ca1f5d9aa91ea73190768213d93408a54b3e5f63cd9b9a3"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "persistence",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/personalization_settings_ui.valdimodule",
+      "container_sha256": "762fba0db4b9a75d5e3f54899623c9f4d9694f263d1979390ae9b577b567caff",
+      "counts": {
+        "non_js_asset": 65,
+        "plaintext_js_candidate": 205
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "b6e44485644db2312b9db621e52c368bae51bdcc3068b8e3cb9e603a58f3020c"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "personalization_settings_ui",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 65,
+        "verified": 205
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/settings_text_editor.valdimodule",
+      "container_sha256": "1e4dfa87bd104e5d10b4c30e4ad99b6b1831b5f3f88d6a942c7fd52a4b766649",
+      "counts": {
+        "plaintext_js_candidate": 2
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "50c7e5a1fb8f54d7acc8be143eb2b1105ae6ab4629e4330617f12d31990bc2d9"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "settings_text_editor",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 2
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/source_map.valdimodule",
+      "container_sha256": "f4136e1c97a61b62207bed542bfb8b1e711ca9b260c863cc8064f07dac94f025",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 3
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "067d05028289ca2d3e1b12bf4d8fbce58b9e699d6b9149161486c07bf8f3af5e"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "source_map",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/svg.valdimodule",
+      "container_sha256": "7c94b6aea488edc93b5f55fd9a558565ccb979324188e23cfb82d13b789b6357",
+      "counts": {
+        "plaintext_js_candidate": 3
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "2e8bbbc2977c17456be1d1b8cf345621141ec8783e90307ed836269ee9df8273"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "svg",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_core.valdimodule",
+      "container_sha256": "e3dde7ff4681818874a3bfebd8d797646e138d47e7fda74402ac987d28de6f91",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 156
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "e3e0f5b2be94a17d20008c795835ed3d15e5c3b894a37cc916b08dddf0041569"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_core",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 156
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_http.valdimodule",
+      "container_sha256": "72fa85c7deec59f18efb482b712eafffc89fc9d242b7044bf3eac2a917b5afc7",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 6
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "c314cfb046dfa79a142514e5d70fd46738e6941448e0efdb566b40e74088f315"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_http",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 6
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_module_updates.valdimodule",
+      "container_sha256": "c6aa2ab873a7532d81b4680a7452fe400653ecaf768d74c0df98117b71b76d02",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "22576072f6003eea6ab14727f7cd4dda2922f48307f8ca3a3f60dd2373cfe891"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_module_updates",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_navigation.valdimodule",
+      "container_sha256": "7f6c149bd56583a0d8b769d25401d75714a76fe3f29e45676c6512ecccbeee26",
+      "counts": {
+        "plaintext_js_candidate": 11
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "a98a9825e931686fc95e17ffcce70d24fcc51ebf8091435ff14f6c576d184d63"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_navigation",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 11
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_platform_alert.valdimodule",
+      "container_sha256": "528db1bdf09313b1a2944715a9add7431ae0501f7d1728e097de39224ed642c2",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "8dbf15a8f1f3d1ac599f43b7581449e6643cd1c376230a7e8c29f253ce566b70"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_platform_alert",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_platform_browser.valdimodule",
+      "container_sha256": "c724a06562d4aa46b79343848d69746ab2b27a7d299ab5ec75027362a630c362",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "1ca68615d38bfd0f9c28f1e1d246e9bca1e79bedec4d4e842f16cbfc21d94f92"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_platform_browser",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_root_safe_area.valdimodule",
+      "container_sha256": "34ea0b64ce7463baa68572935f78d915e1e89d78ca8c11d5b927a90d5892d1a2",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "5b7a6bad08062115dc0d2304e6336b86de1771aed9923489d9ebd043d2df6497"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_root_safe_area",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_runtime_bindings.valdimodule",
+      "container_sha256": "550334853bf2220f01a47d5b187971754fa609a500d08b54c9b86185e5220061",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 14
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "fc7d656480cd042dcf91518566f71ddcff6f664a49f14e8a434164bdccaf3c9a"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_runtime_bindings",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 14
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_rxjs.valdimodule",
+      "container_sha256": "8731c371eed42a4d92027708913bbe8875f5418098420ad61853ee35c245be26",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 235
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "399fb3b8591dbd35dcb8f50e9552cceee63ab0beb53c75623d23d93169cee880"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_rxjs",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 235
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_test_utils.valdimodule",
+      "container_sha256": "f77ced6b6af73decb80a35681d9e958cfd90e75b66de5261a8c6ca3db4a04709",
+      "counts": {
+        "plaintext_js_candidate": 3
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "3381f628b665f5b51c3994011888e77e6af72a539ba0a25e085edd673406c9c3"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_test_utils",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 3
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_tsx.valdimodule",
+      "container_sha256": "f30f5f8d57ad8e9253218b1a4f6fd1745d4b1ac40d77d8c53bd7e3855dab75b4",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "b6202ee53e27c173ea5db5cc62a251510257dcf4e367d673b9d9dbf3eae06b7d"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_tsx",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_ui.valdimodule",
+      "container_sha256": "cbf6ae2b2fa827d7fad79f9be2dbb26793126161cc8a5e4842a4ccaa7cccacb6",
+      "counts": {
+        "plaintext_js_candidate": 41
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "57d20c497e551ae91339c05b5fc8348bf2700ddf8de3678090e1cd4d59ffa9ff"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_ui",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 41
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_ui_theme.valdimodule",
+      "container_sha256": "9f68a9bf2c91e7cc78f9380c39a891f5e4f7a8ff4aab47b6e7f34e611c58a271",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "e7625a9ef9f3e7cbdf81b2ed5ec1e261c5dfd4b7f957648001800736fe88a32d"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_ui_theme",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/valdi_webview.valdimodule",
+      "container_sha256": "55de04712306f21a4a568ef73c55b8cb61b6c2737727e5b3f9f2e818d84d9ac8",
+      "counts": {
+        "plaintext_js_candidate": 1
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "ff4084acb9c96b15031241f0cc76ef191bfcb85f11363f63d8db84c8f8f3cc94"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "valdi_webview",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "verified": 1
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/web_platform.valdimodule",
+      "container_sha256": "3c2c745853c8b71a455df5a48352b38f37164a94429681bbd0e9706b85c92270",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 13
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "bc7e5d492bcb25a1212243126abd6cf5aa810fabd0d794a623403743d10ad712"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "web_platform",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "holdout",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 13
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/widgets.valdimodule",
+      "container_sha256": "c2df917bea09b735ca36786822c1f97b4e0aa53762ae0b47b83542a4e6c58c76",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 138
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "3bbd5e4a5e9d0418fc2bd06e0188c2c12d0d3fd7928d3bcb37dfd3a1cbd80d8f"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "widgets",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 138
+      },
+      "version": "1.2026.293"
+    },
+    {
+      "container": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/worker.valdimodule",
+      "container_sha256": "a7f641d1be41d31d2848fdc005a3a99558e2193b781739e8e8558e5a5b95cf2d",
+      "counts": {
+        "non_js_asset": 1,
+        "plaintext_js_candidate": 11
+      },
+      "extra_members": [],
+      "extraction_error": null,
+      "extraction_status": "partial",
+      "missing_member_sha256": {
+        "hash": "ab9149511e99e55bbc6dee3a546dd0ce3d1885c7c903906e5de6994cdf3ef451"
+      },
+      "missing_members": [
+        "hash"
+      ],
+      "module": "worker",
+      "platform": "ios",
+      "semantic_validation": "not_performed",
+      "split": "calibration",
+      "status": "partial",
+      "syntax_counts": {
+        "not_applicable": 1,
+        "verified": 11
+      },
+      "version": "1.2026.293"
+    }
+  ]
+}

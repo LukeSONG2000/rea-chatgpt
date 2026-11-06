@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "macos",
+  "implementation_origin": "independent bounded localThreadCatalog and settings adapters; original packaged Codex renderer unchanged",
+  "verified": [
+    "Packaged runtime DM/OM/LM selects localThreadCatalog, enables account source and consumes readPage",
+    "Runtime query publishes two chatgpt-source entries from isolated history; workload returned=2, failed=0",
+    "Original mode menu click writes conversationDetailMode=STEPS_PROSE; original settings query confirms value",
+    "Unit checks cover account/host separation, source disable, exclusions, explicit unsupported pagination and setting write allowlist/subscription disposal"
+  ],
+  "not_accepted": [
+    "Mode selection ends at Codex home, sidebar still No chats",
+    "No successful visible history row or A-B-A navigation; data publication is not UI acceptance",
+    "Mode settings currently memory-only; mode and selected route do not survive cold restart",
+    "Catalog does not yet publish changes after a send; full paging/manual order and mutations unaccepted",
+    "No archive/delete/new conversation, Windows or desktop-Web acceptance"
+  ],
+  "precise_next_action": "Trace cP -> startNewConversation and route sidebarProductMode/current tab ownership: settings query is STEPS_PROSE while visible heading remains Codex; do not bypass via internal state mutation",
+  "rea": {
+    "runtime_parent": "ev_57d359f5c1d7d51852ba61c2049d49da00f7b3c1ff7b379fcce95f42c8611dc5",
+    "primary_parent": "ev_b379682f3705f82b64da1f41b6e073e243f45db7d714f2a56931f3a5967f492f",
+    "limits": "Primary source worker exhausted 1024 MiB heap; selected smaller runtime completed with bounded static graph. Unselected imports and static semantics remain incomplete."
+  },
+  "runtime_observation": {
+    "workload": {
+      "hosts": 2,
+      "scopes": 1,
+      "explicitRequested": 0,
+      "explicitLoaded": 0,
+      "peakPublished": 2,
+      "startup": null,
+      "page": {
+        "batches": 1,
+        "requested": 20,
+        "returned": 2,
+        "failed": 0,
+        "inFlight": 0,
+        "durationMs": 63
+      },
+      "point": {
+        "batches": 0,
+        "requested": 0,
+        "returned": 0,
+        "failed": 0,
+        "inFlight": 0,
+        "durationMs": 0
+      }
+    },
+    "published_ids": [
+      "offline-fixture-conversation-001",
+      "offline-fixture-conversation-002"
+    ],
+    "mode_setting": {
+      "values": {
+        "conversationDetailMode": "STEPS_PROSE"
+      },
+      "configuredValues": {
+        "conversationDetailMode": "STEPS_PROSE"
+      }
+    },
+    "visible_after": "Skip to content\nCodex\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\nNo chats\nO\nOffline fixture\nGet Plus\nSubagents in Codex\nDelegate work to subagents that work in parallel. Note: may increase token usage.\nTry now\nChoose project\n\n\n\n\nCustom"
+  },
+  "evidence_sha256": {
+    "analysis/tools/desktop-fixture-services.mjs": "f45109acadd2c06b03f13dc628cbab01fb26840d1a116eaeedaf852a3f4a6edc",
+    "analysis/tools/test_desktop_catalog.mjs": "a73913ca684bcc4830037aca744fcfe637db26f06e85b95b32cae955a3bd3b69",
+    "analysis/tools/probe_desktop_root_mount.cjs": "48a68e852c4cf63081b3c9b04b9a38a66372f1d9c6edf525ac40f949612083fc",
+    "analysis/full-platform-20261104/macos-catalog-v1.json": "56d7dd04fd82d17cce904542ec2d5f20b40c2c7fed23c9b2a65b21d62b1b6910",
+    "analysis/full-platform-20261104/macos-catalog-v2.json": "2d9000d0b026cea2b20a68d1506af42efd804760e01b152c23c396873b027d7a",
+    "analysis/full-platform-20261104/macos-catalog-v3.json": "8c43bd71c1ecf5658f4cde82698dd8fefb753f49ef3604c0aa2eb825b74e7998",
+    "analysis/full-platform-20261104/macos-catalog-v4.json": "5888692ab49e89853fc8ae1a9830af7783a0a3483120cce111305383809603f3",
+    "analysis/full-platform-20261104/macos-catalog-v5.json": "debc10007099d1f6016c58da866c335119a0d973403393eaa5d9892e4be42d3e",
+    "analysis/full-platform-20261104/macos-catalog-v6.json": "190b623abde489fd091224a1974980a12508a255573fbbf32f75c47a3e0b75c6",
+    "analysis/full-platform-20261104/macos-catalog-source-v2.json": "9cae1b82dfeea5217e4fee8fdcafa507db62abec5448e06901dd278d288761a8",
+    "analysis/full-platform-20261104/macos-catalog-unit-v2.log": "13f2bd9849613bc6e3b7186f44c761ae5d5e0e5bd636730ce756ebfde06d0ae9",
+    "analysis/full-platform-20261104/macos-sidebar-primary-rea-v1.json": "55760e4d6a3e9f809272a05d0c972561a0cffc843f112fa0b3fff66bddc1c016",
+    "analysis/full-platform-20261104/macos-sidebar-runtime-rea-v1.json": "f74f31ae9fcc32b9d3417db68c20c7e6893f29ae3cf92ed23b3e2ecbefe4a13c"
+  }
+}

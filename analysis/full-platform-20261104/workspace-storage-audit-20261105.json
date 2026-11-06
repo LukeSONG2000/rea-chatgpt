@@ -1,0 +1,56 @@
+{
+  "time": "2026-11-05T09:27:50.828908+08:00",
+  "scope": "/Users/lukesong/Work/Workspace/rea",
+  "mode": "read-only inventory; no deletion in this audit",
+  "filesystemAvailableGiBApprox": 3.3,
+  "measurement": "du -k allocated blocks; APFS clone/shared extents can affect physical space actually reclaimed",
+  "allocatedKiB": {
+    "workspace": 50044412,
+    "ChatGPT": 50044396,
+    "implementation": 37422484,
+    "desktop_dist": 37129504,
+    "recovered": 5034060,
+    "analysis": 2784936,
+    "packages": 2020520,
+    "git": 1550304,
+    "tmp": 795736,
+    "derived": 256588,
+    "opensource": 137728,
+    "output": 41420
+  },
+  "copies": {
+    "macAppBundles": 29,
+    "windowsPackages": 13,
+    "windowsUnpackedPayloads": 9,
+    "existingPayloads": 51,
+    "sourceEvidenceArchives": 15
+  },
+  "manifestEvidence": {
+    "macos": {
+      "copies": 29,
+      "officialFilesPerCopy": 15850,
+      "fingerprint": "87a67e357893cc4c"
+    },
+    "windows": {
+      "copies": 22,
+      "officialFilesPerCopy": 15850,
+      "fingerprint": "b03a345affdc5c32"
+    },
+    "method": "Existing payload manifests grouped by sorted original resource path/SHA256. This compares recorded checksums, not a fresh hash of every duplicate file."
+  },
+  "secondary": {
+    "ghidraKiB": 896504,
+    "fullPlatformEvidenceKiB": 1561476,
+    "largestEvidenceFile": "analysis/full-platform-20261104/macos-menu-v77-rea-evidence.json",
+    "largestEvidenceMiB": 205.9,
+    "gitGarbageKiB": 5561,
+    "workspaceLocalProfilesKiB": 972,
+    "appSupportProfilesKiB": 1640
+  },
+  "recommendation": {
+    "first": "Archive and verify differing independent source/manifests; retain one current candidate and one rollback per desktop platform; remove superseded generated bundles and unpacked copies. Keep original artifacts and analysis evidence.",
+    "estimatedReclaimGiB": "30-32, directory-accounting estimate; measure actual df delta after cleanup",
+    "future": "Use source host/shared original assets for iteration; package only reviewable milestones; automatically cap retained full bundles to current+rollback per platform. Keep small source diffs/manifests/reports for all stages.",
+    "second": "Review large logs and versioned decoded trees separately; do not treat different versions/platforms as interchangeable or delete original packages or Git history."
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "metadata": "0xaf43f98",
+  "descriptor": "0x9674bd0",
+  "completion": "0x4f2f89c",
+  "fields": [
+    {
+      "name": "whisperPresentation",
+      "template_offset": 0,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "usesStreamingDictationUI",
+      "template_offset": 40,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "isTemporaryChat",
+      "template_offset": 41,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "isDoubleLineLayoutEnabled",
+      "template_offset": 42,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "extendsTextInputHitArea",
+      "template_offset": 43,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "isFocused",
+      "template_offset": 44,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "isInputEmpty",
+      "template_offset": 45,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "placeholderSizesInput",
+      "template_offset": 46,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "hasMultipleTrailingButtons",
+      "template_offset": 47,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "onFocusRequested",
+      "template_offset": 48,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "keyboardVisibilityPublisher",
+      "template_offset": 64,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "preservesKeyboardInset",
+      "template_offset": 72,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "textLayoutTrailingButtonsWidth",
+      "template_offset": 96,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "keepsVoiceIntelligenceAddButtonVisible",
+      "template_offset": 105,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "whisperReleaseOverlay",
+      "template_offset": 112,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "leading",
+      "template_offset": 120,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "topComposerComponent",
+      "template_offset": 128,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "attachmentsTray",
+      "template_offset": 136,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "mode",
+      "template_offset": 144,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "input",
+      "template_offset": 152,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "trailing",
+      "template_offset": 160,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "trailingOutside",
+      "template_offset": 168,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "fullscreen",
+      "template_offset": 176,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "placeholder",
+      "template_offset": 184,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "inputOverlay",
+      "template_offset": 192,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "topAccessory",
+      "template_offset": 200,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "voiceSession",
+      "template_offset": 208,
+      "status": "prefilled-not-runtime-verified"
+    },
+    {
+      "name": "_style",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "_dynamicTypeSize",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "_layoutDirection",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "_pixelLength",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "_colorScheme",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "_reducesMotion",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "_conversationModalStyle",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "_composerTransitionCoordinator",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "__trayBoundary",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "__keyboardPresentation",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "_scaledInnerCornerRadius",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    },
+    {
+      "name": "_scaledMinHeight",
+      "template_offset": 0,
+      "status": "runtime-dependent"
+    }
+  ],
+  "load_candidates": [
+    {
+      "pc": "0x4cb8ea4",
+      "base_register": "x23",
+      "offset": 42,
+      "destination": "w8"
+    },
+    {
+      "pc": "0x4cb8f04",
+      "base_register": "x23",
+      "offset": 44,
+      "destination": "w28"
+    },
+    {
+      "pc": "0x4cba18c",
+      "base_register": "x20",
+      "offset": 42,
+      "destination": "w8"
+    },
+    {
+      "pc": "0x4cba5bc",
+      "base_register": "x19",
+      "offset": 45,
+      "destination": "w8"
+    },
+    {
+      "pc": "0x4cba5c8",
+      "base_register": "x19",
+      "offset": 44,
+      "destination": "w8"
+    },
+    {
+      "pc": "0x4cbaad4",
+      "base_register": "x20",
+      "offset": 42,
+      "destination": "w8"
+    },
+    {
+      "pc": "0x4cbab78",
+      "base_register": "x19",
+      "offset": 42,
+      "destination": "w8"
+    },
+    {
+      "pc": "0x4cbb7a8",
+      "base_register": "x25",
+      "offset": 42,
+      "destination": "w8"
+    },
+    {
+      "pc": "0x4cbc378",
+      "base_register": "x25",
+      "offset": 44,
+      "destination": "w8"
+    },
+    {
+      "pc": "0x4cbc4c0",
+      "base_register": "x25",
+      "offset": 42,
+      "destination": "w8"
+    }
+  ],
+  "limits": [
+    "raw byte offset matches do not prove receiver identity",
+    "incomplete singleton metadata is not runtime metadata",
+    "zero tail offsets must not be used as object offsets"
+  ]
+}

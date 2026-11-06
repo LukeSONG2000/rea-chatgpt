@@ -1,0 +1,97 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "strings": [
+    {
+      "key_address": "0x8857620",
+      "fallback_address": "0x8857650",
+      "key": "codex_home_cloud_environments_failed_title",
+      "english_fallback": "Couldn’t load environments"
+    },
+    {
+      "key_address": "0x8857670",
+      "fallback_address": "0x88576a0",
+      "key": "codex_home_cloud_environments_failed_message",
+      "english_fallback": "Try again to see your cloud environments."
+    },
+    {
+      "key_address": "0x88576d0",
+      "fallback_address": "0x88576f0",
+      "key": "codex_home_welcome_title",
+      "english_fallback": "Build with Codex wherever you go"
+    },
+    {
+      "key_address": "0x8857720",
+      "fallback_address": "0x8857750",
+      "key": "codex_home_welcome_without_environments_message",
+      "english_fallback": "Connect to Codex on your desktop computer, or create a cloud environment in the Codex desktop app."
+    },
+    {
+      "key_address": "0x88577c0",
+      "fallback_address": "0x88577f0",
+      "key": "codex_home_welcome_with_environments_message",
+      "english_fallback": "Connect to your desktop computer to continue your existing projects, or work in the cloud by chatting below."
+    },
+    {
+      "key_address": "0x8857860",
+      "fallback_address": "0x8857890",
+      "key": "codex_home_no_cloud_environments_title",
+      "english_fallback": "No cloud environments"
+    },
+    {
+      "key_address": "0x88578b0",
+      "fallback_address": "0x88578e0",
+      "key": "codex_home_no_cloud_environments_message",
+      "english_fallback": "To set up your first cloud environment, open the Codex desktop app."
+    }
+  ],
+  "observed_branches": [
+    {
+      "comparison": 4,
+      "entry": "0x386fb0",
+      "title_key": "codex_home_cloud_environments_failed_title",
+      "description_key": "codex_home_cloud_environments_failed_message",
+      "action_builder": "0x387808"
+    },
+    {
+      "comparison": 2,
+      "entry": "0x387204",
+      "title_key": "codex_home_no_cloud_environments_title"
+    },
+    {
+      "comparison": "other path, bit 0 controls description",
+      "entry": "0x3872c4",
+      "title_key": "codex_home_welcome_title",
+      "description_choice": "0x38734c..0x38735c"
+    }
+  ],
+  "icon": {
+    "caller": "0x386fb0 and 0x387204",
+    "factory": "0x74f64bc",
+    "string_address": "0x8a54c80",
+    "name": "OpenAI/Symbols/cloud"
+  },
+  "limits": [
+    "Localized translations not located: main en/zh Localizable.strings each contain 96 entries and no codex_home key. This does not prove translations absent elsewhere.",
+    "Compare values are internal observed branch values, not a public enum schema.",
+    "Cloud environment status is distinct from host connection status.",
+    "Welcome has an associated flag; do not flatten into four sequential raw values.",
+    "Icon factory string confirmed, full image construction and exact sizing remain unverified.",
+    "Button action type known from v309, closure dispatch and label in failure builder remain unresolved.",
+    "No new runtime UI or service connection in this batch."
+  ],
+  "welcome_icon": {
+    "factory": "0x74f65d0",
+    "string_address": "0x88467a0",
+    "name": "OpenAI/Symbols/codex"
+  },
+  "failure_button_label": {
+    "call": "0x387864",
+    "function": "0x75d28e0",
+    "little_endian_immediate_hex": "5265747279",
+    "english": "Retry",
+    "limits": "Localization tail call and action dispatch not fully traced"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "version": 383,
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "observations": [
+    {
+      "body": "0x24034e0",
+      "plain_list_style": [
+        "0x2403918",
+        "0x2403948"
+      ],
+      "row_spacing_some_zero": [
+        "0x24039f8",
+        "0x24039fc",
+        "0x2403a18"
+      ],
+      "section_spacing_custom_zero": [
+        "0x2403a28",
+        "0x2403a34",
+        "0x2403a5c"
+      ]
+    }
+  ],
+  "integration": "RemoteTaskFixturePage listStyle plain, listRowSpacing 0, listSectionSpacing custom 0",
+  "validation": {
+    "test": "testRemoteTaskScopeAndReturn",
+    "passed": 1,
+    "failed": 0,
+    "screenshot_inspected": "ios-remote-v383-screenshots/395B0884-9895-4A1C-B285-7794150182E2.png",
+    "preview_pid": 87483,
+    "physical_device": "unavailable; no installation"
+  },
+  "limits": [
+    "Soft-edge adapter not traced",
+    "Section projection/filter remains synthetic",
+    "NavigationLink disclosure and selection owner not recovered",
+    "Row separators, background and tint not accepted",
+    "External-display placement not verified",
+    "Android independent recovery remains incomplete"
+  ]
+}

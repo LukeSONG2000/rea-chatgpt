@@ -1,0 +1,155 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": "0x811c508",
+  "mangled_address": "0x922c66c",
+  "length": 136,
+  "mangled_hex": "022b448a01795f023c448a01022f5d8a017902994c8a017941447941447941447941447941447941447941447901f65244007901e832440001eb1e440002068c8a014701b852440047018a52440047015452440047011e524400470268668a0179020ad28a014747023b598a01795362474741574741544741447902c0868a01025b3f8a01474747",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 2,
+      "target": "0xaad0a98",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI13_VariadicViewO4TreeVMn"
+    },
+    {
+      "offset": 7,
+      "kind": 2,
+      "target": "0xaad0ab0",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI13_ZStackLayoutVMn"
+    },
+    {
+      "offset": 12,
+      "kind": 2,
+      "target": "0xaad23a8",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI19_ConditionalContentVMn"
+    },
+    {
+      "offset": 18,
+      "kind": 2,
+      "target": "0xaad1318",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI15ModifiedContentVMn"
+    },
+    {
+      "offset": 45,
+      "kind": 1,
+      "target": "0x9671990",
+      "resolved_context": "0x9671990",
+      "label": "ChatGPTMessageInput.MessageInputContainerContentView"
+    },
+    {
+      "offset": 51,
+      "kind": 1,
+      "target": "0x966f988",
+      "resolved_context": "0x966f988",
+      "label": "ChatGPTMessageInput.MessageInputViewModel"
+    },
+    {
+      "offset": 56,
+      "kind": 1,
+      "target": "0x966e590",
+      "resolved_context": "0x966e590",
+      "label": "ChatGPTMessageInput.MessageInputAutocompleteViewModel"
+    },
+    {
+      "offset": 61,
+      "kind": 2,
+      "target": "0xaad52b0",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI7AnyViewVMn"
+    },
+    {
+      "offset": 67,
+      "kind": 1,
+      "target": "0x9671968",
+      "resolved_context": "0x9671968",
+      "label": "ChatGPTMessageInput.MessageInputContainer.ApplyPresentationsViewModifier"
+    },
+    {
+      "offset": 73,
+      "kind": 1,
+      "target": "0x9671940",
+      "resolved_context": "0x9671940",
+      "label": "<unresolved-context@0x9671938>.ApplyActionsViewModifier"
+    },
+    {
+      "offset": 79,
+      "kind": 1,
+      "target": "0x9671910",
+      "resolved_context": "0x9671910",
+      "label": "<unresolved-context@0x9671908>.RestoreSitesProjectAttachmentsViewModifier"
+    },
+    {
+      "offset": 85,
+      "kind": 1,
+      "target": "0x96718e0",
+      "resolved_context": "0x96718e0",
+      "label": "<unresolved-context@0x96718d8>.ApplyAutocompleteReplacementViewModifier"
+    },
+    {
+      "offset": 91,
+      "kind": 2,
+      "target": "0xaad2d30",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI23_GeometryActionModifierVMn"
+    },
+    {
+      "offset": 97,
+      "kind": 2,
+      "target": "0xaad98d8",
+      "resolved_context": null,
+      "label": "_$s12CoreGraphics7CGFloatVMn"
+    },
+    {
+      "offset": 104,
+      "kind": 2,
+      "target": "0xaad2010",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI18_AnimationModifierVMn"
+    },
+    {
+      "offset": 123,
+      "kind": 2,
+      "target": "0xaad4da8",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI5ColorVMn"
+    },
+    {
+      "offset": 128,
+      "kind": 2,
+      "target": "0xaad0648",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI12_FrameLayoutVMn"
+    }
+  ],
+  "unresolved_contexts": [
+    {
+      "address": "0x9671938",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x9671908",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x96718d8",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    }
+  ],
+  "limits": [
+    "Symbolic context references only, not a reconstructed generic type tree",
+    "Type presence does not prove runtime branch selection or component creation"
+  ]
+}

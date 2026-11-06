@@ -1,0 +1,59 @@
+{
+  "status": "macos-preview-ready-user-acceptance-pending",
+  "classification": "source-guided 26.1029 layout mechanism adapted to frozen 26.1021 components",
+  "passed": [
+    "v228 repeated sidebar identity/scroll/content navigation",
+    "v229 settings reload/process restart and selected conversation isolation",
+    "v230 search keyboard selection and focus",
+    "v237 actual original editor -> unsaved dialog -> keep editing preserves draft -> discard navigates without write -> save and readback exactly one write"
+  ],
+  "unsaved": {
+    "editable": true,
+    "body": "跳转到内容\n首页\n图像\n定时任务\n插件\n探索\nOF\n设置\n搜索设置\n个人\n常规\n通知\n个人资料\n外观\n账户\n已归档的聊天\n家长控制\n配置\n个性化\nMini 与虚拟宠物\n键盘快捷键\n使用情况和计费\n数据管理\n集成\n插件\n电脑操控\n浏览器\n云电脑\n编码\n钩子\n连接\n代码审查\nGit\n环境\nWorktrees\n返回\n取消\n保存\nCodex 指令\n编辑所选机器上的 AGENTS.md 文件。代码仓库的说明也可能适用。了解更多\n放弃更改？\n\n你有未保存的更改。如果现在退出，更改将会丢失。\n\n继续编辑\n放弃更改",
+    "dialog": 1,
+    "keepEditing": true,
+    "discardNavigates": true,
+    "discardDidNotWrite": true,
+    "saveReadback": true
+  },
+  "fixture": "agentInstructions bridge contract observed in personalization-queries and Ti/Ei; independent local-only memory fixture enabled only in background experiment hosts. Displayed /rea-synthetic/AGENTS.md is not accessed on disk. Preview leaves this capability unavailable rather than presenting volatile save as persistence.",
+  "preview": {
+    "pid": 93847,
+    "profile": "v175-user-preview",
+    "externalBounds": {
+      "x": 62,
+      "y": -1025,
+      "width": 1280,
+      "height": 800
+    },
+    "locale": "zh-CN",
+    "editor": true,
+    "leftRunning": true,
+    "report": "desktop-settings-v238-preview.json"
+  },
+  "scopeLimits": [
+    "not Windows/mobile acceptance",
+    "not full settings feature acceptance",
+    "newer source port, not same-version recovered implementation",
+    "no real AGENTS.md or official services accessed",
+    "layout remains explicit opt-in flag; full build not packaged"
+  ],
+  "files": [
+    {
+      "path": "analysis/tools/desktop-settings-split.cjs",
+      "sha256": "eac081b4727f5959ae0fab4cde498e2a70629cdd15530f3bde5077f9403235f9"
+    },
+    {
+      "path": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "716312cdde6aeb20870ebfc6758ea1dafa7e58ea957a9b15981362c6d001110e"
+    },
+    {
+      "path": "implementation/desktop/native/settings-split.mjs",
+      "sha256": "1336d416553082218aacdacddf4f51d3547f17083689c6c5ab57ce278d30c1f5"
+    },
+    {
+      "path": "implementation/desktop/native/main.cjs",
+      "sha256": "81741746ab72a303ee280d252fd3dfd3a6b333bf9df3ef9c5dbecb7d3e133c45"
+    }
+  ]
+}

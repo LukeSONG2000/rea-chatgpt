@@ -1,0 +1,150 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x1a3a804",
+    "end_exclusive": "0x1a3a9cc",
+    "sha256": "37c404d21369dd8b9d0676a9a31e67bc603a6f77e78b7f91ab1d1e9fd97d61ae"
+  },
+  "linker_function_starts_in_window": [
+    "0x1a3a804"
+  ],
+  "next_linker_function_start": "0x1a3ac48",
+  "direct_calls": [
+    {
+      "site": "0x1a3a808",
+      "target": "0x159298",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a814",
+      "target": "0x46701c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a838",
+      "target": "0x15323c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a840",
+      "target": "0x14ff1c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a850",
+      "target": "0x1d50af0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a854",
+      "target": "0x74e2568",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a858",
+      "target": "0x14b2d8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a868",
+      "target": "0x149a84",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a86c",
+      "target": "0x4dd424",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a888",
+      "target": "0x14b300",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a8fc",
+      "target": "0x74fba7c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a90c",
+      "target": "0x1d9e0c0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a91c",
+      "target": "0x1d9acf4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a930",
+      "target": "0x1488f8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a93c",
+      "target": "0x7c41428",
+      "imported_symbol": "_$s10Foundation4DateVACycfC",
+      "chained_binding": {
+        "slot": "0xaac91b0",
+        "symbol": "_$s10Foundation4DateVACycfC",
+        "library_ordinal": 12,
+        "weak": false,
+        "import_ordinal": 4408,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a3a970",
+      "target": "0x7c412b4",
+      "imported_symbol": "_$s10Foundation4DateV18addingTimeIntervalyACSdF",
+      "chained_binding": {
+        "slot": "0xaac9098",
+        "symbol": "_$s10Foundation4DateV18addingTimeIntervalyACSdF",
+        "library_ordinal": 12,
+        "weak": false,
+        "import_ordinal": 4373,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a3a978",
+      "target": "0x152af4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a980",
+      "target": "0x1d9e0a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a998",
+      "target": "0x1dadba0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a9ac",
+      "target": "0x15317c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3a9c4",
+      "target": "0x1a3ccec",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

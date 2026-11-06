@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {createFixtureHost} from '../../../analysis/tools/desktop-fixture-services.mjs';
+const historyFixture=JSON.parse(fs.readFileSync(new URL('../../../analysis/desktop-official-20261104/history-fixture-replay.json',import.meta.url))).converted_fixture;
+let failA=true,wrong=false,hold;const notices=[];
+const remoteRuntime={readCatalog:async host=>{if(host==='a'&&hold)await hold;if(host==='a'&&failA)throw Object.assign(Error('offline'),{code:'remote_transport'});return {host,epoch:wrong?'other':'e'+host,entries:[{hostId:host,threadId:'same-id',displayTitle:'Independent test',sourceKind:'custom',sourceCreatedAt:1,sourceUpdatedAt:2}]}}};
+const {host}=createFixtureHost({Wst:class{}},{scenario:'synthetic-account',historyFixture,remoteBindings:[{host:'a',epoch:'ea'},{host:'b',epoch:'eb'}],remoteRuntime});
+const presentation=host.services.requestUserInputAutoResolution;presentation.setConversationPresented({hostId:'b',conversationId:'same-id',presented:true});presentation.setConversationPresented({hostId:'b',conversationId:'same-id',presented:false});assert.throws(()=>presentation.setConversationPresented({hostId:'foreign',conversationId:'same-id',presented:true}));assert.equal(presentation.approve,undefined);
+const c=host.services.localThreadCatalog;await c.setSourceEnabled({kind:'app-server'},true);await c.subscribeStatus((status,host)=>notices.push({status,host}));
+let resume;hold=new Promise(r=>resume=r);const pending=c.requestSync(['a','b']);for(let i=0;i<50&&!notices.some(n=>n.host==='b');i++)await new Promise(r=>setTimeout(r,1));assert.ok(notices.some(n=>n.host==='b'));assert.equal(c.readPage({hostId:'b',limit:10}).entries[0].hostId,'b');resume();await pending;
+assert.throws(()=>c.readPage({hostId:'a',limit:10}),/remote_transport/);assert.equal(c.readStatus().hosts.find(h=>h.hostId==='a').isComplete,false);
+failA=false;hold=null;await c.requestSync(['a']);assert.equal(c.readEntries([{hostId:'a',threadId:'same-id'}])[0].hostId,'a');assert.equal(c.readThreadCount('b'),1);
+assert.equal(c.readPage({hostId:'a',limit:10,filter:{includeAll:false,cwdValues:[],cwdPrefixes:[],includeThreadIds:[]}}).entries.length,0);assert.equal(c.readPage({hostId:'a',limit:10,filter:{includeAll:false,includeThreadIds:['same-id']}}).entries.length,1);
+wrong=true;await c.requestSync(['b']);assert.throws(()=>c.readPage({hostId:'b',limit:10}),/identity_mismatch/);await assert.rejects(c.requestSync(['foreign']));c.unsubscribeStatus();
+console.log(JSON.stringify({status:'passed',checks:['B status publishes while A pending','owner failure is not empty success','same thread identity separated by host','epoch mismatch rejected','unknown host rejected'],authority:'independent adapter with controlled owner metadata'}));

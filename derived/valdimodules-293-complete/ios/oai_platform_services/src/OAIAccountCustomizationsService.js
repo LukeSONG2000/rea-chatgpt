@@ -1,0 +1,1 @@
+"use strict";var t;Object.defineProperty(exports,"__esModule",{value:!0}),exports.OAICustomizationField=void 0,function(t){t[t.CustomInstructions=0]="CustomInstructions",t[t.AboutYou=1]="AboutYou",t[t.Name=2]="Name",t[t.Occupation=3]="Occupation",t[t.PersonalityType=4]="PersonalityType"}(t||(exports.OAICustomizationField=t={}));

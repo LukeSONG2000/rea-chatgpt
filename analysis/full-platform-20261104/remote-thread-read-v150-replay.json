@@ -1,0 +1,96 @@
+{
+  "status": "passed",
+  "authority": "controlled exact official fragments with synthetic dependencies",
+  "checks": [
+    "exact conversation constructor converts seconds to milliseconds and carries host/provider/runtime fields",
+    "stored thread response preserves live environment selection",
+    "exact non-durable read forwards threadId/includeTurns, removes passive marker, does not hydrate turn content",
+    "includeTurns true forwarded; background non-durable lookup uses separate scheduler",
+    "non-durable read failure propagates instead of becoming empty thread"
+  ],
+  "evidence": [
+    {
+      "symbol": "PT",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2890095,
+      "source": "function PT(e){return e.forkedFromId==null&&e.historyMode===`paginated`&&e.cliVersion!==`0.0.0`&&Oi(e.cliVersion,`threadTimeline`)}"
+    },
+    {
+      "symbol": "VT",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2898158,
+      "source": "function VT(e){let t=e.createdAt*1e3,n=Number.isFinite(t)?t:Date.now(),r=e.updatedAt*1e3,i=Number.isFinite(r)?r:n,a=e.recencyAt==null?null:e.recencyAt*1e3;return{createdAt:n,updatedAt:i,recencyAt:a!=null&&Number.isFinite(a)?a:null}}"
+    },
+    {
+      "symbol": "UT",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2898491,
+      "source": "function UT(e,t,n){let r=e.environments==null||n===`stored`&&(t?.environmentSelectionEvidence?.source===`live`||(t?.environmentSelectionEvidence?.updatedAt??-1/0)>=e.updatedAt),i=r?t?.environments:e.environments??void 0,a=i?.length===1?i[0]:void 0,o=stn.safeParse(e.environments?.find(e=>e.environmentId===a?.environmentId));return{environmentConfigId:a==null?void 0:(o.success?o.data.environmentConfigId:void 0)??(t?.environments?.length===1&&t.environments[0]?.environmentId===a.environmentId?t.environmentConfigId:void 0),environments:i,environmentSelectionEvidence:r?t?.environmentSelectionEvidence:{source:n,updatedAt:e.updatedAt}}}"
+    },
+    {
+      "symbol": "ctn",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2899285,
+      "source": "function ctn({thread:e,hostId:t,conversationId:n,turns:r,threadTitle:i,resumeState:a,latestCollaborationMode:o,workspaceKind:s=`project`,workspaceBrowserRoot:c,projectlessOutputDirectory:l,hasUnreadTurn:u}){let{createdAt:d,updatedAt:f,recencyAt:p}=VT(e);return{id:n,sessionId:e.sessionId,ephemeral:e.ephemeral,forkedFromId:e.forkedFromId==null?null:cs(e.forkedFromId),hostId:t,turns:r,requests:[],createdAt:d,updatedAt:f,recencyAt:p??f,title:i,originator:e.originator,source:e.source,agentNickname:e.agentNickname,threadSource:e.threadSource,historyMode:e.historyMode,canonicalVoiceHistory:PT(e),parentThreadId:e.parentThreadId==null?null:cs(e.parentThreadId),mode:e.mode,threadStartKind:e.threadStartKind,modelProvider:e.modelProvider,daybreakEnabled:e.daybreakEnabled,latestModel:e.model??``,latestReasoningEffort:e.reasoningEffort??null,previousTurnModel:null,latestCollaborationMode:o,hasUnreadTurn:u??!1,threadRuntimeStatus:e.status,rolloutPath:e.path??``,gitInfo:e.gitInfo,resumeState:a,latestTokenUsageInfo:null,workspaceKind:s,workspaceBrowserRoot:c,projectlessOutputDirectory:l,cwd:e.cwd,...UT(e,void 0,`stored`)}}"
+    },
+    {
+      "symbol": "readThread",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2941790,
+      "source": "readThread(e,{includeTurns:t=!1,pinned:n=!1,requestOptions:r}={}){let i=cs(e),a=e=>(this.conversations.has(i)&&this.updateConversationState(i,t=>{delete t.passiveTurnId,Object.assign(t,UT(e.thread,t,`stored`))}),e),o=r?.threadAccess??this.conversations.get(i)?.threadAccess;o===`shared`&&this.threadReadStates.delete(i);let s=this.params.hostId===`durable`&&o!==`shared`,c=s?this.threadReadStates.get(i):void 0;if(c instanceof Error)return Promise.reject(c);let l=this.params.requestClient.useHostRequestScheduler&&!t&&r?.priority===`background`&&r.source===`thread_hydration`&&r.coalesce!==!1&&r.timeoutMs==null&&r.clientUserMessageId==null,u={threadId:e,includeTurns:t},d=()=>r==null?this.params.requestClient.sendRequest(`thread/read`,u):this.params.requestClient.sendRequest(`thread/read`,u,r);if(this.params.hostId!==`durable`&&o!==`shared`&&!t&&r?.priority===`background`)return this.backgroundThreadLookups.read(e,d,{pinned:n}).then(a);this.backgroundThreadLookups.delete(e);let f=l&&c?.shareable?c.promise:d();if(!s)return f.then(a);let p=c??{promise:f,shareable:l};if(this.threadReadStates.set(i,p),this.threadReadStates.size>500){let e=this.threadReadStates.keys().next().value;e!=null&&this.threadReadStates.delete(e)}return f.then(e=>(this.recordThreadAvailability(i),a(e)),e=>{throw this.threadReadStates.get(i)===p&&(e instanceof Error&&hwe(e)===`thread_not_found`?this.threadReadStates.set(i,e):p.shareable&&p.promise===f&&this.threadReadStates.delete(i)),e})}"
+    }
+  ],
+  "observedConstructorFields": [
+    "id",
+    "sessionId",
+    "ephemeral",
+    "forkedFromId",
+    "hostId",
+    "turns",
+    "requests",
+    "createdAt",
+    "updatedAt",
+    "recencyAt",
+    "title",
+    "originator",
+    "source",
+    "agentNickname",
+    "threadSource",
+    "historyMode",
+    "canonicalVoiceHistory",
+    "parentThreadId",
+    "mode",
+    "threadStartKind",
+    "modelProvider",
+    "daybreakEnabled",
+    "latestModel",
+    "latestReasoningEffort",
+    "previousTurnModel",
+    "latestCollaborationMode",
+    "hasUnreadTurn",
+    "threadRuntimeStatus",
+    "rolloutPath",
+    "gitInfo",
+    "resumeState",
+    "latestTokenUsageInfo",
+    "workspaceKind",
+    "workspaceBrowserRoot",
+    "projectlessOutputDirectory",
+    "cwd",
+    "environmentConfigId",
+    "environments",
+    "environmentSelectionEvidence"
+  ],
+  "limits": [
+    "Not original full manager or renderer execution",
+    "cs identity and environment schema parser stubbed; environmentConfigId validation not established",
+    "legacy history branch only; paginated voice/version gate not tested",
+    "No durable-host cache test",
+    "Independent owner lacks persisted official thread metadata; no invented timestamps or schema compatibility claim"
+  ]
+}

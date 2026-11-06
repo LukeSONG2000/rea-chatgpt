@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.sampleTime=void 0;const e=require("../scheduler/async"),r=require("./sample"),s=require("../observable/interval");function t(t,i=e.asyncScheduler){return(0,r.sample)((0,s.interval)(t,i))}exports.sampleTime=t;

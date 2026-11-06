@@ -1,0 +1,133 @@
+{
+  "status": "partial",
+  "replay": "root-native-v37.json",
+  "contract": "native-message-bridge-contract.json",
+  "tool_sha256": {
+    "analysis/tools/desktop-native-host.cjs": "8848a3e63e9e7cdcc4aad64f3d5c5fd09a97c0c4cfbc26696c598c2fb60859a4",
+    "analysis/tools/desktop-native-preload.cjs": "764d2ce5fa332836c65ac5ab97dc96c23fc9e3ad3a5e8bf1baf69a7d355baa5d",
+    "analysis/tools/probe_desktop_root_mount.cjs": "ed42f8b0227b175d22d31e78371417b7af6129369e552ccd36dc0ff9af5c22d9"
+  },
+  "verified": {
+    "interaction": {
+      "status": "passed",
+      "draft": "Offline draft test 123",
+      "sendDisabled": false,
+      "cleared": true
+    },
+    "page_errors": [],
+    "render_errors": [],
+    "bridge_events": [
+      {
+        "direction": "from-view",
+        "message": {
+          "type": "persisted-atom-sync-request"
+        },
+        "status": "handled"
+      },
+      {
+        "direction": "to-view",
+        "message": {
+          "type": "persisted-atom-sync",
+          "state": {},
+          "canWritePrimaryWindowTabPersistence": false
+        }
+      },
+      {
+        "direction": "from-view",
+        "message": {
+          "initializationOnly": true,
+          "type": "ready"
+        },
+        "status": "handled"
+      },
+      {
+        "direction": "from-view",
+        "message": {
+          "type": "remote-hosted-pip-active-thread-changed",
+          "conversationId": null
+        },
+        "status": "record-only"
+      },
+      {
+        "direction": "to-view",
+        "message": {
+          "type": "codex-app-server-initialized",
+          "hostId": "local",
+          "transport": "stdio",
+          "appServerVersion": "0.164.0-alpha.11.1",
+          "installedCodexVersion": "0.164.0-alpha.11.1"
+        }
+      },
+      {
+        "direction": "from-view",
+        "message": {
+          "type": "ready"
+        },
+        "status": "handled"
+      },
+      {
+        "direction": "to-view",
+        "message": {
+          "type": "navigate-to-route",
+          "path": "/c/offline-fixture-conversation-001",
+          "replace": true
+        }
+      },
+      {
+        "direction": "to-view",
+        "message": {
+          "type": "codex-app-server-initialized",
+          "hostId": "local",
+          "transport": "stdio",
+          "appServerVersion": "0.164.0-alpha.11.1",
+          "installedCodexVersion": "0.164.0-alpha.11.1"
+        }
+      },
+      {
+        "direction": "to-view",
+        "message": {
+          "type": "navigate-to-route",
+          "path": "/c/offline-fixture-conversation-001",
+          "replace": true
+        }
+      }
+    ],
+    "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/native-window-v37.png"
+  },
+  "unsupported_message_counts": {
+    "log-message": 169,
+    "electron-window-focus-request": 2,
+    "persisted-atom-update": 4,
+    "electron-window-zoom-changed": 1,
+    "mac-menu-bar-enabled-changed": 1,
+    "global-dictation-enabled-changed": 1,
+    "browser-sidebar-tweaks-enabled-changed": 1,
+    "browser-sidebar-site-annotation-api-enabled-changed": 2,
+    "electron-avatar-overlay-restore-ready": 2,
+    "electron-avatar-overlay-feedback-diagnostics-changed": 2,
+    "electron-sparkle-gates-changed": 2,
+    "local-thread-activity-changed": 1,
+    "set-telemetry-user": 1,
+    "electron-set-badge-count": 1,
+    "power-save-blocker-set": 1,
+    "avatar-overlay-open-state-request": 1,
+    "view-focused": 1,
+    "keyboard-layout-map-changed": 1,
+    "tray-menu-threads-changed": 1,
+    "workspace-settings-webview-presentation-changed": 1,
+    "app-shell-shortcut-state-changed": 3,
+    "browser-sidebar-annotation-multi-select-enabled-changed": 1,
+    "browser-sidebar-owner-sync": 1,
+    "electron-set-window-mode": 1,
+    "checkout-webview-presentation-changed": 2,
+    "fetch": 1
+  },
+  "limitations": [
+    "Minimal independent preload adapter; official shared-object/chunked message behavior remains incomplete",
+    "Host response payloads are synthetic; not official service recovery",
+    "Init notification emitted after ready with fixture delay; production initialization lifecycle not established",
+    "Persisted state writes, native focus, window mode and many menu/interaction messages still rejected",
+    "Automatic fixture navigation remains; user route switching not yet tested"
+  ],
+  "next": "Trace focus and persisted-atom-update contracts; implement isolated local state and test route/sidebar interactions"
+}

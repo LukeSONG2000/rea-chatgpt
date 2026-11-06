@@ -1,0 +1,32 @@
+{
+  "status": "partial",
+  "implementation": "independent native host with artifact-backed container integration",
+  "source_sha256": "4e5bb6cbc94a68e4bd60ae39fbb5dae68cb88dc7511885e51287313a15a18476",
+  "official_evidence": [
+    "ios-sidebar-v288-integration-findings.json",
+    "ios-sidebar-v289-concentric-findings.json",
+    "ios-sidebar-v287-surface-window.json"
+  ],
+  "changes": [
+    "Unclipped outer content surface carries shadow; navigation view stays mounted as inner clipping surface.",
+    "Replaced third-party fixed radius 54 with public UIKit concentric corner sampling for full-window iOS26+ host. Restores previous window configuration and caches by window/bounds.",
+    "Black shadow, opacity0.15 in selected open/non-dark preview branch, radius14, direction-aware offset-2."
+  ],
+  "validation": {
+    "build": "passed",
+    "ui_test": "testPrimaryVisualSurfaces",
+    "passed": 1,
+    "failed": 0,
+    "visual_observation": "Exported sidebar screenshot inspected: top/bottom content corners and soft left boundary shadow visible.",
+    "preview_pid": 42401,
+    "device_reinstalled": false
+  },
+  "limits": [
+    "Animation still immediate; IOS-VIS-003 unresolved.",
+    "Official branch gate, non-full-window coordinate filtering and old-iOS fallback not restored.",
+    "Independent rounded-rect shadow path; continuous-curve exact equivalence not proven.",
+    "Keyboard snapshot/transition handling, dark mode, rotation, RTL and iPhone acceptance not established.",
+    "Passing interaction test is not pixel parity."
+  ],
+  "screenshot": "ios-sidebar-v290-screenshots/7562F0C0-405D-4133-84F5-F1056FE4501C.png"
+}

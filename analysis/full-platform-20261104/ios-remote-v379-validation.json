@@ -1,0 +1,26 @@
+{
+  "status": "partial",
+  "change_type": "independent-host-integration-fix",
+  "source_evidence": "NativeConversationList table-header adapter, v378 main-thread sample; original sidebar containment evidence in IOS-SIDEBAR-VISUAL-RECOVERY.md does not establish this independent UITableView implementation",
+  "defect": "Compared raw fitting height against ceil-assigned frame height; a fractional difference greater than0.5 repeatedly reassigns tableHeaderView. Compare and assign same targetHeight.",
+  "test": "testRemoteLongTitleLayout",
+  "passed": 1,
+  "failed": 0,
+  "covered": [
+    "Default and XXXL preference actually produce different row heights",
+    "Short and long title row height equality at each size",
+    "Full title and approval accessibility labels",
+    "Scoped detail navigation and return at both sizes"
+  ],
+  "screenshot_inspected": "ios-remote-v379-screenshots/F0526654-0DFE-439F-82A5-34E8DD789C38.png",
+  "visual_observation": "XXXL title ellipsis and approval pill do not overlap; environment subtitle wraps, whose official policy is still unverified.",
+  "preview_pid": 86142,
+  "limits": [
+    "Not every accessibility category",
+    "No official full-app runtime equivalence",
+    "Phone not updated",
+    "External display not reverified",
+    "Original list outer containment incomplete"
+  ],
+  "retention": "no stale targets"
+}

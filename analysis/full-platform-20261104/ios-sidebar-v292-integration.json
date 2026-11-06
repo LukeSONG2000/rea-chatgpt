@@ -1,0 +1,35 @@
+{
+  "status": "partial",
+  "implementation": "independent native host, official 293 noninteractive spring parameters",
+  "sources": [
+    "ios-sidebar-v291-animation-findings.json"
+  ],
+  "source_sha256": "d1308222f5e3e9bfa0163e70f1eefcb6c35898f6faa3fe25d2b70f14c8a944bd",
+  "restored_mechanism": [
+    "UIViewPropertyAnimator with observed duration/spring constants",
+    "Keep sidebar mounted and content clipped through closing; hide dismiss layer after terminal layout"
+  ],
+  "independent_adaptations": [
+    "Preserve current presentation transform on interruption",
+    "Transition identity guards old completion callbacks",
+    "Reduce motion selects immediate transition; official branch not fully traced"
+  ],
+  "validation": {
+    "passed": 1,
+    "failed": 0,
+    "transitions_with_intermediate_positions": 6,
+    "samples": "ios-sidebar-v292-frames.json",
+    "elapsed_range_seconds": [
+      0.2973305833293125,
+      0.4493367916584248
+    ],
+    "note": "CADisplayLink samples presentation transform in dedicated simulator, not device performance or exact official animation parity",
+    "simulator_preview_pid": 44795
+  },
+  "remaining": [
+    "Rapid reversal needs dedicated execution coverage",
+    "Interactive pan, velocity continuation and keyboard snapshot not restored",
+    "Reduce motion, RTL, rotation, dark mode and phone acceptance pending"
+  ],
+  "phone_modified": false
+}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getDILComponentNames=void 0;const e=require("dil_generated_components/src/DILComponentNames.generated");function t(){return e.DIL_COMPONENT_NAMES}exports.getDILComponentNames=t;

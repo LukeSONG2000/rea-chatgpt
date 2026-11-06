@@ -1,0 +1,30 @@
+{
+  "status": "partial",
+  "version": "26.1021.31345 / 21828",
+  "evidence_type": "artifact_observation",
+  "source": "recovered/macos/asar-extracted/.vite/build/main-0FVbxCQU.js",
+  "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+  "snippets": [
+    {
+      "offset": 3136461,
+      "excerpt": "case`electron-window-focus-request`:{let t=O.BrowserWindow.fromWebContents(e),n=!this.isSystemSuspended&&!this.isScreenLocked&&t?.isFocused()===!0;this.windowManager.sendMessageToWebContents(e,{type:`electron-window-focus-changed`,isFocused:n,...n?{}:{occurredAtMs:Date.now()}});break}case`electron-window-zoom-changed`:this.windowManager.setWindowZoom(e,n.windowZoom);break;case`worker-request`:case`worker-request-cancel`:break;case`navigate-in-new-editor-tab`:case`open-vscode-command`:case`open-extension-settings`:case`open-keyboard-shortcuts`:case`show-settings`:case`install-wsl`:throw Error(`\"${n.type}\" is not implemented in Electron.`);case`open-config-toml`:{let e=l.V({preferWsl:this.shouldUseWslPaths()}),t=C.join(e,`config.toml`);await(0,A.mkdir)(e,{recursive:!0});try{await(0,A.writeFile)(t,``,{flag:`wx`,mode:384})}catch(e){if(!(e instanceof Error&&`code`in e&&e.code===`EEXIST`))throw e}let n=await O.shell.openPath(t);if(n)throw Error(n);break}}}setPrimaryWindowMode(e,t){let n=O.BrowserWindow.fromWebContents(e);if(!n||n.isDestroyed())return;let r=this.windowManager.getPrimaryWind"
+    },
+    {
+      "offset": 3142017,
+      "excerpt": "sendPersistedAtomState(e,t){let n=this.globalState.get(`electron-persisted-atom-state`)??{},r=this.browserHostManager.isPrimaryWindowPersistenceOwner(e),i={type:`persisted-atom-sync`,state:Object.fromEntries(Object.entries(n).filter(([t])=>(r||!CJ(t))&&this.windowManager.shouldSyncPersistedAtom(e,t))),canWritePrimaryWindowTabPersistence:r};t===`critical`?this.chunkedMessageSender.sendCritical(e,_.rn,i):this.sendMessageToView(e,i)}updatePersistedAtomState(e,t,n,r){if(t===`unread-thread-ids-by-host-v1`||(CJ(t)||t===`page-sidebar-expansion-v1`)&&!this.browserHostManager.isPrimaryWindowPersistenceOwner(e))return;let i=this.globalState.get(`electron-persisted-atom-state`)??{};if(!oYe(t,i[t],n)){this.broadcastPersistedAtomUpdate(e,t,i[t]);return}let a=r==null?n:vz(i[t]??(r.legacyStorageKey==null?void 0:i[r.legacyStorageKey]),r);a===void 0?delete i[t]:Object.defineProperty(i,t,{configurable:!0,enumerable:!0,value:a,writable:!0}),this.globalState.set(`electron-persisted-atom-state`,i),this.broadcastPersistedAtomUpdate(e,t,a)}broadcastPersistedAtomUpdate(e,t,n){let r=n===void 0,i={type:`persi"
+    },
+    {
+      "offset": 3142451,
+      "excerpt": "updatePersistedAtomState(e,t,n,r){if(t===`unread-thread-ids-by-host-v1`||(CJ(t)||t===`page-sidebar-expansion-v1`)&&!this.browserHostManager.isPrimaryWindowPersistenceOwner(e))return;let i=this.globalState.get(`electron-persisted-atom-state`)??{};if(!oYe(t,i[t],n)){this.broadcastPersistedAtomUpdate(e,t,i[t]);return}let a=r==null?n:vz(i[t]??(r.legacyStorageKey==null?void 0:i[r.legacyStorageKey]),r);a===void 0?delete i[t]:Object.defineProperty(i,t,{configurable:!0,enumerable:!0,value:a,writable:!0}),this.globalState.set(`electron-persisted-atom-state`,i),this.broadcastPersistedAtomUpdate(e,t,a)}broadcastPersistedAtomUpdate(e,t,n){let r=n===void 0,i={type:`persisted-atom-updated`,key:t,value:r?null:n,deleted:r};if(!CJ(t)||r){this.windowManager.sendMessageToAllWindows(i);return}let a=O.BrowserWindow.fromWebContents(e);a!=null&&this.windowManager.sendMessageToWindow(a,i)}deletePersistedAtomStateKeys(e,t){let n=this.globalState.get(`electron-persisted-atom-state`)??{},r=t.filter(e=>e in n);if(r.length===0)return;let i={...n};for(let e of r)delete i[e];this.globalState.set(`electron-persiste"
+    }
+  ],
+  "observed": [
+    "Focus request queries current state and replies; it does not activate the window",
+    "Atom updates include deletion, owner checks, validation and recordUpdate merge behavior"
+  ],
+  "adapter_limits": [
+    "Only four observed simple atom keys accepted; recordUpdate rejected",
+    "Memory-only state in fresh host; no disk persistence or reload acceptance",
+    "Focus reply currently reads window focus only; system suspend/screen-lock conditions not restored"
+  ]
+}

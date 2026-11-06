@@ -1,0 +1,80 @@
+{
+  "schema": "rea-ios-component-integration-v1",
+  "batch": "v440",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static_artifact_observation_and_independent_fixture_branch_selection",
+  "change": "Unread indicator receives caller color; fixture selects proven Color.blue fallback rather than gray secondary",
+  "locations": [
+    "0x39653c Color.blue",
+    "0x39698c..0x396990 stack+0x88 -> list+0x118",
+    "0x39e4a0..0x39e4c8 list+0x118 -> temporary",
+    "0x39e750..0x39e758 -> CodexTaskRowV2.unreadBadgeColor field2"
+  ],
+  "unknowns": [
+    "0x74e45bc theme branch business gates",
+    "ancestor ButtonStyle/press feedback; 0x6f3f538 is not established to be ButtonStyle",
+    "unread accessibility label original translation binding",
+    "Android counterpart",
+    "runtime/visual acceptance"
+  ],
+  "validation": {
+    "typecheck": "passed",
+    "existing_warnings": 3,
+    "new_ui_runtime": "not_run",
+    "device_install": "not_run",
+    "preview": "existing old preview preserved",
+    "retention_stale_targets": [],
+    "confirmed_live_pids": [
+      97181,
+      97197,
+      87483
+    ]
+  },
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "c871cce8fe64f96a6e2c88991eb220e2273ca9d28bdafa2d063501a3e32f31f2"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "20b3b79e9321a332bbaaa5abb2fab091bc3b830d5433e87f1580d16c822aadd1"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-list-row-construction.json",
+      "sha256": "737190463c288526a22f83a5c68b8f3572703aca468002aec8dd62ac8edcee49"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v313-task-message-metadata.json",
+      "sha256": "1a307742ef56844367e173a5131e51a345105306035dd19d538fbefad5188791"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v440-environment-types.json",
+      "sha256": "85ab05320c991174a903edc3567acd9bdfa66c49dd1b9233836ce5dc9218a2ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v440-list-input-writes.asm",
+      "sha256": "98c17d0e6aecadcd49eec9ba14561a394e36b602c435e9e6bb535a2f83f0f5b5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v440-row-environment.json",
+      "sha256": "7be93587bcfc30bdb981b6554ecf2e4c29888d6162947a2b16ad59b2cea9adbb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v440-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v440-unread-color-caller.json",
+      "sha256": "b8dcb6b385d6eae81ef1df6f0472e26620b0cf34549f230c4cd0c65811049f5c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v440-unread-color-gate.json",
+      "sha256": "42c1f80cfdabccb654fba951702d6d6067defb2696de18a92e52e8b2514d5a14"
+    }
+  ]
+}

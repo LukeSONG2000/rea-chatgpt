@@ -1,0 +1,317 @@
+{
+  "0x6fbaae8": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x6fbaae8",
+        "end_exclusive": "0x6fbaaf0",
+        "sha256": "733609a6d81cdb7dc586d4e3e698838e3b3592db814069a9284872b11da08a80"
+      },
+      "linker_function_starts_in_window": [
+        "0x6fbaae8"
+      ],
+      "next_linker_function_start": "0x6fbaaf0",
+      "direct_calls": [],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 6fbaae8: f9400a80     \tldr\tx0, [x20, #0x10]\n 6fbaaec: 17fd44ba     \tb\t0x6f0bdd4 <__text+0x6ee3dd4>\n"
+  },
+  "0x6f0bdd4": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x6f0bdd4",
+        "end_exclusive": "0x6f0bf6c",
+        "sha256": "8bb63dfbf5bf087eedbaf9407a2a3dc57714087e7bde7e160c04a87cc3ec2b7a"
+      },
+      "linker_function_starts_in_window": [
+        "0x6f0bdd4"
+      ],
+      "next_linker_function_start": "0x6f0bf6c",
+      "direct_calls": [
+        {
+          "site": "0x6f0bdd8",
+          "target": "0x1be090",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bdf4",
+          "target": "0x6fd9838",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0be00",
+          "target": "0x153260",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0be10",
+          "target": "0x14b0e0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0be20",
+          "target": "0x4501c0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0be24",
+          "target": "0x7c4bcb8",
+          "imported_symbol": "_$s7SwiftUI9UnitCurveVMa",
+          "chained_binding": {
+            "slot": "0xaad5a60",
+            "symbol": "_$s7SwiftUI9UnitCurveVMa",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10783,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6f0be28",
+          "target": "0x14b2d8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0be38",
+          "target": "0x1472bc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0be3c",
+          "target": "0x6fd984c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0be44",
+          "target": "0x151c80",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0be54",
+          "target": "0x1497bc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0be64",
+          "target": "0x150054",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0be80",
+          "target": "0x7c4bc94",
+          "imported_symbol": "_$s7SwiftUI9UnitCurveV6linearACvgZ",
+          "chained_binding": {
+            "slot": "0xaad5a48",
+            "symbol": "_$s7SwiftUI9UnitCurveV6linearACvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10780,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6f0bea0",
+          "target": "0x156f9c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bea8",
+          "target": "0x7c475fc",
+          "imported_symbol": "_$s7SwiftUI14LinearKeyframeV_8duration11timingCurveACyxGx_SdAA04UnitG0VtcfC",
+          "chained_binding": {
+            "slot": "0xaad0c08",
+            "symbol": "_$s7SwiftUI14LinearKeyframeV_8duration11timingCurveACyxGx_SdAA04UnitG0VtcfC",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 8283,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6f0beac",
+          "target": "0x6fda014",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0beb0",
+          "target": "0x6fda000",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0beb4",
+          "target": "0x20387c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bec0",
+          "target": "0x15635c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bec4",
+          "target": "0x155034",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bec8",
+          "target": "0x7c49618",
+          "imported_symbol": "_$s7SwiftUI27KeyframeTrackContentBuilderV15buildExpressionyqd__qd__5ValueQyd__RszAA0cdE0Rd__lFZ",
+          "chained_binding": {
+            "slot": "0xaad31f0",
+            "symbol": "_$s7SwiftUI27KeyframeTrackContentBuilderV15buildExpressionyqd__qd__5ValueQyd__RszAA0cdE0Rd__lFZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9491,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6f0bed0",
+          "target": "0x157e74",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0beec",
+          "target": "0x7c46f48",
+          "imported_symbol": "_$s7SwiftUI12MoveKeyframeVyACyxGxcfC",
+          "chained_binding": {
+            "slot": "0xaad0470",
+            "symbol": "_$s7SwiftUI12MoveKeyframeVyACyxGxcfC",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 8040,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6f0bef0",
+          "target": "0x6fda03c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bef4",
+          "target": "0x6fda028",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bef8",
+          "target": "0x20387c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bf00",
+          "target": "0x15c7f8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bf10",
+          "target": "0x1543a8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bf14",
+          "target": "0x7c49618",
+          "imported_symbol": "_$s7SwiftUI27KeyframeTrackContentBuilderV15buildExpressionyqd__qd__5ValueQyd__RszAA0cdE0Rd__lFZ",
+          "chained_binding": {
+            "slot": "0xaad31f0",
+            "symbol": "_$s7SwiftUI27KeyframeTrackContentBuilderV15buildExpressionyqd__qd__5ValueQyd__RszAA0cdE0Rd__lFZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9491,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6f0bf20",
+          "target": "0x15513c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bf30",
+          "target": "0x156690",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bf34",
+          "target": "0x155034",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bf38",
+          "target": "0x7c49630",
+          "imported_symbol": "_$s7SwiftUI27KeyframeTrackContentBuilderV17buildPartialBlock5firstqd__qd___t5ValueQyd__RszAA0cdE0Rd__lFZ",
+          "chained_binding": {
+            "slot": "0xaad3208",
+            "symbol": "_$s7SwiftUI27KeyframeTrackContentBuilderV17buildPartialBlock5firstqd__qd___t5ValueQyd__RszAA0cdE0Rd__lFZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9494,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6f0bf40",
+          "target": "0x156428",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bf44",
+          "target": "0x6fdbe84",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bf48",
+          "target": "0x157e74",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bf50",
+          "target": "0x153c68",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6f0bf58",
+          "target": "0x155f68",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 6f0bdd4: aa1e03e1     \tmov\tx1, x30\n 6f0bdd8: 964ac8ae     \tbl\t0x1be090 <__text+0x196090>\n 6f0bddc: aa0103fe     \tmov\tx30, x1\n 6f0bde0: a9067bfd     \tstp\tx29, x30, [sp, #0x60]\n 6f0bde4: 910183fd     \tadd\tx29, sp, #0x60\n 6f0bde8: d100c3ff     \tsub\tsp, sp, #0x30\n 6f0bdec: aa0003fc     \tmov\tx28, x0\n 6f0bdf0: f81903a8     \tstur\tx8, [x29, #-0x70]\n 6f0bdf4: 94033691     \tbl\t0x6fd9838 <__text+0x6fb1838>\n 6f0bdf8: f85f8008     \tldur\tx8, [x0, #-0x8]\n 6f0bdfc: a93803a8     \tstp\tx8, x0, [x29, #-0x80]\n 6f0be00: 96491d18     \tbl\t0x153260 <__text+0x12b260>\n 6f0be04: 9001de10     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6f0be08: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6f0be0c: d63f0200     \tblr\tx16\n 6f0be10: 9648fcb4     \tbl\t0x14b0e0 <__text+0x1230e0>\n 6f0be14: 9001de10     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6f0be18: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6f0be1c: d63f0200     \tblr\tx16\n 6f0be20: 965510e8     \tbl\t0x4501c0 <__text+0x4281c0>\n 6f0be24: 9434ffa5     \tbl\t0x7c4bcb8 <_writev+0x7c4bcb8>\n 6f0be28: 9648fd2c     \tbl\t0x14b2d8 <__text+0x1232d8>\n 6f0be2c: 9001de10     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6f0be30: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6f0be34: d63f0200     \tblr\tx16\n 6f0be38: 9648ed21     \tbl\t0x1472bc <__text+0x11f2bc>\n 6f0be3c: 94033684     \tbl\t0x6fd984c <__text+0x6fb184c>\n 6f0be40: aa0003f7     \tmov\tx23, x0\n 6f0be44: 9649178f     \tbl\t0x151c80 <__text+0x129c80>\n 6f0be48: 9001de10     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6f0be4c: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6f0be50: d63f0200     \tblr\tx16\n 6f0be54: 9648f65a     \tbl\t0x1497bc <__text+0x1217bc>\n 6f0be58: 9001de10     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6f0be5c: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6f0be60: d63f0200     \tblr\tx16\n 6f0be64: 9649107c     \tbl\t0x150054 <__text+0x128054>\n 6f0be68: f81783b6     \tstur\tx22, [x29, #-0x88]\n 6f0be6c: d2d00008     \tmov\tx8, #0x800000000000     ; =140737488355328\n 6f0be70: f2e80ec8     \tmovk\tx8, #0x4076, lsl #48\n 6f0be74: f81983a8     \tstur\tx8, [x29, #-0x68]\n 6f0be78: fd402f88     \tldr\td8, [x28, #0x58]\n 6f0be7c: aa1803e8     \tmov\tx8, x24\n 6f0be80: 9434ff85     \tbl\t0x7c4bc94 <_writev+0x7c4bc94>\n 6f0be84: f001de5a     \tadrp\tx26, 0xaad6000 <_writev+0xaad6000>\n 6f0be88: f946c35a     \tldr\tx26, [x26, #0xd80]\n 6f0be8c: d001de54     \tadrp\tx20, 0xaad5000 <_writev+0xaad5000>\n 6f0be90: f9456694     \tldr\tx20, [x20, #0xac8]\n 6f0be94: d101a3a0     \tsub\tx0, x29, #0x68\n 6f0be98: aa1b03e8     \tmov\tx8, x27\n 6f0be9c: 4ea81d00     \tmov.16b\tv0, v8\n 6f0bea0: 96492c3f     \tbl\t0x156f9c <__text+0x12ef9c>\n 6f0bea4: aa1403e3     \tmov\tx3, x20\n 6f0bea8: 9434edd5     \tbl\t0x7c475fc <_writev+0x7c475fc>\n 6f0beac: 9403385a     \tbl\t0x6fda014 <__text+0x6fb2014>\n 6f0beb0: 94033854     \tbl\t0x6fda000 <__text+0x6fb2000>\n 6f0beb4: 964bde72     \tbl\t0x20387c <__text+0x1db87c>\n 6f0beb8: aa0003f8     \tmov\tx24, x0\n 6f0bebc: aa1603e8     \tmov\tx8, x22\n 6f0bec0: 96492927     \tbl\t0x15635c <__text+0x12e35c>\n 6f0bec4: 9649245c     \tbl\t0x155034 <__text+0x12d034>\n 6f0bec8: 9434f5d4     \tbl\t0x7c49618 <_writev+0x7c49618>\n 6f0becc: f9400739     \tldr\tx25, [x25, #0x8]\n 6f0bed0: 96492fe9     \tbl\t0x157e74 <__text+0x12fe74>\n 6f0bed4: d63f0320     \tblr\tx25\n 6f0bed8: f81983bf     \tstur\txzr, [x29, #-0x68]\n 6f0bedc: d101a3a0     \tsub\tx0, x29, #0x68\n 6f0bee0: aa1303e8     \tmov\tx8, x19\n 6f0bee4: aa1a03e1     \tmov\tx1, x26\n 6f0bee8: aa1403e2     \tmov\tx2, x20\n 6f0beec: 9434ec17     \tbl\t0x7c46f48 <_writev+0x7c46f48>\n 6f0bef0: 94033853     \tbl\t0x6fda03c <__text+0x6fb203c>\n 6f0bef4: 9403384d     \tbl\t0x6fda028 <__text+0x6fb2028>\n 6f0bef8: 964bde61     \tbl\t0x20387c <__text+0x1db87c>\n 6f0befc: aa0003f4     \tmov\tx20, x0\n 6f0bf00: 9649423e     \tbl\t0x15c7f8 <__text+0x1347f8>\n 6f0bf04: aa1303fc     \tmov\tx28, x19\n 6f0bf08: aa1a03e1     \tmov\tx1, x26\n 6f0bf0c: f85883b3     \tldur\tx19, [x29, #-0x78]\n 6f0bf10: 96492126     \tbl\t0x1543a8 <__text+0x12c3a8>\n 6f0bf14: 9434f5c1     \tbl\t0x7c49618 <_writev+0x7c49618>\n 6f0bf18: f85803a8     \tldur\tx8, [x29, #-0x80]\n 6f0bf1c: f9400516     \tldr\tx22, [x8, #0x8]\n 6f0bf20: 96492487     \tbl\t0x15513c <__text+0x12d13c>\n 6f0bf24: d63f02c0     \tblr\tx22\n 6f0bf28: aa1b03e8     \tmov\tx8, x27\n 6f0bf2c: f85783bc     \tldur\tx28, [x29, #-0x88]\n 6f0bf30: 964929d8     \tbl\t0x156690 <__text+0x12e690>\n 6f0bf34: 96492440     \tbl\t0x155034 <__text+0x12d034>\n 6f0bf38: 9434f5be     \tbl\t0x7c49630 <_writev+0x7c49630>\n 6f0bf3c: f85903a8     \tldur\tx8, [x29, #-0x70]\n 6f0bf40: 9649293a     \tbl\t0x156428 <__text+0x12e428>\n 6f0bf44: 94033fd0     \tbl\t0x6fdbe84 <__text+0x6fb3e84>\n 6f0bf48: 96492fcb     \tbl\t0x157e74 <__text+0x12fe74>\n 6f0bf4c: d63f0320     \tblr\tx25\n 6f0bf50: 96491f46     \tbl\t0x153c68 <__text+0x12bc68>\n 6f0bf54: d63f02c0     \tblr\tx22\n 6f0bf58: 96492804     \tbl\t0x155f68 <__text+0x12df68>\n 6f0bf5c: d63f0320     \tblr\tx25\n 6f0bf60: d10183bf     \tsub\tsp, x29, #0x60\n 6f0bf64: a9467bfd     \tldp\tx29, x30, [sp, #0x60]\n 6f0bf68: 16490773     \tb\t0x14dd34 <__text+0x125d34>\n"
+  }
+}

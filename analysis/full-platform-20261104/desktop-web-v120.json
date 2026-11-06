@@ -1,0 +1,32 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "implementation": "Independent durable project update; observed PATCH /projects/{id} consumer contract; update renderer only after disk commit",
+  "accepted": [
+    "original settings Save updates durable same identity",
+    "sidebar reflects new name",
+    "reload retains renamed project"
+  ],
+  "validation": {
+    "page_errors": [],
+    "unit": "same identity/creation timestamp, sibling preservation, read-only and unknown rejection, failed write preserves renderer and disk state",
+    "loopback_server_regression": "passed"
+  },
+  "evidence": [
+    "desktop-web-v120-contract.json",
+    "desktop-web-v120-edit.json"
+  ],
+  "limits": [
+    "Only synthetic project name edit accepted in UI; instructions still restricted to empty",
+    "Memory enum persistence does not implement memory behavior",
+    "No undo/redo or multi-tab conflict acceptance",
+    "No deletion or project member send yet",
+    "Generated project expansion atom and unrelated host callbacks remain unsupported",
+    "Full cold browser restart for updated project not accepted"
+  ],
+  "files": {
+    "implementation/desktop-web/project-store.cjs": "115e1a2e1defa8e00d0d500e8c85801cbdb93beec7a09ae557fd9eab5b8322a3",
+    "analysis/tools/desktop-fixture-services.mjs": "78723c5ccbd319452ce549f1ef0227c756ce91213e4485d6ce75dcd10c49db03",
+    "implementation/desktop-web/probe.cjs": "838f64c34d085afd3a9ae20339c1425e5fcaeda655be7ef2ec2e86458fac1a65"
+  }
+}

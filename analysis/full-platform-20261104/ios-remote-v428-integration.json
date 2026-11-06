@@ -1,0 +1,163 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v428",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "How does the original history fragment compute its top/bottom insets?",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x95aca08 fields;0x95acb08 enum;0x161db8;0x1954808",
+      "conclusion": "First/last/group/activity flags and tail(tag8) are tied to the margin branches."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a3337c and0x1a334d4",
+      "conclusion": "Ordinary branch splits first/last group or item gap in halves. Top adds group-item and/or literal12-item. False-tail predicate uses0 top plus adjustments and first?0:item bottom."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Add transport-independent fragment layout projection and Xcode build membership.",
+      "Integrate scaled per-fragment insets into loaded synthetic history with zero container gap.",
+      "Add boundary composition/large-text/unknown-tail regression and pending UI snapshots."
+    ],
+    "independent_adaptations": [
+      "Synthetic single-turn grouping and first/last flag assignment.",
+      "Optional tail branch input, not an official schema."
+    ],
+    "unknowns": [
+      "Full0x1a3373c tail predicate and upstream flag producer.",
+      "Entire transcript projection for tools, separators, activity headers and tail.",
+      "Runtime/UI/visual/device acceptance and Android correspondence."
+    ]
+  },
+  "validation": {
+    "typecheck": {
+      "exit_code": 0,
+      "existing_warnings": 3,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v428-typecheck.log",
+        "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+      }
+    },
+    "foundation": {
+      "exit_code": 0,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v428-text.log",
+        "sha256": "d7b83a75fe6ace3b20ddd6fd9c0851bbe2d4df17b8d5cb4f37b4a836c408d6bb"
+      },
+      "scope": "Independent adapter replay plus cumulative existing state/text tests; not official binary execution."
+    },
+    "project_plist": {
+      "exit_code": 0
+    },
+    "ui_parse": {
+      "exit_code": 0
+    },
+    "ui_execution": "not_run",
+    "visual": "not_accepted",
+    "retention_stale_targets": [],
+    "runtime_blocker": "Existing installer awaiting authorization; no duplicate runner, old preview retained.",
+    "live_pids": [
+      87483,
+      97181,
+      97197
+    ],
+    "simulator_updated": false,
+    "phone_updated": false
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v428-content-empty-equality.json",
+      "sha256": "ba54a89a4436fd7ef1b1e21a428ec73aef093395e291d7d29fecb8ecfff85d22"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v428-content-enum.json",
+      "sha256": "21d4bc9a05a4df2d1e832360c3831920a17fc3ab722bbf6258e405d9b9d6f422"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v428-content-equality.asm",
+      "sha256": "f0b08fb2145329415bbcbc14bb059e915c68467bdb6d132f774fe5f48a04861b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v428-fragment-fields.json",
+      "sha256": "b9cd642091f190af4ff06ceb991a05a9d3ee0d708101e8fae9c138f49794dfdf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v428-fragment-helpers.json",
+      "sha256": "12304a6f1addfa91a546508d02a2a0f6e69f0bc7a9e5360897941fae6d82f780"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v428-text.log",
+      "sha256": "d7b83a75fe6ace3b20ddd6fd9c0851bbe2d4df17b8d5cb4f37b4a836c408d6bb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v428-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-field-map.json",
+      "sha256": "2d1c8faa0548e03ae10c67986794f2199dcb9f16badd079afac7856b947e39d0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-fragment-margin-consumer.json",
+      "sha256": "19a4dbc115fdcb61d15e53fd8e7dc2a61daeee70ca37070561b4e622953e333c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-history-constructor.asm",
+      "sha256": "6333c13d958bed43c092baec51b4f07589d31e6e9bfce714a1899dccadba6289"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-spacing-consumers.json",
+      "sha256": "70a14b3de3af56ec6f29cb5b22e01ca1fdaf2f92ef5c243be5dbe0daa8fe967c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-fragment-condition.asm",
+      "sha256": "750005e835dde8ee64ab48c9e64fa1f0c5825114867fd85c6f37e2a1fac46ced"
+    }
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/RemoteTranscriptLayout.swift",
+      "sha256": "18aa093e1b3f58eec25c0e9571386196701307db94b92d1ed3b36f9569f0557f"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "f6cf5e5bc1dc1633d0407a79b39e5753c3223528f65fb269476829cdee87ed71"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "e1f0ff30f32c1811b8061b3ce8f42406ffd80bb938e56e7c240ddfd4d407bed2"
+    },
+    {
+      "path": "implementation/ios/test-official-text.sh",
+      "sha256": "9e720930442696ed135ba22f9d06c018cdac0591ab37d1ba33758341a7349bab"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "f71c245bf0446fa007552c215dcc97639986a5e8a6bedc05aba985142b04e6f1"
+    },
+    {
+      "path": "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj",
+      "sha256": "c3bf704858635375ce0fdf290ce12ce906948a1097bb8fc2853fa9e9e9e8b5b6"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "625f7527c455b3128a4fe37da361fd75a55431171f44b349069ad7cd03ca625f"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "0b54ede270ea33c734ebee10f7993c87d7c19a943d3e07917bbd251e9716369a"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "779adaf36d27ea54c80494c6f67f46fb06d22d998063bc5ec62c9f8554efd8d8"
+    }
+  ]
+}

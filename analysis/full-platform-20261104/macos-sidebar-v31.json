@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "macos",
+  "baseline": "Codex 26.1021.31345 build 21828; com.openai.codex; not proof of ChatGPT desktop product identity",
+  "implementation_origin": "unchanged packaged renderer plus independent synthetic host/catalog/settings/history",
+  "root_cause": {
+    "observation": "settings.write failed with This RpcImportHook was already disposed; renderer rolled optimistic mode back",
+    "fix": "Duplicate borrowed callback before retaining it beyond RPC return; release on unsubscribe or lease disposal",
+    "evidence_type": "artifact-static plus controlled original-renderer runtime"
+  },
+  "verified": [
+    "Real product menu switches Codex to ChatGPT mode and renders two local conversation rows",
+    "Actual sidebar A→B→A clicks preserve generated history in A and isolate drafts A/B",
+    "Borrowed callback lifetime regression passes for settings and catalog status",
+    "History store and model event projection regressions pass",
+    "Final renderer screenshot visually reviewed; pageErrors empty"
+  ],
+  "not_accepted": [
+    "Mode and selected route cold restoration: settings remain memory-only",
+    "Catalog update notification after send, paging/manual order, new/delete/archive/project actions",
+    "Official layout/behavior fidelity and full route/menu inventory",
+    "Windows, desktop Web, official Web, mobile or physical-device acceptance from this test",
+    "OS window screenshot failed; renderer screenshot is separate",
+    "Aggregate mount remains mount-blocked; focused navigation pass does not accept all unsupported services"
+  ],
+  "runtime_observation": {
+    "navigation": {
+      "status": "passed",
+      "steps": [
+        {
+          "scope": "A",
+          "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\n离线组件验证\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nToday 9:27 PM\nYou said:\nREA synthetic send boundary\nChatGPT said:\n\n本地回放：消息增量已接入。\n\nJavaScript\nconst source = \"fixture\";\nChatGPT can make mistakes. Check important info.\nLatest response\n\nREA synthetic catalog draft A",
+          "draft": "REA synthetic catalog draft A"
+        },
+        {
+          "scope": "B initial",
+          "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\n离线组件验证\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n",
+          "draft": "\n"
+        },
+        {
+          "scope": "A restored",
+          "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\n离线组件验证\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nToday 9:27 PM\nYou said:\nREA synthetic send boundary\nChatGPT said:\n\n本地回放：消息增量已接入。\n\nJavaScript\nconst source = \"fixture\";\nChatGPT can make mistakes. Check important info.\nLatest response\n\nREA synthetic catalog draft A",
+          "draft": "REA synthetic catalog draft A"
+        }
+      ],
+      "limits": [
+        "Two synthetic conversations only; archive/delete/new chat not accepted",
+        "Mode/route cold restore not accepted"
+      ]
+    },
+    "aggregate_status": "mount-blocked",
+    "page_errors": [],
+    "os_window_capture": "failed"
+  },
+  "precise_next_action": "Persist supported mode and selected route in isolated profile; verify a separate process reopens selected conversation and matching sidebar mode, then implement catalog changes without cross-conversation leakage",
+  "evidence_sha256": {
+    "analysis/tools/desktop-fixture-services.mjs": "d1b71804449d1be65b990d29a69e748b4fcd25f2329112480518f1c50341d876",
+    "analysis/tools/test_desktop_catalog.mjs": "038419ed6a320a482212a95fef3ac92cc6b2239d1fa4fac9d7560b0069b884a2",
+    "analysis/tools/probe_desktop_root_mount.cjs": "2ae6f5058b52a4258804e017d6c7b0ae60ce015350485394bf695f3527bdfad6",
+    "analysis/full-platform-20261104/macos-mode-failure-diagnosis-v1.json": "20b8bef3b333f546da59ecf6fa8d296afb2beb1174ec01727643eca6882a1e8c",
+    "analysis/full-platform-20261104/macos-callback-source-v1.json": "d08c3a80879188ff5a2ec59bfbed74a075109910a34a1fd33d1c3a48f7c4cc1a",
+    "analysis/full-platform-20261104/macos-mode-v9.json": "cacfd8cb22339f2f23bb41b6a63b432b9b9f69b7e2a21de198f6c819aca62b7f",
+    "analysis/full-platform-20261104/macos-sidebar-navigation-v1.json": "9df821bd205c7099fae07f4c36c148179916326688f07d5bff55e3f76f79c910",
+    "analysis/full-platform-20261104/macos-catalog-lifetime-v1.log": "11e39f46e365f2b9bcd261f4ea5dcb19653523a19fa12e3299585400c0731d47",
+    "analysis/full-platform-20261104/macos-sidebar-history-regression-v1.log": "84376ef202558c4385a78c3ecdfa1ae146b0a8929a1afd0b4115b10e4b9e8955",
+    "analysis/full-platform-20261104/macos-sidebar-model-regression-v1.log": "5674c5001b5cd8e31ccbb617f31a35d78b15f272614c22ce3eb9973ce97e6149",
+    "output/playwright/official-root-probe-run-1793800074233-44807-synthetic-account.png": "f5af17e3cf90189b91a0e6b581daeb5e3a65c8306b4504a6c3b78d35e1148e74"
+  }
+}

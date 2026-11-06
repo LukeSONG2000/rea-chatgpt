@@ -1,0 +1,27 @@
+{
+  "status": "partial",
+  "commit": "c90354172c5c49535b122443e9a8ed52c2233b80",
+  "source": "https://github.com/openai/codex/tree/c90354172c5c49535b122443e9a8ed52c2233b80",
+  "artifactBaseline": "macOS Codex 26.1021.31345, app-server 0.164.0-alpha.11.1; not proven identical to public commit",
+  "verifiedSourceDirectories": [
+    "codex-rs/app-server",
+    "codex-rs/app-server-protocol",
+    "codex-rs/app-server-client",
+    "codex-rs/app-server-transport",
+    "codex-rs/app-server-test-client",
+    "codex-rs/core",
+    "codex-rs/model-provider",
+    "codex-rs/model-provider-info",
+    "codex-rs/protocol",
+    "codex-rs/tui"
+  ],
+  "reusePriority": {
+    "harness": "inspect core and app-server before reconstructing execution semantics",
+    "messagesAndContracts": "inspect app-server-protocol and app-server README; compare exact version before binding field semantics",
+    "Remote": "inspect transport/client/daemon implementations; do not assume account device-discovery control plane is public",
+    "modelProviders": "inspect model-provider/model-provider-info before creating provider abstraction",
+    "frontend": "No proof in inspected root/directories that frozen Electron settings renderer or mobile UI sources are published; continue artifact source investigation"
+  },
+  "downloadPolicy": "Targeted metadata and one README only; no repository clone",
+  "readmeSHA256": "7d79741cb1c43bb0d9b2f268b5e9d86f1077a0b1a207f7245486924a4c6e3035"
+}

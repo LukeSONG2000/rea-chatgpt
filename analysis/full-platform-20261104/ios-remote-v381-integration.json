@@ -1,0 +1,30 @@
+{
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static",
+  "component": "SwiftUIToolbelt.CustomizableIconAndTitleLabelStyle",
+  "chain": [
+    "Remote caller0x3a4a18",
+    "conformance0x84b7d78",
+    "makeBody0x7540570",
+    "HStack construction0x7540418",
+    "configuration icon/title0x75404e8/0x75404f0"
+  ],
+  "type_evidence": "0x84b7450: VariadicView.Tree<HStackLayout,TupleView<(Configuration.Icon,Configuration.Title)>>; tuple0x84bfb20 has unmodified Icon/Title.",
+  "integration": "Use Label with reconstructed LabelStyle; remove independent13pt frame and resizable/scaledToFit on subtitle icons.",
+  "limits": [
+    "Caller image resource bridge is independent UIKit/SwiftUI adaptation; exact cross-version symbol metrics not proven.",
+    "Outer list and service data projection partial."
+  ],
+  "validation": {
+    "test": "testRemoteLongTitleLayout passed1/0",
+    "screenshot": "ios-remote-v381-screenshots/AAEFAE32-3D60-4C8A-A350-3B79C03F7183.png inspected; original icon shapes visible without title/status overlap",
+    "preview_pid": 86743,
+    "phone_updated": false,
+    "external_display_reverified": false,
+    "retention": "no stale targets"
+  }
+}

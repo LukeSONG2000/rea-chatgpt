@@ -1,0 +1,63 @@
+{
+  "status": "partial",
+  "platform": "iOS 27 simulator iPhone 17 Pro, dedicated REA ChatGPT Offline",
+  "baseline": "iOS 1.2026.293 Markdown assets; independent UIKit/SwiftUI host",
+  "evidenceType": "controlled synthetic replay in independent native host",
+  "defect": {
+    "before": "Font growth moved reading position from block-6 character 237 to block-1 character 185",
+    "report": "ios-type-v129-before.xcresult",
+    "failedTests": 1
+  },
+  "fix": "Capture block/UTF-16 position before dynamic-type reconfiguration; restore after diffable layout completion when scope, generation and gesture generation still match",
+  "readingAcceptance": {
+    "report": "ios-type-v129-fixed.xcresult",
+    "passedTests": 1,
+    "skippedTests": 0,
+    "sameBlock": true,
+    "characterPositions": [
+      237,
+      230,
+      193
+    ],
+    "lineY": [
+      -19,
+      -19,
+      -19
+    ],
+    "characterTolerance": 60,
+    "note": "Bounded line-wrap drift; not exact character invariance"
+  },
+  "mixedAcceptance": {
+    "report": "ios-type-v129-mixed.xcresult",
+    "passedTests": 1,
+    "skippedTests": 0,
+    "codeHeights": [
+      52,
+      95,
+      52
+    ],
+    "measuredFit": [
+      95,
+      52
+    ]
+  },
+  "stateTests": "implementation/ios/test-state.sh passed",
+  "cleanup": {
+    "font": "large restored",
+    "pairing": "original dedicated simulator pairing restored",
+    "ownedHarness": "stopped; no other service touched"
+  },
+  "screenshot": "ios-type-v129-fixed-attachments/0E8C2228-8F83-4694-9651-EC5C6AE089BE.png",
+  "limits": [
+    "Physical iPhone unaccepted",
+    "Selection continuity and all font categories unaccepted",
+    "Scope/gesture guards present; concurrent switch or drag during font change not independently replayed",
+    "Native appearance remains independent reconstruction, not proven official parity",
+    "Character drift up to 44 observed on round trip"
+  ],
+  "sources": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "713ec5ba0a58ec02d9a84a02a6de82ff0dc7d23f49f2d3f424f9ac94c9e25277",
+    "implementation/ios/UITests/HostInteractionTests.swift": "73156ecf2073eba9bfab057ce1ff5b1b3fd8d83e879663694b01ddb10bf8f0fa",
+    "implementation/ios/test-dynamic-type.py": "eac4058007f677cb842b1f66b8ff0c6a9e352cfa793c42651a9734e0673c1cc6"
+  }
+}

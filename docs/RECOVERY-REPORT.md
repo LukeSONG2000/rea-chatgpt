@@ -1,5 +1,7 @@
 # ChatGPT 移动端两包深度逆向与代码基线恢复报告
 
+> 2026-11-03 接管校正：本文保留历史研究过程，不是当前完成度证明。以 [当前状态](CURRENT-STATUS.md) 和 [问题清单](ISSUES.md) 为准。L3 仅表示上游版本定位，未证明下游补丁或二进制等价；旧分析输出需重新验证。
+
 日期：2026-10-27
 工具链：REA CLI 6.8.0（`rea-agents`）+ JADX + apktool + zstd + 自研 valdimodule 解包器
 分析对象：`/Users/lukesong/Work/Workspace/rea/ChatGPT/package/` 下的两个移动端包

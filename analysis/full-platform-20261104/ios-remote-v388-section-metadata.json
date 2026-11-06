@@ -1,0 +1,140 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "CodexTaskListSectionHeaderV2",
+      "descriptor": "0x955efd4",
+      "type_section_entry": "0x9d34bc0",
+      "accessor": "0x3f4f2c",
+      "fields": [
+        {
+          "name": "title",
+          "record": "0x99d7c08",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "subtitle",
+          "record": "0x99d7c14",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "icon",
+          "record": "0x99d7c20",
+          "type_reference": "0x8e37ef8"
+        },
+        {
+          "name": "kind",
+          "record": "0x99d7c2c",
+          "type_reference": "0x8bca5f8"
+        },
+        {
+          "name": "isCollapsed",
+          "record": "0x99d7c38",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "toggleCollapsed",
+          "record": "0x99d7c44",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "startNewThread",
+          "record": "0x99d7c50",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "topSpacing",
+          "record": "0x99d7c5c",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "titleColor",
+          "record": "0x99d7c68",
+          "type_reference": "0x8d935b0"
+        },
+        {
+          "name": "horizontalPadding",
+          "record": "0x99d7c74",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "_newThreadButtonHitSize",
+          "record": "0x99d7c80",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "_iconSize",
+          "record": "0x99d7c8c",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "_symbolFontSize",
+          "record": "0x99d7c98",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "_projectIconSpacing",
+          "record": "0x99d7ca4",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "_newThreadIconColumnWidth",
+          "record": "0x99d7cb0",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "newThreadIconSize",
+          "record": "0x99d7cbc",
+          "type_reference": "0x8c865b0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7cf215c",
+          "flags": "0x30000",
+          "section_entry": "0x9cd97e8"
+        }
+      ]
+    },
+    {
+      "name": "CodexTaskListProjectPagination",
+      "descriptor": "0x955f560",
+      "type_section_entry": "0x9d34c50",
+      "accessor": "0x402710",
+      "fields": [
+        {
+          "name": "pages",
+          "record": "0x99d8360",
+          "type_reference": "0x8bca2d0"
+        },
+        {
+          "name": "isEmpty",
+          "record": "0x99d836c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "actionHandler",
+          "record": "0x99d8378",
+          "type_reference": "0x8bd916a"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7cf47e8",
+          "flags": "0x30000",
+          "section_entry": "0x9cd99fc"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

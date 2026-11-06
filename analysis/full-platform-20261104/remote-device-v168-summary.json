@@ -1,0 +1,71 @@
+{
+  "status": "partial",
+  "authority": "explicit independent UI gate adapter and authenticated local-owner health projection; actual original device UI",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/main.cjs",
+      "sha256": "475962a787061deb481a47f2219098a0510df09f0eacfa8cc8ddd8a3d14f3762"
+    },
+    {
+      "path": "implementation/desktop/native/renderer.mjs",
+      "sha256": "e3834b63afdaa440a83fbd860f2694d0fc3c637aa5399938bc93c88400b11ec3"
+    },
+    {
+      "path": "implementation/desktop/native/local-remote-ui.mjs",
+      "sha256": "bfb372ba6c851076cf622940f28645f5f78b0caf519cad99d83b83975f8e1518"
+    },
+    {
+      "path": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "91e639c1048f0549866eb116101855282acb1d319d224645bbee8809f7478302"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-device-ui.cjs",
+      "sha256": "9ed0a834a72f47c3d1232f64946c585c883a30e35649bd5bc1baa86043219c40"
+    },
+    {
+      "path": "implementation/desktop/native/test-local-remote-ui.mjs",
+      "sha256": "1334d2cb25fa3a5bc75af5f694977a06c55614c79b14eb77855232f4e4f1b0dd"
+    }
+  ],
+  "entry": "--local-remote-ui requires --remote-pairings and is bound to the separate profile",
+  "verified": [
+    "Single UI gate 1042620455 enabled through existing original SDK overrideAdapter, no official file patch",
+    "Other gate/config/experiment/layer override handlers retained; dispose restores adapter",
+    "Native-role credential confinement unchanged",
+    "Control other devices and Add dialog list independent hosts with online/offline labels",
+    "Original checkbox flow selects only B, adds B, excludes A",
+    "Final card visibly Disconnected; no connected claim",
+    "Mac signature and both payloads plus Windows package hashes passed"
+  ],
+  "localGate": {
+    "status": "enabled",
+    "scope": "independent single UI gate; owner authorization unchanged"
+  },
+  "deviceAdded": true,
+  "reports": [
+    "remote-device-v168-visibility.json",
+    "remote-device-v168-gate.json",
+    "remote-device-v168-add.json",
+    "remote-device-v168-entry.json",
+    "remote-device-v168-final.json",
+    "remote-device-v168-gate-unit-final.json",
+    "remote-device-v168-catalog-unit-final.json",
+    "remote-device-v168-hashes.json",
+    "remote-device-v168-persistence-observation.json",
+    "remote-device-v168-build-cleanup.json"
+  ],
+  "builds": {
+    "macos": "implementation/desktop/dist/v168-final-macos/REA ChatGPT Offline.app",
+    "windows": "implementation/desktop/dist/v168-final2-windows/REA ChatGPT Offline/REA ChatGPT Offline.exe"
+  },
+  "limits": [
+    "UI gate is local opt-in, not official experiment eligibility",
+    "clientAuthorized mapping is independent local probe success, not official account authorization",
+    "Control-this-Mac remains disabled; no official enrollment or online service",
+    "Final added device disconnected; connect/disconnect lifecycle not complete",
+    "Added environment IDs not found in inspected offline-atoms.json; restart persistence not accepted",
+    "All-host-offline authorization/recovery behavior and slow-host isolation remain unaccepted",
+    "Windows OS not executed; no model calls",
+    "Initial Windows build failed for disk space; only current generated intermediate/incomplete build folders removed, manifests and original evidence retained"
+  ]
+}

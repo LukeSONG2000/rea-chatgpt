@@ -1,0 +1,35 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "root_cause": "Original u$t called missing applicationState.write(selected-project,null) when entering project chat",
+  "implementation": "Independent scoped applicationState read/write; only selected-project null clear is supported, committed to profile disk before success",
+  "validation": {
+    "same_project_chat_flow": [
+      "original project composer sends with matching gizmo_id",
+      "completed history and original project member row match",
+      "reload then project member selection restores conversation"
+    ],
+    "page_errors": [],
+    "persisted_state": {
+      "format": "rea-application-state-v1",
+      "account": "offline-fixture-account",
+      "selectedProject": null
+    },
+    "tests": "explicit write/read, 0600, reconstructed store, invalid key/value preservation, corrupt state preservation; loopback server/project regressions passed"
+  },
+  "evidence": [
+    "desktop-web-v122-state-discovery.json",
+    "desktop-web-v122-state-fixed.json"
+  ],
+  "limitations": [
+    "No acceptance for local filesystem project selection, remote host selection, project/thread sorting or membership globals",
+    "Other applicationState reads explicitly reject unsupported keys",
+    "Generated project expansion atoms still unsupported",
+    "No blanket applicationState completion, cross-platform or official Web coverage"
+  ],
+  "files": {
+    "implementation/desktop-web/application-state.cjs": "3ff94e1d2c135c8e70e0861d577d2d938cefcf2777e473e06090a932f83d31e9",
+    "implementation/desktop-web/server.cjs": "81776b19dc00de8e0efeeb8a8b229f4917f392ea2bae646a3b76a0ce0d1701c6",
+    "analysis/tools/desktop-fixture-services.mjs": "7d00972500944499c134111c10dada6dd9db40208442734c5029ae3bfd6a5291"
+  }
+}

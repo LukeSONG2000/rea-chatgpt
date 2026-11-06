@@ -1,0 +1,39 @@
+{
+  "status": "partial",
+  "authority": "independent partial reader, real local fixture owners and isolated official merge replay",
+  "sources": [
+    {
+      "path": "implementation/remote/owner.py",
+      "sha256": "a9d0a61e763009233f5e2981158297e8d886ed87cc699b7504d9610b83f442df"
+    },
+    {
+      "path": "implementation/desktop/native/remote-client.cjs",
+      "sha256": "6a1f9322bbdeca4b5859617ec07f4ff1221c018ebeb39ead2477031fa3e9f3c3"
+    },
+    {
+      "path": "implementation/desktop/native/remote-thread-reader.cjs",
+      "sha256": "35c79999b30c722fa982c7acbfc74362416fd8eb64107595eef3369d08414747"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-thread-reader.cjs",
+      "sha256": "a3b74cd492edb2dde0972514489f9d2703b3ad3d9c4f5365631de278cae34bb1"
+    },
+    {
+      "path": "analysis/tools/replay_remote_turn_merge.cjs",
+      "sha256": "6a7f1e8fbb5c1c79074d5b7ae23fff8f9edd2f27ec89cddd4582338174108f51"
+    }
+  ],
+  "reports": [
+    "remote-reader-v153-unit.json",
+    "remote-reader-v153-metadata.json",
+    "remote-reader-v153-owner.json",
+    "remote-reader-v153-owner-regression.log",
+    "remote-reader-v153-merge.json"
+  ],
+  "limits": [
+    "No original UI wiring or complete official thread schema",
+    "Snapshot consistent at captured cursor; delayed renderer application still needs admission guard",
+    "Unknown legacy metadata explicitly unsupported by reader",
+    "No new package or real model call"
+  ]
+}

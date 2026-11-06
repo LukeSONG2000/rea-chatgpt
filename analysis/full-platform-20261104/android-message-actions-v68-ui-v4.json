@@ -1,0 +1,26 @@
+{
+  "status": "failed",
+  "serial": "emulator-5554",
+  "run_id": "0b318efce4d54f548c080920553900a9",
+  "origin": "independent native Compose host",
+  "steps": [
+    {
+      "apk": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "21cbfbc9cd20adc152a49dafc7337da14653fb0f5adbc49a23243b934ed2d91e"
+    },
+    {
+      "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "672022670352e9c8c49590ce74fa140955dc7eb6a5406a9e9efc8a11e46c0937"
+    },
+    {
+      "test": "NativeHostTest#verifyWholeMessageCopy",
+      "status": "passed"
+    },
+    {
+      "test": "NativeHostTest#prepareMessageDraftEdit",
+      "status": "passed"
+    }
+  ],
+  "error": "NativeHostTest#verifyMessageDraftEditRestart",
+  "temporary_pairing_removed": true
+}

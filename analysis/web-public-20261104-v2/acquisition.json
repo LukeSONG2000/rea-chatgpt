@@ -1,0 +1,33 @@
+{
+  "status": "partial",
+  "captured_at": "2026-11-04T09:52:48.764458+00:00",
+  "classification": "public-static-acquisition",
+  "requests": [
+    {
+      "url": "https://chatgpt.com/",
+      "source": "public landing page",
+      "status": 403,
+      "content_type": "text/html; charset=UTF-8",
+      "etag": null,
+      "bytes": 8494,
+      "sha256": "00cdcb06c7e1cf68a5d66e9657662d2613891246608658b425f66c634e44f3bc",
+      "artifact_accepted": false
+    },
+    {
+      "url": "https://chatgpt.com/cdn/assets/116399.fd4bcc023c.js",
+      "source": "historical URL list; version correspondence unknown",
+      "status": 200,
+      "content_type": "application/javascript",
+      "etag": "0x8DF3459E1DB064C",
+      "bytes": 8680,
+      "sha256": "a55a505e1e8e62108f5aa7e050356df4d5542d331f15b92a7282feda1270afcf",
+      "file": "116399.fd4bcc023c.js"
+    }
+  ],
+  "limits": [
+    "No redirects followed, no cookies/auth or business APIs",
+    "HTTP 200 alone does not prove app artifact or complete baseline",
+    "Historical chunk URL not assumed current",
+    "No scripts executed, no UI rendered"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "implementation": "Dynamic project expansion keys must have a valid synthetic UUID and correspond to a project in the current isolated profile; boolean values only",
+  "validation": {
+    "cold_after_settle": "new browser process/context and recreated service restore expansion; selecting member shows complete assistant reply and composer; same history/project identity",
+    "settle_delay_ms": 18000,
+    "initial_page_errors": [],
+    "cold_page_errors": [],
+    "unit": "existing project expansion accepted, nonexistent shaped ID and nonboolean rejected; restart persistence and prior atom regression pass"
+  },
+  "evidence": [
+    "desktop-web-v123-cold.json",
+    "desktop-web-v123-cold-r2.json"
+  ],
+  "limitations": [
+    "First immediate-selection cold probe timed out waiting for assistant; startup navigation timing remains unaccepted",
+    "18-second settling is a test condition, not a fix or performance claim",
+    "Startup initially displays home; automatic last-route restore not proven",
+    "Node orchestrator remains alive during HTTP service recreation",
+    "Native macOS and other platforms are not covered by browser result"
+  ],
+  "next": [
+    "Trace and correct initial route-owner writes versus ready navigation, preserving immediate interaction evidence",
+    "Port durable project services to independent macOS Electron host and validate there"
+  ],
+  "files": {
+    "analysis/tools/desktop-offline-store.cjs": "845ae35a997324f110288ac6f3bfc7f3e77f52dc04c6056e1b86687dfac80764",
+    "implementation/desktop-web/server.cjs": "f501566309494fd2d47d8c30a7b480cd6aee0234583df720914b19c3d0385a7b",
+    "implementation/desktop-web/probe.cjs": "caf351a5ee6d3df4f3d05af5e37dda7fd3a03fd26d0d3e6f1602c94786d070ef"
+  }
+}

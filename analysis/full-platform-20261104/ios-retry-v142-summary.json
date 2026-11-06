@@ -1,0 +1,53 @@
+{
+  "status": "partial",
+  "evidenceType": "independent implementation and controlled simulator replay",
+  "baseline": "iOS 1.2026.293 reference; not official retry behavior; simulator runtime 27.0",
+  "validation": {
+    "transportTests": 5,
+    "modelWorkerTests": 6,
+    "uiTests": 2,
+    "retrySuccessHistory": [
+      {
+        "conversation": "offline-local-8fcacd29-e5fc-46b8-8ad8-ffac78496d4a",
+        "request": "1E7FB7B5-9C79-40F4-B845-645F7C0F4BF9",
+        "retryOf": "65932979-14B3-4234-B4C2-04259999175D",
+        "parentPhase": "failed: provider_terminal_failure (max_output_tokens)",
+        "phase": "completed"
+      },
+      {
+        "conversation": "offline-local-4386ef0a-5385-44e9-93b9-e2ebc17a106e",
+        "request": "B26A611D-577A-492D-AF90-5AC60418B8EE",
+        "retryOf": "8907F236-AEBC-4C49-81CE-EAB34D0785C8",
+        "parentPhase": "failed: provider_terminal_failure (max_output_tokens)",
+        "phase": "completed"
+      }
+    ],
+    "cancelledHistory": [
+      {
+        "conversation": "offline-local-8f832cfb-1814-46c3-bf95-bd879472305e",
+        "request": "498CB327-6A4A-49FA-8A94-78035BC5BADF",
+        "phase": "cancelled"
+      }
+    ],
+    "pairingRestored": true
+  },
+  "firstRun": {
+    "retrySuccess": "passed",
+    "cancel": "failed: global completed selector matched prior fixture-b history",
+    "correction": "test-only fresh conversation; retain first xcresult"
+  },
+  "sources": {
+    "implementation/harness/loopback_server.py": "61157a674282fcd36118883aaeb14a3cd14396856fe5e187d8bedf08d2a7a170",
+    "implementation/harness/fixture_worker.py": "82d0794a2bdea3a18d3cfd0c03aff876e4a9de0ae22981d2982470ad248d9f9b",
+    "implementation/harness/test_loopback_server.py": "6732e81022fb926c38839dd4f94a4de09f6e4856821f8591253f3bf3e10f61c0",
+    "implementation/ios/UITests/HostInteractionTests.swift": "65019da6487f6d197847797c40dfccf061fe1852cc4714dfeaa399ba6a8ed6dc",
+    "implementation/ios/test-retry.py": "16d950e351384de3db5850771218c7f09b216107ab105f40789c789ddfceebed"
+  },
+  "limits": [
+    "No real Zhipu request",
+    "No physical iPhone acceptance",
+    "No official visual parity claim",
+    "Cancellation observed four seconds; not adversarial delayed transport injection",
+    "Fixture attempts reset with fixture process; not backend idempotent retry implementation"
+  ]
+}

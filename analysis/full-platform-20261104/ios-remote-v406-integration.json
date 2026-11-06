@@ -1,0 +1,61 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official static consumer/resource observation; independent Swift presentation model and synthetic fixtures",
+  "observations": [
+    {
+      "offset": "0x1a3a4e8;0x6fb808",
+      "conclusion": "Cached known inProgress precedes action classification: optional display command verbatim, nil -> Command Execution."
+    },
+    {
+      "offset": "0x1a3a4e8;descriptor0x95d1ba0;pattern0xae318e8",
+      "conclusion": "For specialized actions, optional rendered summary or generic title. Incomplete metadata pattern vector confirms field3 summary offset0x28; accesses0x28/0x30 read String optional."
+    },
+    {
+      "offset": "0x88b24d0/0x88b2510/0x88b2550",
+      "conclusion": "Ordinary command with display string selects ran/declined/running command templates. Completed and failed both ran; unknown follows running fallback wording without live-state promotion."
+    },
+    {
+      "offset": "0x1a4307c/0x1a430e4/0x1a4314c;0x1a42df0",
+      "conclusion": "Absent display uses running/ran/declined generic keys; generic action title Command Execution."
+    }
+  ],
+  "evidence_files": [
+    "ios-remote-v405-command-summary-builder.asm",
+    "ios-remote-v406-summary-fallbacks.asm",
+    "ios-remote-v406-rendered-layout-pattern.json",
+    "ios-remote-v406-text-resources.json"
+  ],
+  "integration": [
+    "Optional renderedSummary replaces previously pre-resolved synthetic originalSummary input.",
+    "Deferred localized label enum keeps locale resolution in presentation layer.",
+    "Selected original resource keys increased from10 to17; cache/declined UI expectations updated."
+  ],
+  "validation": {
+    "foundation": "passed:180 upstream combinations,448 format templates and previous state/action/locale tests",
+    "host_typecheck": "passed;3 existing UIKit deprecation warnings",
+    "ui_test_syntax": "passed",
+    "ui_runtime": "not run; original pending test blocked in Xcode first-launch authorization",
+    "preview": "PID87483 still running; not replaced",
+    "phone": "not installed",
+    "retention": "no stale packages"
+  },
+  "limits": [
+    "Display command normalization helper0x1a3a77c not recovered; adapter accepts display string.",
+    "Specialized action detail bodies still independent synthetic command output; no actual task/tool execution.",
+    "No new visual/device acceptance; latest accepted runtime v383.",
+    "Android consumers and shared UI equivalence not proven."
+  ],
+  "next_minimal_action": "Recover specialized action expanded detail consumer; after component authorization run cumulative UI suites and reconcile source hashes, retaining preview for user acceptance.",
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteCommandSummary.swift": "7269fba1c98e874e7a8462dad5e66a5fdca1ca68e4b392849dcfee0c98c99099",
+    "implementation/ios/Sources/OfficialText.swift": "e1f147caaae6280a8bbdea79996de04ad97b5b16f7fb9d38929058231c441a9b",
+    "implementation/ios/Sources/NativeConversationHost.swift": "ce70a230471171d71269701018a2ccded1724f4839e0a14d02a1f40fa13991d9",
+    "implementation/ios/Tools/prepare-official-text.py": "2bbc0cb57ab0030c44ec37feb3400e4c5f5420764256edd526741b0e5bcd53cf",
+    "implementation/ios/Resources/OfficialTranslations.json": "5ce3cd9496e0271ae8eca478d1cbc625e0a582c2e42e55227d5fb8f0537133ed",
+    "implementation/ios/TextTests/main.swift": "b8780feb4d2584ec2e02813eaa467522965eb67e34a07279d8e1ce209f1c64cb",
+    "implementation/ios/UITests/HostInteractionTests.swift": "09d68901c028aa28db5db4a12fda36bc8395076294e4c4c64fcb91e39cc4bca0"
+  }
+}

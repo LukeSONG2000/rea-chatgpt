@@ -1,0 +1,242 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_turn_classification": "progress: v418 integrated focus/scroll/empty-request behavior and verified source hashes; runtime gate still live",
+  "question": "Recover the official input footer and dedicated pill style instead of generic stacked field/button controls.",
+  "official_observations": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a53f90..0x1a53fd0;helpers0xf53364/0x460490;type0x7e1ea40",
+      "conclusion": "Footer is a center-aligned HStack spacing8, with top padding2. Content order is pencil, ordinary/secret field, styled Send/Skip button."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a55dbc..0x1a55e30;0x74f9ac0;0x74ee448;0x757d918",
+      "conclusion": "Pencil factory literal0x8a565b0 is OpenAI/Symbols/pencil. Caption font, ChatGPT/text/tertiary literal0x8a51c40; square24 frame. Font and frame are distinct."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "descriptor0x95b0064;conformance0x7e21590;witness0x19b6ed8 ->body0x19b6c4c",
+      "conclusion": "Stateless dedicated ButtonStyle: body font, text/primary, horizontal16 vertical8 padding, Capsule stroke border/default width0.5, Capsule hit shape, opacity0.7 while pressed and1 otherwise. Body types have no background/fill modifier."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x16b32c8/0x1c02d0;0x74ee2c0/0x74ed010;0x7cdb410",
+      "conclusion": "Padding constants16/8; literals0x8a51ba0 primary and0x8a510b0 border/default; pressed constant0.7 verified from binary."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "descriptor0x95ae81c;conformance0x7e19778;witness0x19b6c48 ->0x19b67e0",
+      "conclusion": "Composer-adjacent card modifier has shape,innerBackgroundColor,glass,colorScheme,paddingEdges fields. Body reads contextual values and delegates appearance. Defaults, Glass branch and original parent attachment remain unresolved; no generic card replacement applied."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Dedicated outlined pill ButtonStyle integrated in existing request form.",
+      "Footer restored to center HStack spacing8/top2 with original pencil/caption/tertiary color and24 frame.",
+      "Existing scoped draft/focus/submit callbacks retained.",
+      "Focused UI test now checks input/button vertical alignment and horizontal separation, and captures a screenshot when executed."
+    ],
+    "independent_adaptations": [
+      "Native host is evidence-driven rebuilding, not compilable recovered official source.",
+      "Request envelope/disconnected service, viewport measurement and current history placement remain independent/partial."
+    ]
+  },
+  "validation": {
+    "host_typecheck": "Passed final implementation;3 existing UIKit deprecation warnings.",
+    "ui_source": "Complete UI test source parse passed. Added footer geometry assertions not executed.",
+    "assets": "assetutil confirmed pencil and all three semantic colors in reused bundle, including light/dark color variants.",
+    "foundation": "State model unchanged from passing v418 suite; not rerun for style-only change.",
+    "runtime": "Original runner97181 and first-launch97197 live this turn; previous authorization blocker unresolved. Preview87483 live. No new build/install/phone acceptance.",
+    "retention": "No stale targets."
+  },
+  "limitations": [
+    "Card Glass/default configuration and original composer-adjacent owner attachment remain partial.",
+    "Actual Dynamic Type/keyboard/visual geometry and button hit behavior unaccepted.",
+    "No live service or local execution; Android UI parity not inferred from iOS.",
+    "Associated-type witness raw encodings starting symbolic kind23 were rejected by existing parser; concrete body type records were inspected separately, without silent fallback or invented decoding."
+  ],
+  "next_minimum_action": "Trace card environment defaults and Glass application0x756d3ec plus parent owner, then run full task->message form->return checks after existing Xcode authorization clears.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-assets.json",
+      "sha256": "d76ee14a9e7267f857479550b537cb3b19c0a447081f08aa5f6c557eea9b8b90"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-border-color.asm",
+      "sha256": "e84f044cc0db6546f7a43fbeff01de07ed5f7f0e7a384d049afe33f8509390b3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-card-body-calls.json",
+      "sha256": "2f3bb9f2616347c04cf6d40624eefc63018e639c5e262485b2b07bf3a0280ab6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-card-body.asm",
+      "sha256": "54459fa5b3531625a8257e14ab318547c1d787a379783714b1dedc7edb36e6bc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-card-witness-19b6c48.asm",
+      "sha256": "c73d04dac4f12c07b7bf4590c7875d4896e25b29c918bbc3227414032a4524fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-card-witness-44a6c4.asm",
+      "sha256": "f34adeb2bad99ae250e93cdabd1360bbb343beb4bf9e1cc606c65a58536a81cc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-card-witness-44a6d4.asm",
+      "sha256": "d52ec7ecccff0a6dfaedf3d53b29eb935541f250496a0b3f29c7dedea1428ac1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-card-witness-44a6d8.asm",
+      "sha256": "bacb006bf22f4f517deb9eafb69e6998b2939e519f5737ff2dce429edc85bfc7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-card-witnesses.json",
+      "sha256": "74a6c9a38e6ea6a76a2325b559e6ac57a0a696e1b3d253301e5387b231902e04"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-footer-color-calls.json",
+      "sha256": "0b8708bb5c05e99323dee532c3d115d6bb7b03244ae41cdecb2e0b6977d03200"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-footer-color.asm",
+      "sha256": "ddcff1ff793e3d98ce4dfdea8e2b9377fb9a676f905aaa336ab8f02beba5723b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-footer-frame.asm",
+      "sha256": "d2d78f29021e321ce1d143f0d791ec45e0a93d2e780bd127f4599b5d9b8b9c74"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-footer-icon-calls.json",
+      "sha256": "860b8346556ec450af25bd09efbd54893cd0b0296e098b54bc0661d5f6372e12"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-footer-icon.asm",
+      "sha256": "432895f9a58770da9b9c88e5a2c0abafe3639c608c5d23fa5656f42e41a76f33"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-footer-padding.asm",
+      "sha256": "3c1d3396efa29c14895805270a311201c6064faf43ec55f03ff92fb6850046e5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-footer-stack-layout.asm",
+      "sha256": "609c22355aea30820e736667f521cad52753ffd7d4901ab2c7550c09d400a2b6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-footer-stack-parent.asm",
+      "sha256": "4854c14b5c4e0efb024c4399d8495cbcde512428b0379d289541dc78ad85dad1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-footer-stack-store.asm",
+      "sha256": "5e0d536d4c4cf5868320cfd04135253da40bdbdfbadf2a46abd22a74d3888346"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-footer-stack.asm",
+      "sha256": "a0db1bf7eae92dd9156bba05b72b04bff6aaec501e07f6251d82bbf8696577d0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-horizontal-padding.asm",
+      "sha256": "b64bbaae18307844c5029f50e366cb4dcc969e5a408b7c87b25a9dd2e979a9c9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-label-font.asm",
+      "sha256": "f8348f2a5982acc346e887fbe0f359f47b9dca6d27980df6f7d7c0e0ad321e08"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-pill-body-calls.json",
+      "sha256": "de289a761439e43d7abcc7fa090bcdc918fc13c81aee572ec2dad1785b45ff46"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-pill-body.asm",
+      "sha256": "373fc37f66f7b0dae57eb59721bf08657973f47df32743f4004780f8e4287ecf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-pill-foreground.asm",
+      "sha256": "dbc1833d2c84847f8bb0c1c518db8402f63cb3205dc945c02b4333716dcb5722"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-pill-shape-style.asm",
+      "sha256": "1090e83088f10a1fd6cba67cbdfc9a4decad7cabcf49d7cc33b14ae6b74e90b6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-pill-shape.asm",
+      "sha256": "fe78ef40329047cabd290695afe29a515f5f65db654ca474205189a37fc56264"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-pill-witness-19b6ed8.asm",
+      "sha256": "5a68c20a9d8f9db2f4cd54981a8360deda3061ab0624e698bb9c59dba6ee9fe8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-pill-witnesses.json",
+      "sha256": "8d043da2699f675c773a2937f0cd17dbd53f0c04638c478b1236e8d6fbe7e2c1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-stroke-style.asm",
+      "sha256": "e6e52e3c173d621e3f8004f8278beef6c7d5100149312415e3e92553b69e37f2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-style-conformances.json",
+      "sha256": "c18fc0df1ad5583f94c8021142e46d244c8f6eb805c0405fa6625411189a9fce"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-style-fields.json",
+      "sha256": "39d9a3e905a4fa3822cdef18a1af9eb2106337db884f1581f4656ecb94344bfd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-type-7e1ea40.json",
+      "sha256": "2189488b7a2629635ce2666956469e527d41947d536639ce7889d0e9acc600e8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-type-7e1ea88.json",
+      "sha256": "2ce40049ab893f626fe2fd3ebe2b67a0598ee27ac9e63cde7d7d84f75b372e50"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-type-7e22ee0.json",
+      "sha256": "4248c7aa12934f90206650d6bd87a750284a3979ebb0086c7c86af1c55a0a227"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-type-7e22ef0.json",
+      "sha256": "8c35530efed86bac896a6deea4ae82ae94d2caca408c4831ceac9d100849eb36"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-type-7e22f00.json",
+      "sha256": "569f3d0358e1b5b9e624222d0565a86ff7f1c1a57f25c7118d2bbee11ce7cd5b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-type-7e22f10.json",
+      "sha256": "515030354c7c9db64f58c6fa23d3632d8bfb8adfbf65fc1e26e3a02967989415"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-vertical-edge.asm",
+      "sha256": "8942f43f1410cd9d75e84bc07fd48dc8a5335701460f10fb9ca9db4ab4b76ce9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v419-vertical-padding.asm",
+      "sha256": "69ed1b344414139dad09ad17ee8ea5aea1cc183fdfb83433b333eadd89cb6d48"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-content.asm",
+      "sha256": "0bbeeb5eedc2eebb56bef1a774595f1cae1d15d57a3a234196d241b93eb0f22c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-helpers.asm",
+      "sha256": "0ed6e2bbe3f8298b5e30c73b55813d9d6a07668f6484adeb75a6aa4e2cd3c63e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-frame-factory.asm",
+      "sha256": "41fe16c281c6615eebe719bce17637068ab2dc6662190d9773286ec80a5c15a7"
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "f73811294b8d1b9d7d3c42336b765214056919e48a8b3f734b08e794935c9dd5",
+    "implementation/ios/UITests/HostInteractionTests.swift": "6d1e0eedbf6817fbc7d85d1786d08eda661e35bcd8653196d1a8c158b07f9127",
+    "implementation/ios/Sources/RemoteUserInputInteraction.swift": "3f74bb9efb12cb1202ebca86afb20e92d971a1eab59d1584d5172d561e58a4b5",
+    "implementation/ios/Resources/OfficialVisualAssets.bundle/Assets.car": "716cc59b7593e6503e725a755c4b064b8d5644c3b3d894c4c4cee137037bb900"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "artifact static observation",
+  "path": "recovered/macos/asar-extracted/webview/assets/dialog-7e4e831e269b.js",
+  "sha256": "b72d834bcb2ecebd8be422097a73ac14b369e2d69b3b52298ec3c2c7c0c72e32",
+  "excerpts": [
+    {
+      "term": "A=!k&&y.length>50",
+      "character_offset": 1864,
+      "excerpt": "e)(x),[C,Ne]=(0,L.useState)(null),Fe=(0,L.useRef)(null),Ie=m(Ce),w=m(qe),Re=m(Me),T=m(ft),We=Qe(),E=oe&&w&&!We,D;t[1]===y?D=t[2]:(D=y.trim(),t[1]=y,t[2]=D);let O=D,k=E&&S.length>0,A=!k&&y.length>50,j=k||O.length>0&&!A,M;t[3]!==j||t[4]!==i||t[5]!==a||t[6]!==g||t[7]!==d||t[8]!==p||t[9]!==_||t[10]!==k||t[11]!==le||t[12]!==v||t[13]!==l||t[14]!==ae||t[15]!==f||t[16]!==S||t[17]!==C||t[18]!==O?(M=e=>{if(e.preventDefault(),!j||_)return;_e(!0);let t=f.get(He),n=()=>le()&&f.get(He)===t;(async()=>{try{if(k){let e=await De().createLocal({appearance:null,initializeDefaultWorkspaceGitRepository:!f.get(Ve),name:O,sources:S});if(e==null){requestAnimationFrame(()=>{Fe.current?.focus()});return}ze(f,Ge(e.projectId)),ke(f,e.projectId),Pe({scope:f,projectType:`local`,projectId:e.projectId}"
+    },
+    {
+      "term": "memoryScope:d?`global`:v",
+      "character_offset": 2598,
+      "excerpt": "e:f,projectType:`local`,projectId:e.projectId}),l();return}Ee(f,Xe,{stage:tt.CHATGPT_PROJECT_CREATION_STAGE_SUBMITTED,source:`new_project_dialog`});let e=await Ke({scope:f,emoji:g,memoryScope:d?`global`:v,name:O,theme:C});if(!n())return;if(Pe({scope:f,projectType:`cloud`,projectId:e.gizmo.id}),i!=null){a!=null&&Ee(f,Xe,{stage:tt.CHATGPT_PROJECT_CREATION_STAGE_OPENED,source:a});let t=await ut({scope:f,conversation:i,project:e,isCurrent:n});if(!n())return;if(!t){f.get(u).danger(p.formatMessage({id:`chatgptConversations.projectDrop.createdMoveFailed`,defaultMessage:`Project created, but the conversation could not be moved. Try moving it again from its menu`,description:`Error after dropping a conversation onto New project when creation succeeds but moving the conversation "
+    },
+    {
+      "term": "useState)(`unset`)",
+      "character_offset": 1510,
+      "excerpt": "y:s,onClose:l,onCloseAutoFocus:ne,onCreated:ae}=e,oe=n===void 0||n,d=s!==void 0&&s,f=he(r),p=ce(),se=me(),le=nt(),[g,ge]=(0,L.useState)(null),[_,_e]=(0,L.useState)(!1),[v,be]=(0,L.useState)(`unset`),[y,Se]=(0,L.useState)(``),[b,we]=(0,L.useState)(null),Te=m(Ye),x;t[0]===Symbol.for(`react.memo_cache_sentinel`)?(x=[],t[0]=x):x=t[0];let[S,Oe]=(0,L.useState)(x),[C,Ne]=(0,L.useState)(null),Fe=(0,L.useRef)(null),Ie=m(Ce),w=m(qe),Re=m(Me),T=m(ft),We=Qe(),E=oe&&w&&!We,D;t[1]===y?D=t[2]:(D=y.trim(),t[1]=y,t[2]=D);let O=D,k=E&&S.length>0,A=!k&&y.length>50,j=k||O.length>0&&!A,M;t[3]!==j||t[4]!==i||t[5]!==a||t[6]!==g||t[7]!==d||t[8]!==p||t[9]!==_||t[10]!==k||t[11]!==le||t[12]!==v||t[13]!==l||t[14]!==ae||t[15]!==f||t[16]!==S||t[17]!==C||t[18]!==O?(M=e=>{if(e.preventDefault(),!j||_)r"
+    }
+  ],
+  "limitations": [
+    "Independent server supports only synthetic project names and empty instructions; not all official create combinations",
+    "Do not infer server memory behavior from these client enum values"
+  ]
+}

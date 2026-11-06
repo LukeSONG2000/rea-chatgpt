@@ -1,0 +1,52 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact static disassembly and metadata",
+  "source_path_literal": {
+    "address": "0x885f0d0",
+    "value": "ChatGPTConversationRoot/StatsigExperimentLayer+SidebarConfiguration.swift"
+  },
+  "configuration_key": {
+    "address": "0x885f250",
+    "value": "use_blurring_overlay_layout"
+  },
+  "property_literal": {
+    "address": "0x885f270",
+    "value": "useBlurringOverlayLayout"
+  },
+  "chain": [
+    {
+      "function": "0x523cec",
+      "observation": "0x523e04 calls provider accessor 0x6503ac; 0x523e40 calls initializer 0x61dfb0; 0x523e44/48 loads provider bytes +0x10/+0x11; 0x523f18/1c stores them into return aggregate +0x2a/+0x2b."
+    },
+    {
+      "function": "0x61dfb0",
+      "observation": "0x15c274 preserves self in x19; initializer calls 0x61df64, masks result to bit 0, stores same bit at self+0x10 and self+0x11."
+    },
+    {
+      "function": "0x61df64",
+      "observation": "References key and property literals; helper 0x6fc098 writes zero byte at frame-2, helper 0x6ef0d8 passes its address as x2; 0x6f252c tail branches to 0x7070130; result read from frame-1."
+    }
+  ],
+  "field_binding": {
+    "class": "0xad54668",
+    "name": "StatsigSidebarPresentationConfigurationProvider",
+    "presentationConfiguration_offset": 16,
+    "offset_storage": "0x7d07e50",
+    "pendingExposure_offset": 24,
+    "offset_storage_pending": "0x7d07e58"
+  },
+  "inferences": [
+    "The provider derives a two-byte presentation configuration from a single configuration result.",
+    "The zero input to the reader is a candidate fallback, not yet a proven effective default."
+  ],
+  "unknowns": [
+    "Reader 0x7070130 semantics and fallback behavior",
+    "Enum byte-to-case mapping and container consumer branch",
+    "Runtime experiment assignment for the supplied screenshots",
+    "Gesture timing, widths, corner radius and animation parameters"
+  ],
+  "validation": "Addresses and register flow inspected in retained disassembly; no target execution, no behavioral equivalence claim."
+}

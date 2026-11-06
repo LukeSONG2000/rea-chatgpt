@@ -1,0 +1,22 @@
+{
+  "status": "partial",
+  "evidence_type": "artifact_observation",
+  "version": "26.1021.31345 / 21828",
+  "source": "recovered/macos/asar-extracted/.vite/build/preload.js",
+  "sha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+  "snippets": [
+    {
+      "offset": 3430,
+      "excerpt": "sendMessageFromView:async t=>{t.type===`shared-object-set`&&I(t.key,t.value),await e.ipcRenderer.invoke(E,t)},getPathForFile:t=>e.webUtils.getPathForFile(t)||null,startFileDrag:t=>e.ipcRenderer.sendSync(v,t)===!0,startLinkDrag:t=>{e.ipcRenderer.send(y,t)},sendWorkerMessageFromView:async(t,n)=>{await e.ipcRenderer.invoke(b(t),n)},subscribeToWorkerMessages:(t,n)=>{let r=L.get(t);r||(r=new Set,L.set(t,r));let i=R.get(t);return i||(i=(e,n)=>{let r=L.get(t);r&&r.forEach(e=>{e(n)})},R.set(t,i),e.ipcRe"
+    },
+    {
+      "offset": 4770,
+      "excerpt": "ipcRenderer.on(D,(e,t)=>{if(!i(t)){let e=t;if(e.type===`shared-object-updated`)I(e.key,e.value);else if(e.type===`remote-hosted-pip-content-layout-state-changed`)for(let[t,n]of B)n.threadID===e.state.activeThreadID&&!e.state.orderedPresentationIDs.includes(t)&&(n.decoder.close(),B.delete(t))}window.dispatchEvent(new MessageEvent(`message`,{data:t}))}),e.ipcRenderer.on(c,(e,t)=>{let n=window.location.origin;n!==`null`&&window.postMessage(t,n,e.ports)});var B=new Map;e.ipcRenderer.on(s,(e,t)=>{if("
+    }
+  ],
+  "observed": "sendMessageFromView invokes codex_desktop:message-from-view; incoming message-for-view dispatches MessageEvent",
+  "limitations": [
+    "Original preload also maintains shared object snapshots and handles chunked/video messages; minimal adapter does not yet reproduce those",
+    "Handler payloads are independent offline fixtures"
+  ]
+}

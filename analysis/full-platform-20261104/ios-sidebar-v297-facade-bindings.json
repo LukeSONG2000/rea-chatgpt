@@ -1,0 +1,245 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x62e4b68",
+    "end_exclusive": "0x62e4d4c",
+    "sha256": "8cddd97ba890641651938dae7b162beb0a29d7ab3cabc87bc7aa6f780337797b"
+  },
+  "linker_function_starts_in_window": [
+    "0x62e4b68"
+  ],
+  "next_linker_function_start": "0x62e4d4c",
+  "direct_calls": [
+    {
+      "site": "0x62e4b70",
+      "target": "0x159fd4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62e4b8c",
+      "target": "0x7c539f8",
+      "imported_symbol": "_objc_opt_self"
+    },
+    {
+      "site": "0x62e4b90",
+      "target": "0x7c5d760",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacab700",
+        "register": "x1",
+        "selector": "currentDevice"
+      }
+    },
+    {
+      "site": "0x62e4b98",
+      "target": "0x7c53b0c",
+      "imported_symbol": "_objc_retainAutoreleasedReturnValue"
+    },
+    {
+      "site": "0x62e4ba0",
+      "target": "0x7c82300",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacb4a20",
+        "register": "x1",
+        "selector": "userInterfaceIdiom"
+      }
+    },
+    {
+      "site": "0x62e4ba4",
+      "target": "0x4f41cc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62e4bac",
+      "target": "0x154108",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62e4bb8",
+      "target": "0x7c543d0",
+      "imported_symbol": "_swift_deallocPartialClassInstance"
+    },
+    {
+      "site": "0x62e4bec",
+      "target": "0x7c54748",
+      "imported_symbol": "_swift_once"
+    },
+    {
+      "site": "0x62e4bfc",
+      "target": "0x7c4d560",
+      "imported_symbol": "_$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF",
+      "chained_binding": {
+        "slot": "0xaac9a10",
+        "symbol": "_$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF",
+        "library_ordinal": 12,
+        "weak": false,
+        "import_ordinal": 4676,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x62e4c04",
+      "target": "0x7c52510",
+      "imported_symbol": "_NSSelectorFromString"
+    },
+    {
+      "site": "0x62e4c08",
+      "target": "0x700b40",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62e4c28",
+      "target": "0x7c54748",
+      "imported_symbol": "_swift_once"
+    },
+    {
+      "site": "0x62e4c38",
+      "target": "0x7c4d560",
+      "imported_symbol": "_$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF",
+      "chained_binding": {
+        "slot": "0xaac9a10",
+        "symbol": "_$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF",
+        "library_ordinal": 12,
+        "weak": false,
+        "import_ordinal": 4676,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x62e4c40",
+      "target": "0x7c52510",
+      "imported_symbol": "_NSSelectorFromString"
+    },
+    {
+      "site": "0x62e4c44",
+      "target": "0x1398100",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62e4c64",
+      "target": "0x7c54748",
+      "imported_symbol": "_swift_once"
+    },
+    {
+      "site": "0x62e4c74",
+      "target": "0x7c4d560",
+      "imported_symbol": "_$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF",
+      "chained_binding": {
+        "slot": "0xaac9a10",
+        "symbol": "_$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF",
+        "library_ordinal": 12,
+        "weak": false,
+        "import_ordinal": 4676,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x62e4c7c",
+      "target": "0x7c52510",
+      "imported_symbol": "_NSSelectorFromString"
+    },
+    {
+      "site": "0x62e4c80",
+      "target": "0x139a124",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62e4ca0",
+      "target": "0x7c54748",
+      "imported_symbol": "_swift_once"
+    },
+    {
+      "site": "0x62e4cb0",
+      "target": "0x7c4d560",
+      "imported_symbol": "_$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF",
+      "chained_binding": {
+        "slot": "0xaac9a10",
+        "symbol": "_$sSS10FoundationE19_bridgeToObjectiveCSo8NSStringCyF",
+        "library_ordinal": 12,
+        "weak": false,
+        "import_ordinal": 4676,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x62e4cb8",
+      "target": "0x7c524c8",
+      "imported_symbol": "_NSClassFromString"
+    },
+    {
+      "site": "0x62e4cc0",
+      "target": "0x7c53a94",
+      "imported_symbol": "_objc_release_x25"
+    },
+    {
+      "site": "0x62e4ccc",
+      "target": "0x7c54598",
+      "imported_symbol": "_swift_getObjCClassMetadata"
+    },
+    {
+      "site": "0x62e4cdc",
+      "target": "0x7c53140",
+      "imported_symbol": "_class_getClassMethod"
+    },
+    {
+      "site": "0x62e4ce8",
+      "target": "0x155f5c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62e4cec",
+      "target": "0x7c53140",
+      "imported_symbol": "_class_getClassMethod"
+    },
+    {
+      "site": "0x62e4cf8",
+      "target": "0x154190",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x62e4cfc",
+      "target": "0x7c53140",
+      "imported_symbol": "_class_getClassMethod"
+    },
+    {
+      "site": "0x62e4d0c",
+      "target": "0x7c537e8",
+      "imported_symbol": "_method_getImplementation"
+    },
+    {
+      "site": "0x62e4d18",
+      "target": "0x7c537e8",
+      "imported_symbol": "_method_getImplementation"
+    },
+    {
+      "site": "0x62e4d24",
+      "target": "0x7c537e8",
+      "imported_symbol": "_method_getImplementation"
+    },
+    {
+      "site": "0x62e4d2c",
+      "target": "0x155f5c",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

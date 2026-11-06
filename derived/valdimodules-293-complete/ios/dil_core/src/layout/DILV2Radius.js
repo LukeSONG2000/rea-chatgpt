@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.normalizeDILV2Radius=void 0;const t={lg:12,xl:16,"2xl":20,"3xl":24};function o(t){return null===t||"object"!=typeof t?e(t):{topLeft:e(t.topLeft),topRight:e(t.topRight),bottomRight:e(t.bottomRight),bottomLeft:e(t.bottomLeft)}}function e(o){return"string"==typeof o?t[o]??o:o}exports.normalizeDILV2Radius=o;

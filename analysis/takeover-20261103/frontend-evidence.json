@@ -1,0 +1,231 @@
+{
+  "evidence": [
+    {
+      "byte_offset": 33,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "R01",
+      "path": "derived/valdimodules-293/ios/valdi_core/src/ValdiRuntimeProvider.js",
+      "sha256": "f1b487711420a2ab01d11ab8a673e0a1bf5d0843dcb3e6417a7a65eaea1b9324",
+      "snippet": "globalThis.runtime}Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.getValdiRuntime=void 0,exports.getValdiRuntime=e;\n",
+      "symbol_anchor": "globalThis.runtime"
+    },
+    {
+      "byte_offset": 1314,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "R02",
+      "path": "derived/valdimodules-293/ios/valdi_core/src/Component.js",
+      "sha256": "4a755740b03f97ec8cb7534ee7678cd8288ab5dd06291b545d89883e14ab507a",
+      "snippet": "setState(t){if(this.isDestroyed())return void(e.isLoggingEnabled&&console.error(new Error(`Can't call setState on a destroyed component '${this.constructor?.name}'. This operation does nothing, but it signals a potential memory leak in your application. To resolve this issue, ensure you cancel all subscriptions and asynchronous tasks in the onDestroy method.`)));const s=(0,o.mergePartial)(t,this.s",
+      "symbol_anchor": "setState("
+    },
+    {
+      "byte_offset": 35370,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "R03",
+      "path": "derived/valdimodules-293/ios/valdi_core/src/Renderer.js",
+      "sha256": "51e8c000fc6bad8faa19dccd32499e90270ceb7cdaa138a15d53d6183ffda41f",
+      "snippet": "r.onViewModelUpdate(void 0)}catch(d){this.onUncaughtError(`Failed to call onViewModelUpdate() after onCreate() on ${i.name}`,d)}e.viewModelChanged=!1}return e.componentRef?.onComponentDidCreate(r,E(this,e.virtualNode)),r}skipVirtualNodeChildren(e){const t=e.children;if(t){if(t.previousChildren!==t.children)throw Error(`Cannot skip rendering of children in node ${e.key} if the children were already",
+      "symbol_anchor": "r.onViewModelUpdate(void 0)"
+    },
+    {
+      "byte_offset": 1778,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "R04",
+      "path": "derived/valdimodules-293/ios/valdi_core/src/RootComponentsManager.js",
+      "sha256": "6b0305c63bee2ee8d2bf5d030c6cdd7fd872a38040a8867d918b9c3066f55d9c",
+      "snippet": "createWithComponentPath(t.contextId,t.componentPath,t.initialViewModel,t.componentContext),t.latestViewModel!==t.initialViewModel&&this.render(t.contextId,t.latestViewModel),this.onHotReloaded(t.contextId)})}createHandle(e,t,r,s,i,a){const d=this.rendererFactory.makeRenderer(e),c=this.nativeAppearanceDebugSettings?.addRenderer(d),p=(0,o.registerLogMetadataProvider)(\"Valdi Runtime\",d.dumpLogMetadat",
+      "symbol_anchor": "createWithComponentPath"
+    },
+    {
+      "byte_offset": 828,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "R05",
+      "path": "derived/valdimodules-293/ios/oai_core/src/OAITheme.js",
+      "sha256": "1f3e9fb626003421742cc38a51b31df669a4ce8593a604e9c6e578ceef1f35f1",
+      "snippet": "configureColorPalette(exports.OAI_LIGHT_THEME,exports.OAI_LIGHT_COLOR_PALETTE),e.configureColorPalette(exports.OAI_DARK_THEME,exports.OAI_DARK_COLOR_PALETTE)}function b(e){const t=c();void 0!==t&&(global.oaiValdiCurrentPalette=e===exports.OAI_DARK_THEME?exports.OAI_DARK_COLOR_PALETTE:exports.OAI_LIGHT_COLOR_PALETTE,t.setActiveColorPalette(e))}function g(e){const t=e??d.System;return m(t,v(t))}func",
+      "symbol_anchor": "configureColorPalette"
+    },
+    {
+      "byte_offset": 178,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "R06",
+      "path": "derived/valdimodules-293/ios/valdi_core/src/Style.js",
+      "sha256": "e32bf9979f461f3c22709f5d7d06ef4c70537f41bb0a04663b7a9488b7e873bb",
+      "snippet": "toNative(e){let t=this.native;return void 0===t&&(t=e(this.attributes),this.native=t),t}extend(e){if(e instanceof Style)return this.extend(e.attributes);const t={...this.attributes,...e};return new Style(t)}toConsoleRepresentation(){return this.attributes}static merge(...e){const t=e.reduce((e,t)=>({...e,...t.attributes}),{});return new Style(t)}static cachingMerge(e,t){let r=e.mergedStyles;for(;v",
+      "symbol_anchor": "toNative("
+    },
+    {
+      "byte_offset": 6059,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "R07",
+      "path": "derived/valdimodules-293/ios/oai_platform_services/src/OAINetworkClient.js",
+      "sha256": "d5e644618f6973e1df86f98b4cb2d3b3dfb124f50eadeff40f5c24096bce3eac",
+      "snippet": "apiService;if(void 0===i||void 0!==e.headers&&!(0,r.isVersionAtLeast)(170))return l(a(s.Unavailable));const o=new RequestLifecycle(t,this.platformServices?.loggingService);return o.start(i,n.request),o}}exports.OAINetworkClient=OAINetworkClient;\n",
+      "symbol_anchor": "apiService"
+    },
+    {
+      "byte_offset": 719,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "S01",
+      "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchApi.js",
+      "sha256": "c5ffc0ca1018c6d22b9f48b1ea3214e526959836009c17c40bac97f2716d2ddd",
+      "snippet": "/backend-api/global/search\",query:{query:e,limit:\"30\",query_id:a,sources:o.sources,library_lanes:o.libraryLanes}},decode:l}))}}function i(i){return{cancel(){i.cancel()},result:i.result.then(i=>{if(i.kind!==e.OAINetworkResultKind.Success)throw new GlobalSearchRequestError(i.kind);return{backend:i.value.backend===t.Demo?r.GlobalSearchBackend.Demo:r.GlobalSearchBackend.Live,cursor:i.value.cursor,part",
+      "symbol_anchor": "/backend-api/global/search"
+    },
+    {
+      "byte_offset": 480,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "S02",
+      "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchRepository.js",
+      "sha256": "11ed95dde36d7308c79c85d82c23b02f0cb94c1bf5e5edda5428a6732e694de8",
+      "snippet": "toLowerCase()}`}exports.GlobalSearchRepository=GlobalSearchRepository;\n",
+      "symbol_anchor": "toLowerCase()"
+    },
+    {
+      "byte_offset": 5067,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "S03",
+      "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchScreen.js",
+      "sha256": "8f7252d8a1a526dd770380241b4b4a51669f217d7716d4f58b288f5de2d1720d",
+      "snippet": "this.scheduleSearch(300)},this.navigateBack=()=>{const e=this.activeSearch;e?(this.requestGeneration+=1,this.activeSearch=void 0,e.cancel(),e.result.then(()=>this.context.navigator.pop(!0),()=>this.context.navigator.pop(!0))):this.context.navigator.pop(!0)},this.clearSearch=()=>{this.activeSearch?.cancel(),this.activeSearch=void 0,this.requestGeneration+=1,this.setState({query:\"\",results:[],status",
+      "symbol_anchor": "this.scheduleSearch(300)"
+    },
+    {
+      "byte_offset": 4981,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "S04",
+      "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchScreen.js",
+      "sha256": "8f7252d8a1a526dd770380241b4b4a51669f217d7716d4f58b288f5de2d1720d",
+      "snippet": "requestGeneration=0,this.setQuery=e=>{this.setState({query:e,lastOpenedTitle:void 0}),this.scheduleSearch(300)},this.navigateBack=()=>{const e=this.activeSearch;e?(this.requestGeneration+=1,this.activeSearch=void 0,e.cancel(),e.result.then(()=>this.context.navigator.pop(!0),()=>this.context.navigator.pop(!0))):this.context.navigator.pop(!0)},this.clearSearch=()=>{this.activeSearch?.cancel(),this.a",
+      "symbol_anchor": "requestGeneration"
+    },
+    {
+      "byte_offset": 16760,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "S05",
+      "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchScreen.js",
+      "sha256": "8f7252d8a1a526dd770380241b4b4a51669f217d7716d4f58b288f5de2d1720d",
+      "snippet": "JSON.stringify(Ae(e)))}track(e,t){this.context?.trackEvent?.(e,JSON.stringify(t))}}function Ae(e){return{kind:Re(e.kind),destinationId:e.destinationId,title:e.title,messageId:e.messageId,libraryItemId:e.libraryItemId,fileId:e.fileId,fileName:e.fileName,mimeType:e.mimeType,fileExtension:e.fileExtension,libraryFileCategory:e.libraryFileCategory,libraryArtifactType:e.libraryArtifactType,gizmoId:e.giz",
+      "symbol_anchor": "JSON.stringify"
+    },
+    {
+      "byte_offset": 502,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "L01",
+      "path": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryRootScreen.js",
+      "sha256": "817f1a4ecb595ef75ca1dcf1dba1aefc054c6fcd8ebee30c020ced7294284dfb",
+      "snippet": "openConversation?{}:{openConversation:this.context.openConversation},platformServices:this.context.platformServices,...void 0===this.context.trackEvent?{}:{trackEvent:this.context.trackEvent}}),t.setViewModelProperty(\"accountId\",this.viewModel.accountId),t.endComponent()}}exports.ChatGPTLibraryRootScreen=ChatGPTLibraryRootScreen;\n",
+      "symbol_anchor": "openConversation"
+    },
+    {
+      "byte_offset": 38094,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "L02",
+      "path": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryScreen.js",
+      "sha256": "8da6fbce93949334b3efc455e4da9a26ad6337a91095cd6762ee97b74bd2dd89",
+      "snippet": "This device does not have an authenticated Library capability.\",status:It.Failed});this.client=(0,it.createChatGPTLibraryClient)({accountId:this.viewModel.accountId,platformServices:this.context.platformServices})}this.loadPage(void 0,!1)}disposeClient(){this.requestGeneration++,this.activeRequest?.cancel(),this.activeRequest=void 0,this.folderPreviewRequest?.cancel(),this.folderPreviewRequest=voi",
+      "symbol_anchor": "This device does not have an authenticated Library capability."
+    },
+    {
+      "byte_offset": 10975,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "L03",
+      "path": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryScreen.js",
+      "sha256": "8da6fbce93949334b3efc455e4da9a26ad6337a91095cd6762ee97b74bd2dd89",
+      "snippet": "loadPage(this.state.cursor,!0)},this.showGrid=()=>{this.setLayout(ft.ChatGPTLibraryLayout.Grid)},this.showList=()=>{this.setLayout(ft.ChatGPTLibraryLayout.List)},this.openMenu=()=>{this.setState({menuOpen:!0})},this.closeMenu=()=>{this.setState({menuOpen:!1})},this.selectMenuOption=e=>{switch(this.setState({menuOpen:!1}),e){case\"upload\":return void this.uploadFiles();case\"new-folder\":return void t",
+      "symbol_anchor": "loadPage(this.state.cursor,!0)"
+    },
+    {
+      "byte_offset": 44363,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "L04",
+      "path": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryScreen.js",
+      "sha256": "8da6fbce93949334b3efc455e4da9a26ad6337a91095cd6762ee97b74bd2dd89",
+      "snippet": "originationConversationId&&void 0!==this.context.openConversation&&(this.context.navigator.pop(!0),this.context.openConversation(e.originationConversationId),this.track(\"library_item_opened\",{id:e.id,kind:Vt(e.kind)})))}canActivateItem(e){return e.availability!==it.ChatGPTLibraryItemAvailability.Unavailable&&(e.kind===it.ChatGPTLibraryItemKind.Directory||void 0!==this.context.openItem||void 0!==e.",
+      "symbol_anchor": "originationConversationId"
+    },
+    {
+      "byte_offset": 816,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "L05",
+      "path": "derived/valdimodules-293/ios/chatgpt_services/src/library/ChatGPTLibraryClient.js",
+      "sha256": "95ce41ba2fd914d2f2eeddc1eddfd79aed65b25398653e1c89a0ac9649f28b5b",
+      "snippet": "/backend-api/files/library\",s=\"/backend-api/files/library/nodes\",d=\"/backend-api/files/library/bookmarks\",l=\"/backend-api/files/library/directories\",c={flagName:\"chatgpt-recall-library-folder-thumbnails-enabled\"},u=30,y=2048,v=200,h=300,b=240,f=100,m=6,p=4096,L=120,w=4,_=64,g=32,T=/[\\u0000-\\u001f\\u007f]/,k=/^[a-z][a-z0-9_-]{0,39}$/,q=/^https:\\/\\/([a-z\\d-]+(?:\\.[a-z\\d-]+)+)(\\/[^\\s#\\\\]*)?$/i,E=[\".bl",
+      "symbol_anchor": "/backend-api/files/library"
+    },
+    {
+      "byte_offset": 2970,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "L06",
+      "path": "derived/valdimodules-293/ios/chatgpt_services/src/library/ChatGPTLibraryClient.js",
+      "sha256": "95ce41ba2fd914d2f2eeddc1eddfd79aed65b25398653e1c89a0ac9649f28b5b",
+      "snippet": "An authenticated account identifier is required for Library.\");this.networkClient=new a.OAINetworkClient(e.platformServices)}load(e){if(!N(e.surface))return Ae(new TypeError(\"The Library surface is invalid.\"));const r=ge(e.cursor),i=Te(e.query),t=ke(e.directoryId),a=we(e.ownerId);let o;try{o=Le(e.categories)}catch(n){return Ae(n instanceof Error?n:new TypeError(\"The Library categories are invalid.",
+      "symbol_anchor": "An authenticated account identifier is required for Library."
+    },
+    {
+      "byte_offset": 1639,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "M01",
+      "path": "derived/valdimodules-293/ios/chatgpt_services/src/conversations/ChatGPTStreamingWorkerRuntime.js",
+      "sha256": "f777ee0e6c817e833dc8e673e46c4908ef560ff38342dcf5a6f614d4a5acbc3e",
+      "snippet": "connectDirect(r,o,s){const n=new e.ServerSentEventClient(new t.StreamingHTTPClient(s.baseUrl));o.request=n.connect(s.path,{onEvent:e=>this.receiveEvent(r,e),onError:e=>this.finishTransport(r,e)},{method:\"POST\",reconnect:!1,headers:{...s.headers},body:(new TextEncoder).encode(JSON.stringify(s.body))})}createStream(e,t,o){if(this.streams.has(e))throw new Error(`ChatGPT background stream ${String(e)}",
+      "symbol_anchor": "connectDirect(r,o,s)"
+    },
+    {
+      "byte_offset": 1487,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "M02",
+      "path": "derived/valdimodules-293/ios/chatgpt_services/src/conversations/ChatGPTStreamingResponseProcessor.js",
+      "sha256": "f7787466d6447d55b47d4095ca86aabc96190da39528d4498773a3f455e0744a",
+      "snippet": "markdownBlocks:t.Markdown.parse(this.content).blocks,streaming:e})}stop(){this.finished=!0,this.dirty=!1,void 0!==this.completionTimer&&(clearTimeout(this.completionTimer),this.completionTimer=void 0),void 0!==this.renderTimer&&(clearTimeout(this.renderTimer),this.renderTimer=void 0)}}exports.ChatGPTStreamingResponseProcessor=ChatGPTStreamingResponseProcessor;\n",
+      "symbol_anchor": "markdownBlocks:"
+    },
+    {
+      "byte_offset": 1233,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "M03",
+      "path": "derived/valdimodules-293/ios/chatgpt_services/src/conversations/ChatGPTStreamingWorkerClient.js",
+      "sha256": "88e4ca8ef0b63e60927eeb2d569da432b9a45aec0eb4d6ac278c89cc2006c871",
+      "snippet": "onPreparedContent)s.callbacks.onPreparedContent(e);else if(e.content.startsWith(s.deliveredContent)){const t=e.content.slice(s.deliveredContent.length);t.length>0&&s.callbacks.onTextDelta(t)}return void(s.deliveredContent=e.content)}case t.ChatGPTStreamWorkerMessageKind.ConversationState:return void s.callbacks.onConversationState?.(r.state);case t.ChatGPTStreamWorkerMessageKind.DILResult:return v",
+      "symbol_anchor": "onPreparedContent"
+    },
+    {
+      "byte_offset": 719,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "M04",
+      "path": "derived/valdimodules-293/ios/markdown/src/Markdown.js",
+      "sha256": "0564e365dd2833b60b2a58a34e7c1a208a6b74bc55422cba335612d4f7039476",
+      "snippet": "parseRich(e){return p(e,f.Rich,void 0).markdown}static parseRichInlines(e){return ee(e,f.Rich,!1,o)}}exports.Markdown=Markdown;class MarkdownParser{parse(e){return this.parseWithMode(e,f.Default)}parseRich(e){return this.parseWithMode(e,f.Rich)}parseWithMode(e,t){const n=p(e,t,this.previous);return this.previous=n.cache,n.markdown}}function p(e,i,r){const o=[],s={references:new Map,inlines:[]},c=[",
+      "symbol_anchor": "parseRich"
+    },
+    {
+      "byte_offset": 3511,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "M05",
+      "path": "derived/valdimodules-293/ios/dil_text/src/markdown/DILMarkdownComponent.js",
+      "sha256": "8fbad7d0af1344351827b47090fa8755ec561b9d2124928ab42d9c59ecea3ea9",
+      "snippet": "onViewModelUpdate(){const e=this.viewModel.markdown,t=this.viewModel.parsedBlocks,i=!0===this.viewModel.richContent;(this.parsedMarkdownSource!==e||this.parsedMarkdownBlocks!==t||void 0===t&&this.parsedRichContent!==i)&&(this.parsedMarkdown=void 0===t?i?A.Markdown.parseRich(e):A.Markdown.parse(e):new A.Markdown(t),this.parsedMarkdownBlocks=t,this.parsedMarkdownSource=e,this.parsedRichContent=i)}on",
+      "symbol_anchor": "onViewModelUpdate()"
+    },
+    {
+      "byte_offset": 5157,
+      "evidence_level": "package-derived static plaintext; behavior untested",
+      "id": "M06",
+      "path": "derived/valdimodules-293/ios/dil_text/src/markdown/DILMarkdownComponent.js",
+      "sha256": "8fbad7d0af1344351827b47090fa8755ec561b9d2124928ab42d9c59ecea3ea9",
+      "snippet": "onOpenLink,!0===this.viewModel.richContent,!0===this.viewModel.dottedLinks)),t.setAttributeString(\"font\",e.font),t.setAttributeNumber(\"lineHeight\",e.lineHeight),t.setAttribute(\"lineHeightScalesWithFont\",e.lineHeightScalesWithFont),t.setAttributeNumber(\"lineHeightMultiple\",e.lineHeightMultiple),t.setAttributeFunction(\"onTextSelectionMenu\",this.resolveTextSelectionMenuHandler()),t.setAttributeFuncti",
+      "symbol_anchor": "onOpenLink"
+    }
+  ],
+  "metadata": {
+    "node_version": "v24.14.1",
+    "prior_exposure": "Retrospective split. Historical reports/tools already used this corpus; prior exposure cannot be excluded. Holdout is a future change-control partition, not independent semantic validation.",
+    "schema_version": 1,
+    "scope": "static_only",
+    "split_policy": "SHA256(rea-chatgpt/module-split/v1:<module>) integer modulo 5: 0 holdout, otherwise calibration; identical module names stay together across platforms",
+    "tool_sha256": "92398186bd462554549cdfaf798ad358b58acdbec75870e907575879b09030a4",
+    "tool_version": "1.0.0",
+    "validation": "Archive payload hash verification and Node vm.Script compilation only; no evaluation or behavior testing",
+    "version_label_source": "existing recovered directory names; not independent build equivalence"
+  }
+}

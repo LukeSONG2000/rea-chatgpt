@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-05",
+  "status": "failed",
+  "feature": "unsent branch cold restoration",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "authority": "controlled-renderer-with-independent-host",
+  "runtime": [
+    "macos-preview-v95-observe.json",
+    "macos-preview-v95-read.json"
+  ],
+  "source": "macos-preview-v95-source.json",
+  "verified_failure": {
+    "write_pid": 93991,
+    "read_pid": 94147,
+    "temporary_owner": "local-chatgpt:32b4f2a9-06e4-4d96-a5ec-cb836d455b53",
+    "rejected_route": "/c/local-chatgpt%3A32b4f2a9-06e4-4d96-a5ec-cb836d455b53",
+    "cold_start_route": "/c/offline-fixture-conversation-001",
+    "cold_start_draft": "REA synthetic independent composer draft",
+    "unsent_branch_restored": false
+  },
+  "preserved": [
+    "Source edited conversation and its draft",
+    "Committed histories unchanged; preview created no catalog entry",
+    "Cold restart issues no generation request"
+  ],
+  "root_boundaries": [
+    "Host selected-route store rejects local-chatgpt route",
+    "No draft persistence update observed after typing unsent branch prompt",
+    "Branch continuation source is renderer local state, not captured by current host persistence"
+  ],
+  "required_fix": [
+    "Independent pending-preview snapshot must bind account, temporary identity, source conversation/message and prompt",
+    "Capture source and draft without prematurely persisting official-style conversation",
+    "Recreate original renderer preview before navigation; remap draft to recreated local identity",
+    "Remove snapshot only after matching committed continuation or explicit discard; preserve unrelated drafts"
+  ],
+  "next_action": "Implement pending-preview adapter with source/draft identity binding and replay original branch initialization; validate restart then first-send context",
+  "limits": [
+    "Failure is in this reconstructed host, not a claim about full official app",
+    "No production API changes or fabricated server conversation as workaround"
+  ]
+}

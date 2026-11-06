@@ -1,0 +1,68 @@
+{
+  "status": "partial",
+  "authority": "independent adapter fix verified with original manager in packaged macOS provider",
+  "defect": "Reloaded full snapshot plus previously admitted buffered delta produced temporary duplicated body; terminal replacement hid the error.",
+  "fix": [
+    "Serialize full original hydration/application and notification admission per host",
+    "Flush original itemStreamState pending deltas before loading snapshot",
+    "Advance cursor only from captured full hydration reads after application; standalone read does not authorize cutoff"
+  ],
+  "sources": [
+    {
+      "path": "implementation/desktop/native/original-remote-runtime.mjs",
+      "sha256": "7a63045c331f4555975e3706ab959a7ce89b8ff5ec8a72e7729db66c811e8a06"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-provider-reload.cjs",
+      "sha256": "9635982c247d06d59a36c66253f340db38cec22b467d0b7042bd8ea143ebb90b"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-hydration.mjs",
+      "sha256": "7e5c500af2e8d31351d3086a12a2c70de74c878b8708af597baec2781e2760c9"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-pump.mjs",
+      "sha256": "85a5603860e74b8e3ad23d18aa38aacf76e9f77e55697755a117ea63435b4779"
+    }
+  ],
+  "provider": {
+    "status": "passed",
+    "body": "Local fixture reply",
+    "autoStreamTexts": [
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply"
+    ],
+    "reloads": 12,
+    "sharedLeases": true,
+    "reopen": true,
+    "unpairedDenied": true
+  },
+  "reports": [
+    "remote-provider-reload-v165-prefix.json",
+    "remote-provider-reload-v165-after.json",
+    "remote-provider-reload-v165-final.json",
+    "remote-provider-reload-v165-manual-final.json",
+    "remote-provider-reload-v165-ordering-final.json",
+    "remote-provider-reload-v165-r3-lifecycle.json",
+    "remote-provider-reload-v165-static-r2.json",
+    "remote-provider-reload-v165-final-hashes.json"
+  ],
+  "macSignature": "deep strict passed",
+  "builds": {
+    "macos": "implementation/desktop/dist/v165-final-macos/REA ChatGPT Offline.app",
+    "windows": "implementation/desktop/dist/v165-final-windows/REA ChatGPT Offline/REA ChatGPT Offline.exe"
+  },
+  "limits": [
+    "Full unfiltered local text history only; bounded/paginated/conditional hydration explicitly unsupported",
+    "Visible original Remote catalog and AP initialization incomplete",
+    "No reasoning/tool/attachment queue race acceptance",
+    "Windows OS not executed; no real model request",
+    "Earlier v165 and v165-r2 builds are intermediate unaccepted artifacts; use final builds"
+  ]
+}

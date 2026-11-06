@@ -1,0 +1,37 @@
+{
+  "status": "passed-bounded-instrumentation",
+  "run_id": "1d44306832164cbf99f18b214a3a9cf4",
+  "serial": "emulator-5554",
+  "avd": "REA_ChatGPT_Offline",
+  "origin": "independent native Compose host; not official behavior",
+  "steps": [
+    {
+      "install": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "a0ec33b313dc1d74ba298cbf219d6b7663e06e7f0d57be9c6831546ce9e3b44d"
+    },
+    {
+      "install": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "ffba74b8d6a5a77c1ab244be38d30e2ac4f57d27a28d09b5625def158c490f6f"
+    },
+    {
+      "test": "prepareHistoryRestart",
+      "status": "passed",
+      "pid": "5885"
+    },
+    {
+      "force_stop": "verified no process"
+    },
+    {
+      "test": "verifyHistoryRestart",
+      "status": "passed",
+      "pid": "5987"
+    },
+    {
+      "test": "MessageStoreTest",
+      "status": "passed"
+    }
+  ],
+  "limitations": [
+    "No visual parity, real IME composing, selection/copy, model, full Markdown coverage or performance acceptance"
+  ]
+}

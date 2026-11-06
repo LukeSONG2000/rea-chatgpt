@@ -1,0 +1,380 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "MessageInputEditorSurface",
+      "descriptor": "0x9671330",
+      "type_section_entry": "0x9d49818",
+      "accessor": "0x4dff394",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x9b2fb70",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "interactionHandlers",
+          "record": "0x9b2fb7c",
+          "type_reference": "0x9230dda"
+        },
+        {
+          "name": "triggerSelect",
+          "record": "0x9b2fb88",
+          "type_reference": "0x923068a"
+        },
+        {
+          "name": "isPasteEnabled",
+          "record": "0x9b2fb94",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canPasteFiles",
+          "record": "0x9b2fba0",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canChangeText",
+          "record": "0x9b2fbac",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isShowingAutocompletePicker",
+          "record": "0x9b2fbb8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "linkPasteBehavior",
+          "record": "0x9b2fbc4",
+          "type_reference": "0x8df344a"
+        },
+        {
+          "name": "linkMetadataLoader",
+          "record": "0x9b2fbd0",
+          "type_reference": "0x91fb1c0"
+        },
+        {
+          "name": "triggerKeyboardTypeReset",
+          "record": "0x9b2fbdc",
+          "type_reference": "0x8cf08a0"
+        },
+        {
+          "name": "needsImmediateFirstResponder",
+          "record": "0x9b2fbe8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "textLayoutTrailingButtonsWidth",
+          "record": "0x9b2fbf4",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "allowsTextInputFocus",
+          "record": "0x9b2fc00",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_inputStyle",
+          "record": "0x9b2fc0c",
+          "type_reference": "0x9231c4e"
+        },
+        {
+          "name": "_traitCollection",
+          "record": "0x9b2fc18",
+          "type_reference": "0x90b54e0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x8123618",
+          "flags": "0x30000",
+          "section_entry": "0x9d05d64"
+        }
+      ]
+    },
+    {
+      "name": "MessageInputEditorLayoutModifier",
+      "descriptor": "0x9672e90",
+      "type_section_entry": "0x9d49a98",
+      "accessor": "0x4e49428",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x9b31988",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "canChangeText",
+          "record": "0x9b31994",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hasDictationLivePreview",
+          "record": "0x9b319a0",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "showsCursor",
+          "record": "0x9b319ac",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_alignment",
+          "record": "0x9b319b8",
+          "type_reference": "0x9242edc"
+        },
+        {
+          "name": "_cursorColor",
+          "record": "0x9b319c4",
+          "type_reference": "0x8e38dae"
+        },
+        {
+          "name": "_doubleLineLayoutAdditionalPadding",
+          "record": "0x9b319d0",
+          "type_reference": "0x92c4428"
+        },
+        {
+          "name": "_inputDisabledOpacity",
+          "record": "0x9b319dc",
+          "type_reference": "0x8d1b570"
+        },
+        {
+          "name": "_maxHeight",
+          "record": "0x9b319e8",
+          "type_reference": "0x8d1b570"
+        },
+        {
+          "name": "_maxHeightVerticalCompact",
+          "record": "0x9b319f4",
+          "type_reference": "0x8d1b570"
+        },
+        {
+          "name": "_minHeight",
+          "record": "0x9b31a00",
+          "type_reference": "0x8d1b570"
+        },
+        {
+          "name": "_minHeightDoubleLineLayout",
+          "record": "0x9b31a0c",
+          "type_reference": "0x8d1b570"
+        },
+        {
+          "name": "_singleLineLayoutAdditionalPadding",
+          "record": "0x9b31a18",
+          "type_reference": "0x92c4428"
+        },
+        {
+          "name": "_scalesMetricsForDynamicType",
+          "record": "0x9b31a24",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "_verticalSizeClass",
+          "record": "0x9b31a30",
+          "type_reference": "0x941b440"
+        },
+        {
+          "name": "_scaledMinHeightDoubleLineLayout",
+          "record": "0x9b31a3c",
+          "type_reference": "0x8bde2e0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x812aa08",
+          "flags": "0x30000",
+          "section_entry": "0x9d0606c"
+        }
+      ]
+    },
+    {
+      "name": "MessageInputView",
+      "descriptor": "0x9673bd0",
+      "type_section_entry": "0x9d49ba0",
+      "accessor": "0x4ee1f8c",
+      "fields": [
+        {
+          "name": "_style",
+          "record": "0x9b32648",
+          "type_reference": "0x8d0bfd4"
+        },
+        {
+          "name": "_colorScheme",
+          "record": "0x9b32654",
+          "type_reference": "0x9002fa0"
+        },
+        {
+          "name": "_conversationModalStyle",
+          "record": "0x9b32660",
+          "type_reference": "0x8fd1150"
+        },
+        {
+          "name": "_composerTransitionCoordinator",
+          "record": "0x9b3266c",
+          "type_reference": "0x924ceb6"
+        },
+        {
+          "name": "_scaledInnerCornerRadius",
+          "record": "0x9b32678",
+          "type_reference": "0x8bde2e0"
+        },
+        {
+          "name": "isTemporaryChat",
+          "record": "0x9b32684",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isDoubleLineLayoutEnabled",
+          "record": "0x9b32690",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "extendsTextInputHitArea",
+          "record": "0x9b3269c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isFocused",
+          "record": "0x9b326a8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isInputEmpty",
+          "record": "0x9b326b4",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "placeholderSizesInput",
+          "record": "0x9b326c0",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hasMultipleTrailingButtons",
+          "record": "0x9b326cc",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "onFocusRequested",
+          "record": "0x9b326d8",
+          "type_reference": "0x8d0ab00"
+        },
+        {
+          "name": "keyboardVisibilityPublisher",
+          "record": "0x9b326e4",
+          "type_reference": "0x8d87f90"
+        },
+        {
+          "name": "preservesKeyboardInset",
+          "record": "0x9b326f0",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "textLayoutTrailingButtonsWidth",
+          "record": "0x9b326fc",
+          "type_reference": "0x8c59bb0"
+        },
+        {
+          "name": "keepsVoiceIntelligenceAddButtonVisible",
+          "record": "0x9b32708",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "whisperReleaseOverlay",
+          "record": "0x9b32714",
+          "type_reference": "0x91b3760"
+        },
+        {
+          "name": "leading",
+          "record": "0x9b32720",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "topComposerComponent",
+          "record": "0x9b3272c",
+          "type_reference": "0x941b450"
+        },
+        {
+          "name": "attachmentsTray",
+          "record": "0x9b32738",
+          "type_reference": "0x8d0ad40"
+        },
+        {
+          "name": "input",
+          "record": "0x9b32744",
+          "type_reference": "0x9458e98"
+        },
+        {
+          "name": "trailing",
+          "record": "0x9b32750",
+          "type_reference": "0x8fd9da0"
+        },
+        {
+          "name": "trailingOutside",
+          "record": "0x9b3275c",
+          "type_reference": "0x8fd9da4"
+        },
+        {
+          "name": "mode",
+          "record": "0x9b32768",
+          "type_reference": "0x904d930"
+        },
+        {
+          "name": "fullscreen",
+          "record": "0x9b32774",
+          "type_reference": "0x904d940"
+        },
+        {
+          "name": "placeholder",
+          "record": "0x9b32780",
+          "type_reference": "0x904d944"
+        },
+        {
+          "name": "inputOverlay",
+          "record": "0x9b3278c",
+          "type_reference": "0x92428e6"
+        },
+        {
+          "name": "topAccessory",
+          "record": "0x9b32798",
+          "type_reference": "0x9242cb8"
+        },
+        {
+          "name": "whisperPresentation",
+          "record": "0x9b327a4",
+          "type_reference": "0x924729a"
+        },
+        {
+          "name": "usesStreamingDictationUI",
+          "record": "0x9b327b0",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "voiceSession",
+          "record": "0x9b327bc",
+          "type_reference": "0x922ef0a"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x812c968",
+          "flags": "0x20000",
+          "section_entry": "0x9d060c4"
+        },
+        {
+          "descriptor": "0x812d42c",
+          "flags": "0x30000",
+          "section_entry": "0x9d06160"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "status": "partial",
+  "observations": [
+    {
+      "initializer": "0x62e4608",
+      "site": "0x62e4620",
+      "address": "0x89ef410",
+      "encoded": "ZHJhb2J5ZUtJVQ==",
+      "base64_decoded": "draobyeKIU",
+      "reverse_candidate": "UIKeyboard"
+    },
+    {
+      "initializer": "0x62e4760",
+      "site": "0x62e4778",
+      "address": "0x89ef470",
+      "encoded": "ZHJhb2J5ZUtldml0Y2E=",
+      "base64_decoded": "draobyeKevitca",
+      "reverse_candidate": "activeKeyboard"
+    },
+    {
+      "initializer": "0x62e48b8",
+      "site": "0x62e48d0",
+      "address": "0x89ef450",
+      "encoded": "SVVtZXRzeVN0dXBuSXNlc3U=",
+      "base64_decoded": "IUmetsyStupnIsesu",
+      "reverse_candidate": "usesInputSystemUI"
+    },
+    {
+      "initializer": "0x62e4a10",
+      "site": "0x62e4a28",
+      "address": "0x89ef430",
+      "encoded": "OmFocGxBZHJhb2J5ZUt0ZXM=",
+      "base64_decoded": ":ahplAdraobyeKtes",
+      "reverse_candidate": "setKeyboardAlpha:"
+    }
+  ],
+  "limits": [
+    "Base64 bytes decoded statically. Reversal is a candidate until string transformation call is independently bound."
+  ]
+}

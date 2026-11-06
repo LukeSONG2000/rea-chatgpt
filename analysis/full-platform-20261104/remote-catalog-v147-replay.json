@@ -1,0 +1,138 @@
+{
+  "status": "passed",
+  "authority": "controlled exact official artifact fragments; synthetic inputs; no full app execution",
+  "artifact": {
+    "path": "recovered/macos/asar-extracted/webview/assets/app-shared-2cae01273bae.js",
+    "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36"
+  },
+  "locations": [
+    {
+      "symbol": "EY",
+      "utf16Offset": 1670989,
+      "byteOffset": 1698908,
+      "lengthBytes": 468
+    },
+    {
+      "symbol": "yet",
+      "utf16Offset": 1671492,
+      "byteOffset": 1699411,
+      "lengthBytes": 129
+    },
+    {
+      "symbol": "bet",
+      "utf16Offset": 1671621,
+      "byteOffset": 1699540,
+      "lengthBytes": 243
+    },
+    {
+      "symbol": "Jet",
+      "utf16Offset": 1674292,
+      "byteOffset": 1702211,
+      "lengthBytes": 44
+    },
+    {
+      "symbol": "ptt",
+      "utf16Offset": 1675444,
+      "byteOffset": 1703363,
+      "lengthBytes": 40
+    },
+    {
+      "symbol": "mtt",
+      "utf16Offset": 1675484,
+      "byteOffset": 1703403,
+      "lengthBytes": 51
+    },
+    {
+      "symbol": "btt",
+      "utf16Offset": 1675907,
+      "byteOffset": 1703826,
+      "lengthBytes": 295
+    },
+    {
+      "symbol": "xtt",
+      "utf16Offset": 1676202,
+      "byteOffset": 1704121,
+      "lengthBytes": 183
+    }
+  ],
+  "bindings": {
+    "xet": "/^(?<major>0|[1-9]\\d*)\\.(?<minor>0|[1-9]\\d*)\\.(?<patch>0|[1-9]\\d*)(?:-(?<prerelease>[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$/",
+    "AY": "`0.141.0`",
+    "Qet": "`0.0.0`",
+    "PY": "`remote-control`"
+  },
+  "versionCases": [
+    {
+      "input": "0.140.9",
+      "accepted": false
+    },
+    {
+      "input": "0.141.0-alpha.1",
+      "accepted": false
+    },
+    {
+      "input": "0.141.0",
+      "accepted": true
+    },
+    {
+      "input": "0.150.0",
+      "accepted": true
+    },
+    {
+      "input": "0.0.0",
+      "accepted": true
+    },
+    {
+      "input": "independent-owner",
+      "accepted": true
+    },
+    {
+      "input": null,
+      "accepted": true
+    },
+    {
+      "input": "[undefined]",
+      "accepted": true
+    }
+  ],
+  "syntheticInput": {
+    "source": "remote-control",
+    "hostId": "synthetic-host-a",
+    "displayName": "Independent owner A",
+    "envId": "synthetic-env-a",
+    "hostName": "Synthetic workstation",
+    "environmentKind": "local-test",
+    "online": true,
+    "busy": false,
+    "os": "darwin",
+    "arch": "arm64",
+    "appServerVersion": null,
+    "lastSeenAt": null
+  },
+  "normalized": {
+    "id": "synthetic-host-a",
+    "display_name": "Independent owner A",
+    "kind": "remote-control",
+    "codex_cli_command": [],
+    "terminal_command": [],
+    "env_id": "synthetic-env-a",
+    "host_name": "Synthetic workstation",
+    "environment_kind": "local-test",
+    "online": true,
+    "busy": false,
+    "os": "darwin",
+    "arch": "arm64",
+    "app_server_version": null,
+    "last_seen_at": null
+  },
+  "conclusions": [
+    "Remote-control records are selected by source and projected into execution-host field names",
+    "Version predicate alone accepts malformed/null/undefined values because comparator returns zero on parse failure",
+    "0.0.0 is an explicit accepted sentinel; neither this sentinel nor parse-failure acceptance proves app-server compatibility"
+  ],
+  "limits": [
+    "These fragments do not prove null versions reach the real UI through all upstream validators",
+    "No settings page or full manager lifecycle executed",
+    "Synthetic identifiers are not official cloud enrollment or device discovery"
+  ]
+}

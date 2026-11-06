@@ -1,0 +1,365 @@
+{
+  "0x1a3c830": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1a3c830: aa1e03e1     \tmov\tx1, x30\n 1a3c834: 97a8aa59     \tbl\t0x467198 <__text+0x43f198>\n 1a3c838: aa0103fe     \tmov\tx30, x1\n 1a3c83c: a9057bfd     \tstp\tx29, x30, [sp, #0x50]\n 1a3c840: 910143fd     \tadd\tx29, sp, #0x50\n 1a3c844: d101c3ff     \tsub\tsp, sp, #0x70\n 1a3c848: 97b2de6f     \tbl\t0x6f4204 <__text+0x6cc204>\n 1a3c84c: 90049d54     \tadrp\tx20, 0xade4000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x13110>\n 1a3c850: 91374294     \tadd\tx20, x20, #0xdd0\n 1a3c854: b0031eb5     \tadrp\tx21, 0x7e11000 <_writev+0x7e11000>\n 1a3c858: 913562b5     \tadd\tx21, x21, #0xd58\n 1a3c85c: 979c4921     \tbl\t0x14ece0 <__text+0x126ce0>\n 1a3c860: 940c783c     \tbl\t0x1d5a950 <__text+0x1d32950>\n 1a3c864: f0048470     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 1a3c868: f9406e10     \tldr\tx16, [x16, #0xd8]\n 1a3c86c: d63f0200     \tblr\tx16\n 1a3c870: 979c3e7d     \tbl\t0x14c264 <__text+0x124264>\n 1a3c874: 95883c4b     \tbl\t0x7c4b9a0 <_writev+0x7c4b9a0>\n 1a3c878: 97a84193     \tbl\t0x44cec4 <__text+0x424ec4>\n 1a3c87c: d10303a8     \tsub\tx8, x29, #0xc0\n 1a3c880: 979c7087     \tbl\t0x158a9c <__text+0x130a9c>\n 1a3c884: 940d9be9     \tbl\t0x1da3828 <__text+0x1d7b828>\n 1a3c888: 8b0802c0     \tadd\tx0, x22, x8\n 1a3c88c: 97a85c6d     \tbl\t0x453a40 <__text+0x42ba40>\n 1a3c890: 940d6733     \tbl\t0x1d9655c <__text+0x1d6e55c>\n 1a3c894: 979c3363     \tbl\t0x149620 <__text+0x121620>\n 1a3c898: 9588349e     \tbl\t0x7c49b10 <_writev+0x7c49b10>\n 1a3c89c: aa0003f7     \tmov\tx23, x0\n 1a3c8a0: 97a878cc     \tbl\t0x45abd0 <__text+0x432bd0>\n 1a3c8a4: 979c9b8f     \tbl\t0x1636e0 <__text+0x13b6e0>\n 1a3c8a8: 90049d40     \tadrp\tx0, 0xade4000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x13110>\n 1a3c8ac: 91376000     \tadd\tx0, x0, #0xdd8\n 1a3c8b0: b0031ea1     \tadrp\tx1, 0x7e11000 <_writev+0x7e11000>\n 1a3c8b4: 91358021     \tadd\tx1, x1, #0xd60\n 1a3c8b8: 979af870     \tbl\t0xfaa78 <__text+0xd2a78>\n 1a3c8bc: 940cb80e     \tbl\t0x1d6a8f4 <__text+0x1d428f4>\n 1a3c8c0: 97c1ecb0     \tbl\t0xab7b80 <__text+0xa8fb80>\n 1a3c8c4: d10143bf     \tsub\tsp, x29, #0x50\n 1a3c8c8: a9457bfd     \tldp\tx29, x30, [sp, #0x50]\n 1a3c8cc: 17a85547     \tb\t0x451de8 <__text+0x429de8>\n 1a3c8d0: aa1e03e2     \tmov\tx2, x30\n 1a3c8d4: 979c7271     \tbl\t0x159298 <__text+0x131298>\n 1a3c8d8: aa0203fe     \tmov\tx30, x2\n 1a3c8dc: a9057bfd     \tstp\tx29, x30, [sp, #0x50]\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x1a3c830",
+        "end_exclusive": "0x1a3c8e0",
+        "sha256": "2ec0773888a0d7faddeaaf0d197dcef3398e2dd754f4444e928ecbe75d49dfe3"
+      },
+      "linker_function_starts_in_window": [
+        "0x1a3c830",
+        "0x1a3c8d0"
+      ],
+      "next_linker_function_start": "0x1a3ca4c",
+      "direct_calls": [
+        {
+          "site": "0x1a3c834",
+          "target": "0x467198",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c848",
+          "target": "0x6f4204",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c85c",
+          "target": "0x14ece0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c860",
+          "target": "0x1d5a950",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c870",
+          "target": "0x14c264",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c874",
+          "target": "0x7c4b9a0",
+          "imported_symbol": "_$s7SwiftUI9AlignmentV7leadingACvgZ",
+          "chained_binding": {
+            "slot": "0xaad56d0",
+            "symbol": "_$s7SwiftUI9AlignmentV7leadingACvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10670,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1a3c878",
+          "target": "0x44cec4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c880",
+          "target": "0x158a9c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c884",
+          "target": "0x1da3828",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c88c",
+          "target": "0x453a40",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c890",
+          "target": "0x1d9655c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c894",
+          "target": "0x149620",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c898",
+          "target": "0x7c49b10",
+          "imported_symbol": "_$s7SwiftUI4EdgeO3SetV10horizontalAEvgZ",
+          "chained_binding": {
+            "slot": "0xaad3750",
+            "symbol": "_$s7SwiftUI4EdgeO3SetV10horizontalAEvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9663,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1a3c8a0",
+          "target": "0x45abd0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c8a4",
+          "target": "0x1636e0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c8b8",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c8bc",
+          "target": "0x1d6a8f4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c8c0",
+          "target": "0xab7b80",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a3c8d4",
+          "target": "0x159298",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  },
+  "previous_separator_type": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7e11de0",
+    "mangled_address": "0x8e1d1b4",
+    "length": 248,
+    "mangled_hex": "02e351cb017902ed51cb0179028733cb0179021946ca017902935ccb015f516f5f029aa4c90179029c80cb0179022e88cb0179023041cb0179414979414979028c73cb0179023e3ecb017941497941497902c27ecb017941487902396acb015f4149790270a3c90179023286cb01414e47020262cb017902f42ecb0147475367744747415079020567cb015367474702cc5ccb0179025e7bcb014747414e475f015bf97800516f5f021363cb017953624747020962cb014702bb3ccb01475f01900a79005367744747414979414979024c4dcb0102af45cb01474131315f47414e47474132315f474146794131335f4132305f414e475f47",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad2398",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_ConditionalContentV7StorageOMn"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaad23a8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_ConditionalContentVMn"
+      },
+      {
+        "offset": 12,
+        "kind": 2,
+        "target": "0xaad0548",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI12TimelineViewVMn"
+      },
+      {
+        "offset": 18,
+        "kind": 2,
+        "target": "0xaac17e0",
+        "resolved_context": "0x9755acc",
+        "label": "<unresolved-context@0x9755acc>"
+      },
+      {
+        "offset": 24,
+        "kind": 2,
+        "target": "0xaad2e60",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI24PeriodicTimelineScheduleVMn"
+      },
+      {
+        "offset": 33,
+        "kind": 2,
+        "target": "0xaab7670",
+        "resolved_context": "0x9753ee4",
+        "label": "SwiftUIToolbelt.EmptyConditionalContent"
+      },
+      {
+        "offset": 39,
+        "kind": 2,
+        "target": "0xaad5278",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI6VStackVMn"
+      },
+      {
+        "offset": 45,
+        "kind": 2,
+        "target": "0xaad5a10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI9TupleViewVMn"
+      },
+      {
+        "offset": 51,
+        "kind": 2,
+        "target": "0xaad1318",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15ModifiedContentVMn"
+      },
+      {
+        "offset": 63,
+        "kind": 2,
+        "target": "0xaad4580",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4ViewPAAE20disclosureGroupStyleyQrqd__AA010DisclosureeF0Rd__lFQOMQ"
+      },
+      {
+        "offset": 69,
+        "kind": 2,
+        "target": "0xaad1038",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15DisclosureGroupVMn"
+      },
+      {
+        "offset": 81,
+        "kind": 2,
+        "target": "0xaad50c8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI6HStackVMn"
+      },
+      {
+        "offset": 90,
+        "kind": 2,
+        "target": "0xaad3c48",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4TextVMn"
+      },
+      {
+        "offset": 99,
+        "kind": 2,
+        "target": "0xaab7588",
+        "resolved_context": "0x97544ec",
+        "label": "SwiftUIToolbelt.OAIProgressView"
+      },
+      {
+        "offset": 105,
+        "kind": 2,
+        "target": "0xaad5850",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI9EmptyViewVMn"
+      },
+      {
+        "offset": 113,
+        "kind": 2,
+        "target": "0xaad3428",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+      },
+      {
+        "offset": 119,
+        "kind": 2,
+        "target": "0xaad0120",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI11ControlSizeOMn"
+      },
+      {
+        "offset": 134,
+        "kind": 2,
+        "target": "0xaad3940",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4FontVMn"
+      },
+      {
+        "offset": 143,
+        "kind": 2,
+        "target": "0xaad2f10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+      },
+      {
+        "offset": 149,
+        "kind": 2,
+        "target": "0xaad4da8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI5ColorVMn"
+      },
+      {
+        "offset": 160,
+        "kind": 1,
+        "target": "0x95acbb0",
+        "resolved_context": "0x95acbb0",
+        "label": "CodexRemoteThread.CodexRemoteDisclosureGroupStyle"
+      },
+      {
+        "offset": 168,
+        "kind": 2,
+        "target": "0xaad3570",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI32_EnvironmentKeyTransformModifierVMn"
+      },
+      {
+        "offset": 178,
+        "kind": 2,
+        "target": "0xaad3470",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI31AccessibilityAttachmentModifierVMn"
+      },
+      {
+        "offset": 184,
+        "kind": 2,
+        "target": "0xaad0f28",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI14_PaddingLayoutVMn"
+      },
+      {
+        "offset": 191,
+        "kind": 1,
+        "target": "0x95add04",
+        "resolved_context": "0x95add04",
+        "label": "<unresolved-context@0x95adcfc>.CodexRemoteTranscriptSeparator"
+      },
+      {
+        "offset": 207,
+        "kind": 2,
+        "target": "0xaad1fd0",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI18SubviewsCollectionVMn"
+      },
+      {
+        "offset": 212,
+        "kind": 2,
+        "target": "0xaad1838",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI16_FlexFrameLayoutVMn"
+      }
+    ],
+    "unresolved_contexts": [
+      {
+        "address": "0x9755acc",
+        "flags": "0x200c4",
+        "kind": 4,
+        "reason": "Unsupported context kind; name and parent chain not interpreted"
+      },
+      {
+        "address": "0x95adcfc",
+        "flags": "0x42",
+        "kind": 2,
+        "reason": "Unsupported context kind; name and parent chain not interpreted"
+      }
+    ],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  }
+}

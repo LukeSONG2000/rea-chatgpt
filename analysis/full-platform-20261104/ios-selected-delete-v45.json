@@ -1,0 +1,63 @@
+{
+  "status": "partial",
+  "reference_baseline": "mobile 1.2026.293",
+  "origin": "independent native hosts; no official behavior-equivalence claim",
+  "verification": {
+    "test": "testDeleteSelectedConversationFallback",
+    "result": "analysis/full-platform-20261104/ios-selected-delete-v1.xcresult",
+    "summary": "analysis/full-platform-20261104/ios-selected-delete-v1.summary.json",
+    "passed": 1,
+    "covers": [
+      "delete currently selected dynamic conversation through native swipe/confirmation",
+      "fallback row indicates A selection",
+      "back navigation shows A and its preserved draft",
+      "actual process restart retains fallback and deleted row absence"
+    ],
+    "disk_evidence": "analysis/full-platform-20261104/ios-selected-delete-persisted-v1.json",
+    "runtime": "dedicated iPhone 17 Pro simulator / iOS 27.0"
+  },
+  "android_next_batch": {
+    "observed": [
+      "MainActivity renders two fixed FilterChips",
+      "MainActivity maps every non-A conversation to fixture conversation 002",
+      "MessageStore validates only two fixture conversation identities",
+      "LocalHarness checks response against supplied exact conversation/request identity"
+    ],
+    "required_changes": [
+      "account-bound native catalog with atomic persistence",
+      "explicit local-to-backend identity mapping shared by UI/history validation",
+      "native list/create with isolated draft/selection cold restore",
+      "dedicated emulator build and UI acceptance"
+    ],
+    "boundary": "Android implementation must be independently built/validated; iOS tests do not prove Android behavior"
+  },
+  "inputs": [
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "852e1ecc90b2901d9af5959d98bbd4c2a5a7bdbdaa37507bcc83d2994ce7b0f1"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "3ec4e4f034e220c1c16cb593ee47adaeebaff29852811a3f58837204aee81dda"
+    },
+    {
+      "path": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "2d1f37ce1fc70051ae28b57c33226216a18c369dca6c033ac63dc5ffffefaf37"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt",
+      "sha256": "ed4ec1ef44a5add7380a5a86e4728d84a1a184d122beb5e528c286ca870f0e6b"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/MessageStore.kt",
+      "sha256": "28d8993cf3e4b5fb27f33481370ec334259f4f0ff30aeaafda785a1d660af93e"
+    }
+  ],
+  "limits": [
+    "Native disk failure and crash injection remain pending; earlier state tests are narrower",
+    "No physical-device or visual-fidelity acceptance",
+    "Android changes not implemented in this increment",
+    "No network/model calls in this focused test"
+  ],
+  "next_action": "Implement Android native catalog/list/create and scoped identities; retain iOS fault-injection gap in matrix"
+}

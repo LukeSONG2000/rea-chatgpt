@@ -1,0 +1,11 @@
+'use strict';
+const assert=require('node:assert/strict'),{canWrite,install}=require('./desktop-clipboard-permission.cjs');
+const wc={isDestroyed:()=>false,getURL:()=> 'https://offline.invalid/probe'},primary={isDestroyed:()=>false,webContents:wc};
+const valid={webContents:wc,primary,permission:'clipboard-sanitized-write',requestingUrl:'https://offline.invalid/probe',isMainFrame:true};
+assert.equal(canWrite(valid),true);
+for(const patch of [{permission:'clipboard-read'},{permission:'media'},{requestingUrl:'https://offline.invalid.evil/'},{requestingUrl:'about:blank'},{isMainFrame:false},{isMainFrame:undefined},{webContents:{...wc}},{primary:null},{primary:{...primary,isDestroyed:()=>true}}])assert.equal(canWrite({...valid,...patch}),false);
+let request,check;install({setPermissionRequestHandler:f=>request=f,setPermissionCheckHandler:f=>check=f},()=>primary);
+request(wc,valid.permission,allowed=>assert.equal(allowed,true),{requestingUrl:valid.requestingUrl,isMainFrame:true});
+assert.equal(check(wc,valid.permission,'https://offline.invalid',{isMainFrame:true}),true);
+assert.equal(check(wc,'clipboard-read','https://offline.invalid',{isMainFrame:true}),false);
+console.log('passed: primary-only trusted main-frame write; reads, foreign origin/window/frame, unknown frame denied');

@@ -1,0 +1,35 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source_evidence": [
+    "ios-remote-v362-run-color.asm",
+    "ios-remote-v362-palette.json",
+    "ios-remote-v363-foreground-enum.json",
+    "ios-remote-v363-rgb-converter.asm"
+  ],
+  "official_observations": {
+    "named_cases": "0x1d1d8cc..0x1d1da68 branches resolve to same dynamic colors as indexed0...15",
+    "out_of_range_index": "0x1d1d99c..0x1d1d9a4 reaches parent-color retention0x1d1d884",
+    "rgb": "0x1d1d88c packs channels;0x75656d4 uses sRGB/255/alpha1"
+  },
+  "integration": "RemoteOutputForeground indexed(Int), rgb(UInt8 channels), named(Named); existing nil fallback retains secondary shell color",
+  "adapter_limits": [
+    "RGB bounded input contract is independent; official enum has Int channels",
+    "fixture sequence of indexed/RGB/named colors is synthetic",
+    "single combined Text remains independent; no original Line identity/container yet",
+    "raw escape recognition not connected",
+    "dark mode and complete palette visual acceptance pending"
+  ],
+  "validation": {
+    "test": "testRemoteOutputGestureFollow",
+    "passed": 1,
+    "failed": 0,
+    "screenshot": "ios-remote-v367-screenshots/54F137FD-72E7-47BD-8E93-7682558944DF.png",
+    "visual_observation": "RGB violet34, named cyan35, indexed green36 and default secondary31..33 visible",
+    "limits": "one light-mode fixture; not full palette, selection or dark-mode parity",
+    "preview_pid": 81912,
+    "device_install": "unchanged"
+  }
+}

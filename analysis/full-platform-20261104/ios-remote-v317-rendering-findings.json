@@ -1,0 +1,65 @@
+{
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "integrationDecision": "Do not treat v316 system DisclosureGroup as official Remote style or apply one chevron placement to every message component.",
+  "observations": [
+    {
+      "type": "CodexRemoteDisclosureGroupStyle",
+      "descriptor": "0x95acbb0",
+      "conformance": "0x7e11bd8",
+      "makeBodyWitness": "0x19c29e4",
+      "branchTarget": "0x19c2298",
+      "fields": [
+        "chevronPlacement",
+        "chevronForegroundColor",
+        "labelVerticalAlignment",
+        "labelPadding",
+        "labelBackground",
+        "_chevronSize"
+      ],
+      "expandedBranch": {
+        "read": "0x19c2574",
+        "test": "0x19c2578",
+        "contentGetter": "0x19c2584"
+      },
+      "limits": "Caller-selected parameters and animation not recovered. Window includes helper functions."
+    },
+    {
+      "type": "ToolActivitySummaryRow",
+      "bodyWitness": "0x1a53554",
+      "branchTarget": "0x1a532a0",
+      "fontFactoryCall": "0x1a53370",
+      "factory": "0x74e2728",
+      "initializer": "0x74e2714",
+      "importSlot": "0xaad38d8",
+      "importSymbol": "_$s7SwiftUI4FontV9TextStyleO4bodyyA2EmFWC",
+      "colorFactory": "0x74ee270",
+      "colorAssetStringAddress": "0x8a51b80",
+      "colorAsset": "ChatGPT/text/inverted",
+      "opacityConstant": {
+        "address": "0x7cdb418",
+        "value": 0.8,
+        "call": "0x1a53318"
+      },
+      "limits": "Body style factory identified; complete modifier data flow not recovered. Inverted color may participate in shimmer composition; do not use it as the final foreground."
+    },
+    {
+      "type": "ToolActivityHistorySummaryView",
+      "bodyWitness": "0x1a6a068",
+      "branchTarget": "0x1a69d00",
+      "limits": "Body window has multiple linker functions; 20.0 constant feeds a ScaledMetric initializer at 0x1a69ddc, but downstream field assignment is not established, so it is not a recovered row height or general icon size."
+    }
+  ],
+  "preservedFailures": [
+    "Attempted direct interpretation of associated-type witness addresses as raw typerefs was rejected as not file-backed. No type layout inferred from rejected reads."
+  ],
+  "nextMinimumEvidence": {
+    "target": "0x1a69e88 → 0x1daa52c → ToolActivityHistorySummaryView accessor; related style callsite 0x1c207e4..0x1c20910",
+    "action": "Identify the summary presentation enum and actual style constructor arguments for a commandExecution history row before replacing the v316 fixture label."
+  },
+  "runtimeChange": false,
+  "acceptance": "Static provenance only; no additional visual or device acceptance"
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "reference_version": "1.2026.293 packaged client; independent local store/UI",
+  "verified": [
+    "Foundation synthetic file copy/reopen survives source deletion",
+    "Duplicate names have separate IDs, account isolation, file size and 99-file count bounds",
+    "Symlink source and index path traversal rejected; invalid index preserved",
+    "Generated JS adapter accepts 99 imported rows plus fixture directory, preserves identity/account and directory isolation",
+    "Simulator fixture folder/body-ready Quick Look/return regression passed after import integration"
+  ],
+  "implemented_not_runtime_accepted": [
+    "System document picker selection and cancellation",
+    "Selected file copy to app library and imported item preview",
+    "PDF/image and provider-downloaded file behavior",
+    "Imported-file application process restart"
+  ],
+  "limits": {
+    "per_file_bytes": 16777216,
+    "total_bytes": 67108864,
+    "import_count": 99
+  },
+  "limitations": [
+    "Synchronous disk reads/writes; UI latency and cancellation during import unaccepted",
+    "Orphan file cleanup after process death not implemented",
+    "Length validation does not verify content digest",
+    "Native official library owner/layout remain unresolved",
+    "No physical iPhone or Android import equivalence"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/ios/Sources/LocalLibraryStore.swift": "bcb981586223f1a1f9cd411e9ed1f5f7e20b36152a637f12005d9204409f91b6",
+    "implementation/ios/Sources/NativeConversationHost.swift": "ddd47d7665168f76c6ea7651f9708ceaf19acc9d117c839059090a17058fe5e7",
+    "implementation/ios/Tools/prepare-library.py": "fb759ee6a76976657f7d45a797f436fc36936d20811f398e7b97e31fe27b5120",
+    "implementation/ios/Tools/test-library-adapter.cjs": "62e66d22d23d2c9ea146fe7df95350bd7658243ce1b3872ad943a81ce9c55e4c",
+    "implementation/ios/LibraryTests/main.swift": "c383f56afbc70d2240a6da04c9bea2dfa01a1e6393fd7412fcf80d4c8773df1a",
+    "implementation/ios/test-library-store.sh": "57278b13a29d91a7d965f192d7ffdb8b967635cca3586bb76c612896ae89b410",
+    "analysis/full-platform-20261104/ios-library-store-v3.log": "e9d9b5b9a6c4bc5422405227d64bf5b93535e6db8daba167ea0305ce80a7feaf",
+    "analysis/full-platform-20261104/ios-library-adapter-v1.log": "878443c0c3b2f3b51bb3606e614d30277f1c6006ece608e7f5c964782e476887",
+    "analysis/full-platform-20261104/ios-library-import-v2.summary.json": "389a7b47ba4b82667a88e5333f70ff2fc7839a7784751d9da2bf875dcf4359ca"
+  },
+  "next_action": "Validate native picker with dedicated synthetic document provider/fixture, cancellation and imported-file restart; expand content formats and original layout reuse"
+}

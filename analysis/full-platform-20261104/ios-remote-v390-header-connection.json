@@ -1,0 +1,39 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "chain": [
+    "header constructor0x39c628",
+    "toggleCollapsed store0x39c6f0 at field+0x30",
+    "thunk0x438e18",
+    "capture adapter0x43be80",
+    "wrapper0x39c378",
+    "writeback0x43910c"
+  ],
+  "constructor_observations": {
+    "isCollapsed": "incoming w26 low bit ->+0x29 at0x39c6e4",
+    "toggle": "nonnull thunk+capture at+0x30",
+    "startNewThread": "nil at+0x40 (0x39c6f4)",
+    "kind_tag": 2,
+    "horizontalPadding": 20,
+    "title_subtitle_icon": "incoming title; nil subtitle/icon in this branch"
+  },
+  "typing": "Both taskSectionIsCollapsed and setTaskSectionCollapsed reference CodexViewModel.TaskSection.Descriptor.ID (0x955e4c4)",
+  "integration_contract": {
+    "state_owner": "list owner keyed by section descriptor identity",
+    "header_inputs": [
+      "title",
+      "isCollapsed",
+      "optional toggleCollapsed",
+      "optional startNewThread"
+    ],
+    "action": "read current state by ID -> invert -> set for same ID",
+    "do_not": "key by title or positional index; invent new-thread button for nil callback"
+  },
+  "limits": [
+    "Outer eligibility helper0x39902c not resolved",
+    "kind cases standard/project/superSection known but tag mapping not executed",
+    "Header text/icon/layout consumer remains partial",
+    "No integrated grouped UI or runtime acceptance"
+  ],
+  "validation": "Existing session42359 remains waiting for system authorization"
+}

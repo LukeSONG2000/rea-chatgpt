@@ -1,0 +1,48 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "chain": [
+    "CodexRemoteTaskRowTrailingStateIndicatorsPart 0x9560a04",
+    "View.body witness 0x3a5bb0",
+    "HStack builder 0x3a54b0",
+    "content closure 0x3a54f4 via 0x4671d4"
+  ],
+  "observations": [
+    {
+      "offset": "0x3a55dc..0x3a55e8",
+      "conclusion": "pendingRequest field metadata slot0x14 tested against tag2; two payload-free cases approval/userInput imply optional-none tag2 under Swift enum ABI."
+    },
+    {
+      "offset": "0x3a5690..0x3a56f0",
+      "conclusion": "Present pendingRequest constructs conditional pill branch, bypasses activity renderer 0x3a5964."
+    },
+    {
+      "offset": "0x3a5630..0x3a5638",
+      "conclusion": "No pending request path calls activity renderer after additional unresolved gate 0x244bec0."
+    },
+    {
+      "offset": "0x7cf8dd0",
+      "conclusion": "ConditionalContent storage explicitly separates CodexTaskRowPendingRequestPill from activity group (EmptyView/Image/CodexTaskProgressView/CodexUnreadTaskIndicatorView)."
+    }
+  ],
+  "integration": "Pending request takes the trailing status slot; activity text is fallback only. Synthetic connection status remains independently visible.",
+  "unknowns": [
+    "Pending pill exact geometry/colors/icons",
+    "Activity enum dispatch tags and per-case rendering",
+    "Additional no-pending gate 0x244bec0",
+    "WorktreeIdentifier indicator styling",
+    "Android parity"
+  ],
+  "validation": {
+    "test": "testRemoteTaskScopeAndReturn",
+    "passed": 1,
+    "failed": 0,
+    "new_assertions": "Pending approval suppresses running; pending input suppresses idle; no-pending unread/failed remain visible.",
+    "screenshot_inspected": "ios-remote-v332-screenshots/D88D0B97-ECAB-49CA-8177-D9CFCF33E6AC.png",
+    "preview_pid": 66986,
+    "phone_updated": false
+  }
+}

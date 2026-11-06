@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.asyncLoad=void 0;const e=require("../mathjax");function a(a){return e.mathjax.asyncLoad?new Promise((o,t)=>{const s=e.mathjax.asyncLoad(a);s instanceof Promise?s.then(e=>o(e)).catch(e=>t(e)):o(s)}):Promise.reject(`Can't load '${a}': No mathjax.asyncLoad method specified`)}exports.asyncLoad=a;

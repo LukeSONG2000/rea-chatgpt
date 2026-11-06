@@ -1,0 +1,60 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-native-implementation-and-controlled-platform-input-replay",
+  "changes": [
+    "TextFieldValue retains composition separately; only committed text is persisted",
+    "Send disabled while composing, active-generation cancellation remains available",
+    "Conversation navigation and Activity pause retire input epoch before focus teardown and discard uncommitted candidate text",
+    "Editor callbacks validate scope and input epoch; retired InputConnection cannot mutate A after A-B-A",
+    "Test-only quiet IME isolates controlled platform commands; runner restores exact original default/enabled/subtype settings"
+  ],
+  "accepted_evidence": [
+    "android-composition-v69-ui-v7.json",
+    "android-composition-v69-draft-regression.json"
+  ],
+  "validation": {
+    "controlled_native_phases": 3,
+    "ordinary_draft_phases": 2,
+    "controlled_processes": [
+      "13577",
+      "13691",
+      "13765"
+    ],
+    "ordinary_processes": [
+      "13889",
+      "13994"
+    ],
+    "visual_review": "Inspected committed Chinese restored in native editor after restart",
+    "service_access": "none; no harness pairing or online requests"
+  },
+  "prior_attempts": {
+    "v1": "failed synthetic composition while regular IME attached",
+    "v2": "diagnostic test compilation failed; chained old-APK run excluded",
+    "v3_v4": "composition range briefly present then cleared with regular IME; callback trace retained, not a Gboard behavior acceptance",
+    "v5": "quiet-IME initial phase passed; lifecycle teardown persisted candidate; cleanup quoting failure repaired and read back separately",
+    "v6": "lifecycle and retired-connection checks advanced; immediate enabled-state assertion raced Compose update",
+    "v7": "all controlled phases passed with enabled-state synchronization"
+  },
+  "cleanup": {
+    "original_ime_settings_restored_and_rechecked": true,
+    "test_ime_disabled": true,
+    "independent_host_force_stopped": true,
+    "physical_phone_untouched": true
+  },
+  "limits": [
+    "Controlled InputConnection replay, not real Gboard candidate-window acceptance",
+    "Discard on navigation/background is independent policy, not recovered official behavior",
+    "IME replacement ranges, autocorrection, language switching, hardware keyboard and physical devices remain unaccepted",
+    "Other platform surfaces and full native restoration remain incomplete"
+  ],
+  "sources": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "52dedd0eaa38c4c1bdb1be484be78d40708a13c5a71b83185e069c13a4518b40",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "a965c8ef578d03618798133e9dfd5daa29b18659c2281f8b9b180e3656e7a788",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/QuietReplayIme.kt": "b1dc367580315829ac029318bb32ef0f6d75da7410c9f8fe18301d16b56a9286",
+    "implementation/android/app/src/androidTest/AndroidManifest.xml": "75d902701b08d4dcf8f262600be3a4fd4ff9ea726328cdf940270f3fb856bbd7",
+    "implementation/android/app/src/androidTest/res/xml/quiet_replay_ime.xml": "1e2fc54dab6d60f227e09c70955c3cb303aeebf8a0a424e931254b8e134fce3e",
+    "implementation/android/test-composition.py": "61d1acacb0ddf31882d8cfd50dc70c248cb4e8786f614700a8489cdcb0a297aa",
+    "implementation/android/test-native.py": "066645987eb89669adcf08296026b5ffb209e0148f523fe4f88711acc12ad97a"
+  }
+}

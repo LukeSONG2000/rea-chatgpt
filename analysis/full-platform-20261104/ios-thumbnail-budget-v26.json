@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "implementation_origin": "independent thumbnail scheduler and local metadata validation",
+  "verified": [
+    "Scheduler tests: limit two tracked active jobs, queued/active cancellation, ignored late/duplicate callbacks, synchronous completion and reentrant enqueue",
+    "Preview metadata tests reject changed size and symlink replacement; previous storage tests pass",
+    "Generic simulator build and PNG import/thumbnail/preview/restart UI regression pass",
+    "Current full-image preview screenshot reviewed"
+  ],
+  "change": "Preview URL validation no longer reads whole file; grid thumbnail work is queued with limit two",
+  "limitations": [
+    "Cancellation bounds client tracking only; provider may still finish cancelled work internally",
+    "No frame-time or main-thread latency measurements; stat and imports remain synchronous",
+    "Metadata validation is not content digest verification or race-free file access",
+    "Cell reuse with adversarial system callback timing and PDF/failure fallback unaccepted",
+    "No custom cache, physical iPhone or cross-platform performance equivalence"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/ios/Sources/LimitedWorkQueue.swift": "c535b255a5aef6a908e6de2b43ed10c5e5a2c8324363dd514f543fbb17bc9413",
+    "implementation/ios/Sources/NativeConversationHost.swift": "357e53d39c666ce91531534b6a6cc4b1af839dee7e5aed92f043101cafef7cf2",
+    "implementation/ios/Sources/LocalLibraryStore.swift": "469e2036a890f93c6502a117cff0e25fb42dd5df10fe7a4b3d8fa8f98b2d3e27",
+    "implementation/ios/QueueTests/main.swift": "1686f24dc73af33f92ca0e0f119ca4c22b8555677027f660b0302e19e9b2fc5b",
+    "implementation/ios/LibraryTests/main.swift": "09ab33938526844d4ab74802da39bbf7fdcd97d3f4b795e4e551cdbe57f070ab",
+    "analysis/full-platform-20261104/ios-thumbnail-queue-v1.log": "33a962a9e818fc22c0ccfaf62168938709ee525c4d5b7a0626c23468299ed629",
+    "analysis/full-platform-20261104/ios-library-metadata-v2.log": "f619167d66fc343ae9f2d6c9e14133f13080e693cc5696ead4446ca7dd189b53",
+    "analysis/full-platform-20261104/ios-thumbnail-budget-v1.summary.json": "a3986113f1aba2e7f7aa5ba0ce20c7325c94437b52d943d12c10175ff0bb4d29",
+    "analysis/full-platform-20261104/ios-thumbnail-budget-v1-attachments/native-image-preview.png": "a21a546c445ac97404ae82fa3077a4047074019ce2d154357965dcd14eb479d5"
+  },
+  "next_action": "Validate multi-page PDF and corrupt-file fallback; then return to six-surface gap prioritization"
+}

@@ -1,0 +1,49 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-instructions",
+  "capture": {
+    "facade_creation": "0x62da860",
+    "snapshot_helper": "0x62f43ec",
+    "objc_stub": "0x7c7d7a0",
+    "selector_slot": "0xacb3748",
+    "selector": "snapshotViewAfterScreenUpdates:",
+    "argument": true,
+    "sites": [
+      "0x62da91c",
+      "0x62da9c0"
+    ],
+    "frame_conversion": "0x62da908",
+    "snapshot_container_addSubview": [
+      "0x62da964",
+      "0x62daa74"
+    ],
+    "result_store": {
+      "view": "0x62daac8",
+      "frame": "0x62daacc..0x62daad0",
+      "onDeinit": "0x62daadc",
+      "callback": "0x62f1d74"
+    }
+  },
+  "coordinator_creation": {
+    "function": "0x584368",
+    "session_create": "0x584440",
+    "session_store": "0x58445c",
+    "event_publish": "0x58447c",
+    "limit": "delegate capability and enablement calls not fully named"
+  },
+  "integration_decision": "Use native view snapshots and explicit window-coordinate conversion once keyboard view ownership is proven; do not render a fake keyboard from the user screenshot.",
+  "remaining_blocker": {
+    "resolver": "0x62da8b0 invokes closure from owner+0x20 with owner+0x10/+0x18 context",
+    "view_selection": "0x62e4d4c",
+    "cleanup_callback": "0x62f1d74"
+  },
+  "limits": [
+    "Public snapshot API proven; obtaining keyboard view and suppression/restoration may still use private mechanisms.",
+    "Nil/fallback paths exist; fallback receiver lineage not fully established.",
+    "No target app execution, snapshot replay or device acceptance.",
+    "Do not identify arbitrary neighboring functions as class methods."
+  ]
+}

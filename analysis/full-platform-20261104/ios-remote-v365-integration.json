@@ -1,0 +1,27 @@
+{
+  "status": "partial",
+  "batch_kind": "controlled_reference_model",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "official_evidence": {
+    "SGR": "0x2ad9478 -> 0x2abec28",
+    "reset": "0x2abec68..80",
+    "basic": "0x2abec94..d4",
+    "extended": "0x2abece4..0x2abede8",
+    "background_skip": "0x2abed34..58 / 0x2abedec..fc"
+  },
+  "reference_model": "analysis/reference_models/remote_sgr_foreground.py",
+  "validation": {
+    "tests": 6,
+    "passed": 6,
+    "kind": "Independent model checked against static branch-derived vectors, not original binary replay"
+  },
+  "ui_changed": false,
+  "limitations": [
+    "Tokenization0x2abea40 not yet recovered",
+    "Incomplete extended sequences explicitly rejected by model; not an official behavior claim",
+    "Run merging and line assembly pending",
+    "No phone/Android/runtime parity claim"
+  ]
+}

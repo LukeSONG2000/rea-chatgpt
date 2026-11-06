@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.DIL_ARRAY_PREPEND_PATH_SEGMENT=exports.DIL_ARRAY_APPEND_PATH_SEGMENT=void 0,exports.DIL_ARRAY_APPEND_PATH_SEGMENT="-",exports.DIL_ARRAY_PREPEND_PATH_SEGMENT="-1";

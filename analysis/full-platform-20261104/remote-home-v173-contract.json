@@ -1,0 +1,29 @@
+{
+  "authority": "official artifact static observation; independent metadata projection separately implemented",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "path": "recovered/macos/asar-extracted/.vite/build/main-0FVbxCQU.js",
+  "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+  "utf8ByteOffset": 632686,
+  "excerpt": "function Jh(e,t=Kh){if(e.ephemeral||e.threadSource===`chatgpt_hidden`||e.parentThreadId!=null||e.threadSource===`ambient_suggestions`||e.threadSource===`pull_request_fix_automation`)return null;let n=G_e(e.source);if(n==null||n.kind===`exec`||!Number.isFinite(e.updatedAt))return null;let r=Number.isFinite(e.createdAt)?e.createdAt:e.updatedAt,i=e.cwd;return{hostId:t,threadId:e.id,displayTitle:Yh({cwd:i,name:e.name,preview:e.preview,threadId:e.id}),sourceCreatedAt:r,sourceUpdatedAt:e.updatedAt,sourceRecencyAt:e.recencyAt!=null&&Number.isFinite(e.recencyAt)?e.recencyAt:e.updatedAt,cwd:i,sourceKind:n.kind,sourceDetail:n.detail,threadSource:e.threadSource,modelProvider:e.modelProvider,gitBranch:e.gitInfo?.branch??null}}",
+  "independentProjection": {
+    "sourceKind": "custom",
+    "sourceDetail": "rea-independent-owner",
+    "displayTitle": "Local test · first 8 characters of owner thread ID",
+    "timestamps": "owner thread/info milliseconds divided by 1000",
+    "cwd": "empty; no project/workdir evidence provided by current owner metadata"
+  },
+  "limits": [
+    "Synthetic title is not recovered original title",
+    "No official database or online catalog used",
+    "Metadata snapshot spans thread/list and per-thread info; not an atomic owner-wide snapshot",
+    "Max 64 threads; larger lists rejected explicitly; continuation paging unsupported"
+  ],
+  "previewConsumer": {
+    "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+    "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+    "utf8ByteOffset": 2905301,
+    "excerpt": "T=Number.isFinite(w)?w:Date.now(),E=x===`projectless`&&S!=null?Js([S]):bve();s({id:t,sessionId:c.sessionId,ephemeral:c.ephemeral,forkedFromId:h,hostId:o,turns:[{params:{threadId:t,input:[{type:`text`,text:c.preview,text_elements:[]}],cwd:null,approvalPolicy:`on-request`,sandboxPolicy:E.sandboxPolicy,model:``,effort:null,summary:`none`,personality:null,outputSchema:null,collaborationMode:null},turnId:null,turnStartedAtMs:null,durationMs:null,finalAssistantStartedAtMs:null,status:`completed`,error:null,diff:null,items:[]}],requests:[],createdAt:T,updatedAt:_??T,recencyAt:HT({currentRecencyAt:e,threadRecencyAt:y,updatedAt:_??T}),title:m||null,originator:c.originator,source:c.source,agentNicknam",
+    "conclusion": "Original thread hydration constructs preview turn params.input directly from thread.preview; text must be a string. Independent adapter derives preview from first actual userMessage text, including includeTurns=false reads."
+  }
+}

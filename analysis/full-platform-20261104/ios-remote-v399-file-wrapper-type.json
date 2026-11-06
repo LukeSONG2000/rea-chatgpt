@@ -1,0 +1,59 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": "0x7e1e4f0",
+  "mangled_address": "0x8e3a492",
+  "length": 38,
+  "mangled_hex": "01d93c770079018b3c77007901693c770001cc38770047022e9dc7017902a0b3c90147536747",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 1,
+      "target": "0x95ae16c",
+      "resolved_context": "0x95ae16c",
+      "label": "CodexRemoteThread.ExpandableAssistantSummaryItem"
+    },
+    {
+      "offset": 6,
+      "kind": 1,
+      "target": "0x95ae124",
+      "resolved_context": "0x95ae124",
+      "label": "CodexRemoteThread.CodexRemoteToolActivityLabel"
+    },
+    {
+      "offset": 12,
+      "kind": 1,
+      "target": "0x95ae108",
+      "resolved_context": "0x95ae108",
+      "label": "CodexRemoteThread.CodexRemoteToolActivityRowStyle.Symbol"
+    },
+    {
+      "offset": 17,
+      "kind": 1,
+      "target": "0x95add70",
+      "resolved_context": "0x95add70",
+      "label": "CodexRemoteThread.CodexRemoteFileChangeSummaryRowPart"
+    },
+    {
+      "offset": 23,
+      "kind": 2,
+      "target": "0xaab41d8",
+      "resolved_context": "0x96fd7e4",
+      "label": "OAIMarkdown.MarkdownCodeBlock"
+    },
+    {
+      "offset": 29,
+      "kind": 2,
+      "target": "0xaad5850",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI9EmptyViewVMn"
+    }
+  ],
+  "unresolved_contexts": [],
+  "limits": [
+    "Symbolic context references only, not a reconstructed generic type tree",
+    "Type presence does not prove runtime branch selection or component creation"
+  ]
+}

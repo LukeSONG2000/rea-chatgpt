@@ -1,0 +1,155 @@
+[
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8d09970",
+    "length": 1,
+    "mangled_hex": "78",
+    "references": [],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8f32d16",
+    "length": 5,
+    "mangled_hex": "0169196a00",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 1,
+        "target": "0x95d4680",
+        "resolved_context": "0x95d4680",
+        "label": "CodexRemoteCore.CodexRemoteSession.ApprovalRequest.Kind"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8f32570",
+    "length": 5,
+    "mangled_hex": "012b216a00",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 1,
+        "target": "0x95d469c",
+        "resolved_context": "0x95d469c",
+        "label": "CodexRemoteCore.CodexRemoteSession.ApprovalDecision"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  {
+    "name": "ApprovalDecision",
+    "descriptor": "0x95d0a1c",
+    "parent": "0x95d0a10",
+    "fields": [
+      {
+        "name": "approved",
+        "type": null
+      },
+      {
+        "name": "denied",
+        "type": null
+      }
+    ]
+  },
+  {
+    "name": "ApprovalDecision",
+    "descriptor": "0x95d469c",
+    "parent": "0x95d3dd8",
+    "fields": [
+      {
+        "name": "submitMcpServerOpenAIForm",
+        "type": "0x8bd4a20"
+      },
+      {
+        "name": "applyNetworkPolicyAmendment",
+        "type": "0x8f34650"
+      },
+      {
+        "name": "approveOnce",
+        "type": null
+      },
+      {
+        "name": "approveForSession",
+        "type": null
+      },
+      {
+        "name": "approveMcpServerElicitationAlways",
+        "type": null
+      },
+      {
+        "name": "cancelMcpServerElicitation",
+        "type": null
+      },
+      {
+        "name": "approveWithExecpolicyAmendment",
+        "type": null
+      },
+      {
+        "name": "deny",
+        "type": null
+      }
+    ]
+  },
+  {
+    "name": "Action",
+    "descriptor": "0x96a4a54",
+    "parent": "0x96a48fc",
+    "fields": [
+      {
+        "name": "chatMessageReply",
+        "type": "0x9242e00"
+      },
+      {
+        "name": "orbitMessageReply",
+        "type": "0x9242e00"
+      },
+      {
+        "name": "unknown",
+        "type": "0x8d860d0"
+      },
+      {
+        "name": "default",
+        "type": null
+      },
+      {
+        "name": "dismiss",
+        "type": null
+      },
+      {
+        "name": "authChallengeApprove",
+        "type": null
+      },
+      {
+        "name": "authChallengeDeny",
+        "type": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "authority": "independent-recovery-orchestration-using-original-renderer-initializer",
+  "runtime": [
+    "macos-preview-v97-restore.json",
+    "macos-preview-v97-send.json"
+  ],
+  "verified": [
+    "Source digest checked before recreation",
+    "Original g3r initializer creates new local identity and source continuation state",
+    "Actual composer receives restored plain-text prompt",
+    "Snapshot remap removes old record only after active identity, source and prompt match",
+    "No committed history added by restoration alone",
+    "Next independent process restores remapped snapshot and first send creates exactly one new history",
+    "Ancestor context retained, new user parent matches selected source message, generation completes",
+    "All prior committed histories unchanged"
+  ],
+  "processes": [
+    94830,
+    94938
+  ],
+  "send_identity": {
+    "status": "passed",
+    "conversationId": "offline-local-b9f70de5-f2c4-4f77-9633-b4aade9dc6df",
+    "userId": "c8827c28-11c5-4cff-aec7-954e80897960",
+    "parentId": "offline-assistant-001",
+    "assistantId": "offline-generated-bfc5a27a-2701-4b03-b404-23088516947d"
+  },
+  "limits": [
+    "Opt-in via REA_DESKTOP_RESTORE_PENDING=1, not yet default startup behavior",
+    "Recovery uses programmatic composer fill; no physical keyboard/IME acceptance",
+    "Committed pending record remains inactive; exact request-bound cleanup/discard not implemented",
+    "Unsent rich content, attachments, account switch and failure injection still unaccepted"
+  ],
+  "next_action": "Bind pending snapshot to exact outgoing user/request identity and clear only matching committed receipt; test failure/discard before enabling default recovery",
+  "sources": [
+    {
+      "file": "analysis/tools/desktop-pending-branch-store.cjs",
+      "sha256": "e786b3460d857aa1ddfdbd51212b80d5b06cc604ef016cfd41c8fb2de63170ea"
+    },
+    {
+      "file": "analysis/tools/desktop-native-host.cjs",
+      "sha256": "3453f9a7470a462c87141dffa2093f1e90b4fd1fac195e6f3f459b23e031bfb6"
+    },
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "ea9d5e8614b0e021740aa6b764519c237ea25a13de4053e3486316c2a080e4c0"
+    },
+    {
+      "file": "analysis/tools/test_desktop_pending_branch_store.cjs",
+      "sha256": "07a6858df0a17cbd5ab77373ebaf403f330012147c2f2dbd7831d4d19a32d2fd"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": [
+    "latest renderer request wins without stale error overwriting success",
+    "cursor regression and epoch replacement reject while preserving last state",
+    "forget host invalidates pending response without clearing B",
+    "page disposal prevents late state write"
+  ],
+  "limits": [
+    "Independent renderer state owner; original UI not yet subscribed"
+  ]
+}

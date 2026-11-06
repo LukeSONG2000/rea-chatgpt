@@ -1,0 +1,38 @@
+{
+  "status": "partial",
+  "result": "Official signed-baseline renderer root displays original sign-in UI with synthetic unauthenticated host",
+  "replay": "root-mount-v10.json",
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/official-root-probe-v10.png",
+  "sources": [
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "utf8_offset": 391002,
+      "excerpt": "function DU(){let e=(0,OU.c)(10),{checkGate:t,isLoading:n}=xa(),r;e[0]===t?r=e[1]:(r=t(al),e[0]=t,e[1]=r);let i=r,a;e[2]!==t||e[3]!==i?(a=t(`1042620455`)||i,e[2]=t,e[3]=i,e[4]=a):a=e[4];let o=a,s,c;return e[5]!==n||e[6]!==i||e[7]!==o?(s=()=>{let e=I.remoteConnections;n||e==null||e.setRemoteControlEnabled({enabled:o,oneToOnePairingInAppEnabled:i}).catch(e=>{U.warning(`[remote-connections/gate-bridge] sync_failed`,{safe:{remoteControlConnectionsEnabled:o},sensitive:{error:e}})})},c=[n,i,o],e[5]=n,e[6]=i,e[7]=o,e[8]=s,e[9]=c):(s=e[8],c=e[9]),(0,kU.useEffect)(s,c),null}var OU,kU,AU;function jU(){return(jU=e((()=>{OU=B(),kU=R(),hh(),Ar(),i(),Cc(),We(),AU=z()})))()}function MU(){let e=(0,PU.c)(1);if(_g())return null;let t;return e[0]===Symbol.for(`react.memo_cache_sentinel`)?(t=(0,IU.jsx)(NU,{}),e[0]=t):t=e[0],t}function NU(){let e=(0,PU.c)(9),t=H(Mo),{platform:n,isLoading:r}=ro(),{data:i,isLoading:a}=W(V_,t),o=Y(XE),s;e[0]!==o||e[1]!==n||e[2]!==i?.config?(s=n===`windows`&&YE(i?.config,o),e[0]=o,e[1]=n,e[2]=i?.config,e[3]=s):s=e[3];let c=s,l,u;return e[4]!==c||e[5]!==r||e[6]!==a?(l=()=>{r||a||Xa(`set-remote-wsl-connections-enabled`,{params:{enabled:c}}).catch(e=>{U.warning(`[remote-connections/wsl-feature-bridge] sync_failed`,{safe:{enabled:c},sensitive:{error:e}})})},u=[c,r,a],e[4]=c,e[5]=r,e[6]=a,e[7]=l,e[8]=u):(l=e[7],u=e[8]),(0,FU.useEffect)(l,u),null}var PU,FU,IU;function LU(){r"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/onboarding-login-content-f4482725227c.js",
+      "sha256": "d85a2ae20050e129b72204539fc0cf84d7c1f19309f57ac00d91eb199aa07533",
+      "utf8_offset": 369,
+      "excerpt": "function O(){return(O=e((()=>{y(),s(),w(),u(),E=o({allowedLoginMethods:c(a([`api`,`chatgpt`])).nullable()}),D=r(n,(e,{get:t})=>{let{data:n,isError:r,isPending:i}=t(S,{hostId:e});if(i)return{status:`loading`};if(r||n?.requirements===void 0)return{status:`error`};if(n.requirements==null){let{data:n,isPending:r,isError:i}=t(T,e);if(r)return{status:`loading`};if(i||!n?.configReadSucceeded)return{status:`error`};let a=n.config.forced_login_method;return{status:`ready`,api:a==null||a===`api`,chatgpt:a==null||a===`chatgpt`}}if(!(`allowedLoginMethods`in n.requirements))return{status:`unsupported`};let a=E.safeParse(n.requirements);if(!a.success)return{status:`error`};let o=a.data.allowedLoginMethods;return{status:`ready`,api:o==null||o.includes(`api`),chatgpt:o==null||o.includes(`chatgpt`)}})})))()}function k(e){let t=(0,A.c)(4),{hostId:r}=e,i=v(n),a=g(D,r),o;return t[0]!==r||t[1]!==a.status||t[2]!==i?(o=(0,j.jsx)(`div`,{className:`flex h-full w-full flex-col items-center justify-center gap-3 text-codex-description select-none`,children:a.status===`loading`?(0,j.jsxs)(`div`,{className:`flex items-center gap-2`,role:`status`,children:[(0,j.jsx)(h,{className:`h-4 w-4 text-default`}),(0,j.jsx)(_,{id:`electron.loginMethods.loading`,defaultMessage:`Loading sign-in requirements…`,description:`Loading message while reading managed sign-in requirements from the machine being authenticated`})]}"
+    }
+  ],
+  "verified": [
+    "remoteConnections.setRemoteControlEnabled received both flags false; no connection opened",
+    "configRequirements/read synthetic allowedLoginMethods chatgpt consumed by original login-policy selector",
+    "DOM text and visually inspected screenshot agree",
+    "RPC lifetime preserved through screenshot then unmount/dispose"
+  ],
+  "limitations": [
+    "No sign-in performed; no account data or online service",
+    "Background Statsig and unsupported requests still rejected; aggregate probe status remains blocked",
+    "No authenticated main UI, Electron chrome, or native interaction acceptance",
+    "PiP notification recorded only; native PiP not implemented",
+    "Root runner still has redundant pre-startup and unused manual router scaffolding to remove"
+  ],
+  "next_actions": [
+    "Remove unused manual provider/router scaffolding and duplicate host startup; keep only initializeApp entry",
+    "Define explicitly synthetic authenticated fixture through official host contracts for offline main UI, without invoking real auth",
+    "Move validated renderer into isolated native desktop host and verify chrome/input/window behavior"
+  ]
+}

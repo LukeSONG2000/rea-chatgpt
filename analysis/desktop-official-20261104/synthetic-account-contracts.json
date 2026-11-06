@@ -1,0 +1,63 @@
+{
+  "status": "partial",
+  "evidence_type": "official-artifact-static-observation",
+  "fixture": "independent synthetic-account scenario; identity and token-presence boolean are fictional, no bearer token or real login",
+  "sources": [
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "symbol": "eT",
+      "utf8_offset": 54174,
+      "excerpt": "function eT(e){let t=(0,tT.c)(39),{children:n}=e,r=J(Ki),i=_u(),a;t[0]===i?a=t[1]:(a=()=>{bg(i)},t[0]=i,t[1]=a);let o=a,s;t[2]===o?s=t[3]:(s={onLogout:o},t[2]=o,t[3]=s);let c=Bm(ke,s),{openAIAuth:l,authMethod:u,requiresAuth:d}=c,f=u===`chatgpt`||u===`chatgptAuthTokens`,p;t[4]===f?p=t[5]:(p={enabled:f},t[4]=f,t[5]=p);let m=sp(p),h;t[6]!==m||t[7]!==f?(h=e=>{let{hostId:t}=e;t===`local`&&f&&m.refetch()},t[6]=m,t[7]=f,t[8]=h):h=t[8];let _;t[9]!==m.refetch||t[10]!==f?(_=[m.refetch,f],t[9]=m.refetch,t[10]=f,t[11]=_):_=t[11],g(`chatgpt-auth-token-unavailable`,h,_);let v=f?m.data:void 0,y=f||u===`personalAccessToken`&&!0;v?.userId,v?.accountId,v?.email,v?.plan,v?.computeResidency,v?.hasChatGptToken;let b=f?v?.userId??null:null,x=f?v?.accountId??null:null,S=y?c.email??v?.email??null:null,C=y?v?.plan??c.planAtLogin??null:null,w=f?v?.computeResidency??null:null,T=f?!r&&v?.hasChatGptToken:void 0,E;t[12]!==c.isCopilotApiAvailable||t[13]!==c.isLoading||t[14]!==u||t[15]!==l||t[16]!==d||t[17]!==w||t[18]!==T||t[19]!==b||t[20]!==x||t[21]!==S||t[22]!==C?(E={isLoading:c.isLoading,openAIAuth:l,isCopilotApiAvailable:c.isCopilotApiAvailable,authMethod:u,requiresAuth:d,userId:b,accountId:x,email:S,planAtLogin:C,computeResidency:w,hasChatGptToken:T},t[12]=c.isCopilotApiAvailable,t[13]=c.isLoading,t[14]=u,t[15]=l,t[16]=d,t[17]=w,t[18]=T,t[19]=b,t[20]=x,t[21]=S,t[22]=C,t[23]=E):E=t[23];let D=E,O,k;t[24]!==m||t[25]!==D?(O=(0,nT.jsx)(nT.Fragment,{children:(0,nT.jsx)(Lw,{accountInfoQuery:m,auth:D})}),k=(0,nT.jsx)(nT.Fragment,{children:(0,nT.jsx)(Aw,{accountInfoQuery:m,auth:D})}),t[24]=m,t[25]=D,t[26]=O,t[27]=k):(O=t[26],k=t[27]);let A;t[28]!==v||t[29]!==m.isError||t[30]!==m.isLoading||t[31]!==D?(A=(0,nT.jsx)(nT.Fragment,{children:(0,nT.jsx)(Uw,{accountInfo:v,accountInfoError:m.isError,accountInfoLoading:m.isLoading,auth:D})}),t[28]=v,t[29]=m.isError,t[30]=m.isLoading,t[31]=D,t[32]=A):A=t[32];let j;return t[33]!==n||t[34]!==O||t[35]!==k||t[36]!==A||t[37]!==D?(j=(0,nT.jsxs)(Fi.Provider,{value:D,children:[O,k,A,n]}),t[33]=n,t[34]=O,t[35]=k,t[36]=A,t[37]=D,t[38]=j):j=t[38],j}var tT,nT;"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "symbol": "lO",
+      "utf8_offset": 118124,
+      "excerpt": "function lO(e){let t=(0,_O.c)(45),{appSessionId:n,appVersion:r,auth:i,browserLocale:a,hostBuildFlavor:o,preloadAttribution:s,stableId:c,statsigClientKey:l,systemName:u,systemVersion:d,children:f}=e,{data:p}=is(),m=J(Fv).enabled,h=(0,CO.useRef)(0),g;t[0]!==p||t[1]!==l?(g=async e=>{let t=await uO(e,h);try{let e=new yO.StatsigClient(l,t.user,hO(p));return e.dataAdapter.setData(t.statsigPayload),yD(e.initializeSync(),`electron`),e}catch(e){let t=e;throw new SD(Re.CODEX_POST_LOGIN_STATSIG_BOOTSTRAP_FAILURE_TYPE_CLIENT_INITIALIZATION_FAILED,t)}},t[0]=p,t[1]=l,t[2]=g):g=t[2];let _;t[3]===Symbol.for(`react.memo_cache_sentinel`)?(_=e=>{Y.error(`Statsig: error while bootstrapping post-login client`,{safe:{attemptNumber:h.current},sensitive:{error:e instanceof SD?e.cause:e}})},t[3]=_):_=t[3];let v;t[4]===g?v=t[5]:(v={networkMode:`always`,mutationFn:g,retry:!1,onError:_},t[4]=g,t[5]=v);let{data:y,error:b,mutate:x,status:S}=Vn(v),C,w;if(t[6]!==n||t[7]!==r||t[8]!==m||t[9]!==S||t[10]!==a||t[11]!==o||t[12]!==c||t[13]!==x||t[14]!==u||t[15]!==d?(C=()=>{if(S!==`idle`)return;let e=!1;return queueMicrotask(()=>{e||x({appSessionId:n,appVersion:r,buildFlavor:o,beta:m,locale:a,stableId:c??void 0,systemName:u,systemVersion:d,windowType:`electron`})}),()=>{e=!0}},w=[n,r,S,a,m,o,c,x,u,d],t[6]=n,t[7]=r,t[8]=m,t[9]=S,t[10]=a,t[11]=o,t[12]=c,t[13]=x,t[14]=u,t[15]=d,t[16]=C,t[17]=w):(C=t[16],w=t[17]),(0,CO.useEffect)(C,w),S===`error`){let e;t[18]!==i.hasChatGptToken||t[19]!==b?(e=(0,wO.jsx)(wD,{attemptNumberRef:h,error:b,hasChatGptToken:i.hasChatGptToken,result:Ge.CODEX_POST_LOGIN_STATSIG_BOOTSTRAP_RESULT_FAILED}),t[18]=i.hasChatGptToken,t[19]=b,t[20]=e):e=t[20];let p;return t[21]!==n||t[22]!==r||t[23]!==i||t[24]!==a||t[25]!==f||t[26]!==o||t[27]!==s||t[28]!==c||t[29]!==l||t[30]!==u||t[31]!==d||t[32]!==e?(p=(0,wO.jsxs)(aO,{appSessionId:n,appVersion:r,auth:i,browserLocale:a,hostBuildFlavor:o,preloadAttribution:s,stableId:c,statsigClientKey:l,systemName:u,systemVersion:d,children:[e,f]}),t[21]=n,t[22]=r,t[23]=i,t[24]=a,t[25]=f,t[26]=o,t[27]=s,t[28]=c,t[29]=l,t[30]=u,t[31]=d,t[32]=e,t[33]=p):p=t[33],p}if(y==null){let e;return t[34]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,wO.jsx)(Yg,{debugName:`CodexStatsigProvider.sync`}),t[34]=e):e=t[34],e}let T;t[35]===Symbol.for(`react.memo_cache_sentinel`)?(T=(0,wO.jsx)(wD,{attemptNumberRef:h,result:Ge.CODEX_POST_LOGIN_STATSIG_BOOTSTRAP_RESULT_SUCCEEDED}),t[35]=T):T=t[35];let E;return t[36]!==r||t[37]!==i.authMethod||t[38]!==y||t[39]!==f||t[40]!==o||t[41]!==s||t[42]!==c||t[43]!==u?(E=(0,wO.jsxs)(dO,{appVersion:r,authMethod:i.authMethod,client:y,deviceId:c,hostBuildFlavor:o,preloadAttribution:s,systemName:u,children:[T,f]}),t[36]=r,t[37]=i.authMethod,t[38]=y,t[39]=f,t[40]=o,t[41]=s,t[42]=c,t[43]=u,t[44]=E):E=t[44],E}async "
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "symbol": "bD",
+      "utf8_offset": 102696,
+      "excerpt": "function bD({appSessionId:e,appVersion:t,buildFlavor:n,beta:r,locale:i,stableId:a,systemName:o,systemVersion:s,windowType:c}){let l=new AbortController,u=null,d;try{({statsigPayload:d}=await Promise.race([Zf({app_session_id:e,app_version:t,brand_name:jl.toLowerCase(),build_flavor:n,...r?{desktop_app_beta_enabled:!0}:{},locale:i,stable_id:a,system_name:o,system_version:s,window_type:c},l.signal),new Promise((e,t)=>{u=globalThis.setTimeout(()=>{let e=Error(`Timed out while fetching post-login Statsig bootstrap`);l.abort(e),t(e)},xD)})]))}catch(e){throw new SD(Re.CODEX_POST_LOGIN_STATSIG_BOOTSTRAP_FAILURE_TYPE_REQUEST_FAILED,e)}finally{u!=null&&globalThis.clearTimeout(u)}try{let{user:e}=_D.parse(JSON.parse(d));return{statsigPayload:d,user:e}}catch(e){throw new SD(Re.CODEX_POST_LOGIN_STATSIG_BOOTSTRAP_FAILURE_TYPE_RESPONSE_INVALID,e)}}var xD,SD;"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "symbol": "uO",
+      "utf8_offset": 120906,
+      "excerpt": "function uO(e,t){let n={auth:0,request:0};for(;;){t.current+=1;try{return await bD(e)}catch(e){let t=e instanceof SD?e.cause:e;if(t instanceof Fp&&t.status===401){if(t.errorCode===`ip_not_authorized`||n.auth>=DO)throw e;n.auth+=1}else if(e instanceof SD&&e.failureType===Re.CODEX_POST_LOGIN_STATSIG_BOOTSTRAP_FAILURE_TYPE_REQUEST_FAILED&&t instanceof Error&&n.request<OO&&Ea(0,t))n.request+=1;else throw e;await new Promise(e=>{setTimeout(e,kO)})}}}"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "kNn",
+      "utf8_offset": 3681104,
+      "excerpt": "function kNn(e){let t=(0,ANn.c)(10),{enabled:n}=e,r=n===void 0||n,i;t[0]===r?i=t[1]:(i={enabled:r},t[0]=r,t[1]=i);let a=Ua(jNn,i),o,s;t[2]===a?(o=t[3],s=t[4]):({refetch:s,...o}=a,t[2]=a,t[3]=o,t[4]=s);let c;t[5]===s?c=t[6]:(c=async e=>(await Nwt(`account-info`),s(e)),t[5]=s,t[6]=c);let l;return t[7]!==o||t[8]!==c?(l={...o,refetch:c},t[7]=o,t[8]=c,t[9]=l):l=t[9],l}var ANn,jNn;"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "Mwt",
+      "utf8_offset": 2162122,
+      "excerpt": "function Mwt(e){if(e.status===`ready`)return e.data;throw e.status===`error`?new v_(e.message,e.httpStatus??0,e.errorCode):new v_(`Account input unavailable: ${e.reason}`,0)}async "
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "zra",
+      "utf8_offset": 6228670,
+      "excerpt": "function zra(e,t){return sv.safePost(`/wham/statsig/bootstrap`,{requestBody:e,retry:!1,signal:t})}"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "kwt",
+      "utf8_offset": 2161475,
+      "excerpt": "function kwt(e,t,n=!1){if(await fvt(e,t),!e.get(Dwt)){let t=e.get(q_);return mwt(await e.queryClient.fetchQuery({...e.query.getOptions(Lv,t),...n?{staleTime:0}:{}}),t)}let r=mi?.accessInputs;return r==null?sv.safeGet(`/wham/accounts/check`):Mwt(await va(r.readAccounts(rv(),n),t))}async "
+    }
+  ]
+}

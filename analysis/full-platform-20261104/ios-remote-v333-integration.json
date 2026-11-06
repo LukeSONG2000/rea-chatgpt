@@ -1,0 +1,72 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "dispatch_table": {
+    "offset": "0x7ceb6b0",
+    "base": "0x3a5a14",
+    "byte_offsets": [
+      0,
+      94,
+      29,
+      39
+    ],
+    "inferred_cases": {
+      "running": "0x3a5a14",
+      "idle": "0x3a5b8c",
+      "unread": "0x3a5a88",
+      "failed": "0x3a5ab0"
+    },
+    "limit": "Swift enum ABI inference using one payload case and three payload-free cases; no official runtime execution"
+  },
+  "failed_icon": {
+    "factory": "0x74f6fcc",
+    "string_offset": "0x8a55170",
+    "resource": "OpenAI/Symbols/exclamation-mark-circle-fill"
+  },
+  "failed_color": {
+    "factory": "0x6eed428",
+    "rgb": [
+      0.8431372549019608,
+      0.22745098039215686,
+      0.28627450980392155
+    ],
+    "alpha": 1,
+    "color_space_binding": {
+      "symbol": "_$s7SwiftUI5ColorV13RGBColorSpaceO4sRGByA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 10348,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    }
+  },
+  "accessibility": {
+    "key": "codex_task_row_failed",
+    "fallback": "Failed",
+    "source": "0x3a5aec..0x3a5b1c",
+    "zh": "independent adapter copy"
+  },
+  "integration": "Official asset and color replace fallback failed text; keep accessibility label. Slot20/body remains temporary independent geometry.",
+  "remaining": [
+    "Official icon weight and slot metrics",
+    "Running and unread original components",
+    "Pending request pill styling",
+    "Idle visibility and additional gate",
+    "Android counterparts"
+  ],
+  "validation": {
+    "test": "testRemoteTaskScopeAndReturn",
+    "passed": 1,
+    "failed": 0,
+    "screenshot_inspected": "ios-remote-v333-screenshots/D30C65B6-F9E2-43B2-B2F8-D26D8A681B8D.png",
+    "result": "ios-remote-v333.xcresult",
+    "preview_pid": 67391,
+    "phone_updated": false,
+    "external_display_reverified": false,
+    "full_visual_parity": false
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x1a42158",
+    "end_exclusive": "0x1a4219c",
+    "sha256": "1d20a3ff5f6efd27114e8392fcd0b4025221a52380898c75ac6e746eaa3e4cef"
+  },
+  "linker_function_starts_in_window": [
+    "0x1a42158"
+  ],
+  "next_linker_function_start": "0x1a4219c",
+  "direct_calls": [
+    {
+      "site": "0x1a42164",
+      "target": "0x1da8944",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a42168",
+      "target": "0x7c645a0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacad290",
+        "register": "x1",
+        "selector": "init"
+      }
+    },
+    {
+      "site": "0x1a42174",
+      "target": "0x7c73540",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacb0eb0",
+        "register": "x1",
+        "selector": "setAllowedUnits:"
+      }
+    },
+    {
+      "site": "0x1a42178",
+      "target": "0x1daa770",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a42184",
+      "target": "0x7c78360",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacb2238",
+        "register": "x1",
+        "selector": "setMaximumUnitCount:"
+      }
+    },
+    {
+      "site": "0x1a42188",
+      "target": "0x1daa7a4",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

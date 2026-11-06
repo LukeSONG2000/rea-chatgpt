@@ -1,0 +1,74 @@
+{
+  "status": "partial",
+  "evidence_type": "official-artifact-static-observation",
+  "runtime_evidence": "root-mount-v3.json",
+  "finding": "nO shows Yg while auth.isLoading OR app-info.isLoading OR system-info.isLoading OR analytics-config.isLoading; runtime fixture lacks appInfo service",
+  "limits": [
+    "Exact live value of each loading predicate not captured",
+    "Missing appInfo is a concrete contract gap, not proof it is the only blocker",
+    "No authentication bypass; no real account or online services"
+  ],
+  "next_action": [
+    "Implement synthetic appInfo.get and getSystemInfo using source-bound contract",
+    "Capture each gate predicate through read-only scope/query diagnostics",
+    "Resolve auth service separately before claiming main UI"
+  ],
+  "sources": [
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "symbol": "function nO(",
+      "offset_unit": "utf8_bytes",
+      "offset": 110228,
+      "excerpt": "function nO(e){let t=(0,_O.c)(9),{children:n}=e,r=_f(),{data:i,isLoading:a}=J(Rc),{data:o,isLoading:s}=J(Yf),{isLoading:c}=is(),l=i?.version,u=i?.buildFlavor??void 0,d=o?.platform===`darwin`?`macOS`:o?.platform===`win32`?`Windows`:o?.platform===`linux`?`Linux`:o?.platform,f=i?.systemVersion??o?.osVersion??void 0;if(r.isLoading||a||s||c){let e;return t[0]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,wO.jsx)(Yg,{}),t[0]=e):e=t[0],e}let p=i?.preloadAttribution,m;return t[1]!==l||t[2]!==r||t[3]!==n||t[4]!==u||t[5]!==d||t[6]!==f||t[7]!==p?(m=(0,wO.jsx)(rO,{auth:r,appVersion:l,hostBuildFlavor:u,preloadAttribution:p,systemName:d,systemVersion:f,children:n}),t[1]=l,t[2]=r,t[3]=n,t[4]=u,t[5]=d,t[6]=f,t[7]=p,t[8]=m):m=t[8],m}"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "symbol": "function tO(",
+      "offset_unit": "utf8_bytes",
+      "offset": 110107,
+      "excerpt": "function tO(e){let t=(0,_O.c)(4),{children:n}=e,r;return t[2]===n?r=t[3]:(r=(0,wO.jsx)(nO,{children:n}),t[2]=n,t[3]=r),r}"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "kC=Ra(V,",
+      "offset_unit": "utf8_bytes",
+      "offset": 2575330,
+      "excerpt": "kC=Ra(V,()=>({queryKey:[`app-info`],queryFn:()=>mi.appInfo.get(),staleTime:Kr.INFINITE})),W(V,({get:e})=>{let{data:t}=e(kC);if(t!=null)return t.chatGptApiBaseUrl!=null&&F_e(t.chatGptApiBaseUrl)})})))()}"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "UO=Ra(V,",
+      "offset_unit": "utf8_bytes",
+      "offset": 3682404,
+      "excerpt": "UO=Ra(V,()=>({queryKey:FNn,enabled:mi?.appInfo!=null,networkMode:`always`,queryFn:async()=>{let e=mi?.appInfo;if(e==null)throw Error(`App information is unavailable`);return va(e.getSystemInfo())},staleTime:Kr.INFINITE}))})))()}"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "function BO(",
+      "offset_unit": "utf8_bytes",
+      "offset": 3679630,
+      "excerpt": "function BO(){let e=(0,DNn.useContext)(NO);if(!e)throw Error(`useAuth must be used within AuthProvider`);return e}"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "function nxn(",
+      "offset_unit": "utf8_bytes",
+      "offset": 3517853,
+      "excerpt": "function nxn(e){let t=(0,dD.c)(7),n=e===void 0||e,r=bs(V),i=Ir(),a;t[0]===Symbol.for(`react.memo_cache_sentinel`)?(a=[...wxn,Er],t[0]=a):a=t[0];let o;t[1]!==i||t[2]!==r?(o=()=>Pg(r,i,Er,null,!1),t[1]=i,t[2]=r,t[3]=o):o=t[3];let s;return t[4]!==n||t[5]!==o?(s={queryKey:a,queryFn:o,staleTime:1/0,enabled:n,retry:!1,retryOnMount:!1,select:rxn},t[4]=n,t[5]=o,t[6]=s):s=t[6],An(s)}"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "function rxn(",
+      "offset_unit": "utf8_bytes",
+      "offset": 3518230,
+      "excerpt": "function rxn(e){let{config:t}=e;return t.analytics?.enabled!==!1}"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "shipped-artifact-static-instructions",
+  "branch": {
+    "entry": "0x7610ae0",
+    "save_configuration": "0x7610b3c",
+    "concentric_radius": "0x7610ba0",
+    "apply_configuration": "0x7610bc0",
+    "read_effective_corners": [
+      "0x7610bd4",
+      "0x7610be4",
+      "0x7610bf4",
+      "0x7610c04"
+    ],
+    "restore_configuration": "0x7610c54",
+    "corner_masks": [
+      1,
+      2,
+      4,
+      8
+    ]
+  },
+  "conclusion": "One branch temporarily configures the key window with container-concentric corners, reads four effective corner radii, then restores its prior configuration. This establishes a public-API radius source, not a universal fixed radius.",
+  "independent_probe": {
+    "path": "probes/ConcentricWindowCorners.swift",
+    "validation": "swiftc typecheck arm64 iOS26 simulator with iOS27 SDK passed",
+    "runtime": "not executed",
+    "integrated": false
+  },
+  "unknowns": [
+    "Original branch gate including 0x77107bc remains unresolved.",
+    "Fallback branches not transcribed.",
+    "Subsequent 0x7610404 coordinate filtering not fully closed.",
+    "No screenshot/device parity or animation acceptance."
+  ],
+  "next_integration_step": "Resolve corner filtering for full-screen host; integrate outer shadow and inner clipping together with transition lifecycle, then verify simulator without replacing user phone."
+}

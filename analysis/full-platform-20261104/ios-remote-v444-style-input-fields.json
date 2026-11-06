@@ -1,0 +1,109 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "descriptor": "0x96cb39c",
+  "name": "MessageInputPartStyle",
+  "accessor": "0x60ced0c",
+  "fields": [
+    {
+      "index": 0,
+      "name": "insets",
+      "type_reference": "0x8da84b0"
+    },
+    {
+      "index": 1,
+      "name": "scrollIndicatorInsets",
+      "type_reference": "0x8da84b0"
+    },
+    {
+      "index": 2,
+      "name": "cursorColor",
+      "type_reference": "0x8d935b0"
+    },
+    {
+      "index": 3,
+      "name": "minHeight",
+      "type_reference": "0x8c865b0"
+    },
+    {
+      "index": 4,
+      "name": "minHeightDoubleLineLayout",
+      "type_reference": "0x8c865b0"
+    },
+    {
+      "index": 5,
+      "name": "maxHeight",
+      "type_reference": "0x8c865b0"
+    },
+    {
+      "index": 6,
+      "name": "maxHeightVerticalCompact",
+      "type_reference": "0x8c865b0"
+    },
+    {
+      "index": 7,
+      "name": "messageInputForegroundColor",
+      "type_reference": "0x91fb900"
+    },
+    {
+      "index": 8,
+      "name": "inputDisabledOpacity",
+      "type_reference": "0x8c865b0"
+    },
+    {
+      "index": 9,
+      "name": "targetAvatarSize",
+      "type_reference": "0x8c865b0"
+    },
+    {
+      "index": 10,
+      "name": "alignment",
+      "type_reference": "0x941b278"
+    },
+    {
+      "index": 11,
+      "name": "lineSpacing",
+      "type_reference": "0x8c865b0"
+    },
+    {
+      "index": 12,
+      "name": "textContentType",
+      "type_reference": "0x8cc7caa"
+    },
+    {
+      "index": 13,
+      "name": "singleLineLayoutAdditionalPadding",
+      "type_reference": "0x8da84b0"
+    },
+    {
+      "index": 14,
+      "name": "doubleLineLayoutAdditionalPadding",
+      "type_reference": "0x8da84b0"
+    }
+  ],
+  "font_assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 74e2728: d0023300     \tadrp\tx0, 0xbb44000 <_writev+0xbb44000>\n 74e272c: 912e0000     \tadd\tx0, x0, #0xb80\n 74e2730: 9001de21     \tadrp\tx1, 0xb0a6000 <_writev+0xb0a6000>\n 74e2734: 91142021     \tadd\tx1, x1, #0x508\n 74e2738: 90000002     \tadrp\tx2, 0x74e2000 <__text+0x74ba000>\n 74e273c: 911c5042     \tadd\tx2, x2, #0x714\n 74e2740: 17ffffa2     \tb\t0x74e25c8 <__text+0x74ba5c8>\n 74e2744: 9001de21     \tadrp\tx1, 0xb0a6000 <_writev+0xb0a6000>\n 74e2748: 91148021     \tadd\tx1, x1, #0x520\n 74e274c: b001af82     \tadrp\tx2, 0xaad3000 <_writev+0xaad3000>\n 74e2750: f9447c42     \tldr\tx2, [x2, #0x8f8]\n 74e2754: 14000025     \tb\t0x74e27e8 <__text+0x74ba7e8>\n",
+  "font_window": {
+    "status": "partial",
+    "authority": "shipped-artifact-static-instructions",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "window": {
+      "start": "0x74e2728",
+      "end_exclusive": "0x74e2758",
+      "sha256": "b0e49ca2e0da0600ac1085833f5693bf481af3300a340ceec2ca66b8b0e5c053"
+    },
+    "linker_function_starts_in_window": [
+      "0x74e2728",
+      "0x74e2744"
+    ],
+    "next_linker_function_start": "0x74e2758",
+    "direct_calls": [],
+    "adjacent_selector_loads": [],
+    "limits": [
+      "Window is not a proven function boundary",
+      "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+      "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+    ]
+  }
+}

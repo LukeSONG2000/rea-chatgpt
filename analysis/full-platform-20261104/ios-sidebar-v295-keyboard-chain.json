@@ -1,0 +1,40 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-metadata",
+  "chain": [
+    {
+      "type": "ChatGPTConversationRoot.SideMenuKeyboardSnapshotCoordinator",
+      "descriptor": "0x9564b94",
+      "owns": "keyboardSnapshotSession at instance offset0x38"
+    },
+    {
+      "type": "ChatGPTPresentation.KeyboardSnapshotSession",
+      "descriptor": "0x96db258",
+      "metadata": "0xafd05c0",
+      "owns": "keyboardFacade",
+      "instance_size": 24
+    },
+    {
+      "type": "ChatGPTPresentationCore.KeyboardFacadeSession",
+      "descriptor": "0x96ddad4",
+      "accessor": "0x62eda9c",
+      "fields": [
+        "keyboardSnapshot",
+        "keyboardFrameInWindow",
+        "onDeinit"
+      ]
+    }
+  ],
+  "integration_decision": "The independent adapter needs a window-coordinate snapshot and an explicit disposal/restoration lifetime; preserving draft text alone cannot restore the observed keyboard surface. Capture implementation must be traced before selecting a public/native substitute.",
+  "search_limits": [
+    "Nearby accessor windows 0x639000..0x639b50 and 0x62bc000..0x62bc9cc did not establish capture calls.",
+    "Addresses after the session metadata boundary were not treated as its methods; no vtable claim made.",
+    "No private API dependency has been proven or ruled out.",
+    "onDeinit field presence does not prove a specific restoration action."
+  ],
+  "next_action": "Follow KeyboardFacadeSession accessor0x62eda9c to bounded class/constructor and capture-call references, not neighboring functions by proximity.",
+  "implementation_changed": false
+}

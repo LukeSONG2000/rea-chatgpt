@@ -1,0 +1,46 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+        "deviceName": "REA ChatGPT Offline",
+        "modelName": "iPhone 17 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 2,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "REAChatGPTHost \u00b7 Built with macOS 27.3",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1793808270.389,
+  "passedTests": 2,
+  "result": "Failed",
+  "runtimeWarnings": [],
+  "skippedTests": 0,
+  "startTime": 1793808165.947,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "Failed to get matching snapshot: No matches found for Elements matching predicate '\"message-94EF2BEF-450F-4F13-B585-7CD918848056-status\" IN identifiers' from input {(\n    TextView, identifier: 'draft-editor', label: '\u6d88\u606f\u8349\u7a3f', Keyboard Focused,\n    TextView, identifier: 'message-DB5B3A27-0C2F-4F8E-9569-3657B89A5DAB-user', value: \u4f60\uff1aREA synthetic st...,\n    TextView, identifier: 'message-DB5B3A27-0C2F-4F8E-9569-3657B89A5DAB-assistant', value: Stream heading,\n    TextView, identifier: 'message-DB5B3A27-0C2F-4F8E-9569-3657B89A5DAB-assistant-block-1', value: Hello native.,\n    TextView, identifier: 'message-DB5B3A27-0C2F-4F8E-9569-3657B89A5DAB-assistant-block-2', value: let count = 2\n,\n    TextView, identifier: 'message-DB5B3A27-0C2F-4F8E-9569-3657B89A5DAB-status', value: \u672c\u5730\u72b6\u6001\uff1acompleted,\n    TextView, label: '\u4f60\uff1aREA synthetic streaming markdown test B6A81DAF-A231-4B7C-80D6-0F3BBCB48D05',\n    TextView, label: 'Stream heading',\n    TextView, label: 'Hello native.',\n    TextView, label: 'let count = 2',\n    TextView, label: '\u672c\u5730\u72b6\u6001\uff1acompleted',\n    TextView, identifier: 'table-DB5B3A27-0C2F-4F8E-9569-3657B89A5DAB-assistant-block-3-0-0', value: A,\n    TextView, identifier: 'table-DB5B3A27-0C2F-4F8E-9569-3657B89A5DAB-assistant-block-3-0-1', value: B,\n    TextView, identifier: 'table-DB5B3A27-0C2F-4F8E-9569-3657B89A5DAB-assistant-block-3-1-0', value: 1,\n    TextView, identifier: 'table-DB5B3A27-0C2F-4F8E-9569-3657B89A5DAB-assistant-block-3-1-1', value: 2,\n    TextView, label: 'A',\n    TextView, label: 'B',\n    TextView, label: '1',\n    TextView, label: '2'\n)}\nPossibly caused by runtime issues:\nAutomation type mismatch: computed TextView from legacy attributes vs StaticText from modern attribute. Input attributes and values: {\n    \"XC_kAXXCAttributeAutomationType\" = 48;\n    \"XC_kAXXCAttributeElementBaseType\" = UIAccessibilityElement;\n    \"XC_kAXXCAttributeElementType\" = \"_AXUITextViewParagraphElement\";\n    \"XC_kAXXCAttributeTraits\" = 140746078289984;\n}\nSee test report attachments for more detail.",
+      "targetName": "REAHostUITests",
+      "testIdentifier": 3,
+      "testIdentifierString": "HostInteractionTests/testTailFollowAndUserScrollIsolation()",
+      "testIdentifierURL": "test://com.apple.xcode/REAChatGPTHost/REAHostUITests/HostInteractionTests/testTailFollowAndUserScrollIsolation",
+      "testName": "testTailFollowAndUserScrollIsolation()"
+    }
+  ],
+  "title": "Test - REAChatGPTHost",
+  "topInsights": [],
+  "totalTestCount": 3
+}

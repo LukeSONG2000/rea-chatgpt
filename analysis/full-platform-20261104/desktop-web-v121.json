@@ -1,0 +1,38 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "implementation": "Independent project membership projection: gizmo_id persisted in synthetic history, projected to project conversation list and local catalog; explicit scope mismatch rejected",
+  "accepted": [
+    "original project composer sends with matching gizmo_id",
+    "completed history and original project member row match",
+    "reload then project member selection restores conversation",
+    "Reloaded conversation assistant code block and composer visible"
+  ],
+  "validation": {
+    "dual_project_fixture": "passed: distinct streams/list/history/catalog identity, cross-scope rejection preserves disk, first-send replay no duplicates, reconstructed membership",
+    "regressions": "new conversation, first-send retry and history storage passed",
+    "runtime_errors": [
+      "Error: Global state is unavailable"
+    ]
+  },
+  "evidence": [
+    "desktop-web-v121-project-send.json",
+    "desktop-web-v121-project-send-r2.json",
+    "desktop-web-v121-verified.json",
+    "desktop-web-v121-restored.json",
+    "desktop-web-v121-contract.json"
+  ],
+  "limitations": [
+    "Global state is unavailable persists: r$t reads missing mi.applicationState; exact requested key remains to identify",
+    "Initial attempt used ordinary composer accessible name; corrected to observed New chat in project",
+    "Initial restore screenshot was too early; final replay waits assistant code and composer",
+    "Project branch membership and pagination above five conversations explicitly unsupported",
+    "Generated project expansion persistence, project deletion, move, model/Zhipu project sends and full cold restart not accepted",
+    "No claims of official server behavior or full browser completion"
+  ],
+  "files": {
+    "analysis/tools/desktop-fixture-services.mjs": "d38f29939d471f746a942abc18561b041771154295e2a5b7a631ffe0ecf5f406",
+    "analysis/tools/desktop-history-store.cjs": "9a45dcb21ab2339ea76c2517d32a5a256be6cd0e05befc3a8e671fc24095b8f9",
+    "analysis/tools/test_desktop_project_messages.mjs": "fd7441d6a1e6ba12575ad1c1babc34250c18ae69f6e82f2eafe4523cd72352d0"
+  }
+}

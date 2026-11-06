@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.resolveDILActiveBreakpoints=void 0;const e=[["xs",380],["sm",576],["md",768],["lg",1024],["xl",1280],["2xl",1536]],t=[];function r(r){return!Number.isFinite(r)||r<0?t:e.filter(([,e])=>r>=e).map(([e])=>e)}exports.resolveDILActiveBreakpoints=r;

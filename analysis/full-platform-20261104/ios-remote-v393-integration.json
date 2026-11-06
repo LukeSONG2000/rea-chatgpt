@@ -1,0 +1,37 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "correction": "v392 summary incorrectly assigned firstTextBaseline to 0x3a1c2c. Its bound import is VerticalAlignment.center; firstTextBaseline is the inner text HStack at 0x3a2214. Preserve old evidence and supersede interpretation here.",
+  "layout": {
+    "outer_alignment": "center, import at 0x3a1c2c",
+    "outer_spacing": "8 fallback at 0x3a1c28; project branch scaled metric not integrated",
+    "inner_alignment": "firstTextBaseline at 0x3a2214",
+    "inner_spacing": "8 at 0x3a2218",
+    "child_order": "optional icon, title/subtitle HStack, optional CodexDisclosureChevron, Spacer; type record 0x7cf33a8 and construction 0x3a20fc",
+    "spacer": "some(0) at 0x3a2464..0x3a2468",
+    "chevron_gate": "toggleCollapsed != nil and kind != 1 at 0x3a2240..0x3a2260",
+    "chevron_fields": "expanded = !isCollapsed; second flag = kind == 2 at 0x3a2260..0x3a2278"
+  },
+  "integration": [
+    "center/8 outer HStack",
+    "firstTextBaseline/8 inner title container",
+    "move Spacer after chevron",
+    "reuse official 0/90 degree 0.2 easeInOut rotation; reduce-motion environment adapter"
+  ],
+  "limits": [
+    "Synthetic section grouping and names remain independent",
+    "Full header typography and project icon/scaled geometry remain incomplete",
+    "Fade-enabled chevron opacity branch not implemented; no complete animation fidelity claim",
+    "Parent collapse animation policy still unresolved",
+    "No official runtime executed",
+    "Build and UI test remain before build in session42359; system authorization pending",
+    "Eventual v385 result filename now covers cumulative source including this revision; new grouping test requires separate execution"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "2170142a230bf8c8800326ff9e666f82fe015f327055733b2b88354805f86b82",
+    "implementation/ios/UITests/HostInteractionTests.swift": "09973dafc48b30369186da9c019d46696a0df8a86c3572e4fc46729fa97c2127"
+  }
+}

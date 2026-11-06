@@ -1,0 +1,4012 @@
+{
+  "status": "partial",
+  "version": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "native_types": [
+    {
+      "name": "UserSettings",
+      "descriptor": "0x9558140",
+      "accessor": "0x1a8e7c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultChartUserSettingsProvider",
+      "descriptor": "0x9558200",
+      "accessor": "0x1a8a5c",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultChartUserSettingsProviderOAInjectFactory",
+      "descriptor": "0x95583e4",
+      "accessor": "0x1a9280",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexSettingsViewModel",
+      "descriptor": "0x955deec",
+      "accessor": "0x3d09ec",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexSettingsRoot",
+      "descriptor": "0x955e7c4",
+      "accessor": "0x3dc084",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexSettingsPresentation",
+      "descriptor": "0x955f908",
+      "accessor": "0x40e270",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FamilySettingsValdiRenderer",
+      "descriptor": "0x9564270",
+      "accessor": "0x64f400",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsCustomizeScreenCache",
+      "descriptor": "0x95648cc",
+      "accessor": "0x639aec",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsCustomizeAdapter",
+      "descriptor": "0x9564910",
+      "accessor": "0x65063c",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSuggestionContext",
+      "descriptor": "0x9564cf0",
+      "accessor": "0x650fa0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BusinessAgentBackButtonPreferences",
+      "descriptor": "0x95654d8",
+      "accessor": "0x654e84",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsObservation",
+      "descriptor": "0x9565cd8",
+      "accessor": "0x698050",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "StartWithVoiceSettingsSuggestionBannerID",
+      "descriptor": "0x9565cfc",
+      "accessor": "0x698060",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "InformationArchitectureRefreshSearchSettingsMenu",
+      "descriptor": "0x95712d4",
+      "accessor": "0xa4b154",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LockedChatsAccountPINSettingsViewModel",
+      "descriptor": "0x957a34c",
+      "accessor": "0xcf99dc",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LockedChatsAccountPINSettingsViewModelInjectedDependencies",
+      "descriptor": "0x957a8a8",
+      "accessor": "0xcfa518",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LockedChatsAccountPINSettingsRoute",
+      "descriptor": "0x957a904",
+      "accessor": "0xcfa690",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LockedChatsAccountPINSettingsScreen",
+      "descriptor": "0x957a97c",
+      "accessor": "0xcfa6c0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LockedChatsAccountPINSettingsContent",
+      "descriptor": "0x957aba0",
+      "accessor": "0xcfd230",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LockedChatsAccountPINSettingsAction",
+      "descriptor": "0x957abe4",
+      "accessor": "0xcfd780",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ChatGPTPluginDetailSettingsRoute",
+      "descriptor": "0x9582cf8",
+      "accessor": "0xf082b4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsViewModel",
+      "descriptor": "0x95886d4",
+      "accessor": "0x1121ac8",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "UserSettingsToolConversationObserver",
+      "descriptor": "0x958871c",
+      "accessor": "0x112220c",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CustomDictionarySettingsViewModel",
+      "descriptor": "0x9588758",
+      "accessor": "0x1122234",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoSettingsViewModel",
+      "descriptor": "0x9588830",
+      "accessor": "0x11223c0",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "IncomingCallSettingsViewModel",
+      "descriptor": "0x9588878",
+      "accessor": "0x1122450",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AccountSettingsError",
+      "descriptor": "0x95888e8",
+      "accessor": "0x11224d0",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemorySettingsNativeHost",
+      "descriptor": "0x958897c",
+      "accessor": "0x112250c",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LikenessReferencePhotoSettingsModel",
+      "descriptor": "0x9588a00",
+      "accessor": "0x11225d8",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PersonalizationSettingsNativeHost",
+      "descriptor": "0x9588ae0",
+      "accessor": "0x1122b38",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "RichResponsesSettingsViewModel",
+      "descriptor": "0x9588b80",
+      "accessor": "0x1122e88",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "WorkModePetSettingsViewModel",
+      "descriptor": "0x9588bc8",
+      "accessor": "0x1122f18",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LocationSettingsViewModel",
+      "descriptor": "0x9588c9c",
+      "accessor": "0x1121b14",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SafetySettingsViewModel",
+      "descriptor": "0x9588d98",
+      "accessor": "0x1123728",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AccountSecuritySettingsInfoResponse",
+      "descriptor": "0x9588de0",
+      "accessor": "0x11237ac",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SecurityFactorSettingsViewModel",
+      "descriptor": "0x9589084",
+      "accessor": "0x1123d80",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsView",
+      "descriptor": "0x9589358",
+      "accessor": "0x1052200",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsHomeSection",
+      "descriptor": "0x9589380",
+      "accessor": "0x111fe10",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConfig",
+      "descriptor": "0x9589440",
+      "accessor": "0x1126008",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsViewModel",
+      "descriptor": "0x958945c",
+      "accessor": "0x100101c",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "StartScreenSettingsMenuButton",
+      "descriptor": "0x95894f4",
+      "accessor": "0x1126510",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAccountFeatureFlags",
+      "descriptor": "0x95895d0",
+      "accessor": "0x11266c4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "IntunePolicySettingsViewModel",
+      "descriptor": "0x95895ec",
+      "accessor": "0x11266d0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsRootPresentation",
+      "descriptor": "0x9589608",
+      "accessor": "0x1126920",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SafetySettingsViewModelInjectedDependencies",
+      "descriptor": "0x95899b8",
+      "accessor": "0x1128f98",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LocationSettingsViewModelInjectedDependencies",
+      "descriptor": "0x9589a14",
+      "accessor": "0x1128fe4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "RichResponsesSettingsViewModelInjectedDependencies",
+      "descriptor": "0x9589a54",
+      "accessor": "0x112902c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsValdiSoftSurfaceContext",
+      "descriptor": "0x9589a8c",
+      "accessor": "0x1129048",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LocationSettingsView",
+      "descriptor": "0x9589bc8",
+      "accessor": "0x1121b28",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsPluginDetailNavigationState",
+      "descriptor": "0x9589c20",
+      "accessor": "0x1121978",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsStaticEntrypointState",
+      "descriptor": "0x9589c48",
+      "accessor": "0x112aa28",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsUpsellRowState",
+      "descriptor": "0x9589cbc",
+      "accessor": "0x1121848",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsUpsellState",
+      "descriptor": "0x9589ce4",
+      "accessor": "0x1121834",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsNavigationToolbar",
+      "descriptor": "0x9589d28",
+      "accessor": "0x112bbbc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "IntunePolicySettingsView",
+      "descriptor": "0x9589d6c",
+      "accessor": "0x112bdd4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsScreen",
+      "descriptor": "0x9589d88",
+      "accessor": "0x1121adc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "NotificationsSettingsScreen",
+      "descriptor": "0x9589e38",
+      "accessor": "0x112d12c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ChatModelVersionSettingsPicker",
+      "descriptor": "0x9589e68",
+      "accessor": "0x112d230",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "StartScreenSettingsSection",
+      "descriptor": "0x9589e90",
+      "accessor": "0x112d5d8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsHomeAboutView",
+      "descriptor": "0x9589eb8",
+      "accessor": "0x112d64c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityAccountScreen",
+      "descriptor": "0x9589ed4",
+      "accessor": "0x112e094",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsPluginDirectoryDetailRoute",
+      "descriptor": "0x9589f18",
+      "accessor": "0x112e40c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoSettingsView",
+      "descriptor": "0x9589f68",
+      "accessor": "0x112f238",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CustomDictionarySettingsView",
+      "descriptor": "0x9589fac",
+      "accessor": "0x112f394",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SafetySettingsView",
+      "descriptor": "0x9589fd4",
+      "accessor": "0x112f468",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexNetworkAccessSettingsView",
+      "descriptor": "0x9589ff0",
+      "accessor": "0x112f6d0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsHomeFormLayout",
+      "descriptor": "0x958a034",
+      "accessor": "0x112f83c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSignOutSection",
+      "descriptor": "0x958a050",
+      "accessor": "0x112f848",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsGetHelpSection",
+      "descriptor": "0x958a06c",
+      "accessor": "0x112f86c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsGeneralSection",
+      "descriptor": "0x958a088",
+      "accessor": "0x112f878",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAppearanceSection",
+      "descriptor": "0x958a0a4",
+      "accessor": "0x112fbc8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsRestorePurchasesRow",
+      "descriptor": "0x958a0e8",
+      "accessor": "0x112fc68",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSubscriptionStatusRow",
+      "descriptor": "0x958a154",
+      "accessor": "0x1130268",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAccountSection",
+      "descriptor": "0x958a170",
+      "accessor": "0x1130d28",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsUpsellButton",
+      "descriptor": "0x958a1c8",
+      "accessor": "0x1130e14",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityHomeSections",
+      "descriptor": "0x958a1e4",
+      "accessor": "0x11313f8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsUpsellBanner",
+      "descriptor": "0x958a220",
+      "accessor": "0x1131580",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsUserProfileSection",
+      "descriptor": "0x958a23c",
+      "accessor": "0x113158c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsHomeFormContent",
+      "descriptor": "0x958a258",
+      "accessor": "0x1131d74",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceSettingsScreen",
+      "descriptor": "0x958a294",
+      "accessor": "0x112130c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LikenessFullBodyPhotoSettingsScreen",
+      "descriptor": "0x958a424",
+      "accessor": "0x111f920",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LikenessReferencePhotoSettingsScreen",
+      "descriptor": "0x958a44c",
+      "accessor": "0x111f878",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LikenessReferencePhotosSettingsScreen",
+      "descriptor": "0x958a474",
+      "accessor": "0x111f864",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemorySettingsView",
+      "descriptor": "0x958a4b8",
+      "accessor": "0x111f654",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemorySettingsDestination",
+      "descriptor": "0x958a4e0",
+      "accessor": "0x11339e8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "UserSettingsToolConversationObserverInjectedDependencies",
+      "descriptor": "0x958a554",
+      "accessor": "0x1134800",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsScreenRootView",
+      "descriptor": "0x958a5cc",
+      "accessor": "0x11352dc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsUpsellRoutingInput",
+      "descriptor": "0x958a674",
+      "accessor": "0x11557c8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "WorkModePetSettingsSelectionState",
+      "descriptor": "0x958a760",
+      "accessor": "0x115110c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultCloudBrowserSettingsService",
+      "descriptor": "0x958aa78",
+      "accessor": "0x1157c94",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsWebSubscriberUpsellOpener",
+      "descriptor": "0x958acc8",
+      "accessor": "0x11583ac",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "IncomingCallSettingsResponse",
+      "descriptor": "0x958ad5c",
+      "accessor": "0x1158508",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LikenessReferencePhotoSettingsPresentationContent",
+      "descriptor": "0x958aee8",
+      "accessor": "0x1158e18",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AdvancedPersonalizationSettingsSection",
+      "descriptor": "0x958afbc",
+      "accessor": "0x113b264",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "WorkModePetSettingsSection",
+      "descriptor": "0x958afe4",
+      "accessor": "0x115976c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LikenessReferencePhotoSettingsSection",
+      "descriptor": "0x958b024",
+      "accessor": "0x113b250",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemorySettingsSectionsView",
+      "descriptor": "0x958b04c",
+      "accessor": "0x113b7b0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LikenessReferencePhotosSettingsScreenContent",
+      "descriptor": "0x958b0ac",
+      "accessor": "0x113bd54",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LikenessReferencePhotoSettingsScreenContent",
+      "descriptor": "0x958b0dc",
+      "accessor": "0x113c818",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsContent",
+      "descriptor": "0x958b194",
+      "accessor": "0x115b664",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CustomizeLocationSettingsContent",
+      "descriptor": "0x958b1b8",
+      "accessor": "0x115b670",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LocationSettingsSection",
+      "descriptor": "0x958b1d4",
+      "accessor": "0x115b67c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsAction",
+      "descriptor": "0x958b20c",
+      "accessor": "0x115b708",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "IncomingCallSettingsAction",
+      "descriptor": "0x958b2cc",
+      "accessor": "0x115c33c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "RichResponsesSettingsAction",
+      "descriptor": "0x958b348",
+      "accessor": "0x115cb18",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SafetySettingsAction",
+      "descriptor": "0x958b39c",
+      "accessor": "0x115cc9c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "IncomingCallSettingsSection",
+      "descriptor": "0x958b440",
+      "accessor": "0x115d174",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CarPlaySettingsSection",
+      "descriptor": "0x958b464",
+      "accessor": "0x115d284",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PhoneGestureSettingsRow",
+      "descriptor": "0x958b488",
+      "accessor": "0x11424b4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceSettingsModePicker",
+      "descriptor": "0x958b4b8",
+      "accessor": "0x1141f7c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LockdownModeSettingsView",
+      "descriptor": "0x958b534",
+      "accessor": "0x1142f3c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AdvancedAccountSecuritySettingsView",
+      "descriptor": "0x958b55c",
+      "accessor": "0x115dba8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SecurityFactorSettingsView",
+      "descriptor": "0x958b5ec",
+      "accessor": "0x1143194",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "StartScreenSettingsMenu",
+      "descriptor": "0x958b6dc",
+      "accessor": "0x11608fc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAddAccountSection",
+      "descriptor": "0x958b7a4",
+      "accessor": "0x11613d4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityAccountScreenContent",
+      "descriptor": "0x958b7c0",
+      "accessor": "0x1146dfc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CustomDictionarySettingsContentView",
+      "descriptor": "0x958b8f4",
+      "accessor": "0x1164780",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SafetySettingsContentView",
+      "descriptor": "0x958b918",
+      "accessor": "0x1147c48",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSignOutSectionContent",
+      "descriptor": "0x958b95c",
+      "accessor": "0x1164a58",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsPrivacyAndSafetyRow",
+      "descriptor": "0x958b978",
+      "accessor": "0x1164a9c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSecurityRow",
+      "descriptor": "0x958b994",
+      "accessor": "0x1164aa8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsNotificationsAndVoiceRows",
+      "descriptor": "0x958b9b0",
+      "accessor": "0x1164ab4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAccountDetailsRows",
+      "descriptor": "0x958b9d4",
+      "accessor": "0x1164aec",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAccountSwitcherButton",
+      "descriptor": "0x958b9f0",
+      "accessor": "0x114878c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAccountSectionContent",
+      "descriptor": "0x958ba18",
+      "accessor": "0x1148944",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsPersonalizationRows",
+      "descriptor": "0x958ba6c",
+      "accessor": "0x11657d0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityGeneralAndSafetySection",
+      "descriptor": "0x958ba90",
+      "accessor": "0x11657dc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityPersonalizationSection",
+      "descriptor": "0x958bab4",
+      "accessor": "0x11658ac",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityAccountSection",
+      "descriptor": "0x958baf0",
+      "accessor": "0x114957c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityHomeSectionsContent",
+      "descriptor": "0x958bb2c",
+      "accessor": "0x1149608",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsProfileSection",
+      "descriptor": "0x958bb80",
+      "accessor": "0x11496d4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SafetySettingsConfiguration",
+      "descriptor": "0x958bc78",
+      "accessor": "0x1166bc4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityInfoMenu",
+      "descriptor": "0x958bcb0",
+      "accessor": "0x1166d24",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsUpsellSurface",
+      "descriptor": "0x958be30",
+      "accessor": "0x11675a0",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsUpsellRowPresentation",
+      "descriptor": "0x958be4c",
+      "accessor": "0x1167758",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsUpsellBannerVariant",
+      "descriptor": "0x958be68",
+      "accessor": "0x1167810",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsLoadingSection",
+      "descriptor": "0x958ca84",
+      "accessor": "0x1175bc0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsNavigationLabel",
+      "descriptor": "0x958cafc",
+      "accessor": "0x1176388",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsRowLabel",
+      "descriptor": "0x958cb18",
+      "accessor": "0x1176448",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsSection",
+      "descriptor": "0x958cb34",
+      "accessor": "0x11768ac",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsForm",
+      "descriptor": "0x958cb70",
+      "accessor": "0x11770c8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityInfoMenuContent",
+      "descriptor": "0x958cbb4",
+      "accessor": "0x116c5b4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LockdownModeSettingsBulletPoint",
+      "descriptor": "0x958ccd4",
+      "accessor": "0x1178170",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "NotificationSettingsPushPermissionStateSectionPart",
+      "descriptor": "0x958ccf0",
+      "accessor": "0x1178234",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoSettingsBlockedUsersSection",
+      "descriptor": "0x958cd0c",
+      "accessor": "0x1170534",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityAccountSwitcherRow",
+      "descriptor": "0x958cd34",
+      "accessor": "0x1170c14",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAgeRow",
+      "descriptor": "0x958cd5c",
+      "accessor": "0x11792d8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityAccountSectionContent",
+      "descriptor": "0x958cd78",
+      "accessor": "0x1171084",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityPersonalizationSectionContent",
+      "descriptor": "0x958cdc0",
+      "accessor": "0x1179c88",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityGeneralAndSafetySectionContent",
+      "descriptor": "0x958cdfc",
+      "accessor": "0x117a4c8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "WorkModePetSettingsEntryRow",
+      "descriptor": "0x958ce98",
+      "accessor": "0x117168c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "RichResponsesSettingsRow",
+      "descriptor": "0x958cec0",
+      "accessor": "0x117ad40",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LocationSettingsRows",
+      "descriptor": "0x958cf30",
+      "accessor": "0x117b2dc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "IncomingCallSettingsSectionContent",
+      "descriptor": "0x958cf54",
+      "accessor": "0x117b30c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsMemoryRowLabel",
+      "descriptor": "0x958cfd8",
+      "accessor": "0x1172d20",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CompactSettingsProfileHeader",
+      "descriptor": "0x958d008",
+      "accessor": "0x1172e84",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAccountSectionAction",
+      "descriptor": "0x958d030",
+      "accessor": "0x117c09c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSignOutSectionAction",
+      "descriptor": "0x958d04c",
+      "accessor": "0x117c0a8",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityAccountScreenAction",
+      "descriptor": "0x958d068",
+      "accessor": "0x117c0b4",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsContentAction",
+      "descriptor": "0x958d118",
+      "accessor": "0x117c510",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityInfoMenuBuildSection",
+      "descriptor": "0x958dd0c",
+      "accessor": "0x11806ac",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityInfoMenuActionsSection",
+      "descriptor": "0x958dd3c",
+      "accessor": "0x1186e58",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAgeRowLabel",
+      "descriptor": "0x958e060",
+      "accessor": "0x118a28c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsAccountAvatar",
+      "descriptor": "0x958e07c",
+      "accessor": "0x1184ee0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityLabeledContentStyle",
+      "descriptor": "0x958e0ac",
+      "accessor": "0x118a5c0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityLabelStyle",
+      "descriptor": "0x958e0d0",
+      "accessor": "0x1184ac0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "RichResponsesSettingsRowContent",
+      "descriptor": "0x958e100",
+      "accessor": "0x118a828",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityAccountSwitcherAction",
+      "descriptor": "0x958e164",
+      "accessor": "0x118aa10",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsConsumerIdentityInfoMenuAction",
+      "descriptor": "0x958e188",
+      "accessor": "0x118aae0",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AgeStatusSettingsView",
+      "descriptor": "0x958fba4",
+      "accessor": "0x11b501c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AgeStatusSettingsViewModel",
+      "descriptor": "0x958fbf4",
+      "accessor": "0x11b5030",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AgeStatusSettingsAction",
+      "descriptor": "0x958fc3c",
+      "accessor": "0x11bb4b0",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AgeStatusSettingsContentView",
+      "descriptor": "0x958fffc",
+      "accessor": "0x11bbf14",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "HistorySettingsActionItemContainerView",
+      "descriptor": "0x9593a84",
+      "accessor": "0x13559fc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "HistorySettingsActionItemView",
+      "descriptor": "0x959404c",
+      "accessor": "0x13739dc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "HistorySettingsActionItemViewContent",
+      "descriptor": "0x9594a18",
+      "accessor": "0x1380c70",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SitesResponseCardSettingsSession",
+      "descriptor": "0x95984b0",
+      "accessor": "0x14fc560",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SiteSettingsMutationReconciliation",
+      "descriptor": "0x9598dc8",
+      "accessor": "0x150291c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SiteSettingsSaveFailure",
+      "descriptor": "0x9598e40",
+      "accessor": "0x15035fc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SitesResponseCardSettingsCallbacks",
+      "descriptor": "0x9598e78",
+      "accessor": "0x1503664",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsOperationDetails",
+      "descriptor": "0x9599f34",
+      "accessor": "0x151aed0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SiteSettingsScreen",
+      "descriptor": "0x959a56c",
+      "accessor": "0x15224b4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SiteSettingsScreenContent",
+      "descriptor": "0x959aa48",
+      "accessor": "0x152b414",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SiteSettingsSaveToolbarContent",
+      "descriptor": "0x959afe4",
+      "accessor": "0x1531fb4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SiteSettingsDangerZoneSection",
+      "descriptor": "0x959b008",
+      "accessor": "0x1531fc0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SiteSettingsEnvironmentSection",
+      "descriptor": "0x959b02c",
+      "accessor": "0x1532044",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SiteSettingsGeneralSection",
+      "descriptor": "0x959b050",
+      "accessor": "0x15320dc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SiteSettingsSaveStatus",
+      "descriptor": "0x959bd90",
+      "accessor": "0x153bf3c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TrustedContactSettingsController",
+      "descriptor": "0x95a327c",
+      "accessor": "0x16a7784",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TrustedContactSettingsScreenViewModel",
+      "descriptor": "0x95a32c4",
+      "accessor": "0x16a8018",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TrustedContactSettingsView",
+      "descriptor": "0x95a330c",
+      "accessor": "0x16a77d8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TrustedContactSettingsViewModel",
+      "descriptor": "0x95a335c",
+      "accessor": "0x16a77ec",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TrustedContactSettingsScreen",
+      "descriptor": "0x95a34d4",
+      "accessor": "0x16a98f8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TrustedContactSettingsViewModelInjectedDependencies",
+      "descriptor": "0x95a34f8",
+      "accessor": "0x16a9908",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultVoiceTrainingSettingsService",
+      "descriptor": "0x95a4170",
+      "accessor": "0x16cbe74",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultVoiceTrainingSettingsServiceOAInjectFactory",
+      "descriptor": "0x95a44b4",
+      "accessor": "0x16cf9e4",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultVoiceTrainingSettingsServiceInjectedDependencies",
+      "descriptor": "0x95a45ac",
+      "accessor": "0x16d0320",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultVoiceTrainingSettingsServiceProviderDependenciesResolvers",
+      "descriptor": "0x95a47a8",
+      "accessor": "0x16d5d80",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexRemoteSettingsScreen",
+      "descriptor": "0x95a8910",
+      "accessor": "0x182dfbc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexRemoteSettingsContainer",
+      "descriptor": "0x95a8bb8",
+      "accessor": "0x182e0c0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexRemoteCloudThreadPreferences",
+      "descriptor": "0x95ac254",
+      "accessor": "0x1ab7aa0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexRemoteProjectDraftPreferences",
+      "descriptor": "0x95ac320",
+      "accessor": "0x1ab8018",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "Settings",
+      "descriptor": "0x95b586c",
+      "accessor": "0x1e2c05c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AddDestinationToSettingsAction",
+      "descriptor": "0x95b6e5c",
+      "accessor": "0x1e30e1c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "UpdateSettingsAction",
+      "descriptor": "0x95b6f10",
+      "accessor": "0x1e36e20",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexRemoteSSHSettings",
+      "descriptor": "0x95d151c",
+      "accessor": "0x25ed14c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "EffectiveModelSettings",
+      "descriptor": "0x95d5cac",
+      "accessor": "0x26061b0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoGroupLinkSettingsView",
+      "descriptor": "0x95e582c",
+      "accessor": "0x29d4c04",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoGroupLinkSettingsContainerView",
+      "descriptor": "0x95e5854",
+      "accessor": "0x29d4d24",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoRoomSettingsView",
+      "descriptor": "0x95e5f8c",
+      "accessor": "0x29d5510",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoRoomSettingsViewModel",
+      "descriptor": "0x95e5fdc",
+      "accessor": "0x29d54e8",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoRoomSettingsViewPart",
+      "descriptor": "0x95e906c",
+      "accessor": "0x2a07488",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoRoomSettingsViewContentPart",
+      "descriptor": "0x95e9b24",
+      "accessor": "0x2a2bea8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoRoomSettingsViewButtonPart",
+      "descriptor": "0x95ea9d8",
+      "accessor": "0x2a60134",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoRoomSettingsViewMemberRowPart",
+      "descriptor": "0x95ea9fc",
+      "accessor": "0x2a602ac",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CalpicoRoomSettingsViewMemberRowContentPart",
+      "descriptor": "0x95eb5a0",
+      "accessor": "0x2a6a4b0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexSettingsScreenTemplate",
+      "descriptor": "0x95ecff8",
+      "accessor": "0x2aaff7c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexRemoteLocalAuthenticationSettingsViewModel",
+      "descriptor": "0x95ed4d4",
+      "accessor": "0x2ab9e5c",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CodexRemoteSecuritySettingsSection",
+      "descriptor": "0x95ed51c",
+      "accessor": "0x2abbb5c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ThreadModelSettingsUpdateParamsPayload",
+      "descriptor": "0x95ee8cc",
+      "accessor": "0x2b8b88c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ClientRequestThreadSettingsUpdateRequest",
+      "descriptor": "0x95f1918",
+      "accessor": "0x2de960c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ClientRequestTurnSettingsUpdateRequest",
+      "descriptor": "0x95f1a68",
+      "accessor": "0x2dea6c8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "KnownTurnSettingsUpdateStatusApplied",
+      "descriptor": "0x95f547c",
+      "accessor": "0x2e02630",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "KnownTurnSettingsUpdateStatusTargetunavailable",
+      "descriptor": "0x95f5498",
+      "accessor": "0x2e0263c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ServerNotificationThreadSettingsUpdatedNotification",
+      "descriptor": "0x95f85d0",
+      "accessor": "0x2e28900",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "Settings",
+      "descriptor": "0x95f8b1c",
+      "accessor": "0x2e2d0f4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ThreadSettings",
+      "descriptor": "0x95f9ecc",
+      "accessor": "0x2e3e554",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ThreadSettingsUpdateParams",
+      "descriptor": "0x95f9f04",
+      "accessor": "0x2e3ee3c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ThreadSettingsUpdatedNotification",
+      "descriptor": "0x95f9f20",
+      "accessor": "0x2e3f6a4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TurnSettingsUpdateParams",
+      "descriptor": "0x95fa60c",
+      "accessor": "0x2e473a0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TurnSettingsUpdateResponse",
+      "descriptor": "0x95fa628",
+      "accessor": "0x2e473ac",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TurnSettingsUpdateStatus",
+      "descriptor": "0x95fa644",
+      "accessor": "0x2e47400",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConversationInCallSettingsButtonPart",
+      "descriptor": "0x9604fd0",
+      "accessor": "0x3019cb4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "GizmoActionSettingsViewModel",
+      "descriptor": "0x960b8ac",
+      "accessor": "0x31b6c7c",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "GizmoActionSettingsViewModelInjectedDependencies",
+      "descriptor": "0x960ba84",
+      "accessor": "0x31b796c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TemporaryChatPersonalizationSettingsSheet",
+      "descriptor": "0x960bc68",
+      "accessor": "0x31be298",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "GizmoActionSettingsView",
+      "descriptor": "0x960bcc8",
+      "accessor": "0x31be5d4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "GizmoActionSettingsContentView",
+      "descriptor": "0x960be48",
+      "accessor": "0x31c2fd4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TemporaryChatPersonalizationSettingsContent",
+      "descriptor": "0x960be90",
+      "accessor": "0x31c31f0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "GizmoActionSettingsLoadedView",
+      "descriptor": "0x960c07c",
+      "accessor": "0x31c66f0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TemporaryChatPersonalizationSettingsAction",
+      "descriptor": "0x960c128",
+      "accessor": "0x31c6bfc",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "UserSettingsToolRecognizer",
+      "descriptor": "0x96176c4",
+      "accessor": "0x3662a2c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AppleHealthSettingsError",
+      "descriptor": "0x9628c34",
+      "accessor": "0x3c5582c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ViewPreferencesKey",
+      "descriptor": "0x96313d4",
+      "accessor": "0x3e92408",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarPreferencesResponse",
+      "descriptor": "0x9638de4",
+      "accessor": "0x41352c4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarNoAuthSettingsScreenViewModel",
+      "descriptor": "0x96398e0",
+      "accessor": "0x41322d8",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsAdHistorySectionsAccumulator",
+      "descriptor": "0x9639928",
+      "accessor": "0x413c954",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsAdHistoryViewModel",
+      "descriptor": "0x9639964",
+      "accessor": "0x413c97c",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsAdPreferencesViewModel",
+      "descriptor": "0x96399ac",
+      "accessor": "0x413ca10",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsDowngradeSheetViewModel",
+      "descriptor": "0x96399f4",
+      "accessor": "0x41303e4",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsScreenViewModel",
+      "descriptor": "0x9639a3c",
+      "accessor": "0x4130dc0",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsContentSection",
+      "descriptor": "0x963a21c",
+      "accessor": "0x4156f98",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsScreen",
+      "descriptor": "0x963a680",
+      "accessor": "0x4132360",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarNoAuthSettingsScreen",
+      "descriptor": "0x963a6a8",
+      "accessor": "0x415e9b0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsScreenViewModelInjectedDependencies",
+      "descriptor": "0x963a940",
+      "accessor": "0x4161bbc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarNoAuthSettingsScreenContent",
+      "descriptor": "0x963b35c",
+      "accessor": "0x4177954",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsDowngradeSheet",
+      "descriptor": "0x963b378",
+      "accessor": "0x416aa44",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsAdPreferencesScreen",
+      "descriptor": "0x963b3a0",
+      "accessor": "0x4177bb4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsAdHistoryScreen",
+      "descriptor": "0x963b3bc",
+      "accessor": "0x4177c30",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsScreenContent",
+      "descriptor": "0x963b3d8",
+      "accessor": "0x4177e88",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarNoAuthSettingsScreenAction",
+      "descriptor": "0x963b434",
+      "accessor": "0x41780bc",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsContentAction",
+      "descriptor": "0x963b450",
+      "accessor": "0x41780c8",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsContentFooter",
+      "descriptor": "0x963b69c",
+      "accessor": "0x417edac",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsUnavailableView",
+      "descriptor": "0x963be44",
+      "accessor": "0x4181088",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsAdHistoryContent",
+      "descriptor": "0x963be90",
+      "accessor": "0x418b154",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsAdPreferencesContent",
+      "descriptor": "0x963beb4",
+      "accessor": "0x418b220",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsDowngradeSheetContent",
+      "descriptor": "0x963bed0",
+      "accessor": "0x418b2e4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsHistoryRow",
+      "descriptor": "0x963c760",
+      "accessor": "0x41b6b30",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsPreferenceRow",
+      "descriptor": "0x963c790",
+      "accessor": "0x41befd8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsContentScreen",
+      "descriptor": "0x963c7ac",
+      "accessor": "0x41bf32c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsHeaderSection",
+      "descriptor": "0x963d2b4",
+      "accessor": "0x41d24a0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsContentHeader",
+      "descriptor": "0x963d434",
+      "accessor": "0x41d3fe0",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsHeaderIcon",
+      "descriptor": "0x963d924",
+      "accessor": "0x41d68e0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarNoAuthSettingsScreenTemplate",
+      "descriptor": "0x963e374",
+      "accessor": "0x41f1038",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BazaarSettingsScreenTemplate",
+      "descriptor": "0x963e3ac",
+      "accessor": "0x41f1158",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BusinessAgentNativeNavigationBarStylePreferences",
+      "descriptor": "0x963e8e4",
+      "accessor": "0x41f5084",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AssistantSettingsKeyboardOverlapView",
+      "descriptor": "0x96409d0",
+      "accessor": "0x428cde8",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AssistantSettingsSheet",
+      "descriptor": "0x96409fc",
+      "accessor": "0x428ce08",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AssistantSettingsScreen",
+      "descriptor": "0x9640a18",
+      "accessor": "0x4260a5c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AssistantSettingsAction",
+      "descriptor": "0x9640a90",
+      "accessor": "0x428d4c8",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AssistantSettingsDraft",
+      "descriptor": "0x9640aac",
+      "accessor": "0x428d638",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AssistantSettingsViewModel",
+      "descriptor": "0x9640ac8",
+      "accessor": "0x4284e14",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AssistantSettingsContent",
+      "descriptor": "0x96411a0",
+      "accessor": "0x4284d3c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AssistantSettingsScrollTarget",
+      "descriptor": "0x96411d0",
+      "accessor": "0x429ae08",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AssistantSettingsKeyboardOverlap",
+      "descriptor": "0x96411ec",
+      "accessor": "0x429af88",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AssistantSettingsRowBackground",
+      "descriptor": "0x96413bc",
+      "accessor": "0x429caec",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsExternalMapProvider",
+      "descriptor": "0x96477ec",
+      "accessor": "0x4456c18",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceTrainingSettingsServiceSource",
+      "descriptor": "0x964a1c4",
+      "accessor": "0x44a6878",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FinanceDashboardWidgetPreferencesUpdateRequest",
+      "descriptor": "0x96628f0",
+      "accessor": "0x48c27bc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FinanceDashboardWidgetPreferencesResponse",
+      "descriptor": "0x966290c",
+      "accessor": "0x48c2918",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FinanceDashboardWidgetPreferences",
+      "descriptor": "0x9662960",
+      "accessor": "0x48c2a6c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LinkSettings",
+      "descriptor": "0x967e2a0",
+      "accessor": "0x509c880",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "STPThreeDSCustomizationSettings",
+      "descriptor": "0x96808d0",
+      "accessor": "0x509b01c",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LinkSettings",
+      "descriptor": "0x968269c",
+      "accessor": "0x50e42e4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultConnectorSettingsService",
+      "descriptor": "0x9684148",
+      "accessor": "0x51ddefc",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginAccountSettingsViewModel",
+      "descriptor": "0x9684770",
+      "accessor": "0x51f7f18",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailScreenBuilderViewModel",
+      "descriptor": "0x9684890",
+      "accessor": "0x51de4e0",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailDestinationViewModel",
+      "descriptor": "0x96848cc",
+      "accessor": "0x51db448",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailViewOutput",
+      "descriptor": "0x9684914",
+      "accessor": "0x51f80dc",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailViewModel",
+      "descriptor": "0x9684930",
+      "accessor": "0x51f80f0",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSkillSettingsDetailViewModel",
+      "descriptor": "0x96849fc",
+      "accessor": "0x51f83c8",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormSectionViewModel",
+      "descriptor": "0x9684a44",
+      "accessor": "0x51f8450",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormViewModel",
+      "descriptor": "0x9684a8c",
+      "accessor": "0x51f84dc",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailDestination",
+      "descriptor": "0x9685050",
+      "accessor": "0x51fa384",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailScreen",
+      "descriptor": "0x968506c",
+      "accessor": "0x51fa454",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsConnectorAppSearchCache",
+      "descriptor": "0x9685090",
+      "accessor": "0x51fa460",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultConnectorSettingsServiceOAInjectFactory",
+      "descriptor": "0x96851d0",
+      "accessor": "0x51fa758",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormGroup",
+      "descriptor": "0x968539c",
+      "accessor": "0x51fa824",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormProviderID",
+      "descriptor": "0x96853d4",
+      "accessor": "0x51fa83c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsCanonicalAccountLinksState",
+      "descriptor": "0x9685474",
+      "accessor": "0x51fc098",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsConnectorSyncState",
+      "descriptor": "0x9685490",
+      "accessor": "0x51fc448",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsCanonicalAccount",
+      "descriptor": "0x96854b8",
+      "accessor": "0x51fc768",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsExistingAccountReconnectConfirmation",
+      "descriptor": "0x9685508",
+      "accessor": "0x51fcac8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginAccountSettingsViewOutput",
+      "descriptor": "0x96855d0",
+      "accessor": "0x52014d8",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultConnectorSettingsServiceInjectedDependencies",
+      "descriptor": "0x96856d0",
+      "accessor": "0x5201f04",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailRouteScreen",
+      "descriptor": "0x96859f0",
+      "accessor": "0x5202c28",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailLoadStateView",
+      "descriptor": "0x9685a90",
+      "accessor": "0x52031cc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailView",
+      "descriptor": "0x9685aac",
+      "accessor": "0x51fa6a8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormScreen",
+      "descriptor": "0x9685ad4",
+      "accessor": "0x51fa694",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsNavigationDestination",
+      "descriptor": "0x9685f38",
+      "accessor": "0x520e160",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorLinkToolSettingsPatchResponse",
+      "descriptor": "0x96864e8",
+      "accessor": "0x5224f04",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorLinkToolSettingsPatchRequest",
+      "descriptor": "0x9686510",
+      "accessor": "0x5228300",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsOverflowAction",
+      "descriptor": "0x9686814",
+      "accessor": "0x522b508",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsToolsResponse",
+      "descriptor": "0x96869f8",
+      "accessor": "0x522fb58",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsToolsRequest",
+      "descriptor": "0x9686a14",
+      "accessor": "0x522fbb0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsProtocolError",
+      "descriptor": "0x9686a30",
+      "accessor": "0x522fbbc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsCallResponse",
+      "descriptor": "0x9686a4c",
+      "accessor": "0x522ff18",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsCallRequest",
+      "descriptor": "0x9686a68",
+      "accessor": "0x522ff34",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailDestinationAction",
+      "descriptor": "0x9686e10",
+      "accessor": "0x52345ac",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginAccountSettingsAction",
+      "descriptor": "0x9686f80",
+      "accessor": "0x5238370",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailViewAction",
+      "descriptor": "0x9686fb8",
+      "accessor": "0x521d7dc",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSkillSettingsDetailAction",
+      "descriptor": "0x9686ffc",
+      "accessor": "0x5239148",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormSectionAction",
+      "descriptor": "0x9687034",
+      "accessor": "0x5239378",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormAction",
+      "descriptor": "0x9687050",
+      "accessor": "0x523946c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormSection",
+      "descriptor": "0x968706c",
+      "accessor": "0x521ebec",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginAccountSettingsView",
+      "descriptor": "0x96870c4",
+      "accessor": "0x521f600",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsExistingAccountReconnectAlertModifier",
+      "descriptor": "0x96870f4",
+      "accessor": "0x521f46c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsActionsMenu",
+      "descriptor": "0x9687124",
+      "accessor": "0x521f8b0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormNavigationSection",
+      "descriptor": "0x968714c",
+      "accessor": "0x521f9c8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsLegacySections",
+      "descriptor": "0x968717c",
+      "accessor": "0x521f9b4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsNonCanonicalForm",
+      "descriptor": "0x96871ac",
+      "accessor": "0x521efc8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsCanonicalSections",
+      "descriptor": "0x96871dc",
+      "accessor": "0x523eaa4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormField",
+      "descriptor": "0x9687364",
+      "accessor": "0x52414ec",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormLoadState",
+      "descriptor": "0x9687f6c",
+      "accessor": "0x524c634",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsProviderForm",
+      "descriptor": "0x9687f90",
+      "accessor": "0x524c704",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormAccountSection",
+      "descriptor": "0x9687fb4",
+      "accessor": "0x524c89c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormEmptySection",
+      "descriptor": "0x9687fd8",
+      "accessor": "0x524c8a8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsNonCanonicalSections",
+      "descriptor": "0x9687ffc",
+      "accessor": "0x52470cc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginAccountSettingsContent",
+      "descriptor": "0x968802c",
+      "accessor": "0x5247488",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsInformationSection",
+      "descriptor": "0x968805c",
+      "accessor": "0x52481dc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsActionsSections",
+      "descriptor": "0x968808c",
+      "accessor": "0x524e51c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsUsedBySection",
+      "descriptor": "0x96880b0",
+      "accessor": "0x524e6bc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsConnectionSection",
+      "descriptor": "0x96880d4",
+      "accessor": "0x52481c8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsConnectedAccountsSection",
+      "descriptor": "0x9688104",
+      "accessor": "0x52518fc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsSummarySection",
+      "descriptor": "0x9688150",
+      "accessor": "0x524818c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsSkillsSection",
+      "descriptor": "0x9688294",
+      "accessor": "0x52532a8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsUsesSection",
+      "descriptor": "0x96882b8",
+      "accessor": "0x5253720",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormContent",
+      "descriptor": "0x96888cc",
+      "accessor": "0x525a758",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsAccountLabel",
+      "descriptor": "0x96888e8",
+      "accessor": "0x525750c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsActionsSection",
+      "descriptor": "0x9688918",
+      "accessor": "0x525aa38",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsConnectionContent",
+      "descriptor": "0x9688954",
+      "accessor": "0x525c234",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsConnectedAccountRow",
+      "descriptor": "0x9688998",
+      "accessor": "0x5258378",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSkillSettingsDetailView",
+      "descriptor": "0x9688a10",
+      "accessor": "0x525c7bc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsSectionHeader",
+      "descriptor": "0x9688a34",
+      "accessor": "0x525c7c8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsConnectorRow",
+      "descriptor": "0x9688a58",
+      "accessor": "0x52596b0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsConnectionSummary",
+      "descriptor": "0x9688aac",
+      "accessor": "0x525e578",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormGroupSections",
+      "descriptor": "0x9688f90",
+      "accessor": "0x525fed4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginConnectorActionSettingsDetailView",
+      "descriptor": "0x9688fc0",
+      "accessor": "0x5263e68",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsAdministratorSyncDetailView",
+      "descriptor": "0x9688fe4",
+      "accessor": "0x5260960",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsConnectionLabel",
+      "descriptor": "0x9689014",
+      "accessor": "0x5264490",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsConnectionRow",
+      "descriptor": "0x9689038",
+      "accessor": "0x526449c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSkillSettingsDetailContent",
+      "descriptor": "0x968905c",
+      "accessor": "0x5260f7c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSkillSettingsDetailIcon",
+      "descriptor": "0x9689368",
+      "accessor": "0x5266b1c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsFormFieldRow",
+      "descriptor": "0x968938c",
+      "accessor": "0x5266d0c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AutoRechargeSettings",
+      "descriptor": "0x968b3d0",
+      "accessor": "0x52d8834",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "UsageLimitsDashboardAutoRechargeSettingsSheet",
+      "descriptor": "0x968b9d8",
+      "accessor": "0x52d4e10",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FamilySettingsUpdatedContext",
+      "descriptor": "0x968cdcc",
+      "accessor": "0x5358218",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemberSettingsView",
+      "descriptor": "0x968d080",
+      "accessor": "0x5358d80",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemberSettingsViewModel",
+      "descriptor": "0x968d0c4",
+      "accessor": "0x5359268",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FamilySettingsViewModel",
+      "descriptor": "0x968d504",
+      "accessor": "0x5357524",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "QuietHoursSettingsScreen",
+      "descriptor": "0x968d5f4",
+      "accessor": "0x5355538",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "QuietHoursSettingsAction",
+      "descriptor": "0x968d644",
+      "accessor": "0x5355980",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "QuietHoursSettingsViewModel",
+      "descriptor": "0x968d66c",
+      "accessor": "0x5355524",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "StudyHoursSettingsAction",
+      "descriptor": "0x968d6b4",
+      "accessor": "0x5355d64",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "StudyHoursSettingsViewModel",
+      "descriptor": "0x968d6dc",
+      "accessor": "0x5355d90",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TimeManagementSettingsLocalized",
+      "descriptor": "0x968d724",
+      "accessor": "0x535b01c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TimeManagementSettingsScreen",
+      "descriptor": "0x968d740",
+      "accessor": "0x5355d78",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TimeManagementSettingsViewModel",
+      "descriptor": "0x968d7b0",
+      "accessor": "0x535b60c",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FamilySettingsViewModelInjectedDependencies",
+      "descriptor": "0x968dab0",
+      "accessor": "0x535bca4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemberSettingsSnapshot",
+      "descriptor": "0x968db84",
+      "accessor": "0x535be30",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemberSettingsResponse",
+      "descriptor": "0x968dbbc",
+      "accessor": "0x535c0e4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemberSettingsPageIDTag",
+      "descriptor": "0x968dbd8",
+      "accessor": "0x535c0f0",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemberSettingsLayout",
+      "descriptor": "0x968dca4",
+      "accessor": "0x535c680",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "StudyHoursSettingsScreen",
+      "descriptor": "0x968dd88",
+      "accessor": "0x535759c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FamilySettingsScreen",
+      "descriptor": "0x968ddb0",
+      "accessor": "0x535d814",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TimeManagementSettingsContent",
+      "descriptor": "0x968df10",
+      "accessor": "0x5355d84",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "QuietHoursSettingsContent",
+      "descriptor": "0x968df54",
+      "accessor": "0x535ec0c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DynamicMemberSettingsContentView",
+      "descriptor": "0x968e180",
+      "accessor": "0x535918c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemberSettingsQuietHoursState",
+      "descriptor": "0x968e1b0",
+      "accessor": "0x5362240",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DynamicMemberSettingsResponse",
+      "descriptor": "0x968e628",
+      "accessor": "0x536f9a8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "StudyHoursSettingsContent",
+      "descriptor": "0x968ebc8",
+      "accessor": "0x53738b0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MemberSettingsSettingKeyTag",
+      "descriptor": "0x968eef8",
+      "accessor": "0x5375d20",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "Settings",
+      "descriptor": "0x968ef14",
+      "accessor": "0x5376000",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FamilySettingsTemplate",
+      "descriptor": "0x9690f08",
+      "accessor": "0x53aa254",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FamilySettingsGmailLink",
+      "descriptor": "0x9690f5c",
+      "accessor": "0x53aa460",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FamilySettingsRenderState",
+      "descriptor": "0x9690f78",
+      "accessor": "0x53aa504",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FamilySettingsAction",
+      "descriptor": "0x9690f94",
+      "accessor": "0x53aa768",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "StudyHoursSettingsScreenTemplate",
+      "descriptor": "0x9691024",
+      "accessor": "0x53aab04",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ImageSuggestionCameraSettingsResumeOwner",
+      "descriptor": "0x96933b0",
+      "accessor": "0x54ecb14",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ImageSuggestionCameraSettingsResume",
+      "descriptor": "0x96933cc",
+      "accessor": "0x54d1848",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultImageSuggestionCameraSettingsResumeStore",
+      "descriptor": "0x9693484",
+      "accessor": "0x54d6000",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ImageSuggestionCameraSettingsRestoreResult",
+      "descriptor": "0x969374c",
+      "accessor": "0x54f9c6c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultImageSuggestionCameraSettingsResumeStoreOAInjectFactory",
+      "descriptor": "0x9694de4",
+      "accessor": "0x550b820",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "KnownImageSuggestionCameraSettingsResumeOwner",
+      "descriptor": "0x9695aa4",
+      "accessor": "0x551da24",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsControlledIntelligenceSlot",
+      "descriptor": "0x96a2fac",
+      "accessor": "0x588c580",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConversationModelSelectionPreferences",
+      "descriptor": "0x96a32bc",
+      "accessor": "0x5891048",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultNotificationSettingsService",
+      "descriptor": "0x96a432c",
+      "accessor": "0x5906a84",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "NotificationSettingsResponse",
+      "descriptor": "0x96a4374",
+      "accessor": "0x5906d20",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultLocalNotificationSettingsRepository",
+      "descriptor": "0x96a4560",
+      "accessor": "0x5906764",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PendingNotificationSettingsPermissionAttempt",
+      "descriptor": "0x96a47a8",
+      "accessor": "0x5905acc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultLocalNotificationSettingsRepositoryOAInjectFactory",
+      "descriptor": "0x96a4d0c",
+      "accessor": "0x5911554",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultNotificationSettingsServiceOAInjectFactory",
+      "descriptor": "0x96a4d7c",
+      "accessor": "0x5911584",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultNotificationSettingsServiceInjectedDependencies",
+      "descriptor": "0x96a4e98",
+      "accessor": "0x59118d0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultNotificationSettingsServiceProviderDependenciesResolvers",
+      "descriptor": "0x96a5418",
+      "accessor": "0x5919570",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TrustedContactSettingsScreenTemplate",
+      "descriptor": "0x96a68e4",
+      "accessor": "0x59306ec",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceInCallSettingsSheetModel",
+      "descriptor": "0x96a80e8",
+      "accessor": "0x5a03dfc",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceSettingsAction",
+      "descriptor": "0x96a8500",
+      "accessor": "0x5a04408",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceSettingsViewModel",
+      "descriptor": "0x96a851c",
+      "accessor": "0x59f4050",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceInCallSettingsSheetModelInjectedDependencies",
+      "descriptor": "0x96a90f4",
+      "accessor": "0x5a35e40",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceSettingsSaveFailureBanner",
+      "descriptor": "0x96a997c",
+      "accessor": "0x5a5188c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceInCallSettingsSheet",
+      "descriptor": "0x96a9998",
+      "accessor": "0x5a51914",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceInCallSettingsPresentation",
+      "descriptor": "0x96a9b50",
+      "accessor": "0x5a53194",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceInCallSettingsRoot",
+      "descriptor": "0x96a9c94",
+      "accessor": "0x5a55cb4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceInCallSettingsAction",
+      "descriptor": "0x96a9d84",
+      "accessor": "0x5a56358",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceInCallSettingsSheetContent",
+      "descriptor": "0x96a9db4",
+      "accessor": "0x5a56344",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceInCallSettingsCard",
+      "descriptor": "0x96a9f1c",
+      "accessor": "0x5a57bd0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceInCallSettingsPager",
+      "descriptor": "0x96a9f4c",
+      "accessor": "0x5a57e40",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultVoiceLanguageSettings",
+      "descriptor": "0x96b0348",
+      "accessor": "0x5bee560",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultVoiceSelectionSettingsService",
+      "descriptor": "0x96b03d8",
+      "accessor": "0x5beef74",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "VoiceSettingsMode",
+      "descriptor": "0x96b07ec",
+      "accessor": "0x5befb94",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultVoiceLanguageSettingsOAInjectFactory",
+      "descriptor": "0x96b08bc",
+      "accessor": "0x5befcc8",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultVoiceSelectionSettingsServiceOAInjectFactory",
+      "descriptor": "0x96b0910",
+      "accessor": "0x5befcec",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultVoiceSelectionSettingsServiceInjectedDependencies",
+      "descriptor": "0x96b09bc",
+      "accessor": "0x5befd8c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultVoiceLanguageSettingsInjectedDependencies",
+      "descriptor": "0x96b09e0",
+      "accessor": "0x5befd98",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "MessagingPermissionSettingsResponse",
+      "descriptor": "0x96b3974",
+      "accessor": "0x5dab990",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "UserRoomSettings",
+      "descriptor": "0x96b4a88",
+      "accessor": "0x5db2f20",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LockedChatsAccountPINSettingsTemplate",
+      "descriptor": "0x96bc5cc",
+      "accessor": "0x5e52498",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultOAIAccountSettingsService",
+      "descriptor": "0x96bea0c",
+      "accessor": "0x5ec0038",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LikenessSettingsAction",
+      "descriptor": "0x96c5f1c",
+      "accessor": "0x5fca210",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FileLibraryProviderPreferences",
+      "descriptor": "0x96c7138",
+      "accessor": "0x5ffc744",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsField",
+      "descriptor": "0x96cdd78",
+      "accessor": "0x614bc50",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsGroup",
+      "descriptor": "0x96cddb0",
+      "accessor": "0x614bc74",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsLayoutItem",
+      "descriptor": "0x96cddcc",
+      "accessor": "0x614bd78",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsReadResult",
+      "descriptor": "0x96cdde8",
+      "accessor": "0x614bde4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsSchema",
+      "descriptor": "0x96cde04",
+      "accessor": "0x614be1c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsToolAction",
+      "descriptor": "0x96cde20",
+      "accessor": "0x614be28",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsUpdateResult",
+      "descriptor": "0x96cde3c",
+      "accessor": "0x614be34",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsAccount",
+      "descriptor": "0x96cdec0",
+      "accessor": "0x614be40",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsActionResult",
+      "descriptor": "0x96cdedc",
+      "accessor": "0x614c010",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsError",
+      "descriptor": "0x96cdef8",
+      "accessor": "0x614c060",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorSettingsUpdateError",
+      "descriptor": "0x96cdf14",
+      "accessor": "0x614c110",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ToolSettings",
+      "descriptor": "0x96ce2bc",
+      "accessor": "0x6153658",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsDetailScreenTemplate",
+      "descriptor": "0x96ce5c8",
+      "accessor": "0x6153c20",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "CloudBrowserSettingsScreenTemplate",
+      "descriptor": "0x96d714c",
+      "accessor": "0x624ca7c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "LocationSettingsScreenTemplate",
+      "descriptor": "0x96d7254",
+      "accessor": "0x624caac",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsCustomizeScreenTemplate",
+      "descriptor": "0x96d7364",
+      "accessor": "0x624cb5c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "NotificationSettingsDestination",
+      "descriptor": "0x96d73e0",
+      "accessor": "0x624d010",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ConnectorsSettingsDestination",
+      "descriptor": "0x96d7418",
+      "accessor": "0x624d04c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsDestination",
+      "descriptor": "0x96d746c",
+      "accessor": "0x624d1dc",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsScreenAction",
+      "descriptor": "0x96d7488",
+      "accessor": "0x624d274",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsScreenTemplate",
+      "descriptor": "0x96d74e0",
+      "accessor": "0x624d280",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DangerousSettings",
+      "descriptor": "0x96e07dc",
+      "accessor": "0x64d6834",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "NoAuthAdPreferences",
+      "descriptor": "0x96f29cc",
+      "accessor": "0x675c084",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SkillsSettingsOverrides",
+      "descriptor": "0x96f29e8",
+      "accessor": "0x675c090",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "UserSettingsToolSession",
+      "descriptor": "0x96f4d58",
+      "accessor": "0x67a9dd0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "OpenFamilySettingsCodingKeys",
+      "descriptor": "0x96f73a4",
+      "accessor": "0x67b1d0c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsEntrypoint",
+      "descriptor": "0x96fb358",
+      "accessor": "0x6897d74",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PluginSettingsProvider",
+      "descriptor": "0x96fb454",
+      "accessor": "0x68983f4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsEntrypoint",
+      "descriptor": "0x96fb4fc",
+      "accessor": "0x6898864",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "Settings",
+      "descriptor": "0x96fb56c",
+      "accessor": "0x6898dc8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "OutgoingBubbleTypeSettings",
+      "descriptor": "0x96fc99c",
+      "accessor": "0x69730d8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ChatTypeSettings",
+      "descriptor": "0x96fc9b8",
+      "accessor": "0x6973140",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "UserActionSettingsResponse",
+      "descriptor": "0x9703f70",
+      "accessor": "0x6be8428",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "Settings",
+      "descriptor": "0x97072a0",
+      "accessor": "0x6c37430",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "PersonalitySettingsImpressionResponse",
+      "descriptor": "0x9708dc4",
+      "accessor": "0x6c53bb0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "FamilySettingsUniversalLink",
+      "descriptor": "0x971099c",
+      "accessor": "0x6d1d58c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsDeepLink",
+      "descriptor": "0x9710d60",
+      "accessor": "0x6d1e1f8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsUniversalLink",
+      "descriptor": "0x9710d7c",
+      "accessor": "0x6d1e3ec",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultAccountSettingsService",
+      "descriptor": "0x97125a0",
+      "accessor": "0x6d6f144",
+      "kind": 16,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultAccountSettingsServiceOAInjectFactory",
+      "descriptor": "0x9713940",
+      "accessor": "0x6d7cfd0",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "DefaultAccountSettingsServiceInjectedDependencies",
+      "descriptor": "0x9713b04",
+      "accessor": "0x6d7d3c8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AccountSettingsResponse",
+      "descriptor": "0x97158f0",
+      "accessor": "0x6dc34fc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "Settings",
+      "descriptor": "0x971590c",
+      "accessor": "0x6dc3508",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "BetaSettings",
+      "descriptor": "0x9715a4c",
+      "accessor": "0x6dc3a0c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AccountSettingsAPIError",
+      "descriptor": "0x9715b68",
+      "accessor": "0x6dc3b48",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "ResponsePresentationSettings",
+      "descriptor": "0x9715bc8",
+      "accessor": "0x6dc3e3c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsEvent",
+      "descriptor": "0x971ad08",
+      "accessor": "0x6ebd140",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsCardFormStyle",
+      "descriptor": "0x971e02c",
+      "accessor": "0x6f8f810",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsDescribedRow",
+      "descriptor": "0x971e070",
+      "accessor": "0x6f57540",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSection",
+      "descriptor": "0x971e0e0",
+      "accessor": "0x6f5754c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSurfaceStyle",
+      "descriptor": "0x971e1bc",
+      "accessor": "0x6f90918",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsTitleBuilder",
+      "descriptor": "0x971e3ac",
+      "accessor": "0x6f90a80",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsButtonStyle",
+      "descriptor": "0x971e41c",
+      "accessor": "0x6f90b00",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsLabelStyle",
+      "descriptor": "0x971e460",
+      "accessor": "0x6f90c3c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsLabeledContentStyle",
+      "descriptor": "0x971e4a4",
+      "accessor": "0x6f90c74",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsLoadableToggleStyle",
+      "descriptor": "0x971e4e8",
+      "accessor": "0x6f90d54",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsToggleStyle",
+      "descriptor": "0x971e504",
+      "accessor": "0x6f90d60",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsIconViewModifier",
+      "descriptor": "0x9720ba8",
+      "accessor": "0x6fa8244",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsPressedRowLabel",
+      "descriptor": "0x9720bd0",
+      "accessor": "0x6fa89f8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsPresentationBackgroundModifier",
+      "descriptor": "0x9720c38",
+      "accessor": "0x6fa8a44",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsShapedSecondarySurfaceModifier",
+      "descriptor": "0x9720c74",
+      "accessor": "0x6f576f0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSecondarySurfaceModifier",
+      "descriptor": "0x9720cb8",
+      "accessor": "0x6fa8ea4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsShapedRowSurfaceModifier",
+      "descriptor": "0x9720cf4",
+      "accessor": "0x6f576e4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSurfaceModifier",
+      "descriptor": "0x9720d38",
+      "accessor": "0x6fa9458",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsRowSurfaceModifier",
+      "descriptor": "0x9720d5c",
+      "accessor": "0x6fa95d0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsCardRowPosition",
+      "descriptor": "0x9720dd8",
+      "accessor": "0x6fa9be8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsHeaderModifier",
+      "descriptor": "0x9720dfc",
+      "accessor": "0x6fa9bf4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsCardRowBackground",
+      "descriptor": "0x9721ab8",
+      "accessor": "0x6fcabb4",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "__Key_isSettingsCardForm",
+      "descriptor": "0x9721adc",
+      "accessor": "0x6fcabc0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "__Key_isSettingsPlainRow",
+      "descriptor": "0x9721b78",
+      "accessor": "0x6fcabf0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsSurfaceFormStyle",
+      "descriptor": "0x9721ddc",
+      "accessor": "0x6fcbc28",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SettingsRowButtonStyle",
+      "descriptor": "0x9721e00",
+      "accessor": "0x6fcbcdc",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "TimeManagementSettings",
+      "descriptor": "0x9727508",
+      "accessor": "0x706d4a4",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptPersonalizationSettingsInstantAnswersAction",
+      "descriptor": "0x9730d38",
+      "accessor": "0x739408c",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptBusinessPremiumSeatSettingsBannerActionType",
+      "descriptor": "0x9731cdc",
+      "accessor": "0x7394740",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptLearningQuizPreferencesActionType",
+      "descriptor": "0x97320b0",
+      "accessor": "0x73948e4",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptPersonalizationSettingsInstantAnswers",
+      "descriptor": "0x97321e4",
+      "accessor": "0x7394a98",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptBusinessPremiumSeatSettingsBannerAction",
+      "descriptor": "0x97339bc",
+      "accessor": "0x739c3e0",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptLearningQuizPreferencesAction",
+      "descriptor": "0x9733f88",
+      "accessor": "0x739e70c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptFileLibraryStorageSettingsViewed",
+      "descriptor": "0x973b2f0",
+      "accessor": "0x73a1844",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptEcosystemPluginSettingsFormEventType",
+      "descriptor": "0x973cefc",
+      "accessor": "0x73a40e0",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptEcosystemPluginSettingsFormEvent",
+      "descriptor": "0x973d0a0",
+      "accessor": "0x73a4a90",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptLocationPermissionSettingsOpenSource",
+      "descriptor": "0x9743fc8",
+      "accessor": "0x73b0ac4",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptLocationPermissionSettingsOpened",
+      "descriptor": "0x97440c4",
+      "accessor": "0x73b0b44",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptSitesSettingsLoadResult",
+      "descriptor": "0x974521c",
+      "accessor": "0x73b23b4",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptSitesSettingsOperationDetails",
+      "descriptor": "0x974552c",
+      "accessor": "0x73b2628",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptSitesSettingsViewed",
+      "descriptor": "0x9745698",
+      "accessor": "0x73b2b28",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptTrustedContactSettingsAction",
+      "descriptor": "0x9746a14",
+      "accessor": "0x73b5948",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_ChatgptTrustedContactSettingsActionTaken",
+      "descriptor": "0x9746ad8",
+      "accessor": "0x73b5a94",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_VirtualTryOnLikenessSettingsAction",
+      "descriptor": "0x974a230",
+      "accessor": "0x73bb4f0",
+      "kind": 18,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_VirtualTryOnLikenessSettingsViewed",
+      "descriptor": "0x974a364",
+      "accessor": "0x73bbb60",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "AnalyticsEvents_V1_VirtualTryOnLikenessSettingsActionTapped",
+      "descriptor": "0x974a380",
+      "accessor": "0x73bbc58",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SVGSettings",
+      "descriptor": "0x975d160",
+      "accessor": "0x7601d0c",
+      "kind": 17,
+      "verification": "type-presence-only"
+    },
+    {
+      "name": "SentrySDKSettings",
+      "descriptor": "0x97658e0",
+      "accessor": "0x77cd0a8",
+      "kind": 17,
+      "verification": "type-presence-only"
+    }
+  ],
+  "readable_files": [
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_platform_services/src/AccountSettings.js",
+      "sha256": "8ce8dd0d0051e24d98213407a9700d45ea441f00c3ec3172b41434966a9761c9",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_platform_services/src/OAIAccountSettingsService.js",
+      "sha256": "33c26a58769f5d0a808c639c4f4322f7caafaea1cef8dd378b91577854f2f5c7",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/chatgpt_services/src/account/ChatGPTAccountSettingsServices.js",
+      "sha256": "b28db22e2162529e2a291a32394cdc310feb6730ea6b971329ce41582a7fa3e9",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/valdi_core/src/debugging/DebugSettings.js",
+      "sha256": "d6e4aac66f0792559124026e8688bcc3b07509152e1d8e176e5dc9b519c988b5",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/valdi_core/src/debugging/NativeAppearanceDebugSettings.js",
+      "sha256": "3b92ef5af92d19a8a978af964321a73094acbc75686aca7158dcd82bd1a73687",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_integration_fixtures/src/fixtures/OAINetworkAccountSettingsFixture.js",
+      "sha256": "36d778cbe99afec8672071031982647987daaed2c2299c96ee1f038771cf0ec0",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/settings_text_editor/src/TextEditorScreen.js",
+      "sha256": "2622a496d01bbb1df1146c9d0321b8564b03026c2282a41cfa8776d59948f056",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/settings_text_editor/src/TextEditorModels.js",
+      "sha256": "33c26a58769f5d0a808c639c4f4322f7caafaea1cef8dd378b91577854f2f5c7",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/memory_settings_ui/src/MemorySettingsModels.js",
+      "sha256": "7f9cf2fbaebab58f610fb445d2f9ef416c4bec6a8b6230eb63690972a6dd3571",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/memory_settings_ui/src/MemorySettingsCustomInstructionsController.js",
+      "sha256": "46741f4eb704b549af68674795cd70583b7e66b5ac1e144cd7db83d274705d74",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/memory_settings_ui/src/MemorySettingsScreen.js",
+      "sha256": "3c0dedbccf75f789dc8bc204c5214399045f75dd3d95ddd429a4ea5609ab4e22",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/memory_settings_ui/src/MemoryAnalytics.js",
+      "sha256": "3af7d5f1b8f80d360b290a19fd2dcb720ab4545ca6158ec4b4b046e16fdf0aa3",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/memory_settings_ui/src/MemorySettingsRepository.js",
+      "sha256": "91bd35385f21d70868e1cb1cacce0186872557532230702df04dbc147c12aac9",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/memory_settings_ui/src/MemoryStorageService.js",
+      "sha256": "89f8efca11db6bfa37fc18000ba0b2a753f595c4fd95e5e01d7f4e7151b2804d",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/memory_settings_ui/src/Strings.js",
+      "sha256": "1412fd12d58c33c0759f037221c6dbc1793526a1cbc3bbd628339f08a13bcdcd",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/memory_settings_ui/src/MemorySettingsPageNavigation.js",
+      "sha256": "ba1e04e0ea1ec8f1a63461be0c7f6421c8a553fd9a9ad96acc9e3045537be25a",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/personalization_settings_ui/src/PersonalizationSettingsRepository.js",
+      "sha256": "5ca2487fef14609157c6f6c63030862c6b552300fd6a3a4c8eda8abb96c93ab1",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/personalization_settings_ui/src/PersonalizationAvailability.js",
+      "sha256": "87e032b61c368a757cc1b5de735701cd70504c40f4abd5e343270199b65bd125",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/personalization_settings_ui/src/PersonalizationPageNavigation.js",
+      "sha256": "f6d14998b80e69761b4361d24c18f4a698acc95bbf0bd77346d5cfdd5d274c8c",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/personalization_settings_ui/src/PersonalizationAnalytics.js",
+      "sha256": "a3ecc5207663433fa06fe0017141b194c0e83ab9317af73f4e25c3cd4a7d50d7",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/personalization_settings_ui/src/PersonalizationPetThumbnail.js",
+      "sha256": "d1da8ee7b761448da3f71a51ac0da8c792c5563857e82776cc5e074755f4b9d0",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/personalization_settings_ui/src/PersonalizationOptionPickerScreen.js",
+      "sha256": "9c16040426ff33c27d140634e7a7c667fbd5b6383045d7e36424e3bd0b41b95d",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/personalization_settings_ui/src/Strings.js",
+      "sha256": "d49964de38a3c2872e4b9e029f75a7a8b4906eff2bbda74ee59bf316bb23da07",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/personalization_settings_ui/src/PersonalizationSettingsModels.js",
+      "sha256": "72b818afe42e24b962f56efc26b2fac87ef71851287a49dd012700e64353dc0a",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/personalization_settings_ui/src/ReferencePhotosRow.js",
+      "sha256": "5df5e1152c719f95bf8af3e5012415f0355539edfe952354863470b68579b4b0",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/personalization_settings_ui/src/PersonalizationSettingsScreen.js",
+      "sha256": "088e1ca8f804f00187fec36d7d259ae44d233bfabd71d820959e04deea5514a8",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsSearchHighlight.js",
+      "sha256": "fc8e3e43e0860e79e2a41de6396358e7fead3904f1011cd519bc050d915762a9",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsList.js",
+      "sha256": "c9bbf6108a84d38ad71d6c4c182fe6f3c9bfd18911ef7cb3f5946c7f22006d32",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsMenuRow.js",
+      "sha256": "dfb90b0d7f5f949a12b3b9e4463f8a2be23cbf938fa392904890a8875f901b47",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsSection.js",
+      "sha256": "dd3c16c71b875fdfd6436b66b5e7ea1835c7d5a44fc78bd67093e4d04521223f",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsRow.js",
+      "sha256": "979a53d4fc1addda4d7101b1dd7f4374d75e408843202a456a5dfa73120f70be",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsTextEntrySection.js",
+      "sha256": "19433fbf2a64c8824e1a692073c016b028684b4a4e44fc174cd44fde3b48f3ce",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsActionRow.js",
+      "sha256": "2d818a1fe252242319dea21cecf93ebf8a017ed96a7f3bb6f9cb3cf2908da4d5",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsNavigationAccessory.js",
+      "sha256": "26a5d3d69c0293a03e29fb58654aa5dd122b5fe2a95a86d441970884b827f54d",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsTheme.js",
+      "sha256": "c5fd0cb39f555bbd0c61214e008e786862e80acb0e003ae3ecc1f629ee871d0e",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsTextInputRow.js",
+      "sha256": "94d186491e967f5a9076dc03f5c0bc6fbae7df894a81e59be51c9be435579a39",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsToggleRow.js",
+      "sha256": "bc97bb0b8e83d9338620f85589bde23e3ebcfca405d7a0d747c680277519a77c",
+      "verification": "not-yet-traced"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/chatgpt_family/src/FamilySettings.js",
+      "sha256": "6c213516ab4f13ffdc8242a3fdaa2aa3601d32e6576435f0fa9d0db6e48dfcd9",
+      "verification": "not-yet-traced"
+    }
+  ],
+  "limits": [
+    "Search seeds only, not a complete settings menu",
+    "Type and file presence does not prove active root wiring, visibility, or default order",
+    "No online calls or personal account data"
+  ]
+}

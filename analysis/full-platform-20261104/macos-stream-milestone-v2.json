@@ -1,0 +1,18 @@
+{
+  "status": "partial",
+  "runtime_report": "macos-cancel-boundary-v3.json",
+  "verified": [
+    "Actual Stop button calls synthetic stop endpoint",
+    "Stopped stream ID matches current request",
+    "Partial response remains; subsequent fixture code block does not appear",
+    "In-memory history preserves partial response after original renderer refetch"
+  ],
+  "source": "analysis/tools/desktop-fixture-services.mjs",
+  "sha256": "5c7b82aea16629193d1a68bbb7c749bf31bbd4a0e30be96a44d244648515b834",
+  "unaccepted": [
+    "disk history",
+    "Zhipu provider cancellation",
+    "cross-account service isolation",
+    "cross-platform UI parity"
+  ]
+}

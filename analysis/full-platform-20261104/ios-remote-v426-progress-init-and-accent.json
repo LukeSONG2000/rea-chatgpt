@@ -1,0 +1,115 @@
+{
+  "constructor_import": {
+    "symbol": "_$s7SwiftUI12ProgressViewVA2A05EmptyD0VRs_rlEACyA2EGycAERszrlufC",
+    "library_ordinal": 82,
+    "weak": false,
+    "import_ordinal": 8045,
+    "table_addend": 0,
+    "encoded_pointer_addend": 0,
+    "chain_membership_verified": true
+  },
+  "slot": "0xaad0498",
+  "0x266274": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  266274: 17fc84d4     \tb\t0x1875c4 <__text+0x15f5c4>\n  266278: 17f976af     \tb\t0xc3d34 <__text+0x9bd34>\n  26627c: 17ffa317     \tb\t0x24eed8 <__text+0x226ed8>\n  266280: 17fa5fb4     \tb\t0xfe150 <__text+0xd6150>\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x266274",
+        "end_exclusive": "0x266284",
+        "sha256": "f0cdcb777b4db719f061e6edcd8413993dec063b06fc15f22fb75f473dbe0ee7"
+      },
+      "linker_function_starts_in_window": [
+        "0x266274",
+        "0x266278",
+        "0x26627c",
+        "0x266280"
+      ],
+      "next_linker_function_start": "0x266284",
+      "direct_calls": [],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  },
+  "0x754a920": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 754a920: d10103ff     \tsub\tsp, sp, #0x40\n 754a924: a90157f6     \tstp\tx22, x21, [sp, #0x10]\n 754a928: a9024ff4     \tstp\tx20, x19, [sp, #0x20]\n 754a92c: a9037bfd     \tstp\tx29, x30, [sp, #0x30]\n 754a930: 9100c3fd     \tadd\tx29, sp, #0x30\n 754a934: 9630264a     \tbl\t0x15425c <__text+0x12c25c>\n 754a938: aa0803f5     \tmov\tx21, x8\n 754a93c: b0007ba0     \tadrp\tx0, 0x84bf000 <_writev+0x84bf000>\n 754a940: 9103c000     \tadd\tx0, x0, #0xf0\n 754a944: 941c2709     \tbl\t0x7c54568 <_writev+0x7c54568>\n 754a948: aa0003f6     \tmov\tx22, x0\n 754a94c: f90007f3     \tstr\tx19, [sp, #0x8]\n 754a950: 941c27e7     \tbl\t0x7c548ec <_writev+0x7c548ec>\n 754a954: d001ac41     \tadrp\tx1, 0xaad4000 <_writev+0xaad4000>\n 754a958: f946d821     \tldr\tx1, [x1, #0xdb0]\n 754a95c: d001ac42     \tadrp\tx2, 0xaad4000 <_writev+0xaad4000>\n 754a960: f946cc42     \tldr\tx2, [x2, #0xd98]\n 754a964: 910023e0     \tadd\tx0, sp, #0x8\n 754a968: 941bf1ea     \tbl\t0x7c47110 <_writev+0x7c47110>\n 754a96c: aa0003f3     \tmov\tx19, x0\n 754a970: b001d8c0     \tadrp\tx0, 0xb063000 <_OBJC_METACLASS_$__TtC15SwiftUIToolbelt37SceneCornerConfigurationProvidingView+0xe00>\n 754a974: 91232000     \tadd\tx0, x0, #0x8c8\n 754a978: b0007ba1     \tadrp\tx1, 0x84bf000 <_writev+0x84bf000>\n 754a97c: 91048021     \tadd\tx1, x1, #0x120\n 754a980: 962ec03e     \tbl\t0xfaa78 <__text+0xd2a78>\n 754a984: 962ff3c0     \tbl\t0x147884 <__text+0x11f884>\n 754a988: b001d8c0     \tadrp\tx0, 0xb063000 <_OBJC_METACLASS_$__TtC15SwiftUIToolbelt37SceneCornerConfigurationProvidingView+0xe00>\n 754a98c: 91234000     \tadd\tx0, x0, #0x8d0\n 754a990: b0007ba1     \tadrp\tx1, 0x84bf000 <_writev+0x84bf000>\n 754a994: 9104a021     \tadd\tx1, x1, #0x128\n 754a998: 962ec038     \tbl\t0xfaa78 <__text+0xd2a78>\n 754a99c: b9802408     \tldrsw\tx8, [x0, #0x24]\n 754a9a0: 8b0802a8     \tadd\tx8, x21, x8\n 754a9a4: a9004d16     \tstp\tx22, x19, [x8]\n 754a9a8: a9437bfd     \tldp\tx29, x30, [sp, #0x30]\n 754a9ac: 162ffbf1     \tb\t0x149970 <__text+0x121970>\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x754a920",
+        "end_exclusive": "0x754a9b0",
+        "sha256": "35a01ffdb8fdc484eee79838ed4af43c59b2038e0289436bbaafad203e534c91"
+      },
+      "linker_function_starts_in_window": [
+        "0x754a920"
+      ],
+      "next_linker_function_start": "0x754a9b0",
+      "direct_calls": [
+        {
+          "site": "0x754a934",
+          "target": "0x15425c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x754a944",
+          "target": "0x7c54568",
+          "imported_symbol": "_swift_getKeyPath"
+        },
+        {
+          "site": "0x754a950",
+          "target": "0x7c548ec",
+          "imported_symbol": "_swift_retain_x19"
+        },
+        {
+          "site": "0x754a968",
+          "target": "0x7c47110",
+          "imported_symbol": "_$s7SwiftUI13AnyShapeStyleVyACxcAA0dE0RzlufC",
+          "chained_binding": {
+            "slot": "0xaad0690",
+            "symbol": "_$s7SwiftUI13AnyShapeStyleVyACxcAA0dE0RzlufC",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 8108,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x754a980",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x754a984",
+          "target": "0x147884",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x754a998",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  }
+}

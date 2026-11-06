@@ -1,0 +1,51 @@
+{
+  "status": "partial",
+  "authority": "normal packaged runtime around preserved original manager; real synthetic local owner",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/original-remote-runtime.mjs",
+      "sha256": "8ea265c68170e6af78bfa4e0c1837b04a4cc28ef87ce7d89432ae1632503d7a4"
+    },
+    {
+      "path": "implementation/desktop/native/renderer.mjs",
+      "sha256": "14a6a19426b533c31fdb3436dd44a69c79a713a06659b8bfe14e3365c768daec"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-runtime.cjs",
+      "sha256": "77e57c5275dcc48cfe6c72a26908a810e6bcf7b471fd353fb7c5f8457461d863"
+    }
+  ],
+  "runtime": {
+    "status": "passed",
+    "observed": [
+      "",
+      "Local ",
+      "Local fixture reply",
+      "Local fixture reply"
+    ],
+    "turns": 2,
+    "before": {
+      "active": true,
+      "poisoned": false,
+      "threads": 1,
+      "subscriptions": 0,
+      "transportListeners": 1,
+      "readListeners": 1
+    },
+    "restoredTurns": 2,
+    "otherHostPreserved": true
+  },
+  "reports": [
+    "remote-runtime-v161-bundle.json",
+    "remote-runtime-v161-r2.json",
+    "remote-runtime-v161-hashes.json"
+  ],
+  "macSignature": "deep strict verification passed",
+  "limits": [
+    "Original manager runtime not yet registered as host-service RPC provider",
+    "Original device catalog and visible Remote controls not enabled",
+    "Per-thread polling explicit; read-state adapters in-memory",
+    "Thread/read is only supported transport method; tools disabled",
+    "Windows packaged not executed; no real model request"
+  ]
+}

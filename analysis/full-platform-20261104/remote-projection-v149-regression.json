@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "authority": "independent projection unit tests, not full official manager compatibility",
+  "checks": [
+    "scope-derived deterministic turn/user/assistant identities",
+    "cold replay restores user and assistant content",
+    "separate hosts never share turn identity",
+    "late/duplicate/foreign events cannot mutate state",
+    "pre-acceptance failure and cancellation retain user item without invented assistant",
+    "missing historical prompt fails explicitly"
+  ],
+  "limits": [
+    "Notifications not yet fed into full renderer manager",
+    "User item and turn construction are independent design choices; only consumed field shapes observed"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "status": "partial",
+  "evidenceType": "independent implementation with two real local owner processes",
+  "reference": "docs/reference-architecture/REMOTE.md; Android 1.2026.293 session-pool and operation evidence only; no claim of official wire compatibility",
+  "platform": "macOS POSIX owner; no Windows owner execution",
+  "modelModeTested": "fixture",
+  "validation": {
+    "testCommand": "/opt/homebrew/bin/python3.12 -m unittest discover -s implementation/remote -v",
+    "finalLog": "remote-owner-v143-r6-tests.log",
+    "testsPassed": 3,
+    "checks": [
+      "independent authenticated host processes",
+      "same request id isolated across owners",
+      "cancel A preserves B completion",
+      "host B list survives host A process exit",
+      "durable event cursor and history restart",
+      "old boot epoch rejected",
+      "single owner directory lease",
+      "graceful termination and SIGKILL become interrupted",
+      "cross-host tokens rejected",
+      "path traversal and symlink traversal rejected",
+      "unsupported operations stay errors"
+    ]
+  },
+  "correctedDefects": [
+    {
+      "evidence": "remote-owner-v143-tests.log",
+      "issue": "HTTPServer hostname resolution delayed loopback startup",
+      "fix": "direct TCP bind without reverse DNS"
+    },
+    {
+      "evidence": "remote-owner-v143-r5-tests.log",
+      "issue": "graceful owner shutdown marked active job failed before restart",
+      "fix": "persist interrupted before worker termination"
+    }
+  ],
+  "sources": {
+    "implementation/remote/owner.py": "4e99f34908dacb6b5968dec67a63ecdae3d8ec563a35071cc1075b51e5f2c6dd",
+    "implementation/remote/test_owner.py": "0b1f22186be0bf76363d5512b56051051e991ddd17a7c64f94c4af1eb6a6b708",
+    "implementation/remote/README.md": "16e5077c3691a908e6770743acfbc8c5679263a6fa256b6b272b8f38e0207c30",
+    "implementation/harness/fixture_worker.py": "82d0794a2bdea3a18d3cfd0c03aff876e4a9de0ae22981d2982470ad248d9f9b",
+    "implementation/harness/model_worker.py": "ee30aec808ff30433110e284ea39606a270c8f55a6ee6a99d78e663affd89a8d"
+  },
+  "remaining": [
+    "macOS/iOS UI and pairing UX",
+    "Windows Android and Web controller validation",
+    "real Zhipu Remote execution",
+    "push stream transport",
+    "approvals Goal and tools",
+    "official relay/cloud compatibility",
+    "production quotas and database migrations"
+  ]
+}

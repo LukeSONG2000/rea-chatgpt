@@ -1,0 +1,2 @@
+// Resource SHA256: 067c3fc636bfcfb31995a513c58736929aa5625777304f7a99ccca3ebd5e4a33
+exports.default = require('valdi_core/src/Valdi').getModuleFileEntryAsBytes("dil_text", "strings/strings-is.json");

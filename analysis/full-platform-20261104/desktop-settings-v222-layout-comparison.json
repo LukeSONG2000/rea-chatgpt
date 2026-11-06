@@ -1,0 +1,63 @@
+{
+  "status": "source-mechanism-identified-runtime-not-accepted",
+  "issue": "Settings sidebar scroll reset on section navigation",
+  "baselineVersion": "26.1021.31345",
+  "comparisonVersion": "26.1029.61003",
+  "comparisonBundle": "com.openai.codex",
+  "evidence": [
+    {
+      "label": "new root",
+      "file": "analysis/full-platform-20261104/source-snippets-v222/216127.1eafae6870.js",
+      "sha256": "5b9de3d29aeaff694b649cf430f6eec975ddd720a5e0b08b767d3ce0ad90cd4b",
+      "characterOffset": 92158,
+      "excerpt": "]!==eU?(C=(0,a.jsx)(aE,{routeMatches:q,workspace:eU,activeBindings:eM}),W[52]=eM,W[53]=q,W[54]=eU,W[55]=C):C=W[55];let eD=C,eN=eD;if(eu){let e;W[56]!==eD?(e=(0,a.jsx)(aO,{children:eD}),W[56]=eD,W[57]=e):e=W[57],eN=e}else if(!eC){let e;W[58]!==eD||W[59]!==eL?(e=(0,a.jsx)(n6.L,{showCodexMicroHud:eL,children:eD}),W[58]=eD,W[59]=eL,W[60]=e):e=W[60],eN=e}let eR=!er;W[61]!==eR?(S=(0,a.jsx)(a.Fragment,{children:(0,a.jsx)(nc,{enabled:eR})}),W[61]=eR,W[62]=S):S=W[62],W[63]===Symbol.for(\"react.memo_cache_sentinel\")?(T=n2.U.isRecording()?(0,a.jsx)(n3.X,{onPaint:a1}):null,W[63]=T):T=W["
+    },
+    {
+      "label": "new lazy layout",
+      "file": "analysis/full-platform-20261104/source-snippets-v222/216127.1eafae6870.js",
+      "sha256": "5b9de3d29aeaff694b649cf430f6eec975ddd720a5e0b08b767d3ce0ad90cd4b",
+      "characterOffset": 125017,
+      "excerpt": ">l})},yifX(e,t,n){let a=(0,n(\"v4LA\").e)(async()=>(await Promise.all([n.e(643169),n.e(61039),n.e(968499)]).then(n.bind(n,\"Nh8F\"))).SettingsLayout);n.d(t,{},{q:a})},gLgE(e,t,n){var a=n(\"ABep\"),o=n(\"QosV\"),i=n(\"on57\"),r=n(\"oyxz\"),l=n(\"HZfM\"),s=n(\"PAiv\"),c=n(\"FX9k\");function u(e){let t,n,u,d,m,h,p,g,f,y,_,v,b=(0,o.c)(36),{title:x,description:w,children:I,presentation:A,contentAlignment:C,showFooter:S,showHomeLink:T,onHomeClick:E}=e,P=void 0===A?\"page\":A,k=void 0===S||S,j=void 0!==T&&T;b[0]===Symbol.for(\"react.memo_cache_sentinel\")?(t=(0,a.jsx)(\"span\",{className:\"text-heading-lg"
+    },
+    {
+      "label": "new layout export",
+      "file": "analysis/full-platform-20261104/source-snippets-v222/968499.fa029184f4.js",
+      "sha256": "91edcb8bf204dd0687dbf7b30b1e894c4536950327e9ed4286c7d615fc9c7471",
+      "characterOffset": 29313,
+      "excerpt": "ptKeyboard;if(\"security\"===e)return d.chatGptSecurity}return\"cloud-environments\"===e?d.legacyCodexCloud:d[e]}},Nh8F(e,t,s){s.d(t,{SettingsLayout:()=>tv});var a=s(\"ABep\"),i=s(\"QosV\"),n=s(\"iRMi\"),o=s(\"y5DF\"),r=s(\"DBCl\"),c=s(\"zd8w\"),l=s(\"Wf1j\"),d=s(\"HZfM\"),g=s(\"gbrq\"),u=s(\"EOo5\"),p=s(\"CyfE\"),m=s(\"q3HK\"),f=s(\"Ot7V\"),h=s(\"GKsW\"),b=s(\"rw8f\"),y=s(\"QIEU\"),v=e=>(0,a.jsxs)(\"svg\",{width:16,height:16,viewBox:\"0 0 16 16\",fill:\"none\",xmlns:\"http://www.w3.org/2000/svg\",...e,children:[(0,a.jsx)(\"path\",{d:\"M10.0008 11.2038C10.2946 11.2038 10.5328 11.442 10.5328 11.7358C10.5328 12.0297 10.29"
+    },
+    {
+      "label": "new context ownership",
+      "file": "analysis/full-platform-20261104/source-snippets-v222/968499.fa029184f4.js",
+      "sha256": "91edcb8bf204dd0687dbf7b30b1e894c4536950327e9ed4286c7d615fc9c7471",
+      "characterOffset": 77815,
+      "excerpt": ",en[87]=eQ,en[88]=eT,en[89]=eS,en[90]=J):J=en[90],en[91]!==ef||en[92]!==eD||en[93]!==eY||en[94]!==eL||en[95]!==J||en[96]!==ex?(X={contextualNavigation:eY,selectedHostId:ef,settingsSearchScrollTarget:eD,slateLayout:eL,visibility:ex,outletContext:J},en[91]=ef,en[92]=eD,en[93]=eY,en[94]=eL,en[95]=J,en[96]=ex,en[97]=X):X=en[97],en[98]!==eo||en[99]!==X?(ee=(0,a.jsx)(T.v,{value:X,children:eo}),en[98]=eo,en[99]=X,en[100]=ee):ee=en[100],en[101]!==eB||en[102]!==eY||en[103]!==ee?(et=(0,a.jsx)(A.L,{sidebar:eY,requestNavigation:eB,children:ee}),en[101]=eB,en[102]=eY,en[103]=ee,en[104]="
+    },
+    {
+      "label": "old combined settings page",
+      "file": "recovered/macos/asar-extracted/webview/assets/settings-page-948d323bee3a.js",
+      "sha256": "e0b5e0ba926b58b38edaf85214be737e1226cce1b05c9fa2d76385281ea89129",
+      "characterOffset": 43373,
+      "excerpt": "nvironments`,`worktrees`]}],wi={collapsed:{icon:pr,message:bi.expandSidebar},expanded:{icon:ur,message:bi.collapseSidebar}}})))()}function Ei(){let e=(0,Mi.c)(140),t=ce(a),n=(0,Ni.useRef)(!1),r;e[0]===Symbol.for(`react.memo_cache_sentinel`)?(r=e=>{if(!n.current)return;let t=e?.querySelector(`button[aria-pressed=\"true\"]`);t!=null&&(n.current=!1,t.focus())},e[0]=r):r=e[0];let i=r,o=N(ye),s=ae(),u=I(),d=g(),{connectedRemoteConnections:f,selectedHostId:p,setSelectedHostId:m}=At(),h=ee(`/settings/:section/*`),_=ee(re),v=h?.params.section??null,b=oe(Pn,p),te=b!=null&&b.server===_"
+    }
+  ],
+  "observations": [
+    "New CLr counterpart checks a settings route handle and places lazy SettingsLayout outside the aE retained-route element",
+    "New SettingsLayout owns sidebar, selected host, navigation interception and search target; provides state to content via context",
+    "Old SettingsPage Ei owns both sidebar and section outlet inside HIr route-keyed subtree",
+    "New source still excludes settings from workspace=true; prior proposed destination gate was not the correct mechanism"
+  ],
+  "inference": "Keeping settings layout outside child-route retention is the source-grounded direction for preserving sidebar identity; static evidence alone does not prove runtime parity",
+  "implementationPlan": [
+    "Map new settings route marker and layout-context consumers",
+    "Port the original layout/content separation with explicit baseline compatibility adapter, keeping original sidebar component and navigation callbacks",
+    "Ensure retained child routes render settings content once without duplicating layout",
+    "Verify same DOM scroll owner across Worktrees -> Git -> Worktrees; keyboard focus, selected item, unsaved-change interception and search behavior remain functional",
+    "Run settings reload/restart and chat draft isolation regression; refresh external preview only after passing"
+  ],
+  "notAuthorizedAsCompletion": [
+    "No fixed-key workaround deployed",
+    "No claim that 26.1029 was launched or behaviorally validated",
+    "No unrestricted mixing of new module binaries with old dependency graph"
+  ]
+}

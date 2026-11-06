@@ -1,0 +1,48 @@
+{
+  "stubs": {
+    "0x7c59140": "becomeFirstResponder",
+    "0x7c68a00": "isFirstResponder",
+    "0x7c712a0": "resignFirstResponder"
+  },
+  "caller_range": [
+    "0x4c40000",
+    "0x4f80000"
+  ],
+  "hits": [
+    {
+      "caller": "0x4d72f78",
+      "stub": "0x7c59140",
+      "selector": "becomeFirstResponder"
+    },
+    {
+      "caller": "0x4d737e8",
+      "stub": "0x7c68a00",
+      "selector": "isFirstResponder"
+    },
+    {
+      "caller": "0x4d778cc",
+      "stub": "0x7c59140",
+      "selector": "becomeFirstResponder"
+    },
+    {
+      "caller": "0x4eed640",
+      "stub": "0x7c712a0",
+      "selector": "resignFirstResponder"
+    },
+    {
+      "caller": "0x4eed6f0",
+      "stub": "0x7c68a00",
+      "selector": "isFirstResponder"
+    },
+    {
+      "caller": "0x4eed8a8",
+      "stub": "0x7c712a0",
+      "selector": "resignFirstResponder"
+    },
+    {
+      "caller": "0x4f6f8cc",
+      "stub": "0x7c68a00",
+      "selector": "isFirstResponder"
+    }
+  ]
+}

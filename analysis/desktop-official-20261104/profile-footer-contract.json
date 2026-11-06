@@ -1,0 +1,16 @@
+{
+  "status": "partial",
+  "evidence_type": "artifact_observation",
+  "source": "recovered/macos/asar-extracted/webview/assets/app-primary-7d7313419f84.js",
+  "sha256": "745529956e303674c268a6871e6f5aad49eca7ef5af899952bf0379d829821b6",
+  "offsets": [
+    1954241,
+    1956014
+  ],
+  "excerpts": [
+    "chatgpt-current-user`,t,e]}async function QNn(e,t,n){if(t.accountId==null||t.userId==null)throw Error(`Cannot save a name without an authenticated account`);let r=CMe(),{chatGptApiBaseUrl:i}=await e.query.fetch(qy);await mm.safePatch(`/accounts/users/name`,{requestBody:{name:n},expectedIdentity:{accountId:t.accountId,userId:t.userId}}),CMe()===r&&(i!=null&&e.set(rPn,{...t,backend:i,name:n,expiresAt:Date.now()+108e5}),await e.queryClient.invalidateQueries({queryKey:ZNn(t)}))}async function $Nn(e,t){let n=await e.query.fetch(wG,t);if(e.get(iPn)==null)return n;let{chatGptApiBaseUrl:r}=await e.query.fetch(qy);return ePn(n,t,r,e.get(iPn))}function ePn(e,{accountId:t,userId:n},r,i){return i?.userId===n&&i.accountId===t&&i.backend===r&&e.id===n?{...e,name:i.name}:e}var tPn,nPn,rPn,iPn,wG;function TG(){return(TG=e((()=>{$(),Ii(),Nb(),Zs(),oh(),IC(),Qa(),Dx(),tPn=Ai({created:hr().optional(),email:Xc().nullable().optional(),email_domain_type:Xc().nullable().optional(),first_name:Xc().nullable().optional(),id:Xc(),name:Xc().nullable().optional(),phone_number:Xc().nullable().optional(),picture:Xc().nullable().optional()}),nPn=Ai({accountId:Xc().nullable(),userId:Xc().nullable(),backend:Xc(),name:Xc(),expiresAt:hr()}),rPn=yp(`chatgpt-saved-account-name`,null,{coerceStoredValue:e=>nPn.safeParse(e).data??null}),iPn=dd(q,()=>null,({get:e,set:t,queryClient:n})=>{let r=e(rPn),i=r==null?0:r.expiresAt-Date.now();if(r==null||i<=0){t(null);return}t",
+    "r==null?void 0:n(qy).data?.chatGptApiBaseUrl;return{enabled:e!=null&&t!=null,queryKey:ZNn({accountId:e,userId:t}),queryFn:async({signal:e})=>tPn.parse(await mm.safeGet(`/me`,{signal:e})),select:n=>ePn(n,{accountId:e,userId:t},i,r),staleTime:_a.ONE_MINUTE}})})))()}function aPn(e){let t=(0,oPn.c)(25),{compact:n,percentage:r,isCharging:i}=e,a=n!==void 0&&n,o=Math.min(100,Math.max(0,r)),s=o<=20&&!i,c=a?`gap-1 text-xs`:`g"
+  ],
+  "fixture": "GET /me returns synthetic id/name/email/picture matching existing account",
+  "hypothesis": "Browser offline signal pauses profile query; local fixture availability requires online signal while actual external traffic remains denied"
+}

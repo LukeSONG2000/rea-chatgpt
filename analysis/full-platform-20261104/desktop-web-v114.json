@@ -1,0 +1,27 @@
+{
+  "status": "partial",
+  "changes": [
+    "Correlated explicit unsupported terminal for legacy fetch; no network forwarding",
+    "Bounded fetch terminal and envelope-shape diagnostics"
+  ],
+  "validation": {
+    "server_tests": "passed: two distinct request identities plus invalid identity rejection",
+    "packaged_consumer_error_branch": true,
+    "page_errors": [],
+    "layout": {
+      "status": "passed",
+      "scope": "Root and initial composer bounds at default viewport only"
+    }
+  },
+  "evidence": [
+    "desktop-web-v114-contract.json",
+    "desktop-web-v114-envelope.json",
+    "desktop-web-v114-terminal.json"
+  ],
+  "next": "Implement opt-in nonempty synthetic project pins, then replay original sidebar selection and detail contract",
+  "limitations": [
+    "Project list remains unsupported; no empty-list success substituted",
+    "No claim of full browser or native parity",
+    "No new model or official service requests"
+  ]
+}

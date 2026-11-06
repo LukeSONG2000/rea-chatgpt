@@ -1,0 +1,46 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "validation": "static-only; no new build or device acceptance",
+  "decision": "Do not equate disabled state with visibility; use original CopyButton control owner and single-item action path when integrating.",
+  "findings": [
+    {
+      "offset": "0x6902f9c",
+      "conclusion": "Markdown header constructs SwiftUIStyleguide.CopyButton through 0x69c6ac4 -> 0x6eeae2c. Metadata descriptor 0x971c5a8, body witness 0x6eeae28 -> 0x6ee9050."
+    },
+    {
+      "offset": "0x6902764",
+      "conclusion": "disableCopyButton byte at header +0x40 captured for environment transform 0x44ab38 -> 0x1225d0; transform computes existing boolean AND NOT captured boolean. Visibility remains a separate display-mode branch at 0x690274c."
+    },
+    {
+      "offset": "0x6902f98",
+      "conclusion": "Caller passes animated=false in w4; constructor preserves w4 in w23 and stores at metadata field slot +0x1c at 0x6eeaed0. Generic CopyButton symbol effect branch must not be blindly enabled for this consumer."
+    },
+    {
+      "offset": "0x6ee9590",
+      "conclusion": "CopyButton content compares items count with 2; less-than branch constructs Button at 0x6ee9724, other branch Menu at 0x6ee9688. Generic menu existence does not establish a code-header menu."
+    },
+    {
+      "offset": "0x6ee9708",
+      "conclusion": "Single Button action 0x6fd631c -> 0x6fc60f4 reads first item only when nonempty and calls item-copy handler 0x6ee9fa8 at 0x6fc6144."
+    },
+    {
+      "offset": "0x6eea194",
+      "conclusion": "Item handler invokes optional onCopy callback after item handling and withAnimation state-update path. Payload case dispatch and exact copied-state reset not fully resolved."
+    }
+  ],
+  "unknowns": [
+    "Remote consumer display-mode enum and initial value",
+    "disableCopyButton environment default/overrides",
+    "Copy item payload case mapping and pasteboard selector resolution",
+    "copied glyph and confirmation duration/reset lifecycle",
+    "header action sizing",
+    "independent Android consumer"
+  ],
+  "next_action": "Resolve code-header displayMode initial value and copy enable environment, then single-string pasteboard branch and feedback reset; integrate a scoped native control with disable/copy/reset tests.",
+  "implementation_change": null,
+  "reason_no_ui_change": "Necessary blocking research: correct control owner and disabled/visibility distinction established; arbitrary always-visible copy button would claim unproved official behavior."
+}

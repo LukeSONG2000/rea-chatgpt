@@ -1,0 +1,28 @@
+{
+  "status": "partial",
+  "classification": "independent-native-table-projection-of-official-parser-output",
+  "build": "ios-build-v3.log: BUILD SUCCEEDED",
+  "checks": [
+    "NativeTableModel preserves cell text, Unicode and alignment",
+    "Ragged column shape rejected",
+    "Existing scope/generation state tests passed"
+  ],
+  "implemented": [
+    "Table AST from original iOS293 Markdown parser",
+    "Native horizontal UIScrollView with selectable UITextView cells",
+    "Header/body roles and Start/Center/End alignment mapping"
+  ],
+  "not_accepted": [
+    "Simulator screen appearance and intrinsic height",
+    "Horizontal/vertical gesture arbitration",
+    "RTL end alignment semantics",
+    "Dynamic Type and wide/large tables",
+    "Inline styles/links within cells",
+    "Column sizing fidelity; 180pt provisional independent width"
+  ],
+  "sources": {
+    "implementation/ios/Sources/DraftStore.swift": "9dbaa73ccfd6a5dab5778076b8d79430bdb289c2bce6d7eb566308b9546a6edf",
+    "implementation/ios/Sources/OfficialMarkdown.swift": "56bb9a0aaf48b258fe260c42ac5e21f7b688b1dbc9dd5c25f00cf25ce3cd3e08",
+    "implementation/ios/Sources/NativeConversationHost.swift": "f5c1bd942af811d653bdedd2d9afa35598a82af4f6acfe2602e1cff65487a68e"
+  }
+}

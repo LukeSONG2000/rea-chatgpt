@@ -1,0 +1,75 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "component": "CodexDisclosureChevron opacity track",
+  "chain": [
+    "body0x6ee7cf0",
+    "keyframe closure0x6f4fc7c",
+    "builder0x6ee7fb0",
+    "track closure0x6fc6400",
+    "track builder0x6ee80e0"
+  ],
+  "initial_and_trigger": {
+    "predicate": "isExpanded && fadesWhenExpanded at0x6ee7e24..0x6ee7e44",
+    "initial": "0 when predicate true; 1 otherwise",
+    "trigger": "same Boolean, not every update"
+  },
+  "keyframes": {
+    "true": [
+      {
+        "type": "MoveKeyframe",
+        "value": 1,
+        "site": "0x6ee8238..0x6ee8260"
+      },
+      {
+        "type": "LinearKeyframe",
+        "value": 1,
+        "duration": 2.2,
+        "site": "0x6ee82a0..0x6ee82b8; helper0x6fddbc4 stores1 and obtains UnitCurve.linear;0x6fdee40 tails initializer"
+      },
+      {
+        "type": "LinearKeyframe",
+        "value": 0,
+        "duration": 0.2,
+        "site": "0x6ee82f8..0x6ee8318"
+      }
+    ],
+    "false": [
+      {
+        "type": "LinearKeyframe",
+        "value": 1,
+        "duration": 0.2,
+        "site": "0x6ee8434..0x6ee845c"
+      }
+    ]
+  },
+  "integration": "native SwiftUI keyframeAnimator using recovered initial value, trigger and track; header kind2 enables fading; file disclosure unchanged",
+  "validation": {
+    "typecheck": "passed all host Sources/*.swift using implementation/ios/typecheck.sh after integration",
+    "target": "arm64-apple-ios17.0-simulator",
+    "warnings": "existing UITextItemInteraction and traitCollectionDidChange deprecations",
+    "build": "pending first-launch authorization in session42359",
+    "runtime_motion": "not executed",
+    "phone": "not updated"
+  },
+  "limits": [
+    "Timing and frame-by-frame visual equality remain unaccepted",
+    "Original reduce-motion gate applies to rotation; no unproven keyframe suppression added",
+    "Parent collapse animation and project-header scope remain incomplete",
+    "Initial expanded hidden state is recovered, not a live device observation"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "162cc7418deededf25bf0e6e10cf22c694a9eb0dde83299fa1a3a059c268ae98",
+    "implementation/ios/UITests/HostInteractionTests.swift": "09973dafc48b30369186da9c019d46696a0df8a86c3572e4fc46729fa97c2127",
+    "implementation/ios/typecheck.sh": "507945426915d2e6a73495cc459a34dc1506f160445f5413bf79af66ce859b8a"
+  },
+  "next_acceptance": [
+    "Collapse then expand: confirm visible arrow then fade after2.2s",
+    "Collapse before fade completes: confirm restored visibility with correct scoped task state",
+    "Reduce Motion and fast repeated toggles",
+    "Default and accessibility size, light/dark appearance"
+  ]
+}

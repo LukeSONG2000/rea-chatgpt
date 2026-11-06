@@ -1,0 +1,43 @@
+{
+  "status": "partial",
+  "implementation": "independent UIKit/SwiftUI host, not recovered official retry behavior",
+  "baseline": "iOS 1.2026.293; see baseline.json; simulator runtime 27.0",
+  "validation": {
+    "state": "passed",
+    "ui": "Passed",
+    "passedTests": 2,
+    "failedTests": 0,
+    "retryHistory": [
+      {
+        "conversation": "offline-local-d9e017f1-9db8-492f-a807-b972849ed447",
+        "request": "B99AED0A-46C8-4BD1-A830-4C2FB3DBFE75",
+        "retryOf": "BAADCEFF-3298-4BE9-8472-51AC930ED479",
+        "phase": "failed: provider_terminal_failure (max_output_tokens)",
+        "parentPhase": "failed: provider_terminal_failure (max_output_tokens)",
+        "freshRequest": true
+      },
+      {
+        "conversation": "offline-local-f79bd458-b0d2-44f0-b8a4-21221e487fec",
+        "request": "03E50622-E7DA-40F2-B87D-D8B0128F8FF9",
+        "retryOf": "3E7A0683-5757-4095-82CD-BF06A84AFB3D",
+        "phase": "failed: provider_terminal_failure (max_output_tokens)",
+        "parentPhase": "failed: provider_terminal_failure (max_output_tokens)",
+        "freshRequest": true
+      }
+    ]
+  },
+  "sources": {
+    "implementation/ios/Sources/DraftStore.swift": "6b5b8364f13ab4670651c917c1daec5e5b290317e52d8725e4ad68cfa5b2c34d",
+    "implementation/ios/Sources/NativeConversationHost.swift": "330a8d87fe0295eb7c3bb548f5fcb2d7358a78e91d781710d68978d4ecd2eb65",
+    "implementation/ios/Tests/main.swift": "68e5670d0025547c153dbb0e376b58b01a3113e251081e315b8ba59604af1da7",
+    "implementation/ios/UITests/HostInteractionTests.swift": "f0855b8821cd0050d2a44f3bde4da48b89fa7d8fef91310b90153f03ec07fbf5"
+  },
+  "limitations": [
+    "retry-to-success not exercised",
+    "real Zhipu retry not exercised",
+    "physical iPhone not tested",
+    "official visual parity not accepted",
+    "IME retry guard code checked, no composition UI test this round",
+    "late callbacks blocked by terminal guard; adversarial transport injection not exercised this round"
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "status": "partial",
+  "artifact": {
+    "version": "iOS 1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "official-artifact-static",
+  "consumer": "ShimmeringTextView",
+  "observations": [
+    {
+      "offset": "0x6f21e90..0x6f21ebc",
+      "conclusion": "Passes amplitude closure 0x4cb2948, angle payload zero and tag zero to overlay helper; constructor/renderer carries these into angle path."
+    },
+    {
+      "offset": "0x4cb2948",
+      "conclusion": "Amplitude closure returns 1.0."
+    },
+    {
+      "offset": "0x838e410",
+      "conclusion": "Canvas modified by _OpacityEffect; field store at 0x6f3a260 receives amplitude*(1-fraction^8)."
+    },
+    {
+      "offset": "0xaad57f8",
+      "binding": {
+        "symbol": "_$s7SwiftUI9BlendModeO10sourceAtopyA2CmFWC",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10707,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    }
+  ],
+  "types": [
+    {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x838e410",
+      "mangled_address": "0x94335bc",
+      "length": 24,
+      "mangled_hex": "025bdd690179029d1a6a01790287226a01470241d9690147",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaad1318",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI15ModifiedContentVMn"
+        },
+        {
+          "offset": 6,
+          "kind": 2,
+          "target": "0xaad5060",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6CanvasVMn"
+        },
+        {
+          "offset": 12,
+          "kind": 2,
+          "target": "0xaad5850",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI9EmptyViewVMn"
+        },
+        {
+          "offset": 18,
+          "kind": 2,
+          "target": "0xaad0f10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI14_OpacityEffectVMn"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x838e418",
+      "mangled_address": "0x94335d6",
+      "length": 33,
+      "mangled_hex": "0241dd69017941417902801a6a0179026a226a01470224d96901470216e2690147",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaad1318",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI15ModifiedContentVMn"
+        },
+        {
+          "offset": 9,
+          "kind": 2,
+          "target": "0xaad5060",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6CanvasVMn"
+        },
+        {
+          "offset": 15,
+          "kind": 2,
+          "target": "0xaad5850",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI9EmptyViewVMn"
+        },
+        {
+          "offset": 21,
+          "kind": 2,
+          "target": "0xaad0f10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI14_OpacityEffectVMn"
+        },
+        {
+          "offset": 27,
+          "kind": 2,
+          "target": "0xaad1808",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_BlendModeEffectVMn"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    }
+  ],
+  "implementation": "RecoveredRemoteTextShine: restricted zero-angle consumer, reference-date 1.5s/easeInOut, sin^10 gradient, Canvas, opacity decay, sourceAtop/compositingGroup.",
+  "adaptations": [
+    "Public environment gates for Reduce Motion/scene active; full official getter/transition wiring still partial.",
+    "RTL mapping uses platform semantic direction; exact official comparison operand not yet established.",
+    "Immediate removal when disabled matches this consumer interrupt=true intent; full generic finish mode not implemented."
+  ],
+  "unverified": [
+    "Gradient terminal sample enumeration has not been independently replayed against official code.",
+    "Official runtime visual equality, device motion, dark mode, RTL and Reduce Motion acceptance.",
+    "Android equivalent implementation."
+  ],
+  "validation": {
+    "simulator_test": "testRemoteTaskScopeAndReturn",
+    "passed": 1,
+    "failed": 0,
+    "result": "ios-remote-v330.xcresult",
+    "screenshot_inspected": "ios-remote-v330-screenshots/8C148CCB-6FF7-4845-B23D-5BA14C918F45.png",
+    "preview_pid": 66262,
+    "phone_updated": false,
+    "motion_visual_acceptance": false,
+    "external_display_reverified": false
+  }
+}

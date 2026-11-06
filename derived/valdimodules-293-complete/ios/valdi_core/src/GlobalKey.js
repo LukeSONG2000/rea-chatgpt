@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.GlobalKey=void 0;let e=0;class GlobalKey{constructor(){this.id=`GlobalKey(${++e})`}toString(){return this.id}}exports.GlobalKey=GlobalKey;

@@ -1,0 +1,33 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "implementation": "Added testRemoteCopyFeedbackLifecycle; no production view change this batch.",
+  "validation": {
+    "test": "1 passed, 0 failed",
+    "cases": [
+      "copy then collapse/reopen returns ready",
+      "copy then return and open other host with same thread ID returns ready",
+      "A-B-A preserves host-specific code and clears feedback"
+    ],
+    "limits": [
+      "UI automation latency does not prove sub-frame cancellation races",
+      "Disabled/omitted policy cases not tested",
+      "No official runtime comparison"
+    ],
+    "preview_pid": 75195,
+    "phone": "devicectl list devices reports iPhone Air unavailable",
+    "visual": "reentry screenshot inspected; expected host payload and normal copy icon visible"
+  },
+  "next_source_boundary": {
+    "entry": "0x3a47e0 task-row leading content",
+    "evidence": [
+      "ios-remote-v347-row-leading.asm",
+      "ios-remote-v347-row-leading-calls.json",
+      "ios-remote-v347-row-leading-types.json"
+    ],
+    "finding": "Secondary region uses HStack of Text/Image Labels, CustomizableIconAndTitleLabelStyle, font factory0x74e2788 and color factory0x74ee310. Title is CodexRemoteThreadTitleText, not interchangeable with secondary labels.",
+    "next_action": "Resolve 0x3a4b60 label payloads and metadata offsets for workspace/host display conditions; do not replace synthetic subtitle until fields and conditions proven."
+  }
+}

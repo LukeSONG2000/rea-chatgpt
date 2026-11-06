@@ -1,0 +1,184 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v426",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Which original component renders the previous-history loading indicator?",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a3c758 ->0xae13f4 ->0x7549160 ->0x75bd2f4 ->0x7c46f78",
+      "conclusion": "The consumer initializes OAIProgressView wrapping native ProgressView<EmptyView,EmptyView>.init()."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1da5cb8 /binding0xaad0108;type-record0x7cf92b0",
+      "conclusion": "Consumer writes small ControlSize."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x754a670/0x754a764;metadata0xaa5a518;0x754a920",
+      "conclusion": "Wrapper conditionally applies ProgressViewAccentColorModifier; modifier constructs AnyShapeStyle and writes environment. Effective ancestor style/accent remains unknown."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Conditional native small ProgressView in history label centered HStack.",
+      "UI test captures loading and loaded screenshots for later comparison."
+    ],
+    "independent_adaptations": [
+      "Public SwiftUI reconstruction, not private OAIProgressView ABI reuse.",
+      "System HStack spacing pending original rendered-item spacing environment.",
+      "No forced progress tint, fixed geometry or custom animation."
+    ],
+    "unknowns": [
+      "Effective ancestor progress style and accent environment.",
+      "Original rendered-item vertical spacing.",
+      "Actual UI/animation/device acceptance.",
+      "Working-duration labels, paging/retry owner and full transcript projection.",
+      "Independent Android consumer."
+    ]
+  },
+  "validation": {
+    "typecheck": {
+      "exit_code": 0,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v426-typecheck.log",
+        "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+      },
+      "existing_warnings": 3
+    },
+    "ui_parse": {
+      "exit_code": 0
+    },
+    "ui_execution": "not_run",
+    "visual": "not_accepted",
+    "foundation": "v425 results retained; no state-model change",
+    "retention_stale_targets": [],
+    "runtime_blocker": "Existing first-launch installer waiting for admin authorization; no duplicate installer.",
+    "live_pids": [
+      87483,
+      97181,
+      97197
+    ],
+    "simulator_updated": false,
+    "phone_updated": false
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-accent-metadata.json",
+      "sha256": "695717ab3b879969447b8e4252f1b0eaa6da0a6179b18e080d65b067cf4adf26"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-native-progress-init-helpers.json",
+      "sha256": "9432a07c2cffe4d9b6ee3f19a222cfd42d56dce79de1c425d7784cd68e3ba22e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-native-progress-init.json",
+      "sha256": "105e62950cb9d9e03d82fcddc6e8eae7562b3371dd3533df400ad9590b5f6e01"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-actual-body.asm",
+      "sha256": "6c895072c29572b4a5d4efb45db7c9e0ffec574ec8a233bb6c4d9f8e27eeaec9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-actual-body.json",
+      "sha256": "73e7b4de5453811250be9114017255b12bb3b0a82eee622bb20155c2cf3ef77d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-body.asm",
+      "sha256": "8654e7dfdfeedb68af5fad4c09a1443e78dee3598390193c426c75d98afc8900"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-body.json",
+      "sha256": "545ddcb50b2543cd8970a1ae96d9282181833b79abf57ad0687f48b2e0b52a4a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-constructor.asm",
+      "sha256": "b2b84d704c718a819bcf4a2b8858faa23d8277a2f96174d123355cdba9df97e5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-constructor.json",
+      "sha256": "5fa1d530efdecf6a95cb708eb45bc158daef39d9b5de231d9135ed69b1418e5b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-consumer-type.json",
+      "sha256": "706d25a41552381b10e5ebe7ddb451be9c1459092df6d360282b4a5dac20801e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-consumer.asm",
+      "sha256": "d04b99680ed81fee4731ba6af71cfa0c7ec2ef103479a8392fc703325f5122e1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-helpers.json",
+      "sha256": "e691f1f4d8a83291e51c3a51f9bc35b06659bbe8156790963600b212cfbdf608"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-init-and-accent.json",
+      "sha256": "087bb8de8fd50c62cfe4347d4a7ad648c49b5150dfe2f8e5dc2698d900279421"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-init.json",
+      "sha256": "743e27f728e00b15e95ad81a5d4d7a0c6381877d38c8989d7a409e2a9f630d56"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-modifier-types.json",
+      "sha256": "b5208ed527ac79c8da2c239dbfdbabf76ab1287393c75d4742e4e53744bbdaf7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-symbolic-types.json",
+      "sha256": "1c05c030159ec2cf7b16681878a76640dce32434da809c9aca0ce614898f180e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-types.json",
+      "sha256": "eb23a244e50311f6c4ba3a8d3d22cadae94bc1c469ad91faa9d7fedb39bc351e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-progress-witness-0x84b8538.json",
+      "sha256": "e1946c1449631026a3403a75cb32c928c76b93f2dd0df007e60098baeef282de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-witness-84beeb4.json",
+      "sha256": "886fdbaf1e46bccaf6b2bf9548de506cde96215e57693d2e741facf3a1687028"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v426-witness-84beeec.json",
+      "sha256": "0895ff947f3bd4da74416388e85825cc777e0d947dc6b6590974cdfa39e9f6a1"
+    }
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "f4eb06ee76bba0ff53dabd2332b8272abe91057379feee6e979831296b2b92ea"
+    },
+    {
+      "path": "implementation/ios/Sources/RemotePreviousMessages.swift",
+      "sha256": "1635eaa7fdc1c09db0eb5cda39050604ccf05eac745545ec114f37b5c0434fe0"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "dbee5f465b41a8f0239f1a96cec278a11ba04fd96181873286934baffc2f8553"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "17b7743bc5aee21a505b1f07d0c2658dc5e906543adbd2d6aefb97686d40c06e"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "01375e1bb64b4f11e6724598af8e5d516c2ca1f1a5a2480644a63af0e9a591ad"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "4fcd057df754bcf20df04629a9c0e1c0ea166faea3b29f12479ba006c2608963"
+    }
+  ]
+}

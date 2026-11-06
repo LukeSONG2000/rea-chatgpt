@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "official-renderer-controlled-replay-with-independent-services",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "runtime": [
+    "macos-edit-v91-observe.json",
+    "macos-edit-v91-submit.json",
+    "macos-edit-v91-restart.json"
+  ],
+  "verified": [
+    "Inline editor initialized from original user text",
+    "Canceled edit sends no generation request and preserves separate composer draft",
+    "Reopening after cancel reads unchanged original message",
+    "Submitted edit creates sibling user message under original parent",
+    "Original user and assistant nodes retained exactly",
+    "New current leaf completes and main composer draft remains",
+    "Fresh host process restores edited branch and independent composer draft without generation request"
+  ],
+  "regression": "node analysis/tools/test_desktop_edit_branch.mjs",
+  "limits": [
+    "Local fixture service is not recovered official backend",
+    "Branch navigation UI, regenerate and streaming-edit races unaccepted",
+    "Physical IME and OS visual acceptance remain open",
+    "Original write run lacks explicit PID field; separate launcher termination and new Electron process establish restart, not an in-page reload"
+  ],
+  "next_action": "Verify branch selection UI and regeneration request shape before extending local service behavior",
+  "sources": [
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "a31ef536f3c0dc72115c9ea68dc453df82c25f81eb459b6942464222eabc5c9d"
+    },
+    {
+      "file": "analysis/tools/test_desktop_edit_branch.mjs",
+      "sha256": "b304ba4820ac3f734f8fef65dbea2d53c65f666160b560744df2fb0b6cc1581e"
+    },
+    {
+      "file": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "a00d0061e8cd15e32ac44efd0255ae864aa355f8f3536aabc416dc60e66e7484"
+    }
+  ]
+}

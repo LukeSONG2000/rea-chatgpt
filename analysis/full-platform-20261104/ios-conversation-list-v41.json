@@ -1,0 +1,45 @@
+{
+  "status": "partial",
+  "platform": "ios",
+  "reference_baseline": "1.2026.293",
+  "runtime": "iOS 27.0 dedicated iPhone 17 Pro simulator; not physical iPhone",
+  "origin": "independent UIKit implementation, not recovered official conversation list",
+  "changes": [
+    "Native table navigation replaces fixed segmented control",
+    "Stable fixture identities route selection and search destinations",
+    "Existing UI tests use shared list-selection helper"
+  ],
+  "verified": [
+    "Simulator build",
+    "2 focused UI tests passed, zero failed/skipped",
+    "A-B-A selection, selected row, back without changing selection",
+    "Process termination/relaunch restores selected B and isolated A/B drafts",
+    "Exported list screenshot visually reviewed"
+  ],
+  "evidence": {
+    "result": "analysis/full-platform-20261104/ios-conversation-list-v1.xcresult",
+    "log": "analysis/full-platform-20261104/ios-conversation-list-v1.log",
+    "attachments": "analysis/full-platform-20261104/ios-conversation-list-v1-attachments/manifest.json"
+  },
+  "inputs": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "3e709c941765fcf0cd0c83c8206c58b86525a0e0af079464f4315c4dc8f68167"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "26e452e39a711881beeffb6ae25f9330aa251a7a56f60f144f097f2c7cac4a2b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-conversation-list-v1.summary.json",
+      "sha256": "720a63aa320787cb08244e5e52f8eb750eca4fe14340f99fcf616b0f1f3b456e"
+    }
+  ],
+  "limitations": [
+    "Only two synthetic conversations; arbitrary catalog, creation, deletion not implemented",
+    "Updated search/streaming tests compile but were not rerun in this increment",
+    "Official 293 list layout/native owner and behavior correspondence unproven",
+    "Physical iPhone, VoiceOver, dynamic type, gestures and full visual fidelity unaccepted"
+  ],
+  "next_action": "Introduce persistent conversation catalog and explicit local/backend identity mapping before native create/delete and streaming isolation tests"
+}

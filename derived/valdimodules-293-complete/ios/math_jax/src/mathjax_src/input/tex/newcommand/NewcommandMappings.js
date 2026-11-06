@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});const e=require("./NewcommandMethods"),n=require("../TokenMap");new n.CommandMap("Newcommand-macros",{newcommand:e.default.NewCommand,renewcommand:e.default.NewCommand,newenvironment:e.default.NewEnvironment,renewenvironment:e.default.NewEnvironment,def:e.default.MacroDef,let:e.default.Let});

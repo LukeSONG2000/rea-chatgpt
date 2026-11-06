@@ -1,0 +1,85 @@
+{
+  "version": "26.1021.31345",
+  "asar_sha256": "130145706a912db74e4d260ad7538f10f1e05e88af955f9afba42cdf01e64606",
+  "runner_sha256": "119ffd36da14295c503f9cc6879507c01cffcc2d8af471966ed63df34e528502",
+  "sources": {
+    "webview/assets/app-initial-feb30b196d11.js": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+    "webview/assets/initialize-app-host-services-5891c906a171.js": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea"
+  },
+  "fragments": [
+    {
+      "path": "webview/assets/app-initial-feb30b196d11.js",
+      "symbol": "Jmt",
+      "byte_offset": 1951301,
+      "sha256": "55edd443deef5e33070a69eb0eee6927ddf6a4bf0412281db42c02eda4a227ad"
+    },
+    {
+      "path": "webview/assets/app-initial-feb30b196d11.js",
+      "symbol": "Ymt",
+      "byte_offset": 1951586,
+      "sha256": "50f31502b5fe77e4b41b316f3e3d8df4774c5e9d85c09f61a17ad77a2fd7ddd5"
+    },
+    {
+      "path": "webview/assets/app-initial-feb30b196d11.js",
+      "symbol": "Hmt",
+      "byte_offset": 1951049,
+      "sha256": "9a7d45114d59ea0fe94023a22e38ed717fe0285e547dfe5daa82014c0df16d63"
+    },
+    {
+      "path": "webview/assets/initialize-app-host-services-5891c906a171.js",
+      "symbol": "pL",
+      "byte_offset": 286713,
+      "sha256": "8281f72380a3a4d130bd751522f588fae6976722c98751b57b5041d9a5bdfc1b"
+    }
+  ],
+  "passed": 10,
+  "failed": 0,
+  "results": [
+    {
+      "name": "catalog subscribe delivers initial snapshot and merges partial updates",
+      "status": "passed"
+    },
+    {
+      "name": "reinitialize disposes old subscription and clears snapshot before subscribing",
+      "status": "passed"
+    },
+    {
+      "name": "catalog rejection propagates with cleared state",
+      "status": "passed"
+    },
+    {
+      "name": "missing catalog is rejected rather than silently accepted",
+      "status": "passed"
+    },
+    {
+      "name": "default execution host update notifies subscribers including clear",
+      "status": "passed"
+    },
+    {
+      "name": "startup with optional services absent preserves required ordering",
+      "status": "passed"
+    },
+    {
+      "name": "startup awaits catalog and default host then initializes optional services",
+      "status": "passed"
+    },
+    {
+      "name": "catalog failure prevents default-host and downstream startup",
+      "status": "passed"
+    },
+    {
+      "name": "default-host failure prevents downstream startup",
+      "status": "passed"
+    },
+    {
+      "name": "late callback from disposed subscription is not guarded by this fragment",
+      "status": "passed"
+    }
+  ],
+  "limits": [
+    "AST-selected original functions only; module initializers and atom providers are not executed",
+    "Synthetic services and direct callbacks; actual RPC transport is separately tested, not integrated here",
+    "Late-callback observation does not prove a production bug: disposal/transport guarantees remain unknown",
+    "No renderer, UI, online service, filesystem or native bridge executed"
+  ]
+}

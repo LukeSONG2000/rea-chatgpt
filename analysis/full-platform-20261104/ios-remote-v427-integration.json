@@ -1,0 +1,141 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v427",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Which metric drives the history label and how does it differ from message-fragment spacing?",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "type0x8c61e40;descriptor0x95acb58;0x1a3c614/624",
+      "conclusion": "History label reads field43 previousMessagesToggleSpacing atmetadata+0xbc as ScaledMetric<CGFloat>; prior rendered-item/custom-environment attribution is incorrect."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a50928..0x1a50980",
+      "conclusion": "Rendered-item8, message-group24 and previous-toggle8 use ScaledMetric.init(wrappedValue:) without explicit relativeTo."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a31ce4..0x1a31d24;0x1a3337c;0x1a334d4",
+      "conclusion": "Fragment top/bottom margins are computed with conditions and scaled metrics; a global fixture gap is not equivalent."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Replace temporary system history-label gap with original8-base ScaledMetric.",
+      "Add pending Dynamic Type layout, loaded-state expansion and return UI coverage."
+    ],
+    "corrections": [
+      "v424/v426 renderedItemVerticalSpacing attribution superseded; old reports retained."
+    ],
+    "independent_adaptations": [
+      "Offline fixture catalogue remains an independent integration vehicle."
+    ],
+    "unknowns": [
+      "Full fragment projection and predicate0x1a3373c branch mapping.",
+      "Ancestor progress style/accent and actual visual/animation acceptance.",
+      "Task-to-transcript full state projection and device return/scroll acceptance.",
+      "Independent Android layout and font-scaling implementation."
+    ]
+  },
+  "validation": {
+    "typecheck": {
+      "exit_code": 0,
+      "existing_warnings": 3,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v427-typecheck.log",
+        "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+      }
+    },
+    "ui_parse": {
+      "exit_code": 0
+    },
+    "ui_execution": "not_run",
+    "visual": "not_accepted",
+    "foundation": "No state-model change; retain v425 results",
+    "retention_stale_targets": [],
+    "live_pids": [
+      87483,
+      97181,
+      97197
+    ],
+    "runtime_blocker": "Existing first-launch installer awaiting authorization; no duplicate runner.",
+    "simulator_updated": false,
+    "phone_updated": false
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-field-map.json",
+      "sha256": "2d1c8faa0548e03ae10c67986794f2199dcb9f16badd079afac7856b947e39d0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-fragment-condition.asm",
+      "sha256": "750005e835dde8ee64ab48c9e64fa1f0c5825114867fd85c6f37e2a1fac46ced"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-fragment-margin-consumer.json",
+      "sha256": "19a4dbc115fdcb61d15e53fd8e7dc2a61daeee70ca37070561b4e622953e333c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-fragment-types.json",
+      "sha256": "c02f8d5c9c0b991d6a7c9ca665f0ee4cc5814f8530bd378308431c0c4024fd76"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-history-accessor-refs.json",
+      "sha256": "b875c41f0e0aebf68d9d95820bfb7b3fec93f4274e09afa37444b7a7aad15d75"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-history-constructor.asm",
+      "sha256": "6333c13d958bed43c092baec51b4f07589d31e6e9bfce714a1899dccadba6289"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-history-constructor.json",
+      "sha256": "3832d455d91d7d19ad5cdc80400bd397ad978cca4ea70eaafad6970566750072"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-history-layout.asm",
+      "sha256": "cece87647ba0532b4366f8d975d6e4758e33363a88db36629114172cc3c0dd61"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-spacing-consumer.json",
+      "sha256": "3f99a93b89ad69607e5ebef01f1f7988e1c723aa9b93735fb7956a20e47927a8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-spacing-consumers.json",
+      "sha256": "70a14b3de3af56ec6f29cb5b22e01ca1fdaf2f92ef5c243be5dbe0daa8fe967c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    }
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "3a5819e121766b907b0e9da0d8f6784a59814ca22f4b725199ee0740f199ec2a"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "628eb68e17b22bc56832236aaf9a7c10c2c2b4c00abccef6a53041c01ddde9dd"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "4ebabe2aed32d74af002eaa1ec876c7c6269a922cfffb4cfcff0073d3064a363"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "8bc88805ec48a93c8a618c815262a3fe6a6a0715ab6ace9c2b64aa7086f38fd5"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "72892c77d8e3c56847cdeaf9010ac5f317845da90813bfa50cb41786aaf9c5ca"
+    }
+  ],
+  "next_action": "Trace fragment top/bottom branch inputs and connect a scoped transcript-fragment projection, rather than applying constants to the mixed fixture catalogue."
+}

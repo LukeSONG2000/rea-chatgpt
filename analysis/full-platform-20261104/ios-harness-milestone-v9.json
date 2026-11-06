@@ -1,0 +1,69 @@
+{
+  "status": "partial",
+  "classification": "independent UIKit host and authenticated local harness",
+  "platform": "iOS Simulator",
+  "device": {
+    "architecture": "arm64",
+    "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "deviceName": "REA ChatGPT Offline",
+    "modelName": "iPhone 17 Pro",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "verified": [
+    "Native Send -> paired loopback POST -> NDJSON -> native message content and completed status",
+    "Stable message identity across content changes",
+    "Shared internal scope/sequence/subscription contract",
+    "Unauthenticated requests rejected",
+    "Duplicate request identity rejected",
+    "Wrong-conversation cancellation rejected and another conversation completes"
+  ],
+  "runtime_report": "ios-harness-v2.xcresult",
+  "ui_summary": "ios-harness-v2-summary.json",
+  "tests": {
+    "ui_passed": 1,
+    "transport_passed": 2,
+    "existing_state_checks": "passed"
+  },
+  "historical_attempt": "ios-harness-v1 skipped before pairing was ready; not acceptance",
+  "limitations": [
+    "Deterministic fixture only; iOS real Zhipu not yet accepted",
+    "UI cancel not yet tested",
+    "Message history in memory only",
+    "Plain native model response text; streamed Markdown projection pending",
+    "IME/scroll/selection under concurrent stream not accepted",
+    "Loopback simulator transport only; no iPhone pairing",
+    "Current source hashes include startup DNS removal and test guard follow-ups"
+  ],
+  "sources": [
+    {
+      "path": "implementation/harness/loopback_server.py",
+      "sha256": "b70006033c9f84ca0fdda45cc2cac23a6bdd92b55f9847fa0f8db69f65608737"
+    },
+    {
+      "path": "implementation/harness/fixture_worker.py",
+      "sha256": "edc67275da23a0345a0ab65309d1358c3d30f565c97ad38526232acb4a6176bb"
+    },
+    {
+      "path": "implementation/harness/test_loopback_server.py",
+      "sha256": "9e76d7cff7368833f613ef04779eea769b686f0bd986840234bf017fa2d7e167"
+    },
+    {
+      "path": "implementation/ios/Sources/LocalHarness.swift",
+      "sha256": "48b29ac4659d5f28a9a53accd7ba59a8ad657d97abc0208cf439c8074755a6e3"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "54867b68301badccb34c9b939e4e7ca57c38e8c58ddc3ab911d523549670089e"
+    },
+    {
+      "path": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "bde4ede436b87f08e04a3eceb6f021c40073a923e6c6322e5a77a98e5cba2c49"
+    },
+    {
+      "path": "implementation/ios/pair-simulator.py",
+      "sha256": "be07b52d04a973af4e014109f94ed462f5c0711c6db6b344e68c84bbe127d41a"
+    }
+  ]
+}

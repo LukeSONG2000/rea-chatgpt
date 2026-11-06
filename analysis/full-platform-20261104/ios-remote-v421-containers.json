@@ -1,0 +1,370 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "CodexRemoteThreadViewContent",
+      "descriptor": "0x95ac4bc",
+      "type_section_entry": "0x9d3a388",
+      "accessor": "0x1aba020",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x9a36d0c",
+          "type_reference": "0x8e14bb0"
+        },
+        {
+          "name": "inContextMenuPreview",
+          "record": "0x9a36d18",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "keyboardShortcutsEnabled",
+          "record": "0x9a36d24",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "initialBottomBarsHeight",
+          "record": "0x9a36d30",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "initialTranscriptEntranceOffset",
+          "record": "0x9a36d3c",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "usesRealtimeVoiceComposer",
+          "record": "0x9a36d48",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "managesViewModelLifecycle",
+          "record": "0x9a36d54",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "realtimeVoiceAction",
+          "record": "0x9a36d60",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "hidesTranscript",
+          "record": "0x9a36d6c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "additionalTranscriptBottomInset",
+          "record": "0x9a36d78",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "composerTrailingOutsideContent",
+          "record": "0x9a36d84",
+          "type_reference": "0x8bcacc0"
+        },
+        {
+          "name": "composerOverlayContent",
+          "record": "0x9a36d90",
+          "type_reference": "0x8bcacc0"
+        },
+        {
+          "name": "onTranscriptScrollViewResolved",
+          "record": "0x9a36d9c",
+          "type_reference": "0x8bd4c1c"
+        },
+        {
+          "name": "_externalChatFieldIsFocused",
+          "record": "0x9a36da8",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "_standaloneMessageRowPadding",
+          "record": "0x9a36db4",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "_accessibilityReduceMotion",
+          "record": "0x9a36dc0",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "_colorScheme",
+          "record": "0x9a36dcc",
+          "type_reference": "0x9002fa0"
+        },
+        {
+          "name": "_navigationBarButtonMinSize",
+          "record": "0x9a36dd8",
+          "type_reference": "0x8d1b570"
+        },
+        {
+          "name": "_toolbarRole",
+          "record": "0x9a36de4",
+          "type_reference": "0x8e14f4a"
+        },
+        {
+          "name": "__hostingContext",
+          "record": "0x9a36df0",
+          "type_reference": "0x8e14e62"
+        },
+        {
+          "name": "__hostingTraitBoundary",
+          "record": "0x9a36dfc",
+          "type_reference": "0x8e14e92"
+        },
+        {
+          "name": "__hasFocusedComposerInitially",
+          "record": "0x9a36e08",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__isPinnedToBottom",
+          "record": "0x9a36e14",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__isProtectingInitialBottomPin",
+          "record": "0x9a36e20",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__allowsInitialBottomPinProtectionRelease",
+          "record": "0x9a36e2c",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__showsScrollToBottomButton",
+          "record": "0x9a36e38",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__olderHistoryRequestID",
+          "record": "0x9a36e44",
+          "type_reference": "0x92cb070"
+        },
+        {
+          "name": "__handledOlderHistoryPositionTrigger",
+          "record": "0x9a36e50",
+          "type_reference": "0x8e14ec8"
+        },
+        {
+          "name": "__canLoadOlderHistoryNearTop",
+          "record": "0x9a36e5c",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__wasOverscrollingTop",
+          "record": "0x9a36e68",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__triggerScrollToEdge",
+          "record": "0x9a36e74",
+          "type_reference": "0x8e14ef4"
+        },
+        {
+          "name": "__bottomBarsHeight",
+          "record": "0x9a36e80",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "__keepsInitialTranscriptPinnedToTop",
+          "record": "0x9a36e8c",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__messageComposerHeight",
+          "record": "0x9a36e98",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "__composerAutocompletePresentation",
+          "record": "0x9a36ea4",
+          "type_reference": "0x8e12350"
+        },
+        {
+          "name": "__safeAreaVerticalInsets",
+          "record": "0x9a36eb0",
+          "type_reference": "0x8e156ac"
+        },
+        {
+          "name": "__isTranscriptAtRest",
+          "record": "0x9a36ebc",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__viewportHeight",
+          "record": "0x9a36ec8",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "__selectedComposerStatusPill",
+          "record": "0x9a36ed4",
+          "type_reference": "0x8e14f1a"
+        },
+        {
+          "name": "__reviewTargetPickerMode",
+          "record": "0x9a36ee0",
+          "type_reference": "0x8e14f38"
+        },
+        {
+          "name": "__reviewBranchName",
+          "record": "0x9a36eec",
+          "type_reference": "0x9279240"
+        },
+        {
+          "name": "_imageGalleryTransitionNamespace",
+          "record": "0x9a36ef8",
+          "type_reference": "0x8f593f0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e0ffd0",
+          "flags": "0x20000",
+          "section_entry": "0x9ce2580"
+        },
+        {
+          "descriptor": "0x7e118d0",
+          "flags": "0x30000",
+          "section_entry": "0x9ce27e0"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteThreadBottomBars",
+      "descriptor": "0x95ae740",
+      "type_section_entry": "0x9d3a700",
+      "accessor": "0x1c2e55c",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x9a3ad10",
+          "type_reference": "0x8e14bb0"
+        },
+        {
+          "name": "inContextMenuPreview",
+          "record": "0x9a3ad1c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_chatFieldIsFocused",
+          "record": "0x9a3ad28",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "_selectedComposerStatusPill",
+          "record": "0x9a3ad34",
+          "type_reference": "0x8e39462"
+        },
+        {
+          "name": "_reviewTargetPickerMode",
+          "record": "0x9a3ad40",
+          "type_reference": "0x8e39472"
+        },
+        {
+          "name": "_reviewBranchName",
+          "record": "0x9a3ad4c",
+          "type_reference": "0x8bca450"
+        },
+        {
+          "name": "_bottomBarsHeight",
+          "record": "0x9a3ad58",
+          "type_reference": "0x8dad470"
+        },
+        {
+          "name": "_messageComposerHeight",
+          "record": "0x9a3ad64",
+          "type_reference": "0x8dad470"
+        },
+        {
+          "name": "_composerAutocompletePresentation",
+          "record": "0x9a3ad70",
+          "type_reference": "0x8e1502a"
+        },
+        {
+          "name": "usesRealtimeVoiceComposer",
+          "record": "0x9a3ad7c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "realtimeVoiceAction",
+          "record": "0x9a3ad88",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "composerTrailingOutsideContent",
+          "record": "0x9a3ad94",
+          "type_reference": "0x8bcacc0"
+        },
+        {
+          "name": "viewportHeight",
+          "record": "0x9a3ada0",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "reconnectingFooterDelay",
+          "record": "0x9a3adac",
+          "type_reference": "0x941b020"
+        },
+        {
+          "name": "openSideConversation",
+          "record": "0x9a3adb8",
+          "type_reference": "0x8e39484"
+        },
+        {
+          "name": "triggerScrollToBottom",
+          "record": "0x9a3adc4",
+          "type_reference": "0x8d0ab00"
+        },
+        {
+          "name": "handleMessageInputAction",
+          "record": "0x9a3add0",
+          "type_reference": "0x8e157b4"
+        },
+        {
+          "name": "_messageInputEnvironmentStyle",
+          "record": "0x9a3addc",
+          "type_reference": "0x8d0bfd4"
+        },
+        {
+          "name": "__questionPrecedingBarsHeight",
+          "record": "0x9a3ade8",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "__questionFollowingBarsHeight",
+          "record": "0x9a3adf4",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "__composerSceneMetrics",
+          "record": "0x9a3ae00",
+          "type_reference": "0x8e15018"
+        },
+        {
+          "name": "composerStatusVerticalSpacing",
+          "record": "0x9a3ae0c",
+          "type_reference": "0x8c865b0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1c204",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2bc4"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

@@ -1,0 +1,844 @@
+{
+  "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  3a3e8c: 97f8747c     \tbl\t0x1c107c <__text+0x19907c>\n  3a3e90: 39000118     \tstrb\tw24, [x8]\n  3a3e94: 97f9b89f     \tbl\t0x212110 <__text+0x1ea110>\n  3a3e98: b98026e8     \tldrsw\tx8, [x23, #0x24]\n  3a3e9c: 8b080298     \tadd\tx24, x20, x8\n  3a3ea0: d2e80688     \tmov\tx8, #0x4034000000000000 ; =4626322717216342016\n  3a3ea4: f9000308     \tstr\tx8, [x24]\n  3a3ea8: 9402da12     \tbl\t0x45a6f0 <__text+0x4326f0>\n  3a3eac: b9801419     \tldrsw\tx25, [x0, #0x14]\n  3a3eb0: d2e808c8     \tmov\tx8, #0x4046000000000000 ; =4631389266797133824\n  3a3eb4: f81183a8     \tstur\tx8, [x29, #-0xe8]\n  3a3eb8: 97f62f7c     \tbl\t0x12fca8 <__text+0x107ca8>\n  3a3ebc: 97f9891c     \tbl\t0x20632c <__text+0x1de32c>\n  3a3ec0: 8b190308     \tadd\tx8, x24, x25\n  3a3ec4: d103a3a0     \tsub\tx0, x29, #0xe8\n  3a3ec8: 95e28c3b     \tbl\t0x7c46fb4 <_writev+0x7c46fb4>\n  3a3ecc: aa1603e8     \tmov\tx8, x22\n  3a3ed0: 95e2959c     \tbl\t0x7c49540 <_writev+0x7c49540>\n  3a3ed4: 94026247     \tbl\t0x43c7f0 <__text+0x4147f0>\n  3a3ed8: 9402d863     \tbl\t0x45a064 <__text+0x432064>\n  3a3edc: 97f6bf56     \tbl\t0x153c34 <__text+0x12bc34>\n  3a3ee0: 95e29a90     \tbl\t0x7c4a920 <_writev+0x7c4a920>\n  3a3ee4: f9400768     \tldr\tx8, [x27, #0x8]\n  3a3ee8: 97f6a544     \tbl\t0x14d3f8 <__text+0x1253f8>\n  3a3eec: f0054d21     \tadrp\tx1, 0xad4a000 <_OBJC_METACLASS_$__TtC14ChatGPTCarPlay10CarPlayApp+0x90c0>\n  3a3ef0: 91278021     \tadd\tx1, x1, #0x9e0\n  3a3ef4: 9003caa2     \tadrp\tx2, 0x7cf7000 <_writev+0x7cf7000>\n  3a3ef8: 91316042     \tadd\tx2, x2, #0xc58\n  3a3efc: 97f6c079     \tbl\t0x1540e0 <__text+0x12c0e0>\n  3a3f00: 9402e998     \tbl\t0x45e560 <__text+0x436560>\n  3a3f04: 97f6b2a3     \tbl\t0x150990 <__text+0x128990>\n  3a3f08: 95e2c2c4     \tbl\t0x7c54a18 <_writev+0x7c54a18>\n  3a3f0c: 52800014     \tmov\tw20, #0x0               ; =0\n  3a3f10: f0054d20     \tadrp\tx0, 0xad4a000 <_OBJC_METACLASS_$__TtC14ChatGPTCarPlay10CarPlayApp+0x90c0>\n  3a3f14: 91280000     \tadd\tx0, x0, #0xa00\n  3a3f18: 9003caa1     \tadrp\tx1, 0x7cf7000 <_writev+0x7cf7000>\n  3a3f1c: 9131e021     \tadd\tx1, x1, #0xc78\n  3a3f20: 97f55ad6     \tbl\t0xfaa78 <__text+0xd2a78>\n  3a3f24: 97f86729     \tbl\t0x1bdbc8 <__text+0x195bc8>\n  3a3f28: d101c3bf     \tsub\tsp, x29, #0x70\n  3a3f2c: a9477bfd     \tldp\tx29, x30, [sp, #0x70]\n  3a3f30: 17f6d76f     \tb\t0x159cec <__text+0x131cec>\n",
+  "types": {
+    "0x7cf7c80": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x7cf7c80",
+      "mangled_address": "0x8bf4fba",
+      "length": 284,
+      "mangled_hex": "02ddbaed01795f024ebaed0102490aee0179024bc3ed017902a502ee0179414379414479414479414479414479414479414479026232ec010235e4ed01790247e9ed0153674747020edfed017902a0fded014747414779536953674747414779026db9ed0147470236c8ed0179022842ec0147470209c8ed01475f4144794144794144790211eded0179028300ee0179414379414479020fffed017902f1ebed0102ccfeed0147020ee4ed014753675f41375f7447475f02ae26ec01516f5f414a47414e474151475367744747415a475f41457941437941447902abcdec01790169b996005f516f5f415a475f414479414479414479414479027c42ec01414a47415147414779021648ee014747024fc7ed01475367744747744747",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaad0a98",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI13_VariadicViewO4TreeVMn"
+        },
+        {
+          "offset": 7,
+          "kind": 2,
+          "target": "0xaad0a10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI13_HStackLayoutVMn"
+        },
+        {
+          "offset": 12,
+          "kind": 2,
+          "target": "0xaad5a10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI9TupleViewVMn"
+        },
+        {
+          "offset": 18,
+          "kind": 2,
+          "target": "0xaad1318",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI15ModifiedContentVMn"
+        },
+        {
+          "offset": 24,
+          "kind": 2,
+          "target": "0xaad5278",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6VStackVMn"
+        },
+        {
+          "offset": 51,
+          "kind": 2,
+          "target": "0xaab8250",
+          "resolved_context": "0x95ab8b0",
+          "label": "CodexRemoteThread.CodexRemoteThreadTitleText"
+        },
+        {
+          "offset": 56,
+          "kind": 2,
+          "target": "0xaad3428",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+        },
+        {
+          "offset": 62,
+          "kind": 2,
+          "target": "0xaad3940",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4FontVMn"
+        },
+        {
+          "offset": 71,
+          "kind": 2,
+          "target": "0xaad2f10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+        },
+        {
+          "offset": 77,
+          "kind": 2,
+          "target": "0xaad4da8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ColorVMn"
+        },
+        {
+          "offset": 96,
+          "kind": 2,
+          "target": "0xaad0988",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI13TextAlignmentOMn"
+        },
+        {
+          "offset": 103,
+          "kind": 2,
+          "target": "0xaad1858",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_OverlayModifierVMn"
+        },
+        {
+          "offset": 109,
+          "kind": 2,
+          "target": "0xaab9250",
+          "resolved_context": "0x971f520",
+          "label": "SwiftUIStyleguide.LoadingShape"
+        },
+        {
+          "offset": 116,
+          "kind": 2,
+          "target": "0xaad1838",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_FlexFrameLayoutVMn"
+        },
+        {
+          "offset": 132,
+          "kind": 2,
+          "target": "0xaad3d50",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4ViewPAAE10labelStyleyQrqd__AA05LabelE0Rd__lFQOMQ"
+        },
+        {
+          "offset": 138,
+          "kind": 2,
+          "target": "0xaad50c8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6HStackVMn"
+        },
+        {
+          "offset": 150,
+          "kind": 2,
+          "target": "0xaad4f60",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5LabelVMn"
+        },
+        {
+          "offset": 156,
+          "kind": 2,
+          "target": "0xaad3c48",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4TextVMn"
+        },
+        {
+          "offset": 161,
+          "kind": 2,
+          "target": "0xaad4f28",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ImageVMn"
+        },
+        {
+          "offset": 167,
+          "kind": 2,
+          "target": "0xaad3470",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI31AccessibilityAttachmentModifierVMn"
+        },
+        {
+          "offset": 183,
+          "kind": 2,
+          "target": "0xaab7720",
+          "resolved_context": "0x9753d4c",
+          "label": "SwiftUIToolbelt.CustomizableIconAndTitleLabelStyle"
+        },
+        {
+          "offset": 218,
+          "kind": 2,
+          "target": "0xaac1e40",
+          "resolved_context": "0x971f5f0",
+          "label": "<unresolved-context@0x971f5f0>"
+        },
+        {
+          "offset": 224,
+          "kind": 1,
+          "target": "0x9560a04",
+          "resolved_context": "0x9560a04",
+          "label": "ChatGPTCodex.CodexRemoteTaskRowTrailingStateIndicatorsPart"
+        },
+        {
+          "offset": 249,
+          "kind": 2,
+          "target": "0xaab9330",
+          "resolved_context": "0x971c778",
+          "label": "SwiftUIStyleguide.DiffSummaryLabel"
+        },
+        {
+          "offset": 263,
+          "kind": 2,
+          "target": "0xaad98d8",
+          "resolved_context": null,
+          "label": "_$s12CoreGraphics7CGFloatVMn"
+        },
+        {
+          "offset": 270,
+          "kind": 2,
+          "target": "0xaad1818",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_FixedSizeLayoutVMn"
+        }
+      ],
+      "unresolved_contexts": [
+        {
+          "address": "0x971f5f0",
+          "flags": "0x200c4",
+          "kind": 4,
+          "reason": "Unsupported context kind; name and parent chain not interpreted"
+        }
+      ],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "0x7cf7c88": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x7cf7c88",
+      "mangled_address": "0x8bf50d8",
+      "length": 284,
+      "mangled_hex": "023fc2ed017902e9ffed0179022b09ee0179414179028a01ee0179414379414179414179414179414179414179414179024731ec01021ae3ed0179022ce8ed015367474702f3dded01790285fced0147474146795369536747474146790252b8ed014747021bc7ed0179020d41ec01474702eec6ed01475f41417941417941417902f6ebed017941427941437941417902f7fded017902d9eaed0102b4fded014702f6e2ed014753675f41355f7447475f029625ec01516f5f414947414d4741504753677447474159475f4144794143794141790293ccec01790151b896005f516f5f4159475f414179414179414179414179026441ec0141494741504741467902fe46ee0147470237c6ed014753677447477447470239bded0147",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaad1318",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI15ModifiedContentVMn"
+        },
+        {
+          "offset": 6,
+          "kind": 2,
+          "target": "0xaad50c8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6HStackVMn"
+        },
+        {
+          "offset": 12,
+          "kind": 2,
+          "target": "0xaad5a10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI9TupleViewVMn"
+        },
+        {
+          "offset": 21,
+          "kind": 2,
+          "target": "0xaad5278",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6VStackVMn"
+        },
+        {
+          "offset": 48,
+          "kind": 2,
+          "target": "0xaab8250",
+          "resolved_context": "0x95ab8b0",
+          "label": "CodexRemoteThread.CodexRemoteThreadTitleText"
+        },
+        {
+          "offset": 53,
+          "kind": 2,
+          "target": "0xaad3428",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+        },
+        {
+          "offset": 59,
+          "kind": 2,
+          "target": "0xaad3940",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4FontVMn"
+        },
+        {
+          "offset": 68,
+          "kind": 2,
+          "target": "0xaad2f10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+        },
+        {
+          "offset": 74,
+          "kind": 2,
+          "target": "0xaad4da8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ColorVMn"
+        },
+        {
+          "offset": 93,
+          "kind": 2,
+          "target": "0xaad0988",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI13TextAlignmentOMn"
+        },
+        {
+          "offset": 100,
+          "kind": 2,
+          "target": "0xaad1858",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_OverlayModifierVMn"
+        },
+        {
+          "offset": 106,
+          "kind": 2,
+          "target": "0xaab9250",
+          "resolved_context": "0x971f520",
+          "label": "SwiftUIStyleguide.LoadingShape"
+        },
+        {
+          "offset": 113,
+          "kind": 2,
+          "target": "0xaad1838",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_FlexFrameLayoutVMn"
+        },
+        {
+          "offset": 129,
+          "kind": 2,
+          "target": "0xaad3d50",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4ViewPAAE10labelStyleyQrqd__AA05LabelE0Rd__lFQOMQ"
+        },
+        {
+          "offset": 144,
+          "kind": 2,
+          "target": "0xaad4f60",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5LabelVMn"
+        },
+        {
+          "offset": 150,
+          "kind": 2,
+          "target": "0xaad3c48",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4TextVMn"
+        },
+        {
+          "offset": 155,
+          "kind": 2,
+          "target": "0xaad4f28",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ImageVMn"
+        },
+        {
+          "offset": 161,
+          "kind": 2,
+          "target": "0xaad3470",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI31AccessibilityAttachmentModifierVMn"
+        },
+        {
+          "offset": 177,
+          "kind": 2,
+          "target": "0xaab7720",
+          "resolved_context": "0x9753d4c",
+          "label": "SwiftUIToolbelt.CustomizableIconAndTitleLabelStyle"
+        },
+        {
+          "offset": 212,
+          "kind": 2,
+          "target": "0xaac1e40",
+          "resolved_context": "0x971f5f0",
+          "label": "<unresolved-context@0x971f5f0>"
+        },
+        {
+          "offset": 218,
+          "kind": 1,
+          "target": "0x9560a04",
+          "resolved_context": "0x9560a04",
+          "label": "ChatGPTCodex.CodexRemoteTaskRowTrailingStateIndicatorsPart"
+        },
+        {
+          "offset": 243,
+          "kind": 2,
+          "target": "0xaab9330",
+          "resolved_context": "0x971c778",
+          "label": "SwiftUIStyleguide.DiffSummaryLabel"
+        },
+        {
+          "offset": 257,
+          "kind": 2,
+          "target": "0xaad98d8",
+          "resolved_context": null,
+          "label": "_$s12CoreGraphics7CGFloatVMn"
+        },
+        {
+          "offset": 264,
+          "kind": 2,
+          "target": "0xaad1818",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_FixedSizeLayoutVMn"
+        },
+        {
+          "offset": 278,
+          "kind": 2,
+          "target": "0xaad0f28",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI14_PaddingLayoutVMn"
+        }
+      ],
+      "unresolved_contexts": [
+        {
+          "address": "0x971f5f0",
+          "flags": "0x200c4",
+          "kind": 4,
+          "reason": "Unsupported context kind; name and parent chain not interpreted"
+        }
+      ],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "0x7cf7c90": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x7cf7c90",
+      "mangled_address": "0x8bf51f6",
+      "length": 275,
+      "mangled_hex": "02d1feed0179021308ee01790215c1ed0179026f00ee0179414279414379414379414379414379414379414379022c30ec0102ffe1ed01790211e7ed015367474702d8dced0179026afbed0147474146795369536747474146790237b7ed0147470200c6ed017902f23fec01474702d3c5ed01475f41437941437941437902dbeaed017941417941427941437902dcfced017902bee9ed010299fced014702dbe1ed014753675f41355f7447475f027b24ec01516f5f414947414d4741504753677447474159475f4144794142794143790278cbec01790136b796005f516f5f4159475f414379414379414379414379024940ec0141494741504741467902e345ee014747021cc5ed01475367744747744747",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaad50c8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6HStackVMn"
+        },
+        {
+          "offset": 6,
+          "kind": 2,
+          "target": "0xaad5a10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI9TupleViewVMn"
+        },
+        {
+          "offset": 12,
+          "kind": 2,
+          "target": "0xaad1318",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI15ModifiedContentVMn"
+        },
+        {
+          "offset": 18,
+          "kind": 2,
+          "target": "0xaad5278",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6VStackVMn"
+        },
+        {
+          "offset": 45,
+          "kind": 2,
+          "target": "0xaab8250",
+          "resolved_context": "0x95ab8b0",
+          "label": "CodexRemoteThread.CodexRemoteThreadTitleText"
+        },
+        {
+          "offset": 50,
+          "kind": 2,
+          "target": "0xaad3428",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+        },
+        {
+          "offset": 56,
+          "kind": 2,
+          "target": "0xaad3940",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4FontVMn"
+        },
+        {
+          "offset": 65,
+          "kind": 2,
+          "target": "0xaad2f10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+        },
+        {
+          "offset": 71,
+          "kind": 2,
+          "target": "0xaad4da8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ColorVMn"
+        },
+        {
+          "offset": 90,
+          "kind": 2,
+          "target": "0xaad0988",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI13TextAlignmentOMn"
+        },
+        {
+          "offset": 97,
+          "kind": 2,
+          "target": "0xaad1858",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_OverlayModifierVMn"
+        },
+        {
+          "offset": 103,
+          "kind": 2,
+          "target": "0xaab9250",
+          "resolved_context": "0x971f520",
+          "label": "SwiftUIStyleguide.LoadingShape"
+        },
+        {
+          "offset": 110,
+          "kind": 2,
+          "target": "0xaad1838",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_FlexFrameLayoutVMn"
+        },
+        {
+          "offset": 126,
+          "kind": 2,
+          "target": "0xaad3d50",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4ViewPAAE10labelStyleyQrqd__AA05LabelE0Rd__lFQOMQ"
+        },
+        {
+          "offset": 141,
+          "kind": 2,
+          "target": "0xaad4f60",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5LabelVMn"
+        },
+        {
+          "offset": 147,
+          "kind": 2,
+          "target": "0xaad3c48",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4TextVMn"
+        },
+        {
+          "offset": 152,
+          "kind": 2,
+          "target": "0xaad4f28",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ImageVMn"
+        },
+        {
+          "offset": 158,
+          "kind": 2,
+          "target": "0xaad3470",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI31AccessibilityAttachmentModifierVMn"
+        },
+        {
+          "offset": 174,
+          "kind": 2,
+          "target": "0xaab7720",
+          "resolved_context": "0x9753d4c",
+          "label": "SwiftUIToolbelt.CustomizableIconAndTitleLabelStyle"
+        },
+        {
+          "offset": 209,
+          "kind": 2,
+          "target": "0xaac1e40",
+          "resolved_context": "0x971f5f0",
+          "label": "<unresolved-context@0x971f5f0>"
+        },
+        {
+          "offset": 215,
+          "kind": 1,
+          "target": "0x9560a04",
+          "resolved_context": "0x9560a04",
+          "label": "ChatGPTCodex.CodexRemoteTaskRowTrailingStateIndicatorsPart"
+        },
+        {
+          "offset": 240,
+          "kind": 2,
+          "target": "0xaab9330",
+          "resolved_context": "0x971c778",
+          "label": "SwiftUIStyleguide.DiffSummaryLabel"
+        },
+        {
+          "offset": 254,
+          "kind": 2,
+          "target": "0xaad98d8",
+          "resolved_context": null,
+          "label": "_$s12CoreGraphics7CGFloatVMn"
+        },
+        {
+          "offset": 261,
+          "kind": 2,
+          "target": "0xaad1818",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_FixedSizeLayoutVMn"
+        }
+      ],
+      "unresolved_contexts": [
+        {
+          "address": "0x971f5f0",
+          "flags": "0x200c4",
+          "kind": 4,
+          "reason": "Unsupported context kind; name and parent chain not interpreted"
+        }
+      ],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "0x7cf7c98": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x7cf7c98",
+      "mangled_address": "0x8bf530a",
+      "length": 401,
+      "mangled_hex": "028dd0ed0179023ff2ed01790201c0ed017941427941427902a5fded017902e706ee01794142790246ffed017941447941427941427941427941427941427902062fec0102d9e0ed017902ebe5ed015367474702b2dbed01790244faed0147474147795369536747474147790211b6ed01474702dac4ed017902cc3eec0147475f41427941427941427902b3e8ed01414a47414e4741514753677447470290c4ed01475f414279028ecaec0179014cb696005f516f5f41355f4774474741355f47025cbbed01474131335f475f516f5f0275f1ed0179414279414279414379414479414279414579414479414279415941355f475f4142794142794142790247e9ed01794143794144794142790248fbed0179415a0208fbed0147024ae0ed014753675f4132335f7447475f02e922ec01516f5f414a47414e47415147536774474741355f475f41457941447941395f5f41427941427941427941427902c83eec01414a47415147414779026244ee014747029bc3ed014753677447477447474131335f47014ca29600475f516f5f5f47",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaad2398",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI19_ConditionalContentV7StorageOMn"
+        },
+        {
+          "offset": 6,
+          "kind": 2,
+          "target": "0xaad4550",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4ViewPAAE20accessibilityElement8childrenQrAA26AccessibilityChildBehaviorV_tFQOMQ"
+        },
+        {
+          "offset": 12,
+          "kind": 2,
+          "target": "0xaad1318",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI15ModifiedContentVMn"
+        },
+        {
+          "offset": 24,
+          "kind": 2,
+          "target": "0xaad50c8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6HStackVMn"
+        },
+        {
+          "offset": 30,
+          "kind": 2,
+          "target": "0xaad5a10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI9TupleViewVMn"
+        },
+        {
+          "offset": 39,
+          "kind": 2,
+          "target": "0xaad5278",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6VStackVMn"
+        },
+        {
+          "offset": 63,
+          "kind": 2,
+          "target": "0xaab8250",
+          "resolved_context": "0x95ab8b0",
+          "label": "CodexRemoteThread.CodexRemoteThreadTitleText"
+        },
+        {
+          "offset": 68,
+          "kind": 2,
+          "target": "0xaad3428",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+        },
+        {
+          "offset": 74,
+          "kind": 2,
+          "target": "0xaad3940",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4FontVMn"
+        },
+        {
+          "offset": 83,
+          "kind": 2,
+          "target": "0xaad2f10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+        },
+        {
+          "offset": 89,
+          "kind": 2,
+          "target": "0xaad4da8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ColorVMn"
+        },
+        {
+          "offset": 108,
+          "kind": 2,
+          "target": "0xaad0988",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI13TextAlignmentOMn"
+        },
+        {
+          "offset": 115,
+          "kind": 2,
+          "target": "0xaad1858",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_OverlayModifierVMn"
+        },
+        {
+          "offset": 121,
+          "kind": 2,
+          "target": "0xaab9250",
+          "resolved_context": "0x971f520",
+          "label": "SwiftUIStyleguide.LoadingShape"
+        },
+        {
+          "offset": 138,
+          "kind": 2,
+          "target": "0xaad3c48",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4TextVMn"
+        },
+        {
+          "offset": 157,
+          "kind": 2,
+          "target": "0xaad1838",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_FlexFrameLayoutVMn"
+        },
+        {
+          "offset": 167,
+          "kind": 2,
+          "target": "0xaac1e40",
+          "resolved_context": "0x971f5f0",
+          "label": "<unresolved-context@0x971f5f0>"
+        },
+        {
+          "offset": 173,
+          "kind": 1,
+          "target": "0x9560a04",
+          "resolved_context": "0x9560a04",
+          "label": "ChatGPTCodex.CodexRemoteTaskRowTrailingStateIndicatorsPart"
+        },
+        {
+          "offset": 193,
+          "kind": 2,
+          "target": "0xaad0f28",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI14_PaddingLayoutVMn"
+        },
+        {
+          "offset": 208,
+          "kind": 2,
+          "target": "0xaad4550",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4ViewPAAE20accessibilityElement8childrenQrAA26AccessibilityChildBehaviorV_tFQOMQ"
+        },
+        {
+          "offset": 254,
+          "kind": 2,
+          "target": "0xaad3d50",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4ViewPAAE10labelStyleyQrqd__AA05LabelE0Rd__lFQOMQ"
+        },
+        {
+          "offset": 269,
+          "kind": 2,
+          "target": "0xaad4f60",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5LabelVMn"
+        },
+        {
+          "offset": 277,
+          "kind": 2,
+          "target": "0xaad4f28",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ImageVMn"
+        },
+        {
+          "offset": 283,
+          "kind": 2,
+          "target": "0xaad3470",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI31AccessibilityAttachmentModifierVMn"
+        },
+        {
+          "offset": 300,
+          "kind": 2,
+          "target": "0xaab7720",
+          "resolved_context": "0x9753d4c",
+          "label": "SwiftUIToolbelt.CustomizableIconAndTitleLabelStyle"
+        },
+        {
+          "offset": 349,
+          "kind": 2,
+          "target": "0xaab9330",
+          "resolved_context": "0x971c778",
+          "label": "SwiftUIStyleguide.DiffSummaryLabel"
+        },
+        {
+          "offset": 363,
+          "kind": 2,
+          "target": "0xaad98d8",
+          "resolved_context": null,
+          "label": "_$s12CoreGraphics7CGFloatVMn"
+        },
+        {
+          "offset": 370,
+          "kind": 2,
+          "target": "0xaad1818",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_FixedSizeLayoutVMn"
+        },
+        {
+          "offset": 389,
+          "kind": 1,
+          "target": "0x955f6dc",
+          "resolved_context": "0x955f6dc",
+          "label": "<unresolved-context@0x955f6d4>.CodexTaskListRowMetrics"
+        }
+      ],
+      "unresolved_contexts": [
+        {
+          "address": "0x971f5f0",
+          "flags": "0x200c4",
+          "kind": 4,
+          "reason": "Unsupported context kind; name and parent chain not interpreted"
+        },
+        {
+          "address": "0x955f6d4",
+          "flags": "0x42",
+          "kind": 2,
+          "reason": "Unsupported context kind; name and parent chain not interpreted"
+        }
+      ],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    }
+  },
+  "edge_insets_helper_import": {
+    "symbol": "_$s7SwiftUI10EdgeInsetsV4_allAC12CoreGraphics7CGFloatV_tcfC",
+    "library_ordinal": 82,
+    "weak": false,
+    "import_ordinal": 7844,
+    "table_addend": 0,
+    "encoded_pointer_addend": 0,
+    "chain_membership_verified": true
+  }
+}

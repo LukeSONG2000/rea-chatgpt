@@ -1,0 +1,62 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "types": [
+    {
+      "name": "EmptyState",
+      "descriptor": "0x9560a2c",
+      "kind": 2,
+      "fields": [
+        {
+          "name": "welcome",
+          "record": "0x99d985c",
+          "type_reference": "0x8bf6db2"
+        },
+        {
+          "name": "noEnvironments",
+          "record": "0x99d9868",
+          "type_reference": null
+        },
+        {
+          "name": "loading",
+          "record": "0x99d9874",
+          "type_reference": null
+        },
+        {
+          "name": "failed",
+          "record": "0x99d9880",
+          "type_reference": null
+        }
+      ]
+    },
+    {
+      "name": "CodexHomeAction",
+      "descriptor": "0x9560348",
+      "kind": 2,
+      "fields": [
+        {
+          "name": "connectComputer",
+          "record": "0x99d92c8",
+          "type_reference": null
+        },
+        {
+          "name": "scanPairingCode",
+          "record": "0x99d92d4",
+          "type_reference": null
+        },
+        {
+          "name": "enterPairingCodeManually",
+          "record": "0x99d92e0",
+          "type_reference": null
+        },
+        {
+          "name": "retryEnvironments",
+          "record": "0x99d92ec",
+          "type_reference": null
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Case names only; payloads, raw tags, display text and enabled conditions not inferred"
+  ]
+}

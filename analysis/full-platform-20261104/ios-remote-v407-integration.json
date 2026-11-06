@@ -1,0 +1,84 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official static consumer/resource observation; independent Swift model and synthetic fixtures; no target execution",
+  "observations": [
+    {
+      "offset": "0x1a3954c -> 0x1a360e0 -> 0x1a366e8 -> 0x1a3b054",
+      "conclusion": "Activity dispatch reaches command constructor. Specialized actions rejoin shared detail construction."
+    },
+    {
+      "offset": "0x7e11f98;0x7e11fc8;0x7e11fd0",
+      "conclusion": "Expanded content includes automatic approval review ForEach and CommandExecutionShellCard. No separate read/list/search detail in this bounded constructor. Record0x7e11ee8 in shell-type.json is approval-review ForEach, not Shell."
+    },
+    {
+      "offset": "0x1a3b758..0x1a3b7ec",
+      "conclusion": "Shell autoScrollToBottom only for noncached known inProgress; cached flag retained."
+    },
+    {
+      "offset": "0x1a40398;0x1a40604;0x1a40798;0x1a40af0",
+      "conclusion": "Shell title, outer leading stack12, command/output stack10, $ prefix plus nonoptional displayCommand. Output normalization unknown."
+    },
+    {
+      "offset": "0x1a40e38;0x7dfdf89;0x1a41048;0x1a40f94",
+      "conclusion": "Unknown and cached inProgress omit footer. Live inProgress Running. Completed exit0 Success; other completed and all failed show exit code; absent uses localized unknown. Declined uses Declined. Footer style caption."
+    }
+  ],
+  "evidence_files": [
+    "ios-remote-v407-activity-detail.asm",
+    "ios-remote-v407-activity-dispatch.asm",
+    "ios-remote-v407-activity-row.asm",
+    "ios-remote-v407-command-content-caller.asm",
+    "ios-remote-v407-command-detail.asm",
+    "ios-remote-v407-item-dispatch.asm",
+    "ios-remote-v407-shell-body.asm",
+    "ios-remote-v407-shell-command-output.asm",
+    "ios-remote-v407-shell-content.asm",
+    "ios-remote-v407-shell-footer-helpers.asm",
+    "ios-remote-v407-shell-label-factories.asm",
+    "ios-remote-v407-shell-status-label.asm",
+    "ios-remote-v407-shell-status-selection.asm",
+    "ios-remote-v407-status-equality.asm",
+    "ios-remote-v407-command-detail-window.json",
+    "ios-remote-v407-content-types.json",
+    "ios-remote-v407-shell-footer-data.json",
+    "ios-remote-v407-shell-type.json",
+    "ios-remote-v407-text-resources.json"
+  ],
+  "integration": [
+    "Shell title and localized footer wired to scoped command input.",
+    "Output follow derives from command status/cache instead of unconditional true.",
+    "Missing command no longer falls through to synthetic web-search content.",
+    "Command/output inner stack uses spacing10.",
+    "Added exitCode:Int32? and independent shell display input; no executor."
+  ],
+  "validation": {
+    "foundation": "passed:30 shell vectors,4 Chinese labels,512 templates,180 summary cases and previous suites",
+    "host_typecheck": "passed;3 existing UIKit deprecation warnings",
+    "ui_test_syntax": "passed",
+    "ui_runtime": "not run; pending test blocked in Xcode first-launch authorization; expanded tests not selected by that runner",
+    "preview": "PID87483 preserved; latest accepted runtime v383",
+    "phone": "not installed",
+    "retention": "no stale packages"
+  },
+  "limits": [
+    "Shell display normalization not recovered; adapter input.",
+    "Output normalization/presence consumer not fully closed; synthetic output retained.",
+    "Shell heading font/color and footer color remain adapter choices.",
+    "Automatic approval review interactions not integrated.",
+    "No new UI/device/visual acceptance.",
+    "Android consumer parity not proven; Swift model not evidence of official shared UI."
+  ],
+  "next_minimal_action": "After Xcode authorization build cumulative source and run navigation/list/command/action/output tests before replacing preview. Next source integration: automatic approval review and its action boundary.",
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteCommandSummary.swift": "c34059a381d5fa22b83b4919f4e7413b83c4ecdb7ae9cddbfc22cf108f96cddf",
+    "implementation/ios/Sources/OfficialText.swift": "04d2407b47cb7cf9a9c00bb4021b5901283e72180f98fda3765ecda15c3c9f7d",
+    "implementation/ios/Sources/NativeConversationHost.swift": "5d3cfde873799e32cb60f90739997a1aa24207ec63efceb7c15f7dd5e2cf8ed8",
+    "implementation/ios/Tools/prepare-official-text.py": "731daf758f966c815bc5757919b31124bca3e3bf425be04447da6ba17cd3ff76",
+    "implementation/ios/Resources/OfficialTranslations.json": "8195cf8bc7c87d3e103b1baf7370f63ccef28532372b1291d9e5038b484ca771",
+    "implementation/ios/TextTests/main.swift": "6f32a5492bc35801792903a1e694ce096913f84c7dc234cf72bad765385b73a6",
+    "implementation/ios/UITests/HostInteractionTests.swift": "eeaf339e5f0d22cd8ae9ecbfc166552a73aa6fcdac6797010e07d196592754c0"
+  }
+}

@@ -1,0 +1,933 @@
+{
+  "0x395168": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  395168: aa1e03e2     \tmov\tx2, x30\n  39516c: 97f7104b     \tbl\t0x159298 <__text+0x131298>\n  395170: aa0203fe     \tmov\tx30, x2\n  395174: a9057bfd     \tstp\tx29, x30, [sp, #0x50]\n  395178: 910143fd     \tadd\tx29, sp, #0x50\n  39517c: d10383ff     \tsub\tsp, sp, #0xe0\n  395180: aa0103f3     \tmov\tx19, x1\n  395184: aa0003f9     \tmov\tx25, x0\n  395188: 97fb5351     \tbl\t0x269ecc <__text+0x241ecc>\n  39518c: 95e2ce7d     \tbl\t0x7c48b80 <_writev+0x7c48b80>\n  395190: aa0003fa     \tmov\tx26, x0\n  395194: 97f6fe74     \tbl\t0x154b64 <__text+0x12cb64>\n  395198: d00539b0     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n  39519c: f9406e10     \tldr\tx16, [x16, #0xd8]\n  3951a0: d63f0200     \tblr\tx16\n  3951a4: 97f6cccc     \tbl\t0x1484d4 <__text+0x1204d4>\n  3951a8: 97f72d99     \tbl\t0x16080c <__text+0x13880c>\n  3951ac: d0054d80     \tadrp\tx0, 0xad47000 <_OBJC_METACLASS_$__TtC14ChatGPTCarPlay10CarPlayApp+0x60c0>\n  3951b0: 913fe000     \tadd\tx0, x0, #0xff8\n  3951b4: 9003cb01     \tadrp\tx1, 0x7cf5000 <_writev+0x7cf5000>\n  3951b8: 91040021     \tadd\tx1, x1, #0x100\n  3951bc: 97f5962f     \tbl\t0xfaa78 <__text+0xd2a78>\n  3951c0: aa0003f8     \tmov\tx24, x0\n  3951c4: 97f6cace     \tbl\t0x147cfc <__text+0x11fcfc>\n  3951c8: d00539b0     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n  3951cc: f9406e10     \tldr\tx16, [x16, #0xd8]\n  3951d0: d63f0200     \tblr\tx16\n  3951d4: 97f6eaa8     \tbl\t0x14fc74 <__text+0x127c74>\n  3951d8: 94034466     \tbl\t0x466370 <__text+0x43e370>\n  3951dc: 97f59627     \tbl\t0xfaa78 <__text+0xd2a78>\n  3951e0: aa0003f7     \tmov\tx23, x0\n  3951e4: 97f6cac6     \tbl\t0x147cfc <__text+0x11fcfc>\n  3951e8: d00539b0     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n  3951ec: f9406e10     \tldr\tx16, [x16, #0xd8]\n  3951f0: d63f0200     \tblr\tx16\n  3951f4: 9402eaee     \tbl\t0x44fdac <__text+0x427dac>\n  3951f8: 94030561     \tbl\t0x45677c <__text+0x42e77c>\n  3951fc: 97f703e6     \tbl\t0x156194 <__text+0x12e194>\n  395200: 97f59690     \tbl\t0xfac40 <__text+0xd2c40>\n  395204: 3dc00660     \tldr\tq0, [x19, #0x10]\n  395208: 3c9603a0     \tstur\tq0, [x29, #-0xa0]\n  39520c: 9402f956     \tbl\t0x453764 <__text+0x42b764>\n  395210: d10283a0     \tsub\tx0, x29, #0xa0\n  395214: 97f7296f     \tbl\t0x15f7d0 <__text+0x1377d0>\n  395218: aa1303f6     \tmov\tx22, x19\n  39521c: 39402268     \tldrb\tw8, [x19, #0x8]\n  395220: 7100051f     \tcmp\tw8, #0x1\n  395224: a93257b7     \tstp\tx23, x21, [x29, #-0xe0]\n  395228: a93167ba     \tstp\tx26, x25, [x29, #-0xf0]\n  39522c: f81083bc     \tstur\tx28, [x29, #-0xf8]\n  395230: 540001c1     \tb.ne\t0x395268 <__text+0x36d268>\n  395234: f94002d4     \tldr\tx20, [x22]\n  395238: 97fe2b0d     \tbl\t0x31fe6c <__text+0x2f7e6c>\n  39523c: 72001c08     \tands\tw8, w0, #0xff\n  395240: 54000140     \tb.eq\t0x395268 <__text+0x36d268>\n  395244: 71002d1f     \tcmp\tw8, #0xb\n  395248: 54000100     \tb.eq\t0x395268 <__text+0x36d268>\n  39524c: aa0003f3     \tmov\tx19, x0\n  395250: 97fe57cd     \tbl\t0x32b184 <__text+0x303184>\n  395254: 360000a0     \ttbz\tw0, #0x0, 0x395268 <__text+0x36d268>\n  395258: d10243b7     \tsub\tx23, x29, #0x90\n  39525c: d10243a8     \tsub\tx8, x29, #0x90\n  395260: aa1303e0     \tmov\tx0, x19\n  395264: 14000004     \tb\t0x395274 <__text+0x36d274>\n  395268: d10243b7     \tsub\tx23, x29, #0x90\n  39526c: d10243a8     \tsub\tx8, x29, #0x90\n  395270: 52800080     \tmov\tw0, #0x4                ; =4\n  395274: 95c53cd2     \tbl\t0x74e45bc <__text+0x74bc5bc>\n  395278: d101a3b3     \tsub\tx19, x29, #0x68\n  39527c: d10183b4     \tsub\tx20, x29, #0x60\n  395280: d102c3b5     \tsub\tx21, x29, #0xb0\n  395284: d10343a0     \tsub\tx0, x29, #0xd0\n  395288: a94066e8     \tldp\tx8, x25, [x23]\n  39528c: f9000008     \tstr\tx8, [x0]\n  395290: 9401e23e     \tbl\t0x40db88 <__text+0x3e5b88>\n  395294: f9400ae8     \tldr\tx8, [x23, #0x10]\n  395298: f90002a8     \tstr\tx8, [x21]\n  39529c: aa1503e0     \tmov\tx0, x21\n  3952a0: 9401e23a     \tbl\t0x40db88 <__text+0x3e5b88>\n  3952a4: f9400ee8     \tldr\tx8, [x23, #0x18]\n  3952a8: f9000288     \tstr\tx8, [x20]\n  3952ac: aa1403e0     \tmov\tx0, x20\n  3952b0: 9401e236     \tbl\t0x40db88 <__text+0x3e5b88>\n  3952b4: f94012e8     \tldr\tx8, [x23, #0x20]\n  3952b8: f9000268     \tstr\tx8, [x19]\n  3952bc: aa1303e0     \tmov\tx0, x19\n  3952c0: 9401e232     \tbl\t0x40db88 <__text+0x3e5b88>\n  3952c4: 394026c8     \tldrb\tw8, [x22, #0x9]\n  3952c8: 7100011f     \tcmp\tw8, #0x0\n  3952cc: 1a9f17f3     \tcset\tw19, eq\n  3952d0: 3dc00ac0     \tldr\tq0, [x22, #0x20]\n  3952d4: d10043a8     \tsub\tx8, x29, #0x10\n  3952d8: f8100116     \tstur\tx22, [x8, #-0x100]\n  3952dc: 3c9503a0     \tstur\tq0, [x29, #-0xb0]\n  3952e0: 94032910     \tbl\t0x45f720 <__text+0x437720>\n  3952e4: b9801408     \tldrsw\tx8, [x0, #0x14]\n  3952e8: 3cd603a0     \tldur\tq0, [x29, #-0xa0]\n  3952ec: 3ca86b60     \tstr\tq0, [x27, x8]\n  3952f0: b9801808     \tldrsw\tx8, [x0, #0x18]\n  3952f4: f8286b79     \tstr\tx25, [x27, x8]\n  3952f8: b9801c08     \tldrsw\tx8, [x0, #0x1c]\n  3952fc: 38286b7f     \tstrb\twzr, [x27, x8]\n  395300: b9802008     \tldrsw\tx8, [x0, #0x20]\n  395304: f8286b7f     \tstr\txzr, [x27, x8]\n  395308: b9802408     \tldrsw\tx8, [x0, #0x24]\n  39530c: 38286b7f     \tstrb\twzr, [x27, x8]\n  395310: b9802808     \tldrsw\tx8, [x0, #0x28]\n  395314: 52800069     \tmov\tw9, #0x3                ; =3\n  395318: 38286b69     \tstrb\tw9, [x27, x8]\n  39531c: b9802c08     \tldrsw\tx8, [x0, #0x2c]\n  395320: 38286b7f     \tstrb\twzr, [x27, x8]\n  395324: b9803008     \tldrsw\tx8, [x0, #0x30]\n  395328: 52800034     \tmov\tw20, #0x1               ; =1\n  39532c: 38286b74     \tstrb\tw20, [x27, x8]\n  395330: b9803408     \tldrsw\tx8, [x0, #0x34]\n  395334: 38286b73     \tstrb\tw19, [x27, x8]\n  395338: b9803808     \tldrsw\tx8, [x0, #0x38]\n  39533c: 3dc00ac0     \tldr\tq0, [x22, #0x20]\n  395340: 3ca86b60     \tstr\tq0, [x27, x8]\n  395344: f0054d80     \tadrp\tx0, 0xad48000 <_OBJC_METACLASS_$__TtC14ChatGPTCarPlay10CarPlayApp+0x70c0>\n  395348: 91008000     \tadd\tx0, x0, #0x20\n  39534c: 9003cb01     \tadrp\tx1, 0x7cf5000 <_writev+0x7cf5000>\n  395350: 91044021     \tadd\tx1, x1, #0x110\n  395354: 97f595c9     \tbl\t0xfaa78 <__text+0xd2a78>\n  395358: b9802408     \tldrsw\tx8, [x0, #0x24]\n  39535c: 8b080373     \tadd\tx19, x27, x8\n  395360: 39000274     \tstrb\tw20, [x19]\n  395364: 9403134f     \tbl\t0x45a0a0 <__text+0x4320a0>\n  395368: b9801414     \tldrsw\tx20, [x0, #0x14]\n  39536c: 9402f3fe     \tbl\t0x452364 <__text+0x42a364>\n  395370: f8346a60     \tstr\tx0, [x19, x20]\n  395374: 9402dc0b     \tbl\t0x44c3a0 <__text+0x4243a0>\n  395378: aa0003e1     \tmov\tx1, x0\n  39537c: 8b140260     \tadd\tx0, x19, x20\n  395380: 97f6fb35     \tbl\t0x154054 <__text+0x12c054>\n  395384: f0054d80     \tadrp\tx0, 0xad48000 <_OBJC_METACLASS_$__TtC14ChatGPTCarPlay10CarPlayApp+0x70c0>\n  395388: 91004000     \tadd\tx0, x0, #0x10\n  39538c: 9003cb01     \tadrp\tx1, 0x7cf5000 <_writev+0x7cf5000>\n  395390: 91042021     \tadd\tx1, x1, #0x108\n  395394: 97f595b9     \tbl\t0xfaa78 <__text+0xd2a78>\n  395398: b9802408     \tldrsw\tx8, [x0, #0x24]\n  39539c: 38286b7f     \tstrb\twzr, [x27, x8]\n  3953a0: 940342a4     \tbl\t0x465e30 <__text+0x43de30>\n  3953a4: b9802708     \tldrsw\tx8, [x24, #0x24]\n  3953a8: 8b080374     \tadd\tx20, x27, x8\n  3953ac: 9403272f     \tbl\t0x45f068 <__text+0x437068>\n  3953b0: aa0003f3     \tmov\tx19, x0\n  3953b4: b9802815     \tldrsw\tx21, [x0, #0x28]\n  3953b8: 9402f8eb     \tbl\t0x453764 <__text+0x42b764>\n  3953bc: d102c3a0     \tsub\tx0, x29, #0xb0\n  3953c0: 97f72904     \tbl\t0x15f7d0 <__text+0x1377d0>\n  3953c4: 8b150288     \tadd\tx8, x20, x21\n  3953c8: 95e2cb3c     \tbl\t0x7c480b8 <_writev+0x7c480b8>\n  3953cc: 97f8a9df     \tbl\t0x1bfb48 <__text+0x197b48>\n  3953d0: aa0003f5     \tmov\tx21, x0\n  3953d4: b980141a     \tldrsw\tx26, [x0, #0x14]\n  3953d8: 97fbceed     \tbl\t0x288f8c <__text+0x260f8c>\n  3953dc: b9400117     \tldr\tw23, [x8]\n  3953e0: 97f8a854     \tbl\t0x1bf530 <__text+0x197530>\n  3953e4: 97f6ffae     \tbl\t0x15529c <__text+0x12d29c>\n  3953e8: f940351c     \tldr\tx28, [x8, #0x68]\n  3953ec: 8b1a0280     \tadd\tx0, x20, x26\n  3953f0: 940339a9     \tbl\t0x463a94 <__text+0x43ba94>\n  3953f4: 6f01f500     \tfmov.2d\tv0, #12.00000000\n  3953f8: 97f73c22     \tbl\t0x164480 <__text+0x13c480>\n  3953fc: 3d800280     \tstr\tq0, [x20]\n  395400: b9802668     \tldrsw\tx8, [x19, #0x24]\n  395404: 38286a9f     \tstrb\twzr, [x20, x8]\n  395408: f85003b6     \tldur\tx22, [x29, #-0x100]\n  39540c: aa1603e8     \tmov\tx8, x22\n  395410: 95e2cb4e     \tbl\t0x7c48148 <_writev+0x7c48148>\n  395414: 9401dfe1     \tbl\t0x40d398 <__text+0x3e5398>\n  395418: aa0003f4     \tmov\tx20, x0\n  39541c: 940317a7     \tbl\t0x45b2b8 <__text+0x4332b8>\n  395420: aa0003e5     \tmov\tx5, x0\n  395424: d10023a8     \tsub\tx8, x29, #0x8\n  395428: 97f72aa4     \tbl\t0x15feb8 <__text+0x137eb8>\n  39542c: 97f6fb4a     \tbl\t0x154154 <__text+0x12c154>\n  395430: d10063a9     \tsub\tx9, x29, #0x18\n  395434: f8500122     \tldur\tx2, [x9, #-0x100]\n  395438: f85103ba     \tldur\tx26, [x29, #-0xf0]\n  39543c: aa1a03e3     \tmov\tx3, x26\n  395440: aa1403e4     \tmov\tx4, x20\n  395444: aa1b03f4     \tmov\tx20, x27\n  395448: 95e2d3ad     \tbl\t0x7c4a2fc <_writev+0x7c4a2fc>\n  39544c: f85083a8     \tldur\tx8, [x29, #-0xf8]\n  395450: 97f703ad     \tbl\t0x156304 <__text+0x12e304>\n  395454: 97f702b1     \tbl\t0x155f18 <__text+0x12df18>\n  395458: d0054d81     \tadrp\tx1, 0xad47000 <_OBJC_METACLASS_$__TtC14ChatGPTCarPlay10CarPlayApp+0x60c0>\n  39545c: 913fe021     \tadd\tx1, x1, #0xff8\n  395460: 9003cb02     \tadrp\tx2, 0x7cf5000 <_writev+0x7cf5000>\n  395464: 91040042     \tadd\tx2, x2, #0x100\n  395468: 97f70477     \tbl\t0x156644 <__text+0x12e644>\n  39546c: f85203ba     \tldur\tx26, [x29, #-0xe0]\n  395470: b9802748     \tldrsw\tx8, [x26, #0x24]\n  395474: 8b080314     \tadd\tx20, x24, x8\n  395478: b9802a68     \tldrsw\tx8, [x19, #0x28]\n  39547c: 8b080288     \tadd\tx8, x20, x8\n  395480: 95e2cb17     \tbl\t0x7c480dc <_writev+0x7c480dc>\n  395484: 97f71e3a     \tbl\t0x15cd6c <__text+0x134d6c>\n  395488: 94033983     \tbl\t0x463a94 <__text+0x43ba94>\n  39548c: d100c3a8     \tsub\tx8, x29, #0x30\n  395490: 3cd00100     \tldur\tq0, [x8, #-0x100]\n  395494: 3d800280     \tstr\tq0, [x20]\n  395498: b9802668     \tldrsw\tx8, [x19, #0x24]\n  39549c: 38286a9f     \tstrb\twzr, [x20, x8]\n  3954a0: f85183a8     \tldur\tx8, [x29, #-0xe8]\n  3954a4: d10043a9     \tsub\tx9, x29, #0x10\n  3954a8: f8500129     \tldur\tx9, [x9, #-0x100]\n  3954ac: a93827a8     \tstp\tx8, x9, [x29, #-0x80]\n  3954b0: a93423a9     \tstp\tx9, x8, [x29, #-0xc0]\n  3954b4: 9403183b     \tbl\t0x45b5a0 <__text+0x4335a0>\n  3954b8: aa0003f3     \tmov\tx19, x0\n  3954bc: 900003d4     \tadrp\tx20, 0x40d000 <__text+0x3e5000>\n  3954c0: 9109e294     \tadd\tx20, x20, #0x278\n  3954c4: d0054d95     \tadrp\tx21, 0xad47000 <_OBJC_METACLASS_$__TtC14ChatGPTCarPlay10CarPlayApp+0x60c0>\n  3954c8: 913fa2b5     \tadd\tx21, x21, #0xfe8\n  3954cc: 9003cb17     \tadrp\tx23, 0x7cf5000 <_writev+0x7cf5000>\n  3954d0: 9103e2f7     \tadd\tx23, x23, #0xf8\n  3954d4: 97f6f9e2     \tbl\t0x153c5c <__text+0x12bc5c>\n  3954d8: 97f59568     \tbl\t0xfaa78 <__text+0xd2a78>\n  3954dc: aa0003f6     \tmov\tx22, x0\n  3954e0: 9401df6b     \tbl\t0x40d28c <__text+0x3e528c>\n  3954e4: aa0003f9     \tmov\tx25, x0\n  3954e8: 9403439a     \tbl\t0x466350 <__text+0x43e350>\n  3954ec: aa1403e1     \tmov\tx1, x20\n  3954f0: 97f595c9     \tbl\t0xfac14 <__text+0xd2c14>\n  3954f4: aa0003f4     \tmov\tx20, x0\n  3954f8: 94034391     \tbl\t0x46633c <__text+0x43e33c>\n  3954fc: 9402f531     \tbl\t0x4529c0 <__text+0x42a9c0>\n  395500: a9bf03f4     \tstp\tx20, x0, [sp, #-0x10]!\n  395504: 900003c0     \tadrp\tx0, 0x40d000 <__text+0x3e5000>\n  395508: 9126b000     \tadd\tx0, x0, #0x9ac\n  39550c: 900003c2     \tadrp\tx2, 0x40d000 <__text+0x3e5000>\n  395510: 9126d042     \tadd\tx2, x2, #0x9b4\n  395514: d10243a1     \tsub\tx1, x29, #0x90\n  395518: d10343a3     \tsub\tx3, x29, #0xd0\n  39551c: f85283a8     \tldur\tx8, [x29, #-0xd8]\n  395520: aa1a03e4     \tmov\tx4, x26\n  395524: aa1303e5     \tmov\tx5, x19\n  395528: aa1603e6     \tmov\tx6, x22\n  39552c: aa1903e7     \tmov\tx7, x25\n  395530: aa1803f4     \tmov\tx20, x24\n  395534: 95e2d360     \tbl\t0x7c4a2b4 <_writev+0x7c4a2b4>\n  395538: 910043ff     \tadd\tsp, sp, #0x10\n  39553c: d0054d81     \tadrp\tx1, 0xad47000 <_OBJC_METACLASS_$__TtC14ChatGPTCarPlay10CarPlayApp+0x60c0>\n  395540: 913f8021     \tadd\tx1, x1, #0xfe0\n  395544: 9003cb02     \tadrp\tx2, 0x7cf5000 <_writev+0x7cf5000>\n  395548: 9103c042     \tadd\tx2, x2, #0xf0\n  39554c: 97f6fcd3     \tbl\t0x154898 <__text+0x12c898>\n  395550: d10143bf     \tsub\tsp, x29, #0x50\n  395554: a9457bfd     \tldp\tx29, x30, [sp, #0x50]\n  395558: 17f6c3ec     \tb\t0x146508 <__text+0x11e508>\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x395168",
+        "end_exclusive": "0x39555c",
+        "sha256": "b6d6c7e4b1b76e204ba89a18a2ba801c97598da48892bf0aca7f771c5960bc67"
+      },
+      "linker_function_starts_in_window": [
+        "0x395168"
+      ],
+      "next_linker_function_start": "0x39555c",
+      "direct_calls": [
+        {
+          "site": "0x39516c",
+          "target": "0x159298",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395188",
+          "target": "0x269ecc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39518c",
+          "target": "0x7c48b80",
+          "imported_symbol": "_$s7SwiftUI20AutomaticHoverEffectVMa",
+          "chained_binding": {
+            "slot": "0xaad2410",
+            "symbol": "_$s7SwiftUI20AutomaticHoverEffectVMa",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9048,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x395194",
+          "target": "0x154b64",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951a4",
+          "target": "0x1484d4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951a8",
+          "target": "0x16080c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951bc",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951c4",
+          "target": "0x147cfc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951d4",
+          "target": "0x14fc74",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951d8",
+          "target": "0x466370",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951dc",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951e4",
+          "target": "0x147cfc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951f4",
+          "target": "0x44fdac",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951f8",
+          "target": "0x45677c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3951fc",
+          "target": "0x156194",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395200",
+          "target": "0xfac40",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39520c",
+          "target": "0x453764",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395214",
+          "target": "0x15f7d0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395238",
+          "target": "0x31fe6c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395250",
+          "target": "0x32b184",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395274",
+          "target": "0x74e45bc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395290",
+          "target": "0x40db88",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3952a0",
+          "target": "0x40db88",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3952b0",
+          "target": "0x40db88",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3952c0",
+          "target": "0x40db88",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3952e0",
+          "target": "0x45f720",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395354",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395364",
+          "target": "0x45a0a0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39536c",
+          "target": "0x452364",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395374",
+          "target": "0x44c3a0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395380",
+          "target": "0x154054",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395394",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3953a0",
+          "target": "0x465e30",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3953ac",
+          "target": "0x45f068",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3953b8",
+          "target": "0x453764",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3953c0",
+          "target": "0x15f7d0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3953c8",
+          "target": "0x7c480b8",
+          "imported_symbol": "_$s7SwiftUI17ContentShapeKindsV11hoverEffectACvgZ",
+          "chained_binding": {
+            "slot": "0xaad18e0",
+            "symbol": "_$s7SwiftUI17ContentShapeKindsV11hoverEffectACvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 8691,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x3953cc",
+          "target": "0x1bfb48",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3953d8",
+          "target": "0x288f8c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3953e0",
+          "target": "0x1bf530",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3953e4",
+          "target": "0x15529c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3953f0",
+          "target": "0x463a94",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3953f8",
+          "target": "0x164480",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395410",
+          "target": "0x7c48148",
+          "imported_symbol": "_$s7SwiftUI17CustomHoverEffectPA2A09AutomaticdE0VRszrlE9automaticAEvgZ",
+          "chained_binding": {
+            "slot": "0xaad1958",
+            "symbol": "_$s7SwiftUI17CustomHoverEffectPA2A09AutomaticdE0VRszrlE9automaticAEvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 8706,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x395414",
+          "target": "0x40d398",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39541c",
+          "target": "0x45b2b8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395428",
+          "target": "0x15feb8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39542c",
+          "target": "0x154154",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395448",
+          "target": "0x7c4a2fc",
+          "imported_symbol": "_$s7SwiftUI4ViewPAAE11hoverEffect_9isEnabledQrqd___SbtAA011CustomHoverE0Rd__lF",
+          "chained_binding": {
+            "slot": "0xaad3e70",
+            "symbol": "_$s7SwiftUI4ViewPAAE11hoverEffect_9isEnabledQrqd___SbtAA011CustomHoverE0Rd__lF",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9890,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x395450",
+          "target": "0x156304",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395454",
+          "target": "0x155f18",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395468",
+          "target": "0x156644",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395480",
+          "target": "0x7c480dc",
+          "imported_symbol": "_$s7SwiftUI17ContentShapeKindsV18contextMenuPreviewACvgZ",
+          "chained_binding": {
+            "slot": "0xaad18f8",
+            "symbol": "_$s7SwiftUI17ContentShapeKindsV18contextMenuPreviewACvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 8694,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x395484",
+          "target": "0x15cd6c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395488",
+          "target": "0x463a94",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3954b4",
+          "target": "0x45b5a0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3954d4",
+          "target": "0x153c5c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3954d8",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3954e0",
+          "target": "0x40d28c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3954e8",
+          "target": "0x466350",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3954f0",
+          "target": "0xfac14",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3954f8",
+          "target": "0x46633c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x3954fc",
+          "target": "0x4529c0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x395534",
+          "target": "0x7c4a2b4",
+          "imported_symbol": "_$s7SwiftUI4ViewPAAE11contextMenu9menuItems7previewQrqd__yXE_qd_0_yXEtAaBRd__AaBRd_0_r0_lF",
+          "chained_binding": {
+            "slot": "0xaad3e20",
+            "symbol": "_$s7SwiftUI4ViewPAAE11contextMenu9menuItems7previewQrqd__yXE_qd_0_yXEtAaBRd__AaBRd_0_r0_lF",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9880,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x39554c",
+          "target": "0x154898",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  },
+  "0x39e26c": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  39e26c: aa1e03e3     \tmov\tx3, x30\n  39e270: 97f6ec0a     \tbl\t0x159298 <__text+0x131298>\n  39e274: aa0303fe     \tmov\tx30, x3\n  39e278: a9057bfd     \tstp\tx29, x30, [sp, #0x50]\n  39e27c: 94030e32     \tbl\t0x461b44 <__text+0x439b44>\n  39e280: 910003f3     \tmov\tx19, sp\n  39e284: b9005662     \tstr\tw2, [x19, #0x54]\n  39e288: 97f6eb99     \tbl\t0x1590ec <__text+0x1310ec>\n  39e28c: aa0803f4     \tmov\tx20, x8\n  39e290: 9402df32     \tbl\t0x455f58 <__text+0x42df58>\n  39e294: f9002660     \tstr\tx0, [x19, #0x48]\n  39e298: f85f8008     \tldur\tx8, [x0, #-0x8]\n  39e29c: f9004268     \tstr\tx8, [x19, #0x80]\n  39e2a0: 97f6d3f0     \tbl\t0x153260 <__text+0x12b260>\n  39e2a4: b0053970     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n  39e2a8: f9406e10     \tldr\tx16, [x16, #0xd8]\n  39e2ac: d63f0200     \tblr\tx16\n  39e2b0: 97f6a889     \tbl\t0x1484d4 <__text+0x1204d4>\n  39e2b4: f9002268     \tstr\tx8, [x19, #0x40]\n  39e2b8: 9100011f     \tmov\tsp, x8\n  39e2bc: 9402b5d4     \tbl\t0x44ba0c <__text+0x423a0c>\n  39e2c0: 97f6b406     \tbl\t0x14b2d8 <__text+0x1232d8>\n  39e2c4: b0053970     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n  39e2c8: f9406e10     \tldr\tx16, [x16, #0xd8]\n  39e2cc: d63f0200     \tblr\tx16\n  39e2d0: 97f6a740     \tbl\t0x147fd0 <__text+0x11ffd0>\n  39e2d4: f9003e69     \tstr\tx9, [x19, #0x78]\n  39e2d8: 97f6d7d0     \tbl\t0x154218 <__text+0x12c218>\n  39e2dc: b0053970     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n  39e2e0: f9406e10     \tldr\tx16, [x16, #0xd8]\n  39e2e4: d63f0200     \tblr\tx16\n  39e2e8: 9402c7b6     \tbl\t0x4501c0 <__text+0x4281c0>\n  39e2ec: 94011039     \tbl\t0x3e23d0 <__text+0x3ba3d0>\n  39e2f0: 9402cf38     \tbl\t0x451fd0 <__text+0x429fd0>\n  39e2f4: 7100041f     \tcmp\tw0, #0x1\n  39e2f8: 54000581     \tb.ne\t0x39e3a8 <__text+0x3763a8>\n  39e2fc: aa1403f5     \tmov\tx21, x20\n  39e300: 9402dfbc     \tbl\t0x4561f0 <__text+0x42e1f0>\n  39e304: b9802c08     \tldrsw\tx8, [x0, #0x2c]\n  39e308: 8b0802fb     \tadd\tx27, x23, x8\n  39e30c: f9401ae0     \tldr\tx0, [x23, #0x30]\n  39e310: f9408ad4     \tldr\tx20, [x22, #0x110]\n  39e314: 94031731     \tbl\t0x463fd8 <__text+0x43bfd8>\n  39e318: aa1403e0     \tmov\tx0, x20\n  39e31c: aa1703f4     \tmov\tx20, x23\n  39e320: 97fe2874     \tbl\t0x3284f0 <__text+0x3004f0>\n  39e324: a9088261     \tstp\tx1, x0, [x19, #0x88]\n  39e328: a9426ae8     \tldp\tx8, x26, [x23, #0x20]\n  39e32c: f9004268     \tstr\tx8, [x19, #0x80]\n  39e330: f9401ef7     \tldr\tx23, [x23, #0x38]\n  39e334: d2800000     \tmov\tx0, #0x0                ; =0\n  39e338: 94027014     \tbl\t0x43a388 <__text+0x412388>\n  39e33c: aa0003f4     \tmov\tx20, x0\n  39e340: b9802019     \tldrsw\tx25, [x0, #0x20]\n  39e344: 9402def5     \tbl\t0x455f18 <__text+0x42df18>\n  39e348: aa0003fc     \tmov\tx28, x0\n  39e34c: 52800038     \tmov\tw24, #0x1               ; =1\n  39e350: aa1b03e0     \tmov\tx0, x27\n  39e354: 97f6b7e4     \tbl\t0x14c2e4 <__text+0x1242e4>\n  39e358: 540000e0     \tb.eq\t0x39e374 <__text+0x376374>\n  39e35c: b9803b88     \tldrsw\tx8, [x28, #0x38]\n  39e360: 9402fdd1     \tbl\t0x45daa4 <__text+0x435aa4>\n  39e364: 8b080360     \tadd\tx0, x27, x8\n  39e368: 8b1902a1     \tadd\tx1, x21, x25\n  39e36c: 97f57235     \tbl\t0xfac40 <__text+0xd2c40>\n  39e370: 52800018     \tmov\tw24, #0x0               ; =0\n  39e374: 9402def3     \tbl\t0x455f40 <__text+0x42df40>\n  39e378: aa0003e3     \tmov\tx3, x0\n  39e37c: 8b1902a0     \tadd\tx0, x21, x25\n  39e380: aa1803e1     \tmov\tx1, x24\n  39e384: 97f6d4d6     \tbl\t0x1536dc <__text+0x12b6dc>\n  39e388: aa1b03e0     \tmov\tx0, x27\n  39e38c: 97f6b7d6     \tbl\t0x14c2e4 <__text+0x1242e4>\n  39e390: 54000461     \tb.ne\t0x39e41c <__text+0x37641c>\n  39e394: 97f6d4d4     \tbl\t0x1536e4 <__text+0x12b6e4>\n  39e398: 97f6d63f     \tbl\t0x153c94 <__text+0x12bc94>\n  39e39c: 940310c8     \tbl\t0x4626bc <__text+0x43a6bc>\n  39e3a0: 52800059     \tmov\tw25, #0x2               ; =2\n  39e3a4: 1400010c     \tb\t0x39e7d4 <__text+0x3767d4>\n  39e3a8: 94031bed     \tbl\t0x46535c <__text+0x43d35c>\n  39e3ac: aa1703e0     \tmov\tx0, x23\n  39e3b0: f9001e74     \tstr\tx20, [x19, #0x38]\n  39e3b4: 97f6d88e     \tbl\t0x1545ec <__text+0x12c5ec>\n  39e3b8: 9402e3d6     \tbl\t0x457310 <__text+0x42f310>\n  39e3bc: aa0003f4     \tmov\tx20, x0\n  39e3c0: 9402ded6     \tbl\t0x455f18 <__text+0x42df18>\n  39e3c4: aa0003fc     \tmov\tx28, x0\n  39e3c8: 90000560     \tadrp\tx0, 0x44a000 <__text+0x422000>\n  39e3cc: 91294000     \tadd\tx0, x0, #0xa50\n  39e3d0: 9402c4d3     \tbl\t0x44f71c <__text+0x42771c>\n  39e3d4: f9002e74     \tstr\tx20, [x19, #0x58]\n  39e3d8: aa1403e4     \tmov\tx4, x20\n  39e3dc: 94030244     \tbl\t0x45ecec <__text+0x436cec>\n  39e3e0: aa0103f8     \tmov\tx24, x1\n  39e3e4: aa0303f4     \tmov\tx20, x3\n  39e3e8: aa1503e8     \tmov\tx8, x21\n  39e3ec: f9003277     \tstr\tx23, [x19, #0x60]\n  39e3f0: aa1703e0     \tmov\tx0, x23\n  39e3f4: d63f0040     \tblr\tx2\n  39e3f8: 95e2d8fb     \tbl\t0x7c547e4 <_writev+0x7c547e4>\n  39e3fc: 95e2d906     \tbl\t0x7c54814 <_writev+0x7c54814>\n  39e400: aa1503e0     \tmov\tx0, x21\n  39e404: 97f6b7b8     \tbl\t0x14c2e4 <__text+0x1242e4>\n  39e408: 540002e1     \tb.ne\t0x39e464 <__text+0x376464>\n  39e40c: 9402bb8a     \tbl\t0x44d234 <__text+0x425234>\n  39e410: 97f6d775     \tbl\t0x1541e4 <__text+0x12c1e4>\n  39e414: d2800017     \tmov\tx23, #0x0               ; =0\n  39e418: 14000020     \tb\t0x39e498 <__text+0x376498>\n  39e41c: b9804388     \tldrsw\tx8, [x28, #0x40]\n  39e420: 38686b79     \tldrb\tw25, [x27, x8]\n  39e424: b9805388     \tldrsw\tx8, [x28, #0x50]\n  39e428: 8b080368     \tadd\tx8, x27, x8\n  39e42c: f9400518     \tldr\tx24, [x8, #0x8]\n  39e430: b4001cd8     \tcbz\tx24, 0x39e7c8 <__text+0x3767c8>\n  39e434: f940011b     \tldr\tx27, [x8]\n  39e438: 97f6d4ab     \tbl\t0x1536e4 <__text+0x12b6e4>\n  39e43c: 97f6d616     \tbl\t0x153c94 <__text+0x12bc94>\n  39e440: 97f6e2ce     \tbl\t0x156f78 <__text+0x12ef78>\n  39e444: 97f568e2     \tbl\t0xf87cc <__text+0xd07cc>\n  39e448: 37001c40     \ttbnz\tw0, #0x0, 0x39e7d0 <__text+0x3767d0>\n  39e44c: 97f6d38c     \tbl\t0x15327c <__text+0x12b27c>\n  39e450: 97f6e2ca     \tbl\t0x156f78 <__text+0x12ef78>\n  39e454: 949cc509     \tbl\t0x2acf878 <__text+0x2aa7878>\n  39e458: 97f705d6     \tbl\t0x15fbb0 <__text+0x137bb0>\n  39e45c: 97f6d786     \tbl\t0x154274 <__text+0x12c274>\n  39e460: 140000dd     \tb\t0x39e7d4 <__text+0x3767d4>\n  39e464: b9805388     \tldrsw\tx8, [x28, #0x50]\n  39e468: 8b0802a8     \tadd\tx8, x21, x8\n  39e46c: a9405117     \tldp\tx23, x20, [x8]\n  39e470: 97f6d343     \tbl\t0x15317c <__text+0x12b17c>\n  39e474: 9402d298     \tbl\t0x452ed4 <__text+0x42aed4>\n  39e478: b4000114     \tcbz\tx20, 0x39e498 <__text+0x376498>\n  39e47c: f9408ac2     \tldr\tx2, [x22, #0x110]\n  39e480: 97f6d7f0     \tbl\t0x154440 <__text+0x12c440>\n  39e484: 949cbf40     \tbl\t0x2ace184 <__text+0x2aa6184>\n  39e488: aa0003f7     \tmov\tx23, x0\n  39e48c: f9001661     \tstr\tx1, [x19, #0x28]\n  39e490: 97f6d33d     \tbl\t0x153184 <__text+0x12b184>\n  39e494: 14000002     \tb\t0x39e49c <__text+0x37649c>\n  39e498: f900167f     \tstr\txzr, [x19, #0x28]\n  39e49c: f9001a77     \tstr\tx23, [x19, #0x30]\n  39e4a0: f9408ed4     \tldr\tx20, [x22, #0x118]\n  39e4a4: 394086c8     \tldrb\tw8, [x22, #0x21]\n  39e4a8: b9002668     \tstr\tw8, [x19, #0x24]\n  39e4ac: f94016c8     \tldr\tx8, [x22, #0x28]\n  39e4b0: f9003a68     \tstr\tx8, [x19, #0x70]\n  39e4b4: f9400908     \tldr\tx8, [x8, #0x10]\n  39e4b8: f9000a68     \tstr\tx8, [x19, #0x10]\n  39e4bc: 91048260     \tadd\tx0, x19, #0x120\n  39e4c0: 9100c2c1     \tadd\tx1, x22, #0x30\n  39e4c4: 97f6d7b7     \tbl\t0x1543a0 <__text+0x12c3a0>\n  39e4c8: f9000e74     \tstr\tx20, [x19, #0x18]\n  39e4cc: 95e2d90e     \tbl\t0x7c54904 <_writev+0x7c54904>\n  39e4d0: 9402c1be     \tbl\t0x44ebc8 <__text+0x426bc8>\n  39e4d4: 91078268     \tadd\tx8, x19, #0x1e0\n  39e4d8: 91048274     \tadd\tx20, x19, #0x120\n  39e4dc: 95e2b44a     \tbl\t0x7c4b604 <_writev+0x7c4b604>\n  39e4e0: 39486268     \tldrb\tw8, [x19, #0x218]\n  39e4e4: b9000e68     \tstr\tw8, [x19, #0xc]\n  39e4e8: 7103fd1f     \tcmp\tw8, #0xff\n  39e4ec: 54000060     \tb.eq\t0x39e4f8 <__text+0x3764f8>\n  39e4f0: 91078260     \tadd\tx0, x19, #0x1e0\n  39e4f4: 94010f54     \tbl\t0x3e2244 <__text+0x3ba244>\n  39e4f8: d2800015     \tmov\tx21, #0x0               ; =0\n  39e4fc: a9476a68     \tldp\tx8, x26, [x19, #0x70]\n  39e500: f9400908     \tldr\tx8, [x8, #0x10]\n  39e504: f9003668     \tstr\tx8, [x19, #0x68]\n  39e508: f9403668     \tldr\tx8, [x19, #0x68]\n  39e50c: eb15011f     \tcmp\tx8, x21\n  39e510: 54000fa0     \tb.eq\t0x39e704 <__text+0x376704>\n  39e514: f940426a     \tldr\tx10, [x19, #0x80]\n  39e518: 97f6d989     \tbl\t0x154b3c <__text+0x12cb3c>\n  39e51c: f9403a69     \tldr\tx9, [x19, #0x70]\n  39e520: 94030b7c     \tbl\t0x461310 <__text+0x439310>\n  39e524: 9b152136     \tmadd\tx22, x9, x21, x8\n  39e528: 9402df07     \tbl\t0x456144 <__text+0x42e144>\n  39e52c: 97f6d17f     \tbl\t0x152b28 <__text+0x12ab28>\n  39e530: 34000160     \tcbz\tw0, 0x39e55c <__text+0x37655c>\n  39e534: 7100041f     \tcmp\tw0, #0x1\n  39e538: 540001e1     \tb.ne\t0x39e574 <__text+0x376574>\n  39e53c: a9406ec9     \tldp\tx9, x27, [x22]\n  39e540: a94122ca     \tldp\tx10, x8, [x22, #0x10]\n  39e544: a909266a     \tstp\tx10, x9, [x19, #0x90]\n  39e548: f9004668     \tstr\tx8, [x19, #0x88]\n  39e54c: f94012d8     \tldr\tx24, [x22, #0x20]\n  39e550: 97f6d6b8     \tbl\t0x154030 <__text+0x12c030>\n  39e554: 52800039     \tmov\tw25, #0x1               ; =1\n  39e558: 14000005     \tb\t0x39e56c <__text+0x37656c>\n  39e55c: 52800019     \tmov\tw25, #0x0               ; =0\n  39e560: a94062c8     \tldp\tx8, x24, [x22]\n  39e564: f9004e68     \tstr\tx8, [x19, #0x98]\n  39e568: aa1803fb     \tmov\tx27, x24\n  39e56c: 97f6d344     \tbl\t0x15327c <__text+0x12b27c>\n  39e570: 14000006     \tb\t0x39e588 <__text+0x376588>\n  39e574: a9097e7f     \tstp\txzr, xzr, [x19, #0x90]\n  39e578: d280001b     \tmov\tx27, #0x0               ; =0\n  39e57c: f900467f     \tstr\txzr, [x19, #0x88]\n  39e580: d2800018     \tmov\tx24, #0x0               ; =0\n  39e584: 52800059     \tmov\tw25, #0x2               ; =2\n  39e588: 90000560     \tadrp\tx0, 0x44a000 <__text+0x422000>\n  39e58c: 91294000     \tadd\tx0, x0, #0xa50\n  39e590: 9402faef     \tbl\t0x45d14c <__text+0x43514c>\n  39e594: f9402e64     \tldr\tx4, [x19, #0x58]\n  39e598: 940301d5     \tbl\t0x45ecec <__text+0x436cec>\n  39e59c: 94031fea     \tbl\t0x466544 <__text+0x43e544>\n  39e5a0: aa1a03e8     \tmov\tx8, x26\n  39e5a4: f9403260     \tldr\tx0, [x19, #0x60]\n  39e5a8: d63f0040     \tblr\tx2\n  39e5ac: 95e2d88e     \tbl\t0x7c547e4 <_writev+0x7c547e4>\n  39e5b0: aa1a03f4     \tmov\tx20, x26\n  39e5b4: 95e2d895     \tbl\t0x7c54808 <_writev+0x7c54808>\n  39e5b8: aa1a03e0     \tmov\tx0, x26\n  39e5bc: 97f6b74a     \tbl\t0x14c2e4 <__text+0x1242e4>\n  39e5c0: 54000181     \tb.ne\t0x39e5f0 <__text+0x3765f0>\n  39e5c4: aa1403e0     \tmov\tx0, x20\n  39e5c8: 9402bb1b     \tbl\t0x44d234 <__text+0x425234>\n  39e5cc: 97f6966d     \tbl\t0x143f80 <__text+0x11bf80>\n  39e5d0: 6f00e400     \tmovi.2d\tv0, #0000000000000000\n  39e5d4: ad0d0260     \tstp\tq0, q0, [x19, #0x1a0]\n  39e5d8: 3d807260     \tstr\tq0, [x19, #0x1c0]\n  39e5dc: f900ea7f     \tstr\txzr, [x19, #0x1d0]\n  39e5e0: 52801fe8     \tmov\tw8, #0xff               ; =255\n  39e5e4: 39076268     \tstrb\tw8, [x19, #0x1d8]\n  39e5e8: 91048277     \tadd\tx23, x19, #0x120\n  39e5ec: 14000012     \tb\t0x39e634 <__text+0x376634>\n  39e5f0: ad400680     \tldp\tq0, q1, [x20]\n  39e5f4: ad090660     \tstp\tq0, q1, [x19, #0x120]\n  39e5f8: 3dc00a80     \tldr\tq0, [x20, #0x20]\n  39e5fc: 3d805260     \tstr\tq0, [x19, #0x140]\n  39e600: 3cc29280     \tldur\tq0, [x20, #0x29]\n  39e604: 91048277     \tadd\tx23, x19, #0x120\n  39e608: 3c8292e0     \tstur\tq0, [x23, #0x29]\n  39e60c: 91048260     \tadd\tx0, x19, #0x120\n  39e610: 94030104     \tbl\t0x45ea20 <__text+0x436a20>\n  39e614: aa1403e0     \tmov\tx0, x20\n  39e618: 9402eb09     \tbl\t0x45923c <__text+0x43123c>\n  39e61c: ad490660     \tldp\tq0, q1, [x19, #0x120]\n  39e620: ad0d0660     \tstp\tq0, q1, [x19, #0x1a0]\n  39e624: 3dc05260     \tldr\tq0, [x19, #0x140]\n  39e628: 3d807260     \tstr\tq0, [x19, #0x1c0]\n  39e62c: 3cc292e0     \tldur\tq0, [x23, #0x29]\n  39e630: 3c8a92e0     \tstur\tq0, [x23, #0xa9]\n  39e634: a949266a     \tldp\tx10, x9, [x19, #0x90]\n  39e638: a9126e69     \tstp\tx9, x27, [x19, #0x120]\n  39e63c: f9404668     \tldr\tx8, [x19, #0x88]\n  39e640: a913226a     \tstp\tx10, x8, [x19, #0x130]\n  39e644: f900a278     \tstr\tx24, [x19, #0x140]\n  39e648: 91048268     \tadd\tx8, x19, #0x120\n  39e64c: a902fd1f     \tstp\txzr, xzr, [x8, #0x28]\n  39e650: 39056279     \tstrb\tw25, [x19, #0x158]\n  39e654: 3cca92e0     \tldur\tq0, [x23, #0xa9]\n  39e658: 3c869100     \tstur\tq0, [x8, #0x69]\n  39e65c: ad4d0660     \tldp\tq0, q1, [x19, #0x1a0]\n  39e660: ad020500     \tstp\tq0, q1, [x8, #0x40]\n  39e664: 3dc07260     \tldr\tq0, [x19, #0x1c0]\n  39e668: 3c860100     \tstur\tq0, [x8, #0x60]\n  39e66c: 39466268     \tldrb\tw8, [x19, #0x198]\n  39e670: 7103fd1f     \tcmp\tw8, #0xff\n  39e674: 540003e0     \tb.eq\t0x39e6f0 <__text+0x3766f0>\n  39e678: ad490660     \tldp\tq0, q1, [x19, #0x120]\n  39e67c: ad3907a0     \tstp\tq0, q1, [x29, #-0xe0]\n  39e680: 3dc05260     \tldr\tq0, [x19, #0x140]\n  39e684: 3c9403a0     \tstur\tq0, [x29, #-0xc0]\n  39e688: 3cc292e0     \tldur\tq0, [x23, #0x29]\n  39e68c: 940310d5     \tbl\t0x4629e0 <__text+0x43a9e0>\n  39e690: ad4d0660     \tldp\tq0, q1, [x19, #0x1a0]\n  39e694: ad070660     \tstp\tq0, q1, [x19, #0xe0]\n  39e698: 3dc07262     \tldr\tq2, [x19, #0x1c0]\n  39e69c: 3d804262     \tstr\tq2, [x19, #0x100]\n  39e6a0: 3cca92e3     \tldur\tq3, [x23, #0xa9]\n  39e6a4: 91002a69     \tadd\tx9, x19, #0xa\n  39e6a8: 94031a5a     \tbl\t0x465010 <__text+0x43d010>\n  39e6ac: 91068260     \tadd\tx0, x19, #0x1a0\n  39e6b0: 91028261     \tadd\tx1, x19, #0xa0\n  39e6b4: 90055497     \tadrp\tx23, 0xae2e000 <_OBJC_METACLASS_$__TtC13VGSCollectSDK19VGSExpDateTextField+0x1010>\n  39e6b8: 911102f7     \tadd\tx23, x23, #0x440\n  39e6bc: aa1703e2     \tmov\tx2, x23\n  39e6c0: 94030ee2     \tbl\t0x462248 <__text+0x43a248>\n  39e6c4: 97f6e40a     \tbl\t0x1576ec <__text+0x12f6ec>\n  39e6c8: 9402ce12     \tbl\t0x451f10 <__text+0x429f10>\n  39e6cc: aa0003f4     \tmov\tx20, x0\n  39e6d0: 91068260     \tadd\tx0, x19, #0x1a0\n  39e6d4: 97f6b6b6     \tbl\t0x14c1ac <__text+0x1241ac>\n  39e6d8: 91038260     \tadd\tx0, x19, #0xe0\n  39e6dc: 97f6b6b4     \tbl\t0x14c1ac <__text+0x1241ac>\n  39e6e0: 91048260     \tadd\tx0, x19, #0x120\n  39e6e4: 97f6b6b2     \tbl\t0x14c1ac <__text+0x1241ac>\n  39e6e8: 37000134     \ttbnz\tw20, #0x0, 0x39e70c <__text+0x37670c>\n  39e6ec: 14000004     \tb\t0x39e6fc <__text+0x3766fc>\n  39e6f0: 91048260     \tadd\tx0, x19, #0x120\n  39e6f4: 9402bcc1     \tbl\t0x44d9f8 <__text+0x4259f8>\n  39e6f8: 97f69622     \tbl\t0x143f80 <__text+0x11bf80>\n  39e6fc: 910006b5     \tadd\tx21, x21, #0x1\n  39e700: 17ffff82     \tb\t0x39e508 <__text+0x376508>\n  39e704: 52800075     \tmov\tw21, #0x3               ; =3\n  39e708: 14000009     \tb\t0x39e72c <__text+0x37672c>\n  39e70c: 9402ebd0     \tbl\t0x45964c <__text+0x43164c>\n  39e710: aa1603e0     \tmov\tx0, x22\n  39e714: f9402276     \tldr\tx22, [x19, #0x40]\n  39e718: 9402d06c     \tbl\t0x4528c8 <__text+0x42a8c8>\n  39e71c: f9402668     \tldr\tx8, [x19, #0x48]\n  39e720: b9802108     \tldrsw\tx8, [x8, #0x20]\n  39e724: 38686ad5     \tldrb\tw21, [x22, x8]\n  39e728: 97f6c16b     \tbl\t0x14ecd4 <__text+0x126cd4>\n  39e72c: b9400e68     \tldr\tw8, [x19, #0xc]\n  39e730: 7103fd1f     \tcmp\tw8, #0xff\n  39e734: 1a9f07f4     \tcset\tw20, ne\n  39e738: 940303fa     \tbl\t0x45f720 <__text+0x437720>\n  39e73c: b9801408     \tldrsw\tx8, [x0, #0x14]\n  39e740: a9435a6a     \tldp\tx10, x22, [x19, #0x30]\n  39e744: 8b0802c8     \tadd\tx8, x22, x8\n  39e748: f9401669     \tldr\tx9, [x19, #0x28]\n  39e74c: a900250a     \tstp\tx10, x9, [x8]\n  39e750: b9801808     \tldrsw\tx8, [x0, #0x18]\n  39e754: f9400e69     \tldr\tx9, [x19, #0x18]\n  39e758: f8286ac9     \tstr\tx9, [x22, x8]\n  39e75c: b9801c08     \tldrsw\tx8, [x0, #0x1c]\n  39e760: b9402669     \tldr\tw9, [x19, #0x24]\n  39e764: 38286ac9     \tstrb\tw9, [x22, x8]\n  39e768: b9802008     \tldrsw\tx8, [x0, #0x20]\n  39e76c: f9400a69     \tldr\tx9, [x19, #0x10]\n  39e770: f8286ac9     \tstr\tx9, [x22, x8]\n  39e774: b9802408     \tldrsw\tx8, [x0, #0x24]\n  39e778: 38286ad4     \tstrb\tw20, [x22, x8]\n  39e77c: b9802808     \tldrsw\tx8, [x0, #0x28]\n  39e780: 38286ad5     \tstrb\tw21, [x22, x8]\n  39e784: b9802c08     \tldrsw\tx8, [x0, #0x2c]\n  39e788: b9405669     \tldr\tw9, [x19, #0x54]\n  39e78c: 12000129     \tand\tw9, w9, #0x1\n  39e790: 38286ac9     \tstrb\tw9, [x22, x8]\n  39e794: b9803008     \tldrsw\tx8, [x0, #0x30]\n  39e798: 38286adf     \tstrb\twzr, [x22, x8]\n  39e79c: b9803408     \tldrsw\tx8, [x0, #0x34]\n  39e7a0: 52800029     \tmov\tw9, #0x1                ; =1\n  39e7a4: 38286ac9     \tstrb\tw9, [x22, x8]\n  39e7a8: b9803808     \tldrsw\tx8, [x0, #0x38]\n  39e7ac: 94031dbd     \tbl\t0x465ea0 <__text+0x43dea0>\n  39e7b0: 94030073     \tbl\t0x45e97c <__text+0x43697c>\n  39e7b4: aa0003e1     \tmov\tx1, x0\n  39e7b8: 9402d4ef     \tbl\t0x453b74 <__text+0x42bb74>\n  39e7bc: d10143bf     \tsub\tsp, x29, #0x50\n  39e7c0: a9457bfd     \tldp\tx29, x30, [sp, #0x50]\n  39e7c4: 17f69f51     \tb\t0x146508 <__text+0x11e508>\n  39e7c8: 97f6d3c7     \tbl\t0x1536e4 <__text+0x12b6e4>\n  39e7cc: 97f6d532     \tbl\t0x153c94 <__text+0x12bc94>\n  39e7d0: 94030fbb     \tbl\t0x4626bc <__text+0x43a6bc>\n  39e7d4: f9408ec0     \tldr\tx0, [x22, #0x118]\n  39e7d8: f9003e60     \tstr\tx0, [x19, #0x78]\n  39e7dc: a9492668     \tldp\tx8, x9, [x19, #0x90]\n  39e7e0: a90022a9     \tstp\tx9, x8, [x21]\n  39e7e4: a9482668     \tldp\tx8, x9, [x19, #0x80]\n  39e7e8: a90122a9     \tstp\tx9, x8, [x21, #0x10]\n  39e7ec: a9025eba     \tstp\tx26, x23, [x21, #0x20]\n  39e7f0: b9802688     \tldrsw\tx8, [x20, #0x24]\n  39e7f4: 38286ab9     \tstrb\tw25, [x21, x8]\n  39e7f8: b9802a88     \tldrsw\tx8, [x20, #0x28]\n  39e7fc: 8b0802a8     \tadd\tx8, x21, x8\n  39e800: a900711b     \tstp\tx27, x28, [x8]\n  39e804: b9802e88     \tldrsw\tx8, [x20, #0x2c]\n  39e808: f8286aa0     \tstr\tx0, [x21, x8]\n  39e80c: 9403005c     \tbl\t0x45e97c <__text+0x43697c>\n  39e810: 9402d2d4     \tbl\t0x453360 <__text+0x42b360>\n  39e814: f9403e60     \tldr\tx0, [x19, #0x78]\n  39e818: d10143bf     \tsub\tsp, x29, #0x50\n  39e81c: a9457bfd     \tldp\tx29, x30, [sp, #0x50]\n  39e820: aa1e03e1     \tmov\tx1, x30\n  39e824: 97f69f39     \tbl\t0x146508 <__text+0x11e508>\n  39e828: aa0103fe     \tmov\tx30, x1\n  39e82c: 15e2d81b     \tb\t0x7c54898 <_writev+0x7c54898>\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x39e26c",
+        "end_exclusive": "0x39e830",
+        "sha256": "8b51999d445710fe0d200c11cbb61125b6c737bee7e5d3162fa0689620e58d7f"
+      },
+      "linker_function_starts_in_window": [
+        "0x39e26c"
+      ],
+      "next_linker_function_start": "0x39e830",
+      "direct_calls": [
+        {
+          "site": "0x39e270",
+          "target": "0x159298",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e27c",
+          "target": "0x461b44",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e288",
+          "target": "0x1590ec",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e290",
+          "target": "0x455f58",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2a0",
+          "target": "0x153260",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2b0",
+          "target": "0x1484d4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2bc",
+          "target": "0x44ba0c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2c0",
+          "target": "0x14b2d8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2d0",
+          "target": "0x147fd0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2d8",
+          "target": "0x154218",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2e8",
+          "target": "0x4501c0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2ec",
+          "target": "0x3e23d0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e2f0",
+          "target": "0x451fd0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e300",
+          "target": "0x4561f0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e314",
+          "target": "0x463fd8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e320",
+          "target": "0x3284f0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e338",
+          "target": "0x43a388",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e344",
+          "target": "0x455f18",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e354",
+          "target": "0x14c2e4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e360",
+          "target": "0x45daa4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e36c",
+          "target": "0xfac40",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e374",
+          "target": "0x455f40",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e384",
+          "target": "0x1536dc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e38c",
+          "target": "0x14c2e4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e394",
+          "target": "0x1536e4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e398",
+          "target": "0x153c94",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e39c",
+          "target": "0x4626bc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e3a8",
+          "target": "0x46535c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e3b4",
+          "target": "0x1545ec",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e3b8",
+          "target": "0x457310",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e3c0",
+          "target": "0x455f18",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e3d0",
+          "target": "0x44f71c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e3dc",
+          "target": "0x45ecec",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e3f8",
+          "target": "0x7c547e4",
+          "imported_symbol": "_swift_release_x20"
+        },
+        {
+          "site": "0x39e3fc",
+          "target": "0x7c54814",
+          "imported_symbol": "_swift_release_x24"
+        },
+        {
+          "site": "0x39e404",
+          "target": "0x14c2e4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e40c",
+          "target": "0x44d234",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e410",
+          "target": "0x1541e4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e438",
+          "target": "0x1536e4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e43c",
+          "target": "0x153c94",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e440",
+          "target": "0x156f78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e444",
+          "target": "0xf87cc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e44c",
+          "target": "0x15327c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e450",
+          "target": "0x156f78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e454",
+          "target": "0x2acf878",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e458",
+          "target": "0x15fbb0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e45c",
+          "target": "0x154274",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e470",
+          "target": "0x15317c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e474",
+          "target": "0x452ed4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e480",
+          "target": "0x154440",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e484",
+          "target": "0x2ace184",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e490",
+          "target": "0x153184",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e4c4",
+          "target": "0x1543a0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e4cc",
+          "target": "0x7c54904",
+          "imported_symbol": "_swift_retain_x20"
+        },
+        {
+          "site": "0x39e4d0",
+          "target": "0x44ebc8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e4dc",
+          "target": "0x7c4b604",
+          "imported_symbol": "_$s7SwiftUI7BindingV12wrappedValuexvg",
+          "chained_binding": {
+            "slot": "0xaad52d0",
+            "symbol": "_$s7SwiftUI7BindingV12wrappedValuexvg",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10542,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x39e4f4",
+          "target": "0x3e2244",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e518",
+          "target": "0x154b3c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e520",
+          "target": "0x461310",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e528",
+          "target": "0x456144",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e52c",
+          "target": "0x152b28",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e550",
+          "target": "0x154030",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e56c",
+          "target": "0x15327c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e590",
+          "target": "0x45d14c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e598",
+          "target": "0x45ecec",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e59c",
+          "target": "0x466544",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e5ac",
+          "target": "0x7c547e4",
+          "imported_symbol": "_swift_release_x20"
+        },
+        {
+          "site": "0x39e5b4",
+          "target": "0x7c54808",
+          "imported_symbol": "_swift_release_x23"
+        },
+        {
+          "site": "0x39e5bc",
+          "target": "0x14c2e4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e5c8",
+          "target": "0x44d234",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e5cc",
+          "target": "0x143f80",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e610",
+          "target": "0x45ea20",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e618",
+          "target": "0x45923c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e68c",
+          "target": "0x4629e0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e6a8",
+          "target": "0x465010",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e6c0",
+          "target": "0x462248",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e6c4",
+          "target": "0x1576ec",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e6c8",
+          "target": "0x451f10",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e6d4",
+          "target": "0x14c1ac",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e6dc",
+          "target": "0x14c1ac",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e6e4",
+          "target": "0x14c1ac",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e6f4",
+          "target": "0x44d9f8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e6f8",
+          "target": "0x143f80",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e70c",
+          "target": "0x45964c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e718",
+          "target": "0x4528c8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e728",
+          "target": "0x14ecd4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e738",
+          "target": "0x45f720",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e7ac",
+          "target": "0x465ea0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e7b0",
+          "target": "0x45e97c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e7b8",
+          "target": "0x453b74",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e7c8",
+          "target": "0x1536e4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e7cc",
+          "target": "0x153c94",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e7d0",
+          "target": "0x4626bc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e80c",
+          "target": "0x45e97c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e810",
+          "target": "0x453360",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x39e824",
+          "target": "0x146508",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  }
+}

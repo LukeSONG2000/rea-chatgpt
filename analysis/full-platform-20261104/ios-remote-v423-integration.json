@@ -1,0 +1,207 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v423",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Does the input-card shadow use environment gating, and which selected preset can be integrated?",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x6ee3bb4 / 0x6fdde48 / metadata0xa989e60 / descriptor0x97214e8",
+      "conclusion": "Card applies ElevationModifier; fields elevation and _isElevationDisabled. Keypath838eda8 is not a conformance."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x838dea0 / 0x119b1ac ->0x145b50 ->0xc3d2c",
+      "conclusion": "__Key_isElevationDisabled is an EnvironmentKey whose default witness writes false."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x6f389b4 ->0x6f388b8;0x6f388fc/0x6f38918;0x838aeb8/0x838aec0",
+      "conclusion": "Environment true replaces shadows with clear/zero. False reads first shadow and optional second; output includes ShadowEffect."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x6f38690,0x7d7e6f0,0x7ce20a8;v420 color-init/tail",
+      "conclusion": "Selected card preset black opacity0.05/radius16/x0/y4; second layer nil."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Add environment adapter default false and source-backed card shadow after stroke.",
+      "Add explicit local elevation-disabled fixture.",
+      "Extend existing materials/draft/return test to four material/elevation combinations."
+    ],
+    "independent_adaptations": [
+      "SwiftUI host is independently reconstructed.",
+      "Launch argument is local fixture configuration, not official schema.",
+      "Nil second shadow omitted."
+    ],
+    "unknowns": [
+      "Effective thread ancestor environment/style overrides.",
+      "Visual and device parity.",
+      "Android corresponding implementation."
+    ]
+  },
+  "validation": {
+    "typecheck": {
+      "exit_code": 0,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v423-typecheck.log",
+        "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+      },
+      "warnings": "Existing UIKit warnings retained"
+    },
+    "uitest_parse": {
+      "exit_code": 0,
+      "runtime_executed": false
+    },
+    "visual": "not_accepted",
+    "simulator": "Existing preview PID87483; owned test runner97181 and firstLaunch97197 live at start; authorization blocker persists. No duplicate runner.",
+    "physical_device": "not_updated",
+    "retention": "dry-run targets/skipped empty",
+    "foundation_regression": "Not repeated; no state/model changes."
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-apply-import.asm",
+      "sha256": "6baf85213ffbf426e42a17191c1e598a414223a40cdf1939d617d729dcde7d39"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-apply-metadata.asm",
+      "sha256": "39440d4ec9aca86fbd6392b86c5e6fefb5748f43b9072e0a44e37904225d47ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-body.asm",
+      "sha256": "d7f090de49f8dd6187d06162bae93a24bbaea803f03f804a8e3e99d99272bc29"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-body.json",
+      "sha256": "025e1726e2f11f0ff9373127263470816254a93a699d6d61509e5d5b20383105"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-constants.json",
+      "sha256": "c464b6ebcc3a91fa9366ab26420a1f69b0791220d51c5bbc8623ce369ac1cb6e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-default-false.asm",
+      "sha256": "94e18e35bd05c63a55dba8829d902f0d7a3a6fe555460d1b8d539e36889f55c5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-default-terminal.asm",
+      "sha256": "9e6481caacd1dff879ad78b87a55dca1e3b70e0300007a463a0dcf0cc2fcb4aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-default.asm",
+      "sha256": "bb159895d68899c726f7ecab80e5b3a0a9b7a8b5dfe24a14ea7436ce4117a6ac"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-environment.asm",
+      "sha256": "69a501d6b628f5f72165c4653fa31c69a59d026b6e6c4879f8e46f6698abc240"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-implementation.asm",
+      "sha256": "2c651ee1ca3c8e759d09e47103f2d334ef0abb9c2feb7a9fb8ba00b20eb86cd5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-implementation.json",
+      "sha256": "dce6cd49a4b85c8c4742d63f7933edcf14b35b78e6db986981909be9c02b4274"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-key-witness.json",
+      "sha256": "09409916906d54e031430bedf9a78a1ec534d9f75067b8e88acd1b0c08823d8b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-key.asm",
+      "sha256": "2630699b28c2ba24315bd11e93da512ec7e38e38f75f10fc52b8571b23456734"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-key.json",
+      "sha256": "32a235d528873df2db5167e127a25bd9531f2817f15ff13a8ba0046c8c791795"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-keypath.asm",
+      "sha256": "739d9aaaa7acdd672fd1eaffd03092ed201081094b25d0802dd923639ee37d69"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-linkage.json",
+      "sha256": "a42f5246ea8cb50bf9f868012f1821940b753754212fb226c9fe830dbaa7103a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-read-args.asm",
+      "sha256": "0ff5b6c04ff4fc989396b64249d55de6bcf1f12ea9c0ed680e175b1114f7502f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-read.asm",
+      "sha256": "5a67a060b7ee61f8c17c160307d45d255922afdee4be4d98f314c90e9e381b77"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-result-types.json",
+      "sha256": "b00e9780693e858473f149e9785b456d0468c9218af1cc5060016e6729a0f996"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-types.json",
+      "sha256": "9f8b3f3686483bb6edaa67b819ee4212bfdb556e2a7ac070818adc4841a8a159"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-elevation-witness-0x838aa6c.json",
+      "sha256": "f5684884f00569864bcd9a5a1bdd2b259bc2086b8ea5649794637fb53a12f931"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-environment-helper.asm",
+      "sha256": "5d10dad9ba3038162a487f607a9083fc2123e4b1deb9ce7222b990b39eb7d855"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v423-environment-helper.json",
+      "sha256": "a897c5a005dc5ba8833802186e9d91d7168f37426c4c3d81ca99a0b2f7b6a89c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-apply.asm",
+      "sha256": "2a47f95ec363943f8f09b8e8393d7283c85c86ecfb542f4e3494a0622ad1613a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-constant-init.asm",
+      "sha256": "c075da01131e789fae515924c3ed20dbae7f81e60e1ed7ed439a117579ffc450"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-color-init.asm",
+      "sha256": "71b7fdb6860d4cfaae2b2727954d85b16d329c8a5f2e3e9d91b70f8890246d4f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-color-tail.asm",
+      "sha256": "c5ebc1ddb876c8a1ce4786fb3e18c871a47a2f9b6f9e8f644c27408d14ed5de3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v420-shadow-opacity-helper.asm",
+      "sha256": "45cd4c1b66e958d67db0e76d75bb67c2e28b36339ba53f76be143d0c9b65c083"
+    }
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "b6fa9a6d248d697a8842bf6c4775c69e679c057d43286c2d9bdd46deb3013a3f"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "c8012364c08f2e162a032f9ca18507ec9f6817aa5ae5e7234ae36d2905613348"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "0dcbf4024b59c4da154cafdb726bd0759b7182529b8ee5d195c03e7c0cb6b25d"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "96b1be895adfadc11e623ea496ba3be5b6f0e62de77afafebdff9a5f711463c0"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "9e211e2f3f267bc079324446feb35faaa7d59f70885ea8d5088280535949894b"
+    }
+  ],
+  "next": "Run four material/elevation screenshot cases after installation authorization; independently trace remaining Remote message dispatch/interaction gaps without treating fixture acceptance as service closure."
+}

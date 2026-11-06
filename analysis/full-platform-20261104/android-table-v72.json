@@ -1,0 +1,61 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-native-implementation",
+  "changes": [
+    "Table scroll saveable state hosted above disposable conversation tree via upstream public renderer override",
+    "Key binds fixed offline account, conversation, request and unique understood header signature",
+    "Row append and unrelated preceding blocks keep identity; changed and duplicate headers do not reuse it",
+    "Retire tracked state for removed scopes and obsolete visible header identities"
+  ],
+  "evidence": [
+    "android-table-v72-ui-v2.json"
+  ],
+  "validation": {
+    "offline_build": "passed",
+    "identity_assertions": 6,
+    "native_scenario": "row append, horizontal read, cancel, A-B-A navigation",
+    "native_status": "passed",
+    "header_bounds": {
+      "before": [
+        [
+          "LastWide8d5559",
+          "[677,1576][1016,1639]"
+        ]
+      ],
+      "after": [
+        [
+          "LastWide8d5559",
+          "[677,1576][1016,1639]"
+        ]
+      ],
+      "restored": [
+        [
+          "LastWide8d5559",
+          "[677,1576][1016,1639]"
+        ]
+      ]
+    },
+    "visual_review": "full rightmost header visible after navigation, coordinates equal before/after/restored"
+  },
+  "earlier_run": "android-table-v72-ui-v1.json passed before adding obsolete-key cleanup and second interior swipe",
+  "limits": [
+    "No disk-backed force-stop restoration; Android saved-state process restoration also unaccepted",
+    "Dedicated lazy-list recycling and multiple-table UI isolation still need runtime verification",
+    "Header matching is independent policy; same-header replacements without simultaneous duplicates may keep position",
+    "Deleted-state cleanup implemented but no dedicated delete/UI regression this batch",
+    "Original 293 visual and physical-device behavior remain unaccepted"
+  ],
+  "cleanup": {
+    "host_stopped": true,
+    "android_pairing_removed": true,
+    "fixture_server_stopped": true,
+    "private_pairing_removed": true
+  },
+  "sources": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/NativeTableState.kt": "52da8f83de6135d27d83a68c8d6554afa062ca23d867ac49ea052ffab2f3494e",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "74767e413473812d6f226bf0009e56606f094fc44991fc12f80b5c8e9d7dec96",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "a62e0640a0986548dfd85d6f1cf6c49b2c4a0bd6c63f9e0121d4ebca5d9593aa",
+    "implementation/android/test-message-actions.py": "85fbee01b69246d2b5fcca9f9480a4922565d36102841412418e20f8f2063c2c"
+  }
+}

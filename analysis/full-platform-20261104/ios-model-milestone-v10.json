@@ -1,0 +1,71 @@
+{
+  "status": "partial",
+  "classification": "independent native client controlled UI replay and synthetic vendor request",
+  "results": {
+    "ios-cancel-v1": {
+      "passed": 1,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+        "deviceName": "REA ChatGPT Offline",
+        "modelName": "iPhone 17 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      }
+    },
+    "ios-zhipu-v1": {
+      "passed": 1,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+        "deviceName": "REA ChatGPT Offline",
+        "modelName": "iPhone 17 Pro",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      }
+    }
+  },
+  "verified": [
+    "B stream is absent on A screen and visible again after returning to B",
+    "Stop leaves partial fixture text frozen for the observed four-second window",
+    "Native Send through paired loopback and Zhipu worker produced nonempty response and completed status",
+    "Screenshot shows Native model connected",
+    "Malformed request shape returns 400 in transport regression tests"
+  ],
+  "limitations": [
+    "Cancellation UI test used deterministic slow fixture, not live Zhipu",
+    "Server-side provider cancellation/billing unaccepted",
+    "Generated messages remain memory-only and plain native text",
+    "No real iPhone acceptance",
+    "No official native UI fidelity or performance claim"
+  ],
+  "test_bundles": [
+    "ios-cancel-v1.xcresult",
+    "ios-zhipu-v1.xcresult"
+  ],
+  "transport_tests_passed": 3,
+  "source_hashes": [
+    {
+      "path": "implementation/ios/Sources/LocalHarness.swift",
+      "sha256": "99e91aa409a33bfc31c7f0d876cd9cd068b8a9c398e88af99ee3c3ceeedcc3e5"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "fbe4023ea9f08ba478b5bcf50241b28137cf966ff617717a941b1476204c35aa"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "59d25f3222380383ac4f581eb2a36cffc27ffd6aca733754a585ba70602fab5a"
+    },
+    {
+      "path": "implementation/harness/fixture_worker.py",
+      "sha256": "cdb19d493e9ac5e4f93758f3a1596963c58a0930bf7174b57a6e0157a9676742"
+    },
+    {
+      "path": "implementation/harness/loopback_server.py",
+      "sha256": "6f3f81f845d1e0d9829aceb77569f46ac3e66b2151472c8c6da1b9619dbada2b"
+    }
+  ]
+}

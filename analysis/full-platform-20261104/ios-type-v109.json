@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-native-host-implementation",
+  "platform": "iOS 27 Simulator",
+  "target_artifact_version": "1.2026.293",
+  "defect": "Dynamic font glyphs enlarged while native message blocks retained pre-change heights, clipping text",
+  "changes": [
+    "Explicit font category passed from native host through SwiftUI row into native blocks before configuration",
+    "Hosting identity includes font category",
+    "Native text/code block height uses text sizeThatFits with actual width plus block padding",
+    "Opt-in geometry diagnostics contain identifiers/font metrics only, no message body",
+    "Font test runner reacquires simulator data-container after installation and restores original font setting"
+  ],
+  "validation": {
+    "status": "passed-for-covered-cases",
+    "results": [
+      "ios-type-v109-final.xcresult",
+      "ios-type-v109-tables.xcresult"
+    ],
+    "passedTests": 2,
+    "skippedTests": 0,
+    "geometry": "ios-type-v109-final.geometry.json",
+    "geometry_identity_verified_against": "REA_TYPE_BASELINE in ios-type-v109-final.log",
+    "code_height": {
+      "before": 52,
+      "after": 95,
+      "required_after": 95
+    },
+    "status_text_height": {
+      "after": 113,
+      "required_after": 112.33333333333333
+    },
+    "checks": [
+      "Live large to accessibility-extra-large code height grows",
+      "Visible message text heights cover fitting heights",
+      "Send button remains hittable",
+      "Standard-font dual-table rotation/recycling/conversation isolation remains passing"
+    ],
+    "visual_review": "Final full-screen screenshot inspected: heading/body/code/table and two-line completed status display; top harness notice remains ellipsized",
+    "screenshots": "ios-type-v109-images/manifest.json",
+    "runner_syntax": "py_compile passed"
+  },
+  "historical_evidence": {
+    "failed": [
+      "ios-type-v109-before.xcresult",
+      "ios-type-v109-after.xcresult"
+    ],
+    "r3": "UI passed, but manually collected r3-geometry.json was stale from preceding run and is excluded from acceptance; final geometry identity is verified"
+  },
+  "limits": [
+    "Only one live font-size transition/sample; not all Dynamic Type categories",
+    "Header notice still ellipsized at large accessibility font",
+    "Selection and reading-anchor continuity during font changes not accepted",
+    "No physical iPhone or official visual parity",
+    "Runner container-path correction syntax-checked; final geometry collected directly from current container"
+  ],
+  "next_action": "Validate font decrease and reading-anchor continuity, then broaden mixed-content/platform acceptance",
+  "sources": [
+    {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "9113d25b0779b2c7369d7f11d3d1859f5604883745f2bb38b0dade9cc9f5c339"
+    },
+    {
+      "file": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "92905892ad1cf43daf56af0ee9af12e3746eb15062dcb6978b6056c7f7169d4e"
+    },
+    {
+      "file": "implementation/ios/test-dynamic-type.py",
+      "sha256": "4191ae54c7cf43a5f106a54f0d91b605bae0a6a4c5f85e4224b5bb751081bed3"
+    }
+  ]
+}

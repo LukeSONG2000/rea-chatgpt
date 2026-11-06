@@ -1,0 +1,1 @@
+"use strict";function e(e){return`${e}`.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDFFF]/g,e=>2===e.length?e:"�")}Object.defineProperty(exports,"__esModule",{value:!0}),exports.usvString=void 0,exports.usvString=e;

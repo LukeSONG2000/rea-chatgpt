@@ -1,0 +1,31 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "correction": "v369 wrapping acceptance was adapter readability, not official parity; superseded by source-backed bidirectional scrolling",
+  "source": {
+    "axes": "0x1a67358 horizontal /0x1a67360 vertical, OR-combined0x1a67390 into ScrollView0x1a673e0",
+    "row_type": "0x7e235e0 wraps TextAlignment-modified Text in _FixedSizeLayout; ForEach0x7e235c0 uses that content",
+    "flags": "0x1bfd88 copies65bytes of content,0x1a68df8 stores two true bytes at offset65; frozen _FixedSizeLayout declares horizontal then vertical"
+  },
+  "integration": "ScrollView horizontal+vertical and fixedSize true,true; no transport/execution added",
+  "validation": {
+    "test": "testRemoteOutputLongLineLayout",
+    "passed": 0,
+    "failed": 1,
+    "failure": "horizontal swipes did not change long-row minX; remained32",
+    "passed_assertions": [
+      "single-line height",
+      "row wider than viewport",
+      "vertical bottom reachable"
+    ],
+    "not_accepted": "horizontal reachability; outer content width likely constrained, cause not yet proven",
+    "next_trace": "0x1a67f78..0x1a67fe0 and0x1a680c0..0x1a680f8 frame/padding/flexframe"
+  },
+  "limits": [
+    "cross-row selection and large-output virtualization pending",
+    "SDK field declaration corroborates type layout, not original runtime execution",
+    "remaining shell width constraints still partial"
+  ]
+}

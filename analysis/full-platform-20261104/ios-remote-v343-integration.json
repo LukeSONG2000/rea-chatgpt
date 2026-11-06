@@ -1,0 +1,69 @@
+{
+  "status": "partial",
+  "version": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static ABI dataflow inference",
+  "call": "0x19c47e4 -> 0x68ff100",
+  "descriptor": "0x96fd7e4",
+  "field_offset_vector_word_offset": 4,
+  "inputs": [
+    {
+      "field": "includeHeader",
+      "index": 15,
+      "metadata_slot": "0x5c",
+      "value": true,
+      "caller_stack": "0x38",
+      "callee_load": "0x68ff150",
+      "field_store": "0x68ff31c..0x68ff324"
+    },
+    {
+      "field": "isScrollEnabled",
+      "index": 17,
+      "metadata_slot": "0x64",
+      "value": true,
+      "caller_stack": "0x39",
+      "callee_load": "0x68ff148",
+      "field_store": "0x68ff328..0x68ff32c"
+    },
+    {
+      "field": "hugsContentHorizontally",
+      "index": 16,
+      "metadata_slot": "0x60",
+      "value": false,
+      "caller_stack": "0x3a",
+      "callee_load": "0x68ff140",
+      "field_store": "0x68ff330..0x68ff338"
+    },
+    {
+      "field": "streaming",
+      "index": 13,
+      "metadata_slot": "0x54",
+      "value": false,
+      "caller_stack": "0x28",
+      "callee_load": "0x68ff15c",
+      "field_store": "0x68ff2f8..0x68ff300"
+    }
+  ],
+  "language": "diff literal only for presentation tag2; other tags not generalized",
+  "integration": [
+    "Extracted independent code-block presentation/view boundary",
+    "Header language shown separately from synthetic-content notice",
+    "Preserved horizontal scroll and host-scoped code payload"
+  ],
+  "unknown": [
+    "__disableCopyButton environment value in Remote",
+    "Header typography and codeBlockActions routing",
+    "Selection/menus semantics and syntax highlighting",
+    "Exact native scrolling implementation",
+    "Android consumer"
+  ],
+  "validation": {
+    "simulator": "testRemoteTaskScopeAndReturn passed 1/0 including diff language assertion",
+    "visual": "settled screenshot inspected; header, body and disclaimer visible",
+    "preview_pid": 73202,
+    "phone": "not updated",
+    "external_display": "not reverified",
+    "retention": "no stale targets",
+    "limits": "No clipboard/menu/long-line scroll runtime coverage"
+  }
+}

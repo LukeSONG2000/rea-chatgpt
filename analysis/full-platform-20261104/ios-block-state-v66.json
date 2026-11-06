@@ -1,0 +1,52 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-native-implementation-and-synthetic-runtime-tests",
+  "changes": [
+    "Code-copy button writes current complete code to local clipboard",
+    "Unchanged native blocks avoid destructive reconfiguration",
+    "Table rows/cells reconciled in place; unchanged attributed text and horizontal offset retained",
+    "Horizontal table drag stops outer tail-follow until explicit return-to-latest"
+  ],
+  "validation": {
+    "runs": [
+      {
+        "summary": "analysis/full-platform-20261104/ios-block-state-v66-ui-v1.summary.json",
+        "passed": 3,
+        "failed": 1,
+        "skipped": 0
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-block-state-v66-ui-v2.summary.json",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-block-state-v66-ui-v3.summary.json",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      }
+    ],
+    "device": "dedicated iOS 27 simulator 71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "visual_review": "Inspected wide-table screenshot after row append; last columns and header remain in viewport",
+    "first_failure": "Horizontal offset stayed stable, but outer tail-follow moved header out of viewport; fixed propagation of user-scroll intent"
+  },
+  "cleanup": {
+    "owned_fixture_server_sigterm": true,
+    "temporary_pairing_removed": true
+  },
+  "limits": [
+    "Independent control placement and interaction policy; no official visual parity claimed",
+    "No recovered OAIMarkdown linked",
+    "Table offset across view recycling/navigation/process restart not implemented",
+    "Arbitrary semantic table rewrites and cross-cell selection not accepted",
+    "No physical iPhone, live Zhipu or other-platform acceptance this batch"
+  ],
+  "sources": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "5ebd40e9229019b5ea98852de46982a173d4a4dc7f4613f5222aa45eb55a1b1e",
+    "implementation/ios/UITests/HostInteractionTests.swift": "fbe0000cc15c70805e1433bab9ab2f38e62feee489f0b0daca08f98805bc98bb",
+    "implementation/harness/fixture_worker.py": "63444c55e8cb8c129403d940e1d7e2ad316fb219e123dc29353148363bbf3c50"
+  }
+}

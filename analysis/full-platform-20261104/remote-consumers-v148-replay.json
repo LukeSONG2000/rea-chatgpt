@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "authority": "exact official consumer fragments plus independent projection; not complete manager/UI equivalence",
+  "evidence": [
+    {
+      "symbol": "Wqt",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 2519446,
+      "source": "function Wqt(e,t,n,r){if(RS(t))return e.watch(({get:i})=>{let a=i(KS);if(a?.hostId!==t||!(r?.()??!0))return;let o=!0,s=n=>{let i=e.get(KS);if(!o||i?.hostId!==t||i.accountId!==a.accountId||i.userId!==a.userId||!(r?.()??!0))return;let s=i.threads.filter(({id:e})=>!n.has(e)),c=Object.entries(i.profilesByThreadId).filter(([e])=>!n.has(e));(s.length!==i.threads.length||c.length!==Object.keys(i.profilesByThreadId).length)&&e.set(Gqt,{...i,removalBaseRevision:i.revision,revision:crypto.randomUUID(),threads:s,profilesByThreadId:Object.fromEntries(c)})},c=[`thread-archived`,`thread-deleted`].map(e=>n.subscribe({type:`event`,key:{hostId:t},event:e,listener:e=>s(new Set([e]))})),l=n.restoreCachedThreadSummaries(a.threads);l.then(t=>{e.get(KS)===a&&s(new Set(t))},()=>void 0);let u=[],d=()=>{if(o){o=!1,l[Symbol.dispose]();for(let e of c)e[Symbol.dispose]();for(let e of u)e[Symbol.dispose]();u.length=0}};for(let e of c)e.onRpcBroken(d),e.then(e=>{if(!o){e[Symbol.dispose]();return}u.push(e),e.onRpcBroken(d)},d);return d})}"
+    },
+    {
+      "symbol": "oqn",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 3894638,
+      "source": "function oqn(e,t,n,r){let i=new Map;return({conversationId:a,turnId:o,status:s,automationNotificationDecision:c})=>{if(!r()||s!==`completed`||c!=null)return;let l=iqn(a);if(!l)return;let u=i.get(a);if(u?.turnId===o)return;let d=((u?.count??0)+1)%cqn;i.set(a,{count:d,turnId:o}),d===0&&sqn(e,t,n,a,l,r)}}"
+    },
+    {
+      "symbol": "xti",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 5263429,
+      "source": "function xti(e,t,n,r){if(RS(t))return()=>{};let i=new AbortController,a=()=>!i.signal.aborted&&(r?.()??!0),o=e.get(wV,t),s=n.subscribe({type:`notification`,key:{hostId:t},methods:`remoteControl/status/changed`,listener:({params:n})=>{a()&&Sti(e,t,n)}}),c,l=()=>{i.signal.aborted||(i.abort(),s[Symbol.dispose](),c?.[Symbol.dispose]())};return s.onRpcBroken(l),s.then(e=>{if(!a()){e[Symbol.dispose]();return}c=e,e.onRpcBroken(l)},l),va(n.sendRequest(`remoteControl/status/read`,void 0),i.signal).then(n=>{e.get(wV,t)===o&&a()&&Sti(e,t,n)}).catch(e=>{a()&&Lo.error(`Failed to read remote-control status`,{safe:{},sensitive:{error:e}})}),l}"
+    },
+    {
+      "symbol": "Sti",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 5264065,
+      "source": "function Sti(e,t,n){n?.status===`connected`&&e.set(Oti,t,!1),e.set(wV,t,n)}"
+    },
+    {
+      "symbol": "item/agentMessage/delta consumer",
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byteOffset": 3042531,
+      "source": "case`item/agentMessage/delta`:{let{itemId:t,delta:n,threadId:r,turnId:i}=e.params;this.getTextDeltaQueue().enqueue({conversationId:cs(r),turnId:i,itemId:t,target:{type:`agentMessage`},delta:n});break}"
+    }
+  ],
+  "checks": [
+    "projected text delta accepted by original queue consumer with exact thread/turn/item identities",
+    "status notification wins over late initial status/read response",
+    "disposed status subscription ignores late notifications"
+  ],
+  "correctedHelperRoles": {
+    "Dh": "oqn: adaptive title callback, not connection-state initializer",
+    "ph": "Wqt: durable-host cached summaries; excluded for non-durable hosts",
+    "Zp": "xti: remoteControl status read plus changed notification"
+  },
+  "stubs": [
+    "cs conversation conversion is identity stub",
+    "text delta queue records delivery only; no parser/render commit",
+    "RS false selects non-durable branch; scope/RPC handles synthetic",
+    "No approval Goal or thread lifecycle rendering executed"
+  ]
+}

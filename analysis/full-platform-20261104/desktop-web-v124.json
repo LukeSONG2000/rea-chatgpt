@@ -1,0 +1,38 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "findings": [
+    "Project member owner uses /g/{projectId}/c/{conversationId}; prior host rejected it and retained old route",
+    "Initial transient home owner arrived before ready/navigation and previously overwrote persisted route"
+  ],
+  "changes": [
+    "Project route parser and member/project/current-profile validation",
+    "Ignore transient owner updates before initial navigate dispatch, with bounded route trace",
+    "Isolated copied-profile early-click and automatic restoration probes"
+  ],
+  "validation": {
+    "early_click": "passed without startup settling delay; member route persisted",
+    "next_cold_auto_restore": "passed without click or 18-second delay; full reply/composer visible",
+    "errors": [],
+    "server_tests": "correct membership accepted; mismatched project/conversation rejected and prior route preserved; restart loads project route",
+    "route_store_regression": "passed"
+  },
+  "evidence": [
+    "desktop-web-v124-route-before.json",
+    "desktop-web-v124-route-fixed.json",
+    "desktop-web-v124-auto-restore.json"
+  ],
+  "limits": [
+    "v123 initial timeout itself is not fully proven to have the same cause; deterministic route persistence and transient-home defects are now demonstrated and fixed",
+    "No claim of exhaustive startup race coverage",
+    "Existing unsupported host callbacks and full visual fidelity remain open",
+    "macOS native runtime acceptance still separate"
+  ],
+  "next": "Integrate independent project/application state services in macOS Electron host and verify native runtime",
+  "files": {
+    "analysis/tools/desktop-route-store.cjs": "e002bcdbc22ad0a520494bb569121becefb69fafb728f83edfa89db51d6433d8",
+    "implementation/desktop-web/server.cjs": "fe28c5eb4a6cb7ed75218fea1e53a273613c41324114d4da3e2b80256ef6c329",
+    "implementation/desktop-web/bootstrap.mjs": "d93ec36cf7c976b463deea2a52e1ce31be0830a301a0853ded150eab3de1f919",
+    "implementation/desktop-web/probe-cold-route.cjs": "acb4b1455a075ae6e45528ad278d7054818440a723b6a8c707cebed6702909ff"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "status": "partial",
+  "checks": [
+    {
+      "platform": "macos",
+      "payloadFiles": 15886,
+      "status": "passed"
+    },
+    {
+      "platform": "windows",
+      "payloadFiles": 15886,
+      "status": "passed"
+    },
+    {
+      "platform": "windows",
+      "packageFiles": 15960,
+      "status": "passed"
+    }
+  ],
+  "macSignature": "codesign --verify --deep --strict passed",
+  "reports": [
+    "remote-renderer-v155-unit.json",
+    "remote-renderer-v155-bundle.json"
+  ],
+  "limits": [
+    "Original Remote controls do not yet consume independent renderer state",
+    "Windows packaged but not executed on Windows",
+    "No live model request",
+    "Screenshot shows existing synthetic chat, not Remote visual acceptance"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "checks": [
+    "exact scope and ordered streaming on new conversation; duplicate rejected",
+    "scoped cancel acknowledged; no late event delivery",
+    "foreign account, nonloopback endpoint and public pairing rejected",
+    "Malformed pairing never echoes secret-bearing input",
+    "foreign-scope becomes explicit failed event",
+    "unauthorized becomes explicit failed event"
+  ],
+  "limits": [
+    "Deterministic loopback fixture; not live Zhipu or UI acceptance"
+  ],
+  "audit": [
+    {
+      "request": "a82352c7-0fa4-4dd0-bb9c-22cdcad9cd69",
+      "conversation": "offline-local-0559a21d-9bd8-451f-8d76-3a80550d6e33",
+      "kind": "accepted",
+      "sequence": 1
+    },
+    {
+      "request": "a82352c7-0fa4-4dd0-bb9c-22cdcad9cd69",
+      "conversation": "offline-local-0559a21d-9bd8-451f-8d76-3a80550d6e33",
+      "kind": "delta",
+      "sequence": 2
+    },
+    {
+      "request": "a82352c7-0fa4-4dd0-bb9c-22cdcad9cd69",
+      "conversation": "offline-local-0559a21d-9bd8-451f-8d76-3a80550d6e33",
+      "kind": "delta",
+      "sequence": 3
+    },
+    {
+      "request": "a82352c7-0fa4-4dd0-bb9c-22cdcad9cd69",
+      "conversation": "offline-local-0559a21d-9bd8-451f-8d76-3a80550d6e33",
+      "kind": "completed",
+      "sequence": 4
+    },
+    {
+      "request": "495dd205-2b02-4694-93b3-200c3e50f2df",
+      "conversation": "offline-local-0559a21d-9bd8-451f-8d76-3a80550d6e33",
+      "kind": "accepted",
+      "sequence": 1
+    },
+    {
+      "request": "495dd205-2b02-4694-93b3-200c3e50f2df",
+      "conversation": "offline-local-0559a21d-9bd8-451f-8d76-3a80550d6e33",
+      "kind": "delta",
+      "sequence": 2
+    },
+    {
+      "request": "495dd205-2b02-4694-93b3-200c3e50f2df",
+      "conversation": "offline-local-0559a21d-9bd8-451f-8d76-3a80550d6e33",
+      "kind": "client-cancel"
+    }
+  ]
+}

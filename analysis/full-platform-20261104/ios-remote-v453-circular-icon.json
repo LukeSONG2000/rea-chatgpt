@@ -1,0 +1,776 @@
+{
+  "metadata": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "status": "partial",
+    "types": [
+      {
+        "name": "CircularControlIcon",
+        "descriptor": "0x971c48c",
+        "type_section_entry": "0x9d57218",
+        "accessor": "0x6f70780",
+        "fields": [
+          {
+            "name": "image",
+            "record": "0x9c0b17c",
+            "type_reference": "0x8f580c0"
+          },
+          {
+            "name": "diameter",
+            "record": "0x9c0b188",
+            "type_reference": "0x8c865b0"
+          },
+          {
+            "name": "imageColor",
+            "record": "0x9c0b194",
+            "type_reference": "0x8fcc9f0"
+          },
+          {
+            "name": "showsBackground",
+            "record": "0x9c0b1a0",
+            "type_reference": "0x8bfd810"
+          }
+        ],
+        "conformances": [
+          {
+            "descriptor": "0x838206c",
+            "flags": "0x30000",
+            "section_entry": "0x9d24a48"
+          }
+        ]
+      }
+    ],
+    "missing": [],
+    "limitations": [
+      "Field names are metadata, not values or active configuration.",
+      "No Swift UI body behavior or runtime layout established.",
+      "Only struct and direct type conformance records selected."
+    ]
+  },
+  "0x838206c": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "conformance": "0x838206c",
+    "flags": "0x30000",
+    "type_descriptor": "0x971c48c",
+    "protocol": {
+      "symbol": "_$s7SwiftUI4ViewMp",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 11,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "witness_pattern": null,
+    "witnesses": [
+      {
+        "entry": "0x8382080",
+        "requirement": {
+          "symbol": "_$s7SwiftUI4ViewP4BodyAC_AaBTn",
+          "library_ordinal": 82,
+          "weak": false,
+          "import_ordinal": 13,
+          "table_addend": 0,
+          "encoded_pointer_addend": 0,
+          "chain_membership_verified": true
+        },
+        "implementation": "0x9417f95",
+        "section": "__swift5_typeref",
+        "limit": "Type requirement records are not callable functions"
+      },
+      {
+        "entry": "0x8382088",
+        "requirement": {
+          "symbol": "_$s4Body7SwiftUI4ViewPTl",
+          "library_ordinal": 82,
+          "weak": false,
+          "import_ordinal": 14,
+          "table_addend": 0,
+          "encoded_pointer_addend": 0,
+          "chain_membership_verified": true
+        },
+        "implementation": "0x9417f9d",
+        "section": "__swift5_typeref",
+        "limit": "Type requirement records are not callable functions"
+      },
+      {
+        "entry": "0x8382090",
+        "requirement": {
+          "symbol": "_$s7SwiftUI4ViewP05_makeC04view6inputsAA01_C7OutputsVAA11_GraphValueVyxG_AA01_C6InputsVtFZTq",
+          "library_ordinal": 82,
+          "weak": false,
+          "import_ordinal": 15,
+          "table_addend": 0,
+          "encoded_pointer_addend": 0,
+          "chain_membership_verified": true
+        },
+        "implementation": "0x203dbc",
+        "section": "__text",
+        "limit": "Type requirement records are not callable functions"
+      },
+      {
+        "entry": "0x8382098",
+        "requirement": {
+          "symbol": "_$s7SwiftUI4ViewP05_makeC4List4view6inputsAA01_cE7OutputsVAA11_GraphValueVyxG_AA01_cE6InputsVtFZTq",
+          "library_ordinal": 82,
+          "weak": false,
+          "import_ordinal": 16,
+          "table_addend": 0,
+          "encoded_pointer_addend": 0,
+          "chain_membership_verified": true
+        },
+        "implementation": "0x203dc0",
+        "section": "__text",
+        "limit": "Type requirement records are not callable functions"
+      },
+      {
+        "entry": "0x83820a0",
+        "requirement": {
+          "symbol": "_$s7SwiftUI4ViewP14_viewListCount6inputsSiSgAA01_ceF6InputsV_tFZTq",
+          "library_ordinal": 82,
+          "weak": false,
+          "import_ordinal": 17,
+          "table_addend": 0,
+          "encoded_pointer_addend": 0,
+          "chain_membership_verified": true
+        },
+        "implementation": "0x145934",
+        "section": "__text",
+        "limit": "Type requirement records are not callable functions"
+      },
+      {
+        "entry": "0x83820a8",
+        "requirement": {
+          "symbol": "_$s7SwiftUI4ViewP4body4BodyQzvgTq",
+          "library_ordinal": 82,
+          "weak": false,
+          "import_ordinal": 18,
+          "table_addend": 0,
+          "encoded_pointer_addend": 0,
+          "chain_membership_verified": true
+        },
+        "implementation": "0x6ee7cb8",
+        "section": "__text",
+        "limit": "Type requirement records are not callable functions"
+      }
+    ],
+    "limits": [
+      "Generic witness instantiation trailer not interpreted",
+      "No runtime execution or body semantics reconstructed"
+    ]
+  },
+  "0x6ee7cb8": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x6ee7cb8",
+        "end_exclusive": "0x6ee7ccc",
+        "sha256": "65aa850abbc559911a21e5004293d29f3d963f1c27671da7867847be8fa16830"
+      },
+      "linker_function_starts_in_window": [
+        "0x6ee7cb8"
+      ],
+      "next_linker_function_start": "0x6ee7ccc",
+      "direct_calls": [],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 6ee7cb8: f9400280     \tldr\tx0, [x20]\n 6ee7cbc: fd400680     \tldr\td0, [x20, #0x8]\n 6ee7cc0: f9400a81     \tldr\tx1, [x20, #0x10]\n 6ee7cc4: 39406282     \tldrb\tw2, [x20, #0x18]\n 6ee7cc8: 17ffff50     \tb\t0x6ee7a08 <__text+0x6ebfa08>\n"
+  },
+  "0x6ee7a08": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x6ee7a08",
+        "end_exclusive": "0x6ee7af0",
+        "sha256": "6a41968a7a97a456596b9956ee522094e2306a02c9bfe90f94fdb5b339672f07"
+      },
+      "linker_function_starts_in_window": [
+        "0x6ee7a08"
+      ],
+      "next_linker_function_start": "0x6ee7af0",
+      "direct_calls": [
+        {
+          "site": "0x6ee7a0c",
+          "target": "0x1be090",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7a40",
+          "target": "0x1511e4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7a44",
+          "target": "0x1d5b6f0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7a54",
+          "target": "0x14cc2c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7a6c",
+          "target": "0x7c4b994",
+          "imported_symbol": "_$s7SwiftUI9AlignmentV6centerACvgZ",
+          "chained_binding": {
+            "slot": "0xaad56c8",
+            "symbol": "_$s7SwiftUI9AlignmentV6centerACvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10669,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ee7a90",
+          "target": "0x6ee7af0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7aa4",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7aa8",
+          "target": "0x460fb4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7ab4",
+          "target": "0x7c4b994",
+          "imported_symbol": "_$s7SwiftUI9AlignmentV6centerACvgZ",
+          "chained_binding": {
+            "slot": "0xaad56c8",
+            "symbol": "_$s7SwiftUI9AlignmentV6centerACvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10669,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ee7ab8",
+          "target": "0x15aed0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7abc",
+          "target": "0x6f4fa4c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7ac8",
+          "target": "0x457ac0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7ad8",
+          "target": "0x6fde324",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7ae0",
+          "target": "0x13f7334",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 6ee7a08: aa1e03e3     \tmov\tx3, x30\n 6ee7a0c: 964b59a1     \tbl\t0x1be090 <__text+0x196090>\n 6ee7a10: aa0303fe     \tmov\tx30, x3\n 6ee7a14: a9067bfd     \tstp\tx29, x30, [sp, #0x60]\n 6ee7a18: 910183fd     \tadd\tx29, sp, #0x60\n 6ee7a1c: aa0203f7     \tmov\tx23, x2\n 6ee7a20: aa0103f8     \tmov\tx24, x1\n 6ee7a24: 4ea01c08     \tmov.16b\tv8, v0\n 6ee7a28: aa0003f9     \tmov\tx25, x0\n 6ee7a2c: aa0803f4     \tmov\tx20, x8\n 6ee7a30: 900209b3     \tadrp\tx19, 0xb01b000 <_OBJC_METACLASS_$__TtC17FileUploadService16SedimentProtocol+0x1a850>\n 6ee7a34: 913e0273     \tadd\tx19, x19, #0xf80\n 6ee7a38: b000a4d5     \tadrp\tx21, 0x8380000 <_writev+0x8380000>\n 6ee7a3c: 911322b5     \tadd\tx21, x21, #0x4c8\n 6ee7a40: 9649a5e9     \tbl\t0x1511e4 <__text+0x1291e4>\n 6ee7a44: 96b9cf2b     \tbl\t0x1d5b6f0 <__text+0x1d336f0>\n 6ee7a48: 9001df30     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6ee7a4c: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6ee7a50: d63f0200     \tblr\tx16\n 6ee7a54: 96499476     \tbl\t0x14cc2c <__text+0x124c2c>\n 6ee7a58: 720002ff     \ttst\tw23, #0x1\n 6ee7a5c: 6f00e400     \tmovi.2d\tv0, #0000000000000000\n 6ee7a60: 1e6e1001     \tfmov\td1, #1.00000000\n 6ee7a64: 1e601c20     \tfcsel\td0, d1, d0, ne\n 6ee7a68: fd000340     \tstr\td0, [x26]\n 6ee7a6c: 94358fca     \tbl\t0x7c4b994 <_writev+0x7c4b994>\n 6ee7a70: aa0003f7     \tmov\tx23, x0\n 6ee7a74: aa0103fb     \tmov\tx27, x1\n 6ee7a78: b98026c8     \tldrsw\tx8, [x22, #0x24]\n 6ee7a7c: 8b08035c     \tadd\tx28, x26, x8\n 6ee7a80: aa1c03e8     \tmov\tx8, x28\n 6ee7a84: aa1903e0     \tmov\tx0, x25\n 6ee7a88: 4ea81d00     \tmov.16b\tv0, v8\n 6ee7a8c: aa1803e1     \tmov\tx1, x24\n 6ee7a90: 94000018     \tbl\t0x6ee7af0 <__text+0x6ebfaf0>\n 6ee7a94: 900209a0     \tadrp\tx0, 0xb01b000 <_OBJC_METACLASS_$__TtC17FileUploadService16SedimentProtocol+0x1a850>\n 6ee7a98: 913e2000     \tadd\tx0, x0, #0xf88\n 6ee7a9c: b000a4c1     \tadrp\tx1, 0x8380000 <_writev+0x8380000>\n 6ee7aa0: 91134021     \tadd\tx1, x1, #0x4d0\n 6ee7aa4: 96484bf5     \tbl\t0xfaa78 <__text+0xd2a78>\n 6ee7aa8: 9655e543     \tbl\t0x460fb4 <__text+0x438fb4>\n 6ee7aac: a9006d17     \tstp\tx23, x27, [x8]\n 6ee7ab0: 9e660117     \tfmov\tx23, d8\n 6ee7ab4: 94358fb8     \tbl\t0x7c4b994 <_writev+0x7c4b994>\n 6ee7ab8: 9649cd06     \tbl\t0x15aed0 <__text+0x132ed0>\n 6ee7abc: 94019fe4     \tbl\t0x6f4fa4c <__text+0x6f27a4c>\n 6ee7ac0: aa0003e5     \tmov\tx5, x0\n 6ee7ac4: aa1403e8     \tmov\tx8, x20\n 6ee7ac8: 9655bffe     \tbl\t0x457ac0 <__text+0x42fac0>\n 6ee7acc: aa1803e2     \tmov\tx2, x24\n 6ee7ad0: aa1903e3     \tmov\tx3, x25\n 6ee7ad4: aa1603e4     \tmov\tx4, x22\n 6ee7ad8: 9403da13     \tbl\t0x6fde324 <__text+0x6fb6324>\n 6ee7adc: aa1a03e0     \tmov\tx0, x26\n 6ee7ae0: 96943e15     \tbl\t0x13f7334 <__text+0x13cf334>\n 6ee7ae4: d10183bf     \tsub\tsp, x29, #0x60\n 6ee7ae8: a9467bfd     \tldp\tx29, x30, [sp, #0x60]\n 6ee7aec: 16499892     \tb\t0x14dd34 <__text+0x125d34>\n"
+  },
+  "0x6ee7af0": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x6ee7af0",
+        "end_exclusive": "0x6ee7cb8",
+        "sha256": "bdfa60c08202c5d04f99c461d1870ddb8afad52fa607927ccf7c80ccd118cb98"
+      },
+      "linker_function_starts_in_window": [
+        "0x6ee7af0"
+      ],
+      "next_linker_function_start": "0x6ee7cb8",
+      "direct_calls": [
+        {
+          "site": "0x6ee7af4",
+          "target": "0x1be090",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b18",
+          "target": "0x288db8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b20",
+          "target": "0x151aa8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b30",
+          "target": "0x148124",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b48",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b50",
+          "target": "0x147cfc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b60",
+          "target": "0x14cc2c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b74",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b78",
+          "target": "0x1d5b6f0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b88",
+          "target": "0x14c5a4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b8c",
+          "target": "0x288a50",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b98",
+          "target": "0x159cdc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7b9c",
+          "target": "0x163078",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7ba0",
+          "target": "0x158178",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7ba4",
+          "target": "0x7c4b274",
+          "imported_symbol": "_$s7SwiftUI5ImageV9resizable9capInsets12resizingModeAcA04EdgeF0V_AC08ResizingH0OtF",
+          "chained_binding": {
+            "slot": "0xaad4f18",
+            "symbol": "_$s7SwiftUI5ImageV9resizable9capInsets12resizingModeAcA04EdgeF0V_AC08ResizingH0OtF",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10423,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ee7bb0",
+          "target": "0x1d7dbcc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7bbc",
+          "target": "0x6fdc978",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7bc8",
+          "target": "0x7c489a0",
+          "imported_symbol": "_$s7SwiftUI19SymbolRenderingModeV10monochromeACvgZ",
+          "chained_binding": {
+            "slot": "0xaad2228",
+            "symbol": "_$s7SwiftUI19SymbolRenderingModeV10monochromeACvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 8988,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ee7bcc",
+          "target": "0x6fdf7c8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7bdc",
+          "target": "0x14c1d4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7be0",
+          "target": "0x6fdee8c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7bf8",
+          "target": "0x6fdcb58",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7bfc",
+          "target": "0x15fbb0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c00",
+          "target": "0x6fc641c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c0c",
+          "target": "0x1544bc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c10",
+          "target": "0x157d70",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c18",
+          "target": "0x6fde324",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c28",
+          "target": "0x716af4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c30",
+          "target": "0x6fdc964",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c40",
+          "target": "0x45aadc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c48",
+          "target": "0x7c4b070",
+          "imported_symbol": "_$s7SwiftUI5ColorV5blackACvgZ",
+          "chained_binding": {
+            "slot": "0xaad4d10",
+            "symbol": "_$s7SwiftUI5ColorV5blackACvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10358,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ee7c50",
+          "target": "0x6fdc964",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c6c",
+          "target": "0x139837c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c70",
+          "target": "0x2123c8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c78",
+          "target": "0x1541a4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c7c",
+          "target": "0x6fc64b4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c84",
+          "target": "0x7c54910",
+          "imported_symbol": "_swift_retain_x21"
+        },
+        {
+          "site": "0x6ee7c90",
+          "target": "0x4571e8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7c94",
+          "target": "0x2188200",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ee7ca8",
+          "target": "0x765e18",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 6ee7af0: aa1e03e2     \tmov\tx2, x30\n 6ee7af4: 964b5967     \tbl\t0x1be090 <__text+0x196090>\n 6ee7af8: aa0203fe     \tmov\tx30, x2\n 6ee7afc: a9067bfd     \tstp\tx29, x30, [sp, #0x60]\n 6ee7b00: 910183fd     \tadd\tx29, sp, #0x60\n 6ee7b04: d10043ff     \tsub\tsp, sp, #0x10\n 6ee7b08: aa0103f5     \tmov\tx21, x1\n 6ee7b0c: 4ea01c08     \tmov.16b\tv8, v0\n 6ee7b10: aa0003fb     \tmov\tx27, x0\n 6ee7b14: f81983a8     \tstur\tx8, [x29, #-0x68]\n 6ee7b18: 964e84a8     \tbl\t0x288db8 <__text+0x260db8>\n 6ee7b1c: aa0003fc     \tmov\tx28, x0\n 6ee7b20: 9649a7e2     \tbl\t0x151aa8 <__text+0x129aa8>\n 6ee7b24: 9001df30     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6ee7b28: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6ee7b2c: d63f0200     \tblr\tx16\n 6ee7b30: 9649817d     \tbl\t0x148124 <__text+0x120124>\n 6ee7b34: b00209e0     \tadrp\tx0, 0xb024000 <_OBJC_METACLASS_$__TtC17SwiftUIStyleguide22TypingBubbleSourceView+0x4740>\n 6ee7b38: 9101c000     \tadd\tx0, x0, #0x70\n 6ee7b3c: b000a539     \tadrp\tx25, 0x838c000 <_writev+0x838c000>\n 6ee7b40: 912e2339     \tadd\tx25, x25, #0xb88\n 6ee7b44: aa1903e1     \tmov\tx1, x25\n 6ee7b48: 96484bcc     \tbl\t0xfaa78 <__text+0xd2a78>\n 6ee7b4c: aa0003f4     \tmov\tx20, x0\n 6ee7b50: 9649806b     \tbl\t0x147cfc <__text+0x11fcfc>\n 6ee7b54: 9001df30     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6ee7b58: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6ee7b5c: d63f0200     \tblr\tx16\n 6ee7b60: 96499433     \tbl\t0x14cc2c <__text+0x124c2c>\n 6ee7b64: b00209e0     \tadrp\tx0, 0xb024000 <_OBJC_METACLASS_$__TtC17SwiftUIStyleguide22TypingBubbleSourceView+0x4740>\n 6ee7b68: 9101e000     \tadd\tx0, x0, #0x78\n 6ee7b6c: b000a521     \tadrp\tx1, 0x838c000 <_writev+0x838c000>\n 6ee7b70: 912e4021     \tadd\tx1, x1, #0xb90\n 6ee7b74: 96484bc1     \tbl\t0xfaa78 <__text+0xd2a78>\n 6ee7b78: 96b9cede     \tbl\t0x1d5b6f0 <__text+0x1d336f0>\n 6ee7b7c: 9001df30     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6ee7b80: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6ee7b84: d63f0200     \tblr\tx16\n 6ee7b88: 96499287     \tbl\t0x14c5a4 <__text+0x1245a4>\n 6ee7b8c: 964e83b1     \tbl\t0x288a50 <__text+0x260a50>\n 6ee7b90: f9403708     \tldr\tx8, [x24, #0x68]\n 6ee7b94: aa1303e0     \tmov\tx0, x19\n 6ee7b98: 9649c851     \tbl\t0x159cdc <__text+0x131cdc>\n 6ee7b9c: 9649ed37     \tbl\t0x163078 <__text+0x13b078>\n 6ee7ba0: 9649c176     \tbl\t0x158178 <__text+0x130178>\n 6ee7ba4: 94358db4     \tbl\t0x7c4b274 <_writev+0x7c4b274>\n 6ee7ba8: aa0003fb     \tmov\tx27, x0\n 6ee7bac: f9400708     \tldr\tx8, [x24, #0x8]\n 6ee7bb0: 96ba5807     \tbl\t0x1d7dbcc <__text+0x1d55bcc>\n 6ee7bb4: b9802688     \tldrsw\tx8, [x20, #0x24]\n 6ee7bb8: 8b080353     \tadd\tx19, x26, x8\n 6ee7bbc: 9403d36f     \tbl\t0x6fdc978 <__text+0x6fb4978>\n 6ee7bc0: b9801c18     \tldrsw\tx24, [x0, #0x1c]\n 6ee7bc4: 8b180268     \tadd\tx8, x19, x24\n 6ee7bc8: 94358376     \tbl\t0x7c489a0 <_writev+0x7c489a0>\n 6ee7bcc: 9403deff     \tbl\t0x6fdf7c8 <__text+0x6fb77c8>\n 6ee7bd0: aa0003e3     \tmov\tx3, x0\n 6ee7bd4: 5280003c     \tmov\tw28, #0x1               ; =1\n 6ee7bd8: 8b180260     \tadd\tx0, x19, x24\n 6ee7bdc: 9649917e     \tbl\t0x14c1d4 <__text+0x1241d4>\n 6ee7be0: 9403dcab     \tbl\t0x6fdee8c <__text+0x6fb6e8c>\n 6ee7be4: f9000260     \tstr\tx0, [x19]\n 6ee7be8: a9007f5b     \tstp\tx27, xzr, [x26]\n 6ee7bec: 7900235c     \tstrh\tw28, [x26, #0x10]\n 6ee7bf0: 1e6d1000     \tfmov\td0, #0.75000000\n 6ee7bf4: 1e600900     \tfmul\td0, d8, d0\n 6ee7bf8: 9403d3d8     \tbl\t0x6fdcb58 <__text+0x6fb4b58>\n 6ee7bfc: 9649dfed     \tbl\t0x15fbb0 <__text+0x137bb0>\n 6ee7c00: 94037a07     \tbl\t0x6fc641c <__text+0x6f9e41c>\n 6ee7c04: aa0003e5     \tmov\tx5, x0\n 6ee7c08: aa1703e8     \tmov\tx8, x23\n 6ee7c0c: 9649b22c     \tbl\t0x1544bc <__text+0x12c4bc>\n 6ee7c10: 9649c058     \tbl\t0x157d70 <__text+0x12fd70>\n 6ee7c14: aa1403e4     \tmov\tx4, x20\n 6ee7c18: 9403d9c3     \tbl\t0x6fde324 <__text+0x6fb6324>\n 6ee7c1c: aa1a03e0     \tmov\tx0, x26\n 6ee7c20: b00209e1     \tadrp\tx1, 0xb024000 <_OBJC_METACLASS_$__TtC17SwiftUIStyleguide22TypingBubbleSourceView+0x4740>\n 6ee7c24: 9101c021     \tadd\tx1, x1, #0x70\n 6ee7c28: 9660bbb3     \tbl\t0x716af4 <__text+0x6eeaf4>\n 6ee7c2c: b40000f5     \tcbz\tx21, 0x6ee7c48 <__text+0x6ebfc48>\n 6ee7c30: 9403d34d     \tbl\t0x6fdc964 <__text+0x6fb4964>\n 6ee7c34: b9802408     \tldrsw\tx8, [x0, #0x24]\n 6ee7c38: f8286af5     \tstr\tx21, [x23, x8]\n 6ee7c3c: b98026d4     \tldrsw\tx20, [x22, #0x24]\n 6ee7c40: 9655cba7     \tbl\t0x45aadc <__text+0x432adc>\n 6ee7c44: 14000009     \tb\t0x6ee7c68 <__text+0x6ebfc68>\n 6ee7c48: 94358d0a     \tbl\t0x7c4b070 <_writev+0x7c4b070>\n 6ee7c4c: aa0003f3     \tmov\tx19, x0\n 6ee7c50: 9403d345     \tbl\t0x6fdc964 <__text+0x6fb4964>\n 6ee7c54: b9802408     \tldrsw\tx8, [x0, #0x24]\n 6ee7c58: f8286af3     \tstr\tx19, [x23, x8]\n 6ee7c5c: b98026d4     \tldrsw\tx20, [x22, #0x24]\n 6ee7c60: d001df68     \tadrp\tx8, 0xaad5000 <_writev+0xaad5000>\n 6ee7c64: f9440508     \tldr\tx8, [x8, #0x808]\n 6ee7c68: b9400113     \tldr\tw19, [x8]\n 6ee7c6c: 9692c1c4     \tbl\t0x139837c <__text+0x137037c>\n 6ee7c70: 964ca9d6     \tbl\t0x2123c8 <__text+0x1ea3c8>\n 6ee7c74: 8b1402e0     \tadd\tx0, x23, x20\n 6ee7c78: 9649b14b     \tbl\t0x1541a4 <__text+0x12c1a4>\n 6ee7c7c: 94037a0e     \tbl\t0x6fc64b4 <__text+0x6f9e4b4>\n 6ee7c80: aa0003f3     \tmov\tx19, x0\n 6ee7c84: 9435b323     \tbl\t0x7c54910 <_writev+0x7c54910>\n 6ee7c88: f85983a8     \tldur\tx8, [x29, #-0x68]\n 6ee7c8c: 52800020     \tmov\tw0, #0x1                ; =1\n 6ee7c90: 9655bd56     \tbl\t0x4571e8 <__text+0x42f1e8>\n 6ee7c94: 96ca815b     \tbl\t0x2188200 <__text+0x2160200>\n 6ee7c98: b00209e1     \tadrp\tx1, 0xb024000 <_OBJC_METACLASS_$__TtC17SwiftUIStyleguide22TypingBubbleSourceView+0x4740>\n 6ee7c9c: 9101e021     \tadd\tx1, x1, #0x78\n 6ee7ca0: b000a522     \tadrp\tx2, 0x838c000 <_writev+0x838c000>\n 6ee7ca4: 912e4042     \tadd\tx2, x2, #0xb90\n 6ee7ca8: 9661f85c     \tbl\t0x765e18 <__text+0x73de18>\n 6ee7cac: d10183bf     \tsub\tsp, x29, #0x60\n 6ee7cb0: a9467bfd     \tldp\tx29, x30, [sp, #0x60]\n 6ee7cb4: 16499820     \tb\t0x14dd34 <__text+0x125d34>\n"
+  },
+  "0x83804c8": {
+    "type": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x83804c8",
+      "mangled_address": "0x940d586",
+      "length": 103,
+      "mangled_hex": "02913d6c017941417902187b6c01027b396c014702bd426c01794141794141794141794141794141794141790275796c0102704a6c0147026a5e6c017902844c6c0153674747027b306c0147023d596c017902cf776c0147470228426c0147028a5e6c01474747",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaad1318",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI15ModifiedContentVMn"
+        },
+        {
+          "offset": 9,
+          "kind": 2,
+          "target": "0xaad50a8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI6CircleVMn"
+        },
+        {
+          "offset": 14,
+          "kind": 2,
+          "target": "0xaad0f10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI14_OpacityEffectVMn"
+        },
+        {
+          "offset": 20,
+          "kind": 2,
+          "target": "0xaad1858",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_OverlayModifierVMn"
+        },
+        {
+          "offset": 44,
+          "kind": 2,
+          "target": "0xaad4f28",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ImageVMn"
+        },
+        {
+          "offset": 49,
+          "kind": 2,
+          "target": "0xaad2028",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI18_AspectRatioLayoutVMn"
+        },
+        {
+          "offset": 55,
+          "kind": 2,
+          "target": "0xaad3428",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+        },
+        {
+          "offset": 61,
+          "kind": 2,
+          "target": "0xaad2248",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI19SymbolRenderingModeVMn"
+        },
+        {
+          "offset": 70,
+          "kind": 2,
+          "target": "0xaad0648",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI12_FrameLayoutVMn"
+        },
+        {
+          "offset": 76,
+          "kind": 2,
+          "target": "0xaad2f10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+        },
+        {
+          "offset": 82,
+          "kind": 2,
+          "target": "0xaad4da8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ColorVMn"
+        },
+        {
+          "offset": 89,
+          "kind": 2,
+          "target": "0xaad1808",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_BlendModeEffectVMn"
+        },
+        {
+          "offset": 95,
+          "kind": 2,
+          "target": "0xaad3470",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI31AccessibilityAttachmentModifierVMn"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    }
+  },
+  "0x83804d0": {
+    "type": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x83804d0",
+      "mangled_address": "0x940d5ee",
+      "length": 85,
+      "mangled_hex": "0269426c017902233d6c0179414279414279414279414279414279021e796c0102194a6c014702135e6c0179022d4c6c01536747470224306c014702e6586c01790278776c01474702d1416c014702335e6c014747",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaad1858",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_OverlayModifierVMn"
+        },
+        {
+          "offset": 6,
+          "kind": 2,
+          "target": "0xaad1318",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI15ModifiedContentVMn"
+        },
+        {
+          "offset": 27,
+          "kind": 2,
+          "target": "0xaad4f28",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ImageVMn"
+        },
+        {
+          "offset": 32,
+          "kind": 2,
+          "target": "0xaad2028",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI18_AspectRatioLayoutVMn"
+        },
+        {
+          "offset": 38,
+          "kind": 2,
+          "target": "0xaad3428",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+        },
+        {
+          "offset": 44,
+          "kind": 2,
+          "target": "0xaad2248",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI19SymbolRenderingModeVMn"
+        },
+        {
+          "offset": 53,
+          "kind": 2,
+          "target": "0xaad0648",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI12_FrameLayoutVMn"
+        },
+        {
+          "offset": 59,
+          "kind": 2,
+          "target": "0xaad2f10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+        },
+        {
+          "offset": 65,
+          "kind": 2,
+          "target": "0xaad4da8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ColorVMn"
+        },
+        {
+          "offset": 72,
+          "kind": 2,
+          "target": "0xaad1808",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI16_BlendModeEffectVMn"
+        },
+        {
+          "offset": 78,
+          "kind": 2,
+          "target": "0xaad3470",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI31AccessibilityAttachmentModifierVMn"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    }
+  }
+}

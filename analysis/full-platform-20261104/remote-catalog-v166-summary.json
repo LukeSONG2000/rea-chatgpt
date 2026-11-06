@@ -1,0 +1,132 @@
+{
+  "status": "partial",
+  "authority": "independent paired-owner catalog and connection-state adapter; original macOS renderer bootstrap and provider replay",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/main.cjs",
+      "sha256": "ee7dae2dd4a8f2fc1e638f33f291e04f6b6a3899b962c44408297c3ca14a5440"
+    },
+    {
+      "path": "implementation/desktop/native/original-remote-runtime.mjs",
+      "sha256": "9e10bc230130fa42b10b7493d7c13518af708502ac37a5c60f2d7544a80f7f43"
+    },
+    {
+      "path": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "9805d0d62bb74cccae6ca2626725d66b09c91eecec03c0d7635571ec9a0c26ca"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-catalog.cjs",
+      "sha256": "543f1dc3f6dcbc31c2f9a5f0882d9a12440c0f43fbb62520b3a95bdb6fc92ccb"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-catalog.mjs",
+      "sha256": "bcfe5866a377094746efee33aa8936477c0682902cef2c6096c0283139ff0665"
+    }
+  ],
+  "verified": [
+    "Two explicit local pairings projected through original remoteConnections.catalog",
+    "Native capabilities probes determine independent local connection status; no fabricated app-server version",
+    "Original renderer automatically subscribes both managers and calls remoteConnections.getState",
+    "Missing getState initially crashed original UI; added observed contract fixes boot",
+    "Live original subscriptions, history reload, restart and stopped-A/healthy-B pass",
+    "Actual profile-menu Settings click opens original settings; Environments click opens local worktree setup, not Remote devices",
+    "Catalog duplicate snapshot suppression, lease cleanup and late health response rejection pass independent unit tests"
+  ],
+  "provider": {
+    "status": "passed",
+    "body": "Local fixture reply",
+    "autoStreamTexts": [
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply"
+    ],
+    "reloads": 13,
+    "devices": {
+      "ssh": [],
+      "wsl": [],
+      "remoteControl": [
+        {
+          "source": "remote-control",
+          "hostId": "host-a",
+          "displayName": "Local test · host-a",
+          "envId": "rea-local:host-a",
+          "hostName": "host-a",
+          "environmentKind": "independent-local-test",
+          "online": true,
+          "appServerVersion": null,
+          "lastSeenAt": null
+        },
+        {
+          "source": "remote-control",
+          "hostId": "host-b",
+          "displayName": "Local test · host-b",
+          "envId": "rea-local:host-b",
+          "hostName": "host-b",
+          "environmentKind": "independent-local-test",
+          "online": true,
+          "appServerVersion": null,
+          "lastSeenAt": null
+        }
+      ]
+    },
+    "sharedLeases": true,
+    "reopen": true,
+    "unpairedDenied": true
+  },
+  "hostHealth": [
+    {
+      "host": "host-a",
+      "mode": "fixture",
+      "epoch": "18724ce0-e844-4945-aa01-25e68d742b8c",
+      "closed": false,
+      "online": false,
+      "error": "remote_transport"
+    },
+    {
+      "host": "host-b",
+      "mode": "fixture",
+      "epoch": "2b94e2b8-7ff1-4bad-b1d3-93e534132893",
+      "closed": false,
+      "online": true,
+      "methods": [
+        "capabilities",
+        "fs/readDirectory",
+        "thread/start",
+        "thread/list",
+        "thread/info",
+        "events/read",
+        "turn/start",
+        "turn/interrupt"
+      ]
+    }
+  ],
+  "reports": [
+    "remote-catalog-v166-errors.json",
+    "remote-catalog-v166-environments.json",
+    "remote-catalog-v166-unit.json",
+    "remote-catalog-v166-hashes.json",
+    "remote-catalog-v166-initializer.json",
+    "remote-catalog-v166-state-consumer.json",
+    "remote-catalog-v166-feature.json"
+  ],
+  "builds": {
+    "macos": "implementation/desktop/dist/v166-final-macos/REA ChatGPT Offline.app",
+    "windows": "implementation/desktop/dist/v166-final-windows/REA ChatGPT Offline/REA ChatGPT Offline.exe"
+  },
+  "macSignature": "deep strict verification passed",
+  "limits": [
+    "Visible Remote device selector/operations not accepted; Settings lacks Connections item in observed mode",
+    "Environments is local worktree setup and is not evidence of Remote device UI",
+    "Complete AP helper operation contracts still unverified despite successful bootstrap",
+    "Connected means local owner capabilities reachable, not official Remote/cloud compatibility",
+    "Aggregate health probe timeout/slow-host latency isolation not yet accepted",
+    "Windows OS not executed; iOS and other surfaces unchanged this turn",
+    "No real model calls; attempted official telemetry handled/rejected locally, not sent to official service"
+  ]
+}

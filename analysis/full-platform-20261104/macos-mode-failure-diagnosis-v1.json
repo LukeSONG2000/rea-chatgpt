@@ -1,0 +1,24 @@
+{
+  "cause": "Borrowed RPC subscription callback retained without dup; callback invocation after call return fails and TBt rolls back detail mode",
+  "type": "runtime failure + packaged static ownership + independent fix",
+  "events": [
+    {
+      "operation": "settings.readAll",
+      "detailMode": "STEPS_COMMANDS"
+    },
+    {
+      "operation": "settings.write",
+      "key": "conversationDetailMode",
+      "value": "STEPS_PROSE"
+    },
+    {
+      "operation": "settings.write.failed",
+      "error": "Error: This RpcImportHook was already disposed."
+    },
+    {
+      "operation": "settings.readAll",
+      "detailMode": "STEPS_PROSE"
+    }
+  ],
+  "note": "Debugger exception capture contains unrelated handled errors; no claim all are faults. Full v8 preserved."
+}

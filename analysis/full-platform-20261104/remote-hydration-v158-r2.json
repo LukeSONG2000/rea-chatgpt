@@ -1,0 +1,27 @@
+{
+  "status": "failed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v155-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "actual packaged renderer state receives guarded Remote history through IPC"
+  ],
+  "limits": [
+    "Main-process IPC acceptance from original renderer context, not a visible official Remote control workflow",
+    "Fixture model; no live Zhipu calls in this test"
+  ],
+  "originalManager": {
+    "status": "failed",
+    "error": "Cannot read properties of undefined (reading 'flatMap')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'flatMap')\n    at z6t (https://offline.invalid/app-initial-feb30b196d11.js:1788:5723)\n    at Den.getLoadedConversationHistoryTurns (https://offline.invalid/app-initial-feb30b196d11.js:1790:19151)\n    at Etn.getLoadedConversationHistoryTurns (https://offline.invalid/app-initial-feb30b196d11.js:1792:20561)\n    at probeOriginalRemoteHydration (eval at <anonymous> (eval at evaluate (:290:30)), <anonymous>:19:34)\n    at async <anonymous>:316:30",
+    "calls": [
+      [
+        "request",
+        "thread/read"
+      ],
+      [
+        "request",
+        "thread/read"
+      ]
+    ]
+  },
+  "error": "AssertionError [ERR_ASSERTION]: {\"status\":\"failed\",\"error\":\"Cannot read properties of undefined (reading 'flatMap')\",\"stack\":\"TypeError: Cannot read properties of undefined (reading 'flatMap')\\n    at z6t (https://offline.invalid/app-initial-feb30b196d11.js:1788:5723)\\n    at Den.getLoadedConversationHistoryTurns (https://offline.invalid/app-initial-feb30b196d11.js:1790:19151)\\n    at Etn.getLoadedConversationHistoryTurns (https://offline.invalid/app-initial-feb30b196d11.js:1792:20561)\\n    at probeOriginalRemoteHydration (eval at <anonymous> (eval at evaluate (:290:30)), <anonymous>:19:34)\\n    at async <anonymous>:316:30\",\"calls\":[[\"request\",\"thread/read\"],[\"request\",\"thread/read\"]]}\n+ actual - expected\n\n+ 'failed'\n- 'constructed'\n"
+}

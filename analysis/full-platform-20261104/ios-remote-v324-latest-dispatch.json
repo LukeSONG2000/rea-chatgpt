@@ -1,0 +1,118 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "enum_descriptor": "0x95aca90",
+  "jump_table": "0x7dfdf64",
+  "rows": [
+    {
+      "tag": 0,
+      "case": "commandExecution",
+      "typeref": "0x8e1505a",
+      "branch": "0x1a39c84"
+    },
+    {
+      "tag": 1,
+      "case": "fileChange",
+      "typeref": "0x8e15068",
+      "branch": "0x1a39e54"
+    },
+    {
+      "tag": 2,
+      "case": "webSearch",
+      "typeref": "0x8e15076",
+      "branch": "0x1a39d10"
+    },
+    {
+      "tag": 3,
+      "case": "automaticApprovalReview",
+      "typeref": "0x8e15084",
+      "branch": "0x1a39d64"
+    },
+    {
+      "tag": 4,
+      "case": "mcpToolCall",
+      "typeref": "0x8e15092",
+      "branch": "0x1a39cb4"
+    },
+    {
+      "tag": 5,
+      "case": "dynamicToolCall",
+      "typeref": "0x8e150a0",
+      "branch": "0x1a39f0c"
+    },
+    {
+      "tag": 6,
+      "case": "functionCall",
+      "typeref": "0x8e150ae",
+      "branch": "0x1a39f5c"
+    },
+    {
+      "tag": 7,
+      "case": "externalEvent",
+      "typeref": "0x8e150bc",
+      "branch": "0x1a39db8"
+    }
+  ],
+  "status": "static ABI inference, no runtime validation",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "static artifact observation and enum ABI inference",
+  "enum_tag_path": "0x1d804a4 \u2192 0x1adc5c4 \u2192 descriptor0x95aca90; 0xaba7c0 calls swift_getEnumCaseMultiPayload",
+  "icons": {
+    "commandExecution": {
+      "call": "0x1a3a8fc",
+      "factory": "0x74fba7c",
+      "asset": "OpenAI/Symbols/terminal"
+    },
+    "webSearch": {
+      "call": "0x1a3a154",
+      "factory": "0x74f7a5c",
+      "asset": "OpenAI/Symbols/globe"
+    },
+    "fileChange": {
+      "call": "0x1a3a2f0",
+      "factory": "0x74f9ac0",
+      "asset": "OpenAI/Symbols/pencil"
+    },
+    "externalEvent": {
+      "call": "0x1a39de0",
+      "factory": "0x74fa408",
+      "asset": "OpenAI/Symbols/plugin"
+    }
+  },
+  "search_labels": {
+    "formatter": "0x1a3ac48",
+    "boolean_branch": "0x1a3ac60",
+    "true": {
+      "factory": "0x75d413c",
+      "string_address": "0x8a59770",
+      "string": "Searching the web"
+    },
+    "false_fallback": {
+      "factory": "0x75d4188",
+      "string_address": "0x8a59790",
+      "string": "Searched the web"
+    },
+    "count_key": "codex_remote_tool_activity_searched_web_count",
+    "limits": "Exact origin of boolean and query/count formatting not fully recovered; no arbitrary task activity to search-state conversion."
+  },
+  "integration": {
+    "change": "Second synthetic activity now web search with official globe asset and completed English label. First remains command with terminal.",
+    "limits": [
+      "Chinese label is independent adapter copy",
+      "Expanded search body is a synthetic fixture, not restored official layout",
+      "No real search or command execution",
+      "No complete official visual acceptance",
+      "File-change and other branches not yet integrated"
+    ]
+  },
+  "validation": {
+    "test": "testRemoteTaskScopeAndReturn",
+    "passed": 1,
+    "failed": 0,
+    "screenshot": "ios-remote-v324-screenshots/4D77AFB1-3AAE-45C0-A4BD-BCB29869C1E0.png",
+    "visual_inspected": "terminal and globe rendered separately; overall layout remains fixture",
+    "preview_pid": 63902,
+    "phone_updated": false,
+    "external_display_reverified": false
+  }
+}

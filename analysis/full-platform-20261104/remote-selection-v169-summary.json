@@ -1,0 +1,54 @@
+{
+  "status": "partial",
+  "authority": "independent paired-scoped store verified through original Add UI and actual macOS process restart",
+  "sources": [
+    {
+      "path": "implementation/desktop-web/application-state.cjs",
+      "sha256": "a9b9a7bab350a0de33a179e9745568601bb565d3bb72ce16f1bb8aa0b634afed"
+    },
+    {
+      "path": "implementation/desktop/native/main.cjs",
+      "sha256": "40cbbeec0dfa1c0b696f27f8857ca2054673cafbbdb57a0576254b2112b4853b"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-selection-store.cjs",
+      "sha256": "163364a282c2eabca89040975f592731d26d7751ab30bda33d4b1a91ad4afa7f"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-selection.cjs",
+      "sha256": "16b5148311862d8301ba5fa4ffec7e8c091869b30918298eb36b2e7610e1d88e"
+    }
+  ],
+  "persistedSelection": [
+    "rea-local:host-b"
+  ],
+  "selectionRestoredAfterProcessRestart": true,
+  "verified": [
+    "Original added-remote-control-env-ids key now mapped to independent atomic private file",
+    "Only configured pairing env IDs accepted; invalid/scope-changing writes reject",
+    "Legacy selected-project-only files migrate in memory; selected-project clear preserves Remote selections",
+    "Actual Add closes dialog after write success",
+    "Fresh process restores B card without Add; A absent",
+    "Existing store tests, new scope tests, Mac signature and Mac/Windows package hashes pass"
+  ],
+  "reports": [
+    "remote-selection-v169-unit.json",
+    "remote-selection-v169-existing-unit.log",
+    "remote-selection-v169-runtime.json",
+    "remote-selection-v169-r2.json",
+    "remote-selection-v169-static.json",
+    "remote-selection-v169-hashes.json",
+    "remote-selection-v169-cache-archive.json"
+  ],
+  "builds": {
+    "macos": "implementation/desktop/dist/v169-macos/REA ChatGPT Offline.app",
+    "windows": "implementation/desktop/dist/v169-windows/REA ChatGPT Offline/REA ChatGPT Offline.exe"
+  },
+  "limits": [
+    "Restored card Disconnected; connection execution unaccepted",
+    "selected-remote-host-id and host-id-remote-control-allowed remain unsupported; follow observed read/write paths next",
+    "Remote UI remains explicit --local-remote-ui experiment with private pairings",
+    "Windows OS not executed; no model request",
+    "Superseded v167 package copies removed only after independent source/evidence archives verified; v168 rollback packages/original artifacts/reports retained"
+  ]
+}

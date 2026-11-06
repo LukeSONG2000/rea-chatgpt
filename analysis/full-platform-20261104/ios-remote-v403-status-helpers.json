@@ -1,0 +1,27 @@
+[
+  {
+    "start": "0x2e8a3f4",
+    "end": "0x2e8a410",
+    "disassembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 2e8a3f4: d2800c81     \tmov\tx1, #0x64               ; =100\n 2e8a3f8: f2fd2001     \tmovk\tx1, #0xe900, lsl #48\n 2e8a3fc: d28dec60     \tmov\tx0, #0x6f63             ; =28515\n 2e8a400: f2ae0da0     \tmovk\tx0, #0x706d, lsl #16\n 2e8a404: f2ccad80     \tmovk\tx0, #0x656c, lsl #32\n 2e8a408: f2ecae80     \tmovk\tx0, #0x6574, lsl #48\n 2e8a40c: d65f03c0     \tret\n"
+  },
+  {
+    "start": "0x2e8ceb4",
+    "end": "0x2e8cec8",
+    "disassembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 2e8ceb4: d2fcc001     \tmov\tx1, #-0x1a00000000000000 ; =-1873497444986126336\n 2e8ceb8: d28c2cc0     \tmov\tx0, #0x6166             ; =24934\n 2e8cebc: f2ad8d20     \tmovk\tx0, #0x6c69, lsl #16\n 2e8cec0: f2cc8ca0     \tmovk\tx0, #0x6465, lsl #32\n 2e8cec4: d65f03c0     \tret\n"
+  },
+  {
+    "start": "0x2e9c744",
+    "end": "0x2e9c760",
+    "disassembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 2e9c744: d28e6e61     \tmov\tx1, #0x7373             ; =29555\n 2e9c748: f2fd4001     \tmovk\tx1, #0xea00, lsl #48\n 2e9c74c: d28dcd20     \tmov\tx0, #0x6e69             ; =28265\n 2e9c750: f2ae4a00     \tmovk\tx0, #0x7250, lsl #16\n 2e9c754: f2ccede0     \tmovk\tx0, #0x676f, lsl #32\n 2e9c758: f2ecae40     \tmovk\tx0, #0x6572, lsl #48\n 2e9c75c: d65f03c0     \tret\n"
+  },
+  {
+    "start": "0x1d7bc68",
+    "end": "0x1d7bc80",
+    "disassembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1d7bc68: b004a360     \tadrp\tx0, 0xb1e8000 <_writev+0xb1e8000>\n 1d7bc6c: 91112000     \tadd\tx0, x0, #0x448\n 1d7bc70: f0ffe622     \tadrp\tx2, 0x1a42000 <__text+0x1a1a000>\n 1d7bc74: 91056042     \tadd\tx2, x2, #0x158\n 1d7bc78: 91002001     \tadd\tx1, x0, #0x8\n 1d7bc7c: 17f2d6b0     \tb\t0x1a3173c <__text+0x1a0973c>\n"
+  },
+  {
+    "start": "0x1a3173c",
+    "end": "0x1a317c8",
+    "disassembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1a3173c: 6dbc23e9     \tstp\td9, d8, [sp, #-0x40]!\n 1a31740: a90157f6     \tstp\tx22, x21, [sp, #0x10]\n 1a31744: a9024ff4     \tstp\tx20, x19, [sp, #0x20]\n 1a31748: a9037bfd     \tstp\tx29, x30, [sp, #0x30]\n 1a3174c: 9100c3fd     \tadd\tx29, sp, #0x30\n 1a31750: aa0103f3     \tmov\tx19, x1\n 1a31754: 4ea01c08     \tmov.16b\tv8, v0\n 1a31758: f9400008     \tldr\tx8, [x0]\n 1a3175c: b100051f     \tcmn\tx8, #0x1\n 1a31760: 54000060     \tb.eq\t0x1a3176c <__text+0x1a0976c>\n 1a31764: aa0203e1     \tmov\tx1, x2\n 1a31768: 95888bf8     \tbl\t0x7c54748 <_writev+0x7c54748>\n 1a3176c: f9400260     \tldr\tx0, [x19]\n 1a31770: 4ea81d00     \tmov.16b\tv0, v8\n 1a31774: 958935c3     \tbl\t0x7c7ee80 <_writev+0x7c7ee80>\n 1a31778: aa1d03fd     \tmov\tx29, x29\n 1a3177c: 958888e4     \tbl\t0x7c53b0c <_writev+0x7c53b0c>\n 1a31780: b40000a0     \tcbz\tx0, 0x1a31794 <__text+0x1a09794>\n 1a31784: 979d4958     \tbl\t0x183ce4 <__text+0x15bce4>\n 1a31788: 979c8ae5     \tbl\t0x15431c <__text+0x12c31c>\n 1a3178c: 958888b6     \tbl\t0x7c53a64 <_writev+0x7c53a64>\n 1a31790: 14000002     \tb\t0x1a31798 <__text+0x1a09798>\n 1a31794: 979cb9e9     \tbl\t0x15ff38 <__text+0x137f38>\n 1a31798: 979c86a0     \tbl\t0x153218 <__text+0x12b218>\n 1a3179c: a9437bfd     \tldp\tx29, x30, [sp, #0x30]\n 1a317a0: a9424ff4     \tldp\tx20, x19, [sp, #0x20]\n 1a317a4: a94157f6     \tldp\tx22, x21, [sp, #0x10]\n 1a317a8: 6cc423e9     \tldp\td9, d8, [sp], #0x40\n 1a317ac: d65f03c0     \tret\n 1a317b0: aa1e03e2     \tmov\tx2, x30\n 1a317b4: 979c9eb9     \tbl\t0x159298 <__text+0x131298>\n 1a317b8: aa0203fe     \tmov\tx30, x2\n 1a317bc: a9057bfd     \tstp\tx29, x30, [sp, #0x50]\n 1a317c0: 910143fd     \tadd\tx29, sp, #0x50\n 1a317c4: d10243ff     \tsub\tsp, sp, #0x90\n"
+  }
+]

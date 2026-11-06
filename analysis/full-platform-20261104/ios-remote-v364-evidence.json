@@ -1,0 +1,25 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "artifact_static",
+  "correction": "0x1a8208c is LazyState wrapping, not the string parser",
+  "consumer": "0x1a68bcc",
+  "parser_call": "0x1a68bf8 -> 0x2abe5a8",
+  "parsed_state_write": "0x1a68c08..14 stores original string pair plus parser-returned value",
+  "control_paths": {
+    "ESC": "0x2abe638 compares 0x1b; helper0x2abf160",
+    "alternate_sequence": "0x2abe6cc -> 0x2abf354",
+    "SGR_final_m": "0x2abe694 / 0x2abe6f4 compare 0x6d; invoke0x2ad9478",
+    "plain_character": "0x2abe72c..750 appends Character and advances String index",
+    "periodic_check": "0x2abe610..628 tests (iteration+1)&0x1ff, calls0x2ad96e0",
+    "final_callback": "0x2abe758..768 invokes passed callback and checks Swift error register"
+  },
+  "limitations": [
+    "Sequence grammar and malformed input unresolved",
+    "Returned line splitting and IDs not yet proven",
+    "Callback semantics and cancellation scheduling require exact binding verification",
+    "No UI changes or runtime parity claimed"
+  ]
+}

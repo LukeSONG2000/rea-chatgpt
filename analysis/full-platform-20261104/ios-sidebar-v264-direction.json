@@ -1,0 +1,16 @@
+{
+  "status": "partial",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "selector": {
+    "reference": "0xacabfe0",
+    "name": "effectiveUserInterfaceLayoutDirection"
+  },
+  "direction_function": "0x629f74",
+  "edge_storage": "0xad5cba0",
+  "rule": "direction == 1 yields -1, otherwise +1; edge != 0 reverses this sign",
+  "limits": [
+    "Raw edge value names not yet bound",
+    "Pure arithmetic replay is independent transcription, not execution of target ARM64",
+    "Does not establish complete sidebar gesture behavior"
+  ]
+}

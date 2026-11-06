@@ -1,0 +1,177 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Which official text belongs to the two current approval decisions, and does the action array vary by request?",
+  "observations": [
+    {
+      "type": "artifact_observation",
+      "symbol": "ApprovalRequest.Kind",
+      "descriptor": "0x95d4680",
+      "cases": [
+        "commandExecution",
+        "fileChange",
+        "execCommand",
+        "permissions",
+        "mcpServerElicitation"
+      ]
+    },
+    {
+      "type": "static_inference",
+      "symbol": "action selector0x2438b1c",
+      "conclusion": "Request kind4 has separate form/elicitation paths. Ordinary action selection invokes initial decision0x2438588 and optional policy/session/network helpers. A universal two-button default is not established."
+    },
+    {
+      "type": "artifact_observation",
+      "offsets": [
+        "0x2438cc0",
+        "0x75d2420"
+      ],
+      "conclusion": "Ordinary approveOnce title uses Approve; zh resource is 批准."
+    },
+    {
+      "type": "artifact_observation",
+      "offsets": [
+        "0x2438d30",
+        "0x2438e30",
+        "0x24393fc",
+        "0x88ecdb0"
+      ],
+      "conclusion": "approveForSession secondary action reads lazy title0xb2906d0; initializer uses codex_remote_approval_always_approve_button with Always approve default; zh is 始终批准. The same title also occurs for the policy-amendment decision; label alone cannot identify permission scope."
+    },
+    {
+      "type": "artifact_observation",
+      "offsets": [
+        "0x1a1f78c",
+        "0x1a1f798",
+        "0x75d2434"
+      ],
+      "conclusion": "Banner has an alternate denial label branch. Current no-feedback fixture uses Deny; zh is 拒绝. Alternate branch condition is not fully recovered."
+    }
+  ],
+  "integration": {
+    "files": [
+      "implementation/ios/Sources/OfficialText.swift",
+      "implementation/ios/Sources/RemoteApprovalInteraction.swift",
+      "implementation/ios/Sources/NativeConversationHost.swift",
+      "implementation/ios/Tools/prepare-official-text.py",
+      "implementation/ios/Resources/OfficialTranslations.json"
+    ],
+    "change": "Replace provisional bilingual approval labels with context-bound original translations, preserving typed decisions and request scope. Import three keys across existing65 locale tables, with English fallback when original translation is null.",
+    "independent_adaptation": "ordinaryTitleKey is a partial frontend display mapping. Fixture action availability and request envelope remain synthetic. No execution, service receipt, or global authorization is introduced."
+  },
+  "validation": {
+    "foundation": "passed all existing text/command/review/scope regressions plus approval language/fallback and unchanged decision-scope cases",
+    "host_typecheck": "passed with three existing UIKit deprecation warnings",
+    "ui": "not run; original first-launch installation runner remains pending admin authorization",
+    "device": "no new physical-device installation; existing simulator preview preserved",
+    "retention": "dry run found no stale generated packages"
+  },
+  "unknowns": [
+    "Full availableCommandExecutionDecisions projection and exact raw field offsets not yet bound to metadata",
+    "Parent action layout, feedback controls and form/policy-specific action selection remain partial",
+    "System language changes, visual layout and interaction on cumulative current source not runtime-accepted"
+  ],
+  "next_minimum_action": "Complete ordinary approval availability projection before connecting service capabilities; then user-input progression. Runtime acceptance must exercise task list -> message controls -> return/reopen, once the existing Xcode authorization wait resolves.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-action-labels.asm",
+      "sha256": "956f0e18718e17480c2546ebe738d42d90baa869af2a6308ad64409b40bba03e",
+      "bytes": 1416
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-action-selection.asm",
+      "sha256": "ad7322cc6146dffe2ac545f3bca785a3088e909ff857cd12eeae07eb1f1cd21b",
+      "bytes": 24622
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-decision-selection.asm",
+      "sha256": "a725c931659feca1d81d76dd34643a5bbe9a5315ff11e690783bd95122fa5d56",
+      "bytes": 9481
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-decision-tail.asm",
+      "sha256": "4d34a4f0acba98ab07d0efde28b838721c76697f116e28c0223b829c307a94b9",
+      "bytes": 7601
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-form-label.asm",
+      "sha256": "7f2acc9e80fbacaf4f5576ea9581b91b53afe33516f1b52be4a559f38376e54c",
+      "bytes": 1747
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-label-init-helper.asm",
+      "sha256": "a83b2b49a1869fa8a61aa6e9f5436235e67cca75c3ce9368b9be471fa21f2eb3",
+      "bytes": 821
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-lazy-label-init.asm",
+      "sha256": "18b6b2729bb0fa234e04659021e4ec249147f5108a4a4a2d3e7318d965b56b62",
+      "bytes": 3664
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-localizer-core.asm",
+      "sha256": "eb6e04985436f8f41ba33b627fe0dfbdbeb9c37302592a4121b52db97a18b65c",
+      "bytes": 4750
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-localizer.asm",
+      "sha256": "2d2e9d2940ea5513333f4f9a22d14b69e59cb03beb098bbb4d851d9126cd2680",
+      "bytes": 1866
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-network-label-helper.asm",
+      "sha256": "2d33f668f94bde2e67a5f4f47bbdfa396cdf7ac0f8fcc7e57dc48669633f5b13",
+      "bytes": 1167
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-once-label.asm",
+      "sha256": "17d58875e8c028f04a9651870a31956162316f0b6c20137f134fd6046a56b035",
+      "bytes": 1891
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-policy-gate.asm",
+      "sha256": "b458402999d629ecc81ade24196b7d906be322967b4ae3f40e1ac3b23a397bfb",
+      "bytes": 2463
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-policy-label-helper.asm",
+      "sha256": "c678659c05e3144a0bdaeedef40c7f26dc1281149209a41702326c1fb76455f6",
+      "bytes": 805
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-selected-text.json",
+      "sha256": "7a9d929faaf6b796ed7a0522db335161345ca477f970bd0410671df83eca35de",
+      "bytes": 172120
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-session-gate.asm",
+      "sha256": "1e9e1f8a41f415372315384af32fad1869119925567d7b725e066db9b40c27c0",
+      "bytes": 2334
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-session-label-init.asm",
+      "sha256": "37a66777d0b0f38836eb84a8632fb85f56c373fd95e2b502434f5cc2550fa917",
+      "bytes": 1689
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-translation-helper.asm",
+      "sha256": "32df7455e017b651910be8df7b4d26ba7bd8013db948713c749064d74994bb64",
+      "bytes": 726
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v412-unknown-label.asm",
+      "sha256": "949baba6741e4e6d73bc2f2bd4b69d5edf318255d6197f379a1e176db426fed0",
+      "bytes": 1828
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/OfficialText.swift": "fead8093e101673ded330ac8b14c28147840664e8266297192d2292630489338",
+    "implementation/ios/Sources/RemoteApprovalInteraction.swift": "848b253b7d2ba58bcc202a916a5d3055f1b985a661670ba4f74aec5e6e2f919d",
+    "implementation/ios/Sources/NativeConversationHost.swift": "4c757d49b30f551c3d7980447edd1f51098dd7b71f6b6f86d236127377c8e5b9",
+    "implementation/ios/Tools/prepare-official-text.py": "d82c1644a6d5c5fc4da79e3d6137b8ea5448605ae0e5ab12b93a1827e9968675",
+    "implementation/ios/Resources/OfficialTranslations.json": "fb321b2af263dee5da8a2d640d94109646370c01ff5c5a8479d4abc49c192369",
+    "implementation/ios/TextTests/main.swift": "7cee6b1e3edf54e7974d20f04b6e27599b6c8976898680002e20006379869e36"
+  }
+}

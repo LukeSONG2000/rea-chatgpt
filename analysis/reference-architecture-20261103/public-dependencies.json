@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "authority": "external-official-documentation",
+  "checked_on": "2026-11-03",
+  "sources": [
+    {
+      "id": "PUB01",
+      "project": "Snapchat/Valdi",
+      "url": "https://github.com/Snapchat/Valdi/releases/tag/beta-0.1.1",
+      "version": "beta-0.1.1",
+      "observed_commit_prefix": "41d6d87",
+      "claim": "Official release page exists and describes Android bootstrap/Clang fixes",
+      "limitation": "Observed release only, not a claim this matches packaged ChatGPT or a locally tested dependency"
+    },
+    {
+      "id": "PUB02",
+      "project": "Snapchat/Valdi",
+      "url": "https://github.com/Snapchat/Valdi/blob/main/LICENSE",
+      "version": "main at retrieval; no immutable commit binding",
+      "claim": "License file declares MIT",
+      "limitation": "Does not establish license of extracted OpenAI-specific components or target dependency version"
+    },
+    {
+      "id": "PUB03",
+      "project": "Snapchat/Valdi",
+      "url": "https://github.com/Snapchat/Valdi/blob/main/docs/docs/choosing-valdi.md",
+      "version": "main at retrieval; gaps section labels beta-0.0.x",
+      "claim": "Describes TypeScript/Bazel/native bindings; notes platform and integration constraints",
+      "limitation": "Rolling documentation and old beta gap section are not verified beta-0.1.1 behavior; no installation or build performed"
+    }
+  ],
+  "unknowns": [
+    "ChatGPT shipped Valdi commit/build options",
+    "DIL and OpenAI component redistribution rights",
+    "public dependency integration/device performance in an independent app"
+  ],
+  "network_scope": "public official documentation only; no target online service or private chat"
+}

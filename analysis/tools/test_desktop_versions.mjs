@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {projectConversationVersions,createFixtureHost} from './desktop-fixture-services.mjs';
+const fixture=JSON.parse(fs.readFileSync(new URL('../desktop-official-20261104/history-fixture-replay.json',import.meta.url))).converted_fixture;
+const h=structuredClone(fixture),parent=h.mapping['offline-user-001'].parent;
+h.mapping[parent].children.push('edited');h.mapping.edited={id:'edited',parent,children:['new-reply'],message:{...structuredClone(h.mapping['offline-user-001'].message),id:'edited'}};
+h.mapping['new-reply']={id:'new-reply',parent:'edited',children:[],message:{...structuredClone(h.mapping['offline-assistant-001'].message),id:'new-reply'}};h.current_node='new-reply';
+const before=structuredClone(h),versions=projectConversationVersions(h,'edited');
+assert.deepEqual(versions.map(xs=>xs.map(x=>x.id)),[['offline-user-001','offline-assistant-001']]);assert.deepEqual(h,before);
+versions[0][0].content.parts=['changed'];assert.deepEqual(h,before);
+assert.throws(()=>projectConversationVersions(h,'missing'),/scope/);assert.throws(()=>projectConversationVersions(h,'new-reply'),/scope/);
+const cyclic=structuredClone(h);cyclic.mapping['offline-assistant-001'].children=['offline-user-001'];assert.throws(()=>projectConversationVersions(cyclic,'edited'),/graph/);
+globalThis.location={origin:'https://offline.invalid'};
+const {host}=createFixtureHost({Wst:class{}},{scenario:'synthetic-account',historyFixture:fixture,restoredHistories:[h]});
+const reply=await host.services.httpFetch.fetch('versions',{method:'GET',url:'/conversations/'+h.conversation_id+'/versions?message_id=edited'});
+assert.deepEqual((await reply.response.json()).map(xs=>xs.map(x=>x.id)),[['offline-user-001','offline-assistant-001']]);
+await assert.rejects(host.services.httpFetch.fetch('foreign',{method:'GET',url:'/conversations/foreign/versions?message_id=edited'}),/scope/);
+console.log('passed: historical sibling projection, cloned messages, no mutation, unknown and foreign scope rejection, cycle rejection, endpoint integration');

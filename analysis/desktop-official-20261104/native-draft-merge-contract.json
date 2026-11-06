@@ -1,0 +1,33 @@
+{
+  "status": "partial",
+  "version": "26.1021.31345 / 21828",
+  "source": "recovered/macos/asar-extracted/.vite/build/main-0FVbxCQU.js",
+  "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+  "evidence_type": "artifact_observation",
+  "snippets": [
+    {
+      "offset": 2437397,
+      "excerpt": "function vz(e,t){let{timestampField:n}=t,i=n==null?null:r.k({[n]:r.O()}),a=e=>n==null?0:i?.safeParse(e).data?.[n]??0,o=sYe.safeParse(e),s=o.success?o.data:{};for(let[e,r]of Object.entries(t.entries))if(r?.expectedValue===void 0||(0,q.default)(s[e],r.expectedValue)){if(r==null||`delete`in r){delete s[e];continue}if(!(r.createOnly&&Object.hasOwn(s,e))&&!(n!=null&&a(s[e])>a(r.value))){if(r.updateOnly){if(!Object.hasOwn(s,e))continue}else delete s[e];Object.defineProperty(s,e,{configurable:!0,enumerable:!0,value:r.value,writable:!0})}}if(t.minNumericValue!=null)for(let[e,n]of Object.entries(s))typeof n==`number`&&n<t.minNumericValue&&delete s[e];if(t.maxEntries!=null){let e=Object.keys(s);n!=null&&e.sort((e,t)=>a(s[e])-a(s[t]));for(let n of e.slice(0,Math.max(0,e.length-t.maxEntries)))delete s[n]}if(t.maxBytes!=null){let e=2;for(let[n,r]of Object.entries(s).reverse()){let i=new TextEncoder().encode(JSON.stringify({[n]:r})).byteLength-2,a=e+i+ +(e>2&&i>0);a>t.maxBytes?delete s[n]:e=a}}return s}function cYe(e){return e.type.startsWith(`avatar-overlay-`)}function yz(e){let t=`pointerScreenX`in e?e.pointerScreenX:void 0,n=`pointerScreenY`in e?e.pointerScreenY:void 0;return typeof t!=`numbe"
+    },
+    {
+      "offset": 2436934,
+      "excerpt": "function oYe(e,t,n){if(e!==`cloud-aeon-sidebar-cache-v1`||n==null)return!0;let r=_z.safeParse(t),i=_z.safeParse(n);if(!r.success||!i.success)return!0;let a=r.data,o=i.data;return a.accountId!==o.accountId||a.userId!==o.userId||a.hostId!==o.hostId?!0:o.removalBaseRevision===void 0?o.revision===a.revision&&(o.refreshStartedAtMs??0)>(a.refreshStartedAtMs??0):o.removalBaseRevision===a.revision&&o.refreshStartedAtMs===a.refreshStartedAtMs}var sYe=r.M(r.P(),r.R());function vz(e,t){let{timestampField:n}=t,i=n==null?null:r.k({[n]:r.O()}),a=e=>n==null?0:i?.safeParse(e).data?.[n]??0,o=sYe.safeParse(e),s=o.success?o.data:{};for(let[e,r]of Object.entries(t.entries))if(r?.expectedValue===void 0||(0,q.default)(s[e],r.expectedValue)){if(r==null||`delete`in r){delete s[e];continue}if(!(r.createOnly&&Object.hasOwn(s,e))&&!(n!=null&&a(s[e])>a(r.value))){if(r.updateOnly){if(!Object.hasOwn(s,e))continue}else delete s[e];Object.defineProperty(s,e,{configurable:!0,enumerable:!0,value:r.value,writable:!0})}}if(t.minNumericValue!=null)for(let[e,n]of Object.entries(s))typeof n==`number`&&n<t.minNumericValue&&delete s[e];if(t.maxEntries!=null){let e=Object.keys(s);n!=null&&e.sort((e,t)=>a(s[e])-a(s[t]));for"
+    }
+  ],
+  "independent_implementation": "analysis/tools/desktop-draft-state.cjs",
+  "supported_subset": [
+    "entries value replacement",
+    "entries deletion by presence of delete key",
+    "independent draft scope keys",
+    "legacy key fallback when target absent",
+    "Explicit undefined optional fields treated as absent; defined unsupported policies still rejected"
+  ],
+  "unsupported": [
+    "expectedValue comparisons",
+    "createOnly/updateOnly",
+    "timestamp precedence",
+    "maxEntries/maxBytes/minNumericValue",
+    "complete official schema validation"
+  ],
+  "validation": "node analysis/tools/test_desktop_draft_state.cjs passed including explicit undefined record/entry options"
+}

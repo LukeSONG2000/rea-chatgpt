@@ -1,0 +1,32 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-host-adapter-runtime",
+  "fixed": "Accept exact home route owner with client-new-thread UUID; persist / instead of stale conversation route",
+  "validation": {
+    "home_route_persistence": "passed",
+    "route_scope_regression": "passed",
+    "home_draft_on_disk": "retained",
+    "cold_home_draft_display": "failed",
+    "unexpected_send_in_read": "none observed"
+  },
+  "runtime": [
+    "macos-home-v84-write.json",
+    "macos-home-v84-write-v2.json",
+    "macos-home-v84-read-v2.json",
+    "macos-home-v84-read-v3.json"
+  ],
+  "failed_experiment": "Adding initialChatGptConversationId to startup navigation alone did not restore draft. Change reverted; do not claim model identity restoration.",
+  "next_action": "Trace local home model allocation/hydration and pR/gLr matching against persisted homeConversationId; determine which additional initialization is required",
+  "sources": {
+    "analysis/tools/desktop-route-store.cjs": "e5bfc796d496efdb5a717364ca9d5361b20a529c86895b6001910c820613ce38",
+    "analysis/tools/desktop-native-host.cjs": "cee0f619bb2f7ffe24eeb155518d310d221b29e62bf56bbae4270c159beefd61",
+    "analysis/tools/test_desktop_route_store.cjs": "a4eaa957f1bc5eb5ac604b9dbb2c62d907da6d1e19a5a540c79f98f1e691d7b2",
+    "analysis/tools/probe_desktop_root_mount.cjs": "6f1f8ea9449828fee36c3fdaee1148c79630bdedaad520d60314967bf40718c8"
+  },
+  "limits": [
+    "Unsent home draft display remains unaccepted",
+    "No original packaged renderer modification or direct composer fill during read",
+    "Native physical interaction remains unaccepted"
+  ]
+}

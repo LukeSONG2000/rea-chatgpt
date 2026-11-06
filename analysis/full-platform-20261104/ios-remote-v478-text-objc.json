@@ -1,0 +1,723 @@
+{
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "classes": [
+    {
+      "class_address": "0xad17588",
+      "class_ro_address": "0xad17520",
+      "name": "_TtC11OAIMarkdown21MarkdownTextBlockView",
+      "flags": 452,
+      "instance_start": 8,
+      "instance_size": 496,
+      "methods": [
+        {
+          "entry": "0x7caae28",
+          "file_offset": 130723368,
+          "selector": "editMenuForTextRange:suggestedActions:",
+          "types": "@32@0:8@16@24",
+          "implementation": "0x6939eec",
+          "implementation_file_offset": 110337772
+        },
+        {
+          "entry": "0x7caae34",
+          "file_offset": 130723380,
+          "selector": "gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:",
+          "types": "B32@0:8@16@24",
+          "implementation": "0x6939c4c",
+          "implementation_file_offset": 110337100
+        },
+        {
+          "entry": "0x7caae40",
+          "file_offset": 130723392,
+          "selector": "gestureRecognizer:shouldRequireFailureOfGestureRecognizer:",
+          "types": "B32@0:8@16@24",
+          "implementation": "0x6939d50",
+          "implementation_file_offset": 110337360
+        },
+        {
+          "entry": "0x7caae4c",
+          "file_offset": 130723404,
+          "selector": "canBecomeFirstResponder",
+          "types": "B16@0:8",
+          "implementation": "0x69392b0",
+          "implementation_file_offset": 110334640
+        },
+        {
+          "entry": "0x7caae58",
+          "file_offset": 130723416,
+          "selector": "resignFirstResponder",
+          "types": "B16@0:8",
+          "implementation": "0x69392fc",
+          "implementation_file_offset": 110334716
+        },
+        {
+          "entry": "0x7caae64",
+          "file_offset": 130723428,
+          "selector": "copy:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6939534",
+          "implementation_file_offset": 110335284
+        },
+        {
+          "entry": "0x7caae70",
+          "file_offset": 130723440,
+          "selector": "selectAll:",
+          "types": "v24@0:8@16",
+          "implementation": "0x693957c",
+          "implementation_file_offset": 110335356
+        },
+        {
+          "entry": "0x7caae7c",
+          "file_offset": 130723452,
+          "selector": "canPerformAction:withSender:",
+          "types": "B32@0:8:16@24",
+          "implementation": "0x6939720",
+          "implementation_file_offset": 110335776
+        },
+        {
+          "entry": "0x7caae88",
+          "file_offset": 130723464,
+          "selector": "handleTapGesture:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6939ac4",
+          "implementation_file_offset": 110336708
+        },
+        {
+          "entry": "0x7caae94",
+          "file_offset": 130723476,
+          "selector": "beginningOfDocument",
+          "types": "@16@0:8",
+          "implementation": "0x69355f8",
+          "implementation_file_offset": 110319096
+        },
+        {
+          "entry": "0x7caaea0",
+          "file_offset": 130723488,
+          "selector": "endOfDocument",
+          "types": "@16@0:8",
+          "implementation": "0x693564c",
+          "implementation_file_offset": 110319180
+        },
+        {
+          "entry": "0x7caaeac",
+          "file_offset": 130723500,
+          "selector": "hasText",
+          "types": "B16@0:8",
+          "implementation": "0x69356d0",
+          "implementation_file_offset": 110319312
+        },
+        {
+          "entry": "0x7caaeb8",
+          "file_offset": 130723512,
+          "selector": "markedTextRange",
+          "types": "@16@0:8",
+          "implementation": "0x6935760",
+          "implementation_file_offset": 110319456
+        },
+        {
+          "entry": "0x7caaec4",
+          "file_offset": 130723524,
+          "selector": "isEditable",
+          "types": "B16@0:8",
+          "implementation": "0x6935768",
+          "implementation_file_offset": 110319464
+        },
+        {
+          "entry": "0x7caaed0",
+          "file_offset": 130723536,
+          "selector": "textInRange:",
+          "types": "@24@0:8@16",
+          "implementation": "0x69358f8",
+          "implementation_file_offset": 110319864
+        },
+        {
+          "entry": "0x7caaedc",
+          "file_offset": 130723548,
+          "selector": "textRangeFromPosition:toPosition:",
+          "types": "@32@0:8@16@24",
+          "implementation": "0x69359a8",
+          "implementation_file_offset": 110320040
+        },
+        {
+          "entry": "0x7caaee8",
+          "file_offset": 130723560,
+          "selector": "positionFromPosition:offset:",
+          "types": "@32@0:8@16q24",
+          "implementation": "0x6935ab8",
+          "implementation_file_offset": 110320312
+        },
+        {
+          "entry": "0x7caaef4",
+          "file_offset": 130723572,
+          "selector": "positionFromPosition:inDirection:offset:",
+          "types": "@40@0:8@16q24q32",
+          "implementation": "0x6935b74",
+          "implementation_file_offset": 110320500
+        },
+        {
+          "entry": "0x7caaf00",
+          "file_offset": 130723584,
+          "selector": "comparePosition:toPosition:",
+          "types": "q32@0:8@16@24",
+          "implementation": "0x6935c2c",
+          "implementation_file_offset": 110320684
+        },
+        {
+          "entry": "0x7caaf0c",
+          "file_offset": 130723596,
+          "selector": "offsetFromPosition:toPosition:",
+          "types": "q32@0:8@16@24",
+          "implementation": "0x6935d18",
+          "implementation_file_offset": 110320920
+        },
+        {
+          "entry": "0x7caaf18",
+          "file_offset": 130723608,
+          "selector": "positionWithinRange:farthestInDirection:",
+          "types": "@32@0:8@16q24",
+          "implementation": "0x6935dd8",
+          "implementation_file_offset": 110321112
+        },
+        {
+          "entry": "0x7caaf24",
+          "file_offset": 130723620,
+          "selector": "characterRangeByExtendingPosition:inDirection:",
+          "types": "@32@0:8@16q24",
+          "implementation": "0x6935f10",
+          "implementation_file_offset": 110321424
+        },
+        {
+          "entry": "0x7caaf30",
+          "file_offset": 130723632,
+          "selector": "baseWritingDirectionForPosition:inDirection:",
+          "types": "q32@0:8@16q24",
+          "implementation": "0x6935f88",
+          "implementation_file_offset": 110321544
+        },
+        {
+          "entry": "0x7caaf3c",
+          "file_offset": 130723644,
+          "selector": "selectionRectsForRange:",
+          "types": "@24@0:8@16",
+          "implementation": "0x6936178",
+          "implementation_file_offset": 110322040
+        },
+        {
+          "entry": "0x7caaf48",
+          "file_offset": 130723656,
+          "selector": "closestPositionToPoint:",
+          "types": "@32@0:8{CGPoint=dd}16",
+          "implementation": "0x6936240",
+          "implementation_file_offset": 110322240
+        },
+        {
+          "entry": "0x7caaf54",
+          "file_offset": 130723668,
+          "selector": "closestPositionToPoint:withinRange:",
+          "types": "@40@0:8{CGPoint=dd}16@32",
+          "implementation": "0x6936324",
+          "implementation_file_offset": 110322468
+        },
+        {
+          "entry": "0x7caaf60",
+          "file_offset": 130723680,
+          "selector": "caretRectForPosition:",
+          "types": "{CGRect={CGPoint=dd}{CGSize=dd}}24@0:8@16",
+          "implementation": "0x693640c",
+          "implementation_file_offset": 110322700
+        },
+        {
+          "entry": "0x7caaf6c",
+          "file_offset": 130723692,
+          "selector": "characterRangeAtPoint:",
+          "types": "@32@0:8{CGPoint=dd}16",
+          "implementation": "0x69364f0",
+          "implementation_file_offset": 110322928
+        },
+        {
+          "entry": "0x7caaf78",
+          "file_offset": 130723704,
+          "selector": "setMarkedText:selectedRange:",
+          "types": "v40@0:8@16{_NSRange=QQ}24",
+          "implementation": "0x6936520",
+          "implementation_file_offset": 110322976
+        },
+        {
+          "entry": "0x7caaf84",
+          "file_offset": 130723716,
+          "selector": "unmarkText",
+          "types": "v16@0:8",
+          "implementation": "0x6936548",
+          "implementation_file_offset": 110323016
+        },
+        {
+          "entry": "0x7caaf90",
+          "file_offset": 130723728,
+          "selector": "firstRectForRange:",
+          "types": "{CGRect={CGPoint=dd}{CGSize=dd}}24@0:8@16",
+          "implementation": "0x693654c",
+          "implementation_file_offset": 110323020
+        },
+        {
+          "entry": "0x7caaf9c",
+          "file_offset": 130723740,
+          "selector": "replaceRange:withText:",
+          "types": "v32@0:8@16@24",
+          "implementation": "0x693655c",
+          "implementation_file_offset": 110323036
+        },
+        {
+          "entry": "0x7caafa8",
+          "file_offset": 130723752,
+          "selector": "insertText:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6936578",
+          "implementation_file_offset": 110323064
+        },
+        {
+          "entry": "0x7caafb4",
+          "file_offset": 130723764,
+          "selector": "deleteBackward",
+          "types": "v16@0:8",
+          "implementation": "0x6936590",
+          "implementation_file_offset": 110323088
+        },
+        {
+          "entry": "0x7caafc0",
+          "file_offset": 130723776,
+          "selector": "setBaseWritingDirection:forRange:",
+          "types": "v32@0:8q16@24",
+          "implementation": "0x6936594",
+          "implementation_file_offset": 110323092
+        },
+        {
+          "entry": "0x7caafcc",
+          "file_offset": 130723788,
+          "selector": "isAccessibilityElement",
+          "types": "B16@0:8",
+          "implementation": "0x6934688",
+          "implementation_file_offset": 110315144
+        },
+        {
+          "entry": "0x7caafd8",
+          "file_offset": 130723800,
+          "selector": "setIsAccessibilityElement:",
+          "types": "v20@0:8B16",
+          "implementation": "0x693468c",
+          "implementation_file_offset": 110315148
+        },
+        {
+          "entry": "0x7caafe4",
+          "file_offset": 130723812,
+          "selector": "accessibilityActivate",
+          "types": "B16@0:8",
+          "implementation": "0x69348ec",
+          "implementation_file_offset": 110315756
+        },
+        {
+          "entry": "0x7caaff0",
+          "file_offset": 130723824,
+          "selector": "initWithCoder:",
+          "types": "@24@0:8@16",
+          "implementation": "0x6936b58",
+          "implementation_file_offset": 110324568
+        },
+        {
+          "entry": "0x7caaffc",
+          "file_offset": 130723836,
+          "selector": "inputDelegate",
+          "types": "@16@0:8",
+          "implementation": "0x6936ba4",
+          "implementation_file_offset": 110324644
+        },
+        {
+          "entry": "0x7cab008",
+          "file_offset": 130723848,
+          "selector": "setInputDelegate:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6936bcc",
+          "implementation_file_offset": 110324684
+        },
+        {
+          "entry": "0x7cab014",
+          "file_offset": 130723860,
+          "selector": "markedTextStyle",
+          "types": "@16@0:8",
+          "implementation": "0x6936c14",
+          "implementation_file_offset": 110324756
+        },
+        {
+          "entry": "0x7cab020",
+          "file_offset": 130723872,
+          "selector": "setMarkedTextStyle:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6936c6c",
+          "implementation_file_offset": 110324844
+        },
+        {
+          "entry": "0x7cab02c",
+          "file_offset": 130723884,
+          "selector": "tokenizer",
+          "types": "@16@0:8",
+          "implementation": "0x6936d1c",
+          "implementation_file_offset": 110325020
+        },
+        {
+          "entry": "0x7cab038",
+          "file_offset": 130723896,
+          "selector": "setTokenizer:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6936da8",
+          "implementation_file_offset": 110325160
+        },
+        {
+          "entry": "0x7cab044",
+          "file_offset": 130723908,
+          "selector": "selectedTextRange",
+          "types": "@16@0:8",
+          "implementation": "0x6936de0",
+          "implementation_file_offset": 110325216
+        },
+        {
+          "entry": "0x7cab050",
+          "file_offset": 130723920,
+          "selector": "setSelectedTextRange:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6936e20",
+          "implementation_file_offset": 110325280
+        },
+        {
+          "entry": "0x7cab05c",
+          "file_offset": 130723932,
+          "selector": "intrinsicContentSize",
+          "types": "{CGSize=dd}16@0:8",
+          "implementation": "0x69370d8",
+          "implementation_file_offset": 110325976
+        },
+        {
+          "entry": "0x7cab068",
+          "file_offset": 130723944,
+          "selector": "invalidateIntrinsicContentSize",
+          "types": "v16@0:8",
+          "implementation": "0x69375e4",
+          "implementation_file_offset": 110327268
+        },
+        {
+          "entry": "0x7cab074",
+          "file_offset": 130723956,
+          "selector": "layoutSubviews",
+          "types": "v16@0:8",
+          "implementation": "0x6937fb8",
+          "implementation_file_offset": 110329784
+        },
+        {
+          "entry": "0x7cab080",
+          "file_offset": 130723968,
+          "selector": "didMoveToWindow",
+          "types": "v16@0:8",
+          "implementation": "0x693804c",
+          "implementation_file_offset": 110329932
+        },
+        {
+          "entry": "0x7cab08c",
+          "file_offset": 130723980,
+          "selector": "drawRect:",
+          "types": "v48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+          "implementation": "0x6938334",
+          "implementation_file_offset": 110330676
+        },
+        {
+          "entry": "0x7cab098",
+          "file_offset": 130723992,
+          "selector": "frameForAlignmentRect:",
+          "types": "{CGRect={CGPoint=dd}{CGSize=dd}}48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+          "implementation": "0x69383c4",
+          "implementation_file_offset": 110330820
+        },
+        {
+          "entry": "0x7cab0a4",
+          "file_offset": 130724004,
+          "selector": "handleBoundsSizeChange",
+          "types": "v16@0:8",
+          "implementation": "0x6938b10",
+          "implementation_file_offset": 110332688
+        },
+        {
+          "entry": "0x7cab0b0",
+          "file_offset": 130724016,
+          "selector": "initWithFrame:",
+          "types": "@48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+          "implementation": "0x7c3c1e8",
+          "implementation_file_offset": 130269672
+        },
+        {
+          "entry": "0x7cab0bc",
+          "file_offset": 130724028,
+          "selector": ".cxx_destruct",
+          "types": "v16@0:8",
+          "implementation": "0x6938be8",
+          "implementation_file_offset": 110332904
+        }
+      ],
+      "ivars": [
+        {
+          "entry": "0xac49f30",
+          "name": "uniqueIdentifier",
+          "offset_storage_address": "0xaff8210",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac49f50",
+          "name": "inputDelegate",
+          "offset_storage_address": "0xaff8218",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac49f70",
+          "name": "markedTextStyle",
+          "offset_storage_address": "0xaff8220",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac49f90",
+          "name": "$__lazy_storage_$_tokenizer",
+          "offset_storage_address": "0xaffdba8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac49fb0",
+          "name": "didInvalidateIntrinsicContentSize",
+          "offset_storage_address": "0xaff81a8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac49fd0",
+          "name": "$__lazy_storage_$_renderer",
+          "offset_storage_address": "0xaffdba0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac49ff0",
+          "name": "selectionHandlers",
+          "offset_storage_address": "0xaff8180",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a010",
+          "name": "menus",
+          "offset_storage_address": "0xaff8188",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a030",
+          "name": "highlightFramesUpdatedHandler",
+          "offset_storage_address": "0xaff81d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a050",
+          "name": "textTapHandler",
+          "offset_storage_address": "0xaff81e8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a070",
+          "name": "renderingConfiguration",
+          "offset_storage_address": "0xaffa9b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a090",
+          "name": "maxWidth",
+          "offset_storage_address": "0xaff81b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a0b0",
+          "name": "accessibilityElement",
+          "offset_storage_address": "0xaff8250",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a0d0",
+          "name": "lastDeselectedInstant",
+          "offset_storage_address": "0xb8b7ca8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a0f0",
+          "name": "_selectedTextRange",
+          "offset_storage_address": "0xb8b7c90",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a110",
+          "name": "textSelectionEdgeAutoScrollSupport",
+          "offset_storage_address": "0xb8b7c98",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a130",
+          "name": "textSelectionStartTrackingSupport",
+          "offset_storage_address": "0xb8b7ca0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a150",
+          "name": "fadeAnimatorConfiguration",
+          "offset_storage_address": "0xb8b7e18",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a170",
+          "name": "fadeAnimationState",
+          "offset_storage_address": "0xb8b7e20",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a190",
+          "name": "viewAttachments",
+          "offset_storage_address": "0xb8b7cb0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a1b0",
+          "name": "attachedViews",
+          "offset_storage_address": "0xb8b7e28",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a1d0",
+          "name": "lastAttachmentLayoutBounds",
+          "offset_storage_address": "0xb8b7cb8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a1f0",
+          "name": "contentInvalidatingAttachmentIDs",
+          "offset_storage_address": "0xb8b7e30",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a210",
+          "name": "layerBoundsObservation",
+          "offset_storage_address": "0xb8b7e38",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a230",
+          "name": "$__lazy_storage_$_textFadeAnimator",
+          "offset_storage_address": "0xb8b7cc0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac4a250",
+          "name": "markdownOptions",
+          "offset_storage_address": "0xb8b7e40",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ],
+      "superclass": {
+        "symbol": "_OBJC_CLASS_$_UIView",
+        "library_ordinal": 5,
+        "weak": false,
+        "import_ordinal": 2955,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "class_address": "0xad17308",
+      "class_ro_address": "0xad172a0",
+      "name": "_TtC11OAIMarkdown22MarkdownStaticTextView",
+      "flags": 452,
+      "instance_start": 8,
+      "instance_size": 64,
+      "methods": [
+        {
+          "entry": "0x7c88730",
+          "file_offset": 130582320,
+          "selector": "init",
+          "types": "@16@0:8",
+          "implementation": "0x6932070",
+          "implementation_file_offset": 110305392
+        },
+        {
+          "entry": "0x7c8873c",
+          "file_offset": 130582332,
+          "selector": "initWithCoder:",
+          "types": "@24@0:8@16",
+          "implementation": "0x6932118",
+          "implementation_file_offset": 110305560
+        },
+        {
+          "entry": "0x7c88748",
+          "file_offset": 130582344,
+          "selector": "sizeThatFits:",
+          "types": "{CGSize=dd}32@0:8{CGSize=dd}16",
+          "implementation": "0x6932b84",
+          "implementation_file_offset": 110308228
+        },
+        {
+          "entry": "0x7c88754",
+          "file_offset": 130582356,
+          "selector": "layoutSubviews",
+          "types": "v16@0:8",
+          "implementation": "0x6932c20",
+          "implementation_file_offset": 110308384
+        },
+        {
+          "entry": "0x7c88760",
+          "file_offset": 130582368,
+          "selector": "initWithFrame:",
+          "types": "@48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+          "implementation": "0x7c3c0ac",
+          "implementation_file_offset": 130269356
+        },
+        {
+          "entry": "0x7c8876c",
+          "file_offset": 130582380,
+          "selector": ".cxx_destruct",
+          "types": "v16@0:8",
+          "implementation": "0x6932d94",
+          "implementation_file_offset": 110308756
+        }
+      ],
+      "ivars": [
+        {
+          "entry": "0xac49a78",
+          "name": "didInvalidateContentSize",
+          "offset_storage_address": "0xaff81b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac49a98",
+          "name": "pendingConfiguration",
+          "offset_storage_address": "0xb8b7c78",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac49ab8",
+          "name": "textView",
+          "offset_storage_address": "0xb8b7c80",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac49ad8",
+          "name": "padding",
+          "offset_storage_address": "0xb8b7c88",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ],
+      "superclass": {
+        "symbol": "_OBJC_CLASS_$_UIView",
+        "library_ordinal": 5,
+        "weak": false,
+        "import_ordinal": 2955,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    }
+  ]
+}

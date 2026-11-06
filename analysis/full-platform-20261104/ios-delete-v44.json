@@ -1,0 +1,64 @@
+{
+  "status": "partial",
+  "platform": "ios",
+  "reference_baseline": "1.2026.293",
+  "origin": "independent UIKit/local storage implementation; not recovered official deletion protocol",
+  "changes": [
+    "Native trailing swipe delete with explicit confirmation and disabled full-swipe auto-action",
+    "Catalog deletion commits before request cancellation and history/draft cleanup",
+    "Membership guards discard response callbacks for removed identities",
+    "Startup reconciles scoped drafts/history against catalog; preserves other conversations",
+    "A/B remain retained fixture rows, dynamic UUID rows deletable"
+  ],
+  "validation": {
+    "state_log": "analysis/full-platform-20261104/ios-delete-state-v1.log",
+    "state_covers": [
+      "idempotent deletion",
+      "write failure preserves memory entries",
+      "protected fixture rejection",
+      "old draft generation rejection",
+      "crash between catalog commit and draft cleanup repaired on reload"
+    ],
+    "native_result": "analysis/full-platform-20261104/ios-delete-ui-v1.xcresult",
+    "native_summary": "analysis/full-platform-20261104/ios-delete-ui-v1.summary.json",
+    "native_tests_passed": 1,
+    "native_covers": [
+      "start background slow stream",
+      "another conversation completes and retains draft",
+      "cancel confirmation leaves row",
+      "confirm removes row",
+      "process restart retains survivor history/draft and deleted row stays absent"
+    ],
+    "persisted_check": "analysis/full-platform-20261104/ios-delete-persisted-v1.json",
+    "visual": "Exported post-restart list screenshot inspected; not official layout parity"
+  },
+  "inputs": [
+    {
+      "path": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "2d1f37ce1fc70051ae28b57c33226216a18c369dca6c033ac63dc5ffffefaf37"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "3ec4e4f034e220c1c16cb593ee47adaeebaff29852811a3f58837204aee81dda"
+    },
+    {
+      "path": "implementation/ios/Tests/main.swift",
+      "sha256": "5e40cabdf83b2b663b502296a6982cce15d2d7b430331ec0aa55d88761e01a9a"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "7d556016033e90f8473d93e1b64c73c0cc40e441ce28fcbd712c1d755c47ac93"
+    }
+  ],
+  "limitations": [
+    "Deleting currently selected conversation fallback has state tests only, not native UI acceptance yet",
+    "Native disk failure/crash injection and arbitrary late callback timing not accepted",
+    "Catalog/draft/history are independent atomic files; no cross-file transaction/fsync guarantee",
+    "Deletion cleanup errors keep catalog-hidden identity and show error; retry at next launch",
+    "Cancellation HTTP acknowledgment not inspected; no service-side guarantee inferred",
+    "Synthetic simulator only; no physical iPhone, live Zhipu or official service parity",
+    "A/B fixture rows retained; rename/sync/full menu fidelity unfinished"
+  ],
+  "cleanup": "Owned loopback fixture server terminated and matching pairing files removed",
+  "next_action": "Native selected-conversation deletion and failure/recovery checks; then improve catalog titles and continue Android parity"
+}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.scheduleArray=void 0;const e=require("../Observable");function r(r,t){return new e.Observable(e=>{let s=0;return t.schedule(function(){s===r.length?e.complete():(e.next(r[s++]),e.closed||this.schedule())})})}exports.scheduleArray=r;

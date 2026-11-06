@@ -1,0 +1,31 @@
+{
+  "status": "partial",
+  "platform": "macos",
+  "implementation_origin": "Independent first-send receipt and replay policy, not recovered official service behavior",
+  "verified": [
+    "Completed same-identity first-send retry returns same conversation and assistant identity without new generation",
+    "Cold reload preserves receipt and exact replay result",
+    "Overlapping in-progress retry and interrupted retry explicitly fail rather than duplicate generation",
+    "Changed content with same user ID conflicts; same text with a different user ID creates a distinct conversation",
+    "Normal original-renderer New chat and Send still complete; create/delete/model projection regressions pass"
+  ],
+  "receipt": "rea_local_creation contains parentId,userId,assistantId and canonical request fingerprint inside isolated history snapshot; independent fields are explicitly named",
+  "limits": [
+    "Actual renderer Retry button and dropped-network recovery not exercised",
+    "Interrupted generation recovery and replay after deletion are unresolved; deletion currently removes receipt with history",
+    "Only first-send requests without conversation_id are deduplicated; existing-conversation duplicates retain prior rejection",
+    "Fingerprint covers parent/messages/model/gizmo/action; full provider request compatibility is unaccepted",
+    "Native new-chat runtime does not prove real Zhipu retry behavior"
+  ],
+  "next_action": "Resume iOS native conversation navigation: replace the fixed two-scope selector with an evidence-bound list and explicit state mapping, preserving existing draft/history and harness identities",
+  "evidence_sha256": {
+    "analysis/tools/desktop-fixture-services.mjs": "40b68f6767887023f1ef835adc1989a19d4e27e90ffc4b1c93b8063e2b87bf57",
+    "analysis/tools/desktop-history-store.cjs": "f6f325c03025b4e15aa8dd174ac7a5eb67f5d889d47a7dda007e0aa06922de04",
+    "analysis/tools/test_desktop_first_send_retry.mjs": "b0702b59c2162dc2a601764d2ad6b9b53c1fd7e3aee29884dc7c7898dd07a832",
+    "analysis/full-platform-20261104/macos-first-send-retry-unit-v1.log": "553e49cd5a88c6f2cd2f5dd6c29381cef543cfb18b58d49815bef83695cc74c1",
+    "analysis/full-platform-20261104/macos-first-send-runtime-v1.json": "360d228cfcc42d5ab508e131132900babff78b70841d8a2120a07c517da5f429",
+    "analysis/full-platform-20261104/macos-first-retry-create-v1.log": "4cc72fed24f48f14e6a821cc846b7ab11faef4f21d0f9f2007cc47ebf86b0133",
+    "analysis/full-platform-20261104/macos-first-retry-model-v1.log": "5674c5001b5cd8e31ccbb617f31a35d78b15f272614c22ce3eb9973ce97e6149",
+    "analysis/full-platform-20261104/macos-first-retry-delete-v1.log": "12f8a22a7ec4d5fc5af12ed4175d29d4e601cc25418989202ead7e775699de2f"
+  }
+}

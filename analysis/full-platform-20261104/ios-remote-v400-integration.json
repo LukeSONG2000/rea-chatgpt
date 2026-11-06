@@ -1,0 +1,46 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "gate": {
+    "owner": "ExpandableAssistantSummaryItem.canExpand",
+    "branch": "0x1a418a0..0x1a418a8 tests first byte, false ->0x1a41a90",
+    "file_consumer": "0x19c454c reads first String;0x1630120 extracts small/large String length;0x19c4554..58 tests nonzero,0x19c4584 stores canExpand",
+    "field_chain": "Part.presentation@0 -> Presentation.change@0 -> FileUpdateChange.diff@0; metadata field vectors verified v400-field-layout.json",
+    "semantics": "diff nonempty; no whitespace trim; no service-permission inference"
+  },
+  "plain_branch": {
+    "summary": "metadata slot0x38",
+    "height": "slot0x40 (_minimumRowHeight), wrappedValue0x1a41aa4",
+    "frame": "minHeight some(metric), other optional bounds nil; Alignment.center0x1a41aac",
+    "font": "body0x74e2728 at0x1a41b00",
+    "color": "ChatGPT/text/tertiary0x74ee448 at0x1a41b58",
+    "consumer_metric": "20 at0x19c4814; body TextStyle via0x26c05c and bound slot0xaad38d8; ScaledMetric init0x19c4844"
+  },
+  "integration": [
+    "canExpand input in shared native adapter",
+    "False branch renders summary without Button, chevron or content",
+    "No expansion binding reset is introduced",
+    "File diff input drives nonempty gate",
+    "Dedicated synthetic empty and whitespace launch fixtures; no service calls"
+  ],
+  "validation": {
+    "host_typecheck": "passed all Sources/*.swift with existing UIKit deprecations",
+    "ui_tests": "syntax parse passed; new testRemoteFileSummaryExpansionAvailability added but NOT executed",
+    "pending_test": "session42359 live, awaiting Xcode first-launch authorization; existing selection excludes new test",
+    "phone": "not updated",
+    "retention": "no stale targets"
+  },
+  "limits": [
+    "Original private font conversion remains a native semantic adapter",
+    "Other activity availability policies not inferred from file diff",
+    "Visual/dynamic-type and accessibility behavior require runtime validation",
+    "This is iOS-specific evidence; Android parity not established"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "c4393a63c5b4bf233eae2900658336ae65c59593799fe13ec71a7e3b213ff9e3",
+    "implementation/ios/UITests/HostInteractionTests.swift": "ffb0a161ced0df6161aacdd2e959354a6be8c56ba4e164fdaa371d49df3cd637"
+  }
+}

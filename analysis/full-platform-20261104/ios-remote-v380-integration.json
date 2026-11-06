@@ -1,0 +1,49 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "version": "iOS 1.2026.293",
+  "evidence_type": "official-artifact-static",
+  "source_window": "ios-remote-v377-title-column.asm",
+  "observations": [
+    {
+      "offset": "0x3a4990",
+      "conclusion": "VerticalAlignment.center getter followed by HStack spacing8 at0x3a4994."
+    },
+    {
+      "offset": "0x3a49c4",
+      "conclusion": "VerticalAlignment.firstTextBaseline getter, spacing4 at0x3a49c8 passed into custom label style and View.labelStyle at0x3a4a18."
+    },
+    {
+      "offset": "0x3a4a28",
+      "conclusion": "Font factory0x74e2788 -> initializer0x74e2774 loads0xaad3910",
+      "binding": {
+        "symbol": "_$s7SwiftUI4FontV9TextStyleO8footnoteyA2EmFWC",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 9719,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "offset": "0x3a4aa4",
+      "conclusion": "Helper0x45071c resolves same lineLimit key path0x7cfb340 asv377; x22=1 at0x3a4a4c stored as some(1) at0x3a4ab8..bc."
+    }
+  ],
+  "integration": "Correct group alignment to center, internal icon/text alignment to firstTextBaseline; apply subtitle lineLimit(1). Existing spacing8/4 and footnote retained.",
+  "limitations": [
+    "Custom LabelStyle implementation/asset baseline metrics not fully recovered.",
+    "Current icon sizing13 remains adapter.",
+    "Original list outer containment and status font remain partial."
+  ],
+  "validation": {
+    "test": "testRemoteLongTitleLayout passed1/0",
+    "screenshot_inspected": "ios-remote-v380-screenshots/D7BD4493-D951-4D83-922B-DA1DABED56EE.png",
+    "observation": "XXXL environment subtitle now single-line with ellipsis; title/pending pill remain separate.",
+    "preview_pid": 86424,
+    "phone_updated": false,
+    "external_display_reverified": false,
+    "retention": "no stale targets"
+  }
+}

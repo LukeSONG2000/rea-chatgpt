@@ -1,0 +1,37 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "pattern": "adjacent ADRP plus LDR unsigned 64-bit; incomplete references",
+  "hits": [
+    {
+      "pc": "0x628788",
+      "target": "0xad5cba8",
+      "field": "movementStyle",
+      "function_start": "0x628474",
+      "next_function_start": "0x628a64"
+    },
+    {
+      "pc": "0x62b798",
+      "target": "0xad5cba8",
+      "field": "movementStyle",
+      "function_start": "0x62b770",
+      "next_function_start": "0x62b83c"
+    },
+    {
+      "pc": "0x62c4f0",
+      "target": "0xad5cba8",
+      "field": "movementStyle",
+      "function_start": "0x62c4c8",
+      "next_function_start": "0x62c794"
+    },
+    {
+      "pc": "0x6feb6c",
+      "target": "0xad5cbb0",
+      "field": "usesBlurringOverlayPresentation",
+      "function_start": "0x6feb6c",
+      "next_function_start": "0x6feb78"
+    }
+  ]
+}

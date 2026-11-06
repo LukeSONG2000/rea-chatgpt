@@ -1,0 +1,116 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_turn_classification": "progress: original translation import and request identity regression passed",
+  "question": "Replace the universal synthetic approval action array with the recovered ordinary-request selector.",
+  "official_observations": [
+    {
+      "source": "ApprovalRequest descriptor0x95d462c, accessor0x25fb3e0, metadata0xa576470",
+      "conclusion": "Field vector binds kind0x79, proposedExecpolicyAmendment0xe0, availableCommandExecutionDecisions0x148, networkApprovalContext0x150 and proposedNetworkPolicyAmendments0x178."
+    },
+    {
+      "source": "Generated.Components.Schemas.CommandExecutionApprovalDecision descriptor0x95f2018",
+      "conclusion": "Six payload cases: accept, acceptForSession, execpolicy amendment, network amendment, decline, cancel. Exact generated names and payload types retained in evidence. Projection0x2c32b34 selects case0;0x2c32b6c selects case1;0x2c32ba8 selects case2."
+    },
+    {
+      "source": "initial decision0x2438588",
+      "conclusion": "For non-MCP kind: missing available array or contained accept gives approveOnce; otherwise execpolicy eligibility precedes session eligibility; network fallback is separate. Explicit empty array does not enter missing-array branch."
+    },
+    {
+      "source": "policy gate0x2438708 / session gate0x24387c0",
+      "conclusion": "Policy requires a nonempty proposed amendment plus absent available array or a matching policy decision. Session requires absent available array or a matching session case."
+    },
+    {
+      "source": "selector0x2438b1c, secondary construction0x2438d08..0x2438e70",
+      "conclusion": "Policy secondary precedes session; equality check suppresses duplicate initial/secondary decisions. Labels and actual decision identity remain separate."
+    }
+  ],
+  "integration": {
+    "files": [
+      "implementation/ios/Sources/RemoteApprovalInteraction.swift",
+      "implementation/ios/Sources/NativeConversationHost.swift",
+      "implementation/ios/TextTests/main.swift",
+      "implementation/ios/UITests/HostInteractionTests.swift"
+    ],
+    "changes": [
+      "Typed ordinary approval availability/selection feeds action buttons instead of a fixed pair.",
+      "Add approveWithExecpolicyAmendment as a distinct typed decision; retain proposed policy inside immutable request equality.",
+      "Unknown/MCP/network branches have explicit unsupported presentation; known empty list remains a supported empty list.",
+      "Five scoped fixture configurations cover once/session/policy/no-grants/unknown through the actual task-message page."
+    ],
+    "independent_adaptations": [
+      "Typed enum/presence markers are frontend inputs, not reconstructed official JSON serialization.",
+      "Strict unsupported treatment for unknown/MCP/network inputs is an explicit implementation limitation; not claimed as the official unknown-case behavior.",
+      "Request freshness and inconsistent-action guards are independently designed disconnected service-boundary rules.",
+      "Fixture task data and enclosing layout remain synthetic/partial; no cloud or local execution."
+    ]
+  },
+  "validation": {
+    "foundation": "passed prior text/command/review/approval checks plus144 explicit kind/order/nil/empty/policy vectors, unsupported branches, policy-revision stale action and inconsistent controls",
+    "host_typecheck": "passed with3 existing UIKit deprecation warnings",
+    "ui_test_syntax": "passed",
+    "ui_runtime": "testRemoteApprovalAvailabilityAndReturn added, not executed. Original selected test runner remains live pending Xcode first-launch authorization.",
+    "preview": "existing preview PID87483 remains running; not replaced; physical install not performed"
+  },
+  "limitations": [
+    "MCP elicitation form/persistence actions not restored.",
+    "Network host matching and proposal selection not yet integrated.",
+    "Action array is observed client selection, not proof of server authorization.",
+    "Runtime layout, language switching, actual button hits and list return remain unaccepted on cumulative source."
+  ],
+  "next_minimum_action": "Trace denial/feedback conditions and user-input progression; validate task list -> message actions -> return/reopen after pending Xcode installation completes.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-enum-projection-thunks.asm",
+      "sha256": "a4177733a32432072c7d58818a9016803ded0348dae20c4fe2a6f796cad00ba7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-network-gate.asm",
+      "sha256": "37e10704593ef65f26a7363c6f3f39f7431426a435821cdaffe80d3e6687b65d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-once-projection-body.asm",
+      "sha256": "fb98590aeb1c4bf1524acc9b7cdc0732fc0264877ae9b68958805eb04b8bcc7f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-once-projector.asm",
+      "sha256": "6ea08f67498d87167392168af93265d82a1113e082c10c1a14fe336bdce0ab04"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-policy-projection-body.asm",
+      "sha256": "3c9ad2caafad2c093c4ad1681391e710149293d34889f6c174e5802926240add"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-policy-projector.asm",
+      "sha256": "3c52ab5cbc623c046a71b5d71ed46395aecbdb83c7080fe994a4ebaf023ba233"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-projection-return.asm",
+      "sha256": "9b81e54cc3711a64a57006bddae6a5239a6dc47859bd94c8a3dcc825cf6c7495"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-request-accessor.asm",
+      "sha256": "c894192ff35924670bd9479b3048e7c28bdd7e5fd4d58647077394f99984aac5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-session-projector.asm",
+      "sha256": "f29cc02edd7789b57757337b244f545686d1978063f58473996b4d185a46a2cc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-available-decision-types.json",
+      "sha256": "9a8851ba027273e1b3938dd547de5d2df713cb14b65bd81f30475aaa5c932f27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v413-request-offsets.json",
+      "sha256": "82ae4bfdb4ad41506bb67706092e9e5808b194e9ee95aeddfdba9dcf20c01e2f"
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteApprovalInteraction.swift": "7b1a206dc70f344d48a501b94778e2ec729ce179d714f8617bf3f8ee95696e12",
+    "implementation/ios/Sources/NativeConversationHost.swift": "1b699bf027a6fbe716f53b231063e82854fc018f6df21b470108b56692a93c65",
+    "implementation/ios/TextTests/main.swift": "fe2ea9ad344bd1024b4c77de1d386d99ec7265dbde1c6bbd9acc5bbd7110f3c9",
+    "implementation/ios/UITests/HostInteractionTests.swift": "cb8ab840e6625876041d5237416835e75cb9c38336f03df65c38cad3b53b0d75"
+  }
+}

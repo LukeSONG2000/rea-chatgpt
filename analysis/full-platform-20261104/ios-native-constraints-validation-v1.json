@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "case": "short-encryption",
+      "status": "passed",
+      "reason": "short load command payload"
+    },
+    {
+      "case": "short-build",
+      "status": "passed",
+      "reason": "short load command payload"
+    },
+    {
+      "case": "invalid-tools",
+      "status": "passed",
+      "reason": "build tools outside command"
+    },
+    {
+      "case": "truncated-header",
+      "status": "passed"
+    },
+    {
+      "case": "repeat-three-artifacts-after-parser-hardening",
+      "status": "passed"
+    }
+  ],
+  "tool_sha256": "4e5afd626d8322bcbbce637db23118aec3f840dc078bca1bbaec2e63221e4628",
+  "independent_check": "ios-native-otool-v1.txt confirms main framework cryptid=0, platform=2, minos=18.0, sdk=27.1"
+}

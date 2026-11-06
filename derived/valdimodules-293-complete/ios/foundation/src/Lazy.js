@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.Lazy=void 0;class Lazy{constructor(e){this.work=e}get target(){return this.value||(this.value={value:this.work()},this.work=void 0),this.value.value}get isCreated(){return void 0!==this.value}}exports.Lazy=Lazy;

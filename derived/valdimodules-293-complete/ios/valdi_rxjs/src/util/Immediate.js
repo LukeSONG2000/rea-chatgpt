@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.TestTools=exports.Immediate=void 0;let e,t=1;const s={};function o(e){return e in s&&(delete s[e],!0)}exports.Immediate={setImmediate(r){const n=t++;return s[n]=!0,e||(e=Promise.resolve()),e.then(()=>o(n)&&r()),n},clearImmediate(e){o(e)}},exports.TestTools={pending:()=>Object.keys(s).length};

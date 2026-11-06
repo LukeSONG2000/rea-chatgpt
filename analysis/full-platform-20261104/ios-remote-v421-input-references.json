@@ -1,0 +1,161 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "pattern": "adjacent ADRP/ADD (no shifted ADD), B/BL; incomplete references",
+  "hits": [
+    {
+      "pc": "0x1a2a434",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a2a1b8",
+      "next_function_start": "0x1a2a490"
+    },
+    {
+      "pc": "0x1a5375c",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a53564",
+      "next_function_start": "0x1a53c14"
+    },
+    {
+      "pc": "0x1a53854",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a53564",
+      "next_function_start": "0x1a53c14"
+    },
+    {
+      "pc": "0x1a53950",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a53564",
+      "next_function_start": "0x1a53c14"
+    },
+    {
+      "pc": "0x1a54748",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a54598",
+      "next_function_start": "0x1a54e54"
+    },
+    {
+      "pc": "0x1a54b7c",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a54598",
+      "next_function_start": "0x1a54e54"
+    },
+    {
+      "pc": "0x1a54e84",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "BL",
+      "function_start": "0x1a54e54",
+      "next_function_start": "0x1a54ebc"
+    },
+    {
+      "pc": "0x1a551b0",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a54f98",
+      "next_function_start": "0x1a55398"
+    },
+    {
+      "pc": "0x1a55420",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "BL",
+      "function_start": "0x1a55398",
+      "next_function_start": "0x1a556c0"
+    },
+    {
+      "pc": "0x1a554c4",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a55398",
+      "next_function_start": "0x1a556c0"
+    },
+    {
+      "pc": "0x1a55504",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a55398",
+      "next_function_start": "0x1a556c0"
+    },
+    {
+      "pc": "0x1a55c0c",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "BL",
+      "function_start": "0x1a55b5c",
+      "next_function_start": "0x1a562b0"
+    },
+    {
+      "pc": "0x1a55f8c",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a55b5c",
+      "next_function_start": "0x1a562b0"
+    },
+    {
+      "pc": "0x1a5605c",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a55b5c",
+      "next_function_start": "0x1a562b0"
+    },
+    {
+      "pc": "0x1a5612c",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1a55b5c",
+      "next_function_start": "0x1a562b0"
+    },
+    {
+      "pc": "0x1a56850",
+      "target": "0x1a53564",
+      "name": "UserInputView body",
+      "pattern": "B",
+      "function_start": "0x1a56850",
+      "next_function_start": "0x1a56854"
+    },
+    {
+      "pc": "0x1c34ee8",
+      "target": "0x95ae7f4",
+      "name": "UserInputView descriptor",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1c34ee0",
+      "next_function_start": "0x1c34ef4"
+    },
+    {
+      "pc": "0x1cf50d0",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "BL",
+      "function_start": "0x1cf50bc",
+      "next_function_start": "0x1cf50fc"
+    },
+    {
+      "pc": "0x1d8b814",
+      "target": "0x1c34ee0",
+      "name": "UserInputView metadata accessor",
+      "pattern": "B",
+      "function_start": "0x1d8b810",
+      "next_function_start": "0x1d8b818"
+    }
+  ]
+}

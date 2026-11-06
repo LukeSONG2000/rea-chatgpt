@@ -1,0 +1,45 @@
+{
+  "status": "partial",
+  "classification": "independent native implementation and controlled app lifecycle replay",
+  "verified": [
+    "Completed fixture reply restored after terminate/relaunch using exact message ID",
+    "Partially streamed fixture response restored as interrupted, never completed or actively generating",
+    "Account/version/duplicate identity validation",
+    "Atomic private history file; failed validation and corrupt input preserve prior file"
+  ],
+  "evidence": [
+    "ios-history-v1.xcresult",
+    "ios-history-v1-summary.json",
+    "ios-build-v11.log"
+  ],
+  "limits": [
+    "Two synthetic conversations only",
+    "No server history, reconnect/resume or automatic generation restart",
+    "Synchronous fixture-scale disk checkpoints; latency/performance unaccepted",
+    "Live Zhipu interruption not tested",
+    "Physical device and official fidelity unaccepted"
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "9eff011796da676d3f19fc7aed1a889dfc4c6f544b9d4eb9e04ba755ee2374a8"
+    },
+    {
+      "path": "implementation/ios/Sources/LocalHarness.swift",
+      "sha256": "12abae5f8fbbb3397c934070ce13db41e32c7283a8e47161c65e4a21c3de8741"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "df07c5ed9bebdd0e28700f3b32a8d4ef0e5ce1c3ec2bcb330b3e992beacb699d"
+    },
+    {
+      "path": "implementation/ios/Tests/main.swift",
+      "sha256": "d9c5d9e032d8af7310b274d69ae9be8785601c4603342cda737e71c3b7263d87"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "c32066d0cb6faa56bb7ee99f317cc51023a4b0b95ec4a882fe646152a70c9c80"
+    }
+  ],
+  "note": "UI test source additionally replaces an immediate completed assertion with a bounded wait after the recorded passing run"
+}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.StringCache=void 0;class StringCache{constructor(e){this.interner=e,this.cache={}}get(e){let t=this.cache[e];return void 0!==t||(t=this.interner(e),this.cache[e]=t),t}}exports.StringCache=StringCache;

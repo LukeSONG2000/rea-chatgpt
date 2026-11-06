@@ -1,0 +1,165 @@
+{
+  "window": {
+    "status": "partial",
+    "authority": "shipped-artifact-static-instructions",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "window": {
+      "start": "0x19521a0",
+      "end_exclusive": "0x19522fc",
+      "sha256": "01eb484c0bfec62d8be0e3bcae3d71794696c164e95c471a743d40e11df8d056"
+    },
+    "linker_function_starts_in_window": [
+      "0x19521a0"
+    ],
+    "next_linker_function_start": "0x19522fc",
+    "direct_calls": [
+      {
+        "site": "0x19521a4",
+        "target": "0x15e6b8",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x19521b8",
+        "target": "0x156434",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x19521bc",
+        "target": "0x1adc4a4",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x19521c0",
+        "target": "0x14e000",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x19521e4",
+        "target": "0x1d6e2d4",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x19521fc",
+        "target": "0x1d6eab4",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x1952204",
+        "target": "0x1ab09dc",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x1952228",
+        "target": "0x1c0808",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x1952258",
+        "target": "0x1bf0714",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x1952268",
+        "target": "0x1d88ec8",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x195226c",
+        "target": "0x452a14",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x1952280",
+        "target": "0x154d0c",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x1952284",
+        "target": "0x4764fc",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x19522b0",
+        "target": "0x1d6e2d4",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x19522bc",
+        "target": "0x1d6e2d4",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x19522c8",
+        "target": "0x1d6e2d4",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x19522d4",
+        "target": "0x1d6e2d4",
+        "imported_symbol": null
+      }
+    ],
+    "adjacent_selector_loads": [],
+    "limits": [
+      "Window is not a proven function boundary",
+      "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+      "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+    ]
+  },
+  "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 19521a0: aa1e03e0     \tmov\tx0, x30\n 19521a4: 97a03145     \tbl\t0x15e6b8 <__text+0x1366b8>\n 19521a8: aa0003fe     \tmov\tx30, x0\n 19521ac: a9127bfd     \tstp\tx29, x30, [sp, #0x120]\n 19521b0: 910483fd     \tadd\tx29, sp, #0x120\n 19521b4: aa1403f8     \tmov\tx24, x20\n 19521b8: 97a0109f     \tbl\t0x156434 <__text+0x12e434>\n 19521bc: 940628ba     \tbl\t0x1adc4a4 <__text+0x1ab44a4>\n 19521c0: 979fef90     \tbl\t0x14e000 <__text+0x126000>\n 19521c4: d2f40019     \tmov\tx25, #-0x6000000000000000 ; =-6917529027641081856\n 19521c8: 2a0003e8     \tmov\tw8, w0\n 19521cc: d2800016     \tmov\tx22, #0x0               ; =0\n 19521d0: f0032549     \tadrp\tx9, 0x7dfd000 <_writev+0x7dfd000>\n 19521d4: 91378129     \tadd\tx9, x9, #0xde0\n 19521d8: 100000aa     \tadr\tx10, 0x19521ec <__text+0x192a1ec>\n 19521dc: 3868692b     \tldrb\tw11, [x9, x8]\n 19521e0: 8b0b094a     \tadd\tx10, x10, x11, lsl #2\n 19521e4: 9410703c     \tbl\t0x1d6e2d4 <__text+0x1d462d4>\n 19521e8: d61f0140     \tbr\tx10\n 19521ec: a9405316     \tldp\tx22, x20, [x24]\n 19521f0: a9415f15     \tldp\tx21, x23, [x24, #0x10]\n 19521f4: 39408318     \tldrb\tw24, [x24, #0x20]\n 19521f8: aa1603e0     \tmov\tx0, x22\n 19521fc: 9410722e     \tbl\t0x1d6eab4 <__text+0x1d46ab4>\n 1952200: aa1803e4     \tmov\tx4, x24\n 1952204: 940579f6     \tbl\t0x1ab09dc <__text+0x1a889dc>\n 1952208: aa1703e8     \tmov\tx8, x23\n 195220c: aa1503ec     \tmov\tx12, x21\n 1952210: aa1403eb     \tmov\tx11, x20\n 1952214: d2ec0019     \tmov\tx25, #0x6000000000000000 ; =6917529027641081856\n 1952218: b3400719     \tbfxil\tx25, x24, #0, #2\n 195221c: 14000024     \tb\t0x19522ac <__text+0x192a2ac>\n 1952220: 9101c3e0     \tadd\tx0, sp, #0x70\n 1952224: aa1803e1     \tmov\tx1, x24\n 1952228: 97a1b978     \tbl\t0x1c0808 <__text+0x198808>\n 195222c: a94727f6     \tldp\tx22, x9, [sp, #0x70]\n 1952230: a94863e8     \tldp\tx8, x24, [sp, #0x80]\n 1952234: a900a7e8     \tstp\tx8, x9, [sp, #0x8]\n 1952238: a9496be8     \tldp\tx8, x26, [sp, #0x90]\n 195223c: a94a73fb     \tldp\tx27, x28, [sp, #0xa0]\n 1952240: a94b57f4     \tldp\tx20, x21, [sp, #0xb0]\n 1952244: d2f00019     \tmov\tx25, #-0x8000000000000000 ; =-9223372036854775808\n 1952248: b3400519     \tbfxil\tx25, x8, #0, #2\n 195224c: f94063f7     \tldr\tx23, [sp, #0xc0]\n 1952250: 9101c3e0     \tadd\tx0, sp, #0x70\n 1952254: 910063e1     \tadd\tx1, sp, #0x18\n 1952258: 940a792f     \tbl\t0x1bf0714 <__text+0x1bc8714>\n 195225c: aa1803e8     \tmov\tx8, x24\n 1952260: a940afec     \tldp\tx12, x11, [sp, #0x8]\n 1952264: 1400001e     \tb\t0x19522dc <__text+0x192a2dc>\n 1952268: 9410db18     \tbl\t0x1d88ec8 <__text+0x1d60ec8>\n 195226c: 97ac01ea     \tbl\t0x452a14 <__text+0x42aa14>\n 1952270: aa0003f7     \tmov\tx23, x0\n 1952274: a9405316     \tldp\tx22, x20, [x24]\n 1952278: 39404302     \tldrb\tw2, [x24, #0x10]\n 195227c: 92401c55     \tand\tx21, x2, #0xff\n 1952280: 97a00aa3     \tbl\t0x154d0c <__text+0x12cd0c>\n 1952284: 97ac909e     \tbl\t0x4764fc <__text+0x44e4fc>\n 1952288: aa1503ec     \tmov\tx12, x21\n 195228c: aa1403eb     \tmov\tx11, x20\n 1952290: 2a1703e8     \tmov\tw8, w23\n 1952294: 710006ff     \tcmp\tw23, #0x1\n 1952298: d2e40009     \tmov\tx9, #0x2000000000000000 ; =2305843009213693952\n 195229c: d2e8000a     \tmov\tx10, #0x4000000000000000 ; =4611686018427387904\n 19522a0: 9a8a0129     \tcsel\tx9, x9, x10, eq\n 19522a4: 710002ff     \tcmp\tw23, #0x0\n 19522a8: 9a890119     \tcsel\tx25, x8, x9, eq\n 19522ac: 1400000c     \tb\t0x19522dc <__text+0x192a2dc>\n 19522b0: 94107009     \tbl\t0x1d6e2d4 <__text+0x1d462d4>\n 19522b4: 52800076     \tmov\tw22, #0x3               ; =3\n 19522b8: 14000009     \tb\t0x19522dc <__text+0x192a2dc>\n 19522bc: 94107006     \tbl\t0x1d6e2d4 <__text+0x1d462d4>\n 19522c0: 52800036     \tmov\tw22, #0x1               ; =1\n 19522c4: 14000006     \tb\t0x19522dc <__text+0x192a2dc>\n 19522c8: 94107003     \tbl\t0x1d6e2d4 <__text+0x1d462d4>\n 19522cc: 52800056     \tmov\tw22, #0x2               ; =2\n 19522d0: 14000003     \tb\t0x19522dc <__text+0x192a2dc>\n 19522d4: 94107000     \tbl\t0x1d6e2d4 <__text+0x1d462d4>\n 19522d8: 52800096     \tmov\tw22, #0x4               ; =4\n 19522dc: a9002e76     \tstp\tx22, x11, [x19]\n 19522e0: a901226c     \tstp\tx12, x8, [x19, #0x10]\n 19522e4: a9026a79     \tstp\tx25, x26, [x19, #0x20]\n 19522e8: a903727b     \tstp\tx27, x28, [x19, #0x30]\n 19522ec: a9045674     \tstp\tx20, x21, [x19, #0x40]\n 19522f0: f9002a77     \tstr\tx23, [x19, #0x50]\n 19522f4: a9527bfd     \tldp\tx29, x30, [sp, #0x120]\n 19522f8: 179feea1     \tb\t0x14dd7c <__text+0x125d7c>\n",
+  "jump_table_address": "0x7dfdde0",
+  "jump_table": [
+    {
+      "content_tag": 0,
+      "content_name": "renderUnit",
+      "branch": "0x1952268"
+    },
+    {
+      "content_tag": 1,
+      "content_name": "realtimeTranscript",
+      "branch": "0x19521ec"
+    },
+    {
+      "content_tag": 2,
+      "content_name": "trailingRealtimeTranscript",
+      "branch": "0x19521ec"
+    },
+    {
+      "content_tag": 3,
+      "content_name": "activityHeader",
+      "branch": "0x19522dc"
+    },
+    {
+      "content_tag": 4,
+      "content_name": "modelRerouted",
+      "branch": "0x1952220"
+    },
+    {
+      "content_tag": 5,
+      "content_name": "previousMessagesToggle",
+      "branch": "0x19522bc"
+    },
+    {
+      "content_tag": 6,
+      "content_name": "previousMessagesSeparator",
+      "branch": "0x19522c8"
+    },
+    {
+      "content_tag": 7,
+      "content_name": "responseSeparator",
+      "branch": "0x19522b0"
+    },
+    {
+      "content_tag": 8,
+      "content_name": "tail",
+      "branch": "0x19522d4"
+    }
+  ],
+  "limitations": [
+    "Branch targets are observed; not every payload conversion is recovered.",
+    "Content and ContentID are distinct enums. Do not copy enum integer tags into a service schema."
+  ]
+}

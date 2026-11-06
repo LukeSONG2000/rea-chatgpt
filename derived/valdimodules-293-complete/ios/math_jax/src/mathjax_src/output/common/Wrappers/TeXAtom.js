@@ -1,0 +1,1 @@
+"use strict";function o(o){return class CommonTeXAtomMixin extends o{computeBBox(o,e=!1){super.computeBBox(o,e),this.childNodes[0]&&this.childNodes[0].bbox.ic&&(o.ic=this.childNodes[0].bbox.ic)}}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.CommonTeXAtomMixin=void 0,exports.CommonTeXAtomMixin=o;

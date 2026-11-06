@@ -1,0 +1,53 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "official-resource-reuse plus independent native locale adapter",
+  "findings": [
+    "Assets_Assets.bundle/CompressedStrings contains8-byte LE decoded-length prefix and XZ/LZFSE payloads",
+    "SharedKeys has8536 unique keys;64 locale arrays have exactly8536 entries, strings or null",
+    "Prior v354 ordinary-string scan did not cover these resources and is not evidence translations are absent",
+    "Native main-app Ask ChatGPT and shared table differ in6 locales; retained separate resource authority"
+  ],
+  "integration": {
+    "labels": [
+      "Ask ChatGPT",
+      "Searching the web",
+      "Searched the web"
+    ],
+    "locale_table_union": 65,
+    "explicit_translations": {
+      "Ask ChatGPT": 64,
+      "Searching the web": 63,
+      "Searched the web": 63
+    },
+    "english_fallback": "English key when selected translation or English override absent",
+    "selection": "Foundation Bundle.preferredLocalizations with Locale.preferredLanguages; independent provider",
+    "resource_bytes": 11143,
+    "excluded": "Copy code has OTP-oriented Chinese value; no code-block reuse by English-key similarity"
+  },
+  "validation": {
+    "host_typecheck": "passed all Sources/*.swift",
+    "project_plist": "plutil -lint passed",
+    "foundation_replay": "13 locale/fallback/malformed-data checks passed on macOS",
+    "source_catalog_validation": "unique shared keys, bounded decode length, XZ EOF, array type/count checked",
+    "ui": "not run; session42359 verified live, waiting first-launch authorization",
+    "preview": "PID87483 confirmed live; untouched",
+    "retention": "no stale targets"
+  },
+  "limits": [
+    "Three labels only; no full-app multilingual claim",
+    "Shared index interpretation is static resource inference, not private provider execution",
+    "No plural/format interpolation added",
+    "RTL, language-switch lifecycle and real-device visuals remain unaccepted",
+    "Android resource/provider evidence independent and pending"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/OfficialText.swift": "b019a10b94031152f1582bd7bb78be4097abd9db2097591a4f6cfd7c40834aea",
+    "implementation/ios/Sources/NativeConversationHost.swift": "f1d55d14cc979b1441224b3f8448e215e57cd780165effab128b662916899927",
+    "implementation/ios/Resources/OfficialTranslations.json": "b54db7fa716217811a5e3ddc5d1cc51614af94fffa5b9db642ac4581959e55a4",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "4627bb0082e35ce93ee6572340e75d19606d8207bab77c3714d36e1276facc49",
+    "implementation/ios/Tools/prepare-official-text.py": "47db36c01734c4e06115eb473d8f5551b2e2abdc20e7b03c93562a41ca9a0ac2",
+    "implementation/ios/TextTests/main.swift": "fd41d341f254720a7e7027392e82d644ef61da90d6819e8721ab2ee46a4fc352"
+  }
+}

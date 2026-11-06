@@ -1,0 +1,66 @@
+{
+  "status": "partial",
+  "authority": "preserved Codex 26.1021.31345 renderer with independent local owner catalog and metadata",
+  "verified": [
+    "actual original sidebar displays remote owner thread after connect",
+    "clicking row reaches original conversation route and registers host-b presentation",
+    "missing requestUserInputAutoResolution service crash fixed by scoped presentation bookkeeping only",
+    "missing thread.preview string fixed using actual synthetic first user message; original trim exception absent in final run",
+    "unit tests: B publishes while A pending, failure not empty success, host isolation, epoch rejection, filter scope",
+    "existing chat catalog regression and thread reader race/metadata regression pass",
+    "macOS strict deep signature passed"
+  ],
+  "unaccepted": [
+    "actual Local fixture reply body not visible; original view remains Loading chat",
+    "end-to-end runtime report is failed, not green",
+    "no send/cancel/approval/Goal UI acceptance"
+  ],
+  "nextBoundary": "Trace original conversation resume/load path after catalog-row click into host-b RPC manager and transport. Transport currently supports thread/read only; establish actual requested methods and state transitions before extending it. Do not substitute direct test hydration for original UI loading.",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/main.cjs",
+      "sha256": "eed8e2f6ef3e4f5e12391e99467cd42317fbaf1dc04cdb7e7287bd1b58679964"
+    },
+    {
+      "path": "implementation/desktop/native/remote-thread-reader.cjs",
+      "sha256": "35afdd41f420b4b8f7037a7244a6b80467941cd388f42cb4ef707c07af3ec9cf"
+    },
+    {
+      "path": "implementation/desktop/native/original-remote-runtime.mjs",
+      "sha256": "fdbf0752444bfc128ba56c66a4438138aa1fbed95af477288d8234555b12bc29"
+    },
+    {
+      "path": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "74bba473bec2f35de2ba1b60c66ecdaee50acc051b50a77a3f6e9ee92bb23df5"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-home.cjs",
+      "sha256": "4617c3809265dbf6cb09cc21623bdb38977c3eb69dda6159e9e0e214285c5de6"
+    }
+  ],
+  "reports": [
+    "remote-home-v173-probe.json",
+    "remote-home-v173-runtime.json",
+    "remote-home-v173-r2-runtime.json",
+    "remote-home-v173-r3-runtime.json",
+    "remote-home-v173-contract.json",
+    "remote-home-v173-presentation-contract.json",
+    "remote-home-v173-unit-final.json",
+    "remote-home-v173-reader-final.json",
+    "remote-home-v173-hashes.json",
+    "remote-home-v173-cache-archive.json"
+  ],
+  "builds": {
+    "macos": "implementation/desktop/dist/v173-r3-macos/REA ChatGPT Offline.app",
+    "windows": "implementation/desktop/dist/v173-windows/REA ChatGPT Offline/REA ChatGPT Offline.exe"
+  },
+  "limits": [
+    "Windows assembled, not executed on Windows",
+    "No physical iPhone/mobile acceptance added",
+    "No real model call",
+    "Catalog synthetic title labeled Local test; not recovered original title",
+    "Catalog max 64 owner threads, continuation unsupported and explicit errors; owner-wide snapshot not atomic",
+    "No workdir/project inference: empty cwd",
+    "Presentation tracking does not grant approval or auto-resolve requests"
+  ]
+}

@@ -1,0 +1,369 @@
+{
+  "version": "26.1021.31345",
+  "asar_sha256": "130145706a912db74e4d260ad7538f10f1e05e88af955f9afba42cdf01e64606",
+  "anchors": [
+    {
+      "id": "DU01",
+      "path": ".vite/build/browser-background-switches-IQUsnzYP.js",
+      "sha256": "e5b858ceb674070e0033b76ecec0d27a3379a770cc82da5bf579e35243b2c929",
+      "byte_offset": 140457,
+      "token": "function P(e){return(0,a.join)(e,`..`,`..`,`webview`)}",
+      "excerpt": "d:!0,standard:!0,secure:!0,stream:!0,supportFetchAPI:!0}}])}function P(e){return(0,a.join)(e,`..`,`..`,`webview`)}function F(e){return e===`/detached-window`?k:O}function I(e,t){let n=new URL(`${j}/${F(e)}`);return e&&n.searchParams.set(`initialRoute`,e),t?.mcpAppSandboxLocalDevelopment===!0&&n.searchParams.set(`mcpAppSandboxLocalDevelopment`,`1`),n.to",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU02",
+      "path": ".vite/build/browser-background-switches-IQUsnzYP.js",
+      "sha256": "e5b858ceb674070e0033b76ecec0d27a3379a770cc82da5bf579e35243b2c929",
+      "byte_offset": 140511,
+      "token": "function F(e)",
+      "excerpt": "0}}])}function P(e){return(0,a.join)(e,`..`,`..`,`webview`)}function F(e){return e===`/detached-window`?k:O}function I(e,t){let n=new URL(`${j}/${F(e)}`);return e&&n.searchParams.set(`initialRoute`,e),t?.mcpAppSandboxLocalDevelopment===!0&&n.searchParams.set(`mcpAppSandboxLocalDevelopment`,`1`),n.toString()}func",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU03",
+      "path": ".vite/build/browser-background-switches-IQUsnzYP.js",
+      "sha256": "e5b858ceb674070e0033b76ecec0d27a3379a770cc82da5bf579e35243b2c929",
+      "byte_offset": 140559,
+      "token": "function I(e,t)",
+      "excerpt": ",`webview`)}function F(e){return e===`/detached-window`?k:O}function I(e,t){let n=new URL(`${j}/${F(e)}`);return e&&n.searchParams.set(`initialRoute`,e),t?.mcpAppSandboxLocalDevelopment===!0&&n.searchParams.set(`mcpAppSandboxLocalDevelopment`,`1`),n.toString()}function L(e,t){let r=K(e);if(!r)return null;try{if(q(",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU04",
+      "path": ".vite/build/main-0FVbxCQU.js",
+      "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+      "byte_offset": 5001027,
+      "token": "let se=t.u(p)",
+      "excerpt": "t(n)&&e.preventDefault()}),this.installNativeContextMenu(z);let se=t.u(p);if(!O.app.isPackaged){let e=new URL(tSt());return se!==`index.html`&&(e.pathname=new URL(se,e).pathname),p&&e.searchParams.set(`initialRoute`,p),P&&e.searchParams.set(`mcpAppSandboxLocalDevelopment`,`1`),z.loadURL(e.toString()),z}let ce=t.",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU05",
+      "path": ".vite/build/main-0FVbxCQU.js",
+      "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+      "byte_offset": 5001360,
+      "token": "await z.loadURL(t.o(p,",
+      "excerpt": "eDir),G=(0,C.join)(ce,se);if((0,x.existsSync)(G))try{return await z.loadURL(t.o(p,{mcpAppSandboxLocalDevelopment:P})),z}catch(e){R9().warning(`Failed to load bundle at`,{safe:{},sensitive:{documentPath:G,error:e}})}let le=`data:text/html;charset=utf-8,${encodeURIComponent(Fxt())}`;return await z.loadURL(le),z}async creat",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU06",
+      "path": ".vite/build/main-0FVbxCQU.js",
+      "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+      "byte_offset": 5001611,
+      "token": "async createPrimaryWindow",
+      "excerpt": ",${encodeURIComponent(Fxt())}`;return await z.loadURL(le),z}async createPrimaryWindow(e={}){return this.createWindow({...e,appearance:`primary`})}addBrowserCommentPopupWindowCreatedHandler(e,t){return this.browserCommentPopupWindowCreatedHandlers.set(e,t),()=>{this.browserCommentPopupWindowCreatedHandlers.delete(e)}}setBrow",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU07",
+      "path": "webview/assets/app-main-a7fcc565935a.js",
+      "sha256": "133b40edf654cbd30ce7d108a0f1de2b5dc99b5e18380d1fde9f7b7be4db519a",
+      "byte_offset": 12399,
+      "token": "d.createRoot",
+      "excerpt": "ainer not found`);p=window,p.__codexRoot??(p.__codexRoot=(0,d.createRoot)(f)),m=p.__codexRoot,(l===i?s(async()=>{let{initializeDictationSetup:e}=await import(`./setup-runtime-6a914457ea0b.js`);return{initializeDictationSetup:e}},__vite__mapDeps([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]),im",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU08",
+      "path": "webview/assets/app-main-a7fcc565935a.js",
+      "sha256": "133b40edf654cbd30ce7d108a0f1de2b5dc99b5e18380d1fde9f7b7be4db519a",
+      "byte_offset": 924,
+      "token": "./app-runtime-7eafc695f601.js",
+      "excerpt": "o-view-d86d0434a253.css\",\"./setup-window-30c3db252da2.css\",\"./app-runtime-7eafc695f601.js\",\"./build-start-conversation-params-ba01a06641a0.js\",\"./ambient-suggestions-stale-time-759d36fb01a2.js\",\"./workspace-policy-14029d1cb32a.js\",\"./start-turn-206104955830.js\",\"./thread-handoff-store-8fe4cba58ba7.js\",\"./external-agent-import-s",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU09",
+      "path": "webview/assets/app-main-a7fcc565935a.js",
+      "sha256": "133b40edf654cbd30ce7d108a0f1de2b5dc99b5e18380d1fde9f7b7be4db519a",
+      "byte_offset": 13894,
+      "token": "m.render(e)",
+      "excerpt": "]),import.meta.url).then(({initializeApp:e})=>e())).then(e=>m.render(e))})))()}h();\n//# sourceMappingURL=app-main-a7fcc565935a.js.map",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU10",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 460249,
+      "token": "function kq()",
+      "excerpt": "i(),Ey(),yq(),wq=z(),Tq=_g(),Eq=cf(),Dq=oi===Rn})))()}async function kq(){Aq(),await Nq();let e;return e=Lq?KA.prefetch():Rq?qA.prefetch():ew?.(),e=e?.catch(e=>{U.warning(`Initial route prefetch failed; rendering will retry`,{safe:{isAvatarOverlayWindow:Lq,isSpotlightWindow:Rq,windowType:`electron`},sensitive:{e",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU11",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 206189,
+      "token": "getInitialSidebarBootstrap",
+      "excerpt": "ryData(R_);if(t!=null)return t;let n=window.electronBridge?.getInitialSidebarBootstrap?.()??null;return n!=null&&e.queryClient.setQueryData(R_,n),n}function DM(){let e=(0,JM.c)(4),t=K(f),n=I.localThreadCatalog,r,i;if(e[0]===t?(r=e[1],i=e[2]):(r=()=>{let e=n!=null;if(t.set(gs,e?`catalog`:`live`),e&&!t.get(Wa)){let e=EM(t)?.ca",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU12",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 67773,
+      "token": "Not as He",
+      "excerpt": "Mct as Ie,Mot as Le,Mst as Re,NCt as ze,N_t as Be,Ngt as Ve,Not as He,Nst as Ue,OIt as We,OSt as F,Ogt as Ge,Oit as Ke,Oot as qe,Ost as Je,P9 as Ye,PB as Xe,PN as Ze,PSt as Qe,Pbt as $e,Pot as et,Pst as tt,Qat as nt,Qbt as rt,Qot as I,Qrt as it,RF as at,RRt as ot,RSt as st,Rbt as ct,Rit as lt,Rot as ut,S9 as",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU13",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 67899,
+      "token": "Pot as et",
+      "excerpt": "qe,Ost as Je,P9 as Ye,PB as Xe,PN as Ze,PSt as Qe,Pbt as $e,Pot as et,Pst as tt,Qat as nt,Qbt as rt,Qot as I,Qrt as it,RF as at,RRt as ot,RSt as st,Rbt as ct,Rit as lt,Rot as ut,S9 as dt,SIt as ft,Sit as pt,T6 as mt,TN as ht,TP as gt,Tbt as _t,Tst as vt,U_t as yt,Uat as bt,V_t as xt,Vst as L,WNt as St,WSt as",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU14",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 136703,
+      "token": "let{ChatGptConversationPage:e}=await import(`./chatgpt-conversation-page-20e0cd7f5f7a.js`)",
+      "excerpt": "null),X(async()=>()=>null),ej=X(async()=>(await J(async()=>{let{ChatGptConversationPage:e}=await import(`./chatgpt-conversation-page-20e0cd7f5f7a.js`);return{ChatGptConversationPage:e}},__vite__mapDeps([1008,2,1,3,4,5,6,7,698,692,693,363,694,488,482,695,696,697,532,87,88,89,85,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,368,311,312,313,314,64,128,129,119,118,130,131",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU15",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 184083,
+      "token": "path:He,element:",
+      "excerpt": "zA,{})}),!1,null,null,null,null,null,null,null,(0,Q.jsx)(F,{path:He,element:(0,Q.jsx)(TC,{allowWork:!0,children:(0,Q.jsx)(VO,{children:(0,Q.jsx)(ej,{})})})}),(0,Q.jsx)(F,{path:`/branch/:conversationId/:messageId`,element:(0,Q.jsx)(TC,{allowWork:!0,children:(0,Q.jsx)(tj,{})})}),(0,Q.jsx)(F,{path:mu,element:(0,Q.jsx)",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU16",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 184400,
+      "token": "path:et,element:",
+      "excerpt": "TC,{allowWork:!0,children:(0,Q.jsx)(nj,{})})}),(0,Q.jsx)(F,{path:et,element:(0,Q.jsx)(TC,{allowWork:!0,children:(0,Q.jsx)(VO,{children:(0,Q.jsx)(ej,{})})})}),(0,Q.jsx)(F,{path:Ss,element:(0,Q.jsx)(gA,{})}),(0,Q.jsx)(F,{path:Ua,element:(0,Q.jsx)(mA,{})}),(0,Q.jsx)(F,{path:na,element:(0,Q.jsx)(hA,{})}),(0,Q.jsxs)(F,{",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU17",
+      "path": "webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "byte_offset": 1983661,
+      "token": "RSt=`/c/:conversationId`",
+      "excerpt": "}`:``}var RSt,zSt,v$;function BSt(){return(BSt=t((()=>{OJ(),RSt=`/c/:conversationId`,zSt=`/g/:gizmoId/c/:conversationId`,v$=`temporary-chat`})))()}function VSt(e){let t=/^\\/([^/]+)\\/?$/.exec(e)?.[1];return t==null?null:HSt(t)}function HSt(e){let t=e.replace(`_`,`-`).toLowerCase().split(`-`);for(let e=t.length;e>=1;e--){let",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU18",
+      "path": "webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "byte_offset": 1983686,
+      "token": "zSt=`/g/:gizmoId/c/:conversationId`",
+      "excerpt": "tion BSt(){return(BSt=t((()=>{OJ(),RSt=`/c/:conversationId`,zSt=`/g/:gizmoId/c/:conversationId`,v$=`temporary-chat`})))()}function VSt(e){let t=/^\\/([^/]+)\\/?$/.exec(e)?.[1];return t==null?null:HSt(t)}function HSt(e){let t=e.replace(`_`,`-`).toLowerCase().split(`-`);for(let e=t.length;e>=1;e--){let n=t.slice(0,e).join(`-`);if(Object.",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU19",
+      "path": "webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "byte_offset": 6027709,
+      "token": "RSt as Not",
+      "excerpt": " as Nlt,k$n as Nm,qat as Nmt,Ptr as Nn,ZDt as Nnt,F5n as No,RSt as Not,k1n as Np,bst as Npt,Q7t as Nq,Fer as Nr,bIt as Nrt,F8n as Ns,d_t as Nst,Fnr as Nt,nAt as Ntt,P4n as Nu,wft as Nut,DYn as Nv,wY as Nvt,rBn as Nw,iU as Nwt,zGn as Nx,L6e as Nxt,EJn as Ny,T7e as Nyt,Enn as Nz,fh as Nzt,Vrr as O,qqt as O$,oWt",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU20",
+      "path": "webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "byte_offset": 6029872,
+      "token": "zSt as Pot",
+      "excerpt": " as Plt,O$n as Pm,Kat as Pmt,Ftr as Pn,$Dt as Pnt,P5n as Po,zSt as Pot,O1n as Pp,vst as Ppt,Q0t as Pq,Per as Pr,eMt as Prt,P8n as Ps,f_t as Pst,Pnr as Pt,UIt as Ptt,F4n as Pu,Tft as Put,OYn as Pv,K9e as Pvt,nBn as Pw,aU as Pwt,RGn as Px,A6e as Pxt,wJn as Py,P7e as Pyt,Tnn as Pz,ch as Pzt,grr as Q,DKt as Q$,vU",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU21",
+      "path": "webview/assets/chatgpt-conversation-page-20e0cd7f5f7a.js",
+      "sha256": "1fcad753b41cd5b44a989e534d562a176feb2e3a3edcccbdb71fd01f912d3c99",
+      "byte_offset": 240,
+      "token": "n as ChatGptConversationPage",
+      "excerpt": "rom\"./chatgpt-conversation-page-60cdba72de29.js\";e();export{n as ChatGptConversationPage,t as ChatGptSharedConversationPage};",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU22",
+      "path": "webview/assets/chatgpt-conversation-page-20e0cd7f5f7a.js",
+      "sha256": "1fcad753b41cd5b44a989e534d562a176feb2e3a3edcccbdb71fd01f912d3c99",
+      "byte_offset": 156,
+      "token": "import{a as e,i as t,n}from\"./chatgpt-conversation-page-60cdba72de29.js\"",
+      "excerpt": "7d7313419f84.js\";import\"./load-performance-eab3f7fdb4ac.js\";import{a as e,i as t,n}from\"./chatgpt-conversation-page-60cdba72de29.js\";e();export{n as ChatGptConversationPage,t as ChatGptSharedConversationPage};",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU23",
+      "path": "webview/assets/chatgpt-conversation-page-60cdba72de29.js",
+      "sha256": "4cff4e244e7a1dd7e0c8356dec8c795f2df2bd00e10c8c78744c323a0f66a0ff",
+      "byte_offset": 94381,
+      "token": "function pv()",
+      "excerpt": "uv=U(),J(),dv=Se(),lo(),Fs(),Ya(),Wn(),ii(),Ep(),nn()})))()}function pv(){let e=(0,Pv.c)(30),t=we()??0,{conversationId:n}=be(),{search:r,state:i}=T(),a=K(jt,n??null),o=i?.archivedConversationPreview===!0;if(n==null){let t;return e[0]===Symbol.for(`react.memo_cache_sentinel`)?(t=(0,$.jsx)(y,{to:`/`,replace:!0}),e",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU24",
+      "path": "webview/assets/chatgpt-conversation-page-60cdba72de29.js",
+      "sha256": "4cff4e244e7a1dd7e0c8356dec8c795f2df2bd00e10c8c78744c323a0f66a0ff",
+      "byte_offset": 158750,
+      "token": "pv as n",
+      "excerpt": "))()}export{Uv as a,Y_ as c,Lp as d,Up as f,mv as i,L_ as l,pv as n,H_ as o,Nv as r,V_ as s,hv as t,B_ as u};\n//# sourceMappingURL=chatgpt-conversation-page-60cdba72de29.js.map",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU25",
+      "path": "webview/assets/chatgpt-conversation-page-60cdba72de29.js",
+      "sha256": "4cff4e244e7a1dd7e0c8356dec8c795f2df2bd00e10c8c78744c323a0f66a0ff",
+      "byte_offset": 12973,
+      "token": "./use-chatgpt-composer-controller-ac13273315b4.js",
+      "excerpt": "essage-content-c4b687698293.js\";import{n as pd,t as md}from\"./use-chatgpt-composer-controller-ac13273315b4.js\";import{i as hd,n as gd,r as _d,t as vd}from\"./use-conversation-search-highlights-80babec62e55.js\";import{n as yd,o as bd,t as xd}from\"./overlay-56db5fb6ebc3.js\";import{n as Sd,t as Cd}from\"./toolbar-e7746be8492e.js\";import{i as wd,n as Td",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU26",
+      "path": "webview/assets/chatgpt-conversation-page-60cdba72de29.js",
+      "sha256": "4cff4e244e7a1dd7e0c8356dec8c795f2df2bd00e10c8c78744c323a0f66a0ff",
+      "byte_offset": 14904,
+      "token": "./chatgpt-conversation-turn-content-2b28a90ef308.js",
+      "excerpt": " as Of,n as kf,t as Af,u as jf,v as Mf,w as Nf,x as Pf}from\"./chatgpt-conversation-turn-content-2b28a90ef308.js\";import{a as Ff,i as If,n as Lf,r as Rf,t as zf}from\"./chatgpt-conversation-actions-59fa4ea766a4.js\";import{n as Bf,t as Vf}from\"./chatgpt-conversation-composer-context-fb658092ea2e.js\";import{a as Hf,c as Uf,i as Wf,n as Gf,r as Kf,s as q",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU27",
+      "path": "webview/assets/chatgpt-conversation-page-60cdba72de29.js",
+      "sha256": "4cff4e244e7a1dd7e0c8356dec8c795f2df2bd00e10c8c78744c323a0f66a0ff",
+      "byte_offset": 15277,
+      "token": "./chatgpt-conversation-runtime-4cb49aa0d51c.js",
+      "excerpt": "stion-bindings-55968722a228.js\";import{n as Yf,t as Xf}from\"./chatgpt-conversation-runtime-4cb49aa0d51c.js\";import{a as Zf,i as Qf,n as $f,o as ep,r as tp,t as np}from\"./composer-6ede3b5d5b04.js\";import{n as rp,t as ip}from\"./composer-placement-state-fccb7b590544.js\";import{n as ap,t as op}from\"./chatgpt-entity-panel-66621fbf3f09.js\";import{n a",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU28",
+      "path": "webview/assets/chatgpt-conversation-page-60cdba72de29.js",
+      "sha256": "4cff4e244e7a1dd7e0c8356dec8c795f2df2bd00e10c8c78744c323a0f66a0ff",
+      "byte_offset": 15385,
+      "token": "./composer-6ede3b5d5b04.js",
+      "excerpt": "import{a as Zf,i as Qf,n as $f,o as ep,r as tp,t as np}from\"./composer-6ede3b5d5b04.js\";import{n as rp,t as ip}from\"./composer-placement-state-fccb7b590544.js\";import{n as ap,t as op}from\"./chatgpt-entity-panel-66621fbf3f09.js\";import{n as sp,r as cp}from\"./chatgpt-entity-side-panel-tab-registry-7861cacc37dd.js\";import{n as ",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU29",
+      "path": "webview/assets/use-chatgpt-composer-controller-ac13273315b4.js",
+      "sha256": "481c558fdd9175145adef594b051319b386d0cd4cba989b64b6ec142bccdc015",
+      "byte_offset": 439,
+      "token": "composerController:o,conversationId:s,draftKey:c",
+      "excerpt": "19),a;t[0]===e?a=t[1]:(a=e===void 0?{}:e,t[0]=e,t[1]=a);let{composerController:o,conversationId:s,draftKey:c,initialPrompt:l,initialPromptKind:d}=a,f=c===void 0?s:c,m=u(n),g;t[2]!==s||t[3]!==f||t[4]!==l||t[5]!==d||t[6]!==m?(g=()=>(0,D.default)(()=>{let e=s==null?null:m.get(S,s),t=w(l??(f==null?``:m.get(h,f)),{addInitialContentToHistory:l==null&&f",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    },
+    {
+      "id": "DU30",
+      "path": "webview/assets/use-chatgpt-composer-controller-ac13273315b4.js",
+      "sha256": "481c558fdd9175145adef594b051319b386d0cd4cba989b64b6ec142bccdc015",
+      "byte_offset": 1697,
+      "token": "C.destroy()",
+      "excerpt": " t[16]!==C||t[17]!==o?(j=()=>{o==null&&!C.view.isDestroyed&&C.destroy()},t[16]=C,t[17]=o,t[18]=j):j=t[18],x(j,C),C}var E,D,O;function k(){return(k=e((()=>{E=s(),D=t(l(),1),d(),c(),O=o(),g(),m(),a(),f(),_(),v(),C()})))()}export{T as n,k as t};\n//# sourceMappingURL=use-chatgpt-composer-controller-ac13273315b4.js",
+      "evidence_type": "official-artifact-static-observation",
+      "verification": "byte-equality-and-literal-location",
+      "runtime_verified": false
+    }
+  ],
+  "chain": [
+    {
+      "edge": "main createPrimaryWindow → createWindow → packaged app URL",
+      "status": "static-traced",
+      "missing": "actual window appearance and native chrome capture"
+    },
+    {
+      "edge": "index.html → index bundle → app-main → app-runtime.initializeApp → root.render",
+      "status": "static-traced",
+      "missing": "initializeApp dependencies and startup gate replay"
+    },
+    {
+      "edge": "/c/:conversationId and /g/:gizmoId/c/:conversationId → guarded ChatGptConversationPage",
+      "status": "static-traced",
+      "missing": "TC/VO auth, access and state guard behavior"
+    },
+    {
+      "edge": "ChatGptConversationPage export → pv in page implementation",
+      "status": "static-traced",
+      "missing": "runtime data fixture that reaches populated page"
+    },
+    {
+      "edge": "page imports composer controller, turn content, runtime and composer",
+      "status": "static-imports-only",
+      "missing": "exact call sites, state ownership and native interaction wiring"
+    }
+  ],
+  "next_actions": [
+    "Resolve TC/VO page gates without reading user account state",
+    "Trace initializeApp and electronBridge bootstrap return shapes",
+    "Identify pure presentational component entry and required providers",
+    "Design isolated offline renderer fixture using actual CSS/assets; no newly invented replacement view"
+  ]
+}

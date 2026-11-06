@@ -1,0 +1,50 @@
+import assert from 'node:assert/strict';
+import {createFixtureHost} from './desktop-fixture-services.mjs';
+globalThis.location={origin:'https://offline.invalid'};
+const options={scenario:'synthetic-account',historyFixture:{conversation_id:'offline-fixture-conversation-001',title:'Synthetic'},syntheticProjects:true};
+const api=createFixtureHost({Wst:class{}},options).host.services.httpFetch;
+const read=async()=> (await api.fetch('pins',{method:'GET',url:'/pins?item_type=project'})).response.json();
+const pins=await read();assert.equal(pins.length,1);assert.equal(pins[0].item_type,'project');assert.equal(pins[0].item.gizmo.display.name,'REA synthetic project');
+pins[0].item.gizmo.display.name='mutated';assert.equal((await read())[0].item.gizmo.display.name,'REA synthetic project');
+for(const url of ['/pins?item_type=conversation','/pins?item_type=project&cursor=unknown'])await assert.rejects(api.fetch('bad',{method:'GET',url}));
+await assert.rejects(api.fetch('write',{method:'POST',url:'/pins?item_type=project'}));
+await assert.rejects(createFixtureHost({Wst:class{}},{...options,syntheticProjects:false}).host.services.httpFetch.fetch('disabled',{method:'GET',url:'/pins?item_type=project'}));
+console.log('PASS: nonempty isolated pins, response mutation isolation, unsupported scope/query/write rejection and opt-in boundary');
+const listing=(await api.fetch('list',{method:'GET',url:'/gizmos/snorlax/sidebar?conversations_per_gizmo=0&limit=20&owned_only=false'})).response;
+const list=await listing.json();assert.equal(list.cursor,null);assert.equal(list.items[0].gizmo.gizmo.id,pins[0].item.gizmo.id);
+const detail=await (await api.fetch('detail',{method:'GET',url:'/gizmos/g-p-rea-synthetic-001?include_file_limits=true'})).response.json();assert.equal(detail.gizmo.id,list.items[0].gizmo.gizmo.id);assert.deepEqual(detail.files,[]);
+for(const url of ['/gizmos/snorlax/sidebar?conversations_per_gizmo=0&limit=20&owned_only=false&cursor=next','/gizmos/foreign?include_file_limits=true'])await assert.rejects(api.fetch('invalid',{method:'GET',url}));
+console.log('PASS: matching pins/list/detail identity; unknown detail and unsupported pagination rejected');
+const chats=await (await api.fetch('members',{method:'GET',url:'/gizmos/g-p-rea-synthetic-001/conversations?limit=5&owned_only=false'})).response.json();assert.deepEqual(chats,{cursor:null,items:[]});
+await assert.rejects(api.fetch('foreign-members',{method:'GET',url:'/gizmos/foreign/conversations?limit=5&owned_only=false'}));
+console.log('PASS: explicitly empty synthetic membership and foreign project rejection');
+const second=await (await api.fetch('second',{method:'GET',url:'/gizmos/g-p-rea-synthetic-002?include_file_limits=true'})).response.json();assert.equal(second.gizmo.id,'g-p-rea-synthetic-002');assert.equal(second.gizmo.display.name,'REA synthetic unpinned project');assert.notEqual(second.gizmo.id,detail.gizmo.id);
+console.log('PASS: second project detail preserves its separate identity');
+for(const source of ['connector_scopes','saves']){
+ const url='/projects/g-p-rea-synthetic-001/'+source+'?limit=100';
+ assert.deepEqual(await (await api.fetch('sources',{method:'GET',url})).response.json(),{items:[],cursor:null});
+ for(const bad of [url+'&cursor=unknown',url.replace('g-p-rea-synthetic-001','foreign'),url.replace('100','1')])await assert.rejects(api.fetch('bad-sources',{method:'GET',url:bad}));
+ await assert.rejects(api.fetch('write-sources',{method:'POST',url}));
+}
+console.log('PASS: explicit empty sources with terminal cursor; foreign scope, pagination and writes rejected');
+const {default:fs}=await import('node:fs'),{default:os}=await import('node:os'),{default:path}=await import('node:path');
+const {createStore}=await import('../../implementation/desktop-web/project-store.cjs');
+const directory=fs.mkdtempSync(path.join(os.tmpdir(),'rea-project-create-'));
+try{
+ const store=createStore(directory);globalThis.__reaCreateProject=value=>store.create(value);
+ const created=await (await api.fetch('create',{method:'POST',url:'/projects',body:JSON.stringify({name:'REA synthetic created',memory_scope:'project'})})).response.json();
+ assert.equal(created.resource.gizmo.id,store.load()[0].id);
+ const restoredApi=createFixtureHost({Wst:class{}},{...options,projectRecords:createStore(directory).load()}).host.services.httpFetch;
+ const detail=await (await restoredApi.fetch('restored',{method:'GET',url:'/gizmos/'+created.resource.gizmo.id+'?include_file_limits=true'})).response.json();assert.equal(detail.gizmo.display.name,'REA synthetic created');
+ globalThis.__reaUpdateProject=(id,changes)=>store.update(id,changes);
+ await api.fetch('rename',{method:'PATCH',url:'/projects/'+created.resource.gizmo.id,body:JSON.stringify({name:'REA synthetic renamed'})});
+ assert.equal(store.load()[0].fields.name,'REA synthetic renamed');
+ assert.equal((await (await api.fetch('reread',{method:'GET',url:'/gizmos/'+created.resource.gizmo.id})).response.json()).gizmo.display.name,'REA synthetic renamed');
+ await assert.rejects(api.fetch('readonly',{method:'PATCH',url:'/projects/g-p-rea-synthetic-001',body:JSON.stringify({name:'REA synthetic denied'})}));
+ globalThis.__reaUpdateProject=()=>{throw Error('Simulated write failure')};
+ await assert.rejects(api.fetch('failed-update',{method:'PATCH',url:'/projects/'+created.resource.gizmo.id,body:JSON.stringify({name:'REA synthetic failed'})}));
+ assert.equal((await (await api.fetch('retained',{method:'GET',url:'/gizmos/'+created.resource.gizmo.id})).response.json()).gizmo.display.name,'REA synthetic renamed');
+ globalThis.__reaCreateProject=()=>{throw Error('Simulated disk failure')};
+ await assert.rejects(api.fetch('failed',{method:'POST',url:'/projects',body:JSON.stringify({name:'REA synthetic failed'})}));assert.equal(store.load().length,1);
+ console.log('PASS: fixture create returns persisted identity; reconstructed host reads it; failed disk write does not succeed');
+}finally{delete globalThis.__reaCreateProject;delete globalThis.__reaUpdateProject;fs.rmSync(directory,{recursive:true,force:true})}

@@ -1,0 +1,1 @@
+"use strict";function e(e){return e.replace(/\?.*/g,"").replace(/[^a-z0-9 -]/gi,"").replace(/\s+/g,"-").replace(/-+/g,"-")}Object.defineProperty(exports,"__esModule",{value:!0}),exports.slugifyUrlPath=void 0,exports.slugifyUrlPath=e;

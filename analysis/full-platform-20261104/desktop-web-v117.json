@@ -1,0 +1,29 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "accepted": [
+    "Hover reveals original project actions control; pointer click opens menu",
+    "Project settings action opens original dialog with correct synthetic name",
+    "Read-only project disables deletion and editing/save controls"
+  ],
+  "implementation": [
+    "Probe flows project-menu and project-settings",
+    "Second synthetic project detail endpoint preserves its own identity; unit tests pass"
+  ],
+  "new_breakpoints": [
+    "GET /projects/g-p-rea-synthetic-001/connector_scopes?limit=100",
+    "GET /projects/g-p-rea-synthetic-001/saves?limit=100"
+  ],
+  "limitations": [
+    "Available sources remains loading; settings is not fully accepted",
+    "No save/create/member-chat success claimed",
+    "Detail HTTP adapter tested separately; settings run did not invoke /gizmos/{id}",
+    "Initial menu probe failed because hover prerequisite was missing; retained"
+  ],
+  "evidence": [
+    "desktop-web-v117-menu.json",
+    "desktop-web-v117-menu-r2.json",
+    "desktop-web-v117-settings.json"
+  ],
+  "screenshot": "output/playwright/desktop-web-v117-settings.png"
+}

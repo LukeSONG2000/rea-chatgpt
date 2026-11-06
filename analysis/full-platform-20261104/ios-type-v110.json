@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-native-host-validation",
+  "platform": "iOS 27 Simulator",
+  "target_artifact_version": "1.2026.293",
+  "changes": [
+    "Extend live typography test to large -> accessibility-extra-large -> large",
+    "Collect separate large and restored geometry snapshots without overwriting existing reports",
+    "Verify same code block ID, conversation and usable send button after shrink"
+  ],
+  "validation": {
+    "status": "passed",
+    "result": "ios-type-v110.xcresult",
+    "summary": "ios-type-v110.summary.json",
+    "passedTests": 1,
+    "skippedTests": 0,
+    "font_settings": "ios-type-v110.font.json",
+    "geometry": [
+      "ios-type-v110.grown.geometry.json",
+      "ios-type-v110.geometry.json"
+    ],
+    "code_height_sequence": [
+      52,
+      95,
+      52
+    ],
+    "geometry_checks": "Both size categories match; all captured text heights cover fitting heights within one point",
+    "screenshots": "ios-type-v110-images/manifest.json"
+  },
+  "limits": [
+    "Not an all-font-size or physical-device acceptance",
+    "No reading-anchor or active selection continuity claim during reflow",
+    "Large-font header notice remains truncated",
+    "No official UI parity claim"
+  ],
+  "next_work": "Advance desktop-renderer browser host beyond diagnostic preview: inspect current Edge bootstrap and separate browser capabilities from Electron bridge. Keep official Web independent.",
+  "sources": [
+    {
+      "file": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "e97c5fc53f605838e3816cdc95f372a054e27d93d4168f93a2ab90283b875d01"
+    },
+    {
+      "file": "implementation/ios/test-dynamic-type.py",
+      "sha256": "7ffbbfdcf7fda245c84813d1a47c5113580b2c1fe6c5e7234c4b9e853039c0ee"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "android",
+  "baseline": "1.2026.293 reference; independent native host, no official persistence code recovered",
+  "evidence_type": "independent-native-runtime-and-storage-regression",
+  "verified": [
+    "Multiple turns persisted atomically with stable request IDs and account/conversation scope",
+    "Completed A reply and partial B reply survive separate application processes",
+    "Saved active B request restores as interrupted and does not resume silently",
+    "Repeated restart scenario passes with prior history retained",
+    "Distinct account sees no other account turns",
+    "Duplicate request IDs rejected without overwriting old snapshot",
+    "Oversize payload rejected without overwriting old snapshot",
+    "Malformed storage remains byte-for-byte intact on load failure",
+    "Native send/cancel regression passes after history-aware test targeting"
+  ],
+  "runtime_report": "analysis/full-platform-20261104/android-history-runtime-v2.json",
+  "processes": [
+    "6471",
+    "6572"
+  ],
+  "failure_review": [
+    "Harness v1 status lookup selected an older interrupted row; current and historical status tags separated",
+    "Harness v2 matched prior partial text and cancelled before new delta; waits now bind current request status and inspect scoped persisted text",
+    "Harness v3 passed with existing history"
+  ],
+  "limits": {
+    "turns_per_account": 256,
+    "encoded_bytes": 4194304,
+    "overflow": "reject write; retain prior snapshot; disable further sending"
+  },
+  "limitations": [
+    "UI-thread synchronous persistence needs scheduling/performance work",
+    "No attachment persistence, schema migration or encrypted database",
+    "No exact scroll anchor restoration; opening a conversation scrolls to latest turn",
+    "No background stream ownership or activity reattachment; active records become interrupted",
+    "Corruption preservation verified at store level; full UI error-state acceptance pending",
+    "No Android real Zhipu, physical-device or official visual fidelity acceptance"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MessageStore.kt": "28d8993cf3e4b5fb27f33481370ec334259f4f0ff30aeaafda785a1d660af93e",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "bcbf4368fef58f4417de0baa87d99780f30e168e4216233ab6d6ace5f290ba12",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/MessageStoreTest.kt": "e315692bea36e61c9a81258ab9540e1a238476784aa2e8e994c2ef732f247484",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "51fa6e3790049cb433a73ff41c7f1c3a7016de34070eef14c9147c55baf72739",
+    "implementation/android/test-history.py": "93411e69c3d9974b201adb690016cdcaf724b926a68512ebf9f6274d8bb931f0",
+    "analysis/full-platform-20261104/android-history-build-v5.log": "3dac47007e5e8b6cddfec90243cb70708134bb2a24a72f33be2115d1551b63c0",
+    "analysis/full-platform-20261104/android-history-runtime-v1.json": "26d7fec7884dd77c26d4de78aafd876e7d94a3622123336d017246b939df7304",
+    "analysis/full-platform-20261104/android-history-runtime-v2.json": "d438743d597d45320c915d97c3615fb8d82a764da8ab7f86080bcb0cb2c50ee5",
+    "analysis/full-platform-20261104/android-history-runtime-v2/prepareHistoryRestart.log": "dc0d01ca9d573e16522fbc92f7070c1f85ec23dea83729e41b2ed65179c9572d",
+    "analysis/full-platform-20261104/android-history-runtime-v2/verifyHistoryRestart.log": "31d0698b1cd1aefe0afc3418de4de129b503398391ecf7d8ff5d65360079f55b",
+    "analysis/full-platform-20261104/android-history-runtime-v2/store.log": "cab2c756416e1f5eabf91de549913a2b41a10337fb1ac2ffaa20288404fc9049",
+    "analysis/full-platform-20261104/android-history-harness-v1/instrumentation.log": "457cdb949699bac16a3bc3d342cc42a758f47dfc7876e822e870204590958d5b",
+    "analysis/full-platform-20261104/android-history-harness-v2/instrumentation.log": "3c970435eb7bafe526e604bf211e54607fc9862a00046468b94b2e855a04dc0f",
+    "analysis/full-platform-20261104/android-history-harness-v3.json": "1270bc4081afb7f5a776714846ee9bb368fbbc8c7f8157a22331fc8fb9af9fcf",
+    "analysis/full-platform-20261104/android-history-harness-v3/instrumentation.log": "305f2e5b2d4bd015d1e28ec476a6311bc8425aae9ec8e7f3cd76ebd38e0b8a11"
+  },
+  "next_action": "Native scrolling/selection and lifecycle scheduling; retain separate real model and fidelity gates"
+}

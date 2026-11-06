@@ -1,0 +1,73 @@
+{
+  "version": "v434",
+  "status": "partial",
+  "platform": "iOS",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static + independent-host-integration + controlled-model-replay",
+  "findings": [
+    {
+      "symbols": [
+        "0x95abe48",
+        "0x95aeb58"
+      ],
+      "conclusion": "Fragment ID includes turnID and a typed contentID; supported host subset is item/toolActivityGroup/responseSeparator."
+    },
+    {
+      "symbols": [
+        "0x18d3f18",
+        "0x18d3fac",
+        "0x18d401c",
+        "0x19522fc",
+        "0x1952c70",
+        "0x1952cf8"
+      ],
+      "conclusion": "Producer enumerates content and writes first=index==0,last=index==count-1 into Fragment metadata offsets0x18/0x1c."
+    },
+    {
+      "symbols": [
+        "0x19521a0",
+        "0x7dfdde0",
+        "0x195267c",
+        "0x1952cdc"
+      ],
+      "conclusion": "Content-to-ID dispatch observed, ID copied into resulting fragment; remaining payload conversions are partial."
+    }
+  ],
+  "integration": [
+    "Current message roots are a ForEach over stable typed fragment IDs, replacing hardcoded edge flags.",
+    "Ordinary sequence projection rejects duplicate IDs explicitly.",
+    "Fixture ordering and separator insertion remain independent inputs.",
+    "Test-only response insertion/removal and activity reorder controls exercise identity continuity."
+  ],
+  "verification": {
+    "foundation_tests": "passed",
+    "host_typecheck": "passed with 3 existing UIKit deprecation warnings",
+    "ui_test_syntax": "passed",
+    "ui_tests": "not_run",
+    "device_install": "not_performed",
+    "visual_acceptance": "not_accepted"
+  },
+  "runtime_blocker": {
+    "installer_pid": 97197,
+    "runner_pid": 97181,
+    "preview_pid": 87483,
+    "reason": "Existing Xcode component installation awaiting recorded authorization; no duplicate installer launched."
+  },
+  "next_actions": [
+    "Run testRemoteFragmentSequenceUpdates, testRemoteCurrentTurnGeometry, testRemoteTaskScopeAndReturn and testNoDebugTitleNavigation after the install gate clears.",
+    "Trace content array construction before0x18d3f18 for separator insertion; group flag predicates0x1915a94 and0x1952714..0x1952778 remain unresolved."
+  ],
+  "cross_platform": "No Android equivalence proven. Typed identity is a proposed shared contract; native rendering and spacing consumers require Android evidence.",
+  "files": {
+    "analysis/full-platform-20261104/ios-remote-v434-content-id.json": "36551bddadd2107a74f5af77bc1bebb969d3356f702dea5f78b9f5827e957afc",
+    "analysis/full-platform-20261104/ios-remote-v434-fragment-constructor.json": "55f255d800d0b5e6770ede1d5cb4675aa12892f56f961872415a69003bfe1d4b",
+    "analysis/full-platform-20261104/ios-remote-v434-content-id-producer.json": "c2934818878d46b708c49a47b45a5adf44d1a2be475dc82ae192bb837f587024",
+    "analysis/full-platform-20261104/ios-remote-v434-text-tests.log": "f0c1db0df97c2218f3c384add17235e1ff19a7f264260eacaf4b4a80ebba3673",
+    "analysis/full-platform-20261104/ios-remote-v434-typecheck.log": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078",
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "e34c9f15b5afd15cdf543cab7a7211164468ccf7ea8c555a5a8f761d32f02d97",
+    "implementation/ios/Sources/NativeConversationHost.swift": "b3ef3f16390804b208b3c4b74fc0ade37fa10d41168920186e2b921ddd20bbb7",
+    "implementation/ios/TextTests/main.swift": "78895d9b60acfc6ea9f1cab6653569aff2c515d990eccf12bf96891a82297463",
+    "implementation/ios/UITests/HostInteractionTests.swift": "84b0037a90e9e6654359d0fb10af65e53cc2529774741a58b3e31d3ee9fa6b4b"
+  }
+}

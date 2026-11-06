@@ -1,0 +1,464 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "classes": [
+    {
+      "class_address": "0xad0d820",
+      "class_ro_address": "0xad0d7b8",
+      "name": "_TtC21ChatGPTMessageInputUI22MessageInputUITextView",
+      "flags": 452,
+      "instance_start": 0,
+      "instance_size": 480,
+      "methods": [
+        {
+          "entry": "0x7cadd28",
+          "file_offset": 130735400,
+          "selector": "gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:",
+          "types": "B32@0:8@16@24",
+          "implementation": "0x6091334",
+          "implementation_file_offset": 101258036
+        },
+        {
+          "entry": "0x7cadd34",
+          "file_offset": 130735412,
+          "selector": "initWithCoder:",
+          "types": "@24@0:8@16",
+          "implementation": "0x608dd1c",
+          "implementation_file_offset": 101244188
+        },
+        {
+          "entry": "0x7cadd40",
+          "file_offset": 130735424,
+          "selector": "keyCommands",
+          "types": "@16@0:8",
+          "implementation": "0x608e9b0",
+          "implementation_file_offset": 101247408
+        },
+        {
+          "entry": "0x7cadd4c",
+          "file_offset": 130735436,
+          "selector": "accessibilityFrame",
+          "types": "{CGRect={CGPoint=dd}{CGSize=dd}}16@0:8",
+          "implementation": "0x608eb20",
+          "implementation_file_offset": 101247776
+        },
+        {
+          "entry": "0x7cadd58",
+          "file_offset": 130735448,
+          "selector": "setAccessibilityFrame:",
+          "types": "v48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+          "implementation": "0x608ec68",
+          "implementation_file_offset": 101248104
+        },
+        {
+          "entry": "0x7cadd64",
+          "file_offset": 130735460,
+          "selector": "accessibilityActivationPoint",
+          "types": "{CGPoint=dd}16@0:8",
+          "implementation": "0x608ecf4",
+          "implementation_file_offset": 101248244
+        },
+        {
+          "entry": "0x7cadd70",
+          "file_offset": 130735472,
+          "selector": "setAccessibilityActivationPoint:",
+          "types": "v32@0:8{CGPoint=dd}16",
+          "implementation": "0x608ed38",
+          "implementation_file_offset": 101248312
+        },
+        {
+          "entry": "0x7cadd7c",
+          "file_offset": 130735484,
+          "selector": "pointInside:withEvent:",
+          "types": "B40@0:8{CGPoint=dd}16@32",
+          "implementation": "0x608ef14",
+          "implementation_file_offset": 101248788
+        },
+        {
+          "entry": "0x7cadd88",
+          "file_offset": 130735496,
+          "selector": "caretRectForPosition:",
+          "types": "{CGRect={CGPoint=dd}{CGSize=dd}}24@0:8@16",
+          "implementation": "0x608efcc",
+          "implementation_file_offset": 101248972
+        },
+        {
+          "entry": "0x7cadd94",
+          "file_offset": 130735508,
+          "selector": "layoutSubviews",
+          "types": "v16@0:8",
+          "implementation": "0x608f790",
+          "implementation_file_offset": 101250960
+        },
+        {
+          "entry": "0x7cadda0",
+          "file_offset": 130735520,
+          "selector": "copy:",
+          "types": "v24@0:8@16",
+          "implementation": "0x608f978",
+          "implementation_file_offset": 101251448
+        },
+        {
+          "entry": "0x7caddac",
+          "file_offset": 130735532,
+          "selector": "cut:",
+          "types": "v24@0:8@16",
+          "implementation": "0x608fc1c",
+          "implementation_file_offset": 101252124
+        },
+        {
+          "entry": "0x7caddb8",
+          "file_offset": 130735544,
+          "selector": "canPasteItemProviders:",
+          "types": "B24@0:8@16",
+          "implementation": "0x608fd98",
+          "implementation_file_offset": 101252504
+        },
+        {
+          "entry": "0x7caddc4",
+          "file_offset": 130735556,
+          "selector": "canPerformAction:withSender:",
+          "types": "B32@0:8:16@24",
+          "implementation": "0x60903e4",
+          "implementation_file_offset": 101254116
+        },
+        {
+          "entry": "0x7caddd0",
+          "file_offset": 130735568,
+          "selector": "insertText:",
+          "types": "v24@0:8@16",
+          "implementation": "0x60905bc",
+          "implementation_file_offset": 101254588
+        },
+        {
+          "entry": "0x7cadddc",
+          "file_offset": 130735580,
+          "selector": "setMarkedText:selectedRange:",
+          "types": "v40@0:8@16{_NSRange=QQ}24",
+          "implementation": "0x60906a8",
+          "implementation_file_offset": 101254824
+        },
+        {
+          "entry": "0x7cadde8",
+          "file_offset": 130735592,
+          "selector": "deleteBackward",
+          "types": "v16@0:8",
+          "implementation": "0x6090758",
+          "implementation_file_offset": 101255000
+        },
+        {
+          "entry": "0x7caddf4",
+          "file_offset": 130735604,
+          "selector": "didSwipeToDismiss",
+          "types": "v16@0:8",
+          "implementation": "0x6090d38",
+          "implementation_file_offset": 101256504
+        },
+        {
+          "entry": "0x7cade00",
+          "file_offset": 130735616,
+          "selector": "didSwipeToFocus",
+          "types": "v16@0:8",
+          "implementation": "0x6090da0",
+          "implementation_file_offset": 101256608
+        },
+        {
+          "entry": "0x7cade0c",
+          "file_offset": 130735628,
+          "selector": "returnPressed:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6090ef0",
+          "implementation_file_offset": 101256944
+        },
+        {
+          "entry": "0x7cade18",
+          "file_offset": 130735640,
+          "selector": "backspacePressed:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6090f2c",
+          "implementation_file_offset": 101257004
+        },
+        {
+          "entry": "0x7cade24",
+          "file_offset": 130735652,
+          "selector": "stopPressed:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6090f68",
+          "implementation_file_offset": 101257064
+        },
+        {
+          "entry": "0x7cade30",
+          "file_offset": 130735664,
+          "selector": "upArrowPressed:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6090fa4",
+          "implementation_file_offset": 101257124
+        },
+        {
+          "entry": "0x7cade3c",
+          "file_offset": 130735676,
+          "selector": "downArrowPressed:",
+          "types": "v24@0:8@16",
+          "implementation": "0x6090fe0",
+          "implementation_file_offset": 101257184
+        },
+        {
+          "entry": "0x7cade48",
+          "file_offset": 130735688,
+          "selector": "escapePressed:",
+          "types": "v24@0:8@16",
+          "implementation": "0x609101c",
+          "implementation_file_offset": 101257244
+        },
+        {
+          "entry": "0x7cade54",
+          "file_offset": 130735700,
+          "selector": "tabPressed:",
+          "types": "v24@0:8@16",
+          "implementation": "0x60910cc",
+          "implementation_file_offset": 101257420
+        },
+        {
+          "entry": "0x7cade60",
+          "file_offset": 130735712,
+          "selector": "initWithFrame:textContainer:",
+          "types": "@56@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16@48",
+          "implementation": "0x7c3af90",
+          "implementation_file_offset": 130264976
+        },
+        {
+          "entry": "0x7cade6c",
+          "file_offset": 130735724,
+          "selector": ".cxx_destruct",
+          "types": "v16@0:8",
+          "implementation": "0x60911ec",
+          "implementation_file_offset": 101257708
+        }
+      ],
+      "ivars": [
+        {
+          "entry": "0xac2b1b0",
+          "name": "_isAutocorrectionDisabled",
+          "offset_storage_address": "0xb77a810",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b1d0",
+          "name": "accessibilityFrameInsets",
+          "offset_storage_address": "0xb08b030",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b1f0",
+          "name": "linkMetadataLoader",
+          "offset_storage_address": "0xb08b038",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b210",
+          "name": "isTextInteractionLocked",
+          "offset_storage_address": "0xb08afa8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b230",
+          "name": "acceptsTouchesWhileTextInteractionLocked",
+          "offset_storage_address": "0xb08afb0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b250",
+          "name": "isMaskedInsetScrollCorrectionDisabled",
+          "offset_storage_address": "0xb08b040",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b270",
+          "name": "didLayout",
+          "offset_storage_address": "0xb08b048",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b290",
+          "name": "dictationParentMaximumHeight",
+          "offset_storage_address": "0xb08b050",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b2b0",
+          "name": "acceptPredictionFromKeyboard",
+          "offset_storage_address": "0xb08b058",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b2d0",
+          "name": "unmaskedScrollIndicatorInsets",
+          "offset_storage_address": "0xb08b060",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b2f0",
+          "name": "usesDictationTypography",
+          "offset_storage_address": "0xb08b068",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b310",
+          "name": "isDisplayingStreamingDictation",
+          "offset_storage_address": "0xb08afb8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b330",
+          "name": "maximumVisibleTextHeight",
+          "offset_storage_address": "0xb08b070",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b350",
+          "name": "linkPasteBehavior",
+          "offset_storage_address": "0xb08b078",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b370",
+          "name": "isPasteEnabled",
+          "offset_storage_address": "0xb08b080",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b390",
+          "name": "isShowingAutocompletePicker",
+          "offset_storage_address": "0xb08b088",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b3b0",
+          "name": "usesFullDictationComposerHeight",
+          "offset_storage_address": "0xb08afa0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b3d0",
+          "name": "dictationCursor",
+          "offset_storage_address": "0xb77a818",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b3f0",
+          "name": "dictationCursorLocation",
+          "offset_storage_address": "0xb77a820",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b410",
+          "name": "dictationViewportSize",
+          "offset_storage_address": "0xb77a828",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b430",
+          "name": "dictationOverflowMask",
+          "offset_storage_address": "0xb77a830",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b450",
+          "name": "dictationShowsTopFade",
+          "offset_storage_address": "0xb77a838",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b470",
+          "name": "dictationOriginalUsesFontLeading",
+          "offset_storage_address": "0xb77a840",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b490",
+          "name": "dictationCachedLineBounds",
+          "offset_storage_address": "0xb77a848",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b4b0",
+          "name": "maskedBottomContentInset",
+          "offset_storage_address": "0xb77a850",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b4d0",
+          "name": "textInputPasteManager",
+          "offset_storage_address": "0xb77a858",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b4f0",
+          "name": "$__lazy_storage_$_textInputPasteCombiningDelegate",
+          "offset_storage_address": "0xb77a860",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b510",
+          "name": "pasteManager",
+          "offset_storage_address": "0xb77a868",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b530",
+          "name": "hasPendingPastedAttachments",
+          "offset_storage_address": "0xb77a870",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b550",
+          "name": "filePasteContentPolicy",
+          "offset_storage_address": "0xb77a878",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b570",
+          "name": "upArrowCommand",
+          "offset_storage_address": "0xb77a880",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b590",
+          "name": "downArrowCommand",
+          "offset_storage_address": "0xb77a888",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b5b0",
+          "name": "$__lazy_storage_$_messageInputKeyCommands",
+          "offset_storage_address": "0xb77a890",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b5d0",
+          "name": "swipeDownGestureRecognizer",
+          "offset_storage_address": "0xb77a898",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b5f0",
+          "name": "swipeUpGestureRecognizer",
+          "offset_storage_address": "0xb77a8a0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b610",
+          "name": "_spellCheckingEnabledSetting",
+          "offset_storage_address": "0xb77a8a8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xac2b630",
+          "name": "bag",
+          "offset_storage_address": "0xb77a8b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

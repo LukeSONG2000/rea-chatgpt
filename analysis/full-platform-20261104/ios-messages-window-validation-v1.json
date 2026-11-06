@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "checks": {
+    "method_table_unchanged": 18,
+    "direct_BL_matches_objdump": 284,
+    "repeat_output": true,
+    "linker_function_interval": [
+      "0x3705520",
+      "0x3706160"
+    ],
+    "ivars": 106
+  },
+  "limits": [
+    "Selectors independently decoded from chained metadata; receiver identity remains manual static inference",
+    "No runtime or visual acceptance"
+  ]
+}

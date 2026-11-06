@@ -1,0 +1,80 @@
+{
+  "status": "partial",
+  "evidenceType": "independent native controller and controlled two-owner simulator replay",
+  "referenceBaseline": "iOS 1.2026.293 evidence is not proof this UI matches official Remote",
+  "runtime": "iOS 27.0 dedicated simulator",
+  "validated": [
+    "native connection-menu entry",
+    "two separately authenticated owner processes",
+    "host A streams while B completes",
+    "host switching does not route A content into B",
+    "cancel A and freeze output three seconds",
+    "application process restart recovers latest A cancelled and B completed histories",
+    "temporary pairing removed from current simulator container",
+    "test owner processes stopped"
+  ],
+  "uiSummary": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+          "deviceName": "REA ChatGPT Offline",
+          "modelName": "iPhone 17 Pro",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "REAChatGPTHost · Built with macOS 27.3",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1793832600.358,
+    "passedTests": 1,
+    "result": "Passed",
+    "runtimeWarnings": [],
+    "skippedTests": 0,
+    "startTime": 1793832541.38,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - REAChatGPTHost",
+    "topInsights": [],
+    "totalTestCount": 1
+  },
+  "sources": {
+    "implementation/ios/Sources/LocalRemote.swift": "542714697bed7416fdaaf59173082f3bcc266dd29abde69a579497279c1b0e4c",
+    "implementation/ios/Sources/NativeConversationHost.swift": "36f1a3fc17fce6ee72af8663189dad2c4c7cb3db291c2a1f5e95571011195f24",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "f23da42e574470758104a3bc82d4ee48e62ecdc8d39063464657abdff117fe19",
+    "implementation/ios/UITests/HostInteractionTests.swift": "9d7bd41759cf5550094ac19235143d1dffb0a433ce554600bd8d88eab5cbda21",
+    "implementation/ios/test-remote.py": "68e097ce9271cf92f1e4c246925cdedc9325d68c78eca14158d09864db841be5",
+    "implementation/remote/owner.py": "4e99f34908dacb6b5968dec67a63ecdae3d8ec563a35071cc1075b51e5f2c6dd"
+  },
+  "earlierRun": {
+    "r1": "UI passed",
+    "r2": "UI passed, cleanup failed because simulator container moved",
+    "fix": "resolve current app container when writing/restoring/removing pairing; r3 full lifecycle passed"
+  },
+  "codeOnlyNotAcceptance": [
+    "rejection of invalid and post-terminal events",
+    "HTTP redirect rejection",
+    "independent polling under offline-host failure"
+  ],
+  "remaining": [
+    "official Remote visual and component recovery",
+    "macOS Remote controller",
+    "physical iPhone and other platforms",
+    "real Zhipu Remote tests",
+    "thread list directory approval Goal UI",
+    "durable drafts markdown selection and scroll behavior",
+    "push streaming and reconnect pairing UX"
+  ]
+}

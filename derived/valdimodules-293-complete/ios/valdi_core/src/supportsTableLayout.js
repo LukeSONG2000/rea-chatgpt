@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.supportsTableLayout=void 0;const e=require("./CompilerIntrinsics"),r=require("./Device");function s(){return!r.Device.isWeb()&&(0,e.isVersionAtLeast)(148)}exports.supportsTableLayout=s;

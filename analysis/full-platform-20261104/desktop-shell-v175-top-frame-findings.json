@@ -1,0 +1,31 @@
+{
+  "status": "partial",
+  "artifacts": [
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-primary-7d7313419f84.js",
+      "sha256": "745529956e303674c268a6871e6f5aad49eca7ef5af899952bf0379d829821b6"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-primary-5fa64a4ee99d.css",
+      "sha256": "887650ab7dd34cb5b6f1889e60b458acb00d1b6f2246da9051c0d43df97dd719"
+    }
+  ],
+  "observations": [
+    "Original page-surface CSS declares titlebar-height top margin and rounded corners.",
+    "Runtime selector matches, but computed marginTop remains 0px and borderRadius 0px.",
+    "Original macOS page-sidebar CSS explicitly resets border radius and uses clip-path; zero borderRadius alone is not evidence of missing rounding.",
+    "thread-edge-scroll affects top fade; it is not yet proven to cause the missing outer top inset."
+  ],
+  "runtime": {
+    "report": "desktop-shell-v175-inline-trace.json",
+    "inlineStyle": "--app-shell-page-banner-height: 0px; border-left-color: var(--color-border);",
+    "marginTop": "0px",
+    "titlebarHeight": "calc(.25rem * 11)",
+    "errors": []
+  },
+  "nextAction": "Trace active cascade layers and grouping conditions for margin-top, including preflight reset precedence, before changing layout gates or adding replacement CSS.",
+  "limitations": [
+    "Independent source host only; no packaged build or visual parity acceptance.",
+    "User reference screenshot product version not independently verified."
+  ]
+}

@@ -1,0 +1,370 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v421",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Does the Remote tool user-input request belong to transcript scrolling or the thread bottom bars?",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "QuestionCards witness0x7e0fec8;0x1a2ab48->0x1a2978c->0x1a29b48->0x1a2a1b8;typeref0x7e142a8",
+      "conclusion": "QuestionCards builds optional UserInputRequestView with ApprovalRequestKey identity. Names alone were not used as placement evidence."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "BottomBars witness0x7e1c204;0x1a28efc->0x1a20e58;0x1ce9518->0x1a21e60->0x1a23dbc->0x1a25600",
+      "conclusion": "Ordinary bottom-bar branch constructs QuestionCards, separately from preceding/following bars."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a49bf8/0x1a4a028..0x1a4a06c;0x1c2f96c->0x1a4b45c;0x757a2cc;descriptor0x9757e00;0x757bff4/0x757c0b8",
+      "conclusion": "BottomBars is mounted through SafeAreaBarIfAvailableViewModifier, bottom/center/spacing0. Both native safeAreaInset and safeAreaBar calls are observed. Later overlay0x1a4a194 instead reads composerOverlayContent."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a23fc8..0x1a24060;0x269310;BottomBars metadata fields viewportHeight/questionPrecedingBarsHeight/questionFollowingBarsHeight",
+      "conclusion": "QuestionCards maximumHeight argument clamps viewport minus preceding/following bars minus8 to0. Full downstream constraint application and dynamic measurements not integrated."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Move request form out of transcript into dedicated bottom bar.",
+      "Preserve scoped request identity, question drafts, submit/dismiss and service-unavailable feedback.",
+      "Add explicit legacy bar and long-history acceptance fixtures plus scrolling/draft/return regression."
+    ],
+    "independent_adaptations": [
+      "SwiftUI native reconstruction rather than recovered complete source.",
+      "OS availability/explicit fixture selects safeAreaBar versus safeAreaInset; private availability and color-scheme gates not fully reproduced.",
+      "Existing host viewport adapter retained; full preceding/following bars and maxHeight pipeline unresolved.",
+      "No changes to official artifacts, service execution, approval placement or model contract."
+    ]
+  },
+  "validation": {
+    "typecheck": "Passed; session63407 exit0;3 existing UIKit deprecation warnings.",
+    "ui_source": "Full HostInteractionTests.swift parse passed. New test not executed.",
+    "foundation": "No state-model changes; prior v418 regression retained.",
+    "runtime": "Observed runner97181/first-launch97197 alive; original authorization blocker persists. Old preview87483 alive. No new build/install/phone acceptance.",
+    "retention": "Dry run returned no targets or skipped stale bundles."
+  },
+  "analysis_limits": [
+    "Pattern xrefs are incomplete, not a general callgraph.",
+    "Generic conformance0x84c06f8 is unsupported by the resilient-witness parser; no body claim derived from failed interpretation.",
+    "Initial helper script incorrectly queried calls instead of direct_calls; corrected, results regenerated.",
+    "Bounded assembly windows can end before complete functions; conclusions use specific cited callsites and linked metadata.",
+    "Android correspondence and visual/keyboard/scroll acceptance remain unproven."
+  ],
+  "next_minimum_action": "After existing Xcode authorization clears, explicitly run task scope/title/input/component regression tests and retain preview. Close complete parent measurement/style and shadow branches separately.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bars-closures.asm",
+      "sha256": "85ded4d86277babed9ecbecbde0c52bab211bfc817a2f68f273aa944a4cf5a0e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bars-closures.json",
+      "sha256": "06fc5295a970cfcc862fac38eb775cf9af1d4bb8b82d12d85029d740d2b8c739"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bars-placement-helper.asm",
+      "sha256": "72ee804138e24624b574b1457c75b9f3ecca9b557c4cf022f69db2650aebd9d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bars-placement-helper.json",
+      "sha256": "80cb8c8677f88814fc672466bbd992a71b395a174368ded1d020c60284a8c616"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bars-view-builder.asm",
+      "sha256": "d284fb75158103262a86d88ddbecccaac62150ef61854f57c2b22f4663bf4f2b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-body-witness.asm",
+      "sha256": "f2ecd373d4ef761c7bd8214356a6f1dd47324c3bb18dda6ab59efbc1d3bfe080"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-body.asm",
+      "sha256": "03cf5a887a1ff7d60029e527e97fb0c209a49faede4ec6cbd24d70e2598a2f81"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-body.json",
+      "sha256": "85834bfe9b7c6dd5a4ecde3a5930d87fd5258546c7bc27b9aa8fcf94674d0a82"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-cards-factory.asm",
+      "sha256": "722042f8a15267a0b9eebd5dbfc1b3d64652ee47aa8c4a8c1ca80ce8ad83c752"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-closures.asm",
+      "sha256": "d57741cd4716b44eaaef70965d208193993045c48323bad3a94100d2bb0dde3e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-content-closure.asm",
+      "sha256": "e5665756a4aa200aa6f8df0ec64ccde3fce847474d00818fb74f4126b34c1d89"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-content-closure.json",
+      "sha256": "7ba67212334857c1403feee442cfea8ace35c2c6dbf672c1905afd002cf900e7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-content.asm",
+      "sha256": "fb28c6e17ef9a32272c769465bf65b0d01870e05f7b78baa8ae760d4e53bbc27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-first-section.asm",
+      "sha256": "d3ccfa5e02bf4248f0c1f5f5cb2a29f59be3f9821a86365fef30d53b921c7f1a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-overlay-closure.asm",
+      "sha256": "96066483fe2bc0d043067a9207c164e451a707c00fd8dfce928e46f72d569eb5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-secondary-factory.asm",
+      "sha256": "5df44d630adc1634c3f4798134edcfdce12d17c80577a7a1ccf4b7a0987d3440"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-bottom-tuple-helper.asm",
+      "sha256": "d5ce75f4de5d61c5361bcc884d224b23d1c8437ddea8aac336543fbd8f9afa73"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-container-references.json",
+      "sha256": "268d31a4f1864924293cadce50dcaabbbf8d5f01967e2f224ae317a71f00812b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-containers.json",
+      "sha256": "7a46bcea1069a2378eb5dae0fd3470410cac3f97c09a512ebb078c00258782cf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-content-body-witness.asm",
+      "sha256": "13103caedf616359e9afaae2f6ad336b1f1f77974cce3656c23199bfce5f527e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-factory-references.json",
+      "sha256": "65b403536f5ac385f25d0d04522782a780fe8a04dddc55c567f55339a46fbf70"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-group-references.json",
+      "sha256": "1d331aed20d26f6cad716f4667ff46d318696d80d914a5b5f03d919c758f9f50"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-input-constructor.asm",
+      "sha256": "b5f2442167eb740e3551238d91b0f840490b187c80a5382d294aea931648c5ee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-input-constructor.json",
+      "sha256": "c7f5d4cb15e96331c5748c7e513784f7ac054223530119814253208529bf1ad0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-input-group-wrapper.asm",
+      "sha256": "777f337f27189942e47bc168f333b5c3839eba03b5dfb260f57190d7e2cc4149"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-input-group-wrapper.json",
+      "sha256": "53cec95e30d9302fe8a963be885bfcfa965a8719fac3eaab61bdd9bfc9a501bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-input-owner.asm",
+      "sha256": "3cc1d6e45f17ed3da16433e0b26d70ad554846e51e67dac5576b30dbc275d623"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-input-owner.json",
+      "sha256": "10ea3532f6de486a35146a60575d922aca695d20abe5675d723cfe364bb03227"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-input-references.json",
+      "sha256": "5eed66e4be4c599cfdd90c4ad96bbbe0e1af89af43b8dfdb79d5528e12c4ab41"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-ordinary-composer-section.asm",
+      "sha256": "0defc94667289fe274294141ffd52c20a1f9b609dd9fb465f7728bb68da1d57e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-ordinary-composer-section.json",
+      "sha256": "11b9114366eecd689f73d3e357629dddd47ec147536c13ba361912e1caece8f4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-parent-metadata.json",
+      "sha256": "fa2141f2f7ce67a9dff1685b05f8e072f449a492665f158fa59ef79c75234832"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-placement-modifier.json",
+      "sha256": "5aede55a7ea1032c8f1fc8412fb0f32860d3f9cb70e798b3fbd48537bd818b80"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-placement-witness.json",
+      "sha256": "00c86f012f5a562904a6d417c5444ddd647cbc273ea40b5adef087c085e8eb9b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-question-cards-metadata.json",
+      "sha256": "12512412d0590471c27a6f3b4b44a89cdaf7c5077a544a6464ba977b893d5d8a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-question-factory.asm",
+      "sha256": "5bd5399947e624d0ca45f3fb52f23383f507f56418a910a828cc5fcfc63f3e00"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-question-init.asm",
+      "sha256": "2595884b0120ae925566f1684a74bccb92f4d115fda598b8b8d039941d40866e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-question-witness.json",
+      "sha256": "45d90947070739b332a26ec5e396f1930ad0aeaa3e2ed543449e2799b3f7d665"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-question-zero-clamp.asm",
+      "sha256": "7b83e66e7d372fae4c404f559765c8e3bb13114f1308e96f32b070a111bbf534"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-question-zero-clamp.json",
+      "sha256": "03c54441cee9286a65515680aaa38f9a6e8158fd383f470c50fea82c80f6669d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-request-group-type.asm",
+      "sha256": "5f6066d3028cb0733ec5acb51b0b484c603e5e1624399d185b5653269c36b5ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-safearea-arguments.asm",
+      "sha256": "7beb55a2cf61805b18015c8229f911036bfb009baf0bf8ee58980e2a44b95e10"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-safearea-body-witness.asm",
+      "sha256": "a4ea75ef3c1e5f53775e1322477f54f4d36608599529d4b999b956b7e498cfc5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-safearea-body-witness.json",
+      "sha256": "6109bb3c1f54369e83f4c64f4d0228ca0308710143f847293b984b37b40d41cb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-safearea-branches.json",
+      "sha256": "8bd20bb0c1fef16068e9f33c8ab080f26059ba11b49fa02f824db4ba9b26936f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-safearea-method.asm",
+      "sha256": "5050621a5266c339e55189a8fd5c431a4a3f7d7c84fd1e97473b4474f6de10fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-safearea-method.json",
+      "sha256": "373485825a69e39d853c28f5c27156595d793febad96bdb37b8b794eff40ed19"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-section-children.asm",
+      "sha256": "2e0dfb476c75de34fc0aedc3aa1db62b0603fd9e1a99b25f799180838f11a411"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-body-tail.asm",
+      "sha256": "e304be4ef42610af2408ff288787cb955d77221224c7006e058e8fde0b5c394f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-body-witness.asm",
+      "sha256": "3651b8a23b4ffc3c344f8f20a4747c9fc47919ceec9ba25b34fd305e01453f6c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-body-witness.json",
+      "sha256": "6d2d48970f7ff784a88774b5a00e6890a2acd58372a57450dd0f95f04377b3d7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-bottom-builder.asm",
+      "sha256": "e340718efa1732410b17c7e55f2506ab8efbe409b5455d3bd759340b5d63d703"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-bottom-builder.json",
+      "sha256": "f1e473be110bed4488c12feaeebfb80187097dd872ecad12df1062d7ebc84d9b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-bottom-child.asm",
+      "sha256": "024c79e1a5ea2776b0dd450ea4c040204414743354bc8dec9e8e05f90a83e45e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-bottom-child.json",
+      "sha256": "51feba8c18353c100f41af6e78b4a573582a9e9e0465817773c8d6edf1c33b7f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-container.asm",
+      "sha256": "adb10d8d3b1b7c760d0f7467b3453d4b2a0134fa736fc5fdb4f3f30f8f7459a9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-container.json",
+      "sha256": "99afb60eca404099e4f2e8a35543f8caeef84dde08e0e3d14c8615cb11409b6b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-layout.asm",
+      "sha256": "6b7b2627549a2fdd985b858176168dcfd412ac6e6f460d32520bf9c43562a2b6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-layout.json",
+      "sha256": "cc73cffecaf7f3b9e28134c318a492da6d611335e3c82188b98192c72617bfe4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-thread-witness.json",
+      "sha256": "104d838f0ca828f8e8284b87d250e9608d9fd9f52a4f06e00b1fe78ca1cf37d2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-type-7e13e28.json",
+      "sha256": "1c3eb4f1258646411e6e21576e1fa83542c5045a7a479b354a3a3fc3d16a612f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-type-7e13e50.json",
+      "sha256": "153ef2ec45873f8b8c16887a126fad784fc1744cdfb63eace68e8c42101ff695"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-type-7e13e58.json",
+      "sha256": "a124e8283fa3f1daf5b490362aaf0d376783a36a57b256316d4ecbebcc7b7d4f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-type-7e14290.json",
+      "sha256": "aaad4532b76a4c0c456eaa1e8031a60b361478bbf034ebbedfb167218417f201"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-type-7e14298.json",
+      "sha256": "c19127335201fb407a55179928d8537a260d266550a72f044f3fbf9e7abdca84"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-type-7e142a0.json",
+      "sha256": "c472700ec35ed54ff7ef87314c0310452b57dbfb964cc52fe25d06738cea4c69"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-type-7e142a8.json",
+      "sha256": "3f1762154e18bb27a1a1f69c825755f96cf72c5cad3502febe9b190eced57706"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-witness-CodexRemoteThreadBottomBars.json",
+      "sha256": "e700ad27f6fabdb3cada1c3f70442ff74eef5fb97a0162608392557fd77ab6c5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-witness-CodexRemoteThreadViewContent.json",
+      "sha256": "f513a094e6f20117063e1687fd3bde130c8375603aeb94c6db4d7eff7938eaee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-wrapper-references.json",
+      "sha256": "9f4bfd4e791bbf8e4ebb15ce8311120279df1d4e8056495a2b00c1421c626246"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "2651c6225ddf35f244c0b70a6f38f2062217169a723b455b06e24d3240d5a4e1"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "0a88372c52ebe571c090a7d3529dde4bf150f93a966eecca33a0ccab4cd8d9c4"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "92e8fd1a8fee4460c429e55963691bb4dc43fddb79ffb2ef0cd296ca948c6752"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "92185cdfbc33d40aaf821e07456e6ed63f17ee95565b56939d50b6f9780f608b"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "0676903df5149872489d91de91cd8c1736adfb8e5f08416eacb0e29ed0e9d1e1"
+    }
+  ]
+}

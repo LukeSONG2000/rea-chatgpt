@@ -1,0 +1,33 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence": [
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsActionRow.js",
+      "sha256": "2d818a1fe252242319dea21cecf93ebf8a017ed96a7f3bb6f9cb3cf2908da4d5"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsRow.js",
+      "sha256": "979a53d4fc1addda4d7101b1dd7f4374d75e408843202a456a5dfa73120f70be"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsTheme.js",
+      "sha256": "c5fd0cb39f555bbd0c61214e008e786862e80acb0e003ae3ecc1f629ee871d0e"
+    }
+  ],
+  "observation": "SettingsActionRow uses separate description and value inputs, with adaptive native-iOS content layout. This is not evidence that the native account page uses this Valdi component.",
+  "independent_change": "Email preview value on a separate full-width supporting line, based on user screenshot of unknown exact version. Other rows retain inline values. Existing local spacing remains preview geometry, not recovered constants.",
+  "personal_data": "Synthetic unavailable value only; no account screenshot data copied.",
+  "runtime_validation": {
+    "passed": 1,
+    "failed": 0,
+    "result": "ios-settings-v299.xcresult",
+    "screenshot": "ios-settings-v299-screenshots/5626D1D4-0CD8-44CF-88AC-1764B00E1491.png",
+    "visual_review": "Supporting value appears below email title at group leading inset; neighboring phone and subscription retain inline values. No full-page parity claim.",
+    "remaining": "Avatar edit badge, glass close button, typography metrics, separator inset for supporting rows and capability-driven settings subpages remain unaccepted.",
+    "preview_relaunched_pid": 49395
+  },
+  "phone_modified": false,
+  "android": "No equivalence established; share semantic supporting-text/trailing-value distinction only as proposed contract."
+}

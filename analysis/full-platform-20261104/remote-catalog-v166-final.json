@@ -1,0 +1,301 @@
+{
+  "status": "passed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v166-final-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "hidden service read capability rejects raw owner call while listing paired hosts",
+    "actual packaged renderer state receives guarded Remote history through IPC",
+    "actual cross-process host-service provider supplies original manager with shared RPC leases, hydration and item subscription",
+    "packaged primary renderer IPC reaches two owner processes; same request identity isolated; A cancel preserves B completion",
+    "pairing URL and token absent from list; hidden fixture role denied Remote capability",
+    "fresh Electron process reconnects same owner histories with same bound profile",
+    "offline A explicit error while B list remains usable"
+  ],
+  "limits": [
+    "Main-process IPC acceptance from original renderer context, not a visible official Remote control workflow",
+    "Fixture model; no live Zhipu calls in this test"
+  ],
+  "browserErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    " ERROR  [Statsig] A networking error occurred during POST request to https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793837586647&sid=93efe6df-ab0e-40f2-91b1-d860c1b9316e&se=1. Error: Offline HTTP unsupported: POST /v1/initialize Error: Offline HTTP unsupported: POST /v1/initialize\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    " ERROR  [Statsig] A networking error occurred during POST request to https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793837596585&sid=16be491c-1112-4d7a-8d82-90ea14e41c25&se=1. Error: Offline HTTP unsupported: POST /v1/initialize Error: Offline HTTP unsupported: POST /v1/initialize\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)"
+  ],
+  "provider": {
+    "status": "passed",
+    "body": "Local fixture reply",
+    "autoStreamTexts": [
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local ",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply",
+      "Local fixture reply"
+    ],
+    "reloads": 12,
+    "devices": {
+      "ssh": [],
+      "wsl": [],
+      "remoteControl": [
+        {
+          "source": "remote-control",
+          "hostId": "host-a",
+          "displayName": "Local test · host-a",
+          "envId": "rea-local:host-a",
+          "hostName": "host-a",
+          "environmentKind": "independent-local-test",
+          "online": true,
+          "appServerVersion": null,
+          "lastSeenAt": null
+        },
+        {
+          "source": "remote-control",
+          "hostId": "host-b",
+          "displayName": "Local test · host-b",
+          "envId": "rea-local:host-b",
+          "hostName": "host-b",
+          "environmentKind": "independent-local-test",
+          "online": true,
+          "appServerVersion": null,
+          "lastSeenAt": null
+        }
+      ]
+    },
+    "sharedLeases": true,
+    "reopen": true,
+    "unpairedDenied": true
+  },
+  "hostHealth": [
+    {
+      "host": "host-a",
+      "mode": "fixture",
+      "epoch": "c9835075-ebf8-426c-a025-b294e05e504c",
+      "closed": false,
+      "online": false,
+      "error": "remote_transport"
+    },
+    {
+      "host": "host-b",
+      "mode": "fixture",
+      "epoch": "c05ecd4f-b3ff-4977-9f1e-0cc8567972ea",
+      "closed": false,
+      "online": true,
+      "methods": [
+        "capabilities",
+        "fs/readDirectory",
+        "thread/start",
+        "thread/list",
+        "thread/info",
+        "events/read",
+        "turn/start",
+        "turn/interrupt"
+      ]
+    }
+  ],
+  "profileMenu": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nPinned\nREA synthetic project\nProjects\nREA synthetic unpinned project\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\n离线组件验证\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n\n\nLoading profile menu…",
+  "rendererText": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nPinned\nREA synthetic project\nProjects\nREA synthetic unpinned project\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\n离线组件验证\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n\n\nLoading profile menu…",
+  "controls": [
+    {
+      "text": "ChatGPT",
+      "aria": "Switch mode, current mode: ChatGPT"
+    },
+    {
+      "text": "",
+      "aria": "Search"
+    },
+    {
+      "text": "New chat",
+      "aria": null
+    },
+    {
+      "text": "Scheduled",
+      "aria": null
+    },
+    {
+      "text": "Plugins",
+      "aria": null
+    },
+    {
+      "text": "Explore",
+      "aria": null
+    },
+    {
+      "text": "Pinned",
+      "aria": null
+    },
+    {
+      "text": "REA synthetic project  ",
+      "aria": null
+    },
+    {
+      "text": "  ",
+      "aria": "Project actions for REA synthetic project"
+    },
+    {
+      "text": "",
+      "aria": "New chat in REA synthetic project"
+    },
+    {
+      "text": "Projects",
+      "aria": null
+    },
+    {
+      "text": "  ",
+      "aria": "Project sidebar options"
+    },
+    {
+      "text": "",
+      "aria": "Add new project"
+    },
+    {
+      "text": "REA synthetic unpinned project  ",
+      "aria": null
+    },
+    {
+      "text": "  ",
+      "aria": "Project actions for REA synthetic unpinned project"
+    },
+    {
+      "text": "",
+      "aria": "New chat in REA synthetic unpinned project"
+    },
+    {
+      "text": "Recents",
+      "aria": null
+    },
+    {
+      "text": "  ",
+      "aria": "Chat sidebar options"
+    },
+    {
+      "text": "  ",
+      "aria": "Filter chats and work"
+    },
+    {
+      "text": "",
+      "aria": "New chat"
+    },
+    {
+      "text": "离线组件验证 · A  ",
+      "aria": "离线组件验证 · A"
+    },
+    {
+      "text": "  ",
+      "aria": "Chat actions"
+    },
+    {
+      "text": "",
+      "aria": "Pin chat"
+    },
+    {
+      "text": "离线组件验证 · B  ",
+      "aria": "离线组件验证 · B"
+    },
+    {
+      "text": "  ",
+      "aria": "Chat actions"
+    },
+    {
+      "text": "",
+      "aria": "Pin chat"
+    },
+    {
+      "text": "OOffline fixture",
+      "aria": "Open profile menu"
+    },
+    {
+      "text": "",
+      "aria": "Back"
+    },
+    {
+      "text": "",
+      "aria": "Forward"
+    },
+    {
+      "text": "",
+      "aria": "Hide sidebar"
+    },
+    {
+      "text": "    ",
+      "aria": "More"
+    },
+    {
+      "text": "Upgrade",
+      "aria": null
+    },
+    {
+      "text": "",
+      "aria": "Dismiss upgrade reminder"
+    },
+    {
+      "text": " Share",
+      "aria": "Share"
+    },
+    {
+      "text": " ",
+      "aria": "New tab"
+    },
+    {
+      "text": "",
+      "aria": "Copy message"
+    },
+    {
+      "text": "",
+      "aria": "Edit message"
+    },
+    {
+      "text": "  ",
+      "aria": "Enable word wrap"
+    },
+    {
+      "text": "",
+      "aria": "Copy code"
+    },
+    {
+      "text": "",
+      "aria": "Copy table"
+    },
+    {
+      "text": "  ",
+      "aria": "Expand table"
+    },
+    {
+      "text": "",
+      "aria": "Copy"
+    },
+    {
+      "text": "",
+      "aria": "Rate response"
+    },
+    {
+      "text": "",
+      "aria": "Read aloud"
+    },
+    {
+      "text": " ",
+      "aria": "Share"
+    },
+    {
+      "text": "  ",
+      "aria": "More actions"
+    },
+    {
+      "text": "",
+      "aria": "Add files and more"
+    },
+    {
+      "text": "  ",
+      "aria": "Dictate"
+    },
+    {
+      "text": "",
+      "aria": "Send"
+    }
+  ],
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/remote-catalog-v166-final.png"
+}

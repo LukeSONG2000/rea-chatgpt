@@ -1,0 +1,39 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "official_evidence": {
+    "container": "0x1a67f60 LazyVStack initializer",
+    "alignment": "0x1a67ee8 SwiftUI.HorizontalAlignment.leading",
+    "spacing": "0x459840 x1=0,w2=0 feeds optional spacing at0x1a67f60",
+    "row": "0x1d1d7ec calls0x1a68c38",
+    "empty": "0x1a68d20..30 hidden space; shared font14 at0x1a68d34 onward"
+  },
+  "integrated": [
+    "explicit RemoteOutputLine(id,runs)",
+    "LazyVStack leading spacing0",
+    "ForEach with caller-supplied Int IDs",
+    "hidden space for empty runs"
+  ],
+  "independent_adaptations": [
+    "fixture IDs are ordinal and scoped to each output view, not recovered parser IDs",
+    "synthetic empty rows8/20/32",
+    "content height observation and existing follow state retained"
+  ],
+  "limits": [
+    "raw parser-to-lines generation unresolved",
+    "cross-row selection and large virtualized output behavior unaccepted",
+    "not whole-page parity or Android evidence"
+  ],
+  "validation": {
+    "test": "testRemoteOutputGestureFollow",
+    "passed": 1,
+    "failed": 0,
+    "visual": "Inspected screenshot: blank row32 preserves height between31 and33, color runs and bottom36 visible",
+    "screenshot": "ios-remote-v368-screenshots/C267FB37-D88D-41E4-B26A-87A7EFA5F94C.png",
+    "normal_preview_pid": 82214,
+    "phone": "not updated",
+    "external_display": "not verified"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "status": "partial",
+  "reviewed": "macos-zhipu-v3.json",
+  "accepted": [
+    "Real model completion and rendered text"
+  ],
+  "rejected_claim": "cancelBoundary.status client-cancel-observed",
+  "evidence": "Second request has accepted then failed; modelAudit contains no matching client-cancel",
+  "correction": "A request-matched live worker cancellation is now required; generic HTTP cleanup is insufficient"
+}

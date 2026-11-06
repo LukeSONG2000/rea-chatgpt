@@ -1,0 +1,23 @@
+{
+  "status": "partial",
+  "classification": "independent-native-host-storage",
+  "build": "ios-build-v6.log: BUILD SUCCEEDED",
+  "verified": [
+    "Fresh state object restores disk draft",
+    "Account isolation and cleared draft survive reload",
+    "Load increments generation and rejects stale callback",
+    "Malformed file throws without replacing memory or rewriting file"
+  ],
+  "storage": "Own app Application Support/REAOffline/drafts-v1.json; versioned records, atomic write, mode0600",
+  "host_failure_behavior": "Read/write failure shown in notice; further persistence disabled for session, memory edits retained",
+  "limits": [
+    "Foundation tests on macOS; not iOS app restart acceptance",
+    "No crash, multiple process writers or power loss guarantees",
+    "Synchronous fixture-scale writes; production performance and debouncing unaccepted",
+    "Independent schema not recovered official persistence format"
+  ],
+  "sources": {
+    "implementation/ios/Sources/DraftStore.swift": "c5e3f931494744b2ec53fae7868e8db45418c21ed6ba5b39516a2a13825eeac8",
+    "implementation/ios/Sources/NativeConversationHost.swift": "0ccb20560d94bbc29725d3eb2a1dc085d590fb3268aabadc999752bbdf43042c"
+  }
+}

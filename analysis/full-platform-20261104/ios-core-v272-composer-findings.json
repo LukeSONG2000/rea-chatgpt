@@ -1,0 +1,54 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "static instruction and existing ivar metadata cross-check",
+  "instruction_assertions": 7,
+  "findings": [
+    {
+      "getter": "0x4c500b8",
+      "load": "0x4c500e0",
+      "field": "_inputFocusSubject",
+      "instance_offset": "0x140",
+      "consumer": "0x4c4fa78 via 0x4f66660",
+      "limit": "Focus subject enum value 1 meaning still unbound; do not substitute isFirstResponder"
+    },
+    {
+      "getter": "0x4c50148",
+      "load": "0x4c50178",
+      "field": "_preservesKeyboardInset",
+      "instance_offset": "0x1b4",
+      "consumer": "0x4c76250 at 0x4c762d8",
+      "limit": "Setter/update lifecycle not closed"
+    },
+    {
+      "helper": "0x159fec",
+      "operation": "compare low byte of returned mode with 1",
+      "consumer": "0x4c4fae4 branch equals -> double line",
+      "limit": "Mode 1 semantic name not established"
+    },
+    {
+      "helper": "0x4f60f50",
+      "operation": "((rawMode - 3) & 255) < 5",
+      "consumers": [
+        "0x4cdeb28",
+        "0x4c76250"
+      ],
+      "effect": "raw values 3 through 7 reject these subordinate paths",
+      "limit": "Raw enum values must not be labeled Chat/Work without descriptor/value proof"
+    }
+  ],
+  "integration_decision": "Expose distinct keyboard visibility, input focus subject and preservesKeyboardInset in the recovery boundary. Do not replace the host predicate until mode/feature gates and lifecycle are bound.",
+  "next_edges": [
+    "0x4c63908 -> witness at +0x38: raw mode owner",
+    "0x4ccead4 -> 0x4c74aa0/0x4d0f38c: feature gate",
+    "inputFocusSubject downstream raw enum meaning",
+    "preservesKeyboardInset setter and keyboard transition producer"
+  ],
+  "limits": [
+    "No original app execution",
+    "No UI improvement claimed",
+    "Raw dependency functions are not yet a complete semantic predicate"
+  ]
+}

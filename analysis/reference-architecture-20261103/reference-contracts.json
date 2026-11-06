@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "namespace": "reference.v1",
+  "authority": "independent-design",
+  "not_official_wire_schema": true,
+  "implementation": "analysis/reference_models/models.py",
+  "conversation": {
+    "identity": {
+      "session": [
+        "account",
+        "conversation"
+      ],
+      "subscription": [
+        "account",
+        "conversation",
+        "epoch"
+      ],
+      "request": [
+        "account",
+        "conversation",
+        "request",
+        "turn",
+        "client_message_id"
+      ],
+      "server_message": "server_id assigned on accepted; stable UI key remains client_message_id"
+    },
+    "event": {
+      "required": [
+        "account",
+        "conversation",
+        "epoch",
+        "request",
+        "turn",
+        "client_message_id",
+        "seq",
+        "kind"
+      ],
+      "optional": [
+        "value"
+      ],
+      "ordering": "positive contiguous seq per request; retain watermark across resubscription; pending gap bound 32; next contiguous event may enter full buffer to drain it"
+    },
+    "kinds": {
+      "accepted": "value: server message identity; distinct from transport ACK and generation completion",
+      "append": "value: text suffix",
+      "replace": "value: full corrected text",
+      "reasoning": "value: reasoning projection",
+      "dil": "value: structured content projection",
+      "attachment": "value: attachment identity/metadata projection",
+      "complete": "generation terminal",
+      "error": "value: error reason, retains partial content"
+    },
+    "states": [
+      "optimistic",
+      "accepted",
+      "streaming",
+      "complete",
+      "error",
+      "cancelled"
+    ],
+    "invariants": [
+      "selected page never routes transport events",
+      "account and conversation are always checked together",
+      "epoch and full request identity must match before state mutation",
+      "terminal state rejects later stream mutations",
+      "same local begin identity is idempotent; conflicting reuse fails",
+      "history uses server identity and revision; active row cannot be overwritten by snapshot",
+      "reasoning/DIL/attachments do not append to body text",
+      "draft/scroll intent belongs to conversation, not global screen",
+      "history: prefix reserved; exact accepted server_id may reconcile only a history-owned row; stream-authoritative active content remains",
+      "another local send with same server_id is a collision, never merged by text"
+    ],
+    "resync": "conflicting buffered sequence or gap budget -> explicit error; obtaining authoritative snapshot and resetting generation is outside executable model",
+    "non_goals": [
+      "server cancellation acknowledgement",
+      "real durable storage",
+      "authoritative server revision semantics",
+      "rendering or parsing",
+      "cross-device synchronization"
+    ]
+  },
+  "remote": {
+    "identity": {
+      "binding": [
+        "account",
+        "host"
+      ],
+      "connection": [
+        "account",
+        "host",
+        "epoch",
+        "stream"
+      ],
+      "rpc": [
+        "account",
+        "host",
+        "epoch",
+        "stream",
+        "request",
+        "operation",
+        "thread"
+      ]
+    },
+    "request": {
+      "required": [
+        "account",
+        "host",
+        "request",
+        "operation"
+      ],
+      "optional": [
+        "thread"
+      ],
+      "capability_gate": "capabilities supplied by fixture; no inference from UI controls"
+    },
+    "response": {
+      "required": [
+        "account",
+        "host",
+        "epoch",
+        "stream",
+        "request",
+        "operation"
+      ],
+      "optional": [
+        "thread",
+        "result",
+        "error"
+      ],
+      "correlation": "entire RPC identity must match pending entry",
+      "wire_mapping": "Internal normalized adapter event, not required server echo fields. Obtain host/epoch/stream from authenticated connection and operation/thread from pending registry by response id. Never infer from current selected host."
+    },
+    "connection_states": [
+      "ready",
+      "offline"
+    ],
+    "resource_states": [
+      "loading",
+      "loaded",
+      "error",
+      "cancelled"
+    ],
+    "invariants": [
+      "host switch updates selection only",
+      "each host maintains distinct pending table",
+      "same request number in distinct hosts is permitted",
+      "results retained per request, never keyed only by method",
+      "reconnect invalidates only replaced host generation and settles prior pending",
+      "permission errors remain errors, not empty successful result",
+      "bound account-host membership is fixture precondition, not authentication implementation",
+      "local request cancellation is not remote turn interruption",
+      "timeouts and disconnect failures are local to affected request/host",
+      "explicit error is error even if empty; only absent/null error means success"
+    ],
+    "non_goals": [
+      "transport cryptography",
+      "official handshake implementation",
+      "owner capability discovery",
+      "real enrollment",
+      "actual thread/turn protocol implementation"
+    ]
+  },
+  "compatibility": "Reference v1 is deliberately separate from observed official schemas. Adapters must preserve original field names and cite mappings. No production API is changed."
+}

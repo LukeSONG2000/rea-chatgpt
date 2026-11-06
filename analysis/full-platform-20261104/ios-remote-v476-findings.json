@@ -1,0 +1,111 @@
+{
+  "schema": "rea-ios-markdown-chain-v1",
+  "batch": "v476",
+  "status": "partial",
+  "time": "2026-11-06T13:18:42.567857+08:00",
+  "previous_goal_turn": "progress: six UI regressions, Glass foreground correction, iPhone install and launch",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Can the existing Valdi JS parser be promoted into the recovered official Remote body renderer?",
+  "decision": "No equivalence established. Preserve the separate native OAIMarkdown recovery path. Existing JS parser remains an explicitly attributed host adapter.",
+  "observations": [
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "0x95adf68",
+        "0x7e1a060",
+        "0x19b0fd8",
+        "0x19ae274"
+      ],
+      "conclusion": "CachedMarkdownBlockStack has String content, MarkdownOptions, a Remote MarkdownResultRenderer, streaming and interaction inputs. Body witness calls 0x19ae274."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "0x19ae598 -> 0x1d9e14c -> typerecord0x7e1dee0",
+        "0x19ae660 -> 0x693a300",
+        "0x19ae67c -> 0x1d9e110 -> typerecord0x7e1def8"
+      ],
+      "conclusion": "Body type record contains native OAIMarkdown.MarkdownBlockStack, PagePreviewWidget, MarkdownMermaidDiagram/detail and a separate inline-visualization section stack. Helper0x7e1dee0 is the conditional preview generic argument, not the entire block stack."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "0x95aae98",
+        "0x95abf58",
+        "0x95abe88",
+        "0x96fe1f4",
+        "0x96fcbf8"
+      ],
+      "conclusion": "Remote renderer caches native MarkdownResult values. CacheKey fields are content, renderedItemID, pluginIdentifiers and isStreaming. RenderContext fields are options and traitCollection. Native MarkdownBlockStack.content resolves to MarkdownResult."
+    },
+    {
+      "type": "official_artifact_static",
+      "source": [
+        "0x95aecf4",
+        "0x95aed2c",
+        "0x95adf4c",
+        "0x95abb0c",
+        "0x95abc28"
+      ],
+      "conclusion": "ParsedAssistantMarkdown stores source, inlineBlock and copyableMarkdown. InlineBlock cases are blocks and markdown. AssistantInlineBlock cases are markdown, widget(JSONValue), writing. User-message renderer has a separate Input with text, parsedMarkdown, markdownOptions, isExpanded, traitCollection and collapsedLineLimit."
+    }
+  ],
+  "independent_design_constraints": [
+    "Keep service item identity and presentation block identity distinct.",
+    "Preserve source and copyable text independently until transformation rules are recovered.",
+    "Do not reduce native cache identity to message text alone. Exact hash/equality and context invalidation remain unverified.",
+    "Unsupported widget/writing/visualization payloads must remain explicit instead of silently flattened into text."
+  ],
+  "open_boundaries": [
+    {
+      "edge": "RenderedItem markdown consumer -> CachedMarkdownBlockStack construction",
+      "next_action": "Resolve CachedMarkdownBlockStack typeref consumers and connect the fragment item branch; candidate symbolic sites are recorded."
+    },
+    {
+      "edge": "String/options/plugins/context -> MarkdownResult",
+      "next_action": "Trace body helpers0x19aea28 and0x19af764, then actual renderer invocation/cache lookup; do not infer parsing from cache metadata."
+    },
+    {
+      "edge": "MarkdownResult.Item -> native block views",
+      "next_action": "Inspect Item descriptor0x96fcc30 and consumer in MarkdownBlockStack body0x693a62c; retain original parser result shape."
+    },
+    {
+      "edge": "Remote effective MarkdownBlockStack configuration",
+      "next_action": "Bind arguments at0x19ae660 to constructor0x693a300 before restoring spacing, typography or selection/menu settings."
+    }
+  ],
+  "validation": {
+    "new_ui_build": false,
+    "official_runtime_executed": false,
+    "official_network_used": false,
+    "preview": "Existing v475 simulator process88965 observed live; current physical-device build remains v474. No app restarted this batch.",
+    "source_decoding": "Existing class-fields tool rejected field-kind1; bounded raw metadata decoding is separately retained with the rejection. No object offsets guessed."
+  },
+  "cross_platform": "These observations concern the iOS SwiftUI/OAIMarkdown path. Android renderer/Valdi equivalence requires independent version-bound consumers. No shared UI implementation claim.",
+  "evidence_sha256": {
+    "ios-remote-v476-blockstack-content-type.json": "333ee4e31f13b3079c83a014e7c7681d9a0eae687040ce89dc63bd51979927f3",
+    "ios-remote-v476-blockstack-type-helper.asm": "89287d84c111245d94745786d3c82496966258067193818cce6e3f84dad2a0ac",
+    "ios-remote-v476-cached-stack-typeref-sites.json": "fa14522f60b9b098b6394790bf2d1459bb737b8354d9dcc09f2d1c9c105193bf",
+    "ios-remote-v476-cached-stack-witness.json": "1c34fa6f23213af02f05e0de723080e0775244544f14c62a33e7ab4867c361db",
+    "ios-remote-v476-inline-blocks.json": "fefaa3873530f7bad2bb32fc1962d5638aef5c89493f3cd38ac55ad9b4681aca",
+    "ios-remote-v476-markdown-field-types.json": "9ecae6f68fab3aa30f8509b2871682f6324147a46e5858185afc24d52e3ab707",
+    "ios-remote-v476-markdown-metadata.json": "caaa02d4e45681935805303e06fd5b1ef5c575212e88d4b968d23ec65cac3b30",
+    "ios-remote-v476-markdown-references.json": "0fe5638b4272276da9d62af052cebe313a2935785e80d0fd546294506bc4d562",
+    "ios-remote-v476-markdown-type-index.json": "2beb1171e3483f2e92f70bacdce229b42f3a5b17060927130e4c8dbd33563c33",
+    "ios-remote-v476-native-blockstack-initializer.asm": "b17d44cdb3a9e1b95663d7b2aee0f6d9c1ee740cf947a098fbf37d7f4f7cb18f",
+    "ios-remote-v476-native-blockstack-metadata-load.asm": "5b7d2a8dbd4e9e771ef9a3b4a821199f2fdd8dabf6953018b574cbcf085ff488",
+    "ios-remote-v476-native-blockstack-metadata.json": "88f9675cd5e8115fcfdba9accb3ecf9b38a41fabc7675b46c8c44c1727b3d16d",
+    "ios-remote-v476-native-blockstack-stores.asm": "162082e290b5bb84acb9025892e2cc0b2281ede655d122cb181ccb628c95f70d",
+    "ios-remote-v476-native-renderer-fields.json": "da9b6bdb60d2dd999ffa7098d36a218d1cd6fbc85c42a375a15a104e98a5a5a0",
+    "ios-remote-v476-render-context.json": "affa2850d3aaa122827f27472d6913ae01da43102254f1c1fc1481352d6cfc9a",
+    "ios-remote-v476-stack-body-type.json": "57a13903a2aca8a9771d450f1593903fe1d032c8424cae48f5b24b96b52bb6e4",
+    "ios-remote-v476-stack-body.asm": "e7c8d0f65c768f470aefd14be43b93eafba7e3c175972f22de161c3b39e6756e",
+    "ios-remote-v476-stack-body.json": "cc2bb27b83d7ecedf11da786b47b67b9b621bd514619c4f52e7e30e302b7668a",
+    "ios-remote-v476-stack-compose.asm": "ff4e6a263df53b7d04708c3c3db3bdc66ed342e125344973f115acda8661dd02",
+    "ios-remote-v476-stack-constructed-type.json": "75e8a74609cac55f66fa22b810afe9ba02f676844b403d3e60203673e6618b8b",
+    "ios-remote-v476-stack-metadata-access.asm": "0bd717661eeec64abef03c9b71460f7d0b682a318d65e4144ca6fc26284122fa",
+    "ios-remote-v476-stack-witness.asm": "0820c996aa488dd73f120d27f6e78dc8d751147da1b7527979f07caaa5320335"
+  }
+}

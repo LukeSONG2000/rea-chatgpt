@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "authority": "third-party hypothesis, not official behavior",
+  "source": {
+    "repository": "https://github.com/bryanrg22/chatgpt-ios-ui",
+    "commit": "dc6e6a52b14a67051f6534cc674cc32ddd9cb9d1",
+    "file": "Sources/ChatGPTUI/ChatGPTView.swift",
+    "line": 617
+  },
+  "cases": [
+    {
+      "id": "existing-idle-empty",
+      "state": {
+        "has_messages": true,
+        "focused": false,
+        "editing": false,
+        "dictating": false,
+        "has_attachments": false,
+        "has_media": false,
+        "has_draft": false
+      },
+      "third_party_expected": "compact",
+      "official_293_expected": "unknown",
+      "official_293_status": "unverified",
+      "preview_status": "not-run"
+    },
+    {
+      "id": "toggle-has_messages",
+      "state": {
+        "has_messages": false,
+        "focused": false,
+        "editing": false,
+        "dictating": false,
+        "has_attachments": false,
+        "has_media": false,
+        "has_draft": false
+      },
+      "third_party_expected": "expanded",
+      "official_293_expected": "unknown",
+      "official_293_status": "unverified",
+      "preview_status": "not-run"
+    },
+    {
+      "id": "toggle-focused",
+      "state": {
+        "has_messages": true,
+        "focused": true,
+        "editing": false,
+        "dictating": false,
+        "has_attachments": false,
+        "has_media": false,
+        "has_draft": false
+      },
+      "third_party_expected": "expanded",
+      "official_293_expected": "unknown",
+      "official_293_status": "unverified",
+      "preview_status": "not-run"
+    },
+    {
+      "id": "toggle-editing",
+      "state": {
+        "has_messages": true,
+        "focused": false,
+        "editing": true,
+        "dictating": false,
+        "has_attachments": false,
+        "has_media": false,
+        "has_draft": false
+      },
+      "third_party_expected": "expanded",
+      "official_293_expected": "unknown",
+      "official_293_status": "unverified",
+      "preview_status": "not-run"
+    },
+    {
+      "id": "toggle-dictating",
+      "state": {
+        "has_messages": true,
+        "focused": false,
+        "editing": false,
+        "dictating": true,
+        "has_attachments": false,
+        "has_media": false,
+        "has_draft": false
+      },
+      "third_party_expected": "expanded",
+      "official_293_expected": "unknown",
+      "official_293_status": "unverified",
+      "preview_status": "not-run"
+    },
+    {
+      "id": "toggle-has_attachments",
+      "state": {
+        "has_messages": true,
+        "focused": false,
+        "editing": false,
+        "dictating": false,
+        "has_attachments": true,
+        "has_media": false,
+        "has_draft": false
+      },
+      "third_party_expected": "expanded",
+      "official_293_expected": "unknown",
+      "official_293_status": "unverified",
+      "preview_status": "not-run"
+    },
+    {
+      "id": "toggle-has_media",
+      "state": {
+        "has_messages": true,
+        "focused": false,
+        "editing": false,
+        "dictating": false,
+        "has_attachments": false,
+        "has_media": true,
+        "has_draft": false
+      },
+      "third_party_expected": "expanded",
+      "official_293_expected": "unknown",
+      "official_293_status": "unverified",
+      "preview_status": "not-run"
+    },
+    {
+      "id": "toggle-has_draft",
+      "state": {
+        "has_messages": true,
+        "focused": false,
+        "editing": false,
+        "dictating": false,
+        "has_attachments": false,
+        "has_media": false,
+        "has_draft": true
+      },
+      "third_party_expected": "expanded",
+      "official_293_expected": "unknown",
+      "official_293_status": "unverified",
+      "preview_status": "not-run"
+    },
+    {
+      "id": "focused-with-draft",
+      "state": {
+        "has_messages": true,
+        "focused": true,
+        "editing": false,
+        "dictating": false,
+        "has_attachments": false,
+        "has_media": false,
+        "has_draft": true
+      },
+      "third_party_expected": "expanded",
+      "official_293_expected": "unknown",
+      "official_293_status": "unverified",
+      "preview_status": "not-run"
+    },
+    {
+      "id": "blurred-with-draft",
+      "state": {
+        "has_messages": true,
+        "focused": false,
+        "editing": false,
+        "dictating": false,
+        "has_attachments": false,
+        "has_media": false,
+        "has_draft": true
+      },
+      "third_party_expected": "expanded",
+      "official_293_expected": "unknown",
+      "official_293_status": "unverified",
+      "preview_status": "not-run"
+    }
+  ],
+  "orthogonal_platform_dimensions": [
+    "software-keyboard-shown/hidden",
+    "hardware-keyboard-focus",
+    "keyboard-preserved-inset",
+    "compact/regular-height",
+    "DynamicType",
+    "LTR/RTL",
+    "safe-area/window-corner-configuration"
+  ],
+  "limits": [
+    "does not define official expected outcomes",
+    "does not prove 293 field mapping",
+    "streaming/stop state tested separately from compact predicate"
+  ]
+}

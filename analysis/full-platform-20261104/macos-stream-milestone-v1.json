@@ -1,0 +1,61 @@
+{
+  "status": "partial",
+  "platform": "macOS",
+  "artifact_version": "26.1021.31345",
+  "engine": "Electron 45.1.0 (stock cached runtime)",
+  "implementation": "unchanged official renderer + independent synthetic SSE service",
+  "verified": [
+    "Actual Send button adds optimistic message",
+    "Original HttpFetch RPC reaches synthetic POST /f/conversation",
+    "Partial text visible before code and completion",
+    "Stable assistant identity across three snapshots",
+    "Original code-block component renders final fixture",
+    "Service-level cancellation isolates simultaneous streams"
+  ],
+  "test": "node analysis/tools/test_desktop_send_fixture.mjs",
+  "runtime_report": "macos-send-boundary-v4.json",
+  "stages": [
+    {
+      "delay_ms": 250,
+      "prefix_visible": true,
+      "code_visible": false,
+      "completion_visible": false
+    },
+    {
+      "delay_ms": 350,
+      "prefix_visible": true,
+      "code_visible": false,
+      "completion_visible": false
+    },
+    {
+      "delay_ms": 450,
+      "prefix_visible": true,
+      "code_visible": true,
+      "completion_visible": true
+    },
+    {
+      "delay_ms": 1500,
+      "prefix_visible": true,
+      "code_visible": true,
+      "completion_visible": true
+    }
+  ],
+  "sources": [
+    {
+      "path": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "05ee517ded9c0eedbbaaadfd605bf80f8ad988b7e8bbe06e87679a3b3e2d7642"
+    },
+    {
+      "path": "analysis/tools/test_desktop_send_fixture.mjs",
+      "sha256": "d3e0930acf5ab136b2016e13465d90201e5279dabec76c98e478f8a7a6b1c5f3"
+    }
+  ],
+  "unaccepted": [
+    "UI cancellation",
+    "Zhipu UI integration",
+    "generated history persistence",
+    "account/conversation switch during generation",
+    "complete original native service restoration",
+    "visual parity against original app"
+  ]
+}

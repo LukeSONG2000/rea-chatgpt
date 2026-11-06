@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-native-host-implementation",
+  "platform": "iOS Simulator 27.0",
+  "target_artifact_version": "1.2026.293",
+  "test": "testViewportColdRestartAndConversationIsolation",
+  "validation": {
+    "status": "passed",
+    "passedTests": 1,
+    "skippedTests": 0,
+    "result": "ios-viewport-v103-r3.xcresult",
+    "summary": "ios-viewport-v103-r3.summary.json",
+    "screenshots": "ios-viewport-v103-images/manifest.json",
+    "checks": [
+      "Long assistant row interior offset less than -30 points, not top",
+      "Stable row and relative offset survive process terminate/launch within 24 points",
+      "A-B-A conversation switch preserves same anchor",
+      "Jump to latest remains at tail after second process restart"
+    ],
+    "visual_inspection": "Before/after restart screenshots show the same paragraph 6-9 reading position"
+  },
+  "prior_attempts": [
+    {
+      "result": "ios-viewport-v103.xcresult",
+      "status": "failed",
+      "reason": "Fixture generation ended in transport failure before scroll test; old server root cause not established"
+    },
+    {
+      "result": "ios-viewport-v103-r2.xcresult",
+      "status": "passed",
+      "limitation": "Anchor reached user row/top; tightened test before acceptance"
+    }
+  ],
+  "limits": [
+    "Independent reconstruction, not official visual parity",
+    "No physical iPhone acceptance",
+    "Dynamic type, keyboard/layout changes and active-stream restart not covered",
+    "Transport startup failure remains separate from viewport validation"
+  ],
+  "next_action": "Keyboard and layout-change anchor preservation; bounded persistence-write measurement",
+  "sources": [
+    {
+      "file": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "4542935e69a4252b818c0fee94126c34080407663249a7ccda81c5e2d2b6761e"
+    },
+    {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "f0b5e80f5e2ea6eb26a4ed0badb22598cf58830d69d7631776195a5eedb55bd1"
+    },
+    {
+      "file": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "e4c8161d27b7e62f91de4f9dc69d6a1021290d7dfec839eb5ff627fcd7cdf846"
+    }
+  ]
+}

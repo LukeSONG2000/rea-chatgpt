@@ -21,3 +21,35 @@ opensource/
 
 # 砸壳版解密二进制（>100MB GitHub 限制；可由 packages/ 砸壳 IPA 重解包重建）
 recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT
+
+# Local build, device and runtime state. Keep source and compact evidence in Git.
+/implementation/**/.build*/
+/implementation/**/.local-state/
+/implementation/mobile-preview/
+__pycache__/
+*.pyc
+*.xcresult/
+*.xcuserstate
+xcuserdata/
+*.mobileprovision
+*.p12
+.env
+.env.*
+
+# Local visual/test recordings and raw logs remain available in this workspace.
+/output/
+/analysis/**/*.png
+/analysis/**/*.jpg
+/analysis/**/*.jpeg
+/analysis/**/*.mp4
+/analysis/**/*.mov
+/analysis/**/*.log
+/analysis/full-platform-20261104/*screenshots*/
+/analysis/full-platform-20261104/macos-menu-v77-rea-evidence.json
+/analysis/full-platform-20261104/ios-native-dispatch-rea-v3.json
+# Empty receipts from interrupted historical probes; never count as validation.
+/analysis/full-platform-20261104/macos-zhipu-v2.json
+/analysis/full-platform-20261104/remote-provider-reload-v165-ordering.json
+
+# Auxiliary checkout has its own Git history; provenance is recorded separately.
+/analysis/third-party/chatgpt-ios-ui/

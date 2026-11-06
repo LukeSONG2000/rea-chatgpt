@@ -1,0 +1,157 @@
+{
+  "status": "passed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v138-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "Primary renderer model IPC rejected",
+    "Packaged renderer received loopback harness stream and durable completion",
+    "Stop persisted partial terminal with no late changes",
+    "Synthetic failure retained safe category, partial body and terminal without raw vendor detail",
+    "Retry creates a separate attempt under the same user and preserves old failure",
+    "New application process restored harness history and visible failure"
+  ],
+  "limits": [
+    "Real loopback transport with deterministic model fixture; no live Zhipu acceptance",
+    "Project services disabled in model mode pending owner integration"
+  ],
+  "failureBeforeAnyDelta": false,
+  "failureBody": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\n独立 harness 夹具 · 非模型生成 · A\n独立 harness 夹具 · 非模型生成 · B\nO\nOffline fixture\nUpgrade\nShare\n独立 harness 夹具 · 非模型生成\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nToday 6:15 AM\nYou said:\nREA synthetic desktop packaged harness\nChatGPT said:\n\nLocal fixture reply\n\nYou said:\nREA synthetic slow cancellation test\nChatGPT said:\n\nSlow partial\n\nYou said:\nREA synthetic model failure test\nChatGPT said:\n\nPartial before synthetic failure\n\nSomething went wrong. Please try again\nRetry\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n",
+  "retryCalls": [
+    {
+      "operation": "httpFetch.fetch",
+      "id": "3c19ef03-466f-41f1-aad0-ceaf1a421e0e",
+      "method": "POST",
+      "url": "/sentinel/chat-requirements/prepare"
+    },
+    {
+      "operation": "fixture.synthetic-prepare",
+      "path": "/sentinel/chat-requirements/prepare"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "3c19ef03-466f-41f1-aad0-ceaf1a421e0e"
+    },
+    {
+      "operation": "httpFetch.fetch",
+      "id": "f1642ccb-06ea-4e5f-9911-32de60747bf7",
+      "method": "POST",
+      "url": "/f/conversation"
+    },
+    {
+      "operation": "fixture.send-body-shape",
+      "type": "string",
+      "keys": [
+        "url",
+        "method",
+        "body",
+        "headers",
+        "expectedIdentity"
+      ]
+    },
+    {
+      "operation": "fixture.send-project-scope",
+      "conversationId": "offline-fixture-conversation-001",
+      "gizmoId": null,
+      "keys": [
+        "regeneration_source",
+        "variant_purpose",
+        "enable_message_followups",
+        "conversation_id",
+        "action",
+        "model",
+        "parent_message_id",
+        "timezone",
+        "timezone_offset_min",
+        "is_do_not_remember",
+        "local_function_signatures",
+        "messages",
+        "supported_encodings",
+        "genui_state_snapshots",
+        "client_prepare_state"
+      ]
+    },
+    {
+      "operation": "fixture.send-identities",
+      "streamId": "f1642ccb-06ea-4e5f-9911-32de60747bf7",
+      "conversationId": "offline-fixture-conversation-001",
+      "parentId": "d8a9e539-3044-4ff2-a88d-ea51fbf6b304",
+      "action": "variant",
+      "regenerationSource": "error_retry",
+      "messageIds": []
+    },
+    {
+      "operation": "fixture.retry-created",
+      "streamId": "f1642ccb-06ea-4e5f-9911-32de60747bf7",
+      "conversationId": "offline-fixture-conversation-001",
+      "userId": "d8a9e539-3044-4ff2-a88d-ea51fbf6b304",
+      "previousAssistantId": "offline-generated-34d889b6-4114-48d9-b753-dde94c761d88",
+      "assistantId": "offline-generated-1bbaa444-bd58-47bf-a74c-a4c03cc0fc39"
+    },
+    {
+      "operation": "catalog.history-committed",
+      "revision": 5
+    },
+    {
+      "operation": "catalog.readPage",
+      "query": {
+        "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+        "filter": {
+          "includeAll": true,
+          "cwdValues": [],
+          "cwdPrefixes": [],
+          "includeThreadIds": [],
+          "excludeThreadIds": []
+        },
+        "limit": 20,
+        "sortKey": "updated_at"
+      }
+    },
+    {
+      "operation": "catalog.readPage",
+      "query": {
+        "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+        "limit": 10,
+        "sortKey": "updated_at"
+      }
+    },
+    {
+      "operation": "model.event",
+      "streamId": "f1642ccb-06ea-4e5f-9911-32de60747bf7",
+      "kind": "accepted",
+      "sequence": 1
+    },
+    {
+      "operation": "manager.sendRequest",
+      "method": "plugin/installed",
+      "params": {}
+    },
+    {
+      "operation": "model.event",
+      "streamId": "f1642ccb-06ea-4e5f-9911-32de60747bf7",
+      "kind": "delta",
+      "sequence": 2
+    },
+    {
+      "operation": "model.event",
+      "streamId": "f1642ccb-06ea-4e5f-9911-32de60747bf7",
+      "kind": "failed",
+      "sequence": 3,
+      "error": "provider_terminal_failure",
+      "provider_terminal": "response.incomplete",
+      "provider_reason": "max_output_tokens"
+    },
+    {
+      "operation": "httpFetch.cancel",
+      "id": "f1642ccb-06ea-4e5f-9911-32de60747bf7"
+    }
+  ],
+  "retryGraph": {
+    "before": "offline-generated-34d889b6-4114-48d9-b753-dde94c761d88",
+    "after": "offline-generated-1bbaa444-bd58-47bf-a74c-a4c03cc0fc39",
+    "parent": "d8a9e539-3044-4ff2-a88d-ea51fbf6b304",
+    "children": [
+      "offline-generated-34d889b6-4114-48d9-b753-dde94c761d88",
+      "offline-generated-1bbaa444-bd58-47bf-a74c-a4c03cc0fc39"
+    ]
+  },
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/native-retry-v138-fixed.png"
+}

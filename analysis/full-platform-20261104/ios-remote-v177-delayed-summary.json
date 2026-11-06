@@ -1,0 +1,14 @@
+{
+  "status": "partial",
+  "scenario": "Local proxy holds empty events/read, forwards turn/start, then returns unauthorized for the old poll after 1 second.",
+  "transportTrace": "ios-v177-delayed-poll.delay-trace.json",
+  "uiSummary": "ios-v177-delayed-poll.summary.json",
+  "result": "passed: no stale unauthorized UI, current request completes with local fixture reply",
+  "correction": "The old implementation copied HostState after awaiting RPC, not before. Snapshot overwrite description in v176 was too broad; delayed-error pollution is now directly tested.",
+  "limits": [
+    "iOS simulator only",
+    "No physical iPhone or real services",
+    "No complete Remote UI parity"
+  ],
+  "desktopPreview": "Unmodified running preview retained on external display"
+}

@@ -1,0 +1,42 @@
+{
+  "status": "partial-unresolved",
+  "runtime": "desktop-composer-v181-tree.json",
+  "findings": {
+    "surfaceY": 740,
+    "surfaceHeight": 40,
+    "controlY": 744,
+    "controlHeight": 28,
+    "topSpace": 4,
+    "bottomSpace": 8,
+    "verticalCenterOffset": -2
+  },
+  "sourceEvidence": [
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-shared-bd3e4e649b69.css",
+      "sha256": "af8636f03c49c5c7676116af7e972b499a5928ea354822e5977d6caa90ed3acb",
+      "characterOffset": 1341185,
+      "excerpt": "mposer-placeholder:.5;--spacing-composer-single-line-controls:calc(var(--spacing) * 1.25);--padding-composer-single-line-footer-block:var(--spacing);--composer-suggestion-inline-inset:calc(var(--padding-toolbar) + var(--home-composer-inline-inset));--inset-toolbar:var(--height-toolbar);--safe-area-left:0px;--"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-shared-bd3e4e649b69.css",
+      "sha256": "af8636f03c49c5c7676116af7e972b499a5928ea354822e5977d6caa90ed3acb",
+      "characterOffset": 1335113,
+      "excerpt": "(--spacing) * 4);--spacing-composer-input-footer:0;--padding-composer-empty-attachments:0;--spacing-composer-footer-bottom:calc(var(--spacing) * 2);--opacity-composer-placeholder:1;--spacing-composer-single-line-controls:calc(var(--spacing) * 2);--composer-single-line-radius:var(--composer-radius);--padding-c"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-56db6e0bcb8b.css",
+      "sha256": "282a45dd2c1bcb26c555638bfd0a7935a6c0579f2c77479f30d76a167261a0c9",
+      "characterOffset": 430,
+      "excerpt": "-height:initial;--composer-editor-placeholder-opacity:var(--opacity-composer-placeholder);--composer-editor-single-line-height:initial}._ComposerLayoutRoot_1q7o3_2:where(:not([data-composer-radius-variant=default][data-composer-surface-variant=default])){--line-height-composer:calc(var(--spacing) * 5);--min-h"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-56db6e0bcb8b.css",
+      "sha256": "282a45dd2c1bcb26c555638bfd0a7935a6c0579f2c77479f30d76a167261a0c9",
+      "characterOffset": 23835,
+      "excerpt": "iveFooter_1q7o3_2[data-composer-spacing=default]{align-items:end;height:auto;min-height:0}._AnimatedAdaptiveFooter_1q7o3_2[data-composer-spacing=default][data-composer-layout=single-line]{height:calc(var(--composer-editor-single-line-height,var(--spacing) * 9) + var(--padding-composer-single-line-footer-block"
+    }
+  ],
+  "correction": "v179 fixed relative text/control centers only, not centering in the outer composer. Its independent height override has been removed from source. No replacement spacing override added.",
+  "remaining": "Trace original density/layout/theme selection and establish whether matching reference uses the same artifact revision. Do not force comfortable density or browser identity merely to change geometry.",
+  "preview": "Existing user preview still runs v179 until a source-grounded replacement is ready; no reload performed this turn."
+}

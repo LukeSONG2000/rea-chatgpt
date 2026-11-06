@@ -1,0 +1,145 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x3f9090c",
+    "end_exclusive": "0x3f909f4",
+    "sha256": "757e2b15bb7b89d45f7c392fb21f327fc2bd520e4ab2ae7c4712c4c3e95b32a9"
+  },
+  "linker_function_starts_in_window": [
+    "0x3f9090c"
+  ],
+  "next_linker_function_start": "0x3f909f4",
+  "direct_calls": [
+    {
+      "site": "0x3f90938",
+      "target": "0x3f94cb0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x3f9093c",
+      "target": "0x3f94b20",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x3f90948",
+      "target": "0x7c41c5c",
+      "imported_symbol": "_$s10Foundation9IndexPathVMa",
+      "chained_binding": {
+        "slot": "0xaac9938",
+        "symbol": "_$s10Foundation9IndexPathVMa",
+        "library_ordinal": 12,
+        "weak": false,
+        "import_ordinal": 4649,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x3f90954",
+      "target": "0x7c4decc",
+      "imported_symbol": "_$sScMMa",
+      "chained_binding": {
+        "slot": "0xaada2a0",
+        "symbol": "_$sScMMa",
+        "library_ordinal": 128,
+        "weak": false,
+        "import_ordinal": 13009,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x3f90960",
+      "target": "0x3f94c68",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x3f90968",
+      "target": "0x153c34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x3f9096c",
+      "target": "0x7c4dc5c",
+      "imported_symbol": "_$sSa10startIndexSivg",
+      "chained_binding": {
+        "slot": "0xaad6ba0",
+        "symbol": "_$sSa10startIndexSivg",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11299,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x3f90978",
+      "target": "0x153c34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x3f9097c",
+      "target": "0x7c4dd34",
+      "imported_symbol": "_$sSa8endIndexSivg",
+      "chained_binding": {
+        "slot": "0xaad6c30",
+        "symbol": "_$sSa8endIndexSivg",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11317,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x3f9099c",
+      "target": "0x7c4ddac",
+      "imported_symbol": "_$sSayxSicig",
+      "chained_binding": {
+        "slot": "0xaad6ce8",
+        "symbol": "_$sSayxSicig",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11340,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x3f909b0",
+      "target": "0x7c4dd40",
+      "imported_symbol": "_$sSa9formIndex5afterySiz_tF",
+      "chained_binding": {
+        "slot": "0xaad6c38",
+        "symbol": "_$sSa9formIndex5afterySiz_tF",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11318,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x3f909c8",
+      "target": "0x7c547e4",
+      "imported_symbol": "_swift_release_x20"
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

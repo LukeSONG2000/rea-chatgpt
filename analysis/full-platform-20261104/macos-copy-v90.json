@@ -1,0 +1,54 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "controlled-target-fragment-replay",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "runtime": "macos-copy-v90-verified.json",
+  "verified": {
+    "assistant_markdown": true,
+    "html_structure": {
+      "code": [
+        "const mode = 'offline';"
+      ],
+      "rows": [
+        [
+          "内容",
+          "来源"
+        ],
+        [
+          "消息",
+          "本地夹具"
+        ]
+      ],
+      "paragraphs": [
+        "这是合成本地数据，不是在线生成。"
+      ],
+      "excluded": 0
+    },
+    "system_clipboard_touched": false,
+    "native_text_service_calls": 0
+  },
+  "changes": [
+    "Rich-copy tests default to capture-only, explicit opt-in required for OS writes",
+    "Synthetic assistant fixture expected output omits trailing newline",
+    "Validate rich payload code, paragraphs, table cells and no copied controls"
+  ],
+  "limits": [
+    "Captured payload is not OS rich-paste or visual fidelity acceptance",
+    "Fixture trailing newline removal must not be extrapolated to every copy path",
+    "Native keyboard, selection, fonts and physical device gates remain open",
+    "Full six-surface restoration incomplete"
+  ],
+  "next_action": "Continue message actions (edit/regenerate/streaming-copy) with explicit scope and restored-history assertions; schedule native rich-paste acceptance separately",
+  "sources": [
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "6b5c8c70cb3dcd4860c09c0c0d1ce7fdf2482747036ff272bcb0fb5aba787481"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/chatgpt-conversation-turn-content-2b28a90ef308.js",
+      "sha256": "65b6cd1bb2f34911428b208ef82280994e4e313c697724944db393e56d24272e"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "status": "partial",
+  "artifact": "Codex 26.1021.31345 ChatGPT mode",
+  "evidenceType": "Controlled renderer replay, independent host/storage",
+  "browser": {
+    "projectChat": "passed",
+    "routeBeforeReload": "/g/g-p-rea-local-8e8246e5-b004-4ebb-b72b-b364bb041fcc/c/offline-local-82037759-7e61-47ab-a631-258ecf75454a",
+    "coldRecovery": "passed",
+    "automaticRestore": "passed",
+    "pageErrors": [],
+    "limits": [
+      "Desktop renderer browser variant, not official Web",
+      "Optional browser operations explicitly unsupported",
+      "Existing 18-second normal-flow startup wait remains; auto restore probe does not rely on it"
+    ]
+  },
+  "native": {
+    "write": {
+      "status": "passed",
+      "mode": "write",
+      "pid": 19193,
+      "projectId": "g-p-rea-local-53b4754b-ef17-473d-be86-f5994aea0fb1",
+      "oldName": "REA synthetic native chat 42ec3548",
+      "name": "REA synthetic native renamed 4aea0fb1",
+      "checks": [
+        "Original native project settings Save persists rename",
+        "Same project ID and creation timestamp",
+        "Other projects and all histories unchanged"
+      ]
+    },
+    "read": {
+      "status": "passed",
+      "mode": "read",
+      "pid": 19350,
+      "writerPID": 19193,
+      "projectId": "g-p-rea-local-53b4754b-ef17-473d-be86-f5994aea0fb1",
+      "name": "REA synthetic native renamed 4aea0fb1",
+      "checks": [
+        "Native renamed project survives distinct process",
+        "All project IDs and history membership unchanged",
+        "Previously selected conversation still renders"
+      ]
+    },
+    "pageErrors": [],
+    "profile": "v127-native-edit, copied from isolated native v126 profile",
+    "limits": [
+      "Project name edit only, not full settings/memory/sharing behavior",
+      "System window capture failed; renderer screenshots available",
+      "Optional services remain unsupported"
+    ]
+  },
+  "reports": [
+    "desktop-web-v127.json",
+    "desktop-web-v127-auto.json",
+    "desktop-native-v127-edit-write.json",
+    "desktop-native-v127-edit-read.json"
+  ],
+  "tests": [
+    "desktop-web/test-server.cjs passed including transient owner acceptance, foreign/uncommitted routes rejection and state preservation",
+    "desktop-web/test-project-store.cjs passed"
+  ],
+  "sources": {
+    "implementation/desktop-web/server.cjs": "1ef5b9c00a4084c64bb5dbfb45a082a34e0e5571207c6a3cfc8fff7377accf72",
+    "implementation/desktop-web/test-server.cjs": "06333b7e668e5f54c7c562c379c349d9a158705d5b798c7eae9a3a6b5a26e6b3",
+    "implementation/desktop-web/probe.cjs": "e08019e99d3c3d14aeae85ea910ec8249604c3deafd95ebd6bcd562c7036248a",
+    "analysis/tools/desktop-project-owner.cjs": "c0c91aedecb0c4e048185679a0c34d4d8495a57e94ef88d7285283fbce2f95ab",
+    "analysis/tools/desktop-native-project-edit-check.cjs": "a9047ecabb58b073ba21d9cc2c8a82796c43901331ee88c10325edbf4292cf67",
+    "analysis/tools/probe_desktop_root_mount.cjs": "f107a772d9cc149da064c2aeda851bb3d4d658e9c9fb578e46d76bd88be0a4d9",
+    "implementation/desktop/run.cjs": "0519112d9061fae62a695365131dfc986b96ed084c46a1a4714855a62ffe660a"
+  },
+  "remaining": [
+    "Project draft restart and interrupted transition ownership",
+    "iOS native interaction continuation",
+    "Windows/Android cross-platform acceptance",
+    "Official Web reference baseline",
+    "Real model/Remote whole-product completion"
+  ]
+}

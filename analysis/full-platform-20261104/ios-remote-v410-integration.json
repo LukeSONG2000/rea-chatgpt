@@ -1,0 +1,170 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_turn_classification": "progress: v409 identified concrete request components, identities and callback targets",
+  "official_observations": [
+    {
+      "chain": [
+        "0x1c3425c",
+        "0x1a2af68"
+      ],
+      "action": "approveApprovalRequestTapped",
+      "evidence": "Enum CodexRemoteThreadViewAction descriptor0x95aa444 entry35 matches storeEnumTagMultiPayload tag35 at0x1a2afd4. Payload type0x8e139d6 is ApprovalRequest plus ApprovalDecision."
+    },
+    {
+      "chain": [
+        "0x1c349c0",
+        "0x1c28950",
+        "0x1a2b00c"
+      ],
+      "action": "denyApprovalRequestTapped",
+      "evidence": "Thunk supplies card accessor and callback0x1a2b00c; callback copies request and writes tag36 at0x1a2b05c."
+    },
+    {
+      "chain": [
+        "0x1c349d4",
+        "0x1c349e8",
+        "0x1a2b084"
+      ],
+      "action": "approvalRequestFeedbackSubmitted",
+      "evidence": "Thunk supplies callback0x1a2b084; tag37 at0x1a2b0dc. Type0x8e139ec is ApprovalRequest plus SwiftToolbelt.Redacted<String>."
+    },
+    {
+      "symbol": "CodexRemoteApprovalAction",
+      "descriptor": "0x95d1360",
+      "metadata": "0xa572670",
+      "offsets": {
+        "title": 0,
+        "decision": 16
+      },
+      "evidence": "Button builder0x1a1fd28 copies the title and decision; callback0x1cf39c4 reads approve closure at+0x258 and context+0x260, copies action decision to stack, helper0x1da9928 passes stack as x0 and branches to x10. Label thunk0x1cf3a04 forwards title to0x1a20bac."
+    },
+    {
+      "symbol": "approval action label font",
+      "chain": [
+        "0x1a20bac",
+        "0x74e2758",
+        "0x74e2744"
+      ],
+      "binding": "0xaad38f8 SwiftUI.Font.TextStyle.callout"
+    }
+  ],
+  "integration": {
+    "files": [
+      "implementation/ios/Sources/RemoteApprovalInteraction.swift",
+      "implementation/ios/Sources/NativeConversationHost.swift"
+    ],
+    "behavior": "The synthetic pending-approval branch now exposes supplied action titles/decisions and a separate deny callback; all events capture the scoped request. Owner invokes a disconnected adapter and shows an explicit error while preserving pending controls. User-input branch remains generic.",
+    "official_reconstruction": "Action title/decision primitive, captured request+decision owner callback, separate deny/feedback action types, redacted feedback and callout label font.",
+    "independent_adapter": "String-valued IDs; host/connection envelope; synthetic allow-once/session choice set and bilingual labels; stale-request/capability guards; disconnected failure result; temporary vertical native button arrangement. These are not the recovered official action-selection defaults, layout or RPC schema.",
+    "not_integrated": [
+      "feedback text field and layout",
+      "OpenAIForm and policy-specific approval decisions",
+      "official request-kind -> action list selection",
+      "service submit/receipt state machine",
+      "user-input next/back/options/custom/secret entry transitions",
+      "complete button style, card containment, animation and viewport behavior"
+    ]
+  },
+  "validation": {
+    "foundation": "passed: prior text/command/review tests plus 52 stale-identity or changed-action-list vectors, 12 repeated disconnected events, unsupported decision and redaction checks",
+    "host_typecheck": "passed; three existing UIKit deprecation warnings",
+    "ui_test_source": "testRemoteTaskScopeAndReturn updated to cover approval actions remaining pending and absence in host-b input task; syntax parse passed, test NOT executed",
+    "xcode_project": "new source registered in PBXSourcesBuildPhase; plutil passed",
+    "runtime": "same session42359 runner97181 and xcodebuild97197 confirmed alive awaiting first-launch authorization; no duplicate build or simulator restart",
+    "preview": "PID87483 left live, last accepted preview v383; external display not reverified",
+    "physical_device": "not installed",
+    "retention": "no stale targets"
+  },
+  "next_minimum_actions": [
+    "Trace original action-list selector and request-kind/form gates before replacing temporary action layout.",
+    "Trace user-input question advancement, custom answer and request-key reset; integrate same scoped owner boundary.",
+    "Resume existing build when authorization completes; validate cumulative source hashes, then run title/approval/input/return tests and install available device."
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-action-accessor.asm",
+      "sha256": "5e47ce5e7d6cdfa07aad0da6808b1f24f840b8cbe2cab86900a28b21c2e5a7cf",
+      "bytes": 693
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-action-discovery.json",
+      "sha256": "4abf260e1e0ad8ef1007cb5818b77322c1de1d2b222e62d2de3707e8be436a61",
+      "bytes": 3886
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-action-label.asm",
+      "sha256": "9ffcea00fda2bbb68c4e29f1cebcff081d1d51179f1e6faff80bf16cdea3f5b9",
+      "bytes": 1945
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-action-layout.json",
+      "sha256": "4ef284ba03453fc532c3ffc0722748a6e60af924d19dfd46b938ba647c7197e0",
+      "bytes": 421
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-action-payloads.json",
+      "sha256": "2f504a6a04492401677e2f497c57ccca144363afd9e7bfd2a616d3e786ce8ad8",
+      "bytes": 2074
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-action-row-thunks.asm",
+      "sha256": "44c3eb58595984b49d69c594358cc043007d3028d00e64c5b26f0dd71507d28e",
+      "bytes": 9800
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-approval-closure-one.asm",
+      "sha256": "68b4b73993a5b0f5420efc9e560bda2794e2fa165bb2d54af2188c87dac2d1f5",
+      "bytes": 2651
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-approval-closures-two-three.asm",
+      "sha256": "c0fbd7946be56a9e0a5203b6a413da4e1d616b228b03204a285192cd05408e6b",
+      "bytes": 1323
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-banner-builders-calls.json",
+      "sha256": "0c1ec7e766954ced49609c6eae0dfa10225a3d3ccbc0278bae7ed9c135307453",
+      "bytes": 153730
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-banner-builders.asm",
+      "sha256": "a6f263d4915133dca00b729a95e7a21e5540aad43fa1b1b7e1f33b0fd0cdd06f",
+      "bytes": 192582
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-callback-dispatch.asm",
+      "sha256": "2f745271f294fc54010f1aa3124756086128cacbb311a618c36555527bb29420",
+      "bytes": 422
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-label-font-initializer.asm",
+      "sha256": "4c167f953381e323d4c28a06bd7e7064a697755ce4a19de4e16f8c258224cbe5",
+      "bytes": 445
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-label-font.asm",
+      "sha256": "05119d8a796784c8f683a709306d11b96a60028f569618f2c4164caec08c965e",
+      "bytes": 1091
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-owner-actions.json",
+      "sha256": "47b6b3f61dcbc832bfa3ee1708fdff01b08b8e1dbad6e391bd420963e390f6d0",
+      "bytes": 34578
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v410-row-call-evidence.json",
+      "sha256": "215d8607be9e4c6dd6f5cea7ee3783c4d0fe8b5191ecb63bf79fccb832c93f36",
+      "bytes": 4962
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteApprovalInteraction.swift": "03039b33166bde920555c0cb6fc9b6af1b51d0e71c7653b7372cfde29b83dfc5",
+    "implementation/ios/Sources/NativeConversationHost.swift": "271e8976838ccd8f2352ca90c7c65f2416f629fb53ef4eed2ada1e500a9a97f6",
+    "implementation/ios/UITests/HostInteractionTests.swift": "1dd0eacd195e63d23f56a431079dd9059964fce21556b2fc6f0b7865241d5efe",
+    "implementation/ios/TextTests/main.swift": "8718ba2f72a1119f30dcb1d639ef1d06a6f3a1604de12ca65932a7c939baf82e",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "a05da0d1de92ed1a137b8daac3254b527bbbe29df5653f7be3861c551133d225"
+  }
+}

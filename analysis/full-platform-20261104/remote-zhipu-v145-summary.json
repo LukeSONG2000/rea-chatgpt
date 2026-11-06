@@ -1,0 +1,32 @@
+{
+  "status": "partial",
+  "authority": "independent owner/client using real Zhipu backend; not official Remote behavior",
+  "referenceBaseline": "iOS 1.2026.293 remains reference only",
+  "validation": {
+    "ownerRegressionTests": 4,
+    "fixtureProbe": "passed",
+    "liveBackendProbe": "passed: 4 deltas and completion; accepted request local cancellation",
+    "liveIOS": "two independent owners each complete synthetic prompt; app restart restores both replies",
+    "uiTests": 1,
+    "temporaryPairingRemoved": true,
+    "temporaryOwnersStopped": true
+  },
+  "sources": {
+    "implementation/remote/owner.py": "7a3218f9fe00264cc78d3b58e9d6e77ec2db2e81431b4727b4c262ee98d95477",
+    "implementation/remote/probe-model.py": "593d22e8cb7abb3fd6c139b711faa3c2f3afabb2f029c3783ad0f1ccfbd08f8c",
+    "implementation/remote/test_owner.py": "62b892a4c0f57094b25065e2dd0836acadb360fa1b6f7b66235c62926199888a",
+    "implementation/harness/model_worker.py": "ee30aec808ff30433110e284ea39606a270c8f55a6ee6a99d78e663affd89a8d",
+    "implementation/harness/zhipu_probe.py": "6c4038ebc4a15f9d954c61a8c7d1ac5234723f3b672ed6bec2baef2e3e20213c",
+    "implementation/ios/Sources/LocalRemote.swift": "82660a1e98bfe68a7d69b456ecc0e2f7581b018e80f084b5ceb8eded1fd5c906",
+    "implementation/ios/test-remote.py": "f29a1a9bc431431d31978b7b4dc4f68f06a78f94951ce911e9dc5a0dbbad2cc5",
+    "implementation/ios/UITests/HostInteractionTests.swift": "8009201a0ef08c81ccf0701e5ffa809479fbaa2802b69da94ca087ebb4ecabe0"
+  },
+  "limits": [
+    "Local cancellation not proof of vendor-side compute cancellation",
+    "iOS real-model cancellation not exercised; backend cancellation exercised",
+    "No macOS Remote controller acceptance",
+    "No physical iPhone",
+    "No approval Goal or tool execution",
+    "No official Remote visual parity or cloud compatibility"
+  ]
+}

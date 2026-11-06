@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v138-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "Retry UI succeeds under same user with new request; failure disappears without duplicate user row",
+    "Successful retry and original failed sibling retained across new process"
+  ],
+  "limits": [
+    "Controlled test endpoint fails first request then succeeds; no actual model",
+    "Normal failure-to-failure retry separately tested against Python harness"
+  ],
+  "attempts": [
+    {
+      "account": "offline-fixture-account",
+      "conversation": "offline-fixture-conversation-001",
+      "request": "87317ca4-3b90-4802-826a-43d42fd86cd2"
+    },
+    {
+      "account": "offline-fixture-account",
+      "conversation": "offline-fixture-conversation-001",
+      "request": "bca807ce-e2b7-4b66-85b1-3ee90f6dac46"
+    }
+  ],
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/native-retry-v138-success.png"
+}

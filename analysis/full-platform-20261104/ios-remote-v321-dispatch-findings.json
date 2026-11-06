@@ -1,0 +1,65 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static artifact observation with enum ABI inference",
+  "chain": [
+    {
+      "from": "0x1a3d570",
+      "to": "0x1a31c50",
+      "role": "HistoryFragment body witness"
+    },
+    {
+      "from": "0x1a31ce0",
+      "to": "0x1a32114",
+      "role": "root body calls content wrapper"
+    },
+    {
+      "from": "0x1a3227c",
+      "to": "0x1a32308",
+      "role": "wrapper calls fragment content dispatch"
+    },
+    {
+      "from": "0x1a32650",
+      "to": "0x1a35da0",
+      "role": "renderUnit branch calls nested dispatch"
+    }
+  ],
+  "content_dispatch": {
+    "enum_descriptor": "0x95acb08",
+    "enum_tag_call": "0x1a325d4",
+    "jump_table": "0x7dfdf22",
+    "cases": {
+      "renderUnit": "0x1a325f4",
+      "realtimeTranscript": "0x1a32ad4",
+      "trailingRealtimeTranscript": "0x1a326f0",
+      "activityHeader": "0x1a32978",
+      "modelRerouted": "0x1a32690",
+      "previousMessagesToggle": "0x1a32dbc",
+      "previousMessagesSeparator": "0x1a32e84",
+      "responseSeparator": "0x1a329e4",
+      "tail": "0x1a32ec8"
+    }
+  },
+  "render_unit": {
+    "enum_descriptor": "0x95acae0",
+    "cases": [
+      "item",
+      "toolActivityGroup",
+      "collaborationToolCallGroup"
+    ],
+    "tool_group_branch": "0x1a35e60",
+    "state_constructor": "0x1a392d8",
+    "content_constructor": "0x1a393bc"
+  },
+  "integration_decision": "Separate fragment dispatch from tool activity presentation; do not flatten every remote item into a generic message text or attach one disclosure style to all items.",
+  "limits": [
+    "Static call chain only; no official runtime executed",
+    "Tool group content constructor to concrete history/summary component remains open",
+    "No UI geometry, animation or interaction parity acceptance from dispatch evidence",
+    "No Android equivalence established"
+  ],
+  "next_minimal_action": "Map 0x1a393bc input tag at +0x40 to ToolActivityGroup summary style, then follow each concrete summary/history consumer.",
+  "runtime_change": false
+}

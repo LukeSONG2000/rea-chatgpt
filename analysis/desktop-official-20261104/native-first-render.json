@@ -1,0 +1,19 @@
+{
+  "status": "partial",
+  "replay": "root-native-v29.json",
+  "runtime": "Stock Electron 45.1.0 from local cache; independent from archived customized Electron",
+  "verified": [
+    "Original full renderer runs in an Electron BrowserWindow",
+    "Target synthetic conversation visible in renderer screenshot",
+    "Draft fill/read/clear passes; send not invoked",
+    "No pageErrors in captured run",
+    "Original asset digests checked per request"
+  ],
+  "limitations": [
+    "BrowserWindow remained hidden during automated run; screen-visible titlebar/traffic lights/vibrancy not visually accepted",
+    "Screenshot captures web contents, not native frame",
+    "Existing renderer-side fixture MessagePort handoff remains; real preload/main RPC separation not restored",
+    "Background services still unsupported; full native fidelity not complete",
+    "Loopback debug endpoints allowed; external IP blocked by outer sandbox"
+  ]
+}

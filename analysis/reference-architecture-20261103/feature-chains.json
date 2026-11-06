@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "authority": "static-observation-and-explicit-unknown",
+  "chains": [
+    {
+      "id": "XC-A",
+      "platform": "android",
+      "version": "1.2026.293",
+      "product": "xigua",
+      "status": "partial",
+      "stages": {
+        "entry": {
+          "description": "zaq.A0/d8q collector",
+          "evidence_ids": [
+            "A01",
+            "A02"
+          ],
+          "status": "observed-static"
+        },
+        "identity": {
+          "description": "conversationId/fz3.id; full turn/request mapping unknown",
+          "evidence_ids": [
+            "A05",
+            "A06",
+            "A12"
+          ],
+          "status": "partial"
+        },
+        "state": {
+          "description": "r0/q0→l0/k0; write-to-observer gap",
+          "evidence_ids": [
+            "A03",
+            "A04",
+            "A09"
+          ],
+          "status": "partial"
+        },
+        "data_source": {
+          "description": "owr/uwr event objects; server guarantees unproven",
+          "evidence_ids": [
+            "A05",
+            "A07"
+          ],
+          "status": "partial"
+        },
+        "projection": {
+          "description": "pu71/wpc0→ycc0",
+          "evidence_ids": [
+            "A07",
+            "A08"
+          ],
+          "status": "observed-static"
+        },
+        "render": {
+          "description": "sa/odv0→mgw routes→Valdi host or other routes",
+          "evidence_ids": [
+            "A14",
+            "A15",
+            "A17",
+            "A18",
+            "A19",
+            "A20",
+            "A21"
+          ],
+          "status": "partial"
+        },
+        "interaction": {
+          "description": "composer/selection/scroll owner unknown",
+          "evidence_ids": [],
+          "status": "unknown"
+        },
+        "cleanup_recovery": {
+          "description": "previous U1 job cancellation; complete stale-event scope unknown",
+          "evidence_ids": [
+            "A01",
+            "A13"
+          ],
+          "status": "partial"
+        }
+      }
+    },
+    {
+      "id": "XC-I",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "product": "xigua",
+      "status": "partial",
+      "stages": {
+        "entry": {
+          "description": "native Messages structure and packaged worker; actual entry link unknown",
+          "evidence_ids": [
+            "I03",
+            "I04",
+            "J09"
+          ],
+          "status": "partial"
+        },
+        "identity": {
+          "description": "native message/presentation/turn fields and separate worker requestId",
+          "evidence_ids": [
+            "I05",
+            "I08",
+            "J09"
+          ],
+          "status": "partial"
+        },
+        "state": {
+          "description": "native conversation state fields, no method flow proof",
+          "evidence_ids": [
+            "I03",
+            "I04"
+          ],
+          "status": "partial"
+        },
+        "data_source": {
+          "description": "packaged JS/API adapter is capability, main consumer unknown",
+          "evidence_ids": [
+            "J09"
+          ],
+          "status": "partial"
+        },
+        "projection": {
+          "description": "DILValdiViewModel native structure + JS root",
+          "evidence_ids": [
+            "I06",
+            "J08"
+          ],
+          "status": "partial"
+        },
+        "render": {
+          "description": "DIL root/component runtime capability",
+          "evidence_ids": [
+            "I01",
+            "I02",
+            "J01",
+            "J08"
+          ],
+          "status": "partial"
+        },
+        "interaction": {
+          "description": "keyboard/focus/scroll adapters; main consumers unknown",
+          "evidence_ids": [
+            "J02",
+            "J03",
+            "J04",
+            "J05",
+            "J06"
+          ],
+          "status": "partial"
+        },
+        "cleanup_recovery": {
+          "description": "draft tasks/lifecycle metadata and JS disposal; native behavior unknown",
+          "evidence_ids": [
+            "I09",
+            "J03"
+          ],
+          "status": "partial"
+        }
+      }
+    },
+    {
+      "id": "RC-A",
+      "platform": "android",
+      "version": "1.2026.293",
+      "product": "remote",
+      "status": "partial",
+      "stages": {
+        "entry": {
+          "description": "discovery→pool insertion gap; RPC facades identified",
+          "evidence_ids": [
+            "R04",
+            "R08"
+          ],
+          "status": "partial"
+        },
+        "identity": {
+          "description": "host object/active generation and request correlation",
+          "evidence_ids": [
+            "R01",
+            "R02",
+            "R03",
+            "R05",
+            "R07"
+          ],
+          "status": "observed-static"
+        },
+        "state": {
+          "description": "session Map independent selection; upper cleanup scope unknown",
+          "evidence_ids": [
+            "R01",
+            "R02",
+            "R04"
+          ],
+          "status": "partial"
+        },
+        "data_source": {
+          "description": "RPC wrappers and relay envelope",
+          "evidence_ids": [
+            "R14",
+            "R15",
+            "R16"
+          ],
+          "status": "partial"
+        },
+        "projection": {
+          "description": "responses/methods; UI projection unknown",
+          "evidence_ids": [
+            "R06",
+            "R07"
+          ],
+          "status": "partial"
+        },
+        "render": {
+          "description": "mobile Remote UI consumer unresolved",
+          "evidence_ids": [],
+          "status": "unknown"
+        },
+        "interaction": {
+          "description": "Goal/approval/interrupt entry exists, UI/owner gate incomplete",
+          "evidence_ids": [
+            "R10",
+            "R11",
+            "R12",
+            "R13"
+          ],
+          "status": "partial"
+        },
+        "cleanup_recovery": {
+          "description": "identity-checked removal/async return; full reconnect unknown",
+          "evidence_ids": [
+            "R02",
+            "R03",
+            "R05",
+            "R16"
+          ],
+          "status": "partial"
+        }
+      }
+    },
+    {
+      "id": "RC-I",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "product": "remote",
+      "status": "unknown",
+      "stages": {
+        "entry": {
+          "description": "native Remote entry not independently traced",
+          "evidence_ids": [],
+          "status": "unknown"
+        },
+        "identity": {
+          "description": "host/request identities unbound",
+          "evidence_ids": [],
+          "status": "unknown"
+        },
+        "state": {
+          "description": "native session state flow unknown",
+          "evidence_ids": [],
+          "status": "unknown"
+        },
+        "data_source": {
+          "description": "do not infer from ordinary chat worker",
+          "evidence_ids": [],
+          "status": "unknown"
+        },
+        "projection": {
+          "description": "RPC-to-UI projection unknown",
+          "evidence_ids": [],
+          "status": "unknown"
+        },
+        "render": {
+          "description": "actual Remote component route unknown",
+          "evidence_ids": [],
+          "status": "unknown"
+        },
+        "interaction": {
+          "description": "Goal/approval/input/scroll consumers unknown",
+          "evidence_ids": [],
+          "status": "unknown"
+        },
+        "cleanup_recovery": {
+          "description": "connection/native lifecycle unknown",
+          "evidence_ids": [],
+          "status": "unknown"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "authority": "independent manager unit validation",
+  "checks": [
+    "initial history snapshot is not re-emitted as live notifications",
+    "concurrent polls coalesce without duplicate delivery",
+    "cached read cannot consume live notifications silently",
+    "lease disposal removes listener",
+    "foreign scope/unsupported subscription rejected",
+    "invalid event batch rolls back cursor and all turns",
+    "later valid retry clears connection error",
+    "manager disposal ignores delayed response and preserves other manager/transport",
+    "listener failure isolated"
+  ],
+  "limits": [
+    "Not a complete official manager implementation",
+    "No actual renderer or native IPC in this unit suite"
+  ]
+}

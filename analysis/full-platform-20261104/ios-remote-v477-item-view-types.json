@@ -1,0 +1,788 @@
+[
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7e12048",
+    "mangled_address": "0x8e20cda",
+    "length": 24,
+    "mangled_hex": "02cd16cb01790103d17800029245cb017901c8d078004747",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad23a8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_ConditionalContentVMn"
+      },
+      {
+        "offset": 6,
+        "kind": 1,
+        "target": "0x95adde4",
+        "resolved_context": "0x95adde4",
+        "label": "<unresolved-context@0x95adddc>.CodexRemoteRealtimeDelegationTranscript"
+      },
+      {
+        "offset": 11,
+        "kind": 2,
+        "target": "0xaad5278",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI6VStackVMn"
+      },
+      {
+        "offset": 17,
+        "kind": 1,
+        "target": "0x95addb4",
+        "resolved_context": "0x95addb4",
+        "label": "CodexRemoteThread.UserMessageBubble"
+      }
+    ],
+    "unresolved_contexts": [
+      {
+        "address": "0x95adddc",
+        "flags": "0x42",
+        "kind": 2,
+        "reason": "Unsupported context kind; name and parent chain not interpreted"
+      }
+    ],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7e12050",
+    "mangled_address": "0x8e20cf4",
+    "length": 322,
+    "mangled_hex": "021b4dcb017902ad16cb01794142790164d2780002f746cb0179536179013ad2780047536941427941427941435367024c69c9017901fad1780002e905cb0179414a79029812cb0102fb0acb014702e501cb014702074bcb014747414a790195d17800790167d1780047414e474747475367414879013ad17800416f5047475f41427941487902fd44cb0179414479536179029961c9014702fb04ca017941335f53534701efd078004747416f5047414879414a79414a79414a79414a79414a7902922ecb01026d26cb0179027f2bcb0153674747024621cb017902d83fcb014747414e4702a615cb01790288f2ca0179021a09cb014131385f47474702660acb0179022806cb01794132345f024e12cb0179020814cb01474150474747416f50474753670146d078005367414879414a79011dd07800414c47416f504753677447",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad5a10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI9TupleViewVMn"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaad23a8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_ConditionalContentVMn"
+      },
+      {
+        "offset": 15,
+        "kind": 1,
+        "target": "0x95adf68",
+        "resolved_context": "0x95adf68",
+        "label": "CodexRemoteThread.CodexRemoteCachedMarkdownBlockStack"
+      },
+      {
+        "offset": 20,
+        "kind": 2,
+        "target": "0xaad5400",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI7ForEachVMn"
+      },
+      {
+        "offset": 29,
+        "kind": 1,
+        "target": "0x95adf4c",
+        "resolved_context": "0x95adf4c",
+        "label": "CodexRemoteThread.CodexRemoteAssistantInlineBlock"
+      },
+      {
+        "offset": 47,
+        "kind": 2,
+        "target": "0xaab7670",
+        "resolved_context": "0x9753ee4",
+        "label": "SwiftUIToolbelt.EmptyConditionalContent"
+      },
+      {
+        "offset": 53,
+        "kind": 1,
+        "target": "0x95adf24",
+        "resolved_context": "0x95adf24",
+        "label": "CodexRemoteThread.CodexRemoteInlineDILView"
+      },
+      {
+        "offset": 58,
+        "kind": 2,
+        "target": "0xaad1318",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15ModifiedContentVMn"
+      },
+      {
+        "offset": 67,
+        "kind": 2,
+        "target": "0xaad1fd0",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI18SubviewsCollectionVMn"
+      },
+      {
+        "offset": 72,
+        "kind": 2,
+        "target": "0xaad1838",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI16_FlexFrameLayoutVMn"
+      },
+      {
+        "offset": 78,
+        "kind": 2,
+        "target": "0xaad0f28",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI14_PaddingLayoutVMn"
+      },
+      {
+        "offset": 84,
+        "kind": 2,
+        "target": "0xaad5850",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI9EmptyViewVMn"
+      },
+      {
+        "offset": 94,
+        "kind": 1,
+        "target": "0x95adee8",
+        "resolved_context": "0x95adee8",
+        "label": "CodexRemoteThread.CodexRemoteWritingBlockCard"
+      },
+      {
+        "offset": 100,
+        "kind": 1,
+        "target": "0x95adec0",
+        "resolved_context": "0x95adec0",
+        "label": "CodexRemoteThread.CodexRemoteWritingBlockBody"
+      },
+      {
+        "offset": 117,
+        "kind": 1,
+        "target": "0x95adea4",
+        "resolved_context": "0x95adea4",
+        "label": "CodexRemoteThread.CodexRemoteAsyncQuestionTranscript"
+      },
+      {
+        "offset": 134,
+        "kind": 2,
+        "target": "0xaad5278",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI6VStackVMn"
+      },
+      {
+        "offset": 146,
+        "kind": 2,
+        "target": "0xaab6f20",
+        "resolved_context": "0x95d13ec",
+        "label": "CodexRemoteCore.CodexRemoteReviewFinding"
+      },
+      {
+        "offset": 152,
+        "kind": 2,
+        "target": "0xaac1288",
+        "resolved_context": "0x975e214",
+        "label": "Tagged.Tagged"
+      },
+      {
+        "offset": 164,
+        "kind": 1,
+        "target": "0x95ade88",
+        "resolved_context": "0x95ade88",
+        "label": "CodexRemoteThread.CodexRemoteReviewFindingCard"
+      },
+      {
+        "offset": 193,
+        "kind": 2,
+        "target": "0xaad3c48",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4TextVMn"
+      },
+      {
+        "offset": 198,
+        "kind": 2,
+        "target": "0xaad3428",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+      },
+      {
+        "offset": 204,
+        "kind": 2,
+        "target": "0xaad3940",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4FontVMn"
+      },
+      {
+        "offset": 213,
+        "kind": 2,
+        "target": "0xaad2f10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+      },
+      {
+        "offset": 219,
+        "kind": 2,
+        "target": "0xaad4da8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI5ColorVMn"
+      },
+      {
+        "offset": 229,
+        "kind": 2,
+        "target": "0xaad2380",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_BackgroundModifierVMn"
+      },
+      {
+        "offset": 235,
+        "kind": 2,
+        "target": "0xaad0068",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI10_ShapeViewVMn"
+      },
+      {
+        "offset": 241,
+        "kind": 2,
+        "target": "0xaad1700",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI16RoundedRectangleVMn"
+      },
+      {
+        "offset": 253,
+        "kind": 2,
+        "target": "0xaad1858",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI16_OverlayModifierVMn"
+      },
+      {
+        "offset": 259,
+        "kind": 2,
+        "target": "0xaad1420",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15StrokeShapeViewVMn"
+      },
+      {
+        "offset": 269,
+        "kind": 2,
+        "target": "0xaad2050",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI18_OpacityShapeStyleVMn"
+      },
+      {
+        "offset": 275,
+        "kind": 2,
+        "target": "0xaad2210",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19SeparatorShapeStyleVMn"
+      },
+      {
+        "offset": 293,
+        "kind": 1,
+        "target": "0x95ade60",
+        "resolved_context": "0x95ade60",
+        "label": "CodexRemoteThread.CodexRemoteImageView"
+      },
+      {
+        "offset": 306,
+        "kind": 1,
+        "target": "0x95ade44",
+        "resolved_context": "0x95ade44",
+        "label": "CodexRemoteThread.CodexRemoteCreatedThreadDirectiveCards"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7e12060",
+    "mangled_address": "0x8e20e40",
+    "length": 198,
+    "mangled_hex": "026715cb0179022968c90179022b44cb017902ad45cb017953617902c460c90147022604ca01794145535347011bd07800474702a404cb0179414c79025311cb0102b609cb014702a000cb014702c249cb0147414279414c79414c79414c79414c79414c7902a22dcb01027d25cb0179028f2acb0153674747025620cb017902e83ecb01474741504702b614cb01790298f1ca0179022a08cb01415f474747027809cb0179023a05cb017941355f026111cb0179021b13cb0147415247474741715247475367",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad23a8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_ConditionalContentVMn"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaab7670",
+        "resolved_context": "0x9753ee4",
+        "label": "SwiftUIToolbelt.EmptyConditionalContent"
+      },
+      {
+        "offset": 12,
+        "kind": 2,
+        "target": "0xaad5278",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI6VStackVMn"
+      },
+      {
+        "offset": 18,
+        "kind": 2,
+        "target": "0xaad5400",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI7ForEachVMn"
+      },
+      {
+        "offset": 27,
+        "kind": 2,
+        "target": "0xaab6f20",
+        "resolved_context": "0x95d13ec",
+        "label": "CodexRemoteCore.CodexRemoteReviewFinding"
+      },
+      {
+        "offset": 33,
+        "kind": 2,
+        "target": "0xaac1288",
+        "resolved_context": "0x975e214",
+        "label": "Tagged.Tagged"
+      },
+      {
+        "offset": 44,
+        "kind": 1,
+        "target": "0x95ade88",
+        "resolved_context": "0x95ade88",
+        "label": "CodexRemoteThread.CodexRemoteReviewFindingCard"
+      },
+      {
+        "offset": 51,
+        "kind": 2,
+        "target": "0xaad1318",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15ModifiedContentVMn"
+      },
+      {
+        "offset": 60,
+        "kind": 2,
+        "target": "0xaad1fd0",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI18SubviewsCollectionVMn"
+      },
+      {
+        "offset": 65,
+        "kind": 2,
+        "target": "0xaad1838",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI16_FlexFrameLayoutVMn"
+      },
+      {
+        "offset": 71,
+        "kind": 2,
+        "target": "0xaad0f28",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI14_PaddingLayoutVMn"
+      },
+      {
+        "offset": 77,
+        "kind": 2,
+        "target": "0xaad5850",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI9EmptyViewVMn"
+      },
+      {
+        "offset": 101,
+        "kind": 2,
+        "target": "0xaad3c48",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4TextVMn"
+      },
+      {
+        "offset": 106,
+        "kind": 2,
+        "target": "0xaad3428",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+      },
+      {
+        "offset": 112,
+        "kind": 2,
+        "target": "0xaad3940",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4FontVMn"
+      },
+      {
+        "offset": 121,
+        "kind": 2,
+        "target": "0xaad2f10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+      },
+      {
+        "offset": 127,
+        "kind": 2,
+        "target": "0xaad4da8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI5ColorVMn"
+      },
+      {
+        "offset": 137,
+        "kind": 2,
+        "target": "0xaad2380",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_BackgroundModifierVMn"
+      },
+      {
+        "offset": 143,
+        "kind": 2,
+        "target": "0xaad0068",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI10_ShapeViewVMn"
+      },
+      {
+        "offset": 149,
+        "kind": 2,
+        "target": "0xaad1700",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI16RoundedRectangleVMn"
+      },
+      {
+        "offset": 159,
+        "kind": 2,
+        "target": "0xaad1858",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI16_OverlayModifierVMn"
+      },
+      {
+        "offset": 165,
+        "kind": 2,
+        "target": "0xaad1420",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15StrokeShapeViewVMn"
+      },
+      {
+        "offset": 174,
+        "kind": 2,
+        "target": "0xaad2050",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI18_OpacityShapeStyleVMn"
+      },
+      {
+        "offset": 180,
+        "kind": 2,
+        "target": "0xaad2210",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19SeparatorShapeStyleVMn"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7e11e58",
+    "mangled_address": "0x8e1f042",
+    "length": 425,
+    "mangled_hex": "02bd63cb01795361790170fc780047026e7dc901022162cb0179024b33cb01790109f17800790123ed780041457941417902cc85cb01790116da78004741644579414679414679414679414579028069cb0179414179536179025481c9014702e621ca0179414d5353470123f17800475f02ec84c9017953617902cb37ca0147536901eff07800477447474147790153f07800790131f0780001f4ef78004701d2ef7800474741467941477902d95fcb0179414c7941467941467941315f415a79415f021222cb017941365f7941365f7941365f7902304bcb01020b43cb0179021d48cb015367474702e43dcb017902765ccb01474741385f7953695367474741385f7902f949cb0147474747415a79415f012fef780047475f0103ef78005367744747414579414c7941525f01d4ee7800744747474151474741467941467941477941355f79414c79415a794146790189ee7800415f4741467902aaa2c90179535341375f4741375f47475f4132395f744747414579414c7941525f0134ee7800744747470107ee78004741467901ceed780001aded78005367474747474747474135395f474747",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad5400",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI7ForEachVMn"
+      },
+      {
+        "offset": 9,
+        "kind": 1,
+        "target": "0x95aecbc",
+        "resolved_context": "0x95aecbc",
+        "label": "CodexRemoteThread.CodexRemoteToolActivityGroup.ActivityRow"
+      },
+      {
+        "offset": 15,
+        "kind": 2,
+        "target": "0xaab6dc0",
+        "resolved_context": "0x95d1bc8",
+        "label": "CodexRemoteCore.CodexRenderedItem.ID"
+      },
+      {
+        "offset": 20,
+        "kind": 2,
+        "target": "0xaad5278",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI6VStackVMn"
+      },
+      {
+        "offset": 26,
+        "kind": 2,
+        "target": "0xaad23a8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_ConditionalContentVMn"
+      },
+      {
+        "offset": 32,
+        "kind": 1,
+        "target": "0x95ae16c",
+        "resolved_context": "0x95ae16c",
+        "label": "CodexRemoteThread.ExpandableAssistantSummaryItem"
+      },
+      {
+        "offset": 38,
+        "kind": 1,
+        "target": "0x95add8c",
+        "resolved_context": "0x95add8c",
+        "label": "CodexRemoteThread.ToolActivityHistorySummaryView"
+      },
+      {
+        "offset": 49,
+        "kind": 2,
+        "target": "0xaad7640",
+        "resolved_context": null,
+        "label": "_$ss10ArraySliceVMn"
+      },
+      {
+        "offset": 55,
+        "kind": 1,
+        "target": "0x95aca90",
+        "resolved_context": "0x95aca90",
+        "label": "CodexRemoteThread.CodexRemoteToolActivityGroup.Activity"
+      },
+      {
+        "offset": 77,
+        "kind": 2,
+        "target": "0xaad5a10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI9TupleViewVMn"
+      },
+      {
+        "offset": 89,
+        "kind": 2,
+        "target": "0xaab71f0",
+        "resolved_context": "0x95d0d50",
+        "label": "CodexRemoteCore.CodexRemoteAutomaticApprovalReview"
+      },
+      {
+        "offset": 95,
+        "kind": 2,
+        "target": "0xaac1288",
+        "resolved_context": "0x975e214",
+        "label": "Tagged.Tagged"
+      },
+      {
+        "offset": 106,
+        "kind": 1,
+        "target": "0x95ae1d0",
+        "resolved_context": "0x95ae1d0",
+        "label": "CodexRemoteThread.CodexRemoteAutomaticApprovalReviewView"
+      },
+      {
+        "offset": 113,
+        "kind": 2,
+        "target": "0xaab75a0",
+        "resolved_context": "0x9754128",
+        "label": "SwiftUIToolbelt.ForEachWithIndex"
+      },
+      {
+        "offset": 122,
+        "kind": 2,
+        "target": "0xaac2888",
+        "resolved_context": "0x95f3320",
+        "label": "Generated.Components.Schemas.FileUpdateChange"
+      },
+      {
+        "offset": 130,
+        "kind": 1,
+        "target": "0x95ae1b4",
+        "resolved_context": "0x95ae1b4",
+        "label": "CodexRemoteThread.CodexRemoteFileChangeDisclosurePart"
+      },
+      {
+        "offset": 142,
+        "kind": 1,
+        "target": "0x95ae124",
+        "resolved_context": "0x95ae124",
+        "label": "CodexRemoteThread.CodexRemoteToolActivityLabel"
+      },
+      {
+        "offset": 148,
+        "kind": 1,
+        "target": "0x95ae108",
+        "resolved_context": "0x95ae108",
+        "label": "CodexRemoteThread.CodexRemoteToolActivityRowStyle.Symbol"
+      },
+      {
+        "offset": 153,
+        "kind": 1,
+        "target": "0x95ae0d0",
+        "resolved_context": "0x95ae0d0",
+        "label": "CodexRemoteThread.ToolActivitySummaryRow"
+      },
+      {
+        "offset": 159,
+        "kind": 1,
+        "target": "0x95ae0b4",
+        "resolved_context": "0x95ae0b4",
+        "label": "<unresolved-context@0x95ae0ac>.WebSearchQueryList"
+      },
+      {
+        "offset": 172,
+        "kind": 2,
+        "target": "0xaad50c8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI6HStackVMn"
+      },
+      {
+        "offset": 195,
+        "kind": 2,
+        "target": "0xaad1318",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15ModifiedContentVMn"
+      },
+      {
+        "offset": 213,
+        "kind": 2,
+        "target": "0xaad3c48",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4TextVMn"
+      },
+      {
+        "offset": 218,
+        "kind": 2,
+        "target": "0xaad3428",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+      },
+      {
+        "offset": 224,
+        "kind": 2,
+        "target": "0xaad3940",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4FontVMn"
+      },
+      {
+        "offset": 233,
+        "kind": 2,
+        "target": "0xaad2f10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+      },
+      {
+        "offset": 239,
+        "kind": 2,
+        "target": "0xaad4da8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI5ColorVMn"
+      },
+      {
+        "offset": 260,
+        "kind": 2,
+        "target": "0xaad3b40",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4TextV14TruncationModeOMn"
+      },
+      {
+        "offset": 274,
+        "kind": 1,
+        "target": "0x95ae084",
+        "resolved_context": "0x95ae084",
+        "label": "<unresolved-context@0x95ae07c>.RunningCommandExecutionSummaryText"
+      },
+      {
+        "offset": 282,
+        "kind": 1,
+        "target": "0x95ae060",
+        "resolved_context": "0x95ae060",
+        "label": "CodexRemoteThread.CodexRemoteAutomaticApprovalReviewBadge"
+      },
+      {
+        "offset": 301,
+        "kind": 1,
+        "target": "0x95ae044",
+        "resolved_context": "0x95ae044",
+        "label": "CodexRemoteThread.CommandExecutionShellCard"
+      },
+      {
+        "offset": 336,
+        "kind": 1,
+        "target": "0x95ae01c",
+        "resolved_context": "0x95ae01c",
+        "label": "CodexRemoteThread.CodexRemotePluginIcon"
+      },
+      {
+        "offset": 347,
+        "kind": 2,
+        "target": "0xaab9448",
+        "resolved_context": "0x971e5c0",
+        "label": "SwiftUIStyleguide.ShimmeringTextView"
+      },
+      {
+        "offset": 381,
+        "kind": 1,
+        "target": "0x95adff4",
+        "resolved_context": "0x95adff4",
+        "label": "<unresolved-context@0x95adfec>.CodexRemoteMCPToolCallDetailView"
+      },
+      {
+        "offset": 390,
+        "kind": 1,
+        "target": "0x95adfd0",
+        "resolved_context": "0x95adfd0",
+        "label": "<unresolved-context@0x95adfc8>.CodexRemoteDynamicToolCallView"
+      },
+      {
+        "offset": 399,
+        "kind": 1,
+        "target": "0x95adfa0",
+        "resolved_context": "0x95adfa0",
+        "label": "CodexRemoteThread.CodexRemoteFunctionCallView"
+      },
+      {
+        "offset": 404,
+        "kind": 1,
+        "target": "0x95adf84",
+        "resolved_context": "0x95adf84",
+        "label": "CodexRemoteThread.CodexRemoteExternalEventRow"
+      }
+    ],
+    "unresolved_contexts": [
+      {
+        "address": "0x95ae0ac",
+        "flags": "0x42",
+        "kind": 2,
+        "reason": "Unsupported context kind; name and parent chain not interpreted"
+      },
+      {
+        "address": "0x95ae07c",
+        "flags": "0x42",
+        "kind": 2,
+        "reason": "Unsupported context kind; name and parent chain not interpreted"
+      },
+      {
+        "address": "0x95adfec",
+        "flags": "0x42",
+        "kind": 2,
+        "reason": "Unsupported context kind; name and parent chain not interpreted"
+      },
+      {
+        "address": "0x95adfc8",
+        "flags": "0x42",
+        "kind": 2,
+        "reason": "Unsupported context kind; name and parent chain not interpreted"
+      }
+    ],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  }
+]

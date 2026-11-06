@@ -1,0 +1,125 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "HistorySideMenu",
+      "descriptor": "0x95920a8",
+      "type_section_entry": "0x9d385c0",
+      "accessor": "0x12ebaa8",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x9a14b5c",
+          "type_reference": "0x8d85b74"
+        },
+        {
+          "name": "_usesCompactVerticalToolbar",
+          "record": "0x9a14b68",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "_sideMenuContainerAdditionalSafeAreaInsets",
+          "record": "0x9a14b74",
+          "type_reference": "0x92c4428"
+        },
+        {
+          "name": "__renameConversationAlert",
+          "record": "0x9a14b80",
+          "type_reference": "0x8d868fc"
+        },
+        {
+          "name": "clampsInitialScrollPosition",
+          "record": "0x9a14b8c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "closeSidebar",
+          "record": "0x9a14b98",
+          "type_reference": "0x8c5bfb0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7da9f4c",
+          "flags": "0x20000",
+          "section_entry": "0x9cdf0a4"
+        },
+        {
+          "descriptor": "0x7da9f68",
+          "flags": "0x30000",
+          "section_entry": "0x9cdf0a8"
+        }
+      ]
+    },
+    {
+      "name": "HistorySideMenuRepresentable",
+      "descriptor": "0x9592c58",
+      "type_section_entry": "0x9d386d0",
+      "accessor": "0x1351be8",
+      "fields": [
+        {
+          "name": "accountID",
+          "record": "0x9a16d90",
+          "type_reference": "0x8d09990"
+        },
+        {
+          "name": "viewModel",
+          "record": "0x9a16d9c",
+          "type_reference": "0x8d860ca"
+        },
+        {
+          "name": "_contentOffsetY",
+          "record": "0x9a16da8",
+          "type_reference": "0x8e9a638"
+        },
+        {
+          "name": "clampsInitialScrollPosition",
+          "record": "0x9a16db4",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "additionalSafeAreaInsets",
+          "record": "0x9a16dc0",
+          "type_reference": "0x8da84b0"
+        },
+        {
+          "name": "usesCompactVerticalToolbar",
+          "record": "0x9a16dcc",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "closeSidebar",
+          "record": "0x9a16dd8",
+          "type_reference": "0x8c5bfb0"
+        },
+        {
+          "name": "presentRenameAlert",
+          "record": "0x9a16de4",
+          "type_reference": "0x8d8a9b0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7dac7a8",
+          "flags": "0x30000",
+          "section_entry": "0x9cdf1dc"
+        },
+        {
+          "descriptor": "0x7dadd34",
+          "flags": "0x30000",
+          "section_entry": "0x9cdf3a0"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

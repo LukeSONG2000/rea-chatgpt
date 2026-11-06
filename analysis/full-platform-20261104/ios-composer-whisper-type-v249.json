@@ -1,0 +1,31 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": null,
+  "mangled_address": "0x924729a",
+  "length": 7,
+  "mangled_hex": "02d56087015f70",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 2,
+      "target": "0xaabd370",
+      "resolved_context": "0x96b1af4",
+      "label": "<unresolved-context@0x96b1af4>"
+    }
+  ],
+  "unresolved_contexts": [
+    {
+      "address": "0x96b1af4",
+      "flags": "0x10043",
+      "kind": 3,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    }
+  ],
+  "limits": [
+    "Symbolic context references only, not a reconstructed generic type tree",
+    "Type presence does not prove runtime branch selection or component creation"
+  ]
+}

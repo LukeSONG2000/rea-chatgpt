@@ -1,0 +1,170 @@
+{
+  "schema": "rea-ios-research-findings-v1",
+  "batch": "v478",
+  "status": "partial",
+  "previous_goal_turn": "progress: v477 evidence and runtime receipts reconciled",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static_artifact_observation",
+  "integration_decision": "Select the correct native text rendering and selection host before replacing the Remote response preview.",
+  "findings": [
+    {
+      "symbol": "MarkdownTextBlock",
+      "descriptor": "0x96fe004",
+      "conformance": "0x82e9384",
+      "conclusion": "UIViewRepresentable make/update/sizeThatFits witnesses resolve to 0x6934594/0x6934598/0x69345c0, which branch to 0x6933558/0x693365c/0x6933f38."
+    },
+    {
+      "symbol": "MarkdownTextBlockView",
+      "class": "0xad17588",
+      "conclusion": "Verified superclass binding is UIKit UIView. ObjC methods expose read-only text input, range conversion, selection rects, copying, selectAll, edit menus, simultaneous gestures, intrinsic size, layout and drawRect.",
+      "limit": "Method inventory alone does not recover gesture arbitration, selection or copy implementation."
+    },
+    {
+      "symbol": "SizeAffectingProperties",
+      "descriptor": "0x96fee54",
+      "conclusion": "attributedText is NSAttributedString, alongside dottedUnderlineColor, attachment-to-UIView map, markdownOptions, lineLimit and hugsTextHorizontally.",
+      "limit": "The preceding MarkdownResult.Item.Text contains Foundation.AttributedString; conversion and effective attributes remain partial."
+    },
+    {
+      "symbol": "MarkdownTextRenderer",
+      "descriptor": "0x96feaa4",
+      "conclusion": "Lazy NSTextLayoutManager, NSTextContentStorage and NSTextContainer fields establish the TextKit 2 engine. Additional arrays carry links, custom underlines, inline code backgrounds, block quotes and highlights."
+    },
+    {
+      "symbol": "Text container construction",
+      "function": "0x693867c",
+      "sites": [
+        "0x69386ac",
+        "0x69386b8",
+        "0x69386d0"
+      ],
+      "conclusion": "Constructs a container and sets lineFragmentPadding to zero; lineBreakMode is supplied by options.",
+      "limit": "Do not invent the effective lineBreakMode enum value."
+    },
+    {
+      "symbol": "Width change and layout",
+      "function": "0x6925234",
+      "callee": "0x6950684",
+      "conclusion": "A changed maximum width triggers recomputation. Container size uses the maximum width and greatest finite height, then layout is ensured and usageBoundsForTextContainer queried.",
+      "sites": [
+        "0x69506f8",
+        "0x69507a4",
+        "0x69507c0",
+        "0x69507c8"
+      ],
+      "limit": "Partial redraw, paragraph-indent adjustments and all size-cache semantics remain partial."
+    },
+    {
+      "symbol": "Draw path",
+      "call_path": [
+        "0x6938334",
+        "0x6938074",
+        "0x6922a2c"
+      ],
+      "conclusion": "Native view drawing reaches renderer operations and enumerates text layout fragments at 0x6923278 with options value 4 (ensuresLayout in the installed UIKit header).",
+      "limit": "Per-fragment callback, decoration clipping and highlight order remain partially traced."
+    }
+  ],
+  "unsupported": [
+    {
+      "location": "native-text-fields.json",
+      "reason": "Symbolic type kind 12 is explicitly retained as unsupported for applicable fields; no guessed generic structure."
+    }
+  ],
+  "downstream_change": {
+    "host": "Restore a read-only UIView plus TextKit 2 renderer with explicit input/selection/link adapters, rather than claim the current SwiftUI Text is the official native host.",
+    "input": "Use explicitly attributed synthetic blocks while preserving the native parser boundary. A full private parser is not a prerequisite for integrating the proven host lifecycle.",
+    "minimum_acceptance": [
+      "Same task-page entry",
+      "Unicode and multiline layout",
+      "Dynamic Type and width changes",
+      "Selection/copy/link actions",
+      "No nested scroll or composer hit-testing regression"
+    ],
+    "precise_remaining_edge": "Native draw fragment callback and selection-to-text-range conversion must be mapped before promoting the replacement into the preview."
+  },
+  "runtime_change": false,
+  "new_build": false,
+  "original_artifact_executed": false,
+  "cross_platform_boundary": "The verified custom UIView and TextKit 2 host is iOS-native. Android text engine, shared inputs and interaction ownership need independent evidence.",
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-container.json",
+      "sha256": "0fb6cb032b9bcf7ae2a3a90065067d576a1e087365b37ac0c83f2d0f6b6e83df"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-draw-body.asm",
+      "sha256": "2680891035170c2fdacc1336d47afdf1c84e06d9744c4c24cc14a82231b4809f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-draw-body.json",
+      "sha256": "92e8b8afa129bf320b967f97e28dd8facf96faafa3702e5df63273753ad8df64"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-draw.json",
+      "sha256": "94af19be8a1846c901aec6270959abf0a0071b453722eb9ae2aba2c2b7cc2144"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-fragment-draw.json",
+      "sha256": "60adbe449eec6fc48ce7d74264585116c30031c81c7dce031f8cdc6dfb3cd1c9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-native-text-fields.json",
+      "sha256": "948d5bad07e8ba8b2638e0a925fdf4f65a15b0e2efe32de6518f51e2e81e467b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-objc-symbols.json",
+      "sha256": "c4da2f632e7dff35d4398e68842e9507406ec77647826ff70ddbc889583b99ed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-renderer-draw-tail.json",
+      "sha256": "62fab0c94360d75d6416adaff19687f12d3f3ff6f461ce0b1317a9854d87309e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-renderer-draw.asm",
+      "sha256": "40d4ad03b0b580e96e2171b49b33295c1a851261a08bace78eba5a0e491b8817"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-renderer-draw.json",
+      "sha256": "f512038eb340d6b565a536cd8720532ebcca9943a6c2ddb6bf59dac06169bee0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-renderer-fields.json",
+      "sha256": "6644531d3e6d7802c753f59c581b3ac867b7bd9226378b3842cb85599a2543e4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-renderer-width.asm",
+      "sha256": "34562ebfa017786a38f356d802eded0301b523069a79fde48573c8b7eb3540ac"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-renderer-width.json",
+      "sha256": "e0e591f4cf3256b1516841f2002f3a8aadc8ba2a7e596f3ddf2dccd89195d783"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-text-boundary.json",
+      "sha256": "fd8805c4f84cc76ca4e07134007a1efa7af613e0b73aa054618b52cc2eb7a609"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-text-lifecycle.asm",
+      "sha256": "920fd624db46f52a7a447b7787d520a653797ac902f4d29b8363bac3cd57b246"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-text-lifecycle.json",
+      "sha256": "05126e43d6a3141e44dc0e7d8afe74ecadc63bfe6a9bb9dfea783e1481b2e807"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-text-objc.json",
+      "sha256": "9abe056d5ea30e323e1f710512271f38d739a73ed80047a100dbcb85c5dc1c54"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-width-invalidation.asm",
+      "sha256": "24f42a3f9ab5ff1ac84dda73c1a15c150e05ddede45e6480ac95807fb765fc1f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v478-width-invalidation.json",
+      "sha256": "2073046aec50591cad7a9dfbddd155e3beac0846d2e3f9f595d7a064f28f72e5"
+    }
+  ]
+}

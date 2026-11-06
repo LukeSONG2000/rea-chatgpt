@@ -1,0 +1,51 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "descriptor": "0x95d5c30",
+  "name": "Status",
+  "payload_cases": 0,
+  "empty_cases": 7,
+  "fields": [
+    {
+      "index": 0,
+      "name": "cached",
+      "type_reference": null,
+      "branch": "0x1a339a4"
+    },
+    {
+      "index": 1,
+      "name": "running",
+      "type_reference": null,
+      "branch": "0x1a339a4"
+    },
+    {
+      "index": 2,
+      "name": "success",
+      "type_reference": null,
+      "branch": "0x1a33868"
+    },
+    {
+      "index": 3,
+      "name": "failure",
+      "type_reference": null,
+      "branch": "0x1a3389c"
+    },
+    {
+      "index": 4,
+      "name": "interrupted",
+      "type_reference": null,
+      "branch": "0x1a339a4"
+    },
+    {
+      "index": 5,
+      "name": "stopped",
+      "type_reference": null,
+      "branch": "0x1a33858"
+    },
+    {
+      "index": 6,
+      "name": "failedPromptSubmission",
+      "type_reference": null,
+      "branch": "0x1a33858"
+    }
+  ]
+}

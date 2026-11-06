@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.DefaultFont=exports.fontName=void 0;const t=require("../../../mathjax_font/svg/default");exports.fontName=t.Font.fontName,exports.DefaultFont=t.Font.DefaultFont;

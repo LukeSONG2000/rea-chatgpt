@@ -1,0 +1,18 @@
+{
+  "batch": "v471-v473",
+  "type": "independent_host_runtime_measurement",
+  "platform": "iOS Simulator 27.0",
+  "purpose": "Separate SwiftUI layout from selectable text AX interaction bounds",
+  "observed_frames": "remote-current-request: (16.0, 344.0, 293.66666666666663, 42.333333333333314)\nremote-activity-toggle: (16.0, 410.3333333333333, 370.0, 20.33333333333337)\nremote-activity-review-toggle: (16.0, 442.6666666666667, 370.0, 20.333333333333258)\nremote-file-change-toggle: (16.0, 475.0, 370.0, 20.333333333333314)\nremote-response-separator-label: (163.33333333333331, 503.3333333333333, 75.66666666666666, 22.333333333333314)\nremote-response-content: (0.0, 517.6666666666666, 355.6666564941406, 74.33333587646484)\nremote-separator-layout: (163.33333333333331, 503.3333333333333, 75.66666666666666, 22.333333333333314)\nremote-response-layout: (16.0, 533.6666666666666, 323.66666666666663, 42.33333333333337)",
+  "source_layout_evidence": "ios-remote-v432-integration.json; official iOS 1.2026.293 response separator 0x1a3bdb0; fragment spacing v437",
+  "result": "Native selectable text AX frame expands 16 points on all four edges in the measured fixture. Actual SwiftUI layout gap is 8 points; screenshots show separate text and separator. Default and XXXL layout test passed in v472. No production padding change.",
+  "limits": [
+    "Does not prove official whole-page equivalence or all Dynamic Type sizes",
+    "Glyph/selection visual acceptance remains separate from measured layout bounds"
+  ],
+  "new_failures": {
+    "output": "v473 AX tree shows remote-activity-detail parent identifier overriding command-output and synthetic append identifiers. Remove unused parent identifier.",
+    "copy": "v473 second host task has pending-input card overlapping file-change disclosure. Test must scroll history above card before tapping.",
+    "glass_visual": "v471 and v472 screenshots show compact composer foreground is washed out with v469 material host. Separate controls from GlassEffectContainer as well as the material hit region; next batch tests and screenshots required."
+  }
+}

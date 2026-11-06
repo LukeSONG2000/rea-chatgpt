@@ -1,0 +1,21 @@
+{
+  "status": "partial",
+  "change": "Explicit styled runs and recovered indexed color mapping; nil uses shell secondary",
+  "test": {
+    "name": "testRemoteOutputGestureFollow",
+    "passed": 1,
+    "failed": 0,
+    "result": "ios-remote-v363-r2.xcresult"
+  },
+  "visual_review": "r2 green and default-secondary runs verified; initial nil-primary defect corrected",
+  "preview_pid": 80913,
+  "phone_updated": false,
+  "external_display_verified": false,
+  "remaining": [
+    "ANSI parser",
+    "RGB/named variant public input",
+    "Official per-line layout/identity",
+    "Dark mode and full palette visual validation",
+    "Android"
+  ]
+}

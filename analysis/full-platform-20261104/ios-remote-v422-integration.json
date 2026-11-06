@@ -1,0 +1,181 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v422",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Which original constraints and grouping apply to ordinary user input without borrowing sibling height semantics?",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a2a280/0x1a2a414 versus0x1a29e64..0x1a29ea4;QuestionCards metadata",
+      "conclusion": "Ordinary input copies original viewport. Optional group maximumHeight minus planDecisionHeight minus12 belongs to another branch; no blanket constraint is justified."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1cf4a44..0x1cf4aa0;0x1a550ac/b0 and0x1a55164/68;typeref0x7e1ea28",
+      "conclusion": "Question scroll content: leading VStack spacing18, leading/maxWidth infinity; header and question use fixedSize(horizontal:false,vertical:true)."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a55198/0x1a552f0..f8;0x1a55728/50/a0;0x1cf5460..0x1cf54d0;0xc1a300;0x1a55600..34",
+      "conclusion": "Nonempty options use leading/zero spacing; text column leading infinity/layoutPriority1; row vertical14 padding and Rectangle hit shape; Divider between options only."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Restore question/header/options grouping and vertical text sizing.",
+      "Restore full-width choice text column, padding, rectangular hit area and intermediate dividers.",
+      "Extend existing choice interaction test to blank trailing area; retain native answer and scope behavior."
+    ],
+    "independent_adaptations": [
+      "SwiftUI reconstruction with independent deterministic fixtures; no complete official source restoration claim.",
+      "Private parent style and other card height pipeline remain partial."
+    ]
+  },
+  "validation": {
+    "typecheck": "Session72397 exit0,3 existing UIKit warnings; final additional edit is comment-only.",
+    "ui_source": "Full UI source parse passed. Changed test not executed.",
+    "foundation": "No model/contract changes, no redundant rerun.",
+    "runtime": "Live original runner97181 and first-launch97197 observed; authorization gate persists. Old preview87483 live. No new install.",
+    "retention": "Dry run no stale targets."
+  },
+  "limits": [
+    "Bounded static data flow and metadata do not establish visual/keyboard/device acceptance.",
+    "Sibling receiver and full height application remain partial; no invented input clamp.",
+    "Android equivalence remains independently unproven."
+  ],
+  "next_minimum_action": "Trace remaining effective card style/shadow while waiting for existing Xcode authorization; explicitly run task, title, input, choice and return tests once cleared.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-choice-button.asm",
+      "sha256": "e05e53a0909a7ffea26b6712fed1c1a4745e6261a0b1fdd892c3d78f728801aa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-choice-button.json",
+      "sha256": "602cde01f37e6ca12599090273a1f8e114559e218d37f27a476bbd318ce9180a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-choice-label.asm",
+      "sha256": "210d193cc3f014edb85e1d4d742112b5a60a5493eefaf4b8c9581a34562d8558"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-choice-label.json",
+      "sha256": "67b66ea0cd60b32002bfe2f81f488add0531686bf7363acf3bd1d2b62e4f57d5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-height-recipient-helper.asm",
+      "sha256": "27e1fa7be4fa79a64e45a1f7b471bea4123f39302a6775aab5a9aeab8452dc65"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-import-bindings.json",
+      "sha256": "da119b5e76482cb4b8c6e0fb1a0ea34d5b3fb24d6bb972a51eec84339d189e8a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-option-text.asm",
+      "sha256": "15e5da85a85063f44f82a8c98fa37edc9d7a4ef429df1123415213c2c7abba19"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-option-text.json",
+      "sha256": "5cbaee4f5671ef055de9ace94006d164df83aa87daab7f1efd95f92f2d0e7840"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-question-layout.asm",
+      "sha256": "d866aaded2c5236b77bbf189451bc7383ef9a7c47695826ecf43bc441f26eca5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-question-layout.json",
+      "sha256": "ed41eab0413ab653fb3ab4ef08f3a4aeffd5fd9a477f5c9febabaf7b955e2ed0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-question-scroll-layout.asm",
+      "sha256": "53da53c8d05f06cdcdc3cca4403f2175fd6095c1e2607a87b73424d992861cf0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-question-scroll-layout.json",
+      "sha256": "22216dcb2deebb20527d1245dfabcdef08f6ba4f5f75182e0e4e4e4d4c6a11a6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-row-padding-helper.asm",
+      "sha256": "74217c18e877617abb57f8094364a0e11cdcfb7cf61213a82dc3518c1c877b77"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-row-padding-helper.json",
+      "sha256": "dbf58623f0b6f09a431bd9ab5ee88e7f8444154bae39ce13e1d58e07e24a194b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-sibling-card.asm",
+      "sha256": "dd9958d46883458e422f465f2a9a227cfe52b6dd8b0c9e77e3c8d95a66f24d38"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-sibling-card.json",
+      "sha256": "d293364fd4578a4c488720a68b0ced7d1bdb43bcac1c3c2383404179edc79aff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-type-7dcfec0.json",
+      "sha256": "f4b5e929228cfb71fb6a01e27e9023fd183cd981f2195703d994c92557e31b34"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-type-7e142b0.json",
+      "sha256": "7dc1188d8bea00f8f5b22663981244b1fa4ee9b7f24bee07a6d03614f7ab2522"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-type-7e142b8.json",
+      "sha256": "f05334dc5c725c7ada6b68acf37c33201ce1045b84eb44aa574b7582f2136907"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-type-7e142c0.json",
+      "sha256": "c13651cd6051fcffca822a765da54c7295e82a3383e8d268621a645afca6f7c8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-type-7e1ea28.json",
+      "sha256": "41b6a85080ee12786f6eb9fdc5c8e6ccafea28b7f5ab958252ad273c40cafaff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-type-7e1eb00.json",
+      "sha256": "279c657d1c9c9991bc0872f3c65e6f77cae778fcbb7a931189af11e8e74569b3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v422-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-input-constructor.asm",
+      "sha256": "b5f2442167eb740e3551238d91b0f840490b187c80a5382d294aea931648c5ee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-input-owner.asm",
+      "sha256": "3cc1d6e45f17ed3da16433e0b26d70ad554846e51e67dac5576b30dbc275d623"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-question-cards-metadata.json",
+      "sha256": "12512412d0590471c27a6f3b4b44a89cdaf7c5077a544a6464ba977b893d5d8a"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "b23bb44ecaf4ae9f27a6df27b0f264b99e3509222ed2947f1113bd506b9f6bf5"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "61da53e92a00a599cd3f46dcd5a3bbb857341318a33ae3c90696f552339198ad"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "a7f245f4335b014b4cdeb2728ff706d009451b168d4fed4476ad45b310b1b9ad"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "be222b02cbd8fcdf2e3131230e3863e20f520746fe3e200616d11a48a632f305"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "403299aa7e4a707b73052880c64b5d563fa6eda3d0db1dd33aa32f3343f7b0aa"
+    }
+  ]
+}

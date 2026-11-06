@@ -1,0 +1,59 @@
+{
+  "status": "partial",
+  "authority": "preserved Codex 26.1021.31345 renderer and RPC wrapper with independent localhost owner/adapters",
+  "verified": [
+    "actual original settings Connect switch reaches Connected, Disconnected, Connected in packaged macOS",
+    "per-host authenticated capabilities/thread-list probe and epoch check precede ready",
+    "original S8t RPC wrapper replaces raw Rmn at host provider boundary; subscriptions and replay admission remain original",
+    "selected and added host survives process restart",
+    "same owner history accessible after reconnect; A offline does not prevent B workflow",
+    "unit checks cover late connect cancellation, two-host isolation, identity mismatch and state event publication",
+    "macOS deep strict signature passed"
+  ],
+  "sources": [
+    {
+      "path": "implementation/desktop/native/remote-connections.mjs",
+      "sha256": "b6623d1cf8130e43f675b8f8fe6944fbf6738b859d1d1da50bda18b419398be7"
+    },
+    {
+      "path": "implementation/desktop/native/original-remote-runtime.mjs",
+      "sha256": "06e95caac666a135f1fc2b27e648ba33499d4a0ce7dfc06e7fb21d05c87e357c"
+    },
+    {
+      "path": "implementation/desktop/native/main.cjs",
+      "sha256": "9999b1fd72deb2d32f31b2165a206d2277a717823143f5f05a8f0f059af35efa"
+    },
+    {
+      "path": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "597f5f0bbea30883fe449611e66b56f0ed0174b06c4003048207845f4a456541"
+    }
+  ],
+  "reports": [
+    "remote-lifecycle-v172-contract.json",
+    "remote-lifecycle-v172-unit.json",
+    "remote-lifecycle-v172-catalog-unit.json",
+    "remote-lifecycle-v172-r2-runtime.json",
+    "remote-lifecycle-v172-hashes.json",
+    "remote-lifecycle-v172-cache-archive.json"
+  ],
+  "failedAttempts": [
+    "remote-lifecycle-v171-runtime.json",
+    "remote-lifecycle-v171-r2-runtime.json",
+    "remote-lifecycle-v172-runtime.json"
+  ],
+  "reportCorrection": "r2 runtime report retains an inherited broad limit saying not a visible workflow; connected/disconnected/reconnected booleans, original UI screenshot and assertions specifically prove connection settings workflow only. Test wording corrected for subsequent runs.",
+  "builds": {
+    "macos": "implementation/desktop/dist/v172-r2-macos/REA ChatGPT Offline.app",
+    "windows": "implementation/desktop/dist/v172-windows/REA ChatGPT Offline/REA ChatGPT Offline.exe"
+  },
+  "limits": [
+    "Windows assembled only; OS interactions untested",
+    "No physical iPhone or new mobile acceptance in this batch",
+    "No live Zhipu call",
+    "Remote task list/send/approval/Goal/tools UI remains incomplete",
+    "Connection does not prove official cloud compatibility or full original service capabilities",
+    "Automatic health-loss teardown, owner epoch renewal and persisted autoConnect intent not implemented",
+    "Two concurrently active hosts Connect-toggle isolation is unit-tested, not yet actual UI-tested"
+  ],
+  "next": "Connect original remote task/history consumers to existing local owner and verify visible loading/error/history; retain explicit unsupported operations."
+}

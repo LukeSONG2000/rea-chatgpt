@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "evidence_type": "artifact_observation_and_static_inference",
+  "chain": [
+    {
+      "site": "0x3711334",
+      "operation": "load offset-storage 0xb4df5c8",
+      "field": "valdiComponentCache"
+    },
+    {
+      "site": "0x3711340",
+      "operation": "direct_call",
+      "target": "0x5efb7fc"
+    },
+    {
+      "site": "0x5efb89c",
+      "operation": "direct_call_in_iteration",
+      "target": "0x5efbc58"
+    },
+    {
+      "site": "0x5efbc6c",
+      "operation": "load byte at self+0x20; bit0 set branches to return"
+    },
+    {
+      "site": "0x5efbc7c",
+      "operation": "store byte 1 at self+0x20 before callbacks"
+    },
+    {
+      "site": "0x5efbd94",
+      "operation": "argument x2 = 0 before setRootValdiView:"
+    },
+    {
+      "site": "0x5efbda4",
+      "operation": "if destroyed result bit0 set, skip destroy"
+    }
+  ],
+  "selectors": {
+    "0x5efbd98": "setRootValdiView:",
+    "0x5efbda0": "destroyed",
+    "0x5efbdac": "destroy"
+  },
+  "conclusion": "Static teardown path with repeated-call guard, root detachment and conditional destruction",
+  "limits": [
+    "Container/entry field names and exact Swift method names unresolved",
+    "No concurrency safety, full cache mutation semantics, or runtime guarantee established",
+    "Component creation and current message row -> module connection remain open"
+  ]
+}

@@ -1,0 +1,1 @@
+"use strict";function e(e){if("string"==typeof e)return e;if(!Array.isArray(e))return"";let r="";for(let t=0;t<e.length;t++)1===e[t]&&"string"==typeof e[t+1]&&(r+=e[t+1]);return r}Object.defineProperty(exports,"__esModule",{value:!0}),exports.stringFromDILTextValue=void 0,exports.stringFromDILTextValue=e;

@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "version": "1.2026.293",
+  "evidence": [
+    {
+      "file": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryRootScreen.js",
+      "sha256": "817f1a4ecb595ef75ca1dcf1dba1aefc054c6fcd8ebee30c020ced7294284dfb",
+      "byte_offset": 430,
+      "evidence_type": "artifact-static",
+      "conclusion": "Constructed context omits openItem; inherited context unknown",
+      "verification": "source inspected; runtime not observed"
+    },
+    {
+      "file": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryScreen.js",
+      "sha256": "8da6fbce93949334b3efc455e4da9a26ad6337a91095cd6762ee97b74bd2dd89",
+      "byte_offset": 43939,
+      "evidence_type": "artifact-static",
+      "conclusion": "Directory enters folder stack; other items use context.openItem else source conversation fallback",
+      "verification": "source inspected; runtime not observed"
+    },
+    {
+      "file": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryScreen.js",
+      "sha256": "8da6fbce93949334b3efc455e4da9a26ad6337a91095cd6762ee97b74bd2dd89",
+      "byte_offset": 44583,
+      "evidence_type": "artifact-static",
+      "conclusion": "Unavailable item cannot activate; file requires callback or conversation route",
+      "verification": "source inspected; runtime not observed"
+    },
+    {
+      "file": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryScreen.js",
+      "sha256": "8da6fbce93949334b3efc455e4da9a26ad6337a91095cd6762ee97b74bd2dd89",
+      "byte_offset": 38333,
+      "evidence_type": "artifact-static",
+      "conclusion": "Dispose increments generation and cancels main/preview requests",
+      "verification": "source inspected; runtime not observed"
+    },
+    {
+      "file": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryScreen.js",
+      "sha256": "8da6fbce93949334b3efc455e4da9a26ad6337a91095cd6762ee97b74bd2dd89",
+      "byte_offset": 38540,
+      "evidence_type": "artifact-static",
+      "conclusion": "Page callback checks destroyed state, generation and account",
+      "verification": "source inspected; runtime not observed"
+    },
+    {
+      "file": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryScreen.js",
+      "sha256": "8da6fbce93949334b3efc455e4da9a26ad6337a91095cd6762ee97b74bd2dd89",
+      "byte_offset": 39214,
+      "evidence_type": "artifact-static",
+      "conclusion": "Dedup set uses prior items only; incoming-page duplicate IDs may remain, static only",
+      "verification": "source inspected; runtime not observed"
+    },
+    {
+      "file": "derived/valdimodules-293/ios/valdi_ui/src/components/FilePreview.js",
+      "sha256": "0a7210ee398a77fa44b99a93c176151246d6d0237de6a587dcaaf7d010b92091",
+      "byte_offset": 387,
+      "evidence_type": "artifact-static",
+      "conclusion": "Preview requires runtime 285 capability and native iOS; not proven library consumer",
+      "verification": "source inspected; runtime not observed"
+    }
+  ],
+  "provenance": "analysis/full-platform-20261104/ios-library-provenance-v1.json",
+  "controlled_replay": "analysis/full-platform-20261104/ios-library-replay-v1.json",
+  "replay_runner": "implementation/ios/Tools/test-library.cjs",
+  "rea": {
+    "bundle": "analysis/full-platform-20261104/ios-library-rea-v1.json",
+    "parent_evidence_id": "ev_788dde8c50ebb81c525b01c7716c06688997953927828e9e5c2bd7ca30318fc4",
+    "semantic_unknowns": 1175,
+    "unselected_files": 18
+  },
+  "decisions": [
+    "Reuse packaged client request/normalization/cancellation logic with separate local source",
+    "Preserve explicit error states, account and page identity checks",
+    "Keep folder navigation and item-open platform adapter separate",
+    "Do not equate generic FilePreview presence with library wiring"
+  ],
+  "blockers": [
+    "Native owner supplying context.openItem unresolved",
+    "FilePreviewFactory absent in both inspected derived iOS trees; native binding unresolved",
+    "No library UIKit/Valdi screen runtime or visual acceptance",
+    "Backend and provider/image capability not exercised"
+  ],
+  "next_action": "Build local library adapter around packaged client and layout, native folder/item routes; local file preview remains independent implementation until native bridge evidence closes"
+}

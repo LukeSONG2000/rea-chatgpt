@@ -1,0 +1,337 @@
+{
+  "0x6ec6b0c": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 6ec6b0c: aa1e03e3     \tmov\tx3, x30\n 6ec6b10: 964a69f6     \tbl\t0x1612e8 <__text+0x1392e8>\n 6ec6b14: aa0303fe     \tmov\tx30, x3\n 6ec6b18: a9047bfd     \tstp\tx29, x30, [sp, #0x40]\n 6ec6b1c: 910103fd     \tadd\tx29, sp, #0x40\n 6ec6b20: aa1403f3     \tmov\tx19, x20\n 6ec6b24: 964a4413     \tbl\t0x157b70 <__text+0x12fb70>\n 6ec6b28: aa0803f7     \tmov\tx23, x8\n 6ec6b2c: aa0003f4     \tmov\tx20, x0\n 6ec6b30: 941870ee     \tbl\t0x74e2ee8 <__text+0x74baee8>\n 6ec6b34: f90007e0     \tstr\tx0, [sp, #0x8]\n 6ec6b38: aa1703e8     \tmov\tx8, x23\n 6ec6b3c: 964a38f0     \tbl\t0x154efc <__text+0x12cefc>\n 6ec6b40: aa1303f4     \tmov\tx20, x19\n 6ec6b44: 94361025     \tbl\t0x7c4abd8 <_writev+0x7c4abd8>\n 6ec6b48: f94007e0     \tldr\tx0, [sp, #0x8]\n 6ec6b4c: a9447bfd     \tldp\tx29, x30, [sp, #0x40]\n 6ec6b50: 164a2677     \tb\t0x15052c <__text+0x12852c>\n 6ec6b54: 17ffff2b     \tb\t0x6ec6800 <__text+0x6e9e800>\n 6ec6b58: aa1e03e0     \tmov\tx0, x30\n 6ec6b5c: 96566922     \tbl\t0x460fe4 <__text+0x438fe4>\n 6ec6b60: aa0003fe     \tmov\tx30, x0\n 6ec6b64: a9087bfd     \tstp\tx29, x30, [sp, #0x80]\n 6ec6b68: 910203fd     \tadd\tx29, sp, #0x80\n 6ec6b6c: d100c3ff     \tsub\tsp, sp, #0x30\n 6ec6b70: aa1403f8     \tmov\tx24, x20\n 6ec6b74: 964a3e30     \tbl\t0x156434 <__text+0x12e434>\n 6ec6b78: 94021b9f     \tbl\t0x6f4d9f4 <__text+0x6f259f4>\n 6ec6b7c: aa0003fa     \tmov\tx26, x0\n 6ec6b80: f0000434     \tadrp\tx20, 0x6f4d000 <__text+0x6f25000>\n 6ec6b84: 9127d294     \tadd\tx20, x20, #0x9f4\n 6ec6b88: 96566cf6     \tbl\t0x461f60 <__text+0x439f60>\n 6ec6b8c: b001e030     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6ec6b90: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6ec6b94: d63f0200     \tblr\tx16\n 6ec6b98: 966099f0     \tbl\t0x6ed358 <__text+0x6c5358>\n 6ec6b9c: 96566948     \tbl\t0x4610bc <__text+0x4390bc>\n 6ec6ba0: b0020aa0     \tadrp\tx0, 0xb01b000 <_OBJC_METACLASS_$__TtC17FileUploadService16SedimentProtocol+0x1a850>\n 6ec6ba4: 912f0000     \tadd\tx0, x0, #0xbc0\n 6ec6ba8: d000a5d6     \tadrp\tx22, 0x8380000 <_writev+0x8380000>\n 6ec6bac: 9108a2d6     \tadd\tx22, x22, #0x228\n 6ec6bb0: 964a39b6     \tbl\t0x155288 <__text+0x12d288>\n 6ec6bb4: aa0003f9     \tmov\tx25, x0\n 6ec6bb8: 964a0451     \tbl\t0x147cfc <__text+0x11fcfc>\n 6ec6bbc: b001e030     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 6ec6bc0: f9406e10     \tldr\tx16, [x16, #0xd8]\n 6ec6bc4: d63f0200     \tblr\tx16\n 6ec6bc8: 964a1677     \tbl\t0x14c5a4 <__text+0x1245a4>\n 6ec6bcc: 964a3eae     \tbl\t0x156684 <__text+0x12e684>\n 6ec6bd0: 964a3b3a     \tbl\t0x1558b8 <__text+0x12d8b8>\n 6ec6bd4: 394142a8     \tldrb\tw8, [x21, #0x50]\n 6ec6bd8: 96627cf2     \tbl\t0x765fa0 <__text+0x73dfa0>\n 6ec6bdc: 9001d5e0     \tadrp\tx0, 0xa982000 <_writev+0xa982000>\n 6ec6be0: 9118e000     \tadd\tx0, x0, #0x638\n 6ec6be4: 8b1b02a1     \tadd\tx1, x21, x27\n 6ec6be8: 964a37ab     \tbl\t0x154a94 <__text+0x12ca94>\n 6ec6bec: aa0003fb     \tmov\tx27, x0\n 6ec6bf0: 8b150001     \tadd\tx1, x0, x21\n 6ec6bf4: aa1c03e0     \tmov\tx0, x28\n 6ec6bf8: 964a38f2     \tbl\t0x154fc0 <__text+0x12cfc0>\n 6ec6bfc: f81703b8     \tstur\tx24, [x29, #-0x90]\n 6ec6c00: 9404592b     \tbl\t0x6fdd0ac <__text+0x6fb50ac>\n 6ec6c04: aa0003f4     \tmov\tx20, x0\n 6ec6c08: 94021bb4     \tbl\t0x6f4dad8 <__text+0x6f25ad8>\n 6ec6c0c: aa0003e5     \tmov\tx5, x0\n 6ec6c10: f0000420     \tadrp\tx0, 0x6f4d000 <__text+0x6f25000>\n 6ec6c14: 91297000     \tadd\tx0, x0, #0xa5c\n 6ec6c18: f0000422     \tadrp\tx2, 0x6f4d000 <__text+0x6f25000>\n 6ec6c1c: 912b4042     \tadd\tx2, x2, #0xad0\n 6ec6c20: d10283a3     \tsub\tx3, x29, #0xa0\n 6ec6c24: aa1703e8     \tmov\tx8, x23\n 6ec6c28: aa1b03e1     \tmov\tx1, x27\n 6ec6c2c: 968b8e53     \tbl\t0x11aa578 <__text+0x1182578>\n 6ec6c30: b9802354     \tldrsw\tx20, [x26, #0x20]\n 6ec6c34: 967654ff     \tbl\t0xc5c030 <__text+0xc34030>\n 6ec6c38: aa0003fb     \tmov\tx27, x0\n 6ec6c3c: d10283a8     \tsub\tx8, x29, #0xa0\n 6ec6c40: 8b140314     \tadd\tx20, x24, x20\n 6ec6c44: 943600df     \tbl\t0x7c46fc0 <_writev+0x7c46fc0>\n 6ec6c48: fc5603a0     \tldur\td0, [x29, #-0xa0]\n 6ec6c4c: 94045e75     \tbl\t0x6fde620 <__text+0x6fb6620>\n 6ec6c50: 1e609c28     \tfcsel\td8, d1, d0, ls\n 6ec6c54: b9801f49     \tldrsw\tx9, [x26, #0x1c]\n 6ec6c58: d10283a8     \tsub\tx8, x29, #0xa0\n 6ec6c5c: 8b090314     \tadd\tx20, x24, x9\n 6ec6c60: aa1b03e0     \tmov\tx0, x27\n 6ec6c64: 943600d7     \tbl\t0x7c46fc0 <_writev+0x7c46fc0>\n 6ec6c68: fc5603a0     \tldur\td0, [x29, #-0xa0]\n 6ec6c6c: 1e603900     \tfsub\td0, d8, d0\n 6ec6c70: 1e7c1001     \tfmov\td1, #-0.50000000\n 6ec6c74: 1e610808     \tfmul\td8, d0, d1\n 6ec6c78: b9802b55     \tldrsw\tx21, [x26, #0x28]\n 6ec6c7c: 94360bab     \tbl\t0x7c49b28 <_writev+0x7c49b28>\n 6ec6c80: aa0003f4     \tmov\tx20, x0\n 6ec6c84: 38756b1a     \tldrb\tw26, [x24, x21]\n 6ec6c88: 94360bb1     \tbl\t0x7c49b4c <_writev+0x7c49b4c>\n 6ec6c8c: 94045cc9     \tbl\t0x6fddfb0 <__text+0x6fb5fb0>\n 6ec6c90: 94045fe5     \tbl\t0x6fdec24 <__text+0x6fb6c24>\n 6ec6c94: 6f00e409     \tmovi.2d\tv9, #0000000000000000\n 6ec6c98: 1e690d0a     \tfcsel\td10, d8, d9, eq\n 6ec6c9c: 94360ba9     \tbl\t0x7c49b40 <_writev+0x7c49b40>\n 6ec6ca0: 94046259     \tbl\t0x6fdf604 <__text+0x6fb7604>\n 6ec6ca4: 94045cc3     \tbl\t0x6fddfb0 <__text+0x6fb5fb0>\n 6ec6ca8: 94045fdf     \tbl\t0x6fdec24 <__text+0x6fb6c24>\n 6ec6cac: 1e690d0b     \tfcsel\td11, d8, d9, eq\n 6ec6cb0: 94360ba1     \tbl\t0x7c49b34 <_writev+0x7c49b34>\n 6ec6cb4: 94046254     \tbl\t0x6fdf604 <__text+0x6fb7604>\n 6ec6cb8: 94045cbe     \tbl\t0x6fddfb0 <__text+0x6fb5fb0>\n 6ec6cbc: 94045fda     \tbl\t0x6fdec24 <__text+0x6fb6c24>\n 6ec6cc0: 1e690d0c     \tfcsel\td12, d8, d9, eq\n 6ec6cc4: 94360ba5     \tbl\t0x7c49b58 <_writev+0x7c49b58>\n 6ec6cc8: 9404624f     \tbl\t0x6fdf604 <__text+0x6fb7604>\n 6ec6ccc: 94045cb9     \tbl\t0x6fddfb0 <__text+0x6fb5fb0>\n 6ec6cd0: 94045fd5     \tbl\t0x6fdec24 <__text+0x6fb6c24>\n 6ec6cd4: 1e690d08     \tfcsel\td8, d8, d9, eq\n 6ec6cd8: 94360b91     \tbl\t0x7c49b1c <_writev+0x7c49b1c>\n 6ec6cdc: b9802728     \tldrsw\tx8, [x25, #0x24]\n 6ec6ce0: 8b0802e8     \tadd\tx8, x23, x8\n 6ec6ce4: 39000100     \tstrb\tw0, [x8]\n 6ec6ce8: 6d00ad0a     \tstp\td10, d11, [x8, #0x8]\n 6ec6cec: 6d01a10c     \tstp\td12, d8, [x8, #0x18]\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x6ec6b0c",
+        "end_exclusive": "0x6ec6cf0",
+        "sha256": "a946b80cb2223bfcbd46a80516d5a9c1c36fa776c894371afd0f901f02bddb60"
+      },
+      "linker_function_starts_in_window": [
+        "0x6ec6b0c",
+        "0x6ec6b54",
+        "0x6ec6b58"
+      ],
+      "next_linker_function_start": "0x6ec6d54",
+      "direct_calls": [
+        {
+          "site": "0x6ec6b10",
+          "target": "0x1612e8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6b24",
+          "target": "0x157b70",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6b30",
+          "target": "0x74e2ee8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6b3c",
+          "target": "0x154efc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6b44",
+          "target": "0x7c4abd8",
+          "imported_symbol": "_$s7SwiftUI4ViewPAAE4fontyQrAA4FontVSgF",
+          "chained_binding": {
+            "slot": "0xaad4888",
+            "symbol": "_$s7SwiftUI4ViewPAAE4fontyQrAA4FontVSgF",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10213,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ec6b5c",
+          "target": "0x460fe4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6b74",
+          "target": "0x156434",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6b78",
+          "target": "0x6f4d9f4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6b88",
+          "target": "0x461f60",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6b98",
+          "target": "0x6ed358",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6b9c",
+          "target": "0x4610bc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6bb0",
+          "target": "0x155288",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6bb8",
+          "target": "0x147cfc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6bc8",
+          "target": "0x14c5a4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6bcc",
+          "target": "0x156684",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6bd0",
+          "target": "0x1558b8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6bd8",
+          "target": "0x765fa0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6be8",
+          "target": "0x154a94",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6bf8",
+          "target": "0x154fc0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6c00",
+          "target": "0x6fdd0ac",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6c08",
+          "target": "0x6f4dad8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6c2c",
+          "target": "0x11aa578",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6c34",
+          "target": "0xc5c030",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6c44",
+          "target": "0x7c46fc0",
+          "imported_symbol": "_$s7SwiftUI12ScaledMetricV12wrappedValuexvg",
+          "chained_binding": {
+            "slot": "0xaad04d8",
+            "symbol": "_$s7SwiftUI12ScaledMetricV12wrappedValuexvg",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 8053,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ec6c4c",
+          "target": "0x6fde620",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6c64",
+          "target": "0x7c46fc0",
+          "imported_symbol": "_$s7SwiftUI12ScaledMetricV12wrappedValuexvg",
+          "chained_binding": {
+            "slot": "0xaad04d8",
+            "symbol": "_$s7SwiftUI12ScaledMetricV12wrappedValuexvg",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 8053,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ec6c7c",
+          "target": "0x7c49b28",
+          "imported_symbol": "_$s7SwiftUI4EdgeO3SetV3topAEvgZ",
+          "chained_binding": {
+            "slot": "0xaad3760",
+            "symbol": "_$s7SwiftUI4EdgeO3SetV3topAEvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9665,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ec6c88",
+          "target": "0x7c49b4c",
+          "imported_symbol": "_$s7SwiftUI4EdgeO3SetV8rawValueAEs4Int8V_tcfC",
+          "chained_binding": {
+            "slot": "0xaad3778",
+            "symbol": "_$s7SwiftUI4EdgeO3SetV8rawValueAEs4Int8V_tcfC",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9668,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ec6c8c",
+          "target": "0x6fddfb0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6c90",
+          "target": "0x6fdec24",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6c9c",
+          "target": "0x7c49b40",
+          "imported_symbol": "_$s7SwiftUI4EdgeO3SetV7leadingAEvgZ",
+          "chained_binding": {
+            "slot": "0xaad3770",
+            "symbol": "_$s7SwiftUI4EdgeO3SetV7leadingAEvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9667,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ec6ca0",
+          "target": "0x6fdf604",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6ca4",
+          "target": "0x6fddfb0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6ca8",
+          "target": "0x6fdec24",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6cb0",
+          "target": "0x7c49b34",
+          "imported_symbol": "_$s7SwiftUI4EdgeO3SetV6bottomAEvgZ",
+          "chained_binding": {
+            "slot": "0xaad3768",
+            "symbol": "_$s7SwiftUI4EdgeO3SetV6bottomAEvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9666,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ec6cb4",
+          "target": "0x6fdf604",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6cb8",
+          "target": "0x6fddfb0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6cbc",
+          "target": "0x6fdec24",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6cc4",
+          "target": "0x7c49b58",
+          "imported_symbol": "_$s7SwiftUI4EdgeO3SetV8trailingAEvgZ",
+          "chained_binding": {
+            "slot": "0xaad3780",
+            "symbol": "_$s7SwiftUI4EdgeO3SetV8trailingAEvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9669,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x6ec6cc8",
+          "target": "0x6fdf604",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6ccc",
+          "target": "0x6fddfb0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6cd0",
+          "target": "0x6fdec24",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x6ec6cd8",
+          "target": "0x7c49b1c",
+          "imported_symbol": "_$s7SwiftUI4EdgeO3SetV3allAEvgZ",
+          "chained_binding": {
+            "slot": "0xaad3758",
+            "symbol": "_$s7SwiftUI4EdgeO3SetV3allAEvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9664,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  }
+}

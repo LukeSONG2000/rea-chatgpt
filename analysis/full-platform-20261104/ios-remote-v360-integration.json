@@ -1,0 +1,21 @@
+{
+  "status": "partial",
+  "change": "Command 14pt regular monospaced primary text and dollar-space prefix",
+  "evidence": "ios-remote-v360-font-evidence.json",
+  "test": {
+    "name": "testRemoteTaskScopeAndReturn",
+    "passed": 1,
+    "failed": 0,
+    "result": "ios-remote-v360.xcresult"
+  },
+  "screenshot_reviewed": "ios-remote-v360-screenshots/71CA130B-3446-4D8C-A276-40E43DCB80C4.png",
+  "preview_pid": 80052,
+  "phone_updated": false,
+  "external_display_verified": false,
+  "remaining": [
+    "Actual output typography/parser",
+    "Long-command wrapping and accessibility text-size validation",
+    "Whole-page fidelity",
+    "Android independent evidence"
+  ]
+}

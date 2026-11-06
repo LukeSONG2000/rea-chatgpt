@@ -1,0 +1,50 @@
+{
+  "status": "partial",
+  "classification": "independent UIKit host UI automation",
+  "platform": "iOS Simulator",
+  "device": {
+    "architecture": "arm64",
+    "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "deviceName": "REA ChatGPT Offline",
+    "modelName": "iPhone 17 Pro",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "result_bundle": "ios-ui-v3.xcresult",
+  "summary": "ios-ui-v3-summary.json",
+  "passed_tests": 2,
+  "verified": [
+    "Native Select All menu replaces preexisting draft",
+    "Keyboard displayed and composer frame above keyboard",
+    "A/B/A/B draft isolation",
+    "Actual app terminate/relaunch restores both drafts",
+    "Send and connection show unavailable alerts without clearing draft"
+  ],
+  "historical_failure": "v2 test helper deleted backward from an assumed cursor position; replaced by native Select All in v3",
+  "limitations": [
+    "English synthetic input only; Chinese IME composing unaccepted",
+    "iPhone hardware unaccepted",
+    "Original official UI fidelity unaccepted",
+    "No model or network integration",
+    "Scroll anchors and accessibility semantics unaccepted"
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "1aaf42447cb56cf2f8fc2148b87f6e521e39a4cdd7b0bcb2cf7b2d8758630007"
+    },
+    {
+      "path": "implementation/ios/test-ui.py",
+      "sha256": "ea9eacb055fe3316697532080863501bc206f67b2c4ea88a981270ae44fb102c"
+    },
+    {
+      "path": "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj",
+      "sha256": "e263f473347ae8ec1d9d7a3f7a850742e4bba471afd15235ae5c395632c0ff83"
+    },
+    {
+      "path": "implementation/ios/REAChatGPTHost.xcodeproj/xcshareddata/xcschemes/REAChatGPTHost.xcscheme",
+      "sha256": "fc60cf9994539c92b7ca59f6294c0f1b3adf8907a9e6d6a3b3e22e41f1c6d0ea"
+    }
+  ]
+}

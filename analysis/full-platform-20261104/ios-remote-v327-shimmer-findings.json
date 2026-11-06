@@ -1,0 +1,31 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "owner": "ToolActivitySummaryRow -> SwiftUIStyleguide.ShimmeringTextView",
+  "component_descriptor": "0x971e5c0",
+  "body": "0x6f22000 -> 0x6f21d48",
+  "configuration": {
+    "enabled": "0x1a5332c checks isShimmering; helper0x7710c7c returns0x84d40ec, a zero byte in __TEXT.__const; therefore local gate preserves isShimmering",
+    "interruptShimmerWhenDisabled": "0x1a5334c/50 writes true",
+    "updateInterval": {
+      "source": "0x5814ec4 returns0x81b3d90",
+      "bytes": "000064a7b3b6e00d0000000000000000",
+      "type": "Swift.Duration from typeref0x941b020",
+      "independent_probe": "Local Swift Duration.seconds(1) has matching bytes",
+      "limit": "Representation corroboration only, not official runtime timing or shimmer sweep duration"
+    },
+    "color": "ChatGPT/text/inverted at opacity0.8 inside shimmer composition; outer text remains tertiary"
+  },
+  "rendering": {
+    "positive_interval_gate": "0x6f21e50 zero Duration; comparison0x6f21e5c",
+    "overlay_helper": "0x6f21ed8",
+    "overlay_closure": "0x6fc1a18",
+    "composition": "overlay then compositingGroup",
+    "remaining": "Follow overlay closure and modifier body for phase, mask, timing, disabled-state cleanup and accessibility handling"
+  },
+  "correction": "0x7710c7c is not evidence of Reduce Motion access. Do not label its callers as accessibility-aware based on this gate.",
+  "failed_probe": "0x7e29298 is not a valid relative mangled-type record; parse error retained, no forced interpretation",
+  "integration": "No invented shimmer added; existing preview left untouched while actual overlay mechanism remains unresolved."
+}

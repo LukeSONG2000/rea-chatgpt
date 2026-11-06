@@ -1,0 +1,165 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "CodexRemoteTurnTranscriptFragment",
+      "descriptor": "0x95aca08",
+      "type_section_entry": "0x9d3a3f4",
+      "accessor": "0x1aa541c",
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a35bd4",
+          "type_reference": "0x8e147c8"
+        },
+        {
+          "name": "content",
+          "record": "0x9a35be0",
+          "type_reference": "0x8e15252"
+        },
+        {
+          "name": "isFirst",
+          "record": "0x9a35bec",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isLast",
+          "record": "0x9a35bf8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hasMessageGroupSpacingAbove",
+          "record": "0x9a35c04",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hasInlineActivitySpacingAbove",
+          "record": "0x9a35c10",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "renderState",
+          "record": "0x9a35c1c",
+          "type_reference": "0x8e152c6"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e0fbdc",
+          "flags": "0x30000",
+          "section_entry": "0x9ce253c"
+        },
+        {
+          "descriptor": "0x7e0fc14",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2540"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteToolActivityGroup",
+      "descriptor": "0x95acab8",
+      "type_section_entry": "0x9d3a408",
+      "accessor": "0x1adc5b0",
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a35a28",
+          "type_reference": "0x8bfd974"
+        },
+        {
+          "name": "items",
+          "record": "0x9a35a34",
+          "type_reference": "0x8f37f44"
+        },
+        {
+          "name": "activities",
+          "record": "0x9a35a40",
+          "type_reference": "0x8e1527c"
+        },
+        {
+          "name": "activityRows",
+          "record": "0x9a35a4c",
+          "type_reference": "0x8e15286"
+        },
+        {
+          "name": "summaryStyle",
+          "record": "0x9a35a58",
+          "type_reference": "0x8e15290"
+        },
+        {
+          "name": "latestActivity",
+          "record": "0x9a35a64",
+          "type_reference": "0x8e150cc"
+        },
+        {
+          "name": "historyPresentation",
+          "record": "0x9a35a70",
+          "type_reference": "0x8e15296"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e0f9ec",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2514"
+        },
+        {
+          "descriptor": "0x7e0fa14",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2518"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteCollaborationToolCallGroup",
+      "descriptor": "0x95aecd8",
+      "type_section_entry": "0x9d3a78c",
+      "accessor": "0x1ce0788",
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a39844",
+          "type_reference": "0x8bfd974"
+        },
+        {
+          "name": "items",
+          "record": "0x9a39850",
+          "type_reference": "0x8f37f44"
+        },
+        {
+          "name": "collaborationToolCalls",
+          "record": "0x9a3985c",
+          "type_reference": "0x8e1a072"
+        },
+        {
+          "name": "action",
+          "record": "0x9a39868",
+          "type_reference": "0x8f32a64"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e18f68",
+          "flags": "0x30000",
+          "section_entry": "0x9ce284c"
+        },
+        {
+          "descriptor": "0x7e18f90",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2850"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

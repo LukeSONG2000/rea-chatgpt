@@ -1,0 +1,21 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "descriptor": "0x95d1ba0",
+  "metadata_pattern": "0xae318e8",
+  "metadata_descriptor_pointer": 157096864,
+  "field_offsets": {
+    "id": 0,
+    "kind": 17
+  },
+  "field_offset_bytes": "0000000011000000",
+  "predicate_checks": [
+    "0x1915c2c..0x1915c34",
+    "0x1915c40..0x1915c50"
+  ],
+  "kind_case": "CodexRenderedItemKind.userMessage",
+  "kind_tag": 5,
+  "limitations": [
+    "Metadata pattern and instructions are static evidence, not a runtime capture.",
+    "Realtime replacement-item extraction is not integrated by the host subset."
+  ]
+}

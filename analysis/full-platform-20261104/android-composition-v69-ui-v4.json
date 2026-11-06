@@ -1,0 +1,17 @@
+{
+  "status": "failed",
+  "serial": "emulator-5554",
+  "run_id": "82a925cd072a484299c2d21fcfb315bf",
+  "origin": "independent native Compose host",
+  "steps": [
+    {
+      "apk": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "38e7373acfb5f2c70c16330dc5d7101b65d1a1f125334886d11ddcea16879c2e"
+    },
+    {
+      "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "0a72b6e893d21c0a87537698a024f64e275707aa1fbd13aa007dce04917be4aa"
+    }
+  ],
+  "error": "NativeHostTest#prepareUncommittedComposition"
+}

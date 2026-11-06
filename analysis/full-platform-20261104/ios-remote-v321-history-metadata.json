@@ -1,0 +1,365 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "CodexRemoteHistoryFragment",
+      "descriptor": "0x95acb58",
+      "type_section_entry": "0x9d3a418",
+      "accessor": "0x1aa53f4",
+      "fields": [
+        {
+          "name": "workingDirectoryPath",
+          "record": "0x9a37674",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "autocompleteItems",
+          "record": "0x9a37680",
+          "type_reference": "0x8bca2e4"
+        },
+        {
+          "name": "themeColorSetting",
+          "record": "0x9a3768c",
+          "type_reference": "0x8f4deb0"
+        },
+        {
+          "name": "retryFailedPrompt",
+          "record": "0x9a37698",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "editPrompt",
+          "record": "0x9a376a4",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "editablePromptItemID",
+          "record": "0x9a376b0",
+          "type_reference": "0x8e152cc"
+        },
+        {
+          "name": "reviewFindingComments",
+          "record": "0x9a376bc",
+          "type_reference": "0x8e11c34"
+        },
+        {
+          "name": "canSavePlanToFiles",
+          "record": "0x9a376c8",
+          "type_reference": "0x902a420"
+        },
+        {
+          "name": "toggleReviewFindingComment",
+          "record": "0x9a376d4",
+          "type_reference": "0x8e15848"
+        },
+        {
+          "name": "completedThreadGoal",
+          "record": "0x9a376e0",
+          "type_reference": "0x8e11858"
+        },
+        {
+          "name": "fragment",
+          "record": "0x9a376ec",
+          "type_reference": "0x8e152f0"
+        },
+        {
+          "name": "realtimeTranscriptBlock",
+          "record": "0x9a376f8",
+          "type_reference": "0x8e1585c"
+        },
+        {
+          "name": "inlineDILViewModelStore",
+          "record": "0x9a37704",
+          "type_reference": "0x8e13b18"
+        },
+        {
+          "name": "assistantInlineBlocksByRenderedItemID",
+          "record": "0x9a37710",
+          "type_reference": "0x8e15216"
+        },
+        {
+          "name": "markdownResultRenderer",
+          "record": "0x9a3771c",
+          "type_reference": "0x8e13b0c"
+        },
+        {
+          "name": "inlineVisualizationViewModelStore",
+          "record": "0x9a37728",
+          "type_reference": "0x8e13b1e"
+        },
+        {
+          "name": "textFadeAnimationState",
+          "record": "0x9a37734",
+          "type_reference": "0x911cd70"
+        },
+        {
+          "name": "markdownImageActions",
+          "record": "0x9a37740",
+          "type_reference": "0x907aac8"
+        },
+        {
+          "name": "loadRemoteFileData",
+          "record": "0x9a3774c",
+          "type_reference": "0x8e147ec"
+        },
+        {
+          "name": "previewLinkedFile",
+          "record": "0x9a37758",
+          "type_reference": "0x8e147fe"
+        },
+        {
+          "name": "addSelectedTextToComposer",
+          "record": "0x9a37764",
+          "type_reference": "0x90c0eb0"
+        },
+        {
+          "name": "askInSideConversation",
+          "record": "0x9a37770",
+          "type_reference": "0x90c0eb0"
+        },
+        {
+          "name": "openThread",
+          "record": "0x9a3777c",
+          "type_reference": "0x8e1489a"
+        },
+        {
+          "name": "openSubagent",
+          "record": "0x9a37788",
+          "type_reference": "0x8e15878"
+        },
+        {
+          "name": "openPendingWorktree",
+          "record": "0x9a37794",
+          "type_reference": "0x90c0eb0"
+        },
+        {
+          "name": "createdThreadNavigationState",
+          "record": "0x9a377a0",
+          "type_reference": "0x8e1588a"
+        },
+        {
+          "name": "asyncQuestionState",
+          "record": "0x9a377ac",
+          "type_reference": "0x8e15892"
+        },
+        {
+          "name": "answerAsyncQuestion",
+          "record": "0x9a377b8",
+          "type_reference": "0x8e1589a"
+        },
+        {
+          "name": "turnDiffPresentation",
+          "record": "0x9a377c4",
+          "type_reference": "0x8e14352"
+        },
+        {
+          "name": "handleTurnDiffCardAction",
+          "record": "0x9a377d0",
+          "type_reference": "0x8e158ac"
+        },
+        {
+          "name": "presentImageGalleryForRemoteImages",
+          "record": "0x9a377dc",
+          "type_reference": "0x8e158bc"
+        },
+        {
+          "name": "presentImageGalleryForAttachments",
+          "record": "0x9a377e8",
+          "type_reference": "0x8e1484a"
+        },
+        {
+          "name": "saveImageToPhotos",
+          "record": "0x9a377f4",
+          "type_reference": "0x8e14884"
+        },
+        {
+          "name": "openMarkdownImages",
+          "record": "0x9a37800",
+          "type_reference": "0x8e1486e"
+        },
+        {
+          "name": "imageGalleryTransitionNamespace",
+          "record": "0x9a3780c",
+          "type_reference": "0x8d0ad80"
+        },
+        {
+          "name": "positiveFeedback",
+          "record": "0x9a37818",
+          "type_reference": "0x8c20fd0"
+        },
+        {
+          "name": "negativeFeedback",
+          "record": "0x9a37824",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "forkThread",
+          "record": "0x9a37830",
+          "type_reference": "0x8c20fd0"
+        },
+        {
+          "name": "isPositiveFeedbackSelected",
+          "record": "0x9a3783c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isPositiveFeedbackSubmitting",
+          "record": "0x9a37848",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isForkingThread",
+          "record": "0x9a37854",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_renderedItemVerticalSpacing",
+          "record": "0x9a37860",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "_messageGroupVerticalSpacing",
+          "record": "0x9a3786c",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "_previousMessagesToggleSpacing",
+          "record": "0x9a37878",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "_toolActivityIconSize",
+          "record": "0x9a37884",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "__presentedFullScreenPlan",
+          "record": "0x9a37890",
+          "type_reference": "0x8e12326"
+        },
+        {
+          "name": "__isResponseTextAnnotationListPresented",
+          "record": "0x9a3789c",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "_arePreviousMessagesExpanded",
+          "record": "0x9a378a8",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "_composerAdjacentCardShape",
+          "record": "0x9a378b4",
+          "type_reference": "0x8e15102"
+        },
+        {
+          "name": "_currentDateProvider",
+          "record": "0x9a378c0",
+          "type_reference": "0x8e158dc"
+        },
+        {
+          "name": "_openURL",
+          "record": "0x9a378cc",
+          "type_reference": "0x8d1a160"
+        },
+        {
+          "name": "_planTransitionNamespace",
+          "record": "0x9a378d8",
+          "type_reference": "0x8f593f0"
+        },
+        {
+          "name": "_rowState",
+          "record": "0x9a378e4",
+          "type_reference": "0x8e150f4"
+        },
+        {
+          "name": "turnState",
+          "record": "0x9a378f0",
+          "type_reference": "0x8e151d2"
+        },
+        {
+          "name": "isRealtimeVoiceThread",
+          "record": "0x9a378fc",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isContextCompactionOnlyTurn",
+          "record": "0x9a37908",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "responseCopyText",
+          "record": "0x9a37914",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "responseCompletedAt",
+          "record": "0x9a37920",
+          "type_reference": "0x8da8240"
+        },
+        {
+          "name": "hookStats",
+          "record": "0x9a3792c",
+          "type_reference": "0x8e151f0"
+        },
+        {
+          "name": "promotedImageIdentities",
+          "record": "0x9a37938",
+          "type_reference": "0x8e151f8"
+        },
+        {
+          "name": "imageIdentitiesByRenderedItemID",
+          "record": "0x9a37944",
+          "type_reference": "0x8e15202"
+        },
+        {
+          "name": "hiddenPreviousMessageCount",
+          "record": "0x9a37950",
+          "type_reference": "0x8e133f0"
+        },
+        {
+          "name": "hasUnloadedPreviousMessages",
+          "record": "0x9a3795c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "arePreviousMessagesExpandedInPresentation",
+          "record": "0x9a37968",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isLoadingPreviousMessages",
+          "record": "0x9a37974",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "showsFooterActions",
+          "record": "0x9a37980",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "showsError",
+          "record": "0x9a3798c",
+          "type_reference": "0x8bfd810"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e11c10",
+          "flags": "0x30000",
+          "section_entry": "0x9ce280c"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

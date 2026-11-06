@@ -1,0 +1,49 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static; native integration",
+  "findings": [
+    {
+      "offset": "0x1a40c38",
+      "conclusion": "Shell output color factory0x74ee310 resolves secondary."
+    },
+    {
+      "offset": "0x1a40d18..0x1a40d38",
+      "conclusion": "Output fixed leading fields: text pair, color, autoScroll flag, four zero inset doubles, minimum0, maximum double0x4061800000000000=140."
+    }
+  ],
+  "integration": [
+    "Native output ScrollView with ScrollPosition, geometry and phase callbacks matching v356 finite-geometry policy.",
+    "Independent synthetic24-line output, never executes a command.",
+    "Per-component following and user-scrolling state; original14pt/ANSI/parser not assumed.",
+    "Measured content height clamped0..140; zero content insets; secondary resource color."
+  ],
+  "adaptations": [
+    "Plain selectable monospaced Text instead of unresolved parsed output",
+    "Initial following=true and initial measured height140 are explicit preview policies",
+    "Text measurement implementation is native adapter",
+    "Full shell card border/header/entry conditions remain partial",
+    "New scroll APIs gated to iOS18+. iOS17 retains earlier preview without this output region and is not accepted for parity."
+  ],
+  "validation": {
+    "status": "passed-scoped-simulator-regression",
+    "test": "testRemoteTaskScopeAndReturn",
+    "initial_build": "failed: iOS18-only API availability under iOS17 deployment target; addressed by explicit availability gate",
+    "result_bundle": "ios-remote-v357-r2.xcresult",
+    "reference_model_tests_passed": 4,
+    "preview_pid": 78694,
+    "phone_updated": false,
+    "external_display_reverified": false,
+    "screenshot": "ios-remote-v357-screenshots/1E33349A-2B83-41BD-8F76-8F8200346B04.png",
+    "visual": "Output viewport shows final synthetic line24 and clips partial preceding line at scroll boundary; complete card style not accepted. Actual drag/output append behavior not tested."
+  },
+  "remaining": [
+    "Actual drag and append-output acceptance",
+    "Initial state/reset proof",
+    "Parsed text and font details",
+    "Full shell card geometry",
+    "Android"
+  ]
+}

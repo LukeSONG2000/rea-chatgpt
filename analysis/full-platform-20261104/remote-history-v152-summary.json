@@ -1,0 +1,34 @@
+{
+  "status": "partial",
+  "authority": "independent projection and exact official fragment replay",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/remote-event-projection.cjs",
+      "sha256": "64aaa3a56145a4ab6758a1c0d38984e18fc178978de555c0c7e26d230c3e00aa"
+    },
+    {
+      "path": "implementation/desktop/native/remote-manager.cjs",
+      "sha256": "ae381cc827413476b4def1beeccd438b2ce9a4a5091d3ad04325dbc45a690bc0"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-client.cjs",
+      "sha256": "ddfc847e4bd1ad0654a100863c9ab36a409db87b4f8bfa0c45b90003b0b1b1fa"
+    },
+    {
+      "path": "analysis/tools/replay_remote_history.cjs",
+      "sha256": "e75732ca97afc738b4e5b9731f8e04534906c4e2ba902d23286329a504ae7b45"
+    }
+  ],
+  "reports": [
+    "remote-history-v152-replay.json",
+    "remote-history-v152-projection.json",
+    "remote-history-v152-owner.json",
+    "remote-history-v152-manager.json"
+  ],
+  "limits": [
+    "Text only; permission and attachment helpers stubbed",
+    "No official Remote UI or complete manager integration",
+    "No snapshot/live merge acceptance",
+    "No new runtime package or live model request"
+  ]
+}

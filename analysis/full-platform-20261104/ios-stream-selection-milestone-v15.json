@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "reference_baseline": "1.2026.293 reference; independent UIKit reconstruction",
+  "evidence_type": "independent-native-streaming-interaction-runtime",
+  "runtime": {
+    "architecture": "arm64",
+    "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "deviceName": "REA ChatGPT Offline",
+    "modelName": "iPhone 17 Pro",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "defect": "Reconfiguring a changed rich-text cell cleared attributedText and invalidated native selection/menu on each delta",
+  "fix": "For the same message identity and exactly unchanged attributed prefix, append only the suffix to existing NSTextStorage. Keep selected range; revisions/style changes/identity reuse retain full replacement.",
+  "verified": [
+    "Pre-fix controlled UI test failed because Copy disappeared while body grew",
+    "Post-fix body grows during three-second selection interval and generation remains active",
+    "Native Copy/Paste returns exactly Stable after append; screenshots reviewed",
+    "Ordinary whole-line handle Copy/Paste regression passes",
+    "Split Markdown heading/code/table projection regression passes"
+  ],
+  "limitations": [
+    "Short word in append-only rich-text paragraph at default font on simulator",
+    "Selection under content revision, style reinterpretation, block-family changes, cross-block selection and cell virtualization remains unaccepted",
+    "No pause-follow-on-selection or long-output offscreen selection acceptance",
+    "No physical iPhone or official visual parity claim",
+    "Chinese composing/candidate replacement and Unicode AX warning remain open"
+  ],
+  "results": {
+    "focused": "analysis/full-platform-20261104/ios-stream-selection-v2.xcresult",
+    "regression": "analysis/full-platform-20261104/ios-selection-regression-v1.xcresult",
+    "passed_tests": 3
+  },
+  "source_and_evidence_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "b8d66f6f470d2b164b8635df9b1203e4f8186f2664d9d01c43c30c771e21bd13",
+    "implementation/ios/UITests/HostInteractionTests.swift": "faa325af23279aa40a7da480f1f9df995aa64885a0807d9380fa07293202ab99",
+    "implementation/harness/fixture_worker.py": "4751c594f12e42ccf3eee22cdf45b45149a4c5aa326d7a4086afaebcc039b375",
+    "analysis/full-platform-20261104/ios-stream-selection-v1.log": "56bc72d3a3a0fae29c7ef7b302829fac801a24f651f9e494fcb5dcb58c11301b",
+    "analysis/full-platform-20261104/ios-stream-selection-v2.log": "0f5e62fd1843739bd56afdf56887b0cec9ac10504d1dccea411c4a863f813030",
+    "analysis/full-platform-20261104/ios-stream-selection-v2.summary.json": "c49cd0be655841996026933b5aea8dbefb4b880c6e842ed8b21642cd38ae0cd1",
+    "analysis/full-platform-20261104/ios-selection-regression-v1.log": "e4a241315a352732336bb5c7ecafa070fd2e1e4cfd54696df552d7e2a4421efa",
+    "analysis/full-platform-20261104/ios-selection-regression-v1.summary.json": "0e94026b2ca3e0bbba7b32dfeda0868e86648911b6088e8b37e5915917ee0c8b",
+    "analysis/full-platform-20261104/ios-stream-selection-v2-attachments/selection-during-append.png": "e9f9e939039730638f5e81c179c571e57217793af8d37329daee454e9d6840ec",
+    "analysis/full-platform-20261104/ios-stream-selection-v2-attachments/selected-word-after-append.png": "811c3837adaabd0f279d0939778ef47964b9daffa283840131946592405368f3"
+  },
+  "next_action": "iOS composition/candidate behavior and send/scope-switch boundaries"
+}

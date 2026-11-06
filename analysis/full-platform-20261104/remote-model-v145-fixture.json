@@ -1,0 +1,47 @@
+{
+  "schema": "rea-remote-model-probe-v1",
+  "implementation": "independent Remote owner",
+  "mode": "fixture",
+  "status": "passed",
+  "checks": {
+    "complete": {
+      "events": 5,
+      "kinds": [
+        "submitted",
+        "accepted",
+        "delta",
+        "delta",
+        "completed"
+      ],
+      "characters": 19,
+      "textSha256": "e3e4b4fa04263dff00a9ec2ec1909f5828d025d58d61ce5eaf5fecdb23c14f09",
+      "terminal": "completed",
+      "cancelReceipt": null,
+      "passed": true
+    },
+    "cancel": {
+      "events": 3,
+      "kinds": [
+        "submitted",
+        "accepted",
+        "cancelled"
+      ],
+      "characters": 0,
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "terminal": "cancelled",
+      "cancelReceipt": {
+        "phase": "cancelled",
+        "changed": true
+      },
+      "noLateEvents": true,
+      "passed": true
+    }
+  },
+  "limits": [
+    "No official service",
+    "No native UI acceptance",
+    "Local cancellation does not prove provider-side compute cancellation"
+  ],
+  "ownerStopped": true,
+  "elapsedSeconds": 2.34
+}

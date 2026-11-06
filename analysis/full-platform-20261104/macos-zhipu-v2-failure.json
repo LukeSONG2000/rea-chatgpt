@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "attempt": "macos-zhipu-v2.json",
+  "observed": "Runner exited 1 with page.waitForFunction Timeout 80000ms exceeded; no JSON runtime report was written",
+  "limitations": [
+    "Which wait timed out was not preserved",
+    "No cancellation success established"
+  ],
+  "correction": "Runner now retains terminal failure state and sanitized broker audit rather than discarding whole report"
+}

@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-harness-fault-injection-and-renderer-regression",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "change": "Pending-snapshot cleanup is secondary to durable history commit. Cleanup failure returns explicit deferred audit state and retains snapshot instead of rejecting the successful stream.",
+  "fault_injection": {
+    "test": "analysis/tools/test_desktop_pending_cleanup_failure.mjs",
+    "status": "passed",
+    "fault": "EIO at pending snapshot atomic rename only; history storage unaffected",
+    "verified": [
+      "Original pending file and memory unchanged",
+      "Full synthetic service stream ends with message_stream_complete and DONE",
+      "History on disk has finished_successfully assistant",
+      "Cleanup audit deferred with error",
+      "Unresolved snapshot cannot automatically regenerate",
+      "Fresh pending store reconciles from durable history without another generation request",
+      "Temporary files removed"
+    ]
+  },
+  "renderer_regression": {
+    "runtime": "macos-preview-v99-runtime.json",
+    "status": "passed",
+    "removed_id": "local-chatgpt:03acfffa-5aa0-4995-97ee-5d800e4f20d5",
+    "preserved_ids": [
+      "local-chatgpt:d1ec3996-b9ea-48e3-8f8e-4a3b6956fa66"
+    ],
+    "cleanup_audit_count": 5
+  },
+  "limits": [
+    "Injected fault tested in service/store integration, not native OS disk failure UI",
+    "Deferred cleanup is observable in audit/report; user-facing recovery/discard UX not implemented",
+    "Restore still opt-in; physical interaction and full six-platform completion unaccepted"
+  ],
+  "next_action": "Add explicit recovery/discard presentation with stale-confirmation protection, then broaden recovery fault coverage before default enablement",
+  "sources": [
+    {
+      "file": "analysis/tools/desktop-pending-settlement.cjs",
+      "sha256": "8fb61a47b49333ecfb83737c416398e6946733485119f900900379a5009214b9"
+    },
+    {
+      "file": "analysis/tools/test_desktop_pending_cleanup_failure.mjs",
+      "sha256": "e687e610e2bef684b349c5a031ff21019e10ce2c09e9d0bf76ecb7204c124894"
+    },
+    {
+      "file": "analysis/tools/desktop-native-host.cjs",
+      "sha256": "6ae4978abbd24dc82899684ab79a863114fa1579928aca22d7e3ae12438b1d70"
+    },
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "ca660ac83417be0636444fd844c96e353259a53dcd3d05114d48bb59083586f4"
+    }
+  ]
+}

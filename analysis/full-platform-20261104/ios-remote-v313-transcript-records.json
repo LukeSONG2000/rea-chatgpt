@@ -1,0 +1,405 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "types": [
+    {
+      "name": "Content",
+      "descriptor": "0x95acb08",
+      "kind": 2,
+      "fields": [
+        {
+          "name": "renderUnit",
+          "record": "0x9a35978",
+          "type_reference": "0x8e15258"
+        },
+        {
+          "name": "realtimeTranscript",
+          "record": "0x9a35984",
+          "type_reference": "0x8e150d4"
+        },
+        {
+          "name": "trailingRealtimeTranscript",
+          "record": "0x9a35990",
+          "type_reference": "0x8e1525e"
+        },
+        {
+          "name": "activityHeader",
+          "record": "0x9a3599c",
+          "type_reference": "0x8e150ec"
+        },
+        {
+          "name": "modelRerouted",
+          "record": "0x9a359a8",
+          "type_reference": "0x8e15264"
+        },
+        {
+          "name": "previousMessagesToggle",
+          "record": "0x9a359b4",
+          "type_reference": null
+        },
+        {
+          "name": "previousMessagesSeparator",
+          "record": "0x9a359c0",
+          "type_reference": null
+        },
+        {
+          "name": "responseSeparator",
+          "record": "0x9a359cc",
+          "type_reference": null
+        },
+        {
+          "name": "tail",
+          "record": "0x9a359d8",
+          "type_reference": null
+        }
+      ]
+    },
+    {
+      "name": "RenderState",
+      "descriptor": "0x95aca30",
+      "kind": 0,
+      "fields": [
+        {
+          "name": "inProgressItemIDs",
+          "record": "0x9a35b64",
+          "type_reference": "0x8f2ffe0"
+        },
+        {
+          "name": "inProgressWebSearchItemID",
+          "record": "0x9a35b70",
+          "type_reference": "0x8e152cc"
+        },
+        {
+          "name": "automaticApprovalReviewsByRenderedItemID",
+          "record": "0x9a35b7c",
+          "type_reference": "0x8e152d4"
+        },
+        {
+          "name": "inlinePlan",
+          "record": "0x9a35b88",
+          "type_reference": "0x8e11c14"
+        },
+        {
+          "name": "toolActivity",
+          "record": "0x9a35b94",
+          "type_reference": "0x8e150cc"
+        },
+        {
+          "name": "workingStartedAt",
+          "record": "0x9a35ba0",
+          "type_reference": "0x8da8240"
+        },
+        {
+          "name": "thinkingSummaryText",
+          "record": "0x9a35bac",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "previousMessagesToggle",
+          "record": "0x9a35bb8",
+          "type_reference": "0x8e152e8"
+        }
+      ]
+    },
+    {
+      "name": "Activity",
+      "descriptor": "0x95aca90",
+      "kind": 2,
+      "fields": [
+        {
+          "name": "commandExecution",
+          "record": "0x9a35a8c",
+          "type_reference": "0x8e1505a"
+        },
+        {
+          "name": "fileChange",
+          "record": "0x9a35a98",
+          "type_reference": "0x8e15068"
+        },
+        {
+          "name": "webSearch",
+          "record": "0x9a35aa4",
+          "type_reference": "0x8e15076"
+        },
+        {
+          "name": "automaticApprovalReview",
+          "record": "0x9a35ab0",
+          "type_reference": "0x8e15084"
+        },
+        {
+          "name": "mcpToolCall",
+          "record": "0x9a35abc",
+          "type_reference": "0x8e15092"
+        },
+        {
+          "name": "dynamicToolCall",
+          "record": "0x9a35ac8",
+          "type_reference": "0x8e150a0"
+        },
+        {
+          "name": "functionCall",
+          "record": "0x9a35ad4",
+          "type_reference": "0x8e150ae"
+        },
+        {
+          "name": "externalEvent",
+          "record": "0x9a35ae0",
+          "type_reference": "0x8e150bc"
+        }
+      ]
+    },
+    {
+      "name": "ActivityRow",
+      "descriptor": "0x95aecbc",
+      "kind": 0,
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a39c50",
+          "type_reference": "0x8bfd974"
+        },
+        {
+          "name": "activities",
+          "record": "0x9a39c5c",
+          "type_reference": "0x8e22f6e"
+        }
+      ]
+    },
+    {
+      "name": "CodexRenderedItem",
+      "descriptor": "0x95d1ba0",
+      "kind": 0,
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a61844",
+          "type_reference": "0x8bfd974"
+        },
+        {
+          "name": "kind",
+          "record": "0x9a61850",
+          "type_reference": "0x8f329da"
+        },
+        {
+          "name": "_content",
+          "record": "0x9a6185c",
+          "type_reference": "0x8f303c0"
+        },
+        {
+          "name": "summary",
+          "record": "0x9a61868",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "attachments",
+          "record": "0x9a61874",
+          "type_reference": "0x8e39166"
+        },
+        {
+          "name": "_responseTextAnnotations",
+          "record": "0x9a61880",
+          "type_reference": "0x8f3332e"
+        },
+        {
+          "name": "userInputs",
+          "record": "0x9a6188c",
+          "type_reference": "0x8f302dc"
+        },
+        {
+          "name": "_externalEvent",
+          "record": "0x9a61898",
+          "type_reference": "0x8f33340"
+        },
+        {
+          "name": "_asyncQuestions",
+          "record": "0x9a618a4",
+          "type_reference": "0x8f33356"
+        },
+        {
+          "name": "_asyncQuestionReplies",
+          "record": "0x9a618b0",
+          "type_reference": "0x8f33368"
+        },
+        {
+          "name": "_userMessageParsedMarkdown",
+          "record": "0x9a618bc",
+          "type_reference": "0x8f3002a"
+        },
+        {
+          "name": "_displayUserInputs",
+          "record": "0x9a618c8",
+          "type_reference": "0x8f3337c"
+        },
+        {
+          "name": "imageViewPath",
+          "record": "0x9a618d4",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "imageViewPaths",
+          "record": "0x9a618e0",
+          "type_reference": "0x8bc92c0"
+        },
+        {
+          "name": "commandExecutionDisplayCommand",
+          "record": "0x9a618ec",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "automaticApprovalReview",
+          "record": "0x9a618f8",
+          "type_reference": "0x8f30040"
+        },
+        {
+          "name": "_commandExecutionStartedAt",
+          "record": "0x9a61904",
+          "type_reference": "0x8f30048"
+        },
+        {
+          "name": "functionCall",
+          "record": "0x9a61910",
+          "type_reference": "0x8e3387a"
+        },
+        {
+          "name": "dynamicToolCall",
+          "record": "0x9a6191c",
+          "type_reference": "0x8e33882"
+        },
+        {
+          "name": "collaborationToolCall",
+          "record": "0x9a61928",
+          "type_reference": "0x8f30252"
+        },
+        {
+          "name": "reviewFindings",
+          "record": "0x9a61934",
+          "type_reference": "0x8f303d4"
+        },
+        {
+          "name": "gitActionDirectives",
+          "record": "0x9a61940",
+          "type_reference": "0x8f303de"
+        },
+        {
+          "name": "createdThreadDirectives",
+          "record": "0x9a6194c",
+          "type_reference": "0x8f303e8"
+        },
+        {
+          "name": "hasReviewResponse",
+          "record": "0x9a61958",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "mcpToolCall",
+          "record": "0x9a61964",
+          "type_reference": "0x8e31b3e"
+        },
+        {
+          "name": "hookRun",
+          "record": "0x9a61970",
+          "type_reference": "0x8e33b40"
+        },
+        {
+          "name": "heartbeatTrigger",
+          "record": "0x9a6197c",
+          "type_reference": "0x8e121f0"
+        },
+        {
+          "name": "heartbeatAssistantOutput",
+          "record": "0x9a61988",
+          "type_reference": "0x8f3025a"
+        },
+        {
+          "name": "_linkedRemoteHostImagePaths",
+          "record": "0x9a61994",
+          "type_reference": "0x8f33394"
+        },
+        {
+          "name": "fileChangeDiffStats",
+          "record": "0x9a619a0",
+          "type_reference": "0x8f303f2"
+        },
+        {
+          "name": "_isCachedPreview",
+          "record": "0x9a619ac",
+          "type_reference": "0x8f331d0"
+        },
+        {
+          "name": "_clientUserMessageID",
+          "record": "0x9a619b8",
+          "type_reference": "0x8f333aa"
+        },
+        {
+          "name": "_questionReplyPresentation",
+          "record": "0x9a619c4",
+          "type_reference": "0x8f333c2"
+        },
+        {
+          "name": "_originalThreadItem",
+          "record": "0x9a619d0",
+          "type_reference": "0x8f30060"
+        },
+        {
+          "name": "_renderingContext",
+          "record": "0x9a619dc",
+          "type_reference": "0x8f333d8"
+        },
+        {
+          "name": "_comparisonFingerprint",
+          "record": "0x9a619e8",
+          "type_reference": "0x8f333ec"
+        }
+      ]
+    },
+    {
+      "name": "Action",
+      "descriptor": "0x95d1aec",
+      "kind": 2,
+      "fields": [
+        {
+          "name": "spawnAgent",
+          "record": "0x9a61694",
+          "type_reference": null
+        },
+        {
+          "name": "sendInput",
+          "record": "0x9a616a0",
+          "type_reference": null
+        },
+        {
+          "name": "resumeAgent",
+          "record": "0x9a616ac",
+          "type_reference": null
+        },
+        {
+          "name": "closeAgent",
+          "record": "0x9a616b8",
+          "type_reference": null
+        },
+        {
+          "name": "followupTask",
+          "record": "0x9a616c4",
+          "type_reference": null
+        },
+        {
+          "name": "interruptAgent",
+          "record": "0x9a616d0",
+          "type_reference": null
+        },
+        {
+          "name": "listAgents",
+          "record": "0x9a616dc",
+          "type_reference": null
+        },
+        {
+          "name": "completeAgent",
+          "record": "0x9a616e8",
+          "type_reference": null
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Metadata fields and cases only, not runtime dispatch or full protocol schema"
+  ]
+}

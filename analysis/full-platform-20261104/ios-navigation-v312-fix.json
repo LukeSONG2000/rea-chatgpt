@@ -1,0 +1,20 @@
+{
+  "status": "partial",
+  "fix": "remove independently introduced tappable conversation title and push route",
+  "source": "implementation/ios/Sources/NativeConversationHost.swift",
+  "test": "testNoDebugTitleNavigation",
+  "passedTests": 1,
+  "failedTests": 0,
+  "verified": [
+    "Chat/Work toggle remains on empty home",
+    "synthetic completion has no debug title",
+    "sidebar can open and dismiss back to editor"
+  ],
+  "limits": [
+    "not full legacy suite",
+    "not physical device acceptance",
+    "not proof of full official header fidelity"
+  ],
+  "preview_pid": 58162,
+  "physical_device": "unchanged 303"
+}

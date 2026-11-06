@@ -1,0 +1,16 @@
+{
+  "status": "failed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v155-macos/REA ChatGPT Offline.app",
+  "checks": [],
+  "limits": [
+    "Main-process IPC acceptance from original renderer context, not a visible official Remote control workflow",
+    "Fixture model; no live Zhipu calls in this test"
+  ],
+  "originalManager": {
+    "status": "failed",
+    "error": "Cannot read properties of undefined (reading 'requiresReplayAdmission')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'requiresReplayAdmission')\n    at Smn (https://offline.invalid/app-initial-feb30b196d11.js:1832:76259)\n    at new Rmn (https://offline.invalid/app-initial-feb30b196d11.js:1832:95202)\n    at probeOriginalRemoteConstructor (eval at <anonymous> (eval at evaluate (:290:30)), <anonymous>:16:26)\n    at async <anonymous>:316:30",
+    "calls": []
+  },
+  "error": "AssertionError [ERR_ASSERTION]: {\"status\":\"failed\",\"error\":\"Cannot read properties of undefined (reading 'requiresReplayAdmission')\",\"stack\":\"TypeError: Cannot read properties of undefined (reading 'requiresReplayAdmission')\\n    at Smn (https://offline.invalid/app-initial-feb30b196d11.js:1832:76259)\\n    at new Rmn (https://offline.invalid/app-initial-feb30b196d11.js:1832:95202)\\n    at probeOriginalRemoteConstructor (eval at <anonymous> (eval at evaluate (:290:30)), <anonymous>:16:26)\\n    at async <anonymous>:316:30\",\"calls\":[]}\n+ actual - expected\n\n+ 'failed'\n- 'constructed'\n"
+}

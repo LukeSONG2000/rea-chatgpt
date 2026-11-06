@@ -1,0 +1,47 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "component": "CodexDisclosureChevron",
+  "asset": {
+    "factory": "0x74f5efc",
+    "string": "0x8a549a0",
+    "name": "OpenAI/Symbols/chevron-right-md"
+  },
+  "rotation": {
+    "body_closure": "0x6f4fb5c",
+    "angle_constant": "0x7ead8b8 = pi/2",
+    "expanded_select": "0x6f4fb74..0x6f4fb88",
+    "animation_factory": "0x6ee7ccc",
+    "curve": "easeInOut",
+    "duration_constant": "0x7cd9658 = 0.2",
+    "scope": "animation(_:body:) 0x6ee7e18",
+    "reduce_motion_gate": "0x6ee7da4..0x6ee7dbc"
+  },
+  "correction": "KeyframeAnimator modifies opacity; rotation is a separate animation body. Earlier combined description was incomplete.",
+  "consumer": "FileChangeDisclosurePart -> ExpandableAssistantSummaryItem -> style sets fadesWhenExpanded=false",
+  "integration": "Official asset, scoped rotation 0/90 degrees, 0.2 easeInOut, accessibilityReduceMotion adapter",
+  "limits": [
+    "Fade-enabled keyframe branch remains unimplemented because this consumer disables it",
+    "Runtime motion equivalence not proven by static trace or settled screenshot",
+    "Native environment proxy to accessibilityReduceMotion remains an adapter",
+    "Android native consumer not independently traced"
+  ],
+  "validation": {
+    "simulator": "testRemoteTaskScopeAndReturn passed 1/0",
+    "screenshot": "official chevron asset visible in expanded state; no observed clipping",
+    "motion": "parameter recovery only; frame-by-frame equivalence and Reduce Motion runtime not accepted",
+    "preview_pid": 72726,
+    "phone": "not updated",
+    "external_display": "not reverified",
+    "retention": "no stale targets"
+  },
+  "next": {
+    "component": "MarkdownCodeBlock",
+    "body_witness": "0x6901614",
+    "body": "0x68ff53c",
+    "focus": "actual Remote consumer header/copy/menu configuration"
+  }
+}

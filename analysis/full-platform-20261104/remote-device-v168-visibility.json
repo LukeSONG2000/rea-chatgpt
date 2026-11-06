@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "authority": "controlled exact original visibility fragment; no network or full app",
+  "file": "recovered/macos/asar-extracted/webview/assets/remote-control-connections-visibility-fadee7b0e4b5.js",
+  "sha256": "de3652dd46bdf764a8a404a4c2498166abafc4c06375015d0d2111a8f15ffa8c",
+  "byteOffset": 364,
+  "source": "function l({remoteControlConnectionsState:e,slingshotEnabled:t}){return t&&(e?.available??!0)&&e?.accessRequired!==!0}",
+  "cases": [
+    {
+      "gate": false,
+      "expected": false,
+      "actual": false
+    },
+    {
+      "gate": true,
+      "expected": true,
+      "actual": true
+    },
+    {
+      "gate": true,
+      "state": {
+        "available": false
+      },
+      "expected": false,
+      "actual": false
+    },
+    {
+      "gate": true,
+      "state": {
+        "available": true,
+        "accessRequired": true
+      },
+      "expected": false,
+      "actual": false
+    },
+    {
+      "gate": true,
+      "state": {
+        "available": true,
+        "accessRequired": false,
+        "clientAuthorized": false
+      },
+      "expected": true,
+      "actual": true
+    }
+  ],
+  "limits": [
+    "Visible section is not authorization",
+    "clientAuthorized is checked by downstream card controls",
+    "No official gate eligibility inferred from independent local override"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "conformance": "0x811d610",
+  "protocol": "0x9723800",
+  "protocol_name": "MeasurableBodyView",
+  "pattern": "0xaf33c68",
+  "slots": [
+    "0x811d610",
+    "0x0",
+    "0x922eb6d",
+    "0x922c705",
+    "0x4c62cb0"
+  ],
+  "body_witness": "0x4c62cb0",
+  "body_tail_target": "0x4c4c30c",
+  "body_type_records": [
+    "0x811c508",
+    "0x811c518"
+  ],
+  "content_body": {
+    "entry": "0x4c63b9c",
+    "end_exclusive": "0x4c64328",
+    "stack_constructor_site": "0x4c64174",
+    "content_closure": "0x4e4dc04",
+    "closure_inner_call": "0x4c64414"
+  },
+  "parameter_observation": {
+    "sites": [
+      "0x4c640f4",
+      "0x4c640f8",
+      "0x4c640fc"
+    ],
+    "values": [
+      12,
+      18
+    ],
+    "capture_store": "0x4c64148",
+    "capture_offset": "0x60",
+    "closure_load": "0x4e4dc20",
+    "meaning": "unknown; not asserted as composer padding or VStack spacing"
+  },
+  "checks": [
+    "conformance backlink",
+    "protocol identity",
+    "direct branch encoding",
+    "single linker function interval",
+    "VStack import binding"
+  ],
+  "limits": [
+    "No main-chat runtime selection proved",
+    "Type references do not establish all branch visibility",
+    "Associated witness entries with symbolic kind 7 remain unsupported",
+    "No preview modification or visual acceptance"
+  ]
+}

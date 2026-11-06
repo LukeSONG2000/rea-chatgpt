@@ -1,0 +1,86 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "artifact": "Codex 26.1021.31345; not official ChatGPT Web",
+  "evidence_type": "controlled fragment replay plus independent browser host adaptation",
+  "before": {
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "root": {
+      "top": 24,
+      "bottom": 744,
+      "height": 720,
+      "width": 1280
+    },
+    "composer": {
+      "top": 692,
+      "bottom": 728,
+      "height": 36,
+      "width": 662
+    }
+  },
+  "after": {
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "root": {
+      "top": 24,
+      "bottom": 720,
+      "height": 696,
+      "width": 1280
+    },
+    "composer": {
+      "top": 668,
+      "bottom": 704,
+      "height": 36,
+      "width": 662
+    }
+  },
+  "validation": {
+    "chat": "passed",
+    "coldRecovery": "passed",
+    "bounds": "passed via post-run assertions",
+    "screenshot": "output/playwright/desktop-web-v113-final-cold.png",
+    "server_tests": "passed"
+  },
+  "failedResources": [
+    {
+      "path": "/dictation-start-3d0290130f06.wav",
+      "status": 404
+    },
+    {
+      "path": "/dictation-stop-508377056bdb.wav",
+      "status": 404
+    },
+    {
+      "path": "/error-878d0efcada6.wav",
+      "status": 404
+    },
+    {
+      "path": "/dictation-start-3d0290130f06.wav",
+      "status": 404
+    },
+    {
+      "path": "/dictation-stop-508377056bdb.wav",
+      "status": 404
+    },
+    {
+      "path": "/error-878d0efcada6.wav",
+      "status": 404
+    }
+  ],
+  "limitations": [
+    "Only 1280x720 viewport accepted for bounds; resize and zoom pending",
+    "Root-only candidate did not fix descendant height; retained in v113-after.json",
+    "Project loading and legacy fetch unsupported",
+    "Three WAV resources remain unavailable; audio behavior unaccepted",
+    "Official Web, Windows and full native fidelity not covered"
+  ],
+  "files": {
+    "implementation/desktop-web/server.cjs": "2ca98b5973cc68fbd3a6282cf5a9eff07e0055f427a5e51192f5c3da63520818",
+    "implementation/desktop-web/probe.cjs": "e227f548ece4f5d6e0cc973cd22d9a66aea2cfa18d4af741855425dd6eb43c1a"
+  }
+}

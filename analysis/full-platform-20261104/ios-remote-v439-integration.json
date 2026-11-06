@@ -1,0 +1,95 @@
+{
+  "schema": "rea-ios-component-integration-v1",
+  "batch": "v439",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped_artifact_static_observation_with_independent_native_adapter",
+  "integrated": [
+    "conditional continuous rounded selection background radius12, horizontal8 and vertical2 inset",
+    "dynamic official ChatGPT/bg/tertiary asset",
+    "conditional accessibility isSelected trait",
+    "hidden all task row separators",
+    "asymmetric push(top) insertion, push(bottom) removal"
+  ],
+  "independent_adapters": [
+    "selectedTask scoped identity provides selection input, original selection lifecycle partial",
+    "Reduce Motion -> identity transition",
+    "plain buttonStyle remains unverified host adapter"
+  ],
+  "unknowns": [
+    "original buttonStyle and press feedback",
+    "selection owner lifetime and full equality semantics",
+    "animation transaction/timing and SDK runtime fidelity",
+    "context menu, swipe actions, hover",
+    "Android equivalent source chain"
+  ],
+  "validation": {
+    "typecheck": "passed",
+    "ui_test_parse": "passed",
+    "ui_test_runtime": "not_run",
+    "build_install_device_visual": "not_run",
+    "pending_tests": [
+      "testRemoteLongTitleLayout",
+      "testRemoteTaskScopeAndReturn",
+      "testRemoteSectionScopeAndRestoration",
+      "testNoDebugTitleNavigation",
+      "testRemoteCurrentTurnGeometry",
+      "testRemoteFragmentSequenceUpdates"
+    ],
+    "retention_stale_targets": [],
+    "runtime": {
+      "live_pids": [
+        97181,
+        97197,
+        87483
+      ],
+      "state": "existing first-launch process still pending; preview preserved"
+    }
+  },
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "5a27ae4ba3b035516b4d96b9048af7c9d0eda5daaf79350a1e5ebbdff52f8f9b"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "508625438ffba02dc2fd5a3980714bb62b87449b24efde17c7d58591428dcde1"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialVisualAssets.bundle/Assets.car",
+      "sha256": "716cc59b7593e6503e725a755c4b064b8d5644c3b3d894c4c4cee137037bb900"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "278a5f1f933db8df88d6d3c6cb31a510769e49b331618459f0f5631e6e2fef15"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-task-list-cell-owner.json",
+      "sha256": "fdf8fc564bb69eb1c7fbb2725eb7cb31654f4f29965e434b74d7836108774bd2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v439-enum-crosscheck.json",
+      "sha256": "0b0ee7a2848deeed6d417defe17741d4e7482c8e4a1b2746e17249bc9be18f8b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v439-presentation-bindings.json",
+      "sha256": "a9da8263e5508f34369e234c05c358798514bcffbd60fc7df95e8dc99aab6395"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v439-row-presentation.json",
+      "sha256": "1d7ee42f4e976c33d906d791d8491a8aa6eee49d72dfb88422ded2953bbcb8de"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v439-selection-shape.json",
+      "sha256": "c1c0286a50ba91ed939f9fb81c800ed01168862ba28be3cfbf37ac270eb037bc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v439-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    }
+  ]
+}

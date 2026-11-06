@@ -1,0 +1,35 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-host-runtime-with-official-renderer",
+  "validation": {
+    "sidebar_menu_toggle_and_restore": "passed",
+    "settings_menu_content": "observed; not settings capability acceptance",
+    "newTask_chatgpt_composer": "failed; Codex home observed",
+    "searchChats": "not reached",
+    "native_os_clicks_and_keyboard": "unaccepted"
+  },
+  "evidence": [
+    "macos-menu-v79-runtime.json",
+    "macos-menu-v79-runtime-v2.json"
+  ],
+  "first_attempt_failure": "Incorrect probe assumption that internal routing changes location.pathname; settings screenshot proved content was present",
+  "second_attempt_failure": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Ask ChatGPT', exact: true }) to be visible\u001b[22m\n",
+  "consumer_evidence": {
+    "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+    "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+    "symbol": "gor",
+    "byte_start": 4197506,
+    "byte_end": 4197560,
+    "source": "gor=()=>{aor({type:`windows.show_home`,windowId:Qar})}",
+    "interpretation": "newTask resolves through windows.show_home; current synthetic mode/home routing must be traced before claiming ChatGPT new conversation"
+  },
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/official-root-probe-run-1793814815684-84052-synthetic-account.png",
+  "next_action": "Trace windows.show_home and mode selection against existing ChatGPT new-chat UI; test search independently rather than skipping it after newTask failure",
+  "limits": [
+    "Programmatically invoked installed MenuItem callbacks, not physical native interaction",
+    "Screenshot is renderer capture; native window capture failed",
+    "Desktop identity remains Codex",
+    "No modified packaged renderer, online services, or real chat data"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "authority": "official artifact observation",
+  "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "evidence": [
+    {
+      "symbol": "r$t",
+      "byteOffset": 2635492,
+      "source": "function r$t(){let e=mi?.applicationState;if(e==null)throw Error(`Global state is unavailable`);return e}"
+    },
+    {
+      "symbol": "u$t",
+      "byteOffset": 2636868,
+      "source": "async function u$t(e,t,n,r){if(g$t.has(t))throw Error(`Direct writes to ${t} are not allowed`);let i=e.query.snapshot(GC,t);await i.cancel();let a=i.getData(),o=i.setData({value:n});try{let{success:e}=await va(r$t().write(t,n));if(!e){if(r?.throwOnFailure)throw Error(`Failed to set global setting`);i.setData(e=>e===o?a:e)}}catch(e){throw i.setData(e=>e===o?a:e),e}finally{await i.invalidate(),er(i.queryKey)}}"
+    }
+  ],
+  "observedKey": "added-remote-control-env-ids",
+  "independentStorageField": "addedRemoteControlEnvIds",
+  "limits": [
+    "Persistence implementation is independent, not official storage recovery",
+    "selected-remote-host-id remains unsupported"
+  ]
+}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.Locale=void 0;class Locale{constructor(e,t){this.language=e.toLowerCase(),this.region=t?.toUpperCase()}toString(){return this.region?`${this.language}-${this.region}`:this.language}static parse(e){const t=e.split("-");return new Locale(t[0],t[1])}}exports.Locale=Locale;

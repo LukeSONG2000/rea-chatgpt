@@ -1,0 +1,41 @@
+{
+  "status": "partial",
+  "source_baseline": "iOS1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "foreach_check": {
+    "host_imports": [
+      "_$s7SwiftUI7ForEachVAA7Element_2IDQZRs_s12IdentifiableADRpzrlE6create_7contentACyxq_q0_Gx_q0_AHctFZ",
+      "_$s7SwiftUI7ForEachVAAE6create_2id7contentACyxq_q0_Gx_s7KeyPathCy7ElementQzq_Gq0_AKctFZ"
+    ],
+    "sdk": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/SwiftUICore.framework/Modules/SwiftUICore.swiftmodule/arm64-apple-ios-simulator.swiftinterface",
+    "conclusion": "SDK public initializer dispatches to create on supported OS; no evidence justifying replacing public ForEach"
+  },
+  "independent_adaptation": {
+    "reason": "visible long fixed-size row exceeds ScrollGeometry.contentSize.width; v371/v372 runtime proves missing propagation",
+    "mechanism": "measure actual row widths keyed by stable line IDs; content minWidth=max(viewport,max measured rows); prune removed IDs; changed visible row width replaces prior value",
+    "preserves": [
+      "LazyVStack",
+      "fixed-size single lines",
+      "bidirectional ScrollView",
+      "source-backed colors/font/follow threshold"
+    ],
+    "limits": [
+      "not recovered official implementation",
+      "unrealized rows have no measured width until laid out",
+      "offscreen revisions/large output and cross-row selection still need acceptance"
+    ]
+  },
+  "tests": {
+    "passed": 2,
+    "failed": 0,
+    "names": [
+      "testRemoteOutputGestureFollow",
+      "testRemoteOutputLongLineLayout"
+    ],
+    "contentWidth": 1510,
+    "viewportWidth": 338,
+    "finalOffsetX": 1172,
+    "visual": "Inspected screenshot; LONG_END visible at right edge, short rows correctly offscreen at same horizontal offset",
+    "normal_preview_pid": 83749
+  }
+}

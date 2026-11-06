@@ -1,0 +1,26 @@
+{
+  "authority": "official artifact static observation",
+  "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "evidence": [
+    {
+      "symbol": "Ymt",
+      "byteOffset": 1951586,
+      "source": "async function Ymt(e){Qmt?.[Symbol.dispose](),Qmt=void 0,Jmt(void 0),e!=null&&(Qmt=await e.catalog.subscribe(Jmt))}"
+    },
+    {
+      "symbol": "xpa",
+      "byteOffset": 6376567,
+      "source": "function xpa(){return Ua(Tpa)}"
+    },
+    {
+      "symbol": "Epa",
+      "byteOffset": 6376803,
+      "source": "function Epa(){return(Epa=t((()=>{Z(),Aj(),gD(),Y(),ux(),n_(),EV(),Tpa=W(V,({get:e})=>{let t=e(Dj),{data:n}=e(pD,t),r=e(e_,`4114442250`);if(n?.config[`features.remote_connections`]===!0)return!0;let i=n?.config.features;return typeof i!=`object`||!i||Array.isArray(i)?r:Object.getOwnPropertyDescriptor(i,`remote_connections`)?.value===!0||r})})))()}"
+    }
+  ],
+  "limits": [
+    "This gate does not prove visible settings navigation includes Connections",
+    "Independent local fixture enables features.remote_connections, not an official production flag claim"
+  ]
+}

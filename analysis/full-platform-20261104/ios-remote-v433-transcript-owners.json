@@ -1,0 +1,1447 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "CodexRemoteThreadRenamePresentation",
+      "descriptor": "0x9560264",
+      "type_section_entry": "0x9d34d4c",
+      "accessor": "0x42dc6c",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x99d95ec",
+          "type_reference": "0x8bd49c8"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7cf6d20",
+          "flags": "0x30000",
+          "section_entry": "0x9cd9a9c"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteComposerPresentation",
+      "descriptor": "0x95aad24",
+      "type_section_entry": "0x9d3a1a0",
+      "accessor": "0x1ab0408",
+      "fields": [
+        {
+          "name": "showsDestinationControls",
+          "record": "0x9a3437c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "placeholderText",
+          "record": "0x9a34388",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "allowsAttachments",
+          "record": "0x9a34394",
+          "type_reference": "0x8bfd810"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e0b8fc",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2450"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteUserInputReferencePresentation",
+      "descriptor": "0x95ac038",
+      "type_section_entry": "0x9d3a2fc",
+      "accessor": "0x1ab7004",
+      "fields": [
+        {
+          "name": "title",
+          "record": "0x9a36484",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "kind",
+          "record": "0x9a36490",
+          "type_reference": "0x8e1549c"
+        },
+        {
+          "name": "pluginMentionPath",
+          "record": "0x9a3649c",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "pluginIconData",
+          "record": "0x9a364a8",
+          "type_reference": "0x8e829c0"
+        },
+        {
+          "name": "pluginFallbackIconData",
+          "record": "0x9a364b4",
+          "type_reference": "0x8e829c0"
+        },
+        {
+          "name": "brandColor",
+          "record": "0x9a364c0",
+          "type_reference": "0x8bc9970"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e107bc",
+          "flags": "0x30000",
+          "section_entry": "0x9ce262c"
+        },
+        {
+          "descriptor": "0x7e107e4",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2630"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteTurnTranscriptPresentationStore",
+      "descriptor": "0x95ac144",
+      "type_section_entry": "0x9d3a31c",
+      "accessor": "0x1ab76bc",
+      "fields": [
+        {
+          "name": "entriesByTurnID",
+          "record": "0x9a362c0",
+          "type_reference": "0x8e15424"
+        }
+      ],
+      "conformances": []
+    },
+    {
+      "name": "CodexRemoteComposerAutocompletePresentation",
+      "descriptor": "0x95ac9bc",
+      "type_section_entry": "0x9d3a3ec",
+      "accessor": "0x1accf2c",
+      "fields": [
+        {
+          "name": "results",
+          "record": "0x9a35cb4",
+          "type_reference": "0x8e152fc"
+        },
+        {
+          "name": "pendingItemID",
+          "record": "0x9a35cc0",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "width",
+          "record": "0x9a35ccc",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "select",
+          "record": "0x9a35cd8",
+          "type_reference": "0x8e15306"
+        }
+      ],
+      "conformances": []
+    },
+    {
+      "name": "CodexRemoteTurnTranscriptFragment",
+      "descriptor": "0x95aca08",
+      "type_section_entry": "0x9d3a3f4",
+      "accessor": "0x1aa541c",
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a35bd4",
+          "type_reference": "0x8e147c8"
+        },
+        {
+          "name": "content",
+          "record": "0x9a35be0",
+          "type_reference": "0x8e15252"
+        },
+        {
+          "name": "isFirst",
+          "record": "0x9a35bec",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isLast",
+          "record": "0x9a35bf8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hasMessageGroupSpacingAbove",
+          "record": "0x9a35c04",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hasInlineActivitySpacingAbove",
+          "record": "0x9a35c10",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "renderState",
+          "record": "0x9a35c1c",
+          "type_reference": "0x8e152c6"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e0fbdc",
+          "flags": "0x30000",
+          "section_entry": "0x9ce253c"
+        },
+        {
+          "descriptor": "0x7e0fc14",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2540"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteRealtimeTranscriptBlock",
+      "descriptor": "0x95aca58",
+      "type_section_entry": "0x9d3a3fc",
+      "accessor": "0x1b23a28",
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a35b3c",
+          "type_reference": "0x8e1525e"
+        },
+        {
+          "name": "entries",
+          "record": "0x9a35b48",
+          "type_reference": "0x8e152bc"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e0fb14",
+          "flags": "0x30000",
+          "section_entry": "0x9ce252c"
+        },
+        {
+          "descriptor": "0x7e0fb3c",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2530"
+        },
+        {
+          "descriptor": "0x7e0fb74",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2534"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteTurnTranscriptPresentation",
+      "descriptor": "0x95acb30",
+      "type_section_entry": "0x9d3a414",
+      "accessor": "0x1aa5408",
+      "fields": [
+        {
+          "name": "fragments",
+          "record": "0x9a3586c",
+          "type_reference": "0x8e151e6"
+        },
+        {
+          "name": "isContextCompactionOnlyTurn",
+          "record": "0x9a35878",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "responseCopyText",
+          "record": "0x9a35884",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "hookStats",
+          "record": "0x9a35890",
+          "type_reference": "0x8e151f0"
+        },
+        {
+          "name": "realtimeVoiceThinkingText",
+          "record": "0x9a3589c",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "promotedImageIdentities",
+          "record": "0x9a358a8",
+          "type_reference": "0x8e151f8"
+        },
+        {
+          "name": "imageIdentitiesByRenderedItemID",
+          "record": "0x9a358b4",
+          "type_reference": "0x8e15202"
+        },
+        {
+          "name": "assistantInlineBlocksByRenderedItemID",
+          "record": "0x9a358c0",
+          "type_reference": "0x8e15216"
+        },
+        {
+          "name": "hiddenPreviousMessageCount",
+          "record": "0x9a358cc",
+          "type_reference": "0x8e133f0"
+        },
+        {
+          "name": "hasUnloadedPreviousMessages",
+          "record": "0x9a358d8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "arePreviousMessagesExpanded",
+          "record": "0x9a358e4",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isLoadingPreviousMessages",
+          "record": "0x9a358f0",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hasVisibleAssistantResponse",
+          "record": "0x9a358fc",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "steeredRealtimeItemIDs",
+          "record": "0x9a35908",
+          "type_reference": "0x8e13bf0"
+        },
+        {
+          "name": "transcriptItems",
+          "record": "0x9a35914",
+          "type_reference": "0x8e13aee"
+        },
+        {
+          "name": "renderUnits",
+          "record": "0x9a35920",
+          "type_reference": "0x8e15226"
+        },
+        {
+          "name": "parsedAssistantMarkdownByID",
+          "record": "0x9a3592c",
+          "type_reference": "0x8e1522c"
+        },
+        {
+          "name": "fragmentsByID",
+          "record": "0x9a35938",
+          "type_reference": "0x8e1523c"
+        },
+        {
+          "name": "persistentActivityHeaderToolGroup",
+          "record": "0x9a35944",
+          "type_reference": "0x8e150ec"
+        },
+        {
+          "name": "turnRenderState",
+          "record": "0x9a35950",
+          "type_reference": "0x8e1524c"
+        },
+        {
+          "name": "answeredAsyncQuestionIDs",
+          "record": "0x9a3595c",
+          "type_reference": "0x8e14626"
+        }
+      ],
+      "conformances": []
+    },
+    {
+      "name": "CodexRemoteRealtimeTranscriptProjectionStore",
+      "descriptor": "0x95acc94",
+      "type_section_entry": "0x9d3a438",
+      "accessor": "0x1be3e8c",
+      "fields": [
+        {
+          "name": "transcriptBlocks",
+          "record": "0x9a35694",
+          "type_reference": "0x8e15164"
+        },
+        {
+          "name": "projectedHandoffCount",
+          "record": "0x9a356a0",
+          "type_reference": "0x8e133f0"
+        },
+        {
+          "name": "timelineItems",
+          "record": "0x9a356ac",
+          "type_reference": "0x8bfd7fa"
+        },
+        {
+          "name": "transcriptBlocksByID",
+          "record": "0x9a356b8",
+          "type_reference": "0x8e15178"
+        },
+        {
+          "name": "handoffPrompts",
+          "record": "0x9a356c4",
+          "type_reference": "0x8e15188"
+        },
+        {
+          "name": "currentProjection",
+          "record": "0x9a356d0",
+          "type_reference": "0x8e1519a"
+        },
+        {
+          "name": "activeWorkTurnIDs",
+          "record": "0x9a356dc",
+          "type_reference": "0x8f2ffe0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e0f87c",
+          "flags": "0x30000",
+          "section_entry": "0x9ce24f4"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteTurnTranscriptPresentationInput",
+      "descriptor": "0x95acf6c",
+      "type_section_entry": "0x9d3a480",
+      "accessor": "0x1c3c380",
+      "fields": [
+        {
+          "name": "arePreviousMessagesExpanded",
+          "record": "0x9a39318",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hidesThinkingAfterReply",
+          "record": "0x9a39324",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hasUnloadedPreviousMessages",
+          "record": "0x9a39330",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isLoadingPreviousMessages",
+          "record": "0x9a3933c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isErrorPresentedInSafetyBanner",
+          "record": "0x9a39348",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "usesPlanMode",
+          "record": "0x9a39354",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isHostOffline",
+          "record": "0x9a39360",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "hasVisibleInProgressContextCompaction",
+          "record": "0x9a3936c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isVisibleInTranscript",
+          "record": "0x9a39378",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "allowsInlineVisualizations",
+          "record": "0x9a39384",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isRealtimeVoiceThread",
+          "record": "0x9a39390",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "realtime",
+          "record": "0x9a3939c",
+          "type_reference": "0x8e33a5a"
+        },
+        {
+          "name": "turn",
+          "record": "0x9a393a8",
+          "type_reference": "0x8bfd968"
+        },
+        {
+          "name": "prompt",
+          "record": "0x9a393b4",
+          "type_reference": "0x8e121b6"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1b8ec",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2b2c"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteTurnPreviousMessagesPresentation",
+      "descriptor": "0x95ad1a8",
+      "type_section_entry": "0x9d3a4c8",
+      "accessor": "0x1c35efc",
+      "fields": [
+        {
+          "name": "leadingItems",
+          "record": "0x9a396cc",
+          "type_reference": "0x8f37f44"
+        },
+        {
+          "name": "persistentActivityHeaderToolGroup",
+          "record": "0x9a396d8",
+          "type_reference": "0x8e150ec"
+        },
+        {
+          "name": "responseItems",
+          "record": "0x9a396e4",
+          "type_reference": "0x8f37f44"
+        },
+        {
+          "name": "automaticApprovalReviewsByRenderedItemID",
+          "record": "0x9a396f0",
+          "type_reference": "0x8e152d4"
+        },
+        {
+          "name": "hookRuns",
+          "record": "0x9a396fc",
+          "type_reference": "0x8e390ce"
+        },
+        {
+          "name": "visibleLeadingItems",
+          "record": "0x9a39708",
+          "type_reference": "0x8f37f44"
+        },
+        {
+          "name": "leadingItemsBeforePreviousMessagesToggle",
+          "record": "0x9a39714",
+          "type_reference": "0x8f37f44"
+        },
+        {
+          "name": "expandedPreviousMessageItems",
+          "record": "0x9a39720",
+          "type_reference": "0x8f37f44"
+        },
+        {
+          "name": "promotedImageViewPaths",
+          "record": "0x9a3972c",
+          "type_reference": "0x8bc92c0"
+        },
+        {
+          "name": "hiddenPreviousMessageCount",
+          "record": "0x9a39738",
+          "type_reference": "0x8e133f0"
+        },
+        {
+          "name": "hasUnloadedPreviousMessages",
+          "record": "0x9a39744",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canCollapsePreviousMessages",
+          "record": "0x9a39750",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "arePreviousMessagesExpanded",
+          "record": "0x9a3975c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "renderUnits",
+          "record": "0x9a39768",
+          "type_reference": "0x8e15226"
+        }
+      ],
+      "conformances": []
+    },
+    {
+      "name": "CodexRemoteAsyncQuestionPresentation",
+      "descriptor": "0x95ad1f4",
+      "type_section_entry": "0x9d3a4d4",
+      "accessor": "0x1c798f4",
+      "fields": [
+        {
+          "name": "questionID",
+          "record": "0x9a38f28",
+          "type_reference": "0x8e13918"
+        },
+        {
+          "name": "question",
+          "record": "0x9a38f34",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "options",
+          "record": "0x9a38f40",
+          "type_reference": "0x8bc92c0"
+        },
+        {
+          "name": "selectedOptionIndex",
+          "record": "0x9a38f4c",
+          "type_reference": "0x8f51610"
+        },
+        {
+          "name": "replyText",
+          "record": "0x9a38f58",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "questionNumber",
+          "record": "0x9a38f64",
+          "type_reference": "0x8e133f0"
+        },
+        {
+          "name": "questionCount",
+          "record": "0x9a38f70",
+          "type_reference": "0x8e133f0"
+        },
+        {
+          "name": "canSubmit",
+          "record": "0x9a38f7c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isSubmitting",
+          "record": "0x9a38f88",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "secondsUntilDismissal",
+          "record": "0x9a38f94",
+          "type_reference": "0x8f51610"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1b44c",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2acc"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteTranscriptRow",
+      "descriptor": "0x95ad22c",
+      "type_section_entry": "0x9d3a4dc",
+      "accessor": "0x1c79ed4",
+      "fields": [
+        {
+          "name": "_currentContent",
+          "record": "0x9a38ed8",
+          "type_reference": "0x8e38f54"
+        },
+        {
+          "name": "content",
+          "record": "0x9a38ee4",
+          "type_reference": "0x8e38f5e"
+        },
+        {
+          "name": "updates",
+          "record": "0x9a38ef0",
+          "type_reference": "0x8e38f6a"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1bda4",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2b8c"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteStandaloneRealtimeTranscriptRow",
+      "descriptor": "0x95ad268",
+      "type_section_entry": "0x9d3a4e0",
+      "accessor": "0x1c3195c",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x9a38e98",
+          "type_reference": "0x8cf0480"
+        },
+        {
+          "name": "blockID",
+          "record": "0x9a38ea4",
+          "type_reference": "0x8e1525e"
+        },
+        {
+          "name": "markdownImageActions",
+          "record": "0x9a38eb0",
+          "type_reference": "0x907aac8"
+        },
+        {
+          "name": "imageGalleryTransitionNamespace",
+          "record": "0x9a38ebc",
+          "type_reference": "0x8fd11a0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1bdf4",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2b90"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteTranscriptHostingContextModifier",
+      "descriptor": "0x95ad300",
+      "type_section_entry": "0x9d3a4ec",
+      "accessor": "0x1c7abf4",
+      "fields": [
+        {
+          "name": "context",
+          "record": "0x9a38da8",
+          "type_reference": "0x8e38f2e"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1bf34",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2ba0"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteFileChangePresentation",
+      "descriptor": "0x95adb80",
+      "type_section_entry": "0x9d3a5c0",
+      "accessor": "0x1c837e0",
+      "fields": [
+        {
+          "name": "change",
+          "record": "0x9a381ec",
+          "type_reference": "0x8e38cf4"
+        },
+        {
+          "name": "status",
+          "record": "0x9a381f8",
+          "type_reference": "0x8f30090"
+        },
+        {
+          "name": "fileName",
+          "record": "0x9a38204",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "diffStats",
+          "record": "0x9a38210",
+          "type_reference": "0x8be77da"
+        },
+        {
+          "name": "isCachedPreview",
+          "record": "0x9a3821c",
+          "type_reference": "0x8bfd810"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1a740",
+          "flags": "0x30000",
+          "section_entry": "0x9ce29c8"
+        },
+        {
+          "descriptor": "0x7e1a768",
+          "flags": "0x30000",
+          "section_entry": "0x9ce29cc"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteTranscriptSeparator",
+      "descriptor": "0x95add04",
+      "type_section_entry": "0x9d3a5e8",
+      "accessor": "0x1c848d0",
+      "fields": [],
+      "conformances": [
+        {
+          "descriptor": "0x7e1a538",
+          "flags": "0x30000",
+          "section_entry": "0x9ce29a8"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteRealtimeTranscriptRow",
+      "descriptor": "0x95add20",
+      "type_section_entry": "0x9d3a5ec",
+      "accessor": "0x1bf0b58",
+      "fields": [
+        {
+          "name": "block",
+          "record": "0x9a39b74",
+          "type_reference": "0x8e152b6"
+        },
+        {
+          "name": "renderedItemIDPrefix",
+          "record": "0x9a39b80",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "attachments",
+          "record": "0x9a39b8c",
+          "type_reference": "0x8e39166"
+        },
+        {
+          "name": "autocompleteItems",
+          "record": "0x9a39b98",
+          "type_reference": "0x8bca2e4"
+        },
+        {
+          "name": "themeColorSetting",
+          "record": "0x9a39ba4",
+          "type_reference": "0x8f4deb0"
+        },
+        {
+          "name": "markdownResultRenderer",
+          "record": "0x9a39bb0",
+          "type_reference": "0x8e13b0c"
+        },
+        {
+          "name": "textFadeAnimationState",
+          "record": "0x9a39bbc",
+          "type_reference": "0x911cd70"
+        },
+        {
+          "name": "markdownImageActions",
+          "record": "0x9a39bc8",
+          "type_reference": "0x907aac8"
+        },
+        {
+          "name": "loadRemoteImageData",
+          "record": "0x9a39bd4",
+          "type_reference": "0x8e15580"
+        },
+        {
+          "name": "linkHandlers",
+          "record": "0x9a39be0",
+          "type_reference": "0x8e39170"
+        },
+        {
+          "name": "menus",
+          "record": "0x9a39bec",
+          "type_reference": "0x93e5c28"
+        },
+        {
+          "name": "presentImageGalleryForAttachments",
+          "record": "0x9a39bf8",
+          "type_reference": "0x8e1484a"
+        },
+        {
+          "name": "openMarkdownImages",
+          "record": "0x9a39c04",
+          "type_reference": "0x8e1486e"
+        },
+        {
+          "name": "imageGalleryTransitionNamespace",
+          "record": "0x9a39c10",
+          "type_reference": "0x8d0ad80"
+        },
+        {
+          "name": "expandedItemBinding",
+          "record": "0x9a39c1c",
+          "type_reference": "0x8e3917c"
+        },
+        {
+          "name": "_renderedItemVerticalSpacing",
+          "record": "0x9a39c28",
+          "type_reference": "0x8c61e40"
+        },
+        {
+          "name": "_messageGroupVerticalSpacing",
+          "record": "0x9a39c34",
+          "type_reference": "0x8c61e40"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1a4e8",
+          "flags": "0x30000",
+          "section_entry": "0x9ce29a4"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteRealtimeDelegationTranscript",
+      "descriptor": "0x95adde4",
+      "type_section_entry": "0x9d3a600",
+      "accessor": "0x1c0555c",
+      "fields": [
+        {
+          "name": "delegation",
+          "record": "0x9a39e2c",
+          "type_reference": "0x8e391e6"
+        },
+        {
+          "name": "item",
+          "record": "0x9a39e38",
+          "type_reference": "0x8f32b44"
+        },
+        {
+          "name": "deliveryState",
+          "record": "0x9a39e44",
+          "type_reference": "0x8e39100"
+        },
+        {
+          "name": "isRealtimeVoiceThread",
+          "record": "0x9a39e50",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "autocompleteItems",
+          "record": "0x9a39e5c",
+          "type_reference": "0x8bca2e4"
+        },
+        {
+          "name": "themeColorSetting",
+          "record": "0x9a39e68",
+          "type_reference": "0x8f4deb0"
+        },
+        {
+          "name": "markdownResultRenderer",
+          "record": "0x9a39e74",
+          "type_reference": "0x8e13b0c"
+        },
+        {
+          "name": "textFadeAnimationState",
+          "record": "0x9a39e80",
+          "type_reference": "0x911cd70"
+        },
+        {
+          "name": "markdownImageActions",
+          "record": "0x9a39e8c",
+          "type_reference": "0x907aac8"
+        },
+        {
+          "name": "loadRemoteImageData",
+          "record": "0x9a39e98",
+          "type_reference": "0x8e15580"
+        },
+        {
+          "name": "linkHandlers",
+          "record": "0x9a39ea4",
+          "type_reference": "0x8e39170"
+        },
+        {
+          "name": "menus",
+          "record": "0x9a39eb0",
+          "type_reference": "0x93e5c28"
+        },
+        {
+          "name": "presentImageGalleryForAttachments",
+          "record": "0x9a39ebc",
+          "type_reference": "0x8e1484a"
+        },
+        {
+          "name": "openMarkdownImages",
+          "record": "0x9a39ec8",
+          "type_reference": "0x8e1486e"
+        },
+        {
+          "name": "imageGalleryTransitionNamespace",
+          "record": "0x9a39ed4",
+          "type_reference": "0x8d0ad80"
+        },
+        {
+          "name": "expandedItemBinding",
+          "record": "0x9a39ee0",
+          "type_reference": "0x8e3917c"
+        },
+        {
+          "name": "_renderedItemVerticalSpacing",
+          "record": "0x9a39eec",
+          "type_reference": "0x8c61e40"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1a358",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2990"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteAsyncQuestionTranscript",
+      "descriptor": "0x95adea4",
+      "type_section_entry": "0x9d3a618",
+      "accessor": "0x1c8bf2c",
+      "fields": [
+        {
+          "name": "questions",
+          "record": "0x9a3a030",
+          "type_reference": "0x8f300c0"
+        },
+        {
+          "name": "answeredQuestionIDs",
+          "record": "0x9a3a03c",
+          "type_reference": "0x8e14626"
+        },
+        {
+          "name": "asyncQuestionState",
+          "record": "0x9a3a048",
+          "type_reference": "0x8e15892"
+        },
+        {
+          "name": "answerQuestion",
+          "record": "0x9a3a054",
+          "type_reference": "0x8e1589a"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1a1c8",
+          "flags": "0x30000",
+          "section_entry": "0x9ce297c"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteFeedbackPresentationModifier",
+      "descriptor": "0x95ae61c",
+      "type_section_entry": "0x9d3a6e0",
+      "accessor": "0x1c2e550",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x9a3ac00",
+          "type_reference": "0x8e14bb0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1bf84",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2ba4"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteToolActivityHistoryPresentation",
+      "descriptor": "0x95aec84",
+      "type_section_entry": "0x9d3a780",
+      "accessor": "0x1ce0464",
+      "fields": [
+        {
+          "name": "icon",
+          "record": "0x9a37c34",
+          "type_reference": "0x8e38bd6"
+        },
+        {
+          "name": "text",
+          "record": "0x9a37c40",
+          "type_reference": "0x8d860d0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e19018",
+          "flags": "0x30000",
+          "section_entry": "0x9ce285c"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteAsyncQuestionTranscriptRow",
+      "descriptor": "0x95afd18",
+      "type_section_entry": "0x9d3a8c8",
+      "accessor": "0x1d0bb44",
+      "fields": [
+        {
+          "name": "question",
+          "record": "0x9a3c514",
+          "type_reference": "0x8f321ec"
+        },
+        {
+          "name": "answerQuestion",
+          "record": "0x9a3c520",
+          "type_reference": "0x8e1589a"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e20810",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2cec"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteFileChangeSummaryPresentation",
+      "descriptor": "0x95b013c",
+      "type_section_entry": "0x9d3a93c",
+      "accessor": "0x1d0ea98",
+      "fields": [
+        {
+          "name": "summaryText",
+          "record": "0x9a3c2e8",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "path",
+          "record": "0x9a3c2f4",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "diffStats",
+          "record": "0x9a3c300",
+          "type_reference": "0x8be77da"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e201e8",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2c90"
+        },
+        {
+          "descriptor": "0x7e20210",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2c94"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteAsyncQuestionTranscriptText",
+      "descriptor": "0x95b19e8",
+      "type_section_entry": "0x9d3aa08",
+      "accessor": "0x1d1c628",
+      "fields": [
+        {
+          "name": "title",
+          "record": "0x9a3d50c",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "_traitCollection",
+          "record": "0x9a3d518",
+          "type_reference": "0x90b54e0"
+        },
+        {
+          "name": "__compiledContentCache",
+          "record": "0x9a3d524",
+          "type_reference": "0x8e68432"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e24430",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2e98"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteQuestionReplyPresentation",
+      "descriptor": "0x95d130c",
+      "type_section_entry": "0x9d3cad8",
+      "accessor": "0x25ebe80",
+      "fields": [
+        {
+          "name": "parts",
+          "record": "0x9a60680",
+          "type_reference": "0x8f33228"
+        },
+        {
+          "name": "collapsedPartCount",
+          "record": "0x9a6068c",
+          "type_reference": "0x8e133f0"
+        },
+        {
+          "name": "isTruncated",
+          "record": "0x9a60698",
+          "type_reference": "0x8bfd810"
+        }
+      ],
+      "conformances": []
+    },
+    {
+      "name": "CodexRemoteTurnDiffPresentation",
+      "descriptor": "0x95d19b8",
+      "type_section_entry": "0x9d3cbc0",
+      "accessor": "0x25f01c4",
+      "fields": [
+        {
+          "name": "files",
+          "record": "0x9a61380",
+          "type_reference": "0x8e67ae0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e89c70",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6ad0"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteTranscriptSnapshot",
+      "descriptor": "0x95d34cc",
+      "type_section_entry": "0x9d3cd08",
+      "accessor": "0x25f8d40",
+      "fields": [
+        {
+          "name": "codexHomePath",
+          "record": "0x9a62f84",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "turns",
+          "record": "0x9a62f90",
+          "type_reference": "0x8f3130a"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e8baf0",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6d6c"
+        },
+        {
+          "descriptor": "0x7e8bb18",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6d70"
+        },
+        {
+          "descriptor": "0x7e8bb40",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6d74"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteRealtimeTranscriptTurn",
+      "descriptor": "0x95d5f9c",
+      "type_section_entry": "0x9d3ce7c",
+      "accessor": "0x2606ff0",
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a64e44",
+          "type_reference": "0x8bfda94"
+        },
+        {
+          "name": "role",
+          "record": "0x9a64e50",
+          "type_reference": "0x8f32ebc"
+        },
+        {
+          "name": "text",
+          "record": "0x9a64e5c",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "isCompleted",
+          "record": "0x9a64e68",
+          "type_reference": "0x8bfd810"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e8d5b0",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6f90"
+        },
+        {
+          "descriptor": "0x7e8d5e8",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6f94"
+        },
+        {
+          "descriptor": "0x7e8d610",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6f98"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteRealtimeTranscriptTimelineStamp",
+      "descriptor": "0x95d5fb8",
+      "type_section_entry": "0x9d3ce80",
+      "accessor": "0x2606ffc",
+      "fields": [
+        {
+          "name": "sequence",
+          "record": "0x9a64e84",
+          "type_reference": "0x8f2a060"
+        },
+        {
+          "name": "observedAtMilliseconds",
+          "record": "0x9a64e90",
+          "type_reference": "0x8e133f0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e8d650",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6f9c"
+        },
+        {
+          "descriptor": "0x7e8d678",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6fa0"
+        }
+      ]
+    },
+    {
+      "name": "DefaultCodexRemoteTranscriptCacheInjectedDependencies",
+      "descriptor": "0x95d66a4",
+      "type_section_entry": "0x9d3cf50",
+      "accessor": "0x260a150",
+      "fields": [
+        {
+          "name": "accountDataStorageResolver",
+          "record": "0x9a67e10",
+          "type_reference": "0x8c5c1c0"
+        },
+        {
+          "name": "codexRemoteHostInventoryServiceResolver",
+          "record": "0x9a67e1c",
+          "type_reference": "0x8bca150"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e99db8",
+          "flags": "0x0",
+          "section_entry": "0x9ce7a00"
+        },
+        {
+          "descriptor": "0x7e99dc8",
+          "flags": "0x0",
+          "section_entry": "0x9ce7a04"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteRealtimeTranscriptTimelineEvent",
+      "descriptor": "0x95d94bc",
+      "type_section_entry": "0x9d3d4ac",
+      "accessor": "0x263d29c",
+      "fields": [
+        {
+          "name": "sessionID",
+          "record": "0x9a6883c",
+          "type_reference": "0x8f99080"
+        },
+        {
+          "name": "stamp",
+          "record": "0x9a68848",
+          "type_reference": "0x8f34bb6"
+        },
+        {
+          "name": "payload",
+          "record": "0x9a68854",
+          "type_reference": "0x8f3b37c"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7ea14bc",
+          "flags": "0x30000",
+          "section_entry": "0x9ce7e88"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteRealtimeTranscriptLinearizer",
+      "descriptor": "0x95d94d8",
+      "type_section_entry": "0x9d3d4b0",
+      "accessor": "0x263d454",
+      "fields": [
+        {
+          "name": "itemIDPrefix",
+          "record": "0x9a687b4",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "foregroundRole",
+          "record": "0x9a687c0",
+          "type_reference": "0x8f3b33c"
+        },
+        {
+          "name": "lastCreatedItemID",
+          "record": "0x9a687cc",
+          "type_reference": "0x8e448a4"
+        },
+        {
+          "name": "lastDeltaAtMilliseconds",
+          "record": "0x9a687d8",
+          "type_reference": "0x8f3b346"
+        },
+        {
+          "name": "nextItemNumber",
+          "record": "0x9a687e4",
+          "type_reference": "0x8e133f0"
+        },
+        {
+          "name": "openItems",
+          "record": "0x9a687f0",
+          "type_reference": "0x8f3b352"
+        },
+        {
+          "name": "pendingAssistantText",
+          "record": "0x9a687fc",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "boundarySegmentsAwaitingCompletion",
+          "record": "0x9a68808",
+          "type_reference": "0x8f3b362"
+        },
+        {
+          "name": "reopenableRole",
+          "record": "0x9a68814",
+          "type_reference": "0x8f3b33c"
+        },
+        {
+          "name": "suppressesNextAssistantAcknowledgmentCompletion",
+          "record": "0x9a68820",
+          "type_reference": "0x8bfd810"
+        }
+      ],
+      "conformances": []
+    },
+    {
+      "name": "CodexRemoteRealtimeTranscriptTimelineReducer",
+      "descriptor": "0x95d846c",
+      "type_section_entry": "0x9d3d50c",
+      "accessor": "0x263ddc0",
+      "fields": [
+        {
+          "name": "items",
+          "record": "0x9a65328",
+          "type_reference": "0x8bfd7fa"
+        },
+        {
+          "name": "activeSession",
+          "record": "0x9a65334",
+          "type_reference": "0x8f34e30"
+        }
+      ],
+      "conformances": []
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

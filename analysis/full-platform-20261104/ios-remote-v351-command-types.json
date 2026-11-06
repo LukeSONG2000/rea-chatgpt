@@ -1,0 +1,135 @@
+{
+  "types": {
+    "0x7e11fa0": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x7e11fa0",
+      "mangled_address": "0x8e2094e",
+      "length": 79,
+      "mangled_hex": "01d5d778007901b3d7780002be09cb017941437941437941437902df32cb0102ba2acb017902cc2fcb0153674747029325cb0179022544cb01474741457953695367474741457902aa31cb01474747",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 1,
+          "target": "0x95ae124",
+          "resolved_context": "0x95ae124",
+          "label": "CodexRemoteThread.CodexRemoteToolActivityLabel"
+        },
+        {
+          "offset": 6,
+          "kind": 1,
+          "target": "0x95ae108",
+          "resolved_context": "0x95ae108",
+          "label": "CodexRemoteThread.CodexRemoteToolActivityRowStyle.Symbol"
+        },
+        {
+          "offset": 11,
+          "kind": 2,
+          "target": "0xaad1318",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI15ModifiedContentVMn"
+        },
+        {
+          "offset": 26,
+          "kind": 2,
+          "target": "0xaad3c48",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4TextVMn"
+        },
+        {
+          "offset": 31,
+          "kind": 2,
+          "target": "0xaad3428",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+        },
+        {
+          "offset": 37,
+          "kind": 2,
+          "target": "0xaad3940",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4FontVMn"
+        },
+        {
+          "offset": 46,
+          "kind": 2,
+          "target": "0xaad2f10",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+        },
+        {
+          "offset": 52,
+          "kind": 2,
+          "target": "0xaad4da8",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI5ColorVMn"
+        },
+        {
+          "offset": 71,
+          "kind": 2,
+          "target": "0xaad3b40",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI4TextV14TruncationModeOMn"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "0x7e11fd8": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x7e11fd8",
+      "mangled_address": "0x8e20bf0",
+      "length": 17,
+      "mangled_hex": "0133d57800790111d578000188d4780047",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 1,
+          "target": "0x95ae124",
+          "resolved_context": "0x95ae124",
+          "label": "CodexRemoteThread.CodexRemoteToolActivityLabel"
+        },
+        {
+          "offset": 6,
+          "kind": 1,
+          "target": "0x95ae108",
+          "resolved_context": "0x95ae108",
+          "label": "CodexRemoteThread.CodexRemoteToolActivityRowStyle.Symbol"
+        },
+        {
+          "offset": 11,
+          "kind": 1,
+          "target": "0x95ae084",
+          "resolved_context": "0x95ae084",
+          "label": "<unresolved-context@0x95ae07c>.RunningCommandExecutionSummaryText"
+        }
+      ],
+      "unresolved_contexts": [
+        {
+          "address": "0x95ae07c",
+          "flags": "0x42",
+          "kind": 2,
+          "reason": "Unsupported context kind; name and parent chain not interpreted"
+        }
+      ],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    }
+  },
+  "strings": {
+    "0x8a51c40": "ChatGPT/text/tertiary",
+    "0x88b2430": "codex_remote_command_execution_ran_command_duration_summary",
+    "0x88b2470": "codex_remote_command_execution_ran_duration_summary",
+    "0x88b24b0": "Ran command for "
+  }
+}

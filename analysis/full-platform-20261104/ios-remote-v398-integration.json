@@ -1,0 +1,29 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "chain": [
+    "toolActivityGroup -> ExpandableAssistantSummaryItem (v397)",
+    "DisclosureGroup content closure 0x1a41968 -> 0x1cf2b8c",
+    "0x1cf2bdc -> Edge.Set.top",
+    "0x1cf2be8 -> helper0x1da5e14 sets CGFloat bit pattern0x4028000000000000 (12), optional tag0",
+    "0x1cf2bf0 -> View.padding"
+  ],
+  "integration": "Tool activity expanded content top padding8 ->12; do not generalize to other consumers",
+  "validation": {
+    "host_typecheck": "passed all Sources/*.swift; existing UIKit deprecation warnings",
+    "runtime": "not accepted; session42359 awaits Xcode first-launch authorization",
+    "phone": "not updated",
+    "retention": "no stale targets"
+  },
+  "limits": [
+    "Inner activity row spacing remains fixture layout",
+    "Original generic wrapper and content projection not fully reconstructed",
+    "No visual parity or interaction acceptance claimed"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "5cfef2b78d02672e2128dcd39a28cd6853d1de62ae29a29901f073e7971a9f4f"
+  }
+}

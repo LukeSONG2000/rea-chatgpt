@@ -1,0 +1,217 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v425",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "How do count, unloaded and loading inputs affect the previous-history control?",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a35694 /0x1a3583c/0x1a359a4;0x1a432f4/0x1a43354",
+      "conclusion": "In no-duration branch, unloaded flag selects unknown-total label; otherwise count1 is singular and remaining counts use plural templates."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a3c3c4..3e0;keypath0x7e29328;0x1225d0 ->0x159678",
+      "conclusion": "Capture isLoading; transform EnvironmentValues.isEnabled to inheritedEnabled && !isLoading."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a3c450/458;0x75d6240",
+      "conclusion": "Loading accessibility value takes precedence over expanded/collapsed values."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a3c748/0x1da5cb8;binding0xaad0108",
+      "conclusion": "Original label includes optional OAIProgressView with small control size; actual rendering not integrated this batch."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Add independent no-duration previous-history presentation model and Xcode build membership.",
+      "Add plural/unknown/loading original localization keys.",
+      "Disable control during loading and expose original loading accessibility state.",
+      "Add explicit synthetic loading/unloaded/many snapshots and task-local loaded-snapshot injection.",
+      "Disconnected unloaded-history action reports unavailable without revealing fake empty history."
+    ],
+    "independent_adaptations": [
+      "Numeric count conversion uses String(Int), not recovered private number formatting.",
+      "Disconnected alert and test snapshot controls are independent fixture adapters.",
+      "No server paging or real conversation reads."
+    ],
+    "unknowns": [
+      "Working/duration label paths.",
+      "Actual small OAIProgressView rendering.",
+      "Paging callbacks/retry/cancellation and upstream presentation state writes.",
+      "Full transcript projection and runtime/visual acceptance.",
+      "Android corresponding implementation."
+    ]
+  },
+  "validation": {
+    "typecheck": {
+      "exit_code": 0,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v425-typecheck.log",
+        "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+      },
+      "existing_warnings": 3
+    },
+    "foundation": {
+      "exit_code": 0,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v425-text.log",
+        "sha256": "d6026a835380f70fa4a50c03f9ed272c1a2bddc04c17aee0339a69927d922c5d"
+      },
+      "new_coverage": "6 count/unloaded/loading snapshots, loading priority, multilingual templates"
+    },
+    "ui": {
+      "parse_exit_code": 0,
+      "executed": false,
+      "new_test": "testRemotePreviousHistoryLoadingAndUnavailable"
+    },
+    "project_plist_lint": {
+      "exit_code": 0
+    },
+    "localization": "57 keys across65 language tables; limited selection, not whole-app localization",
+    "runtime": "Preview87483 / runner97181 / firstLaunch97197 verified live; existing authorization blocker. No duplicate installation or phone update.",
+    "retention": "dry run no stale targets"
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-bindings.json",
+      "sha256": "ed5816fd4b96da08895efba77eaff0d8876430d57ab39881441c6efae16d1f43"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-disable-capture.asm",
+      "sha256": "8c2aec0dbb720489bf83d79a145546c99b5d06cfc49b05c74477a4588e47356b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-disable-capture.json",
+      "sha256": "72f8b8686da3743d6494652f7df18c62791de3501a363af2cb141d0652e0a4b5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-disable-complete.asm",
+      "sha256": "251e01bccda711d0e1fc6c414099eadeb05540e81859a8b479292528ca846301"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-enabled-getter.asm",
+      "sha256": "3f33583cbceb9d07018438792c82b23ca7643ad1685529cf6cb4d5c20dcc419c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-enabled-getter.json",
+      "sha256": "0f9f178a159ae353f4d45e10015db7e3bf6c2044cdbaf97fda77fce86cb1b82b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-enabled-store.asm",
+      "sha256": "913deda2607c6ba4653856f65c206f3b2b6bd29e6092f1e7121d2590bb188c35"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-enabled-store.json",
+      "sha256": "074ea2aea8e92c6a493c7e96b571b57368a532fdca42254fa7fd62a1de6660d9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-loading-label.asm",
+      "sha256": "f89264aac24074b76231eaf9cf49f0a2b72484b13c8fe635402a92599c040811"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-loading-label.json",
+      "sha256": "489507ff67c38b00a7f837d03070e06d479a055c5d2137cbc3e64ed1465b304e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-progress-size.asm",
+      "sha256": "2caea346af51e41ee7eb0b5bcd5a2338f217e619e353b3da8c193c20722e2246"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-progress-size.json",
+      "sha256": "59069a14c9ca74df4f9be26bdaa595219c629f2f6f23ae48052396b80e48e034"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-unknown-label.asm",
+      "sha256": "380ad86f63ab46136fbf9300eeb10da5c8e3e1f0c8856e3eb5d06153c991db22"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-history-unknown-label.json",
+      "sha256": "af47112f2308bd6584c03fc3fd0d80e10ea26babb77037f05cc66593ee3f4154"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v425-localization.json",
+      "sha256": "58920fe4c6f3b90e77238754a9be6b59db3b653b2de73bd3d0637a389b052268"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-control.asm",
+      "sha256": "438c7395b68084cc5d11a86895a83fe5341e4c719a559bc561d031624bc3884e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-label-end.asm",
+      "sha256": "65d901b5fca01d2a1b2948f5049de04182adb17025b4c21c6be750bc5acb900b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-button.asm",
+      "sha256": "d26da2047c4fa04f977df156cd11262c7a809920a232e8046f124ff61d732e0f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-field-map.json",
+      "sha256": "e26adebc46fade09a699bc7e24066ed89f1f48aeafacca338854bae1d611c52a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-label.asm",
+      "sha256": "0df8db2ea6525449be3efc65716516026555b11f0058c62b802c139d012d07f8"
+    }
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "8c3513f828ec33f782d08c68b9dca6185fcd76b93649bc79f070149ef0d7aef7"
+    },
+    {
+      "path": "implementation/ios/Sources/RemotePreviousMessages.swift",
+      "sha256": "1635eaa7fdc1c09db0eb5cda39050604ccf05eac745545ec114f37b5c0434fe0"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "4065f4c6d7032a6fcd57b51e0a948fa3a5a243cbbaaf86f05c5d05d577fdb136"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "38cb2b4354b2e54566262b886c5437f138f941aff2cbd55a6e0391f8fce3f3e9"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "fb8844a099d60c6064d8bf3f287c906e76d9cd3fac913808d21cf8d4f99d8042"
+    },
+    {
+      "path": "implementation/ios/test-official-text.sh",
+      "sha256": "271242f96ce22d97f5e18fbef1867c5695592b11912ff05249d44af5e98921b6"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "aee622df3e3d29428e7f6153c64e0bba6a7fbeb11649d3978d813f184512133f"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "c34c07a6ab46d9bba66ce49d5236e60ec8bad01f3a0f7fb472b79d3e4ad2d31c"
+    },
+    {
+      "path": "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj",
+      "sha256": "aaf9e65e9858cee598ef3331ad7441522871306a039850b9fc2d61beee5a84d7"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "55e06a317604c26ab7775eb99167cb5217811f34f2895bfd3fb50e2f5c673053"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "f8a872bb272870e020d913138bdfa35ac95cd6105958cecdaf2c6dcfb53ba29f"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "d3327e52aa23c53b87eb1c1e541b251e1212acdc6279dbc9f481ebbae713576e"
+    }
+  ],
+  "next": "Close original progress indicator and previous-history action owner; run queued runtime tests after authorization completes."
+}

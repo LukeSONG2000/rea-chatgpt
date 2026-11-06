@@ -1,0 +1,97 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x754a8dc",
+    "end_exclusive": "0x754a970",
+    "sha256": "149cdd14fe5aa00eaeb6f9282a26a817e1863c94c255e5b05bbf40de10df7736"
+  },
+  "linker_function_starts_in_window": [
+    "0x754a8dc",
+    "0x754a8e0",
+    "0x754a920"
+  ],
+  "next_linker_function_start": "0x754a9b0",
+  "direct_calls": [
+    {
+      "site": "0x754a8e4",
+      "target": "0x1612e8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x754a8f4",
+      "target": "0x1be16c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x754a8f8",
+      "target": "0x75ba188",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x754a90c",
+      "target": "0x154488",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x754a910",
+      "target": "0x7c4a2e4",
+      "imported_symbol": "_$s7SwiftUI4ViewPAAE11environmentyQrs15WritableKeyPathCyAA17EnvironmentValuesVqd__G_qd__tlF",
+      "chained_binding": {
+        "slot": "0xaad3e58",
+        "symbol": "_$s7SwiftUI4ViewPAAE11environmentyQrs15WritableKeyPathCyAA17EnvironmentValuesVqd__G_qd__tlF",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 9887,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x754a914",
+      "target": "0x7c54814",
+      "imported_symbol": "_swift_release_x24"
+    },
+    {
+      "site": "0x754a934",
+      "target": "0x15425c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x754a944",
+      "target": "0x7c54568",
+      "imported_symbol": "_swift_getKeyPath"
+    },
+    {
+      "site": "0x754a950",
+      "target": "0x7c548ec",
+      "imported_symbol": "_swift_retain_x19"
+    },
+    {
+      "site": "0x754a968",
+      "target": "0x7c47110",
+      "imported_symbol": "_$s7SwiftUI13AnyShapeStyleVyACxcAA0dE0RzlufC",
+      "chained_binding": {
+        "slot": "0xaad0690",
+        "symbol": "_$s7SwiftUI13AnyShapeStyleVyACxcAA0dE0RzlufC",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 8108,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

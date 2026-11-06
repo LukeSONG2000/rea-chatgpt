@@ -1,0 +1,1 @@
+"use strict";var e;Object.defineProperty(exports,"__esModule",{value:!0}),exports.PopoverContentPresentation=void 0,function(e){e[e.Anchored=0]="Anchored",e[e.NativeSheet=1]="NativeSheet"}(e||(exports.PopoverContentPresentation=e={}));

@@ -1,0 +1,14 @@
+{
+  "platform": "ios",
+  "version": "1.2026.293",
+  "source": "derived/valdimodules-293-complete/ios/chatgpt_services/src/account/ChatGPTAccountSettingsServices.js",
+  "sha256": "b28db22e2162529e2a291a32394cdc310feb6730ea6b971329ce41582a7fa3e9",
+  "symbol": "w(e)",
+  "observation": "memoryEnabled maps from sunshine; other memory/history settings remain separate",
+  "implementation": "MemoryPresentationState default unavailable; no account settings service connected",
+  "status": "partial",
+  "limitations": [
+    "Independent presentation enum, not wire schema",
+    "No live account query, mutations or subscription updates"
+  ]
+}

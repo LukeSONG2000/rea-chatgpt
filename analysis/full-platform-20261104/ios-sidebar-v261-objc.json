@@ -1,0 +1,114 @@
+{
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "classes": [
+    {
+      "class_address": "0xad54668",
+      "class_ro_address": "0xaaf4f30",
+      "name": "_TtC23ChatGPTConversationRoot47StatsigSidebarPresentationConfigurationProvider",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 40,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xaaf4ef0",
+          "name": "presentationConfiguration",
+          "offset_storage_address": "0x7d07e50",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xaaf4f10",
+          "name": "pendingExposure",
+          "offset_storage_address": "0x7d07e58",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xacbeee8",
+      "class_ro_address": "0xacbee88",
+      "name": "_TtC23ChatGPTConversationRootP33_A0A9DE6BD79FABB53D5E39105F39898034ModernSideMenuToolbarContainerView",
+      "flags": 128,
+      "instance_start": 8,
+      "instance_size": 73,
+      "methods": [
+        {
+          "entry": "0x7c93178",
+          "file_offset": 130625912,
+          "selector": "pointInside:withEvent:",
+          "types": "B40@0:8{CGPoint=dd}16@32",
+          "implementation": "0x62d288",
+          "implementation_file_offset": 6476424
+        },
+        {
+          "entry": "0x7c93184",
+          "file_offset": 130625924,
+          "selector": "initWithFrame:",
+          "types": "@48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+          "implementation": "0x62d310",
+          "implementation_file_offset": 6476560
+        },
+        {
+          "entry": "0x7c93190",
+          "file_offset": 130625936,
+          "selector": "initWithCoder:",
+          "types": "@24@0:8@16",
+          "implementation": "0x62d36c",
+          "implementation_file_offset": 6476652
+        }
+      ],
+      "ivars": [
+        {
+          "entry": "0xaaf6030",
+          "name": "toolbarSafeAreaInsets",
+          "offset_storage_address": "0xad5ccc8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xaaf6050",
+          "name": "tooltipBounds",
+          "offset_storage_address": "0xad5ccd0",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xacbefa8",
+      "class_ro_address": "0xacbef48",
+      "name": "_TtC23ChatGPTConversationRootP33_D78094BC66EDC6C0B30B2C777355FD8B34ModernSideMenuSurfaceContainerView",
+      "flags": 128,
+      "instance_start": 8,
+      "instance_size": 8,
+      "methods": [
+        {
+          "entry": "0x7c931a8",
+          "file_offset": 130625960,
+          "selector": "hitTest:withEvent:",
+          "types": "@40@0:8{CGPoint=dd}16@32",
+          "implementation": "0x62e70c",
+          "implementation_file_offset": 6481676
+        },
+        {
+          "entry": "0x7c931b4",
+          "file_offset": 130625972,
+          "selector": "initWithFrame:",
+          "types": "@48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+          "implementation": "0x62e790",
+          "implementation_file_offset": 6481808
+        },
+        {
+          "entry": "0x7c931c0",
+          "file_offset": 130625984,
+          "selector": "initWithCoder:",
+          "types": "@24@0:8@16",
+          "implementation": "0x62e7ec",
+          "implementation_file_offset": 6481900
+        }
+      ],
+      "ivars": []
+    }
+  ],
+  "limits": [
+    "ObjC exposure only; no execution"
+  ]
+}

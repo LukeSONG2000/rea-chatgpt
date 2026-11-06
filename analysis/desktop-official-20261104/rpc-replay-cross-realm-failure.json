@@ -1,0 +1,58 @@
+{
+  "version": "26.1021.31345",
+  "authority": "controlled-target-fragment-replay",
+  "runner_sha256": "0b6aba45620f3cbcaf425e83e2333a577db684628f90b578be7eac0b188aade4",
+  "sources": {
+    "webview/assets/app-shared-2cae01273bae.js": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+    "webview/assets/rolldown-runtime-2d059c5e81f4.js": "e0a79ad36c6ca1ffbc796c80aa5661803a9d1bc684e29d1587f48b4ba9a82714"
+  },
+  "implementation": {
+    "initializer": "app-shared.Kst → o_t",
+    "rpcTarget": "app-shared.Wst → i_t",
+    "portTransport": "app-shared.qst → a_t → ygt"
+  },
+  "results": [
+    {
+      "name": "original RPC resolves appHost.services property and call",
+      "status": "failed",
+      "reason": "Error: bad RPC message: [\"abort\",[\"error\",\"Error\",\"bad RPC message: [\\\"push\\\",[\\\"pipeline\\\",0,[\\\"services\\\",\\\"echo\\\"],[\\\"local\\\"]]]\"]]"
+    },
+    {
+      "name": "separate ports retain separate service owner",
+      "status": "failed",
+      "reason": "Error: bad RPC message: [\"abort\",[\"error\",\"Error\",\"bad RPC message: [\\\"push\\\",[\\\"pipeline\\\",0,[\\\"services\\\",\\\"echo\\\"],[\\\"local\\\"]]]\"]]"
+    },
+    {
+      "name": "remote exception propagates as error",
+      "status": "failed",
+      "reason": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /synthetic-offline-error/. Input:\n\n'Error: bad RPC message: [\"abort\",[\"error\",\"Error\",\"bad RPC message: [\\\\\"push\\\\\",[\\\\\"pipeline\\\\\",0,[\\\\\"services\\\\\",\\\\\"echo\\\\\"],[\\\\\"local\\\\\"]]]\"]]'\n"
+    },
+    {
+      "name": "service capability can invoke renderer callback",
+      "status": "failed",
+      "reason": "Error: bad RPC message: [\"abort\",[\"error\",\"Error\",\"bad RPC message: [\\\"push\\\",[\\\"pipeline\\\",0,[\\\"services\\\",\\\"echo\\\"],[\\\"local\\\"]]]\"]]"
+    },
+    {
+      "name": "host readiness call returns synthetic fixture without online service",
+      "status": "failed",
+      "reason": "Error: bad RPC message: [\"abort\",[\"error\",\"Error\",\"bad RPC message: [\\\"push\\\",[\\\"pipeline\\\",0,[\\\"services\\\",\\\"echo\\\"],[\\\"local\\\"]]]\"]]"
+    },
+    {
+      "name": "unimplemented remote method rejects rather than silently succeeding",
+      "status": "passed"
+    },
+    {
+      "name": "RPC context has no network, Electron, filesystem or process globals",
+      "status": "passed"
+    }
+  ],
+  "passed": 2,
+  "failed": 5,
+  "limitations": [
+    "Only shipped RPC library initialized, not app-runtime or full desktop App",
+    "MessageChannel and service objects are in-memory synthetic fixtures",
+    "No Electron main process, real host services, user account or renderer page",
+    "Does not prove UI completeness or exact service schema",
+    "Run with --experimental-vm-modules under message-replay.sb"
+  ]
+}

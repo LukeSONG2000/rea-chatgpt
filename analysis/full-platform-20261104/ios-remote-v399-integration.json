@@ -1,0 +1,45 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "consumers": {
+    "tool_activity": "v397 branch0x1a35e60 -> type0x7e11e20",
+    "file_change": "body0x19c4510, metadata construction0x19c4598..0x19c45a0 -> type0x7e1e4f0, re-read from binary v399"
+  },
+  "shared_owner": "CodexRemoteThread.ExpandableAssistantSummaryItem",
+  "layout": "leading outer VStack spacing0, expanded content top padding12, recovered scoped disclosure style",
+  "integration": [
+    "Introduce RecoveredRemoteSummaryDisclosure for the proven expandable branch",
+    "Move tool activity outer inset into wrapper, preserving total12",
+    "File change gains previously omitted top inset12",
+    "Leave history disclosure independent and preserve separate activity/file expansion sets"
+  ],
+  "component_contract": {
+    "inputs": [
+      "Binding<Bool> expansion owned by caller",
+      "stable control accessibility identifier",
+      "label View",
+      "content View"
+    ],
+    "actions": "only bound expansion changes; content owns its actions",
+    "service_boundary": "no service, transport, command execution or authorization in container"
+  },
+  "validation": {
+    "host_typecheck": "passed all Sources/*.swift",
+    "ui_test_coverage": "Existing testRemoteTaskScopeAndReturn covers whole-row taps, independent command/search/file expansion, code copy feedback and return/scope; not rerun yet",
+    "runtime": "session42359 verified live, Xcode first-launch authorization pending",
+    "phone": "not updated",
+    "retention": "no stale targets"
+  },
+  "limitations": [
+    "Non-expandable owner branch and upstream eligibility not integrated",
+    "Inner fixture contents are independent and not official message projection",
+    "No new build/runtime/visual acceptance",
+    "Shared SwiftUI owner proves iOS reuse only, not Android shared implementation"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "cce4e1ed9643b32a816c4a95d711cc918e6fd88045fcd956d90a875897aa8ae1"
+  }
+}

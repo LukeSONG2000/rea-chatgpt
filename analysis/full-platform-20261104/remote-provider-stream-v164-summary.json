@@ -1,0 +1,49 @@
+{
+  "status": "partial",
+  "authority": "packaged macOS cross-process original manager subscriptions; independent polling adapter",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/original-remote-runtime.mjs",
+      "sha256": "ef408444aa6288698b5d1b9a10d9ad401f64079d9f6cae0e1624262c0896ee12"
+    },
+    {
+      "path": "implementation/desktop/native/fixture.mjs",
+      "sha256": "0cab11c513f83645700954fe2a43b49739576660591554c9a0c226390b5eade8"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-provider-stream.cjs",
+      "sha256": "3066b4e20a870ece88c38bc2abb02ebf9ba0ab85ae497367286f698e6180673f"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-pump.mjs",
+      "sha256": "dbea3a3ee7802d7573c97deab862da672be6e4540d733f6499df19f739ccb355"
+    }
+  ],
+  "provider": {
+    "status": "passed",
+    "body": "Local fixture reply",
+    "autoStreamTexts": [
+      "",
+      "Local ",
+      "Local fixture reply",
+      "Local fixture reply"
+    ],
+    "sharedLeases": true,
+    "reopen": true,
+    "unpairedDenied": true
+  },
+  "reports": [
+    "remote-provider-stream-v164-runtime.json",
+    "remote-provider-stream-v164-lifecycle.json",
+    "remote-provider-stream-v164-hashes.json"
+  ],
+  "macSignature": "deep strict verification passed",
+  "limits": [
+    "Visible Remote catalog and AP initialization remain unaccepted",
+    "Hidden provider capability remains read-only; test starts synthetic task through primary renderer endpoint",
+    "Concurrent raw history rehydration and incremental polling requires separate race acceptance",
+    "Lifecycle unit test uses fake manager; cross-process test proves original streaming separately",
+    "Windows assembled and hash checked, not OS-executed",
+    "No real model or official service call; 200ms scheduling is not device performance evidence"
+  ]
+}

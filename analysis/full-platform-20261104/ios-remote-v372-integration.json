@@ -1,0 +1,28 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source": {
+    "state": "0x7e1f9f0 LazyState<CGSize>; outputViewportSize metadata field",
+    "frame": "0x1a680c0..d8 minWidth/minHeight, alignment0x1a6808c topLeading",
+    "foreach": "0x197063c availability26;0x19706c8 ForEach.create symbol at0x7c4b6e8"
+  },
+  "integration": "viewport state and minWidth/minHeight on content; containerSize observer is independent adapter",
+  "tests": {
+    "testRemoteOutputGestureFollow": "passed",
+    "testRemoteOutputLongLineLayout": "failed"
+  },
+  "runtime": {
+    "contentWidth": 338,
+    "viewportWidth": 338,
+    "offsetX_before_after": [
+      0,
+      0
+    ]
+  },
+  "conclusion": "minimum viewport restored, overflowing long-row extent remains missing; not a complete horizontal repair",
+  "next": "compare compiled host ForEach creation and official path; inspect full content sizing without guessing intrinsic width",
+  "preview_pid": 83431,
+  "phone": "unchanged"
+}

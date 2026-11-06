@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.AbstractWrapper=void 0;class AbstractWrapper{get kind(){return this.node.kind}constructor(r,t){this.factory=r,this.node=t}wrap(r){return this.factory.wrap(r)}walkTree(r,t){if(r(this,t),"childNodes"in this)for(const e of this.childNodes)e&&e.walkTree(r,t);return t}}exports.AbstractWrapper=AbstractWrapper;

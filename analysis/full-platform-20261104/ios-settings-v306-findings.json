@@ -1,0 +1,57 @@
+{
+  "status": "partial",
+  "baseline": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "root_chain": {
+    "swiftui_body": "0x10e92c8",
+    "wrapper": "0x50d39ec",
+    "measurable_conformance": "0x7d87670",
+    "witness_pattern": "0xad9c5e0",
+    "property_witness": "0x10e92c4",
+    "actual_body": "0x10d6158",
+    "direct_content_calls": [
+      "0x10d66dc",
+      "0x10d78b0"
+    ]
+  },
+  "owner": "SettingsViewModel descriptor 0x958945c; 175 field records; metadata only",
+  "new_scope_evidence": [
+    "haptics and device support",
+    "theme colors and available colors",
+    "file library storage management",
+    "privacy center and archived conversations",
+    "password manager",
+    "usage limits dashboard",
+    "wallet and orders",
+    "teen/family settings",
+    "Codex remote local authentication",
+    "notification availability",
+    "account feature flag refresh on appearance/foreground/account change"
+  ],
+  "structure": {
+    "SettingsRootPresentation": [
+      "pluginSettings",
+      "settings",
+      "voice",
+      "connectors",
+      "personalizationPane"
+    ],
+    "SettingsStaticEntrypointState": [
+      "presentation",
+      "visibleSurfaces",
+      "assignmentState"
+    ]
+  },
+  "limits": [
+    "RootPresentation cases are presentation modes, not the full settings menu",
+    "Navigation destination uses SwiftUI.NavigationPath; not a single exhaustive enum",
+    "Section accessor reference search found 29 references, none direct in inspected root window; generic/closure wiring remains unclosed",
+    "No always-visible menu order proven",
+    "No UI, phone or simulator changes"
+  ],
+  "next_actions": [
+    "Trace SettingsStaticEntrypointState visibleSurfaces and assignmentState into root content functions",
+    "Map appearance and general section constructors before implementing missing controls",
+    "Reuse readable personalization/memory save navigation without claiming root wiring already recovered"
+  ]
+}

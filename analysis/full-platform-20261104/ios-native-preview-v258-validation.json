@@ -1,0 +1,39 @@
+{
+  "version": "v258",
+  "status": "partial",
+  "kind": "independent native preview with explicit reference adaptation",
+  "source_sha256": "4b17a7552bd3fccebf4708ea4a3ef3c92610a8e3caaf30c140a5352eb1a87d2e",
+  "app": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/ios/.build/Build/Products/Debug-iphonesimulator/REAChatGPTHost.app",
+  "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+  "build": "passed (arm64 and x86_64 simulator)",
+  "state_test_pass_lines": 16,
+  "observed": [
+    "Empty compact input rendered",
+    "Focus expands input above software keyboard",
+    "Pinyin ni composition visible, committed Chinese character and two newlines grow native editor",
+    "Attachment button opens existing local library and returns",
+    "Test draft cleared; chat history preserved; app left running"
+  ],
+  "not_verified": [
+    "Full official visual parity",
+    "Official threshold policy",
+    "Large Dynamic Type and landscape for new layout",
+    "Physical iPhone",
+    "Android equivalent update",
+    "Process restart after the new draft interaction"
+  ],
+  "reference": {
+    "repo": "https://github.com/bryanrg22/chatgpt-ios-ui",
+    "commit": "dc6e6a52b14a67051f6534cc674cc32ddd9cb9d1",
+    "files": [
+      "Sources/ChatGPTUI/ComposerTextView.swift",
+      "Sources/ChatGPTUI/ChatGPTView.swift"
+    ],
+    "license": "implementation/ios/ThirdParty/chatgpt-ios-ui-LICENSE"
+  },
+  "display": "Only Sidecar Display reported; BenQ unavailable in current inventory",
+  "screenshots": [
+    "ios-native-preview-v258-expanded.png",
+    "ios-native-preview-v258-compact.png"
+  ]
+}

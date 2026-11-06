@@ -1,0 +1,31 @@
+{
+  "status": "partial",
+  "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "authority": "official-packaged-static-observation",
+  "records": [
+    {
+      "byte_start": 2491428,
+      "byte_end": 2492033,
+      "source": "function fS(e){switch(e.kind){case`new`:switch(e.entrypoint){case`home`:return e.homeDraftKey??e.draftThreadLocationId??(e.gptId==null?vx({entrypoint:`home`}):`gpt-draft:${e.gptId}`);case`panel`:return vx({entrypoint:e.entrypoint});case`pull-request-review`:return e.draftThreadLocationId;case`library-preview`:return`library-preview:${e.previewId}`}case`local`:return e.clientThreadId;case`cloud`:return`cloud:${e.taskId}`;case`chatgpt`:return`${e.widgetOverlay?`widget-overlay:`:``}${eHt(e.draftThreadLocationId)?e.draftThreadLocationId:`chatgpt:${e.conversationId??`new`}`}`;case`other`:return`other`}}"
+    },
+    {
+      "byte_start": 4693615,
+      "byte_end": 4693872,
+      "source": "function mLr(e){let t=e.get(gR),n=t==null?void 0:e.get(mR.drafts$)[t];return n!=null&&typeof n!=`string`&&((n.dictationSegments?.length??0)>0||n.manualSystemHints!=null)&&n.homeConversationId!=null?{conversationId:n.homeConversationId,prompt:n.prompt}:null}"
+    },
+    {
+      "byte_start": 6617499,
+      "byte_end": 6617634,
+      "source": "NQ=W(pS,({get:e,scope:t})=>{let n=e(MQ);if(n!=null)return n.draft;let r=e(kQ.drafts$)[fS(t.value)];return KCa(r,e(mwa))?void 0:DQ(r)}),"
+    },
+    {
+      "byte_start": 6616594,
+      "byte_end": 6616677,
+      "source": "kQ=aLr(`composer-prompt-drafts-v2`,{legacyStorageKey:`composer-prompt-drafts-v1`}),"
+    }
+  ],
+  "limits": [
+    "Client storage contract only, not official main persistence implementation"
+  ]
+}

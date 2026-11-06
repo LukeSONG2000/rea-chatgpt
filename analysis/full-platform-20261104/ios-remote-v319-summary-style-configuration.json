@@ -1,0 +1,60 @@
+{
+  "status": "partial",
+  "artifact": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "owner": "ExpandableAssistantSummaryItem",
+  "ownerDescriptor": "0x95ae16c",
+  "bodyWitness": "0x1a41de8",
+  "body": "0x1a41334",
+  "closureReference": "0x1a41550..0x1a41554 -> 0x1cf2af8",
+  "closureTarget": "0x1cf2af8..0x1cf2b00 -> 0x1a41574",
+  "configuration": {
+    "placement": {
+      "write": "0x1a419b8..0x1a419c4",
+      "value": 1,
+      "cases": [
+        {
+          "name": "leading",
+          "payload": false
+        },
+        {
+          "name": "trailing",
+          "payload": false
+        }
+      ]
+    },
+    "foreground": {
+      "call": "0x1a419c8",
+      "factory": "0x74ee448",
+      "assetAddress": "0x8a51c40",
+      "asset": "ChatGPT/text/tertiary"
+    },
+    "labelInsetsAndBackground": {
+      "helper": "0x1da5a24",
+      "paddingBytes": "zero at offsets 0x18..0x37",
+      "background": "zero at 0x38"
+    },
+    "chevronMetric": {
+      "constant": "0x402a000000000000",
+      "value": 13.0,
+      "constantSite": "0x1a419e0",
+      "initCall": "0x1a41a1c",
+      "metadataFieldOffsetSlot": "0x24",
+      "fieldOffsetVectorWordOffset": 2,
+      "fieldIndex": 5,
+      "fieldName": "_chevronSize"
+    }
+  },
+  "excludedCandidate": {
+    "body": "0x1a575f0",
+    "owner": "CodexRemoteTurnDiffCardContent",
+    "descriptor": "0x95b00a4",
+    "reason": "Different component; not tool activity geometry"
+  },
+  "limits": [
+    "Static field layout interpretation, not official runtime replay",
+    "ScaledMetric relativeTo baseline still unresolved",
+    "Summary component to command history consumer not yet established",
+    "No global style or UI replacement authorized by this evidence alone"
+  ],
+  "nextAction": "Find incoming use of ExpandableAssistantSummaryItem in history fragment/render-unit consumer; recover relativeTo and button chevron rendering before scoped integration"
+}

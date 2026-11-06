@@ -1,0 +1,64 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "artifact metadata plus static instructions",
+  "owner": "_TtC19ChatGPTMessageInput21MessageInputViewModel",
+  "owner_address": "0xaf36b50",
+  "getter_fields": [
+    {
+      "function": "0x4cdc0bc",
+      "field": "_streamingDictationHasExceededSingleLineThreshold",
+      "stored_instance_offset": "0x1d1"
+    },
+    {
+      "function": "0x4cdbfb0",
+      "field": "_hasExceededSingleLineThreshold",
+      "stored_instance_offset": "0x1d0"
+    },
+    {
+      "function": "0x4c4fb50",
+      "field": "_inputEmpty",
+      "stored_instance_offset": "0x1b2"
+    },
+    {
+      "function": "0x4cdeaf0",
+      "field": "_isDoubleLineComposerLayoutForced",
+      "offset_storage": "0xb6280b0"
+    },
+    {
+      "function": "0x4c51824",
+      "field": "_isKeyboardVisible",
+      "offset_storage": "0xb627fb8"
+    }
+  ],
+  "other_reads": [
+    {
+      "field": "expandsComposerWhenFocused",
+      "offset_storage": "0xb627310",
+      "site": "0x4c4fb04"
+    },
+    {
+      "field": "_composerAssistantModeSelectionController",
+      "offset_storage": "0xb627850",
+      "getter": "0x4ce0098",
+      "consumer": "0x4d0e9e8",
+      "result_semantics": "unknown"
+    }
+  ],
+  "proven_short_circuit_rules": [
+    "streamingDictationHasExceededSingleLineThreshold true returns double-line immediately",
+    "isDoubleLineComposerLayoutForced true returns double-line after earlier evaluations",
+    "hasExceededSingleLineThreshold true returns double-line after earlier evaluations",
+    "When expandsComposerWhenFocused equals 1, w22 true OR inputEmpty false forces double-line; otherwise remaining predicates run"
+  ],
+  "unknowns": [
+    "w22 includes keyboard visibility and another unresolved state comparison",
+    "assistant-mode predicate semantic meaning",
+    "0x4cdeb28 and 0x4c76250 predicate semantics",
+    "threshold values and update timing",
+    "runtime main-chat equivalence"
+  ],
+  "validation": "Three fixed offsets and three dynamic storage mappings asserted against original artifact"
+}

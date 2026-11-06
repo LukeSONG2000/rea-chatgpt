@@ -1,0 +1,31 @@
+{
+  "type": "official-artifact-static-observation-and-controlled-replay",
+  "product": "Codex 26.1021.31345 ChatGPT mode",
+  "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "matches": [
+    {
+      "needle": "t.regeneration!=null&&(Le=`variant`)",
+      "byteOffset": 7296312
+    },
+    {
+      "needle": "regeneration_source:E?.source",
+      "byteOffset": 7065866
+    },
+    {
+      "needle": "async function j8a(",
+      "byteOffset": 7319787
+    }
+  ],
+  "observedRequest": {
+    "action": "variant",
+    "regeneration_source": "error_retry",
+    "messages": [],
+    "parent_message_id": "existing user message ID"
+  },
+  "runtimeReport": "native-retry-v138-fixed.json",
+  "limits": [
+    "Independent service implementation, not an official backend reconstruction",
+    "Only error_retry with a locally recorded failed current assistant attempt is supported"
+  ]
+}

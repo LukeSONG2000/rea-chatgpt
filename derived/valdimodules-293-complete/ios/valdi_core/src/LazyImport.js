@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.lazyImport=void 0;class LazyImportImpl{constructor(t){this.loader=t,this.didLoad=!1}get get(){return this.didLoad||(this.module=this.loader(),this.didLoad=!0),this.module}}function t(t){return new LazyImportImpl(t)}exports.lazyImport=t;

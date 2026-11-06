@@ -1,0 +1,1 @@
+"use strict";function t(t,o){return Long.fromBits(t.lowBits|0,t.highBits|0,o)}function o(t){return{lowBits:t.low>>>0,highBits:t.high>>>0}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.toNativeLong=exports.fromNativeLong=void 0,exports.fromNativeLong=t,exports.toNativeLong=o;

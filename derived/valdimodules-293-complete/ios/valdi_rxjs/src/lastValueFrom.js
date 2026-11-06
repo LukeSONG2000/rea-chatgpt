@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.lastValueFrom=void 0;const e=require("./util/EmptyError");function r(r,t){const o="object"==typeof t;return new Promise((s,u)=>{let l,n=!1;r.subscribe({next:e=>{l=e,n=!0},error:u,complete:()=>{n?s(l):o?s(t.defaultValue):u(new e.EmptyError)}})})}exports.lastValueFrom=r;

@@ -1,0 +1,147 @@
+{
+  "version": "26.1021.31345",
+  "asar_sha256": "130145706a912db74e4d260ad7538f10f1e05e88af955f9afba42cdf01e64606",
+  "runner_sha256": "4de1e6db1cf4ba801211fec40ee54edc24b619cae3fe222b450c029d3f4e552c",
+  "fixture_sha256": "039dcc0c5f7a9bcbf2c501cbe07b7576f4643439195722d0e716210fa66f3a6d",
+  "fragments": [
+    {
+      "path": "webview/assets/app-initial-feb30b196d11.js",
+      "source_sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "C6r",
+      "node_type": "FunctionDeclaration",
+      "byte_offset": 5141372,
+      "byte_length": 335,
+      "slice_sha256": "15d4739e0b91d12bf7489f3900185f8cd094c4857672a6317d34cfa94d4b102a"
+    },
+    {
+      "path": "webview/assets/app-initial-feb30b196d11.js",
+      "source_sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "w6r",
+      "node_type": "FunctionDeclaration",
+      "byte_offset": 5141707,
+      "byte_length": 315,
+      "slice_sha256": "65ca3e899e681ff89959075ce130e6a123b3527ebd381a805380bda431c83370"
+    }
+  ],
+  "passed": 8,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "original converter forms parent/children chain",
+      "status": "passed"
+    },
+    {
+      "name": "original converter preserves content and explicit current node",
+      "status": "passed"
+    },
+    {
+      "name": "pagination metadata is normalized",
+      "status": "passed"
+    },
+    {
+      "name": "unknown current node falls back to final message",
+      "status": "passed"
+    },
+    {
+      "name": "empty page falls back to generated root",
+      "status": "passed"
+    },
+    {
+      "name": "duplicate message IDs are rejected",
+      "status": "passed"
+    },
+    {
+      "name": "missing message ID is rejected",
+      "status": "passed"
+    },
+    {
+      "name": "previous-page cursor survives",
+      "status": "passed"
+    }
+  ],
+  "converted_fixture": {
+    "conversation_id": "offline-fixture-conversation-001",
+    "title": "离线组件验证",
+    "current_node": "offline-assistant-001",
+    "is_archived": false,
+    "is_read_only": true,
+    "default_model_slug": "offline-fixture-model",
+    "disabled_tool_ids": [],
+    "mapping": {
+      "paginated-root:offline-fixture-conversation-001": {
+        "id": "paginated-root:offline-fixture-conversation-001",
+        "parent": null,
+        "children": [
+          "offline-user-001"
+        ],
+        "message": null
+      },
+      "offline-user-001": {
+        "id": "offline-user-001",
+        "parent": "paginated-root:offline-fixture-conversation-001",
+        "children": [
+          "offline-assistant-001"
+        ],
+        "message": {
+          "id": "offline-user-001",
+          "author": {
+            "role": "user",
+            "name": null,
+            "metadata": {}
+          },
+          "create_time": 0,
+          "update_time": null,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "展示本地消息组件、代码和表格。"
+            ]
+          },
+          "status": "finished_successfully",
+          "end_turn": null,
+          "weight": 1,
+          "metadata": {},
+          "recipient": "all",
+          "channel": null
+        }
+      },
+      "offline-assistant-001": {
+        "id": "offline-assistant-001",
+        "parent": "offline-user-001",
+        "children": [],
+        "message": {
+          "id": "offline-assistant-001",
+          "author": {
+            "role": "assistant",
+            "name": null,
+            "metadata": {}
+          },
+          "create_time": 1,
+          "update_time": null,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "这是合成本地数据，不是在线生成。\n\n```js\nconst mode = 'offline';\n```\n\n| 内容 | 来源 |\n| --- | --- |\n| 消息 | 本地夹具 |\n"
+            ]
+          },
+          "status": "finished_successfully",
+          "end_turn": true,
+          "weight": 1,
+          "metadata": {},
+          "recipient": "all",
+          "channel": "final"
+        }
+      }
+    },
+    "pagination": {
+      "cursor": null,
+      "oldestMessageId": "offline-user-001",
+      "numTurns": 20
+    }
+  },
+  "limits": [
+    "Synthetic message fields are independent fixture choices, not a complete official schema",
+    "Original converter executed; query orchestration, state projection, React and visual rendering not yet executed",
+    "No network or target user data"
+  ]
+}

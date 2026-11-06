@@ -1,0 +1,347 @@
+{
+  "status": "partial",
+  "platform": "macos",
+  "baseline": "Codex 26.1021.31345 build 21828 renderer plus independent synthetic services",
+  "verified": [
+    "Real Archive hides B and retains A in same-process sidebar",
+    "Real Undo restores B; selecting B displays exact pre-archive draft",
+    "Unit cold reload preserves archived flag and hidden default-list membership",
+    "Repeated archive is metadata-idempotent; message graph and draft membership unchanged",
+    "Create and delete regressions pass"
+  ],
+  "runtime": {
+    "status": "observed-unaccepted",
+    "steps": [
+      {
+        "phase": "menu",
+        "items": [
+          "Rename⌥⌘R",
+          "Pin⌥⌘P",
+          "Open on chatgpt.com",
+          "Archive⇧⌘A",
+          "Delete"
+        ]
+      },
+      {
+        "phase": "archived",
+        "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\n离线组件验证 · A\nO\nOffline fixture\nUpgrade\nChat\nWork\nWhat’s on your mind today?\n\n\n\n\nArchived chat\nView\nUndo",
+        "buttons": [
+          "ChatGPT",
+          "",
+          "New chat",
+          "Scheduled",
+          "Plugins",
+          "Explore",
+          "Projects",
+          "  ",
+          "",
+          "Recents",
+          "  ",
+          "  ",
+          "",
+          "离线组件验证 · A  ",
+          "  ",
+          "",
+          "OOffline fixture",
+          "",
+          "",
+          "",
+          "Upgrade",
+          " ",
+          "Chat",
+          "Work",
+          "  ",
+          "",
+          "  ",
+          "",
+          "View",
+          "Undo",
+          ""
+        ]
+      },
+      {
+        "phase": "undo",
+        "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nChat\nWork\nWhat’s on your mind today?\n\n\n\n\nAsk questions and explore ideas"
+      },
+      {
+        "phase": "draft-restored",
+        "draft": "REA synthetic archived draft B"
+      }
+    ],
+    "calls": [
+      {
+        "operation": "windowActivity.update",
+        "value": {
+          "canAcquireThreadStream": true,
+          "routePath": "/probe",
+          "visibilityState": "visible"
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "c329a3fe-7524-45ff-ba9d-590e9bcd151e",
+        "method": "GET",
+        "url": "/conversation/offline-fixture-conversation-002"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "6e704471-0b27-42a4-be02-86bff24ab72f",
+        "method": "POST",
+        "url": "/conversation/init"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "c329a3fe-7524-45ff-ba9d-590e9bcd151e"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "6e704471-0b27-42a4-be02-86bff24ab72f"
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "thread",
+        "key": {
+          "hostId": "local",
+          "threadId": "chatgpt:offline-fixture-conversation-002"
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "19cc3929-de1a-4abd-ad7d-8e87e59590eb",
+        "method": "POST",
+        "url": "/f/conversation/prepare"
+      },
+      {
+        "operation": "fixture.synthetic-prepare",
+        "path": "/f/conversation/prepare"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "19cc3929-de1a-4abd-ad7d-8e87e59590eb"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "8e31d3e6-4051-4a4d-b87d-ed98c97a5bcd",
+        "method": "PATCH",
+        "url": "/conversation/offline-fixture-conversation-002"
+      },
+      {
+        "operation": "catalog.history-committed",
+        "revision": 2
+      },
+      {
+        "operation": "fixture.conversation-archived",
+        "conversationId": "offline-fixture-conversation-002",
+        "archived": true
+      },
+      {
+        "operation": "catalog.readPage",
+        "query": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "filter": {
+            "includeAll": true,
+            "cwdValues": [],
+            "cwdPrefixes": [],
+            "includeThreadIds": [],
+            "excludeThreadIds": []
+          },
+          "limit": 20,
+          "sortKey": "updated_at"
+        }
+      },
+      {
+        "operation": "catalog.readPage",
+        "query": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "limit": 10,
+          "sortKey": "updated_at"
+        }
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "8e31d3e6-4051-4a4d-b87d-ed98c97a5bcd"
+      },
+      {
+        "operation": "catalog.notifyThread",
+        "key": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "threadId": "offline-fixture-conversation-002"
+        },
+        "kind": "remove"
+      },
+      {
+        "operation": "windowActivity.update",
+        "value": {
+          "canAcquireThreadStream": true,
+          "routePath": "/probe",
+          "visibilityState": "visible"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "item/completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "item/completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "d6c983bc-6edd-41af-af67-11295f9731a4",
+        "method": "POST",
+        "url": "/conversation/init"
+      },
+      {
+        "operation": "catalog.readPage",
+        "query": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "filter": {
+            "includeAll": true,
+            "cwdValues": [],
+            "cwdPrefixes": [],
+            "includeThreadIds": [],
+            "excludeThreadIds": []
+          },
+          "limit": 20,
+          "sortKey": "updated_at"
+        }
+      },
+      {
+        "operation": "catalog.readPage",
+        "query": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "limit": 10,
+          "sortKey": "updated_at"
+        }
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "d6c983bc-6edd-41af-af67-11295f9731a4"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "2c475066-8d6a-4650-95c3-862e21a2dc56",
+        "method": "GET",
+        "url": "/gift-credits/senders/eligibility"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "externalAgentConfig/import/readHistories"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "8d786fbe-f9a7-481f-8585-71c5efc72b63",
+        "method": "PATCH",
+        "url": "/conversation/offline-fixture-conversation-002"
+      },
+      {
+        "operation": "catalog.history-committed",
+        "revision": 4
+      },
+      {
+        "operation": "fixture.conversation-archived",
+        "conversationId": "offline-fixture-conversation-002",
+        "archived": false
+      },
+      {
+        "operation": "catalog.readPage",
+        "query": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "filter": {
+            "includeAll": true,
+            "cwdValues": [],
+            "cwdPrefixes": [],
+            "includeThreadIds": [],
+            "excludeThreadIds": []
+          },
+          "limit": 20,
+          "sortKey": "updated_at"
+        }
+      },
+      {
+        "operation": "catalog.readPage",
+        "query": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "limit": 10,
+          "sortKey": "updated_at"
+        }
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "8d786fbe-f9a7-481f-8585-71c5efc72b63"
+      },
+      {
+        "operation": "catalog.notifyThread",
+        "key": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "threadId": "offline-fixture-conversation-002"
+        },
+        "kind": "refresh"
+      },
+      {
+        "operation": "catalog.readPage",
+        "query": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "filter": {
+            "includeAll": true,
+            "cwdValues": [],
+            "cwdPrefixes": [],
+            "includeThreadIds": [],
+            "excludeThreadIds": []
+          },
+          "limit": 20,
+          "sortKey": "updated_at"
+        }
+      },
+      {
+        "operation": "catalog.readPage",
+        "query": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "limit": 10,
+          "sortKey": "updated_at"
+        }
+      },
+      {
+        "operation": "windowActivity.update",
+        "value": {
+          "canAcquireThreadStream": true,
+          "routePath": "/probe",
+          "visibilityState": "visible"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "thread",
+        "key": {
+          "hostId": "local",
+          "threadId": "chatgpt:offline-fixture-conversation-002"
+        }
+      }
+    ]
+  },
+  "limits": [
+    "Archived chats management page/View and paging not accepted",
+    "Cold archived behavior verified in service/store tests, not separate native UI launch",
+    "First-send retry idempotency and live Zhipu archive interactions unaccepted",
+    "No other platform or full fidelity acceptance"
+  ],
+  "next_action": "Handle first-send retry without duplicate local conversations, then resume mobile conversation navigation and remaining six-surface gaps",
+  "evidence_sha256": {
+    "analysis/tools/desktop-fixture-services.mjs": "2074aaee470aa5a9a1784048ab7d361747736746f1f70ca99a003fe5d07aff63",
+    "analysis/tools/test_desktop_archive.mjs": "8d933428ccc83879cdcf32b1b8623fa2eb7f7240261c16596ae5672bda5a965f",
+    "analysis/tools/probe_desktop_root_mount.cjs": "6ba651c01f6023e5990afcc6dd8ce2c2b5ae175f7a4789fb3951debc458cb066",
+    "analysis/full-platform-20261104/macos-archive-source-v1.json": "7d01174a090382ff0f96662a1646dba9aa2f6d824f25894d8c5532de4d69d0ab",
+    "analysis/full-platform-20261104/macos-archive-runtime-v1.json": "df534c2e743d9392f334ce17dae73e8ec35a0891addd22cef221caa6933b23d6",
+    "analysis/full-platform-20261104/macos-archive-unit-v1.log": "f523e43c1677280a2791e7e6432b1af42cb3367c2938d86602d866e3252c6998",
+    "analysis/full-platform-20261104/macos-archive-delete-regression-v1.log": "12f8a22a7ec4d5fc5af12ed4175d29d4e601cc25418989202ead7e775699de2f",
+    "analysis/full-platform-20261104/macos-archive-create-regression-v1.log": "4cc72fed24f48f14e6a821cc846b7ab11faef4f21d0f9f2007cc47ebf86b0133"
+  }
+}

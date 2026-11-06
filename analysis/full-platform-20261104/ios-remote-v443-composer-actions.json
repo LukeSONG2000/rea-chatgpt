@@ -1,0 +1,185 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "types": [
+    {
+      "name": "CodexRemoteMessageInputAction",
+      "descriptor": "0x95aea7c",
+      "accessor": "0x1c247b4",
+      "payload_cases": 20,
+      "empty_cases": 8,
+      "fields": [
+        {
+          "name": "submit",
+          "flags": 0,
+          "type_reference": "0x8e38c1e",
+          "record": "0x9a37f40"
+        },
+        {
+          "name": "acceptPrediction",
+          "flags": 0,
+          "type_reference": "0x8d860d0",
+          "record": "0x9a37f4c"
+        },
+        {
+          "name": "setPlanModeEnabled",
+          "flags": 0,
+          "type_reference": "0x8bfd810",
+          "record": "0x9a37f58"
+        },
+        {
+          "name": "attachmentMenuItemSelected",
+          "flags": 0,
+          "type_reference": "0x8e38c34",
+          "record": "0x9a37f64"
+        },
+        {
+          "name": "composerAutocompleteItemSelected",
+          "flags": 0,
+          "type_reference": "0x8e38c4c",
+          "record": "0x9a37f70"
+        },
+        {
+          "name": "addAttachment",
+          "flags": 0,
+          "type_reference": "0x8e10c86",
+          "record": "0x9a37f7c"
+        },
+        {
+          "name": "addPhotoPickerResults",
+          "flags": 0,
+          "type_reference": "0x8e38c52",
+          "record": "0x9a37f88"
+        },
+        {
+          "name": "attachmentTapped",
+          "flags": 0,
+          "type_reference": "0x8f2ed50",
+          "record": "0x9a37f94"
+        },
+        {
+          "name": "removeAttachment",
+          "flags": 0,
+          "type_reference": "0x8f2ed50",
+          "record": "0x9a37fa0"
+        },
+        {
+          "name": "selectedTextAttachmentAction",
+          "flags": 0,
+          "type_reference": "0x8e38c86",
+          "record": "0x9a37fac"
+        },
+        {
+          "name": "pasteImageData",
+          "flags": 0,
+          "type_reference": "0x8f9a030",
+          "record": "0x9a37fb8"
+        },
+        {
+          "name": "pasteFileURL",
+          "flags": 0,
+          "type_reference": "0x90195c0",
+          "record": "0x9a37fc4"
+        },
+        {
+          "name": "attachmentPasteFailed",
+          "flags": 0,
+          "type_reference": "0x8bcae60",
+          "record": "0x9a37fd0"
+        },
+        {
+          "name": "setLoadingAttachments",
+          "flags": 0,
+          "type_reference": "0x8bfd810",
+          "record": "0x9a37fdc"
+        },
+        {
+          "name": "removeUnsupportedGoalContext",
+          "flags": 0,
+          "type_reference": "0x8e38c8c",
+          "record": "0x9a37fe8"
+        },
+        {
+          "name": "stopWhisper",
+          "flags": 0,
+          "type_reference": "0x8e38ca4",
+          "record": "0x9a37ff4"
+        },
+        {
+          "name": "textDidApply",
+          "flags": 0,
+          "type_reference": "0x8d860d0",
+          "record": "0x9a38000"
+        },
+        {
+          "name": "selectionDidChange",
+          "flags": 0,
+          "type_reference": "0x8e133c0",
+          "record": "0x9a3800c"
+        },
+        {
+          "name": "runCommand",
+          "flags": 0,
+          "type_reference": "0x8e38cb2",
+          "record": "0x9a38018"
+        },
+        {
+          "name": "removeReviewFindingComment",
+          "flags": 0,
+          "type_reference": "0x8e13998",
+          "record": "0x9a38024"
+        },
+        {
+          "name": "dismissPrediction",
+          "flags": 0,
+          "type_reference": null,
+          "record": "0x9a38030"
+        },
+        {
+          "name": "attachmentMenuOpened",
+          "flags": 0,
+          "type_reference": null,
+          "record": "0x9a3803c"
+        },
+        {
+          "name": "composerAppAutocompleteRequested",
+          "flags": 0,
+          "type_reference": null,
+          "record": "0x9a38048"
+        },
+        {
+          "name": "removeSelectedTextAttachments",
+          "flags": 0,
+          "type_reference": null,
+          "record": "0x9a38054"
+        },
+        {
+          "name": "takePhotoAttachment",
+          "flags": 0,
+          "type_reference": null,
+          "record": "0x9a38060"
+        },
+        {
+          "name": "stopRunningTurn",
+          "flags": 0,
+          "type_reference": null,
+          "record": "0x9a3806c"
+        },
+        {
+          "name": "startWhisper",
+          "flags": 0,
+          "type_reference": null,
+          "record": "0x9a38078"
+        },
+        {
+          "name": "removeReviewFindingComments",
+          "flags": 0,
+          "type_reference": null,
+          "record": "0x9a38084"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "metadata case order does not establish action dispatch or JSON wire encoding"
+  ]
+}

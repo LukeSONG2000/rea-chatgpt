@@ -1,0 +1,26 @@
+{
+  "status": "partial",
+  "verified": {
+    "transport": [
+      {
+        "status": "transferred",
+        "sourceWebContentsId": 1,
+        "targetWebContentsId": 2,
+        "portCount": 1
+      }
+    ],
+    "fixture_connected": true,
+    "draft": {
+      "status": "passed",
+      "draft": "Offline draft test 123",
+      "sendDisabled": false,
+      "cleared": true
+    },
+    "page_errors": []
+  },
+  "invalid_evidence": {
+    "file": "output/playwright/native-window-v33.png",
+    "reason": "Selected getAllWindows()[0], which became fixture service window after adding a second window; capture does not show primary renderer"
+  },
+  "fix": "Select explicit __offlinePrimaryWindow for all show, capture and lifecycle operations"
+}

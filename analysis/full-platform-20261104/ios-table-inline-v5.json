@@ -1,0 +1,26 @@
+{
+  "status": "partial",
+  "classification": "independent-native-projection",
+  "build": "ios-build-v5.log: BUILD SUCCEEDED",
+  "verified": [
+    "Table retains original header and body inline spans separately from raw Markdown text",
+    "Bold header and body link href mapping tested",
+    "Plain-cell fallback tested",
+    "Existing account, generation and table-shape checks pass"
+  ],
+  "implementation": [
+    "Paragraph and table use same attributed-text renderer",
+    "Table links use host callback and suppress default navigation"
+  ],
+  "limits": [
+    "Simulator runtime still downloading; no actual gesture, layout or tap acceptance",
+    "Table column sizes are provisional",
+    "Dynamic Type changes after attributed-text creation not yet tested",
+    "Full original inline/block coverage incomplete"
+  ],
+  "sources": {
+    "implementation/ios/Sources/DraftStore.swift": "19597b3714945881a6d5a9f84e79254b1003866578abc0438d9f3714f9b84a64",
+    "implementation/ios/Sources/NativeConversationHost.swift": "54cb0db0e183afb4b165b6b8142fd531e0376c5637f3e32011f8d51f237ec279",
+    "implementation/ios/Tests/main.swift": "ed7a2635d4a7b08c730ba37256e3270010fb8b12336ab1dc08c733aad777322b"
+  }
+}

@@ -1,0 +1,315 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-metadata",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "class": {
+    "class_address": "0xacd7078",
+    "class_ro_address": "0xacd7010",
+    "name": "_TtC15ChatGPTMessages22MessagesViewController",
+    "flags": 452,
+    "instance_start": 8,
+    "instance_size": 1552,
+    "methods": [
+      {
+        "entry": "0x7cad258",
+        "file_offset": 130732632,
+        "selector": "gestureRecognizerShouldBegin:",
+        "types": "B24@0:8@16",
+        "implementation": "0x372605c",
+        "implementation_file_offset": 57827420
+      },
+      {
+        "entry": "0x7cad264",
+        "file_offset": 130732644,
+        "selector": "gestureRecognizer:shouldReceiveTouch:",
+        "types": "B32@0:8@16@24",
+        "implementation": "0x3726194",
+        "implementation_file_offset": 57827732
+      },
+      {
+        "entry": "0x7cad270",
+        "file_offset": 130732656,
+        "selector": "gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:",
+        "types": "B32@0:8@16@24",
+        "implementation": "0x37261e0",
+        "implementation_file_offset": 57827808
+      },
+      {
+        "entry": "0x7cad27c",
+        "file_offset": 130732668,
+        "selector": "initWithCoder:",
+        "types": "@24@0:8@16",
+        "implementation": "0x3702a58",
+        "implementation_file_offset": 57682520
+      },
+      {
+        "entry": "0x7cad288",
+        "file_offset": 130732680,
+        "selector": "presentViewController:animated:completion:",
+        "types": "v36@0:8@16B24@?28",
+        "implementation": "0x37037a0",
+        "implementation_file_offset": 57685920
+      },
+      {
+        "entry": "0x7cad294",
+        "file_offset": 130732692,
+        "selector": "viewWillAppear:",
+        "types": "v20@0:8B16",
+        "implementation": "0x370395c",
+        "implementation_file_offset": 57686364
+      },
+      {
+        "entry": "0x7cad2a0",
+        "file_offset": 130732704,
+        "selector": "viewDidAppear:",
+        "types": "v20@0:8B16",
+        "implementation": "0x3704f5c",
+        "implementation_file_offset": 57691996
+      },
+      {
+        "entry": "0x7cad2ac",
+        "file_offset": 130732716,
+        "selector": "viewWillDisappear:",
+        "types": "v20@0:8B16",
+        "implementation": "0x3705014",
+        "implementation_file_offset": 57692180
+      },
+      {
+        "entry": "0x7cad2b8",
+        "file_offset": 130732728,
+        "selector": "viewDidDisappear:",
+        "types": "v20@0:8B16",
+        "implementation": "0x37054f8",
+        "implementation_file_offset": 57693432
+      },
+      {
+        "entry": "0x7cad2c4",
+        "file_offset": 130732740,
+        "selector": "viewDidLoad",
+        "types": "v16@0:8",
+        "implementation": "0x37087f0",
+        "implementation_file_offset": 57706480
+      },
+      {
+        "entry": "0x7cad2d0",
+        "file_offset": 130732752,
+        "selector": "viewDidLayoutSubviews",
+        "types": "v16@0:8",
+        "implementation": "0x3709bd4",
+        "implementation_file_offset": 57711572
+      },
+      {
+        "entry": "0x7cad2dc",
+        "file_offset": 130732764,
+        "selector": "viewSafeAreaInsetsDidChange",
+        "types": "v16@0:8",
+        "implementation": "0x3709ca4",
+        "implementation_file_offset": 57711780
+      },
+      {
+        "entry": "0x7cad2e8",
+        "file_offset": 130732776,
+        "selector": "handleTapGesture:",
+        "types": "v24@0:8@16",
+        "implementation": "0x371e698",
+        "implementation_file_offset": 57796248
+      },
+      {
+        "entry": "0x7cad2f4",
+        "file_offset": 130732788,
+        "selector": "handleLongPressGestureWithGestureRecognizer:",
+        "types": "v24@0:8@16",
+        "implementation": "0x371e8b0",
+        "implementation_file_offset": 57796784
+      },
+      {
+        "entry": "0x7cad300",
+        "file_offset": 130732800,
+        "selector": "recordFirstResponderInTranscript",
+        "types": "v16@0:8",
+        "implementation": "0x371f7d0",
+        "implementation_file_offset": 57800656
+      },
+      {
+        "entry": "0x7cad30c",
+        "file_offset": 130732812,
+        "selector": "handleConversationPagingPan:",
+        "types": "v24@0:8@16",
+        "implementation": "0x371f86c",
+        "implementation_file_offset": 57800812
+      },
+      {
+        "entry": "0x7cad318",
+        "file_offset": 130732824,
+        "selector": "initWithNibName:bundle:",
+        "types": "@32@0:8@16@24",
+        "implementation": "0x3725d14",
+        "implementation_file_offset": 57826580
+      },
+      {
+        "entry": "0x7cad324",
+        "file_offset": 130732836,
+        "selector": ".cxx_destruct",
+        "types": "v16@0:8",
+        "implementation": "0x3725d28",
+        "implementation_file_offset": 57826600
+      }
+    ]
+  },
+  "pointers": [
+    {
+      "location": "0xacd7098",
+      "raw": "0x4000000acd7012",
+      "target": "0xacd7012",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacd7028",
+      "raw": "0x10000009c80640",
+      "target": "0x9c80640",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacd7030",
+      "raw": "0x10000007cad250",
+      "target": "0x7cad250",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca80e8",
+      "raw": "0x10000008b24868",
+      "target": "0x8b24868",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacb50e8",
+      "raw": "0x10000008b247a0",
+      "target": "0x8b247a0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacb50f0",
+      "raw": "0x10000008b247d0",
+      "target": "0x8b247d0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacad4e8",
+      "raw": "0x10000008b2df90",
+      "target": "0x8b2df90",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacafba8",
+      "raw": "0x10000008b58a4b",
+      "target": "0x8b58a4b",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7bc0",
+      "raw": "0x10000008ab7ca0",
+      "target": "0x8ab7ca0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7b70",
+      "raw": "0x10000008b893d0",
+      "target": "0x8b893d0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7bb8",
+      "raw": "0x10000008b89610",
+      "target": "0x8b89610",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7b68",
+      "raw": "0x10000008b893e0",
+      "target": "0x8b893e0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7b78",
+      "raw": "0x10000008b89440",
+      "target": "0x8b89440",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7bb0",
+      "raw": "0x10000008b89420",
+      "target": "0x8b89420",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7c98",
+      "raw": "0x10000008b895e0",
+      "target": "0x8b895e0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7e38",
+      "raw": "0x10000008b26794",
+      "target": "0x8b26794",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7e30",
+      "raw": "0x10000008b26166",
+      "target": "0x8b26166",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7e28",
+      "raw": "0x10000008b5e923",
+      "target": "0x8b5e923",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7e20",
+      "raw": "0x10000008b25e94",
+      "target": "0x8b25e94",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacada38",
+      "raw": "0x10000008b30310",
+      "target": "0x8b30310",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacb4eb8",
+      "raw": "0x10000008ab0470",
+      "target": "0x8ab0470",
+      "format": 6,
+      "chain_membership_verified": true
+    }
+  ],
+  "limits": [
+    "ObjC-exposed methods only; Swift native methods and call graph not covered",
+    "No application execution or behavior equivalence established"
+  ]
+}

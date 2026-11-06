@@ -1,0 +1,370 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "CodexScreenContainer",
+      "descriptor": "0x955e7e0",
+      "type_section_entry": "0x9d34ad0",
+      "accessor": "0x3d09d0",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x99d6580",
+          "type_reference": "0x8bc9a40"
+        },
+        {
+          "name": "viewParams",
+          "record": "0x99d658c",
+          "type_reference": "0x8bca114"
+        },
+        {
+          "name": "isUserActivityEnabled",
+          "record": "0x99d6598",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_inheritedPermissions",
+          "record": "0x99d65a4",
+          "type_reference": "0x9454c44"
+        },
+        {
+          "name": "_scenePhase",
+          "record": "0x99d65b0",
+          "type_reference": "0x917e5b0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7cef0b4",
+          "flags": "0x30000",
+          "section_entry": "0x9cd9770"
+        }
+      ]
+    },
+    {
+      "name": "CodexScreen",
+      "descriptor": "0x955edfc",
+      "type_section_entry": "0x9d34b80",
+      "accessor": "0x3e2868",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x99d78d8",
+          "type_reference": "0x8bd49c8"
+        },
+        {
+          "name": "openMenu",
+          "record": "0x99d78e4",
+          "type_reference": "0x8cf0c00"
+        },
+        {
+          "name": "isUserActivityEnabled",
+          "record": "0x99d78f0",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "layout",
+          "record": "0x99d78fc",
+          "type_reference": "0x8bd4c08"
+        },
+        {
+          "name": "dismiss",
+          "record": "0x99d7908",
+          "type_reference": "0x8c59ca0"
+        },
+        {
+          "name": "onTranscriptScrollViewResolved",
+          "record": "0x99d7914",
+          "type_reference": "0x8bd4c1c"
+        },
+        {
+          "name": "didReturnToTaskList",
+          "record": "0x99d7920",
+          "type_reference": "0x8c59ca0"
+        },
+        {
+          "name": "_navigationBarButtonMinSize",
+          "record": "0x99d792c",
+          "type_reference": "0x8d1b570"
+        },
+        {
+          "name": "__realtimeVoiceChatFieldIsFocused",
+          "record": "0x99d7938",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__isRealtimeVoiceBackdropVisible",
+          "record": "0x99d7944",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__realtimeVoiceAvatarScrollContentBottomInset",
+          "record": "0x99d7950",
+          "type_reference": "0x8fd0850"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7cf227c",
+          "flags": "0x30000",
+          "section_entry": "0x9cd9810"
+        },
+        {
+          "descriptor": "0x7cf22cc",
+          "flags": "0x20000",
+          "section_entry": "0x9cd9814"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteHostFilterRow",
+      "descriptor": "0x955f5f4",
+      "type_section_entry": "0x9d34c60",
+      "accessor": "0x407484",
+      "fields": [
+        {
+          "name": "hostItems",
+          "record": "0x99d8408",
+          "type_reference": "0x8e10830"
+        },
+        {
+          "name": "editHost",
+          "record": "0x99d8414",
+          "type_reference": "0x8bd91b8"
+        },
+        {
+          "name": "connectComputer",
+          "record": "0x99d8420",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "isConnectingComputer",
+          "record": "0x99d842c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_reduceMotion",
+          "record": "0x99d8438",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "_tooltipTargetActivation",
+          "record": "0x99d8444",
+          "type_reference": "0x8d9d8d8"
+        },
+        {
+          "name": "_selectionNamespace",
+          "record": "0x99d8450",
+          "type_reference": "0x8f593f0"
+        },
+        {
+          "name": "_sourceFilter",
+          "record": "0x99d845c",
+          "type_reference": "0x8bd91c2"
+        },
+        {
+          "name": "showsConversationSources",
+          "record": "0x99d8468",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "horizontalContentInset",
+          "record": "0x99d8474",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "bottomPadding",
+          "record": "0x99d8480",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "hostFilterAnimation",
+          "record": "0x99d848c",
+          "type_reference": "0x8bd91d0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7cf4798",
+          "flags": "0x30000",
+          "section_entry": "0x9cd99f8"
+        }
+      ]
+    },
+    {
+      "name": "CodexHomeNavigationRoot",
+      "descriptor": "0x955fb6c",
+      "type_section_entry": "0x9d34ce4",
+      "accessor": "0x40b9b8",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x99d8c70",
+          "type_reference": "0x8bc9a40"
+        },
+        {
+          "name": "taskList",
+          "record": "0x99d8c7c",
+          "type_reference": "0x8bde2f2"
+        },
+        {
+          "name": "layout",
+          "record": "0x99d8c88",
+          "type_reference": "0x8bd4c08"
+        },
+        {
+          "name": "openMenu",
+          "record": "0x99d8c94",
+          "type_reference": "0x8c59ca0"
+        },
+        {
+          "name": "dismiss",
+          "record": "0x99d8ca0",
+          "type_reference": "0x8c59ca0"
+        },
+        {
+          "name": "onTranscriptScrollViewResolved",
+          "record": "0x99d8cac",
+          "type_reference": "0x8bd4c1c"
+        },
+        {
+          "name": "hasPresentingTaskList",
+          "record": "0x99d8cb8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "__newThreadChatFieldIsFocused",
+          "record": "0x99d8cc4",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__remoteThreadChatFieldIsFocused",
+          "record": "0x99d8cd0",
+          "type_reference": "0x8cf6c70"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7cf57c8",
+          "flags": "0x30000",
+          "section_entry": "0x9cd9a2c"
+        }
+      ]
+    },
+    {
+      "name": "CodexTaskList",
+      "descriptor": "0x955fb94",
+      "type_section_entry": "0x9d34ce8",
+      "accessor": "0x40b9cc",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x99d8cec",
+          "type_reference": "0x8bd49c8"
+        },
+        {
+          "name": "taskList",
+          "record": "0x99d8cf8",
+          "type_reference": "0x8bde2f2"
+        },
+        {
+          "name": "codexRemoteActivationExperience",
+          "record": "0x99d8d04",
+          "type_reference": "0x8bd91fe"
+        },
+        {
+          "name": "usesHomeSearch",
+          "record": "0x99d8d10",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "usesHomeComposer",
+          "record": "0x99d8d1c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isSidebar",
+          "record": "0x99d8d28",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "__hasAppeared",
+          "record": "0x99d8d34",
+          "type_reference": "0x8cf6c70"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7cf5778",
+          "flags": "0x30000",
+          "section_entry": "0x9cd9a28"
+        }
+      ]
+    },
+    {
+      "name": "CodexHomeTaskList",
+      "descriptor": "0x9560248",
+      "type_section_entry": "0x9d34d48",
+      "accessor": "0x4325ec",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x99d95b8",
+          "type_reference": "0x8bc9a40"
+        },
+        {
+          "name": "taskList",
+          "record": "0x99d95c4",
+          "type_reference": "0x8bde2f2"
+        },
+        {
+          "name": "showsTaskList",
+          "record": "0x99d95d0",
+          "type_reference": "0x8bfd810"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7cf6f78",
+          "flags": "0x30000",
+          "section_entry": "0x9cd9abc"
+        }
+      ]
+    },
+    {
+      "name": "CodexHomeEmptyStateView",
+      "descriptor": "0x9560958",
+      "type_section_entry": "0x9d34d98",
+      "accessor": "0x43ffdc",
+      "fields": [
+        {
+          "name": "state",
+          "record": "0x99d9be8",
+          "type_reference": "0x8bf6dac"
+        },
+        {
+          "name": "actionHandler",
+          "record": "0x99d9bf4",
+          "type_reference": "0x8be78be"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7cf8780",
+          "flags": "0x30000",
+          "section_entry": "0x9cd9b28"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

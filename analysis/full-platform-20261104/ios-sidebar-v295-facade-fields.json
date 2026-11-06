@@ -1,0 +1,35 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "descriptor": "0x96ddad4",
+  "accessor": "0x62eda9c",
+  "kind": 1,
+  "fields": [
+    {
+      "name": "keyboardSnapshot",
+      "type_reference": "0x8d8a530",
+      "references": []
+    },
+    {
+      "name": "keyboardFrameInWindow",
+      "type_reference": "0x907ae30",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 1,
+          "target": "0x9558638",
+          "resolved_context": "0x9558638",
+          "label": "__C.CGRect"
+        }
+      ]
+    },
+    {
+      "name": "onDeinit",
+      "type_reference": "0x8d0ab00",
+      "references": []
+    }
+  ],
+  "limits": [
+    "Names and type dependencies only; method behavior unproven."
+  ]
+}

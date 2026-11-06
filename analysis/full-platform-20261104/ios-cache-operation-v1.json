@@ -1,0 +1,85 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x5efb7fc",
+    "end_exclusive": "0x5efb8ec",
+    "sha256": "77649739e81f59884eecb4eb81db241e4787cad334e10c116ba26ea7cae7dec1"
+  },
+  "linker_function_starts_in_window": [
+    "0x5efb7fc"
+  ],
+  "next_linker_function_start": "0x5efb8ec",
+  "direct_calls": [
+    {
+      "site": "0x5efb800",
+      "target": "0x45feb4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x5efb81c",
+      "target": "0x14b2c0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x5efb830",
+      "target": "0x183b94",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x5efb840",
+      "target": "0x1531c8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x5efb898",
+      "target": "0x7c5494c",
+      "imported_symbol": "_swift_retain_x26"
+    },
+    {
+      "site": "0x5efb89c",
+      "target": "0x5efbc58",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x5efb8a0",
+      "target": "0x7c5482c",
+      "imported_symbol": "_swift_release_x26"
+    },
+    {
+      "site": "0x5efb8ac",
+      "target": "0x7c547f0",
+      "imported_symbol": "_swift_release_x21"
+    },
+    {
+      "site": "0x5efb8b8",
+      "target": "0x14b384",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x5efb8cc",
+      "target": "0xfaa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x5efb8d8",
+      "target": "0x162b34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x5efb8dc",
+      "target": "0x161e78",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

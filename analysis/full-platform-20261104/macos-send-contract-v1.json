@@ -1,0 +1,43 @@
+{
+  "status": "partial",
+  "source": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "offset_unit": "Unicode character offset in UTF-8-decoded JS",
+  "anchors": [
+    {
+      "symbol_or_text": "function pyr",
+      "offset": 4331594,
+      "excerpt": "function pyr(e){let t=xyr.safeParse(e);if(t.success&&t.data.message!=null)return{conversationId:t.data.conversation_id??null,message:t.data.message,type:`message`};let n=Tyr.safeParse(e);if(!n.success)return null;switch(n.data.type){case`user_signal_metadata`:{let t=_yr.safeParse(e);return t.success"
+    },
+    {
+      "symbol_or_text": "function s_r",
+      "offset": 4292807,
+      "excerpt": "function s_r(e){let t=f_r(),n=l_r(await e(t)),[r,i]=await Promise.all([d_r(n),u_r(n,t)]);return{appAttestChallenge:null,chatRequirements:n,headers:c_r(n,r,i),proofToken:r,requirementsKey:t,turnstileToken:i}}function c_r(e,t,n){let r={};return e.token?r[WF.chatRequirementsToken]=e.token:e.prepare_tok"
+    },
+    {
+      "symbol_or_text": "async startCompletionStream",
+      "offset": 4577023,
+      "excerpt": "async startCompletionStream({additionalHeaders:e,assertRequestCurrent:t,expectedIdentity:n,startupSignal:r,expectedAccountId:i,getWebSocketSummaryOptions:a,inFlightPrepared:o,isPrepareCurrent:s,onComplete:c,onTransportClose:l,onEarlyStreamHandoff:u,onError:d,onEvent:f,onDecodedEvent:p,onPrematureTer"
+    },
+    {
+      "symbol_or_text": "/f/conversation/prepare",
+      "offset": 4575417,
+      "excerpt": "/f/conversation/prepare`,{additionalHeaders:{\"x-oai-mcp-form-version\":`2`,...n,...Zxt()?{[lCe]:`1`}:{},...e.gizmo_id==null?{}:{\"chatgpt-project-id\":e.gizmo_id},..._L({conduitToken:i,expectedAccountId:r,turnTraceId:u})},requestBody:{...e,client_contextual_info:e.client_contextual_info==null?e.client_"
+    },
+    {
+      "symbol_or_text": "CF=K({atlas_mode_enabled",
+      "offset": 4273775,
+      "excerpt": "CF=K({atlas_mode_enabled:gi().nullable().optional(),banner_info:khr.nullable().optional(),blocked_features:J(Ahr).optional(),conversation_id:X().optional(),default_model_slug:X().nullable().optional(),intended_default_model_slug:X().nullable().optional(),file_attachment_limits:K({max_count_per_turn:"
+    }
+  ],
+  "observations": [
+    "Actual Send adds optimistic synthetic user message",
+    "Without local preparation fixtures error is visible with Retry",
+    "With local preparation fixtures original renderer requests POST /f/conversation"
+  ],
+  "limits": [
+    "Preparation empty objects are independent test responses, not official cloud behavior",
+    "No official endpoint contacted",
+    "SSE projection not yet accepted"
+  ]
+}

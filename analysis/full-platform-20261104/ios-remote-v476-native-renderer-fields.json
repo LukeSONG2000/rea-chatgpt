@@ -1,0 +1,492 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "preserved_failure": "inspect_swift_class_fields.py rejected renderer descriptor because its supported field kind is 7; raw native-class field metadata here reports kind1. No fallback instance offsets inferred.",
+  "types": [
+    {
+      "name": "CodexRemoteMarkdownResultRenderer",
+      "descriptor": "0x95aae98",
+      "field_kind": 1,
+      "fields": [
+        {
+          "name": "disablesInlineMedia",
+          "record": "0x9a34728",
+          "type_reference": "0x8bfd810",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8bfd810",
+            "length": 2,
+            "mangled_hex": "5362",
+            "references": [],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "audioSessionManager",
+          "record": "0x9a34734",
+          "type_reference": "0x8e146c8",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e146c8",
+            "length": 9,
+            "mangled_hex": "028fa0ca015f705367",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaabe758",
+                "resolved_context": "0x96b0124",
+                "label": "<unresolved-context@0x96b0124>"
+              }
+            ],
+            "unresolved_contexts": [
+              {
+                "address": "0x96b0124",
+                "flags": "0x43",
+                "kind": 3,
+                "reason": "Unsupported context kind; name and parent chain not interpreted"
+              }
+            ],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "mediaLoadGate",
+          "record": "0x9a34740",
+          "type_reference": "0x8c59be0",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8c59be0",
+            "length": 5,
+            "mangled_hex": "026fc3e501",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab5f50",
+                "resolved_context": "0x975e404",
+                "label": "SwiftToolbelt.AsyncSerialGate"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "mediaStorage",
+          "record": "0x9a3474c",
+          "type_reference": "0x8e146d8",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e146d8",
+            "length": 5,
+            "mangled_hex": "01536c7900",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 1,
+                "target": "0x95ab32c",
+                "resolved_context": "0x95ab32c",
+                "label": "CodexRemoteThread.CodexRemoteInlineMediaStorage"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "cache",
+          "record": "0x9a34758",
+          "type_reference": "0x8e146de",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e146de",
+            "length": 17,
+            "mangled_hex": "029117ca01790173787900026efac90147",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab5e70",
+                "resolved_context": "0x975f61c",
+                "label": "SwiftToolbelt.MemoryCache"
+              },
+              {
+                "offset": 6,
+                "kind": 1,
+                "target": "0x95abf58",
+                "resolved_context": "0x95abf58",
+                "label": "<unresolved-context@0x95abf50>.CacheKey"
+              },
+              {
+                "offset": 11,
+                "kind": 2,
+                "target": "0xaab4158",
+                "resolved_context": "0x96fcbf8",
+                "label": "OAIMarkdown.MarkdownResult"
+              }
+            ],
+            "unresolved_contexts": [
+              {
+                "address": "0x95abf50",
+                "flags": "0x42",
+                "kind": 2,
+                "reason": "Unsupported context kind; name and parent chain not interpreted"
+              }
+            ],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "$__lazy_storage_$_inlineMediaPluginCache",
+          "record": "0x9a34764",
+          "type_reference": "0x8e146f0",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e146f0",
+            "length": 19,
+            "mangled_hex": "027f17ca0179013d787900012c6b7900475367",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab5e70",
+                "resolved_context": "0x975f61c",
+                "label": "SwiftToolbelt.MemoryCache"
+              },
+              {
+                "offset": 6,
+                "kind": 1,
+                "target": "0x95abf34",
+                "resolved_context": "0x95abf34",
+                "label": "<unresolved-context@0x95abf2c>.InlineMediaPluginCacheKey"
+              },
+              {
+                "offset": 11,
+                "kind": 1,
+                "target": "0x95ab228",
+                "resolved_context": "0x95ab228",
+                "label": "CodexRemoteThread.CodexRemoteInlineMediaMarkdownPlugin"
+              }
+            ],
+            "unresolved_contexts": [
+              {
+                "address": "0x95abf2c",
+                "flags": "0x42",
+                "kind": 2,
+                "reason": "Unsupported context kind; name and parent chain not interpreted"
+              }
+            ],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "liveInlineMediaPlugins",
+          "record": "0x9a34770",
+          "type_reference": "0x8e14704",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e14704",
+            "length": 21,
+            "mangled_hex": "534479012c787900026b19ca017901156b79004747",
+            "references": [
+              {
+                "offset": 3,
+                "kind": 1,
+                "target": "0x95abf34",
+                "resolved_context": "0x95abf34",
+                "label": "<unresolved-context@0x95abf2c>.InlineMediaPluginCacheKey"
+              },
+              {
+                "offset": 8,
+                "kind": 2,
+                "target": "0xaab6078",
+                "resolved_context": "0x975ef64",
+                "label": "SwiftToolbelt.WeakBox"
+              },
+              {
+                "offset": 14,
+                "kind": 1,
+                "target": "0x95ab228",
+                "resolved_context": "0x95ab228",
+                "label": "CodexRemoteThread.CodexRemoteInlineMediaMarkdownPlugin"
+              }
+            ],
+            "unresolved_contexts": [
+              {
+                "address": "0x95abf2c",
+                "flags": "0x42",
+                "kind": 2,
+                "reason": "Unsupported context kind; name and parent chain not interpreted"
+              }
+            ],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "inlineVisualizationPresentationCache",
+          "record": "0x9a3477c",
+          "type_reference": "0x8e1471a",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e1471a",
+            "length": 17,
+            "mangled_hex": "025517ca017901ef77790001c677790047",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab5e70",
+                "resolved_context": "0x975f61c",
+                "label": "SwiftToolbelt.MemoryCache"
+              },
+              {
+                "offset": 6,
+                "kind": 1,
+                "target": "0x95abf10",
+                "resolved_context": "0x95abf10",
+                "label": "<unresolved-context@0x95abf08>.InlineVisualizationPresentationCacheKey"
+              },
+              {
+                "offset": 11,
+                "kind": 1,
+                "target": "0x95abeec",
+                "resolved_context": "0x95abeec",
+                "label": "CodexRemoteThread.CodexRemoteInlineVisualizationMarkdownPresentation"
+              }
+            ],
+            "unresolved_contexts": [
+              {
+                "address": "0x95abf08",
+                "flags": "0x42",
+                "kind": 2,
+                "reason": "Unsupported context kind; name and parent chain not interpreted"
+              }
+            ],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "inlineVisualizationStablePrefixCache",
+          "record": "0x9a34788",
+          "type_reference": "0x8e1472c",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e1472c",
+            "length": 17,
+            "mangled_hex": "024317ca0179019d777900017477790047",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab5e70",
+                "resolved_context": "0x975f61c",
+                "label": "SwiftToolbelt.MemoryCache"
+              },
+              {
+                "offset": 6,
+                "kind": 1,
+                "target": "0x95abed0",
+                "resolved_context": "0x95abed0",
+                "label": "<unresolved-context@0x95abec8>.InlineVisualizationStablePrefixCacheKey"
+              },
+              {
+                "offset": 11,
+                "kind": 1,
+                "target": "0x95abeac",
+                "resolved_context": "0x95abeac",
+                "label": "<unresolved-context@0x95abea4>.InlineVisualizationStablePrefix"
+              }
+            ],
+            "unresolved_contexts": [
+              {
+                "address": "0x95abec8",
+                "flags": "0x42",
+                "kind": 2,
+                "reason": "Unsupported context kind; name and parent chain not interpreted"
+              },
+              {
+                "address": "0x95abea4",
+                "flags": "0x42",
+                "kind": 2,
+                "reason": "Unsupported context kind; name and parent chain not interpreted"
+              }
+            ],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "context",
+          "record": "0x9a34794",
+          "type_reference": "0x8e1473e",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e1473e",
+            "length": 7,
+            "mangled_hex": "01497779005367",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 1,
+                "target": "0x95abe88",
+                "resolved_context": "0x95abe88",
+                "label": "<unresolved-context@0x95abe80>.RenderContext"
+              }
+            ],
+            "unresolved_contexts": [
+              {
+                "address": "0x95abe80",
+                "flags": "0x42",
+                "kind": 2,
+                "reason": "Unsupported context kind; name and parent chain not interpreted"
+              }
+            ],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteUserMessageMarkdownRenderer",
+      "descriptor": "0x95abb0c",
+      "field_kind": 1,
+      "fields": [
+        {
+          "name": "cachedContent",
+          "record": "0x9a354e4",
+          "type_reference": "0x8e14e10",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e14e10",
+            "length": 7,
+            "mangled_hex": "01336e79005367",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 1,
+                "target": "0x95abc44",
+                "resolved_context": "0x95abc44",
+                "label": "CodexRemoteThread.CodexRemoteUserMessageMarkdownContent"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "input",
+          "record": "0x9a354f0",
+          "type_reference": "0x8e14e18",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8e14e18",
+            "length": 7,
+            "mangled_hex": "010f6e79005367",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 1,
+                "target": "0x95abc28",
+                "resolved_context": "0x95abc28",
+                "label": "<unresolved-context@0x95abc20>.Input"
+              }
+            ],
+            "unresolved_contexts": [
+              {
+                "address": "0x95abc20",
+                "flags": "0x42",
+                "kind": 2,
+                "reason": "Unsupported context kind; name and parent chain not interpreted"
+              }
+            ],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

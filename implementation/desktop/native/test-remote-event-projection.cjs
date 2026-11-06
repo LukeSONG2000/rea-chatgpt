@@ -1,0 +1,14 @@
+'use strict';
+const {createProjection}=require('./remote-event-projection.cjs'),assert=require('node:assert/strict'),fs=require('node:fs');
+const report=process.argv[2];if(!report||fs.existsSync(report))throw Error('New report required');
+const trace=[{kind:'submitted',prompt:'REA synthetic restored user'},{kind:'accepted'},{kind:'delta',text:'hello '},{kind:'delta',text:'world'},{kind:'completed'}];
+function replay(host,events){const p=createProjection(host,'thread-a'),out=[];events.forEach((e,i)=>out.push(...p.apply({host,thread:'thread-a',request:'r',sequence:i+1,...e})));return {p,out}}
+const a=replay('host-a',trace),b=replay('host-b',trace),cold=replay('host-a',trace);
+assert.deepEqual(cold.out,a.out);assert.deepEqual(cold.p.snapshot(),a.p.snapshot());assert.notEqual(a.p.snapshot().turns[0].id,b.p.snapshot().turns[0].id);
+assert.deepEqual(a.out.map(e=>e.method),['turn/started','item/started','item/completed','item/started','item/agentMessage/delta','item/agentMessage/delta','item/completed','turn/completed']);
+assert.equal(a.out[2].params.item.content[0].text,'REA synthetic restored user');assert.equal(a.out.at(-2).params.item.text,'hello world');assert.equal(a.out.at(-1).params.turn.status,'completed');
+const before=a.p.snapshot();for(const e of [{host:'foreign',kind:'delta',sequence:6},{host:'host-a',kind:'delta',sequence:6},{host:'host-a',kind:'completed',sequence:5}])assert.throws(()=>a.p.apply({thread:'thread-a',request:'r',text:'late',...e}));assert.deepEqual(a.p.snapshot(),before);
+for(const terminal of ['cancelled','interrupted','failed']){const x=replay('host-a',[trace[0],{kind:terminal}]);assert.equal(x.out.at(-1).params.turn.status,terminal==='cancelled'?'interrupted':terminal);assert.ok(!x.out.some(e=>e.params.item?.type==='agentMessage'))}
+const p=createProjection('host-a','thread-a');assert.throws(()=>p.apply({host:'host-a',thread:'thread-a',request:'r',sequence:1,kind:'submitted'}));assert.equal(p.snapshot().cursor,0);
+p.apply({host:'host-a',thread:'thread-a',request:'r',sequence:1,...trace[0]});assert.throws(()=>p.apply({host:'host-a',thread:'thread-a',request:'r',sequence:2,kind:'delta',text:'before accepted'}));assert.equal(p.snapshot().cursor,1);
+fs.writeFileSync(report,JSON.stringify({status:'passed',authority:'independent projection unit tests, not full official manager compatibility',checks:['scope-derived deterministic turn/user/assistant identities','cold replay restores user and assistant content','separate hosts never share turn identity','late/duplicate/foreign events cannot mutate state','pre-acceptance failure and cancellation retain user item without invented assistant','missing historical prompt fails explicitly'],limits:['Notifications not yet fed into full renderer manager','User item and turn construction are independent design choices; only consumed field shapes observed']},null,2),{flag:'wx'});console.log('Projection tests passed');

@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "authority": "independent-request-bound-pending-cleanup",
+  "runtime": "macos-preview-v98-settlement.json",
+  "verified": [
+    "Original startCompletionStream boundary binds exact outgoing user message ID, source conversation/message and snapshot sequence before transport",
+    "Durable local creation receipt carries explicit branch source",
+    "Matching completed assistant receipt clears only the bound unchanged snapshot",
+    "Real renderer send creates one new conversation; old histories and unrelated pending record unchanged",
+    "Incomplete, wrong-user, wrong-source and newer-draft cases retain snapshot in regression",
+    "Bound unresolved snapshot rejects automatic recreation to prevent duplicate sends",
+    "Startup checks durable completed receipts before choosing recoverable pending snapshot"
+  ],
+  "observed": {
+    "removed_id": "local-chatgpt:88c02fc9-d184-4e63-bedc-72ca165122b4",
+    "preserved_ids": [
+      "local-chatgpt:d1ec3996-b9ea-48e3-8f8e-4a3b6956fa66"
+    ],
+    "user_id": "09dffe29-4a84-4aff-a228-fb2f7d41b50b",
+    "assistant_id": "offline-generated-2a17f838-c1f8-4412-a1df-74a0d84c30a8"
+  },
+  "tests": [
+    "test_desktop_pending_branch_settlement.cjs",
+    "test_desktop_pending_branch_store.cjs",
+    "test_desktop_pending_branch_adapter.mjs",
+    "test_desktop_fork.mjs",
+    "test_desktop_first_send_retry.mjs",
+    "test_desktop_history_store.mjs"
+  ],
+  "limits": [
+    "Recovery still opt-in; unresolved-submission UI and explicit discard not implemented",
+    "No physical IME, attachments or multiple-window acceptance",
+    "Failed transport and cleanup disk failure still require end-to-end fault injection",
+    "Exact outgoing user ID is used; no claim of official backend receipt semantics"
+  ],
+  "next_action": "Add explicit unresolved-submission/discard handling and fault-injection before enabling default recovery; avoid matching by text/source alone",
+  "sources": [
+    {
+      "file": "analysis/tools/desktop-pending-branch-store.cjs",
+      "sha256": "3e5ee8768a5a738e80cb70c1a8746422b2ececef6b6e4a6f90d40add8ff40a38"
+    },
+    {
+      "file": "analysis/tools/desktop-pending-branch-adapter.mjs",
+      "sha256": "fbd0f690450ba21a6c031dcf5766682b0419232e3546fdad954160cf807adbea"
+    },
+    {
+      "file": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "4f7a86dbca5f863a291f7394db3e673f61450695619e905ef7cdf81c9684ad92"
+    },
+    {
+      "file": "analysis/tools/desktop-history-store.cjs",
+      "sha256": "82f0c0887b1c4b5416c076cbf8d2c2280cc4b5e276aead4fcc23d9cc3f79fbd5"
+    },
+    {
+      "file": "analysis/tools/desktop-native-host.cjs",
+      "sha256": "cf4c9e75d1b05ad1d28e6615e119ef7544b2d6f2be34cf9bf6653b0bb2e55e66"
+    },
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "0e6a7b1ddbdde06fb0e62414e45f8d55a12bda05353db9640d85c8889843a6e0"
+    }
+  ]
+}

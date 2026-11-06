@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {createRequire} from 'node:module';
+import {createFixtureHost} from './desktop-fixture-services.mjs';
+const {createHistoryStore}=createRequire(import.meta.url)('./desktop-history-store.cjs');
+const fixture=JSON.parse(fs.readFileSync(new URL('../desktop-official-20261104/history-fixture-replay.json',import.meta.url))).converted_fixture;
+globalThis.location={origin:'https://offline.invalid'};
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'rea-history-'));
+try {
+ const store=createHistoryStore(dir);globalThis.__reaSaveHistories=h=>store.save(h);
+ const make=restoredHistories=>createFixtureHost({Wst:class{}},{scenario:'synthetic-account',historyFixture:fixture,restoredHistories}).host.services.httpFetch;
+ const service=make(null);
+ const request=(id,parent='offline-assistant-001')=>({method:'POST',url:'/f/conversation',body:JSON.stringify({conversation_id:'offline-fixture-conversation-001',parent_message_id:parent,messages:[{id,content:{content_type:'text',parts:['REA synthetic history']}}]})});
+ const first=await service.fetch('same-stream-id',request('user-one'));await first.response.text();
+ const loaded=store.load(),a=loaded.find(h=>h.conversation_id.endsWith('001')),oldID=a.current_node;
+ assert.equal(a.mapping[oldID].message.status,'finished_successfully');assert.match(a.mapping[oldID].message.content.parts[0],/const source/);
+ const secondService=make(loaded),second=await secondService.fetch('same-stream-id',request('user-two',oldID));
+ assert.notEqual(store.load()[0].current_node,oldID,'Process-local transport IDs cannot identify persisted messages');
+ const interrupted=store.load()[0];assert.equal(interrupted.mapping[interrupted.current_node].message.metadata.rea_local_recovery,'interrupted');
+ secondService.cancel('same-stream-id');await second.response.text();
+ const terminal=store.load()[0];assert.equal(terminal.mapping[terminal.current_node].message.status,'finished_partial_completion');
+ assert.equal(createHistoryStore(dir,'zhipu').load(),null,'Model profiles separate');
+ const before=fs.readFileSync(store.info.file,'utf8');const bad=structuredClone(store.load());bad[0].conversation_id='real-account';assert.throws(()=>store.save(bad));assert.equal(fs.readFileSync(store.info.file,'utf8'),before);
+ const cyclic=structuredClone(store.load());const root=Object.values(cyclic[0].mapping).find(n=>n.parent===null);const leaf=cyclic[0].mapping[cyclic[0].current_node];root.parent=leaf.id;leaf.children.push(root.id);assert.throws(()=>store.save(cyclic),/Cyclic history/);
+ const brokenEdge=structuredClone(store.load());brokenEdge[0].mapping[brokenEdge[0].current_node].parent=null;assert.throws(()=>store.save(brokenEdge),/Inconsistent history edges/);
+ fs.writeFileSync(store.info.file,'broken');assert.throws(()=>store.load());assert.equal(fs.readFileSync(store.info.file,'utf8'),'broken');
+ globalThis.__reaSaveHistories=()=>{throw Error('synthetic disk failure')};await assert.rejects(()=>make(null).fetch('failed',request('user-failed')),/synthetic disk failure/);
+ console.log('PASS: completed cold recovery, interrupted conversion, cancellation, process ID collision avoidance, profile isolation, invalid scope and corrupt preservation, surfaced disk failure');
+} finally {delete globalThis.__reaSaveHistories;fs.rmSync(dir,{recursive:true,force:true})}

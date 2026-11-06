@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ignoreElements=void 0;const e=require("../util/lift"),r=require("./OperatorSubscriber"),t=require("../util/noop");function o(){return(0,e.operate)((e,o)=>{e.subscribe((0,r.createOperatorSubscriber)(o,t.noop))})}exports.ignoreElements=o;

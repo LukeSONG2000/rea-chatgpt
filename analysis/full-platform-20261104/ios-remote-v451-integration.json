@@ -1,0 +1,187 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "progress: v450 integrated source-derived follow-up Menu and scoped mode dispatch",
+  "integrated": [
+    "Reconnecting primary leaf with caller-provided official accessibility label",
+    "Source-derived independent keyframe rotation with size18/stroke2/duration0.8; no task-list synchronized phase substitution",
+    "Two explicit fixture contexts, unchanged stop precedence and draft retention"
+  ],
+  "observations": {
+    "oai_progress_type": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": "0x7cdc610",
+      "mangled_address": "0x8d97e60",
+      "length": 14,
+      "mangled_hex": "0227f7d1017902e9d9d301414247",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaab7588",
+          "resolved_context": "0x97544ec",
+          "label": "SwiftUIToolbelt.OAIProgressView"
+        },
+        {
+          "offset": 6,
+          "kind": 2,
+          "target": "0xaad5850",
+          "resolved_context": null,
+          "label": "_$s7SwiftUI9EmptyViewVMn"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "animator_call": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x6f0b958",
+        "end_exclusive": "0x6f0b968",
+        "sha256": "1759c198bdea1f522c8f0531278ee97747db78a046709f6afb795e7d38033fe5"
+      },
+      "linker_function_starts_in_window": [],
+      "next_linker_function_start": "0x6f0ba3c",
+      "direct_calls": [
+        {
+          "site": "0x6f0b964",
+          "target": "0x7c4a68c",
+          "imported_symbol": "_$s7SwiftUI4ViewPAAE16keyframeAnimator12initialValue9repeating7content9keyframesQrqd___Sbqd_0_AA018PlaceholderContentC0VyxG_qd__tYbcqd_1_qd__ct0G0Qyd_1_Rsd__AaBRd_0_AA9KeyframesRd_1_r1_lF",
+          "chained_binding": {
+            "slot": "0xaad4260",
+            "symbol": "_$s7SwiftUI4ViewPAAE16keyframeAnimator12initialValue9repeating7content9keyframesQrqd___Sbqd_0_AA018PlaceholderContentC0VyxG_qd__tYbcqd_1_qd__ct0G0Qyd_1_Rsd__AaBRd_0_AA9KeyframesRd_1_r1_lF",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10016,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "keyframe_end_degrees": 360.0,
+    "size": 18,
+    "stroke": 2,
+    "duration": 0.8,
+    "synchronized": false,
+    "shape": "Circle inset half stroke, trim0...0.75, angular gradient0...270",
+    "label_keys": [
+      "codex_remote_thread_reconnecting_to_task_footer",
+      "codex_remote_thread_reconnecting_footer"
+    ],
+    "label_owner_branch": "0x1a233d8 invokes protocol slot+0x170 then selects label; meaning of predicate and service owner still unresolved",
+    "preview_color": "OneOff/AppForeground; effective original color/private backdrop unresolved"
+  },
+  "independent_adaptations": [
+    "Native reduce-motion static arc and no-hit progress leaf",
+    "Preview AppForeground color pending original effective icon/private backdrop mapping",
+    "Fixture task/host context and display name not recovered service owner"
+  ],
+  "validation": {
+    "typecheck": "passed exit0; 3 existing UIKit warnings",
+    "foundation": "passed exit0",
+    "ui_parse": "passed exit0",
+    "ui_runtime": "not_run",
+    "device_install": "not_run",
+    "simulator_install": "not_run"
+  },
+  "live_processes": [
+    87483,
+    97181,
+    97197
+  ],
+  "limitations": [
+    "Xcode component installer authorization remains blocker for new runtime acceptance",
+    "Animation/Reduce Motion/VoiceOver/dark/visual unaccepted",
+    "Original caller predicate slot+0x170 and host fallback unresolved",
+    "Private button style/full toolbar incomplete",
+    "Android consumer proof missing"
+  ],
+  "next": "Recover primary button style and owner configuration; run queued whole-page tests after installer resolves",
+  "files": [
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "90945c64c9264c298073970e6b01d36f858cddbd00c176d7dbf7ba88cd408939"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "0d96db44130b0fc37bf67ad203c129173084b48f0ba31cf448930415bb0e7e91"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "ca50d29ae102fa120fb7e4965002dd69d9a1a397d94bb63158eda1883a16eef3"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "dc8f40c57059e5e227f1eb7de1c6e1664d30bdcc84610d72c8e5eeebabaa3554"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "4abd3346279e1f0d3590a034384615817dffe96f2f3c3910b191117252351ce1"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "e34f18345b774aba77f8c421b522f23cb85dff0b39c7bed5e405ff57da4152d7"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "229f75a7965e4445be2a248b5af6e4e170e4e6f1085580c06f716743fb20aff2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v451-progress-facts.json",
+      "sha256": "d6f5022b80c5b5a5311422dac131a60d458dd176fda887a10d12c0a30a55e506"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v451-text-resources.json",
+      "sha256": "75ff7cd4bdf1a988ded9a06884087561ad55e32e52779b1699881d7643d6b264"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v451-reconnect-owner.json",
+      "sha256": "703b260347bf6e49a7e09c66c3cda16ffbfc11147489a9d1380f2c16400c1f71"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v451-reconnect-callers.json",
+      "sha256": "ae68703e3bc0b2c061f0c2e41bf1579c26037112f2df06152a8780ea95803ed3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v451-reconnect-label-refs.json",
+      "sha256": "7f9f73954e419ae5411a756bb740423e6f7e59910fe55b6002f6cc1dbad3c663"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v451-progress-construction.json",
+      "sha256": "a302f880c08e7340b87e8583bd8ddbf1e7a79405eeca88aa71f434f1effb74f3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v451-progress-keyframes.json",
+      "sha256": "5b54083e2da4ffc6d58649cfa183624cfbdcbb85ede09edbadf7749e4860b3f2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v451-reconnect-helpers.json",
+      "sha256": "8a92f588b117670a1d11aa3ea9e6ca08b5065d4ebaf655b4db2eb62c87f1cd1a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v451-progress-animation.json",
+      "sha256": "dfcaab67c5c670fe95a4fe1e651bcd9f645158adb7812ebb1b61bf2f310947f6"
+    }
+  ]
+}

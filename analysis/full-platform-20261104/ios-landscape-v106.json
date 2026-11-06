@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-host-simulator-observation",
+  "platform": "iOS 27 Simulator / Xcode 27",
+  "question": "Does landscape clipping occur in the app or screenshot path?",
+  "finding": "Same-session full-screen capture is complete; application-element capture crops to 1206x1206 within 2622x1206 canvas. Window geometry is 874x402 points with right-side controls hittable. Evidence supports application-element capture-path defect in this environment, not black region in the app.",
+  "change": "Rotation regression now captures XCUIScreen.main.screenshot instead of app.screenshot",
+  "validation": {
+    "test": "testLandscapeWindowCapture",
+    "result": "ios-landscape-v106-final.xcresult",
+    "summary": "ios-landscape-v106-final.summary.json",
+    "passedTests": 1,
+    "skippedTests": 0,
+    "geometry": "ios-landscape-v106-final-images/60CBFA18-44CD-459E-8712-93335D853DCC.txt",
+    "visual_review": "Earlier r2 full-screen screenshot inspected: complete horizontal layout, visible navigation and composer, no large black region",
+    "images": [
+      {
+        "file": "ios-landscape-v106-final-images/3C6EA2AB-D0B4-4F71-820B-5FF999BFB583.png",
+        "pixel_size": [
+          2622,
+          1206
+        ],
+        "exif_orientation": 8,
+        "nonblack_bounds": [
+          0,
+          0,
+          1206,
+          1206
+        ],
+        "sha256": "50e7d2a2b139f5a1b5ba855f8e7e4b47aa3ddbfc10aa1358d1bac72ff5be83ec"
+      },
+      {
+        "file": "ios-landscape-v106-final-images/90D540D3-F48F-4A11-AE4A-F1E291DEB675.png",
+        "pixel_size": [
+          1206,
+          2622
+        ],
+        "exif_orientation": 8,
+        "nonblack_bounds": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "sha256": "c54438bd308819676996592767434ac1f212907c218497c125d24b0dde3536a4"
+      }
+    ]
+  },
+  "attempts": [
+    {
+      "result": "ios-landscape-v106.xcresult",
+      "status": "compile-failed",
+      "reason": "Escaped quotes inside Swift interpolation in newly added diagnostic test; corrected"
+    },
+    {
+      "result": "ios-landscape-v106-r2.xcresult",
+      "status": "passed"
+    }
+  ],
+  "limits": [
+    "No official appearance parity or physical-device conclusion",
+    "Diagnostic sample uses existing synthetic history, not new network generation",
+    "Full mixed-content/dynamic-type landscape acceptance remains open",
+    "Prior v105 faulty screenshots retained; not rewritten"
+  ],
+  "next_action": "Dynamic-type reflow and mixed content rotation validation",
+  "sources": [
+    {
+      "file": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "0a57da9f07a378bc368fc775d5ba0ab6a64e69ddf0e5e1d4a92744733a745a2f"
+    },
+    {
+      "file": "implementation/ios/Sources/AppDelegate.swift",
+      "sha256": "e8fd3ca03ff3245eda0bef6821f7b532f12016dc59b44384bc8635c2b86f5c5e"
+    }
+  ]
+}

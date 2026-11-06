@@ -1,0 +1,52 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "evidence_type": "artifact observation plus independent fixture replay",
+  "artifact": {
+    "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+    "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55"
+  },
+  "contracts": [
+    {
+      "symbol": "function YR(",
+      "character_offset": 4798529,
+      "excerpt": "function YR(e){return e?.startsWith(`g-p-`)===!0}function XR(e){return typeof e?.gizmo?.id==`string`&&typeof e.gizmo.display?.name==`string`&&(e.gizmo.sharing==null||Array.isArray(e.gizmo.sharing.subjects))}function wUr(e){return XR(e)&&YR(e.gizmo.id)&&(!(`first_party_project_type`in e.gizmo)||e.gizmo.first_party_project_type==null)&&e.gizmo.gizmo_snorlax_type==null&&e.gizmo.share_recipient===`private`&&e.hasSharingSubjects!==!0&&(e.gizmo.sharing?.subjects?.length??0)===0}function TUr(){return(TUr=t((()=>{})))()}function EUr(e,t,n){let r=t.structure===`personal`?t.account_user_id.split(`__`)[0]:t.account_user_id,i=e.gizmo.author.user_id===r,a=t=>t===r||e.gizmo.workspace_id==null&&t===n,o=a(e.gizmo.author.user_id)||e.gizmo.sharing?.subjects.some(e=>e.type===1&&a(e.user_id))===!0;return{isOwner:i,isInvited:!i&&!o}}function DUr(e,t){return t===`allowed`&&e===!0}function OUr(e,t,n){return n===`allowed`&&e===!0&&t==null}function kUr(e){return e===`project_v2`?`project-only`:`open-default`}f"
+    },
+    {
+      "symbol": "function XR(",
+      "character_offset": 4798578,
+      "excerpt": "function XR(e){return typeof e?.gizmo?.id==`string`&&typeof e.gizmo.display?.name==`string`&&(e.gizmo.sharing==null||Array.isArray(e.gizmo.sharing.subjects))}function wUr(e){return XR(e)&&YR(e.gizmo.id)&&(!(`first_party_project_type`in e.gizmo)||e.gizmo.first_party_project_type==null)&&e.gizmo.gizmo_snorlax_type==null&&e.gizmo.share_recipient===`private`&&e.hasSharingSubjects!==!0&&(e.gizmo.sharing?.subjects?.length??0)===0}function TUr(){return(TUr=t((()=>{})))()}function EUr(e,t,n){let r=t.structure===`personal`?t.account_user_id.split(`__`)[0]:t.account_user_id,i=e.gizmo.author.user_id===r,a=t=>t===r||e.gizmo.workspace_id==null&&t===n,o=a(e.gizmo.author.user_id)||e.gizmo.sharing?.subjects.some(e=>e.type===1&&a(e.user_id))===!0;return{isOwner:i,isInvited:!i&&!o}}function DUr(e,t){return t===`allowed`&&e===!0}function OUr(e,t,n){return n===`allowed`&&e===!0&&t==null}function kUr(e){return e===`project_v2`?`project-only`:`open-default`}function AUr(e,t){return e===`project-only`||t!=nu"
+    },
+    {
+      "symbol": "async function $R(",
+      "character_offset": 4800921,
+      "excerpt": "async function $R(e){let t=await sv.safeGet(`/gizmos/{gizmo_id_or_short_url}`,{expectedErrorStatuses:[401,403,404,423],parameters:{path:{gizmo_id_or_short_url:e},query:{include_file_limits:!0}}});if(!XR(t)||!zUr.safeParse(t.files).success)throw Error(`Invalid ChatGPT project response`);return t}var zUr;function BUr(){return(BUr=t((()=>{q(),QR(),wS(),zUr=J(Ha())})))()}function VUr(e){return WUr(e)||!(e instanceof v_)||e.errorKind===`network`||![400,401,403,404,413,415,422].includes(e.status)}function HUr(e){return WUr(e)?`limit`:e instanceof v_&&[401,403,404].includes(e.status)?`access`:VUr(e)?`failed`:`rejected`}function UUr(e,t){let n=e instanceof ez&&e.project!=null?t.formatMessage({id:`chatgptConversations.projectSources.partialUploadError`,defaultMessage:`Some sources could not be added`,description:`Error toast title when some uploaded files were added to a ChatGPT project but other files failed to upload or process`}):t.formatMessage({id:`chatgptConversations.sidebar.projectSetti"
+    },
+    {
+      "symbol": "async function RGr(",
+      "character_offset": 4852278,
+      "excerpt": "async function RGr({cursor:e=null,limit:t=5,ownedOnly:n=!0,projectId:r,signal:i}){let a=await sv.safeGet(`/gizmos/{gizmo_id}/conversations`,{parameters:{path:{gizmo_id:r},query:{cursor:e,limit:t,owned_only:n}},signal:i}),o=a.items?.filter(nz)??[];return J_(r,o.map(e=>e.id)),{cursor:a.cursor,items:o}}function zGr(e,t){let n=VGr.get(e)??new Map;VGr.set(e,n);let r=n.get(t)??new Set;n.set(t,r);let i=Cs();r.add(i.promise);let a={queryKey:[az,t]};return e.cancelQueries(a),()=>{r.delete(i.promise),i.resolve(void 0),r.size===0&&(n.delete(t),e.cancelQueries(a),e.invalidateQueries(a))}}var az,BGr,VGr;function HGr(){return(HGr=t((()=>{xa(),wS(),rz(),ui(),FGr(),Z_(),az=`chatgpt-project-conversations`,BGr=5,VGr=new WeakMap})))()}function UGr(e,{projectType:t,projectId:n,lockedProjectId:r}={}){return e?.includes(`LOCKED_CHATS`)===!0||t===`locked_chats`||n!=null&&n===r}function WGr(){return(WGr=t((()=>{})))()}function GGr(e,t,n){return xL(n)&&e.get(kP,t)?e.get(VP,t):n}function KGr(e,t){let n=e.get(kv"
+    },
+    {
+      "symbol": "async function yKr(",
+      "character_offset": 4860088,
+      "excerpt": "async function yKr({conversationsPerProject:e=0,cursor:t=null,limit:n=20,ownedOnly:r=!0,signal:i}={}){let a=await sv.safeGet(`/gizmos/snorlax/sidebar`,{signal:i,parameters:{query:{conversations_per_gizmo:e,cursor:t,limit:n,owned_only:r}}});return{cursor:a.cursor,items:a.items.filter(bKr)}}function bKr(e){return typeof e==`object`&&!!e&&`conversations`in e&&XR(e.gizmo)}var xKr,SKr,lz;function CKr(){return(CKr=t((()=>{xKr=n(Fn(),1),Z(),wS(),Lk(),Y(),Yr(),ui(),HGr(),QR(),sz(),yc(),SKr=20,lz=Ra(V,({scope:e})=>({queryFn:async({signal:t})=>{let n=e.get(Ik),r={pageParams:[null],pages:[await vKr(e,t)]};return t.throwIfAborted(),KGr(e,{flatConversationHistory:!1,projects:r}),n!=null&&Q(async()=>{let{retireMissingLinkedProjects:e}=await import(`./retirement-bf9166866945.js`);return{retireMissingLinkedProjects:e}},__vite__mapDeps([387,388,1,351,352]),import.meta.url).then(({retireMissingLinkedProjects:i})=>(t.throwIfAborted(),i(e,n,new Set(r.pages.flatMap(e=>e.items.map(e=>e.gizmo.gizmo.id))))))."
+    }
+  ],
+  "accepted": [
+    "Pinned and unpinned synthetic projects render in separate original sidebar regions",
+    "Click pinned project expands original list and renders explicit No chats for empty synthetic membership",
+    "Project tests: identity consistency, mutation isolation, opt-in, query/write/foreign-scope rejection",
+    "Existing search regression passes"
+  ],
+  "correction": "v114 pins finding covered pinned projects only. Full project list independently uses /gizmos/snorlax/sidebar. Clicking project row expands rather than navigates.",
+  "limitations": [
+    "Expansion persistence rejects sidebar-project-expanded-v1-chatgpt:g-p-rea-synthetic-001; cold recovery unaccepted",
+    "Project detail endpoint only fixture-unit tested for first project; no UI detail acceptance",
+    "Second project detail unsupported",
+    "No project creation/mutation or chat membership writes yet",
+    "No official service requests or claims about server internals"
+  ],
+  "runtime": "desktop-web-v115-final.json",
+  "screenshot": "output/playwright/desktop-web-v115-final.png"
+}

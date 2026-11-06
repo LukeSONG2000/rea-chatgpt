@@ -1,0 +1,54 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "owner": "ExpandableAssistantSummaryItem consumed by CodexRemoteFileChangeDisclosurePart",
+  "style_body": "0x19c2298",
+  "style_types": [
+    "0x7e12588",
+    "0x7e12598",
+    "0x7e125a0",
+    "0x7e125b0"
+  ],
+  "structure": [
+    "leading VStack spacing 0",
+    "plain Button with Rectangle contentShape",
+    "label plus trailing chevron",
+    "conditional expanded content"
+  ],
+  "spacing": "4 at 0x19c2668",
+  "chevron": "13 relativeTo footnote; tertiary foreground; no fade when expanded (v319/v320)",
+  "action": {
+    "closure": "0x1c20bb4",
+    "withAnimation_nil": "0x1c20be8 -> 0x1c20bf0",
+    "binding_toggle": "0x1c20ef0..0x1c20f20"
+  },
+  "integration": "Scoped custom DisclosureGroupStyle on file change only; full header Button owns hit region; restored center-tap regression",
+  "independent_adaptations": [
+    "System chevron glyph until CodexDisclosureChevron keyframes are recovered",
+    "Existing synthetic label/code content",
+    "Accessibility test identifier"
+  ],
+  "unknown": [
+    "CodexDisclosureChevron keyframe timing/path",
+    "Minimum row-height consumer value",
+    "Official code-block controls and layout",
+    "Android equivalent consumer"
+  ],
+  "validation": {
+    "test": "v341b testRemoteTaskScopeAndReturn passed 1/0",
+    "coverage": [
+      "center header tap expand/collapse",
+      "independent file/activity expansion",
+      "host switch isolation",
+      "task list and return"
+    ],
+    "visual": "settled screenshot inspected; complete diff and caption; no observed clipping",
+    "preview_pid": 72283,
+    "phone": "not updated",
+    "external_display": "not reverified",
+    "retention": "no stale targets"
+  }
+}

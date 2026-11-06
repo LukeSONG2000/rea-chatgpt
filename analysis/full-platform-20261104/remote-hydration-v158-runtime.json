@@ -1,0 +1,27 @@
+{
+  "status": "failed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v155-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "actual packaged renderer state receives guarded Remote history through IPC"
+  ],
+  "limits": [
+    "Main-process IPC acceptance from original renderer context, not a visible official Remote control workflow",
+    "Fixture model; no live Zhipu calls in this test"
+  ],
+  "originalManager": {
+    "status": "failed",
+    "error": "this.params.savedReadState.has is not a function",
+    "stack": "TypeError: this.params.savedReadState.has is not a function\n    at Etn.getThreadHasUnreadTurn (https://offline.invalid/app-initial-feb30b196d11.js:1792:41188)\n    at Etn.upsertRecentConversationState (https://offline.invalid/app-initial-feb30b196d11.js:1792:68083)\n    at upsertHydratedConversationState (https://offline.invalid/app-initial-feb30b196d11.js:1792:61112)\n    at utn (https://offline.invalid/app-initial-feb30b196d11.js:1792:9808)\n    at async Etn.hydrateThreads (https://offline.invalid/app-initial-feb30b196d11.js:1792:59489)\n    at async probeOriginalRemoteHydration (eval at <anonymous> (eval at evaluate (:290:30)), <anonymous>:17:2)\n    at async <anonymous>:316:30",
+    "calls": [
+      [
+        "request",
+        "thread/read"
+      ],
+      [
+        "request",
+        "thread/read"
+      ]
+    ]
+  },
+  "error": "AssertionError [ERR_ASSERTION]: {\"status\":\"failed\",\"error\":\"this.params.savedReadState.has is not a function\",\"stack\":\"TypeError: this.params.savedReadState.has is not a function\\n    at Etn.getThreadHasUnreadTurn (https://offline.invalid/app-initial-feb30b196d11.js:1792:41188)\\n    at Etn.upsertRecentConversationState (https://offline.invalid/app-initial-feb30b196d11.js:1792:68083)\\n    at upsertHydratedConversationState (https://offline.invalid/app-initial-feb30b196d11.js:1792:61112)\\n    at utn (https://offline.invalid/app-initial-feb30b196d11.js:1792:9808)\\n    at async Etn.hydrateThreads (https://offline.invalid/app-initial-feb30b196d11.js:1792:59489)\\n    at async probeOriginalRemoteHydration (eval at <anonymous> (eval at evaluate (:290:30)), <anonymous>:17:2)\\n    at async <anonymous>:316:30\",\"calls\":[[\"request\",\"thread/read\"],[\"request\",\"thread/read\"]]}\n+ actual - expected\n\n+ 'failed'\n- 'constructed'\n"
+}

@@ -1,0 +1,40 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-native-host-controlled-UI-replay",
+  "changes": [
+    "Platform-neutral alias for shared two-table fixture and deterministic earlier-history fixture",
+    "iOS test verifies first table at right, second at left, offscreen return and conversation round-trip independently"
+  ],
+  "validation": {
+    "native_test": "testTwoTablesRestoreIndependently",
+    "passed": 1,
+    "failed": 0,
+    "evidence": "ios-tables-v75-ui-v3.summary.json",
+    "screenshots": "ios-tables-v75-ui-v3-attachments/manifest.json",
+    "visual_review": "Navigated screenshot confirms distinct first/right and second/left table positions for current synthetic request",
+    "tolerance_points": 4
+  },
+  "prior_attempts": {
+    "v1": "Looked for tall-history user row after it had left visible collection",
+    "v2": "Fixed history completion wait, then failed locating user row above keyboard-constrained two-table viewport",
+    "v3": "Locates unique current fixture header, then exact associated completion status; passed"
+  },
+  "limits": [
+    "No UICollectionView internal reuse/disposal instrumentation; offscreen geometry and return behavior only",
+    "No duplicate-header native scenario, arbitrary revisions, process restart or physical iPhone acceptance",
+    "Independent renderer geometry; no official visual parity implied"
+  ],
+  "cleanup": {
+    "host_terminated": true,
+    "simulator_pairing_removed": true,
+    "owned_server_stopped": true,
+    "private_pairing_removed": true
+  },
+  "sources": {
+    "implementation/harness/fixture_worker.py": "82cd27f871a696e40d14aa2679e141f3bdb4dbd2f43c792de7e591767a8ad169",
+    "implementation/ios/UITests/HostInteractionTests.swift": "04966edd5ead93cb889b14627d591838839d58c2a6c7af4cdef43aec22177b46",
+    "implementation/ios/Sources/NativeConversationHost.swift": "65e4f9102d179b5974742adf5487804321f09430ae2bb611a9b47f107c8f524b",
+    "implementation/ios/Sources/DraftStore.swift": "29b58d52763c9583aa9ab60b0a67979b41b52c9f99f22032069c2412bcc69da1"
+  }
+}

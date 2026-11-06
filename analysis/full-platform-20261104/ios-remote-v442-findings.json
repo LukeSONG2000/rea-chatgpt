@@ -1,0 +1,122 @@
+{
+  "schema": "rea-ios-component-findings-v1",
+  "batch": "v442",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "kind": "blocking_source_research",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "observations": [
+    {
+      "type": "workspace_source_observation",
+      "conclusion": "Chat/Work independent debug title removed; device update not accepted",
+      "location": "NativeConversationHost.viewDidLoad/render; testNoDebugTitleNavigation"
+    },
+    {
+      "type": "workspace_source_observation",
+      "conclusion": "Thread bottom bar only mounts request-bound userInputBar; ordinary Remote composer is absent",
+      "location": "RemoteThreadFixturePage.body/userInputBar"
+    },
+    {
+      "type": "shipped_artifact_static_observation",
+      "conclusion": "Separate Remote composer contains prompt/focus/selection, sending/reconnecting/running-turn, canSubmit and action inputs",
+      "location": "0x95ac77c; 0x19910e0 -> 0x197d0a8",
+      "limit": "field names do not establish transition semantics"
+    },
+    {
+      "type": "shipped_artifact_static_observation",
+      "conclusion": "UIViewRepresentable makeUIView constructs MessageInputUITextView",
+      "location": "0x7e20a40; 0x1995c7c -> 0x1993ef0 -> 0x60b4d80; objc_allocWithZone 0x1993f10",
+      "class_descriptor": "0x96cb86c",
+      "name_address": "0x82375a0",
+      "name": "MessageInputUITextView"
+    },
+    {
+      "type": "shipped_artifact_static_observation",
+      "conclusion": "Persistent field row uses frame, opacity, hit testing, accessibility visibility and conditional overlay",
+      "location": "0x1992ab0..0x1992d24; overlay 0x1ced4d4",
+      "limit": "complete lifecycle, focus and IME behavior not established"
+    }
+  ],
+  "next_integration": "ordinary Remote composer -> thread bottom bar -> scoped service action adapter, alongside existing message components",
+  "next_evidence": [
+    "caller of thunk 0x1cea28c -> 0x1a2564c",
+    "composer construction in bottom-bars owner and handleMessageInputAction mapping",
+    "compact/expanded parameters and visibility predicates"
+  ],
+  "limits": [
+    "No new UI implementation in this batch",
+    "No proof of complete bottom-bar composer mounting from metadata references alone",
+    "No native class code reuse claimed",
+    "No official backend behavior or Android equivalence established"
+  ],
+  "validation": {
+    "evidence_json_parse": "passed",
+    "native_descriptor_name": "passed",
+    "current_source_navigation_and_bar_check": "passed",
+    "typecheck": "not_run_no_code_change",
+    "runtime": "not_run",
+    "device_install": "not_run",
+    "existing_processes": "PID  ELAPSED COMMAND\n87483 08:19:14 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/53A08EF1-C69E-4155-9413-3795911898F0/REAChatGPTHost.app/REAChatGPTHost --offline-fixture\n97181 06:34:41 /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python implementation/ios/test-ui.py --device 71BCC1D2-0ABD-4F11-BB67-37818435B176 --only-test testRemoteTaskScopeAndReturn --result analysis/full-platform-20261104/ios-remote-v385.xcresult\n97197 06:34:40 /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -runFirstLaunch",
+    "blocker": "existing Xcode first-launch installer pending; no duplicate runner, restart or authorization bypass"
+  },
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "00cbff7aa340fcdc39b04512e15fa34ac96306660fcc46d5f703d07cf48acf83"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "5cb150df62f564bbffe8022e7df8f5cd8e0c103198c13584fcce2b3a07b71247"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "f164956c41973be40c4dcac6fe9a13bd94489fb590b704f60e172c1d1c4ebbc8"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "273e704d3fbdc649f748685277f9c53b93eb19c0da55cbb49fafe9ee2761ed4f"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-bottom-types.json",
+      "sha256": "76868ab71d22fa0f25b49bb8531c0a7a780e0c8aedfb9ca6071b35058b4f15fa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-composer-metadata.json",
+      "sha256": "f4b373cef5b32ca782d7f9c37f54ca6ddbc3bc1fe0c28e280bfaeb6dab0d0e6d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-composer-owner-refs.json",
+      "sha256": "7efa3ba64761a8cb66c53252079fec023cec9e261cb2ac8854635af3f1862b0d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-composer-refs.json",
+      "sha256": "ff499bcd8559bc46b8e78b4a756c82865baaded898cce938a9fc157abf921efa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-composer-witnesses.json",
+      "sha256": "5a1353fcf9942790cc76d6d85c4734b1bb4c35e36628601e6b7d82dcffb5fe0b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-field-bodies-and-factory.json",
+      "sha256": "74a043ee928ba54a6d5a15f818de1d13b8ff87dcf94d199d07cbeb76fc4c7635"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-field-lifecycle.json",
+      "sha256": "5282761f4d3f210b37fad5abb877b229098d841c66d9859d0d64aef91555df6a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-following-bars.json",
+      "sha256": "3cf9179d4b35f48e2369189e282619ae608f21e263dec83812d81a73f3d6841a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-owner-and-native-class.json",
+      "sha256": "06e48bfd70553221e4a99728e3243e2f1d37dba02e18729067e49c3cfbeca25f"
+    }
+  ]
+}

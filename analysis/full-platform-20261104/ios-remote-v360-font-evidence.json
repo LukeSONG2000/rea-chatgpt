@@ -1,0 +1,26 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "artifact_static",
+  "command_consumer": "0x1a40af0..0x1a40b28",
+  "literal_prefix": "$ ",
+  "font": {
+    "size": 14,
+    "weight": "regular",
+    "design": "monospaced",
+    "size_store": "0x1a411c0",
+    "weight_getter": "0x1a411bc",
+    "design_binding": "0xaad3800",
+    "converter": "0x74e2ee8",
+    "system_constructor": "0x74eb874 -> 0x7c49c84",
+    "view_font": "0x6ec6b44 -> 0x7c4abd8"
+  },
+  "color": "ChatGPT/text/primary via 0x1a40b14",
+  "limitations": [
+    "Output parsed text and its typography are separate unresolved consumers",
+    "Line wrapping and accessibility-size behavior not accepted",
+    "No Android equivalence asserted"
+  ]
+}

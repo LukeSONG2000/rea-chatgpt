@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {createFixtureHost} from './desktop-fixture-services.mjs';
+import {createHistoryStore} from './desktop-history-store.cjs';
+import {reconcileDrafts,KEY} from './desktop-draft-lifecycle.cjs';
+globalThis.location={origin:'https://offline.invalid'};
+const fixture=JSON.parse(fs.readFileSync(new URL('../desktop-official-20261104/history-fixture-replay.json',import.meta.url))).converted_fixture;
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'rea-archive-')),id='offline-fixture-conversation-002',hostId='chatgpt:offline-fixture-account:offline-fixture-user';
+try{
+ const store=createHistoryStore(dir);globalThis.__reaSaveHistories=h=>store.save(h);
+ const make=restoredHistories=>createFixtureHost({Wst:class{}},{scenario:'synthetic-account',historyFixture:fixture,restoredHistories});
+ const first=make(),services=first.host.services;
+ const patch=(svc,value)=>svc.httpFetch.fetch('archive',{method:'PATCH',url:'/conversation/'+id,body:JSON.stringify({is_archived:value})});
+ await services.localThreadCatalog.setSourceEnabled({kind:'chatgpt',accountId:'offline-fixture-account'},true);
+ await patch(services,true);const saved=store.load(),graph=JSON.stringify(saved.find(h=>h.conversation_id===id).mapping);
+ const notifications=first.calls.filter(c=>c.operation==='catalog.history-committed').length;
+ await patch(services,true);assert.equal(first.calls.filter(c=>c.operation==='catalog.history-committed').length,notifications);
+ assert.equal(services.localThreadCatalog.readPage({hostId,limit:20}).entries.length,1);
+ const draftKey=JSON.stringify(['offline-fixture-user','offline-fixture-account',id]);
+ assert.equal(reconcileDrafts({[KEY]:{[draftKey]:{prompt:'keep'}}},saved).removed.length,0);
+ const reloaded=make(store.load()).host.services;await reloaded.localThreadCatalog.setSourceEnabled({kind:'chatgpt',accountId:'offline-fixture-account'},true);
+ assert.equal(reloaded.localThreadCatalog.readPage({hostId,limit:20}).entries.length,1);
+ assert.equal((await (await reloaded.httpFetch.fetch('history',{method:'GET',url:'/conversation/'+id})).response.json()).is_archived,true);
+ await patch(reloaded,false);assert.equal(reloaded.localThreadCatalog.readPage({hostId,limit:20}).entries.length,2);
+ assert.equal(JSON.stringify(store.load().find(h=>h.conversation_id===id).mapping),graph);
+ await assert.rejects(reloaded.httpFetch.fetch('bad',{method:'PATCH',url:'/conversation/'+id,body:'{"is_archived":true,"title":"bad"}'}),/Unsupported/);
+ console.log('PASS: archive/undo, unchanged message graph and draft membership, repeat archive idempotence, cold archived visibility, unsupported patch rejection');
+}finally{delete globalThis.__reaSaveHistories;fs.rmSync(dir,{recursive:true,force:true})}

@@ -1,0 +1,39 @@
+{
+  "status": "partial",
+  "classification": "independent implementation and controlled vendor test",
+  "stream": "zhipu-stream-v1.json",
+  "client_cancel": "zhipu-cancel-v1.json",
+  "tests": {
+    "sse_framing": 5,
+    "identity_state": 4,
+    "result": "passed"
+  },
+  "sources": [
+    {
+      "path": "implementation/harness/message_state.py",
+      "sha256": "d66a3925c1bb13af18281107690741e6b9275bd1e0b818d377a6d5ff6956ef61"
+    },
+    {
+      "path": "implementation/harness/test_message_state.py",
+      "sha256": "a68ce4c3306b82bf97134b182a6154491453c8ceb37dc00dace74c2ecc6e6f44"
+    },
+    {
+      "path": "implementation/harness/test_zhipu_probe.py",
+      "sha256": "8b6126c4847e96878ed379d44a35dfab3532e406558af7b7a8d7a1d2e4aaa122"
+    },
+    {
+      "path": "implementation/harness/zhipu_probe.py",
+      "sha256": "6c4038ebc4a15f9d954c61a8c7d1ac5234723f3b672ed6bec2baef2e3e20213c"
+    }
+  ],
+  "unaccepted": [
+    "server cancellation",
+    "timeout and HTTP error integration",
+    "frontend integration",
+    "persistent message history",
+    "device pairing",
+    "Remote",
+    "full Responses event semantics"
+  ],
+  "note": "Unknown vendor events remain unknown. One text delta followed by completion proves SSE delivery, not token granularity."
+}

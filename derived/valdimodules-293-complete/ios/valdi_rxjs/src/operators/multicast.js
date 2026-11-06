@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.multicast=void 0;const e=require("../observable/ConnectableObservable"),t=require("../util/isFunction"),n=require("./connect");function o(o,c){const r=(0,t.isFunction)(o)?o:()=>o;return(0,t.isFunction)(c)?(0,n.connect)(c,{connector:r}):t=>new e.ConnectableObservable(t,r)}exports.multicast=o;

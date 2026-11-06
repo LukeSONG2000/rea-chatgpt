@@ -1,0 +1,33 @@
+{
+  "status": "partial",
+  "records": [
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/register-app-actions-4eec7721f5dc.js",
+      "sha256": "0f567257883a40f85c2e453390509b682aff416de3c0bd14647c8a32bdfda173",
+      "byte_start": 15820,
+      "byte_end": 15986,
+      "source": "function kn(){return(kn=e((()=>{u(),v(),S(),Dn=l({type:n(`windows.show_home`),windowId:F}),On=z({schema:Dn,run:()=>{f.dispatchHostMessage({type:`new-chat`})}})})))()}",
+      "authority": "official-packaged-static-observation"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_start": 352674,
+      "byte_end": 353199,
+      "source": "function $B(){let e=(0,tV.c)(19),t=K(f),n=tn(),r=Us(),i;e[0]===r?i=e[1]:(i=()=>r({selectChat:!0}),e[0]=r,e[1]=i);let a;e[2]===Symbol.for(`react.memo_cache_sentinel`)?(a={priority:`fallback`},e[2]=a):a=e[2],yd(`newTask`,i,a);let o,s;e[3]===r?(o=e[4],s=e[5]):(o=e=>{if(e.chatGptPrefill==null){r();return}let t=e.chatGptPrefill.systemHints.filter(as);r(t.length===0?void 0:{...e.chatGptPrefill.text.length===0?{}:{prefillPrompt:e.chatGptPrefill.text},prefillChatGptSystemHints:t})},s=[r],e[3]=r,e[4]=o,e[5]=s),m(`new-chat`,o,s);",
+      "authority": "official-packaged-static-observation"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "byte_start": 7210839,
+      "byte_end": 7212352,
+      "source": "function N4a(){let e=(0,L4a.c)(3),t=bs(V),{previewNavigationState:n}=(0,R4a.useContext)(j4a),r;return e[0]!==n||e[1]!==t?(r=e=>F4a(t,n==null?e:{...e,...n}),e[0]=n,e[1]=t,e[2]=r):r=e[2],r}function P4a(e){let t=e.get(Qg);return e.get(JV)===`work`&&t!=null&&lx(t,`809615575`).get(`default_new_chats_to_work`,!1)}function F4a(e,t){let{activeProject:n,prefillComposerMode:r=null,startInSidebar:i,replace:a,onNavigate:o,selectChat:s,freshDraft:c,...l}=t??{},u=l.sitePreviewDraft==null?vx({entrypoint:`home`}):$Vt(l.sitePreviewDraft),d=e.get(Ix,u),f=y4a(e,d),p=!c&&l.aeonDraft==null&&f?.location.pathname===`/`?f.location.state?.focusComposerNonce:Date.now(),m={...l,...n===void 0?{}:{project:NEa(n)},focusComposerNonce:p},h=_ht(),g={replace:a,state:m},_=h?null:e.get(Dk).prepareNavigation(`/`,g);(h||_!=null)&&(o?.(),t?.codexAppMode==null?(t?.prefillChatGptSystemHints?.length??0)>0?ZBt(e,`chat`):P4a(e)&&qBt(e,`work`):ZBt(e,t.codexAppMode),p4a(e),p!=null&&Mda(e,p,r),!h&&(e.get(qL).refetch({cancelRefetch:!1}),n!==void 0&&Pae(e.get(Dk).pathname)&&(WQ(e,n),delete m.project),cEa(e,e.get(cD)),(c||e.get(Fx,d)!=null)&&XHt(e,{clientNewThreadId:d,draftThreadLocationId:u}),(c||m.prefillChatGptSystemHints!=null)&&(m.initialChatGptConversationId=X2a(e,m.prefillChatGptSystemHints??[])),s?I4a(e,m,e=>(g.state=e,_?.())):_?.()))}function I4a(e,t,n){nki(e,{kind:`chat`,clientThreadId:e.get(Ix,t?.sitePreviewDraft==null?vx({entrypoint:`home`}):$Vt(t.sitePreviewDraft)),routePath:`/`,state:t??{chatGptProjectId:null},navigate:n})}",
+      "authority": "official-packaged-static-observation"
+    }
+  ],
+  "limits": [
+    "Static mode selection paths, not proof of which handler won at runtime",
+    "selectChat branches differ; mode state and capability inputs remain to be observed"
+  ]
+}

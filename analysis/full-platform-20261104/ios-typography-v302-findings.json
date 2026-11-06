@@ -1,0 +1,25 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static native call sites and ObjC metadata",
+  "confirmed": {
+    "editor_class": "ChatGPTMessageInputUI.MessageInputUITextView",
+    "class_address": "0xad0d820",
+    "initialization": "0x608cb94; adjustsFontForContentSizeCategory call at 0x608d1b8",
+    "bridge_creation": "0x4d729f0 calls editor initializer at 0x4d72ae4",
+    "font_assignment": "0x4d74284 setFont: with prior current-font comparison",
+    "attributes": "0x4f6fa60 tail-calls 0x6080c68; this calls 0x6080da8",
+    "font_resolution": "0x6080da8 calls 0x74e307c at 0x6080e54; resolver contains preferredFontForTextStyle:compatibleWithTraitCollection: at 0x74e318c and size/weight alternatives",
+    "conditional_override": "0x4d741e8 branch reaches 0x6089020, which handles fontDescriptor and scaled line metrics; branch meaning not established"
+  },
+  "remaining": [
+    "Text-style and weight configuration reaching 0x74e307c from 0x6080da8 not decoded",
+    "Trait/conditional override selection not proven",
+    "Sidebar label typography not yet traced"
+  ],
+  "integration_decision": "Do not replace editor title3 using settings-theme evidence. Next trace exact font configuration and resolver branch, then update editor and placeholder together with native Dynamic Type.",
+  "runtime_changes": false,
+  "phone_changes": false
+}

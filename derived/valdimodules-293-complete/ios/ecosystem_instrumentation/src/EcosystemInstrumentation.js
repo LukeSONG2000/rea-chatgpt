@@ -1,0 +1,1 @@
+"use strict";function e(e,t,s){void 0!==e?.sendInstrument&&e.sendInstrument(JSON.stringify({type:"event",label:t,payload:s}))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.sendEcosystemEvent=void 0,exports.sendEcosystemEvent=e;

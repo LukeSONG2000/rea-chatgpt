@@ -1,0 +1,492 @@
+{
+  "status": "partial",
+  "authority": "static official desktop artifact observations; not runtime UI acceptance",
+  "officialProduct": {
+    "name": "openai-codex-electron",
+    "productName": "Codex",
+    "author": "OpenAI",
+    "version": "26.1021.31345",
+    "description": "Codex",
+    "main": ".vite/build/early-bootstrap.js",
+    "scripts": {
+      "compile": "node ./scripts/ensure-owl-electron-types.mjs && node ../cli/run-package-typescript.mjs --build",
+      "tsc": "node ./scripts/ensure-owl-electron-types.mjs && node ../cli/run-package-typescript.mjs",
+      "dev": "pnpm --dir .. run app",
+      "prepare:owl": "pnpm run owl:prepare-runtime && pnpm run desktop:host",
+      "owl": "pnpm run prepare:owl && pnpm run owl:run",
+      "owl:prepare-runtime": "node ./scripts/prepare-dev.mjs --native-modules",
+      "owl:run": "cross-env NODE_ENV=development node ./scripts/owl-shell.mjs run -- --use-mock-keychain",
+      "desktop:host": "cross-env NODE_ENV=development pnpm run build:dev-vite",
+      "build": "node -e \"require('node:fs').rmSync('out',{force:true,recursive:true})\" && cross-env PNPM_YES=true pnpm run forge:make",
+      "build:dev-vite": "node ./scripts/build-dev-vite.mjs",
+      "forge:make": "node ../app-server-types/generate-types.mjs && pnpm run rebuild:native-modules && electron-forge make",
+      "forge:make:owl-shell": "node ../app-server-types/generate-types.mjs && electron-forge make",
+      "forge:publish": "node ../app-server-types/generate-types.mjs && pnpm run rebuild:native-modules && electron-forge publish",
+      "owl:ensure": "node ./scripts/owl-shell.mjs ensure",
+      "package": "node ./scripts/package.mjs",
+      "format": "oxfmt --check",
+      "format:fix": "oxfmt --write",
+      "lint": "node ./scripts/ensure-owl-electron-types.mjs && node ../scripts/run-package-oxlint.mjs --include-top-level-ts-scripts",
+      "lint:fix": "node ./scripts/ensure-owl-electron-types.mjs && node ../scripts/run-package-oxlint.mjs --include-top-level-ts-scripts --fix",
+      "metadata-path": "pnpm exec tsx ./scripts/dev-metadata.ts path",
+      "memory:analyze-snapshot": "node ./scripts/analyze-heap-snapshot.mjs",
+      "test": "vitest run",
+      "test:quiet": "vitest run --silent --reporter=dot",
+      "e2e:computer-use-native-pipe": "node --import tsx ./scripts/computer-use-native-pipe-e2e.mjs",
+      "playwright:agent:repl": "node --import tsx ./scripts/playwright-electron-agent-cdp.mjs",
+      "devtools:reset": "node -e \"const fs=require('node:fs');const os=require('node:os');const path=require('node:path');for(const target of ['extensions/fmkadmapgofadopljbjfkapdkoienihi','Service Worker','Code Cache'])fs.rmSync(path.join(os.homedir(),'Library','Application Support','Codex',target),{force:true,recursive:true})\"",
+      "rebuild:native-modules": "node ./scripts/owl-shell.mjs prepare-native-modules"
+    },
+    "dependencies": {
+      "@oai/asb-rpc-client": "file:../../app_server_backend_client",
+      "@oai/sa-server-client": "file:../../../lib/applied/clients/js/oai_js_sa_server_client",
+      "@tanstack/query-core": "^5.101.2",
+      "@opentelemetry/api": "1.9.0",
+      "@opentelemetry/core": "2.2.0",
+      "@opentelemetry/otlp-transformer": "0.208.0",
+      "@opentelemetry/resources": "2.2.0",
+      "@opentelemetry/sdk-trace-base": "2.2.0",
+      "@parcel/watcher": "2.5.6",
+      "@sentry/core": "10.29.0",
+      "@sentry/electron": "^7.5.0",
+      "@sentry/node": "10.29.0",
+      "@worklouder/device-kit-oai": "file:../vendor/oai-js-registry/worklouder/device-kit-oai/0.2.1/package",
+      "@worklouder/wl-device-kit": "file:../vendor/oai-js-registry/worklouder/wl-device-kit/0.2.2/package",
+      "app-server-manager": "workspace:*",
+      "app-server-types": "workspace:*",
+      "better-sqlite3": "^12.11.1",
+      "browser-api": "file:../../../lib/oai_browser_use/browser-api",
+      "browser-backend-common": "link:../../../lib/oai_browser_use/browser-backend-common",
+      "browser-common": "workspace:*",
+      "bufferutil": "^4.0.1",
+      "capnweb": "^0.11.1",
+      "commands": "workspace:*",
+      "electron-context-menu": "^4.1.2",
+      "external-agent-migration": "workspace:*",
+      "extract-zip": "2.0.1",
+      "git-worker": "workspace:*",
+      "lodash": "^4.18.1",
+      "mime-types": "^2.1.35",
+      "node-pty": "^1.1.0",
+      "objc-js": "1.5.0",
+      "protocol": "workspace:*",
+      "shared-node": "workspace:*",
+      "shlex": "^3.0.0",
+      "smol-toml": "^1.7.0",
+      "ssh-config": "^5.2.0",
+      "tar": "7.5.16",
+      "tldts": "7.4.9",
+      "tslib": "^2.8.1",
+      "utf-8-validate": "^6.0.0",
+      "vscode-jsonrpc": "8.2.0",
+      "vscode-languageserver-protocol": "3.17.5",
+      "vscode-uri": "3.1.0",
+      "ws": "^8.21.1",
+      "yaml": "2.9.0",
+      "yjs": "13.6.31",
+      "zod": "^4.4.3"
+    },
+    "wireit": {
+      "desktop:prepare": {
+        "dependencies": [
+          "desktop:common",
+          "desktop:plugins",
+          "desktop:native:stage:linux"
+        ]
+      },
+      "desktop:prepare:darwin": {
+        "dependencies": [
+          "desktop:common",
+          "desktop:plugins",
+          "desktop:native:stage:darwin",
+          "desktop:native:sky",
+          "desktop:darwin-helpers"
+        ]
+      },
+      "desktop:prepare:win32": {
+        "dependencies": [
+          "desktop:common",
+          "desktop:plugins",
+          "desktop:native:stage:win32",
+          "desktop:windows-app-icons"
+        ]
+      },
+      "desktop:common": {
+        "dependencies": [
+          "desktop:types",
+          "desktop:blobs",
+          "desktop:host-build",
+          "desktop:dock-icons",
+          "desktop:tectonic",
+          "desktop:owl-modules",
+          "desktop:third-party-notices",
+          "desktop:owl-types"
+        ]
+      },
+      "desktop:types": {
+        "command": "node ./scripts/desktop-dev/prerequisite.mjs types"
+      },
+      "desktop:blobs": {
+        "command": "node --import tsx ./scripts/desktop-dev/prerequisite.mjs blobs"
+      },
+      "desktop:host-build": {
+        "command": "node ./scripts/build-dev-vite.mjs --app-server-types-prepared",
+        "dependencies": [
+          "desktop:types"
+        ],
+        "env": {
+          "NODE_ENV": "development"
+        }
+      },
+      "desktop:resources": {
+        "command": "node ./scripts/desktop-dev/publish-resources.mjs",
+        "dependencies": [
+          "desktop:cli-resources",
+          "desktop:cua-runtime"
+        ]
+      },
+      "desktop:cli-resources": {
+        "command": "tsx ./scripts/desktop-dev/resources.ts"
+      },
+      "desktop:cua-runtime": {
+        "command": "tsx ./scripts/desktop-dev/cua-runtime.ts"
+      },
+      "desktop:dock-icons": {
+        "command": "tsx ./scripts/desktop-dev/dock-icons.ts",
+        "dependencies": [
+          "desktop:blobs"
+        ]
+      },
+      "desktop:tectonic": {
+        "command": "node --use-env-proxy --import tsx ./scripts/desktop-dev/tectonic.ts",
+        "dependencies": [
+          "desktop:cli-resources",
+          "desktop:blobs"
+        ]
+      },
+      "desktop:plugins": {
+        "command": "tsx ./scripts/stage-dev-plugins.ts publish",
+        "dependencies": [
+          "desktop:plugins:prepare",
+          "desktop:resources"
+        ]
+      },
+      "desktop:plugins:prepare": {
+        "command": "tsx ./scripts/stage-dev-plugins.ts prepare",
+        "dependencies": [
+          "desktop:cli-resources",
+          "desktop:blobs"
+        ]
+      },
+      "desktop:owl:ensure": {
+        "command": "node ./scripts/owl-shell.mjs ensure"
+      },
+      "desktop:native:hid-topology-watcher": {
+        "command": "node ./scripts/owl-shell.mjs prepare-app-native hid-topology-watcher --incremental",
+        "dependencies": [
+          "desktop:owl:ensure"
+        ]
+      },
+      "desktop:native:remote-control-device-key": {
+        "command": "node ./scripts/owl-shell.mjs prepare-app-native remote-control-device-key",
+        "dependencies": [
+          "desktop:native:hid-topology-watcher"
+        ]
+      },
+      "desktop:native:browser-use-peer-authorization:if-enabled": {
+        "command": "node ./scripts/desktop-dev/run-conditional-native-build.mjs env:CODEX_BROWSER_USE_PEER_AUTHORIZATION 1 ./scripts/build-browser-use-peer-authorization-native.mjs",
+        "dependencies": [
+          "desktop:owl:ensure"
+        ]
+      },
+      "desktop:native:hid-topology-watcher:darwin": {
+        "command": "node ./scripts/owl-shell.mjs prepare-app-native hid-topology-watcher --incremental",
+        "dependencies": [
+          "desktop:native:browser-use-peer-authorization:if-enabled"
+        ]
+      },
+      "desktop:native:usb-webauthn": {
+        "command": "node ./scripts/owl-shell.mjs prepare-app-native usb-webauthn",
+        "dependencies": [
+          "desktop:native:hid-topology-watcher:darwin"
+        ]
+      },
+      "desktop:native:devicecheck:if-required": {
+        "command": "node ./scripts/desktop-dev/run-conditional-native-build.mjs arch arm64 ./scripts/build-devicecheck-native.mjs",
+        "dependencies": [
+          "desktop:native:usb-webauthn"
+        ]
+      },
+      "desktop:native:input-monitoring-permission": {
+        "command": "node ./scripts/build-input-monitoring-permission-native.mjs --incremental",
+        "dependencies": [
+          "desktop:native:devicecheck:if-required"
+        ]
+      },
+      "desktop:native:remote-control-device-key:darwin": {
+        "command": "node ./scripts/build-remote-control-device-key-native.mjs",
+        "dependencies": [
+          "desktop:native:input-monitoring-permission"
+        ]
+      },
+      "desktop:native:airpods-mute": {
+        "command": "node ./scripts/build-airpods-mute-native.mjs --incremental",
+        "dependencies": [
+          "desktop:native:remote-control-device-key:darwin"
+        ]
+      },
+      "desktop:native:sky": {
+        "command": "node ./scripts/build-sky-native.mjs",
+        "dependencies": [
+          "desktop:native:airpods-mute",
+          "desktop:blobs"
+        ]
+      },
+      "desktop:native:windows-account": {
+        "command": "node ./scripts/owl-shell.mjs prepare-app-native windows-account --incremental",
+        "dependencies": [
+          "desktop:native:remote-control-device-key"
+        ]
+      },
+      "desktop:native:computer-use-app-icons": {
+        "command": "node ./scripts/owl-shell.mjs prepare-app-native computer-use-app-icons",
+        "dependencies": [
+          "desktop:owl:ensure"
+        ]
+      },
+      "desktop:native:stage:linux": {
+        "command": "tsx ./scripts/stage-dev-native.ts",
+        "dependencies": [
+          "desktop:native:remote-control-device-key",
+          "desktop:cli-resources"
+        ]
+      },
+      "desktop:native:stage:darwin": {
+        "command": "tsx ./scripts/stage-dev-native.ts",
+        "dependencies": [
+          "desktop:native:airpods-mute",
+          "desktop:cli-resources"
+        ]
+      },
+      "desktop:native:stage:win32": {
+        "command": "tsx ./scripts/stage-dev-native.ts",
+        "dependencies": [
+          "desktop:native:windows-account",
+          "desktop:native:computer-use-app-icons",
+          "desktop:cli-resources"
+        ]
+      },
+      "desktop:owl-modules": {
+        "command": "node ./scripts/owl-shell.mjs prepare-native-modules",
+        "dependencies": [
+          "desktop:owl:ensure"
+        ]
+      },
+      "desktop:darwin-helpers": {
+        "dependencies": [
+          "desktop:launch-services-helper",
+          "desktop:dock-tile-plugin",
+          "desktop:bare-modifier-monitor",
+          "desktop:realtime-voice-wake-word",
+          "desktop:system-audio-spectrum"
+        ]
+      },
+      "desktop:launch-services-helper": {
+        "command": "node ./scripts/build-launch-services-helper.mjs"
+      },
+      "desktop:dock-tile-plugin": {
+        "command": "node ./scripts/build-dock-tile-plugin.mjs"
+      },
+      "desktop:bare-modifier-monitor": {
+        "command": "node ./scripts/build-bare-modifier-monitor.mjs"
+      },
+      "desktop:realtime-voice-wake-word": {
+        "command": "node ./scripts/build-realtime-voice-wake-word.mjs"
+      },
+      "desktop:system-audio-spectrum": {
+        "command": "node ./scripts/build-system-audio-spectrum.mjs"
+      },
+      "desktop:windows-app-icons": {
+        "command": "node ./scripts/prepare-dev.mjs --platform-helpers",
+        "dependencies": [
+          "desktop:blobs"
+        ]
+      },
+      "desktop:third-party-notices": {
+        "command": "node ./scripts/prepare-dev.mjs --notices",
+        "dependencies": [
+          "desktop:blobs"
+        ]
+      },
+      "desktop:owl-types": {
+        "command": "node ./scripts/ensure-owl-electron-types.mjs"
+      }
+    },
+    "codexBuildFlavor": "prod",
+    "codexBuildNumber": "21828",
+    "codexSparkleFeedUrl": "https://persistent.oaistatic.com/codex-app-prod/appcast.xml",
+    "codexSparklePublicKey": "mNfr1v9t63BfgDtlw4C8lRvSY6uMggIXABDOCi3tS6k="
+  },
+  "rea": {
+    "parentEvidence": "ev_104e661970015a4fdf97918ec58e9e0e171bcf2f16d45e1e4f649238bdc92ef3",
+    "viewEvidence": "ev_dfe85f5d75c79836a488e0083f5595057836c1468107e6aa448ccbc2c71ef428",
+    "selectedSources": [
+      "remote-connections-page-3db31dafd97e.js",
+      "remote-connections-settings-32edb075b364.js"
+    ],
+    "limits": [
+      "REA selected semantic graph retained at most 300 nodes per source; unknown budget reached; not full graph coverage",
+      "Exact source fragments below acquired separately with local AST parser"
+    ]
+  },
+  "evidence": [
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "symbol": "mtt",
+      "utf16Offset": 1675484,
+      "byteOffset": 1703403,
+      "lengthBytes": 51,
+      "source": "function mtt(e){return e.source===`remote-control`}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "symbol": "btt",
+      "utf16Offset": 1675907,
+      "byteOffset": 1703826,
+      "lengthBytes": 295,
+      "source": "function btt(e){return{id:e.hostId,display_name:e.displayName,kind:PY,codex_cli_command:[],terminal_command:[],env_id:e.envId,host_name:e.hostName,environment_kind:e.environmentKind,online:e.online,busy:e.busy,os:e.os,arch:e.arch,app_server_version:e.appServerVersion,last_seen_at:e.lastSeenAt}}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "symbol": "xtt",
+      "utf16Offset": 1676202,
+      "byteOffset": 1704121,
+      "lengthBytes": 183,
+      "source": "function xtt(e){return mtt(e)?btt(e):ptt(e)?{id:e.hostId,display_name:e.displayName,kind:`wsl`,codex_cli_command:[],terminal_command:[`wsl.exe`,`-d`,e.distro],distro:e.distro}:ytt(e)}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "symbol": "Jet",
+      "utf16Offset": 1674292,
+      "byteOffset": 1702211,
+      "lengthBytes": 44,
+      "source": "function Jet(e){return e===Qet||EY(e,AY)>=0}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "symbol": "EY",
+      "utf16Offset": 1670989,
+      "byteOffset": 1698908,
+      "lengthBytes": 468,
+      "source": "function EY(e,t){let n=bet(e),r=bet(t);if(n==null||r==null)return 0;let i=yet(n,r);if(i!==0)return i;let a=n.prerelease,o=r.prerelease;if(a.length===0&&o.length===0)return 0;if(a.length===0)return 1;if(o.length===0)return-1;let s=Math.max(a.length,o.length);for(let e=0;e<s;e+=1){let t=a[e],n=o[e];if(t==null)return-1;if(n==null)return 1;if(t!==n)return typeof t==`number`&&typeof n==`number`?t-n:typeof t==`number`?-1:typeof n==`number`?1:t.localeCompare(n)}return 0}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "Jmt",
+      "utf16Offset": 1923975,
+      "byteOffset": 1951301,
+      "lengthBytes": 285,
+      "source": "function Jmt(e){Zmt=e==null?void 0:{remoteControlState:void 0,localRemoteControlClientId:void 0,localRemoteControlEnvironmentId:void 0,localRemoteControlInstallationId:void 0,localRemoteControlEnabled:void 0,ssh:void 0,wsl:void 0,remoteControl:void 0,...Zmt,...e};for(let e of $mt)e()}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "Ymt",
+      "utf16Offset": 1924260,
+      "byteOffset": 1951586,
+      "lengthBytes": 115,
+      "source": "async function Ymt(e){Qmt?.[Symbol.dispose](),Qmt=void 0,Jmt(void 0),e!=null&&(Qmt=await e.catalog.subscribe(Jmt))}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "TKt",
+      "utf16Offset": 2475730,
+      "byteOffset": 2503079,
+      "lengthBytes": 75,
+      "source": "function TKt(e,t,n){let r=mi?.appServerManagers;return r==null?t(e):n(e,r)}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "symbol": "cht",
+      "utf16Offset": 1925618,
+      "byteOffset": 1952944,
+      "lengthBytes": 140,
+      "source": "function cht(e,t){if(jr(e)!=null)return{id:e,kind:`local`,display_name:`Cloud executor`};let n=t?.find(t=>t.hostId===e);return n?zce(n):uht}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "symbol": "LP",
+      "utf16Offset": 263437,
+      "byteOffset": 263451,
+      "lengthBytes": 2886,
+      "source": "function LP(e,t,n){let r=t.dup(),i=new Map,a=!1,o=(t,n,r)=>{let i=n.connection;n.connection=null,e.set(uu,t,{status:r,client:null}),i?.stop(),i?.client[Symbol.dispose]()},s=(e,t)=>{t.active&&(t.active=!1,o(e,t,`disconnected`),t.pending?.[Symbol.dispose](),t.lease?.[Symbol.dispose]())},c=t=>{let n={active:!0,connection:null,pending:null,lease:null};i.set(t,n);let c=r.subscribe(t,r=>{if(a||!n.active||(o(t,n,r.status===`ready`?`replaced`:r.status),r.status!==`ready`))return;let i=r.manager.dup(),s=new pj,c=[],l=[],u=new Map,d=!0,f,p={client:i,sampler:s,reviewPaneSnapshotMetrics:{reviewDiffFilesTotal:0,reviewDiffLinesTotal:0,reviewDiffBytesEstimate:0},stop(){if(d){d=!1,f?.();for(let[t,n]of u)ec(e,t,n);u.clear();for(let e of c)e[Symbol.dispose]();for(let e of l)e[Symbol.dispose]()}}};if(n.connection=p,f=AP(e,t,i,()=>n.connection===p),!d){f();return}c.push(i.subscribe({type:`notification`,key:{hostId:t},methods:[`item/agentMessage/delta`,`item/plan/delta`,`item/reasoning/summaryTextDelta`,`item/reasoning/textDelta`,`item/commandExecution/outputDelta`,`item/fileChange/outputDelta`],listener:({params:e})=>{n.connection===p&&s.recordDeltaBytes(e.delta)&&uj((e,t)=>tt.dispatchMessage(e,t),t,`delta_burst`)}}),i.subscribe({type:`notification`,key:{hostId:t},methods:[`thread/started`,`turn/started`,`turn/completed`],listener:({method:e})=>{n.connection===p&&uj((e,t)=>tt.dispatchMessage(e,t),t,{\"thread/started\":`thread_started`,\"turn/started\":`turn_started`,\"turn/completed\":`turn_completed`}[e])}})),Ru()||c.push(i.registerReplayAdmission((n,r)=>Cm(e,t,n,r)),i.subscribe({type:`event`,key:{hostId:t},event:`queued-message-execution`,listener:r=>{n.connection===p&&(Bd(r.message.context)&&(r.type===`attempt`?u.set(r.conversationId,r.message.id):u.get(r.conversationId)===r.message.id&&u.delete(r.conversationId)),Xd(e,t,r,(e,n)=>e(Jo,{hostId:t,threadId:n}),Jm()))}}));let m=()=>{n.connection===p&&o(t,n,`disconnected`)};for(let e of c)e.onRpcBroken(m),e.then(e=>{if(!d){e[Symbol.dispose]();return}l.push(e),e.onRpcBroken(m)},m);i.onRpcBroken(m),d&&e.set(uu,t,{status:`ready`,client:{hostId:t,rpc:i}})});n.pending=c;let l=()=>s(t,n);c.onRpcBroken(l),c.then(e=>{if(!n.active){e[Symbol.dispose]();return}n.lease=e,e.onRpcBroken(l)},l)},l=e.watch(({get:e})=>{let t=n??e(Tp);for(let[e,n]of i)t.includes(e)||(s(e,n),i.delete(e));for(let e of t)i.has(e)||c(e)}),u=e=>{let t=i.get(e)?.connection;if(a||t==null)throw Error(`AppServerManager RPC is unavailable for hostId: ${e}`);return t};return{forHost:e=>u(e).client,async collectAppStateSnapshot(e,t){try{var n=j();let r=u(e),i=n.u(await r.client.collectAppStateMetrics(r.reviewPaneSnapshotMetrics));return r.sampler.collectSnapshot(t,i)}catch(e){n.e=e}finally{n.d()}},getReviewPaneSnapshotMetrics:e=>i.get(e)?.connection?.reviewPaneSnapshotMetrics,dispose(){if(!a){a=!0,l();for(let[e,t]of i)s(e,t);i.clear(),r[Symbol.dispose]()}}}}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "symbol": "AP",
+      "utf16Offset": 251220,
+      "byteOffset": 251234,
+      "lengthBytes": 8489,
+      "source": "function AP(e,t,n,r){let i=!0,a=Dh(e,t,n,()=>i&&(r?.()??!0)&&Jm()),o=ph(e,t,n,r);YM(e);let s=Zp(e,t,n,r),c=jg(e,t,n,r),l=il(t)?hg(e,t,n,r):void 0,u=ON(e,t,n.getTurnDiffContext,()=>i&&(r?.()??!0)),d=jP(e,n),f=t===`local`?xv(e,t,n,()=>i&&(r?.()??!0)):null,p=Wx(e,t,n,()=>i&&(r?.()??!0)),m=il(t)?Mj(e):null,h=sN(e,t,n),g=nP(e,t,n,()=>i&&(r?.()??!0)),_=fP(e,t,n,r),v=iP(e,t,n,r),y=wP(e,t,n,r),b=JN(e,t,n),x=VN(e),S=new Set,C=DP(e,t),w,T=new Set,E,D=!1,O=n=>{eg(e.queryClient,{queryKey:Xh,predicate:({queryKey:e})=>(e[1]===`installed-inventory`||e[1]===`installed`&&n)&&e[2]===t},{cancelRefetch:!1})},k=R(t)?wd(e):null,A=[...R(t)?[n.subscribe({type:`notification`,key:{hostId:t},methods:[`thread/environment/connected`],listener:t=>{i&&(r?.()??!0)&&bs(e,n,t).catch(e=>{Y.warning(`Failed to update cloud task environment`,{safe:{},sensitive:{error:e}})})}})]:[],...R(t)?eP(e,t,n,()=>i&&(r?.()??!0)):[],n.subscribe({type:`event`,key:{hostId:t},event:`initial-title-requested`,listener:t=>{i&&(r?.()??!0)&&Jm()&&Ls(e,n,t)}}),n.subscribe({type:`event`,key:{hostId:t},event:`realtime-thread-created`,listener:e=>{i&&(r?.()??!0)&&Km(e)}}),n.subscribe({type:`event`,key:{hostId:t},event:`approval-resolved`,listener:({requestId:e})=>{if(i&&(r?.()??!0))try{var n=j();n.u(H.notifications?.hide({notificationId:`approval-${t}-${e}`}))}catch(e){n.e=e}finally{n.d()}}}),n.subscribe({type:`notification`,key:{hostId:t},methods:[`turn/started`,`turn/completed`,`turn/moderationMetadata`,`item/started`,`item/completed`],includeStreamRole:m!=null,listener:(a,o,s)=>{if(!i)return;switch(a.method){case`turn/started`:C.startTurn(a.params.threadId,a.params.turn.id);break;case`turn/completed`:C.completeTurn(a.params.threadId,a.params.turn.id);break;case`turn/moderationMetadata`:C.deliverMetadata(a.params,o);return}if((r?.()??!0)&&(a.method===`item/started`&&a.params.item.type===`imageGeneration`&&Uc(e,X(a.params.threadId),[a.params.item.id],o),a.method!==`item/started`&&x(a),(a.method===`item/started`||a.method===`item/completed`)&&(m!=null&&Jm()&&m.notification(a,s),vj(e,a),wb(a))),a.method!==`item/completed`)return;QN(e,t,n,a,()=>i&&(r?.()??!0));let{item:c,threadId:l,turnId:u}=a.params;if(c.type===`commandExecution`&&(r?.()??!0)&&Jm()&&QM(e,t,n,l,u,c,()=>i&&(r?.()??!0)).catch(()=>{}),c.type===`userMessage`){Ev(e,n,X(l),u,()=>i&&(r?.()??!0)).catch(()=>{});return}if(c.type!==`fileChange`&&c.type!==`commandExecution`&&c.type!==`dynamicToolCall`||c.status!==`completed`)return;let d=X(l),f=n.getConversationCwd(d);S.add(f),f.then(n=>{i&&(r?.()??!0)&&(c.type===`fileChange`?Um(t,Eu(e,d),n,c.changes,o):Hj(e,{conversationId:d,hostId:t,item:c,threadCwd:n}))},()=>void 0).finally(()=>{S.delete(f),f[Symbol.dispose]()})}}),n.subscribe({type:`event`,key:{hostId:t},event:`open-file-change`,listener:e=>{i&&(r?.()??!0)&&window.dispatchEvent(new MessageEvent(`message`,{data:e,origin:window.location.origin,source:window}))}}),n.subscribe({type:`event`,key:{hostId:t},event:`mcp-elicitation-request`,listener:t=>{f?.observe(t.conversationId),i&&(r?.()??!0)&&Jm()&&zb(e,t)}}),...[`thread-archived`,`thread-deleted`].map(a=>n.subscribe({type:`event`,key:{hostId:t},event:a,listener:n=>{if(i&&(r?.()??!0)&&(Bs(e,{hostId:t,threadId:n},e.get(yf)),Bo(e,{accountId:e.get(yf),userId:e.get(Hm),hostId:t},n),a===`thread-deleted`)){R(t)&&Yp(e,{hostId:t,threadId:n}),k?.(n).catch(e=>{Y.warning(`Failed to clean up deleted Orbit state`,{safe:{},sensitive:{error:e}})}),m?.removed(n),Xx(e,n),u.remove(n);let a=e.get(Yx,n);a!=null&&Jx(e,n,a.turnId),Hy(n),dS(n),Kx(Eu(e,n)),SP(e,t,n),t===`local`&&(Rj(n),Rg(e,n));let o=()=>{let a=Ti(e.get(Wo));return i&&(r?.()??!0)&&a!=null&&e.get(Ef,a)===n&&vh(e.get,n)===t};o()&&_r(async()=>{let{startNewConversation:e}=await import(`./use-start-new-conversation-e26d663b8004.js`);return{startNewConversation:e}},__vite__mapDeps([52,3,2,4,1,5]),import.meta.url).then(({startNewConversation:t})=>{o()&&t(e)}),lS(e,n),El(e,t,n)}}})),n.subscribe({type:`event`,key:{hostId:t},event:`turn-started`,listener:({conversationId:e,turnId:t,clientUserMessageId:n})=>{i&&(r?.()??!0)&&(n!=null&&(Jc.markTurnStarted(n,e,t),f?.bindMessage(e,n)),Jm()&&u.start(e,t)),i&&(r?.()??!0)&&Jm()}}),...m==null?[]:[n.subscribe({type:`event`,key:{hostId:t},event:`stream-role-changed`,listener:({conversationId:e,role:t})=>{i&&(r?.()??!0)&&m.roleChanged(e,t)}})],n.subscribe({type:`event`,key:{hostId:t},event:`turn-first-output`,listener:e=>{i&&(r?.()??!0)&&Jc.markFirstDataReceived(e)}}),n.subscribe({type:`event`,key:{hostId:t},event:`turn-completed`,includeCompletedTurn:!0,listener:({event:a,completedTurn:o})=>{i&&((r?.()??!0)&&Jm()&&LN(a),zN(e,n,a,()=>i&&(r?.()??!0)&&Jm()),hj(e,n,a,()=>i&&(r?.()??!0)&&Jm()).catch(()=>{}),(r?.()??!0)&&(a.turnId!=null&&a.status!==`inProgress`&&Jc.finishTurn(a.turnId,a.status),qx(e,a.conversationId,a.turnId)),o.status!==`missing`&&KM(e,a,o.turn),u.complete(a),m?.completed(a),o.status!==`missing`&&(r?.()??!0)&&Jm()&&HM(e,n,a,o.turn,()=>i&&(r?.()??!0)).catch(()=>{}),Nh(e.queryClient,t),(r?.()??!0)&&a.status!==`inProgress`&&o.status===`ready`&&(xj(e,o.turn),t===`local`&&Jm()&&Bj(e,a,o.turn)))}}),n.subscribe({type:`event`,key:{hostId:t},event:`thread-list-invalidated`,listener:()=>{i&&cA(e.queryClient,t)}}),n.subscribe({type:`event`,key:{hostId:t},event:`conversation-removed`,listener:t=>{i&&(f?.remove(t),p.remove(t),_o.closeForConversation(Eu(e,t)))}}),n.subscribe({type:`event`,key:{hostId:t},event:`history-accepted`,includeLoadedHistory:!1,listener:({conversationId:e,hasItemTimeline:t})=>{t&&p.observe(e)}}),n.subscribe({type:`notification`,key:{hostId:t},methods:[`thread/realtime/item/completed`,`skills/changed`,`mcpServer/oauthLogin/completed`,`thread/started`,`thread/attachment/updated`,`thread/archived`,`thread/unarchived`,`mcpServer/startupStatus/updated`,`error`,`model/verification`],listener:n=>{if(i)switch(n.method){case`thread/realtime/item/completed`:n.params.item.type===`bemItemPromoted`&&p.observe(X(n.params.threadId));break;case`thread/attachment/updated`:case`thread/archived`:case`thread/unarchived`:(r?.()??!0)&&xP(e,t,n);break;case`mcpServer/oauthLogin/completed`:e.set(hl,e=>({name:n.params.name,success:n.params.success,error:n.params.error||void 0,hostId:t,eventId:(e?.eventId??-1)+1})),n.params.success&&e.queryClient.resetQueries({queryKey:[...lh,t,`mention-catalog`,n.params.name]});break;case`thread/started`:n.params.thread.threadSource!==`mcp_extension_host`&&e.queryClient.refetchQueries({queryKey:[...lh,t,`mention-catalog`],type:`active`},{cancelRefetch:!1});break;case`skills/changed`:e.queryClient.invalidateQueries({queryKey:[`skills`]});break;case`mcpServer/startupStatus/updated`:n.params.status===`ready`&&n.params.threadId!=null?(D||=ea(n.params.name),E??=setTimeout(()=>{E=void 0;let n=D;D=!1,i&&(r?.()??!0)&&(eg(e.queryClient,{queryKey:[...lh,t,`toolsAndAuthOnly`],exact:!0},{cancelRefetch:!1}),O(n),eg(e.queryClient,{queryKey:[...lh,t,`mention-discovery`],refetchType:`active`},{cancelRefetch:!1}))},0)):n.params.status===`ready`&&O(ea(n.params.name)),n.params.threadId==null&&n.params.status!==`starting`?eg(e.queryClient,{queryKey:[...lh,t]},{cancelRefetch:!1}):n.params.threadId!=null&&n.params.status!==`starting`&&(T.add(n.params.threadId),w??=setTimeout(()=>{w=void 0;let n=T;T=new Set,i&&(r?.()??!0)&&e.queryClient.invalidateQueries({queryKey:[...lh,t,`thread`],predicate:({queryKey:e})=>{let t=e[lh.length+2];return typeof t==`string`&&n.has(t)}})},0));break;case`error`:case`model/verification`:{let r=K_(n);r!=null&&(n.method===`error`&&r.turnId!=null&&C.completeTurn(n.params.threadId,r.turnId),U_(e,{hostId:t,conversationId:r.conversationId},r))}}}})];for(let r of[`thread-archived`,`thread-unarchived`])A.push(n.subscribe({type:`event`,key:{hostId:t},event:r,listener:n=>{i&&ou(e,{hostId:t,threadId:n})}}));A.push(n.subscribe({type:`event`,key:{hostId:t},event:`turn-completed`,listener:r=>{if(!i)return;a(r);let{conversationId:o}=r,s=n.getConversationCwd(o);S.add(s),s.then(n=>{i&&zg(e.queryClient,{cwd:n,hostId:t})},()=>void 0).finally(()=>{S.delete(s),s[Symbol.dispose]()})}}));let M=[],N=()=>{if(i){i=!1,o?.(),clearTimeout(w),clearTimeout(E),s(),d(),f?.dispose(),p.dispose(),m?.dispose(),u.dispose(),h?.(),g(),c?.(),l?.(),b(),y(),_?.(),v(),C.dispose();for(let e of S)e[Symbol.dispose]();S.clear();for(let e of A)e[Symbol.dispose]();for(let e of M)e[Symbol.dispose]();M.length=0}};for(let e of A)e.onRpcBroken(N),e.then(e=>{if(!i){e[Symbol.dispose]();return}M.push(e),e.onRpcBroken(N)},N);return N}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "symbol": "UP",
+      "utf16Offset": 267142,
+      "byteOffset": 267156,
+      "lengthBytes": 281,
+      "source": "function UP(){let e=(0,WP.c)(3),t=er(m),n,r;return e[0]===t?(n=e[1],r=e[2]):(n=()=>{let e=_l(t,PP,LP);return t.set(Qp,()=>e),Qt.setAppStateCapture(()=>zP(t)),()=>{Qt.setAppStateCapture(null),t.set(Qp,null),e.dispose()}},r=[t],e[0]=t,e[1]=n,e[2]=r),(0,GP.useLayoutEffect)(n,r),null}"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/remote-connections-settings-32edb075b364.js",
+      "sha256": "5e4a7e5dda96308782b9a2adcd4e80e8dc52678452853ddeab798ff494b7bb98",
+      "symbol": "Ca",
+      "utf16Offset": 54044,
+      "byteOffset": 54053,
+      "lengthBytes": 1311,
+      "source": "function Ca(e,t,r,i,a){if(!e&&!t)return Ea.signedInDeviceAuthorizationRequiredOfflineSubtitle;if(!e)return Ea.signedInDeviceAuthorizationRequiredSubtitle;if(!t)return Ea.signedInDeviceOfflineSubtitle;if(!r)return Ea.remoteCodexUpdateRequiredSubtitle;if(a===`connecting`&&i!=null)switch(i){case`initializing`:return n({id:`settings.remoteConnections.deviceConnections.signedInDeviceInitializingSubtitle`,defaultMessage:`Initializing secure connection`,description:`Subtitle for a signed-in device while its secure remote-control transport is starting`});case`waiting-for-device`:return n({id:`settings.remoteConnections.deviceConnections.signedInDeviceWaitingForDeviceSubtitle`,defaultMessage:`Waiting for device`,description:`Subtitle for a signed-in device while waiting for its remote app-server to respond`});case`confirming-connection`:return n({id:`settings.remoteConnections.deviceConnections.signedInDeviceConfirmingConnectionSubtitle`,defaultMessage:`Confirming connection`,description:`Subtitle for a signed-in device while its initialized app-server connection is being confirmed`})}return a===`connecting`||a===`restarting`?Ea.signedInDeviceConnectingSubtitle:a===`error`?Ea.signedInDeviceConnectionFailedSubtitle:a===`connected`?Ea.signedInDeviceOnlineSubtitle:Ea.signedInDeviceDisconnectedSubtitle}"
+    }
+  ],
+  "managerUses": [
+    {
+      "member": "getTurnDiffContext",
+      "occurrences": 1,
+      "scope": "AP outer manager parameter only; nested callbacks excluded"
+    },
+    {
+      "member": "subscribe",
+      "occurrences": 17,
+      "scope": "AP outer manager parameter only; nested callbacks excluded"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "catalog",
+      "missing": "Authenticated owner health and capability must be projected into source/hostId/displayName/etc; current catalog is empty. Do not fabricate env enrollment or compatible app-server version."
+    },
+    {
+      "id": "manager",
+      "missing": "Managers.subscribe(nonlocal host) rejects today. LP requires RPC manager lifecycle, subscription leases and AP downstream methods, not a raw HTTP owner client."
+    },
+    {
+      "id": "events",
+      "missing": "Independent owner submitted/accepted/delta terminal events have no implemented mapping into official thread/turn/item notifications and replay admission."
+    },
+    {
+      "id": "version",
+      "missing": "Jet accepts 0.0.0 and parse-failure comparator equality; this predicate cannot certify independent owner compatibility."
+    }
+  ],
+  "next": "Extract AP helper manager-state subscription contracts, implement a bounded manager adapter and lifecycle replay before returning ready for nonlocal hosts."
+}

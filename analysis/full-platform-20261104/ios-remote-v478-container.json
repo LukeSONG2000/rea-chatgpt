@@ -1,0 +1,81 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x693867c",
+    "end_exclusive": "0x6938700",
+    "sha256": "10167cc8ccf1d117f86679add030e7eb4a70d57503aa1ce41e29f96340a8eb4d"
+  },
+  "linker_function_starts_in_window": [
+    "0x693867c",
+    "0x69386f8"
+  ],
+  "next_linker_function_start": "0x693875c",
+  "direct_calls": [
+    {
+      "site": "0x69386a8",
+      "target": "0x7c538a8",
+      "imported_symbol": "_objc_allocWithZone"
+    },
+    {
+      "site": "0x69386ac",
+      "target": "0x7c645a0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacad290",
+        "register": "x1",
+        "selector": "init"
+      }
+    },
+    {
+      "site": "0x69386b8",
+      "target": "0x7c77be0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacb2058",
+        "register": "x1",
+        "selector": "setLineFragmentPadding:"
+      }
+    },
+    {
+      "site": "0x69386c4",
+      "target": "0x148834",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x69386d0",
+      "target": "0x7c77b40",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacb2030",
+        "register": "x1",
+        "selector": "setLineBreakMode:"
+      }
+    },
+    {
+      "site": "0x69386dc",
+      "target": "0x7c53b54",
+      "imported_symbol": "_objc_retain_x19"
+    },
+    {
+      "site": "0x69386e0",
+      "target": "0x6f23f4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x69386e8",
+      "target": "0x7c53c08",
+      "imported_symbol": "_objc_retain_x8"
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

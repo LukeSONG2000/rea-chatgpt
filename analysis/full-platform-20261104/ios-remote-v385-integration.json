@@ -1,0 +1,20 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source": "CodexTaskListContent metadata pattern 0xad49b38 field index4 usesVersion2TaskListUI offset0x20; copy 0x397af8..0x397afc into container first field",
+  "change": "V2 fixture uses public scrollEdgeEffectStyle soft for vertical edges, nil for false, iOS26 availability fallback",
+  "adaptation": "Original additional bypass flag unknown; not reproduced",
+  "validation": {
+    "status": "pending",
+    "unified_exec_session": 42359,
+    "test_runner_pid": 97181,
+    "wait_chain": "simctl 97184 -> xcodebuild -runFirstLaunch 97197",
+    "no_result_yet": true
+  },
+  "limits": [
+    "No build or visual acceptance yet",
+    "No real-device install",
+    "Source gate known; original compatibility bypass not named",
+    "Section separator investigation deferred"
+  ]
+}

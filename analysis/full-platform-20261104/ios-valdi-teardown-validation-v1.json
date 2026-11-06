@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "window": "collection-constructor",
+      "direct_calls_matched": 86,
+      "single_linker_interval": true
+    },
+    {
+      "window": "cache-operation",
+      "direct_calls_matched": 12,
+      "single_linker_interval": true
+    },
+    {
+      "window": "cache-entry-operation",
+      "direct_calls_matched": 28,
+      "single_linker_interval": true
+    }
+  ],
+  "selector_stubs": {
+    "0x5efbd98": "setRootValdiView:",
+    "0x5efbda0": "destroyed",
+    "0x5efbdac": "destroy"
+  },
+  "status": "passed",
+  "limits": [
+    "Address and metadata checks only; not runtime replay"
+  ]
+}

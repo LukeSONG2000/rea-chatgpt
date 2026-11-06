@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "authority": "controlled-replay",
+  "node_version": "v24.14.1",
+  "runner_sha256": "c9975051a89d84b61e453b4dfc123e0f35d7f1534b0fc05e2602df2e43764b4c",
+  "sources": {
+    "derived/valdimodules-293/ios/chatgpt_services/src/conversations/ChatGPTStreamingContracts.js": "2401d4142cf0c272b9f7b1c780bf19d582ab7318b8f6215d13e21f3e6ab88ca4",
+    "derived/valdimodules-293/ios/chatgpt_services/src/conversations/ChatGPTStreamingProtocol.js": "e60f12a88d7a073841218d7240b92d86602eba2e4656cb99b34f050b1fe3b46b",
+    "derived/valdimodules-293/ios/chatgpt_services/src/conversations/ChatGPTStreamingResponseProcessor.js": "f7787466d6447d55b47d4095ca86aabc96190da39528d4498773a3f455e0744a",
+    "derived/valdimodules-293/ios/chatgpt_services/src/conversations/ChatGPTStreamingWorkerClient.js": "88e4ca8ef0b63e60927eeb2d569da432b9a45aec0eb4d6ac278c89cc2006c871"
+  },
+  "isolation": "Run using macOS sandbox-exec message-replay.sb; VM allowlisted imports and disabled code generation; fake timers and endpoint",
+  "limitations": [
+    "No native bridge, HTTP or App execution",
+    "Markdown.parse is a stub: no Markdown correctness claim",
+    "Synthetic inputs; does not establish main-chat integration or server event reachability",
+    "16ms is configured delay, not observed device latency"
+  ],
+  "results": [
+    {
+      "name": "text deltas coalesce on one 16ms fake timer",
+      "status": "passed"
+    },
+    {
+      "name": "complete emits final content before delayed completion",
+      "status": "passed"
+    },
+    {
+      "name": "empty completion is immediate",
+      "status": "passed"
+    },
+    {
+      "name": "cancel drops pending render and subsequent events",
+      "status": "passed"
+    },
+    {
+      "name": "cancel during delayed completion removes notification",
+      "status": "passed"
+    },
+    {
+      "name": "failure emits final text then error once",
+      "status": "passed"
+    },
+    {
+      "name": "DIL switch flushes old text and suppresses later text preparation",
+      "status": "passed"
+    },
+    {
+      "name": "reasoning is a separate callback and not body text",
+      "status": "passed"
+    },
+    {
+      "name": "worker cancel isolates late messages by requestId",
+      "status": "passed"
+    },
+    {
+      "name": "worker prepared callback takes precedence over text fallback",
+      "status": "passed"
+    },
+    {
+      "name": "legacy fallback ignores non-prefix replacement but updates its cursor",
+      "status": "passed"
+    },
+    {
+      "name": "worker completion and error clean up their own request only",
+      "status": "passed"
+    }
+  ],
+  "passed": 12,
+  "failed": 0
+}

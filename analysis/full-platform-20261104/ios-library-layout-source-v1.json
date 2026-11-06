@@ -1,0 +1,24 @@
+{
+  "path": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryScreen.js",
+  "sha256": "8da6fbce93949334b3efc455e4da9a26ad6337a91095cd6762ee97b74bd2dd89",
+  "evidence_type": "artifact-static",
+  "locations": [
+    {
+      "symbol": "layout:ft.ChatGPTLibraryLayout.Grid",
+      "byte_offset": 10056
+    },
+    {
+      "symbol": "setLayout(e){",
+      "byte_offset": 43676
+    },
+    {
+      "symbol": "openItem(e){",
+      "byte_offset": 43939
+    },
+    {
+      "symbol": "renderGridCard(e,t){",
+      "byte_offset": 24653
+    }
+  ],
+  "conclusion": "Default Grid; folder-stack transitions do not reset layout. Native metadata styling remains independent."
+}

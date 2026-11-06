@@ -1,0 +1,94 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "official_website": false,
+  "artifact": "Codex 26.1021.31345",
+  "authority": "original-packaged-renderer-plus-independent-browser-host",
+  "changes": [
+    "Standalone loopback HTTP host with digest-bound JS/CSS allowlist",
+    "Separate browser bootstrap and explicit legacy bridge compatibility adapter",
+    "Independent profile persistence reusing native fixture storage validation",
+    "Browser focus and clipboard adapter; unsupported capabilities rejected",
+    "Reproducible isolated Edge diagnostic and HTTP regression"
+  ],
+  "validation": {
+    "http_tests": "desktop-web-v111-tests.log",
+    "runtime": "desktop-web-v111-r7.json",
+    "runtime_status": "observed-unaccepted",
+    "screenshot": "../../output/playwright/desktop-web-v111-r7.png",
+    "observed": [
+      "ChatGPT mode",
+      "Two synthetic conversation entries",
+      "Original message/code/table and composer"
+    ],
+    "external_socket_probe": "Sandbox connect_ex to reserved documentation address 192.0.2.1:443 returned EPERM (1)",
+    "unsupported": [
+      "app-shell-shortcut-state-changed",
+      "avatar-overlay-open-state-request",
+      "browser-sidebar-annotation-multi-select-enabled-changed",
+      "browser-sidebar-site-annotation-api-enabled-changed",
+      "browser-sidebar-tweaks-enabled-changed",
+      "checkout-webview-presentation-changed",
+      "electron-avatar-overlay-feedback-diagnostics-changed",
+      "electron-avatar-overlay-restore-ready",
+      "electron-set-badge-count",
+      "electron-set-window-mode",
+      "electron-sparkle-gates-changed",
+      "electron-window-zoom-changed",
+      "fetch",
+      "global-dictation-enabled-changed",
+      "keyboard-layout-map-changed",
+      "local-thread-activity-changed",
+      "mac-menu-bar-enabled-changed",
+      "power-save-blocker-set",
+      "set-telemetry-user",
+      "tray-menu-threads-changed",
+      "view-focused",
+      "workspace-settings-webview-presentation-changed"
+    ]
+  },
+  "limits": [
+    "Legacy fetch requests and project list remain unresolved",
+    "Three resource 404s not yet mapped",
+    "HTTP cold draft test does not prove UI draft restore",
+    "No send/cancel or clipboard permission acceptance",
+    "No Windows runtime or official website acceptance",
+    "First browser attempts failed due sandbox configuration; r2-r6 retained"
+  ],
+  "next_action": "Inspect missing resource and fetch envelopes; close actual composer send and reload against local fixture without arbitrary network proxy",
+  "sources": [
+    {
+      "file": "implementation/desktop-web/edge-loopback.sb",
+      "sha256": "6fa0b2123f146483d6b5e2fa2f76d88e1df9bf662c109d55af61bb26d42c0f6c"
+    },
+    {
+      "file": "implementation/desktop-web/probe.cjs",
+      "sha256": "67053fe1fd8e3ece3cab31254173e60837e4a7dd665a66d532b412c1ac4e42f5"
+    },
+    {
+      "file": "implementation/desktop-web/README.md",
+      "sha256": "94b72fdd4f591ed86ee3b147d6b1f9537abead73796bc50aa8f8fba4ccb7b090"
+    },
+    {
+      "file": "implementation/desktop-web/edge-loopback.sh",
+      "sha256": "6c44025fb803b67a005301ff2fdbbd31235cddbbab7858ff1f7b8b4dd92732d6"
+    },
+    {
+      "file": "implementation/desktop-web/test-server.cjs",
+      "sha256": "43d635acf3bc757327b1f017c2461ca8641324d3af5e03fd6421925d487df004"
+    },
+    {
+      "file": "implementation/desktop-web/.gitignore",
+      "sha256": "e645394041c4990bef468c17fddc8ddbe09bccc0343ed33c4629fc35ca42acd0"
+    },
+    {
+      "file": "implementation/desktop-web/server.cjs",
+      "sha256": "38871fe99c384a06a0f5c1d414eb6cec47ab2fcd5a77fcba43349ac788f135a8"
+    },
+    {
+      "file": "implementation/desktop-web/bootstrap.mjs",
+      "sha256": "e0293b9281704357e0796de6fe1e5da36d64df0e5372e16dd3fb07dd069e10cc"
+    }
+  ]
+}

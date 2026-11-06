@@ -1,0 +1,37 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-host-adapter-with-official-renderer",
+  "root_cause": "Code copy calls appServices.clipboard.writeText; independent host services omitted clipboard",
+  "changes": [
+    "Expose write-only text Clipboard RPC service to isolated fixture host",
+    "Forward bounded text to Electron main async clipboard.writeText",
+    "Record lengths only; propagate write failures; readText remains unsupported"
+  ],
+  "validation": {
+    "native_Copy_code_to_system_clipboard": "passed exact synthetic bytes",
+    "clipboard_restoration": "completed",
+    "isolated_adapter": "passed whitespace, bounds, failure propagation, read rejection"
+  },
+  "runtime": "macos-copy-v87-runtime.json",
+  "source_evidence": {
+    "file": "recovered/macos/asar-extracted/webview/assets/app-shared-2cae01273bae.js",
+    "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+    "symbol": "iyn",
+    "byte_start": 4237784,
+    "byte_end": 4239104,
+    "source": "function iyn(e,t,n){e instanceof Promise&&e.catch(()=>{});let{navigator:r,document:i}=t?.target?.ownerDocument?.defaultView??window,a=i.hasFocus(),o=typeof e==`string`||e instanceof Promise;if(!o&&!r?.clipboard)return i_.warning(`Clipboard API unavailable`,{safe:{hadFocus:a,visibilityState:i.visibilityState}}),ryn();let s=t=>(i_.warning(`Clipboard write failed`,{safe:{hadFocus:a,hasFocus:i.hasFocus(),visibilityState:i.visibilityState,richContent:typeof e!=`string`},sensitive:{error:t}}),ryn()),c;try{if(o){let{appServices:t}=await f_(async()=>{let{appServices:e}=await import(`./rpc-f4d8744cf30b.js`);return{appServices:e}},[],import.meta.url),n=typeof e==`string`?e:await e;c=Promise.resolve(t.clipboard.writeText(n))}else if(e instanceof Promise){if(`write`in r.clipboard&&typeof ClipboardItem<`u`){let t=e.then(e=>new Blob([e],{type:`text/plain`}));t.catch(()=>{}),c=r.clipboard.write([new ClipboardItem({\"text/plain\":t})])}else c=r.clipboard.writeText(await e)}else c=typeof e!=`string`&&`write`in r.clipboard&&typeof ClipboardItem<`u`?r.clipboard.write([new ClipboardItem(Object.fromEntries(Object.entries(e).map(([e,t])=>[e,typeof t==`string`?new Blob([t],{type:e}):t])))]):r.clipboard.writeText(typeof e==`string`?e:e[`text/plain`]??``)}catch(e){return s(e)}n?.();try{return await c,!0}catch(e){return s(e)}}"
+  },
+  "sources": {
+    "analysis/tools/desktop-fixture-services.mjs": "a00d0061e8cd15e32ac44efd0255ae864aa355f8f3536aabc416dc60e66e7484",
+    "analysis/tools/test_desktop_clipboard.mjs": "93c5e51e5ae0b58358e1e3f7816038714b49911a3aa9f3011a63e48921af3b11",
+    "analysis/tools/probe_desktop_root_mount.cjs": "e2c12c3746f6c441cf2dfecdd18bf1c1b298dd5033ce723d0c43347cbbfb9b11"
+  },
+  "limits": [
+    "Only code-copy button end to end; message/table/selection/keyboard separately unaccepted",
+    "No clipboard read service or rich-format write service",
+    "System window screenshot unavailable; successful native clipboard comparison is not display acceptance",
+    "Stock Electron and independent service adapter, not original main process"
+  ],
+  "next_action": "Verify message/table copy and editing with identity-preserving drafts; continue wider frontend coverage"
+}

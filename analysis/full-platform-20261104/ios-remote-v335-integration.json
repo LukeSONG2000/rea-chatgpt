@@ -1,0 +1,49 @@
+{
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "platform": "ios",
+  "version": "1.2026.293",
+  "status": "partial",
+  "evidence_type": "static artifact observation; independent native integration",
+  "body": "0x3a5fd8 -> 0x3a5bc8",
+  "strings": {
+    "0x8857bd0": "codex_task_row_needs_input",
+    "0x8857bf0": "codex_task_row_awaiting_approval",
+    "0x8857c20": "Awaiting approval",
+    "0x8a508b0": "ChatGPT/accent/mint/background-subtle",
+    "0x8a50950": "ChatGPT/accent/mint/text-on-subtle",
+    "0x8a50430": "ChatGPT/accent/blue/background-subtle",
+    "0x8a504d0": "ChatGPT/accent/blue/text-on-subtle"
+  },
+  "font_binding": {
+    "symbol": "_$s7SwiftUI4FontV9TextStyleO7captionyA2EmFWC",
+    "library_ordinal": 82,
+    "weak": false,
+    "import_ordinal": 9717,
+    "table_addend": 0,
+    "encoded_pointer_addend": 0,
+    "chain_membership_verified": true
+  },
+  "mechanism": [
+    "request==1 selects palette4/Needs input; otherwise palette3/Awaiting approval",
+    "Palette factory 0x74e45bc stores five colors at x29-0xc0 through x29-0xa0",
+    "foreground load x29-0xa0 at 0x3a5d80; background fourth color x29-0xa8 copied to x29-0x80 at 0x3a5e88..90 and consumed 0x3a5f28",
+    "caption via 0x74e27b8 and semibold import at 0x3a5d44",
+    "horizontal 10 at 0x3a5dd4/0x3a5e04; vertical 5 at 0x3a5e38/0x3a5e68",
+    "Capsule background and FixedSizeLayout typerefs 0x7cf93c8/0x7cf93e0; final flags0x101",
+    "No Image in recovered component generic body type"
+  ],
+  "limits": [
+    "Chinese keys not found in inspected zh*.lproj strings; current Chinese labels independent",
+    "No original app runtime or pixel-equivalence validation",
+    "Surrounding row and server projection remain partial"
+  ],
+  "validation": {
+    "simulator": "testRemoteTaskScopeAndReturn passed; task-list screenshot inspected: two distinct capsules, no clipping observed",
+    "phone": "not installed",
+    "preview_pid": 68575,
+    "external_display": "not reverified"
+  }
+}

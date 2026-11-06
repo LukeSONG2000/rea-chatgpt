@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v139-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "Project membership retained, A-B-A isolates draft, fixture history namespace untouched",
+    "Retry UI succeeds under same user with new request; failure disappears without duplicate user row",
+    "Successful retry and original failed sibling retained across new process"
+  ],
+  "limits": [
+    "Controlled test endpoint fails first request then succeeds; no actual model",
+    "Normal failure-to-failure retry separately tested against Python harness"
+  ],
+  "projectId": "g-p-rea-local-f17fca50-0bb4-4fc4-9190-c8877689e8c3",
+  "attempts": [
+    {
+      "account": "offline-fixture-account",
+      "conversation": "offline-local-090d4616-8955-47e5-934e-510b3c471405",
+      "request": "4326c9fe-00ec-41ae-ac60-bbe425d55774"
+    },
+    {
+      "account": "offline-fixture-account",
+      "conversation": "offline-local-090d4616-8955-47e5-934e-510b3c471405",
+      "request": "f9776d73-3847-4436-b37a-079196b2092c"
+    }
+  ],
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/native-project-model-v139-retry-r2.png"
+}

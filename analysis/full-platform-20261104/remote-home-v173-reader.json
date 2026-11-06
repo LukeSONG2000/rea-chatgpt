@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "checks": [
+    "metadata/event cursor race retries to matching snapshot without duplicate initial delta",
+    "milliseconds converted to seconds",
+    "includeTurns defaults false",
+    "unknown metadata and replaced epoch reject",
+    "continuous updates exhaust bounded retry explicitly",
+    "disposal rejects delayed metadata",
+    "unsupported RPC rejected"
+  ],
+  "limits": [
+    "Independent partial thread/read adapter, no full renderer or original merge"
+  ]
+}

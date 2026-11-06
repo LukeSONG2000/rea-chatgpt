@@ -1,0 +1,42 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "descriptor": "0x95acb58",
+  "field_count": 67,
+  "field_offset_vector_words": 2,
+  "selected_fields": [
+    {
+      "name": "_arePreviousMessagesExpanded",
+      "index": 47,
+      "metadata_offset": "0xcc",
+      "type_reference": "0x8dfc9a0"
+    },
+    {
+      "name": "hiddenPreviousMessageCount",
+      "index": 61,
+      "metadata_offset": "0x104",
+      "type_reference": "0x8e133f0"
+    },
+    {
+      "name": "hasUnloadedPreviousMessages",
+      "index": 62,
+      "metadata_offset": "0x108",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "arePreviousMessagesExpandedInPresentation",
+      "index": 63,
+      "metadata_offset": "0x10c",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "isLoadingPreviousMessages",
+      "index": 64,
+      "metadata_offset": "0x110",
+      "type_reference": "0x8bfd810"
+    }
+  ],
+  "limits": [
+    "Static metadata offsets only; no runtime field values.",
+    "Not all source state callbacks/load operations recovered."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "evidence_type": "artifact-static",
+  "entries": [
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "term": "waitForInitialMaterialization()",
+      "utf8_offset": 198295,
+      "excerpt": "osts)t||=!r.exhausted||this.#s.has(n)&&!this.#o.has(n);return!t&&e.loadMorePromise==null?bM:n?SM:xM}waitForInitialMaterialization(){return this.#d??=this.#I().then(()=>{this.#f=!0,this.#_??={page:{...this.#h},point:{...this.#g}},this.#M(),this.#d=null}),this.#d}async ensurePage(e,t){await Promise.all(_M(e).map(e=>this.#F(this.#x(e,t))))}async#x(e,t){let n=this.#T(e);n.requested=!0,n.pendingReads+=1;for(let e of n.hosts.values())e.desired=Math.max(e.desired,t);try{let t=await Promise.allSettled(Array.from(n.hosts,([e,t])=>this.#E(n.scope,e,t)));n.hasLoaded=n.hasLoaded||t.length===0&&(e.hostIds?.length??0)===0||t.some(e=>e.status===`fulfilled`)||Array.from(n.hosts.values()).some(e=>e.entries.length>0);let r=t.find(e=>e.status===`rejected`);if(r!=null)throw r.reason}finally{--n.pendingReads,this.#M(!0)}}async loadMore(e,t){await Promise.all("
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "term": "this.#f=!0",
+      "utf8_offset": 198364,
+      "excerpt": "adMorePromise==null?bM:n?SM:xM}waitForInitialMaterialization(){return this.#d??=this.#I().then(()=>{this.#f=!0,this.#_??={page:{...this.#h},point:{...this.#g}},this.#M(),this.#d=null}),this.#d}async ensurePage(e,t){await Promise.all(_M(e).map(e=>this.#F(this.#x(e,t))))}async#x(e,t){let n=this.#T(e);n.requested=!0,n.pendingReads+=1;for(let e of n.hosts.values())e.desired=Math.max(e.desired,t);try{let t=await Promise.allSettled(Array.from(n.hosts,([e,t])=>this.#E(n.scope,e,t)));n.hasLoaded=n.hasLoaded||t.length===0&&(e.hostIds?.length??0)===0||t.some(e=>e.status===`fulfilled`)||Array.from(n.hosts.values()).some(e=>e.entries.length>0);let r=t.find(e=>e.status===`rejected`);if(r!=null)throw r.reason}finally{--n.pendingReads,this.#M(!0)}}async loadMore(e,t){await Promise.all(_M(e).filter(e=>this.#y(e).hasMore).map(e=>this.#S(e,t)))}#S(e,t){let"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "term": "if(this.#m||!this.#f",
+      "utf8_offset": 204542,
+      "excerpt": "s.#a.delete(t))}for(let e of i){let t=ic(e.hostId,e.threadId);a.has(t)&&this.#a.set(t,e)}}}#M(e=!1){if(this.#m||!this.#f&&(!e||this.appScope.get(ka).entries.length>0))return;let t=this.#N();for(let[e,n]of this.#n){if(t.has(n))continue;let r=Array.from(n.hosts.values()).flatMap(e=>e.entries),i=this.#r.get(e);this.#r.set(e,{entries:i?.fingerprint===n.fingerprint&&(0,yM.default)(i.entries,r)?i.entries:r,fingerprint:n.fingerprint,hasMore:this.#b(n).hasMore})}jl(this.appScope,[...this.#a.values(),...Array.from(this.#r.values()).flatMap(({entries:e})=>e)]),this.#v=Math.max(this.#v,this.appScope.get(ka).entries.length),this.#P()}#N(){let e=new Set,t=new Map;for(let[n,r]of this.#n){(r.pendingReads>0||!r.hasLoaded)&&e.add(r);let i=this.#r.get(n);if(i==null||i.fingerprint===r.fingerprint)continue;let a=new Set(r.scope.filter?.excludeThreadIds);for("
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-primary-7d7313419f84.js",
+      "sha256": "745529956e303674c268a6871e6f5aad49eca7ef5af899952bf0379d829821b6",
+      "term": "K.hasLoadedProjectSources&&O",
+      "utf8_offset": 3427492,
+      "excerpt": "e?(ve={projectless:ge,recents:_e},t[18]=_e,t[19]=ge,t[20]=ve):ve=t[20];let ye=Z(klr,ve),be=X(IT),xe=K.hasLoadedProjectSources&&O,Se=w===`catalog`,[Ce,we]=(0,O2.useState)(!1),Te,Ee;t[21]!==Se||t[22]!==ye||t[23]!==T||t[24]!==xe?(Te=()=>{if(!Se||T==null||!xe)return;let e=!1;return L7n({catalogReader:T,pageScope:ye,pageSize:10}).then(()=>{e||we(!0)}).catch(gyr),()=>{e=!0}},Ee=[Se,ye,T,xe],t[21]=Se,t[22]=ye,t[23]=T,t[24]=xe,t[25]=Te,t[26]=Ee):(Te=t[25],Ee=t[26]),(0,O2.useEffect)(Te,Ee);let De=!z&&K.isWorkspaceRootOptionsLoading,Oe=(0,O2.useRef)(null),ke=(0,O2.useRef)(null),Ae;t[27]!==v||t[28]!==G||t[29]!==te||t[30]!==me||t[31]!==K.connectionGroups||t[32]!==K.pinnedProjectThreadKeys||t[33]!==g||t[34]!==De||t[35]!==z?(Ae=()=>{if(v==null){Oe.current=null,ke.current=null;return}if(De||z)return;let e=g.get(lS,v),t=K.pinnedProjectThreadKeys.includes"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-primary-7d7313419f84.js",
+      "sha256": "745529956e303674c268a6871e6f5aad49eca7ef5af899952bf0379d829821b6",
+      "term": "function L7n(",
+      "utf8_offset": 2811694,
+      "excerpt": "),t[5]=i,t[6]=o),o}var F7n,a$;function I7n(){return(I7n=e((()=>{F7n=Y(),ff(),w(),a$=J()})))()}async function L7n({catalogReader:e,pageScope:t,pageSize:n}){let r=e.ensurePage(t,n);await Promise.all([r,e.waitForInitialMaterialization()])}function R7n({catalogPageState:e,canFetchNextConversationPage:t,isFetchingNextConversationPage:n}){return{hasMore:e.hasMore||t||n,isLoading:e.isLoading||n,isInitialLoading:e.isInitialLoading}}async function z7n({catalogReader:e,pageScope:t,pageSize:n,catalogHasMore:r,canFetchNextConversationPage:i,fetchNextConversationPage:a}){let o=e!=null&&t!=null&&r?e.loadMore(t,n):Promise.resolve(),[,s]=await Promise.all([o,i?a(n):void 0]);return s??void 0}var B7n,V7n;function H7n(){return(H7n=e((()=>{B7n=wc(),V7n=(0,B7n.createContext)(null)})))()}function U7n(e){\"use forget\";let t=(0,J7n.c)(58),{children:n,codexProject"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "term": "function YY(",
+      "utf8_offset": 6149527,
+      "excerpt": "UpdatedAt*1e3).toISOString()}}function k7i(e){return e===`tasks`?`tpp`:e===`chats`?`non-tpp`:void 0}function YY(e,t,n){let r=e.get(iK);r!=null&&mi?.localThreadCatalog?.notifyThread({hostId:r,threadId:t},n).catch(()=>{})}async function A7i(e,{includeWorkCloud:t,limit:n,offset:r},i){let a=await MGr(e,{exclude_conversation_origin:t?void 0:`tpp`,hide_snorlax:!1,is_archived:!0,limit:n,offset:r,order:`updated`},i),o=a.offset+a.limit;return{page:a,nextOffset:o<a.total?o:null}}function j7i(e,{excludeTppConversations:t=!1}={}){return[WB,K9i,e,t]}function M7i(e,{includeStarredConversations:t}){return[WB,`tpp`,q9i,e,t]}function N7i(e,t,n){let r=e=>n==null||e.id!==t||(e.workspace_id??null)!==n.workspace_id||(e.summary_metadata?.updated_at??0)>=n.metadata.updated_at?e:{...e,snippet:n.summary,summary_metadata:n.metadata},i=VB();e.queryClient.getQueryDa"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "term": "function Rbn(",
+      "utf8_offset": 3513915,
+      "excerpt": "ull)throw Error(`Projectless threads are unavailable for this host`);return Fbn(n.createPaths(e),t)}function Rbn(){let e=mi.projectlessThreads;if(e==null)throw Error(`Projectless threads are unavailable for this host`);return va(e.readWorkspaceRoot())}var zbn;function Bbn(){return(Bbn=t((()=>{F(),zbn=[`projectless-threads`,`workspace-root`]})))()}function Vbn(e,t){e.set($E,void 0),e.set(lD,t)}function Hbn(e,t){e.set($E,t),e.set(lD,t?.projectId??null)}var $E,Ubn,eD,Wbn,tD,nD,Gbn,rD,iD,Kbn,qbn,aD,oD,Jbn,sD,cD,Ybn,lD,Xbn,Zbn,Qbn;function uD(){return(uD=t((()=>{Ja(),Z(),xa(),KC(),QE(),Pbn(),xg(),F(),Bbn(),Y(),_x(),Sg(),ui(),Yzt(),$E=Br(V,()=>void 0),Ubn=W(V,({get:e})=>[...e(vg)??[],...e(yg)??[],...e(bg)??[]]),eD=Ys(V,e=>({queryKey:Obn(e),queryFn:()=>Abn(e?.hostId),enabled:mi?.executionPaths!=null,networkMode:`always`,refetchOnReconnect:!0,sta"
+    },
+    {
+      "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "term": "Jbn=Ra",
+      "utf8_offset": 3515899,
+      "excerpt": "({hostId:Er}),queryFn:({signal:e})=>Nbn({hostId:Er},e),placeholderData:vve,staleTime:Kr.INFINITE})),Jbn=Ra(V,()=>({queryKey:zbn,enabled:mi?.projectlessThreads!=null,queryFn:async()=>(await Rbn()).workspaceRoot,staleTime:Kr.INFINITE})),sD=W(V,({get:e})=>!1),cD=W(V,({get:e})=>{if(e(sD))return null;let t=e($E);return t===void 0?WC(e,As.SELECTED_PROJECT)??null:t}),Ybn=W(V,({get:e})=>e($E)===void 0&&e(GC,As.SELECTED_PROJECT).isLoading),lD=Br(V,({scope:e})=>e.get(cD)?.projectId??null,{onMount:(e,t)=>t.watch(({get:t})=>{e(t(cD)?.projectId??null)})}),Xbn=W(V,({get:e})=>{let t=e(cD);return t?.type===`remote`?e(rD,t.projectId):null}),Zbn=W(V,({get:e})=>WC(e,As.THREAD_PROJECT_ASSIGNMENTS)),Qbn=H(V,(e,{get:t})=>{let n=t(Zbn)?.[e];if(n?.projectKind===`local`)return t(iD)[n.projectId]?.rootPaths??[];if(n?.projectKind===`remote`){let e=t(rD,n.projectId)"
+    }
+  ],
+  "limits": [
+    "Static gates do not independently prove runtime root cause; verify startup metrics and visible row deletion"
+  ]
+}

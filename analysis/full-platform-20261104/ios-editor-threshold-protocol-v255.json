@@ -1,0 +1,47 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "Swift protocol metadata and chained pointers",
+  "protocol": {
+    "name": "MessageInputPartModeling",
+    "descriptor": "0x966fb8c",
+    "signature_requirements": 2,
+    "requirements": 40
+  },
+  "concrete_type": "MessageInputViewModel",
+  "conformance": "0x811da90",
+  "witness_table": "0xa78d468",
+  "property": "hasExceededSingleLineThreshold",
+  "property_entries": [
+    {
+      "requirement_index": 17,
+      "requirement": "0x966fc44",
+      "flags": "0x13",
+      "witness_slot": "0xa78d4f8",
+      "implementation": "0x4d4c5c0"
+    },
+    {
+      "requirement_index": 18,
+      "requirement": "0x966fc4c",
+      "flags": "0x14",
+      "witness_slot": "0xa78d500",
+      "implementation": "0x4d4c5c4"
+    },
+    {
+      "requirement_index": 19,
+      "requirement": "0x966fc54",
+      "flags": "0x16",
+      "witness_slot": "0xa78d508",
+      "implementation": "0x4d4c5c8"
+    }
+  ],
+  "conclusion": "Setter wrapper at 0x4d4c5c4 is protocol requirement 18; neighboring getter/setter/modify requirements must all be traced for mutations.",
+  "validation": "Conformance, witness backlink, protocol requirement flags and pointer target assertions passed",
+  "limitations": [
+    "Runtime receiver selection not observed",
+    "Six-instruction LDR/BLR pattern scan over 0x4d00000..0x4d60000 found no matches; does not rule out longer, outlined, or modify-accessor calls",
+    "Measurement algorithm and numeric threshold still unresolved"
+  ]
+}

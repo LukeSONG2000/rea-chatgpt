@@ -1,0 +1,88 @@
+{
+  "status": "partial",
+  "platform": "macos",
+  "baseline": "Codex 26.1021.31345 build 21828 renderer; independent local deletion",
+  "verified": [
+    "Actual More > Delete opens confirmation; Cancel sends no DELETE",
+    "Confirm Delete chat invokes DELETE /conversation/id/{id}; independent service removes and persists history",
+    "Target active stream stops while other conversation continues; deleted fixture GET no longer resurrects baseline",
+    "Deleting final conversation persists empty collection; cold initialization preserves empty state",
+    "Cold process falls back from deleted route to home and omits deleted catalog identity; screenshot reviewed"
+  ],
+  "failed_gate": "Same-process sidebar still shows stale deleted row despite persisted removal and catalog readPage refresh. Full delete interaction NOT accepted.",
+  "runtime": {
+    "deleted": "offline-local-5a1eea58-cfc1-40a0-9e4f-9ac87c4a404b",
+    "cold_restore": {
+      "status": "passed",
+      "startupRoute": "/",
+      "deletedId": "offline-local-5a1eea58-cfc1-40a0-9e4f-9ac87c4a404b",
+      "histories": [
+        "offline-fixture-conversation-001",
+        "offline-fixture-conversation-002",
+        "offline-local-0bcb352e-12f4-4637-a8d8-48165a0159f9"
+      ],
+      "entries": [
+        {
+          "sourceKind": "chatgpt",
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "threadId": "offline-local-0bcb352e-12f4-4637-a8d8-48165a0159f9",
+          "displayTitle": "REA synthetic new conversation",
+          "projectId": null,
+          "conversationOrigin": null,
+          "sourceCreatedAt": 1793801105.227,
+          "sourceUpdatedAt": 1793801105.227,
+          "sourceRecencyAt": 1793801105.227,
+          "archived": false
+        },
+        {
+          "sourceKind": "chatgpt",
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "threadId": "offline-fixture-conversation-001",
+          "displayTitle": "离线组件验证 · A",
+          "projectId": null,
+          "conversationOrigin": null,
+          "sourceCreatedAt": 1,
+          "sourceUpdatedAt": 1,
+          "sourceRecencyAt": 1,
+          "archived": false
+        },
+        {
+          "sourceKind": "chatgpt",
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "threadId": "offline-fixture-conversation-002",
+          "displayTitle": "离线组件验证 · B",
+          "projectId": null,
+          "conversationOrigin": null,
+          "sourceCreatedAt": 1,
+          "sourceUpdatedAt": 1,
+          "sourceRecencyAt": 1,
+          "archived": false
+        }
+      ],
+      "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\nREA synthetic new conversation\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nChat\nWork\nWhere should we begin?\n\n\n"
+    }
+  },
+  "limits": [
+    "Stale sidebar row removal unresolved",
+    "Scoped draft/atom cleanup not yet implemented",
+    "Delete retry/idempotency, write-error UI and original fidelity not accepted",
+    "No claims for other platforms or complete six-surface delivery"
+  ],
+  "next_action": "Trace original catalog reader refresh/explicit-entry retention after delete; ensure missing identity invalidates cached entry and removes visible row without restart; then scoped draft cleanup",
+  "evidence_sha256": {
+    "analysis/tools/desktop-fixture-services.mjs": "6dbde0540c6aab0942c3bd28f895ab2764e7816c33a90604168634138afbdbf9",
+    "analysis/tools/desktop-history-store.cjs": "5442892671dbbf6d790f838dc40e006d61cba929a328b550a1937f8ad981d52f",
+    "analysis/tools/desktop-route-store.cjs": "52ea06ea895d6648cc41069a46b22664500819917b67ee87a087c661d7dc95f8",
+    "analysis/tools/desktop-native-host.cjs": "37900267d904bdd1d02acee927f3b0393120085584b129e84dda1fc6990cf2c3",
+    "analysis/tools/test_desktop_delete_conversation.mjs": "4aef862c756783c07b3993c7cb5c1af493cc3bcb0dec518076316072bbbf7ce2",
+    "analysis/tools/probe_desktop_root_mount.cjs": "958a102166989d28c5679839f54e603899ce9cc684922b9258510a5d7f521a44",
+    "analysis/full-platform-20261104/macos-delete-source-v1.json": "30b80b2305c1f5d54a4750e37f5425ddc572a915d258cffc6594efc91b915bfc",
+    "analysis/full-platform-20261104/macos-delete-runtime-v1.json": "fccdf882981425ab2bee6100cd1e1a9b96a18680bd5ed8ecc07c5adf272c90c2",
+    "analysis/full-platform-20261104/macos-delete-runtime-v2.json": "6c6c89a464ba78e8cf814a993d44e3b4f18f601517b0bcd0d32c6f2e6d3085fe",
+    "analysis/full-platform-20261104/macos-delete-runtime-v3.json": "240eb9abb399dc5ce31ef322efbde0bb821a7073543c15d68205dfadc98111d0",
+    "analysis/full-platform-20261104/macos-delete-restore-v1.json": "cca6502882062018e0d0fcbb1d09f80b0ce30830528dd48286dda0b84f7b4c60",
+    "analysis/full-platform-20261104/macos-delete-unit-v1.log": "12f8a22a7ec4d5fc5af12ed4175d29d4e601cc25418989202ead7e775699de2f",
+    "analysis/full-platform-20261104/macos-delete-history-v1.log": "84376ef202558c4385a78c3ecdfa1ae146b0a8929a1afd0b4115b10e4b9e8955",
+    "analysis/full-platform-20261104/macos-delete-create-v1.log": "4cc72fed24f48f14e6a821cc846b7ab11faef4f21d0f9f2007cc47ebf86b0133"
+  }
+}

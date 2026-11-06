@@ -1,0 +1,47 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static; native integration",
+  "findings": [
+    {
+      "offset": "0x1da3a80..0x1da3a88",
+      "conclusion": "Helper sets w0=0 then returns to numericText(countsDown:) call0x1a3fff0; integrated countsDown:false."
+    },
+    {
+      "file": "ios-remote-v354-localization-scan.json",
+      "conclusion": "766 .strings parsed with0 errors and0 running-summary key matches; does not rule out other catalogs or remote resources."
+    }
+  ],
+  "integration": [
+    "Numeric text contentTransition configured; no guessed animation transaction or duration.",
+    "Added focused UI lifecycle coverage for ticking and A/B/A scoped summary presence."
+  ],
+  "unknowns": [
+    "Animation transaction and shimmer condition",
+    "Official localized catalog for running summary",
+    "Complete page layout and expanded command presentation",
+    "Android consumer"
+  ],
+  "validation": {
+    "status": "passed",
+    "test": "testRemoteRunningCommandLifecycle",
+    "result_bundle": "ios-remote-v354.xcresult",
+    "observed": [
+      "First visible summary changes within4s",
+      "B has no running summary",
+      "Returning to A restores a later label"
+    ],
+    "limits": [
+      "Label inequality is not proof of exact monotonic seconds or catch-up timing",
+      "Static screenshot cannot accept numeric transition animation",
+      "Full locale and background/foreground matrix untested"
+    ],
+    "screenshot": "ios-remote-v354-screenshots/3347EDE7-B595-476B-8363-AE1D4D297E0B.png",
+    "visual_inspected": true,
+    "preview_pid": 77890,
+    "phone_updated": false,
+    "external_display_reverified": false
+  }
+}

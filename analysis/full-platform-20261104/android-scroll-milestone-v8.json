@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "android",
+  "reference_baseline": "1.2026.293; independent host with pinned public OpenAI richtext library, not recovered official scroll policy",
+  "evidence_type": "independent-native-fixture-runtime",
+  "verified": [
+    "Live growing paragraph stream follows tail",
+    "Manual drag pauses follow while stored text continues growing",
+    "Paused visible paragraph remains stable over 2.8 seconds",
+    "A/B/A preserves paused reading position",
+    "Back to latest reaches visible current delta status; Stop cancels",
+    "Generated heading, bold, code and table pass after AST entry change; screenshots reviewed"
+  ],
+  "failure_review": {
+    "v1": "Conversation switch returned to earlier history",
+    "v2": "Keyed layout alone still lost paragraph offset",
+    "v3": "Explicit restoration occurred against incomplete content layout",
+    "v4": "Diagnostics: requested index 8 offset 957 clamped to index 5 offset 5982",
+    "v5": "Cached upstream AST + BasicMarkdown removes initially empty content frame; saved/restored index 9 offset 892 match"
+  },
+  "implementation": [
+    "Per-conversation LazyListState, follow flag and explicit saved index/offset; keyed list composition",
+    "User scroll pauses follow; explicit button and new send resume",
+    "Unchanged upstream CommonmarkAstNodeParser and BasicMarkdown reused; independent cache retains unchanged AST by request/text",
+    "No edits to vendored public sources"
+  ],
+  "limitations": [
+    "Scroll state is memory-only, not restored after process death",
+    "No precise character anchor, width/font changes, keyboard transition or selection-continuity acceptance",
+    "Whole-message AST reparsed for each changed snapshot; parsing and disk writes still on UI thread",
+    "No incremental AST, frame performance, physical Android or official visual parity claim",
+    "Clipped paragraph bounds limit pixel-level assertion; screenshots and logged list offset additionally reviewed"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "e3acf664b6a7574b41d5cc4f19506018ccd7e1b76a98f2f4550505c2337287ac",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "75c955972ae95d2b0746bd6dea748871ad5bb0cb83e75de06c71ead553120d90",
+    "implementation/android/test-scroll.py": "a050bb26975d00c699eafc2b47daf5bedb34d8a999b03e89609dff074187a0ed",
+    "implementation/android/test-generated-markdown.py": "452499c2c127c81859518af702a3a22409e12fb92c9abe97dfc71e631786776a",
+    "implementation/android/vendor/compose-richtext/richtext-commonmark/src/commonMain/kotlin/com/halilibo/richtext/commonmark/Markdown.kt": "f70fc40d87a540d09165b4af0b10a63dcca0fabeeaac544e9a5736745f5f9230",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5.json": "fbb7fbdcd10feae39995cbb40db27d5e688ca3f4861866bcab583995764809be",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5/scroll-restored.png": "e5dae5277371c2e8f5c06e202866b51d925d55818547a2c4377c41b9596208cc",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5/scroll-restored.xml": "af14bac2dc580044478897ab4f3a0fc52be729832f841a09453f0c398396cc12",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5/instrumentation.log": "9eb2138a51b6e67023998f3a3b57dbabcd9abbba43120f5d75b2b52990793110",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5/scroll-paused.png": "f7715e1cfbeeb6d6aa738d71b32159b8b859e542bf87cc1dbb8f7a08e5971cf6",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5/scroll-paused.xml": "af14bac2dc580044478897ab4f3a0fc52be729832f841a09453f0c398396cc12",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5/scroll-offsets.log": "4452c49d1ba2fbb9b6480d6e7f9dd4229d00359a44a9a10a7cde86130eba9f26",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5/scroll-latest.png": "4a0a1cbf240951efa0a99c3403f9dd39604b908a82fbb4384b143d6d3763b5de",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5/scroll-latest.xml": "ba388e0b3ad396c5537a2e3a3d397641cc35b973fe72df5f70c0c526da1877e2",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5/scroll-following.png": "c7fb249fa6b0de1c55eae5664b485191af814ea15c1bd8e802b33eda075316d6",
+    "analysis/full-platform-20261104/android-scroll-runtime-v5/scroll-following.xml": "ec9ae8a66d73e7cfc197de6feb01f9f6055799ab0ab12da5fa1d985bd5a294a4",
+    "analysis/full-platform-20261104/android-generated-markdown-runtime-v1.json": "ebf08e2a5a534e1859120f32d5e8287626ec9fc875501fb17ae62743931e0382",
+    "analysis/full-platform-20261104/android-generated-markdown-runtime-v1/generated-markdown.xml": "b268d896f4b7da7e920ebcfb1d639f46a3dee1952790f381ce908e5e250efcc2",
+    "analysis/full-platform-20261104/android-generated-markdown-runtime-v1/generated-markdown.png": "cc536638aa9be4c59e9d091556969ccf4f1379faf66a20d0d0b9117197c1ac22",
+    "analysis/full-platform-20261104/android-generated-markdown-runtime-v1/instrumentation.log": "97d0946c8f68f3d4e2c044439fa2fe3e43584fb93fb8d2daeb7b79194bf333ef",
+    "analysis/full-platform-20261104/android-scroll-runtime-v1/instrumentation.log": "6d37f7931bc58dec81248a0945d4b1d2407e71646e2c89a50a8cc05aba3b1df5",
+    "analysis/full-platform-20261104/android-scroll-runtime-v2/instrumentation.log": "52087332efbef57b8b08acf34124700fd48df2b313ecdaa93023dd22ceaa5c53",
+    "analysis/full-platform-20261104/android-scroll-runtime-v3/instrumentation.log": "ea8d6475bd27db63c61e92a1f2c89d859b7b90fc08988946e8b19fcf85bc3831",
+    "analysis/full-platform-20261104/android-scroll-runtime-v4/instrumentation.log": "96169e5af54efa267f1468135e95f58bea037cdb426ad0160378a1e9efd8db4c"
+  },
+  "next_action": "Native selection/copy and IME checks; then durable anchors and off-main scheduling"
+}

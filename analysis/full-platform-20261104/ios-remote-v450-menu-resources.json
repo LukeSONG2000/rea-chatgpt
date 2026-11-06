@@ -1,0 +1,27 @@
+{
+  "authority": "official artifact observation and static inference",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "strings": {
+    "0x88b2120": "codex_remote_send_menu_steer",
+    "0x88b2140": "codex_remote_send_menu_queue",
+    "0x8a539d0": "OpenAI/Symbols/arrow-curved-right-large-typographic",
+    "0x8a55510": "OpenAI/Symbols/follow-up"
+  },
+  "menu_static_array": {
+    "address": "0xa509e18",
+    "bytes": "06000000000010800500000000004080020000000000000004000000000000000001000000000000",
+    "count_at_plus16": 2,
+    "two_case_bytes_at_plus32": [
+      0,
+      1
+    ],
+    "interpretation": "queue then steer; enum descriptor0x95aadd0 supplies names"
+  },
+  "default_behavior": "not established; caller input, preview explicitly selects queue unless --remote-follow-up=steer",
+  "limits": [
+    "Private styling and caller configuration not proven by these symbols",
+    "Menu item actions verified statically, no original binary replay"
+  ]
+}

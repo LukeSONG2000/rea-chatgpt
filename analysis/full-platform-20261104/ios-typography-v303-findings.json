@@ -1,0 +1,57 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static instructions and verified chained import bindings",
+  "bindings": {
+    "0xaad38d8": {
+      "symbol": "_$s7SwiftUI4FontV9TextStyleO4bodyyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9712,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "0xaad3810": {
+      "symbol": "_$s7SwiftUI4FontV6DesignO7defaultyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9687,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "0xaac66b0": {
+      "symbol": "_UIFontTextStyleBody",
+      "library_ordinal": 5,
+      "weak": false,
+      "import_ordinal": 943,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    }
+  },
+  "flow": [
+    "0x6080da8 calls 0xae3848 then reads imported SwiftUI body discriminator at 0x6080df4",
+    "0x6080e1c calls 0x76511c then reads default design discriminator at 0x6080e20",
+    "0x6080e54 calls font resolver 0x74e307c",
+    "0x760c0a0..0x760c0b8 compares body and selects UIFontTextStyleBody",
+    "0x4d74284 assigns resolved font to native editor"
+  ],
+  "implementation": "Independent host replaces preferredFont(title3) with preferredFont(body). Existing placeholder assignment reuses editor.font; Dynamic Type retained.",
+  "limits": [
+    "Conditional override at 0x4d741e8 remains unclassified",
+    "No full typography equivalence including weight overrides and line metrics",
+    "Sidebar font still unresolved",
+    "No phone update"
+  ],
+  "validation": {
+    "passed": 1,
+    "failed": 0,
+    "result": "ios-typography-v303.xcresult",
+    "visual_review": "Focused composer screenshot reviewed; smaller placeholder, native keyboard and composer visible without new clipping. Flow includes typing and draft return. Not a full IME/typography acceptance.",
+    "preview_pid": 51786
+  }
+}

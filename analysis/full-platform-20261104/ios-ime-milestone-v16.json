@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "reference_baseline": "1.2026.293 reference; independent UIKit host",
+  "evidence_type": "independent-system-keyboard-runtime",
+  "runtime": {
+    "architecture": "arm64",
+    "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "deviceName": "REA ChatGPT Offline",
+    "modelName": "iPhone 17 Pro",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "keyboard": "System Simplified Chinese Pinyin QWERTY, candidate \u4f60\u597d; screenshot confirms marked romanization",
+  "verified": [
+    "Actual keyboard n/i/h/a/o exposes Chinese candidate \u4f60\u597d",
+    "Send during active composition displays rejection and remains send state",
+    "Selecting candidate produces exact REA synthetic \u4f60\u597d",
+    "Committed Chinese survives A/B/A and application termination/relaunch",
+    "Terminating with uncommitted pinyin restores only previously committed prefix",
+    "Other conversation draft remains exact and isolated",
+    "Candidate and restored-prefix screenshots reviewed"
+  ],
+  "scope": [
+    "ASCII prefix is prepared through existing UI typing helper; Chinese text is entered through system keys and candidate selection",
+    "No production code change needed for these bounded gates; existing markedTextRange guards verified"
+  ],
+  "limitations": [
+    "No active-composition conversation switch or delayed callback race acceptance",
+    "No candidate replacement within existing Chinese text, undo, dictation, other IMEs or hardware keyboard acceptance",
+    "No physical iPhone or official visual parity claim",
+    "No device performance or full keyboard/scroll matrix acceptance"
+  ],
+  "results": [
+    "analysis/full-platform-20261104/ios-chinese-ime-v1.xcresult",
+    "analysis/full-platform-20261104/ios-chinese-ime-restart-v1.xcresult"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/ios/UITests/HostInteractionTests.swift": "c470b07033fda84cefe3b5dae4ffa7f3ca7218bb4ac09ef2f571d6a7775cde47",
+    "implementation/ios/Sources/NativeConversationHost.swift": "b8d66f6f470d2b164b8635df9b1203e4f8186f2664d9d01c43c30c771e21bd13",
+    "implementation/ios/test-ui.py": "817ae1b8c86a832503e3eb201c462b74e09274e9636d99b82ef197cbdc4dfed4",
+    "analysis/full-platform-20261104/ios-chinese-ime-v1.log": "a406744b5565786fa1d592213ecb1d56e3cba17d6187022c6dca38084672eeb5",
+    "analysis/full-platform-20261104/ios-chinese-ime-v1.summary.json": "499b3cc895b006a4b295d7880dee80c68b392ce11e47037f7b1fc5653b25f015",
+    "analysis/full-platform-20261104/ios-chinese-ime-v1-attachments/manifest.json": "aa760537d891f8a09e40f48f8f8eedbf4f842d281718d233b3265d89528fff0a",
+    "analysis/full-platform-20261104/ios-chinese-ime-v1-attachments/pinyin-candidate.png": "2a28f6034d120a9d09a9513f4e793311f32d86bb0f9d83a485c98e96b60abd35",
+    "analysis/full-platform-20261104/ios-chinese-ime-v1-attachments/committed-chinese-restored.png": "c892823047ac3b18fa3b093d337d73074819991c28ea02166ef8b2c59195878b",
+    "analysis/full-platform-20261104/ios-chinese-ime-restart-v1.log": "c95e52304f466c03de5700a5a37508ed96fc815422a721b64760fb74597cd825",
+    "analysis/full-platform-20261104/ios-chinese-ime-restart-v1.summary.json": "9fdc5828d40dc346276f4577b9088b4c794bbb1460861547cc1b83cacf7e8c90",
+    "analysis/full-platform-20261104/ios-chinese-ime-restart-v1-attachments/manifest.json": "3e9eb09bd324fa71a62fcfde7855a70939e0eb7e9d5bfc9db11680a9f9c4214b",
+    "analysis/full-platform-20261104/ios-chinese-ime-restart-v1-attachments/uncommitted-before-termination.png": "2e88a0944aabe3fd6d3b2c67ba95e3154970d896c30be6a82caf424eed5f8d15",
+    "analysis/full-platform-20261104/ios-chinese-ime-restart-v1-attachments/committed-prefix-only.png": "29cddbe330068222c484a1dda864162aad037127c0672827a333093be11e7d9b"
+  },
+  "next_action": "Active composition scope switch and late callback isolation; separate Unicode AX warning investigation"
+}

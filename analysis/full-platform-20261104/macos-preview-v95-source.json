@@ -1,0 +1,34 @@
+{
+  "platform": "macOS",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "symbols": [
+    {
+      "needle": "function g3r(",
+      "byte_offset": 5125447
+    },
+    {
+      "needle": "function hLr(",
+      "byte_offset": 4693872
+    },
+    {
+      "needle": "function pR(",
+      "byte_offset": 4695077
+    },
+    {
+      "needle": "function _Lr(",
+      "byte_offset": 4695424
+    }
+  ],
+  "observations": [
+    "g3r creates local-chatgpt identity and stores branch continuation in client state",
+    "hLr writes persisted draft only with server identity or eligible home-draft conditions; otherwise returns",
+    "pR resolves persisted server draft or matching homeConversationId"
+  ],
+  "limits": [
+    "Static conditions plus isolated runtime do not prove complete official app persistence behavior",
+    "Do not extend stored draft allowlist alone and call branch restoration complete"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "native simulator controlled synthetic replay",
+  "source_basis": [
+    "ios-remote-v356-integration.json",
+    "ios-remote-v357-integration.json"
+  ],
+  "integration": [
+    "Test-only append-output button gated by --remote-output-test-controls.",
+    "Separate geometry observer exposes offset/bottom/following/user-scrolling through accessibility only in test mode; production geometry comparison key unchanged.",
+    "UI test uses real ScrollView swipe gestures and appended synthetic text."
+  ],
+  "validation": {
+    "status": "passed-native-simulator-gesture-test",
+    "test": "testRemoteOutputGestureFollow",
+    "result": "ios-remote-v358-r2.xcresult",
+    "initial_failure": "Test locator assumed nested scroll identifier; actual hierarchy inherits remote-activity-toggle from DisclosureGroup. Fixed locator using observed ScrollView type and label for append button.",
+    "covered": [
+      "initial viewport reaches bottom",
+      "swipe away settles with following=false",
+      "append increases bottom while offset remains within2pt",
+      "swipe back restores following",
+      "second append reaches new bottom within2pt"
+    ],
+    "screenshot": "ios-remote-v358-screenshots/D663F1E1-D907-498F-A4F9-21BB6DFFFD24.png",
+    "visual": "Synthetic final output36 visible after resume/append; test-only control visible in captured test session.",
+    "preview_pid": 79099,
+    "preview_test_controls": false,
+    "phone_updated": false,
+    "external_display_reverified": false
+  },
+  "limits": [
+    "No official app executed",
+    "Does not establish parsed-text or full shell styling parity",
+    "No phone or Android acceptance",
+    "No production service or local command execution"
+  ]
+}

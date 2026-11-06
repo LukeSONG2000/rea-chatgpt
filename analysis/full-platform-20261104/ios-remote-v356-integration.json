@@ -1,0 +1,59 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static; SDK ABI cross-check; independent executable projection",
+  "sdk_reference": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk/System/Library/Frameworks/SwiftUICore.framework/Modules/SwiftUICore.swiftmodule/arm64-apple-ios-simulator.swiftinterface",
+    "sha256": "a75b73f58847d8827a91b6ea8959e6a2c87119ae787f1a2a7cdbf9ec47d3a622",
+    "lines": "669-674",
+    "conclusion": "Frozen ScrollPhase case order idle,tracking,interacting,decelerating,animating; tag-to-case mapping remains static ABI inference."
+  },
+  "scroll_binding": {
+    "symbol": "_$s7SwiftUI14ScrollPositionV8scrollTo1yy12CoreGraphics7CGFloatV_tF",
+    "library_ordinal": 82,
+    "weak": false,
+    "import_ordinal": 8347,
+    "table_addend": 0,
+    "encoded_pointer_addend": 0,
+    "chain_membership_verified": true
+  },
+  "findings": [
+    {
+      "offset": "0x95afe64",
+      "conclusion": "13 fields, field-offset vector2words. Slots0x34/38/3c/40 map following,userScrolling,scrollPosition,bottomOffset."
+    },
+    {
+      "offset": "0x1d1d3b0\u21920x1d38e58\u21920x1a684f0",
+      "conclusion": "Registered phase closure forwards new phase and geometry context; mask0xfb selects tags1/2/3 as user scrolling, excludes0/4. While user scrolling set following=nearBottom."
+    },
+    {
+      "offset": "0x1a683dc..0x1a684e4",
+      "conclusion": "Geometry action stores bottomOffset. If userScrolling set following=nearBottom. Otherwise if autoScrollToBottom and following, mutate ScrollPosition by scrollTo(y:bottomOffset)."
+    }
+  ],
+  "integration": [
+    "Independent finite-geometry reference model in analysis/reference_models/remote_output_follow.py",
+    "Explicit initial state; no inferred default or server protocol",
+    "Four tests cover threshold/insets, drag-pause/resume, programmatic/disabled behavior and two-output isolation"
+  ],
+  "validation": {
+    "tests_passed": 4,
+    "tests_failed": 0,
+    "ui_changed": false,
+    "device_accepted": false,
+    "limits": [
+      "Tests verify independent model, not official binary equivalence",
+      "No nonfinite geometry semantics claimed",
+      "No new UI build or runtime acceptance"
+    ]
+  },
+  "remaining": [
+    "Initial state and reset policy",
+    "Output constructor heights/insets and parsed text",
+    "Source-backed frontend scroll component integration",
+    "Real gesture acceptance",
+    "Android consumer"
+  ]
+}

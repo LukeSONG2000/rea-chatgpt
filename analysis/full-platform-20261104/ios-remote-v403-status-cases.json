@@ -1,0 +1,61 @@
+{
+  "command_offsets": [
+    0,
+    16,
+    32,
+    40,
+    56,
+    68,
+    80,
+    96,
+    112,
+    128,
+    144,
+    168,
+    192
+  ],
+  "types": [
+    {
+      "descriptor": "0x9752d7c",
+      "name": "ResilientCodableEnum",
+      "kind": 18,
+      "accessor": "0x7530b80",
+      "field_record_kind": 2,
+      "fields": [
+        {
+          "name": "known",
+          "type": "0x8d09970"
+        },
+        {
+          "name": "unknown",
+          "type": "0x8fc06e2"
+        }
+      ]
+    },
+    {
+      "descriptor": "0x95f45b8",
+      "name": "KnownCommandExecutionStatus",
+      "kind": 18,
+      "accessor": "0x2e01df8",
+      "field_record_kind": 2,
+      "fields": [
+        {
+          "name": "inProgress",
+          "type": null
+        },
+        {
+          "name": "completed",
+          "type": null
+        },
+        {
+          "name": "failed",
+          "type": null
+        },
+        {
+          "name": "declined",
+          "type": null
+        }
+      ]
+    }
+  ]
+}

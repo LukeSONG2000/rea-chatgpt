@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "steps": [
+    {
+      "operation": "send",
+      "status": "passed",
+      "pid": 23118,
+      "conversationId": "offline-fixture-conversation-001",
+      "primaryFixtureWriteDenied": true
+    },
+    {
+      "operation": "cold-recovery",
+      "status": "passed",
+      "pid": 23160
+    }
+  ],
+  "limits": [
+    "macOS runtime only",
+    "Independent fixture services, no model/official service",
+    "Pending branch adapter and full platform interactions not accepted"
+  ],
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/native-standalone-v132-interaction.png",
+  "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nPinned\nREA synthetic project\nProjects\nREA synthetic unpinned project\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\n离线组件验证\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nToday 5:37 AM\nYou said:\nREA synthetic standalone native message\nChatGPT said:\n\n本地回放：消息增量已接入。\n\nJavaScript\nconst source = \"fixture\";\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n"
+}

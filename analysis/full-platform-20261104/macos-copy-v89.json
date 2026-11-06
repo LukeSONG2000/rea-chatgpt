@@ -1,0 +1,54 @@
+{
+  "status": "partial",
+  "authority": "independent-host-runtime",
+  "date": "2026-11-05",
+  "table_copy": {
+    "status": "passed",
+    "runtime": "macos-copy-v89-table-final.json",
+    "scope": "Synthetic table plain-text equality; normal hover and click; browser rich write resolved; prior clipboard restored"
+  },
+  "fixes": [
+    "Hover table to expose original toolbar; no forced click or renderer patch",
+    "Allow sanitized clipboard writes only from trusted primary main frame; deny reads and other permissions",
+    "Observe successful generated plain text for safe backup restoration",
+    "Table fixture expected markdown omits trailing newline"
+  ],
+  "assistant_copy": {
+    "status": "partial",
+    "runtime": "macos-copy-v89-assistant.json",
+    "reason": "Browser rich write resolved; plain text expectation differs and format fidelity not yet checked"
+  },
+  "incident": {
+    "runs": [
+      "macos-copy-v89-fixed.json",
+      "macos-copy-v89-assistant.json"
+    ],
+    "clipboard_restored": false,
+    "impact": "Synthetic test content replaced previous clipboard; original in-memory backup lost when host exited. Later safe/final runs restored their own starting clipboard, not the original lost content."
+  },
+  "limits": [
+    "HTML content fidelity not verified",
+    "Physical keyboard and OS visual acceptance pending",
+    "Other five surfaces and full plan remain incomplete"
+  ],
+  "next_action": "Verify assistant-copy content projection and HTML clipboard independently, then resume remaining frontend acceptance",
+  "dependency_reference": "https://www.electronjs.org/docs/latest/api/session",
+  "sources": [
+    {
+      "file": "analysis/tools/desktop-clipboard-permission.cjs",
+      "sha256": "d38dcea9713584eb10e6255b52d4a749af001344fbb2585f9366d269d2163abb"
+    },
+    {
+      "file": "analysis/tools/test_desktop_clipboard_permission.cjs",
+      "sha256": "1b090f4cea33ddc0769e6030076209797f4f68dbb8ebeca5b2923e5fc8943d6f"
+    },
+    {
+      "file": "analysis/tools/desktop-native-host.cjs",
+      "sha256": "9abbed442cbdcd8c342c8b4f2c5ed33744b7382321cb355d09ada5ead61bc24f"
+    },
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "3a22cbf5ed1000259d5ba9f5cf09e905052f7381202986d59b0b708c42fc8c9f"
+    }
+  ]
+}

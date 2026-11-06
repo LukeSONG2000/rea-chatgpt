@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "android",
+  "reference_baseline": "1.2026.293 reference; independent Compose host, not official UI acceptance",
+  "evidence_type": "independent-native-system-interaction-runtime",
+  "runtime": {
+    "avd": "REA_ChatGPT_Offline",
+    "android": 35,
+    "keyboard_package": "com.google.android.inputmethod.latin",
+    "keyboard_version": "14.2.09.629370537-preload-arm64-v8a",
+    "keyboard_version_code": 143544270
+  },
+  "verified": [
+    "Long press generated short reply, native Select all and Copy",
+    "Exact synthetic clipboard equals Local fixture reply; native Paste into editor",
+    "Pasted draft survives A/B/A switching; test clipboard cleared finally",
+    "Actual English software keyboard h/e/l/l/o and Enter yield exact expected draft",
+    "Keyboard closes without losing newline; A/B/A and stored draft match",
+    "Viewport-height change now retriggers follow-tail, latest completed reply visible above keyboard",
+    "Live drag/pause/A-B-A/back-to-latest regression passes after viewport change"
+  ],
+  "failure_review": [
+    "Keyboard v1/v2 inserted before trailing space due test cursor setup; MOVE_END did not establish intended caret",
+    "Keyboard v3 passed exact typing after right-side touch but screenshot revealed latest reply hidden by resized viewport",
+    "Keyboard v4 adds viewport follow fix and latest-reply visibility assertion; screenshot reviewed"
+  ],
+  "limitations": [
+    "No Chinese/Japanese composing-range or candidate replacement acceptance",
+    "No selection-handle dragging, cross-block copy or selection retention during stream updates",
+    "No screen-reader traversal or accessibility contrast/scale acceptance",
+    "No physical Android, iPhone parity or official visual fidelity claim",
+    "Scroll anchors remain memory-only; UI-thread parsing/persistence performance unresolved"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "ed4ec1ef44a5add7380a5a86e4728d84a1a184d122beb5e528c286ca870f0e6b",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "050b4417e292d29c1c2bc6f2a382950e07bfcd5c11d51478687b42b757cf8f13",
+    "implementation/android/test-selection.py": "86fc19a55de9d9b311e67d5116d541aab9b7e35f44302798444402ccba7f3148",
+    "implementation/android/test-keyboard.py": "947fc500ac84690371b2b9386cd779c7f5349b8ada8a34942e423b1c3266c721",
+    "analysis/full-platform-20261104/android-selection-runtime-v1.json": "7c41dd25e4ef0fc544ef2345492efd4c6f40902230435f5eaf7fd1f5aec95e5c",
+    "analysis/full-platform-20261104/android-selection-runtime-v1/selection-pasted.png": "0d304d3f924af81fe88bbf736a0581106a715923700d9aaa44265507f9d0fb12",
+    "analysis/full-platform-20261104/android-selection-runtime-v1/selection-pasted.xml": "6368e06e57c26e9b1197625c223057ed152a1c9e2d336e7f9ffff04593926a2a",
+    "analysis/full-platform-20261104/android-selection-runtime-v1/instrumentation.log": "7c6055de8478613dda34e038e4f1ca55f016af0cd0862f919715c5cfb0467047",
+    "analysis/full-platform-20261104/android-selection-runtime-v1/selection-menu.xml": "49501ecf94f001cebd05863d9a244ade97a1fa707ab9c614141ed4d85bd10c49",
+    "analysis/full-platform-20261104/android-selection-runtime-v1/selection-menu.png": "662eff7392b286a5717b6bb484f060135c93d25a57a7708aeaa0394f8bbfee12",
+    "analysis/full-platform-20261104/android-keyboard-runtime-v4.json": "86ac1c0789989aa2efaa094d54bfb514176914cd24d3c00c7830cedf83bc1702",
+    "analysis/full-platform-20261104/android-keyboard-runtime-v4/instrumentation.log": "f4116a3d7affda3bbebb7d502a561e2fa17503668c39022e83a7c61b4606ff0f",
+    "analysis/full-platform-20261104/android-keyboard-runtime-v4/keyboard-closed.xml": "e08fb0f79e742a9eae11fd75b826ca8558e5b0aaf1883a1f590f4db2c6bc3b21",
+    "analysis/full-platform-20261104/android-keyboard-runtime-v4/keyboard-closed.png": "796ef0b66e2f7712d844a236bcd1932a94944399a299c9ddadf5e5a6b6fac456",
+    "analysis/full-platform-20261104/android-keyboard-runtime-v4/keyboard-open.png": "9c3f5e12e40fe16e3dfd6b169ea2bc1c0e6a0f5d56d241014d91e9db7f58e357",
+    "analysis/full-platform-20261104/android-keyboard-runtime-v4/keyboard-open.xml": "730f69b04f5432135b3ac6fd68d8d19859ee9e94534657f5169b04fdc703843f",
+    "analysis/full-platform-20261104/android-scroll-runtime-v6.json": "e98a71b7ff67151d0cff3852c60493913c206adc3f36b3917ac04952401a728d",
+    "analysis/full-platform-20261104/android-scroll-runtime-v6/scroll-restored.png": "786f39c7810b872189cf6921312dff49ce40dd68e5fba2eb50b7626548e57dc5",
+    "analysis/full-platform-20261104/android-scroll-runtime-v6/scroll-restored.xml": "bbb0a796e3d6e7617373e755637890e55da299ab36da6db92524d206428b8f44",
+    "analysis/full-platform-20261104/android-scroll-runtime-v6/instrumentation.log": "9beb18738319a767bd26a2a8482f48ff86a6cb19b47e5d7054dcfde93a523cd4",
+    "analysis/full-platform-20261104/android-scroll-runtime-v6/scroll-paused.png": "126d1bcf14d5acd3fc572f995f1b8b31381b8ca6fdc79bd4fe1dd88e2a51ed6f",
+    "analysis/full-platform-20261104/android-scroll-runtime-v6/scroll-paused.xml": "bbb0a796e3d6e7617373e755637890e55da299ab36da6db92524d206428b8f44",
+    "analysis/full-platform-20261104/android-scroll-runtime-v6/scroll-latest.png": "8c76186d3c6fc1b92cff12503d594fd4f7c26e358e9e6c8716221283629042eb",
+    "analysis/full-platform-20261104/android-scroll-runtime-v6/scroll-latest.xml": "0aba03f60fdb8765761bb892127415dd144291adecfa1789bfffcaa90c1e4ebd",
+    "analysis/full-platform-20261104/android-scroll-runtime-v6/scroll-following.png": "cc7b7dc49ffb5b5a9e8fa6453a7d8cc05682ee57c4388241df2bc71ed0ced06d",
+    "analysis/full-platform-20261104/android-scroll-runtime-v6/scroll-following.xml": "a7a9c3249af49145dbf2e693090d3fb09f40e6196faf99f47e2809dfd3cb79de",
+    "analysis/full-platform-20261104/android-keyboard-runtime-v1/instrumentation.log": "6b61b4c9d52423469f4e2f5d975d6a2a6ae78c8771c8d8d238cbbd2cb7a1569d",
+    "analysis/full-platform-20261104/android-keyboard-runtime-v2/instrumentation.log": "5427a0e7901849cba198f978e9329dafecbf6505e8b7007b7e9560e75ceb19ce",
+    "analysis/full-platform-20261104/android-keyboard-runtime-v3/instrumentation.log": "f90afc1b6bb8e099dc1ebf93cec548c29da23171fa417e0b8af5ff29f53f37e7"
+  },
+  "next_action": "Return to iOS primary native selection/input acceptance; retain Android composition and persistent-anchor gaps"
+}

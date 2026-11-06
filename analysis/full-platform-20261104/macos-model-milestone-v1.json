@@ -1,0 +1,49 @@
+{
+  "status": "partial",
+  "classification": "independent vendor integration through original packaged renderer",
+  "desktop_version": "26.1021.31345",
+  "verified": [
+    "Original Send -> independent worker -> Zhipu -> original message component",
+    "v1 captured four text deltas then completion",
+    "v3 rendered successful reply with explicit independent-Zhipu title",
+    "v4 provider terminal failure is visible with Retry; no fabricated success",
+    "Credential loading remains backend-only; renderer external network stays denied"
+  ],
+  "runtime_reports": [
+    "macos-zhipu-v1.json",
+    "macos-zhipu-v3.json",
+    "macos-zhipu-v4.json"
+  ],
+  "corrections": [
+    "macos-zhipu-v2-failure.json",
+    "macos-zhipu-v3-review.json"
+  ],
+  "tests": [
+    "5 worker tests including reducer integration",
+    "desktop model projection/late event/identity tests",
+    "existing fixture isolation and state tests"
+  ],
+  "unaccepted": [
+    "real UI cancellation of live provider worker",
+    "provider failure reason prior to sanitized reason capture",
+    "model reliability across repeated calls",
+    "conversation context and durable message storage",
+    "iOS model integration",
+    "provider-side cancellation"
+  ],
+  "current_sources": [
+    {
+      "path": "implementation/harness/model_worker.py",
+      "sha256": "a45671b130b8a661fb3754e6293e1534817d99c95946d6786b490061bc897e25"
+    },
+    {
+      "path": "analysis/tools/desktop-model-broker.cjs",
+      "sha256": "0c34e3c81bc849ab3a98879f1fa6df765473b1007b7ff20091696bf2fb98f491"
+    },
+    {
+      "path": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "0833de060fd588a1f3934ff65049add929a70d2684365c720df9423dea8f4e7f"
+    }
+  ],
+  "source_note": "Current hashes include post-run validation/diagnostic hardening; runtime renderer/service hashes remain in each original report"
+}

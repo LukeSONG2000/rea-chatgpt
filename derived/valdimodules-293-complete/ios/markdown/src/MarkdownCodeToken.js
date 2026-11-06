@@ -1,0 +1,1 @@
+"use strict";var o;Object.defineProperty(exports,"__esModule",{value:!0}),exports.MarkdownCodeTokenKind=void 0,function(o){o[o.Console=0]="Console",o[o.Punctuation=1]="Punctuation",o[o.Comment=2]="Comment",o[o.String=3]="String",o[o.Keyword=4]="Keyword",o[o.Function=5]="Function",o[o.Number=6]="Number",o[o.Property=7]="Property"}(o||(exports.MarkdownCodeTokenKind=o={}));

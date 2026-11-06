@@ -1,0 +1,2962 @@
+{
+  "schema_version": 1,
+  "authority": "independent-design",
+  "contract_version": "reference-v1",
+  "cases": [
+    {
+      "id": "X01",
+      "model": "conversation",
+      "purpose": "A-B-A switching never routes event by selected page",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "B",
+            "request": "r2",
+            "turn": "t1",
+            "client_message_id": "m2"
+          }
+        },
+        {
+          "action": "select",
+          "args": {
+            "account": "acct",
+            "conversation": "B"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "A text"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "A text",
+            "/sessions/1/messages/m2/content": ""
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "B",
+            "epoch": 1,
+            "request": "r2",
+            "turn": "t1",
+            "client_message_id": "m2",
+            "seq": 1,
+            "kind": "append",
+            "value": "B text"
+          }
+        },
+        {
+          "action": "select",
+          "args": {
+            "account": "acct",
+            "conversation": "A"
+          },
+          "expect": {
+            "/active": [
+              "acct",
+              "A"
+            ],
+            "/sessions/0/messages/m1/content": "A text",
+            "/sessions/1/messages/m2/content": "B text"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X02",
+      "model": "conversation",
+      "purpose": "late completion cannot undo local cancellation",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "a"
+          }
+        },
+        {
+          "action": "cancel",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "complete",
+            "value": null
+          },
+          "expect": {
+            "/sessions/0/messages/m1/status": "cancelled",
+            "/discarded": [
+              "terminal"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "X03",
+      "model": "conversation",
+      "purpose": "old subscription epoch rejected; resumed sequence continues",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "a"
+          }
+        },
+        {
+          "action": "resubscribe",
+          "args": {
+            "account": "acct",
+            "conversation": "A"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "append",
+            "value": "old"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 2,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "append",
+            "value": "b"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "ab",
+            "/discarded": [
+              "identity_or_epoch"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "X04",
+      "model": "conversation",
+      "purpose": "out-of-order buffering and duplicate delivery",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "append",
+            "value": "b"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": ""
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "a"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "ab"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "a"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "ab",
+            "/discarded": [
+              "duplicate_or_old"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "X05",
+      "model": "conversation",
+      "purpose": "explicit replacement corrects already rendered body",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "abc"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "replace",
+            "value": "xy"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 3,
+            "kind": "append",
+            "value": "z"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "xyz"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X06",
+      "model": "conversation",
+      "purpose": "optimistic stable key reconciles receipt and ignores stale history",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "accepted",
+            "value": "server1"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/status": "accepted",
+            "/sessions/0/messages/m1/server_id": "server1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "append",
+            "value": "ok"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 3,
+            "kind": "complete",
+            "value": null
+          }
+        },
+        {
+          "action": "history",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "server_id": "server1",
+            "revision": 2,
+            "content": "stale"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "ok",
+            "/sessions/0/messages/m1/status": "complete"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X07",
+      "model": "conversation",
+      "purpose": "history overlap and older snapshots do not duplicate rows",
+      "steps": [
+        {
+          "action": "history",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "server_id": "s1",
+            "revision": 2,
+            "content": "new"
+          }
+        },
+        {
+          "action": "history",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "server_id": "s1",
+            "revision": 1,
+            "content": "old"
+          }
+        },
+        {
+          "action": "history",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "server_id": "s1",
+            "revision": 2,
+            "content": "new"
+          },
+          "expect": {
+            "/sessions/0/messages/history:s1/content": "new",
+            "/discarded": [
+              "history_stale_or_active",
+              "history_stale_or_active"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "X08",
+      "model": "conversation",
+      "purpose": "error retains partial content and is terminal",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "partial"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "error",
+            "value": "transport"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 3,
+            "kind": "append",
+            "value": "late"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "partial",
+            "/sessions/0/messages/m1/status": "error",
+            "/sessions/0/messages/m1/error": "transport"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X09",
+      "model": "conversation",
+      "purpose": "reasoning DIL and attachment projections do not contaminate body",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "reasoning",
+            "value": "summary"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "dil",
+            "value": {
+              "type": "text",
+              "value": "hello"
+            }
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 3,
+            "kind": "attachment",
+            "value": {
+              "id": "f1"
+            }
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 4,
+            "kind": "complete",
+            "value": null
+          },
+          "expect": {
+            "/sessions/0/messages/m1/reasoning": "summary",
+            "/sessions/0/messages/m1/dil": {
+              "type": "text",
+              "value": "hello"
+            },
+            "/sessions/0/messages/m1/attachments": [
+              {
+                "id": "f1"
+              }
+            ],
+            "/sessions/0/messages/m1/content": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "X10",
+      "model": "conversation",
+      "purpose": "request match alone cannot override message identity",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "other",
+            "seq": 1,
+            "kind": "append",
+            "value": "wrong"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "",
+            "/discarded": [
+              "identity_or_epoch"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "X11",
+      "model": "conversation",
+      "purpose": "identical conversation/request IDs in different accounts remain isolated",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "begin",
+          "args": {
+            "account": "other",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "other",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "other text"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "",
+            "/sessions/1/messages/m1/content": "other text"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X12",
+      "model": "conversation",
+      "purpose": "conflicting pending sequence requests resync instead of fabricated text",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "append",
+            "value": "b"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "append",
+            "value": "conflict"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/status": "error",
+            "/sessions/0/messages/m1/error": "conflicting_sequence"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X13",
+      "model": "conversation",
+      "purpose": "bounded ordering gap fails explicitly",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 3,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 4,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 5,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 6,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 7,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 8,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 9,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 10,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 11,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 12,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 13,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 14,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 15,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 16,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 17,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 18,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 19,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 20,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 21,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 22,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 23,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 24,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 25,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 26,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 27,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 28,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 29,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 30,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 31,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 32,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 33,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 34,
+            "kind": "append",
+            "value": "x"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/status": "error",
+            "/sessions/0/messages/m1/error": "resync_required",
+            "/sessions/0/messages/m1/content": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "X14",
+      "model": "conversation",
+      "purpose": "retrying the same local send is idempotent; identity reuse is rejected",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "one"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "one"
+          }
+        },
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "other",
+            "client_message_id": "m1"
+          },
+          "raises": "request identity reused"
+        }
+      ]
+    },
+    {
+      "id": "X15",
+      "model": "conversation",
+      "purpose": "draft and scroll intent are per conversation; no device restoration claim",
+      "steps": [
+        {
+          "action": "local_view",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "draft": "draft A",
+            "anchor": "msg:4"
+          }
+        },
+        {
+          "action": "local_view",
+          "args": {
+            "account": "acct",
+            "conversation": "B",
+            "draft": "draft B",
+            "anchor": null
+          }
+        },
+        {
+          "action": "select",
+          "args": {
+            "account": "acct",
+            "conversation": "B"
+          }
+        },
+        {
+          "action": "select",
+          "args": {
+            "account": "acct",
+            "conversation": "A"
+          },
+          "expect": {
+            "/sessions/0/draft": "draft A",
+            "/sessions/0/anchor": "msg:4",
+            "/sessions/1/draft": "draft B"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X16",
+      "model": "conversation",
+      "purpose": "reserved history namespace cannot overwrite an optimistic request row",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "history:server1"
+          },
+          "raises": "reserved client message namespace",
+          "expect": {
+            "/sessions": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "X17",
+      "model": "conversation",
+      "purpose": "contiguous event closes a full 32-event pending gap without false resync failure",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 3,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 4,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 5,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 6,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 7,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 8,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 9,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 10,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 11,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 12,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 13,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 14,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 15,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 16,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 17,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 18,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 19,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 20,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 21,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 22,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 23,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 24,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 25,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 26,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 27,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 28,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 29,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 30,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 31,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 32,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 33,
+            "kind": "append",
+            "value": "x"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "a"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "axxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "/sessions/0/messages/m1/status": "streaming",
+            "/sessions/0/messages/m1/revision": 33,
+            "/sessions/0/requests/r1/pending": {},
+            "/discarded": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "X18",
+      "model": "conversation",
+      "purpose": "exact acceptance reconciles early history row without replaying ahead snapshot into active deltas",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "append",
+            "value": "partial"
+          }
+        },
+        {
+          "action": "history",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "server_id": "server1",
+            "revision": 2,
+            "content": "ahead"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 2,
+            "kind": "accepted",
+            "value": "server1"
+          },
+          "expect": {
+            "/sessions/0/messages": {
+              "m1": {
+                "server_id": "server1",
+                "content": "partial",
+                "reasoning": "",
+                "dil": null,
+                "attachments": [],
+                "status": "accepted",
+                "revision": 2,
+                "error": null
+              }
+            }
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 3,
+            "kind": "append",
+            "value": " final"
+          }
+        },
+        {
+          "action": "history",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "server_id": "server1",
+            "revision": 99,
+            "content": "still-ahead"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 4,
+            "kind": "complete",
+            "value": null
+          },
+          "expect": {
+            "/sessions/0/messages/m1/content": "partial final",
+            "/sessions/0/messages/m1/status": "complete",
+            "/sessions/0/requests/r1/last_seq": 4,
+            "/discarded": [
+              "history_stale_or_active"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "X19",
+      "model": "conversation",
+      "purpose": "matching server ID on another local send is a collision, never a history reconciliation",
+      "steps": [
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1"
+          }
+        },
+        {
+          "action": "begin",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "request": "r2",
+            "turn": "t1",
+            "client_message_id": "m2"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r1",
+            "turn": "t1",
+            "client_message_id": "m1",
+            "seq": 1,
+            "kind": "accepted",
+            "value": "server1"
+          }
+        },
+        {
+          "action": "event",
+          "args": {
+            "account": "acct",
+            "conversation": "A",
+            "epoch": 1,
+            "request": "r2",
+            "turn": "t1",
+            "client_message_id": "m2",
+            "seq": 1,
+            "kind": "accepted",
+            "value": "server1"
+          },
+          "expect": {
+            "/sessions/0/messages/m1/server_id": "server1",
+            "/sessions/0/messages/m1/status": "accepted",
+            "/sessions/0/messages/m2/server_id": null,
+            "/sessions/0/messages/m2/status": "error",
+            "/sessions/0/messages/m2/error": "server_identity_collision"
+          }
+        }
+      ]
+    },
+    {
+      "id": "R01",
+      "model": "remote",
+      "purpose": "same RPC id on two hosts does not collide and selection does not disconnect",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "B"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "B",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "list",
+            "thread": null
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "B",
+            "request": "r1",
+            "operation": "list",
+            "thread": null
+          }
+        },
+        {
+          "action": "select",
+          "args": {
+            "account": "acct",
+            "host": "B"
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "list",
+            "thread": null,
+            "result": [
+              "A-task"
+            ],
+            "error": null
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "B",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "list",
+            "thread": null,
+            "result": [
+              "B-task"
+            ],
+            "error": null
+          },
+          "expect": {
+            "/hosts/0/resources/r1/result": [
+              "A-task"
+            ],
+            "/hosts/1/resources/r1/result": [
+              "B-task"
+            ],
+            "/hosts/0/status": "ready",
+            "/hosts/1/status": "ready"
+          }
+        }
+      ]
+    },
+    {
+      "id": "R02",
+      "model": "remote",
+      "purpose": "one offline host cannot hang or close other host",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "B"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "B",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "list",
+            "thread": null
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "B",
+            "request": "r1",
+            "operation": "list",
+            "thread": null
+          }
+        },
+        {
+          "action": "disconnect",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "B",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "list",
+            "thread": null,
+            "result": [],
+            "error": null
+          },
+          "expect": {
+            "/hosts/0/resources/r1/error": "connection_lost",
+            "/hosts/1/resources/r1/status": "loaded",
+            "/hosts/1/status": "ready"
+          }
+        }
+      ]
+    },
+    {
+      "id": "R03",
+      "model": "remote",
+      "purpose": "reconnect rejects stale connection results and settles old pending",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "list",
+            "thread": null
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s2",
+            "capabilities": [
+              "list"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r2",
+            "operation": "list",
+            "thread": null
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r2",
+            "operation": "list",
+            "thread": null,
+            "result": [
+              "old"
+            ],
+            "error": null
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 2,
+            "stream": "s2",
+            "request": "r2",
+            "operation": "list",
+            "thread": null,
+            "result": [
+              "new"
+            ],
+            "error": null
+          },
+          "expect": {
+            "/hosts/0/resources/r1/error": "connection_replaced",
+            "/hosts/0/resources/r2/result": [
+              "new"
+            ],
+            "/discarded": [
+              "identity_or_connection"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "R04",
+      "model": "remote",
+      "purpose": "permission failure is not an empty successful list",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "list",
+            "thread": null
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "list",
+            "thread": null,
+            "result": null,
+            "error": "permission_denied"
+          },
+          "expect": {
+            "/hosts/0/resources/r1": {
+              "status": "error",
+              "error": "permission_denied"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "R05",
+      "model": "remote",
+      "purpose": "UI intent does not imply owner Goal capability",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "goal_set",
+            "thread": null
+          }
+        },
+        {
+          "action": "select",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          },
+          "expect": {
+            "/hosts/0/resources/r1/error": "owner_capability_unavailable",
+            "/hosts/0/pending": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "R06",
+      "model": "remote",
+      "purpose": "local model requires fixture-verified binding; not real authentication",
+      "steps": [
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list"
+            ]
+          },
+          "raises": "unbound account/host"
+        }
+      ]
+    },
+    {
+      "id": "R07",
+      "model": "remote",
+      "purpose": "RPC response includes thread identity",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "history",
+            "thread": "t1"
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "history",
+            "thread": "t2",
+            "result": [
+              "wrong"
+            ],
+            "error": null
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "history",
+            "thread": "t1",
+            "result": [
+              "correct"
+            ],
+            "error": null
+          },
+          "expect": {
+            "/hosts/0/resources/r1/result": [
+              "correct"
+            ],
+            "/discarded": [
+              "identity_or_connection"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "R08",
+      "model": "remote",
+      "purpose": "timeout is request-local",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "B"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "B",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "list",
+            "thread": null
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "B",
+            "request": "r1",
+            "operation": "list",
+            "thread": null
+          }
+        },
+        {
+          "action": "timeout",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1"
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "B",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "list",
+            "thread": null,
+            "result": [],
+            "error": null
+          },
+          "expect": {
+            "/hosts/0/resources/r1/error": "timeout",
+            "/hosts/1/resources/r1/status": "loaded"
+          }
+        }
+      ]
+    },
+    {
+      "id": "R09",
+      "model": "remote",
+      "purpose": "duplicate response cannot replace already completed result",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "list",
+            "thread": null
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "list",
+            "thread": null,
+            "result": [
+              "one"
+            ],
+            "error": null
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "list",
+            "thread": null,
+            "result": [
+              "duplicate"
+            ],
+            "error": null
+          },
+          "expect": {
+            "/hosts/0/resources/r1/result": [
+              "one"
+            ],
+            "/discarded": [
+              "identity_or_connection"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "R10",
+      "model": "remote",
+      "purpose": "parallel same-method thread reads retain separate results",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "history",
+            "thread": "t1"
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r2",
+            "operation": "history",
+            "thread": "t2"
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r2",
+            "operation": "history",
+            "thread": "t2",
+            "result": [
+              "two"
+            ],
+            "error": null
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "history",
+            "thread": "t1",
+            "result": [
+              "one"
+            ],
+            "error": null
+          },
+          "expect": {
+            "/hosts/0/resources/r1/result": [
+              "one"
+            ],
+            "/hosts/0/resources/r2/result": [
+              "two"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "R11",
+      "model": "remote",
+      "purpose": "binding is account scoped",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "other",
+            "host": "A",
+            "stream": "s2",
+            "capabilities": [
+              "list"
+            ]
+          },
+          "raises": "unbound account/host"
+        }
+      ]
+    },
+    {
+      "id": "R12",
+      "model": "remote",
+      "purpose": "local RPC cancellation rejects late response without claiming remote turn stopped",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list",
+              "history",
+              "send",
+              "approve"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "send",
+            "thread": "t1"
+          }
+        },
+        {
+          "action": "cancel",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1"
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "send",
+            "thread": "t1",
+            "result": "late"
+          },
+          "expect": {
+            "/hosts/0/resources/r1/status": "cancelled",
+            "/discarded": [
+              "identity_or_connection"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "R13",
+      "model": "remote",
+      "purpose": "explicit empty error is an error response rather than a successful empty result",
+      "steps": [
+        {
+          "action": "bind",
+          "args": {
+            "account": "acct",
+            "host": "A"
+          }
+        },
+        {
+          "action": "connect",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "stream": "s1",
+            "capabilities": [
+              "list"
+            ]
+          }
+        },
+        {
+          "action": "request",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "request": "r1",
+            "operation": "list"
+          }
+        },
+        {
+          "action": "response",
+          "args": {
+            "account": "acct",
+            "host": "A",
+            "epoch": 1,
+            "stream": "s1",
+            "request": "r1",
+            "operation": "list",
+            "error": ""
+          },
+          "expect": {
+            "/hosts/0/resources/r1": {
+              "status": "error",
+              "error": ""
+            },
+            "/hosts/0/pending": {}
+          }
+        }
+      ]
+    }
+  ]
+}

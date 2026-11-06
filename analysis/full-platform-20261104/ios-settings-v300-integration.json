@@ -1,0 +1,27 @@
+{
+  "status": "partial",
+  "baseline": "iOS 1.2026.293",
+  "source_asset": {
+    "path": "implementation/ios/Resources/OfficialVisualAssets.bundle/Assets.car",
+    "sha256": "716cc59b7593e6503e725a755c4b064b8d5644c3b3d894c4c4cee137037bb900",
+    "name": "OpenAI/Symbols/pencil",
+    "inspection": "assetutil --info confirmed named symbol"
+  },
+  "observation": "Existing independent settings page has no avatar edit control; close surface uses regularMaterial. Original native settings owner remains unresolved.",
+  "adaptation": "Screenshot-guided avatar badge with original pencil asset and explicit unavailable action. System glassEffect on iOS26+ close surface, regularMaterial fallback. Metrics are independent preview configuration.",
+  "limitations": [
+    "Not restored official settings Swift source",
+    "No upload/profile service connected",
+    "No claim iOS26 glass settings call path recovered from compositor evidence",
+    "No Android equivalence",
+    "No phone install or restart"
+  ],
+  "runtime": {
+    "passed": 1,
+    "failed": 0,
+    "result": "ios-settings-v300.xcresult",
+    "visual_review": "Inspected settings screenshot: close button has glass circular edge and shadow; avatar pencil badge visible at lower right. Hittable edit button produces explicit unavailable alert; returning preserves draft.",
+    "screenshot": "ios-settings-v300-screenshots/E6C748FC-9569-4A71-BC91-4709BB3A2257.png",
+    "preview_pid": 50212
+  }
+}

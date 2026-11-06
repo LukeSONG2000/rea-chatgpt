@@ -1,0 +1,25 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x1d9caf4",
+    "end_exclusive": "0x1d9cb10",
+    "sha256": "cd61ccaea1e5f90769d95badded520773c5fb325c37fbacf1b605af401178b03"
+  },
+  "linker_function_starts_in_window": [
+    "0x1d9caf4",
+    "0x1d9cb08"
+  ],
+  "next_linker_function_start": "0x1d9cb1c",
+  "direct_calls": [],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

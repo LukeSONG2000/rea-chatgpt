@@ -1,0 +1,510 @@
+{
+  "schema_version": 1,
+  "scope": "official Remote only; no Soul or Remodex source read",
+  "evidence": [
+    {
+      "id": "R01",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/com/openai/feature/codexremote/impl/data/b.java",
+      "sha256": "69d6967c2f52eab97042176015c9203741703743644c9064863e88c701c7635c",
+      "symbol": "public final boolean D(",
+      "byte_offset": 8602,
+      "line": 286,
+      "evidence_type": "jadx-static",
+      "claim": "Active session selection changes generation/key while retaining session map; no disconnect in this small method.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "    return;\n        }\n        jl.d(\"Cloud is no longer connected.\");\n    }\n\n    public final boolean D(String str, boolean z) {\n        boolean z2;\n        while (true) {\n            AtomicReference atomicReference = this.w;\n            dlj dljVar = (dlj) atomicReference.get();\n            z2 = dljVar.c.get(str) != null;\n            if (z && !z2) {\n                return false;\n            }\n            if (kdd.l(dljVar.b, str)) {\n                break;\n            }\n            String str2 = str;\n            if (l0e.n(atomicReference, dljVar, dlj.a(dljVar, dljVar.a + 1, st"
+    },
+    {
+      "id": "R02",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/com/openai/feature/codexremote/impl/data/b.java",
+      "sha256": "69d6967c2f52eab97042176015c9203741703743644c9064863e88c701c7635c",
+      "symbol": "public final tcj B(",
+      "byte_offset": 7471,
+      "line": 251,
+      "evidence_type": "jadx-static",
+      "claim": "Named removal checks expected session identity before removing one map entry.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "turn xcq0.j(e4) ? new hh01((Throwable) e4) : new ih01(e4);\n        }\n    }\n\n    public final tcj B(String str, tcj tcjVar) {\n        AtomicReference atomicReference;\n        dlj dljVar;\n        tcj tcjVar2;\n        long j;\n        do {\n            atomicReference = this.w;\n            dljVar = (dlj) atomicReference.get();\n            tcjVar2 = (tcj) dljVar.c.get(str);\n            if (tcjVar2 == null) {\n                return null;\n            }\n            if (tcjVar != null && tcjVar2 != tcjVar) {\n                return null;\n            }\n            tcj tcjVarB = dljVar."
+    },
+    {
+      "id": "R03",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/com/openai/feature/codexremote/impl/data/b.java",
+      "sha256": "69d6967c2f52eab97042176015c9203741703743644c9064863e88c701c7635c",
+      "symbol": "if (strJ != null ? dljVar3.c.get(strJ)",
+      "byte_offset": 13110,
+      "line": 424,
+      "evidence_type": "jadx-static",
+      "claim": "After asynchronous work, explicit-key calls recheck session object; active-session calls recheck generation and active object.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "q0.o(obj);\n        }\n        dlj dljVar3 = (dlj) atomicReference.get();\n        if (strJ != null ? dljVar3.c.get(strJ) != tcjVar2 : !(dljVar3.a == dljVar.a && dljVar3.b() == tcjVar2)) {\n            throw new CodexRemoteSlingshotConnectionInvalidatedException();\n        }\n        return obj;\n    }\n\n    public final Object I(o5k o5kVar, Function2 function2, pj pjVar) {\n        byte b = 10;\n        twp twpVar = null;\n        return o5kVar == null ? H(new x3(function2, twpVar, b), pjVar) : dve.q0(new m8k(o5kVar.b()), new z3(b, twpVar, this, function2), pjVar);\n    }\n\n    public"
+    },
+    {
+      "id": "R04",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dlj.java",
+      "sha256": "53c36e62a0e232eb2325c0767331f0a31c7ee11f23bc8332538494f19eafd361",
+      "symbol": "public final tcj b()",
+      "byte_offset": 666,
+      "line": 28,
+      "evidence_type": "jadx-static",
+      "claim": "Pool snapshot contains generation, active key and map; active lookup is map.get(active key).",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "      map = dljVar.c;\n        }\n        return new dlj(j, str, map);\n    }\n\n    public final tcj b() {\n        return (tcj) this.c.get(this.b);\n    }\n\n    public final boolean equals(Object obj) {\n        if (this == obj) {\n            return true;\n        }\n        if (!(obj instanceof dlj)) {\n            return false;\n        }\n        dlj dljVar = (dlj) obj;\n        return this.a == dljVar.a && kdd.l(this.b, dljVar.b) && kdd.l(this.c, dljVar.c);\n    }\n\n    public final int hashCode() {\n        int iHashCode = Long.hashCode(this.a) * 31;\n        String str = this.b;\n     "
+    },
+    {
+      "id": "R05",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/apktool-src/smali/com/openai/feature/codexremote/impl/data/b.smali",
+      "sha256": "c54ec3d0ddc8d5b5db4f61c27ebfa698957a72985d140126334f4a0d0fb09684",
+      "symbol": "cmp-long v0, v1, v3",
+      "byte_offset": 31146,
+      "line": 1734,
+      "evidence_type": "smali-static",
+      "claim": "Smali corroborates generation comparison in async result validation.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "    .line 138\n    iget-wide v3, v0, Ldlj;->a:J\n\n    .line 139\n    .line 140\n    cmp-long v0, v1, v3\n\n    .line 141\n    .line 142\n    if-nez v0, :cond_8\n\n    .line 143\n    .line 144\n    invoke-virtual {p0}, Ldlj;->b()Ltcj;\n\n    .line 145\n    .line 146\n    .line 147\n    move-result-object p0\n\n    .line 148\n    if-ne p0, p1, :cond_8\n\n    .line 149\n    .line 150\n    goto :goto_4\n\n    .line 151\n    :cond_7\n    iget-object p0, p0, Ldlj;->c:Ljava/util/Map;\n\n    .line 152\n    .line 153\n    invoke-interface {p0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;\n\n    .l"
+    },
+    {
+      "id": "R06",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dgj.java",
+      "sha256": "090addcca3d2d2828e296671a4cf38744513cb6e6aa57a5c9cf1d0bef41a2af2",
+      "symbol": "this.l = new xyt(\"response\")",
+      "byte_offset": 3075,
+      "line": 83,
+      "evidence_type": "jadx-static",
+      "claim": "Per-RPC-client state contains separate response/process-exit/private-turn channels.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "VarE;\n        this.k = new w59(bdjVar, hwpVarE, function0, function02);\n        this.l = new xyt(\"response\");\n        this.m = new xyt(\"process exit\");\n        this.n = new xyt(\"private turn\");\n        this.o = ConcurrentHashMap.newKeySet();\n        this.p = new ConcurrentHashMap();\n        ana anaVarC = ist.c(Integer.MAX_VALUE, 0, 6, null);\n        this.q = anaVarC;\n        this.r = jm01.d(0, 16, 0, 5);\n        this.s = jm01.d(0, 256, 0, 5);\n        this.w = o4a.H(anaVarC);\n        this.x = dve.U(hwpVarE, null, 0, new bs((Object) this, twpVar, (byte) 11), 3);\n    }\n\n    /*"
+    },
+    {
+      "id": "R07",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dgj.java",
+      "sha256": "090addcca3d2d2828e296671a4cf38744513cb6e6aa57a5c9cf1d0bef41a2af2",
+      "symbol": "Received unmatched app-server response",
+      "byte_offset": 54854,
+      "line": 1172,
+      "evidence_type": "jadx-static",
+      "claim": "Unmatched response has explicit diagnostic path, not implicit completion of any current UI request.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": ".valueOf(numF2.intValue()));\n                }\n                ega0.b(ega0Var, \"Received unmatched app-server response\", null, s6b0Var.b(), 8);\n                return a011Var;\n            }\n            boolean z3 = jakVar instanceof mak;\n            xyt xytVar2 = this.m;\n            if (z3) {\n                CodexRemoteAppServerTransportFailureException codexRemoteAppServerTransportFailureException = new CodexRemoteAppServerTransportFailureException(((mak) jakVar).a);\n                xytVar.m(codexRemoteAppServerTransportFailureException);\n                xytVar2.m(codexRem"
+    },
+    {
+      "id": "R08",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ijj.java",
+      "sha256": "5902204efcf8ee99d4757a1728ad3fb6638966a94d25d18906d0614d323d3cdb",
+      "symbol": "\"thread/list\"",
+      "byte_offset": 6184,
+      "line": 127,
+      "evidence_type": "jadx-static",
+      "claim": "293 request facade constructs thread/list requests with allocated integer request ID.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "ew ohk(iAddAndGet, new v8m(dVarS, boolValueOf, jsonNull, list, timVar2, dVarC), \"thread/list\");\n                ofj ofjVar = new ofj(ohkVar, iAddAndGet, \"thread/list\", null, true, new xej(ohkVar, b));\n                nhjVar.n = dgjVar2;\n                nhjVar.p = 1;\n                objL = dgjVar2.l(ofjVar, dgjVar2.d, nhjVar);\n                yfs yfsVar = yfs.a;\n                if (objL == yfsVar) {\n                    return yfsVar;\n                }\n            }\n        } else {\n            if (i2 != 1) {\n                jl.d(\"call to 'resume' before 'invoke' with corouti"
+    },
+    {
+      "id": "R09",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ijj.java",
+      "sha256": "5902204efcf8ee99d4757a1728ad3fb6638966a94d25d18906d0614d323d3cdb",
+      "symbol": "\"thread/turns/list\"",
+      "byte_offset": 83143,
+      "line": 2004,
+      "evidence_type": "jadx-static",
+      "claim": "History has explicit turn pagination, distinct from thread metadata read.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "  ohk ohkVar = new ohk(iAddAndGet, new amm(str, mfj.s(str2), i, x0m.c, qqmVar), \"thread/turns/list\");\n            ofj ofjVar = new ofj(ohkVar, iAddAndGet, \"thread/turns/list\", str, false, new cfj(ohkVar, (byte) 2));\n            hijVar.p = 1;\n            objX = X(dgjVar, ofjVar, dnxVar, hijVar);\n            Object obj = yfs.a;\n            if (objX == obj) {\n                return obj;\n            }\n        } else {\n            if (i3 != 1) {\n                jl.d(\"call to 'resume' before 'invoke' with coroutine\");\n                return null;\n            }\n            vpq0.o("
+    },
+    {
+      "id": "R10",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ijj.java",
+      "sha256": "5902204efcf8ee99d4757a1728ad3fb6638966a94d25d18906d0614d323d3cdb",
+      "symbol": "\"turn/interrupt\"",
+      "byte_offset": 250456,
+      "line": 5783,
+      "evidence_type": "jadx-static",
+      "claim": "Interruption request includes thread and turn payload, distinct from transport teardown.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": ".addAndGet(1);\n            ohk ohkVar = new ohk(iAddAndGet, new hqm(str, str2), \"turn/interrupt\");\n            ofj ofjVar = new ofj(ohkVar, iAddAndGet, \"turn/interrupt\", str, false, new gfj(ohkVar, (byte) 2));\n            tgjVar.p = 1;\n            objL = dgjVar.l(ofjVar, dgjVar.d, tgjVar);\n            Object obj = yfs.a;\n            if (objL == obj) {\n                return obj;\n            }\n        } else {\n            if (i2 != 1) {\n                jl.d(\"call to 'resume' before 'invoke' with coroutine\");\n                return null;\n            }\n            vpq0.o(objL)"
+    },
+    {
+      "id": "R11",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/w4m.java",
+      "sha256": "b3c8ecf2e1c08695f2dc1018e7a61ad8bda495889350d527e31db1c06bbc349a",
+      "symbol": "\"thread/goal/set\"",
+      "byte_offset": 9453,
+      "line": 251,
+      "evidence_type": "jadx-static",
+      "claim": "293 package contains Goal set RPC; existence does not establish owner permission or visible edit UI.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "    }\n                ohk ohkVar = new ohk(iIntValue, new c5m(str, str2, str3), \"thread/goal/set\");\n                ofj ofjVar = new ofj(ohkVar, iIntValue, \"thread/goal/set\", str, str2 == null || d5mVar != d5m.b, new vej(ohkVar, (byte) 1));\n                v4mVar.p = 1;\n                objL = dgjVar.l(ofjVar, dgjVar.d, v4mVar);\n                obj = yfs.a;\n                if (objL == obj) {\n                    return obj;\n                }\n            } else {\n                str3 = null;\n                ohk ohkVar2 = new ohk(iIntValue, new c5m(str, str2, str3), \"thread/goa"
+    },
+    {
+      "id": "R12",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/w4m.java",
+      "sha256": "b3c8ecf2e1c08695f2dc1018e7a61ad8bda495889350d527e31db1c06bbc349a",
+      "symbol": "Codex remote app-server lacks thread goals",
+      "byte_offset": 4322,
+      "line": 122,
+      "evidence_type": "jadx-static",
+      "claim": "Goal hydration has unavailable-capability fallback; precise catch branches have decompiler limitations.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "       this.d = true;\n                    }\n                    ega0.f(this.c, \"Codex remote app-server lacks thread goals; opening thread without goal state\", e, Collections.singletonMap(\"thread_id\", x3mVar2.a), 8);\n                    return x3mVar2;\n                }\n            } else {\n                if (i2 != 1) {\n                    jl.d(\"call to 'resume' before 'invoke' with coroutine\");\n                    return null;\n                }\n                x3m x3mVar5 = t4mVar.o;\n                x3mVar3 = t4mVar.n;\n                try {\n                    vpq0.o(objC"
+    },
+    {
+      "id": "R13",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dgj.java",
+      "sha256": "090addcca3d2d2828e296671a4cf38744513cb6e6aa57a5c9cf1d0bef41a2af2",
+      "symbol": "\"item/commandExecution/requestApproval\"",
+      "byte_offset": 30975,
+      "line": 803,
+      "evidence_type": "jadx-static",
+      "claim": "RPC input dispatch recognizes command execution approval; UI resolution/owner enforcement not established.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "              case -195819668:\n                                if (strG3.equals(\"item/commandExecution/requestApproval\")) {\n                                    try {\n                                        zy60 zy60Var2 = nfj.a;\n                                        zy60Var2.getClass();\n                                        hh01Var2 = new mh01(zy60Var2.a(c2l.Companion.serializer(), bVar2));\n                                    } catch (TimeoutCancellationException e5) {\n                                        hh01Var2 = new ih01(e5);\n                                    }"
+    },
+    {
+      "id": "R14",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pxl.java",
+      "sha256": "cf06d6d71d74b641d4907015c0cb994009be82b037265f69c523b46ad7354010",
+      "symbol": "pluginGeneratedSerialDescriptor.l(\"type\"",
+      "byte_offset": 862,
+      "line": 20,
+      "evidence_type": "jadx-static",
+      "claim": "293 envelope serializer names type/clientId/env_id/streamId/seq_id/cursor/chunk and state fields.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "Descriptor(\"UlEotumMmfvV090pZC3ivDAcs1twDsJn6hbcAoCTHyA=\", pxlVar, 14);\n        pluginGeneratedSerialDescriptor.l(\"type\", false);\n        pluginGeneratedSerialDescriptor.l(\"clientId\", true);\n        pluginGeneratedSerialDescriptor.l(\"env_id\", true);\n        pluginGeneratedSerialDescriptor.l(\"streamId\", true);\n        pluginGeneratedSerialDescriptor.l(\"seq_id\", true);\n        pluginGeneratedSerialDescriptor.l(\"skipHistory\", true);\n        pluginGeneratedSerialDescriptor.l(\"cursor\", true);\n        pluginGeneratedSerialDescriptor.l(\"message\", true);\n        pluginGeneratedSeri"
+    },
+    {
+      "id": "R15",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/ohk.java",
+      "sha256": "55b132b593804e4c668739e601f0dd5517f2fbbc6b09102de0661f2f544c26ed",
+      "symbol": "pluginGeneratedSerialDescriptor.l(\"jsonrpc\"",
+      "byte_offset": 725,
+      "line": 19,
+      "evidence_type": "jadx-static",
+      "claim": "App-server JSON-RPC request wrapper is separate from Slingshot envelope.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "ialDescriptor(\"7l2KNyqbnj0jQdCcAzFpwOdO5zvQQtkfNNZX4-galj8=\", null, 4);\n        pluginGeneratedSerialDescriptor.l(\"jsonrpc\", true);\n        pluginGeneratedSerialDescriptor.l(ValdiTextView.MenuActionIdKey, false);\n        pluginGeneratedSerialDescriptor.l(\"method\", false);\n        pluginGeneratedSerialDescriptor.l(\"params\", false);\n        e = pluginGeneratedSerialDescriptor;\n    }\n\n    public /* synthetic */ ohk(int i, String str, int i2, String str2, Object obj) {\n        if (14 != (i & 14)) {\n            to60.Z(i, 14, e);\n            throw null;\n        }\n        if ((i &"
+    },
+    {
+      "id": "R16",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/zzl.java",
+      "sha256": "6ad4c7bf7c8446eee531c5840f8e7ff36463184e1f7f266a3d7f5fc8d3179e90",
+      "symbol": "\"CodexRemoteSlingshotRelay\"",
+      "byte_offset": 3903,
+      "line": 105,
+      "evidence_type": "jadx-static",
+      "claim": "293 has a relay object with connection/session collections; old244 fhd layout cannot be silently reused.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": " E;\n        this.o = czlVar;\n        this.p = e0mVar;\n        this.q = mwq.M(6, \"CodexRemoteSlingshotRelay\");\n        hwp hwpVarR = to60.r(sfsVar, \"CodexRemoteSlingshotRelay\", k8u.b);\n        this.r = hwpVarR;\n        this.s = new g6e0();\n        this.t = new ConcurrentHashMap();\n        this.u = new LinkedHashMap();\n        this.v = new g6e0();\n        this.z = new Object();\n        sqo.A(hwpVarR.a).O(new r6(this, (byte) 18));\n    }\n\n    public static void u(eo10 eo10Var) {\n        yya yyaVar = zya.Companion;\n        int length = eo10Var.b.length;\n        yyaVar.getClass()"
+    },
+    {
+      "id": "R17",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/com/openai/feature/codexremote/impl/data/d.java",
+      "sha256": "a47ba8107bf9f2e12f437ffd095e741d70b8f35957fa14024f828044ae09bb99",
+      "symbol": "Remote-control token response has unexpected scopes.",
+      "byte_offset": 5862,
+      "line": 154,
+      "evidence_type": "jadx-static",
+      "claim": "Token validation checks enrollment identities, nonempty token, expiry and scopes.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "onse is expired.\", epochSecond > System.currentTimeMillis() / 1000);\n        h(\"Remote-control token response has unexpected scopes.\", kdd.l(exlVar.e, h));\n        return new fil(hjlVar.a, hjlVar.b, hjlVar.c, exlVar.c, epochSecond, exlVar.e, hjlVar.g);\n    }\n\n    /* JADX WARN: Removed duplicated region for block: B:7:0x001b  */\n    /*\n        Code decompiled incorrectly, please refer to instructions dump.\n    */\n    public final Object a(fil filVar, da11 da11Var, nkl nklVar, vwp vwpVar) {\n        nil nilVar;\n        byte[] bArr;\n        fil filVar2 = filVar;\n        if (vwp"
+    },
+    {
+      "id": "R18",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/com/openai/feature/codexremote/impl/data/d.java",
+      "sha256": "a47ba8107bf9f2e12f437ffd095e741d70b8f35957fa14024f828044ae09bb99",
+      "symbol": "kdd.l(nklVar.f, r0mVarM.a)",
+      "byte_offset": 7405,
+      "line": 184,
+      "evidence_type": "jadx-static",
+      "claim": "Device challenge code compares target origin/path and identity; method contains JADX warning, no full crypto behavior proof.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "  h(\"Remote-control websocket device-key challenge does not match enrollment.\", kdd.l(nklVar.f, r0mVarM.a));\n            h(\"Remote-control websocket device-key challenge does not match enrollment.\", kdd.l(nklVar.g, r0mVarM.b));\n            String str = nklVar.j;\n            String str2 = filVar2.d;\n            Charset charset = gve.a;\n            h(\"Remote-control websocket device-key challenge does not match enrollment.\", kdd.l(str, Base64.getUrlEncoder().withoutPadding().encodeToString(MessageDigest.getInstance(\"SHA-256\").digest(str2.getBytes(charset)))));\n            lon"
+    },
+    {
+      "id": "R19",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/com/openai/feature/codex/CodexRemoteSessionForegroundService.java",
+      "sha256": "7cb06a661ee810cddb0f09cea0678c8f1dba463e1471b40b47fd0c13b0e16844",
+      "symbol": "intent.getStringExtra(\"host_id\")",
+      "byte_offset": 15798,
+      "line": 405,
+      "evidence_type": "jadx-static",
+      "claim": "Foreground notification/bubble service receives a host identity; not proof of transport ownership or multi-host correctness.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "                    break;\n            }\n        }\n        String stringExtra = intent.getStringExtra(\"host_id\");\n        if (stringExtra == null) {\n            stringExtra = \"\";\n        }\n        String str = stringExtra;\n        String stringExtra2 = intent.getStringExtra(\"host_name\");\n        if (stringExtra2 == null) {\n            stringExtra2 = \"\";\n        }\n        String str2 = stringExtra2;\n        qrl qrlVar = (qrl) jm01.H(intent, \"mode\", qrl.class);\n        if (qrlVar == null) {\n            qrlVar = qrl.d;\n        }\n        qrl qrlVar2 = qrlVar;\n        vnj vnjVar"
+    },
+    {
+      "id": "R20",
+      "platform": "desktop-macos-extracted",
+      "version": "26.1021.31345 (package metadata)",
+      "path": "recovered/macos/asar-extracted/package.json",
+      "sha256": "448219c3cc052f2c0bed32caf8aa5858106b50b8074a9d4b542118bda813008b",
+      "symbol": "\"version\"",
+      "byte_offset": 87,
+      "line": 5,
+      "evidence_type": "package-static-js",
+      "claim": "Extracted package identifies itself as openai-codex-electron version26.1021.31345, not historical desktop4.0.21 label.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Source-to-original-desktop-package provenance not reverified; historic4.0.21 label must not be assumed"
+      ],
+      "status": "partial",
+      "snippet": "me\": \"openai-codex-electron\",\n  \"productName\": \"Codex\",\n  \"author\": \"OpenAI\",\n  \"version\": \"26.1021.31345\",\n  \"description\": \"Codex\",\n  \"main\": \".vite/build/early-bootstrap.js\",\n  \"scripts\": {\n    \"compile\": \"node ./scripts/ensure-owl-electron-types.mjs && node ../cli/run-package-typescript.mjs --build\",\n    \"tsc\": \"node ./scripts/ensure-owl-electron-types.mjs && node ../cli/run-package-typescript.mjs\",\n    \"dev\": \"pnpm --dir .. run app\",\n    \"prepare:owl\": \"pnpm run owl:prepare-runtime && pnpm run desktop:host\",\n    \"owl\": \"pnpm run prepare:owl && pnpm run owl:run\",\n    \"o"
+    },
+    {
+      "id": "R21",
+      "platform": "desktop-macos-extracted",
+      "version": "26.1021.31345 (package metadata)",
+      "path": "recovered/macos/asar-extracted/.vite/build/src-Dl21kCYQ.js",
+      "sha256": "a42052ee3309565865f2d20fc45dee297935cbb50d1fc1a404b90c18d824b93c",
+      "symbol": "Duplicate request id:",
+      "byte_offset": 285992,
+      "line": 576,
+      "evidence_type": "package-static-js",
+      "claim": "Desktop connection request helper rejects duplicate internal request IDs and owns timeout/cancel handlers.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Source-to-original-desktop-package provenance not reverified; historic4.0.21 label must not be assumed"
+      ],
+      "status": "partial",
+      "snippet": "d,request:a=>new Promise((o,s)=>{if(n.internalResponseHandlers.has(i)){s(Error(`Duplicate request id: ${i}`));return}let c={resolve:e=>{t?.onSettled?.(),clearTimeout(c.timeout??void 0),o(e)},reject:(e,r=!0)=>{r&&n.cancelRequest(i),n.backendAuth.finishAccountChange(i),t?.onSettled?.(),clearTimeout(c.timeout??void 0),s(e)},timeout:null,startedAtMs:Date.now(),method:e.method,conversationId:Eu(e.params)};if(n.internalResponseHandlers.set(i,c),r!=null){let a=r,o=Date.now(),s=()=>{o=Date.now(),c.timeout=setTimeout(()=>{c.setSuspended=void 0,$p(i,n.internalResponseHandlers,nm(e.pa"
+    },
+    {
+      "id": "R22",
+      "platform": "desktop-macos-extracted",
+      "version": "26.1021.31345 (package metadata)",
+      "path": "recovered/macos/asar-extracted/.vite/build/src-Dl21kCYQ.js",
+      "sha256": "a42052ee3309565865f2d20fc45dee297935cbb50d1fc1a404b90c18d824b93c",
+      "symbol": "readDirectory:e=>t.sendAppServerRequest(`fs/readDirectory`,e)",
+      "byte_offset": 281495,
+      "line": 576,
+      "evidence_type": "package-static-js",
+      "claim": "Desktop connection adapter forwards directory read via fs/readDirectory; Android counterpart and server handler remain unlocated.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Source-to-original-desktop-package provenance not reverified; historic4.0.21 label must not be assumed"
+      ],
+      "status": "partial",
+      "snippet": ".sendAppServerRequest(`fs/getMetadata`,e),platformFamily:()=>t.platformFamily(),readDirectory:e=>t.sendAppServerRequest(`fs/readDirectory`,e),readFile:e=>t.sendAppServerRequest(`fs/readFile`,e),remove:e=>t.sendAppServerRequest(`fs/remove`,e),spawn:e=>t.spawn(e),writeFile:e=>t.sendAppServerRequest(`fs/writeFile`,e)})}};function Up(e,t,n,r){return{type:`codex-app-server-initialized`,hostId:e,transport:t,appServerVersion:n,installedCodexVersion:r}}var Wp=new Set([`app/list`,`collaborationMode/list`,`config/read`,`configRequirements/read`,`experimentalFeature/list`,`hooks/list`"
+    },
+    {
+      "id": "R23",
+      "platform": "desktop-macos-extracted",
+      "version": "26.1021.31345 (package metadata)",
+      "path": "recovered/macos/asar-extracted/.vite/build/src-Dl21kCYQ.js",
+      "sha256": "a42052ee3309565865f2d20fc45dee297935cbb50d1fc1a404b90c18d824b93c",
+      "symbol": "queuedRequests=[];inFlightRequests=new Map",
+      "byte_offset": 289726,
+      "line": 576,
+      "evidence_type": "package-static-js",
+      "claim": "Desktop app-server client has queue/inflight/coalescing state; this is client scheduling not remote server scheduling.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Source-to-original-desktop-package provenance not reverified; historic4.0.21 label must not be assumed"
+      ],
+      "status": "partial",
+      "snippet": "_list`]),hm=new Set([`recent_threads`,`thread_catalog`,`thread_list`]),gm=class{queuedRequests=[];inFlightRequests=new Map;coalescedRequestIds=new Map;enqueue(e){let t=_m(e.method,e.scheduling),n=e.scheduling?.source,r=Date.now(),i=vm(t,n,e.scheduling?.timeoutMs,e.scheduling?.expiresAtMs);if(i!=null&&i<=0)return e.reject({reason:`queue-expired`,queueWaitMs:0,queuedPriorityRequestCount:0}),{coalescedWithRequestId:null};let a=e.coalesce!==!1&&pm.has(e.method)?JSON.stringify([e.method,e.params,t,n??null,e.scheduling?.timeoutMs??0]):null;if(a!=null){let e=this.coalescedRequestI"
+    },
+    {
+      "id": "R24",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/w4m.smali",
+      "sha256": "f74bb4ec7f9cbb68e816874141dc796dba8d9216c76b0d8e082be683b71b9956",
+      "symbol": "\"thread/goal/get\"",
+      "byte_offset": 14654,
+      "line": 877,
+      "evidence_type": "smali-static",
+      "claim": "Goal get literal corroborated independently in Android smali.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "ne 209\n    if-eqz v2, :cond_6\n\n    .line 210\n    .line 211\n    const-string v5, \"thread/goal/get\"\n\n    .line 212\n    .line 213\n    invoke-static {v2, v5, v4}, Ls4x0;->U(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Z)Z\n\n    .line 214\n    .line 215\n    .line 216\n    move-result v2\n\n    .line 217\n    if-ne v2, v4, :cond_6\n\n    .line 218\n    .line 219\n    iput-boolean v4, v1, Lw4m;->d:Z\n\n    .line 220\n    .line 221\n    :cond_6\n    const-string v2, \"thread_id\"\n\n    .line 222\n    .line 223\n    iget-object v4, v3, Lx3m;->a:Ljava/lang/String;\n\n    .line 224\n    .line 225\n    inv"
+    },
+    {
+      "id": "R25",
+      "platform": "android",
+      "version": "1.2026.293 (artifact path baseline)",
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes4/dgj.smali",
+      "sha256": "a634ddf6d07a58e47313f15279c9d1cefebe969ff5e14c78c76365efc6086a2e",
+      "symbol": "\"item/commandExecution/requestApproval\"",
+      "byte_offset": 87628,
+      "line": 5047,
+      "evidence_type": "smali-static",
+      "claim": "Approval dispatch literal corroborated in Android smali.",
+      "limitations": [
+        "No target/runtime/service execution",
+        "Source observation only; app-server availability and authorization not proved",
+        "Complex JADX methods require branch-level smali validation"
+      ],
+      "status": "partial",
+      "snippet": "/16 :goto_10\n\n    .line 1140\n    .line 1141\n    :sswitch_5\n    const-string v7, \"item/commandExecution/requestApproval\"\n\n    .line 1142\n    .line 1143\n    invoke-virtual {v13, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z\n\n    .line 1144\n    .line 1145\n    .line 1146\n    move-result v7\n\n    .line 1147\n    if-nez v7, :cond_27\n\n    .line 1148\n    .line 1149\n    goto/16 :goto_b\n\n    .line 1150\n    .line 1151\n    :cond_27\n    :try_start_6\n    sget-object v7, Lnfj;->a:Lzy60;\n\n    .line 1152\n    .line 1153\n    invoke-virtual {v7}, Ljava/lang/Object;->getClass()Ljava/lang/C"
+    }
+  ],
+  "root_artifact_manifest": "analysis/takeover-20261103/baseline.json",
+  "root_artifact_manifest_sha256": "087af2fb24ab4f36e46c351a378c414d1ff6399f7508fdba9dcd4d8843494005",
+  "unknowns": [
+    {
+      "id": "RU01",
+      "boundary": "Android293 paired-host API/list aggregation to session-pool population",
+      "next_action": "Trace b pool map insertion and discovery producer; distinguish active key from all hosts list."
+    },
+    {
+      "id": "RU02",
+      "boundary": "Android293 directory selector to concrete filesystem request",
+      "next_action": "Trace directory capability consumer before pairing with desktop fs/readDirectory."
+    },
+    {
+      "id": "RU03",
+      "boundary": "iOS293 native Remote session/host/RPC implementation",
+      "next_action": "Independently trace iOS native call bodies; module names/symbol presence insufficient."
+    },
+    {
+      "id": "RU04",
+      "boundary": "Desktop connection adapter to actual remote-control ingress and server method authorization",
+      "next_action": "Trace selected receiver registration and owner checks in exact packaged source; no live service probe."
+    },
+    {
+      "id": "RU05",
+      "boundary": "293 relay reconnection/ack/chunk limits exact behavior",
+      "next_action": "Resolve zzl/rxl/pxl and typed sizes at smali level, do not transplant244 values."
+    }
+  ]
+}

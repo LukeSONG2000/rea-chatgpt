@@ -1,0 +1,43 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact static plus independent fixture assignment",
+  "observations": [
+    {
+      "offset": "0x3a4c38..0x3a4c50",
+      "conclusion": "Host-like Label reads icon byte at +0x40 and invokes 0x241a584; accessibility text has Host: prefix at0x3a4c9c..ac."
+    },
+    {
+      "offset": "0x241a584",
+      "conclusion": "Five-way icon dispatch; metadata CodexRemoteHostIcon at0x95d1058 has ide/terminal/laptop/desktop/cloud. Table bytes at0x7e824e0 select code/terminal/laptop/desktop/cloud factories in this order. Mapping case order to tags remains static ABI inference."
+    },
+    {
+      "offset": "0x3a4a28",
+      "conclusion": "Secondary label region uses known footnote factory0x74e2788."
+    },
+    {
+      "offset": "0x3a4a80",
+      "conclusion": "Color factory0x74ee310 uses ChatGPT/text/secondary at0x8a51bc0."
+    }
+  ],
+  "integration": [
+    "Explicit optional HostIcon typed input. Synthetic fixture-a selects laptop; fixture-b selects cloud. No inference from connection state or operating system.",
+    "Host labels now use original icon resources, footnote and official secondary color; accessibility keeps host text."
+  ],
+  "limitations": [
+    "Host visibility/filter/project gates not closed",
+    "Workspace/environment payload not yet mapped; no invented workspace subtitle",
+    "Icon13pt and label spacing4 remain temporary adapters; Dynamic Type icon metrics unaccepted",
+    "Android independent mapping unverified"
+  ],
+  "validation": {
+    "simulator": "testRemoteTaskScopeAndReturn passed1/0",
+    "visual": "list screenshot inspected; laptop/cloud assets and secondary text visible without observed clipping",
+    "limits": "No official runtime visual comparison, Dynamic Type/icon-size acceptance or subtitle visibility-gate acceptance",
+    "preview_pid": 75801,
+    "phone": "not updated",
+    "external_display": "not reverified"
+  }
+}

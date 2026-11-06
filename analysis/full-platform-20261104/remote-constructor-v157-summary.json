@@ -1,0 +1,33 @@
+{
+  "status": "partial",
+  "authority": "actual original exported class in packaged v155 macOS renderer; independent explicit dependencies",
+  "sources": [
+    {
+      "path": "analysis/tools/probe_original_remote_constructor.js",
+      "sha256": "ac8bd53d99efd9fd3f80cf096cdd568ff674a5955259a2e2228cd054c701795e"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-constructor.cjs",
+      "sha256": "eeadf9e96fb0ca6524a062ead40ee0e4e30ffb9b9368c71960b07f505322e805"
+    }
+  ],
+  "reports": [
+    "remote-constructor-v157-runtime.json",
+    "remote-constructor-v157-r2.json",
+    "remote-constructor-v157-r3.json"
+  ],
+  "passed": [
+    "full original constructor",
+    "empty original thread store",
+    "original notification callback delivers then stops after unsubscribe",
+    "different host subscription rejected",
+    "original dispose clears transport and saved-read listeners",
+    "existing packaged two-owner IPC regression"
+  ],
+  "limits": [
+    "constructor transport deliberately rejects requests",
+    "notifications emitted directly into original event dispatcher; not RPC delivery or state reduction",
+    "no original thread hydration yet",
+    "no new package or live model request"
+  ]
+}

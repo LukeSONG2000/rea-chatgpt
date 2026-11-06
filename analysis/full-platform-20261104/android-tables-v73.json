@@ -1,0 +1,68 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-native-host-controlled-UI-replay",
+  "changes": [
+    "Two-table synthetic fixture and native isolation/offscreen-return/navigation scenario",
+    "Runner profiles explicitly recorded; capture export validates PNG signature and XML root before writing"
+  ],
+  "validation": {
+    "build": "passed",
+    "native_scenario": "passed",
+    "table_bounds": {
+      "independent": [
+        [
+          "OneLast5755ce",
+          "[701,1258][1016,1321]"
+        ],
+        [
+          "TwoFirst5755ce",
+          "[64,1576][389,1639]"
+        ]
+      ],
+      "offscreen": [],
+      "returned": [
+        [
+          "OneLast5755ce",
+          "[701,1258][1016,1321]"
+        ],
+        [
+          "TwoFirst5755ce",
+          "[64,1576][389,1639]"
+        ]
+      ],
+      "navigated": [
+        [
+          "OneLast5755ce",
+          "[701,1258][1016,1321]"
+        ],
+        [
+          "TwoFirst5755ce",
+          "[64,1576][389,1639]"
+        ]
+      ]
+    },
+    "visual_review": "First current table scrolled to right, second at left after navigation; run IDs checked against earlier history"
+  },
+  "evidence": [
+    "android-tables-v73-ui-v2.json"
+  ],
+  "prior_attempt": "v1 failed UiScrollable generic search; first-table drag independence passed but return was not accepted. v2 uses native Back to latest action.",
+  "limits": [
+    "UI tree absence is proven; Compose internal disposal/prefetch lifecycle was not instrumented",
+    "No force-stop persistence, physical-device, official visual or arbitrary table rewrite acceptance",
+    "Duplicate-header policy has identity tests but no dedicated duplicate-table native scenario"
+  ],
+  "cleanup": {
+    "host_stopped": true,
+    "android_pairing_removed": true,
+    "owned_server_stopped": true,
+    "private_pairing_removed": true
+  },
+  "sources": {
+    "implementation/harness/fixture_worker.py": "dc2e1f783ee9acb2f66881040a008be69d3445cb6657fa51c90b26010bbafc1d",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "91f5af82f2fd5633a20fe66db43b78f47e47890623748b1d07f0bc7027b6d1ff",
+    "implementation/android/test-message-actions.py": "4f8f4a6187ea87fe3d6b285fd0a05e4e50ba4c7a166980356bb42da621e92518",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/NativeTableState.kt": "52da8f83de6135d27d83a68c8d6554afa062ca23d867ac49ea052ffab2f3494e"
+  }
+}

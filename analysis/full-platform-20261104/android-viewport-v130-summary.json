@@ -1,0 +1,41 @@
+{
+  "status": "partial",
+  "surface": "Android independent native Compose host",
+  "baseline": "Android 1.2026.293 evidence; public parser/native reconstruction, not recovered official UI",
+  "change": "Durable conversation/message-keyed vertical viewport and tail-follow mode; restore stable request identity rather than index; reject bad scope/offset and preserve corrupt records",
+  "accepted": [
+    "Dedicated emulator build and two instrumentation phases",
+    "A-B-A reading position",
+    "Force-stop verified no process; different process restores same paragraph within 8px",
+    "Storage scope/offset rejection and corrupt-read preservation",
+    "Return-to-latest persists following mode"
+  ],
+  "processes": [
+    "16479",
+    "16582"
+  ],
+  "reports": [
+    "android-viewport-v130.json",
+    "android-viewport-v130-r2.json"
+  ],
+  "geometry": {
+    "firstParagraph": "Viewport paragraph 16",
+    "before": "[42,567][1038,840]",
+    "after": "[42,567][1038,840]"
+  },
+  "cleanup": "Independent host stopped on emulator-5554; physical connected device untouched; no harness/model/network used",
+  "limitations": [
+    "Fixed geometry completed synthetic message only",
+    "Font/rotation reflow and horizontal table persistence remain unaccepted",
+    "Abrupt death between gesture and checkpoint not covered",
+    "Synchronous preference writes; frame/disk performance not measured",
+    "Visual fidelity to official app and physical Android unaccepted"
+  ],
+  "sources": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/ViewportStore.kt": "49377abc23498cfd427e2de824c7b427a2dc6df3c73de913f66f0d43939dc6fb",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "30c9e428abb702366f1c3a3e5f0d369b56f3434a6444010f0cbeb047172dd84c",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/ConversationCatalog.kt": "cca850788686bf4b11503e7f65e547a10981989512b370e2a47f63ef7316b967",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "6db723562a3c0838376a46521d5f3f3583e41dcb1ab80db3cc7a83d1cdb95672",
+    "implementation/android/test-viewport.py": "ddc95ca4651b0f9335b53dc80bd4a8a99258dd5ab3b9e57d2a69bdfd317ddd6a"
+  }
+}

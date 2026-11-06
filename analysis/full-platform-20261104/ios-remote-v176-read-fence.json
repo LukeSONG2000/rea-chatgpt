@@ -1,0 +1,31 @@
+{
+  "status": "partial",
+  "authority": "independent iOS local Remote controller; not official recovered behavior",
+  "finding": "An events/read started before an operation could replace HostState after the operation began; matching thread/cursor alone cannot reject it when a send keeps both unchanged. Late errors could also overwrite current connection status.",
+  "change": "Per-host read generation invalidated on refresh/new-thread/send/cancel and leaving the screen. Both success and failure callbacks require current generation; success additionally requires unchanged thread/cursor and no task cancellation.",
+  "validation": {
+    "pureSwiftAdmissionTests": "passed",
+    "iOSSimulatorBuild": "passed",
+    "buildLog": "ios-v176-build.log",
+    "delayedTransportUIReplay": "not yet executed",
+    "physicalIPhone": "not executed"
+  },
+  "limits": [
+    "Main-actor admission verified in isolated Swift tests, not device scheduling proof.",
+    "Existing Remote UI still lacks full thread catalog and official visual parity."
+  ],
+  "source": [
+    {
+      "path": "implementation/ios/Sources/RemoteReadFence.swift",
+      "sha256": "f4bfaba93d7dcae62af299841b9f33116276f8dba12d7b8a324cb1627672f020"
+    },
+    {
+      "path": "implementation/ios/Sources/LocalRemote.swift",
+      "sha256": "c2ef718ab0dfdaf9691b29ec763ef723f754886e61d6f51cb641ae014b15bd2d"
+    },
+    {
+      "path": "implementation/ios/RemoteFenceTests/main.swift",
+      "sha256": "ffeb06a8cc9b75fed6a4a5174029458df3d5a3f36769df9a3dc8f64eb77f0449"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+(version 1)
+(allow default)
+(deny network-outbound (remote ip "*:*"))
+(deny network-inbound (local ip "*:*"))
+; Playwright Electron inspector and DevTools are loopback-only.
+(allow network-inbound network-bind (local ip "localhost:*"))
+(allow network-outbound (remote ip "localhost:*"))

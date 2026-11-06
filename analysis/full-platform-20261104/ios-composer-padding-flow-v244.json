@@ -1,0 +1,74 @@
+{
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "finding": "12/18 flows to disclaimer padding, not evidence for editor inset",
+  "flow": [
+    {
+      "site": "0x4c640fc",
+      "operation": "select 12 or 18; condition identities unresolved"
+    },
+    {
+      "site": "0x4c64148",
+      "operation": "capture value at +0x60"
+    },
+    {
+      "site": "0x4e4dc20",
+      "operation": "load capture into d1"
+    },
+    {
+      "site": "0x4c64440",
+      "operation": "copy d1 to d9"
+    },
+    {
+      "site": "0x4c64a7c",
+      "operation": "Edge.Set.top"
+    },
+    {
+      "site": "0x4c64a84",
+      "operation": "helper 0x3ecb9a0 copies d9 to d0 and tail-calls EdgeInsets._all"
+    },
+    {
+      "site": "0x4c64acc",
+      "operation": "bottom-padding candidate zeroed conditionally at 0x4c64ad0/adC; boolean identities unresolved"
+    },
+    {
+      "site": "0x4c64aac",
+      "operation": "Edge.Set.bottom"
+    },
+    {
+      "site": "0x4c64b08",
+      "operation": "same EdgeInsets helper uses conditional d9"
+    }
+  ],
+  "edge_insets_binding": {
+    "symbol": "_$s7SwiftUI10EdgeInsetsV4_allAC12CoreGraphics7CGFloatV_tcfC",
+    "library_ordinal": 82,
+    "weak": false,
+    "import_ordinal": 7844,
+    "table_addend": 0,
+    "encoded_pointer_addend": 0,
+    "chain_membership_verified": true
+  },
+  "type_records": [
+    "0x81263f8",
+    "0x8126400",
+    "0x81263e8"
+  ],
+  "editor_layout": {
+    "descriptor": "0x9672e90",
+    "witness": "0x4d4d6f0",
+    "body": "0x4d4d03c",
+    "padding_site": "0x4d4d3c0",
+    "frame_site": "0x4d4d4b4",
+    "fixed_size_site": "0x4d4d4fc",
+    "limits": [
+      "generic metadata field offsets not resolved",
+      "helper at 0x4d4d514 belongs to a separate function",
+      "no concrete editor padding/default dimensions recovered"
+    ]
+  },
+  "ui_changed": false
+}

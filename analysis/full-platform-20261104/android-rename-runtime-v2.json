@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "serial": "emulator-5554",
+  "run_id": "8d5a29322fdc413ca4c8da30c79d36a2",
+  "origin": "independent native Compose host",
+  "steps": [
+    {
+      "apk": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "e604c9334663cc8676247d111715f2e2325b0c0bbe6982bdfbeeefdf971741ae"
+    },
+    {
+      "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "0d5a20ce71cb0f4b2991613c8ecf67d2253a8ef46df44e7ee87ef15c02e42ac0"
+    },
+    {
+      "test": "MessageStoreTest#renameIdentityAndTitleAllocation",
+      "status": "passed"
+    },
+    {
+      "test": "NativeHostTest#prepareLongListRename",
+      "status": "passed"
+    },
+    {
+      "test": "NativeHostTest#verifyLongListRenameRestart",
+      "status": "passed"
+    },
+    {
+      "cold_restart": {
+        "before": "10299",
+        "after": "10376"
+      }
+    }
+  ]
+}

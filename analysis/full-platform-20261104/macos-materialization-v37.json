@@ -1,0 +1,80 @@
+{
+  "status": "partial",
+  "platform": "macos",
+  "baseline": "Codex 26.1021.31345 build 21828 original renderer, independent host",
+  "root_cause": "Deferred catalog publication waits for L7n initial materialization; sidebar prerequisite Jbn is disabled without projectlessThreads. Existing first-page data remained frozen despite successful refresh reads.",
+  "implementation": [
+    "Provide readWorkspaceRoot for dedicated independent local directory; createPaths explicitly unsupported",
+    "Honor remove notifications for identities successfully deleted in this service lifetime; reject foreign or absent refresh targets"
+  ],
+  "verified": [
+    "Cancel confirmation sends no DELETE",
+    "Actual confirmation removes B from current-process original sidebar without restart",
+    "Published catalog excludes B and retains A; reader startup materialization populated",
+    "Catalog and deletion identity regressions pass; screenshot reviewed"
+  ],
+  "runtime": {
+    "deleted": "offline-fixture-conversation-002",
+    "remaining": [
+      "offline-fixture-conversation-001"
+    ],
+    "workload": {
+      "hosts": 2,
+      "scopes": 2,
+      "explicitRequested": 0,
+      "explicitLoaded": 0,
+      "peakPublished": 2,
+      "startup": {
+        "page": {
+          "batches": 3,
+          "requested": 40,
+          "returned": 4,
+          "failed": 0,
+          "inFlight": 0,
+          "durationMs": 95
+        },
+        "point": {
+          "batches": 0,
+          "requested": 0,
+          "returned": 0,
+          "failed": 0,
+          "inFlight": 0,
+          "durationMs": 0
+        }
+      },
+      "page": {
+        "batches": 7,
+        "requested": 100,
+        "returned": 8,
+        "failed": 0,
+        "inFlight": 0,
+        "durationMs": 107
+      },
+      "point": {
+        "batches": 0,
+        "requested": 0,
+        "returned": 0,
+        "failed": 0,
+        "inFlight": 0,
+        "durationMs": 0
+      }
+    },
+    "pageErrors": []
+  },
+  "limits": [
+    "Scoped draft cleanup remains pending",
+    "No tool execution or complete projectless workspace capability",
+    "Delete retry/idempotency, all-route lifecycle, full fidelity and other platforms unaccepted"
+  ],
+  "next_action": "Persist deletion cleanup for scoped drafts, guard late draft updates from restoring deleted state, and verify other-conversation drafts survive",
+  "evidence_sha256": {
+    "analysis/tools/desktop-fixture-services.mjs": "aa4ddb9962da44d7095655dbbe73bcb3ad021a9632887b844f098b3be9a7cdc2",
+    "analysis/tools/probe_desktop_root_mount.cjs": "14a63344a98c4b84394f69e59a5335d90742089a77e6f611577c26192b9c68f4",
+    "analysis/tools/test_desktop_delete_conversation.mjs": "2314e03131bf78e6ba5f138e76da4289187d7ede400bcc2ec6630697fccfd2a8",
+    "analysis/full-platform-20261104/macos-delete-runtime-v4.json": "3113d2df38192d15da27d4dd3f96642ddbccc272548c31e8410688dc1a780396",
+    "analysis/full-platform-20261104/macos-delete-runtime-v5.json": "1529e9ff653c5ad63c94fbf0f7d725f616107a854bccfb4c231846261952cff1",
+    "analysis/full-platform-20261104/macos-delete-unit-v2.log": "12f8a22a7ec4d5fc5af12ed4175d29d4e601cc25418989202ead7e775699de2f",
+    "analysis/full-platform-20261104/macos-materialization-catalog-unit-v1.log": "11e39f46e365f2b9bcd261f4ea5dcb19653523a19fa12e3299585400c0731d47",
+    "analysis/full-platform-20261104/macos-catalog-materialization-source-v1.json": "9f151f3ad7c12f1e757575c09f692426a66acaa1ea5c94346af6941a2d031cea"
+  }
+}

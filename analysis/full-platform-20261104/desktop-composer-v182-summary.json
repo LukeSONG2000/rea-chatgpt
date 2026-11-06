@@ -1,0 +1,20 @@
+{
+  "status": "partial",
+  "startupFix": "Host now derives and verifies 15 CSS dependencies from the official app-main runtime preload table, preserves their order, and waits for all styles before initialization. Both macOS and Windows artifact tables resolved.",
+  "manualHeightOverride": "removed",
+  "validation": {
+    "sourceHostStarted": true,
+    "pageErrors": [],
+    "shellAndResizePassed": true,
+    "chatAlignment": {
+      "textCenter": 674,
+      "buttonCenter": 678,
+      "delta": -4,
+      "editorHeight": 36
+    },
+    "alignmentTest": "failed, retained as evidence"
+  },
+  "conclusion": "Missing startup styles were real, but filling the exact official CSS closure did not fix the default composer alignment. Do not attribute the remaining defect to missing CSS without further evidence.",
+  "nextBoundary": "Trace default single-line layout choice and version-specific original component behavior. Compare the current screenshot to an identified artifact version before claiming parity.",
+  "preview": "Existing external display preview retained; source changes not applied to it yet."
+}

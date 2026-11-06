@@ -1,0 +1,80 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x380dd70",
+    "end_exclusive": "0x380de98",
+    "sha256": "e603fde50ca6b96008e8b60c315b4acffabf75527963ac20c004d3e05db33067"
+  },
+  "linker_function_starts_in_window": [
+    "0x380dd70"
+  ],
+  "next_linker_function_start": "0x380de98",
+  "direct_calls": [
+    {
+      "site": "0x380dd74",
+      "target": "0x1607a0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x380dd84",
+      "target": "0x156170",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x380dd98",
+      "target": "0x38298dc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x380dda0",
+      "target": "0x1531a0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x380ddd4",
+      "target": "0x7c41c44",
+      "imported_symbol": "_$s10Foundation9IndexPathV5UIKitE4itemSivg",
+      "chained_binding": {
+        "slot": "0xaac57c8",
+        "symbol": "_$s10Foundation9IndexPathV5UIKitE4itemSivg",
+        "library_ordinal": 5,
+        "weak": false,
+        "import_ordinal": 2575,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x380ddd8",
+      "target": "0x1da60c0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x380de50",
+      "target": "0x1542a0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x380de88",
+      "target": "0x5f087bc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x380de8c",
+      "target": "0x7c547fc",
+      "imported_symbol": "_swift_release_x22"
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

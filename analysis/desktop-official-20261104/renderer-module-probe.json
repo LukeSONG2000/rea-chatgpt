@@ -1,0 +1,5 @@
+{
+  "status": "failed-before-module-execution",
+  "reason": "Initial deny network* sandbox blocked Edge Unix-domain SingletonSocket bind with EPERM. Temporary profile was new; not a real user-profile conflict.",
+  "resolution": "Permit Unix-domain IPC and deny all outbound/inbound IP networking; see renderer-module-probe-v2.json."
+}

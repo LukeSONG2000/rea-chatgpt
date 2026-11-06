@@ -1,0 +1,146 @@
+{
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "artifact-observation-and-static-inference",
+  "entry_chain": [
+    "0x3709ccc",
+    "0x3f8713c",
+    "configuration callback 0x380dd70",
+    "0x380de98",
+    "0x3721b4c"
+  ],
+  "label": {
+    "address": "0x892ecc0",
+    "text": "ChatCollection.cell.configure"
+  },
+  "hosting_calls": [
+    {
+      "site": "0x3721e70",
+      "target": "0x7c490f0",
+      "imported_symbol": "_$s7SwiftUI22UIHostingConfigurationVA2A9EmptyViewVRs_rlE7contentACyxAEGxyXE_tcfC",
+      "chained_binding": {
+        "slot": "0xaad2a58",
+        "symbol": "_$s7SwiftUI22UIHostingConfigurationVA2A9EmptyViewVRs_rlE7contentACyxAEGxyXE_tcfC",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 9249,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x3721e84",
+      "target": "0x7c490cc",
+      "imported_symbol": "_$s7SwiftUI22UIHostingConfigurationV7marginsyACyxq_GAA4EdgeO3SetV_12CoreGraphics7CGFloatVtF",
+      "chained_binding": {
+        "slot": "0xaad2a40",
+        "symbol": "_$s7SwiftUI22UIHostingConfigurationV7marginsyACyxq_GAA4EdgeO3SetV_12CoreGraphics7CGFloatVtF",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 9246,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x3721ea8",
+      "target": "0x7c44e84",
+      "imported_symbol": "_$s5UIKit13UIContentViewP13configurationAA0B13Configuration_pvsTj",
+      "chained_binding": {
+        "slot": "0xaac57f0",
+        "symbol": "_$s5UIKit13UIContentViewP13configurationAA0B13Configuration_pvsTj",
+        "library_ordinal": 5,
+        "weak": false,
+        "import_ordinal": 2579,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x3721fe8",
+      "target": "0x7c490cc",
+      "imported_symbol": "_$s7SwiftUI22UIHostingConfigurationV7marginsyACyxq_GAA4EdgeO3SetV_12CoreGraphics7CGFloatVtF",
+      "chained_binding": {
+        "slot": "0xaad2a40",
+        "symbol": "_$s7SwiftUI22UIHostingConfigurationV7marginsyACyxq_GAA4EdgeO3SetV_12CoreGraphics7CGFloatVtF",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 9246,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x37220c4",
+      "target": "0x7c44fb0",
+      "imported_symbol": "_$s5UIKit22UIContentConfigurationP15makeContentViewAA0bF0_So6UIViewCXcyFTj",
+      "chained_binding": {
+        "slot": "0xaac5900",
+        "symbol": "_$s5UIKit22UIContentConfigurationP15makeContentViewAA0bF0_So6UIViewCXcyFTj",
+        "library_ordinal": 5,
+        "weak": false,
+        "import_ordinal": 2611,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x3722120",
+      "target": "0x7c490f0",
+      "imported_symbol": "_$s7SwiftUI22UIHostingConfigurationVA2A9EmptyViewVRs_rlE7contentACyxAEGxyXE_tcfC",
+      "chained_binding": {
+        "slot": "0xaad2a58",
+        "symbol": "_$s7SwiftUI22UIHostingConfigurationVA2A9EmptyViewVRs_rlE7contentACyxAEGxyXE_tcfC",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 9249,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x372215c",
+      "target": "0x7c44e84",
+      "imported_symbol": "_$s5UIKit13UIContentViewP13configurationAA0B13Configuration_pvsTj",
+      "chained_binding": {
+        "slot": "0xaac57f0",
+        "symbol": "_$s5UIKit13UIContentViewP13configurationAA0B13Configuration_pvsTj",
+        "library_ordinal": 5,
+        "weak": false,
+        "import_ordinal": 2579,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x37222f0",
+      "target": "0x7c4eef8",
+      "imported_symbol": "_$sSo20UICollectionViewCellC5UIKitE20contentConfigurationAC09UIContentF0_pSgvs",
+      "chained_binding": {
+        "slot": "0xaac5c68",
+        "symbol": "_$sSo20UICollectionViewCellC5UIKitE20contentConfigurationAC09UIContentF0_pSgvs",
+        "library_ordinal": 5,
+        "weak": false,
+        "import_ordinal": 2719,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    }
+  ],
+  "limitations": [
+    "Callback captures and exact message-case predicates not fully reconstructed",
+    "Presence of this native configuration path does not prove all message rows use SwiftUI",
+    "No original SwiftUI body or runtime visual equivalence recovered"
+  ]
+}

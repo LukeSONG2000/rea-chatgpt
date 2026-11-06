@@ -1,0 +1,20 @@
+{
+  "status": "partial",
+  "baseline": "26.1021.31345",
+  "installed": "26.1029.61003",
+  "crossPlatformEvidence": "desktop-composer-v183-cross-artifact.json",
+  "installedEvidence": "desktop-composer-v183-installed-compare.json",
+  "newerDefaultSpacingFound": true,
+  "newerDefaultSpacingExcerpt": "r(--spacing) * 2);--opacity-composer-placeholder:.5;--spacing-composer-single-line-controls:calc(var(--spacing) * 1.25);--padding-composer-single-line-footer-block:var(--spacing);--composer-suggestion-inline-inset:calc(var(--padding-toolbar) + var(--home-composer-inline-inset));--inset-toolbar:var(-",
+  "confirmed": [
+    "The frozen macOS/Windows artifacts contain identical editor fallback and default spacing tokens.",
+    "Installed official app is a different version; its targeted original modules retain the same editor fallback and default root reset.",
+    "Frozen initializeApp explicitly sets codexWindowType=electron; do not impersonate browser to get browser spacing."
+  ],
+  "notProven": [
+    "Screenshot artifact version",
+    "Whether a higher-level official page/context selects a different input density",
+    "Complete original-layout restoration"
+  ],
+  "nextAction": "Inspect composer consumer props/context and registration of higher-level defaults; keep original baseline and newer evidence separate."
+}

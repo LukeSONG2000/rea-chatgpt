@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.SubscriptionLog=void 0;class SubscriptionLog{constructor(s,o=1/0){this.subscribedFrame=s,this.unsubscribedFrame=o}}exports.SubscriptionLog=SubscriptionLog;

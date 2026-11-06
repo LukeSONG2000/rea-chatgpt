@@ -1,0 +1,43 @@
+{
+  "status": "partial",
+  "authority": "actual original manager onNotification and item subscription in packaged renderer, real fixture owner events projected by independent translator",
+  "sources": [
+    {
+      "path": "analysis/tools/probe_original_remote_stream.js",
+      "sha256": "bccaee9a87853a2249d957c013ba2e4ebf362f5aa3d64543bd4756cb2e5fee2b"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-stream.cjs",
+      "sha256": "d70e5deb35431617effaae2b001fc4b02aded5d189eb75e93adc241e82d18fd8"
+    }
+  ],
+  "reports": [
+    "remote-stream-v159-runtime.json",
+    "remote-stream-v159-r2.json",
+    "remote-stream-v159-r3.json",
+    "remote-stream-v159-r4.json",
+    "remote-stream-v159-r5.json",
+    "remote-stream-v159-r6.json"
+  ],
+  "passed": [
+    "original constructor with execution attached and automatic queue execution disabled",
+    "original hydration retains first turn",
+    "second actual owner turn produces eight projected notifications consumed by original onNotification",
+    "original canonical history contains two turns with correct final text/status",
+    "original item subscription progresses empty to partial to final text",
+    "original manager cleanup and packaged two-owner regression"
+  ],
+  "corrections": [
+    "added explicit logger.trace",
+    "implemented in-memory savedReadState.set with listeners",
+    "configured deterministic timer scheduling path",
+    "removed guessed turn entity key and read original canonical history identity"
+  ],
+  "limits": [
+    "Test callback transports notifications; production RPC host service not connected",
+    "No dynamic tools; execution callback explicitly unsupported",
+    "Read state in memory only",
+    "No real model call, visible Remote UI or reconnection streaming acceptance",
+    "No new runtime package"
+  ]
+}

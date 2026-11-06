@@ -1,0 +1,46 @@
+{
+  "status": "partial",
+  "authority": "independent implementation and isolated local-owner validation",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/remote-manager.cjs",
+      "sha256": "21bb0bdeec907ffc4d6e8b9fe51405040f79fdc4718eff11acee1c881bb6847d"
+    },
+    {
+      "path": "implementation/desktop/native/remote-event-projection.cjs",
+      "sha256": "4bde4e58f81ebec62538495103dbfe0d686557dab2904888a8a1cd04ebd718bf"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-manager.cjs",
+      "sha256": "7d8537b630380cc1b05e51740ba9a1f8d20aa10208e1a4a9f0dac3dbf64b08d7"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-client.cjs",
+      "sha256": "9669296ae12360b719c38b4e6b75d4f1a6d75549debb3189d303c9eae623992d"
+    }
+  ],
+  "reports": [
+    "remote-manager-v149-unit.json",
+    "remote-manager-v149-live-owner.json",
+    "remote-projection-v149-regression.json"
+  ],
+  "validated": [
+    "silent initial history hydration",
+    "live notification delivery and concurrent poll coalescing",
+    "atomic invalid-batch rollback",
+    "subscription disposal and delayed response suppression",
+    "actual owner A failure/disposal does not affect B polling"
+  ],
+  "limits": [
+    "Not wired into original renderer manager or Remote controls",
+    "No official thread/read schema compatibility claim",
+    "No new runtime package; latest assembled remains v146",
+    "No live model request in v149",
+    "Windows OS and physical iPhone remain unaccepted"
+  ],
+  "next": [
+    "trace original manager thread snapshot and request consumers",
+    "adapt only confirmed RPC and notification contracts",
+    "exercise original renderer controls before advertising nonlocal ready"
+  ]
+}

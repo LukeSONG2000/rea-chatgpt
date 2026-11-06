@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-native-menu-controller-integration",
+  "runtime": "macos-discard-v101-runtime-v3.json",
+  "verified": [
+    "Cancel confirmation leaves both snapshots unchanged",
+    "Draft mutation during confirmation makes exact-snapshot discard fail",
+    "Subsequent explicit confirmation removes only selected snapshot",
+    "Other pending snapshot preserved",
+    "History store unchanged"
+  ],
+  "test_method": "Fresh isolated profile, real Electron MenuItem/controller/store, injected dialog responses and synthetic active-draft mutation",
+  "correction": "First two probes inspected state before asynchronous native dialog controller completed. Added isBusy completion observation and bounded wait; neither early failure is evidence of broken discard safety.",
+  "limits": [
+    "No physical native dialog display acceptance",
+    "No real user data used",
+    "Whole six-platform restoration remains incomplete"
+  ],
+  "next_action": "Return to remaining frontend/platform gaps; retain independent recovery UI and explicit physical acceptance gate",
+  "sources": [
+    {
+      "file": "analysis/tools/desktop-pending-dialog.cjs",
+      "sha256": "6d5a1f44d4e2fc0b4943058cc25caca0e19e3595c63d12626ba387a3cd704186"
+    },
+    {
+      "file": "analysis/tools/desktop-native-host.cjs",
+      "sha256": "7d53fa16c67966f7a4418d189f42db20725fe361a29fdb8f33c0215583f91d11"
+    },
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "a025e87b22f92454928ca6df5df1dfcd53d9626513f21faf0edd1887c8f457a0"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official resource reuse plus independent native template adapter",
+  "sources": {
+    "approval_input": "v335 original keys0x8857bd0/0x8857bf0 at pending pill0x3a5bc8",
+    "failed": "v333 failed activity0x3a5ab0 and codex_task_row_failed",
+    "running": "v353 keys0x88bbd10/0x88bbd50 from running summary0x1a40200",
+    "resources": "v402-text-resources.json binds64 compressed arrays/shared keys and main-app resources"
+  },
+  "official_zh_changes": {
+    "awaitingApproval": "待批准",
+    "needsInput": "等待用户回复",
+    "failed": "未成功",
+    "runningWithCommand": "正在运行 %1$@，已持续 %2$@",
+    "runningWithoutCommand": "命令已运行 %@"
+  },
+  "integration": [
+    "Added5 proven keys,8 total",
+    "Namespaced keys have English defaults; never display private key as fallback",
+    "Replace sentence concatenation with scoped string-parameter interpolation",
+    "Support %@/%n$@/%% only; reject unsupported tokens, out-of-range/missing parameters and fall back to English template",
+    "Leave duration formatter, timer, identity, service availability and actions unchanged",
+    "Updated existing UI expectations to original Chinese; failed assertion now targets status not matching fixture title"
+  ],
+  "validation": {
+    "host_typecheck": "passed all Sources/*.swift",
+    "ui_test_parse": "passed; not executed",
+    "foundation_replay": "13 existing locale checks plus state labels, reordered/literal parameters,7 invalid formats, fallback and128 original templates passed",
+    "resource_import": "all selected formatted translations passed argument-shape validation",
+    "runtime": "session42359 re-polled live at turn start; still awaiting first-launch authorization",
+    "retention": "no stale targets"
+  },
+  "limits": [
+    "No original full app or service executed",
+    "Foundation adapter is independent, not private localization engine recovery",
+    "Plural/numeric format schemas excluded",
+    "RTL, accessibility speech, live duration wording and actual visual layout still require iOS acceptance",
+    "Android locale/provider implementation remains independently unverified"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/OfficialText.swift": "49d3fef0ab702d81fce65f8139c9bca2e51b9a15a3c2c9ae0614c528bdf2eaab",
+    "implementation/ios/Sources/NativeConversationHost.swift": "9f20c23f2d2f6ae471fad432effabc36867783a1e2d97a13b9aa7f22666c184c",
+    "implementation/ios/Resources/OfficialTranslations.json": "b7451b096732556842b99b6ec89d897b6c7ee1876fecb79bd9093b3fa853af8e",
+    "implementation/ios/Tools/prepare-official-text.py": "417b09f9a32585502c7465425968318da27b7265f6e82c4279d975b992666fdf",
+    "implementation/ios/TextTests/main.swift": "ebf69141a67720364f4276c2d652b633a45d062c7760e9d020c17994febab495",
+    "implementation/ios/UITests/HostInteractionTests.swift": "5cdac71d527c1d08e013a386da2aaeb04272dbadbb0da97133a6fd8e47126233"
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "status": "partial",
+  "platform": "macos",
+  "baseline": "Codex 26.1021.31345 build 21828 renderer; independent synthetic host",
+  "verified": [
+    "Real menu mode write and A-B-A navigation passed",
+    "Separate subsequent Electron invocation loaded STEPS_PROSE, displayed ChatGPT mode and two sidebar rows without menu click",
+    "Disk write failure leaves effective mode and notifications unchanged; later writes still work",
+    "Invalid value/scope, corrupt file preservation, symlink rejection and serialized writes tested"
+  ],
+  "runtime": {
+    "status": "passed",
+    "hostPID": 45645,
+    "state": {
+      "productMode": "work",
+      "detailMode": "STEPS_PROSE",
+      "detailPolicy": "preference",
+      "workAccess": {
+        "status": "allowed",
+        "accountId": "offline-fixture-account"
+      },
+      "localAccess": {
+        "status": "allowed",
+        "accountId": "offline-fixture-account"
+      },
+      "status": {
+        "hosts": [
+          {
+            "hostId": "local",
+            "isComplete": true,
+            "revision": 1
+          },
+          {
+            "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+            "isComplete": true,
+            "revision": 1
+          }
+        ]
+      },
+      "entries": [
+        {
+          "sourceKind": "chatgpt",
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "threadId": "offline-fixture-conversation-001",
+          "displayTitle": "离线组件验证 · A",
+          "projectId": null,
+          "conversationOrigin": null,
+          "sourceCreatedAt": 1,
+          "sourceUpdatedAt": 1793798837.882,
+          "sourceRecencyAt": 1793798837.882,
+          "archived": false
+        },
+        {
+          "sourceKind": "chatgpt",
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "threadId": "offline-fixture-conversation-002",
+          "displayTitle": "离线组件验证 · B",
+          "projectId": null,
+          "conversationOrigin": null,
+          "sourceCreatedAt": 1,
+          "sourceUpdatedAt": 1,
+          "sourceRecencyAt": 1,
+          "archived": false
+        }
+      ],
+      "workload": {
+        "hosts": 2,
+        "scopes": 1,
+        "explicitRequested": 0,
+        "explicitLoaded": 0,
+        "peakPublished": 2,
+        "startup": null,
+        "page": {
+          "batches": 1,
+          "requested": 20,
+          "returned": 2,
+          "failed": 0,
+          "inFlight": 0,
+          "durationMs": 60
+        },
+        "point": {
+          "batches": 0,
+          "requested": 0,
+          "returned": 0,
+          "failed": 0,
+          "inFlight": 0,
+          "durationMs": 0
+        }
+      },
+      "queries": [
+        {
+          "key": [
+            "vscode",
+            "get-settings"
+          ],
+          "data": {
+            "values": {
+              "conversationDetailMode": "STEPS_PROSE"
+            },
+            "configuredValues": {
+              "conversationDetailMode": "STEPS_PROSE"
+            }
+          },
+          "error": "null"
+        },
+        {
+          "key": [
+            "accounts",
+            "settings",
+            ""
+          ],
+          "error": "null"
+        },
+        {
+          "key": [
+            "usage-settings",
+            "accounts-check",
+            "v4-2023-04-27",
+            null,
+            null
+          ],
+          "error": "null"
+        },
+        {
+          "key": [
+            "usage-settings",
+            "accounts-check",
+            "v4-2023-04-27",
+            "offline-fixture-account",
+            null
+          ],
+          "error": "null"
+        },
+        {
+          "key": [
+            "usage-settings",
+            "accounts-check",
+            "v4-2023-04-27",
+            null,
+            "offline-fixture-user"
+          ],
+          "error": "null"
+        },
+        {
+          "key": [
+            "usage-settings",
+            "accounts-check",
+            "v4-2023-04-27",
+            "offline-fixture-account",
+            "offline-fixture-user"
+          ],
+          "data": {
+            "accounts": {
+              "offline-fixture-account": {
+                "account": {
+                  "account_id": "offline-fixture-account",
+                  "account_user_id": "offline-fixture-account-user",
+                  "plan_type": "free",
+                  "structure": "personal",
+                  "is_deactivated": false
+                },
+                "entitlement": {
+                  "expires_at": null,
+                  "subscription_id": null,
+                  "subscription_plan": "free",
+                  "has_active_subscription": false
+                },
+                "can_access_with_session": true,
+                "features": []
+              }
+            },
+            "account_ordering": [
+              "offline-fixture-account"
+            ],
+            "default_account_id": "offline-fixture-account"
+          },
+          "error": "null"
+        },
+        {
+          "key": [
+            "chatgpt-user-settings",
+            "offline-fixture-account",
+            "offline-fixture-user"
+          ],
+          "data": {
+            "imageGenHoldoutActive": false,
+            "imageGenEnabled": false,
+            "bazaarPersonalizationEnabled": true,
+            "bazaarPersonalizationUnavailable": false,
+            "canConsumePersonalCreditsChatPass": false,
+            "freeAdsOptOut": false,
+            "chatTheme": "default",
+            "connectorEnforceCspInDevMode": false,
+            "connectorSearchEnabled": true,
+            "enableDeviceCodeAuth": false,
+            "enableFloraNetworkAccess": false,
+            "enableRemoteBrowserData": false,
+            "lockdownModeEnabled": false,
+            "hiveReferencedInInternalKnowledge": false,
+            "instantAnswersEnabled": true,
+            "m3mOptedOut": false,
+            "memoryInSearchEnabled": false,
+            "responsePresentation": "rich",
+            "hasRecurringQuietHours": false,
+            "quietHours": {
+              "status": "unavailable",
+              "managedByParent": false
+            },
+            "showExpandedCodeView": false,
+            "hasRecurringStudyHours": false,
+            "sunshineEnabled": false,
+            "taskSuggestionsEnabled": true,
+            "trainingAllowed": false,
+            "ultraEffortEnabled": false,
+            "voiceEnabled": true,
+            "voiceReasoningEffort": "instant"
+          },
+          "error": "null"
+        },
+        {
+          "key": [
+            "accounts",
+            "settings",
+            "offline-fixture-account"
+          ],
+          "error": "null"
+        },
+        {
+          "key": [
+            "accounts",
+            "settings",
+            null
+          ],
+          "error": "null"
+        },
+        {
+          "key": [
+            "usage-settings",
+            "auto-top-up",
+            "include-payment-method",
+            "chatgpt",
+            "offline-fixture-user",
+            "offline-fixture-account"
+          ],
+          "error": "null"
+        },
+        {
+          "key": [
+            "usage-settings",
+            "auto-top-up-pricing",
+            null
+          ],
+          "error": "null"
+        }
+      ]
+    },
+    "rows": [
+      "离线组件验证 · A",
+      "离线组件验证 · B"
+    ],
+    "limits": [
+      "No selected route restoration; initial route still fixed to A",
+      "Synthetic account only"
+    ]
+  },
+  "not_accepted": [
+    "Selected route still hardcoded to conversation A at startup; this is NOT selected-conversation restoration",
+    "No multi-writer locking or power-loss guarantee",
+    "Full settings, account switching, original fidelity, Windows and browser hosts unaccepted",
+    "Aggregate mount-blocked remains; OS-window capture separate from renderer screenshot"
+  ],
+  "next_action": "Trace original selected-tab persistence owner, replace fixed startup navigation with scoped persisted selection, test cold restart after selecting B",
+  "evidence_sha256": {
+    "analysis/tools/desktop-settings-store.cjs": "8aa2cf455cf3bf065c3520c607bd128308ab9de5fe82c0ac77a4d3bb5f25747b",
+    "analysis/tools/desktop-fixture-services.mjs": "34b2108ea90c48c7d555542d6c7fb7edf15e931f8c2f00d8bbed1c1789538469",
+    "analysis/tools/probe_desktop_root_mount.cjs": "6a1cdff0b6b2abd84bb63adc22e2c0f35fe2376ad8b35d0d0874016b8a58ad56",
+    "analysis/tools/test_desktop_settings_store.mjs": "a42e420de64024d18a9437f7dcbe7afd0d9ec404c87a3cc38ff204b835778ce6",
+    "analysis/full-platform-20261104/macos-settings-unit-v1.log": "99d6b9b45b71e37099de4187c74f8eba5de25ad5be160c2368bbda7f0e799fd9",
+    "analysis/full-platform-20261104/macos-settings-write-v1.json": "79d073a1d2752d512bc1bb7e7758b1c2e7adae94755a1fc2233dea15c9fa3a5a",
+    "analysis/full-platform-20261104/macos-settings-read-v1.json": "7f579abdbb425d98cce9b5843d67abb8b54cb193a1b16e9dc6fe171a615406ea"
+  }
+}

@@ -1,0 +1,12 @@
+import {createRemoteState} from './remote-renderer-state.mjs';
+import assert from 'node:assert/strict';import fs from 'node:fs';
+const out=process.argv[2];if(!out||fs.existsSync(out))throw Error('New report required');
+const pending=[];const state=createRemoteState((op,host,thread)=>new Promise(resolve=>pending.push({host,thread,resolve})));
+const answer=(index,cursor,epoch='e')=>pending[index].resolve({result:{thread:{id:pending[index].thread,turns:[]},independent:{host:pending[index].host,epoch,eventCursor:cursor}}});
+const old=state.refresh('a','t'),newer=state.refresh('a','t');answer(1,2);await newer;answer(0,1);await assert.rejects(old,{code:'snapshot_superseded'});assert.equal(state.snapshot('a','t').value.independent.eventCursor,2);assert.equal(state.snapshot('a','t').error,null);
+const stale=state.refresh('a','t');answer(2,1);await assert.rejects(stale,{code:'snapshot_stale'});assert.equal(state.snapshot('a','t').value.independent.eventCursor,2);
+const b=state.refresh('b','t');answer(3,1);await b;
+const forgotten=state.refresh('a','t');state.forgetHost('a');answer(4,3);await assert.rejects(forgotten,{code:'snapshot_superseded'});assert.equal(state.snapshot('a','t'),null);assert.ok(state.snapshot('b','t'));
+const replaced=state.refresh('b','t');answer(5,2,'new-epoch');await assert.rejects(replaced,{code:'snapshot_stale'});
+const closing=state.refresh('b','t');state.dispose();answer(6,3);await assert.rejects(closing,{code:'snapshot_superseded'});
+fs.writeFileSync(out,JSON.stringify({status:'passed',checks:['latest renderer request wins without stale error overwriting success','cursor regression and epoch replacement reject while preserving last state','forget host invalidates pending response without clearing B','page disposal prevents late state write'],limits:['Independent renderer state owner; original UI not yet subscribed']},null,2),{flag:'wx'});console.log('Renderer admission passed');

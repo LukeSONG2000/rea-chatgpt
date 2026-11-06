@@ -1,0 +1,57 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-native-implementation",
+  "changes": [
+    "Public RichTextStyle Adaptive table layout, maximum cell width 240dp as independent readability policy",
+    "Horizontal user drag pauses outer auto-follow, same as vertical drag",
+    "Per-run unique header identities and gesture margins in native replay"
+  ],
+  "validation": {
+    "offline_build": "passed",
+    "wide_table_append_during_horizontal_read": "passed",
+    "markdown_regression": "passed",
+    "code_clipboard_regression": "passed",
+    "header_bounds": {
+      "before": [
+        [
+          "LastWidee7f419",
+          "[687,1576][1016,1639]"
+        ]
+      ],
+      "after": [
+        [
+          "LastWidee7f419",
+          "[687,1576][1016,1639]"
+        ]
+      ]
+    },
+    "visual_review": "rightmost column visible; Back to latest displayed; positions unchanged across row appends"
+  },
+  "evidence": [
+    "android-table-v71-ui-v3.json",
+    "android-table-v71-regression.json"
+  ],
+  "prior_attempts": {
+    "v1": "failed pause assertion; missing screenshot, .png/.xml exports contain adb error text and are not image evidence",
+    "v2": "failed pause assertion; initial capture showed a prior request table; near-edge swipe also risked Android back navigation",
+    "v3": "unique fixture headers and interior swipe, passed"
+  },
+  "limits": [
+    "240dp is not an observed official 293 dimension",
+    "Column width changes, view recycling, navigation and process restart horizontal position retention not accepted",
+    "Physical-device gestures, selection during streaming and visual fidelity remain unaccepted"
+  ],
+  "cleanup": {
+    "owned_fixture_server_stopped": true,
+    "private_pairing_removed": true,
+    "android_pairing_removed": true,
+    "host_force_stopped": true
+  },
+  "sources": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "6aeca3feefe823af013450bd167b868fc638c8c91038c8021cec5c9dac442c7a",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "2d95f84c1e56a81e3ffa3e246c26f5403888678ea85ef79d5383160ba70fa1bc",
+    "implementation/android/test-message-actions.py": "034e6a907e2579b4c1bc64e7128cedd66b9ff56471b51511e248eb6e8b0cb41a",
+    "implementation/harness/fixture_worker.py": "8f984aac2ddc2dee232b3185f6bce836d737981203c65f63e41a335c0f44213d"
+  }
+}

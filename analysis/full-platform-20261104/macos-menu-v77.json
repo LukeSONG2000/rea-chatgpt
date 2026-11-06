@@ -1,0 +1,48 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "official-packaged-static-observation",
+  "artifact": {
+    "product": "Codex",
+    "version": "26.1021.31345",
+    "file": "recovered/macos/asar-extracted/.vite/build/main-0FVbxCQU.js",
+    "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c"
+  },
+  "registry": {
+    "file": "recovered/macos/asar-extracted/.vite/build/src-Dl21kCYQ.js",
+    "sha256": "a42052ee3309565865f2d20fc45dee297935cbb50d1fc1a404b90c18d824b93c"
+  },
+  "builder": {
+    "symbol": "Yvt",
+    "utf16_start": 4664996,
+    "utf16_end": 4684905,
+    "byte_start": 4685016,
+    "byte_end": 4704929,
+    "line": 1633,
+    "column": 3249
+  },
+  "candidate_count": 93,
+  "command_declaration_count": 37,
+  "validation": {
+    "repeat_byte_identical": true,
+    "artifact_digest": "passed",
+    "registry_digest": "passed",
+    "candidate_ranges": "passed",
+    "unique_command_declarations": "passed"
+  },
+  "rea": {
+    "status": "provider_timeout_partial_observation",
+    "timeout_ms": 300000,
+    "evidence_id": "ev_a7a6efed21f87d6e0fb49ffacfa2eedc8dabc834bd152773386b618e2e3322e7",
+    "export": "macos-menu-v77-rea-evidence.json"
+  },
+  "limits": [
+    "Objects inside the builder are candidates, not a complete evaluated menu tree",
+    "Conditional feature flags and runtime platform branches are preserved in source, not evaluated",
+    "Command declarations are static defaults; N/j/L keymap overrides, collisions and effective accelerators remain unresolved",
+    "Referenced edit/window-menu builder and runtime command registry are outside this bounded extraction",
+    "No packaged code executed; no keyboard or display acceptance"
+  ],
+  "native_acceptance": "unaccepted; v76 screen-lock observation",
+  "next_action": "Wire independently scoped menu commands to renderer consumers, then accept native events on unlocked desktop"
+}

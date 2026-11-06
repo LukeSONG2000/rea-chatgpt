@@ -1,0 +1,1813 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x1a36b00",
+    "end_exclusive": "0x1a38000",
+    "sha256": "cdb9b423faad00076550d05d600e5b6ebd11d4f50c7b73f62b685738aad9b31f"
+  },
+  "linker_function_starts_in_window": [
+    "0x1a37d30",
+    "0x1a37d9c",
+    "0x1a37f34",
+    "0x1a37fb0"
+  ],
+  "next_linker_function_start": "0x1a383a4",
+  "direct_calls": [
+    {
+      "site": "0x1a36b60",
+      "target": "0x14b39c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36b78",
+      "target": "0x7c54328",
+      "imported_symbol": "_swift_bridgeObjectRetain"
+    },
+    {
+      "site": "0x1a36b80",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a36b88",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a36b8c",
+      "target": "0xacd84c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36b94",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a36ba0",
+      "target": "0xccb6c4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36ba8",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a36bb0",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a36bb4",
+      "target": "0x7c54928",
+      "imported_symbol": "_swift_retain_x23"
+    },
+    {
+      "site": "0x1a36bc0",
+      "target": "0x1a33ad8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36bec",
+      "target": "0x14bf34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36c4c",
+      "target": "0x453c58",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36c50",
+      "target": "0xc95bcc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36c60",
+      "target": "0x154a94",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36c70",
+      "target": "0x154fc0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36d2c",
+      "target": "0x157f60",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36da4",
+      "target": "0x11f500",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36dac",
+      "target": "0x1da4e68",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36db8",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a36dbc",
+      "target": "0x7c54964",
+      "imported_symbol": "_swift_retain_x28"
+    },
+    {
+      "site": "0x1a36dc0",
+      "target": "0x1395f2c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36dd0",
+      "target": "0x7c46fb4",
+      "imported_symbol": "_$s7SwiftUI12ScaledMetricV12wrappedValueACyxGx_tcfC",
+      "chained_binding": {
+        "slot": "0xaad04d0",
+        "symbol": "_$s7SwiftUI12ScaledMetricV12wrappedValueACyxGx_tcfC",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 8052,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a36dd4",
+      "target": "0x1d9e35c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36dd8",
+      "target": "0x268ddc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36de0",
+      "target": "0x1d87f94",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36dec",
+      "target": "0x1d9483c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36e00",
+      "target": "0x1d8b94c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36e08",
+      "target": "0x2c60c0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36e30",
+      "target": "0x1d8b94c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36e5c",
+      "target": "0x1d9bea0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36e68",
+      "target": "0x1d9e348",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36e6c",
+      "target": "0x6ef5f4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36e70",
+      "target": "0x7c54934",
+      "imported_symbol": "_swift_retain_x24"
+    },
+    {
+      "site": "0x1a36e74",
+      "target": "0x154030",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36e7c",
+      "target": "0x7c54328",
+      "imported_symbol": "_swift_bridgeObjectRetain"
+    },
+    {
+      "site": "0x1a36e80",
+      "target": "0x1540a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36e84",
+      "target": "0x11f500",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36e9c",
+      "target": "0x7c54328",
+      "imported_symbol": "_swift_bridgeObjectRetain"
+    },
+    {
+      "site": "0x1a36ea8",
+      "target": "0x1d78b40",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36ed8",
+      "target": "0x7c549b8",
+      "imported_symbol": "_swift_retain_x9"
+    },
+    {
+      "site": "0x1a36ee0",
+      "target": "0x7c54940",
+      "imported_symbol": "_swift_retain_x25"
+    },
+    {
+      "site": "0x1a36ee8",
+      "target": "0x7c5491c",
+      "imported_symbol": "_swift_retain_x22"
+    },
+    {
+      "site": "0x1a36ef0",
+      "target": "0x154268",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36ef4",
+      "target": "0x1d8af6c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36efc",
+      "target": "0x1a33ad8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36f1c",
+      "target": "0x14bf34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36f2c",
+      "target": "0x1540a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36f30",
+      "target": "0x11f500",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36f34",
+      "target": "0x156428",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36f38",
+      "target": "0x11f500",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36f50",
+      "target": "0x1d6c8e4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36f70",
+      "target": "0x153758",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36f84",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a36f8c",
+      "target": "0xbb5e88",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36f9c",
+      "target": "0x7c54568",
+      "imported_symbol": "_swift_getKeyPath"
+    },
+    {
+      "site": "0x1a36fa4",
+      "target": "0x1596e4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36fb8",
+      "target": "0x15d514",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a36fc8",
+      "target": "0x157f60",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37014",
+      "target": "0x1d9612c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37034",
+      "target": "0x7c53794",
+      "imported_symbol": "_memcpy"
+    },
+    {
+      "site": "0x1a37070",
+      "target": "0x1d9bea0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37078",
+      "target": "0x1d9e30c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3707c",
+      "target": "0x159eb8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3709c",
+      "target": "0x2a670",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a370a0",
+      "target": "0x156dcc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a370ac",
+      "target": "0x1531c8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a370b0",
+      "target": "0x1d95718",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a370b4",
+      "target": "0xdeafd4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a370bc",
+      "target": "0x1a392d8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a370d8",
+      "target": "0x1d9bea0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a370e4",
+      "target": "0x1d87f94",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37108",
+      "target": "0x1540a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3710c",
+      "target": "0x1d7d504",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37114",
+      "target": "0x1c055b0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37118",
+      "target": "0x1540a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3711c",
+      "target": "0x1d7d504",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37124",
+      "target": "0x1c055ec",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37128",
+      "target": "0x793918",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3712c",
+      "target": "0x1c055ec",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37130",
+      "target": "0x1d6f7e4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37148",
+      "target": "0x1d7ea1c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3715c",
+      "target": "0x1d8a238",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37168",
+      "target": "0xfac40",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37174",
+      "target": "0x1947848",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a371a0",
+      "target": "0xac980c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a371a4",
+      "target": "0x1d95718",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a371ac",
+      "target": "0x1a392d8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a371b0",
+      "target": "0x45def0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a371c0",
+      "target": "0x26b144",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a371c4",
+      "target": "0x1d87e94",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a371d4",
+      "target": "0x1d9bea0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a371dc",
+      "target": "0x2b459f0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a371f8",
+      "target": "0x28df4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37200",
+      "target": "0x14d404",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37214",
+      "target": "0x246a27c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3724c",
+      "target": "0x246f440",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37250",
+      "target": "0x7c4891c",
+      "imported_symbol": "_$s7SwiftUI19HorizontalAlignmentV8trailingACvgZ",
+      "chained_binding": {
+        "slot": "0xaad2180",
+        "symbol": "_$s7SwiftUI19HorizontalAlignmentV8trailingACvgZ",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 8967,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a3725c",
+      "target": "0xf53364",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37270",
+      "target": "0xfaa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3728c",
+      "target": "0x1d88558",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372c4",
+      "target": "0x1dac4a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372c8",
+      "target": "0x1da49c4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372cc",
+      "target": "0x4764fc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372d0",
+      "target": "0x15317c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372d4",
+      "target": "0x15327c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372d8",
+      "target": "0x153758",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372dc",
+      "target": "0x1d92c00",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372e4",
+      "target": "0x1223a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372e8",
+      "target": "0x1d9a264",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372f0",
+      "target": "0x143f80",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a372f4",
+      "target": "0x1562c0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37324",
+      "target": "0x45b0fc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3732c",
+      "target": "0x1a37fb0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37330",
+      "target": "0x1d9e348",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37334",
+      "target": "0x152b34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3734c",
+      "target": "0x1a383a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37358",
+      "target": "0x1d88108",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3735c",
+      "target": "0x188d300",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37360",
+      "target": "0x1562c0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37388",
+      "target": "0x1d78b40",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a373b4",
+      "target": "0x14b39c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37434",
+      "target": "0x1d9166c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37440",
+      "target": "0x7c5494c",
+      "imported_symbol": "_swift_retain_x26"
+    },
+    {
+      "site": "0x1a37444",
+      "target": "0x7c54964",
+      "imported_symbol": "_swift_retain_x28"
+    },
+    {
+      "site": "0x1a37448",
+      "target": "0x7c54958",
+      "imported_symbol": "_swift_retain_x27"
+    },
+    {
+      "site": "0x1a3744c",
+      "target": "0x7c54940",
+      "imported_symbol": "_swift_retain_x25"
+    },
+    {
+      "site": "0x1a37450",
+      "target": "0x7c54928",
+      "imported_symbol": "_swift_retain_x23"
+    },
+    {
+      "site": "0x1a37458",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a37460",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a37464",
+      "target": "0x1d9e534",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37478",
+      "target": "0x269788",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37480",
+      "target": "0x148758",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3748c",
+      "target": "0x155088",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37490",
+      "target": "0x1d9166c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3749c",
+      "target": "0x14b354",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a374a0",
+      "target": "0x1d87f94",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a374e4",
+      "target": "0x15317c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a374e8",
+      "target": "0x15378c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a374ec",
+      "target": "0x11f500",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a374f0",
+      "target": "0x15631c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a374f4",
+      "target": "0x11f500",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a374f8",
+      "target": "0x7c54910",
+      "imported_symbol": "_swift_retain_x21"
+    },
+    {
+      "site": "0x1a374fc",
+      "target": "0x7c4b9a0",
+      "imported_symbol": "_$s7SwiftUI9AlignmentV7leadingACvgZ",
+      "chained_binding": {
+        "slot": "0xaad56d0",
+        "symbol": "_$s7SwiftUI9AlignmentV7leadingACvgZ",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10670,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a37504",
+      "target": "0x44cec4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3750c",
+      "target": "0x44b618",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37518",
+      "target": "0x267d50",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37538",
+      "target": "0x1d9bea0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37548",
+      "target": "0x2eacc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37554",
+      "target": "0x6f5730",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37560",
+      "target": "0x40db80",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37584",
+      "target": "0xc952ec",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a375a0",
+      "target": "0x1d7ad24",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a375a4",
+      "target": "0x1223a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a375c0",
+      "target": "0x6f1020",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a375c4",
+      "target": "0x1223a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a375d0",
+      "target": "0x6f5730",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a375d4",
+      "target": "0x155f5c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a375d8",
+      "target": "0xc952ec",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a375ec",
+      "target": "0xfaa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a375f0",
+      "target": "0x4572f4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a375f8",
+      "target": "0xded0ac",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37600",
+      "target": "0x1bfe14",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3761c",
+      "target": "0x1223a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3762c",
+      "target": "0x6f5730",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37638",
+      "target": "0x6f5730",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37654",
+      "target": "0x14d2d4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37660",
+      "target": "0x14d2d4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37668",
+      "target": "0x14fb48",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37680",
+      "target": "0x15a7f8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37698",
+      "target": "0x1542cc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a376b4",
+      "target": "0x153c8c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a376bc",
+      "target": "0x14fb48",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a376c4",
+      "target": "0x158858",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a376cc",
+      "target": "0x14c1ac",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a376d4",
+      "target": "0x14baa0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a376ec",
+      "target": "0x1da74a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a376f0",
+      "target": "0x1d9e30c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a376f4",
+      "target": "0x159eb8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a376fc",
+      "target": "0x7c54a18",
+      "imported_symbol": "_swift_storeEnumTagMultiPayload"
+    },
+    {
+      "site": "0x1a37700",
+      "target": "0x1d9e2e4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37704",
+      "target": "0x159eb8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3772c",
+      "target": "0x1d9e2e4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37730",
+      "target": "0x159eb8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37738",
+      "target": "0x7c54a18",
+      "imported_symbol": "_swift_storeEnumTagMultiPayload"
+    },
+    {
+      "site": "0x1a3773c",
+      "target": "0x1d9e2d0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37740",
+      "target": "0x159eb8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3774c",
+      "target": "0x6f2b10",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37750",
+      "target": "0x1d7d504",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37758",
+      "target": "0x1c055b0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3775c",
+      "target": "0x6f2b10",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37760",
+      "target": "0x1d7d504",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37768",
+      "target": "0x1c055ec",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3777c",
+      "target": "0x6fc6ac",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37780",
+      "target": "0x1d94fc8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37784",
+      "target": "0xad34ec",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37798",
+      "target": "0x6fc6ac",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3779c",
+      "target": "0x1d94fc8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a377a0",
+      "target": "0xad34ec",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a377cc",
+      "target": "0x1d9e2bc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a377d0",
+      "target": "0x159eb8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a377dc",
+      "target": "0x1d99218",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a377e4",
+      "target": "0x1dac4a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a377e8",
+      "target": "0x4764fc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a377ec",
+      "target": "0x15317c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a377f0",
+      "target": "0x15327c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a377f4",
+      "target": "0x153758",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37800",
+      "target": "0x1da6a74",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37804",
+      "target": "0x14cc08",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3780c",
+      "target": "0x14baa0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37818",
+      "target": "0x7c54328",
+      "imported_symbol": "_swift_bridgeObjectRetain"
+    },
+    {
+      "site": "0x1a37824",
+      "target": "0x1d87f94",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3782c",
+      "target": "0x1d8c63c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37838",
+      "target": "0x1d821a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37844",
+      "target": "0x1223a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37858",
+      "target": "0x1d99218",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37860",
+      "target": "0x1dac4a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37864",
+      "target": "0x1da49c4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37868",
+      "target": "0x1d92c00",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37870",
+      "target": "0x1223a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37874",
+      "target": "0x154030",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37878",
+      "target": "0x1d9a264",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37884",
+      "target": "0x1d99218",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3788c",
+      "target": "0x1dac4a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37898",
+      "target": "0x1da6a74",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a378a0",
+      "target": "0x154f4c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a378a4",
+      "target": "0x154030",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a378ac",
+      "target": "0x154efc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a378b4",
+      "target": "0x143f80",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a378e0",
+      "target": "0x15238c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37904",
+      "target": "0x14b39c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37918",
+      "target": "0x1d92c00",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37920",
+      "target": "0x1223a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37924",
+      "target": "0x154658",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a3792c",
+      "target": "0x11f500",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37954",
+      "target": "0x1d8b94c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37994",
+      "target": "0x7c54328",
+      "imported_symbol": "_swift_bridgeObjectRetain"
+    },
+    {
+      "site": "0x1a3799c",
+      "target": "0x1a38524",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a379a8",
+      "target": "0x1da2d94",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a379e4",
+      "target": "0x14b39c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a379f8",
+      "target": "0x7c54910",
+      "imported_symbol": "_swift_retain_x21"
+    },
+    {
+      "site": "0x1a37a00",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a37a08",
+      "target": "0x7c54958",
+      "imported_symbol": "_swift_retain_x27"
+    },
+    {
+      "site": "0x1a37a10",
+      "target": "0x7c5494c",
+      "imported_symbol": "_swift_retain_x26"
+    },
+    {
+      "site": "0x1a37a14",
+      "target": "0x7c54934",
+      "imported_symbol": "_swift_retain_x24"
+    },
+    {
+      "site": "0x1a37a1c",
+      "target": "0x1a33ad8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37a40",
+      "target": "0x14bf34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37a98",
+      "target": "0x2468594",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37aa8",
+      "target": "0x11f500",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37ae8",
+      "target": "0x1d8e4e8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37af8",
+      "target": "0x1223a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37afc",
+      "target": "0x157950",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37b00",
+      "target": "0x11f500",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37b0c",
+      "target": "0x11f500",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37b14",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a37b18",
+      "target": "0x246a2f8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37b28",
+      "target": "0x1d95718",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37b30",
+      "target": "0x1546a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37b3c",
+      "target": "0x1d9f1fc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37bf4",
+      "target": "0x157f60",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37ca4",
+      "target": "0x159f30",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37cac",
+      "target": "0x269788",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37cb0",
+      "target": "0x1daeb20",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37cb8",
+      "target": "0x143f80",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37cbc",
+      "target": "0x1d9e35c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37cc8",
+      "target": "0x1d8bd78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37ccc",
+      "target": "0x7c54a18",
+      "imported_symbol": "_swift_storeEnumTagMultiPayload"
+    },
+    {
+      "site": "0x1a37ce4",
+      "target": "0x1da74a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37ce8",
+      "target": "0x1d9e2bc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37cec",
+      "target": "0x159eb8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37cf4",
+      "target": "0x7c54a18",
+      "imported_symbol": "_swift_storeEnumTagMultiPayload"
+    },
+    {
+      "site": "0x1a37cf8",
+      "target": "0x1d9e384",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37cfc",
+      "target": "0x159eb8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d04",
+      "target": "0x7c54a18",
+      "imported_symbol": "_swift_storeEnumTagMultiPayload"
+    },
+    {
+      "site": "0x1a37d08",
+      "target": "0x1d9e2d0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d0c",
+      "target": "0x159eb8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d14",
+      "target": "0x7c54a18",
+      "imported_symbol": "_swift_storeEnumTagMultiPayload"
+    },
+    {
+      "site": "0x1a37d18",
+      "target": "0x1d8b16c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d1c",
+      "target": "0x159eb8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d20",
+      "target": "0x154890",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d34",
+      "target": "0x1612e8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d44",
+      "target": "0x1d8089c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d48",
+      "target": "0x7c48910",
+      "imported_symbol": "_$s7SwiftUI19HorizontalAlignmentV7leadingACvgZ",
+      "chained_binding": {
+        "slot": "0xaad2178",
+        "symbol": "_$s7SwiftUI19HorizontalAlignmentV7leadingACvgZ",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 8966,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a37d50",
+      "target": "0x1d889a0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d58",
+      "target": "0xc5c030",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d5c",
+      "target": "0x1da9f4c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d7c",
+      "target": "0xfaa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d84",
+      "target": "0x1d9655c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d88",
+      "target": "0x14b344",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37d90",
+      "target": "0x1531c0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37da0",
+      "target": "0x159298",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37db8",
+      "target": "0x1daee98",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37dbc",
+      "target": "0x466fc0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37dc4",
+      "target": "0x1d889a0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37dcc",
+      "target": "0x1d99c9c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37de8",
+      "target": "0x6ed358",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37dec",
+      "target": "0x4610bc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37e00",
+      "target": "0x15798c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37e04",
+      "target": "0xfac40",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37e0c",
+      "target": "0x765fa0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37e14",
+      "target": "0x6f545c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37e24",
+      "target": "0x154a94",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37e34",
+      "target": "0x1d911a4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37e68",
+      "target": "0x153770",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37e78",
+      "target": "0x155f30",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37e80",
+      "target": "0x155f30",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37e88",
+      "target": "0x7c549ac",
+      "imported_symbol": "_swift_retain_x8"
+    },
+    {
+      "site": "0x1a37e90",
+      "target": "0x7c4bb98",
+      "imported_symbol": "_$s7SwiftUI9NamespaceV12wrappedValueAC2IDVvg",
+      "chained_binding": {
+        "slot": "0xaad5910",
+        "symbol": "_$s7SwiftUI9NamespaceV12wrappedValueAC2IDVvg",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10741,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a37e9c",
+      "target": "0x1d9e648",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37eb4",
+      "target": "0xfaa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37ebc",
+      "target": "0x1c0dfd8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37ec4",
+      "target": "0x1bf06ac",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37ec8",
+      "target": "0x45b180",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37ecc",
+      "target": "0x7c49ae0",
+      "imported_symbol": "_$s7SwiftUI41EmptyMatchedTransitionSourceConfigurationVMa",
+      "chained_binding": {
+        "slot": "0xaad3718",
+        "symbol": "_$s7SwiftUI41EmptyMatchedTransitionSourceConfigurationVMa",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 9656,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a37ee4",
+      "target": "0xabd858",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37f10",
+      "target": "0x205fa4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37f14",
+      "target": "0x7c4aa7c",
+      "imported_symbol": "_$s7SwiftUI4ViewPAAE23matchedTransitionSource2id2in13configurationQrqd___AA9NamespaceV2IDVqd_0_AA012EmptyMatchedeF13ConfigurationVXEtSHRd__AA0mefN0Rd_0_r0_lF",
+      "chained_binding": {
+        "slot": "0xaad46e8",
+        "symbol": "_$s7SwiftUI4ViewPAAE23matchedTransitionSource2id2in13configurationQrqd___AA9NamespaceV2IDVqd_0_AA012EmptyMatchedeF13ConfigurationVXEtSHRd__AA0mefN0Rd_0_r0_lF",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10161,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a37f1c",
+      "target": "0x1532b4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37f24",
+      "target": "0x1c0e018",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37f48",
+      "target": "0x1d7d61c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37f4c",
+      "target": "0x7c47f74",
+      "imported_symbol": "_$s7SwiftUI16RoundedRectangleVMa",
+      "chained_binding": {
+        "slot": "0xaad16f8",
+        "symbol": "_$s7SwiftUI16RoundedRectangleVMa",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 8631,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a37f58",
+      "target": "0x14b2d8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37f68",
+      "target": "0xaab39c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37f6c",
+      "target": "0x1aa53f4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37f7c",
+      "target": "0x195f1c8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37f84",
+      "target": "0x7c49ae0",
+      "imported_symbol": "_$s7SwiftUI41EmptyMatchedTransitionSourceConfigurationVMa",
+      "chained_binding": {
+        "slot": "0xaad3718",
+        "symbol": "_$s7SwiftUI41EmptyMatchedTransitionSourceConfigurationVMa",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 9656,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a37f94",
+      "target": "0xad0a70",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37f9c",
+      "target": "0x7c49a38",
+      "imported_symbol": "_$s7SwiftUI36MatchedTransitionSourceConfigurationPAAE9clipShapeyQrAA16RoundedRectangleVF",
+      "chained_binding": {
+        "slot": "0xaad3668",
+        "symbol": "_$s7SwiftUI36MatchedTransitionSourceConfigurationPAAE9clipShapeyQrAA16RoundedRectangleVF",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 9634,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x1a37fa0",
+      "target": "0x151980",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37fb4",
+      "target": "0x159298",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37fc0",
+      "target": "0xad980c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37fd4",
+      "target": "0x1d87f94",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37fd8",
+      "target": "0x6fe05c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37fe8",
+      "target": "0x452504",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37fec",
+      "target": "0x4610bc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37ff0",
+      "target": "0x1d889a0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x1a37ff4",
+      "target": "0x1d92d20",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "artifact_static",
+  "line_branch": "0x1a68c94 -> empty 0x1a68d20 / nonempty 0x1a68c98",
+  "join": "0x1a68d34",
+  "font": {
+    "size": 14,
+    "weight": "regular",
+    "design": "monospaced",
+    "construction": "0x1a68d48..0x1a68d8c",
+    "application": "0x1a68dbc -> 0x6ec6b0c"
+  },
+  "types": [
+    "ForEach<Array<CodexRemoteANSITerminalText.Line>>",
+    "ConditionalContent<ModifiedContent<Text,HiddenModifier>,Text>"
+  ],
+  "parser_state": {
+    "descriptor": "0x95af27c",
+    "fields": [
+      "text",
+      "lines"
+    ]
+  },
+  "limits": [
+    "Generic tree labels partially inferred from symbolic type encoding",
+    "Plain preview Text does not reproduce ANSI parsing or row identity",
+    "Long lines, empty lines and selection semantics require separate validation"
+  ]
+}

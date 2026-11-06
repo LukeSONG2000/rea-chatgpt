@@ -1,0 +1,1 @@
+"use strict";function t(t,e){for(let o=0,p=e.length;o<p;o++){const p=e[o],r=Object.getOwnPropertyNames(p.prototype);for(let e=0,o=r.length;e<o;e++){const o=r[e];t.prototype[o]=p.prototype[o]}}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.applyMixins=void 0,exports.applyMixins=t;

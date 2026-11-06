@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.WebView=void 0;const e=require("./WebViewNative");class WebView{static createController(){return(0,e.createNativeController)()}}exports.WebView=WebView;

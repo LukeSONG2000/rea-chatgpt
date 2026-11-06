@@ -1,0 +1,27 @@
+[
+  {
+    "start": "0x1d78c88",
+    "end": "0x1d78c94",
+    "disassembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1d78c88: 9100011f     \tmov\tsp, x8\n 1d78c8c: d2800000     \tmov\tx0, #0x0                ; =0\n 1d78c90: 1421687f     \tb\t0x25d2e8c <__text+0x25aae8c>\n"
+  },
+  {
+    "start": "0x25d2e8c",
+    "end": "0x25d2ea0",
+    "disassembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 25d2e8c: 90046481     \tadrp\tx1, 0xb262000 <_writev+0xb262000>\n 25d2e90: 910c8021     \tadd\tx1, x1, #0x320\n 25d2e94: f0037fe2     \tadrp\tx2, 0x95d1000 <_writev+0x95d1000>\n 25d2e98: 912e8042     \tadd\tx2, x2, #0xba0\n 25d2e9c: 176d8964     \tb\t0x13542c <__text+0x10d42c>\n"
+  },
+  {
+    "start": "0x1a3a254",
+    "end": "0x1a3a280",
+    "disassembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1a3a254: a9486669     \tldp\tx9, x25, [x19, #0x80]\n 1a3a258: b9805128     \tldrsw\tx8, [x9, #0x50]\n 1a3a25c: b9808929     \tldrsw\tx9, [x9, #0x88]\n 1a3a260: 38696ac7     \tldrb\tw7, [x22, x9]\n 1a3a264: 8b0802c2     \tadd\tx2, x22, x8\n 1a3a268: 91050263     \tadd\tx3, x19, #0x140\n 1a3a26c: aa1903e8     \tmov\tx8, x25\n 1a3a270: 979c6874     \tbl\t0x154440 <__text+0x12c440>\n 1a3a274: aa1803e4     \tmov\tx4, x24\n 1a3a278: aa1503e5     \tmov\tx5, x21\n 1a3a27c: 94000162     \tbl\t0x1a3a804 <__text+0x1a12804>\n"
+  },
+  {
+    "start": "0x1dadba0",
+    "end": "0x1dadbac",
+    "disassembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1dadba0: 3942e288     \tldrb\tw8, [x20, #0xb8]\n 1dadba4: 7100051f     \tcmp\tw8, #0x1\n 1dadba8: d65f03c0     \tret\n"
+  },
+  {
+    "start": "0x1488f8",
+    "end": "0x148914",
+    "disassembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  1488f8: f81f0ffe     \tstr\tx30, [sp, #-0x10]!\n  1488fc: 52800021     \tmov\tw1, #0x1                ; =1\n  148900: aa1703e2     \tmov\tx2, x23\n  148904: 97fec88d     \tbl\t0xfab38 <__text+0xd2b38>\n  148908: 7100041f     \tcmp\tw0, #0x1\n  14890c: f84107fe     \tldr\tx30, [sp], #0x10\n  148910: d65f03c0     \tret\n"
+  }
+]

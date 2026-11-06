@@ -1,0 +1,36 @@
+{
+  "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  ae13f4: aa1303e8     \tmov\tx8, x19\n  ae13f8: 15a99f5a     \tb\t0x7549160 <__text+0x7521160>\n  ae13fc: f942d2d4     \tldr\tx20, [x22, #0x5a0]\n  ae1400: 17f84a1b     \tb\t0x8f3c6c <__text+0x8cbc6c>\n  ae1404: d10343a1     \tsub\tx1, x29, #0xd0\n  ae1408: aa1703e0     \tmov\tx0, x23\n  ae140c: 17fbb81b     \tb\t0x9cf478 <__text+0x9a7478>\n  ae1410: d101a3a0     \tsub\tx0, x29, #0x68\n  ae1414: 9100a2c1     \tadd\tx1, x22, #0x28\n  ae1418: 17da14bf     \tb\t0x166714 <__text+0x13e714>\n  ae141c: f00392c0     \tadrp\tx0, 0x7d3c000 <_writev+0x7d3c000>\n  ae1420: 91180000     \tadd\tx0, x0, #0x600\n  ae1424: 15c5cc51     \tb\t0x7c54568 <_writev+0x7c54568>\n  ae1428: f00392c0     \tadrp\tx0, 0x7d3c000 <_writev+0x7d3c000>\n  ae142c: 91176000     \tadd\tx0, x0, #0x5d8\n  ae1430: 15c5cc4e     \tb\t0x7c54568 <_writev+0x7c54568>\n  ae1434: 528000a8     \tmov\tw8, #0x5                ; =5\n  ae1438: 383c6b48     \tstrb\tw8, [x26, x28]\n  ae143c: 15c5cbbb     \tb\t0x7c54328 <_writev+0x7c54328>\n  ae1440: aa1703e3     \tmov\tx3, x23\n  ae1444: aa1403e4     \tmov\tx4, x20\n  ae1448: 17f92098     \tb\t0x9296a8 <__text+0x9016a8>\n  ae144c: f9407700     \tldr\tx0, [x24, #0xe8]\n  ae1450: 15c5cbb6     \tb\t0x7c54328 <_writev+0x7c54328>\n  ae1454: d10203a0     \tsub\tx0, x29, #0x80\n  ae1458: d10343a1     \tsub\tx1, x29, #0xd0\n  ae145c: 17fbaca0     \tb\t0x9cc6dc <__text+0x9a46dc>\n",
+  "window": {
+    "status": "partial",
+    "authority": "shipped-artifact-static-instructions",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "window": {
+      "start": "0xae13f4",
+      "end_exclusive": "0xae1460",
+      "sha256": "a8edab87183b8295b6c72a88bb0a6abd670fd42b534751867306b2253efb523d"
+    },
+    "linker_function_starts_in_window": [
+      "0xae13f4",
+      "0xae13fc",
+      "0xae1404",
+      "0xae1410",
+      "0xae141c",
+      "0xae1428",
+      "0xae1434",
+      "0xae1440",
+      "0xae144c",
+      "0xae1454"
+    ],
+    "next_linker_function_start": "0xae1460",
+    "direct_calls": [],
+    "adjacent_selector_loads": [],
+    "limits": [
+      "Window is not a proven function boundary",
+      "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+      "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+    ]
+  }
+}

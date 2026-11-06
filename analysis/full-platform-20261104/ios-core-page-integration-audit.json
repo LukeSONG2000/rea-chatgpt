@@ -1,0 +1,88 @@
+{
+  "schema": "rea-core-page-audit-v1",
+  "date": "2026-11-05",
+  "platform": "iOS",
+  "official_version": "1.2026.293",
+  "status": "partial",
+  "official_framework_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observed_sources": [
+    {
+      "path": "implementation/ios/Sources/AppDelegate.swift",
+      "sha256": "e93c8594120682850052204e56e56684946492576b5f86190e88cfe5f238ce5c"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "764c29d9f95f164736db40128f8c145ddf0de6a896dbb155ce146d5e57df2510"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "53e25fe295d61c1be527c896e9b0e7fa84673e5cf87a6e83e0b70b8eda086425"
+    },
+    {
+      "path": "docs/full-platform/IOS-MESSAGE-HOSTING.md",
+      "sha256": "7296add5dc45c846c7c7348108cb85b7925ce48c349ed46bdc7de33d6602160e"
+    },
+    {
+      "path": "docs/full-platform/IOS-OFFICIAL-CORE-CHAIN.md",
+      "sha256": "ceead1b69264da3dfd6f3bffbc43ff8a7ff8d63751acb996012bd7d3b2da585e"
+    },
+    {
+      "path": "docs/full-platform/IOS-CORE-PAGE-ACCEPTANCE.md",
+      "sha256": "573e97ca494752e9e1e94399d7dd75e4b1290f7a13c25fb444670ad37927d27d"
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "CORE-01",
+      "status": "not_run",
+      "runtime_evidence": null
+    },
+    {
+      "id": "CORE-02",
+      "status": "not_run",
+      "runtime_evidence": null
+    },
+    {
+      "id": "CORE-03",
+      "status": "not_run",
+      "runtime_evidence": null
+    },
+    {
+      "id": "CORE-04",
+      "status": "partial",
+      "runtime_evidence": "ios-service-offline-core-v280-r2.xcresult"
+    },
+    {
+      "id": "CORE-05",
+      "status": "not_run",
+      "runtime_evidence": null
+    },
+    {
+      "id": "CORE-06",
+      "status": "not_run",
+      "runtime_evidence": null
+    },
+    {
+      "id": "CORE-07",
+      "status": "partial",
+      "runtime_evidence": "ios-service-offline-core-v280-r2.xcresult"
+    },
+    {
+      "id": "CORE-08",
+      "status": "not_run",
+      "runtime_evidence": null
+    }
+  ],
+  "limitations": [
+    "Source audit only, no new build/runtime/visual acceptance",
+    "Newer user references have unknown precise application version",
+    "Official owner wiring and complete message projection remain partial"
+  ],
+  "runtime_increment": {
+    "receipt": "ios-service-offline-core-v280-r2.summary.json",
+    "prior_failure": "ios-service-offline-core-v280.xcresult",
+    "scope": "single deterministic fixture send/cancel/conversation restore flow",
+    "visual_parity": "not_accepted",
+    "external_display": "unverified"
+  }
+}

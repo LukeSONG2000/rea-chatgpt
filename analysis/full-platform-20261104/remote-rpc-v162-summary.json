@@ -1,0 +1,50 @@
+{
+  "status": "partial",
+  "authority": "actual original RPC implementation and manager in packaged renderer; paired synthetic owner",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/original-remote-runtime.mjs",
+      "sha256": "cd975efdeaa1be9510afcf9038a405a730137f6cc6976a5bc440732bb47df9ca"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-rpc.cjs",
+      "sha256": "a85c55f397135d02fe05055887b67ab40707963c282ef83739e2677840024397"
+    }
+  ],
+  "runtime": {
+    "status": "passed",
+    "observed": [
+      "",
+      "Local ",
+      "Local fixture reply",
+      "Local fixture reply"
+    ],
+    "turns": 2,
+    "before": {
+      "active": true,
+      "poisoned": false,
+      "threads": 1,
+      "subscriptions": 0,
+      "transportListeners": 1,
+      "readListeners": 1
+    },
+    "restoredTurns": 2,
+    "otherHostPreserved": true,
+    "rpcHost": "host-b",
+    "rpcUpdates": 2,
+    "foreignRejected": true,
+    "remainingRpcListeners": 0
+  },
+  "reports": [
+    "remote-rpc-v162-runtime.json",
+    "remote-rpc-v162-r2.json",
+    "remote-rpc-v162-hashes.json"
+  ],
+  "macSignature": "deep strict verification passed",
+  "limits": [
+    "MessageChannel within renderer; not yet normal hidden-host service registration",
+    "No visible Remote UI or device catalog acceptance",
+    "Windows assembled but not executed",
+    "No live model or tool execution"
+  ]
+}

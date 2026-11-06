@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "implementation_origin": "independent native host restoration policy",
+  "change": "Persist selected draft scope, restore same-account selection at cold launch; retain legacy snapshot compatibility. UI now restores last selected B rather than always A.",
+  "verified": [
+    "Foundation state tests passed: selection cold restore, cross-account rejection, legacy snapshot",
+    "Dedicated iOS simulator process terminate/relaunch UI test passed: B selected immediately, B draft restored, switch to A restores A draft, return B retains B",
+    "Restored B screenshot visually reviewed"
+  ],
+  "limitations": [
+    "Only two synthetic conversation IDs supported; no full conversation list",
+    "Selection and drafts share one atomic snapshot; history remains separate",
+    "Scroll anchors remain memory-only; no physical iPhone or official behavior equivalence",
+    "Other UI tests not rerun in this batch; tests requiring A must select A explicitly"
+  ],
+  "evidence_sha256": {
+    "implementation/ios/Sources/DraftStore.swift": "1af82c6e0de0e93f2e8bb9193ddb03a7dc763689382c4a41f4f2ac25c61ae4fb",
+    "implementation/ios/Sources/NativeConversationHost.swift": "88b64a1e8ca737593a44dfe78796c3ab2f7ac35f4c509307c4825550feb23d18",
+    "implementation/ios/Tests/main.swift": "aaaa31ad182879c05dc253f8dacda153f2387c7a6886aaf1c5c8e46b4cdd7257",
+    "implementation/ios/UITests/HostInteractionTests.swift": "66f79f46f89f2523e78bded212fa8946094452cd6fb5241335ede05da154ca2c",
+    "analysis/full-platform-20261104/ios-selected-state-v1.log": "fb453ae8e7edc951e2a68b95f06bb1b1878087a44cce3aaa12d19261687e3ede",
+    "analysis/full-platform-20261104/ios-selected-conversation-v1.summary.json": "7a05706bee7a6b4671bbaf739c2883b814aac50d9d0d84a12cf712ec88730ed7"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "shipped-artifact-static-instructions",
+  "animator": {
+    "construction_site": "0x629c70",
+    "class_binding_slot": "0xaac63e0",
+    "class": {
+      "symbol": "_OBJC_CLASS_$_UIViewPropertyAnimator",
+      "library_ordinal": 5,
+      "weak": false,
+      "import_ordinal": 2958,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "duration_slot": "0x7ce2040",
+    "duration_seconds": 0.3
+  },
+  "timing": {
+    "entry": "0x629898",
+    "tail_selector_slot": "0xacad968",
+    "selector": "initWithMass:stiffness:damping:initialVelocity:",
+    "class": {
+      "symbol": "_OBJC_CLASS_$_UISpringTimingParameters",
+      "library_ordinal": 5,
+      "weak": false,
+      "import_ordinal": 2929,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "mass": 1,
+    "stiffness": 986.9602500000001,
+    "damping": 62.832,
+    "velocity_at_this_call": [
+      0,
+      0
+    ],
+    "velocity_source": "0x629c4c clears v0 before 0x629898; helper passes it in d3 and clears d4"
+  },
+  "lifecycle": {
+    "stop_site": "0x6291bc",
+    "stop_argument": true,
+    "clear_owner_slot_site": "0x6291c8",
+    "animation_closure": "0x68869c",
+    "completion_closure": "0x688780"
+  },
+  "integration_decision": "Use the observed spring and duration for noninteractive tap transitions. Keep surface mounted through closing, and isolate completion callbacks by transition identity; callback identity is independent adapter design, not recovered official schema.",
+  "limits": [
+    "Whole official state machine and dragging velocity normalization not recovered.",
+    "Reduce-motion call exists in enclosing window; its branch semantics remain unconfirmed.",
+    "Closure bodies, exact start-animation dispatch and cleanup scope not yet traced.",
+    "Static parameters are not actual device elapsed-time or animation parity measurements."
+  ]
+}

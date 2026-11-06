@@ -1,0 +1,35 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-service-with-official-renderer",
+  "changes": [
+    "Implement GET /global/search for committed synthetic conversation titles",
+    "Bind result identity to conversation_id; exclude archived histories",
+    "Reject unsupported sources, cursor and overflowing pagination"
+  ],
+  "validation": {
+    "isolated_search_cases": "passed",
+    "renderer_results": "passed: two synthetic rows",
+    "select_second_result": "passed: conversation 002 owner route and identity",
+    "native_os_menu_and_keyboard": "unaccepted"
+  },
+  "runtime": "macos-menu-v81-runtime-v3.json",
+  "prior_attempts": [
+    "macos-menu-v81-runtime.json",
+    "macos-menu-v81-runtime-v2.json"
+  ],
+  "schema_evidence": "macos-search-v81-schema.json",
+  "limits": [
+    "Runtime summary remains observed-unaccepted; acceptance here is derived only from explicit checks, not exit code",
+    "Title substring search is independent, not official full-text search/ranking",
+    "Pagination, archived search, provider aggregation, cancel/race and error UI unaccepted",
+    "No actual account/chat data or official service connection",
+    "New task mode mismatch remains unresolved"
+  ],
+  "sources": {
+    "analysis/tools/desktop-fixture-services.mjs": "61b3cf4415bde049f191bd3f486b652c4e49842a8178f79b18035bc4644cf6cc",
+    "analysis/tools/test_desktop_search.mjs": "1fe7dc3ab895e7b1faf63e8682fea3dfc2bbef2f3c91e020d34deb9c83a01a2c",
+    "analysis/tools/probe_desktop_root_mount.cjs": "89fbc4f1401a7e032132a856932d3361c8602eb99845ecc3d44035f320f90a6d"
+  },
+  "next_action": "Trace current app mode and command precedence; compare native newTask with sidebar New chat"
+}

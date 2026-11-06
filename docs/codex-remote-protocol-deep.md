@@ -20,7 +20,7 @@
 - 【观察】应用信封 `rid` 走 **TEXT 帧内 JSON**（fhd@2939 用 `rid.Companion.serializer()` 反序列化 TEXT 载荷）。字段名（pid.java:21-34）：
   `type, clientId, env_id, streamId, seq_id, skipHistory, cursor, message, segmentId, segmentCount, messageSizeBytes, messageChunkBase64, state, status`
   ↔ rid.a..n（rid.java:22-37）。type 枚举 tid（tid.java:24-32）：`ClientMessage, ClientMessageChunk, ServerMessage, ServerMessageChunk, Ack, Ping, Pong, ClientClosed`。
-- 【观察】**入帧上限 = 10,485,760 字节（10 MiB）**，两处抛出 `CodexRemoteSlingshotIncomingFrameTooLargeException(bArr.length)`：fhd.java:2924（主读循环 `if (bArr.length <= 10639360)` 分支外抛）与 fhd.java:3096-3097（device-key 挑战读取路径）。超出即整帧拒绝。
+- 【观察】**入帧上限 = 10,639,360 字节（0xa25800）**，两处抛出 `CodexRemoteSlingshotIncomingFrameTooLargeException(bArr.length)`：fhd.java:2924（主读循环 `if (bArr.length <= 10639360)` 分支外抛）与 fhd.java:3096-3097（device-key 挑战读取路径）。超出即整帧拒绝。2026-11-03 已与 `smali_classes4/fhd.smali` 的两处 0xa25800 交叉核对；不能与 10 MiB 内层消息限制混同。
 - 【观察】信封级入向二次限制（fhd.java:1955-1960 区段）：`messageSizeBytes >= 10485761` 或单 chunk base64 串 > 153,600 字符 → 该信封被静默忽略（ridVarA=null 返回，无异常）。
 - 【观察】**出消息上限**：外发信封编码后 > 153,600 字符即进入分段（xjd@204）；分段目标 = 载荷按 ~102,400 字节切块、动态收缩直到每段编码后 ≤153,600（xjd.java:211-245）；总字节 > 10,485,760 或收缩到极限仍超 → 抛 `CodexRemoteSlingshotMessageTooLargeException("…could not fit within the transport segment budget.")`（xjd.java:255-256）。
 - 【观察】分段子字段：`segmentId`(0-based) < `segmentCount` ≤ 1025、`messageSizeBytes` ≥ 1；收到全部 segment 后按序拼接、Base64 解码、以 JSON 再反序列化为内层消息（fhd.java:1935-2143）。
@@ -38,7 +38,7 @@
 
 - 【观察】**open timeout = 15s**（fhd.n=S）：open 流程 `er50.D(this.n, …)` 超时抛 `CodexRemoteSlingshotOpenTimeoutException("Timed out opening Slingshot app-server websocket after {15s} ms.")`（fhd.java:2700 附近取 `qyjVar3=this.n`；抛出点 fhd.java:2819）。
 - 【观察】**重连总窗口 = 60s**（fhd.j=R）：`fhd.l()` 检查 `w()`（剩余预算），≤0 抛 `CodexRemoteSlingshotReconnectTimeoutException("Timed out reconnecting Slingshot app-server websocket after {60s} ms.")`（fhd.java:1723-1755，w() 定义 fhd.java:3140 区）。
-- 【观察】退避策略 = **无指数退避的立即重试**：失败后日志 "Codex remote websocket reconnect failed; retrying" 并重新调用 fhd.b()（fs6@2218-2226），仅受 60s 总窗口约束。
+- 【观察】所引重试分支未见显式 delay；**完整退避策略未验证**：失败后日志 "Codex remote websocket reconnect failed; retrying" 并重新调用 fhd.b()（fs6@2218-2226），该局部分支不足以排除被调用函数或调度路径中的等待。
 - 【观察】等待"已验证网络"期间**暂停重连时钟**：fhd.b() 挂起在连通性流上，唤醒后把等待时长补回 deadline（this.L += elapsed，fhd.java:536-584；日志 "Codex remote reconnect waiting for validated network" fhd@562）。
 - 【观察】发送确认超时 = 10s（fhd.o=U）：批量出帧 `er50.D(this.o, e64…)`，未在时限内收到 Ack → `CodexRemoteSlingshotSendTimeoutException`（fhd.java:478-483 与 fhd.java:515-518）；e64 = 发送+等 Ack 协程（fhd.java:463-467）。设备密钥证明发送同样用 this.o=10s（fhd.java:3240-3242）。
 - 【观察】连接状态机 E(state)（fhd.java:3203-3220）：状态变更经互斥锁写入 N、记录 L 时间戳，并向事件通道 y 发 lob(state)；打开成功后置 E(1) 并调度 fgd 延迟任务（fhd.java:2848-2852）。

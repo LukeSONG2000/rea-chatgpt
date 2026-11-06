@@ -1,0 +1,815 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x761087c",
+    "end_exclusive": "0x7611000",
+    "sha256": "71cfadd777681e7ef2ce3796fd8532109b299690a429463f554270aa6c7302c1"
+  },
+  "linker_function_starts_in_window": [
+    "0x761087c"
+  ],
+  "next_linker_function_start": "0x761187c",
+  "direct_calls": [
+    {
+      "site": "0x76108ac",
+      "target": "0x15ca10",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x76108c4",
+      "target": "0x14b2c0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x76108e0",
+      "target": "0x7c34368",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x76108ec",
+      "target": "0x7c69940",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacae7b0",
+        "register": "x1",
+        "selector": "keyWindow"
+      }
+    },
+    {
+      "site": "0x76108f4",
+      "target": "0x7c53b0c",
+      "imported_symbol": "_objc_retainAutoreleasedReturnValue"
+    },
+    {
+      "site": "0x7610900",
+      "target": "0x77107bc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x761090c",
+      "target": "0x7c53a58",
+      "imported_symbol": "_objc_release_x20"
+    },
+    {
+      "site": "0x761092c",
+      "target": "0x2a9968c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610930",
+      "target": "0x2c5398",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x76109dc",
+      "target": "0x265cf70",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x76109ec",
+      "target": "0x265cf80",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x76109fc",
+      "target": "0x265cf78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a14",
+      "target": "0x265cf70",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a28",
+      "target": "0x265cf80",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a3c",
+      "target": "0x265cf78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a4c",
+      "target": "0x7c4d728",
+      "imported_symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+      "chained_binding": {
+        "slot": "0xaad6768",
+        "symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11168,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610a50",
+      "target": "0x154d54",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a6c",
+      "target": "0x761369c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a70",
+      "target": "0x7c4d728",
+      "imported_symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+      "chained_binding": {
+        "slot": "0xaad6768",
+        "symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11168,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610a74",
+      "target": "0x154d54",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a80",
+      "target": "0x153c34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a84",
+      "target": "0x101028",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a88",
+      "target": "0x235b544",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a8c",
+      "target": "0x7613524",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610a94",
+      "target": "0x761364c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610aa4",
+      "target": "0x1333f0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610aac",
+      "target": "0x15378c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ab0",
+      "target": "0x7c507ac",
+      "imported_symbol": "_$ss19_HasContiguousBytesP09_providesbC6NoCopySbvgTj",
+      "chained_binding": {
+        "slot": "0xaad8120",
+        "symbol": "_$ss19_HasContiguousBytesP09_providesbC6NoCopySbvgTj",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11967,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610ac4",
+      "target": "0x1333f0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ac8",
+      "target": "0x7613540",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610acc",
+      "target": "0x49690d4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ad0",
+      "target": "0x27153f8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ad4",
+      "target": "0x15ee78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ae4",
+      "target": "0x7c44fa4",
+      "imported_symbol": "_$s5UIKit21UICornerConfigurationVMa",
+      "chained_binding": {
+        "slot": "0xaac58e0",
+        "symbol": "_$s5UIKit21UICornerConfigurationVMa",
+        "library_ordinal": 5,
+        "weak": true,
+        "import_ordinal": 2608,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610b30",
+      "target": "0x7c53b6c",
+      "imported_symbol": "_objc_retain_x20"
+    },
+    {
+      "site": "0x7610b3c",
+      "target": "0x7c4f21c",
+      "imported_symbol": "_$sSo6UIViewC5UIKitE19cornerConfigurationAC08UICornerD0Vvg",
+      "chained_binding": {
+        "slot": "0xaac5d70",
+        "symbol": "_$sSo6UIViewC5UIKitE19cornerConfigurationAC08UICornerD0Vvg",
+        "library_ordinal": 5,
+        "weak": true,
+        "import_ordinal": 2752,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610b64",
+      "target": "0x7c44ec0",
+      "imported_symbol": "_$s5UIKit14UICornerRadiusVMa",
+      "chained_binding": {
+        "slot": "0xaac5818",
+        "symbol": "_$s5UIKit14UICornerRadiusVMa",
+        "library_ordinal": 5,
+        "weak": true,
+        "import_ordinal": 2584,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610b88",
+      "target": "0x14b300",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ba0",
+      "target": "0x7c44ea8",
+      "imported_symbol": "_$s5UIKit14UICornerRadiusV19containerConcentric7minimumAC12CoreGraphics7CGFloatVSg_tFZ",
+      "chained_binding": {
+        "slot": "0xaac5808",
+        "symbol": "_$s5UIKit14UICornerRadiusV19containerConcentric7minimumAC12CoreGraphics7CGFloatVSg_tFZ",
+        "library_ordinal": 5,
+        "weak": true,
+        "import_ordinal": 2582,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610bac",
+      "target": "0x7c44f98",
+      "imported_symbol": "_$s5UIKit21UICornerConfigurationV7corners6radiusAcA0B6RadiusV_tFZ",
+      "chained_binding": {
+        "slot": "0xaac58d8",
+        "symbol": "_$s5UIKit21UICornerConfigurationV7corners6radiusAcA0B6RadiusV_tFZ",
+        "library_ordinal": 5,
+        "weak": true,
+        "import_ordinal": 2607,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610bb4",
+      "target": "0x15195c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610bc0",
+      "target": "0x7c4f228",
+      "imported_symbol": "_$sSo6UIViewC5UIKitE19cornerConfigurationAC08UICornerD0Vvs",
+      "chained_binding": {
+        "slot": "0xaac5d78",
+        "symbol": "_$sSo6UIViewC5UIKitE19cornerConfigurationAC08UICornerD0Vvs",
+        "library_ordinal": 5,
+        "weak": true,
+        "import_ordinal": 2753,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610bc4",
+      "target": "0x7c53a58",
+      "imported_symbol": "_objc_release_x20"
+    },
+    {
+      "site": "0x7610bd4",
+      "target": "0x7c5fac0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacabfd8",
+        "register": "x1",
+        "selector": "effectiveRadiusForCorner:"
+      }
+    },
+    {
+      "site": "0x7610be4",
+      "target": "0x7c5fac0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacabfd8",
+        "register": "x1",
+        "selector": "effectiveRadiusForCorner:"
+      }
+    },
+    {
+      "site": "0x7610bf4",
+      "target": "0x7c5fac0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacabfd8",
+        "register": "x1",
+        "selector": "effectiveRadiusForCorner:"
+      }
+    },
+    {
+      "site": "0x7610c04",
+      "target": "0x7c5fac0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacabfd8",
+        "register": "x1",
+        "selector": "effectiveRadiusForCorner:"
+      }
+    },
+    {
+      "site": "0x7610c54",
+      "target": "0x7c4f228",
+      "imported_symbol": "_$sSo6UIViewC5UIKitE19cornerConfigurationAC08UICornerD0Vvs",
+      "chained_binding": {
+        "slot": "0xaac5d78",
+        "symbol": "_$sSo6UIViewC5UIKitE19cornerConfigurationAC08UICornerD0Vvs",
+        "library_ordinal": 5,
+        "weak": true,
+        "import_ordinal": 2753,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610c58",
+      "target": "0x7c53a58",
+      "imported_symbol": "_objc_release_x20"
+    },
+    {
+      "site": "0x7610c80",
+      "target": "0x15ee78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610c84",
+      "target": "0x153c34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610c88",
+      "target": "0x1a9f2c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610c8c",
+      "target": "0x154d54",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610c90",
+      "target": "0x27153f8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ca8",
+      "target": "0x1542d4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610cac",
+      "target": "0xfaa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ccc",
+      "target": "0x29590c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610cd4",
+      "target": "0x76135fc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610cd8",
+      "target": "0x162e7c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ce0",
+      "target": "0x153184",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ce8",
+      "target": "0x7c52510",
+      "imported_symbol": "_NSSelectorFromString"
+    },
+    {
+      "site": "0x7610cf0",
+      "target": "0x7c53a70",
+      "imported_symbol": "_objc_release_x22"
+    },
+    {
+      "site": "0x7610cfc",
+      "target": "0x7c71320",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacb0628",
+        "register": "x1",
+        "selector": "respondsToSelector:"
+      }
+    },
+    {
+      "site": "0x7610d0c",
+      "target": "0x7c53af4",
+      "imported_symbol": "_objc_retainAutorelease"
+    },
+    {
+      "site": "0x7610d14",
+      "target": "0x7c6dc60",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacaf878",
+        "register": "x1",
+        "selector": "performSelector:"
+      }
+    },
+    {
+      "site": "0x7610d20",
+      "target": "0x7c54b44",
+      "imported_symbol": "_swift_unknownObjectRetain"
+    },
+    {
+      "site": "0x7610d38",
+      "target": "0x2a9968c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610d3c",
+      "target": "0x2c5398",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610db4",
+      "target": "0x76137ac",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610dc0",
+      "target": "0x76118dc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610de0",
+      "target": "0x265a584",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610dec",
+      "target": "0x265a594",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e04",
+      "target": "0x761369c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e08",
+      "target": "0x7c4d728",
+      "imported_symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+      "chained_binding": {
+        "slot": "0xaad6768",
+        "symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11168,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610e2c",
+      "target": "0x265a584",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e3c",
+      "target": "0x265a594",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e50",
+      "target": "0x7c3fb8c",
+      "imported_symbol": "_$s10Foundation13__DataStorageC7_lengthSivg",
+      "chained_binding": {
+        "slot": "0xaac7c58",
+        "symbol": "_$s10Foundation13__DataStorageC7_lengthSivg",
+        "library_ordinal": 12,
+        "weak": false,
+        "import_ordinal": 3727,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610e60",
+      "target": "0x7c4d728",
+      "imported_symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+      "chained_binding": {
+        "slot": "0xaad6768",
+        "symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11168,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610e64",
+      "target": "0x7613a0c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e68",
+      "target": "0x703944",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e74",
+      "target": "0x761369c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e78",
+      "target": "0x7c4d728",
+      "imported_symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+      "chained_binding": {
+        "slot": "0xaad6768",
+        "symbol": "_$sSS18_fromUTF8RepairingySS6result_Sb11repairsMadetSRys5UInt8VGFZ",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11168,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610e7c",
+      "target": "0x7613a0c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e88",
+      "target": "0x155c7c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e8c",
+      "target": "0x101028",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e90",
+      "target": "0x235b544",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610e94",
+      "target": "0x7613524",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ea0",
+      "target": "0x761364c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610eb0",
+      "target": "0x1333f0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ec0",
+      "target": "0x7c507ac",
+      "imported_symbol": "_$ss19_HasContiguousBytesP09_providesbC6NoCopySbvgTj",
+      "chained_binding": {
+        "slot": "0xaad8120",
+        "symbol": "_$ss19_HasContiguousBytesP09_providesbC6NoCopySbvgTj",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11967,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610ed4",
+      "target": "0x1333f0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ed8",
+      "target": "0x7613540",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ee8",
+      "target": "0x7c507a0",
+      "imported_symbol": "_$ss19_HasContiguousBytesP010withUnsafeC0yqd__qd__SWKXEKlFTj",
+      "chained_binding": {
+        "slot": "0xaad8118",
+        "symbol": "_$ss19_HasContiguousBytesP010withUnsafeC0yqd__qd__SWKXEKlFTj",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11966,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x7610ef8",
+      "target": "0x155c7c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610efc",
+      "target": "0x10108c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f00",
+      "target": "0x15ee78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f0c",
+      "target": "0x703944",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f14",
+      "target": "0x15ee78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f1c",
+      "target": "0x703944",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f20",
+      "target": "0x155c7c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f24",
+      "target": "0x1a9f2c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f30",
+      "target": "0x155c7c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f34",
+      "target": "0x10108c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f3c",
+      "target": "0x76135fc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f40",
+      "target": "0x162e7c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f48",
+      "target": "0x153184",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610f50",
+      "target": "0x7c52510",
+      "imported_symbol": "_NSSelectorFromString"
+    },
+    {
+      "site": "0x7610f58",
+      "target": "0x7c53a7c",
+      "imported_symbol": "_objc_release_x23"
+    },
+    {
+      "site": "0x7610f64",
+      "target": "0x7c71320",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacb0628",
+        "register": "x1",
+        "selector": "respondsToSelector:"
+      }
+    },
+    {
+      "site": "0x7610f70",
+      "target": "0x7c54b44",
+      "imported_symbol": "_swift_unknownObjectRetain"
+    },
+    {
+      "site": "0x7610f78",
+      "target": "0x7c6dc60",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacaf878",
+        "register": "x1",
+        "selector": "performSelector:"
+      }
+    },
+    {
+      "site": "0x7610f84",
+      "target": "0x7c538cc",
+      "imported_symbol": "_objc_autorelease"
+    },
+    {
+      "site": "0x7610f98",
+      "target": "0x7c54b44",
+      "imported_symbol": "_swift_unknownObjectRetain"
+    },
+    {
+      "site": "0x7610fb8",
+      "target": "0x2a9968c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610fbc",
+      "target": "0x2c5398",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ff0",
+      "target": "0x703944",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x7610ff8",
+      "target": "0x761372c",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

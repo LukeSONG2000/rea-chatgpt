@@ -1,0 +1,54 @@
+{
+  "status": "partial",
+  "artifact": "Codex 26.1021.31345 ChatGPT mode",
+  "surface": "macOS independent Electron host",
+  "accepted": [
+    "Project and ordinary conversation drafts remain separate through A-B-A",
+    "Drafts are persisted under account/user/conversation identity",
+    "No send and no history mutation",
+    "Distinct Electron process restores both drafts and A-B-A selection without modifying history"
+  ],
+  "processes": [
+    19740,
+    19842
+  ],
+  "profile": "v128-native-draft copied from isolated native v127 profile",
+  "reports": [
+    "desktop-native-v128-draft-write.json",
+    "desktop-native-v128-draft-write-r2.json",
+    "desktop-native-v128-draft-read.json"
+  ],
+  "firstFailure": "Test used raw history title instead of original sidebar display suffix; corrected selector, no application behavior change required",
+  "tests": [
+    "test_desktop_draft_lifecycle.cjs passed",
+    "test_desktop_offline_store.cjs passed"
+  ],
+  "pageErrors": [],
+  "limits": [
+    "Existing committed project conversation only; new unsent project conversation not covered",
+    "No IME composing or abrupt process kill acceptance",
+    "Optional services still unsupported; overall mount-blocked label retained",
+    "System window capture failed; renderer screenshots available",
+    "Not browser, mobile or official service draft acceptance"
+  ],
+  "screenshots": [
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/official-root-probe-run-1793827037715-19736-synthetic-account.png",
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/official-root-probe-run-1793827070780-19839-synthetic-account.png"
+  ],
+  "nextIOS": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbols": [
+      "viewWillTransition",
+      "traitCollectionDidChange",
+      "captureReadingPosition",
+      "restoreReadingPosition"
+    ],
+    "observation": "Rotation captures and restores character reading position; dynamic type handler reconfigures layout without that restoration",
+    "status": "static gap only; actual reading-position drift needs controlled runtime reproduction"
+  },
+  "sources": {
+    "analysis/tools/desktop-native-project-draft-check.cjs": "3ce1105df510c6eab91365ce15e889ce97a90d12506347dabdb833cf046ea4e2",
+    "implementation/desktop/run.cjs": "b20f890ca824c67a1176a5df067e4981893975d97d9dd523331b2bdfa56394f4",
+    "analysis/tools/probe_desktop_root_mount.cjs": "de1f007c8bd259453dc2ca4c2f434d5ddd10ab0d1162b3902517c44650f1f806"
+  }
+}

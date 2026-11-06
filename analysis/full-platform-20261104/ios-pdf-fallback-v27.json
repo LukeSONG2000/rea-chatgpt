@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "implementation_origin": "independent UIKit host, synthetic fixtures and system QuickLook; not recovered official preview wiring",
+  "verified": [
+    "Two focused simulator UI tests passed, zero failures/skips",
+    "System document picker imports synthetic two-page PDF and native QuickLook opens it; screenshots reviewed show page indicator 1/2 then 2/2 and distinct page contents",
+    "Corrupt PNG finishes with accessibility fallback status and visible file icon; list remains usable",
+    "Fixture PDF independently parsed by pdfinfo: two unencrypted letter pages"
+  ],
+  "limitations": [
+    "PDF page change verified by screenshot review, not automated page-number assertion",
+    "Corrupt thumbnail fallback does not test corrupt full-preview behavior",
+    "No physical iPhone, zoom/selection/annotation/share acceptance or official visual equivalence",
+    "No Android/Windows/Web equivalence inferred"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/ios/FixtureProvider/main.swift": "896c3ab2c7212c68efb58c0187b43c6c43a75fd16efc5c61ed5f5ff6d623557f",
+    "implementation/ios/UITests/HostInteractionTests.swift": "e50daa9466b1346b5f74806bd1f74578bd421c46e2ea2554cd10e907925a69de",
+    "analysis/full-platform-20261104/ios-pdf-fallback-v1.summary.json": "98b10a750cd5231b329433f5f893510e8dd810bab527f30b0fed9b5f833f0d95",
+    "analysis/full-platform-20261104/pdf-fixture-v1/manifest.json": "2aad5752916bd19ef76a72ee9b5f900769aad03c6502431642512947d442edef",
+    "analysis/full-platform-20261104/ios-pdf-fallback-v1-attachments/7D2D47EF-D38D-4C1E-BE36-758ECCD04043.png": "5564565a4ddc166db26a8205222273605a00adb76ce8cecad5b535a598ba93d8",
+    "analysis/full-platform-20261104/ios-pdf-fallback-v1-attachments/6E0F4815-AC38-4B5C-A9C9-C9DDE736A31A.png": "e04112872aee92ffff449a60ffcca83bd112b14755288cf23d9ce837d582f2bb",
+    "analysis/full-platform-20261104/ios-pdf-fallback-v1-attachments/1DBAC0FA-DC82-4C91-910D-B8EF45DDC9E6.png": "b1f79083bbc7061b0e75eb78be62095345329548b7452c256c5098dcb502971d"
+  }
+}

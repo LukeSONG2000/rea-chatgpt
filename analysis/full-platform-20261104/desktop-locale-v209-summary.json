@@ -1,0 +1,43 @@
+{
+  "status": "partial",
+  "platform": "macOS",
+  "artifactVersion": "26.1021.31345",
+  "languageSettingsUI": {
+    "status": "passed",
+    "evidence": "desktop-locale-v209-settings.json",
+    "path": [
+      "profile menu",
+      "settings",
+      "language auto detect",
+      "English",
+      "Auto detect"
+    ],
+    "assertions": [
+      "original picker changes live UI to en-US",
+      "localeOverride=en-US written to independent disk profile",
+      "original auto detect changes live UI to zh-CN",
+      "localeOverride=null written to disk",
+      "reload and reopen settings retains system following"
+    ]
+  },
+  "localizedStandaloneSmoke": {
+    "status": "passed",
+    "evidence": "desktop-locale-v208-smoke.json",
+    "change": "composer readiness uses role+contenteditable rather than English aria-label"
+  },
+  "navigationRecovery": {
+    "status": "partial",
+    "finding": "Reloading original settings returns to selected chat, not settings",
+    "evidence": "desktop-locale-v209-settings.json afterReloadBody",
+    "sourceBreakpoints": [
+      "analysis/tools/desktop-native-host.cjs ready always dispatches captured startupRoute",
+      "analysis/tools/desktop-route-store.cjs validate permits only home/chat/project routes"
+    ],
+    "next": "Trace original settings navigation owner and decide separate local view-state persistence; retain conversation identity independently"
+  },
+  "preview": {
+    "pid": 82110,
+    "unchanged": true,
+    "reason": "No rendered application changes; hidden instances closed, user preview kept running"
+  }
+}

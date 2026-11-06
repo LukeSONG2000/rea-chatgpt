@@ -1,0 +1,450 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "framework_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static readable code and derived native type inventory",
+  "javascript": [
+    {
+      "path": "derived/valdimodules-293-complete/ios/chatgpt_wallet/src/WalletContactForm.js",
+      "sha256": "a0f1db6fe3f943fcc17558a831f418f83bf6263b4b363e89edd210f9ea37504d",
+      "matches": [
+        {
+          "character_offset": 14599,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "Form()}),i.endComponent()}renderForm(){const e=this.hasGroupedFields&&(0,Ae.supportsNativeScrollEdgeFooter)(),t=this.hasFixedFooter?ee.OAIColor.BgCanvas:ee.OAIColor.BgCanvasSubtle;i.beginRenderWithStringKey(s,void 0),i.setAttributeStyle(\"style\",De.root),i.setAttributeString(\"backgroundColor\",t),this.viewModel.isEditing&&this"
+        },
+        {
+          "character_offset": 21822,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "alletSave():Pe.default.walletContactContinue(),t=this.hasFixedFooter&&(0,Ae.supportsNativeScrollEdgeFooter)();i.beginComponentWithStringKey(ie.Button,I,void 0,void 0),i.setViewModelProperty(\"accessibilityId\",this.viewModel.isEditing?\"wallet.contact.save\":\"wallet.contact.continue\"),i.setViewModelProperty(\"label\",e),i.setViewM"
+        }
+      ]
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/chatgpt_wallet/src/WalletAddressFooter.js",
+      "sha256": "66ba49bd16e975f12ba9dd04e67566f78ddfc3cf94dbf4ba9b11482df3a23083",
+      "matches": [
+        {
+          "character_offset": 737,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "r.Component{onRender(){const e=!0===this.viewModel.hidden;t.beginComponentWithStringKey(s.ScrollEdgeFooter,o,void 0,void 0),t.setViewModelProperty(\"allowsBottomOverlayTouches\",!0),t.setViewModelProperty(\"accessibilityHidden\",e),t.setViewModelProperty(\"scrollViewHandler\",this.viewModel.scrollViewHandler),t.setViewModelPropert"
+        },
+        {
+          "character_offset": 1111,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "(()=>{t.beginRenderWithStringKey(i,void 0),t.setAttributeStyle(\"style\",(0,d.supportsNativeScrollEdgeFooter)()?l.Style.cachingMerge(this.viewModel.style,a.blurredFooter):this.viewModel.style),t.setAttribute(\"translationY\",e?\"100%\":0),t.renderUnnamedSlotWithStringKey(this),t.endRender()}),t.endComponent()}}exports.WalletAddres"
+        }
+      ]
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/valdi_ui/src/Platform.js",
+      "sha256": "27bc625e5e14314a7fa76d6532b1270227ed31dce905b97e09e8ffa81aa16f2b",
+      "matches": [
+        {
+          "character_offset": 872,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "rtsNativeTextViewInsets=exports.supportsNativeAndroidRefreshControl=exports.supportsNativeScrollEdgeFooterOverlayTouches=exports.supportsNativeScrollEdgeFooterAccessibilityHiding=exports.supportsNativeScrollEdgeFooter=exports.supportsNativeScrollEdges=exports.supportsNativeVariableBlur=exports.supportsNativeIOSLists=exports."
+        },
+        {
+          "character_offset": 925,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "RefreshControl=exports.supportsNativeScrollEdgeFooterOverlayTouches=exports.supportsNativeScrollEdgeFooterAccessibilityHiding=exports.supportsNativeScrollEdgeFooter=exports.supportsNativeScrollEdges=exports.supportsNativeVariableBlur=exports.supportsNativeIOSLists=exports.supportsNativeFilePreview=exports.supportsNativeVisib"
+        },
+        {
+          "character_offset": 983,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "ayTouches=exports.supportsNativeScrollEdgeFooterAccessibilityHiding=exports.supportsNativeScrollEdgeFooter=exports.supportsNativeScrollEdges=exports.supportsNativeVariableBlur=exports.supportsNativeIOSLists=exports.supportsNativeFilePreview=exports.supportsNativeVisibleContentPosition=exports.supportsInteractiveKeyboardDismi"
+        },
+        {
+          "character_offset": 1008,
+          "term": "supportsNativeScrollEdges",
+          "excerpt": "sNativeScrollEdgeFooterAccessibilityHiding=exports.supportsNativeScrollEdgeFooter=exports.supportsNativeScrollEdges=exports.supportsNativeVariableBlur=exports.supportsNativeIOSLists=exports.supportsNativeFilePreview=exports.supportsNativeVisibleContentPosition=exports.supportsInteractiveKeyboardDismissal=exports.isNativeIOS=void 0;co"
+        },
+        {
+          "character_offset": 1056,
+          "term": "VariableBlur",
+          "excerpt": "ts.supportsNativeScrollEdgeFooter=exports.supportsNativeScrollEdges=exports.supportsNativeVariableBlur=exports.supportsNativeIOSLists=exports.supportsNativeFilePreview=exports.supportsNativeVisibleContentPosition=exports.supportsInteractiveKeyboardDismissal=exports.isNativeIOS=void 0;const t=require(\"valdi_core/src/Compi"
+        },
+        {
+          "character_offset": 3446,
+          "term": "VariableBlur",
+          "excerpt": "xports.supportsNativeFilePreview=i,exports.supportsNativeIOSLists=n,exports.supportsNativeVariableBlur=p,exports.supportsNativeScrollEdges=u,exports.supportsNativeScrollEdgeFooter=a,exports.supportsNativeScrollEdgeFooterAccessibilityHiding=v,exports.supportsNativeScrollEdgeFooterOverlayTouches=c,exports.supportsNativeAnd"
+        },
+        {
+          "character_offset": 3469,
+          "term": "supportsNativeScrollEdges",
+          "excerpt": "lePreview=i,exports.supportsNativeIOSLists=n,exports.supportsNativeVariableBlur=p,exports.supportsNativeScrollEdges=u,exports.supportsNativeScrollEdgeFooter=a,exports.supportsNativeScrollEdgeFooterAccessibilityHiding=v,exports.supportsNativeScrollEdgeFooterOverlayTouches=c,exports.supportsNativeAndroidRefreshControl=x,exports.support"
+        },
+        {
+          "character_offset": 3519,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "ts.supportsNativeVariableBlur=p,exports.supportsNativeScrollEdges=u,exports.supportsNativeScrollEdgeFooter=a,exports.supportsNativeScrollEdgeFooterAccessibilityHiding=v,exports.supportsNativeScrollEdgeFooterOverlayTouches=c,exports.supportsNativeAndroidRefreshControl=x,exports.supportsNativeTextViewInsets=l,exports.supportsN"
+        },
+        {
+          "character_offset": 3560,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "upportsNativeScrollEdges=u,exports.supportsNativeScrollEdgeFooter=a,exports.supportsNativeScrollEdgeFooterAccessibilityHiding=v,exports.supportsNativeScrollEdgeFooterOverlayTouches=c,exports.supportsNativeAndroidRefreshControl=x,exports.supportsNativeTextViewInsets=l,exports.supportsNativeTextViewAutoSizing=N,exports.support"
+        },
+        {
+          "character_offset": 3620,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "ooter=a,exports.supportsNativeScrollEdgeFooterAccessibilityHiding=v,exports.supportsNativeScrollEdgeFooterOverlayTouches=c,exports.supportsNativeAndroidRefreshControl=x,exports.supportsNativeTextViewInsets=l,exports.supportsNativeTextViewAutoSizing=N,exports.supportsNativeTextViewContentInsets=d,exports.supportsNativeTextVie"
+        }
+      ]
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/valdi_ui/src/components/ScrollEdge.js",
+      "sha256": "6dadc3c0c1568d400380d4cdf3c452113172d28076d76d7e28b2430301e00b97",
+      "matches": [
+        {
+          "character_offset": 120,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "erty(exports,\"__esModule\",{value:!0}),exports.ScrollEdgeHeader=exports.ScrollEdge=exports.ScrollEdgeFooter=void 0;const e=require(\"valdi_core/src/JSX\"),t=e.jsx,o=t.makeNodePrototype(\"view\",void 0,\"7yK1FIGupsFM9g5R\"),i=t.makeNodePrototype(\"custom-view\",[\"iosClass\",\"ValdiScrollEdgeFooter\"],\"bxfbLj2lpSjTCNoc\"),r=t.makeNodeProto"
+        },
+        {
+          "character_offset": 300,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "e(\"view\",void 0,\"7yK1FIGupsFM9g5R\"),i=t.makeNodePrototype(\"custom-view\",[\"iosClass\",\"ValdiScrollEdgeFooter\"],\"bxfbLj2lpSjTCNoc\"),r=t.makeNodePrototype(\"custom-view\",[\"iosClass\",\"ValdiScrollEdgeView\"],\"kkkzhA3k4gnrByDL\"),s=t.makeNodePrototype(\"custom-view\",[\"iosClass\",\"ValdiScrollEdgeHeader\"],\"z7FmaL8WVyaUV4E-\"),l=require(\"va"
+        },
+        {
+          "character_offset": 665,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "di_core/src/ElementRef\"),n=require(\"valdi_core/src/Style\"),c=require(\"../Platform\");class ScrollEdgeFooter extends l.Component{constructor(){super(...arguments),this.footer=new d.ElementRef,this.updateScrollView=()=>{this.isDestroyed()||this.footer.single()?.setAttribute(\"scrollView\",this.viewModel.scrollViewHandler.scrollVi"
+        },
+        {
+          "character_offset": 1005,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "ode())}}onRender(){const e=!0===this.viewModel.accessibilityHidden;if(!(0,c.supportsNativeScrollEdgeFooter)())return t.beginRenderWithStringKey(o,void 0),t.setAttributeString(\"accessibilityNavigation\",e?\"ignored\":void 0),t.setAttributeStyle(\"style\",this.viewModel.style),t.renderUnnamedSlotWithStringKey(this),void t.endRender"
+        },
+        {
+          "character_offset": 1347,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "WithStringKey(i,void 0),t.setAttributeRef(this.footer),t.setAttributes((0,c.supportsNativeScrollEdgeFooterOverlayTouches)()?{allowsBottomOverlayTouches:!0===this.viewModel.allowsBottomOverlayTouches}:{}),t.setAttributes((0,c.supportsNativeScrollEdgeFooterAccessibilityHiding)()?{accessibilityElementsHidden:e}:{}),t.setAttribu"
+        },
+        {
+          "character_offset": 1496,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "es:!0===this.viewModel.allowsBottomOverlayTouches}:{}),t.setAttributes((0,c.supportsNativeScrollEdgeFooterAccessibilityHiding)()?{accessibilityElementsHidden:e}:{}),t.setAttributeString(\"accessibilityNavigation\",e?\"ignored\":void 0),t.setAttributeStyle(\"style\",this.viewModel.style),t.renderUnnamedSlotWithStringKey(this),t.end"
+        },
+        {
+          "character_offset": 1805,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "ngKey(this),t.endRender(),this.renderer.onRenderProcessed(this.updateScrollView)}}exports.ScrollEdgeFooter=ScrollEdgeFooter;class ScrollEdge extends l.Component{onRender(){(0,c.supportsNativeScrollEdges)()&&(t.beginRenderWithStringKey(r,void 0),t.setAttributeStyle(\"style\",g),t.setAttributeFunction(\"onNavigationInset\",this.vi"
+        },
+        {
+          "character_offset": 1822,
+          "term": "ScrollEdgeFooter",
+          "excerpt": "Render(),this.renderer.onRenderProcessed(this.updateScrollView)}}exports.ScrollEdgeFooter=ScrollEdgeFooter;class ScrollEdge extends l.Component{onRender(){(0,c.supportsNativeScrollEdges)()&&(t.beginRenderWithStringKey(r,void 0),t.setAttributeStyle(\"style\",g),t.setAttributeFunction(\"onNavigationInset\",this.viewModel.onNavigat"
+        },
+        {
+          "character_offset": 1892,
+          "term": "supportsNativeScrollEdges",
+          "excerpt": "ts.ScrollEdgeFooter=ScrollEdgeFooter;class ScrollEdge extends l.Component{onRender(){(0,c.supportsNativeScrollEdges)()&&(t.beginRenderWithStringKey(r,void 0),t.setAttributeStyle(\"style\",g),t.setAttributeFunction(\"onNavigationInset\",this.viewModel.onNavigationInset),t.endRender())}}exports.ScrollEdge=ScrollEdge;class ScrollEdgeHeader "
+        },
+        {
+          "character_offset": 2173,
+          "term": "supportsNativeScrollEdges",
+          "excerpt": "}exports.ScrollEdge=ScrollEdge;class ScrollEdgeHeader extends l.Component{onRender(){(0,c.supportsNativeScrollEdges)()?(t.beginRenderWithStringKey(s,void 0),t.setAttributeStyle(\"style\",a),t.renderUnnamedSlotWithStringKey(this),t.endRender()):t.renderUnnamedSlotWithStringKey(this)}}exports.ScrollEdgeHeader=ScrollEdgeHeader;const a=new"
+        }
+      ]
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/valdi_ui/src/components/ScrollView.js",
+      "sha256": "d51c11d178c9a99a40f8e17f35d3aa7e92edcf8a0f80e5a64c6d9c57f885d607",
+      "matches": [
+        {
+          "character_offset": 1352,
+          "term": "navigationScrollEdge",
+          "excerpt": "er}onViewModelUpdate(e){e?.allowContentOverflow===this.viewModel.allowContentOverflow&&e?.navigationScrollEdge===this.viewModel.navigationScrollEdge||(this.insetObserver?.cancel(),this.insetObserver=void 0,this.layoutSubscription?.unsubscribe(),this.layoutSubscription=void 0,this.allowsContentOverflow&&(void 0===this.viewModel.s"
+        },
+        {
+          "character_offset": 1390,
+          "term": "navigationScrollEdge",
+          "excerpt": "tOverflow===this.viewModel.allowContentOverflow&&e?.navigationScrollEdge===this.viewModel.navigationScrollEdge||(this.insetObserver?.cancel(),this.insetObserver=void 0,this.layoutSubscription?.unsubscribe(),this.layoutSubscription=void 0,this.allowsContentOverflow&&(void 0===this.viewModel.scrollRef&&(this.layoutSubscription=thi"
+        },
+        {
+          "character_offset": 1979,
+          "term": "navigationScrollEdge",
+          "excerpt": "on?.unsubscribe()}onRender(){const{scrollRef:e,scrollViewHandler:l,allowContentOverflow:a,navigationScrollEdge:h,style:c,...u}=this.viewModel,g=e??this.scrollViewHandler,{onLayout:p,onContentSizeChange:S,onViewportChanged:y}=u;if(void 0!==p||void 0!==e&&this.allowsContentOverflow?u.onLayout=t=>{void 0!==e&&this.allowsContentOver"
+        },
+        {
+          "character_offset": 4090,
+          "term": "navigationScrollEdge",
+          "excerpt": "StringKey(\"scroll-end\",this),t.endRender()}get usesNativeEdge(){return!0===this.viewModel.navigationScrollEdge&&(0,h.supportsNativeScrollEdges)()}get navigationInset(){return this.usesNativeEdge?this.state.navigationInset:0}get allowsContentOverflow(){return!0===this.viewModel.allowContentOverflow&&(0,h.isNativeIOS)()&&!this.use"
+        },
+        {
+          "character_offset": 4117,
+          "term": "supportsNativeScrollEdges",
+          "excerpt": "),t.endRender()}get usesNativeEdge(){return!0===this.viewModel.navigationScrollEdge&&(0,h.supportsNativeScrollEdges)()}get navigationInset(){return this.usesNativeEdge?this.state.navigationInset:0}get allowsContentOverflow(){return!0===this.viewModel.allowContentOverflow&&(0,h.isNativeIOS)()&&!this.usesNativeEdge}}exports.ScrollView="
+        }
+      ]
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/valdi_ui/src/components/RefreshControl.js",
+      "sha256": "6efd73e5423001461e1eb274246c6173ae19636bec4eea79db27823b11559e23",
+      "matches": [
+        {
+          "character_offset": 2179,
+          "term": "navigationScrollEdge",
+          "excerpt": "perty(\"allowContentOverflow\",this.viewModel.allowContentOverflow),t.setViewModelProperty(\"navigationScrollEdge\",this.viewModel.navigationScrollEdge),t.setViewModelProperty(\"style\",s),t.setUnnamedSlot(()=>{this.renderNativeRefresh(o),t.renderUnnamedSlotWithStringKey(this,void 0,\"content\")}),t.endComponent()}renderNativeRefresh(e)"
+        },
+        {
+          "character_offset": 2216,
+          "term": "navigationScrollEdge",
+          "excerpt": "wModel.allowContentOverflow),t.setViewModelProperty(\"navigationScrollEdge\",this.viewModel.navigationScrollEdge),t.setViewModelProperty(\"style\",s),t.setUnnamedSlot(()=>{this.renderNativeRefresh(o),t.renderUnnamedSlotWithStringKey(this,void 0,\"content\")}),t.endComponent()}renderNativeRefresh(e){(0,a.isNativeIOS)()&&(0,n.isVersionA"
+        }
+      ]
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/valdi_ui/src/components/VariableBlur.js",
+      "sha256": "b44e4b1238a5824c4513131df80c273bc97aa11e83a851f621a4b1222b6bad81",
+      "matches": [
+        {
+          "character_offset": 76,
+          "term": "VariableBlur",
+          "excerpt": "\"use strict\";Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.VariableBlur=void 0;const e=require(\"valdi_core/src/JSX\"),t=e.jsx,r=t.makeNodePrototype(\"custom-view\",void 0,\"G7c_7Ol8IxSehmO-\"),i=require(\"valdi_core/src/Component\"),s=require(\"valdi_core/src/Style\"),l=require(\"../Platform\");class "
+        },
+        {
+          "character_offset": 308,
+          "term": "VariableBlur",
+          "excerpt": "ldi_core/src/Component\"),s=require(\"valdi_core/src/Style\"),l=require(\"../Platform\");class VariableBlur extends i.Component{onRender(){if(!(0,l.supportsNativeVariableBlur)())return;const{radius:e,stops:i,style:a,...u}=this.viewModel;t.beginRenderWithStringKey(r,void 0),t.setAttributes(u),t.setAttribute(\"iosClass\",\"ValdiVa"
+        },
+        {
+          "character_offset": 375,
+          "term": "VariableBlur",
+          "excerpt": "e(\"../Platform\");class VariableBlur extends i.Component{onRender(){if(!(0,l.supportsNativeVariableBlur)())return;const{radius:e,stops:i,style:a,...u}=this.viewModel;t.beginRenderWithStringKey(r,void 0),t.setAttributes(u),t.setAttribute(\"iosClass\",\"ValdiVariableBlurView\"),t.setAttributeStyle(\"style\",void 0===a?o:s.Style.c"
+        },
+        {
+          "character_offset": 538,
+          "term": "VariableBlur",
+          "excerpt": "l;t.beginRenderWithStringKey(r,void 0),t.setAttributes(u),t.setAttribute(\"iosClass\",\"ValdiVariableBlurView\"),t.setAttributeStyle(\"style\",void 0===a?o:s.Style.cachingMerge(a,o)),t.setAttributeNumber(\"blurRadius\",e),t.setAttribute(\"blurStops\",i),t.endRender()}}exports.VariableBlur=VariableBlur;const o=new s.Style({touchEna"
+        },
+        {
+          "character_offset": 715,
+          "term": "VariableBlur",
+          "excerpt": "t.setAttributeNumber(\"blurRadius\",e),t.setAttribute(\"blurStops\",i),t.endRender()}}exports.VariableBlur=VariableBlur;const o=new s.Style({touchEnabled:!1,accessibilityNavigation:\"ignored\"});\n"
+        },
+        {
+          "character_offset": 728,
+          "term": "VariableBlur",
+          "excerpt": "eNumber(\"blurRadius\",e),t.setAttribute(\"blurStops\",i),t.endRender()}}exports.VariableBlur=VariableBlur;const o=new s.Style({touchEnabled:!1,accessibilityNavigation:\"ignored\"});\n"
+        }
+      ]
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/NavigationTheme.js",
+      "sha256": "82a26ced35e588e6674f9749d4a1e40816826b752d0499f7401ec4c74dcf7b61",
+      "matches": [
+        {
+          "character_offset": 176,
+          "term": "navigationScrollEdge",
+          "excerpt": "igationTheme=void 0;const e=require(\"valdi_ui/src/Platform\"),o={navigationBarBackground:2,navigationScrollEdge:!0},r={navigationBarBackground:void 0,navigationScrollEdge:!1};function i(i){return i&&(0,e.supportsNativeScrollEdges)()?o:r}exports.resolveNavigationTheme=i;\n"
+        },
+        {
+          "character_offset": 235,
+          "term": "navigationScrollEdge",
+          "excerpt": "),o={navigationBarBackground:2,navigationScrollEdge:!0},r={navigationBarBackground:void 0,navigationScrollEdge:!1};function i(i){return i&&(0,e.supportsNativeScrollEdges)()?o:r}exports.resolveNavigationTheme=i;\n"
+        },
+        {
+          "character_offset": 289,
+          "term": "supportsNativeScrollEdges",
+          "excerpt": "},r={navigationBarBackground:void 0,navigationScrollEdge:!1};function i(i){return i&&(0,e.supportsNativeScrollEdges)()?o:r}exports.resolveNavigationTheme=i;\n"
+        }
+      ]
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsList.js",
+      "sha256": "c9bbf6108a84d38ad71d6c4c182fe6f3c9bfd18911ef7cb3f5946c7f22006d32",
+      "matches": [
+        {
+          "character_offset": 778,
+          "term": "navigationScrollEdge",
+          "excerpt": "me)();o.beginComponentWithStringKey(s.ScrollView,t,void 0,void 0),o.setViewModelProperty(\"navigationScrollEdge\",this.viewModel.navigationScrollEdge),o.setViewModelProperty(\"style\",p.scroll),o.setViewModelProperty(\"scrollRef\",this.viewModel.scrollRef),o.setViewModelProperty(\"onLayout\",this.viewModel.onLayout),o.setViewModelProper"
+        },
+        {
+          "character_offset": 815,
+          "term": "navigationScrollEdge",
+          "excerpt": ".ScrollView,t,void 0,void 0),o.setViewModelProperty(\"navigationScrollEdge\",this.viewModel.navigationScrollEdge),o.setViewModelProperty(\"style\",p.scroll),o.setViewModelProperty(\"scrollRef\",this.viewModel.scrollRef),o.setViewModelProperty(\"onLayout\",this.viewModel.onLayout),o.setViewModelProperty(\"accessibilityId\",this.viewModel.a"
+        }
+      ]
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/chatgpt_wallet_approval/src/WalletApprovalSummary.js",
+      "sha256": "d3a8cca1ca71c8d9c6760700f3e7b6a4faaacb41de7ada03a63432997e33d811",
+      "matches": [
+        {
+          "character_offset": 5798,
+          "term": "VariableBlur",
+          "excerpt": "al\"),Fe=require(\"valdi_ui/src/components/IconButton\"),qe=require(\"valdi_ui/src/components/VariableBlur\"),Ee=require(\"valdi_ui/src/Platform\"),He=require(\"../res\"),_e=require(\"./Strings\"),Ge=require(\"./WalletApprovalElicitation\"),je=require(\"./WalletApprovalReview\"),ze=require(\"./WalletApprovalTotalText\"),Ue=Me.Device.isIO"
+        },
+        {
+          "character_offset": 17121,
+          "term": "VariableBlur",
+          "excerpt": ".isNativeIOS)()?Re.default.chevronLeft:Re.default.arrowLeft,d=!n&&!r&&(0,Ee.supportsNativeVariableBlur)();i.beginRenderWithStringKey(N,void 0),i.setAttributeStyle(\"style\",n?lt.inlineDetailPage:lt.detailPage),d&&(i.beginComponentWithStringKey(qe.VariableBlur,K,void 0,void 0),i.setViewModelProperty(\"style\",lt.detailHeaderB"
+        },
+        {
+          "character_offset": 17276,
+          "term": "VariableBlur",
+          "excerpt": "teStyle(\"style\",n?lt.inlineDetailPage:lt.detailPage),d&&(i.beginComponentWithStringKey(qe.VariableBlur,K,void 0,void 0),i.setViewModelProperty(\"style\",lt.detailHeaderBlur),i.setViewModelProperty(\"stops\",rt),i.endComponent()),i.beginRenderWithStringKey(V,void 0),i.setAttributeStyle(\"style\",r?lt.modalHeader:d?lt.detailHead"
+        }
+      ]
+    }
+  ],
+  "native_inventory": {
+    "path": "analysis/ios293-native/swift-types-full.txt",
+    "sha256": "eee0c79dabfb4936a5c472fdf05a3e8b909cd1b9cb312ec399a6cca5664c04f3",
+    "matches": [
+      {
+        "line": 3732,
+        "text": "C CalpicoMessagesViewController | super=UIViewController (ObjC) | fields=actionHandler,canOpenReplyThread,replyThreadAction,additionalContentInset,inlineWidgetOwnsKeyboardFocus,scrollsToUnreadMessages,prefetchesAttachmentTitles,usesOrbitTopScrollEdge,isKeyboardLayoutEnabled,newChatPullConfiguration,alwaysBounceVertical,items,scrollViewIsScrollingToTop,focusedReply,replyTranscript,replyBackdrop,replyHeader,replyTransition,hiddenReplyRows,isFocusedReplyTranscript,onItemsApplied,hasAppliedItems,isDismissingReply,$__lazy_storage_$_replyTap,topSafeAreaInset,bag,scrollToIncomingMessageEnabled,applicationStateObserver,firstResponderStatusProvider,$__lazy_storage_$_scrollToTopOfIncomingMessageEnabled,keyboardRestoration,keyboardRestorationGeneration,keyboardRestorationTransitionDuration,isApplicationActive,scrollViewDidInitiallyAppear,isPresented,reactions,reactionGeometry,displayedReactions,insertedReactions,displayedMessageRows,isMetadataPrefetchUpdateScheduled,prefetchedMessageIDs,retainedPrefetchMessageIDs,usesSimpleMessageContent,cellConfigurator,acknowledgedMessageRequestID,newChatPullController,animatesMessageTransitions,isReduceMotionEnabled,isReduceTransparencyEnabled,isOutgoingMessage,logicalMessageID,roomSendMorph,makeSendMorphContent,makeImmediateSendMorphContent,disableCalpicoScrollIndicatorSafeAreaFix,immediateSendMorphReservedHeight,immediateSendMorphContentFrame,immediateSendMorphHadTypingIndicator,animatingIncomingReplyIDs,pendingIncomingReplyAnimations,incomingTypingSource,incomingReplySnapshots,incomingReplyAnimationGeneration,needsIncomingReplyCleanup,isComposerEmpty,emptyComposerLayouts,immediateSendMorphComposerLayout,isResolvingSendMorph,sendMorphViewport,sendMorphRowFrame,isUpdatingSendMorphScroll,valdiComponentCache,$__lazy_storage_$_keyboardInsetView,$__lazy_storage_$_collectionView,$__lazy_storage_$_layout,$__lazy_storage_$_dataSource,unreadDemarcatorState,pendingScrollTarget,lastReportedCanScrollToBottom,isScrollToBottomStateUpdateScheduled,shouldPinAfterInsetChange,animatedScrollGeneration,keyboardScrollAnimation,keyboardScrollTarget,previousKeyboardLayoutHeight,cachedLogicalMessageIDs,deliveryReceiptRows,taskActivityRows,reactionMetrics,isAnimatingScrollToBottom"
+      },
+      {
+        "line": 3934,
+        "text": "S CalpicoMessagesView | fields=scrollToIncomingMessageEnabled,eventPublisher,applicationStateObserver,firstResponderStatusProvider,cellConfigurator,items,reactions,usesSimpleMessageContent,focusedReply,canOpenReplyThread,replyThreadAction,acknowledgedMessageRequestID,isKeyboardLayoutEnabled,inlineWidgetOwnsKeyboardFocus,usesOrbitTopScrollEdge,disableCalpicoScrollIndicatorSafeAreaFix,topSafeAreaInset,additionalContentInset,isComposerEmpty,keyboardDismissPadding,hapticEngine,newChatPullConfiguration,alwaysBounceVertical,animatesMessageTransitions,isOutgoingMessage,logicalMessageID,sendMorph,makeSendMorphContent,makeImmediateSendMorphContent,scrollsToUnreadMessages,prefetchesAttachmentTitles,actionHandler"
+      },
+      {
+        "line": 3979,
+        "text": "S CalpicoRoomContentView | fields=_viewModel,_messagesViewModel,_inputFocused,_focusMode,applicationStateObserver,firstResponderStatusProvider,additionalBottomPadding,isLoadingEnabled,showsLoadingIndicator,inputTopPadding,isKeyboardLayoutEnabled,usesOrbitTopScrollEdge,_transitionNamespace,_accessibilityReduceMotion,_scenePhase,_openURL,_browserPolicy,_browserURLHandling,_presentInAppBrowser,__isViewActive,__sessionResumptionCount"
+      },
+      {
+        "line": 3982,
+        "text": "S CalpicoRoomMessagesContentView | fields=viewModel,applicationStateObserver,firstResponderStatusProvider,transitionNamespace,additionalBottomPadding,inputTopPadding,isKeyboardLayoutEnabled,usesOrbitTopScrollEdge,_enablesBottomDismissal,_messageContentStyle,_layoutDirection,_browserPolicy,_imageRequestModifier,_reactionPresentation,_typingIndicatorStyle,_sendMorph,_topOverlayBottom,__canScrollToBottom"
+      },
+      {
+        "line": 3984,
+        "text": "S CalpicoRoomMessagesView | fields=_viewModel,applicationStateObserver,firstResponderStatusProvider,transitionNamespace,_inputFocused,_focusMode,additionalBottomPadding,inputTopPadding,isKeyboardLayoutEnabled,usesOrbitTopScrollEdge,_presentedContentCoordinator"
+      },
+      {
+        "line": 3994,
+        "text": "S (anonymous).CalpicoSendMorphModifier | fields=messageInputViewModel,isEnabled,usesOrbitTopScrollEdge,__sendMorph,_immediateEnabled"
+      },
+      {
+        "line": 3995,
+        "text": "S (anonymous).CalpicoSendMorphOverlay | fields=sendMorph,messageInputViewModel,topInset,usesOrbitTopScrollEdge,immediateEnabled"
+      },
+      {
+        "line": 11990,
+        "text": "S EcosystemMessageRowPart | fields=_viewModel,rowPadding,transitionNamespace,focusMode,isPrewarm,isAppPresented,showsModalLoadingCloseButton,allowsWebViewFirstResponder,allowsWebViewScrolling,showsTopScrollEdgeEffect,removeWebViewInputAccessoryView,inlineWebViewFallbackHeight,onPresentationDismissed,_isCompactHorizontalSizeClass,_isCompactVerticalSizeClass,_colorScheme,_openURL,_scenePhase,__triggerStealWebView,__isMounted,__fullscreenPillCornerRadius"
+      },
+      {
+        "line": 11995,
+        "text": "S EcosystemMessageRowScreen | fields=_viewModel,focusMode,showNavigationBarOverride,showFloatingButtonsWhenNavigationBarHidden,showsModalLoadingCloseButton,allowsWebViewFirstResponder,allowsWebViewScrolling,showsTopScrollEdgeEffect,removeWebViewInputAccessoryView,inlineWebViewFallbackHeight,isPrewarm,isAppPresented,ignoredContainerSafeAreaEdges,additionalBottomSafeAreaInset,onPresentationDismissed,_layoutDirection"
+      },
+      {
+        "line": 12006,
+        "text": "S EcosystemSkybridgeRenderer | fields=_viewModel,placement,isPrewarm,isAppPresented,showsModalLoadingCloseButton,transitionNamespace,triggerStealWebView,allowsWebViewFirstResponder,allowsWebViewScrolling,showsTopScrollEdgeEffect,removeWebViewInputAccessoryView,inlineWebViewFallbackHeight"
+      },
+      {
+        "line": 12220,
+        "text": "S MessageToolEcosystemTemplate.ViewParams | fields=focusMode,showNavigationBarOverride,showFloatingButtonsWhenNavigationBarHidden,showsModalLoadingCloseButton,allowsWebViewFirstResponder,allowsWebViewScrolling,showsTopScrollEdgeEffect,removeWebViewInputAccessoryView,inlineWebViewFallbackHeight,isPrewarm,isAppPresented,ignoredContainerSafeAreaEdges,additionalBottomSafeAreaInset,onPresentationDismissed"
+      },
+      {
+        "line": 21515,
+        "text": "S ProjectDetailFileList | fields=_viewModel,emptyView,header,topScrollEdgeEffectStyle,addFileRowTitle,onAddFileRowTap,onSelectFile,onSelectSavedMessage,onRefresh,__confirmFileDeletion,__confirmConnectorScopeDeletion"
+      },
+      {
+        "line": 21516,
+        "text": "S (anonymous).ProjectDetailFileListContent | fields=files,pendingFileUploads,pendingFileDeletions,pendingFileRenames,pendingConnectorScopes,pendingConnectorScopeDeletions,optimisticSyncingScopeIDs,previewingFileID,hasEditAccess,isSharedProject,sharedProjectConnectorResyncEnabled,fileUploadLimitMessage,emptyView,header,topScrollEdgeEffectStyle,_confirmFileDeletion,_confirmConnectorScopeDeletion,onUpsellPlan,addFileRowTitle,onAddFileRowTap,onSelectFile,onSelectSavedMessage,onRenameSavedMessage,onConnectorScopeAction,onRefresh,_progressViewSize,__isViewOnlyAddFilePopoverPresented,__renamingFile,__renamedFileTitle,_isRenamingFocused,_openURL,fileIconStyle"
+      },
+      {
+        "line": 22291,
+        "text": "S SettingsHomeFormContent | fields=usesRefreshedDesign,appearanceIdentity,hidesTopScrollEdgeEffect,rows,_defaultMinListRowHeight,_consumerIdentityMinimumRowHeight"
+      },
+      {
+        "line": 26264,
+        "text": "C SystemWebView | super=UIView (ObjC) | fields=downloadDelegate,javaScriptDialogDelegate,authenticationChallengeHandler,allowsHTTPErrorResponses,downloadsNavigationResponses,blocksHTTPNavigation,redactsNavigationDetailsInLogs,externalURLHandler,navigationEventHandler,documentGeneration,committedDocumentGeneration,webContentProcessDidTerminateHandler,menuModifier,requestHandler,isScrollable,verticalScrollIndicatorTrailingOverflow,additionalTopSafeAreaInset,additionalBottomSafeAreaInset,hiddenEdgeEffects,usesVerticalSafeAreaScrollEdges,reportsBlockedHTTPNavigationAsFailure,unsupportedPopupHandler,allowsHitTesting,error,pendingURL,latestRequest,wasLoadingInterrupted,isDiscarded,includesHorizontalSafeAreaInsets,navigationStartURL,provisionalNavigationRequest,contentDiscardedSubject,didInstallDOMKeyboardFocusObserver,domKeyboardFocusHandler,webView,clearsCookiesBeforeAuthentication,authenticationCookies,preservedCookieNames,handlersByName,messageChannels,sourceCheckedMessageNames,isLoadingObserver,latestMainFrameNavigationResponseLogDetails,stateSubject,navigationStateSubject,loadTask,recoverableRequest,requestGeneration,isRecoveringRequest,bag,injectedDependencies"
+      },
+      {
+        "line": 26268,
+        "text": "C WebViewContainer | super=UIView (ObjC) | fields=webView,options,callbackOwner,onStateChange,onNavigationStateChange,textSelectionMenuProvider,allowsScrolling,removeInputAccessoryView,contentInsetAdjustmentBehavior,hasPendingStealRequest,showsSoftTopScrollEdgeEffect,safeAreaInsetsOverride,currentDownload,bag,snapshotView,webViewConstraints,state,navigationState"
+      },
+      {
+        "line": 26280,
+        "text": "S WebView.Options | fields=avoidsStealingSystemWebView,replacesStolenWebViewWithSnapshot,allowsHitTesting,allowsFirstResponder,allowsScrolling,ignoresViewportScaleLimits,allowsBackForwardNavigationGestures,autoReloadOnURLChange,showsFailureView,textSelectionMenuProvider,reloadsCurrentPage,removeInputAccessoryView,contentInsetAdjustmentBehavior,safeAreaInsetsOverride,showsSoftTopScrollEdgeEffect,additionalTopSafeAreaInset,additionalBottomSafeAreaInset"
+      },
+      {
+        "line": 26327,
+        "text": "S ReusableAuthenticatedWebViewOptions | fields=avoidsStealingSystemWebView,allowsHitTesting,allowsScrolling,allowsBackForwardNavigationGestures,autoReloadOnURLChange,removeInputAccessoryView,contentInsetAdjustmentBehavior,safeAreaInsetsOverride,showsSoftTopScrollEdgeEffect"
+      },
+      {
+        "line": 26331,
+        "text": "S WebViewSessionTemplate.ViewModelParams | fields=websiteDataStore,allowsScrolling,usesVerticalSafeAreaScrollEdges,keyboardDismissMode,clipsScrollView,verticalScrollIndicatorTrailingOverflow"
+      },
+      {
+        "line": 27284,
+        "text": "S CodexTaskListContainer | fields=usesSoftScrollEdges,content"
+      },
+      {
+        "line": 44053,
+        "text": "C VariableBlur.Coordinator | fields=effect,owner"
+      },
+      {
+        "line": 44115,
+        "text": "S Mask.VariableBlur.Curve | fields=unitCurve,startColor,endColor"
+      },
+      {
+        "line": 44131,
+        "text": "S EdgeFadedScrollView | fields=axis,fadeLength,edgeBlurRadius,showsLeadingEdgeEffects,leadingEdgeEffectsAnimation,content,_reduceTransparency,_layoutDirection"
+      },
+      {
+        "line": 44132,
+        "text": "S (anonymous).EdgeFadedScrollViewBlur | fields=axis,layoutDirection,fadeLength,radius,showsLeadingEdgeEffects,leadingEdgeEffectsAnimation"
+      },
+      {
+        "line": 44133,
+        "text": "S (anonymous).EdgeFadedScrollViewBlurEdge | fields=axis,length,radius,startPoint,endPoint,alignment"
+      },
+      {
+        "line": 44180,
+        "text": "S Mask.VariableBlur.Linear | fields=stops,startPoint,endPoint"
+      },
+      {
+        "line": 44241,
+        "text": "S (anonymous).SafeAreaInsetBlurViewModifier | fields=edge,radius,additionalLength,curve,enabled,horizontalInset,__safeAreaInset"
+      },
+      {
+        "line": 44348,
+        "text": "S VariableBlur | fields=radius,mask"
+      },
+      {
+        "line": 44422,
+        "text": "E VariableBlur.Mask | fields=linear,curve"
+      },
+      {
+        "line": 44427,
+        "text": "E (anonymous).OAIHorizontalPagerSegmentedTabBarScrollEdge | fields=leading,trailing"
+      },
+      {
+        "line": 44694,
+        "text": "S ScrollEdgeEffectHiddenAtTopOfScrollModifier | fields=__isScrolled"
+      },
+      {
+        "line": 44695,
+        "text": "S (anonymous).ScrollEdgeEffectHiddenIfAvailableModifier | fields=hidden,edges"
+      },
+      {
+        "line": 44696,
+        "text": "S (anonymous).ScrollEdgeEffectStyleIfAvailableModifier | fields=style,edges"
+      },
+      {
+        "line": 44755,
+        "text": "E CompatibleScrollEdgeEffectStyle | fields=hard,soft"
+      }
+    ]
+  },
+  "observations": [
+    "WalletApprovalDetailContent creates VariableBlur when not inline, not modal and native variable blur supported; radius 2, alpha stops 1 to 0.",
+    "WalletAddressFooter connects ScrollEdgeFooter; native visual output has not been replayed.",
+    "SettingsList forwards navigationScrollEdge into ScrollView; root enablement unknown.",
+    "CompilerIntrinsics gates runtime.apiVersion, not application version 293.",
+    "Native types expose settings, project file list, Codex task list and embedded web edge-effect configuration; field presence does not prove enabled route."
+  ],
+  "limits": [
+    "No full target app execution",
+    "User screenshot version unknown",
+    "No exact blur curve or visual parity inferred from metadata",
+    "Search limited to recovered 293 iOS readable modules and existing native type inventory; not exhaustive call-graph proof",
+    "Android implementation not established"
+  ]
+}

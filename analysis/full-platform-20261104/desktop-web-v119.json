@@ -1,0 +1,41 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "implementation": "Independent synthetic-project store scoped to isolated profile and fixture account; atomic mode0600 JSON; renderer receives create result only after durable write",
+  "accepted": [
+    "original create submission produces one durable ID",
+    "created project appears in original sidebar",
+    "reload restores same project without duplicate"
+  ],
+  "validation": {
+    "project_store": "distinct IDs, reconstructed store, permissions, invalid-write preservation, corrupt-state preservation passed",
+    "fixture_integration": "create/list/detail scope and failed persistence tests passed",
+    "page_errors": []
+  },
+  "evidence": [
+    "desktop-web-v119-contract.json",
+    "desktop-web-v119-create-dialog.json",
+    "desktop-web-v119-create-dialog-r2.json",
+    "desktop-web-v119-created.json",
+    "desktop-web-v119-created-r2.json",
+    "desktop-web-v119-reload.json"
+  ],
+  "corrections": [
+    "Create button requires heading hover",
+    "Full UUID test name exceeded observed 50-character limit; shortened test name",
+    "Client defaults memory scope to unset, optionally global; no model memory semantics implemented"
+  ],
+  "limitations": [
+    "Only synthetic names, empty instructions, no source folders",
+    "Create/reload accepted; full browser cold restart for newly created projects not yet tested",
+    "Generated project expansion atom is not yet supported",
+    "Project edits/deletion/member chats and creation retry idempotency not implemented",
+    "New project is writable in schema but mutation UI remains unaccepted; unsupported writes must fail",
+    "Unrelated unsupported host operations remain"
+  ],
+  "files": {
+    "implementation/desktop-web/project-store.cjs": "6f38133fbda99e6a15470b04da70d2418b8f9c20b9793d629e16391a72fbcd69",
+    "implementation/desktop-web/server.cjs": "5ba471c3ecf663a8a95ae1f364cd943cbbc0fe63b14d6a5b39a7f7ab5e98efbc",
+    "analysis/tools/desktop-fixture-services.mjs": "1959f1bf83057a9d16a556eace927fa9d0353773fa6b9c3f239c4e4a452914af"
+  }
+}

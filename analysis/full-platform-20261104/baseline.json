@@ -1,0 +1,368 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-04",
+  "authority": "local-evidence-index; no official runtime or online-service validation",
+  "status": "partial",
+  "scope": "six surfaces; historical 244/279 excluded from current acceptance",
+  "packages": [
+    {
+      "path": "packages/ChatGPT-4.0.21.dmg",
+      "present": true,
+      "bytes": 816526766,
+      "sha256": "bb7f21330af3ef7d3f814cb12b2b969683aa2ccbdab7c1239db3adc23db94bdb",
+      "platform": "macos",
+      "historical_sha256": "bb7f21330af3ef7d3f814cb12b2b969683aa2ccbdab7c1239db3adc23db94bdb",
+      "matches_prior_census": true,
+      "prior_census": "analysis/takeover-20261103/baseline.json"
+    },
+    {
+      "path": "packages/ChatGPT-windows-x64-4.0.21.msix",
+      "present": true,
+      "bytes": 979994720,
+      "sha256": "0024ecd081b1187c51de45e983dc3e0bfb3b923faea7526ef2233c9ec8e8b7ac",
+      "platform": "windows",
+      "historical_sha256": "0024ecd081b1187c51de45e983dc3e0bfb3b923faea7526ef2233c9ec8e8b7ac",
+      "matches_prior_census": true,
+      "prior_census": "analysis/takeover-20261103/baseline.json"
+    },
+    {
+      "path": "packages/ChatGPT-Android-1.2026.293/base.apk",
+      "present": true,
+      "bytes": 90386979,
+      "sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+      "platform": "android",
+      "historical_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+      "matches_prior_census": true,
+      "prior_census": "analysis/takeover-20261103/baseline.json"
+    },
+    {
+      "path": "packages/ChatGPT-Android-1.2026.293/base.dm",
+      "present": true,
+      "bytes": 1974565,
+      "sha256": "e89ce277b40b580705fca551dfc14c3b3f39ada44e3067c55a2cfab3bcdba511",
+      "platform": "android",
+      "historical_sha256": "e89ce277b40b580705fca551dfc14c3b3f39ada44e3067c55a2cfab3bcdba511",
+      "matches_prior_census": true,
+      "prior_census": "analysis/takeover-20261103/baseline.json"
+    },
+    {
+      "path": "packages/ChatGPT-Android-1.2026.293/split_config.arm64_v8a.apk",
+      "present": true,
+      "bytes": 21353609,
+      "sha256": "01939f07e968ebac1f46149944212c3f9d730cc8745ef4d9184f4af938290c0c",
+      "platform": "android",
+      "historical_sha256": "01939f07e968ebac1f46149944212c3f9d730cc8745ef4d9184f4af938290c0c",
+      "matches_prior_census": true,
+      "prior_census": "analysis/takeover-20261103/baseline.json"
+    },
+    {
+      "path": "packages/ChatGPT-Android-1.2026.293/split_config.xxhdpi.apk",
+      "present": true,
+      "bytes": 88246,
+      "sha256": "623d3e9c542b1a0937448a22a77d1c05598f5841a9bcd04ad793ec9e21ccedd1",
+      "platform": "android",
+      "historical_sha256": "623d3e9c542b1a0937448a22a77d1c05598f5841a9bcd04ad793ec9e21ccedd1",
+      "matches_prior_census": true,
+      "prior_census": "analysis/takeover-20261103/baseline.json"
+    },
+    {
+      "path": "packages/ChatGPT-Android-1.2026.293/split_config.zh.apk",
+      "present": true,
+      "bytes": 1474770,
+      "sha256": "443b9dc69ab5e625eddd1a205043a1fe7b36cb6547bfb21af382da9c26040425",
+      "platform": "android",
+      "historical_sha256": "443b9dc69ab5e625eddd1a205043a1fe7b36cb6547bfb21af382da9c26040425",
+      "matches_prior_census": true,
+      "prior_census": "analysis/takeover-20261103/baseline.json"
+    },
+    {
+      "path": "packages/com.openai.chat_1.2026.293_us_iphone_dumpipa.com.ipa",
+      "present": true,
+      "bytes": 157145956,
+      "sha256": "4042deb6d2688eaa38708d90c9d2d027de233ed2c99f443ca984f6f53865ed6b",
+      "platform": "ios",
+      "historical_sha256": "4042deb6d2688eaa38708d90c9d2d027de233ed2c99f443ca984f6f53865ed6b",
+      "matches_prior_census": true,
+      "prior_census": "analysis/takeover-20261103/baseline.json"
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "macos",
+      "acceptance_role": "primary",
+      "baseline_status": "partial",
+      "identity": {
+        "dmg_path": "packages/ChatGPT-4.0.21.dmg",
+        "dmg_sha256": "bb7f21330af3ef7d3f814cb12b2b969683aa2ccbdab7c1239db3adc23db94bdb",
+        "bundle": {
+          "CFBundleIdentifier": "com.openai.codex",
+          "CFBundleName": "ChatGPT",
+          "CFBundleShortVersionString": "26.1021.31345",
+          "CFBundleVersion": "21828",
+          "CFBundleExecutable": "ChatGPT"
+        },
+        "package": {
+          "name": "openai-codex-electron",
+          "productName": "Codex",
+          "version": "26.1021.31345",
+          "main": ".vite/build/early-bootstrap.js"
+        },
+        "asar_sha256": "130145706a912db74e4d260ad7538f10f1e05e88af955f9afba42cdf01e64606",
+        "info_plist_sha256": "0bf9bf6f2a267ba428ca1250b71c9052e5a9e9eca76c75de8f58d9227baf2d1b",
+        "executable_sha256": "5b6bb3455461d82b61cbdfd6bf3c0cfc01e84fee502d6f455f22ba7fff0fa3d9"
+      },
+      "identity_evidence": "analysis/desktop-official-20261104/baseline.json",
+      "verified_scope": "Prior frozen report verifies signed DMG identity and 20,957 selected extracted members; package digest refreshed here",
+      "limits": [
+        "Uses stock Electron 45.1.0 for replay, not archive customized runtime",
+        "Codex internal identity with ChatGPT display name; not interchangeable with historical ChatGPT-native clients",
+        "Complete UI/behavior equivalence not established"
+      ]
+    },
+    {
+      "id": "windows",
+      "acceptance_role": "cross-platform",
+      "baseline_status": "partial",
+      "identity": {
+        "msix": {
+          "Name": "OpenAI.Codex",
+          "ProcessorArchitecture": "x64",
+          "Version": "26.1021.3705.0",
+          "Publisher": "CN=50BDFD77-8903-4850-9FFE-6E8522F64D5B"
+        },
+        "display_name": "ChatGPT",
+        "appx_manifest_sha256": "d369ab31f78baabae1f3fa083cb1334fd42b992eff184e75d6e4487fa35b10b1",
+        "embedded_asar_sha256": "04862a659c6a90fc50514d8c0b8016709d97dece58839726c57495ed72f1d9f0",
+        "extracted_package": {
+          "name": "openai-codex-electron",
+          "productName": "Codex",
+          "version": "26.1021.31345",
+          "main": ".vite/build/early-bootstrap.js"
+        },
+        "extracted_package_record": {
+          "path": "recovered/windows/asar-extracted/package.json",
+          "present": true,
+          "bytes": 12183,
+          "sha256": "1b267b27218b7126fa782e7d7a30653d03e210181bcf8e0a57cc4441964a2587"
+        }
+      },
+      "verified_scope": "Read ZIP AppxManifest.xml and hash embedded app.asar; extracted package metadata independently read",
+      "limits": [
+        "MSIX version and JavaScript package version are separate identifiers",
+        "No extraction-member correspondence verification in this pass",
+        "No Windows signature trust verification or native build/run acceptance",
+        "Archive filename 4.0.21 is not actual version"
+      ]
+    },
+    {
+      "id": "ios",
+      "acceptance_role": "primary",
+      "baseline_status": "partial",
+      "identity": {
+        "bundle": {
+          "CFBundleIdentifier": "com.openai.chat",
+          "CFBundleName": "ChatGPT",
+          "CFBundleShortVersionString": "1.2026.293",
+          "CFBundleVersion": "40039297472",
+          "MinimumOSVersion": "18.0",
+          "UIDeviceFamily": [
+            1,
+            2
+          ]
+        },
+        "info_plist_member": "Payload/ChatGPT.app/Info.plist",
+        "info_plist_sha256": "1495fd26d48379749905b12545be232b8cf75ba56bb6157ce732ca1ab0e2558b"
+      },
+      "identity_evidence": "analysis/takeover-20261103/baseline.json",
+      "verified_scope": "Read selected Info.plist identity fields directly from frozen IPA; archive hash refreshed",
+      "limits": [
+        "Third-party dumpipa.com acquisition per packages/README.md; not independently authenticated Apple delivery",
+        "Native method-level main-chat consumer chain incomplete",
+        "Simulator build, real iPhone interaction and complete fidelity separately required"
+      ]
+    },
+    {
+      "id": "android",
+      "acceptance_role": "cross-platform",
+      "baseline_status": "partial",
+      "identity": {
+        "aapt_badging": [
+          "package: name='com.openai.chatgpt' versionCode='2629319' versionName='1.2026.293' platformBuildVersionName='17' platformBuildVersionCode='37' compileSdkVersion='37' compileSdkVersionCodename='17'",
+          "sdkVersion:'32'",
+          "targetSdkVersion:'37'"
+        ],
+        "tool": {
+          "path": "/Users/lukesong/Library/Android/sdk/build-tools/36.0.0/aapt",
+          "present": true,
+          "bytes": 2995488,
+          "sha256": "170717682f714712c5b6854af73cfe37aeda342ff422384e98d67fc1b490f49b"
+        }
+      },
+      "identity_evidence": "analysis/takeover-20261103/baseline.json",
+      "verified_scope": "Read version/package identity from binary AndroidManifest through installed aapt; split digests refreshed",
+      "limits": [
+        "Only acquired base/arm64/density/language splits present",
+        "Acquisition/signature trust not reverified in this pass",
+        "JADX errors and model-to-UI observer gap remain",
+        "Android build/device interactions not accepted"
+      ]
+    },
+    {
+      "id": "official-web",
+      "acceptance_role": "independent-web",
+      "baseline_status": "unsupported",
+      "identity": null,
+      "verified_scope": "Bounded filesystem check: recovered/web absent; analysis/web contains acquisition helper and remaining URL lists only",
+      "limits": [
+        "No independently bound official site bundle/build/version inventory",
+        "Desktop React/Electron assets do not establish official website parity",
+        "No logged-in website or real account accessed"
+      ],
+      "next_action": "Inventory available local public web captures, then acquire public no-account static baseline if available; bind build/assets/routes before reconstruction"
+    },
+    {
+      "id": "desktop-web",
+      "acceptance_role": "independent-web",
+      "baseline_status": "partial",
+      "identity": {
+        "source_surface": "macos",
+        "source_asar_sha256": "130145706a912db74e4d260ad7538f10f1e05e88af955f9afba42cdf01e64606",
+        "version": "26.1021.31345"
+      },
+      "verified_scope": "Existing Edge fragment/full-root renderer probes use desktop assets and synthetic electronBridge",
+      "limits": [
+        "Not a separately shipped official website baseline",
+        "Browser-native host adapter and standalone browser build not yet accepted",
+        "Current Edge harness still simulates Electron contracts"
+      ],
+      "next_action": "Separate browser platform adapter from Electron fixture bridge; prove same desktop renderer route without masquerading as native host"
+    }
+  ],
+  "referenced_evidence": [
+    {
+      "path": "analysis/desktop-official-20261104/baseline.json",
+      "present": true,
+      "bytes": 6499114,
+      "sha256": "c0d167f934b85499203b7c09a9b8b52607a4d9823cd164005f2feb261404f1c5"
+    },
+    {
+      "path": "analysis/desktop-official-20261104/ui-chain.json",
+      "present": true,
+      "bytes": 23675,
+      "sha256": "36413c99a0400f42a9526242dc50301304c7a28a37aca5a9a44d470346284e7b"
+    },
+    {
+      "path": "analysis/desktop-official-20261104/native-draft-document-reload.json",
+      "present": true,
+      "bytes": 4072,
+      "sha256": "d9ec8b23a69856af0f92e1d7faaebdc1f786585c63999863f6ac68a9c6d94398"
+    },
+    {
+      "path": "analysis/desktop-official-20261104/native-draft-recovery.json",
+      "present": true,
+      "bytes": 3974,
+      "sha256": "ed8404e15a31b5ca0e4cb596362f4e036a4a4a7d24286a5fcb4199679eab1266"
+    },
+    {
+      "path": "analysis/desktop-official-20261104/native-sidebar-state-replay.json",
+      "present": true,
+      "bytes": 2693,
+      "sha256": "412b46a0bbd08119b80ba768b508bcf75bc126292dd835186b62a368c2b61866"
+    },
+    {
+      "path": "analysis/desktop-official-20261104/native-message-bridge-replay.json",
+      "present": true,
+      "bytes": 4458,
+      "sha256": "581494079eaf321ad2a9a24f4b6d0a23824132e9a460cafef65762865c8a427a"
+    },
+    {
+      "path": "analysis/desktop-official-20261104/native-window-lifecycle.json",
+      "present": true,
+      "bytes": 1631,
+      "sha256": "b09ca3154bf1170c5d0804da8232beb61acc83d06f8aa2bb9279c78dc965c31d"
+    },
+    {
+      "path": "analysis/desktop-official-20261104/root-mount-v25-synthetic-account.json",
+      "present": true,
+      "bytes": 913734,
+      "sha256": "c634c67547ca0c6b6c1505c3330b7c835c9e14ffe51d66b3ee5452fffc0b824f"
+    },
+    {
+      "path": "analysis/takeover-20261103/baseline.json",
+      "present": true,
+      "bytes": 203077,
+      "sha256": "087af2fb24ab4f36e46c351a378c414d1ff6399f7508fdba9dcd4d8843494005"
+    },
+    {
+      "path": "analysis/takeover-20261103/frontend-evidence.json",
+      "present": true,
+      "bytes": 18821,
+      "sha256": "0cfa63f19a6323b0d3676799d9365ed669a067dd34905582e6d2a8622fd3948f"
+    },
+    {
+      "path": "analysis/message-followup-20261103/followup-manifest.json",
+      "present": true,
+      "bytes": 9092,
+      "sha256": "ed0f1712fb0ad369e81193c365bc87e95d333e732d1771fad0720a4173ee73a0"
+    },
+    {
+      "path": "analysis/reference-architecture-20261103/android-evidence.json",
+      "present": true,
+      "bytes": 24949,
+      "sha256": "5be3742d9b3712a425932ac40c045fa79f90844cc8e45378e19c4149747a7891"
+    },
+    {
+      "path": "analysis/reference-architecture-20261103/ios-evidence.json",
+      "present": true,
+      "bytes": 159356,
+      "sha256": "12587de373298a6307b759f0c45857ddfff31ec35cc3286d5f4e792e942d1a17"
+    },
+    {
+      "path": "analysis/reference-architecture-20261103/remote-evidence.json",
+      "present": true,
+      "bytes": 37356,
+      "sha256": "54ee44fdfd9d771e334332c33ed03c605635512a80917744b8d22861d0224da9"
+    },
+    {
+      "path": "analysis/reference-architecture-20261103/feature-chains.json",
+      "present": true,
+      "bytes": 7693,
+      "sha256": "66044c3c20c301e59aceb20d94961d131e7be3fa1b49258ff758085343cd5594"
+    },
+    {
+      "path": "analysis/reference-architecture-20261103/frontend-validation.json",
+      "present": true,
+      "bytes": 10746,
+      "sha256": "51b8a52d019163d08a2af13f1017be0ac31b881c739c26dfdce0ef16eb4437a1"
+    },
+    {
+      "path": "analysis/reference-architecture-20261103/reference-replay.json",
+      "present": true,
+      "bytes": 302035,
+      "sha256": "000db0c407b0fc21dc91c187001b6a374290cbdd681b1019b9f740223d2b1910"
+    },
+    {
+      "path": "analysis/web/remaining-urls.json",
+      "present": true,
+      "bytes": 3652,
+      "sha256": "f54e373dcda6c1325fbb8cc3447b4d2c8035af96f1e8489f2d536ffa7ab5389f"
+    },
+    {
+      "path": "analysis/web/edge-console-snippet.js",
+      "present": true,
+      "bytes": 4597,
+      "sha256": "f8554883408026ba66cedcc3ea164edad45c070619b49790a8559b8e2701a099"
+    }
+  ],
+  "validation": [
+    "Current selected package digests compared with frozen takeover census",
+    "Windows ZIP metadata and embedded ASAR hashed without extraction",
+    "iOS main Info.plist identity fields read without account metadata",
+    "Android manifest identity decoded using local aapt"
+  ],
+  "limitations": [
+    "No full re-extraction",
+    "This initial inventory is not exhaustive route/menu enumeration",
+    "No invented recovery percentage; evidence and build/runtime acceptance separate"
+  ]
+}

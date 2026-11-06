@@ -1,0 +1,35 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-Compose-implementation-and-native-emulator-tests",
+  "changes": [
+    "Per-user/reply Material menu copies original payload",
+    "Edit user message as draft with replace confirmation and scope/current-draft validation",
+    "Native bidirectional bounded list navigation test waits for selected accessibility identity, dialog closure and committed selection"
+  ],
+  "accepted_runtime": "android-message-actions-v68-ui-v5.json",
+  "passed_test_phases": 3,
+  "prior_attempts": {
+    "v1": "failed long list lookup",
+    "v2": "failed one-direction lookup from retained bottom position",
+    "v3": "runner passed but final screenshot captured unsettled dialog; superseded, not final acceptance",
+    "v4": "failed test selector combined parent resource ID with child content description"
+  },
+  "visual_review": "Inspected final screenshot: dialog closed, selected conversation and restored multiline draft visible",
+  "scope": "dedicated REA_ChatGPT_Offline emulator-5554 only; connected physical OnePlus not accessed",
+  "cleanup": {
+    "runner_removed_private_pairing_and_adb_reverse": true,
+    "owned_fixture_server_sigterm": true,
+    "local_pairing_file_removed": true
+  },
+  "limits": [
+    "No official 293 UI parity, recovered original menus or official branch-edit semantics",
+    "Android IME composition persistence and keyboard selection differences remain separate open gates",
+    "Code-specific actions, wide table interaction parity, physical-device and other-platform acceptance not claimed"
+  ],
+  "sources": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "62e0b6ada4c76df5e0872bfee455335397e48f3e641a97a92b74fc98caa6f1a3",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "0ff554cad67120c1ab7e901a1a55080519483dfe1bda3fc6c52cb5087ef0989c",
+    "implementation/android/test-message-actions.py": "7b986b48b1c15790d8ee837935a40a00ffcc84d233c61cbdfd52469a37a5ad12"
+  }
+}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.supportsBitmapDarkenColor=void 0;const r=require("valdi_core/src/CompilerIntrinsics");function e(){return(0,r.isVersionAtLeast)(211)}exports.supportsBitmapDarkenColor=e;

@@ -1,0 +1,172 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_turn_classification": "progress: v416 choice integration changed authoritative source and passed offline regression",
+  "question": "Restore manual question navigation and per-question unsent drafts in the official Remote input component.",
+  "official_observations": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a543b8 ->0x1a54598",
+      "conclusion": "Navigation exists for at least2 questions; center-aligned HStack spacing12. Previous0x1cf56f0 decrements above0, next0x1cf5910 increments below count-1, without checking answers."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a55fd4..0x1a56034 ->onChange0x1cf4ea0 ->dictionary setter0x169310",
+      "conclusion": "Field onChange captures the question and receives the new String. Writes customAnswersByQuestionID at metadata vector+0x24, keyed by captured question ID. No trimming in writer. Setter0x169310 updates existing value or inserts."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1cf4858; prior submit0x1a564a8 and choice0x1cf51f0",
+      "conclusion": "Index callback reads current question ID, looks up customAnswersByQuestionID and writes customAnswer or empty. Submit/choice callbacks remove that question custom draft before storing answer. Submitted answers and unsent text are separate."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a54968,0x1a54b0c,0x1a5473c",
+      "conclusion": "Progress key codex_remote_tool_user_input_progress takes current clamped index+1 and count. Previous accessibility label uses Back factory0x75d6978; next uses codex_remote_tool_user_input_next_question_accessibility_label. Original translations imported."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a54ebc; factories0x74f5e60/0x74f5efc;0x1a54898/0x1a54c68; bindings/type records",
+      "conclusion": "Original chevron-left-md/right-md; body-font icon,28x28 frame through0x757d918, rectangular content-shape inset-8. Plain buttons with boundary disabled predicate and opacity0.35. Progress body medium with ChatGPT/text/secondary. Full enclosing card still partial."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Added bounded previous/next and per-question untrimmed draft map to the existing typed model.",
+      "Added original navigation row,3 context-checked translation keys (48 total across65 locale tables) and scoped native text bindings.",
+      "Submission/selection clear the answered question draft; automatic progression restores the next unanswered question draft.",
+      "Old question text/navigation/submission callbacks are rejected at the independent host boundary."
+    ],
+    "independent_adaptations": [
+      "Synchronous typed state updates replace the original LazyState/onChange machinery; this is evidence-driven rebuilding, not recovered compilable source.",
+      "Existing host/connection/request envelope and disconnected service remain independent frontend interfaces.",
+      "Returning and reentering the fixture still initializes a fresh request component; not evidence of official lifetime or durable draft storage."
+    ]
+  },
+  "validation": {
+    "foundation": "Passed existing suites plus bounded navigation, whitespace-preserving/cleared drafts, stale text/navigation/submit callbacks, submitted-versus-unsent separation, automatic wraparound restoring earlier drafts, choosing an option clears an alternative, empty/single navigation and localized progress.",
+    "host_typecheck": "Passed final cumulative code;3 preexisting UIKit deprecation warnings. Not build/link/UI acceptance.",
+    "ui_test_source": "testRemoteUserInputNavigationDrafts added; complete UI test source syntax passed, not executed. Existing pending runner does not select this new test.",
+    "runtime": "Checked live97181/97197 and old preview87483. Existing Xcode first-launch administrator authorization still blocks runtime. No duplicate runner, new simulator install or physical-device install.",
+    "retention": "No stale packages reported."
+  },
+  "limitations": [
+    "Initial/transition focus task and keyboard behavior not restored/accepted.",
+    "Full form surface geometry/material and actual visual fidelity remain unaccepted.",
+    "Service submission/acknowledgement disconnected. Android equivalent remains independently unproven."
+  ],
+  "next_minimum_action": "Trace initial focus task and remaining field/footer layout for the same consumer; execute full task -> message form -> return/reentry UI path after original Xcode authorization completes.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-bindings.json",
+      "sha256": "967b7801ed6dc9c267d72f3d72075196c0d498138b5a9cca2ef33a75501d4181"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-draft-arguments.asm",
+      "sha256": "87548c6517804940375ca8460a24912d7a994574d57b5f28a48e964a5772effa"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-draft-capture.asm",
+      "sha256": "9cd8689518c60f5b13adb7f9741d84931431c1ce060942a895e61ce89392dd1c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-draft-dictionary-set.asm",
+      "sha256": "be4a2256e1cf36d1dbef3c8c6031d395aa64b1e95800b61927b05dd84e667de1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-draft-writer.asm",
+      "sha256": "118bb882ab5590149b68e740eb84c1fb03b23b23fe04597be81e57d04da98517"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-foundation.log",
+      "sha256": "b7d6d2a37beb692bd6003419e4069bb84472126140364fc301e8b69b803f9483"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-frame-factory.asm",
+      "sha256": "41fe16c281c6615eebe719bce17637068ab2dc6662190d9773286ec80a5c15a7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-navigation-font-weight.asm",
+      "sha256": "47ecd7a7df727ca0678fa6666760a6ef422c5dfb93fffb3937c0a8860e53899d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-navigation-font.asm",
+      "sha256": "37ce401fa7462d4ef9dd9f741c08da2f35b335bf469bd827a63c48dff4d13d27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-navigation-frame.asm",
+      "sha256": "98ef5152c81681a0f797940fa28541f23910a779923dfffa5a99608a707da9bd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-navigation-icons.asm",
+      "sha256": "76bb405092ccf162b90ba0e10fd074c7d89834766c7a7dd4091e03cfb8453f27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-navigation-label.asm",
+      "sha256": "78eb826bdfda5224e5d307275ad8687ec8299538088eb940537994a5ec765807"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-previous-accessibility.asm",
+      "sha256": "8e2919a9dfa2355ff40f49565296430ac49d28c1c34246fd998a93bdf4fb7f6c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-previous-disabled.asm",
+      "sha256": "d93a7a4e3a8fb2372bc30a018f563b868d130e0d77965eca2e5ae583c00dede0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-previous-label.asm",
+      "sha256": "7f209e4f22dab51ac02cc689f59d75799ecd23466e8ab44279d87a3a494cc8a0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-previous-style.asm",
+      "sha256": "dad1eb6810d7516ea27bf642ba6c398923d3d12d2c31f51300bb29d1cbe00082"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-selected-text.json",
+      "sha256": "38c2323ba8e3a2c6ca20878b3f5a5ac3621142ac83fb1a57a5857317b3c4fb79"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-type-7e1eb10.json",
+      "sha256": "7f6b23971a81f2d7a40a32ff8081269e6bbab474212d6a3060cc05191e630709"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-type-7e1eb28.json",
+      "sha256": "7f9c287e6d4f92cb29415231e372daa78e6398514097f913d0cfec4b2c73fea7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v417-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-content.asm",
+      "sha256": "0bbeeb5eedc2eebb56bef1a774595f1cae1d15d57a3a234196d241b93eb0f22c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-helpers.asm",
+      "sha256": "0ed6e2bbe3f8298b5e30c73b55813d9d6a07668f6484adeb75a6aa4e2cd3c63e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-callbacks.asm",
+      "sha256": "76fe4c3287e4e57354b0003e4d50608dbceb91e69e4f96226ea6621b9117bb38"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-option-callbacks.asm",
+      "sha256": "03f9a13b034fcecc3ac478a81190d2cb969c818a69c5dc0061a790da0106ea31"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-question-switch.asm",
+      "sha256": "41ba22501ed45a100cac55a21c8bc861b3ff74e9fc8018f49afcda19008999ed"
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteUserInputInteraction.swift": "15210dbe56221a73fe2a8d6832d775dd93c0b538b6330b219df525216e08d1e0",
+    "implementation/ios/Sources/NativeConversationHost.swift": "292efcc7a100d03d02b5eb4f202f3a014507b6aaefa12017e434ac8a71ec1a12",
+    "implementation/ios/Sources/OfficialText.swift": "afe2c6463095115e4676158700e9475e55e87ab8d42728e4ef35d22b27c4c415",
+    "implementation/ios/Tools/prepare-official-text.py": "cd766274eb058d3ba0a2d9a44d9ea679178fdd1ed7d2acb6dca1f998ec63ce20",
+    "implementation/ios/Resources/OfficialTranslations.json": "3fe1ae180854edb42e9b4782788fff56d32f5d6b5c057d926dd5646c37aab924",
+    "implementation/ios/TextTests/main.swift": "7e0ae8f0639650872cfbcca5652e0af4c9dde3cd161a6ef8574841dfeb1c2aa9",
+    "implementation/ios/UITests/HostInteractionTests.swift": "f0b5eaab79abbfa448a9a5205b3d1e45f36fa62e71cb4265189b46f7d0069e06"
+  }
+}

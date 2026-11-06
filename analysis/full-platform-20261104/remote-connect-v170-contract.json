@@ -1,0 +1,31 @@
+{
+  "authority": "official artifact observation",
+  "file": "recovered/macos/asar-extracted/webview/assets/remote-connections-settings-32edb075b364.js",
+  "sha256": "5e4a7e5dda96308782b9a2adcd4e80e8dc52678452853ddeab798ff494b7bb98",
+  "evidence": [
+    {
+      "symbol": "hs connect mutation",
+      "byteOffset": 159868,
+      "source": "async function hs(e){let t=P.remoteConnections;if(t==null)throw Error(`Remote connections are unavailable`);return t.setAutoConnect(e)}"
+    },
+    {
+      "symbol": "setAutoConnect result consumer excerpt",
+      "byteOffset": 140687,
+      "source": "sr=async(e,r)=>{i.registerHost(e);let a=0,s=t.watch(t=>{let{get:n}=t;n(Gt,e),n(On,e),a+=1});await pn.mutateAsync({hostId:e,autoConnect:r}).then(i=>{let{remoteConnections:s,state:c,error:u}=i;(a===1||t.get(Gt,e)===`connecting`)&&er(e,c,u);let d=s.find(t=>t.hostId===e&&o(t));if(r&&d!=null){let e=c===`connected`&&u==null;vn(n,{action:l.CODEX_REMOTE_SSH_CONNECTION_ACTION_CONNECT,result:e?f.CODEX_REMOTE_SSH_CONNECTION_RESULT_SUCCEEDED:f.CODEX_REMOTE_SSH_CONNECTION_RESULT_FAILED,source:h.CODEX_REMOTE_SSH_CONNECTION_EVENT_SOURCE_SETTINGS,connection:d,connectionState:c,...e?{}:u==null?{errorCategory:gt.CODEX_REMOTE_SSH_CONNECTION_ERROR_CATEGORY_UNKNO"
+    }
+  ],
+  "observedInput": [
+    "hostId",
+    "autoConnect"
+  ],
+  "observedResult": [
+    "remoteConnections",
+    "state",
+    "error"
+  ],
+  "limits": [
+    "No complete official transport/schema recovered",
+    "setAutoConnect not implemented in independent host yet",
+    "UI failure verified rather than simulated connected state"
+  ]
+}

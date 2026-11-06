@@ -1,0 +1,52 @@
+{
+  "status": "partial-runtime-navigation-passed-not-deployed",
+  "baseline": "26.1021.31345",
+  "mechanismReference": "26.1029.61003",
+  "classification": "independent source-guided compatibility adaptation",
+  "sourceFindings": [
+    "New TL68.L wraps sidebar and children with ZoCH.L=vB (outer shell only); it no longer consumes route scope",
+    "New ZoCH.u=vG remains route-scoped content layout; baseline ISr/LSr are respective counterparts",
+    "Baseline Q4n/$4n retain thread and route scopes inside retained route; those providers were not moved or replaced"
+  ],
+  "changes": [
+    "Root wraps settings route tree in lazy original Ei layout",
+    "Original Ei owns sidebar and navigation handlers; content context feeds original nn/frame to child route",
+    "Frame uses original LSr; outer adapter uses original ISr and navigation interception context",
+    "No route key rewrite, CSS override or runtime scroll restoration",
+    "Suspense uses null pending fallback because baseline route content without its outer shell throws NavigationShell is missing; this is an explicit independent compatibility difference"
+  ],
+  "tests": {
+    "v226": "failed: fallback child attempted content without shell",
+    "v227": "passed first Worktrees click; screenshot inspected",
+    "v228": "passed Worktrees then Git/Worktrees/Git/Worktrees; same node, same scroll offset, actual content switched",
+    "scrollBefore": 200,
+    "scrollAfter": 200,
+    "syntaxDigestDeterminism": "three transformed modules passed syntax, repeated output, altered-input rejection"
+  },
+  "pending": [
+    "settings search target and keyboard focus",
+    "unsaved-change interception",
+    "reload/process restart and chat isolation",
+    "route scope for nested settings pages and profile route",
+    "user external-display acceptance; experiment still default off",
+    "Windows independent artifact mapping"
+  ],
+  "evidence": [
+    {
+      "path": "analysis/tools/desktop-settings-split.cjs",
+      "sha256": "eac081b4727f5959ae0fab4cde498e2a70629cdd15530f3bde5077f9403235f9"
+    },
+    {
+      "path": "implementation/desktop/native/settings-split.mjs",
+      "sha256": "1336d416553082218aacdacddf4f51d3547f17083689c6c5ab57ce278d30c1f5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/source-snippets-v222/855047.832683be0d.js",
+      "sha256": "0c77555cce0cb92e8d8594c60ff7333af8fb18662a856b719dfa1f05229cf1db"
+    },
+    {
+      "path": "analysis/full-platform-20261104/source-snippets-v222/91641.2996c0f22f.js",
+      "sha256": "c208d8ce69dfd011bbfce5fb3df8ea24e7cccd5a4f569fbc5bbcd9e20f01dfd2"
+    }
+  ]
+}

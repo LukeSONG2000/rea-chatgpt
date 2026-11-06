@@ -1,0 +1,83 @@
+{
+  "oai_progress_type": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7cdc610",
+    "mangled_address": "0x8d97e60",
+    "length": 14,
+    "mangled_hex": "0227f7d1017902e9d9d301414247",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaab7588",
+        "resolved_context": "0x97544ec",
+        "label": "SwiftUIToolbelt.OAIProgressView"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaad5850",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI9EmptyViewVMn"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "animator_call": {
+    "status": "partial",
+    "authority": "shipped-artifact-static-instructions",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "window": {
+      "start": "0x6f0b958",
+      "end_exclusive": "0x6f0b968",
+      "sha256": "1759c198bdea1f522c8f0531278ee97747db78a046709f6afb795e7d38033fe5"
+    },
+    "linker_function_starts_in_window": [],
+    "next_linker_function_start": "0x6f0ba3c",
+    "direct_calls": [
+      {
+        "site": "0x6f0b964",
+        "target": "0x7c4a68c",
+        "imported_symbol": "_$s7SwiftUI4ViewPAAE16keyframeAnimator12initialValue9repeating7content9keyframesQrqd___Sbqd_0_AA018PlaceholderContentC0VyxG_qd__tYbcqd_1_qd__ct0G0Qyd_1_Rsd__AaBRd_0_AA9KeyframesRd_1_r1_lF",
+        "chained_binding": {
+          "slot": "0xaad4260",
+          "symbol": "_$s7SwiftUI4ViewPAAE16keyframeAnimator12initialValue9repeating7content9keyframesQrqd___Sbqd_0_AA018PlaceholderContentC0VyxG_qd__tYbcqd_1_qd__ct0G0Qyd_1_Rsd__AaBRd_0_AA9KeyframesRd_1_r1_lF",
+          "library_ordinal": 82,
+          "weak": false,
+          "import_ordinal": 10016,
+          "table_addend": 0,
+          "encoded_pointer_addend": 0,
+          "chain_membership_verified": true
+        }
+      }
+    ],
+    "adjacent_selector_loads": [],
+    "limits": [
+      "Window is not a proven function boundary",
+      "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+      "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+    ]
+  },
+  "keyframe_end_degrees": 360.0,
+  "size": 18,
+  "stroke": 2,
+  "duration": 0.8,
+  "synchronized": false,
+  "shape": "Circle inset half stroke, trim0...0.75, angular gradient0...270",
+  "label_keys": [
+    "codex_remote_thread_reconnecting_to_task_footer",
+    "codex_remote_thread_reconnecting_footer"
+  ],
+  "label_owner_branch": "0x1a233d8 invokes protocol slot+0x170 then selects label; meaning of predicate and service owner still unresolved",
+  "preview_color": "OneOff/AppForeground; effective original color/private backdrop unresolved"
+}

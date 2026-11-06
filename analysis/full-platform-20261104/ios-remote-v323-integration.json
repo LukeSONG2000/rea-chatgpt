@@ -1,0 +1,54 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": {
+    "binding_owner": "HistoryFragment metadata slot 0xe0 (field 52 _rowState), read at 0x1a3931c",
+    "row_state_type": "SwiftUI.Bindable<CodexRemoteThreadTurnRowState>, descriptor 0x95ab9fc",
+    "row_state_fields": [
+      "_expandedItemIDs",
+      "_expandedFileChangeIDs",
+      "_expandedRepeatedActivityIDs",
+      "_expandedToolActivityGroupIDs",
+      "_$observationRegistrar"
+    ],
+    "binding_calls": [
+      "Bindable.projectedValue",
+      "Bindable.dynamicMember",
+      "Binding.dynamicMember"
+    ],
+    "group_id_input": "0x1d88108 loads first 17 bytes from group before 0x1a392d8; precise identity type is not redefined as a service field"
+  },
+  "independent_integration": {
+    "change": "Replace page boolean by group-ID set with binding per activity in the task-scoped fixture view",
+    "fixture": "Two synthetic groups inspect/review with independent expansion; same thread ID on different hosts remains scoped by task identity",
+    "not_claimed": [
+      "Exact official writable keypath decoding",
+      "Official disclosure styling/animation",
+      "Persisting expansion across navigation or app restart",
+      "Real service/event integration",
+      "Android equivalence"
+    ]
+  },
+  "latest_item_gap": "0x1a39b48 dispatches at jump table 0x7dfdf64; concrete per-activity cases still need type-to-branch mapping",
+  "validation": {
+    "test": "testRemoteTaskScopeAndReturn",
+    "passed": 1,
+    "failed": 0,
+    "result": "ios-remote-v323.xcresult",
+    "covered": [
+      "two activity groups expand independently",
+      "collapsing first leaves second expanded",
+      "host scope isolation",
+      "history toggle",
+      "pending request unavailable",
+      "back navigation"
+    ],
+    "screenshot_inspected": "ios-remote-v323-screenshots/2CBB8948-C262-4E03-BB67-A624E64C5C15.png",
+    "preview_pid": 63381,
+    "physical_device": "not updated",
+    "external_display": "not reverified",
+    "official_visual_parity": "not accepted"
+  }
+}

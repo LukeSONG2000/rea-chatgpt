@@ -1,0 +1,39 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-host-native-clipboard-observation",
+  "finding": "Copy code click leaves native clipboard sentinel unchanged; copying is not accepted",
+  "validation": {
+    "actual_copy": "failed",
+    "original_clipboard_restoration": "completed",
+    "prior_clipboard_contents_recorded": false
+  },
+  "runtime": "macos-copy-v86-runtime-v4.json",
+  "probe_failures": [
+    "macos-copy-v86-runtime.json",
+    "macos-copy-v86-runtime-v2.json",
+    "macos-copy-v86-runtime-v3.json"
+  ],
+  "runtime_api": {
+    "observed_keys": [
+      "clear",
+      "has",
+      "readText",
+      "writeText",
+      "read",
+      "write"
+    ],
+    "documentation": "https://www.electronjs.org/docs/latest/api/clipboard",
+    "implementation": "async ClipboardItem read/write; payloads retained only in process memory"
+  },
+  "next_action": "Trace Copy code consumer and platform clipboard service; instrument permission names and decisions; distinguish missing adapter from browser focus/permission failure",
+  "limits": [
+    "No product fix yet",
+    "No physical keyboard/selection acceptance",
+    "Stock Electron 45 clipboard ABI differs from earlier API; original artifact runtime parity unproved"
+  ],
+  "source": {
+    "file": "analysis/tools/probe_desktop_root_mount.cjs",
+    "sha256": "5af735fafb07ecbdda153f47996e484410c31614d9421c39d49f518792828cd7"
+  }
+}

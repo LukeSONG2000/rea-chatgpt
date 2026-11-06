@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "implementation": "Independent Quick Look Thumbnailing on local imported copies; packaged grid sizing retained",
+  "verified": [
+    "Synthetic PNG imported through native system picker",
+    "Native grid thumbnail completion and useful visible image verified by screenshot",
+    "Full Quick Look PNG preview screenshot reviewed",
+    "Same imported identity regenerates thumbnail after actual host terminate/relaunch",
+    "v2 retains ordinary text icons instead of nearly blank system text thumbnails"
+  ],
+  "implemented_not_accepted": [
+    "Request cancellation and per-cell generation checks under adversarial rapid reuse",
+    "PDF thumbnail/preview and corrupt image fallback",
+    "List thumbnails, system image editing, sharing and zoom/rotation"
+  ],
+  "limitations": [
+    "One synthetic 1920x1440 PNG on dedicated simulator; no physical device or image-format matrix",
+    "No custom cache, concurrent request budget or frame-time measurement",
+    "previewURL validates by bounded read on main thread; IO performance unaccepted",
+    "System thumbnail uses center crop in grid; full image available in preview",
+    "Original remote thumbnail URL/authentication bridge not connected"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "127630fef34be90f78bb75db4716048d138656f5241cb51114e7199ed770d691",
+    "implementation/ios/FixtureProvider/main.swift": "8628c0bc3d0afe055580c7c81f4bd61c37f55580dcc78a711ab7c4911a6c7941",
+    "implementation/ios/Tools/install-fixture-provider.py": "621f3a8cd7300b3cd801d17a96bc576a32fa696d87ab4bf4bd0e39c157005807",
+    "implementation/ios/UITests/HostInteractionTests.swift": "7dce1f0c4041d68d23ca679688caf7bd15ac612ec1fc51dec8ad1d0d7ecee0be",
+    "analysis/full-platform-20261104/ios-image-fixture-v1.json": "e184dc1063044bb2343cb3799d46b82ca3982d1f344fe5c89821f73c5664c577",
+    "analysis/full-platform-20261104/ios-thumbnail-v2.summary.json": "266f9bb508c39d20cd4339779f46e1d37f193a073fba8268a09fc46b0dd0a300",
+    "analysis/full-platform-20261104/ios-thumbnail-v2-attachments/native-image-thumbnail.png": "715a74ead18761ad613fbeea4d396fc3ae966c46dfdb92d56086d311ffcaa91b",
+    "analysis/full-platform-20261104/ios-thumbnail-v2-attachments/native-image-preview.png": "d95b8f6d2b765482c9d645216f0992cf416acb010e86123b8c4035db0640e6e9"
+  },
+  "next_action": "Validate PDF vectors and failure fallback; bound thumbnail work and avoid repeated main-thread file reads"
+}

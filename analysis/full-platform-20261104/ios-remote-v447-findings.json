@@ -1,0 +1,74 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "artifact_version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "purpose": "Resolve ordinary composer submission gates without replacing task-list and message interaction priority.",
+  "observations": [
+    {
+      "type": "official-artifact-static",
+      "symbol": "CodexRemotePromptSubmissionMode",
+      "offset": "0x95d1964",
+      "conclusion": "Enum records normal, steer, queue. Ordinary send callback 0x1c25cb8 passes byte 0. These are local action modes, not a recovered server schema."
+    },
+    {
+      "type": "official-artifact-static",
+      "symbol": "0xf87cc",
+      "conclusion": "Iterates String.Iterator.next and Character.isWhitespace; returns true if every character is whitespace, including an empty string. Content gate must not equate nonempty storage with sendable text."
+    },
+    {
+      "type": "official-artifact-static",
+      "symbol": "0x19816a4",
+      "conclusion": "Second submission guard is effectful: branch calls the handle closure at 0x198176c with enum tag14, matching removeUnsupportedGoalContext, then local helper0x1990edc and returns true. Complete trigger and prompt normalization unresolved."
+    },
+    {
+      "type": "official-artifact-static",
+      "symbol": "MessageInputPrimaryButtonIcon",
+      "offset": "0x96caac0",
+      "conclusion": "Cases send/save/start/next/search/voice/continue/stop/retry/settings. Shared component View witness0x606bf58 branches to0x6069708. Actual icon assets, effective style and label layout remain unresolved."
+    },
+    {
+      "type": "official-artifact-static",
+      "symbol": "0x198fcb4",
+      "conclusion": "Disabled and enabled states select different style paths; enabled reads MessageInputStyle.primaryButton. Default style is not evidence of caller effective override."
+    }
+  ],
+  "changes": [
+    "Expanded testNoDebugTitleNavigation to exercise both Chat and Work after synthetic content and after sidebar open/close. No new title route or guessed primary-button geometry."
+  ],
+  "validation": {
+    "ui_test_swift_parse": "passed",
+    "ui_runtime": "not_run",
+    "simulator_updated": false,
+    "device_updated": false,
+    "existing_preview_preserved": true,
+    "runtime_blocker": "Existing Xcode first-launch installer still running; previous authorization blocker unresolved."
+  },
+  "limits": [
+    "Primary controls are not yet mounted. Existing ordinary native field remains partial.",
+    "No original binary execution, backend calls, UI/visual parity or Android equivalence established."
+  ],
+  "next_minimum_action": "Resolve primary label asset/style/containment and normal-text no-goal branch, then connect a scoped service action that reports disconnected state without clearing drafts. Runtime acceptance must cover list -> message actions -> return, not merely composer or welcome screen.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v447-primary-body.json",
+      "sha256": "b7da8f21a42432673b5780e1536c6350445f3285fbd4c90798d29db3cfbb88fe"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v447-primary-component.json",
+      "sha256": "04a8bf009c9e15cb90b0b54f323433fc28957b8b94e98b39b981d95a6355d8f0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v447-primary-tree.json",
+      "sha256": "8a65fbedb22d208fc3c7bb184a9967a355e41bc480735f4e2f3a490cf60bbabf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v447-submit-mode-gates.json",
+      "sha256": "b7fee85a69a5613480a4bcabf921fdb267a47b286f7846e8930fd80cfc245de6"
+    }
+  ],
+  "test_source": {
+    "path": "implementation/ios/UITests/HostInteractionTests.swift",
+    "sha256": "cf34720ebcd59efb23e997a513facd9f76d3dd4e1e5089811c51eb1072bc8c00"
+  }
+}

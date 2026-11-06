@@ -1,0 +1,78 @@
+{
+  "status": "partial",
+  "replay": "root-native-v38.json",
+  "contract": "native-state-focus-contract.json",
+  "verified": {
+    "sidebar_interaction": {
+      "before": {
+        "open": "true",
+        "draft": "Sidebar offline draft"
+      },
+      "hidden": {
+        "open": "false",
+        "draft": "Sidebar offline draft"
+      },
+      "reopened": {
+        "open": "true",
+        "draft": "Sidebar offline draft"
+      },
+      "buttonsAfterHide": [
+        "Show sidebar",
+        "New chat",
+        "More",
+        "Dismiss upgrade reminder",
+        "Share",
+        "New tab",
+        "Copy message",
+        "Edit message",
+        "Enable word wrap",
+        "Copy code",
+        "Copy table",
+        "Expand table",
+        "Copy",
+        "Rate response",
+        "Read aloud",
+        "Share",
+        "More actions",
+        "Add files and more",
+        "Dictate",
+        "Send"
+      ],
+      "status": "passed"
+    },
+    "memory_atoms": {
+      "local-document-identity": {
+        "accountId": "offline-fixture-account",
+        "userId": "offline-fixture-user",
+        "accountUserId": "offline-fixture-account-user",
+        "requestUserId": "offline-fixture-user"
+      },
+      "plugin-oauth-install-reconciliation-by-state-v1": {},
+      "flat-project-sidebar-preferences-v1": {
+        "chatSortMode": "updated_at",
+        "initialized": true,
+        "mode": "project",
+        "projectSortMode": "updated_at"
+      },
+      "unified-floating-composer-dock-position-v1": "bottom-center"
+    },
+    "page_errors": [],
+    "render_errors": []
+  },
+  "precise_remaining_gap": {
+    "message": "persisted-atom-update",
+    "key": "chatgpt-conversation-prompt-drafts-v2",
+    "operation": "recordUpdate.entries scoped by JSON [userId,accountId,conversationId]; entry value or delete=true; legacyStorageKey v1",
+    "reason": "Independent host currently rejects all recordUpdate operations; sidebar draft retention proves in-page state only, not draft persistence"
+  },
+  "limits": [
+    "No application restart or route-switch recovery tested",
+    "Focus replies do not yet track system suspend/screen lock or broadcast native focus transitions",
+    "Four simple atom writes are memory-only; official validators and ownership policies not fully restored"
+  ],
+  "next": "Inspect official vz record merge and oYe validation; restore draft record updates before testing conversation switch/recovery",
+  "tool_sha256": {
+    "analysis/tools/desktop-native-host.cjs": "1648a266186c96a6da65c5f82491fca967986a74a48de5bb6a28f5e75156ed21",
+    "analysis/tools/probe_desktop_root_mount.cjs": "a981ce8b9c092cc6483a148e9465df2eb6c6933c007b17ce912b39b6bf44907a"
+  }
+}

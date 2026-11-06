@@ -1,0 +1,112 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v429",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Which internal turn-state gates select ordinary tail fragment insets?",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x95acb88;0x95d5c30;0x7dfdf34;0x1a3373c",
+      "conclusion": "Seven frontend states select distinct tail conditions, independent of transport status."
+    },
+    {
+      "evidence_type": "static_inference",
+      "source": "0x1a33868..0x1a339c8",
+      "conclusion": "Footer plus optional text, diff, and collapsed promoted images are sufficient positive success conditions; residual date/hook/goal path is unresolved."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Replace optional Boolean tail input with scoped RemoteTailLayoutState.",
+      "Add seven-state gate and partial-success regression vectors."
+    ],
+    "limitations": [
+      "Model-only tail projection; no new tail UI inserted.",
+      "Success date/hook/goal and fragment upstream producer unresolved.",
+      "Whole Remote transcript and Android correspondence not accepted."
+    ]
+  },
+  "validation": {
+    "foundation": {
+      "exit_code": 0,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v429-text.log",
+        "sha256": "2d367c3b4cb1df57d34b90b2310b5bfe60ce2b5c43906d4d41d93ba534b1058c"
+      },
+      "scope": "Independent projection replay, not original binary execution."
+    },
+    "typecheck": {
+      "exit_code": 0,
+      "existing_warnings": 3,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v429-typecheck.log",
+        "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+      }
+    },
+    "ui_execution": "not_run",
+    "visual": "not_accepted",
+    "simulator_updated": false,
+    "phone_updated": false,
+    "runtime_blocker": "Existing Xcode first-launch authorization gate; original installer/runner and preview retained.",
+    "live_pids": [
+      87483,
+      97181,
+      97197
+    ],
+    "retention_stale_targets": []
+  },
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v429-status-enum.json",
+      "sha256": "a4acce432bb062b0aef7ed48841c67f856fc4b6745b47f9c9b604c6b059a0eff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v429-tail-field-types.json",
+      "sha256": "d741a49602b5455113ec9df21b694e1be8ef215be6a80537b46ba57877e84691"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v429-tail-helpers.json",
+      "sha256": "da6df73b3d2438566efa879d897c26e9dee1e673cf36c3a5a6cbaef82e127dee"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v429-turn-state.json",
+      "sha256": "aa5f832a83c7bf2f7e77e2ea3a6d095c51726e89a248249e5584a85ac351c3d8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v427-fragment-condition.asm",
+      "sha256": "750005e835dde8ee64ab48c9e64fa1f0c5825114867fd85c6f37e2a1fac46ced"
+    }
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/RemoteTranscriptLayout.swift",
+      "sha256": "5e8c8a619713a09b968aaed7ac72985ee56fe9b76ce0a24fb406996a1f7cd4dd"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "f3ffbf5744960a2b03e2e1586a9879ea426e5b5e62aaaf69f535e6f8e99c810b"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "f6cf5e5bc1dc1633d0407a79b39e5753c3223528f65fb269476829cdee87ed71"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "516bc6b7051c82c12097233e603cbcd57e734ce729ea721276f703d6067c1c38"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "9da35ec69aa1e92abe7d2a96914fedb6ec27237655175ddfa4150e22ca84cbe0"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "0ca5e388a86c0693707655fd21da3dd771f84ea5fea05950e967600a40c6747b"
+    }
+  ]
+}

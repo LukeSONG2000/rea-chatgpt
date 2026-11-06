@@ -1,0 +1,21 @@
+{
+  "authority": "independent offline macOS host; original local translation provider",
+  "runs": [
+    {
+      "locale": "zh-CN",
+      "dir": "ltr",
+      "body": "跳转到内容\n首页\n图像\n定时任务\n插件\n探索\nOF\nChatGPT\n新聊天\n置顶\nREA synthetic project\n项目\nREA synthetic unpinned project\n最近\n离线组件验证 · A\n离线组件验证 · B\n你说：\n展示本地消息组件、代码和表格。"
+    }
+  ],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    " ERROR  [Statsig] A networking error occurred during POST request to https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793848123119&sid=06a7d303-db0a-4132-a4e3-184790f4e794&se=1. Error: Offline HTTP unsupported: POST /v1/initialize Error: Offline HTTP unsupported: POST /v1/initialize\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)",
+    "Error: Missing scope instance\n    at vK (https://offline.invalid/app-shared-2cae01273bae.js:193:106105)\n    at A1e (https://offline.invalid/app-shared-2cae01273bae.js:193:144673)\n    at j (https://offline.invalid/settings-page-frame-ab777e30c0d6.js:1:1146)\n    at mo (https://offline.invalid/app-shared-2cae01273bae.js:75:47556)\n    at Xs (https://offline.invalid/app-shared-2cae01273bae.js:75:70188)\n    at vee (https://offline.invalid/app-shared-2cae01273bae.js:75:80470)\n    at ru (https://offline.invalid/app-shared-2cae01273bae.js:75:116082)\n    at eu (https://offline.invalid/app-shared-2cae01273bae.js:75:115127)\n    at $l (https://offline.invalid/app-shared-2cae01273bae.js:75:114959)\n    at Gl (https://offline.invalid/app-shared-2cae01273bae.js:75:111777)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "status": "failed",
+  "error": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Worktrees', { exact: true }) to be visible\u001b[22m\n",
+  "failureBody": "ChatGPT 遇到了问题\n\n出了点问题。请重试以继续\n\n重试\n更新 ChatGPT"
+}

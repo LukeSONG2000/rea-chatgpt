@@ -1,0 +1,36 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": {
+    "section_separator": {
+      "value": 2,
+      "meaning": "hidden",
+      "site": "0x24039c0 -> 0x24039dc",
+      "edges": "VerticalEdge.Set.all at 0x24039b0"
+    },
+    "scroll_content_background": {
+      "value": 2,
+      "meaning": "hidden",
+      "site": "0x2403ad0 -> 0x2403adc"
+    },
+    "background": {
+      "factory": "0x74f0f48",
+      "string_address": "0x8a526c0",
+      "asset": "OneOff/MainSurfacePrimary",
+      "apply": "0x2403b38"
+    }
+  },
+  "enum_evidence": "Local Xcode SwiftUICore swiftinterface @frozen Visibility cases automatic,visible,hidden; no runtime equivalence claim",
+  "integration": "Deferred while v385 validation awaits system authorization; no additional source mutation",
+  "limits": [
+    "Section separators are not task-row separators",
+    "Asset existence in copied visual bundle and dynamic palette not yet checked",
+    "Current SDK corroboration is not original SDK version identity"
+  ],
+  "validation_blocker": {
+    "live_session": 42359,
+    "pid": 97197,
+    "sample": "PKInstallRequest authorizeForRight -> AuthorizationCopyRights",
+    "requires": "User system administrator authorization; requested asynchronously"
+  }
+}

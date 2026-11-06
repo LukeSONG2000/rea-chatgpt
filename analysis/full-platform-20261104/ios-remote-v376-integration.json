@@ -1,0 +1,44 @@
+{
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "shipped-artifact-static",
+  "observations": [
+    {
+      "offset": "0x3a5abc",
+      "value": "Font.Weight.regular getter"
+    },
+    {
+      "offset": "0x3a5ad4",
+      "value": "View.fontWeight applied to original Image"
+    },
+    {
+      "type_record": "0x7cf8d90",
+      "value": "v332 symbolic type contains Image + fontWeight opaque modifier; no intrinsic branch frame/resize"
+    },
+    {
+      "offset": "0x74f6fcc",
+      "value": "Original exclamation-mark-circle-fill asset factory, v333"
+    }
+  ],
+  "integration": "Removed independent resizable/scaledToFit/20pt glyph frame; apply regular fontWeight. Retain width30/height24 outer state slot.",
+  "limitations": [
+    "Parent font environment remains incomplete; fixture trailing column still inherits caption.",
+    "UIImage resource bridge remains independent host adaptation.",
+    "No original full-app runtime executed.",
+    "Whole-page and Android parity not established."
+  ],
+  "validation": {
+    "test": "testRemoteTaskScopeAndReturn",
+    "passed": 1,
+    "failed": 0,
+    "screenshot_inspected": "ios-remote-v376-screenshots/10190C3C-AB0E-47C0-851D-5097E9A5342B.png",
+    "observation": "Failed asset visible within state slot; no title overlap observed. Not official visual parity.",
+    "preview_pid": 84944,
+    "phone": "fresh device list unavailable; not updated",
+    "external_display": "not reverified",
+    "retention": "no stale targets"
+  }
+}

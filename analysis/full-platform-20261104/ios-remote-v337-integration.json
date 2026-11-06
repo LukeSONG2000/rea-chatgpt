@@ -1,0 +1,47 @@
+{
+  "platform": "ios",
+  "version": "1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "static artifact observation and independent native integration",
+  "supported_path": "running without startDate / indeterminate only",
+  "evidence": {
+    "style_body": "0x6f0af84; fractionCompleted branch creates OpenAIIndeterminateCircularProgressView",
+    "indeterminate_body": "0x6f0bf6c -> 0x6f0b4f4",
+    "synced_rotation": "0x6f0ba3c: date reference interval, fmod(duration), divide duration; angle phase*360*pi/180; reduceMotion selects0",
+    "trim": [
+      0.0,
+      0.75
+    ],
+    "duration": "0.8 inherited from default builder0x6ee8e08 stored+0x48, retained through task override0x6ee8c70",
+    "size": "0x3a5a44 constant16; ScaledMetric.init(wrappedValue:) at0x3a5a5c",
+    "stroke": "task override0x6ee8da4=2 into stroke helper0xc5d9e4; Circle inset by half linewidth",
+    "palette": "OneOff/AppForeground",
+    "opacity": 0.93,
+    "gradient": "0x6ee8ed4: [color,color.opacity(0)] then AngularGradient center0..3pi/2",
+    "synchronized": "task override stores true at+0x50 (0x6ee8ddc)",
+    "stroke_initializer": {
+      "symbol": "_$s7SwiftUI11StrokeStyleV9lineWidth0E3Cap0E4Join10miterLimit4dash0K5PhaseAC12CoreGraphics7CGFloatV_So06CGLineG0VSo0pH0VALSayALGALtcfC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 7979,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    }
+  },
+  "limitations": [
+    "No official target runtime execution or motion equivalence acceptance",
+    "Determinate startDate estimation remains unresolved; no percentage invented",
+    "Palette and native shape reused; rendering code independently reconstructed",
+    "Generic row containment remains partial",
+    "Timeline pausing under Reduce Motion is a host scheduling adaptation; zero rotation follows artifact"
+  ],
+  "validation": {
+    "simulator": "testRemoteTaskScopeAndReturn 1 passed / 0 failed; running accessibility and pending precedence checked; screenshot inspected",
+    "visual": "single frame confirms arc rendered; motion equivalence, Reduce Motion device behavior and dark mode unaccepted",
+    "phone": "not installed",
+    "preview_pid": 69542,
+    "external_display": "not reverified"
+  }
+}

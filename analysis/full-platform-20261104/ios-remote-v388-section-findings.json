@@ -1,0 +1,45 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "header": {
+    "descriptor": "0x955efd4",
+    "metadata_pattern": "0xad46260",
+    "body_witness": "0x3a2ae0",
+    "body": "0x3a1644",
+    "content_builder": "0x3a1928"
+  },
+  "observations": [
+    {
+      "field": "toggleCollapsed",
+      "offset": "0x30",
+      "site": "0x3a19b8..0x3a19bc",
+      "behavior": "nil -> static label at0x3a1ab4; nonnil -> Button and plain style at0x3a1a00..0x3a1a4c"
+    },
+    {
+      "field": "isCollapsed",
+      "offset": "0x29",
+      "site": "0x3a1a60",
+      "behavior": "selects collapsed/expanded accessibility value"
+    },
+    {
+      "collapsed_key": "codex_task_list_section_collapsed_accessibility_value",
+      "address": "0x8855060"
+    },
+    {
+      "expanded_key": "codex_task_list_section_expanded_accessibility_value",
+      "address": "0x8855020"
+    }
+  ],
+  "corroboration": [
+    "type record0x7cf3370 Button with HStack and CodexDisclosureChevron",
+    "type record0x7cf3378 plain button style"
+  ],
+  "next_integration_boundary": "Trace section descriptor ID -> collapsed state/setTaskSectionCollapsed -> header constructor; preserve noninteractive header branch",
+  "limitations": [
+    "No section-header implementation added yet",
+    "New-thread action visibility unresolved",
+    "Spacing typography and icon arguments not yet recovered",
+    "Current flat fixture is not official grouped structure",
+    "Runtime validation remains in live session42359 waiting for system authorization"
+  ]
+}

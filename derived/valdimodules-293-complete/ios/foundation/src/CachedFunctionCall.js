@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.CachedFunctionCall=void 0;class CachedFunctionCall{constructor(t){this.fn=t}getOrCall(t){return t!==this.lastInput&&(this.lastInput=t,this.lastOutput=this.fn(t)),this.lastOutput}}exports.CachedFunctionCall=CachedFunctionCall;

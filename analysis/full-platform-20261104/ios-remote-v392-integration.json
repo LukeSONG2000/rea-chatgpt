@@ -1,0 +1,37 @@
+{
+  "status": "partial",
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "ada1b316716185e2ea16ed6829a9f80d2f5e310ff9454fc88347a49441184505",
+    "implementation/ios/UITests/HostInteractionTests.swift": "09973dafc48b30369186da9c019d46696a0df8a86c3572e4fc46729fa97c2127"
+  },
+  "source_evidence": [
+    "v388 conditional action/plain button/accessibility",
+    "v389 latest-owner-state toggle",
+    "v390 descriptor-scoped writeback"
+  ],
+  "integration": [
+    "Two explicitly synthetic sections keyed fixture-a/fixture-b",
+    "List owns collapsed IDs; header action reads latest set membership",
+    "Tasks preserve original host/thread identity and navigation",
+    "Filter does not clear collapse state"
+  ],
+  "independent_adaptations": [
+    "Host-based synthetic section membership/order/names, not official production projection",
+    "Header font/layout/chevron placement and no animation remain incomplete",
+    "No search field enabled; search bypass not claimed implemented"
+  ],
+  "validation": {
+    "syntax_parse": "passed for host and UI test using swiftc -frontend -parse",
+    "build": "pending Xcode system authorization",
+    "runtime": "not executed",
+    "new_test": "testRemoteSectionScopeAndRestoration",
+    "test_covers": [
+      "A collapse does not remove B",
+      "B detail return preserves A collapse",
+      "Filter B -> all preserves A collapse",
+      "A reopen retains correct detail scope"
+    ],
+    "pending_session": 42359,
+    "note": "Existing selection only testRemoteTaskScopeAndReturn; new test requires subsequent invocation after initialization. v385 result path will include cumulative code if build begins."
+  }
+}

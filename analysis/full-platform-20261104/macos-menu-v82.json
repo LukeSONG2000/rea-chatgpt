@@ -1,0 +1,35 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-host-with-official-renderer",
+  "finding": "Fresh profile defaults to Codex. ChatGPT route alone does not switch global mode. Selecting ChatGPT through actual mode menu resolves observed newTask destination mismatch.",
+  "changes": [
+    "Explicit --mode chatgpt|codex uses actual renderer mode control; saved profile default preserved when omitted",
+    "No native menu command remapping or packaged renderer edits"
+  ],
+  "validation": {
+    "explicit_mode_launcher": "passed",
+    "settings_to_newTask_chatgpt_composer": "passed",
+    "sidebar_toggle_restore": "passed",
+    "mode_persisted_setting": "STEPS_PROSE observed on disk",
+    "runtime_productMode": "work (internal value, UI label ChatGPT)",
+    "native_os_menu_or_keyboard": "unaccepted"
+  },
+  "runtime": [
+    "macos-menu-v82-runtime.json",
+    "macos-menu-v82-runtime-v2.json"
+  ],
+  "correction": "v79 Codex-home observation was under default Codex mode, not sufficient evidence of wrong command routing.",
+  "limits": [
+    "No actual send via menu-created conversation tested this batch",
+    "Search opening observed here; result selection separately accepted in v81",
+    "Programmatic installed MenuItem callbacks, not physical native interaction",
+    "System window capture failed; renderer screenshot inspected",
+    "Full settings capability and full menu parity remain incomplete"
+  ],
+  "sources": {
+    "implementation/desktop/run.cjs": "019d82c74d5cd5d83a797a0416e7e37f1e93477083dcff672e0ba31374fe9b5d",
+    "analysis/tools/probe_desktop_root_mount.cjs": "9ff1721a355e9bd8962b598b0fd71b7b5702262f9d2e52d69e714849f34e014f"
+  },
+  "next_action": "Verify menu-created new conversation sends, draft isolation and cold restart under explicit mode; continue remaining frontend interaction coverage"
+}

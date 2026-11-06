@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "authority": "controlled official LP fragment with synthetic RPC handles; not app UI acceptance",
+  "source": {
+    "path": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+    "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+    "symbol": "LP",
+    "byteOffset": 263451
+  },
+  "checks": [
+    "A and B independent manager registration",
+    "Replacing A disposes only prior A connection",
+    "Old A RPC-broken callback cannot disconnect replacement A",
+    "A error does not clear B ready state",
+    "Dispose disconnects both and stale subscription callbacks cannot resurrect them"
+  ],
+  "stubs": [
+    "AP downstream UI subscriptions are stubbed to record stop only",
+    "RPC leases/promises and manager methods are synthetic",
+    "Ru returns true, replay-admission branch excluded",
+    "No owner transport or renderer executed"
+  ],
+  "disposed": [
+    "old-a-subscription-pending",
+    "old-a-subscription-pending",
+    "old-a-subscription",
+    "old-a-subscription",
+    "old-a",
+    "new-a-subscription-pending",
+    "new-a-subscription-pending",
+    "new-a-subscription",
+    "new-a-subscription",
+    "new-a",
+    "watch",
+    "host-a-lease-pending",
+    "host-a-lease",
+    "b-subscription-pending",
+    "b-subscription-pending",
+    "b-subscription",
+    "b-subscription",
+    "b",
+    "host-b-lease-pending",
+    "host-b-lease",
+    "service"
+  ],
+  "stopped": [
+    "host-a:old-a",
+    "host-a:new-a",
+    "host-b:b"
+  ]
+}

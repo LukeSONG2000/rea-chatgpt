@@ -1,0 +1,98 @@
+{
+  "status": "partial",
+  "replay": "root-native-v42.json",
+  "contract": "native-draft-merge-contract.json",
+  "verified": {
+    "route_switch_and_host_memory": {
+      "steps": [
+        {
+          "label": "A saved",
+          "draft": "Draft A offline",
+          "atoms": {
+            "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+              "prompt": "Draft A offline",
+              "usedDictation": false,
+              "localRecordingIds": null
+            }
+          }
+        },
+        {
+          "label": "B initial",
+          "draft": "\n",
+          "atoms": {
+            "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+              "prompt": "Draft A offline",
+              "usedDictation": false,
+              "localRecordingIds": null
+            }
+          }
+        },
+        {
+          "label": "B saved",
+          "draft": "Draft B offline",
+          "atoms": {
+            "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+              "prompt": "Draft A offline",
+              "usedDictation": false,
+              "localRecordingIds": null
+            },
+            "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-002\"]": {
+              "prompt": "Draft B offline",
+              "usedDictation": false,
+              "localRecordingIds": null
+            }
+          }
+        },
+        {
+          "label": "A restored",
+          "draft": "Draft A offline",
+          "atoms": {
+            "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+              "prompt": "Draft A offline",
+              "usedDictation": false,
+              "localRecordingIds": null
+            },
+            "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-002\"]": {
+              "prompt": "Draft B offline",
+              "usedDictation": false,
+              "localRecordingIds": null
+            }
+          }
+        },
+        {
+          "label": "B restored",
+          "draft": "Draft B offline",
+          "atoms": {
+            "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+              "prompt": "Draft A offline",
+              "usedDictation": false,
+              "localRecordingIds": null
+            },
+            "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-002\"]": {
+              "prompt": "Draft B offline",
+              "usedDictation": false,
+              "localRecordingIds": null
+            }
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    "page_errors": [],
+    "render_errors": []
+  },
+  "regressions": "test_desktop_draft_state.cjs passed; undefined optional fields reproduced",
+  "limitations": [
+    "A/B navigation injected via official navigate-to-route message, not sidebar conversation list clicks",
+    "Renderer remains alive; cannot distinguish local component cache from host restore as source of displayed draft",
+    "Host memory values and IPC replies verified, but renderer reload, app restart and disk persistence not tested",
+    "Only observed record update subset supported"
+  ],
+  "next": "Destroy/remount renderer with same isolated host state and verify sync-based draft restoration before adding disk lifecycle",
+  "tool_sha256": {
+    "analysis/tools/desktop-draft-state.cjs": "bd53114390c00ee30ed1b20f7f9d7b266f5e3b8062a6c2822d083e905fec3da1",
+    "analysis/tools/desktop-native-host.cjs": "5fe64b55636fb6a0e6cec61c9852bb2eb2ec831c93e47b56eb374b0c37b4630f",
+    "analysis/tools/probe_desktop_root_mount.cjs": "56186cdd901d8d6dd9fe0fb85eb704b98c0d53f614b8d206b9562d1160d1cd04",
+    "analysis/tools/desktop-fixture-services.mjs": "863ac8a194e657a2758bafa1676fbba1ab53183e6143c77e864ad4ba5e0cb110"
+  }
+}

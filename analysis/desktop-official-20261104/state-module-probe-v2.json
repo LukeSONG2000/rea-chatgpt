@@ -1,0 +1,58 @@
+{
+  "version": "26.1021.31345",
+  "runner_sha256": "74544c33ae1da9bc53d181eee5db6015936712f1757765c0083976b3d487d4fa",
+  "sources": {
+    "webview/assets/app-initial-feb30b196d11.js": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+    "webview/assets/rolldown-runtime-2d059c5e81f4.js": "e0a79ad36c6ca1ffbc796c80aa5661803a9d1bc684e29d1587f48b4ba9a82714",
+    "webview/assets/app-shared-2cae01273bae.js": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36"
+  },
+  "results": [
+    {
+      "exportName": "arr",
+      "status": "initialized",
+      "loaded": [
+        "app-initial-feb30b196d11.js",
+        "rolldown-runtime-2d059c5e81f4.js",
+        "app-shared-2cae01273bae.js"
+      ]
+    },
+    {
+      "exportName": "l0n",
+      "status": "blocked",
+      "stage": "initialize",
+      "error": "ReferenceError: navigator is not defined",
+      "frames": [
+        "    at u$ (app-shared-2cae01273bae.js:323:109489)",
+        "    at app-shared-2cae01273bae.js:323:164112",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:215",
+        "    at wwt (app-shared-2cae01273bae.js:323:164348)",
+        "    at app-shared-2cae01273bae.js:323:164647",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:215",
+        "    at Owt (app-shared-2cae01273bae.js:323:167012)",
+        "    at app-shared-2cae01273bae.js:323:200232"
+      ]
+    },
+    {
+      "exportName": "wXt",
+      "status": "blocked",
+      "stage": "initialize",
+      "error": "ReferenceError: window is not defined",
+      "frames": [
+        "    at e.startWindowMessageListener (app-shared-2cae01273bae.js:58:75035)",
+        "    at new e (app-shared-2cae01273bae.js:58:74124)",
+        "    at e.getInstance (app-shared-2cae01273bae.js:58:73882)",
+        "    at app-shared-2cae01273bae.js:58:75629",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:215",
+        "    at d_ (app-shared-2cae01273bae.js:58:75684)",
+        "    at app-initial-feb30b196d11.js:1615:645",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:215"
+      ]
+    }
+  ],
+  "limitations": [
+    "Exact shipped modules and exports; no AST rewriting",
+    "No window/document/native host/account fixture provided",
+    "An initializer returning is not page rendering or provider correctness",
+    "Missing environment globals are explicit blockers, never replaced silently"
+  ]
+}

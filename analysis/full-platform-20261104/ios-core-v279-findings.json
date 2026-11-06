@@ -1,0 +1,203 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "static_artifact",
+  "fields": [
+    {
+      "ivar_entry": "0xabe5b28",
+      "offset_storage": "0xaf45958",
+      "name": "viewModel",
+      "chain_verified": true
+    },
+    {
+      "ivar_entry": "0xabe5b88",
+      "offset_storage": "0xaf45970",
+      "name": "lastTextViewOriginatedInput",
+      "chain_verified": true
+    },
+    {
+      "ivar_entry": "0xabe5ba8",
+      "offset_storage": "0xaf45978",
+      "name": "cachedTextInput",
+      "chain_verified": true
+    },
+    {
+      "ivar_entry": "0xabe5c08",
+      "offset_storage": "0xaf45990",
+      "name": "singleLineThresholdTask",
+      "chain_verified": true
+    },
+    {
+      "ivar_entry": "0xabe5a48",
+      "offset_storage": "0xaf389e0",
+      "name": "dictationAccentColor",
+      "chain_verified": true
+    },
+    {
+      "ivar_entry": "0xabe5a68",
+      "offset_storage": "0xaf389e8",
+      "name": "usesDictationTypography",
+      "chain_verified": true
+    },
+    {
+      "ivar_entry": "0xabe5aa8",
+      "offset_storage": "0xaf389f8",
+      "name": "dictationHeightBinding",
+      "chain_verified": true
+    }
+  ],
+  "bindings": [
+    {
+      "stub": "0x7c804c0",
+      "slot": "0xacb4290",
+      "binding": "textStorage"
+    },
+    {
+      "stub": "0x7c5f9c0",
+      "slot": "0xacabf98",
+      "binding": "editedMask"
+    },
+    {
+      "stub": "0x7c58a20",
+      "slot": "0xacaa3b0",
+      "binding": "attributedText"
+    },
+    {
+      "stub": "0x7c803c0",
+      "slot": "0xacb4250",
+      "binding": "textLayoutManager"
+    },
+    {
+      "stub": "0x7c4e010",
+      "slot": "0xaada3f8",
+      "binding": {
+        "symbol": "_$sScT6cancelyyF",
+        "library_ordinal": 128,
+        "weak": false,
+        "import_ordinal": 13052,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c54a54",
+      "slot": "0xaada990",
+      "binding": {
+        "symbol": "_swift_task_create",
+        "library_ordinal": 128,
+        "weak": false,
+        "import_ordinal": 13229,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c474e8",
+      "slot": "0xaad0ac0",
+      "binding": {
+        "symbol": "_$s7SwiftUI13withAnimationyxAA0D0VSg_xyKXEtKlF",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 8242,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c4dec0",
+      "slot": "0xaada298",
+      "binding": {
+        "symbol": "_$sScM6sharedScMvgZ",
+        "library_ordinal": 128,
+        "weak": false,
+        "import_ordinal": 13008,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c54b14",
+      "slot": "0xaadaa10",
+      "binding": {
+        "symbol": "_swift_task_switch",
+        "library_ordinal": 128,
+        "weak": false,
+        "import_ordinal": 13245,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c4ba3c",
+      "slot": "0xaad5740",
+      "binding": {
+        "symbol": "_$s7SwiftUI9AnimationV6spring8response15dampingFraction13blendDurationACSd_S2dtFZ",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10684,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    }
+  ],
+  "instruction_checks": [
+    {
+      "address": "0x4d76e18",
+      "word": "0xf240079f",
+      "passed": true
+    },
+    {
+      "address": "0x4d76e1c",
+      "word": "0x540005c0",
+      "passed": true
+    },
+    {
+      "address": "0x4d78fd0",
+      "word": "0x96cf756b",
+      "passed": true
+    },
+    {
+      "address": "0x4d790ac",
+      "word": "0x94bb6e6a",
+      "passed": true
+    },
+    {
+      "address": "0x2070c8",
+      "word": "0xf8296a74",
+      "passed": true
+    }
+  ],
+  "conclusions": [
+    "cachedTextInput is reused only on the observed cached-present path when editedMask low two bits are zero",
+    "singleLineThresholdTask is cancelled when present before a new task is created and stored",
+    "dictation typography configuration is separate from ordinary text state",
+    "Task continuation writes through witness +0x98 directly or through SwiftUI.withAnimation, then clears singleLineThresholdTask",
+    "Observed +0x98 matches the previously verified MessageInputPartModeling threshold setter; generic runtime specialization has not been observed"
+  ],
+  "limitations": [
+    "No runtime replay or official UI acceptance",
+    "Full callback event and measurement predicate at 0x4d78a94 remain unresolved",
+    "Generic receiver protocol relationship and cancellation/error scheduling need further validation; no late-task protection is claimed"
+  ],
+  "async_task": {
+    "record": "0x8125f30",
+    "entry": "0x4e49f40",
+    "context_size": 32,
+    "body": "0x4d796d8",
+    "continuation": "0x4d7972c",
+    "direct_setter_call": "0x4d797d0",
+    "animated_setter_thunk": "0x4e49fa4",
+    "witness_offset": "0x98",
+    "concrete_reference": "ios-editor-threshold-protocol-v255.json",
+    "cleanup": "0x4d797e8",
+    "animation_parameter": 0.2
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "status": "installed_and_launched",
+  "bundle": "local.rea.chatgpt.ioshost",
+  "build": "303",
+  "device": "iPhone Air",
+  "device_udid": "00008150-001E34E93A12401C",
+  "executable_sha256": "2e22327f2b725233115806c4fd3c98a1a6966c96a9a45adc338901711c3f50b2",
+  "signing_validation": "codesign --verify --deep --strict passed",
+  "install_evidence": "ios-device-v303-install.json",
+  "launch_evidence": "ios-device-v303-launch.json",
+  "changes": [
+    "sidebar clipping/shadow and spring transition",
+    "settings supporting value, avatar entry and glass close surface",
+    "settings row and input/placeholder Body typography"
+  ],
+  "pending": [
+    "phone visual and interaction acceptance",
+    "sidebar feature typography",
+    "keyboard surface movement",
+    "complete official visual fidelity"
+  ],
+  "left_running": true
+}

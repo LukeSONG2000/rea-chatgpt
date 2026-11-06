@@ -1,0 +1,62 @@
+{
+  "status": "partial",
+  "platform": "android",
+  "reference_baseline": "1.2026.293",
+  "origin": "independent native host behavior; not recovered official menu layout/title policy",
+  "changes": [
+    "More dropdown contains Rename and Delete",
+    "Rename preserves UUID and draft scope; cancellation is nonmutating; trim, blank/UTF-8 length validation and failed-write preservation",
+    "New default titles choose an unused number among current titles; existing/custom duplicate titles are not rewritten",
+    "Long-list UI test helper waits for actual native node after scroll instead of trusting scrollIntoView return value"
+  ],
+  "verification": {
+    "build": "analysis/full-platform-20261104/android-rename-build-v2.log",
+    "rename_runtime": "analysis/full-platform-20261104/android-rename-runtime-v2.json",
+    "delete_menu_regression": "analysis/full-platform-20261104/android-menu-delete-runtime-v1.json",
+    "tests_passed": 6,
+    "covers": [
+      "default title collision after delete",
+      "rename UUID/cold restore and failed-save preservation",
+      "at least 12 conversation rows; actual scroll to B and back with draft isolation",
+      "cancel rename, disabled blank save, Chinese title persistence",
+      "force-stop/new process title/draft restoration",
+      "menu-based active deletion/cancel confirmation, scope cleanup and cold restart"
+    ],
+    "screenshot_reviewed": "analysis/full-platform-20261104/android-rename-runtime-v2/rename-after.png"
+  },
+  "inputs": [
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/ConversationCatalog.kt",
+      "sha256": "b7335676b1b4f09679da27b4e739c7242fcb1a24d20ee80363d7b1bc5a6c79e0"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt",
+      "sha256": "178ae2c143ced28d02c95bb771d87b9539b73e3a2ebead007bf27d5071abb438"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt",
+      "sha256": "e51fc180d5e56f63af23cde527ee6d26f0b5090a8f276e8c6c7ad0f3abff10d3"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/MessageStoreTest.kt",
+      "sha256": "e8a0f86315a94d20383eb24279299f21a43eda1a458d84432b23cd9c6a53c0a7"
+    },
+    {
+      "path": "implementation/android/test-rename.py",
+      "sha256": "8ed07f135e7d302582934b4d2f4358b99c4a1d96d6b321e2653e51dee066d1c6"
+    }
+  ],
+  "historical_failure": {
+    "runtime": "android-rename-runtime-v1.json",
+    "reason": "scrollIntoView returned false although exported native tree showed B visible; updated helper verifies native state and click"
+  },
+  "cleanup": "Owned fixture server stopped; private temporary pairing removed; deletion runner cleared emulator pairing and reverse port",
+  "limitations": [
+    "Rename native UI failure injection and accessibility not accepted",
+    "Long-list scope is bounded 12+ entries, not 128-entry performance or restoration acceptance",
+    "Default naming and native menu presentation are independent policy, not official equivalence",
+    "Physical device and official visual/behavioral fidelity remain unaccepted",
+    "iOS rename/default title parity not yet implemented"
+  ],
+  "next_action": "Bring iOS rename/title lifecycle to same contract, then review evidence-backed primary frontend fidelity gaps rather than treating native scaffold completion as restoration"
+}

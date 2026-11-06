@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-native-host-implementation",
+  "platform": "iOS 27 Simulator",
+  "target_artifact_version": "1.2026.293",
+  "defect": "Table horizontal reading offset lost when landscape width clamps offset then returns to portrait",
+  "change": [
+    "Retain preferred horizontal offset independently from applied layout-clamped offset",
+    "Only user drag/deceleration updates preferred offset and scoped position callback",
+    "Reapply preferred offset within current scroll bounds during layout"
+  ],
+  "validation": {
+    "before": "ios-table-v107-before.xcresult",
+    "before_status": "failed: selected right-side column no longer hittable after rotation",
+    "after": [
+      "ios-table-v107-after.xcresult",
+      "ios-table-v107-append.xcresult"
+    ],
+    "passedTests": 2,
+    "skippedTests": 0,
+    "checks": [
+      "Two tables preserve independent offsets after portrait-landscape-portrait",
+      "Offscreen recycling and conversation navigation retain offsets",
+      "Streaming row append retains horizontal position"
+    ],
+    "screenshots": "ios-table-v107-images/manifest.json",
+    "visual_review": "Portrait-return screenshot inspected: first table at final columns, second table at first columns"
+  },
+  "limits": [
+    "Table position remains process-local; not durable across process restart",
+    "Dynamic type, selection during rotation and physical iPhone not validated",
+    "Mixed code/reasoning/attachment rotation not covered",
+    "Does not establish official visual or behavioral parity"
+  ],
+  "next_action": "Dynamic-type and text/code/table mixed-content layout validation",
+  "sources": [
+    {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "ff0f1d28dc136c081f1757b4864d4a65d9bddd1dcf9ad09d44a63e662c6c89ee"
+    },
+    {
+      "file": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "d5e906ac4559a3995d89e3f1a0dfb49b0463e94a963e38fd07e352a2939a1425"
+    }
+  ]
+}

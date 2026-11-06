@@ -1,0 +1,34 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-native-implementation",
+  "changes": [
+    "Uses public contentOverride extension; vendor sources unchanged",
+    "Fenced and indented code preserve parser literal, with native Copy code button",
+    "Code uses horizontal layout rather than wrapping"
+  ],
+  "validation": {
+    "offline_build": "passed",
+    "native_whitespace_clipboard": "passed",
+    "evidence": "android-code-v70-ui-v1.json",
+    "screenshot": "android-code-v70-ui-v1/code-block-copy.png",
+    "visual_review": "native code action and untrimmed multiline block observed"
+  },
+  "limits": [
+    "Exact official 293 code component and appearance not recovered",
+    "Indented code action, horizontal scroll, selection during updates and stale copy callbacks still need dedicated runtime acceptance",
+    "Table remains uniform-column; adaptive horizontal table and position persistence remain to implement"
+  ],
+  "sources": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/NativeCodeBlock.kt": "9ae4cebe2ad56a2eb9efc2880fe3e9495e925776598190640a9e4e821dc69784",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "2a950b296352aa71a9c263893ec973823129c7693a2b8c805c66c0532f7aadb1",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "7555558226ee20dbea9ab527b318fadd7ae7ec72468fbc5e81196839d2f558da",
+    "implementation/android/test-message-actions.py": "c45efa317d6a7ca75edc9d115cef529d8b6aa14ce84f22b1841c49bf7949e80c",
+    "implementation/harness/fixture_worker.py": "29b6a7b630c9febfd1540193c11ffa830420109c5f448212d3401421b1800bf6"
+  },
+  "cleanup": {
+    "owned_fixture_server_stopped": true,
+    "private_pairing_removed": true,
+    "android_pairing_removed": true
+  }
+}

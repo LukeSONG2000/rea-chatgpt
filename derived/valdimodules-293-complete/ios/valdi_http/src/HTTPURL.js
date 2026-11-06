@@ -1,0 +1,1 @@
+"use strict";function e(e,r){if(r.indexOf("://")>=0)return r;if(!e)throw new Error("baseUrl should be specified when providing a relative path");return e.endsWith("/")||(e+="/"),r.startsWith("/")&&(r=r.substring(1)),e+r}Object.defineProperty(exports,"__esModule",{value:!0}),exports.resolveHTTPURL=void 0,exports.resolveHTTPURL=e;

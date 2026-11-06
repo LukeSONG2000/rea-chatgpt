@@ -1,0 +1,40 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "static artifact observation; independent native integration",
+  "observations": [
+    {
+      "symbol": "ActivityState.idle",
+      "offset": "0x3a5b8c",
+      "conclusion": "EmptyView branch; no visible idle label",
+      "source": "ios-remote-v333 activity dispatch evidence"
+    },
+    {
+      "symbol": "CodexTaskProgressView",
+      "offset": "0x6ee8e04 -> 0x6ee858c",
+      "conclusion": "Contains OAIProgressView with OpenAICircularProgressStyle and direct/periodic timeline paths; not proved equivalent to system spinner"
+    },
+    {
+      "offset": "0x6ee88e8 / 0x6ee88f4",
+      "conclusion": "PeriodicTimelineSchedule from/by call receives 5.0; this is not a proven animation rotation period"
+    },
+    {
+      "offset": "0x6ee87b4 / 0x6ee87b8 / 0x6ee87e0",
+      "conclusion": "OpacityTransition with default Animation in one path"
+    }
+  ],
+  "change": "Removed incorrect visible idle text; added synthetic idle task and assertion of no status text",
+  "unknowns": [
+    "startDate optional branch semantics and timeline content closure 0x6f4fe24",
+    "OAIProgressView value input and OpenAICircularProgressStyle implementation",
+    "scaled size initializer and animation reduction/lifecycle behavior"
+  ],
+  "validation": {
+    "simulator": "1 test passed, 0 failures; screenshot inspected; idle row no visible state text",
+    "phone": "not installed",
+    "preview_pid": 68887,
+    "external_display": "not reverified"
+  }
+}

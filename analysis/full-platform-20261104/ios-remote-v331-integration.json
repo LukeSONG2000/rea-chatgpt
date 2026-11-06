@@ -1,0 +1,55 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "official-artifact-static",
+  "observations": [
+    {
+      "offset": "0x3a54ac",
+      "conclusion": "CodexRemoteTaskRowContent body witness branches to 0x3a3c14."
+    },
+    {
+      "offset": "0x3a3ca8..0x3a3cb4",
+      "conclusion": "Metadata slot0x2c reads usesSidebarPresentation: 12 fields, vector base2 machine words, field index7. When true calls 0x3a3f34."
+    },
+    {
+      "offset": "0x3a3e3c..0x3a3e64",
+      "conclusion": "Non-sidebar alternative has top-aligned HStack, content closure 0x3a4640. Intermediate branch condition at instance+0x48 unresolved; do not name it solely from address."
+    },
+    {
+      "offset": "0x3a46d8..0x3a4708",
+      "conclusion": "Leading title/subtitle VStack has explicit spacing3; record0x7cf7d28 confirms VStack type."
+    },
+    {
+      "offset": "0x3a4730..0x3a4758",
+      "conclusion": "Trailing VStack has spacing3, trailing-state indicators and optional DiffSummaryLabel per record0x7cf7d30."
+    },
+    {
+      "offset": "0x3a3ed0..0x3a3ee0",
+      "conclusion": "Normal row combines accessibility children."
+    }
+  ],
+  "integration": "Replace vertical title/host/bottom-status stack with top-aligned title/subtitle column plus trailing status adapter; combine accessibility children.",
+  "independent_adaptations": [
+    "Host remains synthetic subtitle, not asserted official workspace projection.",
+    "Status texts and internal status stack retained as fixture adapter; not official indicator styling or precedence.",
+    "Outer spacing uses system default pending caller resolution."
+  ],
+  "remaining": [
+    "TrailingStateIndicatorsPart body and symbols/priority",
+    "Subtitle source projection and branch+0x48",
+    "Padding/title typography/line limits",
+    "Task grouping sorting pagination",
+    "Android equivalent"
+  ],
+  "validation": {
+    "test": "testRemoteTaskScopeAndReturn",
+    "passed": 1,
+    "failed": 0,
+    "screenshot_inspected": "ios-remote-v331-screenshots/97F4562F-4944-495D-B8F3-E70C1B746D1E.png",
+    "preview_pid": 66628,
+    "phone_updated": false,
+    "official_visual_parity": false
+  }
+}

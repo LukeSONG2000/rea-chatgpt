@@ -1,0 +1,88 @@
+{
+  "status": "partial",
+  "modules": [
+    {
+      "module": "Markdown",
+      "semantic_equivalence": "unverified",
+      "ios": {
+        "path": "derived/valdimodules-293/ios/markdown/src/Markdown.js",
+        "sha256": "0564e365dd2833b60b2a58a34e7c1a208a6b74bc55422cba335612d4f7039476",
+        "bytes": 24004,
+        "prefix_hex": "2275736520737472"
+      },
+      "android": {
+        "path": "derived/valdimodules-293/android/markdown/src/Markdown.js",
+        "sha256": "1a9d80ca72be1de47e5a5241a9d0788ebc696c8b9a00cb2a25f04232252afbd0",
+        "bytes": 54931,
+        "prefix_hex": "34c6000101f6012a"
+      }
+    },
+    {
+      "module": "MarkdownEntityUtils",
+      "semantic_equivalence": "unverified",
+      "ios": {
+        "path": "derived/valdimodules-293/ios/markdown/src/MarkdownEntityUtils.js",
+        "sha256": "c38419fc4e52d971cf2ce3e581ab28aa0b2ee063db8fd2ce01a98a6e45d1d1ba",
+        "bytes": 702,
+        "prefix_hex": "2275736520737472"
+      },
+      "android": {
+        "path": "derived/valdimodules-293/android/markdown/src/MarkdownEntityUtils.js",
+        "sha256": "9de62b61d04ebedea41f1d9bddab6ba91a03223f8f64cbb860048d2a3ef6f962",
+        "bytes": 1744,
+        "prefix_hex": "34c600010120406d"
+      }
+    },
+    {
+      "module": "TextParser",
+      "semantic_equivalence": "unverified",
+      "ios": {
+        "path": "derived/valdimodules-293/ios/markdown/src/TextParser.js",
+        "sha256": "2c76ba869f6fbcceda887b7d9f1f60639152bae2641595d37da884ebde12201f",
+        "bytes": 2921,
+        "prefix_hex": "2275736520737472"
+      },
+      "android": {
+        "path": "derived/valdimodules-293/android/markdown/src/TextParser.js",
+        "sha256": "c7b4065226bea678acfaa99959fded288055f7bb4e1c7d7c7da8375d430b51bc",
+        "bytes": 6217,
+        "prefix_hex": "34c60001012a2e6d"
+      }
+    },
+    {
+      "module": "MarkdownReferenceUtils",
+      "semantic_equivalence": "unverified",
+      "ios": {
+        "path": "derived/valdimodules-293/ios/markdown/src/MarkdownReferenceUtils.js",
+        "sha256": "1a7e0b5eb233724162a7a15f62ae26a8253b494e7d7a10f929032ad7ea98840b",
+        "bytes": 2396,
+        "prefix_hex": "2275736520737472"
+      },
+      "android": {
+        "path": "derived/valdimodules-293/android/markdown/src/MarkdownReferenceUtils.js",
+        "sha256": "d8945a6afa97f49ed8437b2d3c8abc377d4877e657539614b906a1cd0f09d323",
+        "bytes": 4376,
+        "prefix_hex": "34c600010131466d"
+      }
+    },
+    {
+      "module": "MarkdownNamedEntities",
+      "semantic_equivalence": "unverified",
+      "ios": {
+        "path": "derived/valdimodules-293/ios/markdown/src/MarkdownNamedEntities.js",
+        "sha256": "3ab9190e4ae107260e93abc5e5af84a16fe6d3391a4a8aa40d5577f9079e4e85",
+        "bytes": 28886,
+        "prefix_hex": "2275736520737472"
+      },
+      "android": {
+        "path": "derived/valdimodules-293/android/markdown/src/MarkdownNamedEntities.js",
+        "sha256": "24608ca4310139752441f419d68201f0c98b9128c57181925cfde91482c165df",
+        "bytes": 44603,
+        "prefix_hex": "34c6000101b71c44"
+      }
+    }
+  ],
+  "finding": "All five Android files have binary 34c60001 prefix; iOS JS cannot be labeled Android recovered source",
+  "decision": "Share test vectors and independent content contract first; leave Android parser implementation/equivalence unaccepted",
+  "vectors": "markdown-crossplatform-vectors-v1.json"
+}

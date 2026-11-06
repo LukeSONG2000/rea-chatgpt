@@ -1,0 +1,25 @@
+{
+  "status": "partial",
+  "evidence_type": "controlled-offline-original-renderer-replay",
+  "runtime": "root-mount-v16-synthetic-account.json",
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/official-root-probe-v16-synthetic-account.png",
+  "verified": [
+    "Single original initializeApp entry",
+    "Original initialization notification uses package-declared CLI 0.164.0-alpha.11.1",
+    "Gateway read consumed synthetic required:false; no OAuth invoked",
+    "Original shell, sidebar and composer visually displayed"
+  ],
+  "limits": [
+    "Codex work surface is visible; ChatGPT conversation route not yet restored under full root",
+    "Profile loading and model labels Custom indicate missing data",
+    "Statsig/bootstrap and non-allowlisted endpoints remain rejected",
+    "Edge rendering only; Electron/native window and full interaction not accepted",
+    "Synthetic account state, not actual login or server behavior"
+  ],
+  "next_actions": [
+    "Resolve actual initial route and ChatGPT surface selection through official route logic",
+    "Bind existing synthetic history to full-root conversation route",
+    "Complete local model/profile contracts and verify disabled/send/cancel states",
+    "Restore isolated native desktop host and verify window/input/selection behavior"
+  ]
+}

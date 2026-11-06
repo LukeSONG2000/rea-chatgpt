@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "reference_baseline": "1.2026.293 reference; independent UIKit host",
+  "evidence_type": "independent-native-keyboard-runtime-and-state-tests",
+  "runtime": {
+    "architecture": "arm64",
+    "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "deviceName": "REA ChatGPT Offline",
+    "modelName": "iPhone 17 Pro",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "observed_resolution": "Leaving A while nihao is marked and \u4f60\u597d is unchosen commits raw nihao in A on this system keyboard",
+  "verified": [
+    "Actual Pinyin candidate exists before A to B switch",
+    "B draft remains exact immediately and after three-second observation window",
+    "A retains exact REA synthetic switch nihao after return and repeated A/B/A",
+    "Application termination/relaunch preserves A and B independently",
+    "State tests reject obsolete generation writes including return to same scope",
+    "Exact platform observation rerun passed; initial observational run retained"
+  ],
+  "limitations": [
+    "UI test observes bounded delay; does not inject every possible delayed UIKit callback",
+    "No third-party keyboard, alternative composition language, physical iPhone or official fidelity acceptance",
+    "UIKit romanization resolution is an observed platform behavior, not evidence of official ChatGPT policy"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/ios/UITests/HostInteractionTests.swift": "fa8d40c450179f5d5c74eb75776ce9c8e0bd148a513befce743e6f541c2e4083",
+    "implementation/ios/Sources/NativeConversationHost.swift": "b8d66f6f470d2b164b8635df9b1203e4f8186f2664d9d01c43c30c771e21bd13",
+    "implementation/ios/Sources/DraftStore.swift": "9eff011796da676d3f19fc7aed1a889dfc4c6f544b9d4eb9e04ba755ee2374a8",
+    "implementation/ios/Tests/main.swift": "d9c5d9e032d8af7310b274d69ae9be8785601c4603342cda737e71c3b7263d87",
+    "analysis/full-platform-20261104/ios-ime-switch-v1.log": "406a502a78e234a9f8819b78dd091cd7c1336bffe27601c6324fc2d4a86c0649",
+    "analysis/full-platform-20261104/ios-ime-switch-v2.log": "f60da14b06a41458e385938ad963fc589f7c7bc551ca8189a587f4b5b7a24ded",
+    "analysis/full-platform-20261104/ios-ime-switch-v2.summary.json": "6d35a42402a0618aa22ea4f4a01e47af1db1003b873b90ef2103345d1e7ebde0",
+    "analysis/full-platform-20261104/ios-ime-switch-state-v1.log": "98ec690380ea36c189d0b4e07b1e14af0dc616b791f1a890091918071b3c4896",
+    "analysis/full-platform-20261104/ios-ime-switch-v1-attachments/resolved-composition.txt": "7dbf63af2a7c4c5d09aa910cfc31776b6464027bd0b701de7dd2b5a7ee1ba673",
+    "analysis/full-platform-20261104/ios-ime-switch-v1-attachments/switch-restored.png": "86539bca4bbd7f5e87582b71ef15ada1766326b34bf5df838b2a7a976b476114"
+  },
+  "next_action": "Resume page-level frontend restoration: iOS search/library evidence to native host routing"
+}

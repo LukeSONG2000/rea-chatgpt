@@ -1,0 +1,197 @@
+{
+  "status": "partial",
+  "evidence_type": "official-artifact-static-metadata",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "item_descriptor": "0x96fcc30",
+  "field_descriptor": "0x9bd9404",
+  "field_descriptor_kind": 2,
+  "cases": [
+    {
+      "name": "text",
+      "record": "0x9bd9414",
+      "flags": 0,
+      "payload": {
+        "artifact": {
+          "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+          "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+        },
+        "type_record": null,
+        "mangled_address": "0x93e34c0",
+        "length": 5,
+        "mangled_hex": "01eb973100",
+        "references": [
+          {
+            "offset": 0,
+            "kind": 1,
+            "target": "0x96fccac",
+            "resolved_context": "0x96fccac",
+            "label": "OAIMarkdown.MarkdownResult.Item.Text"
+          }
+        ],
+        "unresolved_contexts": [],
+        "limits": [
+          "Symbolic context references only, not a reconstructed generic type tree",
+          "Type presence does not prove runtime branch selection or component creation"
+        ]
+      }
+    },
+    {
+      "name": "table",
+      "record": "0x9bd9420",
+      "flags": 0,
+      "payload": {
+        "artifact": {
+          "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+          "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+        },
+        "type_record": null,
+        "mangled_address": "0x93e34f4",
+        "length": 5,
+        "mangled_hex": "0187983100",
+        "references": [
+          {
+            "offset": 0,
+            "kind": 1,
+            "target": "0x96fcd7c",
+            "resolved_context": "0x96fcd7c",
+            "label": "OAIMarkdown.MarkdownTable"
+          }
+        ],
+        "unresolved_contexts": [],
+        "limits": [
+          "Symbolic context references only, not a reconstructed generic type tree",
+          "Type presence does not prove runtime branch selection or component creation"
+        ]
+      }
+    },
+    {
+      "name": "code",
+      "record": "0x9bd942c",
+      "flags": 0,
+      "payload": {
+        "artifact": {
+          "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+          "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+        },
+        "type_record": null,
+        "mangled_address": "0x904dcee",
+        "length": 5,
+        "mangled_hex": "025164a601",
+        "references": [
+          {
+            "offset": 0,
+            "kind": 2,
+            "target": "0xaab4140",
+            "resolved_context": "0x96fccd4",
+            "label": "OAIMarkdown.MarkdownResult.Item.Code"
+          }
+        ],
+        "unresolved_contexts": [],
+        "limits": [
+          "Symbolic context references only, not a reconstructed generic type tree",
+          "Type presence does not prove runtime branch selection or component creation"
+        ]
+      }
+    },
+    {
+      "name": "images",
+      "record": "0x9bd9438",
+      "flags": 0,
+      "payload": {
+        "artifact": {
+          "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+          "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+        },
+        "type_record": null,
+        "mangled_address": "0x93e3538",
+        "length": 9,
+        "mangled_hex": "53617901c097310047",
+        "references": [
+          {
+            "offset": 3,
+            "kind": 1,
+            "target": "0x96fccfc",
+            "resolved_context": "0x96fccfc",
+            "label": "OAIMarkdown.MarkdownResult.Item.Image"
+          }
+        ],
+        "unresolved_contexts": [],
+        "limits": [
+          "Symbolic context references only, not a reconstructed generic type tree",
+          "Type presence does not prove runtime branch selection or component creation"
+        ]
+      }
+    }
+  ],
+  "content_types": {
+    "items": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8e473d0",
+      "length": 9,
+      "mangled_hex": "536179027ccdc60147",
+      "references": [
+        {
+          "offset": 3,
+          "kind": 2,
+          "target": "0xaab4150",
+          "resolved_context": "0x96fcc30",
+          "label": "OAIMarkdown.MarkdownResult.Item"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "imageMetadata": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x903d3f4",
+      "length": 17,
+      "mangled_hex": "02fbc5a7017902fdb6a80102806da70147",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 2,
+          "target": "0xaab99f0",
+          "resolved_context": "0x9764768",
+          "label": "OrderedCollections.OrderedDictionary"
+        },
+        {
+          "offset": 6,
+          "kind": 2,
+          "target": "0xaac8af8",
+          "resolved_context": null,
+          "label": "_$s10Foundation3URLVMn"
+        },
+        {
+          "offset": 11,
+          "kind": 2,
+          "target": "0xaab4180",
+          "resolved_context": "0x96fe2d4",
+          "label": "OAIMarkdown.MarkdownContent.ImageMetadata"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    }
+  },
+  "limits": [
+    "Enum case names and symbolic payload references do not recover generic trees or renderer branches",
+    "No parser execution, visual fidelity or streaming behavior verified"
+  ]
+}

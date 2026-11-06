@@ -1,0 +1,113 @@
+{
+  "0x1bfd00": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  1bfd00: aa0003e4     \tmov\tx4, x0\n  1bfd04: aa0103e5     \tmov\tx5, x1\n  1bfd08: d65f03c0     \tret\n",
+  "0x1bf21c": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  1bf21c: b9802408     \tldrsw\tx8, [x0, #0x24]\n  1bf220: 8b080268     \tadd\tx8, x19, x8\n  1bf224: d65f03c0     \tret\n  1bf228: b0055ba0     \tadrp\tx0, 0xad34000 <_OBJC_METACLASS_$__TtC7ChatGPT20CarPlaySceneDelegate+0x4610>\n  1bf22c: 91294000     \tadd\tx0, x0, #0xa50\n  1bf230: f003d8c1     \tadrp\tx1, 0x7cda000 <_writev+0x7cda000>\n  1bf234: 91278021     \tadd\tx1, x1, #0x9e0\n  1bf238: d65f03c0     \tret\n  1bf23c: 90043468     \tadrp\tx8, 0x884b000 <_writev+0x884b000>\n",
+  "0x15c870": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  15c870: d2800000     \tmov\tx0, #0x0                ; =0\n  15c874: 52800021     \tmov\tw1, #0x1                ; =1\n  15c878: d65f03c0     \tret\n  15c87c: d2800000     \tmov\tx0, #0x0                ; =0\n  15c880: 15b4bef0     \tb\t0x6e8c440 <__text+0x6e64440>\n  15c884: d2800000     \tmov\tx0, #0x0                ; =0\n  15c888: 15ebdea2     \tb\t0x7c54310 <_writev+0x7c54310>\n  15c88c: d2800000     \tmov\tx0, #0x0                ; =0\n",
+  "0x7e12268": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7e12268",
+    "mangled_address": "0x8e224a8",
+    "length": 12,
+    "mangled_hex": "02a7fbca01790261fdca0147",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad2050",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI18_OpacityShapeStyleVMn"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaad2210",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19SeparatorShapeStyleVMn"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "0x7e1d688": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7e1d688",
+    "mangled_address": "0x8e3b434",
+    "length": 36,
+    "mangled_hex": "02e35ec90179022d4cc90179023fa5c901020a6cc9017902c46dc901474702f551c90147",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad1318",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15ModifiedContentVMn"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaad0068",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI10_ShapeViewVMn"
+      },
+      {
+        "offset": 12,
+        "kind": 2,
+        "target": "0xaad5980",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI9RectangleVMn"
+      },
+      {
+        "offset": 17,
+        "kind": 2,
+        "target": "0xaad2050",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI18_OpacityShapeStyleVMn"
+      },
+      {
+        "offset": 23,
+        "kind": 2,
+        "target": "0xaad2210",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19SeparatorShapeStyleVMn"
+      },
+      {
+        "offset": 30,
+        "kind": 2,
+        "target": "0xaad0648",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI12_FrameLayoutVMn"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "0x7c48994": {
+    "symbol": "_$s7SwiftUI19SeparatorShapeStyleVACycfC",
+    "library_ordinal": 82,
+    "weak": false,
+    "import_ordinal": 8984,
+    "table_addend": 0,
+    "encoded_pointer_addend": 0,
+    "chain_membership_verified": true
+  },
+  "0x7c47104": {
+    "symbol": "_$s7SwiftUI12_FrameLayoutV5width6height9alignmentAC12CoreGraphics7CGFloatVSg_AjA9AlignmentVtcfC",
+    "library_ordinal": 82,
+    "weak": false,
+    "import_ordinal": 8097,
+    "table_addend": 0,
+    "encoded_pointer_addend": 0,
+    "chain_membership_verified": true
+  }
+}

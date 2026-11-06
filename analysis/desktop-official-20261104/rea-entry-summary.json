@@ -1,0 +1,395 @@
+{
+  "evidence_id": "ev_d4133f7c605173691fe22f730329cf467638a7d0e89cc4184e36c3aafc563f69",
+  "subject": {
+    "name": "asar-extracted",
+    "digest": {
+      "sha256": "d40546d99fe0186b7c2c02eb4c9f7af808a608109b1ebf6edc0c209a179837e2"
+    },
+    "local_path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/macos/asar-extracted",
+    "format": "directory",
+    "architecture": null
+  },
+  "provider": {
+    "id": "rea-analysis-view",
+    "name": "REA analysis view projection",
+    "version": "1"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.analysis-view",
+  "operation": "inspect_analysis_view",
+  "parameters": {
+    "parent_evidence_id": "ev_3225dd40332511ad9a5c229fe65c0bcb91c493caaac9ec0e5e91d30fc9ddd93d",
+    "view": {
+      "kind": "summary"
+    }
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "kind": "summary",
+    "view": {
+      "kind": "summary"
+    },
+    "parent_evidence_id": "ev_3225dd40332511ad9a5c229fe65c0bcb91c493caaac9ec0e5e91d30fc9ddd93d",
+    "parent_operation": "analyze_javascript_application",
+    "parent_digest": "3225dd40332511ad9a5c229fe65c0bcb91c493caaac9ec0e5e91d30fc9ddd93d",
+    "view_digest": "311f8227955592689ca6296743d1963eccfea77696460a9beee752b9c2a56b64",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/macos/asar-extracted",
+      "sha256": "d40546d99fe0186b7c2c02eb4c9f7af808a608109b1ebf6edc0c209a179837e2"
+    },
+    "coverage": {
+      "status": "complete-within-view",
+      "examined": 15886,
+      "total": 15886,
+      "next_offset": null,
+      "exhausted": true
+    },
+    "limitations": [
+      "Boundary extraction covers unshadowed JSON/global coercions plus parse and validation method candidates.",
+      "Caller-selected source analysis leaves 16932 inventoried files outside analysis scope. Inventory identity covers the complete artifact; relationships through unselected sources remain unknown.",
+      "Child-process extraction covers asynchronous node:child_process creation, literal argv/env/stdio options, exit/error listeners, and kill signals.",
+      "CommonJS and ESM binding relationships were recovered from inert syntax and resolved only within the inventoried artifact container.",
+      "Configuration extraction covers process.env, process.argv, node:fs reads, and direct logical defaults.",
+      "Dynamic IPC channel expressions remain unresolved and are never paired by textual similarity.",
+      "Electron API identity follows proven lexical module aliases and structurally verified module-namespace interop. Other reassignments, dynamic selections, and visibly overwritten namespace members are unresolved; missing findings do not establish absence. Arbitrary call side effects and runtime registration are not evaluated.",
+      "Electron relationships are derived from inert syntax; runtime registration, reachability, defaults, and enforcement remain unproven.",
+      "Event extraction covers EventEmitter-style literal registrations, removals, and dispatch candidates; dynamic names remain unknown.",
+      "Function fingerprints are static candidates; equal digests can remain ambiguous and do not prove behavioral equivalence.",
+      "Graph coverage is incomplete; unavailable facts remain explicit and must not be read as absence.",
+      "JavaScript and HTML were parsed as inert text; bundle bootstrap code was never executed.",
+      "Local data flow does not claim control-flow-sensitive reaching definitions or arbitrary dynamic property resolution.",
+      "Promise ownership covers explicit unshadowed Promise construction, static factories, aggregation, chaining, and await syntax only.",
+      "Request extraction covers fetch, WebSocket, node:http/node:https construction, direct option fields, and exact local response consumers.",
+      "Resource extraction covers built-in filesystem/network acquisition and exact local close/destroy/end handles.",
+      "Semantic unknown retention reached max_semantic_unknowns is 100000 (default 100000; an integer from 1 to 1000000). Set max_semantic_unknowns on the next analyze_javascript_application call (CLI: --max-semantic-unknowns). The change applies to that next analysis and does not restart the worker or the REA server. Raising it does not raise max_semantic_nodes, max_heap_mb, transfer ceilings, or the parent result budget. Coverage reports the same effective values as semantic_graph_unknown_ceiling and semantic_graph_file_unknown_ceiling. Omission coverage counts examined emission occurrences by family and reason, including repeats; it does not count unexamined source frontiers or distinct discarded identities.",
+      "Static imports, entrypoints, workers, endpoints, and storage relationships do not prove runtime execution.",
+      "Static paths and relationships may remain unresolved when expressions are dynamic or obfuscated.",
+      "The semantic graph contains static syntax observations and conservative relationship candidates; it does not claim runtime execution.",
+      "Timer extraction covers global or node:timers scheduling and exact local-handle cancellation.",
+      "Webpack/Rspack factories were recovered from AST literals; REA did not invoke push handlers or bundle bootstrap code."
+    ],
+    "unknowns": [
+      "100000 semantic graph unknowns remain in the parent Evidence.",
+      "16932 application graph unknowns remain in the parent Evidence.",
+      "Boundary extraction covers unshadowed JSON/global coercions plus parse and validation method candidates.",
+      "Caller-selected source analysis leaves 16932 inventoried files outside analysis scope. Inventory identity covers the complete artifact; relationships through unselected sources remain unknown.",
+      "Child-process extraction covers asynchronous node:child_process creation, literal argv/env/stdio options, exit/error listeners, and kill signals.",
+      "CommonJS and ESM binding relationships were recovered from inert syntax and resolved only within the inventoried artifact container.",
+      "Configuration extraction covers process.env, process.argv, node:fs reads, and direct logical defaults.",
+      "Dynamic IPC channel expressions remain unresolved and are never paired by textual similarity.",
+      "Electron API identity follows proven lexical module aliases and structurally verified module-namespace interop. Other reassignments, dynamic selections, and visibly overwritten namespace members are unresolved; missing findings do not establish absence. Arbitrary call side effects and runtime registration are not evaluated.",
+      "Electron relationships are derived from inert syntax; runtime registration, reachability, defaults, and enforcement remain unproven.",
+      "Event extraction covers EventEmitter-style literal registrations, removals, and dispatch candidates; dynamic names remain unknown.",
+      "Function fingerprints are static candidates; equal digests can remain ambiguous and do not prove behavioral equivalence.",
+      "Graph coverage is incomplete; unavailable facts remain explicit and must not be read as absence.",
+      "JavaScript and HTML were parsed as inert text; bundle bootstrap code was never executed.",
+      "Local data flow does not claim control-flow-sensitive reaching definitions or arbitrary dynamic property resolution.",
+      "Promise ownership covers explicit unshadowed Promise construction, static factories, aggregation, chaining, and await syntax only.",
+      "Request extraction covers fetch, WebSocket, node:http/node:https construction, direct option fields, and exact local response consumers.",
+      "Resource extraction covers built-in filesystem/network acquisition and exact local close/destroy/end handles.",
+      "Semantic unknown retention reached max_semantic_unknowns is 100000 (default 100000; an integer from 1 to 1000000). Set max_semantic_unknowns on the next analyze_javascript_application call (CLI: --max-semantic-unknowns). The change applies to that next analysis and does not restart the worker or the REA server. Raising it does not raise max_semantic_nodes, max_heap_mb, transfer ceilings, or the parent result budget. Coverage reports the same effective values as semantic_graph_unknown_ceiling and semantic_graph_file_unknown_ceiling. Omission coverage counts examined emission occurrences by family and reason, including repeats; it does not count unexamined source frontiers or distinct discarded identities.",
+      "Static imports, entrypoints, workers, endpoints, and storage relationships do not prove runtime execution.",
+      "Static paths and relationships may remain unresolved when expressions are dynamic or obfuscated.",
+      "The semantic graph contains static syntax observations and conservative relationship candidates; it does not claim runtime execution.",
+      "Timer extraction covers global or node:timers scheduling and exact local-handle cancellation.",
+      "Webpack/Rspack factories were recovered from AST literals; REA did not invoke push handlers or bundle bootstrap code.",
+      "graph.coverage.status is partial",
+      "semantic_graph.coverage.status is partial"
+    ],
+    "summary": {
+      "input_path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/macos/asar-extracted",
+      "format": "directory",
+      "root_artifact_sha256": "d40546d99fe0186b7c2c02eb4c9f7af808a608109b1ebf6edc0c209a179837e2",
+      "source_selection": {
+        "requested_paths": [
+          ".vite/build/early-bootstrap.js",
+          ".vite/build/preload.js",
+          "webview/assets/index-fcd3fcef6840.js"
+        ],
+        "unselected_files": 16932
+      },
+      "statistics": {
+        "relevant_files": 16935,
+        "nested_asar_containers": 0,
+        "text_bytes_read": 10932,
+        "invalid_utf8_files": 0,
+        "parsed_javascript_files": 3,
+        "skipped_javascript_files": 0,
+        "visited_ast_nodes": 2671,
+        "findings": 72,
+        "modules": 0,
+        "parse_failures": 0
+      },
+      "electron": {
+        "browser_windows": 0,
+        "explicit_web_preferences": 0,
+        "preload_entrypoints": 0,
+        "context_bridge_apis": 3,
+        "exposed_api_members": 0,
+        "ipc": {
+          "operations": 25,
+          "literal_channels": 1,
+          "dynamic_channel_operations": 24,
+          "renderer_transmissions": 20,
+          "renderer_listeners": 5,
+          "main_handlers": 0,
+          "paired_renderer_transmissions": 0,
+          "ambiguous_renderer_transmissions": 0,
+          "unpaired_literal_renderer_transmissions": 1
+        },
+        "sender_validation_observations": 0,
+        "utility_processes": 0,
+        "resolved_utility_entrypoints": 0,
+        "native_addon_bindings": 0,
+        "resolved_native_addon_bindings": 0
+      },
+      "coverage": {
+        "static_sources": {
+          "sources": 15922,
+          "unmeasured_sources": 0,
+          "syntax": {
+            "complete": 3,
+            "recovered": 0,
+            "failed": 0,
+            "not-examined": 15919
+          },
+          "semantics": {
+            "unknown_sources": 2,
+            "unexamined_sources": 15919
+          },
+          "examination": {
+            "complete": 3,
+            "limited": 0,
+            "not-examined": 15919
+          },
+          "electron_applicability": {
+            "observed": 2,
+            "unknown": 15920
+          }
+        },
+        "application": {
+          "status": "partial",
+          "truncated": false,
+          "omitted_count": null,
+          "limits": []
+        },
+        "semantic": {
+          "status": "partial",
+          "truncated": true,
+          "omitted_unknown_occurrences": [
+            {
+              "family": "boundary",
+              "reason": "incomplete-module",
+              "occurrences": 7637
+            },
+            {
+              "family": "call-flow",
+              "reason": "incomplete-module",
+              "occurrences": 7637
+            },
+            {
+              "family": "child-process",
+              "reason": "incomplete-module",
+              "occurrences": 7637
+            },
+            {
+              "family": "closure",
+              "reason": "incomplete-module",
+              "occurrences": 7637
+            },
+            {
+              "family": "configuration",
+              "reason": "incomplete-module",
+              "occurrences": 7637
+            },
+            {
+              "family": "data-flow",
+              "reason": "incomplete-module",
+              "occurrences": 7637
+            },
+            {
+              "family": "event",
+              "reason": "incomplete-module",
+              "occurrences": 7637
+            },
+            {
+              "family": "object-flow",
+              "reason": "incomplete-module",
+              "occurrences": 7638
+            },
+            {
+              "family": "promise-ownership",
+              "reason": "incomplete-module",
+              "occurrences": 7638
+            },
+            {
+              "family": "request",
+              "reason": "incomplete-module",
+              "occurrences": 7638
+            },
+            {
+              "family": "resource-lifecycle",
+              "reason": "incomplete-module",
+              "occurrences": 7638
+            },
+            {
+              "family": "timer",
+              "reason": "incomplete-module",
+              "occurrences": 7638
+            }
+          ],
+          "omitted_nodes": null,
+          "omitted_relations": null,
+          "limits": [
+            {
+              "name": "max_semantic_unknowns",
+              "value": 100000,
+              "unit": "items"
+            },
+            {
+              "name": "max_semantic_unknowns_per_file",
+              "value": 20000,
+              "unit": "items"
+            },
+            {
+              "name": "semantic_graph_file_unknown_ceiling",
+              "value": 20000,
+              "unit": "items"
+            },
+            {
+              "name": "semantic_graph_unknown_ceiling",
+              "value": 100000,
+              "unit": "items"
+            }
+          ],
+          "families": [
+            {
+              "family": "boundary",
+              "status": "partial",
+              "retained_relations": 1,
+              "omitted_relations": null,
+              "unknown_count": 8282
+            },
+            {
+              "family": "call-flow",
+              "status": "partial",
+              "retained_relations": 51,
+              "omitted_relations": null,
+              "unknown_count": 8462
+            },
+            {
+              "family": "child-process",
+              "status": "partial",
+              "retained_relations": 0,
+              "omitted_relations": null,
+              "unknown_count": 8282
+            },
+            {
+              "family": "closure",
+              "status": "partial",
+              "retained_relations": 127,
+              "omitted_relations": null,
+              "unknown_count": 8282
+            },
+            {
+              "family": "configuration",
+              "status": "partial",
+              "retained_relations": 0,
+              "omitted_relations": null,
+              "unknown_count": 8282
+            },
+            {
+              "family": "data-flow",
+              "status": "partial",
+              "retained_relations": 1172,
+              "omitted_relations": null,
+              "unknown_count": 8436
+            },
+            {
+              "family": "event",
+              "status": "partial",
+              "retained_relations": 6,
+              "omitted_relations": null,
+              "unknown_count": 8288
+            },
+            {
+              "family": "object-flow",
+              "status": "partial",
+              "retained_relations": 189,
+              "omitted_relations": null,
+              "unknown_count": 8551
+            },
+            {
+              "family": "promise-ownership",
+              "status": "partial",
+              "retained_relations": 27,
+              "omitted_relations": null,
+              "unknown_count": 8292
+            },
+            {
+              "family": "request",
+              "status": "partial",
+              "retained_relations": 0,
+              "omitted_relations": null,
+              "unknown_count": 8281
+            },
+            {
+              "family": "resource-lifecycle",
+              "status": "partial",
+              "retained_relations": 0,
+              "omitted_relations": null,
+              "unknown_count": 8281
+            },
+            {
+              "family": "timer",
+              "status": "partial",
+              "retained_relations": 0,
+              "omitted_relations": null,
+              "unknown_count": 8281
+            }
+          ]
+        },
+        "application_unknowns": 16932,
+        "semantic_unknowns": 100000
+      },
+      "limitation_count": 22
+    }
+  },
+  "confidence": "derived",
+  "authority": "shipped-artifact",
+  "environment": null,
+  "limitations": [
+    "Boundary extraction covers unshadowed JSON/global coercions plus parse and validation method candidates.",
+    "Caller-selected source analysis leaves 16932 inventoried files outside analysis scope. Inventory identity covers the complete artifact; relationships through unselected sources remain unknown.",
+    "Child-process extraction covers asynchronous node:child_process creation, literal argv/env/stdio options, exit/error listeners, and kill signals.",
+    "CommonJS and ESM binding relationships were recovered from inert syntax and resolved only within the inventoried artifact container.",
+    "Configuration extraction covers process.env, process.argv, node:fs reads, and direct logical defaults.",
+    "Dynamic IPC channel expressions remain unresolved and are never paired by textual similarity.",
+    "Electron API identity follows proven lexical module aliases and structurally verified module-namespace interop. Other reassignments, dynamic selections, and visibly overwritten namespace members are unresolved; missing findings do not establish absence. Arbitrary call side effects and runtime registration are not evaluated.",
+    "Electron relationships are derived from inert syntax; runtime registration, reachability, defaults, and enforcement remain unproven.",
+    "Event extraction covers EventEmitter-style literal registrations, removals, and dispatch candidates; dynamic names remain unknown.",
+    "Function fingerprints are static candidates; equal digests can remain ambiguous and do not prove behavioral equivalence.",
+    "Graph coverage is incomplete; unavailable facts remain explicit and must not be read as absence.",
+    "JavaScript and HTML were parsed as inert text; bundle bootstrap code was never executed.",
+    "Local data flow does not claim control-flow-sensitive reaching definitions or arbitrary dynamic property resolution.",
+    "Promise ownership covers explicit unshadowed Promise construction, static factories, aggregation, chaining, and await syntax only.",
+    "Request extraction covers fetch, WebSocket, node:http/node:https construction, direct option fields, and exact local response consumers.",
+    "Resource extraction covers built-in filesystem/network acquisition and exact local close/destroy/end handles.",
+    "Semantic unknown retention reached max_semantic_unknowns is 100000 (default 100000; an integer from 1 to 1000000). Set max_semantic_unknowns on the next analyze_javascript_application call (CLI: --max-semantic-unknowns). The change applies to that next analysis and does not restart the worker or the REA server. Raising it does not raise max_semantic_nodes, max_heap_mb, transfer ceilings, or the parent result budget. Coverage reports the same effective values as semantic_graph_unknown_ceiling and semantic_graph_file_unknown_ceiling. Omission coverage counts examined emission occurrences by family and reason, including repeats; it does not count unexamined source frontiers or distinct discarded identities.",
+    "Static imports, entrypoints, workers, endpoints, and storage relationships do not prove runtime execution.",
+    "Static paths and relationships may remain unresolved when expressions are dynamic or obfuscated.",
+    "The semantic graph contains static syntax observations and conservative relationship candidates; it does not claim runtime execution.",
+    "Timer extraction covers global or node:timers scheduling and exact local-handle cancellation.",
+    "Webpack/Rspack factories were recovered from AST literals; REA did not invoke push handlers or bundle bootstrap code."
+  ],
+  "relationship_coverage": null,
+  "locations": [
+    {
+      "kind": "artifact-path",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/macos/asar-extracted"
+    }
+  ],
+  "evidence_links": [
+    "ev_3225dd40332511ad9a5c229fe65c0bcb91c493caaac9ec0e5e91d30fc9ddd93d"
+  ]
+}

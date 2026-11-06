@@ -1,0 +1,92 @@
+[
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7e11ed0",
+    "mangled_address": "0x8e2065a",
+    "length": 17,
+    "mangled_hex": "01c9da78007901a7da7800016ada780047",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 1,
+        "target": "0x95ae124",
+        "resolved_context": "0x95ae124",
+        "label": "CodexRemoteThread.CodexRemoteToolActivityLabel"
+      },
+      {
+        "offset": 6,
+        "kind": 1,
+        "target": "0x95ae108",
+        "resolved_context": "0x95ae108",
+        "label": "CodexRemoteThread.CodexRemoteToolActivityRowStyle.Symbol"
+      },
+      {
+        "offset": 11,
+        "kind": 1,
+        "target": "0x95ae0d0",
+        "resolved_context": "0x95ae0d0",
+        "label": "CodexRemoteThread.ToolActivitySummaryRow"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7e12380",
+    "mangled_address": "0x8e237a6",
+    "length": 29,
+    "mangled_hex": "017da9780079015ba9780002f6ebca017901b8a578000113a978004747",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 1,
+        "target": "0x95ae124",
+        "resolved_context": "0x95ae124",
+        "label": "CodexRemoteThread.CodexRemoteToolActivityLabel"
+      },
+      {
+        "offset": 6,
+        "kind": 1,
+        "target": "0x95ae108",
+        "resolved_context": "0x95ae108",
+        "label": "CodexRemoteThread.CodexRemoteToolActivityRowStyle.Symbol"
+      },
+      {
+        "offset": 11,
+        "kind": 2,
+        "target": "0xaad23a8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_ConditionalContentVMn"
+      },
+      {
+        "offset": 17,
+        "kind": 1,
+        "target": "0x95add70",
+        "resolved_context": "0x95add70",
+        "label": "CodexRemoteThread.CodexRemoteFileChangeSummaryRowPart"
+      },
+      {
+        "offset": 22,
+        "kind": 1,
+        "target": "0x95ae0d0",
+        "resolved_context": "0x95ae0d0",
+        "label": "CodexRemoteThread.ToolActivitySummaryRow"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  }
+]

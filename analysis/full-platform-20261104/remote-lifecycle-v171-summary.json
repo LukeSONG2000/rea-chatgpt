@@ -1,0 +1,53 @@
+{
+  "status": "partial",
+  "authority": "independent local owner lifecycle and actual preserved renderer test",
+  "verified": [
+    "per-host authenticated capabilities and thread/list probe",
+    "original manager identity checked before connected result",
+    "unit test: late connect invalidated by disconnect, two-host isolation, epoch mismatch, reconnect and dispose",
+    "actual packaged UI sends setAutoConnect; service returns connected and later getState returns connected"
+  ],
+  "failedAcceptance": [
+    "actual original device card remains Disconnected; Connected UI assertion timed out in two preserved reports"
+  ],
+  "nextBoundary": "Trace original host registration/connection-state subscription and revision guards between setAutoConnect result and device card Jn(hostId); do not overwrite UI atoms to manufacture acceptance",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/remote-connections.mjs",
+      "sha256": "3e25fb31cd1ee179fd2a179b852e4767c15404729c8d8df1486bcf16a5809c1b"
+    },
+    {
+      "path": "implementation/desktop/native/main.cjs",
+      "sha256": "79a8e79db88f716066d0206c8c3e2ec180309f78b20390af5265a546f5fb999f"
+    },
+    {
+      "path": "implementation/desktop/native/original-remote-runtime.mjs",
+      "sha256": "c0a92108ad93dc35b74c7fa669f4ff331f98f12b070c22c1ab2a6b79b9b48009"
+    },
+    {
+      "path": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "536050b111e17af6cc52658abb1dc2fd014577e2e8f27a6be485bb703ac8178c"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-connect.cjs",
+      "sha256": "10118a5e5f0c2f7db3ad2fdc1163a2c37cde3bf4e71f2607611e71816d34667e"
+    }
+  ],
+  "reports": [
+    "remote-lifecycle-v171-unit-r2.json",
+    "remote-lifecycle-v171-catalog-unit.json",
+    "remote-lifecycle-v171-runtime.json",
+    "remote-lifecycle-v171-r2-runtime.json",
+    "remote-lifecycle-v171-cache-archive.json"
+  ],
+  "candidate": "implementation/desktop/dist/v171-r2-macos/REA ChatGPT Offline.app",
+  "rollback": "implementation/desktop/dist/v170-macos/REA ChatGPT Offline.app",
+  "limits": [
+    "v171 is not an accepted connection UI build",
+    "Windows v171 not built or executed",
+    "No full Remote task/approval/tool workflow acceptance",
+    "No real model calls in this batch",
+    "No iPhone or other surface acceptance added",
+    "automatic health-loss teardown and restart reconnect intent remain unimplemented"
+  ]
+}

@@ -1,0 +1,5161 @@
+{
+  "schema_version": 1,
+  "scope": "iOS293 independent static native metadata and packaged JS; no target execution",
+  "root_artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "bytes": 192662944,
+    "format": "Mach-O 64-bit"
+  },
+  "method": "Read-only LC_LOAD_DYLIB/LC_SYMTAB/Swift relative descriptor parsing; VM/file mappings checked through LC_SEGMENT_64; selected source byte anchors",
+  "evidence": [
+    {
+      "id": "I01",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "LC_LOAD_DYLIB",
+      "byte_offset": 5312,
+      "evidence_type": "official-artifact-observation",
+      "claim": "ChatGPT.framework declares dependency @rpath/OpenAIXPlat.framework/OpenAIXPlat",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "load_command": "0xc"
+    },
+    {
+      "id": "I02",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "LC_SYMTAB undefined symbols",
+      "byte_offset": 187397512,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Undefined symbol table contains Valdi-related native imports; no caller attribution",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "selected_imports": [
+        {
+          "name": "_OAIValdiVoiceDictationServiceMarshall",
+          "nlist_offset": 187474120,
+          "string_offset": 187814982,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OAIValdiVoiceDictationSessionMarshall",
+          "nlist_offset": 187474136,
+          "string_offset": 187815021,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_OAIValdiMetricsRegistration",
+          "nlist_offset": 187480616,
+          "string_offset": 187828288,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_OAIValdiVoiceDictationError",
+          "nlist_offset": 187480632,
+          "string_offset": 187828330,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiAttributedTextOnTapGestureRecognizer",
+          "nlist_offset": 187481224,
+          "string_offset": 187829534,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiCallbackNavigator",
+          "nlist_offset": 187481240,
+          "string_offset": 187829592,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiImage",
+          "nlist_offset": 187481256,
+          "string_offset": 187829631,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiImageView",
+          "nlist_offset": 187481272,
+          "string_offset": 187829658,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRootView",
+          "nlist_offset": 187481288,
+          "string_offset": 187829689,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntime",
+          "nlist_offset": 187481304,
+          "string_offset": 187829719,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeManager",
+          "nlist_offset": 187481320,
+          "string_offset": 187829748,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiScrollView",
+          "nlist_offset": 187481336,
+          "string_offset": 187829784,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiTextLayoutView",
+          "nlist_offset": 187481352,
+          "string_offset": 187829816,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiTextSelectionGroup",
+          "nlist_offset": 187481368,
+          "string_offset": 187829852,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiTextView",
+          "nlist_offset": 187481384,
+          "string_offset": 187829892,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiTouchGestureRecognizer",
+          "nlist_offset": 187481400,
+          "string_offset": 187829922,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiUndefinedValue",
+          "nlist_offset": 187481416,
+          "string_offset": 187829966,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiImageView",
+          "nlist_offset": 187484600,
+          "string_offset": 187836731,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRootView",
+          "nlist_offset": 187484616,
+          "string_offset": 187836766,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiScrollView",
+          "nlist_offset": 187484632,
+          "string_offset": 187836800,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiAssetFromImage",
+          "nlist_offset": 187485704,
+          "string_offset": 187839046,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiFunctionSafePerform",
+          "nlist_offset": 187485720,
+          "string_offset": 187839069,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiMarshallerCreate",
+          "nlist_offset": 187485736,
+          "string_offset": 187839097,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiMarshallerDestroy",
+          "nlist_offset": 187485752,
+          "string_offset": 187839122,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiMarshallerPushInt",
+          "nlist_offset": 187485768,
+          "string_offset": 187839148,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiMarshallerPushNull",
+          "nlist_offset": 187485784,
+          "string_offset": 187839174,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiMarshallerPushOpaque",
+          "nlist_offset": 187485800,
+          "string_offset": 187839201,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiMarshallerPushString",
+          "nlist_offset": 187485816,
+          "string_offset": 187839230,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiSVGRendererImageWithSVGData",
+          "nlist_offset": 187485832,
+          "string_offset": 187839259,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiSVGRendererIsSVGData",
+          "nlist_offset": 187485848,
+          "string_offset": 187839295,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiTraceInstantWithArgs",
+          "nlist_offset": 187485864,
+          "string_offset": 187839324,
+          "library_ordinal": 2
+        },
+        {
+          "name": "_SCValdiTraceWithArgs",
+          "nlist_offset": 187485880,
+          "string_offset": 187839353,
+          "library_ordinal": 2
+        }
+      ],
+      "matching_import_count": 32
+    },
+    {
+      "id": "I03",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "ChatGPTMessages.MessagesViewController",
+      "byte_offset": 157392868,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Swift type descriptor owns listed field descriptors; field names are not method behavior",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "type_section": "__swift5_types",
+      "type_entry_offset": 164902172,
+      "field_descriptor_offset": 162276324,
+      "module_chain_resolved": true,
+      "fields": [
+        {
+          "name": "viewModel",
+          "record_offset": 162276340,
+          "name_offset": 159560164
+        },
+        {
+          "name": "hostingContext",
+          "record_offset": 162276352,
+          "name_offset": 159560636
+        },
+        {
+          "name": "$__lazy_storage_$_collectionViewController",
+          "record_offset": 162276364,
+          "name_offset": 159560656
+        },
+        {
+          "name": "delegate",
+          "record_offset": 162276376,
+          "name_offset": 159556521
+        },
+        {
+          "name": "_didUpdateItems",
+          "record_offset": 162276388,
+          "name_offset": 159560699
+        },
+        {
+          "name": "avatarFocusCouplingState",
+          "record_offset": 162276400,
+          "name_offset": 159560720
+        },
+        {
+          "name": "hapticEngine",
+          "record_offset": 162276412,
+          "name_offset": 159559506
+        },
+        {
+          "name": "shouldAlignCoTV5FinalResponseAfterReasoning",
+          "record_offset": 162276424,
+          "name_offset": 159560752
+        },
+        {
+          "name": "olderPageLoadIndicator",
+          "record_offset": 162276436,
+          "name_offset": 159560800
+        },
+        {
+          "name": "$__lazy_storage_$_composerPinnedAdController",
+          "record_offset": 162276448,
+          "name_offset": 159560832
+        },
+        {
+          "name": "olderPageLoadTask",
+          "record_offset": 162276460,
+          "name_offset": 159560880
+        },
+        {
+          "name": "lastUserMessageContentHeight",
+          "record_offset": 162276472,
+          "name_offset": 159560912
+        },
+        {
+          "name": "lastAssistantMessageContentHeight",
+          "record_offset": 162276484,
+          "name_offset": 159560944
+        },
+        {
+          "name": "pendingMessagesData",
+          "record_offset": 162276496,
+          "name_offset": 159560992
+        },
+        {
+          "name": "textFinder",
+          "record_offset": 162276508,
+          "name_offset": 159560249
+        },
+        {
+          "name": "conversationState",
+          "record_offset": 162276520,
+          "name_offset": 159561024
+        },
+        {
+          "name": "additionalInsets",
+          "record_offset": 162276532,
+          "name_offset": 159560192
+        },
+        {
+          "name": "adjustedSafeAreaInsets",
+          "record_offset": 162276544,
+          "name_offset": 159561056
+        },
+        {
+          "name": "scrollInsetsLocked",
+          "record_offset": 162276556,
+          "name_offset": 159561088
+        },
+        {
+          "name": "scrollOffscreenCueActive",
+          "record_offset": 162276568,
+          "name_offset": 159560224
+        },
+        {
+          "name": "isVoiceActiveOrConnecting",
+          "record_offset": 162276580,
+          "name_offset": 159561120
+        },
+        {
+          "name": "presentationDismissalCoordinator",
+          "record_offset": 162276592,
+          "name_offset": 159561152
+        },
+        {
+          "name": "advertiserBrowserActivity",
+          "record_offset": 162276604,
+          "name_offset": 159561200
+        },
+        {
+          "name": "browserPolicy",
+          "record_offset": 162276616,
+          "name_offset": 159561226
+        },
+        {
+          "name": "focusMode",
+          "record_offset": 162276628,
+          "name_offset": 159561240
+        },
+        {
+          "name": "mode",
+          "record_offset": 162276640,
+          "name_offset": 159560174
+        },
+        {
+          "name": "newChatPullConfiguration",
+          "record_offset": 162276652,
+          "name_offset": 159560272
+        },
+        {
+          "name": "prefersSoftTopEdge",
+          "record_offset": 162276664,
+          "name_offset": 159560368
+        },
+        {
+          "name": "conversationPagingConfiguration",
+          "record_offset": 162276676,
+          "name_offset": 159560304
+        },
+        {
+          "name": "fontSizeSetting",
+          "record_offset": 162276688,
+          "name_offset": 159561250
+        },
+        {
+          "name": "inputHeight",
+          "record_offset": 162276700,
+          "name_offset": 159561266
+        },
+        {
+          "name": "_inputFocused",
+          "record_offset": 162276712,
+          "name_offset": 159561278
+        },
+        {
+          "name": "pendingCoTV5FinalResponseID",
+          "record_offset": 162276724,
+          "name_offset": 159561296
+        },
+        {
+          "name": "streamingHeightRetention",
+          "record_offset": 162276736,
+          "name_offset": 159561328
+        },
+        {
+          "name": "didFindFirstResponderInTranscript",
+          "record_offset": 162276748,
+          "name_offset": 159561360
+        },
+        {
+          "name": "$__lazy_storage_$_stickyHeaderManagerReference",
+          "record_offset": 162276760,
+          "name_offset": 159561408
+        },
+        {
+          "name": "valdiComponentCache",
+          "record_offset": 162276772,
+          "name_offset": 159561456
+        },
+        {
+          "name": "retainedMessageRows",
+          "record_offset": 162276784,
+          "name_offset": 159561488
+        },
+        {
+          "name": "applicationStateObserver",
+          "record_offset": 162276796,
+          "name_offset": 159561520
+        },
+        {
+          "name": "$__lazy_storage_$_conversationFramePerformanceTracker",
+          "record_offset": 162276808,
+          "name_offset": 159561552
+        },
+        {
+          "name": "conversationStreamingMarkerIntervalID",
+          "record_offset": 162276820,
+          "name_offset": 159561616
+        },
+        {
+          "name": "conversationScrollMarkerIntervalID",
+          "record_offset": 162276832,
+          "name_offset": 159561664
+        },
+        {
+          "name": "hasAppeared",
+          "record_offset": 162276844,
+          "name_offset": 159557709
+        },
+        {
+          "name": "$__lazy_storage_$_followupAdPlacementController",
+          "record_offset": 162276856,
+          "name_offset": 159561712
+        },
+        {
+          "name": "isInitialMessageRevealPending",
+          "record_offset": 162276868,
+          "name_offset": 159561760
+        },
+        {
+          "name": "isDisappearingForPresentation",
+          "record_offset": 162276880,
+          "name_offset": 159561792
+        },
+        {
+          "name": "isParagenViewportActive",
+          "record_offset": 162276892,
+          "name_offset": 159561824
+        },
+        {
+          "name": "paragenDismissalObserver",
+          "record_offset": 162276904,
+          "name_offset": 159561856
+        },
+        {
+          "name": "statsigFeatureFlagManager",
+          "record_offset": 162276916,
+          "name_offset": 159561888
+        },
+        {
+          "name": "lastUserMessageID",
+          "record_offset": 162276928,
+          "name_offset": 159561920
+        },
+        {
+          "name": "lastAdjacentMessageScrollTarget",
+          "record_offset": 162276940,
+          "name_offset": 159561952
+        },
+        {
+          "name": "pendingAdRevealView",
+          "record_offset": 162276952,
+          "name_offset": 159561984
+        },
+        {
+          "name": "pendingAdRevealViewModel",
+          "record_offset": 162276964,
+          "name_offset": 159562016
+        },
+        {
+          "name": "isPendingAdRevealScheduled",
+          "record_offset": 162276976,
+          "name_offset": 159562048
+        },
+        {
+          "name": "revealedPendingAdMessageID",
+          "record_offset": 162276988,
+          "name_offset": 159562080
+        },
+        {
+          "name": "initialMessageAnchor",
+          "record_offset": 162277000,
+          "name_offset": 159562112
+        },
+        {
+          "name": "lastSeenContentSizeHeight",
+          "record_offset": 162277012,
+          "name_offset": 159562144
+        },
+        {
+          "name": "visibilityContainerBoundsInsetsSource",
+          "record_offset": 162277024,
+          "name_offset": 159557728
+        },
+        {
+          "name": "$__lazy_storage_$_unfocusTapRecognizer",
+          "record_offset": 162277036,
+          "name_offset": 159562176
+        },
+        {
+          "name": "textSelectionKeyboardPlaceholderHeight",
+          "record_offset": 162277048,
+          "name_offset": 159562224
+        },
+        {
+          "name": "$__lazy_storage_$_keepTextInsetsGestureRecognizer",
+          "record_offset": 162277060,
+          "name_offset": 159562272
+        },
+        {
+          "name": "$__lazy_storage_$_keyboardInsetView",
+          "record_offset": 162277072,
+          "name_offset": 159562336
+        },
+        {
+          "name": "$__lazy_storage_$_keyboardInsetHeightConstraint",
+          "record_offset": 162277084,
+          "name_offset": 159562384
+        },
+        {
+          "name": "imageGenerationPresentationPreparation",
+          "record_offset": 162277096,
+          "name_offset": 159562432
+        },
+        {
+          "name": "imageGenerationPresentationPreparationRevision",
+          "record_offset": 162277108,
+          "name_offset": 159562480
+        },
+        {
+          "name": "imageGenerationPresentationKeyboardObserver",
+          "record_offset": 162277120,
+          "name_offset": 159562528
+        },
+        {
+          "name": "imageGenerationPresentationLayoutObserver",
+          "record_offset": 162277132,
+          "name_offset": 159562576
+        },
+        {
+          "name": "isUpdatingImageGenerationPresentationPreparationLayout",
+          "record_offset": 162277144,
+          "name_offset": 159562624
+        },
+        {
+          "name": "$__lazy_storage_$_newChatPullController",
+          "record_offset": 162277156,
+          "name_offset": 159562688
+        },
+        {
+          "name": "olderChatPullController",
+          "record_offset": 162277168,
+          "name_offset": 159562736
+        },
+        {
+          "name": "olderChatPullTracking",
+          "record_offset": 162277180,
+          "name_offset": 159562768
+        },
+        {
+          "name": "isRevealingConversationPagingContent",
+          "record_offset": 162277192,
+          "name_offset": 159562800
+        },
+        {
+          "name": "$__lazy_storage_$_streamingHeightRetentionEnabled",
+          "record_offset": 162277204,
+          "name_offset": 159562848
+        },
+        {
+          "name": "$__lazy_storage_$_firstAnswerScrollHandoffEnabled",
+          "record_offset": 162277216,
+          "name_offset": 159562912
+        },
+        {
+          "name": "$__lazy_storage_$_initialMessagesFadeDuration",
+          "record_offset": 162277228,
+          "name_offset": 159562976
+        },
+        {
+          "name": "$__lazy_storage_$_isManualScrollPositionPreservationDisabled",
+          "record_offset": 162277240,
+          "name_offset": 159563024
+        },
+        {
+          "name": "$__lazy_storage_$_isConversationPDFScreenshotsDisabled",
+          "record_offset": 162277252,
+          "name_offset": 159563088
+        },
+        {
+          "name": "$__lazy_storage_$_conversationTimestampSeparatorsEnabled",
+          "record_offset": 162277264,
+          "name_offset": 159563152
+        },
+        {
+          "name": "$__lazy_storage_$_screenshotServiceDelegate",
+          "record_offset": 162277276,
+          "name_offset": 159563216
+        },
+        {
+          "name": "transitionNamespace",
+          "record_offset": 162277288,
+          "name_offset": 159559920
+        },
+        {
+          "name": "bag",
+          "record_offset": 162277300,
+          "name_offset": 159556841
+        },
+        {
+          "name": "retainedHiddenReasoningHeadingID",
+          "record_offset": 162277312,
+          "name_offset": 159563264
+        },
+        {
+          "name": "paragenInteractionState",
+          "record_offset": 162277324,
+          "name_offset": 159563312
+        },
+        {
+          "name": "triggerUserMessageCollapse",
+          "record_offset": 162277336,
+          "name_offset": 159563344
+        },
+        {
+          "name": "stagedMessagesData",
+          "record_offset": 162277348,
+          "name_offset": 159563376
+        },
+        {
+          "name": "pendingInputAlignment",
+          "record_offset": 162277360,
+          "name_offset": 159563408
+        },
+        {
+          "name": "isResizingPendingInput",
+          "record_offset": 162277372,
+          "name_offset": 159563440
+        },
+        {
+          "name": "pendingChangedMessageIDs",
+          "record_offset": 162277384,
+          "name_offset": 159563472
+        },
+        {
+          "name": "pendingWritingBlockPresentationChanges",
+          "record_offset": 162277396,
+          "name_offset": 159563504
+        },
+        {
+          "name": "stagedSendAdditionalHeight",
+          "record_offset": 162277408,
+          "name_offset": 159563552
+        },
+        {
+          "name": "keyboardWasUpWhenDragBegan",
+          "record_offset": 162277420,
+          "name_offset": 159563584
+        },
+        {
+          "name": "collectionWindow",
+          "record_offset": 162277432,
+          "name_offset": 159563616
+        },
+        {
+          "name": "firstRenderedAssistantMessageID",
+          "record_offset": 162277444,
+          "name_offset": 159563648
+        },
+        {
+          "name": "collectionWindowItems",
+          "record_offset": 162277456,
+          "name_offset": 159563680
+        },
+        {
+          "name": "canLoadOlderItems",
+          "record_offset": 162277468,
+          "name_offset": 159563712
+        },
+        {
+          "name": "conversationTimestampSeparatorStrategy",
+          "record_offset": 162277480,
+          "name_offset": 159563744
+        },
+        {
+          "name": "previousMessageIDsByID",
+          "record_offset": 162277492,
+          "name_offset": 159563792
+        },
+        {
+          "name": "sendMorphController",
+          "record_offset": 162277504,
+          "name_offset": 159563824
+        },
+        {
+          "name": "morphResponseAlignedUserMessageID",
+          "record_offset": 162277516,
+          "name_offset": 159563856
+        },
+        {
+          "name": "pendingImmediateAttachmentMorph",
+          "record_offset": 162277528,
+          "name_offset": 159563904
+        },
+        {
+          "name": "resolvedFocusMode",
+          "record_offset": 162277540,
+          "name_offset": 159563936
+        },
+        {
+          "name": "userSentMessageAnimation",
+          "record_offset": 162277552,
+          "name_offset": 159563968
+        },
+        {
+          "name": "isVoiceActive",
+          "record_offset": 162277564,
+          "name_offset": 159563993
+        },
+        {
+          "name": "isPreparingInitialViewport",
+          "record_offset": 162277576,
+          "name_offset": 159564016
+        },
+        {
+          "name": "oAuthStatus",
+          "record_offset": 162277588,
+          "name_offset": 159564043
+        },
+        {
+          "name": "scrollViewDistanceFromEdges",
+          "record_offset": 162277600,
+          "name_offset": 159564064
+        }
+      ]
+    },
+    {
+      "id": "I04",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "ChatGPTMessages.MessagesViewModel",
+      "byte_offset": 157393512,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Swift type descriptor owns listed field descriptors; field names are not method behavior",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "type_section": "__swift5_types",
+      "type_entry_offset": 164902200,
+      "field_descriptor_offset": 162277868,
+      "module_chain_resolved": true,
+      "fields": [
+        {
+          "name": "advertiserBrowserSession",
+          "record_offset": 162277884,
+          "name_offset": 159564160
+        },
+        {
+          "name": "geometrySource",
+          "record_offset": 162277896,
+          "name_offset": 159564185
+        },
+        {
+          "name": "accountID",
+          "record_offset": 162277908,
+          "name_offset": 159564200
+        },
+        {
+          "name": "_presentedImageGalleryViewModel",
+          "record_offset": 162277920,
+          "name_offset": 159564224
+        },
+        {
+          "name": "_messageRowStyle",
+          "record_offset": 162277932,
+          "name_offset": 159564256
+        },
+        {
+          "name": "conversationCoordinator",
+          "record_offset": 162277944,
+          "name_offset": 159564288
+        },
+        {
+          "name": "$__lazy_storage_$_scrollToBottomProvider",
+          "record_offset": 162277956,
+          "name_offset": 159564320
+        },
+        {
+          "name": "_visibleMessageIDsProvider",
+          "record_offset": 162277968,
+          "name_offset": 159564368
+        },
+        {
+          "name": "openURL",
+          "record_offset": 162277980,
+          "name_offset": 159564395
+        },
+        {
+          "name": "browserURLHandling",
+          "record_offset": 162277992,
+          "name_offset": 159564416
+        },
+        {
+          "name": "_resolveWindow",
+          "record_offset": 162278004,
+          "name_offset": 159564435
+        },
+        {
+          "name": "_resolveViewController",
+          "record_offset": 162278016,
+          "name_offset": 159564464
+        },
+        {
+          "name": "resolveSendMorphOverlayView",
+          "record_offset": 162278028,
+          "name_offset": 159564496
+        },
+        {
+          "name": "resolveReadingPosition",
+          "record_offset": 162278040,
+          "name_offset": 159564528
+        },
+        {
+          "name": "_resolveParagenInteractionMetadata",
+          "record_offset": 162278052,
+          "name_offset": 159564560
+        },
+        {
+          "name": "_messagesData",
+          "record_offset": 162278064,
+          "name_offset": 159564595
+        },
+        {
+          "name": "_isSpawnCommentaryVisible",
+          "record_offset": 162278076,
+          "name_offset": 159564624
+        },
+        {
+          "name": "_inputHeight",
+          "record_offset": 162278088,
+          "name_offset": 159564650
+        },
+        {
+          "name": "_inlineWidgetOwnsKeyboardFocus",
+          "record_offset": 162278100,
+          "name_offset": 159564672
+        },
+        {
+          "name": "_hapticFadeInDisabled",
+          "record_offset": 162278112,
+          "name_offset": 159564704
+        },
+        {
+          "name": "_askUserInputPresentation",
+          "record_offset": 162278124,
+          "name_offset": 159564736
+        },
+        {
+          "name": "originalMessageRowStyle",
+          "record_offset": 162278136,
+          "name_offset": 159564768
+        },
+        {
+          "name": "messageInputViewModel",
+          "record_offset": 162278148,
+          "name_offset": 159564800
+        },
+        {
+          "name": "enableSendAnimation",
+          "record_offset": 162278160,
+          "name_offset": 159564832
+        },
+        {
+          "name": "_presentationQueue",
+          "record_offset": 162278172,
+          "name_offset": 159564864
+        },
+        {
+          "name": "_fontSize",
+          "record_offset": 162278184,
+          "name_offset": 159564883
+        },
+        {
+          "name": "_triggerFocusMode",
+          "record_offset": 162278196,
+          "name_offset": 159564896
+        },
+        {
+          "name": "_triggerScroll",
+          "record_offset": 162278208,
+          "name_offset": 159564914
+        },
+        {
+          "name": "_messagesCanScrollToEdges",
+          "record_offset": 162278220,
+          "name_offset": 159564944
+        },
+        {
+          "name": "onAvatarScrollRubberBandDistanceChanged",
+          "record_offset": 162278232,
+          "name_offset": 159564976
+        },
+        {
+          "name": "_triggerMessageRowViewAction",
+          "record_offset": 162278244,
+          "name_offset": 159565024
+        },
+        {
+          "name": "$__lazy_storage_$_isCommerceProductMultiselectEnabled",
+          "record_offset": 162278256,
+          "name_offset": 159565056
+        },
+        {
+          "name": "_isPreparingInitialMessagePresentation",
+          "record_offset": 162278268,
+          "name_offset": 159565120
+        },
+        {
+          "name": "_isInitialMessageDataReady",
+          "record_offset": 162278280,
+          "name_offset": 159565168
+        },
+        {
+          "name": "_isPreparingInitialContent",
+          "record_offset": 162278292,
+          "name_offset": 159565200
+        },
+        {
+          "name": "$__lazy_storage_$_initialBottomScrollSettlingEnabled",
+          "record_offset": 162278304,
+          "name_offset": 159565232
+        },
+        {
+          "name": "_userSignalRatingPresentation",
+          "record_offset": 162278316,
+          "name_offset": 159565296
+        },
+        {
+          "name": "_browserAuthPresentation",
+          "record_offset": 162278328,
+          "name_offset": 159565328
+        },
+        {
+          "name": "directMessageShareHandler",
+          "record_offset": 162278340,
+          "name_offset": 159565360
+        },
+        {
+          "name": "prepareInitialViewport",
+          "record_offset": 162278352,
+          "name_offset": 159565392
+        },
+        {
+          "name": "receiverFollowupShareID",
+          "record_offset": 162278364,
+          "name_offset": 159565424
+        },
+        {
+          "name": "browserAuthPresentationState",
+          "record_offset": 162278376,
+          "name_offset": 159565456
+        },
+        {
+          "name": "browserAuthEntries",
+          "record_offset": 162278388,
+          "name_offset": 159565488
+        },
+        {
+          "name": "premiumOnboardingSubmissionTask",
+          "record_offset": 162278400,
+          "name_offset": 159565520
+        },
+        {
+          "name": "_sourcesPresentationQueue",
+          "record_offset": 162278412,
+          "name_offset": 159565552
+        },
+        {
+          "name": "pendingSourcesNavigation",
+          "record_offset": 162278424,
+          "name_offset": 159565584
+        },
+        {
+          "name": "pendingVoiceBrowserAuthMessageID",
+          "record_offset": 162278436,
+          "name_offset": 159565616
+        },
+        {
+          "name": "$__lazy_storage_$_sendAnimationStyle",
+          "record_offset": 162278448,
+          "name_offset": 159565664
+        },
+        {
+          "name": "$__lazy_storage_$_textFadeAnimatorConfiguration",
+          "record_offset": 162278460,
+          "name_offset": 159565712
+        },
+        {
+          "name": "$__lazy_storage_$_typingDotAccentColorEnabled",
+          "record_offset": 162278472,
+          "name_offset": 159565760
+        },
+        {
+          "name": "_anchor",
+          "record_offset": 162278484,
+          "name_offset": 159565806
+        },
+        {
+          "name": "_visibleMessage",
+          "record_offset": 162278496,
+          "name_offset": 159565814
+        },
+        {
+          "name": "_conversationState",
+          "record_offset": 162278508,
+          "name_offset": 159565840
+        },
+        {
+          "name": "_errorRowError",
+          "record_offset": 162278520,
+          "name_offset": 159565859
+        },
+        {
+          "name": "_screenLoadIntervalID",
+          "record_offset": 162278532,
+          "name_offset": 159565888
+        },
+        {
+          "name": "_model",
+          "record_offset": 162278544,
+          "name_offset": 159565910
+        },
+        {
+          "name": "_chatContainsAsyncTasks",
+          "record_offset": 162278556,
+          "name_offset": 159565920
+        },
+        {
+          "name": "_projectID",
+          "record_offset": 162278568,
+          "name_offset": 159565944
+        },
+        {
+          "name": "_canSaveMessages",
+          "record_offset": 162278580,
+          "name_offset": 159565968
+        },
+        {
+          "name": "_latestMessageIDs",
+          "record_offset": 162278592,
+          "name_offset": 159566000
+        },
+        {
+          "name": "_coordinatorIsStreaming",
+          "record_offset": 162278604,
+          "name_offset": 159566032
+        },
+        {
+          "name": "_paragenMessageIDs",
+          "record_offset": 162278616,
+          "name_offset": 159566064
+        },
+        {
+          "name": "_conversationHasCanvas",
+          "record_offset": 162278628,
+          "name_offset": 159566096
+        },
+        {
+          "name": "_handledBrowserAuthMessageIDs",
+          "record_offset": 162278640,
+          "name_offset": 159566128
+        },
+        {
+          "name": "_messagesCanScrollToBottom",
+          "record_offset": 162278652,
+          "name_offset": 159566160
+        },
+        {
+          "name": "_oAuthStatus",
+          "record_offset": 162278664,
+          "name_offset": 159566187
+        },
+        {
+          "name": "_themeColor",
+          "record_offset": 162278676,
+          "name_offset": 159566200
+        },
+        {
+          "name": "_gizmoIsUnreviewable",
+          "record_offset": 162278688,
+          "name_offset": 159566224
+        },
+        {
+          "name": "_isHealthConversation",
+          "record_offset": 162278700,
+          "name_offset": 159566256
+        },
+        {
+          "name": "_userSentMessageAnimation",
+          "record_offset": 162278712,
+          "name_offset": 159566288
+        },
+        {
+          "name": "_shoppingProductSelectionNavigationEnabled",
+          "record_offset": 162278724,
+          "name_offset": 159566320
+        },
+        {
+          "name": "_modelRateLimits",
+          "record_offset": 162278736,
+          "name_offset": 159566368
+        },
+        {
+          "name": "_orderedCategoriesAvailableForMessageReroll",
+          "record_offset": 162278748,
+          "name_offset": 159566400
+        },
+        {
+          "name": "$__lazy_storage_$_statsigFeatureFlagManager",
+          "record_offset": 162278760,
+          "name_offset": 159566448
+        },
+        {
+          "name": "$__lazy_storage_$_voiceCoordinator",
+          "record_offset": 162278772,
+          "name_offset": 159566496
+        },
+        {
+          "name": "$__lazy_storage_$_reconfigureChangedMessagesDisabled",
+          "record_offset": 162278784,
+          "name_offset": 159566544
+        },
+        {
+          "name": "$__lazy_storage_$_askUserInputEnabled",
+          "record_offset": 162278796,
+          "name_offset": 159566608
+        },
+        {
+          "name": "$__lazy_storage_$_nativeRequestUserInputEnabled",
+          "record_offset": 162278808,
+          "name_offset": 159566656
+        },
+        {
+          "name": "$__lazy_storage_$_disableEmojiScrubbing",
+          "record_offset": 162278820,
+          "name_offset": 159566704
+        },
+        {
+          "name": "$__lazy_storage_$_emailRetrievalEnabled",
+          "record_offset": 162278832,
+          "name_offset": 159566752
+        },
+        {
+          "name": "$__lazy_storage_$_emailHTMLPreviewEnabled",
+          "record_offset": 162278844,
+          "name_offset": 159566800
+        },
+        {
+          "name": "$__lazy_storage_$_conversationScreenshotSignalDisabled",
+          "record_offset": 162278856,
+          "name_offset": 159566848
+        },
+        {
+          "name": "$__lazy_storage_$_conversationProductSelectionStore",
+          "record_offset": 162278868,
+          "name_offset": 159566912
+        },
+        {
+          "name": "memoryCitationMetadataUpdateTaskSlot",
+          "record_offset": 162278880,
+          "name_offset": 159566976
+        },
+        {
+          "name": "memoryCitationExperimentConfig",
+          "record_offset": 162278892,
+          "name_offset": 159567024
+        },
+        {
+          "name": "_isConsumerLockdownModeEnabledForConversation",
+          "record_offset": 162278904,
+          "name_offset": 159567056
+        },
+        {
+          "name": "conversationPerformanceMetrics",
+          "record_offset": 162278916,
+          "name_offset": 159557264
+        },
+        {
+          "name": "immediateMorphSubmissionFinished",
+          "record_offset": 162278928,
+          "name_offset": 159567104
+        },
+        {
+          "name": "$__lazy_storage_$_morphEarlyOutgoingTextRowEnabled",
+          "record_offset": 162278940,
+          "name_offset": 159567152
+        },
+        {
+          "name": "latestFlashcardEditIDs",
+          "record_offset": 162278952,
+          "name_offset": 159567216
+        },
+        {
+          "name": "pendingFlashcardEdits",
+          "record_offset": 162278964,
+          "name_offset": 159567248
+        },
+        {
+          "name": "savingFlashcardPresentations",
+          "record_offset": 162278976,
+          "name_offset": 159567280
+        },
+        {
+          "name": "pendingFlashcardOpen",
+          "record_offset": 162278988,
+          "name_offset": 159567312
+        },
+        {
+          "name": "flashcardContentSyncGate",
+          "record_offset": 162279000,
+          "name_offset": 159567344
+        },
+        {
+          "name": "flashcardContentSyncErrorBannerID",
+          "record_offset": 162279012,
+          "name_offset": 159567376
+        },
+        {
+          "name": "$__lazy_storage_$_accountDataSource",
+          "record_offset": 162279024,
+          "name_offset": 159567424
+        },
+        {
+          "name": "$__lazy_storage_$_experimentManager",
+          "record_offset": 162279036,
+          "name_offset": 159567472
+        },
+        {
+          "name": "$__lazy_storage_$_isSpawnCommentaryEnabled",
+          "record_offset": 162279048,
+          "name_offset": 159567520
+        },
+        {
+          "name": "spawnCommentaryInput",
+          "record_offset": 162279060,
+          "name_offset": 159567568
+        },
+        {
+          "name": "messageRowViewModels",
+          "record_offset": 162279072,
+          "name_offset": 159567600
+        },
+        {
+          "name": "navigationHandler",
+          "record_offset": 162279084,
+          "name_offset": 159567632
+        },
+        {
+          "name": "$__lazy_storage_$_sharedMessageRowSharedState",
+          "record_offset": 162279096,
+          "name_offset": 159567664
+        },
+        {
+          "name": "editedMessageID",
+          "record_offset": 162279108,
+          "name_offset": 159567710
+        },
+        {
+          "name": "dilWidgetAnalyticsSubject",
+          "record_offset": 162279120,
+          "name_offset": 159567728
+        },
+        {
+          "name": "readAloudModel",
+          "record_offset": 162279132,
+          "name_offset": 159567754
+        },
+        {
+          "name": "$__lazy_storage_$_disableUnclippedDILImageCarousel",
+          "record_offset": 162279144,
+          "name_offset": 159567776
+        },
+        {
+          "name": "$__lazy_storage_$_messagesHostingTraitBoundaryEnabled",
+          "record_offset": 162279156,
+          "name_offset": 159567840
+        },
+        {
+          "name": "_isVoiceActive",
+          "record_offset": 162279168,
+          "name_offset": 159567894
+        },
+        {
+          "name": "$__lazy_storage_$_elevatedPresentation",
+          "record_offset": 162279180,
+          "name_offset": 159567920
+        },
+        {
+          "name": "paragenViewportContext",
+          "record_offset": 162279192,
+          "name_offset": 159567968
+        },
+        {
+          "name": "_isTemporaryChat",
+          "record_offset": 162279204,
+          "name_offset": 159568000
+        },
+        {
+          "name": "$__lazy_storage_$_disableSharePopoverLayoutFix",
+          "record_offset": 162279216,
+          "name_offset": 159568032
+        },
+        {
+          "name": "_dilPresentationEnvironment",
+          "record_offset": 162279228,
+          "name_offset": 159568080
+        },
+        {
+          "name": "isAwaitingInitialComponents",
+          "record_offset": 162279240,
+          "name_offset": 159568112
+        },
+        {
+          "name": "pendingInitialContent",
+          "record_offset": 162279252,
+          "name_offset": 159568144
+        },
+        {
+          "name": "initialMessagePresentationTargetID",
+          "record_offset": 162279264,
+          "name_offset": 159568176
+        },
+        {
+          "name": "initialMarkdownContentAnimationMessageID",
+          "record_offset": 162279276,
+          "name_offset": 159568224
+        },
+        {
+          "name": "pendingPreparedSubmissions",
+          "record_offset": 162279288,
+          "name_offset": 159568272
+        },
+        {
+          "name": "isSubmittingPreparedSubmission",
+          "record_offset": 162279300,
+          "name_offset": 159568304
+        },
+        {
+          "name": "_isSubmittingAutomation",
+          "record_offset": 162279312,
+          "name_offset": 159568336
+        },
+        {
+          "name": "preparedSubmissionIsBlocked",
+          "record_offset": 162279324,
+          "name_offset": 159568368
+        },
+        {
+          "name": "deferredSitesEditTarget",
+          "record_offset": 162279336,
+          "name_offset": 159568400
+        },
+        {
+          "name": "resolvedConversationPerformanceExperimentTreatments",
+          "record_offset": 162279348,
+          "name_offset": 159568432
+        },
+        {
+          "name": "$__lazy_storage_$_isConversationalPremiumOnboardingEnabled",
+          "record_offset": 162279360,
+          "name_offset": 159568496
+        },
+        {
+          "name": "museumTypeEnabled",
+          "record_offset": 162279372,
+          "name_offset": 159568560
+        },
+        {
+          "name": "$__lazy_storage_$_messageReactionCoordinator",
+          "record_offset": 162279384,
+          "name_offset": 159568592
+        },
+        {
+          "name": "$__lazy_storage_$_userMochis",
+          "record_offset": 162279396,
+          "name_offset": 159568640
+        },
+        {
+          "name": "$__lazy_storage_$_emailHTMLImagesEnabled",
+          "record_offset": 162279408,
+          "name_offset": 159568672
+        },
+        {
+          "name": "$__lazy_storage_$_markdownTextRenderingConfiguration",
+          "record_offset": 162279420,
+          "name_offset": 159568720
+        },
+        {
+          "name": "$__lazy_storage_$_virtualTryOnStore",
+          "record_offset": 162279432,
+          "name_offset": 159568784
+        },
+        {
+          "name": "$__lazy_storage_$_writingBlockSuggestedFollowupsEnabledUpdates",
+          "record_offset": 162279444,
+          "name_offset": 159568832
+        },
+        {
+          "name": "paragenExposureState",
+          "record_offset": 162279456,
+          "name_offset": 159568896
+        },
+        {
+          "name": "observedParagenPresentationID",
+          "record_offset": 162279468,
+          "name_offset": 159568928
+        },
+        {
+          "name": "$__lazy_storage_$_inlineWidgetKeyboardDismissalSubject",
+          "record_offset": 162279480,
+          "name_offset": 159568960
+        },
+        {
+          "name": "inlineKeyboardFocusedMessageID",
+          "record_offset": 162279492,
+          "name_offset": 159569024
+        },
+        {
+          "name": "_pendingParagenEditSeeAnotherVersionPromptMessageID",
+          "record_offset": 162279504,
+          "name_offset": 159569056
+        },
+        {
+          "name": "_isViewingPendingParagenEditAlternative",
+          "record_offset": 162279516,
+          "name_offset": 159569120
+        },
+        {
+          "name": "_paragenEditComparisonState",
+          "record_offset": 162279528,
+          "name_offset": 159569168
+        },
+        {
+          "name": "paragenEditComparisonPreviousAnchor",
+          "record_offset": 162279540,
+          "name_offset": 159569200
+        },
+        {
+          "name": "rewriteButtonShownPromptMessageIDs",
+          "record_offset": 162279552,
+          "name_offset": 159569248
+        },
+        {
+          "name": "placesFirstPinMetricTracker",
+          "record_offset": 162279564,
+          "name_offset": 159569296
+        },
+        {
+          "name": "submitContextTracker",
+          "record_offset": 162279576,
+          "name_offset": 159569328
+        },
+        {
+          "name": "outgoingMessageAnimationReadinessMetricTracker",
+          "record_offset": 162279588,
+          "name_offset": 159569360
+        },
+        {
+          "name": "$__lazy_storage_$_toolSessionAccentColorEnabled",
+          "record_offset": 162279600,
+          "name_offset": 159569408
+        },
+        {
+          "name": "$__lazy_storage_$_pluginTokenAccentColorEnabled",
+          "record_offset": 162279612,
+          "name_offset": 159569456
+        },
+        {
+          "name": "messageUpdateTaskSlot",
+          "record_offset": 162279624,
+          "name_offset": 159569504
+        },
+        {
+          "name": "_cancelsPreviousStorage_copyTask",
+          "record_offset": 162279636,
+          "name_offset": 159569536
+        },
+        {
+          "name": "_cancelsPreviousStorage_favoriteFeedbackTask",
+          "record_offset": 162279648,
+          "name_offset": 159569584
+        },
+        {
+          "name": "isFavoriteFeedbackPresentationActive",
+          "record_offset": 162279660,
+          "name_offset": 159569632
+        },
+        {
+          "name": "pendingPresentationDismissalAction",
+          "record_offset": 162279672,
+          "name_offset": 159569680
+        },
+        {
+          "name": "supportsAutomationGoalNavigation",
+          "record_offset": 162279684,
+          "name_offset": 159569728
+        },
+        {
+          "name": "allowsConversationBranching",
+          "record_offset": 162279696,
+          "name_offset": 159569776
+        },
+        {
+          "name": "contextTruncationContinuationTask",
+          "record_offset": 162279708,
+          "name_offset": 159569808
+        },
+        {
+          "name": "$__lazy_storage_$_messageUpdatePlanningQueue",
+          "record_offset": 162279720,
+          "name_offset": 159569856
+        },
+        {
+          "name": "_presentingMessageRowIDs",
+          "record_offset": 162279732,
+          "name_offset": 159569904
+        },
+        {
+          "name": "nativeAskUserInputSubmissionForRetry",
+          "record_offset": 162279744,
+          "name_offset": 159569936
+        },
+        {
+          "name": "$__lazy_storage_$_optionalQuestionnaireController",
+          "record_offset": 162279756,
+          "name_offset": 159569984
+        },
+        {
+          "name": "$__lazy_storage_$_paragenRationaleController",
+          "record_offset": 162279768,
+          "name_offset": 159570048
+        },
+        {
+          "name": "editedFileResultsByMessageID",
+          "record_offset": 162279780,
+          "name_offset": 159570096
+        },
+        {
+          "name": "pendingSynchronouslyAppendedMessageIDs",
+          "record_offset": 162279792,
+          "name_offset": 159570128
+        },
+        {
+          "name": "latestUserMessageID",
+          "record_offset": 162279804,
+          "name_offset": 159570176
+        },
+        {
+          "name": "submittedConnectorUserActions",
+          "record_offset": 162279816,
+          "name_offset": 159570208
+        },
+        {
+          "name": "submittingLocalToolElicitationMessageIDs",
+          "record_offset": 162279828,
+          "name_offset": 159570240
+        },
+        {
+          "name": "$__lazy_storage_$_nativeSitesExperienceEnabled",
+          "record_offset": 162279840,
+          "name_offset": 159570288
+        },
+        {
+          "name": "$__lazy_storage_$_sharedConversationFileReceiverEnabled",
+          "record_offset": 162279852,
+          "name_offset": 159570336
+        },
+        {
+          "name": "editMessageOverlayEnabled",
+          "record_offset": 162279864,
+          "name_offset": 159570400
+        },
+        {
+          "name": "messageProcessingConfiguration",
+          "record_offset": 162279876,
+          "name_offset": 159570432
+        },
+        {
+          "name": "currentInstantProvider",
+          "record_offset": 162279888,
+          "name_offset": 159570464
+        },
+        {
+          "name": "$__lazy_storage_$_externalAppLauncher",
+          "record_offset": 162279900,
+          "name_offset": 159570496
+        },
+        {
+          "name": "presentedLearningBlockViewController",
+          "record_offset": 162279912,
+          "name_offset": 159570544
+        },
+        {
+          "name": "$__lazy_storage_$_customImageShareSheetEnabled",
+          "record_offset": 162279924,
+          "name_offset": 159570592
+        },
+        {
+          "name": "$__lazy_storage_$_imageDownloadSharingVariant",
+          "record_offset": 162279936,
+          "name_offset": 159570640
+        },
+        {
+          "name": "$__lazy_storage_$_placesEntitySheetEnabled",
+          "record_offset": 162279948,
+          "name_offset": 159570688
+        },
+        {
+          "name": "overlayComposerModelContext",
+          "record_offset": 162279960,
+          "name_offset": 159570736
+        },
+        {
+          "name": "overlayComposerBuilder",
+          "record_offset": 162279972,
+          "name_offset": 159570768
+        },
+        {
+          "name": "$__lazy_storage_$_savedMessagesRepository",
+          "record_offset": 162279984,
+          "name_offset": 159570800
+        },
+        {
+          "name": "$__lazy_storage_$_savedMessagesEnabled",
+          "record_offset": 162279996,
+          "name_offset": 159570848
+        },
+        {
+          "name": "$__lazy_storage_$_responseFavoritesEnabled",
+          "record_offset": 162280008,
+          "name_offset": 159570896
+        },
+        {
+          "name": "$__lazy_storage_$_projectFeaturesConfiguration",
+          "record_offset": 162280020,
+          "name_offset": 159570944
+        },
+        {
+          "name": "urlModerationStrategy",
+          "record_offset": 162280032,
+          "name_offset": 159570992
+        },
+        {
+          "name": "actionOverrideHandler",
+          "record_offset": 162280044,
+          "name_offset": 159571024
+        },
+        {
+          "name": "connectorUserActionHandler",
+          "record_offset": 162280056,
+          "name_offset": 159571056
+        },
+        {
+          "name": "showVoicePostCallFeedbackSheet",
+          "record_offset": 162280068,
+          "name_offset": 159571088
+        },
+        {
+          "name": "submitPositiveVoicePostCallFeedback",
+          "record_offset": 162280080,
+          "name_offset": 159571120
+        },
+        {
+          "name": "canPresentRateLimitNux",
+          "record_offset": 162280092,
+          "name_offset": 159571168
+        },
+        {
+          "name": "writingBlockRevisions",
+          "record_offset": 162280104,
+          "name_offset": 159571200
+        },
+        {
+          "name": "preparedMessageRowIDs",
+          "record_offset": 162280116,
+          "name_offset": 159571232
+        },
+        {
+          "name": "$__lazy_storage_$_pagePreviewTitles",
+          "record_offset": 162280128,
+          "name_offset": 159571264
+        },
+        {
+          "name": "chainOfThoughtTapSubject",
+          "record_offset": 162280140,
+          "name_offset": 159571312
+        },
+        {
+          "name": "anchorOverride",
+          "record_offset": 162280152,
+          "name_offset": 159571337
+        },
+        {
+          "name": "codeOnlyMarkdownPlugins",
+          "record_offset": 162280164,
+          "name_offset": 159571360
+        },
+        {
+          "name": "makeRemoteFileLoader",
+          "record_offset": 162280176,
+          "name_offset": 159571392
+        },
+        {
+          "name": "$__lazy_storage_$_shopThisLookSubmissionCoordinator",
+          "record_offset": 162280188,
+          "name_offset": 159571424
+        },
+        {
+          "name": "dependencies",
+          "record_offset": 162280200,
+          "name_offset": 159571476
+        },
+        {
+          "name": "thumbFeedbackRenderStateByMessageID",
+          "record_offset": 162280212,
+          "name_offset": 159571504
+        },
+        {
+          "name": "renderedMessageFeedbackControlTargets",
+          "record_offset": 162280224,
+          "name_offset": 159571552
+        },
+        {
+          "name": "notRenderedMessageFeedbackControlTargets",
+          "record_offset": 162280236,
+          "name_offset": 159571600
+        },
+        {
+          "name": "canEditSitesFromResponseCard",
+          "record_offset": 162280248,
+          "name_offset": 159571648
+        },
+        {
+          "name": "reauthenticateAction",
+          "record_offset": 162280260,
+          "name_offset": 159571680
+        },
+        {
+          "name": "makeMessageRowStyle",
+          "record_offset": 162280272,
+          "name_offset": 159571712
+        },
+        {
+          "name": "disableMessageTheme",
+          "record_offset": 162280284,
+          "name_offset": 159571744
+        },
+        {
+          "name": "inlineActionsEnabled",
+          "record_offset": 162280296,
+          "name_offset": 159571776
+        },
+        {
+          "name": "logsActionMenuExperimentExposure",
+          "record_offset": 162280308,
+          "name_offset": 159571808
+        },
+        {
+          "name": "userMessageBackgroundAccentColorDisabled",
+          "record_offset": 162280320,
+          "name_offset": 159571856
+        },
+        {
+          "name": "hasLoggedActionMenuExperimentExposure",
+          "record_offset": 162280332,
+          "name_offset": 159571904
+        },
+        {
+          "name": "hasLoggedBranchInWorkModeExperimentExposure",
+          "record_offset": 162280344,
+          "name_offset": 159571952
+        },
+        {
+          "name": "$__lazy_storage_$_tryInWorkModeMessageActionExperiment",
+          "record_offset": 162280356,
+          "name_offset": 159572000
+        },
+        {
+          "name": "_requestAvatarFocus",
+          "record_offset": 162280368,
+          "name_offset": 159572064
+        },
+        {
+          "name": "enablePreciseLocationAction",
+          "record_offset": 162280380,
+          "name_offset": 159572096
+        },
+        {
+          "name": "startVoiceMode",
+          "record_offset": 162280392,
+          "name_offset": 159572124
+        },
+        {
+          "name": "isDILStartVoiceModeSupported",
+          "record_offset": 162280404,
+          "name_offset": 159572144
+        },
+        {
+          "name": "$__lazy_storage_$_accountModelBehaviorProvider",
+          "record_offset": 162280416,
+          "name_offset": 159572176
+        },
+        {
+          "name": "$__lazy_storage_$_api",
+          "record_offset": 162280428,
+          "name_offset": 159572224
+        },
+        {
+          "name": "$__lazy_storage_$_emailRetrievalService",
+          "record_offset": 162280440,
+          "name_offset": 159572256
+        },
+        {
+          "name": "$__lazy_storage_$_unifiedUserSignalsService",
+          "record_offset": 162280452,
+          "name_offset": 159572304
+        },
+        {
+          "name": "$__lazy_storage_$_conversationBranchingService",
+          "record_offset": 162280464,
+          "name_offset": 159572352
+        },
+        {
+          "name": "$__lazy_storage_$_bannerManager",
+          "record_offset": 162280476,
+          "name_offset": 159572400
+        },
+        {
+          "name": "$__lazy_storage_$_conversationDetailMetadataService",
+          "record_offset": 162280488,
+          "name_offset": 159572432
+        },
+        {
+          "name": "$__lazy_storage_$_sharingService",
+          "record_offset": 162280500,
+          "name_offset": 159572496
+        },
+        {
+          "name": "isSendingContentToDirectMessage",
+          "record_offset": 162280512,
+          "name_offset": 159572544
+        },
+        {
+          "name": "$__lazy_storage_$_sharingRepository",
+          "record_offset": 162280524,
+          "name_offset": 159572576
+        },
+        {
+          "name": "$__lazy_storage_$_gizmoRepository",
+          "record_offset": 162280536,
+          "name_offset": 159572624
+        },
+        {
+          "name": "$__lazy_storage_$_modelsRepository",
+          "record_offset": 162280548,
+          "name_offset": 159572672
+        },
+        {
+          "name": "$__lazy_storage_$_photoLibraryService",
+          "record_offset": 162280560,
+          "name_offset": 159572720
+        },
+        {
+          "name": "$__lazy_storage_$_feedbackStateObserver",
+          "record_offset": 162280572,
+          "name_offset": 159572768
+        },
+        {
+          "name": "$__lazy_storage_$_canvasRepository",
+          "record_offset": 162280584,
+          "name_offset": 159572816
+        },
+        {
+          "name": "$__lazy_storage_$_enableSharingInNoAuth",
+          "record_offset": 162280596,
+          "name_offset": 159572864
+        },
+        {
+          "name": "$__lazy_storage_$_learningBlockShareButtonEnabled",
+          "record_offset": 162280608,
+          "name_offset": 159572912
+        },
+        {
+          "name": "heldMessages",
+          "record_offset": 162280620,
+          "name_offset": 159572962
+        },
+        {
+          "name": "messageListUpdateInvalidationSubject",
+          "record_offset": 162280632,
+          "name_offset": 159572976
+        },
+        {
+          "name": "pendingAssistantMessageScroll",
+          "record_offset": 162280644,
+          "name_offset": 159573024
+        },
+        {
+          "name": "bag",
+          "record_offset": 162280656,
+          "name_offset": 159556841
+        },
+        {
+          "name": "memoryCitationSupplementFetchTasksByMessageID",
+          "record_offset": 162280668,
+          "name_offset": 159573056
+        },
+        {
+          "name": "memoryCitationSupplementFetchRequestIDsByMessageID",
+          "record_offset": 162280680,
+          "name_offset": 159573104
+        },
+        {
+          "name": "$__lazy_storage_$_oAuthFlow",
+          "record_offset": 162280692,
+          "name_offset": 159573168
+        },
+        {
+          "name": "oAuthTask",
+          "record_offset": 162280704,
+          "name_offset": 159573196
+        },
+        {
+          "name": "allowedRatingMessageID",
+          "record_offset": 162280716,
+          "name_offset": 159573216
+        },
+        {
+          "name": "$__lazy_storage_$_moreDetailsTextSelectActionEnabled",
+          "record_offset": 162280728,
+          "name_offset": 159573248
+        },
+        {
+          "name": "$__lazy_storage_$_textSelectionEditMenuConfiguration",
+          "record_offset": 162280740,
+          "name_offset": 159573312
+        },
+        {
+          "name": "$__lazy_storage_$_messageFeedbackConsolidationEnabled",
+          "record_offset": 162280752,
+          "name_offset": 159573376
+        },
+        {
+          "name": "$__lazy_storage_$_messageFeedbackConsolidationVariant",
+          "record_offset": 162280764,
+          "name_offset": 159573440
+        },
+        {
+          "name": "isCurrentSharedQuizOwner",
+          "record_offset": 162280776,
+          "name_offset": 159573504
+        },
+        {
+          "name": "createConversationWithDraft",
+          "record_offset": 162280788,
+          "name_offset": 159573536
+        },
+        {
+          "name": "$__lazy_storage_$_sharedQuizContextProvider",
+          "record_offset": 162280800,
+          "name_offset": 159573568
+        },
+        {
+          "name": "memoryCitationLayer",
+          "record_offset": 162280812,
+          "name_offset": 159573616
+        },
+        {
+          "name": "memoryCitationNoDreamsLayer",
+          "record_offset": 162280824,
+          "name_offset": 159573648
+        },
+        {
+          "name": "_$observationRegistrar",
+          "record_offset": 162280836,
+          "name_offset": 159556736
+        },
+        {
+          "name": "$__lazy_storage_$__publisher",
+          "record_offset": 162280848,
+          "name_offset": 159557584
+        }
+      ]
+    },
+    {
+      "id": "I05",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "ChatGPTDIL.DILViewModel",
+      "byte_offset": 157697672,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Swift type descriptor owns listed field descriptors; field names are not method behavior",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "type_section": "__swift5_types",
+      "type_entry_offset": 164923456,
+      "field_descriptor_offset": 162644216,
+      "module_chain_resolved": true,
+      "fields": [
+        {
+          "name": "_widgetIsHidden",
+          "record_offset": 162644232,
+          "name_offset": 159881893
+        },
+        {
+          "name": "_hasRenderedContent",
+          "record_offset": 162644244,
+          "name_offset": 159881920
+        },
+        {
+          "name": "_dil",
+          "record_offset": 162644256,
+          "name_offset": 159881940
+        },
+        {
+          "name": "_colorScheme",
+          "record_offset": 162644268,
+          "name_offset": 159881945
+        },
+        {
+          "name": "_horizontalPadding",
+          "record_offset": 162644280,
+          "name_offset": 159881968
+        },
+        {
+          "name": "_isConsumerLockdownModeEnabledForConversation",
+          "record_offset": 162644292,
+          "name_offset": 159882000
+        },
+        {
+          "name": "_presentationQueue",
+          "record_offset": 162644304,
+          "name_offset": 159882048
+        },
+        {
+          "name": "_renderingMode",
+          "record_offset": 162644316,
+          "name_offset": 159882067
+        },
+        {
+          "name": "$__lazy_storage_$_webViewModel",
+          "record_offset": 162644328,
+          "name_offset": 159882096
+        },
+        {
+          "name": "_sharedPostContext",
+          "record_offset": 162644340,
+          "name_offset": 159882128
+        },
+        {
+          "name": "quizRendererDisabled",
+          "record_offset": 162644352,
+          "name_offset": 159882160
+        },
+        {
+          "name": "_quizRenderFailed",
+          "record_offset": 162644364,
+          "name_offset": 159882192
+        },
+        {
+          "name": "retainedValdiViewModel",
+          "record_offset": 162644376,
+          "name_offset": 159882224
+        },
+        {
+          "name": "_supportsFileCitationPreview",
+          "record_offset": 162644388,
+          "name_offset": 159882256
+        },
+        {
+          "name": "supportsCitationImpressions",
+          "record_offset": 162644400,
+          "name_offset": 159882288
+        },
+        {
+          "name": "systemWebViewFactory",
+          "record_offset": 162644412,
+          "name_offset": 159882320
+        },
+        {
+          "name": "renderingModeSelection",
+          "record_offset": 162644424,
+          "name_offset": 159882352
+        },
+        {
+          "name": "handleLocalViewStateChanged",
+          "record_offset": 162644436,
+          "name_offset": 159882384
+        },
+        {
+          "name": "widgetBehavior",
+          "record_offset": 162644448,
+          "name_offset": 159882412
+        },
+        {
+          "name": "modelWrittenFailureLogHistory",
+          "record_offset": 162644460,
+          "name_offset": 159882432
+        },
+        {
+          "name": "api",
+          "record_offset": 162644472,
+          "name_offset": 159879977
+        },
+        {
+          "name": "scopedStatsigClient",
+          "record_offset": 162644484,
+          "name_offset": 159882464
+        },
+        {
+          "name": "statsigFeatureFlagManager",
+          "record_offset": 162644496,
+          "name_offset": 159882496
+        },
+        {
+          "name": "accountScope",
+          "record_offset": 162644508,
+          "name_offset": 159882522
+        },
+        {
+          "name": "celsiusService",
+          "record_offset": 162644520,
+          "name_offset": 159882535
+        },
+        {
+          "name": "dictationService",
+          "record_offset": 162644532,
+          "name_offset": 159882560
+        },
+        {
+          "name": "speechSynthesisService",
+          "record_offset": 162644544,
+          "name_offset": 159882592
+        },
+        {
+          "name": "_currentMessage",
+          "record_offset": 162644556,
+          "name_offset": 159882615
+        },
+        {
+          "name": "parameters",
+          "record_offset": 162644568,
+          "name_offset": 159882631
+        },
+        {
+          "name": "_additionalSupportedClientActions",
+          "record_offset": 162644580,
+          "name_offset": 159882656
+        },
+        {
+          "name": "refreshService",
+          "record_offset": 162644592,
+          "name_offset": 159882690
+        },
+        {
+          "name": "_showsFeedbackButton",
+          "record_offset": 162644604,
+          "name_offset": 159882720
+        },
+        {
+          "name": "handleActionFeedback",
+          "record_offset": 162644616,
+          "name_offset": 159882752
+        },
+        {
+          "name": "allowsServerActions",
+          "record_offset": 162644628,
+          "name_offset": 159882784
+        },
+        {
+          "name": "allowsWebViewFallback",
+          "record_offset": 162644640,
+          "name_offset": 159882816
+        },
+        {
+          "name": "handleRenderFailure",
+          "record_offset": 162644652,
+          "name_offset": 159882848
+        },
+        {
+          "name": "authorizeClientAction",
+          "record_offset": 162644664,
+          "name_offset": 159882880
+        },
+        {
+          "name": "deferredTurnHost",
+          "record_offset": 162644676,
+          "name_offset": 159882912
+        },
+        {
+          "name": "handleAnalyticsAction",
+          "record_offset": 162644688,
+          "name_offset": 159882944
+        },
+        {
+          "name": "stateRepository",
+          "record_offset": 162644700,
+          "name_offset": 159882966
+        },
+        {
+          "name": "widgetActionBridge",
+          "record_offset": 162644712,
+          "name_offset": 159882992
+        },
+        {
+          "name": "handleActionOutcome",
+          "record_offset": 162644724,
+          "name_offset": 159883024
+        },
+        {
+          "name": "_clientDefinedWidgetHostViewBuilder",
+          "record_offset": 162644736,
+          "name_offset": 159883056
+        },
+        {
+          "name": "nativeChartHostViewBuilder",
+          "record_offset": 162644748,
+          "name_offset": 159883104
+        },
+        {
+          "name": "textSelectionMenuProvider",
+          "record_offset": 162644760,
+          "name_offset": 159883136
+        },
+        {
+          "name": "bag",
+          "record_offset": 162644772,
+          "name_offset": 159883162
+        },
+        {
+          "name": "_sharedQuizActionsDisabled",
+          "record_offset": 162644784,
+          "name_offset": 159883168
+        },
+        {
+          "name": "$__lazy_storage_$_feedbackViewModel",
+          "record_offset": 162644796,
+          "name_offset": 159883200
+        },
+        {
+          "name": "_messageIsStreaming",
+          "record_offset": 162644808,
+          "name_offset": 159883248
+        },
+        {
+          "name": "remoteConversationID",
+          "record_offset": 162644820,
+          "name_offset": 159883280
+        },
+        {
+          "name": "widgetMessageID",
+          "record_offset": 162644832,
+          "name_offset": 159883301
+        },
+        {
+          "name": "turnOrdinal",
+          "record_offset": 162644844,
+          "name_offset": 159883317
+        },
+        {
+          "name": "visibleHostIDs",
+          "record_offset": 162644856,
+          "name_offset": 159880005
+        },
+        {
+          "name": "videoLightboxActionContext",
+          "record_offset": 162644868,
+          "name_offset": 159883344
+        },
+        {
+          "name": "videoLightboxURLTaskHostID",
+          "record_offset": 162644880,
+          "name_offset": 159883376
+        },
+        {
+          "name": "_cancelsPreviousStorage_videoLightboxURLTask",
+          "record_offset": 162644892,
+          "name_offset": 159883408
+        },
+        {
+          "name": "_$observationRegistrar",
+          "record_offset": 162644904,
+          "name_offset": 159880416
+        },
+        {
+          "name": "$__lazy_storage_$__publisher",
+          "record_offset": 162644916,
+          "name_offset": 159883456
+        }
+      ]
+    },
+    {
+      "id": "I06",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "ChatGPTDIL.DILValdiViewModel",
+      "byte_offset": 157698612,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Swift type descriptor owns listed field descriptors; field names are not method behavior",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "type_section": "__swift5_types",
+      "type_entry_offset": 164923532,
+      "field_descriptor_offset": 162646336,
+      "module_chain_resolved": true,
+      "fields": [
+        {
+          "name": "_componentReference",
+          "record_offset": 162646352,
+          "name_offset": 159884624
+        },
+        {
+          "name": "allowsSharedConversationActions",
+          "record_offset": 162646364,
+          "name_offset": 159884656
+        },
+        {
+          "name": "_allowsSharedQuizActions",
+          "record_offset": 162646376,
+          "name_offset": 159884688
+        },
+        {
+          "name": "presentationSurface",
+          "record_offset": 162646388,
+          "name_offset": 159879792
+        },
+        {
+          "name": "chartRendererMode",
+          "record_offset": 162646400,
+          "name_offset": 159884720
+        },
+        {
+          "name": "cacheKey",
+          "record_offset": 162646412,
+          "name_offset": 159884738
+        },
+        {
+          "name": "eventDispatcher",
+          "record_offset": 162646424,
+          "name_offset": 159884747
+        },
+        {
+          "name": "platformServices",
+          "record_offset": 162646436,
+          "name_offset": 159884768
+        },
+        {
+          "name": "allowsSystemTextServices",
+          "record_offset": 162646448,
+          "name_offset": 159884800
+        },
+        {
+          "name": "textSelectionMenuActions",
+          "record_offset": 162646460,
+          "name_offset": 159884832
+        },
+        {
+          "name": "textSelectionMenuActionHandler",
+          "record_offset": 162646472,
+          "name_offset": 159884864
+        },
+        {
+          "name": "nativeChartViewBuilder",
+          "record_offset": 162646484,
+          "name_offset": 159884896
+        },
+        {
+          "name": "$__lazy_storage_$_clientDefinedWidgetViewBuilder",
+          "record_offset": 162646496,
+          "name_offset": 159884928
+        },
+        {
+          "name": "_hostCapabilities",
+          "record_offset": 162646508,
+          "name_offset": 159884992
+        },
+        {
+          "name": "_dilJson",
+          "record_offset": 162646520,
+          "name_offset": 159885010
+        },
+        {
+          "name": "_initialState",
+          "record_offset": 162646532,
+          "name_offset": 159885019
+        },
+        {
+          "name": "_widgetViewState",
+          "record_offset": 162646544,
+          "name_offset": 159885040
+        },
+        {
+          "name": "_viewStateSync",
+          "record_offset": 162646556,
+          "name_offset": 159885057
+        },
+        {
+          "name": "_widgetType",
+          "record_offset": 162646568,
+          "name_offset": 159885072
+        },
+        {
+          "name": "_widgetName",
+          "record_offset": 162646580,
+          "name_offset": 159885084
+        },
+        {
+          "name": "_dilURLPresent",
+          "record_offset": 162646592,
+          "name_offset": 159885096
+        },
+        {
+          "name": "_messageMetadata",
+          "record_offset": 162646604,
+          "name_offset": 159885120
+        },
+        {
+          "name": "_messageIsStreaming",
+          "record_offset": 162646616,
+          "name_offset": 159883248
+        },
+        {
+          "name": "_supportedClientActions",
+          "record_offset": 162646628,
+          "name_offset": 159885152
+        },
+        {
+          "name": "receivedInitialState",
+          "record_offset": 162646640,
+          "name_offset": 159885184
+        },
+        {
+          "name": "errorMode",
+          "record_offset": 162646652,
+          "name_offset": 159885205
+        },
+        {
+          "name": "makeComponentReference",
+          "record_offset": 162646664,
+          "name_offset": 159885216
+        },
+        {
+          "name": "interactionHandler",
+          "record_offset": 162646676,
+          "name_offset": 159885248
+        },
+        {
+          "name": "textSelectionCopyCompletedHandler",
+          "record_offset": 162646688,
+          "name_offset": 159885280
+        },
+        {
+          "name": "componentCreationTask",
+          "record_offset": 162646700,
+          "name_offset": 159885328
+        },
+        {
+          "name": "bag",
+          "record_offset": 162646712,
+          "name_offset": 159883162
+        },
+        {
+          "name": "latestWidgetPayload",
+          "record_offset": 162646724,
+          "name_offset": 159885360
+        },
+        {
+          "name": "shouldSendJSONPatches",
+          "record_offset": 162646736,
+          "name_offset": 159885392
+        },
+        {
+          "name": "widgetBehavior",
+          "record_offset": 162646748,
+          "name_offset": 159882412
+        },
+        {
+          "name": "handleLocalViewStateChanged",
+          "record_offset": 162646760,
+          "name_offset": 159882384
+        },
+        {
+          "name": "structuredActionHandler",
+          "record_offset": 162646772,
+          "name_offset": 159885424
+        },
+        {
+          "name": "deferredTurnHost",
+          "record_offset": 162646784,
+          "name_offset": 159882912
+        },
+        {
+          "name": "deferredTurnAdmission",
+          "record_offset": 162646796,
+          "name_offset": 159885456
+        },
+        {
+          "name": "serverActionTypes",
+          "record_offset": 162646808,
+          "name_offset": 159885488
+        },
+        {
+          "name": "messageIsReadOnly",
+          "record_offset": 162646820,
+          "name_offset": 159881504
+        },
+        {
+          "name": "isUpdatingSharedQuizSource",
+          "record_offset": 162646832,
+          "name_offset": 159885520
+        },
+        {
+          "name": "needsDILPayloadUpdate",
+          "record_offset": 162646844,
+          "name_offset": 159885552
+        },
+        {
+          "name": "latestMessageRenderInput",
+          "record_offset": 162646856,
+          "name_offset": 159885584
+        },
+        {
+          "name": "publicSharedPostID",
+          "record_offset": 162646868,
+          "name_offset": 159881568
+        },
+        {
+          "name": "messageMetadataProjection",
+          "record_offset": 162646880,
+          "name_offset": 159885616
+        },
+        {
+          "name": "latestStreamingNativeWidgetInvocations",
+          "record_offset": 162646892,
+          "name_offset": 159885648
+        },
+        {
+          "name": "handleWidgetShare",
+          "record_offset": 162646904,
+          "name_offset": 159885696
+        },
+        {
+          "name": "handleWidgetPublicationError",
+          "record_offset": 162646916,
+          "name_offset": 159885728
+        },
+        {
+          "name": "widgetBehaviorGeneration",
+          "record_offset": 162646928,
+          "name_offset": 159885760
+        },
+        {
+          "name": "widgetActionRequestHandler",
+          "record_offset": 162646940,
+          "name_offset": 159885792
+        },
+        {
+          "name": "actionFeedbackHandler",
+          "record_offset": 162646952,
+          "name_offset": 159885824
+        },
+        {
+          "name": "clientDefinedWidgetHostViewBuilder",
+          "record_offset": 162646964,
+          "name_offset": 159885856
+        },
+        {
+          "name": "renderFailureHandler",
+          "record_offset": 162646976,
+          "name_offset": 159885904
+        },
+        {
+          "name": "entityActionUnavailableHandler",
+          "record_offset": 162646988,
+          "name_offset": 159885936
+        },
+        {
+          "name": "_dil",
+          "record_offset": 162647000,
+          "name_offset": 159881940
+        },
+        {
+          "name": "_colorScheme",
+          "record_offset": 162647012,
+          "name_offset": 159881945
+        },
+        {
+          "name": "_horizontalPadding",
+          "record_offset": 162647024,
+          "name_offset": 159881968
+        },
+        {
+          "name": "horizontalViewportInsets",
+          "record_offset": 162647036,
+          "name_offset": 159881216
+        },
+        {
+          "name": "_$observationRegistrar",
+          "record_offset": 162647048,
+          "name_offset": 159880416
+        }
+      ]
+    },
+    {
+      "id": "I07",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "ChatGPTDIL.DILWebViewModel",
+      "byte_offset": 157698828,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Swift type descriptor owns listed field descriptors; field names are not method behavior",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "type_section": "__swift5_types",
+      "type_entry_offset": 164923544,
+      "field_descriptor_offset": 162647380,
+      "module_chain_resolved": true,
+      "fields": [
+        {
+          "name": "dilURL",
+          "record_offset": 162647396,
+          "name_offset": 159886483
+        },
+        {
+          "name": "cacheKey",
+          "record_offset": 162647408,
+          "name_offset": 159884738
+        },
+        {
+          "name": "_horizontalPadding",
+          "record_offset": 162647420,
+          "name_offset": 159881968
+        },
+        {
+          "name": "_widgetHeight",
+          "record_offset": 162647432,
+          "name_offset": 159886490
+        },
+        {
+          "name": "webViewConfiguration",
+          "record_offset": 162647444,
+          "name_offset": 159879856
+        },
+        {
+          "name": "_shouldHideWidget",
+          "record_offset": 162647456,
+          "name_offset": 159886512
+        },
+        {
+          "name": "_canRetry",
+          "record_offset": 162647468,
+          "name_offset": 159886530
+        },
+        {
+          "name": "systemWebViewFactory",
+          "record_offset": 162647480,
+          "name_offset": 159882320
+        },
+        {
+          "name": "_isReady",
+          "record_offset": 162647492,
+          "name_offset": 159886540
+        },
+        {
+          "name": "presentationSurface",
+          "record_offset": 162647504,
+          "name_offset": 159879792
+        },
+        {
+          "name": "handleActionFeedback",
+          "record_offset": 162647516,
+          "name_offset": 159882752
+        },
+        {
+          "name": "supportedClientActionsProvider",
+          "record_offset": 162647528,
+          "name_offset": 159886352
+        },
+        {
+          "name": "handleRenderFailure",
+          "record_offset": 162647540,
+          "name_offset": 159882848
+        },
+        {
+          "name": "isRendererRecoveryEnabled",
+          "record_offset": 162647552,
+          "name_offset": 159886560
+        },
+        {
+          "name": "stateRepository",
+          "record_offset": 162647564,
+          "name_offset": 159882966
+        },
+        {
+          "name": "widgetBehavior",
+          "record_offset": 162647576,
+          "name_offset": 159882412
+        },
+        {
+          "name": "canActivateWidgetBehavior",
+          "record_offset": 162647588,
+          "name_offset": 159886592
+        },
+        {
+          "name": "widgetActionRequestHandler",
+          "record_offset": 162647600,
+          "name_offset": 159885792
+        },
+        {
+          "name": "_bag",
+          "record_offset": 162647612,
+          "name_offset": 159886618
+        },
+        {
+          "name": "_dil",
+          "record_offset": 162647624,
+          "name_offset": 159881940
+        },
+        {
+          "name": "_colorScheme",
+          "record_offset": 162647636,
+          "name_offset": 159881945
+        },
+        {
+          "name": "_pendingInitialWidgetState",
+          "record_offset": 162647648,
+          "name_offset": 159886624
+        },
+        {
+          "name": "lastMeasuredContainerWidth",
+          "record_offset": 162647660,
+          "name_offset": 159886656
+        },
+        {
+          "name": "isHostVisible",
+          "record_offset": 162647672,
+          "name_offset": 159886683
+        },
+        {
+          "name": "lastAppliedStateHash",
+          "record_offset": 162647684,
+          "name_offset": 159886704
+        },
+        {
+          "name": "supersededWidgetStateFingerprint",
+          "record_offset": 162647696,
+          "name_offset": 159886736
+        },
+        {
+          "name": "widgetSessionSuccessState",
+          "record_offset": 162647708,
+          "name_offset": 159886784
+        },
+        {
+          "name": "widgetInstanceGeneration",
+          "record_offset": 162647720,
+          "name_offset": 159886816
+        },
+        {
+          "name": "widgetInstanceIdentity",
+          "record_offset": 162647732,
+          "name_offset": 159886848
+        },
+        {
+          "name": "widgetSignature",
+          "record_offset": 162647744,
+          "name_offset": 159886871
+        },
+        {
+          "name": "shouldUseEstimatedHeight",
+          "record_offset": 162647756,
+          "name_offset": 159886896
+        },
+        {
+          "name": "isRetired",
+          "record_offset": 162647768,
+          "name_offset": 159886921
+        },
+        {
+          "name": "$__lazy_storage_$_loadMetrics",
+          "record_offset": 162647780,
+          "name_offset": 159886944
+        },
+        {
+          "name": "$__lazy_storage_$_messenger",
+          "record_offset": 162647792,
+          "name_offset": 159886976
+        },
+        {
+          "name": "_reusableWebView",
+          "record_offset": 162647804,
+          "name_offset": 159887008
+        },
+        {
+          "name": "readyTimeoutIdentifier",
+          "record_offset": 162647816,
+          "name_offset": 159887040
+        },
+        {
+          "name": "_cancelsPreviousStorage_readyTimeoutTask",
+          "record_offset": 162647828,
+          "name_offset": 159887072
+        },
+        {
+          "name": "_$observationRegistrar",
+          "record_offset": 162647840,
+          "name_offset": 159880416
+        },
+        {
+          "name": "$__lazy_storage_$__publisher",
+          "record_offset": 162647852,
+          "name_offset": 159883456
+        }
+      ]
+    },
+    {
+      "id": "I08",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "ChatGPTDIL.DILValdiViewModel.CacheKey",
+      "byte_offset": 157699640,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Swift type descriptor owns listed field descriptors; field names are not method behavior",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "type_section": "__swift5_types",
+      "type_entry_offset": 164923604,
+      "field_descriptor_offset": 162649168,
+      "module_chain_resolved": true,
+      "fields": [
+        {
+          "name": "messageID",
+          "record_offset": 162649184,
+          "name_offset": 159879735
+        },
+        {
+          "name": "referenceIndex",
+          "record_offset": 162649196,
+          "name_offset": 159879745
+        },
+        {
+          "name": "presentationSurface",
+          "record_offset": 162649208,
+          "name_offset": 159879792
+        },
+        {
+          "name": "presentationInstanceID",
+          "record_offset": 162649220,
+          "name_offset": 159879824
+        }
+      ]
+    },
+    {
+      "id": "I09",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "symbol": "ChatGPTMessageInput.MessageInputViewModel",
+      "byte_offset": 157743496,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Swift type descriptor owns listed field descriptors; field names are not method behavior",
+      "limitations": [
+        "Static metadata only; does not establish runtime reachability or behavior"
+      ],
+      "status": "partial",
+      "type_section": "__swift5_types",
+      "type_entry_offset": 164927024,
+      "field_descriptor_offset": 162707400,
+      "module_chain_resolved": true,
+      "fields": [
+        {
+          "name": "$__lazy_storage_$_hapticEngine",
+          "record_offset": 162707416,
+          "name_offset": 159927488
+        },
+        {
+          "name": "_inputAndUploadsEmpty",
+          "record_offset": 162707428,
+          "name_offset": 159938560
+        },
+        {
+          "name": "$__lazy_storage_$_textInputContextIdentifier",
+          "record_offset": 162707440,
+          "name_offset": 159938592
+        },
+        {
+          "name": "accountID",
+          "record_offset": 162707452,
+          "name_offset": 159926173
+        },
+        {
+          "name": "$__lazy_storage_$_accountDataSource",
+          "record_offset": 162707464,
+          "name_offset": 159938640
+        },
+        {
+          "name": "streamingEndpoint",
+          "record_offset": 162707476,
+          "name_offset": 159938688
+        },
+        {
+          "name": "isDarkMode",
+          "record_offset": 162707488,
+          "name_offset": 159938706
+        },
+        {
+          "name": "shouldCaptureSendMorphSource",
+          "record_offset": 162707500,
+          "name_offset": 159938720
+        },
+        {
+          "name": "shouldPrepareImmediateMorphDestination",
+          "record_offset": 162707512,
+          "name_offset": 159938752
+        },
+        {
+          "name": "preparesImmediateMorphForCustomEndpoint",
+          "record_offset": 162707524,
+          "name_offset": 159938800
+        },
+        {
+          "name": "didFinishImmediateMorphSubmission",
+          "record_offset": 162707536,
+          "name_offset": 159938848
+        },
+        {
+          "name": "$__lazy_storage_$_fileUploadViewModel",
+          "record_offset": 162707548,
+          "name_offset": 159938896
+        },
+        {
+          "name": "_delegate",
+          "record_offset": 162707560,
+          "name_offset": 159938934
+        },
+        {
+          "name": "_customAddSheetSystemHintHandler",
+          "record_offset": 162707572,
+          "name_offset": 159938944
+        },
+        {
+          "name": "_customAssistantName",
+          "record_offset": 162707584,
+          "name_offset": 159938992
+        },
+        {
+          "name": "filePreviewHandler",
+          "record_offset": 162707596,
+          "name_offset": 159939024
+        },
+        {
+          "name": "mountedFilePreparationPreviewHandler",
+          "record_offset": 162707608,
+          "name_offset": 159939056
+        },
+        {
+          "name": "_inputFocusSubject",
+          "record_offset": 162707620,
+          "name_offset": 159939104
+        },
+        {
+          "name": "_caretHorizontalPosition",
+          "record_offset": 162707632,
+          "name_offset": 159939136
+        },
+        {
+          "name": "applyingPromptDraft",
+          "record_offset": 162707644,
+          "name_offset": 159939168
+        },
+        {
+          "name": "_ecosystemPrompt",
+          "record_offset": 162707656,
+          "name_offset": 159939200
+        },
+        {
+          "name": "_inputEmptyOrExclusivelyWhitespace",
+          "record_offset": 162707668,
+          "name_offset": 159939232
+        },
+        {
+          "name": "_inputEmptyOrExclusivelyInlineWhitespace",
+          "record_offset": 162707680,
+          "name_offset": 159939280
+        },
+        {
+          "name": "_inputEmpty",
+          "record_offset": 162707692,
+          "name_offset": 159939321
+        },
+        {
+          "name": "_showsFullscreenButton",
+          "record_offset": 162707704,
+          "name_offset": 159939344
+        },
+        {
+          "name": "_preservesKeyboardInset",
+          "record_offset": 162707716,
+          "name_offset": 159939376
+        },
+        {
+          "name": "_trailingButtonsSize",
+          "record_offset": 162707728,
+          "name_offset": 159939408
+        },
+        {
+          "name": "_fullScreenButtonWidth",
+          "record_offset": 162707740,
+          "name_offset": 159939440
+        },
+        {
+          "name": "_hasExceededSingleLineThreshold",
+          "record_offset": 162707752,
+          "name_offset": 159939472
+        },
+        {
+          "name": "_streamingDictationHasExceededSingleLineThreshold",
+          "record_offset": 162707764,
+          "name_offset": 159939504
+        },
+        {
+          "name": "_selectedElevatedHintID",
+          "record_offset": 162707776,
+          "name_offset": 159939568
+        },
+        {
+          "name": "_recentlySubmittedMessage",
+          "record_offset": 162707788,
+          "name_offset": 159939600
+        },
+        {
+          "name": "commitPendingText",
+          "record_offset": 162707800,
+          "name_offset": 159939632
+        },
+        {
+          "name": "clearingInputFromSubmit",
+          "record_offset": 162707812,
+          "name_offset": 159939664
+        },
+        {
+          "name": "_isSummaryHandoffInProgress",
+          "record_offset": 162707824,
+          "name_offset": 159939696
+        },
+        {
+          "name": "_canShowCmeSystemHintButton",
+          "record_offset": 162707836,
+          "name_offset": 159939728
+        },
+        {
+          "name": "_fileUploadCarouselItems",
+          "record_offset": 162707848,
+          "name_offset": 159939760
+        },
+        {
+          "name": "$__lazy_storage_$_disableTextViewBoundsRepair",
+          "record_offset": 162707860,
+          "name_offset": 159939792
+        },
+        {
+          "name": "$__lazy_storage_$_disableMaskedInsetScrollCorrection",
+          "record_offset": 162707872,
+          "name_offset": 159939840
+        },
+        {
+          "name": "supportsLanguageLearningPracticeInVoice",
+          "record_offset": 162707884,
+          "name_offset": 159939904
+        },
+        {
+          "name": "_isPreparingSubmission",
+          "record_offset": 162707896,
+          "name_offset": 159939952
+        },
+        {
+          "name": "_submissionAvailability",
+          "record_offset": 162707908,
+          "name_offset": 159939984
+        },
+        {
+          "name": "_pluginTokens",
+          "record_offset": 162707920,
+          "name_offset": 159940008
+        },
+        {
+          "name": "_input",
+          "record_offset": 162707932,
+          "name_offset": 159940022
+        },
+        {
+          "name": "_activeComposerHost",
+          "record_offset": 162707944,
+          "name_offset": 159940032
+        },
+        {
+          "name": "_appModelContextSources",
+          "record_offset": 162707956,
+          "name_offset": 159940064
+        },
+        {
+          "name": "_appModelContextAttachments",
+          "record_offset": 162707968,
+          "name_offset": 159940096
+        },
+        {
+          "name": "_appModelContextUploadItems",
+          "record_offset": 162707980,
+          "name_offset": 159940128
+        },
+        {
+          "name": "_appModelContextUploads",
+          "record_offset": 162707992,
+          "name_offset": 159940160
+        },
+        {
+          "name": "$__lazy_storage_$_virtualTryOnImageVisibility",
+          "record_offset": 162708004,
+          "name_offset": 159940192
+        },
+        {
+          "name": "$__lazy_storage_$_pluginTokenAccentColorEnabled",
+          "record_offset": 162708016,
+          "name_offset": 159940240
+        },
+        {
+          "name": "_hidesSubmittedAttachmentTiles",
+          "record_offset": 162708028,
+          "name_offset": 159940288
+        },
+        {
+          "name": "captureSendTransitionText",
+          "record_offset": 162708040,
+          "name_offset": 159940320
+        },
+        {
+          "name": "captureSendTransitionAttachments",
+          "record_offset": 162708052,
+          "name_offset": 159940352
+        },
+        {
+          "name": "pendingDictationAutoSendModelRequestOverride",
+          "record_offset": 162708064,
+          "name_offset": 159940400
+        },
+        {
+          "name": "dismissKeyboardAfterDictationSubmission",
+          "record_offset": 162708076,
+          "name_offset": 159940448
+        },
+        {
+          "name": "commerceConfiguration",
+          "record_offset": 162708088,
+          "name_offset": 159934720
+        },
+        {
+          "name": "$__lazy_storage_$_whisperComponent",
+          "record_offset": 162708100,
+          "name_offset": 159940496
+        },
+        {
+          "name": "_inputEmptyOrExclusivelyInlineWhitespaceOrTextAttachments",
+          "record_offset": 162708112,
+          "name_offset": 159940544
+        },
+        {
+          "name": "_inputIsTargetedMentionPrefix",
+          "record_offset": 162708124,
+          "name_offset": 159940608
+        },
+        {
+          "name": "$__lazy_storage_$_linkMetadataLoader",
+          "record_offset": 162708136,
+          "name_offset": 159940640
+        },
+        {
+          "name": "implicitSystemHintID",
+          "record_offset": 162708148,
+          "name_offset": 159940688
+        },
+        {
+          "name": "_implicitTargetedGizmo",
+          "record_offset": 162708160,
+          "name_offset": 159940720
+        },
+        {
+          "name": "conversationCoordinator",
+          "record_offset": 162708172,
+          "name_offset": 159932736
+        },
+        {
+          "name": "$__lazy_storage_$_messageInputAutocompleteViewModel",
+          "record_offset": 162708184,
+          "name_offset": 159940752
+        },
+        {
+          "name": "canSubmitWithCommandReturn",
+          "record_offset": 162708196,
+          "name_offset": 159940816
+        },
+        {
+          "name": "allowsReturnWithEmptyInput",
+          "record_offset": 162708208,
+          "name_offset": 159940848
+        },
+        {
+          "name": "blockSubmitWhileUploading",
+          "record_offset": 162708220,
+          "name_offset": 159940880
+        },
+        {
+          "name": "allowWhisper",
+          "record_offset": 162708232,
+          "name_offset": 159940906
+        },
+        {
+          "name": "voiceViewModel",
+          "record_offset": 162708244,
+          "name_offset": 159935493
+        },
+        {
+          "name": "isAvatarEnabled",
+          "record_offset": 162708256,
+          "name_offset": 159926462
+        },
+        {
+          "name": "_productFeatures",
+          "record_offset": 162708268,
+          "name_offset": 159937296
+        },
+        {
+          "name": "_restoresSitesProjectAttachments",
+          "record_offset": 162708280,
+          "name_offset": 159940928
+        },
+        {
+          "name": "restoredDraftGizmosByID",
+          "record_offset": 162708292,
+          "name_offset": 159940976
+        },
+        {
+          "name": "_isStreaming",
+          "record_offset": 162708304,
+          "name_offset": 159941000
+        },
+        {
+          "name": "_isStreamOpen",
+          "record_offset": 162708316,
+          "name_offset": 159941013
+        },
+        {
+          "name": "_isPolling",
+          "record_offset": 162708328,
+          "name_offset": 159941027
+        },
+        {
+          "name": "_isSteeringEnabled",
+          "record_offset": 162708340,
+          "name_offset": 159941040
+        },
+        {
+          "name": "_isNewThread",
+          "record_offset": 162708352,
+          "name_offset": 159941059
+        },
+        {
+          "name": "_isTemporaryChat",
+          "record_offset": 162708364,
+          "name_offset": 159941072
+        },
+        {
+          "name": "_canSeeModelAndSwitchModelsOnConversations",
+          "record_offset": 162708376,
+          "name_offset": 159941104
+        },
+        {
+          "name": "_hasResolvedModelSelectionCapability",
+          "record_offset": 162708388,
+          "name_offset": 159941152
+        },
+        {
+          "name": "_selectedCategoryName",
+          "record_offset": 162708400,
+          "name_offset": 159941200
+        },
+        {
+          "name": "_isIntelligenceModelSelected",
+          "record_offset": 162708412,
+          "name_offset": 159941232
+        },
+        {
+          "name": "_intelligencePresets",
+          "record_offset": 162708424,
+          "name_offset": 159941264
+        },
+        {
+          "name": "_selectedIntelligencePresetID",
+          "record_offset": 162708436,
+          "name_offset": 159941296
+        },
+        {
+          "name": "_showsAdaptiveThinkingEffortControl",
+          "record_offset": 162708448,
+          "name_offset": 159941328
+        },
+        {
+          "name": "_selectedThinkingEffortSlug",
+          "record_offset": 162708460,
+          "name_offset": 159941376
+        },
+        {
+          "name": "lastManualIntelligenceSelection",
+          "record_offset": 162708472,
+          "name_offset": 159941408
+        },
+        {
+          "name": "hidesAssistantModeWorkComposerIntelligence",
+          "record_offset": 162708484,
+          "name_offset": 159941440
+        },
+        {
+          "name": "$__lazy_storage_$_composerVersionModelSelectorViewModel",
+          "record_offset": 162708496,
+          "name_offset": 159941488
+        },
+        {
+          "name": "_triggerScrollMessages",
+          "record_offset": 162708508,
+          "name_offset": 159941552
+        },
+        {
+          "name": "_autocompletePickerPresentationIsActive",
+          "record_offset": 162708520,
+          "name_offset": 159941584
+        },
+        {
+          "name": "_containerWidth",
+          "record_offset": 162708532,
+          "name_offset": 159941624
+        },
+        {
+          "name": "_presentation",
+          "record_offset": 162708544,
+          "name_offset": 159927113
+        },
+        {
+          "name": "_targetedReply",
+          "record_offset": 162708556,
+          "name_offset": 159941640
+        },
+        {
+          "name": "_triggerPromptDraft",
+          "record_offset": 162708568,
+          "name_offset": 159941664
+        },
+        {
+          "name": "_triggerInputSelection",
+          "record_offset": 162708580,
+          "name_offset": 159941696
+        },
+        {
+          "name": "_triggerKeyboardTypeReset",
+          "record_offset": 162708592,
+          "name_offset": 159941728
+        },
+        {
+          "name": "_triggerPluginSearchKeyInsertion",
+          "record_offset": 162708604,
+          "name_offset": 159941760
+        },
+        {
+          "name": "_sitesProjectInsertion",
+          "record_offset": 162708616,
+          "name_offset": 159941808
+        },
+        {
+          "name": "_conversationTargetedGizmo",
+          "record_offset": 162708628,
+          "name_offset": 159941840
+        },
+        {
+          "name": "_searchMode",
+          "record_offset": 162708640,
+          "name_offset": 159941867
+        },
+        {
+          "name": "_isCanvasWebStreaming",
+          "record_offset": 162708652,
+          "name_offset": 159941888
+        },
+        {
+          "name": "_chatHasActiveAsyncTasks",
+          "record_offset": 162708664,
+          "name_offset": 159941920
+        },
+        {
+          "name": "_fontSize",
+          "record_offset": 162708676,
+          "name_offset": 159941945
+        },
+        {
+          "name": "_reasonDisabledCause",
+          "record_offset": 162708688,
+          "name_offset": 159941968
+        },
+        {
+          "name": "_supportsAddSheet",
+          "record_offset": 162708700,
+          "name_offset": 159942000
+        },
+        {
+          "name": "$__lazy_storage_$_isSketchEnabled",
+          "record_offset": 162708712,
+          "name_offset": 159942032
+        },
+        {
+          "name": "_openURL",
+          "record_offset": 162708724,
+          "name_offset": 159942066
+        },
+        {
+          "name": "_shouldShowAttachmentsDisabledPopover",
+          "record_offset": 162708736,
+          "name_offset": 159942080
+        },
+        {
+          "name": "_presentedAddSheet",
+          "record_offset": 162708748,
+          "name_offset": 159942128
+        },
+        {
+          "name": "_presentedSketch",
+          "record_offset": 162708760,
+          "name_offset": 159942160
+        },
+        {
+          "name": "_presentedLongPressModelSelector",
+          "record_offset": 162708772,
+          "name_offset": 159942192
+        },
+        {
+          "name": "_presentedSliderThinkingEffortPicker",
+          "record_offset": 162708784,
+          "name_offset": 159942240
+        },
+        {
+          "name": "_workModelSelectionFeedbackTrigger",
+          "record_offset": 162708796,
+          "name_offset": 159942288
+        },
+        {
+          "name": "_isFreeThinkHarderGaugeActive",
+          "record_offset": 162708808,
+          "name_offset": 159942336
+        },
+        {
+          "name": "_presentedLongPressRecentPhotos",
+          "record_offset": 162708820,
+          "name_offset": 159942368
+        },
+        {
+          "name": "_attachmentsDisabledPopover",
+          "record_offset": 162708832,
+          "name_offset": 159942400
+        },
+        {
+          "name": "_deepResearchBlockedFeature",
+          "record_offset": 162708844,
+          "name_offset": 159927280
+        },
+        {
+          "name": "$__lazy_storage_$_disclosuresAvailabilityService",
+          "record_offset": 162708856,
+          "name_offset": 159928848
+        },
+        {
+          "name": "$__lazy_storage_$_upsellPresentationProvider",
+          "record_offset": 162708868,
+          "name_offset": 159942432
+        },
+        {
+          "name": "allowFileAttachments",
+          "record_offset": 162708880,
+          "name_offset": 159942480
+        },
+        {
+          "name": "allowAttachments",
+          "record_offset": 162708892,
+          "name_offset": 159942512
+        },
+        {
+          "name": "allowImageEditing",
+          "record_offset": 162708904,
+          "name_offset": 159942544
+        },
+        {
+          "name": "$__lazy_storage_$_voiceCoordinator",
+          "record_offset": 162708916,
+          "name_offset": 159942576
+        },
+        {
+          "name": "_isKeyboardVisible",
+          "record_offset": 162708928,
+          "name_offset": 159942624
+        },
+        {
+          "name": "isKeyboardVisibleSubject",
+          "record_offset": 162708940,
+          "name_offset": 159942656
+        },
+        {
+          "name": "$__lazy_storage_$_isComposerEyebrowWhenUnfocusedEnabled",
+          "record_offset": 162708952,
+          "name_offset": 159942688
+        },
+        {
+          "name": "_assistantModeComposerState",
+          "record_offset": 162708964,
+          "name_offset": 159942752
+        },
+        {
+          "name": "_assistantModeSelectionTransaction",
+          "record_offset": 162708976,
+          "name_offset": 159942784
+        },
+        {
+          "name": "_includesWorkServiceTierPicker",
+          "record_offset": 162708988,
+          "name_offset": 159942832
+        },
+        {
+          "name": "_isBusinessAgentConversation",
+          "record_offset": 162709000,
+          "name_offset": 159942864
+        },
+        {
+          "name": "filePreviewFactory",
+          "record_offset": 162709012,
+          "name_offset": 159942896
+        },
+        {
+          "name": "photoPickerScreenBuilder",
+          "record_offset": 162709024,
+          "name_offset": 159927088
+        },
+        {
+          "name": "addSheetPresentationDependencies",
+          "record_offset": 162709036,
+          "name_offset": 159942928
+        },
+        {
+          "name": "_sketchSuggestions",
+          "record_offset": 162709048,
+          "name_offset": 159942976
+        },
+        {
+          "name": "_workLunaReserveState",
+          "record_offset": 162709060,
+          "name_offset": 159943008
+        },
+        {
+          "name": "_workLunaReserveCatalog",
+          "record_offset": 162709072,
+          "name_offset": 159943040
+        },
+        {
+          "name": "_isWorkTppConversation",
+          "record_offset": 162709084,
+          "name_offset": 159943072
+        },
+        {
+          "name": "$__lazy_storage_$_audioRecordingViewModel",
+          "record_offset": 162709096,
+          "name_offset": 159943104
+        },
+        {
+          "name": "$__lazy_storage_$_hidesUpsellCTAIcons",
+          "record_offset": 162709108,
+          "name_offset": 159943152
+        },
+        {
+          "name": "$__lazy_storage_$_disableDirectionalCameraSelection",
+          "record_offset": 162709120,
+          "name_offset": 159927760
+        },
+        {
+          "name": "_inputBanner",
+          "record_offset": 162709132,
+          "name_offset": 159943190
+        },
+        {
+          "name": "_restoredDraft",
+          "record_offset": 162709144,
+          "name_offset": 159943203
+        },
+        {
+          "name": "_topAccessoryViewModel",
+          "record_offset": 162709156,
+          "name_offset": 159943232
+        },
+        {
+          "name": "_messageEditingContext",
+          "record_offset": 162709168,
+          "name_offset": 159943264
+        },
+        {
+          "name": "$__lazy_storage_$_audioAttachmentAvailabilityDecision",
+          "record_offset": 162709180,
+          "name_offset": 159943296
+        },
+        {
+          "name": "_pendingAppMessageDraftUpdates",
+          "record_offset": 162709192,
+          "name_offset": 159943360
+        },
+        {
+          "name": "_dictationEducationActivity",
+          "record_offset": 162709204,
+          "name_offset": 159943392
+        },
+        {
+          "name": "_isLockedChatsProject",
+          "record_offset": 162709216,
+          "name_offset": 159943424
+        },
+        {
+          "name": "bugReportPresenter",
+          "record_offset": 162709228,
+          "name_offset": 159943456
+        },
+        {
+          "name": "voiceBeaconBanner",
+          "record_offset": 162709240,
+          "name_offset": 159943488
+        },
+        {
+          "name": "allowVideoAttachments",
+          "record_offset": 162709252,
+          "name_offset": 159943520
+        },
+        {
+          "name": "$__lazy_storage_$_dictationComposerLayer",
+          "record_offset": 162709264,
+          "name_offset": 159943552
+        },
+        {
+          "name": "_canPrepareConversationFollowups",
+          "record_offset": 162709276,
+          "name_offset": 159943600
+        },
+        {
+          "name": "allowsPluginsItem",
+          "record_offset": 162709288,
+          "name_offset": 159943648
+        },
+        {
+          "name": "pendingDictationMessageInput",
+          "record_offset": 162709300,
+          "name_offset": 159943680
+        },
+        {
+          "name": "sendPromptSubmissionTask",
+          "record_offset": 162709312,
+          "name_offset": 159943712
+        },
+        {
+          "name": "languageLearningVoiceAvailabilityPublisher",
+          "record_offset": 162709324,
+          "name_offset": 159943744
+        },
+        {
+          "name": "pendingBeaconThinkingSelectionTask",
+          "record_offset": 162709336,
+          "name_offset": 159943792
+        },
+        {
+          "name": "$__lazy_storage_$_sensitiveImageUploadReminder",
+          "record_offset": 162709348,
+          "name_offset": 159943840
+        },
+        {
+          "name": "isTargetedReplyHidden",
+          "record_offset": 162709360,
+          "name_offset": 159943888
+        },
+        {
+          "name": "_notificationPromptClear",
+          "record_offset": 162709372,
+          "name_offset": 159943920
+        },
+        {
+          "name": "notificationPromptClearConsumedDraftID",
+          "record_offset": 162709384,
+          "name_offset": 159943952
+        },
+        {
+          "name": "notificationPromptLandingPendingDraftID",
+          "record_offset": 162709396,
+          "name_offset": 159944000
+        },
+        {
+          "name": "notificationPromptRollbackCancellable",
+          "record_offset": 162709408,
+          "name_offset": 159944048
+        },
+        {
+          "name": "isDeferringWorkVoiceModelUpdate",
+          "record_offset": 162709420,
+          "name_offset": 159944096
+        },
+        {
+          "name": "pendingWorkLunaReserveAction",
+          "record_offset": 162709432,
+          "name_offset": 159944128
+        },
+        {
+          "name": "$__lazy_storage_$_isSendLongPressModelSelectorFeatureEnabled",
+          "record_offset": 162709444,
+          "name_offset": 159944160
+        },
+        {
+          "name": "$__lazy_storage_$_isLinkTokenizationEnabled",
+          "record_offset": 162709456,
+          "name_offset": 159944224
+        },
+        {
+          "name": "_isConsumerLockdownModeEnabledForConversation",
+          "record_offset": 162709468,
+          "name_offset": 159930800
+        },
+        {
+          "name": "_inlineFileReferenceUploadIDs",
+          "record_offset": 162709480,
+          "name_offset": 159944272
+        },
+        {
+          "name": "fileReferencePreviewPreparation",
+          "record_offset": 162709492,
+          "name_offset": 159944304
+        },
+        {
+          "name": "_hasSeenFreeThinkHarderGaugeNux",
+          "record_offset": 162709504,
+          "name_offset": 159944336
+        },
+        {
+          "name": "$__lazy_storage_$_isFreeThinkHarderGaugeLayerEnabled",
+          "record_offset": 162709516,
+          "name_offset": 159944368
+        },
+        {
+          "name": "trackedFreeThinkHarderGaugeSheet",
+          "record_offset": 162709528,
+          "name_offset": 159944432
+        },
+        {
+          "name": "tracksRecordingAnalytics",
+          "record_offset": 162709540,
+          "name_offset": 159944480
+        },
+        {
+          "name": "isStandardConversationComposer",
+          "record_offset": 162709552,
+          "name_offset": 159944512
+        },
+        {
+          "name": "canOpenGlobalPluginEntrypoints",
+          "record_offset": 162709564,
+          "name_offset": 159944544
+        },
+        {
+          "name": "supportsStickers",
+          "record_offset": 162709576,
+          "name_offset": 159944576
+        },
+        {
+          "name": "$__lazy_storage_$_conversationFollowupShelfModel",
+          "record_offset": 162709588,
+          "name_offset": 159944608
+        },
+        {
+          "name": "_retainedPrepareHints",
+          "record_offset": 162709600,
+          "name_offset": 159944672
+        },
+        {
+          "name": "prepareHintRetentionCancellable",
+          "record_offset": 162709612,
+          "name_offset": 159944704
+        },
+        {
+          "name": "pendingStarterPrompt",
+          "record_offset": 162709624,
+          "name_offset": 159944736
+        },
+        {
+          "name": "pendingDeveloperMessage",
+          "record_offset": 162709636,
+          "name_offset": 159944768
+        },
+        {
+          "name": "unrenderedPromptDraftSystemHints",
+          "record_offset": 162709648,
+          "name_offset": 159944800
+        },
+        {
+          "name": "_latestContainerLayout",
+          "record_offset": 162709660,
+          "name_offset": 159944848
+        },
+        {
+          "name": "_longPressRecentPhotosMorphingUploadID",
+          "record_offset": 162709672,
+          "name_offset": 159944880
+        },
+        {
+          "name": "$__lazy_storage_$_resolvedEffortPickerTreatment",
+          "record_offset": 162709684,
+          "name_offset": 159944928
+        },
+        {
+          "name": "__composerModelSelectionPolicyCache",
+          "record_offset": 162709696,
+          "name_offset": 159944976
+        },
+        {
+          "name": "$__lazy_storage_$_composerModelSelectionPolicyCachingEnabled",
+          "record_offset": 162709708,
+          "name_offset": 159945024
+        },
+        {
+          "name": "lastManualAssistantModeChatModelOnlyVersionID",
+          "record_offset": 162709720,
+          "name_offset": 159945088
+        },
+        {
+          "name": "sliderThinkingEffortPickerGeneration",
+          "record_offset": 162709732,
+          "name_offset": 159945136
+        },
+        {
+          "name": "pendingIntelligenceActivation",
+          "record_offset": 162709744,
+          "name_offset": 159945184
+        },
+        {
+          "name": "shouldApplyIntelligencePresetWhenAvailable",
+          "record_offset": 162709756,
+          "name_offset": 159945216
+        },
+        {
+          "name": "shouldApplyProSlotPresetAfterRefresh",
+          "record_offset": 162709768,
+          "name_offset": 159945264
+        },
+        {
+          "name": "_isTppUltraEffortSliderEnabled",
+          "record_offset": 162709780,
+          "name_offset": 159945312
+        },
+        {
+          "name": "_conversationSendBlockedFeature",
+          "record_offset": 162709792,
+          "name_offset": 159945344
+        },
+        {
+          "name": "$__lazy_storage_$_isWorkBlockedComposerDisabled",
+          "record_offset": 162709804,
+          "name_offset": 159945376
+        },
+        {
+          "name": "_isSubmissionDisabledByHost",
+          "record_offset": 162709816,
+          "name_offset": 159945424
+        },
+        {
+          "name": "latestStandardBannerDisplayState",
+          "record_offset": 162709828,
+          "name_offset": 159945456
+        },
+        {
+          "name": "voiceSafetyReviewBanner",
+          "record_offset": 162709840,
+          "name_offset": 159945504
+        },
+        {
+          "name": "$__lazy_storage_$_composerFilesMenuAvailable",
+          "record_offset": 162709852,
+          "name_offset": 159945536
+        },
+        {
+          "name": "$__lazy_storage_$_fileLibraryRecallEnabled",
+          "record_offset": 162709864,
+          "name_offset": 159945584
+        },
+        {
+          "name": "$__lazy_storage_$_installedSkillsRepository",
+          "record_offset": 162709876,
+          "name_offset": 159945632
+        },
+        {
+          "name": "refreshedSkillCacheMessageIDs",
+          "record_offset": 162709888,
+          "name_offset": 159945680
+        },
+        {
+          "name": "_isDoubleLineComposerLayoutForced",
+          "record_offset": 162709900,
+          "name_offset": 159945712
+        },
+        {
+          "name": "$__lazy_storage_$_composerIntelligenceRowAccentColorEnabled",
+          "record_offset": 162709912,
+          "name_offset": 159945760
+        },
+        {
+          "name": "$__lazy_storage_$_commitPendingAutocorrectionCandidateEnabled",
+          "record_offset": 162709924,
+          "name_offset": 159945824
+        },
+        {
+          "name": "$__lazy_storage_$_messageInputDraftUpdateCoalescingDelay",
+          "record_offset": 162709936,
+          "name_offset": 159945888
+        },
+        {
+          "name": "eligibleUpsell",
+          "record_offset": 162709948,
+          "name_offset": 159945945
+        },
+        {
+          "name": "recentlySubmittedMessageResetTask",
+          "record_offset": 162709960,
+          "name_offset": 159945968
+        },
+        {
+          "name": "_pendingDictationSubmissionPresentationID",
+          "record_offset": 162709972,
+          "name_offset": 159946016
+        },
+        {
+          "name": "inputBannerPresentationPolicy",
+          "record_offset": 162709984,
+          "name_offset": 159932784
+        },
+        {
+          "name": "$__lazy_storage_$_imageUploadEditPillVisibility",
+          "record_offset": 162709996,
+          "name_offset": 159946064
+        },
+        {
+          "name": "$__lazy_storage_$_composerImageAttachmentLightboxEnabled",
+          "record_offset": 162710008,
+          "name_offset": 159946112
+        },
+        {
+          "name": "healthGizmoIDSubject",
+          "record_offset": 162710020,
+          "name_offset": 159946176
+        },
+        {
+          "name": "$__lazy_storage_$_pendingConversationsEnabled",
+          "record_offset": 162710032,
+          "name_offset": 159946208
+        },
+        {
+          "name": "$__lazy_storage_$_useCoordinatorLastAction",
+          "record_offset": 162710044,
+          "name_offset": 159946256
+        },
+        {
+          "name": "systemHintsPickerEnabled",
+          "record_offset": 162710056,
+          "name_offset": 159946304
+        },
+        {
+          "name": "autocompletionSuggestionsEnabled",
+          "record_offset": 162710068,
+          "name_offset": 159946336
+        },
+        {
+          "name": "trendingTopicSuggestionsEnabled",
+          "record_offset": 162710080,
+          "name_offset": 159946384
+        },
+        {
+          "name": "customAutocompletePicker",
+          "record_offset": 162710092,
+          "name_offset": 159946416
+        },
+        {
+          "name": "sedimentFileMaxUploadBytes",
+          "record_offset": 162710104,
+          "name_offset": 159937168
+        },
+        {
+          "name": "$__lazy_storage_$_creditsConfiguration",
+          "record_offset": 162710116,
+          "name_offset": 159946448
+        },
+        {
+          "name": "$__lazy_storage_$_enableConnectorSystemHints",
+          "record_offset": 162710128,
+          "name_offset": 159946496
+        },
+        {
+          "name": "$__lazy_storage_$_enableStickyEcosystemSystemHints",
+          "record_offset": 162710140,
+          "name_offset": 159946544
+        },
+        {
+          "name": "$__lazy_storage_$_disableInlineConnectorSuggestions",
+          "record_offset": 162710152,
+          "name_offset": 159946608
+        },
+        {
+          "name": "$__lazy_storage_$_composerTextHitExtensionEnabled",
+          "record_offset": 162710164,
+          "name_offset": 159946672
+        },
+        {
+          "name": "disableElevatedHints",
+          "record_offset": 162710176,
+          "name_offset": 159946736
+        },
+        {
+          "name": "allowedSystemHints",
+          "record_offset": 162710188,
+          "name_offset": 159946768
+        },
+        {
+          "name": "chatgptSdkFocusedMessageID",
+          "record_offset": 162710200,
+          "name_offset": 159946800
+        },
+        {
+          "name": "disableModelSelection",
+          "record_offset": 162710212,
+          "name_offset": 159946832
+        },
+        {
+          "name": "expandsComposerWhenFocused",
+          "record_offset": 162710224,
+          "name_offset": 159946864
+        },
+        {
+          "name": "allowsSendLongPressModelSelector",
+          "record_offset": 162710236,
+          "name_offset": 159946896
+        },
+        {
+          "name": "allowsInlineTargetedReplies",
+          "record_offset": 162710248,
+          "name_offset": 159946944
+        },
+        {
+          "name": "usesInlineLinkTitles",
+          "record_offset": 162710260,
+          "name_offset": 159946976
+        },
+        {
+          "name": "calpicoDraftReply",
+          "record_offset": 162710272,
+          "name_offset": 159947008
+        },
+        {
+          "name": "$__lazy_storage_$_isTargetedReplyPluginTokensEnabledByExperiment",
+          "record_offset": 162710284,
+          "name_offset": 159947040
+        },
+        {
+          "name": "$__lazy_storage_$_creditsViewModel",
+          "record_offset": 162710296,
+          "name_offset": 159947120
+        },
+        {
+          "name": "fileUploadDestination",
+          "record_offset": 162710308,
+          "name_offset": 159937216
+        },
+        {
+          "name": "fileUploadRequestHeadersProvider",
+          "record_offset": 162710320,
+          "name_offset": 159937248
+        },
+        {
+          "name": "$__lazy_storage_$_enableThinkButton",
+          "record_offset": 162710332,
+          "name_offset": 159947168
+        },
+        {
+          "name": "$__lazy_storage_$_enableMercury",
+          "record_offset": 162710344,
+          "name_offset": 159947216
+        },
+        {
+          "name": "$__lazy_storage_$_modelsRepository",
+          "record_offset": 162710356,
+          "name_offset": 159947248
+        },
+        {
+          "name": "pendingTeenOnboardingAction",
+          "record_offset": 162710368,
+          "name_offset": 159947296
+        },
+        {
+          "name": "$__lazy_storage_$_connectorsService",
+          "record_offset": 162710380,
+          "name_offset": 159947328
+        },
+        {
+          "name": "$__lazy_storage_$_customizationsService",
+          "record_offset": 162710392,
+          "name_offset": 159947376
+        },
+        {
+          "name": "inputSelection",
+          "record_offset": 162710404,
+          "name_offset": 159947416
+        },
+        {
+          "name": "isCommittingPendingDictationText",
+          "record_offset": 162710416,
+          "name_offset": 159947440
+        },
+        {
+          "name": "inputTextAttributes",
+          "record_offset": 162710428,
+          "name_offset": 159947488
+        },
+        {
+          "name": "layoutDirection",
+          "record_offset": 162710440,
+          "name_offset": 159947508
+        },
+        {
+          "name": "committingDictationLivePreview",
+          "record_offset": 162710452,
+          "name_offset": 159947536
+        },
+        {
+          "name": "acceptingDictationLivePreview",
+          "record_offset": 162710464,
+          "name_offset": 159947568
+        },
+        {
+          "name": "inputRevision",
+          "record_offset": 162710476,
+          "name_offset": 159947598
+        },
+        {
+          "name": "_businessAgentStarterDraft",
+          "record_offset": 162710488,
+          "name_offset": 159947616
+        },
+        {
+          "name": "businessAgentStarterInputRevision",
+          "record_offset": 162710500,
+          "name_offset": 159947648
+        },
+        {
+          "name": "_isBusinessAgentStarterConversationVisible",
+          "record_offset": 162710512,
+          "name_offset": 159947696
+        },
+        {
+          "name": "_hasPendingFileLibraryDocumentSelection",
+          "record_offset": 162710524,
+          "name_offset": 159947744
+        },
+        {
+          "name": "pendingFileLibraryDocumentSelection",
+          "record_offset": 162710536,
+          "name_offset": 159947792
+        },
+        {
+          "name": "provisionalEditingFileReferenceUploadIDs",
+          "record_offset": 162710548,
+          "name_offset": 159947840
+        },
+        {
+          "name": "detachedFileReferenceUploadIDs",
+          "record_offset": 162710560,
+          "name_offset": 159947888
+        },
+        {
+          "name": "fileLibraryAttachmentAnalyticsByUploadID",
+          "record_offset": 162710572,
+          "name_offset": 159947920
+        },
+        {
+          "name": "currentInputSnapshot",
+          "record_offset": 162710584,
+          "name_offset": 159947968
+        },
+        {
+          "name": "currentInputAttachmentIndex",
+          "record_offset": 162710596,
+          "name_offset": 159948000
+        },
+        {
+          "name": "isApplyingTextViewInputChange",
+          "record_offset": 162710608,
+          "name_offset": 159948032
+        },
+        {
+          "name": "_homepageTrendingSuggestionsEnabled",
+          "record_offset": 162710620,
+          "name_offset": 159948064
+        },
+        {
+          "name": "inputSnapshotSubject",
+          "record_offset": 162710632,
+          "name_offset": 159948112
+        },
+        {
+          "name": "inputDidChangeSubject",
+          "record_offset": 162710644,
+          "name_offset": 159948144
+        },
+        {
+          "name": "inputPresentationContextDidChange",
+          "record_offset": 162710656,
+          "name_offset": 159948176
+        },
+        {
+          "name": "$__lazy_storage_$_familyInviteService",
+          "record_offset": 162710668,
+          "name_offset": 159948224
+        },
+        {
+          "name": "$__lazy_storage_$_usesBaselineStarterPromptStyleValue",
+          "record_offset": 162710680,
+          "name_offset": 159948272
+        },
+        {
+          "name": "$__lazy_storage_$_autocompleteStyleMatchValue",
+          "record_offset": 162710692,
+          "name_offset": 159948336
+        },
+        {
+          "name": "$__lazy_storage_$_removeAutocompleteDividerValue",
+          "record_offset": 162710704,
+          "name_offset": 159948384
+        },
+        {
+          "name": "isHandlingNotificationPermissionBeaconAction",
+          "record_offset": 162710716,
+          "name_offset": 159948448
+        },
+        {
+          "name": "hasActiveNotificationPermissionRequest",
+          "record_offset": 162710728,
+          "name_offset": 159948496
+        },
+        {
+          "name": "modelContext",
+          "record_offset": 162710740,
+          "name_offset": 159948535
+        },
+        {
+          "name": "refreshUsageLimitMetadata",
+          "record_offset": 162710752,
+          "name_offset": 159948560
+        },
+        {
+          "name": "preservesKeyboardDuringPendingTextCommit",
+          "record_offset": 162710764,
+          "name_offset": 159948592
+        },
+        {
+          "name": "$__lazy_storage_$_whisperMessageBuilder",
+          "record_offset": 162710776,
+          "name_offset": 159948640
+        },
+        {
+          "name": "externalSubmissionEnabled",
+          "record_offset": 162710788,
+          "name_offset": 159948688
+        },
+        {
+          "name": "externalSubmissionHandler",
+          "record_offset": 162710800,
+          "name_offset": 159934752
+        },
+        {
+          "name": "pendingSendMorphSource",
+          "record_offset": 162710812,
+          "name_offset": 159948720
+        },
+        {
+          "name": "sendMorphSubject",
+          "record_offset": 162710824,
+          "name_offset": 159948752
+        },
+        {
+          "name": "submissionContextModifier",
+          "record_offset": 162710836,
+          "name_offset": 159948784
+        },
+        {
+          "name": "submissionPreparation",
+          "record_offset": 162710848,
+          "name_offset": 159948816
+        },
+        {
+          "name": "submitContextTracker",
+          "record_offset": 162710860,
+          "name_offset": 159948848
+        },
+        {
+          "name": "submitContextSource",
+          "record_offset": 162710872,
+          "name_offset": 159948880
+        },
+        {
+          "name": "dependencies",
+          "record_offset": 162710884,
+          "name_offset": 159928617
+        },
+        {
+          "name": "imagesRepository",
+          "record_offset": 162710896,
+          "name_offset": 159948912
+        },
+        {
+          "name": "fileLibraryComposerSearch",
+          "record_offset": 162710908,
+          "name_offset": 159948944
+        },
+        {
+          "name": "draftManager",
+          "record_offset": 162710920,
+          "name_offset": 159948970
+        },
+        {
+          "name": "currentDateProvider",
+          "record_offset": 162710932,
+          "name_offset": 159933968
+        },
+        {
+          "name": "recordingPermissionChecker",
+          "record_offset": 162710944,
+          "name_offset": 159948992
+        },
+        {
+          "name": "draftLifecycleTracker",
+          "record_offset": 162710956,
+          "name_offset": 159949024
+        },
+        {
+          "name": "creditsPurchaseSheetBuilder",
+          "record_offset": 162710968,
+          "name_offset": 159949056
+        },
+        {
+          "name": "statsigFeatureFlagManager",
+          "record_offset": 162710980,
+          "name_offset": 159931504
+        },
+        {
+          "name": "$__lazy_storage_$_workVoiceExperimentLayer",
+          "record_offset": 162710992,
+          "name_offset": 159949088
+        },
+        {
+          "name": "$__lazy_storage_$_isVoiceAgentsEnabled",
+          "record_offset": 162711004,
+          "name_offset": 159949136
+        },
+        {
+          "name": "_isRestoringEditingContext",
+          "record_offset": 162711016,
+          "name_offset": 159949184
+        },
+        {
+          "name": "preparationOwnerID",
+          "record_offset": 162711028,
+          "name_offset": 159937840
+        },
+        {
+          "name": "$__lazy_storage_$_prepareConversationViewModel",
+          "record_offset": 162711040,
+          "name_offset": 159949216
+        },
+        {
+          "name": "$__lazy_storage_$_conversationDetailMetadataService",
+          "record_offset": 162711052,
+          "name_offset": 159928784
+        },
+        {
+          "name": "$__lazy_storage_$_conversationSummaryHandoffService",
+          "record_offset": 162711064,
+          "name_offset": 159949264
+        },
+        {
+          "name": "usesConversationDraft",
+          "record_offset": 162711076,
+          "name_offset": 159949328
+        },
+        {
+          "name": "restoresAndPersistsNewThreadDrafts",
+          "record_offset": 162711088,
+          "name_offset": 159949360
+        },
+        {
+          "name": "usesEditMessageOverlay",
+          "record_offset": 162711100,
+          "name_offset": 159935600
+        },
+        {
+          "name": "draftRepositoryIDOverride",
+          "record_offset": 162711112,
+          "name_offset": 159949408
+        },
+        {
+          "name": "messageInputInteractionSubject",
+          "record_offset": 162711124,
+          "name_offset": 159949440
+        },
+        {
+          "name": "handler",
+          "record_offset": 162711136,
+          "name_offset": 159949471
+        },
+        {
+          "name": "$__lazy_storage_$_fileUploadService",
+          "record_offset": 162711148,
+          "name_offset": 159949488
+        },
+        {
+          "name": "pendingFileLibraryAttachmentOutcome",
+          "record_offset": 162711160,
+          "name_offset": 159949536
+        },
+        {
+          "name": "$__lazy_storage_$_conversationRepository",
+          "record_offset": 162711172,
+          "name_offset": 159949584
+        },
+        {
+          "name": "$__lazy_storage_$_accountFeatureFlagManager",
+          "record_offset": 162711184,
+          "name_offset": 159949632
+        },
+        {
+          "name": "$__lazy_storage_$_bannerManager",
+          "record_offset": 162711196,
+          "name_offset": 159949680
+        },
+        {
+          "name": "$__lazy_storage_$_isConsumerLockdownModeEnabledForConversationPublisher",
+          "record_offset": 162711208,
+          "name_offset": 159949712
+        },
+        {
+          "name": "$__lazy_storage_$_gizmoRepository",
+          "record_offset": 162711220,
+          "name_offset": 159949792
+        },
+        {
+          "name": "$__lazy_storage_$_systemHintsRepository",
+          "record_offset": 162711232,
+          "name_offset": 159928736
+        },
+        {
+          "name": "$__lazy_storage_$_activeUserWorkspaceManager",
+          "record_offset": 162711244,
+          "name_offset": 159949840
+        },
+        {
+          "name": "$__lazy_storage_$_notificationService",
+          "record_offset": 162711256,
+          "name_offset": 159949888
+        },
+        {
+          "name": "$__lazy_storage_$_notificationSettingsService",
+          "record_offset": 162711268,
+          "name_offset": 159949936
+        },
+        {
+          "name": "$__lazy_storage_$_photoLibraryService",
+          "record_offset": 162711280,
+          "name_offset": 159928944
+        },
+        {
+          "name": "isRecentPhotoSuggestionSurfaceVisible",
+          "record_offset": 162711292,
+          "name_offset": 159949984
+        },
+        {
+          "name": "$__lazy_storage_$_recentPhotoSuggestionRepository",
+          "record_offset": 162711304,
+          "name_offset": 159950032
+        },
+        {
+          "name": "cachedRecentPhotoSuggestionRowViewModel",
+          "record_offset": 162711316,
+          "name_offset": 159950096
+        },
+        {
+          "name": "$__lazy_storage_$_recentPhotoSuggestionExperiment",
+          "record_offset": 162711328,
+          "name_offset": 159950144
+        },
+        {
+          "name": "$__lazy_storage_$_isRecentPhotoSuggestionEnabled",
+          "record_offset": 162711340,
+          "name_offset": 159950208
+        },
+        {
+          "name": "photoLibraryPermissionBeforeAddSheetTask",
+          "record_offset": 162711352,
+          "name_offset": 159950272
+        },
+        {
+          "name": "$__lazy_storage_$_whisperKillswitch",
+          "record_offset": 162711364,
+          "name_offset": 159950320
+        },
+        {
+          "name": "$__lazy_storage_$_imageDrawingStrokesCache",
+          "record_offset": 162711376,
+          "name_offset": 159950368
+        },
+        {
+          "name": "pendingSketch",
+          "record_offset": 162711388,
+          "name_offset": 159950411
+        },
+        {
+          "name": "lightboxSketchEditorsByUploadID",
+          "record_offset": 162711400,
+          "name_offset": 159950432
+        },
+        {
+          "name": "_sketchEditorsByUploadID",
+          "record_offset": 162711412,
+          "name_offset": 159950464
+        },
+        {
+          "name": "annotatedUploadIDs",
+          "record_offset": 162711424,
+          "name_offset": 159950496
+        },
+        {
+          "name": "$__lazy_storage_$_accountModelBehaviorProvider",
+          "record_offset": 162711436,
+          "name_offset": 159950528
+        },
+        {
+          "name": "$__lazy_storage_$_fileUploadPersistenceBannerPresenter",
+          "record_offset": 162711448,
+          "name_offset": 159950576
+        },
+        {
+          "name": "postDisclosuresPresentation",
+          "record_offset": 162711460,
+          "name_offset": 159929056
+        },
+        {
+          "name": "startingDictationAttachmentPresentations",
+          "record_offset": 162711472,
+          "name_offset": 159950640
+        },
+        {
+          "name": "_composerAssistantModeSelectionController",
+          "record_offset": 162711484,
+          "name_offset": 159950688
+        },
+        {
+          "name": "bag",
+          "record_offset": 162711496,
+          "name_offset": 159929688
+        },
+        {
+          "name": "isApplyingRestoredDraft",
+          "record_offset": 162711508,
+          "name_offset": 159950736
+        },
+        {
+          "name": "_workComposerPrediction",
+          "record_offset": 162711520,
+          "name_offset": 159950768
+        },
+        {
+          "name": "hasDismantled",
+          "record_offset": 162711532,
+          "name_offset": 159950792
+        },
+        {
+          "name": "composerLifecycleIDs",
+          "record_offset": 162711544,
+          "name_offset": 159950816
+        },
+        {
+          "name": "mountedComposerIDs",
+          "record_offset": 162711556,
+          "name_offset": 159950848
+        },
+        {
+          "name": "_isMounted",
+          "record_offset": 162711568,
+          "name_offset": 159950867
+        },
+        {
+          "name": "draftRestorationTask",
+          "record_offset": 162711580,
+          "name_offset": 159950880
+        },
+        {
+          "name": "isPreparingFileEdit",
+          "record_offset": 162711592,
+          "name_offset": 159950912
+        },
+        {
+          "name": "draftWriteTask",
+          "record_offset": 162711604,
+          "name_offset": 159950932
+        },
+        {
+          "name": "latestDraftUpdate",
+          "record_offset": 162711616,
+          "name_offset": 159950960
+        },
+        {
+          "name": "pendingDraftUpdate",
+          "record_offset": 162711628,
+          "name_offset": 159950992
+        },
+        {
+          "name": "isSubmittingComposerInput",
+          "record_offset": 162711640,
+          "name_offset": 159951024
+        },
+        {
+          "name": "$__lazy_storage_$_pendingDraftUpdateDebouncer",
+          "record_offset": 162711652,
+          "name_offset": 159951056
+        },
+        {
+          "name": "$__lazy_storage_$_noAuthManager",
+          "record_offset": 162711664,
+          "name_offset": 159928912
+        },
+        {
+          "name": "$__lazy_storage_$_auth",
+          "record_offset": 162711676,
+          "name_offset": 159951104
+        },
+        {
+          "name": "_modelPickerPrefersAutoForInstantPresetSetting",
+          "record_offset": 162711688,
+          "name_offset": 159951136
+        },
+        {
+          "name": "_modelPickerProPresetPreferenceSetting",
+          "record_offset": 162711700,
+          "name_offset": 159951184
+        },
+        {
+          "name": "_chatComposerIntelligencePreset",
+          "record_offset": 162711712,
+          "name_offset": 159951232
+        },
+        {
+          "name": "_sentMessageCountForPlanUpsell",
+          "record_offset": 162711724,
+          "name_offset": 159951264
+        },
+        {
+          "name": "_hasAcceptedWorkComposerPrediction",
+          "record_offset": 162711736,
+          "name_offset": 159951296
+        },
+        {
+          "name": "$__lazy_storage_$_memoriesViewModel",
+          "record_offset": 162711748,
+          "name_offset": 159951344
+        },
+        {
+          "name": "_inputLastMessageAction",
+          "record_offset": 162711760,
+          "name_offset": 159951392
+        },
+        {
+          "name": "_fileUploadBlockedFeature",
+          "record_offset": 162711772,
+          "name_offset": 159951424
+        },
+        {
+          "name": "_cameraState",
+          "record_offset": 162711784,
+          "name_offset": 159927171
+        },
+        {
+          "name": "softRateLimitBannerID",
+          "record_offset": 162711796,
+          "name_offset": 159951456
+        },
+        {
+          "name": "dictationTimeLimitReachedBannerID",
+          "record_offset": 162711808,
+          "name_offset": 159951488
+        },
+        {
+          "name": "_systemHintSuggestionTimeout",
+          "record_offset": 162711820,
+          "name_offset": 159951536
+        },
+        {
+          "name": "featureTrialActivationTask",
+          "record_offset": 162711832,
+          "name_offset": 159951568
+        },
+        {
+          "name": "startSummarizedNewChatTask",
+          "record_offset": 162711844,
+          "name_offset": 159951600
+        },
+        {
+          "name": "workBeaconOpenSourceConversationID",
+          "record_offset": 162711856,
+          "name_offset": 159951632
+        },
+        {
+          "name": "$__lazy_storage_$_messageInputBannerViewModel",
+          "record_offset": 162711868,
+          "name_offset": 159951680
+        },
+        {
+          "name": "isHomeBeaconPresentationVisible",
+          "record_offset": 162711880,
+          "name_offset": 159951728
+        },
+        {
+          "name": "_enablePreciseLocationTask",
+          "record_offset": 162711892,
+          "name_offset": 159951760
+        },
+        {
+          "name": "$__lazy_storage_$_addSheetRemainingAttachmentBannerThreshold",
+          "record_offset": 162711904,
+          "name_offset": 159951792
+        },
+        {
+          "name": "$__lazy_storage_$_focusOnAttachmentEnabled",
+          "record_offset": 162711916,
+          "name_offset": 159951856
+        },
+        {
+          "name": "$__lazy_storage_$_attachmentsDisabledPopoverStyle",
+          "record_offset": 162711928,
+          "name_offset": 159951904
+        },
+        {
+          "name": "$__lazy_storage_$_isSendDisabledFileUploadPopoverEnabled",
+          "record_offset": 162711940,
+          "name_offset": 159951968
+        },
+        {
+          "name": "pendingSystemHintSelectionInFlightID",
+          "record_offset": 162711952,
+          "name_offset": 159952032
+        },
+        {
+          "name": "pendingSystemHintDraftSelectionInFlightID",
+          "record_offset": 162711964,
+          "name_offset": 159952080
+        },
+        {
+          "name": "lastAppliedPromptDraftIdentifier",
+          "record_offset": 162711976,
+          "name_offset": 159952128
+        },
+        {
+          "name": "systemHintPromptDraft",
+          "record_offset": 162711988,
+          "name_offset": 159952176
+        },
+        {
+          "name": "serverActivatedStudyModeMessageID",
+          "record_offset": 162712000,
+          "name_offset": 159952208
+        },
+        {
+          "name": "pendingSystemHintDraftSelection",
+          "record_offset": 162712012,
+          "name_offset": 159952256
+        },
+        {
+          "name": "_hasUnsavedModelSpeaksFirstLanding",
+          "record_offset": 162712024,
+          "name_offset": 159952288
+        },
+        {
+          "name": "_isGizmoReadDeferredUntilAuthorized",
+          "record_offset": 162712036,
+          "name_offset": 159952336
+        },
+        {
+          "name": "_isConversationRefreshing",
+          "record_offset": 162712048,
+          "name_offset": 159952384
+        },
+        {
+          "name": "_workSendBlockedFeature",
+          "record_offset": 162712060,
+          "name_offset": 159952416
+        },
+        {
+          "name": "_keepsBlockedWorkComposerVisible",
+          "record_offset": 162712072,
+          "name_offset": 159952448
+        },
+        {
+          "name": "pendingSystemHintSelection",
+          "record_offset": 162712084,
+          "name_offset": 159952496
+        },
+        {
+          "name": "_selectedElevatedHintConfig",
+          "record_offset": 162712096,
+          "name_offset": 159952528
+        },
+        {
+          "name": "_$observationRegistrar",
+          "record_offset": 162712108,
+          "name_offset": 159925968
+        },
+        {
+          "name": "$__lazy_storage_$__publisher",
+          "record_offset": 162712120,
+          "name_offset": 159930064
+        }
+      ]
+    },
+    {
+      "id": "J01",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/valdi_core/src/RootComponentsManager.js",
+      "sha256": "6b0305c63bee2ee8d2bf5d030c6cdd7fd872a38040a8867d918b9c3066f55d9c",
+      "symbol": "createWithComponentPath",
+      "byte_offset": 1778,
+      "line": 1,
+      "evidence_type": "official-artifact-observation",
+      "claim": "JS root creation accepts component path; native caller not established",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "snippet": "is.rootComponents[t.contextId]||(0,a.withLocalNativeRefs)(t.contextId,()=>{this.createWithComponentPath(t.contextId,t.componentPath,t.initialViewModel,t.componentContext),t.latestViewModel!==t.initialViewModel&&this.render(t.contextId,t.latestViewModel),this.onHotReloaded(t.contextId)})}createHandle(e,t,r,s,i,a){const d=this.rendererFactory.makeRenderer(e),c=this.nativeAppearanceDebugSettings?.addRenderer(d),p=(0,o.registerLogMetadataProvider)(\"Valdi Runtime\",d.dumpLogMetadata.bind(d)),l=new n.ComponentRef,m={contextId:e,ren",
+      "android_counterpart": {
+        "path": "derived/valdimodules-293/android/valdi_core/src/RootComponentsManager.js",
+        "present": true,
+        "sha256": "3602b6caeb8c1c89a3f73c28659d722a2afda3b25b15f3f2e639ebf547f2166b",
+        "byte_identical": false,
+        "format": "valdi-bytecode",
+        "behavior_equivalence": "unverified"
+      }
+    },
+    {
+      "id": "J02",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/valdi_core/src/Application.js",
+      "sha256": "8e8498e475b9631b633e4460be01195f9e3a9b775b9c1c800fefcf2e19bddf91",
+      "symbol": "observeKeyboardHeight",
+      "byte_offset": 320,
+      "line": 1,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Keyboard/background hooks delegate to ApplicationBridge, with unsupported fallbacks",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "snippet": "uire(\"./ApplicationStateNative\"),t=require(\"./CompilerIntrinsics\");let i=0;if(n.observeKeyboardHeight){const e=(0,n.observeKeyboardHeight)(e=>{i=e});(0,o.getModuleLoader)(module).onHotReload(module,module.path,()=>{e.cancel()})}var s;!function(o){o.getState=function(){return(0,t.isVersionAtLeast)(195)?(0,r.getState)():0},o.observeState=function(e){let n=!1;const o=o=>{Promise.resolve().then(()=>{n||e(o)})};if((0,t.isVersionAtLeast)(195)){const e=(0,r.observeState)(o);return{cancel(){n=!0,e.cancel()}}}return o(0),{cancel:()=>",
+      "android_counterpart": {
+        "path": "derived/valdimodules-293/android/valdi_core/src/Application.js",
+        "present": true,
+        "sha256": "91251aa5c0bc6f91ee1204610aa16ed02c034167e995a8193ddb79bd9a128468",
+        "byte_identical": false,
+        "format": "valdi-bytecode",
+        "behavior_equivalence": "unverified"
+      }
+    },
+    {
+      "id": "J03",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/widgets/src/components/util/WithKeyboardPadding.js",
+      "sha256": "fd152c3e069056680ba2ecb3dad22e364a5cfdcf946c1eb05bd3ede133a82cca",
+      "symbol": "onDestroy(){",
+      "byte_offset": 762,
+      "line": 1,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Keyboard observer controls padding and is cancelled on destruction",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "snippet": "duration:t})}else this.setState({keyboardHeight:e});this.keyboardLastHeight=e})}onDestroy(){this.keyboardCancelable?.cancel()}onRender(){const e=this.viewModel.enabled??!0,o=this.viewModel.paddingOffset??0;t.beginRenderWithStringKey(i,void 0),t.setAttributeNumber(\"paddingBottom\",e?Math.max(0,this.state.keyboardHeight+o):void 0),t.renderUnnamedSlotWithStringKey(this),t.endRender()}}exports.WithKeyboardPadding=WithKeyboardPadding;\n",
+      "android_counterpart": {
+        "path": "derived/valdimodules-293/android/widgets/src/components/util/WithKeyboardPadding.js",
+        "present": true,
+        "sha256": "3837c667ba0c220ff8ebde6511221338f78c514ae0c6f59cbbabbeb1ca02959d",
+        "byte_identical": false,
+        "format": "valdi-bytecode",
+        "behavior_equivalence": "unverified"
+      }
+    },
+    {
+      "id": "J04",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/widgets/src/components/scroll/ScrollViewHandler.js",
+      "sha256": "b77e83550d97a77a29c3e1f2e13fce0a7338395f42129af6dd2cd41e7f726c02",
+      "symbol": "bindMainThreadOnScroll",
+      "byte_offset": 2369,
+      "line": 1,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Scroll handler separates callback thread choice and native element offset attributes",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "snippet": "allback?.getHandler()}get onScroll(){return this.onScrollCallback?.getHandler()}bindMainThreadOnScroll(e){if(void 0!==this.mainThreadScrollBinding)throw new Error(\"Scroll view already has a main-thread scroll binding\");const t={callback:void 0,listenersChanged:e};return this.mainThreadScrollBinding=t,{update:e=>{t.callback=e,this.element?.setAttribute(\"onScroll\",e)},unsubscribe:()=>{this.mainThreadScrollBinding=void 0,this.element?.setAttribute(\"onScroll\",this.onScroll)}}}get scrollViewFrame(){return this.element?.frame}rese",
+      "android_counterpart": {
+        "path": "derived/valdimodules-293/android/widgets/src/components/scroll/ScrollViewHandler.js",
+        "present": true,
+        "sha256": "622c3eeade4a8549363769462878fa0e56e848adcd21277e0a90f5cc1cee316b",
+        "byte_identical": false,
+        "format": "valdi-bytecode",
+        "behavior_equivalence": "unverified"
+      }
+    },
+    {
+      "id": "J05",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/widgets/src/components/inputs/TextInputHandler.js",
+      "sha256": "0ca0c9219b984eae45dade95f9a512c70782b7072d4c6a051cba7903741d76f5",
+      "symbol": "focusNextCreated",
+      "byte_offset": 220,
+      "line": 1,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Focus may be deferred until native element creation",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "snippet": "ef\");class TextInputHandler{constructor(){this.elementRef=new e.ElementRef,this.focusNextCreated=!1}isFocused(){if(this.focusNextCreated)return!0;for(const e of this.elementRef.all())if(this.readFocusValueFromElement(e))return!0;return!1}setFocused(e){if(e){const e=this.elementRef.single();e?this.applyFocusValueToElement(e,!0):this.focusNextCreated=!0}else{for(const e of this.elementRef.all())this.applyFocusValueToElement(e,!1);this.focusNextCreated=!1}}onElementCreated(e){return this.focusNextCreated&&(this.focusNextCreated",
+      "android_counterpart": {
+        "path": "derived/valdimodules-293/android/widgets/src/components/inputs/TextInputHandler.js",
+        "present": true,
+        "sha256": "45b3da167854f882ca479db53bbf66598745425b07c24bae6a9bd7c1008fa0e1",
+        "byte_identical": false,
+        "format": "valdi-bytecode",
+        "behavior_equivalence": "unverified"
+      }
+    },
+    {
+      "id": "J06",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/oai_ui/src/components/TextInput.js",
+      "sha256": "dad1782ffb9a50bde6ce2c83319680df3a271699ab4b8b7d357de29b31fb9d32",
+      "symbol": "makeNodePrototype(\"textfield\"",
+      "byte_offset": 400,
+      "line": 1,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Form input renders textfield with controlled/uncontrolled text and callback properties; not established main composer",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "snippet": "pe([\"width\",\"100%\",\"accessibilityNavigation\",\"ignored\"],\"htEmUtONbIwVunob\"),n=t.makeNodePrototype(\"textfield\",[\"accessibilityCategory\",\"input\"],\"1yJFtlU0fVYdXzVf\"),l=require(\"oai_core/src/OAITokens\"),s=require(\"oai_core/src/OAITypography\"),d=require(\"valdi_core/src/Component\"),a=require(\"valdi_core/src/Style\"),u=require(\"./FormField\"),h=require(\"./Text\"),v=require(\"./settings/SettingsTheme\");var p,g;!function(e){e.Email=\"email\",e.Number=\"number\",e.Password=\"password\",e.Tel=\"tel\",e.Text=\"text\",e.Url=\"url\"}(p||(exports.TextInp",
+      "android_counterpart": {
+        "path": "derived/valdimodules-293/android/oai_ui/src/components/TextInput.js",
+        "present": true,
+        "sha256": "23144525d53a426d4776fe52c1d6047be22e2ff56401173d418f85af5e0eff14",
+        "byte_identical": false,
+        "format": "valdi-bytecode",
+        "behavior_equivalence": "unverified"
+      }
+    },
+    {
+      "id": "J07",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/oai_core/src/OAITheme.js",
+      "sha256": "1f3e9fb626003421742cc38a51b31df669a4ce8593a604e9c6e578ceef1f35f1",
+      "symbol": "configureColorPalette",
+      "byte_offset": 828,
+      "line": 1,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Color palettes and system dark-mode observer configure runtime; native font rendering not established",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "snippet": "=t)return!1;u(t);const a=e??d.System;return D(),b(m(a,v(a))),!0}function u(e){e.configureColorPalette(exports.OAI_LIGHT_THEME,exports.OAI_LIGHT_COLOR_PALETTE),e.configureColorPalette(exports.OAI_DARK_THEME,exports.OAI_DARK_COLOR_PALETTE)}function b(e){const t=c();void 0!==t&&(global.oaiValdiCurrentPalette=e===exports.OAI_DARK_THEME?exports.OAI_DARK_COLOR_PALETTE:exports.OAI_LIGHT_COLOR_PALETTE,t.setActiveColorPalette(e))}function g(e){const t=e??d.System;return m(t,v(t))}function m(e,t){return e===d.Dark?exports.OAI_DARK_THE",
+      "android_counterpart": {
+        "path": "derived/valdimodules-293/android/oai_core/src/OAITheme.js",
+        "present": true,
+        "sha256": "a8481ee892bfb08317539ec3030fc5ab217288d14a8b11543160c2844d2d43ff",
+        "byte_identical": false,
+        "format": "valdi-bytecode",
+        "behavior_equivalence": "unverified"
+      }
+    },
+    {
+      "id": "J08",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/dil_widgets/src/DILEntryPointComponent.js",
+      "sha256": "bd6f4fbf37716304d0a6f095e2a8eeaffb3e2ad1be0477501d8d7f823c1bc254",
+      "symbol": "registerOnEventHandler",
+      "byte_offset": 11357,
+      "line": 1,
+      "evidence_type": "official-artifact-observation",
+      "claim": "DIL JS registers host event handler; native iOS constructor/caller unknown",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "snippet": "dWidgetAction=e=>(0,p.isRegisteredWidgetAction)(e,this.entityAppDataInput),this.registerOnEventHandler=e=>{const t=this.context?.registerOnEventHandler;if(void 0===t)throw new Error(\"DIL host-state event registration is unavailable.\");let i=!1;const s=[],r=t(t=>{i?this.forwardHostEvent(t,e):s.push(t)});try{(0,E.isVersionAtLeast)(74)&&(this.didAcknowledgeHostStateEvents||void 0===this.context?.hostStateEventsReady||(this.context.hostStateEventsReady(),this.didAcknowledgeHostStateEvents=!0)),i=!0;for(const t of s)this.forwardH",
+      "android_counterpart": {
+        "path": "derived/valdimodules-293/android/dil_widgets/src/DILEntryPointComponent.js",
+        "present": true,
+        "sha256": "8aee820fcceed107e280456ba5598e3921c68391d714b65f28750ad2490aad13",
+        "byte_identical": false,
+        "format": "valdi-bytecode",
+        "behavior_equivalence": "unverified"
+      }
+    },
+    {
+      "id": "J09",
+      "platform": "ios",
+      "version": "1.2026.293",
+      "path": "derived/valdimodules-293/ios/chatgpt_services/src/conversations/ChatGPTStreamingWorkerClient.js",
+      "sha256": "88e4ca8ef0b63e60927eeb2d569da432b9a45aec0eb4d6ac278c89cc2006c871",
+      "symbol": "cancel(e){",
+      "byte_offset": 915,
+      "line": 1,
+      "evidence_type": "official-artifact-observation",
+      "claim": "Worker requestId cleanup is visible; native main-chat consumer unknown",
+      "limitations": [
+        "Packaged JS capability; native main-chat reachability and device behavior unverified"
+      ],
+      "status": "partial",
+      "snippet": "dpoint();e.setReceiver(e=>this.receive(e)),this.endpoint=e}return this.endpoint}cancel(e){void 0!==this.streams.get(e)&&(this.streams.delete(e),this.endpoint?.post({kind:t.ChatGPTStreamHostMessageKind.Cancel,requestId:e}))}receive(r){const s=this.streams.get(r.requestId);if(void 0!==s)switch(r.kind){case t.ChatGPTStreamWorkerMessageKind.PreparedContent:{const e=r.content;if(void 0!==s.callbacks.onPreparedContent)s.callbacks.onPreparedContent(e);else if(e.content.startsWith(s.deliveredContent)){const t=e.content.slice(s.deliv",
+      "android_counterpart": {
+        "path": "derived/valdimodules-293/android/chatgpt_services/src/conversations/ChatGPTStreamingWorkerClient.js",
+        "present": true,
+        "sha256": "45bf692d3c04f68b2b0684df1323e0a8bfc8b9a53c4d404f3159721bfbfefc59",
+        "byte_identical": false,
+        "format": "valdi-bytecode",
+        "behavior_equivalence": "unverified"
+      }
+    }
+  ],
+  "unknowns": [
+    "No native caller/address chain connects main conversation model to DILValdiViewModel constructors or worker endpoint",
+    "Swift field descriptors prove ownership but not storage value, isolation guarantees or lifecycle transitions",
+    "Native UI dispatch, UIKit compositing and dynamic Swift calls not decompiled",
+    "No device/visual/keyboard/gesture or online-service observation"
+  ],
+  "native_parser_validation": {
+    "macho_magic": "0xfeedfacf",
+    "selected_type_descriptors": 7,
+    "relative_pointers": "decoded via LC_SEGMENT_64 VM-to-file mappings",
+    "field_record_size": 12,
+    "bounds": "selected descriptor spans and referenced strings lie in file; descriptors resolved from swift5_types tables",
+    "undefined_symbols": "LC_SYMTAB n_type N_UNDF with Valdi/DIL name filter; library ordinal 2 is OpenAIXPlat from ordered dylib commands",
+    "warning": "Imported symbols and type fields do not establish runtime dispatch or function bodies"
+  }
+}

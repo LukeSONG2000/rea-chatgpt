@@ -1,0 +1,598 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x6080c68",
+    "end_exclusive": "0x6081300",
+    "sha256": "dd744aa134232a290b7c8d9ea134b890c7ba0468656cbc8d46b8b05cef5a4793"
+  },
+  "linker_function_starts_in_window": [
+    "0x6080c68",
+    "0x6080da8",
+    "0x6080e74",
+    "0x60810f8"
+  ],
+  "next_linker_function_start": "0x6081604",
+  "direct_calls": [
+    {
+      "site": "0x6080c9c",
+      "target": "0xfaa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080ca4",
+      "target": "0x7c54694",
+      "imported_symbol": "_swift_initStackObject"
+    },
+    {
+      "site": "0x6080cb4",
+      "target": "0x1d93370",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080cc0",
+      "target": "0x7c53c08",
+      "imported_symbol": "_objc_retain_x8"
+    },
+    {
+      "site": "0x6080cc8",
+      "target": "0x6080da8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080ccc",
+      "target": "0x479c6ec",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080ce0",
+      "target": "0x766ebc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080cf0",
+      "target": "0x1d66714",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080d08",
+      "target": "0x45a5e4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080d0c",
+      "target": "0x43eafb0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080d10",
+      "target": "0x7c53ba8",
+      "imported_symbol": "_objc_retain_x25"
+    },
+    {
+      "site": "0x6080d14",
+      "target": "0x153c68",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080d18",
+      "target": "0x157914",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080d1c",
+      "target": "0x7c4d14c",
+      "imported_symbol": "_$sSD17dictionaryLiteralSDyxq_Gx_q_td_tcfC",
+      "chained_binding": {
+        "slot": "0xaad6318",
+        "symbol": "_$sSD17dictionaryLiteralSDyxq_Gx_q_td_tcfC",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11031,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x6080d34",
+      "target": "0x575be78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080d38",
+      "target": "0x7c645a0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacad290",
+        "register": "x1",
+        "selector": "init"
+      }
+    },
+    {
+      "site": "0x6080d44",
+      "target": "0x7c77ca0",
+      "imported_symbol": null,
+      "objc_stub_selector_load": {
+        "slot": "0xacb2088",
+        "register": "x1",
+        "selector": "setLineSpacing:"
+      }
+    },
+    {
+      "site": "0x6080d4c",
+      "target": "0x479e1c8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080d54",
+      "target": "0x7c53c08",
+      "imported_symbol": "_objc_retain_x8"
+    },
+    {
+      "site": "0x6080d58",
+      "target": "0x15fd6c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080d68",
+      "target": "0x60b4030",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080d6c",
+      "target": "0x7c53a64",
+      "imported_symbol": "_objc_release_x21"
+    },
+    {
+      "site": "0x6080d70",
+      "target": "0x7c53a40",
+      "imported_symbol": "_objc_release_x19"
+    },
+    {
+      "site": "0x6080d7c",
+      "target": "0x6080e74",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080d80",
+      "target": "0x151864",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080dac",
+      "target": "0x1602b0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080dbc",
+      "target": "0x610efc4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080dc4",
+      "target": "0x1bfd0c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080dc8",
+      "target": "0x14b2d8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080dd8",
+      "target": "0x1470d0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080ddc",
+      "target": "0x4485270",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080df0",
+      "target": "0xae3848",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080df8",
+      "target": "0x4dd424",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080dfc",
+      "target": "0x2123c8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e00",
+      "target": "0x153c34",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e1c",
+      "target": "0x76511c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e24",
+      "target": "0x4dc3a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e28",
+      "target": "0x155124",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e38",
+      "target": "0x154114",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e40",
+      "target": "0x147e08",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e44",
+      "target": "0x154d0c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e48",
+      "target": "0x154054",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e54",
+      "target": "0x74e307c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e5c",
+      "target": "0x15411c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080e60",
+      "target": "0xfab14",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080eb0",
+      "target": "0xfaa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080ebc",
+      "target": "0x7c50764",
+      "imported_symbol": "_$ss18_DictionaryStorageC8allocate8capacityAByxq_GSi_tFZ",
+      "chained_binding": {
+        "slot": "0xaad80e0",
+        "symbol": "_$ss18_DictionaryStorageC8allocate8capacityAByxq_GSi_tFZ",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11959,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x6080ed8",
+      "target": "0xf6944",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080efc",
+      "target": "0x7c54328",
+      "imported_symbol": "_swift_bridgeObjectRetain"
+    },
+    {
+      "site": "0x6080f5c",
+      "target": "0x1381b8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080f64",
+      "target": "0x7c53b90",
+      "imported_symbol": "_objc_retain_x23"
+    },
+    {
+      "site": "0x6080f6c",
+      "target": "0x7c53b9c",
+      "imported_symbol": "_objc_retain_x24"
+    },
+    {
+      "site": "0x6080f90",
+      "target": "0x7c54418",
+      "imported_symbol": "_swift_dynamicCast"
+    },
+    {
+      "site": "0x6080fa0",
+      "target": "0x12fa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080fac",
+      "target": "0x12fa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6080fb8",
+      "target": "0x7c4d590",
+      "imported_symbol": "_$sSS10FoundationE36_unconditionallyBridgeFromObjectiveCySSSo8NSStringCSgFZ",
+      "chained_binding": {
+        "slot": "0xaac9a30",
+        "symbol": "_$sSS10FoundationE36_unconditionallyBridgeFromObjectiveCySSSo8NSStringCSgFZ",
+        "library_ordinal": 12,
+        "weak": false,
+        "import_ordinal": 4680,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x6080fcc",
+      "target": "0x7c514e4",
+      "imported_symbol": "_$ss6HasherV5_seedABSi_tcfC",
+      "chained_binding": {
+        "slot": "0xaad8ce0",
+        "symbol": "_$ss6HasherV5_seedABSi_tcfC",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 12324,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x6080fdc",
+      "target": "0x7c4d77c",
+      "imported_symbol": "_$sSS4hash4intoys6HasherVz_tF",
+      "chained_binding": {
+        "slot": "0xaad67a0",
+        "symbol": "_$sSS4hash4intoys6HasherVz_tF",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 11175,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x6080fe4",
+      "target": "0x7c51544",
+      "imported_symbol": "_$ss6HasherV9_finalizeSiyF",
+      "chained_binding": {
+        "slot": "0xaad8d20",
+        "symbol": "_$ss6HasherV9_finalizeSiyF",
+        "library_ordinal": 101,
+        "weak": false,
+        "import_ordinal": 12332,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x6080ff0",
+      "target": "0x7c54310",
+      "imported_symbol": "_swift_bridgeObjectRelease"
+    },
+    {
+      "site": "0x60810b0",
+      "target": "0x12fa78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60810c8",
+      "target": "0x7c54880",
+      "imported_symbol": "_swift_release_x8"
+    },
+    {
+      "site": "0x60810fc",
+      "target": "0x1602b0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x608116c",
+      "target": "0x163078",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6081170",
+      "target": "0x7c48c64",
+      "imported_symbol": "_$s7SwiftUI20RectangleCornerRadiiV7topLeft0F5Right06bottomH00iG0AC12CoreGraphics7CGFloatV_A3JtcfC",
+      "chained_binding": {
+        "slot": "0xaad2520",
+        "symbol": "_$s7SwiftUI20RectangleCornerRadiiV7topLeft0F5Right06bottomH00iG0AC12CoreGraphics7CGFloatV_A3JtcfC",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 9082,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x608117c",
+      "target": "0x6110c18",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x608118c",
+      "target": "0x7c4b07c",
+      "imported_symbol": "_$s7SwiftUI5ColorV5clearACvgZ",
+      "chained_binding": {
+        "slot": "0xaad4d18",
+        "symbol": "_$s7SwiftUI5ColorV5clearACvgZ",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10359,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x6081194",
+      "target": "0x4584cc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x608119c",
+      "target": "0x7c47110",
+      "imported_symbol": "_$s7SwiftUI13AnyShapeStyleVyACxcAA0dE0RzlufC",
+      "chained_binding": {
+        "slot": "0xaad0690",
+        "symbol": "_$s7SwiftUI13AnyShapeStyleVyACxcAA0dE0RzlufC",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 8108,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x60811a4",
+      "target": "0x610eff0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60811b4",
+      "target": "0x607fc80",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60811cc",
+      "target": "0x312e92c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60811d0",
+      "target": "0x6112f80",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60811d8",
+      "target": "0x6113138",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60811dc",
+      "target": "0x45f61c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60811e0",
+      "target": "0x7c547fc",
+      "imported_symbol": "_swift_release_x22"
+    },
+    {
+      "site": "0x60811ec",
+      "target": "0x607fe58",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60811f0",
+      "target": "0x7c54808",
+      "imported_symbol": "_swift_release_x23"
+    },
+    {
+      "site": "0x60811f8",
+      "target": "0x7c47158",
+      "imported_symbol": "_$s7SwiftUI13AnyTransitionV7opacityACvgZ",
+      "chained_binding": {
+        "slot": "0xaad06c0",
+        "symbol": "_$s7SwiftUI13AnyTransitionV7opacityACvgZ",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 8114,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0x6081204",
+      "target": "0x607fe58",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6081208",
+      "target": "0x7c547e4",
+      "imported_symbol": "_swift_release_x20"
+    },
+    {
+      "site": "0x6081214",
+      "target": "0x6080a84",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6081220",
+      "target": "0x607f9d0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x608122c",
+      "target": "0x1d8de10",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6081248",
+      "target": "0x610f54c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x6081288",
+      "target": "0x7c549b8",
+      "imported_symbol": "_swift_retain_x9"
+    },
+    {
+      "site": "0x6081290",
+      "target": "0x607f3e0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x608129c",
+      "target": "0x6081680",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60812a8",
+      "target": "0x6080bc4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60812b4",
+      "target": "0x6f94e0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60812dc",
+      "target": "0x60807d4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x60812f8",
+      "target": "0x6080864",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

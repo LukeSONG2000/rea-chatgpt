@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "checks": [
+    "two actual owners; shared request ID isolated; cancel A preserves B completion",
+    "actual durable owner events project original synthetic user prompt and completed assistant turn",
+    "stopped A fails explicitly while B list succeeds",
+    "unsafe operations and public pairing rejected",
+    "hanging A does not block B; closing A cancels only A pending calls",
+    "foreign host event rejected without forwarding injected fields"
+  ],
+  "limits": [
+    "Node main-process adapter test, not Electron IPC or official Remote UI",
+    "Fixture workers only"
+  ]
+}

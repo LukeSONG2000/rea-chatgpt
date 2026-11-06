@@ -1,0 +1,22 @@
+{
+  "status": "partial",
+  "user_feedback": "Font visibly too large on phone and simulator",
+  "simulator_content_size": "large",
+  "source": {
+    "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsTheme.js",
+    "sha256": "c5fd0cb39f555bbd0c61214e008e786862e80acb0e003ae3ecc1f629ee871d0e",
+    "version": "iOS 1.2026.293",
+    "observed": "I defines native SemanticFontTextStyle.Body; iOS typography maps Row and NavigationRow to I."
+  },
+  "change": "Independent settings host row font title3 -> body; keeps Dynamic Type. No global scale override.",
+  "scope_limit": "Valdi theme evidence establishes typography role, not original native account-page wiring. Input editor and sidebar feature title3 remain unresolved and unchanged.",
+  "phone_modified": false,
+  "test": {
+    "passed": 1,
+    "failed": 0,
+    "bundle": "ios-typography-v301.xcresult",
+    "visual_review": "Settings row labels visibly reduced; values unchanged, no new truncation in captured standard-size screen. Overall typography parity and phone remain unaccepted.",
+    "screenshot": "ios-typography-v301-screenshots/494CD2BB-A1EC-407F-979C-822F891094CC.png",
+    "preview_pid": 50783
+  }
+}

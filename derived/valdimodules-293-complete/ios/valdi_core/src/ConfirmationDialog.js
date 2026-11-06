@@ -1,0 +1,1 @@
+"use strict";var e;Object.defineProperty(exports,"__esModule",{value:!0}),exports.ConfirmationDialogRole=void 0,function(e){e[e.Default=0]="Default",e[e.Cancel=1]="Cancel",e[e.Destructive=2]="Destructive"}(e||(exports.ConfirmationDialogRole=e={}));

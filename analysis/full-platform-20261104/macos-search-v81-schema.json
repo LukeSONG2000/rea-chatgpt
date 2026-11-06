@@ -1,0 +1,25 @@
+{
+  "file": "recovered/macos/asar-extracted/webview/assets/recents-c30960d50372.js",
+  "sha256": "6c66daac514b9c182af82b30ef7fe94c61eef3bd73720355026c9c69e3fec56c",
+  "authority": "official-packaged-static-observation",
+  "records": [
+    {
+      "byte_start": 41476,
+      "byte_end": 41557,
+      "source": "Gn=ee({id:v().min(1),title:v(),update_time:d().nullish(),match_kind:a(`title`)}),"
+    },
+    {
+      "byte_start": 41741,
+      "byte_end": 41960,
+      "source": "qn=me([Gn.extend({source_type:a(`conversation`),source_key:a(`conversation`),payload:ee({kind:a(`conversation`).default(`conversation`),conversation_id:v().min(1),message_id:v().nullish(),is_archived:p().optional()})}),"
+    },
+    {
+      "byte_start": 16140,
+      "byte_end": 19478,
+      "source": "function Rt(e,t,n,r){let{payload:i}=e,a={rawItem:e,title:e.source_type===`conversation`?xe(e.title)??n:e.title.trim(),updateTime:e.update_time,snippet:e.snippet==null?e.snippet:It(e.snippet)},o,s=`/library`;if(`conversation_id`in i){if(o={...a,kind:`conversation`,conversationId:i.conversation_id,nodeId:i.message_id,isArchived:i.is_archived,thumbnailUrl:i.thumbnail_url},s=l(i.conversation_id),t.trim().length>0){let e=new URLSearchParams({src:`history_search`});i.message_id&&(e.set(`messageId`,i.message_id),e.set(`historySearchQuery`,t.trim())),s+=`?${e}`}}else if(`library_item_id`in i){let e=zt(i),n=ze(i);if(n===`native_shared`&&!r)return null;o={...a,kind:`library_file`,libraryFileId:i.library_item_id,fileId:i.file_id,fileName:i.file_name,gizmoId:i.gizmo_id,fileExtension:i.file_extension,mimeType:i.mime_type,libraryProvider:e,sourceUrl:e==null?void 0:i.cloud_doc_url,libraryArtifactType:i.library_artifact_type,libraryFileCategory:i.library_file_category,state:i.state,isShared:n===`native_shared`,thumbnailUrl:i.thumbnail_url},s=n===`native_shared`?`/library/share/${encodeURIComponent(i.library_item_id)}`:n===`native`?r?`/library/file/${encodeURIComponent(i.library_item_id)}`:null:`/library?search=${encodeURIComponent(t)}`}else if(`library_file`in i)o={...a,kind:`site`,projectId:i.project_id,liveUrl:i.live_url,thumbnailUrl:i.library_file.thumbnail_url},i.live_url!=null&&/^https?:\\/\\//i.test(i.live_url)&&(s=i.live_url);else if(`directory_id`in i){if(!r)return null;o={...a,kind:`library_folder`,directoryId:i.directory_id},s=`/library/d/${encodeURIComponent(i.directory_id)}?entry_point=global_search`}else if(`project_id`in i)o={...a,kind:`project`,projectId:i.project_id,emoji:i.emoji,theme:i.theme,isSharedProject:i.is_shared},s=De(i.project_id);else if(i.kind===`dot_message`)o={...a,kind:`dot_message`},s=Bt(i);else if(i.kind===`space_page`)o={...a,kind:`space_page`},s=`/space/${encodeURIComponent(i.page_id)}`;else if(i.kind===`space_file`)o={...a,kind:`space_file`},s=`/library/file/${encodeURIComponent(i.file_id)}`;else return null;return{item:o,query:t,href:s}}function zt(e){let t=[e.library_item_id,e.file_id].map(e=>e.replace(/^file-library:/u,``)),n=t.map(it).find(e=>e!=null)?.provider;if(n==null&&t.some(e=>e.startsWith(`external-`)))return null;let r=C({libraryProvider:e.library_provider??e.provider});return n==null||r===n||e.library_provider==null&&(r==null||r===`sharepoint`&&n===`onedrive`)?n??r:null}function Bt(e){let t=new URLSearchParams({roomId:e.room_id,messageId:e.message_id});return`${Xe(e.aeon_id)}?${t}`}function Vt(){return(Vt=e((()=>{E(),Pe(),mt(),Z(),f(),et(),P(),Lt()})))()}function Ht({searchItems:e}){return e.flatMap(e=>{let t=e.title.trim()||null,n=e.snippet==null?e.snippet:It(e.snippet);return e.payload.kind===`dot_message`?[{kind:`dot`,item:e,href:Bt(e.payload),title:t,searchTitle:t??``,updatedAt:(e.update_time??0)*1e3,searchPreview:n==null?null:{kind:`contentMatch`,snippet:n}}]:`conversation_id`in e.payload?[{kind:`chatgpt`,conversationId:e.payload.conversation_id,isArchived:e.payload.is_archived,thumbnailUrl:e.payload.thumbnail_url,snippet:n,title:t,searchTitle:t??e.payload.conversation_id,updatedAt:(e.update_time??0)*1e3,searchPreview:e.match_kind===`content`&&n!=null?{kind:`contentMatch`,snippet:n}:null}]:[]})}function Ut(){return(Ut=e((()=>{Lt(),Vt()})))()}"
+    }
+  ],
+  "limits": [
+    "Client projection/schema only; no server implementation claim"
+  ]
+}

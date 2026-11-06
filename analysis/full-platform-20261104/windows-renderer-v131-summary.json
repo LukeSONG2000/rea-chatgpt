@@ -1,0 +1,54 @@
+{
+  "status": "partial",
+  "evidenceType": "MSIX/ASAR byte correspondence plus controlled renderer replay",
+  "artifactPlatform": "windows",
+  "executionPlatform": "macOS stock Electron 45.1.0",
+  "packageIdentity": {
+    "name": "openai-codex-electron",
+    "productName": "Codex",
+    "version": "26.1021.31345",
+    "main": ".vite/build/early-bootstrap.js"
+  },
+  "resourceCount": 20919,
+  "archiveSHA256": "04862a659c6a90fc50514d8c0b8016709d97dece58839726c57495ed72f1d9f0",
+  "msixSHA256": "0024ecd081b1187c51de45e983dc3e0bfb3b923faea7526ef2233c9ec8e8b7ac",
+  "accepted": [
+    "All selected extracted Windows renderer/package resources match ASAR",
+    "Explicit artifact selection uses correct initializer/shared/runtime/initial modules",
+    "Windows source Send fixture creates durable response",
+    "Different process restores same generated history",
+    "Mac project conversation recovery regression passes after selector refactor"
+  ],
+  "comparison": "runtime and initializer are equal after asset filename hash normalization; shared becomes equal only after additionally changing explicit CODEX_ELECTRON_PLATFORM darwin to win32. This is source comparison, not behavioral equivalence.",
+  "firstFailure": "Probe still imported Mac app-initial filename; corrected to verified per-artifact path, failed report retained",
+  "reports": [
+    "windows-renderer-v131-baseline.json",
+    "windows-renderer-v131-replay.json",
+    "windows-renderer-v131-replay-r2.json",
+    "windows-renderer-v131-cold.json",
+    "macos-v131-selector-regression.json"
+  ],
+  "pids": [
+    22461,
+    22587
+  ],
+  "pageErrors": {
+    "windowsWrite": [],
+    "windowsRead": [],
+    "macRegression": []
+  },
+  "limitations": [
+    "Windows native build, packaging and Windows OS execution remain missing",
+    "Independent fixture services and synthetic history; no official account/services",
+    "OS menu, window controls, fonts, scaling and file picker not accepted for Windows",
+    "Optional unsupported services retain aggregate mount-blocked label; system-window capture failed",
+    "Official Web baseline and full mobile fidelity remain incomplete"
+  ],
+  "nextAction": "Build a standalone independent native main/preload/fixture entry; remove reliance on Playwright orchestration before Windows packaging and OS verification",
+  "sources": {
+    "analysis/tools/windows_renderer_baseline.py": "2d99258d5d8f7da0fe693453f1572bb6d1a7b5f9f324b76526a66e31ca382d96",
+    "analysis/tools/desktop-artifact.cjs": "8a94ae85713087925327d8eb2d14290e89ae6de9b32eb4490f0a60bb06e110cc",
+    "analysis/tools/probe_desktop_root_mount.cjs": "bea8f3accc210f609f9bca22caee5db17ad74b3859acc05bf448946906d27822",
+    "implementation/desktop/run.cjs": "2fc6d4ea40647085649316098d73725cb1017beb8afe6f4770a8bb2b0ab30c56"
+  }
+}

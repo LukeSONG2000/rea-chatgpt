@@ -1,0 +1,41 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "pattern": "adjacent ADRP/ADD (no shifted ADD), B/BL; incomplete references",
+  "hits": [
+    {
+      "pc": "0x1a2363c",
+      "target": "0x1a28908",
+      "name": "reconnect-to-task label",
+      "pattern": "BL",
+      "function_start": "0x1a233d8",
+      "next_function_start": "0x1a23dbc"
+    },
+    {
+      "pc": "0x1a23648",
+      "target": "0x1a28968",
+      "name": "reconnect label",
+      "pattern": "BL",
+      "function_start": "0x1a233d8",
+      "next_function_start": "0x1a23dbc"
+    },
+    {
+      "pc": "0x1a255e4",
+      "target": "0x1a28908",
+      "name": "reconnect-to-task label",
+      "pattern": "BL",
+      "function_start": "0x1a253c0",
+      "next_function_start": "0x1a25600"
+    },
+    {
+      "pc": "0x1a255f0",
+      "target": "0x1a28968",
+      "name": "reconnect label",
+      "pattern": "BL",
+      "function_start": "0x1a253c0",
+      "next_function_start": "0x1a25600"
+    }
+  ]
+}

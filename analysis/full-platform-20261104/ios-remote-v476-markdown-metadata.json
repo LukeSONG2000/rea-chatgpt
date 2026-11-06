@@ -1,0 +1,191 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "CodexRemoteCachedMarkdownBlockStack",
+      "descriptor": "0x95adf68",
+      "type_section_entry": "0x9d3a62c",
+      "accessor": "0x1c8dbd8",
+      "fields": [
+        {
+          "name": "content",
+          "record": "0x9a3a1d0",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "options",
+          "record": "0x9a3a1dc",
+          "type_reference": "0x8e15540"
+        },
+        {
+          "name": "markdownResultRenderer",
+          "record": "0x9a3a1e8",
+          "type_reference": "0x8e13b0c"
+        },
+        {
+          "name": "inlineVisualizationViewModelStore",
+          "record": "0x9a3a1f4",
+          "type_reference": "0x8e13b1e"
+        },
+        {
+          "name": "allowsPagePreviews",
+          "record": "0x9a3a200",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "textFadeAnimationState",
+          "record": "0x9a3a20c",
+          "type_reference": "0x911cd70"
+        },
+        {
+          "name": "renderedItemID",
+          "record": "0x9a3a218",
+          "type_reference": "0x8bfd974"
+        },
+        {
+          "name": "sourceRenderedItemID",
+          "record": "0x9a3a224",
+          "type_reference": "0x8e152cc"
+        },
+        {
+          "name": "fadeAnimatorConfiguration",
+          "record": "0x9a3a230",
+          "type_reference": "0x907ac60"
+        },
+        {
+          "name": "streaming",
+          "record": "0x9a3a23c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "textPreviewLineLimit",
+          "record": "0x9a3a248",
+          "type_reference": "0x8f51610"
+        },
+        {
+          "name": "linkHandlers",
+          "record": "0x9a3a254",
+          "type_reference": "0x8e39170"
+        },
+        {
+          "name": "menus",
+          "record": "0x9a3a260",
+          "type_reference": "0x93e5c28"
+        },
+        {
+          "name": "plugins",
+          "record": "0x9a3a26c",
+          "type_reference": "0x90d0af8"
+        },
+        {
+          "name": "openImages",
+          "record": "0x9a3a278",
+          "type_reference": "0x8e39236"
+        },
+        {
+          "name": "imageGalleryTransitionNamespace",
+          "record": "0x9a3a284",
+          "type_reference": "0x8d0ad80"
+        },
+        {
+          "name": "_traitCollection",
+          "record": "0x9a3a290",
+          "type_reference": "0x90b54e0"
+        },
+        {
+          "name": "_openURL",
+          "record": "0x9a3a29c",
+          "type_reference": "0x8d1a160"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1a060",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2968"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteParsedAssistantMarkdown",
+      "descriptor": "0x95aecf4",
+      "type_section_entry": "0x9d3a790",
+      "accessor": "0x1ce0848",
+      "fields": [
+        {
+          "name": "source",
+          "record": "0x9a397d0",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "inlineBlock",
+          "record": "0x9a397dc",
+          "type_reference": "0x8e38bc0"
+        },
+        {
+          "name": "copyableMarkdown",
+          "record": "0x9a397e8",
+          "type_reference": "0x8d860d0"
+        }
+      ],
+      "conformances": []
+    },
+    {
+      "name": "CodexRemoteRenderedMarkdown",
+      "descriptor": "0x95b3290",
+      "type_section_entry": "0x9d3aa8c",
+      "accessor": "0x1d37ae8",
+      "fields": [
+        {
+          "name": "input",
+          "record": "0x9a3db84",
+          "type_reference": "0x8e7ac0a"
+        },
+        {
+          "name": "result",
+          "record": "0x9a3db90",
+          "type_reference": "0x904b6e0"
+        }
+      ],
+      "conformances": []
+    },
+    {
+      "name": "CodexRemoteRenderedMarkdownInput",
+      "descriptor": "0x95b343c",
+      "type_section_entry": "0x9d3aaa4",
+      "accessor": "0x1d394e8",
+      "fields": [
+        {
+          "name": "fileIdentity",
+          "record": "0x9a3dcbc",
+          "type_reference": "0x8d490e0"
+        },
+        {
+          "name": "traitCollection",
+          "record": "0x9a3dcc8",
+          "type_reference": "0x8f55bf0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e27230",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2fd8"
+        }
+      ]
+    }
+  ],
+  "missing": [
+    "CodexRemoteMarkdownResultRenderer",
+    "CodexRemoteUserMessageMarkdownRenderer"
+  ],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

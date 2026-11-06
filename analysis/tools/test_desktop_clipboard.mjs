@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {createFixtureHost} from './desktop-fixture-services.mjs';
+const options={scenario:'synthetic-account',historyFixture:{conversation_id:'offline-fixture-conversation-001'}};
+const writes=[];globalThis.__reaWriteClipboardText=async text=>writes.push(text);
+const {host,calls}=createFixtureHost({Wst:class{}},options),clip=host.services.clipboard;
+const code='  first\n\tsecond  \n\n';await clip.writeText(code);assert.deepEqual(writes,[code]);assert.deepEqual(calls.filter(x=>x.operation==='clipboard.writeText'),[{operation:'clipboard.writeText',length:code.length}]);
+await assert.rejects(clip.writeText({text:'invalid'}));await assert.rejects(clip.writeText('x'.repeat(1048577)));assert.throws(()=>clip.readText(),/unsupported/);
+globalThis.__reaWriteClipboardText=async()=>{throw Error('write failed')};await assert.rejects(clip.writeText('x'),/write failed/);assert.equal(calls.filter(x=>x.operation==='clipboard.writeText').length,1);
+delete globalThis.__reaWriteClipboardText;assert.equal(createFixtureHost({Wst:class{}},options).host.services.clipboard,null);
+console.log('passed: exact whitespace, bounded input, failure propagation, no text audit, no read capability');

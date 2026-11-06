@@ -1,0 +1,68 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official static consumer and bundled-resource mapping; independent typed input and fixtures",
+  "observations": [
+    {
+      "offset": "0x95f1eac;typeref0x8f3a5ea",
+      "conclusion": "CommandExecutionThreadItem.commandActions is Array<CommandAction>;5 payload cases readCommandAction/listFilesCommandAction/searchCommandAction/unknownCommandAction/unknown."
+    },
+    {
+      "offset": "0x7f0e968 ->0x2c2f28c ->0x2cbda0c",
+      "conclusion": "Encoding dispatch uses tag at+0x41 and jump bytes[0,8,4,6,2] at0x7ef1d6d; tags0/1/2/3 dispatch callbacks x1/x2/x3/x4. Their keyed encoding-container type records0x7ef4d28/30/38/40 prove Read/ListFiles/Search/UnknownCommand payload association independently of field order. Tag4 uses opaque encode helper."
+    },
+    {
+      "offset": "0x1a3a228..0x1a3a250",
+      "conclusion": "First check whether any action tag<=2. Only then scan actions for specialized summary selection."
+    },
+    {
+      "offset": "0x1a3a8bc..0x1a3a8f0;0x7dfdf6c",
+      "conclusion": "Preserves array order. Tags0/1/2/3 take icon-specific branches, tag4 continues loop. Thus unknownCommand before read is terminal, while only-unknownCommand takes ordinary shell branch."
+    },
+    {
+      "offset": "0x1a3abbc/0x1a3abc8/0x1a3abb0/0x1a3aba4",
+      "conclusion": "Factories0x74f51e8/0x74f7670/0x74f86d8/0x74fba7c use book-open/folder-on-folder/magnifying-glass-lg/terminal. Literal resources0x8a543a0/0x8a554b0/0x8a55c20/0x8a573e0 corroborate prior v318 history-symbol mapping for this separate consumer."
+    },
+    {
+      "offset": "0x1a3abe8..0x1a3ac24;helper0x1d7fc04",
+      "conclusion": "Passes existing summary plus running bool to CodexRemoteToolActivityLabel<Symbol,ToolActivitySummaryRow>, type record0x7e11ed0; shared20/body icon metric, center/8/body/tertiary/one-line label; row shimmering gate already traced in v327."
+    },
+    {
+      "offset": "0x1a3a4e8;0x1a42df0",
+      "conclusion": "Upstream summary builder separately handles rendered summary, status, cached preview, display command and nil fallback. Integration still accepts a resolved summary; no action text is fabricated as recovered official wording."
+    }
+  ],
+  "integration": [
+    "Added ordered action classification and activity presentation beside ordinary/running command summaries; raw unknown classification preserved.",
+    "Activity keeps resolved upstream summary and running/cached shimmer state; never formats elapsed duration as a shell command.",
+    "Read/list/search original assets used from existing bundle; opaque unknown does not get a made-up icon.",
+    "Default completed fixture now demonstrates read activity; live fixture demonstrates search; --remote-command-action=list|search switches the dedicated completed fixture.",
+    "Existing independent expanded command output and item/host-scoped disclosure state retained; full specialized detail body not claimed recovered."
+  ],
+  "validation": {
+    "host_typecheck": "passed all Sources;3 prior UIKit warnings",
+    "foundation": "10 ordered/unknown action cases plus live/cached/completed/failed/declined/unknown status; prior command/locale tests passed",
+    "assets": "assetutil inspected current bundled Assets.car; all4 referenced symbols present including vector/raster renditions",
+    "ui_test": "testRemoteCommandActionSummaries syntax passed; not executed and not selected by pending test",
+    "runtime": "existing first-launch runner retained; pending user authorization, no duplicate test started",
+    "preview": "existing PID87483 left open, not replaced",
+    "phone": "not installed",
+    "retention": "no stale packages"
+  },
+  "limits": [
+    "No official online services, real conversations, or local command execution.",
+    "Upstream nil summary/command-display builder and detailed action payload projection remain partial.",
+    "One-line truncation mode, VoiceOver, RTL and actual visual/gesture state transitions require UI acceptance.",
+    "Reduce Motion/scene/RTL gates in reused shine adapter are independent accommodations, not additional recovered official facts.",
+    "Android consumer unverified; this iOS branch does not prove shared UI implementation."
+  ],
+  "next_minimal_action": "Recover missing/empty summary projection and specialized detail consumers; run command-action/cached-preview/ordinary-summary UI suites once Xcode installation authorization completes.",
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "26c2580a07153322ad3cf4d4125d68a2c0397eb437c79f0bc4ba629d641d9601",
+    "implementation/ios/Sources/RemoteCommandSummary.swift": "24468846b1a91eff5c31a003583b81a9fdf54070098c402ee7242896bfcdd9e5",
+    "implementation/ios/TextTests/main.swift": "4ab3db9a8e4826baa11edddfe28e73a8cb4dbae711d907ed9b16186389bcc1b2",
+    "implementation/ios/UITests/HostInteractionTests.swift": "f4d79ef2b7b12f63df5e9a50d1b6c66c6423fca309466b9d9d3b9f08d9729d66"
+  }
+}

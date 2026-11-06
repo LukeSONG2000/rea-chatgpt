@@ -1,0 +1,4508 @@
+{
+  "version": "26.1021.31345",
+  "engine": "156.0.4314.58",
+  "runner_sha256": "8ee1a3730fdc7da5a87e523d0e5d0545a03ae41c458083e904f92ceca7c61f6c",
+  "sources": {
+    "webview/assets/initialize-app-host-services-5891c906a171.js": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+    "webview/assets/rolldown-runtime-2d059c5e81f4.js": "e0a79ad36c6ca1ffbc796c80aa5661803a9d1bc684e29d1587f48b4ba9a82714",
+    "webview/assets/app-shared-2cae01273bae.js": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+    "webview/assets/app-initial-feb30b196d11.js": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+    "webview/assets/app-primary-7d7313419f84.js": "745529956e303674c268a6871e6f5aad49eca7ef5af899952bf0379d829821b6",
+    "webview/assets/ambient-suggestion-generation-dc24e5b95825.js": "f7a35529b245e57c834548f62a7884e6f81869e8edd4c3346f0b3e5bdab35548",
+    "webview/assets/cyber-safety-composer-banner-state-8323b499557d.js": "4574c3acebbeab5a577362f6f3808e8f2b0eba8df145c9800777a23f4a2ce7df",
+    "webview/assets/external-agent-import-startup-e5bbcaed89e8.js": "daefea6dfabdd9293f9ac6cb1d0850ca7896de1cee30d45ec63d78677d796cca",
+    "webview/assets/external-agent-config-query-invalidation-b91bb568829f.js": "6fa6bb3ebb789d3d5a5348783b7304cc79aeae84d0467d17fbe1f9c048a7f3c4",
+    "webview/assets/app-theme-979817044ac4.js": "0acce06a154e9aac82d70f68183f6e8887a987a41548ed39cca8b41f7b2d58ee",
+    "webview/assets/style-vars-200c1bccafff.js": "0c827259711af0b1c10bff418978f9e61945183a878baa1b9f8e467f6878c121",
+    "webview/assets/conversation-id-debf824e1bd4.js": "3ac719a196699025fe2227cc0a0a96b51bd33089be168f1edf5b5784c5e70778",
+    "webview/assets/confetti-2f703c7123a6.js": "01578740b472e29aa705074a0ab0c0b4aa3640f89ae7ec41b8eff18208f55792",
+    "webview/assets/app-navigation-tools-4e506e8c8cd5.js": "5dce49b7f66314995e2f451e580eb6bacc3bf094929f94d14fa13c971140ac02",
+    "webview/assets/codex_memory-b9b3c1208d69.js": "2343f6bbc35c44087d4e323ec71f0d6f61df2d9157680895aa6c60532deff931",
+    "webview/assets/prewarm-671e859a562f.js": "7f46705585851c340b68a8ebb4d2d23699329a03fe578b5b96d387ac088cd03e",
+    "webview/assets/settings-unsaved-state-807d2bc8a763.js": "8caf1966ceefc95c5c4eb8fe0ed80824d7b49fdc0ed60fd0eb063e6d66ba2433",
+    "webview/assets/entry-35957033d38c.js": "2aa3ee1ebd53dc4ef4e0b4d384728b414e8cf461a618970448fed2234bddc629",
+    "webview/assets/recent-model-configurations-b339bafad1ac.js": "db260ee62f968012512a616297c153292646b8411de4e1ee9066a7583f7a3d41",
+    "webview/assets/app-server-manager-hooks-c01e69e712a8.js": "ab961f93dee47ebe387d652ede7283b4e872b88aa7eb0b3612180ec654bb5794",
+    "webview/assets/avatar-overlay-open-state-signal-14bbdbe397ce.js": "a3aeae0a67efae2a58d01fccb96032f13260b39d3466dacb57645282e2ac47fc",
+    "webview/assets/desktop-app-beta-access-d155dcbd5cf4.js": "06f1b1bae345cd0974c2e7a52be8507b90881b7b796a123386679ec74b853460",
+    "webview/assets/auth-journey-83ade2c64f63.js": "6b4dc72660b9f564f2cd83a18206cb86074c8fd88ac79de9058215c81fd3f8c8",
+    "webview/assets/chrome-extension-browser-family-fc7ba8437fc4.js": "c8742525a96ff030a94dbf97e117dd11d40a3447fe4026ae65a928a9701a5623",
+    "webview/assets/subscription-update-diagnostics-fabd032e697f.js": "fc382029dad7e43f4619e1e90d27c4761c02b3a20ddc2c0f0d83f493b6db9d2f",
+    "webview/assets/codex-analytics-a8d49c1f032f.js": "14f94fc2a45440cc18967d895ab7c9c0cf98decf271fb9a82406ce921eadcd92",
+    "webview/assets/desktop-login-success-90bc85480236.js": "e2a9990e0e325544fc92447f6f30f35d9dea00e57eeee4bf40bf11047a6f5ea7",
+    "webview/assets/app-server-notification-debug-signals-82b7ab80e546.js": "9b1b50675b8d798f6ef2b47fe0f3fbc37b4f40d2a876f90900f263a3e830a7b7",
+    "webview/assets/profile-login-attribution-b4ab8df66633.js": "5f9dcb22706a8c174da834027a70fd6183ecf0bec5fae8a276453018f7edd0a9",
+    "webview/assets/codex_account_settings-ce8019b80b44.js": "b435ec7f4ee87c714a8a460df3aaec6981b8cfdc3e573265fb2ecf9e08b4a1c6",
+    "webview/assets/codex_artifact_feedback-e27578224cdf.js": "46b31fa244ab0889af342e5d3dab0ce2fa580ce6a1fe3424ee1ad4802beaf3d2",
+    "webview/assets/codex_browser_interactions-b8a5baac2680.js": "341654929d82aba043f3a3971c2234a62c8cde0b3c3af83fcc511cf01d72c202",
+    "webview/assets/codex_browser_profile_import-d076e835360c.js": "1a3d14b635e7cd357e09b9306494422d9d0276b72bffa671b5262905c436f48c",
+    "webview/assets/codex_browser_surface_actions-e52c60f78f4e.js": "ab4bce7c11f1fcbe8cbce4f79dcd9febaafd3309ed742f3919688eea8d9ab817",
+    "webview/assets/codex_computer_use-d0d448f6d584.js": "e4ca13c34a610c4ca13ee9a1ea925f00751d924849360aa6f5e33ddfd270b853",
+    "webview/assets/codex_desktop_login-8ca09165d69e.js": "2d7200d470df455744b545df9ead8537e87fe7e7835b29c92d0718b47c38031f",
+    "webview/assets/codex_dot_onboarding-f4f684b38763.js": "53352fa93af42898d6e2f532d729a7f88c1554bf050d735ec321c7d5b0af5ca2",
+    "webview/assets/codex_inline_visualization-e0f031efd87f.js": "65d1130e792bf824a24793c2fc2737c6161d275bd7f5785dcc08be1a6f50afa7",
+    "webview/assets/codex_micro-730d8f9a0165.js": "71d361dab7c89b2211039b7f3c7ed5538e40e7812f73204c3ca002fc05fe5c0f",
+    "webview/assets/codex_work_credit_continuation-8f5c502d6512.js": "6056239c667805364a75e6f8eaea1ea96238790a3e24a3fe2905a11327805196",
+    "webview/assets/codex_workspace_settings-41ac5662f17d.js": "ce1452f4e813ec0d637e13117fb2cde09a2fce9e813742f07c64700faa9cb6ac",
+    "webview/assets/chatgpt-browser-compatibility-a22412506ccb.js": "96e422365b994d81bc6e5faa88253bfe1a29a636c9e3c6dd5f3b4b2ea195b352",
+    "webview/assets/chatgpt-browser-unstructured-event-ad35fc036703.js": "2f6cbc0e4373aa4ecab0c14107febbd215f176026535a410a063193d0a7534db",
+    "webview/assets/statsig-client-key-b5555da1b74f.js": "5f0bb4b8fce8a3f9f0a65ed64e2f4663062124421b71c43b9c7cfd3ab16d0ee1",
+    "webview/assets/model-routing-config-c8ff24d11153.js": "ae0f8a6f5ab27575041fbf2e2eea3426fe143ce4665c404cf3fb4e208da10bc9",
+    "webview/assets/feedback-tags-1e5899ec8c5e.js": "07870dae61cb401c52d21b69c9f516cc26b10a00980d5d440238327cb2e2c784",
+    "webview/assets/resolved-intl-provider-93ba3c127ae2.js": "cf3a3e2bade10be2688503c6a96e1d11986b4ccbc9d989b92683c3540451e90f",
+    "webview/assets/handle-realtime-screen-context-latency-9c7b84543683.js": "cb9f7efa14f05185e3f1dae6b88e07243bb7029b65bad07d8c171755a2038757",
+    "webview/assets/work-route-snapshot-ea593c91ab92.js": "28dc8c8bc9cfab83acc89be35de3918a237562386a519bd8a6df1b21661c3c62",
+    "webview/assets/desktop-oauth-2b59cf194297.js": "e5d99807937737da506f81ae2962839b72ba11d5263bc788982b8938aea091c4",
+    "webview/assets/analytics-50b3ed03738d.js": "4716216e68946f412f0360a7c4097f46b5a689d86a26a01180a00b28bb3b2699",
+    "webview/assets/conversational-onboarding-task-completion-8f8ca28d1aba.js": "2e51c606712c5298ea5850c7641d28c94415bc2b77207c766c3441831b8be571",
+    "webview/assets/pull-request-check-diagnostics-d75376b4e3f9.js": "e7f97f7833614e94bc8a6b97ba92a72653ee2f93e9ad17107cf52797ee07d336",
+    "webview/assets/thread-handoff-dynamic-tool-progress-39890007cf47.js": "cc2f5c17978b6f5d05b54013a02a899bfb2f20e22384896108af2aaff5bf3a4e",
+    "webview/assets/artifact-tool-501a1c8a3dbe.js": "b8ca262c51885cf37c03b8b53a879b80f984e237f61a51b6f33953543a952d4b",
+    "webview/assets/thread-terminal-b9ac491a8c39.js": "38bf52833da25ca5d3c67123dd45967d0af1df96aca1cffae4c174d189ccb8c8",
+    "webview/assets/plugin-management-3867045fdbc6.js": "6e1d22ffe4f9349567756d9d95328f396702001c3d6b1843126ebe744ceab7c1",
+    "webview/assets/app-server-config-notice-signals-d87a54450b2a.js": "6bd7d66f09d565ff44e948080c534cc458e6b0d4462972d1536bd37896a6d8e8",
+    "webview/assets/automation-plugin-source-query-34e0d6d3ebb6.js": "7b72b927e4b06b3d6df46e50f26666dd7569222250aaaae1672c6c29e8f56f01",
+    "webview/assets/app-connect-oauth-callback-result-439175390e5d.js": "fa0e417baa731b54cabb89944f4e00a22ccd2d32a28567cf461bcb86d897c9c7",
+    "webview/assets/mapKeys-edf3532f56cf.js": "ffc71016cc69f45e5d854df327a252d7be88dc8cb055652fcb5308a28d34ded2",
+    "webview/assets/chrome-computer-use-suggestion-state-295220dad7cb.js": "13ce039ed96bcd828b0e955b814800149fbe3e523c8eca4d55daf8cb8b42f460",
+    "webview/assets/handle-chrome-extension-sidepanel-thread-archive-routing-bed39e3267b3.js": "04ff2f11d99ef82c1f91e9e53ea1dfc4fd2112ba1c04f505897926518c7e4f36",
+    "webview/assets/promotion-hydration-dbbbeaa50b63.js": "f395fc9abe2d881b533752dcb69ef549b1bc07eaab25f178c72b434218a81290",
+    "webview/assets/model-comment-dismissals-af89367402c4.js": "69ad2845c1747e199cfa9ae21e96c85b085736588e6e07f0780c7ca90308725e",
+    "webview/assets/client-pending-request-658d3f21220e.js": "32e6b2406def5142a3b6c0b65daf242f96a71eb64b2e4860a1806befdd01fd68",
+    "webview/assets/discovery-8be08e39cda5.js": "1fa4226b807fbfa2564b86c517a5f7fe3c4bf9a6f8ea34aa03d4643f2e96f310",
+    "webview/assets/aeon-created-thread-status-c605d1e4b680.js": "624867d2c5a1f8d4a060191bf53ae69062e45b0e0b5316653ab9c1ce6700271a",
+    "webview/assets/state-cfb1267fc3f5.js": "6e74a5171c038bfb4df71c955f472bd15a36dc75224d3bdbe8d121ad4a8eda44",
+    "webview/assets/bookmarked-conversation-turns-ac0e75ebe1c3.js": "d924035f1671db2358811fc62fc133a69025fffab47cb02ad67fdbf2066bb70f",
+    "webview/assets/codex-writing-block-edits-7873bf5bdbc1.js": "15d12a3e22e3cee3b9a0b50fdf21dfea726077a12521f059d8a2c98134dd6cb0",
+    "webview/assets/mcp-authentication-start-error-1df7cb18fcdc.js": "4030e4aab6ac1469d06a39463631ef52ac7d82f7ed4956735a05a671b9529c56",
+    "webview/assets/session-tab-opener-8a1a078d586a.js": "4b1c8ca06571876b295972d6ba7bafe99e24df83a6b7802c3a7ad8ac2a7edb55",
+    "webview/assets/keyboard-modifier-state-bridge-b877e6940483.js": "de32e0714da8317146e9cc66c793e0e4f29a1f828d95a1adf7f3eb7c19e863f7",
+    "webview/assets/personal-settings-access-6444aab949ce.js": "ec083fa5af2df47a51458eb00bb9467b9436c50d9dffc4ace50633b465eb5045",
+    "webview/assets/workspace-directory-6033d09344b7.js": "4ec27b77c0a54ab712338b51a9b1ac3c412112c71d120285de88c271211d3349",
+    "webview/assets/notification-sound-audio-964fa4c052a9.js": "689fbe4cefc1c04a3641e89336b3c5c8f0682e555c3f618637f1a584a1996412",
+    "webview/assets/downloads-view-service-4952674649f5.js": "612b50c251167c0f4fb2b2ebbb168869eb91828553c49fbd88fd47c28db36b89",
+    "webview/assets/connect-app-host-90a50ca9e4b4.js": "94272631cc0c57bf483309be934f8752721a6e0b83f4160c92398d4ad359a60d",
+    "webview/assets/external-agent-imported-connectors-1e5fa110739d.js": "66b610a55a28c4ea2f1c98156bdf4a713a3e318607573b542948efc6675ebe63",
+    "webview/assets/should-include-thread-in-discovery-1b8e82164ce2.js": "63bddb2e0fbd8131be8b51da1da47eeb92074c519884746aa3ea685b1e72f55c",
+    "webview/assets/eligibility-82218c5484ee.js": "e3fd942be1a98448439019aa81ad70e391638a33178fbea5a8c1f7f06f561e0b",
+    "webview/assets/defaults-930c9f21f410.js": "a3337b2a1efdfa144d1ec30f8cf645618809ee78a3ec42bc494ac39f5dddcae6",
+    "webview/assets/chatgpt-theme-6958a674b836.js": "510975655af6b37f025d4574b48955a02d494c52bd8db0612e5575d17e9c53e4",
+    "webview/assets/app-theme-c4609c25be6b.js": "99486956ff4c74b5e818af8f61de8310a7d8a10c41a9095c7f29c96077e42be1",
+    "webview/assets/chatgpt-theme-4fb124c0ce14.js": "b1da303dffcec8bd6643ff3ed3c042cf3631bdf4c930755200f162d611b46ca5",
+    "webview/assets/pending-mcp-server-elicitation-signals-22c2f55544fc.js": "427fdc23706c09540298e98ca4c5b5dfc324a3373fa2aa26ffbcdbd7077c5446",
+    "webview/assets/computer-use-app-approval-request-5a243e46bb57.js": "531e956e73a624a6993c0310d14c85f8172a8daa4fe10a8748cef75ad7cb0b36",
+    "webview/assets/computer-use-app-approval-state-49baf1e06dbe.js": "518ef626e56787f3d70e28ac377fdfa3cdb3268133721f3558a6c5812369300b",
+    "webview/assets/uniqWith-7f5a9246cd87.js": "d4854e1134e52d01a61c5b2507cccdd13076971e7d15e3c30c4f096dbbe9783e",
+    "webview/assets/chatgpt-browser-legacy-product-event-names-a7690151b644.js": "fad713c787c8022a652de625357d13521dab0f0869fbd1bf244fe5a9ae262fe8",
+    "webview/assets/get-default-branch-name-80c944ee057e.js": "778b63f2137f90134e2f14b34411c4982848234876603853d997ae98b998312e",
+    "webview/assets/thread-handoff-composer-block-state-1f2416dcad1c.js": "7cb601ab51390ca7ec07ff57af5c22e528f24cae8063404395fc418a101c1bd3",
+    "webview/assets/sync-thread-git-branch-if-primary-repo-161c598504fa.js": "28d8f4bd1daeeade6bb333b26e8487df6f656729ac2483030c5d0078ff06590f",
+    "webview/assets/git-repository-ddfe3db5afec.js": "d8a25258419537000610b2186df76f15abae22fc1a81d4738e4542c88387f7f1",
+    "webview/assets/managed-worktrees-5d5fffb88442.js": "8a3c2502de0217050e1106f9f697d006efc21539bd0b3b4feedd49ffa6c2442c",
+    "webview/assets/threads-send-message-3fc80dc15fca.js": "b395d82fc58c03e0d96e34da8d99e1749ed568adcade008cf7f526bce8254d88",
+    "webview/assets/get-move-to-local-targets-ac97956619eb.js": "8e56d9610f69b803b90a20383ac59195dc23018ccf8d4ad8764efc9728b7812e",
+    "webview/assets/pasted-link-connect-analytics-49cfd37089e2.js": "570b6f5de07828c84cd0b69bd22308b6eb122a46a892244dba5d51efe3a8f534",
+    "webview/assets/required-app-analytics-d2885e5da8df.js": "ca9063c9b944316870f760a655e7aad967468acd97d903ea1a48d4d34170f7f7",
+    "webview/assets/local-conversation-external-resources-2f755808a280.js": "b35268d7d18f53dda6de4024c62769bc5aac6f017b9b20f248b5b7d914f87a35",
+    "webview/assets/local-conversation-artifacts-model-6e029029f851.js": "711878d02b7031913a4f1aecc3ecb90c5e9881afdd1f453de1904b51ccadf6f6",
+    "webview/assets/elicitation-persist-86ea44b66749.js": "3edac69cea13234a919a90e83414e7534fa5122dfd3709be5b73eaec034b4943",
+    "webview/assets/send-follow-up-message-ef6b856b0b48.js": "b7b19b18d4bbdefeebb98253ff9392d8c030d24b59a9965de3330fb700a8a175",
+    "webview/assets/chatgpt-conversation-page-20e0cd7f5f7a.js": "1fcad753b41cd5b44a989e534d562a176feb2e3a3edcccbdb71fd01f912d3c99",
+    "webview/assets/load-performance-eab3f7fdb4ac.js": "09fe6d3f58a0811e14de7b336c44483b59d9e2d40065a554d139a637f64eed07",
+    "webview/assets/chatgpt-conversation-page-60cdba72de29.js": "4cff4e244e7a1dd7e0c8356dec8c795f2df2bd00e10c8c78744c323a0f66a0ff",
+    "webview/assets/screen-8c04a551524f.js": "123396e936e164e6f3cb18c8d25ae6cdb6c4a2a91aed338a6734d1191594800a",
+    "webview/assets/lock-2cb72f3b268f.js": "c5c833cb57292ad5ec3b24f6666e0cf19c07e6ac3f3b3731a4ea2c83440eaba5",
+    "webview/assets/banner-bf3ec21144d2.js": "c8d64e73b8f29c1348a84d0c0b60e8589efb32d654421b89e3a018a61fb1318c",
+    "webview/assets/entry-2e3e11d7cb20.js": "7237e0de94fcd18b9e50b005f55fe6b8dcd6de42f6fc6d08bce1fcd26b5e00f7",
+    "webview/assets/chatgpt-thread-summary-panel-model-916f5378fc78.js": "17d5ac3836383487b91339454406f22a853740e518c6973d4933d3aedd6927a5",
+    "webview/assets/document-title-102bc6d54e39.js": "6047080e0d8d87486c2e6e31fe414859e1d6258f93a4d6e027aa164058e15da7",
+    "webview/assets/widget-8367811f39d7.js": "81337ba067198254e7612c27cd67c8ee868d14aa775d9e0aa427d5b6c428e1da",
+    "webview/assets/scroll-to-match-b173eb44e248.js": "b62ea1dd830fc0d71cbbc0d55c0fdc5e9f024f7fdecf49508cbdeb338190d78a",
+    "webview/assets/thread-summary-panel-components-89c22ed84819.js": "a8e5e250da0e0bc0a3161468f46b6a33b72ad7547d3f019e5c3c619085a2564b",
+    "webview/assets/content-reference-directive-match-ba3372726c29.js": "7f7d9a81498ff2233663389e3738df48f271c9217e1fa48c51de93b73d43c415",
+    "webview/assets/file-a4343d04b097.js": "ec92351529c791868c7e44c2491be692139406ab3fcc94b36277974d4a3a3fe9",
+    "webview/assets/conversation-83a4813734a3.js": "45f4b46f73b66ef3c717b803822a1294283a0db7d2206221e950fc9be7c4ab36",
+    "webview/assets/chatgpt-assistant-message-content-87ce2100fdab.js": "68b8be694506310370f4cc68cfd5f89d2656db56da67a0f3fbe90917a57da1c3",
+    "webview/assets/collapsible-user-message-content-c4b687698293.js": "a3794dda7f2cdc3aa1bf9bf717e96e106d114966469b1c122bd93786136bb76e",
+    "webview/assets/use-chatgpt-composer-controller-ac13273315b4.js": "481c558fdd9175145adef594b051319b386d0cd4cba989b64b6ec142bccdc015",
+    "webview/assets/use-conversation-search-highlights-80babec62e55.js": "388bd81cf8ac645430cc18adf3e8c4185d21b3f2be27d753581dfa4f90af1c19",
+    "webview/assets/overlay-56db5fb6ebc3.js": "368c2a0200e5f7319b79b7dddb4a2700e7be01d3d9c6770ef7191994a4aa53c2",
+    "webview/assets/toolbar-e7746be8492e.js": "e13134fb25f42c2e0dd90800a5f57a0db42a12283a0cd8c256a97f96bd8effda",
+    "webview/assets/thread-summary-panel-popover-96b85b807a28.js": "89e27bd6a01e54d4422e5d3952ec797e62c3677efbb85afa80eb71c155fc2058",
+    "webview/assets/thread-emoji-c9605af38976.js": "5d62e33fcedf1de86a01dcdf38ec910aea9d3e5ac092debbf979cb961679d3a7",
+    "webview/assets/tab-context-menu-6135d45f6938.js": "0cea26665d53296979fa4d3c31e90fd5a81684d7fb16612e38f5b8f091c060e5",
+    "webview/assets/thread-summary-panel-signals-fb12e1765bb0.js": "eba271db6b503520b0a8ab098af1c21541fc6ac01fc075f6b22346eddf4c7231",
+    "webview/assets/toggle-thread-summary-panel-9af00c485bbb.js": "74162b593f3fe5133440adb0f65c7fc823c2c26fbf0d270a2ab517a03de61ecb",
+    "webview/assets/use-thread-summary-panel-86db87fa804e.js": "91da28472399836630df96ff3677205a7826103c7d32e2dda946792a6bc4121d",
+    "webview/assets/thread-panel-plugins-menu-item-25ae31f8e29d.js": "25246dbaaa912336e1687eeb49587d420abae5cae6098e41788bc0ede3ce6bba",
+    "webview/assets/realtime-voice-motion-1152410890e5.js": "3d4147395bbb4f658103230d273b78769b1d0cde5beea3aa6fa3bcedca6a517c",
+    "webview/assets/realtime-voice-stage-layout-cbd1d7be3317.js": "ade2c7d5f1a632f23a9fce61c1df0207b671b3cc6be428508f4c2780fc5317a7",
+    "webview/assets/thread-bridge-4a340c5108e3.js": "7482484de0dc58dc889a3e533f8aa61186dbaedc483042f57eef1d208bba7ca7",
+    "webview/assets/virtualized-turn-list-5f0b8c1edbc7.js": "ad8157d1a323a100866d065cecf01a66d1ae164297335373c83751d8c370c4fa",
+    "webview/assets/timestamp-separator-ed216c0bd3bd.js": "9e8cbea53b2b81e0f8b9c68d9c5dfbde53a04e43fffc339ae70d066f5ca3ee35",
+    "webview/assets/conversation-navigation-state-39ec17da2cfc.js": "da20b3917007627b1793d3d83b9bf1d58b8da4e7b306fb891ba58c6cda68ebf4",
+    "webview/assets/header-145c8ba08c03.js": "d82e4df451206622ba95eeafa38e2d3348d58a92df86bb1893fe9ce8a1c45264",
+    "webview/assets/plan-model-cebb3c07095f.js": "eb08a99aa5c82bfe7a38e774f64df7a7cfc29f776762df2107192c9af74f1e3a",
+    "webview/assets/conversation-ui-ff43dd409558.js": "cb97ee2f462eac1efd72409dda9e283ece8811279897fa1eab79b99d9e22274f",
+    "webview/assets/site-preview-composer-overlay-dc5c26825c1a.js": "9b4f5d62fffc63a05439d4b9e9d2044a2e1e3f6eb6977d3c733e1bebfe8e7e50",
+    "webview/assets/conversation-plan-files-c2dd92022a44.js": "d474aec2d566f5842ec656bbba87e879526477a70813e411444782baba9e308e",
+    "webview/assets/controller-65b66eab2fbf.js": "19145ca0b48399660915bb96a19de768e5e196fe9cfe57de64bff2e9f998eb64",
+    "webview/assets/context-2646fed608e8.js": "b90c33ae478e5a4e0e28bcef59a1937c5e9690248dae260b4eff6d58cc428ffa",
+    "webview/assets/browser-composer-disclaimer-6d3d354f6c94.js": "50f254e957c6584a988def4331dffae7ec6d043e06b0946e32d673356f36903a",
+    "webview/assets/preview-footer-f8c8bb79d3c7.js": "1ee9a8bb525573a5b0476be2e0fd6356fb7b22e2b1a6c2ccfc0fb15641c129b8",
+    "webview/assets/chatgpt-conversation-turn-content-2b28a90ef308.js": "65b6cd1bb2f34911428b208ef82280994e4e313c697724944db393e56d24272e",
+    "webview/assets/chatgpt-conversation-actions-59fa4ea766a4.js": "453300e06060f6bbc0926a01d0889911a822fa9c847af92dc62a51cc2eba8867",
+    "webview/assets/chatgpt-conversation-composer-context-fb658092ea2e.js": "d0955bec1c3b49e7138e4e4e9543c83366d182ed2654e7e73b4936be4d1d02a4",
+    "webview/assets/suggestion-bindings-55968722a228.js": "a62fac6f97e01ed9ce27fad4700b526c055b80c3e50e7c14d2181ecc563a79f1",
+    "webview/assets/chatgpt-conversation-runtime-4cb49aa0d51c.js": "d784d8aa29b673c8fe9ce156a23989f7b526a91cb70804af12fbdf7274df6798",
+    "webview/assets/composer-6ede3b5d5b04.js": "d04a9280462ad267ff3ce7e29bc1c8b44c59b11276c6b39bf0400198e1da4e28",
+    "webview/assets/composer-placement-state-fccb7b590544.js": "dafccf5153b626f4734e4e26e3588a54d35650b05b14ac36b0138522d6e1764b",
+    "webview/assets/chatgpt-entity-panel-66621fbf3f09.js": "b299199ad6b8ad4cf638311a7a887ed7b496b886a388c93d5f39bb4d9b45d351",
+    "webview/assets/chatgpt-entity-side-panel-tab-registry-7861cacc37dd.js": "d5885a69f103bbf381f4e2d1c50bd3fbd5c8e9338e0ee87d3884e2005653fc5e",
+    "webview/assets/chatgpt-gizmo-header-6ad2bb568d9f.js": "a5d47ee8567071775b6f0de739faa3835e1c83fe07f39f3983f3121aacee190f",
+    "webview/assets/composer-provider-962259c4ad0e.js": "e80118b8e910564f43240c4fa6f2a40d3277c5d1e1f8b5123e2182de9d0774d5",
+    "webview/assets/course-model-c6e1ee517284.js": "c6a720fe795c49fd546b46feb4e3f9204ffecaba2f4afc52f5cb4d5a66a6cbfe",
+    "webview/assets/conversation-move-menu-items-abb89529bac7.js": "e2cebfc839c94e6e638c5558416d3f1e60fcd568ef6d235e3c37bdee396a781e",
+    "webview/assets/display-31ca766fe0c3.js": "f6b58dab189ff3828251e8497e08ac9b49fb0ecc7908bf634760b0b113184098",
+    "webview/assets/widget-focused-object-transfer-1bc7d7c08228.js": "9d7d9cf6fff89f1ae382e141cbd5da6e9ebae6fbaef3ad6c57cd68bbb12988ac",
+    "webview/assets/chat-choice-view-13d941e64abc.js": "3a93b923995fb74e0a76af7f71c8f25db159ce6732b096c96346ceb19ab39baf",
+    "webview/assets/bullet-separator-33614a9dcd5b.js": "8dc5a7463bad980e8b3d474f9120ba0806f0b01d507bba2bea40470533107cbe",
+    "webview/assets/summary-panel-expandable-list-c6e1d79018ea.js": "95de9ea129fd24954ddf3488f985fd0a41f9699cf5f004ac20d93b2127727a73",
+    "webview/assets/start-turn-206104955830.js": "6f9cc64d07f7e5dbe921c215ee32b5cf6152071b19023f2350a9955a9293125d",
+    "webview/assets/mcp-app-host-styles-810b79043f60.js": "2c70db2888787dd914b7436de1fb496e565323c0da0b825350649801bfe603a3",
+    "webview/assets/mcp-sandbox-rpc-2ef7627623ee.js": "7a02d6aac7722304ba605ebf076cbdd47e9c981621b4315d91f360d71a7af874",
+    "webview/assets/sandbox-origin-feb4680fff47.js": "73298c1ea9b42e03f007ae72b9632544e9e21202ab286476c4cbf3f088482e5f",
+    "webview/assets/resource-52711a0ee5f2.js": "03d7ad91c0b51ebf0082f1611cca82165f87be08dc3036a9f2e7736b76d5c1f3",
+    "webview/assets/mcp-server-status-signals-2f28024dc54b.js": "f5342ea30a57db74b6201e88ed72328f4656712efa5a2319d78f599c6a5b69df",
+    "webview/assets/submit-661ffe1704cd.js": "bb51eaab7fcedce6a59e846bc31ce456ed6963da9084036f7c747df7ed2896e8",
+    "webview/assets/mcp-app-follow-up-message-89b404b46791.js": "6cc9f6f7c975ec7a8d654f6437a4fa237b3a1f33e9cf9b3394af8fde5a384e91",
+    "webview/assets/widget-follow-up-request-58c2e12d76a4.js": "ece5a01f1a41b276ddb0936d8905d002caef2d0d8c6b28a6a73980e76a3d6abd",
+    "webview/assets/mcp-app-follow-up-confirmation-dialog-902ed691516d.js": "3ed22f88338a09bac2bf242bb0f77de5a8d4b45202eb0f4c19f8858a92f16b16",
+    "webview/assets/thread-callable-apps-cf5515a5b999.js": "db6b8db542060f4b1888f20700a48fff2493b0fc777182680ba4b8208d564a13",
+    "webview/assets/plugin-suggestion-contract-f0b6e395c368.js": "66dd1f734ea108a01681e1c2f75994c4ea608a154344c0bce16db270ecb54805",
+    "webview/assets/mcp-sandbox-element-9a393d91c3e7.js": "37cbe0066fc7f2beaa0c08f585183485be13e36fd149d1659a27518a1afcf7c5",
+    "webview/assets/observe-layout-motion-9559cf8fc98c.js": "e2d05dd15997284ec56f5d7973dc2638d69fb89d53c2598ae1ea7d9121d42a23",
+    "webview/assets/message-submission-b28d48a4355c.js": "f4e1f3194e5de27e9b61498a0f9265211c2cec5075b5ace235c992fcd8b93a29",
+    "webview/assets/back-forward-navigation-buttons-5629adc6592a.js": "1ed8de0fec1c394ec0fd646335f38237e1301d9f059a155491a0a4fbeceeb2b7",
+    "webview/assets/viewer-header-830c3452bc58.js": "b506436581aebbfe6575be4e5a40bc190441d57a28768bd72dbecc742039ecd8",
+    "webview/assets/inline-height-de22080375ee.js": "94943f98e599a1577ed05df3a4f05f357ee674186ecd92eb04ab60a85bd7d832",
+    "webview/assets/loading-placeholder-f13e6c158f57.js": "1d8a4cc2ea9024b378966b420d17b70ff0c155209e8dd33063e64e55cb85d24a",
+    "webview/assets/chatgpt-artifact-interaction-analytics-65152faa1028.js": "dad58997341632fd1870b3a2eac25d8f02d6f8fd4e46d27130fcab07bc44ccc9",
+    "webview/assets/citation-pill-859845824d7b.js": "a84c3b24bedf1ef509ebad657ac567e5805158fc7fd9fe7715638c74bf2259b0",
+    "webview/assets/fallback-a829a1d28a35.js": "3025468f4f142d7f292d2a13090292475e58bd07f6ff037970bba3821f1f0e09",
+    "webview/assets/chatgpt-google-file-title-query-b6fb0f2b9f12.js": "d7fde1c6252946ac4f004571926c837f281e73ad78280679e5c53c8ede82b053",
+    "webview/assets/inline-link-7a011b3e2f57.js": "c372c8f64939b746cde9541f351d3b402851b7cac2743d253f6defda00b2ac0a",
+    "webview/assets/hover-card-5f512381e95b.js": "7cc7e4e2ba1b9e37a3e5970b37c0468db97465d6c84a4eb8b04f7b36db36fe6c",
+    "webview/assets/source-app-availability-d2842b06d6bf.js": "a216482e7a9f61291190138d255e2d559972c654bb6107fafd80b715713e5b60",
+    "webview/assets/badge-454fef2eb8f7.js": "318c480192f444ea3a08daab7d600ed0880ed7e63273a77fe96823c89df9c87e",
+    "webview/assets/resource-card-list-715a60e721b0.js": "b7a3c8fe76d0904f5b3338e8b60d81370572bcc9a0e6dd7ba46b163d90782e30",
+    "webview/assets/chatgpt-markdown-view-dc89721afd49.js": "b5e5360d9e5017588785b0d1bcaeee594c115646cb4670604aca71e9637d2a8e",
+    "webview/assets/browser-use-be088a2f8a78.js": "c82e72305297785647246ebf64df2023b442a900348c3f0e4116ce06f369fb9c",
+    "webview/assets/open-cloud-browser-side-panel-aa7de1773445.js": "09bd065f76a02ce5d4c60ab545e368d2869c44d2024e290bcbe20647ae4f8870",
+    "webview/assets/chatgpt-moderation-disclaimers-dd0e6c09542d.js": "8703ded40c9a13ea2ab2779af752168a9adccee1a66bf7d6dcb2549e769d6b87",
+    "webview/assets/highlight-selectors-cc49dbb1a3d2.js": "5d529a2f713a8dbc6d2c0bfb993078a0de14a4c5e1bce8f949f6f5a4f127203b",
+    "webview/assets/thread-summary-panel-layout-488b931a4b80.js": "fdf94e722871a901fb9761df2aadc4af118464f77911c879f4137883dc339f39",
+    "webview/assets/thread-panel-tab-launcher-dropdown-content-9ee7a8f5f911.js": "cd3db54d7ffd3f3c8a7f3981b5be67803807bb4cfefa62b71f9d34db75c67f5c",
+    "webview/assets/timestamps-85bd12c0e1b2.js": "0a3a948172e99a4ab9d4d7a251eac72561c0aad314364f612aaf11836d5b815d",
+    "webview/assets/thread-virtualizer-e1964ca5c039.js": "d1a120db42f0789fa5c7b6381b76090413ac027377844731ab7c4b5ccf3fcfb0",
+    "webview/assets/new-tab-button-9e5fa9430ffd.js": "9ec47c1784dcc17573ab186d18e264a02f34c9ff950cc113d31bf8c93de2c193",
+    "webview/assets/site-preview-bridge-57b404af54f1.js": "c32e32c3aeda40731c686d1687dc121f5c8a8cccd4c37507d706bdff312f1202",
+    "webview/assets/thread-panel-toggle-button-f21a6ffbd3f6.js": "b806947b21c8ec5fe49e0d48288b671080513d4f3e11ea693e6b19f5192d3a7a",
+    "webview/assets/thread-app-shell-chrome-91eb645a95f7.js": "f3f3c48e2229c3af3fa04daa8458ca072076564d71f74c2f0e219d9da196ec40",
+    "webview/assets/chat-tab-metadata-bridge-6240f921dea6.js": "910935ec291ba664186230e942a6c5324ebc95be9f4f61e5821419bd2c8b91b7",
+    "webview/assets/disclosure-state-1fb65d8ea114.js": "047d917ca83c101deae8862435ac60447a3b62a7ec28661be61d94b57f6e7369",
+    "webview/assets/plan-file-1f6c9021c7cc.js": "1c5c40b8681763af8299c7c9805865c906a1d4b153857d90c0bbbe2bfe3a0029",
+    "webview/assets/content-chat-surface-ac653e80158a.js": "d3debf6e1bbb75016e0f6c184ecdd630c024f2732653d0811e85b8c6c6920043",
+    "webview/assets/contracts-d83307d0e4fe.js": "fc680a5296281613a52f085399302ef27ab49bebc7528a02720cb566fd793377",
+    "webview/assets/preview-footer-controls-fc7939f557b6.js": "bb88b79db978696091d011025096a83c9e6dd33e0ef53f61465e1ce9d8087212",
+    "webview/assets/runtime-aea017ad1c25.js": "7afd89e8234b420eebdbf657b4e62ec73e4ed12bda427b7a140ac60c97d43c9f",
+    "webview/assets/resume-chatgpt-completion-ea3d90061e1d.js": "21a43cefb3e1dd3fc523e64f4c155b58019b30a9263125869c1205d5a5da8ef8",
+    "webview/assets/content-reference-3c6d4ea6f7d2.js": "7ece1313761f5465f33d52b4510e79aa8457e4e7a82ac7e7900be228a670cd33",
+    "webview/assets/subagent-activity-chip-group-a0fc2223efe0.js": "baf46e432cf78b18402aee1c1105e0339bc01a5e4c8abb11b7ceb0e5c3968841",
+    "webview/assets/thread-response-space-controller-e657855cbb9e.js": "e2f1584540e15a63a2017c7b6bf3fa59c6809b1b1ae60bac5e08320e9f10d71a",
+    "webview/assets/notifications-6449b094ec7d.js": "3801f3051b84799078f9f98fc5adbe34edda95327011eb636d5db4f9c617b346",
+    "webview/assets/gpt-report-menu-item-b1a475b3d156.js": "ca2760a55a7c16c85709b50835d0f72f9e6548683c6a0c1f92b34e313c6b0895",
+    "webview/assets/lodash-18ea765911e3.js": "707999935da7f7b6adf5f9f617a73e5f245fbc508afd8f489a0620f33ca5df9d",
+    "webview/assets/thread-history-loading-e62999bcc09d.js": "f98d1aa9b7719833029e64b251b754e281489ba540fe838fe4ce5bae2d3db348",
+    "webview/assets/retirement-58f3e8a85e7c.js": "cbff88ed442e9c6a4e3cc66492da24b363d3176cc2755c76f2e05cd9efb25af1",
+    "webview/assets/workbook-from-csv-9b806e8711ec.js": "4c09957980274295725398c512608f65ba73e91db57c55dda821f284a23d5988",
+    "webview/assets/safety-buffering-status-transition-dc3a966c5d2d.js": "d091ca106965d0a3a25f8e6d528a6c7c5ad1d0e15780380f41cbc412f51aed8d",
+    "webview/assets/chatgpt-personalization-route-36526df91ee9.js": "b4f14a6e2316582a861ef45c39df508d8c8d0791584ff348aeb4523ea39454b0",
+    "webview/assets/state-4e4cfcad887a.js": "ccfcf01a7c3fb9154858433c273de4aad9354004a0038a9633f08e84045ea437",
+    "webview/assets/agent-activity-item-b830c0685103.js": "54d0b20023854cc0415262c3d4057e45eec78e95c06113dd75cdd950bd794d4a",
+    "webview/assets/chatgpt_tpp-f471c7c8ab7d.js": "50f60bd6fcd1f08819ce018c961736fdf31f69831906caba00e063412f866b17",
+    "webview/assets/chatgpt-ecosystem-widget-5255325988a3.js": "007b1cde7d2c47336f97206979b8080acc49da5fcfa8d94be2752478688b6f05",
+    "webview/assets/chatgpt-ecosystem-widget-resource-ba50a25ed683.js": "7c48d8004e4730ad361f27200365e51215032acea69ad9b4a36388056d80a1d1",
+    "webview/assets/image-loading-state-d2e61c0538a5.js": "cd7a951bf744993991d0d5b1e8fcc1f2802305c9706df40f60486bfb3640100b",
+    "webview/assets/map-1dd687cacdff.js": "fe19b80d7321a8480d5ba52857d6f9ba69f173055b02a36ed6d144c0ddaedfb0",
+    "webview/assets/schema-f4af46acc0d1.js": "9d773b97ef19dcf3d907ed4b0bea56fbfef8f70acd4c86370cc0be9602b2e2d7",
+    "webview/assets/generated-image-source-f2dd7ec2f740.js": "06ac574594552f260ae4796b33fc8c86c623cf1d9dee364bc21a4f2f333aa4e1",
+    "webview/assets/chatgpt-ecosystem-widget-launch-a76c5aa88039.js": "ab7b7e2762f00321614e66cd255c3a034fec172590357e0db4f995753a21fe7a",
+    "webview/assets/use-ecosystem-widget-launch-83b5e9a94944.js": "8656e64e8ccc43e626b4282b1423732604f56f888de24fba55929ae621517c57",
+    "webview/assets/favorite-folders-c656bd8ce91e.js": "248e85a6b188409030227ee5f770c6b6ca1778d6c34d47bd80da91b954499d6e",
+    "webview/assets/image-favorite-actions-67d6414872e3.js": "8fa8629ece76b8c2b79aa18b19ca510ea9593fbe23069dcb10bd9ec223126026",
+    "webview/assets/copy-generated-image-to-clipboard-458614d04bd2.js": "6b8c8874038c400e870769a6cc39a10a442b20dcf889598f5fa2322fde5719c3",
+    "webview/assets/chatgpt-sources-message-e7cb4dabfd20.js": "59c4b58e311dc4399852f6f6b4fe3dc01d663521db9ee9349c1bc8f3598a78c5",
+    "webview/assets/navigation-source-5ef6fedc2d2d.js": "98727b3c33228bee2898a0f19940ac8a26f2301855938ac3bb660e0adb2c7c37",
+    "webview/assets/browser-file-attachments-8d4b5d03a2c9.js": "2229137f4e31b93611cceddfd91dfd4356527ba5f0b2b8997b2b2a288b12e739",
+    "webview/assets/use-approval-commands-1e2f37cabcdd.js": "16781a8f1960740bb56d65115196a4cf2dc361badb2ac9d9eed59952b45669e1",
+    "webview/assets/mcp-plugin-logo-b90270979d33.js": "d2b0f0d36afeaad4ff49e1d333a052dd48ce1e69d9ddbb3ee31e9c2c8faa2c23",
+    "webview/assets/request-panel-530ed5012963.js": "89dd0a4d0a5df90a3de23f2f68733e1474030b9bb90bee77f0d7d4f50f3e1a3d",
+    "webview/assets/remote-cwd-picker-85977a6096f0.js": "097e30618671f626a245d989a628a197e7ef7f1a0ba6862f01bdbd17ed3e2d5f",
+    "webview/assets/composer-approval-request-card-ef55e8ccb5d5.js": "1c90042f585691406316264e2e490f468e748cc453ee30002ec265ed5c7014dd",
+    "webview/assets/content-reference-markers-5835ac6758f9.js": "da89a28696996b8a5770e332b9811ea1b3c23abe83f08fcf83849e91ed4683e4",
+    "webview/assets/skill-exploration-labels-443ffffb0851.js": "1258df551a79cd94bb5812fde001c486a4eb924b027a924d6c50b0a43d80bbb5",
+    "webview/assets/conversation-gap-f60df2b6a487.js": "38f4e4173a7b8ec21fb71810702102c1cd2a6f632e236cbc81c63d72c17c3951",
+    "webview/assets/system-error-content-f6e5754dcd0b.js": "30aea07945e2b09b1aff729b64303bdd66582bf2d84611fe004d46e85dd1c347",
+    "webview/assets/agent-activity-item-row-fa5342a7c173.js": "700f2c233c58343dc0ca1b8f701d9e10385cdb3fa6553b7af84479ff1123bd58",
+    "webview/assets/worked-for-item-content-78a5b53d07f6.js": "28651f625e8b4a3c93c0e8bc8a193df31308980464931c86d3a36999fedb3a05",
+    "webview/assets/mcp-tool-item-content-b8bda8ed918a.js": "e41f64bf2e79da48170320f40a745d2df09060755e9bbc4555c43e8be24e7050",
+    "webview/assets/timeline-activity-body-e91ecf82464f.js": "f657ccd44336522cd26b7bb53e56e74f9f7245b4ff876b7a3a98bdba54c7fcef",
+    "webview/assets/inline-followup-markdown-cefdfb09cd7c.js": "4e7c21d9497689f3d3cff429a720bbea843aa6e0d42f90170d9f635bf82924b4",
+    "webview/assets/user-message-c555ee9110f1.js": "1688860aa9cb36f19143293cc039f3367207c983aa2af319b193b2049ef7f482",
+    "webview/assets/chatgpt-audio-playback-button-6a5723a11e9c.js": "d94c6f90268c9000823f9cd8c52b142021c76d1415a53b9a13a6728b6e387ec0",
+    "webview/assets/response-rating-control-155811012151.js": "43c43e8c8a2b5a808b842660e9e34dcc30c7f4b93d1a2b5f6995b61d44abdbdc",
+    "webview/assets/codex-thread-report-dialog-193f8d9d6639.js": "6587e99ead8f85f639e96a38fadd27ec73f8d8e86434b1bf56866152202f0d44",
+    "webview/assets/collapsed-turn-disclosure-accf2b31cb65.js": "db12173a1e2e830ba055c3ba2df93a17b09ae1128bb5896d97b25dadae8700cc",
+    "webview/assets/summary-2aa55f6eb64f.js": "f30e9d66773a0a3129e8d670b2098703eeda84e5ce02101245301aeb7c24a4b7",
+    "webview/assets/table-utils-62e8d75c31cb.js": "ab996688bc3d518bdc026d970bcc2a82d19ce36ebbbfc11fdb71a47f7c683b21",
+    "webview/assets/widget-analytics-7af4a2f1fe9f.js": "eafbcfa239be9710032be76c73e4a43a6e10dced32340399831074a983f4143b",
+    "webview/assets/image-analytics-db8a931b1ac1.js": "41f22cf84052bae53cd864c32c47828b686e793d3d7ef42a21a4a39b47784317",
+    "webview/assets/chatgpt-conversation-share-dialog-31753630aa89.js": "369857a9b7c42c518de9bb9a39d70bc343c23029af8ed255b2a17f1d9d2f5cbb",
+    "webview/assets/message-rating-244188187af0.js": "c582e5a0cf9ffffacd32f1334ba306d96cb083300f88389c67173cda3cb7252a",
+    "webview/assets/analytics-71d5a6891a18.js": "b425a61a91d2693d47af623921dbe78fb70edc9abb4bd8b5132f4f485d3c7406",
+    "webview/assets/inline-playback-d064842af0a0.js": "d51c339b73a5178d192289e91e021c8dff9b0abf7502ca6eb7de26123211e3ba",
+    "webview/assets/chatgpt-image-share-d3e99b942b35.js": "d863e8aa9836f83df4fb24a32a5a5a13e2025bdaef2ff858d0c3d0f64d9ca540",
+    "webview/assets/data-37745a7b57ed.js": "c0d4054bc0e2271554ba70070320b13a1aa6af0650c752eb79bcf51885f77f9e",
+    "webview/assets/chatgpt-memory-citation-analytics-6b2904c2dc24.js": "13a5d8e9056d21d4dc0cd9003ca392f48d99259eeb25e33f7bfc74c962306da1",
+    "webview/assets/content-9656b4e9e52d.js": "15b7d150438a770f8b2ff68bb77db66b8a62d326150a05383036d2bcb710da4d",
+    "webview/assets/open-chatgpt-subagents-panel-aff87370e8c7.js": "5a6e0ba4713d8513ac48e8890449dc45fdbe488da03cf5efb33e121e852576f1",
+    "webview/assets/library-multiplayer-access-d4699957b4b0.js": "19be3334a5932b7960e8e1bbba801ddc8c0f4608f960f887a1f25e9acab83dea",
+    "webview/assets/chatgpt_reference_images-f5207aa3f1c3.js": "10fb5c69375c261b8d3a6ff5fd87a4eab8c3c4784b89a874a2f9de342a767de9",
+    "webview/assets/open-dialog-fea9bf65183a.js": "93c2da9340fe529662bc42d6af9b99fe2da34675bcc12938857ce10b4cfc20bc",
+    "webview/assets/state-24e590b9e13b.js": "51a2e09905bad147e55e44ac05e43963a2f9fbc82f147dc3a4231ac328930890",
+    "webview/assets/image-data-8c82eb06d48d.js": "f75f3f00f8da575d1e6fa6deee106cace03a9b7e8dcbde3de1a1ed1678daf57b",
+    "webview/assets/header-actions-42ebe84b03e2.js": "78da09abae42e5878a480e927d64938136dfecbe006e10fd66ec696d98b4e978",
+    "webview/assets/generated-image-file-info-f91a353c457a.js": "f49bb49aaae565ca15d0a519db31268a8c001b0951a029a848892e7912fa9bda",
+    "webview/assets/image-result-viewed-35c819aae7c6.js": "13ce19d8caa7544cf80f9dd12fb23735dbed13b3f57f17f8324bb7c14f007de3",
+    "webview/assets/app-info-b43c099f07b0.js": "d9cda9aa4e78e2e332e17f07a4d1378cf17a87c7b0070e110df81818ad23db1c",
+    "webview/assets/shop-this-image-input-c1da9cff26c9.js": "54a1ef329141f88a410d75c79ad8861730763f3427a1cb9b58374afafe6ca438",
+    "webview/assets/details-d8e056183156.js": "48152105fac8dc46f199fca1ec01c7e00d7f9040df4624cd39fc2b25c3f4f57d",
+    "webview/assets/plugin-suggestion-lifecycle-def5b85b9226.js": "a40885c7c87b457af680d6036518a3fcaee14b5264b933971b3a2931e3aa5892",
+    "webview/assets/work-onboarding-291ee64e28d0.js": "8097114f16be4fe86f0372ddd46dca71953680d9e8c6f8d9daba1b2389bc4484",
+    "webview/assets/respond-6132d85e6860.js": "f3152409a69eb6451c4ef5cd1016e599be5e5cb554afd75b513159afe7457ceb",
+    "webview/assets/file-actions-86b9555d1f16.js": "3d14c75d2529f6d2991454a6eff4e1beb28fe9d8717f8cd3a66197121a2f83f7",
+    "webview/assets/chatgpt_trusted_contact-a7fbed382f14.js": "94d39442c17436e2454a41eb466973bfffc9c6dcb81e8b255fe3610603b25d01",
+    "webview/assets/trusted-contact-no-thanks-dialog-2ead3bcf5fce.js": "dd4aea6fe9e76549f9e8237a4f1f9794aa0709623b888aa1d2d2a7f4c6b82249",
+    "webview/assets/entity-business-profile-status-ee4435654e18.js": "a20334b3c1eb977e3097092b0ed34847935bf3a8c2572bcba21d39c2a2790896",
+    "webview/assets/engagement-eb8e45cf2ea1.js": "8cd3e3459a074d3be74945165ddf9994613d68a2d3f1a5c93928779c98c133b7",
+    "webview/assets/business-20c376cbbd63.js": "2790a04c8711b3c2f93d7fc54deddc54a8d1e5a15cfe1275c8448d3ed9a1851a",
+    "webview/assets/sandbox-image-8ba2fba8b24e.js": "b9a7ffa54b47d45bbc28732ea0919a2cdcfd972597bee3924438d144f1f008ce",
+    "webview/assets/chatgpt-dil-directive-renderer-4c4b2c380722.js": "ce9116d285f599d7a3bae493abceed5683f0bafcaca2fe869d857daf34d39936",
+    "webview/assets/metrics-3c3066f7bd6c.js": "a94da79398a9ff70be37192a31789950786232744f5fc114c3c64de690045b12",
+    "webview/assets/lazy-response-52c05a1a3be7.js": "1b242925f45c1b129bee4ca8fb3753a303b8f6dcffd25462eef977c7675458d6",
+    "webview/assets/chatgpt_conversational_onboarding-f7deb0d60fff.js": "2a79f7eb1db15e06194048f56763b39c8548a2a95365d084b83e4841b3c2f003",
+    "webview/assets/generated-image-placeholder-8a88e12ea46f.js": "b8d1c30197f8fd6c6ae465b05c10e4077fb65df0e127b7e8ec610cd17125f7e1",
+    "webview/assets/chatgpt-search-image-analytics-c504c0584c02.js": "17f6ce14aed059f66583f09cc1df4cd197790feeef1e99151af80540ad5f4f22",
+    "webview/assets/image-group-carousel-2afff88e5601.js": "67c1aaff3ab8e0d7e3c5a0f841b14b1756b97a5e1acd4809a0dd1632a9fc450f",
+    "webview/assets/action-7f8b3bb94747.js": "7c3fc4e45eec80f904f8ce655a09cf8d6dc6b005bd2d12dccaded8ed62414b0e",
+    "webview/assets/generated-image-context-menu-a3f81b57401b.js": "9b6ba4c4a4d861edc2628253a0bd9885dc9ac815e1252b2e472bbb99e93e268e",
+    "webview/assets/generated-image-gallery-context-menu-756207e01af0.js": "0fc657819ef9ff370acf2f915e201688ad4ca843bab9257e7b414900f8a6b068",
+    "webview/assets/card-f877607c4b46.js": "c573ecabdf5dd7e24a7e590d559ab5c5c40cef79ddcfa6df802b37b6f1346524",
+    "webview/assets/linked-reference-dc1750410515.js": "0211ab39aa4a17bbbd87c2daec254de27d4cd025f539e315c5b8982f9f2b5a9d",
+    "webview/assets/inline-popover-provider-e0d2689f0bf3.js": "5cf1f2e2fa88a68f8d62dcc9cbf2b42a8529ae7170ff280dfebf1d4a2fd88834",
+    "webview/assets/attribution-6a529b29f9ca.js": "2cc0583fed2006fff4eebda2e3de5cf81c3d336fa4780ae048513c0681e26869",
+    "webview/assets/thread-panel-launcher-artifacts-b2e10bc4ed16.js": "9bc980a24715eda00394d23cbf7d5887975e1907add0889873f09793a72dbfd9",
+    "webview/assets/runtime-a11f8474fe51.js": "f62b3609ac0e12c577671621732207ee98c7dfd6aa490a5b195a9d665ea77ddd",
+    "webview/assets/tab-input-7739f1439753.js": "be38cfdcd74dacdc85feb5d9db1e8ec7f51faa782afe1058476d085ab110e568",
+    "webview/assets/thread-side-panel-new-tab-d1a09e49064e.js": "18005935ba260da49433259c566dee40fda8df8df8c7e1d838a6222778333dc2",
+    "webview/assets/drop-zones-c32a91130e8d.js": "a5b1f837afe029c1f338aa0f8629d8148c0369f8e27ab4b3f3d14c6063bf6ca3",
+    "webview/assets/floating-chat-surface-63c33fd45d48.js": "d67019aa3ae5a1cfa36ed1a2c55aba91ac3530d32d9e5ec3b91391fbd293135d",
+    "webview/assets/floating-chat-dock-menu-8a5ce0174db9.js": "7168b1a0e304c1eeac17fd5b151b9e671f10b79c456f12b797262b78eb32facf",
+    "webview/assets/inline-6fa2df492568.js": "d74ee017bf438cdb2159456438f37b566e3ef8980df1223e2c8af1e0950438a9",
+    "webview/assets/entry-68fe41b172b0.js": "75e6d5d31d162bb627d7fa7ea095103e7ef6ee6cfc04afa92e8e7ba862c2c99a",
+    "webview/assets/address-utils-7bbbc06d8767.js": "036b65cf22312dde5e088931a3cca06fda5ae52f4df7a2be3beabf18d02b058e",
+    "webview/assets/triangle-warning-b264484e5f45.js": "4904748a60e6bf56512dd9c29bc63cea8a16bd8fad22e72cf08167ef81046aad",
+    "webview/assets/thread-handoff-step-row-d7e6b4cb3799.js": "6784f3017ce7de058a085e3b4035bd9bf981e9765bcc3508a9746dc6b460e74a",
+    "webview/assets/mcp-tool-activity-label-8f71b602cd16.js": "0917363f900f7fcf60856b0649ceb90bb6f09d3a360d73fb4f9c110c4ace2533",
+    "webview/assets/automatic-approval-review-727bed751d24.js": "059e62d6678b2e2c6ceace327c9752b7967afc8da22851422dc5c746b38f3fce",
+    "webview/assets/mcp-tool-call-approval-8abf1b82c6f7.js": "814a990574b3601a0d1023d8ac47782c4e4f15ed62d56809d22cf58843d33e0e",
+    "webview/assets/chatgpt_finance-d3d87b248f7d.js": "1357baa9507661f132d51f115eb47c4b0ac9ec24627c70241574d2fa9ec8ee66",
+    "webview/assets/open-button-23d11673f594.js": "7289fda407a3b5798dba9931b7f07df218e5c91c2ef12964cf957272a6f69acb",
+    "webview/assets/widget-source-link-1b2a45833492.js": "417d4c7a30aad9014ad00808db6baed97a49f5e8f2e0bb27a05bf656dca4d04a",
+    "webview/assets/image-loading-progress-badge-72f0f3fdfcab.js": "dc6b320c7100afbf4c720a77c123621baeaf01c38957a3170bdde0886adcffbf",
+    "webview/assets/source-icons-a19d46670d26.js": "0be3fc9a1e99cf00c8b38a34c528179964fd65cef78cd982fd939c1b689cc07f",
+    "webview/assets/permission-state-14e9c8f89869.js": "8654137fbc7662d37f59bd8ad60fb19cd2ee2b7d755380c227330d6acc71a842",
+    "webview/assets/map.module-4a5d0fe8a676.js": "3ff6bc1cdb3f6bd5d8d15739ca050f49e04f1f1e9ac8da187bc3f6d8c37770e3",
+    "webview/assets/plugin-connected-account-links-9e06fa49d54d.js": "0e9c98b25595ddadd7cba4e39a1a9f1d4d4347bd3775d732363f1d585a81b054",
+    "webview/assets/book-open-4cc9b741d206.js": "45775887be1ad7d5fec1a458d378ddd38e9c5debbe69aa1b55bc1d6fbee801e6",
+    "webview/assets/warning-a4a3f5714221.js": "40098930649b0f9a74549e9e3f1a12adda31fb2406fd1e287f6fe128e6b84667",
+    "webview/assets/file-viewer-menu-6ae9d8811dd6.js": "7d53bdcf85616f9a5e84eb3f59faf75c516775b198fcf51336212661681b39d9",
+    "webview/assets/appgen-access-state-messages-84e0feee879a.js": "c92e50793e46a0329d18694a43acf68583c1608943051c791b0cf3fd7a7887a4",
+    "webview/assets/share-cff3f9c41e8a.js": "5271ef096024ef0d4d5a9f8a59efca46cf4b272658614a9643d43a9644229c49",
+    "webview/assets/use-target-apps-58e59250c3ff.js": "c6b9c6bdeae331354727630239edfa8ef5f5d5de693d4b3607435eecfa34cb2f",
+    "webview/assets/workspace-file-context-menu-trigger-ef39a9e08d82.js": "bf5d9d7c24294a0d9cc7c0a86b2470813e754e8b8134a083a1c1c9380f1eb120",
+    "webview/assets/AppChatgpt-787cc794f3aa.js": "e31aa43b899b30473f58804bee5e3d0a9c454415c9d5c65bb1787d987e16caf8",
+    "webview/assets/uploaded-file-attachments-dece33f3c8a8.js": "9e5e8e2bb13a8efd26df3c0677a1f275b5ac96c9e09691f2703cdb43d45f98ef",
+    "webview/assets/overlay-load-error-6b4a380c3fb2.js": "9dc04c1134b584922f88686c6d1f0c52fda36e260cb07d0e5b7bf879431c513f",
+    "webview/assets/content.module-776581282424.js": "e65b0bc48ea649dfb4718b595730e58ef30ef003e4547255318c6df05a7c3397",
+    "webview/assets/aeon-appearance-colors-d30832f94540.js": "eded01687bc9c1258c9954399bda75a0ac5cb86bb7e5c156c41d883a19a84498",
+    "webview/assets/aeon-message-parts-ffedc23d0fed.js": "80ecec9ea8f2d47a453573ccf4303d86aed57dd3713f71a57b80aafae5a24cbb",
+    "webview/assets/active-tool-activity-label-da42cebd12e0.js": "1de496752b799d1c57e15e3ae08fb8b2a55d835f6c8bdb13ec4bd902c0590974",
+    "webview/assets/observed-message-performance-marker-bfe9713db011.js": "955ae1ac45e47548d6c0a3886239f4fac75e847b199aaae4ae6785daca825543",
+    "webview/assets/conversation-presentation-context-90384c063c9f.js": "8aead9a6798fa4591a09e5cd6b601f3e43d6afdb0a68838d3cdc2c2b3e74d1dc",
+    "webview/assets/preserve-timeline-anchor-position-1100d7924b88.js": "210257789712ffcb511328aca37f370be8639bf5e82eb3cd218e1dd766735097",
+    "webview/assets/expand-6bb9734b8efc.js": "61e47a5ba48e214a4556a825b10cc725400e859be1a1fad7c70e09485fecb910",
+    "webview/assets/followup-analytics-4a9d22031a4e.js": "32caee161f8fe6ef6440aba372978e63f58e0b19e583b665c063ba1616061368",
+    "webview/assets/mcp-app-analytics-7a30d3890ba8.js": "b3b37c6cfdf18c1f28db14a432ee5ded0b0b6b2766b308bd29a2dc6dadc932d5",
+    "webview/assets/display-1ea51293e630.js": "1b67ddec4eb397527356427e1dffbbb77083222b9d821f31c298a887c411e914",
+    "webview/assets/computer-use-native-app-metadata-f046b59a95b0.js": "493e8a1932e06fcc3bc8955736154f0be0e92b162a6d6d6f47f89de295cd2c19",
+    "webview/assets/patch-diff-stats-23f2e95f80cb.js": "d3e01b716e86ab7f3dab56e80c9825eb982d2af15c03793f55b1b6178422b48c",
+    "webview/assets/lazy-response-a380ed2e9a84.js": "0dafe14933db48bd0390aecae0919c389e297ed5c88a4aaa336325a245378d8a",
+    "webview/assets/shield-code-408fdb8eab92.js": "10be98e5ca6e35a04f99b308bb54df4fdb552683144a5e825ad400fec393ce25",
+    "webview/assets/plan-summary-item-content-cb9812456f68.js": "12a1d951dc93bfae5bc2776def14f969d50e711eee7bc18b796892f279e8a736",
+    "webview/assets/hooks-settings-model-f200bbc1bcb6.js": "5e6e49069e5f584220bfcf6b147693f405fee99a61c5154d2f8ff1fdfdfaf6b7",
+    "webview/assets/hooks-settings-route-8191acda142e.js": "cc7a5e408b77f67c7bb191c03872d366eabc291291fd58f866c2dcf9829baf2b",
+    "webview/assets/automatic-approval-review-details-c867f6ff5c8f.js": "1c07f1fe6c5145ab5098103e0800df5fb2ee83e7ac9d9ddb0f77cc78baaf89c4",
+    "webview/assets/ansi-block-bc24bd303f4a.js": "3037163b5290ca76dab25192ebd1c5cad487c075746fcec773f14cd9363fd951",
+    "webview/assets/shell-label-e29d738a2f4e.js": "792077e8e127a55c621fdc46c7ce3e7b923afd31d96f76a5e7841fc17d4171e1",
+    "webview/assets/inline-tool-suggestion-request-card-5d9126468eee.js": "1bd5ece02740e0dc401818c07b60e08ad73d56d28bf194733b2e473f495fc680",
+    "webview/assets/diff-summary-f7ac0660791a.js": "0c46150829d7c0fbfdc850a8ccf5db89043dda5d1afd8cfc9380d7273987c4ef",
+    "webview/assets/undo-a261bdbbd5f0.js": "0eb01172e0f977ac357f8b5e790f994d995fc74b530252588869bf02a03236ac",
+    "webview/assets/diff-preview-tooltip-292dda043529.js": "32210012c6b305ca6c025d8950911e03407a48f3c38e868b5f3f1668f538f220",
+    "webview/assets/hosted-mcp-app-adapter-80ac76da7fac.js": "e1acdcb4137eaabf3d547e6e1d0d2b0eac7b2a8537ed9d6cda443e98541a298b",
+    "webview/assets/color-icon-1ca642a5d37c.js": "cc7366e0e3bb8f76b2de1a55bb4b76503d958316d12e1bd2d210f14069125109",
+    "webview/assets/request-action-chip-6bf06492f5b1.js": "487c34bcdf42f833616f185aedd7ae4806801c83a7c649dbc4de5567c6108b96",
+    "webview/assets/mobile-handoff-79910939fd85.js": "51d9c88ceb25b4702a601bb8b3e3817df8941ed400be8a5adfa853d5b8256adf",
+    "webview/assets/request-input-draft-state-7d6f726a4421.js": "c3d78c14e4fbca61f2ec5dc73e88863fa770cf19a44a1af5eca955ccf464f0dc",
+    "webview/assets/boundary-8496769b4a90.js": "af4982c49924764f58a774c1b46d2e4da9b5b0c03fe1215a8a07690d291a3bcd",
+    "webview/assets/model-picker-chevron-down-sm-7d535e8c6f9e.js": "bec6469caec50ed52f990571f9f0bc82b428758f0b119930f952fb52b451881a",
+    "webview/assets/remote-file-picker-dialog-3bd540f8d7c7.js": "270959770ed2ab364faa56f9ce1c942ca1fdcddd689e717b3f75d3916e121000",
+    "webview/assets/use-file-picker-a797e03709ad.js": "609550bcbdf934bc6a4a2304955e6607545a8b1a6627934d68f7b1fd2f0abfb1",
+    "webview/assets/option-carousel-838409ae89b8.js": "50b1c79f11427939b4e0b2ff98f1f9d6ca50e2d739da3daf704125e947192269",
+    "webview/assets/detail-property-row-919341e4a64d.js": "6720e7b898e63e916593cf9ab2751e21a557a0ce3d1b0552e105075df02eee3f",
+    "webview/assets/use-collaboration-mode-e65b0119e3c8.js": "019103a25f9d6afb6c2cddb5a09d72312a84863983c5ca7c4e53d07e31456913",
+    "webview/assets/alert-884b633feac6.js": "f48ff1222b1a5528555040f7f80d8539f4ee029abf625c29df783aa292da7eac",
+    "webview/assets/shared-snapshot-secret-redaction-af4ff429fa27.js": "a0a4dde3ea65a96f82e58d8a8217254d6ee218482c78aba2b05d813806834968",
+    "webview/assets/is-available-8f6284cbda11.js": "6d625f0627b1ca3fc20971b5d9e07a863e4bc7cb720dd4029454910d2dc07c57",
+    "webview/assets/webmcp-tool-calls-b11913c9f7fb.js": "27394381d663e587c0340e49f4607273668d7d844cf4b226a1cf3b425fe9fd88",
+    "webview/assets/assert-never-a6e685100dc6.js": "84db144c78285354487204d29a1866239698c42f1bba9621af6d9f4e3fe36111",
+    "webview/assets/sound-on-30f880294018.js": "f54a57d0db36a17d898989602bf48644dbdaf02a57d65ffc11816cd1a9879a5d",
+    "webview/assets/user-formatted-text-3af1acc592d2.js": "f0f63995db0e2a167b58e0f180239cc5d7fef366f31e7c4031289a0eb9a06153",
+    "webview/assets/plan-implementation-request-0cd55f1ae7b1.js": "f61857f4ef585862810b2521bc34ec57b2e82feae99aefb80f1001211788891d",
+    "webview/assets/thumb-mixed-7a1ed3820130.js": "b0c90ca0a3bb779f092558d689189009083206495940ddd56540e7f0ac334376",
+    "webview/assets/report-dialog-abb969690f28.js": "a2d0707dfed82a40915553210af16bd722357519b71765768d7ce5f4cc3d19fa",
+    "webview/assets/chatgpt_learning_flashcards-ea6e2bbcd2f6.js": "c05e2a3ec548688fff193cb25269c26fb36c2ddede62d00dfbe99100b92c6a75",
+    "webview/assets/chatgpt_image_lightbox-600530866e50.js": "4d9e34750a35899a271f9c2977125d09de540b583c811c542ce0356b377601f9",
+    "webview/assets/chatgpt-video-analytics-5428ebb46078.js": "f6f41d8d90a9b2f6e2ff8ee3d018c5d6a531db9f1a5be9b60f952a557eae452f",
+    "webview/assets/thread-dialog-f23168d52136.js": "acef8fa47401fa24444774530b71739f0e45ceab8e7827cf9174507c08f0427f",
+    "webview/assets/thread-preview-35244829dfdf.js": "480b9c225d8d6eaf3412c2a74ed12221161c930e8c86757f4ae67d4cf7ce6518",
+    "webview/assets/chatgpt-conversation-share-preview-8bcf30c85f05.js": "59e5642bacf05e1000b47370c456ac43f4171473d26caf969b7fda6fa2703e53",
+    "webview/assets/linkedin-b497a3cc2628.js": "81feefbb0adb1da529f0c227cc090125de89f3230728c56d38373a989230473e",
+    "webview/assets/chatgpt-project-sources-a444f0a910e7.js": "1d419d3d95e88aa97bccd69252e39ae7c2122a07e776cd9e8385e69d513dd728",
+    "webview/assets/source-queries-5666d3d7f0d5.js": "50d9ba2f805f202b5c38496426bc17351ee29d8b57ffcac395779dc389c3ba86",
+    "webview/assets/memory-manager-gate-c50f1c5729d4.js": "8d8db4b0ff707c6c7315a15043477f14cbc5d4547e5a45151dffaf86e0e1c355",
+    "webview/assets/agent-6be1dc3c13d4.js": "39f4a668c4a3b510ce68bd487e7d8bcb2cd39db5897a8a5399f352be1339e056",
+    "webview/assets/image-url-be598efaf88b.js": "99de980ee3db0b9a07aa0f677bc07d121af765d4169a58b1623a31f1a04bd01c",
+    "webview/assets/image-edit-toolbar-27e47c7556f5.js": "6131e9a0d453834790aeece2e97b9f602f054fde00b5b88942988d4df9f7dbf1",
+    "webview/assets/download-submenu-ebd84e90580f.js": "82f65a53b2dd812f80e96f366a06ed025f8887ddf03aa58d8f04227c0fd92b34",
+    "webview/assets/feedback-menu-item-ec758a5eb19a.js": "4c45673ed0e634048ae1f5764fb2c2f98f2b28ef177f5acc753ef214422d8176",
+    "webview/assets/metadata-a6b47a8ce8ab.js": "e97eaa45ff00c3135b26a750e60a49794d88224089b0a80cd01d3cb442d49940",
+    "webview/assets/claim-action-c583a4ef2b78.js": "09a373595b90a355a867b0c1cf8defb3d90b7ed153242c1ab90da06ac8bcd87a",
+    "webview/assets/policy-values-bfe5ec3f8dc9.js": "ad968047640bc76e36a04d930008d0157744e15b7fa512c4906ce38b60086e04",
+    "webview/assets/emoji-regex-xs-ae6eb0becbe3.js": "9b9101733f8829d617f2410986576ff32c249612c4e69cfa31f1364615360104",
+    "webview/assets/startup-diagnostics-ad59d1b2a2d9.js": "95e0c7ca5733648ae088930a381ea1295857c406b11b4ebc74d6a66d07c19bf1",
+    "webview/assets/frame-7cf62df1b5dd.js": "454b5d6b4fb8da539ed86c296764ec27aeea9b5b539868e7a75c4fb39485aa63",
+    "webview/assets/media-83f159c0399d.js": "03b0f3573d22781efced60a989b62611753ad700d0834e81b7705614a48aef0c",
+    "webview/assets/response-96f72bb71d1d.js": "0773c034fb060eb7fb44bf0cc306d30342d2933133389415ecd15975887f0fa2",
+    "webview/assets/carousel-pagination-a3bc81b07747.js": "b4f93a3237c2318b7fa098558db314c95ce9200d03d5996cde418289cb9fdfbd",
+    "webview/assets/favorite-folder-menu-ca115e7db7a2.js": "ba8b5632c65cf8cb7193bc8f8797c60aa8eff384e5491c1d01efdd7a7d3a6977",
+    "webview/assets/target-e1c7ed815eda.js": "4d0d90252bad5cc429804d4a2e26c10af95a36f9c224186dbddeb53c6bf98359",
+    "webview/assets/text-shorter-d93cc38a4135.js": "f8041cdb91afff496b95d06260fd91854ce09bde6b88828bb675ba919d62ce3f",
+    "webview/assets/local-conversation-side-chat-96a703d918a9.js": "ff7f247aeccc978180baca5aa8d7d28f95317fe7934e937d0191a1f1fcb81e22",
+    "webview/assets/local-conversation-side-chat-tab-c204bf162574.js": "0ca2471afa3067f5b6ad2e82d80b515404b2b2fdb18cd433f7edc51c132f7036",
+    "webview/assets/local-conversation-artifacts-signals-a4cdde9bb953.js": "9603dc7047e283b624806b2cd78dcef6173e313ed2753a96ad40c72e1d908bc7",
+    "webview/assets/thread-side-panel-tabs-3c6133df2ce6.js": "ca009214391f11342432425ab7d166bd9d0ba6c0e6d7dc82a357d4d7c6a24010",
+    "webview/assets/artifact-file-preview-icon-eb4fcad1fa54.js": "174fbb525651c490994f5a13e6ff3865da912ad505e20f8210b17bddf4def750",
+    "webview/assets/google-drive-resource-icon-da9e8c996b8b.js": "ca8fd110dd7a6b1d4a6f467aad9f9fe692cc674cfadc840e70b1becdb7bdcffb",
+    "webview/assets/local-conversation-external-resource-icon-aeb53de789b4.js": "1adb6b9b41b8ab1964cc810548b323c6ec60540c60bf99144820d7758f7f3e63",
+    "webview/assets/terminal-workspace-warning-state-81ce7dc2fcdc.js": "febec09ef5f1a2d8afecaeb79350951ecbf342b575d79091510ca9087a6cc85d",
+    "webview/assets/input-97ac0acab996.js": "2860ab71e6c88afb8763282240975bd6f185787c1e3ff0624bf9d1a87d92a4a8",
+    "webview/assets/local-conversation-summary-panel-image-preview-3159853102d5.js": "d42d7dea890c97198919dbd3a8842f03c2eb2dc4cf77aceced42f191b2a7c3c7",
+    "webview/assets/quick-chat-floating-resize-handles-4f8018dd26c1.js": "1f3f3668eb217e1373f3dc01aa03e6807b203d3b76bdc7c81c6a1d06717365fa",
+    "webview/assets/save-file-viewer-preference-b1d207fa6e42.js": "04666a3acfc36c67b81ffc7fe8946e4cc879fadf639db2f4738d3a6da7e1b72c",
+    "webview/assets/file-viewer-menu-state-7254e39e96c4.js": "6edbe4aae0f0466e8e85a7473cdf048b43168d58b29afa98505fda5840bdf2d1",
+    "webview/assets/queries-bb89dbc06e76.js": "59df782371d55afa316478339967c0dff25e2cc16459eaf00ae45f057beaea00",
+    "webview/assets/building-e38b105d5398.js": "1a32493024626d0939be1fdfe13a5b320f5579e25a49834d6e9ee305b2cecc5b",
+    "webview/assets/codex-analytics-attribution-673e34b8e9d2.js": "cafd82c538a022ff70c59f82908760b212f39e4cb9af018f8926c502edb46b7a",
+    "webview/assets/composer-attachment-undo-message-984ff07e5aca.js": "4ce37c9606b5f355cf555c5124bb28070853cef0dbd1f3dd29a91585903e9205",
+    "webview/assets/transcript-state-122859574cac.js": "cebfbc8e0e3df2f0c8b337a1922169ba890b3c5d2422b6d155d656677fce0b10",
+    "webview/assets/aeon-standalone-content-62dc40803b43.js": "5c307725b617ea4bcd62f7d2e2b48fe2359d770cd58625d0abd49b2282d268a7",
+    "webview/assets/performance-state-971afc1e34f7.js": "98a7a828e13a19e01edd33c2fad5c2933f96836c454cfe4f577b8488b714fb01",
+    "webview/assets/cloud-automation-actions-b4d258601d92.js": "811485bc011b3fab5c48bf34590837419c6abf64d5893d2e5f00a0fbe25c2dbe",
+    "webview/assets/feedback-legal-notice-6373700c5675.js": "40a0f5cd683927b726522905576039da950f849ed805a585a0b9e13e8c5aa631",
+    "webview/assets/surface-882ff6d30509.js": "5c3b661c77fd6fe70e4559c6c856e14502bdec488ed02cb63a5b6c4e6caab44d",
+    "webview/assets/plan-selection-surface-fc00b179a402.js": "24eea0abc7e705b84211c0ba2a51b89d64f6be3ba7e335c2a99476e9d83db2b3",
+    "webview/assets/editable-plan-tab-e65cc9b779ef.js": "209a50086ef795cde621b674ba687209c27c639fdeac656a5076b4040829228f",
+    "webview/assets/plan-side-panel-31d73e76786d.js": "70c1c959e88d4a272b7e6ff90252c525783f5a59579792b8234556e58eccc851",
+    "webview/assets/feedback-form-dialog-9d777af90b3b.js": "c4fc594c21992b0baa8b90b3b4017053ac2dfd333fd64c6d8180731085c4474a",
+    "webview/assets/app-connect-modal-by-id-1da4cecb9ef7.js": "d24ad01328dbedd5b00ba0041143a782b202ecefc61d6256bd4b55b0a6710ce3",
+    "webview/assets/apps-availability-6529c827a414.js": "bd1adb8a702e094d13b56a5b14329249afd78e4b1921ef7ec580796e6e75c417",
+    "webview/assets/first-app-connect-ambient-suggestions-57163664be8a.js": "cf34d400d7ffd63380ad3448b92d771346e91bfb2e79c81f1a1ae3016e75ca4f",
+    "webview/assets/state-97058ef93148.js": "3322932b251a3bf1b36024a23e7d6f0d611439c0dfe88b466880f2479b50681b",
+    "webview/assets/text-bubble-figure-light-c974e4c8b638.js": "df753f7e4ee48e6ed6bb0f36f41b1824226917cb4ec654ce1b772c011b55cd77",
+    "webview/assets/qr-code-c6307e36b866.js": "4b242c9aee50ffc9dac5b9d2c4e885805b7343d7b9ebb63a97829d5c68c141dc",
+    "webview/assets/PlatformUIKitProvider-e1349805b2ea.js": "7f5ab5450c29ef33a1c2afe33c2442add0200f67c4741cc7e268590be9766147",
+    "webview/assets/card-carousel-scroll-2b3e0834c582.js": "ebb84a97c930cdfabcb1e702313e42fe8aab31e0e139a90e7aa08c7543bff8ae",
+    "webview/assets/collaboration-mode-queries-65a02eb27333.js": "b263ddd69ae8bead575a3fe2bdf8673919fef94811e357ee22bb5b1abc8527ae",
+    "webview/assets/user-message-markdown-9519aef9763d.js": "98cd3640819e05251441307580cb42a07349a3b8f61a63839f98fab60b52d905",
+    "webview/assets/dialog-shell-54895648cec3.js": "3973ef67030d1bfac3e668ad6cc909d36ba7153aa64c7d4b1929e98a2bb79e77",
+    "webview/assets/composer-scope-provider-a78b919e7baa.js": "562c89a5ec849f926018ac8178503f6118b95376db41d292345900f5073825be",
+    "webview/assets/artifact-feedback-button-c6c4a214db99.js": "06d03bcc6eb6577a31e8919eae178341ff25a01ea48a3cf81adecb9d02b98429",
+    "webview/assets/entry-727a08695fa1.js": "eb233bbfaf773386bdb128bf2905d7ad4e33f7917e2a21c022aaee7ac4e80e89",
+    "webview/assets/open-status-a95951cefdcd.js": "a4bff3790f1213f9a9489ff813482d507eae256b94157dded2a0edc5d65288cc",
+    "webview/assets/quote-action-32427ff48593.js": "df9d9f4eb8ccbae017063ad07be6e3028e8fe199fcc59d4acc1cb85575741564",
+    "webview/assets/runtime-20a9f780de79.js": "25400ff124068101c52d68a6534eb65e0b87456744beaf199c455c304cc566d8",
+    "webview/assets/DILDictationDeferredTurnOwner-68428ca1899a.js": "5b90449661655bfe2743c4a92ebf41cb339c550266e04dd0fa7025719b99324b",
+    "webview/assets/string-963febbec52f.js": "07c436567e4e11de906c77611f9bd0b9e1bdf9580093612289d512e51fd58500",
+    "webview/assets/ComposedChart-3a595b92a583.js": "fe82c00c53ee780a2db336e9900a2c869829eef9249af91a7ab56ab4a9f408a7",
+    "webview/assets/PieChart-be3978ba6a01.js": "07c0caace6e9c481d127bb8d6729d660fd3cc6f805d097fd7e658a1c981ef7e3",
+    "webview/assets/ReferenceArea-f0703b6301c7.js": "ab4e4a1193d2c6637556c3b6ae6a1c48e5d1c5b91d2749677876e1595587aac2",
+    "webview/assets/DatePicker-2ca452a419ac.js": "68c5a08688b71ac96d79149639bbad3272dbd0cae3fcf89b1d14eb2462ba1756",
+    "webview/assets/tooltip-9069084ef11f.js": "d4231d32daf2257a68964699882ed14a46cd372242e511c292a1df692cdf1967",
+    "webview/assets/src-1edaaae2db67.js": "b3796cddcccbdc1d7a5b153302e4b9c60d2a89ad82ba9e8254934a4f00448de6",
+    "webview/assets/image-source-d60a1dbdbf67.js": "4d7bab8b586470f242ee206454c0e2944663ff34c5994b8cbb8eb532e8b301ca",
+    "webview/assets/saved-entity-folder-menu-action-db8db8c92ef0.js": "2e13e215586b7557a56ac1ffbe3522003be7d0048ae72fd87049acd645b05e09",
+    "webview/assets/product-favorite-action-597a366fa919.js": "cab2cab4746ffb0c67b54fc99c1c92ef3017b4f334fddb5ca3637936c8a848c9",
+    "webview/assets/inline-webp-16a77f2aea84.js": "ce9188cc6e6ff0f67948bccbeb794c324255b3352756992796616300472cbbab",
+    "webview/assets/entry-94fae8f46c94.js": "7195425b867f9e7b5a431e7fe4fe680aeff080c6dbeee95babef4d473bda0d0f",
+    "webview/assets/chatgpt-entity-side-panel-content-26777e622e5a.js": "2fa42f277868103d531c411266c9be1d84f3883c9be78a152e838c44a1253f72",
+    "webview/assets/entity-business-profile-reference-b68063dfc05d.js": "f0e8db0977a8ad25de8e7e7a9209c1d074fcfdde995ff69977e29014914a8608",
+    "webview/assets/open-side-panel-7eab229862de.js": "74a8fe124f62d19b14cf969f23958b44728ce2afce5c8cba9b077e546ea40a3f",
+    "webview/assets/inline-dil-actions-4f53f62afc08.js": "27f31cb72f71ed67f728ba8b1efa1589da04d8341423e0cbdb24ab17199b608b",
+    "webview/assets/widget-voice-session-2a5d4d1ec899.js": "90701efd21158c5ba96c8178444dc35a7a7e3d7dfba0f83889d45effb6e9ed11",
+    "webview/assets/preloaded-business-7f00c88875c5.js": "1b6cd90c9b85fd14e67aaedc35c26a7cbf1d80a887193731a0dd1d7e7a270bcb",
+    "webview/assets/open-chatgpt-entity-side-panel-d040cee6496a.js": "bfad7e8a13d123921f2efd5aaa441089a5643be5c722175ecaf5605afab29522",
+    "webview/assets/widget-share-61a40ae60f92.js": "0fa80fd45653201596a4566f17843e54b67e47bb9c6950e2be1338a3d98574fc",
+    "webview/assets/chatgpt-product-analytics-b242b221881d.js": "3a0d24d240a7a36e15a8d4928b3a4f656368f9a8b77be0e7d2c84e5beef74b48",
+    "webview/assets/image-lightbox-bed86d386814.js": "9998fb14577355a9ca9629044e85a863cd313429bc71f634b900f321e289d412",
+    "webview/assets/speech-1892aaf35aab.js": "96cfd27db0424388a6e2ef57622b6eab2075c1d979259423f2393a4e2269102d",
+    "webview/assets/response-preview-e5f5ff9a848b.js": "f9cec2c5a3a154d78484bac4d53e5ca4d848f92c8ac362695c7e09f315f18644",
+    "webview/assets/persistent-e62eb8d90af6.js": "b6414e8a80a8df06a07223db3342f6af2f55ea7f1c3611e87a832f306412bfaa",
+    "webview/assets/local-conversation-sources-signals-124133101993.js": "658f3efe81b5ee1261b1105df5ab990461ec5050c54229c10d20ef0a161e3297",
+    "webview/assets/popup-c7cef203d579.js": "530d68ab688131f689700ec0e50a297434a4b2f6a95d8be85dde755338806bbd",
+    "webview/assets/automation-delete-confirmation-dialog-9e8b412478e9.js": "0e66b795e1f32f918a7bd661ba351b8e48c68ddf1c6585e6a00d430cdb9560d3",
+    "webview/assets/text-file-storage-557a531ade96.js": "d4234afd9742e2836606e0856be603358c24a17ff6e83765d18694668898326a",
+    "webview/assets/app-connect-load-state-c79cce6acaf9.js": "5eb946c92434e8921b3ca247c7548d1ef382979618a263bfc7aae763964a8b1d",
+    "webview/assets/new-chat-page-suggestions-eligibility-eee716c9a241.js": "ab7910a9836f544df957d10a628f14f30af4b7f63a8821d75c02af69ac11d0f2",
+    "webview/assets/requests-82f72f1b4c9f.js": "c8d9fd9df84e90f6815eb8dd4ab3d114ac6c3eb829323616b8be3e4bbdaf6625",
+    "webview/assets/start-4c82086d8d37.js": "7709b94ca6de739c5a67cc8451f72aa97c6408fbc22aa18e16a0b435dbfb2d29",
+    "webview/assets/browser-41092e8f9398.js": "0395a04c743053ad516de9d4002f7dafca574e23d52ff0bbb52e2449e51a77ab",
+    "webview/assets/PlatformUIKitContext-fb658092ea2e.js": "521557c1de57e67a1e7beef3c9af3c18b7251ea134025c26795356b3d4f0b6ed",
+    "webview/assets/feedback-dialog-load-error-ac3d3c2c6bb8.js": "6abb61f000d3223eff89c66d8279838f837fcf184fde14a68f8755883622007b",
+    "webview/assets/DILRenderOperations-92ba9b08f96a.js": "22aec1910fe5ac374f37b208333e8c279b987d42b412a670d9bd95d9bd195d35",
+    "webview/assets/Markdown-832a4de8dbb0.js": "eeb883256146ee294218914e56aacab6f12470d053db90745530cd5812d3d38b",
+    "webview/assets/helpers-53d6456d3abf.js": "97722ff32ec122043dc67217a2d2a03397f0d09f380615a35af0dc258b9abbc8",
+    "webview/assets/Button-9738cdd9017f.js": "a8581fa1d127aa43ec6a81a140eb7ab3271ab25d57a6327eead8b0b7146f9e65",
+    "webview/assets/react-redux-92cfd8e98e31.js": "908325bb87e42569069380766b3e7b727943c41e5524a795831a681652ed74bc",
+    "webview/assets/path-3b8129ebc7ff.js": "06831a8f2a10288ddf69a07161eead03d853dd8fcb556453c98b45dbba513cfe",
+    "webview/assets/constant-363a14bf6d8f.js": "046a98c3d51056690b2126c71fdd9d6ae335621d3ccd0720e28feab35b9cd41f",
+    "webview/assets/math-de3a0e0db4e2.js": "9a352e22634a43fe4124de59681195eed1d24bd34f3b6b504596e296bdd402da",
+    "webview/assets/linear-51abf1a86c3b.js": "dc8f7df0a1906a67b3de5bb8b5521ed597e6f68ee7dfdd00d152c14d475529fe",
+    "webview/assets/line-5171f1d885cc.js": "a62ed97c17814786076f4ef9d40198416fd05e75f8c30056d06a0c593908abef",
+    "webview/assets/area-76377dfd01aa.js": "4f45721e762efa20d0bda45f3493f5d93c0e3b6f2e4bc0e4e2277b662a4d93a1",
+    "webview/assets/step-cc59eba019a7.js": "2817078b599235c39ab171e9739cb6ca3c4b2d8bdb9b466672275df7622c6fa8",
+    "webview/assets/monotone-68fb4f84bd88.js": "b98385f42eec207d3a0d020df049ae2cd1783b3c57f8e59940f226b2710e94b8",
+    "webview/assets/expand-f3906952405c.js": "d339f28e10044915ce39990166a45c4eed4193765915213461eecb7dc242da3d",
+    "webview/assets/redux-toolkit.modern-ba209a7ecb4a.js": "d8880147d7b4168686f41af955fe2c46433d5ba56e3b3504c12ffa5ed1874018",
+    "webview/assets/with-selector-c59206a66914.js": "2b2dcecc564f263b9c8efc1cc10c90928429051259fd51fba3e1c68aa62d3d65",
+    "webview/assets/noop-4d1a48b9db0c.js": "860f71e269426afd41ef1e29e582c444b7314a07c9369cd74e599797fa301469",
+    "webview/assets/tiny-invariant-b34bc475860a.js": "d91bbcd5aa4158a3222749dcf74e76992364d6573486aa60f598d8903fc4ee90",
+    "webview/assets/data-55ce0e3ecf82.js": "17a7a7bc38fad1c076a806f627f76e3a7043392e15d256acb9db9fb90b40c1b9",
+    "webview/assets/product-request-context-48efc51f9010.js": "8ad68bf2a7589ed25361cd1b64de254ffbbb6f15f74885cceb812108e6ef9b6d",
+    "webview/assets/useStableCallback-6c27867165c9.js": "a30d24b3022e3553b02fc6d72f57fc6371cf6e9c84e8b96f86c13a74ac6c9c13",
+    "webview/assets/SegmentedControl-7167a75bc340.js": "f36d19b969f17d939330832a7560d112750068ecbd3a12772d007ef1e4f27885",
+    "webview/assets/sidebar-actions-a9e5178d0054.js": "e9d89e2146bb8e5fbb1637b48b24452d8a813bc314ea0b1c8ef01e6a092cedc1",
+    "webview/assets/library-view-original-chat-menu-item-53888f5c1311.js": "52dcc543ed490e227015e4c42ccb2cc8a0ce26ec7e937eeda1717babe7aa31c5",
+    "webview/assets/preferences-920283cbae48.js": "34a8ab3de851fb82a3b615da379cb3bcb10ec1f73c254c1c603cd68693a783cc",
+    "webview/assets/chatgpt-entity-turn-actions-1d503958ac4e.js": "160411167e256a74d5e5473bb8cfa8e2a659dabefbcbd98b5be254baa05a8516",
+    "webview/assets/open-viewer-79bffad47511.js": "8e5bfe5bb9f820fac5272c199a334ef168b1d7d76ec6c0d4a9d50290fe9ba5e3",
+    "webview/assets/renderer-5f998235c68e.js": "c839b4f9683a05ed73b89fa004c8e5722908c9201cf488c3c0ef69498207b6ff",
+    "webview/assets/chatgpt-product-metrics-8fb3badd7bbd.js": "0922c341fa35dcc4f02782e9ee6a046bffe15bdec714d6057522b492066577ff",
+    "webview/assets/command-state-f2b05742b833.js": "2d02d374eaaf378af6d85fa66e1122ee6b3189279e706a69e863018b1f5c5062",
+    "webview/assets/timing-signals-1247c811afae.js": "40b27a7ca1baa48318755c093fce2c90cfe103196e26fb4e9895ed03e78150aa",
+    "webview/assets/chatgpt-entity-detail-panel-5d62ef3da7b6.js": "24f910e3c4507dee0b02019922f00ea67613ad537026a8c29c6485d58b6e1b46",
+    "webview/assets/surface-dwell-1c7c0ef60fe4.js": "2241c0cd6b157b164099005d0a12fd6c62603f3e8ca12c5f2fd64d8af66cd4d1",
+    "webview/assets/chatgpt-image-lightbox-ee8020bc2a57.js": "5c7c431e11b25d55a27a8ee3858841531b60b8b1c1afc1860f18049955600475",
+    "webview/assets/thread-reference-capability-ab121724408a.js": "20640e3ba9940cc8a4708f7d902a08bce4f14040c002f28cb7051bc2f61386cf",
+    "webview/assets/prior-conversation-70964e3860d7.js": "f64a17ae1ed01cbc5ed096382de9bd88bbf2d26b66c338cbb968ec3449656c38",
+    "webview/assets/target-863b9ae60134.js": "9695d9e19a6ef12e0a691306af6ed451a53e1d30e59a1c6d27b769b5bbbf3966",
+    "webview/assets/Buffer-894a440955a0.js": "6c06e489711e6dfc24e1f20659fcce024d82850c06f5b501cf307150f41f28da",
+    "webview/assets/prism-light-f60a71d47bce.js": "1e3f561f526c4ab6754250390d2c1c5a5648f02a0dadd27120b58edd89754fdb",
+    "webview/assets/linear-679e303fb101.js": "1bbfebe56b6fbdd9c804bf7edbae1544e850abfefb7d8463cf5fc1c78a6c9369",
+    "webview/assets/ordinal-654830f58ee1.js": "19d3bdfb928f2cc1cfe248b6354e96a775d905859dad2feb8b3cc5b3f59d1051",
+    "webview/assets/pow-8b9b02ff1564.js": "84165d7268362e75b4f4dc9d45657c4174b0611431f4ab68239934249ee63e89",
+    "webview/assets/band-7f9eb19564f9.js": "2ae4fbf1c63df1da37ed0b73b413c51e94d9566749c66b3bd7029a99e4d7d377",
+    "webview/assets/init-cd6c1f803e47.js": "a6acb32075f617f4b747cae0caad902f4b63d5d3ff9129a9665395e41688eaa0",
+    "webview/assets/time-547e86fe1bbc.js": "12d47bef324ba0270f5befdb7925af6c5e3a0081cfff64fc962a773fef74103e",
+    "webview/assets/array-15adaa1bc228.js": "91c989fe67b73596767ce498f7216bbc3e97f7866ae4bdf09b4909c05f29919a",
+    "webview/assets/entity-sheet-header-8febf0497156.js": "c0a976f24ce0d890780311ed6d30d8c9a7c61468d7df3d0ecd39a3f1b970308a",
+    "webview/assets/chatgpt-memory-source-feedback-bf5b24870a7a.js": "2f5b892b7cd0a72d980993873ebd731e99847a11ea893e3ced2cb3202381ef22",
+    "webview/assets/entity-actions-cd81b76dd755.js": "f2e3fa4ec855fc7314e651db37e5afbd2b409c871a9d6804f91fed5c576a775d",
+    "webview/assets/image-edit-viewer-8227cd9a5cf0.js": "4928788d3f2f48c6a862af9f7620b86a108b79d74971f3b156303dabe4403785",
+    "webview/assets/image-source-link-85546df5960c.js": "554b9b67ae1191ac7b2296099b31794e050f1f3d6efddd71fc19e281e32b5776",
+    "webview/assets/defaultLocale-1a6eeada7f42.js": "9d23ef7702f39aa5cc0a1f9f49376221ae85373ba73998b68313482f7a86ee2e",
+    "webview/assets/nice-2b3cc20611af.js": "49b70703cf27392058d9573c4ef1de1e27ef1bbbb4bc9d3824b20789c9b3f5cc",
+    "webview/assets/lib-46d1cc9f89e8.js": "5b558878720b371383e04657b7ea02589ab4c0debe4dd2b65801264285656fba",
+    "webview/assets/extends-df342f7c2e8b.js": "881e884253d8af42dc9e8607d2fc7f24b925ff1840bd8f911846eca67100f9ec",
+    "webview/assets/entity-share-button-2d4bfd76ce10.js": "8c751b6c4d08c53bc0ee86ef90a2a1d4a33ff73b216436a4289a2ee2964c6055",
+    "webview/assets/NewsPaper-1309c72624eb.js": "620c64c8dcabe39c047460eb7e903cf98b21e6f81c2efac71219a8be445c64b5",
+    "webview/assets/Sharepoint-772e4317960a.js": "514443542ee457915684c5e096fa6cf691602764123480f9d18366a5e6bff336"
+  },
+  "results": [
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "status": "provider-mounted",
+      "calls": [
+        "connect-app-host",
+        "services",
+        "catalog.subscribe",
+        "getDefaultHost"
+      ],
+      "bridgeCalls": [
+        "persisted-atom-sync-request",
+        "electron-window-focus-request",
+        "log-message"
+      ],
+      "renderErrors": [],
+      "html": "<h2>Unexpected Application Error!</h2><h3 style=\"font-style: italic;\">Missing scope instance</h3><pre style=\"padding: 0.5rem; background-color: rgba(200, 200, 200, 0.5);\">Error: Missing scope instance\n    at vK (https://offline.invalid/app-shared-2cae01273bae.js:193:106105)\n    at iq (https://offline.invalid/app-shared-2cae01273bae.js:193:142120)\n    at lli (https://offline.invalid/app-primary-7d7313419f84.js:2320:35849)\n    at mo (https://offline.invalid/app-shared-2cae01273bae.js:75:47556)\n    at Xs (https://offline.invalid/app-shared-2cae01273bae.js:75:70188)\n    at vee (https://offline.invalid/app-shared-2cae01273bae.js:75:80470)\n    at ru (https://offline.invalid/app-shared-2cae01273bae.js:75:116082)\n    at eu (https://offline.invalid/app-shared-2cae01273bae.js:75:115127)\n    at $l (https://offline.invalid/app-shared-2cae01273bae.js:75:114959)\n    at Gl (https://offline.invalid/app-shared-2cae01273bae.js:75:111777)</pre><p>💿 Hey developer 👋</p><p>You can provide a way better UX than this when your app throws errors by providing your own <code style=\"padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);\">ErrorBoundary</code> or <code style=\"padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);\">errorElement</code> prop on your route.</p><div class=\"pointer-events-none fixed inset-0 z-60 zoom-adjusted-viewport h-[calc(100dvh/var(--codex-window-zoom))] contain-layout [&amp;&gt;*]:pointer-events-auto\"></div>",
+      "pageErrors": []
+    }
+  ],
+  "requests": [
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/probe"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/initialize-app-host-services-5891c906a171.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/rolldown-runtime-2d059c5e81f4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-shared-2cae01273bae.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-initial-feb30b196d11.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-primary-7d7313419f84.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/ambient-suggestion-generation-dc24e5b95825.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/cyber-safety-composer-banner-state-8323b499557d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/external-agent-import-startup-e5bbcaed89e8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/external-agent-config-query-invalidation-b91bb568829f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-theme-979817044ac4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/style-vars-200c1bccafff.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversation-id-debf824e1bd4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/confetti-2f703c7123a6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-navigation-tools-4e506e8c8cd5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_memory-b9b3c1208d69.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/prewarm-671e859a562f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/settings-unsaved-state-807d2bc8a763.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entry-35957033d38c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/recent-model-configurations-b339bafad1ac.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-server-manager-hooks-c01e69e712a8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/avatar-overlay-open-state-signal-14bbdbe397ce.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/desktop-app-beta-access-d155dcbd5cf4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/auth-journey-83ade2c64f63.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chrome-extension-browser-family-fc7ba8437fc4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/subscription-update-diagnostics-fabd032e697f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex-analytics-a8d49c1f032f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/desktop-login-success-90bc85480236.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-server-notification-debug-signals-82b7ab80e546.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/profile-login-attribution-b4ab8df66633.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_account_settings-ce8019b80b44.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_artifact_feedback-e27578224cdf.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_browser_interactions-b8a5baac2680.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_browser_profile_import-d076e835360c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_browser_surface_actions-e52c60f78f4e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_computer_use-d0d448f6d584.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_desktop_login-8ca09165d69e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_dot_onboarding-f4f684b38763.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_inline_visualization-e0f031efd87f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_micro-730d8f9a0165.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_work_credit_continuation-8f5c502d6512.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_workspace_settings-41ac5662f17d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-browser-compatibility-a22412506ccb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-browser-unstructured-event-ad35fc036703.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/statsig-client-key-b5555da1b74f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/model-routing-config-c8ff24d11153.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/feedback-tags-1e5899ec8c5e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/resolved-intl-provider-93ba3c127ae2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/handle-realtime-screen-context-latency-9c7b84543683.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/work-route-snapshot-ea593c91ab92.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/desktop-oauth-2b59cf194297.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/analytics-50b3ed03738d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversational-onboarding-task-completion-8f8ca28d1aba.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/pull-request-check-diagnostics-d75376b4e3f9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-handoff-dynamic-tool-progress-39890007cf47.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/artifact-tool-501a1c8a3dbe.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-terminal-b9ac491a8c39.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plugin-management-3867045fdbc6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-server-config-notice-signals-d87a54450b2a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/automation-plugin-source-query-34e0d6d3ebb6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-connect-oauth-callback-result-439175390e5d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mapKeys-edf3532f56cf.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chrome-computer-use-suggestion-state-295220dad7cb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/handle-chrome-extension-sidepanel-thread-archive-routing-bed39e3267b3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/promotion-hydration-dbbbeaa50b63.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/model-comment-dismissals-af89367402c4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/client-pending-request-658d3f21220e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/discovery-8be08e39cda5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/aeon-created-thread-status-c605d1e4b680.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/state-cfb1267fc3f5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/bookmarked-conversation-turns-ac0e75ebe1c3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex-writing-block-edits-7873bf5bdbc1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-authentication-start-error-1df7cb18fcdc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/session-tab-opener-8a1a078d586a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/keyboard-modifier-state-bridge-b877e6940483.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/personal-settings-access-6444aab949ce.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/workspace-directory-6033d09344b7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/notification-sound-audio-964fa4c052a9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/downloads-view-service-4952674649f5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/connect-app-host-90a50ca9e4b4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/external-agent-imported-connectors-1e5fa110739d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/should-include-thread-in-discovery-1b8e82164ce2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/eligibility-82218c5484ee.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/defaults-930c9f21f410.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-theme-6958a674b836.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-theme-c4609c25be6b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-theme-4fb124c0ce14.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/pending-mcp-server-elicitation-signals-22c2f55544fc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/computer-use-app-approval-request-5a243e46bb57.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/computer-use-app-approval-state-49baf1e06dbe.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/uniqWith-7f5a9246cd87.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-browser-legacy-product-event-names-a7690151b644.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/get-default-branch-name-80c944ee057e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-handoff-composer-block-state-1f2416dcad1c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/sync-thread-git-branch-if-primary-repo-161c598504fa.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/git-repository-ddfe3db5afec.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/managed-worktrees-5d5fffb88442.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/threads-send-message-3fc80dc15fca.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/get-move-to-local-targets-ac97956619eb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/pasted-link-connect-analytics-49cfd37089e2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/required-app-analytics-d2885e5da8df.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/local-conversation-external-resources-2f755808a280.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/local-conversation-artifacts-model-6e029029f851.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/elicitation-persist-86ea44b66749.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/send-follow-up-message-ef6b856b0b48.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-conversation-page-20e0cd7f5f7a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/load-performance-eab3f7fdb4ac.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-conversation-page-60cdba72de29.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/screen-8c04a551524f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/lock-2cb72f3b268f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/banner-bf3ec21144d2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entry-2e3e11d7cb20.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-thread-summary-panel-model-916f5378fc78.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/document-title-102bc6d54e39.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/widget-8367811f39d7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/scroll-to-match-b173eb44e248.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-summary-panel-components-89c22ed84819.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/content-reference-directive-match-ba3372726c29.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/file-a4343d04b097.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversation-83a4813734a3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-assistant-message-content-87ce2100fdab.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/collapsible-user-message-content-c4b687698293.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/use-chatgpt-composer-controller-ac13273315b4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/use-conversation-search-highlights-80babec62e55.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/overlay-56db5fb6ebc3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/toolbar-e7746be8492e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-summary-panel-popover-96b85b807a28.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-emoji-c9605af38976.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/tab-context-menu-6135d45f6938.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-summary-panel-signals-fb12e1765bb0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/toggle-thread-summary-panel-9af00c485bbb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/use-thread-summary-panel-86db87fa804e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-panel-plugins-menu-item-25ae31f8e29d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/realtime-voice-motion-1152410890e5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/realtime-voice-stage-layout-cbd1d7be3317.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-bridge-4a340c5108e3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/virtualized-turn-list-5f0b8c1edbc7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/timestamp-separator-ed216c0bd3bd.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversation-navigation-state-39ec17da2cfc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/header-145c8ba08c03.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plan-model-cebb3c07095f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversation-ui-ff43dd409558.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/site-preview-composer-overlay-dc5c26825c1a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversation-plan-files-c2dd92022a44.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/controller-65b66eab2fbf.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/context-2646fed608e8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/browser-composer-disclaimer-6d3d354f6c94.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/preview-footer-f8c8bb79d3c7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-conversation-turn-content-2b28a90ef308.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-conversation-actions-59fa4ea766a4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-conversation-composer-context-fb658092ea2e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/suggestion-bindings-55968722a228.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-conversation-runtime-4cb49aa0d51c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/composer-6ede3b5d5b04.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/composer-placement-state-fccb7b590544.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-entity-panel-66621fbf3f09.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-entity-side-panel-tab-registry-7861cacc37dd.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-gizmo-header-6ad2bb568d9f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/composer-provider-962259c4ad0e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/course-model-c6e1ee517284.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversation-move-menu-items-abb89529bac7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/display-31ca766fe0c3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/widget-focused-object-transfer-1bc7d7c08228.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chat-choice-view-13d941e64abc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/bullet-separator-33614a9dcd5b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/summary-panel-expandable-list-c6e1d79018ea.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/start-turn-206104955830.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-app-host-styles-810b79043f60.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-sandbox-rpc-2ef7627623ee.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/sandbox-origin-feb4680fff47.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/resource-52711a0ee5f2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-server-status-signals-2f28024dc54b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/submit-661ffe1704cd.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-app-follow-up-message-89b404b46791.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/widget-follow-up-request-58c2e12d76a4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-app-follow-up-confirmation-dialog-902ed691516d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-callable-apps-cf5515a5b999.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plugin-suggestion-contract-f0b6e395c368.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-sandbox-element-9a393d91c3e7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/observe-layout-motion-9559cf8fc98c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/message-submission-b28d48a4355c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/back-forward-navigation-buttons-5629adc6592a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/viewer-header-830c3452bc58.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/inline-height-de22080375ee.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/loading-placeholder-f13e6c158f57.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-artifact-interaction-analytics-65152faa1028.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/citation-pill-859845824d7b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/fallback-a829a1d28a35.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-google-file-title-query-b6fb0f2b9f12.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/inline-link-7a011b3e2f57.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/hover-card-5f512381e95b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/source-app-availability-d2842b06d6bf.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/badge-454fef2eb8f7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/resource-card-list-715a60e721b0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-markdown-view-dc89721afd49.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/browser-use-be088a2f8a78.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/open-cloud-browser-side-panel-aa7de1773445.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-moderation-disclaimers-dd0e6c09542d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/highlight-selectors-cc49dbb1a3d2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-summary-panel-layout-488b931a4b80.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-panel-tab-launcher-dropdown-content-9ee7a8f5f911.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/timestamps-85bd12c0e1b2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-virtualizer-e1964ca5c039.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/new-tab-button-9e5fa9430ffd.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/site-preview-bridge-57b404af54f1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-panel-toggle-button-f21a6ffbd3f6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-app-shell-chrome-91eb645a95f7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chat-tab-metadata-bridge-6240f921dea6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/disclosure-state-1fb65d8ea114.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plan-file-1f6c9021c7cc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/content-chat-surface-ac653e80158a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/contracts-d83307d0e4fe.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/preview-footer-controls-fc7939f557b6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/runtime-aea017ad1c25.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/resume-chatgpt-completion-ea3d90061e1d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/content-reference-3c6d4ea6f7d2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/subagent-activity-chip-group-a0fc2223efe0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-response-space-controller-e657855cbb9e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/notifications-6449b094ec7d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/gpt-report-menu-item-b1a475b3d156.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/lodash-18ea765911e3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-history-loading-e62999bcc09d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/retirement-58f3e8a85e7c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/workbook-from-csv-9b806e8711ec.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/safety-buffering-status-transition-dc3a966c5d2d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-personalization-route-36526df91ee9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/state-4e4cfcad887a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/agent-activity-item-b830c0685103.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt_tpp-f471c7c8ab7d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-ecosystem-widget-5255325988a3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-ecosystem-widget-resource-ba50a25ed683.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-loading-state-d2e61c0538a5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/map-1dd687cacdff.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/schema-f4af46acc0d1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/generated-image-source-f2dd7ec2f740.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-ecosystem-widget-launch-a76c5aa88039.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/use-ecosystem-widget-launch-83b5e9a94944.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/favorite-folders-c656bd8ce91e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-favorite-actions-67d6414872e3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/copy-generated-image-to-clipboard-458614d04bd2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-sources-message-e7cb4dabfd20.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/navigation-source-5ef6fedc2d2d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/browser-file-attachments-8d4b5d03a2c9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/use-approval-commands-1e2f37cabcdd.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-plugin-logo-b90270979d33.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/request-panel-530ed5012963.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/remote-cwd-picker-85977a6096f0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/composer-approval-request-card-ef55e8ccb5d5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/content-reference-markers-5835ac6758f9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/skill-exploration-labels-443ffffb0851.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversation-gap-f60df2b6a487.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/system-error-content-f6e5754dcd0b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/agent-activity-item-row-fa5342a7c173.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/worked-for-item-content-78a5b53d07f6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-tool-item-content-b8bda8ed918a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/timeline-activity-body-e91ecf82464f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/inline-followup-markdown-cefdfb09cd7c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/user-message-c555ee9110f1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-audio-playback-button-6a5723a11e9c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/response-rating-control-155811012151.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex-thread-report-dialog-193f8d9d6639.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/collapsed-turn-disclosure-accf2b31cb65.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/summary-2aa55f6eb64f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/table-utils-62e8d75c31cb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/widget-analytics-7af4a2f1fe9f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-analytics-db8a931b1ac1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-conversation-share-dialog-31753630aa89.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/message-rating-244188187af0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/analytics-71d5a6891a18.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/inline-playback-d064842af0a0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-image-share-d3e99b942b35.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/data-37745a7b57ed.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-memory-citation-analytics-6b2904c2dc24.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/content-9656b4e9e52d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/open-chatgpt-subagents-panel-aff87370e8c7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/library-multiplayer-access-d4699957b4b0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt_reference_images-f5207aa3f1c3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/open-dialog-fea9bf65183a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/state-24e590b9e13b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-data-8c82eb06d48d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/header-actions-42ebe84b03e2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/generated-image-file-info-f91a353c457a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-result-viewed-35c819aae7c6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-info-b43c099f07b0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/shop-this-image-input-c1da9cff26c9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/details-d8e056183156.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plugin-suggestion-lifecycle-def5b85b9226.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/work-onboarding-291ee64e28d0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/respond-6132d85e6860.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/file-actions-86b9555d1f16.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt_trusted_contact-a7fbed382f14.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/trusted-contact-no-thanks-dialog-2ead3bcf5fce.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entity-business-profile-status-ee4435654e18.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/engagement-eb8e45cf2ea1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/business-20c376cbbd63.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/sandbox-image-8ba2fba8b24e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-dil-directive-renderer-4c4b2c380722.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/metrics-3c3066f7bd6c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/lazy-response-52c05a1a3be7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt_conversational_onboarding-f7deb0d60fff.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/generated-image-placeholder-8a88e12ea46f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-search-image-analytics-c504c0584c02.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-group-carousel-2afff88e5601.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/action-7f8b3bb94747.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/generated-image-context-menu-a3f81b57401b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/generated-image-gallery-context-menu-756207e01af0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/card-f877607c4b46.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/linked-reference-dc1750410515.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/inline-popover-provider-e0d2689f0bf3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/attribution-6a529b29f9ca.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-panel-launcher-artifacts-b2e10bc4ed16.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/runtime-a11f8474fe51.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/tab-input-7739f1439753.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-side-panel-new-tab-d1a09e49064e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/drop-zones-c32a91130e8d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/floating-chat-surface-63c33fd45d48.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/floating-chat-dock-menu-8a5ce0174db9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/inline-6fa2df492568.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entry-68fe41b172b0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/address-utils-7bbbc06d8767.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/triangle-warning-b264484e5f45.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-handoff-step-row-d7e6b4cb3799.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-tool-activity-label-8f71b602cd16.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/automatic-approval-review-727bed751d24.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-tool-call-approval-8abf1b82c6f7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt_finance-d3d87b248f7d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/open-button-23d11673f594.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/widget-source-link-1b2a45833492.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-loading-progress-badge-72f0f3fdfcab.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/source-icons-a19d46670d26.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/permission-state-14e9c8f89869.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/map.module-4a5d0fe8a676.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plugin-connected-account-links-9e06fa49d54d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/book-open-4cc9b741d206.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/warning-a4a3f5714221.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/file-viewer-menu-6ae9d8811dd6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/appgen-access-state-messages-84e0feee879a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/share-cff3f9c41e8a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/use-target-apps-58e59250c3ff.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/workspace-file-context-menu-trigger-ef39a9e08d82.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/AppChatgpt-787cc794f3aa.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/uploaded-file-attachments-dece33f3c8a8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/overlay-load-error-6b4a380c3fb2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/content.module-776581282424.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/aeon-appearance-colors-d30832f94540.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/aeon-message-parts-ffedc23d0fed.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/active-tool-activity-label-da42cebd12e0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/observed-message-performance-marker-bfe9713db011.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversation-presentation-context-90384c063c9f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/preserve-timeline-anchor-position-1100d7924b88.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/expand-6bb9734b8efc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/followup-analytics-4a9d22031a4e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-app-analytics-7a30d3890ba8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/display-1ea51293e630.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/computer-use-native-app-metadata-f046b59a95b0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/patch-diff-stats-23f2e95f80cb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/lazy-response-a380ed2e9a84.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/shield-code-408fdb8eab92.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plan-summary-item-content-cb9812456f68.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/hooks-settings-model-f200bbc1bcb6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/hooks-settings-route-8191acda142e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/automatic-approval-review-details-c867f6ff5c8f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/ansi-block-bc24bd303f4a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/shell-label-e29d738a2f4e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/inline-tool-suggestion-request-card-5d9126468eee.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/diff-summary-f7ac0660791a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/undo-a261bdbbd5f0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/diff-preview-tooltip-292dda043529.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/hosted-mcp-app-adapter-80ac76da7fac.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/color-icon-1ca642a5d37c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/request-action-chip-6bf06492f5b1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mobile-handoff-79910939fd85.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/request-input-draft-state-7d6f726a4421.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/boundary-8496769b4a90.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/model-picker-chevron-down-sm-7d535e8c6f9e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/remote-file-picker-dialog-3bd540f8d7c7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/use-file-picker-a797e03709ad.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/option-carousel-838409ae89b8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/detail-property-row-919341e4a64d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/use-collaboration-mode-e65b0119e3c8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/alert-884b633feac6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/shared-snapshot-secret-redaction-af4ff429fa27.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/is-available-8f6284cbda11.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/webmcp-tool-calls-b11913c9f7fb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/assert-never-a6e685100dc6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/sound-on-30f880294018.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/user-formatted-text-3af1acc592d2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plan-implementation-request-0cd55f1ae7b1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thumb-mixed-7a1ed3820130.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/report-dialog-abb969690f28.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt_learning_flashcards-ea6e2bbcd2f6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt_image_lightbox-600530866e50.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-video-analytics-5428ebb46078.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-dialog-f23168d52136.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-preview-35244829dfdf.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-conversation-share-preview-8bcf30c85f05.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/linkedin-b497a3cc2628.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-project-sources-a444f0a910e7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/source-queries-5666d3d7f0d5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/memory-manager-gate-c50f1c5729d4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/agent-6be1dc3c13d4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-url-be598efaf88b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-edit-toolbar-27e47c7556f5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/download-submenu-ebd84e90580f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/feedback-menu-item-ec758a5eb19a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/metadata-a6b47a8ce8ab.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/claim-action-c583a4ef2b78.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/policy-values-bfe5ec3f8dc9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/emoji-regex-xs-ae6eb0becbe3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/startup-diagnostics-ad59d1b2a2d9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/frame-7cf62df1b5dd.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/media-83f159c0399d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/response-96f72bb71d1d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/carousel-pagination-a3bc81b07747.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/favorite-folder-menu-ca115e7db7a2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/target-e1c7ed815eda.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/text-shorter-d93cc38a4135.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/local-conversation-side-chat-96a703d918a9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/local-conversation-side-chat-tab-c204bf162574.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/local-conversation-artifacts-signals-a4cdde9bb953.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-side-panel-tabs-3c6133df2ce6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/artifact-file-preview-icon-eb4fcad1fa54.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/google-drive-resource-icon-da9e8c996b8b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/local-conversation-external-resource-icon-aeb53de789b4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/terminal-workspace-warning-state-81ce7dc2fcdc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/input-97ac0acab996.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/local-conversation-summary-panel-image-preview-3159853102d5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/quick-chat-floating-resize-handles-4f8018dd26c1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/save-file-viewer-preference-b1d207fa6e42.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/file-viewer-menu-state-7254e39e96c4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/queries-bb89dbc06e76.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/building-e38b105d5398.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex-analytics-attribution-673e34b8e9d2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/composer-attachment-undo-message-984ff07e5aca.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/transcript-state-122859574cac.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/aeon-standalone-content-62dc40803b43.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/performance-state-971afc1e34f7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/cloud-automation-actions-b4d258601d92.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/feedback-legal-notice-6373700c5675.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/surface-882ff6d30509.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plan-selection-surface-fc00b179a402.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/editable-plan-tab-e65cc9b779ef.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plan-side-panel-31d73e76786d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/feedback-form-dialog-9d777af90b3b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-connect-modal-by-id-1da4cecb9ef7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/apps-availability-6529c827a414.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/first-app-connect-ambient-suggestions-57163664be8a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/state-97058ef93148.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/text-bubble-figure-light-c974e4c8b638.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/qr-code-c6307e36b866.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/PlatformUIKitProvider-e1349805b2ea.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/card-carousel-scroll-2b3e0834c582.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/collaboration-mode-queries-65a02eb27333.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/user-message-markdown-9519aef9763d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/dialog-shell-54895648cec3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/composer-scope-provider-a78b919e7baa.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/artifact-feedback-button-c6c4a214db99.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entry-727a08695fa1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/open-status-a95951cefdcd.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/quote-action-32427ff48593.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/runtime-20a9f780de79.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/DILDictationDeferredTurnOwner-68428ca1899a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/string-963febbec52f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/ComposedChart-3a595b92a583.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/PieChart-be3978ba6a01.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/ReferenceArea-f0703b6301c7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/DatePicker-2ca452a419ac.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/tooltip-9069084ef11f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/src-1edaaae2db67.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-source-d60a1dbdbf67.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/saved-entity-folder-menu-action-db8db8c92ef0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/product-favorite-action-597a366fa919.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/inline-webp-16a77f2aea84.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entry-94fae8f46c94.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-entity-side-panel-content-26777e622e5a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entity-business-profile-reference-b68063dfc05d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/open-side-panel-7eab229862de.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/inline-dil-actions-4f53f62afc08.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/widget-voice-session-2a5d4d1ec899.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/preloaded-business-7f00c88875c5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/open-chatgpt-entity-side-panel-d040cee6496a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/widget-share-61a40ae60f92.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-product-analytics-b242b221881d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-lightbox-bed86d386814.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/speech-1892aaf35aab.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/response-preview-e5f5ff9a848b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/persistent-e62eb8d90af6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/local-conversation-sources-signals-124133101993.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/popup-c7cef203d579.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/automation-delete-confirmation-dialog-9e8b412478e9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/text-file-storage-557a531ade96.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-connect-load-state-c79cce6acaf9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/new-chat-page-suggestions-eligibility-eee716c9a241.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/requests-82f72f1b4c9f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/start-4c82086d8d37.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/browser-41092e8f9398.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/PlatformUIKitContext-fb658092ea2e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/feedback-dialog-load-error-ac3d3c2c6bb8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/DILRenderOperations-92ba9b08f96a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/Markdown-832a4de8dbb0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/helpers-53d6456d3abf.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/Button-9738cdd9017f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/react-redux-92cfd8e98e31.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/path-3b8129ebc7ff.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/constant-363a14bf6d8f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/math-de3a0e0db4e2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/linear-51abf1a86c3b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/line-5171f1d885cc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/area-76377dfd01aa.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/step-cc59eba019a7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/monotone-68fb4f84bd88.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/expand-f3906952405c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/redux-toolkit.modern-ba209a7ecb4a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/with-selector-c59206a66914.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/noop-4d1a48b9db0c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/tiny-invariant-b34bc475860a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/data-55ce0e3ecf82.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/product-request-context-48efc51f9010.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/useStableCallback-6c27867165c9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/SegmentedControl-7167a75bc340.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/sidebar-actions-a9e5178d0054.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/library-view-original-chat-menu-item-53888f5c1311.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/preferences-920283cbae48.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-entity-turn-actions-1d503958ac4e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/open-viewer-79bffad47511.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/renderer-5f998235c68e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-product-metrics-8fb3badd7bbd.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/command-state-f2b05742b833.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/timing-signals-1247c811afae.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-entity-detail-panel-5d62ef3da7b6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/surface-dwell-1c7c0ef60fe4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-image-lightbox-ee8020bc2a57.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-reference-capability-ab121724408a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/prior-conversation-70964e3860d7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/target-863b9ae60134.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/Buffer-894a440955a0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/prism-light-f60a71d47bce.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/linear-679e303fb101.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/ordinal-654830f58ee1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/pow-8b9b02ff1564.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/band-7f9eb19564f9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/init-cd6c1f803e47.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/time-547e86fe1bbc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/array-15adaa1bc228.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entity-sheet-header-8febf0497156.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-memory-source-feedback-bf5b24870a7a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entity-actions-cd81b76dd755.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-edit-viewer-8227cd9a5cf0.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/image-source-link-85546df5960c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/defaultLocale-1a6eeada7f42.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/nice-2b3cc20611af.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/lib-46d1cc9f89e8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/extends-df342f7c2e8b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entity-share-button-2d4bfd76ce10.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/NewsPaper-1309c72624eb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/Sharepoint-772e4317960a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/dictation-start-3d0290130f06.wav"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/dictation-stop-508377056bdb.wav"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/error-878d0efcada6.wav"
+    }
+  ],
+  "limits": [
+    "Microsoft Edge renderer, not archived Electron runtime; visual parity unproven",
+    "Original pL and MessagePort RPC with synthetic Host/Services; direct in-renderer port handoff replaces Electron preload/main transfer",
+    "Optional services deliberately absent; does not establish full page requirements",
+    "No full app entry or target user data",
+    "OS network denied plus offline context and digest-bound local JS/CSS allowlist",
+    "Initializer success is not page or UI acceptance"
+  ]
+}

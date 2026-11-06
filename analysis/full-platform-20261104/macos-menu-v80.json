@@ -1,0 +1,29 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "static-artifact-and-independent-host-runtime",
+  "routing_evidence": "macos-menu-v80-routing.json",
+  "runtime": [
+    "macos-menu-v80-search-runtime.json",
+    "macos-menu-v80-search-runtime-v2.json"
+  ],
+  "findings": [
+    "windows.show_home dispatches new-chat",
+    "Runtime registers newTask fallback with selectChat:true; new-chat callback calls navigation without that flag",
+    "F4a uses mode, feature flag and selectChat to choose navigation; winning runtime handler/state not yet proved",
+    "Installed search menu opens Command menu with Search ChatGPT combobox",
+    "Query snapshot after 1000ms shows Loading chats; result arrival and selection unaccepted"
+  ],
+  "validation": {
+    "menu_to_search_dialog": "observed",
+    "query_entry": "observed",
+    "search_result_selection": "unaccepted",
+    "native_click_and_keyboard": "unaccepted"
+  },
+  "next_action": "Observe effective mode and handler before/after settings; compare sidebar New chat; wait for search terminal state and capture fixture calls/errors",
+  "limits": [
+    "Do not infer permanent loading failure from one 1000ms snapshot",
+    "Do not hard-code ChatGPT route to hide mode mismatch",
+    "No complete app, online service or actual user data executed"
+  ]
+}

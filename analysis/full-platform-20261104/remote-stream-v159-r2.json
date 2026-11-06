@@ -1,0 +1,27 @@
+{
+  "status": "failed",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v155-macos/REA ChatGPT Offline.app",
+  "checks": [
+    "actual packaged renderer state receives guarded Remote history through IPC"
+  ],
+  "limits": [
+    "Main-process IPC acceptance from original renderer context, not a visible official Remote control workflow",
+    "Fixture model; no live Zhipu calls in this test"
+  ],
+  "originalManager": {
+    "status": "failed",
+    "error": "this.readState.set is not a function",
+    "stack": "TypeError: this.readState.set is not a function\n    at Rmn.saveReadState (https://offline.invalid/app-initial-feb30b196d11.js:1832:148324)\n    at Rmn.updateConversationState (https://offline.invalid/app-initial-feb30b196d11.js:1832:145144)\n    at eon (https://offline.invalid/app-initial-feb30b196d11.js:1798:28196)\n    at ron (https://offline.invalid/app-initial-feb30b196d11.js:1798:32907)\n    at Rmn.onNotification (https://offline.invalid/app-initial-feb30b196d11.js:1832:140295)\n    at probeOriginalRemoteStream (eval at <anonymous> (eval at evaluate (:290:30)), <anonymous>:32:58)\n    at async <anonymous>:316:30",
+    "calls": [
+      [
+        "request",
+        "thread/read"
+      ],
+      [
+        "request",
+        "thread/read"
+      ]
+    ]
+  },
+  "error": "AssertionError [ERR_ASSERTION]: {\"status\":\"failed\",\"error\":\"this.readState.set is not a function\",\"stack\":\"TypeError: this.readState.set is not a function\\n    at Rmn.saveReadState (https://offline.invalid/app-initial-feb30b196d11.js:1832:148324)\\n    at Rmn.updateConversationState (https://offline.invalid/app-initial-feb30b196d11.js:1832:145144)\\n    at eon (https://offline.invalid/app-initial-feb30b196d11.js:1798:28196)\\n    at ron (https://offline.invalid/app-initial-feb30b196d11.js:1798:32907)\\n    at Rmn.onNotification (https://offline.invalid/app-initial-feb30b196d11.js:1832:140295)\\n    at probeOriginalRemoteStream (eval at <anonymous> (eval at evaluate (:290:30)), <anonymous>:32:58)\\n    at async <anonymous>:316:30\",\"calls\":[[\"request\",\"thread/read\"],[\"request\",\"thread/read\"]]}\n+ actual - expected\n\n+ 'failed'\n- 'constructed'\n"
+}

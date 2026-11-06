@@ -1,0 +1,24 @@
+{
+  "status": "passed-bounded-native-fixture",
+  "run_id": "4eb75eff11c840bcbff597c67c0507eb",
+  "mode": "fixture",
+  "port": 57919,
+  "serial": "emulator-5554",
+  "apk_sha256": {
+    "app/build/outputs/apk/debug/app-debug.apk": "e604c9334663cc8676247d111715f2e2325b0c0bbe6982bdfbeeefdf971741ae",
+    "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk": "0d5a20ce71cb0f4b2991613c8ecf67d2253a8ef46df44e7ee87ef15c02e42ac0"
+  },
+  "steps": [
+    {
+      "test": "prepareDynamicDeletion",
+      "pid": "10552",
+      "status": "passed"
+    },
+    {
+      "test": "verifyDynamicDeletionRestart",
+      "pid": "10640",
+      "status": "passed"
+    }
+  ],
+  "pairing_cleanup": "completed"
+}

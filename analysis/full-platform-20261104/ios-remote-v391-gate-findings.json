@@ -1,0 +1,32 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "search_predicate": {
+    "entry": "0x398dd8",
+    "input": "_searchQuery Binding at0x150",
+    "binding_getter": "0x463ccc ->0x7c4b604",
+    "trim_set": "0x460958 ->0x7c3f79c Foundation.CharacterSet.whitespacesAndNewlines",
+    "trim_call": "0x398e34",
+    "result": "trimmed string nonempty at0x398e50..54"
+  },
+  "consumer": {
+    "header_projection": "0x39c0f4..0x39c12c bypasses collapsed getter if composite suppression OR search predicate; otherwise getter by section ID",
+    "task_projection": "0x39c240..0x39c278 bypasses collapsed filtering in same branches"
+  },
+  "composite_suppression": {
+    "entry": "0x39902c",
+    "known_early_false": [
+      "isConnectingComputer at0x1cb",
+      "nonempty trimmed search",
+      "homeEmptyState not tag3 or5"
+    ],
+    "remaining": "Source-filter/request-state and section predicates; enum cases3/5 not named"
+  },
+  "integration_rule": "Search display must not mutate saved collapse state; getter/filter bypass observed, persistence is independent design until owner is proved",
+  "limits": [
+    "Not complete section suppression algorithm",
+    "No new UI or runtime result",
+    "Do not treat field names alone as exact empty-state behavior"
+  ],
+  "runtime": "Same test session42359 live pending system authorization"
+}

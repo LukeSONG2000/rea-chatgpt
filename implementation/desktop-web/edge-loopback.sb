@@ -1,0 +1,6 @@
+(version 1)
+(allow default)
+; Browser IPC is allowed; IP traffic may only reach local test services.
+(deny network-outbound (remote ip "*:*"))
+(allow network-outbound (remote ip "localhost:*"))
+

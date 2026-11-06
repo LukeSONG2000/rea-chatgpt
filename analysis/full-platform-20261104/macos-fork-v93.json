@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "runtime": "macos-fork-v93-deferred.json",
+  "authority": "official-renderer-controlled-replay-with-independent-services",
+  "verified": [
+    "Versions dialog Branch in new chat opens an ancestor-only local preview",
+    "Preview causes no new persistent history",
+    "First send carries source branch identity and creates exactly one persisted new conversation with original context",
+    "Continuation completes under new conversation; all preexisting histories unchanged",
+    "Returning to source preserves its independent main draft",
+    "First-send retry retains conversation/message identities; source conflict rejected in service regression"
+  ],
+  "correction": {
+    "superseded": [
+      "macos-fork-v93-runtime.json",
+      "macos-fork-v93-continuation.json"
+    ],
+    "reason": "Initial eager persistence created an unused conversation; normal first-send path discarded source context. Replaced with preview followed by identity-bound branch creation."
+  },
+  "independent_choices": [
+    "New local branch writable, stale pagination and local creation receipt removed",
+    "Copied message IDs remain conversation-scoped",
+    "Completed first-send retry uses receipt fingerprint including branch source fields"
+  ],
+  "limits": [
+    "Official backend creation/idempotency guarantees not proven",
+    "Unsent branch preview cold restoration not accepted",
+    "Interrupted branching and account-switch races need separate tests",
+    "Regenerate display condition remains unresolved",
+    "Physical and visual acceptance still open"
+  ],
+  "next_action": "Verify cold restoration of committed branch and assess unsent branch persistence; then resume missing message actions",
+  "source": {
+    "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+    "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+    "byte_offsets": {
+      "branch({conversationId:e,messageId:t})": 4603180,
+      "function g3r(": 5125447,
+      "branching_from_conversation_id:j.conversationId": 7066222
+    }
+  },
+  "implementation": [
+    {
+      "file": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "dca9e71b963206836771d18b23e2743edf38e1c85f88214c1b432cfae346ec1e"
+    },
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "f47fd957d404938b1bd82bec5800049b9498bd6778f13e8a77eba3555265dd8a"
+    },
+    {
+      "file": "analysis/tools/test_desktop_fork.mjs",
+      "sha256": "1125ac9efa84a692f3ad481934a3db2886a4fc4c7e515dd8c20692701d80a3ea"
+    }
+  ]
+}

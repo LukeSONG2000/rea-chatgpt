@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.pluck=void 0;const e=require("./map");function t(...t){const r=t.length;if(0===r)throw new Error("list of properties cannot be empty.");return(0,e.map)(e=>{let o=e;for(let n=0;n<r;n++){const e=o?.[t[n]];if(void 0===e)return;o=e}return o})}exports.pluck=t;

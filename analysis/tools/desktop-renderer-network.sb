@@ -1,0 +1,5 @@
+(version 1)
+(allow default)
+; Permit local Unix-domain browser IPC, deny all IP networking.
+(deny network-outbound (remote ip "*:*"))
+(deny network-inbound (local ip "*:*"))

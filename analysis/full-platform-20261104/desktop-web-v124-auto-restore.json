@@ -1,0 +1,3859 @@
+{
+  "status": "passed",
+  "errors": [],
+  "startupRoute": "/g/g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45/c/offline-local-dc46cb2a-99c5-4f51-b4c0-93fcc5665ec8",
+  "target": {
+    "projectId": "g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45",
+    "historyId": "offline-local-dc46cb2a-99c5-4f51-b4c0-93fcc5665ec8",
+    "title": "REA synthetic project message ffaca894"
+  },
+  "before": "- text: \"Local host operation failed: local_operation_failed: Unsupported atom\"\n- link \"Skip to content\":\n  - /url: \"#_r_n_\"\n- complementary:\n  - navigation \"Chat history\":\n    - 'button \"Switch mode, current mode: ChatGPT\"': ChatGPT\n    - button \"Search\"\n    - button \"New chat\"\n    - button \"Scheduled\"\n    - button \"Plugins\"\n    - button \"Explore\"\n    - button \"Pinned\" [expanded]\n    - list:\n      - listitem:\n        - button \"REA synthetic project\":\n          - text: REA synthetic project\n          - button \"Project actions for REA synthetic project\"\n          - button \"New chat in REA synthetic project\":\n            - img\n    - button \"Projects\" [expanded]\n    - button \"Project sidebar options\"\n    - button \"Add new project\":\n      - img\n    - list:\n      - listitem:\n        - button \"REA synthetic UI f4f82e48\" [expanded]:\n          - text: REA synthetic UI f4f82e48\n          - button \"Project actions for REA synthetic UI f4f82e48\"\n          - button \"New chat in REA synthetic UI f4f82e48\":\n            - img\n        - list \"Chats in REA synthetic UI f4f82e48\":\n          - listitem:\n            - button \"REA synthetic project message ffaca894\":\n              - text: REA synthetic project message ffaca894\n              - button \"Chat actions\"\n              - button \"Pin chat\"\n        - status\n      - listitem:\n        - button \"REA synthetic unpinned project\":\n          - text: REA synthetic unpinned project\n          - button \"Project actions for REA synthetic unpinned project\"\n          - button \"New chat in REA synthetic unpinned project\":\n            - img\n    - button \"Recents\" [expanded]\n    - button \"Chat sidebar options\"\n    - button \"Filter chats and work\":\n      - img\n    - button \"New chat\"\n    - list:\n      - listitem:\n        - button \"REA synthetic project message ffaca894\":\n          - text: REA synthetic project message ffaca894\n          - button \"Chat actions\"\n          - button \"Pin chat\"\n      - listitem:\n        - button \"离线组件验证 · A\":\n          - text: 离线组件验证 · A\n          - button \"Chat actions\"\n          - button \"Pin chat\"\n      - listitem:\n        - button \"离线组件验证 · B\":\n          - text: 离线组件验证 · B\n          - button \"Chat actions\"\n          - button \"Pin chat\"\n      - listitem:\n        - img\n  - button \"Open profile menu\": Offline fixture\n  - separator\n- main:\n  - button \"Back\" [disabled]:\n    - img\n  - button \"Forward\" [disabled]:\n    - img\n  - button \"Hide sidebar\" [expanded]\n  - button \"Temporary chat\":\n    - img\n  - group \"Composer mode\":\n    - button \"Chat\" [pressed]\n    - button \"Work\"\n  - main:\n    - heading \"What’s on your mind today?\" [level=1]\n    - button \"Add files and more\"\n    - textbox \"Ask ChatGPT\":\n      - paragraph: Ask ChatGPT\n    - button \"Dictate\" [disabled]\n    - button \"Send\" [disabled]:\n      - img\n- status\n- status\n- status\n- status",
+  "clickAt": 6721.79999999702,
+  "persistedRoute": "/g/g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45/c/offline-local-dc46cb2a-99c5-4f51-b4c0-93fcc5665ec8",
+  "after": "- text: \"Local host operation failed: unsupported: app-shell-shortcut-state-changed\"\n- link \"Skip to content\":\n  - /url: \"#_r_4f_\"\n- complementary:\n  - navigation \"Chat history\":\n    - 'button \"Switch mode, current mode: ChatGPT\"': ChatGPT\n    - button \"Search\"\n    - button \"New chat\"\n    - button \"Scheduled\"\n    - button \"Plugins\"\n    - button \"Explore\"\n    - button \"Pinned\" [expanded]\n    - list:\n      - listitem:\n        - button \"REA synthetic project\":\n          - text: REA synthetic project\n          - button \"Project actions for REA synthetic project\"\n          - button \"New chat in REA synthetic project\":\n            - img\n    - button \"Projects\" [expanded]\n    - button \"Project sidebar options\"\n    - button \"Add new project\":\n      - img\n    - list:\n      - listitem:\n        - button \"REA synthetic UI f4f82e48\" [expanded]:\n          - text: REA synthetic UI f4f82e48\n          - button \"Project actions for REA synthetic UI f4f82e48\"\n          - button \"New chat in REA synthetic UI f4f82e48\":\n            - img\n        - list \"Chats in REA synthetic UI f4f82e48\":\n          - listitem:\n            - button \"REA synthetic project message ffaca894\":\n              - text: REA synthetic project message ffaca894\n              - button \"Chat actions\"\n              - button \"Pin chat\"\n        - status\n      - listitem:\n        - button \"REA synthetic unpinned project\":\n          - text: REA synthetic unpinned project\n          - button \"Project actions for REA synthetic unpinned project\"\n          - button \"New chat in REA synthetic unpinned project\":\n            - img\n    - button \"Recents\" [expanded]\n    - button \"Chat sidebar options\"\n    - button \"Filter chats and work\":\n      - img\n    - button \"New chat\"\n    - list:\n      - listitem:\n        - button \"REA synthetic project message ffaca894\":\n          - text: REA synthetic project message ffaca894\n          - button \"Chat actions\"\n          - button \"Pin chat\"\n      - listitem:\n        - button \"离线组件验证 · A\":\n          - text: 离线组件验证 · A\n          - button \"Chat actions\"\n          - button \"Pin chat\"\n      - listitem:\n        - button \"离线组件验证 · B\":\n          - text: 离线组件验证 · B\n          - button \"Chat actions\"\n          - button \"Pin chat\"\n      - listitem:\n        - img\n  - button \"Open profile menu\": Offline fixture\n  - separator\n- main:\n  - button \"Back\" [disabled]:\n    - img\n  - button \"Forward\" [disabled]:\n    - img\n  - button \"Hide sidebar\" [expanded]\n  - button \"More\"\n  - button \"Upgrade\"\n  - button \"Dismiss upgrade reminder\"\n  - button \"Share\"\n  - button \"New tab\"\n  - 'img \"Project: REA synthetic UI f4f82e48\"'\n  - region \"Conversation\":\n    - heading \"You said:\" [level=4]\n    - text: REA synthetic project message ffaca894\n    - button \"Copy message\":\n      - img\n    - button \"Edit message\":\n      - img\n    - heading \"ChatGPT said:\" [level=4]\n    - paragraph: 本地回放：消息增量已接入。\n    - text: JavaScript\n    - button \"Enable word wrap\"\n    - button \"Copy code\"\n    - code: const source = \"fixture\";\n    - button \"Copy\":\n      - img\n    - button \"Rate response\":\n      - img\n    - button \"Read aloud\"\n    - button \"Share\"\n    - button \"More actions\"\n    - text: ChatGPT can make mistakes. Check important info.\n    - heading \"Latest response\" [level=4]\n    - status\n    - button \"Add files and more\"\n    - textbox \"Ask ChatGPT\":\n      - paragraph: Ask ChatGPT\n    - button \"Dictate\" [disabled]\n    - button \"Send\" [disabled]:\n      - img\n- status\n- status\n- status\n- status\n- status",
+  "diagnostics": {
+    "kind": "independent-browser-adapter",
+    "logs": [
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": true,
+            "method": "post",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: POST /wham/statsig/bootstrap",
+            "errorStack": "Error: Offline HTTP unsupported: POST /wham/statsig/bootstrap\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/wham/statsig/bootstrap",
+            "url": "/wham/statsig/bootstrap"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": true,
+            "method": "post",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: POST /wham/statsig/bootstrap",
+            "errorStack": "Error: Offline HTTP unsupported: POST /wham/statsig/bootstrap\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/wham/statsig/bootstrap",
+            "url": "/wham/statsig/bootstrap"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": true,
+            "method": "post",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: POST /wham/statsig/bootstrap",
+            "errorStack": "Error: Offline HTTP unsupported: POST /wham/statsig/bootstrap\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/wham/statsig/bootstrap",
+            "url": "/wham/statsig/bootstrap"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "error",
+        "message": "Statsig: error while bootstrapping post-login client",
+        "tags": {
+          "safe": {
+            "attemptNumber": 6
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: POST /wham/statsig/bootstrap",
+            "errorStack": "Error: Offline HTTP unsupported: POST /wham/statsig/bootstrap\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "cloud_picker_identity",
+        "tags": {
+          "safe": {
+            "queryId": null,
+            "hasData": false,
+            "rowCount": null,
+            "isComplete": null,
+            "catalogError": false,
+            "status": null,
+            "fetchStatus": null,
+            "observers": 0,
+            "invalidated": null,
+            "dataAgeMs": null,
+            "bridgeEnabled": false,
+            "authLoading": false,
+            "hasAccount": true,
+            "hasUser": true,
+            "accountChanged": false,
+            "userChanged": false
+          },
+          "sensitive": {}
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "Codex runtime config selected",
+        "tags": {
+          "safe": {
+            "artifact": "codex-primary-runtime",
+            "source": "default"
+          },
+          "sensitive": {
+            "runtimeInstallConfig": {}
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "[remote-connections/bootstrap] shared_object_synced",
+        "tags": {
+          "safe": {
+            "connectionCount": 0
+          },
+          "sensitive": {}
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "[desktop-notifications] service starting",
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "[desktop-notifications] requesting notification permission",
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "[remote-connections/bootstrap] shared_object_synced",
+        "tags": {
+          "safe": {
+            "connectionCount": 0
+          },
+          "sensitive": {}
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "[desktop-notifications] service starting",
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "[desktop-notifications] service starting",
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /wham/tasks/list",
+            "errorStack": "Error: Offline HTTP unsupported: GET /wham/tasks/list\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/wham/tasks/list",
+            "url": "/wham/tasks/list?limit=20&task_filter=current"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-App-Brand",
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-pricing-chooser",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /wham/usage",
+            "errorStack": "Error: Offline HTTP unsupported: GET /wham/usage\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/wham/usage",
+            "url": "/wham/usage"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /automations",
+            "errorStack": "Error: Offline HTTP unsupported: GET /automations\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/automations",
+            "url": "/automations?filter=scheduled&limit=25"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "electron-window-zoom-changed"
+          },
+          "sensitive": {
+            "message": {
+              "windowZoom": 1,
+              "type": "electron-window-zoom-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: electron-window-zoom-changed",
+            "errorStack": "Error: unsupported: electron-window-zoom-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "mac-menu-bar-enabled-changed"
+          },
+          "sensitive": {
+            "message": {
+              "enabled": true,
+              "type": "mac-menu-bar-enabled-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: mac-menu-bar-enabled-changed",
+            "errorStack": "Error: unsupported: mac-menu-bar-enabled-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "global-dictation-enabled-changed"
+          },
+          "sensitive": {
+            "message": {
+              "enabled": false,
+              "type": "global-dictation-enabled-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: global-dictation-enabled-changed",
+            "errorStack": "Error: unsupported: global-dictation-enabled-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "browser-sidebar-tweaks-enabled-changed"
+          },
+          "sensitive": {
+            "message": {
+              "enabled": false,
+              "type": "browser-sidebar-tweaks-enabled-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: browser-sidebar-tweaks-enabled-changed",
+            "errorStack": "Error: unsupported: browser-sidebar-tweaks-enabled-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "browser-sidebar-site-annotation-api-enabled-changed"
+          },
+          "sensitive": {
+            "message": {
+              "enabled": null,
+              "permissionRequired": false,
+              "type": "browser-sidebar-site-annotation-api-enabled-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: browser-sidebar-site-annotation-api-enabled-changed",
+            "errorStack": "Error: unsupported: browser-sidebar-site-annotation-api-enabled-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "electron-avatar-overlay-restore-ready"
+          },
+          "sensitive": {
+            "message": {
+              "onDemandEnabled": false,
+              "shouldPrewarmAvatarOverlay": false,
+              "type": "electron-avatar-overlay-restore-ready"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: electron-avatar-overlay-restore-ready",
+            "errorStack": "Error: unsupported: electron-avatar-overlay-restore-ready\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "electron-avatar-overlay-feedback-diagnostics-changed"
+          },
+          "sensitive": {
+            "message": {
+              "enabled": false,
+              "type": "electron-avatar-overlay-feedback-diagnostics-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: electron-avatar-overlay-feedback-diagnostics-changed",
+            "errorStack": "Error: unsupported: electron-avatar-overlay-feedback-diagnostics-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "electron-sparkle-gates-changed"
+          },
+          "sensitive": {
+            "message": {
+              "preferMxc": false,
+              "disableInAppUpdates": null,
+              "disableSparkleAutodownload": false,
+              "useBackendAppcast": false,
+              "useInternalUpdateCdn": false,
+              "useWindowsCoreRuntimeFrameworks": false,
+              "useWindowsPrimaryRuntimeFrameworks": false,
+              "type": "electron-sparkle-gates-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: electron-sparkle-gates-changed",
+            "errorStack": "Error: unsupported: electron-sparkle-gates-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "local-thread-activity-changed"
+          },
+          "sensitive": {
+            "message": {
+              "hasInProgressLocalConversation": false,
+              "hasInProgressRegularLocalConversation": false,
+              "updateResumeState": null,
+              "type": "local-thread-activity-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: local-thread-activity-changed",
+            "errorStack": "Error: unsupported: local-thread-activity-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "set-telemetry-user"
+          },
+          "sensitive": {
+            "message": {
+              "authMethod": "chatgpt",
+              "accountId": null,
+              "userId": null,
+              "email": null,
+              "type": "set-telemetry-user"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: set-telemetry-user",
+            "errorStack": "Error: unsupported: set-telemetry-user\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "electron-set-badge-count"
+          },
+          "sensitive": {
+            "message": {
+              "count": 0,
+              "type": "electron-set-badge-count"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: electron-set-badge-count",
+            "errorStack": "Error: unsupported: electron-set-badge-count\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "power-save-blocker-set"
+          },
+          "sensitive": {
+            "message": {
+              "shouldBlock": false,
+              "keepRemoteControlAwakeWhilePluggedIn": false,
+              "preventDisplaySleep": false,
+              "type": "power-save-blocker-set"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: power-save-blocker-set",
+            "errorStack": "Error: unsupported: power-save-blocker-set\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "avatar-overlay-open-state-request"
+          },
+          "sensitive": {
+            "message": {
+              "type": "avatar-overlay-open-state-request"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: avatar-overlay-open-state-request",
+            "errorStack": "Error: unsupported: avatar-overlay-open-state-request\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "view-focused"
+          },
+          "sensitive": {
+            "message": {
+              "type": "view-focused"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: view-focused",
+            "errorStack": "Error: unsupported: view-focused\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "browser-sidebar-site-annotation-api-enabled-changed"
+          },
+          "sensitive": {
+            "message": {
+              "enabled": false,
+              "permissionRequired": false,
+              "type": "browser-sidebar-site-annotation-api-enabled-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: browser-sidebar-site-annotation-api-enabled-changed",
+            "errorStack": "Error: unsupported: browser-sidebar-site-annotation-api-enabled-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "keyboard-layout-map-changed"
+          },
+          "sensitive": {
+            "message": {
+              "keyboardLayoutMap": {
+                "KeyK": "k",
+                "KeyG": "g",
+                "Digit2": "2",
+                "Digit0": "0",
+                "KeyV": "v",
+                "KeyA": "a",
+                "Backquote": "`",
+                "KeyL": "l",
+                "IntlBackslash": "§",
+                "Quote": "'",
+                "KeyW": "w",
+                "Digit8": "8",
+                "KeyM": "m",
+                "KeyH": "h",
+                "Period": ".",
+                "Digit7": "7",
+                "Digit1": "1",
+                "KeyP": "p",
+                "KeyD": "d",
+                "KeyF": "f",
+                "KeyO": "o",
+                "KeyQ": "q",
+                "KeyC": "c",
+                "KeyN": "n",
+                "BracketLeft": "[",
+                "KeyZ": "z",
+                "KeyY": "y",
+                "Digit3": "3",
+                "Digit6": "6",
+                "Digit5": "5",
+                "KeyX": "x",
+                "Slash": "/",
+                "Backslash": "\\",
+                "Comma": ",",
+                "Minus": "-",
+                "Digit4": "4",
+                "KeyB": "b",
+                "KeyT": "t",
+                "Digit9": "9",
+                "KeyS": "s",
+                "KeyI": "i",
+                "KeyU": "u",
+                "Equal": "=",
+                "KeyJ": "j",
+                "Semicolon": ";",
+                "KeyR": "r",
+                "BracketRight": "]",
+                "KeyE": "e"
+              },
+              "type": "keyboard-layout-map-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: keyboard-layout-map-changed",
+            "errorStack": "Error: unsupported: keyboard-layout-map-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "tray-menu-threads-changed"
+          },
+          "sensitive": {
+            "message": {
+              "trayMenuThreads": {
+                "runningThreads": [],
+                "unreadThreads": [],
+                "pinnedThreads": [],
+                "recentThreads": [],
+                "usageLimits": []
+              },
+              "type": "tray-menu-threads-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: tray-menu-threads-changed",
+            "errorStack": "Error: unsupported: tray-menu-threads-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "electron-avatar-overlay-feedback-diagnostics-changed"
+          },
+          "sensitive": {
+            "message": {
+              "enabled": false,
+              "type": "electron-avatar-overlay-feedback-diagnostics-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: electron-avatar-overlay-feedback-diagnostics-changed",
+            "errorStack": "Error: unsupported: electron-avatar-overlay-feedback-diagnostics-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "electron-sparkle-gates-changed"
+          },
+          "sensitive": {
+            "message": {
+              "preferMxc": false,
+              "disableInAppUpdates": false,
+              "disableSparkleAutodownload": false,
+              "useBackendAppcast": false,
+              "useInternalUpdateCdn": false,
+              "useWindowsCoreRuntimeFrameworks": false,
+              "useWindowsPrimaryRuntimeFrameworks": false,
+              "type": "electron-sparkle-gates-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: electron-sparkle-gates-changed",
+            "errorStack": "Error: unsupported: electron-sparkle-gates-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "Loading MCP server catalog",
+        "tags": {
+          "safe": {},
+          "sensitive": {
+            "hostId": "local"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "X-OpenAI-Expected-Account-Id",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /celsius/ws/user",
+            "errorStack": "Error: Offline HTTP unsupported: GET /celsius/ws/user\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/celsius/ws/user",
+            "url": "/celsius/ws/user"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "chatgpt_pubsub_connection_failed",
+        "tags": {
+          "safe": {
+            "retryCount": 0
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /celsius/ws/user",
+            "errorStack": "Error: Offline HTTP unsupported: GET /celsius/ws/user\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "chatgpt_pubsub_reconnect_scheduled",
+        "tags": {
+          "safe": {
+            "delayMs": 4932.9328935742615,
+            "retryCount": 0
+          },
+          "sensitive": {}
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "workspace-settings-webview-presentation-changed"
+          },
+          "sensitive": {
+            "message": {
+              "partition": "codex-workspace-settings-109108dc-b2af-410c-ba68-fb210d2ec4a6",
+              "presented": false,
+              "type": "workspace-settings-webview-presentation-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: workspace-settings-webview-presentation-changed",
+            "errorStack": "Error: unsupported: workspace-settings-webview-presentation-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to load MCP server catalog",
+        "tags": {
+          "safe": {},
+          "sensitive": {
+            "hostId": "local",
+            "errorName": "TypeError",
+            "errorMessage": "'listMcpServers' is not a function.",
+            "errorStack": "TypeError: 'listMcpServers' is not a function.\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "app_server_restart_recovery_done",
+        "tags": {
+          "safe": {
+            "hostId": "local",
+            "currentConversationId": null,
+            "currentConversationExistsOnTargetHost": false,
+            "resumedCurrentConversation": false
+          },
+          "sensitive": {}
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "chatgpt_conversation_updates_subscription_mounted",
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "Loading hosted plugin inventory",
+        "tags": {
+          "safe": {
+            "productContext": "codex",
+            "surface": "other",
+            "includeExtensions": true
+          },
+          "sensitive": {}
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /models",
+            "errorStack": "Error: Offline HTTP unsupported: GET /models\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/models",
+            "url": "/models?iim=false&include_icons=false&is_gizmo=false"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /pins",
+            "errorStack": "Error: Offline HTTP unsupported: GET /pins\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/pins",
+            "url": "/pins?item_type=gizmo"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /celsius/ws/user",
+            "errorStack": "Error: Offline HTTP unsupported: GET /celsius/ws/user\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/celsius/ws/user",
+            "url": "/celsius/ws/user"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "chatgpt_pubsub_connection_failed",
+        "tags": {
+          "safe": {
+            "retryCount": 0
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /celsius/ws/user",
+            "errorStack": "Error: Offline HTTP unsupported: GET /celsius/ws/user\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "chatgpt_pubsub_reconnect_scheduled",
+        "tags": {
+          "safe": {
+            "delayMs": 4932.9328935742615,
+            "retryCount": 0
+          },
+          "sensitive": {}
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /pins",
+            "errorStack": "Error: Offline HTTP unsupported: GET /pins\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/pins",
+            "url": "/pins?item_type=conversation"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /conversations",
+            "errorStack": "Error: Offline HTTP unsupported: GET /conversations\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/conversations",
+            "url": "/conversations?exclude_conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /conversations",
+            "errorStack": "Error: Offline HTTP unsupported: GET /conversations\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/conversations",
+            "url": "/conversations?conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "OpenAI-Internal-Referral-Eligibility-Preview",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /referrals/invite/eligibility",
+            "errorStack": "Error: Offline HTTP unsupported: GET /referrals/invite/eligibility\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/referrals/invite/eligibility",
+            "url": "/referrals/invite/eligibility?program_id=codex_referral_consumer&entrypoint=persistent"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "ChatGPT-Account-ID",
+              "OAI-Language",
+              "OAI-Product-Sku",
+              "X-Codex-Surface",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /ps/plugins/installed",
+            "errorStack": "Error: Offline HTTP unsupported: GET /ps/plugins/installed\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/ps/plugins/installed",
+            "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to read hosted plugin inventory",
+        "tags": {
+          "safe": {
+            "productContext": "codex",
+            "surface": "other"
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /ps/plugins/installed",
+            "errorStack": "Error: Offline HTTP unsupported: GET /ps/plugins/installed\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "ChatGPT-Account-ID",
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /aip/first-party/eligibility",
+            "errorStack": "Error: Offline HTTP unsupported: GET /aip/first-party/eligibility\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/aip/first-party/eligibility",
+            "url": "/aip/first-party/eligibility"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "ChatGPT-Account-ID",
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /accounts/optimized/check",
+            "errorStack": "Error: Offline HTTP unsupported: GET /accounts/optimized/check\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/accounts/optimized/check",
+            "url": "/accounts/optimized/check"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "ChatGPT-Account-ID",
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /settings/is_adult",
+            "errorStack": "Error: Offline HTTP unsupported: GET /settings/is_adult\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/settings/is_adult",
+            "url": "/settings/is_adult"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /system_hints",
+            "errorStack": "Error: Offline HTTP unsupported: GET /system_hints\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/system_hints",
+            "url": "/system_hints?exclude_logo=true&mode=plugins"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /system_hints",
+            "errorStack": "Error: Offline HTTP unsupported: GET /system_hints\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/system_hints",
+            "url": "/system_hints?exclude_logo=true&mode=basic"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /system_hints",
+            "errorStack": "Error: Offline HTTP unsupported: GET /system_hints\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/system_hints",
+            "url": "/system_hints?exclude_logo=false&mode=custom_agents"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "app-shell-shortcut-state-changed"
+          },
+          "sensitive": {
+            "message": {
+              "bottomPanelBrowserCanZoom": false,
+              "bottomPanelBrowserConversationId": null,
+              "bottomPanelBrowserTabId": null,
+              "canAcceptAppshotShortcut": false,
+              "canTakeMeetingNotes": false,
+              "canRedoAppAction": false,
+              "canUndoAppAction": false,
+              "bottomPanelCanCloseActiveTab": false,
+              "bottomPanelToggleEnabled": false,
+              "focusArea": "main",
+              "focusedEditable": null,
+              "imagePreviewOpen": false,
+              "isNewChatRoute": true,
+              "newProjectEnabled": false,
+              "quickChatAppshotThreadTarget": null,
+              "temporaryChatEnabled": true,
+              "terminalEnabled": false,
+              "terminalFocused": false,
+              "threadNavigationShortcutLocked": false,
+              "rightPanelBrowserCanZoom": false,
+              "rightPanelBrowserConversationId": null,
+              "rightPanelBrowserTabId": null,
+              "rightPanelCanCloseActiveTab": false,
+              "workspaceHomeClosable": false,
+              "type": "app-shell-shortcut-state-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: app-shell-shortcut-state-changed",
+            "errorStack": "Error: unsupported: app-shell-shortcut-state-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "browser-sidebar-annotation-multi-select-enabled-changed"
+          },
+          "sensitive": {
+            "message": {
+              "enabled": false,
+              "type": "browser-sidebar-annotation-multi-select-enabled-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: browser-sidebar-annotation-multi-select-enabled-changed",
+            "errorStack": "Error: unsupported: browser-sidebar-annotation-multi-select-enabled-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "ChatGPT-Account-ID",
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /celsius/ws/user",
+            "errorStack": "Error: Offline HTTP unsupported: GET /celsius/ws/user\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/celsius/ws/user",
+            "url": "/celsius/ws/user"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "chatgpt_pubsub_connection_failed",
+        "tags": {
+          "safe": {
+            "retryCount": 0
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /celsius/ws/user",
+            "errorStack": "Error: Offline HTTP unsupported: GET /celsius/ws/user\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "chatgpt_pubsub_reconnect_scheduled",
+        "tags": {
+          "safe": {
+            "delayMs": 4932.9328935742615,
+            "retryCount": 0
+          },
+          "sensitive": {}
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "ChatGPT-Account-ID",
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /amphora/notifications",
+            "errorStack": "Error: Offline HTTP unsupported: GET /amphora/notifications\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/amphora/notifications",
+            "url": "/amphora/notifications?limit=20"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "electron-set-window-mode"
+          },
+          "sensitive": {
+            "message": {
+              "mode": "app",
+              "type": "electron-set-window-mode"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: electron-set-window-mode",
+            "errorStack": "Error: unsupported: electron-set-window-mode\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "app-shell-shortcut-state-changed"
+          },
+          "sensitive": {
+            "message": {
+              "bottomPanelBrowserCanZoom": false,
+              "bottomPanelBrowserConversationId": null,
+              "bottomPanelBrowserTabId": null,
+              "canAcceptAppshotShortcut": false,
+              "canTakeMeetingNotes": false,
+              "canRedoAppAction": false,
+              "canUndoAppAction": false,
+              "bottomPanelCanCloseActiveTab": false,
+              "bottomPanelToggleEnabled": false,
+              "focusArea": "main",
+              "focusedEditable": null,
+              "imagePreviewOpen": false,
+              "isNewChatRoute": true,
+              "newProjectEnabled": true,
+              "quickChatAppshotThreadTarget": null,
+              "temporaryChatEnabled": true,
+              "terminalEnabled": false,
+              "terminalFocused": false,
+              "threadNavigationShortcutLocked": false,
+              "rightPanelBrowserCanZoom": false,
+              "rightPanelBrowserConversationId": null,
+              "rightPanelBrowserTabId": null,
+              "rightPanelCanCloseActiveTab": false,
+              "workspaceHomeClosable": false,
+              "type": "app-shell-shortcut-state-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: app-shell-shortcut-state-changed",
+            "errorStack": "Error: unsupported: app-shell-shortcut-state-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "app-shell-shortcut-state-changed"
+          },
+          "sensitive": {
+            "message": {
+              "bottomPanelBrowserCanZoom": false,
+              "bottomPanelBrowserConversationId": null,
+              "bottomPanelBrowserTabId": null,
+              "canAcceptAppshotShortcut": false,
+              "canTakeMeetingNotes": false,
+              "canRedoAppAction": false,
+              "canUndoAppAction": false,
+              "bottomPanelCanCloseActiveTab": false,
+              "bottomPanelToggleEnabled": false,
+              "focusArea": "main",
+              "focusedEditable": "other",
+              "imagePreviewOpen": false,
+              "isNewChatRoute": true,
+              "newProjectEnabled": true,
+              "quickChatAppshotThreadTarget": null,
+              "temporaryChatEnabled": true,
+              "terminalEnabled": false,
+              "terminalFocused": false,
+              "threadNavigationShortcutLocked": false,
+              "rightPanelBrowserCanZoom": false,
+              "rightPanelBrowserConversationId": null,
+              "rightPanelBrowserTabId": null,
+              "rightPanelCanCloseActiveTab": false,
+              "workspaceHomeClosable": false,
+              "type": "app-shell-shortcut-state-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: app-shell-shortcut-state-changed",
+            "errorStack": "Error: unsupported: app-shell-shortcut-state-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "persisted-atom-update"
+          },
+          "sensitive": {
+            "message": {
+              "key": "chatgpt-sidebar-state-v2",
+              "value": {
+                "offline-fixture-account": {
+                  "pinnedProjects": [
+                    {
+                      "pinnedAt": "2026-01-01T00:00:00Z",
+                      "project": {
+                        "canDelete": false,
+                        "canWrite": false,
+                        "classification": {
+                          "hasSharingSubjects": false,
+                          "shareRecipient": "private"
+                        },
+                        "color": null,
+                        "createdAt": 1767225600,
+                        "icon": null,
+                        "id": "g-p-rea-synthetic-001",
+                        "name": "REA synthetic project",
+                        "updatedAt": 1767225600
+                      }
+                    }
+                  ]
+                }
+              },
+              "deleted": false,
+              "type": "persisted-atom-update"
+            },
+            "errorName": "Error",
+            "errorMessage": "local_operation_failed: Unsupported atom",
+            "errorStack": "Error: local_operation_failed: Unsupported atom\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "persisted-atom-update"
+          },
+          "sensitive": {
+            "message": {
+              "key": "chatgpt-sidebar-state-v2",
+              "value": {
+                "offline-fixture-account": {
+                  "projects": [
+                    {
+                      "canDelete": false,
+                      "canWrite": false,
+                      "classification": {
+                        "hasSharingSubjects": false,
+                        "shareRecipient": "private"
+                      },
+                      "color": null,
+                      "createdAt": 1767225600,
+                      "icon": null,
+                      "id": "g-p-rea-synthetic-001",
+                      "name": "REA synthetic project",
+                      "updatedAt": 1767225600
+                    },
+                    {
+                      "canDelete": false,
+                      "canWrite": false,
+                      "classification": {
+                        "hasSharingSubjects": false,
+                        "shareRecipient": "private"
+                      },
+                      "color": null,
+                      "createdAt": 1767225600,
+                      "icon": null,
+                      "id": "g-p-rea-synthetic-002",
+                      "name": "REA synthetic unpinned project",
+                      "updatedAt": 1767225600
+                    },
+                    {
+                      "canDelete": false,
+                      "canWrite": true,
+                      "classification": {
+                        "hasSharingSubjects": false,
+                        "shareRecipient": "private"
+                      },
+                      "color": null,
+                      "createdAt": 1793825695.124,
+                      "icon": null,
+                      "id": "g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45",
+                      "name": "REA synthetic UI f4f82e48",
+                      "updatedAt": 1793825695.124
+                    }
+                  ]
+                }
+              },
+              "deleted": false,
+              "type": "persisted-atom-update"
+            },
+            "errorName": "Error",
+            "errorMessage": "local_operation_failed: Unsupported atom",
+            "errorStack": "Error: local_operation_failed: Unsupported atom\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "[startup][renderer] app routes mounted after 6737ms",
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "Loading local plugin inventory",
+        "tags": {
+          "safe": {},
+          "sensitive": {
+            "hostId": "local"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /gift-credits/senders/eligibility",
+            "errorStack": "Error: Offline HTTP unsupported: GET /gift-credits/senders/eligibility\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/gift-credits/senders/eligibility",
+            "url": "/gift-credits/senders/eligibility"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /wham/tasks/list",
+            "errorStack": "Error: Offline HTTP unsupported: GET /wham/tasks/list\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/wham/tasks/list",
+            "url": "/wham/tasks/list?limit=20&task_filter=current"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to load local plugin inventory",
+        "tags": {
+          "safe": {},
+          "sensitive": {
+            "hostId": "local",
+            "errorName": "Error",
+            "errorMessage": "Offline manager unsupported: plugin/installed",
+            "errorStack": "Error: Offline manager unsupported: plugin/installed\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "[desktop-notifications] permission result",
+        "tags": {
+          "safe": {
+            "result": "denied"
+          },
+          "sensitive": {}
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "app-shell-shortcut-state-changed"
+          },
+          "sensitive": {
+            "message": {
+              "bottomPanelBrowserCanZoom": false,
+              "bottomPanelBrowserConversationId": null,
+              "bottomPanelBrowserTabId": null,
+              "canAcceptAppshotShortcut": false,
+              "canTakeMeetingNotes": false,
+              "canRedoAppAction": false,
+              "canUndoAppAction": false,
+              "bottomPanelCanCloseActiveTab": false,
+              "bottomPanelToggleEnabled": false,
+              "focusArea": "main",
+              "focusedEditable": null,
+              "imagePreviewOpen": false,
+              "isNewChatRoute": false,
+              "newProjectEnabled": false,
+              "quickChatAppshotThreadTarget": null,
+              "temporaryChatEnabled": false,
+              "terminalEnabled": false,
+              "terminalFocused": false,
+              "threadNavigationShortcutLocked": false,
+              "rightPanelBrowserCanZoom": false,
+              "rightPanelBrowserConversationId": null,
+              "rightPanelBrowserTabId": null,
+              "rightPanelCanCloseActiveTab": false,
+              "workspaceHomeClosable": false,
+              "type": "app-shell-shortcut-state-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: app-shell-shortcut-state-changed",
+            "errorStack": "Error: unsupported: app-shell-shortcut-state-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "app-shell-shortcut-state-changed"
+          },
+          "sensitive": {
+            "message": {
+              "bottomPanelBrowserCanZoom": false,
+              "bottomPanelBrowserConversationId": null,
+              "bottomPanelBrowserTabId": null,
+              "canAcceptAppshotShortcut": false,
+              "canTakeMeetingNotes": false,
+              "canRedoAppAction": false,
+              "canUndoAppAction": false,
+              "bottomPanelCanCloseActiveTab": false,
+              "bottomPanelToggleEnabled": false,
+              "focusArea": "main",
+              "focusedEditable": null,
+              "imagePreviewOpen": false,
+              "isNewChatRoute": false,
+              "newProjectEnabled": true,
+              "quickChatAppshotThreadTarget": null,
+              "temporaryChatEnabled": true,
+              "terminalEnabled": false,
+              "terminalFocused": false,
+              "threadNavigationShortcutLocked": false,
+              "rightPanelBrowserCanZoom": false,
+              "rightPanelBrowserConversationId": null,
+              "rightPanelBrowserTabId": null,
+              "rightPanelCanCloseActiveTab": false,
+              "workspaceHomeClosable": false,
+              "type": "app-shell-shortcut-state-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: app-shell-shortcut-state-changed",
+            "errorStack": "Error: unsupported: app-shell-shortcut-state-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "Loading MCP server catalog",
+        "tags": {
+          "safe": {},
+          "sensitive": {
+            "hostId": "local"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "browser-sidebar-annotation-multi-select-enabled-changed"
+          },
+          "sensitive": {
+            "message": {
+              "enabled": false,
+              "type": "browser-sidebar-annotation-multi-select-enabled-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: browser-sidebar-annotation-multi-select-enabled-changed",
+            "errorStack": "Error: unsupported: browser-sidebar-annotation-multi-select-enabled-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to load MCP server catalog",
+        "tags": {
+          "safe": {},
+          "sensitive": {
+            "hostId": "local",
+            "errorName": "TypeError",
+            "errorMessage": "'listMcpServers' is not a function.",
+            "errorStack": "TypeError: 'listMcpServers' is not a function.\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "ChatGPT-Account-ID",
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /settings/is_adult",
+            "errorStack": "Error: Offline HTTP unsupported: GET /settings/is_adult\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/settings/is_adult",
+            "url": "/settings/is_adult"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /system_hints",
+            "errorStack": "Error: Offline HTTP unsupported: GET /system_hints\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/system_hints",
+            "url": "/system_hints?exclude_logo=true&mode=basic&gizmo_id=g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "app-shell-shortcut-state-changed"
+          },
+          "sensitive": {
+            "message": {
+              "bottomPanelBrowserCanZoom": false,
+              "bottomPanelBrowserConversationId": null,
+              "bottomPanelBrowserTabId": null,
+              "canAcceptAppshotShortcut": false,
+              "canTakeMeetingNotes": false,
+              "canRedoAppAction": false,
+              "canUndoAppAction": false,
+              "bottomPanelCanCloseActiveTab": false,
+              "bottomPanelToggleEnabled": false,
+              "focusArea": "main",
+              "focusedEditable": null,
+              "imagePreviewOpen": false,
+              "isNewChatRoute": false,
+              "newProjectEnabled": true,
+              "quickChatAppshotThreadTarget": null,
+              "temporaryChatEnabled": true,
+              "terminalEnabled": false,
+              "terminalFocused": false,
+              "threadNavigationShortcutLocked": false,
+              "rightPanelBrowserCanZoom": false,
+              "rightPanelBrowserConversationId": null,
+              "rightPanelBrowserTabId": null,
+              "rightPanelCanCloseActiveTab": false,
+              "workspaceHomeClosable": true,
+              "type": "app-shell-shortcut-state-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: app-shell-shortcut-state-changed",
+            "errorStack": "Error: unsupported: app-shell-shortcut-state-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "Failed to send message from view",
+        "tags": {
+          "safe": {
+            "type": "app-shell-shortcut-state-changed"
+          },
+          "sensitive": {
+            "message": {
+              "bottomPanelBrowserCanZoom": false,
+              "bottomPanelBrowserConversationId": null,
+              "bottomPanelBrowserTabId": null,
+              "canAcceptAppshotShortcut": false,
+              "canTakeMeetingNotes": false,
+              "canRedoAppAction": false,
+              "canUndoAppAction": false,
+              "bottomPanelCanCloseActiveTab": false,
+              "bottomPanelToggleEnabled": false,
+              "focusArea": "main",
+              "focusedEditable": "other",
+              "imagePreviewOpen": false,
+              "isNewChatRoute": false,
+              "newProjectEnabled": true,
+              "quickChatAppshotThreadTarget": null,
+              "temporaryChatEnabled": true,
+              "terminalEnabled": false,
+              "terminalFocused": false,
+              "threadNavigationShortcutLocked": false,
+              "rightPanelBrowserCanZoom": false,
+              "rightPanelBrowserConversationId": null,
+              "rightPanelBrowserTabId": null,
+              "rightPanelCanCloseActiveTab": false,
+              "workspaceHomeClosable": true,
+              "type": "app-shell-shortcut-state-changed"
+            },
+            "errorName": "Error",
+            "errorMessage": "unsupported: app-shell-shortcut-state-changed",
+            "errorStack": "Error: unsupported: app-shell-shortcut-state-changed\n    at post (http://127.0.0.1:52913/bootstrap.mjs:7:59)"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "info",
+        "message": "app_server_restart_recovery_done",
+        "tags": {
+          "safe": {
+            "hostId": "local",
+            "currentConversationId": null,
+            "currentConversationExistsOnTargetHost": false,
+            "resumedCurrentConversation": false
+          },
+          "sensitive": {}
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /models",
+            "errorStack": "Error: Offline HTTP unsupported: GET /models\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/models",
+            "url": "/models?iim=false&include_icons=false&is_gizmo=false"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /pins",
+            "errorStack": "Error: Offline HTTP unsupported: GET /pins\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/pins",
+            "url": "/pins?item_type=gizmo"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /pins",
+            "errorStack": "Error: Offline HTTP unsupported: GET /pins\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/pins",
+            "url": "/pins?item_type=conversation"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /conversations",
+            "errorStack": "Error: Offline HTTP unsupported: GET /conversations\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/conversations",
+            "url": "/conversations?exclude_conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /conversations",
+            "errorStack": "Error: Offline HTTP unsupported: GET /conversations\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/conversations",
+            "url": "/conversations?conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "OpenAI-Internal-Referral-Eligibility-Preview",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /referrals/invite/eligibility",
+            "errorStack": "Error: Offline HTTP unsupported: GET /referrals/invite/eligibility\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/referrals/invite/eligibility",
+            "url": "/referrals/invite/eligibility?program_id=codex_referral_consumer&entrypoint=persistent"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "ChatGPT-Account-ID",
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /aip/first-party/eligibility",
+            "errorStack": "Error: Offline HTTP unsupported: GET /aip/first-party/eligibility\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/aip/first-party/eligibility",
+            "url": "/aip/first-party/eligibility"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "ChatGPT-Account-ID",
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /accounts/optimized/check",
+            "errorStack": "Error: Offline HTTP unsupported: GET /accounts/optimized/check\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/accounts/optimized/check",
+            "url": "/accounts/optimized/check"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /system_hints",
+            "errorStack": "Error: Offline HTTP unsupported: GET /system_hints\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/system_hints",
+            "url": "/system_hints?exclude_logo=true&mode=plugins"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /system_hints",
+            "errorStack": "Error: Offline HTTP unsupported: GET /system_hints\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/system_hints",
+            "url": "/system_hints?exclude_logo=true&mode=basic"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /system_hints",
+            "errorStack": "Error: Offline HTTP unsupported: GET /system_hints\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/system_hints",
+            "url": "/system_hints?exclude_logo=false&mode=custom_agents"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "ChatGPT-Account-ID",
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /settings/is_adult",
+            "errorStack": "Error: Offline HTTP unsupported: GET /settings/is_adult\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/settings/is_adult",
+            "url": "/settings/is_adult"
+          }
+        },
+        "type": "log-message"
+      },
+      {
+        "level": "warning",
+        "message": "sa_server_request_failed",
+        "tags": {
+          "safe": {
+            "attachAuth": true,
+            "errorCode": null,
+            "hasRequestBody": false,
+            "method": "get",
+            "requestHeaderNames": [
+              "OAI-Language",
+              "X-OpenAI-Attach-Auth",
+              "oai-did",
+              "originator",
+              "x-openai-codex-window-type",
+              "x-openai-web-frontend"
+            ],
+            "status": null
+          },
+          "sensitive": {
+            "errorName": "Error",
+            "errorMessage": "Offline HTTP unsupported: GET /system_hints",
+            "errorStack": "Error: Offline HTTP unsupported: GET /system_hints\n    at e.evaluateImpl (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (http://127.0.0.1:52913/app-shared-2cae01273bae.js:323:51623)",
+            "routePattern": "/system_hints",
+            "url": "/system_hints?exclude_logo=true&mode=basic&gizmo_id=g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45"
+          }
+        },
+        "type": "log-message"
+      }
+    ],
+    "unsupported": [
+      {
+        "type": "electron-window-zoom-changed",
+        "error": "unsupported: electron-window-zoom-changed"
+      },
+      {
+        "type": "mac-menu-bar-enabled-changed",
+        "error": "unsupported: mac-menu-bar-enabled-changed"
+      },
+      {
+        "type": "global-dictation-enabled-changed",
+        "error": "unsupported: global-dictation-enabled-changed"
+      },
+      {
+        "type": "browser-sidebar-tweaks-enabled-changed",
+        "error": "unsupported: browser-sidebar-tweaks-enabled-changed"
+      },
+      {
+        "type": "browser-sidebar-site-annotation-api-enabled-changed",
+        "error": "unsupported: browser-sidebar-site-annotation-api-enabled-changed"
+      },
+      {
+        "type": "electron-avatar-overlay-restore-ready",
+        "error": "unsupported: electron-avatar-overlay-restore-ready"
+      },
+      {
+        "type": "electron-avatar-overlay-feedback-diagnostics-changed",
+        "error": "unsupported: electron-avatar-overlay-feedback-diagnostics-changed"
+      },
+      {
+        "type": "electron-sparkle-gates-changed",
+        "error": "unsupported: electron-sparkle-gates-changed"
+      },
+      {
+        "type": "local-thread-activity-changed",
+        "error": "unsupported: local-thread-activity-changed"
+      },
+      {
+        "type": "set-telemetry-user",
+        "error": "unsupported: set-telemetry-user"
+      },
+      {
+        "type": "electron-set-badge-count",
+        "error": "unsupported: electron-set-badge-count"
+      },
+      {
+        "type": "power-save-blocker-set",
+        "error": "unsupported: power-save-blocker-set"
+      },
+      {
+        "type": "avatar-overlay-open-state-request",
+        "error": "unsupported: avatar-overlay-open-state-request"
+      },
+      {
+        "type": "view-focused",
+        "error": "unsupported: view-focused"
+      },
+      {
+        "type": "browser-sidebar-site-annotation-api-enabled-changed",
+        "error": "unsupported: browser-sidebar-site-annotation-api-enabled-changed"
+      },
+      {
+        "type": "keyboard-layout-map-changed",
+        "error": "unsupported: keyboard-layout-map-changed"
+      },
+      {
+        "type": "tray-menu-threads-changed",
+        "error": "unsupported: tray-menu-threads-changed"
+      },
+      {
+        "type": "electron-avatar-overlay-feedback-diagnostics-changed",
+        "error": "unsupported: electron-avatar-overlay-feedback-diagnostics-changed"
+      },
+      {
+        "type": "electron-sparkle-gates-changed",
+        "error": "unsupported: electron-sparkle-gates-changed"
+      },
+      {
+        "type": "workspace-settings-webview-presentation-changed",
+        "error": "unsupported: workspace-settings-webview-presentation-changed"
+      },
+      {
+        "type": "app-shell-shortcut-state-changed",
+        "error": "unsupported: app-shell-shortcut-state-changed"
+      },
+      {
+        "type": "browser-sidebar-annotation-multi-select-enabled-changed",
+        "error": "unsupported: browser-sidebar-annotation-multi-select-enabled-changed"
+      },
+      {
+        "type": "electron-set-window-mode",
+        "error": "unsupported: electron-set-window-mode"
+      },
+      {
+        "type": "app-shell-shortcut-state-changed",
+        "error": "unsupported: app-shell-shortcut-state-changed"
+      },
+      {
+        "type": "app-shell-shortcut-state-changed",
+        "error": "unsupported: app-shell-shortcut-state-changed"
+      },
+      {
+        "type": "persisted-atom-update",
+        "error": "local_operation_failed: Unsupported atom"
+      },
+      {
+        "type": "persisted-atom-update",
+        "error": "local_operation_failed: Unsupported atom"
+      },
+      {
+        "type": "app-shell-shortcut-state-changed",
+        "error": "unsupported: app-shell-shortcut-state-changed"
+      },
+      {
+        "type": "app-shell-shortcut-state-changed",
+        "error": "unsupported: app-shell-shortcut-state-changed"
+      },
+      {
+        "type": "browser-sidebar-annotation-multi-select-enabled-changed",
+        "error": "unsupported: browser-sidebar-annotation-multi-select-enabled-changed"
+      },
+      {
+        "type": "app-shell-shortcut-state-changed",
+        "error": "unsupported: app-shell-shortcut-state-changed"
+      },
+      {
+        "type": "app-shell-shortcut-state-changed",
+        "error": "unsupported: app-shell-shortcut-state-changed"
+      }
+    ],
+    "fetchTerminals": [],
+    "routes": [
+      {
+        "at": 5819.5,
+        "event": "ready",
+        "initializationOnly": true,
+        "restoredRoute": "/g/g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45/c/offline-local-dc46cb2a-99c5-4f51-b4c0-93fcc5665ec8"
+      },
+      {
+        "at": 6378.29999999702,
+        "event": "owner-received",
+        "path": "/"
+      },
+      {
+        "at": 6378.29999999702,
+        "event": "startup-owner-ignored",
+        "path": "/"
+      },
+      {
+        "at": 6737.399999991059,
+        "event": "ready",
+        "restoredRoute": "/g/g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45/c/offline-local-dc46cb2a-99c5-4f51-b4c0-93fcc5665ec8"
+      },
+      {
+        "at": 6749.699999988079,
+        "event": "navigate-dispatched",
+        "path": "/g/g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45/c/offline-local-dc46cb2a-99c5-4f51-b4c0-93fcc5665ec8"
+      },
+      {
+        "at": 6766.699999988079,
+        "event": "owner-received",
+        "path": "/g/g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45/c/offline-local-dc46cb2a-99c5-4f51-b4c0-93fcc5665ec8"
+      },
+      {
+        "at": 7186.699999988079,
+        "event": "owner-persisted",
+        "path": "/g/g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45/c/offline-local-dc46cb2a-99c5-4f51-b4c0-93fcc5665ec8"
+      }
+    ],
+    "fixtureCalls": [
+      "services",
+      "catalog.subscribe",
+      "getDefaultHost",
+      {
+        "operation": "managers.subscribe",
+        "hostId": "local"
+      },
+      {
+        "operation": "settings.readAll",
+        "detailMode": "STEPS_PROSE"
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "remoteControl/status/changed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "remoteControl/status/read"
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "turn/started",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "turn-completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "thread-deleted",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "item/completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "thread-deleted",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "registerWindowActivity",
+        "value": {
+          "canAcquireThreadStream": true,
+          "routePath": "/",
+          "visibilityState": "visible"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "mcp-authentication-status",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": [
+          "item/completed",
+          "mcpServer/oauthLogin/completed",
+          "mcpServer/startupStatus/updated",
+          "account/updated"
+        ],
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "config/read",
+        "params": {
+          "includeLayers": false,
+          "cwd": null
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "item/completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": [
+          "item/started"
+        ],
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "thread-deleted",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": [
+          "turn/completed",
+          "error"
+        ],
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "initial-title-requested",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "realtime-thread-created",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "approval-resolved",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": [
+          "turn/started",
+          "turn/completed",
+          "turn/moderationMetadata",
+          "item/started",
+          "item/completed"
+        ],
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "open-file-change",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "mcp-elicitation-request",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "thread-archived",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "thread-deleted",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "turn-started",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "stream-role-changed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "turn-first-output",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "turn-completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "thread-list-invalidated",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "conversation-removed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "history-accepted",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": [
+          "thread/realtime/item/completed",
+          "skills/changed",
+          "mcpServer/oauthLogin/completed",
+          "thread/started",
+          "thread/attachment/updated",
+          "thread/archived",
+          "thread/unarchived",
+          "mcpServer/startupStatus/updated",
+          "error",
+          "model/verification"
+        ],
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "thread-archived",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "thread-unarchived",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "turn-completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": [
+          "item/agentMessage/delta",
+          "item/plan/delta",
+          "item/reasoning/summaryTextDelta",
+          "item/reasoning/textDelta",
+          "item/commandExecution/outputDelta",
+          "item/fileChange/outputDelta"
+        ],
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": [
+          "thread/started",
+          "turn/started",
+          "turn/completed"
+        ],
+        "key": {
+          "hostId": "local"
+        }
+      },
+      "registerReplayAdmission",
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "queued-message-execution",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      "appInfo.get",
+      "appInfo.getSystemInfo",
+      {
+        "operation": "manager.sendRequest",
+        "method": "config/read",
+        "params": {
+          "includeLayers": false,
+          "cwd": null
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "auth-status",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "windowActivity.update",
+        "value": {
+          "canAcquireThreadStream": true,
+          "routePath": "/",
+          "visibilityState": "visible"
+        }
+      },
+      "manager.getAccount",
+      "manager.getAuthMethod",
+      "accountInfo.readAccountInfo",
+      {
+        "operation": "httpFetch.fetch",
+        "id": "b264958d-be96-407d-b2fc-3051a8fe3ca7",
+        "method": "POST",
+        "url": "/wham/statsig/bootstrap"
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "mcp-authentication-status",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": [
+          "item/completed",
+          "mcpServer/oauthLogin/completed",
+          "mcpServer/startupStatus/updated",
+          "account/updated"
+        ],
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "config/read",
+        "params": {
+          "includeLayers": false,
+          "cwd": null
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "ad4e82cb-0d79-425d-bde2-193e6fd6c098",
+        "method": "GET",
+        "url": "/wham/accounts/check"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "ad4e82cb-0d79-425d-bde2-193e6fd6c098"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "23b5e3bf-a695-4cb1-8552-590499d30a74",
+        "method": "GET",
+        "url": "/accounts/check/v4-2023-04-27"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "23b5e3bf-a695-4cb1-8552-590499d30a74"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "a2383bc6-f439-4d09-8f63-0362aab6e6ef",
+        "method": "GET",
+        "url": "/settings/user"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "a2383bc6-f439-4d09-8f63-0362aab6e6ef"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "5c55af05-fe61-4923-8e25-d7bec7f82d80",
+        "method": "POST",
+        "url": "/wham/statsig/bootstrap"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "3f5d0f8a-2502-4715-abbe-f33c0176d869",
+        "method": "POST",
+        "url": "/wham/statsig/bootstrap"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "5394b7af-7a99-4b7e-a185-e4a380f60f9a",
+        "method": "POST",
+        "url": "/wham/statsig/bootstrap"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "bc4a683a-c533-4553-89f5-e7b2aacdcfff",
+        "method": "POST",
+        "url": "/wham/statsig/bootstrap"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "b8601e6a-9274-47b8-97a5-00b5152cb209",
+        "method": "POST",
+        "url": "/wham/statsig/bootstrap"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "6a593722-2557-4809-be9e-65a668d1d72e",
+        "method": "POST",
+        "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793825945043&sid=9a581bc0-f232-4a88-b494-b2d65789449d&se=1"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "d3cd0829-3268-4519-95bf-f976be877250",
+        "method": "POST",
+        "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793825945546&sid=9a581bc0-f232-4a88-b494-b2d65789449d&se=1"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "be86a128-5222-418b-bf65-27e9e51b4772",
+        "method": "POST",
+        "url": "https://ab.chatgpt.com/v1/initialize?k=client-sYWqzCYMRkUg4DqqiZcR5DGTNl2iD7zNJY0HoeDLzxR&st=javascript-client&sv=3.34.1&t=1793825947548&sid=9a581bc0-f232-4a88-b494-b2d65789449d&se=1"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "experimentalFeature/list",
+        "params": {
+          "cursor": null,
+          "limit": 100
+        }
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "added-remote-control-env-ids"
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "host",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "thread-project-assignments"
+      },
+      {
+        "operation": "windowActivity.update",
+        "value": {
+          "canAcquireThreadStream": true,
+          "routePath": "/",
+          "visibilityState": "visible"
+        }
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "configRequirements/read"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "configRequirements/read"
+      },
+      {
+        "operation": "remoteConnections.setRemoteControlEnabled",
+        "value": {
+          "enabled": false,
+          "oneToOnePairingInAppEnabled": false
+        }
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "config/read",
+        "params": {
+          "includeLayers": true,
+          "cwd": null
+        }
+      },
+      {
+        "operation": "catalog.setSourceEnabled",
+        "source": {
+          "kind": "app-server"
+        },
+        "enabled": true
+      },
+      {
+        "operation": "catalog.subscribeStatus"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "local-projects"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "selected-project"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "selected-remote-host-id"
+      },
+      {
+        "operation": "managers.subscribe",
+        "hostId": "durable"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "646a8b03-5af2-41a0-80f8-df4b535d233b",
+        "method": "GET",
+        "url": "/wham/tasks/list?limit=20&task_filter=current"
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "item/started",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "turn-completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "approval-request",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "serverRequest/resolved",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "user-input-request",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "host",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "pinned-thread-ids"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "438abd63-3713-48d1-8d88-cb84f16e66f4",
+        "method": "GET",
+        "url": "/wham/usage"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "projectless-thread-ids"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "remote-projects"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "project-order"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "7c9ba3ba-439d-4efa-bd50-1d7700cb5ffc",
+        "method": "GET",
+        "url": "/wham/onboarding/context"
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "turn-completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "4e3d77c2-7855-48ac-93f2-963c63c716d8",
+        "method": "GET",
+        "url": "/automations?filter=scheduled&limit=25"
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "item/started",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "turn-completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "approval-request",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "serverRequest/resolved",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "user-input-request",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "thread-archived",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": [
+          "thread/name/updated"
+        ],
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "catalog.requestSync",
+        "hosts": [
+          "local"
+        ]
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "7c9ba3ba-439d-4efa-bd50-1d7700cb5ffc"
+      },
+      {
+        "operation": "catalog.setSourceEnabled",
+        "source": {
+          "kind": "chatgpt",
+          "accountId": "offline-fixture-account"
+        },
+        "enabled": true
+      },
+      {
+        "operation": "catalog.readStatus",
+        "status": {
+          "hosts": [
+            {
+              "hostId": "local",
+              "isComplete": true,
+              "revision": 1
+            },
+            {
+              "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+              "isComplete": true,
+              "revision": 1
+            }
+          ]
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "event",
+        "event": "thread-archived",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": [
+          "thread/name/updated"
+        ],
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "1d4276af-f347-4dfe-89b9-06c864a5a62c",
+        "method": "GET",
+        "url": "/celsius/ws/user"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "account/gatewayOAuth/read"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "b5489862-e963-426d-af10-cd43be4f7565",
+        "method": "GET",
+        "url": "/models?iim=false&include_icons=false&is_gizmo=false"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "sidebar-project-thread-orders"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "pinned-project-ids"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "575a5806-c0dc-4740-8e2c-5f4b5b28ccdf",
+        "method": "GET",
+        "url": "/pins?item_type=gizmo"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "81d90a36-48fa-434f-b4a9-f639cb5b8d20",
+        "method": "GET",
+        "url": "/celsius/ws/user"
+      },
+      {
+        "operation": "catalog.readPage",
+        "query": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "filter": {
+            "includeAll": true,
+            "cwdValues": [],
+            "cwdPrefixes": [],
+            "includeThreadIds": [],
+            "excludeThreadIds": []
+          },
+          "limit": 20,
+          "sortKey": "updated_at"
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "c2ea1754-c32d-442f-94eb-ecd3b1ca2b5e",
+        "method": "GET",
+        "url": "/pins?item_type=conversation"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "6f6dadd2-2c3a-4bfd-a662-0024c1d5b7b7",
+        "method": "GET",
+        "url": "/pins?item_type=project"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "eab9cd87-77a2-476e-84f2-d44822dd8cd9",
+        "method": "GET",
+        "url": "/conversations?exclude_conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "4eb9871e-2d1e-40d7-bf68-57b8b078e6ae",
+        "method": "GET",
+        "url": "/conversations?conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "3c132ea5-ab44-4c4f-9e13-b691f5302710",
+        "method": "GET",
+        "url": "/gizmos/snorlax/sidebar?conversations_per_gizmo=0&limit=20&owned_only=false"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "connection-group-order"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "9f316f82-8f1a-4394-960a-0cca1f458aa7",
+        "method": "GET",
+        "url": "/referrals/invite/eligibility?program_id=codex_referral_consumer&entrypoint=persistent"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "config/read",
+        "params": {
+          "includeLayers": false,
+          "cwd": null
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "6c094e6d-fb18-4fc2-8e1e-ff922f281a29",
+        "method": "GET",
+        "url": "/me"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "ffa18ca8-85ba-492c-8a5a-4f68c7598f7c",
+        "method": "GET",
+        "url": "/profiles/me"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "dc4992d5-104f-4436-9136-0fc11416a925",
+        "method": "GET",
+        "url": "/ps/plugins/installed?limit=1000&includeExtensions=true"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "eafb1948-0660-4c2a-9f5e-4034516ca34e",
+        "method": "GET",
+        "url": "/aip/first-party/eligibility"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "dd467931-1131-47e6-b0d1-c0face85243c",
+        "method": "GET",
+        "url": "/accounts/optimized/check"
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "item/completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "notification",
+        "methods": "item/completed",
+        "key": {
+          "hostId": "local"
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "8882dcc1-0fbf-4b5f-919b-f1fe297c3bca",
+        "method": "POST",
+        "url": "/conversation/init"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "bb024214-0a8b-4c4b-bf36-3aba7d0b347f",
+        "method": "GET",
+        "url": "/settings/is_adult"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "c14d4114-e9e5-430a-832f-69dbaeb85a8b",
+        "method": "GET",
+        "url": "/system_hints?exclude_logo=true&mode=plugins"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "160c4a52-dce9-4b2a-9f08-d8c6a2b7f91f",
+        "method": "GET",
+        "url": "/system_hints?exclude_logo=true&mode=basic"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "6da59b03-5ce9-4e79-9ed6-a0d714c32fcc",
+        "method": "GET",
+        "url": "/system_hints?exclude_logo=false&mode=custom_agents"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "6f6dadd2-2c3a-4bfd-a662-0024c1d5b7b7"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "3c132ea5-ab44-4c4f-9e13-b691f5302710"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "6c094e6d-fb18-4fc2-8e1e-ff922f281a29"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "ffa18ca8-85ba-492c-8a5a-4f68c7598f7c"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "8882dcc1-0fbf-4b5f-919b-f1fe297c3bca"
+      },
+      {
+        "operation": "catalog.readPage",
+        "query": {
+          "hostId": "chatgpt:offline-fixture-account:offline-fixture-user",
+          "filter": {
+            "includeAll": true,
+            "cwdValues": [],
+            "cwdPrefixes": [],
+            "includeThreadIds": [],
+            "excludeThreadIds": [],
+            "projectId": "g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45"
+          },
+          "limit": 5,
+          "sortKey": "updated_at"
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "9ee55973-f11f-4df4-88b5-f1488a5cb7ba",
+        "method": "GET",
+        "url": "/gizmos/g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45/conversations?limit=5&owned_only=false"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "1a9191f3-25c6-4d5f-8b98-838a96dd84d1",
+        "method": "GET",
+        "url": "/celsius/ws/user"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "7da40b91-5ae3-4b8c-8667-861aa168aafc",
+        "method": "GET",
+        "url": "/amphora/notifications?limit=20"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "9ee55973-f11f-4df4-88b5-f1488a5cb7ba"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "model/list",
+        "params": {
+          "includeHidden": true,
+          "cursor": null,
+          "limit": 100
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "67a5cda2-ca68-4b89-b120-98439f9c2ee0",
+        "method": "GET",
+        "url": "/gift-credits/senders/eligibility"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "externalAgentConfig/import/readHistories"
+      },
+      {
+        "operation": "windowActivity.update",
+        "value": {
+          "canAcquireThreadStream": true,
+          "routePath": "/",
+          "visibilityState": "visible"
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "c8e2ce56-2597-4753-8ff2-a681d687a420",
+        "method": "GET",
+        "url": "/conversation/offline-local-dc46cb2a-99c5-4f51-b4c0-93fcc5665ec8"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "config/read",
+        "params": {
+          "includeLayers": true,
+          "cwd": null
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "3eeef26d-2c44-4364-9fec-1c1b2a1532ac",
+        "method": "GET",
+        "url": "/wham/tasks/list?limit=20&task_filter=current"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "local-projects"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "thread-project-assignments"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "added-remote-control-env-ids"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "selected-remote-host-id"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "pinned-thread-ids"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "projectless-thread-ids"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "remote-projects"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "project-order"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "plugin/installed",
+        "params": {}
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "c8e2ce56-2597-4753-8ff2-a681d687a420"
+      },
+      {
+        "operation": "manager.subscribe",
+        "type": "thread",
+        "key": {
+          "hostId": "local",
+          "threadId": "chatgpt:offline-local-dc46cb2a-99c5-4f51-b4c0-93fcc5665ec8"
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "7d17c574-5aa0-44e8-9507-7d4113b95eae",
+        "method": "GET",
+        "url": "/gizmos/g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45?include_file_limits=true"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "f2493299-3407-43dc-a07b-f9cb9eebc052",
+        "method": "GET",
+        "url": "/settings/is_adult"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "f280a3cd-1792-429e-9e4d-6b0a6df63495",
+        "method": "POST",
+        "url": "/conversation/init"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "5027e59a-6018-4c4b-829f-2c3b638b1c87",
+        "method": "GET",
+        "url": "/system_hints?exclude_logo=true&mode=basic&gizmo_id=g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "7d17c574-5aa0-44e8-9507-7d4113b95eae"
+      },
+      {
+        "operation": "httpFetch.cancel",
+        "id": "f280a3cd-1792-429e-9e4d-6b0a6df63495"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "config/read",
+        "params": {
+          "includeLayers": false,
+          "cwd": null
+        }
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "account/gatewayOAuth/read"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "24ec2f53-eb4c-4d23-ad96-103ae186f532",
+        "method": "GET",
+        "url": "/models?iim=false&include_icons=false&is_gizmo=false"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "b5d986d7-ca37-44c1-8ef4-129d34249481",
+        "method": "GET",
+        "url": "/pins?item_type=gizmo"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "dcd34ba1-9e2a-4ef2-b24a-58cf559f60bd",
+        "method": "GET",
+        "url": "/pins?item_type=conversation"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "131a6d28-ca60-4f5b-a032-306922238bb2",
+        "method": "GET",
+        "url": "/conversations?exclude_conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "dd979fa5-9f83-480c-86ff-da1fe2f174bb",
+        "method": "GET",
+        "url": "/conversations?conversation_origin=tpp&expand=false&hide_snorlax=false&is_archived=false&is_starred=false&limit=20&order=updated&offset=0"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "0eb7230d-abba-4f14-ae21-438810e95838",
+        "method": "GET",
+        "url": "/referrals/invite/eligibility?program_id=codex_referral_consumer&entrypoint=persistent"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "9ebbdaa2-73e1-4284-9006-cbef98088328",
+        "method": "GET",
+        "url": "/aip/first-party/eligibility"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "b9d1bfa0-9ad4-4166-aef9-71d209b7bf54",
+        "method": "GET",
+        "url": "/accounts/optimized/check"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "9fffaddd-2cd6-41fe-86a1-c5353d6f1984",
+        "method": "GET",
+        "url": "/system_hints?exclude_logo=true&mode=plugins"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "585951a8-0c6a-4874-aadb-62d30e269b7e",
+        "method": "GET",
+        "url": "/system_hints?exclude_logo=true&mode=basic"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "6e37d5df-0742-440c-9c9e-26fca871e6f1",
+        "method": "GET",
+        "url": "/system_hints?exclude_logo=false&mode=custom_agents"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "sidebar-project-thread-orders"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "pinned-project-ids"
+      },
+      {
+        "operation": "applicationState.read",
+        "key": "connection-group-order"
+      },
+      {
+        "operation": "manager.sendRequest",
+        "method": "model/list",
+        "params": {
+          "includeHidden": true,
+          "cursor": null,
+          "limit": 100
+        }
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "c5b7be26-cd55-4342-a896-608d778c9953",
+        "method": "GET",
+        "url": "/settings/is_adult"
+      },
+      {
+        "operation": "httpFetch.fetch",
+        "id": "018c2deb-b217-4125-ba38-9c837251ac04",
+        "method": "GET",
+        "url": "/system_hints?exclude_logo=true&mode=basic&gizmo_id=g-p-rea-local-3a5deab6-8f59-45cf-87f8-15f6133bae45"
+      }
+    ]
+  },
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/desktop-web-v124-auto-restore.png"
+}

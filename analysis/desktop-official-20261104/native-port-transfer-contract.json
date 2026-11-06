@@ -1,0 +1,16 @@
+{
+  "status": "partial",
+  "evidence_type": "artifact_observation",
+  "version": "26.1021.31345 / 21828",
+  "source": "recovered/macos/asar-extracted/.vite/build/preload.js",
+  "sha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+  "offset": 6711,
+  "excerpt": "window.addEventListener(`message`,t=>{if(t.source!==window||t.data?.type!==`connect-app-host`)return;let{port:n}=t.data;e.ipcRenderer.postMessage(_,void 0,[n])});\n//# sourceMappingURL=preload.js.map",
+  "observed_contract": "Same-window connect-app-host message; data.port transferred with ipcRenderer.postMessage on codex_desktop:connect-app-host",
+  "independent_adapter": "analysis/tools/desktop-native-preload.cjs",
+  "limits": [
+    "Adapter adds offline origin and sender checks",
+    "Host services are independent synthetic fixtures",
+    "Forwarding to a second renderer is a test architecture, not evidence of official service placement"
+  ]
+}

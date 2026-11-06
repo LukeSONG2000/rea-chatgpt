@@ -1,0 +1,28 @@
+{
+  "status": "partial",
+  "source": "recovered/macos/asar-extracted/.vite/build/src-Dl21kCYQ.js",
+  "sha256": "a42052ee3309565865f2d20fc45dee297935cbb50d1fc1a404b90c18d824b93c",
+  "evidence_type": "official-artifact-static-observation",
+  "records": [
+    {
+      "symbol": "function Up(",
+      "utf8_offset": 281735,
+      "excerpt": "),writeFile:e=>t.sendAppServerRequest(`fs/writeFile`,e)})}};function Up(e,t,n,r){return{type:`codex-app-server-initialized`,hostId:e,transport:t,appServerVersion:n,installedCodexVersion:r}}var Wp=new Set([`app/list`,`collaborationMode/list`,`config/read`,`configRequirements/read`,`experimentalFeature/list`,`hooks/list`,`mcpServerStatus/list`,`model/list`,`modelProvider/capabilities/read`,`permissionProfile/list`,`plugin/installed`,`plugin/list`,`plugin/read`,`skills/list`]);function Gp({method:e,request:t,transportKind:n}){if(!Wp.has(e))return t(o.en()??void 0);let r={\"app_server.method\":e,\"app_server.source\":`electron`,\"transport.kind\":n};return o.ln({attributes:r,name:`desktop.workspace_discovery`,o"
+    },
+    {
+      "symbol": "getInitializationMessage(){",
+      "utf8_offset": 355082,
+      "excerpt": "ndInitializationSnapshot(e,this.getInitializationMessage())}getInitializationMessage(){return Up(this.options.hostId,this.options.transport.kind,this.initializedAppServerVersion,this.installedCodexVersion)}setSubagentThreadFullFidelityForSurface(e,t,n){this.subagentFullFidelitySurfaces.set(e,t,n)}notifyAutomationRunsUpdated(){this.messageDelivery.broadcastToWindows({type:`automation-runs-updated`})}notifyAutomationRunTriggered(e){this.options.onAutomationRunTriggeredEvent?.({...e,hostId:this.options.hostId})}handleArchivedThreadSideEffects(e){this.turnCwds.delete(e),this.archive.handleArchivedThreadSideEffects(e)}registerInternalNotificationHandler(e){return this.internalNotificationHandlers.add(e),()"
+    },
+    {
+      "symbol": "r=o.pn(t.userAgent)",
+      "utf8_offset": 405516,
+      "excerpt": "(e.error)}`);this.rejectInitialize?.(t)}else{let t=e.result,r=o.pn(t.userAgent);this.logger.info(`Current reported app-server version:`,{safe:{currentVersion:r,hostId:this.options.hostId},sensitive:{}}),n.Fi(this.options.hostConfig)&&r!=null&&!o.hn(r)?this.rejectInitialize?.(Error(o.un+r)):(this.initializedCodexHome=t.codexHome,this.initializedPlatformFamily=t.platformFamily,this.initializedPlatformOs=t.platformOs,this.initializedAppServerVersion=r,this.resolveInitialize())}return{routeKind:`initialize_response`,method:null}}if(Iu(e)&&this.internalResponseHandlers.has(ru(e.id)))return this.routeResponse(e,t),{routeKind:`response`,method:null};let r=typeof e.method==`string`?e.method:null;return this.l"
+    }
+  ],
+  "limits": [
+    "Offline notification uses declared package version, does not execute app-server",
+    "Transport stdio is synthetic host configuration",
+    "No native process handshake or lifecycle acceptance"
+  ]
+}

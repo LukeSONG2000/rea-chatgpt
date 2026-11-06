@@ -1,0 +1,41 @@
+{
+  "status": "partial",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v139-macos/REA ChatGPT Offline.app",
+  "change": "Enable independent project services only for isolated offline or explicitly paired model mode; project route owner reads the matching history namespace",
+  "validation": {
+    "createSendCancelRenameRestart": "native-project-model-v139.json",
+    "retrySuccessSwitchDraftRestart": "native-project-model-v139-retry-r2.json",
+    "ordinaryOfflineRegression": "native-project-model-v139-offline.json",
+    "serviceIsolation": "test_desktop_model_projects.mjs passed; two project streams, independent cancellation, cross-project rejected before model start, late events ignored",
+    "owner": "test_desktop_project_owner.cjs passed",
+    "visual": "Project retry screenshot reviewed; membership, recovered response and restored draft visible; no project loading skeleton in captured view"
+  },
+  "retainedTestFailure": {
+    "report": "native-project-model-v139-retry.json",
+    "cause": "Empty contenteditable returns newline; empty assertion corrected to trim, exact nonempty draft assertions retained"
+  },
+  "integrity": {
+    "macos": {
+      "count": 15880,
+      "digests": "passed",
+      "runtimeIncluded": true
+    },
+    "windows": {
+      "count": 15880,
+      "digests": "passed",
+      "runtimeIncluded": false
+    }
+  },
+  "signature": "macOS deep strict passed",
+  "limits": [
+    "Deterministic harness transport; no live Zhipu project interaction this round",
+    "Model credential/provider stays external to the application",
+    "Project branch/move/attachments/complete permissions not accepted",
+    "Windows payload only; no runtime/OS acceptance",
+    "Full native/mobile/Web/Remote recovery remains incomplete"
+  ],
+  "next": [
+    "Prepare Windows runtime packaging and launch entry without conflating macOS renderer replay with Windows acceptance",
+    "Continue native platform interaction and remaining project operation coverage"
+  ]
+}

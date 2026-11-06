@@ -1,0 +1,28 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "independent host runtime plus artifact static",
+  "runtime": {
+    "viewport_width": 338,
+    "content_width": 242.333333,
+    "offset_x_before": 0,
+    "offset_x_after": 0,
+    "vertical_offset": 268,
+    "long_row_exceeds_viewport": true
+  },
+  "finding": "Long row renders beyond reported content extent; scroll view has no measured horizontal range",
+  "source_followup": "maxWidth infinity helper0x204ebc; outer flexframe0x1a680c0 uses minWidth/minHeight d8/d9 through0x1dabfcc/0x1c053c; need close state owner supplying dimensions and measure timing",
+  "limits": [
+    "does not prove official app has this issue",
+    "precise cause of lazy content undermeasurement still pending",
+    "no gesture workaround or wrapping fallback introduced"
+  ],
+  "test": {
+    "name": "testRemoteOutputLongLineLayout",
+    "passed": 0,
+    "failed": 1
+  },
+  "normal_preview_pid": 83152
+}

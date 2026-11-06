@@ -1,0 +1,41 @@
+{
+  "status": "partial",
+  "implementation": "independent native host with version-bound recovered copy and icons",
+  "source_evidence": [
+    "ios-remote-v309-entry-metadata.json",
+    "ios-remote-v309-entry-types.json",
+    "ios-remote-v310-empty-rendering.json"
+  ],
+  "test": "testCodexHomeEntryAndFailure",
+  "passed_tests": 1,
+  "failed_tests": 0,
+  "covered": [
+    "sidebar entry",
+    "welcome rendering",
+    "explicit pairing unavailable alert",
+    "close returns to sidebar",
+    "failed cloud environment state",
+    "retry returns to failure without fabricated success"
+  ],
+  "not_covered": [
+    "precise official layout",
+    "official translation provider",
+    "loading visibility timing",
+    "noEnvironments and welcomeWithCloud visual acceptance",
+    "real services",
+    "device/task list",
+    "physical phone",
+    "Android"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "f429eff9859632ecba47a9ee3e695d4c45e7cc43a32c98317aad5b866122feb3",
+    "implementation/ios/UITests/HostInteractionTests.swift": "6dcaccd7e19380040dc4176a0704ef17dce2ff9ee8c06d85ebdd9ab3275c7368"
+  },
+  "preview": {
+    "simulator_pid": 57613,
+    "arguments": [
+      "--offline-fixture"
+    ],
+    "physical_device": "unchanged build 303"
+  }
+}

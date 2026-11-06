@@ -1,0 +1,731 @@
+{
+  "0x1992fdc": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1992fdc: 17ffff53     \tb\t0x1992d28 <__text+0x196ad28>\n 1992fe0: 6db63bef     \tstp\td15, d14, [sp, #-0xa0]!\n 1992fe4: 6d0133ed     \tstp\td13, d12, [sp, #0x10]\n 1992fe8: 6d022beb     \tstp\td11, d10, [sp, #0x20]\n 1992fec: 6d0323e9     \tstp\td9, d8, [sp, #0x30]\n 1992ff0: a9046ffc     \tstp\tx28, x27, [sp, #0x40]\n 1992ff4: a90567fa     \tstp\tx26, x25, [sp, #0x50]\n 1992ff8: a9065ff8     \tstp\tx24, x23, [sp, #0x60]\n 1992ffc: a90757f6     \tstp\tx22, x21, [sp, #0x70]\n 1993000: a9084ff4     \tstp\tx20, x19, [sp, #0x80]\n 1993004: a9097bfd     \tstp\tx29, x30, [sp, #0x90]\n 1993008: 910243fd     \tadd\tx29, sp, #0x90\n 199300c: d11283ff     \tsub\tsp, sp, #0x4a0\n 1993010: 910003f3     \tmov\tx19, sp\n 1993014: aa1403fa     \tmov\tx26, x20\n 1993018: f9002268     \tstr\tx8, [x19, #0x40]\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x1992fdc",
+        "end_exclusive": "0x199301c",
+        "sha256": "08c3b201408a56f10bf17241afaf9351313eacd2649d27f5aa9f4000b107ed09"
+      },
+      "linker_function_starts_in_window": [
+        "0x1992fdc",
+        "0x1992fe0"
+      ],
+      "next_linker_function_start": "0x19934bc",
+      "direct_calls": [],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  },
+  "0x1992aac": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1992aac: 17fffe05     \tb\t0x19922c0 <__text+0x196a2c0>\n 1992ab0: aa1e03e1     \tmov\tx1, x30\n 1992ab4: 97a0ad77     \tbl\t0x1be090 <__text+0x196090>\n 1992ab8: aa0103fe     \tmov\tx30, x1\n 1992abc: a9067bfd     \tstp\tx29, x30, [sp, #0x60]\n 1992ac0: 910183fd     \tadd\tx29, sp, #0x60\n 1992ac4: d103c3ff     \tsub\tsp, sp, #0xf0\n 1992ac8: 97c52e9a     \tbl\t0xade530 <__text+0xab6530>\n 1992acc: 979f2655     \tbl\t0x15c420 <__text+0x134420>\n 1992ad0: f9400801     \tldr\tx1, [x0, #0x10]\n 1992ad4: 94100236     \tbl\t0x1d933ac <__text+0x1d6b3ac>\n 1992ad8: d2800000     \tmov\tx0, #0x0                ; =0\n 1992adc: f81103a1     \tstur\tx1, [x29, #-0xf0]\n 1992ae0: 958ad45f     \tbl\t0x7c47c5c <_writev+0x7c47c5c>\n 1992ae4: 979f0909     \tbl\t0x154f08 <__text+0x12cf08>\n 1992ae8: d10123a9     \tsub\tx9, x29, #0x48\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x1992aac",
+        "end_exclusive": "0x1992aec",
+        "sha256": "77f6c89beb534c0557697f561c58c9de39ad6199e1e49028009e2b8759b7b829"
+      },
+      "linker_function_starts_in_window": [
+        "0x1992aac",
+        "0x1992ab0"
+      ],
+      "next_linker_function_start": "0x1992d24",
+      "direct_calls": [
+        {
+          "site": "0x1992ab4",
+          "target": "0x1be090",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1992ac8",
+          "target": "0xade530",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1992acc",
+          "target": "0x15c420",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1992ad4",
+          "target": "0x1d933ac",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1992ae0",
+          "target": "0x7c47c5c",
+          "imported_symbol": "_$s7SwiftUI15ModifiedContentVMa",
+          "chained_binding": {
+            "slot": "0xaad1310",
+            "symbol": "_$s7SwiftUI15ModifiedContentVMa",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 8506,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1992ae4",
+          "target": "0x154f08",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  },
+  "0x1992d24": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1992d24: 17ffff63     \tb\t0x1992ab0 <__text+0x196aab0>\n 1992d28: aa1e03e0     \tmov\tx0, x30\n 1992d2c: 97a0ad56     \tbl\t0x1be284 <__text+0x196284>\n 1992d30: aa0003fe     \tmov\tx30, x0\n 1992d34: a9077bfd     \tstp\tx29, x30, [sp, #0x70]\n 1992d38: 9101c3fd     \tadd\tx29, sp, #0x70\n 1992d3c: d10643ff     \tsub\tsp, sp, #0x190\n 1992d40: 910003f3     \tmov\tx19, sp\n 1992d44: aa1403f8     \tmov\tx24, x20\n 1992d48: f9002268     \tstr\tx8, [x19, #0x40]\n 1992d4c: b004a2c0     \tadrp\tx0, 0xadeb000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x1a110>\n 1992d50: 91310000     \tadd\tx0, x0, #0xc40\n 1992d54: d0032441     \tadrp\tx1, 0x7e1c000 <_writev+0x7e1c000>\n 1992d58: 91388021     \tadd\tx1, x1, #0xe20\n 1992d5c: 979d9f47     \tbl\t0xfaa78 <__text+0xd2a78>\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x1992d24",
+        "end_exclusive": "0x1992d60",
+        "sha256": "decf3457b6f9094de2e60c7e79944afaaafd7c9b483b863c32f53f06796cb240"
+      },
+      "linker_function_starts_in_window": [
+        "0x1992d24",
+        "0x1992d28"
+      ],
+      "next_linker_function_start": "0x1992fdc",
+      "direct_calls": [
+        {
+          "site": "0x1992d2c",
+          "target": "0x1be284",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1992d5c",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  },
+  "0x1995c7c": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1995c7c: 17fff89d     \tb\t0x1993ef0 <__text+0x196bef0>\n 1995c80: 17fff943     \tb\t0x199418c <__text+0x196c18c>\n 1995c84: f9400021     \tldr\tx1, [x1]\n 1995c88: 17fff7e1     \tb\t0x1993c0c <__text+0x196bc0c>\n 1995c8c: a9be4ff4     \tstp\tx20, x19, [sp, #-0x20]!\n 1995c90: a9017bfd     \tstp\tx29, x30, [sp, #0x10]\n 1995c94: 910043fd     \tadd\tx29, sp, #0x10\n 1995c98: aa0803f3     \tmov\tx19, x8\n 1995c9c: 97fff7e5     \tbl\t0x1993c30 <__text+0x196bc30>\n 1995ca0: f9000260     \tstr\tx0, [x19]\n 1995ca4: a9417bfd     \tldp\tx29, x30, [sp, #0x10]\n 1995ca8: 179ef579     \tb\t0x15328c <__text+0x12b28c>\n 1995cac: 17ffff92     \tb\t0x1995af4 <__text+0x196daf4>\n 1995cb0: a9bc5ff8     \tstp\tx24, x23, [sp, #-0x40]!\n 1995cb4: a90157f6     \tstp\tx22, x21, [sp, #0x10]\n 1995cb8: a9024ff4     \tstp\tx20, x19, [sp, #0x20]\n 1995cbc: a9037bfd     \tstp\tx29, x30, [sp, #0x30]\n 1995cc0: 9100c3fd     \tadd\tx29, sp, #0x30\n 1995cc4: 979ee800     \tbl\t0x14fcc4 <__text+0x127cc4>\n 1995cc8: aa0803f7     \tmov\tx23, x8\n 1995ccc: 940fb67a     \tbl\t0x1d836b4 <__text+0x1d5b6b4>\n 1995cd0: 97a345d2     \tbl\t0x267418 <__text+0x23f418>\n 1995cd4: a9437bfd     \tldp\tx29, x30, [sp, #0x30]\n 1995cd8: 17a3578e     \tb\t0x26bb10 <__text+0x243b10>\n 1995cdc: a9bc5ff8     \tstp\tx24, x23, [sp, #-0x40]!\n 1995ce0: a90157f6     \tstp\tx22, x21, [sp, #0x10]\n 1995ce4: a9024ff4     \tstp\tx20, x19, [sp, #0x20]\n 1995ce8: a9037bfd     \tstp\tx29, x30, [sp, #0x30]\n 1995cec: 9100c3fd     \tadd\tx29, sp, #0x30\n 1995cf0: 979ee7f5     \tbl\t0x14fcc4 <__text+0x127cc4>\n 1995cf4: aa0803f7     \tmov\tx23, x8\n 1995cf8: 940fb66f     \tbl\t0x1d836b4 <__text+0x1d5b6b4>\n 1995cfc: 97a345c7     \tbl\t0x267418 <__text+0x23f418>\n 1995d00: a9437bfd     \tldp\tx29, x30, [sp, #0x30]\n 1995d04: 17a3578b     \tb\t0x26bb30 <__text+0x243b30>\n 1995d08: a9be4ff4     \tstp\tx20, x19, [sp, #-0x20]!\n 1995d0c: a9017bfd     \tstp\tx29, x30, [sp, #0x10]\n 1995d10: 910043fd     \tadd\tx29, sp, #0x10\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x1995c7c",
+        "end_exclusive": "0x1995d14",
+        "sha256": "5d6ea3bb6f610ac5b9735e89f03b8d13cc2f5710bb6f80bb6638186fca693445"
+      },
+      "linker_function_starts_in_window": [
+        "0x1995c7c",
+        "0x1995c80",
+        "0x1995c84",
+        "0x1995c8c",
+        "0x1995cac",
+        "0x1995cb0",
+        "0x1995cdc",
+        "0x1995d08"
+      ],
+      "next_linker_function_start": "0x1995d30",
+      "direct_calls": [
+        {
+          "site": "0x1995c9c",
+          "target": "0x1993c30",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1995cc4",
+          "target": "0x14fcc4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1995ccc",
+          "target": "0x1d836b4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1995cd0",
+          "target": "0x267418",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1995cf0",
+          "target": "0x14fcc4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1995cf8",
+          "target": "0x1d836b4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1995cfc",
+          "target": "0x267418",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  },
+  "0x1a2564c": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1a2564c: aa1e03e3     \tmov\tx3, x30\n 1a25650: 979ccf12     \tbl\t0x159298 <__text+0x131298>\n 1a25654: aa0303fe     \tmov\tx30, x3\n 1a25658: a9057bfd     \tstp\tx29, x30, [sp, #0x50]\n 1a2565c: 910143fd     \tadd\tx29, sp, #0x50\n 1a25660: d102c3ff     \tsub\tsp, sp, #0xb0\n 1a25664: 940da0a9     \tbl\t0x1d8d908 <__text+0x1d65908>\n 1a25668: f81603a8     \tstur\tx8, [x29, #-0xa0]\n 1a2566c: 940d4e02     \tbl\t0x1d78e74 <__text+0x1d50e74>\n 1a25670: f81883a0     \tstur\tx0, [x29, #-0x78]\n 1a25674: 940d4dfb     \tbl\t0x1d78e60 <__text+0x1d50e60>\n 1a25678: f81903a0     \tstur\tx0, [x29, #-0x70]\n 1a2567c: 940d4df4     \tbl\t0x1d78e4c <__text+0x1d50e4c>\n 1a25680: f81983a0     \tstur\tx0, [x29, #-0x68]\n 1a25684: f9400742     \tldr\tx2, [x26, #0x8]\n 1a25688: a9346fba     \tstp\tx26, x27, [x29, #-0xc0]\n 1a2568c: 940d9503     \tbl\t0x1d8aa98 <__text+0x1d62a98>\n 1a25690: 9402006e     \tbl\t0x1aa5848 <__text+0x1a7d848>\n 1a25694: aa0003f5     \tmov\tx21, x0\n 1a25698: 90031f76     \tadrp\tx22, 0x7e11000 <_writev+0x7e11000>\n 1a2569c: 912ce2d6     \tadd\tx22, x22, #0xb38\n 1a256a0: 940d5b19     \tbl\t0x1d7c304 <__text+0x1d54304>\n 1a256a4: 97a10dd6     \tbl\t0x268dfc <__text+0x240dfc>\n 1a256a8: 9402006b     \tbl\t0x1aa5854 <__text+0x1a7d854>\n 1a256ac: aa0003f3     \tmov\tx19, x0\n 1a256b0: 90031f77     \tadrp\tx23, 0x7e11000 <_writev+0x7e11000>\n 1a256b4: 912ba2f7     \tadd\tx23, x23, #0xae8\n 1a256b8: aa1703e0     \tmov\tx0, x23\n 1a256bc: 979e64de     \tbl\t0x1bea34 <__text+0x196a34>\n 1a256c0: 940db7aa     \tbl\t0x1d93568 <__text+0x1d6b568>\n 1a256c4: a936a3b3     \tstp\tx19, x8, [x29, #-0x98]\n 1a256c8: b004859c     \tadrp\tx28, 0xaad6000 <_writev+0xaad6000>\n 1a256cc: f943379c     \tldr\tx28, [x28, #0x668]\n 1a256d0: a937f3a0     \tstp\tx0, x28, [x29, #-0x88]\n 1a256d4: d10263a1     \tsub\tx1, x29, #0x98\n 1a256d8: 97b35da4     \tbl\t0x6fcd68 <__text+0x6d4d68>\n 1a256dc: aa0003f3     \tmov\tx19, x0\n 1a256e0: d00498b8     \tadrp\tx24, 0xad3b000 <_OBJC_METACLASS_$__TtC18AudioPlayerService26DefaultAudioSessionManager+0x3b78>\n 1a256e4: 912b4318     \tadd\tx24, x24, #0xad0\n 1a256e8: b00315f9     \tadrp\tx25, 0x7ce2000 <_writev+0x7ce2000>\n 1a256ec: 911e0339     \tadd\tx25, x25, #0x780\n 1a256f0: 940d4a3f     \tbl\t0x1d77fec <__text+0x1d4ffec>\n 1a256f4: 97a8a324     \tbl\t0x44e384 <__text+0x426384>\n 1a256f8: 97a8e07d     \tbl\t0x45d8ec <__text+0x4358ec>\n 1a256fc: 97a8d85a     \tbl\t0x45b864 <__text+0x433864>\n 1a25700: 940268e6     \tbl\t0x1abfa98 <__text+0x1a97a98>\n 1a25704: 940d5598     \tbl\t0x1d7ad64 <__text+0x1d52d64>\n 1a25708: 940dd613     \tbl\t0x1d9af54 <__text+0x1d72f54>\n 1a2570c: 979e611e     \tbl\t0x1bdb84 <__text+0x195b84>\n 1a25710: 95888d10     \tbl\t0x7c48b50 <_writev+0x7c48b50>\n 1a25714: 97a8ac0b     \tbl\t0x450740 <__text+0x428740>\n 1a25718: f81a03a0     \tstur\tx0, [x29, #-0x60]\n 1a2571c: d101e3a2     \tsub\tx2, x29, #0x78\n 1a25720: d2800000     \tmov\tx0, #0x0                ; =0\n 1a25724: 97b566ca     \tbl\t0x77f24c <__text+0x75724c>\n 1a25728: f81583a0     \tstur\tx0, [x29, #-0xa8]\n 1a2572c: 979c8974     \tbl\t0x147cfc <__text+0x11fcfc>\n 1a25730: d0048530     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 1a25734: f9406e10     \tldr\tx16, [x16, #0xd8]\n 1a25738: d63f0200     \tblr\tx16\n 1a2573c: 910003e9     \tmov\tx9, sp\n 1a25740: 97c28c3d     \tbl\t0xac8834 <__text+0xaa0834>\n 1a25744: 940d5af0     \tbl\t0x1d7c304 <__text+0x1d54304>\n 1a25748: 97a10dad     \tbl\t0x268dfc <__text+0x240dfc>\n 1a2574c: 94020042     \tbl\t0x1aa5854 <__text+0x1a7d854>\n 1a25750: aa0003f5     \tmov\tx21, x0\n 1a25754: 940d87e7     \tbl\t0x1d876f0 <__text+0x1d5f6f0>\n 1a25758: f81883b5     \tstur\tx21, [x29, #-0x78]\n 1a2575c: 940db783     \tbl\t0x1d93568 <__text+0x1d6b568>\n 1a25760: a93903a8     \tstp\tx8, x0, [x29, #-0x70]\n 1a25764: f81a03bc     \tstur\tx28, [x29, #-0x60]\n 1a25768: 940d9b54     \tbl\t0x1d8c4b8 <__text+0x1d644b8>\n 1a2576c: 95889725     \tbl\t0x7c4b400 <_writev+0x7c4b400>\n 1a25770: aa0003f5     \tmov\tx21, x0\n 1a25774: 940d4a1e     \tbl\t0x1d77fec <__text+0x1d4ffec>\n 1a25778: 97a8aad1     \tbl\t0x4502bc <__text+0x4282bc>\n 1a2577c: 97b356df     \tbl\t0x6fb2f8 <__text+0x6d32f8>\n 1a25780: 97c7d07a     \tbl\t0xc19968 <__text+0xbf1968>\n 1a25784: 95888cf3     \tbl\t0x7c48b50 <_writev+0x7c48b50>\n 1a25788: 97a10d9d     \tbl\t0x268dfc <__text+0x240dfc>\n 1a2578c: 95888cf1     \tbl\t0x7c48b50 <_writev+0x7c48b50>\n 1a25790: 97c2e577     \tbl\t0xaded6c <__text+0xab6d6c>\n 1a25794: 9588a7da     \tbl\t0x7c4f6fc <_writev+0x7c4f6fc>\n 1a25798: 97b5072c     \tbl\t0x767448 <__text+0x73f448>\n 1a2579c: 979cb6b1     \tbl\t0x153260 <__text+0x12b260>\n 1a257a0: d0048530     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 1a257a4: f9406e10     \tldr\tx16, [x16, #0xd8]\n 1a257a8: d63f0200     \tblr\tx16\n 1a257ac: 940cbe95     \tbl\t0x1d55200 <__text+0x1d2d200>\n 1a257b0: d0048530     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 1a257b4: f9406e10     \tldr\tx16, [x16, #0xd8]\n 1a257b8: d63f0200     \tblr\tx16\n 1a257bc: 940d7a05     \tbl\t0x1d83fd0 <__text+0x1d5bfd0>\n 1a257c0: aa0803fc     \tmov\tx28, x8\n 1a257c4: 940d5f30     \tbl\t0x1d7d484 <__text+0x1d55484>\n 1a257c8: 979b54ac     \tbl\t0xfaa78 <__text+0xd2a78>\n 1a257cc: 979c96c3     \tbl\t0x14b2d8 <__text+0x1232d8>\n 1a257d0: d0048530     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 1a257d4: f9406e10     \tldr\tx16, [x16, #0xd8]\n 1a257d8: d63f0200     \tblr\tx16\n 1a257dc: 979c89fd     \tbl\t0x147fd0 <__text+0x11ffd0>\n 1a257e0: 97e5b039     \tbl\t0x13918c4 <__text+0x13698c4>\n 1a257e4: d0048530     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 1a257e8: f9406e10     \tldr\tx16, [x16, #0xd8]\n 1a257ec: d63f0200     \tblr\tx16\n 1a257f0: 940d79f8     \tbl\t0x1d83fd0 <__text+0x1d5bfd0>\n 1a257f4: aa0803f6     \tmov\tx22, x8\n 1a257f8: f0049e20     \tadrp\tx0, 0xadec000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x1b110>\n 1a257fc: 91020000     \tadd\tx0, x0, #0x80\n 1a25800: 90031fc1     \tadrp\tx1, 0x7e1d000 <_writev+0x7e1d000>\n 1a25804: 9104e021     \tadd\tx1, x1, #0x138\n 1a25808: 979b549c     \tbl\t0xfaa78 <__text+0xd2a78>\n 1a2580c: 979c96b3     \tbl\t0x14b2d8 <__text+0x1232d8>\n 1a25810: d0048530     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 1a25814: f9406e10     \tldr\tx16, [x16, #0xd8]\n 1a25818: d63f0200     \tblr\tx16\n 1a2581c: 979c8de9     \tbl\t0x148fc0 <__text+0x120fc0>\n 1a25820: d0048530     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 1a25824: f9406e10     \tldr\tx16, [x16, #0xd8]\n 1a25828: d63f0200     \tblr\tx16\n 1a2582c: 979ca844     \tbl\t0x14f93c <__text+0x12793c>\n 1a25830: f0049e33     \tadrp\tx19, 0xadec000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x1b110>\n 1a25834: 9101e273     \tadd\tx19, x19, #0x78\n 1a25838: aa1303e0     \tmov\tx0, x19\n 1a2583c: 90031fd5     \tadrp\tx21, 0x7e1d000 <_writev+0x7e1d000>\n 1a25840: 9104c2b5     \tadd\tx21, x21, #0x130\n 1a25844: 979cc266     \tbl\t0x1561dc <__text+0x12e1dc>\n 1a25848: 979c96a4     \tbl\t0x14b2d8 <__text+0x1232d8>\n 1a2584c: d0048530     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 1a25850: f9406e10     \tldr\tx16, [x16, #0xd8]\n 1a25854: d63f0200     \tblr\tx16\n 1a25858: 979c897b     \tbl\t0x147e44 <__text+0x11fe44>\n 1a2585c: d0048530     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 1a25860: f9406e10     \tldr\tx16, [x16, #0xd8]\n 1a25864: d63f0200     \tblr\tx16\n 1a25868: 979ca365     \tbl\t0x14e5fc <__text+0x1265fc>\n 1a2586c: d2800000     \tmov\tx0, #0x0                ; =0\n 1a25870: a97407a2     \tldp\tx2, x1, [x29, #-0xc0]\n 1a25874: 9408233a     \tbl\t0x1c2e55c <__text+0x1c0655c>\n 1a25878: aa0003f7     \tmov\tx23, x0\n 1a2587c: aa1903e8     \tmov\tx8, x25\n 1a25880: f81203b9     \tstur\tx25, [x29, #-0xe0]\n 1a25884: 97fff59c     \tbl\t0x1a22ef4 <__text+0x19faef4>\n 1a25888: f81103bb     \tstur\tx27, [x29, #-0xf0]\n 1a2588c: 940dc52c     \tbl\t0x1d96d3c <__text+0x1d6ed3c>\n 1a25890: 9400005c     \tbl\t0x1a25a00 <__text+0x19fda00>\n 1a25894: f81083b6     \tstur\tx22, [x29, #-0xf8]\n 1a25898: 979cedbc     \tbl\t0x160f88 <__text+0x138f88>\n 1a2589c: 97fff66f     \tbl\t0x1a23258 <__text+0x19fb258>\n 1a258a0: f81003bc     \tstur\tx28, [x29, #-0x100]\n 1a258a4: aa1c03e8     \tmov\tx8, x28\n 1a258a8: aa1703e0     \tmov\tx0, x23\n 1a258ac: 94000160     \tbl\t0x1a25e2c <__text+0x19fde2c>\n 1a258b0: aa1903e0     \tmov\tx0, x25\n 1a258b4: aa1a03f7     \tmov\tx23, x26\n 1a258b8: aa1a03e1     \tmov\tx1, x26\n 1a258bc: 979e6bc5     \tbl\t0x1c07d0 <__text+0x1987d0>\n 1a258c0: 979cc5ae     \tbl\t0x156f78 <__text+0x12ef78>\n 1a258c4: f0049e22     \tadrp\tx2, 0xadec000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x1b110>\n 1a258c8: 91020042     \tadd\tx2, x2, #0x80\n 1a258cc: 90031fd5     \tadrp\tx21, 0x7e1d000 <_writev+0x7e1d000>\n 1a258d0: 9104e2b5     \tadd\tx21, x21, #0x138\n 1a258d4: 979cbd9e     \tbl\t0x154f4c <__text+0x12cf4c>\n 1a258d8: aa1603e0     \tmov\tx0, x22\n 1a258dc: f85183ba     \tldur\tx26, [x29, #-0xe8]\n 1a258e0: aa1a03e1     \tmov\tx1, x26\n 1a258e4: f0049e22     \tadrp\tx2, 0xadec000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x1b110>\n 1a258e8: 91022042     \tadd\tx2, x2, #0x88\n 1a258ec: 940e1066     \tbl\t0x1da9a84 <__text+0x1d81a84>\n 1a258f0: a972e7b6     \tldp\tx22, x25, [x29, #-0xd8]\n 1a258f4: f9400b34     \tldr\tx20, [x25, #0x10]\n 1a258f8: 979cca1d     \tbl\t0x15816c <__text+0x13016c>\n 1a258fc: f85383bb     \tldur\tx27, [x29, #-0xc8]\n 1a25900: 97a8cc73     \tbl\t0x458acc <__text+0x430acc>\n 1a25904: aa1703e0     \tmov\tx0, x23\n 1a25908: f85503bc     \tldur\tx28, [x29, #-0xb0]\n 1a2590c: aa1c03e1     \tmov\tx1, x28\n 1a25910: f0049e22     \tadrp\tx2, 0xadec000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x1b110>\n 1a25914: 9101e042     \tadd\tx2, x2, #0x78\n 1a25918: 90031fc3     \tadrp\tx3, 0x7e1d000 <_writev+0x7e1d000>\n 1a2591c: 9104c063     \tadd\tx3, x3, #0x130\n 1a25920: 979bf2a2     \tbl\t0x1223a8 <__text+0xfa3a8>\n 1a25924: f85583b3     \tldur\tx19, [x29, #-0xa8]\n 1a25928: b9803268     \tldrsw\tx8, [x19, #0x30]\n 1a2592c: 8b080381     \tadd\tx1, x28, x8\n 1a25930: aa1803e0     \tmov\tx0, x24\n 1a25934: f0049e22     \tadrp\tx2, 0xadec000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x1b110>\n 1a25938: 91020042     \tadd\tx2, x2, #0x80\n 1a2593c: 979cbd84     \tbl\t0x154f4c <__text+0x12cf4c>\n 1a25940: b9804268     \tldrsw\tx8, [x19, #0x40]\n 1a25944: 8b080381     \tadd\tx1, x28, x8\n 1a25948: aa1a03e0     \tmov\tx0, x26\n 1a2594c: f0049e22     \tadrp\tx2, 0xadec000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x1b110>\n 1a25950: 91022042     \tadd\tx2, x2, #0x88\n 1a25954: aa0203f5     \tmov\tx21, x2\n 1a25958: 940e104b     \tbl\t0x1da9a84 <__text+0x1d81a84>\n 1a2595c: b9805268     \tldrsw\tx8, [x19, #0x50]\n 1a25960: 8b080380     \tadd\tx0, x28, x8\n 1a25964: 97b330f5     \tbl\t0x6f1d38 <__text+0x6c9d38>\n 1a25968: d63f0280     \tblr\tx20\n 1a2596c: f85603a8     \tldur\tx8, [x29, #-0xa0]\n 1a25970: 979cbdf3     \tbl\t0x15513c <__text+0x12d13c>\n 1a25974: 958898b9     \tbl\t0x7c4bc58 <_writev+0x7c4bc58>\n 1a25978: f9400733     \tldr\tx19, [x25, #0x8]\n 1a2597c: 979cc2c1     \tbl\t0x156480 <__text+0x12e480>\n 1a25980: d63f0260     \tblr\tx19\n 1a25984: 979cbddc     \tbl\t0x1550f4 <__text+0x12d0f4>\n 1a25988: 90031fda     \tadrp\tx26, 0x7e1d000 <_writev+0x7e1d000>\n 1a2598c: 9105035a     \tadd\tx26, x26, #0x140\n 1a25990: 97a8c266     \tbl\t0x456328 <__text+0x42e328>\n 1a25994: aa1803e0     \tmov\tx0, x24\n 1a25998: f0049e38     \tadrp\tx24, 0xadec000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x1b110>\n 1a2599c: 91020318     \tadd\tx24, x24, #0x80\n 1a259a0: aa1803e1     \tmov\tx1, x24\n 1a259a4: 90031fd9     \tadrp\tx25, 0x7e1d000 <_writev+0x7e1d000>\n 1a259a8: 9104e339     \tadd\tx25, x25, #0x138\n 1a259ac: 979cba14     \tbl\t0x1541fc <__text+0x12c1fc>\n 1a259b0: aa1703e0     \tmov\tx0, x23\n 1a259b4: f0049e36     \tadrp\tx22, 0xadec000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x1b110>\n 1a259b8: 9101e2d6     \tadd\tx22, x22, #0x78\n 1a259bc: aa1603e1     \tmov\tx1, x22\n 1a259c0: 90031fd4     \tadrp\tx20, 0x7e1d000 <_writev+0x7e1d000>\n 1a259c4: 9104c294     \tadd\tx20, x20, #0x130\n 1a259c8: 979cba05     \tbl\t0x1541dc <__text+0x12c1dc>\n 1a259cc: f85003a0     \tldur\tx0, [x29, #-0x100]\n 1a259d0: aa1b03e1     \tmov\tx1, x27\n 1a259d4: d63f0260     \tblr\tx19\n 1a259d8: f85083a0     \tldur\tx0, [x29, #-0xf8]\n 1a259dc: 97a8c09e     \tbl\t0x455c54 <__text+0x42dc54>\n 1a259e0: f85103a0     \tldur\tx0, [x29, #-0xf0]\n 1a259e4: 979c99ef     \tbl\t0x14c1a0 <__text+0x1241a0>\n 1a259e8: f85203a0     \tldur\tx0, [x29, #-0xe0]\n 1a259ec: aa1603e1     \tmov\tx1, x22\n 1a259f0: 979cb9fb     \tbl\t0x1541dc <__text+0x12c1dc>\n 1a259f4: d10143bf     \tsub\tsp, x29, #0x50\n 1a259f8: a9457bfd     \tldp\tx29, x30, [sp, #0x50]\n 1a259fc: 179c82c3     \tb\t0x146508 <__text+0x11e508>\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x1a2564c",
+        "end_exclusive": "0x1a25a00",
+        "sha256": "80b8aa8479606e4111e1f1e3676ba71c0b6342bd2e15613256dc5fb6eca41b22"
+      },
+      "linker_function_starts_in_window": [
+        "0x1a2564c"
+      ],
+      "next_linker_function_start": "0x1a25a00",
+      "direct_calls": [
+        {
+          "site": "0x1a25650",
+          "target": "0x159298",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25664",
+          "target": "0x1d8d908",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2566c",
+          "target": "0x1d78e74",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25674",
+          "target": "0x1d78e60",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2567c",
+          "target": "0x1d78e4c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2568c",
+          "target": "0x1d8aa98",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25690",
+          "target": "0x1aa5848",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a256a0",
+          "target": "0x1d7c304",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a256a4",
+          "target": "0x268dfc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a256a8",
+          "target": "0x1aa5854",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a256bc",
+          "target": "0x1bea34",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a256c0",
+          "target": "0x1d93568",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a256d8",
+          "target": "0x6fcd68",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a256f0",
+          "target": "0x1d77fec",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a256f4",
+          "target": "0x44e384",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a256f8",
+          "target": "0x45d8ec",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a256fc",
+          "target": "0x45b864",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25700",
+          "target": "0x1abfa98",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25704",
+          "target": "0x1d7ad64",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25708",
+          "target": "0x1d9af54",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2570c",
+          "target": "0x1bdb84",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25710",
+          "target": "0x7c48b50",
+          "imported_symbol": "_$s7SwiftUI19_ConditionalContentVMa",
+          "chained_binding": {
+            "slot": "0xaad23a0",
+            "symbol": "_$s7SwiftUI19_ConditionalContentVMa",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9034,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1a25714",
+          "target": "0x450740",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25724",
+          "target": "0x77f24c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2572c",
+          "target": "0x147cfc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25740",
+          "target": "0xac8834",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25744",
+          "target": "0x1d7c304",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25748",
+          "target": "0x268dfc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2574c",
+          "target": "0x1aa5854",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25754",
+          "target": "0x1d876f0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2575c",
+          "target": "0x1d93568",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25768",
+          "target": "0x1d8c4b8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2576c",
+          "target": "0x7c4b400",
+          "imported_symbol": "_$s7SwiftUI6IDViewVMa",
+          "chained_binding": {
+            "slot": "0xaad50d8",
+            "symbol": "_$s7SwiftUI6IDViewVMa",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10479,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1a25774",
+          "target": "0x1d77fec",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25778",
+          "target": "0x4502bc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2577c",
+          "target": "0x6fb2f8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25780",
+          "target": "0xc19968",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25784",
+          "target": "0x7c48b50",
+          "imported_symbol": "_$s7SwiftUI19_ConditionalContentVMa",
+          "chained_binding": {
+            "slot": "0xaad23a0",
+            "symbol": "_$s7SwiftUI19_ConditionalContentVMa",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9034,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1a25788",
+          "target": "0x268dfc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2578c",
+          "target": "0x7c48b50",
+          "imported_symbol": "_$s7SwiftUI19_ConditionalContentVMa",
+          "chained_binding": {
+            "slot": "0xaad23a0",
+            "symbol": "_$s7SwiftUI19_ConditionalContentVMa",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 9034,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1a25790",
+          "target": "0xaded6c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25794",
+          "target": "0x7c4f6fc",
+          "imported_symbol": "_$sSqMa",
+          "chained_binding": {
+            "slot": "0xaad72e8",
+            "symbol": "_$sSqMa",
+            "library_ordinal": 101,
+            "weak": false,
+            "import_ordinal": 11520,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1a25798",
+          "target": "0x767448",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2579c",
+          "target": "0x153260",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a257ac",
+          "target": "0x1d55200",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a257bc",
+          "target": "0x1d83fd0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a257c4",
+          "target": "0x1d7d484",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a257c8",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a257cc",
+          "target": "0x14b2d8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a257dc",
+          "target": "0x147fd0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a257e0",
+          "target": "0x13918c4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a257f0",
+          "target": "0x1d83fd0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25808",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2580c",
+          "target": "0x14b2d8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2581c",
+          "target": "0x148fc0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2582c",
+          "target": "0x14f93c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25844",
+          "target": "0x1561dc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25848",
+          "target": "0x14b2d8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25858",
+          "target": "0x147e44",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25868",
+          "target": "0x14e5fc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25874",
+          "target": "0x1c2e55c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25884",
+          "target": "0x1a22ef4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2588c",
+          "target": "0x1d96d3c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25890",
+          "target": "0x1a25a00",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25898",
+          "target": "0x160f88",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2589c",
+          "target": "0x1a23258",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a258ac",
+          "target": "0x1a25e2c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a258bc",
+          "target": "0x1c07d0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a258c0",
+          "target": "0x156f78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a258d4",
+          "target": "0x154f4c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a258ec",
+          "target": "0x1da9a84",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a258f8",
+          "target": "0x15816c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25900",
+          "target": "0x458acc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25920",
+          "target": "0x1223a8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a2593c",
+          "target": "0x154f4c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25958",
+          "target": "0x1da9a84",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25964",
+          "target": "0x6f1d38",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25970",
+          "target": "0x15513c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25974",
+          "target": "0x7c4bc58",
+          "imported_symbol": "_$s7SwiftUI9TupleViewVyACyxGxcfC",
+          "chained_binding": {
+            "slot": "0xaad5a18",
+            "symbol": "_$s7SwiftUI9TupleViewVyACyxGxcfC",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10774,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1a2597c",
+          "target": "0x156480",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25984",
+          "target": "0x1550f4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a25990",
+          "target": "0x456328",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a259ac",
+          "target": "0x1541fc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a259c8",
+          "target": "0x1541dc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a259dc",
+          "target": "0x455c54",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a259e4",
+          "target": "0x14c1a0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a259f0",
+          "target": "0x1541dc",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 74e2ee8: 6dba23e9     \tstp\td9, d8, [sp, #-0x60]!\n 74e2eec: a90167fa     \tstp\tx26, x25, [sp, #0x10]\n 74e2ef0: a9025ff8     \tstp\tx24, x23, [sp, #0x20]\n 74e2ef4: a90357f6     \tstp\tx22, x21, [sp, #0x30]\n 74e2ef8: a9044ff4     \tstp\tx20, x19, [sp, #0x40]\n 74e2efc: a9057bfd     \tstp\tx29, x30, [sp, #0x50]\n 74e2f00: 910143fd     \tadd\tx29, sp, #0x50\n 74e2f04: f001c520     \tadrp\tx0, 0xad89000 <_OBJC_METACLASS_$__TtC14ChatGPTCarPlay10CarPlayApp+0x480c0>\n 74e2f08: 91098000     \tadd\tx0, x0, #0x260\n 74e2f0c: d0004401     \tadrp\tx1, 0x7d64000 <_writev+0x7d64000>\n 74e2f10: 913e4021     \tadd\tx1, x1, #0xf90\n 74e2f14: 96305ed9     \tbl\t0xfaa78 <__text+0xd2a78>\n 74e2f18: 96319379     \tbl\t0x147cfc <__text+0x11fcfc>\n 74e2f1c: b001af50     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 74e2f20: f9406e10     \tldr\tx16, [x16, #0xd8]\n 74e2f24: d63f0200     \tblr\tx16\n 74e2f28: 910003e9     \tmov\tx9, sp\n 74e2f2c: 96a55795     \tbl\t0x1e38d80 <__text+0x1e10d80>\n 74e2f30: 97fffd8e     \tbl\t0x74e2568 <__text+0x74ba568>\n 74e2f34: 9631ac33     \tbl\t0x14e000 <__text+0x126000>\n 74e2f38: 7100041f     \tcmp\tw0, #0x1\n 74e2f3c: 54000201     \tb.ne\t0x74e2f7c <__text+0x74baf7c>\n 74e2f40: fd400288     \tldr\td8, [x20]\n 74e2f44: f9400695     \tldr\tx21, [x20, #0x8]\n 74e2f48: 97072866     \tbl\t0x36ad0e0 <__text+0x36850e0>\n 74e2f4c: b9804017     \tldrsw\tx23, [x0, #0x40]\n 74e2f50: 963fe516     \tbl\t0x4dc3a8 <__text+0x4b43a8>\n 74e2f54: aa0003f6     \tmov\tx22, x0\n 74e2f58: 8b170280     \tadd\tx0, x20, x23\n 74e2f5c: 9631a0f0     \tbl\t0x14b31c <__text+0x12331c>\n 74e2f60: 7100041f     \tcmp\tw0, #0x1\n 74e2f64: 54000381     \tb.ne\t0x74e2fd4 <__text+0x74bafd4>\n 74e2f68: aa1303e0     \tmov\tx0, x19\n 74e2f6c: 52800021     \tmov\tw1, #0x1                ; =1\n 74e2f70: 9631a108     \tbl\t0x14b390 <__text+0x123390>\n 74e2f74: 94002240     \tbl\t0x74eb874 <__text+0x74c3874>\n 74e2f78: 14000010     \tb\t0x74e2fb8 <__text+0x74bafb8>\n 74e2f7c: 973e88bd     \tbl\t0x4485270 <__text+0x445d270>\n 74e2f80: b9803008     \tldrsw\tx8, [x0, #0x30]\n 74e2f84: 8b080288     \tadd\tx8, x20, x8\n 74e2f88: f9400115     \tldr\tx21, [x8]\n 74e2f8c: 39402117     \tldrb\tw23, [x8, #0x8]\n 74e2f90: 963db6c1     \tbl\t0x450a94 <__text+0x428a94>\n 74e2f94: aa0003f6     \tmov\tx22, x0\n 74e2f98: 8b180280     \tadd\tx0, x20, x24\n 74e2f9c: 9631a0e0     \tbl\t0x14b31c <__text+0x12331c>\n 74e2fa0: 7100041f     \tcmp\tw0, #0x1\n 74e2fa4: 540002c1     \tb.ne\t0x74e2ffc <__text+0x74baffc>\n 74e2fa8: aa1303e0     \tmov\tx0, x19\n 74e2fac: 52800021     \tmov\tw1, #0x1                ; =1\n 74e2fb0: 9631a0f8     \tbl\t0x14b390 <__text+0x123390>\n 74e2fb4: 9400223f     \tbl\t0x74eb8b0 <__text+0x74c38b0>\n 74e2fb8: aa0003f4     \tmov\tx20, x0\n 74e2fbc: 94002170     \tbl\t0x74eb57c <__text+0x74c357c>\n 74e2fc0: aa1403e0     \tmov\tx0, x20\n 74e2fc4: 941d9b03     \tbl\t0x7c49bd0 <_writev+0x7c49bd0>\n 74e2fc8: aa0003f5     \tmov\tx21, x0\n 74e2fcc: 941dc606     \tbl\t0x7c547e4 <_writev+0x7c547e4>\n 74e2fd0: 14000022     \tb\t0x74e3058 <__text+0x74bb058>\n 74e2fd4: 9631c777     \tbl\t0x154db0 <__text+0x12cdb0>\n 74e2fd8: 8b170281     \tadd\tx1, x20, x23\n 74e2fdc: aa1303e0     \tmov\tx0, x19\n 74e2fe0: 9631c418     \tbl\t0x154040 <__text+0x12c040>\n 74e2fe4: aa1303e0     \tmov\tx0, x19\n 74e2fe8: 9631939e     \tbl\t0x147e60 <__text+0x11fe60>\n 74e2fec: 94002222     \tbl\t0x74eb874 <__text+0x74c3874>\n 74e2ff0: aa0003f5     \tmov\tx21, x0\n 74e2ff4: 94002162     \tbl\t0x74eb57c <__text+0x74c357c>\n 74e2ff8: 14000018     \tb\t0x74e3058 <__text+0x74bb058>\n 74e2ffc: f85f82d9     \tldur\tx25, [x22, #-0x8]\n 74e3000: f9400b28     \tldr\tx8, [x25, #0x10]\n 74e3004: 8b180281     \tadd\tx1, x20, x24\n 74e3008: aa1303e0     \tmov\tx0, x19\n 74e300c: 9631c40d     \tbl\t0x154040 <__text+0x12c040>\n 74e3010: aa1303e0     \tmov\tx0, x19\n 74e3014: 96319393     \tbl\t0x147e60 <__text+0x11fe60>\n 74e3018: 94002226     \tbl\t0x74eb8b0 <__text+0x74c38b0>\n 74e301c: aa0003f5     \tmov\tx21, x0\n 74e3020: 94002157     \tbl\t0x74eb57c <__text+0x74c357c>\n 74e3024: f9402f28     \tldr\tx8, [x25, #0x58]\n 74e3028: 8b180280     \tadd\tx0, x20, x24\n 74e302c: aa1603e1     \tmov\tx1, x22\n 74e3030: d63f0100     \tblr\tx8\n 74e3034: 9001af88     \tadrp\tx8, 0xaad3000 <_writev+0xaad3000>\n 74e3038: f9440108     \tldr\tx8, [x8, #0x800]\n 74e303c: 9657de77     \tbl\t0xadaa18 <__text+0xab2a18>\n 74e3040: 540000c1     \tb.ne\t0x74e3058 <__text+0x74bb058>\n 74e3044: aa1503e0     \tmov\tx0, x21\n 74e3048: 941d9adc     \tbl\t0x7c49bb8 <_writev+0x7c49bb8>\n 74e304c: aa0003f3     \tmov\tx19, x0\n 74e3050: 941dc5e8     \tbl\t0x7c547f0 <_writev+0x7c547f0>\n 74e3054: aa1303f5     \tmov\tx21, x19\n 74e3058: aa1503e0     \tmov\tx0, x21\n 74e305c: d10143bf     \tsub\tsp, x29, #0x50\n 74e3060: a9457bfd     \tldp\tx29, x30, [sp, #0x50]\n 74e3064: a9444ff4     \tldp\tx20, x19, [sp, #0x40]\n 74e3068: a94357f6     \tldp\tx22, x21, [sp, #0x30]\n 74e306c: a9425ff8     \tldp\tx24, x23, [sp, #0x20]\n 74e3070: a94167fa     \tldp\tx26, x25, [sp, #0x10]\n 74e3074: 6cc623e9     \tldp\td9, d8, [sp], #0x60\n 74e3078: d65f03c0     \tret\n 74e307c: 6db923e9     \tstp\td9, d8, [sp, #-0x70]!\n 74e3080: aa1e03e1     \tmov\tx1, x30\n 74e3084: 9631dbd4     \tbl\t0x159fd4 <__text+0x131fd4>\n 74e3088: aa0103fe     \tmov\tx30, x1\n 74e308c: a9067bfd     \tstp\tx29, x30, [sp, #0x60]\n 74e3090: 910183fd     \tadd\tx29, sp, #0x60\n 74e3094: d10043ff     \tsub\tsp, sp, #0x10\n 74e3098: 94002133     \tbl\t0x74eb564 <__text+0x74c3564>\n 74e309c: 97e2e39e     \tbl\t0x6d9bf14 <__text+0x6d73f14>\n 74e30a0: 9001af50     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 74e30a4: f9406e10     \tldr\tx16, [x16, #0xd8]\n 74e30a8: d63f0200     \tblr\tx16\n 74e30ac: 96319009     \tbl\t0x1470d0 <__text+0x11f0d0>\n 74e30b0: 963fe8dd     \tbl\t0x4dd424 <__text+0x4b5424>\n 74e30b4: aa0003f7     \tmov\tx23, x0\n 74e30b8: f85f801c     \tldur\tx28, [x0, #-0x8]\n 74e30bc: f9402388     \tldr\tx8, [x28, #0x40]\n 74e30c0: aa0803e9     \tmov\tx9, x8\n 74e30c4: 9001af50     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 74e30c8: f9406e10     \tldr\tx16, [x16, #0xd8]\n 74e30cc: d63f0200     \tblr\tx16\n 74e30d0: 9631a08c     \tbl\t0x14b300 <__text+0x123300>\n 74e30d4: cb080138     \tsub\tx24, x9, x8\n 74e30d8: 9100031f     \tmov\tsp, x24\n 74e30dc: 96336bd8     \tbl\t0x1be03c <__text+0x19603c>\n 74e30e0: 9631abc8     \tbl\t0x14e000 <__text+0x126000>\n 74e30e4: 7100041f     \tcmp\tw0, #0x1\n 74e30e8: 54000241     \tb.ne\t0x74e3130 <__text+0x74bb130>\n 74e30ec: 6d402688     \tldp\td8, d9, [x20]\n 74e30f0: 970727fc     \tbl\t0x36ad0e0 <__text+0x36850e0>\n 74e30f4: b9804013     \tldrsw\tx19, [x0, #0x40]\n 74e30f8: 8b130280     \tadd\tx0, x20, x19\n 74e30fc: 9631a09f     \tbl\t0x14b378 <__text+0x123378>\n 74e3100: 7100041f     \tcmp\tw0, #0x1\n 74e3104: 54000621     \tb.ne\t0x74e31c8 <__text+0x74bb1c8>\n 74e3108: 97416b61     \tbl\t0x453de8c <__text+0x4515e8c>\n 74e310c: aa0003f3     \tmov\tx19, x0\n 74e3110: 4ea91d20     \tmov.16b\tv0, v9\n 74e3114: 9404a4e0     \tbl\t0x760c494 <__text+0x75e4494>\n 74e3118: 4ea01c01     \tmov.16b\tv1, v0\n 74e311c: aa1303e0     \tmov\tx0, x19\n 74e3120: 4ea81d00     \tmov.16b\tv0, v8\n 74e3124: 941e228f     \tbl\t0x7c6bb60 <_writev+0x7c6bb60>\n 74e3128: aa1d03fd     \tmov\tx29, x29\n 74e312c: 14000054     \tb\t0x74e327c <__text+0x74bb27c>\n 74e3130: f81983b3     \tstur\tx19, [x29, #-0x68]\n 74e3134: 973e884f     \tbl\t0x4485270 <__text+0x445d270>\n 74e3138: b9803008     \tldrsw\tx8, [x0, #0x30]\n 74e313c: 8b080288     \tadd\tx8, x20, x8\n 74e3140: f9400119     \tldr\tx25, [x8]\n 74e3144: 3940211a     \tldrb\tw26, [x8, #0x8]\n 74e3148: b9804013     \tldrsw\tx19, [x0, #0x40]\n 74e314c: 8b130280     \tadd\tx0, x20, x19\n 74e3150: 9631a08a     \tbl\t0x14b378 <__text+0x123378>\n 74e3154: 7100041f     \tcmp\tw0, #0x1\n 74e3158: 540006c1     \tb.ne\t0x74e3230 <__text+0x74bb230>\n 74e315c: 97416b4c     \tbl\t0x453de8c <__text+0x4515e8c>\n 74e3160: aa0003f5     \tmov\tx21, x0\n 74e3164: f9400b88     \tldr\tx8, [x28, #0x10]\n 74e3168: aa1803e0     \tmov\tx0, x24\n 74e316c: aa1403e1     \tmov\tx1, x20\n 74e3170: 9631c3f5     \tbl\t0x154144 <__text+0x12c144>\n 74e3174: aa1803e0     \tmov\tx0, x24\n 74e3178: 9404a394     \tbl\t0x760bfc8 <__text+0x75e3fc8>\n 74e317c: aa0003f4     \tmov\tx20, x0\n",
+  "window": {
+    "status": "partial",
+    "authority": "shipped-artifact-static-instructions",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "window": {
+      "start": "0x74e2ee8",
+      "end_exclusive": "0x74e3180",
+      "sha256": "550cb5c46a0be1288f3bddfd07c0f6ea576b34ff82599422784b30230cecd8de"
+    },
+    "linker_function_starts_in_window": [
+      "0x74e2ee8",
+      "0x74e307c"
+    ],
+    "next_linker_function_start": "0x74e331c",
+    "direct_calls": [
+      {
+        "site": "0x74e2f14",
+        "target": "0xfaa78",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f18",
+        "target": "0x147cfc",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f2c",
+        "target": "0x1e38d80",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f30",
+        "target": "0x74e2568",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f34",
+        "target": "0x14e000",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f48",
+        "target": "0x36ad0e0",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f50",
+        "target": "0x4dc3a8",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f5c",
+        "target": "0x14b31c",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f70",
+        "target": "0x14b390",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f74",
+        "target": "0x74eb874",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f7c",
+        "target": "0x4485270",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f90",
+        "target": "0x450a94",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2f9c",
+        "target": "0x14b31c",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2fb0",
+        "target": "0x14b390",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2fb4",
+        "target": "0x74eb8b0",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2fbc",
+        "target": "0x74eb57c",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2fc4",
+        "target": "0x7c49bd0",
+        "imported_symbol": "_$s7SwiftUI4FontV15monospacedDigitACyF",
+        "chained_binding": {
+          "slot": "0xaad37e8",
+          "symbol": "_$s7SwiftUI4FontV15monospacedDigitACyF",
+          "library_ordinal": 82,
+          "weak": false,
+          "import_ordinal": 9682,
+          "table_addend": 0,
+          "encoded_pointer_addend": 0,
+          "chain_membership_verified": true
+        }
+      },
+      {
+        "site": "0x74e2fcc",
+        "target": "0x7c547e4",
+        "imported_symbol": "_swift_release_x20"
+      },
+      {
+        "site": "0x74e2fd4",
+        "target": "0x154db0",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2fe0",
+        "target": "0x154040",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2fe8",
+        "target": "0x147e60",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2fec",
+        "target": "0x74eb874",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e2ff4",
+        "target": "0x74eb57c",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e300c",
+        "target": "0x154040",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3014",
+        "target": "0x147e60",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3018",
+        "target": "0x74eb8b0",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3020",
+        "target": "0x74eb57c",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e303c",
+        "target": "0xadaa18",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3048",
+        "target": "0x7c49bb8",
+        "imported_symbol": "_$s7SwiftUI4FontV10monospacedACyF",
+        "chained_binding": {
+          "slot": "0xaad37d8",
+          "symbol": "_$s7SwiftUI4FontV10monospacedACyF",
+          "library_ordinal": 82,
+          "weak": false,
+          "import_ordinal": 9680,
+          "table_addend": 0,
+          "encoded_pointer_addend": 0,
+          "chain_membership_verified": true
+        }
+      },
+      {
+        "site": "0x74e3050",
+        "target": "0x7c547f0",
+        "imported_symbol": "_swift_release_x21"
+      },
+      {
+        "site": "0x74e3084",
+        "target": "0x159fd4",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3098",
+        "target": "0x74eb564",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e309c",
+        "target": "0x6d9bf14",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e30ac",
+        "target": "0x1470d0",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e30b0",
+        "target": "0x4dd424",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e30d0",
+        "target": "0x14b300",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e30dc",
+        "target": "0x1be03c",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e30e0",
+        "target": "0x14e000",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e30f0",
+        "target": "0x36ad0e0",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e30fc",
+        "target": "0x14b378",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3108",
+        "target": "0x453de8c",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3114",
+        "target": "0x760c494",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3124",
+        "target": "0x7c6bb60",
+        "imported_symbol": null,
+        "objc_stub_selector_load": {
+          "slot": "0xacaf038",
+          "register": "x1",
+          "selector": "monospacedDigitSystemFontOfSize:weight:"
+        }
+      },
+      {
+        "site": "0x74e3134",
+        "target": "0x4485270",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3150",
+        "target": "0x14b378",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e315c",
+        "target": "0x453de8c",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3170",
+        "target": "0x154144",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x74e3178",
+        "target": "0x760bfc8",
+        "imported_symbol": null
+      }
+    ],
+    "adjacent_selector_loads": [],
+    "limits": [
+      "Window is not a proven function boundary",
+      "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+      "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+    ]
+  }
+}

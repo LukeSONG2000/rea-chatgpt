@@ -1,0 +1,80 @@
+{
+  "status": "partial",
+  "platform": "android",
+  "reference_baseline": "1.2026.293",
+  "origin": "independent Compose native host; no recovered official catalog implementation",
+  "changes": [
+    "Account-bound versioned AtomicFile catalog, canonical UUID identities, 128-entry bound",
+    "Verify committed bytes before updating catalog memory",
+    "Native dialog list/create replaces fixed A/B chips; preserves legacy identity mapping",
+    "Dynamic history validation and send mapping no longer alias all non-A conversations to B",
+    "Dynamic conversations start empty and do not expose A/B fixture replay controls"
+  ],
+  "verification": {
+    "build": "analysis/full-platform-20261104/android-catalog-build-v5.log",
+    "runtime": "analysis/full-platform-20261104/android-catalog-runtime-v4.json",
+    "tests_passed": 3,
+    "covers": [
+      "catalog unique identities/reload/account rejection",
+      "dynamic history save/reload and invalid identity rejection",
+      "nonempty directory write blockage leaves catalog memory unchanged",
+      "native create, A/dynamic draft isolation",
+      "force-stop confirms no process, then different PID restores selected conversation and draft"
+    ],
+    "pids": [
+      9138,
+      9206
+    ],
+    "screenshot": "analysis/full-platform-20261104/android-catalog-runtime-v4/dynamic-after.png",
+    "visual_review": "Screenshot inspected; diagnostic independent host, not official fidelity"
+  },
+  "inputs": [
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/ConversationCatalog.kt",
+      "sha256": "0b0a9038904b7a279b17e1296be41934e6bc0eca0b7d678ff155db8b86e67ad3"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt",
+      "sha256": "34bc5a01cf34b47d836abc3845c7cc94015f316de424a44bd03596d210546766"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/MessageStore.kt",
+      "sha256": "439c4246d4f78ccdfd38c6851e9b6f1db47b8abbc13d1caa9ee7c5ff3c9de1be"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt",
+      "sha256": "0a3e49b4b6b859c2b313556d774cc02e83a840d9435b6bc7713394eb430c7031"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/MessageStoreTest.kt",
+      "sha256": "8dfc7b7cce278191fcb107056a89fbf200a7cc15da509397493a79a938ce3b10"
+    },
+    {
+      "path": "implementation/android/test-catalog.py",
+      "sha256": "a36813e24d9c12faf5f0cc2049c2122157ae652ccea7884815671082a0f8b49f"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "report": "android-catalog-runtime-v1.json",
+      "reason": "empty directory was not a reliable AtomicFile failure fixture; replaced by nonempty directory and added readback verification"
+    },
+    {
+      "report": "android-catalog-runtime-v2.json",
+      "reason": "dialog resource test tags absent; set testTagsAsResourceId on dialog boundary"
+    },
+    {
+      "report": "android-catalog-runtime-v3.json",
+      "reason": "contentDescription not exposed in UIAutomator; test now verifies existing visible draft scope UUID"
+    }
+  ],
+  "limits": [
+    "Dynamic native stream/cancel and deletion not accepted yet",
+    "Old test helpers migrated but full prior UI suite not rerun",
+    "Accessibility semantics, large-list scrolling and creation/selection split-file failure pending",
+    "No live model or physical-device test; existing pairing indicator does not establish service availability",
+    "Diagnostic layout and UUID draft label remain unlike final intended UI; official fidelity not accepted",
+    "Rename/service sync and full feature census pending"
+  ],
+  "next_action": "Validate Android dynamic streaming/switch/cancel with authenticated fixture harness; then scoped deletion and native composer/title cleanup"
+}

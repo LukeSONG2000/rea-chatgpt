@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "primary_versions": {
+    "android": "1.2026.293",
+    "ios": "1.2026.293"
+  },
+  "scope_policy": "ChatGPT/official artifacts only; never read/compare/modify Soul; Xigua/Remote requirements are questions, not evidence",
+  "evidence_files": [
+    "android-evidence.json",
+    "ios-evidence.json",
+    "remote-evidence.json"
+  ],
+  "questions": [
+    {
+      "id": "Q01",
+      "stage": 1,
+      "area": "xigua-message",
+      "priority": "P0",
+      "question": "流事件如何带身份进入内容模型",
+      "status": "partial",
+      "evidence_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09"
+      ],
+      "gap": "AG01/AG02: l0/k0写入→观察者→sa；w1/u1赋值",
+      "decision_supported": "确定事件准入与内容投影边界",
+      "acceptance_cases": [
+        "X01",
+        "X02",
+        "X03",
+        "X10",
+        "X11"
+      ],
+      "next_action": "AG01/AG02: l0/k0写入→观察者→sa；w1/u1赋值"
+    },
+    {
+      "id": "Q02",
+      "stage": 1,
+      "area": "xigua-message",
+      "priority": "P0",
+      "question": "接受/完成/取消/错误/修订如何分别结算",
+      "status": "partial",
+      "evidence_ids": [
+        "A12",
+        "A13",
+        "A27",
+        "J09"
+      ],
+      "gap": "Android复杂collector分支与iOSnative消费者未闭合",
+      "decision_supported": "定义独立生命周期合同，不猜官方全状态机",
+      "acceptance_cases": [
+        "X02",
+        "X05",
+        "X06",
+        "X08",
+        "X18"
+      ],
+      "next_action": "Android复杂collector分支与iOSnative消费者未闭合"
+    },
+    {
+      "id": "Q03",
+      "stage": 1,
+      "area": "xigua-message",
+      "priority": "P0",
+      "question": "历史与乐观消息如何精确去重",
+      "status": "partial",
+      "evidence_ids": [
+        "A05",
+        "A06",
+        "I04"
+      ],
+      "gap": "官方ID映射/分页revision语义未闭合",
+      "decision_supported": "明确精确ID回执和revision适配前提",
+      "acceptance_cases": [
+        "X06",
+        "X07",
+        "X14",
+        "X16",
+        "X18",
+        "X19"
+      ],
+      "next_action": "官方ID映射/分页revision语义未闭合"
+    },
+    {
+      "id": "Q04",
+      "stage": 1,
+      "area": "xigua-message",
+      "priority": "P1",
+      "question": "iOSnative是否实际采用包内Worker/DIL链",
+      "status": "partial",
+      "evidence_ids": [
+        "I01",
+        "I02",
+        "I03",
+        "I04",
+        "I05",
+        "I06",
+        "J08",
+        "J09"
+      ],
+      "gap": "native构造与注册/dispatch方法缺证据",
+      "decision_supported": "把结构/契约相容与实际调用分开",
+      "acceptance_cases": [
+        "UI02",
+        "UI18"
+      ],
+      "next_action": "native构造与注册/dispatch方法缺证据"
+    },
+    {
+      "id": "Q05",
+      "stage": 2,
+      "area": "remote-path",
+      "priority": "P0",
+      "question": "选择主机是否等于唯一连接",
+      "status": "partial",
+      "evidence_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "gap": "RU01:发现聚合/Map插入；上层切换清理范围",
+      "decision_supported": "区分selection/session map/async scope",
+      "acceptance_cases": [
+        "R01",
+        "R02",
+        "R03",
+        "R10"
+      ],
+      "next_action": "RU01:发现聚合/Map插入；上层切换清理范围"
+    },
+    {
+      "id": "Q06",
+      "stage": 2,
+      "area": "remote-path",
+      "priority": "P0",
+      "question": "RPC回执如何关联host/thread/request",
+      "status": "partial",
+      "evidence_ids": [
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R15"
+      ],
+      "gap": "具体UI消费者与真实服务响应未验证",
+      "decision_supported": "独立请求表、终态和错误合同",
+      "acceptance_cases": [
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R12"
+      ],
+      "next_action": "具体UI消费者与真实服务响应未验证"
+    },
+    {
+      "id": "Q07",
+      "stage": 2,
+      "area": "remote-path",
+      "priority": "P0",
+      "question": "发现/绑定与账号自有设备边界",
+      "status": "partial",
+      "evidence_ids": [
+        "R17",
+        "R18",
+        "R19"
+      ],
+      "gap": "发现列表入向调用、挑战smali与服务端授权未知",
+      "decision_supported": "认证边界不能由本地UI模拟",
+      "acceptance_cases": [
+        "R06",
+        "R11",
+        "UI13"
+      ],
+      "next_action": "发现列表入向调用、挑战smali与服务端授权未知"
+    },
+    {
+      "id": "Q08",
+      "stage": 2,
+      "area": "remote-path",
+      "priority": "P1",
+      "question": "293 relay重连/ACK/分段与244是否一致",
+      "status": "partial",
+      "evidence_ids": [
+        "R14",
+        "R16"
+      ],
+      "gap": "RU05:293状态机未闭合，不继承244参数",
+      "decision_supported": "分离transport ACK/RPC成功/生成完成",
+      "acceptance_cases": [
+        "R03",
+        "R08"
+      ],
+      "next_action": "RU05:293状态机未闭合，不继承244参数"
+    },
+    {
+      "id": "Q09",
+      "stage": 2,
+      "area": "remote-path",
+      "priority": "P1",
+      "question": "目录/历史读取的owner与失败在哪层",
+      "status": "partial",
+      "evidence_ids": [
+        "R08",
+        "R09",
+        "R20",
+        "R21",
+        "R22",
+        "R23"
+      ],
+      "gap": "RU02/RU04:Android目录入口与desktop接收器/授权",
+      "decision_supported": "请求分段计时、明确错误与分页适配",
+      "acceptance_cases": [
+        "R04",
+        "R08",
+        "UI14"
+      ],
+      "next_action": "RU02/RU04:Android目录入口与desktop接收器/授权"
+    },
+    {
+      "id": "Q10",
+      "stage": 2,
+      "area": "remote-frontend",
+      "priority": "P1",
+      "question": "Goal/new/审批是UI还是owner能力",
+      "status": "partial",
+      "evidence_ids": [
+        "R11",
+        "R12",
+        "R13",
+        "R24",
+        "R25"
+      ],
+      "gap": "RU06:具体组件、授权、审批回执链未知",
+      "decision_supported": "五层能力门与独立错误状态",
+      "acceptance_cases": [
+        "R05",
+        "UI15"
+      ],
+      "next_action": "RU06:具体组件、授权、审批回执链未知"
+    },
+    {
+      "id": "Q11",
+      "stage": 3,
+      "area": "xigua-frontend",
+      "priority": "P1",
+      "question": "消息宿主如何选择原生/Valdi/WebView",
+      "status": "partial",
+      "evidence_ids": [
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18",
+        "A19",
+        "A20",
+        "A21",
+        "A22",
+        "A23",
+        "A24",
+        "A25",
+        "A26",
+        "I05",
+        "I06",
+        "I07"
+      ],
+      "gap": "AG03:路由策略；两端默认路径未知",
+      "decision_supported": "不要把DIL当唯一renderer",
+      "acceptance_cases": [
+        "UI03",
+        "UI18"
+      ],
+      "next_action": "AG03:路由策略；两端默认路径未知"
+    },
+    {
+      "id": "Q12",
+      "stage": 3,
+      "area": "xigua-frontend",
+      "priority": "P1",
+      "question": "输入/键盘/焦点与恢复的owner",
+      "status": "partial",
+      "evidence_ids": [
+        "I09",
+        "J02",
+        "J03",
+        "J05",
+        "J06"
+      ],
+      "gap": "AG04:Android composer；iOS元数据到方法与实际caller",
+      "decision_supported": "共享草稿生命周期，平台IME独立适配",
+      "acceptance_cases": [
+        "X15",
+        "UI07",
+        "UI08",
+        "UI11"
+      ],
+      "next_action": "AG04:Android composer；iOS元数据到方法与实际caller"
+    },
+    {
+      "id": "Q13",
+      "stage": 3,
+      "area": "xigua-frontend",
+      "priority": "P1",
+      "question": "滚动/选区/表格/链接如何协作",
+      "status": "partial",
+      "evidence_ids": [
+        "I03",
+        "I08",
+        "J04",
+        "J08"
+      ],
+      "gap": "Android主列表/selection；iOS主列表调用与可选link注入未知",
+      "decision_supported": "共享滚动意图，不共享未经换算像素",
+      "acceptance_cases": [
+        "UI04",
+        "UI05",
+        "UI06",
+        "UI09",
+        "UI10"
+      ],
+      "next_action": "Android主列表/selection；iOS主列表调用与可选link注入未知"
+    },
+    {
+      "id": "Q14",
+      "stage": 3,
+      "area": "remote-frontend",
+      "priority": "P1",
+      "question": "标题/导航/列表/后台服务如何分工",
+      "status": "partial",
+      "evidence_ids": [
+        "R01",
+        "R08",
+        "R19"
+      ],
+      "gap": "RU03/RU06:iOSRemote与具体移动UI消费者未知",
+      "decision_supported": "UI选择与连接生命周期独立",
+      "acceptance_cases": [
+        "UI13",
+        "UI14",
+        "UI16"
+      ],
+      "next_action": "RU03/RU06:iOSRemote与具体移动UI消费者未知"
+    },
+    {
+      "id": "Q15",
+      "stage": 4,
+      "area": "cross-platform",
+      "priority": "P1",
+      "question": "共享代码、schema与native边界分别是什么",
+      "status": "partial",
+      "evidence_ids": [
+        "I01",
+        "I02",
+        "J01",
+        "J07",
+        "J08",
+        "A21",
+        "A22",
+        "R15"
+      ],
+      "gap": "同名不同格式，不证明同源提交或行为相等",
+      "decision_supported": "三条路线按证据和适配成本比较",
+      "acceptance_cases": [
+        "UI12",
+        "UI18"
+      ],
+      "next_action": "同名不同格式，不证明同源提交或行为相等"
+    },
+    {
+      "id": "Q16",
+      "stage": 4,
+      "area": "cross-platform",
+      "priority": "P1",
+      "question": "更新/批处理和性能如何验收",
+      "status": "partial",
+      "evidence_ids": [
+        "A10",
+        "A11",
+        "I03",
+        "J04"
+      ],
+      "gap": "仅字段/代码参数，无设备性能测量",
+      "decision_supported": "分段指标，不拿16ms当设备帧率",
+      "acceptance_cases": [
+        "UI17"
+      ],
+      "next_action": "仅字段/代码参数，无设备性能测量"
+    },
+    {
+      "id": "Q17",
+      "stage": 4,
+      "area": "cross-platform",
+      "priority": "P2",
+      "question": "公开Valdi能否替代包内内部组件",
+      "status": "unknown",
+      "evidence_ids": [],
+      "gap": "公开版本与包内commit/build未对齐，DIL内部代码不默认可复用",
+      "decision_supported": "仅候选依赖，先验收adapter与工具链",
+      "acceptance_cases": [
+        "UI07",
+        "UI08",
+        "UI17",
+        "UI18"
+      ],
+      "next_action": "公开版本与包内commit/build未对齐，DIL内部代码不默认可复用"
+    },
+    {
+      "id": "Q18",
+      "stage": 5,
+      "area": "file-preview",
+      "priority": "P3-lowest",
+      "question": "文件/附件预览与状态保留的实际能力边界",
+      "status": "deferred",
+      "evidence_ids": [],
+      "gap": "尚未按具体文件类型、入口和宿主独立取证",
+      "decision_supported": "后续建立文件类型/加载错误/缩放选择/返回保留规格；不阻塞现有文件修复",
+      "acceptance_cases": [],
+      "next_action": "四块和移动跨平台基线之后按移动293证据分别调查；不在本批次展开"
+    },
+    {
+      "id": "Q19",
+      "stage": 5,
+      "area": "embedded-browser",
+      "priority": "P3-lowest",
+      "question": "真正内置浏览器的导航/权限/外部打开/生命周期",
+      "status": "deferred",
+      "evidence_ids": [],
+      "gap": "未证明完整官方内置浏览器入口；不能用普通网页或任意WebView替代",
+      "decision_supported": "先证明功能和目标版本存在，再分析导航与恢复合同",
+      "acceptance_cases": [],
+      "next_action": "四块和移动跨平台基线之后按移动293证据分别调查；不在本批次展开"
+    }
+  ],
+  "execution_boundaries": {
+    "target_apps": false,
+    "real_chat_data": false,
+    "target_online_services": false,
+    "public_official_dependency_docs": true,
+    "desktop_ui": false,
+    "web_frontend": false,
+    "necessary_remote_desktop_adapter_static": true
+  },
+  "status_semantics": {
+    "partial": "some relevant static evidence; named gap remains",
+    "unknown": "not established; design/validation plan only",
+    "verified": "only named artifact check, never whole behavior",
+    "deferred": "lowest-priority registered backlog; no analysis or implementation performed"
+  },
+  "external_sources": "public-dependencies.json",
+  "model_contracts": "reference-contracts.json",
+  "device_spec": "frontend-validation.json"
+}

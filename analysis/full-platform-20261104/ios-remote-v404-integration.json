@@ -1,0 +1,63 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official artifact static; independent typed projection and synthetic UI input",
+  "resolved": [
+    {
+      "offset": "0x1a39bb4 ->0x1d78c88 ->0x25d2e8c",
+      "conclusion": "Caller metadata stored at stack0x80 is CodexRenderedItem descriptor0x95d1ba0."
+    },
+    {
+      "offset": "0x1a3a258..0x1a3a264",
+      "conclusion": "Metadata slot0x50 selects field16 _commandExecutionStartedAt; slot0x88 selects field30 _isCachedPreview (field vector starts at word2). Byte passed in x7 is cached-preview flag, not task status or generic history-complete flag."
+    },
+    {
+      "offset": "0x8f331d0",
+      "conclusion": "Field type symbolic reference resolves CodableToolbelt.IgnoreEncodable; suffix ySbG binds Bool. This is rendering-model state, not a proposed server field."
+    },
+    {
+      "offset": "0x1a3a894..0x1a3a8b4",
+      "conclusion": "Cached preview forces running predicate false. Otherwise known status tag0/inProgress selects running. Raw enum mapping independently proved in v403."
+    },
+    {
+      "offset": "0x1a3a994..0x1a3a9b4;helper0x1dadba0",
+      "conclusion": "Cached known-inProgress skips ordinary duration formatting and retains original summary. Helper reads wrapper tag at0xb8 and compares1, not an external permission/state API."
+    },
+    {
+      "offset": "0x1a3a92c..0x1a3a978",
+      "conclusion": "Provided start is used; absent start is Date() minus durationMs/1000, duration nil treated as0. Direct imported Date initializer and addingTimeInterval resolved by window report."
+    }
+  ],
+  "integration": [
+    "RemotePlainCommandInput projects raw command status and cached-preview flag into mutually exclusive running/ordinary components.",
+    "Task.activity remains separate. Only plain shell fixtures use this projection; specialized commandActions are not flattened into it.",
+    "Independent referenceDate stabilizes missing-start fallback while rendering a snapshot; not an official wire field.",
+    "Cached inProgress retains original summary; completed/failed/unknown ordinary items continue through v403 duration rules.",
+    "Fixture reference start is stable across view reconstruction. Test-only state controls replay live->cached->completed->live under the same item and expansion binding."
+  ],
+  "validation": {
+    "source_typecheck": "passed all iOS Sources;3 existing UIKit warnings",
+    "foundation": "passed10 status/cache combinations, explicit start precedence, nil/fractional/negative duration fallback, immutable older projection and existing256 localized templates",
+    "ui_test": "testRemoteCommandCachedPreviewTransition syntax passed; not run or selected by pending test",
+    "runtime": "original session42359 first-launch wait remains live; no duplicate runner",
+    "preview": "PID87483 preserved, no replacement",
+    "device": "not installed",
+    "retention": "no stale packages"
+  },
+  "limits": [
+    "Full original commandActions classifier and its alternate summary components are still partial.",
+    "Renderer cache flag source/persistence lifecycle beyond this consumer remains unproven.",
+    "No actual service subscription, transport or server execution added.",
+    "Native transition animation, output expansion retention and cross-host UI isolation need pending runtime test.",
+    "Android cached-preview state and command summary consumers require independent official evidence; no shared-UI claim."
+  ],
+  "next_minimal_action": "Trace specialized commandActions labels/interaction consumers; execute testRemoteCommandCachedPreviewTransition and prior pending UI suites after Xcode authorization completes.",
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "e1064d18e500581804f3d478360dc4804533c36cc78f6d0da36aa391f1a490e3",
+    "implementation/ios/Sources/RemoteCommandSummary.swift": "32b3e131b76ddd3181e217aabeb80e7c9523589b7d8ae15f5851a690bb92bb48",
+    "implementation/ios/TextTests/main.swift": "c8f0350557fb00a666e47e453245ee15527f0673a21c8c43333720985c4e3f7c",
+    "implementation/ios/UITests/HostInteractionTests.swift": "edfbcd1527cfade610f630585d4f98850b7a39ec16e9b0b57bcdf67bc69ef8be"
+  }
+}

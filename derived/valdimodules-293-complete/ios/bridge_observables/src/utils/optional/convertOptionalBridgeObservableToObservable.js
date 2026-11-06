@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.convertOptionalBridgeObservableToObservable=void 0;const e=require("valdi_rxjs/src/observable/empty"),r=require("../convertBridgeObservableToObservable");function b(b,o){return b?(0,r.convertBridgeObservableToObservable)(b):o??e.EMPTY}exports.convertOptionalBridgeObservableToObservable=b;

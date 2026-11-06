@@ -1,0 +1,41 @@
+{
+  "0xaa5a518": {
+    "descriptor": "0x9758bd0",
+    "name": "ProgressViewAccentColorModifier"
+  },
+  "0xaa5a4f8": {
+    "descriptor": "0x9758bac",
+    "name": "__Key_progressViewAccentColor"
+  },
+  "control_size_modifier_type": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x7cf72d0",
+    "mangled_address": "0x8cfc0b0",
+    "length": 12,
+    "mangled_hex": "027773dd0179026940dd0147",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad3428",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI30_EnvironmentKeyWritingModifierVMn"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaad0120",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI11ControlSizeOMn"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  }
+}

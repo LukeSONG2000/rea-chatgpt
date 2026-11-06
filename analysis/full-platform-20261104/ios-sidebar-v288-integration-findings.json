@@ -1,0 +1,52 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "shipped-artifact-static-instructions",
+  "observations": [
+    {
+      "sites": [
+        "0x6284a8",
+        "0x6f4a74",
+        "0x62b520",
+        "0x6f0fd8",
+        "0x7c69d20"
+      ],
+      "conclusion": "Shadow receiver resolves through contentSurfaceTransactor and its attached containerView to layer.",
+      "selector_check": "layer"
+    },
+    {
+      "sites": [
+        "0x628690"
+      ],
+      "conclusion": "The outer content container receives setClipsToBounds(false)."
+    },
+    {
+      "sites": [
+        "0x628520",
+        "0x7610404",
+        "0x7610434",
+        "0x761048c"
+      ],
+      "conclusion": "Radius provider uses windowScene, keyWindow bounds, screen coordinateSpace and convertRect:toCoordinateSpace:. It cannot be replaced by an assumed constant solely from screenshot dimensions."
+    }
+  ],
+  "integration_decision": "Separate the shadow-carrying outer surface from the clipping content surface in the future scoped repair. Exact clipping receivers and radius provider remain to be closed before claiming faithful recovery.",
+  "limitations": [
+    "Static evidence only; no official target executed.",
+    "Full 0x7610404 return semantics and upstream 0x761087c remain unresolved; do not label returned scalars display corner radii yet.",
+    "Raw state and movementStyle cases are not assigned semantic enum names.",
+    "Animation timing and interruption behavior remain unresolved.",
+    "No app source change, device install or visual acceptance in this batch."
+  ],
+  "source_files": [
+    "ios-sidebar-v288-receiver.asm",
+    "ios-sidebar-v288-radius-provider.json",
+    "ios-sidebar-v287-surface.asm",
+    "ios-sidebar-v263-offset-binding.json"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "types": [
+    {
+      "name": "CodexThread",
+      "descriptor": "0x955f200",
+      "kind": 2,
+      "fields": [
+        {
+          "name": "remote",
+          "record": "0x99d7a78",
+          "type_reference": "0x8bcc3f2"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteThreadActivityState",
+      "descriptor": "0x95d17ec",
+      "kind": 2,
+      "fields": [
+        {
+          "name": "running",
+          "record": "0x9a61058",
+          "type_reference": "0x8dfc8a8"
+        },
+        {
+          "name": "idle",
+          "record": "0x9a61064",
+          "type_reference": null
+        },
+        {
+          "name": "unread",
+          "record": "0x9a61070",
+          "type_reference": null
+        },
+        {
+          "name": "failed",
+          "record": "0x9a6107c",
+          "type_reference": null
+        }
+      ]
+    },
+    {
+      "name": "PendingRequest",
+      "descriptor": "0x95d17b4",
+      "kind": 2,
+      "fields": [
+        {
+          "name": "approval",
+          "record": "0x9a60ffc",
+          "type_reference": null
+        },
+        {
+          "name": "userInput",
+          "record": "0x9a61008",
+          "type_reference": null
+        }
+      ]
+    }
+  ]
+}

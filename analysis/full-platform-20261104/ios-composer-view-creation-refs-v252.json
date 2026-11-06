@@ -1,0 +1,105 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "pattern": "adjacent ADRP/ADD (no shifted ADD), B/BL; incomplete references",
+  "hits": [
+    {
+      "pc": "0x4c4e158",
+      "target": "0x4f66070",
+      "name": "MessageInputView-metadata-wrapper",
+      "pattern": "BL",
+      "function_start": "0x4c4de78",
+      "next_function_start": "0x4c4f400"
+    },
+    {
+      "pc": "0x4c50e18",
+      "target": "0x4f66070",
+      "name": "MessageInputView-metadata-wrapper",
+      "pattern": "BL",
+      "function_start": "0x4c50afc",
+      "next_function_start": "0x4c51108"
+    },
+    {
+      "pc": "0x4cb7da4",
+      "target": "0x4f66070",
+      "name": "MessageInputView-metadata-wrapper",
+      "pattern": "BL",
+      "function_start": "0x4cb79bc",
+      "next_function_start": "0x4cb8004"
+    },
+    {
+      "pc": "0x4cb7fe0",
+      "target": "0x4f66070",
+      "name": "MessageInputView-metadata-wrapper",
+      "pattern": "BL",
+      "function_start": "0x4cb79bc",
+      "next_function_start": "0x4cb8004"
+    },
+    {
+      "pc": "0x4cb8c1c",
+      "target": "0x4f66070",
+      "name": "MessageInputView-metadata-wrapper",
+      "pattern": "BL",
+      "function_start": "0x4cb8a78",
+      "next_function_start": "0x4cb8c7c"
+    },
+    {
+      "pc": "0x4f16d18",
+      "target": "0x4ee1f8c",
+      "name": "MessageInputView-metadata",
+      "pattern": "BL",
+      "function_start": "0x4f16bb4",
+      "next_function_start": "0x4f16e7c"
+    },
+    {
+      "pc": "0x4f20940",
+      "target": "0x4f66070",
+      "name": "MessageInputView-metadata-wrapper",
+      "pattern": "BL",
+      "function_start": "0x4f208e0",
+      "next_function_start": "0x4f209e4"
+    },
+    {
+      "pc": "0x4f20950",
+      "target": "0x4ee1f8c",
+      "name": "MessageInputView-metadata",
+      "pattern": "BL",
+      "function_start": "0x4f208e0",
+      "next_function_start": "0x4f209e4"
+    },
+    {
+      "pc": "0x4f20a08",
+      "target": "0x4ee1f8c",
+      "name": "MessageInputView-metadata",
+      "pattern": "BL",
+      "function_start": "0x4f209e4",
+      "next_function_start": "0x4f20a1c"
+    },
+    {
+      "pc": "0x4f20c4c",
+      "target": "0x4f66070",
+      "name": "MessageInputView-metadata-wrapper",
+      "pattern": "BL",
+      "function_start": "0x4f20bb8",
+      "next_function_start": "0x4f21470"
+    },
+    {
+      "pc": "0x4f214fc",
+      "target": "0x4f66070",
+      "name": "MessageInputView-metadata-wrapper",
+      "pattern": "BL",
+      "function_start": "0x4f21470",
+      "next_function_start": "0x4f21558"
+    },
+    {
+      "pc": "0x4f66074",
+      "target": "0x4ee1f8c",
+      "name": "MessageInputView-metadata",
+      "pattern": "B",
+      "function_start": "0x4f66070",
+      "next_function_start": "0x4f66078"
+    }
+  ]
+}

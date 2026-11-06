@@ -1,0 +1,49 @@
+{
+  "status": "partial",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v137-macos-r3/REA ChatGPT Offline.app",
+  "implemented": [
+    "Allowlisted model failure diagnostics without vendor text/headers",
+    "Durable independent failure metadata and original-renderer interruption projection",
+    "Explicit transport termination without successful message status"
+  ],
+  "validation": {
+    "classificationUnit": "test-model-failure.cjs passed",
+    "projectionUnit": "test_desktop_model_projection.mjs passed",
+    "transport": "native-failure-v137-transport.json",
+    "partialFailureUIAndRestart": "native-failure-v137-visible-r2.json",
+    "failureBeforeFirstDeltaUIAndRestart": "native-failure-v137-empty.json",
+    "liveZhipu": "native-failure-v137-zhipu.json",
+    "liveScope": "One fresh synthetic stream completion and local cancellation passed on v137-macos; later r3 changes only failed-message projection",
+    "visualReview": "Partial-failure screenshot reviewed; red interruption message and Retry visible"
+  },
+  "rejectedExperiment": {
+    "report": "native-failure-v137-visible.json",
+    "finding": "Failure metadata without transport completion leaves connection-interrupted waiting state"
+  },
+  "integrity": {
+    "macos": {
+      "count": 15880,
+      "digests": "passed",
+      "runtime": true
+    },
+    "windows": {
+      "count": 15880,
+      "digests": "passed",
+      "runtime": false
+    }
+  },
+  "macSignature": "passed",
+  "officialEvidence": "native-failure-v137-evidence.json",
+  "limits": [
+    "v136 intermittent live failures still lack attributable cause; later pass does not resolve them",
+    "Provider-side cancellation and billing cessation not proven",
+    "Retry action not accepted; button visibility only",
+    "Model-mode project owner/services still missing",
+    "Windows runtime and OS acceptance missing",
+    "Full native visual/mobile/Web/Remote completion not achieved"
+  ],
+  "next": [
+    "Test and implement Retry lifecycle with request identity isolation",
+    "Integrate project scope in model mode without falling back to fixture success"
+  ]
+}

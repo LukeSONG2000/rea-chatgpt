@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.serializeWritingBlockMarkdown=exports.parseWritingBlockMarkdown=void 0;const r=require("../runtime_bundle/NativeEngine");function e(e){return r.parseWritingBlockMarkdown(e)}function i(e){return r.serializeWritingBlockMarkdown(e)}exports.parseWritingBlockMarkdown=e,exports.serializeWritingBlockMarkdown=i;

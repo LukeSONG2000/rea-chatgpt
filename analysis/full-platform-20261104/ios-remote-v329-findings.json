@@ -1,0 +1,49 @@
+{
+  "status": "partial",
+  "evidence_type": "official-artifact-static",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "chain": [
+    "RepeatingShineOverlay.body 0x6f38cbc",
+    "TimelineView constructor 0x6f3916c",
+    "closure wrapper 0x6fbd4c8",
+    "captured closure 0x6fbd488",
+    "content 0x6f39790",
+    "ShineOverlay descriptor 0x9721e64",
+    "body witness 0x6f3a7e0",
+    "body 0x6f3a14c",
+    "Canvas renderer 0x6f3a308"
+  ],
+  "observations": [
+    {
+      "offset": "0x6f398c8..0x6f39914",
+      "conclusion": "UnitCurve.easeInOut.value(at:) consumes normalized positive fmod(Date.timeIntervalSinceReferenceDate, 1.5)/1.5. Negative remainder is corrected by adding 1.5."
+    },
+    {
+      "offset": "0x6f399e8..0x6f39a18",
+      "conclusion": "Finish-date branch computes Date.now + (1 - normalized phase)*1.5; helper 0x6fdde9c implements 1-x. Full transition callback inputs are not yet proved."
+    },
+    {
+      "offset": "0x6f3a1e0..0x6f3a260",
+      "conclusion": "ShineOverlay computes amplitude*(1-pow(fraction,8)) and stores it into a modified-view field. Exact modifier ownership remains unresolved."
+    },
+    {
+      "offset": "0x6f3a244",
+      "conclusion": "Uses SwiftUI.Canvas renderer rather than an opacity-only text animation."
+    },
+    {
+      "offset": "0x6f3a470..0x6f3a574",
+      "conclusion": "GraphicsContext translates, reads layoutDirection, conditionally mirrors x with scale(-1,1), rotates, translates by width*(2*fraction-1), then fills Path with a linear gradient. Exact bounding rectangle and angle default remain unresolved."
+    }
+  ],
+  "unknowns": [
+    "Angle default and projected bounding rectangle helper 0x7564f70",
+    "LayoutDirection equality operand identity",
+    "Amplitude closure supplied by ShimmeringTextView",
+    "Exact Canvas modifier ownership",
+    "Full finish-state callbacks and Reduce Motion behavior"
+  ],
+  "ui_change": false,
+  "runtime_validation": "none; existing preview left untouched"
+}

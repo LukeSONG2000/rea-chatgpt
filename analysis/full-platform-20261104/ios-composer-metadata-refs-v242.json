@@ -1,0 +1,68 @@
+{
+  "slots": [],
+  "loads": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "pattern": "adjacent ADRP plus LDR unsigned 64-bit; incomplete references",
+    "hits": []
+  },
+  "direct": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "pattern": "adjacent ADRP/ADD (no shifted ADD), B/BL; incomplete references",
+    "hits": [
+      {
+        "pc": "0x4f38004",
+        "target": "0xa7a0da8",
+        "name": "double.metadata",
+        "pattern": "adjacent ADRP/ADD",
+        "function_start": "0x4f38004",
+        "next_function_start": "0x4f38010"
+      },
+      {
+        "pc": "0x4f380a0",
+        "target": "0xa7a0e50",
+        "name": "single-inner.metadata",
+        "pattern": "adjacent ADRP/ADD",
+        "function_start": "0x4f380a0",
+        "next_function_start": "0x4f380ac"
+      },
+      {
+        "pc": "0x4f41400",
+        "target": "0xa7a11b8",
+        "name": "single-outer.metadata",
+        "pattern": "adjacent ADRP/ADD",
+        "function_start": "0x4f41400",
+        "next_function_start": "0x4f4140c"
+      },
+      {
+        "pc": "0x4f44ffc",
+        "target": "0xa7a11b8",
+        "name": "single-outer.metadata",
+        "pattern": "adjacent ADRP/ADD",
+        "function_start": "0x4f44fdc",
+        "next_function_start": "0x4f4501c"
+      },
+      {
+        "pc": "0x4f450ac",
+        "target": "0xa7a0e50",
+        "name": "single-inner.metadata",
+        "pattern": "adjacent ADRP/ADD",
+        "function_start": "0x4f4508c",
+        "next_function_start": "0x4f450cc"
+      },
+      {
+        "pc": "0x4f4510c",
+        "target": "0xa7a0da8",
+        "name": "double.metadata",
+        "pattern": "adjacent ADRP/ADD",
+        "function_start": "0x4f450ec",
+        "next_function_start": "0x4f4512c"
+      }
+    ]
+  }
+}

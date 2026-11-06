@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getDaemonClientManager=void 0;const e=require("../JSXBootstrap");function t(){return e.jsx.daemonClientManager}exports.getDaemonClientManager=t;

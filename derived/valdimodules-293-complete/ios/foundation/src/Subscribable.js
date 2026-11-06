@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.Subscribable=void 0;class Subscribable{constructor(){this.listeners=[]}subscribe(s){return this.listeners.push(s),{unsubscribe:()=>{const e=this.listeners.indexOf(s);-1!=e&&this.listeners.splice(e,1)}}}subscribers(){return this.listeners}}exports.Subscribable=Subscribable;

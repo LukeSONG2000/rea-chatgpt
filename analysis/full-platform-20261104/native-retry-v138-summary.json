@@ -1,0 +1,36 @@
+{
+  "status": "partial",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v138-macos/REA ChatGPT Offline.app",
+  "milestone": "Error Retry preserves user identity and creates a new assistant attempt",
+  "baselineFailure": "native-retry-v138-before.json",
+  "validation": {
+    "repeatFailureAndRestart": "native-retry-v138-fixed.json",
+    "successAndRestart": "native-retry-v138-success.json",
+    "unit": "test_desktop_model_retry.mjs passed: failed-to-success, active/completed/wrong-parent rejection, late old event isolation",
+    "projectionRegression": "test_desktop_model_projection.mjs passed",
+    "visual": "Success screenshot reviewed: one user row, second assistant variant 2/2, no error banner"
+  },
+  "integrity": {
+    "macos": {
+      "count": 15880,
+      "digests": "passed",
+      "runtimeIncluded": true
+    },
+    "windows": {
+      "count": 15880,
+      "digests": "passed",
+      "runtimeIncluded": false
+    }
+  },
+  "signature": "macOS deep strict passed",
+  "limits": [
+    "Controlled fixture endpoints only; no live Zhipu retry test this round",
+    "Only failed local error_retry supported; edited feedback/other regeneration types are not accepted",
+    "Model/project combined mode remains incomplete",
+    "Windows runtime/OS and full platform/visual/Remote acceptance remain incomplete"
+  ],
+  "next": [
+    "Integrate project ownership and storage in harness mode",
+    "Verify combined project/model creation, retry, switch and restart"
+  ]
+}

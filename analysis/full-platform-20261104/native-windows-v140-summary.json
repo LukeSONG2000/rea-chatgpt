@@ -1,0 +1,50 @@
+{
+  "status": "partial",
+  "windowsDirectory": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v140-windows/REA ChatGPT Offline",
+  "macBundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v140-macos/REA ChatGPT Offline.app",
+  "runtime": {
+    "version": "45.1.0",
+    "platform": "win32-x64",
+    "source": "https://github.com/electron/electron/releases/tag/v45.1.0",
+    "zipSHA256": "55eaba17abff7b5bba6c3bbc85068967379024fe742fe9c7fdba9118922ccbe2",
+    "verification": "Pinned GitHub release API digest and SHASUMS256 matched",
+    "exeSHA256": "c579acaab64b1c456bda1693cdf1a2ec7e4de7738b0e2d1b6349d60e8087143c",
+    "exeFormat": "PE x86-64",
+    "exeRenamedNotPatched": true,
+    "licenseFiles": [
+      "LICENSE",
+      "LICENSES.chromium.html"
+    ]
+  },
+  "validation": {
+    "payloads": {
+      "macos": {
+        "payloadFiles": 15881,
+        "sha256": "passed",
+        "runtimeIncluded": true
+      },
+      "windows": {
+        "payloadFiles": 15881,
+        "sha256": "passed",
+        "runtimeIncluded": true
+      }
+    },
+    "windowsPackageFiles": 15955,
+    "longestRelativePath": 150,
+    "windowOptionsUnit": "test_desktop_window_style.cjs passed",
+    "platformReporting": "darwin/win32 controlled fixtures passed",
+    "macRegression": "native-windows-v140-macos-regression.json",
+    "macSignature": "deep strict passed"
+  },
+  "limits": [
+    "Windows EXE assembled but not executed; current host Darwin",
+    "No Windows signing, install, OS network isolation or ACL pairing acceptance",
+    "Stock EXE product metadata remains Electron",
+    "Primary window base overlay only; live zoom, DPI, menus and controls still need Windows validation",
+    "No redistribution/public release or original application execution"
+  ],
+  "next": [
+    "Execute the packaged Windows smoke and interaction gates on a dedicated Windows test environment when available",
+    "Continue mobile/native interaction and visual recovery without waiting for Windows availability"
+  ]
+}

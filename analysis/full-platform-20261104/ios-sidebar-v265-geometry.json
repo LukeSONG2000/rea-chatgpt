@@ -1,0 +1,32 @@
+{
+  "status": "partial",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static disassembly",
+  "extent_function": "0x626f1c",
+  "remainder_function": "0x626e84",
+  "producer": "0x62ae04",
+  "constants": {
+    "0x7d193d0": 428.0,
+    "0x7cd9660": 300.0,
+    "immediate_0x4074000000000000": 320.0
+  },
+  "raw_fields": [
+    "double+0",
+    "double+8",
+    "double+16",
+    "double+24",
+    "flag+33",
+    "flag+34"
+  ],
+  "observed_field_inputs": {
+    "flag+33": "useRefreshedLayout storage 0xad5cc68 loaded at 0x62ae88, masked at 0x62afc0",
+    "flag+34": "branch result formed at 0x62ae90..0x62af70; includes usesBlurringOverlayPresentation and additional toolbar/layout predicates"
+  },
+  "limits": [
+    "Static branch reconstruction for finite inputs only",
+    "Exact source type name and all scalar semantics unresolved",
+    "No default feature configuration claim",
+    "No complete transition mapping or gesture acceptance"
+  ],
+  "fixture": "analysis/tools/replay_ios_sidebar_geometry.py"
+}

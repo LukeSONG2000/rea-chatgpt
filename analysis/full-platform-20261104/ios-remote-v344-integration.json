@@ -1,0 +1,40 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "component": "MarkdownCodeBlockHeader",
+  "descriptor": "0x96ff598",
+  "conformance": "0x82eda44",
+  "body": "0x6902e38 -> 0x6901b04",
+  "consumer_type": "MarkdownCodeBlock body references header accessor 0x696c9b0 and conformance 0x82eda44",
+  "title_precedence": "0x6902634 checks optional title, else 0x6902708 loads language and 0x6902714 calls display-name conversion 0x7521dd0",
+  "title_color": {
+    "factory": "0x74ee2c0",
+    "call": "0x69026ec",
+    "string": "0x8a51ba0",
+    "asset": "ChatGPT/text/primary"
+  },
+  "header_weight": "medium 0x6901bb4; fontWeight 0x6901be8",
+  "copy_boundary": "0x690274c display-mode-derived branch; code pair at +0x30 and disableCopyButton byte +0x40 feed remaining path. Full predicates not reconstructed.",
+  "integration": [
+    "Primary resource color and medium title weight",
+    "Optional explicit title precedes language input"
+  ],
+  "limitations": [
+    "Caption font size remains independent temporary value",
+    "Language name conversion 0x7521dd0 not ported",
+    "Actual Remote title currently nil; title precedence not separately runtime-tested",
+    "Copy visibility/enabled state and action remain unresolved",
+    "Android corresponding header not established"
+  ],
+  "validation": {
+    "simulator": "testRemoteTaskScopeAndReturn passed 1/0",
+    "visual": "header primary color and medium weight visible; no observed clipping",
+    "preview_pid": 73599,
+    "phone": "not updated",
+    "external_display": "not reverified",
+    "retention": "no stale targets"
+  }
+}

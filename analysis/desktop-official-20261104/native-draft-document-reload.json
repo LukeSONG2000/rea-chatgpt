@@ -1,0 +1,102 @@
+{
+  "status": "partial",
+  "replay": "root-native-v43.json",
+  "verified": {
+    "status": "passed",
+    "beforeHost": {
+      "pid": 95321,
+      "atoms": {
+        "local-document-identity": {
+          "accountId": "offline-fixture-account",
+          "userId": "offline-fixture-user",
+          "accountUserId": "offline-fixture-account-user",
+          "requestUserId": "offline-fixture-user"
+        },
+        "plugin-oauth-install-reconciliation-by-state-v1": {},
+        "flat-project-sidebar-preferences-v1": {
+          "chatSortMode": "updated_at",
+          "initialized": true,
+          "mode": "project",
+          "projectSortMode": "updated_at"
+        },
+        "unified-floating-composer-dock-position-v1": "bottom-center",
+        "chatgpt-conversation-prompt-drafts-v2": {
+          "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+            "prompt": "Host restore after document reload",
+            "usedDictation": false,
+            "localRecordingIds": null
+          }
+        }
+      },
+      "auditCount": 157
+    },
+    "beforeDocument": {
+      "timeOrigin": 1793782952067.7,
+      "localStorageKeys": 0,
+      "sessionStorageKeys": 0
+    },
+    "afterDocument": {
+      "sentinelPresent": false,
+      "timeOrigin": 1793782977299.5,
+      "localStorageKeys": 0,
+      "sessionStorageKeys": 0
+    },
+    "restored": "Host restore after document reload",
+    "sync": [
+      {
+        "direction": "to-view",
+        "message": {
+          "type": "persisted-atom-sync",
+          "state": {
+            "local-document-identity": {
+              "accountId": "offline-fixture-account",
+              "userId": "offline-fixture-user",
+              "accountUserId": "offline-fixture-account-user",
+              "requestUserId": "offline-fixture-user"
+            },
+            "plugin-oauth-install-reconciliation-by-state-v1": {},
+            "flat-project-sidebar-preferences-v1": {
+              "chatSortMode": "updated_at",
+              "initialized": true,
+              "mode": "project",
+              "projectSortMode": "updated_at"
+            },
+            "unified-floating-composer-dock-position-v1": "bottom-center",
+            "chatgpt-conversation-prompt-drafts-v2": {
+              "[\"offline-fixture-user\",\"offline-fixture-account\",\"offline-fixture-conversation-001\"]": {
+                "prompt": "Host restore after document reload",
+                "usedDictation": false,
+                "localRecordingIds": null
+              }
+            }
+          },
+          "canWritePrimaryWindowTabPersistence": false
+        }
+      }
+    ],
+    "remountStatus": "mount-observed-unverified",
+    "remountErrors": [],
+    "limitations": [
+      "Document/JS realm reloaded; no application process restart",
+      "Host memory retained; no disk persistence established"
+    ]
+  },
+  "page_errors": [],
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/native-window-v43.png",
+  "limits": [
+    "Independent offline host and synthetic account/messages",
+    "Reload of document only, not OS process or app restart",
+    "Persistent disk storage, native focus transitions, menu actions, scrolling and full visual parity remain unaccepted"
+  ],
+  "next": "Implement isolated on-disk fixture state and verify two separate host lifetimes without accessing user profiles",
+  "tool_sha256": {
+    "analysis/tools/probe_desktop_root_mount.cjs": "523cbe7ad14e24c392168f67228c854132203aba6d5ca8ea037a7380d6a72348",
+    "analysis/tools/desktop-native-host.cjs": "5fe64b55636fb6a0e6cec61c9852bb2eb2ec831c93e47b56eb374b0c37b4630f",
+    "analysis/tools/desktop-draft-state.cjs": "bd53114390c00ee30ed1b20f7f9d7b266f5e3b8062a6c2822d083e905fec3da1"
+  },
+  "visual_review": {
+    "conversation": "visible after reload",
+    "profile_footer": "loading skeleton in final capture; account footer recovery not accepted",
+    "draft_screenshot": "taken after test cleared restored draft; restoration evidence is recorded textbox read and sync payload"
+  }
+}

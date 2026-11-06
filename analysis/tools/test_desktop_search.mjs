@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {createFixtureHost} from './desktop-fixture-services.mjs';
+globalThis.location={origin:'https://offline.invalid'};
+const options={scenario:'synthetic-account',historyFixture:{conversation_id:'offline-fixture-conversation-001',title:'Synthetic Alpha',update_time:1},restoredHistories:[{conversation_id:'offline-fixture-conversation-001',title:'Synthetic Alpha',update_time:1},{conversation_id:'offline-fixture-conversation-002',title:'Synthetic Hidden',is_archived:true}]};
+const {host}=createFixtureHost({Wst:class{}},options),api=host.services.httpFetch;
+const read=async query=>(await api.fetch('test',{method:'GET',url:'/global/search?limit=6&sources=conversation&query='+encodeURIComponent(query)})).response.json();
+assert.equal((await read('ALPHA')).items[0].payload.conversation_id,'offline-fixture-conversation-001');
+assert.deepEqual((await read('Hidden')).items,[]);assert.deepEqual((await read('none')).items,[]);assert.deepEqual((await read('')).items,[]);
+await assert.rejects(api.fetch('test',{method:'GET',url:'/global/search?limit=6&sources=library&query=a'}));
+await assert.rejects(api.fetch('test',{method:'GET',url:'/global/search?limit=6&sources=conversation&cursor=unknown&query=a'}));
+console.log('passed: title matching, archived exclusion, empty/no match, source and cursor rejection');

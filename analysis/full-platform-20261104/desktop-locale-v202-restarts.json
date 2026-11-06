@@ -1,0 +1,6 @@
+{
+  "authority": "independent offline macOS host; original local translation provider",
+  "runs": [],
+  "status": "failed",
+  "error": "Error: locator.waitFor: Error: strict mode violation: getByRole('button', { name: '新聊天', exact: true }) resolved to 2 elements:\n    1) <button type=\"button\" class=\"focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-[-2px] group-data-[appearance=grouped]/nav-list:rounded-none group-data-[appearance=grouped]/nav-list:after:pointer-events-none group-data-[appearance=grouped]/nav-list:after:absolute group-data-[appearance=grouped]/nav-list:after:inset-x-0 group-data-[appearance=grouped]/nav-list:after:bottom-0 group-data-[appearance=grouped]/nav-list:after:ms-[calc(var(--padding-ro…>…</button> aka locator('button').filter({ hasText: '新聊天' })\n    2) <button type=\"button\" data-size=\"xs\" data-uniform=\"\" data-squircle=\"\" aria-label=\"新聊天\" data-state=\"closed\" data-color=\"secondary\" class=\"_Button_1ivww_2\" data-variant=\"transparent\">…</button> aka getByRole('navigation', { name: '首页' }).getByLabel('新聊天', { exact: true })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '新聊天', exact: true }) to be visible\u001b[22m\n"
+}

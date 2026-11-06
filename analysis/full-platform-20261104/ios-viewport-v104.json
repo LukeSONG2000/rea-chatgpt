@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-native-host-implementation",
+  "platform": "iOS 27 Simulator",
+  "target_artifact_version": "1.2026.293",
+  "changes": [
+    "Deduplicate viewport persistence against last successfully saved snapshot",
+    "Extend cold-restart UI test to keyboard appearance and multiline composer growth"
+  ],
+  "validation": {
+    "state_tests": "ios-viewport-v104-state.log",
+    "state_result": "passed",
+    "ui_result": "ios-viewport-v104.xcresult",
+    "summary": "ios-viewport-v104.summary.json",
+    "passedTests": 1,
+    "skippedTests": 0,
+    "screenshots": "ios-viewport-v104-images/manifest.json",
+    "checks": [
+      "100 unchanged checkpoint attempts perform zero writes",
+      "Failed write does not advance checkpoint",
+      "Changed scope set persists once and cold-loads",
+      "Interior stable message row/offset preserved after process restart, keyboard appearance, multiline composer and conversation switching",
+      "Return to tail survives second restart"
+    ],
+    "visual_inspection": "Expanded composer screenshot inspected: software keyboard visible, three-line draft, same paragraph 6 reading start"
+  },
+  "limits": [
+    "No device performance or actual runtime disk-write rate measurement",
+    "State test counts writer invocations; no claim of frame-time improvement",
+    "No physical iPhone acceptance",
+    "Rotation/dynamic type and active-stream restart not covered",
+    "Independent implementation, no official visual-parity claim"
+  ],
+  "next_action": "Verify layout-width/dynamic-type changes and preserve semantic text position when row wrapping changes",
+  "sources": [
+    {
+      "file": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "5ae4b783115604d6f989f1f6249dbfcd535ef36dcd8da85486a4012f9148d0e0"
+    },
+    {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "4a1502f17e5296737e619886424fcdba38aa1098db152e0007c28a148546bd11"
+    },
+    {
+      "file": "implementation/ios/Tests/main.swift",
+      "sha256": "22ca5ef002062a8d05cff77ff3073978eeaa0647979ab32e03317f45a03a4475"
+    },
+    {
+      "file": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "c96c04b86e9427a4ad510d864d1996d9607ace36abe2796dd5f65e80e76e5272"
+    }
+  ]
+}

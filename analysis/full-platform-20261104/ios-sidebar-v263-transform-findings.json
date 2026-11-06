@@ -1,0 +1,25 @@
+{
+  "status": "partial",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "type": "static-disassembly",
+  "function": "0x62c4c8",
+  "movementStyle": {
+    "load": "0x62c4f0..0x62c4f8",
+    "storage": "0xad5cba8",
+    "register": "w22"
+  },
+  "verified_observations": [
+    "w22 is compared to 1 at 0x62c540, 0x62c550 and 0x62c5d0.",
+    "For input x21=0 and w22!=1, 0x62c690 loads double 0.97 from 0x7d193f8 and calls CGAffineTransformMakeScale at 0x62c6a0.",
+    "For x21=0 and w22=1, 0x62c548 negates d9 and helper 0x7007a0 constructs x translation with y=0.",
+    "0x6fca68 resolves menuSurfaceTransactor via ivar storage 0xad5cc20; 0x6f4a74 resolves contentSurfaceTransactor via 0xad5cc28.",
+    "The content transform aggregate is passed to 0x62cc00 at 0x62c76c."
+  ],
+  "unknowns": [
+    "Meaning of input x21 values and complete lifecycle mapping",
+    "Enum case labels bound to raw bytes",
+    "Geometry scalar sources and all safe-area adaptations",
+    "Service configuration fallback and live experiment assignment"
+  ],
+  "implementation_implication": "Use distinct menu/content surfaces and per-state transforms; a fixed horizontal offset alone omits a verified scale branch. Do not apply 0.97 universally."
+}

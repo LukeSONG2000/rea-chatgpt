@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "TurnState",
+      "descriptor": "0x95acb88",
+      "type_section_entry": "0x9d3a41c",
+      "accessor": "0x1bac578",
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a357d8",
+          "type_reference": "0x8e1399e",
+          "metadata_offset": "0x10"
+        },
+        {
+          "name": "directory",
+          "record": "0x9a357e4",
+          "type_reference": "0x8bc9970",
+          "metadata_offset": "0x14"
+        },
+        {
+          "name": "startedAt",
+          "record": "0x9a357f0",
+          "type_reference": "0x8e14620",
+          "metadata_offset": "0x18"
+        },
+        {
+          "name": "responseStartedAt",
+          "record": "0x9a357fc",
+          "type_reference": "0x8da8240",
+          "metadata_offset": "0x1c"
+        },
+        {
+          "name": "duration",
+          "record": "0x9a35808",
+          "type_reference": "0x8e151d8",
+          "metadata_offset": "0x20"
+        },
+        {
+          "name": "status",
+          "record": "0x9a35814",
+          "type_reference": "0x8e151e0",
+          "metadata_offset": "0x24"
+        },
+        {
+          "name": "errorMessage",
+          "record": "0x9a35820",
+          "type_reference": "0x8bc9970",
+          "metadata_offset": "0x28"
+        },
+        {
+          "name": "isGoalTranscriptTurn",
+          "record": "0x9a3582c",
+          "type_reference": "0x8bfd810",
+          "metadata_offset": "0x2c"
+        },
+        {
+          "name": "responseTextAnnotations",
+          "record": "0x9a35838",
+          "type_reference": "0x8f30384",
+          "metadata_offset": "0x30"
+        },
+        {
+          "name": "answeredAsyncQuestionIDs",
+          "record": "0x9a35844",
+          "type_reference": "0x8e14626",
+          "metadata_offset": "0x34"
+        },
+        {
+          "name": "steeredRealtimeItemIDs",
+          "record": "0x9a35850",
+          "type_reference": "0x8e13bf0",
+          "metadata_offset": "0x38"
+        }
+      ],
+      "conformances": [],
+      "field_offset_vector_words": 2
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected.",
+    "Jump-table probe below was bounded to the first four entries; full seven-entry mapping is in ios-remote-v429-status-enum.json."
+  ],
+  "status_type": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8e151e0",
+    "length": 5,
+    "mangled_hex": "02871dca01",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaab6f68",
+        "resolved_context": "0x95d5c30",
+        "label": "CodexRemoteCore.CodexRemoteThreadSession.Turn.Status"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "status_jump_table": {
+    "address": "0x7dfdf34",
+    "entries": [
+      83,
+      83,
+      4,
+      17
+    ],
+    "destinations": [
+      "0x1a339a4",
+      "0x1a339a4",
+      "0x1a33868",
+      "0x1a3389c"
+    ]
+  }
+}

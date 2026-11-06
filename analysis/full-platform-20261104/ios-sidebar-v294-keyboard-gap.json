@@ -1,0 +1,38 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-instructions-and-independent-host-source",
+  "official_chain": {
+    "owner_field": "keyboardSnapshotCoordinator",
+    "owner_offset_storage": "0xad5cbd0",
+    "field_helper": "0x703604",
+    "coordinator": "ChatGPTConversationRoot.SideMenuKeyboardSnapshotCoordinator",
+    "descriptor": "0x9564b94",
+    "metadata": "0xad54e38",
+    "snapshot_field_offset": "0x38",
+    "snapshot_type": "ChatGPTPresentation.KeyboardSnapshotSession",
+    "transition_read": "0x629b04",
+    "condition": "In the inspected branch, if usesBlurringOverlayPresentation is false, read coordinator.keyboardSnapshotSession and test non-null before selecting surface flags. Raw flags are not semantically renamed."
+  },
+  "host_difference": {
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "symbols": [
+      "openConversationSidebar",
+      "makeConversationList"
+    ],
+    "observation": "Both reused-list and new-list paths explicitly resign the editor first responder before showing the sidebar. No keyboard snapshot coordinator is wired."
+  },
+  "decision": "Do not only remove resignFirstResponder: establish snapshot capture, placement in translated content surface, and focus/selection restoration on close first.",
+  "next_minimal_evidence": [
+    "Trace KeyboardSnapshotSession creation/disposal from coordinator, including enabled-state gate.",
+    "Bind restorationState variants and their calls to editor/keyboard owner."
+  ],
+  "limits": [
+    "Screenshot only establishes visible keyboard pixels, not whether a live keyboard or snapshot.",
+    "No official app executed.",
+    "Snapshot layer/source and animation synchronization remain unresolved.",
+    "Draft-preservation tests do not prove keyboard presentation parity."
+  ]
+}

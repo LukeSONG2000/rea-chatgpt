@@ -1,0 +1,1 @@
+"use strict";var e;Object.defineProperty(exports,"__esModule",{value:!0}),exports.PhotoLibrarySaveResult=void 0,function(e){e[e.Saved=0]="Saved",e[e.PermissionDenied=1]="PermissionDenied",e[e.Failed=2]="Failed"}(e||(exports.PhotoLibrarySaveResult=e={}));

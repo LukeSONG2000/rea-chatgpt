@@ -1,0 +1,35 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static disassembly",
+  "reader": {
+    "address": "0x7070130",
+    "call": "0x70701a8 BLR x19",
+    "target_source": "load witness slot +0x10 at 0x7070184",
+    "default_argument": "input x2 preserved at stack +8 and forwarded at 0x7070198",
+    "known_generic_type": {
+      "symbol": "_$sSbN",
+      "library_ordinal": 101,
+      "weak": false,
+      "import_ordinal": 11343,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "unresolved": "Concrete existential witness and its fallback semantics; wrapper itself does not select default."
+  },
+  "controller": {
+    "descriptor": "0x95649b0",
+    "accessor": "0x6507e8",
+    "constructor_candidate": "0x6262f0",
+    "initialization_call": "0x6263a8 -> 0x62721c",
+    "observed": "Allocating wrapper forwards arguments to initialization; initializer creates overlay surfaces and stores configuration bytes using dynamic offset storage at 0xad5cb98.",
+    "unresolved": "Bind each offset-storage slot to Swift field name before interpreting branch behavior."
+  },
+  "limits": [
+    "No behavioral replay or target launch",
+    "No supported default-value claim",
+    "No enum raw-value mapping established",
+    "No host visual change in this batch"
+  ]
+}

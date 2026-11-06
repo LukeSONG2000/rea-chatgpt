@@ -1,0 +1,26 @@
+{
+  "platform": "ios",
+  "version": "1.2026.293",
+  "status": "partial",
+  "evidence": [
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/Icon.js",
+      "sha256": "2cd269b6b51f7482c515963d02bc144534437d38890a9168d0a95f7c87e61114"
+    },
+    {
+      "path": "derived/valdimodules-293-complete/ios/oai_ui/src/components/settings/SettingsTheme.js",
+      "sha256": "c5fd0cb39f555bbd0c61214e008e786862e80acb0e003ae3ecc1f629ee871d0e"
+    }
+  ],
+  "observation": "Icon uses explicit square size (default 20) and objectFit contain for asset sources; system-image path separate.",
+  "implementation": "Native template image normalized into caller-sized square, maintaining aspect ratio. Sidebar/composer 24, memory status 14 are preview values, not established native-owner values.",
+  "limits": [
+    "Valdi Icon semantics do not establish native main-chat usage",
+    "Exact variant, point size and custom accent assignment remain unaccepted"
+  ],
+  "regression": {
+    "first_run": "aborted after confirmed 100% CPU and UI idle stall",
+    "fix": "cache normalized images and update action only on state transitions",
+    "source_sha256": "5ab85075503ae66b262c579b1bcb353f4f7975fdc8bd4da8d5270565dd0e170a"
+  }
+}

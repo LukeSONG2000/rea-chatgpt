@@ -1,0 +1,30 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-host-adapter",
+  "changes": [
+    "Install explicit native menu for newTask, settings, searchChats, toggleSidebar",
+    "Guard dispatch by live primary window and exact offline origin",
+    "Dispose dispatch on primary close and app termination"
+  ],
+  "validation": {
+    "isolated_dispatch_regression": "passed",
+    "host_syntax": "passed",
+    "renderer_integration": "unaccepted",
+    "native_menu_click": "unaccepted",
+    "accelerator_keyboard": "unaccepted"
+  },
+  "limits": [
+    "Not the complete official menu tree",
+    "Only one declared accelerator per selected action; aliases, user keymap, capability filters and collision resolution not implemented",
+    "Native edit roles are independent host conveniences, not recovered Kvt implementation",
+    "Accelerator modifier keyboardEvent payload not yet reconstructed",
+    "Windows build and platform behavior unaccepted"
+  ],
+  "sources": {
+    "analysis/tools/desktop-native-menu.cjs": "90ba79fe3ed92158704a69d7ecce44ad5dc9314ae802aa052ca527057beaf17a",
+    "analysis/tools/test_desktop_native_menu.cjs": "3364d428f978208afcaab4133968cc6d9c91130173c2a8394fafb4b2fca9659c",
+    "analysis/tools/desktop-native-host.cjs": "6631911d12d6f2faf9763b2b2a091fefdc7847b602ff7f649972790173e7f7f0"
+  },
+  "next_action": "Run installed Electron menu click callbacks against renderer and assert new route, settings, search and sidebar changes; then unlocked physical/menu acceptance"
+}

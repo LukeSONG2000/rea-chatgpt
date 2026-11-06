@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "evidence_type": "controlled-package-fragment-replay",
+  "source": "derived/valdimodules-293/ios/chatgpt_services/src/library/ChatGPTLibraryClient.js",
+  "sha256": "95ce41ba2fd914d2f2eeddc1eddfd79aed65b25398653e1c89a0ac9649f28b5b",
+  "checks": [
+    "All request shape, item normalization, account and cursor propagation",
+    "Folder routing and invalid filter rejection before request",
+    "Same-owner replacement cancels old request; late old success rejects; different owner unaffected",
+    "Permission failure remains error, not empty results",
+    "Dispose cancels active work and rejects future load"
+  ],
+  "limitations": [
+    "Mock network only; native entry, UI, backend behavior and authenticated images untested",
+    "Note serializer intentionally unsupported",
+    "Node VM with selected stubs is not device runtime"
+  ]
+}

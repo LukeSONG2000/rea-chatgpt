@@ -1,0 +1,160 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_turn_classification": "progress: v414 feedback integration and Foundation regressions completed",
+  "question": "Replace the Remote needs-input placeholder with an evidence-backed ordinary/secret text-question path and recover question progression.",
+  "official_observations": [
+    {
+      "source": "CodexRemoteToolUserInputRequestView descriptor0x95ae7f4",
+      "conclusion": "9 fields, field-offset vector word2. Metadata-vector entries+0x20 answers,+0x24 customAnswersByQuestionID,+0x28 customAnswer,+0x2c currentQuestionIndex. Actual state storage offsets remain runtime-dependent."
+    },
+    {
+      "source": "current question0x1a54310",
+      "conclusion": "Questions array at request-view+0x90; empty yields absent question; otherwise selects min(max(index,0),count-1)."
+    },
+    {
+      "source": "0x1a562b0, isSecret load0x1a562ec, SecureField import0x7c46d5c",
+      "conclusion": "Question byte+0x31 selects SecureField versus vertical TextField. Plain field uses closed lineLimit1...4 via0x1dae934. Placeholder0x1a56410 tests isOther at+0x30 and selects custom/other resource keys."
+    },
+    {
+      "source": "trim0x1a54e54; button0x1cf5058; keyboard0x1cf502c",
+      "conclusion": "Trim whitespacesAndNewlines. Empty button invokes dismiss at view+0xa0; nonempty invokes custom submit0x1a564a8. Keyboard invokes custom submit directly and empty is a no-op. Button label0x1a5611c/24 uses Send/Skip, not Deny."
+    },
+    {
+      "source": "custom submit0x1a564a8",
+      "conclusion": "Nonempty trimmed answer removes customAnswersByQuestionID entry if present, clears custom text, writes a one-element array under question ID in answers. Single question submits dictionary; multiple questions call0x1a56654."
+    },
+    {
+      "source": "progression0x1a56654",
+      "conclusion": "First searches questions after clamped current index for missing answer keys; then searches all questions from zero. First missing key becomes current index. If all keys present (including empty question array), invokes submit closure at view+0xb0. Key presence is not value validity."
+    },
+    {
+      "source": "question content0x1a54f98; bindings in ios-remote-v415-bindings.json",
+      "conclusion": "Header+0x10 and question+0x20 have separate nonempty checks. Header uses caption medium and ChatGPT/text/secondary; question uses title3 semibold and ChatGPT/text/primary."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "New typed request/question/draft/progression/answer-event adapter in RemoteUserInputInteraction.swift; registered in Xcode sources and offline tests.",
+      "Remote host-b task now exposes two synthetic questions (ordinary and secret) with original placeholder/Skip/Send resources and supported text progression.",
+      "Scoped owner checks full request and answers; disconnected service never reports completion. Skip is dismiss intention, not task cancellation.",
+      "Header/question fonts/colors now follow recovered consumer bindings."
+    ],
+    "independent_adaptations": [
+      "String host/connection envelope, failure enums and payload validation are independent frontend contracts, not official wire format.",
+      "Answer redaction is independent defensive representation; official user-input submit signature itself is Dictionary<String,[String]>.",
+      "Parent layout, field/button styling and question-navigation controls remain partial. Synthetic question text is not official content.",
+      "Only no-option text branch integrated. Nonempty options, empty/duplicate-ID question sets are explicitly unsupported; this strict handling is not claimed as original behavior.",
+      "Returning/reentering creates a fresh fixture draft; lifecycle parity is unverified."
+    ]
+  },
+  "validation": {
+    "foundation": "Passed prior suites and12 explicit traversal cases, extreme/empty indices, two-question ordinary/secret dispatch, skip-versus-keyboard behavior,4 stale request variants,4 invalid payloads,3 unsupported shapes, locale fallback and redaction.",
+    "host_typecheck": "Passed cumulative source including final font/color integration;3 existing UIKit deprecation warnings. No build/link/runtime acceptance implied.",
+    "ui_syntax": "testRemoteUserInputQuestionsAndScope parses. Not executed.",
+    "runtime": "Original runner97181/first-launch97197 verified live this turn; Xcode administrator authorization remains pending. Old preview87483 retained. No new build or physical installation.",
+    "retention": "No stale packages."
+  },
+  "limitations": [
+    "Choice rows, numbered question navigation and focus restoration callbacks need further artifact closure.",
+    "Full Liquid Glass/card geometry, typography inheritance and actual keyboard behavior not accepted.",
+    "Service transmission and final approval/answer acknowledgement are disconnected.",
+    "iOS native SwiftUI observation does not prove Android component sharing."
+  ],
+  "next_minimum_action": "Trace choice-row selection and question-index change callbacks; run task -> input -> return/reentry UI path once original Xcode authorization completes.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-bindings.json",
+      "sha256": "af9bafaf2faead93ddfaa44fb8666c7ab19691a0c94d0d65fa9c86434990aa8e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-accessor.asm",
+      "sha256": "fd799e77c2cef184ca7d698a34ca6a61f43c70449d6c61d8fecedf77c466caf9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-actions.asm",
+      "sha256": "f2cbbad00df851199e2e44dd4fec591fb5c2b89ff6be431b251ce299ef64ddec"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-callbacks.asm",
+      "sha256": "76fe4c3287e4e57354b0003e4d50608dbceb91e69e4f96226ea6621b9117bb38"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-clear-draft.asm",
+      "sha256": "fe62958fd61d8c785d60378b28e437f7922ceff2707ca9ccabac5f120bf82574"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-content-calls.json",
+      "sha256": "37df52a66300afd936b120d2a78b3e10ca71438f1a41a318d8ed85ac09f88505"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-content.asm",
+      "sha256": "0bbeeb5eedc2eebb56bef1a774595f1cae1d15d57a3a234196d241b93eb0f22c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-custom-trim.asm",
+      "sha256": "3970dc3b4b96850e5ce128bb2b2a8735ffa6dde7ce45476cf6dfa22aad225bf7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-empty-label.asm",
+      "sha256": "a1400eec5b83107fb5d1f6032db54622e58a562f1c42cc296a7f33bd0d65a734"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-font-bindings.asm",
+      "sha256": "677e8d48d47dcd0232512ec81e83dfbc6d236bb366fbc7d862364744fa6703ff"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-helpers.asm",
+      "sha256": "0ed6e2bbe3f8298b5e30c73b55813d9d6a07668f6484adeb75a6aa4e2cd3c63e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-line-limit.asm",
+      "sha256": "c80fe0802e8e9142a6d9189fcf6ebe455f0478cb146972485f247af9f504f7b0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-lookup.asm",
+      "sha256": "2d2726288415967eda5ad2fcbb011b2d2babc64ea94c2bee013f2a22f8bbb27b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-secondary-color.asm",
+      "sha256": "6b28261bcdc465e77941af92066818d7a4db83c587c373492107254affcac83c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-state-helper.asm",
+      "sha256": "4522d3661cd8215d4cafa5c4fc5c872219c0747739d22e8c0cf8b83ac265866d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-type-helper.asm",
+      "sha256": "cf122f2aace980dfe9a690ec36fcb8a9e0f5be2b9f01b8179dbb09fcf73c8b39"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-question-color-primary.asm",
+      "sha256": "f20503db3354ff960e893e7b35ca78a8bd37ae7def99ab13d0bcd4ef3483a373"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-question-font.asm",
+      "sha256": "60c1e6aac171b12a235081029f7a66c54ebd2f8dab6cb6f6b8b61fdf1690f7a5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-question-header-font.asm",
+      "sha256": "d33a58d764ec7e951512976fa57d4a576b9772db67ed696ce5e7cc70e5fb76da"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-selected-text.json",
+      "sha256": "e134bea4fa1deefba67946550d47cda377ba07e4f4abf8a4332f6059c7c75821"
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteUserInputInteraction.swift": "4beb729f7da3a131c179d916c79ca3ba7ac1d8c0b5fef584f56e4e05a3e878e2",
+    "implementation/ios/Sources/NativeConversationHost.swift": "01dbf14f4172419e1773e3361ecbe682517e2025358988d0a9960a5412d3df8d",
+    "implementation/ios/Sources/OfficialText.swift": "f4756b7440b1a5e85bb68e5aa2dbf4f9d3f15782d16b1bea0e0f577f8f6d56e1",
+    "implementation/ios/Tools/prepare-official-text.py": "cf7201a65324f1713dcba0f93557bbcee06eca18f9aff3a0737fd0b0c425729d",
+    "implementation/ios/Resources/OfficialTranslations.json": "28a4628fe0aa96c2d975974b3de252b8ff2657e02acf3b95ec7ec5b8d75f74a2",
+    "implementation/ios/TextTests/main.swift": "d46e67a1ce684a3205fa28cf4fb44e21074eb0283c5cb8d8cfad78c54ff15bfb",
+    "implementation/ios/UITests/HostInteractionTests.swift": "30a69fae95efe0ca5ee266de9f70e50f27a5e708bc717e6aad560715144b83d6",
+    "implementation/ios/test-official-text.sh": "634985164bb0a99f73cd9b923849708ce75f61cf229801c52106b3ce029feb0f",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "f6843430f075e79c60d23d02bec20e64714c51a39e368e519e51a6fa88265ea4"
+  }
+}

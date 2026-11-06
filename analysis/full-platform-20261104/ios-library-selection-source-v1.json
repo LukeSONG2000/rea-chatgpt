@@ -1,0 +1,47 @@
+{
+  "platform": "ios",
+  "version": "1.2026.293",
+  "path": "derived/valdimodules-293/ios/chatgpt_library/src/ChatGPTLibraryScreen.js",
+  "sha256": "8da6fbce93949334b3efc455e4da9a26ad6337a91095cd6762ee97b74bd2dd89",
+  "evidence_type": "artifact-static",
+  "locations": [
+    {
+      "symbol": "get canDeleteSelection(){",
+      "byte_offset": 41992
+    },
+    {
+      "symbol": "get selectionActive(){",
+      "byte_offset": 41361
+    },
+    {
+      "symbol": "toggleSelection(e){",
+      "byte_offset": 44830
+    },
+    {
+      "symbol": "this.confirmSelectedDelete=",
+      "byte_offset": 13053
+    },
+    {
+      "symbol": "this.navigateBack=",
+      "byte_offset": 10230
+    },
+    {
+      "symbol": "this.deleteCandidate=",
+      "byte_offset": 13253
+    }
+  ],
+  "observations": [
+    "Selection mode is derived from nonempty selected IDs",
+    "Tap toggles selection while selecting; long press selects",
+    "Back clears selection before navigation",
+    "Delete eligibility requires exactly one non-SavedEntity, available item",
+    "Candidate confirmation stores the selected item before delete request"
+  ],
+  "independent_adaptation": [
+    "Local delete eligible only for one actual imported file; fixed fixture folder/file cannot be deleted",
+    "Atomic local index removal and local byte cleanup are not official server soft-delete behavior"
+  ],
+  "unknowns": [
+    "Official native action owner, service delete durability and runtime behavior not proven"
+  ]
+}

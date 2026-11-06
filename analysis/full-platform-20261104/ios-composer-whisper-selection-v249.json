@@ -1,0 +1,50 @@
+{
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "artifact observation and static inference",
+  "status": "partial",
+  "selection_call": "0x4cba1a4",
+  "receiver_preservation": "0x6fb1ec: x22 = incoming x20",
+  "field": "whisperPresentation at offset 0",
+  "protocol": {
+    "descriptor": "0x96b1af4",
+    "name": "ComposerWhisperPresentation",
+    "requirements": 24,
+    "requirement_index": 1,
+    "witness_byte_offset": "0x10"
+  },
+  "default_conformer": {
+    "name": "DefaultComposerWhisperPresentation",
+    "descriptor": "0x95a7520",
+    "conformance": "0x7df2eb0",
+    "witness": "0xa4fb4e8",
+    "getter": "0x16f739c",
+    "getter_body": "ldrb w0, [x20, #1]; ret",
+    "metadata": "0xa4fa838",
+    "field_offsets": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      16
+    ],
+    "field_at_offset_1": "showsExpandableControls"
+  },
+  "conclusion": "For the default conformer, the secondary condition reads showsExpandableControls. True chooses double-line; false chooses single-line-inner if double-line flag is false.",
+  "validation": {
+    "instruction_and_metadata_assertions": "passed",
+    "reference_replay_tests": 3
+  },
+  "limitations": [
+    "Static evidence only; main-chat runtime concrete conformer not observed.",
+    "Upstream assignment of both flags remains unresolved.",
+    "No layout dimensions or preview parity established."
+  ]
+}

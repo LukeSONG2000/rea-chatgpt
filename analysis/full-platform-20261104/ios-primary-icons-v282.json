@@ -1,0 +1,52 @@
+{
+  "platform": "ios",
+  "version": "1.2026.293",
+  "source": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/Assets_Assets.bundle/Assets.car",
+  "sha256": "716cc59b7593e6503e725a755c4b064b8d5644c3b3d894c4c4cee137037bb900",
+  "method": "unmodified Assets.car in data-only bundle, UIImage(named:in:)",
+  "symbols": {
+    "sidebar.left": "sidebar-menu",
+    "square.and.pencil": "square-and-pencil",
+    "bubble.left": "chat-bubble-dashed",
+    "mic": "microphone",
+    "plus": "plus-lg",
+    "gearshape": "gear",
+    "magnifyingglass": "magnifying-glass-lg",
+    "ellipsis": "ellipsis-horizontal"
+  },
+  "limitations": [
+    "Asset identity verified; control mapping and newer screenshot parity require runtime review.",
+    "No official executable loaded."
+  ],
+  "native_control_assets": [
+    "sidebar-menu",
+    "square-and-pencil",
+    "chat-bubble-dashed",
+    "microphone",
+    "voice",
+    "plus-lg",
+    "gear",
+    "magnifying-glass-lg",
+    "ellipsis-horizontal",
+    "book-badge-pencil-fill",
+    "clock",
+    "square-stack-fanned",
+    "sliders",
+    "codex",
+    "square-diamond-shape-circle-grid-2x2",
+    "personalization",
+    "book-open",
+    "plugin",
+    "envelope",
+    "phone",
+    "plus-square",
+    "arrow-rotate-clockwise",
+    "person",
+    "xmark-lg",
+    "chevron-right-sm"
+  ],
+  "implementation_sha256": "9f45c3aa3b3e2b41acf6d7ff2aef30ee139bbb3df9dd026256bd2730f87f79cf",
+  "status": "partial",
+  "validation": "v282-r2 primary surfaces UI test passed; subsequent personalized row removal built and installed, no full UI rerun",
+  "personalization_correction": "Removed screenshot-specific R2-D2 row. User-configured names/icons are not official defaults."
+}

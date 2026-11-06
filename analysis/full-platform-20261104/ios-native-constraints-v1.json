@@ -1,0 +1,2379 @@
+{
+  "schema": 1,
+  "authority": "shipped-artifact-header-and-symbol-observation",
+  "artifacts": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/ChatGPT",
+      "sha256": "b66e3ea09c16f9e8940495179e8ee8dbf501d685021dc09916149435f385bd66",
+      "size": 594896,
+      "cpu_type": 16777228,
+      "cpu_subtype": 0,
+      "file_type": 2,
+      "uuid": "a2f696c805b639429fddbbadf1b8ed7d",
+      "build": [
+        {
+          "load_command_offset": 3544,
+          "platform_id": 2,
+          "minimum_os": "18.0.0",
+          "sdk": "27.1.0"
+        }
+      ],
+      "encryption_commands": [
+        {
+          "load_command_offset": 3616,
+          "cryptoff": 81920,
+          "cryptsize": 294912,
+          "cryptid": 0
+        }
+      ],
+      "sections": [
+        {
+          "segment": "__TEXT",
+          "name": "__text",
+          "address": "0x100014000",
+          "file_offset": 81920,
+          "size": 156152,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__stubs",
+          "address": "0x10003a1f8",
+          "file_offset": 238072,
+          "size": 5916,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_stubs",
+          "address": "0x10003b920",
+          "file_offset": 244000,
+          "size": 960,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_methlist",
+          "address": "0x10003bce0",
+          "file_offset": 244960,
+          "size": 1220,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__const",
+          "address": "0x10003c1b0",
+          "file_offset": 246192,
+          "size": 39192,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_entry",
+          "address": "0x100045ac8",
+          "file_offset": 285384,
+          "size": 8,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_classname",
+          "address": "0x100045ad0",
+          "file_offset": 285392,
+          "size": 449,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_methname",
+          "address": "0x100045ca0",
+          "file_offset": 285856,
+          "size": 4587,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_methtype",
+          "address": "0x100046e90",
+          "file_offset": 290448,
+          "size": 2911,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__constg_swiftt",
+          "address": "0x1000479f0",
+          "file_offset": 293360,
+          "size": 12900,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_typeref",
+          "address": "0x10004ac54",
+          "file_offset": 306260,
+          "size": 23714,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_fieldmd",
+          "address": "0x1000508f8",
+          "file_offset": 329976,
+          "size": 6028,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_reflstr",
+          "address": "0x100052090",
+          "file_offset": 336016,
+          "size": 1746,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_assocty",
+          "address": "0x100052764",
+          "file_offset": 337764,
+          "size": 1696,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_capture",
+          "address": "0x100052e04",
+          "file_offset": 339460,
+          "size": 700,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_builtin",
+          "address": "0x1000530c0",
+          "file_offset": 340160,
+          "size": 80,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_protos",
+          "address": "0x100053110",
+          "file_offset": 340240,
+          "size": 828,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_proto",
+          "address": "0x10005344c",
+          "file_offset": 341068,
+          "size": 2452,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_types",
+          "address": "0x100053de0",
+          "file_offset": 343520,
+          "size": 312,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__cstring",
+          "address": "0x100053f20",
+          "file_offset": 343840,
+          "size": 6228,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift_as_entry",
+          "address": "0x100055774",
+          "file_offset": 350068,
+          "size": 340,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift_as_ret",
+          "address": "0x1000558c8",
+          "file_offset": 350408,
+          "size": 360,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift_as_cont",
+          "address": "0x100055a30",
+          "file_offset": 350768,
+          "size": 608,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__unwind_info",
+          "address": "0x100055c90",
+          "file_offset": 351376,
+          "size": 5704,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__eh_frame",
+          "address": "0x1000572d8",
+          "file_offset": 357080,
+          "size": 8948,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__const",
+          "address": "0x10005c000",
+          "file_offset": 376832,
+          "size": 22720,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_classlist",
+          "address": "0x1000618c0",
+          "file_offset": 399552,
+          "size": 48,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_protolist",
+          "address": "0x1000618f0",
+          "file_offset": 399600,
+          "size": 48,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_imageinfo",
+          "address": "0x100061920",
+          "file_offset": 399648,
+          "size": 8,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_protorefs",
+          "address": "0x100061928",
+          "file_offset": 399656,
+          "size": 24,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__got",
+          "address": "0x100061940",
+          "file_offset": 399680,
+          "size": 7216,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_const",
+          "address": "0x100064000",
+          "file_offset": 409600,
+          "size": 2144,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_selrefs",
+          "address": "0x100064860",
+          "file_offset": 411744,
+          "size": 928,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_data",
+          "address": "0x100064c00",
+          "file_offset": 412672,
+          "size": 472,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__data",
+          "address": "0x100064de0",
+          "file_offset": 413152,
+          "size": 4128,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__bss",
+          "address": "0x100065e00",
+          "file_offset": 0,
+          "size": 23128,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__common",
+          "address": "0x10006b858",
+          "file_offset": 0,
+          "size": 760,
+          "declared_encrypted_overlap_bytes": 0
+        }
+      ],
+      "focused_symbols": [],
+      "limits": [
+        "cryptid is a shipped-header declaration, not cryptographic verification or a decrypted instruction check",
+        "symbol names and metadata do not prove runtime call paths",
+        "section ranges describe the file image, not a live process"
+      ]
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+      "size": 192662944,
+      "cpu_type": 16777228,
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "uuid": "5a38f478506e31c1ab94a3901991fd1d",
+      "build": [
+        {
+          "load_command_offset": 5184,
+          "platform_id": 2,
+          "minimum_os": "18.0.0",
+          "sdk": "27.1.0"
+        }
+      ],
+      "encryption_commands": [
+        {
+          "load_command_offset": 5232,
+          "cryptoff": 163840,
+          "cryptsize": 171786240,
+          "cryptid": 0
+        }
+      ],
+      "sections": [
+        {
+          "segment": "__TEXT",
+          "name": "__text",
+          "address": "0x28000",
+          "file_offset": 163840,
+          "size": 130117996,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__stubs",
+          "address": "0x7c3f16c",
+          "file_offset": 130281836,
+          "size": 89400,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_stubs",
+          "address": "0x7c54ec0",
+          "file_offset": 130371264,
+          "size": 190016,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__init_offsets",
+          "address": "0x7c83500",
+          "file_offset": 130561280,
+          "size": 28,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_methlist",
+          "address": "0x7c83520",
+          "file_offset": 130561312,
+          "size": 206780,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__const",
+          "address": "0x7cb5d00",
+          "file_offset": 130768128,
+          "size": 12119600,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__cstring",
+          "address": "0x8844b30",
+          "file_offset": 142887728,
+          "size": 2486227,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_methname",
+          "address": "0x8aa3b10",
+          "file_offset": 145373968,
+          "size": 957583,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_typeref",
+          "address": "0x8b8d7a0",
+          "file_offset": 146331552,
+          "size": 9322964,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_capture",
+          "address": "0x9471974",
+          "file_offset": 155654516,
+          "size": 884980,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__constg_swiftt",
+          "address": "0x9549a68",
+          "file_offset": 156539496,
+          "size": 2244532,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_reflstr",
+          "address": "0x976da20",
+          "file_offset": 158784032,
+          "size": 2037040,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_assocty",
+          "address": "0x995ef50",
+          "file_offset": 160821072,
+          "size": 420904,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_fieldmd",
+          "address": "0x99c5b78",
+          "file_offset": 161241976,
+          "size": 2743012,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_classname",
+          "address": "0x9c63660",
+          "file_offset": 163984992,
+          "size": 319655,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_methtype",
+          "address": "0x9cb1710",
+          "file_offset": 164304656,
+          "size": 78895,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_builtin",
+          "address": "0x9cc4b40",
+          "file_offset": 164383552,
+          "size": 31720,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_mpenum",
+          "address": "0x9ccc728",
+          "file_offset": 164415272,
+          "size": 24916,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_protos",
+          "address": "0x9cd287c",
+          "file_offset": 164440188,
+          "size": 16328,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_proto",
+          "address": "0x9cd6844",
+          "file_offset": 164456516,
+          "size": 382552,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_types",
+          "address": "0x9d33e9c",
+          "file_offset": 164839068,
+          "size": 165340,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift_as_entry",
+          "address": "0x9d5c478",
+          "file_offset": 165004408,
+          "size": 67460,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift_as_ret",
+          "address": "0x9d6cbfc",
+          "file_offset": 165071868,
+          "size": 81260,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift_as_cont",
+          "address": "0x9d80968",
+          "file_offset": 165153128,
+          "size": 161232,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_types2",
+          "address": "0x9da7f38",
+          "file_offset": 165314360,
+          "size": 84,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__gcc_except_tab",
+          "address": "0x9da7f8c",
+          "file_offset": 165314444,
+          "size": 118824,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__ustring",
+          "address": "0x9dc4fb4",
+          "file_offset": 165433268,
+          "size": 784,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__unwind_info",
+          "address": "0x9dc52c4",
+          "file_offset": 165434052,
+          "size": 2690720,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__eh_frame",
+          "address": "0xa056168",
+          "file_offset": 168124776,
+          "size": 3815632,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__oslogstring",
+          "address": "0xa3fc000",
+          "file_offset": 171950080,
+          "size": 1153,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__const",
+          "address": "0xa400000",
+          "file_offset": 171966464,
+          "size": 6902296,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__cfstring",
+          "address": "0xaa95218",
+          "file_offset": 178868760,
+          "size": 73504,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_classlist",
+          "address": "0xaaa7138",
+          "file_offset": 178942264,
+          "size": 38320,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_nlclslist",
+          "address": "0xaab06e8",
+          "file_offset": 178980584,
+          "size": 40,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_catlist",
+          "address": "0xaab0710",
+          "file_offset": 178980624,
+          "size": 168,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_protolist",
+          "address": "0xaab07b8",
+          "file_offset": 178980792,
+          "size": 3520,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_imageinfo",
+          "address": "0xaab1578",
+          "file_offset": 178984312,
+          "size": 8,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_protorefs",
+          "address": "0xaab1580",
+          "file_offset": 178984320,
+          "size": 1992,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_superrefs",
+          "address": "0xaab1d48",
+          "file_offset": 178986312,
+          "size": 1448,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_intobj",
+          "address": "0xaab22f0",
+          "file_offset": 178987760,
+          "size": 1680,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_arraydata",
+          "address": "0xaab2980",
+          "file_offset": 178989440,
+          "size": 2752,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_arrayobj",
+          "address": "0xaab3440",
+          "file_offset": 178992192,
+          "size": 696,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_dictobj",
+          "address": "0xaab36f8",
+          "file_offset": 178992888,
+          "size": 280,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_doubleobj",
+          "address": "0xaab3810",
+          "file_offset": 178993168,
+          "size": 32,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_floatobj",
+          "address": "0xaab3830",
+          "file_offset": 178993200,
+          "size": 16,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__got",
+          "address": "0xaab3840",
+          "file_offset": 178993216,
+          "size": 161632,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_const",
+          "address": "0xaadc000",
+          "file_offset": 179159040,
+          "size": 1882936,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_selrefs",
+          "address": "0xaca7b38",
+          "file_offset": 181041976,
+          "size": 80256,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_ivar",
+          "address": "0xacbb4b8",
+          "file_offset": 181122232,
+          "size": 4052,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_data",
+          "address": "0xacbc490",
+          "file_offset": 181126288,
+          "size": 469368,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__data",
+          "address": "0xad2ee10",
+          "file_offset": 181595664,
+          "size": 3451937,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_stublist",
+          "address": "0xb079a38",
+          "file_offset": 185047608,
+          "size": 48,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__s_async_hook",
+          "address": "0xb079a68",
+          "file_offset": 185047656,
+          "size": 416,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__swift56_hooks",
+          "address": "0xb079c08",
+          "file_offset": 185048072,
+          "size": 176,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__thread_vars",
+          "address": "0xb079cb8",
+          "file_offset": 185048248,
+          "size": 576,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__thread_bss",
+          "address": "0xb079ef8",
+          "file_offset": 0,
+          "size": 480,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__common",
+          "address": "0xb07a0e0",
+          "file_offset": 0,
+          "size": 185649,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__bss",
+          "address": "0xb0a7640",
+          "file_offset": 0,
+          "size": 11738272,
+          "declared_encrypted_overlap_bytes": 0
+        }
+      ],
+      "focused_symbols": [
+        {
+          "name": "_OBJC_CLASS_$__TtC15ChatGPTMessages22MessagesViewController",
+          "address": "0xacd7078",
+          "n_type": 15,
+          "n_sect": 50,
+          "symbol_record_offset": 187407224,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$__TtC15ChatGPTMessages22MessagesViewController",
+          "address": "0xaea5c78",
+          "n_type": 15,
+          "n_sect": 51,
+          "symbol_record_offset": 187419384,
+          "section": "__data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRootView",
+          "address": "0x0",
+          "n_type": 1,
+          "n_sect": 0,
+          "symbol_record_offset": 187481288,
+          "section": null
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntime",
+          "address": "0x0",
+          "n_type": 1,
+          "n_sect": 0,
+          "symbol_record_offset": 187481304,
+          "section": null
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeManager",
+          "address": "0x0",
+          "n_type": 1,
+          "n_sect": 0,
+          "symbol_record_offset": 187481320,
+          "section": null
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRootView",
+          "address": "0x0",
+          "n_type": 1,
+          "n_sect": 0,
+          "symbol_record_offset": 187484616,
+          "section": null
+        }
+      ],
+      "limits": [
+        "cryptid is a shipped-header declaration, not cryptographic verification or a decrypted instruction check",
+        "symbol names and metadata do not prove runtime call paths",
+        "section ranges describe the file image, not a live process"
+      ]
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/OpenAIXPlat",
+      "sha256": "ed8b1128ed712942d032f0bc302e4bc9afc522e00f77c4139c11022bd4e785de",
+      "size": 14685552,
+      "cpu_type": 16777228,
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "uuid": "8290751ccf813763a3eae79e4378b5ac",
+      "build": [
+        {
+          "load_command_offset": 4792,
+          "platform_id": 2,
+          "minimum_os": "18.0.0",
+          "sdk": "26.4.0"
+        }
+      ],
+      "encryption_commands": [
+        {
+          "load_command_offset": 4840,
+          "cryptoff": 65536,
+          "cryptsize": 11141120,
+          "cryptid": 0
+        }
+      ],
+      "sections": [
+        {
+          "segment": "__TEXT",
+          "name": "__text",
+          "address": "0x10000",
+          "file_offset": 65536,
+          "size": 8768332,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__stubs",
+          "address": "0x86cb4c",
+          "file_offset": 8833868,
+          "size": 17136,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_stubs",
+          "address": "0x870e40",
+          "file_offset": 8851008,
+          "size": 99968,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__init_offsets",
+          "address": "0x8894c0",
+          "file_offset": 8950976,
+          "size": 68,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_methlist",
+          "address": "0x889508",
+          "file_offset": 8951048,
+          "size": 68884,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__const",
+          "address": "0x89b000",
+          "file_offset": 9023488,
+          "size": 676592,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__cstring",
+          "address": "0x9402f0",
+          "file_offset": 9700080,
+          "size": 161907,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__gcc_except_tab",
+          "address": "0x967b64",
+          "file_offset": 9861988,
+          "size": 183296,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_methname",
+          "address": "0x994770",
+          "file_offset": 10045296,
+          "size": 162730,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_classname",
+          "address": "0x9bc320",
+          "file_offset": 10208032,
+          "size": 43678,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__objc_methtype",
+          "address": "0x9c6dc0",
+          "file_offset": 10251712,
+          "size": 47809,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__constg_swiftt",
+          "address": "0x9d2884",
+          "file_offset": 10299524,
+          "size": 92212,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_typeref",
+          "address": "0x9e90b8",
+          "file_offset": 10391736,
+          "size": 43739,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_reflstr",
+          "address": "0x9f3ba0",
+          "file_offset": 10435488,
+          "size": 30330,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_fieldmd",
+          "address": "0x9fb21c",
+          "file_offset": 10465820,
+          "size": 41700,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_capture",
+          "address": "0xa05500",
+          "file_offset": 10507520,
+          "size": 26380,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_assocty",
+          "address": "0xa0bc0c",
+          "file_offset": 10533900,
+          "size": 4336,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_proto",
+          "address": "0xa0ccfc",
+          "file_offset": 10538236,
+          "size": 6988,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_types",
+          "address": "0xa0e848",
+          "file_offset": 10545224,
+          "size": 2576,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_builtin",
+          "address": "0xa0f258",
+          "file_offset": 10547800,
+          "size": 240,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift_as_entry",
+          "address": "0xa0f348",
+          "file_offset": 10548040,
+          "size": 152,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift_as_ret",
+          "address": "0xa0f3e0",
+          "file_offset": 10548192,
+          "size": 148,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_protos",
+          "address": "0xa0f474",
+          "file_offset": 10548340,
+          "size": 296,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__ustring",
+          "address": "0xa0f59c",
+          "file_offset": 10548636,
+          "size": 26,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__swift5_mpenum",
+          "address": "0xa0f5b8",
+          "file_offset": 10548664,
+          "size": 8,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__unwind_info",
+          "address": "0xa0f5c0",
+          "file_offset": 10548672,
+          "size": 189128,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__eh_frame",
+          "address": "0xa3d888",
+          "file_offset": 10737800,
+          "size": 468804,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__TEXT",
+          "name": "__oslogstring",
+          "address": "0xab0000",
+          "file_offset": 11206656,
+          "size": 232,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__got",
+          "address": "0xab4000",
+          "file_offset": 11223040,
+          "size": 17624,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__const",
+          "address": "0xab84d8",
+          "file_offset": 11240664,
+          "size": 553968,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__cfstring",
+          "address": "0xb3f8c8",
+          "file_offset": 11794632,
+          "size": 31616,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_classlist",
+          "address": "0xb47448",
+          "file_offset": 11826248,
+          "size": 7968,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_nlclslist",
+          "address": "0xb49368",
+          "file_offset": 11834216,
+          "size": 112,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_catlist",
+          "address": "0xb493d8",
+          "file_offset": 11834328,
+          "size": 80,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_protolist",
+          "address": "0xb49428",
+          "file_offset": 11834408,
+          "size": 1360,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_imageinfo",
+          "address": "0xb49978",
+          "file_offset": 11835768,
+          "size": 8,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_protorefs",
+          "address": "0xb49980",
+          "file_offset": 11835776,
+          "size": 472,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_superrefs",
+          "address": "0xb49b58",
+          "file_offset": 11836248,
+          "size": 2488,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_arraydata",
+          "address": "0xb4a510",
+          "file_offset": 11838736,
+          "size": 1296,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_arrayobj",
+          "address": "0xb4aa20",
+          "file_offset": 11840032,
+          "size": 744,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_intobj",
+          "address": "0xb4ad08",
+          "file_offset": 11840776,
+          "size": 2592,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_dictobj",
+          "address": "0xb4b728",
+          "file_offset": 11843368,
+          "size": 240,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA_CONST",
+          "name": "__objc_doubleobj",
+          "address": "0xb4b818",
+          "file_offset": 11843608,
+          "size": 112,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_const",
+          "address": "0xb4c000",
+          "file_offset": 11845632,
+          "size": 284520,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_selrefs",
+          "address": "0xb91768",
+          "file_offset": 12130152,
+          "size": 31664,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_ivar",
+          "address": "0xb99318",
+          "file_offset": 12161816,
+          "size": 4160,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__objc_data",
+          "address": "0xb9a358",
+          "file_offset": 12165976,
+          "size": 53768,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__data",
+          "address": "0xba7560",
+          "file_offset": 12219744,
+          "size": 170440,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__thread_vars",
+          "address": "0xbd0f28",
+          "file_offset": 12390184,
+          "size": 1200,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__thread_data",
+          "address": "0xbd13e0",
+          "file_offset": 12391392,
+          "size": 128,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__thread_bss",
+          "address": "0xbd1460",
+          "file_offset": 0,
+          "size": 488,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__common",
+          "address": "0xbd1648",
+          "file_offset": 0,
+          "size": 520,
+          "declared_encrypted_overlap_bytes": 0
+        },
+        {
+          "segment": "__DATA",
+          "name": "__bss",
+          "address": "0xbd1880",
+          "file_offset": 0,
+          "size": 90456,
+          "declared_encrypted_overlap_bytes": 0
+        }
+      ],
+      "focused_symbols": [
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRootView",
+          "address": "0xba4898",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602112,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntime",
+          "address": "0xba0b58",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602144,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeAnimationAppearanceBehavior",
+          "address": "0xba1148",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602160,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeAnimationOptions",
+          "address": "0xba1198",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602176,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeApplicationBridge",
+          "address": "0xba11e8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602192,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeApplicationStateBridge",
+          "address": "0xba1238",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602208,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeBitmapInfo",
+          "address": "0xba1288",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602224,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeContentSizeEvent",
+          "address": "0xba12d8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602240,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeDamageRect",
+          "address": "0xba1328",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602256,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeDateChangeEvent",
+          "address": "0xba1378",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602272,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeDeviceBridge",
+          "address": "0xba13c8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602288,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeElementGestureEvent",
+          "address": "0xba1418",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602304,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeFetchHandle",
+          "address": "0xba1468",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602320,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeFetchListener",
+          "address": "0xba14b8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602336,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeFetchRequest",
+          "address": "0xba1508",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602352,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeFetchResponse",
+          "address": "0xba1558",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602368,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeFetchTransport",
+          "address": "0xba15a8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602384,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeFormSubmitEvent",
+          "address": "0xba15f8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602400,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeInputCommand",
+          "address": "0xba1648",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602416,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeInputEvent",
+          "address": "0xba1698",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602432,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeInputOption",
+          "address": "0xba16e8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602448,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeInputState",
+          "address": "0xba1738",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602464,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeIntersectionObserverRecord",
+          "address": "0xba1788",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602480,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeJavaScriptIntersectionObserverRecord",
+          "address": "0xba17d8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602496,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeJavaScriptResizeObserverRecord",
+          "address": "0xba1828",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602512,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeManagedContext",
+          "address": "0xba1878",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602528,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeManager",
+          "address": "0xba0ba8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602544,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeMemoryStatistics",
+          "address": "0xba18c8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602560,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeObserverRect",
+          "address": "0xba1918",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602576,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeObserverSize",
+          "address": "0xba1968",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602592,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimePersistentStore",
+          "address": "0xba1080",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602608,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimePersistentStoreBridge",
+          "address": "0xba19b8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602624,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimePointerLocation",
+          "address": "0xba1a08",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602640,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeProgressEvent",
+          "address": "0xba1a58",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602656,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeResizeObserverRecord",
+          "address": "0xba1aa8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602672,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeScrollCommand",
+          "address": "0xba1af8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602688,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeScrollEvent",
+          "address": "0xba1b48",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602704,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeScrollIntoViewOptions",
+          "address": "0xba1b98",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602720,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeScrollOffsetState",
+          "address": "0xba1be8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602736,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeScrollState",
+          "address": "0xba1c38",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602752,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeSlowCallEvent",
+          "address": "0xba1c88",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602768,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeSlowCallRecording",
+          "address": "0xba1cd8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602784,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeSlowCallWarning",
+          "address": "0xba1d28",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602800,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeSubscription",
+          "address": "0xba1d78",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602816,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTCPBridge",
+          "address": "0xba1dc8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602832,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTCPClientListener",
+          "address": "0xba1e18",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602848,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTCPConnection",
+          "address": "0xba10d0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602864,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTCPServer",
+          "address": "0xba1120",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602880,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTCPServerListener",
+          "address": "0xba1e68",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602896,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTextEditEndEvent",
+          "address": "0xba1eb8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602912,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTextEditEvent",
+          "address": "0xba1f08",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602928,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTextMenuActionEvent",
+          "address": "0xba1f58",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602944,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTextMenuEvent",
+          "address": "0xba1fa8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602960,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTextSelectionActionEvent",
+          "address": "0xba1ff8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602976,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTimeChangeEvent",
+          "address": "0xba2048",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13602992,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTimedEvent",
+          "address": "0xba2098",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13603008,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeTouchEvent",
+          "address": "0xba20e8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13603024,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeVideoCommand",
+          "address": "0xba2138",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13603040,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeVideoCommandResult",
+          "address": "0xba2188",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13603056,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeVideoError",
+          "address": "0xba21d8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13603072,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeVideoState",
+          "address": "0xba2228",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13603088,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_CLASS_$_SCValdiRuntimeWorkerLocation",
+          "address": "0xba2278",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13603104,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRootView",
+          "address": "0xba48c0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609808,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntime",
+          "address": "0xba0b80",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609840,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeAnimationAppearanceBehavior",
+          "address": "0xba1170",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609856,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeAnimationOptions",
+          "address": "0xba11c0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609872,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeApplicationBridge",
+          "address": "0xba1210",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609888,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeApplicationStateBridge",
+          "address": "0xba1260",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609904,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeBitmapInfo",
+          "address": "0xba12b0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609920,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeContentSizeEvent",
+          "address": "0xba1300",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609936,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeDamageRect",
+          "address": "0xba1350",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609952,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeDateChangeEvent",
+          "address": "0xba13a0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609968,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeDeviceBridge",
+          "address": "0xba13f0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13609984,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeElementGestureEvent",
+          "address": "0xba1440",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610000,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeFetchHandle",
+          "address": "0xba1490",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610016,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeFetchListener",
+          "address": "0xba14e0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610032,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeFetchRequest",
+          "address": "0xba1530",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610048,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeFetchResponse",
+          "address": "0xba1580",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610064,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeFetchTransport",
+          "address": "0xba15d0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610080,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeFormSubmitEvent",
+          "address": "0xba1620",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610096,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeInputCommand",
+          "address": "0xba1670",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610112,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeInputEvent",
+          "address": "0xba16c0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610128,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeInputOption",
+          "address": "0xba1710",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610144,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeInputState",
+          "address": "0xba1760",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610160,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeIntersectionObserverRecord",
+          "address": "0xba17b0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610176,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeJavaScriptIntersectionObserverRecord",
+          "address": "0xba1800",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610192,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeJavaScriptResizeObserverRecord",
+          "address": "0xba1850",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610208,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeManagedContext",
+          "address": "0xba18a0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610224,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeManager",
+          "address": "0xba0bd0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610240,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeMemoryStatistics",
+          "address": "0xba18f0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610256,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeObserverRect",
+          "address": "0xba1940",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610272,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeObserverSize",
+          "address": "0xba1990",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610288,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimePersistentStore",
+          "address": "0xba1058",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610304,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimePersistentStoreBridge",
+          "address": "0xba19e0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610320,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimePointerLocation",
+          "address": "0xba1a30",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610336,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeProgressEvent",
+          "address": "0xba1a80",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610352,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeResizeObserverRecord",
+          "address": "0xba1ad0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610368,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeScrollCommand",
+          "address": "0xba1b20",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610384,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeScrollEvent",
+          "address": "0xba1b70",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610400,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeScrollIntoViewOptions",
+          "address": "0xba1bc0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610416,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeScrollOffsetState",
+          "address": "0xba1c10",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610432,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeScrollState",
+          "address": "0xba1c60",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610448,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeSlowCallEvent",
+          "address": "0xba1cb0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610464,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeSlowCallRecording",
+          "address": "0xba1d00",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610480,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeSlowCallWarning",
+          "address": "0xba1d50",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610496,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeSubscription",
+          "address": "0xba1da0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610512,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTCPBridge",
+          "address": "0xba1df0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610528,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTCPClientListener",
+          "address": "0xba1e40",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610544,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTCPConnection",
+          "address": "0xba10a8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610560,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTCPServer",
+          "address": "0xba10f8",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610576,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTCPServerListener",
+          "address": "0xba1e90",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610592,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTextEditEndEvent",
+          "address": "0xba1ee0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610608,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTextEditEvent",
+          "address": "0xba1f30",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610624,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTextMenuActionEvent",
+          "address": "0xba1f80",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610640,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTextMenuEvent",
+          "address": "0xba1fd0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610656,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTextSelectionActionEvent",
+          "address": "0xba2020",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610672,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTimeChangeEvent",
+          "address": "0xba2070",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610688,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTimedEvent",
+          "address": "0xba20c0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610704,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeTouchEvent",
+          "address": "0xba2110",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610720,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeVideoCommand",
+          "address": "0xba2160",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610736,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeVideoCommandResult",
+          "address": "0xba21b0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610752,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeVideoError",
+          "address": "0xba2200",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610768,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeVideoState",
+          "address": "0xba2250",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610784,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_OBJC_METACLASS_$_SCValdiRuntimeWorkerLocation",
+          "address": "0xba22a0",
+          "n_type": 15,
+          "n_sect": 47,
+          "symbol_record_offset": 13610800,
+          "section": "__objc_data"
+        },
+        {
+          "name": "_SCValdiRootViewDisplayInsetDidChangeNotificationKey",
+          "address": "0xb1acc8",
+          "n_type": 15,
+          "n_sect": 30,
+          "symbol_record_offset": 13616864,
+          "section": "__const"
+        },
+        {
+          "name": "_SCValdiRootViewTraitCollectionDidChangeNotificationKey",
+          "address": "0xb1acd0",
+          "n_type": 15,
+          "n_sect": 30,
+          "symbol_record_offset": 13616880,
+          "section": "__const"
+        },
+        {
+          "name": "_SCValdiRuntimePersistentStoreMarshall",
+          "address": "0x3f0af0",
+          "n_type": 15,
+          "n_sect": 1,
+          "symbol_record_offset": 13616896,
+          "section": "__text"
+        },
+        {
+          "name": "_SCValdiRuntimeTCPConnectionMarshall",
+          "address": "0x3f0b60",
+          "n_type": 15,
+          "n_sect": 1,
+          "symbol_record_offset": 13616912,
+          "section": "__text"
+        },
+        {
+          "name": "_SCValdiRuntimeTCPServerMarshall",
+          "address": "0x3f0bd0",
+          "n_type": 15,
+          "n_sect": 1,
+          "symbol_record_offset": 13616928,
+          "section": "__text"
+        },
+        {
+          "name": "__ZN8ValdiIOS15RuntimeListener10setRuntimeEP14SCValdiRuntime",
+          "address": "0x187604",
+          "n_type": 15,
+          "n_sect": 1,
+          "symbol_record_offset": 13682848,
+          "section": "__text"
+        }
+      ],
+      "limits": [
+        "cryptid is a shipped-header declaration, not cryptographic verification or a decrypted instruction check",
+        "symbol names and metadata do not prove runtime call paths",
+        "section ranges describe the file image, not a live process"
+      ]
+    }
+  ]
+}

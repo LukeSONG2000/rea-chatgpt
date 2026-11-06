@@ -1,0 +1,2444 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-metadata",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "class": {
+    "class_address": "0xacd7078",
+    "class_ro_address": "0xacd7010",
+    "name": "_TtC15ChatGPTMessages22MessagesViewController",
+    "flags": 452,
+    "instance_start": 8,
+    "instance_size": 1552,
+    "methods": [
+      {
+        "entry": "0x7cad258",
+        "file_offset": 130732632,
+        "selector": "gestureRecognizerShouldBegin:",
+        "types": "B24@0:8@16",
+        "implementation": "0x372605c",
+        "implementation_file_offset": 57827420
+      },
+      {
+        "entry": "0x7cad264",
+        "file_offset": 130732644,
+        "selector": "gestureRecognizer:shouldReceiveTouch:",
+        "types": "B32@0:8@16@24",
+        "implementation": "0x3726194",
+        "implementation_file_offset": 57827732
+      },
+      {
+        "entry": "0x7cad270",
+        "file_offset": 130732656,
+        "selector": "gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:",
+        "types": "B32@0:8@16@24",
+        "implementation": "0x37261e0",
+        "implementation_file_offset": 57827808
+      },
+      {
+        "entry": "0x7cad27c",
+        "file_offset": 130732668,
+        "selector": "initWithCoder:",
+        "types": "@24@0:8@16",
+        "implementation": "0x3702a58",
+        "implementation_file_offset": 57682520
+      },
+      {
+        "entry": "0x7cad288",
+        "file_offset": 130732680,
+        "selector": "presentViewController:animated:completion:",
+        "types": "v36@0:8@16B24@?28",
+        "implementation": "0x37037a0",
+        "implementation_file_offset": 57685920
+      },
+      {
+        "entry": "0x7cad294",
+        "file_offset": 130732692,
+        "selector": "viewWillAppear:",
+        "types": "v20@0:8B16",
+        "implementation": "0x370395c",
+        "implementation_file_offset": 57686364
+      },
+      {
+        "entry": "0x7cad2a0",
+        "file_offset": 130732704,
+        "selector": "viewDidAppear:",
+        "types": "v20@0:8B16",
+        "implementation": "0x3704f5c",
+        "implementation_file_offset": 57691996
+      },
+      {
+        "entry": "0x7cad2ac",
+        "file_offset": 130732716,
+        "selector": "viewWillDisappear:",
+        "types": "v20@0:8B16",
+        "implementation": "0x3705014",
+        "implementation_file_offset": 57692180
+      },
+      {
+        "entry": "0x7cad2b8",
+        "file_offset": 130732728,
+        "selector": "viewDidDisappear:",
+        "types": "v20@0:8B16",
+        "implementation": "0x37054f8",
+        "implementation_file_offset": 57693432
+      },
+      {
+        "entry": "0x7cad2c4",
+        "file_offset": 130732740,
+        "selector": "viewDidLoad",
+        "types": "v16@0:8",
+        "implementation": "0x37087f0",
+        "implementation_file_offset": 57706480
+      },
+      {
+        "entry": "0x7cad2d0",
+        "file_offset": 130732752,
+        "selector": "viewDidLayoutSubviews",
+        "types": "v16@0:8",
+        "implementation": "0x3709bd4",
+        "implementation_file_offset": 57711572
+      },
+      {
+        "entry": "0x7cad2dc",
+        "file_offset": 130732764,
+        "selector": "viewSafeAreaInsetsDidChange",
+        "types": "v16@0:8",
+        "implementation": "0x3709ca4",
+        "implementation_file_offset": 57711780
+      },
+      {
+        "entry": "0x7cad2e8",
+        "file_offset": 130732776,
+        "selector": "handleTapGesture:",
+        "types": "v24@0:8@16",
+        "implementation": "0x371e698",
+        "implementation_file_offset": 57796248
+      },
+      {
+        "entry": "0x7cad2f4",
+        "file_offset": 130732788,
+        "selector": "handleLongPressGestureWithGestureRecognizer:",
+        "types": "v24@0:8@16",
+        "implementation": "0x371e8b0",
+        "implementation_file_offset": 57796784
+      },
+      {
+        "entry": "0x7cad300",
+        "file_offset": 130732800,
+        "selector": "recordFirstResponderInTranscript",
+        "types": "v16@0:8",
+        "implementation": "0x371f7d0",
+        "implementation_file_offset": 57800656
+      },
+      {
+        "entry": "0x7cad30c",
+        "file_offset": 130732812,
+        "selector": "handleConversationPagingPan:",
+        "types": "v24@0:8@16",
+        "implementation": "0x371f86c",
+        "implementation_file_offset": 57800812
+      },
+      {
+        "entry": "0x7cad318",
+        "file_offset": 130732824,
+        "selector": "initWithNibName:bundle:",
+        "types": "@32@0:8@16@24",
+        "implementation": "0x3725d14",
+        "implementation_file_offset": 57826580
+      },
+      {
+        "entry": "0x7cad324",
+        "file_offset": 130732836,
+        "selector": ".cxx_destruct",
+        "types": "v16@0:8",
+        "implementation": "0x3725d28",
+        "implementation_file_offset": 57826600
+      }
+    ],
+    "ivars": [
+      {
+        "entry": "0xab8b7b0",
+        "name": "viewModel",
+        "offset_storage_address": "0xaea3ec8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b7d0",
+        "name": "hostingContext",
+        "offset_storage_address": "0xaea3ea8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b7f0",
+        "name": "$__lazy_storage_$_collectionViewController",
+        "offset_storage_address": "0xaea3eb0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b810",
+        "name": "delegate",
+        "offset_storage_address": "0xaea3eb8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b830",
+        "name": "_didUpdateItems",
+        "offset_storage_address": "0xb4df590",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b850",
+        "name": "avatarFocusCouplingState",
+        "offset_storage_address": "0xb082aa0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b870",
+        "name": "hapticEngine",
+        "offset_storage_address": "0xb082b58",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b890",
+        "name": "shouldAlignCoTV5FinalResponseAfterReasoning",
+        "offset_storage_address": "0xb082aa8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b8b0",
+        "name": "olderPageLoadIndicator",
+        "offset_storage_address": "0xb082ab0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b8d0",
+        "name": "$__lazy_storage_$_composerPinnedAdController",
+        "offset_storage_address": "0xb4df598",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b8f0",
+        "name": "olderPageLoadTask",
+        "offset_storage_address": "0xb082ab8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b910",
+        "name": "lastUserMessageContentHeight",
+        "offset_storage_address": "0xb082ac0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b930",
+        "name": "lastAssistantMessageContentHeight",
+        "offset_storage_address": "0xb082ac8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b950",
+        "name": "pendingMessagesData",
+        "offset_storage_address": "0xb082ad0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b970",
+        "name": "textFinder",
+        "offset_storage_address": "0xb082ad8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b990",
+        "name": "conversationState",
+        "offset_storage_address": "0xb082ae0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b9b0",
+        "name": "additionalInsets",
+        "offset_storage_address": "0xb082ae8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b9d0",
+        "name": "adjustedSafeAreaInsets",
+        "offset_storage_address": "0xb082af0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8b9f0",
+        "name": "scrollInsetsLocked",
+        "offset_storage_address": "0xb082af8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8ba10",
+        "name": "scrollOffscreenCueActive",
+        "offset_storage_address": "0xb082b00",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8ba30",
+        "name": "isVoiceActiveOrConnecting",
+        "offset_storage_address": "0xb082b08",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8ba50",
+        "name": "presentationDismissalCoordinator",
+        "offset_storage_address": "0xb082b10",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8ba70",
+        "name": "advertiserBrowserActivity",
+        "offset_storage_address": "0xb082b18",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8ba90",
+        "name": "browserPolicy",
+        "offset_storage_address": "0xb082b20",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bab0",
+        "name": "focusMode",
+        "offset_storage_address": "0xb082b50",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bad0",
+        "name": "mode",
+        "offset_storage_address": "0xb082b48",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8baf0",
+        "name": "newChatPullConfiguration",
+        "offset_storage_address": "0xb082b28",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bb10",
+        "name": "prefersSoftTopEdge",
+        "offset_storage_address": "0xb082b30",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bb30",
+        "name": "conversationPagingConfiguration",
+        "offset_storage_address": "0xb082b38",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bb50",
+        "name": "fontSizeSetting",
+        "offset_storage_address": "0xb082b40",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bb70",
+        "name": "inputHeight",
+        "offset_storage_address": "0xb4df5a0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bb90",
+        "name": "_inputFocused",
+        "offset_storage_address": "0xb4df7d8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bbb0",
+        "name": "pendingCoTV5FinalResponseID",
+        "offset_storage_address": "0xb4df5a8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bbd0",
+        "name": "streamingHeightRetention",
+        "offset_storage_address": "0xb4df5b0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bbf0",
+        "name": "didFindFirstResponderInTranscript",
+        "offset_storage_address": "0xb4df5b8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bc10",
+        "name": "$__lazy_storage_$_stickyHeaderManagerReference",
+        "offset_storage_address": "0xb4df5c0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bc30",
+        "name": "valdiComponentCache",
+        "offset_storage_address": "0xb4df5c8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bc50",
+        "name": "retainedMessageRows",
+        "offset_storage_address": "0xb4df5d0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bc70",
+        "name": "applicationStateObserver",
+        "offset_storage_address": "0xb4df7f8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bc90",
+        "name": "$__lazy_storage_$_conversationFramePerformanceTracker",
+        "offset_storage_address": "0xb4df5d8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bcb0",
+        "name": "conversationStreamingMarkerIntervalID",
+        "offset_storage_address": "0xb4df5e0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bcd0",
+        "name": "conversationScrollMarkerIntervalID",
+        "offset_storage_address": "0xb4df5e8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bcf0",
+        "name": "hasAppeared",
+        "offset_storage_address": "0xb4df5f0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bd10",
+        "name": "$__lazy_storage_$_followupAdPlacementController",
+        "offset_storage_address": "0xb4df5f8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bd30",
+        "name": "isInitialMessageRevealPending",
+        "offset_storage_address": "0xb4df600",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bd50",
+        "name": "isDisappearingForPresentation",
+        "offset_storage_address": "0xb4df608",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bd70",
+        "name": "isParagenViewportActive",
+        "offset_storage_address": "0xb4df610",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bd90",
+        "name": "paragenDismissalObserver",
+        "offset_storage_address": "0xb4df618",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bdb0",
+        "name": "statsigFeatureFlagManager",
+        "offset_storage_address": "0xb4df800",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bdd0",
+        "name": "lastUserMessageID",
+        "offset_storage_address": "0xb4df620",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bdf0",
+        "name": "lastAdjacentMessageScrollTarget",
+        "offset_storage_address": "0xb4df628",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8be10",
+        "name": "pendingAdRevealView",
+        "offset_storage_address": "0xb4df630",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8be30",
+        "name": "pendingAdRevealViewModel",
+        "offset_storage_address": "0xb4df638",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8be50",
+        "name": "isPendingAdRevealScheduled",
+        "offset_storage_address": "0xb4df640",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8be70",
+        "name": "revealedPendingAdMessageID",
+        "offset_storage_address": "0xb4df648",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8be90",
+        "name": "initialMessageAnchor",
+        "offset_storage_address": "0xb4df650",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8beb0",
+        "name": "lastSeenContentSizeHeight",
+        "offset_storage_address": "0xb4df658",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bed0",
+        "name": "visibilityContainerBoundsInsetsSource",
+        "offset_storage_address": "0xb4df660",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bef0",
+        "name": "$__lazy_storage_$_unfocusTapRecognizer",
+        "offset_storage_address": "0xb4df668",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bf10",
+        "name": "textSelectionKeyboardPlaceholderHeight",
+        "offset_storage_address": "0xb4df670",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bf30",
+        "name": "$__lazy_storage_$_keepTextInsetsGestureRecognizer",
+        "offset_storage_address": "0xb4df678",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bf50",
+        "name": "$__lazy_storage_$_keyboardInsetView",
+        "offset_storage_address": "0xb4df680",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bf70",
+        "name": "$__lazy_storage_$_keyboardInsetHeightConstraint",
+        "offset_storage_address": "0xb4df688",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bf90",
+        "name": "imageGenerationPresentationPreparation",
+        "offset_storage_address": "0xb4df690",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bfb0",
+        "name": "imageGenerationPresentationPreparationRevision",
+        "offset_storage_address": "0xb4df698",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bfd0",
+        "name": "imageGenerationPresentationKeyboardObserver",
+        "offset_storage_address": "0xb4df6a0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8bff0",
+        "name": "imageGenerationPresentationLayoutObserver",
+        "offset_storage_address": "0xb4df6a8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c010",
+        "name": "isUpdatingImageGenerationPresentationPreparationLayout",
+        "offset_storage_address": "0xb4df6b0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c030",
+        "name": "$__lazy_storage_$_newChatPullController",
+        "offset_storage_address": "0xb4df6b8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c050",
+        "name": "olderChatPullController",
+        "offset_storage_address": "0xb4df6c0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c070",
+        "name": "olderChatPullTracking",
+        "offset_storage_address": "0xb4df6c8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c090",
+        "name": "isRevealingConversationPagingContent",
+        "offset_storage_address": "0xb4df6d0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c0b0",
+        "name": "$__lazy_storage_$_streamingHeightRetentionEnabled",
+        "offset_storage_address": "0xb4df6d8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c0d0",
+        "name": "$__lazy_storage_$_firstAnswerScrollHandoffEnabled",
+        "offset_storage_address": "0xb4df6e0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c0f0",
+        "name": "$__lazy_storage_$_initialMessagesFadeDuration",
+        "offset_storage_address": "0xb4df6e8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c110",
+        "name": "$__lazy_storage_$_isManualScrollPositionPreservationDisabled",
+        "offset_storage_address": "0xb4df6f0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c130",
+        "name": "$__lazy_storage_$_isConversationPDFScreenshotsDisabled",
+        "offset_storage_address": "0xb4df6f8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c150",
+        "name": "$__lazy_storage_$_conversationTimestampSeparatorsEnabled",
+        "offset_storage_address": "0xb4df700",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c170",
+        "name": "$__lazy_storage_$_screenshotServiceDelegate",
+        "offset_storage_address": "0xb4df708",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c190",
+        "name": "transitionNamespace",
+        "offset_storage_address": "0xb4df7e8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c1b0",
+        "name": "bag",
+        "offset_storage_address": "0xb4df710",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c1d0",
+        "name": "retainedHiddenReasoningHeadingID",
+        "offset_storage_address": "0xb4df718",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c1f0",
+        "name": "paragenInteractionState",
+        "offset_storage_address": "0xb4df720",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c210",
+        "name": "triggerUserMessageCollapse",
+        "offset_storage_address": "0xb4df728",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c230",
+        "name": "stagedMessagesData",
+        "offset_storage_address": "0xb4df730",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c250",
+        "name": "pendingInputAlignment",
+        "offset_storage_address": "0xb4df738",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c270",
+        "name": "isResizingPendingInput",
+        "offset_storage_address": "0xb4df740",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c290",
+        "name": "pendingChangedMessageIDs",
+        "offset_storage_address": "0xb4df748",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c2b0",
+        "name": "pendingWritingBlockPresentationChanges",
+        "offset_storage_address": "0xb4df750",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c2d0",
+        "name": "stagedSendAdditionalHeight",
+        "offset_storage_address": "0xb4df758",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c2f0",
+        "name": "keyboardWasUpWhenDragBegan",
+        "offset_storage_address": "0xb4df760",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c310",
+        "name": "collectionWindow",
+        "offset_storage_address": "0xb4df768",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c330",
+        "name": "firstRenderedAssistantMessageID",
+        "offset_storage_address": "0xb4df770",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c350",
+        "name": "collectionWindowItems",
+        "offset_storage_address": "0xb4df778",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c370",
+        "name": "canLoadOlderItems",
+        "offset_storage_address": "0xb4df780",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c390",
+        "name": "conversationTimestampSeparatorStrategy",
+        "offset_storage_address": "0xb4df788",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c3b0",
+        "name": "previousMessageIDsByID",
+        "offset_storage_address": "0xb4df790",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c3d0",
+        "name": "sendMorphController",
+        "offset_storage_address": "0xb4df798",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c3f0",
+        "name": "morphResponseAlignedUserMessageID",
+        "offset_storage_address": "0xb4df7a0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c410",
+        "name": "pendingImmediateAttachmentMorph",
+        "offset_storage_address": "0xb4df7a8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c430",
+        "name": "resolvedFocusMode",
+        "offset_storage_address": "0xb4df7e0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c450",
+        "name": "userSentMessageAnimation",
+        "offset_storage_address": "0xb4df7b0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c470",
+        "name": "isVoiceActive",
+        "offset_storage_address": "0xb4df7b8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c490",
+        "name": "isPreparingInitialViewport",
+        "offset_storage_address": "0xb4df7c0",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c4b0",
+        "name": "oAuthStatus",
+        "offset_storage_address": "0xb4df7c8",
+        "limit": "Offset storage address is not the runtime object offset"
+      },
+      {
+        "entry": "0xab8c4d0",
+        "name": "scrollViewDistanceFromEdges",
+        "offset_storage_address": "0xb4df7d0",
+        "limit": "Offset storage address is not the runtime object offset"
+      }
+    ]
+  },
+  "pointers": [
+    {
+      "location": "0xacd7098",
+      "raw": "0x4000000acd7012",
+      "target": "0xacd7012",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacd7028",
+      "raw": "0x10000009c80640",
+      "target": "0x9c80640",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacd7030",
+      "raw": "0x10000007cad250",
+      "target": "0x7cad250",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca80e8",
+      "raw": "0x10000008b24868",
+      "target": "0x8b24868",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacb50e8",
+      "raw": "0x10000008b247a0",
+      "target": "0x8b247a0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacb50f0",
+      "raw": "0x10000008b247d0",
+      "target": "0x8b247d0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacad4e8",
+      "raw": "0x10000008b2df90",
+      "target": "0x8b2df90",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacafba8",
+      "raw": "0x10000008b58a4b",
+      "target": "0x8b58a4b",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7bc0",
+      "raw": "0x10000008ab7ca0",
+      "target": "0x8ab7ca0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7b70",
+      "raw": "0x10000008b893d0",
+      "target": "0x8b893d0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7bb8",
+      "raw": "0x10000008b89610",
+      "target": "0x8b89610",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7b68",
+      "raw": "0x10000008b893e0",
+      "target": "0x8b893e0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7b78",
+      "raw": "0x10000008b89440",
+      "target": "0x8b89440",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7bb0",
+      "raw": "0x10000008b89420",
+      "target": "0x8b89420",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7c98",
+      "raw": "0x10000008b895e0",
+      "target": "0x8b895e0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7e38",
+      "raw": "0x10000008b26794",
+      "target": "0x8b26794",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7e30",
+      "raw": "0x10000008b26166",
+      "target": "0x8b26166",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7e28",
+      "raw": "0x10000008b5e923",
+      "target": "0x8b5e923",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xaca7e20",
+      "raw": "0x10000008b25e94",
+      "target": "0x8b25e94",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacada38",
+      "raw": "0x10000008b30310",
+      "target": "0x8b30310",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacb4eb8",
+      "raw": "0x10000008ab0470",
+      "target": "0x8ab0470",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xacd7040",
+      "raw": "0x3000000ab8b7a8",
+      "target": "0xab8b7a8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b7b0",
+      "raw": "0x1000000aea3ec8",
+      "target": "0xaea3ec8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b7b8",
+      "raw": "0x10000008b89560",
+      "target": "0x8b89560",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b7d0",
+      "raw": "0x1000000aea3ea8",
+      "target": "0xaea3ea8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b7d8",
+      "raw": "0x10000008b2abbb",
+      "target": "0x8b2abbb",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b7f0",
+      "raw": "0x1000000aea3eb0",
+      "target": "0xaea3eb0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b7f8",
+      "raw": "0x10000008aa5ad0",
+      "target": "0x8aa5ad0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b810",
+      "raw": "0x1000000aea3eb8",
+      "target": "0xaea3eb8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b818",
+      "raw": "0x10000008b15ec0",
+      "target": "0x8b15ec0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b830",
+      "raw": "0x1000000b4df590",
+      "target": "0xb4df590",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b838",
+      "raw": "0x10000008aba3db",
+      "target": "0x8aba3db",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b850",
+      "raw": "0x1000000b082aa0",
+      "target": "0xb082aa0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b858",
+      "raw": "0x10000008b02820",
+      "target": "0x8b02820",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b870",
+      "raw": "0x1000000b082b58",
+      "target": "0xb082b58",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b878",
+      "raw": "0x10000008b26bb8",
+      "target": "0x8b26bb8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b890",
+      "raw": "0x1000000b082aa8",
+      "target": "0xb082aa8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b898",
+      "raw": "0x10000008b77030",
+      "target": "0x8b77030",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b8b0",
+      "raw": "0x1000000b082ab0",
+      "target": "0xb082ab0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b8b8",
+      "raw": "0x10000008b4ad10",
+      "target": "0x8b4ad10",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b8d0",
+      "raw": "0x1000000b4df598",
+      "target": "0xb4df598",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b8d8",
+      "raw": "0x10000008aa5d20",
+      "target": "0x8aa5d20",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b8f0",
+      "raw": "0x1000000b082ab8",
+      "target": "0xb082ab8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b8f8",
+      "raw": "0x10000008b4ad30",
+      "target": "0x8b4ad30",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b910",
+      "raw": "0x1000000b082ac0",
+      "target": "0xb082ac0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b918",
+      "raw": "0x10000008b3dd00",
+      "target": "0x8b3dd00",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b930",
+      "raw": "0x1000000b082ac8",
+      "target": "0xb082ac8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b938",
+      "raw": "0x10000008b3c7c0",
+      "target": "0x8b3c7c0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b950",
+      "raw": "0x1000000b082ad0",
+      "target": "0xb082ad0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b958",
+      "raw": "0x10000008b52370",
+      "target": "0x8b52370",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b970",
+      "raw": "0x1000000b082ad8",
+      "target": "0xb082ad8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b978",
+      "raw": "0x10000008b81f64",
+      "target": "0x8b81f64",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b990",
+      "raw": "0x1000000b082ae0",
+      "target": "0xb082ae0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b998",
+      "raw": "0x10000008b11210",
+      "target": "0x8b11210",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b9b0",
+      "raw": "0x1000000b082ae8",
+      "target": "0xb082ae8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b9b8",
+      "raw": "0x10000008afbf90",
+      "target": "0x8afbf90",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b9d0",
+      "raw": "0x1000000b082af0",
+      "target": "0xb082af0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b9d8",
+      "raw": "0x10000008afc2f0",
+      "target": "0x8afc2f0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b9f0",
+      "raw": "0x1000000b082af8",
+      "target": "0xb082af8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8b9f8",
+      "raw": "0x10000008b67b20",
+      "target": "0x8b67b20",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8ba10",
+      "raw": "0x1000000b082b00",
+      "target": "0xb082b00",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8ba18",
+      "raw": "0x10000008b67ba0",
+      "target": "0x8b67ba0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8ba30",
+      "raw": "0x1000000b082b08",
+      "target": "0xb082b08",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8ba38",
+      "raw": "0x10000008b3b2c0",
+      "target": "0x8b3b2c0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8ba50",
+      "raw": "0x1000000b082b10",
+      "target": "0xb082b10",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8ba58",
+      "raw": "0x10000008b58f20",
+      "target": "0x8b58f20",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8ba70",
+      "raw": "0x1000000b082b18",
+      "target": "0xb082b18",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8ba78",
+      "raw": "0x10000008afc5b0",
+      "target": "0x8afc5b0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8ba90",
+      "raw": "0x1000000b082b20",
+      "target": "0xb082b20",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8ba98",
+      "raw": "0x10000008b046f2",
+      "target": "0x8b046f2",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bab0",
+      "raw": "0x1000000b082b50",
+      "target": "0xb082b50",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bab8",
+      "raw": "0x10000008b228b8",
+      "target": "0x8b228b8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bad0",
+      "raw": "0x1000000b082b48",
+      "target": "0xb082b48",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bad8",
+      "raw": "0x10000008b46420",
+      "target": "0x8b46420",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8baf0",
+      "raw": "0x1000000b082b28",
+      "target": "0xb082b28",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8baf8",
+      "raw": "0x10000008b480c0",
+      "target": "0x8b480c0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bb10",
+      "raw": "0x1000000b082b30",
+      "target": "0xb082b30",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bb18",
+      "raw": "0x10000008b57790",
+      "target": "0x8b57790",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bb30",
+      "raw": "0x1000000b082b38",
+      "target": "0xb082b38",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bb38",
+      "raw": "0x10000008ac08c0",
+      "target": "0x8ac08c0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bb50",
+      "raw": "0x1000000b082b40",
+      "target": "0xb082b40",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bb58",
+      "raw": "0x10000008ac2bc0",
+      "target": "0x8ac2bc0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bb70",
+      "raw": "0x1000000b4df5a0",
+      "target": "0xb4df5a0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bb78",
+      "raw": "0x10000008b33f90",
+      "target": "0x8b33f90",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bb90",
+      "raw": "0x1000000b4df7d8",
+      "target": "0xb4df7d8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bb98",
+      "raw": "0x10000008ae021c",
+      "target": "0x8ae021c",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bbb0",
+      "raw": "0x1000000b4df5a8",
+      "target": "0xb4df5a8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bbb8",
+      "raw": "0x10000008b511b0",
+      "target": "0x8b511b0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bbd0",
+      "raw": "0x1000000b4df5b0",
+      "target": "0xb4df5b0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bbd8",
+      "raw": "0x10000008b7ce20",
+      "target": "0x8b7ce20",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bbf0",
+      "raw": "0x1000000b4df5b8",
+      "target": "0xb4df5b8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bbf8",
+      "raw": "0x10000008b17f80",
+      "target": "0x8b17f80",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bc10",
+      "raw": "0x1000000b4df5c0",
+      "target": "0xb4df5c0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bc18",
+      "raw": "0x10000008ac3330",
+      "target": "0x8ac3330",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bc30",
+      "raw": "0x1000000b4df5c8",
+      "target": "0xb4df5c8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bc38",
+      "raw": "0x10000008b88540",
+      "target": "0x8b88540",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bc50",
+      "raw": "0x1000000b4df5d0",
+      "target": "0xb4df5d0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bc58",
+      "raw": "0x10000008b64b30",
+      "target": "0x8b64b30",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bc70",
+      "raw": "0x1000000b4df7f8",
+      "target": "0xb4df7f8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bc78",
+      "raw": "0x10000008aff020",
+      "target": "0x8aff020",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bc90",
+      "raw": "0x1000000b4df5d8",
+      "target": "0xb4df5d8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bc98",
+      "raw": "0x10000008abaa80",
+      "target": "0x8abaa80",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bcb0",
+      "raw": "0x1000000b4df5e0",
+      "target": "0xb4df5e0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bcb8",
+      "raw": "0x10000008b112b0",
+      "target": "0x8b112b0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bcd0",
+      "raw": "0x1000000b4df5e8",
+      "target": "0xb4df5e8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bcd8",
+      "raw": "0x10000008b110c0",
+      "target": "0x8b110c0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bcf0",
+      "raw": "0x1000000b4df5f0",
+      "target": "0xb4df5f0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bcf8",
+      "raw": "0x10000008b26d90",
+      "target": "0x8b26d90",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bd10",
+      "raw": "0x1000000b4df5f8",
+      "target": "0xb4df5f8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bd18",
+      "raw": "0x10000008aa8380",
+      "target": "0x8aa8380",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bd30",
+      "raw": "0x1000000b4df600",
+      "target": "0xb4df600",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bd38",
+      "raw": "0x10000008b38350",
+      "target": "0x8b38350",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bd50",
+      "raw": "0x1000000b4df608",
+      "target": "0xb4df608",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bd58",
+      "raw": "0x10000008b37420",
+      "target": "0x8b37420",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bd70",
+      "raw": "0x1000000b4df610",
+      "target": "0xb4df610",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bd78",
+      "raw": "0x10000008b39080",
+      "target": "0x8b39080",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bd90",
+      "raw": "0x1000000b4df618",
+      "target": "0xb4df618",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bd98",
+      "raw": "0x10000008b4e7b0",
+      "target": "0x8b4e7b0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bdb0",
+      "raw": "0x1000000b4df800",
+      "target": "0xb4df800",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bdb8",
+      "raw": "0x10000008b7bb20",
+      "target": "0x8b7bb20",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bdd0",
+      "raw": "0x1000000b4df620",
+      "target": "0xb4df620",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bdd8",
+      "raw": "0x10000008b3dd20",
+      "target": "0x8b3dd20",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bdf0",
+      "raw": "0x1000000b4df628",
+      "target": "0xb4df628",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bdf8",
+      "raw": "0x10000008ab05c0",
+      "target": "0x8ab05c0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8be10",
+      "raw": "0x1000000b4df630",
+      "target": "0xb4df630",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8be18",
+      "raw": "0x10000008b50bf0",
+      "target": "0x8b50bf0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8be30",
+      "raw": "0x1000000b4df638",
+      "target": "0xb4df638",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8be38",
+      "raw": "0x10000008b50c10",
+      "target": "0x8b50c10",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8be50",
+      "raw": "0x1000000b4df640",
+      "target": "0xb4df640",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8be58",
+      "raw": "0x10000008b39270",
+      "target": "0x8b39270",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8be70",
+      "raw": "0x1000000b4df648",
+      "target": "0xb4df648",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8be78",
+      "raw": "0x10000008b65210",
+      "target": "0x8b65210",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8be90",
+      "raw": "0x1000000b4df650",
+      "target": "0xb4df650",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8be98",
+      "raw": "0x10000008b333a0",
+      "target": "0x8b333a0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8beb0",
+      "raw": "0x1000000b4df658",
+      "target": "0xb4df658",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8beb8",
+      "raw": "0x10000008b3d820",
+      "target": "0x8b3d820",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bed0",
+      "raw": "0x1000000b4df660",
+      "target": "0xb4df660",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bed8",
+      "raw": "0x10000008b89a70",
+      "target": "0x8b89a70",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bef0",
+      "raw": "0x1000000b4df668",
+      "target": "0xb4df668",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bef8",
+      "raw": "0x10000008aaf5c0",
+      "target": "0x8aaf5c0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bf10",
+      "raw": "0x1000000b4df670",
+      "target": "0xb4df670",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bf18",
+      "raw": "0x10000008b82490",
+      "target": "0x8b82490",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bf30",
+      "raw": "0x1000000b4df678",
+      "target": "0xb4df678",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bf38",
+      "raw": "0x10000008abf110",
+      "target": "0x8abf110",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bf50",
+      "raw": "0x1000000b4df680",
+      "target": "0xb4df680",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bf58",
+      "raw": "0x10000008abf170",
+      "target": "0x8abf170",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bf70",
+      "raw": "0x1000000b4df688",
+      "target": "0xb4df688",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bf78",
+      "raw": "0x10000008aaa8f0",
+      "target": "0x8aaa8f0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bf90",
+      "raw": "0x1000000b4df690",
+      "target": "0xb4df690",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bf98",
+      "raw": "0x10000008b2b910",
+      "target": "0x8b2b910",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bfb0",
+      "raw": "0x1000000b4df698",
+      "target": "0xb4df698",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bfb8",
+      "raw": "0x10000008b2b940",
+      "target": "0x8b2b940",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bfd0",
+      "raw": "0x1000000b4df6a0",
+      "target": "0xb4df6a0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bfd8",
+      "raw": "0x10000008b2b880",
+      "target": "0x8b2b880",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bff0",
+      "raw": "0x1000000b4df6a8",
+      "target": "0xb4df6a8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8bff8",
+      "raw": "0x8b2b8b0",
+      "target": "0x8b2b8b0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c010",
+      "raw": "0x1000000b4df6b0",
+      "target": "0xb4df6b0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c018",
+      "raw": "0x10000008b3aff0",
+      "target": "0x8b3aff0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c030",
+      "raw": "0x1000000b4df6b8",
+      "target": "0xb4df6b8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c038",
+      "raw": "0x10000008ac03e0",
+      "target": "0x8ac03e0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c050",
+      "raw": "0x1000000b4df6c0",
+      "target": "0xb4df6c0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c058",
+      "raw": "0x10000008b4ac70",
+      "target": "0x8b4ac70",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c070",
+      "raw": "0x1000000b4df6c8",
+      "target": "0xb4df6c8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c078",
+      "raw": "0x10000008b4ac90",
+      "target": "0x8b4ac90",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c090",
+      "raw": "0x1000000b4df6d0",
+      "target": "0xb4df6d0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c098",
+      "raw": "0x10000008b3a160",
+      "target": "0x8b3a160",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c0b0",
+      "raw": "0x1000000b4df6d8",
+      "target": "0xb4df6d8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c0b8",
+      "raw": "0x10000008ac3370",
+      "target": "0x8ac3370",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c0d0",
+      "raw": "0x1000000b4df6e0",
+      "target": "0xb4df6e0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c0d8",
+      "raw": "0x10000008abcac0",
+      "target": "0x8abcac0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c0f0",
+      "raw": "0x1000000b4df6e8",
+      "target": "0xb4df6e8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c0f8",
+      "raw": "0x10000008aa9210",
+      "target": "0x8aa9210",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c110",
+      "raw": "0x1000000b4df6f0",
+      "target": "0xb4df6f0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c118",
+      "raw": "0x10000008abe590",
+      "target": "0x8abe590",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c130",
+      "raw": "0x1000000b4df6f8",
+      "target": "0xb4df6f8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c138",
+      "raw": "0x10000008abdfa0",
+      "target": "0x8abdfa0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c150",
+      "raw": "0x1000000b4df700",
+      "target": "0xb4df700",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c158",
+      "raw": "0x10000008abad00",
+      "target": "0x8abad00",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c170",
+      "raw": "0x1000000b4df708",
+      "target": "0xb4df708",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c178",
+      "raw": "0x10000008aad780",
+      "target": "0x8aad780",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c190",
+      "raw": "0x1000000b4df7e8",
+      "target": "0xb4df7e8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c198",
+      "raw": "0x10000008b85450",
+      "target": "0x8b85450",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c1b0",
+      "raw": "0x1000000b4df710",
+      "target": "0xb4df710",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c1b8",
+      "raw": "0x10000008aaa8a0",
+      "target": "0x8aaa8a0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c1d0",
+      "raw": "0x1000000b4df718",
+      "target": "0xb4df718",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c1d8",
+      "raw": "0x10000008b64ae0",
+      "target": "0x8b64ae0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c1f0",
+      "raw": "0x1000000b4df720",
+      "target": "0xb4df720",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c1f8",
+      "raw": "0x10000008b4e850",
+      "target": "0x8b4e850",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c210",
+      "raw": "0x1000000b4df728",
+      "target": "0xb4df728",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c218",
+      "raw": "0x10000008b85950",
+      "target": "0x8b85950",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c230",
+      "raw": "0x1000000b4df730",
+      "target": "0xb4df730",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c238",
+      "raw": "0x10000008b7a620",
+      "target": "0x8b7a620",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c250",
+      "raw": "0x1000000b4df738",
+      "target": "0xb4df738",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c258",
+      "raw": "0x10000008b520d0",
+      "target": "0x8b520d0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c270",
+      "raw": "0x1000000b4df740",
+      "target": "0xb4df740",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c278",
+      "raw": "0x10000008b3a000",
+      "target": "0x8b3a000",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c290",
+      "raw": "0x1000000b4df748",
+      "target": "0xb4df748",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c298",
+      "raw": "0x10000008b51100",
+      "target": "0x8b51100",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c2b0",
+      "raw": "0x1000000b4df750",
+      "target": "0xb4df750",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c2b8",
+      "raw": "0x10000008b53b70",
+      "target": "0x8b53b70",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c2d0",
+      "raw": "0x1000000b4df758",
+      "target": "0xb4df758",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c2d8",
+      "raw": "0x10000008b7a660",
+      "target": "0x8b7a660",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c2f0",
+      "raw": "0x1000000b4df760",
+      "target": "0xb4df760",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c2f8",
+      "raw": "0x10000008b3c120",
+      "target": "0x8b3c120",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c310",
+      "raw": "0x1000000b4df768",
+      "target": "0xb4df768",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c318",
+      "raw": "0x10000008b0c880",
+      "target": "0x8b0c880",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c330",
+      "raw": "0x1000000b4df770",
+      "target": "0xb4df770",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c338",
+      "raw": "0x10000008ac29d0",
+      "target": "0x8ac29d0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c350",
+      "raw": "0x1000000b4df778",
+      "target": "0xb4df778",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c358",
+      "raw": "0x10000008b0c8a0",
+      "target": "0x8b0c8a0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c370",
+      "raw": "0x1000000b4df780",
+      "target": "0xb4df780",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c378",
+      "raw": "0x10000008b07090",
+      "target": "0x8b07090",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c390",
+      "raw": "0x1000000b4df788",
+      "target": "0xb4df788",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c398",
+      "raw": "0x10000008b113a0",
+      "target": "0x8b113a0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c3b0",
+      "raw": "0x1000000b4df790",
+      "target": "0xb4df790",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c3b8",
+      "raw": "0x10000008b5a500",
+      "target": "0x8b5a500",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c3d0",
+      "raw": "0x1000000b4df798",
+      "target": "0xb4df798",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c3d8",
+      "raw": "0x10000008b69860",
+      "target": "0x8b69860",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c3f0",
+      "raw": "0x1000000b4df7a0",
+      "target": "0xb4df7a0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c3f8",
+      "raw": "0x10000008b467e0",
+      "target": "0x8b467e0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c410",
+      "raw": "0x1000000b4df7a8",
+      "target": "0xb4df7a8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c418",
+      "raw": "0x10000008ab24e0",
+      "target": "0x8ab24e0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c430",
+      "raw": "0x1000000b4df7e0",
+      "target": "0xb4df7e0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c438",
+      "raw": "0x10000008b641b0",
+      "target": "0x8b641b0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c450",
+      "raw": "0x1000000b4df7b0",
+      "target": "0xb4df7b0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c458",
+      "raw": "0x10000008b87de0",
+      "target": "0x8b87de0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c470",
+      "raw": "0x1000000b4df7b8",
+      "target": "0xb4df7b8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c478",
+      "raw": "0x10000008b3b2a4",
+      "target": "0x8b3b2a4",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c490",
+      "raw": "0x1000000b4df7c0",
+      "target": "0xb4df7c0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c498",
+      "raw": "0x10000008b39780",
+      "target": "0x8b39780",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c4b0",
+      "raw": "0x1000000b4df7c8",
+      "target": "0xb4df7c8",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c4b8",
+      "raw": "0x10000008b4a06b",
+      "target": "0x8b4a06b",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c4d0",
+      "raw": "0x1000000b4df7d0",
+      "target": "0xb4df7d0",
+      "format": 6,
+      "chain_membership_verified": true
+    },
+    {
+      "location": "0xab8c4d8",
+      "raw": "0x10000008b67e80",
+      "target": "0x8b67e80",
+      "format": 6,
+      "chain_membership_verified": true
+    }
+  ],
+  "limits": [
+    "ObjC-exposed methods only; Swift native methods and call graph not covered",
+    "No application execution or behavior equivalence established"
+  ]
+}

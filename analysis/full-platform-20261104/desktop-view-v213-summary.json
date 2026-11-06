@@ -1,0 +1,42 @@
+{
+  "status": "partial",
+  "platform": "macOS",
+  "baseline": "26.1021.31345",
+  "observation": "Original settings navigation emits browser-sidebar-owner-sync ownerRoutePath=/settings/general-settings; independent host rejected it",
+  "trace": "desktop-view-v210-trace.json",
+  "implementation": [
+    "Separate selected-view.json scoped to synthetic account; allow only source-listed settings sections",
+    "Handle settings owner before conversation/pending mutation",
+    "Clear selected view only on accepted home/chat/project transition",
+    "Bootstrap injects latest stored view through original initialRoute parameter before importing original runtime",
+    "Original files and selected conversation/draft schemas unchanged"
+  ],
+  "acceptance": {
+    "report": "desktop-view-v212-recovery.json",
+    "passed": [
+      "settings renderer reload",
+      "settings full process restart",
+      "selected conversation preserved",
+      "home clears settings view",
+      "home reload stays home",
+      "view store account/path/corruption/symlink checks",
+      "existing chat/project route unit checks"
+    ]
+  },
+  "limitations": [
+    "Settings general page actually tested; other listed settings sections not individually accepted",
+    "Other non-chat pages, multiwindow/tab restoration and platform-specific behavior remain unaccepted",
+    "No new full bundle; source-host runtime only"
+  ],
+  "preview": {
+    "pid": 83672,
+    "profile": "v175-user-preview",
+    "report": "desktop-view-v213-preview.json",
+    "externalCoordinates": [
+      62,
+      -1025
+    ],
+    "leftRunning": true
+  },
+  "next": "Continue original frontend navigation and local restoration coverage; keep Windows/iOS/Android/Web acceptance distinct"
+}

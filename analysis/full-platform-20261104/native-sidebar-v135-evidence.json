@@ -1,0 +1,47 @@
+{
+  "type": "official-artifact-static-observation",
+  "officialProduct": "Codex 26.1021.31345 ChatGPT mode",
+  "records": [
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-primary-7d7313419f84.js",
+      "sha256": "745529956e303674c268a6871e6f5aad49eca7ef5af899952bf0379d829821b6",
+      "matches": [
+        {
+          "text": "xe=K.hasLoadedProjectSources&&O",
+          "utf8ByteOffset": 3427489
+        },
+        {
+          "text": "Re!=null&&n!=null&&r&&Re.ensurePage",
+          "utf8ByteOffset": 3382745
+        },
+        {
+          "text": "GBn as Che",
+          "utf8ByteOffset": 91141
+        }
+      ]
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+      "matches": [
+        {
+          "text": "Jbn as GBn",
+          "utf8ByteOffset": 10211606
+        },
+        {
+          "text": "function Rbn(){",
+          "utf8ByteOffset": 3513915
+        },
+        {
+          "text": "Jbn=Ra(V,",
+          "utf8ByteOffset": 3515899
+        }
+      ]
+    }
+  ],
+  "interpretation": "Sidebar catalog ensurePage waits on hasLoadedProjectSources and projectless workspace query isFetched. Missing projectlessThreads throws from Rbn; standalone host omitted workspaceRoot previously supplied by analysis probe.",
+  "limits": [
+    "Consumer wiring does not prove official backend implementation",
+    "Independent host uses a fresh empty directory; local tool execution remains unsupported"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "static instructions and metadata",
+  "setters": [
+    {
+      "function": "0x4cc5d78",
+      "field": "_hasExceededSingleLineThreshold",
+      "offset": "0x1d0"
+    },
+    {
+      "function": "0x4cc5dcc",
+      "field": "_streamingDictationHasExceededSingleLineThreshold",
+      "offset": "0x1d1"
+    }
+  ],
+  "transitions": [
+    {
+      "source": "0x4c5b714",
+      "call": "0x4c5b850",
+      "value": true,
+      "proof": "0x45faf4 sets w0=1 and self=x19",
+      "condition": "Only on selected branch; 0x761a38c result has not been semantically identified"
+    },
+    {
+      "source": "sendMorphSubject",
+      "registration": "0x2936d24",
+      "callback": "0x2a544d8",
+      "setter_call": "0x2a54524",
+      "value": false,
+      "proof": "0x6f39c0 sets self=x0 and w0=0; received event value does not flow into setter",
+      "condition": "Captured owner reference resolves non-null"
+    }
+  ],
+  "subscription_evidence": {
+    "status": "partial",
+    "authority": "shipped-artifact-static-instructions",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "window": {
+      "start": "0x2936d14",
+      "end_exclusive": "0x2936d30",
+      "sha256": "00125d60a1e1f5f6f3cf5c2d8084a52cca63c2230f8e6b02f15e78ac60377588"
+    },
+    "linker_function_starts_in_window": [],
+    "next_linker_function_start": "0x2936d48",
+    "direct_calls": [
+      {
+        "site": "0x2936d20",
+        "target": "0x15504c",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x2936d24",
+        "target": "0x7c46060",
+        "imported_symbol": "_$s7Combine9PublisherPAAs5NeverO7FailureRtzrlE4sink12receiveValueAA14AnyCancellableCy6OutputQzc_tF",
+        "chained_binding": {
+          "slot": "0xaacd160",
+          "symbol": "_$s7Combine9PublisherPAAs5NeverO7FailureRtzrlE4sink12receiveValueAA14AnyCancellableCy6OutputQzc_tF",
+          "library_ordinal": 38,
+          "weak": false,
+          "import_ordinal": 6420,
+          "table_addend": 0,
+          "encoded_pointer_addend": 0,
+          "chain_membership_verified": true
+        }
+      },
+      {
+        "site": "0x2936d28",
+        "target": "0x1562b8",
+        "imported_symbol": null
+      },
+      {
+        "site": "0x2936d2c",
+        "target": "0x7c54814",
+        "imported_symbol": "_swift_release_x24"
+      }
+    ],
+    "adjacent_selector_loads": [],
+    "limits": [
+      "Window is not a proven function boundary",
+      "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+      "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+    ]
+  },
+  "unknowns": [
+    "Threshold measurement rule and numeric boundary",
+    "Editor witness wrapper 0x4d4c5c4 incoming indirect callers",
+    "Whether all active editor variants use these paths",
+    "Runtime subscription cleanup and visual effects"
+  ],
+  "correction": "Callback is a reset, not a pass-through of externally computed threshold. Earlier calculation filename identifies a candidate caller, not confirmed measurement."
+}

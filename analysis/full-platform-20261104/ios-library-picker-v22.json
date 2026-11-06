@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "reference_version": "1.2026.293 client; independent native import implementation",
+  "runtime": {
+    "architecture": "arm64",
+    "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "deviceName": "REA ChatGPT Offline",
+    "modelName": "iPhone 17 Pro",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "verified": [
+    "Separate local.rea.syntheticfiles simulator app writes only synthetic file and exposes own Documents to Files",
+    "System picker selects REA Fixtures text through local Files location",
+    "New imported row identified by difference from prior row identities",
+    "Quick Look displays imported text body",
+    "Actual host terminate/relaunch restores same imported row identity and preview body",
+    "Cancelling a second system picker preserves exact library row identities",
+    "After-restart screenshot visually reviewed"
+  ],
+  "attempts": {
+    "probe-v1": "picker visibility observation only, not import acceptance",
+    "v1": "failed selector assumed spaced 我的 iPhone while picker already at local root",
+    "v2": "failed selector assumed browse tab always opens local root; actual location sidebar observed",
+    "v3": "full import/preview/process restart/cancel passed"
+  },
+  "limitations": [
+    "One local synthetic text file, one simulator; no physical iPhone",
+    "PDF/image, provider download and source permission failures remain unaccepted",
+    "Picker initial-state handling tied to observed Chinese system UI",
+    "No official native library layout/bridge equivalence",
+    "Synchronous import performance and interrupted-copy orphan handling still open"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/ios/FixtureProvider/main.swift": "d7cf39203d53d2d824725cb1858125bcf3a15eac8dd6c7456200c7bc3c0e457f",
+    "implementation/ios/Tools/install-fixture-provider.py": "5a6ef81dd66070c6f7d9c0c932701972d41633a4678c2389a78a8f5207adcf31",
+    "implementation/ios/UITests/HostInteractionTests.swift": "15ec9cf8fcaf792ef67c3122d21a1e3b5238b2bb9e918c810afe537deaa3ae8a",
+    "analysis/full-platform-20261104/ios-fixture-provider-v1.log": "0b4f759e0c1ab8ff36b2ff8624b1210112237b6e250b397a236b35281d695781",
+    "analysis/full-platform-20261104/ios-picker-v3.log": "53607c9d1e5b2d36e1d51df5495bb8c84124fe0f043d9a01aa0591942a45b9e3",
+    "analysis/full-platform-20261104/ios-picker-v3.summary.json": "b462cf1c54d3260c91ea3cd5e1fdbdf60bcd7cd63461bd91db64b8ae877def2a",
+    "analysis/full-platform-20261104/ios-picker-v3-attachments/imported-file-after-restart.png": "074898bdf0389838a4013c1f0203b38c79b9b7872b6384f697259a9ba6302fcb"
+  },
+  "next_action": "Add PDF/image synthetic vectors, validate native import/preview; advance evidence-based library layout and cross-platform differences"
+}

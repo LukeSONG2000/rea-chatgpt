@@ -1,0 +1,146 @@
+{
+  "schema": "rea-ios-component-integration-v1",
+  "batch": "v438",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "evidence_type": "static_artifact_observation_and_independent_native_integration",
+  "integrated": [
+    "ordinary task row top-aligned HStack spacing 8, expanding leading column without middle Spacer",
+    "inner vertical padding 8; horizontal padding 20; ScaledMetric minimum height 44; outer vertical padding 2",
+    "explicit zero ordinary list row insets",
+    "Button owner with independent selectedTask navigation adapter preserving host/thread identity"
+  ],
+  "limits": [
+    "official inherited button style and owner gating not recovered; plain style and selectedTask are host adapters",
+    "conditional last-row bottom 12 and project/search/sidebar branches not integrated",
+    "selection appearance, context menu and swipe actions remain partial",
+    "no new build/sign/install/runtime/visual acceptance; Android independent evidence missing"
+  ],
+  "validation": {
+    "typecheck": {
+      "status": "passed",
+      "existing_deprecation_warnings": 3
+    },
+    "ui_test_parse": "passed",
+    "ui_runtime": "not_run",
+    "existing_tests_to_run": [
+      "testNoDebugTitleNavigation",
+      "testRemoteLongTitleLayout",
+      "testRemoteTaskScopeAndReturn",
+      "testRemoteSectionScopeAndRestoration",
+      "testRemoteCurrentTurnGeometry",
+      "testRemoteFragmentSequenceUpdates"
+    ],
+    "build_retention_stale_targets": [],
+    "runtime_blocker": {
+      "last_observed_live_pids": [
+        97181,
+        97197,
+        87483
+      ],
+      "condition": "existing xcodebuild -runFirstLaunch has not completed; prior sample showed AuthorizationCopyRights",
+      "preview": "preserved; not current sources"
+    }
+  },
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "085d143b313fd138d3d69f0117a308e23692d4ef081b62212ba08119881efe32"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "67f73018dc413e2885be73d08d061c6a69cec19c5cd4a7a5452e04de947da05b"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "8e7dd14a8db18e030a6f94a6347d7b90ed3c69544e7f06270ca453742e6aaacb"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-cell-callback-refs.json",
+      "sha256": "0a08f44f9d1e2d6a4f3ac4b8a967b90aa2d3903164fcabd63cb6e83671d5b139"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-inset-frame-proof.json",
+      "sha256": "a687e87c0fb695acc5efa6c1db9fde19d16e24cf5922b680fb78851dd7d03082"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-list-row-construction.json",
+      "sha256": "737190463c288526a22f83a5c68b8f3572703aca468002aec8dd62ac8edcee49"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-metrics-helpers.json",
+      "sha256": "24fbcd41980bcdaf8a0f0912ee55b8829e7a0ccdbd6b39fc107c85b5ef7cd137"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-normal-row-helpers.json",
+      "sha256": "a6b0c6c4ed36f7fcdd7487cbc13a017176e7e8c34976f7cd36b1b6c2e125b07b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-normal-row-modifiers.json",
+      "sha256": "18ac8f4f8f1c5c255674db216a2593f6ee108412348dea0346f511dc6226e9be"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-normal-row-types.json",
+      "sha256": "4d4ffa71ab919d61f48f8c330a9239b1836663647b26c877a873716454e801ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-owner-callback-refs.json",
+      "sha256": "9ad1e84f7f19b2e0f1dfec030dc851b584957a5b22ece8b10922fee5069676e4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-row-action.json",
+      "sha256": "63a512225ae6236dbf1491088e0ecc393f01d667f8c1709b0deedd0837f76108"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-row-cell-refs.json",
+      "sha256": "6ec230473afb2a07e0b8035ed5b7f7ab32418a8a9493d8b5bb27965953123325"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-row-cell.json",
+      "sha256": "363438ba0072c8ac78c5211b03acb37ad645d945955683beb551cc49bc6abe83"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-row-consumer-refs.json",
+      "sha256": "537bec451d87226d66016b72a7fd2c84a22bd29c9d4544f2a443325e15f1b348"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-row-consumer.json",
+      "sha256": "a907483d372b285d3940835decc53ca547d1920e8326987488a5b179c7bfae64"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-row-metrics-body.json",
+      "sha256": "8156a17a64562c906ab41620ac89c91536ca78d171701449916775e708b4e196"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-row-metrics-witness.json",
+      "sha256": "1b617e41c73b90c939d9df50636b1501f8fee9df19a5722e8966ee8d5beb1b52"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-row-metrics.json",
+      "sha256": "e31e322792bada9f329f7dabc9745aeebce90548eb25ddc118238fab1de80a6d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-row-owner-refs.json",
+      "sha256": "156744c3ec25ba09d9b4006ccfe1ecb9bc1bc91a53fab27d981a83d1f6a404f7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-task-list-cell-owner.json",
+      "sha256": "fdf8fc564bb69eb1c7fbb2725eb7cb31654f4f29965e434b74d7836108774bd2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-task-wrapper.json",
+      "sha256": "b8bc7dae130029b609150a996ef6bff0335761b603c4da08cd09fff4dd842e30"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v438-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    }
+  ]
+}

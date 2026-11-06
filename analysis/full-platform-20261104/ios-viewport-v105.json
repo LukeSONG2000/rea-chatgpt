@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-native-host-implementation",
+  "platform": "iOS 27 Simulator",
+  "target_artifact_version": "1.2026.293",
+  "changes": [
+    "Capture reading text block and UTF-16 character/caret offset before viewport rotation",
+    "Restore after layout, bounded to content; fallback to saved row position",
+    "Reject restoration after scope/generation changes or a new scroll gesture",
+    "Force portrait baseline in UI regression to avoid inherited orientation"
+  ],
+  "validation": {
+    "status": "passed-with-limits",
+    "result": "ios-viewport-v105-r3.xcresult",
+    "summary": "ios-viewport-v105-r3.summary.json",
+    "passedTests": 1,
+    "skippedTests": 0,
+    "checks": [
+      "Reading block remains visible in landscape after text reflow",
+      "Portrait return row offset within 24 points",
+      "Cold restart, keyboard, multiline composer, conversation switch and tail restart regression"
+    ],
+    "screenshots": "ios-viewport-v105-r3-images/manifest.json",
+    "visual_review": "Portrait-return image inspected. Landscape exported screenshot contains black/cropped area and EXIF orientation 8; geometry/AX pass does not establish landscape visual acceptance."
+  },
+  "prior_attempts": [
+    {
+      "result": "ios-viewport-v105-before.xcresult",
+      "status": "failed",
+      "reason": "Original reading block left viewport in landscape"
+    },
+    {
+      "result": "ios-viewport-v105-after.xcresult",
+      "status": "failed",
+      "reason": "Inherited landscape start invalidated portrait round-trip offset comparison; startup orientation now asserted"
+    }
+  ],
+  "limits": [
+    "Landscape screenshot/capture discrepancy remains unresolved; do not claim full landscape visual acceptance",
+    "Dynamic type change not exercised",
+    "Character anchor applies to in-process rotation; cold storage still row-relative",
+    "Mixed content/table and active generation rotation not covered",
+    "Gesture guard added but concurrent rotation/drag not runtime-tested",
+    "No physical iPhone or official visual parity"
+  ],
+  "next_action": "Investigate landscape screenshot geometry and validate dynamic type/width reflow with mixed content",
+  "sources": [
+    {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "6f5618aee3d8db23c75da44310300bfba05c1913e9b3338c1ba8e8803d0e68df"
+    },
+    {
+      "file": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "57d0daa53bd086fdd2a5edc7e27623c8e2246ace60d4d166df7648511980f42c"
+    }
+  ]
+}

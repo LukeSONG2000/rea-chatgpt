@@ -1,0 +1,883 @@
+{
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "descriptor": "0x958945c",
+  "field_kind": 1,
+  "fields": [
+    {
+      "name": "accountID",
+      "record": "0x9a0b068",
+      "type_reference": "0x8d09990"
+    },
+    {
+      "name": "accountManager",
+      "record": "0x9a0b074",
+      "type_reference": "0x8d1a7d0"
+    },
+    {
+      "name": "$__lazy_storage_$_accountDataSource",
+      "record": "0x9a0b080",
+      "type_reference": "0x8fcfe20"
+    },
+    {
+      "name": "_scrollPositionSubject",
+      "record": "0x9a0b08c",
+      "type_reference": "0x8d18ff0"
+    },
+    {
+      "name": "presentationContext",
+      "record": "0x9a0b098",
+      "type_reference": "0x8d1a7e2"
+    },
+    {
+      "name": "rootToolbarStyle",
+      "record": "0x9a0b0a4",
+      "type_reference": "0x8d1a7e8"
+    },
+    {
+      "name": "showGPTs",
+      "record": "0x9a0b0b0",
+      "type_reference": "0x8c59ca0"
+    },
+    {
+      "name": "_makeCustomizeScreen",
+      "record": "0x9a0b0bc",
+      "type_reference": "0x8d1a7ee"
+    },
+    {
+      "name": "_openGlobalPluginEntrypoint",
+      "record": "0x9a0b0c8",
+      "type_reference": "0x8d1a818"
+    },
+    {
+      "name": "_rootPresentation",
+      "record": "0x9a0b0d4",
+      "type_reference": "0x8d1a82a"
+    },
+    {
+      "name": "_webSubscriptionAlert",
+      "record": "0x9a0b0e0",
+      "type_reference": "0x8d19158"
+    },
+    {
+      "name": "_restorePurchasesErrorAlert",
+      "record": "0x9a0b0ec",
+      "type_reference": "0x8d1a830"
+    },
+    {
+      "name": "accountSwitcherViewModel",
+      "record": "0x9a0b0f8",
+      "type_reference": "0x8d1a838"
+    },
+    {
+      "name": "_currentUser",
+      "record": "0x9a0b104",
+      "type_reference": "0x8c1de00"
+    },
+    {
+      "name": "_currentAccountModel",
+      "record": "0x9a0b110",
+      "type_reference": "0x8d1a84a"
+    },
+    {
+      "name": "_canShowAccountSwitcher",
+      "record": "0x9a0b11c",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_canAddAccount",
+      "record": "0x9a0b128",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_isRefreshingUser",
+      "record": "0x9a0b134",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_isFetchingAccountStatus",
+      "record": "0x9a0b140",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_isLoggedIn",
+      "record": "0x9a0b14c",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_isLoggingOut",
+      "record": "0x9a0b158",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_hapticsEnabled",
+      "record": "0x9a0b164",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_modelPickerThinkingEnabled",
+      "record": "0x9a0b170",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_modelPickerProPresetPreference",
+      "record": "0x9a0b17c",
+      "type_reference": "0x8d1a850"
+    },
+    {
+      "name": "_availableModelPickerProPresetPreferences",
+      "record": "0x9a0b188",
+      "type_reference": "0x93d65a0"
+    },
+    {
+      "name": "_deviceSupportsHaptics",
+      "record": "0x9a0b194",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_preferredColorScheme",
+      "record": "0x9a0b1a0",
+      "type_reference": "0x8d1933c"
+    },
+    {
+      "name": "_themeColorSetting",
+      "record": "0x9a0b1ac",
+      "type_reference": "0x8d1a860"
+    },
+    {
+      "name": "_themeSelectorAvailableColors",
+      "record": "0x9a0b1b8",
+      "type_reference": "0x941c054"
+    },
+    {
+      "name": "_consumerLockdownModePolicyState",
+      "record": "0x9a0b1c4",
+      "type_reference": "0x8d1a542"
+    },
+    {
+      "name": "$__lazy_storage_$_advancedAccountSecurityFeatureEnabled",
+      "record": "0x9a0b1d0",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "_presentationQueue",
+      "record": "0x9a0b1dc",
+      "type_reference": "0x8d1a880"
+    },
+    {
+      "name": "_pluginConversationPresentation",
+      "record": "0x9a0b1e8",
+      "type_reference": "0x8cf0878"
+    },
+    {
+      "name": "_showsManageSubscriptionsSheet",
+      "record": "0x9a0b1f4",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_settingsUpsellState",
+      "record": "0x9a0b200",
+      "type_reference": "0x8d1a88e"
+    },
+    {
+      "name": "$__lazy_storage_$_usesUpsellSettingsRedesign",
+      "record": "0x9a0b20c",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_changeEmailAffordanceEnabled",
+      "record": "0x9a0b218",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_timeManagementSettingsViewModel",
+      "record": "0x9a0b224",
+      "type_reference": "0x8d1a894"
+    },
+    {
+      "name": "$__lazy_storage_$_studyHoursSettingsScreen",
+      "record": "0x9a0b230",
+      "type_reference": "0x8d1a89c"
+    },
+    {
+      "name": "$__lazy_storage_$_intunePolicySettingsViewModel",
+      "record": "0x9a0b23c",
+      "type_reference": "0x8d1a8b0"
+    },
+    {
+      "name": "$__lazy_storage_$_shouldShowIntunePolicySetting",
+      "record": "0x9a0b248",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "_accountSettingsStatus",
+      "record": "0x9a0b254",
+      "type_reference": "0x8c222ea"
+    },
+    {
+      "name": "pluginSettingsDetailOutputPublisher",
+      "record": "0x9a0b260",
+      "type_reference": "0x8d1a8be"
+    },
+    {
+      "name": "pluginsDirectoryDetailOutputPublisher",
+      "record": "0x9a0b26c",
+      "type_reference": "0x8d1a8d0"
+    },
+    {
+      "name": "$__lazy_storage_$_connectorsViewModel",
+      "record": "0x9a0b278",
+      "type_reference": "0x8d1a8e2"
+    },
+    {
+      "name": "$__lazy_storage_$_privacyAndSafetyViewModel",
+      "record": "0x9a0b284",
+      "type_reference": "0x8d1a8ea"
+    },
+    {
+      "name": "remoteControlSettingsViewModel",
+      "record": "0x9a0b290",
+      "type_reference": "0x8d1a8f2"
+    },
+    {
+      "name": "$__lazy_storage_$_safetySettingsViewModel",
+      "record": "0x9a0b29c",
+      "type_reference": "0x8d1a904"
+    },
+    {
+      "name": "$__lazy_storage_$_fileLibraryStorageManagementViewModel",
+      "record": "0x9a0b2a8",
+      "type_reference": "0x8d1a90c"
+    },
+    {
+      "name": "$__lazy_storage_$_notificationsViewModel",
+      "record": "0x9a0b2b4",
+      "type_reference": "0x8d1a920"
+    },
+    {
+      "name": "$__lazy_storage_$_walletViewModel",
+      "record": "0x9a0b2c0",
+      "type_reference": "0x8d1a92a"
+    },
+    {
+      "name": "$__lazy_storage_$_voiceSettingsViewModel",
+      "record": "0x9a0b2cc",
+      "type_reference": "0x8d1a93e"
+    },
+    {
+      "name": "$__lazy_storage_$_incomingCallSettingsViewModel",
+      "record": "0x9a0b2d8",
+      "type_reference": "0x8d1a946"
+    },
+    {
+      "name": "$__lazy_storage_$_usageLimitsDashboardViewModel",
+      "record": "0x9a0b2e4",
+      "type_reference": "0x8d1a94e"
+    },
+    {
+      "name": "$__lazy_storage_$_calpicoSettingsViewModel",
+      "record": "0x9a0b2f0",
+      "type_reference": "0x8d1a962"
+    },
+    {
+      "name": "$__lazy_storage_$_calpicoUserProfileViewModel",
+      "record": "0x9a0b2fc",
+      "type_reference": "0x8d1a96a"
+    },
+    {
+      "name": "$__lazy_storage_$_calpicoEnabled",
+      "record": "0x9a0b308",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "_showVoiceSetting",
+      "record": "0x9a0b314",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_isMemoryAvailable",
+      "record": "0x9a0b320",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_hasUsedCarPlay",
+      "record": "0x9a0b32c",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "$__lazy_storage_$_customDictionarySettingsViewModel",
+      "record": "0x9a0b338",
+      "type_reference": "0x8d1a972"
+    },
+    {
+      "name": "$__lazy_storage_$_dictationHistoryViewModel",
+      "record": "0x9a0b344",
+      "type_reference": "0x8d1a97a"
+    },
+    {
+      "name": "$__lazy_storage_$_showCustomDictionarySetting",
+      "record": "0x9a0b350",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "_ageStatusRowSummary",
+      "record": "0x9a0b35c",
+      "type_reference": "0x8d1a982"
+    },
+    {
+      "name": "_backgroundVoiceEnabled",
+      "record": "0x9a0b368",
+      "type_reference": "0x8fd0210"
+    },
+    {
+      "name": "_startWithVoiceEnabled",
+      "record": "0x9a0b374",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_showPhoneGestureVoiceSetting",
+      "record": "0x9a0b380",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_phoneGestureVoiceEnabled",
+      "record": "0x9a0b38c",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_phoneGestureOrbitDisplayName",
+      "record": "0x9a0b398",
+      "type_reference": "0x8bc9970"
+    },
+    {
+      "name": "_hideRecentContentInCarPlay",
+      "record": "0x9a0b3a4",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_isCarPlayAutoConnectEnabled",
+      "record": "0x9a0b3b0",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_voiceLanguageSetting",
+      "record": "0x9a0b3bc",
+      "type_reference": "0x8d1a988"
+    },
+    {
+      "name": "_voiceLanguagePreference",
+      "record": "0x9a0b3c8",
+      "type_reference": "0x8d1a9a0"
+    },
+    {
+      "name": "_showWallet",
+      "record": "0x9a0b3d4",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "$__lazy_storage_$_showAutocompleteSuggestionsSettings",
+      "record": "0x9a0b3e0",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_backgroundVoiceEnabledByDefault",
+      "record": "0x9a0b3ec",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_showFileLibraryStorageManagementSetting",
+      "record": "0x9a0b3f8",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_notificationSettingsAvailable",
+      "record": "0x9a0b404",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_showConnectors",
+      "record": "0x9a0b410",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_showCloudBrowserSettings",
+      "record": "0x9a0b41c",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_showPasswordManager",
+      "record": "0x9a0b428",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_passwordManagerScreen",
+      "record": "0x9a0b434",
+      "type_reference": "0x8d1a9a6"
+    },
+    {
+      "name": "$__lazy_storage_$_showPrivacyCenter",
+      "record": "0x9a0b440",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_useNewPrivacyCenterTemporaryChatCopy",
+      "record": "0x9a0b44c",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "_shouldShowCodexRemoteControlSetting",
+      "record": "0x9a0b458",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_usesCodexBranding",
+      "record": "0x9a0b464",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "$__lazy_storage_$_shouldShowAdDataSetting",
+      "record": "0x9a0b470",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_shouldShowNoAuthAdDataSetting",
+      "record": "0x9a0b47c",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_noAuthAdsPersonalizationSettingService",
+      "record": "0x9a0b488",
+      "type_reference": "0x8d1a9ba"
+    },
+    {
+      "name": "$__lazy_storage_$_trustedContactViewModel",
+      "record": "0x9a0b494",
+      "type_reference": "0x8d1a9c4"
+    },
+    {
+      "name": "settingsUpsellStateCancellable",
+      "record": "0x9a0b4a0",
+      "type_reference": "0x8d19c40"
+    },
+    {
+      "name": "settingsUpsellWorkspaceStatsigService",
+      "record": "0x9a0b4ac",
+      "type_reference": "0x8d19e40"
+    },
+    {
+      "name": "_pluginsExperienceEnabled",
+      "record": "0x9a0b4b8",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_referencePhotoSettingsViewModel",
+      "record": "0x9a0b4c4",
+      "type_reference": "0x8d1a9d8"
+    },
+    {
+      "name": "$__lazy_storage_$_showTeenSettings",
+      "record": "0x9a0b4d0",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "$__lazy_storage_$_shouldShowModelPickerThinkingSetting",
+      "record": "0x9a0b4dc",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "_isOrbitAvailable",
+      "record": "0x9a0b4e8",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_defaultLandingDestination",
+      "record": "0x9a0b4f4",
+      "type_reference": "0x8d1a9e6"
+    },
+    {
+      "name": "_navigationDestination",
+      "record": "0x9a0b500",
+      "type_reference": "0x8e84ae4"
+    },
+    {
+      "name": "customizeVisit",
+      "record": "0x9a0b50c",
+      "type_reference": "0x8d19168"
+    },
+    {
+      "name": "_shouldShowSecurityRecommendations",
+      "record": "0x9a0b518",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_shouldShowCodexRemoteLocalAuthenticationSetting",
+      "record": "0x9a0b524",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_isOrbitStartScreenAvailable",
+      "record": "0x9a0b530",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_staticSettingsEntrypointState",
+      "record": "0x9a0b53c",
+      "type_reference": "0x8d1a9ec"
+    },
+    {
+      "name": "cachedRefreshedDesignAssignment",
+      "record": "0x9a0b548",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "cachedPrivacyCenterLockedChatsVisibility",
+      "record": "0x9a0b554",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "cachedPrivacyCenterLockedChatsInTemporaryChatVisibility",
+      "record": "0x9a0b560",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "_refreshedDesignAssignmentRevision",
+      "record": "0x9a0b56c",
+      "type_reference": "0x8e133f0"
+    },
+    {
+      "name": "_privacyCenterLockedChatsVisibilityRevision",
+      "record": "0x9a0b578",
+      "type_reference": "0x8e133f0"
+    },
+    {
+      "name": "_optimisticBackgroundVoiceEnabled",
+      "record": "0x9a0b584",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "_pendingBackgroundVoiceEnabledToSave",
+      "record": "0x9a0b590",
+      "type_reference": "0x8bc9000"
+    },
+    {
+      "name": "saveVoiceSettingsTask",
+      "record": "0x9a0b59c",
+      "type_reference": "0x8c20e10"
+    },
+    {
+      "name": "saveBackgroundVoiceSettingsTask",
+      "record": "0x9a0b5a8",
+      "type_reference": "0x8c20e10"
+    },
+    {
+      "name": "$__lazy_storage_$_upsellProvider",
+      "record": "0x9a0b5b4",
+      "type_reference": "0x8d19170"
+    },
+    {
+      "name": "cachedConnectorViewModels",
+      "record": "0x9a0b5c0",
+      "type_reference": "0x8d1a9f2"
+    },
+    {
+      "name": "cachedHealthKitConnectorDetailViewModel",
+      "record": "0x9a0b5cc",
+      "type_reference": "0x8d1aa12"
+    },
+    {
+      "name": "cachedPluginsDirectoryScreen",
+      "record": "0x9a0b5d8",
+      "type_reference": "0x8e82c2c"
+    },
+    {
+      "name": "cachedPluginsDirectoryDetailScreen",
+      "record": "0x9a0b5e4",
+      "type_reference": "0x8d09b10"
+    },
+    {
+      "name": "cachedPluginsDirectoryDetailPresentation",
+      "record": "0x9a0b5f0",
+      "type_reference": "0x8d1917a"
+    },
+    {
+      "name": "pluginConversationPresentationID",
+      "record": "0x9a0b5fc",
+      "type_reference": "0x8c85b40"
+    },
+    {
+      "name": "pluginSettingsGeneration",
+      "record": "0x9a0b608",
+      "type_reference": "0x8e12c00"
+    },
+    {
+      "name": "cachedPluginSettingsDetailScreens",
+      "record": "0x9a0b614",
+      "type_reference": "0x8d1aa2e"
+    },
+    {
+      "name": "pluginDetailNavigationState",
+      "record": "0x9a0b620",
+      "type_reference": "0x8d1aa5a"
+    },
+    {
+      "name": "pluginSettingsDetailOutputHandler",
+      "record": "0x9a0b62c",
+      "type_reference": "0x8d1aa60"
+    },
+    {
+      "name": "pluginsDirectoryDetailOutputHandler",
+      "record": "0x9a0b638",
+      "type_reference": "0x8d1aa6e"
+    },
+    {
+      "name": "pendingPluginSettingsID",
+      "record": "0x9a0b644",
+      "type_reference": "0x8d1aa7c"
+    },
+    {
+      "name": "cachedMemberSettingsViewModels",
+      "record": "0x9a0b650",
+      "type_reference": "0x8d1aa84"
+    },
+    {
+      "name": "makeRemoteFileLoader",
+      "record": "0x9a0b65c",
+      "type_reference": "0x8f579b0"
+    },
+    {
+      "name": "dependencies",
+      "record": "0x9a0b668",
+      "type_reference": "0x8d1452e"
+    },
+    {
+      "name": "didResetLockedChats",
+      "record": "0x9a0b674",
+      "type_reference": "0x8cf0c00"
+    },
+    {
+      "name": "personalizationViewModelDependenciesProvider",
+      "record": "0x9a0b680",
+      "type_reference": "0x8d1aa98"
+    },
+    {
+      "name": "_personalizationViewModel",
+      "record": "0x9a0b68c",
+      "type_reference": "0x8d1ab0c"
+    },
+    {
+      "name": "valdiSoftSurfaceContextProvider",
+      "record": "0x9a0b698",
+      "type_reference": "0x8d1ab14"
+    },
+    {
+      "name": "_valdiSoftSurfaceContext",
+      "record": "0x9a0b6a4",
+      "type_reference": "0x8d19fb0"
+    },
+    {
+      "name": "__familyViewModel",
+      "record": "0x9a0b6b0",
+      "type_reference": "0x8d1ab28"
+    },
+    {
+      "name": "__ageStatusViewModel",
+      "record": "0x9a0b6bc",
+      "type_reference": "0x8d1ab30"
+    },
+    {
+      "name": "__archivedConversationsViewModel",
+      "record": "0x9a0b6c8",
+      "type_reference": "0x8d14b90"
+    },
+    {
+      "name": "__securityViewModel",
+      "record": "0x9a0b6d4",
+      "type_reference": "0x8d1ab3a"
+    },
+    {
+      "name": "_cloudBrowserSettingsViewModel",
+      "record": "0x9a0b6e0",
+      "type_reference": "0x8d1ab44"
+    },
+    {
+      "name": "_ordersViewModel",
+      "record": "0x9a0b6ec",
+      "type_reference": "0x8d1ab4e"
+    },
+    {
+      "name": "cachedOrderDetailsViewModels",
+      "record": "0x9a0b6f8",
+      "type_reference": "0x8d1ab62"
+    },
+    {
+      "name": "cachedBazaarSettingsScreen",
+      "record": "0x9a0b704",
+      "type_reference": "0x8d1ab8e"
+    },
+    {
+      "name": "cachedBazaarNoAuthSettingsScreen",
+      "record": "0x9a0b710",
+      "type_reference": "0x8d1aba2"
+    },
+    {
+      "name": "_preferredColorSchemeSetting",
+      "record": "0x9a0b71c",
+      "type_reference": "0x8d19d6a"
+    },
+    {
+      "name": "_defaultLandingDestinationSetting",
+      "record": "0x9a0b728",
+      "type_reference": "0x8d1abb8"
+    },
+    {
+      "name": "_hapticsEnabledSetting",
+      "record": "0x9a0b734",
+      "type_reference": "0x8c1dd38"
+    },
+    {
+      "name": "_hasUsedCarPlaySetting",
+      "record": "0x9a0b740",
+      "type_reference": "0x8c1dd38"
+    },
+    {
+      "name": "_carPlayHideRecentContentSetting",
+      "record": "0x9a0b74c",
+      "type_reference": "0x8c1dd38"
+    },
+    {
+      "name": "_carPlayAutoConnectEnabledSetting",
+      "record": "0x9a0b758",
+      "type_reference": "0x8d1abd0"
+    },
+    {
+      "name": "_modelPickerPrefersAutoForInstantPresetSetting",
+      "record": "0x9a0b764",
+      "type_reference": "0x911c730"
+    },
+    {
+      "name": "_modelPickerProPresetPreferenceSetting",
+      "record": "0x9a0b770",
+      "type_reference": "0x92309b0"
+    },
+    {
+      "name": "_startWithVoiceEnabledSetting",
+      "record": "0x9a0b77c",
+      "type_reference": "0x911c730"
+    },
+    {
+      "name": "$__lazy_storage_$_auth",
+      "record": "0x9a0b788",
+      "type_reference": "0x8fcff2c"
+    },
+    {
+      "name": "hapticCapabilities",
+      "record": "0x9a0b794",
+      "type_reference": "0x8d1abe0"
+    },
+    {
+      "name": "$__lazy_storage_$_userRepository",
+      "record": "0x9a0b7a0",
+      "type_reference": "0x8d8a0d4"
+    },
+    {
+      "name": "accountSettingsService",
+      "record": "0x9a0b7ac",
+      "type_reference": "0x8d1a080"
+    },
+    {
+      "name": "$__lazy_storage_$_ageStatusController",
+      "record": "0x9a0b7b8",
+      "type_reference": "0x8d1abe8"
+    },
+    {
+      "name": "accountFeatureFlagsProvider",
+      "record": "0x9a0b7c4",
+      "type_reference": "0x8d1abf0"
+    },
+    {
+      "name": "settingsDidAppearAccountFeatureFlagRefreshSignal",
+      "record": "0x9a0b7d0",
+      "type_reference": "0x8da7ca0"
+    },
+    {
+      "name": "settingsDidEnterForegroundAccountFeatureFlagRefreshSignal",
+      "record": "0x9a0b7dc",
+      "type_reference": "0x8da7ca0"
+    },
+    {
+      "name": "selectedAccountFeatureFlagRefreshAccountIDSignal",
+      "record": "0x9a0b7e8",
+      "type_reference": "0x8d1907c"
+    },
+    {
+      "name": "customizationsService",
+      "record": "0x9a0b7f4",
+      "type_reference": "0x8d1a078"
+    },
+    {
+      "name": "$__lazy_storage_$_creditsService",
+      "record": "0x9a0b800",
+      "type_reference": "0x8d1918c"
+    },
+    {
+      "name": "$__lazy_storage_$_modelsRepository",
+      "record": "0x9a0b80c",
+      "type_reference": "0x8c1e29a"
+    },
+    {
+      "name": "$__lazy_storage_$_voiceListService",
+      "record": "0x9a0b818",
+      "type_reference": "0x8d191a0"
+    },
+    {
+      "name": "isPhoneGestureSettingsHomeVisible",
+      "record": "0x9a0b824",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "isPhoneGestureSettingsVisible",
+      "record": "0x9a0b830",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "name": "_phoneGestureChatRollout",
+      "record": "0x9a0b83c",
+      "type_reference": "0x8d1ac0c"
+    },
+    {
+      "name": "_phoneGestureOrbitRollout",
+      "record": "0x9a0b848",
+      "type_reference": "0x8d1ac0c"
+    },
+    {
+      "name": "chatPhoneGestureRolloutProvider",
+      "record": "0x9a0b854",
+      "type_reference": "0x8d1ac12"
+    },
+    {
+      "name": "phoneGestureProximitySupport",
+      "record": "0x9a0b860",
+      "type_reference": "0x8d1ac22"
+    },
+    {
+      "name": "bag",
+      "record": "0x9a0b86c",
+      "type_reference": "0x8d8a3a0"
+    },
+    {
+      "name": "$__lazy_storage_$_walletConfiguration",
+      "record": "0x9a0b878",
+      "type_reference": "0x8d191aa"
+    },
+    {
+      "name": "_$observationRegistrar",
+      "record": "0x9a0b884",
+      "type_reference": "0x8da7dc0"
+    },
+    {
+      "name": "$__lazy_storage_$__publisher",
+      "record": "0x9a0b890",
+      "type_reference": "0x8d1ac32"
+    }
+  ],
+  "status": "metadata-not-runtime-values"
+}

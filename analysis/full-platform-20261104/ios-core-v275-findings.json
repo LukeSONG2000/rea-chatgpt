@@ -1,0 +1,29 @@
+{
+  "version": "iOS 1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "assertions": 4,
+  "clear_function": {
+    "start": "0x4cfd154",
+    "end": "0x4cfd4dc",
+    "boundary_source": "LC_FUNCTION_STARTS",
+    "state_field": "pendingSketch",
+    "storage": "0xb627818",
+    "scope_limit": "Sketch-related state management observed; exact UI trigger unknown. Do not reuse as generic chat send cleanup."
+  },
+  "focus_consumer": {
+    "get_subject": "0x4dbbb2c",
+    "map_call": "0x4dbbb84",
+    "import": {
+      "symbol": "_$s7Combine9PublisherPAAE3mapyAA10PublishersO10MapKeyPathVy_xqd__Gs0fG0Cy6OutputQzqd__GlF",
+      "library_ordinal": 38,
+      "weak": false,
+      "import_ordinal": 6385,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "limit": "Map key path, final subscriber and view owner not yet established"
+  },
+  "next_action": "Resolve keypath 0x8133180 and mapped publisher consumer; leave sketch-specific producer off core implementation path until a shared lifecycle is proven."
+}

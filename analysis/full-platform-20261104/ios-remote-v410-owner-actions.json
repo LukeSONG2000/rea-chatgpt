@@ -1,0 +1,1488 @@
+[
+  {
+    "name": "CodexRemoteThreadViewAction",
+    "descriptor": "0x95aa444",
+    "fields": [
+      {
+        "name": "backgroundTerminal",
+        "record": "0x9a32b20",
+        "type": "0x8e138fc"
+      },
+      {
+        "name": "openMarkdownImages",
+        "record": "0x9a32b2c",
+        "type": "0x8e10c5c"
+      },
+      {
+        "name": "acceptComposerPrediction",
+        "record": "0x9a32b38",
+        "type": "0x8d860d0"
+      },
+      {
+        "name": "setPlanModeEnabled",
+        "record": "0x9a32b44",
+        "type": "0x8bfd810"
+      },
+      {
+        "name": "submitPrompt",
+        "record": "0x9a32b50",
+        "type": "0x8e13902"
+      },
+      {
+        "name": "submitPlanRevision",
+        "record": "0x9a32b5c",
+        "type": "0x8f2f770"
+      },
+      {
+        "name": "submitToolUserInput",
+        "record": "0x9a32b68",
+        "type": "0x8e10ca4"
+      },
+      {
+        "name": "openAsyncQuestion",
+        "record": "0x9a32b74",
+        "type": "0x8e13918"
+      },
+      {
+        "name": "runComposerCommand",
+        "record": "0x9a32b80",
+        "type": "0x8e13928"
+      },
+      {
+        "name": "sendPositiveFeedback",
+        "record": "0x9a32b8c",
+        "type": "0x8e13946"
+      },
+      {
+        "name": "forkThread",
+        "record": "0x9a32b98",
+        "type": "0x8e13946"
+      },
+      {
+        "name": "addSelectedTextToComposer",
+        "record": "0x9a32ba4",
+        "type": "0x8f2f770"
+      },
+      {
+        "name": "askInSideConversationFromSelectedText",
+        "record": "0x9a32bb0",
+        "type": "0x8f2f770"
+      },
+      {
+        "name": "closeSideConversation",
+        "record": "0x9a32bbc",
+        "type": "0x8e10c4a"
+      },
+      {
+        "name": "setGoalObjective",
+        "record": "0x9a32bc8",
+        "type": "0x8f2f770"
+      },
+      {
+        "name": "setGoalStatus",
+        "record": "0x9a32bd4",
+        "type": "0x8e13968"
+      },
+      {
+        "name": "submitFeedback",
+        "record": "0x9a32be0",
+        "type": "0x8e13976"
+      },
+      {
+        "name": "retryFeedbackUpload",
+        "record": "0x9a32bec",
+        "type": "0x8e1397c"
+      },
+      {
+        "name": "copyFeedbackReportID",
+        "record": "0x9a32bf8",
+        "type": "0x8e1397c"
+      },
+      {
+        "name": "startReview",
+        "record": "0x9a32c04",
+        "type": "0x8e13982"
+      },
+      {
+        "name": "toggleReviewFindingComment",
+        "record": "0x9a32c10",
+        "type": "0x8e13988"
+      },
+      {
+        "name": "removeReviewFindingComment",
+        "record": "0x9a32c1c",
+        "type": "0x8e13998"
+      },
+      {
+        "name": "editSentPrompt",
+        "record": "0x9a32c28",
+        "type": "0x8e1399e"
+      },
+      {
+        "name": "editPendingPrompt",
+        "record": "0x9a32c34",
+        "type": "0x8e12ada"
+      },
+      {
+        "name": "togglePendingPromptMode",
+        "record": "0x9a32c40",
+        "type": "0x8e12ada"
+      },
+      {
+        "name": "startPendingPrompt",
+        "record": "0x9a32c4c",
+        "type": "0x8e12ada"
+      },
+      {
+        "name": "cancelPendingPrompt",
+        "record": "0x9a32c58",
+        "type": "0x8e12ada"
+      },
+      {
+        "name": "addAttachment",
+        "record": "0x9a32c64",
+        "type": "0x8e10c86"
+      },
+      {
+        "name": "removeAttachment",
+        "record": "0x9a32c70",
+        "type": "0x8f2ed50"
+      },
+      {
+        "name": "pasteImageData",
+        "record": "0x9a32c7c",
+        "type": "0x8f9a030"
+      },
+      {
+        "name": "pasteFileURL",
+        "record": "0x9a32c88",
+        "type": "0x90195c0"
+      },
+      {
+        "name": "retryFailedPrompt",
+        "record": "0x9a32c94",
+        "type": "0x8e1399e"
+      },
+      {
+        "name": "setTurnPreviousMessagesExpanded",
+        "record": "0x9a32ca0",
+        "type": "0x8e139a4"
+      },
+      {
+        "name": "previewLinkedFile",
+        "record": "0x9a32cac",
+        "type": "0x8e10bd0"
+      },
+      {
+        "name": "turnDiffSummaryTapped",
+        "record": "0x9a32cb8",
+        "type": "0x8e139ae"
+      },
+      {
+        "name": "approveApprovalRequestTapped",
+        "record": "0x9a32cc4",
+        "type": "0x8e139d6"
+      },
+      {
+        "name": "denyApprovalRequestTapped",
+        "record": "0x9a32cd0",
+        "type": "0x8e10bc0"
+      },
+      {
+        "name": "approvalRequestFeedbackSubmitted",
+        "record": "0x9a32cdc",
+        "type": "0x8e139ec"
+      },
+      {
+        "name": "subagentTapped",
+        "record": "0x9a32ce8",
+        "type": "0x8e13a06"
+      },
+      {
+        "name": "forkedFromConversationTapped",
+        "record": "0x9a32cf4",
+        "type": "0x8d860d0"
+      },
+      {
+        "name": "threadManagementToolThreadTapped",
+        "record": "0x9a32d00",
+        "type": "0x8bcd040"
+      },
+      {
+        "name": "pendingWorktreeThreadTapped",
+        "record": "0x9a32d0c",
+        "type": "0x8d860d0"
+      },
+      {
+        "name": "safety",
+        "record": "0x9a32d18",
+        "type": "0x8e13a12"
+      },
+      {
+        "name": "clearPrompt",
+        "record": "0x9a32d24",
+        "type": null
+      },
+      {
+        "name": "dismissComposerPrediction",
+        "record": "0x9a32d30",
+        "type": null
+      },
+      {
+        "name": "retryConnectionTapped",
+        "record": "0x9a32d3c",
+        "type": null
+      },
+      {
+        "name": "attachmentReadinessChanged",
+        "record": "0x9a32d48",
+        "type": null
+      },
+      {
+        "name": "implementPresentedPlanTapped",
+        "record": "0x9a32d54",
+        "type": null
+      },
+      {
+        "name": "dismissPresentedPlanTapped",
+        "record": "0x9a32d60",
+        "type": null
+      },
+      {
+        "name": "sendNegativeFeedback",
+        "record": "0x9a32d6c",
+        "type": null
+      },
+      {
+        "name": "editGoal",
+        "record": "0x9a32d78",
+        "type": null
+      },
+      {
+        "name": "cancelEditGoal",
+        "record": "0x9a32d84",
+        "type": null
+      },
+      {
+        "name": "clearGoal",
+        "record": "0x9a32d90",
+        "type": null
+      },
+      {
+        "name": "dismissFeedbackForm",
+        "record": "0x9a32d9c",
+        "type": null
+      },
+      {
+        "name": "copyThreadIDTapped",
+        "record": "0x9a32da8",
+        "type": null
+      },
+      {
+        "name": "dismissReviewTargetSelection",
+        "record": "0x9a32db4",
+        "type": null
+      },
+      {
+        "name": "removeReviewFindingComments",
+        "record": "0x9a32dc0",
+        "type": null
+      },
+      {
+        "name": "presentStatusSheet",
+        "record": "0x9a32dcc",
+        "type": null
+      },
+      {
+        "name": "stopRunningTurnTapped",
+        "record": "0x9a32dd8",
+        "type": null
+      },
+      {
+        "name": "cancelMessageEdit",
+        "record": "0x9a32de4",
+        "type": null
+      },
+      {
+        "name": "removeSelectedTextAttachment",
+        "record": "0x9a32df0",
+        "type": null
+      },
+      {
+        "name": "workspaceDiffSummaryTapped",
+        "record": "0x9a32dfc",
+        "type": null
+      },
+      {
+        "name": "workspaceChangesTapped",
+        "record": "0x9a32e08",
+        "type": null
+      },
+      {
+        "name": "workspaceFilesTapped",
+        "record": "0x9a32e14",
+        "type": null
+      }
+    ]
+  },
+  {
+    "name": "Reason",
+    "descriptor": "0x95c6e80",
+    "fields": [
+      {
+        "name": "network",
+        "record": "0x9a553f0",
+        "type": null
+      },
+      {
+        "name": "unavailable",
+        "record": "0x9a553fc",
+        "type": null
+      },
+      {
+        "name": "backendResponse",
+        "record": "0x9a55408",
+        "type": null
+      },
+      {
+        "name": "invalidResponse",
+        "record": "0x9a55414",
+        "type": null
+      },
+      {
+        "name": "timeout",
+        "record": "0x9a55420",
+        "type": null
+      },
+      {
+        "name": "invalidRequest",
+        "record": "0x9a5542c",
+        "type": null
+      },
+      {
+        "name": "selectionExpired",
+        "record": "0x9a55438",
+        "type": null
+      },
+      {
+        "name": "providerUnavailable",
+        "record": "0x9a55444",
+        "type": null
+      },
+      {
+        "name": "ambiguousGrant",
+        "record": "0x9a55450",
+        "type": null
+      },
+      {
+        "name": "siteMismatch",
+        "record": "0x9a5545c",
+        "type": null
+      },
+      {
+        "name": "connectionChanged",
+        "record": "0x9a55468",
+        "type": null
+      },
+      {
+        "name": "appUnavailable",
+        "record": "0x9a55474",
+        "type": null
+      },
+      {
+        "name": "appOpenFailed",
+        "record": "0x9a55480",
+        "type": null
+      },
+      {
+        "name": "approvalURLMissing",
+        "record": "0x9a5548c",
+        "type": null
+      },
+      {
+        "name": "callbackInvalid",
+        "record": "0x9a55498",
+        "type": null
+      },
+      {
+        "name": "callbackStateMismatch",
+        "record": "0x9a554a4",
+        "type": null
+      },
+      {
+        "name": "unsupportedCallback",
+        "record": "0x9a554b0",
+        "type": null
+      },
+      {
+        "name": "declined",
+        "record": "0x9a554bc",
+        "type": null
+      },
+      {
+        "name": "submissionRejected",
+        "record": "0x9a554c8",
+        "type": null
+      },
+      {
+        "name": "saveFailed",
+        "record": "0x9a554d4",
+        "type": null
+      },
+      {
+        "name": "originChanged",
+        "record": "0x9a554e0",
+        "type": null
+      },
+      {
+        "name": "pageChanged",
+        "record": "0x9a554ec",
+        "type": null
+      },
+      {
+        "name": "locatorInvalid",
+        "record": "0x9a554f8",
+        "type": null
+      },
+      {
+        "name": "submissionFailed",
+        "record": "0x9a55504",
+        "type": null
+      },
+      {
+        "name": "operationMismatch",
+        "record": "0x9a55510",
+        "type": null
+      },
+      {
+        "name": "emptyAccessHandle",
+        "record": "0x9a5551c",
+        "type": null
+      },
+      {
+        "name": "unexpectedProvider",
+        "record": "0x9a55528",
+        "type": null
+      },
+      {
+        "name": "unknownState",
+        "record": "0x9a55534",
+        "type": null
+      },
+      {
+        "name": "hostUnconfirmed",
+        "record": "0x9a55540",
+        "type": null
+      },
+      {
+        "name": "reconciliationExhausted",
+        "record": "0x9a5554c",
+        "type": null
+      },
+      {
+        "name": "unknown",
+        "record": "0x9a55558",
+        "type": null
+      }
+    ]
+  },
+  {
+    "name": "CodingKeys",
+    "descriptor": "0x95d75a8",
+    "fields": [
+      {
+        "name": "id",
+        "record": "0x9a66534",
+        "type": null
+      },
+      {
+        "name": "kind",
+        "record": "0x9a66540",
+        "type": null
+      },
+      {
+        "name": "content",
+        "record": "0x9a6654c",
+        "type": null
+      },
+      {
+        "name": "summary",
+        "record": "0x9a66558",
+        "type": null
+      },
+      {
+        "name": "attachments",
+        "record": "0x9a66564",
+        "type": null
+      },
+      {
+        "name": "responseTextAnnotations",
+        "record": "0x9a66570",
+        "type": null
+      },
+      {
+        "name": "userInputs",
+        "record": "0x9a6657c",
+        "type": null
+      },
+      {
+        "name": "externalEvent",
+        "record": "0x9a66588",
+        "type": null
+      },
+      {
+        "name": "asyncQuestions",
+        "record": "0x9a66594",
+        "type": null
+      },
+      {
+        "name": "asyncQuestionReplies",
+        "record": "0x9a665a0",
+        "type": null
+      },
+      {
+        "name": "userMessageParsedMarkdown",
+        "record": "0x9a665ac",
+        "type": null
+      },
+      {
+        "name": "displayUserInputs",
+        "record": "0x9a665b8",
+        "type": null
+      },
+      {
+        "name": "imageViewPath",
+        "record": "0x9a665c4",
+        "type": null
+      },
+      {
+        "name": "imageViewPaths",
+        "record": "0x9a665d0",
+        "type": null
+      },
+      {
+        "name": "commandExecutionDisplayCommand",
+        "record": "0x9a665dc",
+        "type": null
+      },
+      {
+        "name": "automaticApprovalReview",
+        "record": "0x9a665e8",
+        "type": null
+      },
+      {
+        "name": "commandExecutionStartedAt",
+        "record": "0x9a665f4",
+        "type": null
+      },
+      {
+        "name": "functionCall",
+        "record": "0x9a66600",
+        "type": null
+      },
+      {
+        "name": "dynamicToolCall",
+        "record": "0x9a6660c",
+        "type": null
+      },
+      {
+        "name": "collaborationToolCall",
+        "record": "0x9a66618",
+        "type": null
+      },
+      {
+        "name": "reviewFindings",
+        "record": "0x9a66624",
+        "type": null
+      },
+      {
+        "name": "gitActionDirectives",
+        "record": "0x9a66630",
+        "type": null
+      },
+      {
+        "name": "createdThreadDirectives",
+        "record": "0x9a6663c",
+        "type": null
+      },
+      {
+        "name": "hasReviewResponse",
+        "record": "0x9a66648",
+        "type": null
+      },
+      {
+        "name": "mcpToolCall",
+        "record": "0x9a66654",
+        "type": null
+      },
+      {
+        "name": "hookRun",
+        "record": "0x9a66660",
+        "type": null
+      },
+      {
+        "name": "heartbeatTrigger",
+        "record": "0x9a6666c",
+        "type": null
+      },
+      {
+        "name": "heartbeatAssistantOutput",
+        "record": "0x9a66678",
+        "type": null
+      },
+      {
+        "name": "linkedRemoteHostImagePaths",
+        "record": "0x9a66684",
+        "type": null
+      },
+      {
+        "name": "fileChangeDiffStats",
+        "record": "0x9a66690",
+        "type": null
+      },
+      {
+        "name": "isCachedPreview",
+        "record": "0x9a6669c",
+        "type": null
+      },
+      {
+        "name": "clientUserMessageID",
+        "record": "0x9a666a8",
+        "type": null
+      },
+      {
+        "name": "questionReplyPresentation",
+        "record": "0x9a666b4",
+        "type": null
+      },
+      {
+        "name": "originalThreadItem",
+        "record": "0x9a666c0",
+        "type": null
+      },
+      {
+        "name": "renderingContext",
+        "record": "0x9a666cc",
+        "type": null
+      },
+      {
+        "name": "comparisonFingerprint",
+        "record": "0x9a666d8",
+        "type": null
+      }
+    ]
+  },
+  {
+    "name": "CodexRemoteEvent",
+    "descriptor": "0x95ed324",
+    "fields": [
+      {
+        "name": "newThreadCreated",
+        "record": "0x9a80508",
+        "type": null
+      },
+      {
+        "name": "promptSubmitted",
+        "record": "0x9a80514",
+        "type": null
+      },
+      {
+        "name": "runningTurnStopped",
+        "record": "0x9a80520",
+        "type": null
+      },
+      {
+        "name": "realtimeVoiceStartTapped",
+        "record": "0x9a8052c",
+        "type": null
+      },
+      {
+        "name": "realtimeVoiceStarted",
+        "record": "0x9a80538",
+        "type": null
+      },
+      {
+        "name": "realtimeVoiceStopped",
+        "record": "0x9a80544",
+        "type": null
+      },
+      {
+        "name": "realtimeVoiceFailed",
+        "record": "0x9a80550",
+        "type": null
+      },
+      {
+        "name": "realtimeVoiceSessionLifecycle",
+        "record": "0x9a8055c",
+        "type": null
+      },
+      {
+        "name": "realtimeVoiceSessionEnded",
+        "record": "0x9a80568",
+        "type": null
+      },
+      {
+        "name": "realtimeUserMessageSent",
+        "record": "0x9a80574",
+        "type": null
+      },
+      {
+        "name": "slingshotClientEnrollmentFinished",
+        "record": "0x9a80580",
+        "type": null
+      },
+      {
+        "name": "sidebarImpression",
+        "record": "0x9a8058c",
+        "type": null
+      },
+      {
+        "name": "sidebarTapped",
+        "record": "0x9a80598",
+        "type": null
+      },
+      {
+        "name": "onboardingStepViewed",
+        "record": "0x9a805a4",
+        "type": null
+      },
+      {
+        "name": "onboardingActionClicked",
+        "record": "0x9a805b0",
+        "type": null
+      },
+      {
+        "name": "pairingQRCodeScannerOpened",
+        "record": "0x9a805bc",
+        "type": null
+      },
+      {
+        "name": "pairingQRCodeScanned",
+        "record": "0x9a805c8",
+        "type": null
+      },
+      {
+        "name": "pairingQRCodeClaimFinished",
+        "record": "0x9a805d4",
+        "type": null
+      },
+      {
+        "name": "approvalRequestApproved",
+        "record": "0x9a805e0",
+        "type": null
+      },
+      {
+        "name": "approvalRequestDenied",
+        "record": "0x9a805ec",
+        "type": null
+      },
+      {
+        "name": "newThreadTargetSelected",
+        "record": "0x9a805f8",
+        "type": null
+      },
+      {
+        "name": "workspaceDirectoryAdded",
+        "record": "0x9a80604",
+        "type": null
+      },
+      {
+        "name": "threadArchived",
+        "record": "0x9a80610",
+        "type": null
+      },
+      {
+        "name": "threadUnarchived",
+        "record": "0x9a8061c",
+        "type": null
+      },
+      {
+        "name": "threadRenamed",
+        "record": "0x9a80628",
+        "type": null
+      },
+      {
+        "name": "hostEnabledToggled",
+        "record": "0x9a80634",
+        "type": null
+      },
+      {
+        "name": "hostSaved",
+        "record": "0x9a80640",
+        "type": null
+      },
+      {
+        "name": "hostDeleted",
+        "record": "0x9a8064c",
+        "type": null
+      },
+      {
+        "name": "attachmentAdded",
+        "record": "0x9a80658",
+        "type": null
+      },
+      {
+        "name": "reviewStarted",
+        "record": "0x9a80664",
+        "type": null
+      },
+      {
+        "name": "feedbackSubmitted",
+        "record": "0x9a80670",
+        "type": null
+      },
+      {
+        "name": "threadListGroupingChanged",
+        "record": "0x9a8067c",
+        "type": null
+      },
+      {
+        "name": "liveActivityGroupingObserved",
+        "record": "0x9a80688",
+        "type": null
+      },
+      {
+        "name": "threadListChatsFirstToggled",
+        "record": "0x9a80694",
+        "type": null
+      },
+      {
+        "name": "hostFilterSelected",
+        "record": "0x9a806a0",
+        "type": null
+      },
+      {
+        "name": "threadPinChanged",
+        "record": "0x9a806ac",
+        "type": null
+      },
+      {
+        "name": "threadReadStateChanged",
+        "record": "0x9a806b8",
+        "type": null
+      },
+      {
+        "name": "modelSelected",
+        "record": "0x9a806c4",
+        "type": null
+      },
+      {
+        "name": "reasoningEffortSelected",
+        "record": "0x9a806d0",
+        "type": null
+      },
+      {
+        "name": "approvalModeSelected",
+        "record": "0x9a806dc",
+        "type": null
+      },
+      {
+        "name": "fastModeToggled",
+        "record": "0x9a806e8",
+        "type": null
+      },
+      {
+        "name": "ultrafastModeToggled",
+        "record": "0x9a806f4",
+        "type": null
+      },
+      {
+        "name": "planModeToggled",
+        "record": "0x9a80700",
+        "type": null
+      },
+      {
+        "name": "contextCompactionRequested",
+        "record": "0x9a8070c",
+        "type": null
+      },
+      {
+        "name": "statusSheetOpened",
+        "record": "0x9a80718",
+        "type": null
+      },
+      {
+        "name": "sideConversationOpened",
+        "record": "0x9a80724",
+        "type": null
+      },
+      {
+        "name": "workspaceDiffOpened",
+        "record": "0x9a80730",
+        "type": null
+      },
+      {
+        "name": "linkedFilePreviewOpened",
+        "record": "0x9a8073c",
+        "type": null
+      },
+      {
+        "name": "toolUserInputSubmitted",
+        "record": "0x9a80748",
+        "type": null
+      },
+      {
+        "name": "composerAttachmentMenuItemSelected",
+        "record": "0x9a80754",
+        "type": null
+      },
+      {
+        "name": "composerAutocompleteItemSelected",
+        "record": "0x9a80760",
+        "type": null
+      },
+      {
+        "name": "hostConnectionRequested",
+        "record": "0x9a8076c",
+        "type": null
+      },
+      {
+        "name": "hostConnectionAttemptStarted",
+        "record": "0x9a80778",
+        "type": null
+      },
+      {
+        "name": "hostConnectionAttemptFinished",
+        "record": "0x9a80784",
+        "type": null
+      },
+      {
+        "name": "localAuthenticationFinished",
+        "record": "0x9a80790",
+        "type": null
+      },
+      {
+        "name": "localAuthenticationSettingUpdated",
+        "record": "0x9a8079c",
+        "type": null
+      },
+      {
+        "name": "threadErrorRowShown",
+        "record": "0x9a807a8",
+        "type": null
+      },
+      {
+        "name": "threadListLoadStarted",
+        "record": "0x9a807b4",
+        "type": null
+      },
+      {
+        "name": "threadListLoadFinished",
+        "record": "0x9a807c0",
+        "type": null
+      },
+      {
+        "name": "threadHistoryLoadFinished",
+        "record": "0x9a807cc",
+        "type": null
+      }
+    ]
+  },
+  {
+    "name": "ServerNotification",
+    "descriptor": "0x95f7940",
+    "fields": [
+      {
+        "name": "serverNotificationErrorNotification",
+        "record": "0x9a91a28",
+        "type": "0x8f99a68"
+      },
+      {
+        "name": "serverNotificationThreadStartedNotification",
+        "record": "0x9a91a34",
+        "type": "0x8fa89a8"
+      },
+      {
+        "name": "serverNotificationThreadStatusChangedNotification",
+        "record": "0x9a91a40",
+        "type": "0x8fa89ce"
+      },
+      {
+        "name": "serverNotificationThreadReadStateChangedNotification",
+        "record": "0x9a91a4c",
+        "type": "0x8fa89f4"
+      },
+      {
+        "name": "serverNotificationThreadArchivedNotification",
+        "record": "0x9a91a58",
+        "type": "0x8fa8a1a"
+      },
+      {
+        "name": "serverNotificationThreadDeletedNotification",
+        "record": "0x9a91a64",
+        "type": "0x8fa8a40"
+      },
+      {
+        "name": "serverNotificationThreadUnarchivedNotification",
+        "record": "0x9a91a70",
+        "type": "0x8fa8a66"
+      },
+      {
+        "name": "serverNotificationThreadClosedNotification",
+        "record": "0x9a91a7c",
+        "type": "0x8fa8a8c"
+      },
+      {
+        "name": "serverNotificationThreadRevertedNotification",
+        "record": "0x9a91a88",
+        "type": "0x8fa8ab2"
+      },
+      {
+        "name": "serverNotificationSkillsChangedNotification",
+        "record": "0x9a91a94",
+        "type": "0x8fa8ad8"
+      },
+      {
+        "name": "serverNotificationThreadNameUpdatedNotification",
+        "record": "0x9a91aa0",
+        "type": "0x8fa8afe"
+      },
+      {
+        "name": "serverNotificationThreadAttachmentUpdatedNotification",
+        "record": "0x9a91aac",
+        "type": "0x8fa8b24"
+      },
+      {
+        "name": "serverNotificationThreadGoalUpdatedNotification",
+        "record": "0x9a91ab8",
+        "type": "0x8fa8b4a"
+      },
+      {
+        "name": "serverNotificationThreadPredictionUpdatedNotification",
+        "record": "0x9a91ac4",
+        "type": "0x8fa8b70"
+      },
+      {
+        "name": "serverNotificationThreadGoalClearedNotification",
+        "record": "0x9a91ad0",
+        "type": "0x8fa8b96"
+      },
+      {
+        "name": "serverNotificationThreadQueueChangedNotification",
+        "record": "0x9a91adc",
+        "type": "0x8fa8bbc"
+      },
+      {
+        "name": "serverNotificationProjectChangedNotification",
+        "record": "0x9a91ae8",
+        "type": "0x8fa8be2"
+      },
+      {
+        "name": "serverNotificationThreadProjectUpdatedNotification",
+        "record": "0x9a91af4",
+        "type": "0x8fa8c08"
+      },
+      {
+        "name": "serverNotificationThreadEnvironmentConnectedNotification",
+        "record": "0x9a91b00",
+        "type": "0x8fa8c2e"
+      },
+      {
+        "name": "serverNotificationThreadEnvironmentDisconnectedNotification",
+        "record": "0x9a91b0c",
+        "type": "0x8fa8c54"
+      },
+      {
+        "name": "serverNotificationThreadSettingsUpdatedNotification",
+        "record": "0x9a91b18",
+        "type": "0x8fa8c7a"
+      },
+      {
+        "name": "serverNotificationThreadTokenUsageUpdatedNotification",
+        "record": "0x9a91b24",
+        "type": "0x8fa8ca0"
+      },
+      {
+        "name": "serverNotificationTurnStartedNotification",
+        "record": "0x9a91b30",
+        "type": "0x8fa8cc6"
+      },
+      {
+        "name": "serverNotificationHookStartedNotification",
+        "record": "0x9a91b3c",
+        "type": "0x8fa8cec"
+      },
+      {
+        "name": "serverNotificationTurnCompletedNotification",
+        "record": "0x9a91b48",
+        "type": "0x8fa8d12"
+      },
+      {
+        "name": "serverNotificationHookCompletedNotification",
+        "record": "0x9a91b54",
+        "type": "0x8fa8d38"
+      },
+      {
+        "name": "serverNotificationTurnPlanUpdatedNotification",
+        "record": "0x9a91b60",
+        "type": "0x8fa8d5e"
+      },
+      {
+        "name": "serverNotificationItemStartedNotification",
+        "record": "0x9a91b6c",
+        "type": "0x8fa8d84"
+      },
+      {
+        "name": "serverNotificationItemAutoApprovalReviewStartedNotification",
+        "record": "0x9a91b78",
+        "type": "0x8fa8daa"
+      },
+      {
+        "name": "serverNotificationItemAutoApprovalReviewCompletedNotification",
+        "record": "0x9a91b84",
+        "type": "0x8fa8dd0"
+      },
+      {
+        "name": "serverNotificationAutoApprovalReviewStrictReviewRequiredNotification",
+        "record": "0x9a91b90",
+        "type": "0x8fa8df6"
+      },
+      {
+        "name": "serverNotificationItemCompletedNotification",
+        "record": "0x9a91b9c",
+        "type": "0x8fa8e1c"
+      },
+      {
+        "name": "serverNotificationItemAgentMessageDeltaNotification",
+        "record": "0x9a91ba8",
+        "type": "0x8fa8e42"
+      },
+      {
+        "name": "serverNotificationProcessOutputDeltaNotification",
+        "record": "0x9a91bb4",
+        "type": "0x8fa8e68"
+      },
+      {
+        "name": "serverNotificationProcessExitedNotification",
+        "record": "0x9a91bc0",
+        "type": "0x8fa8e8e"
+      },
+      {
+        "name": "serverNotificationItemCommandExecutionOutputDeltaNotification",
+        "record": "0x9a91bcc",
+        "type": "0x8fa8eb4"
+      },
+      {
+        "name": "serverNotificationItemFileChangePatchUpdatedNotification",
+        "record": "0x9a91bd8",
+        "type": "0x8fa8eda"
+      },
+      {
+        "name": "serverNotificationServerRequestResolvedNotification",
+        "record": "0x9a91be4",
+        "type": "0x8fa8f00"
+      },
+      {
+        "name": "serverNotificationMcpServerOauthLoginCompletedNotification",
+        "record": "0x9a91bf0",
+        "type": "0x8fa8f26"
+      },
+      {
+        "name": "serverNotificationMcpServerEventStreamNotificationNotification",
+        "record": "0x9a91bfc",
+        "type": "0x8fa8f4c"
+      },
+      {
+        "name": "serverNotificationAccountGatewayOAuthChangedNotification",
+        "record": "0x9a91c08",
+        "type": "0x8fa8f72"
+      },
+      {
+        "name": "serverNotificationAccountRateLimitsUpdatedNotification",
+        "record": "0x9a91c14",
+        "type": "0x8fa8f98"
+      },
+      {
+        "name": "serverNotificationAppListUpdatedNotification",
+        "record": "0x9a91c20",
+        "type": "0x8fa8fbe"
+      },
+      {
+        "name": "serverNotificationExternalAgentConfigImportProgressNotification",
+        "record": "0x9a91c2c",
+        "type": "0x8fa8fe4"
+      },
+      {
+        "name": "serverNotificationExternalAgentConfigImportCompletedNotification",
+        "record": "0x9a91c38",
+        "type": "0x8fa900a"
+      },
+      {
+        "name": "serverNotificationFsChangedNotification",
+        "record": "0x9a91c44",
+        "type": "0x8fa9030"
+      },
+      {
+        "name": "serverNotificationItemReasoningSummaryTextDeltaNotification",
+        "record": "0x9a91c50",
+        "type": "0x8fa9056"
+      },
+      {
+        "name": "serverNotificationItemReasoningSummaryPartAddedNotification",
+        "record": "0x9a91c5c",
+        "type": "0x8fa907c"
+      },
+      {
+        "name": "serverNotificationItemReasoningTextDeltaNotification",
+        "record": "0x9a91c68",
+        "type": "0x8fa90a2"
+      },
+      {
+        "name": "serverNotificationModelReroutedNotification",
+        "record": "0x9a91c74",
+        "type": "0x8fa90c8"
+      },
+      {
+        "name": "serverNotificationModelVerificationNotification",
+        "record": "0x9a91c80",
+        "type": "0x8fa90ee"
+      },
+      {
+        "name": "serverNotificationModelProviderAuthRecoveryStartedNotification",
+        "record": "0x9a91c8c",
+        "type": "0x8fa9114"
+      },
+      {
+        "name": "serverNotificationModelProviderAuthRecoveryCompletedNotification",
+        "record": "0x9a91c98",
+        "type": "0x8fa913a"
+      },
+      {
+        "name": "serverNotificationTurnModerationMetadataNotification",
+        "record": "0x9a91ca4",
+        "type": "0x8fa9160"
+      },
+      {
+        "name": "serverNotificationModelSafetyBufferingUpdatedNotification",
+        "record": "0x9a91cb0",
+        "type": "0x8fa9186"
+      },
+      {
+        "name": "serverNotificationGuardianWarningNotification",
+        "record": "0x9a91cbc",
+        "type": "0x8fa91ac"
+      },
+      {
+        "name": "serverNotificationThreadRealtimeItemStartedNotification",
+        "record": "0x9a91cc8",
+        "type": "0x8fa91d2"
+      },
+      {
+        "name": "serverNotificationThreadRealtimeItemTranscriptDeltaNotification",
+        "record": "0x9a91cd4",
+        "type": "0x8fa91f8"
+      },
+      {
+        "name": "serverNotificationThreadRealtimeItemCompletedNotification",
+        "record": "0x9a91ce0",
+        "type": "0x8fa921e"
+      },
+      {
+        "name": "serverNotificationThreadRealtimeTranscriptDeltaNotification",
+        "record": "0x9a91cec",
+        "type": "0x8fa9244"
+      },
+      {
+        "name": "serverNotificationThreadRealtimeTranscriptDoneNotification",
+        "record": "0x9a91cf8",
+        "type": "0x8fa926a"
+      },
+      {
+        "name": "serverNotificationThreadRealtimeSdpNotification",
+        "record": "0x9a91d04",
+        "type": "0x8fa9290"
+      },
+      {
+        "name": "serverNotificationThreadRealtimeErrorNotification",
+        "record": "0x9a91d10",
+        "type": "0x8fa92b6"
+      },
+      {
+        "name": "serverNotificationAccountLoginCompletedNotification",
+        "record": "0x9a91d1c",
+        "type": "0x8fa92dc"
+      },
+      {
+        "name": "serverNotificationRawResponseItemCompletedNotification",
+        "record": "0x9a91d28",
+        "type": "0x8fa9302"
+      },
+      {
+        "name": "unknown",
+        "record": "0x9a91d34",
+        "type": "0x8f9e34e"
+      }
+    ]
+  },
+  {
+    "name": "CodingKeys",
+    "descriptor": "0x95ffb44",
+    "fields": [
+      {
+        "name": "additionalDeveloperInstructions",
+        "record": "0x9a9aee8",
+        "type": null
+      },
+      {
+        "name": "allowAppshots",
+        "record": "0x9a9aef4",
+        "type": null
+      },
+      {
+        "name": "allowBrowserAndComputerUse",
+        "record": "0x9a9af00",
+        "type": null
+      },
+      {
+        "name": "allowedApprovalPolicies",
+        "record": "0x9a9af0c",
+        "type": null
+      },
+      {
+        "name": "allowedApprovalsReviewers",
+        "record": "0x9a9af18",
+        "type": null
+      },
+      {
+        "name": "allowedLoginMethods",
+        "record": "0x9a9af24",
+        "type": null
+      },
+      {
+        "name": "allowedPermissionProfiles",
+        "record": "0x9a9af30",
+        "type": null
+      },
+      {
+        "name": "allowedSandboxModes",
+        "record": "0x9a9af3c",
+        "type": null
+      },
+      {
+        "name": "allowedWebSearchModes",
+        "record": "0x9a9af48",
+        "type": null
+      },
+      {
+        "name": "allowedWindowsSandboxImplementations",
+        "record": "0x9a9af54",
+        "type": null
+      },
+      {
+        "name": "allowLoginShell",
+        "record": "0x9a9af60",
+        "type": null
+      },
+      {
+        "name": "allowManagedHooksOnly",
+        "record": "0x9a9af6c",
+        "type": null
+      },
+      {
+        "name": "allowRemoteControl",
+        "record": "0x9a9af78",
+        "type": null
+      },
+      {
+        "name": "application",
+        "record": "0x9a9af84",
+        "type": null
+      },
+      {
+        "name": "autoReview",
+        "record": "0x9a9af90",
+        "type": null
+      },
+      {
+        "name": "browserUse",
+        "record": "0x9a9af9c",
+        "type": null
+      },
+      {
+        "name": "chatgptBaseUrl",
+        "record": "0x9a9afa8",
+        "type": null
+      },
+      {
+        "name": "checkForUpdateOnStartup",
+        "record": "0x9a9afb4",
+        "type": null
+      },
+      {
+        "name": "cliAuthCredentialsStore",
+        "record": "0x9a9afc0",
+        "type": null
+      },
+      {
+        "name": "computerUse",
+        "record": "0x9a9afcc",
+        "type": null
+      },
+      {
+        "name": "defaultPermissions",
+        "record": "0x9a9afd8",
+        "type": null
+      },
+      {
+        "name": "enforceResidency",
+        "record": "0x9a9afe4",
+        "type": null
+      },
+      {
+        "name": "featureRequirements",
+        "record": "0x9a9aff0",
+        "type": null
+      },
+      {
+        "name": "feedback",
+        "record": "0x9a9affc",
+        "type": null
+      },
+      {
+        "name": "hooks",
+        "record": "0x9a9b008",
+        "type": null
+      },
+      {
+        "name": "inAppBrowser",
+        "record": "0x9a9b014",
+        "type": null
+      },
+      {
+        "name": "logDir",
+        "record": "0x9a9b020",
+        "type": null
+      },
+      {
+        "name": "modelCatalogJson",
+        "record": "0x9a9b02c",
+        "type": null
+      },
+      {
+        "name": "modelProvider",
+        "record": "0x9a9b038",
+        "type": null
+      },
+      {
+        "name": "modelProviders",
+        "record": "0x9a9b044",
+        "type": null
+      },
+      {
+        "name": "models",
+        "record": "0x9a9b050",
+        "type": null
+      },
+      {
+        "name": "network",
+        "record": "0x9a9b05c",
+        "type": null
+      },
+      {
+        "name": "sqliteHome",
+        "record": "0x9a9b068",
+        "type": null
+      }
+    ]
+  }
+]

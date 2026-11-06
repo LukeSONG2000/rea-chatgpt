@@ -1,0 +1,424 @@
+{
+  "version": "26.1021.31345",
+  "asar_sha256": "130145706a912db74e4d260ad7538f10f1e05e88af955f9afba42cdf01e64606",
+  "status": "partial",
+  "evidence": [
+    {
+      "id": "DS01",
+      "path": "webview/assets/app-route-components-2a4d3d33325c.js",
+      "sha256": "4e5d333e78e18b2d6b54a11c23a0cfc241b8f9219a7490c6cefdb39e99fe279f",
+      "byte_offset": 3427,
+      "token": "function S(e)",
+      "excerpt": ",bR as _,c0n as v,l0n as y,xAt as b,xR as x}from\"./app-initial-feb30b196d11.js\";function S(e){let n=(0,C.c)(13),{children:r,allowWork:i,allowLocalPages:a,fallback:o}=e,s=i!==void 0&&i,c=a!==void 0&&a,l=o===void 0?null:o,d=s?`chatgpt.conversations`:`chatgpt`,f;n[0]===d?f=n[1]:(f={name:d},n[0]=d,n[1]=f);let p=u(v,f),m;n[2]===Symbol.for(`react.memo_cache_sentinel`)?(m={name:`chatgpt.seat-access`},n[2]=m):m=n[2];let h=u(v,m);if(c){let e;return n[3]!==r||n[4]!==l?(e=(0,T.jsx)(w.Suspense,{fallback:l,children:r}),n[3]=r,n[4]=l,n[5]=e):e=n[5],e}",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS02",
+      "path": "webview/assets/app-route-components-2a4d3d33325c.js",
+      "sha256": "4e5d333e78e18b2d6b54a11c23a0cfc241b8f9219a7490c6cefdb39e99fe279f",
+      "byte_offset": 3567,
+      "token": "d=s?`chatgpt.conversations`:`chatgpt`",
+      "excerpt": "wLocalPages:a,fallback:o}=e,s=i!==void 0&&i,c=a!==void 0&&a,l=o===void 0?null:o,d=s?`chatgpt.conversations`:`chatgpt`,f;n[0]===d?f=n[1]:(f={name:d},n[0]=d,n[1]=f);let p=u(v,f),m;n[2]===Symbol.for(`react.memo_cache_sentinel`)?(m={name:`chatgpt.seat-access`},n[2]=m):m=n[2];let h=u(v,m);if(c){let e;return n[3]!==r||n[4]!==l?(e=(0,T.jsx)(w.Suspense,{fallback:l,children:r}),n[3]=r,n[4]=l,n[5]=e):e=n[5],e}if(p.isLoading||!s&&h.isLoading){let e;return n[6]===l?e=n[7]:(e=(0,T.jsx)(T.Fragment,{children:l}),n[6]=l,n[7]=e),e}if(!s&&h.isCapable){let e;return n[8]===Symbol.",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS03",
+      "path": "webview/assets/app-route-components-2a4d3d33325c.js",
+      "sha256": "4e5d333e78e18b2d6b54a11c23a0cfc241b8f9219a7490c6cefdb39e99fe279f",
+      "byte_offset": 4123,
+      "token": "if(!p.isCapable)",
+      "excerpt": "]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,T.jsx)(D,{}),n[8]=e):e=n[8],e}if(!p.isCapable){let e;return n[9]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,T.jsx)(t,{to:`/`,replace:!0}),n[9]=e):e=n[9],e}let g;return n[10]!==r||n[11]!==l?(g=(0,T.jsx)(w.Suspense,{fallback:l,children:r}),n[10]=r,n[11]=l,n[12]=g):g=n[12],g}var C,w,T,E,D;function O(){return(O=e((()=>{C=o(),d(),w=i(),n(),y(),_(),h(),g(),s(),r(),T=a(),p(),E=x(async()=>{b.importStarted(),m.prefetch().catch(e=>{l.error(`Failed to prefetch Page editor`,{safe:{surface:`route`},",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS04",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 99445,
+      "token": "function VO(e)",
+      "excerpt": "rt.meta.url)).ExtensionInstalledPage}function BO(){return(BO=e((()=>{ur()})))()}function VO(e){let t=(0,UO.c)(11),{children:n}=e,{conversationId:r}=Ot(),{search:i}=N(),a;t[0]===r?a=t[1]:(a=r?.startsWith(`WEB:`),t[0]=r,t[1]=a);let o=a,s;t[2]!==r||t[3]!==o||t[4]!==i?(s=r==null||o||su(r)||ut(i)?null:r,t[2]=r,t[3]=o,t[4]=i,t[5]=s):s=t[5],W(Kd,s);let c;return t[6]!==n||t[7]!==r||t[8]!==o||t[9]!==i?(c=o?(0,GO.jsx)(D,{to:`/`,replace:!0}):(0,GO.jsx)(WO.Suspense,{fallback:(0,GO.jsx)(HO,{conversationId:r,isTemporaryChat:ut(i)}),children:n}),t[6]=n,",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS05",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 99554,
+      "token": "r?.startsWith(`WEB:`)",
+      "excerpt": "(11),{children:n}=e,{conversationId:r}=Ot(),{search:i}=N(),a;t[0]===r?a=t[1]:(a=r?.startsWith(`WEB:`),t[0]=r,t[1]=a);let o=a,s;t[2]!==r||t[3]!==o||t[4]!==i?(s=r==null||o||su(r)||ut(i)?null:r,t[2]=r,t[3]=o,t[4]=i,t[5]=s):s=t[5],W(Kd,s);let c;return t[6]!==n||t[7]!==r||t[8]!==o||t[9]!==i?(c=o?(0,GO.jsx)(D,{to:`/`,replace:!0}):(0,GO.jsx)(WO.Suspense,{fallback:(0,GO.jsx)(HO,{conversationId:r,isTemporaryChat:ut(i)}),children:n}),t[6]=n,t[7]=r,t[8]=o,t[9]=i,t[10]=c):c=t[10],c}function HO(e){let t=(0,UO.c)(13),{conversationId:n,isTemporaryChat:r}=e,i=W",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS06",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 460243,
+      "token": "async function kq()",
+      "excerpt": "),BD(),gq(),J_(),qy(),r(),i(),Ey(),yq(),wq=z(),Tq=_g(),Eq=cf(),Dq=oi===Rn})))()}async function kq(){Aq(),await Nq();let e;return e=Lq?KA.prefetch():Rq?qA.prefetch():ew?.(),e=e?.catch(e=>{U.warning(`Initial route prefetch failed; rendering will retry`,{safe:{isAvatarOverlayWindow:Lq,isSpotlightWindow:Rq,windowType:`electron`},sensitive:{error:e}})}),await qS(),Pl(),jq(),!Lq&&!Rq&&e!=null&&await e,Mq()}function Aq(){Ee(),c_.navigate(oi??window.location.pathname,`initial`,Uq),Hq!=null&&(Lt.start(Hq,Uq,!0,oi??window.location.pathname),Lt.markIniti",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS07",
+      "path": "webview/assets/app-runtime-7eafc695f601.js",
+      "sha256": "cc76a5e9aa69701175274abc643b1187cc12fc6907990dfcc65aef9414f523b4",
+      "byte_offset": 461343,
+      "token": "async function Nq(){}",
+      "excerpt": "p_ready`)}catch(e){t.e=e}finally{t.d()}});return(0,Pq.jsx)(bq,{startupReady:e})}async function Nq(){}var Pq,Fq,Iq,Lq,Rq,zq,Bq,Vq,Hq,Uq;function Wq(){return(Wq=e((()=>{V(),jD(),Oq(),aM(),Ar(),pn(),J_(),cr(),ud(),r(),om(),bt(),An(),Ld(),fo(),nw(),oe(),i(),ZS(),ya(),Ey(),tg(),We(),da(),Pq=z(),Fq=performance.timeOrigin+performance.now(),Iq=_g(),Lq=cf(),Rq=oi===`/spotlight`,zq=oi===Rn,Bq=new URL(window.location.href).searchParams,Vq=jn(),Hq=nt(oi??window.location.pathname),Uq=window.electronBridge?.getPreloadStartedAtMs?.()??performance.timeOrigin,wi",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS08",
+      "path": "webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "byte_offset": 286713,
+      "token": "async function pL()",
+      "excerpt": "delete window.__codexHistogramCollector}}function fL(){return(fL=e((()=>{})))()}async function pL(){$t(kS(lL)),dr(await Pt.services),await ql(H.remoteConnections);let e=await H.executionHosts?.getDefaultHost();di(e),Pt.onRpcBroken(dL(H.histogramCollector)),H.threadReadState!=null&&await lL.threadReadState.initialize(H.threadReadState),H.statsig!=null&&await DI(H.statsig),H.clientCoordination!=null&&Si(H.clientCoordination),H.terminal!=null&&ua(H.terminal),H.devboxService}function mL(){return(mL=e((()=>{sf(),Gh(),kI(),Ua(),uL(),qs(),OS(),fL(),a",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS09",
+      "path": "webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "byte_offset": 286744,
+      "token": "dr(await Pt.services)",
+      "excerpt": "ollector}}function fL(){return(fL=e((()=>{})))()}async function pL(){$t(kS(lL)),dr(await Pt.services),await ql(H.remoteConnections);let e=await H.executionHosts?.getDefaultHost();di(e),Pt.onRpcBroken(dL(H.histogramCollector)),H.threadReadState!=null&&await lL.threadReadState.initialize(H.threadReadState),H.statsig!=null&&await DI(H.statsig),H.clientCoordination!=null&&Si(H.clientCoordination),H.terminal!=null&&ua(H.terminal),H.devboxService}function mL(){return(mL=e((()=>{sf(),Gh(),kI(),Ua(),uL(),qs(),OS(),fL(),a()})))()}export{MC as A,PS as B,E",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS10",
+      "path": "webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "byte_offset": 286766,
+      "token": "await ql(H.remoteConnections)",
+      "excerpt": "){return(fL=e((()=>{})))()}async function pL(){$t(kS(lL)),dr(await Pt.services),await ql(H.remoteConnections);let e=await H.executionHosts?.getDefaultHost();di(e),Pt.onRpcBroken(dL(H.histogramCollector)),H.threadReadState!=null&&await lL.threadReadState.initialize(H.threadReadState),H.statsig!=null&&await DI(H.statsig),H.clientCoordination!=null&&Si(H.clientCoordination),H.terminal!=null&&ua(H.terminal),H.devboxService}function mL(){return(mL=e((()=>{sf(),Gh(),kI(),Ua(),uL(),qs(),OS(),fL(),a()})))()}export{MC as A,PS as B,ET as C,rT as D,$w as E,nC as F",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS11",
+      "path": "webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "byte_offset": 286808,
+      "token": "H.executionHosts?.getDefaultHost()",
+      "excerpt": "pL(){$t(kS(lL)),dr(await Pt.services),await ql(H.remoteConnections);let e=await H.executionHosts?.getDefaultHost();di(e),Pt.onRpcBroken(dL(H.histogramCollector)),H.threadReadState!=null&&await lL.threadReadState.initialize(H.threadReadState),H.statsig!=null&&await DI(H.statsig),H.clientCoordination!=null&&Si(H.clientCoordination),H.terminal!=null&&ua(H.terminal),H.devboxService}function mL(){return(mL=e((()=>{sf(),Gh(),kI(),Ua(),uL(),qs(),OS(),fL(),a()})))()}export{MC as A,PS as B,ET as C,rT as D,$w as E,nC as F,JS as I,RS as L,vC as M,pC as N,aw as O,YS as ",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS12",
+      "path": "webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "byte_offset": 286890,
+      "token": "H.threadReadState!=null",
+      "excerpt": "executionHosts?.getDefaultHost();di(e),Pt.onRpcBroken(dL(H.histogramCollector)),H.threadReadState!=null&&await lL.threadReadState.initialize(H.threadReadState),H.statsig!=null&&await DI(H.statsig),H.clientCoordination!=null&&Si(H.clientCoordination),H.terminal!=null&&ua(H.terminal),H.devboxService}function mL(){return(mL=e((()=>{sf(),Gh(),kI(),Ua(),uL(),qs(),OS(),fL(),a()})))()}export{MC as A,PS as B,ET as C,rT as D,$w as E,nC as F,JS as I,RS as L,vC as M,pC as N,aw as O,YS as P,IS as R,DT as S,aT as T,BO as _,UA as a,sE as b,wA as c,SA as d,mA as",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS13",
+      "path": "webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "byte_offset": 286970,
+      "token": "H.statsig!=null",
+      "excerpt": "H.threadReadState!=null&&await lL.threadReadState.initialize(H.threadReadState),H.statsig!=null&&await DI(H.statsig),H.clientCoordination!=null&&Si(H.clientCoordination),H.terminal!=null&&ua(H.terminal),H.devboxService}function mL(){return(mL=e((()=>{sf(),Gh(),kI(),Ua(),uL(),qs(),OS(),fL(),a()})))()}export{MC as A,PS as B,ET as C,rT as D,$w as E,nC as F,JS as I,RS as L,vC as M,pC as N,aw as O,YS as P,IS as R,DT as S,aT as T,BO as _,UA as a,sE as b,wA as c,SA as d,mA as f,NO as g,WO as h,EI as i,VC as j,Ew as k,DA as l,VO as m,pL as n,LA as",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS14",
+      "path": "webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "byte_offset": 143304,
+      "token": "H.clientCoordination!=null",
+      "excerpt": "||e.locator.conversationId!==f)return!1}if(o===`dynamic`&&v==null&&i===`local`&&H.clientCoordination!=null)try{if(await H.clientCoordination.findThreadOwner({hostId:i,conversationId:f})!=null)return!1}catch(e){Y.warning(`dynamic_tool_call_owner_discovery_failed`,{safe:{threadId:l,hostId:i},sensitive:{error:e}})}if(a?.aborted||H.dynamicToolCalls!=null&&!await H.dynamicToolCalls.tryClaimExecution({callId:c.callId,hostId:i,threadId:l,turnId:c.turnId})||a?.aborted)return!1;let b=async()=>{try{var e=j();if(a?.aborted)return!0;if(o!==`dynamic`)return!1;let",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS15",
+      "path": "webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+      "byte_offset": 287060,
+      "token": "H.terminal!=null",
+      "excerpt": "=null&&await DI(H.statsig),H.clientCoordination!=null&&Si(H.clientCoordination),H.terminal!=null&&ua(H.terminal),H.devboxService}function mL(){return(mL=e((()=>{sf(),Gh(),kI(),Ua(),uL(),qs(),OS(),fL(),a()})))()}export{MC as A,PS as B,ET as C,rT as D,$w as E,nC as F,JS as I,RS as L,vC as M,pC as N,aw as O,YS as P,IS as R,DT as S,aT as T,BO as _,UA as a,sE as b,wA as c,SA as d,mA as f,NO as g,WO as h,EI as i,VC as j,Ew as k,DA as l,VO as m,pL as n,LA as o,xA as p,bI as r,HA as s,mL as t,CA as u,tO as v,iT as w,cE as x,jO as y,FS as z};\n//# so",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS16",
+      "path": "webview/assets/connect-app-host-90a50ca9e4b4.js",
+      "sha256": "94272631cc0c57bf483309be934f8752721a6e0b83f4160c92398d4ad359a60d",
+      "byte_offset": 150,
+      "token": "new MessageChannel",
+      "excerpt": ",qst as n}from\"./app-shared-2cae01273bae.js\";function r(e){let{port1:t,port2:r}=new MessageChannel;return window.postMessage({type:`connect-app-host`,port:r},window.location.origin,[r]),n(t,e)}function i(){return(i=e((()=>{t()})))()}export{i as n,r as t};\n//# sourceMappingURL=connect-app-host-90a50ca9e4b4.js.map",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS17",
+      "path": "webview/assets/connect-app-host-90a50ca9e4b4.js",
+      "sha256": "94272631cc0c57bf483309be934f8752721a6e0b83f4160c92398d4ad359a60d",
+      "byte_offset": 176,
+      "token": "window.postMessage({type:`connect-app-host`",
+      "excerpt": "d-2cae01273bae.js\";function r(e){let{port1:t,port2:r}=new MessageChannel;return window.postMessage({type:`connect-app-host`,port:r},window.location.origin,[r]),n(t,e)}function i(){return(i=e((()=>{t()})))()}export{i as n,r as t};\n//# sourceMappingURL=connect-app-host-90a50ca9e4b4.js.map",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS18",
+      "path": "webview/assets/connect-app-host-90a50ca9e4b4.js",
+      "sha256": "94272631cc0c57bf483309be934f8752721a6e0b83f4160c92398d4ad359a60d",
+      "byte_offset": 256,
+      "token": "n(t,e)",
+      "excerpt": "window.postMessage({type:`connect-app-host`,port:r},window.location.origin,[r]),n(t,e)}function i(){return(i=e((()=>{t()})))()}export{i as n,r as t};\n//# sourceMappingURL=connect-app-host-90a50ca9e4b4.js.map",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS19",
+      "path": "webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "byte_offset": 1978903,
+      "token": "function hSt(e){_St=e}",
+      "excerpt": "n`:t.includes(`linux`)?`linux`:`unknown`}function d$(){return(d$=t((()=>{})))()}function hSt(e){_St=e}function gSt(e){f$=e}var _St,f$;function p$(){return(p$=t((()=>{})))()}function vSt(){if(h$!=null)return;let e=window.electronBridge?.getSentryInitOptions?.();e!=null&&(g$=new o$(e.initialDesktopTraceSampleRate??e.desktopTraceSampleRate),h$=new lSt({resource:hxt({\"codex.build_flavor\":e.buildFlavor,\"codex.build_number\":e.buildNumber??`unknown`,\"codex.process\":`renderer`,\"os.type\":u$(),\"service.name\":`codex-desktop`,\"service.version\":e.appVersion})",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS20",
+      "path": "webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "byte_offset": 1978925,
+      "token": "function gSt(e){f$=e}",
+      "excerpt": "?`linux`:`unknown`}function d$(){return(d$=t((()=>{})))()}function hSt(e){_St=e}function gSt(e){f$=e}var _St,f$;function p$(){return(p$=t((()=>{})))()}function vSt(){if(h$!=null)return;let e=window.electronBridge?.getSentryInitOptions?.();e!=null&&(g$=new o$(e.initialDesktopTraceSampleRate??e.desktopTraceSampleRate),h$=new lSt({resource:hxt({\"codex.build_flavor\":e.buildFlavor,\"codex.build_number\":e.buildNumber??`unknown`,\"codex.process\":`renderer`,\"os.type\":u$(),\"service.name\":`codex-desktop`,\"service.version\":e.appVersion}),sampler:new a$({root",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS21",
+      "path": "webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "byte_offset": 1881801,
+      "token": "function ygt(e,t,n)",
+      "excerpt": "(let i of Object.keys(e))r+=VZ+bZ(i)+xZ(e[i],t,n+1);return r}default:return 16}}function ygt(e,t,n){return new Hgt(new Ugt(e),t,n).getRemoteMain()}function SZ(){throw Error(`Attempted to use an abstract placeholder from a mapper function. Please make sure your map function has no side effects.`)}function bgt(e,t,n,r,i){let a=new Ggt(r,new PZ(NZ.deepCopyFrom(e,t,n)));try{return a.apply(i)}finally{a.dispose()}}function xgt(e){let t,n=!1,r=new e_t(()=>performance.now()),i,a,o=()=>{n||(n=!0,e.dispose())};return new WritableStream({write(n,s){if(t!",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS22",
+      "path": "webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "byte_offset": 1921831,
+      "token": "Ugt=class",
+      "excerpt": "n this.#t}getStats(){return this.#e.getStats()}drain(){return this.#e.drain()}},Ugt=class{encodingLevel=`structuredClonable`;constructor(e){this.#e=e,e.start(),e.addEventListener(`message`,e=>{this.#i||(e.data===null?this.#a(Error(`Peer closed MessagePort connection.`)):this.#t?(this.#t(e.data),this.#t=void 0,this.#n=void 0):this.#r.push(e.data))}),e.addEventListener(`messageerror`,e=>{this.#a(Error(`MessagePort message error.`))})}#e;#t;#n;#r=[];#i;send(e){if(this.#i)throw this.#i;this.#e.postMessage(e)}async receive(){if(this.#r.le",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS23",
+      "path": "webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "byte_offset": 1929610,
+      "token": "a_t=ygt",
+      "excerpt": "StreamFromHook=xgt,EZ.createReadableStreamHook=t_t.create,n_t=jZ,r_t=Hgt,i_t=wZ,a_t=ygt})))()}var KZ;function qZ(){return(qZ=t((()=>{lq(),KZ=tXe(`AppScope`)})))()}var s_t,c_t;function l_t(){return(l_t=t((()=>{s_t=`local`,c_t=s_t})))()}function JZ(){var e=typeof SuppressedError==`function`?SuppressedError:function(e,t){var n=Error();return n.name=`SuppressedError`,n.error=e,n.suppressed=t,n},t={},n=[];function r(e,t){if(t!=null){if(Object(t)!==t)throw TypeError(`using declarations can only be used with objects, functions, null, or u",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS24",
+      "path": "webview/assets/app-shared-2cae01273bae.js",
+      "sha256": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+      "byte_offset": 1929603,
+      "token": "i_t=wZ",
+      "excerpt": "ritableStreamFromHook=xgt,EZ.createReadableStreamHook=t_t.create,n_t=jZ,r_t=Hgt,i_t=wZ,a_t=ygt})))()}var KZ;function qZ(){return(qZ=t((()=>{lq(),KZ=tXe(`AppScope`)})))()}var s_t,c_t;function l_t(){return(l_t=t((()=>{s_t=`local`,c_t=s_t})))()}function JZ(){var e=typeof SuppressedError==`function`?SuppressedError:function(e,t){var n=Error();return n.name=`SuppressedError`,n.error=e,n.suppressed=t,n},t={},n=[];function r(e,t){if(t!=null){if(Object(t)!==t)throw TypeError(`using declarations can only be used with objects, functions, nu",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS25",
+      "path": ".vite/build/preload.js",
+      "sha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byte_offset": 2805,
+      "token": "O=e.ipcRenderer.sendSync(u)",
+      "excerpt": "lectron`,E=`codex_desktop:message-from-view`,D=`codex_desktop:message-for-view`,O=e.ipcRenderer.sendSync(u),k=e.ipcRenderer.sendSync(d),A=e.ipcRenderer.sendSync(`codex_desktop:get-shared-object-snapshot`)??{},j=e.ipcRenderer.sendSync(f),M=document.documentElement;if(M!=null)M.dataset.theme=j;else{let e=new MutationObserver(()=>{let t=document.documentElement;t!=null&&(t.dataset.theme=j,e.disconnect())});e.observe(document,{childList:!0})}var N=()=>j,P=new Set,F;e.ipcRenderer.on(h,(e,t)=>{j=t,P.forEach(e=>{e()})});function I(e,t){if(t===void 0){delete ",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS26",
+      "path": ".vite/build/preload.js",
+      "sha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byte_offset": 2833,
+      "token": "k=e.ipcRenderer.sendSync(d)",
+      "excerpt": "ssage-from-view`,D=`codex_desktop:message-for-view`,O=e.ipcRenderer.sendSync(u),k=e.ipcRenderer.sendSync(d),A=e.ipcRenderer.sendSync(`codex_desktop:get-shared-object-snapshot`)??{},j=e.ipcRenderer.sendSync(f),M=document.documentElement;if(M!=null)M.dataset.theme=j;else{let e=new MutationObserver(()=>{let t=document.documentElement;t!=null&&(t.dataset.theme=j,e.disconnect())});e.observe(document,{childList:!0})}var N=()=>j,P=new Set,F;e.ipcRenderer.on(h,(e,t)=>{j=t,P.forEach(e=>{e()})});function I(e,t){if(t===void 0){delete A[e];return}A[e]=t}var L=new",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS27",
+      "path": ".vite/build/preload.js",
+      "sha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byte_offset": 2861,
+      "token": "A=e.ipcRenderer.sendSync(`codex_desktop:get-shared-object-snapshot`)",
+      "excerpt": "sktop:message-for-view`,O=e.ipcRenderer.sendSync(u),k=e.ipcRenderer.sendSync(d),A=e.ipcRenderer.sendSync(`codex_desktop:get-shared-object-snapshot`)??{},j=e.ipcRenderer.sendSync(f),M=document.documentElement;if(M!=null)M.dataset.theme=j;else{let e=new MutationObserver(()=>{let t=document.documentElement;t!=null&&(t.dataset.theme=j,e.disconnect())});e.observe(document,{childList:!0})}var N=()=>j,P=new Set,F;e.ipcRenderer.on(h,(e,t)=>{j=t,P.forEach(e=>{e()})});function I(e,t){if(t===void 0){delete A[e];return}A[e]=t}var L=new Map,R=new Map,z={windowType:T,acknowledgeChunkedMessage:(t,n)=>{e.ip",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS28",
+      "path": ".vite/build/preload.js",
+      "sha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byte_offset": 2934,
+      "token": "j=e.ipcRenderer.sendSync(f)",
+      "excerpt": "ync(d),A=e.ipcRenderer.sendSync(`codex_desktop:get-shared-object-snapshot`)??{},j=e.ipcRenderer.sendSync(f),M=document.documentElement;if(M!=null)M.dataset.theme=j;else{let e=new MutationObserver(()=>{let t=document.documentElement;t!=null&&(t.dataset.theme=j,e.disconnect())});e.observe(document,{childList:!0})}var N=()=>j,P=new Set,F;e.ipcRenderer.on(h,(e,t)=>{j=t,P.forEach(e=>{e()})});function I(e,t){if(t===void 0){delete A[e];return}A[e]=t}var L=new Map,R=new Map,z={windowType:T,acknowledgeChunkedMessage:(t,n)=>{e.ipcRenderer.send(o,t,n)},getPreloa",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS29",
+      "path": ".vite/build/preload.js",
+      "sha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byte_offset": 4250,
+      "token": "getInitialSidebarBootstrap:()",
+      "excerpt": "Metrics:async t=>e.ipcRenderer.invoke(m,t),getSharedObjectSnapshotValue:e=>A[e],getInitialSidebarBootstrap:()=>(F===void 0&&(F=e.ipcRenderer.sendSync(p)),F),getSystemThemeVariant:N,subscribeToSystemThemeVariant:e=>(P.add(e),()=>{P.delete(e)}),triggerSentryTestError:async()=>{await e.ipcRenderer.invoke(g)},getSentryInitOptions:()=>O,getDesktopUserAgent:()=>C({appVersion:O.appVersion}),getAppSessionId:()=>O.codexAppSessionId,getBuildFlavor:()=>k,isDeviceCheckSupported:()=>process.platform===`darwin`&&process.arch===`arm64`,isIntelMacBuild:()=>process.plat",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS30",
+      "path": ".vite/build/preload.js",
+      "sha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byte_offset": 6831,
+      "token": "e.ipcRenderer.postMessage(_,void 0,[n])",
+      "excerpt": "(t.source!==window||t.data?.type!==`connect-app-host`)return;let{port:n}=t.data;e.ipcRenderer.postMessage(_,void 0,[n])});\n//# sourceMappingURL=preload.js.map",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS31",
+      "path": ".vite/build/main-0FVbxCQU.js",
+      "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+      "byte_offset": 4669932,
+      "token": "function Evt({buildFlavor:e,getContextForWebContents:t,isTrustedIpcEvent:n})",
+      "excerpt": "ng(`Failed to register AppView RPC services`,{safe:{},sensitive:{error:e}})})})}function Evt({buildFlavor:e,getContextForWebContents:t,isTrustedIpcEvent:n}){O.ipcMain.on(_.dn,e=>{if(!n(e)){e.returnValue=null;return}e.returnValue={..._.Nt,appVersion:_.Jt(),initialDesktopTraceSampleRate:_.J()}}),O.ipcMain.on(_.cn,t=>{if(!n(t)){t.returnValue=null;return}t.returnValue=e}),O.ipcMain.on(_.fn,e=>{if(!n(e)){e.returnValue={};return}e.returnValue=t(e.sender)?.getSharedObjectSnapshot()??{}}),O.ipcMain.on(_.un,e=>{if(!n(e)){e.returnValue=null;return}e.returnValue=t(e.sender)?.getInitialSidebarBootstrap()??null}",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS32",
+      "path": ".vite/build/main-0FVbxCQU.js",
+      "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+      "byte_offset": 4633622,
+      "token": "getInitialSidebarBootstrap(){",
+      "excerpt": "ot()}getSharedObjectSnapshot(){return this.sharedObjectRepository.getSnapshot()}getInitialSidebarBootstrap(){let e=this.threadCatalogSyncManager;if(e==null)return{globalStateEntries:e4.map(e=>({key:e,value:this.fetchHandler.getGlobalStateValue(e)})),...this.fetchHandler.getInitialSidebarWorkspaceState()};let t=this.appState.get(i.gs.REMOTE_CONNECTION_AUTO_CONNECT_BY_HOST_ID)??{},n=new Set(this.getRemoteConnections().filter(({autoConnect:e})=>e).map(({hostId:e})=>e)),r=this.appServerConnectionRegistry.getConnection(u.h).getCachedAuthenticatedPrincipal(),",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS33",
+      "path": ".vite/build/main-0FVbxCQU.js",
+      "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+      "byte_offset": 4636010,
+      "token": "catalogEntries:Rft(S,r,this.threadReadState.owner)",
+      "excerpt": "]?.rootPaths??[]),T.length>0&&w(p,T);for(let e of s){if(C===0)break;w(e)}return{catalogEntries:Rft(S,r,this.threadReadState.owner),catalogHostIds:s,globalStateEntries:e4.map(e=>({key:e,value:this.fetchHandler.getGlobalStateValue(e)})),...this.fetchHandler.getInitialSidebarWorkspaceState()}}getHostConfigForHostId(e){if(e===`local`)return u.m;if(this.durableThreadHostConfig?.id===e)return this.durableThreadHostConfig;let t=this.getRemoteConnections().find(t=>t.hostId===e);if(!t)throw Error(`Host config for host ID ${e} not found`);return _6(t)}getRemoteConnections(){return[..",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS34",
+      "path": ".vite/build/main-0FVbxCQU.js",
+      "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+      "byte_offset": 4633547,
+      "token": "getSharedObjectSnapshot(){",
+      "excerpt": "{return this.messageHandler.getBrowserHostManager().downloadStore.getSnapshot()}getSharedObjectSnapshot(){return this.sharedObjectRepository.getSnapshot()}getInitialSidebarBootstrap(){let e=this.threadCatalogSyncManager;if(e==null)return{globalStateEntries:e4.map(e=>({key:e,value:this.fetchHandler.getGlobalStateValue(e)})),...this.fetchHandler.getInitialSidebarWorkspaceState()};let t=this.appState.get(i.gs.REMOTE_CONNECTION_AUTO_CONNECT_BY_HOST_ID)??{},n=new Set(this.getRemoteConnections().filter(({autoConnect:e})=>e).map(({hostId:e})=>e)),r=this.app",
+      "type": "official-artifact-static-observation"
+    },
+    {
+      "id": "DS35",
+      "path": ".vite/build/main-0FVbxCQU.js",
+      "sha256": "fad45aa7d81de6fe166704e8879e3b7cbfc85151e72df7946853336c7cbc5a3c",
+      "byte_offset": 5056627,
+      "token": "O.ipcMain.on(_.pn,e=>",
+      "excerpt": "or:o,getContextForWebContents:K.getContextForWebContents,isTrustedIpcEvent:we}),O.ipcMain.on(_.pn,e=>{if(!we(e)){e.returnValue=`light`;return}e.returnValue=O.nativeTheme.shouldUseDarkColors?`dark`:`light`});let Te=()=>{let e=O.nativeTheme.shouldUseDarkColors?`dark`:`light`;K.windowManager.refreshWindowBackdrops();for(let t of O.BrowserWindow.getAllWindows())t.isDestroyed()||t.webContents.send(_._n,e)};O.nativeTheme.on(`updated`,Te),H.add(()=>{O.nativeTheme.off(`updated`,Te)});let Ee=new cyt,De=null,Oe=e=>{if(e?.quitImmediately===!1){Ee.allowQuit",
+      "type": "official-artifact-static-observation"
+    }
+  ],
+  "contracts": [
+    {
+      "name": "route-capability",
+      "observed": "allowWork=true selects chatgpt.conversations; loading shows fallback; incapable redirects /; false allowWork also checks seat-access",
+      "offline_requirement": "Provide a controlled capability-provider fixture with explicit values; do not patch guard to always pass",
+      "status": "controlled-fragment-replay",
+      "limits": "Actual capability query service and authentication lifecycle not yet replayed"
+    },
+    {
+      "name": "conversation-suspense",
+      "observed": "WEB: IDs redirect home; ordinary identity feeds prefetch and Suspense fallback; temporary/special branches suppress the prefetch key",
+      "offline_requirement": "Use synthetic ordinary conversation IDs and supply matching state/query data",
+      "status": "controlled-fragment-replay",
+      "limits": "su/ut predicates and real prefetch data provider remain unresolved"
+    },
+    {
+      "name": "preload-sync",
+      "observed": [
+        "codex_desktop:get-sentry-init-options",
+        "codex_desktop:get-build-flavor",
+        "codex_desktop:get-shared-object-snapshot",
+        "codex_desktop:get-system-theme-variant"
+      ],
+      "offline_requirement": "Implement 4 explicit read-only returns, log every call; never expose real account/session data",
+      "status": "controlled-fragment-replay",
+      "limits": "Synthetic Sentry options in replay are not a complete official schema"
+    },
+    {
+      "name": "sidebar-bootstrap",
+      "observed": "Lazy, memoized. Native host includes globalStateEntries and workspace state; catalog-enabled branch additionally has catalogEntries/catalogHostIds and principal/host filtering",
+      "offline_requirement": "Trace getInitialSidebarWorkspaceState and globalState key list before implementing fixture",
+      "status": "partial",
+      "limits": "Replay tests caching only, not full catalog population or principal filtering"
+    },
+    {
+      "name": "renderer-host-rpc",
+      "observed": "connect-app-host transfers port2; port1 creates original RPC session; initialize services awaits appHost.services",
+      "offline_requirement": "Preserve official RPC library and expose allowed synthetic RpcTarget services through methods/getters",
+      "status": "controlled-original-rpc-replay",
+      "limits": "JSON-compatible message values only; full Electron handoff and binary transfers untested"
+    },
+    {
+      "name": "host-service-startup",
+      "observed": "pL connects renderer service target, awaits services, initializes remoteConnections and default execution host, then optional threadReadState/statsig/clientCoordination/terminal",
+      "offline_requirement": "Resolve each used service contract and method before page startup; reject unexpected calls",
+      "status": "static-partial",
+      "limits": "No complete initializeApp or page render executed"
+    }
+  ],
+  "bridge_api_members": [
+    "windowType",
+    "acknowledgeChunkedMessage",
+    "getPreloadStartedAtMs",
+    "sendMessageFromView",
+    "getPathForFile",
+    "startFileDrag",
+    "startLinkDrag",
+    "sendWorkerMessageFromView",
+    "subscribeToWorkerMessages",
+    "showContextMenu",
+    "getFastModeRolloutMetrics",
+    "getSharedObjectSnapshotValue",
+    "getInitialSidebarBootstrap",
+    "getSystemThemeVariant",
+    "subscribeToSystemThemeVariant",
+    "triggerSentryTestError",
+    "getSentryInitOptions",
+    "getDesktopUserAgent",
+    "getAppSessionId",
+    "getBuildFlavor",
+    "isDeviceCheckSupported",
+    "isIntelMacBuild"
+  ],
+  "replay_counts": {
+    "route_preload": 17,
+    "original_rpc": 8
+  },
+  "offline_policy": {
+    "authority": "independent-isolation-design",
+    "deny": [
+      "online network",
+      "real credentials",
+      "real user state",
+      "filesystem drag/open",
+      "terminal/process execution",
+      "telemetry export",
+      "unrecognized host operations"
+    ],
+    "allow_after_contract_verification": [
+      "synthetic in-memory state",
+      "local bundled resources",
+      "original renderer and RPC modules",
+      "explicit read-only fixture methods"
+    ]
+  },
+  "next_blockers": [
+    "remoteConnections initialization ql contract",
+    "executionHosts and startup service return shapes",
+    "capability query provider for chatgpt.conversations",
+    "ordinary conversation data and composer providers",
+    "official CSS/resource rendering in isolated desktop host"
+  ]
+}

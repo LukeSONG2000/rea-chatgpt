@@ -1,0 +1,31 @@
+{
+  "version": "iOS 1.2026.293",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "validation": {
+    "instruction_assertions": 6
+  },
+  "observations": [
+    {
+      "edge": "0x4c63908 -> 0x4f63d2c",
+      "offset_storage": "0xb086c28",
+      "owner_field": "MessageInputViewModel.voiceViewModel",
+      "conclusion": "raw 3..7 filter is downstream of voiceViewModel; not proven Chat/Work enum",
+      "next": "existential owner protocol witness +0x38"
+    },
+    {
+      "edge": "0x4f66660 -> 0x4c500b8 -> subject value -> 0xf53040 -> 0x6e2f80/0xabba90 -> 0xfab38",
+      "type_record": "0x7cd3e40",
+      "type_components": [
+        "DispatchTimeInterval? delay",
+        "Bool needsImmediateFirstResponder"
+      ],
+      "operation": "value witness table at metadata[-8], slot +0x30, argument emptyCases=1",
+      "conclusion": "single-payload tag read, not ordinary named focus enum comparison",
+      "limit": "Full subject generic type and producer lifecycle still need mapping; do not equate with isFirstResponder"
+    }
+  ],
+  "correction": "v272 raw focus enum wording is superseded by value-witness/type evidence. Comparison with 1 remains an observed machine operation, but is not evidence of a focus enum case.",
+  "tool_note": "Initial raw-typeref parser rejected address 0x7cd3e40; inspection of metadata loader proved this is a relative pointer/length record; correct record parser succeeded. No silent parser fallback.",
+  "integration": "Focus request payload/delay and immediate-first-responder intent must remain distinguishable from actual keyboard visibility. No UI predicate replacement yet."
+}

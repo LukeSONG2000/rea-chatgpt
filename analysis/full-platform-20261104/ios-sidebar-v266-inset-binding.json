@@ -1,0 +1,28 @@
+{
+  "status": "partial",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": [
+    {
+      "selector_reference": "0xacaa788",
+      "selector": "bounds",
+      "caller": "0x62ae44",
+      "binding": "CGRect width/height copied to raw+0/+8, with nonpositive values clamped to zero by producer."
+    },
+    {
+      "selector_reference": "0xacb0798",
+      "selector": "safeAreaInsets",
+      "helper": "0x6fd3fc",
+      "caller": "0x62b038",
+      "binding": "0x62b004 returns insets with optional toolbar reconciliation; producer selects horizontal insets using effectiveLayoutDirection XOR edge==1."
+    }
+  ],
+  "independent_swift": "implementation/ios/Sources/RecoveredSidebarGeometry.swift",
+  "validation": "implementation/ios/test-sidebar-geometry.sh",
+  "limits": [
+    "Module not yet wired to preview app target",
+    "Host must provide reconciled insets, not silently use raw safeAreaInsets",
+    "Resolved full-width branch and refreshed flag remain explicit caller inputs",
+    "Invalid-input rejection is independent adapter behavior",
+    "No device acceptance or complete side-menu restoration claim"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-native-implementation",
+  "changes": [
+    "Host-owned horizontal table positions survive disposable UIKit/SwiftUI blocks",
+    "Identity binds DraftScope, message row, unique header spans and alignments; duplicate headers opt out",
+    "Restore once after content bounds exist, clamp to current width; programmatic restore does not overwrite saved position",
+    "Scroll callbacks gated by captured conversation/generation; conversation deletion clears scoped offsets"
+  ],
+  "validation": {
+    "simulator_build": "passed",
+    "state_test_groups": 12,
+    "native_test": "testWideTablePositionSurvivesRowAppend",
+    "passed": 1,
+    "failed": 0,
+    "evidence": "ios-table-v74-ui-v1.summary.json",
+    "visual_review": "Rightmost columns preserved after row append, cancellation and conversation round-trip; exported navigation screenshot inspected"
+  },
+  "limits": [
+    "Process-local registry only; force-stop persistence unimplemented",
+    "Two-table independence and offscreen return require dedicated iOS UI replay",
+    "Same-header content replacement may retain position; arbitrary semantic edits unresolved",
+    "Obsolete header entries retained until conversation deletion or process end",
+    "No official OAIMarkdown linkage, visual parity or physical iPhone acceptance"
+  ],
+  "cleanup": {
+    "dedicated_host_terminated": true,
+    "simulator_pairing_removed": true,
+    "owned_fixture_server_stopped": true,
+    "private_pairing_removed": true
+  },
+  "sources": {
+    "implementation/ios/Sources/DraftStore.swift": "29b58d52763c9583aa9ab60b0a67979b41b52c9f99f22032069c2412bcc69da1",
+    "implementation/ios/Sources/NativeConversationHost.swift": "65e4f9102d179b5974742adf5487804321f09430ae2bb611a9b47f107c8f524b",
+    "implementation/ios/Tests/main.swift": "716ceb45214a21e5520fa7bbc06fb49431f2b8347a62f01221cd518e13a0b49b",
+    "implementation/ios/UITests/HostInteractionTests.swift": "86b5f866ccb69f1166fcae9a600b8c3352db818f1d2fc7d4364f2846375363a5"
+  }
+}

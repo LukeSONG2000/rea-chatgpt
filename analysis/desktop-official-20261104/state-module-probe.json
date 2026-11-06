@@ -1,0 +1,65 @@
+{
+  "version": "26.1021.31345",
+  "runner_sha256": "d733c11d1f8195a4d656a922565fd3d837a9c31069d1dc7c79ccbc54c7ac5566",
+  "sources": {
+    "webview/assets/app-initial-feb30b196d11.js": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+    "webview/assets/rolldown-runtime-2d059c5e81f4.js": "e0a79ad36c6ca1ffbc796c80aa5661803a9d1bc684e29d1587f48b4ba9a82714",
+    "webview/assets/app-shared-2cae01273bae.js": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36"
+  },
+  "results": [
+    {
+      "exportName": "arr",
+      "status": "blocked",
+      "stage": "initialize",
+      "error": "EvalError: Code generation from strings disallowed for this context",
+      "frames": [
+        "    at Function (<anonymous>)",
+        "    at app-shared-2cae01273bae.js:58:89397",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:268",
+        "    at app-shared-2cae01273bae.js:58:89450",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:268",
+        "    at app-shared-2cae01273bae.js:58:89817",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:268",
+        "    at app-shared-2cae01273bae.js:58:90114"
+      ]
+    },
+    {
+      "exportName": "l0n",
+      "status": "blocked",
+      "stage": "initialize",
+      "error": "EvalError: Code generation from strings disallowed for this context",
+      "frames": [
+        "    at Function (<anonymous>)",
+        "    at app-shared-2cae01273bae.js:58:89397",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:268",
+        "    at app-shared-2cae01273bae.js:58:89450",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:268",
+        "    at app-shared-2cae01273bae.js:58:89817",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:268",
+        "    at app-shared-2cae01273bae.js:58:90114"
+      ]
+    },
+    {
+      "exportName": "wXt",
+      "status": "blocked",
+      "stage": "initialize",
+      "error": "EvalError: Code generation from strings disallowed for this context",
+      "frames": [
+        "    at Function (<anonymous>)",
+        "    at app-shared-2cae01273bae.js:58:89397",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:268",
+        "    at app-shared-2cae01273bae.js:58:89450",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:268",
+        "    at app-shared-2cae01273bae.js:58:89817",
+        "    at rolldown-runtime-2d059c5e81f4.js:1:268",
+        "    at app-shared-2cae01273bae.js:58:90114"
+      ]
+    }
+  ],
+  "limitations": [
+    "Exact shipped modules and exports; no AST rewriting",
+    "No window/document/native host/account fixture provided",
+    "An initializer returning is not page rendering or provider correctness",
+    "Missing environment globals are explicit blockers, never replaced silently"
+  ]
+}

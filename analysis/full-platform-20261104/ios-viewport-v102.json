@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "platform": "iOS",
+  "target_artifact_version": "1.2026.293",
+  "authority": "independent-native-host-implementation",
+  "change": [
+    "Account/conversation-scoped viewport snapshots with stable row ID, relative vertical offset and tail-follow flag",
+    "Capture viewport while scrolling; persist after user scroll settles and lifecycle saves",
+    "Restore against current row geometry after diffable snapshot layout; clamp to content bounds",
+    "Missing row falls back to scoped in-memory offset or top",
+    "Corrupt storage retained and write disabled for session with visible notice"
+  ],
+  "validation": {
+    "state_tests": "ios-viewport-v102-state.log",
+    "simulator_build": "ios-viewport-v102-build.log",
+    "status": "passed",
+    "cases": [
+      "cold storage equality",
+      "account mismatch",
+      "non-finite offset rejection",
+      "failed validation preserves previous bytes",
+      "corrupt file preserved"
+    ]
+  },
+  "runtime_gate": {
+    "status": "not-executed",
+    "available_device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "required": [
+      "Scroll to middle, restart process, compare visible stable row and offset",
+      "A-B-A scroll isolation and tail-follow recovery",
+      "Keyboard/dynamic type/layout change clamping",
+      "Append/stream while user reads earlier content"
+    ]
+  },
+  "limits": [
+    "Does not prove official scroll implementation or visual parity",
+    "No iPhone physical acceptance",
+    "Current write frequency under streaming requires measurement; no performance conclusion"
+  ],
+  "next_action": "Run focused simulator restart/anchor UI acceptance with deterministic long content and inspect screenshots",
+  "sources": [
+    {
+      "file": "implementation/ios/Sources/DraftStore.swift",
+      "sha256": "e4c8161d27b7e62f91de4f9dc69d6a1021290d7dfec839eb5ff627fcd7cdf846"
+    },
+    {
+      "file": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "f0b5e80f5e2ea6eb26a4ed0badb22598cf58830d69d7631776195a5eedb55bd1"
+    },
+    {
+      "file": "implementation/ios/Tests/main.swift",
+      "sha256": "e72bbe2730d94285a459cf2b3538255670e686b09ba232d15cab6ac2e709e276"
+    }
+  ]
+}

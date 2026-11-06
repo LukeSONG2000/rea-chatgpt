@@ -1,0 +1,26 @@
+{
+  "table_address": "0x7dfde15",
+  "bytes": [
+    0,
+    78,
+    34,
+    45,
+    14,
+    109,
+    113,
+    74,
+    117
+  ],
+  "branches": [
+    "0x1954634",
+    "0x195476c",
+    "0x19546bc",
+    "0x19546e8",
+    "0x195466c",
+    "0x19547e8",
+    "0x19547f8",
+    "0x195475c",
+    "0x1954808"
+  ],
+  "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1954700: 97a00d99     \tbl\t0x157d64 <__text+0x12fd64>\n 1954704: 979f6d61     \tbl\t0x12fc88 <__text+0x107c88>\n 1954708: b98032d6     \tldrsw\tx22, [x22, #0x30]\n 195470c: aa1403e0     \tmov\tx0, x20\n 1954710: f9401a78     \tldr\tx24, [x19, #0x30]\n 1954714: aa1803e1     \tmov\tx1, x24\n 1954718: 97a2cb1d     \tbl\t0x20738c <__text+0x1df38c>\n 195471c: 8b160301     \tadd\tx1, x24, x22\n 1954720: aa1a03e0     \tmov\tx0, x26\n 1954724: 97a2cb1a     \tbl\t0x20738c <__text+0x1df38c>\n 1954728: 979fff84     \tbl\t0x154538 <__text+0x12c538>\n 195472c: f9401675     \tldr\tx21, [x19, #0x28]\n 1954730: 97ac0602     \tbl\t0x455f38 <__text+0x42df38>\n 1954734: 7100041f     \tcmp\tw0, #0x1\n 1954738: 540008a1     \tb.ne\t0x195484c <__text+0x192c84c>\n 195473c: 94106970     \tbl\t0x1d6ecfc <__text+0x1d46cfc>\n 1954740: 97a00222     \tbl\t0x154fc8 <__text+0x12cfc8>\n 1954744: 8b160300     \tadd\tx0, x24, x22\n 1954748: 979fced2     \tbl\t0x148290 <__text+0x120290>\n 195474c: 540008a1     \tb.ne\t0x1954860 <__text+0x192c860>\n 1954750: 9410696b     \tbl\t0x1d6ecfc <__text+0x1d46cfc>\n 1954754: 97a00051     \tbl\t0x154898 <__text+0x12c898>\n 1954758: 1400002f     \tb\t0x1954814 <__text+0x192c814>\n 195475c: 97ac0398     \tbl\t0x4555bc <__text+0x42d5bc>\n 1954760: 71001c1f     \tcmp\tw0, #0x7\n 1954764: 54000580     \tb.eq\t0x1954814 <__text+0x192c814>\n 1954768: 1400002f     \tb\t0x1954824 <__text+0x192c824>\n 195476c: ad400680     \tldp\tq0, q1, [x20]\n 1954770: ad048660     \tstp\tq0, q1, [x19, #0x90]\n 1954774: 39408288     \tldrb\tw8, [x20, #0x20]\n 1954778: 3902c268     \tstrb\tw8, [x19, #0xb0]\n 195477c: 97ac0390     \tbl\t0x4555bc <__text+0x42d5bc>\n 1954780: 7100041f     \tcmp\tw0, #0x1\n 1954784: 54000501     \tb.ne\t0x1954824 <__text+0x192c824>\n 1954788: 94101018     \tbl\t0x1d587e8 <__text+0x1d307e8>\n 195478c: b9803016     \tldrsw\tx22, [x0, #0x30]\n 1954790: 94114790     \tbl\t0x1da65d0 <__text+0x1d7e5d0>\n 1954794: 94112bce     \tbl\t0x1d9f6cc <__text+0x1d776cc>\n 1954798: 8b160280     \tadd\tx0, x20, x22\n 195479c: f9400e77     \tldr\tx23, [x19, #0x18]\n 19547a0: 97b661fc     \tbl\t0x6ecf90 <__text+0x6c4f90>\n 19547a4: 8b160380     \tadd\tx0, x28, x22\n 19547a8: aa1b03e1     \tmov\tx1, x27\n 19547ac: 97a00477     \tbl\t0x155988 <__text+0x12d988>\n 19547b0: 941150a2     \tbl\t0x1da8a38 <__text+0x1d80a38>\n 19547b4: 94115594     \tbl\t0x1da9e04 <__text+0x1d81e04>\n 19547b8: 360005b5     \ttbz\tw21, #0x0, 0x195486c <__text+0x192c86c>\n 19547bc: 979ffede     \tbl\t0x154334 <__text+0x12c334>\n 19547c0: 942c6572     \tbl\t0x246dd88 <__text+0x2445d88>\n 19547c4: aa0003f5     \tmov\tx21, x0\n 19547c8: 9411087d     \tbl\t0x1d969bc <__text+0x1d6e9bc>\n 19547cc: aa1b03e0     \tmov\tx0, x27\n 19547d0: 97a1a827     \tbl\t0x1be86c <__text+0x19686c>\n 19547d4: aa1703e0     \tmov\tx0, x23\n 19547d8: 97a1a825     \tbl\t0x1be86c <__text+0x19686c>\n 19547dc: 9410faf1     \tbl\t0x1d933a0 <__text+0x1d6b3a0>\n 19547e0: 979ffe1f     \tbl\t0x15405c <__text+0x12c05c>\n 19547e4: 14000016     \tb\t0x195483c <__text+0x192c83c>\n 19547e8: 97ac0375     \tbl\t0x4555bc <__text+0x42d5bc>\n 19547ec: 7100141f     \tcmp\tw0, #0x5\n 19547f0: 54000120     \tb.eq\t0x1954814 <__text+0x192c814>\n 19547f4: 1400000c     \tb\t0x1954824 <__text+0x192c824>\n 19547f8: 97ac0371     \tbl\t0x4555bc <__text+0x42d5bc>\n 19547fc: 7100181f     \tcmp\tw0, #0x6\n 1954800: 540000a0     \tb.eq\t0x1954814 <__text+0x192c814>\n 1954804: 14000008     \tb\t0x1954824 <__text+0x192c824>\n 1954808: 97ac036d     \tbl\t0x4555bc <__text+0x42d5bc>\n 195480c: 7100201f     \tcmp\tw0, #0x8\n 1954810: 540000a1     \tb.ne\t0x1954824 <__text+0x192c824>\n 1954814: 9410fae3     \tbl\t0x1d933a0 <__text+0x1d6b3a0>\n 1954818: 979ffe11     \tbl\t0x15405c <__text+0x12c05c>\n 195481c: 52800035     \tmov\tw21, #0x1               ; =1\n 1954820: 14000007     \tb\t0x195483c <__text+0x192c83c>\n 1954824: 9004a481     \tadrp\tx1, 0xade4000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x13110>\n 1954828: 9135c021     \tadd\tx1, x1, #0xd70\n 195482c: b00325e2     \tadrp\tx2, 0x7e11000 <_writev+0x7e11000>\n 1954830: 91342042     \tadd\tx2, x2, #0xd08\n 1954834: 979ffe2b     \tbl\t0x1540e0 <__text+0x12c0e0>\n 1954838: 52800015     \tmov\tw21, #0x0               ; =0\n 195483c: 120002a0     \tand\tw0, w21, #0x1\n 1954840: d10143bf     \tsub\tsp, x29, #0x50\n 1954844: a9457bfd     \tldp\tx29, x30, [sp, #0x50]\n 1954848: 179fc730     \tb\t0x146508 <__text+0x11e508>\n 195484c: 8b160300     \tadd\tx0, x24, x22\n 1954850: 979fce90     \tbl\t0x148290 <__text+0x120290>\n 1954854: 54000181     \tb.ne\t0x1954884 <__text+0x192c884>\n 1954858: 94106929     \tbl\t0x1d6ecfc <__text+0x1d46cfc>\n 195485c: 97a001db     \tbl\t0x154fc8 <__text+0x12cfc8>\n"
+}

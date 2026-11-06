@@ -1,0 +1,41 @@
+{
+  "status": "partial",
+  "classification": "original iOS 293 Markdown parser with independent UIKit projection and fixture transport",
+  "verified": [
+    "Split bold, open/closed Swift fence and growing table produce final native content",
+    "Exact new-send identity prevents persisted old replies satisfying assertions",
+    "New code/table scrolled into visible area and screenshot inspected",
+    "First block identity remains tied to request; cell-family changes use reload",
+    "Unchanged messages avoid unnecessary reconfigure and parser work"
+  ],
+  "runtime_report": "ios-markdown-stream-v2.xcresult",
+  "summary": "ios-markdown-stream-v2-summary.json",
+  "parser_evidence": "ios-parser-integration-v2.json",
+  "historical_limit": "v1 assertions passed but screenshot showed old messages; not visual acceptance",
+  "algorithm": "Full accumulated text parse for each changed message, cached per request/text; not recovered incremental AST algorithm",
+  "limitations": [
+    "Midstream arbitrary insertions/revisions may change block-index correspondence",
+    "Lists, quotes and other unsupported kinds remain labeled unimplemented",
+    "Live Zhipu rich formatting not independently tested",
+    "Large text/frame cost, selection retention, wide-table gestures and automatic follow-scroll unaccepted",
+    "No official visual parity or physical iPhone acceptance"
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/OfficialMarkdown.swift",
+      "sha256": "028e9769885be5d0474fd6d0ba986bf90ed780e3a2bec6de723e7f6023e684ae"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "c37e06ff3e7c261c6dd01d1212ce660ad2d3e6f85e627439c0fd68fbfabadb72"
+    },
+    {
+      "path": "implementation/harness/fixture_worker.py",
+      "sha256": "1d6fbf999b71c44ab31ebbdf1e0e4dcb840d12451116ed6df838b1060df6cb21"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "7019689474ed66a1417c30ff4961479b0792bb1404482495d71f2f8795795c80"
+    }
+  ]
+}

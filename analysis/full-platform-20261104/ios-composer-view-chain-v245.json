@@ -1,0 +1,44 @@
+{
+  "status": "partial",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "entry_chain": [
+    {
+      "type": "MessageInputView",
+      "conformance": "0x812c968",
+      "body_witness": "0x4cb8c7c",
+      "body": "0x4cb7790",
+      "content_call": "0x4cb79bc"
+    },
+    {
+      "type": "MessageInputViewContent",
+      "descriptor": "0x9674bd0",
+      "body_witness": "0x4cbc6dc",
+      "wrapper": "0x4cb8cb0",
+      "body_callback": "0x4cb8cf0",
+      "type_record": "0x812f858",
+      "nested_call": "0x4cb91c4"
+    }
+  ],
+  "observations": [
+    "inner body type record references MessageInputLayout with SingleLineOuterLayout",
+    "outer content function imports GlassEffectContainer",
+    "style environment transform references MessageInputPrimaryButtonPartStyle",
+    "inner content stores double-line, input-empty, keyboard, DynamicType and style fields"
+  ],
+  "limits": [
+    "type record is not a fully reconstructed generic AST",
+    "not all branches are selected at runtime",
+    "nested optional branch at 0x4cb9404 not identified as single/double-line switch",
+    "0x4cb9838 role not fully recovered despite layout-construction filename",
+    "main-chat style values and exact inner variant choice still unknown"
+  ],
+  "validation": [
+    "body type references match original artifact",
+    "direct call to inner content builder verified",
+    "glass constructor import binding verified"
+  ],
+  "ui_changed": false
+}

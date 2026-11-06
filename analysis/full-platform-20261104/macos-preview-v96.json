@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "authority": "independent-pending-state-adapter-with-original-renderer",
+  "runtime": "macos-preview-v96-capture-v2.json",
+  "verified": [
+    "Original branch service result supplies temporary ID and source pair",
+    "Primary owner event activates only registered matching pending identity",
+    "Actual composer input persisted exact synthetic plain text",
+    "No committed history changes during preview capture",
+    "Atomic disk read, isolation, late/duplicate update rejection, source revision checks, bounded writes and account rejection tested"
+  ],
+  "implementation": [
+    "desktop-pending-branch-store.cjs",
+    "desktop-pending-branch-adapter.mjs"
+  ],
+  "limits": [
+    "Cold renderer reinitialization not yet implemented; this is capture, not full recovery",
+    "Only plain-text Ask ChatGPT input; rich content and attachments unaccepted",
+    "Snapshot cleanup on matching commit/discard and process-epoch transitions incomplete",
+    "First integration failed before record write; corrected callback execution context and reran"
+  ],
+  "next_action": "Load pending snapshot before startup owner deactivation, validate source digest, invoke original branch initializer, remap draft and test cold first-send; add exact matching cleanup",
+  "sources": [
+    {
+      "file": "analysis/tools/desktop-pending-branch-store.cjs",
+      "sha256": "17dabb66f71f092bf4859018b778e707a2a7b76586b529e6033fe73c92d4f892"
+    },
+    {
+      "file": "analysis/tools/desktop-pending-branch-adapter.mjs",
+      "sha256": "e090884eaabab548e2d2c7cb3bd477285321a14f569a2b1999cb24e326f47467"
+    },
+    {
+      "file": "analysis/tools/desktop-native-host.cjs",
+      "sha256": "e05fa0689029170ce6d1c35d444b540af8884d14bcf9f1287a29e22bea4aba13"
+    },
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "d77584c42f004e92bd031945e60dfc368fe0dc4fb76a016c6d334ee72b826c93"
+    }
+  ]
+}

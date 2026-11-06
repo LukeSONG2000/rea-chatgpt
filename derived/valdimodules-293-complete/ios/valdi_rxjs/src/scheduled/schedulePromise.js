@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.schedulePromise=void 0;const e=require("../observable/innerFrom"),r=require("../operators/observeOn"),s=require("../operators/subscribeOn");function o(o,i){return(0,e.innerFrom)(o).pipe((0,s.subscribeOn)(i),(0,r.observeOn)(i))}exports.schedulePromise=o;

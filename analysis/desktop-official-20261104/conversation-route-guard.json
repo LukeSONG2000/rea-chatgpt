@@ -1,0 +1,24 @@
+{
+  "status": "partial",
+  "runtime": "root-mount-v19-synthetic-account.json",
+  "source": "recovered/macos/asar-extracted/webview/assets/app-route-components-2a4d3d33325c.js",
+  "sha256": "4e5d333e78e18b2d6b54a11c23a0cfc241b8f9219a7490c6cefdb39e99fe279f",
+  "utf8_offset": 3427,
+  "excerpt": "function S(e){let n=(0,C.c)(13),{children:r,allowWork:i,allowLocalPages:a,fallback:o}=e,s=i!==void 0&&i,c=a!==void 0&&a,l=o===void 0?null:o,d=s?`chatgpt.conversations`:`chatgpt`,f;n[0]===d?f=n[1]:(f={name:d},n[0]=d,n[1]=f);let p=u(v,f),m;n[2]===Symbol.for(`react.memo_cache_sentinel`)?(m={name:`chatgpt.seat-access`},n[2]=m):m=n[2];let h=u(v,m);if(c){let e;return n[3]!==r||n[4]!==l?(e=(0,T.jsx)(w.Suspense,{fallback:l,children:r}),n[3]=r,n[4]=l,n[5]=e):e=n[5],e}if(p.isLoading||!s&&h.isLoading){let e;return n[6]===l?e=n[7]:(e=(0,T.jsx)(T.Fragment,{children:l}),n[6]=l,n[7]=e),e}if(!s&&h.isCapable){let e;return n[8]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,T.jsx)(D,{}),n[8]=e):e=n[8],e}if(!p.isCapable){let e;return n[9]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,T.jsx)(t,{to:`/`,replace:!0}),n[9]=e):e=n[9],e}let g;return n[10]!==r||n[11]!==l?(g=(0,T.jsx)(w.Suspense,{fallback:l,children:r}),n[10]=r,n[11]=l,n[12]=g):g=n[12],g}var C,w,T,E,D;function O(){return(O=e((()=>{C=o(),d(),w=i(),n(),y(),_(),h(),g(),s(),r(),T=a(),p(),E=x(async()=>{b.importStarted(),m.prefetch().catch(e=>{l.error(`Failed to prefetch Page editor`,{safe:{surface:`route`},sensitive:{error:e}}),c(e instanceof Error?e:Error(`Failed to prefetch Page editor`),{tags:{operation:`page-editor-prefetch`,surface:`route`}})});try{let{SpacePage:e}=await f(async()=>{let{SpacePage:e}=await import(`./space-page-bb87e3da0145.js`);return{SpacePage:e}},__vite__mapDeps([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,",
+  "observed": {
+    "conversations": {
+      "isLoading": false,
+      "isError": false,
+      "isCapable": false
+    },
+    "workCloud": {
+      "status": "denied",
+      "reason": "free-plan"
+    },
+    "selectedAccountId": null,
+    "selectedAccountStructure": null
+  },
+  "correction": "v19 diagnostic field named workLocal actually reads Yv workCloud; runner corrected for subsequent runs",
+  "conclusion": "Original guard redirects incapable chatgpt.conversations routes to /. Navigation alone cannot restore the conversation surface.",
+  "next_action": "Supply source-bound synthetic account-directory and feature-bootstrap payloads; preserve guard logic and label fixture choices independently."
+}

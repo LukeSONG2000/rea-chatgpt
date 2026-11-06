@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "android",
+  "target_baseline": "1.2026.293",
+  "baseline_ref": "analysis/full-platform-20261104/baseline.json",
+  "implementation_origin": "independent-native-compose-host; no recovered official UI",
+  "artifact": {
+    "path": "implementation/android/app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "aad123aef9664832d9ee8688423548fa56b6a25d6edda77919849af5e79891c5",
+    "bytes": 10295827,
+    "application_id": "local.rea.chatgpt.androidhost"
+  },
+  "validation": {
+    "debug_build": "passed android-build-v4.log",
+    "offline_rebuild": "passed android-build-v5-offline.log (incremental up-to-date)",
+    "internet_permission": "absent in packaged manifest",
+    "runtime": "not-run",
+    "visual_fidelity": "not-accepted",
+    "draft_process_recovery": "implemented; device test pending"
+  },
+  "source_sha256": {
+    "implementation/android/build.py": "1a36866d7ec18686303217540fe32185467b477b84ad89a5ed83c2e2c41b315f",
+    "implementation/android/README.md": "5642b51f18c4df3e12581d115a5d447dc50a6a95e00f4ff4b2d696c2889103a4",
+    "implementation/android/.gitignore": "6409fa61e338c8dedada902c171cdd004b146e5b3bf602700f104bd30acc0a12",
+    "implementation/android/build.gradle.kts": "212469ef9e91a5b6105c801a1eb72c52f29612895e60c00670eac235e1fc6321",
+    "implementation/android/settings.gradle.kts": "367ec1d3bf09eac8517f02be10457f679fa4cfa6a67299a8750120c5a0201228",
+    "implementation/android/gradle.properties": "198cfb414a6067fc813ba6dd9d8d927a5d9bd005567dc4bba8784a8deec518b9",
+    "implementation/android/app/build.gradle.kts": "6cc0334b75e7ee9f475542ab1ac9db3b866209ee1a416c1a57952d07d7d5b352",
+    "implementation/android/app/src/main/AndroidManifest.xml": "8e0ccbb7efe43c55e7ff1ad233611ad00ecbbe28cd87ec71e64d3f70bfde39fa",
+    "implementation/android/app/src/main/res/values/styles.xml": "f17fd5165caf1b3e88e2a8497a52f2b5adc5691fd2da1d66ced90bc66374660a",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "9ca5dc0bdd801ed4c6295c7545035349d200d2d7e44e3a70674827df3b7f1891"
+  },
+  "limitations": [
+    "No installed emulator image; existing SDK system-image directories empty",
+    "Connected device not used; no automatic installation",
+    "No original component reuse or complete frontend fidelity",
+    "No Markdown projection, harness pairing, model stream or Remote yet",
+    "Synchronous draft writes and IME behavior require device validation"
+  ],
+  "next_action": "Provision isolated emulator and verify native A/B drafts, force-stop recovery, selection and keyboard; then connect scoped harness"
+}

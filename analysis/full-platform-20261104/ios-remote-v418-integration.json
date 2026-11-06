@@ -1,0 +1,132 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Recover the input request focus-dependent question region and identify the actual initial task.",
+  "official_observations": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1cf49bc ->0x1a544d4 ->0x1a54514",
+      "conclusion": "Initial task checks question count and invokes submit with an empty dictionary only for zero questions. The earlier initial-focus-task hypothesis is withdrawn; no focus setter is established here."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a55efc..0x1a55f40 ->0x1da9918 ->0x7c4ad34",
+      "conclusion": "Ordinary and secret input use a Bool FocusState binding. Body font applies to the field."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a5442c;0x1a53e88..0x1a53f14;0x1a54568",
+      "conclusion": "Scrollable question/options region maximum height: focused140, otherwise clamp(viewport*.45,180,360) for positive viewport, else220. Top alignment, basedOnSize bounce, easeInOut duration0.2 animated by computed height. Navigation and footer are outside this scroll region."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "type records0x7e1e9a0/0x7e1e9b0/0x7e1ea00",
+      "conclusion": "Question ScrollView is nested in a root containing navigation/footer, with CodexRemoteComposerAdjacentCardStyle and a composer-adjacent pill button. Whole consumer placement and these styles are not yet integrated."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "FocusState binding and original question-height calculation/bounce/animation integrated.",
+      "Empty-question initial submission restored; empty requests are no longer automatically classified unsupported.",
+      "Added long and empty synthetic fixtures and question-scroll accessibility identifier."
+    ],
+    "independent_adaptations": [
+      "Parent GeometryReader is an independent viewport adapter; original owner measurement is not proved.",
+      "Nonfinite viewport fallback and identity validation are independent guards.",
+      "Scoped event envelope and disconnected service remain independent interfaces.",
+      "Component remains in the synthetic thread history region; original composer-adjacent owner placement is unresolved."
+    ]
+  },
+  "validation": {
+    "foundation": "Passed cumulative suite, including10 viewport boundary cases,3 nonfinite guards, focus140, scoped empty submission, stale/invalid payloads and nonempty initial no-op.",
+    "host_typecheck": "Passed with3 preexisting UIKit deprecation warnings; subsequent source change only reindents the question block. Not build/link/runtime acceptance.",
+    "ui_test_source": "Added testRemoteUserInputFocusHeightAndReturn and testRemoteEmptyUserInputSubmissionAndReturn. Complete UI source syntax passed; neither test executed or selected in original pending runner.",
+    "project": "plutil passed.",
+    "retention": "No stale packages.",
+    "runtime": "Live97181/97197 remain running; previously sampled first-launch administrator authorization gate unresolved. Old preview87483 remains running. No simulator/phone update."
+  },
+  "limitations": [
+    "Keyboard motion, actual viewport/safe-area geometry and visual fidelity unaccepted.",
+    "Footer icon/pill, card style and original parent placement remain partial.",
+    "Service acknowledgement unavailable; no local execution. Android behavior independently unproved."
+  ],
+  "next_minimum_action": "Recover the composer-adjacent footer/card and owner attachment; after the existing authorization gate clears, explicitly run task-list -> message component -> return/reentry tests against cumulative source.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-bindings.json",
+      "sha256": "73cf3eb22b270205fae42f989fcdda812e7f73afdd9dfda81e0887d67f92cbab"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-body-animation-helper.asm",
+      "sha256": "a24fe8043a0a1262c485af559175f068eb3b6d0296cb2ad3dedb58acff84f21a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-focus-application.asm",
+      "sha256": "d0d3bca252c558fd5a552f79e1b2d14a4237571dcafaba42710d85cb198c7183"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-foundation.log",
+      "sha256": "58f7716e5455bf534bd85f9cffc24e3a5277835972922acb244e4ff932c0d023"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-height-animation.asm",
+      "sha256": "342201d79cda8dc2fbdba08f124bad0b8322b1d08b0c12e827adf9b4e919f1bc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-input-body-calls.json",
+      "sha256": "95e8743d089c95958f072514b6341c8b73d27eade126d6da1ca2b8308317dca9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-input-body.asm",
+      "sha256": "186025d4f16d2cd6db8622ba895be76dabd9eafb588caa907434911a045af18d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-scroll-frame.asm",
+      "sha256": "f6e416dc7c00ebd98d2fc0b4ac40913512a23bf1eb1253f8948809ef90c5191e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-type-7e1e9a0.json",
+      "sha256": "01ff6601511e7ae05e5136c4c0f2833b117abfbf30b24051adaf382d7a77a662"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-type-7e1e9b0.json",
+      "sha256": "7f828443df19c94589a3d2e46ec7079b01d2652238c748bd476fa5f3f29879da"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-type-7e1e9e8.json",
+      "sha256": "933781eb03c56335c2152872248accbb202405284c1e18f580f2bda3290fb9ac"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-type-7e1ea00.json",
+      "sha256": "ec84c34e81f7ca4f818245a059c0a2e4b80c8718f6ebfa41907df0eef8908dd5"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-type-7e1ea78.json",
+      "sha256": "35c1b8254d3f08444108c2fe5bb0f682d2a783c37a9d7cd185c37aea001dbc8e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v418-typecheck.log",
+      "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-content.asm",
+      "sha256": "0bbeeb5eedc2eebb56bef1a774595f1cae1d15d57a3a234196d241b93eb0f22c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-helpers.asm",
+      "sha256": "0ed6e2bbe3f8298b5e30c73b55813d9d6a07668f6484adeb75a6aa4e2cd3c63e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-callbacks.asm",
+      "sha256": "76fe4c3287e4e57354b0003e4d50608dbceb91e69e4f96226ea6621b9117bb38"
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteUserInputInteraction.swift": "3f74bb9efb12cb1202ebca86afb20e92d971a1eab59d1584d5172d561e58a4b5",
+    "implementation/ios/Sources/NativeConversationHost.swift": "46219cfbe7692694a6c5d780a2ae6deac652f5270d150920e50164b5e2ce93c1",
+    "implementation/ios/TextTests/main.swift": "91a12d8106b29b346290e984ef189a9e7e48d77606959b0fca4ac7e2a24c8056",
+    "implementation/ios/UITests/HostInteractionTests.swift": "49ca209499569ff0c28991fe0a0e85ff5639ab4b85a622a9693eb686a4cf3e0e"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static; independent presentation adapter",
+  "findings": [
+    {
+      "offset": "0x1a42158",
+      "conclusion": "Shared duration formatter constructor: NSDateComponentsFormatter via bound class at0xaaca468; allowedUnits0xe0, unitsStyle1, maximumUnitCount2, zeroFormattingBehavior0xe."
+    },
+    {
+      "offset": "0x1a4025c..0x1a40278",
+      "conclusion": "Helper0x269310 compares elapsed to0; fcsel clamps negative elapsed; formatter nil falls back to small string0s."
+    },
+    {
+      "offset": "0x88bbd10;0x88bbd50;0x88bbd90",
+      "conclusion": "Running command+duration and duration-only localization keys; English duration-only fallback Running command for ."
+    }
+  ],
+  "integration": [
+    "Explicit optional per-activity runningCommand presentation, not derived from task activity.",
+    "Synthetic fixture A supplies display command and start date; B does not inherit running state.",
+    "TimelineView periodic1s and recovered DateComponentsFormatter configuration; body/tertiary typography.",
+    "System-locale duration formatting uses independent calendar-locale adaptation; Chinese sentence remains adapter copy."
+  ],
+  "unknowns": [
+    "Official upstream running status selection",
+    "Full localization catalog",
+    "Shimmer/numeric transition trigger",
+    "Normal/completed summary projection",
+    "Actual expanded command content layout",
+    "Android counterpart"
+  ],
+  "validation": {
+    "status": "passed-scoped-simulator-test",
+    "test": "testRemoteTaskScopeAndReturn",
+    "result": "ios-remote-v353.xcresult",
+    "screenshot": "ios-remote-v353-screenshots/79E2E4CE-9617-48ED-90DF-A552A4FA6929.png",
+    "visual": "Running command and 1m20s visible without observed clipping; localized sentence is adapter copy and full locale matrix untested.",
+    "preview_pid": 77606,
+    "phone_updated": false,
+    "external_display_reverified": false,
+    "remaining": [
+      "Direct tick-change assertion",
+      "Future start timestamp and missing command fixture",
+      "Background/foreground behavior",
+      "Full locale and Dynamic Type matrix"
+    ]
+  }
+}

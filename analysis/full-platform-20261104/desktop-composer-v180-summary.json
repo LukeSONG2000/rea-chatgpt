@@ -1,0 +1,19 @@
+{
+  "status": "passed-bounded-validation",
+  "sourceReport": "desktop-composer-v180-multiline.json",
+  "checks": [
+    "Chat and image editors grow for three lines including Chinese text",
+    "Three lines are not vertically clipped",
+    "Clearing returns both to aligned single-line geometry",
+    "Sidebar collapse/restore and 1000x720 native resize pass"
+  ],
+  "limitations": [
+    "Chinese text inserted programmatically; this does not prove IME candidate behavior",
+    "No Windows OS or physical-device acceptance",
+    "No new runtime code changes or preview restart this turn"
+  ],
+  "preview": {
+    "pid": 76709,
+    "keptRunning": true
+  }
+}

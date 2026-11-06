@@ -1,0 +1,269 @@
+{
+  "schema": "rea-ios-integration-v1",
+  "batch": "v424",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "question": "Replace the independent generic previous-message disclosure with the observed official consumer and separate control from history projection.",
+  "findings": [
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a32dbc ->0x1a354f8/0x1a3c150;0x1a3c2f0;typeref0x7e123b0/3b8;closure0x2eacc",
+      "conclusion": "History control uses DisclosureGroup with EmptyView and CodexRemoteDisclosureGroupStyle; history content lies outside the toggle."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a3c2f8..358;0x74ee310;0x1a3c658 ->0x74e2728;0xaad38d8;0x1a3c730",
+      "conclusion": "Secondary color and center style, zero padding/background and arrow metric13; label uses body provider and monospacedDigit."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "0x1a35844/0x1a35888;0x1a42cd4/0x1a42d34;0x1a3c4e4",
+      "conclusion": "One-loaded-message visible/accessibility labels and expanded/collapsed values are bound to original keys."
+    },
+    {
+      "evidence_type": "official_artifact_static",
+      "source": "descriptor0x95acb58 field offset vector2words;history-field-map.json",
+      "conclusion": "Expansion binding+cc,count+104,unloaded+108,presentation expanded+10c,loading+110 are separate fields."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Replace generic fixture disclosure with dedicated source-backed single-message toggle.",
+      "Use secondary arrow color only for history consumer; retain tertiary for existing tools.",
+      "Move synthetic earlier content into owner expansion branch.",
+      "Extract four verified original localization keys and add locale/fallback regressions.",
+      "Add task-isolation/history/activity UI coverage."
+    ],
+    "independent_adaptations": [
+      "Independent native SwiftUI host, exactly one loaded synthetic prior message.",
+      "Existing reconstructed disclosure style reused; no private framework linked.",
+      "No real service fetch or task execution."
+    ],
+    "unknowns": [
+      "Complete running/duration/count/unknown-count label projection.",
+      "Loading/error/pagination action callbacks and upstream state writes.",
+      "Outer transcript grouping/spacing/measurement.",
+      "Runtime accessibility and visual fidelity.",
+      "Android corresponding implementation."
+    ]
+  },
+  "validation": {
+    "typecheck": {
+      "exit_code": 0,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v424-typecheck.log",
+        "sha256": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078"
+      },
+      "existing_warnings": 3
+    },
+    "foundation_regressions": {
+      "exit_code": 0,
+      "log": {
+        "path": "analysis/full-platform-20261104/ios-remote-v424-text.log",
+        "sha256": "c48bb7a5818c93cad892d051f2e95f99739c3d3123f58ee01d11f2339b3faf6b"
+      }
+    },
+    "ui_tests": {
+      "parse_exit_code": 0,
+      "executed": false,
+      "new_test": "testRemotePreviousMessageToggleAndTaskIsolation"
+    },
+    "localization": "52 selected keys across65 locale tables; not complete app language recovery",
+    "runtime": "Prior preview87483 and installer97197/runner97181 live this turn; existing authorization blocker retained. No duplicate runner or phone update.",
+    "retention": "dry-run no stale targets"
+  },
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-ax-collapsed-helper.asm",
+      "sha256": "bd5b7293eb3d3014231329347aea90ec9f59878a210a14914ebea2bfd35f745d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-ax-collapsed-helper.json",
+      "sha256": "75b137e6c3cbbab2344daba43be94a8138c15f680008e181fc786e9eca02937b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-ax-collapsed.asm",
+      "sha256": "53dcfcf173b8882fa84b543173b3acfe86be442b5a75e531d933b75cd3b0a8a4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-ax-expanded.asm",
+      "sha256": "d2ca00ad2b4a673a541b1392db238bbeba0a31d2c12c8eca1b28f91881b322ce"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-ax-expanded.json",
+      "sha256": "c4228175a1939f661e2b0873f2a8909b2eca2928ecf3ac32875565c1688ff458"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-bindings.json",
+      "sha256": "fa289d36165d768e0997d54b323926303bdf274af7e9dca20ddca10876ec9d58"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-body-end.asm",
+      "sha256": "9e8bb41d2b2c28787fd95f46dcf36f55b89279dae62a9026e9bcae18d4ec57a6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-body-end.json",
+      "sha256": "848e62923dcaff52cf63ed6481b1c5cb707a1a3f48fdf447ece9f418c330887f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-button.asm",
+      "sha256": "d26da2047c4fa04f977df156cd11262c7a809920a232e8046f124ff61d732e0f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-button.json",
+      "sha256": "b8b4e1c99e1e11e898bb7c1ada407c2e10dc89a80263a53fbf853dd227940509"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-color.asm",
+      "sha256": "a208c6977c904190fb7fdeb6b763a7193d1aec34e3463fd723ef56bd08cfe5ea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-color.json",
+      "sha256": "ef6a1eeaa0e32023ec2db7de2428272562d052ec0dd666d5948eb018128834d6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-control.asm",
+      "sha256": "438c7395b68084cc5d11a86895a83fe5341e4c719a559bc561d031624bc3884e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-control.json",
+      "sha256": "caa5d64a1228e2c7f51b898357869a8e3ad2209ff226f8020a1aa33a1efc3f0a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-dispatch.asm",
+      "sha256": "bfc01ecbfa41b547309d440bf686c630cbf62376be9a53fef9030221e735fb4e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-dispatch.json",
+      "sha256": "cd7ada0bf7c22e18696eb6e5c5ac74b54fdc69ecd53a6849c3ad16ded230670f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-empty.asm",
+      "sha256": "6a95ff15fa09006b965ae319fa1026d9f37f7c41fde432fd4ca4e0856eef54fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-empty.json",
+      "sha256": "c8f439741079dbef94dd4d2684defa7c23386d82aadb5796f91e67e2a022b26c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-field-map.json",
+      "sha256": "e26adebc46fade09a699bc7e24066ed89f1f48aeafacca338854bae1d611c52a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-font-init.asm",
+      "sha256": "ff62d6a2579fb28bd5fa14e0c4ba9f12940b37b886197f4154833710f9ca67f0"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-font-load-generic.asm",
+      "sha256": "4b009040eaab2a163694f5ea3bf09e5ceaa75d88264d2779b4cb1795ba2bfc6d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-font-loader.asm",
+      "sha256": "88b5e30fb6093662fc32e0a6b86c3e3be64b4ad404a477f2f820ee660edd9b85"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-font.asm",
+      "sha256": "3e5e63aae991201d4311332a77e4ba24bf134cc8e5c502e3dae5d3a18c15f32e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-font.json",
+      "sha256": "d14bf1712310746e3f8f84f383d6b8c01a19b47e4b7e035d622c733786ee1569"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-helper.asm",
+      "sha256": "ffaa84f548f5223b4c53ba1f9425f435851221aebf187658925d7d9f497431af"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-helper.json",
+      "sha256": "45b23fd951f3c10aa985863f7b249f0edc106718858e3c73e878b420e675a031"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-label-end.asm",
+      "sha256": "65d901b5fca01d2a1b2948f5049de04182adb17025b4c21c6be750bc5acb900b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-label-end.json",
+      "sha256": "d38e38c862dd71dc3cb16f52299d3adfb9a86d902030bf31dc5e33dea1b39a53"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-label-thunk.asm",
+      "sha256": "54b0aa2c47cd72e19082b25d48269856e6ce0940881fbbb4a424f7b1f3b43a4b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-label-thunk.json",
+      "sha256": "52d0e17e33ec5c87cdbf61fb31918eff775529df6dd687651be5b2e90bce3f79"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-label.asm",
+      "sha256": "0df8db2ea6525449be3efc65716516026555b11f0058c62b802c139d012d07f8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-label.json",
+      "sha256": "0c63a495b489de36a99e955a79fb2204b1d7c617bf3ddefdff7af3be1efc3417"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-style-helper.asm",
+      "sha256": "3501148c1db4976159cba67ae18e14f9dd5ff18d6f473077c43f2fb23392d25c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-history-style-helper.json",
+      "sha256": "1fec08b57e7358f2f66caed1829443baf296b6a894a63714efa6e9eac36c0453"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v424-localization.json",
+      "sha256": "d2e42e9fca1a359f403eb3a46a576bf6d1685f100cef4767b2d9cc2663d15403"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v321-history-metadata.json",
+      "sha256": "b2d4d1a8ace4e2e3923dd03d29822fce9d2fd40cae41b6edb974d47788388516"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v321-dispatch-findings.json",
+      "sha256": "105417fbf3a452f27a118ceb1f7ca510f7f3015e6d7ef728df0fb4de62ace67f"
+    }
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "a72577a5bf1278de8baa6b403bf6d166c6cec129fd30feaea3087c617283adcc"
+    },
+    {
+      "path": "implementation/ios/Sources/OfficialText.swift",
+      "sha256": "f4c75b865ff98d33067d88803baa1a2246ff9cdf9ca96a26fbb8a07014841a00"
+    },
+    {
+      "path": "implementation/ios/Resources/OfficialTranslations.json",
+      "sha256": "895b940794351e5215c4194d94e20b778cdf1077be37e94de68723fa05692c55"
+    },
+    {
+      "path": "implementation/ios/Tools/prepare-official-text.py",
+      "sha256": "54e68352947f4d365e3d118a31d46ea86d92b2d412d4701883c5d402a2a52291"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "a3ce73d608cc43078e6d8a4ac91f1f49995a8ac3b870e13e644dc8baf42629dc"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "154d30a9c36aab4b20a59fe272ad264669444c4056b706aefc46d75eb288834a"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "c1788e9c1e617cf5bd54776127b54b1b76b2d1dd4f5a78e9f95ef87a20fc04fe"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "8d6dcf19666473bfcb20c357aa565ecd2d2758d8f1898d2e551b3a1c670623e3"
+    },
+    {
+      "path": "implementation/ios/README.md",
+      "sha256": "9c7e3c575ec161edc9ae7de9a2bf97c3f93053c7d3dc8266156dcc9e38e36c09"
+    }
+  ],
+  "next": "Close previous-history loading and owner state action path; execute pending control/return/accessibility tests when installation authorization clears."
+}

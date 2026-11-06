@@ -1,0 +1,60 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "SafeAreaBarIfAvailableViewModifier",
+      "descriptor": "0x9757e00",
+      "type_section_entry": "0x9d5b194",
+      "accessor": "0x7587704",
+      "fields": [
+        {
+          "name": "edge",
+          "record": "0x9c55eec",
+          "type_reference": "0x903a070"
+        },
+        {
+          "name": "alignment",
+          "record": "0x9c55ef8",
+          "type_reference": "0x8fd08b0"
+        },
+        {
+          "name": "spacing",
+          "record": "0x9c55f04",
+          "type_reference": "0x8c59bb0"
+        },
+        {
+          "name": "forceSystemColorScheme",
+          "record": "0x9c55f10",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "safeAreaBarContent",
+          "record": "0x9c55f1c",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "_colorScheme",
+          "record": "0x9c55f28",
+          "type_reference": "0x9002fa0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x84bd940",
+          "flags": "0x30000",
+          "section_entry": "0x9d32908"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

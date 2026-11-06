@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "artifact": "Codex 26.1021.31345",
+  "authority": "original-renderer-interaction-with-independent-local-fixture",
+  "validation": {
+    "status": "passed-for-chat-flow",
+    "runtime": "desktop-web-v112-r3.json",
+    "checks": [
+      "UI send and exact persisted user/assistant parent relationship",
+      "Original Stop action persists cancelled terminal state; no late change after 1.5 seconds",
+      "New document after reload restores persisted message and unsent composer draft",
+      "Fresh browser process/context plus recreated service restores draft/history without duplicate send"
+    ],
+    "userId": "e3d31a2b-9792-49a8-9c71-3d8be7f395fb",
+    "assistantId": "offline-generated-7a438449-a8ae-49c6-b778-a8f45523437f",
+    "cold_recovery": "Fresh Edge browser process/context and re-created HTTP service on same origin; Node orchestrator itself was not restarted",
+    "cancel_observation_window_ms": 1500,
+    "screenshots": [
+      "../../output/playwright/desktop-web-v112-r3.png",
+      "../../output/playwright/desktop-web-v112-r3-cold.png"
+    ],
+    "visual_review": "Cold screenshot inspected: persisted synthetic turn and unsent draft visible; project placeholder and unsupported host banner remain"
+  },
+  "implementation_changes": [
+    "Extend existing isolated Edge probe with chat flow option",
+    "Verify exact persisted message identities and user/assistant parent relationship",
+    "Drive actual Stop button and verify persisted partial-completion terminal state",
+    "Assert page document replaced on reload and draft/history restored",
+    "Restart browser and recreate local HTTP host then verify no duplicated user record"
+  ],
+  "limits": [
+    "Synthetic deterministic fixture only, no Zhipu or official backend acceptance",
+    "Cold checks cover selected existing conversation only, not new-chat draft or pending branch",
+    "No multi-tab concurrency or concurrent client isolation test",
+    "Legacy fetch/projects and desktop-exclusive operations remain unsupported",
+    "Cold screenshot shows bottom viewport clipping requiring layout investigation",
+    "No official website or Windows runtime acceptance"
+  ],
+  "next_action": "Inspect host viewport geometry and missing fetch request/resource envelopes; implement browser-specific capability handling without arbitrary proxy",
+  "sources": [
+    {
+      "file": "implementation/desktop-web/probe.cjs",
+      "sha256": "a1d953fb99ccddfbe9f0b87599ed291be506e5cdf6794997df3125ce5f89b2cc"
+    },
+    {
+      "file": "implementation/desktop-web/server.cjs",
+      "sha256": "38871fe99c384a06a0f5c1d414eb6cec47ab2fcd5a77fcba43349ac788f135a8"
+    },
+    {
+      "file": "implementation/desktop-web/bootstrap.mjs",
+      "sha256": "e0293b9281704357e0796de6fe1e5da36d64df0e5372e16dd3fb07dd069e10cc"
+    }
+  ]
+}

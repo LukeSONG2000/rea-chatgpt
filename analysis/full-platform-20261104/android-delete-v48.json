@@ -1,0 +1,66 @@
+{
+  "status": "partial",
+  "platform": "android",
+  "reference_baseline": "1.2026.293",
+  "origin": "independent native Compose host/local storage; not recovered official delete protocol",
+  "changes": [
+    "Native per-row delete with explicit confirmation; cancel leaves state unchanged",
+    "Persist catalog removal before scoped cancellation and draft/history cleanup",
+    "Deleted response callbacks require catalog membership; cleanup removes scoped scroll/cache state",
+    "Startup reconciles surviving catalog identities, preserving orphaned data if catalog is missing",
+    "Verify MessageStore committed bytes as well as catalog bytes before claiming persistence success"
+  ],
+  "validation": {
+    "build": "analysis/full-platform-20261104/android-delete-build-v3.log",
+    "runtime": "analysis/full-platform-20261104/android-delete-runtime-v1.json",
+    "storage_test_log": "analysis/full-platform-20261104/android-delete-runtime-v1/storage.log",
+    "tests_passed": 3,
+    "covers": [
+      "idempotent scoped delete and protected A/B fixtures",
+      "nonempty-directory write failures preserve catalog memory / history save throws",
+      "crash-gap stale draft cleanup with fallback A",
+      "native cancel confirmation preserves row",
+      "native selected streaming conversation deletion and fallback",
+      "other conversation completed reply/draft preserved",
+      "verified force-stop and distinct-process restart; deleted identity remains absent"
+    ],
+    "disk_check": "analysis/full-platform-20261104/android-delete-runtime-v1/persisted-check.json",
+    "visual": "Post-restart native list screenshot inspected; list is scrollable, full large-list interaction and official fidelity not accepted"
+  },
+  "inputs": [
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/ConversationCatalog.kt",
+      "sha256": "4ef1c9e0f9378fde7df09ae84a5c4f22acfe79d0453d8820011213a5579c8647"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/MessageStore.kt",
+      "sha256": "f0a548cf9272263a92f83c693a07b011bfa01ad4e7234577dfedd666597f8ffe"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt",
+      "sha256": "32a37440e16f69d825fbd450335ce8f2bd229d3ba84ea997fa2fc3740660b3b4"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt",
+      "sha256": "3d38f215d6c142cfb737e6c116076006f56ea30d41311795d20295c86ecfc010"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/MessageStoreTest.kt",
+      "sha256": "4c40299734245c4d4e610c09329e4759939a9cbcae0a4f312cea93a23c49cecd"
+    },
+    {
+      "path": "implementation/android/test-delete.py",
+      "sha256": "e2cf1d7842ac4e8f151cc3950b2a5a716655966b83b86e9ab92b6cb466c9b190"
+    }
+  ],
+  "cleanup": "Owned fixture server stopped; temporary pairing removed; runner removed emulator pairing and reverse port",
+  "limits": [
+    "Separate catalog/history/preferences writes; no cross-file transaction or power-loss guarantee",
+    "Native UI storage-failure injection still pending; store-level failure tests are narrower",
+    "No inspected server cancel receipt; local cancellation is not server acceptance",
+    "Write readback adds I/O per update; performance unmeasured",
+    "Large-list navigation/test helper scrolling, rename/title policy and accessibility remain unfinished",
+    "Synthetic emulator only, no live model, physical-device or official visual acceptance"
+  ],
+  "next_action": "Verify long-list navigation and refine titles/menus; audit primary frontend fidelity gaps before further harness/Remote expansion"
+}

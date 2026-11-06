@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {enableLocalRemoteUI,startLocalRemoteUI} from './local-remote-ui.mjs';
+const original={getGateOverride(gate){return {...gate,value:gate.name==='existing'}},getLayerOverride(){return this===original?'original-layer':null}};
+const client={overrideAdapter:original,_memoCache:{old:true},checkGate(name){return this.overrideAdapter.getGateOverride({name,value:false}).value}};
+const stop=enableLocalRemoteUI(client);
+assert.equal(client.checkGate('1042620455'),true);assert.equal(client.checkGate('existing'),true);assert.equal(client.checkGate('unknown'),false);assert.equal(client.overrideAdapter.getLayerOverride(),'original-layer');
+stop();assert.equal(client.overrideAdapter,original);assert.equal(client.checkGate('1042620455'),false);stop();
+assert.throws(()=>enableLocalRemoteUI({checkGate(){return true}}));
+const target={__STATSIG__:{firstInstance:client}};const dispose=startLocalRemoteUI(target);assert.equal(target.__reaLocalRemoteUI.status,'enabled');dispose();assert.equal(target.__reaLocalRemoteUI.status,'disposed');assert.equal(client.overrideAdapter,original);
+console.log(JSON.stringify({status:'passed',checks:['one gate only','existing gate/layer overrides preserved','dispose restores adapter','unknown client rejected'],authority:'independent adapter unit; real original client tested in packaged app'}));

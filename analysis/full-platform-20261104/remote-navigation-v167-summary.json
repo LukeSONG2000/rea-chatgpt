@@ -1,0 +1,50 @@
+{
+  "status": "partial",
+  "authority": "official settings visibility static evidence; independent config adapter; packaged macOS interaction",
+  "fix": "Local config/read now accepts boolean includeLayers at cwd=null; true returns no external layers ([]), false retains null. Both return same independent features.remote_connections config.",
+  "sources": [
+    {
+      "path": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "fc1c08081d0fb4b1cb6c6758f0c956c7dbfb02bda2728d6d901667493a1c6cdd"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-connections-page.cjs",
+      "sha256": "7a58d36b808fa56cd2d291869137458e523642637f41aa7edeb4af0b26ae697b"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-navigation.cjs",
+      "sha256": "84cf138ccd726653846746ae57aec020ca5d431af0040d5c1495cce3bd89c0fb"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-catalog.mjs",
+      "sha256": "61c4a95b3c455b89898ac04f7b830ab5df732819ae9a5b896e96056225f797c3"
+    }
+  ],
+  "verified": [
+    "Actual mode switch to Codex observed",
+    "Actual profile menu to Settings to Connections opens original SSH section",
+    "Provider history/stream/restart regressions passed in same packaged test",
+    "Config layers flag and catalog lifetime regression passed",
+    "Mac signature and Mac/Windows payload/package hashes verified"
+  ],
+  "reports": [
+    "remote-navigation-v167-static.json",
+    "remote-navigation-v167-unit.json",
+    "remote-navigation-v167-config.json",
+    "remote-navigation-v167-page.json",
+    "remote-navigation-v167-shortcut.json",
+    "remote-navigation-v167-hashes.json"
+  ],
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/remote-navigation-v167-page.png",
+  "builds": {
+    "macos": "implementation/desktop/dist/v167-macos/REA ChatGPT Offline.app",
+    "windows": "implementation/desktop/dist/v167-windows/REA ChatGPT Offline/REA ChatGPT Offline.exe"
+  },
+  "limits": [
+    "SSH section appearance is not SSH connection execution acceptance",
+    "Independent Remote device cards absent; slingshotEnabled/available/accessRequired consumer chain remains",
+    "Meta-comma test timed out; shortcut path not accepted",
+    "Earlier conditional navigation probe was insufficient; strict page test supplies positive assertion",
+    "Windows OS not executed; no real model or official service access"
+  ]
+}

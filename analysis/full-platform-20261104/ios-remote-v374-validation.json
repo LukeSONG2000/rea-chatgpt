@@ -1,0 +1,37 @@
+{
+  "status": "partial",
+  "scope": "independent row-width adapter lifecycle",
+  "source_baseline": "iOS1.2026.293",
+  "official_evidence_reference": "ios-remote-v373-integration.json",
+  "changes": [
+    "test-only same-ID line shortening/restoration",
+    "test-only line removal",
+    "assert content width returns to viewport and horizontal offset zero after shrink/removal"
+  ],
+  "production_layout_changed": false,
+  "device_check": {
+    "device": "iPhone Air",
+    "state": "unavailable",
+    "installation": "not performed"
+  },
+  "test": {
+    "name": "testRemoteOutputLongLineLayout",
+    "passed": 1,
+    "failed": 0,
+    "covered": [
+      "horizontal reachability",
+      "same-ID visible row shrink",
+      "same-ID long-row restore",
+      "removed-row width cleanup",
+      "horizontal offset returns zero after shrink/removal"
+    ],
+    "screenshot": "ios-remote-v374-screenshots/937E89D0-EFCE-447C-A041-B7143A4EA422.png",
+    "visual": "short rows visible again after removal, no retained blank horizontal range"
+  },
+  "limitations": [
+    "does not verify offscreen revised rows",
+    "not original-app runtime equivalence",
+    "cross-row selection and large-output virtualization pending"
+  ],
+  "normal_preview_pid": 84009
+}

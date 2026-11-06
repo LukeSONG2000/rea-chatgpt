@@ -1,0 +1,186 @@
+{
+  "0x1d8b94c": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1d8b94c: d2800000     \tmov\tx0, #0x0                ; =0\n 1d8b950: 17f8830a     \tb\t0x1bac578 <__text+0x1b84578>\n 1d8b954: f0004221     \tadrp\tx1, 0x25d2000 <__text+0x25aa000>\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x1d8b94c",
+        "end_exclusive": "0x1d8b958",
+        "sha256": "f61a06689a15c7c824216d740c33e3bd97c53d32b683b5dbcdd4d51048c9a1c6"
+      },
+      "linker_function_starts_in_window": [
+        "0x1d8b94c",
+        "0x1d8b954"
+      ],
+      "next_linker_function_start": "0x1d8b960",
+      "direct_calls": [],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  },
+  "0x1a33994": {
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1a33994: b9808388     \tldrsw\tx8, [x28, #0x80]\n 1a33998: f8686b28     \tldr\tx8, [x25, x8]\n 1a3399c: b40000a8     \tcbz\tx8, 0x1a339b0 <__text+0x1a0b9b0>\n 1a339a0: 52800028     \tmov\tw8, #0x1                ; =1\n 1a339a4: 979caaba     \tbl\t0x15e48c <__text+0x13648c>\n 1a339a8: a9457bfd     \tldp\tx29, x30, [sp, #0x50]\n 1a339ac: 179c4ad7     \tb\t0x146508 <__text+0x11e508>\n 1a339b0: b9810f88     \tldrsw\tx8, [x28, #0x10c]\n 1a339b4: 38686b28     \tldrb\tw8, [x25, x8]\n 1a339b8: 370000a8     \ttbnz\tw8, #0x0, 0x1a339cc <__text+0x1a0b9cc>\n 1a339bc: b980ff88     \tldrsw\tx8, [x28, #0xfc]\n 1a339c0: f8686b28     \tldr\tx8, [x25, x8]\n 1a339c4: f9400908     \tldr\tx8, [x8, #0x10]\n 1a339c8: b5fffec8     \tcbnz\tx8, 0x1a339a0 <__text+0x1a0b9a0>\n 1a339cc: b9803796     \tldrsw\tx22, [x28, #0x34]\n 1a339d0: a979dfb8     \tldp\tx24, x23, [x29, #-0x68]\n 1a339d4: aa1803e0     \tmov\tx0, x24\n 1a339d8: 979c562b     \tbl\t0x149284 <__text+0x121284>\n 1a339dc: f85903a8     \tldur\tx8, [x29, #-0x70]\n 1a339e0: b9803115     \tldrsw\tx21, [x8, #0x30]\n 1a339e4: 940d9dac     \tbl\t0x1d9b094 <__text+0x1d73094>\n 1a339e8: f0031eb4     \tadrp\tx20, 0x7e0a000 <_writev+0x7e0a000>\n 1a339ec: 910f8294     \tadd\tx20, x20, #0x3e0\n 1a339f0: 8b160320     \tadd\tx0, x25, x22\n 1a339f4: 940dcb00     \tbl\t0x1da65f4 <__text+0x1d7e5f4>\n 1a339f8: 979c621f     \tbl\t0x14c274 <__text+0x124274>\n 1a339fc: 8b1502c1     \tadd\tx1, x22, x21\n 1a33a00: aa1803e0     \tmov\tx0, x24\n 1a33a04: 979c621c     \tbl\t0x14c274 <__text+0x124274>\n 1a33a08: aa1603e0     \tmov\tx0, x22\n 1a33a0c: 979c53bb     \tbl\t0x1488f8 <__text+0x1208f8>\n 1a33a10: 54000141     \tb.ne\t0x1a33a38 <__text+0x1a0ba38>\n 1a33a14: 97f84a9b     \tbl\t0x1846480 <__text+0x181e480>\n 1a33a18: 979c83a0     \tbl\t0x154898 <__text+0x12c898>\n 1a33a1c: 8b1502c0     \tadd\tx0, x22, x21\n 1a33a20: 979c53b6     \tbl\t0x1488f8 <__text+0x1208f8>\n 1a33a24: 54000141     \tb.ne\t0x1a33a4c <__text+0x1a0ba4c>\n 1a33a28: 97f84a96     \tbl\t0x1846480 <__text+0x181e480>\n 1a33a2c: 979c83be     \tbl\t0x154924 <__text+0x12c924>\n 1a33a30: 52800008     \tmov\tw8, #0x0                ; =0\n 1a33a34: 17ffffdc     \tb\t0x1a339a4 <__text+0x1a0b9a4>\n 1a33a38: 8b1502c0     \tadd\tx0, x22, x21\n 1a33a3c: 979c53af     \tbl\t0x1488f8 <__text+0x1208f8>\n 1a33a40: 540000c1     \tb.ne\t0x1a33a58 <__text+0x1a0ba58>\n 1a33a44: 97f84a8f     \tbl\t0x1846480 <__text+0x181e480>\n 1a33a48: 979c8394     \tbl\t0x154898 <__text+0x12c898>\n 1a33a4c: 940d0b82     \tbl\t0x1d76854 <__text+0x1d4e854>\n 1a33a50: aa1603e0     \tmov\tx0, x22\n 1a33a54: 17ffffb9     \tb\t0x1a33938 <__text+0x1a0b938>\n 1a33a58: 90009c53     \tadrp\tx19, 0x2dbb000 <__text+0x2d93000>\n 1a33a5c: 9101b273     \tadd\tx19, x19, #0x6c\n 1a33a60: aa1603e0     \tmov\tx0, x22\n 1a33a64: f85803b7     \tldur\tx23, [x29, #-0x80]\n 1a33a68: 97b2e2fd     \tbl\t0x6ec65c <__text+0x6c465c>\n 1a33a6c: 8b1502c0     \tadd\tx0, x22, x21\n 1a33a70: f85883b5     \tldur\tx21, [x29, #-0x78]\n 1a33a74: 979c8450     \tbl\t0x154bb4 <__text+0x12cbb4>\n 1a33a78: 979b1fe6     \tbl\t0xfba10 <__text+0xd3a10>\n 1a33a7c: 979c8200     \tbl\t0x15427c <__text+0x12c27c>\n 1a33a80: 944be02a     \tbl\t0x2d2bb28 <__text+0x2d03b28>\n 1a33a84: aa0003f4     \tmov\tx20, x0\n 1a33a88: 979c6ea9     \tbl\t0x14f52c <__text+0x12752c>\n 1a33a8c: 979c6c8c     \tbl\t0x14ecbc <__text+0x126cbc>\n 1a33a90: 940d69ba     \tbl\t0x1d8e178 <__text+0x1d66178>\n 1a33a94: aa1803e0     \tmov\tx0, x24\n 1a33a98: 979c61cc     \tbl\t0x14c1c8 <__text+0x1241c8>\n 1a33a9c: 940cd4f8     \tbl\t0x1d68e7c <__text+0x1d40e7c>\n 1a33aa0: 52000288     \teor\tw8, w20, #0x1\n 1a33aa4: 17ffffc0     \tb\t0x1a339a4 <__text+0x1a0b9a4>\n",
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x1a33994",
+        "end_exclusive": "0x1a33aa8",
+        "sha256": "178651c08a03e3a8188f8d41647ce162ac6f05103498691e7262809b649f5a10"
+      },
+      "linker_function_starts_in_window": [],
+      "next_linker_function_start": "0x1a33aa8",
+      "direct_calls": [
+        {
+          "site": "0x1a339a4",
+          "target": "0x15e48c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a339d8",
+          "target": "0x149284",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a339e4",
+          "target": "0x1d9b094",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a339f4",
+          "target": "0x1da65f4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a339f8",
+          "target": "0x14c274",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a04",
+          "target": "0x14c274",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a0c",
+          "target": "0x1488f8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a14",
+          "target": "0x1846480",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a18",
+          "target": "0x154898",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a20",
+          "target": "0x1488f8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a28",
+          "target": "0x1846480",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a2c",
+          "target": "0x154924",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a3c",
+          "target": "0x1488f8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a44",
+          "target": "0x1846480",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a48",
+          "target": "0x154898",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a4c",
+          "target": "0x1d76854",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a68",
+          "target": "0x6ec65c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a74",
+          "target": "0x154bb4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a78",
+          "target": "0xfba10",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a7c",
+          "target": "0x15427c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a80",
+          "target": "0x2d2bb28",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a88",
+          "target": "0x14f52c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a8c",
+          "target": "0x14ecbc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a90",
+          "target": "0x1d8e178",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a98",
+          "target": "0x14c1c8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1a33a9c",
+          "target": "0x1d68e7c",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    }
+  }
+}

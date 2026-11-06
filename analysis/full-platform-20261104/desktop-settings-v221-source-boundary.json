@@ -1,0 +1,20 @@
+{
+  "status": "partial",
+  "issue": "Settings sidebar resets to top",
+  "baseline": "26.1021.31345",
+  "sourceChain": [
+    "app-primary CLr: Gr(`/settings/*`) contributes z=true; z branch calls iLr without workspace=true",
+    "iLr: retained destination set requires workspace && xG && yG context",
+    "xG: PS && feature gate 701328431",
+    "VIr: without destination, fallback key includes route identity and routeTemplate",
+    "HIr: renders Fragment keyed by that identity; different settings sections unmount sidebar"
+  ],
+  "hypothesisResult": "Enabling original retention gate, including before initial evaluation, is insufficient because settings explicitly bypasses workspace branch",
+  "runtimeEvidence": [
+    "desktop-settings-v219-original-retention.json",
+    "desktop-settings-v220-original-retention.json",
+    "desktop-settings-v221-original-retention.json"
+  ],
+  "rollback": "Experimental gate and early shell initialization removed; source guard key experiment remains unconnected; user preview unchanged",
+  "next": "Read corresponding implementation in locally installed newer official artifact, without launching it; compare with frozen source and public upstream coverage"
+}

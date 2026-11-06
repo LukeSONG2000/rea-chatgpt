@@ -1,0 +1,600 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "Android 293 message projection and native rendering boundaries",
+  "root_artifacts": [
+    {
+      "path": "packages/ChatGPT-Android-1.2026.293/base.apk",
+      "present": true,
+      "bytes": 90386979,
+      "sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+      "platform": "android",
+      "version_label": "1.2026.293",
+      "version_basis": "existing path/baseline label; not independently decoded by census",
+      "status": "partial",
+      "verification_scope": "local identity observed; acquisition and authenticity not reverified",
+      "source_record": "packages/ChatGPT-Android-1.2026.293/metadata.txt (claimed device acquisition)"
+    },
+    {
+      "path": "packages/ChatGPT-Android-1.2026.293/base.dm",
+      "present": true,
+      "bytes": 1974565,
+      "sha256": "e89ce277b40b580705fca551dfc14c3b3f39ada44e3067c55a2cfab3bcdba511",
+      "platform": "android",
+      "version_label": "1.2026.293",
+      "version_basis": "existing path/baseline label; not independently decoded by census",
+      "status": "partial",
+      "verification_scope": "local identity observed; acquisition and authenticity not reverified",
+      "source_record": "packages/ChatGPT-Android-1.2026.293/metadata.txt (claimed device acquisition)"
+    },
+    {
+      "path": "packages/ChatGPT-Android-1.2026.293/split_config.arm64_v8a.apk",
+      "present": true,
+      "bytes": 21353609,
+      "sha256": "01939f07e968ebac1f46149944212c3f9d730cc8745ef4d9184f4af938290c0c",
+      "platform": "android",
+      "version_label": "1.2026.293",
+      "version_basis": "existing path/baseline label; not independently decoded by census",
+      "status": "partial",
+      "verification_scope": "local identity observed; acquisition and authenticity not reverified",
+      "source_record": "packages/ChatGPT-Android-1.2026.293/metadata.txt (claimed device acquisition)"
+    },
+    {
+      "path": "packages/ChatGPT-Android-1.2026.293/split_config.xxhdpi.apk",
+      "present": true,
+      "bytes": 88246,
+      "sha256": "623d3e9c542b1a0937448a22a77d1c05598f5841a9bcd04ad793ec9e21ccedd1",
+      "platform": "android",
+      "version_label": "1.2026.293",
+      "version_basis": "existing path/baseline label; not independently decoded by census",
+      "status": "partial",
+      "verification_scope": "local identity observed; acquisition and authenticity not reverified",
+      "source_record": "packages/ChatGPT-Android-1.2026.293/metadata.txt (claimed device acquisition)"
+    },
+    {
+      "path": "packages/ChatGPT-Android-1.2026.293/split_config.zh.apk",
+      "present": true,
+      "bytes": 1474770,
+      "sha256": "443b9dc69ab5e625eddd1a205043a1fe7b36cb6547bfb21af382da9c26040425",
+      "platform": "android",
+      "version_label": "1.2026.293",
+      "version_basis": "existing path/baseline label; not independently decoded by census",
+      "status": "partial",
+      "verification_scope": "local identity observed; acquisition and authenticity not reverified",
+      "source_record": "packages/ChatGPT-Android-1.2026.293/metadata.txt (claimed device acquisition)"
+    }
+  ],
+  "root_artifact_identity_reference": {
+    "path": "analysis/takeover-20261103/baseline.json",
+    "sha256": "087af2fb24ab4f36e46c351a378c414d1ff6399f7508fdba9dcd4d8843494005"
+  },
+  "evidence": [
+    {
+      "id": "A01",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/zaq.java",
+      "sha256": "9955426e38c74770ba8aca79e07f1b6ff2b4f7cbefc50e8dd6bbc747ec752f02",
+      "symbol": "new d8q(",
+      "line": 245,
+      "byte_offset": 9338,
+      "evidence_type": "JADX static observation",
+      "claim": "A0 starts streamConversation job after cancelling previous U1; callback itb registered.",
+      "limitations": [
+        "Job cancellation is not proof that every downstream late event is rejected.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A02",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/d8q.java",
+      "sha256": "05863c7fc6cf1cd8a7493b9ace55e2c0c201e432032ef703b582cbc230750c09",
+      "symbol": "new c8q(",
+      "line": 394,
+      "byte_offset": 17359,
+      "evidence_type": "JADX static observation",
+      "claim": "Streaming coroutine constructs the c8q collector.",
+      "limitations": [
+        "Transport setup and all cancellation paths not reconstructed.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A03",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes5/c8q.smali",
+      "sha256": "699da2643319aed28626199d44829a7fbc7ff4b78a9f5548f691fcb5c8ed3b45",
+      "symbol": "Lzaq;->r0(",
+      "line": 4514,
+      "byte_offset": 75021,
+      "evidence_type": "smali static observation",
+      "claim": "Collector invokes coordinator r0; corroborates decompiler call relation.",
+      "limitations": [
+        "Exact surrounding branching remains partial.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A04",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/zaq.java",
+      "sha256": "9955426e38c74770ba8aca79e07f1b6ff2b4f7cbefc50e8dd6bbc747ec752f02",
+      "symbol": "return zaqVar.q0(",
+      "line": 724,
+      "byte_offset": 29280,
+      "evidence_type": "JADX static observation",
+      "claim": "r0 forwards to q0 with default flags.",
+      "limitations": [
+        "Defaults do not establish end-to-end identity semantics.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A05",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/swr.java",
+      "sha256": "ee6d064441ce3581acd5e9645d01f56a729a396dcccbcbed8ae748d9cd0e7276",
+      "symbol": "pluginGeneratedSerialDescriptor.l(\"conversationId\", false);",
+      "line": 19,
+      "byte_offset": 824,
+      "evidence_type": "JADX static observation",
+      "claim": "uwr serialized fields are conversationId and message.",
+      "limitations": [
+        "Wire type discriminant and all transport wrappers not established.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A06",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dz3.java",
+      "sha256": "91d2a412d58259f7524ae9a26e7cc520eec3cc951aee696beabc03e398ee5d67",
+      "symbol": "pluginGeneratedSerialDescriptor.l(\"endTurn\", true);",
+      "line": 26,
+      "byte_offset": 1247,
+      "evidence_type": "JADX static observation",
+      "claim": "fz3 message schema includes id,author,user,content,createTime,status,endTurn,channel,recipient,metadata.",
+      "limitations": [
+        "endTurn is a field, not proof of a stable turn identifier or acknowledgment.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A07",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/pu71.java",
+      "sha256": "6bd13cc10c1de92d520e5a6fa7df52c01961c3a2613432fc084afc3548145565",
+      "symbol": "return wpc0.h(owrVar.a(), owrVar.b(), false, null, 12);",
+      "line": 496,
+      "byte_offset": 20384,
+      "evidence_type": "JADX static observation",
+      "claim": "Message event projects through wpc0.h from fz3 plus conversation identifier to ycc0.",
+      "limitations": [
+        "wpc0.g is complex and not fully verified.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A08",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali/zaq.smali",
+      "sha256": "193481fff28e911a03c31a650d3f2851605b41742bc5660a2a24f0fb0a45b0db",
+      "symbol": "invoke-static {v2}, Lpu71;->i(Lowr;)Lycc0;",
+      "line": 41074,
+      "byte_offset": 690178,
+      "evidence_type": "smali static observation",
+      "claim": "q0 contains message event to ycc0 projection call.",
+      "limitations": [
+        "Multiple call sites; broader reducer semantics not inferred.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A09",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali/zaq.smali",
+      "sha256": "193481fff28e911a03c31a650d3f2851605b41742bc5660a2a24f0fb0a45b0db",
+      "symbol": "Lzaq;->l0(Lovr;Lycc0;ZLjava/lang/String;Lvwp;)",
+      "line": 44193,
+      "byte_offset": 748291,
+      "evidence_type": "smali static observation",
+      "claim": "q0 invokes l0 with event and projected ycc0 model.",
+      "limitations": [
+        "Storage/update semantics inside l0/k0 remain partial.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A10",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali/zaq.smali",
+      "sha256": "193481fff28e911a03c31a650d3f2851605b41742bc5660a2a24f0fb0a45b0db",
+      "symbol": "Lzze;-><init>(Lycc0;Ljava/lang/String;IZLs9n;)",
+      "line": 41308,
+      "byte_offset": 694099,
+      "evidence_type": "smali static observation",
+      "claim": "Coordinator constructs zze observation containing projected model, string correlation, integer tag, success boolean and time object.",
+      "limitations": [
+        "No proof zze is the UI reducer event; g810 shows a metrics consumer.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A11",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/g810.java",
+      "sha256": "4d2f6d2cc40b32b08095b13c8ade89509ea316297c6e19a7460df8f85ba27f70",
+      "symbol": "kdd.l(zzeVar.e(), f0fVar.c())",
+      "line": 36,
+      "byte_offset": 1265,
+      "evidence_type": "JADX static observation",
+      "claim": "One zze consumer matches string correlation and computes timed message metrics.",
+      "limitations": [
+        "This consumer is not established as the renderer.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A12",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali/zaq.smali",
+      "sha256": "193481fff28e911a03c31a650d3f2851605b41742bc5660a2a24f0fb0a45b0db",
+      "symbol": ".method public final v0(Ljava/lang/String;)Z",
+      "line": 47989,
+      "byte_offset": 810844,
+      "evidence_type": "smali static observation",
+      "claim": "v0 returns true only for non-null argument equal to both w1 and u1.",
+      "limitations": [
+        "Do not rename fields conversationId/epoch without tracing writes; selective call sites do not prove universal rejection.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A13",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes5/c8q.smali",
+      "sha256": "699da2643319aed28626199d44829a7fbc7ff4b78a9f5548f691fcb5c8ed3b45",
+      "symbol": "invoke-virtual {v2, v4}, Lzaq;->v0(Ljava/lang/String;)Z",
+      "line": 361,
+      "byte_offset": 5690,
+      "evidence_type": "smali static observation",
+      "claim": "Collector checks v0 before one selected branch.",
+      "limitations": [
+        "Not a whole-collector early return gate.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A14",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/sa.java",
+      "sha256": "0c5aef2752d8d1407ff5fa1bf19ad859461edc47e4e6e14af29dc87c8c8d5978",
+      "symbol": "odv0Var.r(",
+      "line": 1168,
+      "byte_offset": 49908,
+      "evidence_type": "JADX static observation",
+      "claim": "Existing content rendering path invokes odv0.r.",
+      "limitations": [
+        "Upstream UI model construction is not closed.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A15",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes5/odv0.smali",
+      "sha256": "ba485f31c75dac1b841dd696d400bce17c8f63c3b7a0786ed2d3cea323ef413a",
+      "symbol": "Lmgw;->c(",
+      "line": 5644,
+      "byte_offset": 83661,
+      "evidence_type": "smali static observation",
+      "claim": "odv0 invokes the DIL renderer mgw.c.",
+      "limitations": [
+        "Rendering selection not runtime-tested.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A16",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/mgw.java",
+      "sha256": "6a5a4cdb725b3a0970e741cbe296c3e853ebd1803e8f880caa2d6b293024515b",
+      "symbol": "// from class: jgw",
+      "line": 779,
+      "byte_offset": 33413,
+      "evidence_type": "JADX static observation",
+      "claim": "DilRendererImpl creates the jgw rendering lambda.",
+      "limitations": [
+        "Large method has JADX reconstruction issues.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A17",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes5/jgw.smali",
+      "sha256": "811cc11e421191a520b4b2d21768a376ce12a670ffb09bfa8d1c6dcc49506bb0",
+      "symbol": "La63;->r(",
+      "line": 3288,
+      "byte_offset": 55324,
+      "evidence_type": "smali static observation",
+      "claim": "jgw rendering lambda invokes a63.r.",
+      "limitations": [
+        "Exact feature flag/route selection requires separate tracing.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A18",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/a63.java",
+      "sha256": "b9214d241a0babe3725d52d256b9171ec33a18b4cfaf22ea4d3aab257ae43e78",
+      "symbol": "jid0Var.c(",
+      "line": 1190,
+      "byte_offset": 50058,
+      "evidence_type": "JADX static observation",
+      "claim": "a63.r selects hmw implementation and invokes c.",
+      "limitations": [
+        "DI/fallback availability not behavioral proof.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A19",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/jid0.java",
+      "sha256": "6cdc536b3b5ac2ebd032fce98ce8c803b024dbd9b62fbcf04ff24e931682975c",
+      "symbol": "dmw.b(",
+      "line": 304,
+      "byte_offset": 10970,
+      "evidence_type": "JADX static observation",
+      "claim": "jid0.c calls native Valdi host renderer dmw.b.",
+      "limitations": [
+        "Does not prove every content item chooses Valdi.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A20",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes5/qgw.smali",
+      "sha256": "8e1757907c9bd17dd8ba2f19baef70b7066e8090f6b8ec888e96a2caed91f0f5",
+      "symbol": "const-string v2, \"WebView\"",
+      "line": 45,
+      "byte_offset": 787,
+      "evidence_type": "smali static observation",
+      "claim": "DIL route enum explicitly contains Valdi, WebView and None.",
+      "limitations": [
+        "Enum existence does not prove default selection or live rollout.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A21",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/com/openai/valdi/dil/DILEntryPointComponent.java",
+      "sha256": "43a0adbb1b509b67fd7b35a37dc19240673ce0f75fee88e14ef66c3e4abcadca",
+      "symbol": "DILEntryPointComponent@dil_widgets/src/DILEntryPointComponent",
+      "line": 24,
+      "byte_offset": 1406,
+      "evidence_type": "JADX static observation",
+      "claim": "Native host names exact Valdi component module path.",
+      "limitations": [
+        "Android component implementation remains bytecode; iOS does not prove parity.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A22",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/hnw.java",
+      "sha256": "69396163e8846509db19d9c9e94354a6cc3512d7041982e9bae2c40602d25466",
+      "symbol": "this.i = new nbt(",
+      "line": 35,
+      "byte_offset": 1223,
+      "evidence_type": "JADX static observation",
+      "claim": "Initial DIL view model assembled from JSON plus streaming state.",
+      "limitations": [
+        "Full patch/full-replacement policy remains unresolved.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A23",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes5/ekw.smali",
+      "sha256": "9b72e3cb3ae3f7d704cc0807fa6b0b2cbd8ca296a0b3ebffe2d675d31b0c7dc6",
+      "symbol": "Lcom/snap/modules/dil_core/DILHostStateUpdate;-><init>",
+      "line": 542,
+      "byte_offset": 9211,
+      "evidence_type": "smali static observation",
+      "claim": "Native host dispatch constructs host-state update and JSON patch events.",
+      "limitations": [
+        "Dispatch occurrence on device not observed.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A24",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/u.java",
+      "sha256": "817362521b7a2f481f53ffdfd2d701ddf841eb15285e6885cf23e7643acd9f17",
+      "symbol": "new pqc0().a(",
+      "line": 822,
+      "byte_offset": 32520,
+      "evidence_type": "JADX static observation",
+      "claim": "MessageMarkdownContent delegates to a native Compose content renderer.",
+      "limitations": [
+        "Merged class also contains other helpers; imports alone do not define this method route.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A25",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes5/pqc0.smali",
+      "sha256": "1f5ce96b3e3f57748c7a1e9210cb4318dc3e408658ee7580b7e2e2f5e588cbff",
+      "symbol": "Lmqc0;->a(",
+      "line": 920,
+      "byte_offset": 13409,
+      "evidence_type": "smali static observation",
+      "claim": "Native Markdown content delegates to mqc0.",
+      "limitations": [
+        "Table, selection, scrolling details not all traced.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A26",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/dw81.java",
+      "sha256": "4a5bc66538c47eff1baf7f55b4c241236ebb6d0dbf2985dbb98703b17da7cbba",
+      "symbol": "ReasoningMessageContentImpl",
+      "line": 49,
+      "byte_offset": 1838,
+      "evidence_type": "JADX static observation",
+      "claim": "Native reasoning content branch exists and calls wpo0.j.",
+      "limitations": [
+        "No proved bridge from iOS AssistantReasoning or complete native state mapping.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A27",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/cmw.java",
+      "sha256": "ae436503d9bab789193011b0cf9d3533c6d861eb825f9bb7f8cde7640a065026",
+      "symbol": "Code decompiled incorrectly",
+      "line": 91,
+      "byte_offset": 3209,
+      "evidence_type": "JADX static observation",
+      "claim": "Patch policy has a decompiler warning; cannot certify complex Java conditions.",
+      "limitations": [
+        "Use smali and small extracted branch proofs for future work.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    },
+    {
+      "id": "A28",
+      "platform": "android",
+      "version": "1.2026.293",
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/c8q.java",
+      "sha256": "3c7e2f61dae8a7e7f6852354d4dd6df4362a1ec006306b7b7220c7ae835c7df3",
+      "symbol": "Code decompiled incorrectly",
+      "line": 73,
+      "byte_offset": 3386,
+      "evidence_type": "JADX static observation",
+      "claim": "Stream collector has a decompiler warning; exact state policy remains partial.",
+      "limitations": [
+        "Smali confirms individual edges only.",
+        "No target runtime execution"
+      ],
+      "status": "verified",
+      "verification_scope": "source anchor and hash; not behavioral equivalence"
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "AG01",
+      "boundary": "zaq.l0/k0 storage/update -> observed UI list state -> sa/odv0 input",
+      "next_action": "Trace exact ycc0 write and observer selecting sa/odv0; retain per-branch smali proof."
+    },
+    {
+      "id": "AG02",
+      "boundary": "w1/u1 write sites and stable turn/request/subscription identity",
+      "next_action": "Trace every put to these fields, classifying navigation vs stream attempt; do not infer names from equality."
+    },
+    {
+      "id": "AG03",
+      "boundary": "mgw route selection Valdi/WebView/None",
+      "next_action": "Trace qgw selector and feature/debug flags to actual caller; do not assume enum order means default."
+    },
+    {
+      "id": "AG04",
+      "boundary": "composer/keyboard/selection/scroll/restore ownership",
+      "next_action": "Find native main-screen input and list root consumers, then trace focus/IME/insets/scroll state independently."
+    }
+  ],
+  "target_executed": false
+}

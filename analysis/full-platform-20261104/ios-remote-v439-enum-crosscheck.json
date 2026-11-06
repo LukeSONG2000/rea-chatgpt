@@ -1,0 +1,27 @@
+{
+  "interface": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/SwiftUICore.framework/Modules/SwiftUICore.swiftmodule/arm64-apple-ios-simulator.swiftinterface",
+    "sha256": "48d5ac3b582febdd9e426a0edbc72e93e408d98557119953cb73d3321412ae0e"
+  },
+  "enum_excerpts": {
+    "1411": [
+      "@frozen public enum Edge : Swift::Int8, Swift::CaseIterable {",
+      "  case top, leading, bottom, trailing",
+      "  @frozen public struct Set : Swift::OptionSet {",
+      "    public typealias Element = SwiftUICore::Edge.SwiftUICore::Set",
+      "    public let rawValue: Swift::Int8",
+      "    public init(rawValue: Swift::Int8)",
+      "    public static let top: SwiftUICore::Edge.SwiftUICore::Set"
+    ],
+    "19928": [
+      "@frozen public enum Visibility : Swift::Hashable, Swift::CaseIterable {",
+      "  case automatic",
+      "  case visible",
+      "  case hidden",
+      "  public static func == (a: SwiftUICore::Visibility, b: SwiftUICore::Visibility) -> Swift::Bool",
+      "  @available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)",
+      "  public typealias AllCases = [SwiftUICore::Visibility]"
+    ]
+  },
+  "limitation": "Local SDK frozen declarations corroborate raw tags; not original SDK or runtime acceptance."
+}

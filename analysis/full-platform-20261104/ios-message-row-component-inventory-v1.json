@@ -1,0 +1,189 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "evidence_kind": "static-body-type-references",
+  "type_record": "0x801a6e0",
+  "surface": "ios-native",
+  "components": [
+    {
+      "type": "ChatGPTPresentationCore.ElevatedPresentationSourceView",
+      "reference_offset": 12,
+      "context": "0x96dd89c",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRowContent",
+      "reference_offset": 21,
+      "context": "0x96206b8",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRow.PreAssistantContent",
+      "reference_offset": 27,
+      "context": "0x9620434",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRow.SafetyReviewPart",
+      "reference_offset": 38,
+      "context": "0x9620418",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.DelayedImageGenerationCard",
+      "reference_offset": 56,
+      "context": "0x96203fc",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "<unresolved-context@0x96203cc>.ImageThinkingPart",
+      "reference_offset": 76,
+      "context": "0x96203d4",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "<unresolved-context@0x9620370>.ImageGenerationLoadingPart",
+      "reference_offset": 88,
+      "context": "0x9620390",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "<unresolved-context@0x9620340>.AssistantContentStackPart",
+      "reference_offset": 95,
+      "context": "0x9620348",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTBazaar.BazaarAdsPart",
+      "reference_offset": 114,
+      "context": "0x9639af4",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.PendingAdAutoScrollView",
+      "reference_offset": 131,
+      "context": "0x9620324",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRow.PostAssistantContent",
+      "reference_offset": 144,
+      "context": "0x96205d0",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRow.FooterContent",
+      "reference_offset": 149,
+      "context": "0x96205b4",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRowContextMenuPart",
+      "reference_offset": 154,
+      "context": "0x9620578",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRowViewModel",
+      "reference_offset": 160,
+      "context": "0x961f1bc",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRow.InlineSourcesContent",
+      "reference_offset": 166,
+      "context": "0x962055c",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRow.InlineActionsPart",
+      "reference_offset": 171,
+      "context": "0x9620540",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRow.InlineActionsFooterContent",
+      "reference_offset": 176,
+      "context": "0x9620524",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRow.CompletedImageGenerationAdPart",
+      "reference_offset": 184,
+      "context": "0x9620308",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRow.UserReactionMiniTurnPart",
+      "reference_offset": 190,
+      "context": "0x9620508",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "<unresolved-context@0x96fdad8>",
+      "reference_offset": 204,
+      "context": "0x96fdad8",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    },
+    {
+      "type": "ChatGPTMessageRow.MessageRowChromeModifier",
+      "reference_offset": 221,
+      "context": "0x96202ec",
+      "acceptance": "not-run",
+      "branch_conditions": "unknown"
+    }
+  ],
+  "unresolved_contexts": [
+    {
+      "address": "0x96203cc",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x9620370",
+      "flags": "0xc2",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x9620340",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x96fdad8",
+      "flags": "0x43",
+      "kind": 3,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    }
+  ],
+  "limits": [
+    "Not a complete visual or route census",
+    "No component order, reachability, or layout inferred from reference order"
+  ]
+}

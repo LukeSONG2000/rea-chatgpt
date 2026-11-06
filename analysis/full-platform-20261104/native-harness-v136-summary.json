@@ -1,0 +1,50 @@
+{
+  "status": "partial",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v136-macos-r2/REA ChatGPT Offline.app",
+  "transport": "Independent main-process authenticated loopback adapter; provider credential stays in separate harness",
+  "checks": {
+    "transport": "native-harness-v136-transport-r3.json",
+    "fixturePackagedUI": "native-harness-v136-bundle-r2.json",
+    "offlineProjectRegression": "native-harness-v136-offline-regression.json"
+  },
+  "liveZhipu": {
+    "status": "partial",
+    "reports": [
+      "native-harness-v136-zhipu.json",
+      "native-harness-v136-zhipu-r2.json"
+    ],
+    "firstRequest": "accepted, delta, completed; 26 events",
+    "laterRequests": "failed or timeout waiting for delta; exact backend cause not yet retained by frontend diagnostics",
+    "liveCancellation": "not accepted",
+    "buildTested": "v136-macos; r2 only sanitizes malformed pairing parse errors, no additional live requests"
+  },
+  "visualReview": {
+    "fixtureCompletionAndPartial": "visible in reviewed screenshot",
+    "modelProjects": "loading skeleton unresolved; model/project integration not accepted"
+  },
+  "integrity": {
+    "macos": {
+      "fileCount": 15879,
+      "digests": "passed",
+      "runtimeIncluded": true
+    },
+    "windows": {
+      "fileCount": 15879,
+      "digests": "passed",
+      "runtimeIncluded": false
+    }
+  },
+  "macSignature": "deep strict verification passed",
+  "limits": [
+    "Synthetic harness only; no official online services",
+    "Model mode disables project services; offline project mode remains available",
+    "Client cancel does not prove provider-side cancellation or billing stop",
+    "Windows runtime/OS and mobile integration of this adapter not accepted",
+    "No complete platform/visual/Remote acceptance"
+  ],
+  "next": [
+    "Retain safe worker failure categories and test actual failure UI",
+    "Integrate model-mode project ownership instead of leaving Projects loading",
+    "Re-test live cancellation only after identifying the failure category"
+  ]
+}

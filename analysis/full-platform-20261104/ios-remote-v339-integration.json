@@ -1,0 +1,45 @@
+{
+  "version": "iOS 1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "observation": {
+    "type": "CodexRemoteFileChangeDisclosurePart",
+    "descriptor": "0x95ae1b4",
+    "body": "0x19c4510",
+    "composition_record": "0x7e1e4f0",
+    "components": [
+      "ExpandableAssistantSummaryItem",
+      "CodexRemoteToolActivityLabel<Symbol,CodexRemoteFileChangeSummaryRowPart>",
+      "OAIMarkdown.MarkdownCodeBlock",
+      "EmptyView"
+    ],
+    "icon_factory": "0x74f9ac0 (pencil)",
+    "summary_witness": "0x19c4fe4 -> 0x19c4858",
+    "binding": "0x19c455c..0x19c4578",
+    "codeblock_construct": "0x19c47e4 -> 0x68ff100"
+  },
+  "integration": [
+    "Separate file-change expansion set from activity expansion set",
+    "Official pencil asset",
+    "Synthetic diff code within disclosure; no filesystem operations"
+  ],
+  "independent_adaptations": [
+    "DisclosureGroup shell",
+    "Header copy and synthetic path/content",
+    "Monospaced selectable horizontally scrolling text; not OAIMarkdown implementation"
+  ],
+  "unknown": [
+    "Summary formatter branches",
+    "MarkdownCodeBlock style, controls and event wiring",
+    "ExpandableAssistantSummaryItem full geometry and motion",
+    "Android corresponding native implementation"
+  ],
+  "validation": {
+    "simulator": "testRemoteTaskScopeAndReturn passed 1/0",
+    "phone": "not updated",
+    "official_runtime": "not executed",
+    "preview_pid": 71016,
+    "visual": "Screenshot inspected: pencil and expanded diff present; lower explanatory text clipped in captured transition, settled layout/motion not accepted",
+    "retention": "no stale targets"
+  }
+}

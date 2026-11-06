@@ -1,0 +1,85 @@
+{
+  "status": "partial",
+  "validation": {
+    "ui": "testSidebarInterruptedTransitions passed 1 failed 0 on r2",
+    "motion": {
+      "status": "passed",
+      "scope": "simulator-presentation-motion",
+      "interruption_checked": true,
+      "transitions": [
+        {
+          "transition": 1,
+          "open": true,
+          "completed": false,
+          "samples": 1,
+          "intermediate_positions": 0,
+          "start_x": 0,
+          "end_x": 0
+        },
+        {
+          "transition": 2,
+          "open": false,
+          "completed": false,
+          "samples": 3,
+          "intermediate_positions": 1,
+          "start_x": 24.00009259581566,
+          "end_x": 13.915080112699552
+        },
+        {
+          "transition": 3,
+          "open": true,
+          "completed": true,
+          "samples": 19,
+          "intermediate_positions": 15,
+          "start_x": 11.275482287988448,
+          "end_x": 310
+        },
+        {
+          "transition": 4,
+          "open": false,
+          "completed": true,
+          "samples": 19,
+          "intermediate_positions": 14,
+          "start_x": 310,
+          "end_x": 0
+        },
+        {
+          "transition": 5,
+          "open": true,
+          "completed": true,
+          "samples": 20,
+          "intermediate_positions": 14,
+          "start_x": 0,
+          "end_x": 310
+        },
+        {
+          "transition": 6,
+          "open": false,
+          "completed": true,
+          "samples": 20,
+          "intermediate_positions": 15,
+          "start_x": 310,
+          "end_x": 0
+        }
+      ]
+    },
+    "negative_control": "The failed first-run trace was rejected as lacking the required interruption sequence"
+  },
+  "failure_preserved": {
+    "result": "ios-sidebar-v293.xcresult",
+    "cause": [
+      "DEBUG compilation condition excluded injection",
+      "Assertion incorrectly assumed caret at end after focus"
+    ],
+    "correction": [
+      "Simulator-only explicit launch argument enables injection",
+      "Verify exact draft preservation after removing unique inserted marker at actual caret"
+    ]
+  },
+  "limits": [
+    "Timer-driven command interruption, not human touch/gesture acceptance",
+    "First animation has only one periodic sample before interruption; second transition start proves a nonzero presentation position",
+    "No claim of frame-perfect official timing",
+    "Phone untouched"
+  ]
+}

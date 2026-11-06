@@ -1,0 +1,41 @@
+{
+  "status": "partial",
+  "authority": "actual packaged renderer to hidden host-service via native transferred MessagePort; original manager RPC target",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/main.cjs",
+      "sha256": "14d16fea649ded8af15da6cb2410a124f62718199cc10dad6c58df5f8e9e2f1e"
+    },
+    {
+      "path": "implementation/desktop/native/fixture.mjs",
+      "sha256": "eb11a2ed46ed15bbd17d6de409bc7bebf22aa7c0890c1c95b58c813776e98dcc"
+    },
+    {
+      "path": "analysis/tools/desktop-fixture-services.mjs",
+      "sha256": "639463a7a30fed409664eac0bc22a18938f0a860f079ece27f90067c50c319a0"
+    },
+    {
+      "path": "implementation/desktop/native/test-original-remote-provider.cjs",
+      "sha256": "314c7af08926146220c94e0bbee057944ecd4001304ab87bd574286269737b89"
+    }
+  ],
+  "provider": {
+    "status": "passed",
+    "body": "Local fixture reply",
+    "sharedLeases": true,
+    "reopen": true,
+    "unpairedDenied": true
+  },
+  "reports": [
+    "remote-provider-v163-runtime.json",
+    "remote-provider-v163-r2.json",
+    "remote-provider-v163-hashes.json"
+  ],
+  "macSignature": "deep strict verification passed",
+  "limits": [
+    "Catalog remains empty; original AP initialization consumers and visible Remote UI not accepted",
+    "Hidden provider has read-only native Remote capability; cannot start owner tasks",
+    "Provider background streaming pump not yet installed",
+    "Windows assembled but not OS-executed; no real model call"
+  ]
+}

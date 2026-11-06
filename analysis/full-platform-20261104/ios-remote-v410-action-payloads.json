@@ -1,0 +1,64 @@
+[
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8e139d6",
+    "length": 21,
+    "mangled_hex": "026939ca015f026b39ca01386465636973696f6e74",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaab7340",
+        "resolved_context": "0x95d462c",
+        "label": "CodexRemoteCore.CodexRemoteSession.ApprovalRequest"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaab7348",
+        "resolved_context": "0x95d469c",
+        "label": "CodexRemoteCore.CodexRemoteSession.ApprovalDecision"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8e139ec",
+    "length": 25,
+    "mangled_hex": "025339ca015f029526ca017953534738666565646261636b74",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaab7340",
+        "resolved_context": "0x95d462c",
+        "label": "CodexRemoteCore.CodexRemoteSession.ApprovalRequest"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaab6088",
+        "resolved_context": "0x975ecd8",
+        "label": "SwiftToolbelt.Redacted"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  }
+]

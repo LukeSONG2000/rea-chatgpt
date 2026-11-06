@@ -1,0 +1,119 @@
+[
+  {
+    "descriptor": "0x9ab4750",
+    "owner_type": "0x9013ff6",
+    "labels": [
+      "ChatGPTReportContent.ReportAdditionalField.KnownType"
+    ],
+    "fields": [
+      {
+        "name": "singleLineText",
+        "record": "0x9ab4778",
+        "type": null
+      }
+    ]
+  },
+  {
+    "descriptor": "0x9b2ab84",
+    "owner_type": "0x922c574",
+    "labels": [
+      "ChatGPTMessageInput.MessageInputComposerType"
+    ],
+    "fields": [
+      {
+        "name": "singleLine",
+        "record": "0x9b2aba0",
+        "type": null
+      }
+    ]
+  },
+  {
+    "descriptor": "0x9b2b7c8",
+    "owner_type": "0x903d350",
+    "labels": [
+      "ChatGPTMessageInput.MessageInputViewModel"
+    ],
+    "fields": [
+      {
+        "name": "_hasExceededSingleLineThreshold",
+        "record": "0x9b2b928",
+        "type": "0x8bfd810"
+      },
+      {
+        "name": "_streamingDictationHasExceededSingleLineThreshold",
+        "record": "0x9b2b934",
+        "type": "0x8bfd810"
+      }
+    ]
+  },
+  {
+    "descriptor": "0x9b2d9f0",
+    "owner_type": "0x9231224",
+    "labels": [
+      "ChatGPTMessageInput.MessageInputUITextViewRepresentable.Coordinator"
+    ],
+    "fields": [
+      {
+        "name": "singleLineThresholdTask",
+        "record": "0x9b2db68",
+        "type": "0x8d1a250"
+      }
+    ]
+  },
+  {
+    "descriptor": "0x9b31978",
+    "owner_type": "0x9242ed6",
+    "labels": [
+      "<unresolved-context@0x9672e70>.MessageInputEditorLayoutModifier"
+    ],
+    "fields": [
+      {
+        "name": "_singleLineLayoutAdditionalPadding",
+        "record": "0x9b31a18",
+        "type": "0x92c4428"
+      }
+    ]
+  },
+  {
+    "descriptor": "0x9b784a0",
+    "owner_type": "0x937453a",
+    "labels": [
+      "ChatGPTModelSelectionRollout.EffortPickerTreatment"
+    ],
+    "fields": [
+      {
+        "name": "singleLineToggle",
+        "record": "0x9b784d4",
+        "type": null
+      }
+    ]
+  },
+  {
+    "descriptor": "0x9b97154",
+    "owner_type": "0x923b90c",
+    "labels": [
+      "ChatGPTMessageInputUI.MessageInputPartStyle"
+    ],
+    "fields": [
+      {
+        "name": "singleLineLayoutAdditionalPadding",
+        "record": "0x9b97200",
+        "type": "0x8da84b0"
+      }
+    ]
+  },
+  {
+    "descriptor": "0x9b97270",
+    "owner_type": "0x8c20e20",
+    "labels": [
+      "ChatGPTMessageInputUI.MessageInputStyle"
+    ],
+    "fields": [
+      {
+        "name": "singleLineLayoutLeadingSpacing",
+        "record": "0x9b974a8",
+        "type": "0x8c865b0"
+      }
+    ]
+  }
+]

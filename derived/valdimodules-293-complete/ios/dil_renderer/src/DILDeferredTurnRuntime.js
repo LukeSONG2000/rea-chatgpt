@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getDILDeferredTurnRuntime=exports.registerDILDeferredTurnRuntime=void 0;const e=new WeakMap;function r(r,t){e.set(r,t)}function t(r){return e.get(r)}exports.registerDILDeferredTurnRuntime=r,exports.getDILDeferredTurnRuntime=t;

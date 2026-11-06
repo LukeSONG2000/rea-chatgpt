@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "target_baseline": "1.2026.293",
+  "baseline_ref": "analysis/full-platform-20261104/baseline.json",
+  "implementation_origin": "independent UIKit scroll policy and row sizing, original Markdown parser reused",
+  "runtime": {
+    "device": "dedicated iPhone 17 Pro simulator",
+    "os": "iOS 27.0",
+    "physical_device": false
+  },
+  "accepted_bounded_checks": [
+    "v11 XCTest: send follows tail while streaming",
+    "User drag keeps tail outside viewport while phase remains streaming",
+    "B to A to B retains non-tail reading mode",
+    "Explicit jump resumes tail visibility while generation remains active",
+    "v7 Markdown projection test passed with final native row sizing",
+    "v11 before/after screenshots manually reviewed: long paragraph wraps intact and streaming status visible"
+  ],
+  "limits": [
+    "Does not establish original ChatGPT scroll policy or visual parity",
+    "Non-tail visibility is tested; exact same text/pixel anchor is not asserted",
+    "Offsets and follow state are memory-only; process restart anchor recovery unaccepted",
+    "Exact native row measurement is cached by content/width/text size; large-history frame performance unmeasured",
+    "Physical iPhone, rotation, Dynamic Type, selection retention and interactive keyboard variations not accepted"
+  ],
+  "failed_or_rejected_runs": {
+    "v1": "tail visibility failed; single sample not sufficient to isolate cause",
+    "v2": "test read recycled user cell identity; diagnostic collection terminated after test ended",
+    "v3": "tail visibility failure; recording contains visible status at another sampled instant",
+    "v4": "snapshot confirms actual position loss and invalid offscreen AX frame",
+    "v5": "disabling estimated sizing clipped paragraphs; offscreen hittability query also raised XCTest error",
+    "v6": "test passed but rejected because long paragraphs clipped",
+    "v7": "Markdown passed; scrolling test scanned changing entire history and found no stable visible candidates",
+    "v8": "virtualized paragraph frame assertion zero; no acceptance",
+    "v9": "scroll test passed, returned after stream completed; not active resume acceptance",
+    "v10": "active resume assertion occurred just after stream ended; failure retained",
+    "v11": "passed with slower bounded stream and active-phase assertions"
+  },
+  "evidence_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "e3b7cd05f226cb04446c6862dd4d8d87a0ebf63edc035c851df5aca003cac1d3",
+    "implementation/ios/UITests/HostInteractionTests.swift": "be3407a8ef3269219d8905eb1f55f2c3c53bd21e3592bc3f26ed5ccd6343bd81",
+    "implementation/harness/fixture_worker.py": "04dcdca73180d4990beb4829f62d2e2374720ea95660d45a7bdbfa50345f6b23",
+    "analysis/full-platform-20261104/ios-scroll-v11-summary.json": "131c23719fce9eecc761a3207ee8584ae3428ad337103eb85fbb792296a01792",
+    "analysis/full-platform-20261104/ios-scroll-v7-summary.json": "5891939f5063fa5b4721a692f490aa2bedc2d5a95b5e006e44a7bf707d102ac0",
+    "analysis/full-platform-20261104/ios-scroll-v11-attachments/A90DD7AC-3611-4257-9E44-083EC55CE793.png": "2ba345356a94c6489a14faa5397006b5e04ea8823a5ec7c4d1dcdcaf132b6082",
+    "analysis/full-platform-20261104/ios-scroll-v11-attachments/71E4314D-D634-4538-83AF-CC0D76271A16.png": "875a0c638c5f1b934ee86fdd1eee8e656eabe47eaae94596783c58601252a7f1"
+  },
+  "next_action": "Persist identity-based reading anchors and verify restoration after process restart; measure history scaling separately"
+}

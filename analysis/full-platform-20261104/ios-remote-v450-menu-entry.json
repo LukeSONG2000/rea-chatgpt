@@ -1,0 +1,347 @@
+{
+  "0x1c25350": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x1c25350",
+        "end_exclusive": "0x1c25364",
+        "sha256": "aead11191bd9076e3a5fc4f89dea1ffc890beac7844ec1d8883ab4a88df19444"
+      },
+      "linker_function_starts_in_window": [
+        "0x1c25350"
+      ],
+      "next_linker_function_start": "0x1c25364",
+      "direct_calls": [],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1c25350: 90fff401     \tadrp\tx1, 0x1aa5000 <__text+0x1a7d000>\n 1c25354: 91215021     \tadd\tx1, x1, #0x854\n 1c25358: f0ffeb42     \tadrp\tx2, 0x1990000 <__text+0x1968000>\n 1c2535c: 9109c042     \tadd\tx2, x2, #0x270\n 1c25360: 14000001     \tb\t0x1c25364 <__text+0x1bfd364>\n"
+  },
+  "0x1990470": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x1990470",
+        "end_exclusive": "0x1990768",
+        "sha256": "d48122c30d489349af59472f8db4b3a18414089f4b4284c3b14bdacb3d72a143"
+      },
+      "linker_function_starts_in_window": [
+        "0x1990470"
+      ],
+      "next_linker_function_start": "0x1990768",
+      "direct_calls": [
+        {
+          "site": "0x1990474",
+          "target": "0x1be090",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990490",
+          "target": "0x1590ec",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990498",
+          "target": "0x1d88300",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19904a8",
+          "target": "0x14b2d8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19904b8",
+          "target": "0x148c38",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19904bc",
+          "target": "0xad6a20",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19904c4",
+          "target": "0x1aa5854",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19904d8",
+          "target": "0x2e2b30",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19904e8",
+          "target": "0x6ef300",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19904f8",
+          "target": "0x74f4500",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990508",
+          "target": "0x1990768",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x199050c",
+          "target": "0x1da8f04",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990528",
+          "target": "0x198f48c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990534",
+          "target": "0x198f524",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990538",
+          "target": "0x765d30",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x199053c",
+          "target": "0x1bfd00",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990548",
+          "target": "0x44f07c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x199056c",
+          "target": "0x198fcb4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990584",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990590",
+          "target": "0x1d8a5d8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x199059c",
+          "target": "0x450e88",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19905a0",
+          "target": "0x2123c8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19905a8",
+          "target": "0x154b4c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19905f0",
+          "target": "0x15401c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990638",
+          "target": "0x14dfc4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990640",
+          "target": "0x14bf74",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990644",
+          "target": "0x7c4b994",
+          "imported_symbol": "_$s7SwiftUI9AlignmentV6centerACvgZ",
+          "chained_binding": {
+            "slot": "0xaad56c8",
+            "symbol": "_$s7SwiftUI9AlignmentV6centerACvgZ",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10669,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1990648",
+          "target": "0x44cec4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990650",
+          "target": "0x1bfbc4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990654",
+          "target": "0x1d95424",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990658",
+          "target": "0x21202c",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990670",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990674",
+          "target": "0x460fc0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x199067c",
+          "target": "0x15d514",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990690",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19906a4",
+          "target": "0x74f4500",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19906a8",
+          "target": "0x4589cc",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19906b0",
+          "target": "0x1990768",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19906b4",
+          "target": "0x1da8f04",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19906c4",
+          "target": "0x1daaa40",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19906dc",
+          "target": "0x75d29d4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19906e8",
+          "target": "0x1c24de4",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19906ec",
+          "target": "0x11a9d68",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x19906fc",
+          "target": "0x1bf288",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990710",
+          "target": "0x7c4a764",
+          "imported_symbol": "_$s7SwiftUI4ViewPAAE18accessibilityLabelyAA15ModifiedContentVyxAA31AccessibilityAttachmentModifierVGqd__SyRd__lF",
+          "chained_binding": {
+            "slot": "0xaad4348",
+            "symbol": "_$s7SwiftUI4ViewPAAE18accessibilityLabelyAA15ModifiedContentVyxAA31AccessibilityAttachmentModifierVGqd__SyRd__lF",
+            "library_ordinal": 82,
+            "weak": false,
+            "import_ordinal": 10045,
+            "table_addend": 0,
+            "encoded_pointer_addend": 0,
+            "chain_membership_verified": true
+          }
+        },
+        {
+          "site": "0x1990714",
+          "target": "0x1544c8",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990718",
+          "target": "0x7c54814",
+          "imported_symbol": "_swift_release_x24"
+        },
+        {
+          "site": "0x199071c",
+          "target": "0x7c54808",
+          "imported_symbol": "_swift_release_x23"
+        },
+        {
+          "site": "0x1990730",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990734",
+          "target": "0x459828",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x199073c",
+          "target": "0x460f08",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990750",
+          "target": "0xfaa78",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990754",
+          "target": "0x155ef0",
+          "imported_symbol": null
+        },
+        {
+          "site": "0x1990758",
+          "target": "0x158a94",
+          "imported_symbol": null
+        }
+      ],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1990470: aa1e03e3     \tmov\tx3, x30\n 1990474: 97a0b707     \tbl\t0x1be090 <__text+0x196090>\n 1990478: aa0303fe     \tmov\tx30, x3\n 199047c: a9067bfd     \tstp\tx29, x30, [sp, #0x60]\n 1990480: 910183fd     \tadd\tx29, sp, #0x60\n 1990484: d10603ff     \tsub\tsp, sp, #0x180\n 1990488: 910003f3     \tmov\tx19, sp\n 199048c: aa0203f4     \tmov\tx20, x2\n 1990490: 979f2317     \tbl\t0x1590ec <__text+0x1310ec>\n 1990494: aa0803f5     \tmov\tx21, x8\n 1990498: 940fdf9a     \tbl\t0x1d88300 <__text+0x1d60300>\n 199049c: aa0003f8     \tmov\tx24, x0\n 19904a0: f00238fa     \tadrp\tx26, 0x60af000 <__text+0x6087000>\n 19904a4: 911df35a     \tadd\tx26, x26, #0x77c\n 19904a8: 979eeb8c     \tbl\t0x14b2d8 <__text+0x1232d8>\n 19904ac: f00489d0     \tadrp\tx16, 0xaacb000 <_writev+0xaacb000>\n 19904b0: f9406e10     \tldr\tx16, [x16, #0xd8]\n 19904b4: d63f0200     \tblr\tx16\n 19904b8: 979ee1e0     \tbl\t0x148c38 <__text+0x120c38>\n 19904bc: 97c51959     \tbl\t0xad6a20 <__text+0xaaea20>\n 19904c0: aa1403e2     \tmov\tx2, x20\n 19904c4: 940454e4     \tbl\t0x1aa5854 <__text+0x1a7d854>\n 19904c8: aa0003f9     \tmov\tx25, x0\n 19904cc: b9812008     \tldrsw\tx8, [x0, #0x120]\n 19904d0: 8b0802f4     \tadd\tx20, x23, x8\n 19904d4: aa1b03e8     \tmov\tx8, x27\n 19904d8: 97a54996     \tbl\t0x2e2b30 <__text+0x2bab30>\n 19904dc: b980ab08     \tldrsw\tx8, [x24, #0xa8]\n 19904e0: 8b080368     \tadd\tx8, x27, x8\n 19904e4: 3940c514     \tldrb\tw20, [x8, #0x31]\n 19904e8: 97b57b86     \tbl\t0x6ef300 <__text+0x6c7300>\n 19904ec: 7100069f     \tcmp\tw20, #0x1\n 19904f0: 54000da1     \tb.ne\t0x19906a4 <__text+0x19686a4>\n 19904f4: 9103627b     \tadd\tx27, x19, #0xd8\n 19904f8: 956d9002     \tbl\t0x74f4500 <__text+0x74cc500>\n 19904fc: aa0003f6     \tmov\tx22, x0\n 1990500: aa1903e0     \tmov\tx0, x25\n 1990504: aa1703f4     \tmov\tx20, x23\n 1990508: 94000098     \tbl\t0x1990768 <__text+0x1968768>\n 199050c: 9410627e     \tbl\t0x1da8f04 <__text+0x1d80f04>\n 1990510: aa0003f8     \tmov\tx24, x0\n 1990514: 1e661000     \tfmov\td0, #16.00000000\n 1990518: 1e600900     \tfmul\td0, d8, d0\n 199051c: 1e65d001     \tfmov\td1, #15.00000000\n 1990520: 1e611808     \tfdiv\td8, d0, d1\n 1990524: aa1903e0     \tmov\tx0, x25\n 1990528: 97fffbd9     \tbl\t0x198f48c <__text+0x196748c>\n 199052c: 9e66001a     \tfmov\tx26, d0\n 1990530: aa1903e0     \tmov\tx0, x25\n 1990534: 97fffbfc     \tbl\t0x198f524 <__text+0x1967524>\n 1990538: 97b755fe     \tbl\t0x765d30 <__text+0x73dd30>\n 199053c: 97a0bdf1     \tbl\t0x1bfd00 <__text+0x197d00>\n 1990540: 9100e268     \tadd\tx8, x19, #0x38\n 1990544: aa1a03e0     \tmov\tx0, x26\n 1990548: 97aafacd     \tbl\t0x44f07c <__text+0x42707c>\n 199054c: 3cc38260     \tldur\tq0, [x19, #0x38]\n 1990550: 3cc48261     \tldur\tq1, [x19, #0x48]\n 1990554: 3c807260     \tstur\tq0, [x19, #0x7]\n 1990558: 3c817261     \tstur\tq1, [x19, #0x17]\n 199055c: 3cc58260     \tldur\tq0, [x19, #0x58]\n 1990560: 3c827260     \tstur\tq0, [x19, #0x27]\n 1990564: aa1903e0     \tmov\tx0, x25\n 1990568: aa1703f4     \tmov\tx20, x23\n 199056c: 97fffdd2     \tbl\t0x198fcb4 <__text+0x1967cb4>\n 1990570: aa0003f4     \tmov\tx20, x0\n 1990574: b004a2a0     \tadrp\tx0, 0xade5000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x14110>\n 1990578: 913d2000     \tadd\tx0, x0, #0xf48\n 199057c: d0032401     \tadrp\tx1, 0x7e12000 <_writev+0x7e12000>\n 1990580: 91314021     \tadd\tx1, x1, #0xc50\n 1990584: 979da93d     \tbl\t0xfaa78 <__text+0xd2a78>\n 1990588: b9802408     \tldrsw\tx8, [x0, #0x24]\n 199058c: 8b0802ba     \tadd\tx26, x21, x8\n 1990590: 940fe812     \tbl\t0x1d8a5d8 <__text+0x1d625d8>\n 1990594: aa0003f7     \tmov\tx23, x0\n 1990598: b980341c     \tldrsw\tx28, [x0, #0x34]\n 199059c: 97ab023b     \tbl\t0x450e88 <__text+0x428e88>\n 19905a0: 97a2078a     \tbl\t0x2123c8 <__text+0x1ea3c8>\n 19905a4: 8b1c0340     \tadd\tx0, x26, x28\n 19905a8: 979f1169     \tbl\t0x154b4c <__text+0x12cb4c>\n 19905ac: ad400261     \tldp\tq1, q0, [x19]\n 19905b0: 3c829360     \tstur\tq0, [x27, #0x29]\n 19905b4: 3dc00a60     \tldr\tq0, [x19, #0x20]\n 19905b8: 3c839360     \tstur\tq0, [x27, #0x39]\n 19905bc: f9006e76     \tstr\tx22, [x19, #0xd8]\n 19905c0: fd007268     \tstr\td8, [x19, #0xe0]\n 19905c4: f9007678     \tstr\tx24, [x19, #0xe8]\n 19905c8: 3903c27f     \tstrb\twzr, [x19, #0xf0]\n 19905cc: f842f268     \tldur\tx8, [x19, #0x2f]\n 19905d0: f9009268     \tstr\tx8, [x19, #0x120]\n 19905d4: 3c819361     \tstur\tq1, [x27, #0x19]\n 19905d8: f9000354     \tstr\tx20, [x26]\n 19905dc: b9803ae8     \tldrsw\tx8, [x23, #0x38]\n 19905e0: 52802009     \tmov\tw9, #0x100              ; =256\n 19905e4: 78286b49     \tstrh\tw9, [x26, x8]\n 19905e8: 91036261     \tadd\tx1, x19, #0xd8\n 19905ec: aa1503e0     \tmov\tx0, x21\n 19905f0: 979f0e8b     \tbl\t0x15401c <__text+0x12c01c>\n 19905f4: f81483b6     \tstur\tx22, [x29, #-0xb8]\n 19905f8: fc1503a8     \tstur\td8, [x29, #-0xb0]\n 19905fc: f81583b8     \tstur\tx24, [x29, #-0xa8]\n 1990600: 381603bf     \tsturb\twzr, [x29, #-0xa0]\n 1990604: ad400660     \tldp\tq0, q1, [x19]\n 1990608: 3c869360     \tstur\tq0, [x27, #0x69]\n 199060c: 3c879361     \tstur\tq1, [x27, #0x79]\n 1990610: 3dc00a60     \tldr\tq0, [x19, #0x20]\n 1990614: 3c889360     \tstur\tq0, [x27, #0x89]\n 1990618: f842f268     \tldur\tx8, [x19, #0x2f]\n 199061c: f81903a8     \tstur\tx8, [x29, #-0x70]\n 1990620: d004b194     \tadrp\tx20, 0xafc2000 <_OBJC_METACLASS_$__TtC21ChatGPTMessageInputUI21TextInputPasteManager+0x1298>\n 1990624: 91310294     \tadd\tx20, x20, #0xc40\n 1990628: d0032416     \tadrp\tx22, 0x7e12000 <_writev+0x7e12000>\n 199062c: 913162d6     \tadd\tx22, x22, #0xc58\n 1990630: 91036260     \tadd\tx0, x19, #0xd8\n 1990634: 9101a261     \tadd\tx1, x19, #0x68\n 1990638: 979ef663     \tbl\t0x14dfc4 <__text+0x125fc4>\n 199063c: d102e3a0     \tsub\tx0, x29, #0xb8\n 1990640: 979eee4d     \tbl\t0x14bf74 <__text+0x123f74>\n 1990644: 958aecd4     \tbl\t0x7c4b994 <_writev+0x7c4b994>\n 1990648: 97aaf21f     \tbl\t0x44cec4 <__text+0x424ec4>\n 199064c: 9101a268     \tadd\tx8, x19, #0x68\n 1990650: 97a0bd5d     \tbl\t0x1bfbc4 <__text+0x197bc4>\n 1990654: 94101374     \tbl\t0x1d95424 <__text+0x1d6d424>\n 1990658: 97a20675     \tbl\t0x21202c <__text+0x1ea02c>\n 199065c: 9100c3ff     \tadd\tsp, sp, #0x30\n 1990660: b004a2a0     \tadrp\tx0, 0xade5000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x14110>\n 1990664: 913ce000     \tadd\tx0, x0, #0xf38\n 1990668: d0032401     \tadrp\tx1, 0x7e12000 <_writev+0x7e12000>\n 199066c: 91312021     \tadd\tx1, x1, #0xc48\n 1990670: 979da902     \tbl\t0xfaa78 <__text+0xd2a78>\n 1990674: 97ab4253     \tbl\t0x460fc0 <__text+0x438fc0>\n 1990678: 9101a261     \tadd\tx1, x19, #0x68\n 199067c: 979f33a6     \tbl\t0x15d514 <__text+0x135514>\n 1990680: b004a2a0     \tadrp\tx0, 0xade5000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x14110>\n 1990684: 913ca000     \tadd\tx0, x0, #0xf28\n 1990688: d0032401     \tadrp\tx1, 0x7e12000 <_writev+0x7e12000>\n 199068c: 91310021     \tadd\tx1, x1, #0xc40\n 1990690: 979da8fa     \tbl\t0xfaa78 <__text+0xd2a78>\n 1990694: 52800016     \tmov\tw22, #0x0               ; =0\n 1990698: b9802408     \tldrsw\tx8, [x0, #0x24]\n 199069c: 38286abf     \tstrb\twzr, [x21, x8]\n 19906a0: 14000028     \tb\t0x1990740 <__text+0x1968740>\n 19906a4: 956d8f97     \tbl\t0x74f4500 <__text+0x74cc500>\n 19906a8: 97ab20c9     \tbl\t0x4589cc <__text+0x4309cc>\n 19906ac: aa1703f4     \tmov\tx20, x23\n 19906b0: 9400002e     \tbl\t0x1990768 <__text+0x1968768>\n 19906b4: 94106214     \tbl\t0x1da8f04 <__text+0x1d80f04>\n 19906b8: aa0003f7     \tmov\tx23, x0\n 19906bc: 1e661000     \tfmov\td0, #16.00000000\n 19906c0: 1e600900     \tfmul\td0, d8, d0\n 19906c4: 941068df     \tbl\t0x1daaa40 <__text+0x1d82a40>\n 19906c8: f9003678     \tstr\tx24, [x19, #0x68]\n 19906cc: fd003a60     \tstr\td0, [x19, #0x70]\n 19906d0: f9003e60     \tstr\tx0, [x19, #0x78]\n 19906d4: 52800036     \tmov\tw22, #0x1               ; =1\n 19906d8: 39020276     \tstrb\tw22, [x19, #0x80]\n 19906dc: 957108be     \tbl\t0x75d29d4 <__text+0x75aa9d4>\n 19906e0: aa0103f9     \tmov\tx25, x1\n 19906e4: a93487a0     \tstp\tx0, x1, [x29, #-0xb8]\n 19906e8: 940a51bf     \tbl\t0x1c24de4 <__text+0x1bfcde4>\n 19906ec: 97e0659f     \tbl\t0x11a9d68 <__text+0x1181d68>\n 19906f0: aa0003e4     \tmov\tx4, x0\n 19906f4: 90047fa1     \tadrp\tx1, 0xa984000 <_writev+0xa984000>\n 19906f8: 91120021     \tadd\tx1, x1, #0x480\n 19906fc: 97a0bae3     \tbl\t0x1bf288 <__text+0x197288>\n 1990700: d102e3a0     \tsub\tx0, x29, #0xb8\n 1990704: 9101a274     \tadd\tx20, x19, #0x68\n 1990708: aa1503e8     \tmov\tx8, x21\n 199070c: aa1a03e3     \tmov\tx3, x26\n 1990710: 958ae815     \tbl\t0x7c4a764 <_writev+0x7c4a764>\n 1990714: 979f0f6d     \tbl\t0x1544c8 <__text+0x12c4c8>\n 1990718: 958b103f     \tbl\t0x7c54814 <_writev+0x7c54814>\n 199071c: 958b103b     \tbl\t0x7c54808 <_writev+0x7c54808>\n 1990720: b004a2a0     \tadrp\tx0, 0xade5000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x14110>\n 1990724: 913e0000     \tadd\tx0, x0, #0xf80\n 1990728: d0032401     \tadrp\tx1, 0x7e12000 <_writev+0x7e12000>\n 199072c: 9131c021     \tadd\tx1, x1, #0xc70\n 1990730: 979da8d2     \tbl\t0xfaa78 <__text+0xd2a78>\n 1990734: 97ab243d     \tbl\t0x459828 <__text+0x431828>\n 1990738: d2f80489     \tmov\tx9, #-0x3fdc000000000000 ; =-4601552919265804288\n 199073c: 97ab41f3     \tbl\t0x460f08 <__text+0x438f08>\n 1990740: d004a2a0     \tadrp\tx0, 0xade6000 <_OBJC_METACLASS_$__TtCV21ChatGPTTrustedContact32TrustedContactMessageComposeView11Coordinator+0x15110>\n 1990744: 91000000     \tadd\tx0, x0, #0x0\n 1990748: d0032401     \tadrp\tx1, 0x7e12000 <_writev+0x7e12000>\n 199074c: 9132a021     \tadd\tx1, x1, #0xca8\n 1990750: 979da8ca     \tbl\t0xfaa78 <__text+0xd2a78>\n 1990754: 979f15e7     \tbl\t0x155ef0 <__text+0x12def0>\n 1990758: 979f20cf     \tbl\t0x158a94 <__text+0x130a94>\n 199075c: d10183bf     \tsub\tsp, x29, #0x60\n 1990760: a9467bfd     \tldp\tx29, x30, [sp, #0x60]\n 1990764: 179ef574     \tb\t0x14dd34 <__text+0x125d34>\n"
+  }
+}

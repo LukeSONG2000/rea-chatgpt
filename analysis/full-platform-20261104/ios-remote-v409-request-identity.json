@@ -1,0 +1,260 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "ApprovalRequestKey",
+      "descriptor": "0x95d4610",
+      "type_section_entry": "0x9d3cda4",
+      "accessor": "0x25fa6b0",
+      "fields": [
+        {
+          "name": "requestID",
+          "record": "0x9a63ba4",
+          "type_reference": "0x8f31450"
+        },
+        {
+          "name": "threadID",
+          "record": "0x9a63bb0",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "turnID",
+          "record": "0x9a63bbc",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "itemID",
+          "record": "0x9a63bc8",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "callID",
+          "record": "0x9a63bd4",
+          "type_reference": "0x8f31460"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e8c3b4",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6e24"
+        },
+        {
+          "descriptor": "0x7e8c3f4",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6e28"
+        },
+        {
+          "descriptor": "0x7e8c41c",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6e2c"
+        }
+      ]
+    },
+    {
+      "name": "ApprovalRequest",
+      "descriptor": "0x95d462c",
+      "type_section_entry": "0x9d3cda8",
+      "accessor": "0x25fb3e0",
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a63bf0",
+          "type_reference": "0x8f32d3c"
+        },
+        {
+          "name": "requestID",
+          "record": "0x9a63bfc",
+          "type_reference": "0x8f31450"
+        },
+        {
+          "name": "jsonRPCRequestID",
+          "record": "0x9a63c08",
+          "type_reference": "0x8f34614"
+        },
+        {
+          "name": "kind",
+          "record": "0x9a63c14",
+          "type_reference": "0x8f32d16"
+        },
+        {
+          "name": "threadID",
+          "record": "0x9a63c20",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "turnID",
+          "record": "0x9a63c2c",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "itemID",
+          "record": "0x9a63c38",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "callID",
+          "record": "0x9a63c44",
+          "type_reference": "0x8f31460"
+        },
+        {
+          "name": "reason",
+          "record": "0x9a63c50",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "command",
+          "record": "0x9a63c5c",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "proposedExecpolicyAmendment",
+          "record": "0x9a63c68",
+          "type_reference": "0x93e1980"
+        },
+        {
+          "name": "additionalPermissions",
+          "record": "0x9a63c74",
+          "type_reference": "0x8f314de"
+        },
+        {
+          "name": "requestedPermissions",
+          "record": "0x9a63c80",
+          "type_reference": "0x8f314e6"
+        },
+        {
+          "name": "availableCommandExecutionDecisions",
+          "record": "0x9a63c8c",
+          "type_reference": "0x8f3461c"
+        },
+        {
+          "name": "networkApprovalContext",
+          "record": "0x9a63c98",
+          "type_reference": "0x8f314ee"
+        },
+        {
+          "name": "proposedNetworkPolicyAmendments",
+          "record": "0x9a63ca4",
+          "type_reference": "0x8f34628"
+        },
+        {
+          "name": "mcpServerElicitationPersistenceOptions",
+          "record": "0x9a63cb0",
+          "type_reference": "0x8f34634"
+        },
+        {
+          "name": "_openAIForm",
+          "record": "0x9a63cbc",
+          "type_reference": "0x8f3463a"
+        },
+        {
+          "name": "mcpServerElicitationPayload",
+          "record": "0x9a63cc8",
+          "type_reference": "0x8e8a746"
+        },
+        {
+          "name": "title",
+          "record": "0x9a63cd4",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "subtitle",
+          "record": "0x9a63ce0",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "detailReason",
+          "record": "0x9a63cec",
+          "type_reference": "0x8bc9970"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e8c59c",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6e4c"
+        },
+        {
+          "descriptor": "0x7e8c5dc",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6e50"
+        },
+        {
+          "descriptor": "0x7e8c604",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6e54"
+        }
+      ]
+    },
+    {
+      "name": "ToolRequestUserInputRequest",
+      "descriptor": "0x95d46b8",
+      "type_section_entry": "0x9d3cdbc",
+      "accessor": "0x25fb720",
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a63e20",
+          "type_reference": "0x8f32d3c"
+        },
+        {
+          "name": "requestID",
+          "record": "0x9a63e2c",
+          "type_reference": "0x8f31450"
+        },
+        {
+          "name": "threadID",
+          "record": "0x9a63e38",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "turnID",
+          "record": "0x9a63e44",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "itemID",
+          "record": "0x9a63e50",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "questions",
+          "record": "0x9a63e5c",
+          "type_reference": "0x8e85b88"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e8c6bc",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6e64"
+        },
+        {
+          "descriptor": "0x7e8c6f4",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6e68"
+        },
+        {
+          "descriptor": "0x7e8c734",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6e6c"
+        },
+        {
+          "descriptor": "0x7e8c75c",
+          "flags": "0x30000",
+          "section_entry": "0x9ce6e70"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

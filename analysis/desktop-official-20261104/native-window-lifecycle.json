@@ -1,0 +1,64 @@
+{
+  "status": "partial",
+  "replay": "root-native-v31.json",
+  "lifecycle": {
+    "status": "passed",
+    "checks": [
+      {
+        "operation": "resize",
+        "requested": {
+          "width": 960,
+          "height": 640
+        },
+        "viewport": {
+          "width": 960,
+          "height": 640
+        },
+        "draft": "Window lifecycle offline draft",
+        "composer": {
+          "x": 389,
+          "y": 588,
+          "width": 514,
+          "height": 36
+        },
+        "passed": true
+      },
+      {
+        "operation": "resize",
+        "requested": {
+          "width": 1440,
+          "height": 900
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "draft": "Window lifecycle offline draft",
+        "composer": {
+          "x": 555,
+          "y": 848,
+          "width": 662,
+          "height": 36
+        },
+        "passed": true
+      },
+      {
+        "operation": "minimize-restore",
+        "minimized": true,
+        "restored": {
+          "minimized": false,
+          "visible": true
+        },
+        "draft": "Window lifecycle offline draft",
+        "passed": true
+      }
+    ],
+    "limits": [
+      "Programmatic native window API; traffic-light clicks and drag gestures not tested",
+      "No app termination, persistence or system resume tested"
+    ]
+  },
+  "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/output/playwright/native-window-v31.png",
+  "page_errors": [],
+  "next_boundary": "Replace renderer-local synthetic port transfer with isolated preload/main transfer; maintain offline service allowlist"
+}

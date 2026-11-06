@@ -1,0 +1,40 @@
+{
+  "version": "v437",
+  "status": "partial",
+  "platform": "iOS",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static + independent-adapter + controlled-model-replay",
+  "integration": [
+    "Derive ordinary inline boundaries from previous/current fragments and group cases.",
+    "Require explicit item payload classification; no silent default.",
+    "Current-turn SwiftUI modifier consumes derived flags; stable identity is unchanged."
+  ],
+  "validation": {
+    "foundation": "passed; 24 adjacency combinations and 3 metric pairs",
+    "host_typecheck": "passed; 3 existing UIKit warnings",
+    "ui_test_syntax": "passed",
+    "ui_runtime": "not_run",
+    "visual_acceptance": "not_accepted",
+    "device_install": "not_performed"
+  },
+  "unknowns": [
+    "Item payload predicate0x1946af8 remains partial; all current item values explicitly fixture false.",
+    "Response separator insertion/order remains fixture-controlled.",
+    "Collaboration group/realtime/activity-header cases are outside current supported sequence.",
+    "Android native/shared counterparts not yet independently verified."
+  ],
+  "runtime_blocker": "Existing Xcode first-launch installer awaiting authorization; original runner and preview retained.",
+  "files": {
+    "analysis/full-platform-20261104/ios-remote-v437-inline-group-proof.json": "4946ce14f638283950f88455b881180c94e878f59ca61f981e47c92744eddd06",
+    "analysis/full-platform-20261104/ios-remote-v435-adjacency-branches.json": "5301028c134d803e7848ed1a075c03ec82126c8663398901b5a877bfa876711a",
+    "analysis/full-platform-20261104/ios-remote-v435-inline-predicate.json": "993dfbfbbc08fc6fea786080da0bd7516ca04c60ccc67ea1bcd949ef9cbaf476",
+    "analysis/full-platform-20261104/ios-remote-v434-fragment-constructor.json": "55f255d800d0b5e6770ede1d5cb4675aa12892f56f961872415a69003bfe1d4b",
+    "analysis/full-platform-20261104/ios-remote-v437-text.log": "21047b453ed0ea5a7fa1123cc005149cc9702025ebf2bcab06bb94f83624ac16",
+    "analysis/full-platform-20261104/ios-remote-v437-typecheck.log": "5e91d64994dba2a5b7a258ebc6bed605a74943582927dc18b24537aa3dd80078",
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "2ef58a66431633f40f094c6786440a8be9d9a5394fef228a689cbac6f7d2bcb9",
+    "implementation/ios/Sources/NativeConversationHost.swift": "564f9d7320187430a90518ff93a1187abc2dde3113413d0a3ef1575b2ec58541",
+    "implementation/ios/TextTests/main.swift": "5a795f0ff8b7b0ae589da4a7801806acbcf9871266c9219c5d2fa878ff65e08f",
+    "implementation/ios/UITests/HostInteractionTests.swift": "67f73018dc413e2885be73d08d061c6a69cec19c5cd4a7a5452e04de947da05b"
+  }
+}

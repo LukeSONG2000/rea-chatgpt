@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.intervalProvider=void 0,exports.intervalProvider={setInterval(e,r,...t){const{delegate:l}=exports.intervalProvider;return l?.setInterval?l.setInterval(e,r,...t):setInterval(e,r,...t)},clearInterval(e){const{delegate:r}=exports.intervalProvider;return(r?.clearInterval||clearInterval)(e)},delegate:void 0};

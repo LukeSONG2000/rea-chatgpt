@@ -1,0 +1,282 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "Swift field metadata",
+  "type": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x9231224",
+    "length": 5,
+    "mangled_hex": "010ff44300",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 1,
+        "target": "0x9670634",
+        "resolved_context": "0x9670634",
+        "label": "ChatGPTMessageInput.MessageInputUITextViewRepresentable.Coordinator"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "descriptor": "0x9670634",
+  "metadata_accessor": "0x4e00930",
+  "fields": [
+    {
+      "index": 0,
+      "name": "triggerSelect",
+      "record": "0x9b2da00",
+      "type_reference": "0x923068a"
+    },
+    {
+      "index": 1,
+      "name": "swiftUIBoundText",
+      "record": "0x9b2da0c",
+      "type_reference": "0x8e14598"
+    },
+    {
+      "index": 2,
+      "name": "actionView",
+      "record": "0x9b2da18",
+      "type_reference": "0x8e334d0"
+    },
+    {
+      "index": 3,
+      "name": "actionViewModel",
+      "record": "0x9b2da24",
+      "type_reference": "0x9231238"
+    },
+    {
+      "index": 4,
+      "name": "composerTransitionCaptureContext",
+      "record": "0x9b2da30",
+      "type_reference": "0x923123e"
+    },
+    {
+      "index": 5,
+      "name": "contentSizeObserverViewModel",
+      "record": "0x9b2da3c",
+      "type_reference": "0x9231238"
+    },
+    {
+      "index": 6,
+      "name": "interactionHandlers",
+      "record": "0x9b2da48",
+      "type_reference": "0x9230dda"
+    },
+    {
+      "index": 7,
+      "name": "contentSizeObserver",
+      "record": "0x9b2da54",
+      "type_reference": "0x8f59770"
+    },
+    {
+      "index": 8,
+      "name": "triggerKeyboardTypeReset",
+      "record": "0x9b2da60",
+      "type_reference": "0x8cf08a0"
+    },
+    {
+      "index": 9,
+      "name": "allowsFilePaste",
+      "record": "0x9b2da6c",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "index": 10,
+      "name": "allowsTextChanges",
+      "record": "0x9b2da78",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "index": 11,
+      "name": "allowsTextInputFocus",
+      "record": "0x9b2da84",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "index": 12,
+      "name": "nextChangeHint",
+      "record": "0x9b2da90",
+      "type_reference": "0x9231250"
+    },
+    {
+      "index": 13,
+      "name": "observer",
+      "record": "0x9b2da9c",
+      "type_reference": "0x8d19c40"
+    },
+    {
+      "index": 14,
+      "name": "didMutateSelection",
+      "record": "0x9b2daa8",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "index": 15,
+      "name": "pendingProgrammaticSelection",
+      "record": "0x9b2dab4",
+      "type_reference": "0x8e133c0"
+    },
+    {
+      "index": 16,
+      "name": "dictationAccentColor",
+      "record": "0x9b2dac0",
+      "type_reference": "0x91fb900"
+    },
+    {
+      "index": 17,
+      "name": "usesDictationTypography",
+      "record": "0x9b2dacc",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "index": 18,
+      "name": "dictationTypographyTraitCollection",
+      "record": "0x9b2dad8",
+      "type_reference": "0x903b3b0"
+    },
+    {
+      "index": 19,
+      "name": "dictationHeightBinding",
+      "record": "0x9b2dae4",
+      "type_reference": "0x9231258"
+    },
+    {
+      "index": 20,
+      "name": "dictationHeightTask",
+      "record": "0x9b2daf0",
+      "type_reference": "0x8c20e10"
+    },
+    {
+      "index": 21,
+      "name": "view",
+      "record": "0x9b2dafc",
+      "type_reference": "0x8e63e5c"
+    },
+    {
+      "index": 22,
+      "name": "isCaretPositionUpdateScheduled",
+      "record": "0x9b2db08",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "index": 23,
+      "name": "viewModel",
+      "record": "0x9b2db14",
+      "type_reference": "0x8d09970"
+    },
+    {
+      "index": 24,
+      "name": "dictationLivePreviewController",
+      "record": "0x9b2db20",
+      "type_reference": "0x8e145e8"
+    },
+    {
+      "index": 25,
+      "name": "wasFirstResponderBeforeDictationLivePreview",
+      "record": "0x9b2db2c",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "index": 26,
+      "name": "lastTextViewOriginatedInput",
+      "record": "0x9b2db38",
+      "type_reference": "0x8e14598"
+    },
+    {
+      "index": 27,
+      "name": "cachedTextInput",
+      "record": "0x9b2db44",
+      "type_reference": "0x923126a"
+    },
+    {
+      "index": 28,
+      "name": "observedTextStorage",
+      "record": "0x9b2db50",
+      "type_reference": "0x923129a"
+    },
+    {
+      "index": 29,
+      "name": "textStorageObserver",
+      "record": "0x9b2db5c",
+      "type_reference": "0x8d19c40"
+    },
+    {
+      "index": 30,
+      "name": "singleLineThresholdTask",
+      "record": "0x9b2db68",
+      "type_reference": "0x8d1a250"
+    },
+    {
+      "index": 31,
+      "name": "streamingDictationLayoutTask",
+      "record": "0x9b2db74",
+      "type_reference": "0x8c20e10"
+    },
+    {
+      "index": 32,
+      "name": "dictationInitialVisibleHeight",
+      "record": "0x9b2db80",
+      "type_reference": "0x8c59bb0"
+    },
+    {
+      "index": 33,
+      "name": "dictationRequestedHeight",
+      "record": "0x9b2db8c",
+      "type_reference": "0x8c59bb0"
+    },
+    {
+      "index": 34,
+      "name": "dictationHeightWasLive",
+      "record": "0x9b2db98",
+      "type_reference": "0x8bfd810"
+    },
+    {
+      "index": 35,
+      "name": "$__lazy_storage_$_textTapGestureRecognizer",
+      "record": "0x9b2dba4",
+      "type_reference": "0x92c3cf0"
+    }
+  ],
+  "related_task_type": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8d1a250",
+    "length": 16,
+    "mangled_hex": "5363547979740239e8db015f70475367",
+    "references": [
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaad8a90",
+        "resolved_context": null,
+        "label": "_$ss5ErrorMp"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "conclusion": "Coordinator contains a dedicated singleLineThresholdTask alongside native text-view and content/text-storage observation state; this is the next focused measurement investigation target.",
+  "limitations": [
+    "Field names do not establish scheduling or numerical measurement algorithm",
+    "No runtime instance field offsets inferred from field order",
+    "No classlist entry matching this generic Coordinator found; Swift metadata retained instead",
+    "No UI or model behavior change"
+  ]
+}

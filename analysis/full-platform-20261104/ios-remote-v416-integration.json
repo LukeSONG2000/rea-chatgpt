@@ -1,0 +1,115 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "question": "Restore choice selection inside Remote task messages without turning closed choices into free-text forms.",
+  "official_observations": [
+    {
+      "source": "button builder0x1a55398 -> selection0x1cf51f0",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Selection removes the per-question custom draft, clears current text, stores a one-element array containing the option label verbatim under question ID. Multiple questions call progression0x1a56654; one question invokes submit closure at view+0xb0 directly."
+    },
+    {
+      "source": "selected indicator0x1cf5390",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Indicator compares the first stored answer with the row label. Duplicate labels can share selection indication; they must not be deduplicated as one option."
+    },
+    {
+      "source": "0x1a53f60..0x1a53fc0, count helper0x1d9184c",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Custom footer exists when isOther is true or the options array count is zero. Closed nonempty choices omit the footer."
+    },
+    {
+      "source": "0x1cf543c,0x1a556c0,0x1a558d8; ios-remote-v416-bindings.json",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "PlainButtonStyle; firstTextBaseline HStack spacing10; label/description VStack spacing4; body primary label and nonempty callout secondary description; selected checkmark-lg with caption and secondary color."
+    },
+    {
+      "source": "previous0x1cf56f0,next0x1cf5910, index-change callback near0x1cf4858",
+      "evidence_type": "official_artifact_static",
+      "conclusion": "Bounded previous/next index changes do not require current question to be answered. Index-change callback reads customAnswersByQuestionID to restore unsent custom text. Not integrated yet; writer/focus and exact lifecycle remain unresolved."
+    }
+  ],
+  "integration": {
+    "changes": [
+      "Choice dispatch and custom-input visibility integrated into RemoteUserInputDraft and RecoveredRemoteUserInputForm.",
+      "Enumerated row identity retains duplicate labels. Existing free/secret fixture remains; --remote-user-input-fixture=choices adds two synthetic closed/other-enabled questions.",
+      "Chat/Work confirmed still title=nil and only empty-home mode selector; no independent debug title route."
+    ],
+    "independent_adaptations": [
+      "Typed frontend envelopes, stale question/index guards and adapter payload checks are independent contracts, not recovered official wire/server policies.",
+      "Unconnected service explicitly returns serviceUnavailable and never marks a task answered.",
+      "UI retains partial parent layout and unspecified row padding/material. Previous/next navigation and custom draft restoration are not integrated."
+    ]
+  },
+  "validation": {
+    "foundation": "Passed existing suites and choice immediate progression/final submission, verbatim/duplicate/empty offered labels, custom-entry gate, invalid indices/stale question callbacks and scoped payload validation.",
+    "host_typecheck": "Passed with3 existing UIKit deprecation warnings; does not establish build/link/runtime acceptance.",
+    "ui_source": "Added testRemoteUserInputChoicesAndReturn; complete UI test source parses. Not executed. Existing pending runner selects testRemoteTaskScopeAndReturn only, not this new test.",
+    "runtime": "Live check: first-launch97197 and runner97181 remain pending at existing administrator-authorization gate; old simulator preview87483 stays running. No new simulator build/phone install/visual acceptance.",
+    "retention": "retain-builds.py reports targets=[], skipped=[]."
+  },
+  "limitations": [
+    "Selected-state geometry, previous/next controls and focus/draft restoration need integration.",
+    "Source-parsed UI tests are not device validation; cumulative source must be hashed at eventual build.",
+    "Service acknowledgement and Android consumer equivalence remain independently unproven."
+  ],
+  "next_minimum_action": "Close per-question custom draft writer and previous/next labels; after existing Xcode authorization completes, execute task-list -> message choice/input -> return/reentry tests against cumulative source.",
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-selection-icon.asm",
+      "sha256": "77a2cb33af8735d92698634ed0754582c0df8d9c75acc075e30b1fc085006f1a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-option-weight.asm",
+      "sha256": "6e20fe18c1c8bd0c9a618b1b86cbe493b121cda9f20ab37f96fc8fd38788c190"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-question-change.asm",
+      "sha256": "ab97ee91b5129aad237ae8c2afbba9c763cd35ebc6333a39bdb57c520fe8b309"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-custom-field-gate.asm",
+      "sha256": "0096fdf40a5b48aeb4bb20ff0bd60022fec668d25eaddb277475fa91cb948c13"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-question-switch.asm",
+      "sha256": "41ba22501ed45a100cac55a21c8bc861b3ff74e9fc8018f49afcda19008999ed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-option-font.asm",
+      "sha256": "be8044c598ed41955126ad9b691088dfe592d4835111437b1c1e2129f4004be3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-option-callbacks.asm",
+      "sha256": "03f9a13b034fcecc3ac478a81190d2cb969c818a69c5dc0061a790da0106ea31"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-question-change-calls.json",
+      "sha256": "152289da8ddbe89c93cbd29fa0880bafc8d8c9f3f9a09e08bb42dc8c0eaed976"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-option-callbacks-calls.json",
+      "sha256": "0754a6b0e3b87eaa97576b68711e29acbc8f9c199350f0b7a4e793edcd0e8ca8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v416-bindings.json",
+      "sha256": "f350d5523c6d2e22399925a6f78b2ef3985a1a8b2a16976428fc20fae2d183ec"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-content.asm",
+      "sha256": "0bbeeb5eedc2eebb56bef1a774595f1cae1d15d57a3a234196d241b93eb0f22c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v415-input-helpers.asm",
+      "sha256": "0ed6e2bbe3f8298b5e30c73b55813d9d6a07668f6484adeb75a6aa4e2cd3c63e"
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteUserInputInteraction.swift": "2ee1d7e4e1200a46090ba2211d25d3b8b23ce3a1c5da2fbe49d33d11ef79edf4",
+    "implementation/ios/Sources/NativeConversationHost.swift": "e4bebe0c2c5ec57fb6d3ac36b615ea5c82885602968f273123c275e36add6997",
+    "implementation/ios/TextTests/main.swift": "2dd22cc74e37b8e0f4686cc66f74bf95e4f76e7fb340bf34431e6af2eb03e381",
+    "implementation/ios/UITests/HostInteractionTests.swift": "42639eda7eab04bc286fdb9fbfa311cef533830d20fdeb38267634e854c2f8f3"
+  }
+}

@@ -1,0 +1,1 @@
+"use strict";function e(e){return null!==e&&("boolean"==typeof e?e:"number"==typeof e?0!==e:"string"==typeof e?e.length>0:!Array.isArray(e)||e.length>0)}Object.defineProperty(exports,"__esModule",{value:!0}),exports.isTruthy=void 0,exports.isTruthy=e;

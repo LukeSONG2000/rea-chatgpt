@@ -1,0 +1,91 @@
+{
+  "platform": "ios",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "static_artifact",
+  "type_descriptor": "0x96cb86c",
+  "type_name": "MessageInputUITextView",
+  "metadata_accessor": "0x60b4d80",
+  "stub_bindings": [
+    {
+      "stub": "0x7c538a8",
+      "slot": "0xaacad88",
+      "binding": {
+        "symbol": "_objc_allocWithZone",
+        "library_ordinal": 21,
+        "weak": false,
+        "import_ordinal": 5291,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c53b6c",
+      "slot": "0xaacaf70",
+      "binding": {
+        "symbol": "_objc_retain_x20",
+        "library_ordinal": 21,
+        "weak": false,
+        "import_ordinal": 5351,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "stub": "0x7c7a8e0",
+      "slot": "0xacb2b98",
+      "binding": "setSelectedRange:"
+    },
+    {
+      "stub": "0x7c75620",
+      "slot": "0xacb16e8",
+      "binding": "setDelegate:"
+    },
+    {
+      "stub": "0x7c7bac0",
+      "slot": "0xacb3010",
+      "binding": "setTextDragDelegate:"
+    }
+  ],
+  "instruction_assertions": [
+    {
+      "address": "0x4d72ad0",
+      "word": "0x944d08ac",
+      "passed": true
+    },
+    {
+      "address": "0x4d72d84",
+      "word": "0xaa0003f7",
+      "passed": true
+    },
+    {
+      "address": "0x4d72f78",
+      "word": "0x94bb9872",
+      "passed": true
+    },
+    {
+      "address": "0x4d777e4",
+      "word": "0x944cf567",
+      "passed": true
+    },
+    {
+      "address": "0x4d778cc",
+      "word": "0x94bb861d",
+      "passed": true
+    },
+    {
+      "address": "0x4d737e8",
+      "word": "0x94bbd486",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Representable witness identity and focus-subject consumer not closed",
+    "Common helper includes lifecycle operations; not named as a focus scheduler",
+    "No host implementation change or runtime acceptance"
+  ]
+}

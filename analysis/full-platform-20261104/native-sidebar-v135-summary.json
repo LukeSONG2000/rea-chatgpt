@@ -1,0 +1,57 @@
+{
+  "status": "partial",
+  "milestone": "macOS packaged sidebar service wiring repaired",
+  "bundle": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/desktop/dist/v135-macos/REA ChatGPT Offline.app",
+  "cause": "Standalone bootstrap omitted workspaceRoot, leaving projectlessThreads unavailable. Official sidebar waits on the projectless workspace-root query before ensuring its catalog scope.",
+  "implementation": "Independent profile-local empty workspace, existing readWorkspaceRoot adapter; createPaths remains unsupported; no original renderer changes",
+  "evidence": "native-sidebar-v135-evidence.json",
+  "before": {
+    "report": "native-sidebar-v135-ready.json",
+    "spinnersAfterFiveSeconds": 1
+  },
+  "after": {
+    "report": "native-sidebar-v135-fixed.json",
+    "spinnersAfterFiveSeconds": 0,
+    "workspaceServiceObserved": true,
+    "screenshotVisuallyReviewed": true
+  },
+  "regression": {
+    "report": "native-bundle-v135-regression.json",
+    "status": "passed",
+    "steps": [
+      {
+        "operation": "create-send-cancel-draft-rename",
+        "status": "passed",
+        "projectId": "g-p-rea-local-70be57cb-f655-49b0-a9d0-d735a7c16823",
+        "conversationId": "offline-local-c3abec8e-0286-4651-b128-4c2e2b012eb6",
+        "deniedPrimaryWrite": true
+      },
+      {
+        "operation": "packaged-cold-recovery",
+        "status": "passed",
+        "pid": 26706
+      }
+    ],
+    "restartNoSpinner": true
+  },
+  "payloadVerification": {
+    "macos": {
+      "files": 15878,
+      "allDigestsMatched": true,
+      "runtimeIncluded": true
+    },
+    "windows": {
+      "files": 15878,
+      "allDigestsMatched": true,
+      "runtimeIncluded": false
+    }
+  },
+  "macSignature": "deep strict verification passed after execution",
+  "limits": [
+    "Not complete platform or official visual acceptance",
+    "Windows application payload only, no Windows runtime/OS validation",
+    "Standalone Zhipu and Remote still not integrated",
+    "No crash/power-loss verification",
+    "Original product identity is Codex ChatGPT mode"
+  ]
+}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ChatGPTConversationError=void 0;class ChatGPTConversationError extends Error{constructor(r){super(r),this.name="ChatGPTConversationError",this.message=r}}exports.ChatGPTConversationError=ChatGPTConversationError;

@@ -1,0 +1,40 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static inference",
+  "status": "partial",
+  "entry": "0x2abea40",
+  "empty_input": {
+    "return": "0xa5c91d0",
+    "raw_words": [
+      9227875636482146310,
+      9241386435364257797,
+      1,
+      2,
+      0
+    ],
+    "interpretation": "array count 1, payload 0"
+  },
+  "split": {
+    "separator": "0x3b semicolon at 0x2abea6c",
+    "preserve_empty": "flag w1=0 from 0x265b754, tested at 0x731eb4 and 0x73206c",
+    "empty_field": "0x2abeb84 appends zero"
+  },
+  "numeric": {
+    "function": "0x25d07e8",
+    "success": "0x25d0a5c w1=0",
+    "failure": "0x25d0a64 w1=1",
+    "consumer_failure": "0x2abeb54 skips field",
+    "rules": "optional sign, ASCII decimal, signed Int64 overflow checks"
+  },
+  "model": "analysis/reference_models/remote_sgr_foreground.py",
+  "limits": [
+    "ASCII parameter bodies only in reference model",
+    "Unicode/grapheme and bridged-string paths unverified",
+    "not complete escape recognizer or native renderer integration",
+    "truncated extended color still unsupported",
+    "not original binary execution"
+  ]
+}

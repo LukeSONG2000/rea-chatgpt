@@ -1,0 +1,30 @@
+{
+  "status": "partial",
+  "authority": "independent snapshot admission plus exact original orchestration replay",
+  "sources": [
+    {
+      "path": "implementation/desktop/native/remote-thread-reader.cjs",
+      "sha256": "38a1b750232a61a545442b5512d48d2aa7b59358039e09bd15f470bb28f2dd53"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-snapshot-admission.cjs",
+      "sha256": "d1dc056517e8c44b9a406cd052881175ee04a6077a2ee7f1bb27d3e2de8ee73a"
+    },
+    {
+      "path": "analysis/tools/replay_remote_hydration_admission.cjs",
+      "sha256": "3ae09809ccbbcc3eb755c2a7277c8db7b7a12b9963ad7307400b63930fadc80d"
+    }
+  ],
+  "reports": [
+    "remote-admission-v154-unit.json",
+    "remote-admission-v154-reader.json",
+    "remote-admission-v154-original.json",
+    "remote-admission-v154-owner.json"
+  ],
+  "limits": [
+    "Consumer must synchronously apply after consumeSnapshot; IPC receiving owner needs its own admission",
+    "No actual original manager or UI bridge",
+    "Original hydrateThreads enclosing method statically retained, not executed",
+    "No new runtime package"
+  ]
+}

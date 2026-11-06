@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.findIndex=void 0;const e=require("../util/lift"),r=require("./find");function t(t,i){return(0,e.operate)((0,r.createFind)(t,i,"index"))}exports.findIndex=t;

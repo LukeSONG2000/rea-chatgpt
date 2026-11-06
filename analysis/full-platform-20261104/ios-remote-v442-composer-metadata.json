@@ -1,0 +1,837 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "CodexRemoteComposerPresentation",
+      "descriptor": "0x95aad24",
+      "type_section_entry": "0x9d3a1a0",
+      "accessor": "0x1ab0408",
+      "fields": [
+        {
+          "name": "showsDestinationControls",
+          "record": "0x9a3437c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "placeholderText",
+          "record": "0x9a34388",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "allowsAttachments",
+          "record": "0x9a34394",
+          "type_reference": "0x8bfd810"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e0b8fc",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2450"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteMessageInputView",
+      "descriptor": "0x95ac77c",
+      "type_section_entry": "0x9d3a3c0",
+      "accessor": "0x1aa5854",
+      "fields": [
+        {
+          "name": "_composerPromptText",
+          "record": "0x9a37184",
+          "type_reference": "0x8bca450"
+        },
+        {
+          "name": "_isFocused",
+          "record": "0x9a37190",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "_initialStartAction",
+          "record": "0x9a3719c",
+          "type_reference": "0x8e15736"
+        },
+        {
+          "name": "composerID",
+          "record": "0x9a371a8",
+          "type_reference": "0x92e6548"
+        },
+        {
+          "name": "promptSelection",
+          "record": "0x9a371b4",
+          "type_reference": "0x8e133c0"
+        },
+        {
+          "name": "composerFocusRequestID",
+          "record": "0x9a371c0",
+          "type_reference": "0x8c85b40"
+        },
+        {
+          "name": "isSending",
+          "record": "0x9a371cc",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isReconnecting",
+          "record": "0x9a371d8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "reconnectingAccessibilityLabel",
+          "record": "0x9a371e4",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "isRunningTurn",
+          "record": "0x9a371f0",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "prediction",
+          "record": "0x9a371fc",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "showsPredictionAcceptanceHint",
+          "record": "0x9a37208",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canSubmit",
+          "record": "0x9a37214",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canStartRealtimeVoice",
+          "record": "0x9a37220",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "attachments",
+          "record": "0x9a3722c",
+          "type_reference": "0x8e1222c"
+        },
+        {
+          "name": "selectedTextAttachments",
+          "record": "0x9a37238",
+          "type_reference": "0x8e133c8"
+        },
+        {
+          "name": "reviewFindingComments",
+          "record": "0x9a37244",
+          "type_reference": "0x8e11c34"
+        },
+        {
+          "name": "attachmentErrorMessage",
+          "record": "0x9a37250",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "isLoadingAttachments",
+          "record": "0x9a3725c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isComposerAttachmentPreviewEnabled",
+          "record": "0x9a37268",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "supportsPlanMode",
+          "record": "0x9a37274",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isPlanModeEnabled",
+          "record": "0x9a37280",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "recentPhotosController",
+          "record": "0x9a3728c",
+          "type_reference": "0x8e13640"
+        },
+        {
+          "name": "showRecentPhotos",
+          "record": "0x9a37298",
+          "type_reference": "0x8e1574c"
+        },
+        {
+          "name": "canTakePhotoAttachment",
+          "record": "0x9a372a4",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "photoPickerScreenBuilder",
+          "record": "0x9a372b0",
+          "type_reference": "0x8e13338"
+        },
+        {
+          "name": "elevatedPresentation",
+          "record": "0x9a372bc",
+          "type_reference": "0x8e15754"
+        },
+        {
+          "name": "whisperComponent",
+          "record": "0x9a372c8",
+          "type_reference": "0x8e1575a"
+        },
+        {
+          "name": "preventsPromptSubmission",
+          "record": "0x9a372d4",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "allowsSupplementaryWhisperButton",
+          "record": "0x9a372e0",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "realtimeVoiceAction",
+          "record": "0x9a372ec",
+          "type_reference": "0x8f57ab0"
+        },
+        {
+          "name": "allowsCompactRunningTurnStopButton",
+          "record": "0x9a372f8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "trailingOutsideContent",
+          "record": "0x9a37304",
+          "type_reference": "0x8bcacc0"
+        },
+        {
+          "name": "floatingAutocompletePresentation",
+          "record": "0x9a37310",
+          "type_reference": "0x8e1576c"
+        },
+        {
+          "name": "autocompleteItems",
+          "record": "0x9a3731c",
+          "type_reference": "0x8bca2e4"
+        },
+        {
+          "name": "commands",
+          "record": "0x9a37328",
+          "type_reference": "0x8e1577e"
+        },
+        {
+          "name": "sceneMetrics",
+          "record": "0x9a37334",
+          "type_reference": "0x8e15788"
+        },
+        {
+          "name": "validateDataTransferOpen",
+          "record": "0x9a37340",
+          "type_reference": "0x8e15790"
+        },
+        {
+          "name": "makeCameraAttachmentFlowViewModel",
+          "record": "0x9a3734c",
+          "type_reference": "0x8e1579a"
+        },
+        {
+          "name": "permissionsControl",
+          "record": "0x9a37358",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "configurationControls",
+          "record": "0x9a37364",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "handle",
+          "record": "0x9a37370",
+          "type_reference": "0x8e157b4"
+        },
+        {
+          "name": "_textSelection",
+          "record": "0x9a3737c",
+          "type_reference": "0x8e157bc"
+        },
+        {
+          "name": "__isSelectedTextAttachmentListPresented",
+          "record": "0x9a37388",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__isReviewCommentListPresented",
+          "record": "0x9a37394",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__isMultilineComposer",
+          "record": "0x9a373a0",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__showsFullscreenComposerButton",
+          "record": "0x9a373ac",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__isFullscreenComposerPresented",
+          "record": "0x9a373b8",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__shouldRestoreFocusAfterFullscreenSubmission",
+          "record": "0x9a373c4",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__autocompleteState",
+          "record": "0x9a373d0",
+          "type_reference": "0x8e14f98"
+        },
+        {
+          "name": "__autocompleteAtSignLocation",
+          "record": "0x9a373dc",
+          "type_reference": "0x8c28898"
+        },
+        {
+          "name": "__floatingAutocompleteWidth",
+          "record": "0x9a373e8",
+          "type_reference": "0x8fd0850"
+        },
+        {
+          "name": "__attachmentPresentation",
+          "record": "0x9a373f4",
+          "type_reference": "0x8e157ca"
+        },
+        {
+          "name": "__inlineAttachmentMorph",
+          "record": "0x9a37400",
+          "type_reference": "0x8e14fc0"
+        },
+        {
+          "name": "__localAttachmentErrorMessage",
+          "record": "0x9a3740c",
+          "type_reference": "0x8eadc90"
+        },
+        {
+          "name": "__suppressNextAttachmentAction",
+          "record": "0x9a37418",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "__recentPhotosInteraction",
+          "record": "0x9a37424",
+          "type_reference": "0x8e14fe8"
+        },
+        {
+          "name": "__selectedPhotoItems",
+          "record": "0x9a37430",
+          "type_reference": "0x8e14ff8"
+        },
+        {
+          "name": "__localSceneMetrics",
+          "record": "0x9a3743c",
+          "type_reference": "0x8e15018"
+        },
+        {
+          "name": "__hostingWindow",
+          "record": "0x9a37448",
+          "type_reference": "0x8eab2f0"
+        },
+        {
+          "name": "__isHoldingExpandedComposerAfterSubmission",
+          "record": "0x9a37454",
+          "type_reference": "0x8cf6c70"
+        },
+        {
+          "name": "_composerPresentation",
+          "record": "0x9a37460",
+          "type_reference": "0x8e14bba"
+        },
+        {
+          "name": "_scenePhase",
+          "record": "0x9a3746c",
+          "type_reference": "0x917e5b0"
+        },
+        {
+          "name": "_hapticEngine",
+          "record": "0x9a37478",
+          "type_reference": "0x941d160"
+        },
+        {
+          "name": "_messageInputStyle",
+          "record": "0x9a37484",
+          "type_reference": "0x8d0bfd4"
+        },
+        {
+          "name": "_attachmentsPadding",
+          "record": "0x9a37490",
+          "type_reference": "0x8d1b570"
+        },
+        {
+          "name": "_reduceTransparency",
+          "record": "0x9a3749c",
+          "type_reference": "0x8c20ac0"
+        },
+        {
+          "name": "_colorScheme",
+          "record": "0x9a374a8",
+          "type_reference": "0x9002fa0"
+        },
+        {
+          "name": "_dynamicTypeSize",
+          "record": "0x9a374b4",
+          "type_reference": "0x8d983c8"
+        },
+        {
+          "name": "_verticalSizeClass",
+          "record": "0x9a374c0",
+          "type_reference": "0x941b440"
+        },
+        {
+          "name": "defaultPlaceholderText",
+          "record": "0x9a374cc",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "hostSupportsRemoteAttachments",
+          "record": "0x9a374d8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_compactAttachmentImageSize",
+          "record": "0x9a374e4",
+          "type_reference": "0x8bde2e0"
+        },
+        {
+          "name": "_mixedAttachmentImageSize",
+          "record": "0x9a374f0",
+          "type_reference": "0x8bde2e0"
+        },
+        {
+          "name": "_attachmentImageSize",
+          "record": "0x9a374fc",
+          "type_reference": "0x8bde2e0"
+        },
+        {
+          "name": "_followUpBehavior",
+          "record": "0x9a37508",
+          "type_reference": "0x8e157ea"
+        },
+        {
+          "name": "_dismissKeyboardAfterSending",
+          "record": "0x9a37514",
+          "type_reference": "0x91dc3b0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e11ae8",
+          "flags": "0x30000",
+          "section_entry": "0x9ce27fc"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteCompactComposerField",
+      "descriptor": "0x95ad774",
+      "type_section_entry": "0x9d3a568",
+      "accessor": "0x1c28ac8",
+      "fields": [
+        {
+          "name": "displayText",
+          "record": "0x9a38804",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "isShowingPlaceholder",
+          "record": "0x9a38810",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "font",
+          "record": "0x9a3881c",
+          "type_reference": "0x914a0a0"
+        },
+        {
+          "name": "minimumHeight",
+          "record": "0x9a38828",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "leadingPadding",
+          "record": "0x9a38834",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "requestFocus",
+          "record": "0x9a38840",
+          "type_reference": "0x8d0ab00"
+        },
+        {
+          "name": "_placeholderColor",
+          "record": "0x9a3884c",
+          "type_reference": "0x8e38dae"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1c730",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2c14"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteExpandedComposerField",
+      "descriptor": "0x95ad8a0",
+      "type_section_entry": "0x9d3a580",
+      "accessor": "0x1c28c68",
+      "fields": [
+        {
+          "name": "_text",
+          "record": "0x9a38588",
+          "type_reference": "0x8bca450"
+        },
+        {
+          "name": "_isFocused",
+          "record": "0x9a38594",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "_textSelection",
+          "record": "0x9a385a0",
+          "type_reference": "0x8e145bc"
+        },
+        {
+          "name": "_showsFullscreenButton",
+          "record": "0x9a385ac",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "composerID",
+          "record": "0x9a385b8",
+          "type_reference": "0x92e6548"
+        },
+        {
+          "name": "font",
+          "record": "0x9a385c4",
+          "type_reference": "0x914a0a0"
+        },
+        {
+          "name": "autocompleteItems",
+          "record": "0x9a385d0",
+          "type_reference": "0x8bca2e4"
+        },
+        {
+          "name": "isShowingAutocompletePicker",
+          "record": "0x9a385dc",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canAcceptPrediction",
+          "record": "0x9a385e8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "colorScheme",
+          "record": "0x9a385f4",
+          "type_reference": "0x8cfd4b0"
+        },
+        {
+          "name": "canChangeText",
+          "record": "0x9a38600",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canPasteFiles",
+          "record": "0x9a3860c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "dictationLivePreview",
+          "record": "0x9a38618",
+          "type_reference": "0x8e15680"
+        },
+        {
+          "name": "dictationLivePreviewDisplayed",
+          "record": "0x9a38624",
+          "type_reference": "0x8dab350"
+        },
+        {
+          "name": "acceptDictationLivePreview",
+          "record": "0x9a38630",
+          "type_reference": "0x8e145ca"
+        },
+        {
+          "name": "pasteImageData",
+          "record": "0x9a3863c",
+          "type_reference": "0x8e145d4"
+        },
+        {
+          "name": "pasteFileURL",
+          "record": "0x9a38648",
+          "type_reference": "0x8f857e0"
+        },
+        {
+          "name": "handlePasteError",
+          "record": "0x9a38654",
+          "type_reference": "0x9277ee8"
+        },
+        {
+          "name": "handleKey",
+          "record": "0x9a38660",
+          "type_reference": "0x8e14580"
+        },
+        {
+          "name": "textDidApply",
+          "record": "0x9a3866c",
+          "type_reference": "0x8e15690"
+        },
+        {
+          "name": "selectionDidChange",
+          "record": "0x9a38678",
+          "type_reference": "0x8e145de"
+        },
+        {
+          "name": "contentInsets",
+          "record": "0x9a38684",
+          "type_reference": "0x8da84b0"
+        },
+        {
+          "name": "scrollIndicatorInsets",
+          "record": "0x9a38690",
+          "type_reference": "0x8da84b0"
+        },
+        {
+          "name": "placeholderText",
+          "record": "0x9a3869c",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "minimumHeight",
+          "record": "0x9a386a8",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "maximumHeight",
+          "record": "0x9a386b4",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "isCompact",
+          "record": "0x9a386c0",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_placeholderColor",
+          "record": "0x9a386cc",
+          "type_reference": "0x8e38dae"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1aa18",
+          "flags": "0x30000",
+          "section_entry": "0x9ce29fc"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemotePersistentComposerFieldRow",
+      "descriptor": "0x95ad8f4",
+      "type_section_entry": "0x9d3a584",
+      "accessor": "0x1c80120",
+      "fields": [
+        {
+          "name": "isCompact",
+          "record": "0x9a3853c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isFocused",
+          "record": "0x9a38548",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "compactHeight",
+          "record": "0x9a38554",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "expandedContent",
+          "record": "0x9a38560",
+          "type_reference": "0x8d09970"
+        },
+        {
+          "name": "compactContent",
+          "record": "0x9a3856c",
+          "type_reference": "0x8c747f0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e1a9c8",
+          "flags": "0x30000",
+          "section_entry": "0x9ce29f8"
+        }
+      ]
+    },
+    {
+      "name": "CodexRemoteComposerTextView",
+      "descriptor": "0x95afb48",
+      "type_section_entry": "0x9d3a898",
+      "accessor": "0x1ced408",
+      "fields": [
+        {
+          "name": "_text",
+          "record": "0x9a36bd0",
+          "type_reference": "0x8bca450"
+        },
+        {
+          "name": "_isFocused",
+          "record": "0x9a36bdc",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "_textSelection",
+          "record": "0x9a36be8",
+          "type_reference": "0x8e145bc"
+        },
+        {
+          "name": "_showsFullscreenButton",
+          "record": "0x9a36bf4",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "font",
+          "record": "0x9a36c00",
+          "type_reference": "0x914a0a0"
+        },
+        {
+          "name": "autocompleteItems",
+          "record": "0x9a36c0c",
+          "type_reference": "0x8bca2e4"
+        },
+        {
+          "name": "isShowingAutocompletePicker",
+          "record": "0x9a36c18",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canAcceptPrediction",
+          "record": "0x9a36c24",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "colorScheme",
+          "record": "0x9a36c30",
+          "type_reference": "0x8cfd4b0"
+        },
+        {
+          "name": "canChangeText",
+          "record": "0x9a36c3c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "canPasteFiles",
+          "record": "0x9a36c48",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "dictationLivePreview",
+          "record": "0x9a36c54",
+          "type_reference": "0x8e15680"
+        },
+        {
+          "name": "dictationLivePreviewDisplayed",
+          "record": "0x9a36c60",
+          "type_reference": "0x8dab350"
+        },
+        {
+          "name": "acceptDictationLivePreview",
+          "record": "0x9a36c6c",
+          "type_reference": "0x8e145ca"
+        },
+        {
+          "name": "pasteImageData",
+          "record": "0x9a36c78",
+          "type_reference": "0x8e145d4"
+        },
+        {
+          "name": "pasteFileURL",
+          "record": "0x9a36c84",
+          "type_reference": "0x8f857e0"
+        },
+        {
+          "name": "handlePasteError",
+          "record": "0x9a36c90",
+          "type_reference": "0x9277ee8"
+        },
+        {
+          "name": "handleKey",
+          "record": "0x9a36c9c",
+          "type_reference": "0x8e14580"
+        },
+        {
+          "name": "textDidApply",
+          "record": "0x9a36ca8",
+          "type_reference": "0x8e15690"
+        },
+        {
+          "name": "selectionDidChange",
+          "record": "0x9a36cb4",
+          "type_reference": "0x8e145de"
+        },
+        {
+          "name": "contentInsets",
+          "record": "0x9a36cc0",
+          "type_reference": "0x8da84b0"
+        },
+        {
+          "name": "scrollIndicatorInsets",
+          "record": "0x9a36ccc",
+          "type_reference": "0x8da84b0"
+        },
+        {
+          "name": "maximumHeight",
+          "record": "0x9a36cd8",
+          "type_reference": "0x8c865b0"
+        },
+        {
+          "name": "isCompact",
+          "record": "0x9a36ce4",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "_messageInputStyle",
+          "record": "0x9a36cf0",
+          "type_reference": "0x8d0bfd4"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7e209f0",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2d04"
+        },
+        {
+          "descriptor": "0x7e20a40",
+          "flags": "0x30000",
+          "section_entry": "0x9ce2d08"
+        }
+      ]
+    }
+  ],
+  "missing": [
+    "CodexRemoteMessageInputAction"
+  ],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

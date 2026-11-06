@@ -1,0 +1,50 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static plus independent native adapter",
+  "findings": [
+    {
+      "offset": "0x96fd864",
+      "observation": "MarkdownCodeBlockDisplayMode has code and preview enum case metadata. Runtime tag and initial value remain unverified."
+    },
+    {
+      "offset": "0x6ee9d18",
+      "observation": "copied true chooses factory0x74f5b1c -> OpenAI/Symbols/checkmark-lg at0x8a547e0; false chooses0x74fb3ac -> OpenAI/Symbols/square-on-square at0x8a570e0."
+    },
+    {
+      "offset": "0x6ee9fd0",
+      "observation": "Calls generalPasteboard; item handler string branch reaches setString: at0x6eea134 (see v345-item-copy-calls). Original multi-payload support not ported."
+    },
+    {
+      "offset": "0x1d98964",
+      "observation": "Header confirmation argument helper sets x5=2000000000000000000, wrapper zeros x6. Two-second duration interpretation is an inference; native reset task lifecycle remains unresolved."
+    }
+  ],
+  "integration": [
+    "Explicit optional copyEnabled adapter input; nil omitted, false disabled, true enabled. Fixture opts in, not claimed official environment default.",
+    "Original copy/checkmark resources; primary foreground and plain button.",
+    "UIPasteboard string write; no model or remote execution.",
+    "Independent two-second feedback reset with cancellation on repeat/disappearance/code/policy changes; no symbol replacement animation."
+  ],
+  "unknowns": [
+    "Official display-mode initial selection and environment default",
+    "Exact feedback reset timing/semantics",
+    "Original action metrics and hit-area sizing",
+    "Android independent implementation"
+  ],
+  "validation": {
+    "simulator": "testRemoteTaskScopeAndReturn passed; repeat-copy feedback/reset and existing task/host navigation coverage",
+    "clipboard": "simctl pbpaste exactly matched synthetic fixture-a diff after test",
+    "visual": "settled screenshot inspected; original copy glyph visible, no observed header clipping. Full metrics/fidelity unaccepted.",
+    "preview_pid": 74866,
+    "phone": "not updated",
+    "external_display": "not reverified",
+    "limits": [
+      "Disabled/omitted control runtime cases not yet tested",
+      "No runtime comparison with official app",
+      "Rapid task switch during active confirmation not specifically exercised"
+    ]
+  }
+}

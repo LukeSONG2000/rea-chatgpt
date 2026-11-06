@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.partition=void 0;const r=require("../util/not"),e=require("../operators/filter"),t=require("./innerFrom");function i(i,o,n){return[(0,e.filter)(o,n)((0,t.innerFrom)(i)),(0,e.filter)((0,r.not)(o,n))((0,t.innerFrom)(i))]}exports.partition=i;

@@ -1,0 +1,35 @@
+{
+  "authority": "official artifact static observation",
+  "file": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "evidence": [
+    {
+      "symbol": "hydrateBackgroundThreads",
+      "byteOffset": 2758607,
+      "source": "get hydrateBackgroundThreads(){return(...e)=>this.#e().hydrateBackgroundThreads(...e)}"
+    },
+    {
+      "symbol": "hydrateBackgroundThreads",
+      "byteOffset": 2937586,
+      "source": "async hydrateBackgroundThreads(e,{includeTurns:t=!1,maxTurns:n,refreshExisting:r=!1}={}){await this.hydrateThreads(e,{addToRecentConversations:!1,includeTurns:t,maxTurns:n,refreshExisting:r,notifyAnyCallbacks:!1})}"
+    },
+    {
+      "symbol": "hydrateThreads",
+      "byteOffset": 2950693,
+      "source": "async hydrateThreads(e,{addToRecentConversations:t,archivedPreview:n,includeTurns:r=!1,refreshExisting:i=!1,maxTurns:a=this.params.host.isCloudHost?5:void 0,notifyAnyCallbacks:o,retainHistoryPagination:s=this.params.host.isCloudHost&&r,throwOnReadError:c=!1,shouldApplyHydratedThread:l,shouldAddThreadToRecentConversations:u,requestOptions:d}){let f=this.hydrationGeneration;await this.loadThreadHydrationState();let p=new Map;if(r)for(let t of e){let e=cs(t),n=this.conversations.get(e);p.set(e,new Set(n==null?[]:Qw(n,aT).flatMap(({turnId:e})=>e==null?[]:[e])))}await utn({logger:this.params.logger,threadIds:e.filter(e=>!e.includes(`:`)&&(n!=null||d?.threadAccess===`shared`||this.conversations.get(cs(e))?.threadAccess===`shared`||!(this.threadReadStates.get(cs(e))instanceof Error))),getRecentConversationIds:()=>this.recentConversationIds,conversations:this.conversations,isConversationSuppressed:this.isConversationSuppressed.bind(this),addToRecentConversations:t,includeArchived:n!=null,shouldApplyHydratedThread:()=>f===this.hydrationGeneration&&(l?.()??!0)&&(n?.isCurrent()??!0),includeTurns:r,refreshExisting:i,maxTurns:a,throwOnReadError:c,notifyAnyCallbacks:o,shouldAddThreadToRecentConversations:e=>!DT(e)&&atn(e)&&(u?.(e)??!0),readThread:(e,t)=>(n!=null&&this.threadReadStates.delete(cs(e)),n==null&&!s&&d==null?this.readHydrationThreadMemoized(e,t?.includeTurns??!1,t?.maxTurns,f,this.conversations.get(cs(e))?.threadAccess):this.readHydrationThread(e,{...t,requestOptions:d??(s?{priority:`background`,source:`thread_hydration`}:{source:`thread_hydration`})})),upsertHydratedConversationState:(e,t)=>{if(this.appliedHydrationResults.has(t))return;this.appliedHydrationResults.add(t);let{response:i}=t,o=this.threadsById.get(e),c=o!=null&&(o.updatedAt>i.thread.updatedAt||o.updatedAt===i.thread.updatedAt&&!(0,GT.default)(o.status,t.threadStatusAtReadStart)&&!(0,GT.default)(o.status,i.thread.status));if(c&&!s){!r&&!this.conversations.has(e)&&this.upsertRecentConversationState(e,o,t.modelSettingsAtReadStart);return}let l=n!=null||s?t.turnsPagination:void 0,u=n==null&&!s&&a!=null&&(this.conversations.get(e)?.resumeState===`resumed`||i.thread.turns.length===0);if(this.upsertRecentConversationState(e,c?o:i.thread,t.modelSettingsAtReadStart),!r||u)return;let d=Ven(i,{fallbackCwd:i.thread.cwd,itemsPaginationByTurnId:t.itemsPaginationByTurnId}),f=this.conversations.get(e),m=f==null?[]:Qw(f,aT);this.updateConversationState(e,r=>{t.itemsPaginationByTurnId!=null&&(r.boundedCloudHistory=!0);let o=p.get(e)??new Set,c=m.filter(({status:e,turnId:t,params:n})=>t==null?e===`inProgress`||r.unconfirmedTurnSubmissions?.some(e=>e.clientUserMessageId===n.clientUserMessageId):!o.has(t)),u=new Set(d.map(({turnId:e})=>e)),h=(0,wtn.default)(m,({turnId:e})=>e!=null&&(o.has(e)||u.has(e))),g=c.some(({status:e,turnId:t})=>t==null&&e===`inProgress`),_=d.filter(({status:e})=>!g||e!==`inProgress`),v=new Set(_.map(({turnId:e})=>e)),y=new Set(i.thread.turns.filter(e=>e.itemsView===`full`&&v.has(e.id)).map(e=>e.id)),b=Xc(Xc(m.filter(({turnId:e},t)=>e!=null&&t<=h),_,{preserveExistingTerminalState:!0,policy:aT}),c,{preferIncomingItems:!0,policy:aT}).map(e=>e.turnId==null||!y.has(e.turnId)||e.itemsPagination?.hasLoadedOldest!==!1?e:{...e,itemsPagination:{...e.itemsPagination,olderCursor:null,isLoadingOlder:!1,hasLoadedOldest:!0,summaryItemIds:void 0,reconnect:void 0}});(n!=null||s||a==null?ADe:$c)(r,b,l?.hasLoadedOldest??(a==null||f!=null&&rT(f)),l?.olderCursor==null?void 0:{cursor:l.olderCursor,oldestLoadedTurnId:l.oldestLoadedTurnId},aT),l!=null&&(r.turnsPagination=l)})},notifyAnyConversationCallbacks:this.notifyAnyConversationCallbacks.bind(this),notifyConversationCallbacks:this.notifyConversationCallbacks.bind(this)})}"
+    },
+    {
+      "symbol": "readHydrationThread",
+      "byteOffset": 2954430,
+      "source": "async readHydrationThread(e,{includeTurns:t=!1,maxTurns:n,requestOptions:r}={}){let i=this.hydrationGeneration,a=this.threadsById.get(e),o={modelSettingsAtReadStart:this.captureThreadModelSettings(cs(e)),threadStatusAtReadStart:a?.status},s=t=>this.readThread(e,{includeTurns:t,requestOptions:r??{priority:`background`,source:`thread_hydration`}});if(!t)return{...o,response:await s(!1)};if(!this.params.host.isCloudHost&&a!=null&&a.historyMode!==`paginated`&&n==null)return{...o,response:await s(!0)};let c=await s(!1);if(i!==this.hydrationGeneration)return{...o,response:c};if(!this.params.host.isCloudHost&&c.thread.historyMode!==`paginated`){if(n==null)return{...o,response:await s(!0)};if(!this.params.requestClient.supportsPaginatedThreadHistory())return{...o,response:c}}if(n!=null)return dtn({hydratedThread:{...o,response:c},threadId:e,maxTurns:n,isCloudHost:this.params.host.isCloudHost,requestClient:this.params.requestClient,listThreadTurns:this.params.listThreadTurns,requestOptions:r});let l=new Map,u=new Set,d=null;do{if(d!=null&&u.has(d))throw Error(`thread/turns/list returned a repeated cursor for thread ${e}`);d!=null&&u.add(d);let t=await G5t(async(e,t,n)=>{if(i!==this.hydrationGeneration)throw Error(`Thread hydration was superseded by a reconnect`);let r=await this.params.requestClient.sendRequest(e,t,n);if(i!==this.hydrationGeneration)throw Error(`Thread hydration was superseded by a reconnect`);return r},e,d,5,r??{priority:`background`,source:`collab_hydration`},`asc`);if(i!==this.hydrationGeneration)break;for(let e of t.data)l.set(e.id,e);d=t.nextCursor}while(d!=null);return{...o,response:{...c,thread:{...c.thread,turns:Array.from(l.values())}}}}"
+    },
+    {
+      "symbol": "hydrateBackgroundThreads",
+      "byteOffset": 3416533,
+      "source": "async hydrateBackgroundThreads(e,t){await this.threadStore.hydrateBackgroundThreads(e,t)}"
+    }
+  ],
+  "limits": [
+    "Static merge logic does not prove independent adapter cursor ordering; runtime regression required"
+  ]
+}

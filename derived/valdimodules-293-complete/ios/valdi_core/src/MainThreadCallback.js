@@ -1,0 +1,1 @@
+"use strict";function e(e,a,r,t){return{modulePath:e,webModuleLoader:a,callbackIndex:r,captureCount:t}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.valdiMainThreadCallbackDescriptor=void 0,exports.valdiMainThreadCallbackDescriptor=e;

@@ -1,0 +1,54 @@
+{
+  "status": "partial",
+  "platform": "macos",
+  "baseline": "Codex 26.1021.31345 build 21828; original renderer plus independent synthetic services",
+  "verified": [
+    "Real New chat opens blank composer; first synthetic send creates a unique local conversation and completes a fixture response",
+    "Committed catalog contains new conversation; cold restart restores exact newly allocated conversation route and completed message",
+    "Two independent creations retain separate root/user/assistant graphs after disk reload",
+    "History, atom and route regressions pass; restore pageErrors empty; screenshot reviewed"
+  ],
+  "identity_observation": "Original renderer retains client-new-thread identity while ownerRoutePath switches to saved conversation. Host validates the route against its persisted local histories when owner ID differs. This is independent host policy, not proof of official persistence implementation.",
+  "runtime": {
+    "created": {
+      "operation": "fixture.conversation-created",
+      "conversationId": "offline-local-5a1eea58-cfc1-40a0-9e4f-9ac87c4a404b",
+      "parentId": "client-created-root",
+      "userId": "afb711cb-8b18-4e8d-88bf-0bd02928c36d"
+    },
+    "restored": {
+      "status": "passed",
+      "startupRoute": "/c/offline-local-5a1eea58-cfc1-40a0-9e4f-9ac87c4a404b",
+      "currentMessage": "offline-generated-3df7f987-6dc3-4445-842a-cd9070052034",
+      "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\nREA synthetic new conversation\nREA synthetic new conversation\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\nREA synthetic new conversation\nYou said:\nREA synthetic new conversation\nChatGPT said:\n\n本地回放：消息增量已接入。\n\nJavaScript\nconst source = \"fixture\";\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n",
+      "hostPID": 47506
+    }
+  },
+  "not_accepted": [
+    "Deletion, archive, retry idempotency and temporary draft recovery",
+    "Catalog pagination beyond first page; max 128 local histories is a safety budget not tested UI capacity",
+    "Real Zhipu new conversation, multiwindow and full route restoration",
+    "Original visual/behavior equivalence, other platform gates",
+    "Aggregate unsupported services and OS-window capture remain separate failures"
+  ],
+  "next_action": "Trace Delete menu and confirmation; implement durable removal with active-stream cancellation, selected-route fallback and cold-restart absence",
+  "evidence_sha256": {
+    "analysis/tools/desktop-fixture-services.mjs": "45e2bb6afc704c6d044182e201114311e284666fb63e38e321ff9e26aa2b6985",
+    "analysis/tools/desktop-history-store.cjs": "4fa5ab61eaf33ffac055ff07001efead673477f690ad9fbc2fa115c73675530d",
+    "analysis/tools/desktop-route-store.cjs": "36a6996f6f4dcffdd52fb83b8ff06fae326d876e86b3d53d94e2f64fa715b116",
+    "analysis/tools/desktop-native-host.cjs": "c6b22bf20fef34148dbcd1eca743427175fd5504d7ca8e055e3b55e54ebfe5ce",
+    "analysis/tools/desktop-offline-store.cjs": "d273b7f5b0449fbb9b8cd878161c0800fb3a54b8272528bc9111fc584e298c6b",
+    "analysis/tools/test_desktop_new_conversation.mjs": "4a3765b00948c568d4a38f41be8099cfc3c7e5bb4c285a03aca6f266c465baf1",
+    "analysis/tools/probe_desktop_root_mount.cjs": "20a40a862b3d8a1638a8ad8f3d77be089913c91a071f648ac5c61b71660bc591",
+    "analysis/full-platform-20261104/macos-new-chat-source-v1.json": "2869b08fc1d815b21faeffcdbbd1f6fb6db964f1e69d85154b79f82cd4de5ca5",
+    "analysis/full-platform-20261104/macos-new-chat-runtime-v1.json": "a3fcf235c1b3d2c5a7f196ea96f853a990f4620af2c3a448dcc8407b196ac3cb",
+    "analysis/full-platform-20261104/macos-new-chat-runtime-v2.json": "cd4aa97e8380b5292414085dd93400588698e93dbd12673dd060b45275c03e00",
+    "analysis/full-platform-20261104/macos-new-chat-runtime-v3.json": "bed152016a1694955f46ac60031b063bad98ffc4eec02ccf954265671c21b44b",
+    "analysis/full-platform-20261104/macos-new-chat-restore-v1.json": "4b7e3ea82d01121a20fe4d4d0726cddc1d1b8e5699f6fbe3360c09a2339eae6d",
+    "analysis/full-platform-20261104/macos-new-chat-unit-v2.log": "4cc72fed24f48f14e6a821cc846b7ab11faef4f21d0f9f2007cc47ebf86b0133",
+    "analysis/full-platform-20261104/macos-new-chat-history-regression-v1.log": "84376ef202558c4385a78c3ecdfa1ae146b0a8929a1afd0b4115b10e4b9e8955",
+    "analysis/full-platform-20261104/macos-new-chat-atoms-regression-v1.log": "2ab8b144c73fe5940d809759eb0f5fb1d9aadc1ad54bb2df284e5852b6bb8a61",
+    "analysis/full-platform-20261104/macos-new-chat-route-regression-v1.log": "4065c6b13d52c21f9bc090e1c983ef273ec8d0c5c6b21ebf415d35b1ad68754d"
+  },
+  "source_note": "Runtime reports bind loaded fixture source hashes separately; final UUID/empty-ID validation tightening additionally covered by unit v2 and restore run."
+}

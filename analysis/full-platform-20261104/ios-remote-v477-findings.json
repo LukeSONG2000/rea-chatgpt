@@ -1,0 +1,98 @@
+{
+  "schema": "rea-ios-research-findings-v1",
+  "batch": "v477",
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static_artifact_observation",
+  "integration_decision": "Determine the native result and item-view boundary before replacing the Remote plain-text preview.",
+  "findings": [
+    {
+      "symbol": "MarkdownResult.Item",
+      "descriptor": "0x96fcc30",
+      "conclusion": "Four cases text, table, code and images. Text carries Foundation.AttributedString, preferredSpacingAfter and immediate/deferred attachments.",
+      "source": "ios-remote-v477-item-payloads.json",
+      "limit": "Metadata does not recover parser behavior or effective style values."
+    },
+    {
+      "symbol": "Remote item content consumer",
+      "callsite": "0x1a35fec",
+      "target": "0x1a367c0",
+      "type_record": "0x7e12050",
+      "conclusion": "The render-unit item branch reaches a body whose type composition includes CodexRemoteCachedMarkdownBlockStack and inline DIL, writing, review and image components.",
+      "sources": [
+        "ios-remote-v477-renderunit-dispatch.asm",
+        "ios-remote-v477-item-content-entry.asm",
+        "ios-remote-v477-item-view-types.json"
+      ],
+      "limit": "The full predicate, concrete CachedMarkdownBlockStack construction and effective configuration remain partial. This is not an exclusive assistant-Markdown branch."
+    },
+    {
+      "symbol": "MarkdownTextBlock",
+      "descriptor": "0x96fe004",
+      "conclusion": "Fields separate sizeAffectingProperties, renderingConfiguration, selection/link handlers, streaming and fade inputs.",
+      "source": "ios-remote-v477-text-metadata.json",
+      "limit": "Native make/update view and the active property values are not yet recovered."
+    }
+  ],
+  "runtime_change": false,
+  "new_build": false,
+  "latest_verified_runtime": {
+    "batch": "v474-v475",
+    "passed_tests": 6,
+    "source_hashes_rechecked": true,
+    "simulator_process_observed": 88965,
+    "physical_install_receipt": "ios-device-v474-install.json",
+    "physical_visual_acceptance": "pending"
+  },
+  "next_minimum_action": {
+    "evidence": "Resolve MarkdownTextBlock sizeAffectingProperties and native view make/update consumer.",
+    "implementation": "Integrate the source-supported text-block presentation into the Remote task body, preserving explicit parser and service adapter boundaries.",
+    "acceptance": "Same task page with selectable text, links, Dynamic Type and copy behavior. Preserve distinct original and copyable text."
+  },
+  "unresolved": [
+    "Native Markdown parser/result generation and cache policy",
+    "Full native block dispatch and effective text styles",
+    "Complete settings hierarchy and physical-device visual/IME acceptance",
+    "Android independently proven implementation and runtime acceptance"
+  ],
+  "evidence_files": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v477-item-content-body.asm",
+      "sha256": "869d516e5ba3eee236278e7f28b2d8d08be2cb02076844f5ea90cd97e4bfa134"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v477-item-content-body.json",
+      "sha256": "bd2c3b55bceb65cd2c665a25ffff272cf645da80e9fed0aaa4af6dc0a01d2981"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v477-item-content-entry.asm",
+      "sha256": "a0a2b8bc852a84871b090611d40649c9794529f14945232cf1f164f5f8fb96ba"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v477-item-content-entry.json",
+      "sha256": "cf6b0f27b70bdd531f96fa09f158858fc8f8da1192777beccf641c6c2f7567af"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v477-item-payloads.json",
+      "sha256": "783baf47bf8d94580a12541b958629dad451557dda8f5c1737c270c28bd0f016"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v477-item-view-types.json",
+      "sha256": "0d5a04ce85c9ee48539157c415f2aad0aaa73d1cb2c899c428c03f3bca008264"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v477-markdown-item.json",
+      "sha256": "7160c1b3ef7540f0a646284708290533723321cc65b19c65ba720f770d8526b4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v477-renderunit-dispatch.asm",
+      "sha256": "fbf242c1ac74bf95042214f18ed601f0dc8c38697a2d27ccf6665733fb318383"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v477-text-metadata.json",
+      "sha256": "2c67dc1923041e30f1247f56e39c44b4334b3032d006a53c2b4e77bedb6bd9b4"
+    }
+  ]
+}

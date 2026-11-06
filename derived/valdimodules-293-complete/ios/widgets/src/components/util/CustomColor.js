@@ -1,0 +1,1 @@
+"use strict";function e(e){return`rgba(${e.red}, ${e.green}, ${e.blue}, ${e.alpha})`}Object.defineProperty(exports,"__esModule",{value:!0}),exports.customColorToRgbaString=void 0,exports.customColorToRgbaString=e;

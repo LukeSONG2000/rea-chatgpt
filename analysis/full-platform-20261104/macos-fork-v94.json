@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "controlled-renderer-with-independent-local-host",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "runtime": [
+    "macos-fork-v94-write-v2.json",
+    "macos-fork-v94-read.json"
+  ],
+  "scope": {
+    "conversation_id": "offline-local-63e31fea-b55e-4519-a0f1-77da20cce661",
+    "write_pid": 93680,
+    "read_pid": 93754
+  },
+  "verified": [
+    "Separate host process restores exact committed branch route",
+    "Original ancestor context and generated continuation rendered",
+    "Branch draft survives restart",
+    "Source draft and branch draft survive branch to source to branch",
+    "Persisted history graph unchanged and no generation request",
+    "Renderer owner and selected-route store match exact branch identity"
+  ],
+  "earlier_failure": {
+    "report": "macos-fork-v94-write.json",
+    "cause": "Test selected hidden duplicate heading; fixed visible locator, no runtime workaround"
+  },
+  "limits": [
+    "Host-driven exact-ID navigation, not physical sidebar selection acceptance",
+    "Unsent local preview remains unaccepted: local-chatgpt identity/source state is not persisted by current isolated host",
+    "Physical keyboard/IME, rich paste, Windows/Android parity and complete six-surface plan remain incomplete"
+  ],
+  "next_action": "Trace unsent local branch state and recovery boundary without creating premature persistent conversations; continue remaining frontend acceptance",
+  "sources": [
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "c41a04a30bb671f0364dde38a82f18ca5739e1d34c0bec871eecac83b1db5232"
+    },
+    {
+      "file": "analysis/tools/desktop-offline-store.cjs",
+      "sha256": "6c61426bec5aa7add49dd4785517142d078626ae041566acb0656e296ad78339"
+    },
+    {
+      "file": "analysis/tools/desktop-route-store.cjs",
+      "sha256": "e5bfc796d496efdb5a717364ca9d5361b20a529c86895b6001910c820613ce38"
+    }
+  ]
+}

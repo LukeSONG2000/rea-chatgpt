@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "authority": "independent-design",
+  "status": "not-executed",
+  "target_platforms": [
+    "android",
+    "ios"
+  ],
+  "target_version": "1.2026.293 reference; implementer device/build separately bound",
+  "cases": [
+    {
+      "id": "UI01",
+      "product": "both",
+      "component": "message list",
+      "stimulus": "空/加载/错误/空成功列表分别进入",
+      "assertion": "四种状态可区分，错误不能伪装空成功",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI02",
+      "product": "xigua",
+      "component": "message list",
+      "stimulus": "A/B流并行且A→B→A",
+      "assertion": "身份、消息顺序、草稿和滚动意图不串会话",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI03",
+      "product": "both",
+      "component": "content blocks",
+      "stimulus": "长文本+代码+宽表格+reasoning+附件",
+      "assertion": "每类块独立身份，正文修订不重复挂载其余块",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI04",
+      "product": "both",
+      "component": "table",
+      "stimulus": "窄屏、横屏、最大辅助字号的宽表格",
+      "assertion": "列内容可访问；水平手势与主列表垂直手势不互相吞掉",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI05",
+      "product": "both",
+      "component": "selection",
+      "stimulus": "跨段/代码选择，增量同时到达",
+      "assertion": "选区保持或明确终止；复制内容对应所选范围，不误触链接",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI06",
+      "product": "both",
+      "component": "links",
+      "stimulus": "正文/表格/引用链接点击",
+      "assertion": "实际handler与权限明确；未提供handler不假装可用",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI07",
+      "product": "both",
+      "component": "composer",
+      "stimulus": "中文输入法组合期间切换焦点与接收增量",
+      "assertion": "composing不被状态回写打断，回车/提交区分，草稿不串会话",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI08",
+      "product": "both",
+      "component": "keyboard",
+      "stimulus": "键盘显示/隐藏、旋转、安全区改变",
+      "assertion": "输入框与消息列表无重复inset，无遮挡与双重位移",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI09",
+      "product": "both",
+      "component": "scroll",
+      "stimulus": "底部跟随时增量；用户上拖后继续增量",
+      "assertion": "上拖后停止自动抢滚，返回底部操作才恢复跟随",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI10",
+      "product": "both",
+      "component": "scroll anchor",
+      "stimulus": " prepend历史、折叠reasoning、图片尺寸补齐",
+      "assertion": "可见消息身份及相对位置保持或记录明确策略",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI11",
+      "product": "both",
+      "component": "lifecycle",
+      "stimulus": "前后台/宿主销毁重建/恢复中切会话",
+      "assertion": "旧订阅释放；恢复结果按身份应用；不得承诺未实现持久化",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI12",
+      "product": "both",
+      "component": "theme typography icons",
+      "stimulus": "亮暗主题、字号、语言和字体fallback",
+      "assertion": "共享语义token一致；平台字体度量差异登记；无不可读对比或缺字",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI13",
+      "product": "remote",
+      "component": "host selector",
+      "stimulus": "两主机并存，一台离线并切换选择",
+      "assertion": "列表保持完整，当前选择和在线状态分离，不关闭另一会话",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI14",
+      "product": "remote",
+      "component": "directory/history",
+      "stimulus": "权限拒绝、分页失败、超时、空结果",
+      "assertion": "各自终态明确；重试归属同host/thread，旧响应不覆盖新选择",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI15",
+      "product": "remote",
+      "component": "approval/Goal/new",
+      "stimulus": "owner支持/不支持、权限允许/拒绝、操作过期",
+      "assertion": "按钮/提示解释能力与权限；审批只结算对应目标且一次",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI16",
+      "product": "remote",
+      "component": "title/navigation",
+      "stimulus": "进出线程、标题背景及消息区共同过渡",
+      "assertion": "录制比较起止帧与布局变化；不以iOS表现替代Android验收",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI17",
+      "product": "both",
+      "component": "performance",
+      "stimulus": "固定事件轨迹+长列表+快速切换",
+      "assertion": "记录接收/队列/状态/解析/布局/帧耗时与内存；不以16ms常量判定通过",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    },
+    {
+      "id": "UI18",
+      "product": "both",
+      "component": "renderer modes",
+      "stimulus": "明确选择可达的native/Valdi/WebView分支",
+      "assertion": "同一内容合同在每条实际支持路径独立验收，fallback不能冒充默认",
+      "status": "not-executed",
+      "required_evidence": [
+        "platform/build/device identity",
+        "before and after component state",
+        "recording or screenshots where relevant",
+        "event/identity timeline"
+      ],
+      "execution_boundary": "requires separately authorized device/visual environment"
+    }
+  ]
+}

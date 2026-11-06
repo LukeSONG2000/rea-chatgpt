@@ -1,0 +1,24 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "source_observation": "row type0x7e23608 includes TextAlignment environment modifier; byte0x101 alone is not evidence of fixedSize flags",
+  "change": "test-only mixed-script long-row fixture; normal preview content unchanged",
+  "acceptance_scope": "independent native host wraps text within output width and can reach final line at bottom",
+  "not_proven": [
+    "official full sizing modifier chain",
+    "cross-row text selection",
+    "large-output virtualization",
+    "real service stream",
+    "phone acceptance"
+  ],
+  "test": {
+    "name": "testRemoteOutputLongLineLayout",
+    "passed": 1,
+    "failed": 0,
+    "screenshot": "ios-remote-v369-screenshots/D49C8047-DF85-4F60-A6BB-878743219ECF.png",
+    "observed": "Mixed Chinese/English wraps into five visible lines, both LONG_START and LONG_END visible; no horizontal overflow",
+    "preview_pid": 82492
+  }
+}

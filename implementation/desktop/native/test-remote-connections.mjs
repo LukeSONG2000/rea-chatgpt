@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {createRemoteConnections} from './remote-connections.mjs';
+const bindings=[{host:'a',epoch:'ea'},{host:'b',epoch:'eb'}],events=[],published=[],released=[];let pending,delay=false,bad=false;
+const c=createRemoteConnections({bindings,probe:async host=>{if(delay&&host==='a')await new Promise(r=>pending=r);return {host,epoch:bad?'foreign':'e'+host}},acquire:async host=>({getHostId:()=>host}),release:async host=>released.push(host),publish:async(host,value)=>published.push([host,value.state]),notify:async(host,value)=>events.push([host,value.status])});
+assert.equal(c.snapshot('a').state,'disconnected');assert.equal((await c.setAutoConnect({hostId:'b',autoConnect:true})).state,'connected');
+delay=true;const connecting=c.setAutoConnect({hostId:'a',autoConnect:true});const rejection=assert.rejects(connecting,/connection_superseded/);while(!pending)await new Promise(r=>setTimeout(r,1));await c.setAutoConnect({hostId:'a',autoConnect:false});pending();await rejection;
+assert.equal(c.snapshot('b').state,'connected');assert.equal(published.filter(([h,s])=>h==='a'&&s==='connected').length,0);assert.deepEqual(published.filter(([h])=>h==='b'),[['b','connecting'],['b','connected']]);assert.equal(events.filter(([h,s])=>h==='a'&&s==='ready').length,0);assert.ok(!released.includes('b'));
+delay=false;await c.setAutoConnect({hostId:'a',autoConnect:true});await c.setAutoConnect({hostId:'a',autoConnect:false});assert.equal(c.snapshot('b').state,'connected');
+bad=true;await assert.rejects(c.setAutoConnect({hostId:'a',autoConnect:true}),/identity_mismatch/);assert.equal(c.snapshot('a').autoConnect,false);
+await assert.rejects(c.setAutoConnect({hostId:'foreign',autoConnect:true}));await assert.rejects(c.setAutoConnect({hostId:'a',autoConnect:'yes'}));await c.dispose();assert.throws(()=>c.snapshot('b'));
+console.log(JSON.stringify({status:'passed',checks:['real probe required before manager ready','late connect cannot revive disconnect','two-host lifecycle isolation','reconnect','identity mismatch rejected','unpaired/invalid requests rejected','dispose','state publication follows real lifecycle; no late connected event'],authority:'independent lifecycle with controlled dependencies'}));

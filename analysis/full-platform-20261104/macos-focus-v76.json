@@ -1,0 +1,51 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-host-platform-adapter",
+  "changes": [
+    "Forward native primary-window focus/blur to existing renderer bridge contract",
+    "Reuse same publisher for explicit focus query",
+    "Validate isolated origin, skip destroyed windows, remove callbacks on close",
+    "Runtime focus probe retains failures and distinguishes native event origin from query responses"
+  ],
+  "validation": {
+    "isolated_event_regression": "passed",
+    "syntax_checks": "passed",
+    "native_focus_acceptance": "blocked-unaccepted",
+    "screen_locked_observed": true,
+    "observed_focus_failure": {
+      "status": "failed",
+      "failure": "TimeoutError: page.waitForFunction: Timeout 5000ms exceeded.",
+      "checks": [
+        {
+          "operation": "initial",
+          "visible": true,
+          "focused": false,
+          "url": "https://offline.invalid/probe?initialRoute=%2Fc%2Foffline-fixture-conversation-001"
+        }
+      ],
+      "events": [],
+      "audit": [],
+      "draft": "REA synthetic native focus draft",
+      "limits": [
+        "Independent native event forwarding, not original main-process recovery",
+        "Programmatic app activation/hide/show; native menu accelerators and physical keyboard still unaccepted"
+      ]
+    },
+    "native_evidence": "macos-focus-v76-runtime-v2.json",
+    "first_attempt": "macos-focus-v76-runtime.json contains timeout only; not acceptance"
+  },
+  "limits": [
+    "Native runtime reports precede extraction into final tested adapter module; final module integration requires unlocked runtime acceptance",
+    "No native menu/shortcut or physical-keyboard acceptance",
+    "OS window capture failed; no display gate claimed",
+    "Desktop artifact remains Codex 26.1021.31345, not proof of ChatGPT desktop identity"
+  ],
+  "next_action": "On an unlocked Mac run REA_DESKTOP_FOCUS_CHECK=1 with a fresh isolated profile/report; assert nativeWindow.focusLifecycle.status, not process exit code",
+  "sources": {
+    "analysis/tools/desktop-native-host.cjs": "70688a2050a993688b13bd6e797f1898653b6c0fe6bcd57729623110c1aab5ba",
+    "analysis/tools/desktop-window-focus.cjs": "69b19ac8b3354314564517d58f4f785eec10e8686ec4e717d60c4cb0b393529a",
+    "analysis/tools/test_desktop_window_focus.cjs": "15202e549b4d6d6d574113b35963b01a4905a443f48b023deebb9506361e7f18",
+    "analysis/tools/probe_desktop_root_mount.cjs": "1838303f3432f533301701d575a6e803e5f1941dcd9c11c56cbd7fb4b748e36e"
+  }
+}

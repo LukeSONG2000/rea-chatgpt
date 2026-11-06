@@ -1,0 +1,14 @@
+{
+  "message_evidence_repeat": "byte-identical",
+  "controlled_replay_repeat": "byte-identical",
+  "app_executed": false,
+  "online_services_accessed": false,
+  "sandbox_command": [
+    "sandbox-exec",
+    "-f",
+    "analysis/tools/message-replay.sb",
+    "node",
+    "analysis/tools/replay_message_pipeline.cjs"
+  ],
+  "sandbox_profile_sha256": "3f319fe99717bbc13b56936793a155a456086a1d9e2739a9aa3b3c6de8a7b8d5"
+}

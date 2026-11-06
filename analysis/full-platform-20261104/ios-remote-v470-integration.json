@@ -1,0 +1,52 @@
+{
+  "schema": "rea-ios-component-integration-v1",
+  "batch": "v469-v470",
+  "status": "partial",
+  "time": "2026-11-06T12:15:39.057666+08:00",
+  "official_baseline": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "change": {
+    "type": "independent_native_host_adaptation",
+    "file": "implementation/ios/Sources/NativeConversationHost.swift",
+    "description": "Move ordinary composer Glass to a non-hit-testing background shape; retain material/container and control layout. Official full parent composition remains partial."
+  },
+  "diagnostic_evidence": "ios-remote-v468-isolation.json",
+  "tests": {
+    "v469": {
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "result": "Passed"
+    },
+    "v470": {
+      "passedTests": 3,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "result": "Passed"
+    }
+  },
+  "source_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "2088c43d01ddda99562c3180174f55b4442f493f7345bfe32839c1a8e6fa3af9",
+    "implementation/ios/Sources/RecoveredRemoteComposerField.swift": "17708aa0c6d3a1df4c1137097ec1de173c5ce97cafd84f5abf38c3e1e05d31ec",
+    "implementation/ios/Sources/AppDelegate.swift": "16b83ab08321f7fe318b3ae0e168d7ef71148dfc86f5bea24c0d4e4346485081",
+    "implementation/ios/UITests/HostInteractionTests.swift": "a86b25b8d5f1b8175546d8309e114cc95751cfdc8d88545bd8a4590db92537de"
+  },
+  "remaining": [
+    "Selectable response text AX bounds and drawn bounds geometry acceptance",
+    "Device Glass and touch/IME acceptance",
+    "Full official composer mode policy and parent composition",
+    "Android independent implementation and runtime acceptance"
+  ],
+  "preview": {
+    "device": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "bundle_id": "local.rea.chatgpt.ioshost",
+    "built_binary_sha256": "772248739b2ce32641898890dee3f6539c872f09dfec91d3589147c0ab295bd7",
+    "installed_binary_sha256": "772248739b2ce32641898890dee3f6539c872f09dfec91d3589147c0ab295bd7",
+    "observed": "Independent app visible in Device Hub on external display; Window menu offers Move to Built-in Retina Display",
+    "physical_device_updated": false
+  },
+  "temporary_diagnostics_removed": true
+}

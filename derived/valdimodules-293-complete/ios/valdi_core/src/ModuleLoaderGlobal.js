@@ -1,0 +1,1 @@
+"use strict";function e(e){if(e.loader)return e.loader;const o=globalThis.moduleLoader;if(!o)throw new Error("The current ModuleLoader is not initialized");return o}Object.defineProperty(exports,"__esModule",{value:!0}),exports.getModuleLoader=void 0,exports.getModuleLoader=e;

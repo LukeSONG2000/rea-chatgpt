@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.subscribeToArray=void 0;const e=e=>r=>{for(let o=0,s=e.length;o<s&&!r.closed;o++)r.next(e[o]);r.complete()};exports.subscribeToArray=e;

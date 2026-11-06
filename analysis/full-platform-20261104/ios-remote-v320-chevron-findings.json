@@ -1,0 +1,54 @@
+{
+  "status": "partial",
+  "artifact": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "dynamicMetric": {
+    "owner": "ExpandableAssistantSummaryItem disclosure style",
+    "size": 13.0,
+    "relativeTo": "footnote",
+    "loadHelper": "0x158eb08",
+    "bindingSlot": "0xaad3910",
+    "binding": {
+      "symbol": "_$s7SwiftUI4FontV9TextStyleO8footnoteyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9719,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "callChain": [
+      "0x1a419e8",
+      "0x158eb08",
+      "0x1a419fc..0x1a41a1c"
+    ],
+    "limits": "Static argument propagation through enum value witness copy; no device-scale measurement"
+  },
+  "chevron": {
+    "type": "CodexDisclosureChevron",
+    "descriptor": "0x971c4d0",
+    "conformance": "0x83820bc",
+    "styleUse": "0x19c2934..0x19c2944 references static metadata and conformance wrapper 0x3fce00",
+    "bodyWitness": "0x6ee8570",
+    "renderBody": "0x6ee7cf0",
+    "inputs": [
+      "isExpanded",
+      "fadesWhenExpanded"
+    ],
+    "styleArguments": {
+      "isExpanded": "0x19c2900 stores passed state",
+      "fadesWhenExpanded": "0x19c2904 stores zero"
+    },
+    "animation": "body window calls keyframeAnimator; helper regions contain MoveKeyframe and LinearKeyframe; no complete duration/curve reconstruction",
+    "fadeCondition": "0x6ee7e24..0x6ee7e40 checks both flags and initializes a scalar to 0 only when both true, otherwise 1",
+    "limits": [
+      "Scalar role inferred as opacity from keyframe composition; complete output mapping pending",
+      "Style passes fadesWhenExpanded=false, so do not introduce fade on expand into this style",
+      "No proof of generic system-chevron equivalence"
+    ]
+  },
+  "consumerSearch": {
+    "result": "Accessor references remain inside generic component helpers. Function 0x1a41be8 is reached through label closure 0x1cf2bfc; it must not be labelled a confirmed initializer.",
+    "next": "Follow generic type reference consumers or HistoryFragment render-unit branch to prove tool history ownership"
+  },
+  "runtimeChange": false
+}

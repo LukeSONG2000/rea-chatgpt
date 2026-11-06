@@ -1,0 +1,193 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "shipped-artifact-static-inference",
+  "scope": "ordinary header constructor kind tag2 at0x39c6dc; not project header",
+  "title": {
+    "body_caller": "0x3a1744 loads kind and calls0x3a1d0c at0x3a174c; result applied0x3a1768",
+    "font_factory": "0x3a1d40 ->0x74e2728 ->initializer0x74e2714",
+    "body_binding": {
+      "symbol": "_$s7SwiftUI4FontV9TextStyleO4bodyyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9712,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "weight": "kind==1 medium0x3a1d54, else semibold0x3a1d5c",
+    "color_flow": "factory0x74ee2c0 at0x39c6c8 ->field0x58 at0x39c700 ->body read0x3a177c",
+    "color": "ChatGPT/text/primary"
+  },
+  "chevron": {
+    "font": "caption factory0x74e27b8 at0x3a227c; regular weight0x3a228c",
+    "image_scale_binding": {
+      "symbol": "_$s7SwiftUI5ImageV5ScaleO5smallyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 10419,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "color_factory": "0x3a2348 ->0x74ed87c",
+    "color": "ChatGPT/icon/tertiary",
+    "leading_padding": "leading getter0x3a236c and -2.0 at0x3a2374; padding store0x3a238c"
+  },
+  "assets": [
+    {
+      "AssetType": "Color",
+      "Color components": [
+        0.5607843137254902,
+        0.5607843137254902,
+        0.5607843137254902,
+        1
+      ],
+      "Colorspace": "srgb",
+      "Idiom": "universal",
+      "Name": "ChatGPT/icon/tertiary",
+      "NameIdentifier": 20180,
+      "Scale": 1,
+      "SHA1Digest": "CD987FE5E8E439C7175CC201A0FE4BE151E00C263D3DC89FC3DF4446E026CF47",
+      "SizeOnDisk": 260
+    },
+    {
+      "AssetType": "Color",
+      "Color components": [
+        0.5607839822769165,
+        0.5607839822769165,
+        0.5607839822769165,
+        1
+      ],
+      "Colorspace": "p3",
+      "DisplayGamut": "P3",
+      "Idiom": "universal",
+      "Name": "ChatGPT/icon/tertiary",
+      "NameIdentifier": 20180,
+      "Scale": 1,
+      "SHA1Digest": "5591AD635F955AC899EC09197FFE5A4F64E84C42196139755487BE32BF487091",
+      "SizeOnDisk": 260
+    },
+    {
+      "Appearance": "UIAppearanceDark",
+      "AssetType": "Color",
+      "Color components": [
+        0.6862745098039216,
+        0.6862745098039216,
+        0.6862745098039216,
+        1
+      ],
+      "Colorspace": "srgb",
+      "Idiom": "universal",
+      "Name": "ChatGPT/icon/tertiary",
+      "NameIdentifier": 20180,
+      "Scale": 1,
+      "SHA1Digest": "7D245545F34B1AE615AF3C21F88D21A8A2F7F0CB39B7A8112C4587E04E70966A",
+      "SizeOnDisk": 260
+    },
+    {
+      "Appearance": "UIAppearanceDark",
+      "AssetType": "Color",
+      "Color components": [
+        0.6862750053405762,
+        0.6862750053405762,
+        0.686273992061615,
+        1
+      ],
+      "Colorspace": "p3",
+      "DisplayGamut": "P3",
+      "Idiom": "universal",
+      "Name": "ChatGPT/icon/tertiary",
+      "NameIdentifier": 20180,
+      "Scale": 1,
+      "SHA1Digest": "97E524C172182E875BCFA1132CFA7190B897F9D16AEAEE8E3D6BEB25021ABC2D",
+      "SizeOnDisk": 260
+    },
+    {
+      "AssetType": "Color",
+      "Color components": [
+        0.050980392156862744,
+        0.050980392156862744,
+        0.050980392156862744,
+        1
+      ],
+      "Colorspace": "srgb",
+      "Idiom": "universal",
+      "Name": "ChatGPT/text/primary",
+      "NameIdentifier": 26100,
+      "Scale": 1,
+      "SHA1Digest": "1A5A9ACA9B8250078C89ADB65AB7D5F179A8115287569DECAE4F02F6CA651E41",
+      "SizeOnDisk": 260
+    },
+    {
+      "AssetType": "Color",
+      "Color components": [
+        0.05098000168800354,
+        0.05098000168800354,
+        0.05098000168800354,
+        1
+      ],
+      "Colorspace": "p3",
+      "DisplayGamut": "P3",
+      "Idiom": "universal",
+      "Name": "ChatGPT/text/primary",
+      "NameIdentifier": 26100,
+      "Scale": 1,
+      "SHA1Digest": "DBA7D71DDE35E93F0A9200029C77036047BE4B8ED1890B997D847C84EE43D30C",
+      "SizeOnDisk": 260
+    },
+    {
+      "Appearance": "UIAppearanceDark",
+      "AssetType": "Color",
+      "Color components": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "Colorspace": "srgb",
+      "Idiom": "universal",
+      "Name": "ChatGPT/text/primary",
+      "NameIdentifier": 26100,
+      "Scale": 1,
+      "SHA1Digest": "2BAE6B0CA2DF7C547728842B1F4902A0CDE79CF33FB1330918E4B19EC940C2A9",
+      "SizeOnDisk": 260
+    },
+    {
+      "Appearance": "UIAppearanceDark",
+      "AssetType": "Color",
+      "Color components": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "Colorspace": "p3",
+      "DisplayGamut": "P3",
+      "Idiom": "universal",
+      "Name": "ChatGPT/text/primary",
+      "NameIdentifier": 26100,
+      "Scale": 1,
+      "SHA1Digest": "D487A661615EA59E5F2E97C285141C1C6F4C55AD53D4C18C06A729258BD5ED9B",
+      "SizeOnDisk": 260
+    }
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "52864544d4fa04655d243ddfaedc8995ee807ff119fa755758a22fdf46ee1a67",
+    "implementation/ios/UITests/HostInteractionTests.swift": "09973dafc48b30369186da9c019d46696a0df8a86c3572e4fc46729fa97c2127"
+  },
+  "limitations": [
+    "Original custom font conversion remains partial; native semantic body/caption is integration adapter",
+    "Dynamic type, dark appearance and glyph sizing not runtime verified",
+    "Project typography branch not integrated",
+    "Fade-enabled opacity and complete header constraints remain unresolved",
+    "Same session42359 waits for system authorization; no build or install performed"
+  ],
+  "validation": {
+    "syntax_parse": "passed, host and UI tests; not typecheck or build",
+    "runtime": "not executed",
+    "retention": "no stale targets"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "status": "partial",
+  "ui_route_switch": {
+    "steps": [
+      {
+        "label": "A saved",
+        "draft": "Draft A offline"
+      },
+      {
+        "label": "B initial",
+        "draft": "\n"
+      },
+      {
+        "label": "B saved",
+        "draft": "Draft B offline"
+      },
+      {
+        "label": "A restored",
+        "draft": "Draft A offline"
+      },
+      {
+        "label": "B restored",
+        "draft": "Draft B offline"
+      }
+    ],
+    "status": "passed"
+  },
+  "host_write_acceptance": "failed",
+  "reason": "No atoms in snapshots; all draft record updates rejected. UI-only passed label cannot establish host persistence.",
+  "next": "Capture thrown merge error and require host-scoped draft values in pass criteria"
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "reference_version": "1.2026.293",
+  "implementation": "unchanged packaged LibraryLayout via JavaScriptCore; independent UIKit collection/list/cards",
+  "verified": [
+    "Packaged grid breakpoint/width/preview-height replay",
+    "Default grid; native grid/list toggle and same-identity folder/file routing",
+    "402-point simulator: 175-point card width and equal first-row cell top coordinate",
+    "Grid survives preview return; changed folder layout propagates to parent",
+    "Import, body preview, process restart and picker cancellation regression passed in v2",
+    "Final v4 screenshot reviewed after metadata/style alignment changes"
+  ],
+  "source_observations": "Default Grid, folder navigation retains layout, flex-start grid, preview-specific heights, metadata gap2/padding2, title13 medium/subtitle11 regular",
+  "independent_choices": [
+    "UICollectionView row-height reservation and 40-point metadata allowance",
+    "UIKit theme, system symbols, corner radius and native header/control layout"
+  ],
+  "limitations": [
+    "No complete original Valdi Screen reuse or visual equivalence",
+    "No actual device-size matrix, Dynamic Type, VoiceOver or hardware acceptance",
+    "No thumbnails, selection/multiselect or large-list scroll-anchor acceptance",
+    "Layout choice not persisted across application restart",
+    "PDF/image import still unaccepted"
+  ],
+  "evidence_history": {
+    "v1": "initial layout functional tests passed; parent layout propagation corrected afterward",
+    "v2": "corrected propagation plus import regression passed; screenshot prompted preview/metadata styling correction",
+    "v3": "style correction run passed; bottom metadata constraint adjusted afterward",
+    "v4": "final layout and top-coordinate test passed"
+  },
+  "source_and_evidence_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "fcc6e904d373fd33de107e41c8adba1a142d8f9c04669952572f2fa018e2a0b1",
+    "implementation/ios/Tools/prepare-library.py": "0be94f75117d00d83da6d3c6e0f5c5b642c51b972d27c92213db46170c702812",
+    "implementation/ios/Tools/test-library-layout.cjs": "ac2d1407493b610f29a8cdfe7cdd16f9bedded49849e09b81717d199940cf24f",
+    "implementation/ios/UITests/HostInteractionTests.swift": "9734a6453e23957a72f854bd5dbcd343b8c4adcf1482f7a6e2510ff01dccb36c",
+    "analysis/full-platform-20261104/ios-library-layout-source-v2.json": "f5cf065e7628727a7dad1e67854017283d1e63ccd2861ea395b55b16bec968d0",
+    "analysis/full-platform-20261104/ios-library-layout-v2.log": "f9ad68dd8b8107e6d45a022faadfc54ba8bca79000ec7d4a87baa0b99c1be6c3",
+    "analysis/full-platform-20261104/ios-library-grid-v4.summary.json": "c860da827889de58351d778c246e63ad8b7b5c24e04fcb7a65afe0f28443dd59",
+    "analysis/full-platform-20261104/ios-library-grid-v2.summary.json": "ee205d1a60076e1cbdd3f43167ad1362a3c959cf22de94717109d3b8543aa9ff",
+    "analysis/full-platform-20261104/ios-library-grid-v4-attachments/library-native-grid.png": "de77bb6dd84a8463b2c775e8930a4638607c25a7b88a9b34f0e2bca2935e7ef7"
+  },
+  "next_action": "Implement native selection/actions and content thumbnails against packaged screen evidence; retain PDF/image/device gates"
+}

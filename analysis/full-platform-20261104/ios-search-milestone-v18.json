@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "reference_baseline": "1.2026.293 (40039297472)",
+  "evidence_type": [
+    "artifact-static",
+    "controlled-package-fragment-replay",
+    "independent-native-runtime"
+  ],
+  "runtime": {
+    "architecture": "arm64",
+    "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "deviceName": "REA ChatGPT Offline",
+    "modelName": "iPhone 17 Pro",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "provenance": {
+    "ipa_sha256": "4042deb6d2688eaa38708d90c9d2d027de233ed2c99f443ca984f6f53865ed6b",
+    "module_sha256": "91bada8c300b881b1ea8c9ca0ca701d382594c573e75860e12cd20f7bf801e35",
+    "module_member": "Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/chatgpt_global_search.valdimodule",
+    "verification": "IPA member equals recovered module; three generated JS inputs equal embedded module members byte-for-byte; package publication/signature authenticity not established",
+    "js_sources": [
+      {
+        "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchModels.js",
+        "sha256": "f6186b89a42ecdcabf1c057eadb4428389785f296bd4dac83eae0b473e575072"
+      },
+      {
+        "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchApi.js",
+        "sha256": "c5ffc0ca1018c6d22b9f48b1ea3214e526959836009c17c40bac97f2716d2ddd"
+      },
+      {
+        "path": "derived/valdimodules-293/ios/chatgpt_global_search/src/GlobalSearchRepository.js",
+        "sha256": "11ed95dde36d7308c79c85d82c23b02f0cb94c1bf5e5edda5428a6732e694de8"
+      }
+    ]
+  },
+  "chain": [
+    "Independent native navigation entry",
+    "Current account local history snapshot",
+    "Packaged GlobalSearchRepository query normalization",
+    "Packaged GlobalSearchApi with independent local requestJson replacement",
+    "Packaged result decoding and snippet normalization",
+    "Independent UIKit results and explicit unsupported filters",
+    "Independent conversation/message route and scroll"
+  ],
+  "verified": [
+    "Generic simulator build succeeded",
+    "Isolated JS: trim/case, destination identity, snippet normalization, malformed-row omission, independent 30-row limit",
+    "Native UI: lower-case query locates exact synthetic request, Images unsupported clears results, Chats restores result, opening selects B",
+    "Screenshots reviewed: expected query result and target conversation message visible"
+  ],
+  "limitations": [
+    "Official native entry/openResult owner unresolved; GlobalSearchScreen is not reused",
+    "No official network access; only snapshot of local synthetic history searched",
+    "Images/documents/projects unavailable; no library restoration",
+    "No pagination, recent-results presentation or cached-result loading presentation",
+    "Clear, rapid query change, delayed callback and failure/retry UI not runtime-accepted",
+    "Documents segment label truncates at current width; layout is independent and fidelity unaccepted",
+    "No physical iPhone, Android parity or official visual/behavior acceptance",
+    "REA partial graph retained 301 semantic unknowns; export success is not full semantic verification"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/ios/Tools/prepare-search.py": "9fd073ddfe1523808852567514ca7b4b5a7c08919bf9831c0ac8f8bca78c4879",
+    "implementation/ios/Tools/test-search.cjs": "bd3f133ad6a721f77618a853e524a4dddcc31dd1ead712621edcc9d8759b233d",
+    "implementation/ios/Sources/NativeConversationHost.swift": "b8cc2d8cbc742119a03102beb905a734a844019e94446db4fa9182bfaef1e0b7",
+    "implementation/ios/UITests/HostInteractionTests.swift": "81af72629e8cacda8399ad5f1e0951e76251385669e0ad9144d86186955e549c",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "b90ccf972b1042f0e0d7b1c5da19e7308aa0e431c8973633055d739f6743569c",
+    "analysis/full-platform-20261104/ios-search-v1.summary.json": "5fbc13f5a485e98a85fac1c11c972dfba3540f8ed2843548099a7a1c05211707",
+    "analysis/full-platform-20261104/ios-search-replay-v1.log": "bf4bfa8095f743ddfdb3d622a14051dd439dd0c62a318ff0b9c050dee5b29a30",
+    "analysis/full-platform-20261104/ios-search-rea-v1.json": "1379a9f34db1c67d7396f4437bca56c9c04ca54a828d694415de6302e822d74d",
+    "analysis/full-platform-20261104/ios-search-v1-attachments/native-search-opened-conversation.png": "ba22d34726f41d62231c56e600fae91d27478fb1b9e50221e3e5111c6d6bfb15",
+    "analysis/full-platform-20261104/ios-search-v1-attachments/native-local-search-result.png": "60ff484d566d6f6f1abd48d9b850a434b06ebed905a07d0b4d02480b27f1ff98"
+  },
+  "next_action": "Test query clear/late-result isolation, improve filter layout; close library source and native destination evidence before implementing file previews"
+}

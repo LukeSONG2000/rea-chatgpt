@@ -1,0 +1,42 @@
+{
+  "status": "partial",
+  "platform": "macos",
+  "baseline": "Codex 26.1021.31345 build 21828 original renderer",
+  "implementation_origin": "Independent history/catalog service; original renderer subscriber and sidebar",
+  "verified": [
+    "Actual send in B completes and visible list reorders from A,B to B,A",
+    "Catalog uses committed history snapshot; failed persistence does not change catalog metadata",
+    "Status notification happens outside history write chain; subscriber can fetch history without deadlock",
+    "Content-only deltas do not invalidate unchanged catalog metadata",
+    "History, model projection and subscription lifetime regressions pass"
+  ],
+  "runtime": {
+    "before": [
+      "离线组件验证 · A",
+      "离线组件验证 · B"
+    ],
+    "after": [
+      "离线组件验证 · B",
+      "离线组件验证 · A"
+    ],
+    "status": "passed",
+    "pageErrors": []
+  },
+  "limits": [
+    "Two synthetic conversations only; no creation/deletion/archival/pagination acceptance",
+    "Notification failure is logged; retry/reconnection robustness not accepted",
+    "Ordering policy is independent local implementation, not proof of official service behavior",
+    "Full native fidelity, other platform gates and OS-window capture remain unaccepted"
+  ],
+  "next_action": "Trace actual New chat and Delete actions; extend bounded history identities and stores only with scoped lifecycle and cold-recovery tests",
+  "evidence_sha256": {
+    "analysis/tools/desktop-fixture-services.mjs": "b30b0c8e0bef580468a50ac450e626b30b22e876e5962fa759dc932b0975a103",
+    "analysis/tools/test_desktop_catalog_updates.mjs": "2856065cccba1a79408486274fdc1711e2b9b58fba0c5182e0a4ba3fc7489a42",
+    "analysis/tools/probe_desktop_root_mount.cjs": "c4121c5877e25936f68078b03a8fde9a9340c7b8f76c2fbf941c59b8d85ea27f",
+    "analysis/full-platform-20261104/macos-catalog-update-runtime-v1.json": "314e20d72a0beeab895150176d976b8b0253a8ba16c5d6540718da19435b9e68",
+    "analysis/full-platform-20261104/macos-catalog-updates-unit-v1.log": "ce7f1211e418a9d72ff1b23d7b187df51780924a3c55931a126ff946d72690d8",
+    "analysis/full-platform-20261104/macos-catalog-update-history-v1.log": "84376ef202558c4385a78c3ecdfa1ae146b0a8929a1afd0b4115b10e4b9e8955",
+    "analysis/full-platform-20261104/macos-catalog-update-model-v1.log": "5674c5001b5cd8e31ccbb617f31a35d78b15f272614c22ce3eb9973ce97e6149",
+    "analysis/full-platform-20261104/macos-catalog-update-subscriptions-v1.log": "11e39f46e365f2b9bcd261f4ea5dcb19653523a19fa12e3299585400c0731d47"
+  }
+}

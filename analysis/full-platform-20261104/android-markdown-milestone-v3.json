@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "android",
+  "target_baseline": "1.2026.293",
+  "baseline_ref": "analysis/full-platform-20261104/baseline.json",
+  "official_observations": [
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/assets/sentry-external-modules.txt",
+      "sha256": "2a0c40fa6aadd225f3b2f665c3e6af6ed1ef928c1d107f3cbecbfdec742b66dd",
+      "symbol": "org.commonmark:commonmark:0.30.0",
+      "byte_offset": 18293,
+      "line": 414,
+      "evidence_type": "artifact-static",
+      "claim": "APK dependency declaration, not bytecode identity"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/res/raw/aboutlibraries.json",
+      "sha256": "0261757354b41a125c72e7afb62c6fefc0ca7e968988acabeed23d58df34bbd2",
+      "symbol": "openai:compose-richtext",
+      "byte_offset": 200241,
+      "line": 1,
+      "evidence_type": "artifact-static",
+      "claim": "APK attributes Compose RichText to OpenAI public fork; no commit/version declared"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/mcp.java",
+      "sha256": "2b44fb48f36bcc2695b1a24d48166f9b927604eb177181139c17f2a3c7806e92",
+      "symbol": "public final kef0 d(",
+      "byte_offset": 13948,
+      "line": 360,
+      "evidence_type": "artifact-static",
+      "claim": "Markdown content builds parser with conditional custom factories/extensions and post-parse visitors"
+    },
+    {
+      "path": "recovered/android-1.2026.293/apktool-src/smali_classes5/mcp.smali",
+      "sha256": "fdaf1e1ee9a1a75beca31998a219787770b0e0b2e4c5b5267d5e90ddd6eeccb3",
+      "symbol": ".method public final d(",
+      "byte_offset": 25397,
+      "line": 1552,
+      "evidence_type": "artifact-static",
+      "claim": "Parser construction verified in smali"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/mqc0.java",
+      "sha256": "15fa3f5429964c70fbe78a105049e39fde7305b369826fa59b4f3824ed80695b",
+      "symbol": "mcpVar5.d(mcpVar5.k(), bxq0Var6)",
+      "byte_offset": 48223,
+      "line": 1019,
+      "evidence_type": "artifact-static",
+      "claim": "Native renderer invokes content parser; surrounding JADX control flow has warnings"
+    },
+    {
+      "path": "recovered/android-1.2026.293/jadx-src/sources/defpackage/zs6.java",
+      "sha256": "25a80077348517d561d168e9d45b012ca6fc9bbe9c4511efb95d05a69d17656e",
+      "symbol": "public final dt6 c;",
+      "byte_offset": 248,
+      "line": 8,
+      "evidence_type": "artifact-static",
+      "claim": "Packaged AST has third field absent from public AstNode; exact source identity not established"
+    }
+  ],
+  "public_source": {
+    "url": "https://github.com/openai/compose-richtext",
+    "commit": "31698d62e15def124a841935ed0bc40c64e6db88",
+    "selected_unmodified_files": 47,
+    "license": "Apache-2.0; retained LICENSE",
+    "upstream_commonmark": "0.26.0",
+    "host_commonmark": "0.30.0 matching package declarations; custom parser/visitor parity not proved"
+  },
+  "implementation": {
+    "reuse": "unmodified public commonmark AST adapter, native Compose Markdown renderer, richtext UI and Material3 adapter",
+    "independent": "aggregate KMP Android build and offline HTML/image actual implementations, synthetic fixture host and intercepted links",
+    "network": "APK INTERNET permission absent"
+  },
+  "validation": [
+    "Android debug and test APK builds passed; v2 offline incremental build",
+    "Three UIAutomator phases passed: draft/send, distinct-process restore, Markdown heading/code/table",
+    "Screenshot visually reviewed: heading, bold/italic/inline code, fenced code, table and list present"
+  ],
+  "limitations": [
+    "REA live JADX provider unavailable (REA_JADX_MCP_JAR not configured); reused existing JADX and smali instead",
+    "No exact 293 public-source commit correspondence; APK AST contains extra metadata",
+    "Custom content preprocessors, citations, math, attachments, rendering overrides and stream policy not reproduced",
+    "No official visual parity, wide-table gestures, selection/copy, IME, streaming Markdown or device performance acceptance"
+  ],
+  "evidence_sha256": {
+    "implementation/android/vendor/compose-richtext/provenance.json": "a400e77b1fcc2ed6a1e4cc1d45227de2647b79f67b9f072c649688a7f222c7d1",
+    "implementation/android/richtext/build.gradle.kts": "7fe1830b0ef2af4cb173828f6944a498573cf8d15faacec566cd92e40ead73c6",
+    "implementation/android/richtext/src/androidMain/kotlin/OfflineMedia.kt": "dd84abccbabc0d1e10a0cad0c8860457f35aadb97616b7be747a413aa5f20c33",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "443869a32c953a3c5adad6d46fcb112e06ce4013c5620bf820736e647a54a2ff",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "7c7585224085b4678af3baafb7613984a91d8af24e2d07aca65289deac705473",
+    "analysis/full-platform-20261104/android-richtext-build-v2.log": "2059182115ae21a9c4383f3bb3200f31312c688a52d5a5dd536af662a07148b3",
+    "analysis/full-platform-20261104/android-richtext-runtime-v1.json": "1e267ade65760869bc035bad27edcfe78ed8dc2d912017b121ef807968df5888",
+    "analysis/full-platform-20261104/android-richtext-runtime-v1/verifyMarkdown.log": "e6a4b80e2dc0bb0ba12dee2a005bf75a815eaa1ff2f60107002e6e5288c53ef1",
+    "analysis/full-platform-20261104/android-richtext-runtime-v1/markdown-code-table.xml": "7038635dc7114cb8915db076ed7e2e9d6dc22f18ababf318b902a5441a54cf5b",
+    "analysis/full-platform-20261104/android-richtext-runtime-v1/markdown-code-table.png": "d6676bf3db9ab3a879cd8f65a2adf7d4b257c1da43597727421361fbd42dfd61",
+    "analysis/full-platform-20261104/android-richtext-runtime-v1/before-restart.xml": "b8ebc9b8d7f96aed75eb61fe020040dfbe0e620c360f7e9fab4332b7806b90c0",
+    "analysis/full-platform-20261104/android-richtext-runtime-v1/before-restart.png": "bea486e9cd3bc833d6f530c68539e0e1cc64af56c867316bd4b1292637aa9b78",
+    "analysis/full-platform-20261104/android-richtext-runtime-v1/prepareDrafts.log": "dafb654299c6bf7f0fc5aaf3927dc241c0932460157cb5bffaf05f8040552a61",
+    "analysis/full-platform-20261104/android-richtext-runtime-v1/verifyAfterProcessRestart.log": "2238ccf1e635e99d5d435eb43bc432e75d5718d03dd7ca4bb56c38da7e016b3a",
+    "analysis/full-platform-20261104/android-richtext-runtime-v1/after-restart.xml": "baae8c87e94097915daff7f2bdbc6669ae642385a8055d2e7b7357f27c035a37",
+    "analysis/full-platform-20261104/android-richtext-runtime-v1/after-restart.png": "8803bb3a246b8403f9d57ec86fc0dda4f5ed8a0cff9679170d6dd078ed2e619f"
+  },
+  "next_action": "Run partial-Markdown streaming and mixed-content fixtures through this native renderer, then connect scoped harness"
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "reference_version": "1.2026.293 screen evidence; independent UIKit/store",
+  "verified": [
+    "Native long press on newly imported synthetic file enters selection",
+    "Selecting folder as second item disables single-file delete",
+    "Grid/list changes preserve selection count",
+    "Delete alert cancellation preserves exact imported identity",
+    "Confirmed local delete removes only newly imported synthetic file; process restart restores pre-test row identities",
+    "Foundation: delete survives reopen, foreign ID rejected, index-write failure preserves bytes and identity",
+    "Native selection screenshot reviewed"
+  ],
+  "implemented_not_accepted": [
+    "Clear selection/back-button behavior and grid long press separately",
+    "Byte cleanup failure message on device",
+    "Crash between index commit and byte removal recovery"
+  ],
+  "limitations": [
+    "Local deletion differs from official cloud soft delete",
+    "Only actual local imported files eligible; fixture directory/file cannot be deleted",
+    "Start-chat/download selection callbacks not connected",
+    "No physical iPhone, accessibility, official styling or Android parity acceptance",
+    "Orphan cleanup and synchronous IO performance remain open"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "03c73718b739d9fbd1629b37dc8f6751679d0544cb4bc71c0cc4963390337456",
+    "implementation/ios/Sources/LocalLibraryStore.swift": "de4fbd3b8f8fb8638f1f3f16c153f1c7f568fa192f73dc1988e085e5efcd9723",
+    "implementation/ios/LibraryTests/main.swift": "7b3d3273c99d282bdf0fa9219717ffd97ab8d86940c9f2296ca9a8bd676fbd8e",
+    "implementation/ios/UITests/HostInteractionTests.swift": "10a741977a1d9141a59de310d0005199cf003612e280f3ea76226a64468770f4",
+    "analysis/full-platform-20261104/ios-library-selection-source-v1.json": "a631c9e2915ce865f5c825c4726e3b56f646e2ae5444d9608d480bcb590d8f03",
+    "analysis/full-platform-20261104/ios-library-delete-store-v1.log": "b1e8bd64ca56514fbfacc26441af15e2ffeccf123c4eedfa4eb6f9eb983df42d",
+    "analysis/full-platform-20261104/ios-library-selection-v1.summary.json": "d275aeb788abe850e73f2f8fb18d805de15989b45515cf3049a1eaaa94ce62a1",
+    "analysis/full-platform-20261104/ios-library-selection-v1-attachments/library-native-selection.png": "413bb9a3d291bc3e282ef837dc5cfc1ffacedc74ebaf3385f79547f1a51d07b3"
+  },
+  "next_action": "Add content thumbnails and PDF/image vectors; preserve explicit unsupported selection actions"
+}

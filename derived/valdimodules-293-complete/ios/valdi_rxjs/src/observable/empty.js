@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.empty=exports.EMPTY=void 0;const e=require("../Observable");function t(e){return e?r(e):exports.EMPTY}function r(t){return new e.Observable(e=>t.schedule(()=>e.complete()))}exports.EMPTY=new e.Observable(e=>e.complete()),exports.empty=t;

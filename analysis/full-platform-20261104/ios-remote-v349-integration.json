@@ -1,0 +1,54 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact static; independent native integration",
+  "findings": [
+    {
+      "offset": "0x3a3e30..0x3a3e64",
+      "conclusion": "Copies65 bytes from row self+0x10 into a local value via0x1bfd88 and passes it as second argument to normal-row content. Leading helper0x15425c puts second argument into x19. Corrects treating x19 field offsets as row-self offsets."
+    },
+    {
+      "offset": "0x9560190",
+      "conclusion": "CodexTaskRowPriorityModeDetails fields diffStats/subtitle/hostDisplayName/hostIcon; static metadata0xa432db0 vector base2 words yields offsets0/24/48/64."
+    },
+    {
+      "offset": "0x95601ac",
+      "conclusion": "PrioritySubtitle cases project(Optional<String>), environment(String). Optional absence discriminator is0xff at details+0x28 in consumer; tag1 chooses environment icon, other present tag chooses folder."
+    },
+    {
+      "offset": "0x3a4c2c",
+      "conclusion": "Host label omitted when hostDisplayName optional is nil; icon read at+0x40. Subtitle separately omitted at0x3a4d54 if tag0xff."
+    },
+    {
+      "offset": "0x3a4d74",
+      "conclusion": "environment factory0x74f8178 -> OpenAI/Symbols/laptop-connector; project factory0x74f7708 -> OpenAI/Symbols/folder."
+    },
+    {
+      "offset": "0x3a4990..0x3a49a0",
+      "conclusion": "Secondary label HStack uses firstTextBaseline and spacing8."
+    }
+  ],
+  "integration": [
+    "Optional hostDisplayName and typed project/environment subtitle, no substitution of raw host ID for missing display name.",
+    "Independent synthetic UI fixture and Preview fixture labels; no personal data.",
+    "Original icons, existing footnote/secondary resources; 13pt scaled icon slot is adapter metric."
+  ],
+  "unknowns": [
+    "Parent priority-mode selection/filter/project visibility gates",
+    "Localized project(nil) fallback; independent adapter only accepts named project currently",
+    "Exact CustomizableIconAndTitleLabelStyle implementation",
+    "Android equivalent"
+  ],
+  "validation": {
+    "simulator": "testRemoteTaskScopeAndReturn passed1/0 with project/environment label assertions",
+    "visual": "task-list screenshot inspected; both secondary labels visible and no observed overlap",
+    "preview_pid": 76192,
+    "phone": "not updated",
+    "limits": [
+      "Upper visibility gates and absent-name variants unaccepted",
+      "No official runtime parity or large Dynamic Type acceptance"
+    ]
+  }
+}

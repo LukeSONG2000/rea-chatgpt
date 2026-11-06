@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "android",
+  "target_baseline": "1.2026.293",
+  "baseline_ref": "analysis/full-platform-20261104/baseline.json",
+  "source_reuse_ref": "analysis/full-platform-20261104/android-markdown-milestone-v3.json",
+  "evidence_type": "independent-controlled-native-replay",
+  "implementation": "Four manually stepped deterministic deltas accumulated into complete snapshots; public OpenAI Compose RichText parser/rendering re-runs for each snapshot",
+  "verified": [
+    "Partial emphasis stays literal; closed emphasis becomes styled",
+    "Incomplete code fence receives remaining code and closing fence",
+    "Incomplete table header becomes a native table after separator and row",
+    "A/B/A replay-step isolation",
+    "Offline link callback produces explicit unavailable dialog",
+    "Four UIAutomator cases passed, including distinct-process draft regression",
+    "Before/after screenshot reviewed for actual native rendering"
+  ],
+  "limitations": [
+    "No real transport, model generation, timing/queue acceptance or incremental AST claim",
+    "Replay progress is memory-only",
+    "No stable AST block identity or selection continuity claim",
+    "No exact 293 public source correspondence, official visual parity or performance acceptance"
+  ],
+  "sha256": {
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MarkdownReplay.kt": "afebfec87990f3d4329bec9a1d35269b3f44851e3d53e714dd8ecb41b8b539a7",
+    "implementation/android/app/src/main/java/local/rea/chatgpt/MainActivity.kt": "62d4d8e1929d446784d0eabf2149d602250dcbed5be051d47ebad99215e59bd9",
+    "implementation/android/app/src/androidTest/java/local/rea/chatgpt/NativeHostTest.kt": "0a186b1b034f8e8d2c5ca16aaea82b06364375080abcf727fa60de33b8513662",
+    "implementation/android/test-native.py": "36890e694409fce62f3641cc65be5153949df95e4d78bc2cc90ef5befd8bf804",
+    "analysis/full-platform-20261104/android-markdown-stream-build-v1.log": "93d7ff37c1fce38976afff2a57d9fbf4c5836f42b125f0fd782bc768beac11ba",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1.json": "129ee19408e863461ca57fcfb792bf242a3d40a8b122b0de561620427e18d429",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/verifyMarkdownReplay.log": "dd09b7e2d0bada8a019c04f24b98cde5066a72e7e0ccd0d3db3feade2dae4af3",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/replay-complete.png": "3c6d45483a0efbb06b7ca4807992e6caf0dd8576dbbf544887ac94d497651a49",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/replay-complete.xml": "328d367d96ad7c2d3b14e6e4b559e91da7deead879acf0df1e684b073d1182b7",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/verifyMarkdown.log": "bf2aeaf4a59709db31b798835839e494a3552eb32ae3be343ebd1e56ff26670e",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/markdown-code-table.xml": "f7386a43ab5980c17766f3ff39c644ca17302ac16e48babca39445834b05172c",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/markdown-code-table.png": "ba8f049ae00ae462a78b63713ec46a9093d33898f8ec5de8a09be9eefb125ff6",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/before-restart.xml": "f4d26c63186078cfd0dcad479c9d1b22650028d3aa3c2025ecccb20c4f5b9fc8",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/before-restart.png": "8a22aade45083a02d44ff2667014af5db5fddbb46fdaedefd5d5b6166d8d462c",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/prepareDrafts.log": "a760ce5dc450b79a9fa932cbde887a8582d18bc104bad03fb3a6cebddd1c99b6",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/verifyAfterProcessRestart.log": "0cd88006aecfe95ff730da02caa1453fd2f4cddcb6c624ff0cfbc3e2ff0f53b6",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/after-restart.xml": "29d452b5aaad120eb64fd9cd1983ca6a008a4121f503fdfee2a8495acbe0c267",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/after-restart.png": "b5274e5979910944f3bebf7edda255f69a3b76872ca11f5f881962b1d2b806e8",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/replay-partial.xml": "7c1ebcbca4574dd2f57372335456fb5212cc223e1baa00d1184f424d76ef53f7",
+    "analysis/full-platform-20261104/android-markdown-stream-runtime-v1/replay-partial.png": "f3bca9b254e0b1b22c5a518eb857237bf9b36ea3d235fc5260edbca03ad22373"
+  },
+  "next_action": "Connect authenticated Android harness transport to the existing request-scoped event contract and project snapshots through the same renderer"
+}

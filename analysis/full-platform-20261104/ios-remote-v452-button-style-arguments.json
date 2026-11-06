@@ -1,0 +1,435 @@
+{
+  "0x45c8a4": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x45c8a4",
+        "end_exclusive": "0x45c8b0",
+        "sha256": "2e392d2cd0cfc651c06d25d1941aa5a4dd0977b5c502e81b975d1234668ff30e"
+      },
+      "linker_function_starts_in_window": [
+        "0x45c8a4"
+      ],
+      "next_linker_function_start": "0x45c8b0",
+      "direct_calls": [],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  45c8a4: 52800020     \tmov\tw0, #0x1                ; =1\n  45c8a8: 52800001     \tmov\tw1, #0x0                ; =0\n  45c8ac: d65f03c0     \tret\n"
+  },
+  "0x147fa8": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x147fa8",
+        "end_exclusive": "0x147fbc",
+        "sha256": "1d624dc2f3eb82ee6edab86bc0e1f3a882f6fbb5206d9e27106213c7cbde91d9"
+      },
+      "linker_function_starts_in_window": [
+        "0x147fa8"
+      ],
+      "next_linker_function_start": "0x147fbc",
+      "direct_calls": [],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  147fa8: d2800004     \tmov\tx4, #0x0                ; =0\n  147fac: d2800005     \tmov\tx5, #0x0                ; =0\n  147fb0: d2800006     \tmov\tx6, #0x0                ; =0\n  147fb4: d2800007     \tmov\tx7, #0x0                ; =0\n  147fb8: d65f03c0     \tret\n"
+  },
+  "0x32c5fa0": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x32c5fa0",
+        "end_exclusive": "0x32c5fac",
+        "sha256": "534d2a2dcb448545d21ee97c07993427ded9d41b1c461b74719245cd53a0911c"
+      },
+      "linker_function_starts_in_window": [
+        "0x32c5fa0"
+      ],
+      "next_linker_function_start": "0x32c5fac",
+      "direct_calls": [],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 32c5fa0: f003c048     \tadrp\tx8, 0xaad0000 <_writev+0xaad0000>\n 32c5fa4: f9405508     \tldr\tx8, [x8, #0xa8]\n 32c5fa8: d65f03c0     \tret\n"
+  },
+  "0x6111d70": {
+    "window": {
+      "status": "partial",
+      "authority": "shipped-artifact-static-instructions",
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "window": {
+        "start": "0x6111d70",
+        "end_exclusive": "0x6111d8c",
+        "sha256": "b3e9dea029f4d045a67f79eeb0d5e98996397d1e49c121b5b157bbcdf892a632"
+      },
+      "linker_function_starts_in_window": [
+        "0x6111d70"
+      ],
+      "next_linker_function_start": "0x6111d8c",
+      "direct_calls": [],
+      "adjacent_selector_loads": [],
+      "limits": [
+        "Window is not a proven function boundary",
+        "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+        "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+      ]
+    },
+    "assembly": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 6111d70: 39004109     \tstrb\tw9, [x8, #0x10]\n 6111d74: b98042e8     \tldrsw\tx8, [x23, #0x40]\n 6111d78: 8b080308     \tadd\tx8, x24, x8\n 6111d7c: a9007d1f     \tstp\txzr, xzr, [x8]\n 6111d80: b98046e8     \tldrsw\tx8, [x23, #0x44]\n 6111d84: 8b080308     \tadd\tx8, x24, x8\n 6111d88: d65f03c0     \tret\n"
+  },
+  "0x8234520": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x8234520",
+    "mangled_address": "0x9394e26",
+    "length": 180,
+    "mangled_hex": "02f1c473017902a3fc730179414179414179414179026cd573017941417902f3ff7301794142794142794141790224df730102b7e07301790249ff73014747414179414402a5c073014747414847470232b573017902840674014747414d4702fad473017941417941417902d6b1730179416f464702bcc9730179027ec5730179416f4602a50974014753674747025bdc7301790105763300474753674747023ade7301474149475f5362516f5f0293b7730147",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad1318",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15ModifiedContentVMn"
+      },
+      {
+        "offset": 6,
+        "kind": 2,
+        "target": "0xaad4ad0",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4ViewPAAE8onChange2of7initial_Qrqd___Sbyqd___qd__tctSQRd__lFQOMQ"
+      },
+      {
+        "offset": 21,
+        "kind": 2,
+        "target": "0xaad23a8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_ConditionalContentVMn"
+      },
+      {
+        "offset": 30,
+        "kind": 2,
+        "target": "0xaad4e38",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI5GroupVMn"
+      },
+      {
+        "offset": 45,
+        "kind": 2,
+        "target": "0xaad2d78",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI24ButtonStyleConfigurationV5LabelVMn"
+      },
+      {
+        "offset": 50,
+        "kind": 2,
+        "target": "0xaad2f10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+      },
+      {
+        "offset": 56,
+        "kind": 2,
+        "target": "0xaad4da8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI5ColorVMn"
+      },
+      {
+        "offset": 68,
+        "kind": 2,
+        "target": "0xaad0f10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI14_OpacityEffectVMn"
+      },
+      {
+        "offset": 79,
+        "kind": 2,
+        "target": "0xaad03a8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI11_ClipEffectVMn"
+      },
+      {
+        "offset": 85,
+        "kind": 2,
+        "target": "0xaad5500",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI8AnyShapeVMn"
+      },
+      {
+        "offset": 95,
+        "kind": 2,
+        "target": "0xaad2380",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_BackgroundModifierVMn"
+      },
+      {
+        "offset": 107,
+        "kind": 2,
+        "target": "0xaad0068",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI10_ShapeViewVMn"
+      },
+      {
+        "offset": 117,
+        "kind": 2,
+        "target": "0xaad1858",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI16_OverlayModifierVMn"
+      },
+      {
+        "offset": 123,
+        "kind": 2,
+        "target": "0xaad1420",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15StrokeShapeViewVMn"
+      },
+      {
+        "offset": 132,
+        "kind": 2,
+        "target": "0xaad5850",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI9EmptyViewVMn"
+      },
+      {
+        "offset": 142,
+        "kind": 2,
+        "target": "0xaad2b10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI22_MatchedGeometryEffectVMn"
+      },
+      {
+        "offset": 148,
+        "kind": 1,
+        "target": "0x96cc4c0",
+        "resolved_context": "0x96cc4c0",
+        "label": "<unresolved-context@0x96cc4b8>.GeometryID"
+      },
+      {
+        "offset": 159,
+        "kind": 2,
+        "target": "0xaad2d00",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI23_CompositingGroupEffectVMn"
+      },
+      {
+        "offset": 174,
+        "kind": 2,
+        "target": "0xaad0668",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI12_ScaleEffectVMn"
+      }
+    ],
+    "unresolved_contexts": [
+      {
+        "address": "0x96cc4b8",
+        "flags": "0x42",
+        "kind": 2,
+        "reason": "Unsupported context kind; name and parent chain not interpreted"
+      }
+    ],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "0x8234528": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": "0x8234528",
+    "mangled_address": "0x9394edc",
+    "length": 189,
+    "mangled_hex": "023bc473017941417902eafb73017941417941417941417902b3d4730179414179023aff730179414279414279414179026bde730102fedf7301790290fe73014747414179414402ecbf73014747414847470279b473017902cb0574014747414d470241d4730179414179414179021db1730179416f46470203c973017902c5c4730179416f4602ec087401475367474702a2db730179014c7533004747536747470281dd7301474149475f5362516f5f02dab67301470234d7730147",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaad1318",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15ModifiedContentVMn"
+      },
+      {
+        "offset": 9,
+        "kind": 2,
+        "target": "0xaad4ad0",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI4ViewPAAE8onChange2of7initial_Qrqd___Sbyqd___qd__tctSQRd__lFQOMQ"
+      },
+      {
+        "offset": 24,
+        "kind": 2,
+        "target": "0xaad23a8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_ConditionalContentVMn"
+      },
+      {
+        "offset": 33,
+        "kind": 2,
+        "target": "0xaad4e38",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI5GroupVMn"
+      },
+      {
+        "offset": 48,
+        "kind": 2,
+        "target": "0xaad2d78",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI24ButtonStyleConfigurationV5LabelVMn"
+      },
+      {
+        "offset": 53,
+        "kind": 2,
+        "target": "0xaad2f10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI24_ForegroundStyleModifierVMn"
+      },
+      {
+        "offset": 59,
+        "kind": 2,
+        "target": "0xaad4da8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI5ColorVMn"
+      },
+      {
+        "offset": 71,
+        "kind": 2,
+        "target": "0xaad0f10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI14_OpacityEffectVMn"
+      },
+      {
+        "offset": 82,
+        "kind": 2,
+        "target": "0xaad03a8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI11_ClipEffectVMn"
+      },
+      {
+        "offset": 88,
+        "kind": 2,
+        "target": "0xaad5500",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI8AnyShapeVMn"
+      },
+      {
+        "offset": 98,
+        "kind": 2,
+        "target": "0xaad2380",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI19_BackgroundModifierVMn"
+      },
+      {
+        "offset": 110,
+        "kind": 2,
+        "target": "0xaad0068",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI10_ShapeViewVMn"
+      },
+      {
+        "offset": 120,
+        "kind": 2,
+        "target": "0xaad1858",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI16_OverlayModifierVMn"
+      },
+      {
+        "offset": 126,
+        "kind": 2,
+        "target": "0xaad1420",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI15StrokeShapeViewVMn"
+      },
+      {
+        "offset": 135,
+        "kind": 2,
+        "target": "0xaad5850",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI9EmptyViewVMn"
+      },
+      {
+        "offset": 145,
+        "kind": 2,
+        "target": "0xaad2b10",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI22_MatchedGeometryEffectVMn"
+      },
+      {
+        "offset": 151,
+        "kind": 1,
+        "target": "0x96cc4c0",
+        "resolved_context": "0x96cc4c0",
+        "label": "<unresolved-context@0x96cc4b8>.GeometryID"
+      },
+      {
+        "offset": 162,
+        "kind": 2,
+        "target": "0xaad2d00",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI23_CompositingGroupEffectVMn"
+      },
+      {
+        "offset": 177,
+        "kind": 2,
+        "target": "0xaad0668",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI12_ScaleEffectVMn"
+      },
+      {
+        "offset": 183,
+        "kind": 2,
+        "target": "0xaad26c8",
+        "resolved_context": null,
+        "label": "_$s7SwiftUI20_TransactionModifierVMn"
+      }
+    ],
+    "unresolved_contexts": [
+      {
+        "address": "0x96cc4b8",
+        "flags": "0x42",
+        "kind": 2,
+        "reason": "Unsupported context kind; name and parent chain not interpreted"
+      }
+    ],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "disabled_fallbacks": {
+    "0x7cd9658": 0.2,
+    "0x7ce2070": 0.12
+  }
+}

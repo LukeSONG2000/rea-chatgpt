@@ -1,0 +1,45 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "partial",
+  "evidence_type": "official-artifact-static",
+  "integration_decision": "Replace generic expanded command text with dedicated shell/output presentation only after constructor geometry and follow-state mutation gates are established.",
+  "findings": [
+    {
+      "offset": "0x95ae044;0x1a41330",
+      "conclusion": "CommandExecutionShellCard has payload/displayCommand/autoScrollToBottom/isCachedPreview; body witness branches0x1a40398."
+    },
+    {
+      "offset": "0x7e1e3a0;0x7e1e418",
+      "conclusion": "Shell body composition includes CommandExecutionOutputScrollView, selectable Text, VStack/HStack, background and rounded-rectangle stroke."
+    },
+    {
+      "offset": "0x95afe64;0x1a68e40",
+      "conclusion": "Output scroll component fields include text/color/insets/min-max height, parsed text, content height, viewport size, following/user-scrolling flags, ScrollPosition and bottom offset; body0x1a67170 binds scroll geometry and phase callbacks."
+    },
+    {
+      "offset": "0x1a68380;0x1a685b8",
+      "conclusion": "Finite scroll geometry bottom=max(contentHeight-containerHeight+bottomInset,-topInset). Near-bottom predicate compares offsetY>=bottom-8. This does not yet prove when follow state changes or when scrolling is issued."
+    }
+  ],
+  "unknowns": [
+    "Shell minimum/maximum height and padding constructor arguments",
+    "Parsed output format and text style",
+    "Follow-state mutations on user scrolling and output update",
+    "Current history-fragment callsite selecting shell card",
+    "Android independent counterpart"
+  ],
+  "validation": {
+    "static_inspection": true,
+    "ui_changed": false,
+    "build_run": false,
+    "official_runtime_executed": false,
+    "limits": [
+      "Metadata alone not active behavior",
+      "Near-bottom arithmetic is static inference over finite values",
+      "No new device or visual acceptance"
+    ]
+  },
+  "next_action": "Trace output phase callback0x1a684fc region and geometry-state action0x1a683dc, then caller/output initializer to integrate a source-backed scrollable card."
+}

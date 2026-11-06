@@ -1,0 +1,49 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "body_interval": [
+    "0x4cbd3bc",
+    "0x4cbd83c"
+  ],
+  "following_helpers": [
+    "0x4cbd83c",
+    "0x4cbd9b8",
+    "0x4cbda0c",
+    "0x4cbda84",
+    "0x4cbdcfc"
+  ],
+  "field_types": [
+    {
+      "field": "keyboardPresentation",
+      "labels": [
+        "<unresolved-context@0x966f868>.MessageInputKeyboardPresentation"
+      ]
+    },
+    {
+      "field": "_preservesKeyboardInset",
+      "labels": [
+        "_$s7SwiftUI7BindingVMn"
+      ]
+    },
+    {
+      "field": "_style",
+      "labels": [
+        "_$s7SwiftUI11EnvironmentVMn",
+        "ChatGPTMessageInputUI.MessageInputStyle"
+      ]
+    }
+  ],
+  "checks": [
+    "style environment resolves to MessageInputStyle",
+    "preservesKeyboardInset resolves to Binding<Bool>",
+    "10 third-party decision vectors, official expectations left unknown"
+  ],
+  "limits": [
+    "no exact outer padding values established",
+    "helper boolean conditions not assigned source field identities",
+    "no UI implementation changes"
+  ]
+}

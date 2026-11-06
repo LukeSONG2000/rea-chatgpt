@@ -1,0 +1,65 @@
+{
+  "status": "partial",
+  "platform": "macOS",
+  "artifactVersion": "26.1021.31345",
+  "evidence": [
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+      "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/initialize-app-host-services-5891c906a171.js",
+      "sha256": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-primary-7d7313419f84.js",
+      "sha256": "745529956e303674c268a6871e6f5aad49eca7ef5af899952bf0379d829821b6"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/zh-CN-bd2cd8444335.js",
+      "sha256": "f0d7ed4cffc81493b463695ed66f9c6f8cc802d632757a98161264462a0f902a"
+    }
+  ],
+  "layout": {
+    "status": "passed",
+    "implementation": "Independent digest-bound expansion-state guard reuses original base footer CSS; no height/padding overrides",
+    "validation": [
+      "desktop-composer-v188-expansion.json",
+      "desktop-locale-v201.json"
+    ],
+    "centers": "text/button/surface equal; upper/lower spacing 8/8 CSS px",
+    "expansion": "outer surface 114 -> 546 -> 114; text unchanged; inner editor remains 60, so v187 assertion measured the wrong box"
+  },
+  "language": {
+    "status": "passed",
+    "policy": "System language unless explicit profile localeOverride; null restores system following",
+    "source": "FO/PO original provider; appInfo.getLocaleInfo, settings.localeOverride; layer 72216192 enable_i18n and locale_source=SYSTEM",
+    "adapter": "Independent startup layer adapter supplies __value used by SDK _mergeOverride; registration intercepted before first memoized provider evaluation",
+    "validation": "desktop-locale-v203-restarts.json",
+    "sequence": [
+      "system zh-Hans-CN -> zh-CN",
+      "en-GB override after restart",
+      "fr-FR override after restart",
+      "null -> system zh-CN after restart"
+    ],
+    "resource": "original packaged locale chunks, offline only"
+  },
+  "preview": {
+    "pid": 82110,
+    "profile": "v175-user-preview",
+    "report": "desktop-locale-v204-preview.json",
+    "running": true,
+    "coordinates": {
+      "x": 62,
+      "y": -1025
+    },
+    "centerCSSPixels": 758
+  },
+  "limits": [
+    "macOS source host only; no new distributable package",
+    "Other platforms and all locale/RTL interactions not accepted",
+    "OS language changes picked up on next startup; hot system change not tested",
+    "Language settings transport and restart verified; settings picker UI interaction not independently accepted",
+    "Official artifact bytes unchanged; layout guard and language policy are independent host adaptations"
+  ]
+}

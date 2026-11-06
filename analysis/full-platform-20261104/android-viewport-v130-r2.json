@@ -1,0 +1,34 @@
+{
+  "status": "passed-bounded-instrumentation",
+  "run_id": "f8b1d26448944e1d87bc0c5f1e8eafc5",
+  "serial": "emulator-5554",
+  "avd": "REA_ChatGPT_Offline",
+  "origin": "independent native Compose host; not official behavior",
+  "steps": [
+    {
+      "install": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "985391ffa69846f022078c9cb0a6f494916789f82f7da905ebf1be722e4904a0"
+    },
+    {
+      "install": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "039a287028d2ec18047ff95ac6965a3fbad829bc7d91e4842dc3b33abd54c548"
+    },
+    {
+      "test": "prepareViewport",
+      "status": "passed",
+      "pid": "16479"
+    },
+    {
+      "force_stop": "verified no process"
+    },
+    {
+      "test": "verifyViewportRestore",
+      "status": "passed",
+      "pid": "16582"
+    }
+  ],
+  "limitations": [
+    "Synthetic completed reply; stable message identity and fixed geometry only",
+    "Font/rotation changes, horizontal table offsets, real devices and disk/frame performance not accepted"
+  ]
+}

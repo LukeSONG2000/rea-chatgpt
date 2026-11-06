@@ -1,0 +1,69 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "progress: v451 integrated reconnect indication, source-based keyframe animation and labels",
+  "integrated": [
+    "Filled-icon feedback ButtonStyle for send/stop/follow-up",
+    "Pressed opacity0.5/scale0.97; nil disabledOpacity light0.12/dark0.2",
+    "Inherited transaction animation speed2 without invented animation",
+    "Corrected stale preview caption for running-turn actions"
+  ],
+  "source": {
+    "metadata": "0x96cb280",
+    "conformance": "0x82358c0",
+    "body": "0x607ff90",
+    "filled_opacity": "0x60800d8..e4",
+    "disabled_opacity": "0x608046c..88 /0x60806c0",
+    "scale": "0x6080534..44 /0x7d193f8",
+    "transaction": "0x6080788",
+    "primary_configuration": "0x6069b08 /0x6069b34..6c",
+    "menu_configuration": "0x198f938 /0x45c8a4 /0x606bdbc"
+  },
+  "validation": {
+    "typecheck": "passed with three existing UIKit warnings",
+    "whitespace": "passed",
+    "new_ui_tests": "not_run",
+    "new_device_or_simulator_install": "not_run"
+  },
+  "limitations": [
+    "Only filled/nil-override selected branch; full style not restored",
+    "Caller-provided overrides and glyph/background/iconColor composition unresolved",
+    "Runtime visual/gesture/hit-area/Reduce Motion/VoiceOver unaccepted",
+    "Installer authorization blocker remains, processes87483/97181/97197 observed live",
+    "Raw symbolic body decoding rejected unsupported context; no guessed AST",
+    "Android consumer proof absent"
+  ],
+  "next": "Resolve primary-label iconColor and backgroundButtonShapes consumers, distinct from outer ButtonStyle background",
+  "files": [
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "9aad8388170f123d9a4420993b9f8006efc0c165a8cc429feb4fd39c3e56aeee"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "33fe1085d8540a57dff9f294e7d68b42010a2c038714e6330a2c0571870e6303"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v452-button-style-values.json",
+      "sha256": "f6c50add6458e0bac01012d17ac8d2a03f47659de05ca88f2e2c9adc116a6564"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v452-button-style-metadata.json",
+      "sha256": "639dbb642745300a8b5876427320af94cd6110eccb4ed9b5e459bd379b40e666"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v452-button-style-arguments.json",
+      "sha256": "d3a28d656aad84a35c0026b31226495b820c2b8675e695d0a89ccef6d174109f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v452-button-style-witness.json",
+      "sha256": "fcb7c740ab8c2121679f2ec821c21949131b482f1289e2b518cf9872c1dbb8f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v452-button-style-entry.json",
+      "sha256": "0aa3afc07290e83b974c554c498cea5bb97d82320d25cc84ac7fe648e8564286"
+    }
+  ]
+}

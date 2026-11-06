@@ -1,0 +1,78 @@
+[
+  {
+    "name": "SettingsHomeSection",
+    "descriptor": "0x9589380",
+    "kind": 0,
+    "fields": [
+      {
+        "name": "title",
+        "record": "0x9a0b014"
+      },
+      {
+        "name": "footer",
+        "record": "0x9a0b020"
+      },
+      {
+        "name": "content",
+        "record": "0x9a0b02c"
+      }
+    ]
+  },
+  {
+    "name": "SettingsRootPresentation",
+    "descriptor": "0x9589608",
+    "kind": 2,
+    "fields": [
+      {
+        "name": "pluginSettings",
+        "record": "0x9a0c634"
+      },
+      {
+        "name": "settings",
+        "record": "0x9a0c640"
+      },
+      {
+        "name": "voice",
+        "record": "0x9a0c64c"
+      },
+      {
+        "name": "connectors",
+        "record": "0x9a0c658"
+      },
+      {
+        "name": "personalizationPane",
+        "record": "0x9a0c664"
+      }
+    ]
+  },
+  {
+    "name": "SettingsStaticEntrypointState",
+    "descriptor": "0x9589c48",
+    "kind": 0,
+    "fields": [
+      {
+        "name": "presentation",
+        "record": "0x9a0bd54"
+      },
+      {
+        "name": "visibleSurfaces",
+        "record": "0x9a0bd60"
+      },
+      {
+        "name": "assignmentState",
+        "record": "0x9a0bd6c"
+      }
+    ]
+  },
+  {
+    "name": "SettingsAccountSectionAction",
+    "descriptor": "0x958d030",
+    "kind": 2,
+    "fields": [
+      {
+        "name": "changeEmailTapped",
+        "record": "0x9a0fdcc"
+      }
+    ]
+  }
+]

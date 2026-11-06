@@ -1,0 +1,868 @@
+{
+  "version": "26.1021.31345",
+  "engine": "156.0.4314.58",
+  "runner_sha256": "c61ea12a88b50f63608a7040c02e9dfdd9d57a2b77927e340196bd9bcfbad167",
+  "sources": {
+    "webview/assets/initialize-app-host-services-5891c906a171.js": "e7d2aa6fb90d728bc5da2d7bc64987dddd53d3892885499bd17ebec4d2da39ea",
+    "webview/assets/rolldown-runtime-2d059c5e81f4.js": "e0a79ad36c6ca1ffbc796c80aa5661803a9d1bc684e29d1587f48b4ba9a82714",
+    "webview/assets/app-shared-2cae01273bae.js": "3ca9f1b7132de9c81602a5cbb55822107add07c7ed7e00ad5256c372aeb1ec36",
+    "webview/assets/app-initial-feb30b196d11.js": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+    "webview/assets/app-primary-7d7313419f84.js": "745529956e303674c268a6871e6f5aad49eca7ef5af899952bf0379d829821b6",
+    "webview/assets/ambient-suggestion-generation-dc24e5b95825.js": "f7a35529b245e57c834548f62a7884e6f81869e8edd4c3346f0b3e5bdab35548",
+    "webview/assets/cyber-safety-composer-banner-state-8323b499557d.js": "4574c3acebbeab5a577362f6f3808e8f2b0eba8df145c9800777a23f4a2ce7df",
+    "webview/assets/external-agent-import-startup-e5bbcaed89e8.js": "daefea6dfabdd9293f9ac6cb1d0850ca7896de1cee30d45ec63d78677d796cca",
+    "webview/assets/external-agent-config-query-invalidation-b91bb568829f.js": "6fa6bb3ebb789d3d5a5348783b7304cc79aeae84d0467d17fbe1f9c048a7f3c4",
+    "webview/assets/app-theme-979817044ac4.js": "0acce06a154e9aac82d70f68183f6e8887a987a41548ed39cca8b41f7b2d58ee",
+    "webview/assets/style-vars-200c1bccafff.js": "0c827259711af0b1c10bff418978f9e61945183a878baa1b9f8e467f6878c121",
+    "webview/assets/conversation-id-debf824e1bd4.js": "3ac719a196699025fe2227cc0a0a96b51bd33089be168f1edf5b5784c5e70778",
+    "webview/assets/confetti-2f703c7123a6.js": "01578740b472e29aa705074a0ab0c0b4aa3640f89ae7ec41b8eff18208f55792",
+    "webview/assets/app-navigation-tools-4e506e8c8cd5.js": "5dce49b7f66314995e2f451e580eb6bacc3bf094929f94d14fa13c971140ac02",
+    "webview/assets/codex_memory-b9b3c1208d69.js": "2343f6bbc35c44087d4e323ec71f0d6f61df2d9157680895aa6c60532deff931",
+    "webview/assets/prewarm-671e859a562f.js": "7f46705585851c340b68a8ebb4d2d23699329a03fe578b5b96d387ac088cd03e",
+    "webview/assets/settings-unsaved-state-807d2bc8a763.js": "8caf1966ceefc95c5c4eb8fe0ed80824d7b49fdc0ed60fd0eb063e6d66ba2433",
+    "webview/assets/entry-35957033d38c.js": "2aa3ee1ebd53dc4ef4e0b4d384728b414e8cf461a618970448fed2234bddc629",
+    "webview/assets/recent-model-configurations-b339bafad1ac.js": "db260ee62f968012512a616297c153292646b8411de4e1ee9066a7583f7a3d41",
+    "webview/assets/app-server-manager-hooks-c01e69e712a8.js": "ab961f93dee47ebe387d652ede7283b4e872b88aa7eb0b3612180ec654bb5794",
+    "webview/assets/avatar-overlay-open-state-signal-14bbdbe397ce.js": "a3aeae0a67efae2a58d01fccb96032f13260b39d3466dacb57645282e2ac47fc",
+    "webview/assets/desktop-app-beta-access-d155dcbd5cf4.js": "06f1b1bae345cd0974c2e7a52be8507b90881b7b796a123386679ec74b853460",
+    "webview/assets/auth-journey-83ade2c64f63.js": "6b4dc72660b9f564f2cd83a18206cb86074c8fd88ac79de9058215c81fd3f8c8",
+    "webview/assets/chrome-extension-browser-family-fc7ba8437fc4.js": "c8742525a96ff030a94dbf97e117dd11d40a3447fe4026ae65a928a9701a5623",
+    "webview/assets/subscription-update-diagnostics-fabd032e697f.js": "fc382029dad7e43f4619e1e90d27c4761c02b3a20ddc2c0f0d83f493b6db9d2f",
+    "webview/assets/codex-analytics-a8d49c1f032f.js": "14f94fc2a45440cc18967d895ab7c9c0cf98decf271fb9a82406ce921eadcd92",
+    "webview/assets/desktop-login-success-90bc85480236.js": "e2a9990e0e325544fc92447f6f30f35d9dea00e57eeee4bf40bf11047a6f5ea7",
+    "webview/assets/app-server-notification-debug-signals-82b7ab80e546.js": "9b1b50675b8d798f6ef2b47fe0f3fbc37b4f40d2a876f90900f263a3e830a7b7",
+    "webview/assets/profile-login-attribution-b4ab8df66633.js": "5f9dcb22706a8c174da834027a70fd6183ecf0bec5fae8a276453018f7edd0a9",
+    "webview/assets/codex_account_settings-ce8019b80b44.js": "b435ec7f4ee87c714a8a460df3aaec6981b8cfdc3e573265fb2ecf9e08b4a1c6",
+    "webview/assets/codex_artifact_feedback-e27578224cdf.js": "46b31fa244ab0889af342e5d3dab0ce2fa580ce6a1fe3424ee1ad4802beaf3d2",
+    "webview/assets/codex_browser_interactions-b8a5baac2680.js": "341654929d82aba043f3a3971c2234a62c8cde0b3c3af83fcc511cf01d72c202",
+    "webview/assets/codex_browser_profile_import-d076e835360c.js": "1a3d14b635e7cd357e09b9306494422d9d0276b72bffa671b5262905c436f48c",
+    "webview/assets/codex_browser_surface_actions-e52c60f78f4e.js": "ab4bce7c11f1fcbe8cbce4f79dcd9febaafd3309ed742f3919688eea8d9ab817",
+    "webview/assets/codex_computer_use-d0d448f6d584.js": "e4ca13c34a610c4ca13ee9a1ea925f00751d924849360aa6f5e33ddfd270b853",
+    "webview/assets/codex_desktop_login-8ca09165d69e.js": "2d7200d470df455744b545df9ead8537e87fe7e7835b29c92d0718b47c38031f",
+    "webview/assets/codex_dot_onboarding-f4f684b38763.js": "53352fa93af42898d6e2f532d729a7f88c1554bf050d735ec321c7d5b0af5ca2",
+    "webview/assets/codex_inline_visualization-e0f031efd87f.js": "65d1130e792bf824a24793c2fc2737c6161d275bd7f5785dcc08be1a6f50afa7",
+    "webview/assets/codex_micro-730d8f9a0165.js": "71d361dab7c89b2211039b7f3c7ed5538e40e7812f73204c3ca002fc05fe5c0f",
+    "webview/assets/codex_work_credit_continuation-8f5c502d6512.js": "6056239c667805364a75e6f8eaea1ea96238790a3e24a3fe2905a11327805196",
+    "webview/assets/codex_workspace_settings-41ac5662f17d.js": "ce1452f4e813ec0d637e13117fb2cde09a2fce9e813742f07c64700faa9cb6ac",
+    "webview/assets/chatgpt-browser-compatibility-a22412506ccb.js": "96e422365b994d81bc6e5faa88253bfe1a29a636c9e3c6dd5f3b4b2ea195b352",
+    "webview/assets/chatgpt-browser-unstructured-event-ad35fc036703.js": "2f6cbc0e4373aa4ecab0c14107febbd215f176026535a410a063193d0a7534db",
+    "webview/assets/statsig-client-key-b5555da1b74f.js": "5f0bb4b8fce8a3f9f0a65ed64e2f4663062124421b71c43b9c7cfd3ab16d0ee1",
+    "webview/assets/model-routing-config-c8ff24d11153.js": "ae0f8a6f5ab27575041fbf2e2eea3426fe143ce4665c404cf3fb4e208da10bc9",
+    "webview/assets/feedback-tags-1e5899ec8c5e.js": "07870dae61cb401c52d21b69c9f516cc26b10a00980d5d440238327cb2e2c784",
+    "webview/assets/resolved-intl-provider-93ba3c127ae2.js": "cf3a3e2bade10be2688503c6a96e1d11986b4ccbc9d989b92683c3540451e90f",
+    "webview/assets/handle-realtime-screen-context-latency-9c7b84543683.js": "cb9f7efa14f05185e3f1dae6b88e07243bb7029b65bad07d8c171755a2038757",
+    "webview/assets/work-route-snapshot-ea593c91ab92.js": "28dc8c8bc9cfab83acc89be35de3918a237562386a519bd8a6df1b21661c3c62",
+    "webview/assets/desktop-oauth-2b59cf194297.js": "e5d99807937737da506f81ae2962839b72ba11d5263bc788982b8938aea091c4",
+    "webview/assets/analytics-50b3ed03738d.js": "4716216e68946f412f0360a7c4097f46b5a689d86a26a01180a00b28bb3b2699",
+    "webview/assets/conversational-onboarding-task-completion-8f8ca28d1aba.js": "2e51c606712c5298ea5850c7641d28c94415bc2b77207c766c3441831b8be571",
+    "webview/assets/pull-request-check-diagnostics-d75376b4e3f9.js": "e7f97f7833614e94bc8a6b97ba92a72653ee2f93e9ad17107cf52797ee07d336",
+    "webview/assets/thread-handoff-dynamic-tool-progress-39890007cf47.js": "cc2f5c17978b6f5d05b54013a02a899bfb2f20e22384896108af2aaff5bf3a4e",
+    "webview/assets/artifact-tool-501a1c8a3dbe.js": "b8ca262c51885cf37c03b8b53a879b80f984e237f61a51b6f33953543a952d4b",
+    "webview/assets/thread-terminal-b9ac491a8c39.js": "38bf52833da25ca5d3c67123dd45967d0af1df96aca1cffae4c174d189ccb8c8",
+    "webview/assets/plugin-management-3867045fdbc6.js": "6e1d22ffe4f9349567756d9d95328f396702001c3d6b1843126ebe744ceab7c1",
+    "webview/assets/app-server-config-notice-signals-d87a54450b2a.js": "6bd7d66f09d565ff44e948080c534cc458e6b0d4462972d1536bd37896a6d8e8",
+    "webview/assets/automation-plugin-source-query-34e0d6d3ebb6.js": "7b72b927e4b06b3d6df46e50f26666dd7569222250aaaae1672c6c29e8f56f01",
+    "webview/assets/app-connect-oauth-callback-result-439175390e5d.js": "fa0e417baa731b54cabb89944f4e00a22ccd2d32a28567cf461bcb86d897c9c7",
+    "webview/assets/mapKeys-edf3532f56cf.js": "ffc71016cc69f45e5d854df327a252d7be88dc8cb055652fcb5308a28d34ded2",
+    "webview/assets/chrome-computer-use-suggestion-state-295220dad7cb.js": "13ce039ed96bcd828b0e955b814800149fbe3e523c8eca4d55daf8cb8b42f460",
+    "webview/assets/handle-chrome-extension-sidepanel-thread-archive-routing-bed39e3267b3.js": "04ff2f11d99ef82c1f91e9e53ea1dfc4fd2112ba1c04f505897926518c7e4f36",
+    "webview/assets/promotion-hydration-dbbbeaa50b63.js": "f395fc9abe2d881b533752dcb69ef549b1bc07eaab25f178c72b434218a81290",
+    "webview/assets/model-comment-dismissals-af89367402c4.js": "69ad2845c1747e199cfa9ae21e96c85b085736588e6e07f0780c7ca90308725e",
+    "webview/assets/client-pending-request-658d3f21220e.js": "32e6b2406def5142a3b6c0b65daf242f96a71eb64b2e4860a1806befdd01fd68",
+    "webview/assets/discovery-8be08e39cda5.js": "1fa4226b807fbfa2564b86c517a5f7fe3c4bf9a6f8ea34aa03d4643f2e96f310",
+    "webview/assets/aeon-created-thread-status-c605d1e4b680.js": "624867d2c5a1f8d4a060191bf53ae69062e45b0e0b5316653ab9c1ce6700271a",
+    "webview/assets/state-cfb1267fc3f5.js": "6e74a5171c038bfb4df71c955f472bd15a36dc75224d3bdbe8d121ad4a8eda44",
+    "webview/assets/bookmarked-conversation-turns-ac0e75ebe1c3.js": "d924035f1671db2358811fc62fc133a69025fffab47cb02ad67fdbf2066bb70f",
+    "webview/assets/codex-writing-block-edits-7873bf5bdbc1.js": "15d12a3e22e3cee3b9a0b50fdf21dfea726077a12521f059d8a2c98134dd6cb0",
+    "webview/assets/mcp-authentication-start-error-1df7cb18fcdc.js": "4030e4aab6ac1469d06a39463631ef52ac7d82f7ed4956735a05a671b9529c56",
+    "webview/assets/session-tab-opener-8a1a078d586a.js": "4b1c8ca06571876b295972d6ba7bafe99e24df83a6b7802c3a7ad8ac2a7edb55",
+    "webview/assets/keyboard-modifier-state-bridge-b877e6940483.js": "de32e0714da8317146e9cc66c793e0e4f29a1f828d95a1adf7f3eb7c19e863f7",
+    "webview/assets/personal-settings-access-6444aab949ce.js": "ec083fa5af2df47a51458eb00bb9467b9436c50d9dffc4ace50633b465eb5045",
+    "webview/assets/workspace-directory-6033d09344b7.js": "4ec27b77c0a54ab712338b51a9b1ac3c412112c71d120285de88c271211d3349",
+    "webview/assets/notification-sound-audio-964fa4c052a9.js": "689fbe4cefc1c04a3641e89336b3c5c8f0682e555c3f618637f1a584a1996412",
+    "webview/assets/downloads-view-service-4952674649f5.js": "612b50c251167c0f4fb2b2ebbb168869eb91828553c49fbd88fd47c28db36b89",
+    "webview/assets/connect-app-host-90a50ca9e4b4.js": "94272631cc0c57bf483309be934f8752721a6e0b83f4160c92398d4ad359a60d",
+    "webview/assets/external-agent-imported-connectors-1e5fa110739d.js": "66b610a55a28c4ea2f1c98156bdf4a713a3e318607573b542948efc6675ebe63",
+    "webview/assets/should-include-thread-in-discovery-1b8e82164ce2.js": "63bddb2e0fbd8131be8b51da1da47eeb92074c519884746aa3ea685b1e72f55c",
+    "webview/assets/eligibility-82218c5484ee.js": "e3fd942be1a98448439019aa81ad70e391638a33178fbea5a8c1f7f06f561e0b",
+    "webview/assets/defaults-930c9f21f410.js": "a3337b2a1efdfa144d1ec30f8cf645618809ee78a3ec42bc494ac39f5dddcae6",
+    "webview/assets/chatgpt-theme-6958a674b836.js": "510975655af6b37f025d4574b48955a02d494c52bd8db0612e5575d17e9c53e4",
+    "webview/assets/app-theme-c4609c25be6b.js": "99486956ff4c74b5e818af8f61de8310a7d8a10c41a9095c7f29c96077e42be1",
+    "webview/assets/chatgpt-theme-4fb124c0ce14.js": "b1da303dffcec8bd6643ff3ed3c042cf3631bdf4c930755200f162d611b46ca5",
+    "webview/assets/pending-mcp-server-elicitation-signals-22c2f55544fc.js": "427fdc23706c09540298e98ca4c5b5dfc324a3373fa2aa26ffbcdbd7077c5446",
+    "webview/assets/computer-use-app-approval-request-5a243e46bb57.js": "531e956e73a624a6993c0310d14c85f8172a8daa4fe10a8748cef75ad7cb0b36",
+    "webview/assets/computer-use-app-approval-state-49baf1e06dbe.js": "518ef626e56787f3d70e28ac377fdfa3cdb3268133721f3558a6c5812369300b",
+    "webview/assets/uniqWith-7f5a9246cd87.js": "d4854e1134e52d01a61c5b2507cccdd13076971e7d15e3c30c4f096dbbe9783e",
+    "webview/assets/chatgpt-browser-legacy-product-event-names-a7690151b644.js": "fad713c787c8022a652de625357d13521dab0f0869fbd1bf244fe5a9ae262fe8",
+    "webview/assets/get-default-branch-name-80c944ee057e.js": "778b63f2137f90134e2f14b34411c4982848234876603853d997ae98b998312e",
+    "webview/assets/thread-handoff-composer-block-state-1f2416dcad1c.js": "7cb601ab51390ca7ec07ff57af5c22e528f24cae8063404395fc418a101c1bd3",
+    "webview/assets/sync-thread-git-branch-if-primary-repo-161c598504fa.js": "28d8f4bd1daeeade6bb333b26e8487df6f656729ac2483030c5d0078ff06590f",
+    "webview/assets/git-repository-ddfe3db5afec.js": "d8a25258419537000610b2186df76f15abae22fc1a81d4738e4542c88387f7f1",
+    "webview/assets/managed-worktrees-5d5fffb88442.js": "8a3c2502de0217050e1106f9f697d006efc21539bd0b3b4feedd49ffa6c2442c",
+    "webview/assets/threads-send-message-3fc80dc15fca.js": "b395d82fc58c03e0d96e34da8d99e1749ed568adcade008cf7f526bce8254d88",
+    "webview/assets/get-move-to-local-targets-ac97956619eb.js": "8e56d9610f69b803b90a20383ac59195dc23018ccf8d4ad8764efc9728b7812e",
+    "webview/assets/pasted-link-connect-analytics-49cfd37089e2.js": "570b6f5de07828c84cd0b69bd22308b6eb122a46a892244dba5d51efe3a8f534",
+    "webview/assets/required-app-analytics-d2885e5da8df.js": "ca9063c9b944316870f760a655e7aad967468acd97d903ea1a48d4d34170f7f7",
+    "webview/assets/local-conversation-external-resources-2f755808a280.js": "b35268d7d18f53dda6de4024c62769bc5aac6f017b9b20f248b5b7d914f87a35",
+    "webview/assets/local-conversation-artifacts-model-6e029029f851.js": "711878d02b7031913a4f1aecc3ecb90c5e9881afdd1f453de1904b51ccadf6f6",
+    "webview/assets/elicitation-persist-86ea44b66749.js": "3edac69cea13234a919a90e83414e7534fa5122dfd3709be5b73eaec034b4943",
+    "webview/assets/send-follow-up-message-ef6b856b0b48.js": "b7b19b18d4bbdefeebb98253ff9392d8c030d24b59a9965de3330fb700a8a175"
+  },
+  "results": [
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "status": "blocked",
+      "error": "TypeError: Cannot read properties of undefined (reading 'subscribe')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'subscribe')\n    at e.evaluateImpl (https://offline.invalid/app-shared-2cae01273bae.js:323:36972)\n    at e.evaluateWithDepth (https://offline.invalid/app-shared-2cae01273bae.js:323:34700)\n    at e.evaluate (https://offline.invalid/app-shared-2cae01273bae.js:323:34583)\n    at Vgt.readLoop (https://offline.invalid/app-shared-2cae01273bae.js:323:51623)",
+      "pageErrors": []
+    }
+  ],
+  "requests": [
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/probe"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/initialize-app-host-services-5891c906a171.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/rolldown-runtime-2d059c5e81f4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-shared-2cae01273bae.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-initial-feb30b196d11.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-primary-7d7313419f84.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/ambient-suggestion-generation-dc24e5b95825.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/cyber-safety-composer-banner-state-8323b499557d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/external-agent-import-startup-e5bbcaed89e8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/external-agent-config-query-invalidation-b91bb568829f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-theme-979817044ac4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/style-vars-200c1bccafff.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversation-id-debf824e1bd4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/confetti-2f703c7123a6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-navigation-tools-4e506e8c8cd5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_memory-b9b3c1208d69.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/prewarm-671e859a562f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/settings-unsaved-state-807d2bc8a763.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/entry-35957033d38c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/recent-model-configurations-b339bafad1ac.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-server-manager-hooks-c01e69e712a8.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/avatar-overlay-open-state-signal-14bbdbe397ce.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/desktop-app-beta-access-d155dcbd5cf4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/auth-journey-83ade2c64f63.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chrome-extension-browser-family-fc7ba8437fc4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/subscription-update-diagnostics-fabd032e697f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex-analytics-a8d49c1f032f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/desktop-login-success-90bc85480236.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-server-notification-debug-signals-82b7ab80e546.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/profile-login-attribution-b4ab8df66633.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_account_settings-ce8019b80b44.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_artifact_feedback-e27578224cdf.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_browser_interactions-b8a5baac2680.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_browser_profile_import-d076e835360c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_browser_surface_actions-e52c60f78f4e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_computer_use-d0d448f6d584.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_desktop_login-8ca09165d69e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_dot_onboarding-f4f684b38763.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_inline_visualization-e0f031efd87f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_micro-730d8f9a0165.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_work_credit_continuation-8f5c502d6512.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex_workspace_settings-41ac5662f17d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-browser-compatibility-a22412506ccb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-browser-unstructured-event-ad35fc036703.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/statsig-client-key-b5555da1b74f.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/model-routing-config-c8ff24d11153.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/feedback-tags-1e5899ec8c5e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/resolved-intl-provider-93ba3c127ae2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/handle-realtime-screen-context-latency-9c7b84543683.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/work-route-snapshot-ea593c91ab92.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/desktop-oauth-2b59cf194297.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/analytics-50b3ed03738d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/conversational-onboarding-task-completion-8f8ca28d1aba.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/pull-request-check-diagnostics-d75376b4e3f9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-handoff-dynamic-tool-progress-39890007cf47.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/artifact-tool-501a1c8a3dbe.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-terminal-b9ac491a8c39.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/plugin-management-3867045fdbc6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-server-config-notice-signals-d87a54450b2a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/automation-plugin-source-query-34e0d6d3ebb6.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-connect-oauth-callback-result-439175390e5d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mapKeys-edf3532f56cf.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chrome-computer-use-suggestion-state-295220dad7cb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/handle-chrome-extension-sidepanel-thread-archive-routing-bed39e3267b3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/promotion-hydration-dbbbeaa50b63.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/model-comment-dismissals-af89367402c4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/client-pending-request-658d3f21220e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/discovery-8be08e39cda5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/aeon-created-thread-status-c605d1e4b680.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/state-cfb1267fc3f5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/bookmarked-conversation-turns-ac0e75ebe1c3.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/codex-writing-block-edits-7873bf5bdbc1.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/mcp-authentication-start-error-1df7cb18fcdc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/session-tab-opener-8a1a078d586a.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/keyboard-modifier-state-bridge-b877e6940483.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/personal-settings-access-6444aab949ce.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/workspace-directory-6033d09344b7.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/notification-sound-audio-964fa4c052a9.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/downloads-view-service-4952674649f5.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/connect-app-host-90a50ca9e4b4.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/external-agent-imported-connectors-1e5fa110739d.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/should-include-thread-in-discovery-1b8e82164ce2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/eligibility-82218c5484ee.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/defaults-930c9f21f410.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-theme-6958a674b836.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/app-theme-c4609c25be6b.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-theme-4fb124c0ce14.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/pending-mcp-server-elicitation-signals-22c2f55544fc.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/computer-use-app-approval-request-5a243e46bb57.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/computer-use-app-approval-state-49baf1e06dbe.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/uniqWith-7f5a9246cd87.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/chatgpt-browser-legacy-product-event-names-a7690151b644.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/get-default-branch-name-80c944ee057e.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/thread-handoff-composer-block-state-1f2416dcad1c.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/sync-thread-git-branch-if-primary-repo-161c598504fa.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/git-repository-ddfe3db5afec.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/managed-worktrees-5d5fffb88442.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/threads-send-message-3fc80dc15fca.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/get-move-to-local-targets-ac97956619eb.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/pasted-link-connect-analytics-49cfd37089e2.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/required-app-analytics-d2885e5da8df.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/local-conversation-external-resources-2f755808a280.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/local-conversation-artifacts-model-6e029029f851.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/elicitation-persist-86ea44b66749.js"
+    },
+    {
+      "entry": {
+        "file": "initialize-app-host-services-5891c906a171.js",
+        "init": "t"
+      },
+      "url": "https://offline.invalid/send-follow-up-message-ef6b856b0b48.js"
+    }
+  ],
+  "limits": [
+    "Microsoft Edge renderer, not archived Electron runtime; visual parity unproven",
+    "Original pL and MessagePort RPC with synthetic Host/Services; direct in-renderer port handoff replaces Electron preload/main transfer",
+    "Optional services deliberately absent; does not establish full page requirements",
+    "No full app entry or target user data",
+    "OS network denied plus offline context and digest-bound local JS/CSS allowlist",
+    "Initializer success is not page or UI acceptance"
+  ]
+}

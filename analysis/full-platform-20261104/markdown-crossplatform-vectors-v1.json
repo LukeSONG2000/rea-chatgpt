@@ -1,0 +1,684 @@
+{
+  "status": "partial",
+  "source": "iOS 1.2026.293 original Markdown module closure",
+  "bundle_sha256": "df321c0d4ab9151ccaae57cbe6f161158c184d3c429b0fc119f8ce6eab68c88b",
+  "limits": [
+    "Captured behavior, not a complete Markdown specification",
+    "Android equivalent module is bytecode; no semantic equality claim",
+    "UIKit layout/interaction is a separate gate"
+  ],
+  "cases": [
+    {
+      "id": "unicode",
+      "input": "中文 😀 é العربية",
+      "iosArtifactBlocks": [
+        {
+          "kind": "paragraph",
+          "text": "中文 😀 é العربية",
+          "level": 0,
+          "inlines": [
+            {
+              "text": "中文 😀 é العربية",
+              "bold": false,
+              "italic": false,
+              "code": false,
+              "link": false
+            }
+          ]
+        }
+      ],
+      "androidVerification": "not-executed",
+      "nativePresentation": "not-accepted"
+    },
+    {
+      "id": "inlines",
+      "input": "**bold** *italic* `code` [link](https://example.invalid)",
+      "iosArtifactBlocks": [
+        {
+          "kind": "paragraph",
+          "text": "**bold** *italic* `code` [link](https://example.invalid)",
+          "level": 0,
+          "inlines": [
+            {
+              "text": "bold",
+              "bold": true,
+              "italic": false,
+              "code": false,
+              "link": false
+            },
+            {
+              "text": " ",
+              "bold": false,
+              "italic": false,
+              "code": false,
+              "link": false
+            },
+            {
+              "text": "italic",
+              "bold": false,
+              "italic": true,
+              "code": false,
+              "link": false
+            },
+            {
+              "text": " ",
+              "bold": false,
+              "italic": false,
+              "code": false,
+              "link": false
+            },
+            {
+              "foldParagraphLineBreaks": true,
+              "bold": false,
+              "italic": false,
+              "code": true,
+              "link": false,
+              "text": "code"
+            },
+            {
+              "text": " ",
+              "bold": false,
+              "italic": false,
+              "code": false,
+              "link": false
+            },
+            {
+              "text": "link",
+              "bold": false,
+              "italic": false,
+              "code": false,
+              "link": true,
+              "href": "https://example.invalid",
+              "linkEnd": true
+            }
+          ]
+        }
+      ],
+      "androidVerification": "not-executed",
+      "nativePresentation": "not-accepted"
+    },
+    {
+      "id": "fence",
+      "input": "```swift\nlet local = true\n```",
+      "iosArtifactBlocks": [
+        {
+          "kind": "code",
+          "text": "let local = true\n",
+          "level": 0,
+          "inlines": [],
+          "language": "swift"
+        }
+      ],
+      "androidVerification": "not-executed",
+      "nativePresentation": "not-accepted"
+    },
+    {
+      "id": "aligned-table",
+      "input": "| A | B | C |\n| :--- | :---: | ---: |\n| x | **y** | [z](https://example.invalid) |",
+      "iosArtifactBlocks": [
+        {
+          "kind": "table",
+          "text": "",
+          "level": 0,
+          "inlines": [],
+          "table": {
+            "headers": [
+              {
+                "text": "A",
+                "inlines": [
+                  {
+                    "text": "A",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "B",
+                "inlines": [
+                  {
+                    "text": "B",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "C",
+                "inlines": [
+                  {
+                    "text": "C",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              }
+            ],
+            "rows": [
+              [
+                {
+                  "text": "x",
+                  "inlines": [
+                    {
+                      "text": "x",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "**y**",
+                  "inlines": [
+                    {
+                      "text": "y",
+                      "bold": true,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "[z](https://example.invalid)",
+                  "inlines": [
+                    {
+                      "text": "z",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": true,
+                      "href": "https://example.invalid",
+                      "linkEnd": true
+                    }
+                  ]
+                }
+              ]
+            ],
+            "alignments": [
+              0,
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "androidVerification": "not-executed",
+      "nativePresentation": "not-accepted"
+    },
+    {
+      "id": "nested-list",
+      "input": "1. first\n   - nested\n2. second",
+      "iosArtifactBlocks": [
+        {
+          "kind": "list",
+          "text": "",
+          "level": 0,
+          "inlines": [],
+          "items": [
+            {
+              "marker": "1.",
+              "blocks": [
+                {
+                  "kind": "paragraph",
+                  "text": "first",
+                  "level": 0,
+                  "inlines": [
+                    {
+                      "text": "first",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "kind": "list",
+                  "text": "",
+                  "level": 0,
+                  "inlines": [],
+                  "items": [
+                    {
+                      "marker": "-",
+                      "blocks": [
+                        {
+                          "kind": "paragraph",
+                          "text": "nested",
+                          "level": 0,
+                          "inlines": [
+                            {
+                              "text": "nested",
+                              "bold": false,
+                              "italic": false,
+                              "code": false,
+                              "link": false
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "ordered": false
+                }
+              ]
+            },
+            {
+              "marker": "2.",
+              "blocks": [
+                {
+                  "kind": "paragraph",
+                  "text": "second",
+                  "level": 0,
+                  "inlines": [
+                    {
+                      "text": "second",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "ordered": true,
+          "start": 1
+        }
+      ],
+      "androidVerification": "not-executed",
+      "nativePresentation": "not-accepted"
+    },
+    {
+      "id": "quote",
+      "input": "> quoted\n>\n> **bold**",
+      "iosArtifactBlocks": [
+        {
+          "kind": "quote",
+          "text": "quoted\n\n**bold**",
+          "level": 0,
+          "inlines": [],
+          "blocks": [
+            {
+              "kind": "paragraph",
+              "text": "quoted",
+              "level": 0,
+              "inlines": [
+                {
+                  "text": "quoted",
+                  "bold": false,
+                  "italic": false,
+                  "code": false,
+                  "link": false
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "text": "**bold**",
+              "level": 0,
+              "inlines": [
+                {
+                  "text": "bold",
+                  "bold": true,
+                  "italic": false,
+                  "code": false,
+                  "link": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "androidVerification": "not-executed",
+      "nativePresentation": "not-accepted"
+    },
+    {
+      "id": "incomplete-fence",
+      "input": "```js\nconst pending =",
+      "iosArtifactBlocks": [
+        {
+          "kind": "code",
+          "text": "const pending =",
+          "level": 0,
+          "inlines": [],
+          "language": "js"
+        }
+      ],
+      "androidVerification": "not-executed",
+      "nativePresentation": "not-accepted"
+    },
+    {
+      "id": "wide-table",
+      "input": "| Column 0 | Column 1 | Column 2 | Column 3 | Column 4 | Column 5 | Column 6 | Column 7 | Column 8 | Column 9 | Column 10 | Column 11 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| long content 中文 | long content 中文 | long content 中文 | long content 中文 | long content 中文 | long content 中文 | long content 中文 | long content 中文 | long content 中文 | long content 中文 | long content 中文 | long content 中文 |",
+      "iosArtifactBlocks": [
+        {
+          "kind": "table",
+          "text": "",
+          "level": 0,
+          "inlines": [],
+          "table": {
+            "headers": [
+              {
+                "text": "Column 0",
+                "inlines": [
+                  {
+                    "text": "Column 0",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 1",
+                "inlines": [
+                  {
+                    "text": "Column 1",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 2",
+                "inlines": [
+                  {
+                    "text": "Column 2",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 3",
+                "inlines": [
+                  {
+                    "text": "Column 3",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 4",
+                "inlines": [
+                  {
+                    "text": "Column 4",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 5",
+                "inlines": [
+                  {
+                    "text": "Column 5",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 6",
+                "inlines": [
+                  {
+                    "text": "Column 6",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 7",
+                "inlines": [
+                  {
+                    "text": "Column 7",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 8",
+                "inlines": [
+                  {
+                    "text": "Column 8",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 9",
+                "inlines": [
+                  {
+                    "text": "Column 9",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 10",
+                "inlines": [
+                  {
+                    "text": "Column 10",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              },
+              {
+                "text": "Column 11",
+                "inlines": [
+                  {
+                    "text": "Column 11",
+                    "bold": false,
+                    "italic": false,
+                    "code": false,
+                    "link": false
+                  }
+                ]
+              }
+            ],
+            "rows": [
+              [
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "text": "long content 中文",
+                  "inlines": [
+                    {
+                      "text": "long content 中文",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                }
+              ]
+            ],
+            "alignments": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "androidVerification": "not-executed",
+      "nativePresentation": "not-accepted"
+    }
+  ]
+}

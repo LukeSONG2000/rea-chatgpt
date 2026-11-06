@@ -1,0 +1,77 @@
+{
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "static argument flow and layout inference",
+  "render_state": {
+    "descriptor": "0x95aca30",
+    "fields": [
+      {
+        "index": 0,
+        "name": "inProgressItemIDs",
+        "type": "0x8f2ffe0"
+      },
+      {
+        "index": 1,
+        "name": "inProgressWebSearchItemID",
+        "type": "0x8e152cc"
+      },
+      {
+        "index": 2,
+        "name": "automaticApprovalReviewsByRenderedItemID",
+        "type": "0x8e152d4"
+      },
+      {
+        "index": 3,
+        "name": "inlinePlan",
+        "type": "0x8e11c14"
+      },
+      {
+        "index": 4,
+        "name": "toolActivity",
+        "type": "0x8e150cc"
+      },
+      {
+        "index": 5,
+        "name": "workingStartedAt",
+        "type": "0x8da8240"
+      },
+      {
+        "index": 6,
+        "name": "thinkingSummaryText",
+        "type": "0x8bc9970"
+      },
+      {
+        "index": 7,
+        "name": "previousMessagesToggle",
+        "type": "0x8e152e8"
+      }
+    ]
+  },
+  "predicate": {
+    "render_state_access": "HistoryFragment.fragment via slot0x38; Fragment.renderState via slot0x28 helper0x766fc8",
+    "optional_id": "0x1a39d44 reads tag at +0x18; 0xff branches to false at 0x1a3a14c",
+    "present_id": "0x1a39d50 loads +0x8 payload to x3/x4, helper0x1d88558 loads rendered item identity to x0/x1/w2",
+    "compare": "0x1a39d58 calls0x2468594; enum/payload comparison: 0x298f8 returns false and 0x3aea8 returns true",
+    "consumer": "w20 passed as boolean to formatter0x1a3ac48 at0x1a3a16c",
+    "inference": "second RenderState field is inProgressWebSearchItemID; expected optional 17-byte identity after pointer-sized set; absolute layout not independently executed"
+  },
+  "integration": "Explicit synthetic inProgressWebSearchItemID in task projection, compared to displayed activity ID. No inference from task running status. Host A review fixture active; host B nil.",
+  "limitations": [
+    "No real service lifecycle or streaming update",
+    "No proof of count/query formatter reconstruction",
+    "Chinese adapter copy not recovered localization",
+    "No official runtime execution or Android parity",
+    "Fixture task projection is independent, not an official task schema"
+  ],
+  "validation": {
+    "test": "testRemoteTaskScopeAndReturn",
+    "passed": 1,
+    "failed": 0,
+    "coverage": "Host A active search label; host B nil active ID gives completed label; independent group expansion and host isolation retained",
+    "screenshot_inspected": "ios-remote-v325-screenshots/A9D05490-02AC-48F8-89D4-AA079F0894F4.png",
+    "preview_pid": 64224,
+    "phone_updated": false
+  }
+}

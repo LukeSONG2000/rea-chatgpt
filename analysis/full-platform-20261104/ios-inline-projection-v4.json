@@ -1,0 +1,26 @@
+{
+  "status": "partial",
+  "classification": "independent-native-inline-projection-of-official-parser-output",
+  "build": "ios-build-v4.log: BUILD SUCCEEDED",
+  "verified": [
+    "Inline semantic projection preserves Unicode text, bold/italic/code booleans and link href",
+    "Non-link href does not create a link",
+    "Existing scope and table shape checks passed"
+  ],
+  "implemented": [
+    "Native attributed text for paragraph/heading spans",
+    "HTTP(S) links routed to explicit offline host alert; native default navigation suppressed"
+  ],
+  "limits": [
+    "UIKit display/link delegate not runtime tested",
+    "Table cells still use raw cell text without inline formatting",
+    "Links to non-HTTP schemes remain plain text",
+    "Full inline schema, nested entities, accessibility and Dynamic Type updates unaccepted",
+    "No official link opening behavior equivalence claim"
+  ],
+  "sources": {
+    "implementation/ios/Sources/DraftStore.swift": "da90a1b1221c6f890dd6cd4671edf6eb51be2b74557284be5214e74f8edc1f5b",
+    "implementation/ios/Sources/OfficialMarkdown.swift": "028e9769885be5d0474fd6d0ba986bf90ed780e3a2bec6de723e7f6023e684ae",
+    "implementation/ios/Sources/NativeConversationHost.swift": "049a896d23866718cab3f1e467aa8bb21c5365e4f266025f07fc7e99bd838a46"
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "schema": "rea-ios-component-findings-v1",
+  "batch": "v444",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "kind": "blocking_source_research",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "integration_decision": "Restore the ordinary Remote composer from its own field configuration and mode policy, not from the Chat screenshot or a generic text box.",
+  "observations": [
+    {
+      "evidence_type": "shipped_artifact_static_observation",
+      "conclusion": "Ordinary composer content contains a GlassEffectContainer branch and native compact/expanded field construction. Glass branch selection and effective parent style remain partial.",
+      "locations": [
+        "0x19821f4",
+        "0x19827d0",
+        "0x1982b60",
+        "0x198328c",
+        "0x1983814",
+        "0x1984534",
+        "0x1984fa0",
+        "0x1987cac",
+        "0x1988b54"
+      ]
+    },
+    {
+      "evidence_type": "shipped_artifact_static_observation",
+      "conclusion": "Both compact and expanded field builders obtain the body font through a shared factory.",
+      "locations": [
+        "0x198825c",
+        "0x74e2728",
+        "0x74e2714",
+        "binding 0xaad38d8"
+      ],
+      "official_value": "SwiftUI.Font.TextStyle.body",
+      "limit": "UIKit font resolution, dynamic type and effective device appearance require separate validation."
+    },
+    {
+      "evidence_type": "shipped_artifact_static_observation",
+      "conclusion": "Remote minimum-height helper reads MessageInputStyle.input.minHeight, not an arbitrary screenshot-derived frame.",
+      "locations": [
+        "0x1988280",
+        "0x1987f34",
+        "0x1989360"
+      ],
+      "default_source": {
+        "style_initializer": "0x60810f8",
+        "input_initializer_call": "0x60812a8 -> 0x6080bc4",
+        "min_height_store": "0x6080c1c..0x6080c24"
+      },
+      "default_values": {
+        "insets": {
+          "top": 12,
+          "leading": 16,
+          "bottom": 12,
+          "trailing": 8
+        },
+        "scrollIndicatorInsets": {
+          "top": 22,
+          "leading": 0,
+          "bottom": 34,
+          "trailing": 0
+        },
+        "minHeight": 44,
+        "minHeightDoubleLineLayout": 44,
+        "maxHeight": 200,
+        "maxHeightVerticalCompact": 100
+      },
+      "limit": "Defaults only. The complete Remote caller override and max-height selection are not closed; do not treat all numbers as final geometry."
+    },
+    {
+      "evidence_type": "static_inference",
+      "conclusion": "Mode tags below 2 select compact behavior; tag 2 selects expanded behavior. The selector considers several state sources, not focus alone.",
+      "locations": [
+        "0x19872a8..0x19873c8",
+        "0x19895bc..0x19895c4"
+      ],
+      "named_inputs": [
+        "__isHoldingExpandedComposerAfterSubmission",
+        "isPlanModeEnabled",
+        "isLoadingAttachments",
+        "attachmentErrorMessage",
+        "whisperComponent",
+        "isRunningTurn"
+      ],
+      "unresolved_helpers": [
+        "0x197cf88 focus Binding bridge",
+        "0x19874b8 attachment/context predicate",
+        "0x1980fd0 optional string state",
+        "0x1980c1c lazy state contents"
+      ],
+      "limit": "No recovered enum case names; helper predicates and state producers are not all closed."
+    },
+    {
+      "evidence_type": "shipped_artifact_static_observation",
+      "conclusion": "Remote content-insets helper changes leading inset to 2 for compact tags and 16 for expanded tags, preserving top and bottom style values.",
+      "locations": [
+        "0x19882e4"
+      ],
+      "limit": "Expanded trailing adjustment 0x198a548 and outer padding are unresolved; these values cannot specify the entire composer."
+    }
+  ],
+  "downstream_change": "Implement one persistent native editor with compact presentation, scoped draft/actions and source-bound style configuration inside the Remote thread bottom bar. Keep request-bound user-input and approval components distinct.",
+  "next_minimum_evidence": [
+    {
+      "decision": "Expanded/compact editor containment and actual normal-row placement",
+      "locations": [
+        "0x1989d34",
+        "0x1992ab0",
+        "0x1ced4d4"
+      ]
+    },
+    {
+      "decision": "Effective height/insets before mounting the input",
+      "locations": [
+        "0x1989b0c",
+        "0x198a548",
+        "0x1981448"
+      ]
+    },
+    {
+      "decision": "Primary submit/stop action gate and submission mode",
+      "locations": [
+        "0x198a620",
+        "CodexRemotePromptSubmissionMode",
+        "handleMessageInputAction"
+      ]
+    }
+  ],
+  "validation": {
+    "evidence_json_parse": "passed",
+    "font_binding": "passed",
+    "literal_min_height_decode": "passed",
+    "default_constant_decode": "passed",
+    "host_changed": false,
+    "ui_runtime": "not_run",
+    "device_install": "not_run",
+    "runtime_blocker": "Existing first-launch installer PID 97197 and runner PID 97181 still live; old preview PID 87483 retained. Authorization blocker previously established; not re-probed or bypassed."
+  },
+  "limits": [
+    "No ordinary Remote composer integrated in this batch.",
+    "No visual or behavioral parity claim.",
+    "Android native editor and layout need independent evidence.",
+    "Defaults and local Swift action metadata are not a cloud API schema."
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-composer-content.json",
+      "sha256": "1732f3592b53b92fe681a0c1094064c7ab6e39303c8afe25c950401b9660e6e2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-composer-controls.json",
+      "sha256": "af259202a5179fc524e63aa133484073c49dab0972836a0c7e9a8482cd99fee2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-composer-layout-children.json",
+      "sha256": "f6fe540b2ac17cdf28e269535400689ab022118499ce4011a441d47155837d0c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-default-values.json",
+      "sha256": "88b61b15dbcff95ca2d829e2fbe1fbf3816d41873ad52a495ae912bd45851035"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-editor-row.json",
+      "sha256": "23f3c83612cd3d95458787fce335b30088596a44dda7c5c827664b4d75ad2a4b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-field-configuration.json",
+      "sha256": "c795b4b1a35046f58c207b9f04d737f853ca2691f42ce444d107cc41f05fd147"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-field-metrics.json",
+      "sha256": "265f1980b43ab9d690c7137614b0ace7d73255fd20c14d9123ec485a5f32a294"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-layout-types.json",
+      "sha256": "079ed0634936f99cab3d2536b227512198f1a6012b076111da7a20377a6c628b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-mode-defaults.json",
+      "sha256": "65bb59c8210ca64521c983a207f3cbf56d0477553bbb68e83ed619af17007c51"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-row-types.json",
+      "sha256": "fce3dd71394ae3e0d14e6b7237b2d430b430922ce504049fd0905a855ada8c6c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-style-input-fields.json",
+      "sha256": "c6bde9567bfc84630629b2d9e20e39389e0889cfe83426c2e082b0c12f56b913"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v444-style-input-type.json",
+      "sha256": "47a84d76ff3d805032bbe56788408b76149ec0407528be714876146bb5ca7655"
+    }
+  ]
+}

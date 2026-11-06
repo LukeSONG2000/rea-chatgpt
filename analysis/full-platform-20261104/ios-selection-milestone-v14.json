@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "reference_baseline": "1.2026.293 reference; independent UIKit host with native UITextView selection",
+  "evidence_type": "independent-native-system-interaction-runtime",
+  "runtime": {
+    "architecture": "arm64",
+    "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "deviceName": "REA ChatGPT Offline",
+    "modelName": "iPhone 17 Pro",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "verified": [
+    "Exact request identity locates the newly generated fixture reply",
+    "Long press first word, drag native trailing selection handle to full line",
+    "System Copy and Paste produce exact Local fixture reply in editor",
+    "A/B/A preserves pasted draft",
+    "Selection and pasted screenshots reviewed; simulator test clipboard cleared afterward"
+  ],
+  "test_result": {
+    "bundle": "analysis/full-platform-20261104/ios-selection-v4.xcresult",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "failure_review": {
+    "v1": "Focused runner initially used incorrect target name; corrected to actual REAHostUITests",
+    "v2": "Element-center press and Android-style Select All assumption failed",
+    "v3": "Word press correctly exposed Copy/Look Up/Translate; no visible Select All; screenshot retained",
+    "v4": "Native selection-handle drag succeeded; exact pasted content verified"
+  },
+  "test_runner_changes": [
+    "Optional focused test method selection",
+    "Focused runs verify expected passed count with no skipped/failed tests",
+    "Verbose sysdiagnose collection disabled; xcresult and attachments retained"
+  ],
+  "limitations": [
+    "Short single-line text at default font on iPhone 17 Pro simulator only",
+    "No physical iPhone acceptance",
+    "No cross-block/table/code selection, Dynamic Type handle geometry or selection retention during streaming",
+    "No new composing-range/candidate-replacement or accessibility acceptance",
+    "XCTest emitted a UTF-8 hierarchy encoding warning in failed runs; cause remains unverified; original logs retained",
+    "No official visual fidelity claim"
+  ],
+  "source_and_evidence_sha256": {
+    "implementation/ios/UITests/HostInteractionTests.swift": "7c04a597dce0235acae597c65de85545c3071117dd5ded27c2cc9b4e3b86c1ab",
+    "implementation/ios/test-ui.py": "817ae1b8c86a832503e3eb201c462b74e09274e9636d99b82ef197cbdc4dfed4",
+    "implementation/ios/Sources/NativeConversationHost.swift": "e3b7cd05f226cb04446c6862dd4d8d87a0ebf63edc035c851df5aca003cac1d3",
+    "analysis/full-platform-20261104/ios-selection-v1.log": "fbb93e0a913db1fc8cea232599b722683ececb9310fccdc69b23101dcac689e3",
+    "analysis/full-platform-20261104/ios-selection-v2.log": "a5c5a42946fd2ba863f01e1de26eb323dd7c11570767af5eb1023befffa69117",
+    "analysis/full-platform-20261104/ios-selection-v3.log": "d8d89059a0cd85d05ae9dd309aa24a42795c6e76f1e7436799bb6a8c2de907f5",
+    "analysis/full-platform-20261104/ios-selection-v4.log": "90a4e4e07f5f6c7c5c526070a1f602efeb9c717987733048e42266507801b537",
+    "analysis/full-platform-20261104/ios-selection-v4.summary.json": "5992c31aa00084558b77ed825108947c81e4ebdd0fd6b2038a8e81da1eab85f1",
+    "analysis/full-platform-20261104/ios-selection-v4-attachments/manifest.json": "badfc6860ea462478e33cffaa2a11640915c770f40f00c81d64d37e24cb0acfc",
+    "analysis/full-platform-20261104/ios-selection-v4-attachments/native-reply-selection.png": "67e631e0558ed9fd72d8552979417519167f06bb75c2ae52c4fca638b3925cc4",
+    "analysis/full-platform-20261104/ios-selection-v4-attachments/native-reply-pasted.png": "01b3cecdaf0508ed2af19117aafba2ff6c4f95ba04ff4101651f4a4d772c427a"
+  },
+  "next_action": "iOS keyboard/selection while stream updates; inspect Unicode AX encoding warning independently"
+}

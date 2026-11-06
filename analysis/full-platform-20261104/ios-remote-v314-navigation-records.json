@@ -1,0 +1,154 @@
+{
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "types": [
+    {
+      "descriptor": "0x955e4fc",
+      "name": "NavigationDestination",
+      "fields": [
+        {
+          "name": "codexRemoteNewThread",
+          "record": "0x99d6aa4",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8bca312",
+            "length": 12,
+            "mangled_hex": "02d5bdee0179020fdfee0147",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab60e8",
+                "resolved_context": "0x975eec4",
+                "label": "SwiftToolbelt.Reference"
+              },
+              {
+                "offset": 6,
+                "kind": 2,
+                "target": "0xaab8228",
+                "resolved_context": "0x95aa210",
+                "label": "CodexRemoteThread.CodexRemoteNewThreadViewModel"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "codexRemoteThread",
+          "record": "0x99d6ab0",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8bca320",
+            "length": 12,
+            "mangled_hex": "02c7bdee01790239dfee0147",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab60e8",
+                "resolved_context": "0x975eec4",
+                "label": "SwiftToolbelt.Reference"
+              },
+              {
+                "offset": 6,
+                "kind": 2,
+                "target": "0xaab8260",
+                "resolved_context": "0x95aa8a4",
+                "label": "CodexRemoteThread.CodexRemoteThreadViewModel"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "descriptor": "0x955eecc",
+      "name": "ID",
+      "fields": [
+        {
+          "name": "remote",
+          "record": "0x99d7a5c",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8bca1dc",
+            "length": 5,
+            "mangled_hex": "0203cdee01",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab6ee0",
+                "resolved_context": "0x95d1798",
+                "label": "CodexRemoteCore.CodexRemoteTaskListItem.ID"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "descriptor": "0x955e6d4",
+      "name": "TaskSourceFilter",
+      "fields": [
+        {
+          "name": "remoteHost",
+          "record": "0x99d66b4",
+          "type": {
+            "artifact": {
+              "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+              "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+            },
+            "type_record": null,
+            "mangled_address": "0x8bca178",
+            "length": 5,
+            "mangled_hex": "0237cdee01",
+            "references": [
+              {
+                "offset": 0,
+                "kind": 2,
+                "target": "0xaab6eb0",
+                "resolved_context": "0x95d1538",
+                "label": "CodexRemoteCore.CodexRemoteHostIdentity"
+              }
+            ],
+            "unresolved_contexts": [],
+            "limits": [
+              "Symbolic context references only, not a reconstructed generic type tree",
+              "Type presence does not prove runtime branch selection or component creation"
+            ]
+          }
+        },
+        {
+          "name": "all",
+          "record": "0x99d66c0",
+          "type": null
+        }
+      ]
+    }
+  ]
+}

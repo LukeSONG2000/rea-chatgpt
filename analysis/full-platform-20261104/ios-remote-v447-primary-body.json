@@ -1,0 +1,69 @@
+{
+  "0x606bf58": {
+    "status": "partial",
+    "authority": "shipped-artifact-static-instructions",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "window": {
+      "start": "0x606bf58",
+      "end_exclusive": "0x606bf5c",
+      "sha256": "9094484c5de8156c4808d02f1a9c476dcdd96f1c98cab4e26b507dfd4a5a9550"
+    },
+    "linker_function_starts_in_window": [
+      "0x606bf58"
+    ],
+    "next_linker_function_start": "0x606bf5c",
+    "direct_calls": [],
+    "adjacent_selector_loads": [],
+    "limits": [
+      "Window is not a proven function boundary",
+      "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+      "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+    ],
+    "asm": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 606bf58: 17fff5ec     \tb\t0x6069708 <__text+0x6041708>\n"
+  },
+  "icon_cases": [
+    {
+      "index": 0,
+      "name": "send"
+    },
+    {
+      "index": 1,
+      "name": "save"
+    },
+    {
+      "index": 2,
+      "name": "start"
+    },
+    {
+      "index": 3,
+      "name": "next"
+    },
+    {
+      "index": 4,
+      "name": "search"
+    },
+    {
+      "index": 5,
+      "name": "voice"
+    },
+    {
+      "index": 6,
+      "name": "continue"
+    },
+    {
+      "index": 7,
+      "name": "stop"
+    },
+    {
+      "index": 8,
+      "name": "retry"
+    },
+    {
+      "index": 9,
+      "name": "settings"
+    }
+  ]
+}

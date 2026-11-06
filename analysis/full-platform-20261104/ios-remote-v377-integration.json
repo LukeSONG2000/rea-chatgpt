@@ -1,0 +1,49 @@
+{
+  "status": "partial",
+  "artifact": {
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "version": "iOS 1.2026.293"
+  },
+  "evidence_type": "shipped-artifact-static",
+  "title_font": {
+    "call": "0x3a43e0",
+    "factory": "0x74e2728",
+    "initializer": "0x74e2714",
+    "binding": {
+      "symbol": "_$s7SwiftUI4FontV9TextStyleO4bodyyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9712,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "limit": "Confirms body style selection; custom font conversion 0x74e2ee8 remains partially resolved."
+  },
+  "line_limit": {
+    "store": "0x3a4488..0x3a4490",
+    "value": 1,
+    "optional_is_none": false,
+    "key_path": "0x7cfb340",
+    "getter_relative_record": "0x7cfb368",
+    "getter": "0x1a9d00",
+    "setter": "0x1a9d2c",
+    "resolved": "SwiftUI.EnvironmentValues.lineLimit",
+    "evidence": "ios-remote-v377-title-line-limit.json"
+  },
+  "integration": "Text(task.title).font(.body).lineLimit(1)",
+  "remaining": [
+    "Status parent font unresolved; title body is not automatically status body.",
+    "Whole-list containment and geometry incomplete.",
+    "Long-title and accessibility-size runtime acceptance not yet covered."
+  ],
+  "validation": {
+    "test": "testRemoteTaskScopeAndReturn passed 1/0",
+    "screenshot": "ios-remote-v377-screenshots/308EA67A-91C6-4005-81EB-ACE8112E103D.png inspected; short fixture titles unaffected",
+    "preview_pid": 85294,
+    "phone_updated": false,
+    "external_display_reverified": false,
+    "long_titles": "not yet runtime accepted",
+    "retention": "no stale targets"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-05",
+  "status": "partial",
+  "authority": "independent-native-host-recovery-UX",
+  "product": "Codex",
+  "version": "26.1021.31345",
+  "runtime": "macos-recovery-v100-menu-v2.json",
+  "implemented": [
+    "Native File > Local Drafts menu",
+    "Native dialog: keep, next, restore, explicit discard confirmation",
+    "Unresolved submission does not offer automatic restore",
+    "Discard compares entire current snapshot against displayed record; mutation while confirmation open fails",
+    "Discard removes only local recovery copy and returns to source chat; history/request untouched",
+    "Restoration wired through scoped preload event to original branch initializer and actual composer"
+  ],
+  "verified": [
+    "Controlled native MenuItem plus injected dialog response triggers complete original-renderer restoration",
+    "Cancellation and stale-confirmation rejection in dialog controller tests",
+    "Pending-store, native-menu, settlement and disk-failure regressions passed"
+  ],
+  "correction": {
+    "earlier_runtime": "macos-recovery-v100-menu.json",
+    "failure": "Preload MessageEvent omitted source/origin; guarded listener rejected it",
+    "fix": "Authenticated main-to-preload delivery now dispatches with local window and origin"
+  },
+  "limits": [
+    "Native dialog response injected, physical menu and dialog display unaccepted",
+    "Independent host UX is not claimed as recovered official dialog",
+    "Automatic startup restoration still opt-in",
+    "Rich drafts, device interaction, interrupted submission resolution remain open"
+  ],
+  "next_action": "Validate discard through native controller against live snapshot mutation, then advance remaining platform/frontend gaps rather than mark whole plan complete",
+  "sources": [
+    {
+      "file": "analysis/tools/desktop-pending-dialog.cjs",
+      "sha256": "097b47ad7a2c4ec26e9924b37b532773d50c9f34598517a6f3b8ae928e36db5a"
+    },
+    {
+      "file": "analysis/tools/desktop-pending-branch-store.cjs",
+      "sha256": "2841152f587c84ff39e6f2d829d3cd1525569081af03c87d860cfd608933c51c"
+    },
+    {
+      "file": "analysis/tools/desktop-native-menu.cjs",
+      "sha256": "db2857c1c35dd7451aef50254397a330f6d28f611a9a497e11c07402d916011f"
+    },
+    {
+      "file": "analysis/tools/desktop-native-host.cjs",
+      "sha256": "44ae7ccf22f46836d996363b0a30b666b9fbb05f493a700eed9c8a488e7a80c2"
+    },
+    {
+      "file": "analysis/tools/desktop-native-preload.cjs",
+      "sha256": "a46c4bb8747c4ebb9ac3d004fb82981e97b63ceb16664dd03c582ab42761174f"
+    },
+    {
+      "file": "analysis/tools/probe_desktop_root_mount.cjs",
+      "sha256": "cfc71be55c3bc2d885607ca9036428cd4a4a6fa2caa9145dcf1bb2d3afb95790"
+    },
+    {
+      "file": "analysis/tools/test_desktop_pending_dialog.cjs",
+      "sha256": "3bf6294837a69340c4035feae6415bc41e7461a2cc7a0164011adda342509996"
+    }
+  ]
+}

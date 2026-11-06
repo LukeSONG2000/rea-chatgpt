@@ -1,0 +1,32 @@
+{
+  "status": "partial",
+  "scope": "Shared chat/image composer alignment and chat/work mode preservation",
+  "runtime": "desktop-composer-v178-metrics.json",
+  "observed": {
+    "textLineCenter": 754,
+    "buttonCenter": 758,
+    "offsetCSSPixels": 4,
+    "editorHeight": 36,
+    "buttonHeight": 28,
+    "footerAlignment": "end"
+  },
+  "staticEvidence": [
+    "app-initial CSS resets --composer-editor-single-line-height to initial; editor fallback is 36px.",
+    "comfortable density sets editor height to the composer button token.",
+    "Original app-primary has homeComposerMode chat/work branches; current fixture follows ChatGPT chat route."
+  ],
+  "conclusions": [
+    "Mismatch is measurable in layout boxes, not only font appearance.",
+    "Do not force every input to a taller work composer; preserve chat and work separately."
+  ],
+  "nextActions": [
+    "Trace density and theme token assignment for the shared ComposerLayoutRoot.",
+    "Verify image and chat inputs, empty/typed/multiline layouts after correction.",
+    "Trace work-mode owner/model/permission dependencies before exposing supported detailed controls."
+  ],
+  "limits": [
+    "Image route geometry not yet measured; supplied screenshot shows similar symptom.",
+    "No alignment fix applied yet.",
+    "No work-mode behavioral acceptance."
+  ]
+}

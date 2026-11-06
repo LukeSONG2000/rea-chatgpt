@@ -1,0 +1,82 @@
+{
+  "status": "partial",
+  "platform": "macos",
+  "baseline": "Codex 26.1021.31345 build 21828 renderer; not ChatGPT desktop product identity",
+  "implementation_origin": "original route notifications and renderer plus independent selected-route persistence",
+  "verified": [
+    "Real sidebar selects B; exact route and draft persist",
+    "Separate process restores B without sidebar click; B draft visible and A generated history absent",
+    "Distinct host PIDs, no pageErrors in restore run",
+    "Strict route/account validation, corruption preservation, symlink rejection; settings and atom regressions pass"
+  ],
+  "runtime": {
+    "write": {
+      "phase": "write",
+      "status": "passed",
+      "startupRoute": "/c/offline-fixture-conversation-001",
+      "savedRoute": "/c/offline-fixture-conversation-002",
+      "hostPID": 46327,
+      "draft": "REA synthetic selected B restart",
+      "owner": {
+        "direction": "from-view",
+        "message": {
+          "annotationModeEnabled": true,
+          "annotationModeLabels": {
+            "artifact": null,
+            "web": null
+          },
+          "conversationId": "offline-fixture-conversation-002",
+          "ownerRoutePath": "/c/offline-fixture-conversation-002",
+          "presentedBrowserTabIds": [],
+          "type": "browser-sidebar-owner-sync"
+        },
+        "status": "selected-route-saved-only"
+      },
+      "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\n离线组件验证\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nChatGPT can make mistakes. Check important info.\nLatest response\n\nREA synthetic selected B restart"
+    },
+    "read": {
+      "phase": "read",
+      "status": "passed",
+      "startupRoute": "/c/offline-fixture-conversation-002",
+      "savedRoute": "/c/offline-fixture-conversation-002",
+      "hostPID": 46408,
+      "draft": "REA synthetic selected B restart",
+      "owner": {
+        "direction": "from-view",
+        "message": {
+          "annotationModeEnabled": true,
+          "annotationModeLabels": {
+            "artifact": null,
+            "web": null
+          },
+          "conversationId": "offline-fixture-conversation-002",
+          "ownerRoutePath": "/c/offline-fixture-conversation-002",
+          "presentedBrowserTabIds": [],
+          "type": "browser-sidebar-owner-sync"
+        },
+        "status": "selected-route-saved-only"
+      },
+      "body": "Skip to content\nChatGPT\nNew chat\nScheduled\nPlugins\nExplore\nProjects\nNo projects\nRecents\n离线组件验证 · A\n离线组件验证 · B\nO\nOffline fixture\nUpgrade\nShare\n离线组件验证\nJan 1, 1970 at 8:00 AM\nYou said:\n展示本地消息组件、代码和表格。\nChatGPT said:\n\n这是合成本地数据，不是在线生成。\n\nJavaScript\nconst mode = 'offline';\n内容\t来源\n消息\t本地夹具\nChatGPT can make mistakes. Check important info.\nLatest response\n\nREA synthetic selected B restart"
+    }
+  },
+  "not_accepted": [
+    "This does not establish the official host uses this persistence policy",
+    "Only two synthetic chat routes supported; no project/new-chat/settings/multiwindow restoration",
+    "Browser owner sync handles selected route only; browser panel/annotation capability remains unavailable",
+    "No crash/power-loss/multiwriter guarantee or official fidelity",
+    "Aggregate mount remains blocked; native OS capture failed independently of renderer screenshot"
+  ],
+  "next_action": "Publish catalog changes after history updates, then implement actual conversation creation/deletion with stable identities and scoped cleanup",
+  "evidence_sha256": {
+    "analysis/tools/desktop-route-store.cjs": "72e9b3427de102976f920875af92a2c4a0254aa825fa764419d1807c61c04831",
+    "analysis/tools/test_desktop_route_store.cjs": "8a443bc1471e320f139e0f6776fef032822e4440f2d4df64b3745d25c2886429",
+    "analysis/tools/desktop-native-host.cjs": "f5a9f38d0afc4c3d2fe6712c9d5bebd2c890505cebad1e0295a5b6ef87766ec0",
+    "analysis/tools/probe_desktop_root_mount.cjs": "1c135c997af059f91c7291adaa93eebd3cb5150ab56c385aba5f0f05167e7c61",
+    "analysis/full-platform-20261104/macos-route-source-v1.json": "0932a687194d514e1ab3825221ad9325d8a5aa0f89bd49069d5b338c6d5b25b6",
+    "analysis/full-platform-20261104/macos-route-unit-v1.log": "4065c6b13d52c21f9bc090e1c983ef273ec8d0c5c6b21ebf415d35b1ad68754d",
+    "analysis/full-platform-20261104/macos-route-settings-regression-v1.log": "6c6dce5b4ad0c5ba6f083f25fbadcbabd34b43eb9d77ca9afe26e0d7993c5b99",
+    "analysis/full-platform-20261104/macos-route-atoms-regression-v1.log": "2ab8b144c73fe5940d809759eb0f5fb1d9aadc1ad54bb2df284e5852b6bb8a61",
+    "analysis/full-platform-20261104/macos-route-write-v1.json": "3884bed7ffe743fabca96b973f5467a808ec027e5a5b078495fdb19afb5939f1",
+    "analysis/full-platform-20261104/macos-route-read-v1.json": "b79a6ba43247eb27c4b565d3681e9bcbd08a37b0f25161228e032c9412869c85"
+  }
+}

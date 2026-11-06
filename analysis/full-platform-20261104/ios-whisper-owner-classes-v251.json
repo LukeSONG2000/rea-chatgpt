@@ -1,0 +1,2319 @@
+{
+  "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "classes": [
+    {
+      "class_address": "0xadd4d08",
+      "class_ro_address": "0xacc6f70",
+      "name": "_TtC14ChatGPTWhisper24ComposerWhisperViewModel",
+      "flags": 192,
+      "instance_start": 16,
+      "instance_size": 832,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2a388",
+          "name": "_isActive",
+          "offset_storage_address": "0x7ded4a8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a3a8",
+          "name": "_pendingResult",
+          "offset_storage_address": "0x7ded4b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a3c8",
+          "name": "_educationActivity",
+          "offset_storage_address": "0xb1c50d8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a3e8",
+          "name": "_usesWaveformRevealUI",
+          "offset_storage_address": "0xb1c50e0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a408",
+          "name": "_isTranscriptExpanded",
+          "offset_storage_address": "0xb1c50e8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a428",
+          "name": "composerVariant",
+          "offset_storage_address": "0xb07d9e0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a448",
+          "name": "usesFullWidthWaveform",
+          "offset_storage_address": "0xb07d9e8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a468",
+          "name": "accountID",
+          "offset_storage_address": "0xb07d9f0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a488",
+          "name": "_hasDictatedDraft",
+          "offset_storage_address": "0xb1c50f0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a4a8",
+          "name": "_dictationSessionID",
+          "offset_storage_address": "0xb1c50f8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a4c8",
+          "name": "_streamingTranscript",
+          "offset_storage_address": "0xb1c5100",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a4e8",
+          "name": "$__lazy_storage_$_isCustomDictionaryEnabled",
+          "offset_storage_address": "0xb1c5108",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a508",
+          "name": "$__lazy_storage_$_longPressDuration",
+          "offset_storage_address": "0xb1c5110",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a528",
+          "name": "_stateStorage",
+          "offset_storage_address": "0xb1c5118",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a548",
+          "name": "draftState",
+          "offset_storage_address": "0xb07d9f8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a568",
+          "name": "session",
+          "offset_storage_address": "0xb07da00",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a588",
+          "name": "_educationOpportunity",
+          "offset_storage_address": "0xb1c5120",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a5a8",
+          "name": "navigationSource",
+          "offset_storage_address": "0xb1c5128",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a5c8",
+          "name": "conversationID",
+          "offset_storage_address": "0xb1c5130",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a5e8",
+          "name": "shouldStoreRecordingInHistory",
+          "offset_storage_address": "0xb1c5138",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a608",
+          "name": "tracksRecordingAnalytics",
+          "offset_storage_address": "0xb1c5140",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a628",
+          "name": "waveformRevealUIEnabled",
+          "offset_storage_address": "0xb1c5148",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a648",
+          "name": "_persistedEducationProgress",
+          "offset_storage_address": "0xb1c5150",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a668",
+          "name": "educationRecordingSessionID",
+          "offset_storage_address": "0xb1c5158",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a688",
+          "name": "educationDidAppear",
+          "offset_storage_address": "0xb1c5160",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a6a8",
+          "name": "_persistedTranscriptExpanded",
+          "offset_storage_address": "0xb1c5168",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a6c8",
+          "name": "dictationConversationContextProvider",
+          "offset_storage_address": "0xb1c5170",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a6e8",
+          "name": "canShowMicrophoneButton",
+          "offset_storage_address": "0xb1c5178",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a708",
+          "name": "defaultTranscriptExpanded",
+          "offset_storage_address": "0xb1c5180",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a728",
+          "name": "canBegin",
+          "offset_storage_address": "0xb1c5188",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a748",
+          "name": "canAutoSend",
+          "offset_storage_address": "0xb1c5190",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a768",
+          "name": "hasSendableStreamingInput",
+          "offset_storage_address": "0xb1c5198",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a788",
+          "name": "recordingPermissionChecker",
+          "offset_storage_address": "0xb1c51a0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a7a8",
+          "name": "acceptPendingSend",
+          "offset_storage_address": "0xb1c51a8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a7c8",
+          "name": "handleEvent",
+          "offset_storage_address": "0xb1c51b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a7e8",
+          "name": "dependencies",
+          "offset_storage_address": "0xb1c51b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a808",
+          "name": "promptResultTracker",
+          "offset_storage_address": "0xb1c51c0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a828",
+          "name": "activationTask",
+          "offset_storage_address": "0xb1c51c8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a848",
+          "name": "activationTaskIdentifier",
+          "offset_storage_address": "0xb1c51d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a868",
+          "name": "isMicrophoneGestureActive",
+          "offset_storage_address": "0xb1c51d8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a888",
+          "name": "hasActivatedRecordingAnalytics",
+          "offset_storage_address": "0xb1c51e0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a8a8",
+          "name": "streamingVariant",
+          "offset_storage_address": "0xb1c51e8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a8c8",
+          "name": "streamingExperimentLayer",
+          "offset_storage_address": "0xb1c51f0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a8e8",
+          "name": "$__lazy_storage_$_isLiveTranscriptionUIEnabled",
+          "offset_storage_address": "0xb1c51f8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a908",
+          "name": "_aggressivelyFinishesStreamingDictation",
+          "offset_storage_address": "0xb1c5200",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a928",
+          "name": "_hasStreamingTranscript",
+          "offset_storage_address": "0xb1c5208",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a948",
+          "name": "$__lazy_storage_$_startingWaveformSamples",
+          "offset_storage_address": "0xb1c5210",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a968",
+          "name": "recordingAnalyticsIdentifiers",
+          "offset_storage_address": "0xb1c5218",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a988",
+          "name": "recordingAnalyticsStartGesture",
+          "offset_storage_address": "0xb1c5220",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a9a8",
+          "name": "pendingLivePreviewToggleCounts",
+          "offset_storage_address": "0xb1c5228",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a9c8",
+          "name": "sessionBag",
+          "offset_storage_address": "0xb1c5230",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2a9e8",
+          "name": "_$observationRegistrar",
+          "offset_storage_address": "0xb1c5238",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2aa08",
+          "name": "$__lazy_storage_$__publisher",
+          "offset_storage_address": "0xb1c5240",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5208",
+      "class_ro_address": "0xab2ab90",
+      "name": "_TtC14ChatGPTWhisper32DefaultCustomDictionaryAPIClient",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 32,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2ab70",
+          "name": "injectedDependencies",
+          "offset_storage_address": "0x7ded7d8",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd52a8",
+      "class_ro_address": "0xab2ad68",
+      "name": "_TtC14ChatGPTWhisper28DefaultCustomDictionaryStore",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 392,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2ac28",
+          "name": "accountID",
+          "offset_storage_address": "0x7ded840",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ac48",
+          "name": "_customDictionaryEntries",
+          "offset_storage_address": "0x7ded848",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ac68",
+          "name": "_customDictionaryEntriesMigratedToServer",
+          "offset_storage_address": "0x7ded850",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ac88",
+          "name": "refreshTask",
+          "offset_storage_address": "0x7ded858",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2aca8",
+          "name": "mutationGeneration",
+          "offset_storage_address": "0x7ded860",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2acc8",
+          "name": "mutationsAwaitingRefresh",
+          "offset_storage_address": "0x7ded868",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ace8",
+          "name": "serverMaximumEntryCount",
+          "offset_storage_address": "0x7ded870",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ad08",
+          "name": "apiClient",
+          "offset_storage_address": "0x7ded878",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ad28",
+          "name": "entriesSubject",
+          "offset_storage_address": "0x7ded880",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ad48",
+          "name": "injectedDependencies",
+          "offset_storage_address": "0x7ded888",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5398",
+      "class_ro_address": "0xacc6fc0",
+      "name": "_TtC14ChatGPTWhisper35DefaultPendingDictationMessageInput",
+      "flags": 192,
+      "instance_start": 16,
+      "instance_size": 312,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2ae00",
+          "name": "metadata",
+          "offset_storage_address": "0x7ded8b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ae20",
+          "name": "additionalUploads",
+          "offset_storage_address": "0x7ded8b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ae40",
+          "name": "stage",
+          "offset_storage_address": "0x7ded8c0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ae60",
+          "name": "transcriptionMetadata",
+          "offset_storage_address": "0x7ded8c8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ae80",
+          "name": "input",
+          "offset_storage_address": "0x7ded8d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2aea0",
+          "name": "selection",
+          "offset_storage_address": "0x7ded8d8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2aec0",
+          "name": "linkPasteBehavior",
+          "offset_storage_address": "0x7ded8e0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2aee0",
+          "name": "draftState",
+          "offset_storage_address": "0x7ded8e8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2af00",
+          "name": "textProcessor",
+          "offset_storage_address": "0x7ded8f0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2af20",
+          "name": "makeTransfer",
+          "offset_storage_address": "0x7ded8f8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2af40",
+          "name": "transfer",
+          "offset_storage_address": "0x7ded900",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2af60",
+          "name": "request",
+          "offset_storage_address": "0x7ded908",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2af80",
+          "name": "initialInput",
+          "offset_storage_address": "0xb1c5248",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2afa0",
+          "name": "resolvedInput",
+          "offset_storage_address": "0xb1c5250",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2afc0",
+          "name": "whisperMessages",
+          "offset_storage_address": "0xb1c5258",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2afe0",
+          "name": "commitWhisperMessages",
+          "offset_storage_address": "0xb1c5260",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b000",
+          "name": "prepareContext",
+          "offset_storage_address": "0xb1c5268",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b020",
+          "name": "retryAction",
+          "offset_storage_address": "0xb1c5270",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b040",
+          "name": "needsRetry",
+          "offset_storage_address": "0xb1c5278",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b060",
+          "name": "hasCompletedTranscription",
+          "offset_storage_address": "0xb1c5280",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b080",
+          "name": "promptResultTracker",
+          "offset_storage_address": "0xb1c5288",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd54d8",
+      "class_ro_address": "0xab2b110",
+      "name": "_TtC14ChatGPTWhisper14DefaultWhisper",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 176,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2b0f0",
+          "name": "injectedDependencies",
+          "offset_storage_address": "0x7ded9d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5588",
+      "class_ro_address": "0xacc7010",
+      "name": "_TtC14ChatGPTWhisper21DefaultWhisperSession",
+      "flags": 192,
+      "instance_start": 16,
+      "instance_size": 296,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2b1a8",
+          "name": "accountID",
+          "offset_storage_address": "0x7ded9e8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b1c8",
+          "name": "_state",
+          "offset_storage_address": "0xb1c5290",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b1e8",
+          "name": "api",
+          "offset_storage_address": "0xb1c5298",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b208",
+          "name": "recorder",
+          "offset_storage_address": "0xb1c52a0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b228",
+          "name": "audioSessionManager",
+          "offset_storage_address": "0xb1c52a8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b248",
+          "name": "microphoneRecordingPermission",
+          "offset_storage_address": "0xb1c52b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b268",
+          "name": "dictationHistoryStore",
+          "offset_storage_address": "0xb1c52b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b288",
+          "name": "idleTimerService",
+          "offset_storage_address": "0xb1c52c0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b2a8",
+          "name": "scopedStatsigClient",
+          "offset_storage_address": "0xb1c52c8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b2c8",
+          "name": "operation",
+          "offset_storage_address": "0xb1c52d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b2e8",
+          "name": "currentRequest",
+          "offset_storage_address": "0xb1c52d8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b308",
+          "name": "cancellingRequest",
+          "offset_storage_address": "0xb1c52e0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b328",
+          "name": "observation",
+          "offset_storage_address": "0xb1c52e8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b348",
+          "name": "networkStateObserver",
+          "offset_storage_address": "0xb1c52f0",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5690",
+      "class_ro_address": "0xacc7060",
+      "name": "_TtC14ChatGPTWhisper26DictationFeedbackViewModel",
+      "flags": 192,
+      "instance_start": 16,
+      "instance_size": 176,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2b3b8",
+          "name": "internalFeedbackSheetBuilder",
+          "offset_storage_address": "0x7deda20",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b3d8",
+          "name": "_isSubmitting",
+          "offset_storage_address": "0x7deda28",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b3f8",
+          "name": "_errorMessage",
+          "offset_storage_address": "0x7deda30",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b418",
+          "name": "recordings",
+          "offset_storage_address": "0x7deda38",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b438",
+          "name": "conversationID",
+          "offset_storage_address": "0x7deda40",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b458",
+          "name": "messageID",
+          "offset_storage_address": "0x7deda48",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b478",
+          "name": "recordingDate",
+          "offset_storage_address": "0xb1c52f8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b498",
+          "name": "api",
+          "offset_storage_address": "0xb1c5300",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b4b8",
+          "name": "userRepository",
+          "offset_storage_address": "0xb1c5308",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b4d8",
+          "name": "onSubmitted",
+          "offset_storage_address": "0xb1c5310",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b4f8",
+          "name": "submissionTask",
+          "offset_storage_address": "0xb1c5318",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b518",
+          "name": "_$observationRegistrar",
+          "offset_storage_address": "0xb1c5320",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5788",
+      "class_ro_address": "0xacc70b0",
+      "name": "_TtC14ChatGPTWhisper28DefaultDictationHistoryStore",
+      "flags": 192,
+      "instance_start": 16,
+      "instance_size": 72,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2b588",
+          "name": "_entries",
+          "offset_storage_address": "0x7dedaa0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b5a8",
+          "name": "canonicalConversationIDs",
+          "offset_storage_address": "0x7dedaa8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b5c8",
+          "name": "deletedConversationIDs",
+          "offset_storage_address": "0x7dedab0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b5e8",
+          "name": "conversationEventsCancellable",
+          "offset_storage_address": "0x7dedab8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b608",
+          "name": "storage",
+          "offset_storage_address": "0x7dedac0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b628",
+          "name": "_$observationRegistrar",
+          "offset_storage_address": "0xb1c5328",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b648",
+          "name": "injectedDependencies",
+          "offset_storage_address": "0xb1c5330",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5858",
+      "class_ro_address": "0xacc7100",
+      "name": "_TtC14ChatGPTWhisperP33_D32EB101CEFF6E587B61B1C0A3567B3427DictationHistoryFileStorage",
+      "flags": 1216,
+      "instance_start": 16,
+      "instance_size": 112,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2b6b8",
+          "name": "$defaultActor",
+          "offset_storage_address": "0x0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b6d8",
+          "name": "directoryURL",
+          "offset_storage_address": "0xb1c5338",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b6f8",
+          "name": "snapshotURL",
+          "offset_storage_address": "0xb1c5340",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5958",
+      "class_ro_address": "0xab2b7a8",
+      "name": "_TtC14ChatGPTWhisper25DictationStreamingMetrics",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 40,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2b768",
+          "name": "state",
+          "offset_storage_address": "0x7dedb58",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b788",
+          "name": "record",
+          "offset_storage_address": "0x7dedb60",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5a18",
+      "class_ro_address": "0xacc7150",
+      "name": "_TtC14ChatGPTWhisper32DefaultDictationStreamingSession",
+      "flags": 1216,
+      "instance_start": 16,
+      "instance_size": 489,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2b840",
+          "name": "$defaultActor",
+          "offset_storage_address": "0x0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b860",
+          "name": "serverStopRequests",
+          "offset_storage_address": "0xb07da08",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b880",
+          "name": "state",
+          "offset_storage_address": "0xb1c5348",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b8a0",
+          "name": "webSocketClient",
+          "offset_storage_address": "0xb1c5350",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b8c0",
+          "name": "audioRecorder",
+          "offset_storage_address": "0xb1c5358",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b8e0",
+          "name": "serverStopRequestContinuation",
+          "offset_storage_address": "0xb1c5360",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b900",
+          "name": "networkStateObserver",
+          "offset_storage_address": "0xb1c5368",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b920",
+          "name": "serverAssetTimeout",
+          "offset_storage_address": "0xb1c5370",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b940",
+          "name": "finishTimeout",
+          "offset_storage_address": "0xb1c5378",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b960",
+          "name": "finalizationClockNow",
+          "offset_storage_address": "0xb1c5380",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b980",
+          "name": "sleepUntilFinalizationDeadline",
+          "offset_storage_address": "0xb1c5388",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b9a0",
+          "name": "language",
+          "offset_storage_address": "0xb1c5390",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b9c0",
+          "name": "conversationContext",
+          "offset_storage_address": "0xb1c5398",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2b9e0",
+          "name": "recordingMode",
+          "offset_storage_address": "0xb1c53a0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ba00",
+          "name": "prefersStreamingTranscription",
+          "offset_storage_address": "0xb1c53a8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ba20",
+          "name": "dictationRequestIdentifiers",
+          "offset_storage_address": "0xb1c53b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ba40",
+          "name": "onTranscriptUpdated",
+          "offset_storage_address": "0xb1c53b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ba60",
+          "name": "onFailure",
+          "offset_storage_address": "0xb1c53c0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ba80",
+          "name": "metrics",
+          "offset_storage_address": "0xb1c53c8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2baa0",
+          "name": "connectionTask",
+          "offset_storage_address": "0xb1c53d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bac0",
+          "name": "audioSenderTask",
+          "offset_storage_address": "0xb1c53d8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bae0",
+          "name": "transcriptTask",
+          "offset_storage_address": "0xb1c53e0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bb00",
+          "name": "serverAssetMetadataTask",
+          "offset_storage_address": "0xb1c53e8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bb20",
+          "name": "receiveTask",
+          "offset_storage_address": "0xb1c53f0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bb40",
+          "name": "recoveredFinalTranscript",
+          "offset_storage_address": "0xb1c53f8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bb60",
+          "name": "serverStopRequest",
+          "offset_storage_address": "0xb1c5400",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bb80",
+          "name": "captureStopRequested",
+          "offset_storage_address": "0xb1c5408",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bba0",
+          "name": "finalizationDeadline",
+          "offset_storage_address": "0xb1c5410",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5d00",
+      "class_ro_address": "0xab2bcb0",
+      "name": "_TtC14ChatGPTWhisper33DictationStreamingWebSocketClient",
+      "flags": 1152,
+      "instance_start": 16,
+      "instance_size": 152,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2bc10",
+          "name": "$defaultActor",
+          "offset_storage_address": "0x0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bc30",
+          "name": "apiRequestAuthorizing",
+          "offset_storage_address": "0x7dedc90",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bc50",
+          "name": "metrics",
+          "offset_storage_address": "0x7dedc98",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bc70",
+          "name": "isStopped",
+          "offset_storage_address": "0x7dedca0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bc90",
+          "name": "webSocket",
+          "offset_storage_address": "0x7dedca8",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5df0",
+      "class_ro_address": "0xab2bd68",
+      "name": "_TtC14ChatGPTWhisper33DictationInsertionAcknowledgement",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 24,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2bd48",
+          "name": "completed",
+          "offset_storage_address": "0x7dedcf0",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xacc7208",
+      "class_ro_address": "0xacc71a0",
+      "name": "_TtC14ChatGPTWhisper14SimpleRecorder",
+      "flags": 192,
+      "instance_start": 16,
+      "instance_size": 248,
+      "methods": [
+        {
+          "entry": "0x7cac170",
+          "file_offset": 130728304,
+          "selector": "audioRecorderDidFinishRecording:successfully:",
+          "types": "v28@0:8@16B24",
+          "implementation": "0x173d440",
+          "implementation_file_offset": 24368192
+        },
+        {
+          "entry": "0x7cac17c",
+          "file_offset": 130728316,
+          "selector": "audioRecorderEncodeErrorDidOccur:error:",
+          "types": "v32@0:8@16@24",
+          "implementation": "0x173d6f4",
+          "implementation_file_offset": 24368884
+        },
+        {
+          "entry": "0x7cac188",
+          "file_offset": 130728328,
+          "selector": "init",
+          "types": "@16@0:8",
+          "implementation": "0x7c35f6c",
+          "implementation_file_offset": 130244460
+        }
+      ],
+      "ivars": [
+        {
+          "entry": "0xab2be00",
+          "name": "$defaultActor",
+          "offset_storage_address": "0x0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2be20",
+          "name": "_isRecording",
+          "offset_storage_address": "0x7dede80",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2be40",
+          "name": "recordingID",
+          "offset_storage_address": "0xb07da10",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2be60",
+          "name": "_averagePower",
+          "offset_storage_address": "0xb1c5418",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2be80",
+          "name": "_recordingResult",
+          "offset_storage_address": "0xb1c5420",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bea0",
+          "name": "_isFinishingRecording",
+          "offset_storage_address": "0xb1c5428",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bec0",
+          "name": "audioSessionToken",
+          "offset_storage_address": "0xb1c5430",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bee0",
+          "name": "recordingStopTask",
+          "offset_storage_address": "0xb1c5438",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bf00",
+          "name": "exclusiveOwner",
+          "offset_storage_address": "0xb1c5440",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bf20",
+          "name": "startingRecordings",
+          "offset_storage_address": "0xb1c5448",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bf40",
+          "name": "audioRecorder",
+          "offset_storage_address": "0xb1c5450",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bf60",
+          "name": "recordingStartedAt",
+          "offset_storage_address": "0xb1c5458",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bf80",
+          "name": "monitoringTask",
+          "offset_storage_address": "0xb1c5460",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2bfa0",
+          "name": "injectedDependencies",
+          "offset_storage_address": "0xb1c5468",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd5f38",
+      "class_ro_address": "0xacc7458",
+      "name": "_TtC14ChatGPTWhisper22StreamingAudioRecorder",
+      "flags": 1216,
+      "instance_start": 16,
+      "instance_size": 136,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2c010",
+          "name": "$defaultActor",
+          "offset_storage_address": "0x0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c030",
+          "name": "audioStream",
+          "offset_storage_address": "0xb07da18",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c050",
+          "name": "engine",
+          "offset_storage_address": "0xb1c5470",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c070",
+          "name": "metrics",
+          "offset_storage_address": "0xb1c5478",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c090",
+          "name": "audioStreamContinuation",
+          "offset_storage_address": "0xb1c5480",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c0b0",
+          "name": "tappedInputNode",
+          "offset_storage_address": "0xb1c5488",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd6030",
+      "class_ro_address": "0xab2c1a0",
+      "name": "_TtCC14ChatGPTWhisper22StreamingAudioRecorderP33_663E8FC1AEF704598ADBA2937C6E9A4B20AudioConversionState",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 48,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2c120",
+          "name": "outputFormat",
+          "offset_storage_address": "0x7dedf08",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c140",
+          "name": "inputFormat",
+          "offset_storage_address": "0x7dedf10",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c160",
+          "name": "converter",
+          "offset_storage_address": "0x7dedf18",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c180",
+          "name": "outputBuffer",
+          "offset_storage_address": "0x7dedf20",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xacc7508",
+      "class_ro_address": "0xacc74a8",
+      "name": "_TtC14ChatGPTWhisper28DefaultValdiDictationService",
+      "flags": 388,
+      "instance_start": 8,
+      "instance_size": 56,
+      "methods": [
+        {
+          "entry": "0x7c8a2b0",
+          "file_offset": 130589360,
+          "selector": "pushToValdiMarshaller:",
+          "types": "q24@0:8^v16",
+          "implementation": "0x17407d0",
+          "implementation_file_offset": 24381392
+        },
+        {
+          "entry": "0x7c8a2bc",
+          "file_offset": 130589372,
+          "selector": "createSessionWithOptions:observer:",
+          "types": "@32@0:8@16@24",
+          "implementation": "0x1740914",
+          "implementation_file_offset": 24381716
+        },
+        {
+          "entry": "0x7c8a2c8",
+          "file_offset": 130589384,
+          "selector": "init",
+          "types": "@16@0:8",
+          "implementation": "0x7c35fa4",
+          "implementation_file_offset": 130244516
+        },
+        {
+          "entry": "0x7c8a2d4",
+          "file_offset": 130589396,
+          "selector": ".cxx_destruct",
+          "types": "v16@0:8",
+          "implementation": "0x1740964",
+          "implementation_file_offset": 24381796
+        }
+      ],
+      "ivars": [
+        {
+          "entry": "0xab2c258",
+          "name": "whisper",
+          "offset_storage_address": "0xadd9540",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c278",
+          "name": "authorizeRecording",
+          "offset_storage_address": "0xadd9548",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c298",
+          "name": "dispatchToValdi",
+          "offset_storage_address": "0xadd9550",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd6170",
+      "class_ro_address": "0xab2c328",
+      "name": "_TtC14ChatGPTWhisper35DefaultValdiDictationServiceFactory",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 48,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2c308",
+          "name": "injectedDependencies",
+          "offset_storage_address": "0x7dedfa8",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xacc75d8",
+      "class_ro_address": "0xacc7578",
+      "name": "_TtC14ChatGPTWhisper28DefaultValdiDictationSession",
+      "flags": 388,
+      "instance_start": 8,
+      "instance_size": 48,
+      "methods": [
+        {
+          "entry": "0x7c8a2e8",
+          "file_offset": 130589416,
+          "selector": "dealloc",
+          "types": "v16@0:8",
+          "implementation": "0x1740e4c",
+          "implementation_file_offset": 24383052
+        },
+        {
+          "entry": "0x7c8a2f4",
+          "file_offset": 130589428,
+          "selector": "pushToValdiMarshaller:",
+          "types": "q24@0:8^v16",
+          "implementation": "0x1740eb8",
+          "implementation_file_offset": 24383160
+        },
+        {
+          "entry": "0x7c8a300",
+          "file_offset": 130589440,
+          "selector": "start",
+          "types": "v16@0:8",
+          "implementation": "0x1741604",
+          "implementation_file_offset": 24385028
+        },
+        {
+          "entry": "0x7c8a30c",
+          "file_offset": 130589452,
+          "selector": "stop",
+          "types": "v16@0:8",
+          "implementation": "0x1741990",
+          "implementation_file_offset": 24385936
+        },
+        {
+          "entry": "0x7c8a318",
+          "file_offset": 130589464,
+          "selector": "cancel",
+          "types": "v16@0:8",
+          "implementation": "0x1741b64",
+          "implementation_file_offset": 24386404
+        },
+        {
+          "entry": "0x7c8a324",
+          "file_offset": 130589476,
+          "selector": "dispose",
+          "types": "v16@0:8",
+          "implementation": "0x1741c64",
+          "implementation_file_offset": 24386660
+        },
+        {
+          "entry": "0x7c8a330",
+          "file_offset": 130589488,
+          "selector": "init",
+          "types": "@16@0:8",
+          "implementation": "0x7c35fd4",
+          "implementation_file_offset": 130244564
+        },
+        {
+          "entry": "0x7c8a33c",
+          "file_offset": 130589500,
+          "selector": ".cxx_destruct",
+          "types": "v16@0:8",
+          "implementation": "0x1740e6c",
+          "implementation_file_offset": 24383084
+        }
+      ],
+      "ivars": [
+        {
+          "entry": "0xab2c3e0",
+          "name": "state",
+          "offset_storage_address": "0xadd9558",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c400",
+          "name": "owner",
+          "offset_storage_address": "0xadd9560",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c420",
+          "name": "commands",
+          "offset_storage_address": "0xadd9568",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c440",
+          "name": "dispatchToValdi",
+          "offset_storage_address": "0xadd9570",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd6298",
+      "class_ro_address": "0xacc7650",
+      "name": "_TtC14ChatGPTWhisperP33_359BC46A3DB6B2C514C73022172C6D3613NativeAttempt",
+      "flags": 192,
+      "instance_start": 16,
+      "instance_size": 160,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2c4b0",
+          "name": "language",
+          "offset_storage_address": "0x7dee000",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c4d0",
+          "name": "context",
+          "offset_storage_address": "0x7dee008",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c4f0",
+          "name": "whisper",
+          "offset_storage_address": "0x7dee010",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c510",
+          "name": "authorizeRecording",
+          "offset_storage_address": "0x7dee018",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c530",
+          "name": "identifiers",
+          "offset_storage_address": "0xb1c5490",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c550",
+          "name": "session",
+          "offset_storage_address": "0xb1c5498",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c570",
+          "name": "task",
+          "offset_storage_address": "0xb1c54a0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c590",
+          "name": "stopTask",
+          "offset_storage_address": "0xb1c54a8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c5b0",
+          "name": "preparing",
+          "offset_storage_address": "0xb1c54b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c5d0",
+          "name": "backgroundObservation",
+          "offset_storage_address": "0xb1c54b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c5f0",
+          "name": "onEvent",
+          "offset_storage_address": "0xb1c54c0",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd6420",
+      "class_ro_address": "0xab2c6a0",
+      "name": "_TtC14ChatGPTWhisper26WhisperPromptResultTracker",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 40,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2c660",
+          "name": "pendingDictationPromptContexts",
+          "offset_storage_address": "0x7dee080",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c680",
+          "name": "trackPromptResult",
+          "offset_storage_address": "0x7dee088",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd6500",
+      "class_ro_address": "0xacc76a0",
+      "name": "_TtC14ChatGPTWhisper14WhisperRequest",
+      "flags": 1216,
+      "instance_start": 16,
+      "instance_size": 640,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2c738",
+          "name": "$defaultActor",
+          "offset_storage_address": "0x0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c758",
+          "name": "accountID",
+          "offset_storage_address": "0x7dee0b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c778",
+          "name": "language",
+          "offset_storage_address": "0x7dee0b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c798",
+          "name": "microphoneOwner",
+          "offset_storage_address": "0x7dee0c0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c7b8",
+          "name": "dictationRequestIdentifiers",
+          "offset_storage_address": "0xb07d9c0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c7d8",
+          "name": "conversationContext",
+          "offset_storage_address": "0xb07d9c8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c7f8",
+          "name": "dictationStreamingSessionStartTask",
+          "offset_storage_address": "0xb07d9b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c818",
+          "name": "recordingMode",
+          "offset_storage_address": "0xb07d9d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c838",
+          "name": "batchTranscriptionPlan",
+          "offset_storage_address": "0xb07da20",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c858",
+          "name": "metrics",
+          "offset_storage_address": "0xb07d9d8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c878",
+          "name": "_requestState",
+          "offset_storage_address": "0xb1c5010",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c898",
+          "name": "navigationSource",
+          "offset_storage_address": "0xb1c54c8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c8b8",
+          "name": "taskDelegate",
+          "offset_storage_address": "0xb1c5018",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c8d8",
+          "name": "requestMetricsCollector",
+          "offset_storage_address": "0xb1c5020",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c8f8",
+          "name": "transcriptionTask",
+          "offset_storage_address": "0xb1c4fd8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c918",
+          "name": "listeningFinalizationOperation",
+          "offset_storage_address": "0xb1c4fe0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c938",
+          "name": "streamingFailureStream",
+          "offset_storage_address": "0xb1c5028",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c958",
+          "name": "streamingFailureTask",
+          "offset_storage_address": "0xb1c4ff8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c978",
+          "name": "serverStopRequestTask",
+          "offset_storage_address": "0xb1c5000",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c998",
+          "name": "recordingCleanupTask",
+          "offset_storage_address": "0xb1c4fe8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c9b8",
+          "name": "captureReleaseTask",
+          "offset_storage_address": "0xb1c5030",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c9d8",
+          "name": "captureStartTask",
+          "offset_storage_address": "0xb1c5038",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2c9f8",
+          "name": "audioSessionManager",
+          "offset_storage_address": "0xb1c5040",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ca18",
+          "name": "recorder",
+          "offset_storage_address": "0xb1c5048",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ca38",
+          "name": "ownedRecording",
+          "offset_storage_address": "0xb1c5050",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ca58",
+          "name": "transferFinalizationTask",
+          "offset_storage_address": "0xb1c5058",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ca78",
+          "name": "transferError",
+          "offset_storage_address": "0xb1c5060",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ca98",
+          "name": "dictationHistoryStore",
+          "offset_storage_address": "0xb1c5068",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cab8",
+          "name": "conversationID",
+          "offset_storage_address": "0xb1c5070",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cad8",
+          "name": "recordingURLOverride",
+          "offset_storage_address": "0xb1c5078",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2caf8",
+          "name": "recordingDurationLoader",
+          "offset_storage_address": "0xb1c5080",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cb18",
+          "name": "localDictationConfiguration",
+          "offset_storage_address": "0xb1c54d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cb38",
+          "name": "captureFinalizationStartedAt",
+          "offset_storage_address": "0xb1c5088",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cb58",
+          "name": "streamingFinalizationTask",
+          "offset_storage_address": "0xb1c4ff0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cb78",
+          "name": "isServerRequestedFinalization",
+          "offset_storage_address": "0xb1c54d8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cb98",
+          "name": "streamingCaptureStoppedAt",
+          "offset_storage_address": "0xb1c5090",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cbb8",
+          "name": "pendingStreamingFallbackReason",
+          "offset_storage_address": "0xb1c54e0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cbd8",
+          "name": "terminalStreamingFailure",
+          "offset_storage_address": "0xb1c5098",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cbf8",
+          "name": "preservesRecordingAfterCleanup",
+          "offset_storage_address": "0xb1c54e8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cc18",
+          "name": "dictationStreamingSession",
+          "offset_storage_address": "0xb1c50a0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cc38",
+          "name": "notificationTask",
+          "offset_storage_address": "0xb1c5008",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cc58",
+          "name": "idleTimerToken",
+          "offset_storage_address": "0xb1c50a8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cc78",
+          "name": "skipEmptyTranscriptionError",
+          "offset_storage_address": "0xb1c54f0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cc98",
+          "name": "audioSessionInterruptionStream",
+          "offset_storage_address": "0xb1c50b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ccb8",
+          "name": "api",
+          "offset_storage_address": "0xb1c50b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ccd8",
+          "name": "apiRequestAuthorizing",
+          "offset_storage_address": "0xb1c50c0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ccf8",
+          "name": "idleTimerService",
+          "offset_storage_address": "0xb1c50c8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cd18",
+          "name": "scopedStatsigClient",
+          "offset_storage_address": "0xb1c50d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd6b68",
+      "class_ro_address": "0xacc76f0",
+      "name": "_TtCC14ChatGPTWhisper14WhisperRequestP33_74482C7FDC808BA88B5D2212403D226814OwnedRecording",
+      "flags": 192,
+      "instance_start": 16,
+      "instance_size": 16,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2cd88",
+          "name": "url",
+          "offset_storage_address": "0xb1c54f8",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xacc77a0",
+      "class_ro_address": "0xacc7740",
+      "name": "_TtC14ChatGPTWhisper29WhisperUploadProgressDelegate",
+      "flags": 388,
+      "instance_start": 8,
+      "instance_size": 32,
+      "methods": [
+        {
+          "entry": "0x7c8a350",
+          "file_offset": 130589520,
+          "selector": "URLSession:task:didFinishCollectingMetrics:",
+          "types": "v40@0:8@16@24@32",
+          "implementation": "0x17589e8",
+          "implementation_file_offset": 24480232
+        },
+        {
+          "entry": "0x7c8a35c",
+          "file_offset": 130589532,
+          "selector": "init",
+          "types": "@16@0:8",
+          "implementation": "0x7c36004",
+          "implementation_file_offset": 130244612
+        },
+        {
+          "entry": "0x7c8a368",
+          "file_offset": 130589544,
+          "selector": ".cxx_destruct",
+          "types": "v16@0:8",
+          "implementation": "0x1758a60",
+          "implementation_file_offset": 24480352
+        }
+      ],
+      "ivars": [
+        {
+          "entry": "0xab2ce18",
+          "name": "streamingMetrics",
+          "offset_storage_address": "0xadd6c60",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ce38",
+          "name": "state",
+          "offset_storage_address": "0xadd9578",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2ce58",
+          "name": "requestMetricsState",
+          "offset_storage_address": "0xadd9580",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd6ce0",
+      "class_ro_address": "0xacc7810",
+      "name": "_TtC14ChatGPTWhisper16WhisperViewModel",
+      "flags": 192,
+      "instance_start": 16,
+      "instance_size": 504,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xab2cec8",
+          "name": "accountID",
+          "offset_storage_address": "0x7dee250",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cee8",
+          "name": "_pushToTalkMode",
+          "offset_storage_address": "0x7dee258",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cf08",
+          "name": "navigationSource",
+          "offset_storage_address": "0x7dee260",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cf28",
+          "name": "dictationSessionID",
+          "offset_storage_address": "0xb07da28",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cf48",
+          "name": "_state",
+          "offset_storage_address": "0xb1c5500",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cf68",
+          "name": "_throttledPowerSamples",
+          "offset_storage_address": "0xb1c5508",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cf88",
+          "name": "_recordingDuration",
+          "offset_storage_address": "0xb1c5510",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cfa8",
+          "name": "hasFailedStreamingTranscription",
+          "offset_storage_address": "0xb07da30",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cfc8",
+          "name": "hasReceivedStreamingWord",
+          "offset_storage_address": "0xb07da38",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2cfe8",
+          "name": "conversationContext",
+          "offset_storage_address": "0xb1c5518",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d008",
+          "name": "conversationID",
+          "offset_storage_address": "0xb1c5520",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d028",
+          "name": "dictationConversationContextProvider",
+          "offset_storage_address": "0xb1c5528",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d048",
+          "name": "shouldStoreRecordingInHistory",
+          "offset_storage_address": "0xb1c5530",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d068",
+          "name": "analyticsIdentifiers",
+          "offset_storage_address": "0xb1c5538",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d088",
+          "name": "$__lazy_storage_$_whisperSession",
+          "offset_storage_address": "0xb1c5540",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d0a8",
+          "name": "allowsAutoSend",
+          "offset_storage_address": "0xb1c5548",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d0c8",
+          "name": "dismiss",
+          "offset_storage_address": "0xb1c5550",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d0e8",
+          "name": "onStreamingTranscript",
+          "offset_storage_address": "0xb1c5558",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d108",
+          "name": "onRecordingDurationChanged",
+          "offset_storage_address": "0xb1c5560",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d128",
+          "name": "onMaximumDurationReached",
+          "offset_storage_address": "0xb1c5568",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d148",
+          "name": "stateTask",
+          "offset_storage_address": "0xb1c5570",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d168",
+          "name": "averagePowerTask",
+          "offset_storage_address": "0xb1c5578",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d188",
+          "name": "recordingTimeTask",
+          "offset_storage_address": "0xb1c5580",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d1a8",
+          "name": "didAttemptStreamingDictation",
+          "offset_storage_address": "0xb1c5588",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d1c8",
+          "name": "captureFinalizationDuration",
+          "offset_storage_address": "0xb1c5590",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d1e8",
+          "name": "uploadProgressDelegate",
+          "offset_storage_address": "0xb1c5598",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d208",
+          "name": "cancelledAttemptIdentifiers",
+          "offset_storage_address": "0xb1c55a0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d228",
+          "name": "bag",
+          "offset_storage_address": "0xb1c55a8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d248",
+          "name": "listeningTask",
+          "offset_storage_address": "0xb1c55b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d268",
+          "name": "retryTask",
+          "offset_storage_address": "0xb1c55b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d288",
+          "name": "streamingTranscriptAttemptID",
+          "offset_storage_address": "0xb1c55c0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d2a8",
+          "name": "acceptedTranscriptTask",
+          "offset_storage_address": "0xb1c55c8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d2c8",
+          "name": "completedTranscription",
+          "offset_storage_address": "0xb1c55d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d2e8",
+          "name": "hasTransferredRequest",
+          "offset_storage_address": "0xb1c55d8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d308",
+          "name": "skipEmptyTranscriptionError",
+          "offset_storage_address": "0xb1c55e0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d328",
+          "name": "allowsStreamingTranscription",
+          "offset_storage_address": "0xb1c55e8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d348",
+          "name": "prefersStreamingTranscription",
+          "offset_storage_address": "0xb1c55f0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d368",
+          "name": "requiresStreamingTranscription",
+          "offset_storage_address": "0xb1c55f8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d388",
+          "name": "latestStreamingTranscript",
+          "offset_storage_address": "0xb1c5600",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d3a8",
+          "name": "needsAutoSend",
+          "offset_storage_address": "0xb1c5608",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d3c8",
+          "name": "receivedMicrophoneTakeover",
+          "offset_storage_address": "0xb1c5610",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d3e8",
+          "name": "receivedServerStopRequest",
+          "offset_storage_address": "0xb1c5618",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d408",
+          "name": "whisperViewModelID",
+          "offset_storage_address": "0xb1c5620",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d428",
+          "name": "_attemptWhisperRequestID",
+          "offset_storage_address": "0xb1c5628",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d448",
+          "name": "_attemptRecorderRecordingID",
+          "offset_storage_address": "0xb1c5630",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d468",
+          "name": "livePreviewVisibility",
+          "offset_storage_address": "0xb1c5638",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d488",
+          "name": "structuredSessionTracker",
+          "offset_storage_address": "0xb1c5640",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d4a8",
+          "name": "$__lazy_storage_$_useNewSounds",
+          "offset_storage_address": "0xb1c5648",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d4c8",
+          "name": "injectedDependencies",
+          "offset_storage_address": "0xb1c5650",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d4e8",
+          "name": "_$observationRegistrar",
+          "offset_storage_address": "0xb1c5658",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab2d508",
+          "name": "$__lazy_storage_$__publisher",
+          "offset_storage_address": "0xb1c5660",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xadd6fc0",
+      "class_ro_address": "0xab2d628",
+      "name": "_TtC14ChatGPTWhisperP33_1A068348FA931607FE114F5D2110FCF212_BundleToken",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 16,
+      "methods": [],
+      "ivars": []
+    },
+    {
+      "class_address": "0xaf38cb0",
+      "class_ro_address": "0xabe6178",
+      "name": "_TtC19ChatGPTMessageInput28DefaultWhisperMessageBuilder",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 72,
+      "methods": [],
+      "ivars": [
+        {
+          "entry": "0xabe60f8",
+          "name": "started",
+          "offset_storage_address": "0x8120ab0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xabe6118",
+          "name": "componentsByID",
+          "offset_storage_address": "0x8120ab8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xabe6138",
+          "name": "previousResultPerComponent",
+          "offset_storage_address": "0x8120ac0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xabe6158",
+          "name": "previousConversationID",
+          "offset_storage_address": "0x8120ac8",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    },
+    {
+      "class_address": "0xafa3488",
+      "class_ro_address": "0xac1f390",
+      "name": "_TtC23ChatGPTWhisperInterfaceP33_323424A659138E1DB7959A319CF9BD2A12_BundleToken",
+      "flags": 128,
+      "instance_start": 16,
+      "instance_size": 16,
+      "methods": [],
+      "ivars": []
+    }
+  ]
+}

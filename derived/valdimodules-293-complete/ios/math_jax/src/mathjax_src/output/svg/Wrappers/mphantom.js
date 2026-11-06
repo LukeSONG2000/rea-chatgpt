@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.SvgMphantom=void 0;const e=require("../Wrapper"),r=require("../../../core/MmlTree/MmlNodes/mphantom");exports.SvgMphantom=function(){var t;return(t=class SvgMphantom extends e.SvgWrapper{toSVG(e){this.standardSvgNodes(e)}}).kind=r.MmlMphantom.prototype.kind,t}();

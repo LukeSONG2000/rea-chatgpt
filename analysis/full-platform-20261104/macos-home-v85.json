@@ -1,0 +1,42 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-host-storage-with-official-renderer",
+  "root_cause": "Plain home prompt uses composer-prompt-drafts-v2 via kQ/NQ/FQ. Existing adapter only handled chatgpt-conversation-prompt-drafts-v2.",
+  "changes": [
+    "Persist observed new-conversation structured text document using original generic composer contract",
+    "Reject unsupported document/scope/options; absent undefined optional properties ignored",
+    "Record adapter merge failure reason"
+  ],
+  "validation": {
+    "isolated_document_and_disk_regression": "passed",
+    "home_route_and_text_cold_restore": "passed",
+    "read_phase_send_requests": "none observed",
+    "different_processes": [
+      88011,
+      88127
+    ]
+  },
+  "accepted": [
+    "macos-home-v85-write-v2.json",
+    "macos-home-v85-read-v2.json"
+  ],
+  "historical_failures": [
+    "macos-home-v85-write.json",
+    "macos-home-v85-read.json"
+  ],
+  "source_evidence": "macos-home-v85-evidence.json",
+  "sources": {
+    "analysis/tools/desktop-home-composer.cjs": "aabd5e866b7d4d944baf894e3b2e87fa3e630e3e293e61eb3a8f3c8a5b1c69c3",
+    "analysis/tools/desktop-offline-store.cjs": "6c61426bec5aa7add49dd4785517142d078626ae041566acb0656e296ad78339",
+    "analysis/tools/desktop-native-host.cjs": "e9bca65f68b1ed62a4de54370e52908f1e090da3332224046327e06d4ab2268b",
+    "analysis/tools/test_desktop_home_composer.cjs": "d289358cfb57109e4a7399bfd075963893bbdfc0462af29421c82228f581707d",
+    "analysis/tools/probe_desktop_root_mount.cjs": "0638d6e346bcce27b41c13aee979a4548b7ee5d7b4fc2be5dd098a893d04ca6f"
+  },
+  "limits": [
+    "Only independent synthetic profile home text document storage; full official persistence not recovered",
+    "Rich blocks, attachments, other generic draft keys, CAS/budget policies and crash consistency unaccepted",
+    "Physical OS menu/keyboard, device fidelity and other platforms not covered"
+  ],
+  "next_action": "Resume frontend interaction gaps: menu accelerator payload, message actions and platform behavior; keep richer draft schema separate"
+}

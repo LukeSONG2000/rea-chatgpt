@@ -1,0 +1,23 @@
+{
+  "status": "partial",
+  "evidence_type": "local-sdk-header-inspection",
+  "sdk": "iPhoneSimulator27.0.sdk",
+  "scope": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk/System/Library/Frameworks/UIKit.framework/Headers",
+  "headers_scanned": 449,
+  "candidate_name_matches": [],
+  "candidate_names_not_proven_runtime_names": true,
+  "headers": [
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKeyboardLayoutGuide.h",
+      "sha256": "a011b6a649fe4641604b15366bb0d57b0af8ed966e432ba222929188d615ee5a"
+    },
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h",
+      "sha256": "4c32ba3d935779944ee8e6b1f0bb5a222fe1d41390d5e22249af92c52adfdf2f"
+    }
+  ],
+  "conclusion": "Inspected layout-guide declarations provide geometry, while snapshotView requires an existing UIView. No equivalent keyboard-surface acquisition and suppression provider established by this inspection. Not a proof of platform-wide impossibility.",
+  "runtime_changes": false,
+  "phone_changes": false,
+  "next_action": "Keep keyboard-surface parity partial; resume four-surface visual acceptance. Provider integration requires supported source acquisition and paired restoration evidence."
+}

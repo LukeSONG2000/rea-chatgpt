@@ -1,0 +1,23 @@
+{
+  "status": "partial",
+  "change": "Command shell card geometry and official color resources integrated",
+  "evidence": "ios-remote-v359-shell-evidence.json",
+  "test": {
+    "name": "testRemoteOutputGestureFollow",
+    "result": "passed",
+    "xcresult": "ios-remote-v359.xcresult",
+    "scope": "Simulator native drag pause, append preserves reading offset, return to bottom resumes following"
+  },
+  "screenshot": "ios-remote-v359-screenshots/18C6D73C-64DF-429E-A32C-7D2271F6E0E6.png",
+  "visual_review": "Rounded light card and padding visible; output reaches line 36; first visible line partially clipped by viewport, not treated as parity evidence",
+  "preview_pid": 79693,
+  "phone_updated": false,
+  "external_display_verified": false,
+  "retention_stale_targets": [],
+  "remaining": [
+    "Command typography and parsed text",
+    "Corner style",
+    "Full message containment and interaction parity",
+    "Independent Android evidence"
+  ]
+}

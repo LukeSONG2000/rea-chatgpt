@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "checks": [
+    {
+      "check": "seven_bindings_repeat",
+      "passed": true
+    },
+    {
+      "check": "default_external_bind_rejection_retained",
+      "passed": true
+    },
+    {
+      "check": "out_of_range_ordinal",
+      "passed": true
+    },
+    {
+      "check": "reserved_bits",
+      "passed": true
+    },
+    {
+      "check": "existing_class_methods_ivars_unchanged",
+      "passed": true
+    },
+    {
+      "check": "existing_direct_call_addresses_unchanged",
+      "passed": true
+    }
+  ],
+  "limits": [
+    "Observed artifact uses the recorded import format; other formats not artifact-validated",
+    "No dynamic linking or model/UI execution"
+  ]
+}

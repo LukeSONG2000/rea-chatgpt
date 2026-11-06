@@ -1,0 +1,38 @@
+{
+  "status": "partial-experiment-failed-not-deployed",
+  "issue": "Settings sidebar remounts on section navigation",
+  "sourceMechanism": "26.1029 separates stable SettingsLayout from route content; baseline 26.1021 combines both",
+  "experiment": "Digest-bound split preserving old Ei/sidebar/nav handlers, default off behind --settings-layout-experiment; no route key or scrollTop repair",
+  "validation": {
+    "transformedModulesSyntax": "passed",
+    "v223": "launch rejected unknown flag; parser subsequently updated",
+    "v224": "settings error boundary",
+    "v225": "Missing scope instance in original settings-page-frame j -> A1e -> vK",
+    "preview": "existing PID 83672 verified running without experimental flag",
+    "retention": "no stale bundles"
+  },
+  "preciseGap": "Outer SettingsLayout now sits above original aTr/Q4n route scope. settings-page-frame j calls rCt(CQn); that scope is currently provided within each retained child route. Newer layout/frame scope ownership must be traced before changing the old provider boundary. Do not fabricate a scope value or suppress the error.",
+  "nextActions": [
+    "Map CQn declaration and Q4n provider ownership in frozen source",
+    "Compare new settings frame A.L and root providers with baseline",
+    "Restore supported scope ownership before rerunning sidebar identity/scroll and navigation regressions"
+  ],
+  "evidence": [
+    {
+      "path": "analysis/tools/desktop-settings-split.cjs",
+      "sha256": "a3e653c9e674577dd4c186539edf86f34045a2598ff857011c6a07d545c9af6c"
+    },
+    {
+      "path": "implementation/desktop/native/settings-split.mjs",
+      "sha256": "fcbb3a8418eb8aba15fe2de12c867dcc125210bfa3e10bed726b2112f9baef9b"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/settings-page-frame-ab777e30c0d6.js",
+      "sha256": "5014ce62bba0d3e1acd00b5f04d2bf1e70a428a55cf804c3742d971f0b6b09f6"
+    },
+    {
+      "path": "recovered/macos/asar-extracted/webview/assets/app-primary-7d7313419f84.js",
+      "sha256": "745529956e303674c268a6871e6f5aad49eca7ef5af899952bf0379d829821b6"
+    }
+  ]
+}

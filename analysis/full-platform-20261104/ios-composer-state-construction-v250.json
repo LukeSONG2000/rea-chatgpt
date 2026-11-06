@@ -1,0 +1,99 @@
+{
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "evidence_type": "static inference",
+  "status": "partial",
+  "constructor": {
+    "start": "0x16e5230",
+    "end_exclusive": "0x16e549c",
+    "existential_metadata_store": "0x16e5358",
+    "source_word_getter": "0x16ec8fc",
+    "source_state_type": {
+      "artifact": {
+        "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+        "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+      },
+      "type_record": null,
+      "mangled_address": "0x8df31de",
+      "length": 5,
+      "mangled_hex": "01f53b7b00",
+      "references": [
+        {
+          "offset": 0,
+          "kind": 1,
+          "target": "0x95a6dd4",
+          "resolved_context": "0x95a6dd4",
+          "label": "ChatGPTWhisper.DefaultComposerWhisperState"
+        }
+      ],
+      "unresolved_contexts": [],
+      "limits": [
+        "Symbolic context references only, not a reconstructed generic type tree",
+        "Type presence does not prove runtime branch selection or component creation"
+      ]
+    },
+    "dispatch_tables": [
+      {
+        "address": "0x7decca4",
+        "bytes": [
+          0,
+          12,
+          17,
+          0
+        ],
+        "branch_base": "0x16e5378",
+        "targets": [
+          "0x16e5378",
+          "0x16e53a8",
+          "0x16e53bc",
+          "0x16e5378"
+        ]
+      },
+      {
+        "address": "0x7decca8",
+        "bytes": [
+          19,
+          0,
+          13,
+          0
+        ],
+        "branch_base": "0x16e539c",
+        "targets": [
+          "0x16e53e8",
+          "0x16e539c",
+          "0x16e53d0",
+          "0x16e539c"
+        ]
+      }
+    ],
+    "showsExpandableControls_stores": [
+      "0x16e53a0",
+      "0x16e53dc",
+      "0x16e53ec"
+    ],
+    "usesExpandableControls_register": "w27",
+    "source_word_register": "x21"
+  },
+  "layout_selection_caller": {
+    "function": "0x4cbc0e8",
+    "call": "0x4cbc418",
+    "target": "0x4cba130",
+    "self_argument": "x25 moved to x20 at 0x4cbc414"
+  },
+  "validation": {
+    "dispatch_table_bytes": "passed",
+    "direct_call_encoding": "passed",
+    "independent_replay_tests": 4
+  },
+  "unknowns": [
+    "Raw source tag numbers have not been independently mapped to named enum cases.",
+    "w27 derivation depends on upstream state and an unidentified helper.",
+    "Owner of state storage 0xb1c5118 not identified; no exact symbol entry for selected addresses.",
+    "Main-chat assignment of isDoubleLineLayoutEnabled remains unresolved.",
+    "No UI or device acceptance from this static replay."
+  ]
+}

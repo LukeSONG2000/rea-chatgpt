@@ -1,0 +1,38 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": "0x7e1e4f8",
+  "mangled_address": "0x8e4b068",
+  "length": 17,
+  "mangled_hex": "01bb30760079019930760001fc2c760047",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 1,
+      "target": "0x95ae124",
+      "resolved_context": "0x95ae124",
+      "label": "CodexRemoteThread.CodexRemoteToolActivityLabel"
+    },
+    {
+      "offset": 6,
+      "kind": 1,
+      "target": "0x95ae108",
+      "resolved_context": "0x95ae108",
+      "label": "CodexRemoteThread.CodexRemoteToolActivityRowStyle.Symbol"
+    },
+    {
+      "offset": 11,
+      "kind": 1,
+      "target": "0x95add70",
+      "resolved_context": "0x95add70",
+      "label": "CodexRemoteThread.CodexRemoteFileChangeSummaryRowPart"
+    }
+  ],
+  "unresolved_contexts": [],
+  "limits": [
+    "Symbolic context references only, not a reconstructed generic type tree",
+    "Type presence does not prove runtime branch selection or component creation"
+  ]
+}

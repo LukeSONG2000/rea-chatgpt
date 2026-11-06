@@ -1,0 +1,37 @@
+{
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official-artifact-static",
+  "descriptor": "0x95acae0",
+  "name": "CodexRemoteTurnRenderUnit",
+  "payload_cases": 3,
+  "empty_cases": 0,
+  "cases": [
+    {
+      "tag": 0,
+      "name": "item",
+      "field_record": "0x9a359f4"
+    },
+    {
+      "tag": 1,
+      "name": "toolActivityGroup",
+      "field_record": "0x9a35a00"
+    },
+    {
+      "tag": 2,
+      "name": "collaborationToolCallGroup",
+      "field_record": "0x9a35a0c"
+    }
+  ],
+  "assembly": {
+    "0x1adc4b8": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1adc4b8: 9004b7a1     \tadrp\tx1, 0xb1d0000 <_writev+0xb1d0000>\n 1adc4bc: 91248021     \tadd\tx1, x1, #0x920\n 1adc4c0: 9003d682     \tadrp\tx2, 0x95ac000 <_writev+0x95ac000>\n 1adc4c4: 912b8042     \tadd\tx2, x2, #0xae0\n 1adc4c8: 179963d9     \tb\t0x13542c <__text+0x10d42c>\n",
+    "0x1d88ec8": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1d88ec8: d2800000     \tmov\tx0, #0x0                ; =0\n 1d88ecc: 17f54d7b     \tb\t0x1adc4b8 <__text+0x1ab44b8>\n",
+    "0x14e000": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n  14e000: aa0003e1     \tmov\tx1, x0\n  14e004: aa1403e0     \tmov\tx0, x20\n  14e008: 15ec1937     \tb\t0x7c544e4 <_writev+0x7c544e4>\n",
+    "0x1946af8": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1946af8: d101c3ff     \tsub\tsp, sp, #0x70\n 1946afc: a90457f6     \tstp\tx22, x21, [sp, #0x40]\n 1946b00: a9054ff4     \tstp\tx20, x19, [sp, #0x50]\n 1946b04: a9067bfd     \tstp\tx29, x30, [sp, #0x60]\n 1946b08: 910183fd     \tadd\tx29, sp, #0x60\n 1946b0c: 941108ef     \tbl\t0x1d88ec8 <__text+0x1d60ec8>\n 1946b10: 97a01d3c     \tbl\t0x14e000 <__text+0x126000>\n 1946b14: 35000060     \tcbnz\tw0, 0x1946b20 <__text+0x191eb20>\n 1946b18: 942c8d7a     \tbl\t0x246a100 <__text+0x2442100>\n 1946b1c: 360000e0     \ttbz\tw0, #0x0, 0x1946b38 <__text+0x191eb38>\n 1946b20: 52800028     \tmov\tw8, #0x1                ; =1\n 1946b24: 12000100     \tand\tw0, w8, #0x1\n 1946b28: a9467bfd     \tldp\tx29, x30, [sp, #0x60]\n 1946b2c: a9454ff4     \tldp\tx20, x19, [sp, #0x50]\n 1946b30: a94457f6     \tldp\tx22, x21, [sp, #0x40]\n 1946b34: 17a03869     \tb\t0x154cd8 <__text+0x12ccd8>\n"
+  },
+  "limits": [
+    "Render-unit non-item branch verified; item payload predicate remains partial.",
+    "Static evidence does not prove runtime/visual equivalence."
+  ]
+}

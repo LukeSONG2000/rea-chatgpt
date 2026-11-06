@@ -1,0 +1,45 @@
+{
+  "status": "partial",
+  "date": "2026-11-05",
+  "authority": "independent-native-implementation-and-synthetic-runtime-tests",
+  "changes": [
+    "Per-message native menu copies original payload including Markdown, excluding UI prefixes/status",
+    "User message can be loaded into draft with overwrite confirmation, scope/generation/current-draft guards; no send or history mutation",
+    "Composer height recomputed after actual layout to restore multiline draft display"
+  ],
+  "validation": {
+    "build": "ios-message-actions-v67-build.log",
+    "state": "ios-message-actions-v67-state.log",
+    "state_groups": 11,
+    "ui_runs": [
+      {
+        "summary": "analysis/full-platform-20261104/ios-message-actions-v67-ui-v1.summary.json",
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "summary": "analysis/full-platform-20261104/ios-message-actions-v67-ui-v2.summary.json",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      }
+    ],
+    "visual_review": "First run screenshot exposed clipped multiline draft despite passing data assertions; fixed layout timing, added height assertion, inspected final screenshot showing both lines",
+    "device": "dedicated iOS 27 simulator 71BCC1D2-0ABD-4F11-BB67-37818435B176"
+  },
+  "cleanup": {
+    "temporary_fixture_pairing_removed": true,
+    "owned_fixture_server_sigterm": true
+  },
+  "limits": [
+    "Independent menu placement and edit-as-draft semantics; official branching edit behavior not restored",
+    "Share, regenerate, feedback and full original message menu remain incomplete",
+    "Physical iPhone, official visual fidelity and other-platform acceptance not claimed"
+  ],
+  "sources": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "9c8bed5f4c6e39a19cb214079f658b779e05631305e0947278a83ff6a35e0042",
+    "implementation/ios/Sources/DraftStore.swift": "7ed153b12520f0b1da8bbea6ad4126ab67695e1e7fc0fdb3198e259c7734972f",
+    "implementation/ios/UITests/HostInteractionTests.swift": "45f56922ee694c6c914de05d57719911c28203be5a3550de5acdaf5b9b5144eb"
+  }
+}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.concatMap=void 0;const e=require("./mergeMap"),r=require("../util/isFunction");function t(t,o){return(0,r.isFunction)(o)?(0,e.mergeMap)(t,o,1):(0,e.mergeMap)(t,1)}exports.concatMap=t;

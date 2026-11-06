@@ -1,0 +1,75 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "pattern": "adjacent ADRP/ADD (no shifted ADD), B/BL; incomplete references",
+  "hits": [
+    {
+      "pc": "0x1c24480",
+      "target": "0x197fd28",
+      "name": "primary bridge",
+      "pattern": "adjacent ADRP/ADD",
+      "function_start": "0x1c24480",
+      "next_function_start": "0x1c2448c"
+    },
+    {
+      "pc": "0x1c27f74",
+      "target": "0x198f378",
+      "name": "expanded primary",
+      "pattern": "B",
+      "function_start": "0x1c27f6c",
+      "next_function_start": "0x1c27f78"
+    }
+  ],
+  "0x1c24480": {
+    "status": "partial",
+    "authority": "shipped-artifact-static-instructions",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "window": {
+      "start": "0x1c24480",
+      "end_exclusive": "0x1c2448c",
+      "sha256": "051f8c76c03d5573d47b39921e69107953ed4df5c1d94dbb1909235cd02f7b86"
+    },
+    "linker_function_starts_in_window": [
+      "0x1c24480"
+    ],
+    "next_linker_function_start": "0x1c2448c",
+    "direct_calls": [],
+    "adjacent_selector_loads": [],
+    "limits": [
+      "Window is not a proven function boundary",
+      "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+      "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+    ],
+    "asm": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1c24480: f0ffeac0     \tadrp\tx0, 0x197f000 <__text+0x1957000>\n 1c24484: 9134a000     \tadd\tx0, x0, #0xd28\n 1c24488: 14001575     \tb\t0x1c29a5c <__text+0x1c01a5c>\n"
+  },
+  "0x1c27f6c": {
+    "status": "partial",
+    "authority": "shipped-artifact-static-instructions",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "window": {
+      "start": "0x1c27f6c",
+      "end_exclusive": "0x1c27f78",
+      "sha256": "100b732851bda9885c324e94df8779ebe6d3b92ef0dc1ffa4ae799e7d4f88b55"
+    },
+    "linker_function_starts_in_window": [
+      "0x1c27f6c"
+    ],
+    "next_linker_function_start": "0x1c27f78",
+    "direct_calls": [],
+    "adjacent_selector_loads": [],
+    "limits": [
+      "Window is not a proven function boundary",
+      "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+      "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+    ],
+    "asm": "\nrecovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:\tfile format mach-o arm64\n\nDisassembly of section __TEXT,__text:\n\n0000000000028000 <__text>:\n 1c27f6c: a9410a81     \tldp\tx1, x2, [x20, #0x10]\n 1c27f70: f9401280     \tldr\tx0, [x20, #0x20]\n 1c27f74: 17f59d01     \tb\t0x198f378 <__text+0x1967378>\n"
+  }
+}

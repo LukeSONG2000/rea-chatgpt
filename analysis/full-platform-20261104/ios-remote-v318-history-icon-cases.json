@@ -1,0 +1,92 @@
+{
+  "artifact": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "type": {
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8e38bd6",
+    "length": 5,
+    "mangled_hex": "01c54f7700",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 1,
+        "target": "0x95adb9c",
+        "resolved_context": "0x95adb9c",
+        "label": "CodexRemoteThread.CodexRemoteToolActivityHistoryPresentation.Icon"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  "records": [
+    {
+      "name": "computerUse",
+      "payload": true,
+      "record": "0x9a3814c"
+    },
+    {
+      "name": "mcpToolCall",
+      "payload": true,
+      "record": "0x9a38158"
+    },
+    {
+      "name": "codex",
+      "payload": false,
+      "record": "0x9a38164"
+    },
+    {
+      "name": "webSearch",
+      "payload": false,
+      "record": "0x9a38170"
+    },
+    {
+      "name": "codeSearch",
+      "payload": false,
+      "record": "0x9a3817c"
+    },
+    {
+      "name": "listFiles",
+      "payload": false,
+      "record": "0x9a38188"
+    },
+    {
+      "name": "readFiles",
+      "payload": false,
+      "record": "0x9a38194"
+    },
+    {
+      "name": "runCommand",
+      "payload": false,
+      "record": "0x9a381a0"
+    },
+    {
+      "name": "editFiles",
+      "payload": false,
+      "record": "0x9a381ac"
+    },
+    {
+      "name": "hooks",
+      "payload": false,
+      "record": "0x9a381b8"
+    },
+    {
+      "name": "tools",
+      "payload": false,
+      "record": "0x9a381c4"
+    },
+    {
+      "name": "externalEvent",
+      "payload": false,
+      "record": "0x9a381d0"
+    }
+  ],
+  "factory": "0x74fba7c",
+  "assetAddress": "0x8a573e0",
+  "asset": "OpenAI/Symbols/terminal"
+}

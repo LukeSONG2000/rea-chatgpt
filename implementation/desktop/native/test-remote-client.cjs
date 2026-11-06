@@ -1,0 +1,43 @@
+'use strict';
+const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),crypto=require('node:crypto'),http=require('node:http'),assert=require('node:assert/strict'),{spawn}=require('node:child_process');
+const {createClient,readPairings}=require('./remote-client.cjs');
+const reportPath=process.argv[2];if(!reportPath||fs.existsSync(reportPath))throw Error('New report required');
+const temp=fs.mkdtempSync(path.join(os.tmpdir(),'rea-remote-client-')),children=[],clients=[],servers=[];
+const report={status:'running',checks:[],limits:['Node main-process adapter test, not Electron IPC or official Remote UI','Fixture workers only']};
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function until(fn){for(let i=0;i<200;i++){const v=await fn();if(v)return v;await sleep(30)}throw Error('test_deadline')}
+async function start(host){const directory=path.join(temp,host);fs.mkdirSync(directory);const pairing=path.join(temp,host+'.json');const child=spawn('/opt/homebrew/bin/python3.12',[path.resolve(__dirname,'../../remote/owner.py'),'--host',host,'--directory',directory,'--pairing-file',pairing],{stdio:'ignore'});children.push(child);return until(()=>{try{return JSON.parse(fs.readFileSync(pairing))}catch{return null}})}
+(async()=>{try{
+ const a=await start('host-a'),b=await start('host-b'),file=path.join(temp,'pairings.json');fs.writeFileSync(file,JSON.stringify([a,b]),{mode:0o600});const client=createClient(file);clients.push(client);
+ assert.ok(!JSON.stringify(client.list()).includes(a.token));assert.ok(!JSON.stringify(client.list()).includes(a.url));
+ const ta=(await client.call('host-a','thread/start')).result.thread,tb=(await client.call('host-b','thread/start')).result.thread;
+ const info=(await client.call('host-b','thread/info',{thread:tb})).result;assert.equal(info.schema,'rea.remote.thread.v1');assert.ok(Number.isSafeInteger(info.createdAtMs));assert.equal(info.updatedAtMs,info.createdAtMs);report.checks.push('independent thread metadata read through validated main-process transport');
+ await Promise.all([client.call('host-a','turn/start',{thread:ta,request:'shared-id',prompt:'REA synthetic slow cancellation test'}),client.call('host-b','turn/start',{thread:tb,request:'shared-id',prompt:'REA synthetic complete'})]);
+ await client.call('host-a','turn/interrupt',{thread:ta,request:'shared-id'});
+ const be=await until(async()=>{const r=await client.call('host-b','events/read',{thread:tb,cursor:0});return r.result.events.at(-1)?.kind==='completed'?r:null});
+ assert.ok(be.result.events.every(e=>e.host==='host-b'&&e.thread===tb&&e.epoch===b.epoch));assert.equal(be.result.events.filter(e=>e.kind==='delta').map(e=>e.text).join(''),'Local fixture reply');
+ assert.equal((await client.call('host-a','events/read',{thread:ta,cursor:0})).result.events.at(-1).kind,'cancelled');report.checks.push('two actual owners; shared request ID isolated; cancel A preserves B completion');
+ const {createProjection}=require('./remote-event-projection.cjs');const projected=createProjection('host-b',tb),notifications=[];for(const e of be.result.events)notifications.push(...projected.apply(e));assert.equal(notifications.find(n=>n.method==='item/completed'&&n.params.item.type==='userMessage').params.item.content[0].text,'REA synthetic complete');assert.equal(notifications.at(-1).params.turn.status,'completed');report.checks.push('actual durable owner events project original synthetic user prompt and completed assistant turn');
+ const {createManager}=require('./remote-manager.cjs');const ma=createManager(client,'host-a'),mb=createManager(client,'host-b'),live=[];
+ const lease=await mb.subscribe({type:'notification',key:{hostId:'host-b'},methods:['turn/started','item/agentMessage/delta','turn/completed'],listener:n=>live.push(n)});
+ const initial=await mb.readThread(tb);assert.equal(initial.turns.length,1);assert.equal(live.length,0);await ma.readThread(ta);
+ await client.call('host-b','turn/start',{thread:tb,request:'manager-second',prompt:'REA synthetic manager history continuation'});
+ await until(async()=>{const s=await mb.poll(tb);return s.turns.length===2&&s.turns.at(-1).terminal});
+ assert.equal(live.filter(n=>n.method==='turn/started').length,1);assert.equal(live.filter(n=>n.method==='turn/completed').length,1);assert.equal(live.filter(n=>n.method==='item/agentMessage/delta').map(n=>n.params.delta).join(''),'Local fixture reply');
+ assert.equal(mb.snapshot(tb).turns.at(-1).prompt,'REA synthetic manager history continuation');const reader=require('./remote-thread-reader.cjs').createThreadReader(client,mb);const read=await reader.sendRequest('thread/read',{threadId:tb,includeTurns:true});assert.equal(read.thread.turns.length,2);assert.equal(read.thread.createdAt,info.createdAtMs/1000);assert.equal(read.independent.eventCursor,mb.snapshot(tb).cursor);report.checks.push('actual owner partial thread/read metadata and turns share one event cursor');const history=mb.historyTurns(tb);assert.equal(history.length,2);assert.equal(history[1].status,'completed');assert.equal(history[1].items[0].content[0].text,'REA synthetic manager history continuation');assert.equal(history[1].items[1].text,'Local fixture reply');assert.equal(history[1].startedAt,null);report.checks.push('actual persisted owner history exposes stable text-only turn items with unknown timestamps preserved');const delivered=live.length;await mb.poll(tb);assert.equal(live.length,delivered);lease[Symbol.dispose]();assert.equal(mb.diagnostics().subscriptions,0);
+ report.checks.push('manager hydrates actual owner history silently then emits one new turn with exact streamed text and no duplicate replay');
+ children[0].kill('SIGTERM');await new Promise(r=>children[0].once('exit',r));
+ await assert.rejects(ma.poll(ta),{code:'remote_transport'});assert.equal(ma.snapshot(ta).connectionError,'remote_transport');assert.equal((await mb.poll(tb)).connectionError,null);ma.dispose();assert.equal((await mb.poll(tb)).turns.length,2);mb.dispose();report.checks.push('manager A transport failure and disposal preserve B history and polling');
+ const results=await Promise.allSettled([client.call('host-a','thread/list'),client.call('host-b','thread/list')]);assert.equal(results[0].status,'rejected');assert.equal(results[0].reason.code,'remote_transport');assert.deepEqual(results[1].value.result.threads,[tb]);report.checks.push('stopped A fails explicitly while B list succeeds');
+ for(const [method,params] of [['turn/start',{thread:tb,request:'r',prompt:'not synthetic'}],['fs/readDirectory',{path:'../escape'}],['unknown',{}]])await assert.rejects(client.call('host-b',method,params));
+ fs.chmodSync(file,0o644);assert.throws(()=>readPairings(file));fs.chmodSync(file,0o600);report.checks.push('unsafe operations and public pairing rejected');
+ const held=http.createServer((req,res)=>{req.resume()});servers.push(held);await new Promise(r=>held.listen(0,'127.0.0.1',r));
+ fs.writeFileSync(file,JSON.stringify([{...a,url:'http://127.0.0.1:'+held.address().port},b]));const c=createClient(file);clients.push(c);
+ const slow=c.call('host-a','thread/list').catch(e=>e.code);const begin=Date.now();assert.deepEqual((await c.call('host-b','thread/list')).result.threads,[tb]);assert.ok(Date.now()-begin<2000);c.closeHost('host-a');assert.equal(await slow,'host_unavailable');assert.equal((await c.call('host-b','thread/list')).host,'host-b');report.checks.push('hanging A does not block B; closing A cancels only A pending calls');
+ const corrupt=http.createServer((req,res)=>{req.resume();res.setHeader('Content-Type','application/json');res.end(JSON.stringify({result:{events:[{host:'foreign',thread:tb,request:'r',kind:'completed',sequence:1,token:'SECRET_SENTINEL'}],cursor:1}}))});servers.push(corrupt);await new Promise(r=>corrupt.listen(0,'127.0.0.1',r));fs.writeFileSync(file,JSON.stringify([{...b,url:'http://127.0.0.1:'+corrupt.address().port}]));const d=createClient(file);clients.push(d);await assert.rejects(d.call('host-b','events/read',{thread:tb,cursor:0}),{code:'remote_protocol'});report.checks.push('foreign host event rejected without forwarding injected fields');
+ report.status='passed';
+}catch(e){report.status='failed';report.error=e.code||e.message;process.exitCode=1}finally{
+ clients.forEach(c=>c.close());for(const server of servers){server.closeAllConnections();await new Promise(r=>server.close(r))}
+ for(const child of children){if(child.exitCode===null&&child.signalCode===null){child.kill('SIGTERM');await new Promise(r=>child.once('exit',r))}}
+ fs.rmSync(temp,{recursive:true,force:true});fs.writeFileSync(reportPath,JSON.stringify(report,null,2),{flag:'wx'});console.log(JSON.stringify({status:report.status,reportPath,error:report.error}));
+}})();

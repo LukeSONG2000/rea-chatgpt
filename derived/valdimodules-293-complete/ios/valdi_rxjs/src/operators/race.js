@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.race=void 0;const r=require("../util/argsOrArgArray"),e=require("./raceWith");function t(...t){return(0,e.raceWith)(...(0,r.argsOrArgArray)(t))}exports.race=t;

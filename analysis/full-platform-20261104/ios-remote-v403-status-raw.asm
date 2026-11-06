@@ -1,0 +1,67 @@
+
+recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000028000 <__text>:
+ 2e81c1c: 17f83247     	b	0x2c8e538 <__text+0x2c66538>
+ 2e81c20: 17f8998f     	b	0x2ca825c <__text+0x2c8025c>
+ 2e81c24: 17f89996     	b	0x2ca827c <__text+0x2c8027c>
+ 2e81c28: 17f97506     	b	0x2cdf040 <__text+0x2cb7040>
+ 2e81c2c: 17f974fd     	b	0x2cdf020 <__text+0x2cb7020>
+ 2e81c30: 17f649be     	b	0x2c14328 <__text+0x2bec328>
+ 2e81c34: 17f649b5     	b	0x2c14308 <__text+0x2bec308>
+ 2e81c38: 17f6debf     	b	0x2c39734 <__text+0x2c11734>
+ 2e81c3c: 17f6dec6     	b	0x2c39754 <__text+0x2c11754>
+ 2e81c40: 17f56ef0     	b	0x2bdd800 <__text+0x2bb5800>
+ 2e81c44: 17f56ef7     	b	0x2bdd820 <__text+0x2bb5820>
+ 2e81c48: 17f5c5ba     	b	0x2bf3330 <__text+0x2bcb330>
+ 2e81c4c: 17f5c5c1     	b	0x2bf3350 <__text+0x2bcb350>
+ 2e81c50: 17f76626     	b	0x2c5b4e8 <__text+0x2c334e8>
+ 2e81c54: 17f7661d     	b	0x2c5b4c8 <__text+0x2c334c8>
+ 2e81c58: 17f76dcb     	b	0x2c5d384 <__text+0x2c35384>
+ 2e81c5c: 17f76dc2     	b	0x2c5d364 <__text+0x2c35364>
+ 2e81c60: 17f7afe4     	b	0x2c6dbf0 <__text+0x2c45bf0>
+ 2e81c64: 17f7afdb     	b	0x2c6dbd0 <__text+0x2c45bd0>
+ 2e81c68: 17f7e041     	b	0x2c79d6c <__text+0x2c51d6c>
+ 2e81c6c: 17f7e048     	b	0x2c79d8c <__text+0x2c51d8c>
+ 2e81c70: 17f76dbd     	b	0x2c5d364 <__text+0x2c35364>
+ 2e81c74: 17866e91     	b	0x101d6b8 <__text+0xff56b8>
+ 2e81c78: 17f84418     	b	0x2c92cd8 <__text+0x2c6acd8>
+ 2e81c7c: 17f5b74d     	b	0x2bef9b0 <__text+0x2bc79b0>
+ 2e81c80: 17c00d73     	b	0x1e8524c <__text+0x1e5d24c>
+ 2e81c84: 17f8e73c     	b	0x2cbb974 <__text+0x2c93974>
+ 2e81c88: 17f8e733     	b	0x2cbb954 <__text+0x2c93954>
+ 2e81c8c: 17f76af8     	b	0x2c5c86c <__text+0x2c3486c>
+ 2e81c90: 17f76aff     	b	0x2c5c88c <__text+0x2c3488c>
+ 2e81c94: 17f97a76     	b	0x2ce066c <__text+0x2cb866c>
+ 2e81c98: 17f97a7d     	b	0x2ce068c <__text+0x2cb868c>
+ 2e81c9c: 17f7bee7     	b	0x2c71838 <__text+0x2c49838>
+ 2e81ca0: 17f7beee     	b	0x2c71858 <__text+0x2c49858>
+ 2e81ca4: 17f7bd9b     	b	0x2c71310 <__text+0x2c49310>
+ 2e81ca8: 17f7bda2     	b	0x2c71330 <__text+0x2c49330>
+ 2e81cac: 17f2b29d     	b	0x2b2e720 <__text+0x2b06720>
+ 2e81cb0: 17faf1c9     	b	0x2d3e3d4 <__text+0x2d163d4>
+ 2e81cb4: 17fb14d8     	b	0x2d47014 <__text+0x2d1f014>
+ 2e81cb8: 17fb14cf     	b	0x2d46ff4 <__text+0x2d1eff4>
+ 2e81cbc: 17face12     	b	0x2d35504 <__text+0x2d0d504>
+ 2e81cc0: 17face19     	b	0x2d35524 <__text+0x2d0d524>
+ 2e81cc4: 17fb7bfc     	b	0x2d60cb4 <__text+0x2d38cb4>
+ 2e81cc8: 17fb7bf3     	b	0x2d60c94 <__text+0x2d38c94>
+ 2e81ccc: 17fa5a91     	b	0x2d18710 <__text+0x2cf0710>
+ 2e81cd0: 17f96bf4     	b	0x2cdcca0 <__text+0x2cb4ca0>
+ 2e81cd4: 17fa263f     	b	0x2d0b5d0 <__text+0x2ce35d0>
+ 2e81cd8: 17f64978     	b	0x2c142b8 <__text+0x2bec2b8>
+ 2e81cdc: 17f741ac     	b	0x2c5238c <__text+0x2c2a38c>
+ 2e81ce0: 17f9b0bb     	b	0x2cedfcc <__text+0x2cc5fcc>
+ 2e81ce4: 17f7bec1     	b	0x2c717e8 <__text+0x2c497e8>
+ 2e81ce8: 17f56eb2     	b	0x2bdd7b0 <__text+0x2bb57b0>
+ 2e81cec: 17fa6a0c     	b	0x2d1c51c <__text+0x2cf451c>
+ 2e81cf0: 17f8f6cf     	b	0x2cbf82c <__text+0x2c9782c>
+ 2e81cf4: 17f5b71b     	b	0x2bef960 <__text+0x2bc7960>
+ 2e81cf8: 17f76ac9     	b	0x2c5c81c <__text+0x2c3481c>
+ 2e81cfc: 17f97a48     	b	0x2ce061c <__text+0x2cb861c>
+ 2e81d00: 17f935ed     	b	0x2ccf4b4 <__text+0x2ca74b4>
+ 2e81d04: 17f852c8     	b	0x2c96824 <__text+0x2c6e824>
+ 2e81d08: 17fb1296     	b	0x2d46760 <__text+0x2d1e760>
+ 2e81d0c: 17fadd91     	b	0x2d39350 <__text+0x2d11350>

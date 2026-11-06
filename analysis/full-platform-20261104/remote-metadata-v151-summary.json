@@ -1,0 +1,42 @@
+{
+  "status": "partial",
+  "authority": "independent implementation; synthetic fixture tests",
+  "sources": [
+    {
+      "path": "implementation/remote/owner.py",
+      "sha256": "1de078b63344bcd87b93961bedc7a8d22e8f2f49040a2b98350b10f848caaa34"
+    },
+    {
+      "path": "implementation/remote/test_owner.py",
+      "sha256": "3f47fc344ca586c73939cb33f63757ce00a6807641e7b0b3734cca4f0acb76d5"
+    },
+    {
+      "path": "implementation/desktop/native/remote-client.cjs",
+      "sha256": "275fa8cd7480629b7ece7b2fa6026a5fa6a659e3048f5dd05b2e7749f8c48578"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-client.cjs",
+      "sha256": "ded571514f8f4c37f0c426da1ef5a74a6a89d932e8af1eb69b6bff8848b72961"
+    },
+    {
+      "path": "implementation/desktop/native/test-remote-metadata.cjs",
+      "sha256": "0bd461386349f87ad9753ee7726f4d364d10724440d0e6653d6e3266230c0a7e"
+    }
+  ],
+  "reports": [
+    "remote-metadata-v151-owner.log",
+    "remote-metadata-v151-client.json",
+    "remote-metadata-v151-validation.json"
+  ],
+  "checks": [
+    "5 owner tests passed including actual process restart and legacy DB migration",
+    "actual desktop transport metadata retrieval plus existing two-host manager tests passed",
+    "metadata scope/type/null/ordering validation passed"
+  ],
+  "limits": [
+    "thread/info is independent schema, not official thread/read",
+    "No renderer wiring or new package",
+    "Legacy creation timestamps remain unknown",
+    "No live model requests or device UI acceptance"
+  ]
+}

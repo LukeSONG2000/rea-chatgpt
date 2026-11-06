@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "platform": "ios",
+  "reference_version": "1.2026.293",
+  "implementation": "packaged library client plus independent synthetic data source, UIKit list and Quick Look adapter",
+  "runtime": {
+    "architecture": "arm64",
+    "deviceId": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "deviceName": "REA ChatGPT Offline",
+    "modelName": "iPhone 17 Pro",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "verified": [
+    "Generic simulator build",
+    "Packaged client offline replay repeated successfully",
+    "Native directory entry, file row, Quick Look body display, return to file list and root directory",
+    "v3 preview screenshot reviewed and synthetic body visible"
+  ],
+  "attempts": {
+    "v1": "failed: asserted filename with extension, observed Quick Look title omits extension",
+    "v2": "passed container/navigation test, screenshot blank before body ready; not content acceptance",
+    "v3": "passed explicit body-ready assertion and screenshot review"
+  },
+  "limitations": [
+    "One fixed synthetic folder/text file; no real import, pagination UI, grid, selection, favorites, saved entities or images",
+    "Original native openItem owner and preview factory unresolved; no official visual equivalence",
+    "No physical iPhone, Android preview parity, account switch, preview search/share action acceptance",
+    "Local fixture adapter has no transport; cancellation behavior validated separately in packaged-client replay",
+    "Cache fixture remains available for Quick Look, no user files accessed"
+  ],
+  "provenance": "analysis/full-platform-20261104/ios-library-provenance-v1.json",
+  "source_chain": "analysis/full-platform-20261104/ios-library-chain-v1.json",
+  "source_and_evidence_sha256": {
+    "implementation/ios/Tools/prepare-library.py": "ef987f5e23ad4be1f1c08086a440f5548c7b34d815983ab78f258cf53e4143fc",
+    "implementation/ios/Sources/NativeConversationHost.swift": "333cc7cb0be0a2cf1977d4f3696378471aa02321421ae6b087e2ea5e9fb61434",
+    "implementation/ios/UITests/HostInteractionTests.swift": "3bf226c30a4aa8bceecc25c5b854e200b0e0a6209549990dfae01e9e7d540a0b",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "c671ccacfd59a2479584f82002d08ee5428a8e07b17f2c1f7df31a14f6d359b7",
+    "analysis/full-platform-20261104/ios-library-v3.summary.json": "714f268c3a5e2b010fcd132e096907bb6c06bd66b288bce25bf8b803ceaa715f",
+    "analysis/full-platform-20261104/ios-library-v3-attachments/native-library-preview.png": "626e6d4a10c388f219572e6e0fba7a9d303642d8badc790b7bf313969559507d",
+    "analysis/full-platform-20261104/ios-library-replay-v2.json": "0b718969244f7c7ab8d8c0e6120eb2381cdf24ae3a333199b968c02197a4fc77"
+  },
+  "next_action": "Expand library with packaged layout and content types, native import contract and fixture paging; keep official native bridge unresolved"
+}

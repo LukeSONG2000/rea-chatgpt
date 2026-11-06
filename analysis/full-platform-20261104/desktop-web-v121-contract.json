@@ -1,0 +1,26 @@
+{
+  "evidence_type": "artifact static observation",
+  "path": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "excerpts": [
+    {
+      "symbol": "function r$t(",
+      "character_offset": 2607306,
+      "excerpt": "function r$t(){let e=mi?.applicationState;if(e==null)throw Error(`Global state is unavailable`);return e}function i$t(){return(i$t=t((()=>{F()})))()}function VC(e,t,n){return[HC,e,...n==null?[]:Array.isArray(n)?n:[n],t?JSON.stringify(t):void 0].filter(e=>e!==void 0)}var HC;function a$t(){return(a$t=t((()=>{HC=`vscode`})))()}async function o$t(...e){let[t,n]=e,{params:r,select:i,signal:a,source:o,responsePriority:s}=n??{};return s$t(t,r,i,a,o,s)}async function s$t(e,t,n,r,i,a){let o=(await b_.getInstance().post(`vscode://codex/${e}`,JSON.stringify(t),c$t(i),r,a)).body;return n?n(o):o}function c$t(e){if(e!=null)return{[qye]:e}}function UC(){return(UC=t((()=>{xa(),x_(),a$t()})))()}function l$t(e,t,n,r=r$t()){let i=async()=>{let{value:i}=await h$t(t,{state:r}),a=n(i);if(a===i)return;if(!(await va(r.write(t,a))).success)throw Error(`Failed to persist global state`);let o=e.query.snapshot(GC,t);o.setData(e=>({value:t===As.SIDEBAR_PROJECT_THREAD_ORDERS&&mi?.projects?.updateLinkedProjectThreadOrder!=null?{...Object.fromEntries(Object.entries(Ga(a)).filter(([e])=>!e.startsWith(`linked:`))),...Object.fromEntries(Object.entries(Ga(e?.value)).filter(([e])=>e.startsWith(`linked:`)))}:a})),await"
+    },
+    {
+      "symbol": "async function u$t(",
+      "character_offset": 2608682,
+      "excerpt": "async function u$t(e,t,n,r){if(g$t.has(t))throw Error(`Direct writes to ${t} are not allowed`);let i=e.query.snapshot(GC,t);await i.cancel();let a=i.getData(),o=i.setData({value:n});try{let{success:e}=await va(r$t().write(t,n));if(!e){if(r?.throwOnFailure)throw Error(`Failed to set global setting`);i.setData(e=>e===o?a:e)}}catch(e){throw i.setData(e=>e===o?a:e),e}finally{await i.invalidate(),er(i.queryKey)}}async function d$t(e,t,n){let r=e.query.snapshot(GC,As.THREAD_PROJECT_ASSIGNMENTS),i=e.query.snapshot(GC,As.PROJECTLESS_THREAD_IDS);n!=null&&zge.batch(()=>{r.getData()??r.setData({value:n.assignments}),i.getData()??i.setData({value:n.projectlessThreadIds})}),await Promise.all([r.getData()==null?r.fetch():void 0,i.getData()==null?i.fetch():void 0]);let a=[r,i],o=a.filter(t=>{let n=e.queryClient.getQueryState(t.queryKey);return n?.fetchStatus===`fetching`||n?.isInvalidated===!0});await Promise.all(a.map(e=>e.cancel()));let{records:s}=sie(ple(r.getData()?.value,i.getData()?.value),Object.entries(t).map(([e,t])=>({...t,threadId:cs(e)})));zge.batch(()=>{r.setData({value:s.assignments}),i.setData({value:s.projectlessThreadIds})});for(let e of o)e.invalidate({exact:!0,refetchType:`none"
+    },
+    {
+      "symbol": "async function RGr(",
+      "character_offset": 4852278,
+      "excerpt": "async function RGr({cursor:e=null,limit:t=5,ownedOnly:n=!0,projectId:r,signal:i}){let a=await sv.safeGet(`/gizmos/{gizmo_id}/conversations`,{parameters:{path:{gizmo_id:r},query:{cursor:e,limit:t,owned_only:n}},signal:i}),o=a.items?.filter(nz)??[];return J_(r,o.map(e=>e.id)),{cursor:a.cursor,items:o}}function zGr(e,t){let n=VGr.get(e)??new Map;VGr.set(e,n);let r=n.get(t)??new Set;n.set(t,r);let i=Cs();r.add(i.promise);let a={queryKey:[az,t]};return e.cancelQueries(a),()=>{r.delete(i.promise),i.resolve(void 0),r.size===0&&(n.delete(t),e.cancelQueries(a),e.invalidateQueries(a))}}var az,BGr,VGr;function HGr(){return(HGr=t((()=>{xa(),wS(),rz(),ui(),FGr(),Z_(),az=`chatgpt-project-conversations`,BGr=5,VGr=new WeakMap})))()}function UGr(e,{projectType:t,projectId:n,lockedProjectId:r}={}){return e?.includes(`LOCKED_CHATS`)===!0||t===`locked_chats`||n!=null&&n===r}function WGr(){return(WGr=t((()=>{})))()}function GGr(e,t,n){return xL(n)&&e.get(kP,t)?e.get(VP,t):n}function KGr(e,t){let n=e.get(kv);if(n.status!==`allowed`||!(`accountId`in n)||t.availableHealthProjectId===void 0&&t.conversations==null&&t.tasks==null&&t.pinnedConversations==null&&t.pinnedProjects==null&&t.project==null&&t.projec"
+    }
+  ],
+  "limitations": [
+    "Application state write caller key not yet identified; service implementation pending",
+    "Independent membership projection is not evidence of official server storage"
+  ]
+}

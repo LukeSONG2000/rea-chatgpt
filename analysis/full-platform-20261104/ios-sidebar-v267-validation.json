@@ -1,0 +1,25 @@
+{
+  "status": "partial",
+  "build": "simulator build succeeded",
+  "ui_test": {
+    "name": "testNativeNavigationReferenceEntries",
+    "passed": 1,
+    "failed": 0,
+    "coverage": [
+      "new conversation identity",
+      "open sidebar",
+      "dismiss via exposed content",
+      "reopen and select current conversation",
+      "connection status returns to same conversation"
+    ]
+  },
+  "manual": "Device Hub compact window observed with sidebar open and original chat still visible at right; left running",
+  "screenshot": "ios-sidebar-v267-open.png",
+  "limitations": [
+    "Independent menu list appearance remains",
+    "No drag or animation restoration yet",
+    "Corner radius from third-party reference",
+    "Preview configuration is explicit independent selection",
+    "No physical iPhone or Android acceptance"
+  ]
+}

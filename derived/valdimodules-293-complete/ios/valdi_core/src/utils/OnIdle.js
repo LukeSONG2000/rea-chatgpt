@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.onIdleInterruptible=void 0;const e=require("../ValdiRuntimeProvider"),t=require("../SetTimeout"),r=require("./FunctionUtils"),i=(0,e.getValdiRuntime)();function n(e){(0,t.setTimeoutInterruptible)(()=>{i.onMainThreadIdle((0,r.makeInterruptibleCallback)(e))})}exports.onIdleInterruptible=n;

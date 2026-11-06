@@ -1,0 +1,50 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "static observation; field ownership inferred through verified metadata offsets",
+  "history_consumer": {
+    "caller": "0x1a393bc",
+    "history_branch_call": "0x1a394d0 → 0x1a39914",
+    "latest_item_fallback_call": "0x1a394b4 → 0x1a39914",
+    "history_input": "ToolActivityGroup metadata slot 0x28 = field 6 historyPresentation",
+    "component_metadata": "0x1a39aec → 0x1daa52c → 0x1c205a4 → descriptor 0x95add8c ToolActivityHistorySummaryView"
+  },
+  "icon_metric": {
+    "value": 20,
+    "value_load": "0x1a39af4",
+    "relative_to": "body",
+    "relative_to_helper": "0x26c05c",
+    "binding": {
+      "symbol": "_$s7SwiftUI4FontV9TextStyleO4bodyyA2EmFWC",
+      "library_ordinal": 82,
+      "weak": false,
+      "import_ordinal": 9712,
+      "table_addend": 0,
+      "encoded_pointer_addend": 0,
+      "chain_membership_verified": true
+    },
+    "field": "_iconSlotSize",
+    "metadata_slot": "0x18 = offset vector 2 words + field index 2 * 4",
+    "field_offset_load": "0x1a39af0",
+    "field_destination": "0x1a39b30",
+    "initializer_call": "0x1a39b38 → 0x1d9f110 → 0x7c46fa8"
+  },
+  "summary_enum": {
+    "descriptor": "0x95aeca0",
+    "cases": [
+      "latestItem",
+      "thinking",
+      "history"
+    ],
+    "limits": "Do not infer the group +0x40 tag location solely from field order; absolute summary field offset still needs explicit layout corroboration."
+  },
+  "limits": [
+    "No official runtime execution or visual parity acceptance",
+    "Component icon metric does not prove overall row geometry or history disclosure styling",
+    "Latest item content at 0x1a39b48 and expansion state ownership remain next investigation",
+    "Android implementation remains independently unverified"
+  ],
+  "integration": "Existing isolated preview already uses 20 relativeTo body; update attribution only, no runtime behavior changed."
+}

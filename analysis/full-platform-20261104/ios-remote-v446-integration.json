@@ -1,0 +1,95 @@
+{
+  "schema": "rea-ios-component-integration-v1",
+  "batch": "v446",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "previous_goal_turn": "progress: proved persistent field containment and corrected expanded inset interpretation; this batch integrates that known field into actual thread UI",
+  "implemented": [
+    "Source-structured persistent expanded field and compact overlay, compact row48",
+    "Native UITextView body font, ordinary selected style and marked-text replacement guard",
+    "Thread bottom-bar mounting for no-pending-request fixtures",
+    "Typed host/thread in-memory draft store owned above navigation",
+    "Regular Glass container using verified default style, distinct from question-card chrome",
+    "Xcode target inclusion and queued cross-thread draft UI regression"
+  ],
+  "official_evidence": {
+    "persistent_row": "v445: 0x1984fa0 ->0x1992ab0/0x1ced4d4",
+    "native_boundary": "v442: 0x1993ef0/0x199418c/0x1993c0c",
+    "font_defaults": "v444: 0x198825c/0x6080bc4",
+    "expanded_insets": "v445: 0x19882e4/0x198a548; supersedes v444 preservation claim",
+    "send_callback": "0x198faec ->0x1c25cb8 ->0x1c29b4c ->0x198fd2c (mode byte0)",
+    "send_guards": [
+      "0x1987524",
+      "0x19816a4"
+    ],
+    "owner_action": "metadata+0xc4, field41 handle"
+  },
+  "independent_adapters": [
+    "In-memory draft store and typed scope",
+    "UITextView bridge, focus-revision cancellation and marked-text guard",
+    "Fixture placeholder and horizontal outer padding",
+    "No-pending-request mounting condition; actual full coexistence still unknown",
+    "Selected default regular-height range44..200; actual size-class/override selection pending"
+  ],
+  "validation": {
+    "source_typecheck": "passed",
+    "warnings": "3 pre-existing UIKit deprecations",
+    "xcode_project_lint": "passed",
+    "new_source_in_app_target": "passed",
+    "ui_test_syntax": "passed",
+    "ui_test_execution": "not_run",
+    "simulator_install": "not_run",
+    "device_install": "not_run",
+    "existing_processes_confirmed_live": [
+      87483,
+      97181,
+      97197
+    ],
+    "blocker": "existing Xcode first-launch authorization wait; old preview retained"
+  },
+  "queued_ui_tests": [
+    "testRemoteOrdinaryEditorDraftAndReturn",
+    "testNoDebugTitleNavigation",
+    "testRemoteTaskScopeAndReturn",
+    "testRemoteCurrentTurnGeometry"
+  ],
+  "not_yet_recovered": [
+    "Full ordinary composer attachment/voice/prediction/plan modes and service-driven state gates",
+    "Send/stop/follow-up/configuration/permissions controls on the new field",
+    "Effective original parent outerInsets and style overrides",
+    "Submission-mode names, second guard and complete state reset behavior",
+    "Same-thread-ID cross-host UI acceptance, device IME, selection and process restart restoration",
+    "Visual/runtime acceptance and independent Android mapping"
+  ],
+  "next_action": "Connect the ordinary primary controls to the now-mounted field after resolving remaining submission guards/mode and shared button style; keep server adapter explicit and separate from original local action enum",
+  "source": [
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "a49de508586676b62e105e985f485895a415bff91db1da853be5c5526bdab149"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "92149a46cbec3f551f608fd4851a33496d67721045c9d674afff3c529b664599"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "0341998f90567a3c6b967ebd0a539dc38786cc75fb4fec3fe6e6e7d3e09ebf9b"
+    },
+    {
+      "path": "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj",
+      "sha256": "fbb269b15ca91d0da817b325679bf820e8c35b8c58d208f1cb49438ed1245f05"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v446-send-callbacks.json",
+      "sha256": "da1bf5a50e6ece6a3ead0930c0cc933e00ccac596f0b49c47de7a0cf31ff934f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v446-send-state.json",
+      "sha256": "35248dbef6bdc4cc5a023ee8afa82b1bd66d25bc54d301de325cd5657acbc3d2"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "official": {
+    "Run": {
+      "descriptor": "0x95ed8f8",
+      "fields": {
+        "text": "String",
+        "foregroundColor": "ForegroundColor?"
+      }
+    },
+    "Line": {
+      "descriptor": "0x95ed914",
+      "fields": {
+        "id": "Int",
+        "runs": "[Run]"
+      }
+    },
+    "ForegroundColor": {
+      "descriptor": "0x95ed930",
+      "cases": "indexed(Int), rgb(red:Int,green:Int,blue:Int), 16 named basic/bright cases"
+    },
+    "text_color_binding": "0x7c49f0c -> SwiftUI.Text.foregroundColor",
+    "nil_color": "0x1d1d884 -> 0x1d1d9d8 retains parent color",
+    "rgb_space": "sRGB, divide each channel by255"
+  },
+  "independent_adapter": {
+    "name": "RemoteOutputRun",
+    "fields": [
+      "text",
+      "indexedColor: UInt8?"
+    ],
+    "purpose": "Explicit pre-parsed service or synthetic input, no ANSI parser",
+    "fixture": "Every sixth synthetic line uses indexed2",
+    "limits": [
+      "Only indexed colors exposed, RGB/named variants not yet exposed",
+      "Single combined Text instead of official per-line LazyVStack",
+      "Parser escapes and line identity remain unresolved",
+      "Only light-mode green/default color screenshot validated"
+    ]
+  }
+}

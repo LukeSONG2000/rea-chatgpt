@@ -1,0 +1,28 @@
+{
+  "status": "partial",
+  "authority": "independent desktop main-process Remote adapter; official renderer unchanged",
+  "acceptance": {
+    "nodeClient": "passed: real dual owners plus hanging/foreign-scope endpoint",
+    "packagedMacIPC": "passed: primary renderer capability, fixture denied, two-owner cancellation, process restart, offline host isolation",
+    "payloadDigests": {
+      "v146-macos": 15882,
+      "v146-windows-r2": 15882
+    },
+    "macSignature": "deep strict verification passed",
+    "windowsPackageFilesVerified": 15956
+  },
+  "limits": [
+    "No official Remote visual UI wiring yet",
+    "Windows built only, no Windows OS execution",
+    "No live Zhipu desktop Remote test",
+    "No approvals Goal or tool execution",
+    "Windows pairing ACL not accepted"
+  ],
+  "sourceSHA256": {
+    "implementation/desktop/native/remote-client.cjs": "3cd482d2dadabbccdd7c8c5bb4490347ec705e74feeb6a69708ae880cbbd8f73",
+    "implementation/desktop/native/main.cjs": "f2216af254db0d64b4a5f8afe52c430827db41983c6dd6f6e535f7d6f2a385b3",
+    "implementation/desktop/native/test-remote-client.cjs": "efaf79a22469138747322979f0f0244826e567606c61d78e3db475773dbd850e",
+    "implementation/desktop/native/test-remote-bundle.cjs": "4247b5246e99d1a2022b002297b2afe23fb04d959ef9ddce0f35c9bd581e5cbb"
+  },
+  "firstWindowsBuild": "wrong cache subdirectory argument; failure retained, v146-windows-r2 uses verified cache root"
+}

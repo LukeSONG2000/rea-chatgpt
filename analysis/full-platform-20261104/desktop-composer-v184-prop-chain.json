@@ -1,0 +1,37 @@
+{
+  "status": "partial",
+  "source": "recovered/macos/asar-extracted/webview/assets/app-initial-feb30b196d11.js",
+  "sha256": "8f4e5fe65617413cabf689afbfc04bc6c24f73a5c0b57d7d0de443942343bd55",
+  "locations": [
+    {
+      "characterOffset": 10031046,
+      "snippet": "function j4s(e){let t=(0,N4s.c)(110),{layoutState:n,editor:r,surfacePlacement:i,hasVisibleAttachments:a,attachments:o,attachmentRef:s,attachmentsHidden:c,imageMarkupAttachment:l,replyContext:u,header:d,inputIntegrations:f,leadingActions:p,expandedUtilityControls:m,modelControl:h,secondaryActions:g,p"
+    },
+    {
+      "characterOffset": 10034177,
+      "snippet": "Te=i.kind===`document`||i.kind===`comment`?`compact`:`default`,Ee=te,De;t[35]!==y||t[36]!==I?(De=$a(I,y),t[35]=y,t[36]=I,t[37]=De):De=t[37];let Oe=j!==\"default\",ke=a||u!=null||se!=null?`multiline`:F,Ae;t[38]===u?Ae=t[39]:(Ae=u==null?null:(0,A9.jsx)(Jj.ReplyContext,{children:u}),t[38]=u,t[39]=Ae);let"
+    },
+    {
+      "characterOffset": 10024931,
+      "snippet": "function a4s(e){let t=(0,o4s.c)(48),n,r,i,a,o,s,c,l,u,d,f,p,m,h;t[0]===e?(n=t[1],r=t[2],i=t[3],a=t[4],o=t[5],s=t[6],c=t[7],l=t[8],u=t[9],d=t[10],f=t[11],p=t[12],m=t[13],h=t[14]):({blockReason:n,children:r,className:i,handleDropLocally:m,hasDropTargetPortal:a,isDragActive:o,isSubmitting:s,onDragEnter"
+    },
+    {
+      "characterOffset": 3986293,
+      "snippet": "function X4n(e){let t=(0,Wj.c)(37),{children:n,className:r,animateRadius:i,utilityBarVariant:a,inert:o,isDragActive:s,layout:c,paddingVariant:l,radiusVariant:u,density:d,surfaceOverflow:f,surfaceVariant:p,onDragEnter:m,onDragLeave:h,onDragOver:g,onDrop:_}=e,v=i!==void 0&&i,y=a===void 0?`default`:a,b"
+    },
+    {
+      "characterOffset": 3997996,
+      "snippet": "function m3n(e){let t=(0,h3n.c)(25),n,r,i,a,o,s;t[0]===e?(n=t[1],r=t[2],i=t[3],a=t[4],o=t[5],s=t[6]):({className:n,minHeight:r,singleLine:o,variant:s,style:a,...i}=e,t[0]=e,t[1]=n,t[2]=r,t[3]=i,t[4]=a,t[5]=o,t[6]=s);let c=o!==void 0&&o,l=s===void 0?`default`:s,{animateLayout:u,expansion:d,homeMode:f"
+    }
+  ],
+  "runtime": "desktop-composer-v184-fibers.json",
+  "findings": [
+    "Original j4s computes compact for document/comment, default otherwise; thread passes default explicitly through a4s and X4n.",
+    "No comfortable density selection exists in this consumer branch.",
+    "Original m3n uses a 9-spacing-unit fallback for single-line editor height.",
+    "Current host surface selection matches these original default props; changing it to comfortable would be a behavioral substitution, not a proven missing initialization fix."
+  ],
+  "validationCorrection": "Geometry assertions now require both text and controls centered within outer surface, in addition to mutual alignment.",
+  "remaining": "No source-grounded centering fix found for this baseline branch; official same-mode visual behavior and any upstream correction remain unverified.",
+  "preview": "User preview left running; no new manual style added."
+}

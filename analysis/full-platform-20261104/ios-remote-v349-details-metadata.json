@@ -1,0 +1,44 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "CodexTaskRowPriorityModeDetails",
+      "descriptor": "0x9560190",
+      "type_section_entry": "0x9d34d34",
+      "accessor": "0x430f44",
+      "fields": [
+        {
+          "name": "diffStats",
+          "record": "0x99d926c",
+          "type_reference": "0x8be77da"
+        },
+        {
+          "name": "subtitle",
+          "record": "0x99d9278",
+          "type_reference": "0x8be77e2"
+        },
+        {
+          "name": "hostDisplayName",
+          "record": "0x99d9284",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "hostIcon",
+          "record": "0x99d9290",
+          "type_reference": "0x8dfc2bc"
+        }
+      ],
+      "conformances": []
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

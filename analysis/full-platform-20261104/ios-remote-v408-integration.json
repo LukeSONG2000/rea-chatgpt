@@ -1,0 +1,113 @@
+{
+  "status": "partial",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "evidence_type": "official artifact static observation and independent native reconstruction; no target execution",
+  "observations": [
+    {
+      "offset": "View conformance0x7e19bb0 -> body0x19aab64 -> 0x19aa374",
+      "conclusion": "Automatic review uses ExpandableAssistantSummaryItem. Label and selectable plain Text detail. No approve/deny controls in this bounded body."
+    },
+    {
+      "offset": "0x1a3b054;0x1bfc81c -> 0x1c0543c -> 0x1a3bd5c",
+      "conclusion": "Command detail constructs review rows before Shell. Review expansion binding is obtained from the row owner. Fixture uses separately scoped IDs; it does not reproduce private owner ABI."
+    },
+    {
+      "offset": "metadata0xa571208/0xa5fcac0",
+      "conclusion": "Review fields id0,targetItemID16,review32,reviewID120,action136. Guardian review rationale0,risk16,status40,userAuthorization64. Confirms absolute consumers at0x20/0x30/0x48."
+    },
+    {
+      "offset": "0x240fab8;0x7e82470;rawValue0x2c89bcc -> 0x2c89b1c",
+      "conclusion": "Known status indices inProgress/approved/denied/timedOut/aborted independently match rawValue witnesses. Unknown resilient wrapper uses Reviewing label; in-progress shimmer compares known case, not fallback string."
+    },
+    {
+      "offset": "0x240fbec;0x7e82475;rawValue0x2c89f14 -> 0x2c89e94",
+      "conclusion": "Absent and unknown risk suppressed. Known low/medium/high/critical use original keys."
+    },
+    {
+      "offset": "0x240fd04 -> 0xf87cc;detail0x19aaa38",
+      "conclusion": "Non-whitespace rationale is retained; blank includes Character.isWhitespace iteration. For target-bound reviews generic status fallback; detail is selectable Text. Standalone action-specific network branch remains separate."
+    },
+    {
+      "offset": "0x19aa4e4;0x19aa884 -> 0x74e2728 -> 0x74e2714;0xaad38d8",
+      "conclusion": "Label HStack center spacing4; body font binding. Exact symbol image, palette and risk punctuation not yet recovered."
+    }
+  ],
+  "integration": [
+    "Added RemoteAutomaticReviewInput preserving raw unknown status/risk and distinct identities; no authorization or executor API.",
+    "Added review rows before Shell, target-item filtering and per-task/per-review expansion.",
+    "Synthetic approved and reviewing fixtures; optional multi-review and unrelated-target test vectors.",
+    "Added14 original keys,37 total across65 locales; model source registered in actual Xcode build phase."
+  ],
+  "validation": {
+    "foundation": "passed:288 review vectors,4 original Chinese review labels plus all prior tests",
+    "host_typecheck": "passed;3 existing deprecation warnings",
+    "ui_test_syntax": "passed",
+    "xcode_project_format": "plutil lint passed",
+    "ui_runtime": "not executed; original first-launch PID97197 remains live waiting for authorization; no duplicate runner",
+    "preview": "PID87483 preserved; latest accepted v383",
+    "phone": "not installed",
+    "retention": "no stale packages; oversized new helper export corrected to524 bytes"
+  },
+  "limits": [
+    "Unknown exact Symbol image, palette, risk punctuation and complete detail typography.",
+    "Standalone network-review action fallback not integrated.",
+    "UI gestures/selection/expansion and language truncation not runtime accepted.",
+    "Pending human approval and structured user-input UI remain separate unfinished components.",
+    "Fixture filter/identity boundary is independent design over observed fields, not server protocol recovery.",
+    "No Android consumer or official cross-platform equivalence proved."
+  ],
+  "next_minimal_action": "Recover pending human approval/user-input message consumers and actions. On component authorization, run cumulative UI tests and build/install preview with current source hashes before claiming device acceptance.",
+  "evidence_files": [
+    "ios-remote-v408-approval-body-types.json",
+    "ios-remote-v408-approval-body.asm",
+    "ios-remote-v408-approval-data.json",
+    "ios-remote-v408-approval-metadata.json",
+    "ios-remote-v408-approval-window.json",
+    "ios-remote-v408-approval-witnesses.json",
+    "ios-remote-v408-guardian-accessor.asm",
+    "ios-remote-v408-guardian-enum-witnesses.json",
+    "ios-remote-v408-guardian-metadata.json",
+    "ios-remote-v408-range-correction.json",
+    "ios-remote-v408-rationale-whitespace.json",
+    "ios-remote-v408-review-accessor.asm",
+    "ios-remote-v408-review-codec.asm",
+    "ios-remote-v408-review-detail-empty.asm",
+    "ios-remote-v408-review-enum-values.asm",
+    "ios-remote-v408-review-font-init.asm",
+    "ios-remote-v408-review-font.asm",
+    "ios-remote-v408-review-full-detail.asm",
+    "ios-remote-v408-review-icon-init.asm",
+    "ios-remote-v408-review-icon.asm",
+    "ios-remote-v408-review-init.asm",
+    "ios-remote-v408-review-label.asm",
+    "ios-remote-v408-review-prefix-helper.asm",
+    "ios-remote-v408-review-raw-approved.asm",
+    "ios-remote-v408-review-raw-denied.asm",
+    "ios-remote-v408-review-raw-helper.asm",
+    "ios-remote-v408-review-row-init.asm",
+    "ios-remote-v408-review-shimmer-status.asm",
+    "ios-remote-v408-review-state-init.asm",
+    "ios-remote-v408-review-strings.asm",
+    "ios-remote-v408-review-style-helper.asm",
+    "ios-remote-v408-review-style-helper2.asm",
+    "ios-remote-v408-review-symbol.asm",
+    "ios-remote-v408-risk-codec.asm",
+    "ios-remote-v408-risk-enum-values.asm",
+    "ios-remote-v408-risk-raw-high.asm",
+    "ios-remote-v408-risk-raw-medium.asm",
+    "ios-remote-v408-text-resources.json"
+  ],
+  "source_hashes": {
+    "implementation/ios/Sources/RemoteAutomaticReview.swift": "b6d15dc1f63bb56f64ad0011af3587932983756510a98f0f2d3e49c563dc4bbf",
+    "implementation/ios/Sources/NativeConversationHost.swift": "e9407b452c97bcee9350103692f71cdcce0412831b5ea5ebf06c45f4dec8a540",
+    "implementation/ios/Sources/OfficialText.swift": "ec2c5118abc686a403f217ae125454bde9e55f29c72f1e67727fb0f1615dfd4f",
+    "implementation/ios/Tools/prepare-official-text.py": "b681b806576f344c96ed9c5a002bfbb774bc1d70c6c21b9e16ad10a0977d6edd",
+    "implementation/ios/Resources/OfficialTranslations.json": "538987b32d67e10e4c1b9c285f7bcb298ff67861a864f816b6be4e5f6bdffd7b",
+    "implementation/ios/TextTests/main.swift": "ce741c24b3390e555b035d688c6f7d1738733164c072407e120e10a904eedf3a",
+    "implementation/ios/UITests/HostInteractionTests.swift": "532b3ce18c438047222e4178df800e36f54f44c954d59c9b104a3b9a46cbdd57",
+    "implementation/ios/test-official-text.sh": "b82ead16bd2ee94272f5b9b2408000b9108309fc83d14c9624ac3f8805f22da7",
+    "implementation/ios/REAChatGPTHost.xcodeproj/project.pbxproj": "8c21dcf401f8c72e5af753a685c2c9076844502ff9717668ddbb952b98c52760"
+  }
+}

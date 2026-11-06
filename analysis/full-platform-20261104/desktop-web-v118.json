@@ -1,0 +1,28 @@
+{
+  "status": "partial",
+  "surface": "desktop-renderer-browser",
+  "implementation": "Explicitly empty connector scopes and saved responses for the two isolated synthetic projects; unknown scopes and writes rejected",
+  "evidence_type": "artifact-derived response envelope plus independent fixture runtime",
+  "accepted": [
+    "original read-only dialog exits loading",
+    "synthetic project name preserved; Save disabled",
+    "close action dismisses dialog"
+  ],
+  "validation": {
+    "project_contract_tests": "passed: list/detail identities, empty source terminal cursor, scope/query/write rejection",
+    "search_regression": "passed",
+    "page_errors": []
+  },
+  "evidence": [
+    "desktop-web-v118-contract.json",
+    "desktop-web-v118-sources.json",
+    "desktop-web-v118-accepted.json"
+  ],
+  "limitations": [
+    "No nonempty source, connector synchronization, upload or saved-response rendering acceptance",
+    "Project editing/creation and membership writes remain incomplete",
+    "Read-only fixture permissions only; no official service behavior inferred",
+    "Other unsupported host operations remain"
+  ],
+  "next": "Implement durable writable synthetic project lifecycle, then original create/edit interactions"
+}

@@ -1,0 +1,140 @@
+{
+  "schema": "rea-ios-component-findings-v1",
+  "batch": "v443",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "status": "partial",
+  "kind": "blocking_source_research",
+  "previous_turn_classification": "progress: identified absent ordinary composer and native bridge; this batch closes actual bottom-bar factory references",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "observations": [
+    {
+      "type": "shipped_artifact_static_observation",
+      "conclusion": "Ordinary bottom-bar content reaches a factory that constructs CodexRemoteMessageInputView",
+      "chain": [
+        "0x1a23dbc",
+        "0x1a24080 -> 0x1cea28c",
+        "0x1cea294 -> 0x1a2564c",
+        "0x1a258ac -> 0x1a25e2c",
+        "0x1a25fa0 / 0x1a26228 -> 0x1a233d8",
+        "0x1a234a4 -> 0x1aa5854",
+        "0x1a23d0c -> 0x197bfe4",
+        "0x1a23d44 View.id"
+      ],
+      "limit": "not all branch predicates or identity value mapped"
+    },
+    {
+      "type": "shipped_artifact_static_observation",
+      "conclusion": "Factory reads owner handleMessageInputAction closure; exact dispatch semantics remain unresolved",
+      "location": "0x1a23a6c..0x1a23a78",
+      "descriptor": "0x95ae740",
+      "field_index": 16,
+      "field_vector_base": "metadata+0x20",
+      "entry": "metadata+0x60"
+    },
+    {
+      "type": "shipped_artifact_static_observation",
+      "conclusion": "Context-menu preview and realtime-voice selection affect bottom-bar branching",
+      "locations": [
+        "0x1a22304..0x1a22318",
+        "0x1a2233c..0x1a22370"
+      ],
+      "fields": {
+        "metadata+0x24": "inContextMenuPreview",
+        "metadata+0x44": "usesRealtimeVoiceComposer"
+      }
+    },
+    {
+      "type": "shipped_artifact_static_observation",
+      "conclusion": "28 local composer actions distinguish submission, turn stop, editing, selection, attachments, prediction and dictation",
+      "enum_descriptor": "0x95aea7c",
+      "payload_cases": 20,
+      "empty_cases": 8,
+      "limit": "not a JSON schema, server behavior, or recovered consumer implementation"
+    }
+  ],
+  "downstream_change": "Mount official-structured ordinary input component in the current RemoteThreadFixturePage; preserve source-backed action distinctions through independent scoped cloud adapter",
+  "next_evidence": {
+    "layout": "0x197d0a8 -> 0x197e308 -> 0x1981140 -> 0x1981fa4 -> 0x1c26b48 -> 0x19821f4",
+    "geometry": "actual Compact/Expanded field arguments and style-derived insets 0x1981448",
+    "actions": "handleMessageInputAction consumer and CodexRemotePromptSubmissionMode cases"
+  },
+  "validation": {
+    "json_parse": "passed",
+    "enum_case_count_and_unique_names": "passed",
+    "payload_count": "passed",
+    "scalar_payload_encodings": "passed",
+    "bottom_bar_metadata_field_offsets": "passed",
+    "host_changed": false,
+    "typecheck": "not_run_no_host_change",
+    "ui_runtime": "not_run",
+    "device_install": "not_run",
+    "existing_processes": "PID  ELAPSED COMMAND\n87483 08:33:22 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/53A08EF1-C69E-4155-9413-3795911898F0/REAChatGPTHost.app/REAChatGPTHost --offline-fixture\n97181 06:48:49 /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python implementation/ios/test-ui.py --device 71BCC1D2-0ABD-4F11-BB67-37818435B176 --only-test testRemoteTaskScopeAndReturn --result analysis/full-platform-20261104/ios-remote-v385.xcresult\n97197 06:48:48 /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -runFirstLaunch",
+    "blocker": "existing first-launch installation pending; old preview retained"
+  },
+  "limits": [
+    "Ordinary composer is still absent from current preview",
+    "No fidelity or IME acceptance from static evidence",
+    "Shared iOS editor class does not establish shared whole composer or Android architecture"
+  ],
+  "sources": [
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "00cbff7aa340fcdc39b04512e15fa34ac96306660fcc46d5f703d07cf48acf83"
+    },
+    {
+      "path": "docs/full-platform/IOS-REMOTE-TASK-MESSAGE-COMPONENTS.md",
+      "sha256": "ea20458ff029d0fc429d5c10aeec293fd634699d2f74742ef02dffe05798e47b"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v443-action-payloads.json",
+      "sha256": "fb5ea07924d465821571a817747aa16b20702cfbb3ef914beeca7f441cc37e71"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v443-composer-actions.json",
+      "sha256": "8911ccbf46a6a44a595db55da8d728929ff603adf0665abb6903fad19ab72924"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v443-composer-body.json",
+      "sha256": "a290fad90b90d3879be668436465fc1b273316cf42b36d87ce96e18ffd2b7595"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v443-composer-layout.json",
+      "sha256": "0a2ce24e9e5fceaa77a4ea707abc6dfe6f3ead07076de8633fb59df6ccba057e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v443-input-chain-refs.json",
+      "sha256": "cc02415b08b12a72b6f1f2cc38f7a5f2c480f6246415b5bdae4e51658df9bc62"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v443-input-chain-windows.json",
+      "sha256": "37ca25955231ca68f75c72b1ec4a2d2e1aeacbc2ee1b9731bbee07a0f7308e56"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v443-input-owner-types.json",
+      "sha256": "c91f03f0bac601e09fdee9c0866c59ec7dd8f2fb52d0547483f99bdec9574fd4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v443-layout-branch.json",
+      "sha256": "62fff17689f07191f7b8c3c559ce6c2c324632dc730990efc6cc8be07647fa05"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v443-normal-layout.json",
+      "sha256": "eadbdf6b53493dec19735809ef1661fd2c3e1ebe8426621ef9acc12cf1ee3d84"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v421-containers.json",
+      "sha256": "7a46bcea1069a2378eb5dae0fd3470410cac3f97c09a512ebb078c00258782cf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-field-lifecycle.json",
+      "sha256": "5282761f4d3f210b37fad5abb877b229098d841c66d9859d0d64aef91555df6a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v442-composer-metadata.json",
+      "sha256": "f4b373cef5b32ca782d7f9c37f54ca6ddbc3bc1fe0c28e280bfaeb6dab0d0e6d"
+    }
+  ]
+}
