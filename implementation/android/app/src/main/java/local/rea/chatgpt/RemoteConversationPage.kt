@@ -33,6 +33,8 @@ internal fun RemoteConversationPage(task: RemoteListTask, host: RemoteListHost,
     var fileLink by remember(task.key) { mutableStateOf<RemoteFileLink?>(null) }
     var webLink by remember(task.key) { mutableStateOf<android.net.Uri?>(null) }
     var unavailableLink by remember(task.key) { mutableStateOf(false) }
+    var filesOpen by remember(task.key) { mutableStateOf(false) }
+    val resourceScope = ResourceScope(store.resourceAccount, store.resourceProfile, task.key.hostID, task.key.threadID)
     var fileOpen by remember(task.key) { mutableStateOf(false) }
     fun openMessageLink(turn: RemoteFrontendTurn, uri: String) {
         val web = remoteWebLink(uri)
@@ -87,8 +89,10 @@ internal fun RemoteConversationPage(task: RemoteListTask, host: RemoteListHost,
         onDispose { store.saveThreadPosition(task.key, list.firstVisibleItemIndex, list.firstVisibleItemScrollOffset) }
     }
     if (unavailableLink) RemoteUnsupportedLinkDialog { unavailableLink = false }
-    webLink?.let { RemoteWebLinkDialog(it) { webLink = null } }
-    if (fileOpen) RemoteFileLinkPreview(fileLink) { fileOpen = false; fileLink = null }
+    webLink?.let { OfflineBrowser(resourceScope, it.toString()) { webLink = null } }
+    if (filesOpen) ResourceBrowser(resourceScope) { filesOpen = false }
+    if (fileOpen) ResourceBrowser(resourceScope.copy(origin = fileLink?.let { "${it.turn}:${it.request}" }.orEmpty()),
+        FixtureResourceProvider.linkedID(fileLink?.resource.orEmpty()) ?: "unavailable") { fileOpen = false; fileLink = null }
     Column(Modifier.fillMaxSize().safeDrawingPadding().imePadding().testTag("remote-conversation")) {
         Row(Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = back, modifier = Modifier.testTag("remote-task-back")) {
@@ -100,7 +104,7 @@ internal fun RemoteConversationPage(task: RemoteListTask, host: RemoteListHost,
                 Text(host.name, style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.testTag("remote-task-host"))
             }
-            RemoteThreadActions(task, togglePin, rename, archive)
+            RemoteThreadActions(task, togglePin, rename, archive) { filesOpen = true }
         }
         Box(Modifier.weight(1f)) {
             LazyColumn(state = list, modifier = Modifier.fillMaxSize().nestedScroll(scroll).testTag("remote-transcript"),

@@ -44,6 +44,7 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
     primaryAction: (() -> Unit)? = null, running: Boolean = false, canSubmit: Boolean = true,
     tagPrefix: String = "shell", editorTag: String = "shell-draft") {
     val dark = isSystemInDarkTheme()
+    val accent=frontendAccent(LocalFrontendSettings.current)
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
     var focused by remember { mutableStateOf(false) }
@@ -94,7 +95,7 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
                         onValueChange(next)
                     }
                 }, textStyle = style.copy(color = MaterialTheme.colorScheme.onSurface),
-                    cursorBrush = SolidColor(Color(0xFF3566F0)), maxLines = 6,
+                    cursorBrush = SolidColor(accent), maxLines = 6,
                     modifier = Modifier.testTag(editorTag).onFocusChanged { focused = it.isFocused },
                     decorationBox = { editor ->
                         Box(contentAlignment = Alignment.CenterStart) {
@@ -114,7 +115,7 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
                     }, enabled = primaryAction == null || running || (canSubmit && sending && value.text.length <= 16384),
                         modifier = Modifier.size(48.dp)
                         .testTag(if (running) "$tagPrefix-stop" else if (sending) "$tagPrefix-send" else "$tagPrefix-voice-mode")) {
-                        Box(Modifier.size(32.dp).background(Color(0xFF3566F0), RoundedCornerShape(50))
+                        Box(Modifier.size(32.dp).background(accent, RoundedCornerShape(50))
                             .testTag("$tagPrefix-action-surface"), contentAlignment = Alignment.Center) {
                             Icon(painterResource(if (running) R.drawable.ds_stop_fill_regular_24 else if (sending) R.drawable.ds_arrow_up_lg_button_regular_24
                                 else R.drawable.ds_voice_button_regular_24),

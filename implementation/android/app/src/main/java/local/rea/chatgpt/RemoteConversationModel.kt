@@ -69,8 +69,8 @@ class SyntheticRemoteConversationProvider(private val chinese: Boolean) : Remote
     }
     override fun history(key: RemoteTaskKey) = listOf(RemoteFrontendTurn("history", "history", 0,
         if (chinese) "检查任务页面" else "Inspect the task page",
-        if (chinese) "## 合成历史\n\n这里展示当前任务的本地回放。可以发送文字、停止生成，并返回列表继续查看。\n\n```kotlin\nval sample = 1\n```\n\n[preview.txt](file:///synthetic/preview.txt)\n\n[missing.txt](file:///synthetic/missing.txt)"
-        else "## Synthetic history\n\nThis is a local task replay. Send a message, stop generation, and return to the task list.\n\n```kotlin\nval sample = 1\n```\n\n[preview.txt](file:///synthetic/preview.txt)\n\n[missing.txt](file:///synthetic/missing.txt)",
+        if (chinese) "## 合成历史\n\n这里展示当前任务的本地回放。可以发送文字、停止生成，并返回列表继续查看。\n\n```kotlin\nval sample = 1\n```\n\n[preview.txt](file:///synthetic/preview.txt)\n\n[missing.txt](file:///synthetic/missing.txt)\n\n[Local webpage](https://example.invalid/remote-doc)"
+        else "## Synthetic history\n\nThis is a local task replay. Send a message, stop generation, and return to the task list.\n\n```kotlin\nval sample = 1\n```\n\n[preview.txt](file:///synthetic/preview.txt)\n\n[missing.txt](file:///synthetic/missing.txt)\n\n[Local webpage](https://example.invalid/remote-doc)",
         RemoteTurnPhase.Completed))
     override fun reply(key: RemoteTaskKey, turn: RemoteFrontendTurn) = replyConfigured(key, turn, RemoteTaskConfiguration())
     internal fun replyConfigured(key: RemoteTaskKey, turn: RemoteFrontendTurn, configuration: RemoteTaskConfiguration) = flow {
@@ -144,6 +144,8 @@ internal class RemoteConversationOwner(private val store: RemoteListStore,
     private val taskControls = mutableStateMapOf<RemoteTaskKey, RemoteTaskControls>()
     fun controls(key: RemoteTaskKey): RemoteTaskControls = taskControls[key] ?: RemoteTaskControls()
     private val jobs = mutableMapOf<RemoteTaskKey, Job>()
+    private var retired=false
+    fun close(){retired=true;jobs.values.forEach{it.cancel()};jobs.clear();requestAttempts.clear();approvals.clear();inputs.clear()}
     private val approvals = mutableStateMapOf<RemoteTaskKey, RemoteCommandApprovalRequest>()
     private val inputs = mutableStateMapOf<RemoteTaskKey, RemoteInputRequest>()
     private val requestAttempts = mutableStateMapOf<RemoteTaskKey, RemoteRequestAttempt>()
@@ -157,6 +159,7 @@ internal class RemoteConversationOwner(private val store: RemoteListStore,
     // A service pushes its current snapshot through this boundary. Null withdraws
     // the request. Replacements retire attempts before any late receipt can settle.
     fun replaceRequests(key: RemoteTaskKey, approval: RemoteCommandApprovalRequest?, input: RemoteInputRequest?) {
+        if(retired)return
         require(approval == null || approval.identity.task == key)
         require(input == null || input.identity.task == key)
         require(approval == null || input == null)
@@ -175,6 +178,7 @@ internal class RemoteConversationOwner(private val store: RemoteListStore,
         if (approvals[request.identity.task] == request) submitApproval(submission)
     }
     fun submitApproval(submission: RemoteApprovalSubmission) {
+        if(retired)return
         val key = submission.identity.task
         val current = approvals[key] ?: return
         if (isSubmittingApproval(key) || !current.accepts(submission)) return
@@ -205,6 +209,7 @@ internal class RemoteConversationOwner(private val store: RemoteListStore,
             inputs.remove(request.identity.task)
     }
     fun submitInput(request: RemoteInputRequest, answers: Map<String, RemoteInputAnswer>) {
+        if(retired)return
         val key = request.identity.task
         if (request.expired()) { expireInput(request); return }
         if (inputs[key] != request || isSubmittingApproval(key) || !request.accepts(answers)) return
@@ -228,6 +233,7 @@ internal class RemoteConversationOwner(private val store: RemoteListStore,
     fun turns(key: RemoteTaskKey): List<RemoteFrontendTurn> = conversations[key].orEmpty()
     fun failedStorage(key: RemoteTaskKey): Boolean = errors[key] == true
     fun load(key: RemoteTaskKey) {
+        if(retired)return
         if (key in conversations) return
         try {
             conversations[key] = (if (store.hasTranscript(key)) store.turns(key) else provider.history(key)).map { if (it.active) it.copy(phase = RemoteTurnPhase.Interrupted) else it }
@@ -237,6 +243,7 @@ internal class RemoteConversationOwner(private val store: RemoteListStore,
         } catch (_: Exception) { errors[key] = true }
     }
     private fun save(key: RemoteTaskKey, turns: List<RemoteFrontendTurn>, clearDraft: Boolean = false): Boolean {
+        if(retired)return false
         val saved = runCatching { store.saveTurns(key, turns, clearDraft) }.getOrDefault(false)
         errors[key] = !saved
         if (saved) conversations[key] = turns
@@ -316,6 +323,7 @@ internal class RemoteConversationOwner(private val store: RemoteListStore,
     }
     private fun saveRuntime(key: RemoteTaskKey, turns: List<RemoteFrontendTurn>, state: RemoteTaskControls,
         clearDraft: Boolean = false): Boolean {
+        if(retired)return false
         val saved = runCatching { store.saveTaskRuntime(key, turns, state, clearDraft) }.getOrDefault(false)
         errors[key] = !saved
         if (saved) { conversations[key] = turns; taskControls[key] = state }

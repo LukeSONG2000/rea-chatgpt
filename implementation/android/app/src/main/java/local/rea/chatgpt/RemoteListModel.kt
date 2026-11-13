@@ -94,7 +94,7 @@ class SyntheticRemoteListProvider(private val chinese: Boolean, private val fail
 
 // One atomically committed preference snapshot keeps task drafts and list state
 // together. The account/profile is chosen by the composition root.
-class RemoteListStore(private val preferences: SharedPreferences) {
+class RemoteListStore(private val preferences: SharedPreferences, val resourceProfile: String = "legacy", val resourceAccount: String = "offline-shell-account") {
     internal fun projectedTask(task: RemoteListTask): RemoteListTask = task.copy(
         pinned = preferences.getBoolean("thread-pin:" + task.key.storageKey, task.pinned),
         title = preferences.getString("thread-title:" + task.key.storageKey, null) ?: task.title,

@@ -1,0 +1,48 @@
+{
+  "module": "Android login/account frontend",
+  "status": "implemented bounded offline core; original parity partial",
+  "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-auth-integration-20261113-report.md",
+  "source_evidence": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-auth-integration-20261113-source.json",
+  "evidence_validation": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-auth-integration-20261113-evidence-validation.json",
+  "source_manifest": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-auth-integration-20261113-source-hashes.json",
+  "runtime": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-auth-integration-20261113-oneplus-r1.json",
+  "before": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-auth-integration-20261113-before.json",
+  "after": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-auth-integration-20261113-after.json",
+  "apk_sha256": "749aa754f51283e88f345fa8a03bca35d85fe84cc5a819690712af192926cb97",
+  "implemented": [
+    "Settings Account -> native welcome -> explicit offline synthetic login presentation -> cancel/error/retry/accepted account -> AppShell; accepted Settings logout -> signed-out welcome.",
+    "Exact platform/baseProfile/account/session/revision/request/generation/action/provider receipt matching; cancel/retry invalidates old attempt; duplicate and late callbacks ignored; only committed accepted state becomes visible.",
+    "Private accepted-session journal contains identity only. Missing journal preserves legacy preview; malformed journal retained and blocked with returnable error. No credential fields, secrets, tokens or auth requests are persisted.",
+    "Stable dataProfile derived from baseProfile + synthetic account, independent of session; separate Chat/Remote/settings/resource account scope. Legacy preview namespace retained. Root descendants rebind per accepted session; retired Chat/Remote owners cannot persist late mutations.",
+    "Raw account-* namespace arguments rejected; legacy RemoteListActivity redirects through AppShell session gate, including explicit remote intents.",
+    "App-level language/appearance remains in base profile intentionally; account data and settings journal use actual account identity. No migration/deletion."
+  ],
+  "remaining": [
+    "No real OAuth/Auth Tab/Custom Tabs/Credential Manager or token exchange/refresh/revocation; offline operation is an explicitly different native adapter, not recovered authorization-page visuals.",
+    "Original welcome capability predicates, provider order, guest/remembered-account production behavior, exact account-settings placement and complete typography/geometry remain partial. Google and generic login are a capability subset.",
+    "Only synthetic-google and synthetic-browser accounts exist; real account/workspace migration, cookie clearing, identity verification and backend session lifecycle remain unimplemented.",
+    "Chinese/light core and real process restart only. No dark/landscape/device matrix. Cross-account and stale callback identity assertions are pure contracts, not a multi-account UI matrix.",
+    "Appearance/language intentionally remain base-profile app-level preferences; this is independent host policy, not proof of official per-account preference behavior."
+  ],
+  "runtime_scope": {
+    "core_seconds": 29.621,
+    "restart_seconds": 7.679,
+    "passed": true,
+    "language": "zh-CN",
+    "appearance": "light",
+    "serial": "172.16.197.16:5555",
+    "profile": "test-auth-9c36cbf565424a588e609c1e2dc073ca",
+    "ordinary_preferences_unchanged": true,
+    "final_activity": "AppShellActivity with no extras",
+    "pid": "16143"
+  },
+  "visual_review": [
+    "native-welcome.png",
+    "offline-auth-boundary.png",
+    "logout-rejected.png",
+    "same-account-restored.png"
+  ],
+  "no_network_or_credentials": true,
+  "heavy_window_released": true,
+  "git_mutations": false
+}

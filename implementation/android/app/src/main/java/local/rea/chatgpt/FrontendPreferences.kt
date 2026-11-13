@@ -7,9 +7,10 @@ import java.util.Locale
 
 // Independent frontend storage. These keys and profile boundaries are not the
 // original application's persistence format. System preferences are read only.
-class FrontendPreferences(context: Context, val profile: String = "preview") {
+class FrontendPreferences(context: Context, val profile: String = "preview", val account: String = "offline-shell-account") {
     init { require(profile.matches(Regex("[A-Za-z0-9-]{1,80}"))) }
     private val values: SharedPreferences = context.getSharedPreferences("frontend-$profile", Context.MODE_PRIVATE)
+    internal fun settingsOwner() = FrontendSettingsOwner(values, profile, account)
     val language: String get() = values.getString("language", "system").orEmpty().takeIf { it in languages } ?: "system"
     val appearance: String get() = values.getString("appearance", "system").orEmpty().takeIf { it in appearances } ?: "system"
     val mode: String get() = values.getString("mode", "chat").orEmpty().takeIf { it in modes } ?: "chat"

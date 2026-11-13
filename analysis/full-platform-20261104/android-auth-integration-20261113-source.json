@@ -1,0 +1,192 @@
+{
+  "status": "bounded static auth recovery, partial",
+  "scope": "Read-only frozen Android293; no auth/network/official execution/native session; no credentials inspected or product edits",
+  "welcome": "ckn -> pu71.c LoginScreen -> xu71; redesigned z770 landing conditional on original capability. Native welcome can be reconstructed. Login/another-way/Google/remembered-account and optional guest entry have conditional visibility; no universal provider button order.",
+  "providers_model_only": {
+    "ui7": "Google/google-oauth2",
+    "si7": "Apple/apple",
+    "wi7": "Microsoft/windowslive",
+    "bj7": "Username-Password-Authentication/signup",
+    "yi7": "passwordless_otp",
+    "zi7": "passkey",
+    "aj7": "samlp",
+    "xi7": "oidc",
+    "cj7": "dynamic connection",
+    "ti7": "generic login_or_signup",
+    "vi7": "generic login"
+  },
+  "native_boundary": "Native welcome/buttons confirmed. No original native email+password form proven. Username-Password-Authentication is an auth strategy for authorization handoff; it is not proof of a native credential screen. Google ID-token support separately exists. Apple/Microsoft/etc model does not establish a visible welcome button.",
+  "web_auth": "o151 launches WebAuthenticationActivity; supports Auth Tab and Custom Tab fallback. WebRedirectActivity forwards custom-scheme callback then closes. Manifest com.openai.chatgpt scheme, hosts auth0.openai.com/auth0-dev.openai.com/auth.openai.com/auth.api.openai.org, pathPrefix /android/com.openai.chatgpt/callback. Runtime o151 validates exact configured redirect scheme/host/path and current state before accepting nonblank code.",
+  "identity": "One current m151 session; new launch cancels old session. Completion/cleanup compares session object. PKCE S256,state,nonce parameters recovered. Never count browser open/close or presence of callback URI as login success. Token exchange/session acceptance remains separate.",
+  "declared_default_scopes": [
+    "openid",
+    "email",
+    "profile",
+    "offline_access",
+    "model.request",
+    "model.read",
+    "organization.read",
+    "organization.write"
+  ],
+  "scope_warning": "Declared first-party scopes are evidence only, not an authorization grant or a recommended integration request. Independent host needs its own legitimate issuer/client/redirect and least required scope; cannot reuse official credentials or callback namespace.",
+  "account_settings": "Root conditional vat0 logout -> gbt0 -> sa.t -> cmn0 case4 w8t0 -> yw starts xw. Account login event r8t0 routes y4v. Real logout remote revocation/browser-cookie handling/local multi-account cleanup not closed.",
+  "minimum_independent_contract": [
+    "Native signed-out welcome plus explicit local/synthetic account adapter is feasible; label synthetic session distinctly.",
+    "Implement browser auth only with a separately configured provider; do not create fake native password fields or pretend official login succeeded.",
+    "Scope account data and subscriptions by accepted account/session; retire old in-flight auth result after replacement.",
+    "Expose cancelled/unavailable/failure separately; do not clear user files merely to simulate logout."
+  ],
+  "unknowns": [
+    "Exact native Google Credential Manager entry/eligibility not fully traced.",
+    "All welcome predicates/provider orders and production flag assignments remain unknown.",
+    "Token exchange validation, refresh, workspace/account migration, session restore and logout side effects not fully recovered.",
+    "Authorization page native/web form contents cannot be inferred from connection names; no network pages opened.",
+    "pwf0 and o151.b have JADX warnings; callback validation specifically corroborated in smali, no whole-method parity claim."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-signed-out-20261110-findings.json",
+      "sha256": "16e0001e8b7205d4c44a82a4f5014952fceb97a6768708537eedb01e8e0917a5",
+      "lines": "whole report",
+      "claim": "Reused welcome/layout/button predicate source and smali evidence."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/o151.java",
+      "sha256": "7ea292054e0250b97356bb7db862c6efa207e7075480ae9742bfd1e0d4e5c35b",
+      "lines": "65-128,130-190",
+      "claim": "Browser launcher session replaces/cancels old attempt; callback verifies configured scheme/host/path and state, requires code; error/cancel states."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/pwf0.java",
+      "sha256": "13b36fe6c1ec275b639c23604ba14a5a4dc62a36d3ca12152c6d3537307358c3",
+      "lines": "91-114",
+      "claim": "Authorization parameters PKCE S256,state,nonce,code response,scope,client/redirect. JADX warnings; parameter existence only."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/zf7.java",
+      "sha256": "aa71e8d2cd50a4a17a3764554e0a5d6eff1b4ba74c0773fe0c83baee565fef67",
+      "lines": "24",
+      "claim": "Declared default scopes, not granted scope proof."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/gbt0.java",
+      "sha256": "b19907e394400b2eb08b07c86cf5dd577df3511f7ddf784d89831d5054e24225",
+      "lines": "505-521",
+      "claim": "Settings logout vat0 -> sa.t callback."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/cmn0.java",
+      "sha256": "0c99cd65bf136c6db0675b288df656ae207d1beeac31deea308039fb1c195efe",
+      "lines": "35-37",
+      "claim": "Logout emits w8t0."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/yw.java",
+      "sha256": "538b16767874d509893e9a35bca8f886148306d0b8abbd62c346869d4c73d92c",
+      "lines": "61-85",
+      "claim": "Account owner w8t0 cancels old job and starts xw; r8t0 routes y4v."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/gm7.java",
+      "sha256": "a5c36942e4c5d9218693845e6846b56069344ca5e2bbabfc17bc3ff63cfa3e85",
+      "lines": "19,127-144",
+      "claim": "Account credential storage keys include access/id/refresh tokens and workspace tokens; no credential values accessed."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/qr7.java",
+      "sha256": "747c782dabe01a6febe4323c3bd42942e2c2ea968c0491177945cbb18223eb88",
+      "lines": "41",
+      "claim": "Google ID-token exchange support; native Google-specific flow possible, not native email/password proof."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ui7.java",
+      "sha256": "3f96a7932742a0bb5fd2ecaf608c0b27b9507547c4fd3841ff50dfa925d07f4d",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/si7.java",
+      "sha256": "9e7335c6e3a8d87f0267030adcffbfdd4437244fde979e032c8ffc6ee29a7309",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/wi7.java",
+      "sha256": "ce56acced7e07aaf7c33fdd96818ca44a060fde446a1dca19119b7496c4d10f1",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/bj7.java",
+      "sha256": "d00ce9c2e02a1a770b30519a248a6856e9539f554fa26362bd20cfe64caf4585",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/yi7.java",
+      "sha256": "0111aa2cb4d879f62fea407bbcdcb654110a92e5e2de5acb14a3826122167054",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/zi7.java",
+      "sha256": "082af9dfb500a5ea07c02de62da07e3a5f31fbfea03e5a45f902f839750212af",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/aj7.java",
+      "sha256": "0356952bb4d00700f2f8e1bb2d0341cc1ba4afac6e6efecaf965b3d1823fb847",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/xi7.java",
+      "sha256": "d3d1466acc0749ce4ac5d1da3178a27e24659b38e1a539a5d140a23b71327ae3",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/cj7.java",
+      "sha256": "aad950d6e9fb63413c3ddfe2df0215b39e91a4c72a963c951dbd80edf89e0174",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ti7.java",
+      "sha256": "07906a319f7a8716731d678e144bc5a1b9c76f3e23d9320901825431e7d4b252",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/vi7.java",
+      "sha256": "77f8d0acf1ea3bd47e7119d57d136b2f727ef05552047e4c35083b637821e22f",
+      "lines": "5-9",
+      "claim": "Authentication strategy model; does not prove welcome button visibility."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/com/openai/feature/auth/impl/web/WebAuthenticationActivity.java",
+      "sha256": "5400236db4a7bda72289be2c3479228fc1219732c988e755c40804293e894908",
+      "lines": "44-85,150-162,173-238",
+      "claim": "Auth Tab contract and Custom Tab fallback, lifecycle/browser-launched restoration, redirect callback on resume."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/com/openai/feature/auth/impl/web/WebRedirectActivity.java",
+      "sha256": "dec4a7109f90f8cc53812a821da03a087aa198581d9a81677435d260528ee5a5",
+      "lines": "11-15",
+      "claim": "Exported redirect forwards URI to WebAuthenticationActivity and finishes."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/AndroidManifest.xml",
+      "sha256": "e92b0a0b836dca3860f92529ad52fff4e44325d7b56445b28e3e97c26d8ce2e6",
+      "lines": "587-600",
+      "claim": "Private auth activity and exported custom-scheme callback allowlist."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali/o151.smali",
+      "sha256": "350730f6a1a133fd0222076733982db1b106c33e754476cd5251e36610fc9cf2",
+      "lines": "922-1062,1362",
+      "claim": "Callback scheme/host/path and state checks corroborated in smali."
+    }
+  ]
+}

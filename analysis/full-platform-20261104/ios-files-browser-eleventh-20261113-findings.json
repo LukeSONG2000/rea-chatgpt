@@ -1,0 +1,135 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "core-retain-original-policy-partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Whole Files/browser core static reconciliation, with one bounded original ManagedSafari Close callback followup. No optics sweep, product changes, tests or device use.",
+  "reused_reports": [
+    "ios-files-browser-parent-current-20261113-r4.json",
+    "ios-files-browser-core-reconciliation-20261113.json",
+    "ios-files-preview-fifth-20261113-findings.json",
+    "ios-files-directory-fifth-20261113-findings.json",
+    "ios-browser-third-20261113-findings.json"
+  ],
+  "decision": "No newly demonstrated source-backed blocker warrants a product patch. Retain current directory/resource/browser core and explicit adapters. The most important remaining original restoration gap is effective Remote openURL policy/custom builder/presentation ownership, not another button or inferred directory geometry.",
+  "current_source_observations": [
+    {
+      "classification": "host-static-observation",
+      "chain": [
+        "NativeConversationHost RecoveredRemoteThreadMenu receives task.showsFiles; performThreadAction admits.files only when task.showsFiles and replay.isEnabled.",
+        "Ordinary task sheet uses showsWorkspaceFiles at current NativeConversationHost.swift9830. It constructs one RemoteComposerDraftScope(hostID,threadID), matching directory and file provider instances and displayPath metadata. This is the independent offline fixture, not an official service contract.",
+        "RemoteWorkspaceFilesPreview owns path and one StateObject preview resource owner. Child rows append explicit directory entries; Parent removes one path component; root omits Parent. Header displays only explicit displayPath, not an opaqueID fabricated as a path.",
+        "Directory request carries fresh UUID+scope+directoryID. State only accepts current loading request; provider verifies exact scope. Disappearance invalidates loading and preview; ready parent directory remains cached by view lifetime."
+      ],
+      "paths": [
+        "implementation/ios/Sources/NativeConversationHost.swift",
+        "implementation/ios/Sources/FrontendFilePreview.swift",
+        "implementation/ios/Sources/RemoteWorkspacePresentation.swift"
+      ],
+      "limits": [
+        "No source-proved original cross-process directory viewport/cache algorithm claimed. RemoteComposerDraftScope carries host/destination, not account: account/container/session lifetime remains owned outside this local DTO."
+      ]
+    },
+    {
+      "classification": "host-static-observation",
+      "chain": [
+        "RemoteFilePreviewController.open cancels previous task and creates a fresh request; after await it requires not cancelled and state.accepts(exact request) plus matching loaded.fileID.",
+        "Snapshot file provider verifies requested scope and unique matching resource; independent resource DTO is complete bytes/name and optional Markdown contents, not an official wire reply.",
+        "Strong attachment retention spans QuickLook/source presentation; dismiss/cancel clears resource references. Optional markdownContents admits Markdown independently of initial mode. Source line/read-mode work already recovered in fourth/fifth reports is retained."
+      ],
+      "paths": [
+        "implementation/ios/Sources/FrontendFilePreview.swift",
+        "implementation/ios/Sources/RemoteComposerInteraction.swift"
+      ],
+      "limits": [
+        "Original acquisition/auth/download/openFileHandler remains unclosed. New future providers must preserve request ownership rather than infer identity from filename; current offline implementation is not proof of server-side scope."
+      ]
+    },
+    {
+      "classification": "host-static-observation",
+      "chain": [
+        "Chat showLink requires visible top controller/no current modal, saves draft and read anchor before presenting independent browser.",
+        "Remote linked body uses scoped file handler for file links and a separate browser request for external links, retaining native draft/transcript owner.",
+        "FrontendBrowserController resource provider only admits designated offline fixture paths; WK store is nonpersistent and scripts disabled. Current page tracks active WKNavigation for finish/failure, supports retry/back/forward/reload and explicit onClose.",
+        "NativeFileLibrary model separately fences directory and resource results by account/request/node, retains QuickLook resource until close. It is the existing legacy Library sidebar package, not the Remote workspace tree and no new work was undertaken there."
+      ],
+      "paths": [
+        "implementation/ios/Sources/NativeConversationHost.swift",
+        "implementation/ios/Sources/FrontendBrowserPreview.swift",
+        "implementation/ios/Sources/NativeFileLibrary.swift"
+      ],
+      "limits": [
+        "Offline WK controls are an independent frontend adapter, not recovered ManagedSafari/SFSafari layout or live external URL behavior. No new runtime or complete core acceptance claimed by this static review."
+      ]
+    }
+  ],
+  "bounded_official_followup": {
+    "question": "What does original ManagedSafari unavailable Close actually invoke, and is current close behavior missing a concrete source owner?",
+    "evidence_type": "artifact-static-constructor-and-callback",
+    "status": "closed-local-dismiss-consumer-partial-final-parent",
+    "chain": [
+      "ManagedSafariView desc96db294 original_dismiss field record9ba9438 has typeref8c22160. New strict symbolic record resolves Environment<SwiftUIToolbelt.DismissActionReference>, not SwiftUI.DismissAction by name guess.",
+      "Unavailable actions builder thunk62ba458 loads its captured view input then tailcalls62a0064. It is the builder, not the final Close action.",
+      "62a0104 loads original Close resource via75d6998.62a0144/0148 installs actual callback62ca444;62a0160 calls SwiftUI.Button<Text>.init(_:action:), confirmed via exact import annotation.",
+      "62ca444 obtains selected environment carrier via62d0640/1a2368, invokes753e438 at62ca470 and releases its local reference.753e438 accesses its captured reference state, loads function/context pair and calls that closure at753e464.",
+      "This is parent-supplied dismissal. It does not clear the task, directory model, account data or file storage in this selected body. Final injected closure implementation and selected Remote presentation branch remain unknown."
+    ],
+    "raw": [
+      "managed-close-thunk.asm",
+      "actual-managed-close.asm",
+      "managed-close-action-builder.asm",
+      "managed-close-builder-calls.json",
+      "managed-close-owner.asm",
+      "dismiss-carrier.asm",
+      "managed-dismiss-type.json"
+    ],
+    "prior_evidence": "ios-browser-third-20261113/browser-owner-metadata.json and managed-safari-body.asm",
+    "safe_decision": "Retain explicit current host onClose/dismiss boundary. There is no evidence to globally reset parent state on Close or replace offline WK with Safari solely because the native Safari type exists."
+  },
+  "remaining_exact_boundaries": [
+    {
+      "id": "effective-remote-browser-owner",
+      "source": "OpenURLHandlingViewModifier desc96dc6d4 body62a224c;OpenURLBrowserContent desc96dcad4 body62a7358;ManagedSafariView629fb28",
+      "missing": "Concrete ordinary Remote caller assigning effective policy/browserBuilder and sheet/fullscreen route; cannot derive from metadata presence or newer screenshot.",
+      "next_minimum": "One real ordinary-Remote openURL action producer to modifier constructor/environment supply, using existing retained caller seed; do not re-dump full modifier or test guessed policy cases."
+    },
+    {
+      "id": "dismiss-final-injection",
+      "source": "ManagedSafari Close62ca444→DismissActionReference753e438→stored closure",
+      "missing": "Final parent closure identity and whether its selected presentation is sheet/fullscreen/custom.",
+      "next_minimum": "Bind exact closure supplied to this environment only if future UI requires a different close route; current independent close remains usable."
+    },
+    {
+      "id": "source-preview-fidelity",
+      "source": "prior fifth/fourth source-preview reports",
+      "missing": "Complete original file/language classifier,syntax renderer,full reading cache lifetime; not current core blocker.",
+      "next_minimum": "Only investigate a concrete unsupported core format or source callback when needed; do not exhaust all aliases."
+    }
+  ],
+  "haptics": {
+    "new_direct_caller_proved": false,
+    "decision": "No new haptic emitted from these selected directory/browser Close observations; preserve existing General-gated behavior only."
+  },
+  "recommendation": {
+    "immediate_product_change": null,
+    "retain_core": true,
+    "next_validation_if_parent_changes_product": "One Chinese/light directory→child→single preview→close→Parent→browser local navigation/error/retry→Close→same task draft/read-position path; do not repeat full light/dark bilingual matrix."
+  },
+  "search_boundary": "Read current named files/reports. One original Close builder/callback group with its concrete dispatch followup; no second negative group or full analysis scans.",
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "old_reports_modified": false,
+    "shared_docs_modified": false,
+    "git_operations": false,
+    "build_or_tests": false,
+    "devices": false,
+    "official_runtime": false,
+    "network": false
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "status": "bounded offline core complete; official directory/browser visual parity remains partial",
+  "module": "Android Files / offline browser",
+  "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-files-browser-20261113-report.md",
+  "source_evidence": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-files-browser-20261113-source.json",
+  "evidence_validation": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-files-browser-20261113-evidence-validation.json",
+  "source_hashes": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-files-browser-20261113-source-hashes.json",
+  "implemented": [
+    "Normal AppShell Remote task menu Files directory/back/empty/error/retry",
+    "Scoped opaque resource API and exact callback token invalidation",
+    "Text/code/Markdown/raw/PNG zoom-pan/PDF long-page and 2-page preview",
+    "Markdown and Chat/Remote web link offline browser with history/back/forward/reload/error/retry",
+    "Exact mainframe local HTML interceptor, deny all other WebView resources",
+    "Close preserves parent draft and position; independent media/request lifetime",
+    "Dialog-owned theme navigation icon appearance"
+  ],
+  "source_boundaries": [
+    "Android293 r5k/g4k/f4k/ukl single-file owner and a4k HTML/text/image/unsupported confirmed",
+    "Directory-menu admission and tree service unproved: explicit independent adapter",
+    "Generic URL original is Custom Tabs; local WebView and PDF are independent adaptations",
+    "JADX interceptor warnings retained; by81 WebView flags smali corroborated"
+  ],
+  "tests": {
+    "contracts": "r1 passed exact scope/token, replacement/close late results, cross account/profile/host/task/origin, mismatched ID, no path traversal, URL allowlist and failure->unsupported",
+    "core_journey": {
+      "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-files-browser-20261113-oneplus-r4.json",
+      "status": "passed",
+      "seconds": 28.052,
+      "apk": "f847a22da50a3adfa60f93dc8846774130640335d0a81959b81d20ed68ad9757",
+      "note": "r1 initial normal-shell path and r4 bounded remainder; no claim original one-pass run succeeded"
+    },
+    "final_targeted": {
+      "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-files-browser-20261113-oneplus-r5-bar.json",
+      "status": "passed",
+      "seconds": 10.14,
+      "apk": "db7bb573f5c14bcb50dc3ae00931b8546cb36e2d3a9d7271e8ef70f79a6bfc4a",
+      "scope": "Only Dialog navigation icon fix screenshot + close/draft"
+    },
+    "final_build": {
+      "log": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-files-browser-20261113-build-r6-bar.log",
+      "status": "passed",
+      "seconds": 10
+    },
+    "parent_semantics_bounds_exact": true,
+    "failed_snapshots_retained": [
+      "r1 container text selector",
+      "r2 foreground readiness guard",
+      "r3 real mainframe interceptor defect fixed before r4"
+    ],
+    "screenshot_directory": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-files-browser-20261113-oneplus-r5-bar",
+    "r4_snapshot_source_hashes": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-files-browser-20261113-r4-source-hashes.json"
+  },
+  "final_runtime": {
+    "frontend-preview.xml": {
+      "exists": true,
+      "sha256": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e"
+    },
+    "remote-list-preview.xml": {
+      "exists": true,
+      "sha256": "7269f82e69e91e645a70c3c305dd895ea135655802f85b33c0206699f8dc3b90"
+    },
+    "chat-preview.xml": {
+      "exists": false,
+      "sha256": null
+    },
+    "installed_sha256": "db7bb573f5c14bcb50dc3ae00931b8546cb36e2d3a9d7271e8ef70f79a6bfc4a",
+    "built_sha256": "db7bb573f5c14bcb50dc3ae00931b8546cb36e2d3a9d7271e8ef70f79a6bfc4a",
+    "pid": "8099",
+    "activity": [
+      "topResumedActivity=ActivityRecord{142911039 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1417}",
+      "Intent { flg=0x10000000 cmp=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity }",
+      "mActivityComponent=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity",
+      "ResumedActivity: ActivityRecord{142911039 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1417}"
+    ],
+    "ordinary_preferences_unchanged": true,
+    "exists_method": "Exact filename membership from run-as ls; exec-out cat exit status alone is insufficient."
+  },
+  "remaining": [
+    "Original directory toolbar admission/tree owner/optics not recovered",
+    "No real backend/auth/cookies/downloads/share/export/attachments/arbitrary websites",
+    "HTML file shows source; mapped ordinary URL supplies local browser",
+    "No PDF source parity or office/full media formats",
+    "Chat browser compile-covered only; no additional Chat device journey",
+    "Pinch/pan implementation not separate matrix tested; plus zoom and PDF page/scroll exercised",
+    "Active stream continuity code-owned, not new device generation matrix",
+    "Ephemeral sheet/process/media-history restoration not claimed"
+  ],
+  "no_git": true,
+  "heavy_window_released": true
+}

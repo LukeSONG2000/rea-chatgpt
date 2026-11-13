@@ -48,12 +48,17 @@ internal fun RemoteTaskControlsView(key: RemoteTaskKey, owner: RemoteConversatio
             }
             if (running) {
                 val request = owner.turns(key).singleOrNull { it.active }?.request
-                TextButton(onClick = { if (request != null) act { owner.queue(key, draft, request).also { if (it) clearDraft() } } },
-                    enabled = draft.isNotBlank() && draft.length <= 16384 && state.pending.size < 8 && !owner.failedStorage(key),
-                    modifier = Modifier.testTag("remote-queue")) { Text(text("排队", "Queue")) }
-                TextButton(onClick = { if (request != null) act { owner.steer(key, draft, request).also { if (it) clearDraft() } } },
-                    enabled = request != null && draft.isNotBlank() && draft.length <= 16384 && !owner.failedStorage(key),
-                    modifier = Modifier.testTag("remote-steer")) { Text(text("追加指令", "Steer")) }
+                val preferred=LocalFrontendSettings.current.followup
+                // fsk/omm explicit actions override the selected default; this
+                // offline carrier presents the default first without changing accepted intents.
+                for(kind in listOf(preferred,if(preferred=="Queue")"Steer" else "Queue")) {
+                    val enabled=request!=null && draft.isNotBlank() && draft.length<=16384 && !owner.failedStorage(key) && (kind!="Queue" || state.pending.size<8)
+                    val action:()->Unit={ if(request!=null)act { (if(kind=="Queue")owner.queue(key,draft,request) else owner.steer(key,draft,request)).also{if(it)clearDraft()} } }
+                    val label=if(kind=="Queue")text("排队","Queue") else text("追加指令","Steer")
+                    val modifier=Modifier.testTag(if(kind=="Queue")"remote-queue" else "remote-steer")
+                    if(kind==preferred)FilledTonalButton(onClick=action,enabled=enabled,modifier=modifier){Text(label)}
+                    else TextButton(onClick=action,enabled=enabled,modifier=modifier){Text(label)}
+                }
             }
         }
     }

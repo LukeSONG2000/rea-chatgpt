@@ -1,0 +1,346 @@
+{
+  "base_commit": "9440e5a4594818ef1ee2561726a75cc7fd916426",
+  "authorization": "User explicitly requested push of confirmed results",
+  "scope": "Android Files/browser, Settings, offline account; unchanged iOS static reconciliation",
+  "verified_sources": {
+    "android_latest_per_file": 27,
+    "ios_settings": 10,
+    "ios_files": 4,
+    "mismatches": []
+  },
+  "excluded": [
+    "Unintegrated iOS FrontendProfileAvatar.swift",
+    "Original packages and recovered bulk",
+    "Builds/binaries/caches",
+    "Screenshots/video/raw runtime logs",
+    "Other unfinished or unrelated research"
+  ],
+  "validation_limit": "Earlier module tests bind their recorded snapshots; final account build/core/restart does not claim a repeat of all earlier UI suites.",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "01c54e2a068520d44a8e4230761475330fc9868f31735d044254875b14151a7e",
+      "bytes": 117224
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-auth-integration-20261113-evidence-validation.json",
+      "sha256": "e9e1b68c5e9ae536cf06e792ac30063586824e6e293be073e03244f59cc427b3",
+      "bytes": 5723
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-auth-integration-20261113-oneplus-r1.json",
+      "sha256": "53785d961a4cf0df228cae8fdbd074b31983d0c9148129ab789a0308eebbb385",
+      "bytes": 1019
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-auth-integration-20261113-report.md",
+      "sha256": "7af1d75785389229b545c8ad7f0c1b010090ca55616ecbce22a1683f10686fb5",
+      "bytes": 5242
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-auth-integration-20261113-source-hashes.json",
+      "sha256": "2c582340d5b51286b9024387c9313bdaa0ef613803be66e1f3814f62eea483a2",
+      "bytes": 3385
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-auth-integration-20261113-source.json",
+      "sha256": "0ecfe3db5a223f52b703948bf61d1de42c8f6c848c288b7fa4df8f0f8f75bdd2",
+      "bytes": 12090
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-auth-integration-parent-current-20261113.json",
+      "sha256": "870a1c656c19b0cb370b0b953dab4b554ad60e0454d6cb793b080aa4b13274a7",
+      "bytes": 4136
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-20261113-evidence-validation.json",
+      "sha256": "9e885e7703b82dd6bf7c6c734bd0a4ba52dc087f69efd48109f0da7816748a03",
+      "bytes": 4242
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-20261113-oneplus-r1.json",
+      "sha256": "f3c993bb41eb550b8f6ccbac534ce4f14e17db3cf752396fa60907b58006aad1",
+      "bytes": 1016
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-20261113-oneplus-r2.json",
+      "sha256": "e334c1ef2b26ad999ed3c058fb21c7610d9b89ca93fd54a8e8ad9236755642af",
+      "bytes": 1020
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-20261113-oneplus-r3.json",
+      "sha256": "6e744861228dd65a0f58cab6cd6dd0a32ca1a92b9f4c5c269dcc01e61e76f25d",
+      "bytes": 1020
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-20261113-oneplus-r4.json",
+      "sha256": "2e6a771bcd40872d744ffef2bb333d20d627c9e6d583e34eed9b6c58b4916f30",
+      "bytes": 971
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-20261113-oneplus-r5-bar.json",
+      "sha256": "1809da5b45b8d4159bc3073a619a41a418d6a54f7474bb80273d3d8dbc5b1d6a",
+      "bytes": 972
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-20261113-r4-source-hashes.json",
+      "sha256": "31715040f9fa5f20cac482ea469f6097234685fa26d7d8e0c814b5cd19ad5439",
+      "bytes": 2500
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-20261113-report.md",
+      "sha256": "6fc350eba58539a263a6cf723860d992fa61c915733982b2bfe839064f326082",
+      "bytes": 6830
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-20261113-source-hashes.json",
+      "sha256": "7278e298a3eed1280e5101e1fca6c2f5ef2dff85da1cdc4738adc5f844f7928f",
+      "bytes": 2500
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-20261113-source.json",
+      "sha256": "f53d1b0ea4b2e95de4ec5f91770196d1addc4fec03998fc7995450946d8a1b55",
+      "bytes": 9961
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-files-browser-parent-current-20261113.json",
+      "sha256": "7d3f0c87011ac675252d5831fa5c97f2820905b2669cf58eadca5fa381bd86e5",
+      "bytes": 5360
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-settings-integration-20261113-evidence-validation.json",
+      "sha256": "52eaf601e8f30d43af0def083fa54685b5b3fb18e34544fdb507349ab6d3d868",
+      "bytes": 6839
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-settings-integration-20261113-oneplus-r1.json",
+      "sha256": "dbb20bfd74a8bca61226d72a0a202e2449d65b0891cb9fb2958f3826e833abd3",
+      "bytes": 1023
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-settings-integration-20261113-oneplus-r2-visual.json",
+      "sha256": "25316bf535bdfecc8a8308370590163d283da623f7254f6df3186c6622d0a84f",
+      "bytes": 969
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-settings-integration-20261113-report.md",
+      "sha256": "5f2ba5b615e8de43617be589621133bd61cf8e624c910ea1591f4a8b7f913dd4",
+      "bytes": 7114
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-settings-integration-20261113-source-hashes.json",
+      "sha256": "a48a78f75cca8f9ed56b0d392a1dc86192e3684832a69bf756088e6ed08fd1a6",
+      "bytes": 2482
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-settings-integration-20261113-source.json",
+      "sha256": "65a5537dbdf059dbb67aa54e487a5584d55d409c4bd507c366705f39bc3e0247",
+      "bytes": 13863
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-settings-integration-parent-current-20261113.json",
+      "sha256": "f60c3242546ab35bc0742f76abe389814ab1ae5d29a39e950400a09f6f6584b1",
+      "bytes": 6050
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-browser-eleventh-20261113-findings.json",
+      "sha256": "e5236a6c660d714092daa3bd1027e43bb696995e2fa09a1a08cc4a406f632e7a",
+      "bytes": 9809
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-browser-eleventh-20261113-runtime.json",
+      "sha256": "baed78f22e566d973767fc7cb5768ea790af245ddbaa435c71ac821b093e8c9a",
+      "bytes": 491
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-files-browser-eleventh-parent-current-20261113.json",
+      "sha256": "b989d490c3318ef1592239faf3b8161d23baedd795275ec6069a526f64c559e3",
+      "bytes": 2402
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-findings.json",
+      "sha256": "36312e8bc0dcda22b3b7305d81e08a2623284fc8ff28255debccfff5f262d585",
+      "bytes": 18309
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-twelfth-parent-current-20261113.json",
+      "sha256": "920ee7cb29065eb749f82ca3a25dee12ecf9e40ef3acf0c417f9bbd0c1ac7a44",
+      "bytes": 1565
+    },
+    {
+      "path": "analysis/full-platform-20261104/mobile-files-browser-parent-current-20261113.json",
+      "sha256": "2333fe369fc4e007d4e3a35ae631f1f66f3454b081ea199e064d46703ffa1be8",
+      "bytes": 1226
+    },
+    {
+      "path": "analysis/full-platform-20261104/mobile-settings-parent-current-20261113.json",
+      "sha256": "f6477d76ad896b6142d610d64698522c7b65e2f696494a7e326204b76077f450",
+      "bytes": 1092
+    },
+    {
+      "path": "docs/full-platform/CHECKPOINT-20261113-FILES-SETTINGS-ACCOUNT.md",
+      "sha256": "8546cac1d5fb470c36009606502f57dfd3b078ef94976c8bdc864575a53af5a7",
+      "bytes": 1592
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "23348e64247b4fe8ab8eed6c11b95a4596ca5a0e20effb6492d5cafa254736d3",
+      "bytes": 79160
+    },
+    {
+      "path": "docs/full-platform/MOBILE-REMAINING-20261113.md",
+      "sha256": "faa79ccfab2c13f65afe4478c7d4066e94f6164baf4bc77b954ade2814e7a8ac",
+      "bytes": 11467
+    },
+    {
+      "path": "docs/full-platform/PROGRESS-20261113-ACCOUNT-FRONTEND.md",
+      "sha256": "16f78caf5475ab4aa955e50b1c18c9436331a9123020ab937522fe14811abc8b",
+      "bytes": 1618
+    },
+    {
+      "path": "docs/full-platform/PROGRESS-20261113-FILES-BROWSER.md",
+      "sha256": "3046fec0c63974e85b1751c6e822fa2f6d8dea2cd2d60009ec5ff5e660152c8b",
+      "bytes": 5027
+    },
+    {
+      "path": "docs/full-platform/PROGRESS-20261113-SETTINGS-INTEGRATION.md",
+      "sha256": "828721a5e20aeff6bbac89dbb986c40bc854444a85c0a0205f717ec7f8b73dd0",
+      "bytes": 5100
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/FrontendResourcesTest.kt",
+      "sha256": "48153c44d66f9a6a5ede6fe03339bcf9395b63f6ec735b187e2540ad3ea8f351",
+      "bytes": 9731
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/FrontendSessionTest.kt",
+      "sha256": "f24b0482dfa51b9fbc2961da8055771bfb977ba7b5a0e726528481af3e53b1cb",
+      "bytes": 11199
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/SettingsIntegrationTest.kt",
+      "sha256": "6d16caa2f8eced4cfcd69d61c654bb639041d370c022e445fbd8b8f4724d80d5",
+      "bytes": 10171
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt",
+      "sha256": "8e2075f811d1cfc3b44891afd9437b971acf88af48890b5d03dc6f8134016a84",
+      "bytes": 26950
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/ChatConversationModel.kt",
+      "sha256": "c66970f635ce7b545f0d6de6e7e0d4aafe6cdc3e41b9712e68fabd775b0db4bc",
+      "bytes": 15399
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/ChatConversationPage.kt",
+      "sha256": "1847a7ee978c838bccde27b6eccb929849717e3353776d752b629df1e12cd27e",
+      "bytes": 12401
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendAuthPages.kt",
+      "sha256": "8b4d607a1e2438b52d40490a4477ec9e68e096a4c4348badd5de19f8ec4ad1be",
+      "bytes": 3617
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendPreferences.kt",
+      "sha256": "df0487696f7d26f32a4395046fe954987cb2e36009db55e41f904bc20c01970a",
+      "bytes": 3390
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendResourceViews.kt",
+      "sha256": "60989e60aa326b648ff42c551ee0c0769d3199b0f1f4aff51388aceec006485d",
+      "bytes": 18538
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendResources.kt",
+      "sha256": "e2fa777f018f8e54ba55e309c3beceb5a04290eff8bf850ca257e00c901825bf",
+      "bytes": 10461
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendSessionModel.kt",
+      "sha256": "33ea026f3382277c043f5e2cce7446f0ae0dfcb747a7571dbdc4aa7d7fe5ae79",
+      "bytes": 5831
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendSettingsModel.kt",
+      "sha256": "2843cbe4f6cb787b480fbcb36fb576083b3bab0ef729dfdd50afcee4b0edb859",
+      "bytes": 5394
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/FrontendSettingsPages.kt",
+      "sha256": "9c45130affcc99ac2cbc9f8ac626d76053446b76f7eefede3d843f54c3ac4412",
+      "bytes": 9400
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RecoveredHomeComposer.kt",
+      "sha256": "196587625b193455ff49641731be75669482c9020606d86a20b783945b3f14ce",
+      "bytes": 10868
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteConversationModel.kt",
+      "sha256": "8564f027a6497007b9f2a18e0ce521f3aa43c433e9d7d0487a9b4093f9b722e7",
+      "bytes": 27794
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteConversationPage.kt",
+      "sha256": "2a73ed2b92ae5569a24117083f2d21379b6597ad99492b7ed7c8dc810d871d88",
+      "bytes": 14306
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListActivity.kt",
+      "sha256": "1b22b6b555a9f421de58378c3ec2fc1ec3186674c5703ef73a0564a34a5f4da0",
+      "bytes": 18762
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListModel.kt",
+      "sha256": "6834aa4adf2de2dd3013884294e5827afe5fdb655efc9190ecee1a2b8cb651f1",
+      "bytes": 13164
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteTaskControlsView.kt",
+      "sha256": "d604d644255b3ba40deb5a83d884eae0fa50874fb724775ce85fc635e34d35a6",
+      "bytes": 12038
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteThreadActions.kt",
+      "sha256": "b625ab05aed13e0bd032af8833041b2adeae6cfc08f97716db51da16014ca916",
+      "bytes": 5204
+    },
+    {
+      "path": "implementation/android/app/src/main/res/values-zh/auth_strings.xml",
+      "sha256": "4ec873040aa924e39f6deae8f6912239860f4f4d200016a9cbe6209d93d10613",
+      "bytes": 67
+    },
+    {
+      "path": "implementation/android/app/src/main/res/values-zh/settings_strings.xml",
+      "sha256": "303d263ddaba1562814b566ca4b2ba13c929934efa2bcb2ed8d517c6f8a0b5de",
+      "bytes": 727
+    },
+    {
+      "path": "implementation/android/app/src/main/res/values/auth_strings.xml",
+      "sha256": "995fe7b8165b4cbc2db4ebe617ba04704ea761c0a1d43bd63e4d2d7bbd59e64b",
+      "bytes": 68
+    },
+    {
+      "path": "implementation/android/app/src/main/res/values/settings_strings.xml",
+      "sha256": "d332701220da6431e206f56805b437ca1bd82acf50990cb239194340a97fd2cc",
+      "bytes": 719
+    },
+    {
+      "path": "implementation/android/test-auth.py",
+      "sha256": "74d130a7b11072133ed4c431af7b9838f177bde368b3d3d5c8f73b5bc0dfa20f",
+      "bytes": 5477
+    },
+    {
+      "path": "implementation/android/test-files.py",
+      "sha256": "3f26e16673df5d3c77c48afbfd3a5feccd686324a66341f1d4ca151ef00fbffe",
+      "bytes": 5499
+    },
+    {
+      "path": "implementation/android/test-settings.py",
+      "sha256": "4416d7ee5d93ae4da1656c9349b241aed3169133cb10d98a2a520dfc723bd656",
+      "bytes": 5505
+    }
+  ]
+}

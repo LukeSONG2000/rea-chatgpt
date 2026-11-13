@@ -42,10 +42,11 @@ private fun RemoteTaskStatus.label() = when (this) {
 }
 
 @Composable
-internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider, sidebarOpen: Boolean, openSidebar: () -> Unit) {
+internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider, sidebarOpen: Boolean, openConnections: () -> Unit = {}, openSidebar: () -> Unit) {
     val coroutine = rememberCoroutineScope()
     val chinese = androidx.compose.ui.platform.LocalConfiguration.current.locales[0].language == "zh"
     val conversations = remember(store, chinese) { RemoteConversationOwner(store, SyntheticRemoteConversationProvider(chinese), coroutine) }
+    DisposableEffect(conversations){onDispose{conversations.close()}}
     var snapshot by remember { mutableStateOf<RemoteListSnapshot?>(null) }
     var loadFailure by remember { mutableStateOf(false) }
     var loading by remember { mutableStateOf(true) }
@@ -146,7 +147,7 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
                     if (store.saveSort(next)) { sort = next; storageError = false }
                     else storageError = true
                 }
-            }, pending = { pendingAction = it })
+            }, pending = { if(it==R.string.remote_settings || it==R.string.remote_add_connection)openConnections() else pendingAction = it })
         snapshot?.let { data ->
             RecoveredRemoteHostSelector(data.hosts, selectedHost) { changeFilter(it, query) }
         }

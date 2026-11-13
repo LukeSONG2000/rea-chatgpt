@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-13",
+  "module": "Files/browser eleventh bounded iOS source reconciliation",
+  "platform": "iOS",
+  "status": "existing core retained; no product edit",
+  "baseline": {
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "previous_core": "ios-files-browser-parent-current-20261113-r4.json",
+  "source_report": "ios-files-browser-eleventh-20261113-findings.json",
+  "confirmed_this_pass": "ManagedSafari unavailable Close calls injected Environment<SwiftUIToolbelt.DismissActionReference>; this does not authorize globally clearing a directory/task or prove sheet/fullscreen routing. Existing independent owner close is compatible with that limited responsibility.",
+  "retained_core": [
+    "Scoped task Files menu -> directory owner -> nested files -> source/Markdown/QuickLook -> close",
+    "Request cancellation and stale resource rejection; retained temporary preview resource lifetime",
+    "Offline WK browser navigation, failure/retry, close returning to mounted conversation"
+  ],
+  "not_implemented": [
+    "Actual Remote link to ManagedSafari effective policy/custom builder/presentation owner",
+    "Original file renderer/highlighter/read-cache and exact optical/gesture/haptic fidelity",
+    "Physical device installation this pass"
+  ],
+  "verification": {
+    "current_source_matches_last_built_manifest": true,
+    "source_manifest": "ios-remote-request-async-ninth-20261113-source.json",
+    "runtime": "ios-files-browser-eleventh-20261113-runtime.json",
+    "ui": "No new journey: unchanged product; retain previous bounded file/browser evidence under its actual snapshots",
+    "physical": "Fresh devicectl list devices: Air unavailable; no install or UI automation"
+  },
+  "files": {
+    "implementation/ios/Sources/FrontendFilePreview.swift": "09a263519264e789aaa6994bd1ece7a93285e2ac0c4c199319289e377fcb2912",
+    "implementation/ios/Sources/FrontendBrowserPreview.swift": "1a973f514054e9471e42acc3e7d3f3b136900dd0d37614fd2e2799128bdd874c",
+    "implementation/ios/Sources/RemoteComposerInteraction.swift": "2d20ddcd904351da039a31abd8b9d8419773df581a5cce7f5c26767ca931164c",
+    "implementation/ios/Sources/NativeConversationHost.swift": "f95cc24a6ac2abb89649daf34d11d3de31226d0e1cd3c32194192893d6d7f27f"
+  },
+  "publication": "Local; this continuation has no new commit/push authorization"
+}

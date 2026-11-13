@@ -19,7 +19,7 @@ import androidx.compose.ui.semantics.testTagsAsResourceId
 // Material3 popup geometry is an independent host; remaining branches deferred.
 @OptIn(androidx.compose.ui.ExperimentalComposeUiApi::class)
 @Composable
-internal fun RemoteThreadActions(task: RemoteListTask, togglePin: () -> Boolean, rename: (String) -> Boolean, archive: () -> Boolean) {
+internal fun RemoteThreadActions(task: RemoteListTask, togglePin: () -> Boolean, rename: (String) -> Boolean, archive: () -> Boolean, files: () -> Unit) {
     var expanded by remember(task.key) { mutableStateOf(false) }
     var failure by remember(task.key) { mutableStateOf(false) }
     var editing by remember(task.key) { mutableStateOf(false) }
@@ -32,6 +32,10 @@ internal fun RemoteThreadActions(task: RemoteListTask, togglePin: () -> Boolean,
         }
         DropdownMenu(expanded, { expanded = false }, Modifier.semantics { testTagsAsResourceId = true }) {
             DropdownMenuItem(text = { Text(task.title) }, onClick = {}, enabled = false)
+            // Independent offline Files capability requested for the task menu.
+            // Android293 directory-menu admission is unproved; do not claim an original route.
+            DropdownMenuItem(text = { Text(remoteControlText("文件", "Files")) }, onClick = { expanded = false; files() },
+                modifier = Modifier.testTag("remote-thread-files"))
             DropdownMenuItem(text = { Text(stringResource(if (task.pinned) R.string.remote_thread_unpin else R.string.remote_thread_pin)) },
                 onClick = { failure = !togglePin(); expanded = false }, modifier = Modifier.testTag("remote-thread-pin"))
             DropdownMenuItem(text = { Text(stringResource(R.string.remote_thread_rename)) },

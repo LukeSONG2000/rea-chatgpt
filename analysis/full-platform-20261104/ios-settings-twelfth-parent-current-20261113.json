@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-13",
+  "module": "Selected Settings twelfth bounded reconciliation",
+  "source_report": "ios-settings-twelfth-20261113-findings.json",
+  "source_snapshot_count": 10,
+  "source_and_saved_excerpt_hash_mismatches": [],
+  "product_changed": false,
+  "new_tests": false,
+  "retained_evidence": [
+    "ios-settings-integration-current-20261113-r2.json",
+    "ios-visual-closure-parent-current-20261113.json"
+  ],
+  "retained_implemented": [
+    "Appearance on current and cold-start windows",
+    "Accent in Chat/Remote/sidebar",
+    "General start routing, OS language entry and shared dispatch-time haptic preference",
+    "Codex connection preference, followup, keyboard, context and diff consumers",
+    "OS notification permission refresh/cancel and account-fenced signout"
+  ],
+  "not_implemented": [
+    "Original issue report form/submit",
+    "Original business notification categories and real Live Activity UI",
+    "All original capability/Work producer and optical inheritance branches"
+  ],
+  "runtime_read_only": {
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "installed_sha256": "6e3c46bad0d003db53d940afb047343edab0f5430223208fcf9e8a2a76ec9ff9",
+    "running": [
+      "70210 /Users/lukesong/Library/Developer/CoreSimulator/Devices/71BCC1D2-0ABD-4F11-BB67-37818435B176/data/Containers/Bundle/Application/FE8E8D59-8452-4D77-9817-61C68EE850FF/REAChatGPTHost.app/REAChatGPTHost"
+    ],
+    "phone": "Fresh devicectl query: iPhone Air unavailable; no new install"
+  },
+  "publication": "Local only; no new commit/push"
+}

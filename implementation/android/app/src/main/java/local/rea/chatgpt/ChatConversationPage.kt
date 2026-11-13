@@ -107,9 +107,11 @@ internal fun ColumnScope.ChatConversationPage(mode: String, owner: ChatConversat
             }
             DisposableEffect(row.id) { onDispose { saveAnchor() } }
             var link by remember { mutableStateOf<String?>(null) }
-            link?.let { url -> AlertDialog(onDismissRequest = { link = null },
-                title = { Text(remoteControlText("链接尚未接入", "Link unavailable")) }, text = { Text(url) },
-                confirmButton = { TextButton(onClick = { link = null }) { Text(remoteControlText("返回", "Back")) } }) }
+            link?.let { url ->
+                if (remoteWebLink(url) != null) OfflineBrowser(ResourceScope(owner.scope(row.id).account,
+                    owner.scope(row.id).profile, "local-chat", row.id), url) { link = null }
+                else RemoteUnsupportedLinkDialog { link = null }
+            }
             Box(Modifier.weight(1f).fillMaxWidth().testTag("chat-conversation")) {
                 CompositionLocalProvider(LocalUriHandler provides object : UriHandler { override fun openUri(uri: String) { link = uri } }) {
                     LazyColumn(state = list, modifier = Modifier.fillMaxSize().nestedScroll(scroll).testTag("chat-transcript"),

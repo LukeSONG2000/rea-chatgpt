@@ -42,17 +42,27 @@ class AppShellActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val profile = intent.getStringExtra("shell-profile") ?: intent.getStringExtra("remote-profile") ?: "preview"
-        val preferences = FrontendPreferences(this, profile)
-        val remoteStore = runCatching { RemoteListStore(getSharedPreferences("remote-list-$profile", MODE_PRIVATE)) }
-        val initialRoute = if (intent.getBooleanExtra("remote", false)) "remote" else preferences.rootRoute
-        val failFirst = profile.startsWith("test-") && intent.getBooleanExtra("remote-fail-first", false)
+        val requestedProfile = intent.getStringExtra("shell-profile") ?: intent.getStringExtra("remote-profile") ?: "preview"
+        val profile=admittedBaseProfile(requestedProfile)
+        if(profile==null){
+            setContent { FrontendTheme { Column(Modifier.fillMaxSize().safeDrawingPadding().padding(24.dp)) {
+                Text("This preview profile is not available.")
+                TextButton(onClick={finish()}){Text("Back")}
+            } } }
+            return
+        }
+        val presentationPreferences = FrontendPreferences(this, profile)
+        val failFirst = profile.startsWith("test-auth-")
+
         setContent {
-            var language by remember { mutableStateOf(preferences.language) }
-            var appearance by remember { mutableStateOf(preferences.appearance) }
+            val sessionCoroutine=rememberCoroutineScope()
+            val sessionOwner=remember(profile){FrontendSessionOwner(getSharedPreferences("session-$profile",MODE_PRIVATE),profile,SyntheticSessionProvider(failFirst),sessionCoroutine)}
+            DisposableEffect(sessionOwner){onDispose{sessionOwner.cancel()}}
+            var language by remember { mutableStateOf(presentationPreferences.language) }
+            var appearance by remember { mutableStateOf(presentationPreferences.appearance) }
             val base = LocalConfiguration.current
             val config = remember(base, language, appearance) {
-                preferences.configuration(base, language, appearance).apply {
+                presentationPreferences.configuration(base, language, appearance).apply {
                     if (profile.startsWith("test-")) {
                         intent.getStringExtra("remote-language")?.let { setLocale(Locale.forLanguageTag(it)) }
                         intent.getStringExtra("remote-theme")?.let {
@@ -72,9 +82,32 @@ class AppShellActivity : ComponentActivity() {
                     }
                 }
                 FrontendTheme {
-                    AppShell(preferences, language, appearance, initialRoute, remoteStore, failFirst,
-                        selectLanguage = { value -> preferences.selectLanguage(value).also { if (it) language = value } },
-                        selectAppearance = { value -> preferences.selectAppearance(value).also { if (it) appearance = value } })
+                    if(sessionOwner.invalid) Column(Modifier.fillMaxSize().safeDrawingPadding().padding(24.dp).testTag("auth-storage-error")) {
+                        Text(remoteControlText("无法读取本地会话。原记录已保留。","The local session could not be read. The original record is retained."))
+                        TextButton(onClick=sessionOwner::reload){Text(remoteControlText("重试","Retry"))}
+                        TextButton(onClick={finish()}){Text(remoteControlText("返回","Back"))}
+                    }
+                    else if(sessionOwner.value.phase=="signedOut") FrontendWelcome(sessionOwner)
+                    else key(sessionOwner.value.account,sessionOwner.value.session,sessionOwner.value.revision) {
+                        val account=sessionOwner.value.account!!
+                        val dataProfile=accountDataProfile(profile,account)
+                        val preferences=remember(dataProfile,account){FrontendPreferences(this@AppShellActivity,dataProfile,account)}
+                        val settings=remember(preferences){preferences.settingsOwner()}
+                        val remoteStore=remember(dataProfile,account){runCatching{RemoteListStore(getSharedPreferences("remote-list-$dataProfile",MODE_PRIVATE),dataProfile,account)}}
+                        val explicitRemote=intent.getBooleanExtra("remote",false)
+                        val initialRoute=remember{settings.initialRoute(preferences.rootRoute,explicitRemote)}
+                        val initialMode=remember{if(!explicitRemote&&!settings.invalid&&settings.value.start=="chat")"chat" else preferences.mode}
+                        val nativeHaptics=androidx.compose.ui.platform.LocalHapticFeedback.current
+                        val gatedHaptics=remember(settings,nativeHaptics){GatedFrontendHaptics({settings.value.haptics},nativeHaptics)}
+                        CompositionLocalProvider(LocalFrontendSettings provides settings.value,
+                            androidx.compose.ui.platform.LocalHapticFeedback provides gatedHaptics) {
+                            AppShell(sessionOwner,settings,preferences,language,appearance,initialRoute,initialMode,remoteStore,
+                                profile.startsWith("test-")&&intent.getBooleanExtra("remote-fail-first",false),
+                                selectLanguage={value->presentationPreferences.selectLanguage(value).also{if(it)language=value}},
+                                selectAppearance={value->presentationPreferences.selectAppearance(value).also{if(it)appearance=value}})
+                        }
+                    }
+                    FrontendAuthOperation(sessionOwner)
                 }
             }
         }
@@ -98,10 +131,10 @@ private val shellEntries = listOf(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun AppShell(preferences: FrontendPreferences, language: String, appearance: String,
-    initialRoute: String, remoteStore: Result<RemoteListStore>, failFirst: Boolean,
+private fun AppShell(sessionOwner:FrontendSessionOwner, settings: FrontendSettingsOwner, preferences: FrontendPreferences, language: String, appearance: String,
+    initialRoute: String, initialMode: String, remoteStore: Result<RemoteListStore>, failFirst: Boolean,
     selectLanguage: (String) -> Boolean, selectAppearance: (String) -> Boolean) {
-    var mode by rememberSaveable { mutableStateOf(preferences.mode) }
+    var mode by rememberSaveable { mutableStateOf(initialMode) }
     var route by rememberSaveable { mutableStateOf(initialRoute) }
     var mainRoute by rememberSaveable { mutableStateOf(initialRoute) }
     val pageState = rememberSaveableStateHolder()
@@ -114,8 +147,9 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
     val context = LocalContext.current
     val chatOwner = remember(preferences) { ChatConversationOwner(
         ChatConversationStore(context.getSharedPreferences("chat-${preferences.profile}", android.content.Context.MODE_PRIVATE),
-            "offline-shell-account", preferences.profile, FrontendPreferences.modes.associateWith(preferences::draft)),
+            preferences.account, preferences.profile, FrontendPreferences.modes.associateWith(preferences::draft)),
         SyntheticChatProvider(chinese), coroutine) }
+    DisposableEffect(chatOwner){onDispose{chatOwner.close()}}
     SideEffect { chatOwner.useProvider(SyntheticChatProvider(chinese)) }
     val focus = LocalFocusManager.current
     val settingsScroll = rememberLazyListState()
@@ -138,7 +172,8 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
         if (route == "home" && chatOwner.selected(mode) != null) { chatOwner.newConversation(mode); return }
         val returnToSidebar = route == "search"
         val next = when {
-            route == "appearance" || route == "language" -> "general"
+            route in setOf("appearance","language","settings-start","settings-accent") -> "general"
+            route in setOf("settings-followup","settings-connections") -> "settings-codex"
             route == "general" || route.startsWith("settings-") -> "settings"
             ShellNavigation.isRoot(route) -> "home"
             else -> mainRoute
@@ -197,7 +232,7 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
             if (route == "remote") {
                 pageState.SaveableStateProvider("remote") {
                     remoteStore.getOrNull()?.let { store ->
-                        RemoteListPage(store, remoteProvider, sidebarOpen = drawer.isOpen, openSidebar = {
+                        RemoteListPage(store, remoteProvider, sidebarOpen = drawer.isOpen, openConnections = { navigate("settings-connections") }, openSidebar = {
                             focus.clearFocus()
                             coroutine.launch { drawer.open() }
                         })
@@ -243,20 +278,53 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
                         "search" -> ChatSearch(chatOwner, ::selectConversation)
                         "settings" -> LazyColumn(state = settingsScroll, contentPadding = PaddingValues(vertical = 24.dp),
                             modifier = Modifier.fillMaxSize().testTag("shell-settings-list")) {
+                            item(key="account-section") {
+                                RecoveredSettingsSection(listOf(ShellSetting("account",R.string.auth_account))){navigate("settings-account")}
+                                Spacer(Modifier.height(24.dp))
+                            }
                             item(key = "misc-section") {
                                 RecoveredSettingsSection(settingsEntries) { id ->
                                     navigate(if (id == "general") "general" else "settings-$id")
                                 }
                             }
+                            item(key="signout") {
+                                Spacer(Modifier.height(24.dp))
+                                RecoveredSettingsSection(listOf(ShellSetting("signout",R.string.settings_signout))){navigate("settings-signout")}
+                            }
                         }
                         "general" -> LazyColumn(Modifier.fillMaxSize().testTag("shell-general-list"),
                             contentPadding = PaddingValues(vertical = 24.dp), verticalArrangement = Arrangement.spacedBy(24.dp)) {
+                            item(key = "start") {
+                                RecoveredSettingsSection(listOf(ShellSetting("start", R.string.settings_start, if(settings.value.start=="chat")R.string.shell_chat else R.string.settings_unset))) { navigate("settings-start") }
+                            }
                             item(key = "appearance") {
-                                RecoveredSettingsSection(listOf(ShellSetting("appearance", R.string.shell_appearance, optionLabel(appearance)))) { navigate(it) }
+                                RecoveredSettingsSection(listOf(ShellSetting("appearance", R.string.shell_appearance, optionLabel(appearance)), ShellSetting("accent", R.string.settings_accent))) { navigate(if(it=="accent") "settings-accent" else it) }
                             }
                             item(key = "language") {
                                 RecoveredSettingsSection(listOf(ShellSetting("language", R.string.shell_language, optionLabel(language)))) { navigate(it) }
                             }
+                            item(key = "haptics") {
+                                RecoveredSettingsSection(listOf(ShellSetting("haptics", R.string.settings_haptics, if(settings.value.haptics)R.string.settings_on else R.string.settings_off))) { error = !settings.save(settings.value.copy(haptics=!settings.value.haptics)) }
+                            }
+                        }
+                        "settings-start", "settings-accent", "settings-codex", "settings-followup", "settings-connections", "settings-notifications", "settings-about", "settings-report" -> FrontendSettingsPage(route,settings,::navigate) { host ->
+                            val store=remoteStore.getOrNull()
+                            val saved=store?.saveList(host,"",emptySet(),0,0)==true
+                            if(saved)navigate("remote")
+                            saved && route=="remote"
+                        }
+                        "settings-account" -> {
+                            if(sessionOwner.value.phase=="preview") FrontendWelcome(sessionOwner){back()}
+                            else Column(Modifier.padding(24.dp).testTag("auth-account")) {
+                                Text(remoteControlText("本地合成账户","Local synthetic account"),style=MaterialTheme.typography.titleMedium)
+                                Text(sessionOwner.value.account.orEmpty(),Modifier.padding(vertical=16.dp).testTag("auth-account-id"))
+                                Text(remoteControlText("未连接真实账户服务。","No real account service is connected."))
+                                TextButton(onClick={sessionOwner.begin("logout")},modifier=Modifier.testTag("auth-account-signout")){Text(remoteControlText("退出","Sign out"))}
+                            }
+                        }
+                        "settings-signout" -> Column(Modifier.padding(24.dp)) {
+                            Text(remoteControlText("退出当前本地会话。聊天和偏好设置会保留。","Sign out of this local session. Conversations and preferences are retained."))
+                            Button(onClick={sessionOwner.begin("logout")},modifier=Modifier.testTag("auth-signout")){Text(remoteControlText("退出","Sign out"))}
                         }
                         "appearance", "language" -> {
                             val choices = if (route == "appearance") FrontendPreferences.appearances else FrontendPreferences.languages
@@ -301,7 +369,9 @@ private val settingsEntries = listOf(
     ShellSetting("browser", R.string.shell_browser, icon = R.drawable.ds_globe_regular_24),
     ShellSetting("storage", R.string.shell_storage, icon = R.drawable.ds_hard_drive_regular_24),
     ShellSetting("tasks", R.string.shell_tasks, icon = R.drawable.ds_tasks_regular_24),
-    ShellSetting("data", R.string.shell_data, icon = R.drawable.ds_storage_badge_gear_regular_24)
+    ShellSetting("data", R.string.shell_data, icon = R.drawable.ds_storage_badge_gear_regular_24),
+    ShellSetting("report",R.string.settings_report),
+    ShellSetting("about",R.string.settings_about)
 )
 
 private fun routeTitle(route: String): Int = when (route) {
@@ -309,6 +379,14 @@ private fun routeTitle(route: String): Int = when (route) {
     "general" -> R.string.shell_general
     "appearance" -> R.string.shell_appearance
     "language" -> R.string.shell_language
+    "settings-account" -> R.string.auth_account
+    "settings-start" -> R.string.settings_start
+    "settings-accent" -> R.string.settings_accent
+    "settings-followup" -> R.string.settings_followup
+    "settings-connections" -> R.string.settings_connections
+    "settings-about" -> R.string.settings_about
+    "settings-report" -> R.string.settings_report
+    "settings-signout" -> R.string.settings_signout
     "settings-codex" -> R.string.shell_codex
     "settings-notifications" -> R.string.shell_notifications
     "settings-data" -> R.string.shell_data

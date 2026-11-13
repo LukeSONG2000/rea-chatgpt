@@ -1,5 +1,11 @@
 # 移动端全部大项：已做与剩余
 
+本次按明确授权保存文件／浏览器、设置接线与Android离线账户的已确定成果。账户中文浅色核心29.621秒、真实重启7.679秒通过；原普通预览保留。iOS头像菜单仍在集成，本次排除，账户整项尚未收尾。详见CHECKPOINT-20261113-FILES-SETTINGS-ACCOUNT.md及PROGRESS-20261113-ACCOUNT-FRONTEND.md。仅个人origin推送，不包含安装包、原包、缓存或未完成源码；旧模块记录继续按原快照解释。
+
+本批选定设置整项已归档：Android起始页面／强调色／触觉偏好／Codex后续模式／连接前端／通知OS状态／About与边界入口已接；核心15.492秒、真重启6.149秒及稳定截图8.274秒通过，OnePlus保留正常预览。真实登出仍缺session owner，报告表单／配对／通知业务未接，完整色表与光学未恢复。iOS现有消费者已核实并保留，未新改产品，Air不可用。见PROGRESS-20261113-SETTINGS-INTEGRATION.md。下一整项登录／账户前端，然后仅插件；其他未完成项保留。
+
+本批文件／浏览器已归档：Android接通Remote目录、共享单文件资源owner、文本／Markdown／PNG／PDF及离线网页，28.052秒核心剩余流程与10.14秒最终Dialog导航栏专项通过，OnePlus保留正常预览。原目录入口／PDF／WebView为独立适配，未声称Android293原版等价；Chat网页仅编译覆盖。iOS已有核心不改，补闭原Close注入回调并核对当前运行摘要，Air仍不可用。见PROGRESS-20261113-FILES-BROWSER.md。下一整项为已适配功能的设置接线；其余未完成项继续保留，本轮不追加推送。
+
 本次已确定成果归档：iOS Remote异步补充输入与Android Chat／Work核心前端已通过各自限定检查，详见PROGRESS-20261113-REMOTE-REQUESTS.md、PROGRESS-20261113-CHAT-WORK.md及CHECKPOINT-20261113-MOBILE-CHAT-INPUT.md。Android同会话模式切换、完整搜索父容器仍未实现；iOS模式供应链仅静态补证。下一整项为文件／浏览器。用户明确授权本次推送，限个人origin，企业org只读。
 
 本表汇总iOS页面基线及剩余前端工作；Android已恢复按大项逐项对齐，iOS继续收口，两端不互相等待。真实模型、业务后端、安装授权服务、真实账号与推送发送端不计入待做；当前以合成事件和可替换接口承接。

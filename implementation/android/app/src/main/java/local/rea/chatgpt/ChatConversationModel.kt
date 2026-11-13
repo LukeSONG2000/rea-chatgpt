@@ -60,7 +60,7 @@ internal class SyntheticChatProvider(private val chinese: Boolean) : ChatProvide
         output(3, ChatEventKind.Replace, body)
         body += "```kotlin\nval offline = true\n```\n\n| Item | Status |\n| --- | --- |\n| UI | Ready |\n\n"
         output(4, ChatEventKind.Replace, body)
-        output(5, ChatEventKind.Complete, body + if (chinese) "回放完成。" else "Replay complete.")
+        output(5, ChatEventKind.Complete, body + (if (chinese) "回放完成。" else "Replay complete.") + "\n\n[Local webpage](https://example.invalid/remote-doc)")
     }
 }
 internal class ChatConversationStore(private val preferences: SharedPreferences, val account: String, val profile: String,
@@ -115,15 +115,17 @@ internal class ChatConversationOwner(private val store: ChatConversationStore, p
     var snapshot by mutableStateOf(ChatSnapshot()); private set
     var storageError by mutableStateOf(false); private set
     private val jobs = mutableMapOf<String, Job>()
+    private var retired=false
+    fun close(){retired=true;jobs.values.forEach{it.cancel()};jobs.clear()}
     init { reload() }
     fun useProvider(value: ChatProvider) { provider = value }
-    fun reload() { jobs.values.forEach { it.cancel() }; jobs.clear(); try { snapshot = store.load(); storageError = false } catch (_: Exception) { storageError = true } }
+    fun reload() { if(retired)return; jobs.values.forEach { it.cancel() }; jobs.clear(); try { snapshot = store.load(); storageError = false } catch (_: Exception) { storageError = true } }
     fun scope(id: String) = ChatScope(store.account, store.profile, id)
     fun row(id: String) = snapshot.rows.firstOrNull { it.id == id }
     fun selected(mode: String) = snapshot.selected[mode]?.let(::row)
     fun draft(mode: String) = selected(mode)?.draft ?: snapshot.homeDrafts[mode].orEmpty()
     private fun commit(next: ChatSnapshot): Boolean {
-        if (storageError) return false
+        if (retired || storageError) return false
         val saved = runCatching { store.save(next) }.getOrDefault(false)
         if (saved) snapshot = next else storageError = true
         return saved
@@ -183,6 +185,7 @@ internal class ChatConversationOwner(private val store: ChatConversationStore, p
         start(id, next); return true
     }
     internal fun accept(event: ChatEvent) {
+        if(retired)return
         val row = row(event.scope.conversation) ?: return
         val old = row.turns.firstOrNull { it.id == event.turn } ?: return
         val next = applyChatEvent(scope(row.id), old, event)

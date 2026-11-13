@@ -1,0 +1,401 @@
+{
+  "schema": "rea-ios-settings-audit-v1",
+  "date": "2026-11-13T21:44:43.535270+08:00",
+  "scope": "Selected iOS Settings integration: Theme, General, Codex, Notifications, Help Report/About, SignOut. Static read-only review of original evidence and current host; no new implementation or device verification.",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "version": "1.2026.293",
+    "platform": "iOS",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "digest_status": "Frozen previously verified artifact reused; no full rehash in this bounded audit"
+  },
+  "result": "retain_current_selected_core_no_source_supported_new_product_patch",
+  "budget": {
+    "new_binary_candidate_groups": 0,
+    "limit": 2,
+    "reason": "Existing closed source evidence plus actual current consumers answer this integration decision. No reason to reopen unknown Report/LiveActivity factories."
+  },
+  "checks": [
+    {
+      "area": "Theme appearance",
+      "classification": "host integration observed; original states reused",
+      "current": [
+        "AppDelegate.swift:89-111 saves system/light/dark key and applies current style to every connected UIWindow.",
+        "AppDelegate.swift:159-162 applies preference when creating the scene window.",
+        "NativeConversationHost.swift:10120-10171 renders appearance and accent in one shared section and applies appearance changes."
+      ],
+      "decision": "Retain. Local device key/window application is explicitly an independent adapter; exact original app-wide presentation inheritance is not claimed."
+    },
+    {
+      "area": "Accent",
+      "classification": "official artifact observation plus current consumer",
+      "official": [
+        "MessageRowViewModel init393ce48→3d974bc at393e3d4 and recompute3945a00→3d974bc at3945b54.",
+        "MessageRowCellContextModifier38e5660 writes MessageRowStyle environment via keypath8030250.",
+        "Chat TextPart3ae7d7c reads style at3ae7ef4..3ae7f10→2820040; bubble3aea070 retains supplied ordinary background."
+      ],
+      "current": [
+        "NativeConversationHost.swift:1954-1980 observes same accent key and updates ordinary Chat user block.",
+        "RecoveredRemoteTranscriptCollection.swift:7/49 observes accent and selects user background.",
+        "NativeSidebarContainer.swift:458 observes same key; original sidebar palette resource mapping is in AppDelegate.swift:36-45."
+      ],
+      "decision": "Retain. Work uses this shared host carrier, but original Work-specific native builder registration remains unclosed. No global accent tint guessed for all controls."
+    },
+    {
+      "area": "General Starting page/language",
+      "classification": "source-shaped preference plus independent launch adapter",
+      "official": [
+        "General tuple7d8fec0 has Starting page first; original native menu value uses HStack spacing6 and original chevron.",
+        "Starting menu availability separate from saved selection; row requires at least2 destinations; source report retains exact gates and enum witnesses.",
+        "10e0334 displays actual Bundle preferred localization;1150d50→10e1d14 opens UIApplicationOpenSettingsURLString."
+      ],
+      "current": [
+        "FrontendHaptics.swift:115-193 builds account/profile-scoped Start section and actual OS language entry; active-scene refresh reads Bundle localization.",
+        "NativeConversationHost.swift:401-427 independently routes saved start choice at cold start; absent preference retains root checkpoint; notification route remains separate."
+      ],
+      "decision": "Retain. Original backing key/bootstrap and live account option assignment not proved; current explicit adapter not promoted to official behavior."
+    },
+    {
+      "area": "General haptics",
+      "classification": "explicit source-proved triggers with independent shared gate",
+      "official": [
+        "Sidebar ended interior-progress changed endpoint consumer62bb88..62be00→selection engine6fe1344.",
+        "ComposerStatusPill1d2b03c invokes selection witness+0x78 before owner action.",
+        "File accepted import187fdb4→6fe0ffc→engine witness+0x68→6fe123c; Photos playsSuccessHaptic=false."
+      ],
+      "current": [
+        "General AppStorage writes FrontendHaptics.storageKey.",
+        "FrontendHaptics.swift:79-112 reads same key on each UIKit dispatch, hardware support and active application gate.",
+        "RecoveredRemoteModelSlider.swift:392/436 reads same key and gate for its two sensoryFeedback consumers."
+      ],
+      "decision": "Retain. No extra haptic trigger added. OS implicit feedback and physical playback are not established by source review."
+    },
+    {
+      "area": "Codex connections/composer/diff",
+      "classification": "original UI/state semantics plus independent synthetic capability persistence",
+      "current": [
+        "RemoteContextUsage.swift:178-304 writes typed connection ordering/enabled, follow-up, keyboard, context use and diff preferences.",
+        "NativeConversationHost.swift:5588 uses ordered hosts;8837-8844 disables submission for disabled task host.",
+        "RecoveredRemoteComposerField.swift:213-224 observes follow-up/keyboard preferences and resigns focus only after accepted frontend submission;317 gates context usage;399 sends selected follow-up.",
+        "NativeConversationHost.swift:7436/7501 uses diff wrapping preference to change horizontal-scroll policy."
+      ],
+      "decision": "Retain. These are actual consumers, not inert settings. Connection service, exact original preference storage and Live Activity presentation remain unconnected."
+    },
+    {
+      "area": "Notifications",
+      "classification": "current frontend integration; official categories remain partial",
+      "current": [
+        "FrontendNotificationSettings.swift:33-66 reads OS authorization, requests alert/sound/badge and opens system notification settings.",
+        "Model generation/task gates prevent stale permission result application and preserve exact retry operation.",
+        "Visible screen refreshes on return to active scene and cancels on disappear at255-266.",
+        "FrontendNotificationEvents maintains account/session/target identity and native delivery routing; registration uses independent service boundary."
+      ],
+      "decision": "Retain OS and frontend event paths. No claimed business subscription persistence or actual push server delivery. Original notification category controls remain missing rather than fabricated."
+    },
+    {
+      "area": "Help Report/About",
+      "classification": "official topology retained; unavailable injected factory explicit",
+      "official": [
+        "GetHelp1089624 constructs conditional Report10897b4→Help1089868→conditional Privacy10898dc→About10898f4..1089960.",
+        "Report6298914 admits enabled/no-inflight presentation; concrete form is injected async factory at presenter+0x18.",
+        "About10d4224/10d45d4 has grouped Form, Terms/Privacy Links and selectable host metadata."
+      ],
+      "current": [
+        "NativeConversationHost.swift:10153-10165 retains entries with returnable unavailable Report boundary.",
+        "FrontendSettingsTopology.swift:299-355 builds About links through guarded browser adapter and actual installed host bundle version."
+      ],
+      "decision": "Retain. Report form producer still unknown; no invented form. Browser failure/unavailable is a valid offline service boundary, not permission to initiate official network access."
+    },
+    {
+      "area": "SignOut",
+      "classification": "official confirmation/busy pattern plus independent exact-account receipt contract",
+      "official": [
+        "10e6e70 presentation dispatch builds original destructive/cancel AlertPresentation62a7d80.",
+        "Confirmation1149d60→10e7f04;10e7fe8 duplicate guard;10e8018 busy transition before async operation."
+      ],
+      "current": [
+        "NativeConversationHost.swift:10199-10236 shows confirmation, disables duplicate busy request and shows centered progress.",
+        "FrontendSettingsTopology.swift:138-156 tracks exact operation identity.",
+        "NativeFrontendAuthentication.swift:134-140 verifies current account, awaits authentication owner and returns signedOut only after session absent.",
+        "AppDelegate.swift:209-235 retires old frontend session and notification scope during real root-session transition."
+      ],
+      "decision": "Retain. Default disconnected mode cannot claim successful service signout. Original save-login UI and live service policy remain unknown."
+    }
+  ],
+  "not_recovered_or_not_service_connected": [
+    "Original concrete Report form/validation/submission factory.",
+    "Original business notification categories/subscription synchronization and real delivery server.",
+    "Live Activity native card/provider/auth and consumer of saved grouping.",
+    "Original account experiment/capability assignment and alternate ConsumerIdentity root.",
+    "Original StartScreen backing repository/bootstrap; current launch route is independent.",
+    "Original Work route-specific native row/composer registration and full special-window theme inheritance.",
+    "Exact original optics/geometry beyond already recorded source consumers; actual haptic playback."
+  ],
+  "no_new_claims": [
+    "No screenshots/Android/desktop used as evidence for iOS293.",
+    "No new source-supported core defect found in the selected current integration; this is not a claim every Settings page/function is complete.",
+    "Unavailable entries are retained service boundaries; this audit does not score them implemented backend capability.",
+    "No report form/LiveActivity negative scan repeated; no new gesture/haptic caller invented."
+  ],
+  "safe_product_decision": {
+    "modify_now": false,
+    "reason": "Known selected preference effects are wired. Remaining gaps require named injected producers/services rather than another local layout patch.",
+    "next_minimum_evidence_if_requested": "For Report specifically resolve presenter+0x18 async factory registration to concrete form; for notification categories resolve actual configuration producer; do not merge either into this audit."
+  },
+  "reused_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-integration-current-20261113-r2.json",
+      "sha256": "1f40397c462650cef90dba1e34b286c8d38a86f259181def6063bed9733fd742"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-visual-closure-parent-current-20261113.json",
+      "sha256": "027eb1e869db7e8b29324ffe710872ec750692009eaab1572b7f8017caeefd8d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-entry-audit-current-20261113-r2.json",
+      "sha256": "75c0630c57d2ce740b3b9c9ac9b49a1eb5bd790805d710ac5aa5019f42542a32"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-chat-theme-fifth-20261113-findings.json",
+      "sha256": "3a4bb2c0a46532ee8d57411e6a21a32f37e32b6d73b59c0ffe1c9c567a7f5005"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-general-sixth-20261113-findings.json",
+      "sha256": "4111a4edc3f291e3046f2b14c22e860476f91f3fb1fd7c92f745d1b95765ab80"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-swatches-20261113-findings.json",
+      "sha256": "611c0288b530d7702f5ddcae9af656850159924452529864bcac877222806eb1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-help-fifth-20261113-findings.json",
+      "sha256": "8e82c118cd81bf541ee6c195b85092012786abfb18c57dca0405b565bc7ee60c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-signout-detail-20261112-findings.json",
+      "sha256": "fd4cb43cc569b99a630604e98fc47149c2d70fbfe9f4566e6f07bdcd64c94779"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-gesture-haptics-settings-current-20261113-r2.json",
+      "sha256": "0e3ca7e254295be0394180ffb297461400129dc513c8c391bb42f2fc701ab845"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-settings-codex-liveactivity-sixth-20261113-findings.json",
+      "sha256": "ccba69ce398669a81693ab165ad9ea02710672e6405391cf42f9c33277c62b16"
+    }
+  ],
+  "current_source_snapshot": [
+    {
+      "path": "implementation/ios/Sources/AppDelegate.swift",
+      "sha256": "790282d96a3fa3fd9f69cd643b0e312944a7e410b67c863cb9bcd318996f7e66",
+      "line_windows": [
+        [
+          8,
+          58
+        ],
+        [
+          89,
+          111
+        ],
+        [
+          157,
+          164
+        ],
+        [
+          209,
+          235
+        ]
+      ],
+      "snapshot": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-raw/AppDelegate.source.txt",
+      "snapshot_sha256": "0bfd8df26617b6e070df187787f7c0c3bb94db199e7a2abd23af51934be4376a"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendHaptics.swift",
+      "sha256": "0ab1832614efb1c8392bef39490c04f7118651f8468711c3881f3720e30396d6",
+      "line_windows": [
+        [
+          5,
+          20
+        ],
+        [
+          79,
+          112
+        ],
+        [
+          115,
+          193
+        ]
+      ],
+      "snapshot": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-raw/FrontendHaptics.source.txt",
+      "snapshot_sha256": "05667120d945f09adb45ba41da00c2ecc0e3dfdca7336b024594e417b4bea4ac"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "f95cc24a6ac2abb89649daf34d11d3de31226d0e1cd3c32194192893d6d7f27f",
+      "line_windows": [
+        [
+          401,
+          427
+        ],
+        [
+          1954,
+          1980
+        ],
+        [
+          3914,
+          3924
+        ],
+        [
+          5251,
+          5260
+        ],
+        [
+          5580,
+          5608
+        ],
+        [
+          7432,
+          7439
+        ],
+        [
+          7495,
+          7507
+        ],
+        [
+          8837,
+          8844
+        ],
+        [
+          9994,
+          10057
+        ],
+        [
+          10120,
+          10173
+        ],
+        [
+          10199,
+          10236
+        ]
+      ],
+      "snapshot": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-raw/NativeConversationHost.source.txt",
+      "snapshot_sha256": "ed42b118807f5ec15be025630163ad70b8bd84247ede19e05e48749f8258bf15"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteComposerField.swift",
+      "sha256": "8047ddcc57dc8ae8569e3509178c04541c0b8c50be6964c42d86f39ab9c475eb",
+      "line_windows": [
+        [
+          209,
+          239
+        ],
+        [
+          392,
+          402
+        ]
+      ],
+      "snapshot": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-raw/RecoveredRemoteComposerField.source.txt",
+      "snapshot_sha256": "b29a2067c966d7ca452ef286b83e83d51154ec3f4d5bf4d56d2e2a42ca6a7455"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteContextUsage.swift",
+      "sha256": "2ae1ca760218be50ad3db020d05981311c6909ef0ed84ab205d380fb6c162b59",
+      "line_windows": [
+        [
+          27,
+          49
+        ],
+        [
+          178,
+          203
+        ],
+        [
+          253,
+          304
+        ]
+      ],
+      "snapshot": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-raw/RemoteContextUsage.source.txt",
+      "snapshot_sha256": "0d87f26188acf77c737cd905db69e06209662c21c23ffa2f78237fd80959c0d3"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendNotificationSettings.swift",
+      "sha256": "97c5ddc2f97b7b57c6a6460b0d00aa60735e3c2a191e5e51df64bf6fb5262d4a",
+      "line_windows": [
+        [
+          33,
+          66
+        ],
+        [
+          102,
+          169
+        ],
+        [
+          255,
+          266
+        ]
+      ],
+      "snapshot": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-raw/FrontendNotificationSettings.source.txt",
+      "snapshot_sha256": "2d9a9762eaa1f0f6a7154f222b0a8b79cf3684d5d3ed6689dd2d7bd68bb62490"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeFrontendAuthentication.swift",
+      "sha256": "9206a27c6597f35d3927c5cfaa204757972d89ab3abe842567e76902159b5881",
+      "line_windows": [
+        [
+          131,
+          142
+        ]
+      ],
+      "snapshot": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-raw/NativeFrontendAuthentication.source.txt",
+      "snapshot_sha256": "0e44fbbb56221c20428410638a840314a8ebe74def7d0e2e77ac65639eb65cef"
+    },
+    {
+      "path": "implementation/ios/Sources/FrontendSettingsTopology.swift",
+      "sha256": "f6b4f23fa0f1cd9e7b25e260bc6556dee8a9b82df721738dbcf220d25793ea78",
+      "line_windows": [
+        [
+          138,
+          156
+        ],
+        [
+          299,
+          355
+        ]
+      ],
+      "snapshot": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-raw/FrontendSettingsTopology.source.txt",
+      "snapshot_sha256": "bccbdf8298f51e9ae55b24e798b1ec298736da1cce10e78d2027605ec84c0169"
+    },
+    {
+      "path": "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift",
+      "sha256": "64f10a9f2fb83d512122db4c9cb9cb0a0fcf1b9dd757844d5326563d89e1b4f8",
+      "line_windows": [
+        [
+          1,
+          55
+        ]
+      ],
+      "snapshot": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-raw/RecoveredRemoteTranscriptCollection.source.txt",
+      "snapshot_sha256": "3720217ccaa327b7dc807d1be35c62b6c599bf2046eebc69e4f98ba7dbd2110f"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeSidebarContainer.swift",
+      "sha256": "12fcbba506218714b11435fc48f8db9a03b2b59b87ec4ddc91fb6f62f06c8d6f",
+      "line_windows": [
+        [
+          458,
+          470
+        ]
+      ],
+      "snapshot": "analysis/full-platform-20261104/ios-settings-twelfth-20261113-raw/NativeSidebarContainer.source.txt",
+      "snapshot_sha256": "cd7870778acf1e690c80ec2a49a09dd515264ff769d855885268b66a578ff433"
+    }
+  ],
+  "validation": {
+    "static_read": true,
+    "new_binary_disassembly": false,
+    "product_modified": false,
+    "build_or_tests_run": false,
+    "device_or_app_started": false,
+    "git_operation": false
+  }
+}

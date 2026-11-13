@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-13",
+  "scope": "Mobile Files/browser frontend module; no backend or message attachments",
+  "ios": "ios-files-browser-eleventh-parent-current-20261113.json",
+  "android": "android-files-browser-parent-current-20261113.json",
+  "progress": "docs/full-platform/PROGRESS-20261113-FILES-BROWSER.md",
+  "root_review": {
+    "android_current_source_manifest_count": 11,
+    "mismatches": [],
+    "images_reviewed": [
+      "android-files-browser-20261113-oneplus-r4/browser-details.png",
+      "android-files-browser-20261113-oneplus-r4/pdf-second-page.png",
+      "android-files-browser-20261113-oneplus-r4/parent-returned.png",
+      "android-files-browser-20261113-oneplus-r5-bar/dialog-navigation-bar.png"
+    ],
+    "finding": "Dialog own window navigation icons missing in earlier light screenshots; final screenshot shows dark-gray keys. Other unproved original styling remains unchanged."
+  },
+  "next_module": "Selected Settings frontend integration on both platforms",
+  "not_complete": "Full original parity, real resource/service providers, all gesture/media/restore scenarios and physical iOS delivery remain incomplete",
+  "publication": "Local after checkpoint9440e5a459; no new Git mutation"
+}
