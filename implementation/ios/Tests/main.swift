@@ -448,3 +448,41 @@ precondition(ordinaryBlank.projectID == nil && ordinaryBlank.id != projectConver
 precondition(!restoredProjectCatalog.ordinaryEntries.contains { $0.id == projectConversationID })
 precondition(restoredProjectCatalog.ordinaryEntries.contains { $0.id == ordinaryBlank.id })
 print("PASS: project conversation membership, idempotent admission, conflict rejection, persistence and ordinary blank isolation")
+
+//Golden AST was captured from the byte-identical packaged293 Markdown parser.
+let structureURL = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+    .appendingPathComponent("Fixtures/markdown-structures-293.json")
+let structureJSON = try JSONSerialization.jsonObject(with: Data(contentsOf: structureURL)) as! [String: Any]
+let structureSamples = structureJSON["samples"] as! [String: [String: Any]]
+func structure(_ name: String) throws -> [HostMessage] {
+    try HostMarkdownProjection.messages(structureSamples[name]!["ast"] as! [[String: Any]], prefix: name)
+}
+let sourceList = try structure("list")
+precondition(sourceList.count == 4 && Set(sourceList.map(\.id)).count == 4)
+if case .listItem(let marker, _, _, let start) = sourceList[0].containers[0] {
+    precondition(marker == "3." && start == 3)
+} else { preconditionFailure("Ordered list ancestry lost") }
+precondition(sourceList[2].containers.count == 2)
+if case .listItem(let continuation, _, _, _) = sourceList[2].containers[0] {
+    precondition(continuation == nil, "Do not repeat an outer marker on nested continuation")
+}
+let sourceQuote = try structure("quote")
+precondition(sourceQuote[0].containers == [.quote] && sourceQuote[1].containers.count == 2)
+precondition(sourceQuote.last?.content == .rule)
+let sourceTask = try structure("task")
+for (index, expected) in [true, false].enumerated() {
+    if case .listItem(let marker, _, let checked, _) = sourceTask[index].containers[0] {
+        precondition(checked == expected && marker == (expected ? "[x]" : "[ ]"))
+    } else { preconditionFailure("Readonly task information lost") }
+}
+do {
+    _ = try HostMarkdownProjection.messages([["kind": "list", "ordered": false, "items": [["marker": "-"]]]], prefix: "invalid")
+    preconditionFailure("Malformed list must not silently lose its body")
+} catch HostMarkdownProjection.Failure.invalidStructure {}
+var tooDeep: [[String: Any]] = [["kind": "rule"]]
+for _ in 0..<33 { tooDeep = [["kind": "quote", "blocks": tooDeep]] }
+do {
+    _ = try HostMarkdownProjection.messages(tooDeep, prefix: "budget")
+    preconditionFailure("Deep AST must terminate within the host budget")
+} catch HostMarkdownProjection.Failure.budgetExceeded {}
+print("PASS: original293 nested list/quote/rule/task AST, stable leaves, continuation markers and explicit structure budgets")

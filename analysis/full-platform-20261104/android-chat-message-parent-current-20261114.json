@@ -1,0 +1,248 @@
+{
+  "module": "Android Chat/Work message SelectText and code-copy feedback",
+  "date": "2026-11-14",
+  "status": "implemented; r1 core passed; r2 meaningful selection established with first Back failure; r3 real-screen two-tap close/draft preservation confirmed",
+  "source_reports": [
+    "android-chat-message-parent-source-20261114.json",
+    "android-chat-message-copy-source-20261114.json"
+  ],
+  "source_binding": {
+    "validation_file": "android-chat-message-integration-20261114-evidence-validation.json",
+    "count": 37,
+    "all_match": true
+  },
+  "implementation_sources": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/ChatConversationPage.kt",
+      "sha256": "a8d67872245ee7e562e42a5067e52dcf213339777182d9fff09a1fd089439b9f"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/ChatMessageActions.kt",
+      "sha256": "4769c07f62aae217b0721d5699e4833081dddc71af6163d111a6fc87b45b4794"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/NativeCodeBlock.kt",
+      "sha256": "4d01abdeb81b9c642a0d8d38851b81df102a6b10125f7bf7e8947861144c2113"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/res/values/chat_message_ids.xml",
+      "sha256": "2c369cc4f7e1b40a7057c2f1f922fa57d7c39e82393326504e718cd5ac073a0b"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/androidTest/java/local/rea/chatgpt/ChatMessageTest.kt",
+      "sha256": "95c4265438dbfcb209d28b8d750d2fed3169cdfc945f0ebc8fb48483400dbdd0"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/test-chat-message.py",
+      "sha256": "cecb620237b01238ad7fad32e98b575f670d8dc2fbb607825aa08e4cc531fd5e"
+    }
+  ],
+  "apk_sha256": "4231170818d3e866abec2bfc4bd4d960a162907d3e0bce15889cb4019d21819e",
+  "implemented": [
+    "Separate SelectText route bound to account/profile/conversation/session/turn/request/attempt/subscription/revision/role and current capability; stale or replaced content rejected.",
+    "Native selectable TextView with local-only plain Markdown projection, Back/title; existing full-screen ResourceDialog used solely as independent platform window carrier.",
+    "Chat-only code-copy success checkmark/label after clipboard write succeeds; exact code including indentation/newline; 2 second reset scoped by identity/text/receipt.",
+    "Existing draft, transcript anchor and generation owner retained. No Remote state-owner reuse or mode identity restructuring."
+  ],
+  "source_vs_adapter": {
+    "select_text": "nj81 SelectText -> nf90/o0d0 -> d4d0/pnv -> same-conversation message resolution -> acs.H -> p2z0 TextSelectionScreen; native annotated selectable body and Back/title proven. Menu placement and plain conversion are independent.",
+    "copy": "sqi/cqi/pqi success-only copied state; lf9 2 second reset; a38/t540 original checkmark asset proven. Chat opts into shared code component; ordinary footer policy unchanged."
+  },
+  "runtime": [
+    {
+      "report": "android-chat-message-integration-20261114-oneplus-r1.json",
+      "duration_seconds": 12.207,
+      "status": "passed",
+      "covered": [
+        "identity and replacement contracts",
+        "plain conversion contracts",
+        "exact code clipboard plus success/reset",
+        "selection route and native nonempty range",
+        "Back preserved visible message bounds, saved anchor and draft"
+      ],
+      "limitation": "Native range was blank line; this result alone does not prove meaningful text selection."
+    },
+    {
+      "report": "android-chat-message-integration-20261114-oneplus-selection-r2.json",
+      "duration_seconds": 17.408,
+      "status": "failed-after-meaningful-selection",
+      "selected_fixture_substring": "回复",
+      "screenshot": "android-chat-message-integration-20261114-oneplus-selection-r2/meaningful-native-selection.png",
+      "failure": "Missing shell-draft after first toolbar Back; screenshot still selection page with highlight cleared",
+      "scope": "Test-only change; same product APK as r1. No repeat of whole journey."
+    }
+  ],
+  "builds": [
+    {
+      "log": "android-chat-message-integration-20261114-build.log",
+      "result": "failed: ScrollView.LayoutParams unresolved; fixed to FrameLayout.LayoutParams"
+    },
+    {
+      "log": "android-chat-message-integration-20261114-build-r2.log",
+      "result": "success 24 seconds"
+    },
+    {
+      "log": "android-chat-message-integration-20261114-build-test-r3.log",
+      "result": "success 11 seconds, test-only delta; product APK unchanged"
+    }
+  ],
+  "restoration": {
+    "frontend-preview.xml": {
+      "exists": true,
+      "sha256": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e"
+    },
+    "remote-list-preview.xml": {
+      "exists": true,
+      "sha256": "7269f82e69e91e645a70c3c305dd895ea135655802f85b33c0206699f8dc3b90"
+    },
+    "chat-preview.xml": {
+      "exists": false,
+      "sha256": null
+    },
+    "session-preview.xml": {
+      "exists": false,
+      "sha256": null
+    },
+    "installed_sha256": "4231170818d3e866abec2bfc4bd4d960a162907d3e0bce15889cb4019d21819e",
+    "built_sha256": "4231170818d3e866abec2bfc4bd4d960a162907d3e0bce15889cb4019d21819e",
+    "pid": "19929",
+    "activity": [
+      "topResumedActivity=ActivityRecord{66144932 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1470}",
+      "Intent { flg=0x10000000 cmp=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity }",
+      "mActivityComponent=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity",
+      "ResumedActivity: ActivityRecord{66144932 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1470}"
+    ],
+    "ordinary_preferences_unchanged": true,
+    "exists_method": "Exact filename membership from run-as ls; exec-out cat exit status alone is insufficient."
+  },
+  "remaining": [
+    "Meaningful native selection: first real toolbar screen tap clears highlight and leaves page, with clipboard overlay; second identical tap closes and preserves draft. Exact input recipient/overlay cause remains untraced; no product fix.",
+    "Original outer message menu trigger/placement and full role/capability eligibility producer remain unclosed; ellipsis and OfflineChatMessageCapabilities are explicit independent frontend policy.",
+    "acs.H annotated-text conversion is not fully recovered. Independent CommonMark plain projection omits original rich styling, list markers, link targets and exact paragraph typography.",
+    "Ordinary Completed/nonblank footer Copy gate and phase text remain previous host policy, not generalized from Remote.",
+    "No separate Work real-device pass. Shared page implementation does not establish a full two-mode matrix.",
+    "Strict full-turn revision invalidates open selection even when only assistant content advances on that turn; no role-specific immutable projection optimization.",
+    "No backend, attachments, service, performance, or original full visual parity claims."
+  ],
+  "historical_snapshots": [
+    "android-chat-message-integration-20261114-source-hashes-r1.json",
+    "android-chat-message-integration-20261114-test-r1.kt"
+  ],
+  "next_minimum": "No additional test now. If single-tap UX is required later, trace native selection floating-action overlay touch recipient before changing toolbar/owner.",
+  "return_failure_readonly_diagnosis": {
+    "test": "ChatMessageTest.kt:70 click(chat-selection-back); helper line23 UiObject2.click, not UiDevice.pressBack",
+    "product": "ChatMessageActions.kt:94 IconButton onClick=close; ChatConversationPage.kt:61 close sets selection=null",
+    "observation": "Node click followed by selection highlight cleared, page remained; lambda execution not established. Not evidence of system Back semantics or confirmed route defect."
+  },
+  "toolbar_followup": {
+    "kind": "bounded existing-installed-product toolbar diagnosis",
+    "build": false,
+    "product_changes": false,
+    "serial": "172.16.197.16:5555",
+    "profile": "test-chat-message-9bd15d44e0aa4fa494d1a1bb8df515bd",
+    "apk_sha256": "4231170818d3e866abec2bfc4bd4d960a162907d3e0bce15889cb4019d21819e",
+    "entry": [
+      {
+        "menu_bounds": "[283,1621][418,1756]",
+        "tap": [
+          350,
+          1688
+        ]
+      },
+      {
+        "select_bounds": "[283,1463][598,1598]",
+        "tap": [
+          440,
+          1530
+        ]
+      }
+    ],
+    "selection": {
+      "long_press": [
+        68,
+        334,
+        1000
+      ],
+      "visible_selected_text": "回复",
+      "evidence": "active.png"
+    },
+    "toolbar": {
+      "stable_AX_bounds": "[23,103][158,238]",
+      "shell_input_tap": [
+        90,
+        170
+      ],
+      "tap1": "Highlight cleared, selection page remained; screenshot has system clipboard preview displaying 回复.",
+      "tap2": "Same position: selection page gone; message title 消息阅读复核, draft 保留主草稿 remain."
+    },
+    "interpretation": "Two-tap close works on existing product. First tap issue also occurs with real shell screen input, so not limited to UiObject2.click. Native selection/floating action overlay consumption is possible; no event trace proves recipient or Copy action. Do not label normal system Back (none used) or confirmed owner route failure.",
+    "initial_capture": "First launch immediate uiautomator null root; second read after ready succeeded, no product retry.",
+    "restoration": {
+      "frontend-preview.xml": {
+        "exists": true,
+        "sha256": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e"
+      },
+      "remote-list-preview.xml": {
+        "exists": true,
+        "sha256": "7269f82e69e91e645a70c3c305dd895ea135655802f85b33c0206699f8dc3b90"
+      },
+      "chat-preview.xml": {
+        "exists": false,
+        "sha256": null
+      },
+      "session-preview.xml": {
+        "exists": false,
+        "sha256": null
+      },
+      "installed_sha256": "4231170818d3e866abec2bfc4bd4d960a162907d3e0bce15889cb4019d21819e",
+      "built_sha256": "4231170818d3e866abec2bfc4bd4d960a162907d3e0bce15889cb4019d21819e",
+      "pid": "19929",
+      "activity": [
+        "topResumedActivity=ActivityRecord{66144932 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1470}",
+        "Intent { flg=0x10000000 cmp=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity }",
+        "mActivityComponent=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity",
+        "ResumedActivity: ActivityRecord{66144932 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1470}"
+      ],
+      "ordinary_preferences_unchanged": true,
+      "exists_method": "Exact filename membership from run-as ls; exec-out cat exit status alone is insufficient."
+    },
+    "artifacts": [
+      {
+        "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/active.png",
+        "sha256": "78bdb3caf31c02c71fcf3903aa19c6d5bd21bcb994293c3eb3ea76c3d69b461d"
+      },
+      {
+        "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/active.xml",
+        "sha256": "f5d82ab2b88855001ee1e3c6f81661803d20a0948b3dfd1b5382e4d3f621a331"
+      },
+      {
+        "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/menu.xml",
+        "sha256": "d26e2857ac7e944190f80512a034f86f9be17e21d409ef822315c0cb0a80ee75"
+      },
+      {
+        "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/selection.xml",
+        "sha256": "19a330d19e47e6122587fd17346642ee4f18c43a36010728e03f492e35a08ab4"
+      },
+      {
+        "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/start.xml",
+        "sha256": "a9b5ab7d0766b8531a686f6cdfb2ac8c1f5d4ab76726f5e21b07add165086813"
+      },
+      {
+        "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/tap1.png",
+        "sha256": "7397d3aa69cb5c62c238384c167f22e2bb9cdbe1cd5df6c1e528305c87e80c27"
+      },
+      {
+        "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/tap1.xml",
+        "sha256": "f5d82ab2b88855001ee1e3c6f81661803d20a0948b3dfd1b5382e4d3f621a331"
+      },
+      {
+        "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/tap2.png",
+        "sha256": "1a8ced820180f25701cc3411a6ac763dd7a475e5175005903f428dc9ddebc3da"
+      },
+      {
+        "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/tap2.xml",
+        "sha256": "a9b5ab7d0766b8531a686f6cdfb2ac8c1f5d4ab76726f5e21b07add165086813"
+      }
+    ]
+  }
+}

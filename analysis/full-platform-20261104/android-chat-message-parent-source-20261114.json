@@ -1,0 +1,265 @@
+{
+  "scope": "One bounded ordinary Chat/Work message parent→menu→SelectText route candidate, Android293. No Remote gate transfer, mode owner trace, build/device/product/shared edits.",
+  "observed": [
+    "Ordinary parent k3r passes rich per-message state/actions to shared renderer; menu consumer ooc0→nj81 is distinct from Remote.",
+    "Copy is represented by allowed-action Set membership at ordinary menu consumer. SelectText has Set membership plus an additional suppression flag. Neither recovered consumer is equivalent to Completed && bodyNonempty.",
+    "SelectText transports ordinary selected message identity through o0d0 to pnv(scope id,messageId), then a dedicated screen resolves current message content and converts it to annotated selectable text.",
+    "Selection screen shows standard BackButton and Select text title; native selection wrapper and text renderer, no custom action toolbar established."
+  ],
+  "core_recommendation": "Add an independently capability-driven ordinary message menu with Select text leading to a separate full-text native selection page. Bind route to conversation scope and message identity; preserve ordinary role/action policy separately from Remote.",
+  "implementation_boundary": [
+    "Outer actual opening gesture (longpress vs More) is unclosed; label any chosen host menu entry as independent.",
+    "Original role-specific allowed-action producer and suppression flag meaning are unclosed. Use explicit adapter allowedActions; do not imply all user/assistant/streaming rows qualify.",
+    "Annotated text is produced by acs.H, not raw Markdown replay. A local plain-text conversion is independent unless its semantic conversion is separately matched.",
+    "Current always-visible lifecycle text has no positive support from this candidate; this is not an exhaustive proof of official absence. Avoid claiming all statuses should be removed from every state.",
+    "No original ordinary bottom-footer Copy completion gate recovered; menu Copy evidence must not be conflated with footer actions."
+  ],
+  "stop_boundary": "Actual menu open gesture owner and acs.H full text conversion are concrete unclosed calls; stop without widening to role/action producer graph.",
+  "unknown": [
+    "Complete ordinary User/assistant parent geometry and status visibility gates.",
+    "Full action eligibility by content type, role, completion, streaming and refusal.",
+    "Snapshot vs live conversion behavior under message edits/deletion; exact restore/back retention."
+  ],
+  "sources": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/k3r.java",
+      "sha256": "f963b8d87d27d5b7d4c11df364ca601f41d5008b658cd03605565d72813abf81",
+      "lines": [
+        2083,
+        2083
+      ],
+      "claim": "Ordinary message parent calls shared sm5.E with state/capability/action arguments.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ooc0.java",
+      "sha256": "37a630878f3ee7ab8b57c946db24289cde7c7259a029665985bfd15d8402ea5f",
+      "lines": [
+        3321,
+        3321
+      ],
+      "claim": "Shared message consumer calls ordinary nj81 menu.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/zcc0.java",
+      "sha256": "eedbed7fd2ecd1a01ad3b83e041e7163d26b82b896329c7ef83a39ca32361418",
+      "lines": [
+        25,
+        42
+      ],
+      "claim": "Typed Copy SelectText and other menu actions.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/nj81.java",
+      "sha256": "abd57fc23e37ff9d5296f5ed5bf0f7fb0addf70cb9de09d12d24a7ebd48bf8eb",
+      "lines": [
+        540,
+        560
+      ],
+      "claim": "Copy menu checks supplied allowed-action Set; not a locally hardcoded Completed && nonempty test.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/nj81.java",
+      "sha256": "abd57fc23e37ff9d5296f5ed5bf0f7fb0addf70cb9de09d12d24a7ebd48bf8eb",
+      "lines": [
+        598,
+        607
+      ],
+      "claim": "SelectText checks action membership and additional suppression flag.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/nj81.java",
+      "sha256": "abd57fc23e37ff9d5296f5ed5bf0f7fb0addf70cb9de09d12d24a7ebd48bf8eb",
+      "lines": [
+        1028,
+        1030
+      ],
+      "claim": "Menu is rendered with rgq0.k and supplied njm0 state.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/nf90.java",
+      "sha256": "0ea217dd954ccf292bdd5026a18b4d6b619adecfa4d4b07ac9f6455b2b71a22c",
+      "lines": [
+        99,
+        102
+      ],
+      "claim": "SelectText creates o0d0(xuq.h()).",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/d4d0.java",
+      "sha256": "13937c3c71f5a70ab27ad767661702a5a10dcc3105e6d048ce0831edbb3938b5",
+      "lines": [
+        1170,
+        1182
+      ],
+      "claim": "Copy separate event; SelectText dispatches pnv scoped id+messageId navigation.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/pnv.java",
+      "sha256": "cc9a0989edd404407ab4eadb291e6d45cf8c213e2353747ac3634705b9cf3805",
+      "lines": [
+        22,
+        29
+      ],
+      "claim": "Text Selection route name and owner key.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/nnv.java",
+      "sha256": "2f0c1fbd94c069f9c3c7b3fc3bb6aeed0aca766a9f8a90d931e6da9f17572c21",
+      "lines": [
+        19,
+        22
+      ],
+      "claim": "Route serializer has id and messageId.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/z191.java",
+      "sha256": "56e25bcd64a37b836f4f883c78e059131e024a9cb9398326bc2e10de8e135cd1",
+      "lines": [
+        574,
+        578
+      ],
+      "claim": "Selection viewmodel initialized with messageId, observes conversation content.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/itp0.java",
+      "sha256": "ac496e63636e08d75afaf871dcdbbab6ccd1777bb4f85e41c92cb08b8f8e7c7b",
+      "lines": [
+        118,
+        160
+      ],
+      "claim": "Find containing xuq by messageId, invoke acs.H; store resulting oz2 text.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/p2z0.java",
+      "sha256": "77b2f374fb335b6b0551c38cd5a2373c28df2b623da24439ac18985001e09141",
+      "lines": [
+        47,
+        53
+      ],
+      "claim": "TextSelectionScreen scaffold with selection state.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/b930.java",
+      "sha256": "43983f9d5ca487694875a46f2a860946bce15953d2cb7e7726247900eb596bac",
+      "lines": [
+        400,
+        421
+      ],
+      "claim": "Native selection wrapper os71.e; horizontal24dp and bottom64dp plus inherited insets.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ag1.java",
+      "sha256": "5cebff111dce1c847b2c86c290b2ce4fa61736d17e9d770ecc78d8abcf0fb406",
+      "lines": [
+        407,
+        438
+      ],
+      "claim": "Annotated text oz2 through c8r0.b; tab annotations retained; not shared Markdown renderer.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/kdq.java",
+      "sha256": "e836e2d35546f5c334c9c70db387d344fb1e7ace7efbdeb939df288d5bf503c7",
+      "lines": [
+        34,
+        42
+      ],
+      "claim": "Toolbar slots.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/h2b0.java",
+      "sha256": "db3bc60394709a8c53850017c0f12d842f6f75f7abe9e111a122a90f10698ad3",
+      "lines": [
+        27,
+        29
+      ],
+      "claim": "Toolbar slot constants.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/qqn.java",
+      "sha256": "a385860cc3b950ac7bd87e5307cbfaed937ea3e8737a022ae82980b0bf58e9fe",
+      "lines": [
+        285,
+        294
+      ],
+      "claim": "Toolbar BackButton.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/xqn.java",
+      "sha256": "ac8b791917984c2e20dc07ba7aaaf885e622d53d433c4a0d8adc5f90f0e1aa3b",
+      "lines": [
+        206,
+        220
+      ],
+      "claim": "Select text toolbar title.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ms81.java",
+      "sha256": "37b076875bbd86fcac8dde3ebd013a017db9f7cb15b1e1756872341b4e90ed01",
+      "lines": [
+        23,
+        32
+      ],
+      "claim": "BackButton default navigation callback.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/acs.java",
+      "sha256": "fcade307ce153c07be08df731be0d696bdd88e7c79388cd7ccd1e6e24cf47aa7",
+      "lines": [
+        259,
+        278
+      ],
+      "claim": "Text conversion boundary, full semantic conversion not investigated.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes5/qnc0.smali",
+      "sha256": "6a6769639d9add81eb6c377aac6fb50e4e052746948ea5a1c391790acf7a0225",
+      "lines": [
+        964,
+        999
+      ],
+      "claim": "SelectText Set membership and suppression flag gate; typed callback construction.",
+      "kind": "smali"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes6/nf90.smali",
+      "sha256": "15ac0a87786228319e4e98f45e78e47f52375af4c3e962ec0a5cd98a82825b30",
+      "lines": [
+        1536,
+        1548
+      ],
+      "claim": "o0d0 from ycc0 construction.",
+      "kind": "smali"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali/d4d0.smali",
+      "sha256": "9baae9958133d0fa5b4bcb3f09593ca5eaacaa7cf8bef45efc36fa9e42e56ac7",
+      "lines": [
+        8042,
+        8081
+      ],
+      "claim": "Typed event→pnv owner/message identity route.",
+      "kind": "smali"
+    }
+  ]
+}

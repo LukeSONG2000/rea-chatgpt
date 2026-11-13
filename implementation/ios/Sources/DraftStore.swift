@@ -182,10 +182,101 @@ final class DraftStore {
     }
 }
 
+// Source AST ancestry is retained when projecting nested blocks into the
+// collection's flat leaf rows. Geometry belongs to the independent UIKit host.
+enum NativeMarkdownContainer: Hashable {
+    case quote
+    case listItem(marker: String?, column: String, checked: Bool?, start: Int?)
+}
+
 struct HostMessage: Hashable {
-    enum Content: Hashable { case rich([NativeInline], heading: Bool), text(String), heading(String), code(String), reasoning(String), unsupported(String), table(NativeTableModel) }
+    enum Content: Hashable { case rich([NativeInline], heading: Bool), text(String), heading(String), code(String), reasoning(String), unsupported(String), table(NativeTableModel), rule }
     let id: String
     let content: Content
+    var containers: [NativeMarkdownContainer] = []
+    var rendererKind: String {
+        let leaf: String
+        switch content {
+        case .table: leaf = "table"
+        case .rule: leaf = "rule"
+        default: leaf = "text"
+        }
+        return leaf + (containers.isEmpty ? "" : "-nested")
+    }
+}
+
+//293 Markdown.parse emits quote.blocks, list.items[].blocks/marker/checked,
+//ordered/start and rule. This adapter consumes that actual AST, without claiming
+//the original OAIMarkdown native renderer or service message schema.
+enum HostMarkdownProjection {
+    enum Failure: Error { case invalidStructure, budgetExceeded }
+    static func messages(_ blocks: [[String: Any]], prefix: String) throws -> [HostMessage] {
+        var budget = 4096
+        func project(_ blocks: [[String: Any]], path: String,
+                     containers: [NativeMarkdownContainer]) throws -> [HostMessage] {
+            guard containers.count <= 32 else { throw Failure.budgetExceeded }
+            var result: [HostMessage] = []
+            for (index, block) in blocks.enumerated() {
+                budget -= 1
+                guard budget >= 0 else { throw Failure.budgetExceeded }
+                let id = "\(path)-block-\(index)"
+                guard let kind = block["kind"] as? String else { throw Failure.invalidStructure }
+                let content: HostMessage.Content
+                switch kind {
+                case "quote":
+                    guard let children = block["blocks"] as? [[String: Any]] else { throw Failure.invalidStructure }
+                    result += try project(children, path: id + "-quote", containers: containers + [.quote])
+                    continue
+                case "list":
+                    guard let items = block["items"] as? [[String: Any]],
+                          let ordered = block["ordered"] as? Bool else { throw Failure.invalidStructure }
+                    let start = block["start"] as? Int
+                    guard !ordered || start != nil else { throw Failure.invalidStructure }
+                    let markers = try items.map { item -> String in
+                        guard let marker = item["marker"] as? String else { throw Failure.invalidStructure }
+                        return marker
+                    }
+                    //All sibling markers share a column; native font measurement
+                    //resolves its width rather than assuming one-digit counters.
+                    let column = markers.max(by: { $0.count < $1.count }) ?? ""
+                    for (itemIndex, item) in items.enumerated() {
+                        budget -= 1
+                        guard budget >= 0 else { throw Failure.budgetExceeded }
+                        guard let children = item["blocks"] as? [[String: Any]] else { throw Failure.invalidStructure }
+                        let ancestry = containers + [.listItem(marker: markers[itemIndex], column: column,
+                            checked: item["checked"] as? Bool, start: start)]
+                        var leaves = try project(children, path: id + "-item-\(itemIndex)", containers: ancestry)
+                        if leaves.isEmpty {
+                            leaves = [HostMessage(id: id + "-item-\(itemIndex)-empty", content: .text(""), containers: ancestry)]
+                        }
+                        //Only the first leaf owns this item's marker. Following
+                        //paragraphs and nested code/tables retain the same indent.
+                        for offset in leaves.indices.dropFirst() {
+                            leaves[offset].containers[containers.count] = .listItem(marker: nil,
+                                column: column, checked: nil, start: start)
+                        }
+                        result += leaves
+                    }
+                    continue
+                case "paragraph", "heading":
+                    guard let spans = block["inlines"] as? [[String: Any]] else { throw Failure.invalidStructure }
+                    content = .rich(try spans.map { try NativeInline(ast: $0) }, heading: kind == "heading")
+                case "code":
+                    guard let text = block["text"] as? String else { throw Failure.invalidStructure }
+                    content = .code(text)
+                case "table":
+                    guard let table = block["table"] as? [String: Any] else { throw Failure.invalidStructure }
+                    content = .table(try NativeTableModel(ast: table))
+                case "rule": content = .rule
+                default:
+                    content = .unsupported("原始解析器已识别 \(kind)，原生渲染尚未接线")
+                }
+                result.append(HostMessage(id: id, content: content, containers: containers))
+            }
+            return result
+        }
+        return try project(blocks, path: prefix, containers: [])
+    }
 }
 
 // Independent row projection: list identity is separate from mutable block values.

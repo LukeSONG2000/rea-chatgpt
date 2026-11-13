@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "iOS293 Remote composer floating presenters: effective theme/MessageInputStyle/material/card ancestry. Read-only evidence and host review, no product/build/device/Git changes.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "candidate_groups": [
+    {
+      "id": 1,
+      "question": "ordinary Remote injected style to slider effective rail color",
+      "starting_consumers": [
+        "0x609d6d0",
+        "0x199a60c",
+        "0x60a03b0"
+      ],
+      "followups": [
+        "0x6081f4c..0x6082134",
+        "0x610eff0",
+        "0x460e68"
+      ],
+      "stop": "Effective rail color precedence, ordinary VM optional tint and theme-to-primary-color are proved. Do not scan arbitrary theme/material writers."
+    },
+    {
+      "id": 2,
+      "question": "Name exact palette input and separate proven presenter boundaries",
+      "starting_consumers": [
+        "0x6112f20",
+        "0x74e45bc",
+        "0x74f0420"
+      ],
+      "followups": [
+        "ThemeColorPalette descriptor0x974f308",
+        "MessageInputPrimaryButtonPartStyle descriptor0x96cab04"
+      ],
+      "stop": "Palette.accent name and alternate AppForeground token established; reuse existing custom presentation and ordinary sheet proofs. Effective backgroundMaterial assignment remains unknown."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "RC17-01",
+      "conclusion": "Ordinary CodexScreen ThreadView and NewThreadScreen explicitly inject MessageInputStyle built by2de24c; ordinary composer forwards its effective style. This is a proved selected-parent assignment, not the standalone default.",
+      "source": [
+        "0x3040ac→0x1a0e63c",
+        "0x3040c0→0x2de24c",
+        "0x30410c→0x6081e84",
+        "records0x7cf6550/0x7cf6548",
+        "0x197fe90..0x197fec8"
+      ],
+      "limits": "Other embeddings and all intermediate environment writers are not exhaustively closed."
+    },
+    {
+      "id": "RC17-02",
+      "conclusion": "Slider fill609d6d0 reads effective MessageInputStyle.modelSlider.railColor first, then VM.tintColor, then effective MessageInputStyle.primaryButton.primaryColor.",
+      "source": [
+        "0x609d734..0x609d74c: style metadata+0x84, nested+0x20; nonnil return",
+        "0x609d750..0x609d760: VM+0x70 optional tint",
+        "0x609d764..0x609d774: resolve same environment, metadata+0xa8 primaryButton;460e68 loads first part field",
+        "MessageInputStyle descriptor0x96cb3e0: field29modelSlider/field38primaryButton; metadata vector starts2 pointer words=0x10",
+        "MessageInputPrimaryButtonPartStyle descriptor0x96cab04 field0primaryColor record0x9b95f54"
+      ],
+      "limits": "Exact active modelSlider.railColor override from Remote base/default not newly closed; do not claim nil for every caller."
+    },
+    {
+      "id": "RC17-03",
+      "conclusion": "The original ordinary model-slider constructor supplies nil VM.tintColor. This differs from saying every slider caller has nil tint.",
+      "source": [
+        "0x199a79c zeroq0",
+        "0x199a7ac stp q0,q0,[callerSP] zeroes0..0x1f",
+        "0x60a03f4 loads calleeFP+0x20=callerSP+0x10 into q0",
+        "0x60a03f8 preserves q0",
+        "0x60a04b8..0x60a04bc copies these two words to VM+0x68/+0x70"
+      ],
+      "limits": "No later dynamic VM.tintColor writer is excluded by this bounded constructor proof. Shared optional modelSliderHeader is separately nil; do not conflate its slots with tint."
+    },
+    {
+      "id": "RC17-04",
+      "conclusion": "For the selected ordinary builder, raw0/raw11 preserve Remote base. Other theme values call6081f4c(theme,false,false,flag). With that false second argument, the transform keeps original theme identity and writes its ThemeColorPalette.accent into primaryButton.primaryColor. It does not directly write modelSlider.railColor in this bounded body.",
+      "source": [
+        "0x2de24c captured theme31fe6c; priorv522",
+        "0x6081fc8 tbz false→6081fd8 bypasses74e47c8 theme substitution",
+        "0x6081fd8→0x6112f20→0x74e45bc returns palette atFP-0xe8",
+        "0x6081ffc loads FP-0xe0 =palette+8 =accent",
+        "0x6082018..0x608202c: metadata+0xa8 primaryButton, store accent atpart+0",
+        "ThemeColorPalette descriptor0x974f308 fields picker/accent/onAccent/background/onBackground"
+      ],
+      "resource_binding": "Reuse v566 palette map: e.g. green theme accent is ChatGPT/accent/mint/background-emphasis, not picker primary. Do not choose a screenshot green or generic blue.",
+      "limits": "Active account theme/default provider and runtime feature flags remain outside this slice. Standalone defaults cannot replace actual parent inputs."
+    },
+    {
+      "id": "RC17-05",
+      "conclusion": "Original attachment custom presentation is ElevatedPresentationImplementation with sourceID message_input_attachments, native ElevatedPresentationWindow/root controller and anchored custom content. It is not merely the source capsule copied into an arbitrary sheet.",
+      "source": [
+        "0x1984d1c..0x1984d44",
+        "0x62e4e1c..0x62e4ebc",
+        "0x62e34e0/0x62ea4b4",
+        "0x62e3d38→0x62ded3c",
+        "0x62d1b28..0x62d1cbc"
+      ],
+      "parameters": {
+        "sourceID": "message_input_attachments",
+        "allowsInteractiveDismissal": true,
+        "initialLayout": null,
+        "targetCornerRadius": 46,
+        "glassStyleRaw": 0,
+        "glassInteractive": true,
+        "fallbackBlurStyleRaw": 10
+      },
+      "limits": "OS/config77107f8 glass gate applies. Native custom presentation does not itself prove SwiftUI backgroundMaterial nonnil."
+    },
+    {
+      "id": "RC17-06",
+      "conclusion": "Attachment icon background actually consumes backgroundMaterial and colorScheme, while slider rail has explicit regular untinted noninteractive glass with semantic fallback. These are distinct material consumers.",
+      "source": [
+        "0x6f44154,0x6f4419c..0x6f4426c",
+        "0x609bdd0,0x609bf68,0x609bfd0..0x609c070",
+        "0x756dc4c tint(nil),0x756dc5c interactive(false)"
+      ],
+      "parameters": {
+        "attachment_iOS26_material_nil": {
+          "foreground": "OneOff/AppForeground",
+          "opacity": 0.02,
+          "blend": "normal"
+        },
+        "attachment_iOS26_material_present_light": {
+          "opacity": 0.04,
+          "blend": "plusDarker"
+        },
+        "attachment_iOS26_material_present_dark": {
+          "opacity": 0.07,
+          "blend": "plusLighter"
+        },
+        "slider_rail": {
+          "shape": "Capsule",
+          "fill": "Color.clear",
+          "glass": "regular",
+          "tint": null,
+          "interactive": false,
+          "fallback": "ChatGPT/bg/primary"
+        }
+      },
+      "limits": "Effective attachment-host backgroundMaterial assignment remains unclosed; do not inject a guessed material to force a screenshot branch."
+    },
+    {
+      "id": "RC17-07",
+      "conclusion": "Permission card and advanced configuration use their own actual semantic styles, not a blanket MessageInputStyle/card appearance injected everywhere.",
+      "source": [
+        "Permission195d708/195deb8/195fe20/195e0f4;195da04..195da60",
+        "Advanced19983a0/19983e8/1998434 sharedSettingsLabel/Toggle/LabeledContentStyle",
+        "ApprovalCard1a2ae74..1a2aee0 specifically consumesMessageInputStyle.maxWidth"
+      ],
+      "parameters": {
+        "permission_group": "ChatGPT/text/primary opacity0.03 RoundedRectangle28",
+        "permission_warning": "ChatGPT/text/status/warning",
+        "permission_divider": "ChatGPT/border/light",
+        "advanced": "Native grouped Form/Settings style owners"
+      },
+      "limits": "Ordinary taskBottomBars maxWidth728 assignment is ApprovalCard evidence, not proof all independent sheets need that card environment."
+    }
+  ],
+  "current_host_comparison": [
+    {
+      "finding": "Attachment and slider presenters already copy sourceWindow.overrideUserInterfaceStyle. PreviewAppearance.applyToWindows updates all active scene windows. A missing global light/dark forwarding claim is unsupported.",
+      "sources": [
+        "RecoveredRemoteAttachmentMenu.swift136",
+        "RecoveredRemoteModelSlider.swift181",
+        "AppDelegate.swift102..106"
+      ]
+    },
+    {
+      "finding": "Both independent UIHostingController roots are reconstructed outside the originating SwiftUI tree and do not explicitly receive source MessageInputStyle/rail color/theme presentation inputs. Current slider rail fixed OneOff/AppForeground ignores source-proved parameter precedence. Capture explicit effective inputs at caller; do not attempt to transplant an unknown complete environment.",
+      "sources": [
+        "RecoveredRemoteAttachmentMenu.swift189",
+        "RecoveredRemoteModelSlider.swift186,465"
+      ]
+    },
+    {
+      "finding": "Permission and advanced config are ordinary SwiftUI.sheet descendants, unlike independent overlay windows. Existing semantic resource colors and native sheets should be retained; no blanket UIKit-window wrapper is needed.",
+      "sources": [
+        "RemotePermissionPicker.swift sheet",
+        "NativeConversationHost.swift advanced sheet",
+        "RemoteAdvancedConfiguration.swift249..340"
+      ]
+    },
+    {
+      "finding": "Current attachment material resolver already distinguishes nil/present backgroundMaterial and colorScheme. Do not force present merely because UIKit surface uses UIGlassEffect.",
+      "sources": [
+        "RecoveredRemoteAttachmentMenu.swift60..76"
+      ]
+    },
+    {
+      "finding": "Current ApprovalCard appearance is injected on taskBottomBars only, consistent with source-scoped maxWidth. Do not generalize to permission/model sheets.",
+      "sources": [
+        "NativeConversationHost.swift9734"
+      ]
+    }
+  ],
+  "safe_product_decision": {
+    "implementable": "Introduce explicit slider appearance inputs representing modelSlider.railColor override, optional VM tint, and effective primaryButton.primaryColor fallback. Supply ordinary theme-resolved primary color from its parent with the exact source precedence. Reuse current semantic palette/current theme owner rather than fixed AppForeground. Pass the same computed input to the new hosting root; retain dynamic UIColor/SwiftUI Color trait behavior.",
+    "preserve": "Existing UIWindow interfaceStyle forwarding, active-window appearance refresh, slider untinted regular glass and semantic fallback; native permission/advanced sheet presentation and scoped ApprovalCard maxWidth.",
+    "not_source_recovered": "Any complete SwiftUI environment snapshot, new blanket theme wrapper, explicit nonnil attachment backgroundMaterial, global card-width injection, or guessed screenshot-derived green/blue. These are not justified."
+  },
+  "unknowns": [
+    "Actual effective railColor override in selected Remote base/default style, beyond its presence consumer.",
+    "Official custom host specific forwarding of backgroundMaterial/theme environment values remains unclosed.",
+    "Full original UIKit/SwiftUI bridge trait propagation and mid-presentation dynamic update lifecycle are not runtime-verified.",
+    "Runtime theme/feature flag providers and alternate embeddings.",
+    "Private glass/mask optical equivalence and keyboard substitution lifecycle remain prior scoped unknowns; not retraced here."
+  ],
+  "haptics": {
+    "new_proved_caller": false,
+    "decision": "No new haptic changes from theme review. Retain earlier slider selection/boundary findings and shared General gate only."
+  },
+  "validation": {
+    "official_app_executed": false,
+    "network_services_accessed": false,
+    "product_modified": false,
+    "build_or_device_test": false,
+    "method": "Existing bounded static evidence reuse plus two scoped producer/metadata followup groups and read-only host snapshots."
+  },
+  "reused_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v522-thread-style-findings.json",
+      "sha256": "1acefeba1c13595e9ee1030e5fdf792ced0eca181a793f5569478cd2df4e2188"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-findings.json",
+      "sha256": "e8873a0aa39dffa88e65f0f9bcb860a4ce6d4095391d36fa8fb8e3cf524eb438"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-findings.json",
+      "sha256": "3a3b0dc21bce770feaa30193896eb865ec18c0515a7eb0ba30a94730a14b122b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-material-findings.json",
+      "sha256": "44b5609f18b17374ef806a83a21d16fcde17a56b0dd5c6b38795078de32dc5d4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v514-attachment-presentation-findings.json",
+      "sha256": "a77168bf4240f41825bef2b3c2dc0332ad7d79c3769e9dfb3598f58079c4b191"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v515-attachment-icon-background-findings.json",
+      "sha256": "8e1c347ac0cf0023580bfc335ade7d9d81c50c68771d6484d72be26d3ac43aea"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v524-permission-style-findings.json",
+      "sha256": "5c3bfd7c0051421b6595a682d126e610da85aa1bc6b443493c84042e21561236"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v526-advanced-settings-style-findings.json",
+      "sha256": "79ad537afd4b99c4b8c425ccf32b4d0cc0b3aecb0b521afe6fc4e099540d7633"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-approval-third-20261113-findings.json",
+      "sha256": "5a866d8972bcd065f05fda2c2d557ef44f1cd36cf8028ae663d44fd3b9176db6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v566-palette-map.json",
+      "sha256": "b73d4eedb17986e326ed8f4ea371dce0a49c19f0f360048831a8e413569512e7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v528-slider-style-fill-color.asm",
+      "sha256": "f60a60ce41ea76fe3921fe0c9fe3054bcf938821a942457c910ea44ecfa6f7bf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ordinary-create.asm",
+      "sha256": "ed47a1b24b61771edf485d260dc9d2a29cadcb23f0a18b30b55a382411cb4921"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-vm-constructor.asm",
+      "sha256": "8dab29b06584d7c718a3d630d06fe72c5f79143afae88fbc7f0cec10d437326c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-v529-slider-header-ctor-args-helper.asm",
+      "sha256": "3643305d994ab08d2f7d34c62f7f80fbce272b3cff3b56e86b2978e855881911"
+    }
+  ],
+  "new_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/host-source-snapshot.json",
+      "sha256": "56610c2c3859e954e006363e37c41482b42df69bbac9cc742f35c36cace2bbcf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/message-input-style-metadata.json",
+      "sha256": "748cd026f8d91bd7785422386301fa1f053d276f3bae1a8be4b33c73d2193159"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/message-input-theme-transform.asm",
+      "sha256": "c3c5c739a8aae509e703115f33499b2d7b9e2af9bd452385b453c19decc01544"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/primary-button-fields.json",
+      "sha256": "5fd0489d596a55b4d88a77cd614387e3196504ddaae5f5630a4acbfc85c5ed2b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/rail-fallback-tail.asm",
+      "sha256": "f277517e47ae826c9f63346b2e1d3c9182884c7a0dcdccad2528a8e257dcb214"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/rail-primary-button-fallback.asm",
+      "sha256": "eb50f8c583bd6d6e5a9fcaec702e897eaeb11870babe9526ed186dba30c89c1e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/style-metadata-helper.asm",
+      "sha256": "2e63e21eed3e05dfa845650856096a1eb448cc557015bb9769483dc9bf9e7270"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/theme-alternate-primary-resource.asm",
+      "sha256": "b4a2eb93a6ab07386c016741e3257df36cbf5fac48d2429a8df932087a9ca023"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/theme-palette-helper.asm",
+      "sha256": "dda3e6963793de1c048d85909271a8f85e638897c1f91d174ad4e8c72a85ff5c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/theme-palette-metadata.json",
+      "sha256": "7d0052dc014398f82013b12e8ea805196ad1e90a1659a3f0e67ed1dd432af55e"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-composer-theme-seventeenth-20261114-raw/theme-resource.json",
+      "sha256": "907f40fe640b462eed4687ef1b586c96ba30d40026042aaac776706dcef2c139"
+    }
+  ]
+}

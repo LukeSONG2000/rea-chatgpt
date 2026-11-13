@@ -42,6 +42,16 @@ enum PreviewAccent: String, CaseIterable {
         return "ChatGPT/accent/\(self == .default ? "blue" : paletteName)/text-on-emphasis"
     }
 
+    //293 MessageInputStyle theme transform6081f4c keeps the base for raw0/11;
+    //other known settings use ThemeColorPalette.accent, not its picker swatch.
+    //This is the effective primary-color input to the slider fallback. Custom
+    //primary-button icon-color semantics remain a separate unresolved consumer.
+    var remoteSliderPrimaryColorAsset: String? {
+        guard self != .default else { return nil }
+        if self == .black { return "ChatGPT/theme/black/default" }
+        return "ChatGPT/accent/\(paletteName)/background-emphasis"
+    }
+
     // Host labels pending the original selector localization consumer.
     var title: String {
         switch self {
@@ -169,7 +179,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let service: () -> (any ChatMessageService)? = { HostLaunchRuntime.arguments.contains("--offline-fixture")
             ? FixtureChatService(interval: HostLaunchRuntime.arguments.contains("--fixture-slow") ? 1_000_000_000 : 180_000_000,
                                  failFirstRequest: HostLaunchRuntime.arguments.contains("--chat-failure-fixture"),
-                                 chunks: HostLaunchRuntime.arguments.contains("--chat-browser-long-fixture") ? [
+                                 chunks: HostLaunchRuntime.arguments.contains("--chat-structure-fixture") ? [
+                                    "3. **有序一**\n4. 有序二\n   - 内层 `行内代码`\n\n",
+                                    "> 引用 **粗体**\n>\n> - 引用列表\n\n---\n\n",
+                                    "- [x] 已完成项目\n- [ ] 只读项目\n\n",
+                                    "```swift\nlet nested = true\n```\n\n结构结尾"
+                                 ] : HostLaunchRuntime.arguments.contains("--chat-browser-long-fixture") ? [
                                     (0..<24).map { index in
                                         "[" + visualText("本地网页", "Local page") + " \(index)](https://example.invalid/preview)\n\n"
                                         + visualText("这是合成阅读段落，用于验证打开预览后的阅读位置和草稿恢复。", "Synthetic reading paragraph for browser return, reading position and draft recovery.")

@@ -1,0 +1,253 @@
+{
+  "parser_sha256": "df321c0d4ab9151ccaae57cbe6f161158c184d3c429b0fc119f8ce6eab68c88b",
+  "network": false,
+  "native_bridge": false,
+  "samples": {
+    "list": {
+      "input": "3. first **bold**\n4. second\n   - child `code`\n\n- unordered",
+      "ast": [
+        {
+          "kind": "list",
+          "text": "",
+          "level": 0,
+          "inlines": [],
+          "items": [
+            {
+              "marker": "3.",
+              "blocks": [
+                {
+                  "kind": "paragraph",
+                  "text": "first **bold**",
+                  "level": 0,
+                  "inlines": [
+                    {
+                      "text": "first ",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    },
+                    {
+                      "text": "bold",
+                      "bold": true,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "marker": "4.",
+              "blocks": [
+                {
+                  "kind": "paragraph",
+                  "text": "second",
+                  "level": 0,
+                  "inlines": [
+                    {
+                      "text": "second",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                },
+                {
+                  "kind": "list",
+                  "text": "",
+                  "level": 0,
+                  "inlines": [],
+                  "items": [
+                    {
+                      "marker": "-",
+                      "blocks": [
+                        {
+                          "kind": "paragraph",
+                          "text": "child `code`",
+                          "level": 0,
+                          "inlines": [
+                            {
+                              "text": "child ",
+                              "bold": false,
+                              "italic": false,
+                              "code": false,
+                              "link": false
+                            },
+                            {
+                              "foldParagraphLineBreaks": true,
+                              "bold": false,
+                              "italic": false,
+                              "code": true,
+                              "link": false,
+                              "text": "code"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "ordered": false
+                }
+              ]
+            }
+          ],
+          "ordered": true,
+          "start": 3
+        },
+        {
+          "kind": "list",
+          "text": "",
+          "level": 0,
+          "inlines": [],
+          "items": [
+            {
+              "marker": "-",
+              "blocks": [
+                {
+                  "kind": "paragraph",
+                  "text": "unordered",
+                  "level": 0,
+                  "inlines": [
+                    {
+                      "text": "unordered",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "ordered": false
+        }
+      ]
+    },
+    "quote": {
+      "input": "> quote **bold**\n>\n> - nested\n\n---",
+      "ast": [
+        {
+          "kind": "quote",
+          "text": "quote **bold**\n\n- nested",
+          "level": 0,
+          "inlines": [],
+          "blocks": [
+            {
+              "kind": "paragraph",
+              "text": "quote **bold**",
+              "level": 0,
+              "inlines": [
+                {
+                  "text": "quote ",
+                  "bold": false,
+                  "italic": false,
+                  "code": false,
+                  "link": false
+                },
+                {
+                  "text": "bold",
+                  "bold": true,
+                  "italic": false,
+                  "code": false,
+                  "link": false
+                }
+              ]
+            },
+            {
+              "kind": "list",
+              "text": "",
+              "level": 0,
+              "inlines": [],
+              "items": [
+                {
+                  "marker": "-",
+                  "blocks": [
+                    {
+                      "kind": "paragraph",
+                      "text": "nested",
+                      "level": 0,
+                      "inlines": [
+                        {
+                          "text": "nested",
+                          "bold": false,
+                          "italic": false,
+                          "code": false,
+                          "link": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        {
+          "kind": "rule",
+          "text": "",
+          "level": 0,
+          "inlines": []
+        }
+      ]
+    },
+    "task": {
+      "input": "- [x] done\n- [ ] next",
+      "ast": [
+        {
+          "kind": "list",
+          "text": "",
+          "level": 0,
+          "inlines": [],
+          "items": [
+            {
+              "marker": "[x]",
+              "checked": true,
+              "blocks": [
+                {
+                  "kind": "paragraph",
+                  "text": "done",
+                  "level": 0,
+                  "inlines": [
+                    {
+                      "text": "done",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "marker": "[ ]",
+              "checked": false,
+              "blocks": [
+                {
+                  "kind": "paragraph",
+                  "text": "next",
+                  "level": 0,
+                  "inlines": [
+                    {
+                      "text": "next",
+                      "bold": false,
+                      "italic": false,
+                      "code": false,
+                      "link": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "ordered": false
+        }
+      ]
+    }
+  }
+}

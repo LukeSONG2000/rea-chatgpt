@@ -34,17 +34,33 @@ private fun ChatBody(owner: ChatConversationOwner, row: ChatConversation, turn: 
     val holder = rememberSaveableStateHolder()
     var retained by remember { mutableStateOf(emptySet<String>()) }
     SideEffect { val next = keys.values.toSet(); (retained - next).forEach(holder::removeState); retained = next }
-    SelectionContainer {
+    val copySession=remember(owner){java.util.UUID.randomUUID().toString()}
+    CompositionLocalProvider(LocalCodeCopyFeedbackScope provides org.json.JSONArray(identity+listOf(copySession,turn.subscription)).toString()) {
+      SelectionContainer {
         RichText(Modifier.testTag("chat-${if (user) "user" else "assistant"}-${turn.id}"),
             style = RichTextStyle(tableStyle = TableStyle(columnArrangement = ColumnArrangement.Adaptive(240.dp)))) {
             StatefulMarkdown(root, keys, holder)
         }
+      }
     }
 }
 
 @Composable
-internal fun ColumnScope.ChatConversationPage(mode: String, owner: ChatConversationOwner, unavailable: () -> Unit) {
+internal fun ColumnScope.ChatConversationPage(mode: String, owner: ChatConversationOwner, unavailable: () -> Unit,
+    messageCapabilities: ChatMessageCapabilities = OfflineChatMessageCapabilities) {
     val row = owner.selected(mode)
+    val actionSession=remember(owner){java.util.UUID.randomUUID().toString()}
+    var selection by remember(owner,mode){mutableStateOf<ChatMessageActionContent?>(null)}
+    fun resolve(identity:ChatMessageIdentity):ChatMessageActionContent? {
+        if(identity.session!=actionSession||row?.id!=identity.scope.conversation||owner.scope(identity.scope.conversation)!=identity.scope)return null
+        val current=owner.row(identity.scope.conversation)?.turns?.firstOrNull{it.id==identity.turn}?:return null
+        return chatMessageContent(identity.scope,actionSession,current,identity.role,messageCapabilities)
+    }
+    val selected=selection
+    if(selected!=null) {
+        if(admitChatMessageAction(selected,resolve(selected.identity),ChatMessageAction.SelectText))ChatTextSelectionPage(selected){selection=null}
+        else LaunchedEffect(selected){selection=null}
+    }
     key(mode, row?.id) {
         val draftState = remember { mutableStateOf(TextFieldValue(owner.draft(mode))) }
         var draft by draftState
@@ -121,6 +137,8 @@ internal fun ColumnScope.ChatConversationPage(mode: String, owner: ChatConversat
                                 Surface(Modifier.align(Alignment.End).widthIn(max = 520.dp), shape = RoundedCornerShape(20.dp), color = MaterialTheme.colorScheme.surfaceVariant) {
                                     Box(Modifier.padding(12.dp)) { ChatBody(owner, row, turn, true) }
                                 }
+                                val userContent=chatMessageContent(owner.scope(row.id),actionSession,turn,ChatMessageRole.User,messageCapabilities)
+                                Row(Modifier.align(Alignment.End)) { ChatMessageMenu(userContent,{resolve(userContent.identity)}){selection=it} }
                                 if (turn.body.isNotEmpty()) ChatBody(owner, row, turn, false)
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Text(when (turn.phase) {
@@ -131,6 +149,8 @@ internal fun ColumnScope.ChatConversationPage(mode: String, owner: ChatConversat
                                         ChatPhase.Interrupted -> remoteControlText("生成已中断", "Interrupted")
                                     }, modifier = Modifier.testTag("chat-phase-${turn.id}"), style = MaterialTheme.typography.bodySmall)
                                     if (turn.phase == ChatPhase.Completed && turn.body.isNotBlank()) NativeCopyButton(turn.body, remoteControlText("复制", "Copy"), Modifier.testTag("chat-copy-${turn.id}"))
+                                    val assistantContent=chatMessageContent(owner.scope(row.id),actionSession,turn,ChatMessageRole.Assistant,messageCapabilities)
+                                    ChatMessageMenu(assistantContent,{resolve(assistantContent.identity)}){selection=it}
                                     if (turn.phase in setOf(ChatPhase.Failed, ChatPhase.Interrupted)) TextButton(onClick = {
                                         following = true; owner.retry(row.id, turn.request)
                                     }, enabled = active == null && !owner.storageError, modifier = Modifier.testTag("chat-retry-${turn.id}")) {

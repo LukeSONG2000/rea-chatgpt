@@ -1559,7 +1559,7 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
                     let blocks = try projectMarkdown(turn.text, prefix: assistantID)
                     if blocks.isEmpty { messages.append(HostMessage(id: assistantID, content: .text(turn.text))) }
                     for (index, block) in blocks.enumerated() {
-                        messages.append(HostMessage(id: index == 0 ? assistantID : block.id, content: block.content))
+                        messages.append(HostMessage(id: index == 0 ? assistantID : block.id, content: block.content, containers: block.containers))
                     }
                 } catch {
                     messages.append(HostMessage(id: assistantID, content: .text(turn.text)))
@@ -1796,7 +1796,7 @@ private struct NativeHostedRow: View {
             } else {
                 ForEach(row.blocks, id: \.id) { block in
                     NativeHostedMessage(message: block, category: category, tableIdentity: NativeTableIdentity.make(scope: tableScope, row: row, block: block), readTablePosition: readTablePosition, onTablePosition: onTablePosition, onLink: onLink, onUserScroll: onUserScroll)
-                        .id(block.id + (block.isTableBlock ? "-table" : "-text"))
+                        .id(block.id + "-" + block.rendererKind)
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
@@ -2648,7 +2648,7 @@ struct RemoteLinkedMarkdownBlocks: View {
             blocks: text.isEmpty ? [] : projection.blocks(text: text, id: rowID), originalText: text)
         VStack(alignment: .leading, spacing: 0) {
             ForEach(row.blocks, id: \.id) { block in
-                if promptID != nil, case .rich(let spans, let heading) = block.content {
+                if promptID != nil, block.containers.isEmpty, case .rich(let spans, let heading) = block.content {
                     //Keep intrinsic prompt widths and source inline semantics;
                     //common native blocks remain the adapter for code/tables.
                     Text(AttributedString(NativeInlineRenderer.render(spans, heading: heading,
@@ -2657,7 +2657,7 @@ struct RemoteLinkedMarkdownBlocks: View {
                         .textSelection(.enabled)
                         .fixedSize(horizontal: false, vertical: true)
                         .accessibilityIdentifier(promptID ?? block.id)
-                } else if promptID != nil, case .text(let text) = block.content {
+                } else if promptID != nil, block.containers.isEmpty, case .text(let text) = block.content {
                     Text(text).font(.body).textSelection(.enabled)
                         .fixedSize(horizontal: false, vertical: true)
                         .accessibilityIdentifier(promptID ?? block.id)
@@ -2668,7 +2668,7 @@ struct RemoteLinkedMarkdownBlocks: View {
                         readTablePosition: { readingStore.tablePositions[scope]?[$0] },
                         onTablePosition: { readingStore.tablePositions[scope, default: [:]][$0] = $1 },
                         onLink: openLink, onUserScroll: {}, allowsFileLinks: true)
-                        .id(block.id + (block.isTableBlock ? "-table" : "-text"))
+                        .id(block.id + "-" + block.rendererKind)
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
@@ -2704,17 +2704,19 @@ struct NativeHostedMessage: UIViewRepresentable {
     let messageID: String
     let category: UIContentSizeCategory
     let content: HostMessage.Content
+    let containers: [NativeMarkdownContainer]
     let tableIdentity: NativeTableIdentity?
     let readTablePosition: (NativeTableIdentity) -> CGFloat?
     let onTablePosition: (NativeTableIdentity, CGFloat) -> Void
     let onLink: (URL) -> Void
     let onUserScroll: () -> Void
     let allowsFileLinks: Bool
-    var message: HostMessage { HostMessage(id: messageID, content: content) }
+    var message: HostMessage { HostMessage(id: messageID, content: content, containers: containers) }
     init(message: HostMessage, category: UIContentSizeCategory, tableIdentity: NativeTableIdentity?, readTablePosition: @escaping (NativeTableIdentity) -> CGFloat?, onTablePosition: @escaping (NativeTableIdentity, CGFloat) -> Void, onLink: @escaping (URL) -> Void, onUserScroll: @escaping () -> Void, allowsFileLinks: Bool = false) {
         self.category = category
         self.messageID = message.id
         self.content = message.content
+        self.containers = message.containers
         self.tableIdentity = tableIdentity
         self.readTablePosition = readTablePosition
         self.onTablePosition = onTablePosition
@@ -2724,6 +2726,15 @@ struct NativeHostedMessage: UIViewRepresentable {
     }
 
     static func makeBlock(_ message: HostMessage, category: UIContentSizeCategory? = nil) -> UIView {
+        if !message.containers.isEmpty {
+            return NativeNestedMarkdownBlock(message: message, category: category)
+        }
+        if case .rule = message.content {
+            let rule = NativeMarkdownRuleBlock(frame: .zero)
+            if let category { rule.traitOverrides.preferredContentSizeCategory = category }
+            rule.accessibilityIdentifier = "markdown-rule-" + message.id
+            return rule
+        }
         if case .table(let model) = message.content {
             let block = NativeTableBlock(frame: .zero)
             if let category { block.traitOverrides.preferredContentSizeCategory = category }
@@ -2736,6 +2747,8 @@ struct NativeHostedMessage: UIViewRepresentable {
         return block
     }
     static func height(of block: UIView, width: CGFloat) -> CGFloat {
+        if let nested = block as? NativeNestedMarkdownBlock { return nested.fittedHeight(width: width) }
+        if let rule = block as? NativeMarkdownRuleBlock { return rule.fittedHeight }
         if let text = block as? NativeMessageBlock { return text.fittedHeight(width: width) }
         block.bounds.size.width = width
         block.setNeedsLayout(); block.layoutIfNeeded()
@@ -2744,19 +2757,126 @@ struct NativeHostedMessage: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView { Self.makeBlock(message, category: category) }
     func updateUIView(_ view: UIView, context: Context) {
         view.traitOverrides.preferredContentSizeCategory = category
-        if let block = view as? NativeMessageBlock {
-            block.allowsFileLinks = allowsFileLinks
-            block.onLink = onLink; block.configure(message)
-        } else if let block = view as? NativeTableBlock, case .table(let model) = message.content {
-            block.allowsFileLinks = allowsFileLinks
-            block.onLink = onLink; block.onUserScroll = onUserScroll
-            block.bindPosition(tableIdentity, restoredX: tableIdentity.flatMap(readTablePosition), changed: onTablePosition)
-            block.configure(model, id: message.id)
+        func updateLeaf(_ leaf: UIView) {
+            leaf.traitOverrides.preferredContentSizeCategory = category
+            if let block = leaf as? NativeMessageBlock {
+                block.allowsFileLinks = allowsFileLinks
+                block.onLink = onLink; block.configure(message)
+            } else if let block = leaf as? NativeTableBlock, case .table(let model) = message.content {
+                block.allowsFileLinks = allowsFileLinks
+                block.onLink = onLink; block.onUserScroll = onUserScroll
+                block.bindPosition(tableIdentity, restoredX: tableIdentity.flatMap(readTablePosition), changed: onTablePosition)
+                block.configure(model, id: message.id)
+            } else if let rule = leaf as? NativeMarkdownRuleBlock {
+                rule.accessibilityIdentifier = "markdown-rule-" + message.id
+                rule.setNeedsLayout()
+            }
         }
+        if let nested = view as? NativeNestedMarkdownBlock {
+            nested.configure(message, category: category)
+            updateLeaf(nested.leaf)
+        } else { updateLeaf(view) }
     }
     func sizeThatFits(_ proposal: ProposedViewSize, uiView: UIView, context: Context) -> CGSize? {
         guard let width = proposal.width, width > 0 else { return nil }
         return CGSize(width: width, height: Self.height(of: uiView, width: width))
+    }
+}
+
+//Independent native presentation of the original parser's structural ancestry.
+//Font-based marker measurement and semantic separators are host policy; original
+//OAIMarkdown list/quote geometry and exact decoration are not recovered.
+private final class NativeNestedMarkdownBlock: UIView {
+    let leaf: UIView
+    private var message: HostMessage
+    private var decorations: [UIView] = []
+    private var indent: CGFloat = 0
+
+    init(message: HostMessage, category: UIContentSizeCategory?) {
+        self.message = message
+        leaf = NativeHostedMessage.makeBlock(HostMessage(id: message.id, content: message.content), category: category)
+        super.init(frame: .zero)
+        addSubview(leaf)
+        if let category { traitOverrides.preferredContentSizeCategory = category }
+        rebuildDecorations()
+    }
+    required init?(coder: NSCoder) { fatalError("Storyboard construction unsupported") }
+    func configure(_ message: HostMessage, category: UIContentSizeCategory) {
+        let changed = self.message.containers != message.containers || traitCollection.preferredContentSizeCategory != category
+        self.message = message
+        traitOverrides.preferredContentSizeCategory = category
+        if changed { rebuildDecorations() }
+        setNeedsLayout()
+    }
+    private func rebuildDecorations() {
+        decorations.forEach { $0.removeFromSuperview() }; decorations = []
+        for container in message.containers {
+            let view: UIView
+            switch container {
+            case .quote:
+                view = UIView(); view.backgroundColor = .separator
+            case .listItem(let marker, _, let checked, _):
+                let label = UILabel()
+                label.font = .preferredFont(forTextStyle: .body, compatibleWith: traitCollection)
+                label.adjustsFontForContentSizeCategory = true
+                label.text = marker; label.textColor = .label
+                label.accessibilityLabel = checked.map { $0 ? visualText("已勾选", "Checked") : visualText("未勾选", "Unchecked") } ?? marker
+                label.accessibilityIdentifier = "markdown-marker-\(message.id)-\(decorations.count)"
+                label.isAccessibilityElement = marker != nil
+                view = label
+            }
+            addSubview(view); decorations.append(view)
+        }
+    }
+    private func measuredIndent() -> CGFloat {
+        let font = UIFont.preferredFont(forTextStyle: .body, compatibleWith: traitCollection)
+        let space = (" " as NSString).size(withAttributes: [.font: font]).width
+        return message.containers.reduce(CGFloat.zero) { total, container in
+            switch container {
+            case .quote: return total + font.pointSize
+            case .listItem(_, let column, _, _):
+                return total + ceil((column as NSString).size(withAttributes: [.font: font]).width + space)
+            }
+        }
+    }
+    func fittedHeight(width: CGFloat) -> CGFloat {
+        indent = min(max(0, width - 1), measuredIndent())
+        return NativeHostedMessage.height(of: leaf, width: max(1, width - indent))
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let font = UIFont.preferredFont(forTextStyle: .body, compatibleWith: traitCollection)
+        let space = (" " as NSString).size(withAttributes: [.font: font]).width
+        var x: CGFloat = 16 //Same outer text inset as the existing native leaf.
+        for (container, decoration) in zip(message.containers, decorations) {
+            switch container {
+            case .quote:
+                decoration.frame = CGRect(x: x, y: 0, width: 1 / max(1, traitCollection.displayScale), height: bounds.height)
+                x += font.pointSize
+            case .listItem(_, let column, _, _):
+                let width = ceil((column as NSString).size(withAttributes: [.font: font]).width)
+                decoration.frame = CGRect(x: x, y: 10, width: width, height: font.lineHeight)
+                x += width + ceil(space)
+            }
+        }
+        indent = min(max(0, bounds.width - 1), measuredIndent())
+        leaf.frame = CGRect(x: indent, y: 0, width: max(1, bounds.width - indent), height: bounds.height)
+    }
+}
+
+private final class NativeMarkdownRuleBlock: UIView {
+    private let line = UIView()
+    var fittedHeight: CGFloat { ceil(UIFont.preferredFont(forTextStyle: .body, compatibleWith: traitCollection).lineHeight) }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        line.backgroundColor = .separator; addSubview(line)
+        isAccessibilityElement = true
+        accessibilityLabel = visualText("分隔线", "Separator")
+    }
+    required init?(coder: NSCoder) { fatalError("Storyboard construction unsupported") }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        line.frame = CGRect(x: 16, y: bounds.midY, width: max(0, bounds.width - 32), height: 1 / max(1, traitCollection.displayScale))
     }
 }
 
@@ -2840,6 +2960,7 @@ final class NativeMessageBlock: UIView, UITextViewDelegate {
         case .rich(let spans, let heading):
             textView.attributedText = NativeInlineRenderer.render(spans, heading: heading, traits: traitCollection, allowsFileLinks: allowsFileLinks)
         case .table: textView.text = "表格单元路由错误"
+        case .rule: textView.text = ""
         case .text(let value): textView.text = value
         case .heading(let value): textView.text = value; textView.font = .preferredFont(forTextStyle: .headline, compatibleWith: traitCollection)
         case .unsupported(let value): textView.text = value; textView.textColor = .secondaryLabel
@@ -8450,6 +8571,7 @@ private struct RemoteThreadFixturePage: View {
     @Environment(\.openURL) private var openURL
     @StateObject private var attachmentPresenter = RemoteAttachmentPresenter()
     @StateObject private var modelSliderPresenter = RemoteModelSliderPresenter()
+    @AppStorage(PreviewAccent.storageKey) private var composerAccent = PreviewAccent.default.rawValue
     @State private var composerAttachmentRequest: RemoteAttachmentPickerRequest?
     @State private var composerPluginEdit: RemoteComposerPluginEdit?
     @State private var composerToolbarNotice: String?
@@ -8611,7 +8733,16 @@ private struct RemoteThreadFixturePage: View {
     private var composerModelControl: RemoteModelControlConfiguration? {
         guard hasModelControlFixture else { return nil }
         return .init(value: modelOperationBinding, presenter: modelSliderPresenter,
-            isEnabled: task.connected, openAdvanced: { showsAdvancedFixture = true })
+            isEnabled: task.connected, openAdvanced: { showsAdvancedFixture = true },
+            appearance: composerSliderAppearance)
+    }
+    private var composerSliderAppearance: RemoteModelSliderAppearance {
+        let accent = PreviewAccent(rawValue: composerAccent) ?? .default
+        //The ordinary VM tint is source-proven nil. This host supplies no
+        //explicit rail override; the original style override producer is unknown.
+        return .init(railOverride: nil, tint: nil,
+            primaryButtonColor: Color(uiColor: officialVisualColor(
+                accent.remoteSliderPrimaryColorAsset ?? "OneOff/AppForeground")))
     }
     private var locationContext: (workspace: String?, cloud: String?) {
         switch task.subtitle {
@@ -9844,7 +9975,8 @@ private struct RemoteThreadFixturePage: View {
                 DispatchQueue.main.async {
                     guard reopensModelSlider, composerSessionID == returningSession else { return }
                     reopensModelSlider = false
-                    modelSliderPresenter.present(configuration: modelOperationBinding, fadesAppearance: true,
+                    modelSliderPresenter.present(configuration: modelOperationBinding,
+                        appearance: composerSliderAppearance, fadesAppearance: true,
                         openAdvanced: { showsAdvancedFixture = true })
                 }
             }) {

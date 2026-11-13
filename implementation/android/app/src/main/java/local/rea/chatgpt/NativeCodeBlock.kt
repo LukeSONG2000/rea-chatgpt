@@ -8,7 +8,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
+import kotlinx.coroutines.delay
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
@@ -27,6 +30,9 @@ import com.halilibo.richtext.ui.CodeBlockStyle
 import com.halilibo.richtext.ui.RichTextScope
 import com.halilibo.richtext.ui.RichTextStyle
 import com.halilibo.richtext.ui.WithStyle
+
+// Only ordinary Chat opts in. Remote defaults retain their prior action carrier.
+internal val LocalCodeCopyFeedbackScope=staticCompositionLocalOf<String?>{null}
 
 /** Independent action via the public renderer extension. Never trim code payloads. */
 @Composable
@@ -66,10 +72,19 @@ internal fun RichTextScope.NativeCodeBlock(node: AstNode): Boolean {
 @Composable
 internal fun NativeCopyButton(text: String, label: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current
+    val identity=LocalCodeCopyFeedbackScope.current
+    var copied by remember(identity,text){mutableStateOf(false)}
+    var receipt by remember(identity,text){mutableIntStateOf(0)}
+    // sqi.c→cqi/pqi: only successful clipboard receipt changes state;
+    // lf9 waits sqi.a=2 seconds. New content/owner cancels its old timer.
+    LaunchedEffect(identity,text,receipt){if(copied){delay(2000);copied=false}}
+    val copiedLabel=remoteControlText("已复制","Copied")
     IconButton(onClick = {
-        context.getSystemService(ClipboardManager::class.java)
-            .setPrimaryClip(ClipData.newPlainText(label, text))
-    }, modifier = modifier) {
-        Icon(painterResource(R.drawable.ds_square_on_square_regular_24), label, Modifier.size(16.dp))
+        val accepted=runCatching { context.getSystemService(ClipboardManager::class.java)
+            .setPrimaryClip(ClipData.newPlainText(label, text)) }.isSuccess
+        if(identity!=null){receipt++;copied=accepted}
+    }, modifier = modifier.semantics { if(identity!=null)stateDescription=if(copied)copiedLabel else label }) {
+        Icon(painterResource(if(copied)R.drawable.ds_checkmark_lg_regular_24 else R.drawable.ds_square_on_square_regular_24),
+            if(copied)copiedLabel else label, Modifier.size(16.dp))
     }
 }

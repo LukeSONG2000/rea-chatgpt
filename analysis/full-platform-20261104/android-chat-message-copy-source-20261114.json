@@ -1,0 +1,165 @@
+{
+  "scope": "Candidate2 ordinary shared code-copy mechanism; reuse body/table proof, no mode identity rescan",
+  "observed": [
+    "Ordinary Chat already renders code/table through shared StatefulMarkdown/NativeCodeBlock; no renderer replacement required",
+    "NativeCodeBlock existing host lacks original CopyButtonImpl success checkmark/timer; source binds successful clipboard response before copied state",
+    "Copied state resets after2seconds; text-keyed state prevents old text badge borrowing"
+  ],
+  "implementation": "Opt-in LocalCodeCopyFeedbackScope only within ordinary Chat bodies; full account/profile/conversation/request/attempt/subscription/role/owner-lifetime key plus text. Existing Remote/default paths remain no-feedback. Native ClipboardManager call success is independent platform receipt adapter; no fake success on exception.",
+  "unknown": [
+    "Full original ordinary footer Copy/action eligibility remains separate and unchanged",
+    "Original styled acs.H conversion not reconstructed; local plain AST projection clearly independent",
+    "Long streaming parsing remains synchronous; no performance improvement claimed"
+  ],
+  "evidence": [
+    {
+      "id": "CM-C2-01",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/sqi.java",
+      "sha256": "d843f75eab1907e360c5e89961a4a9b1fb1c7b5887ad06225c8da576408a5ada",
+      "lines": [
+        [
+          19,
+          22
+        ],
+        [
+          895,
+          930
+        ]
+      ],
+      "claim": "Copy text-keyed state, success handler and state icon consumer;2-second reset constant"
+    },
+    {
+      "id": "CM-C2-02",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/cqi.java",
+      "sha256": "9ffe9b2a6d4409bea760599a56b3ff45666fb5d0a84d5d9d8894b653cce84261",
+      "lines": [
+        [
+          39,
+          43
+        ]
+      ],
+      "claim": "Button invokes pqi coroutine"
+    },
+    {
+      "id": "CM-C2-03",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/pqi.java",
+      "sha256": "b58183b9fd241ad8aceda91d76bdd8dc47779abe803851588f03ae6b38c4597a",
+      "lines": [
+        [
+          95,
+          133
+        ]
+      ],
+      "claim": "Plain clipboard content delivered first; only mh01 success changes copied true"
+    },
+    {
+      "id": "CM-C2-04",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/lf9.java",
+      "sha256": "3472f6deaddffff896d80edda5320976d040fa5466f7e27a5a2d3528b06dd540",
+      "lines": [
+        [
+          64,
+          82
+        ]
+      ],
+      "claim": "Delay sqi.a then copied=false"
+    },
+    {
+      "id": "CM-C2-05",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/a38.java",
+      "sha256": "125098f3192e91b4507343f988b3b49ee6307c4c06a09644c3deb0bda80a992e",
+      "lines": [
+        [
+          93,
+          110
+        ]
+      ],
+      "claim": "Success checkmark t540 vs eg40 copy glyph and corresponding label"
+    },
+    {
+      "id": "CM-C2-06",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/t540.java",
+      "sha256": "ca7ccc9ef3a81b15fc8f518e7822aee4558c7bef3f1d6de6c34d86ae303299f3",
+      "lines": [
+        [
+          8,
+          9
+        ]
+      ],
+      "claim": "checkmark24 glyph via bhx.a"
+    },
+    {
+      "id": "CM-C2-07",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/bhx.java",
+      "sha256": "cb050c803eb6e0ebf811646547f1d5edea363ff7b08ff04e38d230dfef4ee540",
+      "lines": [
+        [
+          7,
+          7
+        ]
+      ],
+      "claim": "a -> xgx2"
+    },
+    {
+      "id": "CM-C2-08",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/xgx.java",
+      "sha256": "381aa5f6099602d836294e6000e6a9c9b6a54aa9e804b2e3b881e521cd8a6813",
+      "lines": [
+        [
+          23,
+          24
+        ]
+      ],
+      "claim": "Original ds_checkmark_lg_regular_24"
+    },
+    {
+      "id": "CM-C2-09",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes4/pqi.smali",
+      "sha256": "9bac8475749cb0260f46fcbef0e90f19ab7e19d7968a82f98bbc82876dc6570c",
+      "lines": [
+        [
+          1494,
+          1494
+        ],
+        [
+          1551,
+          1593
+        ]
+      ],
+      "claim": "Bytecode success admission before copied state and reset job"
+    },
+    {
+      "id": "CM-C2-10",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes4/lf9.smali",
+      "sha256": "ccbd782e73551003888b481aa649e5ad70544fdcb228e4de51ad8521ab2fa680",
+      "lines": [
+        [
+          263,
+          299
+        ]
+      ],
+      "claim": "Bytecode delay then false"
+    },
+    {
+      "id": "CM-C2-11",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-chat-work-20261113-source.json",
+      "sha256": "16410824ed876013ebea5e498f1cd59488c3af66a41ad3177797192f199cb7d3",
+      "lines": null,
+      "claim": "Ordinary k3r and Remote pkm share sm5 renderer; different action owners"
+    },
+    {
+      "id": "CM-C2-12",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/mobile-v629-copy-source.json",
+      "sha256": "96cf9c659acc709792cf895f85c88998b429b09da72e4cb7e2adbae32c6a2361",
+      "lines": null,
+      "claim": "Existing code header/copy source and known missing success feedback, reused"
+    },
+    {
+      "id": "CM-C2-13",
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/vendor/compose-richtext/richtext-markdown/src/commonMain/kotlin/com/halilibo/richtext/markdown/node/AstNodeType.kt",
+      "sha256": "1b2e65d1b5a151b829790e6e3b56558be76a4eebd22c3ce125a0fe34d3acc57b",
+      "lines": null,
+      "claim": "Pinned public AST types for independent selection plain-text conversion,not original acs.H"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "scope": "Ordinary Chat/Work message page parent/actions and actual packaged Markdown AST consumption; not RemoteThreadFixturePage. Two bounded candidate groups, no product edits.",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "framework_path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "framework_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "markdown_module_path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/markdown.valdimodule",
+    "markdown_module_sha256": "07ed2c01f801f9dd7e83996e2ce6344f7ced87cdae0227cce6f669e52457d3b6"
+  },
+  "candidate_groups": [
+    {
+      "id": 1,
+      "question": "Does ordinary inline action consumer justify copying Remote CopyButton feedback or changing current footer geometry?",
+      "evidence": [
+        "MessageRowInlineButtonAction descriptor0x9620f5c,View conformance0x80297bc",
+        "bodywitness0x38a3aac calls0x38a329c at0x38a3acc",
+        "actual body0x38a329c..0x38a337c reads bool fields and invokes0x3d95348"
+      ],
+      "outcome": "No new copy-specific lifecycle or ordinary action-eligibility producer closed. This generic title/image/selection renderer must not be called CopyButton solely because it appears under action FlowLayout. Preserve working current copy hit carrier and completion admission.",
+      "stop": "Do not chase entire action arrays, feedback enums, or reuse Remote copied timer from name similarity. Adjacent0x38a3ad8 onward is excluded from owner conclusions."
+    },
+    {
+      "id": 2,
+      "question": "Which already-packaged parser output currently falls through ordinary Chat message projection?",
+      "evidence": [
+        "existingprepare-markdown.py loads five original module factories, parseOfficialMarkdown returns Markdown.parse(text).blocks",
+        "single markdown.valdimodule unpacked in memory with existing tool; src/Markdown.js exactly equals derived source",
+        "original JS rule/quote/list constructors and list item producer"
+      ],
+      "outcome": "Positive structural consumer gap: list/quote/rule recognized by source parser but absent from reviewed pre-parent-integration OfficialMarkdown switch. Safe to consume original nested structure using explicit independent native layout.",
+      "stop": "No third group for native optical List/Quote geometry; retain parent as independent adapter and exact parser binding."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "CHAT18-01",
+      "classification": "official_artifact_static",
+      "conclusion": "MessageRowInlineButtonAction is a generic action leaf with title,image,showsTitle,buttonActionHandler,isHovering,isSelected,showsSelectionBackground. Actual body combines flags and delegates to shared action style; no copy-specific timer/confirmation proven.",
+      "offsets": [
+        "descriptor0x9620f5c",
+        "fieldrecords0x9ace068..0x9ace0b0",
+        "conformance0x80297bc",
+        "0x38a32b8..0x38a32c4 reads three input bytes at+0x32/+0x33/+0x31 and combines two; semantic field-to-byte mapping not independently bound;0x38a3368→0x3d95348",
+        "0x38a32b8..0x38a32c4 reads isSelected/showsSelectionBackground/isHovering bytes;0x38a3368→0x3d95348"
+      ],
+      "limit": "Original ordinary action-array supply and per-role eligibility remain prior precise unknowns. Do not map these bools to a copy animation."
+    },
+    {
+      "id": "CHAT18-02",
+      "classification": "official_artifact_static_packaged_JavaScript",
+      "conclusion": "Original iOS293 parser emits rule with empty text, quote with recursively parsed blocks and preserveLineBreaks=true, and list with items/ordered/start. These payloads are not unsupported source syntax.",
+      "file": "src/Markdown.js",
+      "sha256": "0564e365dd2833b60b2a58a34e7c1a208a6b74bc55422cba335612d4f7039476",
+      "byte_offsets": {
+        "rule": 2104,
+        "quote": 2181,
+        "list": 2359
+      },
+      "binding": "Existing valdi_unpack on exactly one original module; no whole-package extraction or generated replacement. Member bytes equal derived source."
+    },
+    {
+      "id": "CHAT18-03",
+      "classification": "official_artifact_static_packaged_JavaScript",
+      "conclusion": "List producer preserves an ordered array of item objects {marker,checked?,blocks}; checkbox markers become[x]/[ ]; ordered is inferred from original marker syntax, and start is Number(firstMarkerWithoutDelimiter). Child parsing uses preserveLineBreaks=false and recursively populates item.blocks.",
+      "file": "src/Markdown.js",
+      "byte_range": [
+        5409,
+        6700
+      ],
+      "limit": "checked is parsed content metadata; no click/toggle or service mutation is implied. Raw source marker is available; do not flatten nested blocks/inline links to a string or reset ordered starts to1."
+    },
+    {
+      "id": "CHAT18-04",
+      "classification": "retained_official_artifact_static",
+      "conclusion": "Ordinary assistant parent already references OAIMarkdown.MarkdownBlockStack and separate MessageRowCodeBlockInlinePreview, with distinct native highPriorityGesture/ended SpatialTap wrappers. This proves a native content family, not exact native list/quote optical configuration.",
+      "offsets": [
+        "MessageAssistantContentStack full source record0x80249b8",
+        "existing content0x38cda60..0x38cdf20",
+        "OAIMarkdown.MarkdownBlockStack descriptor0x96fe1f4",
+        "MessageRowCodeBlockInlinePreview descriptor0x961fdd0"
+      ],
+      "limit": "The current JS parser plus native block host is an explicit independent adapter. Packaged JS syntax output does not prove native Swift subtree geometries or gesture callbacks."
+    }
+  ],
+  "current_host_findings": [
+    {
+      "id": "HOST18-01",
+      "classification": "current_host_gap",
+      "conclusion": "Reviewed OfficialMarkdown.messages handled paragraph/heading/code/table only; list/quote/rule went through unsupported. The parser was already correct and packaged; its frontend consumer discarded supported structures.",
+      "source": "implementation/ios/Sources/OfficialMarkdown.swift messages switch (reviewed before parent concurrent integration)",
+      "impact": "Ordinary Chat/Work reply structure, nested lists/quotes, numbered starts and horizontal separators."
+    },
+    {
+      "id": "HOST18-02",
+      "classification": "current_host_boundary",
+      "conclusion": "NativeChatMessageActions is deliberately minimal: assistant copy inline and user overflow menu, UIFontMetrics14+padding6 fixed measured carrier. Source FlowLayout geometry and arrays remain incomplete; no new evidence justifies replacing this working carrier with negative padding or remote footer.",
+      "source": "NativeConversationHost.swift NativeHostedRow/NativeChatMessageActions/NativeChatCopyControl"
+    },
+    {
+      "id": "HOST18-03",
+      "classification": "current_host_boundary",
+      "conclusion": "NativeMessageBlock currently supplies independent per-block padding/minimumheight/codeheader. Native list/quote geometry, marker font/indent, quote rule thickness/color, paragraph spacing and combined action wrappers remain unclosed.",
+      "source": "NativeConversationHost.swift NativeMessageBlock"
+    }
+  ],
+  "safe_product_decision": {
+    "implement": "Consume original list(items/ordered/start), quote(blocks), rule structures behind existing scoped HostMessage pipeline. Preserve nesting, item order, original markers/checked metadata and inline payloads. Existing state/row identities must include structural paths and account/conversation/message scope.",
+    "classification": "Original packaged syntax and fields; independently implemented native presentation and state adapters. Not recovered native full-page optical equivalence.",
+    "must_not": "No extra source pipeline/re-parser; no flattening nested blocks or task checkbox mutation. No unconditional Remote footer/haptics/menu copying.",
+    "retain": "Current completed-only copy action admission, effective theme user bubble, zero textContainer/fragment padding and existing copy hit/AX carrier."
+  },
+  "unknowns": [
+    "Original native List/Quote/Rule specific renderer constructor, effective MarkdownOptions overrides and parent indentation/spacing/colors.",
+    "Original list gestures/checkbox interactivity and action owner; parsed checked does not establish either.",
+    "Ordinary actual per-role primary/overflow arrays, copy completion signal UI consumer and original CopyButton equivalence.",
+    "Full FlowLayout proposal/cache/priority behavior and UIKit bridge measurement.",
+    "Original Work-specific message parent route/configuration remains separate; this host shares current Chat adapter explicitly."
+  ],
+  "haptics": {
+    "new_proved_caller": false,
+    "decision": "No explicit new action/list/quote haptic call established in selected consumers; do not infer haptics from parser or generic button."
+  },
+  "validation": {
+    "product_modified_by_this_agent": false,
+    "build_or_tests": false,
+    "device_or_official_runtime": false,
+    "network": false,
+    "candidate_limit": 2,
+    "bounded_stop": "Actual ordinary generic action consumer does not close copy feedback; packaged AST positive missing consumer closed. No reason to repeat reasoning/DIL/modeSelected or broader layout scans."
+  },
+  "reused_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-third-20261113-findings.json",
+      "sha256": "07a464d2399fc7d7bdc283cb8622075d6026c5b6ce0b5ce82c68f022e32241d8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-parent-20261113-findings.json",
+      "sha256": "068dd4f81592bedca4fbdcede206da8ec71711ea551342f6bfdd5a75976996a9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-v570-findings.json",
+      "sha256": "f585de0ade7ab5542e096e486f75b661152d86520646d294536388f494b05277"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-v576-findings.json",
+      "sha256": "7593acece447d7dbd7f5308e19dc7288b59b2efc47ba272585350219b016918c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-v577-findings.json",
+      "sha256": "fd3b7efc33cbc11319fd409a7f46c1e2f31ca6b3124525b9fee7878f2ac9f6b2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-v578-findings.json",
+      "sha256": "406ffa77d4da7a1663a6bac26e00670a598a14e5d0c05d93407690baf9162e96"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-v579-findings.json",
+      "sha256": "4e7cf1c91deef3b414fa2539b161875ea6445c457a1c29741f4dd8951593c162"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-v581-findings.json",
+      "sha256": "53ea6d0eea8baf2d8a153018d76c8f84048db8581c221a8f9bfcf0c6620be7ed"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-v582-findings.json",
+      "sha256": "03c27af0cd5142c4c885c3bccc32e95911de91df3fef068dcda9b73d74ba7a6d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-assistant-stack-types-v1.json",
+      "sha256": "eab481b21ab124d2dab23d66ecbb994b9af3b80d21644f8d4ac1b53148f9c306"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-assistant-stack-content-v1.json",
+      "sha256": "76db2d62f70778cb2466b671a5c4b94e22e92e8e98d94c6c9c235524df27ec1c"
+    }
+  ],
+  "new_evidence": [
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-eighteenth-20261114-raw/action-user-metadata.json",
+      "sha256": "83ede340e333712bcc03324cdcd410617e5860f9cf476c086a388f639c9549bf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-eighteenth-20261114-raw/host-snapshot.json",
+      "sha256": "23bc922332a29bed34748d1b03a5b6d7a8108b00b1d93558c283511eb7c43745"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-eighteenth-20261114-raw/inline-button-actual-body.asm",
+      "sha256": "55c57519401985a5cc031ddeb23754473b09153091670b142d6ae7c3fe6439fb"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-eighteenth-20261114-raw/inline-button-body-thunk.asm",
+      "sha256": "6a42d3c886a489ca2d4bdc2c8bf42f5d97a5055712e923bf7cae4a8ac6e624a4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-eighteenth-20261114-raw/inline-button-body.asm",
+      "sha256": "90c66eff5de5cdb08f74380511392efffa61e4af85facc6074e18ae39779e183"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-eighteenth-20261114-raw/inline-button-witness.json",
+      "sha256": "b688e63c78a8732471092d206a472983841d8b2d83c8e5b10215fabd815dd561"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-message-eighteenth-20261114-raw/markdown-ast-consumers.json",
+      "sha256": "0cf6b8ea206a241f42d304b2bacb3ed994977db0a34a776a9b888db0e4ab13ed"
+    }
+  ]
+}

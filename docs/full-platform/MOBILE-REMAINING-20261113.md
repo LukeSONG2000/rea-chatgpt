@@ -1,5 +1,12 @@
 # 移动端全部大项：已做与剩余
 
+- 用户本次明确授权将已确定的iOS Remote滑杆主题、双端Chat／Work消息结构／阅读操作保存至个人origin/main，见CHECKPOINT-20261114-MOBILE-MESSAGES.md。89项合并源码摘要一致；Android活动选区首次返回仍未解决、Air未安装等边界保留。桌面拖放研究和其他未跟踪产物不纳入，后续不自动追加推送。
+
+
+Chat／Work消息结构／阅读操作本轮归档，见PROGRESS-20261114-CHAT-MESSAGE-STRUCTURE.md：iOS接原AST列表／引用／分隔线／只读勾选，32.242秒双模式中文浅色流程与构建通过，模拟器留运行、Air不可用。Android接独立全文选择与普通代码复制成功回执，核心12.207秒通过；活动选区首点toolbar只清选区、第二点返回的实际边界保留，不称已修复。原OAIMarkdown／完整动作资格仍缺。下一整项Remote审批／补充输入前端变体，不扩附件／后端，新成果留本地。
+
+Remote编写器父容器／呈现本轮归档，见PROGRESS-20261114-REMOTE-COMPOSER-PRESENTATION.md：Android同底行模型／权限槽、原向量与14sp字体已接；iOS按293传入滑杆颜色优先级和主题accent，高级返回／草稿／实际轨道颜色的30.932秒中文浅色流程通过，模拟器及签名构建完成。Air不可用未补装。原底栏动态可见性／Goal等父级／私有光学仍列明确缺口。下一整项Chat／Work消息父容器与核心交互；新iOS成果留本地，5eaba6bf1d推送不延伸为未来授权。
+
 本次已确定成果按用户授权保存至个人origin/main，见CHECKPOINT-20261114-MOBILE-REMOTE.md。包括双端Remote协作活动／关联任务和Android编写器底行模型／权限槽；iOS滑杆主题改动尚未构建，明确排除并保留本地。历史报告的“留本地”是当时状态，旧测试仍各自绑定快照；不包含安装包／真实服务，不延伸为后续推送授权。
 
 Remote协作活动／关联任务本轮核心收口，见PROGRESS-20261114-REMOTE-AGENT-CLOSURE.md：诊断证实点击／loading／预期失败，实际正文滚动与稳定屏幕触摸后的最终OnePlus16.583秒流程通过child/Back及父子草稿配置隔离。8源摘要、安装包与普通偏好已核对；临时诊断移除，iOS沿用前批已通过版本。此条覆盖下方“Android关联按钮尚未闭合／继续诊断”的上一批状态，原路由／Markdown光学仍保留缺口。下一整项为Remote编写器与底栏父级／呈现：Android293样式与图标，iOS对应主题／键盘／浮层继承。新成果不自动推送。

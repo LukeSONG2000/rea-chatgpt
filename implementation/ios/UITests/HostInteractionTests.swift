@@ -4017,6 +4017,109 @@ final class HostInteractionTests: XCTestCase {
     }
 
     @MainActor
+    func testChatWorkStructuredMarkdownChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-structure-fixture",
+            "--chat-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN",
+            "-rea.preview.appearance", "light"]
+        app.launch()
+        let sidebar = app.buttons["open-conversation-list"]
+        XCTAssertTrue(sidebar.waitForExistence(timeout: 10))
+        let editor = app.textViews["draft-editor"]
+        let list = app.collectionViews["message-list"]
+        for work in [false, true] {
+            sidebar.tap(); app.buttons["sidebar-new-chat"].tap()
+            app.segmentedControls["home-mode-control"].buttons.element(boundBy: work ? 1 : 0).tap()
+            replaceDraft(editor, in: app, with: "结构检查")
+            app.buttons["send-entry"].tap()
+            let copy = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "message-copy-")).firstMatch
+            XCTAssertTrue(copy.waitForExistence(timeout: 10))
+            //The scroll owner's normal drag also dismisses the keyboard.
+            list.swipeDown()
+            let ordered = app.textViews.matching(NSPredicate(format: "value CONTAINS %@", "有序一")).firstMatch
+            for _ in 0..<4 where !ordered.isHittable { list.swipeDown() }
+            XCTAssertTrue(ordered.isHittable)
+            XCTAssertFalse((ordered.value as? String ?? "").contains("**"))
+            let marker = app.staticTexts["3."]
+            XCTAssertTrue(marker.isHittable)
+            XCTAssertGreaterThan(ordered.frame.minX, marker.frame.maxX)
+            let nested = app.textViews.matching(NSPredicate(format: "value CONTAINS %@", "内层 行内代码")).firstMatch
+            XCTAssertTrue(nested.exists)
+            XCTAssertGreaterThan(nested.frame.minX, ordered.frame.minX)
+            let quote = app.textViews.matching(NSPredicate(format: "value CONTAINS %@", "引用 粗体")).firstMatch
+            XCTAssertTrue(quote.exists)
+            let rule = app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH %@", "markdown-rule-")).firstMatch
+            XCTAssertTrue(rule.exists)
+            XCTAssertTrue(app.staticTexts["已勾选"].exists)
+            XCTAssertTrue(app.staticTexts["未勾选"].exists)
+            XCTAssertFalse(app.textViews.containing(NSPredicate(format: "value CONTAINS %@", "原生渲染尚未接线")).firstMatch.exists)
+            let capture = XCTAttachment(screenshot: app.screenshot())
+            capture.name = work ? "work-structured-markdown-zh-light" : "chat-structured-markdown-zh-light"
+            capture.lifetime = .keepAlways; add(capture)
+            let draft = work ? "工作结构草稿" : "聊天结构草稿"
+            replaceDraft(editor, in: app, with: draft)
+            sidebar.tap(); app.buttons["dismiss-conversation-sidebar"].tap()
+            XCTAssertEqual(editor.value as? String, draft)
+        }
+    }
+
+    @MainActor
+    func testRemoteSliderThemeChinese() throws {
+        continueAfterFailure = false
+        let profile = UUID().uuidString
+        let app = launchRemoteReplay(extraArguments: ["--remote-model-slider-fixture",
+            "--chat-state-profile=" + profile, "--remote-draft-profile=" + profile,
+            "-rea.preview.accent", "green"])
+        openReplayThread("completed-thread", app: app)
+        let focus = app.buttons["remote-composer-focus"]
+        if focus.isHittable { focus.tap() }
+        let editor = app.textViews["remote-composer-editor"]
+        XCTAssertTrue(editor.waitForExistence(timeout: 5))
+        let draft = "主题滑杆草稿"
+        editor.tap(); editor.typeText(draft)
+        let control = app.buttons["remote-model-control"]
+        XCTAssertTrue(control.waitForExistence(timeout: 5)); control.tap()
+        let rail = app.descendants(matching: .any).matching(identifier: "remote-model-slider-rail").firstMatch
+        XCTAssertTrue(rail.waitForExistence(timeout: 5))
+        func verifyGreenRail(_ name: String) throws {
+            let visible = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in rail.isHittable }, object: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [visible], timeout: 5), .completed)
+            let shot = rail.screenshot()
+            let source = try XCTUnwrap(shot.image.cgImage)
+            var pixel = [UInt8](repeating: 0, count: 4)
+            pixel.withUnsafeMutableBytes { bytes in
+                let context = CGContext(data: bytes.baseAddress, width: 1, height: 1,
+                    bitsPerComponent: 8, bytesPerRow: 4, space: CGColorSpaceCreateDeviceRGB(),
+                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+                context.draw(source, in: CGRect(x: 0, y: 0, width: 1, height: 1))
+            }
+            //Actual rendered mint fill differs from the former monochrome rail.
+            //This does not claim private glass or complete palette equivalence.
+            XCTAssertGreaterThan(Int(pixel[1]) - Int(pixel[0]), 15,
+                "Expected theme-accent rail; averaged RGBA=\(pixel)")
+            let capture = XCTAttachment(screenshot: app.screenshot())
+            capture.name = name; capture.lifetime = .keepAlways; add(capture)
+        }
+        try verifyGreenRail("remote-slider-theme-green-opened-zh-light")
+        rail.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.5)).tap()
+        XCTAssertEqual(rail.value as? String, "高")
+        app.buttons["remote-model-slider-title"].tap()
+        let effort = app.buttons["remote-advanced-effort"]
+        XCTAssertTrue(effort.waitForExistence(timeout: 5))
+        XCTAssertTrue(effort.label.contains("高"))
+        app.buttons["remote-advanced-title"].tap()
+        XCTAssertTrue(rail.waitForExistence(timeout: 5))
+        XCTAssertEqual(rail.value as? String, "高")
+        try verifyGreenRail("remote-slider-theme-green-returned-zh-light")
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.3)).tap()
+        XCTAssertTrue(rail.waitForNonExistence(timeout: 5))
+        XCTAssertEqual(control.value as? String, "高")
+        XCTAssertEqual(editor.value as? String, draft)
+    }
+
+    @MainActor
     func testRemoteCreatedTaskConfigurationReturnChinese() throws {
         continueAfterFailure = false
         let profile = UUID().uuidString

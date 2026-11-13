@@ -9,6 +9,17 @@ struct RemoteModelControlConfiguration {
     let presenter: RemoteModelSliderPresenter
     let isEnabled: Bool
     let openAdvanced: () -> Void
+    var appearance = RemoteModelSliderAppearance()
+}
+
+//293609d6d0 resolves explicit rail style, optional VM tint, then the effective
+//primary-button color. The independent hosting window must receive this input;
+//copying UIKit interfaceStyle alone does not carry the parent's SwiftUI style.
+struct RemoteModelSliderAppearance: Equatable {
+    var railOverride: Color?
+    var tint: Color?
+    var primaryButtonColor = Color(uiColor: officialVisualColor("OneOff/AppForeground"))
+    var railColor: Color { railOverride ?? tint ?? primaryButtonColor }
 }
 
 extension RemoteAdvancedConfiguration {
@@ -48,7 +59,8 @@ struct RecoveredRemoteModelControl: View {
             .contentShape(Rectangle())
             .onTapGesture {
                 guard configuration.isEnabled else { return }
-                presenter.present(configuration: configuration.value, openAdvanced: configuration.openAdvanced)
+                presenter.present(configuration: configuration.value, appearance: configuration.appearance,
+                    openAdvanced: configuration.openAdvanced)
             }
             .simultaneousGesture(LongPressGesture(minimumDuration: 0.2, maximumDistance: 10)
                 .sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .global))
@@ -57,7 +69,8 @@ struct RecoveredRemoteModelControl: View {
                     guard didDragDuringLongPress || hypot(drag.translation.width, drag.translation.height) >= 6 else { return }
                     didDragDuringLongPress = true
                     if !presenter.isPresented {
-                        presenter.present(configuration: configuration.value, openAdvanced: configuration.openAdvanced)
+                        presenter.present(configuration: configuration.value, appearance: configuration.appearance,
+                            openAdvanced: configuration.openAdvanced)
                     }
                     presenter.selectFromSourceDrag(drag.location)
                 }
@@ -72,11 +85,13 @@ struct RecoveredRemoteModelControl: View {
             .accessibilityAddTraits(.isButton)
             .accessibilityAction {
                 guard configuration.isEnabled else { return }
-                presenter.present(configuration: configuration.value, openAdvanced: configuration.openAdvanced)
+                presenter.present(configuration: configuration.value, appearance: configuration.appearance,
+                    openAdvanced: configuration.openAdvanced)
             }
             .accessibilityLabel(OfficialText.text(.remoteIntelligenceTitle))
             .accessibilityValue(configuration.value.wrappedValue.displayedEffort.localizedTitle)
             .accessibilityIdentifier("remote-model-control")
+            .onChange(of: configuration.appearance) { _, value in presenter.updateAppearance(value) }
         } else {
             // 196657c uses a legacy menu when no multi-effort slider exists.
             // Native menu/action adapters retain that fallback instead of
@@ -134,6 +149,7 @@ final class RemoteModelSliderPresenter: ObservableObject {
     @Published private(set) var showsThumbBackground = true
     @Published private(set) var presentationOpacity: Double = 1
     @Published private(set) var selectedIndex = 0
+    @Published private(set) var appearance = RemoteModelSliderAppearance()
     @Published private(set) var selectionTrigger = 0
     @Published private(set) var boundaryTrigger = 0
     private var hapticBoundary = FrontendHapticBoundary()
@@ -154,11 +170,14 @@ final class RemoteModelSliderPresenter: ObservableObject {
     private var fadesAppearance = false
 
     @discardableResult
-    func present(configuration: Binding<RemoteAdvancedConfiguration>, fadesAppearance: Bool = false, openAdvanced: @escaping () -> Void) -> Bool {
+    func present(configuration: Binding<RemoteAdvancedConfiguration>,
+                 appearance: RemoteModelSliderAppearance = .init(),
+                 fadesAppearance: Bool = false, openAdvanced: @escaping () -> Void) -> Bool {
         guard window == nil, let source, let sourceWindow = source.window,
               let scene = sourceWindow.windowScene, !source.bounds.isEmpty,
               let slider = configuration.wrappedValue.sliderConfiguration else { return false }
         self.configuration = configuration
+        self.appearance = appearance
         self.openAdvanced = openAdvanced
         selections = slider.selections
         selectedIndex = selections.firstIndex { $0.presetID == slider.selectedPresetID } ?? 0
@@ -215,6 +234,10 @@ final class RemoteModelSliderPresenter: ObservableObject {
         isPresented = true
         overlay.isHidden = false
         return true
+    }
+
+    func updateAppearance(_ value: RemoteModelSliderAppearance) {
+        appearance = value
     }
 
     // A keyboard can appear after the source tap. Refresh the mounted anchor
@@ -462,7 +485,7 @@ private struct RecoveredRemoteModelSliderOverlay: View {
         let width = layout.innerWidth
         let x = presenter.isExpanded ? (dragX ?? RemoteModelSliderGeometry.tickX(index: presenter.selectedIndex,
             count: presenter.selections.count, innerWidth: width)) : width / 2
-        let color = Color(uiColor: officialVisualColor("OneOff/AppForeground"))
+        let color = presenter.appearance.railColor
         return ZStack(alignment: .leading) {
             Capsule().fill(color)
                 .frame(width: presenter.isExpanded ? min(width, max(layout.railHeight, x + 24)) : width,

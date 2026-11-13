@@ -1,0 +1,111 @@
+{
+  "kind": "bounded existing-installed-product toolbar diagnosis",
+  "build": false,
+  "product_changes": false,
+  "serial": "172.16.197.16:5555",
+  "profile": "test-chat-message-9bd15d44e0aa4fa494d1a1bb8df515bd",
+  "apk_sha256": "4231170818d3e866abec2bfc4bd4d960a162907d3e0bce15889cb4019d21819e",
+  "entry": [
+    {
+      "menu_bounds": "[283,1621][418,1756]",
+      "tap": [
+        350,
+        1688
+      ]
+    },
+    {
+      "select_bounds": "[283,1463][598,1598]",
+      "tap": [
+        440,
+        1530
+      ]
+    }
+  ],
+  "selection": {
+    "long_press": [
+      68,
+      334,
+      1000
+    ],
+    "visible_selected_text": "回复",
+    "evidence": "active.png"
+  },
+  "toolbar": {
+    "stable_AX_bounds": "[23,103][158,238]",
+    "shell_input_tap": [
+      90,
+      170
+    ],
+    "tap1": "Highlight cleared, selection page remained; screenshot has system clipboard preview displaying 回复.",
+    "tap2": "Same position: selection page gone; message title 消息阅读复核, draft 保留主草稿 remain."
+  },
+  "interpretation": "Two-tap close works on existing product. First tap issue also occurs with real shell screen input, so not limited to UiObject2.click. Native selection/floating action overlay consumption is possible; no event trace proves recipient or Copy action. Do not label normal system Back (none used) or confirmed owner route failure.",
+  "initial_capture": "First launch immediate uiautomator null root; second read after ready succeeded, no product retry.",
+  "restoration": {
+    "frontend-preview.xml": {
+      "exists": true,
+      "sha256": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e"
+    },
+    "remote-list-preview.xml": {
+      "exists": true,
+      "sha256": "7269f82e69e91e645a70c3c305dd895ea135655802f85b33c0206699f8dc3b90"
+    },
+    "chat-preview.xml": {
+      "exists": false,
+      "sha256": null
+    },
+    "session-preview.xml": {
+      "exists": false,
+      "sha256": null
+    },
+    "installed_sha256": "4231170818d3e866abec2bfc4bd4d960a162907d3e0bce15889cb4019d21819e",
+    "built_sha256": "4231170818d3e866abec2bfc4bd4d960a162907d3e0bce15889cb4019d21819e",
+    "pid": "19929",
+    "activity": [
+      "topResumedActivity=ActivityRecord{66144932 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1470}",
+      "Intent { flg=0x10000000 cmp=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity }",
+      "mActivityComponent=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity",
+      "ResumedActivity: ActivityRecord{66144932 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1470}"
+    ],
+    "ordinary_preferences_unchanged": true,
+    "exists_method": "Exact filename membership from run-as ls; exec-out cat exit status alone is insufficient."
+  },
+  "artifacts": [
+    {
+      "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/active.png",
+      "sha256": "78bdb3caf31c02c71fcf3903aa19c6d5bd21bcb994293c3eb3ea76c3d69b461d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/active.xml",
+      "sha256": "f5d82ab2b88855001ee1e3c6f81661803d20a0948b3dfd1b5382e4d3f621a331"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/menu.xml",
+      "sha256": "d26e2857ac7e944190f80512a034f86f9be17e21d409ef822315c0cb0a80ee75"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/selection.xml",
+      "sha256": "19a330d19e47e6122587fd17346642ee4f18c43a36010728e03f492e35a08ab4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/start.xml",
+      "sha256": "a9b5ab7d0766b8531a686f6cdfb2ac8c1f5d4ab76726f5e21b07add165086813"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/tap1.png",
+      "sha256": "7397d3aa69cb5c62c238384c167f22e2bb9cdbe1cd5df6c1e528305c87e80c27"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/tap1.xml",
+      "sha256": "f5d82ab2b88855001ee1e3c6f81661803d20a0948b3dfd1b5382e4d3f621a331"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/tap2.png",
+      "sha256": "1a8ced820180f25701cc3411a6ac763dd7a475e5175005903f428dc9ddebc3da"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-message-toolbar-20261114-r3/tap2.xml",
+      "sha256": "a9b5ab7d0766b8531a686f6cdfb2ac8c1f5d4ab76726f5e21b07add165086813"
+    }
+  ]
+}

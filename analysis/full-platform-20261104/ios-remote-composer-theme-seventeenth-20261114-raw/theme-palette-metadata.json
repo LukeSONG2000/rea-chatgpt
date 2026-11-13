@@ -1,0 +1,49 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "ThemeColorPalette",
+      "descriptor": "0x974f308",
+      "type_section_entry": "0x9d5a7d4",
+      "accessor": "0x74eadc4",
+      "fields": [
+        {
+          "name": "picker",
+          "record": "0x9c50adc",
+          "type_reference": "0x8d935b0"
+        },
+        {
+          "name": "accent",
+          "record": "0x9c50ae8",
+          "type_reference": "0x8d935b0"
+        },
+        {
+          "name": "onAccent",
+          "record": "0x9c50af4",
+          "type_reference": "0x8d935b0"
+        },
+        {
+          "name": "background",
+          "record": "0x9c50b00",
+          "type_reference": "0x8d935b0"
+        },
+        {
+          "name": "onBackground",
+          "record": "0x9c50b0c",
+          "type_reference": "0x8d935b0"
+        }
+      ],
+      "conformances": []
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

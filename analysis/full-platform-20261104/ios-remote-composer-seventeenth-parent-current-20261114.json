@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-14",
+  "module": "iOS Remote composer model slider effective theme input",
+  "status": "implemented core; original full style remains partial",
+  "baseline": "iOS1.2026.293",
+  "source_manifest": "ios-remote-composer-seventeenth-20261114-r1-source.json",
+  "source_count": 80,
+  "source_findings": "ios-remote-composer-theme-seventeenth-20261114-findings.json",
+  "source_validation": {
+    "new_evidence": 11,
+    "reused_evidence": 14,
+    "all_retained_records_match": true
+  },
+  "implemented": [
+    "Explicit modelSlider rail override -> optional tint -> effective primaryButton color precedence",
+    "Ordinary caller forwards source palette accent background-emphasis; default preserves host base foreground",
+    "Tap, long-press and accessibility opening share the same appearance input",
+    "Independent hosting presenter observes updated appearance; advanced-sheet return forwards same input",
+    "Existing native interfaceStyle forwarding, keyboard snapshot and selection/boundary haptic gate preserved"
+  ],
+  "evidence_limits": [
+    "Ordinary VM tint nil is proved; effective original modelSlider rail override producer remains unknown, host supplies nil explicitly",
+    "Source confirms primaryColor field write but custom button icon-color consumer remains unknown; send/stop colors not changed",
+    "No proof of nonnil attachment backgroundMaterial or universal card width; no blanket environment wrapper added"
+  ],
+  "verification": {
+    "ui_result": "ios-remote-composer-seventeenth-20261114-r1.xcresult",
+    "test": "testRemoteSliderThemeChinese",
+    "seconds": 30.932,
+    "passed_tests": 1,
+    "language": "zh-Hans",
+    "appearance": "light",
+    "coverage": [
+      "Actual screenshot rail G-R average greater than15, not only AX value",
+      "Select high -> advanced sheet -> reopen slider remains green and high",
+      "Outside close preserves model selection and current-task draft"
+    ],
+    "visual_review": [
+      ".tmp/remote-composer-seventeenth-20261114-images/323A61C5-2BF5-4B93-A360-5056046FEA01.png",
+      ".tmp/remote-composer-seventeenth-20261114-images/BB492656-D1D4-44E7-BAAC-BF27C390A2A2.png"
+    ],
+    "not_run": [
+      "Full color/language/appearance matrix",
+      "Runtime settings change while slider is open",
+      "Physical-device tactile/UI validation"
+    ],
+    "simulator_build": "passed",
+    "signed_device_build": "passed; strict signature verified"
+  },
+  "runtime": {
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "launch": "local.rea.chatgpt.ioshost: 17947",
+    "arguments": [],
+    "build_binary_sha256": "085aa3125262501155445a1676ac0dae979c18a9205bf311e081d448246d4d9b",
+    "installed_binary_sha256": "085aa3125262501155445a1676ac0dae979c18a9205bf311e081d448246d4d9b",
+    "signed_device_binary_sha256": "42faf5fc5864f54f965a38345c76c559956ac099b46243263ccc0c8403ae309d",
+    "strict_signature": "passed",
+    "ordinary_preferences_restored": true,
+    "kept_running": true,
+    "physical_inventory": ".tmp/remote-composer-seventeenth-20261114-devices.json",
+    "physical_install": "Air unavailable; not installed"
+  },
+  "remaining": [
+    "Source effective rail override producer and other embeddings",
+    "Custom send/stop glyph-color input chain",
+    "Full private glass/mask optical equivalence and native bridge lifecycle",
+    "Physical install while device unavailable"
+  ],
+  "publication": "Local continuation after5eaba6bf1d; no new commit or push"
+}

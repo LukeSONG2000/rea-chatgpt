@@ -1,0 +1,47 @@
+{
+  "module": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/OpenAIXPlat.framework/markdown.valdimodule",
+  "module_sha256": "07ed2c01f801f9dd7e83996e2ce6344f7ced87cdae0227cce6f669e52457d3b6",
+  "derived": "derived/valdimodules-293/ios/markdown/src/Markdown.js",
+  "derived_sha256": "0564e365dd2833b60b2a58a34e7c1a208a6b74bc55422cba335612d4f7039476",
+  "archive_member_binding": "scoped existing valdi_unpack, one module in memory, no output extraction",
+  "constructors": [
+    {
+      "needle": "e.blocks.push(g(\"rule\",\"\",0))",
+      "character_offset": 2104,
+      "utf8_offset": 2104,
+      "excerpt": "push(v(\"heading\",l.text,l.level,i,s,!1));continue}if(T(r)){r.consumeLine(),e.blocks.push(g(\"rule\",\"\",0));continue}if(void 0!==z(r)){const n=x(r,i),o=[];e.blocks.push({...g(\"quote\",n.text,0),blocks:o}),c.push({parser:new t.TextParser(n"
+    },
+    {
+      "needle": "e.blocks.push({...g(\"quote\",n.text,0),blocks:o})",
+      "character_offset": 2181,
+      "utf8_offset": 2181,
+      "excerpt": "blocks.push(g(\"rule\",\"\",0));continue}if(void 0!==z(r)){const n=x(r,i),o=[];e.blocks.push({...g(\"quote\",n.text,0),blocks:o}),c.push({parser:new t.TextParser(n.text),blocks:o,preserveLineBreaks:!0});continue}const d=O(r,4);if(void 0!==d){const t=L(r,i,d);"
+    },
+    {
+      "needle": "e.blocks.push({...g(\"list\",\"\",0),items:t.items,ordered:t.ordered,start:t.start})",
+      "character_offset": 2359,
+      "utf8_offset": 2359,
+      "excerpt": "rveLineBreaks:!0});continue}const d=O(r,4);if(void 0!==d){const t=L(r,i,d);e.blocks.push({...g(\"list\",\"\",0),items:t.items,ordered:t.ordered,start:t.start});for(let e=t.frames.length-1;e>=0;e--)c.push(t.frames[e]);continue}const u=E(r,i,s);if(void 0!==u){e.blocks.push({...g(\"table\",\"\","
+    },
+    {
+      "needle": "function L(",
+      "character_offset": 5409,
+      "utf8_offset": 5409,
+      "excerpt": ",null!=r&&r.test(m)&&(r=void 0)}o=p,e.restore(u)}return{text:n.join(\"\\n\")}}function L(e,n,i){const r=[],o=[],s=/^\\d/.test(i.marker),c=s?i.marker.slice(-1):i.marker;for(;!e.isAtEnd();){const a=O(e,4);if(void 0===a||a."
+    }
+  ],
+  "members": [
+    {
+      "name": "src/Markdown.js",
+      "sha256": "0564e365dd2833b60b2a58a34e7c1a208a6b74bc55422cba335612d4f7039476",
+      "derived_exact_equal": true
+    }
+  ],
+  "list_producer": {
+    "char_start": 5409,
+    "char_end": 6700,
+    "utf8_start": 5409,
+    "utf8_end": 6700,
+    "text": "function L(e,n,i){const r=[],o=[],s=/^\\d/.test(i.marker),c=s?i.marker.slice(-1):i.marker;for(;!e.isAtEnd();){const a=O(e,4);if(void 0===a||a.indentation>=i.contentIndentation||/^\\d/.test(a.marker)!==s||(s?a.marker.slice(-1):a.marker)!==c)break;e.position=a.contentStart;const l=e.mark(),d=e.peekLine(),u=[d];let h=!1,p=/^(`{3,}|~{3,})/.exec(d)?.[0],m=!y(e,n,e.findLineEnd()),k=l;for(e.finishLine();!e.isAtEnd();){const t=e.mark();Z(e);const i=e.isAtLineEnd();if(e.restore(t),i){u.push(e.consumeLine()),h=!0,m=!1;continue}const r=e.consumeLeadingSpaces(Number.POSITIVE_INFINITY);if(e.restore(t),r>=a.contentIndentation){e.position+=a.contentIndentation,k=e.mark();const t=e.peekLine();u.push(t);const i=/^[ \\t]{0,3}(`{3,}|~{3,})/.exec(t)?.[1];void 0!==p?(I(t,p,n)&&(p=void 0),m=!1):(p=i,m=void 0===i&&!y(e,n,e.findLineEnd())),e.finishLine(),h=!1}else{if(h||!m||y(e,n,e.text.length)||W(e,91,3)&&/^[ \\t]{0,3}\\[[^\\]]+\\]:/.test(e.peekLine()))break;if(n!==f.Rich&&void 0!==w(e,k,e.mark(),n))break;k=e.mark(),u.push(e.consumeLine())}}const g=[];r.push({marker:!0===a.checked?\"[x]\":!1===a.checked?\"[ ]\":a.marker,checked:a.checked,blocks:g}),o.push({parser:new t.TextParser(u.join(\"\\n\")),blocks:g,preserveLineBreaks:!1})}return{items:r,frames:o,ordered:s,start:s?Number(i.marker.slice(0,-1)):void 0}}"
+  }
+}
