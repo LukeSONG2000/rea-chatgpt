@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-13T19:04:05.399647+08:00",
+  "module": "iOS Remote message page seventh bounded closure",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "status": "Core frontend retained; original reasoning/DIL and optional-action fidelity incomplete",
+  "product_changes_this_batch": false,
+  "new_build_or_ui_run": false,
+  "current_source_check": "All71 files in final list source map still match; this is continuity evidence, not new UI acceptance",
+  "retained_implemented": [
+    "Normal task entry and native transcript rows; body/Markdown/code/tables and native selection",
+    "Prepared full/collapsed user prompt projection and per-message expansion",
+    "Tools/command output/search/diff, scoped file/browser entry and error states",
+    "Completed reply copy; supplied completion timestamp independent of copy capability",
+    "Reading/disclosure/table offsets, return to list, bottom navigation and replay state"
+  ],
+  "source_evidence": [
+    "ios-remote-reasoning-seventh-20261113-findings.json",
+    "ios-remote-message-footer-siblings-20261113-findings.json",
+    "ios-remote-coordinated-parent-current-20261113-r2.json"
+  ],
+  "new_source_conclusion": "The actual cached/uncached HistoryFragment Markdown consumers and TurnState parent are proved; all start from existing rendered values. Raw ReasoningThreadItem.content to CodexRenderedItem production/visibility is still not bound. No invented full-reasoning UI or unconditional feedback/fork controls.",
+  "not_implemented": [
+    {
+      "feature": "Full reasoning text/disclosure and DIL widgets",
+      "breakpoint": "ReasoningThreadItem.content payload+0 -> CodexRenderedItem writes -> visible fragment; existing summary reads payload+24 separately"
+    },
+    {
+      "feature": "Full feedback/fork/hook footer",
+      "breakpoint": "Optional supplied callbacks are observed; actual async outcomes, feedback form and fork destination/provider remain unclosed"
+    },
+    {
+      "feature": "Original full Markdown parent/scroll lifecycle",
+      "breakpoint": "OAIMarkdown options/private native renderer, prepared-source selection40/2 and exact initial/pinned restoration not recovered"
+    }
+  ],
+  "runtime": {
+    "simulator": "Retained current final list package, no restart needed for this read-only iOS pass",
+    "physical": "Still tunnel unavailable and ddiServicesAvailable false on fresh devicectl query; list candidate not installed, previous delivered settings/plugins build remains",
+    "physical_query": "2026-11-13 current devicectl list: paired, tunnelState unavailable, ddiServicesAvailable false; no install attempted"
+  },
+  "source_hashes": {
+    "implementation/ios/Sources/NativeConversationHost.swift": "ed24557868eec867bba0a78dab9a8104e52ff484301226a265fee296f044998c",
+    "implementation/ios/Sources/RemoteTranscriptLayout.swift": "bd9216549c3f29a63ca38025d2b241981ca6344ffa523c94427a1331fd232eec",
+    "implementation/ios/Sources/RemoteThreadReplay.swift": "418ce4e339dcb53828dcaf61b668816a7d833470e84a40c6fb9d2bc93b511dc1",
+    "implementation/ios/Sources/RecoveredRemoteTranscriptCollection.swift": "64f10a9f2fb83d512122db4c9cb9cb0a0fcf1b9dd757844d5326563d89e1b4f8"
+  },
+  "policy": "Proceed to next whole core module rather than repeat negative consumers or invent missing UI; backend and message attachments remain out of scope",
+  "publication": "Local only after c17d46fb1a; no new commit/push/release"
+}

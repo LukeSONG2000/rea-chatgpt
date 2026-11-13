@@ -1,0 +1,404 @@
+{
+  "base_commit": "c17d46fb1a3af72bfbbab68c77a00c4830c54422",
+  "purpose": "confirmed mobile frontend checkpoint; newer unbuilt iOS async work excluded",
+  "ios_verified_source_manifest": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-source.json",
+  "ios_verified_hashes_match": 71,
+  "android_current_manifest": "analysis/full-platform-20261104/android-remote-user-input-20261113-source-hashes.json",
+  "excluded_active_work": [
+    "iOS async user-input gate/form/fixture/tests"
+  ],
+  "local_only": [
+    "raw logs",
+    "xcresult",
+    "screenshots",
+    "videos",
+    "builds",
+    "device preferences"
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "a70f20c3dcdb668db2df5c49f8fb997dccf92e35a9c74d913aee8c7b3f5c0433",
+      "bytes": 113431,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-controls-20261113-oneplus-codec.json",
+      "sha256": "64d36e3893627d25a58768c8b391917b710b8246df65ed0eb913129539a437a2",
+      "bytes": 991,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-controls-20261113-oneplus-r1.json",
+      "sha256": "2a24737beca630041c3411ee7c485ceb6cc4b98ac44d95552cd6f2d893dbcab2",
+      "bytes": 1064,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-controls-20261113-runtime.json",
+      "sha256": "4350e3095b6bca16d6b502540d555d35195c0db6ce7997e8b5261f3f09587d65",
+      "bytes": 1116,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-controls-20261113-source-hashes.json",
+      "sha256": "7bb6318e5445313dd0855d5f1fc92d456e4b131d0330d21616752b95648f77e9",
+      "bytes": 1069,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-controls-20261113-source-validation.json",
+      "sha256": "22454e2438a894d8ef58bc7233001543aceb2707fa0343bc01a981a8b5852b24",
+      "bytes": 7534,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-controls-20261113-source.json",
+      "sha256": "1c9cffbf2922d0b3d535682e83b966ab5a7873fea1c58e68435a24b9f731e70a",
+      "bytes": 16020,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-controls-parent-current-20261113.json",
+      "sha256": "3d4f4e22a9d29b545e8cc87b6e1632d4095d97c8e715f9dbd763041448301932",
+      "bytes": 8543,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-20261113-body-evidence.json",
+      "sha256": "6ba7e8dcb89a0c40a1883dd8372954856b493448b30c05138939a627f2524fc8",
+      "bytes": 11109,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-20261113-oneplus-r1.json",
+      "sha256": "841e1e42f576661039505e46d58fcfa2ab0c234ef76adda52097d047ab468a6a",
+      "bytes": 1120,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-20261113-oneplus-r2.json",
+      "sha256": "001dbed6be852156374824761e8bf0f7e1e2e16ccee248b38b8a83eca3f7580d",
+      "bytes": 1120,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-20261113-oneplus-r3.json",
+      "sha256": "4ff3eed7e825db5be5e503e3c49f1cb9e9b68a3b735bc0cd863c6288a1b89f54",
+      "bytes": 1062,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-20261113-oneplus-r4.json",
+      "sha256": "a9a5e4a2ea538529ef34fd015d92e939df35237e4a20e49501d8fd75b4ae618c",
+      "bytes": 1050,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-20261113-oneplus-r5.json",
+      "sha256": "013814ff4bfff5cb8ce41920bbc5ca5e08b5f58e0cef2008325180398f78e99f",
+      "bytes": 992,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-20261113-runtime.json",
+      "sha256": "7dd1b3626e3f506bbb37ba0a313950accc30d23d8ef5b8977e3c0f417fd517d5",
+      "bytes": 1067,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-20261113-source-hashes.json",
+      "sha256": "639b9443196f9c391eb09f65823ec40b0cef5cdde55561f11ae6c9b06eec788a",
+      "bytes": 1029,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-20261113-source-validation.json",
+      "sha256": "5b96245f4767f5d5c79e2f5ecb182a8f3818d5f9503b51ea66d8e6689ca340b5",
+      "bytes": 5635,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-20261113-summary.md",
+      "sha256": "616ea64b5b6516e71eb0ce862a3490dfa0b3f20501d68b2da1f69ce86f2e05ac",
+      "bytes": 2807,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-message-parent-current-20261113.json",
+      "sha256": "a37a67c8e4e5c889e05dcc513c0ab098b2a0e18bed7c9fd8b3357ba1963c2393",
+      "bytes": 7990,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-20261113-implementation.md",
+      "sha256": "3959e844dddf469a40397afc0c84b3ce8dcb04234485a081dd9ae6b65019a48c",
+      "bytes": 3031,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-20261113-oneplus-r1.json",
+      "sha256": "2a7f25933ff24cc1d78aff0181dea0b497da46d783b6755b47cd99b1f38d7ba4",
+      "bytes": 1038,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-20261113-oneplus-r2.json",
+      "sha256": "692130d5f468d09f4eb5d343446134388dece58606a89ad4a1a1ee0aa21bd76e",
+      "bytes": 1038,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-20261113-oneplus-r3.json",
+      "sha256": "62c959fa2c97b8b09d3e5f07548defe2120b573aaac22ab20f035dd21905dd1c",
+      "bytes": 1038,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-20261113-oneplus-r4.json",
+      "sha256": "1cd39e50536bce0776a0e32cc32ec80a9210970ffb16590b664d2186c810b0e9",
+      "bytes": 1052,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-20261113-remainder-runner.py",
+      "sha256": "078e35588aa205e96866f2b03b96dc6db2d3afb6bddcf70bbb0ad0ac3a4c3784",
+      "bytes": 5790,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-20261113-runtime.json",
+      "sha256": "45493ad85d8fd0e3ed035d5936413bbd9c5d9a82d67a55fe120103409e6f534c",
+      "bytes": 913,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-20261113-source-hashes.json",
+      "sha256": "e199b23ce4c42dc6335ed642b40844777b41cb7e9b5332523da929dd70e18548",
+      "bytes": 2281,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-20261113-source-validation.json",
+      "sha256": "ee7278005d1e443f7580b9dc59f88fa86a2b7bb19c893abbd04950a1b85ba804",
+      "bytes": 3633,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-20261113-source.json",
+      "sha256": "b92c3a6b55def4dc53009cd2bb92046d0b7aa616564f950cf8fd9664f265d436",
+      "bytes": 12054,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-remote-user-input-parent-current-20261113.json",
+      "sha256": "2c94724b0ae33876f8a5d08411d012627418c078ea83c5862203d5456b60eef3",
+      "bytes": 9251,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-findings.json",
+      "sha256": "2d098db2d3e88516d48863ad90289c686dc0c9911ab4526f585639e38d344f6b",
+      "bytes": 17234,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-simulator.json",
+      "sha256": "7254695b051ea850587edf56ed1f4f9fb9e48bdd9d295dddf544ae9bf7fb7dea",
+      "bytes": 354,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-source.json",
+      "sha256": "51270713a362acb4c3aa41e9cbe4fbd5c34d6dfecee0f935f2fb6ff5c2f552c0",
+      "bytes": 9108,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-controls-eighth-parent-current-20261113.json",
+      "sha256": "0739147112cf2a350fa5be7d5064c7cdbd49a562dc879864b08f00d4ae5046bf",
+      "bytes": 3388,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-messages-seventh-current-20261113.json",
+      "sha256": "1e6acf686715075a78df7a8edbc58fd1bf3fe27808fedb6e3991473b4bdc234a",
+      "bytes": 3495,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-findings.json",
+      "sha256": "53e18d27f16058b3a0ea14b0f06063de6aba25e90b30b6fe77b76c4a102edf1a",
+      "bytes": 13253,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/mobile-remote-controls-parent-current-20261113.json",
+      "sha256": "9550b501c7f02632b55c7a997f93fa2a5c4f8a74a1bce52f31de949511c315d3",
+      "bytes": 1519,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "analysis/full-platform-20261104/mobile-remote-message-parent-current-20261113.json",
+      "sha256": "c8ebdca2b9c6a6bf590ff03b5f21d917dc05f6f2678ffbe2f4ed3e69b08e2ddd",
+      "bytes": 1491,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "docs/full-platform/CHECKPOINT-20261113-REMOTE-FRONTEND.md",
+      "sha256": "1c03717a725d90922139fb57021bc880b44df24ff06e5c353ea7abffa5cb8df3",
+      "bytes": 2631,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "5b110c66b57b4acb2719d76cee0c3ac8094aa50c61d670aea0001f3802180ae0",
+      "bytes": 76521,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "docs/full-platform/MOBILE-REMAINING-20261113.md",
+      "sha256": "e7d8a7220414534cf932050150085550a76bb984252225d3e05a55364a1e8bd6",
+      "bytes": 8303,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "docs/full-platform/PROGRESS-20261113-REMOTE-CONTROLS.md",
+      "sha256": "9c12a1376ab357faa38521dec677ab98058116f0e5fcce4723d7fb6ec8ab5ce4",
+      "bytes": 4950,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "docs/full-platform/PROGRESS-20261113-REMOTE-MESSAGES.md",
+      "sha256": "f6d6a2c30403db7e97e75f485e25345ea33accc904a49e02c15095ca7dce7c8c",
+      "bytes": 3802,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/RemoteConversationTest.kt",
+      "sha256": "b2197b374cffd154fee0beaa13f4dee64c468fedc8e355921579bf6a5e69d7ae",
+      "bytes": 55795,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteApprovalCard.kt",
+      "sha256": "6accc7121e73485a281601bf05dc727a14e9d1f094b90bdefb9d35ddc1baa96b",
+      "bytes": 4430,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteApprovalModel.kt",
+      "sha256": "2589e68795c922ad6f8f467ca354b435efb6964d3399359a784237ef58bea442",
+      "bytes": 3608,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteConversationModel.kt",
+      "sha256": "6380fe1278c51266eace8ed69423cd207a5a27defc4403a2a9ed082bfa9e38be",
+      "bytes": 27353,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteConversationPage.kt",
+      "sha256": "061857f5ee8d8158709720d97b2f5bf2956ec9ac9cc01bdf9142076cd1fc5397",
+      "bytes": 13848,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListModel.kt",
+      "sha256": "23e41dc5e574cdb7ba2158a36d799792997fc0babe13465838e72918fad30e40",
+      "bytes": 13069,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteMessageBody.kt",
+      "sha256": "86dec6c0d1df04a1fc2a802f46eb9b48686e60822b3360c44faf81a816282579",
+      "bytes": 2924,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteMessageLink.kt",
+      "sha256": "eddc4c4afd6c41abaf8f378ee4744d86c7b92f9fc25d878c8626a744ec5909db",
+      "bytes": 2695,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteTaskControlsModel.kt",
+      "sha256": "4f42be558712afb69f54dfe170a8be0fcf962640721243e1d6c7bbc8230afd07",
+      "bytes": 5407,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteTaskControlsView.kt",
+      "sha256": "a384ac2793809eda06acda8533c5d435e0cdd40bf4258351ee03299890e45d45",
+      "bytes": 11638,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteUserInputCard.kt",
+      "sha256": "c5b0b3bb8ecc35dd7f2452b85c404ec928422207aedd0b7bf42baac32e2b9b68",
+      "bytes": 6412,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/RemoteUserInputModel.kt",
+      "sha256": "6749878e818bed994fe30334547f49e0405bd3c201c52ee17c3b442e44e7c9a5",
+      "bytes": 3595,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/res/values-zh/remote_strings.xml",
+      "sha256": "4741c7b67aa55144878de93e275e145f0711e9bfd8b98a57503d9dad6be71d75",
+      "bytes": 5594,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/app/src/main/res/values/remote_strings.xml",
+      "sha256": "c407b0de44b7d702980b6db516137a518323ef96bd91032727378ba4a689ca7c",
+      "bytes": 5701,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/android/test-remote-list.py",
+      "sha256": "8aa27993db505c48d1861944a4e33e5aa7d9e0497f02f3543be3999e569fc0ca",
+      "bytes": 5671,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "7462cca69935d7792c23d443cd204a873cfad08be6b26557af9dc7f7166c84f1",
+      "bytes": 612519,
+      "source": "verified-eighth-snapshot"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteAgentsPresentation.swift",
+      "sha256": "c3c3f5806ba13d39e84354c5beeee73b59d8991eccb685ca74a31cb5dac8b3ff",
+      "bytes": 11779,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteThreadReplay.swift",
+      "sha256": "0d331947ed7321c6e5425a1d3fb57bd41c8c3062d12ad3094e65ce127b4d3cd0",
+      "bytes": 71600,
+      "source": "current-verified-worktree"
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "a57889a1424dfa0add343da4cd89b3d0f965b1c2886fc8086d04c8103799032c",
+      "bytes": 271914,
+      "source": "verified-eighth-snapshot"
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "a85332daa2fd2ecc3edf28797c75e748d44fd3139bf3649b9f7e89e96a0f89c3",
+      "bytes": 852522,
+      "source": "verified-eighth-snapshot"
+    },
+    {
+      "path": "implementation/ios/test-official-text.sh",
+      "sha256": "a837b36574c90cf505192d3f0f66e1cc11b4d2721f4b7750abf09c5ba88ed2bf",
+      "bytes": 1655,
+      "source": "current-verified-worktree"
+    }
+  ]
+}

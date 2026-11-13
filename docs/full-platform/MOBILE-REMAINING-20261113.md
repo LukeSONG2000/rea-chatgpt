@@ -26,9 +26,15 @@
 
 真实历史／全局搜索、动态目录、精确抽屉光学和全部手势／触觉、未接入子页仍没有完整实现；不能把宿主checkpoint和Material3行为称为原始Android算法。框架报告：`android-shell-parent-current-20261113.json`、`android-shell-20261113-summary.md`。
 
-Remote列表本批已补三种实际分组／日期投影及选择保存、归档标记修复、保存拒绝不先改显示、空列表与无匹配区分。OnePlus模型／空态／整页／重启4项通过。动态能力／真实未读／分页、部分自定义分区、连接设置实际接入和精确行手势／光学仍缺。报告：`android-remote-list-parent-current-20261113.json`；双端本批见`PROGRESS-20261113-REMOTE-LISTS.md`。下一整项Remote消息区。
+Remote列表本批已补三种实际分组／日期投影及选择保存、归档标记修复、保存拒绝不先改显示、空列表与无匹配区分。OnePlus模型／空态／整页／重启4项通过。动态能力／真实未读／分页、部分自定义分区、连接设置实际接入和精确行手势／光学仍缺。报告：`android-remote-list-parent-current-20261113.json`；双端本批见`PROGRESS-20261113-REMOTE-LISTS.md`。该列表记录保留为前置快照。
+
+Remote消息本批补用户／回复共享正文、宽表横向滚动、代码原文复制、网页与file／不支持scheme分流、草稿错误和阅读错误隔离，以及长文返回。OnePlus中文浅色最终正文、中段返回和命令详情通过；宽表前后实际横移262px且纵坐标不变。普通网页当前仍为可返回的能力说明和URL复制，完整浏览器与文件后续独立做。原完整消息动作菜单／reasoning/DIL、精确材质和复杂活动分支仍缺，当前phase复制门控和第三方renderer是显式宿主适配。下一整项Remote输入与任务控制，参见`PROGRESS-20261113-REMOTE-MESSAGES.md`。
 
 ## 对应当前证据
+
+Remote输入／控制本批已补Android运行中Queue／Steer、纯文本队列编辑／取消／启动及自动出队、独立当前配置和已接受请求快照、Goal创建／暂停恢复／清除。重试／停止前旧队列不会被新请求自动消费，操作绑定明确request；权限仅离线只读／默认选择，不授予系统或服务权限。智能体目前仍是空／未接详情状态，缺iOS新加的完整agent请求到显式child目标、再进入现有任务页的接口。两条中文浅色流程通过，坏／缺／非整数版本记录的拒绝另有纯合同检查；设备安装与源码摘要见本批机器记录。原动态模型目录、真实usage生产、原控件尺寸／光学与高级权限仍未完整接入。下一整项审批与补充输入。参见`PROGRESS-20261113-REMOTE-CONTROLS.md`。
+
+iOS已接显式provider子任务目标与原生任务页入口，父子草稿及消息独立；原始动态route、原版队列更新回执和sentPrompt分支仍未恢复。具体源码／独立适配边界见`ios-remote-controls-eighth-parent-current-20261113.json`。
 
 - 框架：`ios-shell-parent-current-20261113-r5.json`；当前启动／配置／恢复见`ios-startup-parent-current-20261113.json`，已装模拟器与Air并完成无参数启动。
 - 文件：`ios-files-browser-parent-current-20261113-r4.json`。

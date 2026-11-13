@@ -3,6 +3,59 @@ import UIKit
 
 extension HostInteractionTests {
     @MainActor
+    func testRemoteAgentChildRoutingChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks",
+            "--remote-interactive-replay", "--remote-task-controls-fixture",
+            "--chat-state-profile=" + profile, "--remote-draft-profile=" + profile,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        let row = app.buttons["remote-task-fixture-a-completed-thread"]
+        for _ in 0..<7 {
+            let top = app.navigationBars.firstMatch.frame.maxY
+            let bottom = app.buttons["remote-composer-focus"].frame.minY
+            if row.isHittable && row.frame.minY > top && row.frame.maxY < bottom - 8 { break }
+            if row.exists && row.frame.minY < top { app.swipeDown() } else { app.swipeUp() }
+        }
+        XCTAssertTrue(row.isHittable); row.tap()
+        func editor() -> XCUIElement {
+            let focus = app.buttons["remote-composer-focus"]
+            if focus.exists && focus.isHittable { focus.tap() }
+            let field = app.textViews["remote-composer-editor"]
+            XCTAssertTrue(field.waitForExistence(timeout: 5)); return field
+        }
+        let parent = editor(); parent.tap(); parent.typeText("Parent draft")
+        func openChild() {
+            let summary = app.buttons["remote-agents-summary"]
+            XCTAssertTrue(summary.waitForExistence(timeout: 5))
+            let agent = app.buttons["remote-agent-row-fixture-agent-layout"]
+            if !agent.exists { summary.tap() }
+            XCTAssertTrue(agent.waitForExistence(timeout: 5)); agent.tap()
+            XCTAssertTrue(app.navigationBars.staticTexts["布局检查"].waitForExistence(timeout: 5))
+            XCTAssertFalse(app.buttons["remote-agent-detail-close"].exists)
+            XCTAssertFalse(app.buttons["remote-agents-summary"].exists, "Child capability catalog is independent")
+        }
+        openChild()
+        let child = editor(); XCTAssertFalse((child.value as? String ?? "").contains("Parent draft"))
+        child.tap(); child.typeText("Child draft")
+        let first = XCTAttachment(screenshot: app.screenshot()); first.name = "agent-child-draft-zh-light"
+        first.lifetime = .keepAlways; add(first)
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue((editor().value as? String ?? "").contains("Parent draft"))
+        openChild(); XCTAssertTrue((editor().value as? String ?? "").contains("Child draft"))
+        app.buttons["remote-composer-send"].tap()
+        XCTAssertTrue(app.buttons["remote-composer-stop"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["remote-composer-stop"].waitForNonExistence(timeout: 12))
+        let second = XCTAttachment(screenshot: app.screenshot()); second.name = "agent-child-response-zh-light"
+        second.lifetime = .keepAlways; add(second)
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue((editor().value as? String ?? "").contains("Parent draft"))
+    }
+
+    @MainActor
     func testRemoteListCheckpointChinese() throws {
         continueAfterFailure = false
         let app = XCUIApplication(), profile = UUID().uuidString
@@ -6898,8 +6951,8 @@ final class HostInteractionTests: XCTestCase {
         XCTAssertFalse(app.buttons["remote-goal-edit"].exists)
         let agent = app.buttons["remote-agent-row-fixture-agent-layout"]
         XCTAssertTrue(agent.waitForExistence(timeout: 5)); agent.tap()
-        XCTAssertTrue(app.buttons["remote-agent-detail-close"].waitForExistence(timeout: 5))
-        app.buttons["remote-agent-detail-close"].tap()
+        XCTAssertTrue(app.navigationBars.staticTexts["布局检查"].waitForExistence(timeout: 5))
+        app.navigationBars.buttons.firstMatch.tap()
         goal.tap()
         app.buttons["remote-goal-clear"].tap()
         let clear = app.buttons["remote-goal-clear-confirm"].firstMatch

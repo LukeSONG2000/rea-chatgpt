@@ -2,6 +2,10 @@
 
 ## 最新安排：iOS收口与Android逐项对齐
 
+最新整项：[Remote输入与任务控制](PROGRESS-20261113-REMOTE-CONTROLS.md)。iOS新增完整agent请求到显式provider子任务目标，再进入现有任务页的前端通路；Android补Queue／Steer、纯文本队列编辑、配置快照及本地Goal。原始route／服务回执保持未知或接口边界，不猜ID。下一整项审批与补充输入，随后Chat/Work；下方消息／列表批次保留为历史前置。
+
+当前整项：[Remote消息页](PROGRESS-20261113-REMOTE-MESSAGES.md)。iOS保留已实现核心并记录完整reasoning的确切生产者断点，不重复猜测；Android补正文共享载体、用户消息渲染、表格与链接分流、阅读状态错误隔离。构建和设备事实以该批机器记录为准，下一整项为Remote输入与任务控制。下方列表批次作为前置快照。
+
 最新列表整项：[Remote列表记录](PROGRESS-20261113-REMOTE-LISTS.md)。Android三种分组／日期／归档／保存失败已补，iOS列表偏好及独立冷启动行锚点已接入；原像素算法和分页／Live Activity未做。下一整项Remote消息区。以下设置／插件、框架批次保留为前置记录。
 
 本批实现与缺口见[移动收口记录](PROGRESS-20261113-MOBILE-CLOSURE.md)。Android主框架／首页／侧栏／设置入口已完成本轮补齐并装OnePlus，下一整项Remote列表。iOS已补颜色图例、起始页面测量链和插件父容器／详情／设置连接状态；起始页面在交互通过后仍被截图发现裁切，随后按测量proposal修正并单测两种标题，不能将早期交互通过直接当视觉完成。各次构建、装机和剩余原始布局以本批machine current报告为准。

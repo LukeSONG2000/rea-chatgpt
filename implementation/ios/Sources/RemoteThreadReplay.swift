@@ -1008,6 +1008,21 @@ final class RemoteThreadReplayStore: ObservableObject {
         commit(state)
     }
 
+    //Explicit offline provider, not an official child-task history response.
+    //Never seed over an existing journal or publish navigation before commit.
+    func prepareAgentThread(_ target: RemoteAgentThreadTarget, parent: RemoteComposerDraftScope) -> Bool {
+        let scope = RemoteComposerDraftScope(hostID: target.hostID, threadID: target.threadID)
+        guard isEnabled, !unreadableSnapshot, scope != parent else { return false }
+        if states[scope] != nil { return true }
+        var state = RemoteThreadReplayState(scope: scope)
+        guard let turnID = state.begin(intentID: UUID(), prompt: visualText("检查子任务", "Inspect child task")) else { return false }
+        guard state.receive(.init(scope: scope, turnID: turnID, sequence: 1,
+            phase: .completed, text: visualText(
+                "这是独立合成子任务。可以继续输入，再返回原任务；两边草稿与消息独立保存。",
+                "This is an independent synthetic child task. Continue here and return to the parent; drafts and messages stay separate."))) else { return false }
+        return commit(state)
+    }
+
     func submit(_ event: RemoteComposerSubmission, scope: RemoteComposerDraftScope, session: UUID,
                 drafts: RemoteComposerDraftStore,
                 state: RemoteComposerSubmissionState) -> RemoteComposerSubmissionFailure? {

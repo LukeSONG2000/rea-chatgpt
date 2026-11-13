@@ -80,6 +80,8 @@ class SyntheticRemoteListProvider(private val chinese: Boolean, private val fail
             RemoteListTask(RemoteTaskKey("fixture-a", "theme"), text("核对深色外观", "Review dark appearance"), "mobile", RemoteTaskStatus.Idle),
             RemoteListTask(RemoteTaskKey("fixture-b", "retry"), text("检查错误提示", "Inspect error states"), "demo", RemoteTaskStatus.Failed),
         )
+        tasks += RemoteListTask(RemoteTaskKey("fixture-a", "tool-input"), text("填写任务补充信息", "Provide task details"), "demo", RemoteTaskStatus.Approval)
+        tasks += RemoteListTask(RemoteTaskKey("fixture-a", "async-input"), text("回答后续问题", "Answer follow-up questions"), "demo", RemoteTaskStatus.Approval)
         repeat(12) { index -> tasks += RemoteListTask(RemoteTaskKey("fixture-a", "recent-$index"),
             text("交互记录 ${index + 1}", "Interaction ${index + 1}"), null, RemoteTaskStatus.Idle) }
         val now = java.time.Instant.now().epochSecond
@@ -104,11 +106,16 @@ class RemoteListStore(private val preferences: SharedPreferences) {
     internal fun savePinned(key: RemoteTaskKey, pinned: Boolean): Boolean =
         preferences.edit().putBoolean("thread-pin:" + key.storageKey, pinned).commit()
     private fun approvalReceiptKey(identity: RemoteApprovalIdentity): String = JSONArray(listOf(
-        identity.task.hostID, identity.task.threadID, identity.connection, identity.turn, identity.request)).toString()
+        identity.task.hostID, identity.task.threadID, identity.connection, identity.turn, identity.request) +
+        (if (identity.revision == 0) emptyList() else listOf(identity.revision))).toString()
     internal fun hasApprovalReceipt(identity: RemoteApprovalIdentity): Boolean =
         preferences.getBoolean("approval-receipt:" + approvalReceiptKey(identity), false)
     internal fun saveApprovalReceipt(identity: RemoteApprovalIdentity): Boolean =
         preferences.edit().putBoolean("approval-receipt:" + approvalReceiptKey(identity), true).commit()
+    internal fun hasInputReceipt(identity: RemoteApprovalIdentity): Boolean =
+        preferences.getBoolean("input-receipt:" + approvalReceiptKey(identity), false)
+    internal fun saveInputReceipt(identity: RemoteApprovalIdentity): Boolean =
+        preferences.edit().putBoolean("input-receipt:" + approvalReceiptKey(identity), true).commit()
     private var value = JSONObject(preferences.getString("snapshot", "{}") ?: "{}")
     val sort: RemoteListSort get() = runCatching {
         RemoteListSort.valueOf(value.optString("sort", "ByProject"))
@@ -134,6 +141,22 @@ class RemoteListStore(private val preferences: SharedPreferences) {
     fun saveList(hostID: String?, query: String, collapsed: Set<String>, index: Int, offset: Int): Boolean = change {
         it.put("host", hostID.orEmpty()).put("query", query).put("collapsed", JSONArray(collapsed.toList()))
             .put("index", index).put("offset", offset)
+    }
+    internal fun controls(key: RemoteTaskKey): RemoteTaskControls {
+        if (!value.has("controls")) return RemoteTaskControls()
+        val states = value.getJSONObject("controls")
+        return if (!states.has(key.storageKey)) RemoteTaskControls() else decodeRemoteControls(states.getJSONObject(key.storageKey))
+    }
+    internal fun saveTaskRuntime(key: RemoteTaskKey, turns: List<RemoteFrontendTurn>, controls: RemoteTaskControls,
+        clearDraft: Boolean = false): Boolean = change {
+        val transcripts = it.optJSONObject("transcripts") ?: JSONObject()
+        transcripts.put(key.storageKey, encodeRemoteTurns(turns)); it.put("transcripts", transcripts)
+        val states = if (it.has("controls")) it.getJSONObject("controls") else JSONObject()
+        states.put(key.storageKey, encodeRemoteControls(controls)); it.put("controls", states)
+        if (clearDraft) {
+            val drafts = it.optJSONObject("drafts") ?: JSONObject()
+            drafts.put(key.storageKey, ""); it.put("drafts", drafts)
+        }
     }
     internal fun hasTranscript(key: RemoteTaskKey): Boolean = value.optJSONObject("transcripts")?.has(key.storageKey) == true
     internal fun turns(key: RemoteTaskKey): List<RemoteFrontendTurn> =

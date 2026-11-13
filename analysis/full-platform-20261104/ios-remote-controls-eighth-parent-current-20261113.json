@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-13T19:43:38.845781+08:00",
+  "platform": "iOS",
+  "module": "Remote composer/task controls eighth pass: agent action route",
+  "baseline": {
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "official_evidence": "ios-remote-agent-route-eighth-20261113-findings.json",
+  "implemented": [
+    "Complete agent payload forwarded with account, parent scope, composer session and projection revision to explicit target resolver",
+    "Optional provider-supplied host/thread/title; no agent ID or visible-title inference",
+    "Positive fixture mapping opens existing native task page with scoped message history, composer and independent draft",
+    "Atomic initial synthetic history acceptance before publishing route; existing child journal not overwritten",
+    "Parent/child return and repeated child entry preserve each draft; child can send deterministic reply",
+    "Unknown/unavailable mapping retains returnable capability detail; child fixture does not inherit parent Goal/agent capabilities"
+  ],
+  "source_vs_adapter": {
+    "source": "Details grouped parent; complete Subagent passed into ThreadViewAction via injected owner",
+    "independent": "Request DTO/admission, explicit fixture map, initial synthetic history and native push carrier",
+    "unknown": "Original final dynamic action-handler host/thread resolver and exact presentation; no original navigation parity or actual service fetch claimed"
+  },
+  "verification": {
+    "foundation": "test-official-text.sh passed; explicit target/full-payload/account/session/revision/host/self-route cases",
+    "ui": {
+      "bundle": "ios-remote-agent-route-eighth-20261113-r2.xcresult",
+      "result": "passed",
+      "seconds": 40.061,
+      "scope": "Chinese/light parent draft, agent child entry, own draft, Back, reenter, send/reply, Back preserves parent draft"
+    },
+    "history": "r1 failed before task entry due one-direction scroll overshooting target; recording inspected, existing bounded bidirectional locator reused; product unchanged",
+    "screenshots_reviewed": [
+      "ios-remote-agent-route-eighth-20261113-review/child-draft.png",
+      "ios-remote-agent-route-eighth-20261113-review/child-response.png"
+    ],
+    "build": "simulator and iphoneos passed; strict deep codesign passed",
+    "not_run": [
+      "physical UI/haptics",
+      "new English/dark matrix",
+      "full existing Goal journey after updated routing assertion"
+    ]
+  },
+  "source_hashes": "ios-remote-agent-route-eighth-20261113-source.json",
+  "runtime": {
+    "simulator": "ios-remote-agent-route-eighth-20261113-simulator.json",
+    "physical_install": "not installed: paired Air tunnel unavailable; DDI false on current query",
+    "signed_binary_sha256": "85ceab651b5225af631bc188bab6f76ddfd478022c9e3aba763bd53234246cf1"
+  },
+  "remaining": [
+    "Original child-task route/async loading/error navigation carrier",
+    "Agent status/grouping producer and full lifecycle",
+    "Original AppServer queued-settings schema/effective projection and async receipts",
+    "Original Goal live duration and optical/haptic fidelity",
+    "Android explicit child-target counterpart tracked separately"
+  ],
+  "scope": "Frontend-only; fixture state is not real task execution",
+  "publication": "Local after c17d46fb1a; no new commit/push/release"
+}

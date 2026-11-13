@@ -1,0 +1,178 @@
+{
+  "artifact": "Android 1.2026.293 frozen source",
+  "scope": "read-only independent UserInput evidence; no device, build or product edits",
+  "important_distinction": "Tool UserInput and AsyncQuestionCard are separate official UI/model/routes. Do not combine Tool secret/options metadata with Async pager as one official contract.",
+  "tool_user_input": {
+    "ui": "All questions at once; optional header, text, single selected option with label/description. Free text if isOther or zero options. Secret masks visual text. Submit requires all answers nonblank.",
+    "state": "Answers map keyed by question ID, remembered using xom request ID. No pager/skip evidenced for this card.",
+    "payload": "List<uom(questionID,List<String>(one answer))> in question order -> igk(requestID,answers) -> zsk(requestID,answers) -> fx21.l(host,...). Exact downstream wire/ack lifecycle not traced."
+  },
+  "async_question": {
+    "ui": "One question with count, option strings and custom input; UI and Next default to first option when no map entry. Previous skips submitted IDs. Next disabled for blank current effective answer.",
+    "skip": "Skips ONLY current question: records empty and removes current pending-submit ID, then advances. At last eligible question, Skip as well as Next submits earlier nonblank pending answers. If none, closes without sending empty aggregate.",
+    "payload": "Host path uses pending ID set to filter answer map, then ru81.q emits <send_user_message_question_reply>\\n[{questionItemId,question,answer}]\\n</send_user_message_question_reply>; trims answer, omits empty/submitted IDs; sent as hwt.M follow-up. This is not Tool zsk RPC.",
+    "identity_busy": "s7m host/thread + Async ID; sba requires card ID equals supplied ID and jfy0.s; T false, i true and !k. k submitting suppresses card p. py81.l compares current ID to submitted snapshot before settling, failure clears submitting.",
+    "expiry": "anj.l is compared to current time in qu81.a; it is a timestamp/expiry, NOT proven error object."
+  },
+  "minimum_reconstruction": [
+    "Separate typed Tool and Async request variants; no mixed pager-secret card claim.",
+    "Tool aggregate answers under exact task/request/question identity with nonblank validation.",
+    "Async skip/next/previous and default option behavior above; local aggregation remains separate from actual RPC.",
+    "Prevent old response settling replacement using exact scope/request identity; independent adapter revision protections may be added but are not proved original fields."
+  ],
+  "unknowns": [
+    "Tool downstream response settlement, busy/error UI replacement and service stale-response rejection are not fully recovered.",
+    "Async exact failure message/toast and detailed partial-success replacement policy remain unverified; do not invent inline error UI from anj.l (expiry).",
+    "Dedicated MCP elicitation hkk->wy81.h and tvk->t091.d are separate routes; neither recovered as ordinary command approval.",
+    "Network/special permission approval UI and real backend grant/reject lifecycle are not restored by generic command buttons or UserInput fields.",
+    "Secret UI masking does not prove encryption, non-persistence, clipboard policy or secure transport.",
+    "Official full wire protocol/remote backend is not validated; implementation should clearly remain independent typed adapter."
+  ],
+  "related_report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-approval-20261111-source.json",
+  "evidence": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/dp60.java",
+      "sha256": "89732266f292d9c176ae0e002fdc4ae08ded0a7db34762a0683f978cb5490a8b",
+      "lines": "1267-1286,2557-2912",
+      "claim": "Separate dispatch xom Tool UserInput; options/custom/secret fields; request-keyed answer map."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/fyc.java",
+      "sha256": "d98394ed228eadfa2a3a682d603c25c2880a597a248f5584802405b847d5bc5d",
+      "lines": "48-142",
+      "claim": "All Tool questions looped in one card; bottom submit; no pager."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/jbl.java",
+      "sha256": "039e512e248d5194c643854035565a30c1c430b42cb506e6dc0fd061d6699a95",
+      "lines": "20-26",
+      "claim": "Serialized question model keys id/header/question/isOther/isSecret/options."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/wom.java",
+      "sha256": "4c9e5700da1c6fa5e823f14da79e00651f3d09c135904c2b82a871d77250b1af",
+      "lines": "1-80",
+      "claim": "Tool question UI model."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/vom.java",
+      "sha256": "b18c08af438134d92409443ed16e557316fe89ab84c6ed4021e80018241ee42e",
+      "lines": "1-60",
+      "claim": "Option label and description model."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/mmc.java",
+      "sha256": "ca8307f7de9fdc8ffdb52e11b6cece0f25476c3d3f05dd9ce8c8b585a09ea777",
+      "lines": "45-55",
+      "claim": "Secret visual transform selected; enabled passed to field."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/wnj0.java",
+      "sha256": "662d844f8cf043874f3b08624494dff7699b4aa49bbb3e2562b64de65492f1c1",
+      "lines": "1-12",
+      "claim": "Secret transform bullet-masks text length; does not prove encrypted storage."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/lcb.java",
+      "sha256": "07fce42627ab07a9e7467516ecf7b42134a242f3f9ed0d605ed32bc2f27b9601",
+      "lines": "86-102",
+      "claim": "Tool answers ordered by questions; uom(questionID,singletonList(answer))."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ca1.java",
+      "sha256": "c597ed696dc90f66a609be898adb5f81e31de225a1af3817976dfffc4a5fc944",
+      "lines": "117-119",
+      "claim": "igk(requestID,answers)."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/kx5.java",
+      "sha256": "90f8dd0f826c3158ebbb0534f555c695ea907d396f3d58fc69a763a70c01baba",
+      "lines": "349-368",
+      "claim": "zsk(requestID,answers) to fx21.l(host,...)."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/qu81.java",
+      "sha256": "88095db1d875c97d30a422788859ce304b6ae2cd251037ad9a7c7ac987d2dc3b",
+      "lines": "40-155",
+      "claim": "Async card identity wrapper, visible predicate and expiry; map answer fallback first option."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/qii.java",
+      "sha256": "8ae5a2697bcf3b7d7ade94f1af04c20a993654cfc739f7ab77b598721a7b304c",
+      "lines": "75-280",
+      "claim": "Async current-index counter, options, custom field, previous/skip/next controls."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/anj.java",
+      "sha256": "3e3522076234aa5e18911df1e5f2cc57fe57448ffc159368a8b2028aac4594c1",
+      "lines": "12-86",
+      "claim": "Async ID/questions/index/answers map and sets; p=h&&i&&!k&&currentQuestion; prior excludes g."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/p0.java",
+      "sha256": "92442096c1cf5856e4ad5255f1416cf5055a4731443203136cee262868ea7a60",
+      "lines": "200-314",
+      "claim": "Alternate Async reducer; identity and busy gating; skip current empty; terminal aggregation."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/sba.java",
+      "sha256": "660f5a96910fced4750c04bf17c2ea159b715bd9a7337916f3dbdb8f34416e5a",
+      "lines": "306-449",
+      "claim": "Host Async reducer validates request identity against current thread request; skip and next share terminal submit branch."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/pa7.java",
+      "sha256": "8b66de1685025a17277ad961005d29af2b77735f39e75e966e255e16bcc652aa",
+      "lines": "50-155",
+      "claim": "Host/thread scoped async response; filters answer map by pending set; sends ru81.q follow-up; settles via py81.l."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ru81.java",
+      "sha256": "041870b18d91b728d0d14c908de81c23b1a4703ff9546062e4b258dbde49d0e8",
+      "lines": "1297-1312",
+      "claim": "Async wrapper text; JADX omits JSON map insertions, smali required."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/py81.java",
+      "sha256": "b43a85826faa5b613c3dc7eb475958f0aa668e00afbbeea10112e6b3d0231312",
+      "lines": "798-833",
+      "claim": "Completion refuses mismatched Async ID; failure clears k submitting; detailed success loop JADX unreliable."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes4/dp60.smali",
+      "sha256": "bb7c3b435278ac93d3300922b3f14027bd5b51015ee58af865ddd682997fa03e",
+      "lines": "19038-19070,19239,20710-20835",
+      "claim": "Tool custom iff isOther OR no options; secret passed; each answer must exist and be nonblank for submit."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes3/qu81.smali",
+      "sha256": "f209b5ebbde9bd638014a229c3fbf60ea1ba3b1a1590915151fb702abc6a3625",
+      "lines": "699-745,969-997",
+      "claim": "UI answer map fallback first option passed to qii, so default option is displayed selected before Next."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes4/p0.smali",
+      "sha256": "e923de90eb7d29a6a13053ece7f57d00c59dcc5721a803482516824609077b89",
+      "lines": "2243-2510",
+      "claim": "Skip bypasses stored/default answer and writes empty, then advances; Next uses map or first option."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes4/sba.smali",
+      "sha256": "e186069b26c8f9deb8186d42bcdc40161f10cecbdbfde6918f42e181953645ef",
+      "lines": "3148-3748",
+      "claim": "Skip and Next share transition: skip empties current/removes pending ID; next adds nonblank ID; advance past submitted IDs; terminal pending non-submitted answer sets k=true, else closes."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes5/ru81.smali",
+      "sha256": "36ebeaa3a93b178d59bb68a792a911d48062630d57fc3e97b496525f5ac836b8",
+      "lines": "11994-12264",
+      "claim": "JSON array entries questionItemId,question,answer; trims answers; omits empty/already submitted IDs; wrapper send_user_message_question_reply."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes3/py81.smali",
+      "sha256": "702d8e0604062023e095e2a60e15276ee7a3d8d4eec1c91f5124ba0a923361e0",
+      "lines": "6054-6103",
+      "claim": "Settlement first compares current card ID to submitted snapshot ID; mismatched replacement not settled."
+    }
+  ]
+}

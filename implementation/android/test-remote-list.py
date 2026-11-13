@@ -10,6 +10,7 @@ from pathlib import Path
 parser = argparse.ArgumentParser()
 parser.add_argument('--serial', required=True)
 parser.add_argument('--conversation', action='store_true', help='Run the normal-entry Remote conversation suite')
+parser.add_argument('--methods', nargs='+', help='Explicit bounded instrumentation methods')
 parser.add_argument('--report', type=Path, required=True)
 parser.add_argument('--language', choices=['zh-CN', 'en'], default='zh-CN')
 parser.add_argument('--appearance', choices=['light', 'dark'], default='light')
@@ -47,7 +48,7 @@ try:
         if 'Success' not in output:
             raise RuntimeError('Installation failed')
         result['steps'].append({'apk': relative, 'sha256': hashlib.sha256(apk.read_bytes()).hexdigest()})
-    for method in (['modelRules', 'listJourney', 'verifyRestart'] if args.conversation else ['modelRules', 'emptyState', 'listJourney', 'verifyRestart']):
+    for method in (args.methods or (['modelRules', 'listJourney', 'verifyRestart'] if args.conversation else ['modelRules', 'emptyState', 'listJourney', 'verifyRestart'])):
         command('shell', 'am', 'force-stop', package)
         process = subprocess.run([adb, '-s', args.serial, 'shell', 'pidof', package], capture_output=True)
         if process.stdout.strip():
@@ -70,7 +71,7 @@ finally:
     result['export_errors'] = []
     if listing.returncode == 0:
         for name in listing.stdout.decode().splitlines():
-            if Path(name).name != name or Path(name).suffix not in ['.png', '.xml', '.pid']:
+            if Path(name).name != name or Path(name).suffix not in ['.png', '.xml', '.pid', '.txt']:
                 continue
             try:
                 data = command('exec-out', 'run-as', package, 'cat', f'files/remote-list-test-{run_id}/{name}')
@@ -81,7 +82,7 @@ finally:
                 result['export_errors'].append({'file': name, 'error': str(error)})
     # Leave an isolated review profile visible; never rewrite ordinary preview preferences.
     launch = subprocess.run([adb, '-s', args.serial, 'shell', 'am', 'start', '-S', '-n',
-                             package + '/local.rea.chatgpt.MainActivity', '--ez', 'remote', 'true',
+                             package + '/local.rea.chatgpt.AppShellActivity', '--ez', 'remote', 'true',
                              '--es', 'remote-profile', 'test-list-review-' + run_id,
                              '--es', 'remote-language', args.language, '--es', 'remote-theme', args.appearance], capture_output=True, text=True)
     result['preview_launch'] = {'returncode': launch.returncode, 'output': launch.stdout.strip()}

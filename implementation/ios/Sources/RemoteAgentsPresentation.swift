@@ -79,6 +79,47 @@ struct RemoteAgentOpenIntent: Equatable {
     let agentID: String
 }
 
+//293 Details forwards the complete Subagent through the Thread action handler.
+//The final navigation resolver is unclosed. This explicit provider boundary is
+//ours: agent.id is never used as a thread ID or a display-title lookup.
+struct RemoteAgentThreadTarget: Equatable {
+    let hostID: String
+    let threadID: String
+    let title: String
+}
+
+struct RemoteAgentThreadRequest: Equatable {
+    let accountID: String
+    let intent: RemoteAgentOpenIntent
+    let agent: RemoteAgentPresentation
+
+    init?(accountID: String, intent: RemoteAgentOpenIntent,
+          snapshot: RemoteAgentsSnapshot, sessionID: UUID) {
+        guard !accountID.isEmpty,
+              let agent = snapshot.resolve(intent, currentSession: sessionID) else { return nil }
+        self.accountID = accountID; self.intent = intent; self.agent = agent
+    }
+
+    //Recheck the current account/session, projection revision and complete
+    //payload before accepting an asynchronous provider's destination. The host
+    //catalog is an admission input, not a server authorization grant.
+    func resolve(_ target: RemoteAgentThreadTarget?, accountID currentAccount: String,
+                 snapshot: RemoteAgentsSnapshot, sessionID: UUID,
+                 availableHosts: Set<String>) -> RemoteAgentThreadTarget? {
+        guard currentAccount == accountID,
+              snapshot.resolve(intent, currentSession: sessionID) == agent,
+              let target, availableHosts.contains(target.hostID),
+              !target.hostID.isEmpty, !target.threadID.isEmpty, !target.title.isEmpty,
+              target.hostID.utf8.count <= 256, target.threadID.utf8.count <= 256,
+              target.title.utf8.count <= 4096,
+              !target.hostID.unicodeScalars.contains(where: { CharacterSet.controlCharacters.contains($0) }),
+              !target.threadID.unicodeScalars.contains(where: { CharacterSet.controlCharacters.contains($0) }),
+              RemoteComposerDraftScope(hostID: target.hostID, threadID: target.threadID) != snapshot.scope
+        else { return nil }
+        return target
+    }
+}
+
 #if canImport(UIKit)
 import SwiftUI
 

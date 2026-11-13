@@ -1,0 +1,15 @@
+# Android approvals and additional input
+
+This batch keeps the two Android293 carriers separate: Tool UserInput presents all questions and submits nonblank ordered answers; AsyncQuestionCard pages through questions, displays the first option by default, distinguishes explicit Skip from Next, and aggregates nonblank answers on the final question. All-empty Async completion only collapses locally, without an acceptance receipt.
+
+The independent owner scopes requests by profile store, host/thread, connection, turn, request and revision; each asynchronous submission has a unique attempt token. Replacing or withdrawing a request retires the attempt. Old completions cannot clear the successor busy state or persist its receipt. Expiry gates admission and late successful acknowledgement. Acknowledged identity is persisted only after a successful local commit. Answers, secret text and approval feedback are not saved in preferences or SavedState.
+
+Material Surface/buttons/fields, local error messages, native focus/keyboard behavior, typed envelope and offline provider acceptance are independent adaptations. The tool and Async service payload conversions are not represented as one official RPC. Original Async partial-success/submitted-ID catalogs, follow-up envelope emission, server lifecycle, dedicated MCP elicitation and network/custom permission forms remain unconnected. This is not a real permission grant or remote operation.
+
+Source evidence: android-remote-user-input-20261113-source.json; 24 source/smali file hashes verified by source-validation.json. The latest iOS interaction file is a transaction reference only, not the Android rendering contract. Public-source inventory is pinned to c90354172c5c49535b122443e9a8ed52c2233b80 in analysis/upstream-codex-20261105; it does not supply evidence for frozen mobile UI.
+
+Static review corrected an empty Next that previously acted as implicit Skip before building. Runtime results are recorded separately in the parent-current report.
+
+## Validation history
+
+The first product build passed in22s. r1 stopped before UI at a faulty test Editor proxy: chained putBoolean escaped the simulated failed commit; the test proxy was corrected to return itself. A no-op9s build occurred before that correction was read, followed by the effective15s test build. r2 then passed pure contracts but a test Back after accessibility setText navigated out because no IME had opened. The test now checks IME visibility before Back (14s test-only build). r3 passed Tool options/secret submission and identity-only persistence, and Async second-question edit/Previous selected-state restore. It stopped on an offscreen second Next after the card grew; its PNG/XML show the existing scroll-to-bottom affordance. Parent authorized only a remaining Async/approval/restart slice using the same isolated test profile, with explicit positioning (16s test-only build). Product APK has not changed since the first build. All failed runs remain archived and are not reported as full passes.

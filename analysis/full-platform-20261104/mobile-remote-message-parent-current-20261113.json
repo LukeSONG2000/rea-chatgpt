@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-13T19:17:36.070158+08:00",
+  "module": "Remote messages: iOS bounded closure and Android alignment",
+  "status": "core increment delivered; recorded original fidelity and later feature gaps remain",
+  "ios": "ios-remote-messages-seventh-current-20261113.json",
+  "android": "android-remote-message-parent-current-20261113.json",
+  "parent_verification": {
+    "android_seven_source_hashes": "all match",
+    "android_installed_and_built_apk_sha256": "e255dfd7eb1486cd605b6732ba8e05e25472c211e36b23db3f646eb6ec137c20",
+    "android_current_foreground": "AppShellActivity; PID10479",
+    "ios_retained_simulator_process": "PID29649 current executable in dedicated REAChatGPTHost simulator container",
+    "ios_phone": "paired, tunnel unavailable, DDI unavailable; no new installation",
+    "wide_table_images_reviewed": [
+      "android-remote-message-20261113-oneplus-r5/message-body-before-table-scroll.png",
+      "android-remote-message-20261113-oneplus-r5/message-table-scrolled.png"
+    ],
+    "wide_table_motion": "FarColumn x407 -> x145; y975 unchanged; manual before/after confirms new columns",
+    "whitespace": "git diff --check passed",
+    "new_full_matrix": false
+  },
+  "progress": "docs/full-platform/PROGRESS-20261113-REMOTE-MESSAGES.md",
+  "next_major_module": "Remote composer and task controls; preserve minimum usable module order, no repeated unproductive source search",
+  "publication": "Local only since c17d46fb1a; no new commit/push/release"
+}

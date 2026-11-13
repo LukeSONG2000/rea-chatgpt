@@ -8,7 +8,7 @@ enum class RemoteApprovalDecision {
 
 // Independent frontend envelope: never route a decision by message text or list status.
 data class RemoteApprovalIdentity(val task: RemoteTaskKey, val connection: String,
-    val turn: String, val request: String)
+    val turn: String, val request: String, val revision: Int = 0)
 data class RemoteCommandApprovalRequest(val identity: RemoteApprovalIdentity,
     val reason: String?, val command: String?,
     val availableDecisions: Set<RemoteApprovalDecision>? = null,

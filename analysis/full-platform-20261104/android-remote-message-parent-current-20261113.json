@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-13",
+  "module": "Android Remote message page",
+  "baseline": "c17d46fb1a; no Git operations",
+  "status": "core message page increment implemented and bounded device journeys passed; original service/private renderer gaps remain",
+  "implemented": [
+    "RemoteMessageBody shared native Markdown carrier for user prompt and assistant, retaining existing bubble/header geometry",
+    "Synchronous memoized AST parsing removes upstream initial empty parse frame during restored long-message layout",
+    "Adaptive public table renderer and unique-header table state scoped by task(host/thread),turn,request(attempt),role within page lifecycle",
+    "HTTP(S),valid scoped file and unsupported URI routes separated; URL copy and local capability/fixture dialog only, no browser/WebView/network",
+    "Completed nonblank whole-response copy as independent host contract; code literal copy remains exact",
+    "Reading-position save failure no longer overwrites draft-save failure state",
+    "Bounded method selection and AppShellActivity final review entry in retained runner"
+  ],
+  "evidence": {
+    "android_report": "android-remote-message-20261113-body-evidence.json",
+    "smali": "dp60.m -> rp6 -> pkm.g -> sm5.n.E proven for User and Assistant; User affects footer/actions, not body route. JADX incorrectly nested body under nonempty nxk.d; corrected using smali.",
+    "copy_limit": "Original role/upstream booleans/hideInlineActions cannot be equated with completed phase; completed-only and whitespace suppression are independent host policy, not iOS Some(empty) behavior.",
+    "select_text_limit": "Shared SelectText emits o0d0; bounded Remote rfm handler trace found no handling branch. No invented Remote full-screen selection toolbar added; existing native SelectionContainer retained.",
+    "public_renderer": {
+      "repository": "https://github.com/openai/compose-richtext",
+      "commit": "31698d62e15def124a841935ed0bc40c64e6db88",
+      "boundary": "Pinned selected source, not proof of exact APK revision; Adaptive240dp is independent host readability policy."
+    },
+    "ios_contract": "ios-remote-message-parent-current-20261113-r4.json used for completeness checklist only; no iOS material, prompt slicing/expansion or footer semantics copied",
+    "hash_validation": "android-remote-message-20261113-source-validation.json (22 checked source entries, all matched)"
+  },
+  "verification": [
+    {
+      "run": "1",
+      "test": "messageBodyJourney",
+      "passed": true,
+      "seconds": 22.015
+    },
+    {
+      "run": "1",
+      "test": "messageReturnJourney",
+      "passed": false,
+      "seconds": 9.099
+    },
+    {
+      "run": "2",
+      "test": "messageBodyJourney",
+      "passed": true,
+      "seconds": 20.46
+    },
+    {
+      "run": "2",
+      "test": "messageReturnJourney",
+      "passed": false,
+      "seconds": 24.118
+    },
+    {
+      "run": "3",
+      "test": "messageReturnJourney",
+      "passed": true,
+      "seconds": 17.217
+    },
+    {
+      "run": "3",
+      "test": "commandOutputJourney",
+      "passed": true,
+      "seconds": 44.212
+    },
+    {
+      "run": "4",
+      "test": "messageBodyJourney",
+      "passed": false,
+      "seconds": 14.339
+    },
+    {
+      "run": "5",
+      "test": "messageBodyJourney",
+      "passed": true,
+      "seconds": 20.7
+    }
+  ],
+  "failure_explanations": [
+    {
+      "run": 1,
+      "test": "messageReturnJourney",
+      "finding": "UI screenshot mid-article but checkpoint queried before fling commit. Retained owned preference later showed offset9109. Test now waits positive committed checkpoint."
+    },
+    {
+      "run": 2,
+      "test": "messageReturnJourney",
+      "finding": "Return-offset assertions passed, but three fast swipes had settled at article bottom (57..65 visible), so expected bottom-button absent. Test changed to one bounded slow vertical drag."
+    },
+    {
+      "run": 4,
+      "test": "messageBodyJourney",
+      "finding": "True six-column overflow fixture; 80-step/120px horizontal drag invoked native text selection, not horizontal movement. Middle and FarColumn bounds unchanged. Scrollable HorizontalScrollView present at[45,951][1035,1182], fully onscreen. No assertion weakened, no product workaround made."
+    }
+  ],
+  "wide_table": {
+    "implemented": "Adaptive renderer exposes horizontalScroll; actual overflow fixture exists",
+    "accepted": true,
+    "prior_false_positive": "r1/r2 three-column table fit onscreen; far-column presence after gesture was not horizontal movement proof. Prior rendered-table screenshots remain valid only for rendering.",
+    "remaining": "Slow long gesture can enter native text selection; complete gesture arbitration parity and cross-route horizontal restoration not claimed",
+    "final_evidence": "r5 normal30-step260px gesture: FarColumn Rect(407,975-639,1043) -> Rect(145,975-377,1043), dx=-262 dy=0; before/after screenshots and table-bounds.txt retained"
+  },
+  "successful_final_product_coverage": [
+    "r2 messageBodyJourney20.46s: user Markdown emphasis, assistant rich text/code/small table, code exact trailing spaces/newline clipboard, response clipboard, webURL copy/local fixture and existing file fixture",
+    "r3 messageReturnJourney17.217s: slow mid-article reading checkpoint, list return and same offset, bottom button reaches tail",
+    "r3 commandOutputJourney44.212s: command output sheet, long output scroll/copy, optional status, dismiss and host/task isolation",
+    "r5 messageBodyJourney20.7s: same final app binary, real wide six-column horizontal movement262px with stable y, Markdown user/assistant, exact code/response copies, URI/file local capability loop"
+  ],
+  "remaining": [
+    "Native long-press selection and horizontal scrolling remain distinct gesture paths; only normal30-step wide-table scroll accepted, no complete gesture arbitration parity claim",
+    "Full original role-specific action/renderer configs, user message collapse/expansion producer, selection menu, copy feedback timer and private optics",
+    "Full heterogeneous activity/reasoning/DIL projection; current command rows retained, not expanded into guessed grouping",
+    "Live web browsing and broad file formats belong to later files/browser module; only capability state and minimum fixture now",
+    "Synchronous full AST reparses changed snapshots on UI thread; long streaming cost unbenchmarked, no performance-improvement claim",
+    "Table horizontal restoration across task return/process restart not established this pass; role and request isolation scoped in code",
+    "Original upstream transcript-loading/pagination/live service/read anchor and haptic parity remain independent or unresolved",
+    "Composer controls, approvals and attachments deliberately untouched"
+  ],
+  "build_logs": [
+    "android-remote-message-20261113-build.log",
+    "android-remote-message-20261113-build-r2.log",
+    "android-remote-message-20261113-build-r3.log",
+    "android-remote-message-20261113-build-r4.log",
+    "android-remote-message-20261113-build-r5.log",
+    "android-remote-message-20261113-build-r6.log"
+  ],
+  "product_sha256": "e255dfd7eb1486cd605b6732ba8e05e25472c211e36b23db3f646eb6ec137c20",
+  "source_hashes": "android-remote-message-20261113-source-hashes.json",
+  "runtime": "android-remote-message-20261113-runtime.json",
+  "runtime_summary": "Installed hash equals built, OnePlus AppShellActivity resumed in isolated Chinese/light review profile; ordinary preview preference files unchanged",
+  "no_git_mutations": true,
+  "source_scope": "Android message page/body/link/resources/owned tests only; no iOS, shared docs, AGENTS or vendor changes",
+  "screenshots_reviewed": [
+    "r2 message-body-before-table-scroll and table-scrolled (small table only)",
+    "r3 message-reading-returned and command-scrolled",
+    "r4 failure-messageBodyJourney (native selection, no horizontal movement)",
+    "r5 message-table-scrolled (actual262px movement)"
+  ]
+}

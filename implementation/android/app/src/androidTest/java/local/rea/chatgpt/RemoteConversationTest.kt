@@ -91,6 +91,448 @@ class RemoteConversationTest {
     private fun phase(zh: String, en: String) {
         assertTrue(device.wait(Until.hasObject(By.res("remote-turn-phase").text(if (language.startsWith("zh")) zh else en)), 25000))
     }
+    private fun controlsStore() = RemoteListStore(context.getSharedPreferences("remote-list-test-conversation-$runID", 0))
+    private fun waitControl(predicate: () -> Boolean) {
+        val deadline = android.os.SystemClock.uptimeMillis() + 12000
+        while (!predicate() && android.os.SystemClock.uptimeMillis() < deadline) android.os.SystemClock.sleep(100)
+        assertTrue("Task control checkpoint reached", predicate())
+    }
+    private fun inputContracts() {
+        val key = RemoteTaskKey("contracts-a", "same-thread")
+        val other = RemoteTaskKey("contracts-b", "same-thread")
+        val identity = RemoteApprovalIdentity(key, "connection", "turn", "request", 1)
+        val request = RemoteInputRequest(identity, RemoteInputKind.Tool,
+            listOf(RemoteInputQuestion("secret", "Synthetic secret", secret = true)))
+        val answer = mapOf("secret" to RemoteInputAnswer(text = "SYNTHETIC_PRIVATE_VALUE"))
+        assertTrue(request.accepts(answer)); assertFalse(request.accepts(emptyMap()))
+        assertFalse(request.accepts(mapOf("secret" to RemoteInputAnswer(skipped = true))))
+        assertEquals("<redacted>", answer.values.first().toString())
+        val prefs = context.getSharedPreferences("input-contracts-$runID", 0)
+        val store = RemoteListStore(prefs)
+        val calls = mutableListOf<Pair<RemoteInputSubmission, kotlinx.coroutines.CompletableDeferred<RemoteRequestAttempt?>>>()
+        val provider = object : RemoteConversationProvider {
+            override fun history(key: RemoteTaskKey) = emptyList<RemoteFrontendTurn>()
+            override fun reply(key: RemoteTaskKey, turn: RemoteFrontendTurn) = kotlinx.coroutines.flow.emptyFlow<RemoteConversationEvent>()
+            override suspend fun submitInput(submission: RemoteInputSubmission): RemoteRequestAttempt? {
+                val reply = kotlinx.coroutines.CompletableDeferred<RemoteRequestAttempt?>()
+                calls += submission to reply
+                return reply.await()
+            }
+        }
+        val job = kotlinx.coroutines.SupervisorJob()
+        val owner = RemoteConversationOwner(store, provider, kotlinx.coroutines.CoroutineScope(job + kotlinx.coroutines.Dispatchers.Unconfined))
+        owner.load(key); owner.load(other); owner.replaceRequests(key, null, request)
+        owner.submitInput(request, answer); owner.submitInput(request, answer)
+        assertEquals(1, calls.size)
+        calls[0].second.complete(calls[0].first.attempt.copy(token = "wrong-attempt"))
+        assertTrue(owner.approvalFailed(key)); assertFalse(store.hasInputReceipt(identity))
+        owner.submitInput(request, answer)
+        calls[1].second.completeExceptionally(IllegalStateException("synthetic failure"))
+        assertTrue(owner.approvalFailed(key))
+        owner.submitInput(request, answer)
+        val replacement = request.copy(identity = identity.copy(revision = 2))
+        owner.replaceRequests(key, null, replacement)
+        owner.submitInput(replacement, answer)
+        calls[2].second.complete(calls[2].first.attempt)
+        assertTrue("Old completion must not clear successor busy state", owner.isSubmittingApproval(key))
+        assertEquals(replacement, owner.pendingInput(key)); assertFalse(store.hasInputReceipt(identity))
+        val otherRequest = request.copy(identity = identity.copy(task = other))
+        owner.replaceRequests(other, null, otherRequest); owner.submitInput(otherRequest, answer)
+        calls[3].second.complete(calls[3].first.attempt)
+        assertNull(owner.pendingInput(key)); assertTrue(store.hasInputReceipt(replacement.identity))
+        assertTrue(owner.isSubmittingApproval(other)); assertNotNull(owner.pendingInput(other))
+        owner.replaceRequests(other, null, null)
+        calls[4].second.complete(calls[4].first.attempt)
+        assertFalse(store.hasInputReceipt(otherRequest.identity))
+        val expired = request.copy(identity = identity.copy(revision = 3), expiresAtMillis = 1)
+        owner.replaceRequests(key, null, expired); owner.submitInput(expired, answer)
+        assertNull(owner.pendingInput(key)); assertEquals(5, calls.size)
+        assertFalse(prefs.all.toString().contains("SYNTHETIC_PRIVATE_VALUE"))
+        val restored = RemoteConversationOwner(store, provider, kotlinx.coroutines.CoroutineScope(job + kotlinx.coroutines.Dispatchers.Unconfined))
+        restored.load(key); restored.replaceRequests(key, null, replacement)
+        assertNull(restored.pendingInput(key))
+        // Failed durable acceptance must not retire the request or store the payload.
+        val denied = object : android.content.SharedPreferences by prefs {
+            override fun edit(): android.content.SharedPreferences.Editor {
+                val editor = prefs.edit()
+                return object : android.content.SharedPreferences.Editor by editor {
+                    override fun putBoolean(key: String?, value: Boolean): android.content.SharedPreferences.Editor { editor.putBoolean(key, value); return this }
+                    override fun commit() = false
+                }
+            }
+        }
+        val failing = RemoteConversationOwner(RemoteListStore(denied), provider, kotlinx.coroutines.CoroutineScope(job + kotlinx.coroutines.Dispatchers.Unconfined))
+        failing.load(other); failing.replaceRequests(other, null, otherRequest); failing.submitInput(otherRequest, answer)
+        calls.last().second.complete(calls.last().first.attempt)
+        assertEquals(otherRequest, failing.pendingInput(other)); assertTrue(failing.approvalFailed(other))
+        // Existing command approval gets the same attempt/replacement fence.
+        val approvals = mutableListOf<Pair<RemoteRequestAttempt, kotlinx.coroutines.CompletableDeferred<RemoteRequestAttempt?>>>()
+        val approvalProvider = object : RemoteConversationProvider by provider {
+            override suspend fun submitApprovalAttempt(submission: RemoteApprovalSubmission, attempt: RemoteRequestAttempt): RemoteRequestAttempt? {
+                val deferred = kotlinx.coroutines.CompletableDeferred<RemoteRequestAttempt?>(); approvals += attempt to deferred; return deferred.await()
+            }
+        }
+        val approvalOwner = RemoteConversationOwner(store, approvalProvider, kotlinx.coroutines.CoroutineScope(job + kotlinx.coroutines.Dispatchers.Unconfined))
+        approvalOwner.load(key)
+        val approval = RemoteCommandApprovalRequest(identity, null, "synthetic")
+        approvalOwner.replaceRequests(key, approval, null)
+        approvalOwner.submitApproval(RemoteApprovalSubmission(identity, RemoteApprovalAction.Reject))
+        val successor = approval.copy(identity = identity.copy(revision = 4))
+        approvalOwner.replaceRequests(key, successor, null)
+        approvalOwner.submitApproval(RemoteApprovalSubmission(successor.identity, RemoteApprovalAction.Reject))
+        approvals[0].second.complete(approvals[0].first)
+        assertTrue(approvalOwner.isSubmittingApproval(key)); assertEquals(successor, approvalOwner.pendingApproval(key))
+        approvals[1].second.complete(approvals[1].first)
+        assertNull(approvalOwner.pendingApproval(key)); assertTrue(store.hasApprovalReceipt(successor.identity))
+        val async = request.copy(kind = RemoteInputKind.Async, questions = listOf(RemoteInputQuestion("secret", "Not a secret")))
+        assertFalse(async.accepts(mapOf("secret" to RemoteInputAnswer(skipped = true))))
+        owner.replaceRequests(key, null, async); owner.dismissEmptyAsync(async)
+        assertNull(owner.pendingInput(key)); assertFalse(store.hasInputReceipt(async.identity))
+        job.cancel()
+    }
+    private fun inputVisible(id: String) {
+        if (!device.hasObject(By.res(id)) && device.hasObject(By.res("remote-scroll-bottom"))) click("remote-scroll-bottom")
+        repeat(4) {
+            if (!device.hasObject(By.res(id))) { node("remote-transcript").swipe(Direction.DOWN, .35f); device.waitForIdle() }
+        }
+        node(id)
+    }
+    private fun hideInputKeyboard() {
+        val ime = android.provider.Settings.Secure.getString(context.contentResolver,
+            android.provider.Settings.Secure.DEFAULT_INPUT_METHOD).substringBefore('/')
+        if (device.hasObject(By.pkg(ime))) {
+            device.pressBack(); assertTrue(device.wait(Until.gone(By.pkg(ime)), 5000))
+        }
+    }
+    @Test fun inputJourney() {
+        inputContracts()
+        start(); open("fixture-a", "tool-input")
+        inputVisible("remote-input-scope-option-0"); click("remote-input-scope-option-0")
+        if (device.hasObject(By.res("remote-scroll-bottom"))) click("remote-scroll-bottom")
+        node("remote-input-secret-custom").text = "SYNTHETIC_ONLY_SECRET"
+        device.waitForIdle(); hideInputKeyboard(); device.waitForIdle()
+        if (!device.hasObject(By.res("remote-input-submit")) && device.hasObject(By.res("remote-scroll-bottom"))) click("remote-scroll-bottom")
+        click("remote-input-submit")
+        waitControl { controlsStore().hasInputReceipt(syntheticInput(RemoteTaskKey("fixture-a", "tool-input"), true)!!.identity) }
+        assertFalse(device.hasObject(By.res("remote-input-card")))
+        assertFalse(context.getSharedPreferences("remote-list-test-conversation-$runID", 0).all.toString().contains("SYNTHETIC_ONLY_SECRET"))
+        capture("input-tool-accepted")
+        click("remote-task-back"); open("fixture-a", "async-input")
+        inputVisible("remote-input-first-option-1"); click("remote-input-first-option-1")
+        inputVisible("remote-input-next"); click("remote-input-next")
+        assertFalse("Empty custom answer must use explicit Skip", node("remote-input-next").isEnabled)
+        node("remote-input-second-custom").text = "合成补充说明"
+        device.waitForIdle(); hideInputKeyboard(); device.waitForIdle()
+        inputVisible("remote-input-previous"); click("remote-input-previous")
+        assertTrue(node("remote-input-first-option-1").children.any { it.text?.contains("✓") == true } || device.hasObject(By.textContains("✓ 消息")))
+        inputVisible("remote-input-next"); click("remote-input-next")
+        assertEquals("合成补充说明", node("remote-input-second-custom").text)
+        capture("input-async-restored-answer")
+        inputVisible("remote-input-skip"); click("remote-input-skip") // last skip submits the earlier nonempty answer
+        waitControl { controlsStore().hasInputReceipt(syntheticInput(RemoteTaskKey("fixture-a", "async-input"), true)!!.identity) }
+        click("remote-task-back"); open("fixture-b", "shared-task")
+        inputVisible("remote-approval-once"); click("remote-approval-once")
+        waitControl { controlsStore().hasApprovalReceipt(RemoteApprovalIdentity(RemoteTaskKey("fixture-b", "shared-task"), "synthetic-connection-b", "synthetic-turn", "synthetic-approval-1")) }
+        capture("input-command-accepted")
+    }
+    @Test fun inputRemainder() {
+        start(); open("fixture-a", "async-input")
+        inputVisible("remote-input-first-option-1"); click("remote-input-first-option-1")
+        inputVisible("remote-input-next"); click("remote-input-next")
+        assertFalse("Empty custom answer must use explicit Skip", node("remote-input-next").isEnabled)
+        node("remote-input-second-custom").text = "合成补充说明"
+        device.waitForIdle(); hideInputKeyboard(); device.waitForIdle()
+        inputVisible("remote-input-previous"); click("remote-input-previous")
+        assertTrue(node("remote-input-first-option-1").children.any { it.text?.contains("✓") == true } || device.hasObject(By.textContains("✓ 消息")))
+        inputVisible("remote-input-next"); click("remote-input-next")
+        assertEquals("合成补充说明", node("remote-input-second-custom").text)
+        capture("input-async-restored-answer")
+        inputVisible("remote-input-skip"); click("remote-input-skip") // last skip submits the earlier nonempty answer
+        waitControl { controlsStore().hasInputReceipt(syntheticInput(RemoteTaskKey("fixture-a", "async-input"), true)!!.identity) }
+        click("remote-task-back"); open("fixture-b", "shared-task")
+        inputVisible("remote-approval-once"); click("remote-approval-once")
+        waitControl { controlsStore().hasApprovalReceipt(RemoteApprovalIdentity(RemoteTaskKey("fixture-b", "shared-task"), "synthetic-connection-b", "synthetic-turn", "synthetic-approval-1")) }
+        capture("input-command-accepted")
+    }
+    @Test fun inputRestart() {
+        start(); open("fixture-a", "tool-input")
+        assertTrue(controlsStore().hasInputReceipt(syntheticInput(RemoteTaskKey("fixture-a", "tool-input"), true)!!.identity))
+        assertFalse(device.hasObject(By.res("remote-input-card")))
+        draft("审批后原草稿"); device.pressBack(); device.waitForIdle()
+        click("remote-task-back"); open("fixture-a", "async-input")
+        assertTrue(controlsStore().hasInputReceipt(syntheticInput(RemoteTaskKey("fixture-a", "async-input"), true)!!.identity))
+        assertFalse(device.hasObject(By.res("remote-input-card")))
+        click("remote-task-back"); open("fixture-b", "shared-task")
+        assertFalse(device.hasObject(By.res("remote-approval-card")))
+        click("remote-task-back"); open("fixture-a", "shared-task")
+        assertEquals("", node("remote-draft").text)
+        click("remote-task-back"); open("fixture-a", "tool-input")
+        assertEquals("审批后原草稿", node("remote-draft").text)
+        capture("input-receipts-restarted")
+    }
+    @Test fun controlsCodecGate() {
+        assertEquals(RemoteTaskControls(), decodeRemoteControls(null))
+        val valid = encodeRemoteControls(RemoteTaskControls())
+        assertEquals(RemoteTaskControls(), decodeRemoteControls(valid))
+        val missing = org.json.JSONObject(valid.toString()).apply { remove("version") }
+        assertTrue(runCatching { decodeRemoteControls(missing) }.isFailure)
+        for (version in listOf<Any>("bad", "1", org.json.JSONObject.NULL, 2, 1.5)) {
+            val row = org.json.JSONObject(valid.toString()).put("version", version)
+            assertTrue("Reject invalid version $version", runCatching { decodeRemoteControls(row) }.isFailure)
+        }
+        val key = RemoteTaskKey("codec-host", "codec-thread")
+        val prefs = context.getSharedPreferences("remote-controls-codec-$runID", 0)
+        val corrupt = org.json.JSONObject().put("controls", org.json.JSONObject().put(key.storageKey, missing)).toString()
+        assertTrue(prefs.edit().putString("snapshot", corrupt).commit())
+        assertTrue(runCatching { RemoteListStore(prefs).controls(key) }.isFailure)
+        assertEquals("Rejected data is not rewritten", corrupt, prefs.getString("snapshot", null))
+    }
+    @Test fun taskControlsJourney() {
+        val key = RemoteTaskKey("fixture-a", "layout")
+        // Full known local payload and immutable intent snapshots survive serialization.
+        val originalConfig = RemoteTaskConfiguration(effort = "high")
+        val model = RemoteTaskControls(pending = listOf(RemotePendingReply("p", "r", "queued", originalConfig)),
+            acceptedConfigurations = mapOf("r" to originalConfig))
+        assertEquals(model, decodeRemoteControls(encodeRemoteControls(model)))
+        assertFalse(RemoteTaskConfiguration(model = "compact", speed = "fast").valid())
+        val prefs = context.getSharedPreferences("remote-controls-failure-$runID", 0)
+        val checkpoint = RemoteListStore(prefs)
+        assertTrue(checkpoint.saveTaskRuntime(key, emptyList(), model))
+        val denied = object : android.content.SharedPreferences by prefs {
+            override fun edit(): android.content.SharedPreferences.Editor {
+                val editor = prefs.edit()
+                return object : android.content.SharedPreferences.Editor by editor {
+                    override fun putString(key: String?, value: String?): android.content.SharedPreferences.Editor = this
+                    override fun commit() = false
+                }
+            }
+        }
+        val deniedStore = RemoteListStore(denied)
+        assertFalse(deniedStore.saveTaskRuntime(key, emptyList(), model.copy(pending = emptyList())))
+        assertEquals(model, deniedStore.controls(key))
+
+        kotlinx.coroutines.runBlocking {
+            val gate = kotlinx.coroutines.CompletableDeferred<Unit>()
+            val provider = object : RemoteConversationProvider {
+                override fun history(key: RemoteTaskKey) = emptyList<RemoteFrontendTurn>()
+                override fun reply(key: RemoteTaskKey, turn: RemoteFrontendTurn) = kotlinx.coroutines.flow.flow {
+                    gate.await()
+                    emit(RemoteConversationEvent(key, turn.id, turn.request, 1, "done", RemoteTurnPhase.Completed))
+                }
+            }
+            val scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.SupervisorJob() + kotlinx.coroutines.Dispatchers.Unconfined)
+            val local = RemoteListStore(context.getSharedPreferences("remote-controls-owner-$runID", 0))
+            val owner = RemoteConversationOwner(local, provider, scope)
+            owner.load(key)
+            assertTrue(owner.selectConfiguration(key, originalConfig))
+            assertTrue(owner.send(key, "first"))
+            val firstRequest = owner.turns(key).last().request
+            assertFalse(owner.queue(key, "stale", "wrong-request"))
+            assertFalse(owner.stop(key, "wrong-request"))
+            assertTrue(owner.queue(key, "second", firstRequest))
+            val queued = owner.controls(key).pending.single()
+            assertFalse(owner.editPending(key, queued.id, queued.revision + 1, "stale"))
+            assertTrue(owner.selectConfiguration(key, RemoteTaskConfiguration(model = "compact", effort = "low")))
+            gate.complete(Unit)
+            kotlinx.coroutines.yield()
+            assertTrue(owner.controls(key).pending.isEmpty())
+            assertEquals("second", owner.turns(key).last().prompt)
+            assertEquals(originalConfig, owner.controls(key).acceptedConfigurations[owner.turns(key).last().request])
+            scope.coroutineContext[kotlinx.coroutines.Job]!!.cancel()
+            // A retry/new request must not silently drain interrupted input. A
+            // deliberate resume still accepts its historical request identity.
+            val gate2 = kotlinx.coroutines.CompletableDeferred<Unit>()
+            val provider2 = object : RemoteConversationProvider {
+                override fun history(key: RemoteTaskKey) = emptyList<RemoteFrontendTurn>()
+                override fun reply(key: RemoteTaskKey, turn: RemoteFrontendTurn) = kotlinx.coroutines.flow.flow {
+                    gate2.await(); emit(RemoteConversationEvent(key, turn.id, turn.request, 1, "done", RemoteTurnPhase.Completed))
+                }
+            }
+            val scope2 = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.SupervisorJob() + kotlinx.coroutines.Dispatchers.Unconfined)
+            val owner2 = RemoteConversationOwner(RemoteListStore(context.getSharedPreferences("remote-controls-lineage-$runID", 0)), provider2, scope2)
+            owner2.load(key); assertTrue(owner2.send(key, "before restart"))
+            val original = owner2.turns(key).last()
+            assertTrue(owner2.queue(key, "held queue", original.request))
+            val held = owner2.controls(key).pending.single()
+            owner2.recoverStorage(key)
+            owner2.retry(key, original.id, original.request)
+            assertNotEquals(original.request, owner2.turns(key).last().request)
+            gate2.complete(Unit); kotlinx.coroutines.yield()
+            assertEquals(held, owner2.controls(key).pending.single())
+            assertTrue(owner2.send(key, "unrelated request")); kotlinx.coroutines.yield()
+            assertEquals(held, owner2.controls(key).pending.single())
+            assertTrue(owner2.startQueued(key, held.id, held.revision)); kotlinx.coroutines.yield()
+            assertTrue(owner2.controls(key).pending.isEmpty())
+            assertEquals("held queue", owner2.turns(key).last().prompt)
+            scope2.coroutineContext[kotlinx.coroutines.Job]!!.cancel()
+            val rejectedOwner = RemoteConversationOwner(deniedStore, provider,
+                kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.SupervisorJob()))
+            rejectedOwner.load(key)
+            assertFalse(rejectedOwner.editPending(key, "p", 0, "changed"))
+            assertEquals("queued", rejectedOwner.controls(key).pending.single().prompt)
+        }
+        start(); open("fixture-a", "layout")
+        click("remote-config"); click("remote-effort-high")
+        click("remote-speed-fast"); assertEquals("fast", controlsStore().controls(key).configuration.speed)
+        click("remote-speed-normal")
+        click("remote-permission-Default"); assertEquals("Default", controlsStore().controls(key).configuration.permission)
+        click("remote-permission-ReadOnly"); capture("controls-configuration")
+        click("remote-control-close")
+        assertEquals("high", controlsStore().controls(key).configuration.effort)
+        click("remote-goal"); click("remote-goal-editor"); node("remote-goal-editor").text = "核对合成任务结果"
+        val ime = android.provider.Settings.Secure.getString(context.contentResolver,
+            android.provider.Settings.Secure.DEFAULT_INPUT_METHOD).substringBefore('/')
+        assertTrue(device.wait(Until.hasObject(By.pkg(ime)), 5000))
+        device.pressBack(); device.waitForIdle()
+        click("remote-goal-save")
+        assertEquals("核对合成任务结果", controlsStore().controls(key).goal!!.text)
+        click("remote-goal"); click("remote-goal-pause"); assertTrue(controlsStore().controls(key).goal!!.paused)
+        click("remote-goal-pause"); assertFalse(controlsStore().controls(key).goal!!.paused)
+        click("remote-goal-pause"); click("remote-control-close")
+        draft("首个请求"); click("remote-reply-send")
+        draft("队列原文"); click("remote-queue"); click("remote-reply-stop")
+        val pending = controlsStore().controls(key).pending.single()
+        assertEquals(originalConfig, pending.configuration)
+        draft("保留原草稿")
+        click("remote-config"); click("remote-model-compact"); click("remote-effort-low"); click("remote-control-close")
+        click("remote-pending"); click("remote-pending-edit-${pending.id}")
+        draft("放弃编辑")
+        assertEquals("保留原草稿", controlsStore().draft(key))
+        click("remote-pending-edit-cancel"); assertEquals("保留原草稿", node("remote-draft").text)
+        click("remote-pending"); click("remote-pending-edit-${pending.id}")
+        draft("队列修改"); click("remote-reply-send")
+        assertEquals("保留原草稿", node("remote-draft").text)
+        val updated = controlsStore().controls(key).pending.single()
+        assertEquals(pending.id, updated.id); assertEquals(1, updated.revision)
+        assertEquals(originalConfig, updated.configuration)
+        assertEquals("队列修改", updated.prompt)
+        capture("controls-queue-edited")
+        click("remote-pending"); click("remote-pending-start-${pending.id}")
+        val accepted = controlsStore().turns(key).last()
+        assertEquals("队列修改", accepted.prompt)
+        assertEquals(originalConfig, controlsStore().controls(key).acceptedConfigurations[accepted.request])
+        assertEquals("compact", controlsStore().controls(key).configuration.model)
+        assertEquals("保留原草稿", controlsStore().draft(key))
+        click("remote-reply-stop")
+        draft("追加运行请求"); click("remote-reply-send")
+        val active = controlsStore().turns(key).last()
+        draft("精确请求补充"); click("remote-steer")
+        assertEquals(listOf("精确请求补充"), controlsStore().controls(key).steering[active.request])
+        waitControl { controlsStore().turns(key).last().phase == RemoteTurnPhase.Completed }
+        assertTrue(controlsStore().turns(key).last().body.contains("精确请求补充"))
+        click("remote-usage"); capture("controls-usage"); click("remote-control-close")
+        click("remote-agents"); node("remote-agents-empty"); click("remote-control-close")
+        draft("重启前执行"); click("remote-reply-send")
+        draft("重启队列"); click("remote-queue"); click("remote-reply-stop")
+        draft("重启原草稿")
+        val saved = controlsStore().controls(key).pending.single()
+        click("remote-pending"); click("remote-pending-edit-${saved.id}"); draft("不保存的编辑")
+        capture("controls-edit-original-preserved")
+        click("remote-task-back")
+        assertEquals("重启原草稿", controlsStore().draft(key))
+        assertEquals("重启队列", controlsStore().controls(key).pending.single().prompt)
+    }
+    @Test fun taskControlsRestart() {
+        val key = RemoteTaskKey("fixture-a", "layout")
+        start(); open("fixture-a", "layout")
+        val state = controlsStore().controls(key)
+        assertEquals("compact", state.configuration.model); assertEquals("low", state.configuration.effort)
+        assertTrue(state.goal!!.paused)
+        assertEquals("重启原草稿", node("remote-draft").text)
+        val pending = state.pending.single(); assertEquals("重启队列", pending.prompt)
+        click("remote-pending"); capture("controls-restarted")
+        click("remote-pending-cancel-${pending.id}"); assertTrue(controlsStore().controls(key).pending.isEmpty())
+        click("remote-control-close")
+        click("remote-goal"); click("remote-goal-clear"); assertNull(controlsStore().controls(key).goal)
+        click("remote-task-back"); open("fixture-b", "shared-task")
+        val other = RemoteTaskKey("fixture-b", "shared-task")
+        assertEquals(RemoteTaskControls(), controlsStore().controls(other))
+        assertEquals("", node("remote-draft").text)
+        capture("controls-other-host-isolated")
+    }
+    @Test fun messageBodyJourney() {
+        val key = RemoteTaskKey("fixture-a", "layout")
+        val body = "正文选择测试 **强调**。\n\n```kotlin\nval exact = \"中文\"  \n```\n\n" +
+            "| First | Middle | FarColumn | FourthLongHeader | FifthLongHeader | SixthLongHeader |\n| --- | --- | --- | --- | --- | --- |\n| A | B | C | D | E | F |\n\n" +
+            "[外部文档](https://example.invalid/remote-doc)\n\n[preview.txt](file:///synthetic/preview.txt)"
+        val turn = RemoteFrontendTurn("message-fixture", "message-attempt", 0, "检查**正文**组件", body, RemoteTurnPhase.Completed)
+        assertTrue(remoteCanCopyResponse(turn))
+        RemoteTurnPhase.entries.filter { it != RemoteTurnPhase.Completed }.forEach {
+            assertFalse(remoteCanCopyResponse(turn.copy(phase = it)))
+        }
+        assertFalse(remoteCanCopyResponse(turn.copy(body = " \n\t")))
+        assertNotNull(remoteWebLink("https://example.invalid/remote-doc"))
+        for (uri in listOf("javascript:alert(1)", "file:///tmp/x", "https://u:p@example.invalid", "https://example.invalid/a b"))
+            assertNull(remoteWebLink(uri))
+        val store = RemoteListStore(context.getSharedPreferences("remote-list-test-conversation-$runID", 0))
+        assertTrue(store.saveTurns(key, listOf(turn), clearDraft = false)); assertTrue(store.saveThreadPosition(key, 0, 0))
+        start(); open("fixture-a", "layout")
+        node("remote-body-message-fixture")
+        assertTrue(device.hasObject(By.text("检查正文组件")))
+        assertFalse(device.hasObject(By.text("检查**正文**组件")))
+        click("copy-code")
+        val clipboard = context.getSystemService(android.content.ClipboardManager::class.java)
+        assertEquals("val exact = \"中文\"  \n", clipboard.primaryClip?.getItemAt(0)?.text?.toString())
+        device.wait(Until.gone(By.res(java.util.regex.Pattern.compile("com.android.systemui:id/(clipboard_.*|dismiss_button)"))), 15000)
+        val table = device.wait(Until.findObject(By.res(java.util.regex.Pattern.compile("remote-table-body-message-fixture-.*"))), 5000)!!
+        val bounds = table.visibleBounds
+        val beforeCell = device.findObject(By.text("FarColumn")).visibleBounds
+        capture("message-body-before-table-scroll")
+        device.swipe(bounds.right - 80, bounds.centerY(), bounds.right - 340, bounds.centerY(), 30)
+        device.waitForIdle(); instrumentation.uiAutomation.clearCache()
+        val afterCell = device.findObject(By.text("FarColumn")).visibleBounds
+        assertTrue("Wide table actually moved horizontally", beforeCell.left - afterCell.left > 30)
+        assertTrue("Horizontal table gesture preserves vertical position", kotlin.math.abs(beforeCell.top - afterCell.top) <= 3)
+        File(context.filesDir, "remote-list-test-$runID/table-bounds.txt").writeText("before=$beforeCell after=$afterCell")
+        assertTrue(device.findObject(By.text("FarColumn")).visibleBounds.width() > 0)
+        capture("message-table-scrolled")
+        device.wait(Until.findObject(By.text("外部文档")), 5000)!!.click(); node("remote-web-link")
+        assertEquals("https://example.invalid/remote-doc", node("remote-web-address").text)
+        click("remote-web-copy")
+        assertEquals("https://example.invalid/remote-doc", clipboard.primaryClip?.getItemAt(0)?.text?.toString())
+        click("remote-web-open"); node("remote-web-content")
+        capture("message-web-link")
+        click("remote-web-close")
+        device.wait(Until.findObject(By.text("preview.txt")), 5000)!!.click(); node("remote-file-content")
+        click("remote-file-close")
+        if (device.hasObject(By.res("remote-scroll-bottom"))) click("remote-scroll-bottom")
+        click("remote-copy-message-fixture")
+        assertEquals(body, clipboard.primaryClip?.getItemAt(0)?.text?.toString())
+        capture("message-body-tail")
+    }
+
+    @Test fun messageReturnJourney() {
+        val key = RemoteTaskKey("fixture-a", "layout")
+        val store = RemoteListStore(context.getSharedPreferences("remote-list-test-conversation-$runID", 0))
+        val body = (1..65).joinToString("\n\n") { "阅读段落 $it：合成消息长文，用于检查返回位置和回到底部。" }
+        assertTrue(store.saveTurns(key, listOf(RemoteFrontendTurn("long-message", "long-message-attempt", 0,
+            "检查长文返回", body, RemoteTurnPhase.Completed)), clearDraft = false))
+        assertTrue(store.saveThreadPosition(key, 0, 0))
+        start(); open("fixture-a", "layout")
+        val viewport = node("remote-transcript").visibleBounds
+        device.swipe(viewport.centerX(), viewport.bottom - 120, viewport.centerX(), viewport.centerY(), 80)
+        device.waitForIdle()
+        node("remote-scroll-bottom")
+        fun checkpoint(): Pair<Int, Int> = RemoteListStore(context.getSharedPreferences("remote-list-test-conversation-$runID", 0)).threadPosition(key)
+        var before = checkpoint()
+        val deadline = android.os.SystemClock.uptimeMillis() + 5000
+        while (before.first == 0 && before.second <= 100 && android.os.SystemClock.uptimeMillis() < deadline) {
+            android.os.SystemClock.sleep(100)
+            before = checkpoint()
+        }
+        assertTrue("Reading viewport advanced and committed after fling", before.first > 0 || before.second > 100)
+        capture("message-reading-before-return")
+        click("remote-task-back"); open("fixture-a", "layout")
+        device.waitForIdle()
+        val after = RemoteListStore(context.getSharedPreferences("remote-list-test-conversation-$runID", 0)).threadPosition(key)
+        assertEquals(before.first, after.first)
+        assertTrue("Synchronous body keeps restored offset", kotlin.math.abs(before.second - after.second) <= 8)
+        capture("message-reading-returned")
+        click("remote-scroll-bottom")
+        node("remote-copy-long-message")
+        assertTrue(device.wait(Until.gone(By.res("remote-scroll-bottom")), 5000))
+        capture("message-reading-bottom")
+    }
     @Test fun commandOutputJourney() = commandOutputJourney(false)
 
     @Test fun commandOutputTextGestureJourney() = commandOutputJourney(true)

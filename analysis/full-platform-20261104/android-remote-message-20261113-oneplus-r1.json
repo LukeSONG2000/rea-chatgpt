@@ -1,0 +1,36 @@
+{
+  "implementation": "Independent frontend with Android293 evidence and synthetic data",
+  "serial": "172.16.197.16:5555",
+  "manufacturer": "OnePlus",
+  "model": "ONEPLUS A6003",
+  "sdk": "35",
+  "run_id": "fdce1591bb5340d2b83f5fe1a9c82a6e",
+  "language": "zh-CN",
+  "appearance": "light",
+  "suite": "conversation",
+  "status": "failed",
+  "steps": [
+    {
+      "apk": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "138305ffd5f48b6e7b52a629b51694a2fd51b3f538b5b7bb85c6d874a521eecd"
+    },
+    {
+      "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "3c3402cd80c21f9a7f0c134fae8309798ef62d7caa06941bee27d6ba2aaf0999"
+    },
+    {
+      "test": "messageBodyJourney",
+      "passed": true
+    },
+    {
+      "test": "messageReturnJourney",
+      "passed": false
+    }
+  ],
+  "error": "Instrumentation failed: messageReturnJourney",
+  "export_errors": [],
+  "preview_launch": {
+    "returncode": 0,
+    "output": "Stopping: local.rea.chatgpt.androidhost\nStarting: Intent { cmp=local.rea.chatgpt.androidhost/local.rea.chatgpt.MainActivity (has extras) }"
+  }
+}

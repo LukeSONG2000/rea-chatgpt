@@ -4313,6 +4313,8 @@ private struct RemotePreviewTask: Identifiable, Hashable {
     // showsNewThreadButton and VM callback context production are still partial.
     var newThreadTarget: RemoteNewThreadFixtureTarget? = nil
     var isCreatedReplay = false
+    //Independent provider target; no implied original child-task UI variant.
+    var isAgentChild = false
 
     static func created(_ state: RemoteThreadReplayState) -> Self {
         let receipt = state.creation!
@@ -8433,7 +8435,10 @@ private struct RemoteThreadFixturePage: View {
     @State private var showsGoal = false
     @State private var showsAgents = false
     @State private var selectedAgent: RemoteAgentPresentation?
-    private var taskControlsEnabled: Bool { HostLaunchRuntime.arguments.contains("--remote-task-controls-fixture") }
+    @State private var selectedAgentThread: RemotePreviewTask?
+    private var taskControlsEnabled: Bool {
+        !task.isAgentChild && HostLaunchRuntime.arguments.contains("--remote-task-controls-fixture")
+    }
     private var goalScope: RemoteGoalScope {
         .init(accountID: goals.accountID, hostID: task.id.host, threadID: task.id.thread)
     }
@@ -9337,7 +9342,7 @@ private struct RemoteThreadFixturePage: View {
                     Text(visualText("离线预览：可选择本地附件。发送、停止、语音及配置服务尚未连接，草稿会保留。", "Offline preview: local attachments are available. Send, stop, voice and configuration services are disconnected; drafts are kept."))
                         .font(.footnote).foregroundStyle(.secondary)
                 }
-                if !task.isCreatedReplay {
+                if !task.isCreatedReplay && !task.isAgentChild {
                     RecoveredRemotePreviousMessageToggle(isExpanded: historyExpansion, presentation: historyPresentation)
                         .alert(visualText("服务未连接", "Service not connected"), isPresented: $historyUnavailable) {
                             Button(visualText("好", "OK"), role: .cancel) {}
@@ -9352,7 +9357,7 @@ private struct RemoteThreadFixturePage: View {
                 }
             }
         }]
-        if !task.isCreatedReplay {
+        if !task.isCreatedReplay && !task.isAgentChild {
             if history {
                 rows.append(RecoveredRemoteTranscriptRow("loaded-history") {
                     VStack(alignment: .leading, spacing: 0) {
@@ -9531,14 +9536,37 @@ private struct RemoteThreadFixturePage: View {
                         initialBottomBarsHeight: 0, additionalBottomInset: 0, modern: modern)
     }
 
+    private func openAgent(_ intent: RemoteAgentOpenIntent) {
+        let snapshot = agentsSnapshot
+        guard let request = RemoteAgentThreadRequest(accountID: goals.accountID,
+            intent: intent, snapshot: snapshot, sessionID: composerSessionID) else { return }
+        //Explicit synthetic provider map. IDs are independent, and the full
+        //source-observed agent payload remains in the request at this boundary.
+        let childIDs = ["fixture-agent-layout": "fixture-child-layout",
+                        "fixture-agent-review": "fixture-child-review",
+                        "fixture-agent-navigation": "fixture-child-navigation"]
+        let supplied = replay.isEnabled && taskControlsEnabled ? childIDs[request.agent.id].map {
+            RemoteAgentThreadTarget(hostID: task.id.host, threadID: $0,
+                title: request.agent.localizedDisplayName)
+        } : nil
+        guard let target = request.resolve(supplied, accountID: goals.accountID,
+            snapshot: agentsSnapshot, sessionID: composerSessionID, availableHosts: [task.id.host]),
+            replay.prepareAgentThread(target, parent: composerScope) else {
+            selectedAgent = request.agent
+            return
+        }
+        selectedAgentThread = RemotePreviewTask(id: .init(host: target.hostID, thread: target.threadID),
+            title: target.title, activity: .idle, pending: nil, connected: task.connected,
+            inProgressWebSearchItemID: nil, hostIcon: task.hostIcon, hostDisplayName: task.hostDisplayName,
+            subtitle: task.subtitle, workspaceKey: task.workspaceKey, isAgentChild: true)
+    }
+
     private var agentsControls: RemoteAgentsControls {
         RemoteAgentsControls(snapshot: agentsSnapshot, sessionID: composerSessionID,
             isExpanded: Binding(get: { showsAgents }, set: { value in
                 showsAgents = value
                 if value { showsGoal = false }
-            }), openAgent: { intent in
-                selectedAgent = agentsSnapshot.resolve(intent, currentSession: composerSessionID)
-            })
+            }), openAgent: openAgent)
     }
     private var taskBottomBars: some View {
         VStack(spacing: 8) {
@@ -9645,6 +9673,13 @@ private struct RemoteThreadFixturePage: View {
                     } }
                 }
                 .accessibilityIdentifier("remote-agent-detail")
+            }
+            .navigationDestination(item: $selectedAgentThread) { child in
+                //Native push is this host's replaceable navigation adapter;
+                //the original final resolver/presentation remains unclosed.
+                AnyView(RemoteThreadFixturePage(baseTask: child, metadata: metadata,
+                    composerDrafts: composerDrafts, replay: replay, readingStore: readingStore,
+                    goals: goals, configurations: configurations).id(child.id))
             }
             .sheet(isPresented: $showsAdvancedFixture, onDismiss: {
                 guard reopensModelSlider else { return }

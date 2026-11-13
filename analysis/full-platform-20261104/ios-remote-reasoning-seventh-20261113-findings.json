@@ -1,0 +1,238 @@
+{
+  "status": "partial",
+  "scope": "iOS293 full reasoning body to rendered-item/fragment consumer; static only, two concrete consumer groups after prior negative-candidate review",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "decision": {
+    "source_backed_full_reasoning_change_admitted": false,
+    "reason": "No raw ReasoningThreadItem.content -> CodexRenderedItem constructor established. The newly examined real history consumers start from already-rendered content. Do not attach schema content to Markdown or tool history based solely on similar names.",
+    "groups": 2
+  },
+  "reused_contract": [
+    {
+      "fact": "ThreadItem reasoning case extractor checks concrete tag5 and yields ReasoningThreadItem; content+0 and summary+24 are independent optional String arrays.",
+      "source": [
+        "ios-remote-v608-reasoning-casepath-extract.asm:0x2d306d0..0x2d3073c",
+        "ios-remote-v615-reasoning-field-offsets.json"
+      ]
+    },
+    {
+      "fact": "Only summary getter0x24694e4 is proven to use reasoning factory0x2d2fab8 and read payload+24. Last usable normalized summary flows through0x1950720/0x18d04ac into thinking group, separate from retained rendered items.",
+      "source": [
+        "ios-remote-v615-reasoning-projection-findings.json",
+        "ios-remote-v616-reasoning-summary-findings.json"
+      ]
+    },
+    {
+      "fact": "Thinking group expands activityRows, not established full reasoning body. Activity enum has no reasoning case, and original ThreadItem reasoning cannot become fileChange/webSearch via the already examined converter markdown path.",
+      "source": [
+        "ios-remote-v607-reasoning-next-findings.json",
+        "ios-remote-v608-reasoning-content-findings.json"
+      ]
+    }
+  ],
+  "new_observations": [
+    {
+      "id": "actual-history-cached-consumer",
+      "classification": "official-artifact-static-instructions-and-full-type-tree",
+      "entry": "HistoryFragment rendered item branch0x1a36e14",
+      "source": [
+        "0x1a36e14 loads array from existing item+0x88;0x1a36e18 reads count;0x1a36e1c branches to0x1a3731c if zero",
+        "0x1a36e24..0x1a36e4c reads values from parent descriptor offset vector",
+        "0x1a36e30->0x1d8b94c->0x1bac578 names descriptor0x95acb88 TurnState;0x1a36e34 reads offset-vector slot+0x34",
+        "0x1a36e54..0x1a36e64 initializes child payload with existing block array plus parent context",
+        "0x1a36e68->0x1d9e348 reads full type record0x7e120b8"
+      ],
+      "parent_tree": "_ConditionalContent.Storage<Optional<_ConditionalContent<CodexRemoteCachedMarkdownBlockStack,ForEach<Array<CodexRemoteAssistantInlineBlock>,Int,...>>>>",
+      "other_tree_members": [
+        "CodexRemoteInlineDILView",
+        "CodexRemoteWritingBlockCard/CodexRemoteWritingBlockBody",
+        "CodexRemoteAsyncQuestionTranscript"
+      ],
+      "limits": [
+        "The old report assigned branch name markdown by enum declaration order plus jump table; preserve that caveat. This pass independently confirms an actual CachedMarkdownBlockStack consumer, not the complete enum ABI mapping.",
+        "Item+0x88 is observed block array storage; no unsupported binding to raw ReasoningThreadItem.content.",
+        "TurnState parent is real; not all callback/environment fields are semantically bound. No reasoning-specific collapse or status control established in this branch."
+      ]
+    },
+    {
+      "id": "actual-history-uncached-consumer",
+      "classification": "official-artifact-static-instructions",
+      "entry": "0x1a3731c->0x1a37fb0 when cached block array is empty",
+      "source": [
+        "0x1a37fd4 gets CodexRenderedItem metadata through0x1d87f94",
+        "0x1a3800c..0x1a38020 inspects an existing item String at+0x18 and emits empty alternative if String is empty",
+        "0x1a38034/0x1a38040 call0x1d88740/0x188d2b8 to obtain prepared content and projection result",
+        "0x1a38114..0x1a381a4 constructs ForEach-style path when preparation returns multiple elements; callback0x1c1720c",
+        "0x1a38238 calls renderer/model factory0x19b18b4 in alternate direct path",
+        "0x1a38314..0x1a38320 supplies callback0x1d39e50 and context"
+      ],
+      "limits": [
+        "This is a concrete existing String/block consumer, not raw ThreadItem production.",
+        "Neither String+0x18 identity nor preparation result is proved to be reasoning content.",
+        "Callbacks/renderer options are not promoted to reasoning expand/cancel/complete actions; this group stops at exact preparation/factory owners."
+      ]
+    },
+    {
+      "id": "retained-array-producer-still-downstream",
+      "classification": "official-artifact-static-instructions",
+      "entry": "0x18d0658 retained rendered-item processing called after independent summary filtering",
+      "source": [
+        "0x18d074c->0x1d78c88->0x25d2e8c supplies CodexRenderedItem metadata, descriptor0x95d1ba0",
+        "0x18d07d8 reads array count and0x18d0804..0x18d0810 indexes metadata-stride existing values",
+        "0x18d0814..0x18d081c uses rendered metadata slot+0x94 for embedded original-item presence",
+        "0x1d9483c checks original-item byte+0x181 against0xfe; this is optional-presence/representation gate, not reasoning semantic tag5",
+        "0x18d0830..0x18d0840 branches on existing rendered kind bytes",
+        "0x18d0860 calls different factory0x2d2fbec, not known reasoning factory0x2d2fab8; no reasoning content read admitted"
+      ],
+      "limits": [
+        "This function begins with preexisting CodexRenderedItem objects, so it is downstream of the missing raw->rendered producer.",
+        "No new whole-function semantics inferred from the selected0x18d0658..0x18d09d0 window.",
+        "Do not map numeric kinds1/9 to reasoning or use extractor adjacency as proof."
+      ]
+    }
+  ],
+  "current_host_audit": {
+    "files": [
+      {
+        "path": "implementation/ios/Sources/RemoteThreadReplay.swift",
+        "sha256": "418ce4e339dcb53828dcaf61b668816a7d833470e84a40c6fb9d2bc93b511dc1"
+      },
+      {
+        "path": "implementation/ios/Sources/NativeConversationHost.swift",
+        "sha256": "ed24557868eec867bba0a78dab9a8104e52ff484301226a265fee296f044998c"
+      }
+    ],
+    "existing_components": [
+      "RemoteReplayThinking(summary) atRemoteThreadReplay.swift46",
+      "RemoteReasoningSummary at54",
+      "RemoteReplayActivityGroup at111",
+      "RecoveredRemoteThinkingStatus atNativeConversationHost.swift2062 and actual group consumer2153"
+    ],
+    "actual_gap": "No typed full reasoning body consumer is newly established; generic HostMessage.reasoning remains a separate synthetic sample."
+  },
+  "safe_component_contract": {
+    "official_recovery_available": "Keep original summary normalization, optional thinking summary, activityRows membership, stable per-task/turn/group expansion and actual tool child actions. Do not add a second full-body child to that group.",
+    "independent_extension_only": {
+      "inputs": [
+        "account/host/thread/turn/item identity",
+        "explicit optional full content separately from summary",
+        "provider-supplied visibility/presentation policy",
+        "content revision and lifecycle status",
+        "explicit supported disclosure/action capabilities"
+      ],
+      "ownership": [
+        "Provider supplies content and admission; UI must not manufacture full body from summary or collect unrelated activities.",
+        "If an independent full-body component is added, retain expansion state by exact item identity/revision policy and mark it independent; source-backed default collapsed/expanded policy is unknown.",
+        "Markdown parsing/native block reuse can be a host adapter, not proof of original reasoning-to-markdown mapping."
+      ],
+      "not_original_wire_schema": true
+    },
+    "no_new_source_backed_haptics": true
+  },
+  "precise_remaining_breakpoints": [
+    "Upstream: actual construction/mutation writes to CodexRenderedItem.id/kind/_content from raw ThreadItem reasoning payload+0. Existing array/cache scans and Turn.items getters are not that constructor.",
+    "The candidate retained-item processing0x18d0658 is downstream; investigate the producer that supplied its CodexRenderedItem array, not neighboring getter families.",
+    "Consumer: only once actual rendered kind/content and retained-item visibility are bound, select the corresponding HistoryFragment branch. Current0x1a36e14/0x1a37fb0 real markdown stacks do not establish reasoning membership.",
+    "Prepared-content owners0x188d2b8 and0x19b18b4 are exact remaining consumer stops; do not expand all DIL/inline siblings.",
+    "Full reasoning-specific collapse affordance, lifecycle/status actions, gesture and haptic caller remain unknown."
+  ],
+  "stop": "Two explicit groups reached their bounded stops; no third generic metadata/numeric-tag search and no product changes justified.",
+  "validation": {
+    "product_edits": false,
+    "git": false,
+    "build": false,
+    "device": false,
+    "official_app": false,
+    "network": false
+  },
+  "raw_manifest": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/cached-block-context-type.asm",
+      "bytes": 580,
+      "sha256": "cc91f541b7cfa5979b867b51d39f6c86bdbd519acbd19603e86a478c8b239d34"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/cached-markdown-consumer.json",
+      "bytes": 1804,
+      "sha256": "39db62c7d78bc015758408961b0b230048f0d350834986d10ad891b4753698cd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/decisions.json",
+      "bytes": 677,
+      "sha256": "600536b761bb09622091c23e628584890f4f9247ef47e97f00826cc99fb15aaf"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/history-markdown-exit.asm",
+      "bytes": 1453,
+      "sha256": "6dd2797b2cb50a92f3aae9d89c3834dc079d705b81f5d46c13acfad3b6b32f1a"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/markdown-child-helper.asm",
+      "bytes": 1182,
+      "sha256": "48fa8035e0e8d1c02e78f8c98c6f6ba6ca6ddd433a23ca0ed4fb8f34b6f293df"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/markdown-child-tree.json",
+      "bytes": 72605,
+      "sha256": "cf95cd4ef42718618d9f5039eb9d3c9e2aad89e5117c266a2043b417997b7653"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/markdown-child-tree.raw",
+      "bytes": 125,
+      "sha256": "79eb26e25a4b7dfb8d021c3299b1264204ebe88b3e206acfee253cbb668c4209"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/markdown-child-tree.refs.tsv",
+      "bytes": 755,
+      "sha256": "d3f86f0eaa5323a180c0f0a7f1546c3d106b7969b9c26c022a37cf72f51519bc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/markdown-child-tree.tree.txt",
+      "bytes": 9738,
+      "sha256": "cc423b4923058c65fae5dbade46a727f4a055ab00bc52889e2703ec4579c13a9"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/markdown-consumer.asm",
+      "bytes": 7899,
+      "sha256": "5d8c9822367f4adcdbe0b851ece8b6a1bdbc1ea7c4876793e78eaa24f28a66a8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/markdown-context-fields.json",
+      "bytes": 1108,
+      "sha256": "161a5c9bea721797c74ded12bc9dbcabafe65f36b7bb6d4b14313e67a2bd90ae"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/markdown-context-helper.asm",
+      "bytes": 613,
+      "sha256": "e18f3207a59c2c9dd2fa94d900c955700c84bf8387cbd8fa8835ec6211028074"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/raw-item-presence-helper.asm",
+      "bytes": 499,
+      "sha256": "89ed159fbf73b14d30c70ac6fe386f21ad683e7e88d700d2b5679088501b7587"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/retained-render-unit-producer.asm",
+      "bytes": 9452,
+      "sha256": "b86916b9060da6e08f95a6dd052c98a957f211e188ecc6c4e9e98daea6cf42be"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/retained-render-unit-producer.json",
+      "bytes": 7318,
+      "sha256": "3ad36f4ed0d6ec9966ad868a4e5acd09e1f61c0e2cedc4aae116d51eb94d39d7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/typed-helper-bindings.asm",
+      "bytes": 838,
+      "sha256": "3ede4e01fae140dfc52746a700d90a277cab418c580784448ecff37463a36645"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-reasoning-seventh-20261113-raw/uncached-markdown-consumer.asm",
+      "bytes": 10419,
+      "sha256": "a8f6a4db3821fa729d4e643d2c08e4855b4901fc98dc1d91e093f4e27f19018f"
+    }
+  ]
+}

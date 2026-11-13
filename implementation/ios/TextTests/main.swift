@@ -3964,3 +3964,40 @@ expect(.remoteLiveActivityPerTask, ["zh-Hans-CN"], "每项任务一张卡片")
 expect(.remoteLiveActivityRecentFirst, ["zh-Hans-CN"], "每个任务一张卡片 — 最近更新优先")
 expect(.remoteLiveActivityPerTask, ["en-US"], "One per task")
 print("Settings source325 labels: Start screen and Live Activity choices/default/unknown typed persistence adapter passed")
+
+// Independent route admission, not an agentID-to-threadID inference.
+do {
+    let parent = RemoteComposerDraftScope(hostID: "host-a", threadID: "parent")
+    let session = UUID(), snapshot = RemoteAgentsSnapshot.fixture(scope: parent)
+    let intent = snapshot.openIntent(agentID: "fixture-agent-layout", sessionID: session)!
+    let request = RemoteAgentThreadRequest(accountID: "account-a", intent: intent,
+        snapshot: snapshot, sessionID: session)!
+    let target = RemoteAgentThreadTarget(hostID: "host-a", threadID: "distinct-child", title: "Child")
+    func resolve(_ request: RemoteAgentThreadRequest, _ candidate: RemoteAgentThreadTarget? = target,
+                 account: String = "account-a", current: RemoteAgentsSnapshot = snapshot,
+                 sessionID: UUID = session, hosts: Set<String> = ["host-a"]) -> RemoteAgentThreadTarget? {
+        request.resolve(candidate, accountID: account, snapshot: current, sessionID: sessionID, availableHosts: hosts)
+    }
+    precondition(resolve(request) == target)
+    precondition(resolve(request, nil) == nil)
+    precondition(resolve(request, account: "account-b") == nil)
+    precondition(resolve(request, sessionID: UUID()) == nil)
+    precondition(resolve(request, hosts: []) == nil)
+    precondition(resolve(request, .init(hostID: "host-a", threadID: "parent", title: "Loop")) == nil)
+    precondition(resolve(request, .init(hostID: "host-a", threadID: "bad\nidentity", title: "Bad")) == nil)
+    let newer = RemoteAgentsSnapshot(scope: parent, revision: snapshot.revision + 1, sections: snapshot.sections)
+    precondition(resolve(request, current: newer) == nil)
+    var changed = snapshot
+    changed.sections[0].subagents[0].status = .completed
+    precondition(resolve(request, current: changed) == nil, "Complete payload change invalidates an old request")
+    let other = RemoteAgentsSnapshot.fixture(scope: .init(hostID: "host-b", threadID: "parent"))
+    precondition(resolve(request, current: other) == nil)
+    let otherIntent = other.openIntent(agentID: intent.agentID, sessionID: session)!
+    let otherRequest = RemoteAgentThreadRequest(accountID: "account-a", intent: otherIntent,
+        snapshot: other, sessionID: session)!
+    let otherTarget = RemoteAgentThreadTarget(hostID: "host-b", threadID: "distinct-child", title: "Child")
+    precondition(resolve(otherRequest, otherTarget, current: other, hosts: ["host-b"]) == otherTarget)
+    precondition(resolve(otherRequest, target, current: other, hosts: ["host-b"]) == nil)
+    precondition(RemoteAgentThreadRequest(accountID: "", intent: intent, snapshot: snapshot, sessionID: session) == nil)
+    print("Agent routing: complete payload, explicit destination, account/session/revision, host and self-route admission passed")
+}

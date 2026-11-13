@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -19,7 +18,7 @@ import androidx.compose.ui.unit.dp
 internal fun RemoteApprovalCard(request: RemoteCommandApprovalRequest, submitting: Boolean,
     failed: Boolean, submit: (RemoteApprovalSubmission) -> Unit) {
     val identity = request.identity
-    var feedback by rememberSaveable(identity.task.storageKey, identity.connection, identity.turn, identity.request) {
+    var feedback by remember(request) {
         mutableStateOf("")
     }
     val actions = request.actions()

@@ -1,0 +1,322 @@
+{
+  "status": "partial",
+  "scope": "iOS293 subagent roster row -> actual parent callback and route boundary; three concrete groups, no product edits",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "groups": [
+    {
+      "id": 1,
+      "question": "Details actual parent, identity and row click forwarding",
+      "result": "Closed actual ScrollView/LazyVStack/Section/ForEach and row closure passing full CodexRemoteSubagent to injected Details action."
+    },
+    {
+      "id": 2,
+      "question": "Bottom parent injection candidate1a23258->1a275a0->1a27678",
+      "result": "Correctly excluded as pill-row producer by full tree7e1d1e0: SubagentStatusPill and sibling status pills, not Details. This negative candidate did not justify changing row destination."
+    },
+    {
+      "id": 3,
+      "question": "Actual selected Details panel parent1a22ef4 and injected row action",
+      "result": "Closed exact SubagentDetails branch and constructor1a272b8; original row action creates ThreadViewAction payload from full agent and forwards via captured VM action witness+0x78. Final root navigation implementation unresolved; stop rather than infer agentID=threadID."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "actual-details-roster-parent",
+      "classification": "official-artifact-full-generic-tree-and-instructions",
+      "source": [
+        "Details descriptor0x95af774, accessor0x1ce9ed8, conformance0x7e21e58, View.body witness0x1a1a35c->0x1a19a80",
+        "Actual full record0x7e22498: ScrollView -> LazyVStack -> ForEach<Array<SubagentSection>,Section.ID,Section<header,ForEach<Array<CodexRemoteSubagent>,String,row>,EmptyView>>",
+        "Original anonymous row/header descriptors0x95b1540/0x95b1564 preserved; no anonymous type names invented",
+        "0x1a19b9c constructs vertical ScrollView",
+        "0x1a19bdc scrollIndicators(hidden);0x1a19c1c scrollBounceBehavior(basedOnSize)",
+        "0x1a19ce0 wraps content via0x19a2c3c; exact surface arguments not re-proven in this route-only pass"
+      ],
+      "conclusion": "This Details is the composer roster panel, not the current host selectedAgent explanatory sheet."
+    },
+    {
+      "id": "row-pass-full-agent",
+      "classification": "official-artifact-static-dataflow",
+      "source": [
+        "0x1a19ee4 section branch uses ForEach; row closure0x1d3a5f0->0x1d16940->0x1d16944->0x1a1a214",
+        "0x1a1a234 gets CodexRemoteSubagent metadata via0x25d3dac",
+        "0x1a1a27c..0x1a1a2f8 copies displayName/color/status into row presentation",
+        "0x1a1a2fc..0x1a1a304 copies parent haptic engine into row",
+        "0x1a1a308..0x1a1a310 installs row callback0x1d16a34 with capture",
+        "0x1d16a34 loads copied Details callback at capture-relative+0x30;0x1d16a74->0x458e14",
+        "0x458e14 computes pointer to captured full agent inx0, restores callback contextx20, andbr x10"
+      ],
+      "conclusion": "Original click forwards complete agent to the owner. Passing only id would discard original status/parentThreadID/recency identity data before owner mapping."
+    },
+    {
+      "id": "actual-bottom-details-admission",
+      "classification": "official-artifact-static-instructions",
+      "source": [
+        "0x1a22ef4 is selected-status-panel switch using getter0x1a20ca8 and table0x7dfdf0f",
+        "Concrete SubagentDetails branch0x1a23094..0x1a23100: reads parent provider witness+0xc0; requires returned arraycount nonzero",
+        "0x1a230c4->0x1d900a4 gets exact Details metadata;0x1a230d0 passes accessor0x1ce9ed8;0x1a230e0 uses exact View conformance0x7e21e58",
+        "0x1a230ec installs content closure0x1ce9ecc->0x1a272b8"
+      ],
+      "limit": "No enum-order-only claim about selected-status raw tag. Concrete type/accessor/witness in this branch proves SubagentDetails admission independently."
+    },
+    {
+      "id": "details-owner-action-construction",
+      "classification": "official-artifact-static-dataflow",
+      "source": [
+        "0x1a272b8 concrete Details constructor obtains subagent array from parent provider+0xc0 and haptic engine provider+0x150",
+        "0x1a2739c ->0x1a19820 supplies original section grouping",
+        "0x1a273ac..0x1a273b4 installs Details action0x1cea080 and capture",
+        "0x1cea080..0x1cea090 resolves captured parent metadata and tails generic capture helper0x1cec54c with callback0x1a273c4",
+        "0x1a273e0->0x1d7dbfc->0x1aa30c0 binds action descriptor0x95aa444 CodexRemoteThreadViewAction",
+        "0x1a27408..0x1a27414 copies full CodexRemoteSubagent action payload",
+        "0x1a27418 rawtag0x26=38;0x1a2741c swift_storeEnumTagMultiPayload",
+        "0x1a27420 ->0x1da31c4 loads captured VM action witness+0x78;0x1a27428 invokes it"
+      ],
+      "conclusion": "Real Subagent row action is emitted to the existing ThreadViewAction owner. It is not a locally manufactured generic Agent information sheet.",
+      "label_boundary": "Existing metadata names action subagentTapped at fieldrecord0x9a32ce8 with CodexRemoteSubagent payload; actual concrete constructor emits raw38. Raw number is observed constructor detail, not a proposed wire codec or permission policy."
+    },
+    {
+      "id": "agent-identity-types",
+      "classification": "official-artifact-metadata",
+      "source": [
+        "CodexRemoteSubagent descriptor0x95d172c",
+        "id fieldrecord0x9a60de8 typeref0x8d860d0 rawSS = String",
+        "parentThreadID fieldrecord0x9a60e18 typeref0x8bc9970 rawSSSg = Optional<String>"
+      ],
+      "conclusion": "No separate hostID or proven child-thread route is carried by this struct. Host/task scope must come from the injected owner or an explicit adapter mapping; String field identity alone is insufficient to choose a target thread."
+    }
+  ],
+  "current_host_audit": {
+    "source": [
+      {
+        "path": "implementation/ios/Sources/RemoteAgentsPresentation.swift",
+        "sha256": "c3c3f5806ba13d39e84354c5beeee73b59d8991eccb685ca74a31cb5dac8b3ff"
+      },
+      {
+        "path": "implementation/ios/Sources/NativeConversationHost.swift",
+        "sha256": "ed24557868eec867bba0a78dab9a8104e52ff484301226a265fee296f044998c"
+      }
+    ],
+    "current": "NativeConversationHost agentsControls openAgent at~9540 resolves scoped intent to selectedAgent. sheet(item:$selectedAgent) at~9632 presents explanatory synthetic detail with id, Done and no child task destination.",
+    "correct_existing": "RemoteAgentsSnapshot validates unique agent IDs, snapshot revision, composer session and exact account/host/thread scope before returning agent. Keep these independent admission protections.",
+    "missing": "No child target provider/owner route after resolution; source now proves a typed owner action should exist, but not its final destination."
+  },
+  "safe_product_decision": {
+    "can_restore_now": [
+      "Preserve original roster panel parent and full-agent owner action shape; do not treat row selection as a request to show an Agent info sheet.",
+      "Add/retain an explicit optional agent navigation capability supplied by the current thread owner, rather than deriving child threadID from agent.id.",
+      "The existing independent scope/session/revision resolver may guard delivery of the owner action, while the owner maps agent to child task."
+    ],
+    "independent_contract_boundary": {
+      "request": [
+        "current account/host/parent-thread scope",
+        "composer session and snapshot revision",
+        "full resolved agent projection"
+      ],
+      "result": [
+        "explicit destination hostID/threadID from adapter",
+        "unavailable/not-found/failed/ready status",
+        "return route owned by existing task navigation"
+      ],
+      "rules": [
+        "Do not use parentThreadID as child target.",
+        "Do not fallback to current task, first matching task, text/displayName or bare agentID.",
+        "Default absent capability shows a clear unavailable boundary; positive offline fixture can provide an explicit mapped synthetic child and use existing task route, labelled independent.",
+        "Service fetching/execution remains unimplemented."
+      ]
+    },
+    "not_recovered": [
+      "Final owner witness implementation/subagentTapped dispatch -> child host/thread selection",
+      "Root push/sheet/stack navigation and return semantics",
+      "Original loading/retry/missing-child UI",
+      "Original direct row haptic trigger or tactile behavior; shared pill selection haptic evidence remains separate"
+    ]
+  },
+  "precise_stop": [
+    "Resolve actual concrete binding of parent action witness+0x78 reached0x1a27428. This is now the exact next consumer; generic protocol name/nearby method inventory cannot identify final route.",
+    "Original subagent.id->repository thread identity and host inheritance remain unknown. Do not claim the current explanatory sheet or a guessed push is an official destination."
+  ],
+  "prior_reports": [
+    "ios-remote-agents-20261112-findings.json",
+    "ios-remote-goal-controls-20261113-findings.json",
+    "ios-remote-v410-owner-actions.json",
+    "ios-remote-v442-bottom-types.json"
+  ],
+  "validation": {
+    "product_edits": false,
+    "git": false,
+    "xcode_or_build": false,
+    "device": false,
+    "official_app": false,
+    "network": false
+  },
+  "raw_manifest": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/action-construction.json",
+      "bytes": 2617,
+      "sha256": "683fd2e2a3b46935aed38e93cd3dcbe7842188cd41c8038f2d2036e7f1ac1cfd"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/action-metadata-helper.asm",
+      "bytes": 300,
+      "sha256": "3939b3c4d387b853aa8ad1d35276b66ea6de87a4b489c7405df20f54f93220e7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/action-metadata.asm",
+      "bytes": 401,
+      "sha256": "bbae3cfb837bde23558af489306c384914f3bd239d27029b4c512feff302767f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/action-thunk-and-dispatch-helper.asm",
+      "bytes": 401,
+      "sha256": "85945495aa252bc81683d3a1231f87ffaa8a2f180b903503dac5cdfae42dbfd4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/action-witness-slot.asm",
+      "bytes": 269,
+      "sha256": "948272a09d25cd45697ee0c46b66c3e6dd1f4abbf58cd163e8d0956e76bdc04c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/actual-details-admission-builder.asm",
+      "bytes": 9840,
+      "sha256": "15ebcb82f4a5f246f366368f1f46077fa3134545818576f144d1e1fcbf5d5522"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/actual-details-callback-injection.asm",
+      "bytes": 7666,
+      "sha256": "528c3ba457f67ac8ef0e33a2b38142f8b533d0eb474d8c2e13647df1bb2b892c"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/actual-panel-builder-thunk.asm",
+      "bytes": 301,
+      "sha256": "da9b618f80a99cf053f360c406bf83b5f4fa03dc9588c0271dcecba6aecfd5a3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/bottom-details-factory.asm",
+      "bytes": 3001,
+      "sha256": "d662db8f82ce7a69afcaae2078aad92fd8c02c42080bd3c9573ca3073f79ec69"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/bottom-panel-builder-b.asm",
+      "bytes": 6339,
+      "sha256": "20c31dc918de50ce298cd08a5eca1921741159c8d995052e6d0c615df8390097"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/bottom-panel-builders-a.asm",
+      "bytes": 8129,
+      "sha256": "25deb155eccf7754af0c92e7f2093743393741977d5a79be4581647ae304e7d2"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/bottom-selected-panel-tree.json",
+      "bytes": 70604,
+      "sha256": "0b6689ed52c713b4a1f21fb6de14d2a94ea8a4542a568c99abcac1be92a2b6e8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/bottom-selected-panel-tree.raw",
+      "bytes": 119,
+      "sha256": "541f557be5f9b889a202ff54fa04fab78a5ad3c5b770fb369357d41a93065ea7"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/bottom-selected-panel-tree.refs.tsv",
+      "bytes": 811,
+      "sha256": "9d5dd74f67351da621effaaacec4d4d477bea68bea756b43cca915016bebb21f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/bottom-selected-panel-tree.tree.txt",
+      "bytes": 9324,
+      "sha256": "2fcabafdaf42b67681ecffe1a04140014914d95b21f44872fba675a194243973"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/details-body-calls.json",
+      "bytes": 12582,
+      "sha256": "0cd580bbf65d9226f0c91aa14a6176c586c927956f73eb822079ac7ba62d52dc"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/details-body.asm",
+      "bytes": 24397,
+      "sha256": "02478fb65550dc7a6fcedc331fda7ffc398bc8bfe8b58eaeac9c087b41688678"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/details-metadata.json",
+      "bytes": 1374,
+      "sha256": "65523ea7d8b49cba54cb6d6583abe1b0960d0dfed0e5c66f1b8c58cefeb102a8"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/details-root-tree.json",
+      "bytes": 45969,
+      "sha256": "2b8945e2adb89a69016fab4e15be0a9a246ea8aebb026e61f718c118cc74bc93"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/details-root-tree.raw",
+      "bytes": 109,
+      "sha256": "e3d8fadb0c9fadcfd1d578c99261323f6761168a251396f6352f4392f7b757f1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/details-root-tree.refs.tsv",
+      "bytes": 611,
+      "sha256": "06c1faa7c77ae45faaa5b0be292428d00dc50de9bf2b89d33e138f168fb45405"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/details-root-tree.tree.txt",
+      "bytes": 5949,
+      "sha256": "6e8a21f7304ceee65f2107716801fcc1d0cdcaa669814471f77aeecd30b6e55d"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/details-witness.json",
+      "bytes": 4614,
+      "sha256": "4a1d11d2ae7e87b25ccf67c0a0d220b23813432d2e4231c7024fca57650f9458"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/forwarding-helper.asm",
+      "bytes": 259,
+      "sha256": "105d3271af4c528efabefb3490c2a0cfa2c2137dd87bda9dad6e575a4ecdb535"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/identity-field-types.json",
+      "bytes": 1485,
+      "sha256": "d70a889298011593a7845361a8cf2fb82d4ff22ef35adad3abe2d18208faea72"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/row-action-thunks.asm",
+      "bytes": 5216,
+      "sha256": "4aa1ab0a0b2fca0b111c9e3143cebb9a58730034184c1a0b69f2cfb5c5efdc15"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/row-constructor.asm",
+      "bytes": 2901,
+      "sha256": "b429a247d91e87ba104d9daa4743db891cf599b03b7317df096cc3d3438130c4"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/row-label.asm",
+      "bytes": 13120,
+      "sha256": "16e6fec22a8bb0d07eabaebb0dfc0878ae00c5ab9dd9ce4e1843136cf6f3a9d1"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/section-row-tree.json",
+      "bytes": 11339,
+      "sha256": "190abb682916755b5823ce5c8a84f51faca46c2d63d93cc1af31c28ae87beb08"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/section-row-tree.raw",
+      "bytes": 52,
+      "sha256": "d5e0e8bd2285dbc2e950bef8a4a56e934f86babdd9aaa46c7462a6cb682592f6"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/section-row-tree.refs.tsv",
+      "bytes": 290,
+      "sha256": "b3fc9cbdcd965c842d087dddb091d173b0a2889acdeeea99410e66f0367eaef3"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/section-row-tree.tree.txt",
+      "bytes": 1602,
+      "sha256": "015cfdd769f220945d8a55b7a755be652c0d57c069c2523dfde6912f533bd20b"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-agent-route-eighth-20261113-raw/selected-panel-builder.asm",
+      "bytes": 41480,
+      "sha256": "84b3049bbd465431aecc9e528497977603390d197c30113dea40f1522dc90fd3"
+    }
+  ]
+}

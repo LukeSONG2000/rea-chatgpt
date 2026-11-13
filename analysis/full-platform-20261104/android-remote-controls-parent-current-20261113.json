@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-13",
+  "module": "Android Remote composer and task controls",
+  "baseline": "c17d46fb1a plus retained completed local message batch",
+  "status": "minimum usable offline core implemented; explicit service/agent counterpart gaps retained",
+  "implemented": [
+    "Task/profile/host-thread scoped current configuration distinct from immutable accepted request and queued intent snapshots",
+    "Model capability fixture with supported effort/speed choices and allowed ReadOnly/Default permissions; selections persist and synthetic replay consumes captured configuration, with fast/normal pacing",
+    "Request-bound Queue and Steer controls separate from Stop; Stop/Retry reject stale request identities",
+    "Atomic pending-to-turn conversion preserves original configuration and queued prompt while retaining unrelated composer draft",
+    "Pending pure-text edit overlay in the existing composer: exact task/pending ID/revision same-row replacement; cancel/navigation/process termination preserve original durable draft; failed commit keeps old queue/edit",
+    "Continuation origins bound to completed request lineage: retry/new unrelated request cannot auto-drain stopped/interrupted old queue; explicit manual resume accepts historical request identity",
+    "Automatic accepted continuation draining, explicit pending send/cancel, config-compatible pending-to-steer; queue state remains separate from transcript lifecycle",
+    "Task Goal local set/pause/resume/clear; read-only local usage counts; explicit agents empty/unconnected details without fabricated child execution",
+    "Strict stored controls version integer1 required; only absent controls row receives defaults; corrupted data is rejected without rewrite"
+  ],
+  "source_evidence": [
+    {
+      "id": "E-C01",
+      "source": "android-remote-controls-20261113-source.json#send_stop",
+      "observation": "qy81.p -> mck/yak -> qs.case5 hgk(fsk Queue/Steer, gtk), separate e9.case8 bgk; focused smali verifies carrier branching",
+      "boundary": "Original p8/p9 and vam meaning remains partly unnamed; current actor and JSON schema independent"
+    },
+    {
+      "id": "E-C02",
+      "source": "android-remote-controls-20261113-source.json#pending",
+      "observation": "mz81/yz81/zrk -> omm ID/host/thread ownership, fdk/sck/agk/xfk/zdk actions",
+      "boundary": "Local known pure-text queue only; original server-owned pending phases, structured review/attachments and receipts not reproduced"
+    },
+    {
+      "id": "E-C03",
+      "source": "android-remote-controls-20261113-source.json#models_effort_speed",
+      "observation": "plk/gpm/ipm Model/Speed/Reasoning capabilities; ov81 caller-provided gtk list",
+      "boundary": "Standard/Compact and low/medium/high/normal/fast are explicit offline capabilities, not official model catalog or server config schema. FullAccess/CustomConfig/AutoReview not exposed without provider."
+    },
+    {
+      "id": "E-C04",
+      "source": "android-remote-controls-20261113-source.json#goal",
+      "observation": "z4m chip/panel/editor; f37/mn6; w4m thread/goal/set and clear",
+      "boundary": "Goal persistence/pause is local frontend state, not autonomous background execution"
+    },
+    {
+      "id": "E-C05",
+      "source": "android-remote-controls-20261113-source.json#usage_agents",
+      "observation": "/status usage/rate-limits and optional oej0 Agents display field",
+      "boundary": "Usage is labelled local replay character/request counts, not account quota; no source-backed agent management/create route claimed"
+    }
+  ],
+  "ios_contract": "ios-remote-coordinated-parent-current-20261113-r2.json supersedes historical canEdit=false reports; used transaction checklist only, Android styling/owners independent",
+  "source_validation": "android-remote-controls-20261113-source-validation.json;32 source/smali hashes match",
+  "independent_adapters": [
+    "Material control strip/dialog and transient composer edit label; exact original carrier/slider/popup optics are not claimed",
+    "SharedPreferences single-snapshot transaction, local JSON v1, IDs, immutable config and continuation-origin policy",
+    "Synthetic steer modifies only the exact active request replay; no remote transport acknowledgement or execution",
+    "Goal local status and usage metrics; no native OS permission or account quota mutation"
+  ],
+  "verification": {
+    "build_initial": "android-remote-controls-20261113-build.log;17s passed",
+    "ui_report": "android-remote-controls-20261113-oneplus-r1.json",
+    "ui_tests": [
+      {
+        "test": "taskControlsJourney",
+        "passed": true,
+        "seconds": 68.004
+      },
+      {
+        "test": "taskControlsRestart",
+        "passed": true,
+        "seconds": 18.229
+      }
+    ],
+    "ui_product_sha256": "95804f4e5fc747da4195a0b20e12b9976d671cc07fe8b9adf24fe1847d1d3bd4",
+    "ui_coverage": [
+      "configuration model/effort/speed/permission selection",
+      "Goal create/pause/resume/clear persistence",
+      "queue then stop; edit cancel restores original draft; save replaces exact pending row with same configuration",
+      "queued send retains captured configuration despite later current-model change",
+      "active-request steer reflected in synthetic reply",
+      "restart keeps current configuration/Goal/queue/draft, unsubmitted overlay discarded",
+      "other host scope has default controls and empty draft"
+    ],
+    "pure_contracts_in_journey": [
+      "codec roundtrip and unsupported configuration rejection",
+      "failed atomic runtime commit preserves old pending state",
+      "stale request Queue/Stop and stale pending revision rejected",
+      "automatic continuation preserves original accepted config",
+      "interrupted request retry/unrelated new completion does not drain old queue; explicit historical-target resume succeeds"
+    ],
+    "post_ui_change": "Only explicit version gate tightened after parent audit; valid version1 state behavior unchanged. Entire UI not repeated.",
+    "final_build": "android-remote-controls-20261113-build-r2.log;13s passed",
+    "final_codec_test": {
+      "report": "android-remote-controls-20261113-oneplus-codec.json",
+      "test": "controlsCodecGate",
+      "passed": true,
+      "seconds": 0.073,
+      "cases": [
+        "null row legacy default",
+        "valid integer1 roundtrip",
+        "missing/bad/string1/null/2/1.5 versions rejected",
+        "corrupt stored snapshot not rewritten"
+      ]
+    },
+    "appearance": "zh-CN/light",
+    "device": "OnePlus ONEPLUS A6003 SDK35 wireless172.16.197.16:5555",
+    "screenshots_viewed": [
+      "controls-configuration.png",
+      "controls-restarted.png (ordinary task with restored draft/queue)"
+    ]
+  },
+  "remaining": [
+    {
+      "item": "Agent child navigation counterpart",
+      "precise_gap": "Complete agent+account/scope/session/revision request -> optional explicit provider(host/thread/title) -> existing child-message page/navigation interface is absent. Current source evidence supports status/optional agent display only; never infer agentID=threadID."
+    },
+    {
+      "item": "Pending full parity",
+      "precise_gap": "Server-owned queue phase discriminants/receipts, reorder, server retry, structured attachments/review payload and complete capability admission remain unresolved. Only known local pure-text payload supported."
+    },
+    {
+      "item": "Model/permission/context services",
+      "precise_gap": "Real model catalog, original queued settings receiver, custom permission metadata, sandbox/approval translation and real context/rate limits not connected."
+    },
+    {
+      "item": "Goal service and presentation",
+      "precise_gap": "Real Goal service refresh, autonomous continuation, duration/budget, complete action admission and exact source visuals not implemented."
+    },
+    {
+      "item": "Input/feedback fidelity",
+      "precise_gap": "Private IME/composer gesture/material metrics, real haptics and original toolbar optical parity remain independent; no matrix or real service tests."
+    }
+  ],
+  "runtime": "android-remote-controls-20261113-runtime.json",
+  "installed_product_sha256": "f695843ff841d1a3c514726e8f47a8fb2def45808236619116fdb2bb2a446b58",
+  "source_hashes": "android-remote-controls-20261113-source-hashes.json",
+  "ordinary_preview_preserved": true,
+  "no_git_mutations": true,
+  "scope": "Only Android controls/model/composer/owned tests and own reports; prior message changes retained; no iOS/shared docs/AGENTS edits"
+}

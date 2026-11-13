@@ -1,0 +1,149 @@
+{
+  "date": "2026-11-13",
+  "module": "Android Remote approvals and additional input",
+  "status": "minimum usable offline core implemented; scoped runtime journey completed across preserved partial and remainder runs",
+  "implemented": [
+    "Separate Android Tool whole-question form and Async paged-question carrier, both reachable through normal task-list Demo entries",
+    "Tool option descriptions, optional header, custom when isOther or no options, visually masked secret, all-answers nonblank aggregate admission",
+    "Async first-option default, current index, previous, explicit skip, nonblank next, final nonempty aggregation; all-empty closes locally without accepted receipt",
+    "Per-profile/host/thread/connection/turn/request/revision request identity and unique submission attempt; replacement/withdrawal retires attempt; old receipts cannot settle successor or clear busy",
+    "Submission duplicate/busy suppression, retained in-memory answers on failure, retry, expiry admission and visible expiry timer; exact accepted identity stored only after successful commit",
+    "Existing ordinary command approval uses the same attempt/replacement fence and request-captured callback; feedback now memory-only instead of rememberSaveable",
+    "No answer/secret/feedback values written to preferences or SavedState; only accepted identity receipts are durable; existing version0 approval receipt keys retained",
+    "Input/approval pending state blocks incompatible send/queue/steer/retry while existing task draft remains separate"
+  ],
+  "source_evidence": [
+    {
+      "id": "E-AUI-01",
+      "source": "android-remote-user-input-20261113-source.json#tool_user_input",
+      "observed": "xom -> dp60.q/s -> fyc all-question card; wom/jbl/vom metadata; dp60.smali nonblank/custom gates; mmc/wnj0 secret visual masking",
+      "boundary": "Masking alone does not prove original persistence/encryption/transport; current memory-only policy is independent"
+    },
+    {
+      "id": "E-AUI-02",
+      "source": "android-remote-user-input-20261113-source.json#async_question",
+      "observed": "qu81/qii/anj plus sba/p0 smali default first option and explicit skip/next terminal behavior; anj.l expiry",
+      "boundary": "Original submitted-ID/partial-success catalog behavior not fully represented by this fresh-request adapter"
+    },
+    {
+      "id": "E-AUI-03",
+      "source": "android-remote-user-input-20261113-source.json#async_question",
+      "observed": "pa7/ru81 source+smali builds questionItemId/question/answer follow-up wrapper, distinct from Tool igk/zsk; py81.smali checks current request ID before settlement",
+      "boundary": "Typed kind+answers service boundary is independent; no actual follow-up RPC serialization/transport or backend action"
+    },
+    {
+      "id": "E-AUI-04",
+      "source": "android-approval-20261111-source.json",
+      "observed": "Existing ordinary command decision capability gates preserved",
+      "boundary": "Network/special permission/MCP elicitation remain separate unsupported forms"
+    }
+  ],
+  "source_validation": {
+    "report": "android-remote-user-input-20261113-source-validation.json",
+    "matching_source_smali_files": 24,
+    "kind": "frozen local source hashes and line anchors reused; no new target execution or native-session mutation"
+  },
+  "ios_contract": "Read current RemoteUserInputInteraction.swift as transaction comparison only; Android Tool/all-question and Async/paged distinction is independently sourced, not copied from iOS.",
+  "independent_adapters": [
+    "Material Surface/button/TextField typography, geometry, focus/keyboard carrier and inline failure text; original visual tokens/haptics not claimed",
+    "Typed request kind, revision, attempt token, local receipt journal and failure-preserving storage guard",
+    "Synthetic in-process acceptance with no network, true command execution, permission grant or real credentials",
+    "All-empty Async collapse is non-durable; a provider may offer the unaccepted request again after process restart"
+  ],
+  "validation": {
+    "appearance": "zh-CN/light",
+    "device": "OnePlus ONEPLUS A6003 SDK35 172.16.197.16:5555",
+    "product_build": "First build passed22s; product APK unchanged through all subsequent test-only compiles",
+    "final_build": "15s",
+    "product_sha256": "c422c21109ffc719bc109030c0430f2220e4b8665e7d00d359824f7c7cb3b142",
+    "r1": {
+      "report": "android-remote-user-input-20261113-oneplus-r1.json",
+      "status": "failed before UI",
+      "reason": "Test Editor delegation escaped fake failed commit via chained putBoolean; corrected proxy return-this, not a product defect"
+    },
+    "r2": {
+      "report": "android-remote-user-input-20261113-oneplus-r2.json",
+      "status": "pure contracts passed; UI stopped",
+      "reason": "Accessibility setText did not open IME; unconditional Back left task. Corrected only IME-aware test dismissal."
+    },
+    "r3": {
+      "report": "android-remote-user-input-20261113-oneplus-r3.json",
+      "status": "partial, not overall pass",
+      "passed": [
+        "pure request/attempt/expiry/storage contracts",
+        "Tool selection+secret acceptance and no persisted secret",
+        "Async second answer input and previous-page selected-state restore"
+      ],
+      "reason": "After Previous grew card height, the second Next was below viewport; screenshot/XML show scroll-to-bottom. Existing locator was missing at that call."
+    },
+    "r4": {
+      "report": "android-remote-user-input-20261113-oneplus-r4.json",
+      "status": "passed remaining slices only",
+      "same_owned_run_id": "20ef0d57275c442d9821c9ba7a5852e3",
+      "tests": [
+        {
+          "method": "inputRemainder",
+          "seconds": 16.988,
+          "coverage": "Async next/previous/custom restoration/final explicit Skip sends prior answer; ordinary command approval acceptance"
+        },
+        {
+          "method": "inputRestart",
+          "seconds": 31.264,
+          "coverage": "Real process restart restores identity-only accepted Tool/Async/command receipts; task draft return and other-host empty-draft isolation"
+        }
+      ],
+      "artifact_note": "Same isolated run ID retains earlier r3 failure PNG/XML among exports; they are historical, not new r4 failures."
+    },
+    "pure_contracts": [
+      "duplicate busy submission suppressed",
+      "mismatched attempt rejected",
+      "provider exception retains request for retry",
+      "replacement old response cannot clear successor busy or settle it",
+      "two hosts with same thread/request remain independent",
+      "withdrawn late receipt rejected",
+      "expired request not admitted",
+      "failed durable commit retains request/error without answer persistence",
+      "ordinary command approval old-attempt fence",
+      "Async all-empty close stores no accepted identity"
+    ],
+    "final_test_source_note": "Only original full inputJourney locator statements were synchronized to the already passed inputRemainder sequence after r4, then instrumentation source compiled. No UI repeated; executed r4 instrumentation APK hash retained in its report, final compiled test APK is a different test-only artifact.",
+    "final_compiled_test_apk_sha256": "098338c02f45bfe74f0945fa3f1f3705f85c6f979fb1293d7e97edeeffb5bb09",
+    "visual_review": [
+      "r2 failure list/IME screenshot",
+      "r3 failure Async page1 with existing scroll affordance",
+      "r4 input-async-restored-answer.png shows page2, retained text and previous/skip/submit controls"
+    ]
+  },
+  "remaining": [
+    {
+      "item": "Real services",
+      "gap": "No remote transport, real grant/reject, MCP operation or backend receipt validation. Typed asynchronous adapters are ready for a provider."
+    },
+    {
+      "item": "Async partial success",
+      "gap": "Original already-submitted question ID set, dynamic partial-success catalog updates and actual tagged follow-up serialization are not connected; only fresh request local aggregation accepted as one receipt."
+    },
+    {
+      "item": "Specialized forms",
+      "gap": "MCP elicitation hkk/wy81.h and tvk/t091.d, network policy amendments and full custom/permission payload forms are not reconstructed as generic buttons."
+    },
+    {
+      "item": "Exact UI/feedback",
+      "gap": "Original private typography/material/layout/focus and error-feedback/haptic fidelity remain unproved; Material carrier and inline error are independent."
+    },
+    {
+      "item": "Runtime scope",
+      "gap": "No broad matrix or full final monolithic inputJourney pass is claimed. Product core was verified by r3 completed Tool segment plus r4 remaining/actual restart slices; request race/error paths are pure contracts, not real-service tests."
+    }
+  ],
+  "review_path": [
+    "Normal AppShell -> Remote -> Demo -> 填写任务补充信息",
+    "Normal AppShell -> Remote -> Demo -> 回答后续问题",
+    "Studio PC -> 检查界面组件 for ordinary approval"
+  ],
+  "runtime": "android-remote-user-input-20261113-runtime.json",
+  "source_hashes": "android-remote-user-input-20261113-source-hashes.json",
+  "ordinary_preview_preserved": true,
+  "no_git_mutations": true,
+  "no_ios_shared_docs_changes": true
+}
