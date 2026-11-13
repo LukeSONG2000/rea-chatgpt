@@ -109,10 +109,14 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
     val remoteProvider = remember(chinese) { SyntheticRemoteListProvider(chinese, failFirst) }
     var error by remember { mutableStateOf(!preferences.rootCheckpointValid) }
     var notice by remember { mutableStateOf(false) }
-    // Local frontend selection. Server-backed temporary conversation lifecycle is reserved.
-    var temporaryChat by rememberSaveable { mutableStateOf(false) }
     val drawer = rememberDrawerState(DrawerValue.Closed)
     val coroutine = rememberCoroutineScope()
+    val context = LocalContext.current
+    val chatOwner = remember(preferences) { ChatConversationOwner(
+        ChatConversationStore(context.getSharedPreferences("chat-${preferences.profile}", android.content.Context.MODE_PRIVATE),
+            "offline-shell-account", preferences.profile, FrontendPreferences.modes.associateWith(preferences::draft)),
+        SyntheticChatProvider(chinese), coroutine) }
+    SideEffect { chatOwner.useProvider(SyntheticChatProvider(chinese)) }
     val focus = LocalFocusManager.current
     val settingsScroll = rememberLazyListState()
     fun navigate(next: String) {
@@ -126,7 +130,12 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
         }
         route = next
     }
+    fun selectConversation(row: ChatConversation) {
+        if (!chatOwner.select(row.id) || !preferences.selectMode(row.mode)) { error = true; return }
+        mode = row.mode; navigate("home"); coroutine.launch { drawer.close() }
+    }
     fun back() {
+        if (route == "home" && chatOwner.selected(mode) != null) { chatOwner.newConversation(mode); return }
         val returnToSidebar = route == "search"
         val next = when {
             route == "appearance" || route == "language" -> "general"
@@ -137,7 +146,7 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
         navigate(next)
         if (returnToSidebar) coroutine.launch { drawer.open() }
     }
-    BackHandler(drawer.isOpen || route != "home") {
+    BackHandler(drawer.isOpen || route != "home" || chatOwner.selected(mode) != null) {
         if (drawer.isOpen) coroutine.launch { drawer.close() } else back()
     }
     if (notice) AlertDialog(onDismissRequest = { notice = false },
@@ -161,7 +170,7 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
                             Modifier.size(24.dp))
                     }
                 }
-                LazyColumn(Modifier.weight(1f)) {
+                LazyColumn(Modifier.weight(1f).testTag("chat-sidebar-list")) {
                     items(shellEntries, key = { it.id }) { entry ->
                         RecoveredSidebarRow(entry.id, entry.label, entry.icon) {
                             coroutine.launch {
@@ -170,9 +179,16 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
                             }
                         }
                     }
+                    item("chat-history-heading") { Text(remoteControlText("会话", "Conversations"), Modifier.padding(16.dp)) }
+                    items(chatOwner.snapshot.rows.filter { !it.archived }, key = { "chat-" + it.id }) { row ->
+                        Text(row.title, Modifier.fillMaxWidth().clickable { selectConversation(row) }.padding(horizontal = 20.dp, vertical = 14.dp)
+                            .testTag("chat-history-${row.id}"), maxLines = 1)
+                    }
                 }
                 RecoveredSidebarFooter(onChat = {
-                    navigate("home"); coroutine.launch { drawer.close() }
+                    // urr.j supplies the existing NewChat callback. Clearing the
+                    // local selection is our offline policy, not an official service action.
+                    if (chatOwner.newConversation(mode)) { navigate("home"); coroutine.launch { drawer.close() } }
                 }, onSettings = {
                     navigate("settings"); coroutine.launch { drawer.close() }
                 })
@@ -210,7 +226,8 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
                                 }
                             }
                             if (mode == "chat") {
-                                RecoveredTemporaryChatButton(temporaryChat) { temporaryChat = !temporaryChat }
+                                // Temporary-session persistence is not connected: do not imply a private session while saving ordinary drafts.
+                                RecoveredTemporaryChatButton(false) { notice = true }
                             } else {
                                 Spacer(Modifier.size(48.dp))
                             }
@@ -222,7 +239,8 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
                     if (error) Text(stringResource(R.string.remote_save_error), color = MaterialTheme.colorScheme.error,
                         modifier = Modifier.padding(16.dp).testTag("shell-error"))
                     when (route) {
-                        "home" -> ShellHome(mode, preferences, failed = { error = true }, unavailable = { notice = true })
+                        "home" -> ChatConversationPage(mode, chatOwner, unavailable = { notice = true })
+                        "search" -> ChatSearch(chatOwner, ::selectConversation)
                         "settings" -> LazyColumn(state = settingsScroll, contentPadding = PaddingValues(vertical = 24.dp),
                             modifier = Modifier.fillMaxSize().testTag("shell-settings-list")) {
                             item(key = "misc-section") {
@@ -270,22 +288,6 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun ColumnScope.ShellHome(mode: String, preferences: FrontendPreferences, failed: () -> Unit, unavailable: () -> Unit) {
-    var value by rememberSaveable(mode, stateSaver = TextFieldValue.Saver) { mutableStateOf(TextFieldValue(preferences.draft(mode))) }
-    Box(Modifier.weight(1f).fillMaxWidth().testTag("shell-home"))
-    key(mode) {
-        RecoveredHomeComposer(value, onValueChange = {
-            value = it
-            if (it.composition == null && !preferences.saveDraft(mode, it.text)) failed()
-        }, placeholder = stringResource(if (mode == "chat") R.string.shell_ask else R.string.shell_collaborate),
-            // Ordinary Chat has no auxiliary configuration slot. Work's reserved
-            // model capability is explicit until its real configuration is connected.
-            modelLabel = if (mode == "work") stringResource(R.string.shell_model_entry) else null,
-            unavailable = unavailable)
     }
 }
 

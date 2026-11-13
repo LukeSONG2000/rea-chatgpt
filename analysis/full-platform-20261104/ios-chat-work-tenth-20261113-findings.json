@@ -1,0 +1,194 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Three bounded groups: concrete AssistantMode controller factory, actual action carrier, Work/composer projection boundary. Read-only artifact evidence; no Android inference or Remote UI substitution.",
+  "reused_reports": [
+    "ios-chat-work-composer-parent-20261113-findings.json",
+    "ios-chat-work-parent-current-20261113-r3.json",
+    "ios-chat-composer-third-20261113-findings.json",
+    "ios-chat-v569-assistant-mode-fields.json",
+    "ios-composer-inner-content-metadata-v245.json"
+  ],
+  "candidate_groups": [
+    {
+      "id": 1,
+      "question": "Concrete Default controller/factory producer and protocol witness, not repeat missing getter",
+      "start": "588bdf8 + descriptor96a2cc0; factory5888610/96a286c",
+      "stop": "Bind real virtual/protocol members and one construction branch"
+    },
+    {
+      "id": 2,
+      "question": "modeSelected actual handler in that concrete controller",
+      "stop": "Resolve action dispatch and state update or exact callback boundary"
+    },
+    {
+      "id": 3,
+      "question": "Actual Work configurationControls supply from resulting render state",
+      "stop": "One original producer-consumer capability gate or precise unknown, no Remote substitute"
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "concrete-controller-factory",
+      "evidence_type": "artifact-static-conformance-and-call-chain",
+      "status": "verified-local-chain",
+      "facts": [
+        "DefaultAssistantModeSelectionController descriptor96a2cc0 has direct conformance81b751c to AssistantModeSelectionController protocol96cee14 with actual witness tablea80f9e0. Protocol has nine actual requirements; kind flags distinguish four getter requirements then five instance methods, not method names.",
+        "DefaultAssistantModeSelectionControllerFactory descriptor96a286c conformance81b75b4 to protocol96a27c8 has tablea80fa30. Its second method58213a4 invokes5820cc8.",
+        "5820cc8 inspects existing weak controller entries, selects a live owner if available, otherwise5820ff4 invokes concrete Default metadata accessor588bdf8 and5821050 invokes5856a8c to initialize the allocated instance.5821080..10a4 inserts the new weak wrapper into factory.controllers.",
+        "5821164..1178 returns the actual selected instance inx0 and exact Default protocol witnessa80f9e0 inx1. This is a concrete factory output, not merely a nearby type name.",
+        "Factory context contains accountID, conversationCoordinator, modelContext, isNewThread, isTemporaryChat, conversationWorkModeEligibility, isModelSelectionEnabled and isHome (original fields reused); exact cache-key semantics and active root registration remain separate unknowns."
+      ],
+      "evidence": [
+        "controller-metadata.json",
+        "exact-controller-witnesses.json",
+        "protocol-0x96cee14.json",
+        "protocol-0x96a27c8.json",
+        "factory-class.json",
+        "controller-accessor.asm",
+        "factory-accessor.asm",
+        "factory-witness-thunks.asm",
+        "factory-controller-producer.asm",
+        "factory-return.asm"
+      ],
+      "limits": [
+        "Exploratory controller-metadata.json deliberately includes bounded pattern probes that cross table ends. Only exact-controller-witnesses.json entries limited by the corresponding protocol requirement count are considered actual members.",
+        "Factory classcontrollers is a weak-owner cache; do not claim it is conversation persistence or an account-only cache key.",
+        "Default/Legacy/Disabled conformances are distinct. Current active root choice among factories/controllers is not established by these local constructors."
+      ]
+    },
+    {
+      "id": "actual-action-carrier-and-dispatch",
+      "evidence_type": "artifact-static-instructions",
+      "status": "verified-dispatch-partial-case-meaning",
+      "facts": [
+        "Default witness+0x38 points585e8fc→5859c3c. Its actual body consumes payload registerx0/x1 and lowbyte ofx2, dispatching via six-byte table81b4682. This callable is not a no-argument snapshot getter.",
+        "Default witness+0x40 points585e900, which calls585a2ac and returns action closure58960e0.585a2ac prepares a weak-capture carrier using58a6cd0/1517c8 and closure58960e0.",
+        "58960e0 reads two words from incoming payload and discriminator byte+0x10, weak-loads captured owner via148834/1540f4, and only if present invokes5859c3c at589611c. Thus the original supplied callback retains whole action payload and owner liveness; no global UI singleton is inferred.",
+        "The selected first switch branch5859c68..94 stores a byte then invokes5896178,584f838 and58a9014. Other branches call4e50d94/4e519bc/589612c/4e54fd4/5887854 then5859cf0. Branch helper names/semantic enum mappings remain unclassified.",
+        "Original AssistantModeControllerAction descriptor96cedf8 declares modeSelected, chatModelVersionSelected, workModelCategorySelected, workModelVersionSelected, workIntelligencePresetSelected, workServiceTierSelected. Those declarations establish available typed payloads, not raw switch tag→visible action mapping."
+      ],
+      "evidence": [
+        "exact-controller-witnesses.json",
+        "controller-witness-thunks.asm",
+        "action-handler-carrier.asm",
+        "action-handler-closure.asm",
+        "action-handler-closure-tail.asm",
+        "controller-action-and-presentation.asm",
+        "action-branch-table.json",
+        "mode-selection-projection.asm",
+        "mode-byte-copy.asm"
+      ],
+      "limits": [
+        "modeSelected producer callback into this exact carrier remains missing. Do not name first raw switch branch solely from enum declaration order or its byte-sized payload.",
+        "Old4c63908 witness+0x38 dispatch is not bound to this protocol/table; equal slot numbers are not proof it is the same method.",
+        "No new direct haptic caller established. Earlier306cd28 subject-send remains separate from haptics."
+      ]
+    },
+    {
+      "id": "actual-render-projection-boundary",
+      "evidence_type": "artifact-static-call-chain-with-unresolved-field-correlation",
+      "status": "partial",
+      "facts": [
+        "5859784 consumes context/configuration/controller-owned fields and invokes585d388 at5859904; its returned packed state is compared via61592d0 at5859a18 and conditionally installed through5857378 at5859ad8.",
+        "585d388 reads selected owner/context inputs, constructs a packed policy input and invokes581ea04 at585d4b8. If its returned low enable bit is false,585d544..564 returns that disabled projection without constructing the later model-control payload.",
+        "The enabled path consumes current picker/model data and ultimately invokes6157fa4 at585e3d8 with original arrays/configuration/boolean inputs. Its result is supplied as third return register to the caller. Detailed input-bit→named-field→UI-visibility mapping is not closed.",
+        "Chat MessageInputViewContent descriptor9674bd0 has a mode slot(field record9b338d0,typeref91b3760), alongside leading,topComposerComponent,attachmentsTray,input,trailing,topAccessory,etc. Its retained field inventory does not contain a configurationControls field. The named configurationControls field and its expanded/compact logic in prior reports belong to Remote MessageInput and cannot establish ordinary Chat/Work layout."
+      ],
+      "evidence": [
+        "controller-action-and-presentation.asm",
+        "render-state-producer.asm",
+        "render-state-terminal.asm",
+        "render-capability-predicate.asm"
+      ],
+      "reused_evidence": "ios-composer-inner-content-metadata-v245.json;ios-chat-v569-assistant-mode-fields.json",
+      "limits": [
+        "585d388 selected window is an entry plus terminal witness, not a whole-function reconstruction. Do not infer details of skipped internal branches.",
+        "581ea04 packed bit conditions cannot be relabelled isWorkModeEnabled/isTemporaryChat solely by branch shape.",
+        "No verified supply from this render/composer projection to ordinary MessageInput.mode/topComposerComponent or a concrete Work controls builder. Work selection alone is insufficient to manufacture a full toolbar."
+      ]
+    }
+  ],
+  "checklist": [
+    {
+      "question": "Concrete AssistantModeController producer",
+      "answer": "partially answered: actual Default factory construction/cache/output witness closed; root registration and cache scope not closed."
+    },
+    {
+      "question": "modeSelected handling",
+      "answer": "partially answered: real weak-owner action callback and six-way dispatcher closed; specific modeSelected payload producer/case and resulting semantic mutation not closed."
+    },
+    {
+      "question": "Work configuration controls and capability conditions",
+      "answer": "unresolved actual UI consumer; real disabled/enabled projection branch identified, packed fields and Chat mode-slot supply remain unbound."
+    }
+  ],
+  "current_host": {
+    "authority": "independent-host-source-observation",
+    "path": "implementation/ios/Sources/NativeConversationHost.swift",
+    "sha256": "f95cc24a6ac2abb89649daf34d11d3de31226d0e1cd3c32194192893d6d7f27f",
+    "observed_at": "2026-11-13T20:40:58.420711+08:00",
+    "note": "Current UIKit Chat/Work selection and per-conversation drafts are independent host features. This worker made no product changes. Parent may concurrently edit current source."
+  },
+  "safe_product_decision": {
+    "direct_new_visual_patch_supported": false,
+    "keep": [
+      "Existing conversation-scoped Chat/Work mode/draft/send identity and working compact contour.",
+      "Separate selectedMode, configuration/capability, composer presentation and header presentation inputs.",
+      "Default unavailable capability rather than borrowing Remote toolbar inventory."
+    ],
+    "independent_adapter_suggestion": "If a future explicit offline Work-controls provider is introduced, bind its own conversation/request revision and supply named capability values and callbacks. Label it an independent frontend adapter; this report does not license unconditional Work controls or backend behavior.",
+    "do_not_change": [
+      "Do not set forcesDoubleLineComposer simply because selectedMode=work.",
+      "Do not use Remote configurationControls geometry/resource inventory as Chat source proof.",
+      "Do not interpret every witness+0x38 as the same getter.",
+      "Do not rename raw action tags from enum declaration order."
+    ]
+  },
+  "precise_unknowns": [
+    {
+      "id": "root-factory-registration",
+      "breakpoint": "ConversationViewModel composerAssistantModeSelectionController→actual invocation of factory witnessa80fa30 and injected Default/Legacy/Disabled choice",
+      "next_minimum": "Bind a concrete root factory call and all context arguments before claiming live Default branch."
+    },
+    {
+      "id": "modeSelected-maker",
+      "breakpoint": "AssistantModeControllerAction.modeSelected actual producer→closure58960e0 input→5859c3c concrete branch",
+      "next_minimum": "Find actual selected-mode binding setter that manufactures this typed action, not306cd28 tooltip subject or a declaration ordinal."
+    },
+    {
+      "id": "named-render-capabilities",
+      "breakpoint": "585d388→581ea04 packed input→6157fa4 result",
+      "next_minimum": "Correlate exact ABI field getters for isEnabled/isWorkModeEnabled/header/composer flags with real producer values, preserving temporary/home/eligibility conditions."
+    },
+    {
+      "id": "chat-work-slot-consumer",
+      "breakpoint": "render/composer projection→MessageInputViewContent.mode9b338d0 or other actual Chat slot builder",
+      "next_minimum": "One original slot producer and concrete Work control View/body/capability gate; do not start again from unrelated Remote configurationControls."
+    }
+  ],
+  "haptics": {
+    "new_direct_caller_proved": false,
+    "result": "No explicit haptic dispatch proved in selected factory/action/projection windows; no feedback additions recommended."
+  },
+  "stop_condition": "Three selected groups complete. Exact factory/action/projection targets retained. No new visuals admitted because semantic producer-to-Chat-slot mapping remains missing; no wider enum/getter scans.",
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "old_reports_modified": false,
+    "shared_docs_modified": false,
+    "git_operations": false,
+    "build_or_tests": false,
+    "devices": false,
+    "official_runtime": false,
+    "network": false,
+    "android_claims": false
+  }
+}

@@ -7974,10 +7974,12 @@ private struct RecoveredRemoteOrdinaryFieldSurface<Content: View>: View {
 private struct RecoveredRemoteUserInputForm: View {
     let request: RemoteUserInputRequest
     let viewportHeight: CGFloat
-    let onAction: (RemoteUserInputEvent) -> Bool
+    let onAction: (RemoteUserInputEvent) async -> Bool
     @State private var draft: RemoteUserInputDraft
+    @State private var submission = RemoteUserInputSubmissionGate()
+    @State private var submissionTask: Task<Void, Never>?
     @FocusState private var inputFocused: Bool
-    init(request: RemoteUserInputRequest, viewportHeight: CGFloat, onAction: @escaping (RemoteUserInputEvent) -> Bool) {
+    init(request: RemoteUserInputRequest, viewportHeight: CGFloat, onAction: @escaping (RemoteUserInputEvent) async -> Bool) {
         self.request = request; self.viewportHeight = viewportHeight; self.onAction = onAction
         _draft = State(initialValue: .init(request: request))
     }
@@ -7985,7 +7987,34 @@ private struct RecoveredRemoteUserInputForm: View {
         CGFloat(RemoteUserInputLayout.questionMaximumHeight(viewportHeight: Double(viewportHeight), focused: inputFocused))
     }
     private func submit(_ trigger: RemoteUserInputDraft.Trigger, questionID: String) {
-        draft.perform(.submit(trigger, questionID: questionID), accepting: onAction)
+        perform(.submit(trigger, questionID: questionID))
+    }
+    private func perform(_ action: RemoteUserInputDraft.Action) {
+        guard submission.pending == nil else { return }
+        var next = draft
+        let event: RemoteUserInputEvent?
+        switch action {
+        case .select(let id, let index): event = next.select(questionID: id, optionIndex: index)
+        case .submit(let trigger, let id): event = next.submit(trigger, questionID: id)
+        }
+        if let event { dispatch(event, acceptedDraft: next) }
+        else { draft = next }
+    }
+    private func dispatch(_ event: RemoteUserInputEvent, acceptedDraft: RemoteUserInputDraft) {
+        guard let attempt = submission.begin(event, current: draft.request) else { return }
+        submissionTask = Task { @MainActor in
+            let accepted = await onAction(event)
+            guard !Task.isCancelled,
+                  submission.finish(attempt, current: draft.request) else { return }
+            //Independent staged-draft policy: the original callback mutates
+            //before dispatch. We retain the user's final text on failed local
+            //acceptance instead of declaring that to be recovered rollback.
+            if accepted { draft = acceptedDraft }
+            submissionTask = nil
+        }
+    }
+    private func cancelSubmission() {
+        submissionTask?.cancel(); submissionTask = nil; submission.cancel()
     }
     private func textBinding(for questionID: String) -> Binding<String> {
         Binding(get: { draft.currentQuestion?.id == questionID ? draft.text : "" },
@@ -8044,7 +8073,7 @@ private struct RecoveredRemoteUserInputForm: View {
                             VStack(alignment: .leading, spacing: 0) {
                                 ForEach(Array(options.enumerated()), id: \.offset) { index, option in
                                     Button {
-                                        draft.perform(.select(questionID: question.id, optionIndex: index), accepting: onAction)
+                                        perform(.select(questionID: question.id, optionIndex: index))
                                     } label: {
                                         // 0x1cf543c: firstTextBaseline/10; 0x1a556c0: VStack/4.
                                         HStack(alignment: .firstTextBaseline, spacing: 10) {
@@ -8109,7 +8138,11 @@ private struct RecoveredRemoteUserInputForm: View {
                                 .onSubmit { submit(.keyboard, questionID: question.id) }
                                 .accessibilityIdentifier("remote-input-text")
                         }
-                        Button(OfficialText.text(draft.buttonTitle)) { submit(.button, questionID: question.id) }
+                        Button { submit(.button, questionID: question.id) } label: {
+                            if submission.pending != nil {
+                                ProgressView().accessibilityIdentifier("remote-input-submitting")
+                            } else { Text(OfficialText.text(draft.buttonTitle)) }
+                        }
                             .buttonStyle(RecoveredRemoteComposerAdjacentPillButtonStyle())
                             .accessibilityIdentifier(draft.trimmed.isEmpty ? "remote-input-skip" : "remote-input-send")
                     }
@@ -8122,18 +8155,24 @@ private struct RecoveredRemoteUserInputForm: View {
                     .accessibilityIdentifier("remote-input-unsupported")
             }
         }
+            //Independent host admission/pending presentation. The source proves
+            //single-flight ownership, not this exact disabled/spinner paint.
+            .disabled(submission.pending != nil)
             .modifier(RecoveredRemoteComposerAdjacentCard())
             // 0x1a536d0..0x1a53760: outside the card, not inside its material.
             .padding(.horizontal, 16).padding(.top, 4).padding(.bottom, 8)
             .accessibilityElement(children: .contain)
             .accessibilityIdentifier("remote-user-input-form")
             .task {
-                if let event = draft.initialEvent { _ = onAction(event) }
+                if let event = draft.initialEvent { dispatch(event, acceptedDraft: draft) }
             }
             //293 keeps request-key identity separate from current question data.
             //Same-key metadata updates must not freeze init-time questions or
             //discard all unsent answers by rebuilding the whole form.
-            .onChange(of: request) { _, value in draft.updateRequest(value) }
+            .onChange(of: request) { _, value in
+                cancelSubmission(); draft.updateRequest(value)
+            }
+            .onDisappear { cancelSubmission() }
     }
 }
 
@@ -8574,6 +8613,7 @@ private struct RemoteThreadFixturePage: View {
     @State private var inputUnavailable = false
     @State private var inputFailure: RemoteUserInputFailure?
     @State private var inputWasDismiss = false
+    @State private var inputFixtureFailureConsumed = false
     @State private var requestFixtureRevision = 0
     private var hasRequestReplacementFixture: Bool {
         HostLaunchRuntime.arguments.contains("--offline-fixture") &&
@@ -8908,7 +8948,24 @@ private struct RemoteThreadFixturePage: View {
                       isOther: false, isSecret: true, options: nil)
             ])
     }
-    private func submitUserInput(_ event: RemoteUserInputEvent) -> Bool {
+    private func submitUserInput(_ event: RemoteUserInputEvent) async -> Bool {
+        if replay.isEnabled {
+            //Independent asynchronous provider seam. A queued call is not an
+            //acceptance; revalidate after awaiting and before durable commit.
+            let delayed = HostLaunchRuntime.arguments.contains("--remote-user-input-delayed-fixture")
+            do { try await Task.sleep(for: .milliseconds(delayed ? 2000 : 350)) }
+            catch { return false }
+            guard !Task.isCancelled, event.request == userInputRequest else { return false }
+            if HostLaunchRuntime.arguments.contains("--remote-user-input-fail-first-fixture"),
+               !inputFixtureFailureConsumed {
+                inputFixtureFailureConsumed = true
+                inputFailure = .serviceUnavailable; inputUnavailable = true
+                return false
+            }
+        }
+        return acceptUserInput(event)
+    }
+    private func acceptUserInput(_ event: RemoteUserInputEvent) -> Bool {
         if case .dismiss = event { inputWasDismiss = true } else { inputWasDismiss = false }
         if replay.isEnabled {
             inputFailure = replay.answer(event, current: userInputRequest, scope: composerScope)

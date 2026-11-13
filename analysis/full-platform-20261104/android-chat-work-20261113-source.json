@@ -1,0 +1,173 @@
+{
+  "status": "partial bounded static recovery",
+  "scope": "Android293 Chat/Work ordinary shell/history/composer/message identity; no official execution, product edits, build, shared native session or backend request",
+  "confirmed": {
+    "history": "hj30 wraps ordinary qxp with separate local/remote IDs, title and status flags. Selection chooses remote ID if available else local ID. Work/Chat row classification exists (lku0 row.g -> product_experience). Remote host/thread tuple is not this schema.",
+    "new_chat": "Prior sidebar report: ordinary footer NewChat calls supplied action then odu0(2,lde0.e). Nova Dialog footer has distinct New/search/settings/temporary controls; do not transfer between branches.",
+    "history_menu": "i4r0.g delegates native context menu z9f0.d. Typed actions afu0(title),ffu0,neu0,veu0,ucu0 dispatch through lku0 to ejq. Exact all labels/destructive backend acknowledgment not closed here. Availability depends local/remote and row state; do not offer all actions unconditionally.",
+    "search": "eor is inside-current-conversation search (message matches/index). It cannot establish sidebar history search semantics. Ordinary sidebar search service/pagination still needs separate owner trace.",
+    "composer": "Chat/Work mode toggle capability gated in l3f. w7o optional slot mdo/ldo/ndo/null is capability-based; Work=Expanded and Chat=permanently compact are not universal official rules. Null-slot Chat fixture and explicit Work slot are independent capability choices.",
+    "message": "Ordinary k3r and Remote pkm use sm5.n.E. Pure body renderer can be shared; action eligibility and owner callback scope differ. Ordinary ycc0 preserves conversation/message/parent/streaming parent/revision, role, completion, fragment/merged identities."
+  },
+  "minimal_implementation_contract": [
+    "Separate account-scoped ordinary conversation identity with local ID and optional remote ID; retain mode and current leaf identity.",
+    "Separate per-conversation draft and immutable accepted send configuration. These are independent adapter safeguards; complete official send owner not recovered.",
+    "Pure Markdown/code/table/selection components and low-level composer primitives may be shared with Remote. Do not share Remote task configuration, queue, goal, approval or host/thread identity DTO as original Chat schema.",
+    "Stream adapter must carry conversation + message/attempt identity and support cancellation/replacement boundaries. Preserve revision/parent metadata distinctly; do not assume streamingParentRevision is a global chunk sequence.",
+    "Preserve ordinary Chat/Work capability slots independently of mode label, using prior expansion predicates."
+  ],
+  "unresolved": [
+    "Full send/request acceptance owner, actual request ID mapping, SSE event consumer, out-of-order revision handling and cancellation acknowledgment were NOT recovered in this bounded pass.",
+    "Do not claim independent fixture streaming lifecycle is original Android protocol merely because model has streamingParentRevision.",
+    "Sidebar global search history owner, pagination/date grouping and backend error/retry behavior remain unclosed.",
+    "Complete menu label-to-service mutation mapping and server confirmation remain unclosed.",
+    "Work real service capability/model/effort configuration cannot be inferred from Remote gpm/plk.",
+    "Ordinary User/assistant body roles share renderer but exact bubble geometry and all toolbar gates require per-role consumer trace; no blanket Remote toolbar reuse."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ixp.java",
+      "sha256": "7e473d80469f8288100677b5426a51afcb3520e15d08fe1dea409b213861131d",
+      "lines": "20-47",
+      "claim": "Conversation serializer names: id,remoteId,creationDate,modificationDate,currentLeafNodeId,title,defaultModelSlug,conversationOrigin,isWorkTrial,asyncStatus,containsUnsentMessages,isReadOnly,isStarred,isArchived,pinnedTime,isHiddenFromHistory."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/hj30.java",
+      "sha256": "7966020906c41f4263c7df22aaae63e8623e7fb9c37545eb9d310594b0af7459",
+      "lines": "28-70",
+      "claim": "Sidebar projection q=local id,r=remoteId,s=title,u=local id; c() tests remoteId presence."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/i4r0.java",
+      "sha256": "ad4f56dd477bded8ac533e5ed350d1a02a5841daa2acf357b41b3262de6e567e",
+      "lines": "1290-1515",
+      "claim": "History item native select and menu callbacks; menu capability checks and confirmation state."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/b1f.java",
+      "sha256": "1f248a087d1355ccb63bbdfa329a84916e44b92031d52ddeb0d4e394ef8f7f7a",
+      "lines": "84-86",
+      "claim": "History selection callback receives hj30."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/lku0.java",
+      "sha256": "51844de9b105d9d3a31836b4025dc3f583c97b9c6a805a70b86c33c7ca819130",
+      "lines": "371-442",
+      "claim": "Open remoteId if present else local id; navigation m3v; work/chat tracked using row g. Typed menu events dispatch to ejq."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ejq.java",
+      "sha256": "bfa6c70fd8e060c010e7cc8da289fb86ee8ae7efa62253466ae6bff8721b6438",
+      "lines": "697-718",
+      "claim": "Menu event owner dispatches separate coroutines; no evidence of Remote task DTO."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ucc0.java",
+      "sha256": "c90b91def1df6b2552c52b0b582bd5c13bb84756f93f5ebab758e1bf918ef6aa",
+      "lines": "22-50,128",
+      "claim": "Ordinary message serializer: id,parentId,streamingParentId,streamingParentRevision,conversationId,groupId,role,realRole,content,finishType,isFinishedSuccessfully,isStream; fragment/merge fields."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ycc0.java",
+      "sha256": "f2d3175ce790e84e594ed46a98f1036f1f91a2152020ffbb7a2442b2a75f47bd",
+      "lines": "226-263",
+      "claim": "Maps id=a,parent=b,streamingParent=c,streamingParentRevision=d,conversation=e,group=f,role=g,realRole=h,content=i."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/uz3.java",
+      "sha256": "ca180a9254cfbd388f3ad55613d62ed6b9b8f964bb6f8b5ef5fb15750651297e",
+      "lines": "25-46",
+      "claim": "Transport metadata includes separate streaming parent identity/revision and fragment merge metadata."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/k3r.java",
+      "sha256": "f963b8d87d27d5b7d4c11df364ca601f41d5008b658cd03605565d72813abf81",
+      "lines": "1445,2083,2639-2645",
+      "claim": "Ordinary message view delegates to shared sm5.n.E with rich context/action params. JADX branch shape unreliable."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/sm5.java",
+      "sha256": "825392dca8fec546c92d1cfc7d1fe6754d76accf03a23e432f47c5474fbb1e1a",
+      "lines": "1221",
+      "claim": "Shared renderer entry takes yvq plus many role/state/action/capability parameters."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/pkm.java",
+      "sha256": "973c357907d4f499c3287509e315b7f6657cf864babc3250bd173a06f737ec8c",
+      "lines": "2155-2224",
+      "claim": "Remote shares sm5.n.E but supplies a different parameter subset; no equivalence of toolbars or request owner."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/nj81.java",
+      "sha256": "abd57fc23e37ff9d5296f5ed5bf0f7fb0addf70cb9de09d12d24a7ebd48bf8eb",
+      "lines": "329-389,599-607",
+      "claim": "Ordinary action eligibility inspects xuq/ycc0 role and state; SelectText routes through callback, separate from Remote routing."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/eor.java",
+      "sha256": "78e28933e30585f29ee30714e36445ebad4fa2b697222e98d1d7213137188faf",
+      "lines": "24-115",
+      "claim": "ConversationSearchUseCase searches currently loaded message list and cyclic matches; it is in-conversation search, NOT sidebar history search proof."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/w0e.java",
+      "sha256": "a62bcadde3be6159f78166669e93a3c71449a825241207e4d2a840244bb2e804",
+      "lines": "761-791",
+      "claim": "Integrity digest includes account/device/optional conversation/required parent message; identity evidence only, not complete send schema."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes5/k3r.smali",
+      "sha256": "920126d6363e464d7aaaba1a01e44e917f6bc28af14f3404d984490b04af340e",
+      "lines": "4920",
+      "claim": "Shared renderer call corroboration"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali/w7o.smali",
+      "sha256": "faf16b6280f8980eef17ca17d11276e5522d1345c1f0a2c91194b9ba019c5005",
+      "lines": "10927-11013,11279-11349",
+      "claim": "Optional slot mdo/ldo/ndo/null and layout preference branches; reused prior verified report"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali/u0e0.smali",
+      "sha256": "1b2c060910d17ad21aac77779909e7bba17733adc5a87f105b2d0b44cf8c8e40",
+      "lines": "2698-2973",
+      "claim": "No-selector ordinary expansion overflow/forced state; reused prior report"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali/urr.smali",
+      "sha256": "099075ad27cba3226f6de16ee50a0061d2c9be1416bbd1bff1c3d6ec2faeb6f5",
+      "lines": "1126-1163,1295",
+      "claim": "Dialog selects Nova branch; ordinary sidebar is separate"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-sidebar-v622-source.json",
+      "sha256": "e7293fbbd4140eba32ae37a6462bec2878bf6e78e47ec1ea6aeee6f22f23dc1d",
+      "lines": "whole report",
+      "claim": "Prior bounded official static evidence reused, not runtime parity."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-mode-picker-v622-source.json",
+      "sha256": "31f4fb9724bcd90140f4b7681e1b749b09ee5af8cced0dedee3bced50c5a81d1",
+      "lines": "whole report",
+      "claim": "Prior bounded official static evidence reused, not runtime parity."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-home-v624-composer-predicate.json",
+      "sha256": "e162fa1960ad91c7c4a4028b0bc54c9d8dfd98eaeb75d56d45520267263535d0",
+      "lines": "whole report",
+      "claim": "Prior bounded official static evidence reused, not runtime parity."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-home-v625-chat-source.json",
+      "sha256": "f3496c659ee7adfef4141021f4fb1b3eb863c8be0bad0807555b2baea22047db",
+      "lines": "whole report",
+      "claim": "Prior bounded official static evidence reused, not runtime parity."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-message-20261113-body-evidence.json",
+      "sha256": "6ba7e8dcb89a0c40a1883dd8372954856b493448b30c05138939a627f2524fc8",
+      "lines": "whole report",
+      "claim": "Prior bounded official static evidence reused, not runtime parity."
+    }
+  ]
+}

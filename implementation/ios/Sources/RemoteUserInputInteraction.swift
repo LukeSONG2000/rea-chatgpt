@@ -245,6 +245,31 @@ struct DisconnectedRemoteUserInputAdapter {
         RemoteUserInputIntentValidation().submit(event, current: current) ?? .serviceUnavailable
     }
 }
+
+//293 owns a single userInputSubmissionTask and a separate UUID; completion
+//clears only the matching attempt. This independent frontend gate carries no
+//answers and is not a wire protocol or recovered automatic-resubmission policy.
+struct RemoteUserInputSubmissionGate {
+    struct Attempt: Equatable {
+        let id: UUID
+        let request: RemoteUserInputRequest
+    }
+    private(set) var pending: Attempt?
+
+    mutating func begin(_ event: RemoteUserInputEvent, current: RemoteUserInputRequest) -> Attempt? {
+        guard pending == nil,
+              RemoteUserInputIntentValidation().submit(event, current: current) == nil else { return nil }
+        let attempt = Attempt(id: UUID(), request: current)
+        pending = attempt
+        return attempt
+    }
+    mutating func finish(_ attempt: Attempt, current: RemoteUserInputRequest) -> Bool {
+        guard pending == attempt else { return false }
+        pending = nil
+        return attempt.request == current
+    }
+    mutating func cancel() { pending = nil }
+}
 // Independent receipt only. Answer content, especially secret answers, is never
 // persisted by the synthetic frontend adapter. This is not an official wire DTO.
 struct RemoteUserInputReceipt: Codable, Equatable {

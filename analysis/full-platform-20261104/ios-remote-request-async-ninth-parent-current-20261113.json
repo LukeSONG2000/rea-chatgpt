@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-13T20:26:10.032574+08:00",
+  "platform": "iOS",
+  "module": "Remote approvals and supplementary input ninth pass",
+  "baseline": {
+    "version": "1.2026.293",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "official_evidence": "ios-remote-request-async-ninth-20261113-findings.json",
+  "implemented": [
+    "Asynchronous user-input submission provider seam; enqueued is not committed acceptance",
+    "Single pending attempt with independent UUID and full request payload matching",
+    "Cancel on disappearance/request update; retired attempt cannot settle or clear a newer request",
+    "Staged final answer stays in memory for deliberate retry after failure; no secret/answers in accepted receipt",
+    "Existing accepted-only durable owner closes form after success; restart does not reseed accepted question"
+  ],
+  "source_vs_adapter": {
+    "source": "Single userInputSubmissionTask, separate attempt UUID and matched cleanup; raw footer mutates input before dispatch",
+    "independent": "Typed async provider, staged failure retention, disabled/spinner busy presentation and local failure alert; source does not prove this paint/rollback",
+    "unknown": "Original error subject subscriber/presentation, complete request replacement cancellation policy, service wire/receipt"
+  },
+  "verification": {
+    "foundation": "test-official-text.sh passed including single-flight/cancel/late/replaced-payload/cross-host/retry vectors",
+    "ui": {
+      "method": "testRemoteAsyncInputRetryChinese",
+      "bundle": "ios-remote-request-async-ninth-20261113-r2.xcresult",
+      "seconds": 55.706,
+      "result": "passed",
+      "coverage": [
+        "first answer and secret field",
+        "disabled submit and field during async pending",
+        "synthetic first rejection and retry",
+        "terminal acceptance",
+        "real process restart with accepted identity-only receipt"
+      ]
+    },
+    "history": {
+      "r1": "failed36.622s querying embedded ProgressView as separate accessibility node. Video shows visible spinner; AX records only enclosing Button and later error alert. Test-only locator replaced by disabled enclosing Button check; product unchanged."
+    },
+    "screenshots_reviewed": [
+      "ios-remote-request-async-ninth-20261113-review/input-async-failure-retained-zh-light_0_FA31300B-EC38-41FD-94C7-34FE38AD86A7.png.png",
+      "ios-remote-request-async-ninth-20261113-review/input-async-receipt-restart-zh-light_0_6526F6CF-5878-480A-993E-AAFD44260376.png.png"
+    ],
+    "visual_limit": "Error snapshot still includes dismissal animation/alert; reviewed as error presentation, not proof of final unobstructed field geometry. Success/restart snapshot reviewed. No optical parity claim.",
+    "build": "simulator and iphoneos succeeded; deep strict signature verified",
+    "not_run": [
+      "broad locale/theme matrix",
+      "physical iPhone UI/haptics",
+      "in-flight replacement UI journey; identity vectors are pure contracts",
+      "ordinary approval journey repeated this pass"
+    ]
+  },
+  "source_hashes": "ios-remote-request-async-ninth-20261113-source.json",
+  "runtime": {
+    "simulator": "ios-remote-request-async-ninth-20261113-simulator.json",
+    "signed_binary_sha256": "eeb710de6d85d17f5cfa0421acf6bafbf44f68be0c52c89a71d0531d5e4a833c",
+    "physical_install": "not installed: fresh device query paired, tunnel unavailable, DDI false"
+  },
+  "remaining": [
+    "Original error feedback and async wire receipt",
+    "Network/MCP/permission dedicated forms",
+    "Original optical/transitions and physical feedback fidelity",
+    "Full reasoning/DIL producer remains separately open"
+  ],
+  "scope": "frontend only; no network, model or real tool execution",
+  "publication": "local after confirmed checkpoint1f5ed2d7e1; no additional commit/push"
+}

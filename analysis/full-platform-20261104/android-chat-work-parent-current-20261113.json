@@ -1,0 +1,210 @@
+{
+  "date": "2026-11-13",
+  "module": "Android normal-shell Chat/Work catalog and conversation",
+  "baseline": "parent checkpoint 1f5ed2d7e1; preserve unrelated iOS async worktree and earlier Android modules",
+  "status": "minimum usable normal-shell offline core implemented; runtime validated by preserved initial segment, remaining/restart slices, and stable anchor check",
+  "implemented": [
+    "AppShell owns an independent normal ChatConversationStore/Owner; no MainActivity launch, LocalHarness construction, loopback or Remote task DTO integration",
+    "Normal sidebar local conversation history, new conversation, local title search, selection, rename and non-running archive; menus dismiss/return through native carriers",
+    "Chat/Work retain independent current selection, home drafts and per-conversation committed drafts; local fixture chooses null auxiliary slot for Chat and explicit reserved slot for Work",
+    "Atomic profile/account-bound snapshot holds catalog, selections, drafts, turns and reading anchors; old frontend mode drafts are read only when no new snapshot exists, without rewriting legacy preferences",
+    "Send accepted turn and draft clear committed together; Delta/Replace/Complete/Failure synthetic stream, exact-request Stop, Failed/Interrupted retry with fresh request and subscription",
+    "Identity admission covers account/profile/conversation/turn/request/attempt/subscription; current actor reads latest row before preserving concurrent draft/anchor state",
+    "Explicit independent sequence and content revision: contiguous Delta only, gap retires attempt as Interrupted preserving body; newer full Replace/Complete/Failure may bridge sequence gaps; duplicates/old revisions/terminal late events cannot append",
+    "Missing terminal event at normal stream end becomes Interrupted instead of permanent busy; active durable turns become Interrupted after process restart",
+    "IME composition blocks Send and never enters the durable draft; only composition-null updates are saved, and leaving does not save a candidate",
+    "Stable turn-ID plus pixel offset and following state restore reading position; user scroll stops following, successful Send/Retry/bottom action resumes it",
+    "Shared pure Markdown/code/table/text selection primitives are used with role/account/profile/conversation/turn/request/attempt-qualified table identities; old lab helper remains a delegating compatibility overload",
+    "Temporary-chat control is a capability notice instead of appearing enabled while ordinary drafts are persisted"
+  ],
+  "source_evidence": [
+    {
+      "id": "E-ACW-01",
+      "report": "android-chat-work-20261113-source.json#history",
+      "observed": "ixp/qxp/hj30 ordinary local/remote conversation IDs and fields; lku0 opens remote ID when available else local ID and records work/chat classification",
+      "boundary": "Current catalog is local-only; it does not impersonate Remote host/thread or decode full original graph/remote history"
+    },
+    {
+      "id": "E-ACW-02",
+      "report": "android-chat-work-20261113-source.json#composer",
+      "observed": "Existing recovered composer uses capability-dependent optional mdo/ldo/ndo/null slots and expansion predicates",
+      "boundary": "Current Chat null-slot and Work reserved-slot are explicit offline capability choices, not a universal official mode rule"
+    },
+    {
+      "id": "E-ACW-03",
+      "report": "android-chat-work-20261113-source.json#message",
+      "observed": "Ordinary k3r and Remote pkm delegate standard body to shared sm5.n.E; focused smali corroborates pure renderer reuse; ucc0/ycc0 retain message parent/streaming-parent metadata",
+      "boundary": "Independent event sequence/content revision is NOT original streamingParentRevision or an official SSE schema"
+    },
+    {
+      "id": "E-ACW-04",
+      "report": "android-chat-work-20261113-source.json#history_menu",
+      "observed": "Native menu/typed ordinary-row actions exist; local/remote state gates are separate",
+      "boundary": "Local rename/archive and title search are independent service-free actions. eor is in-conversation search and is not used as proof of sidebar search"
+    }
+  ],
+  "source_validation": {
+    "report": "android-chat-work-20261113-source-validation.json",
+    "matching_frozen_source_files": 24,
+    "source_hashes": "android-chat-work-20261113-source-hashes.json"
+  },
+  "contract_choices": {
+    "persistence": "Single private SharedPreferences JSON commit; malformed/unknown version/account/profile data is preserved, not replaced with defaults. New optional sequence reads legacy version1 revision as sequence for this own intermediate snapshot only.",
+    "stream": "Sequence is delivery order; revision is independent content version. Deltas need exact next sequence and new content version. New full snapshots can jump; a delta gap requires explicit retry, not silent continued concatenation.",
+    "lifecycle": "Coroutine owner is bound to normal shell composition; task selection does not change account/profile or reuse Remote ownership.",
+    "temporary": "No private/temporary conversation lifecycle is claimed; capability notice avoids false privacy indication."
+  },
+  "validation": {
+    "device": {
+      "serial": "172.16.197.16:5555",
+      "manufacturer": "OnePlus",
+      "model": "ONEPLUS A6003",
+      "sdk": "35"
+    },
+    "appearance": "Chinese/light bounded tests; final launch respects preserved ordinary preferences",
+    "builds": [
+      {
+        "report": "android-chat-work-20261113-build.log",
+        "seconds": 31,
+        "result": "passed"
+      },
+      {
+        "report": "android-chat-work-20261113-build-r2.log",
+        "seconds": 19,
+        "result": "passed after IME/ordered-event corrections and popup semantics"
+      },
+      {
+        "report": "android-chat-work-20261113-build-anchor.log",
+        "seconds": 16,
+        "result": "passed; tests only, product unchanged from r2"
+      }
+    ],
+    "initial_journey": {
+      "report": "android-chat-work-20261113-oneplus-r1.json",
+      "status": "partial; not an overall pass",
+      "product_sha256": "180583be54b4576dfcdbbd8d9dc7df16ce5628c2a6cfc0d1d593012630193754",
+      "completed": [
+        "pure initial identity/storage/late-event contracts",
+        "new A/B conversations",
+        "normal stream completion",
+        "stop",
+        "failure retry",
+        "local search and A-B-A committed draft preservation"
+      ],
+      "failure": "Rename popup was visually present but separate popup window did not inherit testTagsAsResourceId; explicit popup/dialog semantics were added.",
+      "invalidated_claim": "The initial reading screenshots differed by about218px. ID-only assertion was too weak and cannot establish offset restoration."
+    },
+    "remaining_and_restart": {
+      "report": "android-chat-work-20261113-oneplus-r2.json",
+      "status": "passed",
+      "same_isolated_run_id": "f48ccbf5abe245768f5da9fedf1345d6",
+      "tests": [
+        {
+          "method": "remainder",
+          "seconds": 13.258,
+          "covers": "expanded pure contracts, rename, Chat/Work independent drafts/slot presence, B return, new running turn journal"
+        },
+        {
+          "method": "restart",
+          "seconds": 22.434,
+          "covers": "real process stop/start, Interrupted turn retry, committed A draft and Work draft, Work send/completion, archive, sidebar history/new"
+        }
+      ]
+    },
+    "stable_reading": {
+      "report": "android-chat-work-20261113-oneplus-anchor.json",
+      "seconds": 14.473,
+      "status": "passed",
+      "method": "Only readingAnchor; no main-journey rerun. Confirmed changed nonzero offset and following=false, waited for five identical200ms samples, then compared A-B-A actual code-row bounds and durable offset.",
+      "measurements": {
+        "before": "ChatAnchor(turn=d70840c8-3032-49c6-b780-a34a0b90ec22, offset=152, following=false)",
+        "after": "ChatAnchor(turn=d70840c8-3032-49c6-b780-a34a0b90ec22, offset=152, following=false)",
+        "codeBefore": "[90,922][601,1058]",
+        "codeAfter": "[90,922][601,1058]"
+      }
+    },
+    "pure_contracts": [
+      "account/profile/conversation/request/attempt/subscription mismatch rejection",
+      "duplicate and terminal-late events",
+      "separate sequence/content revision with out-of-order/gap/duplicate/full-replacement vectors",
+      "concurrent draft retained through stream replacement",
+      "Stop rejects late completion",
+      "normal stream without terminal becomes Interrupted; retry changes request/subscription",
+      "active snapshot recovery",
+      "corrupt version/account/profile data preserved; failed commit leaves durable bytes unchanged",
+      "committed IME draft survives composition candidate, new/select exit and reload without persisting candidate"
+    ],
+    "visual_review": [
+      "first popup failure shows real rename/archive menu",
+      "initial A reading/returned images exposed weak restoration assertion",
+      "final sidebar screenshot shows ordinary history rows",
+      "stable reading measured same code-row rectangle before/after"
+    ],
+    "artifact_provenance": "Later exports reuse the same test run ID and include earlier failure images; those retained images are historical, not failures of later passing tests. No broad matrix or final full single-method journey pass is claimed."
+  },
+  "remaining": [
+    {
+      "item": "Official service and graph",
+      "gap": "Real send/SSE/cancel acknowledgement, remote ID resolution, parent/current-leaf/branch graph, remote history pagination/date grouping/sync remain unconnected; local linear turn model is independent."
+    },
+    {
+      "item": "Same-conversation mode switching counterpart",
+      "gap": "Uses selected[mode] with immutable row.mode; switching Chat/Work changes the selected local conversation or home draft. Per-turn assistantMode and same-conversation mode changes are NOT implemented. Original Android mode owner unresolved; no extra regression or speculative conversion added."
+    },
+    {
+      "item": "Full search host",
+      "gap": "ChatSearch only provides local title query filtering and selection. Keyboard auto-focus, source rounded search parent/cancel lifecycle, service/pagination and search checkpoint are not restored; query filter is not full original search parity."
+    },
+    {
+      "item": "Full Work controls",
+      "gap": "Actual Work model/effort/capability providers are not restored; reserved source-compatible auxiliary slot remains an explicit capability entry."
+    },
+    {
+      "item": "Full action/menu parity",
+      "gap": "Service-owned menu eligibility/confirmation, unarchive/deletion, message edit/fork/regeneration and all original toolbar gates are not claimed."
+    },
+    {
+      "item": "Temporary/voice/attachments/files",
+      "gap": "Temporary sessions, voice and attachments remain capability boundaries; message links show a returnable offline notice, not real browser/file operations."
+    },
+    {
+      "item": "Exact native optics and performance",
+      "gap": "Sidebar history/title menu/normal bubbles/copy completion gating are independent adapters; private visuals, haptics and full gesture/IME arbitration are not restored. Long-stream synchronous Markdown parse performance is unmeasured."
+    }
+  ],
+  "review_path": "Normal no-argument AppShell -> type/send; new conversation uses existing sidebar footer 聊天 (shell-entry-chat). No extra topbar plus or centered sidebar New button.",
+  "runtime": "android-chat-work-20261113-runtime.json",
+  "installed_product_sha256": "d699f0d79c7c34cebc45c342deffa2cf11c20615917cba068ffd872a8647cc44",
+  "normal_no_argument_preview_running": true,
+  "ordinary_preview_preserved": true,
+  "protected_legacy": "MainActivity, MessageStore, ConversationCatalog and LocalHarness remain isolated; no migration of their pairing/data or tests into normal shell. NativeTableState only adds a pure identity overload while preserving old delegated key generation.",
+  "no_git_mutations": true,
+  "no_ios_shared_docs_changes": true,
+  "ios_counterpart_difference": {
+    "ios": "changeVisualMode selects a mode for the current conversation ID; keeps the same draft/history and captures assistantMode per turn.",
+    "android": "Uses selected[mode] with immutable row.mode; switching Chat/Work changes the selected local conversation or home draft. Per-turn assistantMode and same-conversation mode changes are NOT implemented.",
+    "evidence_boundary": "Android293 slot/layout and row product classification do not close the mode-change owner. This is an explicit independent host policy, not complete cross-platform alignment."
+  },
+  "entry_correction": {
+    "reason": "Removed unsupported topbar chat-new plus and centered sidebar chat-new-sidebar. Existing urr.j/RecoveredSidebarFooter is the source-supported ordinary carrier.",
+    "mechanism": "Existing footer onChat clears local per-mode selection and returns home; this is an independent synthetic new-conversation policy, not an original service mutation.",
+    "build": "android-chat-work-20261113-build-entry.log;18s passed",
+    "test": "android-chat-work-20261113-oneplus-entry.json;newEntry passed13.631s",
+    "coverage": [
+      "existing conversation -> footer new -> blank home",
+      "new home draft stays separate from existing conversation draft",
+      "return/new retains home draft",
+      "all old conversation titles/drafts/turns preserved",
+      "both unsupported extra controls absent"
+    ],
+    "visuals": [
+      "android-chat-work-20261113-oneplus-entry/chat-footer-new-home.png",
+      "android-chat-work-20261113-oneplus-entry/chat-footer-only-sidebar.png"
+    ],
+    "previous_product_sha256": "7a1c4b290e2781ca869e7caa7aae0dd23aa57b5c0bae098d715de961bb44cc3f",
+    "final_product_sha256": "d699f0d79c7c34cebc45c342deffa2cf11c20615917cba068ffd872a8647cc44",
+    "previous_runtime": "android-chat-work-20261113-runtime-pre-entry.json",
+    "previous_source_hashes": "android-chat-work-20261113-source-hashes-pre-entry.json",
+    "gate_boundary": "Only this entrance/parent-container change tested on final product. Prior core/rename/restart/anchor results remain evidence for their earlier snapshots; no full Chat/Remote or model rerun and no old images erased."
+  }
+}

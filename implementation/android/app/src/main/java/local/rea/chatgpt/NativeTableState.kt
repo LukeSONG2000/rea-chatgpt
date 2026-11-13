@@ -14,7 +14,11 @@ private fun children(node: AstNode): List<AstNode> = buildList {
 }
 
 /** Only unique, fully understood headers qualify for restoration. Row appends do not change identity. */
-internal fun tableStateKeys(root: AstNode, scope: LocalHarness.Scope): Map<AstNode, String> {
+internal fun tableStateKeys(root: AstNode, scope: LocalHarness.Scope): Map<AstNode, String> =
+    tableStateKeys(root, listOf("offline-fixture-account", scope.conversation, scope.request))
+
+// Pure rendering identity adapter; normal Chat does not construct a LocalHarness.
+internal fun tableStateKeys(root: AstNode, identityParts: List<String>): Map<AstNode, String> {
     fun signature(node: AstNode): String? {
         val value = when (val type = node.type) {
             AstTableHeader -> "header"
@@ -42,7 +46,7 @@ internal fun tableStateKeys(root: AstNode, scope: LocalHarness.Scope): Map<AstNo
     val result = IdentityHashMap<AstNode, String>()
     candidates.filter { counts[it.second] == 1 }.forEach { (node, identity) ->
         val digest = MessageDigest.getInstance("SHA-256").digest(identity.toByteArray()).joinToString("") { "%02x".format(it) }
-        result[node] = listOf("offline-fixture-account", scope.conversation, scope.request, digest).joinToString("") { "${it.length}:$it" }
+        result[node] = (identityParts + digest).joinToString("") { "${it.length}:$it" }
     }
     return result
 }

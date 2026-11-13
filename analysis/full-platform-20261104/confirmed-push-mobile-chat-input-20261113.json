@@ -1,0 +1,183 @@
+{
+  "base_commit": "1f5ed2d7e16e8f440fb55b004e72550f99c43f3a",
+  "authorization": "User explicitly requested push of confirmed results",
+  "scope": "iOS async Remote input and Android normal Chat/Work; source-only iOS mode findings",
+  "verified_manifests": {
+    "ios": {
+      "count": 71,
+      "mismatches": []
+    },
+    "android": {
+      "count": 14,
+      "mismatches": []
+    }
+  },
+  "excluded": "Original packages, binaries, caches, screenshots/video/raw device logs, desktop research and unrelated untracked evidence remain local",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "52f7707de397665a2a0c9347c0440cfaf551f2f601c0d74f18d8d6ebe1bb1d42",
+      "bytes": 114742
+    },
+    {
+      "path": "docs/full-platform/MOBILE-DEVELOPMENT-PLAN.md",
+      "sha256": "ce92c224d913722218259f386dc919b26990446b4821341477ce7e6398d2d00d",
+      "bytes": 77504
+    },
+    {
+      "path": "docs/full-platform/MOBILE-REMAINING-20261113.md",
+      "sha256": "a1e44fefccb2050e773f718a0455d5be1008bd2a964ece97eb0fc7c1465af444",
+      "bytes": 9811
+    },
+    {
+      "path": "docs/full-platform/PROGRESS-20261113-REMOTE-REQUESTS.md",
+      "sha256": "ab2ada0499ee4808890a08955b335b6c4fb1bf8a02ba1e4db926d03ba9b2ab5c",
+      "bytes": 3860
+    },
+    {
+      "path": "docs/full-platform/PROGRESS-20261113-CHAT-WORK.md",
+      "sha256": "c5e06702f911d82d22332613f140bc9f9797854bfcb036dfc5762682e3326351",
+      "bytes": 3236
+    },
+    {
+      "path": "docs/full-platform/CHECKPOINT-20261113-MOBILE-CHAT-INPUT.md",
+      "sha256": "24fca2240dd888299a50b272c376f7a0c121a067ea4a64806456520c4cdcd585",
+      "bytes": 1663
+    },
+    {
+      "path": "implementation/ios/Sources/NativeConversationHost.swift",
+      "sha256": "f95cc24a6ac2abb89649daf34d11d3de31226d0e1cd3c32194192893d6d7f27f",
+      "bytes": 615526
+    },
+    {
+      "path": "implementation/ios/Sources/RemoteUserInputInteraction.swift",
+      "sha256": "add15b9b130179cf77f0e1af8ce2959cd6b5f6f5279c42f26c0a94355f4b4890",
+      "bytes": 14124
+    },
+    {
+      "path": "implementation/ios/TextTests/main.swift",
+      "sha256": "df842fe6af464bbc4f65ff0fb93936a48912ccc40d92833ac9f2fcb3f1301b1a",
+      "bytes": 273970
+    },
+    {
+      "path": "implementation/ios/UITests/HostInteractionTests.swift",
+      "sha256": "5caa74db26aaf8f7ed181b1fe932c2b10110bfad8da4b5dc5e49a248a04153aa",
+      "bytes": 855243
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt",
+      "sha256": "16c951780462475ecffd4cb73fa70e30a2cdc1c95c054a390801d5ad0c322cfb",
+      "bytes": 20102
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/NativeTableState.kt",
+      "sha256": "18f6928def4d47befbb04b097588351bb4d3204fc9f9f515afa0466242ace40d",
+      "bytes": 3197
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/ChatConversationModel.kt",
+      "sha256": "286d8e37802d7cca201c931e3a964177773be16641da9cb953451301b96eda17",
+      "bytes": 15175
+    },
+    {
+      "path": "implementation/android/app/src/main/java/local/rea/chatgpt/ChatConversationPage.kt",
+      "sha256": "4d04baa03d334b5301a926eba762eb029aca165edd3e65ce42de2be74561187c",
+      "bytes": 12411
+    },
+    {
+      "path": "implementation/android/app/src/androidTest/java/local/rea/chatgpt/ChatConversationTest.kt",
+      "sha256": "417c9c9512d2200273dad12a88b2eb4c8ce80e02e2e69927d678a62409e1c559",
+      "bytes": 19076
+    },
+    {
+      "path": "implementation/android/test-chat.py",
+      "sha256": "563a48572b78687f530ef2a4b4b11e61e12d575d8c44be312a7f113fa954a420",
+      "bytes": 5489
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-request-async-ninth-parent-current-20261113.json",
+      "sha256": "c1fbd5783bf36168962f1fcb1504fda81012fad84ce6887e2c3d9c711ca887b6",
+      "bytes": 3868
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-request-async-ninth-20261113-findings.json",
+      "sha256": "03682f607e5ad68d725e3f029508ca418733475c432b611b7fcd7da11f79f33d",
+      "bytes": 11136
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-request-async-ninth-20261113-source.json",
+      "sha256": "33e1f735533dd0cc0892622bf92d4b164d05c04626e70603c6e842824c891e15",
+      "bytes": 9108
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-request-async-ninth-20261113-simulator.json",
+      "sha256": "41d12959ad2522aa7edc5502915804942ce51d6aed1d1ddd6ce64a1caf723cf5",
+      "bytes": 357
+    },
+    {
+      "path": "analysis/full-platform-20261104/mobile-remote-requests-parent-current-20261113.json",
+      "sha256": "2c6b1895a84d5f05078d9df5b5d90277a3307f7d712acff1e7900b5272fb2626",
+      "bytes": 579
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-parent-current-20261113.json",
+      "sha256": "c6b0a69c24e4d1aee759451536a89bfc7da94cdb1724789ab6e7c7317d75779e",
+      "bytes": 14372
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-20261113-source.json",
+      "sha256": "16410824ed876013ebea5e498f1cd59488c3af66a41ad3177797192f199cb7d3",
+      "bytes": 12440
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-20261113-source-validation.json",
+      "sha256": "0dcdb751fbda53ca6b9e7e02d58c2abf76d60309467744aed821e33a224070b1",
+      "bytes": 3682
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-20261113-source-hashes.json",
+      "sha256": "5ceea4fff5fdf8c7c383b1e881a382406dc7ce5b32a93a26aff36cdc95c74f85",
+      "bytes": 3156
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-20261113-source-hashes-pre-entry.json",
+      "sha256": "824fa99023a8ca08bdad8e2b11072e156b28c80a0306830e48d445f482f35f23",
+      "bytes": 3156
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-20261113-runtime.json",
+      "sha256": "e6c55cfb8ffc7d00eec2708aa242b1a122b8f37680982e620549b1d1aa63cea2",
+      "bytes": 1082
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-20261113-runtime-pre-entry.json",
+      "sha256": "7f9e572183d020869a2f0176fd1df046e65f723c21e39d945e3cfff51688145f",
+      "bytes": 1083
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-20261113-oneplus-r1.json",
+      "sha256": "675eb513e48c4577118a04b7df5e2f549f4222ca46d910885ca57a6061203038",
+      "bytes": 1012
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-20261113-oneplus-r2.json",
+      "sha256": "fe8fdd46cb7191a23e6f265ae4d3e188afd891af100bb1d9b1953ce67342688f",
+      "bytes": 1026
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-20261113-oneplus-anchor.json",
+      "sha256": "f68ac1116fa43f02087bafe811d290aa785cddfac4db44399a6413fb0a861c9e",
+      "bytes": 971
+    },
+    {
+      "path": "analysis/full-platform-20261104/android-chat-work-20261113-oneplus-entry.json",
+      "sha256": "e058c48c4a567f2ae839864332734e47d092eed69bd7550ef12ff60a1a75e133",
+      "bytes": 966
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-chat-work-tenth-20261113-findings.json",
+      "sha256": "abccb6fde116c3b4b1dc2e2849d6f8744fd56adab48ac888fb09679b82068379",
+      "bytes": 12936
+    }
+  ]
+}

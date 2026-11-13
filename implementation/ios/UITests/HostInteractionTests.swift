@@ -3,6 +3,45 @@ import UIKit
 
 extension HostInteractionTests {
     @MainActor
+    func testRemoteAsyncInputRetryChinese() throws {
+        continueAfterFailure = false
+        let app = launchRemoteReplay(extraArguments: ["--remote-draft-profile=" + UUID().uuidString,
+            "--remote-user-input-delayed-fixture", "--remote-user-input-fail-first-fixture"])
+        openReplayThread("shared-thread", host: "fixture-b", app: app)
+        let answer = app.textViews["remote-input-text"].exists
+            ? app.textViews["remote-input-text"] : app.textFields["remote-input-text"]
+        XCTAssertTrue(answer.waitForExistence(timeout: 5))
+        answer.tap(); answer.typeText("Synthetic async scope")
+        app.buttons["remote-input-send"].tap()
+        let secret = app.secureTextFields["remote-input-secret"]
+        XCTAssertTrue(secret.waitForExistence(timeout: 5))
+        secret.tap(); secret.typeText("synthetic-private-answer")
+        app.buttons["remote-input-send"].tap()
+        // SwiftUI exposes this native Button as one accessibility element;
+        // its embedded ProgressView is visible but has no separate AX node.
+        XCTAssertFalse(app.buttons["remote-input-send"].isEnabled)
+        XCTAssertFalse(secret.isEnabled, "Host must not mutate the staged terminal answer while its request is pending")
+        let alert = app.alerts.firstMatch
+        XCTAssertTrue(alert.waitForExistence(timeout: 6)); alert.buttons.firstMatch.tap()
+        XCTAssertTrue(secret.exists)
+        XCTAssertTrue(app.buttons["remote-input-send"].isEnabled, "Failed acceptance preserves final answer for a deliberate retry")
+        let beforeRetry = XCTAttachment(screenshot: app.screenshot())
+        beforeRetry.name = "input-async-failure-retained-zh-light"; beforeRetry.lifetime = .keepAlways; add(beforeRetry)
+        app.buttons["remote-input-send"].tap()
+        XCTAssertTrue(secret.waitForNonExistence(timeout: 8))
+        XCTAssertTrue(app.staticTexts["remote-replay-phase-completed"].waitForExistence(timeout: 8))
+        XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "synthetic-private-answer")).firstMatch.exists)
+        app.terminate(); app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+        openReplayThread("shared-thread", host: "fixture-b", app: app)
+        XCTAssertFalse(app.secureTextFields["remote-input-secret"].exists)
+        XCTAssertTrue(app.buttons["remote-composer-focus"].exists)
+        let final = XCTAttachment(screenshot: app.screenshot())
+        final.name = "input-async-receipt-restart-zh-light"; final.lifetime = .keepAlways; add(final)
+    }
+
+    @MainActor
     func testRemoteAgentChildRoutingChinese() throws {
         continueAfterFailure = false
         let app = XCUIApplication(), profile = UUID().uuidString

@@ -4001,3 +4001,34 @@ do {
     precondition(RemoteAgentThreadRequest(accountID: "", intent: intent, snapshot: snapshot, sessionID: session) == nil)
     print("Agent routing: complete payload, explicit destination, account/session/revision, host and self-route admission passed")
 }
+
+// Attempt ownership contains no answers and survives neither request retirement
+// nor process restoration. Old completions cannot clear a newer pending call.
+do {
+    let a = RemoteUserInputScope(hostID: "a", connectionID: "connection", id: "input",
+        requestID: "request", threadID: "thread", turnID: nil, itemID: nil)
+    let q = RemoteUserInputQuestion(id: "q", header: "", question: "Question", isOther: true, isSecret: true, options: nil)
+    let request = RemoteUserInputRequest(scope: a, questions: [q])
+    let event = RemoteUserInputEvent.submit(request, .init(["q": ["synthetic answer"]]))
+    var gate = RemoteUserInputSubmissionGate()
+    let first = gate.begin(event, current: request)!
+    precondition(gate.begin(event, current: request) == nil)
+    gate.cancel()
+    let second = gate.begin(event, current: request)!
+    precondition(first.id != second.id)
+    precondition(!gate.finish(first, current: request) && gate.pending == second)
+    precondition(gate.finish(second, current: request) && gate.pending == nil)
+    let third = gate.begin(event, current: request)!
+    let changed = RemoteUserInputRequest(scope: a, questions: [
+        .init(id: "q", header: "", question: "Changed", isOther: true, isSecret: true, options: nil)])
+    precondition(!gate.finish(third, current: changed) && gate.pending == nil)
+    precondition(gate.begin(event, current: changed) == nil)
+    let b = RemoteUserInputRequest(scope: .init(hostID: "b", connectionID: "connection", id: "input",
+        requestID: "request", threadID: "thread", turnID: nil, itemID: nil), questions: [q])
+    precondition(gate.begin(event, current: b) == nil)
+    precondition(String(describing: RemoteUserInputAnswers(["q": ["synthetic answer"]])) == "<redacted>")
+    let skipped = RemoteUserInputEvent.dismiss(request)
+    let fourth = gate.begin(skipped, current: request)!
+    precondition(gate.finish(fourth, current: request))
+    print("Input async admission: single flight, replaced payload, cross-host, cancelled/late attempt, retry and skip passed")
+}

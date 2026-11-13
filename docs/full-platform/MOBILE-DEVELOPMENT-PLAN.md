@@ -1,6 +1,10 @@
 # 移动端最小可用计划（2026-11-13 优先级修订）
 
+本次已确定成果归档：iOS Remote异步补充输入与Android Chat／Work核心前端已通过各自限定检查，详见PROGRESS-20261113-REMOTE-REQUESTS.md、PROGRESS-20261113-CHAT-WORK.md及CHECKPOINT-20261113-MOBILE-CHAT-INPUT.md。Android同会话模式切换、完整搜索父容器仍未实现；iOS模式供应链仅静态补证。下一整项为文件／浏览器。用户明确授权本次推送，限个人origin，企业org只读。
+
 ## 最新安排：iOS收口与Android逐项对齐
+
+最新整项：[Remote审批与补充输入](PROGRESS-20261113-REMOTE-REQUESTS.md)。iOS补异步提交／attempt隔离、失败重试与接受后重启恢复；Android分别接Tool整题表单与Async分页，不照搬iOS宿主。各端核心定向流程与构建已完成，真实服务和专用表单未做。下一整项Chat／Work列表与对话闭环，保持中文浅色、有界检查。此前Remote控制／消息／列表记录作为历史前置；本次iOS收口改动在1f5ed2d7e1推送之后，尚未追加提交。
 
 最新整项：[Remote输入与任务控制](PROGRESS-20261113-REMOTE-CONTROLS.md)。iOS新增完整agent请求到显式provider子任务目标，再进入现有任务页的前端通路；Android补Queue／Steer、纯文本队列编辑、配置快照及本地Goal。原始route／服务回执保持未知或接口边界，不猜ID。下一整项审批与补充输入，随后Chat/Work；下方消息／列表批次保留为历史前置。
 

@@ -1,0 +1,186 @@
+{
+  "schema": "rea-ios-feature-findings-v1",
+  "date": "2026-11-13",
+  "status": "partial",
+  "artifact": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Single in-flight approval/additional-input submission: actual footer callback, async error forwarding, attempt-aware cleanup. Three bounded groups; no service/backend or original runtime.",
+  "reused_reports": [
+    "ios-remote-request-pending-fourth-20261113-findings.json",
+    "ios-remote-user-input-parent-20261113-findings.json",
+    "ios-remote-requests-parent-current-20261113-r3.json",
+    "ios-remote-v415-integration.json",
+    "ios-remote-v416-integration.json"
+  ],
+  "candidate_groups": [
+    {
+      "id": 1,
+      "question": "Actual footer/control pending binding, not task field inventory",
+      "window": [
+        "0x1a560d0",
+        "0x1a561d4"
+      ],
+      "stop": "Concrete isEnabled/progress consumer bound or only style/preparation; no inferred busy UI."
+    },
+    {
+      "id": 2,
+      "question": "Actual async error handler18dab38 to state/presentation owner",
+      "window": [
+        "0x188a1f0",
+        "0x188a2c0",
+        "0x1aa453c",
+        "0x1aa46e0"
+      ],
+      "stop": "Actual observable field setter/UI forwarding identified, or precise dynamic owner; no generic diagnostic interpreted as card."
+    },
+    {
+      "id": 3,
+      "question": "Attempt identity cleanup comparator after UUID load",
+      "window": [
+        "0x19236e4",
+        "0x19237e4"
+      ],
+      "stop": "Exact UUID equality condition closed from witness, or optional witness boundary explicitly unknown."
+    }
+  ],
+  "official_observations": [
+    {
+      "id": "real-footer-input-not-pending-view",
+      "status": "verified-local-consumer-partial-busy",
+      "chain": [
+        "1a560e8 calls SwiftUI.View.onSubmit;1a56104 calls current custom-answer getter1a54e54;1a56118 chooses Send/Skip factories75d29d4/75d299c from text emptiness.",
+        "1a56178 installs action1cf5058, and1a56190 calls SwiftUI.Button<Text>.init(_:action:). Subsequent1a56194/19c/1b4 are style composition already covered by v419, not newly identified task flags.",
+        "1cf5058 rereads current trimmed answer through1a54e54; nonempty dispatches1a564a8, empty invokes original dismiss closure at view+0xa0.",
+        "1a564a8 updates customAnswersByQuestionID/currentText/answers using the original LazyState getters/setters (7c4bb2c/7c4bb38); one-question path invokes submit closure view+0xb0 at1a56624..40, multiple-question path invokes1a56654."
+      ],
+      "evidence": [
+        "footer-control-consumer.asm",
+        "footer-control-consumer.json",
+        "footer-submit-action.asm",
+        "footer-answer-forward.asm",
+        "selected-tail-imports.json"
+      ],
+      "limits": [
+        "No userInputSubmissionTask/UUID load, concrete busy disabled modifier, progress indicator, or busy-close policy established in this selected footer chain. This is a scoped negative result, not proof no such UI exists elsewhere.",
+        "Original custom answer is transferred into answers and current text cleared before the terminal callback; no asynchronous failure rollback/restoration consumer proved. Do not label host failure-retains-last-text policy an official recovered behavior."
+      ]
+    },
+    {
+      "id": "error-is-publisher-not-view",
+      "status": "verified-forwarding-unknown-subscriber",
+      "chain": [
+        "Prior async error continuation1923470/1923530 invokes18dab38 separately from diagnostic18f1e18.",
+        "18dab38 calls18e3df8 for an optional dependency; if present, it obtains the subject at dependency+128 and forwards the tagged payload to188a1f0.",
+        "188a1f0 returns for nil subject; otherwise retains/copies payload at188a214, calls Combine.PassthroughSubject.send at188a21c via7c45c94, then releases at188a224→1aa453c.",
+        "1aa453c classifies ownership tags and its retained-error branch tailcalls7c54490=_swift_errorRelease. It is a release helper, not an error state setter or native presentation consumer.",
+        "18e3df8 dispatches139b990 after its access helpers. The concrete dependency type and publisher subscriber were not resolved in the bounded group."
+      ],
+      "evidence": [
+        "error-forwarder.asm",
+        "error-forwarder.json",
+        "error-state-setter.asm",
+        "error-release-helper.json",
+        "error-subject-owner.asm",
+        "selected-tail-imports.json"
+      ],
+      "correction": "error-state-setter.asm is only an initial probe filename. Actual verified semantics are release-helper, preserved without renaming historical evidence. Older fourth-pass next breakpoint18dab38→188a1f0/1aa453c is narrowed: follow the actual subject subscriber, not1aa453c.",
+      "limits": [
+        "No recovered Alert/Banner title/body/action, dismissal, retry UI, or request-scoped error routing established. Subject delivery alone is not UI display or server acceptance."
+      ]
+    },
+    {
+      "id": "attempt-equality-gate-before-cleanup",
+      "status": "verified-comparator-partial-reentry",
+      "chain": [
+        "Reuse fourth-pass actual admission18e7474..7480: nonnil userInputSubmissionTask(b1e7e00) exits;18e765c creates Foundation.UUID and18e7680..76a4 stores userInputSubmissionID(b1e7d88).",
+        "19235f8 reloads current owner/attempt.1923794 prepares captured versus current identity arguments;19237a8 invokes1d83874. New exact tail binding1d8387c→7c4d4f4 is Swift.Equatable.== dispatch (_$sSQ2eeoiySbx_xtFZTj).",
+        "19237e0 tests the equality result bit and branches to exit1923778 if false. Only the matching branch reaches19237e4 then sets current attempt ID=nil at1923800..3818 and clears/cancels the stored task viaad0778→88d79c at1923834..383c.",
+        "192384c rereads current request, compares captured request through24f0958, and may reenter18e73e0 under additional payload-count predicates. These retry predicates remain unnormalized."
+      ],
+      "evidence": [
+        "attempt-guard.asm",
+        "attempt-equality-helper.asm",
+        "attempt-equality-helper.json",
+        "selected-tail-imports.json"
+      ],
+      "limits": [
+        "The selected equality helper is generic Equatable dispatch; its concrete optional-case witness normalization is not separately reconstructed. It supplements the already bound UUID field owner, not a newly invented UUID wire comparison.",
+        "No source proof request-key change itself cancels the owner task. Original form onChange<ApprovalRequestKey> resets local answers/custom drafts/index, but view reset is not task cancellation.",
+        "Do not reproduce a guessed automatic retry or call enqueue/task creation accepted."
+      ]
+    }
+  ],
+  "current_host_observations": {
+    "authority": "independent-host-source-not-official",
+    "evidence": "current-host-identity.json",
+    "facts": [
+      "RemoteUserInputDraft.perform copies next and publishes it only if synchronous accepting callback accepts the terminal event; rejection preserves the prior last-text/choice draft. This is an explicit independent transaction, consistent with desired usability but not proved original async rollback.",
+      "RemoteUserInputSubmissionGate already separates UUID attempt from request and checks matching pending attempt before finish. It stores no answer data; cancel only clears this independent gate.",
+      "Synchronous Bool acceptance in present adapter is not itself an asynchronous service result. Actual async pending/error/retry contract must remain a separate frontend adapter boundary."
+    ]
+  },
+  "safe_product_decisions": [
+    {
+      "classification": "source-supported-lifecycle-principle-independent-implementation",
+      "decision": "One in-flight attempt per request owner, separate attempt UUID and scoped request identity. Completion must match active attempt before clearing current pending state."
+    },
+    {
+      "classification": "independent-frontend-adapter",
+      "decision": "Add explicit begin/pending/failure/accepted/cancelled states for an async adapter. Preserve a transaction snapshot on failure and permit deliberate retry without removing request at enqueue; do not describe retention, spinner, lock-all, or cancel styling as recovered native UI."
+    },
+    {
+      "classification": "independent-identity-safety",
+      "decision": "On request owner/key replacement invalidate/cancel the host attempt and ignore old receipt using account/host/connection/thread/request/attempt identity. Original request-key reset supports separate draft lifetimes but does not prove the original owner cancels exactly here."
+    },
+    {
+      "classification": "no-source-backed-visual-change",
+      "decision": "Do not change original Send/Skip emptiness gate into unverified pending label or global disable layout. Exact busy UI/error subscriber must be closed first; any minimal host pending marker must be labelled independent."
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "task-to-ui",
+      "breakpoint": "b1e7e00/b1e7d88 owner state→QuestionCards/UserInputRequestView actual input/modifier",
+      "next_minimum": "Find concrete getter argument or isEnabled/progress consumer, not another generic form dump."
+    },
+    {
+      "id": "error-subscriber",
+      "breakpoint": "18e3df8→139b990 optional dependency, actual subject dependency+128→Combine subscriber→native presentation",
+      "next_minimum": "Bind dependency metadata and one subscriber of the same subject;1aa453c is no longer a presentation candidate."
+    },
+    {
+      "id": "async-failure-draft",
+      "breakpoint": "1a564a8 local clear/store→view+0xb0 callback→async failure result to current form state",
+      "next_minimum": "Find original post-failure answers/custom draft writer; no inference from error send or current host rollback."
+    },
+    {
+      "id": "key-change-cancel",
+      "breakpoint": "ApprovalRequestKey onChange1cf4494 resets local state;task ownership18e73e0 is separate",
+      "next_minimum": "Actual key replacement consumer that touches b1e7e00/b1e7d88, or retain explicit independent-host policy."
+    },
+    {
+      "id": "cleanup-reentry",
+      "breakpoint": "192384c..19238ec request equality/payload-count gates",
+      "next_minimum": "Bind exact request/answer cases before copying any automatic retry behavior."
+    }
+  ],
+  "haptics": {
+    "new_explicit_caller": false,
+    "result": "No direct haptic caller identified in these three selected chains; no new haptic behavior proposed."
+  },
+  "stop_condition": "Three selected groups and their single concrete followups complete. No expanded search, subscriber fanout, full forms scan, or backend implementation.",
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "old_reports_modified": false,
+    "tests_executed": false,
+    "builds": false,
+    "devices": false,
+    "official_runtime": false,
+    "network": false
+  }
+}
