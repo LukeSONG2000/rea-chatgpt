@@ -1,0 +1,240 @@
+{
+  "platform": "Android",
+  "version": "1.2026.293",
+  "status": "partial",
+  "scope": "v624 ordinary no-attachment/no-voice homepage composer predicate and expansion latch",
+  "evidence_type": "official_artifact_observation_and_static_call_chain",
+  "prior_report": "android-home-v623-composer-state.json",
+  "slot": {
+    "path": [
+      "w7o.java:4914–4917 odo argument",
+      "pt61.java:539,735 passes odo as sht.e object2",
+      "sht.java:1463,1761 passes object2",
+      "pup.java:318,344 passes object2 to vzd0.a in preview/runtime respectively",
+      "vzd0.java:140 → lzr.h p4"
+    ],
+    "role": "Optional composer auxiliary/model/reason selector content, not an unconditional toolbar.",
+    "producer_source": "w7o.smali:10927–11013",
+    "producer_pseudocode": [
+      "if tbc0 != null && gate47: slot=mdo(tbc0)",
+      "else if ki60 != null && gate72 && ki60.d != null: slot=ldo(ki60)",
+      "else if eho.B1 != null && eho.C1 && !gate47 && !flag152: slot=ndo(eho.B1.b)",
+      "else slot=null"
+    ],
+    "variant_evidence": [
+      {
+        "type": "mdo",
+        "payload": "tbc0 selector state",
+        "renderer": "w7o.java:4704–4720 → ng81.a",
+        "state_enum": "ybc0 {Closed,Slider,Families}"
+      },
+      {
+        "type": "ldo",
+        "payload": "ki60 selected model/mode data, d=t2f must be present",
+        "renderer": "w7o.java:4722–4873 → bl31.d; ki60.java:7–21"
+      },
+      {
+        "type": "ndo",
+        "payload": "reason capability display label",
+        "renderer": "w7o.java:4876–4880 → w7o.g",
+        "producer": "w3y0.java:22–35 selects id reason; eho.java:162–164 sets B1 and C1 selected reason flag"
+      }
+    ],
+    "unknown": "High-level exact meanings of gates47/72/flag152 retained as unknown. Availability cannot be inferred solely from Chat vs Work or generic model selected.",
+    "implementation_guidance": "Host may explicitly supply a synthetic supported model selector capability, with separate declared availability. Do not silently treat every Chat/Work state as having a slot."
+  },
+  "layout_preference": {
+    "source": "w7o.smali:11279–11349",
+    "pseudocode": [
+      "layout=Default",
+      "if slot is mdo and flag52: layout=Expanded",
+      "else if slot is ldo: if flag45: layout=Inline; else if state134 || (slot.a.g && flag67): layout=Expanded"
+    ],
+    "facts": [
+      "null and ndo remain Default",
+      "mdo flag52 is selector state !=Closed from w7o.java:2345; Java null condition is suspect but enum source ybc0 confirms Closed",
+      "ldo flag45 maps fho.j; remaining selector flags are retained source-level fields"
+    ],
+    "limitation": "Do not substitute an unconditional Work=Expanded preference."
+  },
+  "ordinary_predicates": {
+    "assumptions": [
+      "No recorder or dictation",
+      "No attachment slot and no qy50 content",
+      "Default layout preference"
+    ],
+    "with_available_auxiliary_slot": "expanded = effectiveFocusedInput || textNonempty || measuredOverflow || forcedExpanded",
+    "without_auxiliary_slot": "expanded = measuredOverflow || forcedExpanded",
+    "dynamic_slot_filter": "lzr.smali:9547–9597 only retains p4 when layout!=Default || effectiveFocusedInput || attachmentSlotExists || qy50Flag || textNonempty, and voice recording condition does not suppress it.",
+    "overflow": "textNonempty && (measuredWidth>compactAvailableWidth || measuredHeight>1.1*singleLineHeight), u0e0.java:475–479",
+    "effectiveFocusedInput": "v623 report formula includes editor focus, hardware keyboard, IME animation override/target and current IME visibility.",
+    "important": "Keyboard open alone and editor tap alone do not universally set forcedExpanded."
+  },
+  "forced_expanded_r": {
+    "all_smali_writers": [
+      "u0e0.smali constructor initializes false and k(Z) setter",
+      "lzr.smali:9188,9404 false initialization/reset",
+      "vm2.smali:226 false",
+      "b7r.smali:338 false",
+      "gzr.smali:224 true",
+      "sol.smali:492 false",
+      "w4o.smali:157 true"
+    ],
+    "input_callbacks": [
+      {
+        "event": "Enter/newline with empty compact text",
+        "action": "m0e0.b→w4o case4 sets r=true and returns consumed=true",
+        "source": [
+          "m0e0.java:23–25",
+          "w4o.java:45–51",
+          "l2a.java:52–65",
+          "rzd0.java:22–27,65–67"
+        ]
+      },
+      {
+        "event": "Delete/backspace with empty text",
+        "action": "m0e0.a→vm2 case8 sets r=false, returns consumed=true",
+        "source": [
+          "m0e0.java:18–20",
+          "vm2.java:90–98",
+          "vl8.java:56–61",
+          "rzd0.java:42–55,73–75"
+        ]
+      }
+    ],
+    "input_connection_registration": "u1e0.java:59 wraps actual InputConnection; rzd0 handles commitText/setComposingText newline, deleteSurroundingText and keycodes66/160/67. bl31.java:2084 registers m1e0 hardware-key path.",
+    "automatic_rules": [
+      {
+        "when": "effectiveFocusedInput && measuredOverflow becomes true",
+        "action": "r=true",
+        "source": [
+          "u0e0.java:56",
+          "v42.java:216–218",
+          "pmr.java case3 → e8d case7 filters true",
+          "gzr.java:60"
+        ]
+      },
+      {
+        "when": "!voiceActive && !(effectiveFocusedInput && expanded) becomes true",
+        "action": "r=false",
+        "source": [
+          "u0e0.java:58",
+          "x42.java:97–102",
+          "r610.java:87–111 → p4j.java:137–163 filters true",
+          "sol.java:135"
+        ]
+      },
+      {
+        "when": "text becomes empty AND l0e0.h AND !voiceActive",
+        "action": "r=false",
+        "source": [
+          "u0e0.java:57",
+          "kq9.java:93–94",
+          "j8d case2 → i8d case3 filters false",
+          "b7r.java:68–70"
+        ]
+      },
+      {
+        "when": "lzr parameter z true",
+        "action": "r=false",
+        "source": [
+          "lzr.java:1573–1575",
+          "lzr.smali:9404"
+        ],
+        "limitation": "z actual caller meaning retained unknown"
+      }
+    ],
+    "collapse_behavior": "Ordinary no-slot short text, after effective focus/IME state closes, automatic rule clears r; if measuredOverflow=false it becomes compact. With available Default auxiliary slot, nonempty text continues expanded after keyboard closes.",
+    "validation": "Static source checked. Predicate core and slot/layout branches smali checked. Flow filters read from Java. No device test."
+  },
+  "minimal_test_vectors": [
+    {
+      "slot": false,
+      "text": "",
+      "effectiveFocus": false,
+      "r": false,
+      "overflow": false,
+      "expanded": false
+    },
+    {
+      "slot": false,
+      "text": "",
+      "effectiveFocus": true,
+      "r": false,
+      "overflow": false,
+      "expanded": false
+    },
+    {
+      "slot": false,
+      "text": "",
+      "effectiveFocus": true,
+      "r": true,
+      "overflow": false,
+      "expanded": true,
+      "event": "empty Enter consumed"
+    },
+    {
+      "slot": true,
+      "text": "",
+      "effectiveFocus": true,
+      "r": false,
+      "overflow": false,
+      "expanded": true
+    },
+    {
+      "slot": true,
+      "text": "short",
+      "effectiveFocus": false,
+      "r": false,
+      "overflow": false,
+      "expanded": true
+    },
+    {
+      "slot": false,
+      "text": "short",
+      "effectiveFocus": false,
+      "r": false,
+      "overflow": false,
+      "expanded": false
+    },
+    {
+      "slot": false,
+      "text": "multiline",
+      "effectiveFocus": false,
+      "r": false,
+      "overflow": true,
+      "expanded": true
+    }
+  ],
+  "remaining": [
+    "Exact high-level gating names and normal service-provided availability for mdo/ldo/reason",
+    "Full voice/attachments predicates and geometry are outside this implementation subset"
+  ],
+  "source_sha256": {
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/w7o.java": "224cf147aa1a6e5e586b437dcc6c7cdc6de872276353c787a923793f79cb65cb",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/pt61.java": "f1faa4980468df6d86eb84044e40bb23509d30344e0c991f26e134d547dfedb6",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/sht.java": "29c6dd64a5ae90566f75b51cec4de4a9a855fd11c19d31955cd45b23c9c1e234",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/pup.java": "8ca8ff6cedd8abe5127b3129926ae629b4321d1fec2af7724b1ab11df6988bab",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/vzd0.java": "7613f0ccee0687c5f2035870cdcb31d67e3d2a6face9ab5ea1b3ccd8cc08e263",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/lzr.java": "acb4c0534fc597a2e6d0370b55fe3debb41044af3195ad8402514434452d4c3c",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/u0e0.java": "0e12af1b92a80eb74494583cf26824c5034e0994362863bf28f5d6b996ae3b9e",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/m0e0.java": "c056b3e55ecabb0f7c0c97cb4c5407c6a4c4a3a7977d57817f7e36eae18b151e",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/w4o.java": "cab05843ba13578852edf960498a9581d6e4380d862f2dd6a9508941075d819e",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/vm2.java": "26670c78aadc2fc369a1db61dd511b297bc51cd1b8f03aa2290bfe254b8fac68",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/v42.java": "99c04323af42eb331971f6b41cf2a73214b6208324bccac3b0458287db0bbce2",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/x42.java": "e44b83f17f19aa9dae2425955cd5a41eaf0cdb782a797c25622f4c74ae5aff3e",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/kq9.java": "8c8c2fea099be8fafb464905a186fa596f0578f6eed6e0a17b94750d54148ad7",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/gzr.java": "8857ebb9dd14d5a36c4221505009018794088c553d60fd5a2124d5105bda74cc",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/sol.java": "6b95b09b3e836bcbcb1daa80fb87c0fac31cf2bb8204d2af3f81ffb8c3a00bc7",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/b7r.java": "2a8ad3aa05427cf70a9005774139d3d9beb36054cbd5eb9bd3cccfd4afdb49ff",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/u1e0.java": "b52e7cf299a8112f4edaed9e11106daf38bc6a1ed7835bd336cd252bbb204811",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/rzd0.java": "e23faa79f82cee0d74d5fc9162aac7c6aeb237fb4e5160f98fce89f27de32005",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/l2a.java": "c78466c206d549812dfb9f59a2ac36f5a6c58d16eaa9d88df13267a9f6220657",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/vl8.java": "2b691dddb55f00c8c3288a36f02175fdd7fde68b7e31431b95db8c8acfd9db2a",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/eho.java": "af41c940f58abbde7d39e0158a73f0d032ca99033817e458e3b2cb06672689be",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/w3y0.java": "512fde42fda781c25728182a87b9021c5b168d70ec4b8ac0e9057c73a0580a55",
+    "recovered/android-1.2026.293/apktool-src/smali/w7o.smali": "faf16b6280f8980eef17ca17d11276e5522d1345c1f0a2c91194b9ba019c5005",
+    "recovered/android-1.2026.293/apktool-src/smali/lzr.smali": "1c590a513bdf1c2bee278114b450083338b99ed6f696c542bb5d53e6bc59dd1b",
+    "recovered/android-1.2026.293/apktool-src/smali/u0e0.smali": "1b2c060910d17ad21aac77779909e7bba17733adc5a87f105b2d0b44cf8c8e40"
+  }
+}

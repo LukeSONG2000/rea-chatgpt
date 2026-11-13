@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-14",
+  "worker_report": "android-remote-agents-parent-current-20261113.json",
+  "source_manifest_verified": 8,
+  "official_source_bindings_verified": 17,
+  "final_apk_sha256": "296379e69bdd3c5cd24b7d5cde602c78dfc3061fbe0bcfec38ee117c9c42f3a5",
+  "known_final_gate": "Bottomsheet opens, Chinese summary and close preserves parent draft/configuration",
+  "child_navigation_final_gate": "NOT verified; root manual first known button did not expose loading/error/child; do not transfer earlier AlertDialog pass",
+  "root_checks": [
+    "android-remote-agents-root-final-20261114/report.json",
+    "android-remote-agents-root-final-20261114-r2/report.json"
+  ],
+  "diagnosis": "Initial root check ended before Activity resumed and performed no UI actions. Second bounded check used fresh node bounds/visible button, but no phase appeared. Read-only code audit found no proven scope/remember/guard defect. Root sheet AX bounds anomaly does not prove touch-coordinate error.",
+  "next_minimum_action": "Instrument onClick, owner instance/retired status, begin admission, onDismiss and onDispose; correlate one input with state. No further coordinate guessing or broad journey rerun.",
+  "runtime": {
+    "normal_pid": "15536",
+    "normal_launch_arguments": [],
+    "ordinary_preferences_unchanged": true,
+    "kept_running": true
+  },
+  "original_semantics_correction": "oej0.m Agents comes from collabAgentToolCall tool metadata, not an established /status roster; original consumer is read-only ToolMarkdownBottomSheet. Optional related-task action is independently injected capability."
+}

@@ -912,12 +912,19 @@ final class RemoteThreadMetadataStore: ObservableObject {
 @MainActor
 final class RemoteThreadReplayStore: ObservableObject {
     let isEnabled = HostLaunchRuntime.arguments.contains("--remote-interactive-replay")
+    let agentThreadProvider: any RemoteAgentThreadProviding
     @Published private var states: [RemoteComposerDraftScope: RemoteThreadReplayState] = [:]
     @Published private(set) var storageFailed = false
     private var persistence: RemoteThreadHistoryPersistence?
     private var unreadableSnapshot = false
 
-    init() {
+    init(agentThreadProvider: (any RemoteAgentThreadProviding)? = nil) {
+        self.agentThreadProvider = agentThreadProvider ?? SyntheticRemoteAgentThreadProvider(
+            enabled: HostLaunchRuntime.arguments.contains("--remote-interactive-replay")
+                && HostLaunchRuntime.arguments.contains("--remote-task-controls-fixture"),
+            delayed: HostLaunchRuntime.arguments.contains("--remote-agent-delayed-fixture"),
+            failFirst: HostLaunchRuntime.arguments.contains("--remote-agent-fail-first-fixture"),
+            unavailable: HostLaunchRuntime.arguments.contains("--remote-agent-unavailable-fixture"))
         guard isEnabled else { return }
         do {
             guard let profile = try RemoteDraftPersistence.current() else { return }

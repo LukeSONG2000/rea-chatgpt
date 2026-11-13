@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 // adapter. Exact official bubble geometry, toolbar and markdown styles remain open.
 @Composable
 internal fun RemoteConversationPage(task: RemoteListTask, host: RemoteListHost,
-    store: RemoteListStore, owner: RemoteConversationOwner, togglePin: () -> Boolean, rename: (String) -> Boolean, archive: () -> Boolean, back: () -> Unit) {
+    store: RemoteListStore, owner: RemoteConversationOwner, agentScope: RemoteAgentScope, agentProvider: RemoteAgentThreadProvider?, openRelated: (RemoteAgentThreadTarget) -> Boolean, togglePin: () -> Boolean, rename: (String) -> Boolean, archive: () -> Boolean, back: () -> Unit) {
     var fileLink by remember(task.key) { mutableStateOf<RemoteFileLink?>(null) }
     var webLink by remember(task.key) { mutableStateOf<android.net.Uri?>(null) }
     var unavailableLink by remember(task.key) { mutableStateOf(false) }
@@ -123,6 +123,9 @@ internal fun RemoteConversationPage(task: RemoteListTask, host: RemoteListHost,
                             }
                         }) { RemoteMessageBody(task.key, turn) }
                         turn.commands.forEach { command -> key(turn.request, command.id) { RemoteCommandOutputView(turn, command) } }
+                        fixtureCollaborationActivity(task.key,turn,androidx.compose.ui.platform.LocalConfiguration.current.locales[0].language=="zh")?.let { activity ->
+                            RemoteCollaborationView(agentScope,activity,agentProvider,openRelated)
+                        }
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(stringResource(turn.phase.label()), style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -161,19 +164,8 @@ internal fun RemoteConversationPage(task: RemoteListTask, host: RemoteListHost,
                 modifier = Modifier.weight(1f).testTag("remote-storage-error"))
             TextButton(onClick = { owner.recoverStorage(task.key) }) { Text(stringResource(R.string.remote_retry)) }
         }
-        if (editing == null) RemoteTaskControlsView(task.key, owner, running, draft.text,
-            clearDraft = { draft = TextFieldValue("") }, edit = {
-                editing = it; editingDraft = TextFieldValue(it.prompt); editFailure = false
-            })
-        else Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text(remoteControlText("编辑已排队输入", "Editing queued input"), Modifier.weight(1f).testTag("remote-editing-pending"))
-            TextButton(onClick = { editing = null; editFailure = false }, modifier = Modifier.testTag("remote-pending-edit-cancel")) {
-                Text(remoteControlText("取消编辑", "Cancel edit"))
-            }
-        }
-        if (editFailure) Text(remoteControlText("未能替换目标输入；编辑内容与原草稿均保留。", "Pending input was not replaced; edit and original draft are retained."),
-            color = MaterialTheme.colorScheme.error, modifier = Modifier.testTag("remote-edit-error"))
-        RemoteReplyComposer(if (editing != null) editingDraft else draft, { next ->
+        @Composable fun Composer(modelControl: (@Composable () -> Unit)? = null, permissionControl: (@Composable () -> Unit)? = null) {
+            RemoteReplyComposer(if (editing != null) editingDraft else draft, { next ->
             if (editing != null) editingDraft = next else {
                 draft = next
                 if (next.composition == null) draftFailure = !store.saveDraft(task.key, next.text)
@@ -188,7 +180,22 @@ internal fun RemoteConversationPage(task: RemoteListTask, host: RemoteListHost,
                 following = true
                 if (owner.send(task.key, draft.text)) draft = TextFieldValue("")
             }
-        }, { activeRequest?.let { owner.stop(task.key, it) }; Unit })
+        }, { activeRequest?.let { owner.stop(task.key, it) }; Unit }, modelControl, permissionControl)
+        }
+        if (editing == null) RemoteTaskControlsView(task.key, owner, running, draft.text,
+            clearDraft = { draft = TextFieldValue("") }, edit = {
+                editing = it; editingDraft = TextFieldValue(it.prompt); editFailure = false
+            }, composer = { model, permission -> Composer(model, permission) })
+        else Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text(remoteControlText("编辑已排队输入", "Editing queued input"), Modifier.weight(1f).testTag("remote-editing-pending"))
+            TextButton(onClick = { editing = null; editFailure = false }, modifier = Modifier.testTag("remote-pending-edit-cancel")) {
+                Text(remoteControlText("取消编辑", "Cancel edit"))
+            }
+        }
+        if (editFailure) Text(remoteControlText("未能替换目标输入；编辑内容与原草稿均保留。", "Pending input was not replaced; edit and original draft are retained."),
+            color = MaterialTheme.colorScheme.error, modifier = Modifier.testTag("remote-edit-error"))
+        if (editing != null) Composer()
+
     }
 }
 
@@ -205,11 +212,13 @@ private fun RemoteTurnPhase.label(): Int = when (this) {
 // multiline layout with Home. Remote action ownership stays task-scoped.
 @Composable
 private fun RemoteReplyComposer(value: TextFieldValue, change: (TextFieldValue) -> Unit,
-    running: Boolean, available: Boolean, send: () -> Unit, stop: () -> Unit) {
+    running: Boolean, available: Boolean, send: () -> Unit, stop: () -> Unit,
+    modelControl: (@Composable () -> Unit)? = null, permissionControl: (@Composable () -> Unit)? = null) {
     var notice by remember { mutableStateOf(false) }
     RecoveredHomeComposer(value, change, stringResource(R.string.remote_reply_placeholder), null,
         unavailable = { notice = true }, primaryAction = { if (running) stop() else send() },
-        running = running, canSubmit = available, tagPrefix = "remote-reply", editorTag = "remote-draft")
+        running = running, canSubmit = available, tagPrefix = "remote-reply", editorTag = "remote-draft",
+        remoteModelControl = modelControl, remotePermissionControl = permissionControl)
     if (notice) AlertDialog(onDismissRequest = { notice = false },
         text = { Text(stringResource(R.string.remote_reply_capability)) },
         confirmButton = { TextButton(onClick = { notice = false }) { Text(stringResource(R.string.remote_done)) } })

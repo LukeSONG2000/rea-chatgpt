@@ -95,7 +95,8 @@ struct RemoteAgentThreadRequest: Equatable {
 
     init?(accountID: String, intent: RemoteAgentOpenIntent,
           snapshot: RemoteAgentsSnapshot, sessionID: UUID) {
-        guard !accountID.isEmpty,
+        guard !accountID.isEmpty, let hostID = snapshot.scope.hostID, !hostID.isEmpty,
+              case .thread(let threadID) = snapshot.scope.destination, !threadID.isEmpty,
               let agent = snapshot.resolve(intent, currentSession: sessionID) else { return nil }
         self.accountID = accountID; self.intent = intent; self.agent = agent
     }
@@ -117,6 +118,66 @@ struct RemoteAgentThreadRequest: Equatable {
               RemoteComposerDraftScope(hostID: target.hostID, threadID: target.threadID) != snapshot.scope
         else { return nil }
         return target
+    }
+}
+
+// Independent frontend service boundary. The original owner resolver and its
+// loading/error presentation are not recovered. A reference alone is never a
+// navigation target; the injected provider must supply a complete destination.
+@MainActor
+protocol RemoteAgentThreadProviding {
+    func target(for request: RemoteAgentThreadRequest) async throws -> RemoteAgentThreadTarget?
+}
+
+struct RemoteAgentNavigationState {
+    struct Attempt: Equatable {
+        let id: UUID
+        let request: RemoteAgentThreadRequest
+    }
+    private(set) var pending: Attempt?
+
+    mutating func begin(_ request: RemoteAgentThreadRequest) -> Attempt? {
+        guard pending == nil else { return nil }
+        let attempt = Attempt(id: UUID(), request: request)
+        pending = attempt
+        return attempt
+    }
+    // A retired callback must not clear a subsequent request for the same row.
+    mutating func finish(_ attempt: Attempt) -> Bool {
+        guard pending == attempt else { return false }
+        pending = nil
+        return true
+    }
+    mutating func cancel() { pending = nil }
+}
+
+@MainActor
+final class SyntheticRemoteAgentThreadProvider: RemoteAgentThreadProviding {
+    enum Failure: Error { case unavailable }
+    private let enabled: Bool
+    private let delayed: Bool
+    private let failFirst: Bool
+    private let unavailable: Bool
+    private var attempted = Set<RemoteComposerDraftScope>()
+
+    init(enabled: Bool, delayed: Bool = false, failFirst: Bool = false,
+         unavailable: Bool = false) {
+        self.enabled = enabled; self.delayed = delayed
+        self.failFirst = failFirst; self.unavailable = unavailable
+    }
+    func target(for request: RemoteAgentThreadRequest) async throws -> RemoteAgentThreadTarget? {
+        guard enabled else { return nil }
+        if delayed { try await Task.sleep(nanoseconds: 2_000_000_000) }
+        try Task.checkCancellation()
+        if failFirst, attempted.insert(request.intent.scope).inserted { throw Failure.unavailable }
+        guard !unavailable else { return nil }
+        let map = ["fixture-agent-layout": "fixture-child-layout",
+                   "fixture-agent-review": "fixture-child-review",
+                   "fixture-agent-navigation": "fixture-child-navigation"]
+        guard let child = map[request.agent.id], let host = request.intent.scope.hostID,
+              !host.isEmpty, case .thread = request.intent.scope.destination else { return nil }
+        return .init(hostID: host, threadID: child,
+                     title: request.agent.displayName)
     }
 }
 

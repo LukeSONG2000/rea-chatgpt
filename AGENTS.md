@@ -2,6 +2,13 @@
 
 ## Current mobile priorities (user update 2026-11-13)
 
+- 本次已确定成果按用户授权保存至个人origin/main，见CHECKPOINT-20261114-MOBILE-REMOTE.md。包括双端Remote协作活动／关联任务和Android编写器底行模型／权限槽；iOS滑杆主题改动尚未构建，明确排除并保留本地。历史报告的“留本地”是当时状态，旧测试仍各自绑定快照；不包含安装包／真实服务，不延伸为后续推送授权。
+
+- Remote协作活动／关联任务本轮核心收口，见PROGRESS-20261114-REMOTE-AGENT-CLOSURE.md：诊断证实点击／loading／预期失败，实际正文滚动与稳定屏幕触摸后的最终OnePlus16.583秒流程通过child/Back及父子草稿配置隔离。8源摘要、安装包与普通偏好已核对；临时诊断移除，iOS沿用前批已通过版本。此条覆盖下方“Android关联按钮尚未闭合／继续诊断”的上一批状态，原路由／Markdown光学仍保留缺口。下一整项为Remote编写器与底栏父级／呈现：Android293样式与图标，iOS对应主题／键盘／浮层继承。新成果不自动推送。
+
+- 当前整项为Remote智能体／协作活动（见PROGRESS-20261114-REMOTE-AGENTS.md）：iOS可注入异步关联目标、失败重试、独立child往返核心46.714秒通过，签名构建与模拟器恢复完成，Air不可用。Android已纠正Agents工具摘要归属并接原底部面板方向；最终包摘要／关闭／父草稿配置通过，但关联按钮至child未完成运行确认。下一动作仅诊断click／owner／begin／dismiss事件，不重复坐标猜测或新大项。新成果留本地。
+- Android293 `oej0.m` Agents is collaboration-tool metadata rendered through `cp6→mcp→pks0.t/ToolMarkdownBottomSheet→ikz0.d→j5q.j`, not proven `/status` roster. Keep its read-only summary consumer separate from independently injected related-task navigation. Evidence: `android-remote-agents-20261113-source.json`; earlier usage_agents report interpretation is superseded.
+
 - 本次搜索整项见`PROGRESS-20261113-CHAT-SEARCH.md`：iOS原生首次焦点及独立会话退休／定位身份检查、Android独立异步搜索核心已接。中文浅色iOS32.391秒／OnePlus22.845秒通过，签名构建完成；原完整布局／服务和Android n5r.M模式身份仍未知，不把同会话切换作为已证官方要求。头像、插件、搜索按本次授权保存到个人origin；历史模块测试保持各自快照边界。
 
 - 最新插件整项见 `PROGRESS-20261113-PLUGINS-INTEGRATION.md`：iOS源证默认提示词→独立新Chat草稿与根退休隔离，Android原目录／分类／search／detail核心及首次焦点已接。iOS30.742秒与Android旧分段核心＋最后9.772秒焦点专项分别绑定实际快照；无新全套矩阵或安装服务。模拟器／OnePlus保留运行，Air不可用。下一整项Chat／Work：先证明Android模式与conversation身份，再改状态；不以iOS行为或截图代替。其余冻结侧栏包、后端和Git边界保留。

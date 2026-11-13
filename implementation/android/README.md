@@ -1,5 +1,7 @@
 # Android independent native host
 
+Current mobile checkpoint: see `docs/full-platform/PROGRESS-20261114-REMOTE-AGENT-CLOSURE.md` and `MOBILE-REMAINING-20261113.md`. The versioned sections below are historical snapshots, not a current inventory of missing Chat/Remote features.
+
 ## v629 Remote conversation core
 
 The normal Remote list now opens a task-scoped transcript with synthetic history, selectable text, basic Markdown, copy, streaming replay, stop, failure and retry. Drafts, turns and reading positions are stored per profile/host/thread. Accepted sends atomically save the user turn and clear its draft. Retry replaces the request identity. The reducer rejects foreign-host, old-request, duplicate and terminal-late events. Persisted active turns become interrupted after process recreation and expose retry.

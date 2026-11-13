@@ -47,6 +47,7 @@ extension HostInteractionTests {
         let app = XCUIApplication(), profile = UUID().uuidString
         app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks",
             "--remote-interactive-replay", "--remote-task-controls-fixture",
+            "--remote-agent-delayed-fixture", "--remote-agent-fail-first-fixture",
             "--chat-state-profile=" + profile, "--remote-draft-profile=" + profile,
             "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
         app.launch()
@@ -67,15 +68,30 @@ extension HostInteractionTests {
             XCTAssertTrue(field.waitForExistence(timeout: 5)); return field
         }
         let parent = editor(); parent.tap(); parent.typeText("Parent draft")
+        var verifyRecovery = true
         func openChild() {
             let summary = app.buttons["remote-agents-summary"]
             XCTAssertTrue(summary.waitForExistence(timeout: 5))
             let agent = app.buttons["remote-agent-row-fixture-agent-layout"]
             if !agent.exists { summary.tap() }
             XCTAssertTrue(agent.waitForExistence(timeout: 5)); agent.tap()
+            if verifyRecovery {
+                //The two-second synthetic request may complete before an AX
+                //snapshot exposes its cancel control. Cancellation/late retry
+                //admission is checked by the pure contract; this journey covers
+                //the persistent error, retry and actual child-return behavior.
+                let retry = app.buttons["remote-agent-navigation-retry"]
+                XCTAssertTrue(retry.waitForExistence(timeout: 7))
+                XCTAssertTrue(app.staticTexts["remote-agent-navigation-error"].exists)
+                let failure = XCTAttachment(screenshot: app.screenshot())
+                failure.name = "agent-navigation-failed-returnable-zh-light"
+                failure.lifetime = .keepAlways; add(failure)
+                retry.tap(); verifyRecovery = false
+            }
             XCTAssertTrue(app.navigationBars.staticTexts["布局检查"].waitForExistence(timeout: 5))
             XCTAssertFalse(app.buttons["remote-agent-detail-close"].exists)
-            XCTAssertFalse(app.buttons["remote-agents-summary"].exists, "Child capability catalog is independent")
+            XCTAssertTrue(app.buttons["remote-agents-summary"].waitForNonExistence(timeout: 5),
+                          "After the asynchronous push settles, child capabilities are independent")
         }
         openChild()
         let child = editor(); XCTAssertFalse((child.value as? String ?? "").contains("Parent draft"))

@@ -1,0 +1,150 @@
+{
+  "platform": "Android",
+  "version": "1.2026.293",
+  "status": "partial",
+  "scope": "v623 ordinary Chat/Work composer state producer; bounded static inspection",
+  "evidence_type": "official_artifact_observation_with_static_call_chain",
+  "source_base": "recovered/android-1.2026.293/jadx-src/sources/defpackage",
+  "smali_base": "recovered/android-1.2026.293/apktool-src/smali",
+  "entry_chain": [
+    "w7o.java:4917 → pt61.K",
+    "pt61.java:713–735 → l0e0 and sht.e",
+    "sht.java:1761 → pup.i.h",
+    "pup.i.h → vzd0.a → lzr.h (parent traced)",
+    "lzr.java:1546–1618 → u0e0"
+  ],
+  "jadx_corrections": [
+    {
+      "java": "lzr.java:1607",
+      "incorrect": "a = obj == null",
+      "correct": "a = obj != null",
+      "smali": "lzr.smali:9599–9622"
+    },
+    {
+      "java": "lzr.java:1612",
+      "incorrect": "h = text.length <= 0",
+      "correct": "h = text.length > 0",
+      "smali": "lzr.smali:9676–9700"
+    },
+    {
+      "java": "lzr.java:1617",
+      "incorrect": "f = obj3 == null",
+      "correct": "f = obj3 != null",
+      "smali": "lzr.smali:9756–9776"
+    }
+  ],
+  "expanded_predicate": {
+    "source": "u0e0.smali:2698–2974; u0e0.java:435–459 contains incorrect branch structure",
+    "pseudocode": [
+      "if b: return not c",
+      "if a or e: return true",
+      "if f and layout == Expanded: return true",
+      "if f and layout == Default and (i or h): return true",
+      "return measuredOverflow() or r"
+    ],
+    "fields": {
+      "a": "leading/attachment slot object p2 exists; exact pt61 xun caller availability needs smali closure",
+      "b": "l0e0.e = recorder/dictation active (lzr.java:1390)",
+      "c": "l0e0.i voice-specific collapse override; source expression in pt61 requires smali check",
+      "e": "l0e0.d, any qy50 list element according to pt61, source loop decompilation requires smali check",
+      "f": "conditional p4 content slot exists; lzr.smali:9547–9597 filters by non-voice-recording and layout/focus/text/attachment conditions",
+      "h": "editor has nonempty text",
+      "i": "effective focused input state from sqo.W",
+      "j": "yvz0 {Default,Expanded,Inline}",
+      "r": "extra expansion flag. initialized false; full writers not closed"
+    },
+    "measuredOverflow": "u0e0.java:476–479 requires nonempty text and measuredWidth > p OR measuredHeight > 1.1*m",
+    "ordinary_case": "With no voice and no attachment slot, no qy50 content, default layout and available p4 slot, effective focus or nonempty text expands. Overflow or r can also expand. The caller availability of p4 and actual default layout selection must be retained as conditions.",
+    "limitations": [
+      "Do not reduce this to keyboardVisible alone or textNonempty alone.",
+      "The actual homepage p4 slot producer and layout preference producer remain to close before implementing complete state mapping."
+    ]
+  },
+  "focus_and_ime": {
+    "focus_callback": [
+      "q281.java:570–577 installs gly0.G with p0 case5",
+      "p0.java:97–103 writes lb10.b() into k2u.c",
+      "lb10.java:46–62 b() true for Active/Captured, false ActiveParent/Inactive"
+    ],
+    "inputs": [
+      "ml51.java:2447–2457 constructs k2u from ime visibility and lim.P hardware keyboard presence",
+      "hh51.java:42 names c as ime; hh51.java:67–68 names s/t as imeAnimationTarget/Source",
+      "lim.java:498–523 observes input manager devices; lim.java:1337–1344 requires nonvirtual keyboard device source257 and keyboardType2"
+    ],
+    "formula": "tp60.java:55 = focused && (hardwareKeyboard || (animationOverride != null ? animationOverride : imeAnimating ? targetImeVisible : imeVisible))",
+    "animation": [
+      "lim.java:466–483 builds ij50 from ime/source/target insets",
+      "qd5.java:74–75 detects source bottom != target bottom",
+      "l3.java:70–74 target bottom > 0 while animating; otherwise current bottom >0",
+      "gf2.java:72–79 and ff2.java:55–60 set per-View override and invoke controlWindowInsetsAnimation(WindowInsets.Type.ime())"
+    ],
+    "consumer": "lzr.java:1558–1571 uses l0e0.f only for inspection/preview; normal runtime uses sqo.W, assigned u0e0.i at1613",
+    "consequence": "A focused editor with closed soft keyboard and no hardware keyboard does not by itself set i true. A hardware keyboard plus editor focus does.",
+    "validation": "static source traced; only u0e0 and lzr boolean polarity smali-checked"
+  },
+  "shared_editor": {
+    "sources": [
+      "w7o.java:2783 and alias chain through3219",
+      "w7o.java:4917",
+      "pt61.java:713",
+      "lzr.java:1546"
+    ],
+    "finding": "The same d03 editor state is passed to l0e0 and consumed by multiline composer; state predicate reads d03.f(). No separate compact editor state is established by this call chain.",
+    "limit": "full composing/selection preservation runtime behavior not tested"
+  },
+  "excluded_misinterpretations": [
+    {
+      "symbol": "u0o.b",
+      "meaning": "recorder/dismissing voice state",
+      "sources": [
+        "f341.java:19–28",
+        "w441.java:17–28"
+      ]
+    },
+    {
+      "symbol": "c3w.b",
+      "meaning": "dictation active",
+      "sources": [
+        "f3w.java:28–42",
+        "f3w.java:165"
+      ]
+    },
+    {
+      "symbol": "njm0.g",
+      "meaning": "overlay/presentation transition target",
+      "sources": [
+        "njm0.java",
+        "fim0.java",
+        "i5e0.java"
+      ]
+    }
+  ],
+  "open_boundaries": [
+    "Trace p4/obj2 caller to concrete toolbar slot and prove normal Chat/Work availability.",
+    "Smali-check pt61 xun nonempty-map/filter predicate and qy50-loop result; Java has multiple impossible empty/nonempty branches.",
+    "Close yvz0 layout selection producer and all u0e0.r writers.",
+    "Bottom inset measurement and parent animation geometry handled by parent evidence task; not independently verified here."
+  ],
+  "runtime_validation": "none; no builds/device changes",
+  "source_sha256": {
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/lzr.java": "acb4c0534fc597a2e6d0370b55fe3debb41044af3195ad8402514434452d4c3c",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/u0e0.java": "0e12af1b92a80eb74494583cf26824c5034e0994362863bf28f5d6b996ae3b9e",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/pt61.java": "f1faa4980468df6d86eb84044e40bb23509d30344e0c991f26e134d547dfedb6",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/k2u.java": "6e4a93b46c5bb922c73aeb82755fdfec48fbe1abe1c4ca7cf3405f5a002e7853",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/ml51.java": "cce43b0d43fe5528754e4b36eb0aff1f2d047fdfc2978bafda799d00b82ffb59",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/tp60.java": "553b854f82c42523b9c5ce45ff8459dd86748c95954456a8ae07f5405fb29930",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/sqo.java": "7c10dc470395188b4622808ac31e3453e9cc1f318524de79aeaf5f893099e884",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/q281.java": "9718074bae81a0c7e40d9d073ecefb037cf6152533abe1060525396d9386fc12",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/p0.java": "92442096c1cf5856e4ad5255f1416cf5055a4731443203136cee262868ea7a60",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/lb10.java": "47c37a21c4149c69a67d197f60565c170d66e84ff506aa0d5bb68933449fe7e4",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/lim.java": "99bee934ff0a85ece1691654e536d128719f8b6b206754a83411ea1e31cea2c6",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/hh51.java": "b1e9f38019e63a4bafa3c11c7075e4699f4e6ffb8a743ee3322a5609c376955e",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/ij50.java": "64ae53aace9c0f08cf42c39147242d3765eb46a50775b4e9230f1b341307eed6",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/qd5.java": "7589b99c3b3a82f7addf8589d2f496856ffa3835b982bff6ef8e8201c57ace8c",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/l3.java": "697ead2c2ef9fce4b7e5e946218bcf904575f5a6d2f66d6c8e010ec6d871a47e",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/gf2.java": "d91d891d15079e1df14a08f91bd318dd1d0b9dee728be4fd9c16dbc41fd6bcdd",
+    "recovered/android-1.2026.293/jadx-src/sources/defpackage/ff2.java": "b4f1cc49e4787c78d25c8b33470cdea3dee074d1d4c4c1976c00bc1dd74dcad3",
+    "recovered/android-1.2026.293/apktool-src/smali/lzr.smali": "1c590a513bdf1c2bee278114b450083338b99ed6f696c542bb5d53e6bc59dd1b",
+    "recovered/android-1.2026.293/apktool-src/smali/u0e0.smali": "1b2c060910d17ad21aac77779909e7bba17733adc5a87f105b2d0b44cf8c8e40"
+  }
+}

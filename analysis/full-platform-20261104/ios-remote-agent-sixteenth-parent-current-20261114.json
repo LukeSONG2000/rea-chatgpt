@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-14",
+  "module": "Remote agent to child task frontend",
+  "baseline": "iOS1.2026.293",
+  "source_findings": "ios-remote-agent-route-eighth-20261113-findings.json",
+  "original_binary_sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "raw_records_verified": 33,
+  "source_manifest": "ios-remote-agent-sixteenth-20261114-current-source.json",
+  "implemented": [
+    "Injectable MainActor async RemoteAgentThreadProviding; default explicit offline mapping outside view",
+    "Single-flight attempt identity; cancellation and old completion cannot consume a later retry",
+    "Thread-only request admission, full current agent/account/scope/session/revision recheck after await",
+    "Explicit unavailable/provider-failed/local-storage-failed feedback and deliberate retry",
+    "Cancel provider and retire attempt on page disappearance; commit child before navigation",
+    "Existing child task view reused; child capability catalog, drafts/messages and parent return remain separate"
+  ],
+  "independent_adapter_boundary": [
+    "The async provider, busy/cancel/failure/retry presentation and local push are independent host policies",
+    "Official complete Subagent owner action is proved; final dynamic host/thread resolver and original error/presentation remain unknown",
+    "No real network, execution, service authentication or agent management implemented"
+  ],
+  "verification": {
+    "foundation": ".tmp/agent-route-sixteenth-20261113-contract-r2.log passed",
+    "ui": "ios-remote-agent-sixteenth-20261113-r3.xcresult",
+    "seconds": 46.714,
+    "passed_tests": 1,
+    "language": "zh-Hans",
+    "appearance": "light",
+    "coverage": [
+      "persistent failure/retry",
+      "child draft and parent return",
+      "reentry retains child draft",
+      "child send completes",
+      "final return retains parent draft",
+      "wait until async push settles before child capability assertion"
+    ],
+    "earlier_failures": {
+      "r1": "Transient loading cancel control not observed by AX before provider failure; no UI cancellation pass claimed",
+      "r2": "Immediate negative assertion saw parent agent control during second asynchronous push; fixed only test to wait for disappearance. First child draft/return had passed."
+    },
+    "simulator_build": "passed UI build",
+    "signed_device_build": ".tmp/agent-route-sixteenth-20261114-device-build.log passed; deep strict signature verified",
+    "visual_review": [
+      ".tmp/agent-route-sixteenth-r3-images/0EC796F9-439E-464E-B0D0-0EFD02BD8E09.png",
+      ".tmp/agent-route-sixteenth-r2-images/E697EB6F-8E77-451D-BAC2-945EE61AEA66.png"
+    ],
+    "cancellation_ui": "Implemented, pure identity contract passed; transient control runtime path not verified by this journey"
+  },
+  "runtime": {
+    "simulator": "71BCC1D2-0ABD-4F11-BB67-37818435B176",
+    "launch": "local.rea.chatgpt.ioshost: 7979",
+    "arguments": [],
+    "installed_binary_sha256": "3ece6d4d4711b5e11b9a2e4a1c5e0fe1d929302263bbe03ae238efe75e9ca9a1",
+    "original_preferences_restored": true,
+    "kept_running": true,
+    "signed_binary_sha256": "983ba8d57bf5796f44fa001064a3b8babe2a232d9f7de4bff372a5c2eef507c2",
+    "signed_build": "passed",
+    "strict_signature": "passed",
+    "physical_inventory": ".tmp/agent-route-sixteenth-devices-20261113.json",
+    "physical_install": "Air unavailable; not installed"
+  },
+  "remaining": [
+    "Original agent target repository binding/host inheritance and native final presentation",
+    "Original loading/error/retry/gesture/haptic optics",
+    "Physical iOS install and tactile checks; Air unavailable",
+    "Real service and agent create/stop/resume remain out of current scope"
+  ],
+  "publication": "local only after1ea0e913ca; no new commit/push"
+}

@@ -1,0 +1,157 @@
+{
+  "module": "Android Remote composer parent / model-permission bottom slots",
+  "status": "Core covered by r1 plus r3 remaining; final typography-only snapshot verified",
+  "baseline": "eea14c165858c07eeaa6f33f5bed40322ffb3ddf9b8fea1eeceb7287d1595ce3",
+  "source_manifest": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-integration-20261114-source-hashes.json",
+  "source_files": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/RecoveredHomeComposer.kt",
+      "sha256": "f7918c0a71b625ca65f0f16198704989700462d08c6681912e6e4501b0b861ef"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/RemoteConversationPage.kt",
+      "sha256": "86144e7dfc43b2e4b681e86c3475de72189d2a18cd34eca76c4b7f42df808e6d"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/RemoteTaskControlsView.kt",
+      "sha256": "469b12e1a4c89b44fc9ca6cf8655b678a0c238c7fb5feabbfe7d261fcbea7f30"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/res/drawable/ds_hand_palm_regular_24.xml",
+      "sha256": "61127d36272cfffddd494c94626315a75586802f79b9a5b15583e53399aaad28"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/res/drawable/ds_shield_lock_regular_24.xml",
+      "sha256": "df43d31f6c03a96987e54f2105c350ad7238fbc7a58de8978b8bbeb4baa69a24"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/androidTest/java/local/rea/chatgpt/RemoteComposerTest.kt",
+      "sha256": "2bd354dd47e40276b6c259e684c74b3fde225ecfbb312d85be279319624a2307"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/test-remote-composer.py",
+      "sha256": "7b638a78eda1b42f16e6b2fec3ccec0f056f6cfd64ed8825a9178a0ea7f259b2"
+    }
+  ],
+  "official_source_reports": [
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-parent-source-20261114.json",
+    "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-controls-source-20261114.json"
+  ],
+  "source_binding_validation": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-integration-20261114-evidence-validation.json",
+    "bindings": 57,
+    "all_match": true
+  },
+  "assets": [
+    {
+      "source": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/base/assets/composeResources/com.openai.kmp.platform.design.resources/drawable/ds_hand_palm_regular_24.xml",
+      "destination": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/res/drawable/ds_hand_palm_regular_24.xml",
+      "sha256": "61127d36272cfffddd494c94626315a75586802f79b9a5b15583e53399aaad28",
+      "byte_equal": true
+    },
+    {
+      "source": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/base/assets/composeResources/com.openai.kmp.platform.design.resources/drawable/ds_shield_lock_regular_24.xml",
+      "destination": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/res/drawable/ds_shield_lock_regular_24.xml",
+      "sha256": "df43d31f6c03a96987e54f2105c350ad7238fbc7a58de8978b8bbeb4baa69a24",
+      "byte_equal": true
+    }
+  ],
+  "implemented": [
+    "Shared multiline composer retained; default null Remote slots preserve Home existing geometry and owner.",
+    "Separate permission InputDecorations and model InputActions injected into measured same bottom row; no external generic Task configuration button.",
+    "Default palm and ReadOnly shield-lock exact293 vector bytes;24dp image/34dp measured target.",
+    "Model chip34dp minimum with12h/4v padding; final source token14sp/20sp line height/500 weight/0.1sp tracking.",
+    "Task-scoped model/effort/speed existing configuration contract retained; separate permission entry selects existing Default/ReadOnly configuration.",
+    "Goal/Usage/Agents ancillary row and pending/Queue/Steer retained as independent capability positions; no fake attachment menu or backend actions."
+  ],
+  "source_adapter_boundaries": {
+    "shared_surface": "qy81→se8→l0l→e191→sht→pup/lzr; e191 mask0x79e00000 resolves dynamic insets true. Reused source-backed Home multiline measurement; no new fixed height/radius.",
+    "slots": "Seven-child mapping and same bottom-row y formula have source/smali evidence. Leading attach then permission x choice remains independent because damaged original branch predicate not closed.",
+    "visibility": "Explicit Remote model capability enters existing shared expansion predicate; model rendered only expanded, permission visible compact/expanded. Original all-state Remote k()/visibility not fully recovered. This is host policy, not original default proof.",
+    "typography": "gpm.b→on01.c.b→sk10.f proves final14/20/500/0.1. Android SansSerif fallback is host realization.",
+    "catalog": "standard/compact + low/medium/high are existing offline capability subset, not original model catalog.",
+    "panels": "Existing task configuration/permission dialogs and Goal/Usage/Agents positions are independent native carriers. Full original menus/slider/palette not restored.",
+    "home": "No new Home slots supplied; default-null behavior static checked and compiled, not a new Home device regression."
+  },
+  "runtime": {
+    "device": "172.16.197.16:5555 ONEPLUS A6003 SDK35",
+    "language": "zh-CN",
+    "appearance": "light",
+    "core_apk_sha256": "a1a2ae499b218df950af51926f916e9090ff267594d3604605bcbab53575c587",
+    "core_source_manifest": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-integration-20261114-source-hashes-core-r3.json",
+    "core_results": [
+      {
+        "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-integration-20261114-oneplus-r1.json",
+        "seconds": 13.891,
+        "result": "partial; permission Default accepted, same-row centers/ordering passed; mistaken editor AX touch-rectangle separation assertion failed before capture"
+      },
+      {
+        "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-integration-20261114-oneplus-r2.json",
+        "seconds": 12.813,
+        "result": "test resume toggled already restored search closed; no task entered"
+      },
+      {
+        "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-integration-20261114-oneplus-r3.json",
+        "seconds": 27.79,
+        "result": "remaining passed: keyboard/no-keyboard slots; model high; permission ReadOnly; Goal return draft; send/Queue/stop accepted configuration; list return draft/config"
+      }
+    ],
+    "final_apk_sha256": "cf3be03bcfbdceb57be47596e4ff8dffb580eeafb07b147c77ae11fc5dbe976b",
+    "final_build": "16s success",
+    "final_typography": {
+      "snapshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-final-20261114-snapshot.json",
+      "screenshot": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-final-20261114-typography.png",
+      "xml": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-final-20261114-open.xml",
+      "status": "Verified task/saved draft and visible no-IME bottom slots; final14sp label visually fits",
+      "failed_automated_attempt": {
+        "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-integration-20261114-oneplus-typography-r4.json",
+        "seconds": 9.745,
+        "reason": "styleOnly awaited remote-title although restored search replaces it with remote-query; no task entered"
+      },
+      "manual_scope": "Only current XML row center tap and final capture; no action journey rerun. One launch-time null XML root resolved by settled next dump."
+    },
+    "final_preview": {
+      "frontend-preview.xml": {
+        "exists": true,
+        "sha256": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e"
+      },
+      "remote-list-preview.xml": {
+        "exists": true,
+        "sha256": "7269f82e69e91e645a70c3c305dd895ea135655802f85b33c0206699f8dc3b90"
+      },
+      "chat-preview.xml": {
+        "exists": false,
+        "sha256": null
+      },
+      "session-preview.xml": {
+        "exists": false,
+        "sha256": null
+      },
+      "installed_sha256": "cf3be03bcfbdceb57be47596e4ff8dffb580eeafb07b147c77ae11fc5dbe976b",
+      "built_sha256": "cf3be03bcfbdceb57be47596e4ff8dffb580eeafb07b147c77ae11fc5dbe976b",
+      "pid": "17087",
+      "activity": [
+        "topResumedActivity=ActivityRecord{175534168 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1463}",
+        "Intent { flg=0x10000000 cmp=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity }",
+        "mActivityComponent=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity",
+        "ResumedActivity: ActivityRecord{175534168 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1463}"
+      ],
+      "ordinary_preferences_unchanged": true,
+      "exists_method": "Exact filename membership from run-as ls; exec-out cat exit status alone is insufficient."
+    },
+    "screenshots": [
+      "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-integration-20261114-oneplus-r3/keyboard-slots.png",
+      "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-integration-20261114-oneplus-r3/bottom-slots.png",
+      "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-composer-integration-20261114-oneplus-r3/stopped-slots.png"
+    ]
+  },
+  "remaining": [
+    "Original all-state compact/expanded predicates and precise permission x-branch/visibility remain unresolved.",
+    "Full original Goal/Usage/Agents/footer placements, pending presentation and capability topology not restored; current independent ancillary rows still consume vertical space.",
+    "Original model slider, speed indicator rendering, complete palette/shadow/border/motion and full menu optics not restored.",
+    "External Remote width cap/inset ancestor eligibility not fully re-proved; current shared host cap retained.",
+    "Final full action journey not rerun after typography-only change;27.790s actions bind prior a1a2 product.",
+    "styleOnly test helper still assumes title in restored search state; failed test recorded and final snapshot used direct current-XML entry instead."
+  ],
+  "constraints": "No Git, iOS, shared docs, original app execution, real service/network, attachments, emulator, system language/IME changes. Latest RemoteAgentTests helper unchanged. Final normal no-arg preview left running; heavy window released; stop after archive."
+}

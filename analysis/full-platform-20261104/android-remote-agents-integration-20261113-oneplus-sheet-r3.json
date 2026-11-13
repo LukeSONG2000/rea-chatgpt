@@ -1,0 +1,32 @@
+{
+  "implementation": "Independent frontend with Android293 evidence and synthetic data",
+  "serial": "172.16.197.16:5555",
+  "manufacturer": "OnePlus",
+  "model": "ONEPLUS A6003",
+  "sdk": "35",
+  "run_id": "232313a915964fab8c5ccc69d479ed4f",
+  "language": "zh-CN",
+  "appearance": "light",
+  "suite": "agents",
+  "status": "failed",
+  "steps": [
+    {
+      "apk": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "296379e69bdd3c5cd24b7d5cde602c78dfc3061fbe0bcfec38ee117c9c42f3a5"
+    },
+    {
+      "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "2c9ba5a7a3b910ba353e4cfc2405cf9efd4ccfa53962d5830e1fe434783e5c73"
+    },
+    {
+      "test": "sheetStructure",
+      "passed": false
+    }
+  ],
+  "error": "Instrumentation failed: sheetStructure",
+  "export_errors": [],
+  "preview_launch": {
+    "returncode": 0,
+    "output": "Stopping: local.rea.chatgpt.androidhost\nStarting: Intent { cmp=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity }"
+  }
+}

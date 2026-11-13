@@ -8534,6 +8534,9 @@ private struct RemoteThreadFixturePage: View {
     @State private var showsAgents = false
     @State private var selectedAgent: RemoteAgentPresentation?
     @State private var selectedAgentThread: RemotePreviewTask?
+    @State private var agentNavigation = RemoteAgentNavigationState()
+    @State private var agentNavigationTask: Task<Void, Never>?
+    @State private var agentNavigationNotice: String?
     private var taskControlsEnabled: Bool {
         !task.isAgentChild && HostLaunchRuntime.arguments.contains("--remote-task-controls-fixture")
     }
@@ -8547,9 +8550,9 @@ private struct RemoteThreadFixturePage: View {
                 let id = snapshot.sections[section].subagents[row].id
                 let title: String
                 switch id {
-                case "fixture-agent-layout": title = visualText("检查布局", "Layout inspection")
-                case "fixture-agent-review": title = visualText("检查审批", "Review request")
-                default: title = visualText("检查导航", "Navigation inspection")
+                case "fixture-agent-layout": title = visualText("布局检查", "Layout inspection")
+                case "fixture-agent-review": title = visualText("审阅请求", "Review request")
+                default: title = visualText("导航检查", "Navigation inspection")
                 }
                 snapshot.sections[section].subagents[row].displayName = title
             }
@@ -9655,26 +9658,42 @@ private struct RemoteThreadFixturePage: View {
     private func openAgent(_ intent: RemoteAgentOpenIntent) {
         let snapshot = agentsSnapshot
         guard let request = RemoteAgentThreadRequest(accountID: goals.accountID,
-            intent: intent, snapshot: snapshot, sessionID: composerSessionID) else { return }
-        //Explicit synthetic provider map. IDs are independent, and the full
-        //source-observed agent payload remains in the request at this boundary.
-        let childIDs = ["fixture-agent-layout": "fixture-child-layout",
-                        "fixture-agent-review": "fixture-child-review",
-                        "fixture-agent-navigation": "fixture-child-navigation"]
-        let supplied = replay.isEnabled && taskControlsEnabled ? childIDs[request.agent.id].map {
-            RemoteAgentThreadTarget(hostID: task.id.host, threadID: $0,
-                title: request.agent.localizedDisplayName)
-        } : nil
-        guard let target = request.resolve(supplied, accountID: goals.accountID,
-            snapshot: agentsSnapshot, sessionID: composerSessionID, availableHosts: [task.id.host]),
-            replay.prepareAgentThread(target, parent: composerScope) else {
-            selectedAgent = request.agent
-            return
+            intent: intent, snapshot: snapshot, sessionID: composerSessionID),
+            let attempt = agentNavigation.begin(request) else { return }
+        agentNavigationNotice = nil
+        agentNavigationTask = Task { @MainActor in
+            do {
+                let supplied = try await replay.agentThreadProvider.target(for: request)
+                guard !Task.isCancelled, agentNavigation.finish(attempt) else { return }
+                agentNavigationTask = nil
+                //Retired scope/session or replaced full payload cannot navigate
+                //or surface an error in the new owner, even if a provider ignores cancel.
+                guard agentsSnapshot.resolve(intent, currentSession: composerSessionID) == request.agent,
+                      goals.accountID == request.accountID else { return }
+                guard let target = request.resolve(supplied, accountID: goals.accountID,
+                    snapshot: agentsSnapshot, sessionID: composerSessionID, availableHosts: [task.id.host]) else {
+                    agentNavigationNotice = visualText("此智能体没有可用的关联任务入口。", "No associated task is available for this agent.")
+                    selectedAgent = request.agent
+                    return
+                }
+                guard replay.prepareAgentThread(target, parent: composerScope) else {
+                    agentNavigationNotice = visualText("无法保存子任务，已保留原任务。请重试。", "Unable to save the child task. The parent was kept. Please retry.")
+                    selectedAgent = request.agent
+                    return
+                }
+                selectedAgentThread = RemotePreviewTask(id: .init(host: target.hostID, thread: target.threadID),
+                    title: target.title, activity: .idle, pending: nil, connected: task.connected,
+                    inProgressWebSearchItemID: nil, hostIcon: task.hostIcon, hostDisplayName: task.hostDisplayName,
+                    subtitle: task.subtitle, workspaceKey: task.workspaceKey, isAgentChild: true)
+            } catch {
+                guard !Task.isCancelled, agentNavigation.finish(attempt) else { return }
+                agentNavigationTask = nil
+                guard agentsSnapshot.resolve(intent, currentSession: composerSessionID) == request.agent,
+                      goals.accountID == request.accountID else { return }
+                agentNavigationNotice = visualText("无法加载关联任务，请重试。", "Unable to load the associated task. Please retry.")
+                selectedAgent = request.agent
+            }
         }
-        selectedAgentThread = RemotePreviewTask(id: .init(host: target.hostID, thread: target.threadID),
-            title: target.title, activity: .idle, pending: nil, connected: task.connected,
-            inProgressWebSearchItemID: nil, hostIcon: task.hostIcon, hostDisplayName: task.hostDisplayName,
-            subtitle: task.subtitle, workspaceKey: task.workspaceKey, isAgentChild: true)
     }
 
     private var agentsControls: RemoteAgentsControls {
@@ -9687,6 +9706,19 @@ private struct RemoteThreadFixturePage: View {
     private var taskBottomBars: some View {
         VStack(spacing: 8) {
             if taskControlsEnabled {
+                if agentNavigation.pending != nil {
+                    HStack {
+                        ProgressView()
+                        Text(visualText("正在打开关联任务…", "Opening associated task…"))
+                        Spacer()
+                        Button(visualText("取消", "Cancel")) {
+                            agentNavigationTask?.cancel(); agentNavigationTask = nil
+                            agentNavigation.cancel()
+                        }.accessibilityIdentifier("remote-agent-navigation-cancel")
+                    }
+                    .font(.subheadline).padding(.horizontal, 16)
+                    .accessibilityIdentifier("remote-agent-navigation-loading")
+                }
                 if showsAgents { agentsControls.details }
                 RemoteGoalControls(scope: goalScope, store: goals,
                     isExpanded: Binding(get: { showsGoal }, set: { value in
@@ -9777,8 +9809,15 @@ private struct RemoteThreadFixturePage: View {
                 NavigationStack {
                     VStack(alignment: .leading, spacing: 16) {
                         Text(agent.displayName).font(.headline)
-                        Text(visualText("这是合成智能体详情；子任务内容由服务接口提供。", "Synthetic agent details; task content comes from the service adapter."))
+                        Text(agentNavigationNotice ?? visualText("关联任务入口不可用。", "The associated task is unavailable."))
+                            .accessibilityIdentifier("remote-agent-navigation-error")
                         Text(agent.id).font(.caption).textSelection(.enabled)
+                        Button(visualText("重试", "Retry")) {
+                            selectedAgent = nil
+                            guard let current = agentsSnapshot.openIntent(agentID: agent.id,
+                                sessionID: composerSessionID) else { return }
+                            openAgent(current)
+                        }.accessibilityIdentifier("remote-agent-navigation-retry")
                         Spacer()
                     }
                     .padding()
@@ -9825,6 +9864,9 @@ private struct RemoteThreadFixturePage: View {
                     }
             }
             .onDisappear {
+                agentNavigationTask?.cancel(); agentNavigationTask = nil
+                agentNavigation.cancel()
+                selectedAgent = nil; agentNavigationNotice = nil
                 _ = composerDrafts.cancelPendingEdit(in: composerScope, sessionID: composerSessionID)
                 composerSessionID = UUID()
                 dictationFixtureRequestID = nil

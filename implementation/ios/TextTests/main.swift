@@ -3999,7 +3999,22 @@ do {
     precondition(resolve(otherRequest, otherTarget, current: other, hosts: ["host-b"]) == otherTarget)
     precondition(resolve(otherRequest, target, current: other, hosts: ["host-b"]) == nil)
     precondition(RemoteAgentThreadRequest(accountID: "", intent: intent, snapshot: snapshot, sessionID: session) == nil)
-    print("Agent routing: complete payload, explicit destination, account/session/revision, host and self-route admission passed")
+    let home = RemoteAgentsSnapshot.fixture(scope: .home)
+    let homeIntent = home.openIntent(agentID: intent.agentID, sessionID: session)!
+    precondition(RemoteAgentThreadRequest(accountID: "account-a", intent: homeIntent,
+        snapshot: home, sessionID: session) == nil, "A home composer is not a parent thread")
+    var navigation = RemoteAgentNavigationState()
+    let first = navigation.begin(request)!
+    precondition(navigation.begin(request) == nil, "Single-flight while provider is pending")
+    navigation.cancel()
+    let second = navigation.begin(request)!
+    precondition(first != second)
+    precondition(!navigation.finish(first), "Cancelled callback cannot clear a retry for the same agent")
+    precondition(navigation.pending == second)
+    precondition(navigation.finish(second))
+    precondition(!navigation.finish(second), "Duplicate completion is terminal")
+    precondition(navigation.pending == nil)
+    print("Agent routing: complete payload, explicit destination, account/session/revision, host, self-route, single-flight/cancel/retry admission passed")
 }
 
 // Attempt ownership contains no answers and survives neither request retirement

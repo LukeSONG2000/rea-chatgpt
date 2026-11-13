@@ -1,0 +1,129 @@
+{
+  "module": "Android Remote collaboration summary / explicit optional child navigation",
+  "status": "implemented; final bottomsheet navigation runtime gate partial",
+  "source_manifest": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-agents-integration-20261113-source-hashes.json",
+  "source_files": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/AppShellActivity.kt",
+      "sha256": "3207c30e25c69fdd699dde62b891a93dc916a327883c9dc71d9c09b0b5f303b7"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/RemoteListActivity.kt",
+      "sha256": "8f00c14d4d25ec4195f6a361de5b4efbb6236dbe7fe5b4fca97be4e72b9b72ad"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/RemoteConversationPage.kt",
+      "sha256": "ffdaad25fde2a64b75532908e97c4966ac54e7c5b67752fbc89e814452fa36ef"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/RemoteTaskControlsView.kt",
+      "sha256": "7a65bb055c3e4e475b8124ee39c46e80fb4d9fa38930eda62f2194f657651fca"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/RemoteAgentNavigation.kt",
+      "sha256": "d34e99bbb539513c0b1a68dd58579589ac5f68758a3e945071d9a74c8f9268cf"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/main/java/local/rea/chatgpt/RemoteCollaborationView.kt",
+      "sha256": "897ef49f50dd89ee60d2892ffd757ae8e0a3eb36adc3afd1af6eaaa4694b6b03"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/app/src/androidTest/java/local/rea/chatgpt/RemoteAgentsTest.kt",
+      "sha256": "9fd01274d88a3633ed73829c00fd6a9ec7f2ad0a042b42bf62db12a45bf791e7"
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/implementation/android/test-remote-agents.py",
+      "sha256": "821549d26d901d12e9f1436c928aad5810b1f9a9f7f58c487d6b01ddc16958cb"
+    }
+  ],
+  "official_evidence": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-agents-20261113-source.json",
+  "evidence_validation": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-agents-integration-20261113-evidence-validation.json",
+  "supersedes": {
+    "report": "android-remote-controls-20261113-source.json",
+    "section": "usage_agents",
+    "correction": "Agents belongs to collaboration tool metadata; not established /status roster."
+  },
+  "official_boundary": "oej0.m nonempty summary -> mcp -> pks0.t ToolMarkdownBottomSheet -> ikz0.d/j5q.j; dismissal clears state. cp6 smali corrects warning-affected Java null predicate. Two candidate groups stopped at absent typed agent navigation consumer.",
+  "independent_adapter": [
+    "M3 bottomsheet material, selectable plain text summary and local activity entry",
+    "Only explicitly injected optional provider exposes related-task section; no inferred capability from summary",
+    "Full platform/account/profile/host/thread/session/revision/activity/attempt/agent/request identity; single-flight cancel retry retired-owner and late-result gates",
+    "Known host and ancestor-cycle admission; explicit worker-reference-A maps to different linked-review-child target",
+    "Existing child task page with parent stack; separate draft/config/transcript stores; localized summary labels"
+  ],
+  "runtime": {
+    "device": "172.16.197.16:5555 ONEPLUS A6003 SDK35",
+    "core_history": {
+      "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-agents-integration-20261113-oneplus-r1.json",
+      "duration_seconds": 41.888,
+      "status": "passed",
+      "apk_sha256": "643d94748d4d91e62a572c2f06f7ed5220e929490f9afa16b8eee735e7ffb995",
+      "coverage": "pure identity/input rejection; summary close; unknown target; injected failure retry; child draft/config/send isolation; parent return and list query",
+      "carrier": "historical AlertDialog; not final bottomsheet proof"
+    },
+    "final_sheet": {
+      "report": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-agents-integration-20261113-oneplus-sheet-r3.json",
+      "status": "partial",
+      "duration_seconds": 17.543,
+      "apk_sha256": "296379e69bdd3c5cd24b7d5cde602c78dfc3061fbe0bcfec38ee117c9c42f3a5",
+      "passed_before_failure": [
+        "bottomsheet opens",
+        "Chinese summary",
+        "close returns parent draft/high configuration"
+      ],
+      "not_completed": [
+        "retry did not transition to child within assertion timeout",
+        "final bottomsheet child Back isolation"
+      ],
+      "diagnostic": "r2 8.76s failed invalid root AX geometry assumption. r3 screenshot still failed/retry phase. Root AX [0,0][1080,1643] omits visual placement, but final retry AX [68,1965][231,2100] agrees with visible retry center approximately (150,2035); no proof of retry coordinate offset at click instant. No further rerun.",
+      "screenshots": [
+        "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-agents-integration-20261113-oneplus-sheet-r3/bottom-sheet-final.png",
+        "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-agents-integration-20261113-oneplus-sheet-r3/failure-sheetStructure.png"
+      ]
+    },
+    "final_state": {
+      "frontend-preview.xml": {
+        "exists": true,
+        "sha256": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e"
+      },
+      "remote-list-preview.xml": {
+        "exists": true,
+        "sha256": "7269f82e69e91e645a70c3c305dd895ea135655802f85b33c0206699f8dc3b90"
+      },
+      "chat-preview.xml": {
+        "exists": false,
+        "sha256": null
+      },
+      "session-preview.xml": {
+        "exists": false,
+        "sha256": null
+      },
+      "installed_sha256": "296379e69bdd3c5cd24b7d5cde602c78dfc3061fbe0bcfec38ee117c9c42f3a5",
+      "built_sha256": "296379e69bdd3c5cd24b7d5cde602c78dfc3061fbe0bcfec38ee117c9c42f3a5",
+      "pid": "10335",
+      "activity": [
+        "topResumedActivity=ActivityRecord{192453997 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1439}",
+        "Intent { flg=0x10000000 cmp=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity }",
+        "mActivityComponent=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity",
+        "ResumedActivity: ActivityRecord{192453997 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1439}"
+      ],
+      "ordinary_preferences_unchanged": true,
+      "exists_method": "Exact filename membership from run-as ls; exec-out cat exit status alone is insufficient."
+    }
+  },
+  "builds": [
+    "initial successful25s",
+    "localized/input gates r2 successful12s",
+    "bottomsheet product r3 successful20s",
+    "test-only r4 and r5 successful; r5 11s"
+  ],
+  "remaining": [
+    "Final bottomsheet known child navigation/back runtime confirmation remains incomplete; diagnose click timing or actual handler before further test.",
+    "Original standalone roster/grouping, complete agent object and agent action eligibility are not recovered.",
+    "Outer actual tool-card click owner and original typed host/thread route remain unclosed.",
+    "Original execution/create/close/resume/message services not connected.",
+    "Exact original Markdown renderer/optical layout not restored; selectable text plus M3 carrier used.",
+    "No deep reading-anchor geometry claim; existing position persistence reused."
+  ],
+  "constraints": "No backend/network/attachments/Git/iOS/shared documentation edits. Ordinary profile preferences preserved; normal no-argument AppShell running. Stop after archive."
+}

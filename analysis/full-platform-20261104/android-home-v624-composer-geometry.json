@@ -1,0 +1,133 @@
+{
+  "version": 624,
+  "platform": "Android",
+  "baseline": "1.2026.293",
+  "artifact_sha256": "c4a6ffdde56ee170ef0e7c1152ce7a98bc2d789bb1f30816def470dd3c421630",
+  "source_root": "recovered/android-1.2026.293",
+  "scope": "Read-only bounded ordinary composer geometry, parent surface, insets and seven-slot measurement. No implementation or device actions.",
+  "findings": [
+    {
+      "id": "actual_entry",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/w7o.java:4917",
+        "jadx-src/sources/defpackage/pt61.java:694",
+        "jadx-src/sources/defpackage/sht.java:1707-1735",
+        "jadx-src/sources/defpackage/pup.java:345",
+        "jadx-src/sources/defpackage/vzd0.java:11",
+        "jadx-src/sources/defpackage/lzr.java:1334"
+      ],
+      "conclusion": "Composer -> ComposerLayout -> MultilineComposerLayoutContent -> vzd0 -> lzr.h. Layout flags and slots are passed through; preview override path in pup is separate from ordinary fallback."
+    },
+    {
+      "id": "minimum_height_and_shape",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/lzr.java:1524-1525",
+        "jadx-src/sources/defpackage/lzr.java:1641",
+        "jadx-src/sources/defpackage/lzr.java:1995",
+        "jadx-src/sources/defpackage/lzr.java:2489",
+        "jadx-src/sources/defpackage/lzr.java:2602-2605",
+        "jadx-src/sources/defpackage/w0e0.java:16-19",
+        "jadx-src/sources/defpackage/bbv0.java:23",
+        "jadx-src/sources/defpackage/ist.java:370-379",
+        "jadx-src/sources/defpackage/vpw0.java:88-91"
+      ],
+      "conclusion": "np11.Q text style is measured by t3z0.a. lzr.i=max(measuredDp,48dp). w0e0 shape computes radius=max(measuredDp,48dp)/2 in current density. This gives24dp radius at ordinary text size and grows with text metrics. lzr uses the same i/2 for eyebrow geometry.",
+      "limitation": "48dp is minimum compact control geometry, not a universal fixed full-composer height. Expanded layout includes independently measured text/attachment/action slots."
+    },
+    {
+      "id": "container_surface",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/gly0.java:6950-6958",
+        "jadx-src/sources/defpackage/gly0.java:7079",
+        "jadx-src/sources/defpackage/to60.java:790-816",
+        "jadx-src/sources/defpackage/gly0.java:7030-7040",
+        "jadx-src/sources/defpackage/gly0.java:7061-7067",
+        "jadx-src/sources/defpackage/lim.java:1131",
+        "jadx-src/sources/defpackage/lim.java:1180"
+      ],
+      "conclusion": "gly0.d wraps composer in to60.c with defaults230 and custom w0e0 shape. Normal surface background q5n.c.a = Light#FFFFFFFF / Dark#FF303030; foreground q5n.n.c. Parent-supplied sit0 drives shadow, special eyebrow branch can use sit0.b. Nested conditional half-dp border uses q5n.d.b.",
+      "limitation": "Border is conditional on internal eyebrow/environment state, not established as always enabled. Exact sit0 shadow rendering not closed."
+    },
+    {
+      "id": "outer_inset_smali_correction",
+      "status": "verified_static_smali",
+      "evidence": [
+        "apktool-src/smali/lzr.smali:10819-10956",
+        "jadx-src/sources/defpackage/lzr.java:1877-1897",
+        "jadx-src/sources/defpackage/mwq.java:633-665"
+      ],
+      "conclusion": "JADX inverted both the top-spacing predicate and rvi0 null branch. Actual top padding12dp iff !specialCollapsed(v38) AND explicitInsets(p27)==null. Explicit p27 uses mwq.Q; else specialCollapsed uses no extra modifier; else p26=true uses to60.u dynamic insets; else fixed horizontal12dp, vertical0dp. Do not copy JADX null-rvi0 call or unconditional12dp."
+    },
+    {
+      "id": "dynamic_inset_producer",
+      "status": "partial",
+      "evidence": [
+        "jadx-src/sources/defpackage/blr.java:638-662",
+        "jadx-src/sources/defpackage/blr.java:3819-3820",
+        "jadx-src/sources/defpackage/blr.java:4079-4086",
+        "jadx-src/sources/defpackage/w7o.java:1837",
+        "jadx-src/sources/defpackage/w7o.java:4916-4917",
+        "jadx-src/sources/defpackage/pt61.java:694",
+        "jadx-src/sources/defpackage/sht.java:1707"
+      ],
+      "conclusion": "Dynamic p26 flows from blr's z10=!z9 && dcxOverride==null. z9 comes from outer this.c || jw01!=null. dcxOverride becomes4dp when kz9 attachment is present. Standard frontend fixture with these explicit alternate-bottom states absent can select dynamic path, while special bottom-area state disables it.",
+      "limitation": "The outer this.c producer and all jw01/kz9 capability meanings remain unclosed. No claim every production home selects dynamic insets."
+    },
+    {
+      "id": "dynamic_inset_formula",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/to60.java:2879-2906",
+        "jadx-src/sources/defpackage/to60.java:406-439",
+        "jadx-src/sources/defpackage/xjo.java:18-84",
+        "jadx-src/sources/defpackage/qvv.java:22-67",
+        "jadx-src/sources/defpackage/aie0.java:15-22",
+        "jadx-src/sources/defpackage/c1s0.java:210-211"
+      ],
+      "conclusion": "qvv.a returns a bottom corner radius only API>=31 with Gesture navigation and equal bottom-left/bottom-right radii. xjo.h=clamp(radiusDp-24,34,40). Symmetric positive-radius sides interpolate max(h-consumedSide,0) toward12dp using supplied animation factor. Other sides use remaining system/IME inset +12dp. Bottom retains max of remaining inset+12dp and radius reservation when applicable. Top0. c1s0.I keeps start/end/bottom and disables top.",
+      "limitation": "Exact window inset aggregate producers m6r0.e/b8r0.d and all consuming ancestors are not fully named. Formula must be applied with consumed-inset accounting to avoid double navigation/IME padding."
+    },
+    {
+      "id": "seven_slot_measurement",
+      "status": "verified_static_partial_semantics",
+      "evidence": [
+        "jadx-src/sources/defpackage/u0e0.java:113-138",
+        "jadx-src/sources/defpackage/u0e0.java:185-239",
+        "jadx-src/sources/defpackage/u0e0.java:254-300",
+        "jadx-src/sources/defpackage/lzr.java:2131",
+        "jadx-src/sources/defpackage/lzr.java:2164",
+        "jadx-src/sources/defpackage/lzr.java:2375-2377",
+        "jadx-src/sources/defpackage/gvx0.java:92-94"
+      ],
+      "conclusion": "u0e0 requires7 child slots. It measures leading/trailing controls first and uses their max height as bottom action row height. Expanded text width subtracts16dp each side; expanded text y uses previous/top slot height+16dp.4dp enters vertical separation between measured text/content and bottom row.8dp is a direction-sensitive horizontal reserve in the compact/RTL measurement. Attachment content wrapper adds top8dp. Controls are centered in the bottom action row via (rowHeight-childHeight)/2. Small edge inset formula=(max(metric,48)-48)/2+2dp.",
+      "limitation": "u0e0 JADX has damaged conditional flow. Constant values and placement formulas are clear; full7slot role naming and collapsed/expanded predicates require separate smali reconstruction before faithful whole-layout port."
+    },
+    {
+      "id": "width_and_maxheight",
+      "status": "verified_static",
+      "evidence": [
+        "jadx-src/sources/defpackage/blr.java:645",
+        "jadx-src/sources/defpackage/bbv0.java:14",
+        "jadx-src/sources/defpackage/lzr.java:1922-1942"
+      ],
+      "conclusion": "ConversationBottomArea caps width at640dp. Available composer height considers viewport/insets, top/footer callbacks and at least48dp reserved outside space. Attachment state can raise minimum to2*row+8dp; ordinary maximum request includes3*row+24dp, then constrained by available height.",
+      "limitation": "Exact meanings of all height-provider callbacks remain untranslated. Avoid using screenshot absolute widths or fixed keyboard heights."
+    }
+  ],
+  "safe_minimum_restoration": [
+    "Use shared semantic surface color and measured48dp minimum with radius derived from same metric.",
+    "Use explicit ordinary/special bottom-area capability state to select dynamic versus fixed insets, record any independent host default.",
+    "Preserve16dp expanded text edges and source bottom-row centering; avoid manual per-icon y offsets.",
+    "Keep shadow, complete slot roles and full animated predicates as precise remaining work."
+  ],
+  "remaining": [
+    "Actual outer this.c bottom-area producer",
+    "Complete u0e0 compact/expanded predicate reconstruction",
+    "Exact inset aggregate sources and ancestor consumption",
+    "sit0 shadow implementation",
+    "Leading/trailing state-to-glyph and voice/send transition mapping"
+  ]
+}

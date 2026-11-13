@@ -1,5 +1,10 @@
 package local.rea.chatgpt
 
+import androidx.compose.foundation.clickable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -12,6 +17,10 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 
 @Composable
 internal fun remoteControlText(zh: String, en: String): String =
@@ -21,7 +30,8 @@ internal fun remoteControlText(zh: String, en: String): String =
 // z4m goal ownership inform this independent native control carrier. No iOS optics.
 @Composable
 internal fun RemoteTaskControlsView(key: RemoteTaskKey, owner: RemoteConversationOwner,
-    running: Boolean, draft: String, clearDraft: () -> Unit, edit: (RemotePendingReply) -> Unit) {
+    running: Boolean, draft: String, clearDraft: () -> Unit, edit: (RemotePendingReply) -> Unit,
+    composer: @Composable (@Composable () -> Unit, @Composable () -> Unit) -> Unit) {
     val chinese = LocalConfiguration.current.locales[0].language == "zh"
     fun text(zh: String, en: String) = if (chinese) zh else en
     val state = owner.controls(key)
@@ -34,9 +44,6 @@ internal fun RemoteTaskControlsView(key: RemoteTaskKey, owner: RemoteConversatio
         if (error) Text(text("操作未保存，原状态已保留。", "Action was not saved; previous state retained."),
             color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(horizontal = 16.dp).testTag("remote-control-error"))
         Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())) {
-            TextButton(onClick = { panel = "config" }, modifier = Modifier.testTag("remote-config")) {
-                Text(text("任务配置", "Task configuration"))
-            }
             TextButton(onClick = { goalText = state.goal?.text.orEmpty(); goalID = state.goal?.id; panel = "goal" },
                 modifier = Modifier.testTag("remote-goal")) { Text(text("目标", "Goal") + if (state.goal != null) " · 1" else "") }
             TextButton(onClick = { panel = "usage" }, modifier = Modifier.testTag("remote-usage")) { Text(text("用量", "Usage")) }
@@ -62,15 +69,47 @@ internal fun RemoteTaskControlsView(key: RemoteTaskKey, owner: RemoteConversatio
             }
         }
     }
+    // qy81→e191→lzr: model is TrailingControlVisibility, permission is
+    // InputDecorationsVisibility; both share the measured bottom action row.
+    // Fixture model names, exact compact visibility and x placement remain host policy.
+    composer({
+        val model = if (state.configuration.model == "standard") text("标准", "Standard") else text("精简", "Compact")
+        val effort = when (state.configuration.effort) { "high" -> text("高", "High"); "low" -> text("低", "Low"); else -> text("中", "Medium") }
+        Row(Modifier.heightIn(min = 34.dp).testTag("remote-config")
+            .clickable(role = Role.Button) { panel = "config" }.padding(horizontal = 12.dp, vertical = 4.dp),
+            verticalAlignment = Alignment.CenterVertically) {
+            // gpm.b -> on01.c.b -> sk10.f (Roboto fallback on Android).
+            Text("$model · $effort", style = TextStyle(fontFamily = FontFamily.SansSerif, fontSize = 14.sp,
+                lineHeight = 20.sp, fontWeight = FontWeight.Medium, letterSpacing = 0.1.sp), maxLines = 1,
+                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+        }
+    }, {
+        val readOnly = state.configuration.permission == "ReadOnly"
+        val label = text("权限", "Permissions") + ": " + if (readOnly) text("只读", "Read only") else text("默认", "Default")
+        Box(Modifier.size(34.dp).testTag("remote-permission-entry").semantics { contentDescription = label }
+            .clickable(role = Role.Button) { panel = "permission" }, contentAlignment = Alignment.Center) {
+            Icon(painterResource(if (readOnly) R.drawable.ds_shield_lock_regular_24 else R.drawable.ds_hand_palm_regular_24),
+                null, Modifier.size(24.dp))
+        }
+    })
     if (panel != null) AlertDialog(onDismissRequest = { panel = null },
         modifier = Modifier.semantics { testTagsAsResourceId = true }.testTag("remote-control-panel"),
         title = { Text(when (panel) { "config" -> text("任务配置", "Task configuration")
-            "goal" -> text("目标", "Goal"); "pending" -> text("待处理输入", "Pending input")
+            "permission" -> text("权限", "Permissions"); "goal" -> text("目标", "Goal"); "pending" -> text("待处理输入", "Pending input")
             "usage" -> text("用量", "Usage"); else -> text("智能体", "Agents") }) },
         text = { Column(Modifier.heightIn(max = 440.dp).verticalScroll(rememberScrollState())) {
             if (error) Text(text("操作未保存，原状态已保留。", "Action was not saved; previous state retained."),
                 color = MaterialTheme.colorScheme.error)
             when (panel) {
+                "permission" -> {
+                    Text(text("后续请求使用此权限；已接受输入保持原配置。", "Applies to future requests; accepted input keeps its configuration."))
+                    listOf("ReadOnly", "Default").forEach { permission ->
+                        TextButton(onClick = { act { owner.selectConfiguration(key, state.configuration.copy(permission = permission)) } },
+                            modifier = Modifier.testTag("remote-permission-$permission")) {
+                            Text((if (state.configuration.permission == permission) "✓ " else "") + if (permission == "ReadOnly") text("只读", "Read only") else text("默认", "Default"))
+                        }
+                    }
+                }
                 "config" -> {
                     Text(text("离线能力；更改仅用于后续请求，已接受输入保留原配置。", "Offline capabilities; changes apply to future requests. Accepted input keeps its configuration."))
                     Text(text("模型", "Model"))
@@ -140,7 +179,7 @@ internal fun RemoteTaskControlsView(key: RemoteTaskKey, owner: RemoteConversatio
                     Text(text("输入字符", "Input characters") + ": ${turns.sumOf { it.prompt.length }}")
                     Text(text("输出字符", "Output characters") + ": ${turns.sumOf { it.body.length }}")
                 }
-                "agents" -> Text(text("当前离线任务没有已连接的子智能体。子任务导航和运行服务尚未接入。", "No connected subagents in this offline task. Child navigation and execution services are not connected."),
+                "agents" -> Text(text("可在消息中的协作工具活动查看引用摘要。智能体运行管理尚未连接。", "Collaboration tool activities in messages contain reference summaries. Agent execution management is not connected."),
                     Modifier.testTag("remote-agents-empty"))
             }
         } }, confirmButton = { TextButton(onClick = { panel = null }, modifier = Modifier.testTag("remote-control-close")) { Text(text("完成", "Done")) } })

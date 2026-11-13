@@ -236,7 +236,7 @@ private fun AppShell(sessionOwner:FrontendSessionOwner, settings: FrontendSettin
             if (route == "remote") {
                 pageState.SaveableStateProvider("remote") {
                     remoteStore.getOrNull()?.let { store ->
-                        RemoteListPage(store, remoteProvider, sidebarOpen = drawer.isOpen, openConnections = { navigate("settings-connections") }, openSidebar = {
+                        RemoteListPage(store, remoteProvider, sidebarOpen = drawer.isOpen, session = sessionOwner.value.session, sessionRevision = sessionOwner.value.revision, openConnections = { navigate("settings-connections") }, openSidebar = {
                             focus.clearFocus()
                             coroutine.launch { drawer.open() }
                         })

@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-14",
+  "source": "final unchanged bottomsheet APK",
+  "steps": [
+    {
+      "tap": "remote-task-project-fixture-a-demo-fixture-a-shared-task",
+      "bounds": [
+        0,
+        953,
+        1080,
+        1088
+      ]
+    },
+    {
+      "tap": "remote-collab-collab-inspect",
+      "bounds": [
+        45,
+        1416,
+        350,
+        1551
+      ]
+    },
+    {
+      "tap": "remote-agent-open-worker-reference-A",
+      "bounds": [
+        68,
+        1843,
+        373,
+        1978
+      ]
+    }
+  ],
+  "before_preferences": {
+    "frontend-preview.xml": {
+      "exists": true,
+      "sha256": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e"
+    },
+    "remote-list-preview.xml": {
+      "exists": true,
+      "sha256": "7269f82e69e91e645a70c3c305dd895ea135655802f85b33c0206699f8dc3b90"
+    },
+    "chat-preview.xml": {
+      "exists": true,
+      "sha256": "e0b178e214c03e533e52b2901884a36784ee770f24f60a6ef18e24e642226192"
+    },
+    "session-preview.xml": {
+      "exists": true,
+      "sha256": "eaa3770cf3b332538bf651e2ff44a46d62b1116eda8048067afdbab1777d0b9d"
+    }
+  },
+  "apk_sha256": "ee99a54df16a880798aa1c0e586942b8c312bf04dfdd7a9427f3f4392f82f551",
+  "diagnostic_pid": "8697",
+  "visible_action_nodes": [],
+  "events": "--------- beginning of main\n11-14 00:15:18.448  8697  8697 D REAAgentRoute: owner=108878740 pointer pressed=true position=Offset(220.0, 1003.0) phase=idle retired=false\n11-14 00:15:18.456  8697  8697 D REAAgentRoute: owner=108878740 pointer pressed=false position=Offset(220.0, 1003.0) phase=idle retired=false\n11-14 00:15:18.457  8697  8697 D REAAgentRoute: owner=108878740 agent_click phase=idle retired=false\n11-14 00:15:18.458  8697  8697 D REAAgentRoute: owner=108878740 begin phase=loading retired=false\n11-14 00:15:18.812  8697  8697 D REAAgentRoute: owner=108878740 provider_failed phase=failed retired=false\n",
+  "status": "observed",
+  "after_preferences": {
+    "frontend-preview.xml": {
+      "exists": true,
+      "sha256": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e"
+    },
+    "remote-list-preview.xml": {
+      "exists": true,
+      "sha256": "7269f82e69e91e645a70c3c305dd895ea135655802f85b33c0206699f8dc3b90"
+    },
+    "chat-preview.xml": {
+      "exists": true,
+      "sha256": "e0b178e214c03e533e52b2901884a36784ee770f24f60a6ef18e24e642226192"
+    },
+    "session-preview.xml": {
+      "exists": true,
+      "sha256": "eaa3770cf3b332538bf651e2ff44a46d62b1116eda8048067afdbab1777d0b9d"
+    }
+  },
+  "ordinary_preferences_unchanged": true,
+  "normal_pid": "29203"
+}

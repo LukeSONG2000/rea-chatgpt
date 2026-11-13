@@ -1,0 +1,220 @@
+{
+  "scope": "Android293 read-only focused agents evidence. One new candidate group: Agents resource→oej0 tool metadata→jfj producer→dcl serializer. No official execution/network/device/build/product/shared-doc modifications.",
+  "conclusion": "Standalone Remote roster panel entry, grouping and management actions remain unproved. Concrete recovered UI is a tool-activity Agents summary, not an agent manager.",
+  "correction_to_prior_report": {
+    "report": "android-remote-controls-20261113-source.json",
+    "section": "usage_agents",
+    "correction": "oej0.m Agents field is sourced from collaboration tool metadata, not established as /status data. Keep /status rate-limit evidence separate."
+  },
+  "observed": [
+    "oej0.m consumes eom.c k6k and optional nqj metadata; combines receiver reference list and state-map keys into display strings, omits empty Agents field.",
+    "dcl serializer expressly separates tool item id, receiverThreadIds, agentsStates and senderThreadId. No agent.id=threadID equivalence established.",
+    "jfj recognizes collaboration tool names including spawnAgent/sendInput/resumeAgent/closeAgent/wait; these are tool activity classification. They do not prove user-visible create/message/resume/close buttons.",
+    "cp6 invokes summary formatter for tool content. Smali corroborates Agents text formatting."
+  ],
+  "inferred": [
+    "A read-only tool detail can display supplied receiver thread references and state references while preserving source item identity.",
+    "Independent provider may supply explicit agent navigation targets; unresolved target must remain unavailable rather than substituting agent id as thread id."
+  ],
+  "unknown": [
+    "Standalone roster entry, panel parent route, group headings/order and full row representation.",
+    "Per-agent user action menu and its eligibility/busy/error states.",
+    "Actual navigation callback mapping roster agent identity to host/thread and return owner.",
+    "Create/close/resume/message management RPC and acknowledgements.",
+    "agentsStates key identity semantics beyond DTO field name; no universal agent identifier equality with receiverThreadIds."
+  ],
+  "stop_boundary": "Recovered callback cp6→oej0.m returns text; there is no recovered roster navigation/action callback to follow in this candidate. Stop without inventing another owner route.",
+  "minimal_implementation": "Only read-only collaboration tool summary is supported by this evidence. Do not add standalone roster or management controls as official parity on this basis. Keep existing independently supplied capabilities explicitly labeled.",
+  "sources": [
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/oej0.java",
+      "sha256": "a74d4db1da1a8fba4b39e2253c2e25fd0ac4695a71575525dfb738d57f9216d9",
+      "lines": [
+        663,
+        742
+      ],
+      "claim": "Input eom.c tool k6k; Agents source nqj.c + nqj.d filtered as strings.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/oej0.java",
+      "sha256": "a74d4db1da1a8fba4b39e2253c2e25fd0ac4695a71575525dfb738d57f9216d9",
+      "lines": [
+        843,
+        860
+      ],
+      "claim": "Optional Agents label with newline-joined strings, not actionable roster.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/jfj.java",
+      "sha256": "0e013270d5e8591a3ea9596d50a5e14858cc4766105156db03d96837840ab784",
+      "lines": [
+        1361,
+        1412
+      ],
+      "claim": "Collaboration tool item dcl maps to k6k/nqj; tool names are activity classification not menu actions.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/bcl.java",
+      "sha256": "7b571742d376881eb8d2457c66d5cd281e09b032a568f76f667b45a4cbdd062f",
+      "lines": [
+        19,
+        34
+      ],
+      "claim": "Serialized id/tool/status/prompt/receiverThreadIds/agentsStates/senderThreadId/model/reasoningEffort.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/dcl.java",
+      "sha256": "266c403a86fd5152158a594aaa73e1f79948e99ccf9ca2564e0ab082999c8982",
+      "lines": [
+        10,
+        71
+      ],
+      "claim": "Typed DTO field order and defaults.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/nqj.java",
+      "sha256": "a06017407a06eb8d2477b4d26cb7be3ef7768e3b9c0f69c7613f4fdc354fb7ba",
+      "lines": [
+        8,
+        25
+      ],
+      "claim": "Tool metadata projection fields, lists kept distinct before formatting.",
+      "jadx_warnings_in_file": false
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/cp6.java",
+      "sha256": "49a54c2b0418f2c6db0e57c2c18d6acbd1869fee604c5dfd123a93d68ed71fab",
+      "lines": [
+        286,
+        298
+      ],
+      "claim": "Tool display callback invokes oej0.m.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/b981.java",
+      "sha256": "a096e3fae95442bddb5d2e2937a7ea403b0cc5699774d1ba4c9d8da7596ce679",
+      "lines": [
+        1450,
+        1510
+      ],
+      "claim": "Ordinary message activity labels for close/resume/wait/send/spawn; not Remote agent manager proof.",
+      "jadx_warnings_in_file": true
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes3/oej0.smali",
+      "sha256": "5f94533bac6bc68548c19a26f08085b99642da61a88993e4e4ead1dc63450531",
+      "lines": [
+        [
+          6629,
+          6637
+        ],
+        [
+          7795,
+          7860
+        ]
+      ],
+      "claim": "Metadata lists read; Agents resource and newline join corroborated. No roster action proven."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/analysis/full-platform-20261104/android-remote-controls-20261113-source.json",
+      "sha256": "1c9cffbf2922d0b3d535682e83b966ab5a7873fea1c58e68435a24b9f731e70a",
+      "claim": "Prior report reused; usage_agents attribution corrected by current report, prior artifact left unchanged."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/oej0.java",
+      "sha256": "a74d4db1da1a8fba4b39e2253c2e25fd0ac4695a71575525dfb738d57f9216d9",
+      "lines": [
+        904,
+        917
+      ],
+      "claim": "Summary flattens fields into String."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/cp6.java",
+      "sha256": "49a54c2b0418f2c6db0e57c2c18d6acbd1869fee604c5dfd123a93d68ed71fab",
+      "lines": [
+        235,
+        239
+      ],
+      "claim": "mom tool-detail state input."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/cp6.java",
+      "sha256": "49a54c2b0418f2c6db0e57c2c18d6acbd1869fee604c5dfd123a93d68ed71fab",
+      "lines": [
+        430,
+        471
+      ],
+      "claim": "Formatted summary→mcp→pks0.t; Java null predicate wrong, use smali."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/pks0.java",
+      "sha256": "c00f69ac5a5dcb03fb7e2a7de48239fc9878ae5472390aae96502d4bf21565fd",
+      "lines": [
+        1007,
+        1044
+      ],
+      "claim": "ToolMarkdownBottomSheet delegation."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ikz0.java",
+      "sha256": "64b84c93edb6f2d9e483a72cb498082a2d12bcc3c7f1a6a635481bab34feb8e8",
+      "lines": [
+        58,
+        83
+      ],
+      "claim": "Same model→j5q.j generic content boundary."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ih5.java",
+      "sha256": "7ccfb4a38d723b5bd52f367989aa32cad91fa85585602cd667bb5bdc3d406e78",
+      "lines": [
+        65,
+        67
+      ],
+      "claim": "Dismiss clears sheet state."
+    },
+    {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/apktool-src/smali_classes3/cp6.smali",
+      "sha256": "0b2adf2a6a951280c72b3bdaf13df3bb771e328a1f980384b9a479ac5e1ce262",
+      "lines": [
+        [
+          2516,
+          2516
+        ],
+        [
+          3760,
+          3802
+        ],
+        [
+          3958,
+          3958
+        ]
+      ],
+      "claim": "oej0.m String result, nonnull mcp construction, pks0.t invocation."
+    }
+  ],
+  "candidate_2": {
+    "scope": "Only existing cp6/oej0 tool detail consumer; final candidate group.",
+    "observed": [
+      "oej0.m:904-917 renders metadata fields into StringBuilder and returns String, losing any typed agent-reference structure.",
+      "cp6 case7:235-239 receives mom(tool item, display mode). eom branch formats oej0.m; resultant nonnull string becomes mcp with remaining optional content arguments null/default.",
+      "cp6:458-470 delegates pks0.t with ih5 case11 dismiss callback, mcp, mom.b display mode; ih5:65-67 clears sheet state.",
+      "pks0.t:1007-1044 explicitly ToolMarkdownBottomSheet; ikz0.d:58-83 forwards the same model to j5q.j. No agent identity or per-agent callback passed along this route.",
+      "Smali cp6:3760-3802 corrects warning-affected Java condition: construct mcp when formatted string is nonnull, not when null."
+    ],
+    "full_agent_record": "Not recovered on this route: only text derived from receiver references and state keys, plus tool metadata. No typed full roster record consumer.",
+    "actual_click_target": "This route displays tool Markdown bottom sheet and dismisses by clearing state. No proved agent-row target or host/thread navigation callback.",
+    "stop_boundary": "cp6→pks0.t→ikz0.d→j5q.j carries formatted mcp content plus generic dismissal/display mode. Missing per-agent typed target callback before this rendering boundary; do not infer agent link from text. Exact incoming tool-card click to mom owner not recovered in this bounded pass.",
+    "unknown": [
+      "Generic Markdown can have normal content links; this does not establish receiverThreadId-to-agent navigation.",
+      "Complete outer tool-card entry callback/owner remains unclosed."
+    ]
+  }
+}

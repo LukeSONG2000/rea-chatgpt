@@ -42,7 +42,7 @@ private fun RemoteTaskStatus.label() = when (this) {
 }
 
 @Composable
-internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider, sidebarOpen: Boolean, openConnections: () -> Unit = {}, openSidebar: () -> Unit) {
+internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider, sidebarOpen: Boolean, session: String, sessionRevision: Int, openConnections: () -> Unit = {}, openSidebar: () -> Unit) {
     val coroutine = rememberCoroutineScope()
     val chinese = androidx.compose.ui.platform.LocalConfiguration.current.locales[0].language == "zh"
     val conversations = remember(store, chinese) { RemoteConversationOwner(store, SyntheticRemoteConversationProvider(chinese), coroutine) }
@@ -57,6 +57,10 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
     var searching by rememberSaveable { mutableStateOf(store.query.isNotEmpty()) }
     var collapsed by remember { mutableStateOf(store.collapsed) }
     var selectedTask by remember { mutableStateOf<RemoteListTask?>(null) }
+    var parents by remember { mutableStateOf<List<RemoteListTask>>(emptyList()) }
+    val agentProvider=remember(store,session,sessionRevision,chinese){FixtureAgentThreadProvider(chinese,store.resourceProfile.startsWith("test-agents-"))}
+    fun taskBack(){if(parents.isNotEmpty()){selectedTask=parents.last();parents=parents.dropLast(1)}else selectedTask=null}
+
     var storageError by remember { mutableStateOf(false) }
     var pendingAction by remember { mutableStateOf<Int?>(null) }
     val listState = remember { LazyListState(store.index, store.offset) }
@@ -96,7 +100,7 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
         }.collect { if (!it.first) saveList() }
     }
     BackHandler(!sidebarOpen && (selectedTask != null || searching)) {
-        if (selectedTask != null) selectedTask = null else { searching = false; changeFilter(selectedHost, "") }
+        if (selectedTask != null) taskBack() else { searching = false; changeFilter(selectedHost, "") }
     }
     pendingAction?.let { action ->
         val title = stringResource(action)
@@ -115,6 +119,16 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
     if (task != null) {
         key(task.key.storageKey) {
             RemoteConversationPage(task, snapshot!!.hosts.first { it.id == task.key.hostID }, store, conversations,
+                agentScope=RemoteAgentScope(store.resourceAccount,store.resourceProfile,task.key,session,sessionRevision),
+                agentProvider=agentProvider,
+                openRelated={target->
+                    val data=snapshot
+                    if(data==null||selectedTask?.key!=task.key||!admitRemoteAgentTarget(target,task.key,data.hosts.map{it.id}.toSet(),parents.map{it.key}))false
+                    else {
+                        val child=store.projectedTask(RemoteListTask(target.key,target.title,null,RemoteTaskStatus.Idle))
+                        if(child.archived)false else {conversations.load(child.key);parents=parents+task;selectedTask=child;true}
+                    }
+                },
                 togglePin = {
                     val next = task.copy(pinned = !task.pinned)
                     if (store.savePinned(task.key, next.pinned)) {
@@ -132,10 +146,10 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
                 }, archive = {
                     if (store.saveArchived(task.key)) {
                         snapshot = snapshot?.let { it.copy(tasks = it.tasks.map { row -> if (row.key == task.key) row.copy(archived = true) else row }) }
-                        selectedTask = null
+                        taskBack()
                         true
                     } else false
-                }) { selectedTask = null }
+                }, back=::taskBack)
         }
         return
     }
@@ -177,7 +191,7 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
                             storageError = false
                         } else storageError = true
                     }
-                    fun open(task: RemoteListTask) { saveList(); selectedTask = task }
+                    fun open(task: RemoteListTask) { saveList(); parents=emptyList(); selectedTask = task }
                     val pinned = visible.filter { it.pinned }
                     if (sort != RemoteListSort.Priority && pinned.isNotEmpty()) {
                         item("pinned-header") { RemoteGroupHeader(stringResource(R.string.remote_pinned), "pinned", "pinned" in collapsed && query.isBlank()) { toggle("pinned") } }

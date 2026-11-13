@@ -1,0 +1,99 @@
+{
+  "date": "2026-11-14",
+  "module": "Android collaboration tool sheet / optional related-task core",
+  "status": "Current source and installed APK bound; final bottomsheet related-action retry/child/Back passed",
+  "source_manifest": "android-remote-agents-body-20261114-source-hashes.json",
+  "source_count": 8,
+  "official_evidence": "android-remote-agents-20261113-source.json",
+  "evidence_bindings_previously_verified": 17,
+  "source_adapters": "Original read-only ToolMarkdownBottomSheet is separate from optional independently injected related-task capability. No original typed agent route inferred.",
+  "supersedes": [
+    "android-remote-agents-root-current-20261114.json incomplete final child runtime gate",
+    "android-remote-agents-parent-current-20261113.json final bottomsheet runtime gate only; preserve source limits and old snapshot tests"
+  ],
+  "findings": {
+    "observed": [
+      "Diagnostic same-owner sequence records physical agent_click -> begin loading -> expected provider_failed; no admission rejection",
+      "Clipped scroll body AX viewport is [0,907][1080,2145], while animated sheet root AX was [0,0][1080,1643]",
+      "Failure/retry may be below the viewport and absent from exported visible nodes until body scroll",
+      "Fresh screen bounds and actual body scrolling completed retry -> child -> parent in diagnostic-r2",
+      "Final no-diagnostics package targeted sheetStructure passed with measured settled action bounds and screen-touch injection"
+    ],
+    "not_proven": [
+      "No universal UiObject2 bug or exact internal cause of previous missed input established",
+      "Root AX bounds anomaly alone does not prove product input hit testing is wrong"
+    ]
+  },
+  "changes": [
+    "Add passive remote-collab-body test identifier to actual scroll container",
+    "Target actual clipped body for reveal and require complete action bounds inside its viewport",
+    "Remeasure settled action bounds, then inject screen touch matching the observed ADB path",
+    "Remove temporary owner/pointer diagnostics from delivered code; business owner/provider unchanged"
+  ],
+  "verification": {
+    "build": ".tmp/android-agent-body-20261114-build-r3.log passed11s; final product reused from body build-r1",
+    "current_ui": "android-remote-agents-body-20261114-oneplus-r3.json",
+    "passed_tests": 1,
+    "method": "sheetStructure",
+    "seconds": 16.583,
+    "language": "zh-CN",
+    "appearance": "light",
+    "coverage": [
+      "open bottomsheet and Chinese summary",
+      "close retains parent draft/high config",
+      "known reference injected failure",
+      "reveal failure/retry within actual body",
+      "retry opens explicit related child",
+      "Back restores parent draft/high config; child low config distinct"
+    ],
+    "profile": "Reused isolated test-agents-232313a915964fab8c5ccc69d479ed4f from earlier synthetic journey; not a new clean-profile or full suite pass",
+    "historical_core": "Earlier AlertDialog product journey41.888s remains its own snapshot; full final-package child send/restart not rerun",
+    "earlier_failed_checks": [
+      "body-r1 and body-r2 still failed the retry transition using UiAutomator object/device click; preserved, not reclassified as product business failure"
+    ],
+    "diagnostics": [
+      "android-remote-agent-click-diagnostic-20261114-r1/report.json",
+      "android-remote-agent-click-diagnostic-20261114-r2/report.json"
+    ],
+    "visual_review": [
+      "android-remote-agents-body-20261114-oneplus-r3/sheet-child-final.png",
+      "android-remote-agents-body-20261114-oneplus-r3/sheet-return-final.png"
+    ]
+  },
+  "runtime": {
+    "device": "172.16.197.16:5555",
+    "installed_product_sha256": "eea14c165858c07eeaa6f33f5bed40322ffb3ddf9b8fea1eeceb7287d1595ce3",
+    "built_product_sha256": "eea14c165858c07eeaa6f33f5bed40322ffb3ddf9b8fea1eeceb7287d1595ce3",
+    "normal_pid": "21844",
+    "normal_activity": "topResumedActivity=ActivityRecord{65556881 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1453}",
+    "launch_arguments": [],
+    "ordinary_preferences_unchanged": true,
+    "preferences": {
+      "frontend-preview.xml": {
+        "exists": true,
+        "sha256": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e"
+      },
+      "remote-list-preview.xml": {
+        "exists": true,
+        "sha256": "7269f82e69e91e645a70c3c305dd895ea135655802f85b33c0206699f8dc3b90"
+      },
+      "chat-preview.xml": {
+        "exists": true,
+        "sha256": "e0b178e214c03e533e52b2901884a36784ee770f24f60a6ef18e24e642226192"
+      },
+      "session-preview.xml": {
+        "exists": true,
+        "sha256": "eaa3770cf3b332538bf651e2ff44a46d62b1116eda8048067afdbab1777d0b9d"
+      }
+    },
+    "kept_running": true
+  },
+  "remaining": [
+    "Original outer tool-card action owner, typed route resolver and eligibility unknown",
+    "Original full Markdown/detail optics and source-level gesture/presentation fidelity not recovered",
+    "Real execution/management/backend out of current frontend scope",
+    "Final full-send/restart suite not rerun; narrow changed-carrier flow only"
+  ],
+  "next_module": "Remote composer and bottom controls presentation: recover Android293 parent/style/icon wiring; iOS corresponding theme/keyboard/floating-host closure",
+  "git": "Local only after1ea0e913ca; no new commit/push"
+}

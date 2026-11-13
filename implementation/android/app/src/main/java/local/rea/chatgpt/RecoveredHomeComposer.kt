@@ -42,7 +42,9 @@ internal fun homeComposerExpanded(hasModelSlot: Boolean, effectiveFocus: Boolean
 internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit,
     placeholder: String, modelLabel: String?, unavailable: () -> Unit,
     primaryAction: (() -> Unit)? = null, running: Boolean = false, canSubmit: Boolean = true,
-    tagPrefix: String = "shell", editorTag: String = "shell-draft") {
+    tagPrefix: String = "shell", editorTag: String = "shell-draft",
+    remoteModelControl: (@Composable () -> Unit)? = null,
+    remotePermissionControl: (@Composable () -> Unit)? = null) {
     val dark = isSystemInDarkTheme()
     val accent=frontendAccent(LocalFrontendSettings.current)
     val density = LocalDensity.current
@@ -73,11 +75,12 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
     // unconnected. This is not lzr's fixed branch (which has no bottom padding).
     BoxWithConstraints(Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally)
         .widthIn(max = 640.dp).padding(horizontal = 12.dp, vertical = 12.dp)) {
-        val compactWidth = (maxWidth - sideInset * 2 - 48.dp * 3).coerceAtLeast(1.dp)
+        val permissionWidth = if (remotePermissionControl != null) 34.dp else 0.dp
+        val compactWidth = (maxWidth - sideInset * 2 - 48.dp * 3 - permissionWidth).coerceAtLeast(1.dp)
         val measured = measurer.measure(value.text.ifEmpty { " " }, style,
             constraints = Constraints(maxWidth = with(density) { compactWidth.roundToPx() }), maxLines = 6)
         val overflow = value.text.isNotEmpty() && measured.size.height > with(density) { 24.sp.toPx() } * 1.1f
-        val expanded = homeComposerExpanded(modelLabel != null, effectiveFocus,
+        val expanded = homeComposerExpanded(modelLabel != null || remoteModelControl != null, effectiveFocus,
             value.text.isNotEmpty(), overflow, requestedExpansion)
         // Native host interpolation. Original u0e0 uses a measured transition
         // and coroutine state; exact original animation is still a separate gap.
@@ -105,7 +108,13 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
                             editor()
                         }
                     })
-                ComposerIcon(R.drawable.ds_plus_lg_regular_24, R.string.shell_attach, "$tagPrefix-attach", unavailable)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    ComposerIcon(R.drawable.ds_plus_lg_regular_24, R.string.shell_attach, "$tagPrefix-attach", unavailable)
+                    // Android293 InputDecorations is separate from InputActions,
+                    // sharing bottom-row vertical placement. Exact x-branch is
+                    // unresolved; attach-adjacent placement is our host adapter.
+                    remotePermissionControl?.invoke()
+                }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     ComposerIcon(R.drawable.ds_microphone_regular_24, R.string.shell_voice, "$tagPrefix-microphone", unavailable)
                     val sending = value.text.isNotBlank()
@@ -127,7 +136,8 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
                 // ldo/ki60 is an optional model-control slot. This synthetic label
                 // denotes the reserved model entry, not a selected service model.
                 Box {
-                    if (expanded && modelLabel != null) TextButton(onClick = unavailable,
+                    if (expanded && remoteModelControl != null) remoteModelControl()
+                    else if (expanded && modelLabel != null) TextButton(onClick = unavailable,
                         modifier = Modifier.testTag("$tagPrefix-model")) {
                         Text(modelLabel, style = style, maxLines = 1, overflow = TextOverflow.Ellipsis)
                     }
@@ -135,7 +145,7 @@ internal fun RecoveredHomeComposer(value: TextFieldValue, onValueChange: (TextFi
             }) { children, constraints ->
                 val width = constraints.maxWidth
                 val rowHeight = controlHeight.roundToPx()
-                val leading = children[1].measure(Constraints.fixed(48.dp.roundToPx(), rowHeight))
+                val leading = children[1].measure(Constraints.fixed((48.dp + permissionWidth).roundToPx(), rowHeight))
                 val trailing = children[2].measure(Constraints.fixed(96.dp.roundToPx(), rowHeight))
                 val textInset = 16.dp.roundToPx()
                 val gap = 4.dp.roundToPx()
