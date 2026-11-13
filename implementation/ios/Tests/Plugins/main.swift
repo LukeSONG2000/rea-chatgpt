@@ -19,6 +19,27 @@ precondition(state.receive(.init(request: more, items: [item(), item("b")], next
 precondition(state.items(query).map(\.id) == ["display-a", "b"])
 precondition(state.beginList(query, more: true) == nil)
 
+//Two sections may contain items from the SAME source. Section order and
+//membership must come from the page, survive pagination, and reset on refresh.
+var sectionState = FrontendPluginState(scope: scope)
+let sectionRequest = sectionState.beginList(query)!
+precondition(sectionState.receive(.init(request: sectionRequest, items: [item("a"), item("b")], next: "p2",
+    sections: [.init(id: "first", title: "First", pluginIDs: ["b"]),
+               .init(id: "second", title: "Second", pluginIDs: ["a"])])))
+let sectionMore = sectionState.beginList(query, more: true)!
+precondition(sectionState.receive(.init(request: sectionMore, items: [item("c")], next: nil,
+    sections: [.init(id: "first", title: "First", pluginIDs: ["c"])])))
+precondition(sectionState.listing(query).sections?.map(\.id) == ["first", "second"])
+precondition(sectionState.listing(query).sections?.first?.pluginIDs == ["b", "c"])
+let invalidSection = sectionState.beginList(query)!
+precondition(sectionState.receive(.init(request: invalidSection, items: [item("a")], next: nil,
+    sections: [.init(id: "broken", title: nil, pluginIDs: ["foreign"])])))
+precondition(sectionState.listing(query).phase == .failed(.invalidResult))
+precondition(sectionState.listing(query).sections?.first?.pluginIDs == ["b", "c"], "Failed refresh preserves readable sections")
+let flatRefresh = sectionState.beginList(query)!
+precondition(sectionState.receive(.init(request: flatRefresh, items: [item("a")], next: nil)))
+precondition(sectionState.listing(query).sections == nil, "Flat source must not inherit an invented grouping")
+
 let oldList = state.beginList(query)!
 let detail = state.beginDetail("display-a")!
 precondition(state.receive(.init(request: detail, item: item(detail: "full detail"))))
@@ -99,3 +120,56 @@ precondition(disconnectedItem.installed == false)
 let emptyInstalledPage = try await replay.list(installedRequest)
 precondition(emptyInstalledPage.items.isEmpty)
 print("Plugins: installed membership, stale receipt/list isolation and explicit connect/disconnect replay passed; default service remains unavailable")
+
+let skills = (0..<10).map { FrontendPluginSkill(id: String($0), title: "Fixture \($0)") }
+precondition(FrontendPluginSkillsPresentation(skills: skills).visible.count == 8)
+precondition(FrontendPluginSkillsPresentation(skills: skills).remaining == 2)
+precondition(FrontendPluginSkillsPresentation(skills: skills, showsAll: true).remaining == 0)
+var metadataState = FrontendPluginState(scope: scope)
+let metadataList = metadataState.beginList(query)!
+precondition(metadataState.receive(.init(request: metadataList, items: [item()], next: nil)))
+var metadata = item(detail: "full")
+metadata.skills = skills
+metadata.information = [.init(id: .developer, value: .text("fixture")), .init(id: .capabilities, value: .list(["one", "two"]))]
+let metadataDetail = metadataState.beginDetail(metadata.id)!
+precondition(metadataState.receive(.init(request: metadataDetail, item: metadata)))
+precondition(metadataState.entities[metadata.id]?.information == metadata.information)
+precondition(metadataState.entities[metadata.id]?.skills == skills)
+
+let folder = FileManager.default.temporaryDirectory.appendingPathComponent("rea-plugin-journal-" + UUID().uuidString)
+defer { try? FileManager.default.removeItem(at: folder) }
+let journal = FrontendPluginConnectionJournal(url: folder.appendingPathComponent("connections.json"), scope: scope)
+let persistent = SyntheticPluginService(scope: scope, catalog: [metadata], replaysConnectionChanges: true,
+    journal: journal, failsLocalSaveOnce: true)
+let failedCommit = try await persistent.perform(operation)
+if case .failure(.localStorage) = failedCommit.result {} else { preconditionFailure("Failed durable commit cannot publish success") }
+precondition(persistent.catalog[0].revision == 0 && !persistent.catalog[0].installed)
+let durable = try await persistent.perform(operation)
+let durableItem = try durable.result.get()
+precondition(durableItem.skills == skills && durableItem.information == metadata.information)
+let savedConnections = try journal.load()
+precondition(savedConnections.first?.installed == true)
+let relaunched = SyntheticPluginService(scope: scope, catalog: [metadata], replaysConnectionChanges: true, journal: journal)
+let restored = try await relaunched.list(installedRequest)
+precondition(restored.items.count == 1 && restored.items[0].revision == 1)
+precondition(restored.items[0].skills == skills)
+do { try journal.save(item(revision: 2), expected: item()); preconditionFailure("Stale conflicting write accepted") }
+catch {}
+try journal.save(durableItem, expected: metadata) //exact already-committed result is recoverable
+let foreignJournal = FrontendPluginConnectionJournal(url: journal.url, scope: other)
+do { _ = try foreignJournal.load(); preconditionFailure("Cross-workspace state read") } catch {}
+let beforeCorruption = try Data(contentsOf: journal.url)
+try Data("broken".utf8).write(to: journal.url)
+do { try journal.save(item(revision: 2), expected: durableItem); preconditionFailure("Corrupt state overwritten") } catch {}
+let keptCorruption = try Data(contentsOf: journal.url)
+precondition(keptCorruption == Data("broken".utf8))
+try beforeCorruption.write(to: journal.url)
+let removePersisted = FrontendPluginOperation(id: UUID(), scope: scope, pluginID: metadata.id,
+    actionPluginID: metadata.actionPluginID!, revision: 1, action: .disconnect)
+let removalReceipt = try await relaunched.perform(removePersisted)
+let removalValue = try removalReceipt.result.get()
+precondition(removalValue.installed == false)
+let afterRemoval = SyntheticPluginService(scope: scope, catalog: [metadata], replaysConnectionChanges: true, journal: journal)
+let removedList = try await afterRemoval.list(installedRequest)
+precondition(removedList.items.isEmpty)
+print("Plugins: source first8/all projection, ordered metadata enrichment, failed durable commit/retry, cold restoration, workspace isolation and corrupt preservation passed")

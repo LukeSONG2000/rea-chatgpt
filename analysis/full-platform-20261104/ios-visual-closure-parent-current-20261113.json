@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-13",
+  "status": "partial",
+  "platform": "iOS",
+  "official_baseline": {
+    "version": "1.2026.293",
+    "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Frontend only; no real services, auth, plugin installation or tool execution.",
+  "implemented": [
+    "Source semantic accent swatches and independent per-option tint",
+    "Source hidden value label/HStack6/native menu overlay; host proposal fitting fixes visible Start label",
+    "Floating Plugins search parent, icon-only installed rail spacing12 and source-owned result sections",
+    "Plugins title directory-section selector kept distinct from independent source filter; only Plugins enabled",
+    "Plugins skills first8/all, metadata, shared Settings connections, accepted-only scoped journal/retry/restore"
+  ],
+  "evidence_reports": [
+    "ios-settings-swatches-20261113-findings.json",
+    "ios-settings-start-button-20261113-findings.json",
+    "ios-plugins-layout-20261113-findings.json",
+    "ios-plugins-toolbar-20261113-findings.json",
+    "ios-plugins-detail-sixth-20261113-findings.json",
+    "ios-plugins-settings-sixth-20261113-findings.json"
+  ],
+  "adaptations": [
+    "Swatch metric initial17/body and top/left0 not original recovered values",
+    "UIViewRepresentable sizeThatFits accepts measuring owner proposal; original Swift sizing witness unresolved",
+    "Menu carrier/one-section capability and separate preview source filter",
+    "Floating safeAreaInset geometry/material and monogram fixture icons",
+    "Independent section/query/revision/state/journal contract, not original backend schema"
+  ],
+  "verification": {
+    "foundation_plugins": "sh implementation/ios/test-plugins.sh exited0; includes sections/page overlap/refresh preservation plus existing identity/metadata/storage suite",
+    "plugins_ui": {
+      "bundle": "ios-visual-closure-20261113-r2.xcresult",
+      "test": "testPluginsSettingsDetailAndRestartChinese",
+      "result": "passed",
+      "seconds": 208.883,
+      "scope": "Settings to directory/detail; failure/retry/skills/information/browser return/settings restore/process restart/profile isolation; bottom search geometry"
+    },
+    "settings_ui": {
+      "bundle": "ios-visual-closure-20261113-settings-r4.xcresult",
+      "test": "testSettingsStartScreenAndLiveActivityChinese",
+      "result": "passed",
+      "seconds": 102.204,
+      "coordinate_fallback_used": false,
+      "scope": "Accent menu/selection, Start/Codex selection, Live Activity preference, no-argument restart; r4 screenshot still showed Start clipping"
+    },
+    "measured_value_ui": {
+      "bundle": "ios-visual-closure-20261113-measure-r5.xcresult",
+      "test": "testStartScreenMeasuredValueChinese",
+      "result": "passed",
+      "seconds": 54.099,
+      "scope": "Final proposal fitting, menu selection and screenshots for both Chat/Codex; screenshots reviewed text is complete"
+    },
+    "failures_retained": [
+      "r1/r2 control AX queries",
+      "settings-r3 visible rich-label Picker without accessible hit point",
+      "settings-r4 interaction passed but Start visually clipped; corrected in r5"
+    ],
+    "not_claimed": [
+      "Original visual equality or full scene coverage",
+      "Physical UI/gesture/haptic acceptance",
+      "English/dark new matrix",
+      "Source-filter/title-menu interaction regression beyond core journey"
+    ],
+    "signed_device_build": "ios-visual-closure-20261113-device-build-r2.log passed; codesign --verify --deep --strict passed",
+    "current_source_hashes": "All99 recorded source hashes match after final builds"
+  },
+  "images": "analysis/full-platform-20261104/ios-visual-closure-20261113-review/manifest.json",
+  "source_hashes": "ios-visual-closure-20261113-source.json",
+  "runtime": {
+    "simulator": "ios-visual-closure-20261113-simulator.json",
+    "physical": "ios-visual-closure-20261113-device-review.json",
+    "simulator_binary_matches_current_build": true,
+    "original_simulator_theme_language_restored_verified": true
+  },
+  "not_implemented": [
+    "Original complete capability production/menu geometry/floating search measurements",
+    "Real icon loading/installed overflow/full row layout",
+    "Apps/prompts/tools/screenshots/management and each-plugin configuration",
+    "Settings report form/original notification categories/actual Live Activity system cards"
+  ],
+  "android_parallel_module": "android-shell-parent-current-20261113.json",
+  "next": "Android Remote list; iOS remaining core-page closures, no dormant sidebar expansion",
+  "publication": "Local changes after pushed75d177307e; no additional commit/push/release",
+  "updated_at": "2026-11-13T17:58:23.199839+08:00"
+}

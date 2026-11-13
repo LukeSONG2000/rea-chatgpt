@@ -1,0 +1,119 @@
+{
+  "date": "2026-11-13",
+  "module": "Android Remote list",
+  "baseline": "75d177307e plus retained local shell module",
+  "status": "bounded core list increment implemented and device verified; official services and full fidelity remain partial",
+  "source_reports": [
+    "android-remote-v626-header-source.json",
+    "android-remote-v627-menu-source.json",
+    "android-remote-v628-search-source.json",
+    "android-remote-list-20261113-sort-evidence.json"
+  ],
+  "implemented": [
+    "Three actual selected modes: ByProject, Priority, Chronological, with profile-local committed sort choice and viewport reset on mode change",
+    "Priority rank1..3 section then rank4 date groups; no separate pinned header in Priority",
+    "Chronological retains pinned section plus full catalog date groups; ByProject pinned duplication retained because Android source establishes it",
+    "Date ordering updatedAt then createdAt, system timezone; today/yesterday/7-day/30-day/month/undated partitions",
+    "Provider archived flag preserved when no local override; scoped local archive overrides retained",
+    "Filter and collapsed state become visible only after successful checkpoint commit",
+    "Separate empty catalog versus no matching search text",
+    "Runner leaves isolated Chinese/light review profile and preserves ordinary preview preferences"
+  ],
+  "source_boundary": {
+    "Android_observation": "o8m/fh1 modes; pkm/z9/dcj group membership; zsn/o830 priority rank semantics; ife.j754-837, w3m.compare case0 and zsn.i334-344 date ordering and buckets",
+    "iOS_reused": "Mature checklist semantics only: states, identity, filtering, return/restart, capability boundaries; no optical or layout transplantation",
+    "independent_adapters": [
+      "Synthetic timestamps and explicit fixture priorityRank (not an official raw-state DTO, not live unread/subscription updates)",
+      "Current project IDs stand in for original normalized cwd/projectless identity; host+project scoped keys retained",
+      "Native Compose LazyColumn, Popup, preferences and scroll-position adapter",
+      "Empty-state copy and localized date labels are host strings; exact source typography and date header rendering not claimed",
+      "Provider archive preservation is an independent contract bugfix; original archive raw-state field remains incompletely traced"
+    ]
+  },
+  "verification": {
+    "build": "android-remote-list-20261113-build.log; BUILD SUCCESSFUL in45s",
+    "device": {
+      "serial": "172.16.197.16:5555",
+      "manufacturer": "OnePlus",
+      "model": "ONEPLUS A6003",
+      "sdk": "35"
+    },
+    "language": "zh-CN",
+    "appearance": "light",
+    "tests": [
+      {
+        "test": "modelRules",
+        "passed": true,
+        "seconds": 0.875
+      },
+      {
+        "test": "emptyState",
+        "passed": true,
+        "seconds": 6.807
+      },
+      {
+        "test": "listJourney",
+        "passed": true,
+        "seconds": 41.708
+      },
+      {
+        "test": "verifyRestart",
+        "passed": true,
+        "seconds": 12.487
+      }
+    ],
+    "test_report": "android-remote-list-20261113-oneplus-r1.json",
+    "screenshots_viewed": [
+      "priority-list.png",
+      "empty-catalog.png",
+      "list-initial.png"
+    ],
+    "coverage": [
+      "Date boundary and updated/created fallback model checks",
+      "Provider/local archive and cross-host/cross-profile isolation",
+      "Rejected preference commit leaves original selection/query/viewport",
+      "Sort checkpoint reconstruction",
+      "Empty state and search no-result text",
+      "Failure then retry",
+      "Menu selected modes and date/priority content",
+      "Search keyboard/open/close and matching collapsed groups",
+      "Task draft A/B on duplicate thread IDs across hosts",
+      "Scroll entry/back/sidebar return and actual force-stop process restart"
+    ]
+  },
+  "remaining": [
+    "Original live discovery/connect/account/settings/navigation services remain unavailable and honestly signposted",
+    "Priority fixture rank is provider metadata; no live unread ranking producer",
+    "Exact tie ordering by host display name/thread ID is not yet reproduced when timestamps/rank tie",
+    "Original custom sections and normalized cwd provider not represented by current synthetic catalog",
+    "Row long-press/context preview/swipe affordances from mature iOS are not transferred without Android owner evidence",
+    "No full arbitrary catalog mutation/revision replay or official backend pagination",
+    "Mode checkpoint disk reconstruction tested, but no dedicated process-restart journey for every sort mode",
+    "No full optical/animation/haptic parity claim or broad matrix"
+  ],
+  "runtime": {
+    "manufacturer": "OnePlus",
+    "model": "ONEPLUS A6003",
+    "pid": "30010",
+    "resumed": [
+      "topResumedActivity=ActivityRecord{181672390 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1372}"
+    ],
+    "installed_sha256": "ae729f3e6ccd5cf9477b10bf32294301fdbcc13ffe5a5efc81a068227a613f88",
+    "built_sha256": "ae729f3e6ccd5cf9477b10bf32294301fdbcc13ffe5a5efc81a068227a613f88",
+    "ordinary_preview_unchanged": true,
+    "ordinary_preview": {
+      "frontend-preview.xml": {
+        "exists": true,
+        "sha256": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e"
+      },
+      "remote-list-preview.xml": {
+        "exists": true,
+        "sha256": "7269f82e69e91e645a70c3c305dd895ea135655802f85b33c0206699f8dc3b90"
+      }
+    }
+  },
+  "source_hashes": "android-remote-list-20261113-source-hashes.json",
+  "source_validation": "android-remote-list-20261113-source-validation.json",
+  "no_git_mutations": true,
+  "scope": "Only Android list implementation/resources/test runner changed; shell baseline and iOS retained"
+}

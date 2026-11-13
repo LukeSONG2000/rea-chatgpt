@@ -57,6 +57,19 @@ enum OfficialTextKey: String {
     case pluginsCachedRefreshMessage = "gpt_plugins_directory_cached_refresh_failure_message"
     case pluginsDescriptionMore = "gpt_plugins_directory_detail_description_more_action"
     case pluginsDescriptionMoreAccessibility = "gpt_plugins_directory_detail_description_more_accessibility_label"
+    case pluginsInformation = "gpt_plugins_directory_detail_information_heading"
+    case pluginsCapabilities = "gpt_plugins_directory_detail_capabilities_label"
+    case pluginsDeveloper = "gpt_plugins_directory_detail_developer_label"
+    case pluginsWebsite = "gpt_plugins_directory_detail_website_label"
+    case pluginsVersion = "gpt_plugins_directory_detail_version_label"
+    case pluginsPrivacy = "gpt_plugins_directory_detail_privacy_policy_label"
+    case pluginsTerms = "gpt_plugins_directory_detail_terms_of_service_label"
+    case pluginsSkill = "gpt_plugins_directory_detail_skill_heading"
+    case pluginsSkills = "gpt_plugins_directory_detail_skills_heading"
+    case pluginsMoreSkills = "gpt_plugins_directory_detail_more_skills_action"
+    case pluginsAdded = "connectors_added_plugins_section_title"
+    case pluginsNoMatching = "connectors_no_matching_plugins"
+    case pluginsBrowse = "connectors_browse_plugins_button_title"
     case customizeTitle = "chatgpt_customize_title"
     case customizePersonality = "orbit_customize_personality"
     case customizePlugins = "orbit_customize_plugins"
@@ -366,6 +379,19 @@ enum OfficialTextKey: String {
         case .pluginsCachedRefreshMessage: return "Showing the most recently loaded results."
         case .pluginsDescriptionMore: return "More"
         case .pluginsDescriptionMoreAccessibility: return "Show full plugin description"
+        case .pluginsInformation: return "Information"
+        case .pluginsCapabilities: return "Capabilities"
+        case .pluginsDeveloper: return "Developer"
+        case .pluginsWebsite: return "Website"
+        case .pluginsVersion: return "Version"
+        case .pluginsPrivacy: return "Privacy Policy"
+        case .pluginsTerms: return "Terms of Service"
+        case .pluginsSkill: return "Skill"
+        case .pluginsSkills: return "Skills"
+        case .pluginsMoreSkills: return "%@ more"
+        case .pluginsAdded: return "Added"
+        case .pluginsNoMatching: return "No matching plugins"
+        case .pluginsBrowse: return "Browse plugins"
         case .profileUsername: return "Username"
         case .sidebarChat: return "Chat"
         case .scheduledPaginationError: return "Unable to load more tasks"
@@ -574,6 +600,7 @@ enum OfficialTextKey: String {
     }
     var argumentCount: Int {
         switch self {
+        case .pluginsMoreSkills: return 1
         case .assistantIntroductionSubtitleWithLink, .assistantComplexWorkBody,
              .assistantProactiveBody, .assistantDataBody, .assistantConnectProvider,
              .assistantConnectionsDescription: return 1

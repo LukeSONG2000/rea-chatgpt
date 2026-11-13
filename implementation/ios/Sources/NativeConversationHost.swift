@@ -1196,7 +1196,8 @@ final class NativeConversationHost: UIViewController, UITextViewDelegate, UIColl
         saveDraft(); saveAnchor()
         guard let catalog else { notice.text = "会话目录不可用；原文件保留"; return nil }
         let list = NativeConversationList(entries: catalog.ordinaryEntries, selected: store.scope.conversationID,
-                                          selectedFeature: activeSidebarFeature, accountAccess: accountAccess, assistantModel: personalAssistantModel)
+                                          selectedFeature: activeSidebarFeature, accountAccess: accountAccess, assistantModel: personalAssistantModel,
+                                          pluginsModel: pluginsModel)
         list.onCreate = { [weak self] in self?.createLocalConversation() ?? false }
         list.onRename = { [weak self] id, title in
             try catalog.rename(id, title: title)
@@ -3411,6 +3412,7 @@ private final class NativeConversationList: UIViewController, UICollectionViewDa
     }
     private let accountAccess: FrontendAuthenticationModel?
     private let assistantModel: FrontendPersonalAssistantModel?
+    private let pluginsModel: FrontendPluginsModel?
     private var assistantEntry: FrontendAssistantSidebarEntry?
     private var assistantObservation: AnyCancellable?
     private var notificationObservation: AnyCancellable?
@@ -3482,7 +3484,8 @@ private final class NativeConversationList: UIViewController, UICollectionViewDa
     var onSetPinned: ((String, Bool) throws -> Void)?
 
     init(entries: [LocalConversation], selected: String, selectedFeature: String?, accountAccess: FrontendAuthenticationModel? = nil,
-         assistantModel: FrontendPersonalAssistantModel? = nil) {
+         assistantModel: FrontendPersonalAssistantModel? = nil, pluginsModel: FrontendPluginsModel? = nil) {
+        self.pluginsModel = pluginsModel
         self.assistantModel = assistantModel
         self.assistantEntry = assistantModel?.sidebarEntry
         self.accountAccess = accountAccess; self.entries = entries
@@ -3911,6 +3914,7 @@ private final class NativeConversationList: UIViewController, UICollectionViewDa
     @objc private func searchEntry() { onSearch?() }
     @objc private func settingsEntry() {
         let controller = UIHostingController(rootView: NativeVisualSettings(accountAccess: accountAccess,
+            pluginsModel: pluginsModel,
             startDestinations: FrontendStartScreenDestination.available(hasRemote: featureCatalog.contains("codex"),
                 hasAssistant: assistantModel?.sidebarEntry?.isAvailable == true),
             assistantDisplayName: assistantModel?.state.configuration?.profile?.displayName))
@@ -4999,6 +5003,7 @@ private struct RecoveredRemoteHomeMenu: View {
                     Picker(OfficialText.text(.remoteHomeOrganize), selection: $grouping) {
                         ForEach(RemoteHomeGrouping.choices(priorityAvailable: priorityAvailable), id: \.self) { value in
                             label(value.label, icon: value.icon).tag(value)
+                                .accessibilityIdentifier("remote-home-grouping-\(value.rawValue)")
                         }
                     }
                     .pickerStyle(.inline)
@@ -5268,6 +5273,9 @@ private struct RemoteTaskFixturePage: View {
     @State private var rowRenameTitle = ""
     @State private var rowActionFailed = false
     @StateObject private var projectSort = RemoteProjectSortOwner()
+    @StateObject private var listCheckpoint = RemoteListCheckpointOwner()
+    @State private var didRestoreListPreferences = false
+    @Environment(\.scenePhase) private var listScenePhase
     private let projectSortingAvailable = HostLaunchRuntime.arguments.contains("--remote-project-sort-menu-fixture")
     // Explicit preview layout/capability inputs, not inferred from device size.
     private let homeLayout: RemoteHomeLayout = HostLaunchRuntime.arguments
@@ -5311,6 +5319,36 @@ private struct RemoteTaskFixturePage: View {
     @State private var collapsedSectionIDs: Set<RemoteWorkspaceIdentity> = []
     // .noWorkspace(hostIdentity) is distinct from a workspace path or title.
     @State private var collapsedNoWorkspaceHosts: Set<String> = []
+    private var savedListPreferences: RemoteListSavedPreferences {
+        var value = RemoteListSavedPreferences()
+        value.source = source; value.grouping = grouping.rawValue; value.chatsFirst = showsChatsFirst
+        value.pinnedCollapsed = pinnedSectionCollapsed; value.recentCollapsed = recentSectionCollapsed
+        value.projectsCollapsed = projectsSectionCollapsed
+        value.collapsedWorkspaces = collapsedSectionIDs.map {
+            RemoteListWorkspaceKey(hostID: $0.hostIdentity, workspaceID: $0.workspaceKey)
+        }.sorted { $0.hostID == $1.hostID ? $0.workspaceID < $1.workspaceID : $0.hostID < $1.hostID }
+        value.collapsedNoWorkspaceHosts = collapsedNoWorkspaceHosts.sorted()
+        //Localized date-section titles and transient search/focus are not
+        //durable identities. Do not save them as task or viewport selection.
+        return value
+    }
+    private func restoreListPreferences() {
+        guard !didRestoreListPreferences else { return }
+        if listCheckpoint.hasSavedPreferences {
+            let value = listCheckpoint.preferences
+            source = sourceChoices.contains(where: { $0.id == value.source }) ? value.source : "all"
+            let choices = RemoteHomeGrouping.choices(priorityAvailable: HostLaunchRuntime.arguments.contains("--remote-priority-list-fixture"))
+            grouping = choices.first(where: { $0.rawValue == value.grouping }) ?? .byWorkspaces
+            showsChatsFirst = value.chatsFirst
+            pinnedSectionCollapsed = value.pinnedCollapsed; recentSectionCollapsed = value.recentCollapsed
+            projectsSectionCollapsed = value.projectsCollapsed
+            collapsedSectionIDs = Set(value.collapsedWorkspaces.map {
+                RemoteWorkspaceIdentity(hostIdentity: $0.hostID, workspaceKey: $0.workspaceID)
+            })
+            collapsedNoWorkspaceHosts = Set(value.collapsedNoWorkspaceHosts)
+        }
+        didRestoreListPreferences = true
+    }
     private var visibleWorkspaces: [RemoteWorkspacePresentation] {
         // Explicit fixture titles/order. v510 proves source filtering precedes
         // the official cross-host DisplayName collision calculation.
@@ -5772,6 +5810,9 @@ private struct RemoteTaskFixturePage: View {
         // Search/empty-state suppression has a separate owner.
         .listRowInsets(EdgeInsets(top: 0, leading: 0,
             bottom: isInProject && isLastInSection ? 12 : 0, trailing: 0))
+        .background { RemoteListViewportMarker(anchor: .task(hostID: task.id.host, threadID: task.id.thread), owner: listCheckpoint,
+            query: .init(source: source, grouping: grouping.rawValue)) }
+        .id(RemoteListAnchor.task(hostID: task.id.host, threadID: task.id.thread))
         .accessibilityIdentifier("remote-task-" + task.key)
         .accessibilityValue(task.activity == .unread ? visualText("未读", "Unread") : "")
     }
@@ -6186,6 +6227,11 @@ private struct RemoteTaskFixturePage: View {
 
     private var browsingContent: some View {
         List {
+            if listCheckpoint.storageFailed {
+                Text(visualText("列表偏好未能读取或保存，已有记录保留。", "List preferences could not be read or saved. Existing records were kept."))
+                    .font(.footnote).foregroundStyle(.secondary)
+                    .accessibilityIdentifier("remote-list-checkpoint-error")
+            }
             if connections == nil {
                 Text(visualText("连接偏好无法读取，设备目录仍保留。连接相关操作暂不可用。",
                     "Connection preferences could not be read. The device catalog is retained; connection operations are unavailable."))
@@ -6206,6 +6252,9 @@ private struct RemoteTaskFixturePage: View {
                     // Separate conditional top12 (owner+170) remains unclosed.
                     horizontalContentInset: 16,
                     bottomPadding: 12)
+                    .background { RemoteListViewportMarker(anchor: .top, owner: listCheckpoint,
+                        query: .init(source: source, grouping: grouping.rawValue)) }
+                    .id(RemoteListAnchor.top)
                     .listRowInsets(EdgeInsets())
                     .listRowSeparator(.hidden)
             }
@@ -6301,6 +6350,9 @@ private struct RemoteTaskFixturePage: View {
         // Identify the list before attaching its sibling input bar. Applying
         // this identifier outside SafeAreaBar overrides child control IDs.
         .accessibilityIdentifier("remote-task-list")
+        .modifier(RecoveredRemoteListReading(owner: listCheckpoint,
+            query: RemoteListReadingKey(source: source, grouping: grouping.rawValue),
+            searching: search.isSearching || homeComposerState.mode != .browsing))
     }
 
     var body: some View {
@@ -6320,6 +6372,13 @@ private struct RemoteTaskFixturePage: View {
         }
         .background(Color(uiColor: officialVisualColor("OneOff/MainSurfacePrimary")))
         .modifier(RecoveredRemoteBottomBar(bar: homeComposer))
+        .onAppear(perform: restoreListPreferences)
+        .onChange(of: savedListPreferences) { _, preferences in
+            if didRestoreListPreferences { listCheckpoint.savePreferences(preferences) }
+        }
+        .onChange(of: listScenePhase) { _, phase in
+            if phase != .active { listCheckpoint.flush() }
+        }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
             homeComposerState.keyboardWillHide()
         }
@@ -9809,12 +9868,14 @@ private struct SettingsCircleSurface: ViewModifier {
 // Independent navigation adapter. Keep unsupported service destinations distinct
 // from local settings; never fall through to an unrelated Codex page.
 private enum NativeSettingsDestination: Hashable {
-    case general, notifications, codex, voice, safety, personalization, memory, about
+    case general, notifications, codex, voice, safety, personalization, memory, about, plugins
+    case pluginSettings(String)
     case unavailable(title: String)
 }
 
 private struct NativeVisualSettings: View {
     var accountAccess: FrontendAuthenticationModel? = nil
+    var pluginsModel: FrontendPluginsModel? = nil
     var startDestinations: [FrontendStartScreenDestination] = [.chatGPT]
     var assistantDisplayName: String?
     var customizationPresentation = LegacySettingsCustomizePresentation.referencePreview
@@ -9891,6 +9952,13 @@ private struct NativeVisualSettings: View {
                     case .notifications: FrontendNotificationSettings(model: notifications)
                     case .codex: RecoveredRemoteContextUsageSettings()
                     case .about: FrontendSettingsAboutPage()
+                    case .plugins:
+                        if let pluginsModel {
+                            NativePluginConnectionsSettings(model: pluginsModel, openPluginSettings: { path.append(.pluginSettings($0)) })
+                        }
+                        else { SettingsServiceUnavailablePage(title: OfficialText.text(.settingsPlugins)) }
+                    case .pluginSettings(let id):
+                        SettingsServiceUnavailablePage(title: pluginsModel?.state.entities[id]?.name ?? OfficialText.text(.settingsPlugins))
                     case .unavailable(let title): SettingsServiceUnavailablePage(title: title)
                     }
                 }
@@ -9979,7 +10047,7 @@ private struct NativeVisualSettings: View {
                             Spacer()
                             Picker(OfficialText.text(.settingsAccentColor), selection: $accent) {
                                 ForEach(availableAccents, id: \.rawValue) { color in
-                                    Text(color.title).tag(color.rawValue)
+                                    PreviewAccentMenuLabel(accent: color).tag(color.rawValue)
                                 }
                             }.pickerStyle(.menu).labelsHidden()
                                 .accessibilityIdentifier("settings-accent")
@@ -10162,6 +10230,7 @@ private struct NativeVisualSettings: View {
                             switch row.0 {
                             case "personalization": path.append(.personalization)
                             case "book-open": path.append(.memory)
+                            case "plugin": path.append(.plugins)
                             default: path.append(.unavailable(title: row.1))
                             }
                         } label: { content }

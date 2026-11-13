@@ -1,0 +1,92 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x42e0dc",
+    "end_exclusive": "0x42e170",
+    "sha256": "bcb68e384a8d2be15d9b03109f483b20594c7839f383eff43dd698b39e9b97ed"
+  },
+  "linker_function_starts_in_window": [
+    "0x42e0dc",
+    "0x42e12c",
+    "0x42e130"
+  ],
+  "next_linker_function_start": "0x42e170",
+  "direct_calls": [
+    {
+      "site": "0x42e0f0",
+      "target": "0x455c78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e0f8",
+      "target": "0x14c140",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e100",
+      "target": "0x44b8e0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e104",
+      "target": "0x45f768",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e11c",
+      "target": "0x34b39c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e120",
+      "target": "0x7c547fc",
+      "imported_symbol": "_swift_release_x22"
+    },
+    {
+      "site": "0x42e144",
+      "target": "0x455c78",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e148",
+      "target": "0x14f3ac",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e150",
+      "target": "0x44b8e0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e154",
+      "target": "0x207124",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e158",
+      "target": "0x462be4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e15c",
+      "target": "0x344888",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x42e160",
+      "target": "0x1596bc",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

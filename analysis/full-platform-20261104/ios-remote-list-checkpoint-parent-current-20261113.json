@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-13",
+  "status": "partial",
+  "platform": "iOS",
+  "baseline": {
+    "version": "1.2026.293",
+    "artifact": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "module": "Remote list state/reading closure",
+  "official_evidence": [
+    "ios-remote-list-state-sixth-20261113-findings.json",
+    "ios-remote-list-parent-current-20261113-r3.json",
+    "ios-remote-list-parent-20261112-findings.json"
+  ],
+  "implemented": [
+    "Profile/account-scoped source/group/chatsFirst/pin/recent/projects/workspace/host collapse journal",
+    "Independent source+group stable host/thread reading anchors; no selected-task or localized title shortcut",
+    "Native UICollectionView viewport sampling with passive noninteractive row markers and KVO; source fence",
+    "Preserve same-instance native detail Back offset; coarse row restore only for a new list/query/search return",
+    "Budgeted/atomic/validated store, corrupt/foreign preservation, visible read/save error and debounced writes"
+  ],
+  "adaptations": [
+    "Journal format/scoping/budgets and native viewport adapter are independent frontend implementation, not recovered original cache algorithm",
+    "Native UI state remains locally usable if writes fail; error shown, durable snapshot not advanced",
+    "Search text/focus and localized date-collapse strings deliberately not persisted"
+  ],
+  "verification": {
+    "foundation": "ios-remote-list-checkpoint-20261113-contract.log passed (A-B-A, same thread across hosts, restart, atomic write failure, corrupt/foreign/duplicate keys/budgets)",
+    "native_detail_return": {
+      "result": "passed",
+      "seconds": 29.066,
+      "bundle": "ios-remote-list-checkpoint-20261113-r1.xcresult",
+      "scope": "Two detail Back loops preserve exact native offset; before final passive-native-sampling replacement; no delegate/gesture change"
+    },
+    "new_journey": {
+      "result": "passed",
+      "seconds": 58.758,
+      "bundle": "ios-remote-list-checkpoint-20261113-r3.xcresult",
+      "scope": "Host selection/collapse/grouping restore after fresh owner; actual scrolling/detail Back/cold reading restore and nearby-row bound"
+    },
+    "history": [
+      "r1 new journey failed native menu custom identifier (original visible label used in r2)",
+      "r2 journey passed60.800s but screenshots showed stale geometry/earlier anchor; not treated as correct viewport recovery",
+      "r3 native sampling and stronger nearby-row check; before/after screenshots reviewed same host/project reading region"
+    ],
+    "device_build": "ios-remote-list-checkpoint-20261113-device-build-r2.log passed; strict codesign passed",
+    "physical_ui": false,
+    "english_dark_new_matrix": false
+  },
+  "source_hashes": "ios-remote-list-checkpoint-20261113-source.json",
+  "review_images": [
+    "analysis/full-platform-20261104/ios-remote-list-checkpoint-20261113-review/before-restart.png",
+    "analysis/full-platform-20261104/ios-remote-list-checkpoint-20261113-review/after-restart.png"
+  ],
+  "runtime": {
+    "simulator": "ios-remote-list-checkpoint-20261113-simulator.json",
+    "physical_install": "not installed this batch: device tunnel unavailable, DDI false; CoreDevice4016 on backup probe; previous delivered version remains",
+    "signed_candidate_sha256": "450e5722b154ea204bcaa2a7e8c30a406188afde233566b4a5f58ffd538c4232",
+    "phone_candidate": "implementation/ios/.build/Build/Products/Debug-iphoneos/REAChatGPTHost.app"
+  },
+  "remaining": [
+    "Original cross-process viewport algorithm/subrow pixel offset",
+    "Removed/collapsed anchor fallback and localized date-collapse persistence",
+    "Multiple-scene concurrent writer policy and full UI storage-failure journey",
+    "Complete native capability producers, pagination and Live Activity presentation"
+  ],
+  "android_parallel": "android-remote-list-parent-current-20261113.json",
+  "next_major_module": "Remote messages; preserve local changes and install signed candidate when Air reconnects",
+  "scope": "Frontend only; no official services or real task execution",
+  "publication": "No new commit/push/release"
+}

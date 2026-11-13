@@ -56,7 +56,8 @@ import androidx.compose.ui.unit.sp
 // qj81/ghm0/ay10 supply popup geometry and style; Android Popup is the host adapter.
 @Composable
 internal fun RecoveredRemoteListHeader(searching: Boolean, query: String, onQuery: (String) -> Unit,
-    toggleSearch: () -> Unit, openSidebar: () -> Unit, pending: (Int) -> Unit) {
+    toggleSearch: () -> Unit, openSidebar: () -> Unit, sort: RemoteListSort,
+    selectSort: (RemoteListSort) -> Unit, pending: (Int) -> Unit) {
     var menu by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
     val keyboard = LocalSoftwareKeyboardController.current
@@ -87,14 +88,14 @@ internal fun RecoveredRemoteListHeader(searching: Boolean, query: String, onQuer
                     Icon(painterResource(R.drawable.ds_chevron_down_sm_regular_24), null, Modifier.size(12.dp))
                 }
                 RecoveredRemoteTitleMenu(menu, dismiss = { menu = false }) {
-                    RemoteTitleMenuRow(priorityLabel, R.drawable.ds_bell_regular_24, "remote-sort-priority") {
-                        menu = false; pending(R.string.remote_sort_priority)
+                    RemoteTitleMenuRow(priorityLabel, R.drawable.ds_bell_regular_24, "remote-sort-priority", selected = sort == RemoteListSort.Priority) {
+                        menu = false; selectSort(RemoteListSort.Priority)
                     }
-                    RemoteTitleMenuRow(projectLabel, R.drawable.ds_folder_regular_24, "remote-sort-project", selected = true) {
-                        menu = false
+                    RemoteTitleMenuRow(projectLabel, R.drawable.ds_folder_regular_24, "remote-sort-project", selected = sort == RemoteListSort.ByProject) {
+                        menu = false; selectSort(RemoteListSort.ByProject)
                     }
-                    RemoteTitleMenuRow(timeLabel, R.drawable.ds_clock_regular_24, "remote-sort-time") {
-                        menu = false; pending(R.string.remote_sort_time)
+                    RemoteTitleMenuRow(timeLabel, R.drawable.ds_clock_regular_24, "remote-sort-time", selected = sort == RemoteListSort.Chronological) {
+                        menu = false; selectSort(RemoteListSort.Chronological)
                     }
                     HorizontalDivider(Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
                         color = MaterialTheme.colorScheme.outlineVariant)

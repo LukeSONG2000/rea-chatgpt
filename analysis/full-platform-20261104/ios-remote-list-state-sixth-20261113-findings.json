@@ -1,0 +1,153 @@
+{
+  "status": "partial",
+  "scope": "iOS293 ordinary Codex task list state owner and return/process restoration; two bounded static groups",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "candidate_groups": [
+    {
+      "question": "TaskListContent callback ownership, state inventory, and selection versus reading position",
+      "new_window": "0x42e0dc..0x42e170",
+      "stop": "Actual callbacks dispatch to0x34b39c,0x302794,0x344888. No exact viewport map/save consumer closed; stop at these owners rather than rename them filter/scroll setters."
+    },
+    {
+      "question": "First-appearance downstream branch0x3424fc and restore possibility",
+      "new_window": "0x342674..0x342a30",
+      "stop": "0x342674 dispatches observable state/async work;0x3428a0 includes maybePresentNotificationPrompt() literal plus Dispatch setup. Neither is proven viewport restore; downstream closure capture semantics unknown. Two-group limit reached."
+    }
+  ],
+  "official_observations": [
+    {
+      "fact": "Ordinary list is List<Never,Content>(content:) with plain style, not List(selection:) or ScrollViewReader. Selected thread is separate input to rows/navigation.",
+      "source": [
+        "CodexTaskListContainer desc0x95d0b08, witness0x2403b68->0x24034e0",
+        "0x240390c ListVAAs5NeverORszrlE7content initializer",
+        "0x2403918/0x2403948 PlainListStyle",
+        "CodexTaskListContent desc0x9560294 field selectedThreadID index29, row dispatch0x39e830..0x39e8d4"
+      ],
+      "reused_evidence": [
+        "ios-remote-list-lifecycle-parent-20261113/container-implementation.asm",
+        "ios-remote-list-parent-20261112/list-parent-tree.tree.txt"
+      ]
+    },
+    {
+      "fact": "View model owns account-scoped collapse/group/sort preferences, while source filter and selected-thread inputs are distinct.",
+      "authority": "metadata plus previously traced source-filter projection; not a serialized viewport proof",
+      "source": [
+        "CodexViewModel desc0x955df7c _taskSourceFilter fieldrecord0x99d5a94",
+        "_collapsedRemoteSectionIDsSetting0x99d5c20 = AccountScopedSetting<JSONSetting<ResilientDecodableArray<CodexCollapsedRemoteSectionID>>>",
+        "_storedRemoteThreadListGrouping0x99d5c2c = AccountScopedSetting<CodexRemoteThreadListGrouping>",
+        "_storedRemoteThreadListShowsChatsFirst0x99d5c38 = AccountScopedSetting<Bool>",
+        "_storedRemoteProjectSortOrder0x99d5c44 = AccountScopedSetting<CodexRemoteProjectSortOrder>",
+        "_codexRemoteViewModelsByHostIdentity0x99d5c5c = OrderedDictionary<HostIdentity,HostViewModel>"
+      ],
+      "limits": [
+        "Field declarations prove ownership/type boundaries, not exact serialization key, storage duration or initializer defaults.",
+        "Do not claim source selection is persisted because grouping/collapse use AccountScopedSetting."
+      ]
+    },
+    {
+      "fact": "Source filtering is an active projection input before workspace naming, not merely visible chip state.",
+      "source": [
+        "0x323cdc/0x32418c/0x3241ec source publisher0x35ea3c ->CombineLatest3",
+        "0x3611fc->0x35f7dc supplies TaskSourceFilter",
+        "0x35fc00..0x35fca0 chooses all/current valid host identity array",
+        "0x360144 aggregates selected host snapshots",
+        "0x35eb58 uses VisibleRemoteTaskListState for ordinary grouping"
+      ],
+      "reused_report": "ios-remote-v510-name-scope-findings.json",
+      "limit": "The projection chain does not save viewport, selected filter across process, or selection navigation."
+    },
+    {
+      "fact": "TaskListContent exposes collapse predicates/setter callbacks separately from source Binding, selectedThreadID, and navigation callbacks.",
+      "source": [
+        "CodexTaskListContent fields _taskSourceFilter index7, remoteThreadListGrouping8, taskSectionIsCollapsed9, setTaskSectionCollapsed10, selectedThreadID29, showCodexThread35, actionHandler36",
+        "field inventory ios-remote-list-lifecycle-parent-20261113/list-metadata.json"
+      ],
+      "limits": [
+        "Original SectionID identity and actual account wrapper setter chain not newly closed in this bounded pass.",
+        "Do not turn every captured callback0x42e0dc/12c/130 into filter callbacks:0x42e0dc calls0x34b39c,0x42e12c tailcalls0x302794,0x42e130 calls0x344888; exact field-offset binding is required."
+      ]
+    },
+    {
+      "fact": "Appearance callbacks are visible-lifetime state, not established viewport restoration.",
+      "source": [
+        "TaskList body0x395b50 installs two AppearanceActionModifiers",
+        "0x42dcb8..0x42dcd8 checks/sets __hasAppeared",
+        "0x42dcf4 calls VM Bool setter0x31e6ac(true)",
+        "0x42dd98 clears local LazyState;0x42ddb0 setter(false)",
+        "0x42dd0c calls0x3424fc; downstream0x342674 and0x3428a0 inspected"
+      ],
+      "limit": "Bool setter dynamic offset0xb0c8da8 not explicitly bound to field-name ABI in this pass."
+    },
+    {
+      "fact": "0x3428a0 follows notification-prompt scheduling, not evidence for list scroll restore.",
+      "source": [
+        "0x3428c0 DispatchWorkItemFlags metadata",
+        "0x3428e8 DispatchQoS metadata",
+        "0x342910 DispatchTime metadata",
+        "0x3429b8..0x3429c0 builds Swift literal at0x8856b40 after subtract32 from0x8856b60",
+        "0x8856b60 literal maybePresentNotificationPrompt()",
+        "0x3429f0 calls0x7073de8 diagnostic path"
+      ],
+      "limit": "This scoped path identification does not establish the complete notification policy or all behavior of its caller0x3424fc."
+    }
+  ],
+  "current_host_observations": [
+    "NativeConversationHost.swift RemoteTaskFixturePage ~5248 declares source @State5262, grouping @State5264, collapsedDateTitles5287, collapsedSectionIDs5315, collapsedNoWorkspaceHosts5317.",
+    "No scrollPosition attached to this task-list owner was established; other scrollPosition occurrences elsewhere in file must not be attributed to Remote list.",
+    "Transient @State can retain state while the same view identity survives; it does not itself prove cross-root or process persistence."
+  ],
+  "safe_product_decision": [
+    "For cross-root/process return, introduce an explicitly independent frontend state owner/journal; do not label its algorithm as recovered official behavior.",
+    "Separate account-scoped presentation preferences(grouping/collapse/sort), source selection, route/selected task, data cache, and reading anchor. Persistence/admission scopes should be explicit rather than inferred from one shared dictionary.",
+    "Reading anchor must use stable semantic row identity plus relative position; an independently designed scope can include account/root list instance/source/grouping/search. Only restore when the same scoped row remains in current projection; fallback must be explicit.",
+    "Keep current task identity/selectedThread separate from reading anchor and do not reopen a task merely because an anchor matches.",
+    "Do not persist raw localized date titles as original section IDs; current collapsedDateTitles is adapter data, not established source CodexCollapsedRemoteSectionID schema.",
+    "No need to add a guessed original onAppear scroll algorithm. Existing runtime return behavior can remain while explicit independent journal coverage is added."
+  ],
+  "precise_unknowns": [
+    "Original viewport owner/map, save/restore calls and cross-process scroll policy remain unidentified; resolved ordinary list tree has no scrollPosition/ScrollViewReader but unknown outer owner is possible.",
+    "CodexRemoteHostViewModel selected-thread restore and original data snapshot serialization remain unclosed. TaskListSnapshot(codexHomePath,usesRecencySort,tasks) is data, not viewport.",
+    "Actual account-scoped collapse/grouping setter/key/default and process restore consumers not closed here; metadata wrappers alone do not prove them.",
+    "0x42e0dc->0x34b39c,0x42e12c->0x302794,0x42e130->0x344888 field-specific callback mapping remains exact next stop.",
+    "0x342674 async target closure0x7cf9800 and0x3428a0 final side effects not fully reconstructed; do not call them scroll restore.",
+    "No explicit new haptic caller in bounded windows."
+  ],
+  "validation": {
+    "product_changes": false,
+    "build": false,
+    "device": false,
+    "official_app": false,
+    "git": false
+  },
+  "reused_reports": [
+    "ios-remote-list-parent-20261112-findings.json",
+    "ios-remote-list-parent-current-20261113-r3.json",
+    "ios-remote-list-lifecycle-parent-20261113-findings.json",
+    "ios-remote-v510-name-scope-findings.json"
+  ],
+  "raw_manifest": [
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-state-sixth-20261113-raw/first-appearance-followups.asm",
+      "bytes": 9862,
+      "sha256": "a19ec9d2fb32e2a0bdad26a181909eb6b024bc4da98342ffd14d0241c5747356"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-state-sixth-20261113-raw/first-appearance-followups.json",
+      "bytes": 9904,
+      "sha256": "358987581a3b6f8d0001e481a578fdc694120545def6d6eb43fe55adee1d9a8f"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-state-sixth-20261113-raw/selection-callbacks.asm",
+      "bytes": 1680,
+      "sha256": "14394f3e7a80d70f0297f82b98c605f3f77798d09d768270dbb687408604b8da"
+    },
+    {
+      "path": "analysis/full-platform-20261104/ios-remote-list-state-sixth-20261113-raw/selection-callbacks.json",
+      "bytes": 2204,
+      "sha256": "0ef00865dbff768c4b22191b2f3c507ef1dd087c0affefac8546552effeeab1e"
+    }
+  ]
+}

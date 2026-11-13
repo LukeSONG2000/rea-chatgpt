@@ -1,0 +1,318 @@
+{
+  "status": "partial",
+  "authority": "official iOS293 shipped-artifact static code and named Swift metadata",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+    "version": "1.2026.293"
+  },
+  "scope": {
+    "question": "Actual directory title menu and Plugins root mapping, separate from PluginDirectorySource",
+    "focused_groups": 2,
+    "product_edit": false,
+    "build_or_device": false,
+    "git_mutation": false,
+    "online_services": false
+  },
+  "groups": [
+    {
+      "owner": "ChatGPTDirectoryNavigationToolbar descriptor0x959d9b4",
+      "code": "0x1590210 toolbar Body;0x1590a38 principal;0x1591a78 Picker binding;0x159055c options"
+    },
+    {
+      "owner": "Plugins RootToolbar producer and callback",
+      "code": "0xe7bd34..0xe7be84 ->0xe7df48 shared wrapper;callback0xf24dcc ->0xe7b9c8"
+    }
+  ],
+  "findings": [
+    {
+      "id": "type_separation",
+      "status": "verified-static",
+      "evidence": [
+        "0x8cf0d9e -> descriptor0x96d81d8",
+        "0x8cf0f08 -> descriptor0x96fb0cc"
+      ],
+      "conclusion": "ChatGPTDirectorySection enum is plugins/skills/gpts. PluginDirectorySource enum is openAI/workspace/personal. They are distinct original types with distinct owner semantics. Title selection must not write the source filter."
+    },
+    {
+      "id": "toolbar_parent",
+      "status": "verified-static",
+      "evidence": [
+        "0x1590210..0x1590534",
+        "0x7dd51e8",
+        "0x1590a38..0x1590ae4",
+        "0x7dd52e0"
+      ],
+      "conclusion": "Actual toolbar principal is ToolbarItem(.principal) containing SwiftUIStyleguide.NavigationBarCenterMenu and Picker<Text,ChatGPTDirectorySection,...>. The principal is present only if showsDirectoryPicker byte+2 is true at0x1590418. This is not a source-selector capsule row. showsRootNavigationItem+5 separately admits the native root/back/dismiss/sidebar toolbar control based on entrypoint; do not equate it with the title menu."
+    },
+    {
+      "id": "actual_menu_options",
+      "status": "verified-static",
+      "evidence": [
+        "0x159055c..0x1590980",
+        "0x15906bc",
+        "0x15907b8",
+        "0x159066c..0x159067c",
+        "0x1590758..0x1590770",
+        "0x15907c8..0x15907e8"
+      ],
+      "conclusion": "Options are ordered Plugins first (always in the menu), Skills only if showsSkills+3, GPTs only if showsGPTs+4. Selected tags are plugins0,skills1,gpts2. No Browse/Workspace/Personal entries occur in this actual Picker. Root can choose whether the entire Picker exists.",
+      "labels": [
+        {
+          "tag": 0,
+          "key": "gpt_directory_plugins_title",
+          "literal": "0x88a17a0",
+          "fallback": "Plugins",
+          "consumer": "0x15905cc..0x1590614"
+        },
+        {
+          "tag": 1,
+          "key": "gpt_directory_skills_title",
+          "literal": "0x88a1780",
+          "fallback": "Skills",
+          "consumer": "0x15906c4..0x1590708"
+        },
+        {
+          "tag": 2,
+          "factory": "0x75d61ec",
+          "consumer": "0x15907c0",
+          "label": "GPTs named enum; exact factory key not expanded in this pass"
+        }
+      ]
+    },
+    {
+      "id": "binding_owner",
+      "status": "verified-static",
+      "evidence": [
+        "0x1591b68..0x1591c94",
+        "0x1591d78",
+        "0x1591db4..0x1591dc8",
+        "0x1591dd4"
+      ],
+      "conclusion": "Picker binding getter captures the toolbar selectedDirectorySection byte; setter reads selected enum byte and invokes captured selectDirectorySection function/context. Options are not generated from source data. NavigationBarCenterMenu label closure0x1591cb4 copies selectedDirectorySection into ChatGPTDirectoryNavigationPickerLabel. Labels for0/1/2 also map via0x15911bc, not via source names."
+    },
+    {
+      "id": "plugins_root_projection",
+      "status": "verified-static",
+      "evidence": [
+        "0xe7bd34..0xe7be84",
+        "0xe7be44",
+        "0xe7be48..0xe7be54",
+        "0xe7be70..0xe7be78",
+        "0xe7df48..0xe7dfa8"
+      ],
+      "conclusion": "Plugins RootToolbar producer explicitly writes selectedDirectorySection=0 at0xe7be44. It supplies independent booleans for showsDirectoryPicker/Skills/GPTs/root navigation; it does not take current PluginDirectorySource as the selected title. Shared wrapper preserves those fields to common toolbar. Title can stay Plugins while the browse source changes."
+    },
+    {
+      "id": "plugins_title_picker_admission",
+      "status": "partial",
+      "evidence": [
+        "0xe7bd98..0xe7bdb8",
+        "0xe7c7a4..0xe7c7e0"
+      ],
+      "conclusion": "Plugins root computes showsDirectoryPicker only when a RootScreen byte at the field offset supplied by metadata+0x20 equals1; otherwise false. In that branch0xe7c7a4 returns false when root helper0xe7be88 array count is nonzero; when empty it returns root field+0x52 OR root field+0x51. The names/producer policy of those root fields and array are not derived here, so do not claim menu always visible or enable unavailable sibling directories. This scoped pass does not bind that dynamic RootScreen field to the named entrypoint, so raw1 must stay unnamed."
+    },
+    {
+      "id": "plugins_selection_dispatch",
+      "status": "verified-static",
+      "evidence": [
+        "0xe7be70..0xe7be78",
+        "0xf24dcc",
+        "0xe7b9c8..0xe7ba9c"
+      ],
+      "conclusion": "Actual Plugins root selectDirectorySection callback is0xf24dcc ->0xe7b9c8. It branches over directory section byte0/1/other, checks Skills availability and current selected directory, optionally invokes outer selection callback for non0/1, and finally uses directory transition0xe7f42c for admitted changed section. It is not DirectoryAction.sourceSelected.",
+      "limits": [
+        "Sibling Skills/GPTs complete screens and transition owner0xe7f42c not expanded; their enum presence does not authorize or implement those modules."
+      ]
+    }
+  ],
+  "implementation_advice": {
+    "source_backed": [
+      "Use title Plugins for the Plugins directory, independently of OpenAI/workspace/personal browse source.",
+      "Represent title directory selection as separate enum and action: plugins/skills/gpts; gate siblings and entire menu using explicit projected capabilities.",
+      "A source filter can remain in an independently labeled host filter entry, but do not call it the recovered shared title picker."
+    ],
+    "scope_respecting": [
+      "If only Plugins is available in the current offline frontend manifest, keep title as Plugins and do not manufacture functioning Skills/GPTs items.",
+      "Use original keys for Plugin and Skills labels; do not seed new screenshot section names or map three source IDs onto title menu."
+    ],
+    "unknown": [
+      "Exact shared NavigationBarCenterMenu material/size/chevron parameters and PickerLabel body",
+      "RootScreen dynamic byte raw1 field identity and complete show flag/service-capability producers",
+      "Actual293 source selector consumer and presentation slot; no claim it has no source filter merely because this title menu is different",
+      "Sibling directory navigation completion"
+    ]
+  },
+  "raw_manifest": [
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/0x7dd52e0.json",
+      "bytes": 1632,
+      "sha256": "dc3eb710ceac8f73a92bb6d9f58a499985a329a081a6d5bf8e44f33b6385d5b9"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/0x7dd5320.json",
+      "bytes": 1277,
+      "sha256": "21f87d333f17a69bdb762b8c4fac59cb82ef755b8a411c76063cb00752796069"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/directory-section-type.json",
+      "bytes": 763,
+      "sha256": "c0fd9381e72e0d447c8e5f5729995f099b46e95e651f54d7f9284d67ef7a6aa1"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/directory-source-type.json",
+      "bytes": 759,
+      "sha256": "a70524d3c3a200da338ec30d760ad51352f421bca9be82d96472b0a7c4b22986"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/option-fallback-titles.asm",
+      "bytes": 2762,
+      "sha256": "d297d028624b89a9b7d11e618dff4f978c5083706d7b5533ab323c00e055ebdb"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/option-fallback-titles.json",
+      "bytes": 1955,
+      "sha256": "dba28bb8c53074196620f17c6e16039a201e419528a4516c4813772016ee3eab"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/picker-bindings.asm",
+      "bytes": 7626,
+      "sha256": "0869b107c4fef03497b1e9d04b9d630cc5a90f6dafc921d99ae37a8231727087"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/picker-bindings.json",
+      "bytes": 5082,
+      "sha256": "e6a0c003296a24282564ecab22df66510c7762af31d8f392715ea07912875bb7"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/picker-content-final.asm",
+      "bytes": 2557,
+      "sha256": "b0fbd09d6dbd7a1c2c34851c7d2c7b8b5900639b67272fc9d7d814fbc613e45f"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/picker-content-final.json",
+      "bytes": 1569,
+      "sha256": "2995c4e2ed7d7ea77a5eb62b3a196994533604a68bd9bb07f7ad3f23e08f93a5"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/picker-setter.asm",
+      "bytes": 2272,
+      "sha256": "568e6649d6ef12ed2d9a48ef0c2eb94c85cfcfae1026c98a978383628a136bf5"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/picker-setter.json",
+      "bytes": 1703,
+      "sha256": "770f2005a55952c68bfa67f1cea5c96d2da4e11f0d55ac002e3cd0c24e698c7d"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/picker-title-and-binding.asm",
+      "bytes": 8105,
+      "sha256": "aa9b5445c6cc8e1d7d87966722636d1df62cea0fc4494f558ae0092d7aedc6c8"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/picker-title-and-binding.json",
+      "bytes": 4800,
+      "sha256": "0ba2f031817a118a2fcdbca4ac717a6c72d0df05e10d72cab68a1b5860bd906b"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/plugins-root-toolbar-parent.asm",
+      "bytes": 66176,
+      "sha256": "1ff4aa93772f75794e74bd5423aa6beb33bcefec4cfd7322efc290af19b5417f"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/plugins-root-toolbar-parent.json",
+      "bytes": 45539,
+      "sha256": "08e15a760e4bb5e2748be2969639b0e8a16d7b980a919037722c2890355fd5f6"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/plugins-toolbar-construction.asm",
+      "bytes": 64164,
+      "sha256": "fc45ba7f252441cecc72b9e86aec9934e5c90275ea389992e91d98561c85ff7f"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/plugins-toolbar-construction.json",
+      "bytes": 44927,
+      "sha256": "b0475813933ccb45b0cf06120ff935f308a7c73de28e17de8e9d5368d5cdfdab"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/principal-picker.asm",
+      "bytes": 2992,
+      "sha256": "7a6d42e7fa1dc3bf10b82a4e1ee0fb8f597fc19bfda57a765ca7377993743685"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/principal-picker.json",
+      "bytes": 1406,
+      "sha256": "02b40176b7593489b6b8f85639a7c4cb99811f611793d62ce34d27386f1eb5f7"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/proximate-type.json",
+      "bytes": 3297,
+      "sha256": "56c8b14101b38fb86149d9cf44491ea777208edd0a9ea01e456709f98ebd0b97"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/root-parent-entry.asm",
+      "bytes": 5392,
+      "sha256": "78bde1aa33bbe918f469395e0e55a0ba8458b2a6e613029c961e592bf7456ec6"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/root-parent-entry.json",
+      "bytes": 5836,
+      "sha256": "90001898affcf965c411f2830bcd5813afcaca3b7b790619af810f7608baf264"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/root-section-callback.asm",
+      "bytes": 2069,
+      "sha256": "3c9148a108a2a075bbdf5ccc40e0f76043d73bd99f2b8f6f101c37d36003bab3"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/root-section-callback.json",
+      "bytes": 1733,
+      "sha256": "2a6e5113236d669c6c5549c8553c50e09cd6866379ba41a70fb2d1be096c428b"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/root-toolbar-closures.asm",
+      "bytes": 3051,
+      "sha256": "08958e689c5a600f016e939cf98955d6300296590d275b74691b8f15f07c3005"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/root-toolbar-closures.json",
+      "bytes": 1347,
+      "sha256": "bbd043dc837d18cf3dca7508875180f29a9510a442ef2d547b62d14c7c7f0ce0"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/section-vs-source-enums.json",
+      "bytes": 383,
+      "sha256": "1de3000161d2f4b6f551594f2214ddf3c5b1a3a13527882c818108dcc505ae90"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/shared-toolbar-accessor.asm",
+      "bytes": 2934,
+      "sha256": "d2c050d350434a83e1e084bf92ee803e799dce0120f0963368821e130a678645"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/shared-toolbar-accessor.json",
+      "bytes": 1359,
+      "sha256": "d2955181d373b85de5b771b3fee6381ebeec1d984fcc9acf70b698a64c694bea"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/toolbar-factories.asm",
+      "bytes": 4210,
+      "sha256": "e20f4545d3878284d36fdf07482e33a0a112afd255b1369b2bb67886a2c003a4"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/toolbar-factories.json",
+      "bytes": 1150,
+      "sha256": "20d23b9f9ad966a2a1a658a0e87543bb1e940c827c0d9738d17d556627089bb4"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/toolbar-proximate-owner.asm",
+      "bytes": 69958,
+      "sha256": "b63b778a2c9ad899906f1fa8e363237d97ea2cc650d575cb39a8ff23205b85d6"
+    },
+    {
+      "path": "ios-plugins-toolbar-20261113-raw/toolbar-proximate-owner.json",
+      "bytes": 33392,
+      "sha256": "9488e8b529cbd226e1a74b696544b7a6b6b211c562532b31216762aa295607d5"
+    }
+  ]
+}

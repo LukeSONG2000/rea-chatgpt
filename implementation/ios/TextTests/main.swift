@@ -1,5 +1,8 @@
 import Foundation
 
+precondition(OfficialTextKey.pluginsMoreSkills.argumentCount == 1)
+precondition(OfficialTextCatalog.render(OfficialTextKey.pluginsMoreSkills.englishDefault, arguments: ["2"]) == "2 more")
+
 // Task configuration belongs to the shared parent, including tasks entered
 // through the project-creation route. Equal thread names on hosts stay isolated.
 do {

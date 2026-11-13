@@ -13,6 +13,18 @@ class FrontendPreferences(context: Context, val profile: String = "preview") {
     val language: String get() = values.getString("language", "system").orEmpty().takeIf { it in languages } ?: "system"
     val appearance: String get() = values.getString("appearance", "system").orEmpty().takeIf { it in appearances } ?: "system"
     val mode: String get() = values.getString("mode", "chat").orEmpty().takeIf { it in modes } ?: "chat"
+    // Root only: child pages, dialogs and unfinished operations are never replayed.
+    // Preserve malformed/unknown checkpoints rather than silently replacing them.
+    val rootCheckpointValid: Boolean get() = runCatching {
+        !values.contains("root-route") || (values.getInt("root-version", 0) == 1 &&
+            values.getString("root-route", null) in ShellNavigation.roots)
+    }.getOrDefault(false)
+    val rootRoute: String get() = if (rootCheckpointValid) values.getString("root-route", "home") ?: "home" else "home"
+    fun selectRoot(route: String): Boolean {
+        require(ShellNavigation.isRoot(route))
+        if (!rootCheckpointValid) return false
+        return values.edit().putInt("root-version", 1).putString("root-route", route).commit()
+    }
     fun draft(mode: String): String {
         require(mode in modes)
         return values.getString("draft-$mode", "").orEmpty()

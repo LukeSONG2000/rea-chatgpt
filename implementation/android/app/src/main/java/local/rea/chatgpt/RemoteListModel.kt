@@ -16,6 +16,7 @@ data class RemoteListHost(val id: String, val name: String, val cloud: Boolean =
 data class RemoteListProject(val hostID: String, val id: String, val name: String) {
     val key: String get() = JSONArray(listOf(hostID, id)).toString()
 }
+enum class RemoteListSort { Priority, ByProject, Chronological }
 enum class RemoteTaskStatus { Idle, Running, Completed, Approval, Failed }
 data class RemoteListTask(
     val key: RemoteTaskKey,
@@ -24,6 +25,10 @@ data class RemoteListTask(
     val status: RemoteTaskStatus,
     val pinned: Boolean = false,
     val archived: Boolean = false,
+    val createdAt: Long? = null,
+    val updatedAt: Long? = null,
+    // Independent provider admission, not a guessed mapping of the official raw fields.
+    val priorityRank: Int = 4,
 )
 data class RemoteListSnapshot(
     val hosts: List<RemoteListHost>,
@@ -77,7 +82,11 @@ class SyntheticRemoteListProvider(private val chinese: Boolean, private val fail
         )
         repeat(12) { index -> tasks += RemoteListTask(RemoteTaskKey("fixture-a", "recent-$index"),
             text("交互记录 ${index + 1}", "Interaction ${index + 1}"), null, RemoteTaskStatus.Idle) }
-        return RemoteListSnapshot(hosts, projects, tasks)
+        val now = java.time.Instant.now().epochSecond
+        return RemoteListSnapshot(hosts, projects, tasks.mapIndexed { index, task ->
+            task.copy(createdAt = now - index * 86400L, updatedAt = now - index * 86400L,
+                priorityRank = when (index) { 0 -> 3; 1 -> 1; 2 -> 2; else -> 4 })
+        })
     }
 }
 
@@ -87,7 +96,7 @@ class RemoteListStore(private val preferences: SharedPreferences) {
     internal fun projectedTask(task: RemoteListTask): RemoteListTask = task.copy(
         pinned = preferences.getBoolean("thread-pin:" + task.key.storageKey, task.pinned),
         title = preferences.getString("thread-title:" + task.key.storageKey, null) ?: task.title,
-        archived = preferences.getBoolean("thread-archived:" + task.key.storageKey, false))
+        archived = preferences.getBoolean("thread-archived:" + task.key.storageKey, task.archived))
     internal fun saveTitle(key: RemoteTaskKey, title: String): Boolean =
         title.isNotBlank() && title.length <= 128 && preferences.edit().putString("thread-title:" + key.storageKey, title).commit()
     internal fun saveArchived(key: RemoteTaskKey): Boolean =
@@ -101,6 +110,12 @@ class RemoteListStore(private val preferences: SharedPreferences) {
     internal fun saveApprovalReceipt(identity: RemoteApprovalIdentity): Boolean =
         preferences.edit().putBoolean("approval-receipt:" + approvalReceiptKey(identity), true).commit()
     private var value = JSONObject(preferences.getString("snapshot", "{}") ?: "{}")
+    val sort: RemoteListSort get() = runCatching {
+        RemoteListSort.valueOf(value.optString("sort", "ByProject"))
+    }.getOrDefault(RemoteListSort.ByProject)
+    fun saveSort(sort: RemoteListSort): Boolean = change {
+        it.put("sort", sort.name).put("index", 0).put("offset", 0)
+    }
     val hostID: String? get() = value.optString("host").takeIf { it.isNotEmpty() }
     val query: String get() = value.optString("query")
     val index: Int get() = value.optInt("index").coerceAtLeast(0)
@@ -148,3 +163,23 @@ class RemoteListStore(private val preferences: SharedPreferences) {
         it.put("drafts", drafts)
     }
 }
+
+// ife.j uses updated seconds, then created seconds, in the device time zone.
+internal fun remoteDateGroups(tasks: List<RemoteListTask>,
+    today: java.time.LocalDate = java.time.LocalDate.now(),
+    zone: java.time.ZoneId = java.time.ZoneId.systemDefault()): Map<String, List<RemoteListTask>> =
+    tasks.sortedByDescending { it.updatedAt ?: it.createdAt ?: Long.MIN_VALUE }.groupBy { task ->
+        val date = (task.updatedAt ?: task.createdAt)?.let { java.time.Instant.ofEpochSecond(it).atZone(zone).toLocalDate() }
+        when {
+            date == null -> "undated"
+            !date.isBefore(today) -> "today"
+            date == today.minusDays(1) -> "yesterday"
+            java.time.temporal.ChronoUnit.DAYS.between(date, today) <= 7 -> "previous-week"
+            java.time.temporal.ChronoUnit.DAYS.between(date, today) <= 30 -> "previous-month"
+            else -> "month-${java.time.YearMonth.from(date)}"
+        }
+    }
+
+internal fun remotePriorityTasks(tasks: List<RemoteListTask>): List<RemoteListTask> =
+    tasks.filter { it.priorityRank in 1..3 }.sortedWith(compareBy<RemoteListTask> { it.priorityRank }
+        .thenByDescending { it.updatedAt ?: it.createdAt ?: Long.MIN_VALUE })

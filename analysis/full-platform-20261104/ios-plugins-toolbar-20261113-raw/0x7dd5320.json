@@ -1,0 +1,45 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": null,
+  "mangled_address": "0x8dc50f2",
+  "length": 20,
+  "mangled_hex": "02d55cd10179024febd0015f02d992cf01516f5f",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 2,
+      "target": "0xaadadc8",
+      "resolved_context": "0x955802c",
+      "label": "<unresolved-context@0x955802c>"
+    },
+    {
+      "offset": 6,
+      "kind": 2,
+      "target": "0xaad3c48",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI4TextVMn"
+    },
+    {
+      "offset": 12,
+      "kind": 2,
+      "target": "0xaabe3d8",
+      "resolved_context": "0x96d81d8",
+      "label": "ChatGPTDirectoryNavigation.ChatGPTDirectorySection"
+    }
+  ],
+  "unresolved_contexts": [
+    {
+      "address": "0x955802c",
+      "flags": "0x20084",
+      "kind": 4,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    }
+  ],
+  "limits": [
+    "Symbolic context references only, not a reconstructed generic type tree",
+    "Type presence does not prove runtime branch selection or component creation"
+  ]
+}

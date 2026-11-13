@@ -1,0 +1,121 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": null,
+  "mangled_address": "0x8dc4c22",
+  "length": 106,
+  "mangled_hex": "026dd6d00179027fd7d0017941427902d647cf01029946cf0147026b48cf014753675f02b2b6d001797974020249cf017902ec04d1017902eeefd001027997cf0102ac0dd10179025e61d10179414c5f414d516f5f5f414f53674150744747017e8d7d00474753677447",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 2,
+      "target": "0xaad2290",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI19TupleToolbarContentVMn"
+    },
+    {
+      "offset": 6,
+      "kind": 2,
+      "target": "0xaad23a8",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI19_ConditionalContentVMn"
+    },
+    {
+      "offset": 15,
+      "kind": 2,
+      "target": "0xaab9408",
+      "resolved_context": "0x971c850",
+      "label": "SwiftUIStyleguide.DismissToolbarItem"
+    },
+    {
+      "offset": 20,
+      "kind": 2,
+      "target": "0xaab92d0",
+      "resolved_context": "0x971bc60",
+      "label": "SwiftUIStyleguide.BackToolbarItem"
+    },
+    {
+      "offset": 26,
+      "kind": 2,
+      "target": "0xaab94a8",
+      "resolved_context": "0x971e804",
+      "label": "SwiftUIStyleguide.SideMenuToolbarItem"
+    },
+    {
+      "offset": 35,
+      "kind": 2,
+      "target": "0xaad02f8",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI11ToolbarItemVMn"
+    },
+    {
+      "offset": 43,
+      "kind": 2,
+      "target": "0xaab9550",
+      "resolved_context": "0x971d054",
+      "label": "SwiftUIStyleguide.NavigationBarCenterMenu"
+    },
+    {
+      "offset": 49,
+      "kind": 2,
+      "target": "0xaad5140",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI6PickerVMn"
+    },
+    {
+      "offset": 55,
+      "kind": 2,
+      "target": "0xaad3c48",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI4TextVMn"
+    },
+    {
+      "offset": 60,
+      "kind": 2,
+      "target": "0xaabe3d8",
+      "resolved_context": "0x96d81d8",
+      "label": "ChatGPTDirectoryNavigation.ChatGPTDirectorySection"
+    },
+    {
+      "offset": 65,
+      "kind": 2,
+      "target": "0xaad5a10",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI9TupleViewVMn"
+    },
+    {
+      "offset": 71,
+      "kind": 2,
+      "target": "0xaadadc8",
+      "resolved_context": "0x955802c",
+      "label": "<unresolved-context@0x955802c>"
+    },
+    {
+      "offset": 95,
+      "kind": 1,
+      "target": "0x959da00",
+      "resolved_context": "0x959da00",
+      "label": "<unresolved-context@0x959d9f8>.ChatGPTDirectoryNavigationPickerLabel"
+    }
+  ],
+  "unresolved_contexts": [
+    {
+      "address": "0x955802c",
+      "flags": "0x20084",
+      "kind": 4,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x959d9f8",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    }
+  ],
+  "limits": [
+    "Symbolic context references only, not a reconstructed generic type tree",
+    "Type presence does not prove runtime branch selection or component creation"
+  ]
+}

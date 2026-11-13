@@ -1,0 +1,168 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0xe8397c",
+    "end_exclusive": "0xe83b54",
+    "sha256": "42b9b32c2255587e93ec2ee1a228b45b97d07cd9680465ca3ac281d49b18779e"
+  },
+  "linker_function_starts_in_window": [
+    "0xe8397c",
+    "0xe83980",
+    "0xe83a44",
+    "0xe83b50"
+  ],
+  "next_linker_function_start": "0xe83b54",
+  "direct_calls": [
+    {
+      "site": "0xe83984",
+      "target": "0x15d12c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83998",
+      "target": "0x45fe4c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe839a4",
+      "target": "0x1536e4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe839a8",
+      "target": "0xf52edc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe839b4",
+      "target": "0x7c4bb44",
+      "imported_symbol": "_$s7SwiftUI9LazyStateV14projectedValueAA7BindingVyxGvg",
+      "chained_binding": {
+        "slot": "0xaad58b0",
+        "symbol": "_$s7SwiftUI9LazyStateV14projectedValueAA7BindingVyxGvg",
+        "library_ordinal": 82,
+        "weak": false,
+        "import_ordinal": 10729,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0xe839c4",
+      "target": "0x4613b4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe839c8",
+      "target": "0xe83a44",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe839cc",
+      "target": "0x154510",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe839d8",
+      "target": "0x6ef17e8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe839f4",
+      "target": "0x7c53794",
+      "imported_symbol": "_memcpy"
+    },
+    {
+      "site": "0xe83a2c",
+      "target": "0x7c53794",
+      "imported_symbol": "_memcpy"
+    },
+    {
+      "site": "0xe83a48",
+      "target": "0x159298",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83aa4",
+      "target": "0x1532ac",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83aa8",
+      "target": "0x15372c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83ac4",
+      "target": "0xf54f8c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83acc",
+      "target": "0x155e5c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83ae4",
+      "target": "0x154bb4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83afc",
+      "target": "0x7c4dec0",
+      "imported_symbol": "_$sScM6sharedScMvgZ",
+      "chained_binding": {
+        "slot": "0xaada298",
+        "symbol": "_$sScM6sharedScMvgZ",
+        "library_ordinal": 128,
+        "weak": false,
+        "import_ordinal": 13008,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    },
+    {
+      "site": "0xe83b0c",
+      "target": "0xf54f8c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83b18",
+      "target": "0x155e5c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83b24",
+      "target": "0x154bb4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83b3c",
+      "target": "0x45c980",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83b40",
+      "target": "0xf4cfc0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xe83b44",
+      "target": "0xf54358",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

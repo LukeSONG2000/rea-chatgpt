@@ -1,0 +1,210 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "GPTPluginDetailScreen",
+      "descriptor": "0x9583258",
+      "type_section_entry": "0x9d375cc",
+      "accessor": "0xf1fec8",
+      "fields": [
+        {
+          "name": "viewModel",
+          "record": "0x9a04f38",
+          "type_reference": "0x8cf1106"
+        },
+        {
+          "name": "_pendingInstallPluginID",
+          "record": "0x9a04f44",
+          "type_reference": "0x8cf19e8"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d77904",
+          "flags": "0x30000",
+          "section_entry": "0x9cdd8b8"
+        }
+      ]
+    },
+    {
+      "name": "ChatGPTPluginsDirectoryRootToolbar",
+      "descriptor": "0x95836fc",
+      "type_section_entry": "0x9d37650",
+      "accessor": "0xf25f58",
+      "fields": [
+        {
+          "name": "entrypoint",
+          "record": "0x9a05494",
+          "type_reference": "0x8cf0976"
+        },
+        {
+          "name": "selectedDirectorySection",
+          "record": "0x9a054a0",
+          "type_reference": "0x8cf0d9e"
+        },
+        {
+          "name": "showsDirectoryPicker",
+          "record": "0x9a054ac",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "showsSkills",
+          "record": "0x9a054b8",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "showsGPTs",
+          "record": "0x9a054c4",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "showsRootNavigationItem",
+          "record": "0x9a054d0",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "backAction",
+          "record": "0x9a054dc",
+          "type_reference": "0x8cf0c00"
+        },
+        {
+          "name": "showSideMenu",
+          "record": "0x9a054e8",
+          "type_reference": "0x8cf0c00"
+        },
+        {
+          "name": "selectDirectorySection",
+          "record": "0x9a054f4",
+          "type_reference": "0x8cf496e"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d787f4",
+          "flags": "0x30000",
+          "section_entry": "0x9cdd96c"
+        }
+      ]
+    },
+    {
+      "name": "ChatGPTPluginsSearchScreen",
+      "descriptor": "0x95837dc",
+      "type_section_entry": "0x9d37668",
+      "accessor": "0xf24744",
+      "fields": [
+        {
+          "name": "_viewModel",
+          "record": "0x9a055b4",
+          "type_reference": "0x8cf490a"
+        },
+        {
+          "name": "navigationTitle",
+          "record": "0x9a055c0",
+          "type_reference": "0x8d860d0"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d7897c",
+          "flags": "0x30000",
+          "section_entry": "0x9cdd980"
+        }
+      ]
+    },
+    {
+      "name": "ChatGPTPluginsSearchContent",
+      "descriptor": "0x9583a80",
+      "type_section_entry": "0x9d376a8",
+      "accessor": "0xf2a86c",
+      "fields": [
+        {
+          "name": "state",
+          "record": "0x9a057cc",
+          "type_reference": "0x8cf0b12"
+        },
+        {
+          "name": "_query",
+          "record": "0x9a057d8",
+          "type_reference": "0x8bca450"
+        },
+        {
+          "name": "_isFocused",
+          "record": "0x9a057e4",
+          "type_reference": "0x8dfc9a0"
+        },
+        {
+          "name": "_scrollPositionID",
+          "record": "0x9a057f0",
+          "type_reference": "0x8cf6c26"
+        },
+        {
+          "name": "actionHandler",
+          "record": "0x9a057fc",
+          "type_reference": "0x8cf6c3e"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d796b8",
+          "flags": "0x30000",
+          "section_entry": "0x9cdd9d0"
+        }
+      ]
+    },
+    {
+      "name": "GPTPluginDetailHeader",
+      "descriptor": "0x9584360",
+      "type_section_entry": "0x9d37754",
+      "accessor": "0xf31520",
+      "fields": [
+        {
+          "name": "title",
+          "record": "0x9a0613c",
+          "type_reference": "0x8d860d0"
+        },
+        {
+          "name": "subtitle",
+          "record": "0x9a06148",
+          "type_reference": "0x8bc9970"
+        },
+        {
+          "name": "icon",
+          "record": "0x9a06154",
+          "type_reference": "0x8cf1b80"
+        },
+        {
+          "name": "showsCreatorAction",
+          "record": "0x9a06160",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "actionHandler",
+          "record": "0x9a0616c",
+          "type_reference": "0x8cf49d6"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d7a348",
+          "flags": "0x30000",
+          "section_entry": "0x9cdd9f0"
+        }
+      ]
+    }
+  ],
+  "missing": [
+    "ChatGPTPluginsInstalledPluginsRail",
+    "ChatGPTPluginsSourceContent",
+    "GPTPluginDetailBottomBar",
+    "GPTPluginDetailContent"
+  ],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

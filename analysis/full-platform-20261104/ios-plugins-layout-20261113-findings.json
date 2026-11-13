@@ -1,0 +1,384 @@
+{
+  "status": "partial",
+  "target": {
+    "platform": "iOS",
+    "version": "1.2026.293",
+    "binary": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "authority": "shipped-artifact static instructions, selected SwiftUI type witnesses and existing parsed generic trees; no target execution",
+  "scope": {
+    "product_edit": false,
+    "device_or_build": false,
+    "official_runtime": false,
+    "services": false,
+    "candidate_groups": 2
+  },
+  "question": "Restore actual Plugin Directory parent before cosmetic changes. User newer screenshot is comparison evidence only.",
+  "reused": [
+    "ios-native-plugins-20261112-findings.json",
+    "ios-native-plugins-20261112-directory-all-tree.tree.txt",
+    "ios-native-plugins-20261112-rail-body.asm",
+    "ios-native-plugins-20261112-rail.asm",
+    "ios-native-plugins-20261112-source.asm",
+    "ios-native-plugins-20261112-ui.json",
+    "ios-native-plugins-20261112-ui-extra.json"
+  ],
+  "bounded_groups": [
+    {
+      "name": "Directory content/search attachment plus its actual RootToolbar wrapper",
+      "chain": "e82b70 ->e82d88 ->6f380f8 ->6f58c58(descriptor9720820); e83834 search affordance; e7dfc8 ->e7df48"
+    },
+    {
+      "name": "Installed rail actual item versus overflow label and horizontal parent",
+      "chain": "ee040c ->ee0448 ->ee06d4 ->ee09e8(LazyHStack); ee0acc ForEach->f36048 installedbutton; ee1488 Button->f3efc8->ee16e0 icon label; ee0dd8 overflow Button->f3ed48->ee1064 plus label"
+    }
+  ],
+  "findings": [
+    {
+      "id": "floating-search-owner",
+      "status": "verified-static",
+      "sites": [
+        "0xe82d58..0xe82d88",
+        "0x6f380f8..0x6f3820c",
+        "0x6f58c58..0x6f58c60",
+        "0x9720820"
+      ],
+      "observation": "Directory ScrollView after scrollPosition is wrapped by actual FloatingSearchBarModifier, with caller isPresented=1 and horizontalSafeAreaEdge raw=2. Descriptor fields are isPresented,horizontalSafeAreaEdge,searchBar,__deviceSafeAreaInsets,__searchBarHeight,_layoutDirection,_inheritedContentBottomInset. Search content is a separate builder0xe837d4; directory display is not an ordinary text field at top of the LazyVStack.",
+      "implementable": "Move entry affordance out of scroll content into independent bottom search host; retain content bottom inset/safe-area accounting. If independent safeAreaInset/overlay is used, label as host adaptation, not identical modifier restoration.",
+      "limits": [
+        "Modifier concrete body/layout solver not followed; raw horizontalSafeAreaEdge2 not given a guessed enum name. Exact actual bottom inset/height offsets not proven by metadata alone."
+      ]
+    },
+    {
+      "id": "floating-search-control",
+      "status": "verified-static",
+      "sites": [
+        "0x7d795c8",
+        "0xe83b50 ->0xe8397c",
+        "0xe83834..0xe838a0"
+      ],
+      "observation": "SearchAffordance Body associated-type is SwiftUIStyleguide.FloatingSearchBar. Builder consumes localization key gpt_plugins_directory_search_action plus typed DirectoryAction and query/focus lazy state. Existing search page e96c2c likewise uses FloatingSearchBar and browse content.",
+      "limits": [
+        "Native floating control geometry/style, focus activation/debounce and final search navigation are separate boundaries. No arbitrary top field or permanent keyboard should be called original."
+      ]
+    },
+    {
+      "id": "root-toolbar-owner",
+      "status": "verified-static",
+      "sites": [
+        "0x7d787f4",
+        "0x8cf4ca2",
+        "0xe7df48..0xe7dfc8"
+      ],
+      "observation": "RootToolbar actual Body is shared ChatGPTDirectoryNavigationUI.ChatGPTDirectoryNavigationToolbar. Wrapper copies selectedDirectorySection, showsDirectoryPicker, showsSkills,showsGPTs,showsRootNavigationItem and action closures, transforming entrypoint byte through table. This is a toolbar owner, not evidence for inline Browse/Workspace/Personal chips.",
+      "implementable": "Remove independently invented source chips as claimed official structure; use shared toolbar ownership and explicit selection action contract. Exact menu rows/title/dropdown visibility need actual shared toolbar body before declaring recovered.",
+      "limits": [
+        "Shared toolbar body/menu composition was not expanded in the two groups. Newer screenshot title dropdown can support a comparison hypothesis, not prove293 menu items/order. Directory section and directory source must not be conflated solely by field names."
+      ]
+    },
+    {
+      "id": "installed-rail-parent",
+      "status": "verified-static",
+      "sites": [
+        "0xee0448..0xee06d0",
+        "0xee09e8..0xee0ac8",
+        "0x7d7ae70",
+        "0x7d7ae78"
+      ],
+      "observation": "Installed rail is a SectionHeading followed by GeometryReader+horizontal ScrollView/LazyHStack; parent includes ordinary installed buttons, separate overflow button, optional skeletons. LazyHStack initializer0xee0abc receives spacing12 at0xee0aac. Parent applies its own scrollIndicators modifier; exact visibility getter is not renamed here. Existing title/items/sectionAction/actionHandler/trailingLoadingPlaceholderCount are source inputs.",
+      "limits": [
+        "Visible capacity/overflow threshold logic in ee0304 and geometry body not fully named; no guessed fixed item count. Existing frame48 instruction is retained in raw but not promoted to unconditional all-item height without the helper signature and final consumer."
+      ]
+    },
+    {
+      "id": "installed-icons-not-names",
+      "status": "verified-static",
+      "sites": [
+        "0xee1488..0xee16dc",
+        "0xf3efc8..0xf3efcc",
+        "0xee16e0..0xee184c",
+        "0x7d7c6f0"
+      ],
+      "observation": "Actual InstalledPluginButton Button factory0xee15f0 uses label closuref3efc8->ee16e0. Its label type is PluginDirectoryIcon with AccessibilityAttachmentModifier, FrameLayout and rectangle content shape, with no visible Text. item.name is consumed through0xee1688 for accessibility labeling after button construction, so model name does not establish visible label under icon.",
+      "implementable": "Installed rail displays icon buttons only; keep name as accessibility label, remove current visible name text under each icon.",
+      "limits": [
+        "Exact icon numerical size/corner supplier and loading/fallback rendering are not proved in this pass."
+      ]
+    },
+    {
+      "id": "overflow-correction",
+      "status": "verified-static",
+      "sites": [
+        "0xee0dd8..0xee1060",
+        "0xee1064..0xee12a4",
+        "0xee1100",
+        "0x7d7c6e0"
+      ],
+      "observation": "Old report described ee0f64 as an ordinary item button. Actual helper belongs to separate InstalledOverflowButton: its label ee1064 constructs Text plus (Unicode43) inside rounded rectangle. Its field/name-independent label is not normal installed plugin artwork. Correct original report interpretation without overwriting historical evidence.",
+      "implementable": "Keep overflow/installed destinations and UI separate; do not duplicate a normal plugin card as More or use overflow label tree to size ordinary icons."
+    },
+    {
+      "id": "source-sections-boundary",
+      "status": "partial",
+      "sites": [
+        "prior0xe83b90",
+        "prior0x7d7ae20"
+      ],
+      "observation": "SourceContent iterates supplied PluginDirectorySectionIdentifier and passes actual SectionContent; existing source state includes sections/loadState/pagination. It does not establish that source enums are section titles. Generic source grouping OpenAI/workspace/personal is not evidence for each display heading.",
+      "implementable": "Frontend adapter must supply ordered section identity, title, content and allowed section action separately from source selection; use original projected section contract, not one section per source.",
+      "limits": [
+        "Actual SectionHeading clickable/title display gate, row action slots/spacing and source-specific named sections such as popular/new are not closed by this bounded pass. Do not hardcode new screenshot labels as293."
+      ]
+    }
+  ],
+  "screenshot_comparison": {
+    "corroborated": [
+      "Bottom floating search ownership versus current top search block.",
+      "Installed icon rail without visible name labels; overflow is a separate affordance.",
+      "Directory toolbar owner is distinct from inline source chips."
+    ],
+    "not_proven": [
+      "Exact title dropdown menu inventory and original source selection mapping.",
+      "Named popular/new sections or their order/content in293.",
+      "Pixel sizes, icon artwork, overflow count and complete transition/material behavior."
+    ]
+  },
+  "next_precise_breakpoints": [
+    "FloatingSearchBarModifier9720820 actual ViewModifier Body for original bottom layout and height/inset rules.",
+    "ChatGPTDirectoryNavigationToolbar actual ToolbarContent Body for source/title menu and visibility.",
+    "PluginDirectorySectionHeading9584898/actual SectionContent owner for header action admission and row/card layout."
+  ],
+  "raw_manifest": [
+    {
+      "path": "ios-plugins-layout-20261113-raw/0x7d79738.json",
+      "sha256": "65f9010ac2b8b8f0bd6aed389f14ecb47db143f1c93443babdde66a6ad2b5989",
+      "bytes": 3023
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/0x7d79740.json",
+      "sha256": "0b9326165e2c617235046b40bfff7f2df30417005216083493e036dac3a0fddf",
+      "bytes": 3829
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/attachment-modifier-tail.asm",
+      "sha256": "e97c6a1f9b5d52a5ab0700086f7187bd77a9abbf282481c3f2f28301b54725d6",
+      "bytes": 2997
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/attachment-modifier-tail.json",
+      "sha256": "dc82f683802065e8142d7220daae3c75cc3b6060075d495547e0f916b9d9d3a7",
+      "bytes": 2341
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/attachment-type-accessor.asm",
+      "sha256": "7618f49a55bf92dc55a3700aef30695735c6ce8077f736dde4cf8b37fbe9121e",
+      "bytes": 1111
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/attachment-type-accessor.json",
+      "sha256": "f6f98932d5ea968187aeb3c72d18699b235a715b1d675718212a6b06be90a2d0",
+      "bytes": 1033
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/attachment-type-fields.json",
+      "sha256": "86879ffe351061c8b409bc9cd0f271353ab7d0b313eda9e7b92ef36d850b9fec",
+      "bytes": 694
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/content-modifier.asm",
+      "sha256": "0e70051a336c1fc530b18dbaac809915fee03fb180136685381d50bdf8d45235",
+      "bytes": 2254
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/content-modifier.json",
+      "sha256": "6ac94879c6d1154353304305fcd70508ca3b71c264f88fae481c2ec5c12e2b93",
+      "bytes": 1784
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/directory-content.asm",
+      "sha256": "d32501adf413c295092f84784eeb8b541f37a3c925511ffa210e81fbea223a4e",
+      "bytes": 44549
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/directory-content.json",
+      "sha256": "7dde63a7934cc7d51b7023688e6e9588411c8f536158366a24c42d9c3b1db787",
+      "bytes": 39181
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/floating-search-parent.asm",
+      "sha256": "caf9343025f4ea9336f09690197efb397b60e5a75f06eac71c48948fca4c385f",
+      "bytes": 5669
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/floating-search-parent.json",
+      "sha256": "9fc4ca5325e127e3159edd861431480a0e79bea48acb2f58fc45a2a6f1b5d9b7",
+      "bytes": 3987
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-button-action-thunk.asm",
+      "sha256": "36d08eed180a7e9bc2aa814f287c4e6f0a37cdcc643a7a24a9f8a6ef5692c0b8",
+      "bytes": 1191
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-button-action-thunk.json",
+      "sha256": "6de7972619fc4c56537d6a86329c8ed2195a30023d4f7d2030c876b5eca2feed",
+      "bytes": 1378
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-button-label-thunk.asm",
+      "sha256": "c21378e0d23af8d4acdb55df2e8e7a80460c19b58f665824d44909f40810d23f",
+      "bytes": 274
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-button-label-thunk.json",
+      "sha256": "605efff06fe2ca9cebcd5be20af62e63cec2ee72bd1a9652fdc352f1eb93f5fa",
+      "bytes": 891
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-button-type.json",
+      "sha256": "ed452fd3bfc86896a47ae3e582fd4b042ffa8cead7ab3c3050286617fe6a8acb",
+      "bytes": 1806
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-item-body.asm",
+      "sha256": "05169425e2760869f62128ca1723ce533dfd6c6d66d1e47edaa60b172e008e4f",
+      "bytes": 9082
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-item-body.json",
+      "sha256": "018546eb17d6a94f7a52a9d173802a7ea6629ace86beff5cb20ab38083e5e36e",
+      "bytes": 9088
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-label-tail.asm",
+      "sha256": "59355b94e56aa5424c79d049eb1857420d05b26e49fd4ea252956062da6069cf",
+      "bytes": 5817
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-label-tail.json",
+      "sha256": "2dbc1320edad46ee45aa117a1922b21f75abb2e9bb1494980d8f1242f9a1fcc7",
+      "bytes": 5263
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-plugin-button.asm",
+      "sha256": "2fe24eb7434a2282c0ac4bf600d5f666b7bef418492417b84293bb69f453202f",
+      "bytes": 10185
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/installed-plugin-button.json",
+      "sha256": "dc7c58d23dc706c481988dca70faea995c722cfdef6cf6f4c9bd4d19ee70bb3f",
+      "bytes": 8205
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/rail-heading-build.asm",
+      "sha256": "fd42b991f9e1caa153c69a8aaf8ba545732655195919260bbb6e2f694b161320",
+      "bytes": 6442
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/rail-heading-build.json",
+      "sha256": "694587d11ba809d54f9b7dd6d3d05908a8238e781899865c7163e2ad81de0ed1",
+      "bytes": 5924
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/rail-item-thunks.asm",
+      "sha256": "58190710d81a3d8b16b8d36362c0f524aeae7ff74fd2734039594662a2e0d6c1",
+      "bytes": 3471
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/rail-item-thunks.json",
+      "sha256": "89b922271d2a2c593796669d8beddcc822cc9c081b5460c6950d381081668e43",
+      "bytes": 2007
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/rail-label-end.asm",
+      "sha256": "e6f79fa657188880ce85d9a99af9e1deb26914375cd821fe57d6364d89a88e50",
+      "bytes": 376
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/rail-label-end.json",
+      "sha256": "02cd120dd96c69f4760442eaa2ce5e8d4aab0ab3461e4ab97a60c62ab5ec9486",
+      "bytes": 972
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/rail-selected-types.json",
+      "sha256": "28e3c22afd1a7951b876b16185948903569a43953bb0bc180a6db44c2b795f4d",
+      "bytes": 16820
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/root-toolbar-witness.json",
+      "sha256": "3c3624aa135ac53cf395d313a7c9b874c5fb8f9ce531da41694d69f6c364159f",
+      "bytes": 4031
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/search-affordance-body.asm",
+      "sha256": "caf9343025f4ea9336f09690197efb397b60e5a75f06eac71c48948fca4c385f",
+      "bytes": 5669
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/search-affordance-body.json",
+      "sha256": "9fc4ca5325e127e3159edd861431480a0e79bea48acb2f58fc45a2a6f1b5d9b7",
+      "bytes": 3987
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/search-affordance-witness.json",
+      "sha256": "15276ebe58b9ab5e59960792c3c7c8ad1ec13e6b5249fd30013d0af0dc02b7b6",
+      "bytes": 4611
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/search-associated.json",
+      "sha256": "2fcce3b7f64f744e48254a06cedf5025d69bdeafc13d238c5158b61935471eae",
+      "bytes": 748
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/search-attachment-helper.asm",
+      "sha256": "c05cf6c33869812d38b49901bca34d07a7566ba393048f08d1f5031f5eef3f9c",
+      "bytes": 2693
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/search-attachment-helper.json",
+      "sha256": "2a399a55e8070901282c8b8873cead902f160c2e43618fa5d3eff2427d0a3ebf",
+      "bytes": 1753
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/selected-label-literals.json",
+      "sha256": "c0e2b8628a666fef9ac95c5e82199adc6fa4daa7bb99db1a94d754c5cecca76e",
+      "bytes": 204
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/toolbar-associated.json",
+      "sha256": "64def7b0f6f5a9d666dc1e4713d175ae668eb343e1ab622bd310e4147684389d",
+      "bytes": 775
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/toolbar-body-witness.asm",
+      "sha256": "49f4b588a06e130aa9ee8b249a5fe8edef2e24c69780020450d0582ad33bd8a0",
+      "bytes": 341
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/toolbar-body-witness.json",
+      "sha256": "cec98d3e67d60ca6db24fd2dc06527db0ef96acc63c69ac65d4a52a905b5a419",
+      "bytes": 923
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/toolbar-body.asm",
+      "sha256": "b2c8e5d87bfc03bd9391ca5a99de2e9570aa953c9bf4bb019c8270332c12e770",
+      "bytes": 25535
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/toolbar-body.json",
+      "sha256": "12964e19a938dd9467b3f72c57ff67af3c3c4ecbb0e62b1d2f17b0c2618b4698",
+      "bytes": 18585
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/toolbar-wrapper-complete.asm",
+      "sha256": "a6fddd83a93392bfb943ca93f7809224a983bff5926437dbb398e4c6f32c6bfe",
+      "bytes": 1659
+    },
+    {
+      "path": "ios-plugins-layout-20261113-raw/toolbar-wrapper-complete.json",
+      "sha256": "fa8ebfd3bcbd08c64b656759b7ffb01c3cabd8f52bb57913154576951743a696",
+      "bytes": 1118
+    }
+  ]
+}

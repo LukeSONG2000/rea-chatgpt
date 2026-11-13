@@ -45,7 +45,7 @@ class AppShellActivity : ComponentActivity() {
         val profile = intent.getStringExtra("shell-profile") ?: intent.getStringExtra("remote-profile") ?: "preview"
         val preferences = FrontendPreferences(this, profile)
         val remoteStore = runCatching { RemoteListStore(getSharedPreferences("remote-list-$profile", MODE_PRIVATE)) }
-        val initialRoute = if (intent.getBooleanExtra("remote", false)) "remote" else "home"
+        val initialRoute = if (intent.getBooleanExtra("remote", false)) "remote" else preferences.rootRoute
         val failFirst = profile.startsWith("test-") && intent.getBooleanExtra("remote-fail-first", false)
         setContent {
             var language by remember { mutableStateOf(preferences.language) }
@@ -107,7 +107,7 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
     val pageState = rememberSaveableStateHolder()
     val chinese = LocalConfiguration.current.locales[0].language == "zh"
     val remoteProvider = remember(chinese) { SyntheticRemoteListProvider(chinese, failFirst) }
-    var error by remember { mutableStateOf(false) }
+    var error by remember { mutableStateOf(!preferences.rootCheckpointValid) }
     var notice by remember { mutableStateOf(false) }
     // Local frontend selection. Server-backed temporary conversation lifecycle is reserved.
     var temporaryChat by rememberSaveable { mutableStateOf(false) }
@@ -117,17 +117,24 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
     val settingsScroll = rememberLazyListState()
     fun navigate(next: String) {
         focus.clearFocus()
-        if (next == "home" || next == "remote") mainRoute = next
+        if (ShellNavigation.isRoot(next)) {
+            // Returning from Settings/search to an already displayed root is
+            // not a new checkpoint. In particular a preserved corrupt record
+            // must not trap the safe home fallback inside a child page.
+            if (next != mainRoute && !preferences.selectRoot(next)) { error = true; return }
+            mainRoute = next
+        }
         route = next
     }
     fun back() {
         val returnToSidebar = route == "search"
-        route = when {
+        val next = when {
             route == "appearance" || route == "language" -> "general"
             route == "general" || route.startsWith("settings-") -> "settings"
-            route == "remote" -> { mainRoute = "home"; "home" }
+            ShellNavigation.isRoot(route) -> "home"
             else -> mainRoute
         }
+        navigate(next)
         if (returnToSidebar) coroutine.launch { drawer.open() }
     }
     BackHandler(drawer.isOpen || route != "home") {
@@ -138,7 +145,9 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
         text = { Text(stringResource(R.string.shell_home_pending)) },
         confirmButton = { TextButton(onClick = { notice = false }) { Text(stringResource(R.string.remote_done)) } })
     Surface(Modifier.fillMaxSize().semantics { testTagsAsResourceId = true }) {
-        ModalNavigationDrawer(drawerState = drawer, gesturesEnabled = route == "home" || route == "remote", drawerContent = {
+        // Material3 owns gesture progress/cancellation. The root-only admission is
+        // a host policy: nested Settings/selection pages retain ordinary Back.
+        ModalNavigationDrawer(drawerState = drawer, gesturesEnabled = ShellNavigation.isRoot(route), drawerContent = {
             ModalDrawerSheet(Modifier.widthIn(max = 320.dp).testTag(
                 if (drawer.currentValue == DrawerValue.Open && drawer.targetValue == DrawerValue.Open && !drawer.isAnimationRunning)
                     "shell-drawer" else "shell-drawer-transition"),
@@ -185,13 +194,13 @@ private fun AppShell(preferences: FrontendPreferences, language: String, appeara
                 Column(Modifier.fillMaxSize().safeDrawingPadding().imePadding()) {
                     Row(Modifier.fillMaxWidth().heightIn(min = 56.dp).padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                         IconButton(onClick = {
-                            if (route == "home") { focus.clearFocus(); coroutine.launch { drawer.open() } } else back()
+                            if (ShellNavigation.isRoot(route)) { focus.clearFocus(); coroutine.launch { drawer.open() } } else back()
                         }, modifier = Modifier.size(if (route == "home") 44.dp else 48.dp)
                             .then(if (route == "home") Modifier.clip(RoundedCornerShape(50))
                                 .background(if (isSystemInDarkTheme()) Color(0xFF303030) else Color.White) else Modifier)
-                            .testTag(if (route == "home") "shell-menu" else "shell-back")) {
-                            Icon(painterResource(if (route == "home") R.drawable.ds_sidebar_menu_regular_24 else R.drawable.ds_arrow_left_lg_regular_24),
-                                stringResource(if (route == "home") R.string.shell_menu else R.string.remote_back))
+                            .testTag(if (ShellNavigation.isRoot(route)) "shell-menu" else "shell-back")) {
+                            Icon(painterResource(if (ShellNavigation.isRoot(route)) R.drawable.ds_sidebar_menu_regular_24 else R.drawable.ds_arrow_left_lg_regular_24),
+                                stringResource(if (ShellNavigation.isRoot(route)) R.string.shell_menu else R.string.remote_back))
                         }
                         if (route == "home") {
                             Row(Modifier.weight(1f), horizontalArrangement = Arrangement.Center) {

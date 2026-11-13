@@ -1,0 +1,131 @@
+{
+  "artifact": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9",
+  "selection": "Exact class name StartScreenSettingsMenuButton in ObjC classlist, only matched class extracted",
+  "classes": [
+    {
+      "class_address": "0xacc3cd0",
+      "class_ro_address": "0xacc3c68",
+      "name": "_TtC15ChatGPTSettingsP33_3A7AF352684367C5AD1782C48F399D9929StartScreenSettingsMenuButton",
+      "flags": 452,
+      "instance_start": 8,
+      "instance_size": 51,
+      "methods": [
+        {
+          "entry": "0x7c8fb30",
+          "file_offset": 130612016,
+          "selector": "didMoveToWindow",
+          "types": "v16@0:8",
+          "implementation": "0x1102f18",
+          "implementation_file_offset": 17837848
+        },
+        {
+          "entry": "0x7c8fb3c",
+          "file_offset": 130612028,
+          "selector": "layoutSubviews",
+          "types": "v16@0:8",
+          "implementation": "0x1102f9c",
+          "implementation_file_offset": 17837980
+        },
+        {
+          "entry": "0x7c8fb48",
+          "file_offset": 130612040,
+          "selector": "contextMenuInteraction:configurationForMenuAtLocation:",
+          "types": "@40@0:8@16{CGPoint=dd}24",
+          "implementation": "0x1103030",
+          "implementation_file_offset": 17838128
+        },
+        {
+          "entry": "0x7c8fb54",
+          "file_offset": 130612052,
+          "selector": "contextMenuInteraction:willDisplayMenuForConfiguration:animator:",
+          "types": "v40@0:8@16@24@32",
+          "implementation": "0x1103204",
+          "implementation_file_offset": 17838596
+        },
+        {
+          "entry": "0x7c8fb60",
+          "file_offset": 130612064,
+          "selector": "contextMenuInteraction:willEndForConfiguration:animator:",
+          "types": "v40@0:8@16@24@32",
+          "implementation": "0x11032b4",
+          "implementation_file_offset": 17838772
+        },
+        {
+          "entry": "0x7c8fb6c",
+          "file_offset": 130612076,
+          "selector": "initWithFrame:",
+          "types": "@48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+          "implementation": "0x11037e4",
+          "implementation_file_offset": 17840100
+        },
+        {
+          "entry": "0x7c8fb78",
+          "file_offset": 130612088,
+          "selector": "initWithCoder:",
+          "types": "@24@0:8@16",
+          "implementation": "0x11038ac",
+          "implementation_file_offset": 17840300
+        },
+        {
+          "entry": "0x7c8fb84",
+          "file_offset": 130612100,
+          "selector": ".cxx_destruct",
+          "types": "v16@0:8",
+          "implementation": "0x11038cc",
+          "implementation_file_offset": 17840332
+        }
+      ],
+      "ivars": [
+        {
+          "entry": "0xab17b40",
+          "name": "labelView",
+          "offset_storage_address": "0xadaadc8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab17b60",
+          "name": "preparedMenu",
+          "offset_storage_address": "0xadaadd0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab17b80",
+          "name": "presentationRequest",
+          "offset_storage_address": "0xb1650b0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab17ba0",
+          "name": "attemptedRequest",
+          "offset_storage_address": "0xb1650b8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab17bc0",
+          "name": "didPresent",
+          "offset_storage_address": "0xb1650c0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab17be0",
+          "name": "isMenuPresented",
+          "offset_storage_address": "0xb1650c8",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab17c00",
+          "name": "isPresentationScheduled",
+          "offset_storage_address": "0xb1650d0",
+          "limit": "Offset storage address is not the runtime object offset"
+        },
+        {
+          "entry": "0xab17c20",
+          "name": "isWaitingForTransition",
+          "offset_storage_address": "0xb1650d8",
+          "limit": "Offset storage address is not the runtime object offset"
+        }
+      ]
+    }
+  ],
+  "unsupported_names_skipped": 0
+}

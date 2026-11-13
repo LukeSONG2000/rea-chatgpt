@@ -1,0 +1,59 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": null,
+  "mangled_address": "0x8dc5084",
+  "length": 46,
+  "mangled_hex": "02bb00d1017902bdebd001024893cf01027b09d10179022d5dd1017941425f4143516f5f5f414553674146744747",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 2,
+      "target": "0xaad5140",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI6PickerVMn"
+    },
+    {
+      "offset": 6,
+      "kind": 2,
+      "target": "0xaad3c48",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI4TextVMn"
+    },
+    {
+      "offset": 11,
+      "kind": 2,
+      "target": "0xaabe3d8",
+      "resolved_context": "0x96d81d8",
+      "label": "ChatGPTDirectoryNavigation.ChatGPTDirectorySection"
+    },
+    {
+      "offset": 16,
+      "kind": 2,
+      "target": "0xaad5a10",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI9TupleViewVMn"
+    },
+    {
+      "offset": 22,
+      "kind": 2,
+      "target": "0xaadadc8",
+      "resolved_context": "0x955802c",
+      "label": "<unresolved-context@0x955802c>"
+    }
+  ],
+  "unresolved_contexts": [
+    {
+      "address": "0x955802c",
+      "flags": "0x20084",
+      "kind": 4,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    }
+  ],
+  "limits": [
+    "Symbolic context references only, not a reconstructed generic type tree",
+    "Type presence does not prove runtime branch selection or component creation"
+  ]
+}

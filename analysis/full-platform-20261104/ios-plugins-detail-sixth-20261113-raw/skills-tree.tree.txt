@@ -1,0 +1,75 @@
+kind=Type
+  kind=BoundGenericStructure
+    kind=Type
+      kind=Structure
+        kind=Enum
+          kind=Module, text="SwiftUI"
+          kind=Identifier, text="_VariadicView"
+        kind=Identifier, text="Tree"
+    kind=TypeList
+      kind=Type
+        kind=BoundGenericStructure
+          kind=Type
+            kind=Structure
+              kind=Module, text="SwiftUI"
+              kind=Identifier, text="_LayoutRoot"
+          kind=TypeList
+            kind=Type
+              kind=Structure
+                kind=Module, text="SwiftUIToolbelt"
+                kind=Identifier, text="FlowLayout"
+      kind=Type
+        kind=BoundGenericStructure
+          kind=Type
+            kind=Structure
+              kind=Module, text="SwiftUI"
+              kind=Identifier, text="TupleView"
+          kind=TypeList
+            kind=Type
+              kind=Tuple
+                kind=TupleElement
+                  kind=Type
+                    kind=BoundGenericStructure
+                      kind=Type
+                        kind=Structure
+                          kind=Module, text="SwiftUI"
+                          kind=Identifier, text="ForEach"
+                      kind=TypeList
+                        kind=Type
+                          kind=BoundGenericStructure
+                            kind=Type
+                              kind=Structure
+                                kind=Module, text="Swift"
+                                kind=Identifier, text="ArraySlice"
+                            kind=TypeList
+                              kind=Type
+                                kind=Structure
+                                  kind=Module, text="ChatGPTPluginsDirectory"
+                                  kind=Identifier, text="GPTPluginDetailSkillContent"
+                        kind=Type
+                          kind=BoundGenericStructure
+                            kind=Type
+                              kind=Structure
+                                kind=Module, text="Tagged"
+                                kind=Identifier, text="Tagged"
+                            kind=TypeList
+                              kind=Type
+                                kind=Structure
+                                  kind=Module, text="ChatGPTPluginsFoundation"
+                                  kind=Identifier, text="PluginSkill"
+                              kind=Type
+                                kind=Structure
+                                  kind=Module, text="Swift"
+                                  kind=Identifier, text="String"
+                        kind=Type
+                          kind=TypeSymbolicReference, index=156781292
+                kind=TupleElement
+                  kind=Type
+                    kind=BoundGenericEnum
+                      kind=Type
+                        kind=Enum
+                          kind=Module, text="Swift"
+                          kind=Identifier, text="Optional"
+                      kind=TypeList
+                        kind=Type
+                          kind=TypeSymbolicReference, index=156781256

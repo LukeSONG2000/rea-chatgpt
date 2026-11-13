@@ -1,0 +1,170 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "status": "partial",
+  "types": [
+    {
+      "name": "GPTPluginDetailInformationRow",
+      "descriptor": "0x9583408",
+      "type_section_entry": "0x9d37608",
+      "accessor": "0xf0d8a4",
+      "fields": [
+        {
+          "name": "id",
+          "record": "0x9a0487c",
+          "type_reference": "0x8cf3854"
+        },
+        {
+          "name": "value",
+          "record": "0x9a04888",
+          "type_reference": "0x8cf385a"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d77574",
+          "flags": "0x30000",
+          "section_entry": "0x9cdd868"
+        },
+        {
+          "descriptor": "0x7d77614",
+          "flags": "0x30000",
+          "section_entry": "0x9cdd874"
+        }
+      ]
+    },
+    {
+      "name": "GPTPluginDetailSkillContent",
+      "descriptor": "0x9583430",
+      "type_section_entry": "0x9d3760c",
+      "accessor": "0xf0d8e0",
+      "fields": [
+        {
+          "name": "destination",
+          "record": "0x9a04860",
+          "type_reference": "0x8cf162c"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d77514",
+          "flags": "0x30000",
+          "section_entry": "0x9cdd860"
+        },
+        {
+          "descriptor": "0x7d7754c",
+          "flags": "0x30000",
+          "section_entry": "0x9cdd864"
+        }
+      ]
+    },
+    {
+      "name": "GPTPluginDetailLoadedContent",
+      "descriptor": "0x9583bec",
+      "type_section_entry": "0x9d376cc",
+      "accessor": "0xf294ec",
+      "fields": [
+        {
+          "name": "content",
+          "record": "0x9a059e8",
+          "type_reference": "0x8cf1c66"
+        },
+        {
+          "name": "showsAllSkills",
+          "record": "0x9a059f4",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "isRefreshing",
+          "record": "0x9a05a00",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "refreshError",
+          "record": "0x9a05a0c",
+          "type_reference": "0x91dbc40"
+        },
+        {
+          "name": "actionHandler",
+          "record": "0x9a05a18",
+          "type_reference": "0x8cf49d6"
+        },
+        {
+          "name": "_pendingInstallPluginID",
+          "record": "0x9a05a24",
+          "type_reference": "0x8cf19e8"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d79248",
+          "flags": "0x30000",
+          "section_entry": "0x9cdd994"
+        }
+      ]
+    },
+    {
+      "name": "GPTPluginDetailInformationSection",
+      "descriptor": "0x958428c",
+      "type_section_entry": "0x9d3773c",
+      "accessor": "0xf33fb8",
+      "fields": [
+        {
+          "name": "rows",
+          "record": "0x9a06028",
+          "type_reference": "0x8cf1c94"
+        },
+        {
+          "name": "actionHandler",
+          "record": "0x9a06034",
+          "type_reference": "0x8cf49d6"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d7a528",
+          "flags": "0x30000",
+          "section_entry": "0x9cdda08"
+        }
+      ]
+    },
+    {
+      "name": "GPTPluginDetailSkillsSection",
+      "descriptor": "0x95842b0",
+      "type_section_entry": "0x9d37740",
+      "accessor": "0xf34068",
+      "fields": [
+        {
+          "name": "skills",
+          "record": "0x9a06050",
+          "type_reference": "0x8cf1c8a"
+        },
+        {
+          "name": "showsAllSkills",
+          "record": "0x9a0605c",
+          "type_reference": "0x8bfd810"
+        },
+        {
+          "name": "actionHandler",
+          "record": "0x9a06068",
+          "type_reference": "0x8cf49d6"
+        }
+      ],
+      "conformances": [
+        {
+          "descriptor": "0x7d7a4d8",
+          "flags": "0x30000",
+          "section_entry": "0x9cdda04"
+        }
+      ]
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Field names are metadata, not values or active configuration.",
+    "No Swift UI body behavior or runtime layout established.",
+    "Only struct and direct type conformance records selected."
+  ]
+}

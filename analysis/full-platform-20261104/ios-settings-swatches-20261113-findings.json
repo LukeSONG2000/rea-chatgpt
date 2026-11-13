@@ -1,0 +1,298 @@
+{
+  "status": "partial-two-caller-groups-source-swatches-confirmed",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "version": "1.2026.293",
+    "platform": "iOS",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": {
+    "read_only_product": true,
+    "groups": [
+      {
+        "id": 1,
+        "question": "Does293 actually draw color legends in its accent picker and what does it consume?",
+        "chain": "SettingsAppearanceSection1084a1c -> ThemeColorSelectorPart971e570 ->View witness6f21d44 ->body6f21344 ->selection content6f214a4 ->row6f2162c ->icon closure6fc1c78",
+        "stop": "Actual title+icon producer, symbol, semantic tint, scaled size source and image alignment proved. Do not expand whole theme subsystem for base point size."
+      },
+      {
+        "id": 2,
+        "question": "Does original Starting screen native button content/config explain safe adapter boundary for clipped current title?",
+        "chain": "StartScreenSettingsMenu958b6dc representable witness1102b48/4c ->make1101e5c/update1101f04",
+        "stop": "Actual native hosting configuration, content view and native-menu carrier confirmed. Exact intrinsic/layout override and final visual clipping cause remain unclosed; no screenshot-size guess."
+      }
+    ]
+  },
+  "official_observations": [
+    {
+      "id": "accent-actual-source",
+      "type": "SwiftUIStyleguide.ThemeColorSelectorPart",
+      "descriptor": "0x971e570",
+      "view_conformance": "0x8383ae8",
+      "body_witness": "0x6f21d44",
+      "body": "0x6f21344",
+      "fields": [
+        "themeColorSetting",
+        "updateThemeColor",
+        "refreshSettings",
+        "availableColors",
+        "_colorScheme",
+        "_themeColorCircleSize"
+      ],
+      "evidence": [
+        "selector-metadata.json",
+        "selector-witness.json",
+        "selector-body.asm"
+      ],
+      "conclusion": "Actual293 settings consumer uses this styleguide selector. AccentColorPicker was not selected by metadata tool; do not infer a separate same-named view."
+    },
+    {
+      "id": "menu-row-icons-are-real",
+      "constructor": "0x6f2162c",
+      "full_type_record": "0x838c348",
+      "shape": "labelStyle<TitleAndIconLabelStyle>(Label<Text,Image>)",
+      "title_closure": "0x6fc1c54 ->0x6f2182c",
+      "icon_closure": "0x6fc1c78",
+      "evidence": [
+        "picker-row-tree.json",
+        "row-label-closures.asm",
+        "selector-body.asm6f216bc..6f2176c"
+      ],
+      "conclusion": "Text-only host Picker drops a real original image producer. Restoring image alongside source label is evidence backed and does not depend on newer screenshot."
+    },
+    {
+      "id": "exact-menu-symbol-and-sizing-input",
+      "symbol": "circlebadge.fill",
+      "literal": "0x8955900",
+      "sites": [
+        "0x6fc1ca8..0x6fc1cf8",
+        "0x6fc1cb4 -> selector metadata+0x24 _themeColorCircleSize",
+        "0x6fc1cc4 reads metric wrapped value;d8 ->0x6fc1cd8",
+        "0x6fc1cdc ->configurationWithPointSize:",
+        "0x6fc1cfc passes symbol and config toimage factory46e0d24"
+      ],
+      "type": "_themeColorCircleSize:SwiftUI.ScaledMetric<CoreGraphics.CGFloat>, bare typeref0x8c61e40",
+      "limit": "Point size is supplied by this metric. Constructor/default base value and scaling text-style anchor not closed. Do not call screenshot-estimated20/24 recovered."
+    },
+    {
+      "id": "semantic-tint-and-image-carrier",
+      "sites": [
+        "0x6fc1d08 compares captured native display byte7",
+        "byte7->74ed9b8 ->literal8a51640",
+        "other->74e45bc and uses first returned color while releasing other style colors",
+        "0x6fc1d70 SwiftUI.Color->UIColor",
+        "0x6fc1d80 imageWithTintColor:renderingMode: argumentw3=1",
+        "0x6fc1d94..0x6fc1da0 imageWithAlignmentRectInsets: withbottom0/right-4 explicitly supplied",
+        "0x6fc1db8 Image(uiImage:)"
+      ],
+      "special_resource": "ChatGPT/interactive/bg/primary/default",
+      "mappings": "display-color-mapping.json records actual title dispatcher and first-color jump table, independent of enum declaration ordering",
+      "conclusion": "Use actual semantic source colors and the source system symbol rendered as a tinted UIImage, then SwiftUI.Image; do not let parent tint turn every menu dot into one color. Preserve theme-aware special Black/White resource rather than hardcode black.",
+      "limit": "Top/left image inset producer helpers not fully decoded; only supplied bottom0/right-4 named here. Runtime dynamic color resolution not executed."
+    },
+    {
+      "id": "available-color-scope",
+      "conclusion": "availableColors is a supplied array field; real source color mappings do not prove all11 are admitted for every account. Preserve existing admitted array and selection callback; do not widen availability based on this resolver inventory."
+    },
+    {
+      "id": "starting-button-native-creation",
+      "witness": "0x1102b48 ->0x1101e5c",
+      "configuration": [
+        "buttonWithType:1 (1101e74..7c)",
+        "clear background1101e94..1101eb0",
+        "setTintColor via74efee0",
+        "showsMenuAsPrimaryAction=true1101ed4..ed8",
+        "preferredMenuElementOrder raw2 at1101ee0..ee4",
+        "isAccessibilityElement=false1101ef0..ef4"
+      ],
+      "selectors": "start-native-button-selectors.json",
+      "limit": "No direct UIButton configuration.title appears in this bounded make consumer; do not infer its complete title/layout from that negative window alone."
+    },
+    {
+      "id": "starting-value-content-hosting",
+      "update": "0x1102b4c ->0x1101f04",
+      "sites": [
+        "11022c4..11022e4 UIHostingConfiguration(content:) closure1172258",
+        "11022e8 Edge.Set.all;11022ec d0=0 then1102300 margins(_all,0)",
+        "1102324..1102330 minSize(width:height:) constructor exists; exact optional parameter unpack not asserted",
+        "existing content path1102360..11023a0 setsUIContentView.configuration",
+        "new content path11023ac..11023b8 makeContentView",
+        "11023fc..1102400 content isUserInteractionEnabled=false",
+        "1102404..110240c adds hosted view to button",
+        "110241c..1102420 button.setNeedsLayout"
+      ],
+      "conclusion": "Original selector uses a native menu button carrying measured hosted SwiftUI content, rather than the independent host current configuration.title+chevron implementation. Its content layout/measurement is the first boundary to examine for clipping; adding arbitrary horizontal padding is not source restoration.",
+      "limit": "Actual1172258 inner value/chevron content, original subclass intrinsicContentSize/layoutSubviews and exact minSize optional arguments not closed by this two-group stop."
+    }
+  ],
+  "current_host_observation": {
+    "accent": "implementation/ios/Sources/NativeConversationHost.swift ~9993 Picker creates Text(color.title) only, with no icon; exact omission proved against actual source rowLabel.",
+    "starting": "implementation/ios/Sources/FrontendHaptics.swift FrontendStartScreenMenu currently uses UIButton.Configuration.plain title+system chevron, body font, contentInsets.zero and UIViewRepresentable fixedSize but no explicit sizeThatFits implementation. It is labelled an adapter. This is a plausible layout boundary, not a proven runtime cause of truncation."
+  },
+  "safe_product_decision": {
+    "restore": [
+      "Accent menu row should contain original label plus circlebadge.fill Image using actual semantic swatch tint. Preserve source TitleAndIconLabelStyle and admitted availableColors.",
+      "Prefer source UIImageSymbolConfiguration + tint + image alignment rendering, keeping dynamic point-size input explicit until original ScaledMetric init closes."
+    ],
+    "host_adapter_fix": [
+      "For Starting screen, a bounded intrinsic/content-fitting or UIViewRepresentable sizeThatFits fix is an independent host correction if keeping current UIButton title adapter. Do not advertise guessed insets/font sizes as original.",
+      "Alternatively restore a hosted SwiftUI label/native menu button carrier consistent with proven UIHostingConfiguration; its final inner visual geometry still needs explicit adapter classification."
+    ],
+    "do_not": [
+      "Do not use newer screenshot circles to replace source circlebadge.fill.",
+      "Do not change Theme/Appearance topology or available colors as a side effect.",
+      "Do not add Start fixed width or menu row fixed size from screenshot estimation."
+    ]
+  },
+  "unknowns": [
+    "Accent ScaledMetric initial base size/text-style scaling anchor.",
+    "Top/left symbol alignment inset helper values and complete image factory fallback behavior.",
+    "Original Starting screen subclass intrinsic/layout methods, exact hosted value content1172258 and minSize optional arguments.",
+    "No current device rendering/measurement performed; actual local title clipping not independently reproduced in this evidence-only task.",
+    "No new explicit gesture/haptic caller proved."
+  ],
+  "reused": [
+    "ios-settings-theme-passwords-fidelity-20261112.json",
+    "ios-settings-general-sixth-20261113-findings.json",
+    "ios-settings-general-sixth-20261113-raw/start-native-menu-producer.asm",
+    "ios-settings-symbolic-tree-20261112/theme-content.json"
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-settings-swatches-20261113-raw",
+  "raw_manifest": [
+    {
+      "file": "actual-first-color-resources.json",
+      "sha256": "3e82fe38ba25049bebb9dcf1ee0257cf8273792c38e28fd0080141a25afa5017",
+      "bytes": 1681
+    },
+    {
+      "file": "color-branch-table.json",
+      "sha256": "53b5b292d53d87a9536a53fb0422a30b50fbebcd48f9d6f24962f0f88a21ed84",
+      "bytes": 850
+    },
+    {
+      "file": "color-resolver.asm",
+      "sha256": "418ea1dbc96a0c9d242b79837818d78f399ca99f4d4e0c5d53c4a9b297506c52",
+      "bytes": 5814
+    },
+    {
+      "file": "default-color.asm",
+      "sha256": "991eebc8c60914eb25c2396c458ade7fb7a76d8fcaab3fea50a01eb68a6b4414",
+      "bytes": 793
+    },
+    {
+      "file": "display-color-mapping.json",
+      "sha256": "d79fef8c586ab071616a4ab4e3d95f04c1c6683df16ef129006add19cd2061fd",
+      "bytes": 3762
+    },
+    {
+      "file": "first-color-factories.asm",
+      "sha256": "40f7ac6091652a2c30b8cef16c7bf0d375ba2b1554909819c3bf0b576f7311c0",
+      "bytes": 11645
+    },
+    {
+      "file": "picker-row-tree.json",
+      "sha256": "ab50e2daf0b598dc2091be1cc5ec0dbdafd49f9576f321b4224a8e364a830a4b",
+      "bytes": 14977
+    },
+    {
+      "file": "picker-row-tree.raw",
+      "sha256": "875546386b8e9ef1fb6ca36d5e069e36547e54e342de555241d4ee319b5bd72a",
+      "bytes": 34
+    },
+    {
+      "file": "picker-row-tree.refs.tsv",
+      "sha256": "47ec121a8a0dd1b5f3b855546b48b1fe7fd0e4a3753bdd05692a6305818c7129",
+      "bytes": 210
+    },
+    {
+      "file": "picker-row-tree.tree.txt",
+      "sha256": "a860d50f5488d977a72c7cfa1d8fca7d4692a5c261cd757863cd9cb591f22d24",
+      "bytes": 2322
+    },
+    {
+      "file": "row-label-closures.asm",
+      "sha256": "f2c7d5ced99aa4d635c3ea161064ee8a016984a5046eb0379633abfad0803be6",
+      "bytes": 1081
+    },
+    {
+      "file": "selector-body-window.asm",
+      "sha256": "7f06cfdb3929302d6fc1e130c1b25ca9d6a2f558227f7ee37ee16b89f65fb1dc",
+      "bytes": 25865
+    },
+    {
+      "file": "selector-body-window.json",
+      "sha256": "4b0c4a4908ee130f379feb13042322e11a7033ea84c75355b4c79c222a6f3ab8",
+      "bytes": 19249
+    },
+    {
+      "file": "selector-body.asm",
+      "sha256": "4215bb28a9a9d02a431cb9ac885539c544a518f0c6a93b87f0c9fc3431c50a03",
+      "bytes": 27087
+    },
+    {
+      "file": "selector-body.json",
+      "sha256": "45d69d22978f6cd21040f6240b13d38f1c43a3f83dc33762980bc6c9e318b49f",
+      "bytes": 22738
+    },
+    {
+      "file": "selector-closures.asm",
+      "sha256": "e28843786ca933dcbddc8e2b19ca194733ee26e387c377f8e0d8b4d799814e97",
+      "bytes": 3678
+    },
+    {
+      "file": "selector-metadata.json",
+      "sha256": "9130e7232ce4dc8f0c39962b8c012bc9b4e91848afbd701fa97bfd756dc2e02b",
+      "bytes": 1684
+    },
+    {
+      "file": "selector-witness.json",
+      "sha256": "20b6f5b8246387b0b7ae2536bf78eba285f61bde49688725f98d90542c686d83",
+      "bytes": 4613
+    },
+    {
+      "file": "start-hosting-selectors.json",
+      "sha256": "b8de1b973abb9d080dbad8d04bd027b9e49afef51ab2965cccaef232caccbb60",
+      "bytes": 251
+    },
+    {
+      "file": "start-native-button-selectors.json",
+      "sha256": "26a12c5fd3ec63c6b6eea5c6c2c1acf199d215d4febbd27c689825a810adf119",
+      "bytes": 3648
+    },
+    {
+      "file": "start-native-make.asm",
+      "sha256": "350f7d95070bb4c9a1f5f4a4c27436c83fcd4273dc4fe623e4a902ca6c347e63",
+      "bytes": 1937
+    },
+    {
+      "file": "start-native-update.asm",
+      "sha256": "7f28c7e0e15647783007a5972ed182db1c51d33a8e5923b8d4c7803783273c2f",
+      "bytes": 15119
+    },
+    {
+      "file": "start-native-update.json",
+      "sha256": "7000cd4bb3f4fddad0f00c088898bf3168d7c1a360f3d0e8f6ac7247f22c804f",
+      "bytes": 23396
+    },
+    {
+      "file": "swatch-icon.asm",
+      "sha256": "37b1e61668c9810bfd79345da48474444dbcb533a467be20907fd20adf347726",
+      "bytes": 5694
+    },
+    {
+      "file": "swatch-icon.json",
+      "sha256": "d4900a202a877e76b7d074ba9e94ae2a2532fd3bc5e952fa99990fba83e92146",
+      "bytes": 6616
+    },
+    {
+      "file": "swatch-objc-bindings.json",
+      "sha256": "cfe7614ef463d08116f66bcd2908b609cef308112dbf221d870d957665b39e0e",
+      "bytes": 567
+    },
+    {
+      "file": "theme-title-table.json",
+      "sha256": "1ec8b060cada6373aeea48e0d2e1b59a47dd28cfae76546b293d3b010ab090f1",
+      "bytes": 328
+    }
+  ]
+}

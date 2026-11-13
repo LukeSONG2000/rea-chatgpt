@@ -1,0 +1,37 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "install",
+      "app",
+      "--device",
+      "00008150-001E34E93A12401C",
+      ".build/Build/Products/Debug-iphoneos/REAChatGPTHost.app",
+      "--json-output",
+      "../../analysis/full-platform-20261104/ios-settings-theme-fidelity-20261112-device-install.json"
+    ],
+    "commandType" : "devicectl.device.install.app",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.32"
+  },
+  "result" : {
+    "deviceIdentifier" : "5998651F-A691-5FB2-A351-40FBCBA8081B",
+    "installedApplications" : [
+      {
+        "bundleID" : "local.rea.chatgpt.ioshost",
+        "databaseSequenceNumber" : 3028,
+        "databaseUUID" : "838351CC-76C5-4ED6-A84F-DC45E99601BE",
+        "installationURL" : "file:///private/var/containers/Bundle/Application/07855186-234B-4830-9A33-BC97B4376822/REAChatGPTHost.app/",
+        "launchServicesIdentifier" : "unknown",
+        "options" : {
+
+        }
+      }
+    ]
+  }
+}

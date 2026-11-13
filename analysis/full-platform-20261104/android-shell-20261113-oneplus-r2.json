@@ -1,0 +1,48 @@
+{
+  "implementation": "Independent frontend with Android293 evidence and synthetic data",
+  "serial": "172.16.197.16:5555",
+  "manufacturer": "OnePlus",
+  "model": "ONEPLUS A6003",
+  "sdk": "35",
+  "run_id": "972bcc8e703a40cebc3168a21b1007d6",
+  "methods": [
+    "preferences",
+    "rootsAndGestures",
+    "verifyRootRestart",
+    "corruptRootReturn"
+  ],
+  "ui_matrix": [
+    "zh-CN/light"
+  ],
+  "status": "passed",
+  "steps": [
+    {
+      "apk": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "245242785c7b216878eaab7a40607d42b64e9a6e5d362f2775d69e6699de2f57"
+    },
+    {
+      "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "a040ab67703c9959ca5951b74c874bfd3205d708d5db17ace761c08136bb4dd7"
+    },
+    {
+      "test": "preferences",
+      "passed": true
+    },
+    {
+      "test": "rootsAndGestures",
+      "passed": true
+    },
+    {
+      "test": "verifyRootRestart",
+      "passed": true
+    },
+    {
+      "test": "corruptRootReturn",
+      "passed": true
+    }
+  ],
+  "export_errors": [],
+  "preview_launch": {
+    "skipped": "Foreground belongs to another app or cannot be established"
+  }
+}

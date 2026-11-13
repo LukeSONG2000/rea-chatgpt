@@ -13,6 +13,16 @@ enum PreviewAccent: String, CaseIterable {
 
     private var paletteName: String { self == .green ? "mint" : rawValue }
 
+    //293 ThemeColorSelectorPart icon6fc1c78 resolves the display swatch,
+    //rather than the message background or current environment accent.
+    var menuSwatchAsset: String {
+        switch self {
+        case .default: return "ChatGPT/text/tertiary"
+        case .black: return "ChatGPT/interactive/bg/primary/default"
+        default: return "ChatGPT/accent/\(paletteName)/primary"
+        }
+    }
+
     var userMessageBackgroundAsset: String {
         switch self {
         case .default: return "OneOff/UserMessageBackground"
@@ -47,6 +57,30 @@ enum PreviewAccent: String, CaseIterable {
         case .lime: return visualText("青柠色", "Lime")
         case .magenta: return visualText("洋红色", "Magenta")
         }
+    }
+}
+
+struct PreviewAccentMenuLabel: View {
+    let accent: PreviewAccent
+    //Original uses _themeColorCircleSize ScaledMetric; its initializer value
+    //is unclosed. Body-sized17 is an explicit host default, not recovered size.
+    @ScaledMetric(relativeTo: .body) private var pointSize: CGFloat = 17
+    @Environment(\.colorScheme) private var colorScheme
+    var body: some View {
+        Label {
+            Text(accent.title)
+        } icon: {
+            Image(uiImage: swatch)
+        }.labelStyle(.titleAndIcon)
+    }
+    private var swatch: UIImage {
+        let traits = UITraitCollection(userInterfaceStyle: colorScheme == .dark ? .dark : .light)
+        let color = officialVisualColor(accent.menuSwatchAsset).resolvedColor(with: traits)
+        let image = UIImage(systemName: "circlebadge.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: pointSize)) ?? UIImage()
+        //Bottom0/right-4 are supplied by the original. Top/left0 remain host
+        //defaults until the original inset helper is decoded.
+        return image.withTintColor(color, renderingMode: .alwaysOriginal)
+            .withAlignmentRectInsets(.init(top: 0, left: 0, bottom: 0, right: -4))
     }
 }
 

@@ -1,0 +1,70 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0x74f6168",
+    "end_exclusive": "0x74f61a8",
+    "sha256": "777f1d37f72b5fb85781c9b5eeaa80a91838c9866395e905653567b4c38e2916"
+  },
+  "linker_function_starts_in_window": [
+    "0x74f6168"
+  ],
+  "next_linker_function_start": "0x74f61b8",
+  "direct_calls": [
+    {
+      "site": "0x74f6174",
+      "target": "0xe4cfe0",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f6178",
+      "target": "0x14b2d8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f6188",
+      "target": "0x7502b98",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f6190",
+      "target": "0x7502c1c",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f619c",
+      "target": "0x7503350",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f61a0",
+      "target": "0x7503110",
+      "imported_symbol": null
+    },
+    {
+      "site": "0x74f61a4",
+      "target": "0x7c44a58",
+      "imported_symbol": "_$s21DeveloperToolsSupport13ImageResourceV4name6bundleACSS_So8NSBundleCtcfC",
+      "chained_binding": {
+        "slot": "0xaacdec0",
+        "symbol": "_$s21DeveloperToolsSupport13ImageResourceV4name6bundleACSS_So8NSBundleCtcfC",
+        "library_ordinal": 51,
+        "weak": false,
+        "import_ordinal": 6843,
+        "table_addend": 0,
+        "encoded_pointer_addend": 0,
+        "chain_membership_verified": true
+      }
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

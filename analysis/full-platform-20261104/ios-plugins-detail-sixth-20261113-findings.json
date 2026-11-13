@@ -1,0 +1,352 @@
+{
+  "status": "partial-two-groups-closed-to-visible-consumers",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "version": "1.2026.293",
+    "platform": "iOS",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": {
+    "product_edits": false,
+    "target_runtime": false,
+    "candidate_groups": [
+      {
+        "id": 1,
+        "question": "Information visible rows/value display and action carrier",
+        "constructors": [
+          "InformationSection bodyeb892c -> eb897c",
+          "ForEach rowclosuref36ce8 ->eb8b0c ->InformationRowView",
+          "InformationRowView witness eb9a00 ->eb8cfc"
+        ],
+        "stop": "Actual visible row value/label branching, supplied ordering and URL presentation established. Upstream row factory/complete URL dispatch is a precise unknown."
+      },
+      {
+        "id": 2,
+        "question": "Skills actual visible parent/filter and core more interaction",
+        "constructors": [
+          "SkillsSection witnesseb78a0 ->eb74a8 ->eb74e4",
+          "eb765c FlowLayout content; SkillPill9584aec and MoreSkillsPill9584ac8"
+        ],
+        "stop": "Real FlowLayout, first8/full supply and remaining count visibility established. Final pill action/destination routing remains unclosed; no extra Tools candidate added."
+      }
+    ]
+  },
+  "official_observations": [
+    {
+      "id": "actual-section-membership-and-empty-gates",
+      "owner": "GPTPluginDetailLoadedContent9583bec/bodyeb069c; content builderf30e3c ->eb0850",
+      "evidence": [
+        "existing full type record7d79a88",
+        "loaded-components.asm eb0ec8..eb0f14 skills",
+        "eb0f40..eb0f70 information"
+      ],
+      "conclusion": "Actual trailing section order is Description -> optional Apps -> optional Skills -> optional Information. Skills uses content metadata+0x38 and Information+0x3c; both inspect Array count at+0x10 and omit their entire optional region on zero. These are already projected UI arrays, not an unconditional inventory of all plugin model properties."
+    },
+    {
+      "id": "information-parent-and-stable-order",
+      "descriptor": "0x958428c",
+      "witness": "0xeb8cdc ->0xeb892c",
+      "full_type_record": "0x7d7b1c0",
+      "fields": [
+        "rows",
+        "actionHandler"
+      ],
+      "shape": "VStack<ForEach<[GPTPluginDetailInformationRow],InformationRow.ID,VStack<Tuple<InformationRowView,Optional<Divider>>>>>",
+      "evidence": [
+        "reused fifth information-tree.json/asm",
+        "eb8a8c..eb8aa0 supplies ForEach closuref36ce8",
+        "eb8b0c copies each row and action handler; compares current row ID with final array row ID before optional divider"
+      ],
+      "conclusion": "Keep supplied row order and stable IDs; divider between rows, not after final row. Do not hardcode all possible IDs or declaration order into a supposedly official table."
+    },
+    {
+      "id": "information-header",
+      "key": "gpt_plugins_directory_detail_information_heading",
+      "literal": "0x887f180",
+      "consumer": "eb89dc..eb8a2c",
+      "fallback": "Information"
+    },
+    {
+      "id": "information-visible-value-carrier",
+      "descriptor": "0x9584a98 GPTPluginDetailInformationRowView",
+      "witness": "0xeb9a00 ->0xeb8cfc",
+      "full_type_record": "0x7d7c8c8",
+      "shape": "Conditional horizontal/vertical carrier with ViewThatFits, HStack and VStack alternatives; Text label + value; PlainButtonStyle URL button in link branch; font/color/padding modifiers exist. _isAccessibilitySize field and branch are present, but this pass does not name the exact predicate helper as fully resolved.",
+      "evidence": [
+        "information-row-body.asm eb8d70..eb8dcc",
+        "eb9368..eb9388 actual Value enum case test",
+        "eb9444..eb94c0 Text(String) payload",
+        "eb938c..eb9440 Array<String>.formatted -> Text",
+        "eb94c4..eb9568 Foundation URL.host fallback absoluteString -> native Button<Text>"
+      ],
+      "value_contract": "Visible values are text, formatted string list, or URL. Link uses host when present and absoluteString otherwise. The URL action is real but final route policy/handler not closed; preserve resource provider and safe browser adapter boundary."
+    },
+    {
+      "id": "information-label-dispatch",
+      "consumer": "0xeb9870..eb99fc",
+      "jumptable": "0x7d70a75 base0xeb98a0",
+      "id_cases_metadata": "GPTPluginDetailInformationRow.ID descriptor958390c declares capabilities/developer/website/version/privacyPolicy/termsOfService; not used alone as visibility proof. Actual label dispatcher separately consumes runtime byte.",
+      "labels": {
+        "gpt_plugins_directory_detail_capabilities_label": "0x887f800 /eb98a0 fallback Capabilities",
+        "gpt_plugins_directory_detail_developer_label": "0x887f7d0 /eb996c fallback Developer",
+        "gpt_plugins_directory_detail_website_label": "0x887f7a0 /eb9920 fallback Website",
+        "gpt_plugins_directory_detail_version_label": "0x887f770 /eb9944 fallback Version",
+        "gpt_plugins_directory_detail_privacy_policy_label": "0x887f730 /eb98dc fallback Privacy Policy",
+        "gpt_plugins_directory_detail_terms_of_service_label": "0x887f6d0 /eb99a8 fallback literal Terms of Service887f710"
+      },
+      "limit": "No serialized numeric ID values claimed. Label factory branches do not establish every row is present."
+    },
+    {
+      "id": "skills-real-parent",
+      "descriptor": "0x95842b0",
+      "fields": [
+        "skills",
+        "showsAllSkills",
+        "actionHandler"
+      ],
+      "witness": "0xeb78a0 ->eb74a8 ->eb74e4",
+      "full_type_record": "0x7d7b218",
+      "shape": "SwiftUIToolbelt.FlowLayout (_VariadicView.Tree<_LayoutRoot<FlowLayout>,Tuple<ForEach<ArraySlice<SkillContent>,Tagged<PluginSkill,String>,SkillPill>,Optional<MoreSkillsPill>>>)",
+      "conclusion": "Skills are flowing pills, not ordinary vertical Tool rows. Current host may use a native independent FlowLayout implementation, but the source carrier kind is established."
+    },
+    {
+      "id": "skills-supply-and-more",
+      "evidence": [
+        "eb76bc reads showsAllSkills byte atsection+0x8",
+        "true brancheb76c8..e0 constructs full array slice",
+        "false brancheb76e4..eb7700 passes8 to prefix-like helper e6743c",
+        "eb7828 checks same flag; true returns0; false computes totalCount-visibleSliceCount clamped nonnegative",
+        "eb7774..eb7798 optional MoreSkillsPill only if hiddenSkillCount nonzero"
+      ],
+      "conclusion": "Source shows first8 skills until showsAllSkills, then all. Remaining pill is absent if none hidden; never add a collapse toggle as recovered."
+    },
+    {
+      "id": "skills-heading-and-more-label",
+      "heading_singular": {
+        "key": "gpt_plugins_directory_detail_skill_heading",
+        "literal": "0x887f1f0",
+        "consumer": "eb75e4..eb760c only if totalcount==1",
+        "fallback": "Skill"
+      },
+      "heading_plural": {
+        "key": "gpt_plugins_directory_detail_skills_heading",
+        "literal": "0x887f1c0",
+        "consumer": "eb7610..eb7638 otherwise",
+        "fallback": "Skills"
+      },
+      "more": {
+        "key": "gpt_plugins_directory_detail_more_skills_action",
+        "literal": "0x887f830",
+        "consumer": "eb88b4..eb891c",
+        "fallback": "Consumer builds numeric count plus inline text \" more\"; exact translated count formatter should reuse original resource rather than hardcoded plural.",
+        "limit": "Precise localized numeric formatting retained as source factory, no invented raw wire property."
+      }
+    }
+  ],
+  "safe_product_decision": {
+    "can_restore": [
+      "Add ordered typed information rows with text/list/link value representation, real source label keys and optional whole-section empty gate.",
+      "Preserve supplied stable IDs and conditional final divider. Use explicit native fit/accessibility adapter for horizontal/vertical presentation until the exact original environment predicate is closed.",
+      "Add Skills FlowLayout/pills, first8/all presentation input and conditional remaining-count pill, with singular/plural heading keys.",
+      "Keep Information after Skills and Apps in the source-backed trailing section order."
+    ],
+    "adapter_boundaries": [
+      "Frontend information/skill structs are independent UI projections; do not call them official network schema or populate real developer/version/privacy/terms from guessed model fields.",
+      "Original upstream row-production order/availability and plugin skill destination realization are not closed. Synthetic provider may supply explicit ordered fixtures/capabilities.",
+      "For link or skill clicks use scoped optional frontend capability callbacks, clearly retain unconnected service/browser route. No unconditional install/run/execute capability.",
+      "Layout internals/typographic geometry remain explicit host adapter inputs where producer not traced; do not infer fixed sizes from allocation or adjacent constants."
+    ]
+  },
+  "unknowns": [
+    {
+      "area": "Information exact row production and order",
+      "next": "RenderModel.informationRows actual producer before LoadedContent. We closed consumer-preserved ordering, not original row population across plugins."
+    },
+    {
+      "area": "Information URL action policy",
+      "next": "eb9548 shared carrier764096c then button constructoreb9568; captured final invocation/root navigation not resolved. f0c9b4 is metadata accessor, not link callback (retained raw filename is classified here)."
+    },
+    {
+      "area": "Skill tap and More callback final owner",
+      "next": "SkillPill witnesseb7eb8/bodyeb78a4 and MoreSkillsPill witnesseb8920/bodyeb81f4. Fields/captured actionHandler are not sufficient to identify final ScreenAction dispatch/DI route. No collapse policy claimed."
+    },
+    {
+      "area": "Tools/Prompts",
+      "next": "Separate Tools/Prompts route or default prompt callbacks not newly pursued; previous source boundaries retained. Skills is not assumed equivalent to Tools."
+    },
+    {
+      "area": "Fonts/colors/gesture/haptics",
+      "next": "Native row/pill generic modifiers exist; no new exact original geometry/font/resource/haptic caller established in this pass. No inferred haptic."
+    }
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-plugins-detail-sixth-20261113-raw",
+  "reused": [
+    "ios-native-plugins-20261112-findings.json",
+    "ios-native-plugins-20261112-detail-main-tree.json",
+    "ios-plugins-detail-fifth-20261113-findings.json",
+    "ios-plugins-detail-fifth-20261113-raw/information-tree.json",
+    "ios-plugins-detail-fifth-20261113-raw/information.asm"
+  ],
+  "limits": [
+    "Read-only product; no target run/network/device/build.",
+    "Two groups only. Resource-start pointer correction retained in literal-pointer-correction.json.",
+    "Enum field declaration inventories never treated as active row population or wire schema."
+  ],
+  "raw_manifest": [
+    {
+      "file": "info-enum-records.json",
+      "sha256": "da922dd3290bde28be92007477e1e338d32b33ae1fa24ded4a61dabffeb74259",
+      "bytes": 774
+    },
+    {
+      "file": "info-link-action-thunk.asm",
+      "sha256": "48bfccb6ed28cc2ac04b87bdd20ee45142a27821d9876a4aeca1b946ebc2b29e",
+      "bytes": 833
+    },
+    {
+      "file": "info-title-dispatch.json",
+      "sha256": "81b65e802d660eec8372405d63545a1a47d45f53de77a1103349da5d0f177085",
+      "bytes": 301
+    },
+    {
+      "file": "info-value-types.json",
+      "sha256": "03fe2ba3cc24142026d7af2652266678de7d9695229e4bcbb6191b1c98136c87",
+      "bytes": 1835
+    },
+    {
+      "file": "information-row-body.asm",
+      "sha256": "44af5286f0f270933f8a580f8a93dd5984154af01fd1bb315a6d0f5343470fb3",
+      "bytes": 35965
+    },
+    {
+      "file": "information-row-body.json",
+      "sha256": "6f04a540896cd16aab912c3e9ce181f7862aa40273aa03b34b9a2668b1e3eab4",
+      "bytes": 37897
+    },
+    {
+      "file": "information-row-tree.json",
+      "sha256": "61706d90d641015ca11cce15837188efbda04293ab566788d6b117256ba01a56",
+      "bytes": 693006
+    },
+    {
+      "file": "information-row-tree.raw",
+      "sha256": "40f53e435897e2c198462a8ab6b9d7834df50d2ccd2902b79c836b921e2171b1",
+      "bytes": 192
+    },
+    {
+      "file": "information-row-tree.refs.tsv",
+      "sha256": "c36372281a79e5ac03c5214ed5a5f6a5cf77ca96652ad2811d659a4ff6b99d02",
+      "bytes": 734
+    },
+    {
+      "file": "information-row-tree.tree.txt",
+      "sha256": "c7d4fa4a89b7c0d3115117e9916fffdc70000277c04557d1a2b85118afed0f3b",
+      "bytes": 82161
+    },
+    {
+      "file": "information-row-witness.json",
+      "sha256": "aaddb9a477c9a479fe82f59b28a968ebcb48aed5cec7c7a249d44b11d7f70210",
+      "bytes": 4612
+    },
+    {
+      "file": "literal-pointer-correction.json",
+      "sha256": "10c484965ed49629420e0914d1147aa915487b87c9f859b1344b490ce28e03ee",
+      "bytes": 278
+    },
+    {
+      "file": "loaded-components.asm",
+      "sha256": "fb842934e852069766a1c658a7b9a211efc72d0dd28288cc7eaffb4c34586cf8",
+      "bytes": 31782
+    },
+    {
+      "file": "more-pill-body.asm",
+      "sha256": "cef4d14f8a2e2ef0d1d8fe1026eccad75b57fb2bfcec007cd9c2e78572e03e04",
+      "bytes": 18622
+    },
+    {
+      "file": "more-pill-witness.json",
+      "sha256": "9b0ba266f091caf42d51538e45b98ead3e25fc9d5ba83437805eb306b7a68aa5",
+      "bytes": 4612
+    },
+    {
+      "file": "pill-metadata.json",
+      "sha256": "e6d900ba4bf733bde32a8965a8011f4ad006fe3ceb2f8997e15d3e9f2b0cef54",
+      "bytes": 1768
+    },
+    {
+      "file": "row-view-metadata.json",
+      "sha256": "06a3fe52d85743f8adf831519c2a3371c99e6717431c4b93059bd6ee7c12c8a8",
+      "bytes": 1259
+    },
+    {
+      "file": "selected-metadata.json",
+      "sha256": "0b73429e4122290b55159d115d4ac2bf7276605c2571d4e8fd2c63b95851bf21",
+      "bytes": 4290
+    },
+    {
+      "file": "selected-resource-literals.json",
+      "sha256": "393dccf6d21b3f3977a4d2d7d73b1009c69a9490ed9199575bdbb64aec7e2d6f",
+      "bytes": 559
+    },
+    {
+      "file": "skill-pill-body.asm",
+      "sha256": "d7da0f41eb6ae261d8bc18dca2f6cd096d3f63a636f59732d71dbe89fee73db6",
+      "bytes": 25567
+    },
+    {
+      "file": "skill-pill-witness.json",
+      "sha256": "948301c4fe4a28219a82336b127fab965fbd1d7e23601596a1693cea44cc97e0",
+      "bytes": 4612
+    },
+    {
+      "file": "skills-more-action.asm",
+      "sha256": "7f0fc0e161f772944c021372ed968e2e5829f3aef0429636eb088a61b9e92513",
+      "bytes": 1051
+    },
+    {
+      "file": "skills-row-closure.asm",
+      "sha256": "f39a77c688127804845b8453e3ae18b0387c12e64a9cc636261bac1be692f2c5",
+      "bytes": 1638
+    },
+    {
+      "file": "skills-tree.json",
+      "sha256": "680c0f789942331995b8a979575971690ddfda5ca896ac508b26fae89b154b59",
+      "bytes": 22943
+    },
+    {
+      "file": "skills-tree.raw",
+      "sha256": "c0a9ad8b69ef63f052879b1977323b8e8e712b5aa16999ba5224cae309e5417a",
+      "bytes": 74
+    },
+    {
+      "file": "skills-tree.refs.tsv",
+      "sha256": "d7984fdebf1439745dae66f1feca09b026db92d006130e0f94418d6db5e34baa",
+      "bytes": 416
+    },
+    {
+      "file": "skills-tree.tree.txt",
+      "sha256": "3fad6a6e363dded94c1c7c8a7afe3923a346c19be743677cd5e0411b2f833ab0",
+      "bytes": 3083
+    },
+    {
+      "file": "skills-window.asm",
+      "sha256": "d0d6dcbbcb236ca4849f45478cfad76cd9bb18909e4f50c40b79c5900e31db94",
+      "bytes": 65664
+    },
+    {
+      "file": "skills-window.json",
+      "sha256": "ee425e2aab0fba0b3a6879f1e6d019de49f37426d0a591bb4057d19b4d710828",
+      "bytes": 65724
+    },
+    {
+      "file": "skills-witness.json",
+      "sha256": "2ff98f5d613d3e0e24a8bf07341bdc6b08a04223c0bc147998ad3f48e6d01f5c",
+      "bytes": 4612
+    },
+    {
+      "file": "verified-literals.json",
+      "sha256": "7e0eabcd5ea8e134c800e759e801a4660cf539d35e6113a1c8cf5107bbcf5578",
+      "bytes": 773
+    }
+  ]
+}

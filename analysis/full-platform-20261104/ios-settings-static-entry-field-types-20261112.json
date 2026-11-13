@@ -1,0 +1,77 @@
+[
+  {
+    "field": "presentation",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8d1b0f4",
+    "length": 7,
+    "mangled_hex": "02bb28da015367",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaabd9b0",
+        "resolved_context": "0x96da328",
+        "label": "ChatGPTSubscriptionsCore.UpsellPresentation"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  {
+    "field": "visibleSurfaces",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8d1b0fc",
+    "length": 9,
+    "mangled_hex": "53687901300d870047",
+    "references": [
+      {
+        "offset": 3,
+        "kind": 1,
+        "target": "0x958be30",
+        "resolved_context": "0x958be30",
+        "label": "ChatGPTSettings.SettingsUpsellSurface"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  },
+  {
+    "field": "assignmentState",
+    "artifact": {
+      "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+      "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+    },
+    "type_record": null,
+    "mangled_address": "0x8d1b106",
+    "length": 5,
+    "mangled_hex": "020129da01",
+    "references": [
+      {
+        "offset": 0,
+        "kind": 2,
+        "target": "0xaabda08",
+        "resolved_context": "0x96d9034",
+        "label": "ChatGPTSubscriptionsCore.ChurnedPlusStaticEntrypointCta.State"
+      }
+    ],
+    "unresolved_contexts": [],
+    "limits": [
+      "Symbolic context references only, not a reconstructed generic type tree",
+      "Type presence does not prove runtime branch selection or component creation"
+    ]
+  }
+]

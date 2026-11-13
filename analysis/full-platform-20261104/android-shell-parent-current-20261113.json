@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-13",
+  "module": 1,
+  "scope": "Android shell/home/sidebar/settings-entry whole core pass",
+  "status": "core_navigation_and_bounded_device_journey_passed_with_explicit_remaining_parity_gaps",
+  "summary": "android-shell-20261113-summary.md",
+  "implemented": [
+    "Profile-scoped durable root restoration without deep child/popup replay",
+    "Accepted-only changed-root commit and preserved malformed checkpoints",
+    "Root drawer owner across existing feature roots with nested settings Back",
+    "Return to existing root without redundant commit, including corrupt-record safe fallback"
+  ],
+  "source_boundary": "Android293 retained native styles; iOS semantics only. Root persistence and Material3 gesture admission are independent host adapters, not recovered official algorithms.",
+  "source_validation": "android-shell-20261113-source-validation.json",
+  "source_hashes": "android-shell-20261113-source-hashes.json",
+  "verification": [
+    {
+      "report": "android-shell-20261113-oneplus-r1.json",
+      "status": "passed",
+      "tests": [
+        {
+          "test": "preferences",
+          "passed": true,
+          "seconds": 0.125
+        },
+        {
+          "test": "rootsAndGestures",
+          "passed": true,
+          "seconds": 22.735
+        },
+        {
+          "test": "verifyRootRestart",
+          "passed": true,
+          "seconds": 9.498
+        },
+        {
+          "test": "composer",
+          "passed": true,
+          "seconds": 20.303
+        }
+      ],
+      "candidate_sha256": "ae9e0e6af4732af4d9b37298f9540c5e2dc7e5ec63eaa26c0e4757bef83ba30b"
+    },
+    {
+      "report": "android-shell-20261113-oneplus-r2.json",
+      "status": "passed",
+      "tests": [
+        {
+          "test": "preferences",
+          "passed": true,
+          "seconds": 0.104
+        },
+        {
+          "test": "rootsAndGestures",
+          "passed": true,
+          "seconds": 23.34
+        },
+        {
+          "test": "verifyRootRestart",
+          "passed": true,
+          "seconds": 9.674
+        },
+        {
+          "test": "corruptRootReturn",
+          "passed": true,
+          "seconds": 8.358
+        }
+      ],
+      "candidate_sha256": "245242785c7b216878eaab7a40607d42b64e9a6e5d362f2775d69e6699de2f57"
+    }
+  ],
+  "runtime": {
+    "serial": "172.16.197.16:5555",
+    "model": "ONEPLUS A6003",
+    "sdk": "35",
+    "profile": "test-shell-review-20261113",
+    "locale_override": "zh-CN",
+    "appearance_override": "light",
+    "overrides_persisted": false,
+    "launch": "Stopping: local.rea.chatgpt.androidhost\nStarting: Intent { cmp=local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity (has extras) }\nStatus: ok\nLaunchState: COLD\nActivity: local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity\nTotalTime: 1603\nWaitTime: 1608\nComplete",
+    "pid": "16879",
+    "foreground": [
+      "topResumedActivity=ActivityRecord{65047694 u0 local.rea.chatgpt.androidhost/local.rea.chatgpt.AppShellActivity t1368}"
+    ],
+    "installed_apk_sha256": "245242785c7b216878eaab7a40607d42b64e9a6e5d362f2775d69e6699de2f57",
+    "built_apk_sha256": "245242785c7b216878eaab7a40607d42b64e9a6e5d362f2775d69e6699de2f57",
+    "original_preview_before": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e",
+    "original_preview_after": "b042d554c62e6bdc8cb9d8b6630d91fb451c8aad7666176ce9a9289392d6039e",
+    "original_preview_unchanged": true,
+    "screenshot": "android-shell-20261113-review-home.png",
+    "status": "installed_hash_verified_foreground_running"
+  },
+  "not_implemented": [
+    "Official complete history/search/capability catalog and avatar/account data",
+    "Unconnected feature page bodies and selected Settings children",
+    "Exact original drawer motion/arbitration/optical/haptic fidelity",
+    "Deep thread/file/popup process restoration and actual service identity",
+    "New English/dark or full Remote suite run"
+  ],
+  "screenshots_viewed": [
+    "android-shell-20261113-oneplus-r1/root-drawer-drag-open-zh-light.png",
+    "android-shell-20261113-oneplus-r1/root-home-restored-zh-light.png",
+    "android-shell-20261113-oneplus-r1/composer-work-zh-keyboard.png",
+    "android-shell-20261113-oneplus-r2/settings-root-zh-light.png",
+    "android-shell-20261113-oneplus-r2/settings-general-zh-light.png",
+    "android-shell-20261113-review-home.png"
+  ],
+  "git_mutations": false,
+  "snapshot_boundary": "r1 composer passed before last guard correction; r2 verified every affected root/checkpoint route on final candidate. Composer source unchanged. Both runners omitted preview relaunch after instrumentation; separate runtime record verifies explicit final foreground launch."
+}

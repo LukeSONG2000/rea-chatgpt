@@ -1,0 +1,194 @@
+{
+  "status": "partial",
+  "scope": "iOS 1.2026.293 Starting screen native button hosted value and measurement; evidence only, two focused groups",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "groups": [
+    {
+      "question": "Actual value+chevron content and parent measurement carrier",
+      "stop": "Real HStack, hidden carrier, centered native overlay and icon consumer closed; do not expand inherited typography"
+    },
+    {
+      "question": "Subclass intrinsicContentSize/layoutSubviews",
+      "stop": "Exact class method table and concrete labelView frame assignment closed; no inherited measurement reverse engineering"
+    }
+  ],
+  "official_observations": [
+    {
+      "fact": "Original LabeledContent value is HStack<TupleView<(Text, Image)>> hidden to preserve layout, with a centered overlay carrying native StartScreenSettingsMenu of that same label type. It is not a UIButton configuration.title measurement scheme.",
+      "tree": "ios-settings-general-sixth-20261113-raw/starting-section-full-tree.tree.txt",
+      "record": "0x7d8f010 and subordinate records0x7d8f048/0x7d8f058/0x7d8f070",
+      "consumer": [
+        "0x1146510..0x1146578 constructs LabeledContent using content closure0x1146918",
+        "0x1146918 constructs value carrier",
+        "0x11469bc Alignment.center",
+        "0x11469fc copies hidden carrier",
+        "0x1146a0c ->0x1101a48 constructs native menu from the same value",
+        "0x1101b40..0x1101b54 copies complete original 64-byte HStack value to menu label"
+      ]
+    },
+    {
+      "fact": "HStack uses VerticalAlignment.center and explicit spacing6.0.",
+      "consumer": [
+        "0x114693c -> SwiftUI.VerticalAlignment.center",
+        "0x1146984 raw Double0x4018000000000000",
+        "0x1146988 stores center and spacing then Text/Image tuple fields;0x114698c optional spacing present discriminator0"
+      ],
+      "verification": "Actual full type is HStack<Text,Image>; constructor memory layout plus center getter and explicit Double jointly prove spacing, not an adjacent numeric literal."
+    },
+    {
+      "fact": "Text is the current display value supplied by SettingsViewModel getter0x10f8a64; no new fallback title is introduced in this carrier.",
+      "consumer": [
+        "0x1146944 reads parent model",
+        "0x1146948 ->0x10f8a64",
+        "0x114694c preserves returned Text payload inx22/x23",
+        "0x1146990..0x1146998 emits Text plus Image"
+      ]
+    },
+    {
+      "fact": "Actual chevron is original resource OpenAI/Symbols/chevron-up-chevron-down-sm.",
+      "consumer": [
+        "0x1146950 ->0x74f5f94",
+        "0x74f5fc0..0x74f5fcc loads literal0x8a549e0 and resource factory helpers",
+        "0x74f5fd0 ->Image initialization path"
+      ],
+      "literal": "0x8a549e0",
+      "resource": "OpenAI/Symbols/chevron-up-chevron-down-sm"
+    },
+    {
+      "fact": "Native menu label is a generic supplied label, not known AnyView and not a system UIButton title.",
+      "metadata": {
+        "descriptor": "0x958b6dc",
+        "label_field_record": "0x9a0f514",
+        "label_typeref": "0x8d09970",
+        "raw_mangled_type": "x (generic parameter)"
+      },
+      "consumer": [
+        "0x11022c4 passes closure0x1172258",
+        "0x11022e4 UIHostingConfiguration(content:)",
+        "0x1102300 margins(all,0)",
+        "0x1102330 minSize(width:height:) call exists; exact Optional argument values unresolved",
+        "0x11023a0 updates existing content view configuration or0x11023b8 makes a new content view",
+        "0x1102400 disables content view interaction",
+        "0x110240c adds content view;0x1102420 setNeedsLayout"
+      ],
+      "limit": "0x1172258 is generic hosted-content wrapping/copying, not the Text/Image producer. Complete captured environment behavior has not been independently reconstructed."
+    },
+    {
+      "fact": "Actual subclass layout fills labelView with button.bounds after super.layoutSubviews.",
+      "class": {
+        "address": "0xacc3cd0",
+        "ro": "0xacc3c68",
+        "descriptor": "0x95894f4",
+        "name": "_TtC15ChatGPTSettingsP33_3A7AF352684367C5AD1782C48F399D9929StartScreenSettingsMenuButton"
+      },
+      "consumer": [
+        "0x1102f9c ->0x1102f44",
+        "0x1102f64 super.layoutSubviews",
+        "0x1102f68..0x1102f74 optional labelView from ivar storage0xadaadc8",
+        "0x1102f80 obtains button.bounds",
+        "0x1102f88 labelView.setFrame(button.bounds)",
+        "0x1102f90 calls menu presentation coordinator0x1102c1c"
+      ],
+      "measurement_limit": "Exact class ObjC method list contains no intrinsicContentSize or sizeThatFits override. This does not prove inherited methods are absent, and does not assign an original fixed width."
+    }
+  ],
+  "safe_product_decision": [
+    "Restore the source-proven hidden SwiftUI value carrier with identical Text and original resource Image, center alignment and spacing6; overlay the native menu content onto its measured bounds.",
+    "Use the same label definition in hidden measurement and hosted content. Do not compute a fixed width from screenshots, add arbitrary padding, or claim an independent UIButton title/caption1 style is original.",
+    "Maintain existing source availability/options/selection callbacks; this followup changes no raw enum or startup routing contract.",
+    "If retaining a different native wrapper, any explicit fitting implementation is an independently labelled host adapter, not original subclass restoration."
+  ],
+  "unknowns": [
+    "Inherited UIFont/environment and effective font hierarchy for this HStack were not closed; no explicit Text/Image font or point size override is established in0x1146918.",
+    "Exact Optional parameters of UIHostingConfiguration.minSize remain unknown; do not replace them with guessed zero/nil values.",
+    "Other ancestor constraints and original SwiftUI-to-UIKit representable sizing policy not fully recovered.",
+    "Local clipped rendering was not reproduced or measured in this static-only task.",
+    "No explicit haptic caller was established in these two content/layout windows."
+  ],
+  "raw_directory": "analysis/full-platform-20261104/ios-settings-start-button-20261113-raw",
+  "raw_manifest": [
+    {
+      "file": "button-class-accessor.asm",
+      "sha256": "72bfec1b607bd1afa4f8308f0b6789eb346e974c72b1c7ee57a129afa509941a",
+      "bytes": 1764
+    },
+    {
+      "file": "button-layout.asm",
+      "sha256": "090c50765c8791cf8f1f46044f7f71fee2b970002acf9097b7c00cb3696a13ad",
+      "bytes": 3679
+    },
+    {
+      "file": "button-layout.json",
+      "sha256": "d12bed8d80eacd56425d105d1bf7c194fa95fa27b85f06bccd328221366e412b",
+      "bytes": 3696
+    },
+    {
+      "file": "button-objc-class.json",
+      "sha256": "1cce67467d79b989747ae53fb3f86835258f4d1128ab9903f915d6dd8388a7f4",
+      "bytes": 4499
+    },
+    {
+      "file": "hosted-value-closure.asm",
+      "sha256": "dc44a866207a087b09c4b80a8db3db7458dc34e829273ef9280b60e5bc305bc6",
+      "bytes": 1961
+    },
+    {
+      "file": "hosted-value-full.asm",
+      "sha256": "53036b805db2a89d0c8415c7fc6ea415251a3bc7d8ff61dba13334dce297b2d6",
+      "bytes": 4027
+    },
+    {
+      "file": "hosted-value-full.json",
+      "sha256": "3e88755247adecf682eb5189977180d61e28ac1a7d1b8889769275544e9cbe54",
+      "bytes": 4588
+    },
+    {
+      "file": "hosting-input-producer.json",
+      "sha256": "b6e6e42ff084bbac841d1c6e7b2cf9321276541f6b2907f09af241211de6d2d3",
+      "bytes": 15022
+    },
+    {
+      "file": "layout-selectors.json",
+      "sha256": "bb44bbddd0c9324fceb63b4d86dd87171583f610979e342f6ef6be03754a9ab0",
+      "bytes": 149
+    },
+    {
+      "file": "menu-label-type.json",
+      "sha256": "c28f9ba6365ba0c1534bc8ba8fc1428e3443a22209722081a20f9d3d0042554a",
+      "bytes": 568
+    },
+    {
+      "file": "value-carrier.asm",
+      "sha256": "09b96ecae1b91cd396e61547433c14ad5de40a87cad48853c3aa39f7e46bba23",
+      "bytes": 4048
+    },
+    {
+      "file": "value-carrier.json",
+      "sha256": "f359539ef0f78c2a31944203602e9e747e83f9f1920e8eeb8cf1ca8ef629a6b7",
+      "bytes": 4524
+    },
+    {
+      "file": "value-chevron-factory.asm",
+      "sha256": "05c611af70d52a29dd5c937bb4ea49ceedd455c4dff14cf56a672e6f6dd1a5b9",
+      "bytes": 1058
+    },
+    {
+      "file": "value-resource.json",
+      "sha256": "471d62ee787388133ac39570100d95043d8076e5dc5b78b31a9d0ecbfbfd03dc",
+      "bytes": 376
+    },
+    {
+      "file": "value-text-constructor-helper.asm",
+      "sha256": "d0f0db17e5d3dd5a8f00dd40792319bd61c68dd24a9aeb482e85bf7aea7a8135",
+      "bytes": 717
+    },
+    {
+      "file": "value-text-copy-helper.asm",
+      "sha256": "6500b6ed19aa0de983c6c4331e77c1fbde297889d98c9be95317c9a449724554",
+      "bytes": 1513
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+kind=Type
+  kind=OpaqueType
+    kind=OpaqueReturnTypeOf
+      kind=Function
+        kind=Extension
+          kind=Module, text="SwiftUI"
+          kind=Protocol
+            kind=Module, text="SwiftUI"
+            kind=Identifier, text="View"
+        kind=Identifier, text="labelStyle"
+        kind=LabelList
+        kind=Type
+          kind=DependentGenericType
+            kind=DependentGenericSignature
+              kind=DependentGenericParamCount, index=1
+              kind=DependentGenericConformanceRequirement
+                kind=Type
+                  kind=DependentGenericParamType
+                    kind=Index, index=1
+                    kind=Index, index=0
+                kind=Type
+                  kind=Protocol
+                    kind=Module, text="SwiftUI"
+                    kind=Identifier, text="LabelStyle"
+            kind=Type
+              kind=FunctionType
+                kind=ArgumentTuple
+                  kind=Type
+                    kind=DependentGenericParamType
+                      kind=Index, index=1
+                      kind=Index, index=0
+                kind=ReturnType
+                  kind=Type
+                    kind=OpaqueReturnType
+                      kind=OpaqueReturnTypeParent, text="7SwiftUI4ViewPAAE10labelStyleyQrqd__AA05LabelE0Rd__lF"
+    kind=Index, index=0
+    kind=TypeList
+      kind=TypeList
+        kind=Type
+          kind=BoundGenericStructure
+            kind=Type
+              kind=Structure
+                kind=Module, text="SwiftUI"
+                kind=Identifier, text="Label"
+            kind=TypeList
+              kind=Type
+                kind=Structure
+                  kind=Module, text="SwiftUI"
+                  kind=Identifier, text="Text"
+              kind=Type
+                kind=BoundGenericEnum
+                  kind=Type
+                    kind=Enum
+                      kind=Module, text="Swift"
+                      kind=Identifier, text="Optional"
+                  kind=TypeList
+                    kind=Type
+                      kind=Structure
+                        kind=Module, text="SwiftUI"
+                        kind=Identifier, text="Image"
+      kind=TypeList
+        kind=Type
+          kind=Structure
+            kind=Module, text="SwiftUI"
+            kind=Identifier, text="TitleAndIconLabelStyle"

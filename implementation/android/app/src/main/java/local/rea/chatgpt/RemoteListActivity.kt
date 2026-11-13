@@ -50,6 +50,7 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
     var loadFailure by remember { mutableStateOf(false) }
     var loading by remember { mutableStateOf(true) }
     var reload by remember { mutableIntStateOf(0) }
+    var sort by rememberSaveable { mutableStateOf(store.sort) }
     var selectedHost by rememberSaveable { mutableStateOf(store.hostID) }
     var query by rememberSaveable { mutableStateOf(store.query) }
     var searching by rememberSaveable { mutableStateOf(store.query.isNotEmpty()) }
@@ -64,12 +65,15 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
     }
     fun changeFilter(host: String?, text: String) {
         // Filter changes intentionally reset the viewport; task navigation preserves it.
-        selectedHost = host
-        query = text
-        storageError = !store.saveList(host, text, collapsed, 0, 0)
+        if (host == selectedHost && text == query) return
+        if (store.saveList(host, text, collapsed, 0, 0)) {
+            selectedHost = host
+            query = text
+            storageError = false
+        } else storageError = true
     }
     var initialFilter by remember { mutableStateOf(true) }
-    LaunchedEffect(selectedHost, query) {
+    LaunchedEffect(selectedHost, query, sort) {
         if (initialFilter) initialFilter = false else listState.scrollToItem(0)
     }
     LaunchedEffect(provider, reload) {
@@ -137,7 +141,12 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
     Column(Modifier.fillMaxSize().safeDrawingPadding().imePadding()) {
         RecoveredRemoteListHeader(searching, query, { changeFilter(selectedHost, it) },
             toggleSearch = { searching = !searching; if (!searching) changeFilter(selectedHost, "") },
-            openSidebar = openSidebar, pending = { pendingAction = it })
+            openSidebar = openSidebar, sort = sort, selectSort = { next ->
+                if (next != sort) {
+                    if (store.saveSort(next)) { sort = next; storageError = false }
+                    else storageError = true
+                }
+            }, pending = { pendingAction = it })
         snapshot?.let { data ->
             RecoveredRemoteHostSelector(data.hosts, selectedHost) { changeFilter(it, query) }
         }
@@ -156,17 +165,26 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
                 val data = snapshot!!
                 val visible = data.visibleTasks(selectedHost, query)
                 if (visible.isEmpty()) Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                    Text(stringResource(R.string.remote_empty), modifier = Modifier.testTag("remote-empty"))
+                    Text(stringResource(if (query.isBlank()) R.string.remote_no_tasks else R.string.remote_empty),
+                        modifier = Modifier.testTag("remote-empty"))
                 } else LazyColumn(state = listState, modifier = Modifier.weight(1f).testTag("remote-task-list"), contentPadding = PaddingValues(bottom = 24.dp)) {
-                    fun toggle(id: String) { collapsed = if (id in collapsed) collapsed - id else collapsed + id; saveList() }
+                    fun toggle(id: String) {
+                        val next = if (id in collapsed) collapsed - id else collapsed + id
+                        if (store.saveList(selectedHost, query, next, listState.firstVisibleItemIndex,
+                                listState.firstVisibleItemScrollOffset)) {
+                            collapsed = next
+                            storageError = false
+                        } else storageError = true
+                    }
                     fun open(task: RemoteListTask) { saveList(); selectedTask = task }
                     val pinned = visible.filter { it.pinned }
-                    if (pinned.isNotEmpty()) {
+                    if (sort != RemoteListSort.Priority && pinned.isNotEmpty()) {
                         item("pinned-header") { RemoteGroupHeader(stringResource(R.string.remote_pinned), "pinned", "pinned" in collapsed && query.isBlank()) { toggle("pinned") } }
                         if ("pinned" !in collapsed || query.isNotBlank()) items(pinned, key = { "pinned-${it.key.storageKey}" }) {
                             RemoteTaskRow(it.copy(status = conversations.status(it)), "pinned", false) { open(it) }
                         }
                     }
+                    if (sort == RemoteListSort.ByProject) {
                     val projects = data.projects.filter { project -> visible.any { it.key.hostID == project.hostID && it.projectID == project.id } }
                     if (projects.isNotEmpty()) item("projects-header") { Text(stringResource(R.string.remote_projects),
                         style = MaterialTheme.typography.titleSmall, modifier = Modifier.padding(16.dp)) }
@@ -188,10 +206,42 @@ internal fun RemoteListPage(store: RemoteListStore, provider: RemoteListProvider
                             RemoteTaskRow(it.copy(status = conversations.status(it)), "recent", false) { open(it) }
                         }
                     }
+                    } else {
+                        if (sort == RemoteListSort.Priority) {
+                            val priority = remotePriorityTasks(visible)
+                            if (priority.isNotEmpty()) {
+                                val folded = "priority" in collapsed && query.isBlank()
+                                item("priority-header") { RemoteGroupHeader(stringResource(R.string.remote_sort_priority), "priority", folded) { toggle("priority") } }
+                                if (!folded) items(priority, key = { "priority-${it.key.storageKey}" }) {
+                                    RemoteTaskRow(it.copy(status = conversations.status(it)), "priority", false) { open(it) }
+                                }
+                            }
+                        }
+                        val dated = if (sort == RemoteListSort.Priority) visible.filter { it.priorityRank !in 1..3 } else visible
+                        remoteDateGroups(dated).forEach { (date, rows) ->
+                            val group = "date-$date"
+                            val folded = group in collapsed && query.isBlank()
+                            item("$group-header") { RemoteGroupHeader(remoteDateTitle(date), group, folded) { toggle(group) } }
+                            if (!folded) items(rows, key = { "$group-${it.key.storageKey}" }) {
+                                RemoteTaskRow(it.copy(status = conversations.status(it)), group, false) { open(it) }
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+}
+
+@Composable
+private fun remoteDateTitle(date: String): String = when (date) {
+    "today" -> stringResource(R.string.remote_today)
+    "yesterday" -> stringResource(R.string.remote_yesterday)
+    "previous-week" -> stringResource(R.string.remote_previous_week)
+    "previous-month" -> stringResource(R.string.remote_previous_month)
+    "undated" -> stringResource(R.string.remote_undated)
+    else -> java.time.YearMonth.parse(date.removePrefix("month-")).format(
+        java.time.format.DateTimeFormatter.ofPattern("yyyy MMMM", androidx.compose.ui.platform.LocalConfiguration.current.locales[0]))
 }
 
 @Composable

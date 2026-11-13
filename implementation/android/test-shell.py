@@ -10,6 +10,8 @@ from pathlib import Path
 parser = argparse.ArgumentParser()
 parser.add_argument('--serial', required=True)
 parser.add_argument('--report', type=Path, required=True)
+parser.add_argument('--methods', nargs='+', choices=['preferences', 'rootsAndGestures', 'verifyRootRestart', 'corruptRootReturn', 'composer', 'journey', 'verifyRestart'],
+                    default=['preferences', 'rootsAndGestures', 'verifyRootRestart', 'corruptRootReturn', 'composer', 'journey', 'verifyRestart'])
 args = parser.parse_args()
 root = Path(__file__).resolve().parent
 adb = str(Path.home() / 'Library/Android/sdk/platform-tools/adb')
@@ -35,7 +37,8 @@ run_id = uuid.uuid4().hex
 result = {'implementation': 'Independent frontend with Android293 evidence and synthetic data',
           'serial': args.serial, 'manufacturer': manufacturer, 'model': model,
           'sdk': command('shell', 'getprop', 'ro.build.version.sdk').decode().strip(),
-          'run_id': run_id, 'ui_matrix': ['zh-CN/light', 'en/dark', 'system/system'],
+          'run_id': run_id, 'methods': args.methods,
+          'ui_matrix': ['zh-CN/light', 'en/dark', 'system/system'] if 'journey' in args.methods else ['zh-CN/light'],
           'status': 'running', 'steps': []}
 try:
     for relative in ['app/build/outputs/apk/debug/app-debug.apk', 'app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk']:
@@ -44,7 +47,7 @@ try:
         if 'Success' not in output:
             raise RuntimeError('Installation failed')
         result['steps'].append({'apk': relative, 'sha256': hashlib.sha256(apk.read_bytes()).hexdigest()})
-    for method in ['preferences', 'composer', 'journey', 'verifyRestart']:
+    for method in args.methods:
         command('shell', 'am', 'force-stop', package)
         process = subprocess.run([adb, '-s', args.serial, 'shell', 'pidof', package], capture_output=True)
         if process.stdout.strip():

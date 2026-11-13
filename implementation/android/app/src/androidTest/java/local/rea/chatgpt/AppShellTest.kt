@@ -26,10 +26,14 @@ class AppShellTest {
     private fun node(id: String): UiObject2 = device.wait(Until.findObject(By.res(id)), 8000) ?: error("Missing $id")
     private fun refresh() { device.waitForIdle(); instrumentation.uiAutomation.clearCache() }
     private fun click(id: String) {
+        assertEquals("Another app owns the foreground", context.packageName, device.currentPackageName)
         if (id.startsWith("shell-entry-")) node("shell-drawer")
         node(id).click(); refresh()
     }
-    private fun back() { device.pressBack(); refresh() }
+    private fun back() {
+        assertEquals("Another app owns the foreground", context.packageName, device.currentPackageName)
+        device.pressBack(); refresh()
+    }
     private fun start(profileSuffix: String = "") {
         val launch = context.packageManager.getLaunchIntentForPackage(context.packageName) ?: error("Launcher missing")
         assertEquals(AppShellActivity::class.java.name, launch.component?.className)
@@ -92,6 +96,103 @@ class AppShellTest {
         assertEquals("", FrontendPreferences(context, "test-$runID-other").draft("chat"))
         assertThrows(IllegalArgumentException::class.java) { prefs.selectLanguage("invalid") }
         assertThrows(IllegalArgumentException::class.java) { FrontendPreferences(context, "../escape") }
+        assertEquals("home", prefs.rootRoute)
+        assertTrue(prefs.selectRoot("remote"))
+        assertEquals("remote", FrontendPreferences(context, "test-$runID-model").rootRoute)
+        assertEquals("home", FrontendPreferences(context, "test-$runID-other").rootRoute)
+        assertThrows(IllegalArgumentException::class.java) { prefs.selectRoot("settings-codex") }
+        val corruptName = "test-$runID-corrupt"
+        val corrupt = context.getSharedPreferences("frontend-$corruptName", 0)
+        assertTrue(corrupt.edit().putInt("root-version", 99).putString("root-route", "unknown").commit())
+        val invalid = FrontendPreferences(context, corruptName)
+        assertFalse(invalid.rootCheckpointValid)
+        assertEquals("home", invalid.rootRoute)
+        assertFalse(invalid.selectRoot("home"))
+        assertEquals("unknown", corrupt.getString("root-route", null))
+    }
+    @Test fun rootsAndGestures() {
+        val suffix = "-roots"
+        val profile = "test-$runID$suffix"
+        val prefs = FrontendPreferences(context, profile)
+        prefs.selectLanguage("zh-CN"); prefs.selectAppearance("light")
+        prefs.saveDraft("chat", "主框架草稿")
+        start(suffix)
+        val density = context.resources.displayMetrics.density
+        fun drag(from: Int, to: Int) {
+            assertEquals("Another app owns the foreground", context.packageName, device.currentPackageName)
+            val y = device.displayHeight / 2
+            assertTrue(device.swipe((from * density).toInt(), y, (to * density).toInt(), y, 35))
+            refresh()
+        }
+        // Native Material progress settles back after a bounded short open.
+        drag(24, 54)
+        assertTrue(device.wait(Until.hasObject(By.res("shell-menu")), 5000))
+        assertFalse(device.hasObject(By.res("shell-drawer")))
+        drag(24, 260); node("shell-drawer")
+        capture("root-drawer-drag-open-zh-light")
+        drag(230, 210); node("shell-drawer")
+        drag(260, 40)
+        assertTrue(device.wait(Until.gone(By.res("shell-drawer")), 5000))
+        assertEquals("主框架草稿", node("shell-draft").text)
+        for (entry in listOf("library", "plugins", "images")) {
+            click("shell-menu"); click("shell-entry-$entry"); node("shell-capability")
+            assertEquals(entry, FrontendPreferences(context, profile).rootRoute)
+            // All admitted roots share drawer ownership; nested settings do not.
+            drag(24, 260); node("shell-drawer")
+            click("shell-entry-settings"); node("shell-settings-list")
+            if (entry == "library") capture("settings-root-zh-light")
+            click("shell-setting-general"); node("shell-general-list")
+            if (entry == "library") capture("settings-general-zh-light")
+            click("shell-back"); node("shell-settings-list")
+            click("shell-back"); node("shell-capability")
+            assertEquals(entry, FrontendPreferences(context, profile).rootRoute)
+            node("shell-menu")
+        }
+        capture("feature-root-return-zh-light")
+        // Recreate the actual launcher without a route override. This preserves
+        // the isolated profile and never modifies the user's ordinary preview.
+        val launch = context.packageManager.getLaunchIntentForPackage(context.packageName)!!
+        context.startActivity(launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .putExtra("shell-profile", profile))
+        node("shell-capability")
+        assertTrue(device.wait(Until.hasObject(By.text("图片")), 5000))
+        capture("root-before-process-restart-zh-light")
+    }
+    @Test fun verifyRootRestart() {
+        // The host runner force-stops this package between test methods.
+        val profile = "test-$runID-roots"
+        val launch = context.packageManager.getLaunchIntentForPackage(context.packageName)!!
+        context.startActivity(launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .putExtra("shell-profile", profile))
+        node("shell-capability")
+        assertTrue(device.wait(Until.hasObject(By.text("图片")), 5000))
+        capture("root-after-process-restart-zh-light")
+        click("shell-menu"); click("shell-entry-remote"); node("remote-title")
+        assertEquals("remote", FrontendPreferences(context, profile).rootRoute)
+        click("remote-sidebar"); click("shell-entry-settings"); node("shell-settings-list")
+        click("shell-back"); node("remote-title")
+        back(); node("shell-home")
+        assertEquals("home", FrontendPreferences(context, profile).rootRoute)
+        assertEquals("主框架草稿", node("shell-draft").text)
+        capture("root-home-restored-zh-light")
+    }
+    @Test fun corruptRootReturn() {
+        val suffix = "-corrupt-return"
+        val profile = "test-$runID$suffix"
+        val prefs = FrontendPreferences(context, profile)
+        prefs.selectLanguage("zh-CN"); prefs.selectAppearance("light")
+        val raw = context.getSharedPreferences("frontend-$profile", 0)
+        assertTrue(raw.edit().putInt("root-version", 99).putString("root-route", "unrecognized").commit())
+        start(suffix); node("shell-error")
+        click("shell-menu"); click("shell-entry-settings"); node("shell-settings-list")
+        capture("corrupt-settings-root-zh-light")
+        click("shell-setting-general"); node("shell-general-list")
+        capture("corrupt-settings-general-zh-light")
+        click("shell-back"); node("shell-settings-list")
+        click("shell-back"); node("shell-home"); node("shell-error")
+        assertEquals("unrecognized", raw.getString("root-route", null))
+        assertEquals(99, raw.getInt("root-version", 0))
+        capture("corrupt-root-return-preserved")
     }
     @Test fun composer() {
         // Ordinary Chat has no configuration slot; Work explicitly provides one.

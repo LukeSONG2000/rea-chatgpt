@@ -1,0 +1,193 @@
+{
+  "scope": "Read-only static trace of Android 1.2026.293 recovered JADX source; no runtime/native target actions",
+  "findings": {
+    "modes": {
+      "Priority": "o8m.b",
+      "ByProject": "o8m.c; default",
+      "Chronological": "o8m.d"
+    },
+    "pinned_duplication": {
+      "confirmed": true,
+      "trace": "o9m.f lazy z9 case20 concatenates b + a(pinned) + all section threads, deduplicates by thread ID; pkm.B list12 becomes t7m.h and dcj.k. Non-priority header separately renders dcj.i pinned. Project groups dcj.k, Chronological dates dcj.k. Thus a pinned item can appear in both top pinned and project/date body."
+    },
+    "chronological_comparator": "dcj.k -> h(am7(nz2 case2),case1): descending (fjm.g updatedAt ?? fjm.f createdAt ?? 0), then ascending instance display name pml.b, then ascending thread ID fjm.a. Dates grouping independently uses timestamp helper; missing timestamp ordering uses 0 here, Long.MIN_VALUE in priority helper.",
+    "priority": {
+      "rank1": "o830.l 1 or 2 = zim contains waitingOnApproval(k3m) or waitingOnUserInput(l3m)",
+      "rank2": "fjm.i true = unread, unless rank1",
+      "rank3": "o830.l 3 = zim without recognized waiting flags, unless unread",
+      "rank4": "all other states; Recent",
+      "producer": "pkm.B merges filtered pinned/custom/general rows, deduplicates by thread ID, sorts timestamp, partitions rank !=4 into priority and rank4 Recent; priority sorts rank asc then timestamp desc. dcj.l ba0 case13 folds across hosts and sorts v5u case5 -> i6b case1 -> bcj -> ccj: rank asc, timestamp desc, host display name asc, thread ID asc. dcj.m vs0 case9 folds Recent. Decompiler inverts some boolean guards; membership and comparator bodies are clean."
+    },
+    "project_key": "pkm.j groups dcj.k on (instance ID, zsn.m(fjm, instance.b())). zsn.m returns __codex_projectless_chats for special host type; otherwise normalized cwd via bs61.d. Do not infer project grouping from display title.",
+    "sections": "Custom sections can merge across hosts when display names equal and each host occurs at most once (dcj constructor). Pinned and custom section display order preserved, main body has separate comparator."
+  },
+  "implementation_guidance": [
+    "Retain pinned duplication in ByProject/Chronological; deduplicate within merged body by identity, not across top pinned vs body sections.",
+    "Fixture may expose explicit priorityRank 1..4; qualify as independent fixture projection until mapped to actual source semantics and backend state.",
+    "Do not give all running states same bucket as approvals: both waiting types rank1, unread rank2, other active zim rank3.",
+    "Use timestamp descending then instance display name then thread ID for stable cross-instance chronology."
+  ],
+  "limitations": [
+    "Recovered Java includes explicit JADX decompilation warnings and contradictory reconstructed branches; no smali cross-check in this focused task.",
+    "Archive producer and remote filtering not fully traced; fjm.k visibility guards exist but archive field semantics not established here.",
+    "No runtime or backend ordering parity established.",
+    "Project directory ordering and custom-section server production not fully traced."
+  ],
+  "evidence": [
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/o8m.java",
+      "sha256": "9a0f4bd9668a589ef2bc98ff86f1a186a0ac9da271d0b49d0b7bdab44e02768a",
+      "line_anchors": [
+        17,
+        23
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/fh1.java",
+      "sha256": "816abb7515688b279f694d36cedf81c8b94d67735d79a9bfc2cbfff7829de397",
+      "line_anchors": [
+        111,
+        119
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/hxk.java",
+      "sha256": "8090318bd29bdf55e279b2342dc96038fc6ecf16899f38cf9e2b33389c36ea34",
+      "line_anchors": [
+        114,
+        114
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/z9.java",
+      "sha256": "e04f0a2ba667401e7dccc6276f1ee5a5596e73e55e79a00f1ad1c6e4d18cde51",
+      "line_anchors": [
+        107,
+        145
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/dcj.java",
+      "sha256": "d14f06d9e0bfb8e26fd2e2630ac7f3d90451497bfb680a1fd0283a8696ef83ba",
+      "line_anchors": [
+        90,
+        169
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/nz2.java",
+      "sha256": "114a7f6e5d43965ffd95c01aacd92ca9200878f30f1de5473c14913c387789b4",
+      "line_anchors": [
+        27,
+        44
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/am7.java",
+      "sha256": "01877ff7ac9bfe2a6865f05465b91190d3f48253e78d8e955b23b147c81d3164",
+      "line_anchors": [
+        25,
+        27
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/h.java",
+      "sha256": "05adc11623ac83b3509750ee334e5e1c30e1f0a48b4f3d9a5eebd51561630a2f",
+      "line_anchors": [
+        28,
+        30
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/pkm.java",
+      "sha256": "973c357907d4f499c3287509e315b7f6657cf864babc3250bd173a06f737ec8c",
+      "line_anchors": [
+        551,
+        585,
+        697,
+        710,
+        2976,
+        3131,
+        3289,
+        3314
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/zsn.java",
+      "sha256": "e84044e5f832c43e3eb4ea9361463d4c75e883f26e360d68625756ea94059623",
+      "line_anchors": [
+        323,
+        345,
+        400,
+        402,
+        910,
+        918
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/o830.java",
+      "sha256": "5f21b1e560927633980757199ce059cc19efa8a7e543cfcc666bf5eefcf92fa7",
+      "line_anchors": [
+        450,
+        466
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/gvj.java",
+      "sha256": "d52aa0282262da97aef5934a21de666c22e316b4ea43e72b47b39eb741bb2229",
+      "line_anchors": [
+        900,
+        905,
+        925,
+        928
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/x8n.java",
+      "sha256": "9d9cc469e7ed05c17f1589bfd204e0d5f947e09612b51abd10fb614bcac40c97",
+      "line_anchors": [
+        1880,
+        1880
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/v5u.java",
+      "sha256": "9863db6df35d9729053238f9088240d147e9839de0f2fa474be934c7ba67e465",
+      "line_anchors": [
+        145,
+        146
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/i6b.java",
+      "sha256": "b718fb65659f9983a3f761ea0c20a076bb0ea0733f21ead402976989546e04d2",
+      "line_anchors": [
+        26,
+        28
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/bcj.java",
+      "sha256": "8e659e4cf77ff4f2c94e56760bf8fff4fdb45976b1a108f769ebf69fe3aa5c8b",
+      "line_anchors": [
+        16,
+        18
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/sources/defpackage/ccj.java",
+      "sha256": "5c6b59dc976f2cbaf8e07e41dd5ce7bd0697e6475bf630c18953928a79a14923",
+      "line_anchors": [
+        22,
+        25
+      ]
+    },
+    {
+      "file": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/android-1.2026.293/jadx-src/resources/res/values/strings.xml",
+      "sha256": "738a5af95b1fa4997bbacad8756410f9ac6a27dd1c8974704275de7977fc5ea2",
+      "line_anchors": [
+        1817
+      ]
+    }
+  ]
+}

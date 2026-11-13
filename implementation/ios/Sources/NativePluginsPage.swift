@@ -36,7 +36,7 @@ final class FrontendPluginsModel: ObservableObject {
             "An independent synthetic plugin for directory, detail and service-entry inspection. Connection replay changes local test data only; it never connects accounts, installs plugins or executes tools.")
             + "\n\n" + visualText("目录和详情使用同一个插件身份。\n来源筛选和搜索只读取合成目录。\n操作回执包含账户、工作空间和请求身份。\n旧回执不能覆盖新的连接状态。\n返回目录后保留来源和阅读位置。",
                 "Directory and detail share the same plugin identity.\nSource filters and search read synthetic data only.\nReceipts carry account, workspace and request identity.\nOld receipts cannot overwrite newer connection state.\nReturning preserves the selected source and reading position.")
-        let values: [FrontendPlugin] = [
+        var values: [FrontendPlugin] = [
             .init(id: "notes", actionPluginID: "fixture-action-notes", revision: 0,
                 name: visualText("合成笔记", "Synthetic notes"), summary: visualText("目录交互示例", "Directory interaction fixture"),
                 sourceID: "workspace", installed: true, actions: [.disconnect, .settings, .tryInChat], detail: info),
@@ -49,11 +49,36 @@ final class FrontendPluginsModel: ObservableObject {
             .init(id: "search", actionPluginID: "fixture-action-search", revision: 0,
                 name: visualText("合成搜索", "Synthetic search"), summary: visualText("分页示例", "Pagination fixture"),
                 sourceID: "personal", installed: false, actions: [.connect], detail: info)]
+        //Explicit synthetic metadata; never present real developer/version or
+        //the user's plugin content as recovered catalog data. Source trailing
+        //order and array-empty gates are implemented by the consumers below.
+        let skillTitles = [visualText("整理笔记", "Organize notes"), visualText("概括内容", "Summarize"),
+            visualText("列出任务", "List tasks"), visualText("搜索条目", "Find entries"),
+            visualText("比较记录", "Compare records"), visualText("创建清单", "Create checklist"),
+            visualText("生成提纲", "Create outline"), visualText("检查格式", "Check format"),
+            visualText("整理日程", "Organize schedule"), visualText("导出摘要", "Export summary")]
+        for index in values.indices where index < 2 {
+            values[index].skills = skillTitles.enumerated().map { .init(id: "fixture-skill-\($0.offset)", title: $0.element) }
+            values[index].information = [
+                .init(id: .developer, value: .text(visualText("独立合成示例", "Independent synthetic fixture"))),
+                .init(id: .capabilities, value: .list([visualText("目录演示", "Catalog replay"), visualText("本地状态", "Local state") ])),
+                .init(id: .website, value: .link(URL(string: "https://example.invalid/preview")!))]
+        }
+        var journal: FrontendPluginConnectionJournal?
+        let profile = FrontendStartScreenDestination.currentProfile
+        if profile == "legacy" || profile == "preview" || UUID(uuidString: profile) != nil,
+           let support = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true) {
+            //URL-safe account/workspace identity; language never enters storage.
+            let scopeName = Data((scope.accountID + "\u{0}" + scope.workspaceID).utf8).map { String(format: "%02x", $0) }.joined()
+            journal = .init(url: support.appendingPathComponent("REAOffline/plugin-profiles/" + profile + "/" + scopeName + "/connections-v1.json"), scope: scope)
+        }
         return .init(scope: scope, sources: sources, service: SyntheticPluginService(scope: scope,
             catalog: values, failsOnce: HostLaunchRuntime.arguments.contains("--plugins-failure-fixture"),
             failsFirstRefresh: HostLaunchRuntime.arguments.contains("--plugins-refresh-failure-fixture"),
             replaysConnectionChanges: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
-                HostLaunchRuntime.arguments.contains("--plugins-operation-success-fixture")),
+                HostLaunchRuntime.arguments.contains("--plugins-operation-success-fixture"),
+            journal: journal, failsLocalSaveOnce: HostLaunchRuntime.arguments.contains("--offline-fixture") &&
+                HostLaunchRuntime.arguments.contains("--plugins-local-save-failure-fixture")),
             replaysRefreshFixture: HostLaunchRuntime.arguments.contains("--plugins-refresh-failure-fixture")
                 && !HostLaunchRuntime.arguments.contains("--plugins-manual-refresh-fixture"))
     }
@@ -125,16 +150,53 @@ final class FrontendPluginsModel: ObservableObject {
 struct NativePluginsPage: View {
     @ObservedObject var model: FrontendPluginsModel
     let openMenu: () -> Void
+    var closeDirectory: (() -> Void)? = nil
     var body: some View {
         NavigationStack(path: $model.path) {
             directory
                 .navigationTitle(OfficialText.text(.pluginsDirectoryTitle))
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        //293 picks ChatGPTDirectorySection, NOT a sourceID.
+                        //This host enables the Plugins section only. Skills/
+                        //GPTs must not appear as usable routes without owners.
+                        Menu {
+                            Picker(OfficialText.text(.pluginsDirectoryTitle), selection: .constant("plugins")) {
+                                Text(OfficialText.text(.pluginsDirectoryTitle)).tag("plugins")
+                            }.labelsHidden()
+                        } label: {
+                            HStack(spacing: 6) {
+                                Text(OfficialText.text(.pluginsDirectoryTitle)).font(.headline)
+                                Image(uiImage: officialVisualIcon("chevron-down-sm"))
+                                    .foregroundStyle(.secondary)
+                            }
+                        }.accessibilityIdentifier("plugins-directory-picker")
+                    }
                     ToolbarItem(placement: .topBarLeading) {
-                        Button(action: openMenu) { Image(uiImage: officialVisualIcon("sidebar-menu")) }
-                            .accessibilityLabel(visualText("打开侧栏", "Open sidebar"))
-                            .accessibilityIdentifier("plugins-open-menu")
+                        if let closeDirectory {
+                            Button(action: closeDirectory) { Image(uiImage: officialVisualIcon("xmark-lg")) }
+                                .accessibilityLabel(visualText("关闭插件目录", "Close plugin directory"))
+                                .accessibilityIdentifier("plugins-directory-close")
+                        } else {
+                            Button(action: openMenu) { Image(uiImage: officialVisualIcon("sidebar-menu")) }
+                                .accessibilityLabel(visualText("打开侧栏", "Open sidebar"))
+                                .accessibilityIdentifier("plugins-open-menu")
+                        }
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        //Independent preview source filter, kept distinct from
+                        //the recovered directory-section title picker above.
+                        Menu {
+                            ForEach(model.sources) { source in
+                                Button { model.sourceID = source.id } label: {
+                                    if model.sourceID == source.id { Label(source.title, systemImage: "checkmark") }
+                                    else { Text(source.title) }
+                                }.accessibilityIdentifier("plugins-source-" + source.id)
+                            }
+                        } label: { Image(systemName: "line.3.horizontal.decrease") }
+                            .accessibilityLabel(visualText("筛选来源", "Filter source"))
+                            .accessibilityIdentifier("plugins-source-picker")
                     }
                 }
                 //293 Screen e824bc applies refreshable to its directory root
@@ -164,22 +226,7 @@ struct NativePluginsPage: View {
         let query = model.query
         return ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
-                Button { model.path.append(.search) } label: {
-                    Label(OfficialText.text(.pluginsSearch), systemImage: "magnifyingglass")
-                        .frame(maxWidth: .infinity, alignment: .leading).padding(12)
-                        .background(.quaternary, in: RoundedRectangle(cornerRadius: 12))
-                }.buttonStyle(.plain).accessibilityIdentifier("plugins-search")
                 installed
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 12) {
-                        ForEach(model.sources) { source in
-                            Button(source.title) { model.sourceID = source.id }
-                                .buttonStyle(.bordered).tint(model.sourceID == source.id ? .accentColor : .secondary)
-                                .accessibilityIdentifier("plugins-source-" + source.id)
-                                .accessibilityAddTraits(model.sourceID == source.id ? .isSelected : [])
-                        }
-                    }
-                }
                 PluginListing(model: model, query: model.query)
             }.padding(20).scrollTargetLayout()
                 .background {
@@ -189,9 +236,22 @@ struct NativePluginsPage: View {
                 }
         }
         .scrollPosition(id: $model.scrollID)
+        .accessibilityIdentifier("plugins-directory")
+        //293 applies FloatingSearchBarModifier after ScrollView/scrollPosition.
+        //safeAreaInset is this host's carrier; its exact insets are not the
+        //original private modifier's recovered geometry.
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            Button { model.path.append(.search) } label: {
+                Label(OfficialText.text(.pluginsSearch), systemImage: "magnifyingglass")
+                    .font(.body).foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 20).padding(.vertical, 14)
+                    .modifier(PluginFloatingSearchSurface())
+            }.buttonStyle(.plain).accessibilityIdentifier("plugins-search")
+                .padding(.horizontal, 20).padding(.bottom, 8)
+        }
         .background(Color(uiColor: officialVisualColor("OneOff/MainSurfacePrimary")))
         .task { await model.load(model.installedQuery) }
-        .accessibilityIdentifier("plugins-directory")
     }
     @ViewBuilder private var installed: some View {
         let items = model.state.items(model.installedQuery).filter(\.installed)
@@ -199,14 +259,12 @@ struct NativePluginsPage: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(visualText("已安装", "Installed")).font(.headline)
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 16) {
+                    LazyHStack(spacing: 12) {
                         ForEach(items) { item in
                             Button { model.path.append(.detail(item.id)) } label: {
-                                VStack(spacing: 8) {
-                                    PluginFixtureIcon(item: item)
-                                    Text(item.name).font(.subheadline).lineLimit(2)
-                                }.frame(width: 100)
-                            }.buttonStyle(.plain).accessibilityIdentifier("plugins-installed-" + item.id)
+                                PluginFixtureIcon(item: item)
+                            }.buttonStyle(.plain).accessibilityLabel(item.name)
+                                .accessibilityIdentifier("plugins-installed-" + item.id)
                         }
                     }
                 }
@@ -215,6 +273,19 @@ struct NativePluginsPage: View {
             Button(visualText("重试已安装列表", "Retry installed list")) {
                 Task { await model.load(model.installedQuery, force: true) }
             }.accessibilityIdentifier("plugins-installed-retry")
+        }
+    }
+}
+
+private struct PluginFloatingSearchSurface: ViewModifier {
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @ViewBuilder func body(content: Content) -> some View {
+        if reduceTransparency {
+            content.background(Color(uiColor: .secondarySystemBackground), in: Capsule())
+        } else if #available(iOS 26.0, *) {
+            content.glassEffect(.regular.interactive(), in: Capsule())
+        } else {
+            content.background(.regularMaterial, in: Capsule())
         }
     }
 }
@@ -329,14 +400,11 @@ private struct PluginListing: View {
         let items: [FrontendPlugin]
     }
     private var sections: [Section] {
-        // The official SourceContent consumes owner-supplied section IDs. The
-        // fixture groups by source, retaining first occurrence order explicitly.
         let items = model.state.items(query)
-        var ids: [String] = []
-        for item in items where !ids.contains(item.sourceID) { ids.append(item.sourceID) }
-        return ids.map { id in
-            .init(id: id, title: query.sourceID == "all" ? model.sources.first(where: { $0.id == id })?.title : nil,
-                items: items.filter { $0.sourceID == id })
+        guard let supplied = listing.sections else { return [.init(id: "flat", title: nil, items: items)] }
+        let byID = Dictionary(uniqueKeysWithValues: items.map { ($0.id, $0) })
+        return supplied.map { section in
+            .init(id: section.id, title: section.title, items: section.pluginIDs.compactMap { byID[$0] })
         }
     }
     var body: some View {
@@ -396,6 +464,83 @@ private struct PluginListing: View {
 //action. This independent native carrier forwards the actual button event;
 //search focus/presentation changes cannot reliably identify that action across
 //SwiftUI searchable -> detail -> Back on the current runtime.
+//293 Settings->connectors(.root)->ConnectorsView Form, plugins owner5143ab4.
+//This host supplies the positive native-plugin branch explicitly; it does not
+//claim the production feature flag or legacy/apps/privacy sections are closed.
+struct NativePluginConnectionsSettings: View {
+    @ObservedObject var model: FrontendPluginsModel
+    let openPluginSettings: (String) -> Void
+    var nativePluginSettingsEnabled = true
+    var allowsDirectory = true
+    var hasInstalledPlugins: Bool? = nil
+    @State private var showsDirectory = false
+    @State private var savedDirectoryPath: [FrontendPluginsModel.Route] = []
+    private var added: [FrontendPlugin] { model.state.items(model.installedQuery) }
+    var body: some View {
+        Form {
+            if nativePluginSettingsEnabled {
+                //hasInstalledPlugins and the filtered array are distinct source
+                //inputs. Our explicit projection uses the accepted installed
+                //list; failed/loading states never masquerade as an empty list.
+                if hasInstalledPlugins ?? !added.isEmpty {
+                    Section(OfficialText.text(.pluginsAdded)) {
+                        if added.isEmpty { Text(OfficialText.text(.pluginsNoMatching)) }
+                        ForEach(added) { item in
+                            //Use the source's injected callback branch. The
+                            //owning Settings stack owns its typed destination.
+                            Button { openPluginSettings(item.id) } label: {
+                                HStack {
+                                    PluginFixtureIcon(item: item)
+                                    Text(item.name)
+                                    Spacer()
+                                    Image(systemName: "chevron.right").font(.footnote).foregroundStyle(.tertiary)
+                                }
+                            }.accessibilityIdentifier("plugins-settings-added-" + item.id)
+                        }
+                    }
+                }
+                if model.state.listing(model.installedQuery).phase == .loading { ProgressView() }
+                if case .failed(let failure) = model.state.listing(model.installedQuery).phase {
+                    Section {
+                        Text(failure == .localStorage
+                            ? visualText("本地插件状态无法读取，已有文件保留。", "Local plugin state could not be read. Existing files were kept.")
+                            : visualText("已添加插件加载失败", "Added plugins could not be loaded"))
+                            .accessibilityIdentifier("plugins-settings-error")
+                        Button(visualText("重试", "Retry")) { Task { await model.load(model.installedQuery, force: true) } }
+                            .accessibilityIdentifier("plugins-settings-retry")
+                    }
+                }
+                if allowsDirectory {
+                    Section {
+                        Button {
+                            savedDirectoryPath = model.path; model.path = []; showsDirectory = true
+                        } label: {
+                            HStack {
+                                Image(uiImage: officialVisualIcon("circle-grid-2x2-badge-plus"))
+                                Text(OfficialText.text(.pluginsBrowse))
+                                Spacer()
+                                Image(systemName: "chevron.right").font(.footnote).foregroundStyle(.tertiary)
+                            }
+                        }.accessibilityIdentifier("plugins-settings-browse")
+                    } footer: {
+                        Text(visualText("独立离线示例：连接变化仅保存到当前预览资料，不会安装插件或授权外部账户。",
+                            "Independent offline preview: connection changes are saved only to this preview profile. No plugins are installed or external accounts authorized."))
+                    }
+                }
+            }
+        }
+        .navigationTitle(OfficialText.text(.settingsPlugins)).navigationBarTitleDisplayMode(.inline)
+        .task { await model.load(model.installedQuery) }
+        .refreshable { await model.load(model.installedQuery, force: true) }
+        .sheet(isPresented: $showsDirectory, onDismiss: { model.path = savedDirectoryPath }) {
+            //Original directory callback is proved; presentation modality is an
+            //independent host adapter. Share catalog state, preserve prior route.
+            NativePluginsPage(model: model, openMenu: {}, closeDirectory: { showsDirectory = false })
+        }
+        .accessibilityIdentifier("plugins-settings-root")
+    }
+}
+
 private struct NativePluginSearch: View {
     @ObservedObject var model: FrontendPluginsModel
     var body: some View {
@@ -409,6 +554,126 @@ private struct NativePluginSearch: View {
                 }.background(Color(uiColor: officialVisualColor("OneOff/MainSurfacePrimary")))
             }
             .accessibilityIdentifier("plugins-search-page")
+    }
+}
+
+//293 SkillsSection eb74e4/eb765c consumes FlowLayout and first8/all input.
+//Spacing, pill paint, and the local expansion/click route are host adapters;
+//final ScreenAction dispatch and original modifier inputs remain unclosed.
+private struct RecoveredPluginSkills: View {
+    let skills: [FrontendPluginSkill]
+    @State private var showsAll = false
+    @State private var selected: FrontendPluginSkill?
+    @Environment(\.layoutDirection) private var direction
+    private var projection: FrontendPluginSkillsPresentation { .init(skills: skills, showsAll: showsAll) }
+    var body: some View {
+        if !skills.isEmpty {
+            VStack(alignment: .leading, spacing: 12) {
+                Text(OfficialText.text(skills.count == 1 ? .pluginsSkill : .pluginsSkills)).font(.headline)
+                PluginSkillFlow(direction: direction) {
+                    ForEach(projection.visible) { skill in
+                        Button(skill.title) { selected = skill }
+                            .buttonStyle(.bordered).clipShape(Capsule())
+                            .accessibilityIdentifier("plugin-skill-" + skill.id)
+                    }
+                    if projection.remaining > 0 {
+                        Button(OfficialText.format(.pluginsMoreSkills, arguments: [String(projection.remaining)])) { showsAll = true }
+                            .buttonStyle(.bordered).clipShape(Capsule())
+                            .accessibilityIdentifier("plugin-skills-more")
+                    }
+                }
+            }
+            .sheet(item: $selected) { skill in
+                NavigationStack {
+                    SettingsServiceUnavailablePage(title: skill.title)
+                        .toolbar { ToolbarItem(placement: .topBarTrailing) {
+                            Button(visualText("关闭", "Close")) { selected = nil }
+                                .accessibilityIdentifier("plugin-skill-close")
+                        } }
+                }
+            }
+        }
+    }
+}
+
+private struct PluginSkillFlow: Layout {
+    let direction: LayoutDirection
+    private let spacing: CGFloat = 8 //independent native carrier spacing
+    private func positions(_ subviews: Subviews, width: CGFloat) -> ([(CGPoint, CGSize)], CGFloat) {
+        var x: CGFloat = 0, y: CGFloat = 0, lineHeight: CGFloat = 0
+        var result: [(CGPoint, CGSize)] = []
+        for view in subviews {
+            let natural = view.sizeThatFits(.unspecified)
+            let size = view.sizeThatFits(.init(width: min(width, natural.width), height: nil))
+            if x > 0 && x + size.width > width { x = 0; y += lineHeight + spacing; lineHeight = 0 }
+            result.append((.init(x: x, y: y), size))
+            x += size.width + spacing; lineHeight = max(lineHeight, size.height)
+        }
+        return (result, y + lineHeight)
+    }
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let width = max(1, proposal.width ?? subviews.reduce(CGFloat(0)) { $0 + $1.sizeThatFits(.unspecified).width + spacing })
+        return .init(width: width, height: positions(subviews, width: width).1)
+    }
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        let values = positions(subviews, width: max(1, bounds.width)).0
+        for (index, value) in values.enumerated() {
+            let x = direction == .rightToLeft ? bounds.width - value.0.x - value.1.width : value.0.x
+            subviews[index].place(at: .init(x: bounds.minX + x, y: bounds.minY + value.0.y),
+                anchor: .topLeading, proposal: .init(value.1))
+        }
+    }
+}
+
+//InformationSection eb897c preserves supplied order/stable IDs and omits the
+//final Divider. RowValue eb938c/eb94c4 supports formatted lists and URL.host.
+//ViewThatFits/font/spacing adapt the original carrier, not private metrics.
+private struct RecoveredPluginInformation: View {
+    let rows: [FrontendPluginInformation]
+    @State private var browser: FrontendBrowserRequest?
+    @Environment(\.dynamicTypeSize) private var textSize
+    var body: some View {
+        if !rows.isEmpty {
+            VStack(alignment: .leading, spacing: 12) {
+                Text(OfficialText.text(.pluginsInformation)).font(.headline)
+                ForEach(rows) { row in
+                    ViewThatFits(in: .horizontal) {
+                        if !textSize.isAccessibilitySize {
+                            HStack(alignment: .firstTextBaseline) {
+                                Text(label(row.id)).foregroundStyle(.secondary).fixedSize()
+                                Spacer(minLength: 16)
+                                value(row).fixedSize()
+                            }
+                        }
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(label(row.id)).foregroundStyle(.secondary)
+                            value(row)
+                        }
+                    }
+                    if row.id != rows.last?.id { Divider() }
+                }
+            }.frontendBrowserPreview($browser)
+        }
+    }
+    @ViewBuilder private func value(_ row: FrontendPluginInformation) -> some View {
+        switch row.value {
+        case .text(let text): Text(text)
+        case .list(let values): Text(values.formatted())
+        case .link(let url):
+            Button(url.host ?? url.absoluteString) { browser = .init(url: url) }
+                .buttonStyle(.plain).foregroundStyle(.tint)
+                .accessibilityIdentifier("plugin-info-link-" + row.id.rawValue)
+        }
+    }
+    private func label(_ id: FrontendPluginInformation.ID) -> String {
+        switch id {
+        case .capabilities: OfficialText.text(.pluginsCapabilities)
+        case .developer: OfficialText.text(.pluginsDeveloper)
+        case .website: OfficialText.text(.pluginsWebsite)
+        case .version: OfficialText.text(.pluginsVersion)
+        case .privacyPolicy: OfficialText.text(.pluginsPrivacy)
+        case .termsOfService: OfficialText.text(.pluginsTerms)
+        }
     }
 }
 
@@ -485,6 +750,8 @@ private struct NativePluginDetail: View {
                                 .disabled(model.state.operations[pluginID] != nil || item.actionPluginID == nil)
                                 .accessibilityIdentifier("plugin-action-" + action.rawValue)
                         }
+                        RecoveredPluginSkills(skills: item.skills).id(pluginID)
+                        RecoveredPluginInformation(rows: item.information)
                     }
                 }
                 if model.state.detailPhases[pluginID] == .loading { ProgressView() }
@@ -495,7 +762,9 @@ private struct NativePluginDetail: View {
                 }
                 if model.state.operations[pluginID] != nil { ProgressView() }
                 if let failure = model.state.operationFailures[pluginID] {
-                    Text(failure == .unavailable
+                    Text(failure == .localStorage
+                        ? visualText("本地状态保存失败，没有报告连接成功。可重试，已有文件保留。", "Local state could not be saved. No connection success was reported. Retry is available; existing files were kept.")
+                        : failure == .unavailable
                         ? visualText("服务尚未接入，没有更改连接或授权。", "Service not connected. No connection or authorization was changed.")
                         : visualText("操作失败，可以重试。", "The operation failed. You can retry."))
                         .foregroundStyle(.secondary).accessibilityIdentifier("plugin-operation-status")

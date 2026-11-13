@@ -3,6 +3,166 @@ import UIKit
 
 extension HostInteractionTests {
     @MainActor
+    func testRemoteListCheckpointChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString
+        app.launchArguments = ["--offline-fixture", "--codex-home-fixture=tasks",
+            "--chat-state-profile=" + profile, "--remote-draft-profile=" + profile,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        func enter() {
+            app.launch()
+            XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+            app.buttons["open-conversation-list"].tap(); app.buttons["sidebar-feature-codex"].tap()
+            XCTAssertTrue(app.collectionViews["remote-task-list"].waitForExistence(timeout: 5))
+        }
+        func chooseGrouping(_ value: Int) {
+            app.buttons["codex-home-menu"].tap()
+            //Native Picker menu rows expose their localized labels, not the
+            //SwiftUI content identifier, on this simulator runtime.
+            let option = app.buttons[value == 2 ? "按时间倒序排列" : "按项目"]
+            XCTAssertTrue(option.waitForExistence(timeout: 5)); option.tap()
+        }
+        enter()
+        let all = app.buttons["remote-source-all"], b = app.buttons["remote-source-fixture-b"]
+        let headerA = app.buttons["remote-section-fixture-a-ui"]
+        XCTAssertTrue(headerA.waitForExistence(timeout: 5)); headerA.tap()
+        XCTAssertEqual(headerA.value as? String, "已折叠")
+        let filters = app.scrollViews["remote-source-filter"]
+        for _ in 0..<3 where !b.isHittable { filters.swipeLeft() }
+        b.tap(); XCTAssertTrue(b.isSelected)
+        app.terminate(); enter()
+        XCTAssertTrue(b.isSelected, "Device filter must survive a fresh frontend owner")
+        for _ in 0..<3 where !all.isHittable { filters.swipeRight() }
+        all.tap(); XCTAssertTrue(headerA.waitForExistence(timeout: 5))
+        XCTAssertEqual(headerA.value as? String, "已折叠")
+        headerA.tap()
+        chooseGrouping(2)
+        app.terminate(); enter()
+        XCTAssertGreaterThan(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "remote-section-date-")).count, 0)
+        XCTAssertFalse(headerA.exists, "Chronological preference must restore independently of project collapse")
+        chooseGrouping(1)
+        let list = app.collectionViews["remote-task-list"], target = app.buttons["remote-task-fixture-a-recent-thread"]
+        list.swipeUp()
+        for _ in 0..<4 where !target.isHittable { list.swipeUp() }
+        XCTAssertTrue(target.isHittable); XCTAssertFalse(all.isHittable)
+        let readingY = target.frame.minY
+        let before = XCTAttachment(screenshot: app.screenshot())
+        before.name = "remote-list-checkpoint-before-restart-zh-light"; before.lifetime = .keepAlways; add(before)
+        target.tap(); XCTAssertTrue(app.staticTexts["remote-thread-host"].waitForExistence(timeout: 5))
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(target.isHittable)
+        app.terminate(); enter()
+        XCTAssertTrue(target.isHittable, "Restore a stable visible task, not the last selected thread")
+        XCTAssertFalse(all.isHittable, "Cold restoration must actually leave the list top")
+        XCTAssertEqual(target.frame.minY, readingY, accuracy: 96, "Coarse row anchor must stay within nearby rows, not jump to an earlier project")
+        let restored = XCTAttachment(screenshot: app.screenshot())
+        restored.name = "remote-list-checkpoint-restored-zh-light"; restored.lifetime = .keepAlways; add(restored)
+        XCTAssertFalse(app.staticTexts["remote-list-checkpoint-error"].exists)
+    }
+
+    @MainActor
+    func testStartScreenMeasuredValueChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--offline-fixture", "--chat-state-profile=" + UUID().uuidString,
+            "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        app.launch()
+        XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+        app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+        let general = app.buttons["settings-general"]
+        for _ in 0..<5 where !general.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        general.tap()
+        let picker = app.buttons["start-screen-picker"]
+        XCTAssertTrue(picker.waitForExistence(timeout: 5))
+        for value in ["Codex", "聊天"] {
+            picker.tap(); app.buttons[value].tap()
+            XCTAssertEqual(picker.value as? String, value)
+            XCTAssertGreaterThan(picker.frame.width, 40, "Native overlay must accept the measured value label width")
+            let shot = XCTAttachment(screenshot: app.screenshot())
+            shot.name = "start-measured-" + value + "-zh-light"; shot.lifetime = .keepAlways; add(shot)
+        }
+    }
+
+    @MainActor
+    func testPluginsSettingsDetailAndRestartChinese() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(), profile = UUID().uuidString
+        func arguments(_ profile: String) -> [String] {
+            ["--offline-fixture", "--chat-state-profile=" + profile, "--plugins-operation-success-fixture",
+             "--browser-preview-fixture", "-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN", "-rea.preview.appearance", "light"]
+        }
+        app.launchArguments = arguments(profile) + ["--plugins-local-save-failure-fixture"]
+        app.launch()
+        func reveal(_ element: XCUIElement, upward: Bool = true) {
+            for _ in 0..<7 where !element.isHittable {
+                if upward { app.scrollViews.firstMatch.swipeUp() } else { app.scrollViews.firstMatch.swipeDown() }
+            }
+            XCTAssertTrue(element.isHittable)
+        }
+        func openSettings() {
+            XCTAssertTrue(app.buttons["open-conversation-list"].waitForExistence(timeout: 10))
+            app.buttons["open-conversation-list"].tap(); app.buttons["open-settings"].tap()
+            let plugins = app.buttons["settings-entry-plugin"]
+            XCTAssertTrue(plugins.waitForExistence(timeout: 5)); reveal(plugins); plugins.tap()
+            XCTAssertTrue(app.buttons["plugins-settings-browse"].waitForExistence(timeout: 5))
+        }
+        func back() { app.navigationBars.buttons.firstMatch.tap() }
+        func openCalendar() {
+            app.buttons["plugins-settings-browse"].tap()
+            let row = app.buttons["plugin-row-calendar"]
+            XCTAssertTrue(row.waitForExistence(timeout: 5))
+            let search = app.descendants(matching: .any).matching(identifier: "plugins-search").firstMatch
+            if !search.exists { print("PLUGIN-LAYOUT-AX\n" + app.debugDescription) }
+            XCTAssertTrue(search.isHittable)
+            XCTAssertGreaterThan(search.frame.minY, row.frame.maxY)
+            let shot = XCTAttachment(screenshot: app.screenshot())
+            shot.name = "plugins-floating-search-icon-rail-zh-light"; shot.lifetime = .keepAlways; add(shot)
+            row.tap()
+            XCTAssertTrue(app.buttons["plugin-action-connect"].waitForExistence(timeout: 5)
+                || app.buttons["plugin-action-disconnect"].exists)
+        }
+        func closeDirectory() { back(); app.buttons["plugins-directory-close"].tap() }
+        openSettings(); openCalendar()
+        let connect = app.buttons["plugin-action-connect"]
+        reveal(connect); connect.tap()
+        let error = app.staticTexts["plugin-operation-status"]
+        XCTAssertTrue(error.waitForExistence(timeout: 5)); XCTAssertTrue(error.label.contains("保存失败"))
+        XCTAssertTrue(connect.isEnabled); connect.tap()
+        let disconnect = app.buttons["plugin-action-disconnect"]
+        XCTAssertTrue(disconnect.waitForExistence(timeout: 5))
+        let more = app.buttons["plugin-skills-more"]
+        reveal(more); XCTAssertTrue(more.label.contains("2")); more.tap()
+        XCTAssertFalse(more.exists)
+        let lastSkill = app.buttons["plugin-skill-fixture-skill-9"]
+        XCTAssertTrue(lastSkill.exists); reveal(lastSkill); lastSkill.tap()
+        XCTAssertTrue(app.buttons["plugin-skill-close"].waitForExistence(timeout: 5)); app.buttons["plugin-skill-close"].tap()
+        let website = app.buttons["plugin-info-link-website"]
+        reveal(website); website.tap()
+        XCTAssertTrue(app.buttons["browser-preview-close"].waitForExistence(timeout: 5))
+        app.buttons["browser-preview-close"].tap()
+        XCTAssertTrue(website.waitForExistence(timeout: 5))
+        let detailShot = XCTAttachment(screenshot: app.screenshot())
+        detailShot.name = "plugins-skills-information-zh-light"; detailShot.lifetime = .keepAlways; add(detailShot)
+        closeDirectory()
+        let added = app.buttons["plugins-settings-added-calendar"]
+        XCTAssertTrue(added.waitForExistence(timeout: 5)); added.tap()
+        XCTAssertTrue(app.otherElements["settings-unavailable-page"].waitForExistence(timeout: 5)
+            || app.staticTexts["此功能尚未接入"].exists)
+        back()
+        let settingsShot = XCTAttachment(screenshot: app.screenshot())
+        settingsShot.name = "plugins-settings-added-browse-zh-light"; settingsShot.lifetime = .keepAlways; add(settingsShot)
+        back(); app.buttons["close-settings"].tap()
+        app.terminate(); app.launchArguments = arguments(profile); app.launch()
+        openSettings(); XCTAssertTrue(added.waitForExistence(timeout: 5))
+        openCalendar(); reveal(disconnect); disconnect.tap()
+        XCTAssertTrue(connect.waitForExistence(timeout: 5)); closeDirectory()
+        XCTAssertTrue(added.waitForNonExistence(timeout: 5))
+        app.terminate(); app.launchArguments = arguments(UUID().uuidString); app.launch()
+        openSettings(); XCTAssertFalse(added.exists)
+        back(); app.buttons["close-settings"].tap()
+    }
+
+    @MainActor
     func testSettingsStartScreenAndLiveActivityChinese() throws {
         continueAfterFailure = false
         let app = XCUIApplication(), profile = UUID().uuidString
@@ -22,6 +182,22 @@ extension HostInteractionTests {
         func back() { app.navigationBars.buttons.firstMatch.tap() }
         func restart() { app.terminate(); app.launchArguments = []; app.launch() }
         openSettings(from: "open-conversation-list")
+        let accent = app.descendants(matching: .any).matching(identifier: "settings-accent").firstMatch
+        let accentTitle = app.staticTexts["强调色"].firstMatch
+        for _ in 0..<6 where !accentTitle.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        XCTAssertTrue(accent.exists)
+        //The native menu's rich selected Label can have a visible nonzero
+        //frame while XCTest reports no accessible hit point. Probe the actual
+        //measured control center and require the real menu to open below.
+        if accent.isHittable { accent.tap() }
+        else {
+            print("SWATCH-NATIVE-HIT-POINT-FALLBACK " + accent.debugDescription)
+            accent.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        }
+        XCTAssertTrue(app.buttons["绿色"].waitForExistence(timeout: 5))
+        let swatches = XCTAttachment(screenshot: app.screenshot())
+        swatches.name = "settings-source-accent-swatches-zh-light"; swatches.lifetime = .keepAlways; add(swatches)
+        app.buttons["绿色"].tap()
         openRow("settings-general")
         let start = app.buttons["start-screen-picker"]
         XCTAssertTrue(start.waitForExistence(timeout: 5))
@@ -1152,6 +1328,7 @@ extension HostInteractionTests {
         XCTAssertTrue(app.staticTexts["plugins-empty"].waitForExistence(timeout: 5))
         app.buttons["关闭"].firstMatch.tap()
         XCTAssertTrue(search.waitForExistence(timeout: 5))
+        app.buttons["plugins-source-picker"].tap()
         app.buttons["plugins-source-personal"].tap()
         XCTAssertTrue(retry.waitForExistence(timeout: 5)); retry.tap()
         XCTAssertTrue(app.buttons["plugin-row-documents"].waitForExistence(timeout: 5))
@@ -1192,6 +1369,7 @@ extension HostInteractionTests {
         XCTAssertTrue(app.staticTexts["plugins-empty"].waitForExistence(timeout: 5))
         app.buttons["关闭"].firstMatch.tap()
         let personal = app.buttons["plugins-source-personal"]
+        app.buttons["plugins-source-picker"].tap()
         XCTAssertTrue(personal.waitForExistence(timeout: 5)); personal.tap()
         XCTAssertTrue(app.buttons["plugin-row-documents"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["plugin-row-calendar"].exists)

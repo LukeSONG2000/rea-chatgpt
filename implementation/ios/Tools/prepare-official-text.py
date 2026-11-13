@@ -16,6 +16,19 @@ LIMIT = 16 * 1024 * 1024
 # Do not add matching English strings without checking the original consumer.
 # Copy code is deliberately excluded: the bundled Chinese value means OTP code.
 KEYS = {
+    'gpt_plugins_directory_detail_information_heading': '293 eb89dc..eb8a2c; plugins-detail-sixth-20261113',
+    'gpt_plugins_directory_detail_capabilities_label': '293 eb98a0 label dispatch; plugins-detail-sixth-20261113',
+    'gpt_plugins_directory_detail_developer_label': '293 eb996c label dispatch; plugins-detail-sixth-20261113',
+    'gpt_plugins_directory_detail_website_label': '293 eb9920 label dispatch; plugins-detail-sixth-20261113',
+    'gpt_plugins_directory_detail_version_label': '293 eb9944 label dispatch; plugins-detail-sixth-20261113',
+    'gpt_plugins_directory_detail_privacy_policy_label': '293 eb98dc label dispatch; plugins-detail-sixth-20261113',
+    'gpt_plugins_directory_detail_terms_of_service_label': '293 eb99a8 label dispatch; plugins-detail-sixth-20261113',
+    'gpt_plugins_directory_detail_skill_heading': '293 eb75e4..eb760c count==1; plugins-detail-sixth-20261113',
+    'gpt_plugins_directory_detail_skills_heading': '293 eb7610..eb7638 otherwise; plugins-detail-sixth-20261113',
+    'gpt_plugins_directory_detail_more_skills_action': '293 eb88b4..eb891c; plugins-detail-sixth-20261113',
+    'connectors_added_plugins_section_title': '293 Settings plugins5143b68..74; plugins-settings-sixth-20261113',
+    'connectors_no_matching_plugins': '293 Settings plugins5144134 empty projection; plugins-settings-sixth-20261113',
+    'connectors_browse_plugins_button_title': '293 Settings Browse5144888 label; plugins-settings-sixth-20261113',
     'settings_start_screen': '293 StartScreenSettingsSection1101830 ->75d68f4; general-sixth-20261113',
     'Choose where you start when you open ChatGPT.': '293 StartScreenSettingsSection11015e8 literal88880f0; general-sixth-20261113',
     'codex_remote_live_activity_grouping': '293 CodexSettings1815230; liveactivity-sixth-20261113',
@@ -344,6 +357,7 @@ KEYS = {
     'codex_remote_auto_review_detail_aborted': 'Automatic review consumers0x19aa374/0x240fab8/0x240fbec/0x240fd04 and factories (v408)',
 }
 FORMAT_ARITIES = {
+    'gpt_plugins_directory_detail_more_skills_action': 1,
     'codex_remote_response_completed_at': 1,
     'orbit_introduction_subtitle_with_link': 1,
     'orbit_introduction_projects_and_responsibilities_body': 1,

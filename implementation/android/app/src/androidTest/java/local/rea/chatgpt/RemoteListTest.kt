@@ -31,9 +31,9 @@ class RemoteListTest {
         assertEquals("Stop if another app has foreground", context.packageName, device.currentPackageName)
         target.click(); device.waitForIdle(); refresh()
     }
-    private fun start(failFirst: Boolean = false) {
+    private fun start(failFirst: Boolean = false, suffix: String = "") {
         val intent = Intent(context, RemoteListActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            .putExtra("remote-profile", "test-$runID")
+            .putExtra("remote-profile", "test-$runID$suffix")
             .putExtra("remote-language", language).putExtra("remote-theme", appearance)
             .putExtra("remote-fail-first", failFirst)
         context.startActivity(intent)
@@ -101,9 +101,57 @@ class RemoteListTest {
         assertEquals("A", restored.draft(a)); assertEquals("B", restored.draft(b))
         assertEquals(4, restored.index); assertEquals(12, restored.offset)
         assertEquals(setOf("pinned"), restored.collapsed)
+        // Provider archive state must survive the local metadata projection.
+        val archived = data.tasks.first().copy(archived = true)
+        assertTrue(restored.projectedTask(archived).archived)
+        assertTrue(restored.saveArchived(a))
+        assertTrue(restored.projectedTask(data.tasks.first { it.key == a }).archived)
+        assertFalse(restored.projectedTask(data.tasks.first { it.key == b }).archived)
+        val otherProfile = RemoteListStore(context.getSharedPreferences("remote-other-$runID", 0))
+        assertEquals("", otherProfile.draft(a))
+        assertFalse(otherProfile.projectedTask(data.tasks.first { it.key == a }).archived)
+        val denied = object : android.content.SharedPreferences by prefs {
+            override fun edit(): android.content.SharedPreferences.Editor {
+                val editor = prefs.edit()
+                return object : android.content.SharedPreferences.Editor by editor {
+                    override fun putString(key: String?, value: String?): android.content.SharedPreferences.Editor = this
+                    override fun commit() = false
+                }
+            }
+        }
+        val deniedStore = RemoteListStore(denied)
+        assertFalse(deniedStore.saveList("fixture-b", "discarded", emptySet(), 0, 0))
+        assertEquals("fixture-a", deniedStore.hostID)
+        assertEquals("Demo", deniedStore.query)
+        assertEquals(4, deniedStore.index)
+        assertTrue(restored.saveSort(RemoteListSort.Chronological))
+        assertEquals(RemoteListSort.Chronological, RemoteListStore(prefs).sort)
+        assertEquals(0, RemoteListStore(prefs).index)
+        val today = java.time.LocalDate.of(2026, 11, 13)
+        val zone = java.time.ZoneId.of("UTC")
+        fun dated(days: Long) = today.minusDays(days).atStartOfDay(zone).toEpochSecond()
+        val template = data.tasks.first()
+        assertEquals(listOf(1, 2, 3), remotePriorityTasks(data.tasks).map { it.priorityRank })
+        val dateRows = listOf(0L, 1L, 7L, 8L, 30L, 31L).map { days ->
+            template.copy(key = RemoteTaskKey("fixture-a", "date-$days"), updatedAt = dated(days))
+        } + template.copy(createdAt = null, updatedAt = null)
+        assertEquals(listOf("today", "yesterday", "previous-week", "previous-month", "month-2026-10", "undated"),
+            remoteDateGroups(dateRows.reversed(), today, zone).keys.toList())
+        assertEquals(2, remoteDateGroups(dateRows, today, zone)["previous-month"]!!.size)
+        assertEquals("today", remoteDateGroups(listOf(template.copy(updatedAt = null, createdAt = dated(0))), today, zone).keys.single())
         val failing = SyntheticRemoteListProvider(false, true)
         assertTrue(runCatching { failing.load() }.isFailure)
         assertEquals(3, failing.load().hosts.size)
+    }
+    @Test fun emptyState() = runBlocking {
+        val store = RemoteListStore(context.getSharedPreferences("remote-list-test-$runID-empty", 0))
+        SyntheticRemoteListProvider(false).load().tasks.forEach { assertTrue(store.saveArchived(it.key)) }
+        start(suffix = "-empty")
+        assertEquals(if (language.startsWith("zh")) "暂无任务" else "No tasks yet", node("remote-empty").text)
+        capture("empty-catalog")
+        search("no-such-task")
+        assertEquals(if (language.startsWith("zh")) "没有匹配的任务" else "No matching tasks", node("remote-empty").text)
+        click("remote-search")
     }
     @Test fun listJourney() {
         start(failFirst = true)
@@ -138,13 +186,24 @@ class RemoteListTest {
         capture("title-menu")
         click("remote-sort-project")
         assertTrue(device.wait(Until.gone(By.res("remote-title-menu")), 8000))
-        for (id in listOf("remote-sort-priority", "remote-sort-time", "remote-add-connection", "remote-settings")) {
+        for (id in listOf("remote-add-connection", "remote-settings")) {
             click("remote-title"); click(id); node("remote-pending-action")
             assertTrue(device.hasObject(By.text(if (language.startsWith("zh")) "完成" else "Done")))
             click("remote-pending-done")
             assertTrue(device.wait(Until.gone(By.res("remote-pending-action")), 8000))
             node("remote-title")
         }
+        click("remote-title"); click("remote-sort-priority")
+        node("remote-group-priority")
+        node("remote-task-priority-fixture-b-shared-task")
+        assertFalse(device.hasObject(By.res("remote-group-pinned")))
+        capture("priority-list")
+        click("remote-title"); assertTrue(node("remote-sort-priority").isChecked)
+        click("remote-sort-time")
+        node("remote-group-date-yesterday")
+        assertFalse(device.hasObject(By.res("remote-group-project-fixture-a-demo")))
+        click("remote-title"); assertTrue(node("remote-sort-time").isChecked)
+        click("remote-sort-project")
         assertTrue(device.hasObject(By.res("remote-host-label-project-fixture-a-demo")))
         assertFalse(device.hasObject(By.res("remote-host-label-project-fixture-a-mobile")))
         click("remote-group-project-fixture-a-demo")

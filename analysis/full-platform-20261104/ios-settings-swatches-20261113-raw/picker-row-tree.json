@@ -1,0 +1,376 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": "0x838c348",
+  "mangled_address": "0x9427ae6",
+  "raw_sha256": "875546386b8e9ef1fb6ca36d5e069e36547e54e342de555241d4ee319b5bd72a",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 2,
+      "target": "0xaad3d50",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI4ViewPAAE10labelStyleyQrqd__AA05LabelE0Rd__lFQOMQ"
+    },
+    {
+      "offset": 6,
+      "kind": 2,
+      "target": "0xaad4f60",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI5LabelVMn"
+    },
+    {
+      "offset": 12,
+      "kind": 2,
+      "target": "0xaad3c48",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI4TextVMn"
+    },
+    {
+      "offset": 17,
+      "kind": 2,
+      "target": "0xaad4f28",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI5ImageVMn"
+    },
+    {
+      "offset": 26,
+      "kind": 2,
+      "target": "0xaad2a08",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI22TitleAndIconLabelStyleVMn"
+    }
+  ],
+  "opaque_contexts_retained_by_address": [],
+  "tree": {
+    "kind": "Type",
+    "children": [
+      {
+        "kind": "OpaqueType",
+        "children": [
+          {
+            "kind": "OpaqueReturnTypeOf",
+            "children": [
+              {
+                "kind": "Function",
+                "children": [
+                  {
+                    "kind": "Extension",
+                    "children": [
+                      {
+                        "kind": "Module",
+                        "text": "SwiftUI",
+                        "children": []
+                      },
+                      {
+                        "kind": "Protocol",
+                        "children": [
+                          {
+                            "kind": "Module",
+                            "text": "SwiftUI",
+                            "children": []
+                          },
+                          {
+                            "kind": "Identifier",
+                            "text": "View",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Identifier",
+                    "text": "labelStyle",
+                    "children": []
+                  },
+                  {
+                    "kind": "LabelList",
+                    "children": []
+                  },
+                  {
+                    "kind": "Type",
+                    "children": [
+                      {
+                        "kind": "DependentGenericType",
+                        "children": [
+                          {
+                            "kind": "DependentGenericSignature",
+                            "children": [
+                              {
+                                "kind": "DependentGenericParamCount",
+                                "index": 1,
+                                "children": []
+                              },
+                              {
+                                "kind": "DependentGenericConformanceRequirement",
+                                "children": [
+                                  {
+                                    "kind": "Type",
+                                    "children": [
+                                      {
+                                        "kind": "DependentGenericParamType",
+                                        "children": [
+                                          {
+                                            "kind": "Index",
+                                            "index": 1,
+                                            "children": []
+                                          },
+                                          {
+                                            "kind": "Index",
+                                            "index": 0,
+                                            "children": []
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "Type",
+                                    "children": [
+                                      {
+                                        "kind": "Protocol",
+                                        "children": [
+                                          {
+                                            "kind": "Module",
+                                            "text": "SwiftUI",
+                                            "children": []
+                                          },
+                                          {
+                                            "kind": "Identifier",
+                                            "text": "LabelStyle",
+                                            "children": []
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Type",
+                            "children": [
+                              {
+                                "kind": "FunctionType",
+                                "children": [
+                                  {
+                                    "kind": "ArgumentTuple",
+                                    "children": [
+                                      {
+                                        "kind": "Type",
+                                        "children": [
+                                          {
+                                            "kind": "DependentGenericParamType",
+                                            "children": [
+                                              {
+                                                "kind": "Index",
+                                                "index": 1,
+                                                "children": []
+                                              },
+                                              {
+                                                "kind": "Index",
+                                                "index": 0,
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ReturnType",
+                                    "children": [
+                                      {
+                                        "kind": "Type",
+                                        "children": [
+                                          {
+                                            "kind": "OpaqueReturnType",
+                                            "children": [
+                                              {
+                                                "kind": "OpaqueReturnTypeParent",
+                                                "text": "7SwiftUI4ViewPAAE10labelStyleyQrqd__AA05LabelE0Rd__lF",
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Index",
+            "index": 0,
+            "children": []
+          },
+          {
+            "kind": "TypeList",
+            "children": [
+              {
+                "kind": "TypeList",
+                "children": [
+                  {
+                    "kind": "Type",
+                    "children": [
+                      {
+                        "kind": "BoundGenericStructure",
+                        "children": [
+                          {
+                            "kind": "Type",
+                            "children": [
+                              {
+                                "kind": "Structure",
+                                "children": [
+                                  {
+                                    "kind": "Module",
+                                    "text": "SwiftUI",
+                                    "children": []
+                                  },
+                                  {
+                                    "kind": "Identifier",
+                                    "text": "Label",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "TypeList",
+                            "children": [
+                              {
+                                "kind": "Type",
+                                "children": [
+                                  {
+                                    "kind": "Structure",
+                                    "children": [
+                                      {
+                                        "kind": "Module",
+                                        "text": "SwiftUI",
+                                        "children": []
+                                      },
+                                      {
+                                        "kind": "Identifier",
+                                        "text": "Text",
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Type",
+                                "children": [
+                                  {
+                                    "kind": "BoundGenericEnum",
+                                    "children": [
+                                      {
+                                        "kind": "Type",
+                                        "children": [
+                                          {
+                                            "kind": "Enum",
+                                            "children": [
+                                              {
+                                                "kind": "Module",
+                                                "text": "Swift",
+                                                "children": []
+                                              },
+                                              {
+                                                "kind": "Identifier",
+                                                "text": "Optional",
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "kind": "TypeList",
+                                        "children": [
+                                          {
+                                            "kind": "Type",
+                                            "children": [
+                                              {
+                                                "kind": "Structure",
+                                                "children": [
+                                                  {
+                                                    "kind": "Module",
+                                                    "text": "SwiftUI",
+                                                    "children": []
+                                                  },
+                                                  {
+                                                    "kind": "Identifier",
+                                                    "text": "Image",
+                                                    "children": []
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "TypeList",
+                "children": [
+                  {
+                    "kind": "Type",
+                    "children": [
+                      {
+                        "kind": "Structure",
+                        "children": [
+                          {
+                            "kind": "Module",
+                            "text": "SwiftUI",
+                            "children": []
+                          },
+                          {
+                            "kind": "Identifier",
+                            "text": "TitleAndIconLabelStyle",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "Generic type shape does not prove runtime branch selection or behavior",
+    "Unknown local opaque contexts remain address identities, not reconstructed implementations",
+    "Private host demangler ABI bridge pinned to exact inspected library SHA256; no target artifact code executed"
+  ]
+}

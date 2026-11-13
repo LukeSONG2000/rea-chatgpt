@@ -47,7 +47,7 @@ try:
         if 'Success' not in output:
             raise RuntimeError('Installation failed')
         result['steps'].append({'apk': relative, 'sha256': hashlib.sha256(apk.read_bytes()).hexdigest()})
-    for method in ['modelRules', 'listJourney', 'verifyRestart']:
+    for method in (['modelRules', 'listJourney', 'verifyRestart'] if args.conversation else ['modelRules', 'emptyState', 'listJourney', 'verifyRestart']):
         command('shell', 'am', 'force-stop', package)
         process = subprocess.run([adb, '-s', args.serial, 'shell', 'pidof', package], capture_output=True)
         if process.stdout.strip():
@@ -79,9 +79,11 @@ finally:
                 (artifacts / name).write_bytes(data)
             except Exception as error:
                 result['export_errors'].append({'file': name, 'error': str(error)})
-    # Restore the stable preview profile and system-following appearance/language.
+    # Leave an isolated review profile visible; never rewrite ordinary preview preferences.
     launch = subprocess.run([adb, '-s', args.serial, 'shell', 'am', 'start', '-S', '-n',
-                             package + '/local.rea.chatgpt.MainActivity', '--ez', 'remote', 'true'], capture_output=True, text=True)
+                             package + '/local.rea.chatgpt.MainActivity', '--ez', 'remote', 'true',
+                             '--es', 'remote-profile', 'test-list-review-' + run_id,
+                             '--es', 'remote-language', args.language, '--es', 'remote-theme', args.appearance], capture_output=True, text=True)
     result['preview_launch'] = {'returncode': launch.returncode, 'output': launch.stdout.strip()}
     if result['status'] == 'running':
         result['status'] = 'failed'

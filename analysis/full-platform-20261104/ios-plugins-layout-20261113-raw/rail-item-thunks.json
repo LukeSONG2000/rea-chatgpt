@@ -1,0 +1,83 @@
+{
+  "status": "partial",
+  "authority": "shipped-artifact-static-instructions",
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "window": {
+    "start": "0xf35fa0",
+    "end_exclusive": "0xf360b0",
+    "sha256": "f83523793486b5a4faf71c906602cb62e9171b4ff01bf73f56839d2299c0d731"
+  },
+  "linker_function_starts_in_window": [
+    "0xf35fa0",
+    "0xf35fb4",
+    "0xf35fb8",
+    "0xf35fc0",
+    "0xf35fd0",
+    "0xf35fdc",
+    "0xf35fe8",
+    "0xf36048",
+    "0xf360a0"
+  ],
+  "next_linker_function_start": "0xf360b4",
+  "direct_calls": [
+    {
+      "site": "0xf35ff4",
+      "target": "0x156658",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xf35ff8",
+      "target": "0x26a6a8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xf36028",
+      "target": "0xf4a520",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xf36030",
+      "target": "0x7c54880",
+      "imported_symbol": "_swift_release_x8"
+    },
+    {
+      "site": "0xf3606c",
+      "target": "0xf56f74",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xf36070",
+      "target": "0x156cd4",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xf36074",
+      "target": "0xf542d8",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xf36078",
+      "target": "0x45cc10",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xf3608c",
+      "target": "0xf4dccc",
+      "imported_symbol": null
+    },
+    {
+      "site": "0xf36094",
+      "target": "0x1625d4",
+      "imported_symbol": null
+    }
+  ],
+  "adjacent_selector_loads": [],
+  "limits": [
+    "Window is not a proven function boundary",
+    "Only BL immediate and adjacent ADRP/LDR selector patterns covered",
+    "References do not prove selector dispatch, runtime reachability, receiver, arguments, or component wiring"
+  ]
+}

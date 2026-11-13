@@ -1,0 +1,1522 @@
+{
+  "artifact": {
+    "path": "/Users/lukesong/Work/Workspace/rea/ChatGPT/recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "type_record": "0x7d79a88",
+  "mangled_address": "0x8cf96e8",
+  "raw_sha256": "6c6ef755c97c3ca01cc9209587bc462c9fdd29c518cdd20dddd798716d1f568a",
+  "references": [
+    {
+      "offset": 0,
+      "kind": 2,
+      "target": "0xaad1318",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI15ModifiedContentVMn"
+    },
+    {
+      "offset": 6,
+      "kind": 2,
+      "target": "0xaacff98",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI10ScrollViewVMn"
+    },
+    {
+      "offset": 27,
+      "kind": 2,
+      "target": "0xaad5278",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI6VStackVMn"
+    },
+    {
+      "offset": 33,
+      "kind": 2,
+      "target": "0xaad5a10",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI9TupleViewVMn"
+    },
+    {
+      "offset": 39,
+      "kind": 1,
+      "target": "0x9584360",
+      "resolved_context": "0x9584360",
+      "label": "<unresolved-context@0x9584358>.GPTPluginDetailHeader"
+    },
+    {
+      "offset": 45,
+      "kind": 2,
+      "target": "0xaad23a8",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI19_ConditionalContentVMn"
+    },
+    {
+      "offset": 54,
+      "kind": 1,
+      "target": "0x958433c",
+      "resolved_context": "0x958433c",
+      "label": "<unresolved-context@0x9584334>.GPTPluginDetailScreenshotsSection"
+    },
+    {
+      "offset": 59,
+      "kind": 2,
+      "target": "0xaad0f28",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI14_PaddingLayoutVMn"
+    },
+    {
+      "offset": 71,
+      "kind": 1,
+      "target": "0x9584318",
+      "resolved_context": "0x9584318",
+      "label": "ChatGPTPluginsDirectory.GPTPluginDetailDefaultPromptsSection"
+    },
+    {
+      "offset": 76,
+      "kind": 2,
+      "target": "0xaad3570",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI32_EnvironmentKeyTransformModifierVMn"
+    },
+    {
+      "offset": 95,
+      "kind": 1,
+      "target": "0x95842f0",
+      "resolved_context": "0x95842f0",
+      "label": "ChatGPTPluginsDirectory.GPTPluginDetailDescriptionSection"
+    },
+    {
+      "offset": 111,
+      "kind": 1,
+      "target": "0x95842d4",
+      "resolved_context": "0x95842d4",
+      "label": "<unresolved-context@0x95842cc>.GPTPluginDetailAppsSection"
+    },
+    {
+      "offset": 127,
+      "kind": 1,
+      "target": "0x95842b0",
+      "resolved_context": "0x95842b0",
+      "label": "<unresolved-context@0x95842a8>.GPTPluginDetailSkillsSection"
+    },
+    {
+      "offset": 140,
+      "kind": 1,
+      "target": "0x958428c",
+      "resolved_context": "0x958428c",
+      "label": "ChatGPTPluginsDirectory.GPTPluginDetailInformationSection"
+    },
+    {
+      "offset": 162,
+      "kind": 2,
+      "target": "0xaad1838",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI16_FlexFrameLayoutVMn"
+    },
+    {
+      "offset": 173,
+      "kind": 2,
+      "target": "0xaad1858",
+      "resolved_context": null,
+      "label": "_$s7SwiftUI16_OverlayModifierVMn"
+    },
+    {
+      "offset": 179,
+      "kind": 1,
+      "target": "0x9584270",
+      "resolved_context": "0x9584270",
+      "label": "<unresolved-context@0x9584268>.GPTPluginDetailRefreshingIndicator"
+    }
+  ],
+  "opaque_contexts_retained_by_address": [
+    {
+      "address": "0x9584358",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x9584334",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x95842cc",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x95842a8",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    },
+    {
+      "address": "0x9584268",
+      "flags": "0x42",
+      "kind": 2,
+      "reason": "Unsupported context kind; name and parent chain not interpreted"
+    }
+  ],
+  "tree": {
+    "kind": "Type",
+    "children": [
+      {
+        "kind": "BoundGenericStructure",
+        "children": [
+          {
+            "kind": "Type",
+            "children": [
+              {
+                "kind": "Structure",
+                "children": [
+                  {
+                    "kind": "Module",
+                    "text": "SwiftUI",
+                    "children": []
+                  },
+                  {
+                    "kind": "Identifier",
+                    "text": "ModifiedContent",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "TypeList",
+            "children": [
+              {
+                "kind": "Type",
+                "children": [
+                  {
+                    "kind": "BoundGenericStructure",
+                    "children": [
+                      {
+                        "kind": "Type",
+                        "children": [
+                          {
+                            "kind": "Structure",
+                            "children": [
+                              {
+                                "kind": "Module",
+                                "text": "SwiftUI",
+                                "children": []
+                              },
+                              {
+                                "kind": "Identifier",
+                                "text": "ScrollView",
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeList",
+                        "children": [
+                          {
+                            "kind": "Type",
+                            "children": [
+                              {
+                                "kind": "BoundGenericStructure",
+                                "children": [
+                                  {
+                                    "kind": "Type",
+                                    "children": [
+                                      {
+                                        "kind": "Structure",
+                                        "children": [
+                                          {
+                                            "kind": "Module",
+                                            "text": "SwiftUI",
+                                            "children": []
+                                          },
+                                          {
+                                            "kind": "Identifier",
+                                            "text": "ModifiedContent",
+                                            "children": []
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "TypeList",
+                                    "children": [
+                                      {
+                                        "kind": "Type",
+                                        "children": [
+                                          {
+                                            "kind": "BoundGenericStructure",
+                                            "children": [
+                                              {
+                                                "kind": "Type",
+                                                "children": [
+                                                  {
+                                                    "kind": "Structure",
+                                                    "children": [
+                                                      {
+                                                        "kind": "Module",
+                                                        "text": "SwiftUI",
+                                                        "children": []
+                                                      },
+                                                      {
+                                                        "kind": "Identifier",
+                                                        "text": "ModifiedContent",
+                                                        "children": []
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "kind": "TypeList",
+                                                "children": [
+                                                  {
+                                                    "kind": "Type",
+                                                    "children": [
+                                                      {
+                                                        "kind": "BoundGenericStructure",
+                                                        "children": [
+                                                          {
+                                                            "kind": "Type",
+                                                            "children": [
+                                                              {
+                                                                "kind": "Structure",
+                                                                "children": [
+                                                                  {
+                                                                    "kind": "Module",
+                                                                    "text": "SwiftUI",
+                                                                    "children": []
+                                                                  },
+                                                                  {
+                                                                    "kind": "Identifier",
+                                                                    "text": "ModifiedContent",
+                                                                    "children": []
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "kind": "TypeList",
+                                                            "children": [
+                                                              {
+                                                                "kind": "Type",
+                                                                "children": [
+                                                                  {
+                                                                    "kind": "BoundGenericStructure",
+                                                                    "children": [
+                                                                      {
+                                                                        "kind": "Type",
+                                                                        "children": [
+                                                                          {
+                                                                            "kind": "Structure",
+                                                                            "children": [
+                                                                              {
+                                                                                "kind": "Module",
+                                                                                "text": "SwiftUI",
+                                                                                "children": []
+                                                                              },
+                                                                              {
+                                                                                "kind": "Identifier",
+                                                                                "text": "ModifiedContent",
+                                                                                "children": []
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      },
+                                                                      {
+                                                                        "kind": "TypeList",
+                                                                        "children": [
+                                                                          {
+                                                                            "kind": "Type",
+                                                                            "children": [
+                                                                              {
+                                                                                "kind": "BoundGenericStructure",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "kind": "Type",
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "kind": "Structure",
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "kind": "Module",
+                                                                                            "text": "SwiftUI",
+                                                                                            "children": []
+                                                                                          },
+                                                                                          {
+                                                                                            "kind": "Identifier",
+                                                                                            "text": "ModifiedContent",
+                                                                                            "children": []
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  },
+                                                                                  {
+                                                                                    "kind": "TypeList",
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "kind": "Type",
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "kind": "BoundGenericStructure",
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "kind": "Type",
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "kind": "Structure",
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "kind": "Module",
+                                                                                                        "text": "SwiftUI",
+                                                                                                        "children": []
+                                                                                                      },
+                                                                                                      {
+                                                                                                        "kind": "Identifier",
+                                                                                                        "text": "VStack",
+                                                                                                        "children": []
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              },
+                                                                                              {
+                                                                                                "kind": "TypeList",
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "kind": "Type",
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "kind": "BoundGenericStructure",
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "kind": "Type",
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "kind": "Structure",
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "kind": "Module",
+                                                                                                                    "text": "SwiftUI",
+                                                                                                                    "children": []
+                                                                                                                  },
+                                                                                                                  {
+                                                                                                                    "kind": "Identifier",
+                                                                                                                    "text": "TupleView",
+                                                                                                                    "children": []
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          },
+                                                                                                          {
+                                                                                                            "kind": "TypeList",
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "kind": "Type",
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "kind": "Tuple",
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "kind": "TupleElement",
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "kind": "Type",
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "kind": "TypeSymbolicReference",
+                                                                                                                                "index": 156779360,
+                                                                                                                                "children": []
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      },
+                                                                                                                      {
+                                                                                                                        "kind": "TupleElement",
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "kind": "Type",
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "kind": "BoundGenericEnum",
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "kind": "Type",
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "kind": "Enum",
+                                                                                                                                        "children": [
+                                                                                                                                          {
+                                                                                                                                            "kind": "Module",
+                                                                                                                                            "text": "Swift",
+                                                                                                                                            "children": []
+                                                                                                                                          },
+                                                                                                                                          {
+                                                                                                                                            "kind": "Identifier",
+                                                                                                                                            "text": "Optional",
+                                                                                                                                            "children": []
+                                                                                                                                          }
+                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  },
+                                                                                                                                  {
+                                                                                                                                    "kind": "TypeList",
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "kind": "Type",
+                                                                                                                                        "children": [
+                                                                                                                                          {
+                                                                                                                                            "kind": "BoundGenericStructure",
+                                                                                                                                            "children": [
+                                                                                                                                              {
+                                                                                                                                                "kind": "Type",
+                                                                                                                                                "children": [
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Structure",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Module",
+                                                                                                                                                        "text": "SwiftUI",
+                                                                                                                                                        "children": []
+                                                                                                                                                      },
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Identifier",
+                                                                                                                                                        "text": "_ConditionalContent",
+                                                                                                                                                        "children": []
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  }
+                                                                                                                                                ]
+                                                                                                                                              },
+                                                                                                                                              {
+                                                                                                                                                "kind": "TypeList",
+                                                                                                                                                "children": [
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Type",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "BoundGenericStructure",
+                                                                                                                                                        "children": [
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Type",
+                                                                                                                                                            "children": [
+                                                                                                                                                              {
+                                                                                                                                                                "kind": "Structure",
+                                                                                                                                                                "children": [
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "Module",
+                                                                                                                                                                    "text": "SwiftUI",
+                                                                                                                                                                    "children": []
+                                                                                                                                                                  },
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "Identifier",
+                                                                                                                                                                    "text": "ModifiedContent",
+                                                                                                                                                                    "children": []
+                                                                                                                                                                  }
+                                                                                                                                                                ]
+                                                                                                                                                              }
+                                                                                                                                                            ]
+                                                                                                                                                          },
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "TypeList",
+                                                                                                                                                            "children": [
+                                                                                                                                                              {
+                                                                                                                                                                "kind": "Type",
+                                                                                                                                                                "children": [
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "TypeSymbolicReference",
+                                                                                                                                                                    "index": 156779324,
+                                                                                                                                                                    "children": []
+                                                                                                                                                                  }
+                                                                                                                                                                ]
+                                                                                                                                                              },
+                                                                                                                                                              {
+                                                                                                                                                                "kind": "Type",
+                                                                                                                                                                "children": [
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "Structure",
+                                                                                                                                                                    "children": [
+                                                                                                                                                                      {
+                                                                                                                                                                        "kind": "Module",
+                                                                                                                                                                        "text": "SwiftUI",
+                                                                                                                                                                        "children": []
+                                                                                                                                                                      },
+                                                                                                                                                                      {
+                                                                                                                                                                        "kind": "Identifier",
+                                                                                                                                                                        "text": "_PaddingLayout",
+                                                                                                                                                                        "children": []
+                                                                                                                                                                      }
+                                                                                                                                                                    ]
+                                                                                                                                                                  }
+                                                                                                                                                                ]
+                                                                                                                                                              }
+                                                                                                                                                            ]
+                                                                                                                                                          }
+                                                                                                                                                        ]
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  },
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Type",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "BoundGenericStructure",
+                                                                                                                                                        "children": [
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Type",
+                                                                                                                                                            "children": [
+                                                                                                                                                              {
+                                                                                                                                                                "kind": "Structure",
+                                                                                                                                                                "children": [
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "Module",
+                                                                                                                                                                    "text": "SwiftUI",
+                                                                                                                                                                    "children": []
+                                                                                                                                                                  },
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "Identifier",
+                                                                                                                                                                    "text": "ModifiedContent",
+                                                                                                                                                                    "children": []
+                                                                                                                                                                  }
+                                                                                                                                                                ]
+                                                                                                                                                              }
+                                                                                                                                                            ]
+                                                                                                                                                          },
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "TypeList",
+                                                                                                                                                            "children": [
+                                                                                                                                                              {
+                                                                                                                                                                "kind": "Type",
+                                                                                                                                                                "children": [
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "BoundGenericStructure",
+                                                                                                                                                                    "children": [
+                                                                                                                                                                      {
+                                                                                                                                                                        "kind": "Type",
+                                                                                                                                                                        "children": [
+                                                                                                                                                                          {
+                                                                                                                                                                            "kind": "Structure",
+                                                                                                                                                                            "children": [
+                                                                                                                                                                              {
+                                                                                                                                                                                "kind": "Module",
+                                                                                                                                                                                "text": "SwiftUI",
+                                                                                                                                                                                "children": []
+                                                                                                                                                                              },
+                                                                                                                                                                              {
+                                                                                                                                                                                "kind": "Identifier",
+                                                                                                                                                                                "text": "ModifiedContent",
+                                                                                                                                                                                "children": []
+                                                                                                                                                                              }
+                                                                                                                                                                            ]
+                                                                                                                                                                          }
+                                                                                                                                                                        ]
+                                                                                                                                                                      },
+                                                                                                                                                                      {
+                                                                                                                                                                        "kind": "TypeList",
+                                                                                                                                                                        "children": [
+                                                                                                                                                                          {
+                                                                                                                                                                            "kind": "Type",
+                                                                                                                                                                            "children": [
+                                                                                                                                                                              {
+                                                                                                                                                                                "kind": "Structure",
+                                                                                                                                                                                "children": [
+                                                                                                                                                                                  {
+                                                                                                                                                                                    "kind": "Module",
+                                                                                                                                                                                    "text": "ChatGPTPluginsDirectory",
+                                                                                                                                                                                    "children": []
+                                                                                                                                                                                  },
+                                                                                                                                                                                  {
+                                                                                                                                                                                    "kind": "Identifier",
+                                                                                                                                                                                    "text": "GPTPluginDetailDefaultPromptsSection",
+                                                                                                                                                                                    "children": []
+                                                                                                                                                                                  }
+                                                                                                                                                                                ]
+                                                                                                                                                                              }
+                                                                                                                                                                            ]
+                                                                                                                                                                          },
+                                                                                                                                                                          {
+                                                                                                                                                                            "kind": "Type",
+                                                                                                                                                                            "children": [
+                                                                                                                                                                              {
+                                                                                                                                                                                "kind": "BoundGenericStructure",
+                                                                                                                                                                                "children": [
+                                                                                                                                                                                  {
+                                                                                                                                                                                    "kind": "Type",
+                                                                                                                                                                                    "children": [
+                                                                                                                                                                                      {
+                                                                                                                                                                                        "kind": "Structure",
+                                                                                                                                                                                        "children": [
+                                                                                                                                                                                          {
+                                                                                                                                                                                            "kind": "Module",
+                                                                                                                                                                                            "text": "SwiftUI",
+                                                                                                                                                                                            "children": []
+                                                                                                                                                                                          },
+                                                                                                                                                                                          {
+                                                                                                                                                                                            "kind": "Identifier",
+                                                                                                                                                                                            "text": "_EnvironmentKeyTransformModifier",
+                                                                                                                                                                                            "children": []
+                                                                                                                                                                                          }
+                                                                                                                                                                                        ]
+                                                                                                                                                                                      }
+                                                                                                                                                                                    ]
+                                                                                                                                                                                  },
+                                                                                                                                                                                  {
+                                                                                                                                                                                    "kind": "TypeList",
+                                                                                                                                                                                    "children": [
+                                                                                                                                                                                      {
+                                                                                                                                                                                        "kind": "Type",
+                                                                                                                                                                                        "children": [
+                                                                                                                                                                                          {
+                                                                                                                                                                                            "kind": "Structure",
+                                                                                                                                                                                            "children": [
+                                                                                                                                                                                              {
+                                                                                                                                                                                                "kind": "Module",
+                                                                                                                                                                                                "text": "Swift",
+                                                                                                                                                                                                "children": []
+                                                                                                                                                                                              },
+                                                                                                                                                                                              {
+                                                                                                                                                                                                "kind": "Identifier",
+                                                                                                                                                                                                "text": "Bool",
+                                                                                                                                                                                                "children": []
+                                                                                                                                                                                              }
+                                                                                                                                                                                            ]
+                                                                                                                                                                                          }
+                                                                                                                                                                                        ]
+                                                                                                                                                                                      }
+                                                                                                                                                                                    ]
+                                                                                                                                                                                  }
+                                                                                                                                                                                ]
+                                                                                                                                                                              }
+                                                                                                                                                                            ]
+                                                                                                                                                                          }
+                                                                                                                                                                        ]
+                                                                                                                                                                      }
+                                                                                                                                                                    ]
+                                                                                                                                                                  }
+                                                                                                                                                                ]
+                                                                                                                                                              },
+                                                                                                                                                              {
+                                                                                                                                                                "kind": "Type",
+                                                                                                                                                                "children": [
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "Structure",
+                                                                                                                                                                    "children": [
+                                                                                                                                                                      {
+                                                                                                                                                                        "kind": "Module",
+                                                                                                                                                                        "text": "SwiftUI",
+                                                                                                                                                                        "children": []
+                                                                                                                                                                      },
+                                                                                                                                                                      {
+                                                                                                                                                                        "kind": "Identifier",
+                                                                                                                                                                        "text": "_PaddingLayout",
+                                                                                                                                                                        "children": []
+                                                                                                                                                                      }
+                                                                                                                                                                    ]
+                                                                                                                                                                  }
+                                                                                                                                                                ]
+                                                                                                                                                              }
+                                                                                                                                                            ]
+                                                                                                                                                          }
+                                                                                                                                                        ]
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  }
+                                                                                                                                                ]
+                                                                                                                                              }
+                                                                                                                                            ]
+                                                                                                                                          }
+                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      },
+                                                                                                                      {
+                                                                                                                        "kind": "TupleElement",
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "kind": "Type",
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "kind": "BoundGenericEnum",
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "kind": "Type",
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "kind": "Enum",
+                                                                                                                                        "children": [
+                                                                                                                                          {
+                                                                                                                                            "kind": "Module",
+                                                                                                                                            "text": "Swift",
+                                                                                                                                            "children": []
+                                                                                                                                          },
+                                                                                                                                          {
+                                                                                                                                            "kind": "Identifier",
+                                                                                                                                            "text": "Optional",
+                                                                                                                                            "children": []
+                                                                                                                                          }
+                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  },
+                                                                                                                                  {
+                                                                                                                                    "kind": "TypeList",
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "kind": "Type",
+                                                                                                                                        "children": [
+                                                                                                                                          {
+                                                                                                                                            "kind": "BoundGenericStructure",
+                                                                                                                                            "children": [
+                                                                                                                                              {
+                                                                                                                                                "kind": "Type",
+                                                                                                                                                "children": [
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Structure",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Module",
+                                                                                                                                                        "text": "SwiftUI",
+                                                                                                                                                        "children": []
+                                                                                                                                                      },
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Identifier",
+                                                                                                                                                        "text": "ModifiedContent",
+                                                                                                                                                        "children": []
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  }
+                                                                                                                                                ]
+                                                                                                                                              },
+                                                                                                                                              {
+                                                                                                                                                "kind": "TypeList",
+                                                                                                                                                "children": [
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Type",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Structure",
+                                                                                                                                                        "children": [
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Module",
+                                                                                                                                                            "text": "ChatGPTPluginsDirectory",
+                                                                                                                                                            "children": []
+                                                                                                                                                          },
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Identifier",
+                                                                                                                                                            "text": "GPTPluginDetailDescriptionSection",
+                                                                                                                                                            "children": []
+                                                                                                                                                          }
+                                                                                                                                                        ]
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  },
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Type",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Structure",
+                                                                                                                                                        "children": [
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Module",
+                                                                                                                                                            "text": "SwiftUI",
+                                                                                                                                                            "children": []
+                                                                                                                                                          },
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Identifier",
+                                                                                                                                                            "text": "_PaddingLayout",
+                                                                                                                                                            "children": []
+                                                                                                                                                          }
+                                                                                                                                                        ]
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  }
+                                                                                                                                                ]
+                                                                                                                                              }
+                                                                                                                                            ]
+                                                                                                                                          }
+                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      },
+                                                                                                                      {
+                                                                                                                        "kind": "TupleElement",
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "kind": "Type",
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "kind": "BoundGenericEnum",
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "kind": "Type",
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "kind": "Enum",
+                                                                                                                                        "children": [
+                                                                                                                                          {
+                                                                                                                                            "kind": "Module",
+                                                                                                                                            "text": "Swift",
+                                                                                                                                            "children": []
+                                                                                                                                          },
+                                                                                                                                          {
+                                                                                                                                            "kind": "Identifier",
+                                                                                                                                            "text": "Optional",
+                                                                                                                                            "children": []
+                                                                                                                                          }
+                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  },
+                                                                                                                                  {
+                                                                                                                                    "kind": "TypeList",
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "kind": "Type",
+                                                                                                                                        "children": [
+                                                                                                                                          {
+                                                                                                                                            "kind": "BoundGenericStructure",
+                                                                                                                                            "children": [
+                                                                                                                                              {
+                                                                                                                                                "kind": "Type",
+                                                                                                                                                "children": [
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Structure",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Module",
+                                                                                                                                                        "text": "SwiftUI",
+                                                                                                                                                        "children": []
+                                                                                                                                                      },
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Identifier",
+                                                                                                                                                        "text": "ModifiedContent",
+                                                                                                                                                        "children": []
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  }
+                                                                                                                                                ]
+                                                                                                                                              },
+                                                                                                                                              {
+                                                                                                                                                "kind": "TypeList",
+                                                                                                                                                "children": [
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Type",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "BoundGenericStructure",
+                                                                                                                                                        "children": [
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Type",
+                                                                                                                                                            "children": [
+                                                                                                                                                              {
+                                                                                                                                                                "kind": "Structure",
+                                                                                                                                                                "children": [
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "Module",
+                                                                                                                                                                    "text": "SwiftUI",
+                                                                                                                                                                    "children": []
+                                                                                                                                                                  },
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "Identifier",
+                                                                                                                                                                    "text": "ModifiedContent",
+                                                                                                                                                                    "children": []
+                                                                                                                                                                  }
+                                                                                                                                                                ]
+                                                                                                                                                              }
+                                                                                                                                                            ]
+                                                                                                                                                          },
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "TypeList",
+                                                                                                                                                            "children": [
+                                                                                                                                                              {
+                                                                                                                                                                "kind": "Type",
+                                                                                                                                                                "children": [
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "TypeSymbolicReference",
+                                                                                                                                                                    "index": 156779220,
+                                                                                                                                                                    "children": []
+                                                                                                                                                                  }
+                                                                                                                                                                ]
+                                                                                                                                                              },
+                                                                                                                                                              {
+                                                                                                                                                                "kind": "Type",
+                                                                                                                                                                "children": [
+                                                                                                                                                                  {
+                                                                                                                                                                    "kind": "BoundGenericStructure",
+                                                                                                                                                                    "children": [
+                                                                                                                                                                      {
+                                                                                                                                                                        "kind": "Type",
+                                                                                                                                                                        "children": [
+                                                                                                                                                                          {
+                                                                                                                                                                            "kind": "Structure",
+                                                                                                                                                                            "children": [
+                                                                                                                                                                              {
+                                                                                                                                                                                "kind": "Module",
+                                                                                                                                                                                "text": "SwiftUI",
+                                                                                                                                                                                "children": []
+                                                                                                                                                                              },
+                                                                                                                                                                              {
+                                                                                                                                                                                "kind": "Identifier",
+                                                                                                                                                                                "text": "_EnvironmentKeyTransformModifier",
+                                                                                                                                                                                "children": []
+                                                                                                                                                                              }
+                                                                                                                                                                            ]
+                                                                                                                                                                          }
+                                                                                                                                                                        ]
+                                                                                                                                                                      },
+                                                                                                                                                                      {
+                                                                                                                                                                        "kind": "TypeList",
+                                                                                                                                                                        "children": [
+                                                                                                                                                                          {
+                                                                                                                                                                            "kind": "Type",
+                                                                                                                                                                            "children": [
+                                                                                                                                                                              {
+                                                                                                                                                                                "kind": "Structure",
+                                                                                                                                                                                "children": [
+                                                                                                                                                                                  {
+                                                                                                                                                                                    "kind": "Module",
+                                                                                                                                                                                    "text": "Swift",
+                                                                                                                                                                                    "children": []
+                                                                                                                                                                                  },
+                                                                                                                                                                                  {
+                                                                                                                                                                                    "kind": "Identifier",
+                                                                                                                                                                                    "text": "Bool",
+                                                                                                                                                                                    "children": []
+                                                                                                                                                                                  }
+                                                                                                                                                                                ]
+                                                                                                                                                                              }
+                                                                                                                                                                            ]
+                                                                                                                                                                          }
+                                                                                                                                                                        ]
+                                                                                                                                                                      }
+                                                                                                                                                                    ]
+                                                                                                                                                                  }
+                                                                                                                                                                ]
+                                                                                                                                                              }
+                                                                                                                                                            ]
+                                                                                                                                                          }
+                                                                                                                                                        ]
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  },
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Type",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Structure",
+                                                                                                                                                        "children": [
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Module",
+                                                                                                                                                            "text": "SwiftUI",
+                                                                                                                                                            "children": []
+                                                                                                                                                          },
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Identifier",
+                                                                                                                                                            "text": "_PaddingLayout",
+                                                                                                                                                            "children": []
+                                                                                                                                                          }
+                                                                                                                                                        ]
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  }
+                                                                                                                                                ]
+                                                                                                                                              }
+                                                                                                                                            ]
+                                                                                                                                          }
+                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      },
+                                                                                                                      {
+                                                                                                                        "kind": "TupleElement",
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "kind": "Type",
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "kind": "BoundGenericEnum",
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "kind": "Type",
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "kind": "Enum",
+                                                                                                                                        "children": [
+                                                                                                                                          {
+                                                                                                                                            "kind": "Module",
+                                                                                                                                            "text": "Swift",
+                                                                                                                                            "children": []
+                                                                                                                                          },
+                                                                                                                                          {
+                                                                                                                                            "kind": "Identifier",
+                                                                                                                                            "text": "Optional",
+                                                                                                                                            "children": []
+                                                                                                                                          }
+                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  },
+                                                                                                                                  {
+                                                                                                                                    "kind": "TypeList",
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "kind": "Type",
+                                                                                                                                        "children": [
+                                                                                                                                          {
+                                                                                                                                            "kind": "BoundGenericStructure",
+                                                                                                                                            "children": [
+                                                                                                                                              {
+                                                                                                                                                "kind": "Type",
+                                                                                                                                                "children": [
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Structure",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Module",
+                                                                                                                                                        "text": "SwiftUI",
+                                                                                                                                                        "children": []
+                                                                                                                                                      },
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Identifier",
+                                                                                                                                                        "text": "ModifiedContent",
+                                                                                                                                                        "children": []
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  }
+                                                                                                                                                ]
+                                                                                                                                              },
+                                                                                                                                              {
+                                                                                                                                                "kind": "TypeList",
+                                                                                                                                                "children": [
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Type",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "TypeSymbolicReference",
+                                                                                                                                                        "index": 156779184,
+                                                                                                                                                        "children": []
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  },
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Type",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Structure",
+                                                                                                                                                        "children": [
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Module",
+                                                                                                                                                            "text": "SwiftUI",
+                                                                                                                                                            "children": []
+                                                                                                                                                          },
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Identifier",
+                                                                                                                                                            "text": "_PaddingLayout",
+                                                                                                                                                            "children": []
+                                                                                                                                                          }
+                                                                                                                                                        ]
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  }
+                                                                                                                                                ]
+                                                                                                                                              }
+                                                                                                                                            ]
+                                                                                                                                          }
+                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      },
+                                                                                                                      {
+                                                                                                                        "kind": "TupleElement",
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "kind": "Type",
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "kind": "BoundGenericEnum",
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "kind": "Type",
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "kind": "Enum",
+                                                                                                                                        "children": [
+                                                                                                                                          {
+                                                                                                                                            "kind": "Module",
+                                                                                                                                            "text": "Swift",
+                                                                                                                                            "children": []
+                                                                                                                                          },
+                                                                                                                                          {
+                                                                                                                                            "kind": "Identifier",
+                                                                                                                                            "text": "Optional",
+                                                                                                                                            "children": []
+                                                                                                                                          }
+                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  },
+                                                                                                                                  {
+                                                                                                                                    "kind": "TypeList",
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "kind": "Type",
+                                                                                                                                        "children": [
+                                                                                                                                          {
+                                                                                                                                            "kind": "BoundGenericStructure",
+                                                                                                                                            "children": [
+                                                                                                                                              {
+                                                                                                                                                "kind": "Type",
+                                                                                                                                                "children": [
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Structure",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Module",
+                                                                                                                                                        "text": "SwiftUI",
+                                                                                                                                                        "children": []
+                                                                                                                                                      },
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Identifier",
+                                                                                                                                                        "text": "ModifiedContent",
+                                                                                                                                                        "children": []
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  }
+                                                                                                                                                ]
+                                                                                                                                              },
+                                                                                                                                              {
+                                                                                                                                                "kind": "TypeList",
+                                                                                                                                                "children": [
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Type",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Structure",
+                                                                                                                                                        "children": [
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Module",
+                                                                                                                                                            "text": "ChatGPTPluginsDirectory",
+                                                                                                                                                            "children": []
+                                                                                                                                                          },
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Identifier",
+                                                                                                                                                            "text": "GPTPluginDetailInformationSection",
+                                                                                                                                                            "children": []
+                                                                                                                                                          }
+                                                                                                                                                        ]
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  },
+                                                                                                                                                  {
+                                                                                                                                                    "kind": "Type",
+                                                                                                                                                    "children": [
+                                                                                                                                                      {
+                                                                                                                                                        "kind": "Structure",
+                                                                                                                                                        "children": [
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Module",
+                                                                                                                                                            "text": "SwiftUI",
+                                                                                                                                                            "children": []
+                                                                                                                                                          },
+                                                                                                                                                          {
+                                                                                                                                                            "kind": "Identifier",
+                                                                                                                                                            "text": "_PaddingLayout",
+                                                                                                                                                            "children": []
+                                                                                                                                                          }
+                                                                                                                                                        ]
+                                                                                                                                                      }
+                                                                                                                                                    ]
+                                                                                                                                                  }
+                                                                                                                                                ]
+                                                                                                                                              }
+                                                                                                                                            ]
+                                                                                                                                          }
+                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      },
+                                                                                      {
+                                                                                        "kind": "Type",
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "kind": "Structure",
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "kind": "Module",
+                                                                                                "text": "SwiftUI",
+                                                                                                "children": []
+                                                                                              },
+                                                                                              {
+                                                                                                "kind": "Identifier",
+                                                                                                "text": "_PaddingLayout",
+                                                                                                "children": []
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          },
+                                                                          {
+                                                                            "kind": "Type",
+                                                                            "children": [
+                                                                              {
+                                                                                "kind": "Structure",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "kind": "Module",
+                                                                                    "text": "SwiftUI",
+                                                                                    "children": []
+                                                                                  },
+                                                                                  {
+                                                                                    "kind": "Identifier",
+                                                                                    "text": "_PaddingLayout",
+                                                                                    "children": []
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              },
+                                                              {
+                                                                "kind": "Type",
+                                                                "children": [
+                                                                  {
+                                                                    "kind": "Structure",
+                                                                    "children": [
+                                                                      {
+                                                                        "kind": "Module",
+                                                                        "text": "SwiftUI",
+                                                                        "children": []
+                                                                      },
+                                                                      {
+                                                                        "kind": "Identifier",
+                                                                        "text": "_PaddingLayout",
+                                                                        "children": []
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "kind": "Type",
+                                                    "children": [
+                                                      {
+                                                        "kind": "Structure",
+                                                        "children": [
+                                                          {
+                                                            "kind": "Module",
+                                                            "text": "SwiftUI",
+                                                            "children": []
+                                                          },
+                                                          {
+                                                            "kind": "Identifier",
+                                                            "text": "_FlexFrameLayout",
+                                                            "children": []
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "kind": "Type",
+                                        "children": [
+                                          {
+                                            "kind": "Structure",
+                                            "children": [
+                                              {
+                                                "kind": "Module",
+                                                "text": "SwiftUI",
+                                                "children": []
+                                              },
+                                              {
+                                                "kind": "Identifier",
+                                                "text": "_FlexFrameLayout",
+                                                "children": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Type",
+                "children": [
+                  {
+                    "kind": "BoundGenericStructure",
+                    "children": [
+                      {
+                        "kind": "Type",
+                        "children": [
+                          {
+                            "kind": "Structure",
+                            "children": [
+                              {
+                                "kind": "Module",
+                                "text": "SwiftUI",
+                                "children": []
+                              },
+                              {
+                                "kind": "Identifier",
+                                "text": "_OverlayModifier",
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeList",
+                        "children": [
+                          {
+                            "kind": "Type",
+                            "children": [
+                              {
+                                "kind": "BoundGenericEnum",
+                                "children": [
+                                  {
+                                    "kind": "Type",
+                                    "children": [
+                                      {
+                                        "kind": "Enum",
+                                        "children": [
+                                          {
+                                            "kind": "Module",
+                                            "text": "Swift",
+                                            "children": []
+                                          },
+                                          {
+                                            "kind": "Identifier",
+                                            "text": "Optional",
+                                            "children": []
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "TypeList",
+                                    "children": [
+                                      {
+                                        "kind": "Type",
+                                        "children": [
+                                          {
+                                            "kind": "TypeSymbolicReference",
+                                            "index": 156779120,
+                                            "children": []
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "Generic type shape does not prove runtime branch selection or behavior",
+    "Unknown local opaque contexts remain address identities, not reconstructed implementations",
+    "Private host demangler ABI bridge pinned to exact inspected library SHA256; no target artifact code executed"
+  ]
+}

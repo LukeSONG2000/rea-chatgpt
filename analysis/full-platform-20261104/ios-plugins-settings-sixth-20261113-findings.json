@@ -1,0 +1,248 @@
+{
+  "status": "partial",
+  "authority": "official-shipped-artifact-static-analysis",
+  "platform": "iOS",
+  "version": "1.2026.293",
+  "artifact": {
+    "path": "recovered/ios-1.2026.293/Payload/ChatGPT.app/Frameworks/ChatGPT.framework/ChatGPT",
+    "sha256": "12c03ceded0ce669421b6a9a4e4799104a4a82e491a425652df1aa92a116a6c9"
+  },
+  "scope": "Settings Plugins/Apps connectors(.root) Form content only; two bounded followups. No product edit, build, runtime, device, target service, or other package investigation.",
+  "reuses": [
+    "ios-plugins-settings-fifth-20261113-findings.json",
+    "ios-plugins-settings-fifth-20261113-raw/content-field-offsets.json"
+  ],
+  "candidate_groups": [
+    {
+      "id": 1,
+      "owner": "0x521878c -> 0x5142860 Form tuple content",
+      "windows": [
+        "0x5142ee4..0x514357c"
+      ],
+      "result": "Existing actual grouped Form builder composes capability-gated legacy/apps groups, then calls plugin sections owner0x5143ab4 and unlinked owner0x5143cf4 at0x51432d8/0x51432e4. pluginsExperienceEnabled byte+0x7c branches at0x5142d8c past the legacy groups to0x51432a8. Do not combine all generic inventory as unconditional groups."
+    },
+    {
+      "id": 2,
+      "owner": "0x5143ab4 plugin sections and contained row/ForEach factories",
+      "windows": [
+        "0x5143ab4..0x5144000",
+        "0x5144134..0x514483c",
+        "0x514483c..0x5144a20"
+      ],
+      "result": "Actual Added plugins and Browse directory disclosure are closed, separately from Settings route and the directory destination renderer."
+    }
+  ],
+  "findings": [
+    {
+      "id": "plugins_section_admission",
+      "evidence_type": "official-artifact-observation",
+      "sites": [
+        "0x5143b40..0x5143bf0"
+      ],
+      "conclusion": "nativePluginSettingsEnabled at ConnectorsViewContent+0x7d false produces absent content and returns before both Added and Browse. When true, hasInstalledPlugins+0x40 controls the Added section. Browse is tested independently afterward."
+    },
+    {
+      "id": "added_section",
+      "evidence_type": "official-artifact-observation",
+      "sites": [
+        "0x5143b48..0x5143bd8",
+        "0x5144134..0x51444d4"
+      ],
+      "conclusion": "Added SettingsSection uses localization key connectors_added_plugins_section_title at0x89a2cc0, English fallback Added assembled0x5143b68..74. Its actual child factory0x5144134 reads installedPlugins array+0x38 and creates ForEach<ConnectorPlugin,Tagged,...> with content closure0x5219130. For empty projected array the child emits connectors_no_matching_plugins / No matching plugins, rather than inventing installed connector rows.",
+      "limits": [
+        "hasInstalledPlugins and projected installedPlugins are separate inputs. This pass does not derive their service/cache production or claim the filtered array empty means no plugins installed."
+      ]
+    },
+    {
+      "id": "installed_row",
+      "evidence_type": "official-artifact-observation",
+      "sites": [
+        "0x51444d8..0x5144710",
+        "0x51445c4..0x5144618"
+      ],
+      "conclusion": "Installed plugin rows use SettingsLabelStyle plus ConnectorLogoView in the original disclosure carrier. If showPluginSettings function+0xc8 exists, factory captures its context+0xd0 with plugin into callback0x5219548. Without that callback the branch uses a value-based NavigationLink at0x51446e4. The destination value and exact plugin title projection are not recovered here.",
+      "limits": [
+        "Do not invent uninstall/toggle/reconnect menus or declare the value-based branch unavailable from the callback being nil."
+      ]
+    },
+    {
+      "id": "browse_disclosure",
+      "evidence_type": "official-artifact-observation",
+      "sites": [
+        "0x5143c00..0x5143c44",
+        "0x155b4c..0x155b54",
+        "0x514483c..0x5144904",
+        "0x5144908..0x5144a1c"
+      ],
+      "conclusion": "When nativePluginSettingsEnabled is true, Browse row exists only if showPluginsDirectory function+0xd8 is nonnil. Context comes from+0xe0; helper0x155b4c passes x25/x19 to x0/x1;0x15a400 preserves that pair into x25/x24;0x5144888 stores it into the actual NavigationLinkStyledDisclosureRow carrier. Label factory uses key connectors_browse_plugins_button_title at0x89a2d30 and English fallback Browse plugins; image factory0x74f6168 reads OpenAI/Symbols/circle-grid-2x2-badge-plus at0x8a54ae0. Uses SettingsLabelStyle, not a hand-composed catalog list."
+    },
+    {
+      "id": "settings_route_still_separate",
+      "evidence_type": "official-artifact-observation",
+      "sites": [
+        "prior fifth:0x10dbdf8..0x10dbe78",
+        "prior fifth:0x114e688 -> 0x10e625c"
+      ],
+      "conclusion": "Settings root injects showPluginsDirectory only when prior gate0x108ba40 is true. This pass closes its visible row consumer. The action forwards prior callback into presentation tag5, but actual tag5 destination/presentation modality remains unclosed. Directory content must remain separate from connection-management Form."
+    },
+    {
+      "id": "unlinked_groups_boundary",
+      "evidence_type": "official-artifact-observation",
+      "sites": [
+        "0x5143d70..0x5143ea0"
+      ],
+      "conclusion": "The separate owner0x5143cf4 reads unlinkedConnectors+0x68/70/tag+0x78, nonempty arrays, and connectorSettingsEnabled+0x7b. It includes Browse app fallback in one branch and Connector rows in another. Raw-state names, full title mapping and complete legacy/apps/privacy groups remain unknown; not admitted for new UI from this pass."
+    }
+  ],
+  "implementation_admission": {
+    "can_implement_now": [
+      "A separate Settings Plugins root grouped Form for the explicitly supplied nativePluginSettingsEnabled branch, with source-gated Added section and source-gated Browse plugins disclosure.",
+      "Pass installed plugin stable IDs/content through an explicit frontend adapter; for nonnil showPluginSettings dispatch the exact selected plugin action.",
+      "Browse row invokes directory-presentation adapter; any independent sheet/push choice must be labeled host adaptation until tag5 destination owner is closed."
+    ],
+    "must_not_claim": [
+      "This is the complete ConnectorsView in every feature flag configuration.",
+      "The prior Settings root callback alone proves nativePluginSettingsEnabled is true.",
+      "Existing directory catalog is equivalent to the Settings root or server data.",
+      "Original service data production, title field projection, every connector/privacy subgroup, or directory presentation modality is restored."
+    ],
+    "minimal_next_evidence": [
+      "Only if implementing another branch: follow exact plugin row label factory0x5144714 and its0x521957c closure for title/logo field projection.",
+      "Only if claiming original directory presentation: resolve0x10e625c captured continuation0x114e820 and tag5 actual consumer."
+    ]
+  },
+  "validation": {
+    "static_only": true,
+    "product_modified": false,
+    "builds_or_device_actions": false,
+    "official_app_run": false,
+    "online_service_used": false
+  },
+  "raw_manifest": [
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/actual-label-literals.json",
+      "bytes": 203,
+      "sha256": "8736e443746ee7752b75a4117df7e8fdc2a836cb11b61932d92f1058af365a6f"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/browse-action-arguments.asm",
+      "bytes": 276,
+      "sha256": "d41c497bf4d5321d53bf365c69b9b5a4729849c13e00cc1d5665a9c6884b9b5a"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/browse-action-arguments.json",
+      "bytes": 891,
+      "sha256": "b2d0e003dafecc38b24b29ac71db5559ceabe3a743199608765ec86c87145051"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/browse-icon-factory.asm",
+      "bytes": 1016,
+      "sha256": "4f8938c60df33857940bcb026870a2f3c897df5c9eb748a17f920f14d294012e"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/browse-icon-factory.json",
+      "bytes": 2015,
+      "sha256": "ba673647608dd22b4990224cb629582d25c98679d01ca646a09daf5e90e052fb"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/browse-localization-factory.asm",
+      "bytes": 773,
+      "sha256": "c3e4c7ace98a1297b56c253d2ded6097e256834a5b4519cd083e7413fcc09b36"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/browse-localization-factory.json",
+      "bytes": 912,
+      "sha256": "dbdd5be4fe7050b4e4f1d00e971687f5b7b96b69603af0e780dac00a33e57d4b"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/callback-register-copy.asm",
+      "bytes": 583,
+      "sha256": "7dbf9d7a25c46043531f9e9f5c8880f8155e3e2ed8f57298d985cf86fde92866"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/callback-register-copy.json",
+      "bytes": 939,
+      "sha256": "664d59d064bcfc4a51fd774bcc87c2d5d2ee6aa3e77b3f08c55cdb38ddd779e6"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/directory-button.asm",
+      "bytes": 6226,
+      "sha256": "3a1a994b152a30874b947f3392f6e47f2f71d6c7a839b432cb35d4ca953b2e4d"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/directory-button.json",
+      "bytes": 5718,
+      "sha256": "0f25796ca2a5bbb98d388fb43e11ad4ce7c8981eef9d206348e2fb6204de7203"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/directory-callback-carrier.asm",
+      "bytes": 1113,
+      "sha256": "30b1f52b7e7b152e4d45171f8dfd7c83332a8a7ba69a2d356a4e9c446b05fdc2"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/directory-callback-carrier.json",
+      "bytes": 994,
+      "sha256": "0a848b52207c730859fdb247bb12c7666023aeb3ea529a3baa96726131a3b690"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/disclosure-carrier-init.asm",
+      "bytes": 2378,
+      "sha256": "192f7b2ba361a0991b46e71d8a66c484ff1ce0c713871e4a0b73c4380407606f"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/disclosure-carrier-init.json",
+      "bytes": 1867,
+      "sha256": "c2806178d1dfa039ee1b52e8f7099913801acb667c4c1de3205a85580eb7fd1a"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/form-group-tail.asm",
+      "bytes": 13469,
+      "sha256": "cde4391fcbfedd4303de9a2e66e21b6465cfeb13b65e986944f1e439309fe361"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/form-group-tail.json",
+      "bytes": 8929,
+      "sha256": "6f6c93ccc7bd29fe6c62227897fda74f8ed985435d3827a5f4baf928a6ddac1f"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/form-installed-groups.asm",
+      "bytes": 8411,
+      "sha256": "05e896b62cca5a239ce206d621bf031c6952db95bc22874ceda7d6f9c40acf9a"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/form-installed-groups.json",
+      "bytes": 5208,
+      "sha256": "d3e3f199e8acc75dd370fcc63bab53edf0c056127525b45b4ef147f8a149f1d6"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/installed-plugin-section.asm",
+      "bytes": 22531,
+      "sha256": "fa7572671345084bd4bf0bd19a869e1ade203bd97da564a98bba9fa514417e40"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/installed-plugin-section.json",
+      "bytes": 16362,
+      "sha256": "f8aec93c09da2c72143a4b57c88630fc6b97f6e9166791c4f48841feda4ebeb5"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/plugin-sections-owner.asm",
+      "bytes": 20190,
+      "sha256": "bc6e0a89379fc34d2942afcd4f8bbf7434570944267d2976b5d6e98bf576d8aa"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/plugin-sections-owner.json",
+      "bytes": 13913,
+      "sha256": "dcb63a4ed63dc1dc072e1e499c52f7634bd94f2f2da02b406f54f358dcef9992"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/row-types.json",
+      "bytes": 12676,
+      "sha256": "035fc7e55d2731c0ebb1d9346406a90bcdcb3ea1d7a31ae31be81d1de9078634"
+    },
+    {
+      "path": "ios-plugins-settings-sixth-20261113-raw/section-types.json",
+      "bytes": 17678,
+      "sha256": "42e8523b2a962ba6ee9d735d70a743bf723d6d5d8371facfc55c8bba4a2ab708"
+    }
+  ]
+}

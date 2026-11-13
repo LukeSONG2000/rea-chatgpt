@@ -7,6 +7,25 @@ struct FrontendPluginScope: Hashable {
     let workspaceID: String
 }
 
+//293 consumes projected arrays, not a fixed list of model fields. These typed
+//inputs are our UI contract; original service production/routing remains unknown.
+struct FrontendPluginSkill: Identifiable, Equatable {
+    let id: String
+    let title: String
+}
+struct FrontendPluginInformation: Identifiable, Equatable {
+    enum ID: String { case capabilities, developer, website, version, privacyPolicy, termsOfService }
+    enum Value: Equatable { case text(String), list([String]), link(URL) }
+    let id: ID
+    let value: Value
+}
+struct FrontendPluginSkillsPresentation {
+    let skills: [FrontendPluginSkill]
+    var showsAll = false
+    var visible: [FrontendPluginSkill] { showsAll ? skills : Array(skills.prefix(8)) }
+    var remaining: Int { max(0, skills.count - visible.count) }
+}
+
 struct FrontendPlugin: Identifiable, Equatable {
     enum Action: String, Hashable { case connect, disconnect, settings, tryInChat }
     let id: String
@@ -18,6 +37,8 @@ struct FrontendPlugin: Identifiable, Equatable {
     let installed: Bool
     let actions: [Action]
     var detail: String = ""
+    var skills: [FrontendPluginSkill] = []
+    var information: [FrontendPluginInformation] = []
 }
 
 struct FrontendPluginSource: Identifiable, Hashable {
@@ -41,6 +62,15 @@ struct FrontendPluginListPage {
     let request: FrontendPluginListRequest
     let items: [FrontendPlugin]
     let next: String?
+    var sections: [FrontendPluginSection]? = nil
+}
+
+//Independent projection contract for the source-owned sections observed in
+//293 SourceContent. Section identity is not a synonym for plugin.sourceID.
+struct FrontendPluginSection: Identifiable, Equatable {
+    let id: String
+    let title: String?
+    var pluginIDs: [String]
 }
 
 struct FrontendPluginDetailRequest: Equatable {
@@ -64,7 +94,7 @@ struct FrontendPluginOperation: Equatable {
 }
 
 enum FrontendPluginFailure: Error, Equatable {
-    case unavailable, loadFailed, invalidResult
+    case unavailable, loadFailed, invalidResult, localStorage
 }
 
 struct FrontendPluginReceipt {
@@ -85,6 +115,7 @@ struct FrontendPluginState {
     enum Phase: Equatable { case idle, loading, ready, failed(FrontendPluginFailure) }
     struct Listing {
         var ids: [String] = []
+        var sections: [FrontendPluginSection]? = nil
         var next: String?
         var phase: Phase = .idle
         var pending: FrontendPluginListRequest?
@@ -131,18 +162,41 @@ struct FrontendPluginState {
               page.items.allSatisfy({ request.query.sourceID == "all"
                 || (request.query.sourceID == "installed" && $0.installed)
                 || request.query.sourceID == $0.sourceID }),
-              page.next.map({ !$0.isEmpty && $0 != request.cursor && !value.consumed.contains($0) }) ?? true else {
+              page.next.map({ !$0.isEmpty && $0 != request.cursor && !value.consumed.contains($0) }) ?? true,
+              validSections(page.sections, items: page.items) else {
             return failList(.invalidResult, request: request)
         }
         if let cursor = request.cursor { value.consumed.insert(cursor) }
-        else { value.ids = [] }
+        else { value.ids = []; value.sections = page.sections.map { _ in [] } }
         for item in page.items {
             merge(item)
             if !value.ids.contains(item.id) { value.ids.append(item.id) }
         }
+        if let incoming = page.sections {
+            var sections = value.sections ?? []
+            for section in incoming {
+                if let index = sections.firstIndex(where: { $0.id == section.id }) {
+                    for id in section.pluginIDs where !sections[index].pluginIDs.contains(id) {
+                        sections[index].pluginIDs.append(id)
+                    }
+                } else { sections.append(section) }
+            }
+            value.sections = sections
+        } else {
+            //A flat provider is supported, without inventing source groups.
+            value.sections = nil
+        }
         value.next = page.next; value.pending = nil; value.phase = .ready
         listings[request.query] = value
         return true
+    }
+
+    private func validSections(_ sections: [FrontendPluginSection]?, items: [FrontendPlugin]) -> Bool {
+        guard let sections else { return true }
+        let ids = Set(items.map(\.id))
+        return Set(sections.map(\.id)).count == sections.count && sections.allSatisfy {
+            !$0.id.isEmpty && Set($0.pluginIDs).count == $0.pluginIDs.count && $0.pluginIDs.allSatisfy(ids.contains)
+        }
     }
 
     mutating func failList(_ failure: FrontendPluginFailure, request: FrontendPluginListRequest) -> Bool {
@@ -193,7 +247,7 @@ struct FrontendPluginState {
 
     mutating func beginOperation(_ action: FrontendPlugin.Action, id: String) -> FrontendPluginOperation? {
         guard let item = entities[id], let actionID = item.actionPluginID, !actionID.isEmpty,
-              item.actions.contains(action), operations[id] == nil else { return nil }
+              item.actions.contains(action), item.revision < Int.max, operations[id] == nil else { return nil }
         let request = FrontendPluginOperation(id: UUID(), scope: scope, pluginID: id,
             actionPluginID: actionID, revision: item.revision, action: action)
         operations[id] = request; operationFailures[id] = nil
@@ -219,15 +273,77 @@ struct FrontendPluginState {
 
     private func valid(_ item: FrontendPlugin) -> Bool {
         !item.id.isEmpty && !item.name.isEmpty && !item.sourceID.isEmpty && item.revision >= 0
+            && Set(item.skills.map(\.id)).count == item.skills.count
+            && item.skills.allSatisfy({ !$0.id.isEmpty && !$0.title.isEmpty })
+            && Set(item.information.map(\.id)).count == item.information.count
     }
     private mutating func merge(_ item: FrontendPlugin) {
         if var old = entities[item.id], old.revision >= item.revision {
             if old.revision == item.revision && old.detail.isEmpty && !item.detail.isEmpty {
-                old.detail = item.detail; entities[item.id] = old
+                old.detail = item.detail
             }
+            if old.revision == item.revision && old.skills.isEmpty { old.skills = item.skills }
+            if old.revision == item.revision && old.information.isEmpty { old.information = item.information }
+            entities[item.id] = old
             return
         }
         entities[item.id] = item
+    }
+}
+
+//Independent nonsecret replay journal. Only accepted connection projections are
+//saved, before success is published. No plugin code, tokens or credentials.
+struct FrontendPluginConnectionJournal {
+    struct Entry: Codable, Equatable {
+        let id: String
+        let actionID: String
+        let revision: Int
+        let installed: Bool
+    }
+    private struct Envelope: Codable {
+        let version: Int
+        let account: String
+        let workspace: String
+        let entries: [Entry]
+    }
+    let url: URL
+    let scope: FrontendPluginScope
+    func load() throws -> [Entry] {
+        guard FileManager.default.fileExists(atPath: url.path) else { return [] }
+        guard let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize, size <= 65_536 else {
+            throw FrontendPluginFailure.localStorage
+        }
+        let value = try JSONDecoder().decode(Envelope.self, from: Data(contentsOf: url))
+        guard !scope.accountID.isEmpty, !scope.workspaceID.isEmpty,
+              value.version == 1, value.account == scope.accountID, value.workspace == scope.workspaceID,
+              value.entries.count <= 256, Set(value.entries.map(\.id)).count == value.entries.count,
+              value.entries.allSatisfy({ !$0.id.isEmpty && !$0.actionID.isEmpty && $0.revision > 0 }) else {
+            throw FrontendPluginFailure.localStorage
+        }
+        return value.entries
+    }
+    func save(_ updated: FrontendPlugin, expected: FrontendPlugin) throws {
+        guard let actionID = updated.actionPluginID, updated.id == expected.id,
+              actionID == expected.actionPluginID, expected.revision < Int.max,
+              updated.revision == expected.revision + 1 else { throw FrontendPluginFailure.invalidResult }
+        var entries = try load()
+        let accepted = Entry(id: updated.id, actionID: actionID, revision: updated.revision, installed: updated.installed)
+        if let old = entries.first(where: { $0.id == expected.id }) {
+            //Reconcile the exact write if publication/permission reporting was
+            //interrupted. A different newer value is never silently accepted.
+            if old == accepted { return }
+            guard old.actionID == actionID, old.revision == expected.revision,
+                  old.installed == expected.installed else { throw FrontendPluginFailure.localStorage }
+        } else if expected.revision != 0 { throw FrontendPluginFailure.localStorage }
+        entries.removeAll { $0.id == updated.id }
+        entries.append(accepted)
+        let data = try JSONEncoder().encode(Envelope(version: 1, account: scope.accountID,
+            workspace: scope.workspaceID, entries: entries))
+        guard entries.count <= 256, data.count <= 65_536 else { throw FrontendPluginFailure.localStorage }
+        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true,
+            attributes: [.posixPermissions: 0o700])
+        try data.write(to: url, options: [.atomic])
+        try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: url.path)
     }
 }
 
@@ -238,14 +354,38 @@ final class SyntheticPluginService: FrontendPluginServing {
     let failsOnce: Bool
     let failsFirstRefresh: Bool
     let replaysConnectionChanges: Bool
+    private let journal: FrontendPluginConnectionJournal?
+    private var journalNeedsRestore: Bool
+    private var failsLocalSaveOnce: Bool
     private var failures: Set<String> = []
     private var loadedQueries: Set<FrontendPluginQuery> = []
     private var failedRefreshes: Set<FrontendPluginQuery> = []
     init(scope: FrontendPluginScope, catalog: [FrontendPlugin], failsOnce: Bool = false,
-         failsFirstRefresh: Bool = false, replaysConnectionChanges: Bool = false) {
+         failsFirstRefresh: Bool = false, replaysConnectionChanges: Bool = false,
+         journal: FrontendPluginConnectionJournal? = nil, failsLocalSaveOnce: Bool = false) {
         self.scope = scope; self.catalog = catalog; self.failsOnce = failsOnce
         self.failsFirstRefresh = failsFirstRefresh
         self.replaysConnectionChanges = replaysConnectionChanges
+        self.journal = journal; self.journalNeedsRestore = journal != nil
+        self.failsLocalSaveOnce = failsLocalSaveOnce
+    }
+    private func restoreJournal() throws {
+        guard journalNeedsRestore, let journal else { return }
+        do {
+            let entries = try journal.load()
+            for entry in entries {
+                guard let index = catalog.firstIndex(where: { $0.id == entry.id }),
+                      catalog[index].actionPluginID == entry.actionID else { continue }
+                var updated = catalog[index]
+                updated = FrontendPlugin(id: updated.id, actionPluginID: updated.actionPluginID,
+                    revision: entry.revision, name: updated.name, summary: updated.summary,
+                    sourceID: updated.sourceID, installed: entry.installed,
+                    actions: entry.installed ? [.disconnect, .settings, .tryInChat] : [.connect],
+                    detail: updated.detail, skills: updated.skills, information: updated.information)
+                catalog[index] = updated
+            }
+            journalNeedsRestore = false
+        } catch { throw FrontendPluginFailure.localStorage }
     }
     private func pause(_ key: String) async throws {
         try await Task.sleep(nanoseconds: 120_000_000)
@@ -254,6 +394,7 @@ final class SyntheticPluginService: FrontendPluginServing {
     }
     func list(_ request: FrontendPluginListRequest) async throws -> FrontendPluginListPage {
         guard request.scope == scope else { throw FrontendPluginFailure.unavailable }
+        try restoreJournal()
         try await pause("list:" + request.query.sourceID)
         //Deterministic adapter fixture: a first-page refresh fails once after
         //this exact query has loaded, without modifying its existing entities.
@@ -270,16 +411,23 @@ final class SyntheticPluginService: FrontendPluginServing {
         } else { offset = 0 }
         let end = min(offset + 3, values.count)
         loadedQueries.insert(request.query)
-        return .init(request: request, items: Array(values[offset..<end]), next: end < values.count ? String(end) : nil)
+        let pageItems = Array(values[offset..<end])
+        //Explicit synthetic server projection, independent of item.sourceID.
+        //No official catalog titles or user's installed plugins are seeded.
+        let sections: [FrontendPluginSection]? = request.query.sourceID == "all" && request.query.text.isEmpty
+            ? [.init(id: "fixture-catalog", title: nil, pluginIDs: pageItems.map(\.id))] : nil
+        return .init(request: request, items: pageItems, next: end < values.count ? String(end) : nil, sections: sections)
     }
     func detail(_ request: FrontendPluginDetailRequest) async throws -> FrontendPluginDetail {
         guard request.scope == scope else { throw FrontendPluginFailure.unavailable }
+        try restoreJournal()
         try await pause("detail:" + request.pluginID)
         guard let item = catalog.first(where: { $0.id == request.pluginID }) else { throw FrontendPluginFailure.unavailable }
         return .init(request: request, item: item)
     }
     func perform(_ request: FrontendPluginOperation) async throws -> FrontendPluginReceipt {
         guard request.scope == scope else { throw FrontendPluginFailure.unavailable }
+        try restoreJournal()
         try await pause("operation:" + request.pluginID)
         // Explicit local receipt replay, never an installation or authorization.
         // Ordinary adapters retain an unavailable result. Display identity and
@@ -288,13 +436,19 @@ final class SyntheticPluginService: FrontendPluginServing {
            let index = catalog.firstIndex(where: { $0.id == request.pluginID }),
            catalog[index].actionPluginID == request.actionPluginID,
            catalog[index].revision == request.revision,
+           catalog[index].revision < Int.max,
            catalog[index].actions.contains(request.action) {
             let old = catalog[index]
             let installed = request.action == .connect
             let updated = FrontendPlugin(id: old.id, actionPluginID: old.actionPluginID,
                 revision: old.revision + 1, name: old.name, summary: old.summary,
                 sourceID: old.sourceID, installed: installed,
-                actions: installed ? [.disconnect, .settings, .tryInChat] : [.connect], detail: old.detail)
+                actions: installed ? [.disconnect, .settings, .tryInChat] : [.connect], detail: old.detail,
+                skills: old.skills, information: old.information)
+            do {
+                if failsLocalSaveOnce { failsLocalSaveOnce = false; throw FrontendPluginFailure.localStorage }
+                try journal?.save(updated, expected: old)
+            } catch { return .init(operation: request, result: .failure(.localStorage)) }
             catalog[index] = updated
             return .init(operation: request, result: .success(updated))
         }

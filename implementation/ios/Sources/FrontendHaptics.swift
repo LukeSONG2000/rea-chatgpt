@@ -212,42 +212,77 @@ struct FrontendGeneralSettings: View {
 //293 StartScreenSettingsMenu is UIViewRepresentable -> native menu button.
 //The native carrier is retained; precise original button configuration remains
 //an adapter. Revalidate in the latest coordinator, not a stale menu closure.
-private struct FrontendStartScreenMenu: UIViewRepresentable {
+//293 LabeledContent reserves the SAME value label with hidden(), then puts
+//the native menu over that measured space. This removes UIButton intrinsic
+//title measurement from the SwiftUI row instead of guessing a fixed width.
+private struct FrontendStartScreenMenu: View {
+    let available: [FrontendStartScreenDestination]
+    let selected: FrontendStartScreenDestination
+    let title: (FrontendStartScreenDestination) -> String
+    let choose: (FrontendStartScreenDestination) -> Void
+    var body: some View {
+        FrontendStartScreenMenuValue(title: title(selected)).hidden()
+            .overlay(alignment: .center) {
+                FrontendStartScreenNativeMenu(available: available, selected: selected, title: title, choose: choose)
+            }
+    }
+}
+
+private struct FrontendStartScreenMenuValue: View {
+    let title: String
+    var body: some View {
+        HStack(alignment: .center, spacing: 6) {
+            Text(title)
+            Image(uiImage: officialVisualIcon("chevron-up-chevron-down-sm"))
+        }.foregroundStyle(.secondary)
+    }
+}
+
+private final class FrontendStartScreenValueButton: UIButton {
+    var valueView: (UIView & UIContentView)?
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        valueView?.frame = bounds
+    }
+}
+
+private struct FrontendStartScreenNativeMenu: UIViewRepresentable {
     let available: [FrontendStartScreenDestination]
     let selected: FrontendStartScreenDestination
     let title: (FrontendStartScreenDestination) -> String
     let choose: (FrontendStartScreenDestination) -> Void
     final class Coordinator {
-        var owner: FrontendStartScreenMenu
-        init(_ owner: FrontendStartScreenMenu) { self.owner = owner }
+        var owner: FrontendStartScreenNativeMenu
+        init(_ owner: FrontendStartScreenNativeMenu) { self.owner = owner }
         func select(_ value: FrontendStartScreenDestination) {
             guard FrontendStartScreenDestination.accepts(value, available: owner.available) else { return }
             owner.choose(value)
         }
     }
     func makeCoordinator() -> Coordinator { Coordinator(self) }
-    func makeUIView(context: Context) -> UIButton {
-        let button = UIButton(type: .system)
+    func makeUIView(context: Context) -> FrontendStartScreenValueButton {
+        let button = FrontendStartScreenValueButton(type: .system)
         button.showsMenuAsPrimaryAction = true
+        button.preferredMenuElementOrder = .fixed
         button.setContentHuggingPriority(.required, for: .horizontal)
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.accessibilityIdentifier = "start-screen-picker"
         return button
     }
-    func updateUIView(_ button: UIButton, context: Context) {
+    func updateUIView(_ button: FrontendStartScreenValueButton, context: Context) {
         context.coordinator.owner = self
-        var configuration = UIButton.Configuration.plain()
-        configuration.title = title(selected)
-        configuration.baseForegroundColor = .secondaryLabel
-        configuration.image = UIImage(systemName: "chevron.up.chevron.down")
-        configuration.imagePlacement = .trailing
-        configuration.imagePadding = 4
-        configuration.preferredSymbolConfigurationForImage = .init(textStyle: .caption1)
-        configuration.titleTextAttributesTransformer = .init { incoming in
-            var value = incoming; value.font = UIFont.preferredFont(forTextStyle: .body); return value
+        let hosting = UIHostingConfiguration {
+            FrontendStartScreenMenuValue(title: title(selected))
+        }.margins(.all, 0)
+        if let view = button.valueView {
+            view.configuration = hosting
+        } else {
+            let view = hosting.makeContentView()
+            view.isUserInteractionEnabled = false
+            button.addSubview(view)
+            button.valueView = view
         }
-        configuration.contentInsets = .zero
-        button.configuration = configuration
+        button.setNeedsLayout()
         button.menu = UIMenu(options: .singleSelection, children: available.map { value in
             UIAction(title: title(value), state: value == selected ? .on : .off) { [weak coordinator = context.coordinator] _ in
                 coordinator?.select(value)
@@ -255,6 +290,13 @@ private struct FrontendStartScreenMenu: UIViewRepresentable {
         })
         button.accessibilityLabel = OfficialText.text(.settingsStartScreen)
         button.accessibilityValue = title(selected)
+    }
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: FrontendStartScreenValueButton, context: Context) -> CGSize? {
+        //The hidden SwiftUI value is the measuring owner. A titleless UIButton
+        //otherwise returns its own near-zero intrinsic width to the overlay.
+        //Accept the measured proposal; never estimate a title width or inset.
+        guard let width = proposal.width, let height = proposal.height else { return nil }
+        return CGSize(width: width, height: height)
     }
 }
 
